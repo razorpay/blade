@@ -46,9 +46,7 @@ describe('close and dismiss', () => {
       onClose,
     });
     expect(dialog.dismiss('blur')).toBe(false);
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'blur' })
-    );
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'blur' }));
     expect(dialog.isOpen()).toBe(true);
     expect(onClose).not.toHaveBeenCalled();
   });
@@ -90,9 +88,7 @@ describe('back', () => {
     const onDismiss = vi.fn();
     const dialog = createDialogModel({ onDismiss, onClose });
     expect(dialog.back()).toBe(true);
-    expect(onDismiss).toHaveBeenCalledWith(
-      expect.objectContaining({ source: 'back' })
-    );
+    expect(onDismiss).toHaveBeenCalledWith(expect.objectContaining({ source: 'back' }));
     expect(dialog.isOpen()).toBe(false);
     expect(onClose).toHaveBeenCalledWith('back');
     // Closed: no opinion — the enclosing stack applies its default.

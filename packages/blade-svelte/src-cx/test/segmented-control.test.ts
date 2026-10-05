@@ -5,18 +5,17 @@ import SegmentedControlHarness from './fixtures/SegmentedControlHarness.svelte';
 // Blade-owned: the preset ships SegmentedControl whole, over the segmented
 // RadioGroup. The radios' behaviour is RadioGroup's and is tested there;
 // this covers the spelling — names, the pill, the thumb and the size axis.
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
-const input = (element: HTMLElement) => element as HTMLInputElement;
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
+const input = (element: HTMLElement): HTMLInputElement => element as HTMLInputElement;
 /** The label around one segment's input. */
-const segment = (control: HTMLElement) => control.parentElement as HTMLElement;
+const segment = (control: HTMLElement): HTMLElement => control.parentElement!;
 /** The pill the segments sit in. */
-const pill = (control: HTMLElement) =>
-  segment(control).parentElement as HTMLElement;
+const pill = (control: HTMLElement): HTMLElement => segment(control).parentElement!;
 
 describe('SegmentedControl + SegmentedControlItem (blade)', () => {
   it('is a radiogroup named by its label, of radios named by theirs', () => {
     const { getByRole, getByLabelText, getByTestId, getAllByRole } = render(
-      SegmentedControlHarness
+      SegmentedControlHarness,
     );
     const group = getByRole('radiogroup', { name: 'Pay via' });
     expect(group).toBe(getByTestId('group'));
@@ -54,12 +53,10 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     const all = render(SegmentedControlHarness, {
       props: { isDisabled: true },
     });
-    expect(
-      all.getAllByRole('radio').every((radio) => input(radio).disabled)
-    ).toBe(true);
+    expect(all.getAllByRole('radio').every((radio) => input(radio).disabled)).toBe(true);
     // Blade fades nothing: each segment takes the disabled text colour.
     expect(segment(all.getByTestId('card')).className).toContain(
-      'peer-disabled:text-interactive-gray-disabled'
+      'peer-disabled:text-interactive-gray-disabled',
     );
     all.unmount();
 
@@ -69,7 +66,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     expect(input(getByTestId('card')).disabled).toBe(true);
     expect(input(getByTestId('upi')).disabled).toBe(false);
     expect(segment(getByTestId('card')).className).toContain(
-      'peer-disabled:text-interactive-gray-disabled'
+      'peer-disabled:text-interactive-gray-disabled',
     );
   });
 
@@ -86,9 +83,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
       props: { iconOnly: true },
     });
     expect(getByRole('radio', { name: 'Wallet' })).toBe(getByTestId('wallet'));
-    expect(
-      segment(getByTestId('wallet')).querySelector('[role="img"]')
-    ).not.toBeNull();
+    expect(segment(getByTestId('wallet')).querySelector('[role="img"]')).not.toBeNull();
   });
 
   it('the pick is a thumb, not a segment style', async () => {
@@ -115,9 +110,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
 
   it('draws no thumb while nothing is picked', () => {
     const { getByTestId } = render(SegmentedControlHarness);
-    expect(
-      pill(getByTestId('upi')).querySelector(':scope > [aria-hidden="true"]')
-    ).toBeNull();
+    expect(pill(getByTestId('upi')).querySelector(':scope > [aria-hidden="true"]')).toBeNull();
   });
 
   it("size: Blade's track, segment height, radius and type", () => {
@@ -145,9 +138,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     });
     const upi = neutral.getByTestId('upi');
     expect(pill(upi).className).toContain('bg-interactive-gray-faded');
-    expect(segment(neutral.getByTestId('card')).className).toContain(
-      'text-interactive-gray-muted'
-    );
+    expect(segment(neutral.getByTestId('card')).className).toContain('text-interactive-gray-muted');
     neutral.unmount();
 
     const { getByTestId } = render(SegmentedControlHarness, {
@@ -159,17 +150,16 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     // The thumb stays white, and the pick on it dark; the rest goes white.
     expect(track.firstElementChild?.className).toContain('bg-surface-gray-intense');
     expect(segment(getByTestId('upi')).className).toContain('text-interactive-gray-normal');
-    expect(segment(getByTestId('card')).className).toContain('text-interactive-static-white-normal');
+    expect(segment(getByTestId('card')).className).toContain(
+      'text-interactive-static-white-normal',
+    );
   });
 
   it('inside a Form a required control blocks submit, then submits the pick', async () => {
     const onSubmit = vi.fn();
-    const { getByTestId, getByText, queryByText } = render(
-      SegmentedControlHarness,
-      {
-        props: { inForm: true, name: 'flow', helpText: 'Choose one', onSubmit },
-      }
-    );
+    const { getByTestId, getByText, queryByText } = render(SegmentedControlHarness, {
+      props: { inForm: true, name: 'flow', helpText: 'Choose one', onSubmit },
+    });
 
     await fireEvent.click(getByTestId('continue'));
     await flush();

@@ -4,8 +4,8 @@ import type { FormatRule } from '../runes/text-input/format';
 import TextInputHarness from './fixtures/TextInputHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
-const digits = (v: unknown) => String(v ?? '').replace(/\D/g, '');
-const grouped = (v: unknown) => digits(v).replace(/(\d{4})(?=\d)/g, '$1 ');
+const digits = (v: unknown): string => String(v ?? '').replace(/\D/g, '');
+const grouped = (v: unknown): string => digits(v).replace(/(\d{4})(?=\d)/g, '$1 ');
 const cardFormat = { parse: digits, format: grouped };
 
 describe('TextInput standalone', () => {
@@ -37,11 +37,9 @@ describe('TextInput standalone', () => {
     });
     expect(getByTestId('solo').getAttribute('aria-label')).toBe('Card number');
 
-    return rerender({ label: 'Card', accessibilityLabel: 'Card number' }).then(
-      () => {
-        expect(getByTestId('solo').getAttribute('aria-label')).toBeNull();
-      }
-    );
+    return rerender({ label: 'Card', accessibilityLabel: 'Card number' }).then(() => {
+      expect(getByTestId('solo').getAttribute('aria-label')).toBeNull();
+    });
   });
 
   it('paints the formatted value first and follows outside value changes', async () => {
@@ -107,10 +105,9 @@ describe('TextInput standalone', () => {
   });
 
   it('leading and trailing take text or a snippet inside the box label', () => {
-    const { getByText, getByTestId, getByLabelText } = render(
-      TextInputHarness,
-      { props: { label: 'Amount', leading: '₹', withTrailingSnippet: true } }
-    );
+    const { getByText, getByTestId, getByLabelText } = render(TextInputHarness, {
+      props: { label: 'Amount', leading: '₹', withTrailingSnippet: true },
+    });
     expectClass(getByText('₹'), 'items-center');
     expectClass(getByTestId('clear').parentElement, 'items-center');
     // The box is a label, so a click on an affix lands in the control…
@@ -118,12 +115,10 @@ describe('TextInput standalone', () => {
     expect(getByText('₹').closest('label')?.control).toBe(control);
     // …while the accessible name stays the visible label alone.
     expect(getByLabelText('Amount')).toBe(control);
-    expect(control.getAttribute('aria-labelledby')).toBe(
-      getByText('Amount').closest('[id]')?.id
-    );
+    expect(control.getAttribute('aria-labelledby')).toBe(getByText('Amount').closest('[id]')?.id);
   });
 
-  it("takes the HTML keyboard attributes, over the defaults its type brings", async () => {
+  it('takes the HTML keyboard attributes, over the defaults its type brings', async () => {
     const { getByTestId, rerender } = render(TextInputHarness, {
       props: { type: 'tel', accessibilityLabel: 'Phone' },
     });
@@ -188,10 +183,9 @@ describe('TextInput standalone', () => {
 
   it('describes the control with the line for its validation state', async () => {
     const texts = { helpText: 'Help', errorText: 'Bad', successText: 'Good' };
-    const { getByTestId, getByText, queryByText, rerender } = render(
-      TextInputHarness,
-      { props: texts }
-    );
+    const { getByTestId, getByText, queryByText, rerender } = render(TextInputHarness, {
+      props: texts,
+    });
     const control = getByTestId('solo');
 
     expect(control.getAttribute('aria-describedby')).toBe(getByText('Help').closest('[id]')?.id);
@@ -228,10 +222,7 @@ describe('TextInput standalone', () => {
       props: { isDisabled: true },
     });
     expect((getByTestId('solo') as HTMLInputElement).disabled).toBe(true);
-    expectClass(
-      container.firstElementChild as HTMLElement,
-      'pointer-events-none'
-    );
+    expectClass(container.firstElementChild as HTMLElement, 'pointer-events-none');
     expectClass(getByTestId('solo').parentElement, '!bg-surface-gray-moderate');
   });
 });

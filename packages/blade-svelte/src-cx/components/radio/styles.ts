@@ -1,7 +1,4 @@
-import type {
-  RadioGroupPick,
-  RadioGroupValidationState,
-} from '../../runes/radio/group.svelte';
+import type { RadioGroupPick, RadioGroupValidationState } from '../../runes/radio/group.svelte';
 import type { AxisValue } from '../../axes';
 
 export type { RadioGroupPick, RadioGroupValidationState };
@@ -81,10 +78,7 @@ export const RADIO_GROUP_AXES = {
   size: ['small', 'medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof RADIO_GROUP_AXES> = AxisValue<
-  typeof RADIO_GROUP_AXES,
-  K
->;
+type Axis<K extends keyof typeof RADIO_GROUP_AXES> = AxisValue<typeof RADIO_GROUP_AXES, K>;
 
 /** Derived from RADIO_GROUP_AXES: add an axis value there, never here. */
 export interface RadioGroupStyleProps {
@@ -160,7 +154,8 @@ const PICKED_DISABLED =
 const UNPICKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
 const DOT = 'rounded-max bg-current';
 const INDICATOR = {
-  root: 'relative m-0.5 flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
+  root:
+    'relative m-0.5 flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
   look: {
     default: {
       picked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${PICKED_DISABLED}`,
@@ -183,12 +178,12 @@ const GROUP = {
   disabled: '',
 };
 
-export const resolveRadioGroup: RadioGroupStyleResolver<
-  RadioGroupStyleProps
-> = (props: RadioGroupStyleProps = {}) => {
+export const resolveRadioGroup: RadioGroupStyleResolver<RadioGroupStyleProps> = (
+  props: RadioGroupStyleProps = {},
+) => {
   const { orientation = 'vertical', size = 'medium' } = props;
   const look = SIZE[size];
-  const sized = (dot: string) => `${dot} ${look.dot}`;
+  const sized = (dot: string): string => `${dot} ${look.dot}`;
   return {
     ...GROUP,
     options: `flex ${ORIENTATION[orientation]} ${GAP[size]}`,

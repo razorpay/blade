@@ -37,9 +37,7 @@ describe('IconButton', () => {
       const button = getByTestId('dismiss');
       expect(button.className).not.toMatch(/\bw-\d/);
       expectClass(button, 'rounded-2xsmall');
-      expect(button.querySelector('svg')?.parentElement?.className).toContain(
-        glyph
-      );
+      expect(button.querySelector('svg')?.parentElement?.className).toContain(glyph);
       unmount();
     }
   });
@@ -51,7 +49,7 @@ describe('IconButton', () => {
     expectClass(small.getByTestId('dismiss'), 'w-6');
     expectClass(
       small.getByTestId('dismiss'),
-      'hover:enabled:bg-interactive-gray-faded-highlighted'
+      'hover:enabled:bg-interactive-gray-faded-highlighted',
     );
     small.unmount();
     const large = render(IconButtonHarness, {
@@ -85,36 +83,32 @@ describe('IconButton', () => {
   });
 
   it('is busy while an async press settles: spinner for the glyph, second press swallowed', () => {
-    let settle: () => void = () => {};
+    let settle: () => void = () => {
+      // noop
+    };
     const onClick = vi.fn(
       () =>
         new Promise<void>((resolve) => {
           settle = resolve;
-        })
+        }),
     );
     const { getByTestId } = render(IconButtonHarness, { props: { onClick } });
     const button = getByTestId('dismiss');
 
     return fireEvent
       .click(button)
-      .then(() =>
-        waitFor(() => expect(button.getAttribute('aria-busy')).toBe('true'))
-      )
+      .then(() => waitFor(() => expect(button.getAttribute('aria-busy')).toBe('true')))
       .then(() => {
         expect(button.querySelector('svg')).toBeNull();
         expectMarkup(button, 'animate-spin');
         expect(button.getAttribute('aria-label')).toBe('Dismiss');
-        expect(button.querySelector('[role="status"]')?.textContent).toContain(
-          'Working'
-        );
+        expect(button.querySelector('[role="status"]')?.textContent).toContain('Working');
         return fireEvent.click(button);
       })
       .then(() => {
         expect(onClick).toHaveBeenCalledTimes(1);
         settle();
-        return waitFor(() =>
-          expect(button.hasAttribute('aria-busy')).toBe(false)
-        );
+        return waitFor(() => expect(button.hasAttribute('aria-busy')).toBe(false));
       })
       .then(() => {
         expect(button.querySelector('svg')).not.toBeNull();

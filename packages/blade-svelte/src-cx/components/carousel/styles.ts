@@ -17,14 +17,11 @@ export type CarouselStyleResolver<P> = (props: P) => CarouselClasses;
 export type CarouselStyleProps = Record<never, never>;
 export const CAROUSEL_AXES = {} as const;
 
-const DOT =
-  'w-2 h-2 rounded-max outline-none transition-colors focus-visible:shadow-focus';
+const DOT = 'w-2 h-2 rounded-max outline-none transition-colors focus-visible:shadow-focus';
 
 // Ported from app/v2/modules/common/components/Carousel.svelte: a snapping
 // row with its scrollbar hidden, and a dot per slide.
-export const resolveCarousel: CarouselStyleResolver<
-  CarouselStyleProps
-> = () => ({
+export const resolveCarousel: CarouselStyleResolver<CarouselStyleProps> = () => ({
   root: 'flex w-full flex-col items-center gap-2 overflow-hidden',
   track:
     'flex w-full scrollbar-none [&::-webkit-scrollbar]:hidden snap-x-mandatory overflow-x-auto overscroll-x-contain',

@@ -1,13 +1,6 @@
-import {
-  createDisclosure,
-  type DisclosureModel,
-  type DisclosureOptions,
-} from './disclosure';
-import type {
-  KeyModifiers,
-  ListAction,
-  NavigableListModel,
-} from './navigable-list.svelte';
+import { createDisclosure } from './disclosure';
+import type { DisclosureModel, DisclosureOptions } from './disclosure';
+import type { KeyModifiers, ListAction, NavigableListModel } from './navigable-list.svelte';
 
 /** A navigable list with its own open-state key handling (`dispatchListKey`). */
 export interface DisclosableList<T> extends NavigableListModel<T> {
@@ -33,7 +26,7 @@ export interface DisclosedList {
  */
 export function discloseList<T>(
   list: DisclosableList<T>,
-  options: DisclosureOptions = {}
+  options: DisclosureOptions = {},
 ): DisclosedList {
   const disclosure = createDisclosure({
     ...options,
@@ -57,12 +50,7 @@ export function discloseList<T>(
       const action = list.keyAction(key, mods);
       // Arrows, Enter, Space and alt+ArrowDown open; jump keys (Home/End,
       // PageUp/PageDown) and typeahead stay inert while closed.
-      if (
-        action === 'open' ||
-        action === 'next' ||
-        action === 'prev' ||
-        action === 'select'
-      ) {
+      if (action === 'open' || action === 'next' || action === 'prev' || action === 'select') {
         openFromKeyboard(key);
         return 'open';
       }

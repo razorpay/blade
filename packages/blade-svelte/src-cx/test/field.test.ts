@@ -50,9 +50,11 @@ describe('labelArea: content beside the label', () => {
 
   it('CounterInput and InputGroup take it too', () => {
     const { getByTestId, getByText } = render(LabelAreaHarness);
-    expect(getByTestId('guests-extra').parentElement).toBe(getByText('Guests').closest('label')?.parentElement);
+    expect(getByTestId('guests-extra').parentElement).toBe(
+      getByText('Guests').closest('label')?.parentElement,
+    );
     expect(getByTestId('card-extra').parentElement).toBe(
-      getByText('Card').parentElement?.parentElement
+      getByText('Card').parentElement?.parentElement,
     );
   });
 

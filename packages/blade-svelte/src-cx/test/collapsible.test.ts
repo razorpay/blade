@@ -34,13 +34,13 @@ describe('Collapsible', () => {
     expect(onExpandChange).toHaveBeenCalledExactlyOnceWith({ isExpanded: true });
     expect(getByTestId('bound').textContent).toBe('true');
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
-    const body = queryByText('Actual amount')?.closest('[id]') as HTMLElement;
+    const body = queryByText('Actual amount')!.closest('[id]')!;
     expect(trigger.getAttribute('aria-controls')).toBe(body.id);
   });
 
   it('flips the chevron while expanded', async () => {
     const { getByTestId } = render(CollapsibleHarness);
-    const chevron = getByTestId('trigger').querySelector('[aria-hidden="true"]') as HTMLElement;
+    const chevron = getByTestId('trigger').querySelector('[aria-hidden="true"]')!;
     expectClass(chevron, 'rotate-0');
     await fireEvent.click(getByTestId('trigger'));
     expectClass(chevron, '-rotate-180');

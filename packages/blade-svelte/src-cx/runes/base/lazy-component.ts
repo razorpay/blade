@@ -14,7 +14,7 @@ type AnyComponent = Component<Record<string, unknown>>;
 /** The component to render now: undefined while a promised one loads. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
 export function readyComponent<P extends Record<string, any>>(
-  component: LazyComponent<P>
+  component: LazyComponent<P>,
 ): AnyComponent | undefined {
   return isPromise(component) ? undefined : (component as AnyComponent);
 }
@@ -30,7 +30,7 @@ export function loadComponent<P extends Record<string, any>>(
   handlers: {
     onLoaded: (component: AnyComponent) => void;
     onError: (error: unknown) => void;
-  }
+  },
 ): void {
   if (!isPromise<Module<Component<P>>>(component)) {
     return;
@@ -49,7 +49,7 @@ export function loadComponent<P extends Record<string, any>>(
  */
 export function createPropsPatch<P extends object>(
   initial: P,
-  apply: (props: Record<string, unknown>) => void
+  apply: (props: Record<string, unknown>) => void,
 ): (next: Partial<P>) => void {
   let current = { ...initial } as Record<string, unknown>;
   return (next) => {

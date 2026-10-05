@@ -28,8 +28,7 @@ describe('CardGroup', () => {
       .then(() => {
         const header = getByTestId('methods-0');
         // The content sits in the body box, inside the region.
-        const panel = getByTestId('content-upi').parentElement
-          ?.parentElement as HTMLElement;
+        const panel = getByTestId('content-upi').parentElement!.parentElement!;
         expect(header.getAttribute('aria-expanded')).toBe('true');
         expect(header.getAttribute('aria-controls')).toBe(panel.id);
         expect(panel.getAttribute('role')).toBe('region');
@@ -37,16 +36,12 @@ describe('CardGroup', () => {
         expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: 'upi' }));
         return fireEvent.click(getByTestId('methods-2'));
       })
-      .then(() =>
-        waitFor(() => expect(queryByTestId('content-upi')).toBeNull())
-      )
+      .then(() => waitFor(() => expect(queryByTestId('content-upi')).toBeNull()))
       .then(() => {
         expect(getByTestId('content-wallet')).toBeTruthy();
         return fireEvent.click(getByTestId('methods-2'));
       })
-      .then(() =>
-        waitFor(() => expect(queryByTestId('content-wallet')).toBeNull())
-      )
+      .then(() => waitFor(() => expect(queryByTestId('content-wallet')).toBeNull()))
       .then(() => {
         expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: null }));
       });
@@ -79,7 +74,7 @@ describe('CardGroup', () => {
     return fireEvent.click(card).then(() => {
       expect(onClick).toHaveBeenCalledWith(
         expect.objectContaining({ name: 'card' }),
-        expect.anything()
+        expect.anything(),
       );
       expect(onChange).not.toHaveBeenCalled();
       expect(queryByTestId('content-card')).toBeNull();
@@ -92,9 +87,7 @@ describe('CardGroup', () => {
     });
     return fireEvent.click(getByTestId('methods-0')).then(() => {
       expect(queryByTestId('content-upi')).toBeNull();
-      expect(getByTestId('methods-0').getAttribute('aria-expanded')).toBe(
-        'false'
-      );
+      expect(getByTestId('methods-0').getAttribute('aria-expanded')).toBe('false');
     });
   });
 
@@ -135,8 +128,7 @@ describe('CardGroup', () => {
 
   it('an actionable item draws the chevron pointing right', () => {
     const { getByTestId } = render(CardGroupHarness);
-    const chevron = getByTestId('methods-1').querySelector('svg')
-      ?.parentElement as HTMLElement;
+    const chevron = getByTestId('methods-1').querySelector('svg')!.parentElement!;
     expect(chevron.className).toContain('-rotate-90');
   });
 
@@ -153,10 +145,10 @@ describe('CardGroup', () => {
     const { getByTestId } = render(CardGroupHarness);
     const header = getByTestId('methods-0');
     const title = [...header.querySelectorAll('span')].find(
-      (node) => node.textContent?.trim() === 'UPI'
+      (node) => node.textContent?.trim() === 'UPI',
     ) as HTMLElement;
     const subtitle = [...header.querySelectorAll('span')].find(
-      (node) => node.textContent?.trim() === 'Any UPI app'
+      (node) => node.textContent?.trim() === 'Any UPI app',
     ) as HTMLElement;
     expect(title.className).toContain('font-semibold');
     expect(title.className).toContain('text-200');
@@ -179,7 +171,7 @@ describe('CardGroup', () => {
     const { getByTestId, container } = render(CardGroupHarness, {
       props: { onSubmit, isRequired: true },
     });
-    const form = container.querySelector('form') as HTMLFormElement;
+    const form = container.querySelector('form')!;
 
     return fireEvent
       .submit(form)
@@ -198,8 +190,7 @@ describe('CardGroup', () => {
 });
 
 describe('CardGroup (blade)', () => {
-  const itemOf = (header: HTMLElement) =>
-    header.closest('.group\\/item') as HTMLElement;
+  const itemOf = (header: HTMLElement): Element => header.closest('.group\\/item')!;
 
   it('transparent: items on the page, a divider after every one', () => {
     const { getByTestId } = render(CardGroupHarness);
@@ -212,9 +203,7 @@ describe('CardGroup (blade)', () => {
     expect(header.parentElement?.getAttribute('aria-level')).toBe('3');
     expect(header.className).toContain('bg-transparent');
     expect(header.className).toContain('hover:bg-interactive-gray-faded');
-    expect(header.className).toContain(
-      'focus-visible:outline-surface-primary-muted'
-    );
+    expect(header.className).toContain('focus-visible:outline-surface-primary-muted');
   });
 
   it('filled: one raised surface, dividers between items only', () => {
@@ -226,16 +215,13 @@ describe('CardGroup (blade)', () => {
     expect(item.parentElement?.className).toContain('rounded-medium');
     expect(item.className).toContain('[&+&]:border-t-thin');
     expect(item.className).not.toContain('border-b-thin');
-    expect(getByTestId('methods-3').className).toContain(
-      'group-last/item:rounded-bl-medium'
-    );
+    expect(getByTestId('methods-3').className).toContain('group-last/item:rounded-bl-medium');
   });
 
   it('muted chevron that flips, a hairline under the open header, the body box', async () => {
     const { getByTestId } = render(CardGroupHarness);
     const header = getByTestId('methods-0');
-    const indicator = header.querySelector('[aria-hidden="true"]')
-      ?.parentElement as HTMLElement;
+    const indicator = header.querySelector('[aria-hidden="true"]')!.parentElement!;
     expect(indicator.className).toContain('icon-interactive-gray-muted');
     expect(indicator.className).toContain('h-7');
     expect(header.querySelector('.border-b-thinner')).toBeNull();
@@ -245,7 +231,7 @@ describe('CardGroup (blade)', () => {
     expect(indicator.className).not.toContain('icon-interactive-gray-muted');
     expect(header.querySelector('.border-b-thinner')).not.toBeNull();
     await waitFor(() => {
-      const body = getByTestId('content-upi').parentElement as HTMLElement;
+      const body = getByTestId('content-upi').parentElement!;
       expect(body.className).toContain('mx-4 mb-4 mt-3');
     });
   });
@@ -257,7 +243,7 @@ describe('CardGroup (blade)', () => {
     const header = getByTestId('methods-1');
     expect(header.textContent).toContain('2.');
     const prefix = [...header.querySelectorAll('span')].find(
-      (node) => node.textContent === '2.'
+      (node) => node.textContent === '2.',
     ) as HTMLElement;
     expect(prefix.className).toContain('text-100');
     expect(prefix.className).toContain('h-5');
@@ -271,14 +257,14 @@ describe('CardGroup (blade)', () => {
     await fireEvent.click(header);
     await waitFor(() => {
       const custom = getByTestId('custom-upi');
-      const region = custom.parentElement as HTMLElement;
+      const region = custom.parentElement!;
       expect(region.getAttribute('role')).toBe('region');
       expect(region.id).toBe(header.getAttribute('aria-controls'));
       expect(region.className).toBe('');
     });
   });
 
-  it('header receives the drawn title and subtitle with the state, as Modal\'s; leading stays', async () => {
+  it("header receives the drawn title and subtitle with the state, as Modal's; leading stays", async () => {
     const Harness = (await import('./fixtures/CardGroupUnboundHarness.svelte')).default;
     const { getByTestId, getByText } = render(Harness, { props: { withHeader: true } });
     const row = getByTestId('title-row-refund');
@@ -311,7 +297,7 @@ describe('CardGroup (blade)', () => {
   it('takes a labelArea and a snippet help line, which describes the group', () => {
     const { getByTestId, getByText } = render(CardGroupHarness, { props: { withExtras: true } });
     expect(getByTestId('label-extra').parentElement).toBe(
-      getByText('Payment methods').parentElement?.parentElement
+      getByText('Payment methods').parentElement?.parentElement,
     );
     const group = getByTestId('methods');
     const hint = document.getElementById(group.getAttribute('aria-describedby')!)!;
@@ -320,8 +306,6 @@ describe('CardGroup (blade)', () => {
 
   it('greys a disabled header', () => {
     const { getByTestId } = render(CardGroupHarness);
-    expect(getByTestId('methods-3').className).toContain(
-      'disabled:text-surface-gray-disabled'
-    );
+    expect(getByTestId('methods-3').className).toContain('disabled:text-surface-gray-disabled');
   });
 });

@@ -1,15 +1,21 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { createField } from '../form/field.svelte';
-import { createChoiceList, type ChoiceEntry } from './choice-list.svelte';
+import type { FieldModel } from '../form/field.svelte';
+import { createChoiceList } from './choice-list.svelte';
+import type { ChoiceEntry, ChoiceList } from './choice-list.svelte';
 
 interface Bank {
   code: string;
 }
 const hdfc: Bank = { code: 'hdfc' };
 const icici: Bank = { code: 'icici' };
-const byCode = (a: Bank, b: Bank) => a?.code === b?.code;
+const byCode = (a: Bank, b: Bank): boolean => a?.code === b?.code;
 
-function bankField(props: Record<string, unknown> = {}, onTouch = vi.fn()) {
+function bankField(
+  props: Record<string, unknown> = {},
+  onTouch = vi.fn(),
+): { field: FieldModel; onTouch: Mock } {
   const field = createField(props, undefined, { kind: 'radio', onTouch });
   field.updateProps({ name: 'bank', ...props });
   return { field, onTouch };
@@ -81,7 +87,10 @@ describe('createChoiceList', () => {
     const sbi: Bank = { code: 'sbi' };
     const banks = [hdfc, icici, sbi];
 
-    function keyed(multiple: boolean, props: Record<string, unknown> = {}) {
+    function keyed(
+      multiple: boolean,
+      props: Record<string, unknown> = {},
+    ): { field: FieldModel; choice: ChoiceList<Bank> } {
       const { field } = bankField(props);
       const choice = createChoiceList<Bank>(field, {
         items: () => banks,
@@ -113,7 +122,7 @@ describe('createChoiceList', () => {
         choice.handleKey(' ');
         expect(choice.isSelected(hdfc)).toBe(true);
         expect(choice.isSelected(sbi)).toBe(multiple);
-      }
+      },
     );
 
     it('stops at the ends, types ahead, and leaves other keys alone', () => {
@@ -141,7 +150,9 @@ describe('createChoiceList', () => {
     });
   });
   describe('as an cardGroup: deselectable, looping', () => {
-    function open(props: Record<string, unknown> = {}) {
+    function open(
+      props: Record<string, unknown> = {},
+    ): { field: FieldModel; choice: ChoiceList<string | number>; onTouch: Mock } {
       const { field, onTouch } = bankField(props);
       const choice = createChoiceList<string | number>(field, {
         deselectable: () => true,
@@ -174,11 +185,7 @@ describe('createChoiceList', () => {
   });
 
   describe('registered entries', () => {
-    function entry(
-      value: Bank,
-      element?: HTMLElement,
-      disabled = false
-    ): ChoiceEntry<Bank> {
+    function entry(value: Bank, element?: HTMLElement, disabled = false): ChoiceEntry<Bank> {
       return {
         value: () => value,
         isDisabled: () => disabled,

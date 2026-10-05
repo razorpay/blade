@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createField, defaultCompare, type FieldStore } from './field.svelte';
+import { createField, defaultCompare } from './field.svelte';
+import type { FieldStore } from './field.svelte';
 
 // In-memory stand-in for the host's key-value store (v2 passes its global store).
 function memoryStore(): FieldStore & { entries: Map<unknown, unknown> } {
@@ -30,7 +31,7 @@ describe('createField', () => {
 
   it('resets a value that is not one of the allowed options', () => {
     const options = [{ id: 'a' }, { id: 'b' }];
-    const compare = (a: { id: string } | null, b: { id: string } | null) =>
+    const compare = (a: { id: string } | null, b: { id: string } | null): boolean =>
       a?.id === b?.id;
     const field = createField({ name: 'bank', options, compare }, undefined);
     field.updateProps({ name: 'bank', options, compare });
@@ -67,22 +68,16 @@ describe('createField', () => {
     store.set('seeded', 'from-store');
 
     expect(
-      createField(
-        { name: 'a', store: 'seeded', defaultValue: 'd' },
-        undefined,
-        { store }
-      ).record.value
+      createField({ name: 'a', store: 'seeded', defaultValue: 'd' }, undefined, { store }).record
+        .value,
     ).toBe('from-store');
     expect(
       createField({ name: 'b', store: 'empty', defaultValue: 'd' }, undefined, {
         store,
-      }).record.value
+      }).record.value,
     ).toBe('d');
     expect(
-      createField(
-        { name: 'c', defaultValue: 'd', value: 'controlled' },
-        undefined
-      ).record.value
+      createField({ name: 'c', defaultValue: 'd', value: 'controlled' }, undefined).record.value,
     ).toBeNull();
   });
 
@@ -109,7 +104,7 @@ describe('createField', () => {
 });
 
 describe('createField constraints', () => {
-  const props = (extra: Record<string, unknown>) => ({ name: 'f', ...extra });
+  const props = (extra: Record<string, unknown>): { name: string } => ({ name: 'f', ...extra });
 
   it('derives constraints from the control props', () => {
     const field = createField(props({}), undefined, { kind: 'text' });
@@ -138,9 +133,7 @@ describe('createField constraints', () => {
 
   it('displays the formatted value and exposes the handle lazily', () => {
     const field = createField(props({}), undefined, { kind: 'text' });
-    field.updateProps(
-      props({ format: (v: string) => v.replace(/(\d{4})(?=\d)/g, '$1 ') })
-    );
+    field.updateProps(props({ format: (v: string) => v.replace(/(\d{4})(?=\d)/g, '$1 ') }));
     field.updateValue('41111111');
     expect(field.record.getDisplayValue?.()).toBe('4111 1111');
 

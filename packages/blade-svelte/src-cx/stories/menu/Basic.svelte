@@ -22,9 +22,10 @@
     onSelect={(action: (typeof ACTIONS)[number]) => (last = action.label)}
     placement={args.placement}
     accessibilityLabel="Address actions"
+    testID="menu"
   >
     {#snippet trigger()}
-      <IconButton icon={icons.more} accessibilityLabel="Address actions" />
+      <IconButton icon={icons.more} accessibilityLabel="Address actions" testID="trigger" />
     {/snippet}
     {#each ACTIONS.slice(0, 3) as action (action.id)}
       <MenuItem
@@ -38,6 +39,6 @@
     <hr class="my-1 border-t-thin border-solid border-surface-gray-muted" />
     <MenuItem value={ACTIONS[3]} title={ACTIONS[3].label} icon={ACTIONS[3].icon} />
   </Menu>
-  <Text size="small" color="muted">chose: {last}</Text>
+  <Text size="small" color="muted">chose: <span data-testid="chose">{last}</span></Text>
   <LayerHost class="pointer-events-none absolute inset-0" />
 </div>

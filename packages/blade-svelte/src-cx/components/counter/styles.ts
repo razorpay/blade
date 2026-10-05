@@ -7,10 +7,7 @@ export const COUNTER_AXES = {
   size: ['small', 'medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof COUNTER_AXES> = AxisValue<
-  typeof COUNTER_AXES,
-  K
->;
+type Axis<K extends keyof typeof COUNTER_AXES> = AxisValue<typeof COUNTER_AXES, K>;
 
 /** Derived from COUNTER_AXES: add a value there, never here. */
 export interface CounterStyleProps {

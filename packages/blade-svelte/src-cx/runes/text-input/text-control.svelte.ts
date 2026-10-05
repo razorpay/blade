@@ -1,6 +1,7 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { setupField, type FieldModel } from '../form/field.svelte';
+import { setupField } from '../form/field.svelte';
+import type { FieldModel } from '../form/field.svelte';
 import type { FormModel } from '../form/types';
 import type { InputGroupContext } from '../input-group/context';
 import type { InputGroupSpan } from '../input-group/layout';
@@ -27,7 +28,7 @@ export interface InputModel {
   accept(
     raw: string,
     selectionStart: number | null,
-    onValue?: (value: unknown) => void
+    onValue?: (value: unknown) => void,
   ): AcceptResult;
   /**
    * Focus left the control. `touched` is false exactly once for an
@@ -43,10 +44,7 @@ export interface InputModel {
  * (writing the handle, textarea autosize, scroll-into-view) stays in the
  * rune below.
  */
-export function createInput(
-  field: FieldModel,
-  options: { autoFocus?: boolean } = {}
-): InputModel {
+export function createInput(field: FieldModel, options: { autoFocus?: boolean } = {}): InputModel {
   let pendingAutoFocusBlur = Boolean(options.autoFocus);
 
   function formatValue(value: unknown): unknown {
@@ -56,12 +54,7 @@ export function createInput(
 
   return {
     accept(raw, selectionStart, onValue) {
-      const caret = caretAfterFormat(
-        raw,
-        selectionStart,
-        field.record.parse,
-        formatValue
-      );
+      const caret = caretAfterFormat(raw, selectionStart, field.record.parse, formatValue);
       field.updateValue(raw, onValue);
       const display = field.record.getDisplayValue?.() ?? '';
       const rewrite = raw !== display;
@@ -128,7 +121,7 @@ export function createTextControl(options: TextControlOptions): TextControl {
   const { field, form, notifyInput, blur, syncProps } = setupField(
     options.props,
     'text',
-    options.onValue
+    options.onValue,
   );
   field.setHandle(() => node);
   const inputModel = createInput(field, { autoFocus });
@@ -161,21 +154,18 @@ export function createTextControl(options: TextControlOptions): TextControl {
     },
     handleInput(event) {
       const target = event.target as ControlElement;
-      const accepted = inputModel.accept(
-        target.value,
-        target.selectionStart,
-        (next) => {
-          options.onValue(next);
-          options.onChange(next);
-        }
-      );
+      const accepted = inputModel.accept(target.value, target.selectionStart, (next) => {
+        options.onValue(next);
+        options.onChange(next);
+      });
       notifyInput(event);
       if (accepted.rewrite) {
         target.value = accepted.display;
         if (accepted.caret !== null) {
           try {
-            target.selectionStart = target.selectionEnd = accepted.caret;
-          } catch (e) {
+            target.selectionStart = accepted.caret;
+            target.selectionEnd = accepted.caret;
+          } catch (e: unknown) {
             // Some input types (email, number) forbid selection access.
           }
         }

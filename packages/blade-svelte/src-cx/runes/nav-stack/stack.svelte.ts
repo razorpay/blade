@@ -1,10 +1,5 @@
 import { hostLoads } from '../modal/stack.svelte';
-import {
-  type Nav,
-  type NavContent,
-  type NavDirection,
-  type NavEntry,
-} from './nav';
+import type { Nav, NavContent, NavDirection, NavEntry } from './nav';
 
 export interface ShownScreen {
   layer: NavEntry;

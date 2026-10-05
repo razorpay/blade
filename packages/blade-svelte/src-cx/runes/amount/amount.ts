@@ -1,7 +1,5 @@
-import {
-  formatNumberByParts,
-  type CurrencyCodeType,
-} from '@razorpay/i18nify-js/currency';
+import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
+import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 
 type FormatOptions = NonNullable<Parameters<typeof formatNumberByParts>[1]>;
 type IntlOptions = NonNullable<FormatOptions['intlOptions']>;
@@ -52,10 +50,7 @@ export function currencyExponent(currency: string): number {
   }
 }
 
-function intlOptions(
-  suffix: AmountSuffix,
-  fractionDigits: number | 'auto'
-): IntlOptions {
+function intlOptions(suffix: AmountSuffix, fractionDigits: number | 'auto'): IntlOptions {
   if (suffix === 'humanize') {
     return { notation: 'compact', maximumFractionDigits: 2 };
   }
@@ -76,17 +71,8 @@ function intlOptions(
  * locale spacing. An amount i18nify cannot format falls back to the plain
  * number after the currency code.
  */
-export function getAmountByParts(
-  value: number,
-  options: AmountOptions
-): AmountParts {
-  const {
-    currency,
-    suffix = 'decimals',
-    fractionDigits = 2,
-    unit = 'major',
-    locale,
-  } = options;
+export function getAmountByParts(value: number, options: AmountOptions): AmountParts {
+  const { currency, suffix = 'decimals', fractionDigits = 2, unit = 'major', locale } = options;
   const major = unit === 'minor' ? value / 10 ** currencyExponent(currency) : value;
   try {
     const parts = formatNumberByParts(major, {
@@ -117,7 +103,9 @@ export function getAmountByParts(
 
 /** The whole amount as one string, in reading order: what a screen reader gets. */
 export function amountText(parts: AmountParts, currency: string): string {
-  const number = `${parts.integer}${parts.decimal ?? ''}${parts.fraction ?? ''}${parts.compact ?? ''}`;
+  const number = `${parts.integer}${parts.decimal ?? ''}${parts.fraction ?? ''}${
+    parts.compact ?? ''
+  }`;
   return `${parts.minusSign ?? ''}${
     parts.isPrefixSymbol ? `${currency}${number}` : `${number}${currency}`
   }`;

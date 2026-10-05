@@ -23,7 +23,8 @@ const meta: StoryMeta = {
       },
     },
     Matrix: {
-      description: 'Every colour and emphasis, every size with an icon, and a truncated label, generated from BADGE_AXES.',
+      description:
+        'Every colour and emphasis, every size with an icon, and a truncated label, generated from BADGE_AXES.',
       argTypes: {},
     },
   },

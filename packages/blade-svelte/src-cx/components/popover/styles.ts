@@ -59,10 +59,14 @@ export const POPOVER_PANEL =
 // facing edge, in the panel's fill; the panel sits 4px past its tip.
 const ARROW = 'absolute bg-popup-gray-moderate';
 const ARROW_SIDE: Record<PlacementSide, string> = {
-  top: 'top-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(0_0,100%_0,50%_100%)]',
-  bottom: 'bottom-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(50%_0,100%_100%,0_100%)]',
-  left: 'left-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(0_0,100%_50%,0_100%)]',
-  right: 'right-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(100%_0,100%_100%,0_50%)]',
+  top:
+    'top-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(0_0,100%_0,50%_100%)]',
+  bottom:
+    'bottom-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(50%_0,100%_100%,0_100%)]',
+  left:
+    'left-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(0_0,100%_50%,0_100%)]',
+  right:
+    'right-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(100%_0,100%_100%,0_50%)]',
 };
 
 // Blade's IconButton, medium: a 16px muted glyph, subtle on hover and
@@ -84,7 +88,8 @@ export const resolvePopover = (_props: PopoverStyleProps = {}): PopoverLook => (
     layout: 'flex flex-col gap-4 p-4',
     main: 'flex flex-col gap-1',
     header: 'flex items-center gap-2',
-    title: 'm-0 pr-3 font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+    title:
+      'm-0 pr-3 font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
     close: `ms-auto ${CLOSE}`,
     floatingClose: `absolute top-3 right-3 z-1 rounded-max p-2 ${CLOSE}`,
   },

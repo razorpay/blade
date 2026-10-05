@@ -37,10 +37,7 @@ describe('Switch', () => {
     const control = getByRole('switch') as HTMLInputElement;
     expect(control.getAttribute('aria-busy')).toBe('true');
     expect(control.disabled).toBe(false);
-    expectClass(
-      control.nextElementSibling?.firstElementChild?.firstElementChild,
-      'animate-spin'
-    );
+    expectClass(control.nextElementSibling?.firstElementChild?.firstElementChild, 'animate-spin');
     return fireEvent.click(control).then(() => {
       expect(onChange).not.toHaveBeenCalled();
       expect(control.checked).toBe(false);

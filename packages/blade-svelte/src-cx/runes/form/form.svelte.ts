@@ -25,7 +25,7 @@ const codeAsMessage: ConstraintErrorFormatter = (code) => code;
 export function collectFormData(
   fields: Iterable<FieldRecord>,
   submitted: boolean,
-  formatConstraintError: ConstraintErrorFormatter = codeAsMessage
+  formatConstraintError: ConstraintErrorFormatter = codeAsMessage,
 ): FormSnapshot {
   const data: Record<string, unknown> = {};
   const touches: Record<string, unknown> = {};
@@ -59,9 +59,9 @@ const defaultDefer = (fn: () => void): void => {
  * validation result is applied.
  */
 export function createForm(options: FormOptions): FormModel {
-  const hooks = options.hooks || {};
-  const defer = options.defer || defaultDefer;
-  const formatConstraintError = options.formatConstraintError || codeAsMessage;
+  const hooks = options.hooks ?? {};
+  const defer = options.defer ?? defaultDefer;
+  const formatConstraintError = options.formatConstraintError ?? codeAsMessage;
   // Document order, by each field's handle: the order "the first invalid
   // field" reads. Native handles cannot be compared: mount order it is.
   const entries = createOrderedEntries<{
@@ -102,7 +102,7 @@ export function createForm(options: FormOptions): FormModel {
   function applyErrors(
     constraintErrors: FormErrors,
     validationErrors: FormErrors | undefined,
-    track: () => void
+    track: () => void,
   ): void {
     errors = { ...constraintErrors, ...validationErrors };
     publish();
@@ -149,7 +149,7 @@ export function createForm(options: FormOptions): FormModel {
   }
 
   async function validate(
-    validateOptions: { reason?: string; name?: string } = {}
+    validateOptions: { reason?: string; name?: string } = {},
   ): Promise<ValidateResult> {
     submitted = true;
     await refresh(validateOptions.reason, validateOptions.name);
@@ -191,10 +191,7 @@ export function createForm(options: FormOptions): FormModel {
     return { ok: true, result, errors };
   }
 
-  async function handleInput(
-    fieldName?: string,
-    event?: unknown
-  ): Promise<void> {
+  async function handleInput(fieldName?: string, event?: unknown): Promise<void> {
     await refresh('input', fieldName);
     options.onInput?.(current.data, event);
     hooks.onInputLogged?.({ data: current.data });
@@ -202,7 +199,7 @@ export function createForm(options: FormOptions): FormModel {
 
   function handleBlur(fieldName: string): void {
     defer(() => {
-      refresh('blur', fieldName);
+      void refresh('blur', fieldName);
     });
   }
 

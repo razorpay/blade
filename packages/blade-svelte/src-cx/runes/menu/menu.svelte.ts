@@ -1,13 +1,10 @@
 import { tick } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { discloseList, type DisclosedList } from '../base/disclosed-list';
+import { discloseList } from '../base/disclosed-list';
+import type { DisclosedList } from '../base/disclosed-list';
 import type { DisclosureOptions } from '../base/disclosure';
-import {
-  createNavigableList,
-  dispatchListKey,
-  type NavigableListModel,
-  type NavigableListOptions,
-} from '../base/navigable-list.svelte';
+import { createNavigableList, dispatchListKey } from '../base/navigable-list.svelte';
+import type { NavigableListModel, NavigableListOptions } from '../base/navigable-list.svelte';
 import { createOrderedEntries } from '../base/ordered-entries.svelte';
 import { createTrigger } from '../dom/trigger.svelte';
 import type { MenuContext, MenuEntry } from './context';
@@ -61,7 +58,7 @@ export function createMenuModel<T>(options: MenuModelOptions<T>): MenuModel<T> {
           }
         }),
     },
-    options.disclosure
+    options.disclosure,
   );
 
   return { ...list, ...disclosed, select };
@@ -145,7 +142,7 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
 
   // Just opened: it lands on the first item (the last, for ArrowUp) — once
   // the items have mounted and registered.
-  function landOnceOpen(to: 'first' | 'last') {
+  function landOnceOpen(to: 'first' | 'last'): void {
     tick()
       .then(() => {
         if (model.isOpen() && model.activeIndex() < 0) {
@@ -155,9 +152,9 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
       .catch(() => undefined);
   }
 
-  const returnFocus = () => trigger.control()?.focus({ preventScroll: true });
+  const returnFocus = (): void => trigger.control()?.focus({ preventScroll: true });
 
-  function handleKey(event: KeyboardEvent) {
+  function handleKey(event: KeyboardEvent): void {
     const wasOpen = model.isOpen();
     const action = model.handleKey(event.key, {
       alt: event.altKey,

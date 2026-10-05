@@ -105,8 +105,7 @@ const CHROME = 'absolute inset-x-0 top-0 z-10 h-0';
 // Blade's Drawer: full height on its edge, 90% of the host on phones,
 // 375px from `s`, 420px from `m`, where it floats 8px in with large
 // corners, casting Blade's highRaised elevation.
-const DRAWER =
-  'h-full w-[90%] s:w-[375px] m:w-[420px] shadow-highRaised m:rounded-large';
+const DRAWER = 'h-full w-[90%] s:w-[375px] m:w-[420px] shadow-highRaised m:rounded-large';
 
 // Blade's Modal: centred, scaling and fading in place.
 const CENTRED = {
@@ -187,10 +186,7 @@ const FLOATING_CLOSE = 'absolute -top-1 right-4';
  * The modal's parts for a layout: the fixed root and panel, the pace, the
  * desktop column, the chrome and the sections.
  */
-function modalClasses(
-  layout: ModalLayout,
-  props: ModalStyleProps = {}
-): ModalClasses {
+function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalClasses {
   const { size = 'small', pace = 'default' } = props;
   return {
     root: `${ROOT} ${layout.root}`,
@@ -202,8 +198,7 @@ function modalClasses(
     // Blade's BaseHeader (size large): 16px in and above and below, 20px
     // from 768px, a hairline under it; the close button centred on the
     // title's 28px first line.
-    header:
-      'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:p-5',
+    header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:p-5',
     headerRow: 'relative flex items-start select-none',
     titleBlock: 'me-auto flex min-w-0 flex-auto flex-col',
     // The 20px button and 16px beside it.
@@ -213,14 +208,15 @@ function modalClasses(
     subtitle:
       'm-0 font-text text-75 leading-75 font-regular [word-break:break-word] text-surface-gray-muted',
     close: `${layout.close ?? CLOSE} w-5 h-5 ${ICON_BUTTON}`,
-    floatingClose: `${layout.floatingClose ?? FLOATING_CLOSE} w-7 h-7 rounded-max bg-popup-gray-subtle ${ICON_BUTTON}`,
+    floatingClose: `${
+      layout.floatingClose ?? FLOATING_CLOSE
+    } w-7 h-7 rounded-max bg-popup-gray-subtle ${ICON_BUTTON}`,
     emptyHeader: 'relative h-2 shrink-0',
     body: layout.body ?? 'overflow-auto p-5',
     // Blade's BaseFooter: a padded box under a hairline, 16px (20px from
     // `m`); the caller lays out what is in it.
     footer:
-      layout.footer ??
-      'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 m:p-5',
+      layout.footer ?? 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 m:p-5',
   };
 }
 
@@ -252,9 +248,7 @@ const SHEET: ModalLayout = {
   floatingClose: 'absolute top-4 right-4',
 };
 
-export const resolveModal: ModalStyleResolver<ModalStyleProps> = (
-  props: ModalStyleProps = {}
-) => {
+export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalStyleProps = {}) => {
   const { variant = 'modal', size = 'small', pace = 'default' } = props;
   if (variant === 'sheet') {
     if (props.isDraggable ?? true) {
@@ -262,7 +256,13 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (
     }
     // Not draggable: no handle, no strip, so the close button sits where a
     // modal's does; the platform sheet neither drags nor shows a handle.
-    const { drag: _drag, nativeSheet: _native, close: _close, floatingClose: _floating, ...still } = SHEET;
+    const {
+      drag: _drag,
+      nativeSheet: _native,
+      close: _close,
+      floatingClose: _floating,
+      ...still
+    } = SHEET;
     return modalClasses({ ...still, drag: NO_DRAG, nativeSheet: {} }, { size, pace });
   }
   if (variant === 'drawer' || variant === 'left-drawer') {
@@ -283,7 +283,7 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (
         drag,
         nativeSheet: props.isDraggable ? { 'data-draggable': 'true' } : {},
       },
-      { size: 'full', pace }
+      { size: 'full', pace },
     );
   }
   const full = size === 'full';
@@ -294,6 +294,6 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (
       drag: NO_DRAG,
       nativeSheet: full ? NATIVE_FULL : {},
     },
-    { size, pace }
+    { size, pace },
   );
 };

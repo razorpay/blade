@@ -26,7 +26,7 @@ export interface MenuItem<Shared> {
  */
 export function createMenuItem<Shared>(
   menu: MenuContext<Shared> | undefined,
-  options: MenuItemOptions
+  options: MenuItemOptions,
 ): MenuItem<Shared> {
   let node: HTMLElement | undefined;
   const entry: MenuEntry = {

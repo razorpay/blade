@@ -2,7 +2,7 @@ import { createSubscriber } from 'svelte/reactivity';
 
 /** Blade's breakpoint names, smallest first; `base` is below the first width. */
 export const BREAKPOINT_NAMES = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
-export type BreakpointName = (typeof BREAKPOINT_NAMES)[number];
+export type BreakpointName = typeof BREAKPOINT_NAMES[number];
 
 /** Minimum widths in px, per named breakpoint above `base`. */
 export type Breakpoints = Partial<Record<Exclude<BreakpointName, 'base'>, number>>;
@@ -16,7 +16,7 @@ export interface BreakpointState {
   readonly current: BreakpointName;
 }
 
-const hasMatchMedia = () => typeof matchMedia === 'function';
+const hasMatchMedia = (): boolean => typeof matchMedia === 'function';
 
 /**
  * A breakpoint tracker over `matchMedia`, one query per width. Reading
@@ -24,14 +24,15 @@ const hasMatchMedia = () => typeof matchMedia === 'function';
  * there are no listeners.
  */
 export function createBreakpoints(widths: () => Breakpoints): BreakpointState {
-  const queries = () =>
+  const queries = (): Array<readonly [BreakpointName, string]> =>
     BREAKPOINT_NAMES.filter((name) => name !== 'base' && widths()[name] !== undefined).map(
-      (name) => [name, `(min-width: ${widths()[name as Exclude<BreakpointName, 'base'>]}px)`] as const
+      (name) =>
+        [name, `(min-width: ${widths()[name as Exclude<BreakpointName, 'base'>]}px)`] as const,
     );
 
   const subscribe = createSubscriber((update) => {
     if (!hasMatchMedia()) {
-      return;
+      return undefined;
     }
     const lists = queries().map(([, query]) => matchMedia(query));
     lists.forEach((list) => list.addEventListener('change', update));

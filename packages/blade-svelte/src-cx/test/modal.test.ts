@@ -4,8 +4,10 @@ import { fireEvent, render } from '@testing-library/svelte';
 import { globalLayers } from '../runes/layer/layers';
 import ModalHarness from './fixtures/ModalHarness.svelte';
 import { expectClass } from './classes';
+import type { RenderResult } from '@testing-library/svelte';
+import type { Mock } from 'vitest';
 
-const escape = () => fireEvent.keyDown(document, { key: 'Escape' });
+const escape = (): Promise<boolean> => fireEvent.keyDown(document, { key: 'Escape' });
 
 describe('Modal', () => {
   it('renders nothing while closed and a named modal dialog once open', async () => {
@@ -52,7 +54,7 @@ describe('Modal', () => {
     const subtitle = getByText('Visa');
     expectClass(subtitle, 'text-surface-gray-muted');
     expect(modal.getAttribute('aria-describedby')).toBe(subtitle.id);
-    expectClass(row.closest('.border-b-thin') as HTMLElement, 'p-4');
+    expectClass(row.closest('.border-b-thin'), 'p-4');
   });
 
   it('without header, title and subtitle render on their own', () => {
@@ -69,16 +71,14 @@ describe('Modal', () => {
     });
     const wrapped = asBody.getByTestId('body-first').parentElement;
     expect(wrapped).not.toBe(asBody.getByTestId('modal'));
-    expectClass(wrapped as HTMLElement, 'p-5');
+    expectClass(wrapped, 'p-5');
     asBody.unmount();
 
     const both = render(ModalHarness, {
       props: { isOpen: true, content: 'both' },
     });
     // Raw: straight in the panel's clipping content box.
-    expect(both.getByTestId('first').parentElement).toBe(
-      both.getByTestId('modal-content')
-    );
+    expect(both.getByTestId('first').parentElement).toBe(both.getByTestId('modal-content'));
     expect(both.queryByTestId('body-first')).toBeNull();
   });
 
@@ -94,7 +94,7 @@ describe('Modal', () => {
       props: { isOpen: true, variant: 'sheet', className: '[z-index:70]' },
     });
     const panel = getByTestId('modal');
-    expectClass(panel.parentElement as HTMLElement, 'items-end');
+    expectClass(panel.parentElement, 'items-end');
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });
 
@@ -104,12 +104,8 @@ describe('Modal', () => {
     });
     const panel = getByTestId('modal');
     expect(panel.parentElement?.className).toContain('justify-end');
-    expect(panel.className).toContain(
-      'group-data-[state=closed]:translate-x-full'
-    );
-    expect(panel.className).toContain(
-      '[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]'
-    );
+    expect(panel.className).toContain('group-data-[state=closed]:translate-x-full');
+    expect(panel.className).toContain('[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]');
     expect(panel.className).not.toContain('ease-entrance');
   });
 
@@ -152,7 +148,13 @@ describe('Modal', () => {
 
   it('a dismissible modal closes even when onDismiss does nothing', async () => {
     const { getByTestId, queryByTestId } = render(ModalHarness, {
-      props: { withHost: true, isOpen: true, onDismiss: () => {} },
+      props: {
+        withHost: true,
+        isOpen: true,
+        onDismiss: () => {
+          // noop
+        },
+      },
     });
     await fireEvent.click(getByTestId('host-backdrop'));
     expect(queryByTestId('modal')).toBeNull();
@@ -192,9 +194,7 @@ describe('Modal', () => {
     expect(onDismiss).toHaveBeenNthCalledWith(2, expect.objectContaining({ source: 'escape' }));
     expect(queryByTestId('modal')).not.toBeNull();
     // Blade: the close button shows only while it is dismissible.
-    expect(
-      queryByRole('button', { name: 'Close', hidden: false })
-    ).toBeNull();
+    expect(queryByRole('button', { name: 'Close', hidden: false })).toBeNull();
 
     // The owner decides: the event's close ends it.
     onDismiss.mock.calls[1][0].close();
@@ -223,7 +223,7 @@ describe('Modal', () => {
     expect(getByRole('dialog', { name: 'Card' }).hasAttribute('aria-describedby')).toBe(true);
   });
 
-  it('chrome: a box on the panel, outside its clipping content, holding the close and the caller\'s items', async () => {
+  it("chrome: a box on the panel, outside its clipping content, holding the close and the caller's items", async () => {
     const { getByTestId, getByRole, queryByTestId } = render(ModalHarness, {
       props: { isOpen: true, withChrome: true },
     });
@@ -241,7 +241,7 @@ describe('Modal', () => {
     expect(chrome.contains(close)).toBe(true);
     expect(chrome.contains(getByTestId('badge'))).toBe(true);
     expect(close.compareDocumentPosition(getByTestId('badge'))).toBe(
-      Node.DOCUMENT_POSITION_FOLLOWING
+      Node.DOCUMENT_POSITION_FOLLOWING,
     );
 
     await fireEvent.click(getByTestId('chrome-close'));
@@ -263,7 +263,7 @@ describe('Modal', () => {
 
   it('the title block leaves room for the close button only while it shows', async () => {
     const { getByText, rerender } = render(ModalHarness, { props: { isOpen: true } });
-    const block = () => getByText('Remove card').parentElement as HTMLElement;
+    const block = (): HTMLElement => getByText('Remove card').parentElement!;
     expectClass(block(), 'pr-9');
     await rerender({ isOpen: true, isDismissible: false });
     expect(block().className).not.toContain('pr-9');
@@ -320,28 +320,33 @@ describe('Modal presence', () => {
       Object.assign(Object.create(real(element)), {
         transitionDuration: '0.3s',
         transitionDelay: '0s',
-      })
+      }),
     );
     const running: Array<{ onfinish: () => void }> = [];
     (Element.prototype as { animate?: unknown }).animate = () => {
       const animation = {
-        onfinish: () => {},
-        cancel: () => {},
+        onfinish: () => {
+          // noop
+        },
+        cancel: () => {
+          // noop
+        },
         currentTime: 0,
       };
       running.push(animation);
       return animation;
     };
-    const finish = async () => {
+    const finish = async (): Promise<void> => {
       while (running.length) {
         running.shift()?.onfinish();
+        // eslint-disable-next-line no-await-in-loop -- one animation settles at a time
         await Promise.resolve();
       }
     };
 
     const { getByTestId, queryByTestId } = render(ModalHarness);
     await fireEvent.click(getByTestId('trigger'));
-    const root = getByTestId('modal').parentElement as HTMLElement;
+    const root = getByTestId('modal').parentElement!;
     expect(root.dataset.state).toBe('closed');
     await new Promise((resolve) => requestAnimationFrame(resolve));
     expect(root.dataset.state).toBe('open');
@@ -360,7 +365,7 @@ describe('Modal presence', () => {
 // The sheet variant, and the drag it switches on, are blade's.
 describe('Modal variant="sheet"', () => {
   // jsdom has no PointerEvent: a plain event carrying what the handler reads.
-  function pointer(type: string, clientY: number, timeStamp: number) {
+  function pointer(type: string, clientY: number, timeStamp: number): Event {
     const event = new Event(type, { bubbles: true });
     Object.defineProperties(event, {
       clientY: { value: clientY },
@@ -370,7 +375,9 @@ describe('Modal variant="sheet"', () => {
     return event;
   }
 
-  function sheet(props: Record<string, unknown> = {}) {
+  function sheet(
+    props: Record<string, unknown> = {},
+  ): RenderResult<typeof ModalHarness> & { onDismiss: Mock } {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(400);
     const onDismiss = vi.fn();
     const queries = render(ModalHarness, {
@@ -480,9 +487,7 @@ describe('Modal variant="sheet"', () => {
     await fireEvent(handle, pointer('pointerdown', 100, 0));
     await fireEvent(handle, pointer('pointermove', 500, 50));
     await fireEvent(handle, pointer('pointerup', 500, 60));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'drag' })
-    );
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
     expect(getByTestId('modal').style.transform).toBe('');
     vi.restoreAllMocks();
   });
@@ -499,7 +504,7 @@ describe('Modal layers', () => {
     const { getByTestId, queryByTestId } = render(ModalHarness, {
       props: { isOpen: true, nestedOpen: true, onDismiss, onNestedDismiss },
     });
-    const lower = getByTestId('modal').parentElement as HTMLElement;
+    const lower = getByTestId('modal').parentElement!;
     expect(lower.inert).toBe(true);
 
     await escape();
@@ -520,9 +525,7 @@ describe('Modal layers', () => {
 
     // Not dismissible: reported, handled, still open.
     expect(globalLayers.back()).toBe(true);
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'back' })
-    );
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'back' }));
     expect(queryByTestId('modal')).not.toBeNull();
 
     // Dismissible: reported, then it closes.
@@ -545,9 +548,7 @@ describe('Modal layers', () => {
 
     await fireEvent.click(getByTestId('trigger'));
     expect(host.contains(getByTestId('modal'))).toBe(true);
-    expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(
-      true
-    );
+    expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-backdrop').dataset.state).toBe('open');
     expect(page.hasAttribute('inert')).toBe(true);
 
@@ -574,16 +575,14 @@ describe('Modal layers', () => {
     const scrim = getByTestId('host-backdrop');
     expect(surfaces.children).toHaveLength(2);
     // No scrim of their own: each root starts with its panel.
-    expect(getByTestId('modal').parentElement?.firstElementChild).toBe(
-      getByTestId('modal')
-    );
-    expect(getByTestId('nested').parentElement?.firstElementChild).toBe(
-      getByTestId('nested')
-    );
+    expect(getByTestId('modal').parentElement?.firstElementChild).toBe(getByTestId('modal'));
+    expect(getByTestId('nested').parentElement?.firstElementChild).toBe(getByTestId('nested'));
     expect(scrim.dataset.state).toBe('open');
 
     await fireEvent.click(scrim);
-    expect(onNestedDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'blur' }));
+    expect(onNestedDismiss).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({ source: 'blur' }),
+    );
     expect(onDismiss).not.toHaveBeenCalled();
     expect(queryByTestId('nested')).toBeNull();
     // One modal still open: the scrim stays.

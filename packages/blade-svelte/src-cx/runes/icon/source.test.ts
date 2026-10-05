@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { iconUrl, isIconMarkup } from './source';
 
-const svg =
-  '<svg viewBox="0 0 16 16"><path d="M1 1h2" fill="currentColor"/></svg>';
+const svg = '<svg viewBox="0 0 16 16"><path d="M1 1h2" fill="currentColor"/></svg>';
 
 describe('isIconMarkup', () => {
   it('tells markup from a URL', () => {

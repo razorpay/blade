@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createVirtualWindow } from './window';
 
-const keys = (count: number) =>
-  Array.from({ length: count }, (_, i) => `k${i}`);
+const keys = (count: number): string[] => Array.from({ length: count }, (_, i) => `k${i}`);
 
 describe('createVirtualWindow', () => {
   it('predicts with the initial estimate until a row is measured', () => {

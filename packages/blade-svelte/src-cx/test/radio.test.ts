@@ -3,12 +3,10 @@ import { fireEvent, render } from '@testing-library/svelte';
 import RadioHarness from './fixtures/RadioHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
-const input = (element: HTMLElement) => element as HTMLInputElement;
-const indicator = (control: HTMLElement) =>
-  control.nextElementSibling as HTMLElement;
-const dot = (indicatorEl: HTMLElement) =>
-  indicatorEl.firstElementChild as HTMLElement;
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
+const input = (element: HTMLElement): HTMLInputElement => element as HTMLInputElement;
+const indicator = (control: HTMLElement): HTMLElement => control.nextElementSibling as HTMLElement;
+const dot = (indicatorEl: HTMLElement): HTMLElement => indicatorEl.firstElementChild as HTMLElement;
 
 describe('RadioGroup + Radio', () => {
   it('is a radiogroup named by its label, with radios named by theirs', () => {
@@ -97,7 +95,7 @@ describe('RadioGroup + Radio', () => {
 
   it('is radios only: no pill, no thumb — that look is SegmentedControl', () => {
     const { getByTestId } = render(RadioHarness, { props: { value: 'qr' } });
-    const box = getByTestId('qr').parentElement?.parentElement as HTMLElement;
+    const box = getByTestId('qr').parentElement!.parentElement!;
     expect(box.className).not.toContain('bg-interactive-gray-faded');
     expect(box.querySelector(':scope > [aria-hidden="true"]')).toBeNull();
     expect(box.children).toHaveLength(2);

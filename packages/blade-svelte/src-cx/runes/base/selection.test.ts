@@ -1,9 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { sameSelection } from './selection';
 
 describe('sameSelection', () => {
-  const byCode = (a: { code: string }, b: { code: string }) =>
-    a.code === b.code;
+  const byCode = (a: { code: string }, b: { code: string }): boolean => a.code === b.code;
   const same = sameSelection(byCode);
 
   it('compares single items, arrays and nothing with the item compare', () => {

@@ -22,8 +22,7 @@ const meta: StoryMeta = {
       },
     },
     Multiple: {
-      description:
-        'isMultiple turns the rows into checkboxes and the value into an array.',
+      description: 'isMultiple turns the rows into checkboxes and the value into an array.',
       argTypes: {
         variant: { control: 'select', options: OPTION_LIST_AXES.variant },
         indicator: { control: 'select', options: OPTION_LIST_AXES.indicator },
@@ -38,7 +37,7 @@ const meta: StoryMeta = {
     WithOtherChildren: {
       name: 'Headings and a button',
       description:
-        "Anything between OptionItems is left alone: headings, and v2 SavedCards' \"All N options\" button, which reveals the rest. Only OptionItems are options — outside the value, the keyboard and isRequired.",
+        'Anything between OptionItems is left alone: headings, and v2 SavedCards\' "All N options" button, which reveals the rest. Only OptionItems are options — outside the value, the keyboard and isRequired.',
       argTypes: {
         variant: { control: 'select', options: OPTION_LIST_AXES.variant },
         indicator: { control: 'select', options: OPTION_LIST_AXES.indicator },
@@ -52,8 +51,7 @@ const meta: StoryMeta = {
     },
     InForm: {
       name: 'In a form',
-      description:
-        'A required list: the form blocks submission until an option is picked.',
+      description: 'A required list: the form blocks submission until an option is picked.',
       argTypes: {},
     },
   },

@@ -47,9 +47,7 @@ let nextId = 0;
 export function createLayerStack<E>(): LayerStack<E> {
   let entries = $state.raw<readonly Layer<E>[]>([]);
 
-  function remove(
-    predicate: (layer: Layer<E>, index: number) => boolean
-  ): void {
+  function remove(predicate: (layer: Layer<E>, index: number) => boolean): void {
     const current = entries;
     const removed = current.filter(predicate);
     if (!removed.length) {

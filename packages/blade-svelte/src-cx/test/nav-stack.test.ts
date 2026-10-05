@@ -7,15 +7,15 @@ import ModalStackContent from './fixtures/ModalStackContent.svelte';
 import NavStackHarness from './fixtures/NavStackHarness.svelte';
 import NavStackScreen from './fixtures/NavStackScreen.svelte';
 import { expectClass } from './classes';
+import type { RenderResult } from '@testing-library/svelte';
 
 function setup(
   props: {
     captureError?: (error: unknown) => void;
     onChange?: (...args: unknown[]) => void;
-  } = {}
-) {
-  let nav: Nav | undefined;
-  let overlays: Overlays | undefined;
+  } = {},
+): RenderResult<typeof NavStackHarness> & { nav: Nav; overlays: Overlays } {
+  let nav: Nav | undefined, overlays: Overlays | undefined;
   const view = render(NavStackHarness, {
     props: {
       ...props,
@@ -25,22 +25,20 @@ function setup(
       },
     },
   });
-  return { ...view, nav: nav as Nav, overlays: overlays as Overlays };
+  return { ...view, nav: nav!, overlays: overlays! };
 }
 
-const titles = (container: HTMLElement) =>
-  Array.from(container.querySelectorAll('[data-testid="title"]')).map(
-    (node) => node.textContent
-  );
+const titles = (container: HTMLElement): (string | null)[] =>
+  Array.from(container.querySelectorAll('[data-testid="title"]')).map((node) => node.textContent);
 
 describe('NavStack', () => {
   it('shows the top screen and settles a pusher with what the screen pops with', () => {
     const { nav, container, getByTestId } = setup();
     nav.push(NavStackScreen, { props: { title: 'Home' }, name: 'home' });
-    const handle = nav.push<ComponentProps<typeof NavStackScreen>, string>(
-      NavStackScreen,
-      { props: { title: 'Card' }, name: 'card' }
-    );
+    const handle = nav.push<ComponentProps<typeof NavStackScreen>, string>(NavStackScreen, {
+      props: { title: 'Card' },
+      name: 'card',
+    });
 
     return waitFor(() => expect(titles(container)).toEqual(['Card']))
       .then(() => {
@@ -69,15 +67,11 @@ describe('NavStack', () => {
         expect(home?.dataset.side).toBeUndefined();
         nav.push(NavStackScreen, { props: { title: 'Card' }, name: 'card' });
         return waitFor(() =>
-          expect(
-            container.querySelector<HTMLElement>('[data-screen="card"]')
-          ).toBeTruthy()
+          expect(container.querySelector<HTMLElement>('[data-screen="card"]')).toBeTruthy(),
         );
       })
       .then(() => {
-        const card = container.querySelector<HTMLElement>(
-          '[data-screen="card"]'
-        );
+        const card = container.querySelector<HTMLElement>('[data-screen="card"]');
         expect(card?.dataset.side).toBe('ahead');
         expect(card?.dataset.state).toBe('open');
         expect(document.activeElement).toBe(card);
@@ -93,23 +87,21 @@ describe('NavStack', () => {
   it('update passes new props to the mounted screen', () => {
     const { nav, container } = setup();
     const handle = nav.push(NavStackScreen, { props: { title: 'Home' } });
-    return waitFor(() => expect(titles(container)).toEqual(['Home'])).then(
-      () => {
-        handle.update({ title: 'Welcome' });
-        return waitFor(() => expect(titles(container)).toEqual(['Welcome']));
-      }
-    );
+    return waitFor(() => expect(titles(container)).toEqual(['Home'])).then(() => {
+      handle.update({ title: 'Welcome' });
+      return waitFor(() => expect(titles(container)).toEqual(['Welcome']));
+    });
   });
 
   it('a promised screen keeps the current one until it loads', () => {
     const { nav, container, getByTestId } = setup();
     nav.push(NavStackScreen, { props: { title: 'Home' } });
-    let load: (value: { default: typeof NavStackScreen }) => void = () => {};
-    const pending = new Promise<{ default: typeof NavStackScreen }>(
-      (resolve) => {
-        load = resolve;
-      }
-    );
+    let load: (value: { default: typeof NavStackScreen }) => void = () => {
+      // noop
+    };
+    const pending = new Promise<{ default: typeof NavStackScreen }>((resolve) => {
+      load = resolve;
+    });
     nav.push(pending, { props: { title: 'Lazy' } });
 
     return waitFor(() => expect(titles(container)).toEqual(['Home']))
@@ -130,10 +122,9 @@ describe('NavStack', () => {
     const { nav } = setup({ captureError });
     nav.push(NavStackScreen, { props: { title: 'Home' } });
     const failure = new Error('chunk');
-    const handle = nav.push(
-      Promise.reject<{ default: typeof NavStackScreen }>(failure),
-      { onLoadError }
-    );
+    const handle = nav.push(Promise.reject<{ default: typeof NavStackScreen }>(failure), {
+      onLoadError,
+    });
 
     return handle.result.then((result) => {
       expect(result).toBeUndefined();
@@ -187,12 +178,10 @@ describe('NavStack', () => {
     nav.push(NavStackScreen, { props: { title: 'Home' } });
     nav.push(NavStackScreen, { props: { title: 'Card', isGuarded: true } });
 
-    return waitFor(() => expect(titles(container)).toEqual(['Card'])).then(
-      () => {
-        expect(nav.back()).toBe(true);
-        expect(nav.depth()).toBe(2);
-      }
-    );
+    return waitFor(() => expect(titles(container)).toEqual(['Card'])).then(() => {
+      expect(nav.back()).toBe(true);
+      expect(nav.depth()).toBe(2);
+    });
   });
 
   it('back closes an open modal before it pops a screen', () => {
@@ -222,15 +211,11 @@ describe('NavStack', () => {
     nav.push(NavStackScreen, { props: { title: 'Home' }, name: 'home' });
     nav.push(NavStackScreen, { props: { title: 'Card' }, name: 'card' });
 
-    return waitFor(() =>
-      expect(onChange.mock.lastCall?.[0]?.entry.name).toBe('card')
-    )
+    return waitFor(() => expect(onChange.mock.lastCall?.[0]?.entry.name).toBe('card'))
       .then(() => {
         expect(onChange.mock.lastCall?.[1]).toBe('forward');
         nav.pop();
-        return waitFor(() =>
-          expect(onChange.mock.lastCall?.[0]?.entry.name).toBe('home')
-        );
+        return waitFor(() => expect(onChange.mock.lastCall?.[0]?.entry.name).toBe('home'));
       })
       .then(() => {
         expect(onChange.mock.lastCall?.[1]).toBe('back');

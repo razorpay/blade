@@ -100,7 +100,10 @@ const getColorRules = (): Rule[] => {
     }
     // Focus outlines take the border tokens, e.g. `outline-surface-primary-muted`
     if (colorProperty === 'border') {
-      colorRules.push([['outline', category, ...rest].join('-'), { 'outline-color': String(value) }]);
+      colorRules.push([
+        ['outline', category, ...rest].join('-'),
+        { 'outline-color': String(value) },
+      ]);
     }
   }
   return colorRules;
@@ -114,10 +117,19 @@ const color = (token: string): string => {
 };
 
 const colorKeywordRules: Rule[] = [
-  ...keywords('background-color', { 'bg-transparent': 'transparent', 'bg-current': 'currentColor' }),
-  ...keywords('border-color', { 'border-transparent': 'transparent', 'border-current': 'currentColor' }),
+  ...keywords('background-color', {
+    'bg-transparent': 'transparent',
+    'bg-current': 'currentColor',
+  }),
+  ...keywords('border-color', {
+    'border-transparent': 'transparent',
+    'border-current': 'currentColor',
+  }),
   ...keywords('border-top-color', { 'border-t-transparent': 'transparent' }),
-  ...keywords('outline-color', { 'outline-transparent': 'transparent', 'outline-current': 'currentColor' }),
+  ...keywords('outline-color', {
+    'outline-transparent': 'transparent',
+    'outline-current': 'currentColor',
+  }),
   ...keywords('color', { 'text-current': 'currentColor', 'text-inherit': 'inherit' }),
   ...keywords('fill', { 'fill-none': 'none', 'fill-current': 'currentColor' }),
   ...keywords('stroke', { 'stroke-none': 'none', 'stroke-current': 'currentColor' }),
@@ -136,8 +148,40 @@ const spacing = bladePrefixed(bladeNeutralTheme.spacing);
 const builtInSpacing: Scale = {
   ...Object.fromEntries(
     [
-      0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40,
-      44, 48, 52, 56, 60, 64, 72, 80, 96,
+      0,
+      0.5,
+      1,
+      1.5,
+      2,
+      2.5,
+      3,
+      3.5,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      64,
+      72,
+      80,
+      96,
     ].map((unit) => [unit, unit * 4]),
   ),
   px: 1,
@@ -202,7 +246,11 @@ const negativePx = (value: string | number): string => `-${px(value)}`;
 const spacingRules: Rule[] = [
   ...rulesFor({ ...paddingAndMargin, ...gap, ...inset }, { ...spacing, ...builtInSpacing }),
   // Negative margins and insets, e.g. `-mt-blade-1` → -2px, `-top-1` → -4px
-  ...rulesFor({ ...negativeMargin, ...negativeInset }, { ...spacing, ...builtInSpacing }, negativePx),
+  ...rulesFor(
+    { ...negativeMargin, ...negativeInset },
+    { ...spacing, ...builtInSpacing },
+    negativePx,
+  ),
   ...keywords('margin', { 'm-auto': 'auto' }),
   ...keywords('margin-inline', { 'mx-auto': 'auto' }),
 ];
@@ -307,9 +355,17 @@ const typographyRules: Rule[] = [
   // e.g. `font-heading` → "TASA Orbiter", …
   ...rules('font', 'font-family', fonts.family, String),
   // Blade sets the heading face's optical size wherever it uses it (BaseText)
-  ['font-heading', { 'font-family': String(fonts.family.heading), 'font-variation-settings': "'opsz' 60" }],
+  [
+    'font-heading',
+    { 'font-family': String(fonts.family.heading), 'font-variation-settings': "'opsz' 60" },
+  ],
   // Tokens are % of the font size, e.g. `tracking-25` → -3.3% → -0.033em
-  ...rules('tracking', 'letter-spacing', letterSpacings, (value) => `${round(Number(value) / 100)}em`),
+  ...rules(
+    'tracking',
+    'letter-spacing',
+    letterSpacings,
+    (value) => `${round(Number(value) / 100)}em`,
+  ),
 ];
 
 // ===== Layout =====
@@ -388,13 +444,19 @@ const fractions: Scale = {
 };
 
 const fractionRules: Rule[] = [
-  ...rulesFor({ ...inset, w: 'width', h: 'height', 'max-w': 'max-width', 'max-h': 'max-height' }, fractions),
+  ...rulesFor(
+    { ...inset, w: 'width', h: 'height', 'max-w': 'max-width', 'max-h': 'max-height' },
+    fractions,
+  ),
   ...rulesFor(negativeInset, fractions, (value) => `-${value}`),
   ...keywords('width', { 'w-max': 'max-content', 'w-min': 'min-content', 'w-fit': 'fit-content' }),
   ...keywords('margin-inline-start', { 'ms-auto': 'auto' }),
   ...keywords('margin-inline-end', { 'me-auto': 'auto' }),
   // Logical margins, e.g. `ms-1` → 4px
-  ...rulesFor({ ms: 'margin-inline-start', me: 'margin-inline-end' }, { ...spacing, ...builtInSpacing }),
+  ...rulesFor(
+    { ms: 'margin-inline-start', me: 'margin-inline-end' },
+    { ...spacing, ...builtInSpacing },
+  ),
 ];
 
 // ===== Visual =====
@@ -422,10 +484,30 @@ const transformRules: Rule[] = [
   ...rules('rotate', 'rotate', { 0: 0, 45: 45, 90: 90, 180: 180 }, (value) => `${value}deg`),
   ...rules('-rotate', 'rotate', { 45: 45, 90: 90, 180: 180 }, (value) => `-${value}deg`),
   // `translate-x-4` → 16px 0; both axes at once take the arbitrary form `[translate:-50%_-50%]`
-  ...rules('translate-x', 'translate', { ...builtInSpacing, ...fractions }, (value) => `${px(value)} 0`),
-  ...rules('-translate-x', 'translate', { ...builtInSpacing, ...fractions }, (value) => `-${px(value)} 0`),
-  ...rules('translate-y', 'translate', { ...builtInSpacing, ...fractions }, (value) => `0 ${px(value)}`),
-  ...rules('-translate-y', 'translate', { ...builtInSpacing, ...fractions }, (value) => `0 -${px(value)}`),
+  ...rules(
+    'translate-x',
+    'translate',
+    { ...builtInSpacing, ...fractions },
+    (value) => `${px(value)} 0`,
+  ),
+  ...rules(
+    '-translate-x',
+    'translate',
+    { ...builtInSpacing, ...fractions },
+    (value) => `-${px(value)} 0`,
+  ),
+  ...rules(
+    'translate-y',
+    'translate',
+    { ...builtInSpacing, ...fractions },
+    (value) => `0 ${px(value)}`,
+  ),
+  ...rules(
+    '-translate-y',
+    'translate',
+    { ...builtInSpacing, ...fractions },
+    (value) => `0 -${px(value)}`,
+  ),
   ...keywords('transform-origin', {
     'origin-center': 'center',
     'origin-left': 'left',
@@ -457,7 +539,15 @@ const FOCUS_PRIMARY = color('surface-border-primary-muted');
 const FOCUS_NEGATIVE = color('feedback-border-negative-subtle');
 const FOCUS_NEUTRAL = color('interactive-border-neutral-faded');
 
-const filledFrame = ({ rim, edge, bevel }: { rim: string; edge: string; bevel: string }) => {
+const filledFrame = ({
+  rim,
+  edge,
+  bevel,
+}: {
+  rim: string;
+  edge: string;
+  bevel: string;
+}): { rest: string; highlighted: string } => {
   const frame = `inset 0 1.5px 0 0 ${bevel}, inset 0 -2px 0 0 ${bevel}`;
   const highlighted = `inset 0 -1.5px 0 0 ${edge}, inset 0 0 0 0.5px ${edge}, ${frame}`;
   return {
@@ -506,7 +596,9 @@ const buttonAccents = {
 
 /** Blade's outlined frame: a bottom shade, the 1px rim, then the bottom edge */
 const outlinedFrame = (rim: string): string =>
-  `inset 0 -1px 0.5px 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 1px ${rim}, inset 0 -1.5px 0 0 ${color('interactive-border-gray-default')}`;
+  `inset 0 -1px 0.5px 0 ${color(
+    'interactive-border-static-black-faded-highlighted',
+  )}, inset 0 0 0 1px ${rim}, inset 0 -1.5px 0 0 ${color('interactive-border-gray-default')}`;
 const outlined = {
   rest: outlinedFrame(color('interactive-border-gray-default')),
   highlighted: outlinedFrame(color('interactive-border-gray-highlighted')),
@@ -535,25 +627,41 @@ const namedShadows: Scale = {
   'button-outlined-focus': `${focusRing(FOCUS_PRIMARY)}, ${outlined.highlighted}`,
   'button-outlined-neutral-focus': `${focusRing(FOCUS_NEUTRAL)}, ${outlined.highlighted}`,
   // Blade's DropdownOverlay: a 1px popup rim drawn inside, over the raised shadow
-  dropdown: `inset 0px 0px 0px 1px ${color('popup-border-gray-subtle')}, ${elevation.onLight.midRaised}`,
+  dropdown: `inset 0px 0px 0px 1px ${color('popup-border-gray-subtle')}, ${
+    elevation.onLight.midRaised
+  }`,
   // Blade's bottom sheet: an upward drop shadow
   bottomSheet: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
   // Blade's toast: a white bevel along the top edge, under its popup border
-  'toast-bevel': `inset 0 1.5px 0 0 ${color('interactive-background-static-white-faded-highlighted')}`,
+  'toast-bevel': `inset 0 1.5px 0 0 ${color(
+    'interactive-background-static-white-faded-highlighted',
+  )}`,
   // Blade's Toast: a 1px rim in its colour's popup border, inside, over the bevel
   ...Object.fromEntries(
     ['neutral', 'information', 'positive', 'notice', 'negative'].map((intent) => [
       `toast-${intent}`,
-      `inset 0 0 0 1px ${color(`popup-border-${intent}-moderate`)}, inset 0 1.5px 0 0 ${color('interactive-background-static-white-faded-highlighted')}`,
-    ])
+      `inset 0 0 0 1px ${color(`popup-border-${intent}-moderate`)}, inset 0 1.5px 0 0 ${color(
+        'interactive-background-static-white-faded-highlighted',
+      )}`,
+    ]),
   ),
   'button-outlined-disabled': `inset 0 0 0 1px ${color('interactive-border-gray-disabled')}`,
   // Blade's white buttons, for dark surfaces: filled, and outlined (secondary and tertiary)
-  'button-white': `inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
-  'button-white-outlined': `inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
-  'button-white-outlined-disabled': `inset 0 0 0 1px ${color('interactive-border-static-white-disabled')}`,
-  'button-white-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
-  'button-white-outlined-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
+  'button-white': `inset 0 -1.5px 0 0 ${color(
+    'interactive-border-static-black-faded-highlighted',
+  )}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
+  'button-white-outlined': `inset 0 -1.5px 0 0 ${color(
+    'interactive-border-static-black-faded-highlighted',
+  )}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
+  'button-white-outlined-disabled': `inset 0 0 0 1px ${color(
+    'interactive-border-static-white-disabled',
+  )}`,
+  'button-white-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color(
+    'interactive-border-static-black-faded-highlighted',
+  )}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
+  'button-white-outlined-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color(
+    'interactive-border-static-black-faded-highlighted',
+  )}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
 };
 
 /** The filled button's resting sheen: a white radial from the top-left corner, sized per button size */
@@ -572,15 +680,21 @@ const backgroundImages: Scale = {
  * shadow and a top inner shade, over two 16px gradients that tint the bottom edge. Several
  * properties, so one class rather than a shadow plus background utilities.
  */
-const surfaceGradient = (from: string, to: string): string => `linear-gradient(to bottom, ${from} 0%, ${to} 100%)`;
+const surfaceGradient = (from: string, to: string): string =>
+  `linear-gradient(to bottom, ${from} 0%, ${to} 100%)`;
 const SURFACE_WHITE = 'hsla(0, 0%, 100%, 1)';
 const SURFACE_TINT = 'hsla(0, 0%, 97%, 1)';
 const surfaceRaised: Rule = [
   'surface-raised',
   {
-    'box-shadow': `inset 0px 0px 0px 1px ${color('interactive-border-gray-disabled')}, ${namedShadows.card}, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
+    'box-shadow': `inset 0px 0px 0px 1px ${color('interactive-border-gray-disabled')}, ${
+      namedShadows.card
+    }, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
     border: 'none',
-    'background-image': `${surfaceGradient(SURFACE_WHITE, SURFACE_WHITE)}, ${surfaceGradient(SURFACE_WHITE, SURFACE_TINT)}`,
+    'background-image': `${surfaceGradient(SURFACE_WHITE, SURFACE_WHITE)}, ${surfaceGradient(
+      SURFACE_WHITE,
+      SURFACE_TINT,
+    )}`,
     'background-position': 'center top, center calc(100% - 2px)',
     'background-size': 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
     'background-repeat': 'no-repeat',
@@ -592,7 +706,9 @@ const surfaceRaisedBorderless: Rule = [
   'surface-raised-borderless',
   {
     ...(surfaceRaised[1] as Record<string, string>),
-    'box-shadow': `${namedShadows.card}, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
+    'box-shadow': `${namedShadows.card}, inset 0px -1.5px 0px 1px ${color(
+      'surface-background-gray-intense',
+    )}`,
   },
 ];
 
@@ -633,9 +749,12 @@ const keyframes = {
   shake:
     '0%, 100% { translate: 0 0 } 12.5% { translate: -6px 0 } 37.5% { translate: 5px 0 } 62.5% { translate: -3px 0 } 87.5% { translate: 2px 0 }',
   // Blade's DotLoader: each dot lifts by its `--lift` and brightens, a third of the way in
-  dot: '0%, 60%, 100% { translate: 0 0; opacity: 0.42 } 30% { translate: 0 calc(var(--lift) * -1); opacity: 1 }',
+  dot:
+    '0%, 60%, 100% { translate: 0 0; opacity: 0.42 } 30% { translate: 0 calc(var(--lift) * -1); opacity: 1 }',
   // Blade's Skeleton: the gray fill rests, then brightens to its highlighted step
-  skeleton: `0%, 25% { background-color: ${color('interactive-background-gray-default')} } 100% { background-color: ${color('interactive-background-gray-highlighted')} }`,
+  skeleton: `0%, 25% { background-color: ${color(
+    'interactive-background-gray-default',
+  )} } 100% { background-color: ${color('interactive-background-gray-highlighted')} }`,
   // …after fading in once
   'skeleton-in': '0% { opacity: 0 } 100% { opacity: 1 }',
 };
@@ -651,7 +770,11 @@ const counterKeyframes = {
 /** Blade's Skeleton pulse: 2xgentle on, xmoderate off, alternating */
 // Blade's PulseAnimation: fade in over 2xgentle (`both`, so reduced motion,
 // which drops the animation, still shows the bone), then pulse, alternating.
-const skeletonPulse = `skeleton-in ${motion.duration['2xgentle']}ms ${motion.easing.standard} both, skeleton ${motion.duration['2xgentle'] + motion.duration.xmoderate}ms ${motion.easing.standard} ${motion.duration['2xgentle']}ms infinite alternate`;
+const skeletonPulse = `skeleton-in ${motion.duration['2xgentle']}ms ${
+  motion.easing.standard
+} both, skeleton ${motion.duration['2xgentle'] + motion.duration.xmoderate}ms ${
+  motion.easing.standard
+} ${motion.duration['2xgentle']}ms infinite alternate`;
 
 const animationRules: Rule[] = keywords('animation', {
   'animate-none': 'none',
@@ -679,8 +802,16 @@ const interactionRules: Rule[] = [
     'cursor-grabbing': 'grabbing',
   }),
   ...keywords('pointer-events', { 'pointer-events-none': 'none', 'pointer-events-auto': 'auto' }),
-  ...keywords('user-select', { 'select-none': 'none', 'select-auto': 'auto', 'select-text': 'text' }),
-  ...keywords('touch-action', { 'touch-none': 'none', 'touch-auto': 'auto', 'touch-pan-y': 'pan-y' }),
+  ...keywords('user-select', {
+    'select-none': 'none',
+    'select-auto': 'auto',
+    'select-text': 'text',
+  }),
+  ...keywords('touch-action', {
+    'touch-none': 'none',
+    'touch-auto': 'auto',
+    'touch-pan-y': 'pan-y',
+  }),
   ...keywords('resize', { resize: 'both', 'resize-none': 'none', 'resize-y': 'vertical' }),
   ...keywords('scroll-snap-type', { 'snap-x-mandatory': 'x mandatory', 'snap-none': 'none' }),
   ...keywords('scroll-snap-align', { 'snap-start': 'start', 'snap-center': 'center' }),
@@ -737,7 +868,11 @@ const textRules: Rule[] = [
   ...rules('underline-offset', 'text-underline-offset', { 1: 1, 2: 2, 4: 4 }),
   ...keywords('text-overflow', { 'text-ellipsis': 'ellipsis' }),
   ...keywords('font-variant-numeric', { 'tabular-nums': 'tabular-nums' }),
-  ...keywords('vertical-align', { 'align-middle': 'middle', 'align-top': 'top', 'align-baseline': 'baseline' }),
+  ...keywords('vertical-align', {
+    'align-middle': 'middle',
+    'align-top': 'top',
+    'align-baseline': 'baseline',
+  }),
 ];
 
 /**
@@ -843,7 +978,8 @@ const groupPeerVariant: Variant = (matcher) => {
   const marker = `.${kind}${name ? `\\/${name}` : ''}${pseudo}`;
   return {
     matcher: rest,
-    selector: (selector) => (kind === 'group' ? `${marker} ${selector}` : `${marker} ~ ${selector}`),
+    selector: (selector) =>
+      kind === 'group' ? `${marker} ${selector}` : `${marker} ~ ${selector}`,
   };
 };
 

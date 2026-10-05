@@ -1,11 +1,8 @@
 import type { Attachment } from 'svelte/attachments';
 import { syncChecked } from '../dom/checked';
-import { createFieldShell, type FieldModel } from '../form/field.svelte';
-import type {
-  ChoiceValidationState,
-  FieldHint,
-  HintContent,
-} from '../form/hint';
+import { createFieldShell } from '../form/field.svelte';
+import type { FieldModel } from '../form/field.svelte';
+import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
 
 export interface CheckboxModel {
   /**
@@ -27,7 +24,7 @@ export interface CheckboxModel {
  */
 export function createCheckbox(
   field: FieldModel,
-  options: { disabled?: () => boolean } = {}
+  options: { disabled?: () => boolean } = {},
 ): CheckboxModel {
   const isChecked = (): boolean => Boolean(field.record.value);
 
@@ -138,7 +135,7 @@ export function createToggle(options: ToggleOptions): Toggle {
           options.onValue(Boolean(next));
           options.onChange?.(Boolean(next));
         },
-        event
+        event,
       );
       if (target.checked !== shown) {
         target.checked = shown;

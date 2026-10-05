@@ -1,12 +1,9 @@
 import type { Component } from 'svelte';
 import { defineContext } from '../context';
-import {
-  createPropsPatch,
-  loadComponent,
-  readyComponent,
-  type LazyComponent,
-} from '../base/lazy-component';
+import { createPropsPatch, loadComponent, readyComponent } from '../base/lazy-component';
+import type { LazyComponent } from '../base/lazy-component';
 import { createLayerStack } from '../base/layer-stack.svelte';
+import type { Layer } from '../base/layer-stack.svelte';
 import type { DialogDismissEvent } from './dialog.svelte';
 
 export type OverlayPhase = 'open' | 'closing';
@@ -45,10 +42,9 @@ export interface OverlayStack<C> {
  */
 export function createOverlayStack<C>(): OverlayStack<C> {
   const stack = createLayerStack<{ phase: OverlayPhase; content: C }>();
-  const entries = $derived(
-    stack.entries.map((layer) => ({ id: layer.id, ...layer.entry }))
-  );
-  const layerOf = (id: number) => stack.entries.find((layer) => layer.id === id);
+  const entries = $derived(stack.entries.map((layer) => ({ id: layer.id, ...layer.entry })));
+  const layerOf = (id: number): Layer<{ phase: OverlayPhase; content: C }> | undefined =>
+    stack.entries.find((layer) => layer.id === id);
 
   function close(id: number, result: unknown): void {
     const layer = layerOf(id);
@@ -156,7 +152,7 @@ export interface Overlays<S extends object> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
   openModal<P extends Record<string, any>, R = unknown>(
     component: ModalComponent<P>,
-    options?: OpenModalOptions<P, S>
+    options?: OpenModalOptions<P, S>,
   ): ModalHandle<P, R>;
   /** Whether a ModalStack is mounted to render what gets opened. */
   hasHost: boolean;
@@ -173,7 +169,7 @@ export function createOverlays<S extends object>(): Overlays<S> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
     openModal<P extends Record<string, any>, R = unknown>(
       component: ModalComponent<P>,
-      options: OpenModalOptions<P, S> = {} as OpenModalOptions<P, S>
+      options: OpenModalOptions<P, S> = {} as OpenModalOptions<P, S>,
     ): ModalHandle<P, R> {
       const { props, ...rest } = options;
       const control: ModalControl = {
@@ -198,9 +194,7 @@ export function createOverlays<S extends object>(): Overlays<S> {
       return {
         result: handle.result,
         close: handle.close,
-        update: createPropsPatch(props ?? {}, (next) =>
-          handle.update({ props: next })
-        ),
+        update: createPropsPatch(props ?? {}, (next) => handle.update({ props: next })),
       };
     },
   };
@@ -210,16 +204,12 @@ export function createOverlays<S extends object>(): Overlays<S> {
 const OVERLAYS = defineContext<unknown>('blade-overlays');
 
 /** Call during component init; descendants and their ModalStack share it. */
-export function provideOverlays<S extends object>(
-  overlays: Overlays<S>
-): Overlays<S> {
+export function provideOverlays<S extends object>(overlays: Overlays<S>): Overlays<S> {
   OVERLAYS.set(overlays);
   return overlays;
 }
 
 /** The provided stack, else `fallback` (the library's page-wide one). */
-export function getOverlays<S extends object>(
-  fallback: Overlays<S>
-): Overlays<S> {
+export function getOverlays<S extends object>(fallback: Overlays<S>): Overlays<S> {
   return (OVERLAYS.get() as Overlays<S> | undefined) ?? fallback;
 }

@@ -6,10 +6,7 @@ export const EMPTY_STATE_AXES = {
   size: ['small', 'medium', 'large', 'xlarge'],
 } as const;
 
-type Axis<K extends keyof typeof EMPTY_STATE_AXES> = AxisValue<
-  typeof EMPTY_STATE_AXES,
-  K
->;
+type Axis<K extends keyof typeof EMPTY_STATE_AXES> = AxisValue<typeof EMPTY_STATE_AXES, K>;
 
 /** Derived from EMPTY_STATE_AXES: add a value there, never here. */
 export interface EmptyStateStyleProps {
@@ -34,10 +31,7 @@ export interface EmptyStateClasses {
 // emptyStateTokens.ts: the gap between sections, the asset's cap, and the
 // title's Heading and description's Text sizes. Heading has no letter-spacing;
 // body text does.
-const SIZE: Record<
-  Axis<'size'>,
-  Omit<EmptyStateClasses, 'content'>
-> = {
+const SIZE: Record<Axis<'size'>, Omit<EmptyStateClasses, 'content'>> = {
   small: {
     root: 'gap-4',
     asset: 'max-w-[60px] max-h-[60px]',

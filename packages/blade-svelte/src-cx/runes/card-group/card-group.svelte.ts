@@ -3,16 +3,8 @@ import type { Attachment } from 'svelte/attachments';
 import { createChoiceList } from '../base/choice-list.svelte';
 import { registerEntry } from '../base/ordered-entries.svelte';
 import { createFieldShell } from '../form/field.svelte';
-import type {
-  ChoiceValidationState,
-  FieldHint,
-  HintContent,
-} from '../form/hint';
-import type {
-  CardGroupContext,
-  CardGroupEntry,
-  CardGroupValue,
-} from './context';
+import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
+import type { CardGroupContext, CardGroupEntry, CardGroupValue } from './context';
 
 export type { CardGroupValue };
 
@@ -51,9 +43,7 @@ export interface CardGroup<Shared> extends CardGroupContext<Shared> {
  * End between the headers. Call during component initialisation; the
  * component provides the result to its CardGroupItems (`provideCardGroup`).
  */
-export function createCardGroup<Shared>(
-  options: CardGroupOptions<Shared>
-): CardGroup<Shared> {
+export function createCardGroup<Shared>(options: CardGroupOptions<Shared>): CardGroup<Shared> {
   // The form reveals the open item's header, else the first enabled one.
   const shell = createFieldShell({
     id: options.id,
@@ -101,14 +91,13 @@ export function createCardGroup<Shared>(
     isExpanded: (value) => choices.isSelected(value),
     toggle(value, event) {
       shell.edit(
-        (onValue) =>
-          choices.toggle(value, choices.items().indexOf(value), onValue),
+        (onValue) => choices.toggle(value, choices.items().indexOf(value), onValue),
         (next) => {
           const stored = (next ?? null) as CardGroupValue | null;
           options.onValue(stored);
           options.onChange?.(stored);
         },
-        event
+        event,
       );
     },
     moveFocus(entry, key) {
@@ -127,6 +116,8 @@ export interface CardGroupItemOptions {
   /** Whether there is a body to expand into; without one a press only reports. */
   hasBody: () => boolean;
   /** Every header press, before anything changes. Return `false` to veto. */
+  // `void`: a handler that returns nothing (no veto) is the common case.
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   onClick?: (event: MouseEvent) => boolean | void;
 }
 
@@ -159,26 +150,19 @@ export interface CardGroupItem<Shared> {
  */
 export function createCardGroupItem<Shared>(
   cardGroup: CardGroupContext<Shared> | undefined,
-  options: CardGroupItemOptions
+  options: CardGroupItemOptions,
 ): CardGroupItem<Shared> {
-  const { entry, attach, unregister } = registerEntry<CardGroupEntry>(
-    cardGroup,
-    {
-      value: (): CardGroupValue => value,
-      isDisabled: (): boolean => isDisabled,
-    }
-  );
+  const { entry, attach, unregister } = registerEntry<CardGroupEntry>(cardGroup, {
+    value: (): CardGroupValue => value,
+    isDisabled: (): boolean => isDisabled,
+  });
   onDestroy(unregister);
 
   const index = $derived(cardGroup ? cardGroup.indexOf(entry) : 0);
   const value = $derived(options.value() ?? index);
-  const isDisabled = $derived(
-    options.isDisabled() || Boolean(cardGroup?.isDisabled)
-  );
+  const isDisabled = $derived(options.isDisabled() || Boolean(cardGroup?.isDisabled));
   const isActionable = $derived(!options.hasBody());
-  const isExpanded = $derived(
-    !isActionable && Boolean(cardGroup?.isExpanded(value))
-  );
+  const isExpanded = $derived(!isActionable && Boolean(cardGroup?.isExpanded(value)));
   const state: CardGroupItemState = $derived({
     index,
     isExpanded,

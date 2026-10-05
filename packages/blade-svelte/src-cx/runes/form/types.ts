@@ -74,11 +74,7 @@ export interface ValidateResult {
   firstInvalid?: string;
 }
 
-export type PromiseKind =
-  | 'validate'
-  | 'submit'
-  | 'submit_successful'
-  | 'submit_failed';
+export type PromiseKind = 'validate' | 'submit' | 'submit_successful' | 'submit_failed';
 
 /** Analytics and error reporting stay outside the model; the anatomy injects them. */
 export interface FormHooks {
@@ -91,18 +87,11 @@ export interface FormHooks {
   }) => void;
   onSubmitLogged?: (payload: { data: FormData }) => void;
   onInputLogged?: (payload: { data: FormData }) => void;
-  onPromise?: (
-    kind: PromiseKind,
-    promise?: Promise<unknown>,
-    fieldName?: string
-  ) => void;
+  onPromise?: (kind: PromiseKind, promise?: Promise<unknown>, fieldName?: string) => void;
   onError?: (error: unknown) => void;
 }
 
-export type ConstraintErrorFormatter = (
-  code: ConstraintCode,
-  field: FieldRecord
-) => string;
+export type ConstraintErrorFormatter = (code: ConstraintCode, field: FieldRecord) => string;
 
 export interface FormOptions {
   name: string;
@@ -138,10 +127,7 @@ export interface FormModel {
   refresh(reason?: string, fieldName?: string): void | Promise<void>;
   handleInput(fieldName?: string, event?: unknown): Promise<void>;
   handleBlur(fieldName: string): void;
-  validate(options?: {
-    reason?: string;
-    name?: string;
-  }): Promise<ValidateResult>;
+  validate(options?: { reason?: string; name?: string }): Promise<ValidateResult>;
   submit(meta: SubmitMeta): Promise<SubmitResult>;
   setSubmitted(submitted: boolean): void;
   firstInvalid(): { name: string; handle?: ElementHandle } | undefined;

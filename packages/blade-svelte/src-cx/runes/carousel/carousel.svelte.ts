@@ -34,14 +34,14 @@ export function createCarousel(options: CarouselOptions): Carousel {
   let track = $state<HTMLElement>();
   let isHeld = $state(false);
 
-  function settle(next: number) {
+  function settle(next: number): void {
     if (next !== options.index()) {
       options.onValue(next);
       options.onChange?.(next);
     }
   }
 
-  function go(next: number) {
+  function go(next: number): void {
     const count = options.count();
     const width = track?.clientWidth ?? 0;
     const target = ((next % count) + count) % count;
@@ -68,12 +68,7 @@ export function createCarousel(options: CarouselOptions): Carousel {
     onTick: () => go(options.index() + 1),
   });
   $effect(() => {
-    if (
-      options.autoAdvance() > 0 &&
-      !isStill &&
-      !isHeld &&
-      options.count() > 1
-    ) {
+    if (options.autoAdvance() > 0 && !isStill && !isHeld && options.count() > 1) {
       ticker.start();
     } else {
       ticker.stop();

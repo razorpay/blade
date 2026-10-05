@@ -29,8 +29,8 @@ export function pickHintText(props: {
     props.validationState === 'error'
       ? props.errorText
       : props.validationState === 'success'
-        ? props.successText
-        : undefined;
+      ? props.successText
+      : undefined;
   return own ?? props.helpText;
 }
 
@@ -53,10 +53,7 @@ export interface FieldHint {
  * on every refresh, so an untouched field stays quiet until a submit or
  * validate attempt.
  */
-export function visibleFieldError(
-  field: FieldRecord,
-  state: FormState
-): string | undefined {
+export function visibleFieldError(field: FieldRecord, state: FormState): string | undefined {
   if (!field.name || !(state.submitted || field.touched)) {
     return undefined;
   }
@@ -66,7 +63,7 @@ export function visibleFieldError(
 /** What a group of fields shows on its one line: its first visible error. */
 export function visibleGroupError(
   fields: readonly FieldRecord[],
-  state: FormState
+  state: FormState,
 ): string | undefined {
   for (const field of fields) {
     const error = visibleFieldError(field, state);
@@ -88,9 +85,7 @@ export function resolveHint(props: HintProps, formError?: string): FieldHint {
   if (props.validationState !== undefined) {
     return {
       validationState: props.validationState,
-      text:
-        props.hint ??
-        (props.validationState === 'error' ? formError : undefined),
+      text: props.hint ?? (props.validationState === 'error' ? formError : undefined),
     };
   }
   if (formError) {

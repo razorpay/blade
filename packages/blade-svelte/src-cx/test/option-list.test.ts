@@ -6,8 +6,8 @@ import { resolveOptionList } from '../components/option-list';
 import OptionListHarness from './fixtures/OptionListHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
-const input = (element: HTMLElement) => element as HTMLInputElement;
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
+const input = (element: HTMLElement): HTMLInputElement => element as HTMLInputElement;
 
 describe('OptionList', () => {
   it('is a radiogroup of native radios sharing a name', () => {
@@ -26,7 +26,7 @@ describe('OptionList', () => {
     const { getByTestId } = render(OptionListHarness, { props: { onChange } });
     await fireEvent.click(getByTestId('banks-1'));
     expect(onChange).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ value: { code: 'icici', name: 'ICICI Bank' } })
+      expect.objectContaining({ value: { code: 'icici', name: 'ICICI Bank' } }),
     );
     expect(getByTestId('bound').textContent).toBe('icici');
     expectClass(getByTestId('banks-1').parentElement, 'bg-interactive-gray-faded-highlighted');
@@ -107,12 +107,13 @@ describe('OptionList', () => {
   });
 
   it('inside a Form a required list blocks submit, single and multiple', async () => {
+    // The two cases share one document, so they run one after the other.
+    /* eslint-disable no-await-in-loop */
     for (const isMultiple of [false, true]) {
       const onSubmit = vi.fn();
-      const { getByTestId, getByText, queryByText, unmount } = render(
-        OptionListHarness,
-        { props: { inForm: true, name: 'bank', isMultiple, onSubmit } }
-      );
+      const { getByTestId, getByText, queryByText, unmount } = render(OptionListHarness, {
+        props: { inForm: true, name: 'bank', isMultiple, onSubmit },
+      });
       await fireEvent.click(getByTestId('continue'));
       await flush();
       expect(onSubmit).not.toHaveBeenCalled();
@@ -129,12 +130,13 @@ describe('OptionList', () => {
       });
       unmount();
     }
+    /* eslint-enable no-await-in-loop */
   });
 });
 
 describe('OptionList keyboard', () => {
   const ring = 'shadow-focus-inset';
-  const row = (element: HTMLElement) => element.parentElement as HTMLElement;
+  const row = (element: HTMLElement): HTMLElement => element.parentElement!;
 
   it.each([false, true])(
     'arrows move focus and pick nothing; Enter and Space pick (multiple: %s)',
@@ -163,7 +165,7 @@ describe('OptionList keyboard', () => {
       expect(space).toBe(false);
       expect(input(getByTestId('banks-0')).checked).toBe(true);
       expect(input(getByTestId('banks-1')).checked).toBe(isMultiple);
-    }
+    },
   );
 
   it('skips disabled options and stops at the ends', async () => {
@@ -177,7 +179,7 @@ describe('OptionList keyboard', () => {
   });
 
   it('is one tab stop: the pick, else the first enabled row', async () => {
-    const stops = (getByTestId: (id: string) => HTMLElement) =>
+    const stops = (getByTestId: (id: string) => HTMLElement): number[] =>
       [0, 1, 2].map((i) => input(getByTestId(`banks-${i}`)).tabIndex);
     const fresh = render(OptionListHarness, { props: { isMultiple: true } });
     expect(stops(fresh.getByTestId)).toEqual([0, -1, -1]);
@@ -226,12 +228,8 @@ describe('OptionList keyboard', () => {
   it('leaves Tab and Escape to the page', async () => {
     const { getByTestId } = render(OptionListHarness);
     getByTestId('banks-0').focus();
-    expect(
-      await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Tab' })
-    ).toBe(true);
-    expect(
-      await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Escape' })
-    ).toBe(true);
+    expect(await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Tab' })).toBe(true);
+    expect(await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Escape' })).toBe(true);
   });
 });
 

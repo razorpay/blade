@@ -4,9 +4,8 @@ import {
   findPhoneCountry,
   joinPhoneNumber,
   splitPhoneNumber,
-  type PhoneCountry,
-  type PhoneParts,
 } from './parts';
+import type { PhoneCountry, PhoneParts } from './parts';
 import { getAdapters } from '../../adapters';
 import type { ModalHandle } from '../modal/overlays.svelte';
 
@@ -28,7 +27,7 @@ export interface PhoneOptions {
    */
   openPicker: (
     selectable: readonly PhoneCountry[],
-    selected: PhoneCountry | undefined
+    selected: PhoneCountry | undefined,
   ) => ModalHandle<unknown, PhoneCountry> | undefined;
 }
 
@@ -64,11 +63,9 @@ export function createPhone(options: PhoneOptions): Phone {
   let control: HTMLInputElement | undefined;
 
   const selectable = $derived(
-    allowedPhoneCountries(options.countries(), options.allowedCountries())
+    allowedPhoneCountries(options.countries(), options.allowedCountries()),
   );
-  const parts = $derived(
-    splitPhoneNumber(options.value(), selectable, options.country())
-  );
+  const parts = $derived(splitPhoneNumber(options.value(), selectable, options.country()));
   const selected = $derived(findPhoneCountry(selectable, parts?.country));
   const canPick = $derived(!options.isCountryFixed() && selectable.length > 1);
 
@@ -85,14 +82,12 @@ export function createPhone(options: PhoneOptions): Phone {
   // is; the same rule lets a pasted `+60…` switch the country.
   const format: PhoneFormat = $derived({
     parse: (text: unknown) =>
-      splitPhoneNumber(String(text ?? ''), selectable, selected?.code)?.value ??
-      '',
+      splitPhoneNumber(String(text ?? ''), selectable, selected?.code)?.value ?? '',
     format: (stored: unknown) =>
-      splitPhoneNumber(String(stored ?? ''), selectable, selected?.code)
-        ?.nationalNumber ?? '',
+      splitPhoneNumber(String(stored ?? ''), selectable, selected?.code)?.nationalNumber ?? '',
   });
 
-  function pick(next: PhoneCountry) {
+  function pick(next: PhoneCountry): void {
     if (next.code === selected?.code) {
       return;
     }
@@ -120,11 +115,7 @@ export function createPhone(options: PhoneOptions): Phone {
       return format;
     },
     handleNumber(next) {
-      const change = splitPhoneNumber(
-        String(next ?? ''),
-        selectable,
-        selected?.code
-      );
+      const change = splitPhoneNumber(String(next ?? ''), selectable, selected?.code);
       if (change) {
         options.onChange?.(change);
       }

@@ -8,24 +8,12 @@ import type { AxisValue } from '../../axes';
 export const TEXT_AXES = {
   size: ['xsmall', 'small', 'medium', 'large'],
   weight: ['regular', 'medium', 'semibold'],
-  color: [
-    'default',
-    'subtle',
-    'muted',
-    'primary',
-    'danger',
-    'success',
-    'white',
-    'inherit',
-  ],
+  color: ['default', 'subtle', 'muted', 'primary', 'danger', 'success', 'white', 'inherit'],
   textAlign: ['start', 'center', 'end'],
   truncate: ['none', '1', '2', '3'],
 } as const;
 
-type TextAxis<K extends keyof typeof TEXT_AXES> = AxisValue<
-  typeof TEXT_AXES,
-  K
->;
+type TextAxis<K extends keyof typeof TEXT_AXES> = AxisValue<typeof TEXT_AXES, K>;
 
 /** Derived from TEXT_AXES: add a value there, never here. */
 export interface TextStyleProps {
@@ -97,10 +85,7 @@ export const HEADING_AXES = {
   textAlign: ['start', 'center', 'end'],
 } as const;
 
-type HeadingAxis<K extends keyof typeof HEADING_AXES> = AxisValue<
-  typeof HEADING_AXES,
-  K
->;
+type HeadingAxis<K extends keyof typeof HEADING_AXES> = AxisValue<typeof HEADING_AXES, K>;
 
 /** Derived from HEADING_AXES: add a value there, never here. */
 export interface HeadingStyleProps {
@@ -119,12 +104,7 @@ const HEADING_SIZE: Record<HeadingAxis<'size'>, string> = {
 };
 
 export function resolveHeading(props: HeadingStyleProps = {}): string {
-  const {
-    size = 'medium',
-    weight = 'semibold',
-    color = 'default',
-    textAlign = 'start',
-  } = props;
+  const { size = 'medium', weight = 'semibold', color = 'default', textAlign = 'start' } = props;
   return `m-0 font-heading ${HEADING_SIZE[size]} ${WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]}`;
 }
 
@@ -152,6 +132,4 @@ export interface HeadingBehaviourProps {
 export type TextComponent = Component<TextBehaviourProps & TextStyleProps>;
 
 /** The blade Heading: its behaviour props over its style props. */
-export type HeadingComponent = Component<
-  HeadingBehaviourProps & HeadingStyleProps
->;
+export type HeadingComponent = Component<HeadingBehaviourProps & HeadingStyleProps>;

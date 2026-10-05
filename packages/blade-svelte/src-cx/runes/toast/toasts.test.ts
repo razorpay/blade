@@ -1,7 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createToasts, type ToastsOptions } from './toasts.svelte';
+import type { Mock } from 'vitest';
+import { createToasts } from './toasts.svelte';
+import type { ToastsModel, ToastsOptions } from './toasts.svelte';
 
-function manualSchedule() {
+function manualSchedule(): {
+  now: () => number;
+  schedule: (fn: () => void, ms: number) => () => void;
+  advance(ms: number): void;
+} {
   const pending: Array<{ fn: () => void; at: number }> = [];
   let clock = 0;
   return {
@@ -28,7 +34,13 @@ function manualSchedule() {
   };
 }
 
-function toasts(options: ToastsOptions<string> = {}) {
+function toasts(
+  options: ToastsOptions<string> = {},
+): {
+  model: ToastsModel<string>;
+  timer: ReturnType<typeof manualSchedule>;
+  onDismiss: Mock;
+} {
   const timer = manualSchedule();
   const onDismiss = vi.fn();
   const model = createToasts<string>({

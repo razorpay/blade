@@ -24,10 +24,7 @@ export interface CardClasses {
 }
 
 /** The second argument: whether the card is selected, which swaps the surface's rim for the ring. */
-export type CardStyleResolver<P> = (
-  props: P,
-  isSelected?: boolean
-) => CardClasses;
+export type CardStyleResolver<P> = (props: P, isSelected?: boolean) => CardClasses;
 
 /** The blade taxonomy as data. */
 export const CARD_AXES = {
@@ -76,10 +73,7 @@ const DIVIDER = 'border-solid border-surface-gray-muted';
 
 // A card is 12px round. The root carries Blade's 2px selection ring; the
 // overlay's covering ::before carries the 4px focus ring.
-export const resolveCard: CardStyleResolver<CardStyleProps> = (
-  props,
-  isSelected = false
-) => {
+export const resolveCard: CardStyleResolver<CardStyleProps> = (props, isSelected = false) => {
   const { variant = 'primary', padding = 'spacing.7', color } = props;
   const state = isSelected ? 'selected' : 'none';
   const surface = color

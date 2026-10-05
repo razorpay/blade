@@ -1,12 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { flushSync } from 'svelte';
+import { flushSync, createRawSnippet } from 'svelte';
 import { fireEvent, render } from '@testing-library/svelte';
-import { createRawSnippet } from 'svelte';
 import Button from '../components/button/Button.svelte';
 import ButtonHarness from './fixtures/ButtonHarness.svelte';
+import { expectClass, expectMarkup, expectNoClass } from './classes';
 
 const label = createRawSnippet(() => ({ render: () => '<span>Pay</span>' }));
-import { expectClass, expectMarkup, expectNoClass } from './classes';
 
 describe('Button standalone', () => {
   it('forwards the click with the platform event and renders recipe classes', async () => {
@@ -57,9 +56,7 @@ describe('Button standalone', () => {
     expect(loader?.children).toHaveLength(3);
     // The live region announces the busy state (aria-busy alone is not
     // announced by most screen readers).
-    expect(button.querySelector('[role="status"]')?.textContent).toContain(
-      'Loading'
-    );
+    expect(button.querySelector('[role="status"]')?.textContent).toContain('Loading');
     // The anatomy swallows impatient presses before they reach the model,
     // whose blocked path would still forward onClick.
     await fireEvent.click(button);
@@ -150,10 +147,7 @@ describe('Button standalone', () => {
     expectClass(button, 'shadow-button-neutral');
     expectClass(button, 'before:bg-button-sheen-medium');
     expectClass(button, 'group');
-    expectClass(
-      button.querySelector('[data-part="content"]'),
-      'group-active:enabled:scale-95'
-    );
+    expectClass(button.querySelector('[data-part="content"]'), 'group-active:enabled:scale-95');
   });
 
   it('a neutral button is a filled surface: light loader dots', () => {

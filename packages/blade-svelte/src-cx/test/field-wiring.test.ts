@@ -12,7 +12,7 @@ describe('choice groups in a Form', () => {
     });
     await fireEvent.click(getByTestId('plans-0'));
     await waitFor(() =>
-      expect(onInput).toHaveBeenCalledWith(expect.objectContaining({ plan: 'monthly' }))
+      expect(onInput).toHaveBeenCalledWith(expect.objectContaining({ plan: 'monthly' })),
     );
   });
 
@@ -34,6 +34,6 @@ describe('choice groups in a Form', () => {
       await fireEvent.submit(queries.getByTestId('submit').closest('form')!);
       await waitFor(() => expect(revealField).toHaveBeenCalled());
       expect(revealField).toHaveBeenCalledWith(first(queries), name);
-    }
+    },
   );
 });

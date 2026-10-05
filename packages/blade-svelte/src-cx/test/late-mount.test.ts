@@ -8,7 +8,7 @@ import { expectClass, expectNoClass } from './classes';
 describe('members that mount late', () => {
   it("a segment mounted ahead moves the picked segment's thumb (B3)", async () => {
     const { container, rerender } = render(LateMountHarness);
-    const thumb = () =>
+    const thumb = (): HTMLElement =>
       container.querySelector<HTMLElement>('[style*="--segment-index"]')!;
     expect(thumb().style.getPropertyValue('--segment-index')).toBe('0');
     await rerender({ showFirst: true });
@@ -18,7 +18,7 @@ describe('members that mount late', () => {
 
   it('an InputGroup member mounted ahead takes the top corners (B4)', async () => {
     const { getByTestId, rerender } = render(LateMountHarness);
-    const frame = (id: string) => getByTestId(id).parentElement;
+    const frame = (id: string): HTMLElement | null => getByTestId(id).parentElement;
     expectClass(frame('city'), 'rounded-tl-small');
     await rerender({ showFirst: true });
     expectClass(frame('line1'), 'rounded-tl-small');

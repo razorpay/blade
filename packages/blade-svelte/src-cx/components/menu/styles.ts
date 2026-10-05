@@ -41,7 +41,8 @@ export const resolveMenu: MenuStyleResolver<MenuStyleProps> = () => ({
   root: 'relative inline-flex',
   panel:
     'pointer-events-auto absolute z-50 flex min-w-[240px] max-w-[400px] flex-col rounded-medium bg-popup-gray-moderate p-2 text-surface-gray-normal shadow-dropdown backdrop-blur-medium outline-none transition-all duration-quick ease-entrance data-[state=closed]:-translate-y-2 data-[state=closed]:opacity-0 motion-reduce:transition-none',
-  item: 'my-0.5 flex w-full items-center gap-2 rounded-small border-none bg-transparent p-1 m:p-2 text-left font-text text-100 leading-100 outline-none',
+  item:
+    'my-0.5 flex w-full items-center gap-2 rounded-small border-none bg-transparent p-1 m:p-2 text-left font-text text-100 leading-100 outline-none',
   itemState: {
     enabled:
       'cursor-pointer text-interactive-gray-normal focus:bg-interactive-gray-default focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted',

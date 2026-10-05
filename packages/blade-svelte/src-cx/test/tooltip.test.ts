@@ -6,7 +6,7 @@ import { resolveTooltip } from '../components/tooltip';
 import TooltipHarness from './fixtures/TooltipHarness.svelte';
 import { expectClass } from './classes';
 
-function rect(left: number, top: number, width: number, height: number) {
+function rect(left: number, top: number, width: number, height: number): DOMRect {
   return {
     left,
     top,
@@ -17,11 +17,11 @@ function rect(left: number, top: number, width: number, height: number) {
     x: left,
     y: top,
     toJSON: () => ({}),
-  };
+  } as DOMRect;
 }
 
 // jsdom has no PointerEvent, so `fireEvent.pointerDown` drops pointerType.
-function pointerDown(target: Element, pointerType: string) {
+function pointerDown(target: Element, pointerType: string): Promise<boolean> {
   const event = new Event('pointerdown', { bubbles: true });
   Object.defineProperty(event, 'pointerType', { value: pointerType });
   return fireEvent(target, event);
@@ -128,7 +128,7 @@ describe('Tooltip', () => {
   it('places the measured bubble and flips when the wanted side lacks room', async () => {
     const measured = vi
       .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
-      .mockImplementation(() => rect(100, 4, 40, 20) as DOMRect);
+      .mockImplementation(() => rect(100, 4, 40, 20));
     vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(80);
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(30);
 

@@ -10,8 +10,7 @@ const meta: StoryMeta = {
     size: { control: 'select', options: MODAL_AXES.size },
     isDismissible: {
       control: 'boolean',
-      description:
-        'Whether a dismissal closes it by itself, and whether the close button shows',
+      description: 'Whether a dismissal closes it by itself, and whether the close button shows',
     },
     closeLabel: {
       control: 'text',
@@ -44,8 +43,7 @@ const meta: StoryMeta = {
       argTypes: {
         isDismissible: {
           control: 'boolean',
-          description:
-            'Off: the sheet resists the drag; a fling reports it and it settles back',
+          description: 'Off: the sheet resists the drag; a fling reports it and it settles back',
         },
         variant: {
           control: 'select',

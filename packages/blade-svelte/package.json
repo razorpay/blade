@@ -88,6 +88,9 @@
     "test:browserstack:mobile:local": "CHROMATIC_URL=https://blade.razorpay.com browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
     "svelte-check:cx": "svelte-check --tsconfig ./tsconfig.cx.json",
     "test:cx": "vitest run --config vitest.config.ts --project cx",
+    "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
+    "test:e2e:ui": "playwright test -c tests/e2e/playwright.config.ts --ui",
+    "test:e2e:browserstack": "TARGET=browserstack BROWSERSTACK_CONFIG_FILE=tests/e2e/browserstack.yml browserstack-node-sdk playwright test -c tests/e2e/playwright.config.ts",
     "uno:cx": "unocss \"src-cx/**/*.{ts,svelte}\" -c uno.config.ts -o src-cx/uno.css"
   },
   "dependencies": {

@@ -68,9 +68,9 @@ const CORNER_LARGE: Record<InputGroupCorner, string> = {
   br: 'rounded-br-medium',
 };
 
-export const resolveInputGroup: InputGroupStyleResolver<
-  InputGroupStyleProps
-> = (props: InputGroupStyleProps = {}) => {
+export const resolveInputGroup: InputGroupStyleResolver<InputGroupStyleProps> = (
+  props: InputGroupStyleProps = {},
+) => {
   return {
     root: 'relative flex w-full flex-col',
     // Each member draws its own disabled look, as a lone field does.

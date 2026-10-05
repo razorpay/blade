@@ -6,12 +6,12 @@ import {
   patternFormat,
   serializeSpec,
   validateRules,
-  type FormatRule,
-  type FormatSpec,
 } from './format';
+import type { FormatRule, FormatSpec } from './format';
 // A copy of the checkout's `native/specs/format-spec-fixtures.json`, shared
 // there with the Kotlin suite (InputFormattingTest): both sides must produce
 // these exact outputs or native/web formatting diverges.
+// eslint-disable-next-line import/extensions -- a JSON module needs its extension
 import fixtures from './format-spec-fixtures.json';
 
 type Fixture = {
@@ -42,9 +42,7 @@ describe('formatSpec shared fixtures (JS side)', () => {
 
 describe('runner + guards', () => {
   it('folds rules left to right', () => {
-    expect(applyRules(digitGroups.format, '4111-1111 1111')).toBe(
-      '4111 1111 1111'
-    );
+    expect(applyRules(digitGroups.format, '4111-1111 1111')).toBe('4111 1111 1111');
     expect(compileRules(digitGroups.parse)('4111 1111')).toBe('41111111');
   });
 
@@ -81,7 +79,7 @@ describe('runner + guards', () => {
 });
 
 describe('patternFormat', () => {
-  const run = (pattern: string, input: string) => {
+  const run = (pattern: string, input: string): string => {
     const spec = patternFormat(pattern);
     return applyRules(spec.format, applyRules(spec.parse, input));
   };
@@ -89,12 +87,8 @@ describe('patternFormat', () => {
   it('places the literals as the digits reach them', () => {
     expect(run('#### #### #### ####', '4111')).toBe('4111');
     expect(run('#### #### #### ####', '41111')).toBe('4111 1');
-    expect(run('#### #### #### ####', '4111111111111111')).toBe(
-      '4111 1111 1111 1111'
-    );
-    expect(run('#### ###### #####', '378282246310005')).toBe(
-      '3782 822463 10005'
-    );
+    expect(run('#### #### #### ####', '4111111111111111')).toBe('4111 1111 1111 1111');
+    expect(run('#### ###### #####', '378282246310005')).toBe('3782 822463 10005');
     expect(run('## / ##', '1')).toBe('1');
     expect(run('## / ##', '123')).toBe('12 / 3');
   });

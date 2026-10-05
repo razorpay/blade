@@ -27,10 +27,7 @@ export const ICON_BUTTON_AXES = {
   size: ['small', 'medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof ICON_BUTTON_AXES> = AxisValue<
-  typeof ICON_BUTTON_AXES,
-  K
->;
+type Axis<K extends keyof typeof ICON_BUTTON_AXES> = AxisValue<typeof ICON_BUTTON_AXES, K>;
 
 /** Derived from ICON_BUTTON_AXES: add a value there, never here. */
 export interface IconButtonStyleProps {
@@ -80,15 +77,16 @@ const BOX: Record<Axis<'size'>, string> = {
   large: 'rounded-2xsmall',
 };
 
-export const resolveIconButton: IconButtonStyleResolver<
-  IconButtonStyleProps
-> = (props: IconButtonStyleProps = {}) => {
+export const resolveIconButton: IconButtonStyleResolver<IconButtonStyleProps> = (
+  props: IconButtonStyleProps = {},
+) => {
   const { emphasis = 'intense', size = 'medium', isHighlighted = false } = props;
   const hasBox = (isHighlighted || emphasis === 'moderate') && size !== 'large';
-  const highlight =
-    isHighlighted && emphasis !== 'moderate' ? HIGHLIGHT[emphasis] : '';
+  const highlight = isHighlighted && emphasis !== 'moderate' ? HIGHLIGHT[emphasis] : '';
   return {
-    root: `${ROOT} ${TONE[emphasis]} ${highlight} ${hasBox ? BOX[size] : 'rounded-2xsmall'}`.replace(/\s+/g, ' ').trim(),
+    root: `${ROOT} ${TONE[emphasis]} ${highlight} ${hasBox ? BOX[size] : 'rounded-2xsmall'}`
+      .replace(/\s+/g, ' ')
+      .trim(),
     shake: 'animate-shake motion-reduce:animate-none',
     loading: 'pointer-events-none',
     status: 'sr-only',

@@ -31,10 +31,11 @@
     inputMode="numeric"
     placeholder="0000 0000 0000 0000"
     format={{ parse: digitsOnly, format: groupInFours }}
+    testID="card-number"
     maxCharacters={args.maxCharacters}
   />
   <p class="text-75 leading-50 text-surface-gray-subtle">
-    parsed value: {JSON.stringify(value)}
+    parsed value: <span data-testid="card-value">{JSON.stringify(value)}</span>
   </p>
   <TextInput
     bind:value={expiry}
@@ -42,8 +43,9 @@
     inputMode="numeric"
     placeholder="MM / YY"
     format={EXPIRY}
+    testID="expiry"
   />
   <p class="text-75 leading-50 text-surface-gray-subtle">
-    parsed value: {JSON.stringify(expiry)}
+    parsed value: <span data-testid="expiry-value">{JSON.stringify(expiry)}</span>
   </p>
 </div>

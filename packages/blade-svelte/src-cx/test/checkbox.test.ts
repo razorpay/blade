@@ -3,10 +3,9 @@ import { fireEvent, render } from '@testing-library/svelte';
 import CheckboxHarness from './fixtures/CheckboxHarness.svelte';
 import { expectClass, expectMarkup, expectNoClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
-const indicator = (control: HTMLElement) =>
-  control.nextElementSibling as HTMLElement;
-const mark = (indicatorEl: HTMLElement) =>
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
+const indicator = (control: HTMLElement): HTMLElement => control.nextElementSibling as HTMLElement;
+const mark = (indicatorEl: HTMLElement): HTMLElement =>
   indicatorEl.firstElementChild as HTMLElement;
 
 describe('Checkbox standalone', () => {
@@ -116,10 +115,8 @@ describe('Checkbox standalone', () => {
     const error = getByText('Required');
     // Blade keeps the help text under the title and adds the error line,
     // led by its icon (FieldHint): the line carries the id.
-    const line = error.parentElement as HTMLElement;
-    expect(control.getAttribute('aria-describedby')).toBe(
-      `${getByText('Help').id} ${line.id}`
-    );
+    const line = error.parentElement!;
+    expect(control.getAttribute('aria-describedby')).toBe(`${getByText('Help').id} ${line.id}`);
     expectMarkup(line, '<svg');
     expect(control.getAttribute('aria-invalid')).toBe('true');
     expectClass(indicator(control), 'border-interactive-negative-default');

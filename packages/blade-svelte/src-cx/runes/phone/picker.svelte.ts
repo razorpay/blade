@@ -1,4 +1,5 @@
-import { filterPhoneCountries, type PhoneCountry } from './parts';
+import { filterPhoneCountries } from './parts';
+import type { PhoneCountry } from './parts';
 
 export interface PhonePicker {
   /** The search text; bindable from the search box. */
@@ -8,9 +9,7 @@ export interface PhonePicker {
 }
 
 /** The country picker's search over its countries. Call during component initialisation. */
-export function createPhonePicker(
-  countries: () => readonly PhoneCountry[]
-): PhonePicker {
+export function createPhonePicker(countries: () => readonly PhoneCountry[]): PhonePicker {
   let query = $state('');
   const matches = $derived(filterPhoneCountries(countries(), query));
   return {

@@ -105,9 +105,7 @@ describe('Tabs', () => {
     expect(indicator.style.getPropertyValue('--tab-w')).toMatch(/px$/);
     // Bordered: the track under the row.
     expectClass(box, 'border-surface-gray-muted');
-    expect(getAllByRole('tab')[1].className).not.toContain(
-      'bg-interactive-neutral-highlighted'
-    );
+    expect(getAllByRole('tab')[1].className).not.toContain('bg-interactive-neutral-highlighted');
   });
 
   it('filled and vertical: the picked tab fills itself, with no indicator', () => {
@@ -115,14 +113,18 @@ describe('Tabs', () => {
       props: { variant: 'filled', orientation: 'vertical' },
     });
     expect(getByRole('tablist').getAttribute('aria-orientation')).toBe('vertical');
-    expect(getByRole('tablist').parentElement!.querySelector(':scope > [aria-hidden="true"]')).toBeNull();
+    expect(
+      getByRole('tablist').parentElement!.querySelector(':scope > [aria-hidden="true"]'),
+    ).toBeNull();
     expectClass(getAllByRole('tab')[0], 'bg-surface-gray-intense');
   });
 
-  it('keeps every panel mounted and hidden, unless lazy', async () => {
+  it('keeps every panel mounted and hidden, unless lazy', () => {
     const eager = render(TabsHarness);
     expect(eager.getAllByTestId('panel-text')).toHaveLength(4);
-    expect(eager.getAllByRole('tabpanel', { hidden: true }).filter((p) => p.hidden)).toHaveLength(3);
+    expect(eager.getAllByRole('tabpanel', { hidden: true }).filter((p) => p.hidden)).toHaveLength(
+      3,
+    );
     eager.unmount();
     const lazy = render(TabsHarness, { props: { isLazy: true } });
     expect(lazy.getAllByTestId('panel-text')).toHaveLength(1);

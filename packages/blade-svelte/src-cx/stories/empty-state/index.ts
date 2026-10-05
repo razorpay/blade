@@ -19,7 +19,8 @@ const meta: StoryMeta = {
       },
     },
     Sizes: {
-      description: 'small, medium, large and xlarge: the asset cap, the gaps and the type grow together.',
+      description:
+        'small, medium, large and xlarge: the asset cap, the gaps and the type grow together.',
       argTypes: {},
     },
   },

@@ -14,7 +14,7 @@ export function expectNoClass(element: WithClass, cls: string): void {
 /** Markup a component's decorative parts draw (a loader, a shimmer). */
 export function expectMarkup(
   element: { innerHTML: string } | null | undefined,
-  fragment: string
+  fragment: string,
 ): void {
   expect(element?.innerHTML ?? '').toContain(fragment);
 }

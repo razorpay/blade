@@ -1,4 +1,5 @@
-import { createTicker, type Schedule } from './schedule';
+import { createTicker } from './schedule';
+import type { Schedule } from './schedule';
 
 export interface CountdownState {
   /** Whole seconds left, never negative. */
@@ -34,7 +35,7 @@ export function createCountdownClock(options: {
   now?: () => number;
 }): CountdownClock {
   const total = Math.max(0, options.seconds);
-  const now = options.now || Date.now;
+  const now = options.now ?? Date.now;
   const toState = (remaining: number): CountdownState => ({
     remaining,
     progress: total === 0 ? 100 : ((total - remaining) * 100) / total,

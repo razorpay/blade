@@ -1,10 +1,6 @@
 import { createChoiceList } from '../base/choice-list.svelte';
 import { createFieldShell } from '../form/field.svelte';
-import type {
-  ChoiceValidationState,
-  FieldHint,
-  HintContent,
-} from '../form/hint';
+import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
 import type { ChipGroupContext } from './context';
 
 /** A chip is picked or not: there is no success state to show. */
@@ -46,9 +42,7 @@ export interface ChipGroup<Shared> extends ChipGroupContext<Shared> {
  * initialisation; the component provides the result to its Chips
  * (`provideChipGroup`).
  */
-export function createChipGroup<Shared>(
-  options: ChipGroupOptions<Shared>
-): ChipGroup<Shared> {
+export function createChipGroup<Shared>(options: ChipGroupOptions<Shared>): ChipGroup<Shared> {
   // The form reveals the picked chip, else the first enabled one.
   const shell = createFieldShell({
     id: options.id,
@@ -109,7 +103,7 @@ export function createChipGroup<Shared>(
           options.onValue(stored);
           options.onChange?.(stored);
         },
-        event
+        event,
       );
     },
   };

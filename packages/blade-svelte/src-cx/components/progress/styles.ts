@@ -6,10 +6,7 @@ export const PROGRESS_AXES = {
   size: ['small', 'medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof PROGRESS_AXES> = AxisValue<
-  typeof PROGRESS_AXES,
-  K
->;
+type Axis<K extends keyof typeof PROGRESS_AXES> = AxisValue<typeof PROGRESS_AXES, K>;
 
 /** Derived from PROGRESS_AXES: add a value there, never here. */
 export interface ProgressStyleProps {
@@ -47,9 +44,7 @@ const RING: Record<Axis<'size'>, string> = {
 // CSS transition, so a value set at mount draws in place with no animation.
 const FILL_MOTION = 'duration-gentle ease-entrance motion-reduce:transition-none';
 
-export function resolveProgress(
-  props: ProgressStyleProps = {}
-): ProgressClasses {
+export function resolveProgress(props: ProgressStyleProps = {}): ProgressClasses {
   const { type = 'dots', size = 'medium' } = props;
   // Blade's ProgressBar: the unfilled track is feedback neutral-subtle, the
   // fill the caller's colour (Blade's `color`: feedback `{intent}.intense`,
@@ -78,15 +73,10 @@ export function resolveProgress(
       },
     };
   }
-  const dot =
-    'rounded-max bg-current animate-bounce motion-reduce:animate-none';
+  const dot = 'rounded-max bg-current animate-bounce motion-reduce:animate-none';
   return {
     root: `inline-flex items-center justify-center ${DOTS[size]}`,
-    dots: [
-      `${dot} [animation-delay:-0.3s]`,
-      `${dot} [animation-delay:-0.15s]`,
-      dot,
-    ],
+    dots: [`${dot} [animation-delay:-0.3s]`, `${dot} [animation-delay:-0.15s]`, dot],
   };
 }
 

@@ -3,7 +3,7 @@ import { createNavigableList } from './navigable-list.svelte';
 
 const items = ['Axis', 'Bank of Baroda', 'Canara', 'HDFC', 'ICICI'];
 
-function manualSchedule() {
+function manualSchedule(): { schedule: (fn: () => void) => () => void; flush: () => void } {
   const pending: Array<() => void> = [];
   return {
     schedule: (fn: () => void) => {

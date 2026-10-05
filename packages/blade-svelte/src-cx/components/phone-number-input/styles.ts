@@ -34,9 +34,7 @@ export interface PhoneNumberInputClasses<L> {
 }
 
 /** Style props in, the parts out. */
-export type PhoneNumberInputStyleResolver<P, L> = (
-  props: P
-) => PhoneNumberInputClasses<L>;
+export type PhoneNumberInputStyleResolver<P, L> = (props: P) => PhoneNumberInputClasses<L>;
 
 export type PhoneNumberChange = PhoneParts;
 

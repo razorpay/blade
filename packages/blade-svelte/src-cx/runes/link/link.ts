@@ -16,7 +16,7 @@ export interface LinkClick {
  */
 export function isRoutableClick(
   click: LinkClick,
-  link: { href?: string; target?: string }
+  link: { href?: string; target?: string },
 ): boolean {
   if (click.defaultPrevented || click.button !== 0) {
     return false;
@@ -42,10 +42,7 @@ export function isInternalHref(href: string | undefined): boolean {
  * `rel` for an anchor: a new browsing context must not reach its opener.
  * The caller's tokens are kept.
  */
-export function linkRel(
-  target: string | undefined,
-  rel: string | undefined
-): string | undefined {
+export function linkRel(target: string | undefined, rel: string | undefined): string | undefined {
   if (target !== '_blank') {
     return rel;
   }

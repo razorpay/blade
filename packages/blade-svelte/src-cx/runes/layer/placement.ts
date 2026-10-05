@@ -57,8 +57,7 @@ export function place(options: PlaceOptions): Placed {
   // Main axis: distance from the anchor, on the side that has room.
   const mainStart = vertical ? 'top' : 'left';
   const mainSize = vertical ? 'height' : 'width';
-  const before = (side: PlacementSide): boolean =>
-    side === 'top' || side === 'left';
+  const before = (side: PlacementSide): boolean => side === 'top' || side === 'left';
   const mainFor = (side: PlacementSide): number =>
     before(side)
       ? anchor[mainStart] - gap - floating[mainSize]
@@ -70,15 +69,13 @@ export function place(options: PlaceOptions): Placed {
       at + floating[mainSize] <= boundary[mainStart] + boundary[mainSize]
     );
   };
-  const side =
-    !fits(wanted) && fits(OPPOSITE[wanted]) ? OPPOSITE[wanted] : wanted;
+  const side = !fits(wanted) && fits(OPPOSITE[wanted]) ? OPPOSITE[wanted] : wanted;
   const main = mainFor(side);
 
   // Cross axis: aligned to the anchor, kept inside the boundary.
   const crossStart = vertical ? 'left' : 'top';
   const crossSize = vertical ? 'width' : 'height';
-  let cross =
-    anchor[crossStart] + (anchor[crossSize] - floating[crossSize]) / 2;
+  let cross = anchor[crossStart] + (anchor[crossSize] - floating[crossSize]) / 2;
   if (align === 'start') {
     cross = anchor[crossStart];
   } else if (align === 'end') {
@@ -87,15 +84,9 @@ export function place(options: PlaceOptions): Placed {
   cross = clamp(
     cross,
     boundary[crossStart],
-    boundary[crossStart] + boundary[crossSize] - floating[crossSize]
+    boundary[crossStart] + boundary[crossSize] - floating[crossSize],
   );
-  const arrow = clamp(
-    anchor[crossStart] + anchor[crossSize] / 2 - cross,
-    0,
-    floating[crossSize]
-  );
+  const arrow = clamp(anchor[crossStart] + anchor[crossSize] / 2 - cross, 0, floating[crossSize]);
 
-  return vertical
-    ? { x: cross, y: main, side, arrow }
-    : { x: main, y: cross, side, arrow };
+  return vertical ? { x: cross, y: main, side, arrow } : { x: main, y: cross, side, arrow };
 }

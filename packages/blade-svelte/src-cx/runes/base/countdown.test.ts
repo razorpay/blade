@@ -2,7 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { createCountdownClock } from './countdown.svelte';
 import { createTicker } from './schedule';
 
-function manualSchedule() {
+function manualSchedule(): {
+  schedule: (fn: () => void) => () => void;
+  tick: () => void;
+  pending: (() => void)[];
+} {
   const pending: Array<() => void> = [];
   return {
     schedule: (fn: () => void) => {
@@ -36,7 +40,7 @@ describe('createTicker', () => {
   });
 });
 
-function fakeClock(start = 0) {
+function fakeClock(start = 0): { now: () => number; advance(ms: number): void } {
   let t = start;
   return {
     now: () => t,

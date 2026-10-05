@@ -10,10 +10,7 @@ export const CHIP_GROUP_AXES = {
   color: ['primary', 'positive', 'negative'],
 } as const;
 
-type Axis<K extends keyof typeof CHIP_GROUP_AXES> = AxisValue<
-  typeof CHIP_GROUP_AXES,
-  K
->;
+type Axis<K extends keyof typeof CHIP_GROUP_AXES> = AxisValue<typeof CHIP_GROUP_AXES, K>;
 
 export type ChipSize = Axis<'size'>;
 export type ChipColor = Axis<'color'>;
@@ -104,28 +101,28 @@ const TONE: Record<
   Record<ChipColor, { frame: string; inner: string; content: string }>
 > = {
   unchecked: {
-    primary: UNCHECKED(),
-    positive: UNCHECKED(),
-    negative: UNCHECKED(),
+    primary: uncheckedLook(),
+    positive: uncheckedLook(),
+    negative: uncheckedLook(),
   },
   checked: {
-    primary: CHECKED('primary'),
-    positive: CHECKED('positive'),
-    negative: CHECKED('negative'),
+    primary: checkedLook('primary'),
+    positive: checkedLook('positive'),
+    negative: checkedLook('negative'),
   },
   uncheckedDisabled: {
-    primary: UNCHECKED_DISABLED(),
-    positive: UNCHECKED_DISABLED(),
-    negative: UNCHECKED_DISABLED(),
+    primary: uncheckedDisabledLook(),
+    positive: uncheckedDisabledLook(),
+    negative: uncheckedDisabledLook(),
   },
   checkedDisabled: {
-    primary: CHECKED_DISABLED('primary'),
-    positive: CHECKED_DISABLED('positive'),
-    negative: CHECKED_DISABLED('negative'),
+    primary: checkedDisabledLook('primary'),
+    positive: checkedDisabledLook('positive'),
+    negative: checkedDisabledLook('negative'),
   },
 };
 
-function UNCHECKED() {
+function uncheckedLook(): { frame: string; inner: string; content: string } {
   return {
     frame: 'border-interactive-gray-faded',
     inner: 'border-transparent bg-surface-gray-intense hover:bg-interactive-gray-faded',
@@ -133,7 +130,7 @@ function UNCHECKED() {
   };
 }
 
-function CHECKED(color: ChipColor) {
+function checkedLook(color: ChipColor): { frame: string; inner: string; content: string } {
   const frame = {
     primary: 'border-interactive-primary-default',
     positive: 'border-interactive-positive-default',
@@ -155,7 +152,7 @@ function CHECKED(color: ChipColor) {
   return { frame, inner, content };
 }
 
-function UNCHECKED_DISABLED() {
+function uncheckedDisabledLook(): { frame: string; inner: string; content: string } {
   return {
     frame: 'border-interactive-gray-disabled',
     inner: 'pointer-events-none border-transparent bg-transparent',
@@ -163,16 +160,19 @@ function UNCHECKED_DISABLED() {
   };
 }
 
-function CHECKED_DISABLED(color: ChipColor) {
+function checkedDisabledLook(color: ChipColor): { frame: string; inner: string; content: string } {
   const frame = {
     primary: 'border-interactive-primary-disabled',
     positive: 'border-interactive-positive-disabled',
     negative: 'border-interactive-negative-disabled',
   }[color];
   const inner = {
-    primary: 'pointer-events-none border-interactive-primary-disabled bg-interactive-primary-disabled',
-    positive: 'pointer-events-none border-interactive-positive-disabled bg-interactive-positive-disabled',
-    negative: 'pointer-events-none border-interactive-negative-disabled bg-interactive-negative-disabled',
+    primary:
+      'pointer-events-none border-interactive-primary-disabled bg-interactive-primary-disabled',
+    positive:
+      'pointer-events-none border-interactive-positive-disabled bg-interactive-positive-disabled',
+    negative:
+      'pointer-events-none border-interactive-negative-disabled bg-interactive-negative-disabled',
   }[color];
   return {
     frame,
@@ -182,11 +182,7 @@ function CHECKED_DISABLED(color: ChipColor) {
 }
 
 /** One chip's parts for its size, tone and colour. */
-export function resolveChip(
-  size: ChipSize,
-  tone: ChipTone,
-  color: ChipColor
-): ChipClasses {
+export function resolveChip(size: ChipSize, tone: ChipTone, color: ChipColor): ChipClasses {
   const look = SIZE[size];
   const colors = TONE[tone][color];
   return {
@@ -212,10 +208,7 @@ export function resolveChip(
 // take the FormLabel / FormHint size one step up from the chips
 // (`chipGroupLabelSizeTokens`), drawn by the shared FieldLabel and
 // FieldHint.
-const GROUP_SIZE: Record<
-  ChipSize,
-  { chips: string; field: FieldSize }
-> = {
+const GROUP_SIZE: Record<ChipSize, { chips: string; field: FieldSize }> = {
   xsmall: {
     chips: 'gap-x-2 gap-y-2 mb-2',
     field: 'small',

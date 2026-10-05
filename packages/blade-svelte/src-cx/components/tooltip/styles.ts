@@ -32,10 +32,14 @@ export type TooltipStyleProps = Record<never, never>;
 // Blade's tooltip arrow: 14×7, pointing at the trigger from the bubble's
 // facing edge, in the bubble's fill; the bubble sits 4px past its tip.
 const ARROW_SIDE: Record<PlacementSide, string> = {
-  top: 'top-full w-[14px] h-[7px] [left:var(--tooltip-arrow)] -translate-x-1/2 [clip-path:polygon(0_0,100%_0,50%_100%)]',
-  bottom: 'bottom-full w-[14px] h-[7px] [left:var(--tooltip-arrow)] -translate-x-1/2 [clip-path:polygon(50%_0,100%_100%,0_100%)]',
-  left: 'left-full w-[7px] h-[14px] [top:var(--tooltip-arrow)] -translate-y-1/2 [clip-path:polygon(0_0,100%_50%,0_100%)]',
-  right: 'right-full w-[7px] h-[14px] [top:var(--tooltip-arrow)] -translate-y-1/2 [clip-path:polygon(100%_0,100%_100%,0_50%)]',
+  top:
+    'top-full w-[14px] h-[7px] [left:var(--tooltip-arrow)] -translate-x-1/2 [clip-path:polygon(0_0,100%_0,50%_100%)]',
+  bottom:
+    'bottom-full w-[14px] h-[7px] [left:var(--tooltip-arrow)] -translate-x-1/2 [clip-path:polygon(50%_0,100%_100%,0_100%)]',
+  left:
+    'left-full w-[7px] h-[14px] [top:var(--tooltip-arrow)] -translate-y-1/2 [clip-path:polygon(0_0,100%_50%,0_100%)]',
+  right:
+    'right-full w-[7px] h-[14px] [top:var(--tooltip-arrow)] -translate-y-1/2 [clip-path:polygon(100%_0,100%_100%,0_50%)]',
 };
 
 // Native renders the bubble inside the root: a static offset per side, a
@@ -62,10 +66,7 @@ const NATIVE_ALIGN = {
 function nativePlacement(): Record<Placement, string> {
   const placements = {} as Record<Placement, string>;
   (Object.keys(NATIVE_SIDE) as PlacementSide[]).forEach((side) => {
-    const align =
-      NATIVE_ALIGN[
-        side === 'top' || side === 'bottom' ? 'vertical' : 'horizontal'
-      ];
+    const align = NATIVE_ALIGN[side === 'top' || side === 'bottom' ? 'vertical' : 'horizontal'];
     placements[side] = `${NATIVE_SIDE[side]} ${align.center}`;
     placements[`${side}-start`] = `${NATIVE_SIDE[side]} ${align.start}`;
     placements[`${side}-end`] = `${NATIVE_SIDE[side]} ${align.end}`;

@@ -101,6 +101,4 @@ export interface DrawerBehaviourProps {
 }
 
 /** The blade Drawer: its behaviour props over its style props. */
-export type DrawerComponent = Component<
-  DrawerBehaviourProps & ResponsiveProps<DrawerStyleProps>
->;
+export type DrawerComponent = Component<DrawerBehaviourProps & ResponsiveProps<DrawerStyleProps>>;

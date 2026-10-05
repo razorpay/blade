@@ -1,6 +1,7 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { createChoiceList, type ChoiceField } from '../base/choice-list.svelte';
+import { createChoiceList } from '../base/choice-list.svelte';
+import type { ChoiceField } from '../base/choice-list.svelte';
 import { PRESS_KEYS } from '../base/keys';
 import { registerEntry } from '../base/ordered-entries.svelte';
 import type { TabEntry, TabsContext } from './context';
@@ -36,7 +37,7 @@ export interface Tabs<Shared> extends TabsContext<Shared> {
   readonly attachList: Attachment<HTMLElement>;
 }
 
-const safe = (value: string) => value.replace(/[^\w-]/g, '_');
+const safe = (value: string): string => value.replace(/[^\w-]/g, '_');
 
 /**
  * The tabs behaviour: the headless choice list as a tablist — one value,
@@ -56,7 +57,9 @@ export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
     updateValue(value, onValue) {
       onValue?.(value);
     },
-    touch() {},
+    touch() {
+      // noop
+    },
   };
   const choices = createChoiceList<string>(field, {
     loop: true,
@@ -64,18 +67,16 @@ export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
   });
   // Blade picks the first tab when the host names none.
   const firstEnabled = $derived(
-    choices.items().find((value, index) => !choices.isDisabled(value, index))
+    choices.items().find((value, index) => !choices.isDisabled(value, index)),
   );
   const current = (): string | undefined => options.value() ?? firstEnabled;
 
   let indicator = $state<TabsIndicator | undefined>();
 
-  function measure() {
+  function measure(): void {
     const value = current();
     const element =
-      value === undefined
-        ? undefined
-        : choices.elementAt(choices.items().indexOf(value));
+      value === undefined ? undefined : choices.elementAt(choices.items().indexOf(value));
     indicator = element
       ? {
           x: element.offsetLeft,
@@ -93,7 +94,7 @@ export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
     measure();
   });
 
-  function select(value: string) {
+  function select(value: string): void {
     const index = choices.items().indexOf(value);
     if (value === current() || choices.isDisabled(value, index)) {
       return;
@@ -123,9 +124,7 @@ export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
       const stop = choices.tabStop();
       const items = choices.items();
       // The picked tab holds the stop until the keyboard moves it.
-      return choices.activeIndex() < 0
-        ? value === current()
-        : items[stop] === value;
+      return choices.activeIndex() < 0 ? value === current() : items[stop] === value;
     },
     select,
     moveFocus(entry, event) {
@@ -159,7 +158,7 @@ export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
     attachList(node) {
       measure();
       if (typeof ResizeObserver === 'undefined') {
-        return;
+        return undefined;
       }
       const observer = new ResizeObserver(() => measure());
       observer.observe(node);
@@ -192,7 +191,7 @@ export interface TabItem<Shared> {
  */
 export function createTabItem<Shared>(
   tabs: TabsContext<Shared> | undefined,
-  options: TabItemOptions
+  options: TabItemOptions,
 ): TabItem<Shared> {
   const { entry, attach, unregister } = registerEntry<TabEntry>(tabs, {
     value: options.value,

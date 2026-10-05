@@ -5,9 +5,7 @@ import type { Attachment } from 'svelte/attachments';
  * allowlist reads. Svelte lowercases attribute names on HTML elements,
  * which native drops; on web the two spellings are one attribute.
  */
-export function maxLength(
-  getMax: () => number | undefined
-): Attachment<Element> {
+export function maxLength(getMax: () => number | undefined): Attachment<Element> {
   return (node) => {
     const max = getMax();
     if (max === undefined) {

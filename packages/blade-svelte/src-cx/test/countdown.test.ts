@@ -11,7 +11,7 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
-const tick = (ms: number) => {
+const tick = (ms: number): void => {
   vi.advanceTimersByTime(ms);
   flushSync();
 };

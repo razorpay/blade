@@ -1,10 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import {
-  isInternalHref,
-  isRoutableClick,
-  linkRel,
-  type LinkClick,
-} from './link';
+import { isInternalHref, isRoutableClick, linkRel } from './link';
+import type { LinkClick } from './link';
 
 const plain: LinkClick = {
   button: 0,
@@ -32,42 +28,24 @@ describe('isInternalHref', () => {
 describe('isRoutableClick', () => {
   it('takes a plain primary click on an internal link', () => {
     expect(isRoutableClick(plain, { href: '/card' })).toBe(true);
-    expect(isRoutableClick(plain, { href: '/card', target: '_self' })).toBe(
-      true
-    );
+    expect(isRoutableClick(plain, { href: '/card', target: '_self' })).toBe(true);
   });
 
   it('leaves everything the browser treats specially', () => {
-    expect(isRoutableClick({ ...plain, metaKey: true }, { href: '/x' })).toBe(
-      false
-    );
-    expect(isRoutableClick({ ...plain, ctrlKey: true }, { href: '/x' })).toBe(
-      false
-    );
-    expect(isRoutableClick({ ...plain, shiftKey: true }, { href: '/x' })).toBe(
-      false
-    );
-    expect(isRoutableClick({ ...plain, button: 1 }, { href: '/x' })).toBe(
-      false
-    );
-    expect(
-      isRoutableClick({ ...plain, defaultPrevented: true }, { href: '/x' })
-    ).toBe(false);
-    expect(isRoutableClick(plain, { href: '/x', target: '_blank' })).toBe(
-      false
-    );
-    expect(isRoutableClick(plain, { href: 'https://razorpay.com' })).toBe(
-      false
-    );
+    expect(isRoutableClick({ ...plain, metaKey: true }, { href: '/x' })).toBe(false);
+    expect(isRoutableClick({ ...plain, ctrlKey: true }, { href: '/x' })).toBe(false);
+    expect(isRoutableClick({ ...plain, shiftKey: true }, { href: '/x' })).toBe(false);
+    expect(isRoutableClick({ ...plain, button: 1 }, { href: '/x' })).toBe(false);
+    expect(isRoutableClick({ ...plain, defaultPrevented: true }, { href: '/x' })).toBe(false);
+    expect(isRoutableClick(plain, { href: '/x', target: '_blank' })).toBe(false);
+    expect(isRoutableClick(plain, { href: 'https://razorpay.com' })).toBe(false);
   });
 });
 
 describe('linkRel', () => {
   it('guards a new browsing context and keeps the caller tokens', () => {
     expect(linkRel('_blank', undefined)).toBe('noopener noreferrer');
-    expect(linkRel('_blank', 'nofollow noopener')).toBe(
-      'nofollow noopener noreferrer'
-    );
+    expect(linkRel('_blank', 'nofollow noopener')).toBe('nofollow noopener noreferrer');
     expect(linkRel(undefined, 'nofollow')).toBe('nofollow');
     expect(linkRel('_self', undefined)).toBeUndefined();
   });

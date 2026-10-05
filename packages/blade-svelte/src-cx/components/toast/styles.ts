@@ -2,7 +2,8 @@ import type { Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
 import type { ToastStackGeometry } from '../../runes/toast/stack-layout';
 import { PHONE_MEDIA } from '../shared/breakpoint';
-import { INTENTS, type Intent } from '../shared/intent';
+import { INTENTS } from '../shared/intent';
+import type { Intent } from '../shared/intent';
 import type { IconSource } from '../../runes/icon/source';
 import { resolveButton } from '../button/styles';
 import { resolveIconButton } from '../icon-button/styles';
@@ -128,7 +129,8 @@ export const resolveToast: ToastStyleResolver<ToastStyleProps> = (props) => {
     icon: 'flex shrink-0 items-center icon-surface-static-white-normal',
     defaultIcon: LEADING[color],
     body: 'min-w-0 py-1',
-    content: 'block font-text font-regular text-75 leading-75 tracking-50 text-surface-static-white-normal',
+    content:
+      'block font-text font-regular text-75 leading-75 tracking-50 text-surface-static-white-normal',
     trailing: 'ms-auto flex shrink-0 items-center gap-3',
     action: resolveButton({ variant: 'tertiary', color: 'white', size: 'xsmall' }).root,
     close: resolveIconButton({ emphasis: 'subtle', size: 'medium' }).root,
@@ -174,9 +176,7 @@ const PLACEMENT: Record<
 
 // Blade's numbers: 12px gutters and peeks, 5% per step, one toast in front,
 // three peeking; a phone shows one toast expanded, a desktop three.
-export const resolveToastStack: ToastStackStyleResolver<
-  ToastStackStyleProps
-> = (props) => {
+export const resolveToastStack: ToastStackStyleResolver<ToastStackStyleProps> = (props) => {
   const { placement = 'bottom' } = props;
   const edge = PLACEMENT[placement];
   return {

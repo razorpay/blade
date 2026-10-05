@@ -8,10 +8,7 @@ export const DIVIDER_AXES = {
   thickness: ['thinner', 'thin', 'thick', 'thicker'],
 } as const;
 
-type Axis<K extends keyof typeof DIVIDER_AXES> = AxisValue<
-  typeof DIVIDER_AXES,
-  K
->;
+type Axis<K extends keyof typeof DIVIDER_AXES> = AxisValue<typeof DIVIDER_AXES, K>;
 
 /** Derived from DIVIDER_AXES: add a value there, never here. */
 export interface DividerStyleProps {

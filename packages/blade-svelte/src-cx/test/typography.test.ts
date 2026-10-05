@@ -16,12 +16,7 @@ describe('Text and Heading (preset components)', () => {
     const { getByTestId } = render(TypographyHarness);
     const styled = getByTestId('styled');
     expect(styled.tagName).toBe('SPAN');
-    for (const name of [
-      'text-75',
-      'font-medium',
-      'text-surface-gray-muted',
-      'clamp-2',
-    ]) {
+    for (const name of ['text-75', 'font-medium', 'text-surface-gray-muted', 'clamp-2']) {
       expect(styled.className).toContain(name);
     }
     expect(styled.className.endsWith('mt-2')).toBe(true);

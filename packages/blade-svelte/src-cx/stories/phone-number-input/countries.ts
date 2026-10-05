@@ -1,4 +1,7 @@
+// Two subpaths of one package: the import resolver maps both to its entry.
+// eslint-disable-next-line import/no-duplicates
 import { getFlagOfCountry } from '@razorpay/i18nify-js/geo';
+// eslint-disable-next-line import/no-duplicates
 import { getDialCodes } from '@razorpay/i18nify-js/phoneNumber';
 import type { PhoneCountry } from '../../index';
 
@@ -23,7 +26,7 @@ export function buildCountries(locale = 'en'): PhoneCountry[] {
       try {
         name = names.of(code) ?? code;
         flag = getFlagOfCountry(code as CountryCode)['4X3'];
-      } catch (e) {
+      } catch (e: unknown) {
         // A code the platform or i18nify does not know keeps its ISO code.
       }
       return {

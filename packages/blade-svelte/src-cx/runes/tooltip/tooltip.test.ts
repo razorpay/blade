@@ -4,7 +4,11 @@ import { box } from '../../test/box.svelte';
 import { run } from '../../test/run';
 import { createTooltip, createTooltipModel } from './tooltip.svelte';
 
-function fakeSchedule() {
+function fakeSchedule(): {
+  pending: { fn: () => void; ms: number }[];
+  schedule: (fn: () => void, ms: number) => () => void;
+  run(): void;
+} {
   const pending: Array<{ fn: () => void; ms: number }> = [];
   return {
     pending,
@@ -111,7 +115,7 @@ describe('createTooltip', () => {
         isDisabled: () => isDisabled.value,
         onOpenChange,
         schedule: clock.schedule,
-      })
+      }),
     );
     tooltip.handleFocusIn();
     flushSync();
@@ -128,7 +132,7 @@ describe('createTooltip', () => {
   it('a mouse hovers with intent; a touch pointer taps', () => {
     const clock = fakeSchedule();
     const { value: tooltip, unmount } = run(() =>
-      createTooltip({ isDisabled: () => false, schedule: clock.schedule })
+      createTooltip({ isDisabled: () => false, schedule: clock.schedule }),
     );
     tooltip.handlePointerEnter({ pointerType: 'mouse' } as PointerEvent);
     expect(clock.pending).toHaveLength(1);

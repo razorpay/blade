@@ -4,10 +4,10 @@ import { run } from '../../test/run';
 import type { MenuEntry } from './context';
 import { createMenu, createMenuModel } from './menu.svelte';
 
-const key = (name: string) =>
+const key = (name: string): KeyboardEvent =>
   new KeyboardEvent('keydown', { key: name, cancelable: true });
 
-function entries(labels: string[], onSelect: (label: string) => void) {
+function entries(labels: string[], onSelect: (label: string) => void): MenuEntry[] {
   const box = document.createElement('div');
   return labels.map((label) => {
     const node = box.appendChild(document.createElement('button'));
@@ -24,9 +24,7 @@ function entries(labels: string[], onSelect: (label: string) => void) {
 describe('createMenu', () => {
   it('opens on ArrowDown at the first item, once the items registered, and picks with Enter', async () => {
     const onSelect = vi.fn();
-    const { value: menu, unmount } = run(() =>
-      createMenu({ id: 'm', shared: () => undefined })
-    );
+    const { value: menu, unmount } = run(() => createMenu({ id: 'm', shared: () => undefined }));
     expect(menu.isOpen).toBe(false);
 
     const open = key('ArrowDown');
@@ -52,16 +50,12 @@ describe('createMenu', () => {
   });
 
   it('a click on the trigger opens at the first item; Escape closes', async () => {
-    const { value: menu, unmount } = run(() =>
-      createMenu({ id: 'm', shared: () => undefined })
-    );
+    const { value: menu, unmount } = run(() => createMenu({ id: 'm', shared: () => undefined }));
     const trigger = document.createElement('button');
-    menu.handleTriggerClick({ target: trigger } as unknown as MouseEvent);
+    menu.handleTriggerClick(({ target: trigger } as unknown) as MouseEvent);
     flushSync();
     expect(menu.isOpen).toBe(true);
-    entries(['Edit', 'Delete'], () => undefined).forEach((entry) =>
-      menu.register(entry)
-    );
+    entries(['Edit', 'Delete'], () => undefined).forEach((entry) => menu.register(entry));
     await tick();
     flushSync();
     expect(menu.activeIndex).toBe(0);

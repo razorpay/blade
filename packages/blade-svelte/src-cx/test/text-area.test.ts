@@ -51,12 +51,12 @@ describe('TextArea', () => {
     });
     const control = getByTestId('solo');
     expect(control.getAttribute('aria-describedby')).toBe(
-      getByText('Optional').closest('[id]')?.id
+      getByText('Optional').closest('[id]')?.id,
     );
 
     await rerender({ errorText: 'Too long', validationState: 'error' });
     expect(control.getAttribute('aria-describedby')).toBe(
-      getByText('Too long').closest('[id]')?.id
+      getByText('Too long').closest('[id]')?.id,
     );
     expect(control.getAttribute('aria-invalid')).toBe('true');
     expectClass(control, '!border-interactive-negative-default');
@@ -67,10 +67,7 @@ describe('TextArea', () => {
       props: { isDisabled: true },
     });
     expect((getByTestId('solo') as HTMLTextAreaElement).disabled).toBe(true);
-    expectClass(
-      container.firstElementChild as HTMLElement,
-      'pointer-events-none'
-    );
+    expectClass(container.firstElementChild as HTMLElement, 'pointer-events-none');
   });
 });
 
@@ -91,10 +88,16 @@ describe('TextAreaControl.native', () => {
         maxCharacters: 120,
         isInvalid: false,
         testID: 'native',
-        attach: () => {},
+        attach: () => {
+          // noop
+        },
         oninput,
-        onblur: () => {},
-        onfocus: () => {},
+        onblur: () => {
+          // noop
+        },
+        onfocus: () => {
+          // noop
+        },
       },
     });
     const control = getByTestId('native') as HTMLInputElement;

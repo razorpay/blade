@@ -2,7 +2,8 @@ import { untrack } from 'svelte';
 import { getAdapters } from '../../adapters';
 import type { BackAnswer } from '../base/back';
 import { createDisclosure } from '../base/disclosure';
-import { getLayers, type LayerEntry } from '../layer/layers';
+import { getLayers } from '../layer/layers';
+import type { LayerEntry } from '../layer/layers';
 
 /** What asked the dialog to go: the user, through one of its surfaces. */
 export type DialogDismissSource = 'cross' | 'blur' | 'escape' | 'drag' | 'back';
@@ -61,9 +62,7 @@ export interface DialogModel {
  * focus, transitions, the stack entry it lives in — belongs to the rune
  * below, which drops the layer when `isOpen()` goes false.
  */
-export function createDialogModel(
-  options: DialogModelOptions = {}
-): DialogModel {
+export function createDialogModel(options: DialogModelOptions = {}): DialogModel {
   const disclosure = createDisclosure<DialogCloseSource>({
     defaultOpen: true,
     dismissible: options.isDismissible,

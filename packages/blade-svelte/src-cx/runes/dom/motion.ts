@@ -1,21 +1,13 @@
 /** Whether the user asked for less motion. False where there is no `matchMedia` (Node, native). */
 export function prefersReducedMotion(): boolean {
-  return (
-    typeof matchMedia === 'function' &&
-    matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
+  return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 /**
  * A CSS `cubic-bezier(x1, y1, x2, y2)` as an easing function, for JS-driven
  * transitions that must follow a Blade easing token.
  */
-export function cubicBezier(
-  x1: number,
-  y1: number,
-  x2: number,
-  y2: number
-): (t: number) => number {
+export function cubicBezier(x1: number, y1: number, x2: number, y2: number): (t: number) => number {
   const at = (a: number, b: number, s: number): number =>
     3 * a * s * (1 - s) ** 2 + 3 * b * s ** 2 * (1 - s) + s ** 3;
   return (t) => {

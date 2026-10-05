@@ -1,11 +1,8 @@
 import { defineContext } from '../context';
-import {
-  createBreakpoints,
-  readCssBreakpoints,
-  type BreakpointState,
-  type Breakpoints,
-} from './breakpoints.svelte';
-import { atBreakpoint, isResponsive, type Responsive } from './responsive';
+import { createBreakpoints, readCssBreakpoints } from './breakpoints.svelte';
+import type { BreakpointState, Breakpoints } from './breakpoints.svelte';
+import { atBreakpoint, isResponsive } from './responsive';
+import type { Responsive } from './responsive';
 
 /** What one BladeProvider says: an overall size and per-component values. */
 export interface DefaultsLayer {
@@ -38,8 +35,7 @@ export const BLADE_BREAKPOINTS: Breakpoints = {
 // Without widths from a provider every component shares one tracker, at
 // the widths the stylesheet was built with (`--blade-breakpoint-*`), else
 // Blade's. Read once: the build does not change under a running page.
-let fallback: BreakpointState | undefined;
-let fallbackWidths: Breakpoints | undefined;
+let fallback: BreakpointState | undefined, fallbackWidths: Breakpoints | undefined;
 function fallbackBreakpoints(): BreakpointState {
   fallback ??= createBreakpoints(() => {
     fallbackWidths ??= readCssBreakpoints();
@@ -55,14 +51,12 @@ function fallbackBreakpoints(): BreakpointState {
  */
 export function provideDefaults(
   layer: () => DefaultsLayer,
-  widths?: () => Breakpoints | undefined
+  widths?: () => Breakpoints | undefined,
 ): BreakpointState {
   const parent = DEFAULTS.get();
   const breakpoints = widths
-    ? createBreakpoints(
-        () => widths() ?? BLADE_BREAKPOINTS
-      )
-    : (parent?.breakpoints ?? fallbackBreakpoints());
+    ? createBreakpoints(() => widths() ?? BLADE_BREAKPOINTS)
+    : parent?.breakpoints ?? fallbackBreakpoints();
   DEFAULTS.set({ layer, parent, breakpoints });
   return breakpoints;
 }
@@ -129,7 +123,7 @@ export interface Defaults<P> {
 export function useDefaults<P extends object>(
   name: string,
   props: () => P,
-  options: UseDefaultsOptions = {}
+  options: UseDefaultsOptions = {},
 ): Defaults<P> {
   const node = DEFAULTS.get();
   const breakpoints = node?.breakpoints ?? fallbackBreakpoints();
@@ -142,10 +136,7 @@ export function useDefaults<P extends object>(
         return atBreakpoint(own as Responsive<unknown>, breakpoints.current);
       }
       if (key === 'size' && options.sizes && layer.size !== undefined) {
-        const snapped = snapSize(
-          atBreakpoint(layer.size, breakpoints.current),
-          options.sizes
-        );
+        const snapped = snapSize(atBreakpoint(layer.size, breakpoints.current), options.sizes);
         if (snapped !== undefined) {
           return snapped;
         }

@@ -2,6 +2,13 @@ import type { Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
 
 /**
+ * Why the button is busy: the consumer's `isLoading` prop (`host`), the
+ * model settling an async `onClick` (`press`), or the enclosing form's
+ * submission — Enter-key submissions included (`form`).
+ */
+import type { ButtonBusyCause } from '../../runes/button/press.svelte';
+
+/**
  * The parts Button toggles from JS. Static class strings only; interaction
  * states use the variant grammar (`hover:`, `active:`, `disabled:`) so
  * native needs no bridge round-trip — the parts below are the states the
@@ -40,13 +47,6 @@ export interface ButtonClasses {
 
 export type ButtonStyleResolver<P> = (props: P) => ButtonClasses;
 
-/**
- * Why the button is busy: the consumer's `isLoading` prop (`host`), the
- * model settling an async `onClick` (`press`), or the enclosing form's
- * submission — Enter-key submissions included (`form`).
- */
-import type { ButtonBusyCause } from '../../runes/button/press.svelte';
-
 export type { ButtonBusyCause };
 
 /** The shape of Button's busy loader, kept for consumers of the type. */
@@ -59,10 +59,7 @@ export const BUTTON_AXES = {
   size: ['xsmall', 'small', 'medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof BUTTON_AXES> = AxisValue<
-  typeof BUTTON_AXES,
-  K
->;
+type Axis<K extends keyof typeof BUTTON_AXES> = AxisValue<typeof BUTTON_AXES, K>;
 type Variant = Axis<'variant'>;
 type Color = Axis<'color'>;
 type Size = Axis<'size'>;
@@ -185,13 +182,12 @@ const DOT_COLOR: Record<'filled' | 'outlined', Record<Color, string>> = {
 };
 
 export const resolveButton: ButtonStyleResolver<ButtonStyleProps> = (
-  props: ButtonStyleProps = {}
+  props: ButtonStyleProps = {},
 ) => {
   const { variant = 'primary', size = 'medium' } = props;
   // Blade's tertiary takes primary or white only.
   const requested = props.color ?? 'primary';
-  const color: Color =
-    variant === 'tertiary' && requested !== 'white' ? 'primary' : requested;
+  const color: Color = variant === 'tertiary' && requested !== 'white' ? 'primary' : requested;
   const kind = variant === 'primary' ? 'filled' : 'outlined';
   const look =
     kind === 'filled'

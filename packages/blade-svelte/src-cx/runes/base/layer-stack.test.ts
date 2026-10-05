@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createDisclosure, type DisclosureModel } from './disclosure';
+import { createDisclosure } from './disclosure';
+import type { DisclosureModel } from './disclosure';
 import { createLayerStack } from './layer-stack.svelte';
+import type { BackAnswer } from './back';
 
 describe('createLayerStack', () => {
   it('pushes in order, closes one, pops through, and resolves removed layers', async () => {
@@ -58,7 +60,7 @@ describe('createLayerStack', () => {
       dismissible: () => false,
     });
     stack.push(dialog);
-    const onTop = (top: { entry: DisclosureModel }) => top.entry.back();
+    const onTop = (top: { entry: DisclosureModel }): BackAnswer => top.entry.back();
 
     // Open and non-dismissable: back is swallowed by the dialog, nothing pops.
     expect(stack.back({ onTop })).toBe(true);

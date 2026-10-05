@@ -43,20 +43,38 @@ export function createSurface(options: SurfaceOptions): Surface {
   const layers = getLayers();
   const panel = createNodeRef<HTMLElement>();
 
+  // Where focus returns on close: what had it the moment the surface opened,
+  // captured before the page beneath goes inert and the browser drops it.
+  // It is handed back after the closing flush, once the page is no longer
+  // inert: a focus call on an inert element silently fails.
   $effect(() => {
     if (!options.isOpen()) {
       return undefined;
     }
     return untrack(() => {
-      const node = panel.current;
-      const returnFocus = captureFocusReturn(() => node);
-      // Content with its own autoFocus has already taken focus. The panel
-      // is still at its closed position (translated off the host), and an
-      // overflow-hidden host would scroll to reveal it: never scroll.
-      if (node && !node.contains(document.activeElement)) {
+      const restore = captureFocusReturn(() => panel.current);
+      return () => queueMicrotask(restore);
+    });
+  });
+
+  // Focus moves in once the panel is mounted and the surface is the top
+  // layer: until both, the panel is missing or inert (`inert={!isTop}`), and
+  // a focus call would silently fail — a child's effects run before its
+  // owner's, so this runs before the dialog has pushed its layer. Reading
+  // `isTop` also brings focus back in when a surface above it closes without
+  // returning focus here. Content with its own autoFocus has already taken
+  // focus. The panel is still at its closed position (translated off the
+  // host), and an overflow-hidden host would scroll to reveal it: never
+  // scroll.
+  $effect(() => {
+    const node = panel.current;
+    if (!options.isOpen() || !options.isTop() || !node) {
+      return;
+    }
+    untrack(() => {
+      if (!node.contains(document.activeElement)) {
         node.focus({ preventScroll: true });
       }
-      return returnFocus;
     });
   });
 
@@ -73,7 +91,7 @@ export function createSurface(options: SurfaceOptions): Surface {
   // dropped, when the owner closes it.
   const drag = createSheetDrag({ dismissible: options.isDismissible });
 
-  function follow(offset: number) {
+  function follow(offset: number): void {
     const node = panel.current;
     if (!node) {
       return;
@@ -87,9 +105,7 @@ export function createSurface(options: SurfaceOptions): Surface {
     const scrim = options.isTop() ? layers.scrim() : undefined;
     if (scrim) {
       scrim.style.transition = dragging ? 'none' : '';
-      scrim.style.opacity = dragging
-        ? String(1 - Math.min(1, offset / (extent(node) || 1)))
-        : '';
+      scrim.style.opacity = dragging ? String(1 - Math.min(1, offset / (extent(node) || 1))) : '';
     }
   }
 
@@ -108,9 +124,7 @@ export function createSurface(options: SurfaceOptions): Surface {
   // match — or cannot be asked — the zone is plain content.
   function mayDrag(): boolean {
     const media = options.dragMedia();
-    return (
-      !media || typeof matchMedia !== 'function' || matchMedia(media).matches
-    );
+    return !media || typeof matchMedia !== 'function' || matchMedia(media).matches;
   }
 
   return {
@@ -125,11 +139,7 @@ export function createSurface(options: SurfaceOptions): Surface {
       if (event.key !== 'Tab' || !node) {
         return;
       }
-      const target = trappedTabTarget(
-        node,
-        document.activeElement,
-        event.shiftKey
-      );
+      const target = trappedTabTarget(node, document.activeElement, event.shiftKey);
       if (target) {
         event.preventDefault();
         target.focus();
@@ -149,9 +159,7 @@ export function createSurface(options: SurfaceOptions): Surface {
       // Captured only once it moves: a plain press on something interactive
       // inside the header must still reach it as a click.
       if (offset > 0) {
-        (event.currentTarget as HTMLElement).setPointerCapture?.(
-          event.pointerId
-        );
+        (event.currentTarget as HTMLElement).setPointerCapture?.(event.pointerId);
       }
       follow(offset);
     },

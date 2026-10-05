@@ -28,8 +28,8 @@
   class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <div class="grid gap-4 p-6">
-    <Button class="w-40" onClick={() => (isOpen = true)}>Open modal</Button>
-    <p class="text-75 leading-50 text-surface-gray-subtle">Last closed by: {lastSource}</p>
+    <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open modal</Button>
+    <p class="text-75 leading-50 text-surface-gray-subtle">Last closed by: <span data-testid="last-source">{lastSource}</span></p>
   </div>
   <LayerHost />
 </div>
@@ -41,6 +41,7 @@
   isDismissible={args.isDismissible}
   title={args.title}
   closeLabel={args.closeLabel || undefined}
+  testID="modal"
   onDismiss={({ source }) => {
     lastSource = source;
   }}
@@ -51,6 +52,7 @@
       <div
         class="absolute left-1/2 top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-max border-thin border-solid border-surface-gray-muted bg-popup-gray-subtle text-surface-gray-normal shadow-highRaised"
         aria-hidden="true"
+        data-testid="chrome-badge"
       >
         <Icon source={icons.card} size="large" />
       </div>

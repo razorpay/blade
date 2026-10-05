@@ -30,8 +30,7 @@ const meta: StoryMeta = {
     },
     IconOnly: {
       name: 'Icon only',
-      description:
-        'Segments with a leading icon and no label are named by accessibilityLabel.',
+      description: 'Segments with a leading icon and no label are named by accessibilityLabel.',
       argTypes: {},
     },
     InForm: {

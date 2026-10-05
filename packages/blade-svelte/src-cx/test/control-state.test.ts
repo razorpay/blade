@@ -35,10 +35,10 @@ describe('selection controls: snippet state, label area and rich hints', () => {
   it('ChipGroup and RadioGroup take a labelArea', () => {
     const { getByTestId, getByText } = render(ControlStateHarness);
     expect(getByTestId('chips-extra').parentElement).toBe(
-      getByText('Tip').parentElement?.parentElement
+      getByText('Tip').parentElement?.parentElement,
     );
     expect(getByTestId('plans-extra').parentElement).toBe(
-      getByText('Plan').parentElement?.parentElement
+      getByText('Plan').parentElement?.parentElement,
     );
   });
 

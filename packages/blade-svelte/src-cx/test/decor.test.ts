@@ -37,9 +37,7 @@ describe('TrustBadge (preset component)', () => {
     const badge = getByTestId('trust-icon');
     expect(badge.className).not.toContain('rounded-max');
     expect(badge.textContent?.trim()).toBe('');
-    expect(
-      badge.contains(getByRole('img', { name: 'Razorpay Trusted Business' }))
-    ).toBe(true);
+    expect(badge.contains(getByRole('img', { name: 'Razorpay Trusted Business' }))).toBe(true);
   });
 });
 
@@ -97,13 +95,16 @@ describe('EmptyState, as Blade', () => {
 describe('Divider, as Blade', () => {
   it('takes its colour from variant and its width from thickness', async () => {
     const { resolveDivider } = await import('../components/divider/styles');
-    const line = resolveDivider({ variant: 'normal', thickness: 'thicker', dividerStyle: 'dashed' });
+    const line = resolveDivider({
+      variant: 'normal',
+      thickness: 'thicker',
+      dividerStyle: 'dashed',
+    });
     expect(line).toContain('border-surface-gray-normal');
     expect(line).toContain('border-b-thicker');
     expect(line).toContain('border-dashed');
     expect(resolveDivider({ orientation: 'vertical', thickness: 'thinner' })).toContain(
-      'border-l-thinner'
+      'border-l-thinner',
     );
   });
 });
-

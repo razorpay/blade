@@ -39,25 +39,23 @@ export interface Chip<Shared> {
  */
 export function createChip<Shared>(
   group: ChipGroupContext<Shared> | undefined,
-  options: ChipOptions
+  options: ChipOptions,
 ): Chip<Shared> {
-  const { entry, attach, unregister } = registerEntry<
-    ChoiceEntry<string>,
-    HTMLInputElement
-  >(group, {
-    value: () => options.value(),
-    isDisabled: () => options.isDisabled(),
-  });
+  const { entry, attach, unregister } = registerEntry<ChoiceEntry<string>, HTMLInputElement>(
+    group,
+    {
+      value: () => options.value(),
+      isDisabled: () => options.isDisabled(),
+    },
+  );
   onDestroy(unregister);
 
   const isChecked = $derived(Boolean(group?.isSelected(options.value())));
-  const isDisabled = $derived(
-    options.isDisabled() || Boolean(group?.isDisabled)
-  );
+  const isDisabled = $derived(options.isDisabled() || Boolean(group?.isDisabled));
   let isPressed = $state(false);
   const write = syncChecked(() => isChecked);
 
-  const press = (next: boolean) => {
+  const press = (next: boolean): void => {
     if (!isDisabled) {
       isPressed = next;
     }

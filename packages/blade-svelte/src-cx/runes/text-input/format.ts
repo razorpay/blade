@@ -22,11 +22,7 @@
  */
 
 /** [pattern, flags, replacement] — flags: '' (first match) | 'g' (all). */
-export type FormatRule = [
-  pattern: string,
-  flags: '' | 'g',
-  replacement: string,
-];
+export type FormatRule = [pattern: string, flags: '' | 'g', replacement: string];
 
 export type FormatSpec = { parse: FormatRule[]; format: FormatRule[] };
 
@@ -121,8 +117,7 @@ export function serializeSpec(spec: FormatSpec): string {
   return JSON.stringify({ p: spec.parse, f: spec.format });
 }
 
-const FORBIDDEN_PATTERN =
-  /\(\?<|\\[1-9]|\\p\{|\\k</i; /* lookbehind/named groups, backrefs, \p{…} */
+const FORBIDDEN_PATTERN = /\(\?<|\\[1-9]|\\p\{|\\k</i; /* lookbehind/named groups, backrefs, \p{…} */
 const FORBIDDEN_REPLACEMENT = /\$(?![1-9])/; /* $&, $', $`, bare/literal $ */
 
 /**
@@ -142,7 +137,7 @@ export function validateRules(rules: FormatRule[]): string | null {
       return `replacement '${replacement}' may only reference $1–$9`;
     }
     try {
-      new RegExp(pattern, flags);
+      RegExp(pattern, flags);
     } catch {
       return `pattern /${pattern}/ does not compile`;
     }

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import BottomSheetHarness from './fixtures/BottomSheetHarness.svelte';
+import type { RenderResult } from '@testing-library/svelte';
+import type { Mock } from 'vitest';
 
 // Blade-owned: BottomSheet ships whole, over Modal in its `sheet` variant.
 // The modal's behaviour (model, layers, focus, the drag) is tested in
@@ -12,8 +14,7 @@ describe('BottomSheet (blade)', () => {
   });
 
   it('renders nothing while closed and a bottom-anchored modal once open', async () => {
-    const { queryByTestId, getByTestId, getByRole } =
-      render(BottomSheetHarness);
+    const { queryByTestId, getByTestId, getByRole } = render(BottomSheetHarness);
     expect(queryByTestId('sheet')).toBeNull();
 
     await fireEvent.click(getByTestId('trigger'));
@@ -45,7 +46,7 @@ describe('BottomSheet (blade)', () => {
       props: { isOpen: true, onDismiss },
     });
     const zone = getByTestId('sheet-drag-zone');
-    const pointer = (type: string, clientY: number, timeStamp: number) => {
+    const pointer = (type: string, clientY: number, timeStamp: number): Event => {
       const event = new Event(type, { bubbles: true });
       Object.defineProperties(event, {
         clientY: { value: clientY },
@@ -71,29 +72,24 @@ describe('BottomSheet (blade)', () => {
     });
     const panel = getByTestId('sheet');
     expect(panel.className).not.toMatch(/m:w-/);
-    expect(panel.className).toContain(
-      '[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]'
-    );
+    expect(panel.className).toContain('[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]');
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });
 
   it('a non-dismissible sheet reports the backdrop, stays open and has no close button', async () => {
     const onDismiss = vi.fn();
-    const { getByTestId, queryByRole, queryByTestId } = render(
-      BottomSheetHarness,
-      { props: { isOpen: true, isDismissible: false, onDismiss } }
-    );
+    const { getByTestId, queryByRole, queryByTestId } = render(BottomSheetHarness, {
+      props: { isOpen: true, isDismissible: false, onDismiss },
+    });
     await fireEvent.click(getByTestId('host-backdrop'));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'blur' })
-    );
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'blur' }));
     expect(queryByTestId('sheet')).not.toBeNull();
     expect(queryByRole('button', { name: 'Close' })).toBeNull();
   });
 });
 
 describe('BottomSheet isDraggable', () => {
-  it('false: no handle, no drag zone, and the close button sits as a modal\'s', () => {
+  it("false: no handle, no drag zone, and the close button sits as a modal's", () => {
     const { getByTestId, queryByTestId, getByRole } = render(BottomSheetHarness, {
       props: { isOpen: true, isDraggable: false },
     });
@@ -114,7 +110,7 @@ describe('BottomSheet variant per breakpoint', () => {
   let width = 390;
   let listeners: Array<() => void> = [];
 
-  function stubViewport(initial: number) {
+  function stubViewport(initial: number): void {
     width = initial;
     listeners = [];
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
@@ -134,7 +130,7 @@ describe('BottomSheet variant per breakpoint', () => {
     delete (window as { matchMedia?: unknown }).matchMedia;
   });
 
-  function pointer(type: string, clientY: number, timeStamp: number) {
+  function pointer(type: string, clientY: number, timeStamp: number): Event {
     const event = new Event(type, { bubbles: true });
     Object.defineProperties(event, {
       clientY: { value: clientY },
@@ -144,7 +140,7 @@ describe('BottomSheet variant per breakpoint', () => {
     return event;
   }
 
-  function open() {
+  function open(): RenderResult<typeof BottomSheetHarness> & { onDismiss: Mock } {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(400);
     const onDismiss = vi.fn();
     const queries = render(BottomSheetHarness, {
@@ -157,7 +153,7 @@ describe('BottomSheet variant per breakpoint', () => {
     stubViewport(390);
     const { getByTestId, onDismiss } = open();
     const panel = getByTestId('sheet');
-    expect((panel.parentElement as HTMLElement).className).toContain('items-end');
+    expect(panel.parentElement!.className).toContain('items-end');
     expect(panel.className).toContain('rounded-tl-large');
     const zone = getByTestId('sheet-drag-zone');
     await fireEvent(zone, pointer('pointerdown', 100, 0));
@@ -171,7 +167,7 @@ describe('BottomSheet variant per breakpoint', () => {
     stubViewport(1200);
     const { getByTestId, queryByTestId } = open();
     const panel = getByTestId('sheet');
-    expect((panel.parentElement as HTMLElement).className).toContain('items-center');
+    expect(panel.parentElement!.className).toContain('items-center');
     expect(panel.className).toContain('rounded-large');
     expect(panel.className).toContain('group-data-[state=closed]:scale-95');
     expect(queryByTestId('sheet-drag-zone')).toBeNull();

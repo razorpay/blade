@@ -9,9 +9,7 @@ export interface PasswordReveal {
  * default, and masked again while disabled — a disabled field has no reveal
  * button to hide it with.
  */
-export function createPasswordReveal(options: {
-  isDisabled: () => boolean;
-}): PasswordReveal {
+export function createPasswordReveal(options: { isDisabled: () => boolean }): PasswordReveal {
   let revealed = $state(false);
   return {
     get isRevealed() {

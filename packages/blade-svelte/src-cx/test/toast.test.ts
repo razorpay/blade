@@ -3,8 +3,9 @@ import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import type { Toasts } from '../components/toast/toasts';
 import ToastHarness from './fixtures/ToastHarness.svelte';
 import { expectClass } from './classes';
+import type { RenderResult } from '@testing-library/svelte';
 
-function setup() {
+function setup(): RenderResult<typeof ToastHarness> & { toasts: Toasts } {
   let toasts: Toasts | undefined;
   const view = render(ToastHarness, {
     props: {
@@ -13,7 +14,7 @@ function setup() {
       },
     },
   });
-  return { ...view, toasts: toasts as Toasts };
+  return { ...view, toasts: toasts! };
 }
 
 afterEach(() => {
@@ -23,7 +24,7 @@ afterEach(() => {
 });
 
 /** A phone: the stack collapses past one toast and a tap holds it. */
-function phone(matches: boolean) {
+function phone(matches: boolean): void {
   (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
     query,
     matches,
@@ -32,19 +33,20 @@ function phone(matches: boolean) {
   });
 }
 
-const wrapper = (toast: HTMLElement) => toast.parentElement as HTMLElement;
-const offsetOf = (toast: HTMLElement) =>
+const wrapper = (toast: HTMLElement): HTMLElement => toast.parentElement!;
+const offsetOf = (toast: HTMLElement): string =>
   wrapper(toast).style.getPropertyValue('--toast-offset');
 
 describe('showToast', () => {
-  it('icon replaces the colour\'s glyph', async () => {
+  it("icon replaces the colour's glyph", async () => {
     const { bank } = await import('../components/icons');
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: 'Paid', duration: 0, icon: bank, testID: 'paid' });
     await waitFor(() => getByTestId('paid'));
     const svg = getByTestId('paid').querySelector('svg')!;
     const own = new DOMParser().parseFromString(bank, 'image/svg+xml').documentElement;
-    const paths = (root: Element) => [...root.querySelectorAll('path')].map((p) => p.getAttribute('d'));
+    const paths = (root: Element): (string | null)[] =>
+      [...root.querySelectorAll('path')].map((p) => p.getAttribute('d'));
     expect(paths(svg)).toEqual(paths(own));
   });
 
@@ -61,9 +63,7 @@ describe('showToast', () => {
       // Blade's glyph for the colour, and its dismiss button.
       expect(toast.querySelector('svg')).not.toBeNull();
       expect(toast.querySelector('button')?.getAttribute('aria-label')).toBe('Dismiss toast');
-      expect(getByTestId('toasts').getAttribute('aria-label')).toBe(
-        'Notifications'
-      );
+      expect(getByTestId('toasts').getAttribute('aria-label')).toBe('Notifications');
       expect(getByTestId('host').contains(toast)).toBe(true);
       expect(getByTestId('page').hasAttribute('inert')).toBe(false);
     });
@@ -168,20 +168,16 @@ describe('showToast', () => {
       duration: 0,
       testID: 'failed',
     });
-    return waitFor(() => expect(getByTestId('failed')).toBeTruthy()).then(
-      () => {
-        expect(getByTestId('failed').getAttribute('role')).toBe('alert');
-        expect(getByTestId('failed').className).toContain('bg-popup-negative-moderate');
-      }
-    );
+    return waitFor(() => expect(getByTestId('failed')).toBeTruthy()).then(() => {
+      expect(getByTestId('failed').getAttribute('role')).toBe('alert');
+      expect(getByTestId('failed').className).toContain('bg-popup-negative-moderate');
+    });
   });
 
   it("slides in from the stack's edge at Blade's pace and out at its exit pace", () => {
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: 'Hi', duration: 0, testID: 'hi' });
-    return waitFor(() =>
-      expect(getByTestId('hi').dataset.state).toBe('open')
-    ).then(() => {
+    return waitFor(() => expect(getByTestId('hi').dataset.state).toBe('open')).then(() => {
       const toast = getByTestId('hi');
       expectClass(toast, 'data-[state=closed]:translate-y-full');
       expectClass(toast, 'data-[state=closed]:opacity-0');
@@ -195,15 +191,11 @@ describe('showToast', () => {
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: '1', duration: 0, testID: 'one' });
     toasts.showToast({ content: '2', duration: 0, testID: 'two' });
-    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')).then(
-      () => {
-        expect(offsetOf(getByTestId('two'))).toBe('0');
-        expectClass(wrapper(getByTestId('one')), 'duration-gentle');
-        expect(
-          wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')
-        ).toBe('1');
-      }
-    );
+    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')).then(() => {
+      expect(offsetOf(getByTestId('two'))).toBe('0');
+      expectClass(wrapper(getByTestId('one')), 'duration-gentle');
+      expect(wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')).toBe('1');
+    });
   });
 
   it('on a phone the rest peek behind the front, smaller, until a tap expands them', () => {
@@ -219,13 +211,9 @@ describe('showToast', () => {
         expect(behind.style.getPropertyValue('--toast-height')).toBe('44px');
         return fireEvent.click(getByTestId('toasts'));
       })
-      .then(() =>
-        waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56'))
-      )
+      .then(() => waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')))
       .then(() => {
-        expect(
-          wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')
-        ).toBe('1');
+        expect(wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')).toBe('1');
       });
   });
 });

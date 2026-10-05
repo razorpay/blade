@@ -36,11 +36,12 @@ const meta: StoryMeta = {
     },
     Currencies: {
       description:
-        'With fractionDigits auto the currency decides the decimals (JPY 0, KWD 3); the locale decides the grouping and the currency\'s side.',
+        "With fractionDigits auto the currency decides the decimals (JPY 0, KWD 3); the locale decides the grouping and the currency's side.",
       argTypes: {},
     },
     Matrix: {
-      description: 'One Amount inside Text and Heading sizes, subtle and plain affixes: it takes the surrounding text’s style.',
+      description:
+        'One Amount inside Text and Heading sizes, subtle and plain affixes: it takes the surrounding text’s style.',
       argTypes: {},
     },
   },

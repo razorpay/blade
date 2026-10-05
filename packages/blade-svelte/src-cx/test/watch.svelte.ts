@@ -23,7 +23,7 @@ export function watch<T>(read: () => T): Watched<T> {
   return {
     seen,
     get last() {
-      return seen[seen.length - 1] as T;
+      return seen[seen.length - 1];
     },
     stop,
   };

@@ -6,10 +6,9 @@ import type { Attachment } from 'svelte/attachments';
  * `useTruncationTitle`. The box it overflows is its parent.
  */
 export const titleWhenTruncated: Attachment<HTMLElement> = (node) => {
-  const check = () => {
+  const check = (): void => {
     const box = node.parentElement ?? node;
-    const isCut =
-      node.scrollHeight > box.clientHeight || node.scrollWidth > box.clientWidth;
+    const isCut = node.scrollHeight > box.clientHeight || node.scrollWidth > box.clientWidth;
     if (isCut) {
       node.title = node.textContent?.trim() ?? '';
     } else {

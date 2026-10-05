@@ -54,7 +54,7 @@ export interface FieldHooks {
  */
 function toConstraints(
   props: FieldProps,
-  kind: FieldConstraints['kind'] | undefined
+  kind: FieldConstraints['kind'] | undefined,
 ): FieldConstraints | undefined {
   if (!kind || props.disabled || props.readonly || props.type === 'hidden') {
     return undefined;
@@ -96,7 +96,7 @@ function defaultParse(value: unknown): unknown {
 export function createField(
   props: FieldProps,
   onValueChange: ValueCallback,
-  hooks: FieldHooks = {}
+  hooks: FieldHooks = {},
 ): FieldModel {
   let value = $state.raw<unknown>(null);
   const record: FieldModelRecord = {
@@ -139,7 +139,7 @@ export function createField(
     if (
       record.compare(
         newValue,
-        untrack(() => value)
+        untrack(() => value),
       )
     ) {
       return;
@@ -159,9 +159,7 @@ export function createField(
     // legitimately become controlled mid-life. Deliberate divergence.
     updateProps(next) {
       updateProps(next);
-      const inputValue = hasOwn(next, 'value')
-        ? next.value
-        : untrack(() => value);
+      const inputValue = hasOwn(next, 'value') ? next.value : untrack(() => value);
       updateValue(inputValue, onValueChange);
     },
     updateValue,
@@ -183,7 +181,7 @@ export function createField(
 function seedUncontrolledValue(
   field: FieldModel,
   props: FieldProps,
-  store: FieldStore | undefined
+  store: FieldStore | undefined,
 ): void {
   if (hasOwn(props, 'value')) {
     return;
@@ -223,7 +221,7 @@ export interface FieldSetup {
   edit<R>(
     apply: (onValue: (value: unknown) => void) => R,
     accept: (value: unknown) => void,
-    event?: unknown
+    event?: unknown,
   ): R;
 }
 
@@ -237,7 +235,7 @@ export interface FieldSetup {
 export function setupField(
   props: () => FieldProps,
   kind: FieldHooks['kind'],
-  onValueChange: (value: unknown) => void
+  onValueChange: (value: unknown) => void,
 ): FieldSetup {
   const form = getForm();
   const adapters = getAdapters();
@@ -260,7 +258,7 @@ export function setupField(
     onMount(() => form.reorder());
   }
 
-  const notifyInput = (event?: unknown) => {
+  const notifyInput = (event?: unknown): void => {
     form?.handleInput(field.record.name, event).catch((error: unknown) => {
       adapters.captureError?.(error);
     });

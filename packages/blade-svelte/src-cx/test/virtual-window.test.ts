@@ -10,16 +10,16 @@ const banks = Array.from({ length: 200 }, (_, i) => ({
 
 // jsdom has no layout: rows are 40px, except every fifth which is 80px, and
 // the viewport is 200px tall.
-function stubLayout() {
+function stubLayout(): void {
   vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(200);
-  vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(
-    function (this: HTMLElement) {
-      const id = this.querySelector('input')?.getAttribute('data-testid');
-      const index = Number(id?.split('-')[1] ?? 0);
-      const height = index % 5 === 0 ? 80 : 40;
-      return { height, width: 300, top: 0, left: 0 } as DOMRect;
-    }
-  );
+  vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function boundingRect(
+    this: HTMLElement,
+  ) {
+    const id = this.querySelector('input')?.getAttribute('data-testid');
+    const index = Number(id?.split('-')[1] ?? 0);
+    const height = index % 5 === 0 ? 80 : 40;
+    return { height, width: 300, top: 0, left: 0 } as DOMRect;
+  });
 }
 
 afterEach(() => {
@@ -27,9 +27,9 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-const mounted = (container: HTMLElement) =>
-  Array.from(container.querySelectorAll('input[data-testid^="banks-"]')).map(
-    (input) => Number(input.getAttribute('data-testid')?.split('-')[1])
+const mounted = (container: HTMLElement): number[] =>
+  Array.from(container.querySelectorAll('input[data-testid^="banks-"]')).map((input) =>
+    Number(input.getAttribute('data-testid')?.split('-')[1]),
   );
 
 describe('OptionList virtualize', () => {
@@ -44,11 +44,8 @@ describe('OptionList virtualize', () => {
     expect(rows.length).toBeLessThan(20);
 
     // The rest of the list is predicted from the rows measured so far.
-    const content = getByTestId('banks-0').closest('label')
-      ?.parentElement as HTMLElement;
-    await waitFor(() =>
-      expect(parseFloat(content.style.paddingBottom)).toBeGreaterThan(7000)
-    );
+    const content = getByTestId('banks-0').closest('label')!.parentElement!;
+    await waitFor(() => expect(parseFloat(content.style.paddingBottom)).toBeGreaterThan(7000));
     expect(content.style.paddingTop).toBe('0px');
   });
 
@@ -58,9 +55,7 @@ describe('OptionList virtualize', () => {
       props: { banks, virtualize: true },
     });
     await waitFor(() => expect(mounted(container).length).toBeGreaterThan(0));
-    const viewport = container.querySelector(
-      '[style*="overflow-anchor"]'
-    ) as HTMLElement;
+    const viewport = container.querySelector('[style*="overflow-anchor"]')!;
 
     viewport.scrollTop = 4800;
     await fireEvent.scroll(viewport);
@@ -75,15 +70,12 @@ describe('OptionList virtualize', () => {
       props: { banks, virtualize: true, value: banks[150] },
     });
     await waitFor(() => expect(mounted(container)).toContain(150));
-    const viewport = container.querySelector(
-      '[style*="overflow-anchor"]'
-    ) as HTMLElement;
+    const viewport = container.querySelector('[style*="overflow-anchor"]')!;
     expect(viewport.scrollTop).toBeGreaterThan(0);
     // The pick is the tab stop, mounted where it is.
-    expect(
-      (container.querySelector('input[tabindex="0"]') as HTMLInputElement)
-        .dataset.testid
-    ).toBe('banks-150');
+    expect(container.querySelector<HTMLElement>('input[tabindex="0"]')!.dataset.testid).toBe(
+      'banks-150',
+    );
   });
 
   it('keeps its one tab stop mounted: a pick beyond the slice hands it to the first row in view', async () => {
@@ -92,15 +84,11 @@ describe('OptionList virtualize', () => {
       props: { banks, virtualize: true, value: banks[150] },
     });
     await waitFor(() => expect(mounted(container)).toContain(150));
-    const viewport = container.querySelector(
-      '[style*="overflow-anchor"]'
-    ) as HTMLElement;
+    const viewport = container.querySelector('[style*="overflow-anchor"]')!;
     viewport.scrollTop = 0;
     await fireEvent.scroll(viewport);
     await waitFor(() => expect(mounted(container)).not.toContain(150));
-    const stops = Array.from(
-      container.querySelectorAll<HTMLInputElement>('input[tabindex="0"]')
-    );
+    const stops = Array.from(container.querySelectorAll<HTMLInputElement>('input[tabindex="0"]'));
     expect(stops).toEqual([getByTestId('banks-0')]);
     // Reached, the row becomes where the keyboard continues from.
     getByTestId('banks-0').focus();
@@ -115,9 +103,7 @@ describe('OptionList virtualize', () => {
     });
     await waitFor(() => expect(mounted(container).length).toBeGreaterThan(0));
     await fireEvent.click(getByTestId('banks-1'));
-    const viewport = container.querySelector(
-      '[style*="overflow-anchor"]'
-    ) as HTMLElement;
+    const viewport = container.querySelector('[style*="overflow-anchor"]')!;
 
     viewport.scrollTop = 4800;
     await fireEvent.scroll(viewport);
@@ -136,9 +122,7 @@ describe('OptionList virtualize', () => {
       props: { banks, virtualize: true },
     });
     await waitFor(() => expect(mounted(container).length).toBeGreaterThan(0));
-    const viewport = container.querySelector(
-      '[style*="overflow-anchor"]'
-    ) as HTMLElement;
+    const viewport = container.querySelector('[style*="overflow-anchor"]')!;
 
     // Jump far down: everything above is predicted, then the first real
     // rows there shift the estimate — the view must be moved with it.
@@ -157,9 +141,7 @@ describe('OptionList virtualize', () => {
     await fireEvent.focusIn(getByTestId('banks-0'));
     await fireEvent.keyDown(getByTestId('banks-0'), { key: 'End' });
     await waitFor(() => expect(mounted(container)).toContain(199));
-    await waitFor(() =>
-      expect(document.activeElement).toBe(getByTestId('banks-199'))
-    );
+    await waitFor(() => expect(document.activeElement).toBe(getByTestId('banks-199')));
   });
 
   it('a resize notification measures on the next frame, not in the callback', async () => {
@@ -172,24 +154,28 @@ describe('OptionList virtualize', () => {
         constructor(callback: () => void) {
           observers.push(callback);
         }
-        observe() {}
-        disconnect() {}
-      }
+        observe(): void {
+          // noop
+        }
+        disconnect(): void {
+          // noop
+        }
+      },
     );
     const frames: FrameRequestCallback[] = [];
     vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
       frames.push(callback);
       return frames.length;
     });
-    vi.stubGlobal('cancelAnimationFrame', () => {});
+    vi.stubGlobal('cancelAnimationFrame', () => {
+      // noop
+    });
 
     const { container } = render(OptionListHarness, {
       props: { banks, virtualize: true },
     });
     await waitFor(() => expect(mounted(container).length).toBeGreaterThan(0));
-    const content = container.querySelector(
-      '[style*="overflow-anchor"] > div'
-    ) as HTMLElement;
+    const content = container.querySelector<HTMLElement>('[style*="overflow-anchor"] > div')!;
     const before = content.style.paddingBottom;
     expect(before).not.toBe('');
 

@@ -3,18 +3,14 @@ import { fireEvent, render } from '@testing-library/svelte';
 import ChipHarness from './fixtures/ChipHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
-const input = (chip: HTMLElement) =>
-  chip.querySelector('input') as HTMLInputElement;
-const frame = (chip: HTMLElement) =>
-  input(chip).nextElementSibling as HTMLElement;
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
+const input = (chip: HTMLElement): HTMLInputElement => chip.querySelector('input')!;
+const frame = (chip: HTMLElement): HTMLElement => input(chip).nextElementSibling as HTMLElement;
 
 describe('ChipGroup', () => {
   it('single is a radiogroup of native radios sharing a name', () => {
     const { getByRole, getByTestId } = render(ChipHarness);
-    expect(getByRole('radiogroup', { name: 'Business type' })).toBe(
-      getByTestId('group')
-    );
+    expect(getByRole('radiogroup', { name: 'Business type' })).toBe(getByTestId('group'));
     const first = input(getByTestId('chip-0'));
     expect(first.type).toBe('radio');
     expect(first.name).toBe('type');
@@ -71,7 +67,7 @@ describe('ChipGroup', () => {
 
   it('shrinks while pressed, as Blade does', async () => {
     const { getByTestId } = render(ChipHarness);
-    const label = input(getByTestId('chip-0')).parentElement as HTMLElement;
+    const label = input(getByTestId('chip-0')).parentElement!;
     await fireEvent.pointerDown(label);
     expectClass(frame(getByTestId('chip-0')), '[scale:.92]');
     await fireEvent.pointerUp(label);

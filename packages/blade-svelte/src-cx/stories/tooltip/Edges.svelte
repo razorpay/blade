@@ -17,13 +17,14 @@
 </script>
 
 <div
+  data-testid="frame"
   class="relative h-64 max-w-96 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
-  {#each corners as corner (corner)}
+  {#each corners as corner, i (corner)}
     <div class="absolute {corner}">
-      <Tooltip content="Stays inside the frame" placement={args.placement}>
+      <Tooltip content="Stays inside the frame" placement={args.placement} testID={`tip-${i}`}>
         {#snippet trigger()}
-          <button class="rounded-xsmall border-thin border-solid border-surface-gray-muted px-2 py-1 text-25 leading-50">
+          <button data-testid={`trigger-${i}`} class="rounded-xsmall border-thin border-solid border-surface-gray-muted px-2 py-1 text-25 leading-50">
             Info
           </button>
         {/snippet}

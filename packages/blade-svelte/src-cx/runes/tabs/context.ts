@@ -9,8 +9,7 @@ export type TabEntry = ChoiceEntry<string>;
  * What Tabs offers its TabItems and TabPanels. `Shared` is the library's
  * own payload — the class parts — and the rune only passes it through.
  */
-export interface TabsContext<Shared>
-  extends Pick<EntryHost<TabEntry>, 'register' | 'reorder'> {
+export interface TabsContext<Shared> extends Pick<EntryHost<TabEntry>, 'register' | 'reorder'> {
   readonly shared: Shared;
   /** The picked tab's value: the host's, else the first enabled tab's. Tracked. */
   readonly value: string | undefined;

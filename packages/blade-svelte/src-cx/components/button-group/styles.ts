@@ -1,13 +1,11 @@
 import type { AxisValue } from '../../axes';
-import { BUTTON_AXES, type ButtonStyleProps } from '../button/styles';
+import { BUTTON_AXES } from '../button/styles';
+import type { ButtonStyleProps } from '../button/styles';
 
 /** The blade taxonomy as data: the Button axes a group sets for all its buttons. */
 export const BUTTON_GROUP_AXES = BUTTON_AXES;
 
-type Axis<K extends keyof typeof BUTTON_GROUP_AXES> = AxisValue<
-  typeof BUTTON_GROUP_AXES,
-  K
->;
+type Axis<K extends keyof typeof BUTTON_GROUP_AXES> = AxisValue<typeof BUTTON_GROUP_AXES, K>;
 
 /** Derived from BUTTON_GROUP_AXES: add a value there, never here. */
 export interface ButtonGroupStyleProps {
@@ -50,10 +48,7 @@ const JOIN: Record<'filled' | 'outlined', string> = {
   outlined: '[&>*+*]:-ml-px',
 };
 
-
-export function resolveButtonGroup(
-  props: ButtonGroupStyleProps = {}
-): ButtonGroupClasses {
+export function resolveButtonGroup(props: ButtonGroupStyleProps = {}): ButtonGroupClasses {
   const { variant = 'primary', size = 'medium', color = 'primary' } = props;
   const join = JOIN[variant === 'primary' ? 'filled' : 'outlined'];
   return {

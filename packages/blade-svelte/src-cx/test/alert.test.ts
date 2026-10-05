@@ -97,7 +97,10 @@ describe('Alert (blade)', () => {
     expectClass(root, 'bg-feedback-negative-intense');
     expectClass(root.firstElementChild as HTMLElement, 'icon-surface-static-white-normal');
     expectClass(root.querySelector('p') as HTMLElement, 'text-surface-static-white-normal');
-    expectClass(root.querySelector('button') as HTMLElement, 'icon-interactive-static-white-normal');
+    expectClass(
+      root.querySelector('button') as HTMLElement,
+      'icon-interactive-static-white-normal',
+    );
   });
 
   it('primary uses the surface’s primary pair', () => {

@@ -6,14 +6,11 @@ export type Compare<T> = (a: T, b: T) => boolean;
  * selection hands to its model as `compare`.
  */
 export function sameSelection<T>(
-  compare: Compare<T> = (a, b) => a === b
+  compare: Compare<T> = (a, b) => a === b,
 ): (a: unknown, b: unknown) => boolean {
   return (a, b) => {
     if (Array.isArray(a) && Array.isArray(b)) {
-      return (
-        a.length === b.length &&
-        a.every((item, index) => compare(item as T, b[index] as T))
-      );
+      return a.length === b.length && a.every((item, index) => compare(item as T, b[index] as T));
     }
     if (a === null || a === undefined || b === null || b === undefined) {
       return (a ?? null) === (b ?? null);

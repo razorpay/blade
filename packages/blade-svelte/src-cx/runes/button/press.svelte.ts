@@ -88,8 +88,7 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
     },
     press(event) {
       const form = options.form;
-      const submits =
-        Boolean(form) && (options.type?.() ?? 'submit') === 'submit';
+      const submits = Boolean(form) && (options.type?.() ?? 'submit') === 'submit';
 
       if (form && (submits || options.validateForm?.())) {
         const settled = (async () => {
@@ -103,7 +102,7 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
               shook = true;
               options.hooks?.onValidationFailed?.(outcome.errors);
             }
-          } catch (error) {
+          } catch (error: unknown) {
             options.hooks?.onError?.(error);
           }
           options.hooks?.onFeedback?.(shook ? 'warning' : 'medium');
@@ -170,9 +169,7 @@ export function createPress(options: PressOptions): Press {
     hooks: {
       onValidationFailed: (errors) => formHooks.onInvalid?.(errors),
       onFeedback: (kind) =>
-        kind === 'warning'
-          ? adapters.haptics?.warning()
-          : adapters.haptics?.medium(),
+        kind === 'warning' ? adapters.haptics?.warning() : adapters.haptics?.medium(),
       onError: (error) => adapters.captureError?.(error),
     },
   });

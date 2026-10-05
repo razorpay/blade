@@ -4,7 +4,7 @@ import FieldOrderHarness from './fixtures/FieldOrderHarness.svelte';
 import FormHarness from './fixtures/FormHarness.svelte';
 import { expectClass, expectMarkup } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe('Form + TextInput + Button', () => {
   it('blocks an invalid submit: error text, shake, onValidationFailed, no onSubmit', async () => {
@@ -32,15 +32,12 @@ describe('Form + TextInput + Button', () => {
   });
 
   it('follows a swapped formatConstraintError and labels the form', async () => {
-    const { getByTestId, getByText, getByRole, rerender } = render(
-      FormHarness,
-      {
-        props: {
-          accessibilityLabel: 'Card details',
-          formatConstraintError: (code: string) => `en:${code}`,
-        },
-      }
-    );
+    const { getByTestId, getByText, getByRole, rerender } = render(FormHarness, {
+      props: {
+        accessibilityLabel: 'Card details',
+        formatConstraintError: (code: string) => `en:${code}`,
+      },
+    });
     expect(getByRole('form', { name: 'Card details' })).toBeTruthy();
 
     await rerender({
@@ -61,7 +58,8 @@ describe('Form + TextInput + Button', () => {
 
     const input = container.querySelector('input')!;
     input.value = '4111';
-    input.selectionStart = input.selectionEnd = 4;
+    input.selectionStart = 4;
+    input.selectionEnd = 4;
     await fireEvent.input(input);
 
     await fireEvent.click(getByTestId('pay'));
@@ -77,7 +75,7 @@ describe('Form + TextInput + Button', () => {
       () =>
         new Promise<void>((resolve) => {
           resolveSubmit = resolve;
-        })
+        }),
     );
     const { container, getByTestId } = render(FormHarness, {
       props: { onSubmit },
@@ -133,19 +131,21 @@ describe('Form + TextInput + Button', () => {
   });
 
   it('formats the control and restores the caret on a mid-string edit', async () => {
-    const parse = (v: unknown) => String(v ?? '').replace(/\D/g, '');
-    const format = (v: unknown) => parse(v).replace(/(\d{4})(?=\d)/g, '$1 ');
+    const parse = (v: unknown): string => String(v ?? '').replace(/\D/g, '');
+    const format = (v: unknown): string => parse(v).replace(/(\d{4})(?=\d)/g, '$1 ');
     const { container } = render(FormHarness, {
       props: { format: { parse, format } },
     });
 
     const input = container.querySelector('input')!;
     input.value = '4111 2222';
-    input.selectionStart = input.selectionEnd = 9;
+    input.selectionStart = 9;
+    input.selectionEnd = 9;
     await fireEvent.input(input);
 
     input.value = '4111 52222';
-    input.selectionStart = input.selectionEnd = 6;
+    input.selectionStart = 6;
+    input.selectionEnd = 6;
     await fireEvent.input(input);
 
     expect(input.value).toBe('4111 5222 2');

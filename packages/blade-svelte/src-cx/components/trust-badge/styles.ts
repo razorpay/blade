@@ -5,10 +5,7 @@ export const TRUST_BADGE_AXES = {
   variant: ['default', 'icon-only'],
 } as const;
 
-type Axis<K extends keyof typeof TRUST_BADGE_AXES> = AxisValue<
-  typeof TRUST_BADGE_AXES,
-  K
->;
+type Axis<K extends keyof typeof TRUST_BADGE_AXES> = AxisValue<typeof TRUST_BADGE_AXES, K>;
 
 /** Derived from TRUST_BADGE_AXES: add a value there, never here. */
 export interface TrustBadgeStyleProps {
@@ -23,7 +20,9 @@ const VARIANT: Record<Axis<'variant'>, string> = {
   'icon-only': 'p-1',
 };
 
-export function resolveTrustBadge(props: TrustBadgeStyleProps = {}) {
+export function resolveTrustBadge(
+  props: TrustBadgeStyleProps = {},
+): { root: string; label: string } {
   const { variant = 'default' } = props;
   return {
     // A marker, not copy: dragging across the page should not pick it up.

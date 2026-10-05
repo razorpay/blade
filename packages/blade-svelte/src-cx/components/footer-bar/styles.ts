@@ -7,10 +7,7 @@ export const FOOTER_BAR_AXES = {
   desktop: ['inline', 'sticky'],
 } as const;
 
-type Axis<K extends keyof typeof FOOTER_BAR_AXES> = AxisValue<
-  typeof FOOTER_BAR_AXES,
-  K
->;
+type Axis<K extends keyof typeof FOOTER_BAR_AXES> = AxisValue<typeof FOOTER_BAR_AXES, K>;
 
 /** Derived from FOOTER_BAR_AXES: add a value there, never here. */
 export interface FooterBarStyleProps {
@@ -23,7 +20,9 @@ const DESKTOP: Record<Axis<'desktop'>, string> = {
 };
 
 // Ported from app/v2/modules/common/components/FooterCTA.svelte.
-export function resolveFooterBar(props: FooterBarStyleProps = {}) {
+export function resolveFooterBar(
+  props: FooterBarStyleProps = {},
+): { root: string; summary: string } {
   const { desktop = 'inline' } = props;
   return {
     root: `sticky bottom-0 z-10 flex w-full shrink-0 flex-col gap-3 border-t-thin border-r-none border-b-none border-l-none border-solid border-surface-gray-muted bg-surface-gray-intense p-4 ${DESKTOP[desktop]}`.trim(),

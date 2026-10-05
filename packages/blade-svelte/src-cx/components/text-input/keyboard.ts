@@ -32,10 +32,7 @@ const DEFAULTS: Record<TextInputType, KeyboardAttributes> = {
  * renders as `text` with the decimal keypad: a number input spins, steps on
  * scroll and ignores `maxlength`, and iOS shows it the wrong keyboard.
  */
-export function resolveKeyboard(
-  type: TextInputType,
-  given: KeyboardAttributes
-): ResolvedKeyboard {
+export function resolveKeyboard(type: TextInputType, given: KeyboardAttributes): ResolvedKeyboard {
   const defaults = DEFAULTS[type];
   return {
     type: type === 'number' ? 'text' : type,

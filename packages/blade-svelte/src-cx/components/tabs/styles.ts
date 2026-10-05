@@ -57,6 +57,10 @@ export interface TabsStyleProps {
 
 type Size = Axis<'size'>;
 
+// A per-size map, checked to name every size (in place of `satisfies`,
+// which the repo's prettier cannot parse yet).
+const bySize = (map: Record<Size, string>): Record<Size, string> => map;
+
 // Blade's TabItem (tabTokens.ts): the label body medium (large at large),
 // medium weight, letter-spaced; the glyph 16px (20px at large), 8px from
 // the label; colours per state — picked `interactive.text.gray.normal`,
@@ -79,7 +83,8 @@ const ICON: Record<Size, IconStyleProps> = {
 // sets none (the preflight already zeroes the button's border).
 const TEXT = {
   picked: 'text-interactive-gray-normal',
-  unpicked: 'text-interactive-gray-muted hover:text-interactive-gray-subtle focus-visible:text-interactive-gray-subtle',
+  unpicked:
+    'text-interactive-gray-muted hover:text-interactive-gray-subtle focus-visible:text-interactive-gray-subtle',
   disabled: 'bg-transparent text-interactive-gray-disabled',
 };
 
@@ -91,12 +96,13 @@ const TEXT = {
 const BORDERED = {
   horizontal: {
     list: 'flex gap-6 m:gap-8',
-    tab: 'border-b-thicker border-solid border-transparent px-0 focus-visible:border-transparent focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
-    pad: {
+    tab:
+      'border-b-thicker border-solid border-transparent px-0 focus-visible:border-transparent focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
+    pad: bySize({
       small: 'pt-0 pb-2',
       medium: 'pt-1 pb-3',
       large: 'py-3',
-    } satisfies Record<Size, string>,
+    }),
     hover: 'hover:border-interactive-gray-highlighted',
     indicator:
       'pointer-events-none absolute left-0 bottom-0 h-0.5 w-[var(--tab-w)] [translate:var(--tab-x)_0] bg-interactive-neutral-highlighted',
@@ -104,12 +110,13 @@ const BORDERED = {
   },
   vertical: {
     list: 'flex flex-col items-start',
-    tab: 'w-full border-l-thick border-solid border-transparent px-3 focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
-    pad: {
+    tab:
+      'w-full border-l-thick border-solid border-transparent px-3 focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
+    pad: bySize({
       small: 'py-0.5',
       medium: 'py-1',
       large: 'py-2',
-    } satisfies Record<Size, string>,
+    }),
     hover: '',
     indicator:
       'pointer-events-none absolute left-0 top-0 w-[1.5px] h-[var(--tab-h)] [translate:0_var(--tab-y)] bg-interactive-neutral-highlighted',
@@ -124,35 +131,34 @@ const BORDERED = {
 // under the picked tab; vertical, the picked tab fills itself.
 const FILLED = {
   horizontal: {
-    list: {
+    list: bySize({
       small: 'flex gap-0.5 rounded-small p-0.5',
       medium: 'flex gap-0.5 rounded-medium p-1',
       large: 'flex gap-0.5 rounded-medium p-1',
-    } satisfies Record<Size, string>,
-    tab: {
+    }),
+    tab: bySize({
       small: 'z-1 min-w-0 flex-1 justify-center [border-radius:6px] px-2 py-0.5',
       medium: 'z-1 min-w-0 flex-1 justify-center rounded-small px-2 py-1',
       large: 'z-1 min-w-0 flex-1 justify-center rounded-small p-2',
-    } satisfies Record<Size, string>,
-    indicator: {
+    }),
+    indicator: bySize({
       small: '[border-radius:6px]',
       medium: 'rounded-small',
       large: 'rounded-small',
-    } satisfies Record<Size, string>,
+    }),
   },
   vertical: {
     list: 'flex flex-col rounded-medium p-1',
-    tab: {
+    tab: bySize({
       small: 'w-full rounded-small px-3 py-2',
       medium: 'w-full rounded-small p-3',
       large: 'w-full rounded-small p-3',
-    } satisfies Record<Size, string>,
+    }),
   },
 };
 const FILLED_PILL =
   'pointer-events-none absolute left-0 top-0 w-[var(--tab-w)] h-[var(--tab-h)] [translate:var(--tab-x)_var(--tab-y)] bg-surface-gray-intense';
-const MOTION =
-  'transition-all duration-moderate ease-standard motion-reduce:transition-none';
+const MOTION = 'transition-all duration-moderate ease-standard motion-reduce:transition-none';
 
 export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
   const {
@@ -171,7 +177,9 @@ export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
 
   if (variant === 'filled') {
     const isCompact = size === 'small' && !isVertical;
-    const listBox = `relative shrink-0 bg-interactive-gray-faded ${isCompact ? 'rounded-small' : 'rounded-medium'} ${isVertical ? '' : 'overflow-x-auto'}`;
+    const listBox = `relative shrink-0 bg-interactive-gray-faded ${
+      isCompact ? 'rounded-small' : 'rounded-medium'
+    } ${isVertical ? '' : 'overflow-x-auto'}`;
     const unpicked = `${TEXT.unpicked} bg-transparent hover:bg-interactive-gray-default focus-visible:bg-interactive-gray-default`;
     if (isVertical) {
       return {
@@ -202,7 +210,9 @@ export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
     ...base,
     listBox: `relative shrink-0 ${isVertical ? '' : 'overflow-x-auto'} ${track}`.trim(),
     list: axis.list,
-    tab: `${TAB} ${axis.tab} ${axis.pad[size]} ${isFullWidthTabItem && !isVertical ? 'min-w-0 flex-1 justify-center' : ''}`.trim(),
+    tab: `${TAB} ${axis.tab} ${axis.pad[size]} ${
+      isFullWidthTabItem && !isVertical ? 'min-w-0 flex-1 justify-center' : ''
+    }`.trim(),
     tabState: {
       picked: `${TEXT.picked} bg-transparent`,
       unpicked: `${TEXT.unpicked} bg-transparent ${axis.hover}`.trim(),

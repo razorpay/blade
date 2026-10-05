@@ -1,12 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
 import { createCompositeInput } from './otp.svelte';
+import type { CompositeInputModel } from './otp.svelte';
 
 function otp(
   overrides: {
     onChange?: (v: string) => void;
     onFill?: (m: string) => void;
-  } = {}
-) {
+  } = {},
+): CompositeInputModel {
   return createCompositeInput({ length: 6, ...overrides });
 }
 

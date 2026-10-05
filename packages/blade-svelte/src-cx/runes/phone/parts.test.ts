@@ -4,8 +4,8 @@ import {
   filterPhoneCountries,
   joinPhoneNumber,
   splitPhoneNumber,
-  type PhoneCountry,
 } from './parts';
+import type { PhoneCountry } from './parts';
 
 const countries: PhoneCountry[] = [
   { code: 'IN', name: 'India', dialCode: '+91' },
@@ -14,7 +14,7 @@ const countries: PhoneCountry[] = [
   { code: 'AG', name: 'Antigua and Barbuda', dialCode: '+1268' },
   { code: 'MY', name: 'Malaysia', dialCode: '+60' },
 ];
-const india = countries[0] as PhoneCountry;
+const india = countries[0];
 
 describe('joinPhoneNumber', () => {
   it('keeps digits only and prefixes the dial code', () => {
@@ -47,12 +47,8 @@ describe('splitPhoneNumber', () => {
   });
 
   it('breaks a shared dial code with the preferred country, else the first', () => {
-    expect(splitPhoneNumber('+14155550100', countries, 'CA')?.country).toBe(
-      'CA'
-    );
-    expect(splitPhoneNumber('+14155550100', countries, 'IN')?.country).toBe(
-      'US'
-    );
+    expect(splitPhoneNumber('+14155550100', countries, 'CA')?.country).toBe('CA');
+    expect(splitPhoneNumber('+14155550100', countries, 'IN')?.country).toBe('US');
   });
 
   it('treats a value without a plus as national to the preferred country', () => {
@@ -74,9 +70,7 @@ describe('splitPhoneNumber', () => {
 
 describe('allowedPhoneCountries', () => {
   it('filters in the app order; empty allows all', () => {
-    expect(
-      allowedPhoneCountries(countries, ['MY', 'IN']).map((c) => c.code)
-    ).toEqual(['IN', 'MY']);
+    expect(allowedPhoneCountries(countries, ['MY', 'IN']).map((c) => c.code)).toEqual(['IN', 'MY']);
     expect(allowedPhoneCountries(countries, [])).toHaveLength(5);
     expect(allowedPhoneCountries(countries, undefined)).toHaveLength(5);
   });
@@ -84,7 +78,7 @@ describe('allowedPhoneCountries', () => {
 
 describe('filterPhoneCountries', () => {
   it('matches name, ISO code and dial code', () => {
-    const codes = (query: string) =>
+    const codes = (query: string): string[] =>
       filterPhoneCountries(countries, query).map((c) => c.code);
     expect(codes('  ind ')).toEqual(['IN']);
     expect(codes('my')).toEqual(['MY']);

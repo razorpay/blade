@@ -2,9 +2,11 @@ import {
   createToastQueue,
   getToasts as getProvidedToasts,
   provideToasts as provide,
-  type ShowToastOptions as ShowToastOptionsOf,
-  type ToastHandle,
-  type Toasts as ToastsOf,
+} from '../../runes/toast/toasts.svelte';
+import type {
+  ShowToastOptions as ShowToastOptionsOf,
+  ToastHandle,
+  Toasts as ToastsOf,
 } from '../../runes/toast/toasts.svelte';
 import type { ToastStyleProps } from './styles';
 

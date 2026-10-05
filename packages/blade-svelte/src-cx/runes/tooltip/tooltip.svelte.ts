@@ -1,7 +1,8 @@
 import { onDestroy, untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { createDisclosure } from '../base/disclosure';
-import { defaultSchedule, type Schedule } from '../base/schedule';
+import { defaultSchedule } from '../base/schedule';
+import type { Schedule } from '../base/schedule';
 import { createNodeRef } from '../dom/node.svelte';
 
 export interface TooltipModelOptions {
@@ -36,10 +37,8 @@ export interface TooltipModel {
 }
 
 /** When a tooltip is open: hover with intent, focus, or a tap. */
-export function createTooltipModel(
-  options: TooltipModelOptions = {}
-): TooltipModel {
-  const schedule = options.schedule || defaultSchedule;
+export function createTooltipModel(options: TooltipModelOptions = {}): TooltipModel {
+  const schedule = options.schedule ?? defaultSchedule;
   const openDelay = options.openDelay ?? 200;
   const closeDelay = options.closeDelay ?? 100;
   const isDisabled = (): boolean => Boolean(options.disabled?.());

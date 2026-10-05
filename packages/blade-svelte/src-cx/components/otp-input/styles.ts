@@ -40,10 +40,7 @@ export const OTP_INPUT_AXES = {
   size: ['medium', 'large'],
 } as const;
 
-type Axis<K extends keyof typeof OTP_INPUT_AXES> = AxisValue<
-  typeof OTP_INPUT_AXES,
-  K
->;
+type Axis<K extends keyof typeof OTP_INPUT_AXES> = AxisValue<typeof OTP_INPUT_AXES, K>;
 
 /** Derived from OTP_INPUT_AXES: add a value there, never here. */
 export interface OTPInputStyleProps {
@@ -54,13 +51,13 @@ export interface OTPInputStyleProps {
 // grow, so the row is as wide as its cells until its box is narrower.
 const CELL = `box-border w-[88px] min-w-0 shrink border-thin border-solid p-0 text-center font-regular ${INPUT_FILL} ${INPUT_TEXT} ${INPUT_INACTIVE} ${INPUT_ACTIVE_ON_FOCUS} ${INPUT_DISABLED_ON_CONTROL}`;
 
-const CELL_SIZE = {
+const CELL_SIZE: Record<Axis<'size'>, string> = {
   medium: 'h-9 rounded-small text-400 leading-400',
   large: 'h-12 rounded-medium text-500 leading-500',
-} satisfies Record<Axis<'size'>, string>;
+};
 
 export const resolveOTPInput: OTPInputStyleResolver<OTPInputStyleProps> = (
-  props: OTPInputStyleProps = {}
+  props: OTPInputStyleProps = {},
 ) => {
   const { size = DEFAULTS.size } = props;
   return {

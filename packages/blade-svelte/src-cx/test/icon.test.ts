@@ -68,9 +68,7 @@ describe('Icon', () => {
       expect(markup, name).toMatch(/^<svg[^>]*viewBox=/);
       expect(markup, name).toContain('currentColor');
       expect(markup, name).not.toMatch(/#[0-9a-f]{3,8}\b/i);
-      expect(markup.match(/^<svg[^>]*>/)?.[0], name).not.toMatch(
-        /\s(width|height)=/
-      );
+      expect(markup.match(/^<svg[^>]*>/)?.[0], name).not.toMatch(/\s(width|height)=/);
       expect(markup.length, name).toBeLessThan(1024);
     }
   });

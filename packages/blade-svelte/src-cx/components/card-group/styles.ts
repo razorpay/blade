@@ -72,10 +72,7 @@ export const CARD_GROUP_AXES = {
   size: ['large', 'medium'],
 } as const;
 
-type Axis<K extends keyof typeof CARD_GROUP_AXES> = AxisValue<
-  typeof CARD_GROUP_AXES,
-  K
->;
+type Axis<K extends keyof typeof CARD_GROUP_AXES> = AxisValue<typeof CARD_GROUP_AXES, K>;
 
 /** Derived from CARD_GROUP_AXES: add a value there, never here. */
 export interface CardGroupStyleProps {
@@ -159,7 +156,7 @@ const DISABLED_TEXT = 'group-disabled:text-surface-gray-disabled';
 const TURN = 'transition-transform duration-moderate ease-standard motion-reduce:transition-none';
 
 export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
-  props: CardGroupStyleProps = {}
+  props: CardGroupStyleProps = {},
 ) => {
   const { variant = 'transparent', size = 'large' } = props;
   const look = VARIANT[variant];
@@ -189,8 +186,7 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
     trailingTone: {
       collapsed:
         'icon-interactive-gray-muted group-hover:icon-interactive-gray-subtle group-focus-visible:icon-interactive-gray-subtle group-disabled:icon-interactive-gray-disabled',
-      expanded:
-        'icon-interactive-gray-subtle group-disabled:icon-interactive-gray-disabled',
+      expanded: 'icon-interactive-gray-subtle group-disabled:icon-interactive-gray-disabled',
     },
     chevronState: {
       expanded: `-rotate-180 ${TURN}`,

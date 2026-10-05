@@ -33,7 +33,7 @@ export interface Trigger {
  */
 export function createTrigger(options: TriggerOptions): Trigger {
   const root = createNodeRef<HTMLElement>();
-  const controlIn = (node: HTMLElement) => focusableWithin(node)[0] ?? node;
+  const controlIn = (node: HTMLElement): HTMLElement => focusableWithin(node)[0] ?? node;
   return {
     get anchor() {
       return root.current;
@@ -59,9 +59,7 @@ export function createTrigger(options: TriggerOptions): Trigger {
       return node && controlIn(node);
     },
     isInside(event) {
-      return Boolean(
-        (event.target as Element | null)?.closest?.(`[id="${options.controls}"]`)
-      );
+      return Boolean((event.target as Element | null)?.closest?.(`[id="${options.controls}"]`));
     },
   };
 }

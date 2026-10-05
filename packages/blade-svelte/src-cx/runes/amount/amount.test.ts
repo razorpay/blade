@@ -21,10 +21,10 @@ describe('getAmountByParts', () => {
   it('defaults to 2 decimals whatever the currency, as Blade; auto takes its own', () => {
     expect(getAmountByParts(1000, { currency: 'JPY', locale: 'en-IN' }).fraction).toBe('00');
     expect(
-      getAmountByParts(1000, { currency: 'JPY', locale: 'en-IN', fractionDigits: 'auto' }).fraction
+      getAmountByParts(1000, { currency: 'JPY', locale: 'en-IN', fractionDigits: 'auto' }).fraction,
     ).toBeUndefined();
     expect(
-      getAmountByParts(1000, { currency: 'KWD', locale: 'en-IN', fractionDigits: 'auto' }).fraction
+      getAmountByParts(1000, { currency: 'KWD', locale: 'en-IN', fractionDigits: 'auto' }).fraction,
     ).toBe('000');
   });
 
@@ -36,22 +36,31 @@ describe('getAmountByParts', () => {
 
   it('humanize compacts by locale and strips a zero fraction', () => {
     expect(
-      getAmountByParts(1000.22, { currency: 'INR', locale: 'en-IN', suffix: 'humanize' })
+      getAmountByParts(1000.22, { currency: 'INR', locale: 'en-IN', suffix: 'humanize' }),
     ).toMatchObject({ integer: '1', compact: 'K', fraction: undefined });
     expect(
-      getAmountByParts(150000, { currency: 'INR', locale: 'en-IN', suffix: 'humanize' })
+      getAmountByParts(150000, { currency: 'INR', locale: 'en-IN', suffix: 'humanize' }),
     ).toMatchObject({ integer: '1', decimal: '.', fraction: '5', compact: 'L' });
   });
 
   it('takes i18nify’s symbols and sides: S$ where Intl says $, the euro after in de-DE', () => {
     expect(getAmountByParts(12.5, { currency: 'SGD', locale: 'en-SG' }).currency).toBe('S$');
     const euro = getAmountByParts(12.5, { currency: 'EUR', locale: 'de-DE' });
-    expect(euro).toMatchObject({ currency: '€', integer: '12', decimal: ',', isPrefixSymbol: false });
+    expect(euro).toMatchObject({
+      currency: '€',
+      integer: '12',
+      decimal: ',',
+      isPrefixSymbol: false,
+    });
   });
 
   it('scales minor units by the currency exponent', () => {
-    expect(getAmountByParts(499900, { currency: 'INR', unit: 'minor', locale: 'en-IN' }).integer).toBe('4,999');
-    expect(getAmountByParts(500, { currency: 'JPY', unit: 'minor', locale: 'en-IN' }).integer).toBe('500');
+    expect(
+      getAmountByParts(499900, { currency: 'INR', unit: 'minor', locale: 'en-IN' }).integer,
+    ).toBe('4,999');
+    expect(getAmountByParts(500, { currency: 'JPY', unit: 'minor', locale: 'en-IN' }).integer).toBe(
+      '500',
+    );
   });
 
   it('keeps the minus sign apart', () => {

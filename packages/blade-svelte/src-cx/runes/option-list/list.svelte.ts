@@ -1,12 +1,9 @@
-import { createChoiceList, type ChoiceEntry } from '../base/choice-list.svelte';
+import { createChoiceList } from '../base/choice-list.svelte';
+import type { ChoiceEntry } from '../base/choice-list.svelte';
 import { sameSelection } from '../base/selection';
 import { focusableWithin } from '../dom/focus';
 import { createFieldShell } from '../form/field.svelte';
-import type {
-  ChoiceValidationState,
-  FieldHint,
-  HintContent,
-} from '../form/hint';
+import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
 import type { OptionListContext } from './context';
 
 /** A pick is made or missing: there is no success state to show. */
@@ -71,10 +68,9 @@ export interface OptionList<T, Shared> extends OptionListContext<T, Shared> {
  * result to its OptionItems (`provideOptionList`).
  */
 export function createOptionList<T, Shared>(
-  options: OptionListOptions<T, Shared>
+  options: OptionListOptions<T, Shared>,
 ): OptionList<T, Shared> {
-  const sameOption = (a: T, b: T) =>
-    options.compare ? options.compare(a, b) : a === b;
+  const sameOption = (a: T, b: T): boolean => (options.compare ? options.compare(a, b) : a === b);
   // The field stores one item or an array of them.
   const sameValue = sameSelection<T>(sameOption);
 
@@ -98,7 +94,7 @@ export function createOptionList<T, Shared>(
     // The row is a label: the form focuses the control inside it.
     handle: () => {
       const row = model.elementAt(model.tabStop());
-      return row?.querySelectorAll ? (focusableWithin(row)[0] ?? row) : row;
+      return row?.querySelectorAll ? focusableWithin(row)[0] ?? row : row;
     },
   });
   const optionText = options.optionText;
@@ -107,8 +103,7 @@ export function createOptionList<T, Shared>(
     typeahead: optionText && ((option) => optionText(option) ?? ''),
     multiple: options.isMultiple,
     compare: sameOption,
-    isItemDisabled: (option, index) =>
-      Boolean(options.isOptionDisabled?.(option, index)),
+    isItemDisabled: (option, index) => Boolean(options.isOptionDisabled?.(option, index)),
     deselectable: options.isDeselectable,
     disabled: options.isDisabled,
   });
@@ -136,7 +131,7 @@ export function createOptionList<T, Shared>(
     const items = model.items();
     if (!options.isMultiple()) {
       for (let index = start; index < end; index += 1) {
-        if (model.isSelected(items[index] as T)) {
+        if (model.isSelected(items[index])) {
           return index;
         }
       }
@@ -145,7 +140,7 @@ export function createOptionList<T, Shared>(
       return tabStop;
     }
     for (let index = start; index < end; index += 1) {
-      if (!model.isDisabled(items[index] as T, index)) {
+      if (!model.isDisabled(items[index], index)) {
         return index;
       }
     }
@@ -154,7 +149,7 @@ export function createOptionList<T, Shared>(
   // Registered items are all mounted: one stop among them all.
   const stop = $derived(stopWithin(0, model.items().length));
 
-  function commit(next: unknown) {
+  function commit(next: unknown): void {
     const value = next as T | readonly T[] | null;
     options.onValue(value);
     options.onChange?.(value);
@@ -201,11 +196,7 @@ export function createOptionList<T, Shared>(
     isTabStop: (index) => index === stop,
     stopWithin,
     toggle(option, index, event) {
-      return shell.edit(
-        (onValue) => model.toggle(option, index, onValue),
-        commit,
-        event
-      );
+      return shell.edit((onValue) => model.toggle(option, index, onValue), commit, event);
     },
     setActive: (index) => model.setActive(index),
     handleKeyDown(event) {
@@ -214,10 +205,10 @@ export function createOptionList<T, Shared>(
           model.handleKey(
             event.key,
             { alt: event.altKey, ctrl: event.ctrlKey, meta: event.metaKey },
-            onValue
+            onValue,
           ),
         commit,
-        event
+        event,
       );
       if (!handled) {
         return;

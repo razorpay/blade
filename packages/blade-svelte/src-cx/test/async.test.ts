@@ -3,9 +3,17 @@ import { render, waitFor } from '@testing-library/svelte';
 import AsyncHarness from './fixtures/AsyncHarness.svelte';
 import { expectClass, expectMarkup } from './classes';
 
-function deferred() {
-  let resolve: (value: string) => void = () => {};
-  let reject: (error: unknown) => void = () => {};
+function deferred(): {
+  promise: Promise<string>;
+  resolve: (value: string) => void;
+  reject: (error: unknown) => void;
+} {
+  let resolve: (value: string) => void = () => {
+    // noop
+  };
+  let reject: (error: unknown) => void = () => {
+    // noop
+  };
   const promise = new Promise<string>((res, rej) => {
     resolve = res;
     reject = rej;
@@ -26,9 +34,7 @@ describe('Async', () => {
     expectMarkup(wait, 'animate-skeleton');
 
     resolve('HDFC');
-    return waitFor(() =>
-      expect(getByTestId('value').textContent).toBe('HDFC')
-    ).then(() => {
+    return waitFor(() => expect(getByTestId('value').textContent).toBe('HDFC')).then(() => {
       expect(queryByTestId('wait')).toBeNull();
     });
   });
@@ -44,11 +50,9 @@ describe('Async', () => {
     expect(queryByTestId('wait')).toBeNull();
     resolve('SBI');
     vi.useRealTimers();
-    return waitFor(() => expect(queryByTestId('value')).toBeTruthy()).then(
-      () => {
-        expect(queryByTestId('wait')).toBeNull();
-      }
-    );
+    return waitFor(() => expect(queryByTestId('value')).toBeTruthy()).then(() => {
+      expect(queryByTestId('wait')).toBeNull();
+    });
   });
 
   it('a slow load shows the caller’s pending once the delay passes', () => {
@@ -73,9 +77,7 @@ describe('Async', () => {
     });
     const failure = new Error('chunk');
     reject(failure);
-    return waitFor(() =>
-      expect(getByTestId('failed').textContent).toBe('chunk')
-    ).then(() => {
+    return waitFor(() => expect(getByTestId('failed').textContent).toBe('chunk')).then(() => {
       expect(onError).toHaveBeenCalledWith(failure);
       expect(captureError).toHaveBeenCalledWith(failure);
     });
@@ -91,9 +93,7 @@ describe('Async', () => {
       .then(() => {
         first.resolve('stale');
         second.resolve('fresh');
-        return waitFor(() =>
-          expect(getByTestId('value').textContent).toBe('fresh')
-        );
+        return waitFor(() => expect(getByTestId('value').textContent).toBe('fresh'));
       })
       .then(() => {
         expect(queryByTestId('wait')).toBeNull();

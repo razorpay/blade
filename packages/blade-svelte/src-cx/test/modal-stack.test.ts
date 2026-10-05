@@ -1,11 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
-import { globalOverlays, type Overlays } from '../components/modal/overlays';
+import { globalOverlays } from '../components/modal/overlays';
+import type { Overlays } from '../components/modal/overlays';
 import ModalStackContent from './fixtures/ModalStackContent.svelte';
 import ModalStackHarness from './fixtures/ModalStackHarness.svelte';
 import { expectMarkup } from './classes';
+import type { RenderResult } from '@testing-library/svelte';
 
-function setup(props: { captureError?: (error: unknown) => void } = {}) {
+function setup(
+  props: { captureError?: (error: unknown) => void } = {},
+): RenderResult<typeof ModalStackHarness> & { overlays: Overlays } {
   let overlays: Overlays | undefined;
   const view = render(ModalStackHarness, {
     props: {
@@ -15,10 +19,10 @@ function setup(props: { captureError?: (error: unknown) => void } = {}) {
       },
     },
   });
-  return { ...view, overlays: overlays as Overlays };
+  return { ...view, overlays: overlays! };
 }
 
-const escape = () => fireEvent.keyDown(document, { key: 'Escape' });
+const escape = (): Promise<boolean> => fireEvent.keyDown(document, { key: 'Escape' });
 
 describe('openModal', () => {
   it('renders the component in a modal and settles with what it closes with', () => {
@@ -54,9 +58,7 @@ describe('openModal', () => {
       testID: 'notice',
     });
     return waitFor(() => expect(getByTestId('notice')).toBeTruthy()).then(() =>
-      waitFor(() =>
-        expect(getByTestId('notice').parentElement?.dataset.state).toBe('open')
-      )
+      waitFor(() => expect(getByTestId('notice').parentElement?.dataset.state).toBe('open')),
     );
   });
 
@@ -102,25 +104,19 @@ describe('openModal', () => {
     const handle = overlays.openModal(ModalStackContent, {
       props: { bank: 'HDFC' },
     });
-    return waitFor(() =>
-      expect(getByTestId('bank').textContent).toBe('HDFC')
-    ).then(() => {
+    return waitFor(() => expect(getByTestId('bank').textContent).toBe('HDFC')).then(() => {
       handle.update({ bank: 'ICICI' });
-      return waitFor(() =>
-        expect(getByTestId('bank').textContent).toBe('ICICI')
-      );
+      return waitFor(() => expect(getByTestId('bank').textContent).toBe('ICICI'));
     });
   });
 
   it('opens at once with the pending shimmer while a promised component loads', () => {
-    let deliver: (module: {
-      default: typeof ModalStackContent;
-    }) => void = () => {};
-    const promised = new Promise<{ default: typeof ModalStackContent }>(
-      (resolve) => {
-        deliver = resolve;
-      }
-    );
+    let deliver: (module: { default: typeof ModalStackContent }) => void = () => {
+      // noop
+    };
+    const promised = new Promise<{ default: typeof ModalStackContent }>((resolve) => {
+      deliver = resolve;
+    });
     const { overlays, getByTestId, queryByTestId, container } = setup();
     overlays.openModal(promised, {
       props: { bank: 'AXIS' },
@@ -136,9 +132,7 @@ describe('openModal', () => {
         expectMarkup(pending, 'animate-skeleton');
         expect(queryByTestId('bank')).toBeNull();
         deliver({ default: ModalStackContent });
-        return waitFor(() =>
-          expect(getByTestId('bank').textContent).toBe('AXIS')
-        );
+        return waitFor(() => expect(getByTestId('bank').textContent).toBe('AXIS'));
       })
       .then(() => {
         expect(document.querySelector('[aria-busy="true"]')).toBeNull();
@@ -151,13 +145,10 @@ describe('openModal', () => {
     const onLoadError = vi.fn();
     const failure = new Error('chunk failed');
     const { overlays, queryByTestId } = setup({ captureError });
-    const handle = overlays.openModal<Record<string, never>>(
-      Promise.reject(failure),
-      {
-        onLoadError,
-        testID: 'lazy',
-      }
-    );
+    const handle = overlays.openModal<Record<string, never>>(Promise.reject(failure), {
+      onLoadError,
+      testID: 'lazy',
+    });
     return handle.result
       .then((result) => {
         expect(result).toBeUndefined();

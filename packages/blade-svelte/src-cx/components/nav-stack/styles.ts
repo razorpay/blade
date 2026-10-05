@@ -36,9 +36,7 @@ const SCREEN = [
   'm:data-[state=closed]:data-[side=behind]:-translate-x-5',
 ].join(' ');
 
-export const resolveNavStack: NavStackStyleResolver<
-  NavStackStyleProps
-> = () => ({
+export const resolveNavStack: NavStackStyleResolver<NavStackStyleProps> = () => ({
   root: 'relative flex min-h-0 w-full flex-1 flex-col overflow-hidden',
   screen: SCREEN,
   nativeMotion: { enter: 400, exit: 350 },

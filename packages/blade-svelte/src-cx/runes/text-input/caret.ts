@@ -9,7 +9,7 @@ export function caretAfterFormat(
   raw: string,
   selectionStart: number | null,
   parse: (value: string) => unknown,
-  format: (value: unknown) => unknown
+  format: (value: unknown) => unknown,
 ): number | null {
   if (selectionStart === null || selectionStart >= raw.length) {
     return null;

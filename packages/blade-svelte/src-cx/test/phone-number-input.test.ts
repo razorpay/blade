@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import PhoneNumberInputHarness from './fixtures/PhoneNumberInputHarness.svelte';
 
-function type(control: HTMLElement, text: string) {
+function type(control: HTMLElement, text: string): Promise<boolean> {
   (control as HTMLInputElement).value = text;
   return fireEvent.input(control);
 }
@@ -39,9 +39,7 @@ describe('PhoneNumberInput', () => {
     });
     expect((getByTestId('phone') as HTMLInputElement).value).toBe('123456789');
     expect(getByTestId('country').textContent).toBe('MY');
-    expect(getByTestId('phone-country').getAttribute('aria-label')).toContain(
-      '+60'
-    );
+    expect(getByTestId('phone-country').getAttribute('aria-label')).toContain('+60');
   });
 
   it('names the country button and keeps label clicks on the number', () => {
@@ -49,18 +47,15 @@ describe('PhoneNumberInput', () => {
     const button = getByTestId('phone-country');
     expect(button.getAttribute('aria-label')).toBe('Country: India +91');
     expect(button.getAttribute('aria-haspopup')).toBe('dialog');
-    expect(button.closest('label')?.getAttribute('for')).toBe(
-      getByTestId('phone').id
-    );
+    expect(button.closest('label')?.getAttribute('for')).toBe(getByTestId('phone').id);
   });
 
   it('picks a country from the picker, keeping the number', () => {
     const onChange = vi.fn();
     const onCountryChange = vi.fn();
-    const { getByTestId, getByText, queryByTestId } = render(
-      PhoneNumberInputHarness,
-      { props: { value: '9876543210', onChange, onCountryChange } }
-    );
+    const { getByTestId, getByText, queryByTestId } = render(PhoneNumberInputHarness, {
+      props: { value: '9876543210', onChange, onCountryChange },
+    });
     expect(queryByTestId('phone-picker')).toBeNull();
 
     return fireEvent
@@ -70,18 +65,14 @@ describe('PhoneNumberInput', () => {
         expect(getByTestId('phone-picker')).toBeTruthy();
         return fireEvent.click(getByText('Malaysia'));
       })
-      .then(() =>
-        waitFor(() => expect(onCountryChange).toHaveBeenCalledWith({ country: 'MY' }))
-      )
+      .then(() => waitFor(() => expect(onCountryChange).toHaveBeenCalledWith({ country: 'MY' })))
       .then(() => {
         expect(onChange).toHaveBeenLastCalledWith(
-          expect.objectContaining({ country: 'MY', value: '+609876543210' })
+          expect.objectContaining({ country: 'MY', value: '+609876543210' }),
         );
         expect(getByTestId('value').textContent).toBe('+609876543210');
         expect(getByTestId('country').textContent).toBe('MY');
-        expect((getByTestId('phone') as HTMLInputElement).value).toBe(
-          '9876543210'
-        );
+        expect((getByTestId('phone') as HTMLInputElement).value).toBe('9876543210');
       });
   });
 
@@ -111,21 +102,18 @@ describe('PhoneNumberInput', () => {
         return fireEvent
           .click(sheet.getByTestId('phone-country'))
           .then(() =>
-            waitFor(() => expect(sheet.getByTestId('phone-picker-drag-zone')).toBeTruthy())
+            waitFor(() => expect(sheet.getByTestId('phone-picker-drag-zone')).toBeTruthy()),
           );
       });
   });
 
   it('filters the picker by name or dial code', () => {
-    const { getByTestId, queryByText, getByText } = render(
-      PhoneNumberInputHarness,
-      { props: { searchLabel: 'Search country' } }
-    );
+    const { getByTestId, queryByText, getByText } = render(PhoneNumberInputHarness, {
+      props: { searchLabel: 'Search country' },
+    });
     return fireEvent
       .click(getByTestId('phone-country'))
-      .then(() =>
-        waitFor(() => expect(getByTestId('phone-search')).toBeTruthy())
-      )
+      .then(() => waitFor(() => expect(getByTestId('phone-search')).toBeTruthy()))
       .then(() => type(getByTestId('phone-search'), 'mal'))
       .then(() => {
         expect(getByText('Malaysia')).toBeTruthy();
@@ -149,9 +137,7 @@ describe('PhoneNumberInput', () => {
       props: { showDialCode: false },
     });
     expect(container.textContent).not.toContain('+91');
-    expect(getByTestId('phone-country').getAttribute('aria-label')).toBe(
-      'Country: India +91'
-    );
+    expect(getByTestId('phone-country').getAttribute('aria-label')).toBe('Country: India +91');
   });
 
   it('has no picker when the country is fixed or only one is allowed', () => {
@@ -175,7 +161,7 @@ describe('PhoneNumberInput', () => {
       props: { onSubmit, isRequired: true },
     });
     const control = getByTestId('phone');
-    const form = container.querySelector('form') as HTMLFormElement;
+    const form = container.querySelector('form')!;
 
     return type(control, '12345')
       .then(() => fireEvent.submit(form))
@@ -201,8 +187,6 @@ describe('PhoneNumberInput', () => {
     expect(button.className).toContain('bg-transparent');
     expect(button.className).toContain('hover:enabled:bg-interactive-gray-faded');
     expect(button.className).toContain('text-surface-gray-muted');
-    expect(button.querySelector('svg')?.parentElement?.className).toContain(
-      'w-4'
-    );
+    expect(button.querySelector('svg')?.parentElement?.className).toContain('w-4');
   });
 });

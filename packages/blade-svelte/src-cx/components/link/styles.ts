@@ -34,8 +34,8 @@ export const LINK_COLORS = [
 ] as const;
 export const LINK_SIZES = ['xsmall', 'small', 'medium', 'large'] as const;
 
-export type LinkColor = (typeof LINK_COLORS)[number];
-export type LinkSize = (typeof LINK_SIZES)[number];
+export type LinkColor = typeof LINK_COLORS[number];
+export type LinkSize = typeof LINK_SIZES[number];
 
 // No display: the anchor is `inline` so it wraps with its sentence; the
 // button is `inline-flex` so it takes no more width than its content.
@@ -49,13 +49,20 @@ const LOOK =
 const ANCHOR = 'no-underline hover:underline focus-visible:underline';
 
 const COLOR: Record<LinkColor, string> = {
-  primary: 'text-interactive-primary-normal hover:text-interactive-primary-subtle focus-visible:text-interactive-primary-subtle',
-  neutral: 'text-interactive-neutral-normal hover:text-interactive-neutral-subtle focus-visible:text-interactive-neutral-subtle',
-  white: 'text-interactive-static-white-normal hover:text-interactive-static-white-subtle focus-visible:text-interactive-static-white-subtle',
-  notice: 'text-interactive-notice-normal hover:text-interactive-notice-subtle focus-visible:text-interactive-notice-subtle',
-  information: 'text-interactive-information-normal hover:text-interactive-information-subtle focus-visible:text-interactive-information-subtle',
-  positive: 'text-interactive-positive-normal hover:text-interactive-positive-subtle focus-visible:text-interactive-positive-subtle',
-  negative: 'text-interactive-negative-normal hover:text-interactive-negative-subtle focus-visible:text-interactive-negative-subtle',
+  primary:
+    'text-interactive-primary-normal hover:text-interactive-primary-subtle focus-visible:text-interactive-primary-subtle',
+  neutral:
+    'text-interactive-neutral-normal hover:text-interactive-neutral-subtle focus-visible:text-interactive-neutral-subtle',
+  white:
+    'text-interactive-static-white-normal hover:text-interactive-static-white-subtle focus-visible:text-interactive-static-white-subtle',
+  notice:
+    'text-interactive-notice-normal hover:text-interactive-notice-subtle focus-visible:text-interactive-notice-subtle',
+  information:
+    'text-interactive-information-normal hover:text-interactive-information-subtle focus-visible:text-interactive-information-subtle',
+  positive:
+    'text-interactive-positive-normal hover:text-interactive-positive-subtle focus-visible:text-interactive-positive-subtle',
+  negative:
+    'text-interactive-negative-normal hover:text-interactive-negative-subtle focus-visible:text-interactive-negative-subtle',
 };
 
 const SIZE: Record<LinkSize, string> = {
@@ -113,10 +120,7 @@ const DISABLED: Record<LinkColor, { toggled: string; native: string }> = {
   },
 };
 
-export function linkDisabled(
-  color: LinkColor,
-  on: 'toggled' | 'native' = 'toggled'
-): string {
+export function linkDisabled(color: LinkColor, on: 'toggled' | 'native' = 'toggled'): string {
   return DISABLED[color][on];
 }
 
@@ -144,9 +148,7 @@ export interface LinkStyleProps {
   size?: Axis<'size'>;
 }
 
-export const resolveLink: LinkStyleResolver<LinkStyleProps> = (
-  props: LinkStyleProps = {}
-) => {
+export const resolveLink: LinkStyleResolver<LinkStyleProps> = (props: LinkStyleProps = {}) => {
   const { color = 'primary', size = 'medium' } = props;
   return {
     button: 'inline-flex items-center border-none text-start',

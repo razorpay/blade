@@ -29,17 +29,12 @@ export function phoneDigits(text: string): string {
 
 export function findPhoneCountry(
   countries: readonly PhoneCountry[],
-  code: string | undefined
+  code: string | undefined,
 ): PhoneCountry | undefined {
-  return code === undefined
-    ? undefined
-    : countries.find((country) => country.code === code);
+  return code === undefined ? undefined : countries.find((country) => country.code === code);
 }
 
-export function joinPhoneNumber(
-  country: PhoneCountry,
-  nationalNumber: string
-): PhoneParts {
+export function joinPhoneNumber(country: PhoneCountry, nationalNumber: string): PhoneParts {
   const digits = phoneDigits(nationalNumber);
   return {
     country: country.code,
@@ -57,7 +52,7 @@ export function joinPhoneNumber(
 export function splitPhoneNumber(
   value: string | null | undefined,
   countries: readonly PhoneCountry[],
-  preferred: string | undefined
+  preferred: string | undefined,
 ): PhoneParts | undefined {
   const fallback = findPhoneCountry(countries, preferred) ?? countries[0];
   if (!fallback) {
@@ -84,16 +79,13 @@ export function splitPhoneNumber(
   if (!match) {
     return joinPhoneNumber(fallback, digits);
   }
-  return joinPhoneNumber(
-    match,
-    digits.slice(phoneDigits(match.dialCode).length)
-  );
+  return joinPhoneNumber(match, digits.slice(phoneDigits(match.dialCode).length));
 }
 
 /** Keeps the app's order; `allowed` undefined or empty allows every country. */
 export function allowedPhoneCountries(
   countries: readonly PhoneCountry[],
-  allowed: readonly string[] | undefined
+  allowed: readonly string[] | undefined,
 ): PhoneCountry[] {
   if (!allowed || allowed.length === 0) {
     return [...countries];
@@ -104,7 +96,7 @@ export function allowedPhoneCountries(
 /** Matches the name, the ISO code or the dial code, with or without the plus. */
 export function filterPhoneCountries(
   countries: readonly PhoneCountry[],
-  query: string
+  query: string,
 ): PhoneCountry[] {
   const text = query.trim().toLowerCase();
   if (!text) {
@@ -115,6 +107,6 @@ export function filterPhoneCountries(
     (country) =>
       country.name.toLowerCase().includes(text) ||
       country.code.toLowerCase() === text ||
-      (digits !== '' && phoneDigits(country.dialCode).startsWith(digits))
+      (digits !== '' && phoneDigits(country.dialCode).startsWith(digits)),
   );
 }

@@ -18,12 +18,13 @@
     content={args.content ?? ''}
     placement={args.placement}
     isDisabled={args.isDisabled}
+    testID="tip"
     onOpenChange={({ isOpen }) => {
       log = [`${stamp()} onOpenChange ${isOpen}`, ...log].slice(0, 8);
     }}
   >
     {#snippet trigger()}
-      <Button variant="secondary" type="button">Convenience fee</Button>
+      <Button variant="secondary" type="button" testID="trigger">Convenience fee</Button>
     {/snippet}
   </Tooltip>
   <ul class="font-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">

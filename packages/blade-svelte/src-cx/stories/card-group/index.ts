@@ -26,8 +26,7 @@ const meta: StoryMeta = {
       argTypes: {},
     },
     InForm: {
-      description:
-        'With `name` and `isRequired` the open item is a required form value.',
+      description: 'With `name` and `isRequired` the open item is a required form value.',
       argTypes: {},
     },
   },

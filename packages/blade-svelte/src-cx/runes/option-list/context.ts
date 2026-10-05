@@ -14,8 +14,7 @@ export interface OptionState {
  * library's own payload from list to item — checkout hands its class parts
  * and the test id — and the rune only passes it through.
  */
-export interface OptionListContext<T, Shared>
-  extends EntryHost<ChoiceEntry<T>> {
+export interface OptionListContext<T, Shared> extends EntryHost<ChoiceEntry<T>> {
   readonly shared: Shared;
   /** Native radios of one group, or checkboxes. */
   readonly kind: 'radio' | 'checkbox';
@@ -51,15 +50,11 @@ export interface OptionRowSlot<T> {
 const OPTION_LIST = defineContext<unknown>('blade-option-list');
 const OPTION_ROW = defineContext<unknown>('blade-option-row');
 
-export function provideOptionList<T, Shared>(
-  list: OptionListContext<T, Shared>
-): void {
+export function provideOptionList<T, Shared>(list: OptionListContext<T, Shared>): void {
   OPTION_LIST.set(list);
 }
 
-export function getOptionList<T, Shared>():
-  | OptionListContext<T, Shared>
-  | undefined {
+export function getOptionList<T, Shared>(): OptionListContext<T, Shared> | undefined {
   return OPTION_LIST.get() as OptionListContext<T, Shared> | undefined;
 }
 

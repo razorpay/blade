@@ -1,4 +1,5 @@
-import { iconUrl, type IconSource } from '../icon/source';
+import { iconUrl } from '../icon/source';
+import type { IconSource } from '../icon/source';
 import { getAdapters } from '../../adapters';
 
 type Module<T> = T | { default: T };
@@ -48,7 +49,7 @@ export function createImage(options: ImageOptions): Image {
     const current = options.src();
     if (typeof current === 'string' || current === undefined) {
       show(current);
-      return;
+      return undefined;
     }
     let isCurrent = true;
     status = 'pending';

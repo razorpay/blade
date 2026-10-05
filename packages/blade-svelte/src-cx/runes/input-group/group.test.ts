@@ -11,7 +11,7 @@ describe('createInputGroup', () => {
         id: 'g',
         validationState: () => undefined,
         hint: () => undefined,
-      })
+      }),
     );
     const box = document.body.appendChild(document.createElement('div'));
     const top = document.createElement('input');

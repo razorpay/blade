@@ -21,10 +21,7 @@ export interface AmountClasses {
 }
 
 /** The second argument: whether the amount has fixed decimals (`suffix: 'decimals'`), the only affix besides the currency. */
-export type AmountStyleResolver<P> = (
-  props: P,
-  hasDecimals?: boolean
-) => AmountClasses;
+export type AmountStyleResolver<P> = (props: P, hasDecimals?: boolean) => AmountClasses;
 
 export interface AmountStyleProps {
   /**
@@ -39,7 +36,7 @@ const AFFIX = '[font-size:0.75em] opacity-800';
 
 export const resolveAmount: AmountStyleResolver<AmountStyleProps> = (
   props: AmountStyleProps = {},
-  hasDecimals = true
+  hasDecimals = true,
 ) => {
   const { isAffixSubtle = true } = props;
   const affix = isAffixSubtle ? AFFIX : '';

@@ -2,13 +2,12 @@ import { describe, it, expect, vi } from 'vitest';
 import { createRawSnippet } from 'svelte';
 import { render } from '@testing-library/svelte';
 import NavScreenNative from '../components/nav-stack/NavScreen.native.svelte';
-import {
-  createNav,
-  type NavDirection,
-  type NavDirectionSource,
-} from '../runes/nav-stack/nav';
+import { createNav } from '../runes/nav-stack/nav';
+import type { NavDirection, NavDirectionSource } from '../runes/nav-stack/nav';
 import { nativeNavSlide } from '../runes/nav-stack/screen.svelte';
 import { resolveNavStack } from '../components/nav-stack';
+import type { RenderResult } from '@testing-library/svelte';
+import type { Mock } from 'vitest';
 
 const children = createRawSnippet(() => ({
   render: () => '<p>Content</p>',
@@ -33,7 +32,13 @@ function turnable(): NavDirectionSource & { turn(next: NavDirection): void } {
   return nav;
 }
 
-function setup(isFirst: boolean) {
+function setup(
+  isFirst: boolean,
+): RenderResult<typeof NavScreenNative> & {
+  screen: HTMLElement;
+  nav: ReturnType<typeof turnable>;
+  animateNative: Mock;
+} {
   const nav = turnable();
   const animateNative = vi.fn();
   Object.assign(HTMLElement.prototype, { animateNative });
@@ -46,13 +51,11 @@ function setup(isFirst: boolean) {
       children,
     },
   });
-  const screen = view.container.querySelector<HTMLElement>(
-    '[data-screen="card"]'
-  ) as HTMLElement;
+  const screen = view.container.querySelector<HTMLElement>('[data-screen="card"]')!;
   return { ...view, screen, nav, animateNative };
 }
 
-const exitTo = (screen: HTMLElement) =>
+const exitTo = (screen: HTMLElement): number =>
   JSON.parse(screen.getAttribute('exit') ?? '{}').props.translateX.to;
 
 // The platform plays the exit after the element is gone, from the spec it
@@ -62,7 +65,7 @@ describe('NavScreen.native', () => {
     const { screen, nav, animateNative } = setup(false);
     expect(animateNative).toHaveBeenCalledWith(
       expect.objectContaining({ translateX: { from: '100%', to: '0' } }),
-      400
+      400,
     );
     expect(exitTo(screen)).toBe('-100%');
     nav.turn('back');
@@ -75,13 +78,15 @@ describe('NavScreen.native', () => {
     nav.push(Screen, { name: 'a' });
     nav.push(Screen, { name: 'b' });
     const writes: string[] = [];
-    const node = {
+    const node = ({
       setAttribute: (_name: string, value: string) => {
         writes.push(
-          `${value.includes('100%') && !value.includes('-100%') ? 'back' : 'forward'}:${nav.entries.length}`
+          `${value.includes('100%') && !value.includes('-100%') ? 'back' : 'forward'}:${
+            nav.entries.length
+          }`,
         );
       },
-    } as unknown as HTMLElement;
+    } as unknown) as HTMLElement;
     const stop = nativeNavSlide({
       nav: () => nav,
       isFirst: () => false,

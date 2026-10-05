@@ -15,8 +15,7 @@ const meta: StoryMeta = {
   },
   stories: {
     Basic: {
-      description:
-        'Controlled through bind:isChecked; the control seeds it, the user toggles it.',
+      description: 'Controlled through bind:isChecked; the control seeds it, the user toggles it.',
       args: {
         label: 'Save this card for faster checkout',
         size: 'medium',

@@ -10,7 +10,7 @@ describe('Image', () => {
       props: { src: '/hdfc.png', onLoad },
     });
     const box = getByTestId('logo');
-    const img = box.querySelector('img') as HTMLImageElement;
+    const img = box.querySelector('img')!;
     expectClass(box, 'overflow-hidden');
     expect(box.className.endsWith('w-8 h-8')).toBe(true);
     expect(img.getAttribute('src')).toBe('/hdfc.png');
@@ -27,9 +27,7 @@ describe('Image', () => {
     });
     const box = getByTestId('logo');
     expect(box.querySelector('svg')).toBeNull();
-    expect(box.querySelector('img')?.getAttribute('src')).toMatch(
-      /^data:image\/svg\+xml/
-    );
+    expect(box.querySelector('img')?.getAttribute('src')).toMatch(/^data:image\/svg\+xml/);
   });
 
   it('a load error falls back to the initial of alt, named by alt', () => {
@@ -37,7 +35,7 @@ describe('Image', () => {
     const { getByTestId } = render(ImageHarness, {
       props: { src: '/missing.png', onError },
     });
-    const img = getByTestId('logo').querySelector('img') as HTMLImageElement;
+    const img = getByTestId('logo').querySelector('img')!;
     return fireEvent.error(img).then(() => {
       const stand = getByTestId('logo').firstElementChild;
       expect(stand?.textContent).toBe('H');
@@ -55,7 +53,9 @@ describe('Image', () => {
   });
 
   it('awaits a promised source, marking the wait only when asked', () => {
-    let load: (value: { default: string }) => void = () => {};
+    let load: (value: { default: string }) => void = () => {
+      // noop
+    };
     const src = new Promise<{ default: string }>((resolve) => {
       load = resolve;
     });
@@ -65,9 +65,7 @@ describe('Image', () => {
     const box = getByTestId('logo');
     expectClass(box.firstElementChild, 'animate-skeleton');
     load({ default: '/lazy.svg' });
-    return waitFor(() =>
-      expect(box.querySelector('img')?.getAttribute('src')).toBe('/lazy.svg')
-    );
+    return waitFor(() => expect(box.querySelector('img')?.getAttribute('src')).toBe('/lazy.svg'));
   });
 
   it('a rejected source falls back', () => {

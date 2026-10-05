@@ -61,8 +61,7 @@ const meta: StoryMeta = {
       argTypes: {},
     },
     Lengths: {
-      description:
-        'The cells share the row up to a fixed width, so any code length fits.',
+      description: 'The cells share the row up to a fixed width, so any code length fits.',
       argTypes: {},
     },
   },

@@ -2,18 +2,11 @@ import { createOrderedEntries } from '../base/ordered-entries.svelte';
 import { getForm } from '../form/context';
 import { fieldIds } from '../form/field.svelte';
 import { createFieldLine } from '../form/field-line.svelte';
-import {
-  visibleGroupError,
-  type FieldHint,
-  type HintContent,
-  type ValidationState,
-} from '../form/hint';
+import { visibleGroupError } from '../form/hint';
+import type { FieldHint, HintContent, ValidationState } from '../form/hint';
 import type { FieldRecord } from '../form/types';
-import {
-  placeMembers,
-  type InputGroupCorners,
-  type InputGroupSpan,
-} from './layout';
+import { placeMembers } from './layout';
+import type { InputGroupCorners, InputGroupSpan } from './layout';
 
 export interface InputGroupOptions {
   /** The host's `$props.id()`: the label and hint ids hang off it. */
@@ -61,12 +54,10 @@ export function createInputGroup(options: InputGroupOptions): InputGroupRune {
     (state) =>
       visibleGroupError(
         members.map((member) => member.record),
-        state
-      )
+        state,
+      ),
   );
-  const corners = $derived(
-    placeMembers(members.map((member) => member.span()))
-  );
+  const corners = $derived(placeMembers(members.map((member) => member.span())));
 
   return {
     get hint() {

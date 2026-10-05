@@ -3,14 +3,14 @@ import { fireEvent, render } from '@testing-library/svelte';
 import OTPInputHarness from './fixtures/OTPInputHarness.svelte';
 import { expectClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 
 type Queries = { getByTestId: (id: string) => HTMLElement };
 
-const cell = ({ getByTestId }: Queries, index: number) =>
+const cell = ({ getByTestId }: Queries, index: number): HTMLInputElement =>
   getByTestId(`otp-${index}`) as HTMLInputElement;
 
-const values = (queries: Queries, length: number) =>
+const values = (queries: Queries, length: number): string =>
   Array.from({ length }, (_, index) => cell(queries, index).value).join('|');
 
 describe('OTPInput standalone', () => {
@@ -42,6 +42,7 @@ describe('OTPInput standalone', () => {
 
     for (const [index, digit] of ['1', '2', '3', '4'].entries()) {
       cell(queries, index).focus();
+      // eslint-disable-next-line no-await-in-loop -- a user types one digit at a time
       await fireEvent.keyDown(cell(queries, index), { key: digit });
       if (index < 3) {
         expect(document.activeElement).toBe(cell(queries, index + 1));
@@ -129,16 +130,12 @@ describe('OTPInput standalone', () => {
     const queries = render(OTPInputHarness, { props: { otpLength: 4 } });
 
     cell(queries, 1).focus();
-    expect(await fireEvent.keyDown(cell(queries, 1), { key: 'Tab' })).toBe(
-      false
-    );
+    expect(await fireEvent.keyDown(cell(queries, 1), { key: 'Tab' })).toBe(false);
     expect(document.activeElement).toBe(cell(queries, 2));
 
     cell(queries, 3).focus();
     // Not cancelled: the browser moves focus out.
-    expect(await fireEvent.keyDown(cell(queries, 3), { key: 'Tab' })).toBe(
-      true
-    );
+    expect(await fireEvent.keyDown(cell(queries, 3), { key: 'Tab' })).toBe(true);
   });
 
   it('isMasked hides the characters', () => {
@@ -152,7 +149,7 @@ describe('OTPInput standalone', () => {
     });
     const group = queries.getByRole('group');
     expect(group.getAttribute('aria-describedby')).toBe(
-      queries.getByText('Sent by SMS').closest('[id]')?.id
+      queries.getByText('Sent by SMS').closest('[id]')?.id,
     );
 
     await queries.rerender({
@@ -169,10 +166,7 @@ describe('OTPInput standalone', () => {
   it('isDisabled disables every cell and applies the disabled part to the root', () => {
     const queries = render(OTPInputHarness, { props: { isDisabled: true } });
     expect(cell(queries, 0).disabled).toBe(true);
-    expectClass(
-      queries.container.firstElementChild as HTMLElement,
-      'pointer-events-none'
-    );
+    expectClass(queries.container.firstElementChild as HTMLElement, 'pointer-events-none');
   });
 });
 

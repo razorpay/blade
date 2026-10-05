@@ -1,11 +1,21 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { flushSync } from 'svelte';
 import { box } from '../../test/box.svelte';
+import type { Box } from '../../test/box.svelte';
 import { run } from '../../test/run';
 import { createRadioGroup } from './group.svelte';
+import type { RadioGroup } from './group.svelte';
 import { createRadio } from './radio.svelte';
 
-function group(overrides: { value?: string; disabled?: boolean } = {}) {
+function group(
+  overrides: { value?: string; disabled?: boolean } = {},
+): {
+  rune: RadioGroup<string>;
+  unmount: () => void;
+  bound: Box<string | undefined>;
+  onChange: Mock;
+} {
   const value = box<string | undefined>(overrides.value);
   const isDisabled = box(Boolean(overrides.disabled));
   const onChange = vi.fn();
@@ -23,7 +33,7 @@ function group(overrides: { value?: string; disabled?: boolean } = {}) {
       validationState: () => undefined,
       hint: () => undefined,
       shared: () => 'parts',
-    })
+    }),
   );
   return { rune: ran.value, unmount: ran.unmount, bound: value, onChange };
 }
@@ -40,7 +50,7 @@ describe('createRadioGroup', () => {
   it('a pick writes the value, reports onChange and moves the pick', () => {
     const { rune, onChange, unmount } = group();
     const { value: radio } = run(() =>
-      createRadio(rune, { value: () => 'web', isDisabled: () => false })
+      createRadio(rune, { value: () => 'web', isDisabled: () => false }),
     );
     expect(radio.isSelected).toBe(false);
     const held = rune.select('web', new Event('change'));
@@ -98,7 +108,9 @@ describe('createRadioGroup', () => {
 
   it('counts registered radios in the pick', () => {
     const { rune, unmount } = group({ value: 'b' });
-    const radio = (value: string) => ({
+    const radio = (
+      value: string,
+    ): { value: () => string; isDisabled: () => boolean; getElement: () => undefined } => ({
       value: () => value,
       isDisabled: () => false,
       getElement: () => undefined,

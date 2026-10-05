@@ -10,7 +10,8 @@ export { nativeOptionState } from './base/option-list';
 export * from './base/ordered-entries.svelte';
 export * from './base/choice-list.svelte';
 export type { ElementHandle } from './dom/element';
-export { createNodeRef, type NodeRef } from './dom/node.svelte';
+export { createNodeRef } from './dom/node.svelte';
+export type { NodeRef } from './dom/node.svelte';
 export { syncChecked } from './dom/checked';
 export { focusWhen } from './dom/focus';
 export type {
@@ -36,15 +37,13 @@ export type {
 } from './form/types';
 export * from './form/hint';
 export * from './form/context';
-export {
-  createField,
-  defaultCompare,
-  setupField,
-  type FieldHooks,
-  type FieldModel,
-  type FieldModelRecord,
-  type FieldSetup,
-  type FieldStore,
+export { createField, defaultCompare, setupField } from './form/field.svelte';
+export type {
+  FieldHooks,
+  FieldModel,
+  FieldModelRecord,
+  FieldSetup,
+  FieldStore,
 } from './form/field.svelte';
 export * from './form/field-line.svelte';
 export { collectFormData, createForm } from './form/form.svelte';

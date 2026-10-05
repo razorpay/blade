@@ -6,10 +6,7 @@ export const COUNTER_INPUT_AXES = {
   emphasis: ['subtle', 'intense'],
 } as const;
 
-type Axis<K extends keyof typeof COUNTER_INPUT_AXES> = AxisValue<
-  typeof COUNTER_INPUT_AXES,
-  K
->;
+type Axis<K extends keyof typeof COUNTER_INPUT_AXES> = AxisValue<typeof COUNTER_INPUT_AXES, K>;
 
 /** Derived from COUNTER_INPUT_AXES: add a value there, never here. */
 export interface CounterInputStyleProps {
@@ -119,9 +116,7 @@ const BUTTON_RING =
 const FIELD_RING =
   'focus-within:outline-solid focus-within:outline-4 focus-within:-outline-offset-4 focus-within:outline-surface-primary-muted';
 
-export function resolveCounterInput(
-  props: CounterInputStyleProps = {}
-): CounterInputClasses {
+export function resolveCounterInput(props: CounterInputStyleProps = {}): CounterInputClasses {
   const { size = 'medium', emphasis = 'subtle' } = props;
   const look = SIZE[size];
   const tone = EMPHASIS[emphasis];

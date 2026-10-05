@@ -6,9 +6,7 @@ import type { Attachment } from 'svelte/attachments';
  * written back; Svelte's `checked={}` does not re-set an unchanged value.
  * Re-runs whenever `checked()` reads something that changed.
  */
-export function syncChecked(
-  checked: () => boolean
-): Attachment<HTMLInputElement> {
+export function syncChecked(checked: () => boolean): Attachment<HTMLInputElement> {
   return (node) => {
     const next = checked();
     if (node.checked !== next) {

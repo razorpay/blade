@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/svelte';
 import LinkHarness from './fixtures/LinkHarness.svelte';
 import { expectClass } from './classes';
 
-const prevented = () => document.body.dataset.prevented;
+const prevented = (): string | undefined => document.body.dataset.prevented;
 
 beforeEach(() => {
   delete document.body.dataset.prevented;
@@ -144,7 +144,7 @@ describe('Link, as Blade', () => {
   it("takes Blade's seven colours", async () => {
     const { LINK_COLORS, resolveLink } = await import('../components/link/styles');
     expect([...LINK_COLORS].sort()).toEqual(
-      ['information', 'negative', 'neutral', 'notice', 'positive', 'primary', 'white'].sort()
+      ['information', 'negative', 'neutral', 'notice', 'positive', 'primary', 'white'].sort(),
     );
     expect(resolveLink({ color: 'white' }).root).toContain('text-interactive-static-white-normal');
   });

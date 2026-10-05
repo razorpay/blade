@@ -28,10 +28,7 @@ export interface AlertClasses {
 }
 
 /** The second argument: whether the alert has a title, which Blade aligns the icon by. */
-export type AlertStyleResolver<P> = (
-  props: P,
-  hasTitle?: boolean
-) => AlertClasses;
+export type AlertStyleResolver<P> = (props: P, hasTitle?: boolean) => AlertClasses;
 
 /** The blade taxonomy as data. */
 export const ALERT_AXES = {
@@ -39,10 +36,7 @@ export const ALERT_AXES = {
   emphasis: ['subtle', 'intense'],
 } as const;
 
-type Axis<K extends keyof typeof ALERT_AXES> = AxisValue<
-  typeof ALERT_AXES,
-  K
->;
+type Axis<K extends keyof typeof ALERT_AXES> = AxisValue<typeof ALERT_AXES, K>;
 type Color = Axis<'color'>;
 type Emphasis = Axis<'emphasis'>;
 
@@ -120,10 +114,7 @@ const ICON_OFFSET = {
 
 const URGENT: Color[] = ['negative', 'notice'];
 
-export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (
-  props,
-  hasTitle = true
-) => {
+export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (props, hasTitle = true) => {
   const { color = 'neutral', emphasis = 'subtle' } = props;
   const text = TEXT[emphasis];
   return {
@@ -136,8 +127,13 @@ export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (
     defaultIcon: DEFAULT_ICON[color],
     text: 'flex min-w-0 flex-1 flex-col pl-2 pr-1',
     title: `m-0 mb-1 text-100 leading-100 font-semibold ${text.title}`,
-    description: `m-0 text-75 leading-75 ${hasTitle ? '' : 'mt-0.5'} ${text.description}`.replace(/\s+/g, ' '),
-    close: `flex shrink-0 items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${hasTitle ? '' : 'mt-0.5'} ${text.close}`,
+    description: `m-0 text-75 leading-75 ${hasTitle ? '' : 'mt-0.5'} ${text.description}`.replace(
+      /\s+/g,
+      ' ',
+    ),
+    close: `flex shrink-0 items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${
+      hasTitle ? '' : 'mt-0.5'
+    } ${text.close}`,
     closeIcon: close,
     role: URGENT.includes(color) ? 'alert' : 'status',
     live: color === 'notice' ? 'polite' : undefined,

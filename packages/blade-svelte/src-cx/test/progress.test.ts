@@ -11,13 +11,11 @@ describe('Progress (preset component)', () => {
     expect(wait.getAttribute('aria-hidden')).toBe('true');
     expect(wait.hasAttribute('role')).toBe(false);
 
-    return rerender({ testID: 'wait', accessibilityLabel: 'Loading' }).then(
-      () => {
-        expect(wait.getAttribute('role')).toBe('status');
-        expect(wait.getAttribute('aria-label')).toBe('Loading');
-        expect(wait.hasAttribute('aria-hidden')).toBe(false);
-      }
-    );
+    return rerender({ testID: 'wait', accessibilityLabel: 'Loading' }).then(() => {
+      expect(wait.getAttribute('role')).toBe('status');
+      expect(wait.getAttribute('aria-label')).toBe('Loading');
+      expect(wait.hasAttribute('aria-hidden')).toBe(false);
+    });
   });
 
   it('draws three staggered dots by default', () => {
@@ -43,17 +41,13 @@ describe('Progress (preset component)', () => {
     expect(bar.getAttribute('aria-valuenow')).toBe('30');
     expect(bar.getAttribute('aria-valuemax')).toBe('120');
     expect(bar.style.getPropertyValue('--progress')).toBe('0.25');
-    expect(bar.firstElementChild?.className).toContain(
-      '[scale:var(--progress)_1]'
-    );
+    expect(bar.firstElementChild?.className).toContain('[scale:var(--progress)_1]');
     expect(bar.className.endsWith('w-40')).toBe(true);
 
-    return rerender({ type: 'bar', value: 500, max: 120, testID: 'bar' }).then(
-      () => {
-        expect(bar.getAttribute('aria-valuenow')).toBe('120');
-        expect(bar.style.getPropertyValue('--progress')).toBe('1');
-      }
-    );
+    return rerender({ type: 'bar', value: 500, max: 120, testID: 'bar' }).then(() => {
+      expect(bar.getAttribute('aria-valuenow')).toBe('120');
+      expect(bar.style.getPropertyValue('--progress')).toBe('1');
+    });
   });
 
   it('a ring draws its arc from the same fraction', () => {

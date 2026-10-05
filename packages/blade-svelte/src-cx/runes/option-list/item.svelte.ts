@@ -2,11 +2,7 @@ import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import type { ChoiceEntry } from '../base/choice-list.svelte';
 import { registerEntry } from '../base/ordered-entries.svelte';
-import type {
-  OptionListContext,
-  OptionRowSlot,
-  OptionState,
-} from './context';
+import type { OptionListContext, OptionRowSlot, OptionState } from './context';
 
 export interface OptionItemOptions<T> {
   /** The option this item picks: what the list's value holds. */
@@ -42,27 +38,24 @@ export interface OptionItem<T, Shared> {
 export function createOptionItem<T, Shared>(
   list: OptionListContext<T, Shared> | undefined,
   slot: OptionRowSlot<T> | undefined,
-  options: OptionItemOptions<T>
+  options: OptionItemOptions<T>,
 ): OptionItem<T, Shared> {
   // A virtual list's row slot places the item: it registers nowhere.
-  const { entry, attach, unregister } = registerEntry<ChoiceEntry<T>>(
-    slot ? undefined : list,
-    {
-      value: () => options.value(),
-      isDisabled: () => options.isDisabled(),
-      text: () => options.text?.(),
-    }
-  );
+  const { entry, attach, unregister } = registerEntry<ChoiceEntry<T>>(slot ? undefined : list, {
+    value: () => options.value(),
+    isDisabled: () => options.isDisabled(),
+    text: () => options.text?.(),
+  });
   onDestroy(unregister);
 
-  const index = $derived(slot ? slot.index : (list?.indexOf(entry) ?? 0));
+  const index = $derived(slot ? slot.index : list?.indexOf(entry) ?? 0);
   const option = $derived(slot ? slot.option : options.value());
   const listed = $derived(
     list?.stateOf(option, index) ?? {
       index,
       isSelected: false,
       isDisabled: false,
-    }
+    },
   );
   // In a virtual list the data decides what the keyboard skips; the item's
   // own flag can only grey its row.
@@ -70,9 +63,7 @@ export function createOptionItem<T, Shared>(
     ...listed,
     isDisabled: listed.isDisabled || options.isDisabled(),
   });
-  const isTabStop = $derived(
-    slot ? slot.isTabStop : Boolean(list?.isTabStop(index))
-  );
+  const isTabStop = $derived(slot ? slot.isTabStop : Boolean(list?.isTabStop(index)));
 
   return {
     list,

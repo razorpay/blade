@@ -5,12 +5,13 @@ import LayerHostNative from '../components/layer/LayerHost.native.svelte';
 import SurfaceNative from '../components/layer/Surface.native.svelte';
 import { globalLayers } from '../runes/layer/layers';
 import { resolveModal } from '../components/modal';
+import type { ComponentProps } from 'svelte';
 
 const children = createRawSnippet(() => ({
   render: () => '<p>Content</p>',
 }));
 
-function props(overrides: Record<string, unknown> = {}) {
+function props(overrides: Record<string, unknown> = {}): ComponentProps<typeof SurfaceNative> {
   return {
     isOpen: true,
     isTop: true,
@@ -20,7 +21,7 @@ function props(overrides: Record<string, unknown> = {}) {
     testID: 'sheet',
     children,
     ...overrides,
-  };
+  } as ComponentProps<typeof SurfaceNative>;
 }
 
 // The native twin hands presence, scrim, focus and BACK to the platform's

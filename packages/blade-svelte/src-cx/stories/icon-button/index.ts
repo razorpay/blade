@@ -27,7 +27,8 @@ const meta: StoryMeta = {
       },
     },
     Matrix: {
-      description: 'Every emphasis and size, bare and highlighted, generated from ICON_BUTTON_AXES. subtle and moderate sit on a dark surface.',
+      description:
+        'Every emphasis and size, bare and highlighted, generated from ICON_BUTTON_AXES. subtle and moderate sit on a dark surface.',
       argTypes: {},
     },
     Async: {

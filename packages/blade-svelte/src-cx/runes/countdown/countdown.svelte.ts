@@ -1,7 +1,5 @@
-import {
-  createCountdownClock,
-  type CountdownState,
-} from '../base/countdown.svelte';
+import { createCountdownClock } from '../base/countdown.svelte';
+import type { CountdownState } from '../base/countdown.svelte';
 
 export interface CountdownOptions {
   /** How long to count; a new number starts over. */
@@ -29,7 +27,7 @@ export function createCountdown(options: CountdownOptions): Countdown {
     createCountdownClock({
       seconds: options.seconds(),
       onElapsed: () => options.onElapsed?.(),
-    })
+    }),
   );
 
   $effect(() => {

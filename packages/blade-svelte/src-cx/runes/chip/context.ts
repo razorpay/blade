@@ -7,8 +7,7 @@ import type { EntryHost } from '../base/ordered-entries.svelte';
  * payload from group to chip — checkout hands its size and colour — and the
  * rune only passes it through.
  */
-export interface ChipGroupContext<Shared>
-  extends EntryHost<ChoiceEntry<string>> {
+export interface ChipGroupContext<Shared> extends EntryHost<ChoiceEntry<string>> {
   readonly shared: Shared;
   /** Native radios of one group (`single`), or checkboxes (`multiple`). */
   readonly kind: 'radio' | 'checkbox';

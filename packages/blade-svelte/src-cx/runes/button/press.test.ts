@@ -1,9 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { createForm } from '../form/form.svelte';
-import type { FieldRecord } from '../form/types';
-import { createButton, type ButtonOptions } from './press.svelte';
+import type { FieldRecord, FormModel } from '../form/types';
+import { createButton } from './press.svelte';
+import type { ButtonOptions } from './press.svelte';
 
-function manualSchedule() {
+function manualSchedule(): { schedule: (fn: () => void) => () => void; tick: () => void } {
   const pending: Array<() => void> = [];
   return {
     schedule: (fn: () => void) => {
@@ -18,7 +20,7 @@ function manualSchedule() {
   };
 }
 
-function cardForm(value: string, onSubmit = vi.fn()) {
+function cardForm(value: string, onSubmit = vi.fn()): { form: FormModel; onSubmit: Mock } {
   const form = createForm({ name: 'card', onSubmit });
   const field: FieldRecord = {
     name: 'card.number',
@@ -29,7 +31,7 @@ function cardForm(value: string, onSubmit = vi.fn()) {
   return { form, onSubmit };
 }
 
-function hooks() {
+function hooks(): { onValidationFailed: Mock; onFeedback: Mock; onError: Mock } {
   return {
     onValidationFailed: vi.fn(),
     onFeedback: vi.fn(),
@@ -37,7 +39,13 @@ function hooks() {
   };
 }
 
-function button(options: ButtonOptions = {}) {
+function button(
+  options: ButtonOptions = {},
+): {
+  model: ReturnType<typeof createButton>;
+  hooks: ReturnType<typeof hooks>;
+  timer: ReturnType<typeof manualSchedule>;
+} {
   const h = hooks();
   const timer = manualSchedule();
   const model = createButton({
@@ -99,11 +107,7 @@ describe('inside a form', () => {
   it('an invalid submit with validateForm shakes, reports errors and still forwards the click', async () => {
     const { form, onSubmit } = cardForm('');
     const onClick = vi.fn();
-    const {
-      model,
-      hooks: h,
-      timer,
-    } = button({
+    const { model, hooks: h, timer } = button({
       form,
       onClick,
       validateForm: () => true,

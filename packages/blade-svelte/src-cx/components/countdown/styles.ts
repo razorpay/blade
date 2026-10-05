@@ -16,10 +16,7 @@ export const COUNTDOWN_AXES = {
   variant: ['text', 'pill'],
 } as const;
 
-type Axis<K extends keyof typeof COUNTDOWN_AXES> = AxisValue<
-  typeof COUNTDOWN_AXES,
-  K
->;
+type Axis<K extends keyof typeof COUNTDOWN_AXES> = AxisValue<typeof COUNTDOWN_AXES, K>;
 
 /** Derived from COUNTDOWN_AXES: add a value there, never here. */
 export interface CountdownStyleProps {
@@ -33,15 +30,14 @@ export interface CountdownStyleProps {
 const VARIANT: Record<Axis<'variant'>, Record<'calm' | 'urgent', string>> = {
   text: { calm: '', urgent: 'text-feedback-negative-intense' },
   pill: {
-    calm: 'rounded-max bg-feedback-neutral-subtle px-2 py-0.5 text-75 leading-50 font-medium text-feedback-neutral-intense',
+    calm:
+      'rounded-max bg-feedback-neutral-subtle px-2 py-0.5 text-75 leading-50 font-medium text-feedback-neutral-intense',
     urgent:
       'rounded-max bg-feedback-negative-subtle px-2 py-0.5 text-75 leading-50 font-medium text-feedback-negative-intense',
   },
 };
 
-export const resolveCountdown: CountdownStyleResolver<CountdownStyleProps> = (
-  props
-) => ({
+export const resolveCountdown: CountdownStyleResolver<CountdownStyleProps> = (props) => ({
   root: 'inline-block font-text tabular-nums',
   tone: VARIANT[props.variant ?? 'text'],
 });

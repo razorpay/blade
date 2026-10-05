@@ -2,12 +2,7 @@ import type { BackAnswer } from './back';
 import { createControllable } from './controllable.svelte';
 
 /** The default vocabulary of what opened or closed a disclosure. */
-export type OpenSource =
-  | 'trigger'
-  | 'dismiss'
-  | 'escape'
-  | 'back'
-  | 'programmatic';
+export type OpenSource = 'trigger' | 'dismiss' | 'escape' | 'back' | 'programmatic';
 
 /**
  * A dismissal, as the owner hears it. `close` ends it — needed only when
@@ -61,7 +56,7 @@ export interface DisclosureModel<S extends string = OpenSource> {
 
 /** Open/close with an owner-decided dismiss rule and a back answer. */
 export function createDisclosure<S extends string = OpenSource>(
-  options: DisclosureOptions<S> = {}
+  options: DisclosureOptions<S> = {},
 ): DisclosureModel<S> {
   const isDismissible = (): boolean => options.dismissible?.() ?? true;
   const programmatic = 'programmatic' as S;

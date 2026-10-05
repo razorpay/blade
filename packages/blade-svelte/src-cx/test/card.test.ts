@@ -7,7 +7,7 @@ import { expectClass, expectNoClass } from './classes';
 const children = createRawSnippet(() => ({
   render: () => '<span>HDFC Bank</span>',
 }));
-const surfaceOf = (card: HTMLElement) => card.firstElementChild as HTMLElement;
+const surfaceOf = (card: HTMLElement): HTMLElement => card.firstElementChild as HTMLElement;
 
 describe('Card', () => {
   it('is a plain box, a named group when labelled', () => {
@@ -108,8 +108,8 @@ describe('Card', () => {
     const { getByTestId } = render(Card, {
       props: { header, footer, children, testID: 'card' },
     });
-    const head = getByTestId('head').parentElement as HTMLElement;
-    const foot = getByTestId('foot').parentElement as HTMLElement;
+    const head = getByTestId('head').parentElement!;
+    const foot = getByTestId('foot').parentElement!;
     expectClass(head, 'border-b-thin');
     expectClass(head, 'pb-3');
     expectClass(head, 'mb-3');

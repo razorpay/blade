@@ -1,7 +1,8 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { createDisclosure } from '../base/disclosure';
-import { defaultSchedule, type Schedule } from '../base/schedule';
+import { defaultSchedule } from '../base/schedule';
+import type { Schedule } from '../base/schedule';
 import { createTrigger } from '../dom/trigger.svelte';
 
 export interface PopoverOptions {
@@ -54,7 +55,7 @@ export function createPopover(options: PopoverOptions): Popover {
     haspopup: 'dialog',
   });
 
-  function set(next: boolean) {
+  function set(next: boolean): void {
     if (!(next && options.isDisabled())) {
       if (next) {
         disclosure.open('trigger');
@@ -65,11 +66,11 @@ export function createPopover(options: PopoverOptions): Popover {
   }
 
   // A device that cannot hover (touch, native) opens on a tap either way.
-  const canHover = () =>
+  const canHover = (): boolean =>
     typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches;
-  const isHover = () => options.openInteraction?.() === 'hover' && canHover();
+  const isHover = (): boolean => options.openInteraction?.() === 'hover' && canHover();
   let leaving: (() => void) | undefined;
-  function stay() {
+  function stay(): void {
     leaving?.();
     leaving = undefined;
   }

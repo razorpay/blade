@@ -30,6 +30,7 @@ export function resolveCollapsible(): CollapsibleClasses {
  * label as a Link's trailing icon does (`LINK_ICON_SLOT.trailing`).
  */
 export function resolveCollapsibleChevron(isExpanded: boolean): string {
-  const turn = 'ms-1 inline-flex [vertical-align:-0.125em] [transform-origin:center] transition-transform duration-moderate ease-standard motion-reduce:transition-none';
+  const turn =
+    'ms-1 inline-flex [vertical-align:-0.125em] [transform-origin:center] transition-transform duration-moderate ease-standard motion-reduce:transition-none';
   return `${turn} ${isExpanded ? '-rotate-180' : 'rotate-0'}`;
 }

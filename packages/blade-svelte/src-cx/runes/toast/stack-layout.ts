@@ -25,11 +25,7 @@ export interface ToastPlacement {
  * Whether the stack lays its toasts out in full: a short stack always does,
  * a long one only while held (hovered on desktop, tapped on a phone).
  */
-export function isToastStackExpanded(
-  count: number,
-  isHeld: boolean,
-  minShown: number
-): boolean {
+export function isToastStackExpanded(count: number, isHeld: boolean, minShown: number): boolean {
   return isHeld || count <= minShown;
 }
 
@@ -43,7 +39,7 @@ export function isToastStackExpanded(
 export function layoutToastStack(
   heights: readonly (number | undefined)[],
   isExpanded: boolean,
-  geometry: ToastStackGeometry
+  geometry: ToastStackGeometry,
 ): ToastPlacement[] {
   const frontHeight = heights[0];
   let stacked = 0;
@@ -51,14 +47,9 @@ export function layoutToastStack(
     const behind = index >= geometry.front;
     const offset = isExpanded ? stacked : index * geometry.peek;
     stacked += (height ?? 0) + geometry.gutter;
-    const scale =
-      !isExpanded && behind ? Math.max(0.7, 1 - index * geometry.scaleStep) : 1;
+    const scale = !isExpanded && behind ? Math.max(0.7, 1 - index * geometry.scaleStep) : 1;
     const shown = isExpanded || index < geometry.front + geometry.peeks;
-    const cropped =
-      !isExpanded &&
-      behind &&
-      height !== undefined &&
-      frontHeight !== undefined;
+    const cropped = !isExpanded && behind && height !== undefined && frontHeight !== undefined;
     return {
       offset,
       scale,

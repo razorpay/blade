@@ -1,6 +1,7 @@
 import { defineContext } from '../context';
 import { createLayerStack } from '../base/layer-stack.svelte';
-import { defaultSchedule, type Schedule } from '../base/schedule';
+import { defaultSchedule } from '../base/schedule';
+import type { Schedule } from '../base/schedule';
 import type { IconSource } from '../icon/source';
 
 export type ToastDismissReason = 'timeout' | 'dismiss' | 'evicted' | 'cleared';
@@ -54,12 +55,10 @@ interface ToastTimer {
  * eviction, and pause/resume. Rendering, transitions and placement are the
  * stack rune's; it reads `entries` and draws.
  */
-export function createToasts<T>(
-  options: ToastsOptions<T> = {}
-): ToastsModel<T> {
+export function createToasts<T>(options: ToastsOptions<T> = {}): ToastsModel<T> {
   const capacity = options.capacity ?? Infinity;
-  const schedule = options.schedule || defaultSchedule;
-  const now = options.now || Date.now;
+  const schedule = options.schedule ?? defaultSchedule;
+  const now = options.now ?? Date.now;
   const stack = createLayerStack<T>();
   const timers = new Map<number, ToastTimer>();
   const reasons = new Map<number, ToastDismissReason>();
@@ -68,10 +67,12 @@ export function createToasts<T>(
   type ToastLayer = ReturnType<typeof stack.push>;
 
   const entries = $derived(
-    stack.entries.map((layer): ToastEntry<T> => ({
-      id: layer.id,
-      content: layer.entry,
-    }))
+    stack.entries.map(
+      (layer): ToastEntry<T> => ({
+        id: layer.id,
+        content: layer.entry,
+      }),
+    ),
   );
 
   function arm(layer: ToastLayer, timer: ToastTimer): void {
@@ -196,10 +197,7 @@ export interface Toasts<S extends object> {
   /** Undefined until a ToastStack mounts: it brings the defaults. */
   model: ToastsModel<ShowToastOptions<S>> | undefined;
   /** Created by the mounted ToastStack; `showToast` needs one. */
-  attach(options: {
-    capacity: number;
-    duration: number;
-  }): ToastsModel<ShowToastOptions<S>>;
+  attach(options: { capacity: number; duration: number }): ToastsModel<ShowToastOptions<S>>;
   detach(): void;
   showToast(toast: string | ShowToastOptions<S>): ToastHandle;
 }
@@ -227,16 +225,12 @@ export function createToastQueue<S extends object>(): Toasts<S> {
     },
     showToast(toast) {
       const content =
-        typeof toast === 'string'
-          ? ({ content: toast } as ShowToastOptions<S>)
-          : toast;
+        typeof toast === 'string' ? ({ content: toast } as ShowToastOptions<S>) : toast;
       // Blade: 4s unless `autoDismiss` is false, then until dismissed.
       const handle = toasts.model?.show(content, {
-        duration: content.autoDismiss === false ? 0 : (content.duration ?? 4000),
+        duration: content.autoDismiss === false ? 0 : content.duration ?? 4000,
       });
-      return handle
-        ? { dismiss: handle.dismiss, dismissed: handle.dismissed }
-        : NEVER;
+      return handle ? { dismiss: handle.dismiss, dismissed: handle.dismissed } : NEVER;
     },
   };
   return toasts;

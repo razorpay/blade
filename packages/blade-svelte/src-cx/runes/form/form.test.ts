@@ -7,12 +7,12 @@ import type { FieldRecord } from './types';
 function field(
   name: string | undefined,
   value: unknown,
-  extra: Partial<FieldRecord> = {}
+  extra: Partial<FieldRecord> = {},
 ): FieldRecord {
   return { name, value, ...extra };
 }
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe('collectFormData', () => {
   it('nests dotted names for data and touched, keeps constraint errors flat, skips unnamed fields', () => {
@@ -24,7 +24,7 @@ describe('collectFormData', () => {
         field('card.name', 'Ada', { touched: true }),
         field(undefined, 'ignored'),
       ],
-      false
+      false,
     );
 
     expect(snapshot.data).toEqual({ card: { number: '', name: 'Ada' } });
@@ -36,16 +36,13 @@ describe('collectFormData', () => {
     const snapshot = collectFormData(
       [field('vpa', '', { constraints: { kind: 'text', required: true } })],
       false,
-      (code, f) => `${f.name}:${code}`
+      (code, f) => `${f.name}:${code}`,
     );
     expect(snapshot.constraintErrors).toEqual({ vpa: 'vpa:required' });
   });
 
   it('marks every field touched once the form is submitted', () => {
-    const snapshot = collectFormData(
-      [field('vpa', ''), field('save', false)],
-      true
-    );
+    const snapshot = collectFormData([field('vpa', ''), field('save', false)], true);
     expect(snapshot.touched).toEqual({ vpa: true, save: true });
   });
 });
@@ -60,7 +57,7 @@ describe('createForm validation', () => {
     form.register(field('card.number', '', { constraints: required }));
     form.register(field('card.cvv', '', { constraints: required }));
 
-    form.refresh('input', 'card.number');
+    void form.refresh('input', 'card.number');
 
     expect(form.snapshot().errors).toEqual({
       'card.number': 'Invalid card',
@@ -73,11 +70,9 @@ describe('createForm validation', () => {
       name: 'plain',
       formatConstraintError: (code) => `msg:${code}`,
     });
-    form.register(
-      field('vpa', '', { constraints: { kind: 'text', required: true } })
-    );
+    form.register(field('vpa', '', { constraints: { kind: 'text', required: true } }));
 
-    form.refresh();
+    void form.refresh();
 
     expect(form.snapshot().errors).toEqual({ vpa: 'msg:required' });
   });
@@ -91,7 +86,7 @@ describe('createForm validation', () => {
     });
     form.register(field('vpa', 'x'));
 
-    form.refresh('blur', 'vpa');
+    void form.refresh('blur', 'vpa');
 
     expect(onValidate).toHaveBeenCalledWith({
       reason: 'blur',
@@ -103,16 +98,16 @@ describe('createForm validation', () => {
   });
 
   it('applies only the newest async validation result', async () => {
-    let resolveFirst: (v: Record<string, string>) => void = () => {};
-    let resolveSecond: (v: Record<string, string>) => void = () => {};
+    let resolveFirst: (v: Record<string, string>) => void = () => {
+      // noop
+    };
+    let resolveSecond: (v: Record<string, string>) => void = () => {
+      // noop
+    };
     const validator = vi
       .fn()
-      .mockImplementationOnce(
-        () => new Promise((resolve) => (resolveFirst = resolve))
-      )
-      .mockImplementationOnce(
-        () => new Promise((resolve) => (resolveSecond = resolve))
-      );
+      .mockImplementationOnce(() => new Promise((resolve) => (resolveFirst = resolve)))
+      .mockImplementationOnce(() => new Promise((resolve) => (resolveSecond = resolve)));
     const onPromise = vi.fn();
     const form = createForm({ name: 'f', validator, hooks: { onPromise } });
     form.register(field('vpa', 'a'));
@@ -125,11 +120,7 @@ describe('createForm validation', () => {
     await first;
 
     expect(form.snapshot().errors).toEqual({ vpa: 'second' });
-    expect(onPromise).toHaveBeenCalledWith(
-      'validate',
-      expect.any(Promise),
-      'vpa'
-    );
+    expect(onPromise).toHaveBeenCalledWith('validate', expect.any(Promise), 'vpa');
   });
 
   it('routes validator rejections to onError and keeps the previous errors', async () => {
@@ -162,7 +153,7 @@ describe('createForm submission', () => {
     form.register(
       field('card.cvv', '1', {
         getHandle: () => handle as never,
-      })
+      }),
     );
     form.register(field('card.name', ''));
 
@@ -250,10 +241,7 @@ describe('createForm submission', () => {
     await (outcome.result as Promise<unknown>).catch(() => undefined);
     await flush();
 
-    expect(onPromise.mock.calls.map((call) => call[0])).toEqual([
-      'submit',
-      'submit_failed',
-    ]);
+    expect(onPromise.mock.calls.map((call) => call[0])).toEqual(['submit', 'submit_failed']);
     expect(form.snapshot().submitting).toBe(false);
   });
 
@@ -346,10 +334,10 @@ describe('createForm triggers and state', () => {
     const seen = watch(() => form.state.data);
     const unregister = form.register(field('vpa', 'a'));
 
-    form.refresh();
+    void form.refresh();
     flushSync();
     unregister();
-    form.refresh();
+    void form.refresh();
     flushSync();
 
     expect(seen.seen).toEqual([{}, { vpa: 'a' }, {}]);

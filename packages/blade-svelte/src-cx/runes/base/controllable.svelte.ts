@@ -22,15 +22,11 @@ const strictEquals = <T>(a: T, b: T): boolean => a === b;
  * One value, two sources. Controlled-ness is decided once, at construction, so a
  * host cannot flip a field between modes mid-life.
  */
-export function createControllable<T>(
-  options: ControllableOptions<T>
-): Controllable<T> {
+export function createControllable<T>(options: ControllableOptions<T>): Controllable<T> {
   const initial = options.value?.();
   const isControlled = initial !== undefined;
-  const equals = options.equals || strictEquals;
-  let value = $state.raw<T>(
-    isControlled ? (initial as T) : options.defaultValue
-  );
+  const equals = options.equals ?? strictEquals;
+  let value = $state.raw<T>(isControlled ? (initial as T) : options.defaultValue);
 
   function get(): T {
     if (isControlled) {

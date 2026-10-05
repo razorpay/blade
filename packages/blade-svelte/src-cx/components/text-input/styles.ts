@@ -72,10 +72,7 @@ export const TEXT_INPUT_AXES = {
   textAlign: ['left', 'center', 'right'],
 } as const;
 
-type Axis<K extends keyof typeof TEXT_INPUT_AXES> = AxisValue<
-  typeof TEXT_INPUT_AXES,
-  K
->;
+type Axis<K extends keyof typeof TEXT_INPUT_AXES> = AxisValue<typeof TEXT_INPUT_AXES, K>;
 
 /** Derived from TEXT_INPUT_AXES: add a value there, never here. */
 export interface TextInputStyleProps {
@@ -89,10 +86,7 @@ export interface TextInputStyleProps {
 // padding, the body text (letter-spacing -1.3%, -3.3% at large), and the
 // radius. Medium keeps 16px text on phones — iOS zooms into a smaller
 // field — and Blade's 14px from `m` up.
-const SIZE: Record<
-  Axis<'size'>,
-  { box: string; text: string; radius: string; framed: string }
-> = {
+const SIZE: Record<Axis<'size'>, { box: string; text: string; radius: string; framed: string }> = {
   xsmall: {
     box: 'min-h-7 px-2',
     text: 'text-25 leading-25 tracking-50',
@@ -162,9 +156,9 @@ export const FRAMED_VALIDATION = {
   success: '',
 };
 
-export const resolveTextInput: TextInputStyleResolver<
-  TextInputStyleProps
-> = (props: TextInputStyleProps = {}) => {
+export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
+  props: TextInputStyleProps = {},
+) => {
   const look = SIZE[props.size ?? 'medium'];
   return {
     root: 'relative flex w-full flex-col',

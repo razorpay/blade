@@ -6,6 +6,7 @@ declare module '*.svg?raw' {
 }
 
 declare module '*.md?raw' {
+  // eslint-disable-next-line one-var -- each module declares its own export
   const content: string;
   export default content;
 }

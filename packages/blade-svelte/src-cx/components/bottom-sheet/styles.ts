@@ -14,10 +14,7 @@ export const BOTTOM_SHEET_AXES = {
   pace: MODAL_AXES.pace,
 } as const;
 
-type Axis<K extends keyof typeof BOTTOM_SHEET_AXES> = AxisValue<
-  typeof BOTTOM_SHEET_AXES,
-  K
->;
+type Axis<K extends keyof typeof BOTTOM_SHEET_AXES> = AxisValue<typeof BOTTOM_SHEET_AXES, K>;
 
 /** Derived from BOTTOM_SHEET_AXES: add a value there, never here. */
 export interface BottomSheetStyleProps {

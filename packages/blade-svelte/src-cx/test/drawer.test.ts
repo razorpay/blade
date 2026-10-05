@@ -47,9 +47,7 @@ describe('Drawer (blade)', () => {
       props: { isOpen: true, pace: 'snappy', className: '[z-index:70]' },
     });
     const panel = getByTestId('drawer');
-    expect(panel.className).toContain(
-      '[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]'
-    );
+    expect(panel.className).toContain('[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]');
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });
 
@@ -59,9 +57,7 @@ describe('Drawer (blade)', () => {
       props: { isOpen: true, isDismissible: false, onDismiss },
     });
     await fireEvent.click(getByTestId('host-backdrop'));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'blur' })
-    );
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'blur' }));
     expect(queryByTestId('drawer')).not.toBeNull();
     expect(queryByRole('button', { name: 'Close' })).toBeNull();
   });
@@ -78,7 +74,7 @@ describe('Drawer (blade)', () => {
 
 describe('Drawer isDraggable', () => {
   // jsdom has no PointerEvent: a plain event carrying what the handler reads.
-  function pointer(type: string, clientX: number, timeStamp: number) {
+  function pointer(type: string, clientX: number, timeStamp: number): Event {
     const event = new Event(type, { bubbles: true });
     Object.defineProperties(event, {
       clientX: { value: clientX },
@@ -101,25 +97,28 @@ describe('Drawer isDraggable', () => {
   it.each([
     ['drawer', 1],
     ['left-drawer', -1],
-  ] as const)('a %s follows the finger toward its edge and dismisses past half its width', async (variant, sign) => {
-    vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(400);
-    const onDismiss = vi.fn();
-    const { getByTestId, getByText } = render(DrawerHarness, {
-      props: { isOpen: true, isDraggable: true, variant, onDismiss },
-    });
-    const zone = getByTestId('drawer-drag-zone');
-    // The header is the zone; a drawer has no handle.
-    expect(zone.contains(getByText('Filters'))).toBe(true);
-    expect(getByTestId('drawer-chrome').querySelector('div[aria-hidden="true"]')).toBeNull();
+  ] as const)(
+    'a %s follows the finger toward its edge and dismisses past half its width',
+    async (variant, sign) => {
+      vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(400);
+      const onDismiss = vi.fn();
+      const { getByTestId, getByText } = render(DrawerHarness, {
+        props: { isOpen: true, isDraggable: true, variant, onDismiss },
+      });
+      const zone = getByTestId('drawer-drag-zone');
+      // The header is the zone; a drawer has no handle.
+      expect(zone.contains(getByText('Filters'))).toBe(true);
+      expect(getByTestId('drawer-chrome').querySelector('div[aria-hidden="true"]')).toBeNull();
 
-    await fireEvent(zone, pointer('pointerdown', 200, 0));
-    await fireEvent(zone, pointer('pointermove', 200 + sign * 250, 2000));
-    expect(getByTestId('drawer').style.transform).toBe(`translateX(${sign * 250}px)`);
-    await fireEvent(zone, pointer('pointerup', 200 + sign * 250, 2010));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({ source: 'drag' })
-    );
-  });
+      await fireEvent(zone, pointer('pointerdown', 200, 0));
+      await fireEvent(zone, pointer('pointermove', 200 + sign * 250, 2000));
+      expect(getByTestId('drawer').style.transform).toBe(`translateX(${sign * 250}px)`);
+      await fireEvent(zone, pointer('pointerup', 200 + sign * 250, 2010));
+      expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
+        expect.objectContaining({ source: 'drag' }),
+      );
+    },
+  );
 
   it('a pull the other way, into the page, does not move it', async () => {
     const { getByTestId } = render(DrawerHarness, {

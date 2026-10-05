@@ -1,18 +1,9 @@
 import { onDestroy, untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { getLayers } from '../layer/layers';
-import {
-  isToastStackExpanded,
-  layoutToastStack,
-  type ToastPlacement,
-  type ToastStackGeometry,
-} from './stack-layout';
-import type {
-  ShowToastOptions,
-  ToastEntry,
-  Toasts,
-  ToastsModel,
-} from './toasts.svelte';
+import { isToastStackExpanded, layoutToastStack } from './stack-layout';
+import type { ToastPlacement, ToastStackGeometry } from './stack-layout';
+import type { ShowToastOptions, ToastEntry, Toasts, ToastsModel } from './toasts.svelte';
 
 export interface ToastStackOptions<S extends object> {
   toasts: Toasts<S>;
@@ -64,9 +55,7 @@ export interface ToastStack<S extends object> {
  * rest peeking behind it until the stack is held. Call during component
  * initialisation.
  */
-export function createToastStack<S extends object>(
-  options: ToastStackOptions<S>
-): ToastStack<S> {
+export function createToastStack<S extends object>(options: ToastStackOptions<S>): ToastStack<S> {
   const layers = getLayers();
   const model = options.toasts.attach({
     capacity: options.capacity(),
@@ -80,13 +69,10 @@ export function createToastStack<S extends object>(
   let isHeld = $state(false);
   let isPhone = $state(false);
 
-  const query =
-    typeof matchMedia === 'function'
-      ? matchMedia(options.phoneMedia())
-      : undefined;
+  const query = typeof matchMedia === 'function' ? matchMedia(options.phoneMedia()) : undefined;
   if (query) {
     isPhone = query.matches;
-    const follow = (event: MediaQueryListEvent) => {
+    const follow = (event: MediaQueryListEvent): void => {
       isPhone = event.matches;
     };
     query.addEventListener?.('change', follow);
@@ -99,14 +85,14 @@ export function createToastStack<S extends object>(
     isToastStackExpanded(
       order.length,
       isHeld,
-      isPhone ? options.minShown().phone : options.minShown().desktop
-    )
+      isPhone ? options.minShown().phone : options.minShown().desktop,
+    ),
   );
   const placements = $derived.by(() => {
     const placed = layoutToastStack(
       order.map((id) => heights[id]),
       isExpanded,
-      options.geometry()
+      options.geometry(),
     );
     const byId: Record<number, ToastPlacement> = {};
     order.forEach((id, index) => {
@@ -116,17 +102,14 @@ export function createToastStack<S extends object>(
   });
   const hoverVars = $derived.by(() => {
     const gutter = options.geometry().gutter;
-    const total = order.reduce(
-      (sum, id) => sum + (heights[id] ?? 0) + gutter,
-      0
-    );
+    const total = order.reduce((sum, id) => sum + (heights[id] ?? 0) + gutter, 0);
     return {
       '--hover-bottom': 0,
-      '--hover-height': isExpanded ? total : (heights[order[0]] ?? 0),
+      '--hover-height': isExpanded ? total : heights[order[0]] ?? 0,
     };
   });
 
-  function hold(next: boolean) {
+  function hold(next: boolean): void {
     isHeld = next;
     if (next) {
       model.pause();
@@ -175,9 +158,9 @@ export function createToastStack<S extends object>(
         }
       }
       return () => {
-        const rest = { ...untrack(() => heights) };
-        delete rest[id];
-        heights = rest;
+        heights = Object.fromEntries(
+          Object.entries(untrack(() => heights)).filter(([key]) => key !== String(id)),
+        );
       };
     },
     pause: () => model.pause(),

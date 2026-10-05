@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    BladeProvider,
     ModalStack,
     LayerHost,
     PhoneNumberInput,
@@ -27,6 +28,8 @@
   let country = $state('IN');
 </script>
 
+<!-- The app sets how modals look: the picker is a sheet on phones, a modal from 768px. -->
+<BladeProvider defaults={{ Modal: { variant: { base: 'sheet', m: 'modal' } } }}>
 <div class="flex max-w-96 flex-col gap-3">
   <PhoneNumberInput
     {countries}
@@ -43,10 +46,12 @@
     searchLabel={args.withSearch ? 'Search country or code' : undefined}
     emptyText="No country found"
     closeLabel="Close"
+    testID="phone"
   />
   <Text size="small" color="muted"
-    >value: {value || '—'} · country: {country}</Text
+    >value: <span data-testid="value">{value || '—'}</span> · country: <span data-testid="country">{country}</span></Text
   >
 </div>
 <ModalStack />
 <LayerHost />
+</BladeProvider>

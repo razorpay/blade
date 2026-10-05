@@ -1,13 +1,7 @@
-import {
-  createChoiceList,
-  type ChoiceEntry,
-} from '../base/choice-list.svelte';
+import { createChoiceList } from '../base/choice-list.svelte';
+import type { ChoiceEntry } from '../base/choice-list.svelte';
 import { createFieldShell } from '../form/field.svelte';
-import type {
-  ChoiceValidationState,
-  FieldHint,
-  HintContent,
-} from '../form/hint';
+import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
 import type { RadioGroupContext } from './context';
 
 /** A choice is made or missing: there is no success state to show. */
@@ -58,9 +52,7 @@ const asPick = (value: unknown): string | undefined =>
  * Call during component initialisation; the component provides the result
  * to its Radios (`provideRadioGroup`) and draws from it.
  */
-export function createRadioGroup<Shared>(
-  options: RadioGroupOptions<Shared>
-): RadioGroup<Shared> {
+export function createRadioGroup<Shared>(options: RadioGroupOptions<Shared>): RadioGroup<Shared> {
   // The form reveals the picked radio, else the first enabled one.
   const shell = createFieldShell({
     id: options.id,
@@ -117,13 +109,12 @@ export function createRadioGroup<Shared>(
     isSelected: (candidate) => picked === candidate,
     select(next, event) {
       return shell.edit(
-        (onValue) =>
-          choices.toggle(next, choices.items().indexOf(next), onValue),
+        (onValue) => choices.toggle(next, choices.items().indexOf(next), onValue),
         (stored) => {
           options.onValue(String(stored));
           options.onChange?.(String(stored));
         },
-        event
+        event,
       );
     },
     register: (entry: ChoiceEntry<string>) => choices.register(entry),

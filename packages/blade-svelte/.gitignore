@@ -30,5 +30,6 @@ yarn-error.log*
 # BrowserStack
 log/
 test-results/
+playwright-report/
 .env.local
 browserstackSetupConfig.json

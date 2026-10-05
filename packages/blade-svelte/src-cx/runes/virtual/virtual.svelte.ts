@@ -1,6 +1,7 @@
 import { untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { createVirtualWindow, type VirtualRange } from './window';
+import { createVirtualWindow } from './window';
+import type { VirtualRange } from './window';
 
 export interface VirtualOptions {
   /** One key per row, in order. Measured heights are remembered by key. */
@@ -43,11 +44,8 @@ export function createVirtual(options: VirtualOptions): Virtual {
     total: 0,
   });
 
-  function update() {
-    const next = model.range(
-      viewport?.scrollTop ?? 0,
-      viewport?.clientHeight ?? 0
-    );
+  function update(): void {
+    const next = model.range(viewport?.scrollTop ?? 0, viewport?.clientHeight ?? 0);
     const current = untrack(() => range);
     if (
       next.start !== current.start ||
@@ -59,17 +57,14 @@ export function createVirtual(options: VirtualOptions): Virtual {
     }
   }
 
-  function measure() {
+  function measure(): void {
     if (!content) {
       return;
     }
     const keys = options.keys();
     const { start } = untrack(() => range);
     const sizes = Array.from(content.children, (row, i) => {
-      return [
-        keys[start + i] ?? '',
-        (row as HTMLElement).getBoundingClientRect().height,
-      ] as const;
+      return [keys[start + i] ?? '', (row as HTMLElement).getBoundingClientRect().height] as const;
     });
     const correction = model.measure(sizes);
     // Rows above turned out taller or shorter than predicted: keep what the

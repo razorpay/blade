@@ -3,15 +3,12 @@ import { fireEvent, render } from '@testing-library/svelte';
 import InputGroupHarness from './fixtures/InputGroupHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
-const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
+const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe('InputGroup', () => {
   it('names the group by its label and each member by its own', () => {
-    const { getByRole, getByLabelText, getByTestId, queryByText } =
-      render(InputGroupHarness);
-    expect(getByRole('group', { name: 'Card details' })).toBe(
-      getByTestId('group')
-    );
+    const { getByRole, getByLabelText, getByTestId, queryByText } = render(InputGroupHarness);
+    expect(getByRole('group', { name: 'Card details' })).toBe(getByTestId('group'));
     // A member's label is its control's name, not visible text.
     expect(queryByText('Card number')).toBeNull();
     expect(getByLabelText('Card number')).toBe(getByTestId('number'));
@@ -60,7 +57,7 @@ describe('InputGroup', () => {
 
   it('rounds only the members that hold a corner, worked out from the spans', () => {
     const { getByTestId } = render(InputGroupHarness);
-    const frame = (id: string) => getByTestId(id).parentElement;
+    const frame = (id: string): HTMLElement | null => getByTestId(id).parentElement;
     expectClass(frame('number'), 'rounded-tl-small');
     expectClass(frame('number'), 'rounded-tr-small');
     expectNoClass(frame('number'), 'rounded-bl-small');
@@ -72,7 +69,7 @@ describe('InputGroup', () => {
 
   it('stacks a member over its neighbours by state: focus, then error, then hover', async () => {
     const { getByTestId } = render(InputGroupHarness);
-    const frame = (id: string) => getByTestId(id).parentElement;
+    const frame = (id: string): HTMLElement | null => getByTestId(id).parentElement;
     expect(frame('number')?.closest('.grid')?.className).toContain('isolate');
 
     await fireEvent.click(getByTestId('pay'));

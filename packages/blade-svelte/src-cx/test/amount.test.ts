@@ -3,9 +3,9 @@ import { render } from '@testing-library/svelte';
 import { Amount } from '../index';
 import { expectClass } from './classes';
 
-const shownParts = (root: HTMLElement) =>
+const shownParts = (root: HTMLElement): (string | null)[] =>
   Array.from(root.children[1]?.children ?? []).map((part) => part.textContent);
-const part = (root: HTMLElement, index: number) =>
+const part = (root: HTMLElement, index: number): HTMLElement =>
   root.children[1]?.children[index] as HTMLElement;
 
 describe('Amount', () => {
@@ -77,9 +77,9 @@ describe('Amount', () => {
     expect(a.className).toBe('inline-flex ml-2');
     for (const el of [a, ...a.querySelectorAll('*')]) {
       const own = el.className.toString().split(/\s+/);
-      expect(
-        own.filter((name) => /^(?:text-\d|text-surface|leading-|font-)/.test(name))
-      ).toEqual([]);
+      expect(own.filter((name) => /^(?:text-\d|text-surface|leading-|font-)/.test(name))).toEqual(
+        [],
+      );
     }
   });
 

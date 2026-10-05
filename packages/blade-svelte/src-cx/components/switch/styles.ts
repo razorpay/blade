@@ -32,10 +32,7 @@ export const SWITCH_AXES = {
   size: ['small', 'medium'],
 } as const;
 
-type Axis<K extends keyof typeof SWITCH_AXES> = AxisValue<
-  typeof SWITCH_AXES,
-  K
->;
+type Axis<K extends keyof typeof SWITCH_AXES> = AxisValue<typeof SWITCH_AXES, K>;
 
 /** Derived from SWITCH_AXES: add a value there, never here. */
 export interface SwitchStyleProps {
@@ -59,8 +56,7 @@ const THUMB =
 // Blade's ThumbIcon (ThumbIcon.tsx, AnimatedThumbIcon.web.tsx): shown only
 // while effectively on (on and enabled), fading in over `quick` once the
 // thumb is under way (`2xquick` delay) and out at once.
-const ICON =
-  'transition-opacity duration-quick ease-standard motion-reduce:transition-none';
+const ICON = 'transition-opacity duration-quick ease-standard motion-reduce:transition-none';
 
 // Pressed (the row held down), Blade stretches the thumb to 125% of its width
 // and shifts it toward where it will travel: `left` 12.5% of the thumb's
@@ -88,8 +84,10 @@ const SIZE: Record<
     icon: '2xsmall',
     iconBox: '!w-2 !h-2 m:!w-[6px] m:!h-[6px]',
     pressed: {
-      on: 'group-active:w-5 group-active:[left:-6.24px] m:group-active:w-[15px] m:group-active:[left:-4.68px]',
-      off: 'group-active:w-5 group-active:[left:2px] m:group-active:w-[15px] m:group-active:[left:1.5px]',
+      on:
+        'group-active:w-5 group-active:[left:-6.24px] m:group-active:w-[15px] m:group-active:[left:-4.68px]',
+      off:
+        'group-active:w-5 group-active:[left:2px] m:group-active:w-[15px] m:group-active:[left:1.5px]',
     },
   },
   medium: {
@@ -98,8 +96,10 @@ const SIZE: Record<
     icon: 'xsmall',
     iconBox: '!w-[10px] !h-[10px] m:!w-2 m:!h-2',
     pressed: {
-      on: 'group-active:w-[25px] group-active:[left:-7.8px] m:group-active:w-5 m:group-active:[left:-6.24px]',
-      off: 'group-active:w-[25px] group-active:[left:2.5px] m:group-active:w-5 m:group-active:[left:2px]',
+      on:
+        'group-active:w-[25px] group-active:[left:-7.8px] m:group-active:w-5 m:group-active:[left:-6.24px]',
+      off:
+        'group-active:w-[25px] group-active:[left:2.5px] m:group-active:w-5 m:group-active:[left:2px]',
     },
   },
 };
@@ -136,7 +136,6 @@ export const resolveSwitch: SwitchStyleResolver<SwitchStyleProps> = (props) => {
       'block w-full h-full animate-spin rounded-max border-thicker border-solid border-surface-primary-normal border-t-transparent motion-reduce:animate-none',
     // Blade's Switch draws no label; this follows its SelectorTitle siblings
     // (Checkbox, Radio): `surface.text.gray.subtle`, disabled greyed.
-    label:
-      'text-100 leading-100 text-surface-gray-subtle peer-disabled:text-surface-gray-disabled',
+    label: 'text-100 leading-100 text-surface-gray-subtle peer-disabled:text-surface-gray-disabled',
   };
 };

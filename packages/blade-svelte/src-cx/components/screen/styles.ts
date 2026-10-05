@@ -6,10 +6,7 @@ export const SCREEN_AXES = {
   padding: ['none', 'medium'],
 } as const;
 
-type Axis<K extends keyof typeof SCREEN_AXES> = AxisValue<
-  typeof SCREEN_AXES,
-  K
->;
+type Axis<K extends keyof typeof SCREEN_AXES> = AxisValue<typeof SCREEN_AXES, K>;
 
 /** Derived from SCREEN_AXES: add a value there, never here. */
 export interface ScreenStyleProps {
@@ -21,7 +18,9 @@ const PADDING: Record<Axis<'padding'>, string> = {
   medium: 'p-4',
 };
 
-export function resolveScreen(props: ScreenStyleProps = {}) {
+export function resolveScreen(
+  props: ScreenStyleProps = {},
+): { root: string; disabled: string; body: string } {
   const { padding = 'medium' } = props;
   return {
     root: 'flex min-h-0 w-full flex-1 flex-col bg-surface-gray-intense text-surface-gray-normal',

@@ -30,16 +30,14 @@ const PRECEDING = 2;
  * Before mount (and on native) mount order it is. What lets a list hold
  * anything between its entries: only entries register.
  */
-export function createOrderedEntries<
-  E extends OrderedEntry,
->(): OrderedEntries<E> {
+export function createOrderedEntries<E extends OrderedEntry>(): OrderedEntries<E> {
   // A plain array in mount order; `version` tells readers it changed. It is
   // written from a plain counter, never `+=`: registering and mounting run
   // inside effects, and reading `version` there would make them loop.
   const entries: E[] = [];
   let changes = 0;
   let version = $state(0);
-  const bump = () => {
+  const bump = (): void => {
     changes += 1;
     version = changes;
   };
@@ -51,6 +49,7 @@ export function createOrderedEntries<
       if (!one?.compareDocumentPosition || !two) {
         return 0;
       }
+      // eslint-disable-next-line no-bitwise -- compareDocumentPosition returns a bit mask
       return one.compareDocumentPosition(two) & PRECEDING ? 1 : -1;
     });
   });
@@ -93,12 +92,9 @@ export interface RegisteredEntry<E extends OrderedEntry, N extends HTMLElement> 
  * its own) the entry is inert. Lifecycle-free like every state core: the
  * caller hands `unregister` to its `onDestroy`.
  */
-export function registerEntry<
-  E extends OrderedEntry,
-  N extends HTMLElement = HTMLElement,
->(
+export function registerEntry<E extends OrderedEntry, N extends HTMLElement = HTMLElement>(
   host: Pick<EntryHost<E>, 'register' | 'reorder'> | undefined,
-  fields: Omit<E, 'getElement'>
+  fields: Omit<E, 'getElement'>,
 ): RegisteredEntry<E, N> {
   let node: N | undefined;
   const entry = { ...fields, getElement: () => node } as E;

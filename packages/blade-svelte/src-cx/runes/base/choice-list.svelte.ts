@@ -1,13 +1,8 @@
-import {
-  createNavigableList,
-  type KeyModifiers,
-} from './navigable-list.svelte';
+import { createNavigableList } from './navigable-list.svelte';
+import type { KeyModifiers } from './navigable-list.svelte';
 import { nativeOptionState } from './option-list';
-import {
-  createOrderedEntries,
-  type EntryHost,
-  type OrderedEntry,
-} from './ordered-entries.svelte';
+import { createOrderedEntries } from './ordered-entries.svelte';
+import type { EntryHost, OrderedEntry } from './ordered-entries.svelte';
 import type { Compare } from './selection';
 
 /**
@@ -86,11 +81,7 @@ export interface ChoiceList<T> extends EntryHost<ChoiceEntry<T>> {
    * default, which for radios would pick as it moves and for Enter would
    * submit the form.
    */
-  handleKey(
-    key: string,
-    mods?: KeyModifiers,
-    onValue?: (value: unknown) => void
-  ): boolean;
+  handleKey(key: string, mods?: KeyModifiers, onValue?: (value: unknown) => void): boolean;
   /**
    * Movement keys only — for choices whose element picks on its own click
    * (a button), where Enter and Space must stay the platform's. Moves the
@@ -111,9 +102,9 @@ const same = <T>(a: T, b: T): boolean => a === b;
  */
 export function createChoiceList<T>(
   field: ChoiceField,
-  options: ChoiceListOptions<T> = {}
+  options: ChoiceListOptions<T> = {},
 ): ChoiceList<T> {
-  const compare = options.compare || same;
+  const compare = options.compare ?? same;
   const isMultiple = (): boolean => Boolean(options.multiple?.());
 
   const entries = createOrderedEntries<ChoiceEntry<T>>();
@@ -130,8 +121,7 @@ export function createChoiceList<T>(
     return value === null || value === undefined ? [] : [value as T];
   }
 
-  const isSelected = (item: T): boolean =>
-    picks().some((pick) => compare(pick, item));
+  const isSelected = (item: T): boolean => picks().some((pick) => compare(pick, item));
   const isDisabled = (item: T, index: number): boolean => {
     if (options.disabled?.()) {
       return true;
@@ -151,17 +141,13 @@ export function createChoiceList<T>(
     isDisabled,
     loop: options.loop,
     orientation: options.orientation,
-    typeahead: options.items
-      ? options.typeahead
-      : (item) => entryText(items().indexOf(item)),
+    typeahead: options.items ? options.typeahead : (item) => entryText(items().indexOf(item)),
   });
 
   function next(item: T): unknown {
     const picked = isSelected(item);
     if (isMultiple()) {
-      return picked
-        ? picks().filter((pick) => !compare(pick, item))
-        : [...picks(), item];
+      return picked ? picks().filter((pick) => !compare(pick, item)) : [...picks(), item];
     }
     if (picked) {
       return options.deselectable?.() ? null : field.record.value;
@@ -169,11 +155,7 @@ export function createChoiceList<T>(
     return item;
   }
 
-  function toggle(
-    item: T,
-    index: number,
-    onValue?: (value: unknown) => void
-  ): boolean {
+  function toggle(item: T, index: number, onValue?: (value: unknown) => void): boolean {
     if (!isDisabled(item, index)) {
       field.updateValue(next(item), onValue);
       field.touch();
@@ -190,8 +172,7 @@ export function createChoiceList<T>(
     isSelected,
     isDisabled,
     toggle,
-    optionState: (item, index) =>
-      nativeOptionState(isSelected(item), isDisabled(item, index)),
+    optionState: (item, index) => nativeOptionState(isSelected(item), isDisabled(item, index)),
     activeIndex: list.activeIndex,
     setActive: list.setActive,
     tabStop() {
@@ -199,7 +180,7 @@ export function createChoiceList<T>(
         return list.activeIndex();
       }
       const enabled = list.enabledIndices();
-      const picked = enabled.find((index) => isSelected(items()[index] as T));
+      const picked = enabled.find((index) => isSelected(items()[index]));
       return picked ?? enabled[0] ?? -1;
     },
     handleKey(key, mods, onValue) {

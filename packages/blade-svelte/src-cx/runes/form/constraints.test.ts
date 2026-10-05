@@ -11,7 +11,7 @@ const EMAIL_PATTERN =
 function text(
   value: unknown,
   constraints: Partial<FieldConstraints>,
-  display?: () => string
+  display?: () => string,
 ): FieldRecord {
   return {
     name: 'f',
@@ -28,9 +28,7 @@ describe('evaluateConstraints', () => {
 
   it('required: text fails only on the empty string, whitespace counts as filled', () => {
     expect(evaluateConstraints(text('', { required: true }))).toBe('required');
-    expect(evaluateConstraints(text(null, { required: true }))).toBe(
-      'required'
-    );
+    expect(evaluateConstraints(text(null, { required: true }))).toBe('required');
     expect(evaluateConstraints(text(' ', { required: true }))).toBeNull();
     expect(evaluateConstraints(text(0, { required: true }))).toBeNull();
   });
@@ -57,9 +55,7 @@ describe('evaluateConstraints', () => {
 
   it('pattern and email apply to the displayed string, not the raw value', () => {
     const digits = { pattern: '\\d{4} \\d{4}' };
-    expect(
-      evaluateConstraints(text('41111111', digits, () => '4111 1111'))
-    ).toBeNull();
+    expect(evaluateConstraints(text('41111111', digits, () => '4111 1111'))).toBeNull();
     expect(evaluateConstraints(text('41111111', digits))).toBe('pattern');
   });
 
@@ -69,14 +65,10 @@ describe('evaluateConstraints', () => {
   });
 
   it('required wins over email, email over pattern', () => {
-    expect(
-      evaluateConstraints(
-        text('', { required: true, email: true, pattern: 'x' })
-      )
-    ).toBe('required');
-    expect(
-      evaluateConstraints(text('nope', { email: true, pattern: 'x' }))
-    ).toBe('email');
+    expect(evaluateConstraints(text('', { required: true, email: true, pattern: 'x' }))).toBe(
+      'required',
+    );
+    expect(evaluateConstraints(text('nope', { email: true, pattern: 'x' }))).toBe('email');
   });
 
   it('ignores a pattern that does not compile, like browsers do', () => {
@@ -113,7 +105,7 @@ describe('evaluateConstraints', () => {
           input.value = sample;
           expect(
             evaluateConstraints(text(sample, { pattern })) === 'pattern',
-            `${pattern} vs ${sample}`
+            `${pattern} vs ${sample}`,
           ).toBe(input.validity.patternMismatch);
         }
       });
@@ -124,10 +116,9 @@ describe('evaluateConstraints', () => {
         const input = document.createElement('input');
         input.type = 'email';
         input.value = sample;
-        expect(
-          evaluateConstraints(text(sample, { email: true })) === 'email',
-          sample
-        ).toBe(input.validity.typeMismatch);
+        expect(evaluateConstraints(text(sample, { email: true })) === 'email', sample).toBe(
+          input.validity.typeMismatch,
+        );
       }
     });
 
@@ -138,7 +129,7 @@ describe('evaluateConstraints', () => {
         input.value = sample;
         expect(
           evaluateConstraints(text(sample, { required: true })) === 'required',
-          JSON.stringify(sample)
+          JSON.stringify(sample),
         ).toBe(input.validity.valueMissing);
       }
     });

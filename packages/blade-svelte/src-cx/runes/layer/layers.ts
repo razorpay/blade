@@ -1,6 +1,7 @@
 import { defineContext } from '../context';
 import type { BackAnswer } from '../base/back';
-import { createLayerStack, type Layer } from '../base/layer-stack.svelte';
+import { createLayerStack } from '../base/layer-stack.svelte';
+import type { Layer } from '../base/layer-stack.svelte';
 
 /** What an open overlay answers to the stack. */
 export interface LayerEntry {

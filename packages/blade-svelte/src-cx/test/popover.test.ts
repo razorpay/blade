@@ -35,9 +35,7 @@ describe('Popover', () => {
         expect(trigger.getAttribute('aria-expanded')).toBe('true');
         expect(trigger.getAttribute('aria-controls')).toBe(panel.id);
         // The first control, as Blade: the close button.
-        expect(document.activeElement).toBe(
-          getByRole('button', { name: 'Close' })
-        );
+        expect(document.activeElement).toBe(getByRole('button', { name: 'Close' }));
         expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: true });
       });
   });
@@ -45,12 +43,9 @@ describe('Popover', () => {
   it('closes from inside, on Escape and on a press outside; focus returns', () => {
     const { getByRole, getByTestId, queryByTestId } = render(PopoverHarness);
     const trigger = getByRole('button', { name: 'Fees' });
-    const open = () =>
-      fireEvent
-        .click(trigger)
-        .then(() => waitFor(() => expect(getByTestId('panel')).toBeTruthy()));
-    const closed = () =>
-      waitFor(() => expect(queryByTestId('panel')).toBeNull());
+    const open = (): Promise<void> =>
+      fireEvent.click(trigger).then(() => waitFor(() => expect(getByTestId('panel')).toBeTruthy()));
+    const closed = (): Promise<void> => waitFor(() => expect(queryByTestId('panel')).toBeNull());
 
     trigger.focus();
     return open()
@@ -122,11 +117,7 @@ describe('Menu', () => {
         return waitFor(() => expect(document.activeElement).toBe(items[0]));
       })
       .then(() => fireEvent.keyDown(getByTestId('menu'), { key: 'ArrowDown' }))
-      .then(() =>
-        waitFor(() =>
-          expect(document.activeElement).toBe(getAllByRole('menuitem')[2])
-        )
-      );
+      .then(() => waitFor(() => expect(document.activeElement).toBe(getAllByRole('menuitem')[2])));
   });
 
   it('a choice reports, closes, and hands focus back to the trigger', () => {
@@ -185,20 +176,18 @@ describe('Popover, as Blade', () => {
     const { getByRole, getByTestId } = render(Harness, { props: { richTitle: true } });
     await fireEvent.click(getByRole('button', { name: 'Settlement' }));
     const panel = await waitFor(() => getByTestId('panel'));
-    const title = getByTestId('rich-title').parentElement as HTMLElement;
+    const title = getByTestId('rich-title').parentElement!;
     expect(panel.getAttribute('aria-labelledby')).toBe(title.id);
     expect(getByRole('dialog', { name: 'Settlement breakup' })).toBe(panel);
   });
 
   it('names the panel by its title, with a close button, a leading and a footer', async () => {
     const { getByRole, getByTestId, queryByTestId } = render(
-      (await import('./fixtures/PopoverTitledHarness.svelte')).default
+      (await import('./fixtures/PopoverTitledHarness.svelte')).default,
     );
     await fireEvent.click(getByRole('button', { name: 'Settlement' }));
     const panel = await waitFor(() => getByTestId('panel'));
-    expect(panel.getAttribute('aria-labelledby')).toBe(
-      getByRole('dialog').querySelector('p')?.id
-    );
+    expect(panel.getAttribute('aria-labelledby')).toBe(getByRole('dialog').querySelector('p')?.id);
     expect(getByRole('dialog', { name: 'Settlement breakup' })).toBe(panel);
     expect(getByTestId('leading')).toBeTruthy();
     expect(getByRole('button', { name: 'Settle' })).toBeTruthy();
@@ -210,13 +199,17 @@ describe('Popover, as Blade', () => {
     vi.useFakeTimers();
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
       matches: query === '(hover: hover)',
-      addEventListener() {},
-      removeEventListener() {},
+      addEventListener() {
+        // noop
+      },
+      removeEventListener() {
+        // noop
+      },
     });
     try {
       const { getByRole, getByTestId, queryByRole, queryByTestId } = render(
         (await import('./fixtures/PopoverTitledHarness.svelte')).default,
-        { props: { openInteraction: 'hover' } }
+        { props: { openInteraction: 'hover' } },
       );
       const root = getByRole('button', { name: 'Settlement' }).parentElement!;
       await fireEvent.pointerEnter(root);
@@ -229,7 +222,9 @@ describe('Popover, as Blade', () => {
       await fireEvent.pointerLeave(panel);
       vi.advanceTimersByTime(200);
       await vi.runAllTimersAsync();
-      expect(getByRole('button', { name: 'Settlement' }).getAttribute('aria-expanded')).toBe('false');
+      expect(getByRole('button', { name: 'Settlement' }).getAttribute('aria-expanded')).toBe(
+        'false',
+      );
     } finally {
       vi.useRealTimers();
       delete (window as { matchMedia?: unknown }).matchMedia;
@@ -240,14 +235,18 @@ describe('Popover, as Blade', () => {
     vi.useFakeTimers();
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
       matches: query === '(hover: hover)',
-      addEventListener() {},
-      removeEventListener() {},
+      addEventListener() {
+        // noop
+      },
+      removeEventListener() {
+        // noop
+      },
     });
     try {
       const onOpenChange = vi.fn();
       const { getByRole, unmount } = render(
         (await import('./fixtures/PopoverTitledHarness.svelte')).default,
-        { props: { openInteraction: 'hover', onOpenChange } }
+        { props: { openInteraction: 'hover', onOpenChange } },
       );
       const root = getByRole('button', { name: 'Settlement' }).parentElement!;
       await fireEvent.pointerEnter(root);
@@ -265,7 +264,7 @@ describe('Popover, as Blade', () => {
   it('where nothing can hover (touch, native), a hover popover opens on a tap, with a close button', async () => {
     const { getByRole, getByTestId } = render(
       (await import('./fixtures/PopoverTitledHarness.svelte')).default,
-      { props: { openInteraction: 'hover' } }
+      { props: { openInteraction: 'hover' } },
     );
     const trigger = getByRole('button', { name: 'Settlement' });
     await fireEvent.pointerEnter(trigger.parentElement!);

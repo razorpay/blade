@@ -41,8 +41,6 @@ describe('layoutToastStack', () => {
       { offset: 0, scale: 1, opacity: 1, height: undefined },
       { offset: 12, scale: 0.95, opacity: 1, height: 64 },
     ]);
-    expect(layoutToastStack([44, undefined], true, geometry)[1].offset).toBe(
-      56
-    );
+    expect(layoutToastStack([44, undefined], true, geometry)[1].offset).toBe(56);
   });
 });

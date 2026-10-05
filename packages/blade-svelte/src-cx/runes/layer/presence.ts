@@ -4,17 +4,16 @@ function toMs(list: string): number[] {
   return list.split(',').map((part) => parseFloat(part) * 1000 || 0);
 }
 
-export function longestTransition(
-  elements: Array<HTMLElement | undefined>
-): number {
+export function longestTransition(elements: Array<HTMLElement | undefined>): number {
   let longest = 0;
   for (const element of elements) {
     if (element) {
       const style = getComputedStyle(element);
       const delays = toMs(style.transitionDelay);
-      toMs(style.transitionDuration).forEach((duration, i) => {
-        longest = Math.max(longest, duration + (delays[i] ?? delays[0] ?? 0));
-      });
+      const durations = toMs(style.transitionDuration);
+      for (let i = 0; i < durations.length; i += 1) {
+        longest = Math.max(longest, durations[i] + (delays[i] ?? delays[0] ?? 0));
+      }
     }
   }
   return longest;
@@ -26,13 +25,17 @@ export function longestTransition(
  * `run` sets the node up for the phase and returns how long it animates.
  */
 export function phaseTransition(
-  run: (node: HTMLElement, phase: 'in' | 'out') => number
+  run: (node: HTMLElement, phase: 'in' | 'out') => number,
 ): (node: HTMLElement) => () => TransitionConfig {
   return (node) => {
-    const deferred = ({ direction }: { direction: 'in' | 'out' | 'both' }) => ({
+    const deferred = ({
+      direction,
+    }: {
+      direction: 'in' | 'out' | 'both';
+    }): { duration: number } => ({
       duration: run(node, direction === 'out' ? 'out' : 'in'),
     });
-    return deferred as unknown as () => TransitionConfig;
+    return (deferred as unknown) as () => TransitionConfig;
   };
 }
 
@@ -50,13 +53,16 @@ export function phaseTransition(
  * Web only (computed styles); native twins never import it.
  */
 export function createPresence(
-  animated: (node: HTMLElement) => Array<HTMLElement | undefined>
-) {
+  animated: (node: HTMLElement) => Array<HTMLElement | undefined>,
+): {
+  transition: (node: HTMLElement) => () => TransitionConfig;
+  mount: (node: HTMLElement) => () => void;
+} {
   let wanted: 'open' | 'closed' | undefined;
 
   // Next frame, so the closed style is computed before it flips — and read
   // then, so a close that came in the meantime wins.
-  function openNextFrame(node: HTMLElement) {
+  function openNextFrame(node: HTMLElement): void {
     requestAnimationFrame(() => {
       if (wanted === 'open') {
         node.dataset.state = 'open';

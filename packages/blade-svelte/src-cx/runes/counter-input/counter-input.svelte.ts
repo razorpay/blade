@@ -51,7 +51,7 @@ export function createCounterInput(options: CounterInputOptions): CounterInput {
       disabled: options.isDisabled(),
     }),
     undefined,
-    (next) => options.onValue(next as number)
+    (next) => options.onValue(next as number),
   );
   const { field, blur, edit } = setup;
   // Pre-effect: the field follows its props from before the first paint.
@@ -67,12 +67,12 @@ export function createCounterInput(options: CounterInputOptions): CounterInput {
   // field also matches a click.
   let isKeyboardFocus = $state(false);
   $effect(() => {
-    const onKey = (event: KeyboardEvent) => {
+    const onKey = (event: KeyboardEvent): void => {
       if (event.key === 'Tab') {
         isKeyboardFocus = true;
       }
     };
-    const onPointer = () => {
+    const onPointer = (): void => {
       isKeyboardFocus = false;
     };
     document.addEventListener('keydown', onKey, true);
@@ -102,7 +102,7 @@ export function createCounterInput(options: CounterInputOptions): CounterInput {
         options.onValue(next);
         options.onChange?.(next);
       },
-      event
+      event,
     );
   }
 

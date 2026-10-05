@@ -19,9 +19,7 @@ describe('visibleFieldError', () => {
   it('keeps an untouched field quiet until a submit attempt', () => {
     const field = { name: 'card.number', value: '' };
     expect(visibleFieldError(field, formState({ errors }))).toBeUndefined();
-    expect(
-      visibleFieldError(field, formState({ errors, submitted: true }))
-    ).toBe('required');
+    expect(visibleFieldError(field, formState({ errors, submitted: true }))).toBe('required');
   });
 
   it('shows the error once the field is touched', () => {
@@ -31,7 +29,7 @@ describe('visibleFieldError', () => {
 
   it('ignores a field without a name', () => {
     expect(
-      visibleFieldError({ value: '' }, formState({ errors, submitted: true }))
+      visibleFieldError({ value: '' }, formState({ errors, submitted: true })),
     ).toBeUndefined();
   });
 });
@@ -42,12 +40,10 @@ describe('visibleGroupError', () => {
   const cvv = { name: 'cvv', value: '', touched: true };
 
   it('shows the first member error that is visible', () => {
-    expect(visibleGroupError([number, cvv], formState({ errors }))).toBe(
-      'bad cvv'
+    expect(visibleGroupError([number, cvv], formState({ errors }))).toBe('bad cvv');
+    expect(visibleGroupError([number, cvv], formState({ errors, submitted: true }))).toBe(
+      'bad number',
     );
-    expect(
-      visibleGroupError([number, cvv], formState({ errors, submitted: true }))
-    ).toBe('bad number');
   });
 
   it('is quiet while no member shows an error', () => {
@@ -83,9 +79,10 @@ describe('resolveHint', () => {
   });
 
   it('an explicit state wins over the form error', () => {
-    expect(
-      resolveHint({ hint: 'Help', validationState: 'none' }, 'required')
-    ).toEqual({ validationState: 'none', text: 'Help' });
+    expect(resolveHint({ hint: 'Help', validationState: 'none' }, 'required')).toEqual({
+      validationState: 'none',
+      text: 'Help',
+    });
   });
 
   it('an explicit error with no hint borrows the form message', () => {
@@ -93,8 +90,6 @@ describe('resolveHint', () => {
       validationState: 'error',
       text: 'required',
     });
-    expect(
-      resolveHint({ validationState: 'success' }, 'required').text
-    ).toBeUndefined();
+    expect(resolveHint({ validationState: 'success' }, 'required').text).toBeUndefined();
   });
 });

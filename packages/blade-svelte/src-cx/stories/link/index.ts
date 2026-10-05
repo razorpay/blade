@@ -4,7 +4,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Link',
   description:
-    "Blade's Link: an anchor that goes somewhere, or (`variant=\"button\"`) a button that acts and reads as a link. Only the anchor underlines, on hover and focus.",
+    'Blade\'s Link: an anchor that goes somewhere, or (`variant="button"`) a button that acts and reads as a link. Only the anchor underlines, on hover and focus.',
   argTypes: {
     color: { control: 'select', options: LINK_AXES.color },
     size: { control: 'select', options: LINK_AXES.size },

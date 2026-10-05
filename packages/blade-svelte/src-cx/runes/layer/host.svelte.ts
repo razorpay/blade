@@ -44,7 +44,7 @@ export function createLayerHost(options: { isolates: boolean }): LayerHost {
       return undefined;
     }
     const siblings = Array.from(node.parentElement?.children ?? []).filter(
-      (element) => element !== node && !element.hasAttribute('inert')
+      (element) => element !== node && !element.hasAttribute('inert'),
     );
     siblings.forEach((element) => element.setAttribute('inert', ''));
     return () => {

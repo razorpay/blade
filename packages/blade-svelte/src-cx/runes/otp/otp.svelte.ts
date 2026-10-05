@@ -11,14 +11,7 @@ export type FillMethod = 'paste' | 'autofill';
  * action except `submit` (Enter must reach the form) and null (a chord: the
  * browser owns it — Ctrl/Cmd shortcuts and paste arrive via their own events).
  */
-export type CellKeyAction =
-  | 'set'
-  | 'clear'
-  | 'retreat'
-  | 'prev'
-  | 'next'
-  | 'submit'
-  | 'reject';
+export type CellKeyAction = 'set' | 'clear' | 'retreat' | 'prev' | 'next' | 'submit' | 'reject';
 
 export interface CompositeInputState {
   /** One string per cell; '' = empty. */
@@ -65,7 +58,7 @@ export interface CompositeInputModel {
   keyAt(
     index: number,
     key: string,
-    mods?: { shift?: boolean; ctrl?: boolean; meta?: boolean }
+    mods?: { shift?: boolean; ctrl?: boolean; meta?: boolean },
   ): CellKeyAction | null;
 }
 
@@ -79,11 +72,9 @@ const acceptDigit = (char: string): string => (/^\d$/.test(char) ? char : '');
  * lifecycle, and focus here is real platform focus (one control per cell),
  * not an aria-activedescendant roving index.
  */
-export function createCompositeInput(
-  options: CompositeInputOptions
-): CompositeInputModel {
+export function createCompositeInput(options: CompositeInputOptions): CompositeInputModel {
   const length = Math.max(0, options.length);
-  const accept = options.accept || acceptDigit;
+  const accept = options.accept ?? acceptDigit;
   const cells: string[] = new Array(length).fill('');
   let focusIndex = -1;
   let lastValue = '';
@@ -286,7 +277,7 @@ export interface OTP {
 export function createOTP(options: OTPOptions): OTP {
   const adapters = getAdapters();
   let root: HTMLElement | undefined;
-  const cellRefs: HTMLInputElement[] = [];
+  const cellRefs: Array<HTMLInputElement | undefined> = [];
   const autoFocus = options.autoFocus();
 
   // A partial code is a pattern mismatch, so the form blocks it like any
@@ -320,7 +311,7 @@ export function createOTP(options: OTPOptions): OTP {
         (accepted) => {
           options.onValue(accepted as string);
           options.onChange?.(accepted as string);
-        }
+        },
       );
       if (model.state.filled) {
         options.onFilled?.(next);
@@ -328,8 +319,7 @@ export function createOTP(options: OTPOptions): OTP {
     },
     // How a multi-cell fill arrived is analytics only, so it goes to the
     // adapters' sink like every other library event, not to a prop.
-    onFill: (method) =>
-      adapters.track?.('otp_fill', { name: options.name(), method }),
+    onFill: (method) => adapters.track?.('otp_fill', { name: options.name(), method }),
   });
 
   // Pre-effect: the first run lands before the template reads the cells, so
@@ -346,7 +336,7 @@ export function createOTP(options: OTPOptions): OTP {
 
   // Focus follows the model only from a user interaction, never from an
   // outside `value` change — an auto-read must not steal focus.
-  function followFocus() {
+  function followFocus(): void {
     const { focusIndex } = model.state;
     if (focusIndex >= 0) {
       cellRefs[focusIndex]?.focus();
@@ -355,7 +345,7 @@ export function createOTP(options: OTPOptions): OTP {
 
   // Svelte only writes `value={cell}` when the cell string changes, so a
   // rejected character the platform already painted is wiped by hand.
-  function syncCell(target: HTMLInputElement, index: number) {
+  function syncCell(target: HTMLInputElement, index: number): void {
     const cell = model.state.cells[index] ?? '';
     if (target.value !== cell) {
       target.value = cell;
@@ -402,7 +392,7 @@ export function createOTP(options: OTPOptions): OTP {
       if (options.isReadOnly()) {
         return;
       }
-      model.pasteAt(index, event.clipboardData?.getData('text/plain') || '');
+      model.pasteAt(index, event.clipboardData?.getData('text/plain') ?? '');
       followFocus();
     },
     handleFocusOut(event) {
@@ -422,16 +412,11 @@ export function createOTP(options: OTPOptions): OTP {
     cell(index) {
       return (node) => {
         cellRefs[index] = node;
-        if (
-          index === 0 &&
-          autoFocus &&
-          !options.isDisabled() &&
-          !options.isReadOnly()
-        ) {
+        if (index === 0 && autoFocus && !options.isDisabled() && !options.isReadOnly()) {
           node.focus();
         }
         return () => {
-          delete cellRefs[index];
+          cellRefs[index] = undefined;
         };
       };
     },

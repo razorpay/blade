@@ -1,5 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { createField } from '../form/field.svelte';
+import type { FieldModel } from '../form/field.svelte';
 import { compileRules } from './format';
 import { createInput } from './text-control.svelte';
 
@@ -9,7 +11,7 @@ const format = compileRules([
   ['(\\d{4})(?=\\d)', 'g', '$1 '],
 ]);
 
-function cardField(onTouch = vi.fn()) {
+function cardField(onTouch = vi.fn()): { field: FieldModel; onTouch: Mock } {
   const field = createField({}, undefined, { kind: 'text', onTouch });
   field.updateProps({ name: 'card.number', parse, format });
   return { field, onTouch };

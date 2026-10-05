@@ -19,9 +19,7 @@ export interface NativeNavScreenOptions {
  * unmounts, from the `exit` spec it carries by then — so every change of
  * direction re-declares it. Goes on the screen element.
  */
-export function nativeNavSlide(
-  options: NativeNavScreenOptions
-): Attachment<NativeElement> {
+export function nativeNavSlide(options: NativeNavScreenOptions): Attachment<NativeElement> {
   function exitSpec(isForward: boolean): string {
     return JSON.stringify({
       props: {
@@ -45,7 +43,7 @@ export function nativeNavSlide(
             to: '0',
           },
         },
-        options.enter()
+        options.enter(),
       );
     }
     node.setAttribute('exit', exitSpec(nav.direction === 'forward'));

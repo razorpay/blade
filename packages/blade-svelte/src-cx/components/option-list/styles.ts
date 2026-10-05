@@ -80,10 +80,7 @@ export const OPTION_LIST_AXES = {
   indicator: ['none', 'leading', 'trailing'],
 } as const;
 
-type Axis<K extends keyof typeof OPTION_LIST_AXES> = AxisValue<
-  typeof OPTION_LIST_AXES,
-  K
->;
+type Axis<K extends keyof typeof OPTION_LIST_AXES> = AxisValue<typeof OPTION_LIST_AXES, K>;
 
 /** Derived from OPTION_LIST_AXES: add a value there, never here. */
 export interface OptionListStyleProps {
@@ -125,7 +122,8 @@ const VARIANT: Record<
       'flex flex-col -mt-px *:border-t-thin *:border-solid *:border-surface-gray-muted',
     // The box clips to its radius: the end rows round with it (its radius
     // less the border), or the inset active ring is cut at the corners.
-    row: 'first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
+    row:
+      'first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
     // Blade's ActionList item (blade-core ActionList/actionList.module.css):
     // `interactive.background.gray.default` on hover, `…faded-highlighted`
     // when selected (hovered too), no pressed fill.
@@ -144,8 +142,10 @@ const VARIANT: Record<
     // `interactive.border.gray.disabled` rim at rest, a
     // `surface.border.primary.normal` border when selected, no hover or
     // pressed colour.
-    picked: 'border-surface-primary-normal bg-surface-gray-intense font-medium text-interactive-gray-normal',
-    unpicked: 'border-interactive-gray-disabled bg-surface-gray-intense text-interactive-gray-normal',
+    picked:
+      'border-surface-primary-normal bg-surface-gray-intense font-medium text-interactive-gray-normal',
+    unpicked:
+      'border-interactive-gray-disabled bg-surface-gray-intense text-interactive-gray-normal',
     active: 'shadow-focus',
   },
 };
@@ -154,15 +154,13 @@ const VARIANT: Record<
 // (`interactive.background.primary.default`) through `accent-color`.
 const INDICATOR: Record<Axis<'indicator'>, string> = {
   none: 'sr-only',
-  leading:
-    'order-first w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
-  trailing:
-    'order-last w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
+  leading: 'order-first w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
+  trailing: 'order-last w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
 };
 
-export const resolveOptionList: OptionListStyleResolver<
-  OptionListStyleProps
-> = (props: OptionListStyleProps = {}) => {
+export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = (
+  props: OptionListStyleProps = {},
+) => {
   const { variant = 'plain', indicator = 'none' } = props;
   const look = VARIANT[variant];
   return {
@@ -197,7 +195,6 @@ export function resolveOptionItem(): OptionItemClasses {
     // No colour of its own: the row's pick state colours the title.
     title: 'truncate text-100 leading-100',
     description: 'text-75 leading-50 text-interactive-gray-muted',
-    trailing:
-      'flex shrink-0 items-center text-75 leading-50 text-interactive-gray-muted',
+    trailing: 'flex shrink-0 items-center text-75 leading-50 text-interactive-gray-muted',
   };
 }

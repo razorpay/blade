@@ -16,7 +16,7 @@ import type { AxisValue } from '../../axes';
 /** Blade's SegmentedControl sizes. */
 export const SEGMENT_SIZES = ['small', 'medium', 'large'] as const;
 
-export type SegmentSize = (typeof SEGMENT_SIZES)[number];
+export type SegmentSize = typeof SEGMENT_SIZES[number];
 
 // Blade's SegmentedControl: the pill's padding is 2px at `small`, 4px
 // otherwise, and the segments sit 2px apart. The thumb is one segment wide
@@ -64,7 +64,7 @@ const SEGMENT_SIZE: Record<
 /** The surface the pill sits on: a light one, or a brand-colour pane. */
 export const SEGMENT_COLORS = ['neutral', 'white'] as const;
 
-export type SegmentColor = (typeof SEGMENT_COLORS)[number];
+export type SegmentColor = typeof SEGMENT_COLORS[number];
 
 // The track is a translucent tint of what it sits on, so `white` draws
 // the pill over a brand-colour pane: white at 18% for the track, white
@@ -84,8 +84,7 @@ const SEGMENT_COLOR: Record<
   // No Blade counterpart: the neutral rules in the static-white tokens.
   white: {
     options: 'bg-interactive-static-white-faded',
-    unpicked:
-      'text-interactive-static-white-normal hover:bg-interactive-static-white-faded',
+    unpicked: 'text-interactive-static-white-normal hover:bg-interactive-static-white-faded',
     disabled: 'peer-disabled:text-interactive-static-white-disabled',
   },
 };
@@ -97,7 +96,7 @@ const SEGMENT_COLOR: Record<
  */
 export function segmentedLook(
   size: SegmentSize,
-  color: SegmentColor = 'neutral'
+  color: SegmentColor = 'neutral',
 ): RadioGroupStyleResolver<RadioGroupStyleProps> {
   const segment = SEGMENT_SIZE[size];
   const tint = SEGMENT_COLOR[color];

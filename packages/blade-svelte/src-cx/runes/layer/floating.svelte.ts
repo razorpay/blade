@@ -72,10 +72,8 @@ export function createFloating(options: FloatingOptions): Floating {
           placed = next;
         },
       });
-      const described = options.describes
-        ? (focusableWithin(anchor)[0] ?? anchor)
-        : undefined;
-      described?.setAttribute('aria-describedby', options.describes as string);
+      const described = options.describes ? focusableWithin(anchor)[0] ?? anchor : undefined;
+      described?.setAttribute('aria-describedby', options.describes!);
       const returnFocus = captureFocusReturn(() => node, { preventScroll: true });
       if (options.isFocusMoved) {
         (focusableWithin(node)[0] ?? node).focus({ preventScroll: true });
@@ -93,10 +91,10 @@ export function createFloating(options: FloatingOptions): Floating {
             return true;
           },
           back: () => undefined,
-        })
+        }),
       );
 
-      function handlePointerDown(event: PointerEvent) {
+      function handlePointerDown(event: PointerEvent): void {
         const target = event.target as Node | null;
         if (!anchor.contains(target) && !node.contains(target)) {
           options.onOutside();

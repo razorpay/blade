@@ -44,9 +44,7 @@ export interface VirtualWindowModel {
  * Sizes are keyed by row key, not index, so they survive filtering and
  * re-ordering. Pure: the anatomy measures and scrolls, this only computes.
  */
-export function createVirtualWindow(
-  options: VirtualWindowOptions = {}
-): VirtualWindowModel {
+export function createVirtualWindow(options: VirtualWindowOptions = {}): VirtualWindowModel {
   const overscan = Math.max(0, options.overscan ?? 3);
   const initialEstimate = options.initialEstimate ?? 48;
   const sizes = new Map<string, number>();
@@ -58,8 +56,7 @@ export function createVirtualWindow(
   // The first row in view at the last `range` call.
   let anchor = 0;
 
-  const estimate = (): number =>
-    sizes.size ? measuredSum / sizes.size : initialEstimate;
+  const estimate = (): number => (sizes.size ? measuredSum / sizes.size : initialEstimate);
 
   function layout(): number[] {
     if (stale) {
@@ -79,7 +76,7 @@ export function createVirtualWindow(
     let low = 0;
     let high = Math.max(0, keys.length - 1);
     while (low < high) {
-      const mid = (low + high + 1) >> 1;
+      const mid = Math.floor((low + high + 1) / 2);
       if ((at[mid] ?? 0) <= position) {
         low = mid;
       } else {
@@ -126,10 +123,7 @@ export function createVirtualWindow(
         // depends on its place in the slice would otherwise re-measure with
         // every shift, and the correction would chase itself.
         const known = sizes.get(key);
-        if (
-          height > 0 &&
-          (known === undefined || Math.abs(known - height) > 1)
-        ) {
+        if (height > 0 && (known === undefined || Math.abs(known - height) > 1)) {
           measuredSum += height - (sizes.get(key) ?? 0);
           sizes.set(key, height);
           stale = true;

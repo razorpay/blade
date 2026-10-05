@@ -9,7 +9,7 @@ import type { Attachment } from 'svelte/attachments';
  */
 export function portal(
   target: () => Element | undefined,
-  options: { removesItself?: boolean } = {}
+  options: { removesItself?: boolean } = {},
 ): Attachment<HTMLElement> {
   return (node) => {
     target()?.appendChild(node);

@@ -1,10 +1,6 @@
 import type { ValidationState } from '../../runes/form/hint';
-import {
-  framedControl,
-  FRAMED_VALIDATION,
-  resolveTextInput,
-  type TextInputStyleProps,
-} from '../text-input/styles';
+import { framedControl, FRAMED_VALIDATION, resolveTextInput } from '../text-input/styles';
+import type { TextInputStyleProps } from '../text-input/styles';
 
 export type TextAreaValidationState = ValidationState;
 
@@ -45,9 +41,9 @@ export interface TextAreaStyleProps {
 // A text area is blade's text field grown to several lines: every part
 // comes from text-input's styles, so the two cannot drift. It has no
 // affixes, so its control draws the frame itself.
-export const resolveTextArea: TextAreaStyleResolver<
-  TextAreaStyleProps
-> = (props: TextAreaStyleProps = {}) => {
+export const resolveTextArea: TextAreaStyleResolver<TextAreaStyleProps> = (
+  props: TextAreaStyleProps = {},
+) => {
   const field = resolveTextInput({ size: props.size });
   return {
     root: field.root,

@@ -13,7 +13,8 @@ export const INPUT_TEXT =
   'text-interactive-gray-normal outline-none placeholder:text-surface-gray-disabled';
 
 /** Inactive and hover: the border colour; the host sets its width. */
-export const INPUT_INACTIVE = 'border-interactive-gray-default hover:border-interactive-gray-highlighted';
+export const INPUT_INACTIVE =
+  'border-interactive-gray-default hover:border-interactive-gray-highlighted';
 
 /**
  * Active: a thicker primary border and Blade's focus ring — a 4px
@@ -30,8 +31,7 @@ export const INPUT_ACTIVE_ON_FOCUS =
  */
 // Important: it overrides the fill and border on the same element, and `cx`
 // resolves no conflicts.
-export const INPUT_DISABLED_FILL =
-  '!bg-surface-gray-moderate !border-interactive-gray-disabled';
+export const INPUT_DISABLED_FILL = '!bg-surface-gray-moderate !border-interactive-gray-disabled';
 export const INPUT_DISABLED_CONTENT = 'text-surface-gray-disabled';
 export const INPUT_DISABLED_TEXT_ON_CONTROL =
   'disabled:cursor-not-allowed disabled:text-surface-gray-disabled';

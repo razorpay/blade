@@ -2,13 +2,14 @@ import { describe, it, expect } from 'vitest';
 import { flushSync } from 'svelte';
 import { watch } from '../../test/watch.svelte';
 import { createOverlayStack } from './overlays.svelte';
+import type { OverlayStack } from './overlays.svelte';
 
 interface Content {
   name: string;
   amount?: number;
 }
 
-const names = (stack: ReturnType<typeof createOverlayStack<Content>>) =>
+const names = (stack: OverlayStack<Content>): string[] =>
   stack.entries.map((entry) => `${entry.content.name}:${entry.phase}`);
 
 describe('createOverlayStack', () => {
@@ -23,7 +24,7 @@ describe('createOverlayStack', () => {
   it('close settles the result once and waits for the view to remove it', () => {
     const stack = createOverlayStack<Content>();
     const handle = stack.open<boolean>({ name: 'confirm' });
-    const id = stack.entries[0]?.id as number;
+    const id = stack.entries[0]?.id;
 
     handle.close(true);
     handle.close(false);
@@ -39,7 +40,7 @@ describe('createOverlayStack', () => {
   it('a dismiss settles with undefined', () => {
     const stack = createOverlayStack<Content>();
     const handle = stack.open<boolean>({ name: 'confirm' });
-    stack.dismiss(stack.entries[0]?.id as number);
+    stack.dismiss(stack.entries[0]?.id);
     return handle.result.then((result) => {
       expect(result).toBeUndefined();
       expect(names(stack)).toEqual(['confirm:closing']);
@@ -49,7 +50,7 @@ describe('createOverlayStack', () => {
   it('ignores a closed report for an entry that is still open', () => {
     const stack = createOverlayStack<Content>();
     stack.open({ name: 'otp' });
-    stack.closed(stack.entries[0]?.id as number);
+    stack.closed(stack.entries[0]?.id);
     expect(names(stack)).toEqual(['otp:open']);
   });
 
@@ -73,7 +74,7 @@ describe('createOverlayStack', () => {
     flushSync();
     handle.close();
     flushSync();
-    stack.closed(stack.entries[0]?.id as number);
+    stack.closed(stack.entries[0]?.id);
     flushSync();
     seen.stop();
     expect(seen.seen).toEqual([[], ['open'], ['closing'], []]);

@@ -1,4 +1,5 @@
-import { place, type Placed, type Placement } from './placement';
+import { place } from './placement';
+import type { Placed, Placement } from './placement';
 
 export interface AnchorOptions {
   /** The element the floating one points at. */
@@ -17,7 +18,9 @@ export interface AnchorOptions {
  * measured now, and again on every scroll and resize. Web only. Returns the
  * stop; `update` is for a content change the caller knows about.
  */
-export function anchorTo(options: AnchorOptions): {
+export function anchorTo(
+  options: AnchorOptions,
+): {
   update(): void;
   stop(): void;
 } {
@@ -27,13 +30,13 @@ export function anchorTo(options: AnchorOptions): {
       return;
     }
     const { host } = options;
-    const hostRect = host && host.getBoundingClientRect();
+    const hostRect = host?.getBoundingClientRect();
     const next = place({
       anchor: options.anchor.getBoundingClientRect(),
       floating: { width: floating.offsetWidth, height: floating.offsetHeight },
       // The host's frame when it has one, else the viewport.
       boundary:
-        hostRect && hostRect.width && hostRect.height
+        hostRect?.width && hostRect.height
           ? hostRect
           : { left: 0, top: 0, width: innerWidth, height: innerHeight },
       placement: options.placement(),
@@ -42,8 +45,7 @@ export function anchorTo(options: AnchorOptions): {
     // `place` answers in viewport space; the floating element is absolute,
     // so its origin is the padding box of whatever positioned ancestor it has.
     const parent = floating.offsetParent;
-    const origin =
-      parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
+    const origin = parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
     options.onPlaced({
       ...next,
       x: next.x - (origin ? origin.left + (parent?.clientLeft ?? 0) : 0),

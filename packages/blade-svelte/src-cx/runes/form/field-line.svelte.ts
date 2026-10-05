@@ -1,4 +1,5 @@
-import { resolveHint, visibleFieldError, type FieldHint } from './hint';
+import { resolveHint, visibleFieldError } from './hint';
+import type { FieldHint } from './hint';
 import type { FieldRecord, FormModel, FormState } from './types';
 
 export interface FieldLine {
@@ -18,7 +19,7 @@ export interface FieldLine {
 export function createFieldLine(
   form: FormModel | undefined,
   read: () => Parameters<typeof resolveHint>[0],
-  errorOf: FieldRecord | ((state: FormState) => string | undefined)
+  errorOf: FieldRecord | ((state: FormState) => string | undefined),
 ): FieldLine {
   const pick =
     typeof errorOf === 'function'

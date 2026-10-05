@@ -1,8 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { createField } from '../form/field.svelte';
+import type { FieldModel } from '../form/field.svelte';
 import { createCheckbox } from './toggle.svelte';
 
-function consentField(props: Record<string, unknown> = {}, onTouch = vi.fn()) {
+function consentField(
+  props: Record<string, unknown> = {},
+  onTouch = vi.fn(),
+): { field: FieldModel; onTouch: Mock } {
   const field = createField(props, undefined, { kind: 'checkbox', onTouch });
   field.updateProps({ name: 'consent', ...props });
   return { field, onTouch };

@@ -24,9 +24,7 @@ const TRACKS: Record<InputGroupSpan, number> = {
  * the last row gives the bottom two — so rows are expected to fill, and a
  * ragged last row leaves the row above it with square corners.
  */
-export function placeMembers(
-  spans: readonly InputGroupSpan[]
-): InputGroupCorners[] {
+export function placeMembers(spans: readonly InputGroupSpan[]): InputGroupCorners[] {
   const rows: number[][] = [];
   let used = TRACKS.full;
   spans.forEach((span, index) => {

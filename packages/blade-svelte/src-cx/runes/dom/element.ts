@@ -39,7 +39,7 @@ export interface ElementHandle {
   closest(simpleSelector: string): ElementHandle | null;
   addEventListener(
     type: ElementEvent,
-    listener: (event: { target: ElementHandle; detail?: unknown }) => void
+    listener: (event: { target: ElementHandle; detail?: unknown }) => void,
   ): void;
   removeEventListener(type: ElementEvent, listener: unknown): void;
 }

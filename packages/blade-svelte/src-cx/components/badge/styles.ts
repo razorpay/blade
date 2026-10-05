@@ -59,10 +59,7 @@ const COLOR: Record<Axis<'emphasis'>, Record<Axis<'color'>, string>> = {
 // Blade's badgeTokens: the height, the box's side padding, and the text's own
 // side margin (which is also the icon-to-text gap), with body xsmall or
 // small type.
-const SIZE: Record<
-  Axis<'size'>,
-  { root: string; text: string; icon: BadgeClasses['iconSize'] }
-> = {
+const SIZE: Record<Axis<'size'>, { root: string; text: string; icon: BadgeClasses['iconSize'] }> = {
   xsmall: { root: 'h-3.5 px-1', text: 'mx-0.5 text-25 leading-25', icon: 'xsmall' },
   small: { root: 'h-4 px-1', text: 'mx-0.5 text-25 leading-25', icon: 'xsmall' },
   medium: { root: 'h-5 px-1', text: 'mx-1 text-75 leading-75', icon: 'small' },

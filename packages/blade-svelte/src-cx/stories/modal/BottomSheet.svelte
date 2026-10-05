@@ -20,8 +20,8 @@
   class="relative h-[32rem] max-w-96 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <div class="grid gap-4 p-6">
-    <Button class="w-40" onClick={() => (isOpen = true)}>Open sheet</Button>
-    <Text size="small" color="muted">Last closed by: {lastSource}</Text>
+    <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open sheet</Button>
+    <Text size="small" color="muted">Last closed by: <span data-testid="last-source">{lastSource}</span></Text>
   </div>
   <LayerHost />
 </div>
@@ -32,6 +32,7 @@
   isDraggable={args.isDraggable}
   variant={args.variant === 'adaptive' ? { base: 'sheet' as const, m: 'modal' as const } : args.variant}
   title="Confirm payment"
+  testID="sheet"
   onDismiss={({ source }) => {
     lastSource = source;
   }}

@@ -1,4 +1,5 @@
-import { defaultSchedule, type Schedule } from './schedule';
+import { defaultSchedule } from './schedule';
+import type { Schedule } from './schedule';
 
 export interface Flash<T> {
   /** What shows now; undefined between flashes. Tracked. */
@@ -13,10 +14,7 @@ export interface Flash<T> {
  * A value that shows for `ms` and goes: a button's shake, a counter's
  * slide. The schedule is injected so tests never sleep.
  */
-export function createFlash<T>(
-  ms: number,
-  schedule: Schedule = defaultSchedule
-): Flash<T> {
+export function createFlash<T>(ms: number, schedule: Schedule = defaultSchedule): Flash<T> {
   let value = $state<T | undefined>();
   let cancelTimer: (() => void) | undefined;
 

@@ -34,18 +34,16 @@ export interface Radio<Shared> {
  */
 export function createRadio<Shared>(
   group: RadioGroupContext<Shared> | undefined,
-  options: RadioOptions
+  options: RadioOptions,
 ): Radio<Shared> {
-  const registered = registerEntry<ChoiceEntry<string>, HTMLInputElement>(
-    group,
-    { value: () => options.value(), isDisabled: () => options.isDisabled() }
-  );
+  const registered = registerEntry<ChoiceEntry<string>, HTMLInputElement>(group, {
+    value: () => options.value(),
+    isDisabled: () => options.isDisabled(),
+  });
   onDestroy(registered.unregister);
 
   const isSelected = $derived(Boolean(group?.isSelected(options.value())));
-  const isDisabled = $derived(
-    options.isDisabled() || Boolean(group?.isDisabled)
-  );
+  const isDisabled = $derived(options.isDisabled() || Boolean(group?.isDisabled));
   const write = syncChecked(() => isSelected);
 
   return {
@@ -69,8 +67,7 @@ export function createRadio<Shared>(
     },
     handleChange(event) {
       const target = event.target as HTMLInputElement;
-      const held =
-        !isDisabled && Boolean(group?.select(options.value(), event));
+      const held = !isDisabled && Boolean(group?.select(options.value(), event));
       if (!held) {
         target.checked = isSelected;
       }

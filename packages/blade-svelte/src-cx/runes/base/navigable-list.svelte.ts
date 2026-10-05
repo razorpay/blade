@@ -1,13 +1,8 @@
 import { PRESS_KEYS } from './keys';
-import { defaultSchedule, type Schedule } from './schedule';
+import { defaultSchedule } from './schedule';
+import type { Schedule } from './schedule';
 
-export type MoveAction =
-  | 'first'
-  | 'last'
-  | 'prev'
-  | 'next'
-  | 'pageUp'
-  | 'pageDown';
+export type MoveAction = 'first' | 'last' | 'prev' | 'next' | 'pageUp' | 'pageDown';
 
 export type ListAction = MoveAction | 'select' | 'open' | 'close' | 'type';
 
@@ -69,12 +64,10 @@ const AXIS_KEYS: Record<Orientation, Record<string, MoveAction>> = {
  * items, a key → action table, and a typeahead buffer. Selection is not here:
  * `choice-list` adds a held one, `menu` a momentary one.
  */
-export function createNavigableList<T>(
-  options: NavigableListOptions<T>
-): NavigableListModel<T> {
-  const orientation = options.orientation || 'vertical';
+export function createNavigableList<T>(options: NavigableListOptions<T>): NavigableListModel<T> {
+  const orientation = options.orientation ?? 'vertical';
   const pageSize = options.pageSize ?? 10;
-  const schedule = options.schedule || defaultSchedule;
+  const schedule = options.schedule ?? defaultSchedule;
   let activeIndex = $state(-1);
   let buffer = '';
   let cancelReset: (() => void) | undefined;
@@ -137,8 +130,7 @@ export function createNavigableList<T>(
     const enabled = enabledIndices();
     const items = options.items();
     // Repeating one letter cycles through items starting with it.
-    const sameLetter =
-      buffer.length > 1 && buffer.split('').every((c) => c === buffer[0]);
+    const sameLetter = buffer.length > 1 && buffer.split('').every((c) => c === buffer[0]);
     const query = (sameLetter ? buffer[0] : buffer).toLowerCase();
     const start = enabled.indexOf(activeIndex);
     const order = [...enabled.slice(start + 1), ...enabled.slice(0, start + 1)];
@@ -146,9 +138,7 @@ export function createNavigableList<T>(
       // A growing prefix may still match the current item.
       order.unshift(enabled[start]);
     }
-    return (
-      order.find((i) => label(items[i]).toLowerCase().startsWith(query)) ?? -1
-    );
+    return order.find((i) => label(items[i]).toLowerCase().startsWith(query)) ?? -1;
   }
 
   function type(char: string): void {
@@ -217,7 +207,7 @@ export function dispatchListKey<T>(
   list: NavigableListModel<T>,
   key: string,
   mods: KeyModifiers | undefined,
-  onSelect: () => void
+  onSelect: () => void,
 ): ListAction | null {
   const action = list.keyAction(key, mods);
   switch (action) {

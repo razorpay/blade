@@ -28,10 +28,7 @@ export const ICON_AXES = {
   color: TEXT_AXES.color,
 } as const;
 
-type IconAxis<K extends keyof typeof ICON_AXES> = AxisValue<
-  typeof ICON_AXES,
-  K
->;
+type IconAxis<K extends keyof typeof ICON_AXES> = AxisValue<typeof ICON_AXES, K>;
 
 /** Derived from ICON_AXES: add a value there, never here. */
 export interface IconStyleProps {

@@ -28,9 +28,7 @@ export interface CardGroupContext<Shared> extends EntryHost<CardGroupEntry> {
 
 const CARD_GROUP = defineContext<unknown>('blade-card-group');
 
-export function provideCardGroup<Shared>(
-  cardGroup: CardGroupContext<Shared>
-): void {
+export function provideCardGroup<Shared>(cardGroup: CardGroupContext<Shared>): void {
   CARD_GROUP.set(cardGroup);
 }
 

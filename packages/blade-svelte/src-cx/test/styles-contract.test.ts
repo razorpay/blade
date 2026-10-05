@@ -25,9 +25,7 @@ const FORBIDDEN = [
 ];
 
 function violationsIn(source: string): string[] {
-  return FORBIDDEN.filter(({ pattern }) => pattern.test(source)).map(
-    ({ reason }) => reason
-  );
+  return FORBIDDEN.filter(({ pattern }) => pattern.test(source)).map(({ reason }) => reason);
 }
 
 function sourceFiles(dir: string): string[] {
@@ -35,8 +33,8 @@ function sourceFiles(dir: string): string[] {
     entry.isDirectory()
       ? sourceFiles(join(dir, entry.name))
       : entry.name.endsWith('.ts') || entry.name.endsWith('.svelte')
-        ? [join(dir, entry.name)]
-        : []
+      ? [join(dir, entry.name)]
+      : [],
   );
 }
 
@@ -57,18 +55,15 @@ function classTokensIn(source: string): string[] {
     .replace(/^\s*export\s+(?:type\s+)?(?:\{[^}]*\}|\*)\s*(?:from\s*'[^']*')?;/gm, '');
   const names = new Set(
     (code.match(/\[(?:\s*'[^'\n]*'\s*,?)+\s*\]/g) ?? []).flatMap((list) =>
-      (list.match(/'[^'\n]*'/g) ?? []).map((name) => name.slice(1, -1))
-    )
+      (list.match(/'[^'\n]*'/g) ?? []).map((name) => name.slice(1, -1)),
+    ),
   );
   const literals = code.match(/'[^'\n]*'(?!\s*:)|`[^`]*`/g) ?? [];
   return literals
     .map((literal) => literal.slice(1, -1).replace(/\$\{[^}]*\}/g, ' '))
     .filter((literal) => /[a-z]-|:/.test(literal))
     .flatMap((literal) => literal.split(/\s+/))
-    .filter(
-      (token) =>
-        /^[!*[a-z-]/.test(token) && !MARKERS.has(token) && !names.has(token)
-    );
+    .filter((token) => /^[!*[a-z-]/.test(token) && !MARKERS.has(token) && !names.has(token));
 }
 
 describe('token contract', () => {
@@ -83,9 +78,7 @@ describe('token contract', () => {
   });
 
   it('flags literal colors, opacity modifiers and theme()', () => {
-    expect(violationsIn("root: 'text-surface-static-white-normal'")).toEqual(
-      []
-    );
+    expect(violationsIn("root: 'text-surface-static-white-normal'")).toEqual([]);
     expect(violationsIn("root: 'text-[#fff]'")).toHaveLength(1);
     expect(violationsIn("root: '[accent-color:hsla(0,_0%,_0%,_1)]'")).toHaveLength(1);
     expect(violationsIn("root: 'bg-interactive-gray-default/50'")).toHaveLength(1);
@@ -95,11 +88,12 @@ describe('token contract', () => {
   it('uno.config.ts generates every class the style maps use', async () => {
     const uno = await createGenerator(unoConfig);
     const files = sourceFiles(COMPONENTS_DIR).filter((file) =>
-      /\/(?:styles|shared\/(?!breakpoint)\w+)\.ts$/.test(file)
+      /\/(?:styles|shared\/(?!breakpoint)\w+)\.ts$/.test(file),
     );
     const unknown: string[] = [];
     for (const file of files) {
       const tokens = [...new Set(classTokensIn(readFileSync(file, 'utf8')))];
+      // eslint-disable-next-line no-await-in-loop -- one file at a time names the offender
       const { matched } = await uno.generate(tokens.join(' '), {
         preflights: false,
       });
@@ -171,16 +165,17 @@ const COMPONENT_STATE = [
 
 // A class's shape: a token a class map would hold. Checked per token of
 // every string literal, with comments and import specifiers stripped.
-const CLASS_TOKEN =
-  /^(?:!?-?(?:[a-z]+:)*)(?:flex|inline-flex|grid|block|hidden|absolute|relative|fixed|sticky|sr-only|pointer-events-none|rounded(?:-[\w/.[\]]+)?|bg-[\w/.[\]-]+|border(?:-[\w/.[\]-]+)?|ring(?:-[\w/.[\]-]+)?|[pm][xytrbl]?-[\w/.[\]-]+|gap(?:-[xy])?-[\w/.[\]-]+|size-[\w/.[\]-]+|[wh]-[\w/.[\]-]+|text-(?:\d+|surface|feedback|interactive|popup)[\w/.[\]-]*|font-(?:medium|semibold|bold)|opacity-\d+|transition(?:-\w+)?|duration-[\w[\]]+|ease-[\w[\]().,-]+|translate-[\w[\]().,%/-]+|shrink-0|items-\w+|justify-\w+)$/;
+const CLASS_TOKEN = /^(?:!?-?(?:[a-z]+:)*)(?:flex|inline-flex|grid|block|hidden|absolute|relative|fixed|sticky|sr-only|pointer-events-none|rounded(?:-[\w/.[\]]+)?|bg-[\w/.[\]-]+|border(?:-[\w/.[\]-]+)?|ring(?:-[\w/.[\]-]+)?|[pm][xytrbl]?-[\w/.[\]-]+|gap(?:-[xy])?-[\w/.[\]-]+|size-[\w/.[\]-]+|[wh]-[\w/.[\]-]+|text-(?:\d+|surface|feedback|interactive|popup)[\w/.[\]-]*|font-(?:medium|semibold|bold)|opacity-\d+|transition(?:-\w+)?|duration-[\w[\]]+|ease-[\w[\]().,-]+|translate-[\w[\]().,%/-]+|shrink-0|items-\w+|justify-\w+)$/;
 
 function stripComments(source: string): string {
-  return source
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/^\s*\/\/.*$/gm, '')
-    // Imports and re-exports only: `export const x = …;` is a style map.
-    .replace(/^\s*import\b[^;]*;/gm, '')
-    .replace(/^\s*export\s+(?:type\s+)?(?:\{[^}]*\}|\*)\s*(?:from\s*'[^']*')?;/gm, '');
+  return (
+    source
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/^\s*\/\/.*$/gm, '')
+      // Imports and re-exports only: `export const x = …;` is a style map.
+      .replace(/^\s*import\b[^;]*;/gm, '')
+      .replace(/^\s*export\s+(?:type\s+)?(?:\{[^}]*\}|\*)\s*(?:from\s*'[^']*')?;/gm, '')
+  );
 }
 
 // A lone token that is also an HTML input type (`type === 'hidden'`) is a
@@ -227,19 +222,15 @@ function resolveImport(file: string, specifier: string): string {
 
 describe('layout contract', () => {
   it('runes/ holds no markup', () => {
-    const svelte = sourceFiles(RUNES_DIR).filter((file) =>
-      file.endsWith('.svelte')
-    );
+    const svelte = sourceFiles(RUNES_DIR).filter((file) => file.endsWith('.svelte'));
     expect(svelte).toEqual([]);
   });
 
   it('runes/ imports nothing from components/, not even a type', () => {
     const offenders = sourceFiles(RUNES_DIR).flatMap((file) =>
       relativeImportsOf(readFileSync(file, 'utf8'))
-        .filter((specifier) =>
-          resolveImport(file, specifier).startsWith(COMPONENTS_DIR)
-        )
-        .map((specifier) => `${relative(RUNES_DIR, file)}: ${specifier}`)
+        .filter((specifier) => resolveImport(file, specifier).startsWith(COMPONENTS_DIR))
+        .map((specifier) => `${relative(RUNES_DIR, file)}: ${specifier}`),
     );
     expect(offenders).toEqual([]);
   });
@@ -248,23 +239,15 @@ describe('layout contract', () => {
     const offenders = sourceFiles(RUNES_DIR)
       .filter(
         (file) =>
-          !file.endsWith('.test.ts') &&
-          file !== join(RUNES_DIR, 'index.ts') &&
-          !isAtom(file)
+          !file.endsWith('.test.ts') && file !== join(RUNES_DIR, 'index.ts') && !isAtom(file),
       )
       .flatMap((file) =>
         relativeImportsOf(readFileSync(file, 'utf8'))
           .map((specifier) => resolveImport(file, specifier))
           .filter(
-            (target) =>
-              target.startsWith(RUNES_DIR) &&
-              !isAtom(target) &&
-              !isAtom(`${target}.ts`)
+            (target) => target.startsWith(RUNES_DIR) && !isAtom(target) && !isAtom(`${target}.ts`),
           )
-          .map(
-            (target) =>
-              `${relative(RUNES_DIR, file)} -> ${relative(RUNES_DIR, target)}`
-          )
+          .map((target) => `${relative(RUNES_DIR, file)} -> ${relative(RUNES_DIR, target)}`),
       );
     expect(offenders).toEqual([]);
   });
@@ -277,8 +260,8 @@ describe('layout contract', () => {
         const rules = rel.startsWith('base/')
           ? CONTEXT_FREE
           : SHARED_RUNE_ATOMS.includes(rel)
-            ? EFFECT_ONLY
-            : [];
+          ? EFFECT_ONLY
+          : [];
         const source = readFileSync(file, 'utf8');
         return rules
           .filter((pattern) => pattern.test(source))
@@ -292,27 +275,21 @@ describe('layout contract', () => {
       .filter((file) => !file.endsWith('.test.ts'))
       .flatMap((file) =>
         classLiteralsIn(readFileSync(file, 'utf8')).map(
-          (literal) => `${relative(RUNES_DIR, file)}: ${literal}`
-        )
+          (literal) => `${relative(RUNES_DIR, file)}: ${literal}`,
+        ),
       );
     expect(offenders).toEqual([]);
   });
 
   it('flags a class literal and passes a state key', () => {
-    expect(
-      classLiteralsIn("const a = 'flex items-center gap-2';")
-    ).toHaveLength(1);
+    expect(classLiteralsIn("const a = 'flex items-center gap-2';")).toHaveLength(1);
     expect(classLiteralsIn("const b = 'rounded-small';")).toHaveLength(1);
     expect(
-      classLiteralsIn(
-        "const c = 'picked'; const d = 'svelte/transition'; const e = 'maxLength';"
-      )
+      classLiteralsIn("const c = 'picked'; const d = 'svelte/transition'; const e = 'maxLength';"),
     ).toEqual([]);
-    expect(
-      classLiteralsIn(
-        "// 'flex' in a comment\nimport x from 'svelte/transition';"
-      )
-    ).toEqual([]);
+    expect(classLiteralsIn("// 'flex' in a comment\nimport x from 'svelte/transition';")).toEqual(
+      [],
+    );
   });
 
   it('a component holds no state, effects, lifecycle or context', () => {
@@ -321,7 +298,7 @@ describe('layout contract', () => {
       .flatMap((file) => {
         const source = readFileSync(file, 'utf8');
         return COMPONENT_STATE.filter((pattern) => pattern.test(source)).map(
-          (pattern) => `${relative(COMPONENTS_DIR, file)}: ${pattern.source}`
+          (pattern) => `${relative(COMPONENTS_DIR, file)}: ${pattern.source}`,
         );
       });
     expect(offenders).toEqual([]);

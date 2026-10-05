@@ -6,7 +6,7 @@ import type { Attachment } from 'svelte/attachments';
  */
 export function focusWhen(
   active: () => boolean,
-  options: FocusOptions = {}
+  options: FocusOptions = {},
 ): Attachment<HTMLElement> {
   return (node) => {
     if (active()) {
@@ -29,8 +29,7 @@ export function focusableWithin(container: HTMLElement): HTMLElement[] {
   // A roving group (radios, options) keeps one tab stop and marks the rest
   // `tabindex="-1"`: those take focus, but Tab does not reach them.
   return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
-    (element) =>
-      element.getAttribute('tabindex') !== '-1' && !element.closest('[inert]')
+    (element) => element.getAttribute('tabindex') !== '-1' && !element.closest('[inert]'),
   );
 }
 
@@ -42,7 +41,7 @@ export function focusableWithin(container: HTMLElement): HTMLElement[] {
 export function trappedTabTarget(
   container: HTMLElement,
   active: Element | null,
-  backwards: boolean
+  backwards: boolean,
 ): HTMLElement | null {
   const focusable = focusableWithin(container);
   if (!focusable.length) {
@@ -69,7 +68,7 @@ export function trappedTabTarget(
  */
 export function captureFocusReturn(
   container: () => HTMLElement | undefined,
-  options: FocusOptions = {}
+  options: FocusOptions = {},
 ): () => void {
   const returnTo = document.activeElement;
   return () => {

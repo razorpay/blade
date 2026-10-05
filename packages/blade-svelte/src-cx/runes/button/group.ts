@@ -13,15 +13,11 @@ export interface ButtonGroupContext<Shared> {
 
 const BUTTON_GROUP = defineContext<unknown>('blade-button-group');
 
-export function provideButtonGroup<Shared>(
-  group: ButtonGroupContext<Shared>
-): void {
+export function provideButtonGroup<Shared>(group: ButtonGroupContext<Shared>): void {
   BUTTON_GROUP.set(group);
 }
 
-export function getButtonGroup<Shared>():
-  | ButtonGroupContext<Shared>
-  | undefined {
+export function getButtonGroup<Shared>(): ButtonGroupContext<Shared> | undefined {
   return BUTTON_GROUP.get() as ButtonGroupContext<Shared> | undefined;
 }
 

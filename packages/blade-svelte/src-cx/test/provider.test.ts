@@ -4,9 +4,9 @@ import ProviderHarness from './fixtures/ProviderHarness.svelte';
 import { snapSize } from '../runes/defaults/defaults.svelte';
 import { atBreakpoint } from '../runes/defaults/responsive';
 
-const inputBox = (input: HTMLElement) => input.parentElement as HTMLElement;
-const checkboxBox = (input: HTMLElement) => input.nextElementSibling as HTMLElement;
-const switchTrack = (input: HTMLElement) => input.nextElementSibling as HTMLElement;
+const inputBox = (input: HTMLElement): HTMLElement => input.parentElement!;
+const checkboxBox = (input: HTMLElement): HTMLElement => input.nextElementSibling as HTMLElement;
+const switchTrack = (input: HTMLElement): HTMLElement => input.nextElementSibling as HTMLElement;
 
 describe('BladeProvider defaults', () => {
   afterEach(() => {
@@ -69,9 +69,13 @@ describe('BladeProvider defaults', () => {
 
   it('resolves a per-breakpoint size against the viewport and the widths given', () => {
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: 1000 >= Number(/(\d+)px/.exec(query)?.[1] ?? 0),
-      addEventListener() {},
-      removeEventListener() {},
+      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 1000,
+      addEventListener() {
+        // noop
+      },
+      removeEventListener() {
+        // noop
+      },
     });
     const blade = render(ProviderHarness, {
       props: { size: { base: 'large', m: 'small' } },
@@ -124,9 +128,13 @@ describe('BladeProvider and the modal variant', () => {
   it('one default makes every Modal a sheet on phones; BottomSheets stay sheets', async () => {
     const { default: Harness } = await import('./fixtures/ProviderModalHarness.svelte');
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: 390 >= Number(/(\d+)px/.exec(query)?.[1] ?? 0),
-      addEventListener() {},
-      removeEventListener() {},
+      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 390,
+      addEventListener() {
+        // noop
+      },
+      removeEventListener() {
+        // noop
+      },
     });
     const phone = render(Harness, {
       props: { defaults: { Modal: { variant: { base: 'sheet', m: 'modal' } } } },
@@ -135,9 +143,13 @@ describe('BladeProvider and the modal variant', () => {
     phone.unmount();
 
     (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: 1200 >= Number(/(\d+)px/.exec(query)?.[1] ?? 0),
-      addEventListener() {},
-      removeEventListener() {},
+      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 1200,
+      addEventListener() {
+        // noop
+      },
+      removeEventListener() {
+        // noop
+      },
     });
     const desktop = render(Harness, {
       props: { defaults: { Modal: { variant: { base: 'sheet', m: 'modal' } } } },

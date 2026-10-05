@@ -1,8 +1,7 @@
 import type { ConstraintCode, FieldConstraints, FieldRecord } from './types';
 
 // HTML spec "valid e-mail address" grammar, as browsers apply it to type=email.
-const EMAIL_PATTERN =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const compiledPatterns = new Map<string, RegExp | null>();
 
@@ -48,9 +47,7 @@ function displayValue(field: FieldRecord): string {
   if (field.getDisplayValue) {
     return field.getDisplayValue();
   }
-  return field.value === null || field.value === undefined
-    ? ''
-    : String(field.value);
+  return field.value === null || field.value === undefined ? '' : String(field.value);
 }
 
 /**

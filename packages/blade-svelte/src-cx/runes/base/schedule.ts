@@ -20,7 +20,7 @@ export function createTicker(options: {
   onTick: () => void;
   schedule?: Schedule;
 }): Ticker {
-  const schedule = options.schedule || defaultSchedule;
+  const schedule = options.schedule ?? defaultSchedule;
   let cancel: (() => void) | undefined;
 
   function arm(): void {

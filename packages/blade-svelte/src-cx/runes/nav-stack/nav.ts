@@ -1,15 +1,13 @@
 import type { Component } from 'svelte';
 import { defineContext } from '../context';
 import type { BackAnswer } from '../base/back';
-import {
-  createPropsPatch,
-  loadComponent,
-  readyComponent,
-  type LazyComponent,
-} from '../base/lazy-component';
+import { createPropsPatch, loadComponent, readyComponent } from '../base/lazy-component';
+import type { LazyComponent } from '../base/lazy-component';
 import { isPromise } from '../base/promise';
-import { createLayerStack, type Layer } from '../base/layer-stack.svelte';
-import { getLayers, globalLayers, type Layers } from '../layer/layers';
+import { createLayerStack } from '../base/layer-stack.svelte';
+import type { Layer } from '../base/layer-stack.svelte';
+import { getLayers, globalLayers } from '../layer/layers';
+import type { Layers } from '../layer/layers';
 
 /** What a pushed component gets as its `screen` prop. */
 export interface NavScreenControl<R = unknown> {
@@ -81,13 +79,13 @@ export interface Nav<M = unknown> extends NavDirectionSource {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
   push<P extends Record<string, any>, R = unknown>(
     component: NavComponent<P>,
-    options?: PushScreenOptions<P, M>
+    options?: PushScreenOptions<P, M>,
   ): NavHandle<P, R>;
   /** Pushes, then removes every other screen once the new one can render. */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
   replace<P extends Record<string, any>, R = unknown>(
     component: NavComponent<P>,
-    options?: PushScreenOptions<P, M>
+    options?: PushScreenOptions<P, M>,
   ): NavHandle<P, R>;
   /** Removes the top screen; the root screen stays. */
   pop(): boolean;
@@ -142,7 +140,7 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
     push<P extends Record<string, any>, R = unknown>(
       component: NavComponent<P>,
-      options: PushScreenOptions<P, M> = {}
+      options: PushScreenOptions<P, M> = {},
     ): NavHandle<P, R> {
       const control: NavScreenControl<R> = {
         pop: (result) => move('back', () => layer.resolve(result)),
@@ -156,7 +154,7 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
           };
         },
       };
-      let layer = undefined as unknown as NavEntry<M>;
+      let layer = (undefined as unknown) as NavEntry<M>;
       move('forward', () => {
         layer = stack.push({
           component: readyComponent(component),
@@ -169,8 +167,7 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
       });
 
       loadComponent(component, {
-        onLoaded: (loaded) =>
-          move('forward', () => patch(layer, { component: loaded })),
+        onLoaded: (loaded) => move('forward', () => patch(layer, { component: loaded })),
         onError: (error) => {
           options.onLoadError?.(error);
           nav.reportError?.(error);
@@ -181,20 +178,18 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
       return {
         ...control,
         result: layer.promise as Promise<R | undefined>,
-        update: createPropsPatch(options.props ?? {}, (props) =>
-          patch(layer, { props })
-        ),
+        update: createPropsPatch(options.props ?? {}, (props) => patch(layer, { props })),
       };
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
     replace<P extends Record<string, any>, R = unknown>(
       component: NavComponent<P>,
-      options?: PushScreenOptions<P, M>
+      options?: PushScreenOptions<P, M>,
     ): NavHandle<P, R> {
       const handle = nav.push<P, R>(component, options);
       const added = stack.top();
       const rest = stack.entries.filter((layer) => layer !== added);
-      const dropRest = () => rest.forEach((layer) => layer.close());
+      const dropRest = (): void => rest.forEach((layer) => layer.close());
       // Once it can render, so the stack never shows nothing in between.
       if (isPromise(component)) {
         component.then(dropRest).catch(() => undefined);
@@ -259,7 +254,7 @@ export function getNav<M = unknown>(): Nav<M> {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
 export function pushScreen<P extends Record<string, any>, R = unknown>(
   component: NavComponent<P>,
-  options?: PushScreenOptions<P>
+  options?: PushScreenOptions<P>,
 ): NavHandle<P, R> {
   return globalNav.push<P, R>(component, options);
 }

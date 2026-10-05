@@ -18,10 +18,7 @@ export interface FieldHintClasses {
 // large), an icon for error and success — 12px (16px at large), 2px down,
 // 4px before the text — and a caption: 11/16 (14/16 at large, nudged 2px
 // down beside an icon).
-const HINT_SIZE: Record<
-  FieldHintSize,
-  { gap: string; caption: string; besideIcon: string }
-> = {
+const HINT_SIZE: Record<FieldHintSize, { gap: string; caption: string; besideIcon: string }> = {
   xsmall: { gap: 'mt-1', caption: 'text-50 leading-50', besideIcon: '' },
   small: { gap: 'mt-1', caption: 'text-50 leading-50', besideIcon: '' },
   medium: { gap: 'mt-1', caption: 'text-50 leading-50', besideIcon: '' },
@@ -35,16 +32,15 @@ const HINT_TONE: Record<FieldHintTone, string> = {
 };
 
 /** The parts of one hint line; `FieldHint` draws it. */
-export function resolveFieldHint(
-  size: FieldHintSize,
-  tone: FieldHintTone
-): FieldHintClasses {
+export function resolveFieldHint(size: FieldHintSize, tone: FieldHintTone): FieldHintClasses {
   const look = HINT_SIZE[size];
   const hasIcon = tone !== 'help';
   return {
     root: `flex items-start gap-1 ${look.gap}`,
     icon: 'flex shrink-0 mt-0.5',
-    text: `font-text font-regular tracking-50 ${look.caption} ${HINT_TONE[tone]} ${hasIcon ? look.besideIcon : ''}`,
+    text: `font-text font-regular tracking-50 ${look.caption} ${HINT_TONE[tone]} ${
+      hasIcon ? look.besideIcon : ''
+    }`,
   };
 }
 
@@ -71,10 +67,7 @@ export interface FieldLabelClasses {
 // in `surface.text.gray.muted`. Anything a `labelArea` adds sits 4px apart
 // (Blade's `labelSuffix` gap); `ms-auto` pushes an item to the row's end
 // (Blade's `labelTrailing`).
-const LABEL_SIZE: Record<
-  FieldSize,
-  { text: string; gap: string; optional: string }
-> = {
+const LABEL_SIZE: Record<FieldSize, { text: string; gap: string; optional: string }> = {
   xsmall: {
     text: 'text-75 leading-75 text-surface-gray-muted',
     gap: 'mb-1',
@@ -98,10 +91,7 @@ const LABEL_SIZE: Record<
 };
 
 /** The parts of a field's label; `FieldLabel` draws it. */
-export function resolveFieldLabel(
-  size: FieldSize,
-  necessity: FieldNecessity
-): FieldLabelClasses {
+export function resolveFieldLabel(size: FieldSize, necessity: FieldNecessity): FieldLabelClasses {
   const look = LABEL_SIZE[size];
   return {
     row: `flex w-full shrink-0 items-center gap-1 ${look.gap}`,
@@ -123,8 +113,6 @@ export function resolveFieldCounter(size: FieldSize): string {
 }
 
 /** The hint's tone for a field's validation state. */
-export function hintToneOf(
-  state: 'none' | 'error' | 'success'
-): FieldHintTone {
+export function hintToneOf(state: 'none' | 'error' | 'success'): FieldHintTone {
   return state === 'none' ? 'help' : state;
 }

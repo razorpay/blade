@@ -34,9 +34,7 @@ const VELOCITY_WINDOW = 100;
  * (the caller flips them for a left drawer): one resting place, pulled out to
  * close. Pure — the anatomy feeds pointer positions and applies the offset.
  */
-export function createSheetDrag(
-  options: SheetDragOptions = {}
-): SheetDragModel {
+export function createSheetDrag(options: SheetDragOptions = {}): SheetDragModel {
   const flingVelocity = options.flingVelocity ?? 1000;
   const mayDismiss = (): boolean => options.dismissible?.() ?? true;
   let origin: number | undefined;
@@ -51,9 +49,7 @@ export function createSheetDrag(
 
   function velocity(): number {
     const last = samples[samples.length - 1];
-    const first = samples.find(
-      (sample) => last && last.time - sample.time <= VELOCITY_WINDOW
-    );
+    const first = samples.find((sample) => last && last.time - sample.time <= VELOCITY_WINDOW);
     if (!first || !last || last.time === first.time) {
       return 0;
     }
