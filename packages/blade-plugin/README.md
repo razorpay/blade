@@ -42,6 +42,17 @@ Same events as Blade MCP (`Blade MCP Tool Called`, with `protocol: "plugin"`), s
 
 The user id is the username from the project path, as in the MCP. Events are sent only when `BLADE_SEGMENT_KEY` is set; the MCP inlines the key at build time, but the plugin has no build step and the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to print each event to stderr.
 
+## Hooks (measured telemetry)
+
+Hooks are dependency-free Node scripts and exit immediately in projects that do not depend on `@razorpay/blade`.
+
+- `SessionStart`: nudges the agent to use the `blade` skill in Blade projects.
+- `PreToolUse`: snapshots a code file just before the agent's first edit to it in a turn.
+- `PostToolUse`: records edited files and the Blade docs read this turn, through the Read tool or shell commands such as `cat`.
+- `Stop`: diffs each edited file against its snapshot (new files count in full), sends one `Blade Plugin Tool Called` event with measured line counts (separate from the agent-reported MCP-style metric above), then deletes the snapshots. Each turn reports only the agent's own changes, once. This replaces the MCP's model-reported lines-of-code metric.
+
+Events go to Segment only when `BLADE_SEGMENT_KEY` is set; the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to also append every event to `events.log` in the plugin data directory (`$CLAUDE_PLUGIN_DATA`, or `$TMPDIR/blade-plugin`) to check the numbers locally. Session files older than 7 days are deleted automatically.
+
 ## Development
 
 See [AGENTS.md](./AGENTS.md).
