@@ -33,6 +33,15 @@ npx skills add razorpay/blade --skill blade
 
 Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the skill at `.agents/skills/blade` with a `.claude/skills/blade` symlink.
 
+## Telemetry
+
+Same events as Blade MCP (`Blade MCP Tool Called`, with `protocol: "plugin"`), so existing dashboards include plugin usage:
+
+- `publish_lines_of_code_metric`: the `blade` skill asks the agent to run `scripts/publish-metric.mjs` once after its edits, with the same arguments as the MCP tool. The line counts are reported by the agent, as with the MCP.
+- `get_blade_changelog` and `get_figma_to_code`: sent by the `blade-upgrade` and `blade-figma-to-code` scripts.
+
+The user id is the username from the project path, as in the MCP. Events are sent only when `BLADE_SEGMENT_KEY` is set; the MCP inlines the key at build time, but the plugin has no build step and the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to print each event to stderr.
+
 ## Development
 
 See [AGENTS.md](./AGENTS.md).

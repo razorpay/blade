@@ -38,7 +38,9 @@ const parseFrontmatter = (content) => {
 };
 
 const skillsDir = path.join(root, 'skills');
-const skillNames = fs.readdirSync(skillsDir).filter((d) => fs.statSync(path.join(skillsDir, d)).isDirectory());
+const skillNames = fs
+  .readdirSync(skillsDir)
+  .filter((d) => fs.statSync(path.join(skillsDir, d)).isDirectory());
 for (const skill of skillNames) {
   const file = path.join(skillsDir, skill, 'SKILL.md');
   if (!fs.existsSync(file)) {
@@ -54,7 +56,8 @@ for (const skill of skillNames) {
   if (fm.name !== skill) errors.push(`skills/${skill}: frontmatter name "${fm.name}" != directory`);
   if (!fm.description) errors.push(`skills/${skill}: description missing`);
   else if (fm.description.length > 250) errors.push(`skills/${skill}: description over 250 chars`);
-  else if (!/Use when/i.test(fm.description)) errors.push(`skills/${skill}: description needs a "Use when" clause`);
+  else if (!/Use when/i.test(fm.description))
+    errors.push(`skills/${skill}: description needs a "Use when" clause`);
   if (content.split('\n').length > 500) errors.push(`skills/${skill}/SKILL.md over 500 lines`);
 }
 
@@ -88,12 +91,29 @@ if (listed) {
     .map((f) => f.replace(/\.md$/, ''));
   const listedSet = new Set(listed[1].split(',').map((s) => s.trim()));
   for (const name of onDisk) {
-    if (!listedSet.has(name)) errors.push(`references/components/${name}.md exists but SKILL.md does not list it`);
+    if (!listedSet.has(name))
+      errors.push(`references/components/${name}.md exists but SKILL.md does not list it`);
+  }
+}
+
+// Skills are installed one directory at a time, so each skill script keeps its
+// own copy of the analytics helper. The copies must not drift.
+const analyticsCopies = skillNames
+  .map((skill) => path.join(skillsDir, skill, 'scripts', 'analytics.mjs'))
+  .filter((file) => fs.existsSync(file));
+for (const file of analyticsCopies.slice(1)) {
+  if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(analyticsCopies[0], 'utf8')) {
+    errors.push(
+      `${path.relative(root, file)} differs from ${path.relative(root, analyticsCopies[0])}`,
+    );
   }
 }
 
 for (const entry of fs.readdirSync(root, { recursive: true, withFileTypes: true })) {
-  if (entry.isSymbolicLink()) errors.push(`symlink not allowed in plugin: ${path.join(entry.parentPath ?? entry.path, entry.name)}`);
+  if (entry.isSymbolicLink())
+    errors.push(
+      `symlink not allowed in plugin: ${path.join(entry.parentPath ?? entry.path, entry.name)}`,
+    );
 }
 
 if (errors.length) {

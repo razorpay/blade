@@ -1,6 +1,9 @@
 // Prints @razorpay/blade changelog entries for one version or an inclusive range.
 // Usage: node changelog.mjs <from|latest> [to|latest]
 // Dependency-free so it runs in any consumer repo with Node 18+.
+// Port of Blade MCP's get_blade_changelog tool, including its analytics event.
+
+import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';
 
 const CHANGELOG_URL =
   'https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/packages/blade/CHANGELOG.md';
@@ -45,8 +48,7 @@ const compareVersions = (a, b) => {
   return 0;
 };
 
-const getLatestVersion = (parsed) =>
-  Object.keys(parsed).sort((a, b) => compareVersions(b, a))[0];
+const getLatestVersion = (parsed) => Object.keys(parsed).sort((a, b) => compareVersions(b, a))[0];
 
 const main = async () => {
   const [, , fromArg, toArg] = process.argv;
@@ -72,6 +74,7 @@ const main = async () => {
       process.exit(1);
     }
     console.log(`## ${from}\n${parsed[from]}`);
+    await track(from, to);
     return;
   }
 
@@ -88,7 +91,19 @@ const main = async () => {
   for (const [version, description] of inRange) {
     console.log(`## ${version}\n${description}\n`);
   }
+  await track(from, to);
 };
+
+const track = (fromVersion, toVersion) =>
+  sendAnalytics({
+    eventName: analyticsToolCallEventName,
+    properties: {
+      toolName: 'get_blade_changelog',
+      fromVersion,
+      toVersion,
+      currentProjectRootDirectory: process.cwd(),
+    },
+  });
 
 main().catch((error) => {
   console.error(error instanceof Error ? error.message : String(error));

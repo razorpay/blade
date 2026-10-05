@@ -9,7 +9,8 @@
   },
   "scripts": {
     "sync-version": "node ../../scripts/syncPluginManifestVersion.js",
-    "validate": "node scripts/validatePlugin.mjs"
+    "validate": "node scripts/validatePlugin.mjs",
+    "test": "node --test tests/scripts.test.mjs"
   },
   "author": "Razorpay",
   "license": "MIT"
