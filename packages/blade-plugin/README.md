@@ -33,17 +33,6 @@ npx skills add razorpay/blade --skill blade
 
 Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the skill at `.agents/skills/blade` with a `.claude/skills/blade` symlink.
 
-## Hooks and telemetry
-
-Hooks are dependency-free Node scripts and exit immediately in projects that do not depend on `@razorpay/blade`.
-
-- `SessionStart`: nudges the agent to use the `blade` skill in Blade projects.
-- `PreToolUse`: snapshots a code file just before the agent's first edit to it in a turn.
-- `PostToolUse`: records edited files and the Blade docs read this turn, through the Read tool or shell commands such as `cat`.
-- `Stop`: diffs each edited file against its snapshot (new files count in full), sends one `Blade Plugin Tool Called` event with the line counts, then deletes the snapshots. Each turn reports only the agent's own changes, once. This replaces the MCP's model-reported lines-of-code metric.
-
-Events go to Segment only when `BLADE_SEGMENT_KEY` is set; the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to also append every event to `events.log` in the plugin data directory (`$CLAUDE_PLUGIN_DATA`, or `$TMPDIR/blade-plugin`) to check the numbers locally. Session files older than 7 days are deleted automatically.
-
 ## Development
 
 See [AGENTS.md](./AGENTS.md).

@@ -7,7 +7,6 @@ Claude Code plugin and cross-agent skills for the Blade Design System. Source of
 ```
 .claude-plugin/plugin.json   # Claude Code manifest (name "blade"); version mirrors package.json
 .codex-plugin/plugin.json    # Codex manifest, byte-identical to the Claude one
-hooks/                       # SessionStart nudge + telemetry (plain Node, no deps)
 skills/
   blade/                     # Main skill. SKILL.md stays small; docs live in references/
     references/components/   # One <Component>.md per component + index.md (this is the knowledgebase)
