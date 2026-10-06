@@ -235,7 +235,8 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
 
   // Figma layout: [chevron slot] -4px- [checkbox] -8px- [leading] -8px- [title]
   // The chevron slot (20px on medium, 16px on small) is reserved on every row
-  // (empty on leaves), so rows of the same level line up whether or not they have children
+  // (empty on leaves), so rows of the same level line up whether or not they have children.
+  // In a flat tree (no branch anywhere) TreeViewChevron renders nothing and the row is flush
   const rowContent = (
     <BaseBox
       display="flex"
