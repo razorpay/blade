@@ -120,6 +120,15 @@ type TabPanelProps = {
    * The content of the tab panel.
    */
   children: React.ReactNode;
+  /**
+   * On React Native, TabPanel can automatically wrap content in a ScrollView so
+   * tall content can be scrolled. Set this to `true` to opt in. Set it to `false`
+   * (the default) if you are already providing your own scroll container
+   * (e.g. ScrollView, FlatList, KeyboardAwareScrollView) to avoid double-nesting.
+   *
+   * @default false
+   */
+  isScrollable?: Platform.Select<{ native: boolean; web: never }>;
 } & DataAnalyticsAttribute;
 
 export type { TabsProps, TabItemProps, TabPanelProps };
