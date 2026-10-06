@@ -56,7 +56,7 @@ test('publish-metric sends the MCP tool metric as a skill-usage event', async ()
   );
   assert.equal(events.length, 1);
   const [event] = events;
-  assert.equal(event.event, 'Blade Skill Used');
+  assert.equal(event.event, 'Blade Plugin Tool Called');
   assert.equal(event.userId, 'alice');
   assert.deepEqual(
     { ...event.properties, osType: undefined, nodeVersion: undefined },
@@ -156,7 +156,7 @@ test('figma-to-code keeps the screenshot name safe and sends the MCP event', asy
     assert.ok(fs.existsSync(imagePath));
     fs.rmSync(imagePath);
     assert.equal(events.length, 1);
-    assert.equal(events[0].event, 'Blade Skill Used');
+    assert.equal(events[0].event, 'Blade Plugin Tool Called');
     assert.equal(events[0].properties.skillName, 'blade-figma-to-code');
     assert.equal(events[0].properties.toolName, 'get_figma_to_code');
     assert.equal(events[0].properties.componentsUsed, 'Button');
