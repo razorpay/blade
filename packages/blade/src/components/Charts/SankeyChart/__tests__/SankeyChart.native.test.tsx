@@ -359,4 +359,29 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     tapCanvas(utils, 0, 0);
     expect(queryByText(/Alpha → Beta:/)).toBeNull();
   });
+
+  it('renders a share under one percent as "<1%", like web', () => {
+    const utils = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart">
+        <ChartSankey
+          data={{
+            nodes: [
+              { id: 'a', name: 'Alpha' },
+              { id: 'b', name: 'Beta' },
+              { id: 'c', name: 'Gamma' },
+            ],
+            links: [
+              { source: 'a', target: 'b', value: 995 },
+              { source: 'a', target: 'c', value: 5 },
+            ],
+          }}
+        />
+      </ChartSankeyWrapper>,
+    );
+    const texts = getAllByType(utils, TSpan).map((t) =>
+      React.Children.toArray(t.props.children).join(''),
+    );
+    expect(texts.some((t) => t.includes('(<1%)'))).toBe(true);
+    expect(texts.some((t) => t.includes('(0%)'))).toBe(false);
+  });
 });
