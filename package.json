@@ -53,7 +53,7 @@
     "ci:codesandbox": "yarn install --ignore-engines",
     "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
     "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte",
-    "validate:blade-plugin": "node packages/blade-plugin/scripts/validatePlugin.mjs && node scripts/syncPluginManifestVersion.js --check && node --test packages/blade-plugin/tests/scripts.test.mjs packages/blade-plugin/hooks/__tests__/frameworks.test.mjs packages/blade-plugin/hooks/__tests__/hooks.test.mjs"
+    "validate:blade-plugin": "node packages/blade-plugin/scripts/validatePlugin.mjs && node scripts/syncPluginManifestVersion.js --check && node --test packages/blade-plugin/tests/scripts.test.mjs"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",

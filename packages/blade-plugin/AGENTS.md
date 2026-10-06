@@ -7,7 +7,6 @@ Claude Code plugin and cross-agent skills for the Blade Design System. Source of
 ```
 .claude-plugin/plugin.json   # Claude Code manifest (name "blade"); version mirrors package.json
 .codex-plugin/plugin.json    # Codex manifest, byte-identical to the Claude one
-hooks/                       # Framework detection, SessionStart nudge + telemetry (plain Node, no deps)
 skills/
   blade/                     # React knowledgebase (@razorpay/blade). SKILL.md stays small; docs live in references/
     references/components/   # One <Component>.md per component + index.md
@@ -40,7 +39,7 @@ scripts/validatePlugin.mjs   # Structural checks run in CI
 
 | Task                              | Command (repo root)                                     |
 | --------------------------------- | ------------------------------------------------------- |
-| Validate plugin structure + hooks | `yarn validate:blade-plugin`                            |
+| Validate plugin structure         | `yarn validate:blade-plugin`                            |
 | Typecheck React knowledgebase     | `yarn tsc:knowledgebase`                                |
 | Compile Svelte knowledgebase      | `yarn tsc:knowledgebase --target svelte`                |
 | Check React docs drift vs source  | `yarn check:knowledgebase-drift --fail`                 |
