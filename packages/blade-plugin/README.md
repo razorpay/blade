@@ -45,6 +45,10 @@ Skill scripts send `Blade Plugin Tool Called` events: the same `toolName` values
 
 The user id is the username from the project path, as in the MCP. Events are sent only when `BLADE_SEGMENT_KEY` is set; the MCP inlines the key at build time, but the plugin has no build step and the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to print each event to stderr.
 
+## Hooks
+
+`SessionStart` detects which Blade packages the project uses (from `package.json` and the lockfile) and tells the agent to use `blade`, `blade-svelte` or both. It is a dependency-free Node script, prints nothing in projects that depend on neither `@razorpay/blade` nor `@razorpay/blade-svelte`, and sends no telemetry.
+
 ## Development
 
 See [AGENTS.md](./AGENTS.md).
