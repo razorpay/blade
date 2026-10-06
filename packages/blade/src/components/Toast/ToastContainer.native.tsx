@@ -15,7 +15,18 @@ import { useTheme } from '~components/BladeProvider';
  * `useToast` external store via `useSyncExternalStore` and renders the
  * native `<Toast>` component for each visible toast.
  */
-const ToastContainer = (): React.ReactElement | null => {
+const ToastContainer = ({
+  offsetBottom,
+}: {
+  /**
+   * Distance of the toast stack from the bottom of the screen, in px.
+   * Use it to lift toasts above bottom navigation / tab bars + safe-area insets.
+   * Same prop as the web ToastContainer.
+   *
+   * @default theme.spacing[8]
+   */
+  offsetBottom?: number;
+}): React.ReactElement | null => {
   const { theme } = useTheme();
   const { toasts } = useToast();
 
@@ -27,7 +38,7 @@ const ToastContainer = (): React.ReactElement | null => {
         position: 'absolute',
         left: theme.spacing[5],
         right: theme.spacing[5],
-        bottom: theme.spacing[8],
+        bottom: offsetBottom ?? theme.spacing[8],
       }}
       pointerEvents="box-none"
     >
