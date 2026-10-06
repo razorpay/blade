@@ -35,7 +35,7 @@ Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the s
 
 ## Telemetry
 
-Same events as Blade MCP (`Blade MCP Tool Called`, with `protocol: "plugin"`), so existing dashboards include plugin usage:
+Skills send the same events as Blade MCP tools, under their own event name `Blade Skill Used` (the MCP sends `Blade MCP Tool Called`), so plugin and MCP usage never mix. `toolName` keeps the MCP tool name and `skillName` says which skill sent it:
 
 - `publish_lines_of_code_metric`: the `blade` skill asks the agent to run `scripts/publish-metric.mjs` once after its edits, with the same arguments as the MCP tool. The line counts are reported by the agent, as with the MCP.
 - `get_blade_changelog` and `get_figma_to_code`: sent by the `blade-upgrade` and `blade-figma-to-code` scripts.

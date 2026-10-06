@@ -47,7 +47,7 @@ const validArgs = {
   toolsUsed: ['blade', 'blade:blade-upgrade'],
 };
 
-test('publish-metric sends the same event as the MCP tool', async () => {
+test('publish-metric sends the MCP tool metric as a skill-usage event', async () => {
   const { code, stdout, events } = await run(metric, [JSON.stringify(validArgs)]);
   assert.equal(code, 0);
   assert.equal(
@@ -56,7 +56,7 @@ test('publish-metric sends the same event as the MCP tool', async () => {
   );
   assert.equal(events.length, 1);
   const [event] = events;
-  assert.equal(event.event, 'Blade MCP Tool Called');
+  assert.equal(event.event, 'Blade Skill Used');
   assert.equal(event.userId, 'alice');
   assert.deepEqual(
     { ...event.properties, osType: undefined, nodeVersion: undefined },
@@ -67,6 +67,7 @@ test('publish-metric sends the same event as the MCP tool', async () => {
       userName: 'alice',
       rootDirectoryName: 'my-app',
       protocol: 'plugin',
+      skillName: 'blade',
       toolName: 'publish_lines_of_code_metric',
       linesAddedTotal: 13,
       linesRemovedTotal: 3,
@@ -155,6 +156,8 @@ test('figma-to-code keeps the screenshot name safe and sends the MCP event', asy
     assert.ok(fs.existsSync(imagePath));
     fs.rmSync(imagePath);
     assert.equal(events.length, 1);
+    assert.equal(events[0].event, 'Blade Skill Used');
+    assert.equal(events[0].properties.skillName, 'blade-figma-to-code');
     assert.equal(events[0].properties.toolName, 'get_figma_to_code');
     assert.equal(events[0].properties.componentsUsed, 'Button');
     assert.equal(events[0].properties.code, '<Button>Pay</Button>');

@@ -3,7 +3,7 @@
 // Dependency-free so it runs in any consumer repo with Node 18+.
 // Port of Blade MCP's get_blade_changelog tool, including its analytics event.
 
-import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';
+import { skillUsedEventName, sendAnalytics } from './analytics.mjs';
 
 const CHANGELOG_URL =
   'https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/packages/blade/CHANGELOG.md';
@@ -96,7 +96,7 @@ const main = async () => {
 
 const track = (fromVersion, toVersion) =>
   sendAnalytics({
-    eventName: analyticsToolCallEventName,
+    eventName: skillUsedEventName,
     properties: {
       toolName: 'get_blade_changelog',
       fromVersion,

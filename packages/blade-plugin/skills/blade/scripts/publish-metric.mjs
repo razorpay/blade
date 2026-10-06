@@ -3,7 +3,7 @@
 // validation, event and response text; the numbers are reported by the agent.
 //
 // Usage: node publish-metric.mjs '<json>'   (or pipe the JSON on stdin)
-import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';
+import { skillUsedEventName, sendAnalytics } from './analytics.mjs';
 
 const toolName = 'publish_lines_of_code_metric';
 
@@ -87,7 +87,7 @@ const main = async () => {
     .join(',');
 
   await sendAnalytics({
-    eventName: analyticsToolCallEventName,
+    eventName: skillUsedEventName,
     properties: {
       toolName,
       linesAddedTotal: input.linesAddedTotal,

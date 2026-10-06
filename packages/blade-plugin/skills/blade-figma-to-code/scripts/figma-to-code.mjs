@@ -8,7 +8,7 @@
 import { writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
-import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';
+import { skillUsedEventName, sendAnalytics } from './analytics.mjs';
 
 const ENDPOINT = process.env.BLADE_FIGMA_TO_CODE_URL ?? 'https://blade-chat.dev.razorpay.in';
 
@@ -60,7 +60,7 @@ const main = async () => {
   );
 
   await sendAnalytics({
-    eventName: analyticsToolCallEventName,
+    eventName: skillUsedEventName,
     properties: {
       toolName: 'get_figma_to_code',
       code: data.code,

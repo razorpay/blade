@@ -1,6 +1,7 @@
 // Port of packages/blade-mcp/src/utils/analyticsUtils.ts + getUserName.ts for
-// skill scripts. Same event name, user id and properties as Blade MCP so the
-// existing dashboards count plugin usage; `protocol: 'plugin'` tells them apart.
+// skill scripts. Same user id and properties as Blade MCP, but a separate event
+// name so skill usage is never mixed up with MCP tool calls. `toolName` keeps
+// the MCP tool's name so the two can still be compared side by side.
 //
 // Each skill that ships a script keeps an identical copy of this file, because
 // `npx skills add` installs one skill directory on its own.
@@ -15,9 +16,11 @@ import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
-export const analyticsToolCallEventName = 'Blade MCP Tool Called';
+export const skillUsedEventName = 'Blade Skill Used';
 
 const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
+// The skill this copy belongs to, e.g. 'blade' or 'blade-upgrade'.
+const skillName = path.basename(path.dirname(scriptsDir));
 
 // Version of the installed plugin; skills installed without the plugin
 // manifest (npx skills add) report 'unknown'.
@@ -86,6 +89,7 @@ export const sendAnalytics = async ({ eventName, properties }) => {
         userName: userId,
         rootDirectoryName: path.basename(projectRootDirectory),
         protocol: 'plugin',
+        skillName,
         ...properties,
       },
     };
