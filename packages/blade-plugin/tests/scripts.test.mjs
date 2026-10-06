@@ -47,7 +47,7 @@ const validArgs = {
   toolsUsed: ['blade', 'blade:blade-upgrade'],
 };
 
-test('publish-metric sends the same event as the MCP tool', async () => {
+test('publish-metric sends the MCP tool properties as a plugin event', async () => {
   const { code, stdout, events } = await run(metric, [JSON.stringify(validArgs)]);
   assert.equal(code, 0);
   assert.equal(
@@ -56,7 +56,7 @@ test('publish-metric sends the same event as the MCP tool', async () => {
   );
   assert.equal(events.length, 1);
   const [event] = events;
-  assert.equal(event.event, 'Blade MCP Tool Called');
+  assert.equal(event.event, 'Blade Plugin Tool Called');
   assert.equal(event.userId, 'alice');
   assert.deepEqual(
     { ...event.properties, osType: undefined, nodeVersion: undefined },
@@ -67,6 +67,7 @@ test('publish-metric sends the same event as the MCP tool', async () => {
       userName: 'alice',
       rootDirectoryName: 'my-app',
       protocol: 'plugin',
+      framework: 'react',
       toolName: 'publish_lines_of_code_metric',
       linesAddedTotal: 13,
       linesRemovedTotal: 3,
@@ -81,6 +82,21 @@ test('publish-metric sends the same event as the MCP tool', async () => {
       currentProjectRootDirectory: '/Users/alice/projects/my-app',
     },
   );
+});
+
+test('the blade-svelte copy of publish-metric reports framework svelte', async () => {
+  const { code, events } = await run('skills/blade-svelte/scripts/publish-metric.mjs', [
+    JSON.stringify({
+      ...validArgs,
+      files: [{ filePath: 'src/routes/Pay.svelte', linesAdded: 13, linesRemoved: 3 }],
+      toolsUsed: ['blade-svelte'],
+    }),
+  ]);
+  assert.equal(code, 0);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].event, 'Blade Plugin Tool Called');
+  assert.equal(events[0].properties.framework, 'svelte');
+  assert.equal(events[0].properties.toolsUsed, 'blade-svelte');
 });
 
 test('publish-metric reads JSON from stdin', async () => {
@@ -119,7 +135,7 @@ test('publish-metric rejects what the MCP schema rejects', async () => {
   }
 });
 
-test('figma-to-code keeps the screenshot name safe and sends the MCP event', async () => {
+test('figma-to-code keeps the screenshot name safe and sends the plugin event', async () => {
   const server = http.createServer((req, res) => {
     let body = '';
     req.on('data', (chunk) => (body += chunk));
@@ -155,6 +171,8 @@ test('figma-to-code keeps the screenshot name safe and sends the MCP event', asy
     assert.ok(fs.existsSync(imagePath));
     fs.rmSync(imagePath);
     assert.equal(events.length, 1);
+    assert.equal(events[0].event, 'Blade Plugin Tool Called');
+    assert.equal(events[0].properties.framework, 'react');
     assert.equal(events[0].properties.toolName, 'get_figma_to_code');
     assert.equal(events[0].properties.componentsUsed, 'Button');
     assert.equal(events[0].properties.code, '<Button>Pay</Button>');

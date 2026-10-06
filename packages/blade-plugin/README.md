@@ -38,9 +38,9 @@ Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the s
 
 ## Telemetry
 
-Same events as Blade MCP (`Blade MCP Tool Called`, with `protocol: "plugin"`), so existing dashboards include plugin usage:
+Skill scripts send `Blade Plugin Tool Called` events: the same `toolName` values and properties as Blade MCP's `Blade MCP Tool Called`, under a separate event name so dashboards can tell skill usage from MCP tool calls. Every event also carries `protocol: "plugin"` and `framework` (`react`, or `svelte` when sent from the `blade-svelte` skill).
 
-- `publish_lines_of_code_metric`: the `blade` skill asks the agent to run `scripts/publish-metric.mjs` once after its edits, with the same arguments as the MCP tool. The line counts are reported by the agent, as with the MCP.
+- `publish_lines_of_code_metric`: the `blade` and `blade-svelte` skills ask the agent to run their `scripts/publish-metric.mjs` once after its edits, with the same arguments as the MCP tool. The line counts are reported by the agent, as with the MCP. A task that edits both React and Svelte files sends one event per skill.
 - `get_blade_changelog` and `get_figma_to_code`: sent by the `blade-upgrade` and `blade-figma-to-code` scripts.
 
 The user id is the username from the project path, as in the MCP. Events are sent only when `BLADE_SEGMENT_KEY` is set; the MCP inlines the key at build time, but the plugin has no build step and the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to print each event to stderr.

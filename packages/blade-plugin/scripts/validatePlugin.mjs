@@ -127,16 +127,16 @@ for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
   }
 }
 
-// Skills are installed one directory at a time, so each skill script keeps its
-// own copy of the analytics helper. The copies must not drift.
-const analyticsCopies = skillNames
-  .map((skill) => path.join(skillsDir, skill, 'scripts', 'analytics.mjs'))
-  .filter((file) => fs.existsSync(file));
-for (const file of analyticsCopies.slice(1)) {
-  if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(analyticsCopies[0], 'utf8')) {
-    errors.push(
-      `${path.relative(root, file)} differs from ${path.relative(root, analyticsCopies[0])}`,
-    );
+// Skills are installed one directory at a time, so each skill keeps its own
+// copy of shared scripts. The copies must not drift.
+for (const shared of ['analytics.mjs', 'publish-metric.mjs']) {
+  const copies = skillNames
+    .map((skill) => path.join(skillsDir, skill, 'scripts', shared))
+    .filter((file) => fs.existsSync(file));
+  for (const file of copies.slice(1)) {
+    if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(copies[0], 'utf8')) {
+      errors.push(`${path.relative(root, file)} differs from ${path.relative(root, copies[0])}`);
+    }
   }
 }
 

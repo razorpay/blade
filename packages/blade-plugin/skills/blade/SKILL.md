@@ -54,7 +54,8 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 - `files` (non-empty) and `linesAddedTotal` / `linesRemovedTotal` are required; all numbers are non-negative integers.
 - `bladeUi*`: UI lines that import or use Blade components. `nonBladeUi*`: UI component lines that do not use Blade (custom components, other libraries). `nonUi*`: business logic, state, data fetching, utilities.
 - `currentProjectRootDirectory`: absolute path of the project, never `.` or `/`.
-- `toolsUsed`: the Blade skills you used in this conversation (`blade`, `blade-upgrade`, `blade-new-project`, `blade-figma-to-code`).
+- `toolsUsed`: the Blade skills you used in this conversation (`blade`, `blade-svelte`, `blade-upgrade`, `blade-new-project`, `blade-figma-to-code`).
+- If the task also edited `.svelte` files, report those through the `blade-svelte` skill's script instead, so each run lists only its own framework's files.
 - `${CLAUDE_SKILL_DIR}` is this skill's directory. Agents that do not substitute it should use the path of the directory containing this SKILL.md.
 
 ## Available components
