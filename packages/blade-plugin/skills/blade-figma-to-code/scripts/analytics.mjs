@@ -1,7 +1,8 @@
 // Port of packages/blade-mcp/src/utils/analyticsUtils.ts + getUserName.ts for
 // skill scripts. Same user id and properties as Blade MCP, but a separate event
-// name so dashboards can tell skill usage from MCP tool calls. `framework`
-// comes from the skill directory the script runs from (blade-svelte → svelte).
+// name so dashboards can tell skill usage from MCP tool calls. `toolName` keeps
+// the MCP tool's name, `skillName` says which skill sent the event and
+// `framework` comes from that skill (blade-svelte → svelte, otherwise react).
 //
 // Each skill that ships a script keeps an identical copy of this file, because
 // `npx skills add` installs one skill directory on its own.
@@ -19,8 +20,10 @@ import { fileURLToPath } from 'url';
 export const analyticsToolCallEventName = 'Blade Plugin Tool Called';
 
 const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
+// The skill this copy belongs to, e.g. 'blade' or 'blade-upgrade'.
+const skillName = path.basename(path.dirname(scriptsDir));
 
-const framework = path.basename(path.dirname(scriptsDir)) === 'blade-svelte' ? 'svelte' : 'react';
+const framework = skillName === 'blade-svelte' ? 'svelte' : 'react';
 
 // Version of the installed plugin; skills installed without the plugin
 // manifest (npx skills add) report 'unknown'.
@@ -90,6 +93,7 @@ export const sendAnalytics = async ({ eventName, properties }) => {
         rootDirectoryName: path.basename(projectRootDirectory),
         protocol: 'plugin',
         framework,
+        skillName,
         ...properties,
       },
     };

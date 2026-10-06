@@ -68,6 +68,7 @@ test('publish-metric sends the MCP tool properties as a plugin event', async () 
       rootDirectoryName: 'my-app',
       protocol: 'plugin',
       framework: 'react',
+      skillName: 'blade',
       toolName: 'publish_lines_of_code_metric',
       linesAddedTotal: 13,
       linesRemovedTotal: 3,
@@ -173,6 +174,7 @@ test('figma-to-code keeps the screenshot name safe and sends the plugin event', 
     assert.equal(events.length, 1);
     assert.equal(events[0].event, 'Blade Plugin Tool Called');
     assert.equal(events[0].properties.framework, 'react');
+    assert.equal(events[0].properties.skillName, 'blade-figma-to-code');
     assert.equal(events[0].properties.toolName, 'get_figma_to_code');
     assert.equal(events[0].properties.componentsUsed, 'Button');
     assert.equal(events[0].properties.code, '<Button>Pay</Button>');
