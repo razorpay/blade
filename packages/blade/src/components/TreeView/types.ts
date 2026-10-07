@@ -1,5 +1,6 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { PopoverProps } from '~components/Popover';
 
 type TreeViewProps = {
   /**
@@ -126,6 +127,35 @@ type TreeViewItemProps = {
     value: boolean;
     event?: React.MouseEvent<HTMLButtonElement>;
   }) => void;
+  /**
+   * Shows a Popover when the row is hovered with a mouse. Use it for rich previews
+   * (e.g. an image of the screen the item represents).
+   *
+   * It opens on mouse hover only: not on keyboard focus, and not on touch screens (a tap
+   * only selects the row). So never put information in it that is not available
+   * elsewhere.
+   *
+   * ```jsx
+   * <TreeViewItem
+   *   title="Payment Success"
+   *   value="payment-success"
+   *   popover={{ title: 'Payment Success', content: <img src={preview} alt="" /> }}
+   * />
+   * ```
+   */
+  popover?: Pick<PopoverProps, 'title' | 'titleLeading' | 'content' | 'footer' | 'maxWidth'> & {
+    /**
+     * Placement of the popover. Defaults to the right of the row, so it does not cover
+     * the rows above or below
+     *
+     * @default 'right'
+     */
+    placement?: PopoverProps['placement'];
+    /**
+     * Called when the popover opens or closes
+     */
+    onOpenChange?: PopoverProps['onOpenChange'];
+  };
 } & TestID &
   DataAnalyticsAttribute;
 

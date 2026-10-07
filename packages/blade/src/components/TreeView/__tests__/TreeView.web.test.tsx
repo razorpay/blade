@@ -1,11 +1,16 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { fireEvent, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, waitFor, within } from '@testing-library/react';
 import { TreeView } from '../TreeView';
 import { TreeViewItem } from '../TreeViewItem';
 import { TreeViewLoadMore } from '../TreeViewLoadMore';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import {
+  REPLACED_OVERLAY_TIME,
+  advanceTime,
+  getOpenTransitionDuration,
+} from '~utils/testing/overlayTransitions';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 
@@ -448,6 +453,42 @@ describe('<TreeView /> standalone', () => {
     expect(karnataka.querySelector('[data-blade-component="spinner"]')).toBeInTheDocument();
   });
 
+  // B9
+  it('should reserve the chevron slot on every row only when the tree has a branch (B9)', () => {
+    const { getByRole, getByText, rerender } = renderWithTheme(
+      <TreeView>
+        <TreeViewItem title="Karnataka" value="karnataka" hasChildren />
+        <TreeViewItem title="Goa" value="goa" />
+        <TreeViewLoadMore onClick={jest.fn()} />
+      </TreeView>,
+    );
+
+    // a branch exists (through hasChildren), so the leaf keeps an empty chevron slot
+    expect(
+      getByRole('treeitem', { name: 'Goa' }).querySelector('[aria-hidden="true"]'),
+    ).toBeInTheDocument();
+    expect(getByText('Show more').parentElement).toHaveStyle({ paddingLeft: '24px' });
+
+    rerender(
+      withTheme(
+        <TreeView>
+          <TreeViewItem title="Karnataka" value="karnataka" />
+          <TreeViewItem title="Goa" value="goa" />
+          <TreeViewLoadMore onClick={jest.fn()} />
+        </TreeView>,
+      ),
+    );
+
+    // flat tree: no row reserves the slot, and LoadMore drops its offset too
+    expect(
+      getByRole('treeitem', { name: 'Karnataka' }).querySelector('[aria-hidden="true"]'),
+    ).not.toBeInTheDocument();
+    expect(
+      getByRole('treeitem', { name: 'Goa' }).querySelector('[aria-hidden="true"]'),
+    ).not.toBeInTheDocument();
+    expect(getByText('Show more').parentElement).not.toHaveStyle({ paddingLeft: '24px' });
+  });
+
   // B7
   it('should activate TreeViewLoadMore on click and stay inert while loading (B7)', async () => {
     const user = userEvents.setup();
@@ -876,5 +917,262 @@ describe('<TreeView /> standalone', () => {
     const goa = getByRole('treeitem', { name: 'Goa' });
     fireEvent.focus(goa);
     expect(goa).toHaveAttribute('tabindex', '0');
+  });
+});
+
+describe('popover on items', () => {
+  it('should open popover on row hover without touching tree semantics', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Checkout"
+          value="checkout"
+          defaultIsExpanded
+          popover={{ title: 'Checkout', content: <p>Checkout preview</p> }}
+        >
+          <TreeViewItem
+            title="Payment Success"
+            value="payment-success"
+            popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+          />
+        </TreeViewItem>
+      </TreeView>,
+    );
+
+    const branch = getByRole('treeitem', { name: 'Checkout' });
+    const leaf = getByRole('treeitem', { name: 'Payment Success' });
+
+    await user.hover(leaf);
+    expect(await findByRole('dialog')).toHaveTextContent('Success preview');
+    // Popover's aria-expanded / aria-haspopup must not land on the treeitems
+    expect(leaf).not.toHaveAttribute('aria-expanded');
+    expect(leaf).not.toHaveAttribute('aria-haspopup');
+    expect(branch).toHaveAttribute('aria-expanded', 'true');
+
+    await user.unhover(leaf);
+    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument(), {
+      timeout: 3000,
+    });
+
+    await user.click(leaf);
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ values: ['payment-success'] }),
+    );
+  });
+
+  it('should keep popover open while the pointer moves onto it, and ignore clicks inside it', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const onFooterClick = jest.fn();
+    const onOpenChange = jest.fn();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{
+            title: 'Payment Success',
+            content: <p>Success preview</p>,
+            footer: <button onClick={onFooterClick}>Open screen</button>,
+            onOpenChange,
+          }}
+        />
+      </TreeView>,
+    );
+
+    const row = getByRole('treeitem', { name: 'Payment Success' });
+    await user.hover(row);
+    const dialog = await findByRole('dialog');
+    expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: true });
+
+    // crossing the gap between the row and the popover (the pointer is briefly over neither)
+    // does not close it
+    await user.unhover(row);
+    await user.hover(dialog);
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(onOpenChange).not.toHaveBeenCalledWith({ isOpen: false });
+
+    // the popover is a React child of the row, but clicking inside it must not select the row
+    await user.click(getByRole('button', { name: 'Open screen' }));
+    expect(onFooterClick).toHaveBeenCalledTimes(1);
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.unhover(dialog);
+    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument(), {
+      timeout: 3000,
+    });
+  });
+
+  it('should select a row on the first click while a popover is open', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const { getByRole, findByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+        />
+        <TreeViewItem title="Retry Payment" value="retry-payment" />
+      </TreeView>,
+    );
+
+    await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+    await findByRole('dialog');
+    // a hover popover is not modal: the tree stays exposed to assistive tech while it is open
+    expect(getByRole('tree')).toBeInTheDocument();
+
+    await user.click(getByRole('treeitem', { name: 'Retry Payment' }));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ values: ['retry-payment'] }),
+    );
+  });
+
+  describe('switching between rows', () => {
+    // fake timers advance a fixed time, see ~utils/testing/overlayTransitions
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+    const setupUser = (): ReturnType<typeof userEvents.setup> =>
+      userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+
+    const switchingTree = (
+      <TreeView>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+        />
+        <TreeViewItem
+          title="Retry Payment"
+          value="retry-payment"
+          popover={{ title: 'Retry Payment', content: <p>Retry preview</p> }}
+        />
+      </TreeView>
+    );
+
+    it('should replace one popover with the next without an overlap', async () => {
+      const user = setupUser();
+      const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+      expect(await findByRole('dialog')).toHaveTextContent('Success preview');
+
+      await user.hover(getByRole('treeitem', { name: 'Retry Payment' }));
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
+    });
+
+    // user-event does not set relatedTarget on pointer moves (browsers do), and jsdom has no
+    // PointerEvent: a move from one row onto another is dispatched as a MouseEvent named pointerout.
+    // React derives both the pointerleave of `from` and the pointerenter of `to` from it
+    const movePointer = (from: HTMLElement, to: HTMLElement): void => {
+      const event = new MouseEvent('pointerout', { bubbles: true, relatedTarget: to });
+      Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+      act(() => {
+        from.dispatchEvent(event);
+      });
+    };
+
+    it('should switch to the next popover in place, without animating either one', async () => {
+      const user = setupUser();
+      const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
+      const success = getByRole('treeitem', { name: 'Payment Success' });
+      const retry = getByRole('treeitem', { name: 'Retry Payment' });
+
+      await user.hover(success);
+      // the first popover of a hover streak fades in as usual
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
+      await findByRole('dialog');
+
+      movePointer(success, retry);
+      // the replaced popover closes with a 0ms transition instead of fading out under the new one
+      // (Popover's delay group), so it is gone before a fade-out could have finished...
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
+      // ...and the new one appears in place instead of fading in. Its transition styles are
+      // applied on the next animation frame, so this waits the default timeout: it checks the
+      // value, not how quickly it arrives
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('0ms'));
+    });
+
+    it('should close a popover sooner when the pointer moves to a row without an overlay', async () => {
+      const user = setupUser();
+      const onOpenChange = jest.fn();
+      const { getByRole, findByRole } = renderWithTheme(
+        <TreeView>
+          <TreeViewItem
+            title="Payment Success"
+            value="payment-success"
+            popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
+          />
+          <TreeViewItem title="Exit Payment" value="exit-payment" />
+        </TreeView>,
+      );
+      const success = getByRole('treeitem', { name: 'Payment Success' });
+
+      await user.hover(success);
+      await findByRole('dialog');
+
+      movePointer(success, getByRole('treeitem', { name: 'Exit Payment' }));
+      // before the 160ms "the pointer may be heading to the popover" delay
+      advanceTime(100);
+      expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
+    });
+  });
+
+  it('should not open popover on touch, where a tap only selects the row', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const { getByRole, queryByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+        />
+      </TreeView>,
+    );
+
+    await user.pointer({ keys: '[TouchA]', target: getByRole('treeitem') });
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ values: ['payment-success'] }),
+    );
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('should pass a11y audit with popover items, closed and open', async () => {
+    const user = userEvents.setup();
+    const { getByRole, findByRole } = renderWithTheme(
+      <TreeView>
+        <TreeViewItem title="Goa" value="goa" />
+        <TreeViewItem
+          title="Karnataka"
+          value="karnataka"
+          popover={{ title: 'Karnataka', content: <p>Preview</p> }}
+        />
+      </TreeView>,
+    );
+    await assertAccessible(getByRole('tree'));
+
+    await user.hover(getByRole('treeitem', { name: 'Karnataka' }));
+    await findByRole('dialog');
+    // while the popover is open, the hovered row keeps its own name (nothing inside the row
+    // points at the popover through aria-owns) and gets no extra tab stops (focus guards)
+    const row = getByRole('treeitem', { name: 'Karnataka' });
+    expect(row.querySelector('[aria-owns]')).toBeNull();
+    expect(row.querySelectorAll('[tabindex="0"]')).toHaveLength(0);
+    await assertAccessible(getByRole('tree'));
   });
 });

@@ -106,6 +106,7 @@ const _Popover = ({
   defaultIsOpen,
   initialFocusRef,
   openInteraction = 'click',
+  _shouldManageFocus = true,
   maxWidth,
   ...rest
 }: PopoverProps): React.ReactElement => {
@@ -230,6 +231,7 @@ const _Popover = ({
                 initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
               }
               context={context}
+              disabled={!_shouldManageFocus}
               // A hover popover is a preview the pointer rests on: it must not trap focus or hide
               // the rest of the page from assistive tech (modal marks everything else aria-hidden)
               modal={!isHoverPopover}

@@ -65,6 +65,47 @@ describe('<TreeView /> inside <Dropdown /> with <SelectInput />', () => {
     await assertAccessible(getByRole('tree'));
   });
 
+  it('should keep the dropdown open and select nothing when an item popover is clicked', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const onFooterClick = jest.fn();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <Dropdown selectionType="single">
+        <SelectInput label="Screens" name="screens" onChange={onChange} />
+        <DropdownOverlay zIndex={1002}>
+          <TreeView>
+            <TreeViewItem
+              title="Payment Success"
+              value="payment-success"
+              popover={{
+                title: 'Payment Success',
+                content: <p>Success preview</p>,
+                footer: <Button onClick={onFooterClick}>Open screen</Button>,
+              }}
+            />
+            <TreeViewItem title="Retry Payment" value="retry-payment" />
+          </TreeView>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    await user.click(getByRole('combobox', { name: 'Screens' }));
+    await waitFor(() => expect(getByRole('tree')).toBeVisible());
+    await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+    await user.hover(await findByRole('dialog'));
+
+    // The popover is portalled outside DropdownOverlay, but it is a React child of the row inside
+    // it. floating-ui's useDismiss also checks the React tree, so this press is not an outside press
+    await user.click(getByRole('button', { name: 'Open screen' }));
+    expect(onFooterClick).toHaveBeenCalledTimes(1);
+    // longer than the exit animation: a dropdown or popover that closed would be gone by now
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    expect(queryByRole('tree')).toBeInTheDocument();
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    // the row ignores events whose DOM target is outside it, so nothing is selected
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
   it('should select a leaf on click, close the dropdown, and reflect the title in the trigger (single)', async () => {
     const user = userEvents.setup();
     const onChange = jest.fn();

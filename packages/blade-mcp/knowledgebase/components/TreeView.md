@@ -32,6 +32,11 @@ TreeView renders a hierarchical list of expandable, selectable items. It works s
 Below are the props that the TreeView component and its subcomponents accept.
 
 ```typescript
+import type { UseFloatingOptions } from '@floating-ui/react';
+
+// Spacing token string like 'spacing.4', or a CSS length like '328px'
+type SpacingValueType = `spacing.${number}` | `${number}px` | `${number}%`;
+
 type TreeViewProps = {
   /**
    * Children of TreeView. Only `TreeViewItem` and `TreeViewLoadMore` are allowed
@@ -148,6 +153,21 @@ type TreeViewItemProps = {
     value: boolean;
     event?: React.MouseEvent<HTMLButtonElement>;
   }) => void;
+  /**
+   * Shows a Popover when the row is hovered with a mouse - use it for rich previews.
+   * Opens on mouse hover only (not on keyboard focus or touch), so never put information
+   * in it that is not available elsewhere.
+   */
+  popover?: {
+    title?: string;
+    titleLeading?: React.ReactNode;
+    content: React.ReactElement;
+    footer?: React.ReactNode;
+    /** @default 'right' */
+    placement?: UseFloatingOptions['placement'];
+    maxWidth?: SpacingValueType;
+    onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
+  };
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -175,9 +195,12 @@ type TreeViewLoadMoreProps = {
 - Use `selectionType="multiple"` when users can select several leaves; toggling a branch selects/deselects all its enabled loaded leaves and partial selections render an indeterminate checkbox.
 - Standalone TreeView owns its selection via `value`/`defaultValue`/`onChange`. Inside Dropdown, put those props on the trigger — a consumer swapping `ActionList` for `TreeView` inside an existing `Dropdown + SelectInput` keeps the exact same controlled API.
 - For async/on-demand children, set `hasChildren` (renders the chevron before children exist) and `isLoading` while fetching; render the loaded children as nested `TreeViewItem`s. Newly loaded children of a fully-selected branch inherit the selection.
+- Rows reserve an empty chevron slot so leaves line up with branches, but only when at least one row in the tree can expand (has children or `hasChildren`). A fully flat tree drops the slot on every row (and the `TreeViewLoadMore` offset), so it renders flush. If the data can gain children later, pass `hasChildren` on those rows up front to avoid a one-time layout shift.
+- If your data can never nest, prefer `ActionList` (inside `Dropdown`) over `TreeView`. A flat `TreeView` is supported, but `ActionList` is the recommended fit.
 - Use `TreeViewLoadMore` as the last child of a branch (or the root) for progressive loading.
 - Keyboard: ArrowUp/ArrowDown move across visible rows; ArrowRight expands / enters a branch; ArrowLeft collapses / moves to the parent; Home/End jump to the first/last visible row; Enter/Space select (Space is a no-op on TreeViewLoadMore).
 - Branches are selectable by default (in single mode a branch is a valid selection; in multiple mode toggling it cascades). Set `isSelectable={false}` on a branch to make it a pure grouping row — clicking it (or Enter/Space) toggles expansion instead, and only leaf items can be selected.
+- To show a rich preview on hover (e.g. a screen thumbnail), use the `popover` prop on `TreeViewItem`. It opens on mouse hover only; on touch screens a tap just selects the row, so show the preview elsewhere on mobile (e.g. when the row is selected). Moving the pointer from row to row switches previews in place. Do not wrap `TreeViewItem` in `<Popover>` or `<Tooltip>` — TreeView only accepts `TreeViewItem` / `TreeViewLoadMore` children. TreeViewItem has no tooltip prop.
 - Use `size="small"` for dense surfaces such as sidebars, file trees, or long dropdown overlays where many rows must stay visible; keep the default `size="medium"` for primary in-page trees. Match all icons (leading and trailing) to the tree's size, and always pass `size="small"` to trailing Counters and Badges.
 
 ## Examples
@@ -245,6 +268,38 @@ function SidebarTree() {
 }
 
 export default SidebarTree;
+```
+
+### Hover preview on items
+
+```tsx
+import React from 'react';
+import { TreeView, TreeViewItem } from '@razorpay/blade/components';
+import { CheckCircleIcon, LoaderIcon, RefreshIcon } from '@razorpay/blade/components';
+
+const CheckoutScreensTree = (): React.ReactElement => (
+  <TreeView>
+    <TreeViewItem
+      title="Payment Processing"
+      value="payment-processing"
+      leading={<LoaderIcon />}
+      popover={{
+        title: 'Payment Processing',
+        content: <img src="/previews/payment-processing.png" alt="" width="220" />,
+      }}
+    />
+    <TreeViewItem
+      title="Payment Success"
+      value="payment-success"
+      leading={<CheckCircleIcon />}
+      popover={{
+        title: 'Payment Success',
+        content: <img src="/previews/payment-success.png" alt="" width="220" />,
+      }}
+    />
+    <TreeViewItem title="Retry Payment" value="retry-payment" leading={<RefreshIcon />} />
+  </TreeView>
+);
 ```
 
 ### Standalone multiple selection with cascade
