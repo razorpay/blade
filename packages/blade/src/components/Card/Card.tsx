@@ -387,6 +387,7 @@ const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.
     <BaseBox
       {...metaAttribute({ name: MetaConstants.CardBody, testID })}
       {...makeAnalyticsAttribute(rest)}
+      width="100%"
       height={height}
     >
       {children}
