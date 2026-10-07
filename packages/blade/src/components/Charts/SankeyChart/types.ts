@@ -151,10 +151,11 @@ export type ChartSankeyProps = {
    */
   groupNodesBelow?: number;
   /**
-   * Label of a group node. Receives the group's column depth and the grouped nodes.
+   * Label of a group node. Receives the group's zero-based column depth (`groupDepth`, as on
+   * `onExpandChange`) and the grouped nodes.
    * @default ({ members }) => `Other (${members.length})`
    */
-  formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { groupDepth: number; members: SankeyDataNode[] }) => string;
   /**
    * Column depths of the groups that start expanded (uncontrolled). A group's key is its
    * zero-based column depth as drawn (the leftmost column is 0; a node with no outgoing flow
@@ -175,9 +176,8 @@ export type ChartSankeyProps = {
    */
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
   /**
-   * Called when a link ribbon is clicked. Receives the link data and its zero-based index in
-   * `data.links`. A ribbon that ends at a group node reports the aggregated link (with the
-   * group's id as `source` or `target`) and the index of its first constituent link.
+   * Called when the user clicks a link ribbon. Gets the link data and its index. Not called for a
+   * ribbon merged into a group node; use `onExpandChange` for those.
    */
   onLinkClick?: (link: SankeyDataLink, index: number) => void;
 };

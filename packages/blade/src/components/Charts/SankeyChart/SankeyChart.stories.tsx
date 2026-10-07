@@ -592,8 +592,8 @@ export const GroupedSankeyChartInFixedHeightCard: StoryFn<typeof ChartSankeyWrap
           labelDensity="compact"
           showColorIndicator
           groupNodesBelow={2}
-          formatGroupLabel={({ depth, members }) =>
-            `Other ${depth === 1 ? 'methods' : 'providers'} (${members.length})`
+          formatGroupLabel={({ groupDepth, members }) =>
+            `Other ${groupDepth === 1 ? 'methods' : 'providers'} (${members.length})`
           }
           onNodeClick={action('onNodeClick')}
           onLinkClick={action('onLinkClick')}

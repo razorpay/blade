@@ -1017,14 +1017,12 @@ const _ChartSankey = ({
   const handleLinkClick = useCallback(
     (index: number): void => {
       const link = grouped.links[index];
-      if (!link) return;
-      // A plain ribbon reports the consumer's own link object, as before; only a ribbon merged
-      // into a group has no single original and gets a built one.
-      const original = link.isAggregated ? undefined : data.links[link.originalIndex];
-      onLinkClick?.(
-        original ?? { source: link.source, target: link.target, value: link.value },
-        link.originalIndex,
-      );
+      // A ribbon merged into a group has no single link behind it and an internal id at one end,
+      // so it reports nothing — as the group node does for `onNodeClick`; `onExpandChange` covers
+      // it. A plain ribbon reports the consumer's own link object, as before.
+      if (!link || link.isAggregated) return;
+      const original = data.links[link.originalIndex];
+      if (original) onLinkClick?.(original, link.originalIndex);
     },
     [grouped.links, data.links, onLinkClick],
   );

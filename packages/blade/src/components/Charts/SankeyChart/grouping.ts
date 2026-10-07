@@ -53,15 +53,19 @@ export type GroupSankeyDataOptions = {
   /** Share of `total`, in percent, below which a node is grouped. Unset or <= 0 turns grouping off */
   groupNodesBelow?: number;
   expandedGroupIds?: readonly string[];
-  formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { groupDepth: number; members: SankeyDataNode[] }) => string;
 };
 
 export const getGroupId = (depth: number): string => `${SANKEY_GROUP_ID_PREFIX}${depth}`;
 
 export const isGroupNodeId = (id: string): boolean => id.startsWith(SANKEY_GROUP_ID_PREFIX);
 
-const defaultGroupLabel = ({ members }: { depth: number; members: SankeyDataNode[] }): string =>
-  `Other (${members.length})`;
+const defaultGroupLabel = ({
+  members,
+}: {
+  groupDepth: number;
+  members: SankeyDataNode[];
+}): string => `Other (${members.length})`;
 
 /**
  * Column of every node, by the rule the layout engine draws them: the longest path from a
@@ -196,7 +200,7 @@ export const groupSankeyData = ({
           node: {
             id: group.id,
             name: formatGroupLabel({
-              depth: group.depth,
+              groupDepth: group.depth,
               members: group.members,
             }),
           },

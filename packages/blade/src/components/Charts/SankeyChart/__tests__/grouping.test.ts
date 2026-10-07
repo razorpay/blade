@@ -143,7 +143,8 @@ describe('groupSankeyData — folding', () => {
       nodes,
       links,
       groupNodesBelow: 5,
-      formatGroupLabel: ({ depth, members }) => `Other methods (${members.length}) @${depth}`,
+      formatGroupLabel: ({ groupDepth, members }) =>
+        `Other methods (${members.length}) @${groupDepth}`,
     });
     expect(result.nodes.find((entry) => entry.group)?.node.name).toBe('Other methods (3) @1');
   });

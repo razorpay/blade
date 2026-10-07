@@ -8,7 +8,6 @@ import React from 'react';
 import { act, fireEvent } from '@testing-library/react';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart';
 import type { ChartSankeyProps, SankeyDataLink, SankeyDataNode } from '../types';
-import { getGroupId } from '../grouping';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -80,7 +79,6 @@ const links: SankeyDataLink[] = [
 ];
 
 const data = { nodes, links };
-const GROUP_ID = getGroupId(1);
 
 const renderSankey = (
   sankeyProps: Partial<ChartSankeyProps> = {},
@@ -324,19 +322,22 @@ describe('SankeyChart — grouping: expand and fold', () => {
     expect(onNodeClick).toHaveBeenCalledWith(nodes[3], 3);
   });
 
-  it('reports an aggregated link with the group id and its first constituent index', () => {
+  it('does not fire onLinkClick for a ribbon merged into a group, and hands a plain ribbon its own link', () => {
     const onLinkClick = jest.fn();
     const { container } = renderSankey({ onLinkClick });
     // Ribbons only — the group's chevron icon is a path too, tagged as a Blade svg-path.
     const paths = Array.from(container.querySelectorAll('svg path:not([data-blade-component])'));
     // Folded: Total→UPI, Total→Card, Total→Other, UPI→…, Card→…, Other→Captured, Other→Failed = 9
     expect(paths).toHaveLength(9);
+    // Total → Other is six links merged: no single link stands behind it and its target is an
+    // internal group id, so it reports nothing — `onExpandChange` covers the group.
     fireEvent.click(paths[2]);
-    expect(onLinkClick).toHaveBeenCalledWith({ source: 'total', target: GROUP_ID, value: 600 }, 2);
-    // A ribbon that was not merged still hands back the consumer's own link object.
+    expect(onLinkClick).not.toHaveBeenCalled();
+    // Total → UPI is untouched by grouping: the consumer's own link object, with its index.
     fireEvent.click(paths[0]);
-    expect(onLinkClick).toHaveBeenLastCalledWith(links[0], 0);
-    expect(onLinkClick.mock.calls[1][0]).toBe(links[0]);
+    expect(onLinkClick).toHaveBeenCalledTimes(1);
+    expect(onLinkClick).toHaveBeenCalledWith(links[0], 0);
+    expect(onLinkClick.mock.calls[0][0]).toBe(links[0]);
   });
 });
 
