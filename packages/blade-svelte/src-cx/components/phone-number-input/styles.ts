@@ -2,7 +2,8 @@ import type { IconSource } from '../../runes/icon/source';
 import type { PhoneParts } from '../../runes/phone/parts';
 import type { IconStyleProps } from '../icon';
 import { ChevronUpDownIcon } from '../../icons';
-import type { OptionListStyleProps } from '../option-list';
+import { resolveActionList } from '../action-list/styles';
+import type { OptionListClasses } from '../option-list/styles';
 import type { TextInputStyleProps } from '../text-input/styles';
 
 /**
@@ -25,11 +26,10 @@ export interface PhoneNumberInputClasses<L> {
   search: string;
   /** Bounds the list's height: the OptionList inside is virtualised. */
   list: string;
-  row: string;
-  rowName: string;
+  /** The dial code trailing each country row. */
   rowDialCode: string;
   empty: string;
-  /** Style props handed to the picker's OptionList. */
+  /** The picker's OptionList look: ActionList's rows. */
   optionList: L;
 }
 
@@ -61,7 +61,7 @@ const SELECTOR = {
 
 export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   PhoneNumberInputStyleProps,
-  OptionListStyleProps
+  OptionListClasses
 > = (props = {}) => {
   const selector = SELECTOR[props.size === 'large' ? 'large' : 'medium'];
   return {
@@ -77,11 +77,10 @@ export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   chevronIcon: { size: 'small' },
   search: 'mb-3',
   list: 'h-80',
-  row: 'flex w-full items-center gap-3',
-  rowName: 'min-w-0 flex-1 truncate text-start',
   // Blade's ActionListItemText trailing: `interactive.text.gray.muted`.
   rowDialCode: 'shrink-0 tabular-nums text-interactive-gray-muted',
   empty: 'py-8 text-center text-75 leading-50 text-surface-gray-subtle',
-  optionList: { variant: 'plain', indicator: 'none' },
+  // ActionList's rows (Menu's and Dropdown's look), as Blade's CountrySelector.
+  optionList: resolveActionList(),
   };
 };

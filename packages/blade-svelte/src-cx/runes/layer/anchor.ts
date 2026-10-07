@@ -15,8 +15,9 @@ export interface AnchorOptions {
 
 /**
  * Keeps a floating element (a tooltip, a popover) placed against its anchor:
- * measured now, and again on every scroll and resize. Web only. Returns the
- * stop; `update` is for a content change the caller knows about.
+ * measured now, and again on every scroll and resize, and whenever the
+ * floating element changes size (a list filtered, loaded or emptied). Web
+ * only. Returns the stop; `update` is for a change the caller knows about.
  */
 export function anchorTo(
   options: AnchorOptions,
@@ -56,11 +57,18 @@ export function anchorTo(
   update();
   addEventListener('scroll', update, true);
   addEventListener('resize', update);
+  const floating = options.floating();
+  const resized =
+    typeof ResizeObserver === 'undefined' || !floating ? undefined : new ResizeObserver(update);
+  if (floating) {
+    resized?.observe(floating);
+  }
   return {
     update,
     stop() {
       removeEventListener('scroll', update, true);
       removeEventListener('resize', update);
+      resized?.disconnect();
     },
   };
 }

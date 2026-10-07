@@ -8,7 +8,11 @@ import type { Responsive, ResponsiveProps } from '../runes/defaults/responsive';
 import type { CardGroupStyleProps } from './card-group/styles';
 import type { AlertStyleProps } from './alert/styles';
 import type { AmountStyleProps } from './amount/styles';
+import type { AnnouncementBannerStyleProps } from './announcement-banner/styles';
+import type { AvatarGroupStyleProps, AvatarStyleProps } from './avatar/styles';
+import type { DropdownStyleProps } from './dropdown/styles';
 import type { BadgeStyleProps } from './badge/styles';
+import type { BreadcrumbStyleProps } from './breadcrumb/styles';
 import type { BottomSheetStyleProps } from './bottom-sheet/styles';
 import type { DrawerStyleProps } from './drawer/styles';
 import type { ButtonGroupStyleProps } from './button-group/styles';
@@ -43,7 +47,12 @@ import { RADIO_GROUP_AXES } from './radio/styles';
 import type { RadioGroupStyleProps } from './radio/styles';
 import { SEGMENTED_CONTROL_AXES } from './segmented-control/styles';
 import type { SegmentedControlStyleProps } from './segmented-control/styles';
-import type { HeadingStyleProps, TextStyleProps } from './shared/typography';
+import type {
+  CodeStyleProps,
+  DisplayStyleProps,
+  HeadingStyleProps,
+  TextStyleProps,
+} from './shared/typography';
 import { SWITCH_AXES } from './switch/styles';
 import type { SwitchStyleProps } from './switch/styles';
 import { TABS_AXES } from './tabs/styles';
@@ -62,17 +71,24 @@ export interface ComponentStyleProps {
   CardGroup: CardGroupStyleProps;
   Alert: AlertStyleProps;
   Amount: AmountStyleProps;
+  AnnouncementBanner: AnnouncementBannerStyleProps;
+  Avatar: AvatarStyleProps;
+  AvatarGroup: AvatarGroupStyleProps;
   Badge: BadgeStyleProps;
   BottomSheet: BottomSheetStyleProps;
+  Breadcrumb: BreadcrumbStyleProps;
   Button: ButtonStyleProps;
   ButtonGroup: ButtonGroupStyleProps;
   Card: CardStyleProps;
   Carousel: CarouselStyleProps;
   Checkbox: CheckboxStyleProps;
+  Code: CodeStyleProps;
   ChipGroup: ChipGroupStyleProps;
   Countdown: CountdownStyleProps;
   Counter: CounterStyleProps;
   CounterInput: CounterInputStyleProps;
+  Display: DisplayStyleProps;
+  Dropdown: DropdownStyleProps;
   Divider: DividerStyleProps;
   Drawer: DrawerStyleProps;
   EmptyState: EmptyStateStyleProps;

@@ -162,9 +162,10 @@ const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 pr-0 ${INPUT_TE
 // In an InputGroup the member draws the same frame it has alone — the
 // group rounds the corners it holds — and overlaps its neighbours' by a
 // pixel, so a shared edge shows whichever member is on top. The states
-// are stacked for that: focus over error over hover over rest, as z-index
-// steps inside the group's isolated context. A raised state carries a
-// hover twin, since a plain `hover:` step would otherwise outrank it.
+// are stacked for that: focus over hover over rest, as z-index steps
+// inside the group's isolated context. A raised state carries a hover
+// twin, since a plain `hover:` step would otherwise outrank it. A grouped
+// member's error draws no border: the group's line under it says so.
 const FRAME = {
   solo: 'border-thin border-solid',
   grouped: 'border-thin border-solid',
@@ -218,10 +219,8 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
         error: 'z-1 !border-thick !border-interactive-negative-default',
         success: '',
       },
-      grouped: {
-        error: 'z-20 hover:z-20 !border-thick !border-interactive-negative-default',
-        success: '',
-      },
+      // In a group the error is the group's line, not a red frame.
+      grouped: { error: '', success: '' },
     },
     leading: {
       group: `flex shrink-0 flex-row items-center ${look.leading.group}`,

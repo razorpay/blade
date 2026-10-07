@@ -19,7 +19,6 @@
     isDeselectable?: boolean;
     isDisabled?: boolean;
     name?: string;
-    indicator?: 'none' | 'leading' | 'trailing';
     virtualize?: boolean;
     /** A heading first and a button between the first two items. */
     extras?: boolean;
@@ -42,7 +41,6 @@
     isDeselectable,
     isDisabled,
     name,
-    indicator,
     virtualize,
     extras = false,
     onChange,
@@ -84,7 +82,6 @@
       {isDisabled}
       isRequired={required}
       {name}
-      {indicator}
       {onChange}
       testID="banks"
       class="mt-2"
@@ -103,7 +100,6 @@
       {isDisabled}
       isRequired={required}
       {name}
-      {indicator}
       {onChange}
       testID="banks"
       class="mt-2"

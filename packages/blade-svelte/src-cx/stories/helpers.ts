@@ -121,6 +121,7 @@ export function toExample(raw: string, args: ArgsRecord): string {
     // The paths an app imports from, not the stories' own.
     .replace(/(['"])(?:\.\.\/)+index\1/g, "'@razorpay/blade-svelte/cx'")
     .replace(/(['"])(?:\.\.\/)+icons(?:\/glyphs)?\1/g, "'@razorpay/blade-svelte/icons'")
+    .replace(/(['"])(?:\.\.\/)+runes\1/g, "'@razorpay/blade-svelte/cx/runes'")
     .replace(/\n{3,}/g, '\n\n')
     .replace(/\n(?:[ \t]*\n)+(<\/script>)/g, '\n$1')
     .replace(/import \* as glyphs from '@razorpay\/blade-svelte\/icons';/, (line, _o: number, code: string) => {

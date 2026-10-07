@@ -43,6 +43,8 @@ export { default as LayerHost } from './layer/LayerHost.svelte';
 export { default as IconButton } from './icon-button/IconButton.svelte';
 export { default as Icon } from './icon/Icon.svelte';
 export { default as Link } from './link/Link.svelte';
+export { Dropdown, DropdownHeader, DropdownFooter, DROPDOWN_AXES } from './dropdown';
+export { ActionList, ActionListItem, ActionListSection, resolveActionList } from './action-list';
 export { default as Menu } from './menu/Menu.svelte';
 export { default as MenuItem } from './menu/MenuItem.svelte';
 export { default as NavStack } from './nav-stack/NavStack.svelte';
@@ -116,6 +118,13 @@ export type { SwitchStyleProps } from './switch';
 export type { CarouselClasses, CarouselStyleResolver } from './carousel/styles';
 export type { CarouselStyleProps } from './carousel';
 export type { MenuClasses, MenuShared, MenuStyleResolver } from './menu/styles';
+export type {
+  DropdownClasses,
+  DropdownShared,
+  DropdownStyleProps,
+  DropdownStyleResolver,
+} from './dropdown/styles';
+export type { PopupItemClasses, PopupItemIntent } from './shared/popup-list';
 export type { MenuStyleProps } from './menu';
 export type { PopoverClasses, PopoverStyleResolver } from './popover/styles';
 export type { PopoverStyleProps } from './popover';
@@ -179,7 +188,11 @@ export type {
   OptionRowClasses,
   OptionState,
 } from './option-list/styles';
-export { OPTION_LIST_AXES, resolveOptionItem } from './option-list';
+export {
+  OPTION_LIST_AXES,
+  resolveOptionItem,
+  resolveOptionList,
+} from './option-list';
 export type { OptionListStyleProps } from './option-list';
 export type {
   OTPInputClasses,
@@ -291,6 +304,33 @@ export type { IconStyleProps } from './icon';
 // The icons themselves are `@razorpay/blade-svelte/icons`.
 export type { Glyph } from '../runes/icon/source';
 // Style-only components: no behaviour model behind them.
+export { AnnouncementBanner, ANNOUNCEMENT_BANNER_AXES } from './announcement-banner';
+export type {
+  AnnouncementBannerStyleProps,
+  AnnouncementBannerBehaviourProps,
+  AnnouncementBannerClasses,
+  AnnouncementBannerComponent,
+} from './announcement-banner';
+export { Avatar, AvatarGroup, AVATAR_AXES, AVATAR_GROUP_AXES } from './avatar';
+export type {
+  AvatarStyleProps,
+  AvatarBehaviourProps,
+  AvatarClasses,
+  AvatarComponent,
+  AvatarGroupStyleProps,
+  AvatarGroupBehaviourProps,
+  AvatarGroupClasses,
+  AvatarGroupComponent,
+} from './avatar';
+export { Breadcrumb, BreadcrumbItem, BREADCRUMB_AXES } from './breadcrumb';
+export type {
+  BreadcrumbStyleProps,
+  BreadcrumbBehaviourProps,
+  BreadcrumbItemProps,
+  BreadcrumbClasses,
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+} from './breadcrumb';
 export { Badge, BADGE_AXES } from './badge';
 export type { BadgeStyleProps, BadgeBehaviourProps, BadgeComponent } from './badge';
 export { TrustBadge, TRUST_BADGE_AXES } from './trust-badge';
@@ -315,6 +355,10 @@ export { Progress, PROGRESS_AXES } from './progress';
 export type { ProgressStyleProps, ProgressBehaviourProps, ProgressComponent } from './progress';
 export { Skeleton } from './skeleton';
 export type { SkeletonBehaviourProps, SkeletonComponent } from './skeleton';
+export { Display, DISPLAY_AXES } from './display';
+export type { DisplayStyleProps, DisplayBehaviourProps, DisplayComponent } from './display';
+export { Code, CODE_AXES } from './code';
+export type { CodeStyleProps, CodeBehaviourProps, CodeClasses, CodeComponent } from './code';
 export { Heading, HEADING_AXES } from './heading';
 export type { HeadingStyleProps, HeadingBehaviourProps, HeadingComponent } from './heading';
 export { Text, TEXT_AXES } from './text';

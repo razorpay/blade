@@ -24,6 +24,8 @@
     isDisabled?: boolean;
     /** What typeahead matches. @default title, else the row's text */
     text?: string;
+    /** `negative`: in the action look, the row is red. @default 'none' */
+    intent?: 'none' | 'negative';
     /** Overrides the `${testID}-${index}` the list hands the control. */
     testID?: string;
     class?: string;
@@ -43,6 +45,7 @@
     description,
     leading,
     trailing,
+    intent = 'none',
     testID,
     class: className = '',
     children,
@@ -108,6 +111,7 @@
     onToggle={item.toggle}
     testID={controlTestID}
     attach={item.attach}
+    {intent}
   >
     {@render content()}
   </OptionRow>

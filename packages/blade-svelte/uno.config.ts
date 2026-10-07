@@ -1,4 +1,4 @@
-import { defineConfig } from 'unocss';
+import { defineConfig, symbols } from 'unocss';
 import type { Rule, Variant } from 'unocss';
 import {
   backdropBlur,
@@ -361,21 +361,31 @@ const typographyRules: Rule[] = [
   ],
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
   // it enables (src-cx/plugin). A glyph is text, so this resets everything
-  // text inherits that would bend it.
+  // text inherits that would bend it. The glyph itself is generated content
+  // (`::before` from `data-glyph`), never a text node: an icon acts like an
+  // image, not selectable, copyable or found by find-in-page.
   [
-    'icon-font',
-    {
-      'font-family': "'blade-icons'",
-      'font-style': 'normal',
-      'font-weight': 'normal',
-      'font-variant': 'normal',
-      'text-transform': 'none',
-      'letter-spacing': 'normal',
-      'line-height': '1',
-      speak: 'never',
-      '-webkit-font-smoothing': 'antialiased',
-      '-moz-osx-font-smoothing': 'grayscale',
-    },
+    /^icon-font$/,
+    () => [
+      {
+        'font-family': "'blade-icons'",
+        'font-style': 'normal',
+        'font-weight': 'normal',
+        'font-variant': 'normal',
+        'text-transform': 'none',
+        'letter-spacing': 'normal',
+        'line-height': '1',
+        speak: 'never',
+        '-webkit-font-smoothing': 'antialiased',
+        '-moz-osx-font-smoothing': 'grayscale',
+        '-webkit-user-select': 'none',
+        'user-select': 'none',
+      },
+      {
+        [symbols.selector]: (selector: string) => `${selector}::before`,
+        content: 'attr(data-glyph)',
+      },
+    ],
   ],
   // Icon without a font plugin: the SVG (its URL inline, as `mask-image`)
   // stencils a fill of the text colour. Both spellings: older WebViews and
@@ -903,6 +913,8 @@ const textRules: Rule[] = [
   ...rules('underline-offset', 'text-underline-offset', { 1: 1, 2: 2, 4: 4 }),
   ...keywords('text-overflow', { 'text-ellipsis': 'ellipsis' }),
   ...keywords('font-variant-numeric', { 'tabular-nums': 'tabular-nums' }),
+  // A list's markers: `list-none` for a trail or a menu built on `<ol>`/`<ul>`.
+  ...keywords('list-style', { 'list-none': 'none' }),
   ...keywords('vertical-align', {
     'align-middle': 'middle',
     'align-top': 'top',

@@ -124,7 +124,7 @@ test.describe('Modal', () => {
 
 test.describe('BottomSheet', () => {
   test('a drag down past half its height dismisses it with source drag', async ({ page }) => {
-    await gotoStory(page, 'components-modal--bottom-sheet');
+    await gotoStory(page, 'components-bottomsheet--basic');
     const sheet = await open(page, 'sheet');
     const height = (await sheet.boundingBox())?.height ?? 0;
     await drag(page, page.getByTestId('sheet-drag-zone'), 0, height);
@@ -133,7 +133,7 @@ test.describe('BottomSheet', () => {
   });
 
   test('a short drag settles back and dismisses nothing', async ({ page }) => {
-    await gotoStory(page, 'components-modal--bottom-sheet');
+    await gotoStory(page, 'components-bottomsheet--basic');
     const sheet = await open(page, 'sheet');
     const before = await sheet.boundingBox();
     await drag(page, page.getByTestId('sheet-drag-zone'), 0, 24);
@@ -145,7 +145,7 @@ test.describe('BottomSheet', () => {
   });
 
   test('not draggable: no handle and no drag zone', async ({ page }) => {
-    await gotoStory(page, 'components-modal--bottom-sheet', { isDraggable: false });
+    await gotoStory(page, 'components-bottomsheet--basic', { isDraggable: false });
     await open(page, 'sheet');
     await expect(page.getByTestId('sheet-drag-zone')).toHaveCount(0);
   });
@@ -153,7 +153,7 @@ test.describe('BottomSheet', () => {
 
 test.describe('Drawer', () => {
   test('docks to the right edge at full height and Escape closes it', async ({ page }) => {
-    await gotoStory(page, 'components-modal--drawer');
+    await gotoStory(page, 'components-drawer--basic');
     const drawer = await open(page, 'drawer');
     const frame = page.locator('#storybook-root > div').first();
     const [drawerBox, frameBox] = await Promise.all([drawer.boundingBox(), frame.boundingBox()]);
@@ -172,7 +172,7 @@ test.describe('Drawer', () => {
   });
 
   test('when draggable, a drag toward its edge dismisses it', async ({ page }) => {
-    await gotoStory(page, 'components-modal--drawer', { isDraggable: true });
+    await gotoStory(page, 'components-drawer--basic', { isDraggable: true });
     const drawer = await open(page, 'drawer');
     const width = (await drawer.boundingBox())?.width ?? 0;
     await drag(page, page.getByTestId('drawer-drag-zone'), width, 0);

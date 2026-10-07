@@ -12,6 +12,7 @@
   import VirtualOptionRow from './VirtualOptionRow.svelte';
   import {
     resolveOptionList,
+    type OptionListClasses,
     type OptionListShared,
     type OptionListStyleProps,
     type OptionListValidationState,
@@ -41,6 +42,12 @@
     /** Defaults to identity; pass it when options are rebuilt objects. */
     compare?: (a: T, b: T) => boolean;
     isDeselectable?: boolean;
+    /**
+     * The list's look as a whole class map (`OptionListClasses`), in place of
+     * the built-in look: how a library brings its own
+     * rows (ActionList does). The anatomy and behaviour stay OptionList's.
+     */
+    classes?: OptionListClasses;
     name?: string;
     isRequired?: boolean;
     isDisabled?: boolean;
@@ -72,6 +79,7 @@
     onChange,
     compare,
     isDeselectable = false,
+    classes: customClasses,
     name,
     isRequired = false,
     isDisabled = false,
@@ -92,7 +100,7 @@
   const lineText = $derived(
     pickHintText({ validationState, helpText, errorText })
   );
-  const classes = $derived(resolveOptionList(style.current));
+  const classes = $derived(customClasses ?? resolveOptionList(style.current));
   // svelte-ignore state_referenced_locally
   const list = createOptionList<T, OptionListShared>({
     id: uid,

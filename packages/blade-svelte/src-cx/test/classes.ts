@@ -39,5 +39,5 @@ export function glyphsIn(element: ParentNode | null | undefined, token?: IconSou
 export function expectGlyph(element: ParentNode | null | undefined, token?: IconSource): void {
   const [glyph] = glyphsIn(element, token);
   expect(glyph, `no ${token ? `"${asGlyph(token).name}" ` : ''}glyph`).toBeTruthy();
-  if (token) expect(glyph.textContent).toBe(asGlyph(token).code);
+  if (token) expect(glyph.dataset.glyph).toBe(asGlyph(token).code);
 }

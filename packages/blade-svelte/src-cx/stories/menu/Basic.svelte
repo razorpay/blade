@@ -38,7 +38,7 @@
     {/each}
     <!-- Anything between items is left alone: a divider before the destructive one. -->
     <hr class="my-1 border-t-thin border-solid border-surface-gray-muted" />
-    <MenuItem value={ACTIONS[3]} title={ACTIONS[3].label} icon={ACTIONS[3].icon} />
+    <MenuItem value={ACTIONS[3]} title={ACTIONS[3].label} icon={ACTIONS[3].icon} intent="negative" />
   </Menu>
   <Text size="small" color="muted">chose: <span data-testid="chose">{last}</span></Text>
   <LayerHost class="pointer-events-none absolute inset-0" />

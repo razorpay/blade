@@ -13,15 +13,9 @@
   import LabelAreaSource from './LabelArea.svelte?raw';
   import FormattedStory from './Formatted.svelte';
   import FormattedSource from './Formatted.svelte?raw';
-  import TextareaStory from './Textarea.svelte';
-  import TextareaSource from './Textarea.svelte?raw';
-  import PasswordInputStory from './PasswordInput.svelte';
-  import PasswordInputSource from './PasswordInput.svelte?raw';
-  import SearchInputStory from './SearchInput.svelte';
-  import SearchInputSource from './SearchInput.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/TextInput",
+    title: "Components/Input/TextInput",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {
@@ -29,7 +23,6 @@
     },
   });
 </script>
-
 <Story
   name="Basic"
   args={meta.stories.Basic.args}
@@ -71,39 +64,6 @@
 >
   {#snippet template(args)}
     <FormattedStory args={args as never} />
-  {/snippet}
-</Story>
-
-<Story
-  name="PasswordInput"
-  args={meta.stories.PasswordInput.args}
-  argTypes={storyArgTypes(meta, 'PasswordInput') as never}
-  parameters={{ docs: { description: { story: meta.stories.PasswordInput.description }, source: exampleSource(PasswordInputSource) }, controls: { disable: hasNoControls(meta, 'PasswordInput') } }}
->
-  {#snippet template(args)}
-    <PasswordInputStory args={args as never} />
-  {/snippet}
-</Story>
-
-<Story
-  name="SearchInput"
-  args={meta.stories.SearchInput.args}
-  argTypes={storyArgTypes(meta, 'SearchInput') as never}
-  parameters={{ docs: { description: { story: meta.stories.SearchInput.description }, source: exampleSource(SearchInputSource) }, controls: { disable: hasNoControls(meta, 'SearchInput') } }}
->
-  {#snippet template(args)}
-    <SearchInputStory args={args as never} />
-  {/snippet}
-</Story>
-
-<Story
-  name="TextArea"
-  args={meta.stories.Textarea.args}
-  argTypes={storyArgTypes(meta, 'Textarea') as never}
-  parameters={{ docs: { description: { story: meta.stories.Textarea.description }, source: exampleSource(TextareaSource) }, controls: { disable: hasNoControls(meta, 'Textarea') } }}
->
-  {#snippet template(args)}
-    <TextareaStory args={args as never} />
   {/snippet}
 </Story>
 

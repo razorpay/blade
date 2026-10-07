@@ -11,7 +11,7 @@
   import InFormSource from './InForm.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/Radio",
+    title: "Components/Radio & RadioGroup",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {

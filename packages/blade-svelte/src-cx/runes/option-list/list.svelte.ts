@@ -1,6 +1,6 @@
 import { createChoiceList } from '../base/choice-list.svelte';
 import type { ChoiceEntry } from '../base/choice-list.svelte';
-import { sameSelection } from '../base/selection';
+import { sameItem, sameSelection } from '../base/selection';
 import { focusableWithin } from '../dom/focus';
 import { createFieldShell } from '../form/field.svelte';
 import type { ChoiceValidationState, FieldHint, HintContent } from '../form/hint';
@@ -70,7 +70,7 @@ export interface OptionList<T, Shared> extends OptionListContext<T, Shared> {
 export function createOptionList<T, Shared>(
   options: OptionListOptions<T, Shared>,
 ): OptionList<T, Shared> {
-  const sameOption = (a: T, b: T): boolean => (options.compare ? options.compare(a, b) : a === b);
+  const sameOption = (a: T, b: T): boolean => (options.compare ?? sameItem)(a, b);
   // The field stores one item or an array of them.
   const sameValue = sameSelection<T>(sameOption);
 

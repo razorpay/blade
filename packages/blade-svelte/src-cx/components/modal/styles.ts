@@ -16,9 +16,9 @@ export interface ModalClasses extends SurfaceClasses {
   header: string;
   /** The row: the leading item, the title block, the trailing item; then the close button. */
   headerRow: string;
-  /** Before the title block: an asset or avatar, 8px from the title. */
+  /** Before the title block: an asset or avatar in Figma's 32px slot, centred on the title block, 8px from it. */
   leading: string;
-  /** A leading glyph's box: the title's 28px first line. */
+  /** A leading glyph (`icon`): on the title's 28px first line, 8px from it. */
   leadingIcon: string;
   /** The title and what follows it (`titleSuffix`), 8px apart. */
   titleRow: string;
@@ -187,13 +187,17 @@ interface ModalLayout {
   /** Where the close buttons sit in the chrome, over the modal's. */
   close?: string;
   floatingClose?: string;
+  /** The room the header row leaves for the close button, over the modal's. */
+  closeClearance?: string;
 }
 
-// The close button sits in the chrome, level with the title's 28px first
-// line: the header's 16px (20px from `m`) plus 4px, from the top and the
-// end. With no header it floats in a 28px circle, 16px in, 4px above the
-// edge.
-const CLOSE = 'absolute top-5 right-4 m:top-6 m:right-5';
+// Blade DSL's _Modal Header (Figma) draws the close as a 20px icon in a
+// 28px box, last in the header row: so it sits level with the title's 28px
+// first line, 24px from the top (the header's 20px plus 4px) and 24px from
+// the end (20px plus 4px). cx keeps it in the chrome — it also floats with
+// no header — at that spot. With no header it floats in a 28px circle,
+// 16px in, 4px above the edge.
+const CLOSE = 'absolute top-6 right-6';
 const FLOATING_CLOSE = 'absolute -top-1 right-4';
 
 /**
@@ -209,20 +213,19 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     panel: `${PANEL} ${PACE[pace]} ${layout.panel} ${SIZE[size]}`,
     content: CONTENT,
     chrome: CHROME,
-    // Blade DSL's _Modal Header (Figma): 16px in (20px above and beside it
-    // from 768px), 16px below, a hairline under it; the close button
-    // centred on the title's 28px first line.
+    // Blade DSL's _Modal Header (Figma): 20px above and beside it, 16px
+    // below, at every width; a hairline under it.
     header:
-      layout.header ?? 'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:px-5 m:pt-5',
+      layout.header ?? 'shrink-0 border-b-thin border-solid border-surface-gray-muted px-5 pt-5 pb-4',
     headerRow: 'relative flex items-start select-none',
-    leading: 'me-2 flex shrink-0 items-start',
-    leadingIcon: 'flex h-7 items-center',
+    leading: 'me-2 flex w-8 h-8 shrink-0 items-center justify-center self-center',
+    leadingIcon: 'me-2 flex h-7 shrink-0 items-center',
     titleRow: 'flex min-w-0 items-start gap-2',
     titleSuffix: 'flex h-7 shrink-0 items-center',
     trailing: 'ms-4 flex h-7 shrink-0 items-center',
     titleBlock: 'me-auto flex min-w-0 flex-auto flex-col',
-    // The 20px button and 16px beside it.
-    closeClearance: 'pr-9',
+    // Figma: 16px, then the close's 28px box.
+    closeClearance: layout.closeClearance ?? 'pr-11',
     // Heading/SmallSemibold (18/24, the heading face) on a 28px line.
     title:
       layout.title ??
@@ -273,6 +276,8 @@ const SHEET: ModalLayout = {
     'm-0 pt-0.5 font-text text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
   close: 'absolute top-9 right-4',
   floatingClose: 'absolute top-4 right-4',
+  // The 20px button 16px from the end, and 16px beside it.
+  closeClearance: 'pr-9',
 };
 
 // Blade DSL's _Drawer Header and _Drawer Footer (Figma): the header 20px
@@ -283,6 +288,7 @@ const DRAWER_SECTIONS = {
   header: 'shrink-0 p-5',
   footer: 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-5',
   close: 'absolute top-6 right-5',
+  closeClearance: 'pr-9',
 };
 
 export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalStyleProps = {}) => {

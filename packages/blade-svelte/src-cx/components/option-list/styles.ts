@@ -1,7 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { OptionListValidationState } from '../../runes/option-list/list.svelte';
 import type { OptionState } from '../../runes/option-list/context';
-import type { AxisValue } from '../../axes';
 
 export type { OptionListValidationState, OptionState };
 
@@ -22,8 +21,8 @@ export interface OptionRowClasses {
   rowActive: string;
   rowDisabled: string;
   /**
-   * The native input, which is also the indicator: shown at an edge or
-   * hidden visually, never removed.
+   * The native input: visually hidden, never removed — semantics, keys and
+   * the form stay native; the row's picked state shows the pick.
    */
   control: Record<'radio' | 'checkbox', string>;
   /** Applied to the control while the list is invalid. */
@@ -74,115 +73,52 @@ export interface OptionItemClasses {
   trailing: string;
 }
 
-/** The blade taxonomy as data. */
-export const OPTION_LIST_AXES = {
-  variant: ['plain', 'card'],
-  indicator: ['none', 'leading', 'trailing'],
-} as const;
+/** No style axes: one look of its own; any other comes in as `classes`. */
+export const OPTION_LIST_AXES = {} as const;
 
-type Axis<K extends keyof typeof OPTION_LIST_AXES> = AxisValue<typeof OPTION_LIST_AXES, K>;
-
-/** Derived from OPTION_LIST_AXES: add a value there, never here. */
-export interface OptionListStyleProps {
-  /** `plain`: divided rows in one box. `card`: each row its own bordered card. */
-  variant?: Axis<'variant'>;
-  /**
-   * Where the native radio or checkbox shows. `none` hides it visually —
-   * the picked row carries the look — but it stays for keys and semantics.
-   */
-  indicator?: Axis<'indicator'>;
-}
+/** OptionList has no style props: its look is `resolveOptionList()`, or `classes`. */
+export type OptionListStyleProps = Record<never, never>;
 
 // Semantic tokens only — merchant theming reaches every class through the
-// CSS-var seam. One row look per variant, keyed on the pick state: the
-// background lives in the state, never in `row` — `cx` resolves no
-// conflicts, so a picked tint next to a base fill would lose.
-const VARIANT: Record<
-  Axis<'variant'>,
-  {
-    options: string;
-    virtualViewport: string;
-    virtualOptions: string;
-    row: string;
-    picked: string;
-    unpicked: string;
-    /** Blade's 4px focus ring, per variant. */
-    active: string;
-  }
-> = {
-  plain: {
-    options:
-      'flex flex-col [&>*+*]:border-t-thin [&>*+*]:border-solid [&>*+*]:border-surface-gray-muted overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted',
-    virtualViewport: 'rounded-small border-thin border-solid border-surface-gray-muted',
+// CSS-var seam. The look is keyed on the pick state: the background lives
+// in the state, never in `row` — `cx` resolves no conflicts, so a picked
+// tint next to a base fill would lose.
+//
+// OptionList's own look: divided rows in one box. Blade's ActionList item
+// colours (blade-core ActionList/actionList.module.css):
+// `interactive.background.gray.default` on hover, `…faded-highlighted` when
+// selected (hovered too), no pressed fill. The native control is always
+// visually hidden: the row's picked state is the indicator.
+export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = () => ({
+  root: 'flex w-full flex-col',
+  disabled: 'opacity-600',
+  options:
+    'flex flex-col [&>*+*]:border-t-thin [&>*+*]:border-solid [&>*+*]:border-surface-gray-muted overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted',
+  virtual: {
+    root: 'min-h-0',
+    viewport: 'min-h-0 flex-1 rounded-small border-thin border-solid border-surface-gray-muted',
     // Every row carries its own top line — not `[&>*+*]:`, which skips the
     // first child: a mounted row's height would then depend on its place
     // in the slice, and each shift of the slice would re-measure it. The
     // content pulls up a pixel so the first row's line hides under the box's.
-    virtualOptions:
-      'flex flex-col -mt-px *:border-t-thin *:border-solid *:border-surface-gray-muted',
-    // The box clips to its radius: the end rows round with it (its radius
-    // less the border), or the inset active ring is cut at the corners.
-    row:
-      'first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
-    // Blade's ActionList item (blade-core ActionList/actionList.module.css):
-    // `interactive.background.gray.default` on hover, `…faded-highlighted`
-    // when selected (hovered too), no pressed fill.
+    options: 'flex flex-col -mt-px *:border-t-thin *:border-solid *:border-surface-gray-muted',
+  },
+  // `relative`: the hidden control is absolutely positioned, and it must sit
+  // in its own row — else focusing it scrolls whatever ancestor it lands in.
+  // The box clips to its radius: the end rows round with it (its radius
+  // less the border), or the inset active ring is cut at the corners.
+  row: 'relative flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
+  rowState: {
     picked: 'bg-interactive-gray-faded-highlighted font-medium text-interactive-gray-normal',
-    unpicked:
-      'bg-surface-gray-intense text-interactive-gray-normal hover:bg-interactive-gray-default',
-    // The box clips the rows, so the ring sits inside.
-    active: 'shadow-focus-inset',
+    unpicked: 'bg-surface-gray-intense text-interactive-gray-normal hover:bg-interactive-gray-default',
   },
-  card: {
-    options: 'flex flex-col gap-2',
-    virtualViewport: '',
-    virtualOptions: 'flex flex-col gap-2',
-    row: 'rounded-small border-thin border-solid',
-    // Blade's Card (blade-core Card/card.module.css): the surface's
-    // `interactive.border.gray.disabled` rim at rest, a
-    // `surface.border.primary.normal` border when selected, no hover or
-    // pressed colour.
-    picked:
-      'border-surface-primary-normal bg-surface-gray-intense font-medium text-interactive-gray-normal',
-    unpicked:
-      'border-interactive-gray-disabled bg-surface-gray-intense text-interactive-gray-normal',
-    active: 'shadow-focus',
-  },
-};
-
-// The native control takes Blade's checked fill
-// (`interactive.background.primary.default`) through `accent-color`.
-const INDICATOR: Record<Axis<'indicator'>, string> = {
-  none: 'sr-only',
-  leading: 'order-first w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
-  trailing: 'order-last w-4 h-4 shrink-0 cursor-pointer accent-interactive-primary-default',
-};
-
-export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = (
-  props: OptionListStyleProps = {},
-) => {
-  const { variant = 'plain', indicator = 'none' } = props;
-  const look = VARIANT[variant];
-  return {
-    root: 'flex w-full flex-col',
-    disabled: 'opacity-600',
-    options: look.options,
-    virtual: {
-      root: 'min-h-0',
-      viewport: `min-h-0 flex-1 ${look.virtualViewport}`,
-      options: look.virtualOptions,
-    },
-    // `relative`: the hidden control is absolutely positioned, and it must sit
-    // in its own row — else focusing it scrolls whatever ancestor it lands in.
-    row: `relative flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors ${look.row}`,
-    rowState: { picked: look.picked, unpicked: look.unpicked },
-    rowActive: look.active,
-    rowDisabled: 'pointer-events-none opacity-600',
-    control: { radio: INDICATOR[indicator], checkbox: INDICATOR[indicator] },
-    invalid: 'outline-solid outline-thin outline-interactive-negative-default',
-    content: 'min-w-0 flex-1',
-  };
-};
+  // The box clips the rows, so the ring sits inside.
+  rowActive: 'shadow-focus-inset',
+  rowDisabled: 'pointer-events-none opacity-600',
+  control: { radio: 'sr-only', checkbox: 'sr-only' },
+  invalid: 'outline-solid outline-thin outline-interactive-negative-default',
+  content: 'min-w-0 flex-1',
+});
 
 /** One look: the row decides the colours, the content only lays out. */
 export function resolveOptionItem(): OptionItemClasses {

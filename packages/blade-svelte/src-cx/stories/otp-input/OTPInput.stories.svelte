@@ -15,7 +15,7 @@
   import LengthsSource from './Lengths.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/OTPInput",
+    title: "Components/Input/OTPInput",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {

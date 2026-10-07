@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { Attachment } from 'svelte/attachments';
   import { cx } from '../../cx';
   import { createFloating } from '../../runes/layer/floating.svelte';
   import type { Placement } from '../../runes/layer/placement';
@@ -11,7 +12,8 @@
     anchor: HTMLElement;
     placement: Placement;
     classes: PopoverClasses;
-    role: 'dialog' | 'menu';
+    /** None for a panel whose list sits inside it (a dropdown's listbox). */
+    role?: 'dialog' | 'menu';
     accessibilityLabel?: string;
     /** The id of the element that names the panel (its title). */
     labelledBy?: string;
@@ -24,6 +26,11 @@
     /** For a hover-opened panel: the pointer over the panel keeps it open. */
     onPointerEnter?: () => void;
     onPointerLeave?: () => void;
+    /** At least as wide as the anchor (a select field's list). @default false */
+    matchesAnchorWidth?: boolean;
+    /** A menu panel is its own list: it holds focus and names the active row. */
+    focusOwner?: Attachment<HTMLElement>;
+    activeDescendant?: string;
     children: Snippet;
   }
 
@@ -41,6 +48,9 @@
     onKeyDown,
     onPointerEnter,
     onPointerLeave,
+    focusOwner,
+    activeDescendant,
+    matchesAnchorWidth = false,
     children,
   }: Props = $props();
 
@@ -67,16 +77,19 @@
   tabindex="-1"
   aria-label={labelledBy ? undefined : accessibilityLabel}
   aria-labelledby={labelledBy}
+  aria-activedescendant={activeDescendant}
   style:left="{placed?.x ?? 0}px"
   style:top="{placed?.y ?? 0}px"
   style:visibility={placed ? undefined : 'hidden'}
   style:--popover-arrow="{placed?.arrow ?? 0}px"
+  style:min-width={matchesAnchorWidth ? `${anchor.offsetWidth}px` : undefined}
   data-state="closed"
   data-side={placed?.side}
   data-testid={testID}
   transition:floating.presence.transition
   {@attach floating.presence.mount}
   {@attach floating.attach}
+  {@attach focusOwner}
   onkeydown={onKeyDown}
   onpointerenter={onPointerEnter}
   onpointerleave={onPointerLeave}

@@ -11,7 +11,7 @@
   import MatrixSource from './Matrix.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/Icon",
+    title: "Components/Icons",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {

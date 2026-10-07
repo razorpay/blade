@@ -19,8 +19,6 @@
     label="Bank"
     name="bank"
     isRequired
-    variant="card"
-    indicator="leading"
   >
     {#each BANKS as bank (bank.code)}
       <OptionItem

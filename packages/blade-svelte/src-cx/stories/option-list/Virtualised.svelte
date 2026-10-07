@@ -19,7 +19,6 @@
     options={banks}
     optionKey={(bank) => bank.code}
     bind:value
-    indicator="trailing"
   >
     {#snippet children(bank)}
       <OptionItem value={bank} title={bank.name} description={bank.note} />

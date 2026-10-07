@@ -25,7 +25,7 @@ const caret = (input: Locator): Promise<{ value: string; at: number | null }> =>
 
 test.describe('OTPInput', () => {
   test('typing moves focus cell to cell and fills the value', async ({ page }) => {
-    await gotoStory(page, 'components-otpinput--basic', { otpLength: 4 });
+    await gotoStory(page, 'components-input-otpinput--basic', { otpLength: 4 });
     await cell(page, 0).click();
     for (const [index, digit] of ['1', '2', '3', '4'].entries()) {
       // A user types one digit at a time; each lands in its own cell.
@@ -40,7 +40,7 @@ test.describe('OTPInput', () => {
   });
 
   test('a pasted code fills every cell', async ({ page }) => {
-    await gotoStory(page, 'components-otpinput--basic', { otpLength: 4 });
+    await gotoStory(page, 'components-input-otpinput--basic', { otpLength: 4 });
     await cell(page, 0).click();
     await paste(cell(page, 0), '9876');
     await expect(page.getByTestId('value')).toHaveText('"9876"');
@@ -48,7 +48,7 @@ test.describe('OTPInput', () => {
   });
 
   test('Backspace clears a cell and steps back', async ({ page }) => {
-    await gotoStory(page, 'components-otpinput--basic', { otpLength: 4 });
+    await gotoStory(page, 'components-input-otpinput--basic', { otpLength: 4 });
     await cell(page, 0).click();
     await page.keyboard.type('123');
     await expect(cell(page, 3)).toBeFocused();
@@ -61,7 +61,7 @@ test.describe('OTPInput', () => {
 
 test.describe('TextInput with format', () => {
   test('groups a card number as it is typed and keeps the parsed digits', async ({ page }) => {
-    await gotoStory(page, 'components-textinput--formatted');
+    await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('card-number');
     await input.click();
     await page.keyboard.type('4111111111111111');
@@ -70,7 +70,7 @@ test.describe('TextInput with format', () => {
   });
 
   test('typing in the middle keeps the caret after what was typed', async ({ page }) => {
-    await gotoStory(page, 'components-textinput--formatted');
+    await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('card-number');
     await input.click();
     await page.keyboard.type('41112222');
@@ -82,7 +82,7 @@ test.describe('TextInput with format', () => {
   });
 
   test('an expiry pads the month and adds its separator', async ({ page }) => {
-    await gotoStory(page, 'components-textinput--formatted');
+    await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('expiry');
     await input.click();
     await page.keyboard.type('5');
@@ -97,7 +97,7 @@ test.describe('PhoneNumberInput', () => {
   test('the picker is a sheet on a phone and a modal from 768px; picking a country keeps the number', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-phonenumberinput--basic', { withSearch: true });
+    await gotoStory(page, 'components-input-phonenumberinput--basic', { withSearch: true });
     const number = page.getByTestId('phone');
     await number.click();
     await page.keyboard.type('123456789');

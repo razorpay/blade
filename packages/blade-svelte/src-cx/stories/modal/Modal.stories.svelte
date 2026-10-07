@@ -5,10 +5,6 @@
   import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
   import BasicStory from './Basic.svelte';
   import BasicSource from './Basic.svelte?raw';
-  import BottomSheetStory from './BottomSheet.svelte';
-  import BottomSheetSource from './BottomSheet.svelte?raw';
-  import DrawerStory from './Drawer.svelte';
-  import DrawerSource from './Drawer.svelte?raw';
   import StackedStory from './Stacked.svelte';
   import StackedSource from './Stacked.svelte?raw';
   import ImperativeStory from './Imperative.svelte';
@@ -23,7 +19,6 @@
     },
   });
 </script>
-
 <Story
   name="Basic"
   args={meta.stories.Basic.args}
@@ -32,28 +27,6 @@
 >
   {#snippet template(args)}
     <BasicStory args={args as never} />
-  {/snippet}
-</Story>
-
-<Story
-  name="Bottom sheet"
-  args={meta.stories.BottomSheet.args}
-  argTypes={storyArgTypes(meta, 'BottomSheet') as never}
-  parameters={{ docs: { description: { story: meta.stories.BottomSheet.description }, source: exampleSource(BottomSheetSource) }, controls: { disable: hasNoControls(meta, 'BottomSheet') } }}
->
-  {#snippet template(args)}
-    <BottomSheetStory args={args as never} />
-  {/snippet}
-</Story>
-
-<Story
-  name="Drawer"
-  args={meta.stories.Drawer.args}
-  argTypes={storyArgTypes(meta, 'Drawer') as never}
-  parameters={{ docs: { description: { story: meta.stories.Drawer.description }, source: exampleSource(DrawerSource) }, controls: { disable: hasNoControls(meta, 'Drawer') } }}
->
-  {#snippet template(args)}
-    <DrawerStory args={args as never} />
   {/snippet}
 </Story>
 

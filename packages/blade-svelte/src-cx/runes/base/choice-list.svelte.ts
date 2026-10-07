@@ -3,6 +3,7 @@ import type { KeyModifiers } from './navigable-list.svelte';
 import { nativeOptionState } from './option-list';
 import { createOrderedEntries } from './ordered-entries.svelte';
 import type { EntryHost, OrderedEntry } from './ordered-entries.svelte';
+import { sameItem } from './selection';
 import type { Compare } from './selection';
 
 /**
@@ -90,7 +91,53 @@ export interface ChoiceList<T> extends EntryHost<ChoiceEntry<T>> {
   handleMoveKey(key: string, mods?: KeyModifiers): boolean;
 }
 
-const same = <T>(a: T, b: T): boolean => a === b;
+const same = sameItem;
+
+export interface HeldSelectionOptions<T> {
+  /** The value is an array of picks instead of one pick or null. */
+  multiple?: () => boolean;
+  compare?: Compare<T>;
+  /** Single choice: picking the picked choice clears it. */
+  deselectable?: () => boolean;
+}
+
+export interface HeldSelection<T> {
+  /** The field's value as a list of picks. Tracked. */
+  picks(): T[];
+  isSelected(item: T): boolean;
+  /** The value one pick of `item` makes: toggled in or out, replaced, or cleared. */
+  next(item: T): unknown;
+}
+
+/**
+ * The rules of a held pick over a field's value — one pick or null, or an
+ * array of them: what a choice list and a dropdown both keep.
+ */
+export function heldSelection<T>(
+  field: Pick<ChoiceField, 'record'>,
+  options: HeldSelectionOptions<T> = {},
+): HeldSelection<T> {
+  const compare = options.compare ?? same;
+  function picks(): T[] {
+    const value = field.record.value;
+    if (Array.isArray(value)) {
+      return value as T[];
+    }
+    return value === null || value === undefined ? [] : [value as T];
+  }
+  const isSelected = (item: T): boolean => picks().some((pick) => compare(pick, item));
+  function next(item: T): unknown {
+    const picked = isSelected(item);
+    if (options.multiple?.()) {
+      return picked ? picks().filter((pick) => !compare(pick, item)) : [...picks(), item];
+    }
+    if (picked) {
+      return options.deselectable?.() ? null : field.record.value;
+    }
+    return item;
+  }
+  return { picks, isSelected, next };
+}
 
 /**
  * The headless option list: choices over a form field — one pick or many
@@ -104,8 +151,7 @@ export function createChoiceList<T>(
   field: ChoiceField,
   options: ChoiceListOptions<T> = {},
 ): ChoiceList<T> {
-  const compare = options.compare ?? same;
-  const isMultiple = (): boolean => Boolean(options.multiple?.());
+  const selection = heldSelection<T>(field, options);
 
   const entries = createOrderedEntries<ChoiceEntry<T>>();
   const ordered = $derived(entries.ordered);
@@ -113,15 +159,7 @@ export function createChoiceList<T>(
 
   const items = (): readonly T[] => options.items?.() ?? registered;
 
-  function picks(): T[] {
-    const value = field.record.value;
-    if (Array.isArray(value)) {
-      return value as T[];
-    }
-    return value === null || value === undefined ? [] : [value as T];
-  }
-
-  const isSelected = (item: T): boolean => picks().some((pick) => compare(pick, item));
+  const { isSelected } = selection;
   const isDisabled = (item: T, index: number): boolean => {
     if (options.disabled?.()) {
       return true;
@@ -144,20 +182,9 @@ export function createChoiceList<T>(
     typeahead: options.items ? options.typeahead : (item) => entryText(items().indexOf(item)),
   });
 
-  function next(item: T): unknown {
-    const picked = isSelected(item);
-    if (isMultiple()) {
-      return picked ? picks().filter((pick) => !compare(pick, item)) : [...picks(), item];
-    }
-    if (picked) {
-      return options.deselectable?.() ? null : field.record.value;
-    }
-    return item;
-  }
-
   function toggle(item: T, index: number, onValue?: (value: unknown) => void): boolean {
     if (!isDisabled(item, index)) {
-      field.updateValue(next(item), onValue);
+      field.updateValue(selection.next(item), onValue);
       field.touch();
     }
     return isSelected(item);

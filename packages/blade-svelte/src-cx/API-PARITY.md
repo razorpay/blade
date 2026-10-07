@@ -103,14 +103,14 @@ replaced by a rule.
 | React | src-cx | Status |
 | --- | --- | --- |
 | Accordion | `card-group` (renamed `CardGroup`) | common, **done**; cx names it CardGroup (see below) |
-| ActionList | — (`option-list` is a different thing) | **deferred** to Dropdown/Menu; see below |
+| ActionList | `action-list` (ActionList, ActionListItem, ActionListSection) | common, **done**: Dropdown's rows, and a standalone pick list over OptionList (see ActionList) |
 | Alert | `alert` | common, **done** |
 | Amount | `amount` | common, **done** |
 | AnimateInteractions | — | n/a (motion) |
-| AnnouncementBanner | — | react-only |
+| AnnouncementBanner | `announcement-banner` | common, **done**: Blade DSL's Announcement Banner (Figma) (see AnnouncementBanner) |
 | AppBar | — | react-only |
 | AutoComplete | — | react-only |
-| Avatar | — | react-only |
+| Avatar, AvatarGroup | `avatar` | common, **done**: Blade DSL's Avatar and Avatar Group (Figma) (see Avatar) |
 | Badge | `badge` | common, **done** |
 | BaseAnimatedValue, BaseHeaderFooter, BaseMenu, BaseMotion | — | n/a (internal) |
 | BladeProvider | `blade-provider` | **different**: component defaults, not theme tokens (rule 11) |
@@ -119,7 +119,7 @@ replaced by a rule.
 | BottomNav | — | react-only |
 | BottomSheet | `bottom-sheet` | common, **done** |
 | Box | — | n/a (rule 1) |
-| Breadcrumb | — | react-only |
+| Breadcrumb | `breadcrumb` | common, **done**: Blade DSL's Breadcrumb (Figma), subtle and intense (see Breadcrumb) |
 | Button / IconButton | `button` / `icon-button` | common, **done** |
 | ButtonGroup | `button-group` | common, **done** (new) |
 | Card | `card` | common, **done** |
@@ -138,7 +138,7 @@ replaced by a rule.
 | Divider | `divider` | common, **done** |
 | DotLoader | — | react-only (cx Button draws its own loader) |
 | Drawer | `drawer` | common, **done** (Modal's `drawer` variant; `left-drawer` docks it left) |
-| Dropdown | `menu` | common (partial): look **done**, API gaps listed below |
+| Dropdown | `dropdown` | common, **done** (partial): select field or any trigger, single/multiple, header/search/footer, states (see Dropdown and Menu) |
 | Elevate, Fade, Morph, Move, Scale, Slide, Stagger | — | n/a (motion) |
 | EmptyState | `empty-state` | common, **done** |
 | FileUpload | — | react-only |
@@ -163,7 +163,7 @@ replaced by a rule.
 | List | — | react-only |
 | ListView | — | react-only |
 | LiveAnnouncer | — | n/a |
-| Menu | `menu` | common |
+| Menu | `menu` | common: Dropdown's action form, on the same core (see Dropdown and Menu) |
 | Modal | `modal` | common, **done** |
 | OverlayContextReset | — | n/a |
 | Pagination | — | react-only |
@@ -195,14 +195,14 @@ replaced by a rule.
 | TreeView | — | react-only |
 | TrustBadge | `trust-badge` | common |
 | Typography (Text, Heading) | `text`, `heading` | common; **known gap:** no letter-spacing (see Chip) |
-| Typography (Display, Code) | — | react-only |
+| Typography (Display, Code) | `display`, `code` | common, **done**: Figma's Display and Code styles (see Typography) |
 | VisuallyHidden | — | n/a (`sr-only` class) |
 | — | `async` | cx-only |
 | — | `countdown` | cx-only |
 | — | `image` | cx-only |
 | — | `layer` (LayerHost, Surface) | cx-only (overlay infrastructure) |
 | — | `nav-stack` | cx-only |
-| — | `option-list` (OptionList, OptionItem, VirtualOptionList) | cx-only (pending Dropdown/Menu; see ActionList) |
+| — | `option-list` (OptionList, OptionItem, VirtualOptionList) | cx-only: an always-visible choice list, not a popup |
 | — | `screen` | cx-only |
 | — | `virtual` | cx-only |
 | — | `shared` | n/a (internal) |
@@ -628,6 +628,69 @@ passes; the DOM measurements at phone width match React Storybook.
 - `size` **removed**: Blade DSL's Bottom Sheet (Figma) has no sizes; the sheet is the 400px column from `m`.
 - **Added** `leading`, `titleSuffix`, `trailing` in the header, per Figma; the header sits 12px under the handle strip.
 - **Missing**: Figma's back button, input field and contentType variants.
+
+---
+
+## AnnouncementBanner
+
+React: `AnnouncementBanner`. cx: `AnnouncementBanner` (`components/announcement-banner/`), from Blade DSL's Announcement Banner (Figma).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `children` (ReactNode) | `children` snippet | rule 2 |
+| `alignment` (`center`, `left`) | same | same |
+| `icon` | `icon` (an IconSource) | Icons rule |
+| `accessibilityLabel` (default "Announcement") | same | same |
+| `testID` | same | same |
+| dark treatment under `colorScheme="dark"` | — | **missing**: cx has no dark theme |
+
+### Figma alignment (Blade DSL)
+
+- `surface.background.gray.subtle`, 8px above and below, 16px at the sides; the 16px icon 4px before the message.
+- The message is Body/SmallMedium, 12/18 with no letter-spacing (React uses Text small, 12/17 at −1.3%), in `surface.text.gray.subtle`, on one line with an ellipsis.
+
+---
+
+## Avatar
+
+React: `Avatar`, `AvatarGroup`. cx: the same (`components/avatar/`), from Blade DSL's Avatar and Avatar Group (Figma).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `name`, `src`, `alt`, `srcSet`, `crossOrigin`, `referrerPolicy` | same | same; a broken image falls back to the initials or the glyph (**added**) |
+| `icon` (default `UserIcon`) | `icon` (an IconSource) | Icons rule |
+| `size`, `variant`, `color`, `isSelected` | same | same values and defaults |
+| `onClick`, `href`, `target`, `rel` | same | a button or a link |
+| `topAddon` (Indicator only), `bottomAddon` (IconComponent) | `topAddon`, `bottomAddon` snippets | rule 2: each in a box sized and placed per size; a trusted badge is an image, not a tintable glyph |
+| `AvatarGroup` `size`, `density`, `maxCount` | same | same; avatars register with the group, so `maxCount` needs no child counting |
+| — | `AvatarGroup` `accessibilityLabel` | **added**: names the `role="group"` |
+| `BladeCommonEvents`, styled props, `data-analytics-*` | `class`, `testID` | rule 1 / **missing** (analytics pass) |
+
+### Figma alignment (Blade DSL)
+
+- **Rim:** a 1px `surface.border.gray.subtle` rim on every avatar (React draws none); selected, 2px `surface.border.primary.normal`.
+- **Tint:** `interactive.background.{color}.faded` over a white underlay, `…fadedHighlighted` on hover; initials and glyph in `interactive.text.{color}.normal`.
+- **Initials:** Body Semibold 10/13 (xsmall, small), 12/17 (medium), 14/20 (large); Heading 20/26 at xlarge, where React uses 18/24.
+- **Addons:** the indicator 6/6/8/8/10px at Figma's top-right offsets; the trusted badge 8/8/12/16/20px at the bottom right.
+- **"+N":** `surface.background.gray.subtle` with `interactive.text.neutral.muted`.
+
+---
+
+## Breadcrumb
+
+React: `Breadcrumb`, `BreadcrumbItem`. cx: the same (`components/breadcrumb/`), from Blade DSL's Breadcrumb (Figma).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size`, `color` (default `primary`), `showLastSeparator`, `accessibilityLabel` | same | same |
+| — | `emphasis` (`subtle`, `intense`) | **added** from Figma: intense is the stepper-like pill trail with chevrons |
+| `BreadcrumbItem` `href`, `onClick`, `isCurrentPage`, `children`, `icon`, `accessibilityLabel` | same (`children` a snippet) | same / rule 2 |
+| styled props, `data-analytics-*` | `class`, `testID` | rule 1 / **missing** (analytics pass) |
+
+### Figma alignment (Blade DSL)
+
+- **Subtle:** cx's Link per item (Body Medium, 12/16/16px glyph), 4px apart with a muted slash; neutral and white links at 0.56 opacity, primary full; the current page plain Body Medium, `aria-current="page"` on its `<li>`. Items register with the trail, so the separator needs no child counting.
+- **Intense:** 28px pills (12px in, 16px radius, Body Small 12/18), 24px apart with a 16px chevron, gray wash on hover, the current page Semibold on `interactive.background.primary.faded` (white: `interactive.background.staticBlack.faded`). Figma draws it at small only, so `size` doesn't apply.
 
 ---
 
@@ -1205,62 +1268,69 @@ passes; the measurements above match React Storybook.
 
 ---
 
-## Dropdown (as Menu)
+## Dropdown and Menu
 
 React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
 `DropdownIconButton`, or an input trigger: `SelectInput`, `AutoComplete`,
 `FilterChipSelectInput`), a `DropdownOverlay` (+ `DropdownHeader`,
-`DropdownFooter`) and an `ActionList`. cx: `Menu` + `MenuItem`
-(`components/menu/`) — the action menu only.
+`DropdownFooter`) and an `ActionList`. One component does both jobs; the
+trigger and `selectionType` decide whether it's an action menu or a picker.
+
+cx: two components on one core.
+- **`Menu` + `MenuItem`** (`components/menu/`): do something; items act like buttons and every pick closes it.
+- **`Dropdown` + `ActionList` (`ActionListItem`, `ActionListSection`), `DropdownHeader`, `DropdownFooter`** (`components/dropdown/`, `components/action-list/`): pick a value; the row stays selected.
+
+**Decision:** split, as the Blade designers do ("if the click saves a
+choice, use Dropdown; if it triggers an action, use Menu"). Neither extends
+the other: both are thin layers over `createPopupList`
+(`runes/popup-list/`): ordered rows, the keyboard, the disclosure and the
+trigger. Menu adds a momentary pick (act and close). Dropdown adds a held
+pick in a form field (`heldSelection` from `base/choice-list`,
+`createFieldShell`), closing on a single pick only, as React.
+
+**Focus model:** both keep focus on one element (the list, or a search
+field) and name the active row with `aria-activedescendant`. Menu used to
+move focus onto each item; the visible behaviour is unchanged.
 
 ### Props
 
 | React | cx | Action |
 | --- | --- | --- |
-| `DropdownButton` / `DropdownLink` / `DropdownIconButton` | `trigger` snippet (a Button, `Link variant="button"` or IconButton) | rule 2; the menu stamps `aria-haspopup` / `aria-expanded` |
+| `DropdownButton` / `DropdownLink` / `DropdownIconButton` | `trigger` snippet (Menu, and Dropdown) | rule 2; the wrapper stamps `aria-haspopup` / `aria-expanded` |
+| `SelectInput` | Dropdown without a `trigger`: `label`, `placeholder`, `helpText`/`errorText`/`successText`, `validationState`, `size`, `name`, `isRequired`, `isDisabled` | **changed**: the select field is the Dropdown's default trigger, not a separate component |
+| `selectionType: single \| multiple` | Dropdown `isMultiple` | **changed** name; Menu has no selection |
+| `ActionList` `onChange` (via SelectInput) | Dropdown `bind:value`, `onChange({ name, value })` | rule 3 |
 | `isOpen`, `onOpenChange(isOpen)` | `bind:isOpen`, `onOpenChange({ isOpen })` | **changed**: the object form, as the other overlays |
-| `selectionType: single \| multiple` | — | **missing:** Menu only acts; nothing stays selected |
-| `DropdownOverlay` `defaultPlacement` (`bottom-start`) | `placement` | **changed** default from `bottom-end` to React's `bottom-start` |
-| `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef` | — | **missing** (the overlay is 240–400px, as React's menu default) |
-| `DropdownHeader`, `DropdownFooter` | — | **missing** (rule 2: `header` / `footer` snippets) |
-| `ActionListItem` `title`, `value`, `onClick`, `isDisabled` | `MenuItem` same | same (`onClick` takes no args; `value` goes to Menu's `onSelect`) |
-| — | Menu `onSelect(value)`, `accessibilityLabel` (required); MenuItem `children` | cx-only: an item's `value` is reported to `onSelect`; `children` replaces the icon and title |
-| `ActionListItem` `leading` (non-icon), `trailing`, `titleSuffix` | `leading`, `trailing`, `titleSuffix` on MenuItem | **added**, per Blade DSL's _Menu Item (Figma) |
-| `ActionListItem` `description`, `intent: 'negative'`, `href`/`target`, `isSelected` | — | **missing** |
-| `ActionListSection` (`title`, a divider after, `role="group"`) | anything between items (rule 4) | **missing** as a component |
+| `DropdownOverlay` `defaultPlacement` (`bottom-start`) | `placement` | same default |
+| `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef` | — | **missing** (240–400px) |
+| `DropdownHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, search via AutoComplete) | `DropdownHeader` (`title`, `subtitle`, `trailing`, `hasSearch`) | same, minus `leading`/`titleSuffix`; search is built in |
+| `DropdownFooter` | `DropdownFooter`, in the `footer({ close })` snippet | rule 2 |
+| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | `ActionListItem` (Menu: `MenuItem`) same | same |
+| `ActionListItem` `intent: 'negative'` | `ActionListItem` / `MenuItem` `intent` | same; refused with the select field, as React (draws neutral) |
+| `ActionListItem` `isSelected` | — | derived from Dropdown's `value` |
+| `ActionListItem` `href`/`target` | `ActionListItem` `href`, `target`, `rel` | same: a link row follows its link, closes the list and holds no value |
+| `ActionListSection` | `ActionListSection` (Menu: anything between items) | same |
+| — | Menu `onSelect(value)` | cx-only: an item's `value` is reported |
+| No results / loading | Dropdown `emptyText` (search), `isLoading` | same |
 | Nested dropdowns (submenus) | — | **missing** |
-| Input triggers (`SelectInput`, `AutoComplete`, `FilterChipSelectInput`, `FilterChipGroup`) | — | **missing** |
+| `AutoComplete`, `FilterChipSelectInput`, tree view, country selector, virtualised list | — | **missing** |
 | Below `m`: the overlay as a BottomSheet | — | **missing** |
 | `data-analytics-*` | — | **missing** (analytics pass) |
 
-### Look
+### Look (one spec for both)
 
-Measured against React Storybook (Dropdown with Button, Default):
+The designers agreed Menu and Dropdown should look the same; cx uses Menu's
+spacing for both (`components/shared/popup-list.ts`):
 
-- **Overlay:** 240px wide (240–400px), 12px radius, `popup.background.gray.moderate`,
-  the 1px popup rim drawn inside over the raised shadow (new Uno class
-  `shadow-dropdown`), the medium backdrop blur, 8px round the rows, 8px from
-  the trigger. It opens sliding 8px down as it fades in, over `quick`. Were:
-  160px min, 8px radius, a 1px border, the high blur, 4px padding, 4px off,
-  and a scale-in.
-- **Row:** 36px tall, 8px padding (4px below 768px), 8px radius, 2px above and
-  below; the icon 8px before the title, the title 8px clear of the end and
-  truncated; hover `interactive.background.gray.default`. Were: 12px side
-  padding and no margins.
-- **Focus from the keys:** Blade's 4px `surface.border.primary.muted` ring,
-  1px out (was a flush shadow).
+- **Surface:** 240–400px wide, 12px radius, `popup.background.gray.moderate`, the 1px popup rim over the raised shadow (`shadow-dropdown`), the medium blur, 8px from the trigger. It opens sliding 8px down as it fades in, over `quick`.
+- **Rows:** 8px round them, 2px between; each 36px, 8px padding, 8px radius. The active row (pointer or keys) is `interactive.background.gray.default`; the keys add Blade's 4px `surface.border.primary.muted` ring.
+- **Dropdown adds:** the held single pick in Figma's darker wash (`interactive.background.gray.fadedHighlighted`); multiple rows lead with Checkbox's box; a header (16px in, 12px under); a footer (16px in); section headings (Semibold 12/17, muted).
+- **Menu adds:** `intent="negative"` rows in `interactive.text.negative.normal` with the `interactive.background.negative.faded` wash.
+- Figma's Dropdown is drawn with a 16px radius, no row gap and 4px list padding; per the designers, it follows Menu's here.
 
 ### Status
 
-Look audited, fixed and verified against React Storybook; `test` passes.
-The API gaps above are open, pending a decision on which to build.
-
-
-### Figma alignment (Blade DSL)
-
-- Rows 36px tall, 8px in at every width and 2px apart, per Blade DSL's _Menu Item (Figma). Leading icon 16px (asset or avatar 20px); trailing icon 16px or shortcut text (11/16), 8px apart.
-- **Missing**: `description`, negative intent, section headings, the 4px separator, submenus, header and footer.
-
+Menu ported to the core with its look unchanged; Dropdown added. `test` passes (`test/dropdown.test.ts`, the Menu cases in `test/popover.test.ts`, `runes/menu/menu.test.ts`).
 ---
 
 ## EmptyState
@@ -1665,7 +1735,7 @@ React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
 | `isLoading` | — | **gap**: no Spinner in cx yet |
 | `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
-| Dropdown trigger (SearchInput inside a Dropdown) | — | **gap**, with Dropdown |
+| Dropdown trigger (SearchInput inside a Dropdown) | `DropdownHeader hasSearch` | the search lives in the Dropdown's header |
 | `onSubmit` | — | covered by Form's Enter-to-submit |
 | — | `onKeyDown` | cx-only, pending: keep |
 | `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
@@ -1700,6 +1770,8 @@ hint sits 4px under — as React's Default story.
 
 - `size`: medium, large (Figma).
 
+
+**Error, as React:** the group's error doesn't turn the members' frames red. React's InputGroup uses `validationState` only for its hint line; cx's hint line turns negative and carries it, and the members stay `aria-invalid`. (cx used to draw the thick negative border on every member.)
 ---
 
 ## Radio, RadioGroup
@@ -1842,7 +1914,7 @@ passes; the measurements match React Storybook at every size.
 
 - **Title:** Heading/SmallSemibold 18/24 (Figma); React uses body 16/24.
 - **Added** `icon`, `leading`, `titleSuffix` and `trailing({ close })` in the header, per Figma's _Modal Header: the leading item 8px from the title, the trailing item 16px from the title and from the close button. Why they are props: see the modal README.
-- **Sections:** header 16px in (20px from `m`, 16px below); footer 16px above the actions (20px beside and below from `m`).
+- **Sections:** header 20px above and beside, 16px below, at every width (Figma's _Modal Header; was 16px below `m`); the close a 20px glyph in Figma's 28px box, 24px from the top and the end, the title row leaving 44px for it; a `leading` snippet in Figma's 32px slot, centred on the title block (`icon` stays on the title line). Footer 16px above the actions (20px beside and below from `m`).
 - **Drawer:** 380px from `m` and 100% − 24px on phones (Figma; React 375/420px); header 20px in with no divider; **added** `titleSuffix`, `trailing`; Figma's detail block under the title is **missing**.
 - **Missing**: Figma's full-width square modal on phones, the `padding` variant (20/16/0), and the full-page modal.
 
@@ -2209,7 +2281,9 @@ Blade DSL's Typography page (Figma) defines the scale:
 - **Text** sizes are Figma's Body styles: xsmall 10/13, small 12/17, medium 14/20 (−1.3%), large 16/24 (−3.3%). Before, xsmall and small sat on a 16px line with no letter-spacing.
 - **Heading** sizes are Figma's Heading styles: small 18/24, medium 20/26, large 24/32, xlarge 32/38, and **added** 2xlarge 40/46 (each was one step smaller).
 - Heading `weight: medium` **removed**: Figma has regular and semibold only.
-- Caption, Code and Display styles have no components yet.
+- **Display** (added) is Figma's Display styles: small 48/56, medium 56/64, large 64/70, xlarge 72/78, in the heading face; regular and medium at −1.3%, semibold at 0%. Same as React: `size` (default small), `weight` (default semibold), `color`, `textAlign`, `as` (`span`, `h1`–`h6`; cx defaults to `h1`, React to a plain text element).
+- **Code** (added) is Figma's Code styles: small 10/14, medium 12/18, Menlo, regular or bold. Same as React: `size` (default small), `weight`, `isHighlighted` (default true, a neutral chip in the subtle text colour), and `color` only when not highlighted, enforced by the type. **Different:** the line heights follow Figma; React uses 13 and 17. React's `textTransform` is left to `class`.
+- Caption styles have no component yet.
 
 ---
 
@@ -2220,63 +2294,22 @@ Blade DSL's Typography page (Figma) defines the scale:
 
 ---
 
-## ActionList — deferred
+## ActionList
 
-**Decision:** build it with Dropdown and Menu. React's ActionList only exists
-inside them: its role, selection and keyboard come from the Dropdown, and on
-its own it has no keyboard support.
+React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every Dropdown, of BottomSheet bodies and of the country selector. cx: the same names (`components/action-list/`), working in two contexts.
 
-### React API, for when it is built
+- **Inside a Dropdown:** the items are the Dropdown's options (`role="option"`, or a link). The Dropdown holds the value; `ActionList` is only their group.
+- **Standalone:** a wrapper over `OptionList`, which takes ActionList's look as `classes` (`resolveActionList()`; native radios or checkboxes, `bind:value`, form field, keyboard, virtualisation). React's standalone ActionList takes a controlled `selectedValue`; cx binds the value, as OptionList.
+- **One row:** both contexts draw `shared/ActionListRow.svelte` with the `shared/popup-list` classes, so standalone rows match Menu and Dropdown (36px, 2px apart, 8px radius, the selected wash, a drawn checkbox for multiple). PhoneNumberInput's country picker uses it too.
 
-- **`ActionList`:** `children` (items and sections only), `isVirtualized`, `testID`.
-  - With an AutoComplete trigger and no matches, it shows a "No Search Result Found" state.
-- **`ActionListItem`:**
-  - `title`* and `value`*;
-  - `description`;
-  - `leading` (Icon, Asset, Avatar, Text), `trailing` (Icon, Text), `titleSuffix` (Badge, BadgeGroup);
-  - `intent: 'negative'`, `href`/`target` (renders an `<a>`), `isSelected`, `isDisabled`;
-  - `onClick({ name, value, event })`, `testID`.
-- **`ActionListSection`:** `title`*, `children`. A divider follows every section except the last.
-- **Slot parts:**
-  - `ActionListItemIcon` (16px; negative or disabled colours from the item);
-  - `ActionListItemAsset` (16×12 img);
-  - `ActionListItemAvatar` (xsmall);
-  - `ActionListItemBadge` (medium, 8px left margin) and `ActionListItemBadgeGroup`;
-  - `ActionListItemText` (14/20, `interactive.text.gray.muted`).
-  - These become snippets under rule 2.
-- **Roles:**
-  - A menu trigger gives `role="menu"` and `menuitem` rows.
-  - A select or autocomplete trigger gives `listbox` and `option`.
-  - A row with `href` gets `link`.
-  - Sections are `group` with `aria-label`.
-- **Selection:**
-  - Single selection is a background fill only, with no check mark.
-  - Multiple selection (from Dropdown `selectionType`) replaces `leading` with a checkbox.
-- **No `size` and no variants.**
-
-### React look, for when it is built
-
-- **List:** 8px padding, max-height 300px, scrolls. The popup surface belongs to DropdownOverlay:
-  - `popup.background.gray.moderate` background, 12px radius, medium backdrop blur.
-- **Row:**
-  - 8px radius and 8px padding (4px under 768px), 2px margin above and below;
-  - 36px tall on desktop with no description.
-- **Row states:**
-  - Hover: `interactive.background.gray.default`; negative: `interactive.background.negative.faded`.
-  - Selected: `interactive.background.gray.fadedHighlighted`.
-  - No pressed or disabled fill.
-  - Focus: 4px `surface.border.primary.muted` ring, offset 1, keyboard only.
-- **Text:**
-  - Title: 14/20 regular, one line, truncated. Colour `interactive.text.gray.normal`; negative `feedback.text.negative.intense`; disabled `…gray.disabled`.
-  - Description: 12/17 `interactive.text.gray.muted`.
-- **Section title:** 12/17 semibold `surface.text.gray.muted`, 8px padding.
-- **Divider:** 1px `surface.border.gray.muted`, 2px vertical and 8px horizontal margin.
-
-### cx today
-
-Nothing corresponds directly:
-- `OptionList`/`OptionItem` (and `VirtualOptionList`) is a standalone form field of native radios and checkboxes, always visible, on the headless choice list it shares with CardGroup. Its variants are `plain` (a bordered box of divided rows) and `card`.
-- `Menu` draws its own `menuitem` rows.
-
-When ActionList is built, those rows should be rebuilt on it. OptionList then gets its own cx-only section, or is re-audited against Radio/Checkbox groups.
-
+| React | cx | Action |
+| --- | --- | --- |
+| `ActionList` `children` | `children` | rule 2 |
+| `ActionList` `selectionType`, `selectedValue` (standalone) | `isMultiple`, `bind:value`, `onChange` | **changed**: the list holds the value, as OptionList |
+| `ActionList` `isVirtualized` | `VirtualOptionList` with `classes={resolveActionList()}` | **changed** |
+| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | same (`icon` for a glyph leading) | same |
+| `ActionListItem` `href`, `target` | `href`, `target`, `rel` | same: a link row, never a value |
+| `ActionListItem` `intent: 'negative'` | `intent` | same; with the Dropdown select field it draws neutral (React throws) |
+| `ActionListItem` `isSelected` | — | derived from the value |
+| `ActionListSection` (`title`, a divider after) | `ActionListSection` | same (the hairline is drawn above every section but the first) |
+| `ActionListItemIcon`, `…Asset`, `…Avatar`, `…Badge`, `…BadgeGroup`, `…Text` | `icon`, and `leading` / `titleSuffix` / `trailing` snippets | rule 2 |

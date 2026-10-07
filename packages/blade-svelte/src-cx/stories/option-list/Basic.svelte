@@ -22,8 +22,6 @@
   <OptionList
     label="Bank"
     bind:value
-    variant={args.variant}
-    indicator={args.indicator}
     isDeselectable={args.isDeselectable}
     isDisabled={args.isDisabled}
   >

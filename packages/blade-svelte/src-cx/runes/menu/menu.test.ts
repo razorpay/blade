@@ -12,9 +12,10 @@ function entries(labels: string[], onSelect: (label: string) => void): MenuEntry
   return labels.map((label) => {
     const node = box.appendChild(document.createElement('button'));
     const entry: MenuEntry = {
+      id: label,
       isDisabled: () => false,
       text: () => label,
-      select: () => onSelect(label),
+      pick: () => onSelect(label),
       getElement: () => node,
     };
     return entry;

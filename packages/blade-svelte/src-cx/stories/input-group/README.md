@@ -9,7 +9,7 @@ Blade DSL's Input Group (Figma) draws; every member takes it.
 | Prop | Notes |
 | --- | --- |
 | `label` | The group's visible label; `accessibilityLabel` names it when there is none |
-| `validationState`, `helpText`, `errorText`, `successText` | Omit `validationState` inside a Form to mirror the first visible member error (it replaces `hint` while it lasts); pass it to own the frame, the line and every member's state |
+| `validationState`, `helpText`, `errorText`, `successText` | Omit `validationState` inside a Form to mirror the first visible member error (it replaces `hint` while it lasts); pass it to own the line and every member's state (an error marks members invalid; their frames stay gray) |
 | `isDisabled` | Disables every member |
 | `children` | The fields |
 
@@ -17,10 +17,14 @@ Blade DSL's Input Group (Figma) draws; every member takes it.
 
 A TextInput in a group keeps its `label` as the control's accessible name
 but shows neither it nor a hint line of its own; it is described by the
-group's line. It draws the same frame it has alone, so its focus, error
-and hover look the same; the group joins the frames so neighbours share
-one border line, rounds the members at its corners, and stacks a member's
-states so a shared edge shows focus over error over hover over the rest.
+group's line. It draws the same frame it has alone, so its focus and
+hover look the same; the group joins the frames so neighbours share one
+border line, rounds the members at its corners, and stacks a member's
+states so a shared edge shows focus over hover over the rest.
+
+An error doesn't turn a member's frame red: the group's line under the
+members turns negative and carries the message, and the member is still
+marked `aria-invalid`.
 
 ## Layout
 

@@ -1,4 +1,3 @@
-import { OPTION_LIST_AXES } from '../../index';
 import type { StoryMeta } from '../types';
 
 const meta: StoryMeta = {
@@ -6,8 +5,6 @@ const meta: StoryMeta = {
   description:
     "A choice among visible options (Blade's ActionList, v2's OptionList): one OptionItem per option, each a native radio or checkbox row, with anything else — headings, notes, buttons — between them. VirtualOptionList takes the options as data for long lists.",
   argTypes: {
-    variant: { control: 'select', options: OPTION_LIST_AXES.variant },
-    indicator: { control: 'select', options: OPTION_LIST_AXES.indicator },
     isDeselectable: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
   },
@@ -15,8 +12,6 @@ const meta: StoryMeta = {
     Basic: {
       description: 'Single choice; arrow keys move the pick.',
       args: {
-        variant: 'plain',
-        indicator: 'none',
         isDeselectable: false,
         isDisabled: false,
       },
@@ -24,10 +19,7 @@ const meta: StoryMeta = {
     Multiple: {
       description: 'isMultiple turns the rows into checkboxes and the value into an array.',
       argTypes: {
-        variant: { control: 'select', options: OPTION_LIST_AXES.variant },
-        indicator: { control: 'select', options: OPTION_LIST_AXES.indicator },
-      },
-      args: { variant: 'card', indicator: 'leading' },
+              },
     },
     Filtered: {
       description:
@@ -39,10 +31,7 @@ const meta: StoryMeta = {
       description:
         'Anything between OptionItems is left alone: headings, and v2 SavedCards\' "All N options" button, which reveals the rest. Only OptionItems are options — outside the value, the keyboard and isRequired.',
       argTypes: {
-        variant: { control: 'select', options: OPTION_LIST_AXES.variant },
-        indicator: { control: 'select', options: OPTION_LIST_AXES.indicator },
-      },
-      args: { variant: 'plain', indicator: 'none' },
+              },
     },
     Virtualised: {
       description:

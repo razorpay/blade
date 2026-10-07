@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { Attachment } from 'svelte/attachments';
   import { cx } from '../../cx';
   import type { Placement } from '../../runes/layer/placement';
   import type { PopoverClasses } from './styles';
@@ -11,7 +12,7 @@
     anchor: HTMLElement;
     placement: Placement;
     classes: PopoverClasses;
-    role: 'dialog' | 'menu';
+    role?: 'dialog' | 'menu';
     accessibilityLabel?: string;
     /** The id of the element that names the panel (its title). */
     labelledBy?: string;
@@ -22,6 +23,9 @@
     /** For a hover-opened panel: the pointer over the panel keeps it open. */
     onPointerEnter?: () => void;
     onPointerLeave?: () => void;
+    matchesAnchorWidth?: boolean;
+    focusOwner?: Attachment<HTMLElement>;
+    activeDescendant?: string;
     children: Snippet;
   }
 

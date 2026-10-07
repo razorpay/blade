@@ -55,7 +55,7 @@ describe('Modal', () => {
     const subtitle = getByText('Visa');
     expectClass(subtitle, 'text-surface-gray-muted');
     expect(modal.getAttribute('aria-describedby')).toBe(subtitle.id);
-    expectClass(row.closest('.border-b-thin'), 'p-4');
+    expectClass(row.closest('.border-b-thin'), 'px-5 pt-5 pb-4');
   });
 
   it('without header, title and subtitle render on their own', () => {
@@ -265,9 +265,9 @@ describe('Modal', () => {
   it('the header row leaves room for the close button only while it shows', async () => {
     const { getByText, rerender } = render(ModalHarness, { props: { isOpen: true } });
     const block = (): HTMLElement => getByText('Remove card').parentElement!.parentElement!;
-    expectClass(block(), 'pr-9');
+    expectClass(block(), 'pr-11');
     await rerender({ isOpen: true, isDismissible: false });
-    expect(block().className).not.toContain('pr-9');
+    expect(block().className).not.toContain('pr-11');
   });
 
   it('a close made by the host does not report a dismiss', async () => {
@@ -630,6 +630,9 @@ describe('Modal, as Blade', () => {
     const leading = getByTestId('logo').parentElement!;
     expect(row.firstElementChild).toBe(leading);
     expectClass(leading, 'me-2');
+    // Figma's 32px leading slot, centred on the title block.
+    expectClass(leading, 'w-8 h-8');
+    expectClass(leading, 'self-center');
     // The suffix beside the title, 8px from it, centred on its 28px line.
     expectClass(titleRow, 'gap-2');
     expectClass(getByTestId('count').parentElement, 'h-7');
@@ -637,7 +640,8 @@ describe('Modal, as Blade', () => {
     const trailing = getByTestId('trailing-action').parentElement!;
     expect(row.lastElementChild).toBe(trailing);
     expectClass(trailing, 'ms-4');
-    expectClass(row, 'pr-9');
+    // Figma: 16px, then the close's 28px box.
+    expectClass(row, 'pr-11');
   });
 
   it('a leading icon is a large glyph on the title line', () => {
@@ -651,7 +655,9 @@ describe('Modal, as Blade', () => {
   it("each variant takes its Figma header, title and close position", async () => {
     const { resolveModal } = await import('../components/modal/styles');
     const modal = resolveModal({});
-    expect(modal.header).toContain('p-4 m:px-5 m:pt-5');
+    // Figma: 20px above and beside, 16px below, at every width.
+    expect(modal.header).toContain('px-5 pt-5 pb-4');
+    expect(modal.close).toContain('top-6 right-6');
     expect(modal.title).toContain('font-heading font-semibold text-300 leading-300');
     const sheet = resolveModal({ variant: 'sheet' });
     expect(sheet.header).toContain('px-4 pt-3 pb-4');

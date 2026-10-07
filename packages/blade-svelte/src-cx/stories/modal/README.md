@@ -84,13 +84,13 @@ Header) space each part differently, so the header places them itself:
 
 | Part | Gap | Box |
 | --- | --- | --- |
-| leading item → title | 8px | glyph 20px on the 28px title line; asset 32px; avatar up to 48px |
+| leading item → title | 8px | `icon`: a 20px glyph on the 28px title line; `leading`: Figma's 32px slot, centred on the title block |
 | title → suffix | 8px | centred on the 28px title line |
 | title block → trailing item | 16px | 28px tall |
-| trailing item → close button | 16px | the close button is 20px |
+| trailing item → close button | 16px | the close button is a 20px glyph in a 28px box, 24px from the top and the end |
 
-The header itself is 16px in (20px above and beside from `m`) and 16px
-above its hairline on a modal, 12px under the handle strip on a sheet, and
+The header itself is 20px above and beside, 16px above its hairline, at
+every width on a modal, 12px under the handle strip on a sheet, and
 20px all round with no hairline on a drawer. The footer's actions are 16px
 under their hairline (20px on a drawer), 16px in (20px from `m`). A Drawer's
 leading item belongs to a detail block under its title, a pattern not

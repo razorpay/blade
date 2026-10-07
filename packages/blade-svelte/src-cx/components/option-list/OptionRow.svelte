@@ -23,6 +23,8 @@
     /** On the row: how the list orders and focuses the item. */
     attach?: Attachment<HTMLElement>;
     classes: OptionRowClasses;
+    /** `negative`: the action look draws the row red. @default 'none' */
+    intent?: 'none' | 'negative';
     /** Native-only: the attributes a native row carries. */
     optionState?: Record<string, string>;
     /** A user pick. Returns whether the option is picked afterwards. */
@@ -43,6 +45,7 @@
     onBlur,
     onKeyDown,
     attach = () => {},
+    intent = 'none',
     classes,
     onToggle,
     testID,
@@ -64,6 +67,7 @@
     isActive && classes.rowActive,
     isDisabled && classes.rowDisabled
   )}
+  data-intent={intent === 'none' ? undefined : intent}
   {@attach attach}
 >
   <input

@@ -3,6 +3,8 @@
   import { createPhonePicker } from '../../runes/phone/picker.svelte';
   import type { ModalControl } from '../modal/overlays';
   import OptionItem from '../option-list/OptionItem.svelte';
+  import ActionListRow from '../shared/ActionListRow.svelte';
+  import { POPUP_ITEM } from '../shared/popup-list';
   import VirtualOptionList from '../option-list/VirtualOptionList.svelte';
   import TextInput from '../text-input/TextInput.svelte';
   import {
@@ -67,18 +69,22 @@
     accessibilityLabel={countryLabel}
     testID={testID ? `${testID}-countries` : undefined}
     class={classes.list}
-    {...classes.optionList}
+    classes={classes.optionList}
   >
     {#snippet children(option)}
       <OptionItem value={option} text={option.name}>
+        <!-- ActionList's row: the flag leads, the dial code trails. -->
         {#snippet children()}
-          <span class={classes.row}>
-            {#if option.flag}
-              <img class={classes.flag} src={option.flag} alt="" loading="lazy" />
-            {/if}
-            <span class={classes.rowName}>{option.name}</span>
-            <span class={classes.rowDialCode}>{option.dialCode}</span>
-          </span>
+          <ActionListRow classes={POPUP_ITEM} title={option.name}>
+            {#snippet leading()}
+              {#if option.flag}
+                <img class={classes.flag} src={option.flag} alt="" loading="lazy" />
+              {/if}
+            {/snippet}
+            {#snippet trailing()}
+              <span class={classes.rowDialCode}>{option.dialCode}</span>
+            {/snippet}
+          </ActionListRow>
         {/snippet}
       </OptionItem>
     {/snippet}

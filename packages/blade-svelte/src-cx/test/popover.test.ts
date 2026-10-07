@@ -115,10 +115,22 @@ describe('Menu', () => {
         ]);
         expect(items[1].getAttribute('aria-disabled')).toBe('true');
         expectClass(items[1], 'text-interactive-gray-disabled');
-        return waitFor(() => expect(document.activeElement).toBe(items[0]));
+        // Focus stays on the menu, which names the active row.
+        return waitFor(() => {
+          expect(document.activeElement).toBe(menu);
+          expect(menu.getAttribute('aria-activedescendant')).toBe(items[0].id);
+          expect(items[0].dataset.active).toBe('pointer');
+        });
       })
       .then(() => fireEvent.keyDown(getByTestId('menu'), { key: 'ArrowDown' }))
-      .then(() => waitFor(() => expect(document.activeElement).toBe(getAllByRole('menuitem')[2])));
+      .then(() =>
+        waitFor(() => {
+          const items = getAllByRole('menuitem');
+          expect(getByTestId('menu').getAttribute('aria-activedescendant')).toBe(items[2].id);
+          expect(items[2].dataset.active).toBe('keyboard');
+          expect(items[0].dataset.active).toBeUndefined();
+        })
+      );
   });
 
   it('a choice reports, closes, and hands focus back to the trigger', () => {
@@ -327,13 +339,14 @@ describe('floating layers', () => {
     });
     const trigger = getByRole('button', { name: 'More' });
     await fireEvent.click(trigger);
-    await waitFor(() => expect(document.activeElement).toBe(getAllByRole('menuitem')[0]));
+    await waitFor(() => expect(document.activeElement).toBe(getByTestId('menu')));
+    expect(getAllByRole('menuitem')[0].dataset.active).toBeDefined();
     // The open menu's trigger points at it.
     expect(trigger.getAttribute('aria-controls')).toBe(getByTestId('menu').id);
     onMenuOpenChange.mockClear();
 
     const escape = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
-    getAllByRole('menuitem')[0].dispatchEvent(escape);
+    getByTestId('menu').dispatchEvent(escape);
     await waitFor(() => expect(queryByTestId('menu')).toBeNull());
     expect(escape.defaultPrevented).toBe(true);
     expect(onMenuOpenChange).toHaveBeenCalledExactlyOnceWith({ isOpen: false });

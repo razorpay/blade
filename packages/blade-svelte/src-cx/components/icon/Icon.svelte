@@ -25,8 +25,10 @@
   const mask = $derived(isGlyph(source) ? undefined : `url(${JSON.stringify(source)})`);
 </script>
 
-<!-- A glyph is one private-use character of the blade-icons font; a URL is a
-     mask over the text colour. -->
+<!-- A glyph is one private-use character of the blade-icons font, drawn by
+     `::before` from `data-glyph`: the span holds no text, so like an image
+     it can't be selected, copied or found. A URL is a mask over the text
+     colour. -->
 <span
   class={cx(classes.root, mask && classes.mask, className)}
   style:mask-image={mask}
@@ -35,4 +37,5 @@
   aria-label={accessibilityLabel}
   aria-hidden={accessibilityLabel ? undefined : 'true'}
   data-icon={isGlyph(source) ? source.name : undefined}
-  data-testid={testID}>{isGlyph(source) ? source.code : ''}</span>
+  data-glyph={isGlyph(source) ? source.code : undefined}
+  data-testid={testID}></span>

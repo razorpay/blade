@@ -29,7 +29,8 @@ expanding headers.
 | `value` | The picked option, or an array of them with `isMultiple`; bindable |
 | `isMultiple` | Rows become checkboxes and the root a `group`; otherwise radios in a `radiogroup` |
 | `onChange` | Fires on a user pick with `{ name, value }` — "pick = submit" goes here, not in a button inside the row |
-| `compare` | Defaults to identity; pass it when option objects are rebuilt |
+| `classes` | A whole look (`OptionListClasses`) in place of the built-in one: `resolveActionList()`, or your own; see below |
+| `compare` | Value equality. Default: the same value, or plain objects alike in every key (so values bound to `$state`, which holds proxies, still match). Pass it to match by an id |
 | `isDisabled` | The whole list; an `OptionItem`'s own `isDisabled` for one option |
 | `isDeselectable` | Single choice: picking the pick clears it |
 | `name`, `isRequired`, `validationState`, `helpText`, `errorText` | The field contract, as RadioGroup |
@@ -53,9 +54,25 @@ the pick and disabled looks; its `children` draw content and are told the
 state instead of recomputing it. The keyboard is handled on each option's
 control, so a button between items keeps its own Enter and Space.
 
-The native input is also the indicator: the `indicator` axis shows it at an
-edge or hides it visually (`none`), never removes it. `variant` picks divided
-rows in one box (`plain`) or a card per row (`card`).
+The native input is always visually hidden (`sr-only`), never removed:
+screen readers, the keyboard and the form still use it, and the row's
+picked state (the gray wash) is what shows the pick. OptionList has one
+look of its own: divided rows in one box.
+
+## Bringing your own look
+
+OptionList's anatomy (the `<label>` and native input per row, the
+`radiogroup` / `group` root, label and hint) and behaviour (value, form
+field, keyboard, tab stop) don't depend on its looks. Pass `classes` (an
+`OptionListClasses` map) to `OptionList` or `VirtualOptionList` and it
+replaces the built-in look entirely. That's how ActionList brings Menu's
+and Dropdown's rows (`resolveActionList()`); `resolveOptionList()` gives
+the built-in one to start from. A map's `control` part decides the native
+input's look, so a custom look could show it.
+
+```svelte
+<OptionList bind:value label="Plan" classes={myClasses}>…</OptionList>
+```
 
 ## Keyboard and states
 

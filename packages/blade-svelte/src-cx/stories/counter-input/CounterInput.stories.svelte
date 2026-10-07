@@ -11,7 +11,7 @@
   import InFormSource from './InForm.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/CounterInput",
+    title: "Components/Input/CounterInput",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {

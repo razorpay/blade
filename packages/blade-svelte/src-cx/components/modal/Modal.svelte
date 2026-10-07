@@ -182,7 +182,7 @@
     <div class={classes.header}>
       <div class={cx(classes.headerRow, isDismissible && classes.closeClearance)}>
         {#if icon}
-          <span class={cx(classes.leading, classes.leadingIcon)}>
+          <span class={classes.leadingIcon}>
             <Icon source={icon} size="large" />
           </span>
         {:else if leading}

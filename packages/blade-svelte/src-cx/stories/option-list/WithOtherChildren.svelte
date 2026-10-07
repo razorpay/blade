@@ -15,7 +15,7 @@
 </script>
 
 <div class="grid max-w-96 gap-4">
-  <OptionList label="Bank" bind:value variant={args.variant} indicator={args.indicator}>
+  <OptionList label="Bank" bind:value>
     <p class="m-0 px-4 py-2 text-75 leading-50 font-medium text-surface-gray-muted">
       Popular
     </p>

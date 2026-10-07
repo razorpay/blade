@@ -21,7 +21,6 @@
   <OptionList
     accessibilityLabel="Bank"
     bind:value
-    indicator="trailing"
   >
     {#each filtered as bank (bank.code)}
       <OptionItem value={bank} title={bank.name}>

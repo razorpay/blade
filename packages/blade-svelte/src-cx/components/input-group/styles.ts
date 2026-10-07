@@ -13,7 +13,8 @@ export type { InputGroupCorner, InputGroupCorners, InputGroupSpan };
  * InputGroup's parts. Every member draws its own frame, as it does alone,
  * and the group joins them: its box lays the members out so their frames
  * overlap, and a member's states are stacked so the shared edge shows the
- * one that matters (focus over error over hover over rest). The group works
+ * one that matters (focus over hover over rest). An error turns no frame
+ * red: the group's line under the members carries it. The group works
  * out from the spans which members hold its corners, so only those are
  * rounded; no member does that bookkeeping itself.
  */
@@ -85,8 +86,8 @@ export const resolveInputGroup: InputGroupStyleResolver<InputGroupStyleProps> = 
     // column land on the box's edge and the shared edges are one line.
     // That only holds while the grid sizes the member — stretched, it is
     // its cell plus the pixel — so a member's grouped root names no width.
-    // `isolate` keeps the members' stacking — focus over error over hover
-    // over rest, TextInput's grouped tiers — inside the group.
+    // `isolate` keeps the members' stacking — focus over hover over rest,
+    // TextInput's grouped tiers — inside the group.
     box: 'isolate grid w-full grid-cols-12 pl-px pt-px',
     member: '-ml-px -mt-px',
     span: SPAN,

@@ -11,7 +11,7 @@
   import InFormSource from './InForm.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/PhoneNumberInput",
+    title: "Components/Input/PhoneNumberInput",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {

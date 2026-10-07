@@ -1,5 +1,10 @@
 # Menu
 
+**Menu or Dropdown?** If the click does something (Edit, Delete, go to a
+page), use Menu: its items work like buttons. If the click saves a choice,
+use Dropdown: the row stays selected. Both run on one core
+(`runes/popup-list`) and share one look (`shared/popup-list`).
+
 `components/menu/Menu.svelte` over `createMenu`; the floating half is the
 Popover's panel (`role="menu"`). Its items are the `MenuItem`s inside it,
 read in document order — anything between them (a heading, a divider) is
@@ -38,6 +43,8 @@ left alone and outside the keyboard.
 | `isDisabled` | Per item |
 | `value` | Reported to the Menu's `onSelect` |
 | `onClick` | The item's own act, before `onSelect` |
+| `description` | Under the title, muted |
+| `intent` | `negative` for a destructive action: red, with a red wash while active |
 | `children` | Custom content in place of the whole row |
 
 ### Why `icon`, `leading`, `titleSuffix` and `trailing` are props
@@ -49,8 +56,11 @@ trailing item (a 16px glyph or Caption/Small shortcut text). The item owns
 that row and its boxes, so each part is a prop. Rows sit 2px apart, 8px
 inside the menu.
 
-On the trigger, arrows, Enter and Space open it; inside, arrows rove (wrapping,
-skipping disabled items), Home/End jump, a typed letter finds a match, Escape
-and Tab close. Closing hands focus back to the trigger. It is not modal: it
+On the trigger, arrows, Enter and Space open it; inside, arrows move the
+active item (wrapping, skipping disabled items), Home/End jump, a typed
+letter finds a match, Escape and Tab close. Focus stays on the menu, which
+names the active item through `aria-activedescendant`; the item under the
+pointer or the keys is highlighted (with the focus ring from the keys).
+Closing hands focus back to the trigger. It is not modal: it
 joins the layers as a floating layer, so Escape closes only the topmost
 overlay — the menu, not a modal beneath it.

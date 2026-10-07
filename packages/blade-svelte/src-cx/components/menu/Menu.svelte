@@ -85,6 +85,8 @@
       role="menu"
       {accessibilityLabel}
       isFocusMoved={false}
+      focusOwner={menu.focusOwner}
+      activeDescendant={menu.activeId}
       {testID}
       onDismiss={menu.close}
       onKeyDown={menu.handleKey}

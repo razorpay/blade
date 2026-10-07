@@ -88,15 +88,10 @@ describe('OptionList', () => {
     expect(getByTestId('bound').textContent).toBe('icici');
   });
 
-  it('the control is the indicator: hidden by default, shown at an edge', () => {
-    const hidden = render(OptionListHarness);
-    expectClass(hidden.getByTestId('banks-0'), 'sr-only');
-    hidden.unmount();
-    const { getByTestId } = render(OptionListHarness, {
-      props: { indicator: 'trailing' },
-    });
-    expectClass(getByTestId('banks-0'), 'order-last');
-    expectNoClass(getByTestId('banks-0'), 'sr-only');
+  it('the native control is always visually hidden: the row shows the pick', () => {
+    const { getByTestId } = render(OptionListHarness);
+    expectClass(getByTestId('banks-0'), 'sr-only');
+    expect(getByTestId('banks-0').tagName).toBe('INPUT');
   });
 
   it('filtering keeps the pick on the option, not on the position', async () => {
@@ -279,3 +274,55 @@ describe('OptionRow.native', () => {
     expect(onToggle).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('OptionList with object values bound to $state', async () => {
+  const Harness = (await import('./fixtures/OptionListObjectsHarness.svelte')).default;
+
+  it('multiple: a picked row stays checked though the host holds proxies of the objects', async () => {
+    const { getByLabelText } = render(Harness, { props: { isMultiple: true } });
+    const sbi = getByLabelText('State Bank of India') as HTMLInputElement;
+    await fireEvent.click(sbi);
+    await fireEvent.click(getByLabelText('HDFC Bank'));
+    // The host's proxied value flows back in before the check is read.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(sbi.checked).toBe(true);
+    expect((getByLabelText('HDFC Bank') as HTMLInputElement).checked).toBe(true);
+    expect(sbi.closest('label')?.className).toContain('bg-interactive-gray-faded-highlighted');
+  });
+
+  it('single: the pick stays checked', async () => {
+    const { getByLabelText } = render(Harness);
+    const sbi = getByLabelText('State Bank of India') as HTMLInputElement;
+    await fireEvent.click(sbi);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(sbi.checked).toBe(true);
+    expect(sbi.closest('label')?.className).toContain('bg-interactive-gray-faded-highlighted');
+  });
+});
+
+describe('OptionList with a look of its own (classes)', async () => {
+  const { resolveOptionList } = await import('../components/option-list/styles');
+  const { resolveActionList } = await import('../components/action-list/styles');
+  const OptionList = (await import('../components/option-list/OptionList.svelte')).default;
+
+  it('a classes map replaces the built-in look; the anatomy stays', () => {
+    const classes = { ...resolveOptionList({}), root: 'my-root', options: 'my-options' };
+    const { getByRole } = render(OptionList, {
+      props: { label: 'Plan', classes, children: createRawSnippet(() => ({ render: () => '<span></span>' })) },
+    });
+    const group = getByRole('radiogroup', { name: 'Plan' });
+    expect(group.className).toContain('my-root');
+    expect(group.querySelector('.my-options')).not.toBeNull();
+    expect(group.innerHTML).not.toContain('gap-2');
+  });
+
+  it("no style axes: one built-in look with the control hidden; ActionList's lives with ActionList", async () => {
+    const { OPTION_LIST_AXES } = await import('../components/option-list/styles');
+    expect(Object.keys(OPTION_LIST_AXES)).toEqual([]);
+    expect(resolveOptionList({}).options).toContain('rounded-small border-thin');
+    expect(resolveOptionList({}).control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
+    expect(resolveActionList().control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
+    expect(resolveActionList().options).toBe('flex flex-col gap-0.5');
+  });
+});
+

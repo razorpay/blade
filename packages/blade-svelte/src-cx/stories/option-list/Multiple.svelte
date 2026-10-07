@@ -20,8 +20,6 @@
     label="Banks to show first"
     isMultiple
     bind:value
-    variant={args.variant}
-    indicator={args.indicator}
   >
     {#each BANKS as bank (bank.code)}
       <OptionItem

@@ -6,8 +6,14 @@ export interface TriggerOptions {
   /** The id of what the trigger shows: `aria-controls` points at it while it is shown. */
   controls: string;
   isExpanded: () => boolean;
+  /**
+   * The id of the whole popup, when what it controls sits inside it (a
+   * dropdown's listbox in its panel): presses there aren't the trigger's.
+   * Defaults to `controls`.
+   */
+  popup?: string;
   /** For a trigger that opens a popup: the popup's kind. */
-  haspopup?: 'dialog' | 'menu';
+  haspopup?: 'dialog' | 'menu' | 'listbox';
 }
 
 export interface Trigger {
@@ -59,7 +65,8 @@ export function createTrigger(options: TriggerOptions): Trigger {
       return node && controlIn(node);
     },
     isInside(event) {
-      return Boolean((event.target as Element | null)?.closest?.(`[id="${options.controls}"]`));
+      const popup = options.popup ?? options.controls;
+      return Boolean((event.target as Element | null)?.closest?.(`[id="${popup}"]`));
     },
   };
 }

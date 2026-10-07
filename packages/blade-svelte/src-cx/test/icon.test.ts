@@ -11,7 +11,9 @@ describe('Icon', () => {
       props: { source: ChevronDownIcon, testID: 'glyph' },
     });
     const glyph = getByTestId('glyph');
-    expect(glyph.textContent).toBe(asGlyph(ChevronDownIcon).code);
+    expect(glyph.dataset.glyph).toBe(asGlyph(ChevronDownIcon).code);
+    // Drawn by ::before: no text to select, copy or find.
+    expect(glyph.textContent).toBe('');
     expect(glyph.dataset.icon).toBe('chevron-down');
     expect(glyph.className).toContain('icon-font');
     expect(glyph.children).toHaveLength(0);

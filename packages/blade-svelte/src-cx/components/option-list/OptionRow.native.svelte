@@ -12,6 +12,8 @@
     isDisabled: boolean;
     isInvalid: boolean;
     classes: OptionRowClasses;
+    /** The action look's tone; native draws no intent yet. */
+    intent?: 'none' | 'negative';
     optionState?: Record<string, string>;
     onToggle: (event: Event) => boolean;
     /** On the row: how the list orders the item. */

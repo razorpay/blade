@@ -10,6 +10,7 @@
   import { createOptionList } from '../../runes/option-list/list.svelte';
   import {
     resolveOptionList,
+    type OptionListClasses,
     type OptionListShared,
     type OptionListStyleProps,
     type OptionListValidationState,
@@ -28,6 +29,12 @@
     compare?: (a: T, b: T) => boolean;
     /** Single choice: picking the picked option clears it. */
     isDeselectable?: boolean;
+    /**
+     * The list's look as a whole class map (`OptionListClasses`), in place of
+     * the built-in look: how a library brings its own
+     * rows (ActionList does). The anatomy and behaviour stay OptionList's.
+     */
+    classes?: OptionListClasses;
     /** Registers the list with the enclosing Form under this key. */
     name?: string;
     isRequired?: boolean;
@@ -69,6 +76,7 @@
     onChange,
     compare,
     isDeselectable = false,
+    classes: customClasses,
     name,
     isRequired = false,
     isDisabled = false,
@@ -90,7 +98,7 @@
   const lineText = $derived(
     pickHintText({ validationState, helpText, errorText })
   );
-  const classes = $derived(resolveOptionList(style.current));
+  const classes = $derived(customClasses ?? resolveOptionList(style.current));
   // svelte-ignore state_referenced_locally
   const list = createOptionList<T, OptionListShared>({
     id: uid,

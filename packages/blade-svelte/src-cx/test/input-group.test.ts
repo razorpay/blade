@@ -67,7 +67,7 @@ describe('InputGroup', () => {
     expectNoClass(frame('cvv'), 'rounded-tr-small');
   });
 
-  it('stacks a member over its neighbours by state: focus, then error, then hover', async () => {
+  it('stacks a member over its neighbours by state: focus, then hover; an error draws no red frame', async () => {
     const { getByTestId } = render(InputGroupHarness);
     const frame = (id: string): HTMLElement | null => getByTestId(id).parentElement;
     expect(frame('number')?.closest('.grid')?.className).toContain('isolate');
@@ -78,8 +78,9 @@ describe('InputGroup', () => {
 
     expect(frame('number')?.className).toContain('z-30');
     expect(frame('number')?.className).toContain('border-interactive-primary-default');
-    expect(frame('cvv')?.className).toContain('z-20');
-    expect(frame('cvv')?.className).toContain('!border-interactive-negative-default');
+    // CVV is in error (the group's line says so), but its frame stays gray.
+    expect(getByTestId('cvv').getAttribute('aria-invalid')).toBe('true');
+    expect(frame('cvv')?.className).not.toContain('border-interactive-negative-default');
     expect(frame('cvv')?.className).not.toContain('z-30');
     expect(frame('expiry')?.className).toContain('hover:z-10');
     expect(frame('expiry')?.className).not.toContain('z-20');
@@ -93,13 +94,14 @@ describe('InputGroup', () => {
     expect((getByTestId('expiry') as HTMLInputElement).disabled).toBe(true);
   });
 
-  it('an explicit validationState colours every member', () => {
+  it('an explicit error marks every member invalid without turning their frames red', () => {
     const { getByTestId } = render(InputGroupHarness, {
       props: { validationState: 'error', errorText: 'Card declined' },
     });
     for (const id of ['number', 'expiry', 'cvv']) {
       expect(getByTestId(id).getAttribute('aria-invalid')).toBe('true');
-      expectClass(getByTestId(id).parentElement, 'border-interactive-negative-default');
+      expect(getByTestId(id).parentElement?.className).not.toContain('border-interactive-negative-default');
     }
+    expect(getByTestId('group').textContent).toContain('Card declined');
   });
 });
