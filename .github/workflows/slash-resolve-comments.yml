@@ -68,7 +68,7 @@ jobs:
           actor: ${{ github.actor }}
           repository: ${{ github.repository }}
           allowed_usernames: ${{ steps.codeowners.outputs.allowed_usernames }}
-          bot_login: "rzp-slash-public[bot],rzp-slash[bot],slash-code-review[bot],cursor[bot]"
+          bot_login: "rzp-slash-public[bot],rzp-slash[bot],slash-code-review[bot],cursor[bot],kamaleshs-bridge4"
           slash_mentions: "@rzp-slash-public,@razorpay/slash-public"
           base_url: https://slash-api-ext.razorpay.com
           slash_username: ${{ secrets.SLASH_API_USERNAME }}
