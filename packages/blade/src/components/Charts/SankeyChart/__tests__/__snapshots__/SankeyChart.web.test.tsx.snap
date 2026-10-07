@@ -13,188 +13,149 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
     data-blade-component="ChartSankeyWrapper"
   >
     <div
-      class="recharts-wrapper"
-      height="100%"
-      style="position: relative; cursor: default; width: 800px; height: 100%;"
-      width="800"
+      style="position: relative; width: 100%; height: 100%;"
     >
       <div
-        class="recharts-tooltip-wrapper"
-        style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
-        tabindex="-1"
-        xmlns="http://www.w3.org/1999/xhtml"
-      />
-      <svg
-        class="recharts-surface"
-        height="100"
-        viewBox="0 0 800 100"
-        width="800"
+        style="position: absolute; top: 0px; left: 0px; width: 800px; height: 400px;"
       >
-        <title />
-        <desc />
-        <g
-          class="recharts-layer recharts-sankey-links"
+        <svg
+          height="400"
+          style="display: block; overflow: visible;"
+          width="800"
         >
-          <g
-            class="recharts-layer"
-          >
+          <g>
             <path
               d="
-        M22,50.54369962503995
-        C169.3193359375,50.54369962503995
-          169.3193359375,48
-          316.638671875,48
-        L316.638671875,8
-        C169.3193359375,8
-          169.3193359375,10.543699625039949
-          22,10.543699625039949
-        Z
-      "
+      M22,217.2103662917066
+      C169.3193359375,217.2103662917066
+        169.3193359375,214.66666666666669
+        316.638671875,214.66666666666669
+      L316.638671875,8.000000000000043
+      C169.3193359375,8.000000000000043
+        169.3193359375,10.543699625039949
+        22,10.543699625039949
+      Z
+    "
               fill="hsla(218, 100%, 92%, 1)"
               fill-opacity="0.55"
               style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             />
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <path
               d="
-        M22,82.54369962503995
-        C169.3193359375,82.54369962503995
-          169.3193359375,92
-          316.638671875,92
-        L316.638671875,60
-        C169.3193359375,60
-          169.3193359375,50.54369962503995
-          22,50.54369962503995
-        Z
-      "
+      M22,382.54369962503995
+      C169.3193359375,382.54369962503995
+        169.3193359375,392.00000000000006
+        316.638671875,392.00000000000006
+      L316.638671875,226.66666666666669
+      C169.3193359375,226.66666666666669
+        169.3193359375,217.21036629170658
+        22,217.21036629170658
+      Z
+    "
               fill="hsla(218, 100%, 92%, 1)"
               fill-opacity="0.55"
               style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             />
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <path
               d="
-        M330.638671875,43
-        C477.9580078125,43
-          477.9580078125,43
-          625.27734375,43
-        L625.27734375,8.000000000000004
-        C477.9580078125,8.000000000000004
-          477.9580078125,8
-          330.638671875,8
-        Z
-      "
+      M330.638671875,188.83333333333337
+      C477.9580078125,188.83333333333337
+        477.9580078125,188.83333333333337
+        625.27734375,188.83333333333337
+      L625.27734375,8.000000000000014
+      C477.9580078125,8.000000000000014
+        477.9580078125,8.000000000000043
+        330.638671875,8.000000000000043
+      Z
+    "
               fill="hsla(149, 38%, 86%, 1)"
               fill-opacity="0.55"
               style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             />
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <path
               d="
-        M330.638671875,48
-        C477.9580078125,48
-          477.9580078125,88
-          625.27734375,88
-        L625.27734375,83
-        C477.9580078125,83
-          477.9580078125,43
-          330.638671875,43
-        Z
-      "
+      M330.638671875,214.66666666666669
+      C477.9580078125,214.66666666666669
+        477.9580078125,371.33333333333337
+        625.27734375,371.33333333333337
+      L625.27734375,345.5
+      C477.9580078125,345.5
+        477.9580078125,188.83333333333337
+        330.638671875,188.83333333333337
+      Z
+    "
               fill="hsla(149, 38%, 86%, 1)"
               fill-opacity="0.55"
               style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             />
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <path
               d="
-        M330.638671875,88
-        C477.9580078125,88
-          477.9580078125,71
-          625.27734375,71
-        L625.27734375,43
-        C477.9580078125,43
-          477.9580078125,60
-          330.638671875,60
-        Z
-      "
+      M330.638671875,371.3333333333333
+      C477.9580078125,371.3333333333333
+        477.9580078125,333.5
+        625.27734375,333.5
+      L625.27734375,188.83333333333337
+      C477.9580078125,188.83333333333337
+        477.9580078125,226.66666666666669
+        330.638671875,226.66666666666669
+      Z
+    "
+              fill="hsla(46, 86%, 83%, 1)"
+              fill-opacity="0.55"
+              style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+            />
+            <path
+              d="
+      M330.638671875,392
+      C477.9580078125,392
+        477.9580078125,391.99999999999994
+        625.27734375,391.99999999999994
+      L625.27734375,371.3333333333333
+      C477.9580078125,371.3333333333333
+        477.9580078125,371.33333333333337
+        330.638671875,371.33333333333337
+      Z
+    "
               fill="hsla(46, 86%, 83%, 1)"
               fill-opacity="0.55"
               style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             />
           </g>
-          <g
-            class="recharts-layer"
-          >
-            <path
-              d="
-        M330.638671875,92
-        C477.9580078125,92
-          477.9580078125,92
-          625.27734375,92
-        L625.27734375,88
-        C477.9580078125,88
-          477.9580078125,88
-          330.638671875,88
-        Z
-      "
-              fill="hsla(46, 86%, 83%, 1)"
-              fill-opacity="0.55"
-              style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
-            />
-          </g>
-        </g>
-        <g
-          class="recharts-layer recharts-sankey-nodes"
-        >
-          <g
-            class="recharts-layer"
-          >
+          <g>
             <g
               opacity="1"
               style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             >
               <rect
                 fill="hsla(218, 100%, 92%, 1)"
-                height="72"
+                height="372"
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
                 x="8"
-                y="10.543699625039949"
+                y="10.543699625039944"
               />
               <g
                 aria-label="Total, 7.2k"
                 role="img"
-                style="cursor: pointer;"
+                style="cursor: pointer; outline: none;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
                   height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
+                  stroke-opacity="1"
                   stroke-width="1"
                   width="79"
                   x="30.5"
-                  y="33.04369962503995"
+                  y="183.04369962503995"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
                   x="38"
-                  y="50.86369962503995"
+                  y="200.86369962503994"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
@@ -212,43 +173,40 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 </text>
               </g>
             </g>
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <g
               opacity="1"
               style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             >
               <rect
                 fill="hsla(149, 38%, 86%, 1)"
-                height="40"
+                height="206.66666666666666"
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
                 x="316.638671875"
-                y="7.999999999999998"
+                y="8.000000000000043"
               />
               <g
                 aria-label="UPI, 4k (56%)"
                 role="img"
-                style="cursor: pointer;"
+                style="cursor: pointer; outline: none;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
                   height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
+                  stroke-opacity="1"
                   stroke-width="1"
                   width="90.35546875"
                   x="339.138671875"
-                  y="14.5"
+                  y="97.83333333333337"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
                   x="346.638671875"
-                  y="32.32"
+                  y="115.65333333333336"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
@@ -266,43 +224,40 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 </text>
               </g>
             </g>
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <g
               opacity="1"
               style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             >
               <rect
                 fill="hsla(46, 86%, 83%, 1)"
-                height="32"
+                height="165.33333333333334"
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
                 x="316.638671875"
-                y="60"
+                y="226.66666666666669"
               />
               <g
                 aria-label="Card, 3.2k (44%)"
                 role="img"
-                style="cursor: pointer;"
+                style="cursor: pointer; outline: none;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
                   height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
+                  stroke-opacity="1"
                   stroke-width="1"
                   width="107.69921875"
                   x="339.138671875"
-                  y="62.5"
+                  y="295.83333333333337"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
                   x="346.638671875"
-                  y="80.32"
+                  y="313.65333333333336"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
@@ -320,43 +275,40 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 </text>
               </g>
             </g>
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <g
               opacity="1"
               style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             >
               <rect
                 fill="hsla(264, 100%, 89%, 1)"
-                height="63"
+                height="325.5"
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
                 x="625.27734375"
-                y="8.000000000000004"
+                y="8.00000000000001"
               />
               <g
                 aria-label="Successful, 6.3k (88%)"
                 role="img"
-                style="cursor: pointer;"
+                style="cursor: pointer; outline: none;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
                   height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
+                  stroke-opacity="1"
                   stroke-width="1"
                   width="143.72265625"
                   x="647.77734375"
-                  y="26"
+                  y="157.25"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
                   x="655.27734375"
-                  y="43.82"
+                  y="175.07"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
@@ -374,43 +326,40 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 </text>
               </g>
             </g>
-          </g>
-          <g
-            class="recharts-layer"
-          >
             <g
               opacity="1"
               style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
             >
               <rect
                 fill="hsla(24, 100%, 92%, 1)"
-                height="9"
+                height="46.5"
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
                 x="625.27734375"
-                y="83"
+                y="345.5"
               />
               <g
                 aria-label="Failed, 900 (13%)"
                 role="img"
-                style="cursor: pointer;"
+                style="cursor: pointer; outline: none;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
                   height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
+                  stroke-opacity="1"
                   stroke-width="1"
                   width="112.375"
                   x="647.77734375"
-                  y="74"
+                  y="355.25"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
                   x="655.27734375"
-                  y="91.82"
+                  y="373.07"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
@@ -429,8 +378,8 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               </g>
             </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   </div>
 </div>

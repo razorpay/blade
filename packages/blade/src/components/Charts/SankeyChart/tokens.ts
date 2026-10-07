@@ -43,6 +43,24 @@ export const CHIP_VALUE_BUDGET = 120;
  * is set, in px. Gap to the text uses `theme.spacing[2]`.
  */
 export const COLOR_INDICATOR_SIZE = 8;
+
+// ── Grouping (web) ─────────────────────────────────────────────────────────────
+/** Prefix of the synthetic node id that stands in for a column's grouped nodes */
+export const SANKEY_GROUP_ID_PREFIX = '__blade_sankey_group__';
+/** Colour token of a group node — neutral, so it never competes with real categories */
+export const GROUP_NODE_COLOR_TOKEN = 'data.background.categorical.gray.intense';
+/**
+ * Maximum width of a group node's single-line label, in px. A group label carries the member
+ * count and a trailing chevron on top of the value text, so it gets more room than
+ * `LABEL_MAX_WIDTH` before its name is truncated.
+ */
+export const GROUP_LABEL_MAX_WIDTH = 240;
+/** Size of the chevron drawn at the end of a group's label, in px (Blade icon `small`) */
+export const GROUP_CHEVRON_SIZE = 12;
+/** Members listed in a group's tooltip before it collapses the rest into "and n more" */
+export const TOOLTIP_MAX_MEMBERS = 6;
+/** Distance between the hovered shape and the tooltip, in px */
+export const TOOLTIP_OFFSET = 12;
 /** Minimum rendered height for a node bar in px — prevents invisible zero-height nodes */
 export const NODE_MIN_HEIGHT = 1;
 
@@ -84,4 +102,5 @@ export const LABEL_CAP_HEIGHT_RATIO = 0.72;
 export const componentIds = {
   ChartSankey: 'ChartSankey',
   ChartSankeyWrapper: 'ChartSankeyWrapper',
+  ChartSankeyTooltip: 'ChartSankeyTooltip',
 };
