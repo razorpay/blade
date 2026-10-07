@@ -333,6 +333,39 @@ describe('SankeyChart — edge cases', () => {
     expect(tooltip?.textContent).toBe('Total - UPI: 4,000');
   });
 
+  it('still accepts every prop the released ChartSankey and ChartSankeyWrapper accept', () => {
+    // Type-checked in CI (tests are included): a prop removed or renamed here would fail to
+    // compile, which is exactly the break a consumer on the released version would hit.
+    const { container } = renderWithTheme(
+      <ChartSankeyWrapper
+        showTooltip
+        colorTheme="categorical"
+        nodeColorOverride="data.background.categorical.blue.moderate"
+        linkColorOverride="data.background.categorical.gray.moderate"
+        testID="sankey"
+        orientation="horizontal"
+        width="900px"
+        height="346px"
+      >
+        <ChartSankey
+          data={data}
+          showLabels
+          showLabelChip
+          showPercentage
+          labelUnit="txn"
+          labelDensity="normal"
+          showColorIndicator={false}
+          formatValue={(value) => String(value)}
+          onNodeClick={() => undefined}
+          onLinkClick={() => undefined}
+          width={900}
+          height={346}
+        />
+      </ChartSankeyWrapper>,
+    );
+    expect(container.querySelector('svg')).not.toBeNull();
+  });
+
   it('draws nothing when no link survives, as the Recharts chart did', () => {
     // Nodes without any flow have nothing to lay out. The old chart rendered an empty canvas;
     // drawing 1px bars labelled "0 (0%)" instead would look broken, and the empty state is the
