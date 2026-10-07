@@ -333,6 +333,10 @@ describe('SankeyChart — grouping: expand and fold', () => {
     expect(paths).toHaveLength(9);
     fireEvent.click(paths[2]);
     expect(onLinkClick).toHaveBeenCalledWith({ source: 'total', target: GROUP_ID, value: 600 }, 2);
+    // A ribbon that was not merged still hands back the consumer's own link object.
+    fireEvent.click(paths[0]);
+    expect(onLinkClick).toHaveBeenLastCalledWith(links[0], 0);
+    expect(onLinkClick.mock.calls[1][0]).toBe(links[0]);
   });
 });
 

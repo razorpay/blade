@@ -185,6 +185,10 @@ describe('SankeyChart — interactivity', () => {
       }),
       0,
     );
+    // The consumer's own link object comes back, not a copy: code that compares by reference or
+    // reads its own fields off the link keeps working.
+    const [clickedLink, clickedIndex] = handleLinkClick.mock.calls[0];
+    expect(clickedLink).toBe(links[clickedIndex]);
   });
 
   it('shows a tooltip with the full node name and value on hover', () => {
@@ -322,28 +326,58 @@ describe('SankeyChart — edge cases', () => {
     ).not.toThrow();
   });
 
-  it('does not emit NaN geometry for a node that has no links', () => {
-    const { container } = renderWithTheme(
+  it('names a ribbon tooltip "Source - Target", as the Recharts chart did', () => {
+    const { container } = renderSankey();
+    fireEvent.mouseEnter(container.querySelector('svg path:not([data-blade-component])')!);
+    const tooltip = container.querySelector('[data-blade-component="ChartSankeyTooltip"]');
+    expect(tooltip?.textContent).toBe('Total - UPI: 4,000');
+  });
+
+  it('draws nothing when no link survives, as the Recharts chart did', () => {
+    // Nodes without any flow have nothing to lay out. The old chart rendered an empty canvas;
+    // drawing 1px bars labelled "0 (0%)" instead would look broken, and the empty state is the
+    // consumer's to show.
+    const noLinks = renderWithTheme(
+      <ChartSankeyWrapper>
+        <ChartSankey data={{ nodes: [{ id: 'x', name: 'Orphan' }], links: [] }} />
+      </ChartSankeyWrapper>,
+    );
+    expect(noLinks.container.querySelector('svg')).toBeNull();
+    expect(
+      noLinks.container.querySelector('[data-blade-component="ChartSankeyWrapper"]'),
+    ).not.toBeNull();
+
+    const onlyInvalidLinks = renderWithTheme(
       <ChartSankeyWrapper>
         <ChartSankey
           data={{
             nodes: [{ id: 'x', name: 'Orphan' }],
-            links: [],
+            links: [{ source: 'x', target: 'ghost', value: 10 }],
           }}
         />
       </ChartSankeyWrapper>,
     );
+    expect(onlyInvalidLinks.container.querySelector('svg')).toBeNull();
+  });
 
-    // A node with no links has no value to lay out, so it must be
-    // skipped rather than rendered with NaN x/y/height attributes.
-    container.querySelectorAll('rect').forEach((rect) => {
-      ['x', 'y', 'width', 'height'].forEach((attribute) => {
-        expect(rect.getAttribute(attribute)).not.toBe('NaN');
-      });
-    });
-    container.querySelectorAll('path').forEach((path) => {
-      expect(path.getAttribute('d') ?? '').not.toContain('NaN');
-    });
+  it("accepts the dashboard card's props: deprecated width and height are typed and ignored", () => {
+    // Recharts' ResponsiveContainer used to inject width/height, and the Analytics transaction
+    // flow card passes them explicitly. They must still compile and must not change the layout,
+    // which comes from the wrapper's measured size (800px here).
+    const { container } = renderWithTheme(
+      <ChartSankeyWrapper showTooltip width="900px" height="346px">
+        <ChartSankey
+          data={data}
+          labelUnit="txn"
+          formatValue={(value) => String(value)}
+          width={300}
+          height={120}
+        />
+      </ChartSankeyWrapper>,
+    );
+    const bars = Array.from(container.querySelectorAll<SVGRectElement>('svg rect:not([stroke])'));
+    const lastColumnX = Math.max(...bars.map((r) => parseFloat(r.getAttribute('x') ?? '0')));
+    expect(lastColumnX).toBeGreaterThan(300);
   });
 
   it('silently ignores links that reference unknown node ids', () => {

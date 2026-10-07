@@ -517,6 +517,18 @@ const isFocusVisible = (element: Element): boolean => {
 const fullLabelBudget = (entry: GroupedSankeyNode): number =>
   entry.group ? GROUP_LABEL_MAX_WIDTH : LABEL_MAX_WIDTH;
 
+/**
+ * Recharts' ResponsiveContainer used to inject these into the chart, and consumers pass them
+ * explicitly too. They stay on the component's type so those consumers keep compiling, and are
+ * ignored: the chart sizes itself from `ChartSankeyWrapper`.
+ */
+type DeprecatedSizeProps = {
+  /** @deprecated Ignored — the chart sizes itself from `ChartSankeyWrapper` */
+  width?: number;
+  /** @deprecated Ignored — the chart sizes itself from `ChartSankeyWrapper` */
+  height?: number;
+};
+
 // ─── ChartSankey ──────────────────────────────────────────────────────────────
 // Presentational layer — mirrors ChartDonut.
 // Reads wrapper config from SankeyChartContext, owns the layout and hover/expand state,
@@ -538,7 +550,7 @@ const _ChartSankey = ({
   formatValue,
   onNodeClick,
   onLinkClick,
-}: ChartSankeyProps): React.ReactElement | null => {
+}: ChartSankeyProps & DeprecatedSizeProps): React.ReactElement | null => {
   const [hovered, setHovered] = useState<HoverState>(null);
   const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
 
@@ -1006,12 +1018,15 @@ const _ChartSankey = ({
     (index: number): void => {
       const link = grouped.links[index];
       if (!link) return;
+      // A plain ribbon reports the consumer's own link object, as before; only a ribbon merged
+      // into a group has no single original and gets a built one.
+      const original = link.isAggregated ? undefined : data.links[link.originalIndex];
       onLinkClick?.(
-        { source: link.source, target: link.target, value: link.value },
+        original ?? { source: link.source, target: link.target, value: link.value },
         link.originalIndex,
       );
     },
-    [grouped.links, onLinkClick],
+    [grouped.links, data.links, onLinkClick],
   );
 
   // ── Tooltip content ────────────────────────────────────────────────────────
@@ -1037,7 +1052,7 @@ const _ChartSankey = ({
         },
         content: (
           <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-            {`${sourceName} → ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`}
+            {`${sourceName} - ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`}
           </Text>
         ),
       };
@@ -1139,7 +1154,9 @@ const _ChartSankey = ({
   ]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
-  if (width <= 0 || height <= 0) return null;
+  // Nothing to lay out without a link, and the Recharts chart drew nothing then too; the
+  // consumer owns the empty state.
+  if (width <= 0 || height <= 0 || grouped.links.length === 0) return null;
 
   const renderedLinks = layout.links.map((link) => {
     if (
