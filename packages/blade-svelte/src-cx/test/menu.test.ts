@@ -12,7 +12,7 @@ describe('MenuItem', () => {
   it("is Figma's _Menu Item row: 8px in, Body/Medium, one unbroken line", () => {
     const { item, panel } = resolveMenu({});
     expect(item).toContain('p-2');
-    expect(item).not.toContain('m:p-');
+    expect(item).not.toContain('d:p-');
     expect(item).toContain('text-100 leading-100 tracking-50');
     expect(item).toContain('whitespace-nowrap');
     // 2px between rows: the panel's gap, not the rows' margins.

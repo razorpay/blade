@@ -70,9 +70,9 @@ describe('ChipGroup', () => {
     const { getByTestId } = render(ChipHarness);
     const label = input(getByTestId('chip-0')).parentElement!;
     await fireEvent.pointerDown(label);
-    expectClass(frame(getByTestId('chip-0')), '[scale:.92]');
+    expectClass(frame(getByTestId('chip-0')), 'scale-[.92]');
     await fireEvent.pointerUp(label);
-    expectNoClass(frame(getByTestId('chip-0')), '[scale:.92]');
+    expectNoClass(frame(getByTestId('chip-0')), 'scale-[.92]');
   });
 
   it('shows the necessity marker and the help text', () => {
@@ -102,11 +102,11 @@ describe('ChipGroup', () => {
   });
 
   it.each([
-    ['xsmall', 'font-text font-regular text-75 leading-75'],
-    ['small', 'font-text font-regular text-100 leading-100'],
-    ['medium', 'font-text font-regular text-200 leading-200'],
+    ['xsmall', 'font-blade-text font-blade-regular text-75 leading-75'],
+    ['small', 'font-blade-text font-blade-regular text-100 leading-100'],
+    ['medium', 'font-blade-text font-blade-regular text-200 leading-200'],
     // Figma's _Chip sets the large label in Heading/MediumRegular, 20/26.
-    ['large', 'font-heading font-regular text-400 leading-400 tracking-100'],
+    ['large', 'font-heading font-blade-regular text-400 leading-400 tracking-100'],
   ] as const)('%s: the label in Figma\'s type, on one unbroken row', (size, type) => {
     const classes = resolveChip(size, 'unchecked', 'primary');
     expect(classes.text).toContain(type);

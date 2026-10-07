@@ -27,7 +27,7 @@
       <Button variant="secondary" type="button" testID="trigger">Convenience fee</Button>
     {/snippet}
   </Tooltip>
-  <ul class="font-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
+  <ul class="font-blade-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
     {#each log as line (line)}
       <li>{line}</li>
     {:else}

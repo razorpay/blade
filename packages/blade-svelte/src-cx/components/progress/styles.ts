@@ -72,7 +72,7 @@ export function resolveProgress(props: ProgressStyleProps = {}): ProgressClasses
       fill: {
         kind: 'bar',
         track: '',
-        value: `block w-full h-full origin-left [scale:var(--progress)_1] rounded-max bg-current transition-transform ${FILL_MOTION}`,
+        value: `block w-full h-full origin-left scale-x-[var(--progress)] rounded-max bg-current transition-transform ${FILL_MOTION}`,
       },
     };
   }
@@ -83,7 +83,7 @@ export function resolveProgress(props: ProgressStyleProps = {}): ProgressClasses
       ring: { r: RING[size].r, stroke: RING[size].stroke },
       fill: {
         kind: 'ring',
-        track: 'fill-none stroke-current opacity-100',
+        track: 'fill-none stroke-current opacity-blade-100',
         value: `fill-none stroke-current [transition-property:stroke-dashoffset] [stroke-dashoffset:calc(1_-_var(--progress))] [stroke-linecap:round] ${FILL_MOTION}`,
       },
     };

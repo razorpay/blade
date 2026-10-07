@@ -35,13 +35,13 @@ describe('Badge', () => {
 
   it('subtle is medium weight, intense regular on the colour’s fill in white', () => {
     const subtle = render(BadgeHarness, { props: { color: 'positive' } }).getByTestId('badge');
-    expectClass(label(subtle), 'font-medium');
+    expectClass(label(subtle), 'font-blade-medium');
     expectClass(subtle, 'bg-feedback-positive-subtle');
     subtle.remove();
     const intense = render(BadgeHarness, {
       props: { color: 'positive', emphasis: 'intense' },
     }).getByTestId('badge');
-    expectClass(label(intense), 'font-regular');
+    expectClass(label(intense), 'font-blade-regular');
     expectClass(intense, 'bg-feedback-positive-intense');
     expectClass(intense, 'text-surface-static-white-normal');
   });

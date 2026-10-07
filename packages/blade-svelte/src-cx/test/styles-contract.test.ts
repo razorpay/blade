@@ -22,6 +22,10 @@ const FORBIDDEN = [
     reason: 'an opacity modifier',
   },
   { pattern: /\btheme\(/, reason: 'a theme() lookup' },
+  {
+    pattern: /\[(?:translate|rotate|scale|transform):/,
+    reason: 'a raw transform property: translate-*, rotate-* and scale-* compose (uno.config.ts)',
+  },
 ];
 
 function violationsIn(source: string): string[] {
@@ -83,12 +87,20 @@ describe('token contract', () => {
     expect(violationsIn("root: '[accent-color:hsla(0,_0%,_0%,_1)]'")).toHaveLength(1);
     expect(violationsIn("root: 'bg-interactive-gray-default/50'")).toHaveLength(1);
     expect(violationsIn("root: '[--rim:theme(colors.cta)]'")).toHaveLength(1);
+    expect(violationsIn("root: '[translate:0_4px]'")).toHaveLength(1);
+    expect(violationsIn("root: 'translate-y-[4px] scale-[.9]'")).toEqual([]);
   });
 
-  it('uno.config.ts generates every class the style maps use', async () => {
+  it('uno.config.ts, or src-cx/blade.css, defines every class the style maps use', async () => {
     const uno = await createGenerator(unoConfig);
+    // Blade's own scales (`opacity-blade-*`, `font-blade-*`) are plain CSS.
+    const bladeCss = new Set(
+      [...readFileSync(join(__dirname, '../blade.css'), 'utf8').matchAll(/^\.([\w-]+)/gm)].map(
+        ([, name]) => name,
+      ),
+    );
     const files = sourceFiles(COMPONENTS_DIR).filter((file) =>
-      /\/(?:styles|shared\/(?!breakpoint)\w+)\.ts$/.test(file),
+      /\/(?:styles|shared\/\w+)\.ts$/.test(file),
     );
     const unknown: string[] = [];
     for (const file of files) {
@@ -98,12 +110,20 @@ describe('token contract', () => {
         preflights: false,
       });
       for (const token of tokens) {
-        if (!matched.has(token)) {
+        if (!matched.has(token) && !bladeCss.has(token)) {
           unknown.push(`${relative(COMPONENTS_DIR, file)}: ${token}`);
         }
       }
     }
     expect(unknown).toEqual([]);
+  });
+
+  it("leaves an app's `theme()` arbitrary values to its Tailwind", async () => {
+    const uno = await createGenerator(unoConfig);
+    const { matched } = await uno.generate('[--rim:theme(colors.cta)] [--rim:var(--x)]', {
+      preflights: false,
+    });
+    expect([...matched]).toEqual(['[--rim:var(--x)]']);
   });
 });
 

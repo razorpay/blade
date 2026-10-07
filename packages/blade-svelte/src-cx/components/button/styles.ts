@@ -92,7 +92,7 @@ export interface ButtonStyleProps {
 // shadows in uno.config.ts; focus draws the highlighted frame under Blade's
 // 4px ring as one box-shadow. Width is the caller's (`class="w-full"`).
 const ROOT =
-  'group relative inline-flex items-center justify-center overflow-hidden border-none font-text font-semibold no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
+  'group relative inline-flex items-center justify-center overflow-hidden border-none font-blade-text font-blade-semibold no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
 // The content presses to 95% (Blade's AnimatedButtonContent); positioned,
 // it paints over the sheen.
 const CONTENT =
@@ -226,7 +226,7 @@ export const resolveButton: ButtonStyleResolver<ButtonStyleProps> = (
     dot: `rounded-max bg-current [opacity:0.42] animate-dot motion-reduce:animate-none ${dots.dot} ${DOT_COLOR[kind][color]}`,
     dotStep: [
       '',
-      '[animation-delay:150ms] motion-reduce:[translate:0_calc(var(--lift)*-1)] motion-reduce:[opacity:1]',
+      '[animation-delay:150ms] motion-reduce:translate-y-[calc(var(--lift)*-1)] motion-reduce:[opacity:1]',
       '[animation-delay:300ms]',
     ],
     shake: 'animate-shake motion-reduce:animate-none',
@@ -234,6 +234,6 @@ export const resolveButton: ButtonStyleResolver<ButtonStyleProps> = (
     status: 'sr-only',
     // A tint sweeping across: it reads on every variant.
     autoFill:
-      'pointer-events-none absolute inset-0 origin-left [scale:var(--progress)_1] bg-current opacity-300 transition-transform duration-2xgentle ease-linear motion-reduce:transition-none',
+      'pointer-events-none absolute inset-0 origin-left scale-x-[var(--progress)] bg-current opacity-blade-300 transition-transform duration-2xgentle ease-linear motion-reduce:transition-none',
   };
 };

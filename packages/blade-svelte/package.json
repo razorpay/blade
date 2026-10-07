@@ -64,7 +64,6 @@
     "uno.config.ts"
   ],
   "scripts": {
-    "build": "unocss \"src-cx/**/*.{ts,svelte}\" -c uno.config.ts -o src-cx/uno.css",
     "svelte-check": "svelte-check --tsconfig ./tsconfig.cx.json",
     "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.cx.json --watch",
     "test": "vitest run --config vitest.config.ts",

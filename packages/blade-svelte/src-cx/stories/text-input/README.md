@@ -44,7 +44,7 @@ The `trailing` snippet takes a link's inset; a selector placed there sits
 8px further in than Figma's trailing selector.
 
 Medium sets 16px text on phones (iOS zooms into anything smaller) and
-Figma's 14px from `m` up.
+Figma's 14px on desktop (`d`).
 
 ## Formatting
 

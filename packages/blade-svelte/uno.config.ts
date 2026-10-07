@@ -1,14 +1,12 @@
 import { defineConfig, symbols } from 'unocss';
-import type { Rule, Variant } from 'unocss';
+import type { CSSObject, Rule, UserConfig, Variant, VariantFunction } from 'unocss';
 import {
   backdropBlur,
   bladeNeutralTheme,
   bladeTheme,
   border,
-  breakpoints,
   elevation,
   motion,
-  opacity,
   typography,
 } from '@razorpay/blade-core/tokens';
 import { colorsToCSSVariables } from '@razorpay/blade-core/utils';
@@ -46,6 +44,22 @@ const rulesFor = (
 /** `{ 1: 2 }` → `{ 'blade-1': 2 }`, keeps token classes like `p-blade-1` explicit */
 const bladePrefixed = (scale: Scale): Scale =>
   Object.fromEntries(Object.entries(scale).map(([key, value]) => [`blade-${key}`, value]));
+
+/**
+ * An arbitrary value as CSS: `_` is a space, and inside `calc()` and its kin
+ * `+` and `-` get the spaces CSS requires — `calc(100%+2rem)` is invalid as
+ * written. Tailwind reads it the same way, so classes written for it carry over.
+ */
+export const arbitrary = (value: string): string => {
+  const spaced = value.replace(/_/g, ' ');
+  if (!/(calc|clamp|min|max)\(/.test(spaced)) return spaced;
+  // Custom property names keep their hyphens: `var(--space-2)` is no subtraction.
+  const names: string[] = [];
+  return spaced
+    .replace(/--[\w-]+/g, (name) => `\0${names.push(name) - 1}\0`)
+    .replace(/(?<=[\w%).])\s*([+-])\s*(?=[\d.(]|\0|var\()/g, ' $1 ')
+    .replace(/\0(\d+)\0/g, (_, index: string) => names[Number(index)]);
+};
 
 /** Static keyword rules, e.g. `keywords('display', { flex: 'flex' })` → `flex { display: flex }` */
 const keywords = (property: string, classToValue: Record<string, string>): Rule[] =>
@@ -253,6 +267,24 @@ const spacingRules: Rule[] = [
   ),
   ...keywords('margin', { 'm-auto': 'auto' }),
   ...keywords('margin-inline', { 'mx-auto': 'auto' }),
+  // Any other length is the value itself, as for sizes: `mt-[10px]`,
+  // `-left-[9px]`, `top-[calc(50%+1px)]`.
+  [
+    /^(-?)(p[xytrbl]?|m[xytrbl]?|m[se]|gap(?:-[xy])?|inset(?:-[xy])?|top|right|bottom|left)-\[(.+)\]$/,
+    ([, negative, prefix, value]) => {
+      const property = {
+        ...paddingAndMargin,
+        ...gap,
+        ...inset,
+        ms: 'margin-inline-start',
+        me: 'margin-inline-end',
+      }[prefix];
+      if (!property || (negative && prefix.startsWith('p'))) return undefined;
+      const css = arbitrary(value);
+      if (!negative) return { [property]: css };
+      return { [property]: /^[\d.]+[a-z%]*$/.test(css) ? `-${css}` : `calc(${css} * -1)` };
+    },
+  ],
 ];
 
 // ===== Sizing =====
@@ -277,7 +309,7 @@ const sizeRules: Rule[] = [
   [
     /^(w|h|min-w|min-h|max-w|max-h)-\[(.+)\]$/,
     ([, prefix, value]) => ({
-      [sizeProperties[prefix as keyof typeof sizeProperties]]: value.replace(/_/g, ' '),
+      [sizeProperties[prefix as keyof typeof sizeProperties]]: arbitrary(value),
     }),
   ],
 ];
@@ -321,13 +353,6 @@ const borderRules: Rule[] = [
 const effectRules: Rule[] = [
   // e.g. `shadow-midRaised`, light mode only
   ...rules('shadow', 'box-shadow', elevation.onLight),
-  // e.g. `duration-moderate` → 280ms
-  ...rules('duration', 'transition-duration', motion.duration, (value) => `${value}ms`),
-  // e.g. `ease-standard` → cubic-bezier(0.3, 0, 0.2, 1)
-  // Blade's `linear` is `cubic-bezier(0, 0, 0, 0)`, which isn't linear, so it's replaced
-  ...rules('ease', 'transition-timing-function', { ...motion.easing, linear: 'linear' }),
-  // e.g. `delay-gentle` → 480ms
-  ...rules('delay', 'transition-delay', motion.delay, (value) => `${value}ms`),
   // e.g. `backdrop-blur-medium` → blur(8px)
   ...rules('backdrop-blur', 'backdrop-filter', backdropBlur, (value) => `blur(${px(value)})`),
 ];
@@ -345,20 +370,27 @@ const round = (value: number): number => Number(value.toFixed(4));
 
 const rem = (value: string | number): string => `${round(Number(value) / ROOT_FONT_SIZE)}rem`;
 
+/**
+ * The heading face, one class with checkout's: the merchant's heading font
+ * when its theme sets one, else `Tasa` (src-cx/fonts.css). The fallback is
+ * Arial sized to TASA Orbiter, so the swap does not shift the layout.
+ */
+const fontRules: Rule[] = [
+  [
+    'font-heading',
+    { 'font-family': 'var(--merchant-heading-font, Tasa), "TASA Orbiter Fallback Arial", Arial' },
+  ],
+];
+
 const typographyRules: Rule[] = [
   // e.g. `text-100` → 0.875rem (14px)
   ...rules('text', 'font-size', fonts.size, rem),
   // e.g. `leading-100` → 1.25rem (20px)
   ...rules('leading', 'line-height', lineHeights, rem),
-  // e.g. `font-semibold` → 600
-  ...rules('font', 'font-weight', fonts.weight, String),
-  // e.g. `font-heading` → "TASA Orbiter", …
-  ...rules('font', 'font-family', fonts.family, String),
-  // Blade sets the heading face's optical size wherever it uses it (BaseText)
-  [
-    'font-heading',
-    { 'font-family': String(fonts.family.heading), 'font-variation-settings': "'opsz' 60" },
-  ],
+  // Font weights and the text and code families are Blade's own names, in
+  // src-cx/blade.css (`font-blade-semibold`): `font-medium` and the like are
+  // an app's Tailwind's, often bound to its own variables.
+  ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
   // it enables (src-cx/plugin). A glyph is text, so this resets everything
   // text inherits that would bend it. The glyph itself is generated content
@@ -504,8 +536,44 @@ const fractionRules: Rule[] = [
 
 // ===== Visual =====
 
-/** Blade's opacity scale, e.g. `opacity-300` → 0.18, `opacity-1300` → 1 */
-const opacityRules: Rule[] = rules('opacity', 'opacity', opacity, String);
+/**
+ * Tailwind's percentage scale, as an app's Tailwind means it: `opacity-0`,
+ * `opacity-50` → 0.5, `opacity-[.65]`. Blade's own scale is `opacity-blade-*`
+ * (src-cx/blade.css): its `100` is 0.09, so it cannot share these names.
+ */
+const opacityRules: Rule[] = [
+  ...rules(
+    'opacity',
+    'opacity',
+    Object.fromEntries(
+      [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+      ].map((percent) => [percent, percent / 100]),
+    ),
+    String,
+  ),
+  [/^opacity-\[(.+)\]$/, ([, value]) => ({ opacity: arbitrary(value) })],
+];
 
 /** No tokens for stacking; the steps the components use */
 const zIndexRules: Rule[] = rules(
@@ -515,61 +583,159 @@ const zIndexRules: Rule[] = rules(
   String,
 );
 
+/**
+ * Transforms as one composed `transform` (Tailwind v3's model), so they work
+ * in browsers without the individual `translate`/`rotate`/`scale` properties
+ * (before Safari 14.1, Chrome 104). Each class sets only its own variable,
+ * so `-translate-x-1/2 -translate-y-1/2 rotate-45` compose; translate, then
+ * rotate, then scale. `transformVariables` resets the variables on every
+ * element, so a parent's never leaks into a child. Write nothing to
+ * `transform` (or the individual properties) besides these classes: a raw
+ * value would replace the composition (styles-contract.test.ts refuses it).
+ */
+const TRANSFORM =
+  'translate(var(--blade-translate-x), var(--blade-translate-y)) rotate(var(--blade-rotate)) scale(var(--blade-scale-x), var(--blade-scale-y))';
+
+/** `-` before a value: `-16px`, else `calc(var(--x) * -1)` */
+const negate = (value: string): string =>
+  /^[\d.]+[a-z%]*$/.test(value) ? `-${value}` : `calc(${value} * -1)`;
+
+const translateAxis = (axis: string, value: string): CSSObject => ({
+  [`--blade-translate-${axis}`]: value,
+  transform: TRANSFORM,
+});
+
+const rotateBy = (value: string): CSSObject => ({ '--blade-rotate': value, transform: TRANSFORM });
+
+const scaleAxes = (axes: string, value: string): CSSObject => ({
+  ...Object.fromEntries([...(axes || 'xy')].map((axis) => [`--blade-scale-${axis}`, value])),
+  transform: TRANSFORM,
+});
+
+const translateScale: Scale = { ...builtInSpacing, ...fractions, '2/4': '50%' };
+const rotateScale = [0, 1, 2, 3, 6, 12, 45, 90, 180];
+const scaleScale = [0, 50, 75, 90, 95, 100, 105, 110, 125, 150];
+
 const transformRules: Rule[] = [
-  // Individual transform properties, so they compose without a shared `transform`
-  // e.g. `scale-95` → scale: 0.95, `rotate-45` → rotate: 45deg
-  ...rules(
-    'scale',
-    'scale',
-    Object.fromEntries([0, 50, 75, 90, 95, 100, 105].map((scale) => [scale, scale / 100])),
-    String,
+  // e.g. `-translate-x-1/2` → -50% on x, `translate-y-[calc(var(--offset)*1px)]`
+  ...Object.entries(translateScale).flatMap(([key, value]): Rule[] =>
+    ['x', 'y'].flatMap((axis): Rule[] => [
+      [`translate-${axis}-${key}`, translateAxis(axis, px(value))],
+      [`-translate-${axis}-${key}`, translateAxis(axis, negate(px(value)))],
+    ]),
   ),
-  ...rules('rotate', 'rotate', { 0: 0, 45: 45, 90: 90, 180: 180 }, (value) => `${value}deg`),
-  ...rules('-rotate', 'rotate', { 45: 45, 90: 90, 180: 180 }, (value) => `-${value}deg`),
-  // `translate-x-4` → 16px 0; both axes at once take the arbitrary form `[translate:-50%_-50%]`
-  ...rules(
-    'translate-x',
-    'translate',
-    { ...builtInSpacing, ...fractions },
-    (value) => `${px(value)} 0`,
+  [
+    /^(-?)translate-([xy])-\[(.+)\]$/,
+    ([, negative, axis, value]) =>
+      translateAxis(axis, negative ? negate(arbitrary(value)) : arbitrary(value)),
+  ],
+  // e.g. `rotate-45`, `-rotate-90`, `rotate-[270deg]`
+  ...rotateScale.flatMap((degrees): Rule[] => [
+    [`rotate-${degrees}`, rotateBy(`${degrees}deg`)],
+    [`-rotate-${degrees}`, rotateBy(`-${degrees}deg`)],
+  ]),
+  [
+    /^(-?)rotate-\[(.+)\]$/,
+    ([, negative, value]) => rotateBy(negative ? negate(arbitrary(value)) : arbitrary(value)),
+  ],
+  // e.g. `scale-95`, `-scale-x-100` (a mirror), `scale-y-[var(--progress)]`
+  ...scaleScale.flatMap((percent): Rule[] =>
+    ['', 'x', 'y'].flatMap((axes): Rule[] => {
+      const name = axes ? `scale-${axes}-${percent}` : `scale-${percent}`;
+      return [
+        [name, scaleAxes(axes, String(percent / 100))],
+        [`-${name}`, scaleAxes(axes, String(-percent / 100))],
+      ];
+    }),
   ),
-  ...rules(
-    '-translate-x',
-    'translate',
-    { ...builtInSpacing, ...fractions },
-    (value) => `-${px(value)} 0`,
-  ),
-  ...rules(
-    'translate-y',
-    'translate',
-    { ...builtInSpacing, ...fractions },
-    (value) => `0 ${px(value)}`,
-  ),
-  ...rules(
-    '-translate-y',
-    'translate',
-    { ...builtInSpacing, ...fractions },
-    (value) => `0 -${px(value)}`,
-  ),
+  [
+    /^(-?)scale-(?:([xy])-)?\[(.+)\]$/,
+    ([, negative, axes = '', value]) =>
+      scaleAxes(axes, negative ? negate(arbitrary(value)) : arbitrary(value)),
+  ],
   ...keywords('transform-origin', {
     'origin-center': 'center',
-    'origin-left': 'left',
-    'origin-right': 'right',
     'origin-top': 'top',
+    'origin-top-right': 'top right',
+    'origin-right': 'right',
+    'origin-bottom-right': 'bottom right',
     'origin-bottom': 'bottom',
+    'origin-bottom-left': 'bottom left',
+    'origin-left': 'left',
+    'origin-top-left': 'top left',
   }),
+  [/^origin-\[(.+)\]$/, ([, value]) => ({ 'transform-origin': arbitrary(value) })],
 ];
 
+/** The transform variables at rest, on every element: see `transformRules`. */
+export const transformVariables = {
+  getCSS: () =>
+    '*, ::before, ::after { --blade-translate-x: 0; --blade-translate-y: 0; --blade-rotate: 0deg; --blade-scale-x: 1; --blade-scale-y: 1; }',
+};
+
+/**
+ * A transition-property class brings Tailwind's defaults (150ms, its ease);
+ * `duration-*`, `ease-*` and `delay-*` come after it in the stylesheet, so
+ * they win: keep them below in this list.
+ */
+const TRANSITION_DEFAULTS = {
+  'transition-duration': '150ms',
+  'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
+};
+
+const transitionProperties: Record<string, string> = {
+  transition:
+    'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+  'transition-all': 'all',
+  'transition-colors':
+    'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke',
+  'transition-opacity': 'opacity',
+  'transition-shadow': 'box-shadow',
+  'transition-transform': 'transform',
+  'transition-size': 'width, height',
+};
+
+/** Tailwind's millisecond scale, beside Blade's named one: `duration-300` */
+const milliseconds = Object.fromEntries(
+  [0, 75, 100, 150, 200, 300, 500, 700, 1000].map((ms) => [ms, ms]),
+);
+
 const transitionRules: Rule[] = [
-  ...keywords('transition-property', {
-    'transition-none': 'none',
-    'transition-all': 'all',
-    'transition-colors': 'color, background-color, border-color, outline-color, fill, stroke',
-    'transition-opacity': 'opacity',
-    'transition-shadow': 'box-shadow',
-    'transition-transform': 'translate, scale, rotate, transform',
-    'transition-size': 'width, height',
+  ...Object.entries(transitionProperties).map(
+    ([name, property]): Rule => [name, { 'transition-property': property, ...TRANSITION_DEFAULTS }],
+  ),
+  ['transition-none', { 'transition-property': 'none' }],
+  // e.g. `transition-[height]`, `transition-[background-color,border-color]`
+  [
+    /^transition-\[(.+)\]$/,
+    ([, value]) => ({ 'transition-property': arbitrary(value), ...TRANSITION_DEFAULTS }),
+  ],
+  // e.g. `duration-moderate` → 280ms, `duration-300`, `duration-[350ms]`
+  ...rules(
+    'duration',
+    'transition-duration',
+    { ...milliseconds, ...motion.duration },
+    (value) => `${value}ms`,
+  ),
+  [/^duration-\[(.+)\]$/, ([, value]) => ({ 'transition-duration': arbitrary(value) })],
+  // e.g. `ease-standard` → cubic-bezier(0.3, 0, 0.2, 1); Tailwind's `ease-in`, `-out`, `-in-out`.
+  // Blade's `linear` is `cubic-bezier(0, 0, 0, 0)`, which isn't linear, so it's replaced
+  ...rules('ease', 'transition-timing-function', {
+    ...motion.easing,
+    linear: 'linear',
+    in: 'cubic-bezier(0.4, 0, 1, 1)',
+    out: 'cubic-bezier(0, 0, 0.2, 1)',
+    'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
   }),
+  [/^ease-\[(.+)\]$/, ([, value]) => ({ 'transition-timing-function': arbitrary(value) })],
+  // e.g. `delay-gentle` → 480ms, `delay-100`, `delay-[80ms]`
+  ...rules(
+    'delay',
+    'transition-delay',
+    { ...milliseconds, ...motion.delay },
+    (value) => `${value}ms`,
+  ),
+  [/^delay-\[(.+)\]$/, ([, value]) => ({ 'transition-delay': arbitrary(value) })],
 ];
 
 /**
@@ -780,7 +946,10 @@ const visualRules: Rule[] = [
   ...rules('outline', 'outline-width', border.width),
   // Blade's focus outline: 4px, offset 1px (`outline-4 outline-offset-1`)
   ...rules('outline', 'outline-width', { 4: 4 }),
-  ...keywords('outline-style', { 'outline-none': 'none', 'outline-solid': 'solid' }),
+  // Tailwind's `outline-none`: a transparent outline, not none, so forced
+  // colours (Windows high contrast) still draw the focus.
+  ['outline-none', { outline: '2px solid transparent', 'outline-offset': '2px' }],
+  ...keywords('outline-style', { 'outline-solid': 'solid' }),
   ...rules('outline-offset', 'outline-offset', { 0: 0, 1: 1, 2: 2 }),
   ...rules('-outline-offset', 'outline-offset', { 1: 1, 2: 2, 4: 4 }, negativePx),
 ];
@@ -788,14 +957,16 @@ const visualRules: Rule[] = [
 // ===== Animation =====
 
 const keyframes = {
-  spin: 'from { rotate: 0deg } to { rotate: 360deg }',
+  spin: 'from { transform: rotate(0deg) } to { transform: rotate(360deg) }',
   pulse: '50% { opacity: 0.5 }',
-  bounce: '0%, 100% { translate: 0 -50% } 50% { translate: 0 0 }',
+  // Tailwind's: falls fast, eases up
+  bounce:
+    '0%, 100% { transform: translateY(-50%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1) } 50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1) }',
   shake:
-    '0%, 100% { translate: 0 0 } 12.5% { translate: -6px 0 } 37.5% { translate: 5px 0 } 62.5% { translate: -3px 0 } 87.5% { translate: 2px 0 }',
+    '0%, 100% { transform: none } 12.5% { transform: translateX(-6px) } 37.5% { transform: translateX(5px) } 62.5% { transform: translateX(-3px) } 87.5% { transform: translateX(2px) }',
   // Blade's DotLoader: each dot lifts by its `--lift` and brightens, a third of the way in
   dot:
-    '0%, 60%, 100% { translate: 0 0; opacity: 0.42 } 30% { translate: 0 calc(var(--lift) * -1); opacity: 1 }',
+    '0%, 60%, 100% { transform: none; opacity: 0.42 } 30% { transform: translateY(calc(var(--lift) * -1)); opacity: 1 }',
   // Blade's Skeleton: the gray fill rests, then brightens to its highlighted step
   skeleton: `0%, 25% { background-color: ${color(
     'interactive-background-gray-default',
@@ -807,8 +978,9 @@ const keyframes = {
 // Blade's CounterInput: the new number slides in from below on increment,
 // from above on decrement; loading, a bar swings across the bottom edge.
 const counterKeyframes = {
-  'slide-up': '0% { translate: 0 30%; opacity: 0 } 100% { translate: 0 0; opacity: 1 }',
-  'slide-down': '0% { translate: 0 -30%; opacity: 0 } 100% { translate: 0 0; opacity: 1 }',
+  'slide-up': '0% { transform: translateY(30%); opacity: 0 } 100% { transform: none; opacity: 1 }',
+  'slide-down':
+    '0% { transform: translateY(-30%); opacity: 0 } 100% { transform: none; opacity: 1 }',
   oscillate: '0%, 100% { left: -40% } 25%, 75% { left: 50% } 50% { left: 100% }',
 };
 
@@ -927,9 +1099,11 @@ const textRules: Rule[] = [
  * `[stroke-linecap:round]`, `[--tab-index:2]`, `[width:calc(100%/var(--tab-count))]`.
  * `_` stands for a space.
  */
+// A `theme()` lookup is a Tailwind value, not Blade's: left to the app's Tailwind
+// (styles-contract.test.ts keeps it out of Blade's own classes).
 const arbitraryPropertyRule: Rule = [
   /^\[(--[\w-]+|[a-z-]+):(.+)\]$/,
-  ([, property, value]) => ({ [property]: value.replace(/_/g, ' ') }),
+  ([, property, value]) => (/\btheme\(/.test(value) ? undefined : { [property]: arbitrary(value) }),
 ];
 
 // ===== Shortcuts =====
@@ -963,9 +1137,15 @@ const pseudoClasses: Record<string, string> = {
   checked: ':checked',
   first: ':first-child',
   last: ':last-child',
+  only: ':only-child',
+  odd: ':nth-child(odd)',
+  even: ':nth-child(even)',
+  'first-of-type': ':first-of-type',
+  'last-of-type': ':last-of-type',
   empty: ':empty',
   before: '::before',
   after: '::after',
+  'first-letter': '::first-letter',
   placeholder: '::placeholder',
 };
 
@@ -979,6 +1159,12 @@ const withState = (selector: string, state: string): string => {
   return `${selector.slice(0, pseudoElement.index)}${state}${pseudoElement[0]}`;
 };
 
+/**
+ * Hover only where a pointer hovers (Tailwind's `hoverOnlyWhenSupported`): a
+ * tap on a phone fires `:hover` and leaves it stuck on the tapped element.
+ */
+const HOVER_MEDIA = '@media (hover: hover) and (pointer: fine)';
+
 const pseudoClassVariant: Variant = (matcher) => {
   const [name, ...rest] = matcher.split(':');
   const pseudoClass = pseudoClasses[name];
@@ -986,6 +1172,7 @@ const pseudoClassVariant: Variant = (matcher) => {
   return {
     matcher: rest.join(':'),
     selector: (selector) => withState(selector, pseudoClass),
+    ...(name === 'hover' ? { parent: HOVER_MEDIA } : {}),
   };
 };
 
@@ -1027,29 +1214,62 @@ const groupPeerVariant: Variant = (matcher) => {
     matcher: rest,
     selector: (selector) =>
       kind === 'group' ? `${marker} ${selector}` : `${marker} ~ ${selector}`,
+    ...(state === 'hover' ? { parent: HOVER_MEDIA } : {}),
   };
 };
 
-/** `*:w-2` → direct children; `[&>img]:w-full`, `[&>*+*]:border-t-thin` → any selector around `&` */
+/** The `[…]` a matcher starts with, brackets inside it balanced: `[&_[data-x]]:…` */
+const leadingBracket = (matcher: string): { inner: string; rest: string } | undefined => {
+  if (!matcher.startsWith('[')) return undefined;
+  let depth = 0;
+  for (let at = 0; at < matcher.length; at += 1) {
+    if (matcher[at] === '[') depth += 1;
+    else if (matcher[at] === ']' && --depth === 0) {
+      return matcher[at + 1] === ':'
+        ? { inner: matcher.slice(1, at), rest: matcher.slice(at + 2) }
+        : undefined;
+    }
+  }
+  return undefined;
+};
+
+/**
+ * `*:w-2` → direct children; `[&>img]:w-full`, `[&>*+*]:border-t-thin`,
+ * `[&_[data-x]]:hidden` → any selector around `&`; `[@media(min-width:360px)]:…`
+ * → any at-rule. `_` is a space.
+ */
 const selectorVariant: Variant = (matcher) => {
   if (matcher.startsWith('*:')) {
     return { matcher: matcher.slice(2), selector: (selector) => `${selector} > *` };
   }
-  const match = /^\[(&[^\]]+)\]:(.+)$/.exec(matcher);
-  if (!match) return undefined;
-  const template = match[1].replace(/_/g, ' ');
-  return { matcher: match[2], selector: (selector) => template.replace(/&/g, selector) };
+  const bracket = leadingBracket(matcher);
+  if (!bracket || !bracket.rest) return undefined;
+  const template = bracket.inner.replace(/_/g, ' ');
+  if (template.startsWith('@')) return { matcher: bracket.rest, parent: template };
+  if (!template.includes('&')) return undefined;
+  return { matcher: bracket.rest, selector: (selector) => template.replace(/&/g, selector) };
 };
 
-/** Blade's breakpoints, mobile first: `m:p-4` → `@media (min-width: 768px)` */
-const breakpointVariant: Variant = (matcher) => {
-  const [name, ...rest] = matcher.split(':');
-  if (rest.length === 0 || !(name in breakpoints) || name === 'base') return undefined;
-  return {
-    matcher: rest.join(':'),
-    parent: `@media (min-width: ${breakpoints[name as keyof typeof breakpoints]}px)`,
-  };
-};
+/** What an app decides when it compiles Blade's CSS (`bladeUnoConfig`). */
+export interface BladeUnoOptions {
+  /**
+   * Where desktop starts: `d:p-4` → `@media (min-width: <desktop>)`. One
+   * breakpoint, mobile first — everything is the phone's unless `d:` says
+   * otherwise. No JS reads it: nothing in the components decides by viewport.
+   * Give the app's own `d:` the same value (`bladeVariants`, Tailwind's
+   * `screens.d`), so its classes and Blade's switch together.
+   * @default '62.5rem'
+   */
+  desktop?: string;
+}
+
+/** The desktop media query `d:` uses: `(min-width: 62.5rem)` by default. */
+export function desktopMedia(options: BladeUnoOptions = {}): string {
+  return `(min-width: ${options.desktop ?? '62.5rem'})`;
+}
+
+const desktopVariant = (media: string): VariantFunction => (matcher) =>
+  matcher.startsWith('d:') ? { matcher: matcher.slice(2), parent: `@media ${media}` } : undefined;
 
 const motionReduceVariant: Variant = (matcher) => {
   if (!matcher.startsWith('motion-reduce:')) return undefined;
@@ -1076,20 +1296,11 @@ const importantVariant: Variant = (matcher) => {
 };
 
 const preflights = [
+  transformVariables,
   // Borders are opt-in per side: `border-t-thin border-solid` draws only the top edge
   { getCSS: () => '*, ::before, ::after { border-width: 0; }' },
   // Buttons show they are pressable, as the browser leaves them on the arrow
   { getCSS: () => 'button, [role="button"] { cursor: pointer; } :disabled { cursor: default; }' },
-  // The breakpoints the `s:`/`m:`/… variants were built with, for JS to read
-  // (BladeProvider): a media query cannot read a custom property, so these
-  // mirror the build, they do not drive it
-  {
-    getCSS: () =>
-      `:root { ${Object.entries(breakpoints)
-        .filter(([name]) => name !== 'base')
-        .map(([name, width]) => `--blade-breakpoint-${name}: ${width}px;`)
-        .join(' ')} }`,
-  },
   {
     getCSS: () =>
       Object.entries({ ...keyframes, ...counterKeyframes })
@@ -1098,40 +1309,80 @@ const preflights = [
   },
 ];
 
-export default defineConfig({
-  presets: [],
-  separators: [':'],
-  rules: [
-    ...getColorRules(),
-    ...colorKeywordRules,
-    ...spacingRules,
-    ...sizeRules,
-    ...fractionRules,
-    ...borderRules,
-    ...effectRules,
-    ...opacityRules,
-    ...zIndexRules,
-    ...transformRules,
-    ...transitionRules,
-    ...visualRules,
-    ...animationRules,
-    ...interactionRules,
-    ...typographyRules,
-    ...textRules,
-    ...layoutRules,
-    ...moreLayoutRules,
-    arbitraryPropertyRule,
-  ],
-  shortcuts,
-  // Multi-pass, so variants chain: `hover:before:`, `data-[state=closed]:data-[side=ahead]:`
-  variants: [
+// Multi-pass, so variants chain: `hover:before:`, `data-[state=closed]:data-[side=ahead]:`
+/** Blade's variants, `d:` at the app's desktop width: for an app's own pass too. */
+export function bladeVariants(options: BladeUnoOptions = {}): Variant[] {
+  const matchers = [
     importantVariant,
     selectorVariant,
     groupPeerVariant,
     dataVariant,
-    breakpointVariant,
+    desktopVariant(desktopMedia(options)),
     motionReduceVariant,
     pseudoClassVariant,
-  ].map((match): Variant => ({ match, multiPass: true })),
-  preflights,
-});
+  ] as VariantFunction[];
+  return matchers.map((match): Variant => ({ match, multiPass: true }));
+}
+
+/**
+ * Blade's UnoCSS config. The app compiles Blade's CSS itself — scanning the
+ * package's `src-cx` (or the modules it bundles) — so `options` reach the
+ * output; there is no prebuilt stylesheet. The default export is this with
+ * the defaults (Storybook, the tests).
+ */
+export function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfig {
+  return defineConfig({
+    presets: [],
+    separators: [':'],
+    rules: [
+      ...getColorRules(),
+      ...colorKeywordRules,
+      ...spacingRules,
+      ...sizeRules,
+      ...fractionRules,
+      ...borderRules,
+      ...effectRules,
+      ...opacityRules,
+      ...zIndexRules,
+      ...transformRules,
+      ...transitionRules,
+      ...visualRules,
+      ...animationRules,
+      ...interactionRules,
+      ...typographyRules,
+      ...textRules,
+      ...layoutRules,
+      ...moreLayoutRules,
+      arbitraryPropertyRule,
+    ],
+    shortcuts,
+    variants: bladeVariants(options),
+    preflights,
+  });
+}
+
+export default bladeUnoConfig();
+
+/**
+ * Rule families, for an app that hands some of its own utilities over to
+ * Blade's: a config of just these (and `bladeVariants`) over the app's files
+ * emits those classes exactly as Blade's components get them, so the app's
+ * own generator (its Tailwind) can stop emitting them and no class name is
+ * defined twice.
+ */
+export const ruleGroups = {
+  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` */
+  spacing: spacingRules,
+  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values */
+  size: sizeRules,
+  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` */
+  fraction: fractionRules,
+  /** `opacity-*`: Tailwind's percentage scale */
+  opacity: opacityRules,
+  /** `font-heading`: the heading face, the merchant's when its theme sets one */
+  font: fontRules,
+  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*`: needs `transformVariables` among the preflights */
+  transform: transformRules,
+  /** `transition*`, `duration-*`, `ease-*`, `delay-*` */
+  transition: transitionRules,
+};

@@ -39,7 +39,7 @@ const meta: StoryMeta = {
     BottomSheet: {
       name: 'Bottom sheet',
       description:
-        "Blade's BottomSheet is Modal in its `sheet` variant: anchored to the bottom with a handle, dragged down to dismiss (a fling, or past half its height). onDismiss reports source 'drag'. `variant` picks sheet or modal, and per breakpoint (`{ base: 'sheet', m: 'modal' }`) it is the adaptive sheet: a modal from 768px up, centred.",
+        "Blade's BottomSheet is Modal in its `sheet` variant: anchored to the bottom with a handle, dragged down to dismiss (a fling, or past half its height). onDismiss reports source 'drag'. `variant` picks sheet or modal (centred); the app decides which.",
       argTypes: {
         isDismissible: {
           control: 'boolean',
@@ -47,8 +47,7 @@ const meta: StoryMeta = {
         },
         variant: {
           control: 'select',
-          options: ['sheet', 'modal', 'adaptive'],
-          description: "adaptive: { base: 'sheet', m: 'modal' }",
+          options: ['sheet', 'modal'],
         },
         isDraggable: {
           control: 'boolean',

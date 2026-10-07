@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { ResponsiveProps } from '../../runes/defaults/responsive';
   import { useComponentDefaults } from '../defaults';
   import Modal from '../modal/Modal.svelte';
   import type {
@@ -17,7 +16,7 @@
     pace,
     isDraggable,
     ...modal
-  }: BottomSheetBehaviourProps & ResponsiveProps<BottomSheetStyleProps> = $props();
+  }: BottomSheetBehaviourProps & BottomSheetStyleProps = $props();
 
   const style = useComponentDefaults('BottomSheet', () => ({
     variant,

@@ -78,7 +78,7 @@ const CLOSE =
 
 export const resolvePopover = (_props: PopoverStyleProps = {}): PopoverLook => ({
   root: 'relative inline-flex',
-  panel: `${POPOVER_PANEL} w-max max-w-[288px] m:max-w-[328px]`,
+  panel: `${POPOVER_PANEL} w-max max-w-[288px] d:max-w-[328px]`,
   nativePlacement: NATIVE_PLACEMENT,
   gap: 16,
   arrow: ARROW,
@@ -94,7 +94,7 @@ export const resolvePopover = (_props: PopoverStyleProps = {}): PopoverLook => (
     header: 'flex items-center gap-3',
     titleRow: 'flex min-w-0 items-center gap-2 pr-3',
     title:
-      'm-0 font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+      'm-0 font-blade-text font-blade-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
     close: `ms-auto ${CLOSE}`,
     floatingClose: `absolute top-3 right-3 z-1 rounded-max p-2 ${CLOSE}`,
   },

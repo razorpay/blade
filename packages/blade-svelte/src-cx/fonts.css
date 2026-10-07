@@ -1,0 +1,67 @@
+/*
+ * Blade's faces, woff2 only.
+ *
+ * The heading face, for `font-heading` (uno.config.ts): TASA Orbiter Display
+ * SemiBold, a static 600 cut (5.7 KB) — blade-core's variable TASA Orbiter
+ * pinned at wght 600 / opsz 60, the cut checkout ships, glyph for glyph.
+ * Printable ASCII, ₹, ‘ ’ “ ” – — … • · and the no-break space: what
+ * checkout's copy shows all the time; anything else is the system font's.
+ * TASA has no ₹, so it is drawn from TASA's own P bowl, E bars and R leg.
+ * Kerning only. Other weights draw in this cut.
+ *
+ * Rebuilt, with the Inter cuts, by scripts/fonts/build.sh (fontTools, FontForge).
+ *
+ * Named `Tasa`: checkout's merchant theme names its default heading font so
+ * (`--merchant-heading-font: "Tasa"`), and `font-heading` falls back to it.
+ */
+@font-face {
+  font-family: 'Tasa';
+  src: url('./fonts/tasa.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/*
+ * The text face, for `font-blade-text` (src-cx/blade.css) and an app's own
+ * `Inter` (checkout's `font-sans`): Inter Regular, Medium and SemiBold —
+ * blade-core's variable Inter pinned at wght 400 / 500 / 600, the cuts
+ * checkout ships, glyph for glyph (Inter 3.019), ~7 KB each. The same
+ * characters as the heading face, ₹ in every weight. Bold (`font-blade-bold`)
+ * is synthesised from SemiBold.
+ */
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* Arial sized to Inter's and TASA Orbiter's metrics, so the swap does not shift the layout. */
+@font-face {
+  font-family: 'Inter Fallback Arial';
+  src: local(Arial);
+  size-adjust: 105%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 5%;
+}
+@font-face {
+  font-family: 'TASA Orbiter Fallback Arial';
+  src: local(Arial);
+  size-adjust: 98%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 7%;
+}

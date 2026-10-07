@@ -223,9 +223,7 @@ export type {
   SegmentedControlProps,
   SegmentedControlStyleProps,
 } from './segmented-control';
-// Blade's BottomSheet is Modal in its `sheet` variant; per breakpoint
-// (`variant: { base: 'sheet', m: 'modal' }`) it is a sheet on phones and a
-// modal from `m` up.
+// Blade's BottomSheet is Modal in its `sheet` variant.
 export { BottomSheet, BOTTOM_SHEET_AXES } from './bottom-sheet';
 export type {
   BottomSheetBehaviourProps,

@@ -84,9 +84,9 @@ const INDICATOR = {
   },
   mark: {
     shown:
-      'absolute flex scale-100 opacity-1300 transition-all duration-xquick ease-entrance motion-reduce:transition-none',
+      'absolute flex scale-100 opacity-blade-1300 transition-all duration-xquick ease-entrance motion-reduce:transition-none',
     hidden:
-      'absolute flex [scale:.6] opacity-0 transition-all duration-xquick ease-exit motion-reduce:transition-none',
+      'absolute flex scale-[.6] opacity-0 transition-all duration-xquick ease-exit motion-reduce:transition-none',
   },
 };
 
@@ -161,10 +161,10 @@ export const resolveCheckbox: CheckboxStyleResolver<CheckboxStyleProps> = (
     control: 'peer sr-only',
     indicator: { ...INDICATOR, root: `${INDICATOR.root} ${size.box}` },
     // Blade's SelectorTitle: 4px past the box's 2px margin.
-    title: `ml-1 font-text font-regular text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${size.title}`,
+    title: `ml-1 font-blade-text font-blade-regular text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${size.title}`,
     // Blade's SelectorSupportText sits in a 16px/normal line box, so the
     // caption keeps React's leading.
     support: `block text-200 [line-height:normal] ${size.indent}`,
-    supportText: `font-text font-regular tracking-50 text-surface-gray-muted ${size.caption}`,
+    supportText: `font-blade-text font-blade-regular tracking-50 text-surface-gray-muted ${size.caption}`,
   };
 };

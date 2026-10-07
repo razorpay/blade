@@ -16,14 +16,14 @@ const ROW_UNPICKED =
 export function resolveActionList(): OptionListClasses {
   return {
     root: 'flex w-full flex-col',
-    disabled: 'opacity-600',
+    disabled: 'opacity-blade-600',
     options: 'flex flex-col gap-0.5',
     virtual: { root: 'min-h-0', viewport: 'min-h-0 flex-1', options: 'flex flex-col gap-0.5' },
     // `relative`: the hidden control is absolutely positioned inside its row.
-    row: 'relative flex cursor-pointer items-center gap-2 p-2 rounded-small font-text text-100 leading-100 tracking-50 whitespace-nowrap select-none transition-colors',
+    row: 'relative flex cursor-pointer items-center gap-2 p-2 rounded-small font-blade-text text-100 leading-100 tracking-50 whitespace-nowrap select-none transition-colors',
     rowState: { picked: ROW_PICKED, unpicked: ROW_UNPICKED },
     rowActive: 'outline-solid outline-4 outline-offset-1 outline-surface-primary-muted',
-    rowDisabled: 'pointer-events-none opacity-600',
+    rowDisabled: 'pointer-events-none opacity-blade-600',
     control: { radio: 'sr-only', checkbox: 'sr-only' },
     invalid: 'outline-solid outline-thin outline-interactive-negative-default',
     content: 'flex min-w-0 flex-1 flex-row items-center gap-2',

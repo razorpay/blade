@@ -52,7 +52,7 @@
       <input
         type="text"
         role="combobox"
-        class="min-w-0 flex-1 border-none bg-transparent p-0 font-text text-inherit outline-none placeholder:text-surface-gray-disabled"
+        class="min-w-0 flex-1 border-none bg-transparent p-0 font-blade-text text-inherit outline-none placeholder:text-surface-gray-disabled"
         placeholder={searchPlaceholder}
         aria-label={searchPlaceholder}
         aria-autocomplete="list"

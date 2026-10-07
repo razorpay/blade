@@ -31,13 +31,13 @@ const VARIANT: Record<Axis<'variant'>, Record<'calm' | 'urgent', string>> = {
   text: { calm: '', urgent: 'text-feedback-negative-intense' },
   pill: {
     calm:
-      'rounded-max bg-feedback-neutral-subtle px-2 py-0.5 text-75 leading-50 font-medium text-feedback-neutral-intense',
+      'rounded-max bg-feedback-neutral-subtle px-2 py-0.5 text-75 leading-50 font-blade-medium text-feedback-neutral-intense',
     urgent:
-      'rounded-max bg-feedback-negative-subtle px-2 py-0.5 text-75 leading-50 font-medium text-feedback-negative-intense',
+      'rounded-max bg-feedback-negative-subtle px-2 py-0.5 text-75 leading-50 font-blade-medium text-feedback-negative-intense',
   },
 };
 
 export const resolveCountdown: CountdownStyleResolver<CountdownStyleProps> = (props) => ({
-  root: 'inline-block font-text tabular-nums',
+  root: 'inline-block font-blade-text tabular-nums',
   tone: VARIANT[props.variant ?? 'text'],
 });

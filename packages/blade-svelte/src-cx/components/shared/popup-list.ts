@@ -54,7 +54,7 @@ export interface PopupItemClasses {
 
 export const POPUP_ITEM: PopupItemClasses = {
   item:
-    'flex w-full flex-row items-center gap-2 rounded-small border-none bg-transparent p-2 text-left font-text text-100 leading-100 tracking-50 whitespace-nowrap outline-none select-none',
+    'flex w-full flex-row items-center gap-2 rounded-small border-none bg-transparent p-2 text-left font-blade-text text-100 leading-100 tracking-50 whitespace-nowrap outline-none select-none',
   itemState: {
     enabled:
       'cursor-pointer data-[active=keyboard]:outline-solid data-[active=keyboard]:outline-4 data-[active=keyboard]:outline-offset-1 data-[active=keyboard]:outline-surface-primary-muted',
@@ -80,8 +80,8 @@ export const POPUP_ITEM: PopupItemClasses = {
 export const POPUP_HEADER = {
   root: 'flex flex-col gap-3 px-4 pt-4 pb-3',
   titleRow: 'flex min-w-0 flex-row items-start gap-2',
-  title: 'm-0 min-w-0 flex-1 truncate font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
-  subtitle: 'm-0 font-text text-75 leading-75 tracking-50 text-surface-gray-muted',
+  title: 'm-0 min-w-0 flex-1 truncate font-blade-text font-blade-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+  subtitle: 'm-0 font-blade-text text-75 leading-75 tracking-50 text-surface-gray-muted',
 } as const;
 
 /** Blade DSL's _Menu Footer / _Dropdown Footer: 16px in at the sides and below. */
@@ -109,5 +109,5 @@ export const POPUP_SELECTED = 'bg-interactive-gray-faded-highlighted';
 export const POPUP_SECTION = {
   root: 'flex flex-col gap-0.5 border-t-thin border-x-none border-b-none border-solid border-surface-gray-muted pt-0.5 first:border-t-none first:pt-0',
   title:
-    'px-2 pt-2 pb-0.5 font-text font-semibold text-75 leading-75 tracking-50 text-interactive-gray-muted',
+    'px-2 pt-2 pb-0.5 font-blade-text font-blade-semibold text-75 leading-75 tracking-50 text-interactive-gray-muted',
 } as const;

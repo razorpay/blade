@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { DialogDismissEvent } from '../../runes';
-  import type { Responsive } from '../../runes/defaults/responsive';
   import LayerHost from '../../components/layer/LayerHost.svelte';
   import {
     BottomSheet,
@@ -15,7 +14,7 @@
     title?: string;
     pace?: BottomSheetStyleProps['pace'];
     isDraggable?: boolean;
-    variant?: Responsive<'modal' | 'sheet'>;
+    variant?: 'modal' | 'sheet';
     className?: string;
   }
 

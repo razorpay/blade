@@ -168,8 +168,8 @@ const INDICATOR = {
     },
   },
   dot: {
-    picked: `${DOT} scale-100 opacity-1300 [transition:opacity_160ms_cubic-bezier(0,0,0.2,1),scale_160ms_cubic-bezier(0,0,0.2,1)] motion-reduce:transition-none`,
-    unpicked: `${DOT} [scale:.2] [opacity:0.1] [transition:opacity_160ms_cubic-bezier(0.17,0,1,1),scale_0s_160ms] motion-reduce:transition-none`,
+    picked: `${DOT} scale-100 opacity-blade-1300 [transition:opacity_160ms_cubic-bezier(0,0,0.2,1),transform_160ms_cubic-bezier(0,0,0.2,1)] motion-reduce:transition-none`,
+    unpicked: `${DOT} scale-[.2] [opacity:0.1] [transition:opacity_160ms_cubic-bezier(0.17,0,1,1),transform_0s_160ms] motion-reduce:transition-none`,
   },
 };
 
@@ -198,10 +198,10 @@ export const resolveRadioGroup: RadioGroupStyleResolver<RadioGroupStyleProps> = 
       disabled: 'pointer-events-none',
       control: 'peer sr-only',
       // Blade's SelectorTitle: `surface.text.gray.subtle`, disabled greyed.
-      label: `ml-1 font-text font-regular text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${look.title}`,
+      label: `ml-1 font-blade-text font-blade-regular text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${look.title}`,
       // A full-width line under the row, so the row wraps it below.
       support: `w-full ${look.indent}`,
-      supportText: `font-text font-regular tracking-50 text-surface-gray-muted ${look.caption}`,
+      supportText: `font-blade-text font-blade-regular tracking-50 text-surface-gray-muted ${look.caption}`,
       indicator: {
         ...INDICATOR,
         root: `${INDICATOR.root} ${look.circle}`,

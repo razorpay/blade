@@ -64,7 +64,6 @@
     isOpen: () => isOpen,
     isTop: () => isTop,
     isDismissible: () => isDismissible,
-    dragMedia: () => classes.drag.media,
     dragAxis: () => classes.drag,
     onDismissRequest: (source) => onDismissRequest(source),
   });

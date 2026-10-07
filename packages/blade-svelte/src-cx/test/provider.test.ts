@@ -2,7 +2,6 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import ProviderHarness from './fixtures/ProviderHarness.svelte';
 import { snapSize } from '../runes/defaults/defaults.svelte';
-import { atBreakpoint } from '../runes/defaults/responsive';
 
 const inputBox = (input: HTMLElement): HTMLElement => input.parentElement!;
 const checkboxBox = (input: HTMLElement): HTMLElement => input.nextElementSibling as HTMLElement;
@@ -67,29 +66,6 @@ describe('BladeProvider defaults', () => {
     expect(getByTestId('inner-button').className).toContain('min-h-12');
   });
 
-  it('resolves a per-breakpoint size against the viewport and the widths given', () => {
-    (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 1000,
-      addEventListener() {
-        // noop
-      },
-      removeEventListener() {
-        // noop
-      },
-    });
-    const blade = render(ProviderHarness, {
-      props: { size: { base: 'large', m: 'small' } },
-    });
-    // 1000px is past Blade's `m` (768): small.
-    expect(blade.getByTestId('button').className).toContain('min-h-8');
-    blade.unmount();
-    const custom = render(ProviderHarness, {
-      props: { size: { base: 'large', m: 'small' }, breakpoints: { m: 1100 } },
-    });
-    // With `m` at 1100px, 1000px is still `base`: large.
-    expect(custom.getByTestId('button').className).toContain('min-h-12');
-  });
-
   it('merges adapters over the enclosing ones', async () => {
     const outer = vi.fn();
     const inner = vi.fn();
@@ -102,7 +78,7 @@ describe('BladeProvider defaults', () => {
   });
 });
 
-describe('snapSize and atBreakpoint', () => {
+describe('snapSize', () => {
   it('snaps to the nearest size on the scale, the larger on a tie', () => {
     expect(snapSize('large', ['small', 'medium'])).toBe('medium');
     expect(snapSize('xsmall', ['medium', 'large'])).toBe('medium');
@@ -110,53 +86,18 @@ describe('snapSize and atBreakpoint', () => {
     expect(snapSize('small', ['small', 'medium'])).toBe('small');
   });
 
-  it('takes the nearest smaller breakpoint’s value', () => {
-    const value = { base: 'sheet', m: 'modal' };
-    expect(atBreakpoint(value, 'base')).toBe('sheet');
-    expect(atBreakpoint(value, 's')).toBe('sheet');
-    expect(atBreakpoint(value, 'm')).toBe('modal');
-    expect(atBreakpoint(value, 'xl')).toBe('modal');
-    expect(atBreakpoint('modal', 'xl')).toBe('modal');
-  });
 });
 
 describe('BladeProvider and the modal variant', () => {
-  afterEach(() => {
-    delete (window as { matchMedia?: unknown }).matchMedia;
-  });
-
-  it('one default makes every Modal a sheet on phones; BottomSheets stay sheets', async () => {
+  it('one default makes every Modal a sheet; BottomSheets stay sheets', async () => {
     const { default: Harness } = await import('./fixtures/ProviderModalHarness.svelte');
-    (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 390,
-      addEventListener() {
-        // noop
-      },
-      removeEventListener() {
-        // noop
-      },
-    });
-    const phone = render(Harness, {
-      props: { defaults: { Modal: { variant: { base: 'sheet', m: 'modal' } } } },
-    });
-    expect(phone.getByTestId('modal-drag-zone')).toBeTruthy();
-    phone.unmount();
-
-    (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-      matches: Number(/(\d+)px/.exec(query)?.[1] ?? 0) <= 1200,
-      addEventListener() {
-        // noop
-      },
-      removeEventListener() {
-        // noop
-      },
-    });
-    const desktop = render(Harness, {
-      props: { defaults: { Modal: { variant: { base: 'sheet', m: 'modal' } } } },
-    });
-    expect(desktop.queryByTestId('modal-drag-zone')).toBeNull();
-    // The Modal default does not reach a BottomSheet: it is a sheet on desktop too.
-    expect(desktop.getByTestId('sheet-drag-zone')).toBeTruthy();
+    const sheet = render(Harness, { props: { defaults: { Modal: { variant: 'sheet' } } } });
+    expect(sheet.getByTestId('modal-drag-zone')).toBeTruthy();
+    sheet.unmount();
+    const modal = render(Harness, { props: { defaults: { Modal: { variant: 'modal' } } } });
+    expect(modal.queryByTestId('modal-drag-zone')).toBeNull();
+    // The Modal default does not reach a BottomSheet: it stays a sheet.
+    expect(modal.getByTestId('sheet-drag-zone')).toBeTruthy();
   });
 });
 

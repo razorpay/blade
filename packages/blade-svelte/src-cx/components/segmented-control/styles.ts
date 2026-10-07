@@ -28,7 +28,7 @@ export type SegmentSize = typeof SEGMENT_SIZES[number];
 // picked segment, sliding at moderate/standard. Its inset (and so its
 // width) follows the track's padding, per size.
 const THUMB =
-  'pointer-events-none absolute [translate:calc(var(--segment-index)*(100%_+_0.125rem))_0] bg-surface-gray-intense transition-transform duration-moderate ease-standard motion-reduce:transition-none';
+  'pointer-events-none absolute translate-x-[calc(var(--segment-index)*(100%_+_0.125rem))] bg-surface-gray-intense transition-transform duration-moderate ease-standard motion-reduce:transition-none';
 // Spelt out, not built: UnoCSS emits the classes it finds in the source.
 const THUMB_INSET_2PX =
   'inset-y-0.5 left-0.5 w-[calc((100%_-_0.25rem_-_(var(--segment-count)_-_1)*0.125rem)/var(--segment-count))]';
@@ -133,7 +133,7 @@ export function segmentedLook(
       control: 'peer sr-only',
       // One flat row: the leading item, the text and the trailing item,
       // 8px apart.
-      label: `flex min-w-0 flex-1 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
+      label: `flex min-w-0 flex-1 flex-row items-center justify-center gap-2 whitespace-nowrap font-blade-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
       iconSize: segment.icon,
     },
   };

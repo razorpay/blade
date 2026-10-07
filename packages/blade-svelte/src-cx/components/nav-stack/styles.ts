@@ -18,7 +18,7 @@ export interface NavStackClasses {
 /** Style props in, the parts out. */
 export type NavStackStyleResolver<P> = (props: P) => NavStackClasses;
 
-/** No axes: the motion differs by breakpoint, not by prop. */
+/** No axes: the motion differs on desktop (`d`), not by prop. */
 export const NAV_STACK_AXES = {} as const;
 export type NavStackStyleProps = Record<never, never>;
 
@@ -31,9 +31,9 @@ const SCREEN = [
   'data-[state=closed]:absolute data-[state=closed]:inset-0 data-[state=closed]:duration-xmoderate',
   'data-[state=closed]:data-[side=ahead]:translate-x-full',
   'data-[state=closed]:data-[side=behind]:-translate-x-full',
-  'm:data-[state=closed]:opacity-0',
-  'm:data-[state=closed]:data-[side=ahead]:translate-x-5',
-  'm:data-[state=closed]:data-[side=behind]:-translate-x-5',
+  'd:data-[state=closed]:opacity-0',
+  'd:data-[state=closed]:data-[side=ahead]:translate-x-5',
+  'd:data-[state=closed]:data-[side=behind]:-translate-x-5',
 ].join(' ');
 
 export const resolveNavStack: NavStackStyleResolver<NavStackStyleProps> = () => ({

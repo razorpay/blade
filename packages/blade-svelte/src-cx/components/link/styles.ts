@@ -38,7 +38,7 @@ export type LinkSize = typeof LINK_SIZES[number];
 // `interactive.border.primary.faded`, round at 4px. Only the anchor
 // underlines, on hover and focus, at the browser's offset.
 const LOOK =
-  'cursor-pointer rounded-xsmall bg-transparent p-0 font-medium transition-colors duration-2xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-interactive-primary-faded';
+  'cursor-pointer rounded-xsmall bg-transparent p-0 font-blade-medium transition-colors duration-2xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-interactive-primary-faded';
 const ANCHOR = 'no-underline hover:underline focus-visible:underline';
 
 const COLOR: Record<LinkColor, string> = {

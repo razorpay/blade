@@ -1,5 +1,6 @@
 import 'virtual:uno.css';
-import '@razorpay/blade-core/fonts.css';
+import '../src-cx/blade.css';
+import '../src-cx/fonts.css';
 import './preview.css';
 
 /** @type { import('@storybook/svelte-vite').Preview } */

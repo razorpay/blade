@@ -33,11 +33,11 @@
     <Button type="submit" loadingAnnouncement="Placing order">Place order</Button>
     <dl class="grid [grid-template-columns:auto_1fr] gap-x-3 gap-y-1 text-25 leading-50">
       <dt class="text-surface-gray-subtle">errors</dt>
-      <dd class="font-code">{JSON.stringify(state.errors)}</dd>
+      <dd class="font-blade-code">{JSON.stringify(state.errors)}</dd>
       <dt class="text-surface-gray-subtle">data</dt>
-      <dd class="font-code">{JSON.stringify(state.data)}</dd>
+      <dd class="font-blade-code">{JSON.stringify(state.data)}</dd>
       <dt class="text-surface-gray-subtle">last submit</dt>
-      <dd class="font-code">{submitted ? JSON.stringify(submitted) : '—'}</dd>
+      <dd class="font-blade-code">{submitted ? JSON.stringify(submitted) : '—'}</dd>
     </dl>
   {/snippet}
 </Form>

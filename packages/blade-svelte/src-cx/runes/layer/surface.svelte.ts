@@ -13,8 +13,6 @@ export interface SurfaceOptions {
   isTop: () => boolean;
   /** Whether a drag may close it; a sheet that may not resists. */
   isDismissible: () => boolean;
-  /** A media query the drag is confined to, when the styles give one. */
-  dragMedia: () => string | undefined;
   /** The way out: the axis the drag follows, and its sign along it. */
   dragAxis: () => { axis: 'x' | 'y'; direction: 1 | -1 };
   /** The user dragged or flung the sheet away; the owner's model decides. */
@@ -84,7 +82,7 @@ export function createSurface(options: SurfaceOptions): Surface {
   // toward its edge). Positions are read along the way out, so the pure
   // model only ever sees a pull in the positive direction. The decisions
   // are the pure `createSheetDrag`; here the panel follows the finger with
-  // an inline transform and its transition off, and the host's scrim thins
+  // its inline translate variable and its transition off, and the host's scrim thins
   // with it — only while this is the top layer, so a sheet under another
   // surface never touches the shared scrim. Clearing both on release lets
   // the CSS transitions carry them home — or out, from where the sheet was
@@ -99,9 +97,13 @@ export function createSurface(options: SurfaceOptions): Surface {
     const dragging = drag.isDragging();
     node.style.transition = dragging ? 'none' : '';
     const { axis, direction } = options.dragAxis();
-    node.style.transform = dragging
-      ? `translate${axis.toUpperCase()}(${offset * direction}px)`
-      : '';
+    // The axis's transform variable, not `transform`: an inline transform
+    // would replace the classes' composed one (uno.config.ts, transformRules).
+    if (dragging) {
+      node.style.setProperty(`--blade-translate-${axis}`, `${offset * direction}px`);
+    } else {
+      node.style.removeProperty(`--blade-translate-${axis}`);
+    }
     const scrim = options.isTop() ? layers.scrim() : undefined;
     if (scrim) {
       scrim.style.transition = dragging ? 'none' : '';
@@ -118,13 +120,6 @@ export function createSurface(options: SurfaceOptions): Surface {
   // The panel's length along the way out.
   function extent(node: HTMLElement): number {
     return options.dragAxis().axis === 'x' ? node.offsetWidth : node.offsetHeight;
-  }
-
-  // The styles may confine the drag to a media query; where it does not
-  // match — or cannot be asked — the zone is plain content.
-  function mayDrag(): boolean {
-    const media = options.dragMedia();
-    return !media || typeof matchMedia !== 'function' || matchMedia(media).matches;
   }
 
   return {
@@ -146,9 +141,6 @@ export function createSurface(options: SurfaceOptions): Surface {
       }
     },
     handleDragStart(event) {
-      if (!mayDrag()) {
-        return;
-      }
       drag.start(along(event), event.timeStamp);
     },
     handleDragMove(event) {

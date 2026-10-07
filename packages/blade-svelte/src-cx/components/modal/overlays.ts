@@ -10,13 +10,12 @@ import type {
   OpenModalOptions as OpenModalOptionsOf,
   Overlays as OverlaysOf,
 } from '../../runes/modal/overlays.svelte';
-import type { ResponsiveProps } from '../../runes/defaults/responsive';
 import type { ModalStyleProps } from './styles';
 
-// The overlay stack bound to this library's Modal: its style props (each
-// optionally per breakpoint, `variant` included) are what `openModal`
-// accepts beside the behaviour options.
-type ModalStyle = ResponsiveProps<ModalStyleProps>;
+// The overlay stack bound to this library's Modal: its style props
+// (`variant` included) are what `openModal` accepts beside the behaviour
+// options.
+type ModalStyle = ModalStyleProps;
 export type OpenModalOptions<P> = OpenModalOptionsOf<P, ModalStyle>;
 export type ModalContent = ModalContentOf<ModalStyle>;
 export type Overlays = OverlaysOf<ModalStyle>;

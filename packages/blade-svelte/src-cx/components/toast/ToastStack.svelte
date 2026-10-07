@@ -32,7 +32,6 @@
     duration: () => classes.duration,
     geometry: () => classes.geometry,
     minShown: () => classes.minShown,
-    phoneMedia: () => classes.phoneMedia,
   });
 </script>
 
@@ -51,8 +50,7 @@
 >
   <div
     class={classes.hover}
-    style:--hover-bottom={stack.hoverVars['--hover-bottom']}
-    style:--hover-height={stack.hoverVars['--hover-height']}
+    style:--hover-height={stack.hoverHeight}
     data-expanded={stack.isExpanded}
   ></div>
   {#each stack.entries as entry (entry.id)}
@@ -61,8 +59,7 @@
       class={classes.wrapper}
       style:--toast-offset={vars['--toast-offset']}
       style:--toast-scale={vars['--toast-scale']}
-      style:--toast-opacity={vars['--toast-opacity']}
-      style:--toast-z={vars['--toast-z']}
+      data-shown={stack.isShown(entry.id)}
       style:--toast-height={vars['--toast-height'] === 'auto'
         ? 'auto'
         : `${vars['--toast-height']}px`}

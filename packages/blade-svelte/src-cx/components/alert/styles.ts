@@ -126,7 +126,7 @@ export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (props, hasTitl
   return {
     // Blade's full-width alert: 12px in, a 12px radius, a fill and no
     // border; from 768px the content centres on the row.
-    root: `flex items-start m:items-center rounded-medium p-3 text-start ${FILL[emphasis][color]}`,
+    root: `flex items-start d:items-center rounded-medium p-3 text-start ${FILL[emphasis][color]}`,
     icon: `flex shrink-0 ${ICON_OFFSET[hasTitle ? 'titled' : 'lone']} ${
       emphasis === 'intense' ? 'icon-surface-static-white-normal' : ICON_TONE[color]
     }`,
@@ -134,7 +134,7 @@ export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (props, hasTitl
     // Blade DSL's full-width Alert (Figma): the icon 8px before the text,
     // the text 12px before the dismiss button.
     text: 'flex min-w-0 flex-1 flex-col pl-2 pr-3',
-    title: `m-0 mb-1 text-100 leading-100 font-semibold ${text.title}`,
+    title: `m-0 mb-1 text-100 leading-100 font-blade-semibold ${text.title}`,
     description: `m-0 text-75 leading-75 ${hasTitle ? '' : 'mt-0.5'} ${text.description}`.replace(
       /\s+/g,
       ' ',

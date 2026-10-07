@@ -15,7 +15,7 @@ describe('Breadcrumb', () => {
     const current = getByTestId('current');
     expect(current.tagName).toBe('SPAN');
     expect(current.closest('li')!.getAttribute('aria-current')).toBe('page');
-    expect(current.className).toContain('font-medium text-100 leading-100');
+    expect(current.className).toContain('font-blade-medium text-100 leading-100');
   });
 
   it('links between slashes, none after the last; an icon-only item is named', () => {
@@ -33,10 +33,10 @@ describe('Breadcrumb', () => {
 
   it('a neutral or white trail fades its links; primary keeps them full', () => {
     const neutral = render(BreadcrumbHarness, { props: { color: 'neutral' } });
-    expect(neutral.getByTestId('payments').className).toContain('opacity-700');
+    expect(neutral.getByTestId('payments').className).toContain('opacity-blade-700');
     neutral.unmount();
     const primary = render(BreadcrumbHarness, { props: { color: 'primary' } });
-    expect(primary.getByTestId('payments').className).not.toContain('opacity-700');
+    expect(primary.getByTestId('payments').className).not.toContain('opacity-blade-700');
   });
 
   it('onClick reaches a router', async () => {

@@ -50,7 +50,7 @@ describe('Modal', () => {
     expect(title.previousElementSibling).toBe(getByTestId('header-back'));
     expect(title.nextElementSibling).toBe(getByTestId('badge-beside'));
     // Figma's Heading/SmallSemibold, 18/24.
-    expectClass(title, 'font-heading font-semibold text-300 leading-300');
+    expectClass(title, 'font-heading font-blade-semibold text-300 leading-300');
     // The subtitle keeps its look and still describes the modal.
     const subtitle = getByText('Visa');
     expectClass(subtitle, 'text-surface-gray-muted');
@@ -114,7 +114,7 @@ describe('Modal', () => {
     const { getByTestId, rerender } = render(ModalHarness, {
       props: { isOpen: true },
     });
-    expect(getByTestId('modal').className).toContain('m:w-[400px]');
+    expect(getByTestId('modal').className).toContain('d:w-[400px]');
 
     await rerender({ isOpen: true, size: 'full' });
     const panel = getByTestId('modal');
@@ -409,13 +409,13 @@ describe('Modal variant="sheet"', () => {
 
     await fireEvent(handle, pointer('pointerdown', 100, 0));
     await fireEvent(handle, pointer('pointermove', 350, 2000));
-    expect(panel.style.transform).toBe('translateY(250px)');
+    expect(panel.style.getPropertyValue('--blade-translate-y')).toBe('250px');
     expect(panel.style.transition).toBe('none');
 
     await fireEvent(handle, pointer('pointerup', 350, 2010));
     expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
     // Inline styles are gone: the component's own transition carries it out.
-    expect(panel.style.transform).toBe('');
+    expect(panel.style.getPropertyValue('--blade-translate-y')).toBe('');
     vi.restoreAllMocks();
   });
 
@@ -425,7 +425,7 @@ describe('Modal variant="sheet"', () => {
     expect(getByTestId('modal-chrome').contains(close)).toBe(true);
     expect(getByTestId('modal-drag-zone').contains(close)).toBe(false);
     await fireEvent(close, pointer('pointerdown', 100, 0));
-    expect(getByTestId('modal').style.transform).toBe('');
+    expect(getByTestId('modal').style.getPropertyValue('--blade-translate-y')).toBe('');
     await fireEvent(close, pointer('pointerup', 100, 0));
     await fireEvent.click(close);
     expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'cross' }));
@@ -440,7 +440,7 @@ describe('Modal variant="sheet"', () => {
 
     await fireEvent(title, pointer('pointerdown', 100, 0));
     await fireEvent(title, pointer('pointermove', 350, 2000));
-    expect(getByTestId('modal').style.transform).toBe('translateY(250px)');
+    expect(getByTestId('modal').style.getPropertyValue('--blade-translate-y')).toBe('250px');
     await fireEvent(title, pointer('pointerup', 350, 2010));
     expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
     vi.restoreAllMocks();
@@ -453,7 +453,7 @@ describe('Modal variant="sheet"', () => {
     await fireEvent(handle, pointer('pointermove', 160, 2000));
     await fireEvent(handle, pointer('pointerup', 160, 2010));
     expect(onDismiss).not.toHaveBeenCalled();
-    expect(getByTestId('modal').style.transform).toBe('');
+    expect(getByTestId('modal').style.getPropertyValue('--blade-translate-y')).toBe('');
     vi.restoreAllMocks();
   });
 
@@ -476,7 +476,7 @@ describe('Modal variant="sheet"', () => {
     const handle = getByTestId('modal-drag-zone');
     await fireEvent(handle, pointer('pointerdown', 100, 0));
     await fireEvent(handle, pointer('pointermove', 500, 2000));
-    expect(getByTestId('modal').style.transform).toBe('translateY(100px)');
+    expect(getByTestId('modal').style.getPropertyValue('--blade-translate-y')).toBe('100px');
     await fireEvent(handle, pointer('pointerup', 500, 2010));
     expect(onDismiss).not.toHaveBeenCalled();
     vi.restoreAllMocks();
@@ -489,7 +489,7 @@ describe('Modal variant="sheet"', () => {
     await fireEvent(handle, pointer('pointermove', 500, 50));
     await fireEvent(handle, pointer('pointerup', 500, 60));
     expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
-    expect(getByTestId('modal').style.transform).toBe('');
+    expect(getByTestId('modal').style.getPropertyValue('--blade-translate-y')).toBe('');
     vi.restoreAllMocks();
   });
 });
@@ -598,10 +598,10 @@ describe('Modal layers', () => {
 describe('Modal, as Blade', () => {
   it("takes Blade's sizes: a column, capped at 80% when centred, or the host 8px in", async () => {
     const { resolveModal } = await import('../components/modal/styles');
-    expect(resolveModal({}).panel).toContain('m:w-[400px]');
+    expect(resolveModal({}).panel).toContain('d:w-[400px]');
     expect(resolveModal({}).panel).toContain('!max-h-[80%]');
-    expect(resolveModal({ size: 'medium' }).panel).toContain('m:w-[760px]');
-    expect(resolveModal({ size: 'large' }).panel).toContain('m:w-[1024px]');
+    expect(resolveModal({ size: 'medium' }).panel).toContain('d:w-[760px]');
+    expect(resolveModal({ size: 'large' }).panel).toContain('d:w-[1024px]');
     const full = resolveModal({ size: 'full' });
     expect(full.panel).toContain('h-full');
     expect(full.panel).not.toContain('max-h-[80%]');
@@ -614,7 +614,7 @@ describe('Modal, as Blade', () => {
     const { resolveModal } = await import('../components/modal/styles');
     const { footer } = resolveModal({});
     // Figma's _Modal Footer: 16px under the hairline, 20px beside and below from `m`.
-    expect(footer).toContain('p-4 m:px-5 m:pb-5');
+    expect(footer).toContain('p-4 d:px-5 d:pb-5');
     expect(footer).not.toContain('flex');
   });
 
@@ -658,15 +658,15 @@ describe('Modal, as Blade', () => {
     // Figma: 20px above and beside, 16px below, at every width.
     expect(modal.header).toContain('px-5 pt-5 pb-4');
     expect(modal.close).toContain('top-6 right-6');
-    expect(modal.title).toContain('font-heading font-semibold text-300 leading-300');
+    expect(modal.title).toContain('font-heading font-blade-semibold text-300 leading-300');
     const sheet = resolveModal({ variant: 'sheet' });
     expect(sheet.header).toContain('px-4 pt-3 pb-4');
-    expect(sheet.title).toContain('font-text text-200 leading-200');
+    expect(sheet.title).toContain('font-blade-text text-200 leading-200');
     expect(sheet.close).toContain('top-9 right-4');
     const drawer = resolveModal({ variant: 'drawer' });
     expect(drawer.header).toBe('shrink-0 p-5');
     expect(drawer.footer).toContain('p-5');
     expect(drawer.close).toContain('top-6 right-5');
-    expect(drawer.panel).toContain('w-[calc(100%_-_1.5rem)] m:w-[380px]');
+    expect(drawer.panel).toContain('w-[calc(100%_-_1.5rem)] d:w-[380px]');
   });
 });

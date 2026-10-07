@@ -1,10 +1,9 @@
 <script lang="ts">
   import { Skeleton } from '../skeleton';
-  import type { ResponsiveProps } from '../../runes/defaults/responsive';
   import type { ModalStyleProps } from './styles';
 
   // A few text-shaped skeleton lines: the content is on its way.
-  const _props: ResponsiveProps<ModalStyleProps> = $props();
+  const _props: ModalStyleProps = $props();
 </script>
 
 <div class="flex flex-col gap-3 py-2">

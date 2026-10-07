@@ -38,7 +38,7 @@ export function resolveFieldHint(size: FieldHintSize, tone: FieldHintTone): Fiel
   return {
     root: `flex items-start gap-1 ${look.gap}`,
     icon: 'flex shrink-0 mt-0.5',
-    text: `font-text font-regular tracking-50 ${look.caption} ${HINT_TONE[tone]} ${
+    text: `font-blade-text font-blade-regular tracking-50 ${look.caption} ${HINT_TONE[tone]} ${
       hasIcon ? look.besideIcon : ''
     }`,
   };
@@ -97,10 +97,10 @@ export function resolveFieldLabel(size: FieldSize, necessity: FieldNecessity): F
   return {
     row: `flex w-full shrink-0 items-center gap-1 ${look.gap}`,
     label: `flex max-h-9 items-center ${necessity === 'optional' ? 'gap-1' : ''}`,
-    text: `m-0 clamp-2 font-text font-medium tracking-50 ${look.text}`,
+    text: `m-0 clamp-2 font-blade-text font-blade-medium tracking-50 ${look.text}`,
     required:
-      'ms-0.5 self-start font-text font-semibold text-75 leading-75 tracking-50 text-feedback-negative-intense',
-    optional: `font-text font-regular tracking-50 text-surface-gray-muted ${look.optional}`,
+      'ms-0.5 self-start font-blade-text font-blade-semibold text-75 leading-75 tracking-50 text-feedback-negative-intense',
+    optional: `font-blade-text font-blade-regular tracking-50 text-surface-gray-muted ${look.optional}`,
   };
 }
 
@@ -111,7 +111,7 @@ export function resolveFieldLabel(size: FieldSize, necessity: FieldNecessity): F
  * sits is the field's.
  */
 export function resolveFieldCounter(_size: FieldSize): string {
-  return 'font-text font-regular tracking-50 text-surface-gray-muted text-50 leading-50';
+  return 'font-blade-text font-blade-regular tracking-50 text-surface-gray-muted text-50 leading-50';
 }
 
 /** The hint's tone for a field's validation state. */

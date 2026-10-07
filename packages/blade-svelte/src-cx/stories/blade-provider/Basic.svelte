@@ -17,7 +17,7 @@
     args: {
       size?: 'small' | 'medium' | 'large';
       checkout?: boolean;
-      modalVariant?: 'modal' | 'sheet' | 'adaptive';
+      modalVariant?: 'modal' | 'sheet';
     };
   }
 
@@ -34,7 +34,7 @@
         }
       : {}),
     Modal: {
-      variant: args.modalVariant === 'adaptive' ? { base: 'sheet', m: 'modal' } : args.modalVariant,
+      variant: args.modalVariant,
     },
   });
 </script>
@@ -50,9 +50,6 @@
     <Switch accessibilityLabel="Remember me" />
     <Button onClick={() => (isOpen = true)}>Continue</Button>
     <Button variant="secondary" size="small">Own prop: small</Button>
-    <Text size="small" color="muted">
-      Resize across 768px with the modal open: its variant follows.
-    </Text>
     <LayerHost />
   </div>
   <Modal bind:isOpen title="Confirm payment">

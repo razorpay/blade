@@ -84,9 +84,9 @@ export function resolveCounter(props: CounterStyleProps = {}): CounterClasses {
   const look = SIZE[size];
   return {
     root: 'inline-flex self-center justify-center',
-    pill: `flex w-fit flex-nowrap items-center justify-center rounded-max max-w-[100px] m:max-w-[120px] ${look.pill} ${FILL[color][emphasis]}`,
+    pill: `flex w-fit flex-nowrap items-center justify-center rounded-max max-w-[100px] d:max-w-[120px] ${look.pill} ${FILL[color][emphasis]}`,
     content: 'flex flex-row items-center justify-center overflow-hidden',
     wide: look.wide,
-    text: `truncate text-center font-text font-medium tracking-50 ${look.text}`,
+    text: `truncate text-center font-blade-text font-blade-medium tracking-50 ${look.text}`,
   };
 }

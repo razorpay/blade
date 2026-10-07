@@ -26,13 +26,11 @@ afterEach(() => {
 });
 
 /** A phone: the stack collapses past one toast and a tap holds it. */
-function phone(matches: boolean): void {
-  (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-    query,
-    matches,
-    addEventListener: () => undefined,
-    removeEventListener: () => undefined,
-  });
+/** A pointer event from a mouse: only a mouse holds the stack by hovering. */
+function mouse(type: 'pointerenter' | 'pointerleave'): Event {
+  const event = new Event(type);
+  Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+  return event;
 }
 
 const wrapper = (toast: HTMLElement): HTMLElement => toast.parentElement!;
@@ -109,19 +107,18 @@ describe('showToast', () => {
     });
   });
 
-  it('hover holds the timers; leaving resumes them', () => {
+  it('a mouse over the stack holds the timers; leaving resumes them', () => {
     vi.useFakeTimers();
     const onDismiss = vi.fn();
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: 'Copied', duration: 1000, onDismiss });
     const stack = getByTestId('toasts');
 
-    return fireEvent
-      .pointerEnter(stack)
+    return fireEvent(stack, mouse('pointerenter'))
       .then(() => {
         vi.advanceTimersByTime(5000);
         expect(onDismiss).not.toHaveBeenCalled();
-        return fireEvent.pointerLeave(stack);
+        return fireEvent(stack, mouse('pointerleave'));
       })
       .then(() => {
         vi.advanceTimersByTime(1000);
@@ -203,21 +200,23 @@ describe('showToast', () => {
     });
   });
 
-  it('on desktop a short stack is expanded: the older toast sits a gutter above the newest', () => {
+  it('a mouse over the stack expands it: the older toast sits a gutter above the newest', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: '1', duration: 0, testID: 'one' });
     toasts.showToast({ content: '2', duration: 0, testID: 'two' });
-    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')).then(() => {
-      expect(offsetOf(getByTestId('two'))).toBe('0');
-      expectClass(wrapper(getByTestId('one')), 'duration-gentle');
-      expect(wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')).toBe('1');
-    });
+    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
+      .then(() => fireEvent(getByTestId('toasts'), mouse('pointerenter')))
+      .then(() => waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')))
+      .then(() => {
+        expect(offsetOf(getByTestId('two'))).toBe('0');
+        expectClass(wrapper(getByTestId('one')), 'duration-gentle');
+        expect(wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')).toBe('1');
+      });
   });
 
-  it('on a phone the rest peek behind the front, smaller, until a tap expands them', () => {
+  it('the rest peek behind the front, smaller, until a tap expands them', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
-    phone(true);
     const { toasts, getByTestId } = setup();
     toasts.showToast({ content: '1', duration: 0, testID: 'one' });
     toasts.showToast({ content: '2', duration: 0, testID: 'two' });

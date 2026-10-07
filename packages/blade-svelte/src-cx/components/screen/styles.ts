@@ -26,7 +26,7 @@ export function resolveScreen(
     root: 'flex min-h-0 w-full flex-1 flex-col bg-surface-gray-intense text-surface-gray-normal',
     disabled: 'pointer-events-none grayscale',
     // Ported from app/v2/modules/main-modal/components/Screen.svelte.
-    body: `mx-auto min-h-0 w-full flex-1 overflow-y-auto m:max-w-[30rem] ${PADDING[padding]}`.trim(),
+    body: `mx-auto min-h-0 w-full flex-1 overflow-y-auto d:max-w-[30rem] ${PADDING[padding]}`.trim(),
   };
 }
 

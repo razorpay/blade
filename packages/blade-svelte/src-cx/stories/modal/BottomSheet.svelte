@@ -5,7 +5,7 @@
     args: {
       isDismissible?: boolean;
       isDraggable?: boolean;
-      variant?: 'sheet' | 'modal' | 'adaptive';
+      variant?: 'sheet' | 'modal';
     };
   }
 
@@ -30,7 +30,7 @@
   bind:isOpen
   isDismissible={args.isDismissible}
   isDraggable={args.isDraggable}
-  variant={args.variant === 'adaptive' ? { base: 'sheet' as const, m: 'modal' as const } : args.variant}
+  variant={args.variant}
   title="Confirm payment"
   testID="sheet"
   onDismiss={({ source }) => {

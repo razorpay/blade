@@ -15,16 +15,16 @@
 <table class="[border-collapse:separate] [border-spacing:0.75rem] text-75 leading-50">
   <thead>
     <tr>
-      <th class="text-left font-medium text-surface-gray-subtle">variant \ size</th>
+      <th class="text-left font-blade-medium text-surface-gray-subtle">variant \ size</th>
       {#each BUTTON_AXES.size as size (size)}
-        <th class="text-left font-medium text-surface-gray-subtle">{size}</th>
+        <th class="text-left font-blade-medium text-surface-gray-subtle">{size}</th>
       {/each}
     </tr>
   </thead>
   <tbody>
     {#each BUTTON_AXES.variant as variant (variant)}
       <tr>
-        <th class="text-left font-medium text-surface-gray-subtle">{variant}</th>
+        <th class="text-left font-blade-medium text-surface-gray-subtle">{variant}</th>
         {#each BUTTON_AXES.size as size (size)}
           <td>
             <Button

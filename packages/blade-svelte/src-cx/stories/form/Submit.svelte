@@ -50,11 +50,11 @@
       <dt class="text-surface-gray-subtle">submitted</dt>
       <dd>{String(state.submitted)}</dd>
       <dt class="text-surface-gray-subtle">errors</dt>
-      <dd class="font-code">{JSON.stringify(state.errors)}</dd>
+      <dd class="font-blade-code">{JSON.stringify(state.errors)}</dd>
       <dt class="text-surface-gray-subtle">data</dt>
-      <dd class="font-code">{JSON.stringify(state.data)}</dd>
+      <dd class="font-blade-code">{JSON.stringify(state.data)}</dd>
       <dt class="text-surface-gray-subtle">last submit</dt>
-      <dd class="font-code">{submitted ? JSON.stringify(submitted) : '—'}</dd>
+      <dd class="font-blade-code">{submitted ? JSON.stringify(submitted) : '—'}</dd>
     </dl>
   {/snippet}
 </Form>

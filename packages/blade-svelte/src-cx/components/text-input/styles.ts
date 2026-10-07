@@ -102,7 +102,7 @@ export interface TextInputStyleProps {
 // the leading ones 2px apart (8px), the text 4px (8px) after them, and
 // the trailing ones 2px (8px) after the text and 4px (8px) apart.
 // Medium keeps 16px text on phones — iOS zooms into a smaller field — and
-// Figma's 14px from `m` up.
+// Figma's 14px on desktop (`d`).
 const SIZE: Record<
   Axis<'size'>,
   {
@@ -128,7 +128,7 @@ const SIZE: Record<
   },
   medium: {
     box: 'min-h-9 px-1',
-    text: 'text-200 leading-200 tracking-25 m:text-100 m:leading-100 m:tracking-50',
+    text: 'text-200 leading-200 tracking-25 d:text-100 d:leading-100 d:tracking-50',
     radius: 'rounded-small',
     framed: 'min-h-9 px-3 py-2',
     control: 'pl-2',

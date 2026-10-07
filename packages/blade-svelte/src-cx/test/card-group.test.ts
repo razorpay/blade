@@ -152,7 +152,7 @@ describe('CardGroup', () => {
     const subtitle = [...header.querySelectorAll('span')].find(
       (node) => node.textContent?.trim() === 'Any UPI app',
     ) as HTMLElement;
-    expect(title.className).toContain('font-medium');
+    expect(title.className).toContain('font-blade-medium');
     expect(title.className).toContain('text-200');
     expect(subtitle.className).toContain('text-surface-gray-muted');
   });

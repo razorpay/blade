@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { ResponsiveProps } from '../../runes/defaults/responsive';
   import { useComponentDefaults } from '../defaults';
   import Modal from '../modal/Modal.svelte';
   import type { DrawerBehaviourProps, DrawerStyleProps } from './styles';
@@ -14,7 +13,7 @@
     pace,
     isDraggable,
     ...modal
-  }: DrawerBehaviourProps & ResponsiveProps<DrawerStyleProps> = $props();
+  }: DrawerBehaviourProps & DrawerStyleProps = $props();
 
   const style = useComponentDefaults('Drawer', () => ({ variant, pace, isDraggable }));
 </script>

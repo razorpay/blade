@@ -14,7 +14,7 @@ rules that apply to every component. The rest are listed per component.
 | `labelPosition="left"` | Not ported: labels always sit on top |
 | `labelSuffix` + `labelTrailing` | One `labelArea` snippet. Only the label text names the control. Hints (`helpText`, `errorText`, `successText`) also take a snippet |
 | `keyboardType`, `keyboardReturnKeyType`, `autoCompleteSuggestionType`, `type="telephone"` | HTML attributes: `inputMode`, `enterKeyHint`, `autoComplete`, `type="tel"`. Each `type` brings Blade's defaults for them (a given attribute wins); `number` renders as `text`, as Blade. Password and search fields are PasswordInput and SearchInput |
-| `BladeProvider` (theme tokens, `colorScheme`) | `BladeProvider` sets component defaults: an overall `size`, a style-prop entry per component, `breakpoints`, and values that can differ per breakpoint. Theming stays CSS variables |
+| `BladeProvider` (theme tokens, `colorScheme`) | `BladeProvider` sets component defaults: an overall `size` and a style-prop entry per component. No breakpoints in JS: desktop differences are the components' own `d:` classes (one breakpoint, 62.5rem). Theming stays CSS variables |
 | `data-analytics-*` | Missing everywhere (a later analytics pass) |
 | Icon components, and `leading` where it only takes an icon | The same-named icon from `@razorpay/blade-svelte/icons` (`IconSource`) in an `icon` prop; the app's `bladeIconFontPlugin` font picks it up from the import |
 
@@ -33,7 +33,7 @@ item snippet.
 - **Modal and BottomSheet:**
   - `onDismiss({ source, close })` fires on every dismissal and says what closed it. When the dialog isn't dismissible, it stays open until you call `close`.
   - The body is a `body` snippet (padded) or `children` (raw).
-  - BottomSheet's `adaptive` is replaced by Modal's `variant: 'modal' | 'sheet'`, which can differ per breakpoint.
+  - BottomSheet's `adaptive` is replaced by Modal's `variant: 'modal' | 'sheet'`, which the app picks.
 - **Drawer:** not its own component; it is Modal's `variant="drawer"` (`left-drawer` docks it left).
 - **Popover and Tooltip:** the trigger is a `trigger` snippet, not `children`. Popover's `content` becomes `children`; Tooltip keeps `content` as a string, and takes `children` for rich content. Popover's default `placement` is `top`.
 - **Collapsible:** `CollapsibleButton` and `CollapsibleLink` become a `trigger` snippet (the caller's Button, or `Link variant="button"` with a `CollapsibleChevron`). `CollapsibleBody` becomes `children`.

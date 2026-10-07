@@ -309,7 +309,7 @@ describe('Popover, as Blade', () => {
     const { resolvePopover } = await import('../components/popover/styles');
     const look = resolvePopover();
     expect(look.panel).toContain('rounded-large');
-    expect(look.panel).toContain('m:max-w-[328px]');
+    expect(look.panel).toContain('d:max-w-[328px]');
     expect(look.arrowSide?.top).toContain('w-[22px]');
     expect(look.gap).toBe(16);
   });

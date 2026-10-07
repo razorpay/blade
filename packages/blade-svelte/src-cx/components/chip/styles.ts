@@ -73,25 +73,25 @@ const SIZE: Record<
   xsmall: {
     radius: 'rounded-small',
     inner: 'h-6 px-2 border-thinner [border-radius:7px]',
-    text: 'font-text font-regular text-75 leading-75 tracking-50',
+    text: 'font-blade-text font-blade-regular text-75 leading-75 tracking-50',
     icon: 'small',
   },
   small: {
     radius: 'rounded-small',
     inner: 'h-7 px-2 border-thinner [border-radius:7px]',
-    text: 'font-text font-regular text-100 leading-100 tracking-50',
+    text: 'font-blade-text font-blade-regular text-100 leading-100 tracking-50',
     icon: 'small',
   },
   medium: {
     radius: 'rounded-small',
     inner: 'h-9 px-3 border-thin [border-radius:7px]',
-    text: 'font-text font-regular text-200 leading-200 tracking-25',
+    text: 'font-blade-text font-blade-regular text-200 leading-200 tracking-25',
     icon: 'medium',
   },
   large: {
     radius: 'rounded-medium',
     inner: 'h-12 px-4 border-thin [border-radius:11px]',
-    text: 'font-heading font-regular text-400 leading-400 tracking-100',
+    text: 'font-heading font-blade-regular text-400 leading-400 tracking-100',
     icon: 'large',
   },
 };
@@ -195,8 +195,8 @@ export function resolveChip(size: ChipSize, tone: ChipTone, color: ChipColor): C
     control: 'peer sr-only',
     // The ring is Blade's: 2px of `interactive.border.primary.default`, 2px
     // off the chip. Max widths per Blade: 280px on phones, 420px above.
-    frame: `flex w-full items-center justify-center text-left border-thin border-solid bg-transparent [transition-property:scale] duration-xquick ease-standard max-w-[280px] m:max-w-[420px] peer-focus-visible:outline-solid peer-focus-visible:outline-thicker peer-focus-visible:outline-offset-2 peer-focus-visible:outline-interactive-primary-default ${look.radius} ${colors.frame}`,
-    framePressed: '[scale:.92]',
+    frame: `flex w-full items-center justify-center text-left border-thin border-solid bg-transparent [transition-property:transform] duration-xquick ease-standard max-w-[280px] d:max-w-[420px] peer-focus-visible:outline-solid peer-focus-visible:outline-thicker peer-focus-visible:outline-offset-2 peer-focus-visible:outline-interactive-primary-default ${look.radius} ${colors.frame}`,
+    framePressed: 'scale-[.92]',
     inner: `flex w-full flex-row items-center justify-center overflow-hidden whitespace-nowrap border-solid transition-colors duration-xquick ease-standard ${look.inner} ${colors.inner} ${colors.content}`,
     icon: 'flex',
     // The label container's 4px each side: the gap after a leading icon or

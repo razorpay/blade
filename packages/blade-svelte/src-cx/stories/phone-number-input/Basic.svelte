@@ -28,8 +28,8 @@
   let country = $state('IN');
 </script>
 
-<!-- The app sets how modals look: the picker is a sheet on phones, a modal from 768px. -->
-<BladeProvider defaults={{ Modal: { variant: { base: 'sheet', m: 'modal' } } }}>
+<!-- The app sets how modals look: the picker is a sheet. -->
+<BladeProvider defaults={{ Modal: { variant: 'sheet' } }}>
 <div class="flex max-w-96 flex-col gap-3">
   <PhoneNumberInput
     {countries}

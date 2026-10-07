@@ -11,17 +11,13 @@ export interface ToastStackOptions<S extends object> {
   capacity: () => number;
   duration: () => number;
   geometry: () => ToastStackGeometry;
-  minShown: () => { phone: number; desktop: number };
-  /** Where a tap, not a hover, holds the stack. */
-  phoneMedia: () => string;
+  minShown: () => number;
 }
 
 /** The CSS variables a toast's wrapper reads; px, unitless. */
 export interface ToastVars {
   '--toast-offset': number;
   '--toast-scale': number;
-  '--toast-opacity': number;
-  '--toast-z': number;
   '--toast-height': number | 'auto';
 }
 
@@ -31,10 +27,12 @@ export interface ToastStack<S extends object> {
   readonly entries: readonly ToastEntry<ShowToastOptions<S>>[];
   /** Laid out in full, or collapsed behind the front toast. */
   readonly isExpanded: boolean;
-  /** The hover region's `--hover-bottom` and `--hover-height`, px. */
-  readonly hoverVars: { '--hover-bottom': number; '--hover-height': number };
+  /** The hover region's height, px: the front toast's, or the expanded stack's. */
+  readonly hoverHeight: number;
   /** Where a toast sits; the newest is in front. */
   varsOf(id: number): ToastVars;
+  /** Whether a toast is drawn: those deep behind a collapsed stack are not. */
+  isShown(id: number): boolean;
   /** On the root: renders it into the LayerHost once there is a toast. */
   readonly root: Attachment<HTMLElement>;
   /** On a toast's wrapper: measures it once, at its first paint. */
@@ -42,11 +40,11 @@ export interface ToastStack<S extends object> {
   /** Reading a toast must not race its timer: hover or focus holds them all. */
   pause(): void;
   resume(): void;
-  /** A pointer over the stack (desktop): expands it and holds the timers. */
-  handlePointerEnter(): void;
-  handlePointerLeave(): void;
-  /** A tap on the stack (phone): toggles both. */
-  handleClick(): void;
+  /** A mouse over the stack: expands it and holds the timers. */
+  handlePointerEnter(event: PointerEvent): void;
+  handlePointerLeave(event: PointerEvent): void;
+  /** A tap (touch, pen) on the stack: toggles both. */
+  handleClick(event: MouseEvent): void;
 }
 
 /**
@@ -67,26 +65,11 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
   // height, which must never overwrite its own.
   let heights = $state.raw<Record<number, number>>({});
   let isHeld = $state(false);
-  let isPhone = $state(false);
-
-  const query = typeof matchMedia === 'function' ? matchMedia(options.phoneMedia()) : undefined;
-  if (query) {
-    isPhone = query.matches;
-    const follow = (event: MediaQueryListEvent): void => {
-      isPhone = event.matches;
-    };
-    query.addEventListener?.('change', follow);
-    onDestroy(() => query.removeEventListener?.('change', follow));
-  }
 
   // Front first: the model keeps the newest last.
   const order = $derived([...model.entries].reverse().map((entry) => entry.id));
   const isExpanded = $derived(
-    isToastStackExpanded(
-      order.length,
-      isHeld,
-      isPhone ? options.minShown().phone : options.minShown().desktop,
-    ),
+    isToastStackExpanded(order.length, isHeld, options.minShown()),
   );
   const placements = $derived.by(() => {
     const placed = layoutToastStack(
@@ -100,13 +83,10 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
     });
     return byId;
   });
-  const hoverVars = $derived.by(() => {
+  const hoverHeight = $derived.by(() => {
     const gutter = options.geometry().gutter;
     const total = order.reduce((sum, id) => sum + (heights[id] ?? 0) + gutter, 0);
-    return {
-      '--hover-bottom': 0,
-      '--hover-height': isExpanded ? total : heights[order[0]] ?? 0,
-    };
+    return isExpanded ? total : heights[order[0]] ?? 0;
   });
 
   function hold(next: boolean): void {
@@ -126,20 +106,20 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
     get isExpanded() {
       return isExpanded;
     },
-    get hoverVars() {
-      return hoverVars;
+    get hoverHeight() {
+      return hoverHeight;
     },
+    // Stacking needs no variable: the toasts render oldest first, so the
+    // newest paints over the ones behind it.
     varsOf(id) {
       const placed = placements[id];
-      const index = order.indexOf(id);
       return {
         '--toast-offset': placed?.offset ?? 0,
         '--toast-scale': placed?.scale ?? 1,
-        '--toast-opacity': placed?.opacity ?? 1,
-        '--toast-z': -index,
         '--toast-height': placed?.height ?? 'auto',
       };
     },
+    isShown: (id) => (placements[id]?.opacity ?? 1) === 1,
     // Into the LayerHost, so toasts stay inside its frame and over open
     // modals. Looked up when a toast shows: the host may mount after this.
     root(node) {
@@ -165,18 +145,20 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
     },
     pause: () => model.pause(),
     resume: () => model.resume(),
-    handlePointerEnter() {
-      if (!isPhone) {
+    // A mouse holds the stack while over it; a tap toggles it. By the
+    // pointer, not the viewport: no breakpoint decides it.
+    handlePointerEnter(event) {
+      if (event.pointerType === 'mouse') {
         hold(true);
       }
     },
-    handlePointerLeave() {
-      if (!isPhone) {
+    handlePointerLeave(event) {
+      if (event.pointerType === 'mouse') {
         hold(false);
       }
     },
-    handleClick() {
-      if (isPhone) {
+    handleClick(event) {
+      if ((event as PointerEvent).pointerType !== 'mouse') {
         hold(!isHeld);
       }
     },

@@ -4,7 +4,6 @@
 // how things look, never what they do.
 import { useDefaults } from '../runes/defaults/defaults.svelte';
 import type { Defaults } from '../runes/defaults/defaults.svelte';
-import type { Responsive, ResponsiveProps } from '../runes/defaults/responsive';
 import type { CardGroupStyleProps } from './card-group/styles';
 import type { AlertStyleProps } from './alert/styles';
 import type { AmountStyleProps } from './amount/styles';
@@ -116,11 +115,9 @@ export interface ComponentStyleProps {
 
 export type ComponentName = keyof ComponentStyleProps;
 
-/** Per component: any of its style props, each optionally per breakpoint. */
+/** Per component: any of its style props. */
 export type ComponentDefaults = {
-  [K in ComponentName]?: {
-    [P in keyof ComponentStyleProps[K]]?: Responsive<Exclude<ComponentStyleProps[K][P], undefined>>;
-  };
+  [K in ComponentName]?: Partial<ComponentStyleProps[K]>;
 };
 
 /** The sizes an overall `size` can be; each control snaps to its own scale. */
@@ -155,7 +152,7 @@ export const SIZED_CONTROLS: Partial<Record<ComponentName, readonly string[]>> =
  */
 export function useComponentDefaults<K extends ComponentName>(
   name: K,
-  props: () => ResponsiveProps<ComponentStyleProps[K]>,
+  props: () => ComponentStyleProps[K],
 ): Defaults<ComponentStyleProps[K]> {
-  return useDefaults(name, props as () => ComponentStyleProps[K], { sizes: SIZED_CONTROLS[name] });
+  return useDefaults(name, props, { sizes: SIZED_CONTROLS[name] });
 }

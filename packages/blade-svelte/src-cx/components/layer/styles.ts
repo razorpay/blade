@@ -33,12 +33,6 @@ export interface SurfaceClasses {
      */
     axis: 'x' | 'y';
     direction: 1 | -1;
-    /**
-     * A media query the drag is confined to (a sheet that is a modal on
-     * desktop): outside it the zone is plain content. The preset owns the
-     * breakpoint, so it owns the query.
-     */
-    media?: string;
     zone: string;
     strip: string;
     handle: string;

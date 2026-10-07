@@ -43,7 +43,7 @@
     />
   {/key}
   <p class="text-75 leading-50 text-surface-gray-subtle">value: <span data-testid="value">{JSON.stringify(value)}</span></p>
-  <ul class="font-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
+  <ul class="font-blade-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
     {#each log as line (line)}
       <li>{line}</li>
     {:else}

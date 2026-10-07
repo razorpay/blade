@@ -66,23 +66,23 @@ const SUBTLE_TONE: Record<Axis<'color'>, { current: string; separator: string }>
 // `interactive.text.primary.normal` (white: `staticBlack.faded` in
 // `staticWhite.normal`). Focus: Blade's 4px ring.
 const PILL =
-  'inline-flex h-7 items-center gap-1 rounded-large px-3 py-1 font-text text-75 [line-height:1.125rem] whitespace-nowrap no-underline';
+  'inline-flex h-7 items-center gap-1 rounded-large px-3 py-1 font-blade-text text-75 [line-height:1.125rem] whitespace-nowrap no-underline';
 const PILL_FOCUS =
   'transition-colors duration-xquick ease-standard hover:bg-interactive-gray-default focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
 const INTENSE_TONE: Record<Axis<'color'>, { pill: string; current: string; separator: string }> = {
   primary: {
-    pill: 'font-regular text-interactive-gray-subtle',
-    current: 'font-semibold bg-interactive-primary-faded text-interactive-primary-normal',
+    pill: 'font-blade-regular text-interactive-gray-subtle',
+    current: 'font-blade-semibold bg-interactive-primary-faded text-interactive-primary-normal',
     separator: 'text-surface-gray-muted',
   },
   neutral: {
-    pill: 'font-regular text-interactive-gray-subtle',
-    current: 'font-semibold bg-interactive-gray-faded-highlighted text-interactive-gray-normal',
+    pill: 'font-blade-regular text-interactive-gray-subtle',
+    current: 'font-blade-semibold bg-interactive-gray-faded-highlighted text-interactive-gray-normal',
     separator: 'text-surface-gray-muted',
   },
   white: {
-    pill: 'font-regular text-interactive-static-white-subtle',
-    current: 'font-semibold bg-interactive-static-black-faded text-interactive-static-white-normal',
+    pill: 'font-blade-regular text-interactive-static-white-subtle',
+    current: 'font-blade-semibold bg-interactive-static-black-faded text-interactive-static-white-normal',
     separator: 'text-surface-static-white-muted',
   },
 };
@@ -113,12 +113,12 @@ export function resolveBreadcrumb(props: BreadcrumbStyleProps = {}): BreadcrumbC
     link: {
       color,
       size: look.link,
-      class: color === 'primary' ? '' : 'opacity-700',
+      class: color === 'primary' ? '' : 'opacity-blade-700',
     },
     pill: '',
-    current: `inline-flex items-center gap-1 font-text font-medium ${look.text} ${tone.current}`,
+    current: `inline-flex items-center gap-1 font-blade-text font-blade-medium ${look.text} ${tone.current}`,
     iconSize: look.icon,
-    separator: `font-text font-medium ${look.text} ${tone.separator}`,
+    separator: `font-blade-text font-blade-medium ${look.text} ${tone.separator}`,
   };
 }
 

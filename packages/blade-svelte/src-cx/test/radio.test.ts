@@ -83,14 +83,14 @@ describe('RadioGroup + Radio', () => {
     expectClass(qr, 'bg-interactive-primary-default');
     expectClass(web, 'border-interactive-gray-highlighted');
     expectClass(qr, 'border-interactive-primary-default');
-    expectClass(dot(qr), 'opacity-1300');
-    expectNoClass(dot(web), 'opacity-1300');
+    expectClass(dot(qr), 'opacity-blade-1300');
+    expectNoClass(dot(web), 'opacity-blade-1300');
 
     await fireEvent.click(getByTestId('web'));
     expectClass(web, 'bg-interactive-primary-default');
-    expectClass(dot(web), 'opacity-1300');
+    expectClass(dot(web), 'opacity-blade-1300');
     expectNoClass(qr, 'bg-interactive-primary-default');
-    expectNoClass(dot(qr), 'opacity-1300');
+    expectNoClass(dot(qr), 'opacity-blade-1300');
   });
 
   it('is radios only: no pill, no thumb — that look is SegmentedControl', () => {

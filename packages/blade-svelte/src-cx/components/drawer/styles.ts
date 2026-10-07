@@ -3,7 +3,6 @@
 // types — one file would be an import cycle.
 import type { Component, Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
-import type { ResponsiveProps } from '../../runes/defaults/responsive';
 import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
 import { MODAL_AXES } from '../modal/styles';
 
@@ -108,4 +107,4 @@ export interface DrawerBehaviourProps {
 }
 
 /** The blade Drawer: its behaviour props over its style props. */
-export type DrawerComponent = Component<DrawerBehaviourProps & ResponsiveProps<DrawerStyleProps>>;
+export type DrawerComponent = Component<DrawerBehaviourProps & DrawerStyleProps>;

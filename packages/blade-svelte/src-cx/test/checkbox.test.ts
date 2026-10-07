@@ -28,7 +28,7 @@ describe('Checkbox standalone', () => {
     expectClass(box, 'bg-interactive-primary-default');
     // Blade's checked border is the primary border token, not transparent.
     expectClass(box, 'border-interactive-primary-default');
-    expectClass(mark(box), 'opacity-1300');
+    expectClass(mark(box), 'opacity-blade-1300');
     expectMarkup(mark(box), '<svg');
 
     await fireEvent.click(getByTestId('solo'));
@@ -135,7 +135,7 @@ describe('Checkbox, as Blade', () => {
     const box = indicator(control);
     expectClass(box, 'bg-interactive-primary-default');
     expectClass(mark(box), 'opacity-0');
-    expectClass(box.lastElementChild as HTMLElement, 'opacity-1300');
+    expectClass(box.lastElementChild as HTMLElement, 'opacity-blade-1300');
   });
 
   it('sizes the box, the mark and the title', () => {

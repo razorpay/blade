@@ -26,7 +26,7 @@ describe('FieldLabel, as Blade FormLabel', () => {
     expect(mark.map((m) => m.textContent)).toEqual(['*']);
     // Figma's _FormGroup-Header: a semibold `*`, 2px after the text.
     expect(mark[0].className).toContain('ms-0.5');
-    expect(mark[0].className).toContain('font-semibold');
+    expect(mark[0].className).toContain('font-blade-semibold');
   });
 
   it('takes the type, colour and gap per size', () => {

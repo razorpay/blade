@@ -84,7 +84,7 @@ const SIZE: Record<
   xsmall: {
     box: 'w-5 h-5',
     square: 'rounded-xsmall',
-    initials: 'font-text text-25 leading-25 tracking-50',
+    initials: 'font-blade-text text-25 leading-25 tracking-50',
     icon: 'small',
     top: { circle: 'w-[6px] h-[6px] -top-px -right-px', square: 'w-[6px] h-[6px] -top-0.5 -right-0.5' },
     bottom: { circle: 'w-2 h-2 -bottom-px -right-px', square: 'w-2 h-2 [bottom:-10%] [right:-10%]' },
@@ -92,7 +92,7 @@ const SIZE: Record<
   small: {
     box: 'w-7 h-7',
     square: 'rounded-xsmall',
-    initials: 'font-text text-25 leading-25 tracking-50',
+    initials: 'font-blade-text text-25 leading-25 tracking-50',
     icon: 'medium',
     top: { circle: 'w-[6px] h-[6px] top-0.5 right-0.5', square: 'w-[6px] h-[6px] -top-0.5 -right-0.5' },
     bottom: { circle: 'w-2 h-2 bottom-0 right-0', square: 'w-2 h-2 [bottom:-10%] [right:-10%]' },
@@ -100,7 +100,7 @@ const SIZE: Record<
   medium: {
     box: 'w-9 h-9',
     square: 'rounded-small',
-    initials: 'font-text text-75 leading-75 tracking-50',
+    initials: 'font-blade-text text-75 leading-75 tracking-50',
     icon: 'medium',
     top: { circle: 'w-2 h-2 top-0.5 right-0.5', square: 'w-2 h-2 -top-0.5 -right-0.5' },
     bottom: { circle: 'w-3 h-3 bottom-0 right-0', square: 'w-3 h-3 [bottom:-10%] [right:-10%]' },
@@ -108,7 +108,7 @@ const SIZE: Record<
   large: {
     box: 'w-12 h-12',
     square: 'rounded-small',
-    initials: 'font-text text-100 leading-100 tracking-50',
+    initials: 'font-blade-text text-100 leading-100 tracking-50',
     icon: 'large',
     top: { circle: 'w-2 h-2 top-1 right-1', square: 'w-2 h-2 -top-0.5 -right-0.5' },
     bottom: { circle: 'w-4 h-4 bottom-0 right-0', square: 'w-4 h-4 [bottom:-10%] [right:-10%]' },
@@ -167,7 +167,7 @@ export function resolveAvatar(props: AvatarStyleProps = {}): AvatarClasses {
   return {
     // The white underlay: the tint is translucent, as in Figma.
     root: `relative inline-flex shrink-0 bg-surface-gray-intense ${look.box} ${radius}`,
-    face: `m-0 flex h-full w-full items-center justify-center overflow-hidden border-solid p-0 font-semibold no-underline select-none ${radius} ${RIM[isSelected ? 'selected' : 'rest']} ${COLOR[color].face}`,
+    face: `m-0 flex h-full w-full items-center justify-center overflow-hidden border-solid p-0 font-blade-semibold no-underline select-none ${radius} ${RIM[isSelected ? 'selected' : 'rest']} ${COLOR[color].face}`,
     // Blade's focus ring: 4px `surface.border.primary.muted`, 1px out.
     interactive: `cursor-pointer transition-colors duration-xquick ease-standard ${COLOR[color].hover} focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted`,
     image: `block h-full w-full object-cover ${radius}`,
@@ -214,7 +214,7 @@ export function resolveAvatarGroup(props: AvatarGroupStyleProps = {}): AvatarGro
     // `interactive.text.neutral.muted`.
     more: {
       root: `relative inline-flex shrink-0 rounded-max ${look.box}`,
-      face: `flex h-full w-full items-center justify-center rounded-max border-thin border-solid border-surface-gray-subtle bg-surface-gray-subtle font-semibold text-interactive-neutral-muted`,
+      face: `flex h-full w-full items-center justify-center rounded-max border-thin border-solid border-surface-gray-subtle bg-surface-gray-subtle font-blade-semibold text-interactive-neutral-muted`,
       text: `whitespace-nowrap ${look.initials}`,
     },
   };

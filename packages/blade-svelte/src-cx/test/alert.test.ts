@@ -75,7 +75,7 @@ describe('Alert (blade)', () => {
 
   it('is Blade’s full-width alert: centred on desktop', () => {
     const { getByTestId } = render(Alert, { props: { description, testID: 'a' } });
-    expectClass(getByTestId('a'), 'm:items-center');
+    expectClass(getByTestId('a'), 'd:items-center');
     expect(getByTestId('a').className).not.toContain('w-full');
   });
 

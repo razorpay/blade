@@ -35,9 +35,9 @@ const SIZE: Record<TextAxis<'size'>, string> = {
 };
 
 const WEIGHT: Record<TextAxis<'weight'>, string> = {
-  regular: 'font-regular',
-  medium: 'font-medium',
-  semibold: 'font-semibold',
+  regular: 'font-blade-regular',
+  medium: 'font-blade-medium',
+  semibold: 'font-blade-semibold',
 };
 
 // Blade's Text/Heading colour tokens: `surface.text.gray.*`, the primary
@@ -76,7 +76,7 @@ export function resolveText(props: TextStyleProps = {}): string {
     truncate = 'none',
   } = props;
   // Blade's BaseText: no margin, whatever the element (`p` has 1em).
-  return `m-0 font-text ${SIZE[size]} ${WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]} ${TRUNCATE[truncate]}`.trim();
+  return `m-0 font-blade-text ${SIZE[size]} ${WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]} ${TRUNCATE[truncate]}`.trim();
 }
 
 /**
@@ -111,8 +111,8 @@ const HEADING_SIZE: Record<HeadingAxis<'size'>, string> = {
 };
 
 const HEADING_WEIGHT: Record<HeadingAxis<'weight'>, string> = {
-  regular: 'font-regular',
-  semibold: 'font-semibold',
+  regular: 'font-blade-regular',
+  semibold: 'font-blade-semibold',
 };
 
 export function resolveHeading(props: HeadingStyleProps = {}): string {
@@ -155,9 +155,9 @@ const DISPLAY_SIZE: Record<DisplayAxis<'size'>, string> = {
 };
 
 const DISPLAY_WEIGHT: Record<DisplayAxis<'weight'>, string> = {
-  regular: 'font-regular tracking-50',
-  medium: 'font-medium tracking-50',
-  semibold: 'font-semibold',
+  regular: 'font-blade-regular tracking-50',
+  medium: 'font-blade-medium tracking-50',
+  semibold: 'font-blade-semibold',
 };
 
 export function resolveDisplay(props: DisplayStyleProps = {}): string {
@@ -214,8 +214,8 @@ const CODE_SIZE: Record<CodeAxis<'size'>, string> = {
 };
 
 const CODE_WEIGHT: Record<CodeAxis<'weight'>, string> = {
-  regular: 'font-regular',
-  bold: 'font-bold',
+  regular: 'font-blade-regular',
+  bold: 'font-blade-bold',
 };
 
 export function resolveCode(props: CodeStyleProps = {}): CodeClasses {
@@ -225,7 +225,7 @@ export function resolveCode(props: CodeStyleProps = {}): CodeClasses {
   // side; highlighted, a neutral chip with the xsmall corners.
   return {
     root: `inline-block align-middle rounded-xsmall px-1 [line-height:0] ${isHighlighted ? 'bg-feedback-neutral-subtle' : ''}`.trim(),
-    code: `font-code ${CODE_SIZE[size]} ${CODE_WEIGHT[weight]} ${color}`,
+    code: `font-blade-code ${CODE_SIZE[size]} ${CODE_WEIGHT[weight]} ${color}`,
   };
 }
 

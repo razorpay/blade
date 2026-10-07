@@ -15,7 +15,7 @@ describe('Drawer (blade)', () => {
     const panel = getByRole('dialog', { name: 'Filters' });
     expect(panel).toBe(getByTestId('drawer'));
     expect(panel.className).toContain('h-full');
-    expect(panel.className).toContain('m:w-[380px]');
+    expect(panel.className).toContain('d:w-[380px]');
     expect(panel.className).toContain('group-data-[state=closed]:translate-x-full');
     expect(panel.parentElement?.className).toContain('justify-end');
     expect(queryByTestId('drawer-drag-zone')).toBeNull();
@@ -65,8 +65,8 @@ describe('Drawer (blade)', () => {
   it("both drawer variants are Blade's drawer, whatever the size", () => {
     for (const variant of ['drawer', 'left-drawer'] as const) {
       const classes = resolveModal({ variant, size: 'large' });
-      expect(classes.panel).toContain('m:w-[380px]');
-      expect(classes.panel).not.toContain('m:w-[1024px]');
+      expect(classes.panel).toContain('d:w-[380px]');
+      expect(classes.panel).not.toContain('d:w-[1024px]');
       expect(classes.drag.isEnabled).toBe(false);
     }
   });
@@ -112,7 +112,7 @@ describe('Drawer isDraggable', () => {
 
       await fireEvent(zone, pointer('pointerdown', 200, 0));
       await fireEvent(zone, pointer('pointermove', 200 + sign * 250, 2000));
-      expect(getByTestId('drawer').style.transform).toBe(`translateX(${sign * 250}px)`);
+      expect(getByTestId('drawer').style.getPropertyValue('--blade-translate-x')).toBe(`${sign * 250}px`);
       await fireEvent(zone, pointer('pointerup', 200 + sign * 250, 2010));
       expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
         expect.objectContaining({ source: 'drag' }),
@@ -127,6 +127,6 @@ describe('Drawer isDraggable', () => {
     const zone = getByTestId('drawer-drag-zone');
     await fireEvent(zone, pointer('pointerdown', 200, 0));
     await fireEvent(zone, pointer('pointermove', 50, 2000));
-    expect(getByTestId('drawer').style.transform).toBe('translateX(0px)');
+    expect(getByTestId('drawer').style.getPropertyValue('--blade-translate-x')).toBe('0px');
   });
 });

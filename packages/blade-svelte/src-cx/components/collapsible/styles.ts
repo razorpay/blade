@@ -10,12 +10,13 @@ export interface CollapsibleClasses {
 
 // Blade's Collapsible (Collapsible.tsx, styles.web.ts, commonStyles.ts): a
 // column, reversed for `top`, at least 200px wide and at most the viewport
-// less 40px (from `s`), 640px (from `m`) or 1136px (from `l`). Blade DSL's
+// less 40px, 640px on desktop (React steps 640px/1136px over two
+// breakpoints; cx has one). Blade DSL's
 // Collapsible (Figma) puts the body right against the trigger (no gap; React
 // adds 12px): spacing inside the body is the body's own.
 export function resolveCollapsible(): CollapsibleClasses {
   const column =
-    'flex items-start min-w-[200px] s:max-w-[calc(100vw_-_40px)] m:max-w-[640px] l:max-w-[1136px]';
+    'flex items-start min-w-[200px] max-w-[calc(100vw_-_40px)] d:max-w-[640px]';
   return {
     root: {
       bottom: `${column} flex-col`,

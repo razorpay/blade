@@ -2,7 +2,7 @@
 
 An inline message: an icon, an optional title, a description, and a dismiss
 button. Blade's Alert in its full-width form, less `actions`: it spans its
-container (a width is the caller's `class`), and from 768px the content
+container (a width is the caller's `class`), and on desktop (`d`, 62.5rem) the content
 centres on the row.
 
 | Prop | Notes |

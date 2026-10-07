@@ -60,14 +60,13 @@ export interface ModalStyleProps {
   /**
    * `modal`: centred; `sheet`: Blade's BottomSheet — on the bottom edge
    * with a handle, dragged down to dismiss; `drawer`: Blade's Drawer, full
-   * height on the right edge; `left-drawer`: the same on the left. Given
-   * per breakpoint it switches with the viewport:
-   * `{ base: 'sheet', m: 'modal' }`.
+   * height on the right edge; `left-drawer`: the same on the left. The
+   * app picks it; desktop tweaks within one variant are its `d:` classes.
    * @default 'modal'
    */
   variant?: Axis<'variant'>;
   /**
-   * The panel's width from `m` up — Blade's 400, 760 or 1024px column, or
+   * The panel's width on desktop (`d`) — Blade's 400, 760 or 1024px column, or
    * `full` to span the host, 8px in. Below `m` every panel spans the host.
    * A drawer has its own width and ignores it.
    * @default 'small'
@@ -113,9 +112,9 @@ const CONTENT = 'flex min-h-0 flex-auto flex-col overflow-hidden [border-radius:
 const CHROME = 'absolute inset-x-0 top-0 z-10 h-0';
 
 // Blade DSL's Drawer (Figma): full height on its edge, 24px short of the
-// host's width on phones with square corners; 380px from `m`, where it
-// floats 8px in with large corners, casting Blade's highRaised elevation.
-const DRAWER = 'h-full w-[calc(100%_-_1.5rem)] m:w-[380px] shadow-highRaised m:rounded-large';
+// host's width on phones with square corners; 380px on desktop (`d`), where
+// it floats 8px in with large corners, casting Blade's highRaised elevation.
+const DRAWER = 'h-full w-[calc(100%_-_1.5rem)] d:w-[380px] shadow-highRaised d:rounded-large';
 
 // Blade's Modal: centred, scaling and fading in place.
 const CENTRED = {
@@ -125,14 +124,16 @@ const CENTRED = {
 };
 
 // Per edge: how the root lays the drawer out, and where the closed one parks.
+// The open panel carries a transform at rest (`translate-x-0`): a drag moves
+// it by setting the axis's variable, which needs the composed transform on.
 const DRAWER_EDGE: Record<'drawer' | 'left-drawer', { root: string; panel: string }> = {
   drawer: {
-    root: 'items-stretch justify-end m:p-2',
-    panel: `${DRAWER} group-data-[state=closed]:translate-x-full`,
+    root: 'items-stretch justify-end d:p-2',
+    panel: `${DRAWER} translate-x-0 group-data-[state=closed]:translate-x-full`,
   },
   'left-drawer': {
-    root: 'items-stretch justify-start m:p-2',
-    panel: `${DRAWER} group-data-[state=closed]:-translate-x-full`,
+    root: 'items-stretch justify-start d:p-2',
+    panel: `${DRAWER} translate-x-0 group-data-[state=closed]:-translate-x-full`,
   },
 };
 
@@ -154,11 +155,12 @@ const NO_DRAG: ModalClasses['drag'] = {
 const DRAG_ZONE = 'shrink-0 cursor-grab touch-none select-none active:cursor-grabbing';
 
 // Blade's modalTokens.ts: the column per size; `full` spans the host (the
-// root's 8px inset). A centred modal is at most 80% of the host's height.
+// root's 8px inset), as does every size on phones. A centred modal is at
+// most 80% of the host's height.
 const SIZE: Record<Axis<'size'>, string> = {
-  small: 'm:w-[400px]',
-  medium: 'm:w-[760px]',
-  large: 'm:w-[1024px]',
+  small: 'd:w-[400px]',
+  medium: 'd:w-[760px]',
+  large: 'd:w-[1024px]',
   full: '',
 };
 // Important: the panel's `max-h-full` sits on the same element.
@@ -229,9 +231,9 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     // Heading/SmallSemibold (18/24, the heading face) on a 28px line.
     title:
       layout.title ??
-      'm-0 pt-0.5 font-heading font-semibold text-300 leading-300 [word-break:break-word] text-surface-gray-normal',
+      'm-0 pt-0.5 font-heading font-blade-semibold text-300 leading-300 [word-break:break-word] text-surface-gray-normal',
     subtitle:
-      'm-0 font-text text-75 leading-75 font-regular [word-break:break-word] text-surface-gray-muted',
+      'm-0 font-blade-text text-75 leading-75 font-blade-regular [word-break:break-word] text-surface-gray-muted',
     close: `${layout.close ?? CLOSE} w-5 h-5 ${ICON_BUTTON}`,
     floatingClose: `${
       layout.floatingClose ?? FLOATING_CLOSE
@@ -239,10 +241,10 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     emptyHeader: 'relative h-2 shrink-0',
     body: layout.body ?? 'overflow-auto p-5',
     // Blade DSL's _Modal Footer (Figma): a hairline, then the actions 16px
-    // under it, 16px in (20px beside and below from `m`); the caller lays
+    // under it, 16px in (20px beside and below on desktop); the caller lays
     // out what is in it.
     footer:
-      layout.footer ?? 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 m:px-5 m:pb-5',
+      layout.footer ?? 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 d:px-5 d:pb-5',
   };
 }
 
@@ -253,12 +255,12 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
 // in and below; its title Body/LargeSemibold (16/24) on a 28px line, the
 // close button centred on it. The body and the footer are 16px all round,
 // the footer on the sheet's surface under a hairline. The sheet casts its
-// shadow upward and rounds its top corners 16px (all four from `m`, where
-// it may be a column).
+// shadow upward and rounds its top corners 16px (all four on desktop, where
+// it floats 8px in at the end).
 const SHEET: ModalLayout = {
-  root: 'items-end justify-center m:justify-end m:p-2',
+  root: 'items-end justify-center d:justify-end d:p-2',
   panel:
-    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet group-data-[state=closed]:translate-y-full m:rounded-large',
+    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet translate-y-0 group-data-[state=closed]:translate-y-full d:rounded-large',
   drag: {
     isEnabled: true,
     axis: 'y',
@@ -273,7 +275,7 @@ const SHEET: ModalLayout = {
   footer: 'shrink-0 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4',
   header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted px-4 pt-3 pb-4',
   title:
-    'm-0 pt-0.5 font-text text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
+    'm-0 pt-0.5 font-blade-text text-200 leading-200 tracking-25 font-blade-semibold [word-break:break-word] text-surface-gray-normal',
   close: 'absolute top-9 right-4',
   floatingClose: 'absolute top-4 right-4',
   // The 20px button 16px from the end, and 16px beside it.

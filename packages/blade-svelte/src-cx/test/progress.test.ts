@@ -41,7 +41,7 @@ describe('Progress (preset component)', () => {
     expect(bar.getAttribute('aria-valuenow')).toBe('30');
     expect(bar.getAttribute('aria-valuemax')).toBe('120');
     expect(bar.style.getPropertyValue('--progress')).toBe('0.25');
-    expect(bar.firstElementChild?.className).toContain('[scale:var(--progress)_1]');
+    expect(bar.firstElementChild?.className).toContain('scale-x-[var(--progress)]');
     expect(bar.className.endsWith('w-40')).toBe(true);
 
     return rerender({ type: 'bar', value: 500, max: 120, testID: 'bar' }).then(() => {
@@ -58,7 +58,7 @@ describe('Progress (preset component)', () => {
     const [track, arc] = Array.from(ring.querySelectorAll('circle'));
     expect(ring.className).toContain('w-[72px] h-[72px]');
     expect(ring.style.getPropertyValue('--progress')).toBe('0.75');
-    expect(track.getAttribute('class')).toContain('opacity-100');
+    expect(track.getAttribute('class')).toContain('opacity-blade-100');
     expect(arc.getAttribute('pathLength')).toBe('1');
     expect(arc.getAttribute('class')).toContain('stroke-dashoffset');
   });

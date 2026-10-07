@@ -56,6 +56,38 @@ npm install @razorpay/blade-svelte
 
 The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
 
+### cx: compile Blade's CSS in your app
+
+`@razorpay/blade-svelte/cx` ships no prebuilt stylesheet: your build compiles
+it with UnoCSS (`unocss` is a peer dependency) from Blade's config, so the
+options you pass — the desktop width `d:` uses — reach the output.
+
+```ts
+// uno.blade.config.ts
+import { bladeUnoConfig } from '@razorpay/blade-svelte/uno.config';
+
+export default {
+  ...bladeUnoConfig({ desktop: '62.5rem' }), // the default
+  content: { filesystem: ['./node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+};
+```
+
+Then emit it with the UnoCSS plugin your bundler uses (`unocss/vite`,
+`@unocss/webpack`), or with `@unocss/postcss` and a `@unocss;` directive in a
+stylesheet. An app on UnoCSS itself can run one pass over its own markup and
+Blade's: spread `bladeUnoConfig({ desktop })`, put its own rules before
+Blade's (Uno lets later rules win, so Blade's definitions stay Blade's), and
+add its files to `content`. Import Blade's plain stylesheets beside it:
+
+```ts
+import '@razorpay/blade-svelte/cx/blade.css'; // opacity-blade-*, font-blade-*
+import '@razorpay/blade-svelte/cx/fonts.css'; // Tasa, Inter (woff2)
+```
+
+Components are mobile first; their desktop styles are `d:` classes. Give your
+own `d:` the same width — `bladeVariants({ desktop })` for your UnoCSS pass,
+or Tailwind's `screens: { d: '62.5rem' }`.
+
 ### Setup Theme CSS
 
 Import the theme CSS in your root layout or app entry file:

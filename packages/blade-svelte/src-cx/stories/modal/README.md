@@ -22,16 +22,16 @@ clicks: the drag captures only once it moves); the gesture maths is the
 pure `createSheetDrag` in `runes/layer`. On native the platform sheet does
 its own drag and handle.
 
-Per breakpoint, `variant: { base: 'sheet', m: 'modal' }` is a sheet on
-phones and a modal from 768px up, switched while open. The desktop modal is
-centred, fading and shrinking in place. Set it once for every Modal through BladeProvider defaults
-(`{ Modal: { variant: { base: 'sheet', m: 'modal' } } }`) — the phone
-field's country picker follows them.
+`variant` is the app's to pick: `sheet` or `modal` (centred, fading and
+shrinking in place); no breakpoint switches it. Set it once for every Modal
+through BladeProvider defaults (`{ Modal: { variant: 'sheet' } }`) — the
+phone field's country picker follows them. Within a variant, the desktop
+differences are `d:` classes (62.5rem and up).
 
 `<BottomSheet>` is Modal with `variant` defaulting to `sheet`, passed
 explicitly, so a provider's Modal defaults never change it. `drawer` is
 Blade's Drawer: full height on the right edge, sliding in from it,
-24px short of the screen's width on phones, 380px from 768px (`size` does not apply), as Blade DSL's Drawer (Figma);
+24px short of the screen's width on phones, 380px on desktop (`d`, 62.5rem) (`size` does not apply), as Blade DSL's Drawer (Figma);
 `left-drawer` is the same on the left. `<Drawer>` is Modal with `variant`
 defaulting to `drawer`.
 
@@ -92,9 +92,9 @@ Header) space each part differently, so the header places them itself:
 The header itself is 20px above and beside, 16px above its hairline, at
 every width on a modal, 12px under the handle strip on a sheet, and
 20px all round with no hairline on a drawer. The footer's actions are 16px
-under their hairline (20px on a drawer), 16px in (20px from `m`). A Drawer's
+under their hairline (20px on a drawer), 16px in (20px on desktop (`d`)). A Drawer's
 leading item belongs to a detail block under its title, a pattern not
-ported yet. A BottomSheet has no `size`: from `m` it is the small column.
+ported yet. A BottomSheet has no `size`: on desktop (`d`) it is the small column.
 
 ## Layers
 
@@ -154,7 +154,7 @@ Mount `<ModalStack />` once, beside `<LayerHost />`.
 | | |
 | --- | --- |
 | `openModal(component, options)` | `component` may be a **promise** (a dynamic `import()` works as is): the modal opens at once and shows its shimmer (`ModalPending.svelte`) until it arrives. A failed load closes it, calls `onLoadError` and the `captureError` adapter |
-| options | `props`, `title`, `subtitle`, `closeLabel`, `pendingLabel`, `isDismissible`, `onDismiss({ source, close })`, `onLoadError`, `role`, `accessibilityLabel`, `testID`, `class`, plus Modal's style props (`variant`, `size`, `pace`), each optionally per breakpoint |
+| options | `props`, `title`, `subtitle`, `closeLabel`, `pendingLabel`, `isDismissible`, `onDismiss({ source, close })`, `onLoadError`, `role`, `accessibilityLabel`, `testID`, `class`, plus Modal's style props (`variant`, `size`, `pace`) |
 | the component | gets one extra prop, `modal: { close(result?) }` |
 | handle | `close(result?)`, `result` (settles once: the close value, `undefined` on a dismiss), `update(props)` |
 | `provideOverlays()` / `getOverlays()` | A stack of its own for an embedded surface or a test; `openModal` uses the page's global one |

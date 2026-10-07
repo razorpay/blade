@@ -138,7 +138,7 @@ describe('Tabs', () => {
     expect(resolveTabs({ size: 'small' }).list).toContain('gap-6');
     expect(resolveTabs({ size: 'medium' }).list).toContain('gap-8');
     expect(resolveTabs({ size: 'large', variant: 'borderless' }).list).toContain('gap-8');
-    expect(resolveTabs({ size: 'medium' }).list).not.toContain('m:gap');
+    expect(resolveTabs({ size: 'medium' }).list).not.toContain('d:gap');
   });
 
   it('a leading asset sits in the icon box, on the 8px row with the label', () => {

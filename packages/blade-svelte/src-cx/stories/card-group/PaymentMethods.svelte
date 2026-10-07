@@ -88,7 +88,7 @@
   <CardGroup bind:value={open} label="All payment options" variant={args.variant} size={args.size}>
     {#each methods as method (method.name)}
       {#snippet glyph()}
-        <span class={method.critical ? 'opacity-700 grayscale' : ''}>
+        <span class={method.critical ? 'opacity-blade-700 grayscale' : ''}>
           <Icon source={method.glyph} size="large" />
         </span>
       {/snippet}

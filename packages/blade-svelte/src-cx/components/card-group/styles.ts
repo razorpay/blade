@@ -188,10 +188,10 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
     // Figma: the title and subtitle 2px apart, 12px before the trailing
     // item and chevron.
     headerContent: 'flex min-w-0 flex-1 flex-col gap-0.5 pr-3',
-    prefix: `${line} -mt-px mr-2 font-semibold text-surface-gray-normal ${TITLE_TEXT[size]}`,
+    prefix: `${line} -mt-px mr-2 font-blade-semibold text-surface-gray-normal ${TITLE_TEXT[size]}`,
     leading: `${line} mr-2 overflow-hidden ${LEADING_MAX[size]}`,
     // Figma's header title: Body Large/Medium Medium (500), not semibold.
-    title: `font-medium [word-break:break-word] text-surface-gray-normal ${DISABLED_TEXT} ${TITLE_TEXT[size]}`,
+    title: `font-blade-medium [word-break:break-word] text-surface-gray-normal ${DISABLED_TEXT} ${TITLE_TEXT[size]}`,
     // Small whatever the card group's size, as in Blade.
     subtitle: `text-75 leading-75 tracking-50 text-surface-gray-muted ${DISABLED_TEXT}`,
     headerDivider: `pointer-events-none absolute inset-x-0 bottom-0 border-b-thinner ${DIVIDER} transition-opacity duration-2xquick ease-standard group-hover:opacity-0 group-focus-visible:opacity-0`,

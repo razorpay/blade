@@ -81,7 +81,7 @@ describe('Button standalone', () => {
     expectClass(button, 'bg-interactive-primary-default');
     expectClass(button, 'min-h-9');
     // Figma's label is Semi Bold.
-    expectClass(button, 'font-semibold');
+    expectClass(button, 'font-blade-semibold');
   });
 
   it('renders an anchor with href, and ignores isDisabled there', () => {
@@ -202,7 +202,7 @@ describe('Button autoPressAfter', () => {
     vi.advanceTimersByTime(1000);
     flushSync();
     const fill = button.querySelector<HTMLElement>('[aria-hidden="true"]');
-    expectClass(fill, '[scale:var(--progress)_1]');
+    expectClass(fill, 'scale-x-[var(--progress)]');
     expect(fill?.style.getPropertyValue('--progress')).toBe('0.25');
 
     vi.advanceTimersByTime(3000);

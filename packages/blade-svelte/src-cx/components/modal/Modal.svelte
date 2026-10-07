@@ -5,7 +5,6 @@
     createDialog,
     type DialogDismissEvent,
   } from '../../runes/modal/dialog.svelte';
-  import type { ResponsiveProps } from '../../runes/defaults/responsive';
   import { useComponentDefaults } from '../defaults';
   import Surface from '../layer/Surface.svelte';
   import Icon from '../icon/Icon.svelte';
@@ -87,9 +86,8 @@
 
   // Behaviour props declared here, style props by `./styles`; the typed
   // rest goes to the resolver.
-  // Every style prop may be given per breakpoint (`variant: { base: 'sheet',
-  // m: 'modal' }`); the providers' defaults fill the rest.
-  type Props = BehaviourProps & ResponsiveProps<ModalStyleProps>;
+  // The providers' defaults fill the style props not given.
+  type Props = BehaviourProps & ModalStyleProps;
 
   let {
     isOpen = $bindable(false),

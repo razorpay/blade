@@ -10,7 +10,7 @@ import type { TextInputStyleProps } from '../text-input/styles';
  * PhoneNumberInput's parts. The field is a TextInput and the picker a Modal
  * holding an OptionList: these style what sits between them and choose how
  * the list looks. The picker's Modal follows the app's `Modal` defaults
- * (BladeProvider), e.g. `{ variant: { base: 'sheet', m: 'modal' } }`.
+ * (BladeProvider), e.g. `{ variant: 'sheet' }`.
  */
 export interface PhoneNumberInputClasses<L> {
   /** The country button before the number; a plain span when not selectable. */

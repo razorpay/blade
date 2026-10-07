@@ -77,7 +77,7 @@ export const resolveDropdown: DropdownStyleResolver<DropdownStyleProps> = (props
     section: POPUP_SECTION.root,
     sectionTitle: POPUP_SECTION.title,
     stateRow:
-      'flex items-center justify-center gap-2 p-2 font-text text-100 leading-100 tracking-50 text-surface-gray-muted',
+      'flex items-center justify-center gap-2 p-2 font-blade-text text-100 leading-100 tracking-50 text-surface-gray-muted',
     header: POPUP_HEADER,
     footer: POPUP_FOOTER,
     trigger: {

@@ -72,10 +72,10 @@ its API (props, variants), except where one of the rules below applies.
     variables. The provider takes an overall `size`, which every sized
     control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
     ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
-    per-component `defaults` for any style prop; and `breakpoints` and
-    `adapters`. Any default, and Modal's, BottomSheet's and Drawer's style props, may
-    be given per breakpoint (`{ base: 'sheet', m: 'modal' }`), resolved in JS
-    against the viewport — `base` where nothing can measure. A prop wins;
+    per-component `defaults` for any style prop; and `adapters`. No value
+    differs per breakpoint and nothing reads the viewport in JS: components
+    are mobile first, and their desktop differences are `d:` classes (one
+    breakpoint, 62.5rem — checkout's). A prop wins;
     then, nearest provider first, its entry for the component, then its
     overall `size`; then Blade's default. React's `themeTokens` and
     `colorScheme` are not ported. Modal's `variant` (`modal | sheet | drawer |
@@ -279,7 +279,7 @@ large/medium) by measuring the DOM. These now match:
   (`cubicBezier`/`easeStandard` added to `runes/dom/motion.ts`).
 - **Dropped checkout look:** the `boxed` card (`shadow-card`, `border-interactive-gray-disabled`),
   gray `bg-surface-gray-subtle` panels, `px-4` headers with 11px corner radii,
-  and the `opacity-600` disabled root.
+  and the `opacity-blade-600` disabled root.
 - **Not copied from React:**
   - React still shows the hover fill on a disabled header.
   - React doesn't grey the number prefix when disabled.
@@ -355,7 +355,7 @@ React: `Alert`. cx: `Alert` (`components/alert/`).
 | `icon` (defaults per colour) | `icon` | **added** the defaults: info, check-circle, alert-triangle, alert-octagon (the last two drawn from Blade's icons into `components/icons`) |
 | `isDismissible` (default true) | `isDismissible` | **added**; was "dismissible when `closeLabel` is set" |
 | `onDismiss` | `onDismiss` | same; the alert now closes itself after it, as in React |
-| `isFullWidth` | — | **removed** by decision: full width is the only layout (spans the container, centred from 768px) |
+| `isFullWidth` | — | **removed** by decision: full width is the only layout (spans the container, centred on desktop (`d`, 62.5rem)) |
 | `maxWidth` (default 584px) | — | **removed** by decision: no width of its own; a cap is a `class` (rule 1) |
 | `actions: { primary, secondary }` | — | **removed** by decision (was an `actions` snippet); no checkout call site used it |
 | `testID` | `testID` | same |
@@ -366,7 +366,7 @@ React: `Alert`. cx: `Alert` (`components/alert/`).
 Measured against React Storybook for neutral, positive and notice subtle, and
 negative intense. These match exactly:
 - the box: 12px padding, 12px radius, no border, the fill;
-- full width centring from 768px (the 584px cap and non-full-width layout were measured, then dropped by decision);
+- full width centring on desktop (`d`, 62.5rem) (the 584px cap and non-full-width layout were measured, then dropped by decision);
 - icon, title, description and close positions and sizes;
 - title and description type and colours, subtle and intense;
 - the close glyph's colours;
@@ -577,13 +577,13 @@ Measured against React Storybook at 390px. These match:
 - close button: 20×20 at 16px in, centred on the title's first line;
 - body and footer padding (16px).
 
-- **Header:** Blade's BaseHeader box. 16px padding (20px from 768px), a
+- **Header:** Blade's BaseHeader box. 16px padding (20px on desktop (`d`, 62.5rem)), a
   hairline under it, and the title's type. The close button is centred on the
   title's first line. With no title, subtitle or header, an 8px strip holds the close
   button, floating in a 28px circle. (Subtitle, back button and leading were
   measured to match React, then removed by decision.)
 - **Grab handle:** 56 × 4px, 12px from the top.
-- **Footer:** 16px (20px from 768px) on the sheet's surface, under a hairline.
+- **Footer:** 16px (20px on desktop (`d`, 62.5rem)) on the sheet's surface, under a hairline.
 - **Dropped checkout look:** 8px radius, the 40px handle, the heading-face
   title, and the 20px padding with a 40px close button.
 - **Side fix (CardGroup, then Accordion):** Blade's letter spacing on its title and subtitle,
@@ -608,7 +608,7 @@ cx does more than React's web sheet here, and keeps it:
 | `accessibilityLabel` | names an untitled sheet | keep |
 | `chrome` snippet | content hung off the panel's top edge (above it or over it), beside the close button and handle; receives `close`. Modal's too | keep |
 | `pace` | v2's quicker drawer easing | decide |
-| `size`, `variant` | desktop panel width; `variant: { base: 'sheet', m: 'modal' }` is a sheet on phones and a modal on desktop (was `adaptive`, rule 11) | kept by the desktop decision |
+| `size`, `variant` | desktop panel width; `variant` picks `sheet` or `modal`; the app decides which (was `adaptive`, rule 11; no breakpoint switches it) | kept by the desktop decision |
 
 ### Checkout call sites
 
@@ -625,7 +625,7 @@ passes; the DOM measurements at phone width match React Storybook.
 
 ### Figma alignment (Blade DSL)
 
-- `size` **removed**: Blade DSL's Bottom Sheet (Figma) has no sizes; the sheet is the 400px column from `m`.
+- `size` **removed**: Blade DSL's Bottom Sheet (Figma) has no sizes; the sheet is the 400px column on desktop (`d`).
 - **Added** `leading`, `titleSuffix`, `trailing` in the header, per Figma; the header sits 12px under the handle strip.
 - **Missing**: Figma's back button, input field and contentType variants.
 
@@ -1114,8 +1114,8 @@ WithDirection):
   height open and closed over 280ms on the standard easing, fading from 0.8 —
   the same panel as CardGroup's (now `components/shared/CollapsePanel.svelte`).
   Unlike React, a collapsed body is unmounted, as CardGroup's is.
-- **Width:** at least 200px; at most the viewport less 40px from `s`, 640px
-  from `m`, 1136px from `l`.
+- **Width:** at least 200px; at most the viewport less 40px, 640px on
+  desktop (`d`). React's 1136px step needs a second breakpoint; cx has one.
 - **Theme:** the link trigger is black here (neutral theme), blue in React.
 
 ### Status
@@ -1882,13 +1882,13 @@ BottomSheet; see its section for the header decisions (rule 2).
 Measured against React Storybook (Simple Modal, every size, 1200×800):
 
 - **Panel:** 16px radius (was 8px), `popup` fill, Blade's shadow; 400,
-  760 or 1024px wide from `m`, and at most 80% of the host's height when
+  760 or 1024px wide on desktop (`d`), and at most 80% of the host's height when
   centred. `full` fills the host 8px in, at full height.
 - **Header:** 20px in (16px below `m`), the title 16/24 semibold −3.3%,
   the close button 20px, centred on the title's first line, a hairline
   under it — unchanged, already React's.
 - **Body:** 20px all round.
-- **Footer:** 16px, 20px from `m`, under a hairline — a plain box, as
+- **Footer:** 16px, 20px on desktop (`d`), under a hairline — a plain box, as
   Blade's BaseFooter: the caller lays out its buttons (the story right-aligns
   them 12px apart). It was a `flex gap-4` row with 16px above; BottomSheet's
   footer changed with it.
@@ -1899,7 +1899,7 @@ Measured against React Storybook (Simple Modal, every size, 1200×800):
 
 | Feature | What it does | Recommendation |
 | --- | --- | --- |
-| `variant: modal \| sheet \| drawer \| left-drawer` | centred, Blade's BottomSheet, Blade's Drawer, or the drawer on the left; per breakpoint | keep: BottomSheet and Drawer ride it (`placement` removed) |
+| `variant: modal \| sheet \| drawer \| left-drawer` | centred, Blade's BottomSheet, Blade's Drawer, or the drawer on the left; the app picks | keep: BottomSheet and Drawer ride it (`placement` removed) |
 | `pace` | v2's quicker easing | decide (as BottomSheet) |
 | `onClosed`, `role`, `closeLabel` | as BottomSheet | keep |
 | `ModalStack`, imperative `openModal` | a stack of modals opened from code, a lazy body with a pending state | keep |
@@ -1914,8 +1914,8 @@ passes; the measurements match React Storybook at every size.
 
 - **Title:** Heading/SmallSemibold 18/24 (Figma); React uses body 16/24.
 - **Added** `icon`, `leading`, `titleSuffix` and `trailing({ close })` in the header, per Figma's _Modal Header: the leading item 8px from the title, the trailing item 16px from the title and from the close button. Why they are props: see the modal README.
-- **Sections:** header 20px above and beside, 16px below, at every width (Figma's _Modal Header; was 16px below `m`); the close a 20px glyph in Figma's 28px box, 24px from the top and the end, the title row leaving 44px for it; a `leading` snippet in Figma's 32px slot, centred on the title block (`icon` stays on the title line). Footer 16px above the actions (20px beside and below from `m`).
-- **Drawer:** 380px from `m` and 100% − 24px on phones (Figma; React 375/420px); header 20px in with no divider; **added** `titleSuffix`, `trailing`; Figma's detail block under the title is **missing**.
+- **Sections:** header 20px above and beside, 16px below, at every width (Figma's _Modal Header; was 16px below `m`); the close a 20px glyph in Figma's 28px box, 24px from the top and the end, the title row leaving 44px for it; a `leading` snippet in Figma's 32px slot, centred on the title block (`icon` stays on the title line). Footer 16px above the actions (20px beside and below on desktop (`d`)).
+- **Drawer:** 380px on desktop (`d`) and 100% − 24px on phones (Figma; React 375/420px); header 20px in with no divider; **added** `titleSuffix`, `trailing`; Figma's detail block under the title is **missing**.
 - **Missing**: Figma's full-width square modal on phones, the `padding` variant (20/16/0), and the full-page modal.
 
 ---
@@ -2079,7 +2079,7 @@ and thumb check were ported from React earlier.
 - **Phone sizes added:** Blade's switch is bigger below `m` — track 36×20
   (small) and 44×24 (medium), thumb 16 and 20px, check 8 and 10px — and
   takes the desktop size (28×16 / 36×20, thumb 12 / 16px, check 6 / 8px)
-  from `m`. cx had the desktop size everywhere. The press stretch follows
+  on desktop (`d`). cx had the desktop size everywhere. The press stretch follows
   the thumb (125%, growing from its centre).
 - Track and thumb colours, the thumb's position when on, and the check's
   fade already matched.

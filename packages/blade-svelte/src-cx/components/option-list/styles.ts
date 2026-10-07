@@ -91,7 +91,7 @@ export type OptionListStyleProps = Record<never, never>;
 // visually hidden: the row's picked state is the indicator.
 export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = () => ({
   root: 'flex w-full flex-col',
-  disabled: 'opacity-600',
+  disabled: 'opacity-blade-600',
   options:
     'flex flex-col [&>*+*]:border-t-thin [&>*+*]:border-solid [&>*+*]:border-surface-gray-muted overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted',
   virtual: {
@@ -109,12 +109,12 @@ export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = 
   // less the border), or the inset active ring is cut at the corners.
   row: 'relative flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
   rowState: {
-    picked: 'bg-interactive-gray-faded-highlighted font-medium text-interactive-gray-normal',
+    picked: 'bg-interactive-gray-faded-highlighted font-blade-medium text-interactive-gray-normal',
     unpicked: 'bg-surface-gray-intense text-interactive-gray-normal hover:bg-interactive-gray-default',
   },
   // The box clips the rows, so the ring sits inside.
   rowActive: 'shadow-focus-inset',
-  rowDisabled: 'pointer-events-none opacity-600',
+  rowDisabled: 'pointer-events-none opacity-blade-600',
   control: { radio: 'sr-only', checkbox: 'sr-only' },
   invalid: 'outline-solid outline-thin outline-interactive-negative-default',
   content: 'min-w-0 flex-1',

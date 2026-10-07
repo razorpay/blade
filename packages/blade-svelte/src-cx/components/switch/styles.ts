@@ -50,7 +50,7 @@ const TRACK =
 // The thumb carries the check's colour (`interactive.icon.primary.subtle`,
 // `…disabled` while disabled) for the Icon inside it to inherit.
 const THUMB =
-  'relative left-0 flex items-center justify-center rounded-max bg-interactive-static-white-default icon-interactive-primary-subtle group-data-[disabled]:bg-interactive-static-white-disabled group-data-[disabled]:icon-interactive-primary-disabled [transition-property:translate,width,left] duration-quick ease-standard motion-reduce:transition-none';
+  'relative left-0 flex items-center justify-center rounded-max bg-interactive-static-white-default icon-interactive-primary-subtle group-data-[disabled]:bg-interactive-static-white-disabled group-data-[disabled]:icon-interactive-primary-disabled [transition-property:transform,width,left] duration-quick ease-standard motion-reduce:transition-none';
 
 // Blade's ThumbIcon (ThumbIcon.tsx, AnimatedThumbIcon.web.tsx): shown only
 // while effectively on (on and enabled), fading in over `quick` once the
@@ -120,7 +120,7 @@ export const resolveSwitch: SwitchStyleResolver<SwitchStyleProps> = (props) => {
       off: `${THUMB} ${size.thumb} translate-x-0 ${size.pressed.off}`,
     },
     icon: {
-      on: `${ICON} ${size.iconBox} opacity-1300 delay-2xquick group-data-[disabled]:opacity-0 group-data-[disabled]:[transition-delay:0ms]`,
+      on: `${ICON} ${size.iconBox} opacity-blade-1300 delay-2xquick group-data-[disabled]:opacity-0 group-data-[disabled]:[transition-delay:0ms]`,
       off: `${ICON} ${size.iconBox} opacity-0`,
     },
     loading:

@@ -27,7 +27,6 @@
     duration: () => classes.duration,
     geometry: () => classes.geometry,
     minShown: () => classes.minShown,
-    phoneMedia: () => classes.phoneMedia,
   });
 </script>
 

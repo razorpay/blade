@@ -3,14 +3,13 @@
 // types — one file would be an import cycle.
 import type { Component, Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
-import type { ResponsiveProps } from '../../runes/defaults/responsive';
 import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
 import { MODAL_AXES } from '../modal/styles';
 
 /**
  * The blade taxonomy as data: the Modal axes a sheet still decides. Blade
  * DSL's Bottom Sheet (Figma) has no sizes: on phones it spans the viewport,
- * and from `m` it is the small (400px) column.
+ * and on desktop (`d`) it is the small (400px) column.
  */
 export const BOTTOM_SHEET_AXES = {
   variant: ['sheet', 'modal'],
@@ -31,8 +30,8 @@ export interface BottomSheetStyleProps {
   isDraggable?: boolean;
   /**
    * `sheet` (the default here): anchored to the bottom with a handle,
-   * dragged down to dismiss; `modal`: the modal variant. Per breakpoint,
-   * it is the adaptive sheet: `{ base: 'sheet', m: 'modal' }`.
+   * dragged down to dismiss; `modal`: the modal variant. The app picks it:
+   * no breakpoint switches it.
    * @default 'sheet'
    */
   variant?: Axis<'variant'>;
@@ -114,5 +113,5 @@ export interface BottomSheetBehaviourProps {
 
 /** The blade BottomSheet: its behaviour props over its style props. */
 export type BottomSheetComponent = Component<
-  BottomSheetBehaviourProps & ResponsiveProps<BottomSheetStyleProps>
+  BottomSheetBehaviourProps & BottomSheetStyleProps
 >;

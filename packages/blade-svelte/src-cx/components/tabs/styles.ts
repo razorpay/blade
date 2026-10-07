@@ -71,7 +71,7 @@ const bySize = (map: Record<Size, string>): Record<Size, string> => map;
 // at gentle/standard. Focus is the inset 4px `surface.border.primary.muted`
 // ring over the `interactive.background.gray.default` fill.
 const TAB =
-  'relative flex shrink-0 flex-row cursor-pointer items-center gap-2 whitespace-nowrap font-text font-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
+  'relative flex shrink-0 flex-row cursor-pointer items-center gap-2 whitespace-nowrap font-blade-text font-blade-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
 const LABEL: Record<Size, string> = {
   small: 'text-100 leading-100 tracking-50',
   medium: 'text-100 leading-100 tracking-50',
@@ -115,7 +115,7 @@ const BORDERED = {
     }),
     hover: 'hover:border-interactive-gray-highlighted',
     indicator:
-      'pointer-events-none absolute left-0 bottom-0 h-0.5 w-[var(--tab-w)] [translate:var(--tab-x)_0] bg-interactive-neutral-highlighted',
+      'pointer-events-none absolute left-0 bottom-0 h-0.5 w-[var(--tab-w)] translate-x-[var(--tab-x)] bg-interactive-neutral-highlighted',
     track: 'border-b-thin border-solid border-surface-gray-muted',
   },
   vertical: {
@@ -133,7 +133,7 @@ const BORDERED = {
     }),
     hover: '',
     indicator:
-      'pointer-events-none absolute left-0 top-0 w-[1.5px] h-[var(--tab-h)] [translate:0_var(--tab-y)] bg-interactive-neutral-highlighted',
+      'pointer-events-none absolute left-0 top-0 w-[1.5px] h-[var(--tab-h)] translate-y-[var(--tab-y)] bg-interactive-neutral-highlighted',
     track: 'border-l-thin border-solid border-surface-gray-muted',
   },
 };
@@ -171,7 +171,7 @@ const FILLED = {
   },
 };
 const FILLED_PILL =
-  'pointer-events-none absolute left-0 top-0 w-[var(--tab-w)] h-[var(--tab-h)] [translate:var(--tab-x)_var(--tab-y)] bg-surface-gray-intense';
+  'pointer-events-none absolute left-0 top-0 w-[var(--tab-w)] h-[var(--tab-h)] translate-x-[var(--tab-x)] translate-y-[var(--tab-y)] bg-surface-gray-intense';
 const MOTION = 'transition-all duration-moderate ease-standard motion-reduce:transition-none';
 
 export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
