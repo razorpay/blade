@@ -22,7 +22,7 @@
      * @default its index among the items
      */
     value?: CardGroupValue;
-    /** Blade's semibold title, sized by the CardGroup; a snippet sizes its own. */
+    /** The title in Figma's medium weight, sized by the CardGroup; a snippet sizes its own. */
     title?: string | Slot;
     /** The small muted line under the title. */
     subtitle?: string | Slot;
@@ -42,7 +42,7 @@
      * button: phrasing content only, nothing interactive.
      */
     header?: Snippet<[CardGroupItemState & { title: Snippet; subtitle: Snippet }]>;
-    /** The body, in Blade's body box (12px above, 16px in and below). Ignored when `children` is given. */
+    /** The body, in Figma's body box (16px above and in, 16px below; 12px at medium). Ignored when `children` is given. */
     body?: Slot;
     /** A custom body at full width, with no padding or background of the card group's own; wins over `body`. */
     children?: Slot;
@@ -183,7 +183,7 @@
           {:else}
             <Icon
               source={classes.chevron}
-              size="large"
+              size={classes.chevronSize}
               class={classes.chevronState[kind]}
             />
           {/if}

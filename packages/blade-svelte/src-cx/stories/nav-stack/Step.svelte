@@ -2,7 +2,7 @@
   import { onDestroy } from 'svelte';
   import {
     Button,
-    FooterBar,
+    BottomBar,
     getNav,
     openModal,
     Screen,
@@ -61,10 +61,12 @@
     </label>
   </div>
   {#snippet footer()}
-    <FooterBar>
-      <Button type="button" onClick={() => screen.pop(`left ${depth}`)}>
-        Done
-      </Button>
-    </FooterBar>
+    <BottomBar>
+      <div class="p-3">
+        <Button type="button" class="w-full" onClick={() => screen.pop(`left ${depth}`)}>
+          Done
+        </Button>
+      </div>
+    </BottomBar>
   {/snippet}
 </Screen>

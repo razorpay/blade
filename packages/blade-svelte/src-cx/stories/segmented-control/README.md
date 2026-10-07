@@ -24,7 +24,7 @@ nothing of the pill.
 | `validationState`, `helpText`, `errorText` | Omit `validationState` inside a Form to mirror its error once picked or submitted; pass it to own the state and its line |
 | `isDisabled` | Disables every segment |
 | `label`, `accessibilityLabel` | Name the `radiogroup` |
-| `size` | `small`, `medium` (default), `large`: Blade's paddings and radii for the pill, the segments and the thumb |
+| `size` | `small`, `medium` (default), `large`: Blade DSL's (Figma) paddings and radii for the pill, the segments and the thumb. The track is 2px in at small (28px tall) and 4px otherwise; the label is 14/20 at small and medium, 16/24 at large |
 | `color` | `neutral` (default) tints the track gray over a light surface; `white` draws it over a brand-colour pane — a white 18% track, white unpicked text, the same white thumb with dark text |
 
 ## SegmentedControlItem
@@ -33,8 +33,18 @@ nothing of the pill.
 | --- | --- |
 | `value` | What the control's `value` becomes when picked |
 | `icon` | An `IconSource` before the label. Alone, it is the label, and `accessibilityLabel` names it — the radio reads as that name through its label |
+| `leading({ isChecked, isDisabled })` | In place of `icon`: an asset (a logo, an avatar) in the icon's box, 16px (20px at large) |
+| `trailing({ isChecked, isDisabled })` | After the label: a Counter or a Badge |
 | `isDisabled` | This segment only |
 | `children({ isChecked, isDisabled })` | The label text |
+
+## Why `icon`, `leading` and `trailing` are props
+
+Figma's _Segmented Control / Item is the same row as a tab: the leading item
+(an icon, or an asset in a 16px box, 20px at large), the label, and the
+trailing item (a Counter or a Badge), each 8px apart, centred in the
+segment. The segment owns that row, so each part is a prop that lands in its
+place, sized for the segment, with the gap between them.
 
 ## Keys and the thumb
 

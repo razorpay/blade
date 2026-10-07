@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { FormatSpec } from '../../runes';
   import TextInput from '../../components/text-input/TextInput.svelte';
+  import type { IconSource } from '../../runes/icon/source';
 
   type Value = string | number | null | undefined;
 
@@ -18,7 +19,13 @@
       | FormatSpec
       | { parse: (value: Value) => Value; format: (value: Value) => string };
     maxCharacters?: number;
-    leading?: string;
+    prefix?: string;
+    suffix?: string;
+    leadingIcon?: IconSource;
+    trailingIcon?: IconSource;
+    withLeadingSnippet?: boolean;
+    size?: 'small' | 'medium' | 'large';
+    showClearButton?: boolean;
     type?: 'text' | 'tel' | 'email' | 'url' | 'number' | 'password';
     inputMode?: 'numeric' | 'decimal';
     enterKeyHint?: 'next' | 'done';
@@ -39,7 +46,13 @@
     successText,
     format,
     maxCharacters,
-    leading,
+    prefix,
+    suffix,
+    leadingIcon,
+    trailingIcon,
+    withLeadingSnippet = false,
+    size,
+    showClearButton,
     type,
     inputMode,
     enterKeyHint,
@@ -51,6 +64,10 @@
 
 {#snippet clear()}
   <button data-testid="clear">Clear</button>
+{/snippet}
+
+{#snippet picker()}
+  <button data-testid="picker">INR</button>
 {/snippet}
 
 <TextInput
@@ -65,7 +82,13 @@
   {successText}
   {format}
   {maxCharacters}
-  {leading}
+  {prefix}
+  {suffix}
+  {leadingIcon}
+  {trailingIcon}
+  {size}
+  {showClearButton}
+  leading={withLeadingSnippet ? picker : undefined}
   {type}
   {inputMode}
   {enterKeyHint}

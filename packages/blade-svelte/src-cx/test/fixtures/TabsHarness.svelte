@@ -2,7 +2,7 @@
   import Tabs from '../../components/tabs/Tabs.svelte';
   import TabItem from '../../components/tabs/TabItem.svelte';
   import TabPanel from '../../components/tabs/TabPanel.svelte';
-  import { info } from '../../components/icons';
+  import { InfoIcon } from '../../icons';
 
   interface Props {
     value?: string;
@@ -35,7 +35,7 @@
 >
   {#snippet tabs()}
     {#each ITEMS as item (item.id)}
-      <TabItem value={item.id} isDisabled={item.id === 'emi'} icon={item.id === 'card' ? info : undefined}>
+      <TabItem value={item.id} isDisabled={item.id === 'emi'} icon={item.id === 'card' ? InfoIcon : undefined}>
         {#snippet children({ isSelected })}{item.label}{#if isSelected}<span data-testid={`picked-${item.id}`}> ✓</span>{/if}{/snippet}
         {#snippet trailing({ isSelected, isDisabled })}<span data-testid={`trailing-${item.id}`} data-selected={isSelected} data-disabled={isDisabled}></span>{/snippet}
       </TabItem>

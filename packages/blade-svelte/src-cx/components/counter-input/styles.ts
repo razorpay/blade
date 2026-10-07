@@ -35,10 +35,12 @@ export interface CounterInputClasses {
   iconSize: 'small' | 'medium' | 'large' | 'xlarge';
 }
 
-// Blade's CounterInput (CounterInput.web.tsx, token.ts). Per size: the box's
-// minimum width and height (78/86/94/122 × 30/34/38/50), its radius, the
-// buttons' padding and radius, the icon, the number's type, and the
-// The label above is the shared FieldLabel, at the input's size.
+// Blade DSL's Counter Input (Figma). Per size: the box's minimum width and
+// height, border included (76/84/92/120 × 28/32/36/48 — Figma's stroke sits
+// inside the frame; React's tokens add it outside, 2px more), its radius,
+// the square buttons (20/24/28/40) and their radius, the icon (12/16/16/20),
+// and the number's type (semibold 12/17, 12/17, 14/20, 16/24). The label
+// above is the shared FieldLabel, at the input's size.
 const SIZE: Record<
   Axis<'size'>,
   {
@@ -49,28 +51,28 @@ const SIZE: Record<
   }
 > = {
   xsmall: {
-    box: 'min-w-[78px] h-[30px] rounded-small',
-    button: 'p-1 rounded-xsmall',
+    box: 'min-w-[76px] h-7 rounded-small',
+    button: 'w-5 h-5 rounded-xsmall',
     text: 'text-75 leading-75 tracking-50',
     icon: 'small',
   },
   small: {
-    box: 'min-w-[86px] h-[34px] rounded-small',
-    button: 'p-1 rounded-xsmall',
+    box: 'min-w-[84px] h-8 rounded-small',
+    button: 'w-6 h-6 rounded-xsmall',
     text: 'text-75 leading-75 tracking-50',
     icon: 'medium',
   },
   medium: {
-    box: 'min-w-[94px] h-[38px] rounded-small',
-    button: 'p-1 rounded-xsmall',
+    box: 'min-w-[92px] h-9 rounded-small',
+    button: 'w-7 h-7 rounded-xsmall',
     text: 'text-100 leading-100 tracking-50',
-    icon: 'large',
+    icon: 'medium',
   },
   large: {
-    box: 'min-w-[122px] h-[50px] rounded-medium',
-    button: 'p-2 rounded-small',
+    box: 'min-w-[120px] h-12 rounded-medium',
+    button: 'w-10 h-10 rounded-small',
     text: 'text-200 leading-200 tracking-25',
-    icon: 'xlarge',
+    icon: 'large',
   },
 };
 
@@ -130,10 +132,11 @@ export function resolveCounterInput(props: CounterInputStyleProps = {}): Counter
       inert: `${box} bg-surface-gray-subtle ${tone.borderInert}`,
     },
     controls: 'flex h-full flex-row items-center',
-    // Blade's margins: 4px round each button except towards the number.
+    // 4px from the box's outer edge round each button except towards the
+    // number, as Figma: 3px inside the 1px border.
     button: {
-      decrement: `${button} mt-1 mb-1 ml-1`,
-      increment: `${button} mt-1 mb-1 mr-1`,
+      decrement: `${button} [margin:3px_0_3px_3px]`,
+      increment: `${button} [margin:3px_3px_3px_0]`,
     },
     // The number's width is its digits in `ch` of its own font, plus the
     // input's 4px each side — so the font sits on the field too.

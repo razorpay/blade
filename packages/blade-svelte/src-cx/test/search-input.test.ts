@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import SearchInput from '../components/search-input/SearchInput.svelte';
+import { glyphsIn } from './classes';
+import { SearchIcon } from '../icons';
 
 describe('SearchInput', () => {
   it('is a text searchbox with the search key, led by the glyph', () => {
@@ -11,14 +13,14 @@ describe('SearchInput', () => {
     // Not `search`: the browser's clear button would sit beside the field's.
     expect(control.getAttribute('type')).toBe('text');
     expect(control.getAttribute('enterkeyhint')).toBe('search');
-    expect(container.querySelectorAll('svg')).toHaveLength(1);
+    expect(glyphsIn(container, SearchIcon)).toHaveLength(1);
   });
 
   it('drops the glyph with showSearchIcon off', () => {
     const { container } = render(SearchInput, {
       props: { accessibilityLabel: 'Search banks', showSearchIcon: false },
     });
-    expect(container.querySelectorAll('svg')).toHaveLength(0);
+    expect(glyphsIn(container)).toHaveLength(0);
   });
 
   it('shows the clear button while it holds text, and clearing reports', async () => {
@@ -42,5 +44,15 @@ describe('SearchInput', () => {
     expect(onClearButtonClick).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenLastCalledWith({ name: 'q', value: '' });
     expect(control.value).toBe('');
+  });
+
+  it("puts the glyph in TextInput's leading icon slot: 12px in, 8px from the text", () => {
+    const { container, getByRole } = render(SearchInput, {
+      props: { accessibilityLabel: 'Search banks', size: 'large' },
+    });
+    const [glyph] = glyphsIn(container, SearchIcon);
+    expect(glyph.parentElement?.className).toContain('pl-2');
+    expect(glyph.className).toContain('w-5 h-5');
+    expect(getByRole('searchbox').className).toContain('pl-2');
   });
 });

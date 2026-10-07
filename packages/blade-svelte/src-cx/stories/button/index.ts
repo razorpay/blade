@@ -12,6 +12,8 @@ const meta: StoryMeta = {
     isLoading: { control: 'boolean', description: 'Host-driven busy state' },
     isDisabled: { control: 'boolean' },
     label: { control: 'text' },
+    withIcon: { control: 'boolean', description: 'icon: a leading glyph' },
+    withTrailingIcon: { control: 'boolean', description: 'trailingIcon: a trailing glyph' },
   },
   stories: {
     Basic: {
@@ -22,6 +24,8 @@ const meta: StoryMeta = {
         isLoading: false,
         isDisabled: false,
         label: 'Pay now',
+        withIcon: false,
+        withTrailingIcon: false,
       },
     },
     BusyCauses: {

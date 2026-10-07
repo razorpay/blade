@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import nodePlop from 'node-plop';
@@ -42,6 +43,16 @@ const generateIcons = async () => {
     process.exitCode = 1;
   } else {
     console.log('generated re-exports');
+  }
+
+  // blade-svelte's cx icons are glyphs of a font apps build themselves: they
+  // take the React components' shapes as SVGs, under codepoints that never move.
+  if (target !== 'react') {
+    execFileSync(
+      process.execPath,
+      [here('../../packages/blade-svelte/scripts/icon-svgs/extract-blade.mjs')],
+      { stdio: 'inherit' },
+    );
   }
 };
 

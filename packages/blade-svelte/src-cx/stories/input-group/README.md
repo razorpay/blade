@@ -1,7 +1,8 @@
 # Input group
 
 The component is `packages/blade/components/input-group/InputGroup.svelte`.
-It has no style axes yet (`components/input-group/index.ts`).
+Its one style axis is `size`: `medium` (default) or `large`, the sizes
+Blade DSL's Input Group (Figma) draws; every member takes it.
 
 ## Behaviour props
 

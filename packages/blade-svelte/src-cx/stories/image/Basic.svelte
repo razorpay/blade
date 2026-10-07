@@ -1,11 +1,11 @@
 <script lang="ts">
   import {
     Icon,
-    icons,
     Image,
     Text,
     type ImageStyleProps,
   } from '../../index';
+  import { BankIcon } from '../../icons';
 
   interface Props {
     args: ImageStyleProps & { alt?: string };
@@ -58,7 +58,7 @@
       fit={args.fit}
       class="w-10 h-10"
     >
-      {#snippet fallback()}<Icon source={icons.bank} />{/snippet}
+      {#snippet fallback()}<Icon source={BankIcon} />{/snippet}
     </Image>
     <Text size="small" color="muted">own fallback</Text>
   </div>

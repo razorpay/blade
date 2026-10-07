@@ -114,7 +114,7 @@ replaced by a rule.
 | Badge | `badge` | common, **done** |
 | BaseAnimatedValue, BaseHeaderFooter, BaseMenu, BaseMotion | — | n/a (internal) |
 | BladeProvider | `blade-provider` | **different**: component defaults, not theme tokens (rule 11) |
-| BottomBar | — | react-only (compare with cx `footer-bar`) |
+| BottomBar | `bottom-bar` | common, **done**: Blade DSL's Bottom Bar (Figma), a container; positioning is the consumer's (see BottomBar) |
 | BottomDock | — | react-only |
 | BottomNav | — | react-only |
 | BottomSheet | `bottom-sheet` | common, **done** |
@@ -147,7 +147,7 @@ replaced by a rule.
 | Form (FormLabel, FormHint, CharacterCounter) | `shared/FieldLabel`, `shared/FieldHint`, `shared/FieldCounter` | common, **done** (cx's `form`, a `<form>` with field registration, is cx-only) |
 | FormGroup | — | react-only |
 | GenUI | — | react-only |
-| Icons | `icon`, `icons` | common |
+| Icons | `icon`, `@razorpay/blade-svelte/icons`, `/vite`, `/webpack` | common, **done**: Blade's icons by name, as SVG imports; a font plugin makes them glyphs (see Icons) |
 | Indicator | — | react-only |
 | InfoGroup | — | react-only |
 | Input / TextInput | `text-input` | common, **done** |
@@ -170,7 +170,7 @@ replaced by a rule.
 | Popover | `popover` | common, **done** |
 | PopupArrow | — | n/a (internal) |
 | Preview | — | react-only |
-| ProgressBar | `progress` | common |
+| ProgressBar | — (`progress` is a different thing) | react-only; cx's `progress` is a loader (dots, bar, ring) with no value, label or colour, so it counts as cx-only (Storybook: Extra Components) |
 | QuickFilters | — | react-only |
 | Radio | `radio` | common, **done** |
 | RollingText | — | react-only |
@@ -199,7 +199,6 @@ replaced by a rule.
 | VisuallyHidden | — | n/a (`sr-only` class) |
 | — | `async` | cx-only |
 | — | `countdown` | cx-only |
-| — | `footer-bar` | cx-only |
 | — | `image` | cx-only |
 | — | `layer` (LayerHost, Surface) | cx-only (overlay infrastructure) |
 | — | `nav-stack` | cx-only |
@@ -332,6 +331,13 @@ gives 0 errors; `test` passes; the DOM measurements match React
 Storybook, unchanged from before the rewrite.
 
 
+
+### Figma alignment (Blade DSL)
+
+- cx CardGroup follows Blade DSL's ❖ Accordion (Figma), not its ❖ Card Group (48px navigation rows; cx's `go` items approximate it).
+- Header line box 24px at large and 20px at medium; 8px leading → title; 12px title → trailing or chevron; title and subtitle 2px apart in medium weight (React: semibold); chevron 20/16px. Body 16px above and inside, 16px below and between parts (12px at medium); React's body is 12px above.
+- Why `leading` and `trailing` are props: see the card-group README.
+
 ---
 
 ## Alert
@@ -381,7 +387,7 @@ negative intense. These match exactly:
 All four already use React's shape (`description`, `isDismissible`, `icon`):
 Netbanking, FlowSelector, TabbyCheckoutSheet, BankList. Three pass
 `isFullWidth`, which is gone: drop it (full width is the only layout).
-They pass React icon components to `icon`, where cx takes icon data (Icons pass).
+They pass React icon components to `icon`; cx takes the same-named icon from `@razorpay/blade-svelte/icons` (`import { BankIcon } from '@razorpay/blade-svelte/icons'`).
 
 ### Status
 
@@ -389,15 +395,22 @@ Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements match React Storybook.
 
 
+
+### Figma alignment (Blade DSL)
+
+- Text → dismiss is 12px, per Blade DSL's full-width Alert (Figma). Figma centres the dismiss button vertically in full width; cx keeps it top-aligned by request.
+- Why `icon` is a prop: see the alert README (the icon carries its own 8px to the text).
+
 ---
 
 ## Amount
 
 React: `Amount`. cx: `Amount` (`components/amount/`) over `runes/amount`.
 
-**Decision:** Amount decides only the formatting (i18nify and Intl). Its
-size, weight, colour and face are inherited from the surrounding text, so
-React's text-style props are not ported.
+**Decision:** by default Amount decides only the formatting (i18nify and
+Intl): `size`, `weight` and `color` default to `inherit`, so it takes the
+surrounding text's. `type` with `size` draws it as one of Blade DSL's Amount
+variants (Figma), every one of them ported.
 
 ### Props
 
@@ -405,10 +418,10 @@ React's text-style props are not ported.
 | --- | --- | --- |
 | `value` | `value` | same |
 | `currency` (default `INR`) | `currency` | **default added** (was required) |
-| `type`, `size`, `weight`, `color` | — | **not ported** by decision: inherited from the surrounding `Text`/`Heading` |
+| `type`, `size`, `weight`, `color` | same, `size`/`weight`/`color` defaulting to `inherit` | **added**, Figma's variants: body xsmall–large, heading small–2xlarge, display small–xlarge; weights regular/medium/semibold (heading: no medium); `color` takes Text's colours. Sizes and weights are typed per `type`. React defaults to body medium; cx inherits |
 | `suffix: decimals \| none \| humanize` | `suffix` | **added** |
 | `fractionDigits: number \| 'auto'` (default 2) | `fractionDigits` | **changed** default from the currency's own to 2; `auto` added |
-| `isAffixSubtle` (default true) | `isAffixSubtle` | **renamed** from `affix: subtle \| normal`. The affix is 0.75em, relative to the text, where React sizes it per type and size |
+| `isAffixSubtle` (default true) | `isAffixSubtle` | **renamed** from `affix: subtle \| normal`. With a set size the affix takes Figma's style one step down (see the amount README); while the size inherits it is 0.75em of the text |
 | `currencyIndicator: currency-symbol \| currency-code` | `currencyIndicator` | **renamed** from `currencyDisplay: symbol \| code` |
 | `isStrikethrough` | `isStrikethrough` | same; a `<del>` whose own line follows the text, where React draws a 1px/2px line |
 | `testID` | `testID` | same |
@@ -431,12 +444,13 @@ Only the layout is Amount's own, and it matches React:
 - parts on one baseline;
 - 4px either side of the minus sign;
 - 2px between currency and number, on the locale's side;
-- subtle affixes at 64% opacity.
+- subtle affixes smaller only: Figma's subtle affix is never faded (React and cx used to set 64% opacity).
 
 Everything else follows the text around it.
 
-Before this decision, the full React type/size table was built and matched
-exactly by measurement. It was then dropped: sizes come from the text now.
+The type/size table follows Figma: the value in the type's style (heading
+and display in the heading face), the subtle affix a step down, the currency
+symbol always in the body face.
 
 - **Side fix (Typography):** `font-heading` now carries Blade's `opsz` 60, for
   every heading. Before it was missing everywhere, and headings set a little wide.
@@ -457,15 +471,20 @@ string, with the styled parts `aria-hidden`. React reads the spans in order.
 ### Checkout call sites
 
 Two, in international checkout (Desktop, Mobile). Both pass `size` and
-`weight`, and Desktop passes `type` and a token-path `color`. Move these onto
-a wrapping `Heading`/`Text`. `fractionDigits` still works; without it the
-default is now 2.
+`weight`, and Desktop passes `type` and a token-path `color`: `type`, `size`
+and `weight` now carry over; the token-path `color` becomes one of Text's
+colours. `fractionDigits` still works; without it the default is now 2.
 
 ### Status
 
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; inheritance and the strikethrough are checked in the browser.
 
+
+
+### Figma alignment (Blade DSL)
+
+- All of Figma's type × size × weight variants are ported, with `size`, `weight` and `color` defaulting to `inherit`. Figma also puts 2px between the integer and the decimals; cx keeps them together, as React does.
 
 ---
 
@@ -480,8 +499,8 @@ React: `Badge`. cx: `Badge` (`components/badge/`).
 | `children` (string, required) | `children` snippet | the label as content; React's dev check for empty text is not ported |
 | `color` (5 intents + `primary`, default neutral) | `color` | same |
 | `emphasis: subtle \| intense` (default subtle) | `emphasis` | same |
-| `size: xsmall \| small \| medium \| large` (default medium) | `size` | **added** `xsmall` and `large` |
-| `icon` | `icon` | **added** (icon data, rule for Icons pass) |
+| `size: xsmall \| small \| medium \| large` (default medium) | `size: small \| medium \| large` | **removed** `xsmall`: Blade DSL's Badge (Figma) draws small, medium and large only |
+| `icon` | `icon` | **added** (a glyph token, see Icons) |
 | `testID` | `testID` | same |
 | styled props, `data-analytics-*` | `class`; — | rule 1; analytics **missing** (analytics pass) |
 
@@ -492,9 +511,12 @@ These match exactly:
 - the box: width, height (14/16/20/24px), pill radius, no border;
 - the label: position, size, line height, weight, letter spacing, colour.
 
-- **Sizes:** Blade's badgeTokens. Side padding is the box's (4px, 8px for
-  large) plus the label's own margin (2px up to small, 4px above), which is
-  also the icon-to-label gap. Icons are 8px up to small, 12px above.
+- **Sizes:** Blade's badgeTokens, which match Blade DSL's Badge (Figma).
+  Side padding is the box's (4px, 8px for large) plus the label's own
+  spacing (2px at small, 4px above), which is also the icon-to-label gap:
+  text-only badges are 6/8/12px in on both sides, and a leading icon sits
+  one gap closer to the edge (4/4/8px). That spacing is why `icon` is a prop.
+  Icons are 8px at small, 12px above.
 - **Weight:** medium on subtle, regular on intense, as in Blade.
 - **Label:** one line (`clamp-1`). A cut-off label gets its full text as a
   `title`, which is Blade's `useTruncationTitle`
@@ -600,6 +622,35 @@ Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements at phone width match React Storybook.
 
 
+
+### Figma alignment (Blade DSL)
+
+- `size` **removed**: Blade DSL's Bottom Sheet (Figma) has no sizes; the sheet is the 400px column from `m`.
+- **Added** `leading`, `titleSuffix`, `trailing` in the header, per Figma; the header sits 12px under the handle strip.
+- **Missing**: Figma's back button, input field and contentType variants.
+
+---
+
+## BottomBar
+
+React: `BottomBar` (renders fixed to the bottom). cx: `BottomBar` (`components/bottom-bar/`), from Blade DSL's Bottom Bar (Figma).
+
+**Decision:** cx's BottomBar is only the surface; it does not position
+itself. The consumer fixes it through `class` (`fixed inset-x-0 bottom-0`,
+`sticky`, or in the flow), where React fixes it to the viewport.
+
+| React | cx | Action |
+| --- | --- | --- |
+| `children` | `children` snippet | rule 2 |
+| fixed positioning | — | **changed** by decision: the consumer's `class` |
+| `testID` | `testID` | same |
+
+### Figma alignment (Blade DSL)
+
+- Surface `surface.background.gray.intense`, a 1px `surface.border.gray.muted` top border, and the Bottom Nav shadow (`0 -8px 24px`, the muted border colour) as `shadow-bottomBar`.
+- 4px padding above and at the sides; Figma's 64px slot is the content's own height.
+- Figma ends the bar in an iPhone home-indicator strip (an 8px gap and 15px); cx pads the bottom with the device's safe area (`env(safe-area-inset-bottom)`), at least 4px. It is non-zero only under `viewport-fit=cover`.
+
 ---
 
 ## Button and IconButton
@@ -611,10 +662,10 @@ React: `Button`, `IconButton`. cx: `Button` (`components/button/`) and
 
 | React | cx | Action |
 | --- | --- | --- |
-| `variant: primary \| secondary \| tertiary` | `variant` | **added** `tertiary`; **removed** `link` by decision (an action that reads as a link waits for Link's button form, in the Link pass) |
+| `variant: primary \| secondary \| tertiary` | `variant` | **removed** `tertiary` (deprecated in Blade DSL's Button, Figma; it drew as `secondary`); **removed** `link` by decision (an action that reads as a link waits for Link's button form, in the Link pass) |
 | `color: primary \| white \| positive \| negative` (default primary) | `color` + `neutral` | **added** `white`; `neutral` kept (Blade supports it with its own tokens); **default now `primary`** (blue), was neutral (black) |
 | `size` (default medium) | `size` | same values; now Blade's heights, padding and type |
-| `icon`, `iconPosition` | — | **not ported** by decision: icons go in `children`, sized by the caller |
+| `icon`, `iconPosition` | `icon` (leading), `trailingIcon` | **changed**: Blade DSL's Button (Figma) has a leading and a trailing icon that may both show; `icon` alone is the icon-only square (28/32/36/48px, 16px glyph). Props, not children: the label's 4px each side is the gap, the icons sit on the padding |
 | `children` (string) | `children` snippet | the label and any icons |
 | `type` (default `button`) | `type` | **default changed** from `submit` to `button` |
 | `href`, `target`, `rel` | same | **added**: an anchor; `isDisabled` ignored there, as in React |
@@ -628,7 +679,7 @@ React: `Button`, `IconButton`. cx: `Button` (`components/button/`) and
 
 | React | cx | Action |
 | --- | --- | --- |
-| `emphasis: intense \| subtle \| moderate` (default intense) | `emphasis` | **added**, replacing `variant: plain \| boxed` |
+| `emphasis: intense \| subtle \| moderate` (default intense) | `emphasis: intense \| subtle` | **added**, replacing `variant: plain \| boxed`; **removed** `moderate` (not in Blade DSL's Icon Button, Figma) |
 | `isHighlighted` | `isHighlighted` | **added** |
 | `size: small \| medium \| large` | `size` | same; glyph 12/16/20px; a 24/32px box (8px radius) only when highlighted or moderate, never at large |
 | `icon`, `accessibilityLabel` (required), `isDisabled`, `onClick`, `testID` | same | same |
@@ -689,6 +740,13 @@ passes; the DOM measurements match React Storybook, except the theme note.
 
 
 
+
+### Figma alignment (Blade DSL)
+
+- **Button label:** semibold, letter-spaced −1.3% (−3.3% at large), per Figma; React sets medium weight.
+- **IconButton:** highlighted box 24px (8px radius) at small, 32px (12px radius) at medium, none at large.
+- `tertiary` **removed**: Figma marks it deprecated (❌). Callers use `secondary`, which Blade drew the same (Toast's action included). Figma's `showAvatar` (an avatar group after the label, large only) has no cx counterpart.
+
 ---
 
 ## ButtonGroup
@@ -735,6 +793,11 @@ Measured against React Storybook for primary and secondary. These match:
 New, verified: `svelte-check` gives 0 errors; `test` passes; the
 measurements match React Storybook.
 
+
+### Figma alignment (Blade DSL)
+
+- Filled buttons are split by a zero-width 1px subtle divider with no group border, so the group is exactly its buttons (Figma). React added a 1px transparent border and a 1px gap.
+
 ---
 
 ## Card
@@ -751,7 +814,7 @@ React: `Card`, `CardHeader*`, `CardBody`, `CardFooter*` (+ `TicketCard`,
 | `CardFooter` (+ Leading, Trailing, `actions`) | `footer` snippet | rule 2: the actions are the caller's Buttons |
 | `size: large \| medium` | — | not ported: it only sized the header's title, which is the caller's now |
 | `variant: primary \| secondary` | `variant` | same |
-| `padding` (`spacing.0` \| `.3` \| `.4` \| `.5` \| `.7`, default `.7`) | `padding` | **added**; was fixed section padding |
+| `padding` (`spacing.0` \| `.3` \| `.4` \| `.5` \| `.7`, default `.7`) | `padding: spacing.5 \| spacing.7` | **added**; **removed** spacing.0/.3/.4: Blade DSL's Card (Figma) is 24px in, 16px its metric card's |
 | `onClick` | `onClick` | **renamed** from `onPress`; now React's overlay button, where the card was itself one `<button>` |
 | `href`, `target`, `rel` | same | **added**: a link overlay |
 | `isSelected` | `isSelected` | **added** |
@@ -794,6 +857,11 @@ top shade), and the two 16px gradients' position and size.
 
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the surface measurements match React Storybook.
+
+
+### Figma alignment (Blade DSL)
+
+- **Missing**: Figma's metric card (16px radius, metric header and body), themable card (`surface/background/primary/faint`), Compact variant and elevations.
 
 ---
 
@@ -862,6 +930,11 @@ icon); every measurement above matches React Storybook. The shared
 `FieldHint` (`components/shared/FieldHint.svelte`) has since been adopted by
 the fields and groups too (see Form).
 
+
+### Figma alignment (Blade DSL)
+
+- At small the box sits 3px from the top (2px otherwise), centring on the 17px title line as Figma's container does.
+
 ---
 
 ## Chip and ChipGroup
@@ -898,7 +971,7 @@ is a tab stop.
 | React | cx | Action |
 | --- | --- | --- |
 | `value`, `children` (string) | `value`, `children` snippet (receives `{ isChecked, isDisabled }`; optional with `icon` or `leading`) | rule 2 |
-| `icon`, `leading` | same | same (`icon` is an icon source; `leading` a snippet) |
+| `icon`, `leading` | same | same (`icon` is an icon source; `leading` a snippet). Props, not children: Figma spaces the leading item differently from the label (the label's 4px each side is the gap and the text inset; the leading item has none) |
 | `color`, `isDisabled` | same | same; both fall back to the group's |
 | `width`, `minWidth`, `maxWidth` | `class` | rule 1 |
 | `testID` | same | same |
@@ -910,7 +983,9 @@ same state:
 
 - **Chip:** 30px tall (28px inner plus the 1px frame), 8px sides, 8px frame
   radius and 7px inner, the text box 4px each side, 14/20 text — widths match
-  to the tenth of a pixel. Picked: the inner border and the faded fill; hover a
+  to the tenth of a pixel. The large label is Heading/MediumRegular (the
+  heading face, 20/26) per Blade DSL's _Chip (Figma); React sets it in body
+  16/24. Picked: the inner border and the faded fill; hover a
   step up; disabled per React. Pressed scales to 0.92. Focus: React's 2px
   `interactive.border.primary.default` outline, 2px off.
 - **Group:** the label 12/17 medium `surface.text.gray.subtle` (FormLabel's
@@ -986,6 +1061,11 @@ New, verified: `svelte-check` gives 0 errors; `test` passes (toggle,
 bind and report, aria state, the chevron, host-driven state, direction, and
 Link's `button` variant); the measurements above match React Storybook.
 
+
+### Figma alignment (Blade DSL)
+
+- The body sits directly under the trigger (Figma); React put 12px between them.
+
 ---
 
 ## Counter
@@ -1016,6 +1096,11 @@ caps at 100px on phones and 120px above, as React's platform tokens.
 
 New, verified: `test` passes (count, `max+`, padding, colour); the
 measurements above match React Storybook.
+
+
+### Figma alignment (Blade DSL)
+
+- Matches Figma (16/20/24px pills, 4/8/8px padding, 10/13, 12/17 and 14/20 medium, −1.3%); no change.
 
 ---
 
@@ -1070,6 +1155,12 @@ New, verified: `svelte-check` gives 0 errors; `test` passes (range,
 steps and binding, clamping typed input, disabled and loading, Form
 submission, the slide); the measurements above match React Storybook.
 
+
+### Figma alignment (Blade DSL)
+
+- **Box:** 92×36 at medium (76/84/92/120 × 28/32/36/48 by size), border included, as Figma; React draws the border outside, 2px larger. Buttons 20/24/28/40px square, 4px from the edge; icons 12/16/16/20px.
+- **Missing**: Figma's `labelPosition: left` (8px gap).
+
 ---
 
 ## Divider
@@ -1107,6 +1198,11 @@ None pass `line`; the one harness that did now passes `dividerStyle`.
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements above match React Storybook.
 
+
+### Figma alignment (Blade DSL)
+
+- Matches Figma; no change.
+
 ---
 
 ## Dropdown (as Menu)
@@ -1129,7 +1225,8 @@ React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
 | `DropdownHeader`, `DropdownFooter` | — | **missing** (rule 2: `header` / `footer` snippets) |
 | `ActionListItem` `title`, `value`, `onClick`, `isDisabled` | `MenuItem` same | same (`onClick` takes no args; `value` goes to Menu's `onSelect`) |
 | — | Menu `onSelect(value)`, `accessibilityLabel` (required); MenuItem `children` | cx-only: an item's `value` is reported to `onSelect`; `children` replaces the icon and title |
-| `ActionListItem` `description`, `leading` (non-icon), `trailing`, `titleSuffix`, `intent: 'negative'`, `href`/`target`, `isSelected` | — (`icon` only) | **missing** |
+| `ActionListItem` `leading` (non-icon), `trailing`, `titleSuffix` | `leading`, `trailing`, `titleSuffix` on MenuItem | **added**, per Blade DSL's _Menu Item (Figma) |
+| `ActionListItem` `description`, `intent: 'negative'`, `href`/`target`, `isSelected` | — | **missing** |
 | `ActionListSection` (`title`, a divider after, `role="group"`) | anything between items (rule 4) | **missing** as a component |
 | Nested dropdowns (submenus) | — | **missing** |
 | Input triggers (`SelectInput`, `AutoComplete`, `FilterChipSelectInput`, `FilterChipGroup`) | — | **missing** |
@@ -1157,6 +1254,12 @@ Measured against React Storybook (Dropdown with Button, Default):
 
 Look audited, fixed and verified against React Storybook; `test` passes.
 The API gaps above are open, pending a decision on which to build.
+
+
+### Figma alignment (Blade DSL)
+
+- Rows 36px tall, 8px in at every width and 2px apart, per Blade DSL's _Menu Item (Figma). Leading icon 16px (asset or avatar 20px); trailing icon 16px or shortcut text (11/16), 8px apart.
+- **Missing**: `description`, negative intent, section headings, the 4px separator, submenus, header and footer.
 
 ---
 
@@ -1207,6 +1310,13 @@ None in the apps; the story and the test harness were updated.
 
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements above match React Storybook.
+
+
+### Figma alignment (Blade DSL)
+
+- Title → description is 4px (Figma).
+- **Added** `icon` (`IconSource`) before the title, or before the description when there is no title: Figma's leading icon, 12/16/20/32px with a 4/8/12/12px gap. Why it is a prop: see the empty-state README.
+- **Missing**: Figma's help text with an icon, and the inline link.
 
 ---
 
@@ -1281,7 +1391,77 @@ Found on the way: the token contract's import stripper deleted every
 `export const … ;` up to its first `;`, so exported style maps went
 unchecked. Fixed; it caught Menu's `pe-2` (not a class here; now `pr-2`).
 
+
+### Figma alignment (Blade DSL)
+
+- The required `*` is semibold and 2px after the label (Figma's _FormGroup-Header); the character count is 11/16 at every size, including large.
+- Figma's label → field gap is 3px at small (cx 4px), and its large help text is 14/16. Not changed yet.
+
 ---
+
+## Icons
+
+React's icons are components (`<ArrowRightIcon color size />`) that resolve a
+colour token in JS and write it onto each path. cx's are **SVG imports** of
+the same names, from `@razorpay/blade-svelte/icons`. Without a font plugin, each
+is its SVG's URL, drawn as a mask over the text colour. With `bladeIconFontPlugin`
+(Vite or webpack) each is a glyph (`{ name: 'arrow-right', code: '\uE01A' }`) of
+the app's `blade-icons` font. Either way the colour is the text colour and the
+size is the box, so a theme switch costs no JS.
+
+| React | cx | Action |
+| --- | --- | --- |
+| ~452 `*Icon` components | 450 SVG exports in `@razorpay/blade-svelte/icons`, same names | **changed** from components to data; `Icon source={…}` draws one |
+| `color` (`surface.icon.gray.normal`…) on the icon | `color` axis on `Icon` (`default`, `subtle`, `muted`, `primary`, …), or the host's text colour | **changed**: a host tints it, as everywhere in cx |
+| `size` `xsmall`…`2xlarge` | `size` `2xsmall`…`xlarge` (6–24px) | same scale, less 32px |
+| `BluetoothIcon`, `ScissorsIcon` | — | **missing**: stroke-drawn, a font only fills; outline them in Blade first |
+| multicolour marks (`RazorpayTrustIcon`…) | `Image` | **moved**: icons are single-colour |
+
+### The font
+
+The package ships no font:
+- each glyph as a `currentColor` SVG;
+- a codepoint lockfile (`src-cx/icons/codepoints.json`, U+E000–U+EFFF);
+- a barrel re-exporting the files.
+
+`bladeIconFontPlugin` (`@razorpay/blade-svelte/vite` or `/webpack`) works like this:
+- **Imports:** named imports of the barrel are rewritten to the icons' own files, so one icon loads one module. A namespace or dynamic import takes the whole set.
+- **Glyph modules:** it answers SVG requests from Blade's set and from the app's `extra` folders with a glyph module. App icons get codes from U+F000 up, by sorted file name.
+- **The font:** it builds one font of the glyph modules the build loaded, deterministically, cached by its inputs.
+- **Registration:** each glyph module imports a face module that registers the font with `new FontFace`, so there's no `@font-face` CSS.
+
+How each bundler produces it:
+- **Vite build:** the font is emitted empty and filled at `buildEnd`, so its hashed name is part of the JS hash.
+- **Webpack:** at `finishModules`, it builds the font, rebuilds the face module to point at the emitted file, and emits it.
+- **Dev:** the font is rebuilt as new icons load, and swapped in by HMR.
+
+The rewrite runs on compiled JS, matching import statements by pattern:
+- a string literal that contains a barrel import would be rewritten too, which is very unlikely in app code;
+- an app whose loaders turn imports into CommonJS `require` gets no rewrite, so the barrel brings the whole set.
+
+The predefined set is regenerated from Blade React by `yarn generate-icons`. Codepoints never move: new glyphs append, and removed glyphs retire their code.
+
+### cx names that changed
+
+The old hand-drawn set mapped onto Blade's:
+
+| Old | Blade |
+| --- | --- |
+| `warning` | `AlertTriangleIcon` |
+| `card` | `CreditCardIcon` |
+| `more` | `MoreHorizontalIcon` |
+| `external` | `ExternalLinkIcon` |
+
+The rest map directly, e.g. `chevronDown` → `ChevronDownIcon`. Switch's thumb check is not a glyph: it's drawn inline, so the Switch needs nothing enabled.
+
+### Risks
+
+- **Native renderer** (`packages/native`): needs to load the font (`formats: ['ttf']`) and honour `font-family`. Not yet verified; the image-based native Icon is gone.
+- **Loading:** glyphs are blank until the font loads (`font-display: block`). The box is sized, so nothing shifts; preload the woff2 on critical screens.
+- **User font overrides** (Firefox's "allow pages to choose their own fonts" off, dyslexia extensions) show boxes. A known icon-font limitation; accepted.
+- **CSP:** with the plugin, `font-src` must allow the asset's origin, and no inline styles are needed. Without it, each icon's mask URL is an inline `style`.
+- **Loading order:** the face is registered when the token module runs, not from CSS, so the woff2 starts loading with the JS. Preload it on critical screens if the blank moment shows.
+- **Text content:** a glyph is a private-use character, so it's in `textContent`. It's `aria-hidden` and `select-none`, so assistive tech and copying skip it.
 
 ## Input / TextInput
 
@@ -1302,7 +1482,7 @@ React: `TextInput` (over `BaseInput`). cx: `TextInput` (`components/text-input/`
 | `keyboardReturnKeyType`, `autoCapitalize`, `autoCompleteSuggestionType` | `enterKeyHint`, `autoCapitalize`, `autoComplete` | rule 10; **added** |
 | — | `inputMode` | rule 10; **added**: e.g. `numeric` digits in a `text` card-number field |
 | `onClick`, `onKeyDown` | same | **added** |
-| `prefix`, `suffix`, `leadingIcon`, `trailingIcon`, `leading`, `trailing`, `trailingButton` | `leading`, `trailing` (`string \| Snippet`) | rule 2: one slot per side holds text, an icon, or both |
+| `prefix`, `suffix`, `leadingIcon`, `trailingIcon`, `leading`, `trailing`, `trailingButton` | `leadingIcon`, `prefix`, `leading` (selector snippet), `suffix`, `trailingIcon`, `trailing` (link snippet) | **changed**: Blade DSL's TextInput (Figma) has distinct slots, each with its own inset (text, glyphs and words 8/12px from the edge, a selector 4px) and gap; see the text-input README. `leading`/`trailing` are snippet-only (strings move to `prefix`/`suffix`) |
 | `format` (a `#` mask) | `format` (parse/format functions or rule lists) | different: cx's is richer; a mask string is not accepted |
 | `isLoading` | — | **gap**: no spinner in cx yet |
 | `validationTextPlacement`, `showHelpTextOnFocus` | — | **gap** |
@@ -1341,6 +1521,12 @@ hover, error and disabled states, desktop width):
 | `pattern` | the control's validity pattern (PhoneNumberInput's, per country) | keep (infrastructure) |
 | 16px text below `m` at medium | stops iOS zooming into the field | keep |
 
+
+### Figma alignment (Blade DSL)
+
+- `size`: small, medium, large: **removed** `xsmall` (not in Blade DSL's TextInput, Figma).
+- Medium keeps 16px text on phones (iOS zoom) where Figma draws 14px. A selector passed in `trailing` sits 8px further in than Figma's trailing selector, since that slot takes the link inset.
+
 ---
 
 ## Input / TextArea
@@ -1361,6 +1547,11 @@ React: `TextArea`. cx: `TextArea` (`components/text-area/`).
 Measured against React (Text Area): 2 lines are 56px of content plus the
 border, 8/12px padding, the counter 2px from the end. cx-only: `isReadOnly`
 (keep).
+
+
+### Figma alignment (Blade DSL)
+
+- `size`: medium, large (Figma). Large padding is 8px above and below and 12px at the sides (was 12px all round).
 
 ---
 
@@ -1387,6 +1578,11 @@ width). Cell type 20/26 (24/32 at large), 36/48px tall, 8px apart.
 **cx-only, pending:** `onClick`, `accept` (per-character filter),
 `isRequired`, `isReadOnly`, `cellAccessibilityLabel` — keep all: checkout's
 auto-read and i18n use them.
+
+
+### Figma alignment (Blade DSL)
+
+- Matches Figma (36/48px cells, 20/26 and 24/32 type, 8px gap); no change.
 
 ---
 
@@ -1419,6 +1615,12 @@ a search, not a Dropdown — keep: it is checkout's flow; `countries`
 (required: the library ships no country data, the app supplies it); `isCountryFixed`,
 `countryLabel`, `searchLabel`, `emptyText`, `closeLabel` — keep.
 
+
+### Figma alignment (Blade DSL)
+
+- `size`: medium, large (Figma). The selector follows Figma's _Input / Selector (28/36px tall, 6.5/9px in, a 20×15 or 24×18 flag, 12px chevron) on the field's padding; the dial code is 4px after it.
+- **Added** `leadingIcon`, `trailingIcon`; `trailing` is snippet-only (string removed).
+
 ---
 
 ## Input / PasswordInput
@@ -1441,6 +1643,11 @@ React: `PasswordInput` (over `BaseInput`). cx: `PasswordInput`
 
 The look is TextInput's, and the button is the clear button's. Replaces
 TextInput `type="password"` at call sites (the InputGroup stories' CVV).
+
+
+### Figma alignment (Blade DSL)
+
+- `size`: medium, large (Figma). **Added** `leadingIcon`, `prefix`, `suffix` and `trailing` (the link, 8px before the reveal button); the reveal glyph is 16/20px.
 
 ---
 
@@ -1466,6 +1673,11 @@ React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
 Was TextInput `type="search"`, which is gone: the glyph, role and key moved
 here.
 
+
+### Figma alignment (Blade DSL)
+
+- `size`: medium, large (Figma). The glyph is TextInput's `leadingIcon`, so it is sized per field, 12px in and 8px from the text.
+
 ---
 
 ## InputGroup
@@ -1483,6 +1695,11 @@ React: `InputGroup` with `InputRow`s (`gridTemplateColumns`). cx:
 **Look:** stacked rows share 1px seams, the group's corners are rounded, the
 hint sits 4px under — as React's Default story.
 
+
+### Figma alignment (Blade DSL)
+
+- `size`: medium, large (Figma).
+
 ---
 
 ## Radio, RadioGroup
@@ -1495,7 +1712,7 @@ React: `RadioGroup`, `Radio`. cx: same (`components/radio/`).
 | `RadioGroup.size` | same | **added**: circles 12/16/20px, dots 4/6/8px, title 12/14/16px, gaps 4/8/12px |
 | `RadioGroup.orientation` | same | same; horizontal rows wrap (React: `flexWrap`, default `nowrap`) |
 | `Radio.helpText` | same | **added**: indented under the title, describes the radio |
-| `Radio.trailing` | snippet | **added** |
+| `Radio.trailing` | — | **removed**: cx-only, and Blade DSL's Radio (Figma) has no trailing slot |
 | `Radio.size` | — | the group's size wins in React; not ported |
 | `labelPosition` | — | rule 7 |
 
@@ -1506,6 +1723,12 @@ letter-spaced; focus is Blade's 4px outline (was a box-shadow).
 **Accessibility:** a Radio or Checkbox with `helpText` is named by its
 title alone and described by the help text. Both sit in one `<label>`, so
 without this the help text joined the name, as it does in React.
+
+
+### Figma alignment (Blade DSL)
+
+- At small the circle sits 3px from the top (2px otherwise), as Figma's container.
+- `Radio.trailing` **removed**: it was cx-only, and Figma's Radio has no trailing slot.
 
 ---
 
@@ -1520,7 +1743,7 @@ React: `Link` (over `BaseLink`). cx: `Link` (`components/link/`).
 | `variant: anchor \| button` | same | same |
 | `color: primary \| white \| positive \| negative \| notice \| information \| neutral` | same | `white`, `notice`, `information` **added** |
 | `size: xsmall \| small \| medium \| large` | same | same |
-| `icon`, `iconPosition: left \| right` | `icon`, `iconPosition: leading \| trailing` | cx's names (they follow the writing direction) |
+| `icon`, `iconPosition: left \| right` | `icon` (leading), `trailingIcon` | **changed**: Blade DSL's Link (Figma) has leading and trailing icons that may both show |
 | `children` (optional with an icon) | same | now optional: an icon-only link, named by `accessibilityLabel` |
 | `htmlTitle` | same | **added** (`title`) |
 | `href`, `target`, `rel` | same | same; `_blank` adds `noopener noreferrer` |
@@ -1551,6 +1774,12 @@ Button, Disabled Link Button, Link Sizes; hover and keyboard focus):
 | --- | --- | --- |
 | `isDisabled` on an anchor | drops the `href`, marks it `aria-disabled` | keep |
 | `download` | saves instead of navigating | keep |
+
+
+### Figma alignment (Blade DSL)
+
+- `color`: primary, white, neutral, positive, negative: **removed** `notice`, `information` (not in Figma).
+- Letter-spaced −1.3% (−3.3% at large), per Figma.
 
 ---
 
@@ -1608,6 +1837,15 @@ Measured against React Storybook (Simple Modal, every size, 1200×800):
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements match React Storybook at every size.
 
+
+### Figma alignment (Blade DSL)
+
+- **Title:** Heading/SmallSemibold 18/24 (Figma); React uses body 16/24.
+- **Added** `icon`, `leading`, `titleSuffix` and `trailing({ close })` in the header, per Figma's _Modal Header: the leading item 8px from the title, the trailing item 16px from the title and from the close button. Why they are props: see the modal README.
+- **Sections:** header 16px in (20px from `m`, 16px below); footer 16px above the actions (20px beside and below from `m`).
+- **Drawer:** 380px from `m` and 100% − 24px on phones (Figma; React 375/420px); header 20px in with no divider; **added** `titleSuffix`, `trailing`; Figma's detail block under the title is **missing**.
+- **Missing**: Figma's full-width square modal on phones, the `padding` variant (20/16/0), and the full-page modal.
+
 ---
 
 ## Popover
@@ -1662,6 +1900,12 @@ Measured against React Storybook (Default, 1200×800):
 Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the panel, header, gap and arrow measure as React's.
 
+
+### Figma alignment (Blade DSL)
+
+- **Added** `titleIcon` (`IconSource`, 20px) beside `titleLeading` (snippet, for an asset), per Figma's _Popover Title, whose leading item is an icon or an asset.
+- Leading → title is 8px; title → close is 24px (the title's 12px plus the row's 12px), per Figma.
+
 ---
 
 ## SegmentedControl
@@ -1679,20 +1923,23 @@ React: `SegmentedControl`, `SegmentedControlItem`. cx: the same
 | `necessityIndicator` | same | **added** (through RadioGroup) |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rule 3; rule 12 |
 | `labelPosition` | — | rule 7 |
-| `SegmentedControlItem` `value`, `leading`, `isDisabled`, `accessibilityLabel`, `children` | same, but `leading` → `icon` (an `IconSource`, as Chip, MenuItem, TabItem) | **renamed** `leading` |
+| `SegmentedControlItem` `value`, `leading`, `isDisabled`, `accessibilityLabel`, `children` | same, but React's `leading` icon → `icon` (an `IconSource`, as Chip, MenuItem, TabItem); **added** `leading` (an asset snippet) and `trailing` (a Counter or Badge), as Blade DSL's _Segmented Control / Item (Figma) has | **renamed**, **added** |
 | — | `labelArea`; hints `string \| Snippet`; item snippets receive `{ isChecked, isDisabled }` | cx-only, across Chip, Radio, Checkbox, Switch and SegmentedControl (rule 9) |
 
 ### Look
 
 Measured against React Storybook (Default, every size):
 
-- **Track:** 32/36/48px tall, 4px in, 2px between segments, round at 8px
-  (12px at large), `interactive.background.gray.faded`. Small was 28px with
-  2px in; medium was round at 12px.
-- **Segments:** 24/28/40px, round at 4px (8px at large); the label body
-  small/medium/large (12/17, 14/20, 16/24), medium weight, letter-spaced.
-  Small and medium had their type swapped (14px and 12px) and no
-  letter-spacing; medium's segments were 24px.
+- **Track:** 28/36/48px tall, 2px in at small and 4px otherwise, 2px
+  between segments, round at 8px (12px at large),
+  `interactive.background.gray.faded`. Blade DSL (Figma) draws small 28px
+  with 2px in; React's tokens give 32px with 4px, so cx follows Figma.
+- **Segments:** 24/28/40px, round at 4px (8px at large); the label Body
+  Medium at small and medium (14/20) and Body Large at large (16/24), per
+  Figma (React sets small in 12/17), medium weight, letter-spaced.
+- **Row:** the leading item, the label and the trailing item, 8px apart and
+  centred. That one gap, owned by the segment, is why `icon`, `leading` and
+  `trailing` are props rather than children.
 - **Icon:** 16px, 20px at large (was 16px everywhere), 8px from the label.
 - **Thumb:** `surface.background.gray.intense`, round as the segment,
   sliding at moderate/standard (was quick); hover fills an unpicked segment
@@ -1735,6 +1982,11 @@ React: `Skeleton`. cx: `Skeleton` (`components/skeleton/`).
 No cx-only features. **Status:** done; `svelte-check` gives 0 errors and
 `test` passes.
 
+
+### Figma alignment (Blade DSL)
+
+- Figma's Skeleton Loader has a 16px radius; cx leaves the radius to the caller's class.
+
 ---
 
 ## Switch
@@ -1765,6 +2017,11 @@ takes only `accessibilityLabel`) — keep; `isLoading` (the thumb spins while
 a change is in flight) — keep; `parse` — keep (form model).
 
 **Status:** done; `svelte-check` gives 0 errors and `test` passes.
+
+
+### Figma alignment (Blade DSL)
+
+- Size: small 28×16 and medium 36×20 at every width, in a 2px margin, as Blade DSL's Switch (Figma). React's phone sizes (36×20 / 44×24) are not ported.
 
 ---
 
@@ -1803,7 +2060,7 @@ snippet (rule 2); the panels are `children`.
 | `isLazy` | same | **added**: panels mount only while picked; otherwise all stay mounted, hidden, as Blade |
 | `value`, `defaultValue`, `onChange` | `bind:value`, `onChange` | rule 3; the first enabled tab is picked when unset, as Blade |
 | `TabList` | `tabs` snippet | rule 2 |
-| `TabItem` `value`, `leading`, `trailing`, `isDisabled`, `href`, `onClick`, `children` | same, but `leading` → `icon` (an `IconSource`, as MenuItem, Chip, Link); `children` and `trailing` receive `{ isSelected, isDisabled }` | **added**: all but `value` and the label; **renamed** `leading` |
+| `TabItem` `value`, `leading`, `trailing`, `isDisabled`, `href`, `onClick`, `children` | same, but React's `leading` icon → `icon` (an `IconSource`, as MenuItem, Chip, Link), plus `leading` for an asset in the icon's box, as Blade DSL's _Tabs Leading Item (Figma) is an icon or an asset; `children`, `leading` and `trailing` receive `{ isSelected, isDisabled }` | **added**: all but `value` and the label; **renamed** `leading` |
 | `TabPanel` `value`, `children` | same | composed (was the per-item snippet) |
 | `items`, `itemKey`, `itemLabel`, `isItemDisabled`, `tab` | — | **removed**: rule 4 |
 
@@ -1813,7 +2070,11 @@ Measured against React Storybook (Default, every variant × size, and both
 orientations):
 
 - **Bordered / borderless, horizontal:** tabs 30/38/50px tall with no side
-  padding, 24px apart (32px from `m`), the label 14/20 (16/24 at large);
+  padding, 24px apart at small and 32px at medium and large (per size, as
+  Blade DSL's Tabs in Figma; React spaces them by breakpoint), the label
+  14/20 (16/24 at large). In each tab the leading item, the label and the
+  trailing item sit 8px apart: the tab owns that gap, which is why they are
+  props;
   a 2px `interactive.border.neutral.highlighted` indicator slides under the
   pick at moderate/standard; an unpicked tab's 2px edge turns
   `interactive.border.gray.highlighted` on hover. Bordered adds the 1px
@@ -1878,7 +2139,7 @@ Measured against React Storybook (Basic, neutral):
   the medium backdrop blur (was none).
 - Content: body small (12/17, letter-spaced) in static white, 4px above and
   below (was 10px).
-- Action: Blade's xsmall tertiary white Button; dismiss: the subtle medium
+- Action: an xsmall secondary white Button (Blade's tertiary drew the same); dismiss: the subtle medium
   IconButton, 12px after it (the hairline between them is gone).
 
 ### Kept beyond React
@@ -1895,6 +2156,12 @@ Measured against React Storybook (Basic, neutral):
 
 **Status:** done; `svelte-check` gives 0 errors and `test` passes;
 the toast measures as React's.
+
+
+### Figma alignment (Blade DSL)
+
+- **Added** `leading` (a snippet, in place of the glyph) to `showToast`: Figma's leading item is an icon or an asset.
+- Content → action or cross is 12px (Figma). Figma's desktop action is a Link; cx keeps an xsmall secondary white Button.
 
 ---
 
@@ -1927,6 +2194,29 @@ trigger). cx: `Tooltip` (`components/tooltip/`).
 
 **Status:** done; `svelte-check` gives 0 errors and `test` passes;
 the bubble measures as React's.
+
+
+### Figma alignment (Blade DSL)
+
+- Figma's arrow is 14×8 and overlaps the bubble by 2px; cx draws 14×7.
+
+---
+
+## Text and Heading (Typography)
+
+Blade DSL's Typography page (Figma) defines the scale:
+
+- **Text** sizes are Figma's Body styles: xsmall 10/13, small 12/17, medium 14/20 (−1.3%), large 16/24 (−3.3%). Before, xsmall and small sat on a 16px line with no letter-spacing.
+- **Heading** sizes are Figma's Heading styles: small 18/24, medium 20/26, large 24/32, xlarge 32/38, and **added** 2xlarge 40/46 (each was one step smaller).
+- Heading `weight: medium` **removed**: Figma has regular and semibold only.
+- Caption, Code and Display styles have no components yet.
+
+---
+
+## Carousel
+
+- Indicators: 6px dots 4px apart; the current one an 18px pill, with its width animating (Figma _Carousel Indicators). Before: 8px dots 6px apart.
+- **Missing**: Figma's navigation buttons, `visibleItems` and `navPosition`, white and blue indicators, and the 10px root gap (cx 8px).
 
 ---
 

@@ -11,3 +11,6 @@ scrolling work as the platform does them.
 | `autoAdvance` | ms between slides, wrapping; `0` off (default). Held while the pointer or focus is inside; off under reduced motion. Fixed at mount |
 | `slideLabel(n, count)` | Localized. Names each slide and each dot — dots exist only with it |
 | `accessibilityLabel` | Names the carousel (`aria-roledescription="carousel"`) |
+
+The dots are Blade DSL's _Carousel Indicators (Figma): 6px dots 4px apart,
+the current one an 18px pill.

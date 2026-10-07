@@ -59,6 +59,8 @@ export interface ChipGroupClasses {
 // Blade's Chip (blade-core Chip/chip.module.css, chip.ts; chipTokens.ts).
 // Per size: height, side padding, radius (the inner one 1px less), the
 // inner border's width, the text and the icon.
+// Blade DSL's _Chip (Figma) sets the large label in Heading/MediumRegular —
+// the heading face at 20/26 — and the smaller ones in body type.
 const SIZE: Record<
   ChipSize,
   {
@@ -71,25 +73,25 @@ const SIZE: Record<
   xsmall: {
     radius: 'rounded-small',
     inner: 'h-6 px-2 border-thinner [border-radius:7px]',
-    text: 'text-75 leading-75 tracking-50',
+    text: 'font-text font-regular text-75 leading-75 tracking-50',
     icon: 'small',
   },
   small: {
     radius: 'rounded-small',
     inner: 'h-7 px-2 border-thinner [border-radius:7px]',
-    text: 'text-100 leading-100 tracking-50',
+    text: 'font-text font-regular text-100 leading-100 tracking-50',
     icon: 'small',
   },
   medium: {
     radius: 'rounded-small',
     inner: 'h-9 px-3 border-thin [border-radius:7px]',
-    text: 'text-200 leading-200 tracking-25',
+    text: 'font-text font-regular text-200 leading-200 tracking-25',
     icon: 'medium',
   },
   large: {
     radius: 'rounded-medium',
     inner: 'h-12 px-4 border-thin [border-radius:11px]',
-    text: 'text-200 leading-200 tracking-25',
+    text: 'font-heading font-regular text-400 leading-400 tracking-100',
     icon: 'large',
   },
 };
@@ -195,9 +197,11 @@ export function resolveChip(size: ChipSize, tone: ChipTone, color: ChipColor): C
     // off the chip. Max widths per Blade: 280px on phones, 420px above.
     frame: `flex w-full items-center justify-center text-left border-thin border-solid bg-transparent [transition-property:scale] duration-xquick ease-standard max-w-[280px] m:max-w-[420px] peer-focus-visible:outline-solid peer-focus-visible:outline-thicker peer-focus-visible:outline-offset-2 peer-focus-visible:outline-interactive-primary-default ${look.radius} ${colors.frame}`,
     framePressed: '[scale:.92]',
-    inner: `flex w-full items-center justify-center overflow-hidden border-solid transition-colors duration-xquick ease-standard ${look.inner} ${colors.inner} ${colors.content}`,
+    inner: `flex w-full flex-row items-center justify-center overflow-hidden whitespace-nowrap border-solid transition-colors duration-xquick ease-standard ${look.inner} ${colors.inner} ${colors.content}`,
     icon: 'flex',
-    text: `truncate px-1 font-text font-regular ${look.text}`,
+    // The label container's 4px each side: the gap after a leading icon or
+    // slot, and the text's own inset when there is none.
+    text: `truncate px-1 ${look.text}`,
     iconSize: look.icon,
   };
 }

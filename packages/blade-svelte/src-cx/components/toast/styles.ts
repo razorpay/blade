@@ -7,7 +7,7 @@ import type { Intent } from '../shared/intent';
 import type { IconSource } from '../../runes/icon/source';
 import { resolveButton } from '../button/styles';
 import { resolveIconButton } from '../icon-button/styles';
-import { alertOctagon, alertTriangle, checkCircle, info } from '../icons';
+import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, InfoIcon } from '../../icons';
 
 /**
  * The parts of a toast. Enter/exit ride the root's `data-state="open" |
@@ -26,9 +26,9 @@ export interface ToastClasses {
   /** Wraps the content: 4px above and below. */
   body: string;
   content: string;
-  /** The action and the dismiss button, 12px apart at the row's end. */
+  /** The action and the dismiss button, 12px apart at the row's end, 12px after the content. */
   trailing: string;
-  /** Blade's action: an xsmall tertiary white Button. */
+  /** The action: an xsmall secondary white Button (Blade's tertiary, which Figma deprecates, drew the same). */
   action: string;
   /** Blade's dismiss: a subtle medium IconButton. */
   close: string;
@@ -104,17 +104,18 @@ const TONE: Record<Intent, string> = {
 };
 
 const LEADING: Record<Intent, IconSource> = {
-  neutral: info,
-  information: info,
-  positive: checkCircle,
-  notice: alertTriangle,
-  negative: alertOctagon,
+  neutral: InfoIcon,
+  information: InfoIcon,
+  positive: CheckCircleIcon,
+  notice: AlertTriangleIcon,
+  negative: AlertOctagonIcon,
 };
 
-// Blade's Toast: 12px round, 12px in and 8px above and below, its parts
-// 8px apart; the content body small in `surface.text.static-white.normal`,
-// 4px above and below; the icon static white; the action 12px before the
-// dismiss cross. It slides in from the stack's edge over gentle/entrance
+// Blade's Toast (and Blade DSL's Toast in Figma): 12px round, 12px in and
+// 8px above and below; the leading item (an icon or an asset) 8px before
+// the content, the content 12px before the action or the dismiss cross;
+// the content body small in `surface.text.static-white.normal`, 4px above
+// and below; the icon static white; the action 12px before the cross. It slides in from the stack's edge over gentle/entrance
 // (480ms) and out over moderate/exit (280ms), fading both ways — a
 // transition takes the pace of the state it moves to, so each state names
 // its own. It takes clicks while the box around it does not.
@@ -127,8 +128,9 @@ export const resolveToast: ToastStyleResolver<ToastStyleProps> = (props) => {
     body: 'min-w-0 py-1',
     content:
       'block font-text font-regular text-75 leading-75 tracking-50 text-surface-static-white-normal',
-    trailing: 'ms-auto flex shrink-0 items-center gap-3',
-    action: resolveButton({ variant: 'tertiary', color: 'white', size: 'xsmall' }).root,
+    // `pl-1` on the row's 8px gap: 12px after the content.
+    trailing: 'ms-auto flex shrink-0 items-center gap-3 pl-1',
+    action: resolveButton({ variant: 'secondary', color: 'white', size: 'xsmall' }).root,
     close: resolveIconButton({ emphasis: 'subtle', size: 'medium' }).root,
     // A failure interrupts a screen reader; Blade announces every toast
     // politely.

@@ -7,7 +7,7 @@ what goes in them is yours to lay out.
 | Prop | Notes |
 | --- | --- |
 | `variant` | `primary` (default: Blade's raised white surface — rim, shadow, gradient) or `secondary` (flat gray) |
-| `padding` | Around everything: `spacing.0` / `.3` / `.4` / `.5` / `.7` — 0, 8, 12, 16, 24px (default) |
+| `padding` | Around everything: `spacing.7` (24px, default) or `spacing.5` (16px) — the two Blade DSL's Card in Figma draws (16px is its metric card's) |
 | `color` | cx-only: a tinted card (the shared intents); it replaces the variant's surface |
 | `header`, `footer` | Snippets on hairlines, 12px either side of each |
 | `children` | The body |

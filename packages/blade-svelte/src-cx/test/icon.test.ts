@@ -1,38 +1,44 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
-import { icons, Icon } from '../index';
-import IconNative from '../components/icon/Icon.native.svelte';
+import { Icon } from '../index';
+import { ChevronDownIcon, InfoIcon, LockIcon } from '../icons';
+import * as glyphs from '../icons/glyphs';
+import { asGlyph } from './classes';
 
 describe('Icon', () => {
-  it('inlines markup so the glyph paints with the text colour', () => {
+  it('draws its glyph as one private-use character of the icon font', () => {
     const { getByTestId } = render(Icon, {
-      props: { source: icons.chevronDown, testID: 'glyph' },
+      props: { source: ChevronDownIcon, testID: 'glyph' },
     });
     const glyph = getByTestId('glyph');
-    expect(glyph.querySelector('svg')).not.toBeNull();
-    expect(glyph.querySelector('img')).toBeNull();
-    expect(glyph.innerHTML).toContain('currentColor');
+    expect(glyph.textContent).toBe(asGlyph(ChevronDownIcon).code);
+    expect(glyph.dataset.icon).toBe('chevron-down');
+    expect(glyph.className).toContain('icon-font');
+    expect(glyph.children).toHaveLength(0);
   });
 
-  it('loads a URL as an image', () => {
+  it('without a font plugin, draws a URL as a mask over the text colour', () => {
     const { getByTestId } = render(Icon, {
-      props: { source: '/icons/lock.svg', testID: 'glyph' },
+      props: { source: '/assets/rocket-1a2b.svg', testID: 'glyph', color: 'primary' },
     });
-    const image = getByTestId('glyph').querySelector('img');
-    expect(image?.getAttribute('src')).toBe('/icons/lock.svg');
-    expect(image?.getAttribute('alt')).toBe('');
+    const glyph = getByTestId('glyph');
+    expect(glyph.className).toContain('icon-mask');
+    expect(glyph.className).toContain('icon-surface-primary-normal');
+    expect(glyph.style.getPropertyValue('mask-image')).toBe('url("/assets/rocket-1a2b.svg")');
+    expect(glyph.textContent).toBe('');
+    expect(glyph.hasAttribute('data-icon')).toBe(false);
   });
 
   it('is decorative unless it is given a label', () => {
     const { getByTestId, rerender } = render(Icon, {
-      props: { source: icons.info, testID: 'glyph' },
+      props: { source: InfoIcon, testID: 'glyph' },
     });
     const glyph = getByTestId('glyph');
     expect(glyph.getAttribute('aria-hidden')).toBe('true');
     expect(glyph.hasAttribute('role')).toBe(false);
 
     return rerender({
-      source: icons.info,
+      source: InfoIcon,
       testID: 'glyph',
       accessibilityLabel: 'Details',
     }).then(() => {
@@ -44,44 +50,34 @@ describe('Icon', () => {
 
   it('is 16px in the inherited colour by default; axes and class override', () => {
     const { getByTestId, rerender } = render(Icon, {
-      props: { source: icons.lock, testID: 'glyph' },
+      props: { source: LockIcon, testID: 'glyph' },
     });
     const glyph = getByTestId('glyph');
-    expect(glyph.className).toContain('w-4 h-4');
+    expect(glyph.className).toContain('w-4 h-4 [font-size:16px]');
     expect(glyph.className).toContain('text-inherit');
 
     return rerender({
-      source: icons.lock,
+      source: LockIcon,
       testID: 'glyph',
       size: 'large',
       color: 'muted',
       class: 'ml-2',
     }).then(() => {
-      expect(glyph.className).toContain('w-5 h-5');
+      expect(glyph.className).toContain('w-5 h-5 [font-size:20px]');
       expect(glyph.className).toContain('icon-surface-gray-muted');
       expect(glyph.className.endsWith('ml-2')).toBe(true);
     });
   });
 
-  it('ships every glyph as currentColor-only markup without a root size', () => {
-    for (const [name, markup] of Object.entries(icons)) {
-      expect(markup, name).toMatch(/^<svg[^>]*viewBox=/);
-      expect(markup, name).toContain('currentColor');
-      expect(markup, name).not.toMatch(/#[0-9a-f]{3,8}\b/i);
-      expect(markup.match(/^<svg[^>]*>/)?.[0], name).not.toMatch(/\s(width|height)=/);
-      expect(markup.length, name).toBeLessThan(1024);
+  it('ships every glyph as a unique Blade-block codepoint', () => {
+    const tokens = Object.values(glyphs).map(asGlyph);
+    expect(tokens.length).toBeGreaterThan(400);
+    const codes = new Set(tokens.map(({ code }) => code));
+    expect(codes.size).toBe(tokens.length);
+    for (const { name, code } of tokens) {
+      expect(code, name).toHaveLength(1);
+      const point = code.codePointAt(0)!;
+      expect(point >= 0xe000 && point <= 0xefff, name).toBe(true);
     }
-  });
-});
-
-describe('Icon (native)', () => {
-  it('is always an image: markup travels as a data URI', () => {
-    const { getByTestId } = render(IconNative, {
-      props: { source: icons.close, testID: 'glyph', size: 'small' },
-    });
-    const image = getByTestId('glyph');
-    expect(image.tagName).toBe('IMG');
-    expect(image.getAttribute('src')).toMatch(/^data:image\/svg\+xml;utf8,/);
-    expect(image.className).toContain('w-3 h-3');
   });
 });

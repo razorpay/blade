@@ -6,7 +6,7 @@
   import { createCounterInput } from '../../runes/counter-input/counter-input.svelte';
   import Icon from '../icon/Icon.svelte';
   import FieldLabel from '../shared/FieldLabel.svelte';
-  import { minus, plus } from '../icons';
+  import { MinusIcon, PlusIcon } from '../../icons';
   import { resolveCounterInput, type CounterInputStyleProps } from './styles';
 
   interface Props extends CounterInputStyleProps {
@@ -100,7 +100,7 @@
         disabled={counter.isDecrementDisabled}
         onclick={counter.decrement}
       >
-        <Icon source={minus} size={classes.iconSize} />
+        <Icon source={MinusIcon} size={classes.iconSize} />
       </button>
       <span
         class={cx(
@@ -137,7 +137,7 @@
         disabled={counter.isIncrementDisabled}
         onclick={counter.increment}
       >
-        <Icon source={plus} size={classes.iconSize} />
+        <Icon source={PlusIcon} size={classes.iconSize} />
       </button>
     </div>
     {#if isLoading}

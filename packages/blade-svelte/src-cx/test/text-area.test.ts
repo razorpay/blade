@@ -108,4 +108,14 @@ describe('TextAreaControl.native', () => {
     await fireEvent.input(control);
     expect(oninput).toHaveBeenCalledTimes(1);
   });
+
+  it("Figma's sizes: medium and large, 8px top and bottom, 12px in", async () => {
+    const { resolveTextArea, TEXT_AREA_AXES } = await import('../components/text-area/styles');
+    expect(TEXT_AREA_AXES.size).toEqual(['medium', 'large']);
+    const medium = resolveTextArea({ size: 'medium' }).control;
+    const large = resolveTextArea({ size: 'large' }).control;
+    expect(medium).toContain('px-3 py-2');
+    expect(large).toContain('px-3 py-2');
+    expect(large).toContain('rounded-medium');
+  });
 });

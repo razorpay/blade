@@ -11,7 +11,7 @@ export interface InputGroupContext {
   hintId: () => string | undefined;
   isDisabled: () => boolean;
   /** The group's size: its members take it. */
-  size: () => 'xsmall' | 'small' | 'medium' | 'large' | undefined;
+  size: () => 'medium' | 'large' | undefined;
   /** The state the host passed to the group, if any. */
   validationState: () => ValidationState | undefined;
   /** The group owns the grid, so it maps a member's span. */

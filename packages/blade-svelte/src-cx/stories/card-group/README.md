@@ -47,11 +47,11 @@ things at once:
 | Prop | Notes |
 | --- | --- |
 | `value` | The item's identity in the CardGroup's `value`; its index by default |
-| `title`, `subtitle` | A string in Blade's type (semibold title at the card group's size, small muted subtitle), or a snippet that sizes its own |
+| `title`, `subtitle` | A string in Figma's type (medium-weight title at the card group's size, 16/24 or 14/20; small muted subtitle 2px under it), or a snippet that sizes its own |
 | `leading` snippet | Ahead of the title, capped at 32px (24px at medium). The number prefix wins over it |
 | `trailing` snippet | Replaces the chevron (a status glyph, a loading placeholder); owns its look |
 | `header` snippet | The header's content between `leading` and `trailing`: it receives the drawn `title` and `subtitle` as snippets beside the item state, and places them — as Modal's `header`. Without it the two render on their own. Inside a `<button>`: phrasing content only, nothing interactive — use `Text as="span"` |
-| `body` snippet | The body in Blade's body box (12px above, 16px in and below). Mounted only while open, so lazy content loads on expand. Ignored when `children` is given, as Modal's |
+| `body` snippet | The body in Figma's body box (16px above and in, 16px below and 16px between its parts; 12px at medium). Mounted only while open, so lazy content loads on expand. Ignored when `children` is given, as Modal's |
 | `children` snippet | A custom body at full width, no padding or background of the card group's own; wins over `body` |
 | snippet state | Every item snippet receives `{ index, isExpanded, isDisabled, isActionable, size, collapse }`; `collapse()` closes the item from its own body ("Use this card") |
 | `isDisabled` | The header is inert |
@@ -67,6 +67,21 @@ enabled headers; Enter and Space press.
 The panel slides over the component's duration (none with reduced motion, and
 none on native, which mounts it as is). Separate CardGroups are independent;
 to make them exclusive, bind each `value` and clear the others in `onChange`.
+
+## Why `leading` and `trailing` are props
+
+CardGroup follows Blade DSL's Accordion in Figma (❖ Accordion). Its header
+is a row the item owns, with different spacing on each side of the title
+block, so what goes before and after the title has its own slot:
+
+| Size | Line box | Leading → title | Title → trailing / chevron | Chevron |
+| --- | --- | --- | --- | --- |
+| large | 24px | 8px | 12px | 20px |
+| medium | 20px | 8px | 12px | 16px |
+
+The leading item and the chevron centre on the title's first line, not on
+the whole header, so a subtitle doesn't move them. Content in `title` or
+`header` is the title block.
 
 API parity with Blade React: see `src-cx/API-PARITY.md`.
 

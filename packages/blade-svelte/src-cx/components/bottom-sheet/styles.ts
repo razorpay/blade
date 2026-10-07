@@ -7,10 +7,13 @@ import type { ResponsiveProps } from '../../runes/defaults/responsive';
 import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
 import { MODAL_AXES } from '../modal/styles';
 
-/** The blade taxonomy as data: the Modal axes a sheet still decides. */
+/**
+ * The blade taxonomy as data: the Modal axes a sheet still decides. Blade
+ * DSL's Bottom Sheet (Figma) has no sizes: on phones it spans the viewport,
+ * and from `m` it is the small (400px) column.
+ */
 export const BOTTOM_SHEET_AXES = {
   variant: ['sheet', 'modal'],
-  size: MODAL_AXES.size,
   pace: MODAL_AXES.pace,
 } as const;
 
@@ -18,8 +21,6 @@ type Axis<K extends keyof typeof BOTTOM_SHEET_AXES> = AxisValue<typeof BOTTOM_SH
 
 /** Derived from BOTTOM_SHEET_AXES: add a value there, never here. */
 export interface BottomSheetStyleProps {
-  /** The panel's width on desktop; on mobile a sheet spans the viewport. */
-  size?: Axis<'size'>;
   /** `snappy`: v2's quick-buy drawer — 250ms, expo-out. */
   pace?: Axis<'pace'>;
   /**
@@ -64,6 +65,15 @@ export interface BottomSheetBehaviourProps {
   title?: string | Snippet;
   /** One muted line under the title; it describes the sheet. */
   subtitle?: string;
+  /** Before the title: an asset in Figma's 32px box, 8px from it. */
+  leading?: Snippet;
+  /** Beside the title, 8px from it: a Counter or a Badge. */
+  titleSuffix?: Snippet;
+  /**
+   * After the title block, 16px clear of it and of the close button: a
+   * Badge, text, a Link or an action.
+   */
+  trailing?: Snippet<[{ close: () => void }]>;
   /**
    * The header's content, around the drawn title and subtitle: it receives
    * them as snippets (`title`, `subtitle`; each renders nothing when its

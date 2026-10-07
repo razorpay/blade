@@ -23,19 +23,58 @@ describe('Amount', () => {
     expect(shownParts(total)).toEqual(['₹', '1,23,456', '.50']);
   });
 
-  it('makes the currency and the decimals subtle by default', () => {
+  it('by default inherits the text: size, weight, colour; a subtle affix is 0.75em', () => {
     const subtle = render(Amount, { props: { value: 10.5, locale: 'en-IN', testID: 'a' } });
     const a = subtle.getByTestId('a');
-    expectClass(part(a, 0), 'opacity-800');
-    expect(part(a, 1).className).not.toContain('opacity-800');
-    expectClass(part(a, 2), 'opacity-800');
+    expect(a.className).not.toMatch(/font-(regular|medium|semibold)|text-/);
+    expectClass(part(a, 0), '[font-size:0.75em]');
+    expect(part(a, 1).className).toBe('');
+    expectClass(part(a, 2), '[font-size:0.75em]');
+    // Figma's subtle affix is smaller only, never faded.
+    expect(a.innerHTML).not.toContain('opacity-');
     const plain = render(Amount, {
       props: { value: 10.5, locale: 'en-IN', isAffixSubtle: false, testID: 'b' },
     });
     const b = plain.getByTestId('b');
     // Plain decimals stay with the integer.
     expect(shownParts(b)).toEqual(['₹', '10.50']);
-    expect(part(b, 0).className).not.toContain('opacity-800');
+    expect(part(b, 0).className).not.toContain('0.75em');
+  });
+
+  it.each([
+    ['body', 'small', 'font-text text-75 leading-75', 'font-text text-25 leading-25'],
+    ['body', 'large', 'font-text text-200 leading-200', 'font-text text-75 leading-75'],
+    ['heading', 'medium', 'font-heading text-400 leading-400', 'font-text text-100 leading-100'],
+    ['heading', '2xlarge', 'font-heading text-700 leading-700', 'font-heading text-500 leading-500'],
+    ['display', 'xlarge', 'font-heading text-1100 leading-1100', 'font-heading text-800 leading-800'],
+  ] as const)("%s %s: Figma's value style, and its affix one step down", (type, size, value, affix) => {
+    const { getByTestId } = render(Amount, {
+      props: { value: 10.5, locale: 'en-IN', type, size, testID: 'a' } as never,
+    });
+    const a = getByTestId('a');
+    expectClass(part(a, 1), value);
+    expectClass(part(a, 2), affix);
+    // The currency symbol is always in the body face, at the affix size.
+    expectClass(part(a, 0), `font-text ${affix.split(' ').slice(1).join(' ')}`);
+  });
+
+  it('a plain affix takes the value style; the currency stays in the body face', () => {
+    const { getByTestId } = render(Amount, {
+      props: { value: 10.5, locale: 'en-IN', type: 'heading', size: 'large', isAffixSubtle: false, testID: 'a' },
+    });
+    const a = getByTestId('a');
+    expect(shownParts(a)).toEqual(['₹', '10.50']);
+    expectClass(part(a, 1), 'font-heading text-500 leading-500');
+    expectClass(part(a, 0), 'font-text text-500 leading-500');
+  });
+
+  it('weight and colour land on the whole amount', () => {
+    const { getByTestId } = render(Amount, {
+      props: { value: 10.5, type: 'display', size: 'small', weight: 'medium', color: 'success', testID: 'a' },
+    });
+    const a = getByTestId('a');
+    expectClass(a, 'font-medium');
+    expectClass(a, 'text-feedback-positive-intense');
   });
 
   it('humanize keeps the compact suffix with the number, not as an affix', () => {

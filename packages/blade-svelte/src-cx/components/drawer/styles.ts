@@ -62,6 +62,13 @@ export interface DrawerBehaviourProps {
   title?: string | Snippet;
   /** One muted line under the title; it describes the drawer. */
   subtitle?: string;
+  /** Beside the title, 8px from it: a Badge. */
+  titleSuffix?: Snippet;
+  /**
+   * After the title, 16px clear of it and of the close button: a Link or an
+   * action.
+   */
+  trailing?: Snippet<[{ close: () => void }]>;
   /**
    * The header's content, around the drawn title and subtitle: it receives
    * them as snippets (`title`, `subtitle`; each renders nothing when its

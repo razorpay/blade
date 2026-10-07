@@ -13,7 +13,6 @@
     onDismiss?: (event: DialogDismissEvent) => void;
     closeLabel?: string;
     title?: string;
-    size?: BottomSheetStyleProps['size'];
     pace?: BottomSheetStyleProps['pace'];
     isDraggable?: boolean;
     variant?: Responsive<'modal' | 'sheet'>;
@@ -26,7 +25,6 @@
     onDismiss,
     closeLabel = 'Close',
     title = 'Enter OTP',
-    size,
     pace,
     isDraggable,
     variant,
@@ -43,7 +41,6 @@
   {onDismiss}
   {closeLabel}
   {title}
-  {size}
   {pace}
   {isDraggable}
   {variant}

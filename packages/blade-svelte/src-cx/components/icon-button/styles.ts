@@ -23,7 +23,7 @@ export type IconButtonLoaderSnippet<P> = Snippet<[P, ButtonBusyCause]>;
 
 /** The blade taxonomy as data. */
 export const ICON_BUTTON_AXES = {
-  emphasis: ['intense', 'subtle', 'moderate'],
+  emphasis: ['intense', 'subtle'],
   size: ['small', 'medium', 'large'],
 } as const;
 
@@ -33,7 +33,7 @@ type Axis<K extends keyof typeof ICON_BUTTON_AXES> = AxisValue<typeof ICON_BUTTO
 export interface IconButtonStyleProps {
   /**
    * `intense`: a gray glyph, for light surfaces. `subtle`: a white glyph,
-   * for dark ones. `moderate`: the white glyph on a faint white box.
+   * for dark ones. The two Blade DSL's Icon Button (Figma) draws.
    * @default 'intense'
    */
   emphasis?: Axis<'emphasis'>;
@@ -57,8 +57,6 @@ const TONE: Record<Axis<'emphasis'>, string> = {
     'icon-interactive-gray-muted hover:enabled:icon-interactive-gray-subtle focus-visible:icon-interactive-gray-subtle active:icon-interactive-gray-subtle disabled:icon-interactive-gray-disabled',
   subtle:
     'icon-interactive-static-white-normal hover:enabled:icon-interactive-static-white-subtle focus-visible:icon-interactive-static-white-subtle active:icon-interactive-static-white-subtle disabled:icon-interactive-static-white-disabled',
-  moderate:
-    'icon-interactive-static-white-normal hover:enabled:icon-interactive-static-white-subtle focus-visible:icon-interactive-static-white-subtle active:icon-interactive-static-white-subtle disabled:icon-interactive-static-white-disabled bg-interactive-static-white-faded hover:enabled:bg-interactive-static-white-faded-highlighted focus-visible:bg-interactive-static-white-faded-highlighted',
 };
 
 // The box behind the glyph, when highlighted: gray on light, white on dark.
@@ -69,11 +67,12 @@ const HIGHLIGHT: Record<'intense' | 'subtle', string> = {
     'hover:enabled:bg-interactive-static-white-faded focus-visible:bg-interactive-static-white-faded',
 };
 
-// A box (highlighted or moderate) is 24 or 32px with an 8px radius; the bare
+// Blade DSL's Icon Button (Figma): the highlighted box is 24px round at 8px
+// (small) or 32px round at 12px (medium); Figma has none at large. The bare
 // glyph is its own size, rounded 2px for the ring.
 const BOX: Record<Axis<'size'>, string> = {
   small: 'w-6 h-6 rounded-small',
-  medium: 'w-8 h-8 rounded-small',
+  medium: 'w-8 h-8 rounded-medium',
   large: 'rounded-2xsmall',
 };
 
@@ -81,8 +80,8 @@ export const resolveIconButton: IconButtonStyleResolver<IconButtonStyleProps> = 
   props: IconButtonStyleProps = {},
 ) => {
   const { emphasis = 'intense', size = 'medium', isHighlighted = false } = props;
-  const hasBox = (isHighlighted || emphasis === 'moderate') && size !== 'large';
-  const highlight = isHighlighted && emphasis !== 'moderate' ? HIGHLIGHT[emphasis] : '';
+  const hasBox = isHighlighted && size !== 'large';
+  const highlight = isHighlighted ? HIGHLIGHT[emphasis] : '';
   return {
     root: `${ROOT} ${TONE[emphasis]} ${highlight} ${hasBox ? BOX[size] : 'rounded-2xsmall'}`
       .replace(/\s+/g, ' ')

@@ -2,8 +2,10 @@ import { afterEach, describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import type { Toasts } from '../components/toast/toasts';
 import ToastHarness from './fixtures/ToastHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectGlyph, glyphsIn } from './classes';
+import { BankIcon } from '../icons';
 import type { RenderResult } from '@testing-library/svelte';
+import { createRawSnippet } from 'svelte';
 
 function setup(): RenderResult<typeof ToastHarness> & { toasts: Toasts } {
   let toasts: Toasts | undefined;
@@ -39,15 +41,29 @@ const offsetOf = (toast: HTMLElement): string =>
 
 describe('showToast', () => {
   it("icon replaces the colour's glyph", async () => {
-    const { bank } = await import('../components/icons');
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ content: 'Paid', duration: 0, icon: bank, testID: 'paid' });
+    toasts.showToast({ content: 'Paid', duration: 0, icon: BankIcon, testID: 'paid' });
     await waitFor(() => getByTestId('paid'));
-    const svg = getByTestId('paid').querySelector('svg')!;
-    const own = new DOMParser().parseFromString(bank, 'image/svg+xml').documentElement;
-    const paths = (root: Element): (string | null)[] =>
-      [...root.querySelectorAll('path')].map((p) => p.getAttribute('d'));
-    expect(paths(svg)).toEqual(paths(own));
+    expectGlyph(getByTestId('paid'), BankIcon);
+  });
+
+  it('leading puts an asset where the glyph goes', async () => {
+    const { toasts, getByTestId } = setup();
+    const leading = createRawSnippet(() => ({ render: () => '<img data-testid="logo" alt="" />' }));
+    toasts.showToast({ content: 'Paid', duration: 0, leading, testID: 'paid' });
+    await waitFor(() => getByTestId('paid'));
+    const toast = getByTestId('paid');
+    expect(toast.firstElementChild?.contains(getByTestId('logo'))).toBe(true);
+    expect(glyphsIn(toast.firstElementChild)).toHaveLength(0);
+  });
+
+  it("spaces the row as Figma's Toast: the content 12px before the trailing controls", async () => {
+    const { toasts, getByTestId } = setup();
+    toasts.showToast({ content: 'Saved', duration: 0, testID: 'saved' });
+    await waitFor(() => getByTestId('saved'));
+    const toast = getByTestId('saved');
+    expectClass(toast, 'gap-2');
+    expectClass(toast.lastElementChild as HTMLElement, 'pl-1');
   });
 
   it('shows a message in the host, as a status, without taking the page', () => {
@@ -57,11 +73,12 @@ describe('showToast', () => {
     return waitFor(() => expect(getByTestId('saved')).toBeTruthy()).then(() => {
       const toast = getByTestId('saved');
       expect(toast.getAttribute('role')).toBe('status');
-      expect(toast.textContent?.trim()).toBe('Card saved');
+      // Glyphs are private-use characters, hidden from assistive tech.
+      expect(toast.textContent?.replace(/[\uE000-\uF8FF]/g, '').trim()).toBe('Card saved');
       expectClass(toast, 'rounded-medium');
       expectClass(toast, 'shadow-toast-neutral');
       // Blade's glyph for the colour, and its dismiss button.
-      expect(toast.querySelector('svg')).not.toBeNull();
+      expect(glyphsIn(toast)).not.toHaveLength(0);
       expect(toast.querySelector('button')?.getAttribute('aria-label')).toBe('Dismiss toast');
       expect(getByTestId('toasts').getAttribute('aria-label')).toBe('Notifications');
       expect(getByTestId('host').contains(toast)).toBe(true);

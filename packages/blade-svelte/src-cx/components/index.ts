@@ -236,6 +236,9 @@ export type {
 } from './text-input/styles';
 export type { TextInputStyleProps } from './text-input';
 export { TEXT_INPUT_AXES } from './text-input/styles';
+export { TEXT_AREA_AXES } from './text-area/styles';
+export { PHONE_NUMBER_INPUT_AXES } from './phone-number-input/styles';
+export { INPUT_GROUP_AXES } from './input-group/styles';
 export type {
   ToastClasses,
   ToastCloseIconSnippet,
@@ -249,6 +252,7 @@ export type { TooltipClasses, TooltipStyleResolver } from './tooltip/styles';
 export type { TooltipStyleProps } from './tooltip';
 export type { AmountClasses, AmountStyleResolver } from './amount/styles';
 export type { AmountStyleProps } from './amount';
+export { AMOUNT_AXES, AMOUNT_TYPE_SIZES, AMOUNT_TYPE_WEIGHTS } from './amount';
 export type { AmountSuffix } from '../runes/amount/amount';
 export type { LinkClasses, LinkStyleResolver } from './link/styles';
 export { LINK_AXES } from './link';
@@ -284,8 +288,8 @@ export type { IconBehaviourProps, IconClasses, IconStyleResolver } from './icon/
 export type { IconSource } from '../runes/icon/source';
 export { ICON_AXES } from './icon';
 export type { IconStyleProps } from './icon';
-// The glyphs: `icons.chevronDown`, passed as `source`/`icon`.
-export * as icons from './icons';
+// The icons themselves are `@razorpay/blade-svelte/icons`.
+export type { Glyph } from '../runes/icon/source';
 // Style-only components: no behaviour model behind them.
 export { Badge, BADGE_AXES } from './badge';
 export type { BadgeStyleProps, BadgeBehaviourProps, BadgeComponent } from './badge';
@@ -303,12 +307,8 @@ export type {
 } from './empty-state';
 export { Screen, SCREEN_AXES } from './screen';
 export type { ScreenStyleProps, ScreenBehaviourProps, ScreenComponent } from './screen';
-export { FooterBar, FOOTER_BAR_AXES } from './footer-bar';
-export type {
-  FooterBarStyleProps,
-  FooterBarBehaviourProps,
-  FooterBarComponent,
-} from './footer-bar';
+export { BottomBar } from './bottom-bar';
+export type { BottomBarBehaviourProps, BottomBarClasses, BottomBarComponent } from './bottom-bar';
 export { Divider, DIVIDER_AXES } from './divider';
 export type { DividerStyleProps, DividerBehaviourProps, DividerComponent } from './divider';
 export { Progress, PROGRESS_AXES } from './progress';

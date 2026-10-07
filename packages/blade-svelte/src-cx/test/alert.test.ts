@@ -2,9 +2,9 @@ import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import { createRawSnippet } from 'svelte';
 import Alert from '../components/alert/Alert.svelte';
-import { alertOctagon, alertTriangle, checkCircle, info } from '../components/icons';
+import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, InfoIcon } from '../icons';
 import AlertHarness from './fixtures/AlertHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectGlyph } from './classes';
 
 const description = 'Note';
 
@@ -113,18 +113,17 @@ describe('Alert (blade)', () => {
   });
 
   it.each([
-    ['neutral', info],
-    ['information', info],
-    ['primary', info],
-    ['positive', checkCircle],
-    ['notice', alertTriangle],
-    ['negative', alertOctagon],
+    ['neutral', InfoIcon],
+    ['information', InfoIcon],
+    ['primary', InfoIcon],
+    ['positive', CheckCircleIcon],
+    ['notice', AlertTriangleIcon],
+    ['negative', AlertOctagonIcon],
   ] as const)('%s defaults to its icon', (color, glyph) => {
     const { getByTestId } = render(Alert, {
       props: { description, color, testID: 'a' },
     });
-    const path = getByTestId('a').firstElementChild?.querySelector('path');
-    expect(path?.getAttribute('d')).toBe(/ d="([^"]+)"/.exec(glyph)?.[1]);
+    expectGlyph(getByTestId('a').firstElementChild, glyph);
   });
 
   it('a lone description centres the icon; a title puts it on the first line', () => {
@@ -132,6 +131,11 @@ describe('Alert (blade)', () => {
     expectClass(lone.getByTestId('a').firstElementChild as HTMLElement, 'self-center');
     const titled = render(Alert, { props: { description, title: 'T', testID: 'b' } });
     expectClass(titled.getByTestId('b').firstElementChild as HTMLElement, 'self-start');
+  });
+
+  it('keeps the dismiss button at the top while the row centres', () => {
+    const { getByRole } = render(Alert, { props: { description, title: 'T' } });
+    expectClass(getByRole('button', { name: 'Dismiss alert' }), 'self-start');
   });
 });
 
@@ -143,5 +147,12 @@ describe('rich titles and descriptions', () => {
     const heading = getByTestId('empty-title').closest('h1, h2, h3, h4, h5, h6');
     expect(heading).toBeTruthy();
     expect(getByTestId('empty').contains(getByTestId('empty-link'))).toBe(true);
+  });
+
+  it("spaces the text as Figma's full-width Alert: 8px after the icon, 12px before the dismiss", () => {
+    const { getByTestId } = render(Alert, { props: { description, testID: 'a' } });
+    const text = getByTestId('a').children[1] as HTMLElement;
+    expectClass(text, 'pl-2');
+    expectClass(text, 'pr-3');
   });
 });

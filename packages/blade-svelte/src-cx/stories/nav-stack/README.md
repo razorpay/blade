@@ -47,8 +47,8 @@ screens of a change, the direction read when the transition starts. Blade: a
 full slide on mobile, a 20px drift with a fade from the `d` breakpoint; 400ms
 in, 350ms out. The first screen on show does not slide.
 
-## Screen and FooterBar
+## Screen
 
 Style-only blade components: `Screen` is the scrolling, width-capped page
-(`isDisabled`, `padding`, a `footer` snippet); `FooterBar` sticks to the bottom
-on mobile and joins the flow on desktop (`desktop="sticky"` keeps it stuck).
+(`isDisabled`, `padding`, a `footer` snippet pinned under the scrolling
+content: a `BottomBar` in this story).

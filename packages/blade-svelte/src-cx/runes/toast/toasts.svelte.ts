@@ -2,6 +2,7 @@ import { defineContext } from '../context';
 import { createLayerStack } from '../base/layer-stack.svelte';
 import { defaultSchedule } from '../base/schedule';
 import type { Schedule } from '../base/schedule';
+import type { Snippet } from 'svelte';
 import type { IconSource } from '../icon/source';
 
 export type ToastDismissReason = 'timeout' | 'dismiss' | 'evicted' | 'cleared';
@@ -170,6 +171,11 @@ export interface ToastContent {
   content: string;
   /** A glyph before the content; each colour has Blade's default. */
   icon?: IconSource;
+  /**
+   * Before the content in place of the glyph: an asset (a bank's logo), as
+   * Blade DSL's _Toast/ Leading Item (Figma) is an icon or an asset.
+   */
+  leading?: Snippet;
   /** ms before it goes. @default 4000 */
   duration?: number;
   /** `false`: it stays until dismissed. @default true */

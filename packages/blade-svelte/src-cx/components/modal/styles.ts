@@ -14,11 +14,21 @@ import type { SurfaceClasses } from '../layer/styles';
 export interface ModalClasses extends SurfaceClasses {
   /** Blade's BaseHeader: the padded box with its hairline below. */
   header: string;
-  /** The row: the title block, then the close button. */
+  /** The row: the leading item, the title block, the trailing item; then the close button. */
   headerRow: string;
+  /** Before the title block: an asset or avatar, 8px from the title. */
+  leading: string;
+  /** A leading glyph's box: the title's 28px first line. */
+  leadingIcon: string;
+  /** The title and what follows it (`titleSuffix`), 8px apart. */
+  titleRow: string;
+  /** Beside the title: a Counter or a Badge, centred on the title line. */
+  titleSuffix: string;
+  /** After the title block: a Badge, text, a Link or an action, 16px clear of it and of the close button. */
+  trailing: string;
   /** The title over the `header` snippet. */
   titleBlock: string;
-  /** Added to the title block while the close button shows: room for it. */
+  /** Added to the header row while the close button shows: room for it. */
   closeClearance: string;
   /** A `title` string's type; a snippet sits in the same place. */
   title: string;
@@ -102,10 +112,10 @@ const CONTENT = 'flex min-h-0 flex-auto flex-col overflow-hidden [border-radius:
 // positions itself — above the panel (`bottom-full`) or over it (`top-*`).
 const CHROME = 'absolute inset-x-0 top-0 z-10 h-0';
 
-// Blade's Drawer: full height on its edge, 90% of the host on phones,
-// 375px from `s`, 420px from `m`, where it floats 8px in with large
-// corners, casting Blade's highRaised elevation.
-const DRAWER = 'h-full w-[90%] s:w-[375px] m:w-[420px] shadow-highRaised m:rounded-large';
+// Blade DSL's Drawer (Figma): full height on its edge, 24px short of the
+// host's width on phones with square corners; 380px from `m`, where it
+// floats 8px in with large corners, casting Blade's highRaised elevation.
+const DRAWER = 'h-full w-[calc(100%_-_1.5rem)] m:w-[380px] shadow-highRaised m:rounded-large';
 
 // Blade's Modal: centred, scaling and fading in place.
 const CENTRED = {
@@ -171,6 +181,9 @@ interface ModalLayout {
   /** The variant's own body and footer boxes, over the modal's. */
   body?: string;
   footer?: string;
+  /** The variant's own header box and title type, over the modal's. */
+  header?: string;
+  title?: string;
   /** Where the close buttons sit in the chrome, over the modal's. */
   close?: string;
   floatingClose?: string;
@@ -196,16 +209,24 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     panel: `${PANEL} ${PACE[pace]} ${layout.panel} ${SIZE[size]}`,
     content: CONTENT,
     chrome: CHROME,
-    // Blade's BaseHeader (size large): 16px in and above and below, 20px
-    // from 768px, a hairline under it; the close button centred on the
-    // title's 28px first line.
-    header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:p-5',
+    // Blade DSL's _Modal Header (Figma): 16px in (20px above and beside it
+    // from 768px), 16px below, a hairline under it; the close button
+    // centred on the title's 28px first line.
+    header:
+      layout.header ?? 'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:px-5 m:pt-5',
     headerRow: 'relative flex items-start select-none',
+    leading: 'me-2 flex shrink-0 items-start',
+    leadingIcon: 'flex h-7 items-center',
+    titleRow: 'flex min-w-0 items-start gap-2',
+    titleSuffix: 'flex h-7 shrink-0 items-center',
+    trailing: 'ms-4 flex h-7 shrink-0 items-center',
     titleBlock: 'me-auto flex min-w-0 flex-auto flex-col',
     // The 20px button and 16px beside it.
     closeClearance: 'pr-9',
+    // Heading/SmallSemibold (18/24, the heading face) on a 28px line.
     title:
-      'm-0 pt-px font-text text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
+      layout.title ??
+      'm-0 pt-0.5 font-heading font-semibold text-300 leading-300 [word-break:break-word] text-surface-gray-normal',
     subtitle:
       'm-0 font-text text-75 leading-75 font-regular [word-break:break-word] text-surface-gray-muted',
     close: `${layout.close ?? CLOSE} w-5 h-5 ${ICON_BUTTON}`,
@@ -214,20 +235,23 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     } w-7 h-7 rounded-max bg-popup-gray-subtle ${ICON_BUTTON}`,
     emptyHeader: 'relative h-2 shrink-0',
     body: layout.body ?? 'overflow-auto p-5',
-    // Blade's BaseFooter: a padded box under a hairline, 16px (20px from
-    // `m`); the caller lays out what is in it.
+    // Blade DSL's _Modal Footer (Figma): a hairline, then the actions 16px
+    // under it, 16px in (20px beside and below from `m`); the caller lays
+    // out what is in it.
     footer:
-      layout.footer ?? 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 m:p-5',
+      layout.footer ?? 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-4 m:px-5 m:pb-5',
   };
 }
 
-// Blade's BottomSheet. The zone — the handle strip and the header — takes
-// the drag, so it must not scroll or pull-to-refresh; the grab handle, in
-// the chrome over the strip, is a 56 × 4px pill, 12px from the top, 4px
-// above the header. The close button sits 20px lower, under the strip. The body is 16px
-// all round; the footer 16px (20px from `m`), on the sheet's surface under
-// a hairline. The sheet casts its shadow upward and rounds its top corners
-// 16px (all four from `m`, where it may be a column).
+// Blade DSL's Bottom Sheet (Figma). The zone — the handle strip and the
+// header — takes the drag, so it must not scroll or pull-to-refresh; the
+// grab handle, in the chrome over the strip, is a 56 × 4px pill, 12px from
+// the top, 4px above the header. The header is 12px under the strip, 16px
+// in and below; its title Body/LargeSemibold (16/24) on a 28px line, the
+// close button centred on it. The body and the footer are 16px all round,
+// the footer on the sheet's surface under a hairline. The sheet casts its
+// shadow upward and rounds its top corners 16px (all four from `m`, where
+// it may be a column).
 const SHEET: ModalLayout = {
   root: 'items-end justify-center m:justify-end m:p-2',
   panel:
@@ -243,10 +267,22 @@ const SHEET: ModalLayout = {
   },
   nativeSheet: { 'data-draggable': 'true', 'data-showhandle': 'true' },
   body: 'overflow-auto p-4',
-  footer:
-    'shrink-0 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4 m:p-5',
-  close: 'absolute top-10 right-4 m:top-11 m:right-5',
+  footer: 'shrink-0 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4',
+  header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted px-4 pt-3 pb-4',
+  title:
+    'm-0 pt-0.5 font-text text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
+  close: 'absolute top-9 right-4',
   floatingClose: 'absolute top-4 right-4',
+};
+
+// Blade DSL's _Drawer Header and _Drawer Footer (Figma): the header 20px
+// all round with no hairline, its title Heading/SmallSemibold; the footer's
+// actions 20px under its hairline and 20px in. The close button centred on
+// the title's first line, 20px from the end.
+const DRAWER_SECTIONS = {
+  header: 'shrink-0 p-5',
+  footer: 'shrink-0 border-t-thin border-solid border-surface-gray-muted p-5',
+  close: 'absolute top-6 right-5',
 };
 
 export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalStyleProps = {}) => {
@@ -255,16 +291,27 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalSt
     if (props.isDraggable ?? true) {
       return modalClasses(SHEET, { size, pace });
     }
-    // Not draggable: no handle, no strip, so the close button sits where a
-    // modal's does; the platform sheet neither drags nor shows a handle.
+    // Not draggable: no handle, no strip, so the header starts 16px down and
+    // the close button sits where a modal's does; the platform sheet
+    // neither drags nor shows a handle.
     const {
       drag: _drag,
       nativeSheet: _native,
       close: _close,
       floatingClose: _floating,
+      header: _header,
       ...still
     } = SHEET;
-    return modalClasses({ ...still, drag: NO_DRAG, nativeSheet: {} }, { size, pace });
+    return modalClasses(
+      {
+        ...still,
+        header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4',
+        close: 'absolute top-5 right-4',
+        drag: NO_DRAG,
+        nativeSheet: {},
+      },
+      { size, pace },
+    );
   }
   if (variant === 'drawer' || variant === 'left-drawer') {
     // Dragged toward its own edge, by its header (there is no handle).
@@ -281,6 +328,7 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalSt
     return modalClasses(
       {
         ...DRAWER_EDGE[variant],
+        ...DRAWER_SECTIONS,
         drag,
         nativeSheet: props.isDraggable ? { 'data-draggable': 'true' } : {},
       },

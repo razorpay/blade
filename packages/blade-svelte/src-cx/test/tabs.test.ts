@@ -1,7 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import TabsHarness from './fixtures/TabsHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectGlyph } from './classes';
+import { InfoIcon } from '../icons';
+import { createRawSnippet } from 'svelte';
+import TabItem from '../components/tabs/TabItem.svelte';
+import { resolveTabs } from '../components/tabs/styles';
 
 describe('Tabs', () => {
   it("children and trailing receive the tab's state; icon draws a glyph", async () => {
@@ -11,7 +15,7 @@ describe('Tabs', () => {
     expect(getByTestId('trailing-upi').dataset.selected).toBe('true');
     expect(getByTestId('trailing-emi').dataset.disabled).toBe('true');
     const card = getAllByRole('tab')[1];
-    expect(card.querySelector('svg')).toBeTruthy();
+    expectGlyph(card, InfoIcon);
     await fireEvent.click(card);
     expect(getByTestId('picked-card')).toBeTruthy();
     expect(getByTestId('trailing-upi').dataset.selected).toBe('false');
@@ -128,5 +132,24 @@ describe('Tabs', () => {
     eager.unmount();
     const lazy = render(TabsHarness, { props: { isLazy: true } });
     expect(lazy.getAllByTestId('panel-text')).toHaveLength(1);
+  });
+
+  it("spaces horizontal tabs per size, as Figma's Tabs: 24px small, 32px medium and large", () => {
+    expect(resolveTabs({ size: 'small' }).list).toContain('gap-6');
+    expect(resolveTabs({ size: 'medium' }).list).toContain('gap-8');
+    expect(resolveTabs({ size: 'large', variant: 'borderless' }).list).toContain('gap-8');
+    expect(resolveTabs({ size: 'medium' }).list).not.toContain('m:gap');
+  });
+
+  it('a leading asset sits in the icon box, on the 8px row with the label', () => {
+    const leading = createRawSnippet(() => ({ render: () => '<img data-testid="logo" alt="" />' }));
+    const children = createRawSnippet(() => ({ render: () => '<span>Bank</span>' }));
+    const { getByTestId, getByRole } = render(TabItem, { props: { value: 'bank', leading, children } });
+    const box = getByTestId('logo').parentElement!;
+    expectClass(box, 'w-4 h-4');
+    const tab = getByRole('tab');
+    expectClass(tab, 'gap-2');
+    expectClass(tab, 'whitespace-nowrap');
+    expect(tab.firstElementChild).toBe(box);
   });
 });

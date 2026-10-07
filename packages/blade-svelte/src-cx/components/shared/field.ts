@@ -59,10 +59,11 @@ export interface FieldLabelClasses {
   optional: string;
 }
 
-// Blade's FormLabel on top (Form/FormLabel.tsx, formTokens.ts): body text,
-// medium weight, clamped to two lines — small at every size but large,
-// muted at xsmall and small, subtle above — 4px above the field (8px at
-// large). Required is a body-small `*` in `feedback.text.negative.intense`
+// Blade's FormLabel on top (Form/FormLabel.tsx, formTokens.ts; Blade DSL's
+// _FormGroup-Header in Figma): body text, medium weight, clamped to two
+// lines — small at every size but large, muted at xsmall and small, subtle
+// above — 4px above the field (8px at large). Required is a body-small
+// semibold `*` in `feedback.text.negative.intense`, 2px after the text and
 // pinned to the first line; optional a regular caption, 4px after the text,
 // in `surface.text.gray.muted`. Anything a `labelArea` adds sits 4px apart
 // (Blade's `labelSuffix` gap); `ms-auto` pushes an item to the row's end
@@ -98,18 +99,19 @@ export function resolveFieldLabel(size: FieldSize, necessity: FieldNecessity): F
     label: `flex max-h-9 items-center ${necessity === 'optional' ? 'gap-1' : ''}`,
     text: `m-0 clamp-2 font-text font-medium tracking-50 ${look.text}`,
     required:
-      'self-start font-text font-regular text-75 leading-75 tracking-50 text-feedback-negative-intense',
+      'ms-0.5 self-start font-text font-semibold text-75 leading-75 tracking-50 text-feedback-negative-intense',
     optional: `font-text font-regular tracking-50 text-surface-gray-muted ${look.optional}`,
   };
 }
 
 /**
  * Blade's CharacterCounter: `current/max` as a regular caption in
- * `surface.text.gray.muted`, the FormHint's size. Where it sits is the
- * field's.
+ * `surface.text.gray.muted`, 11/16 at every size — Figma's _FormGroup-Footer
+ * keeps the count small even where the help text is 14/16 (large). Where it
+ * sits is the field's.
  */
-export function resolveFieldCounter(size: FieldSize): string {
-  return `font-text font-regular tracking-50 text-surface-gray-muted ${HINT_SIZE[size].caption}`;
+export function resolveFieldCounter(_size: FieldSize): string {
+  return 'font-text font-regular tracking-50 text-surface-gray-muted text-50 leading-50';
 }
 
 /** The hint's tone for a field's validation state. */

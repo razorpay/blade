@@ -1,5 +1,15 @@
 <script lang="ts">
-  import { CardGroup, CardGroupItem, Button, Form, Text } from '../../index';
+  import {
+    CardGroup,
+    CardGroupItem,
+    Button,
+    Form,
+    Text,
+    type CardGroupStyleProps,
+  } from '../../index';
+
+  // The meta's controls: variant and size restyle the list.
+  let { args = {} }: { args?: CardGroupStyleProps } = $props();
 
   const methods = [
     { name: 'upi', title: 'UPI' },
@@ -15,7 +25,13 @@
     }}
   >
     <div class="flex flex-col gap-3">
-      <CardGroup name="instrument" isRequired label="Pay using">
+      <CardGroup
+        name="instrument"
+        isRequired
+        label="Pay using"
+        variant={args.variant}
+        size={args.size}
+      >
         {#each methods as method (method.name)}
           <CardGroupItem value={method.name} title={method.title}>
             {#snippet body()}

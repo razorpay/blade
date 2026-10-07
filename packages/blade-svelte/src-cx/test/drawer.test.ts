@@ -15,7 +15,7 @@ describe('Drawer (blade)', () => {
     const panel = getByRole('dialog', { name: 'Filters' });
     expect(panel).toBe(getByTestId('drawer'));
     expect(panel.className).toContain('h-full');
-    expect(panel.className).toContain('m:w-[420px]');
+    expect(panel.className).toContain('m:w-[380px]');
     expect(panel.className).toContain('group-data-[state=closed]:translate-x-full');
     expect(panel.parentElement?.className).toContain('justify-end');
     expect(queryByTestId('drawer-drag-zone')).toBeNull();
@@ -65,7 +65,7 @@ describe('Drawer (blade)', () => {
   it("both drawer variants are Blade's drawer, whatever the size", () => {
     for (const variant of ['drawer', 'left-drawer'] as const) {
       const classes = resolveModal({ variant, size: 'large' });
-      expect(classes.panel).toContain('m:w-[420px]');
+      expect(classes.panel).toContain('m:w-[380px]');
       expect(classes.panel).not.toContain('m:w-[1024px]');
       expect(classes.drag.isEnabled).toBe(false);
     }

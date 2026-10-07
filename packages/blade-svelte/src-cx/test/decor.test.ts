@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import DecorHarness from './fixtures/DecorHarness.svelte';
+import { expectGlyph } from './classes';
 
 describe('Divider (preset component)', () => {
   it('is a separator with one border per orientation', () => {
@@ -28,8 +29,10 @@ describe('TrustBadge (preset component)', () => {
     expect(badge.className).toContain('select-none');
     expect(badge.className.endsWith('mt-1')).toBe(true);
     expect(badge.textContent?.trim()).toBe('Razorpay Trusted Business');
-    expect(badge.querySelector('svg')).toBeTruthy();
-    expect(badge.firstElementChild?.getAttribute('aria-hidden')).toBe('true');
+    // A brand mark keeps its colours: an Image, decorative beside the label.
+    const shield = badge.querySelector('img');
+    expect(shield?.getAttribute('src')).toMatch(/^data:image\/svg\+xml/);
+    expect(shield?.getAttribute('alt')).toBe('');
   });
 
   it('icon-only drops the pill and names the shield with the label', () => {
@@ -41,7 +44,7 @@ describe('TrustBadge (preset component)', () => {
   });
 });
 
-describe('Screen and FooterBar (preset components)', () => {
+describe('Screen (preset component)', () => {
   it('a screen scrolls its body, pins its footer, and goes inert when disabled', () => {
     const { getByTestId } = render(DecorHarness);
     const screen = getByTestId('screen');
@@ -53,14 +56,6 @@ describe('Screen and FooterBar (preset components)', () => {
     expect(screen.lastElementChild).toBe(getByTestId('bar'));
   });
 
-  it('the bar sticks on mobile and joins the flow on desktop', () => {
-    const bar = render(DecorHarness).getByTestId('bar');
-    expect(bar.tagName).toBe('FOOTER');
-    expect(bar.className).toContain('sticky');
-    expect(bar.className).toContain('m:static');
-    expect(bar.firstElementChild?.textContent).toBe('Total');
-    expect(bar.lastElementChild?.textContent).toBe('Pay');
-  });
 });
 
 describe('EmptyState, as Blade', () => {
@@ -84,6 +79,30 @@ describe('EmptyState, as Blade', () => {
     expect(xl.title).toContain('text-600');
     expect(xl.description).toContain('tracking-25');
     expect(xl.asset).toBe('max-w-[160px] max-h-[160px]');
+  });
+
+  it("leads the title with an icon, in Figma's size and gap; the title sits 4px over the description", async () => {
+    const { resolveEmptyState } = await import('../components/empty-state/styles');
+    const sizes = [
+      ['small', 'small', 'gap-1'],
+      ['medium', 'medium', 'gap-2'],
+      ['large', 'large', 'gap-3'],
+      ['xlarge', '2xlarge', 'gap-3'],
+    ] as const;
+    for (const [size, iconSize, gap] of sizes) {
+      const classes = resolveEmptyState({ size });
+      expect(classes.iconSize).toBe(iconSize);
+      expect(classes.lead).toContain(gap);
+      expect(classes.content).toContain('gap-1');
+    }
+    const { default: EmptyState } = await import('../components/empty-state/EmptyState.svelte');
+    const { InfoIcon } = await import('../icons');
+    const { getByTestId } = render(EmptyState, {
+      props: { title: 'No data found', description: 'Try another range', icon: InfoIcon, testID: 'es' },
+    });
+    const lead = getByTestId('es').querySelector('h6')!.parentElement!;
+    expect(lead.className).toContain('gap-2');
+    expectGlyph(lead, InfoIcon);
   });
 
   it('renders only the parts it was given', () => {

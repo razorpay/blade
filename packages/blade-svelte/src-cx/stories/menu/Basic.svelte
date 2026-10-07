@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { IconButton, icons, LayerHost, Menu, MenuItem, Text } from '../../index';
+  import { IconButton, LayerHost, Menu, MenuItem, Text } from '../../index';
+  import { CheckIcon, CloseIcon, CopyIcon, MoreHorizontalIcon, UserIcon } from '../../icons';
 
   interface Props {
     args: { placement?: 'bottom-end' | 'bottom-start' | 'top-end' | 'right' };
@@ -8,10 +9,10 @@
   let { args }: Props = $props();
 
   const ACTIONS = [
-    { id: 'edit', label: 'Edit address', icon: icons.user },
-    { id: 'copy', label: 'Copy address', icon: icons.copy },
-    { id: 'default', label: 'Make default', icon: icons.check },
-    { id: 'remove', label: 'Remove', icon: icons.close },
+    { id: 'edit', label: 'Edit address', icon: UserIcon },
+    { id: 'copy', label: 'Copy address', icon: CopyIcon },
+    { id: 'default', label: 'Make default', icon: CheckIcon },
+    { id: 'remove', label: 'Remove', icon: CloseIcon },
   ];
 
   let last = $state('—');
@@ -25,7 +26,7 @@
     testID="menu"
   >
     {#snippet trigger()}
-      <IconButton icon={icons.more} accessibilityLabel="Address actions" testID="trigger" />
+      <IconButton icon={MoreHorizontalIcon} accessibilityLabel="Address actions" testID="trigger" />
     {/snippet}
     {#each ACTIONS.slice(0, 3) as action (action.id)}
       <MenuItem

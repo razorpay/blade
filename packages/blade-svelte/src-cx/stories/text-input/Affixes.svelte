@@ -1,32 +1,37 @@
 <script lang="ts">
-  import {
-    Icon,
-    icons,
-    TextInput,
-    type TextInputStyleProps,
-  } from '../../index';
+  import { Link, TextInput, type TextInputStyleProps } from '../../index';
+  import { InfoIcon, SearchIcon } from '../../icons';
 
   interface Props {
-    args: TextInputStyleProps & { leading?: string; trailing?: string };
+    args: TextInputStyleProps & { prefix?: string; suffix?: string };
   }
 
   let { args }: Props = $props();
 </script>
 
+<!-- Figma's slots: a glyph and text 8px (12px from medium) in from the edge,
+     a selector on the field's 4px padding, the trailing items after the
+     text with the field's gap. -->
 <div class="grid max-w-96 gap-4">
   <TextInput
     label="UPI ID"
     placeholder="handle"
-    leading={args.leading || undefined}
-    trailing={args.trailing || undefined}
+    size={args.size}
+    prefix={args.prefix || undefined}
+    suffix={args.suffix || undefined}
   />
 
-  <TextInput label="Search" placeholder="Bank name">
-    {#snippet leading()}
-      <Icon source={icons.search} />
-    {/snippet}
+  <TextInput
+    label="Search"
+    placeholder="Bank name"
+    size={args.size}
+    leadingIcon={SearchIcon}
+    trailingIcon={InfoIcon}
+  />
+
+  <TextInput label="Amount" placeholder="0.00" size={args.size} prefix="₹">
     {#snippet trailing()}
-      <span class="text-25 leading-50">⌘K</span>
+      <Link href="#rates" size="small">Rates</Link>
     {/snippet}
   </TextInput>
 </div>

@@ -3,9 +3,9 @@
     Button,
     EmptyState,
     Icon,
-    icons,
     type EmptyStateStyleProps,
   } from '../../index';
+  import { AlertTriangleIcon } from '../../icons';
 
   interface Props {
     args: EmptyStateStyleProps & { title?: string; description?: string };
@@ -19,6 +19,6 @@
   title={args.title}
   description={args.description}
 >
-  {#snippet asset()}<Icon source={icons.warning} size="xlarge" />{/snippet}
+  {#snippet asset()}<Icon source={AlertTriangleIcon} size="xlarge" />{/snippet}
   <Button type="button">Create Payment Link</Button>
 </EmptyState>

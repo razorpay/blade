@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import type { FormatRule } from '../runes/text-input/format';
+import { InfoIcon } from '../icons';
 import TextInputHarness from './fixtures/TextInputHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 
@@ -104,9 +105,9 @@ describe('TextInput standalone', () => {
     written.mockRestore();
   });
 
-  it('leading and trailing take text or a snippet inside the box label', () => {
+  it('prefix and the trailing snippet sit inside the box label', () => {
     const { getByText, getByTestId, getByLabelText } = render(TextInputHarness, {
-      props: { label: 'Amount', leading: '₹', withTrailingSnippet: true },
+      props: { label: 'Amount', prefix: '₹', withTrailingSnippet: true },
     });
     expectClass(getByText('₹'), 'items-center');
     expectClass(getByTestId('clear').parentElement, 'items-center');
@@ -161,11 +162,11 @@ describe('TextInput standalone', () => {
 
   it('shows focus on the box, which holds the affixes', async () => {
     const { getByTestId, getByText } = render(TextInputHarness, {
-      props: { leading: '₹' },
+      props: { prefix: '₹' },
     });
     const control = getByTestId('solo');
     const box = control.parentElement;
-    expect(getByText('₹').parentElement).toBe(box);
+    expect(getByText('₹').closest('label')).toBe(box);
     expectNoClass(box, 'outline-surface-primary-muted');
 
     await fireEvent.focus(control);
@@ -224,5 +225,52 @@ describe('TextInput standalone', () => {
     expect((getByTestId('solo') as HTMLInputElement).disabled).toBe(true);
     expectClass(container.firstElementChild as HTMLElement, 'pointer-events-none');
     expectClass(getByTestId('solo').parentElement, '!bg-surface-gray-moderate');
+  });
+
+  it.each([
+    // size, height, box padding, text inset, leading gap, icon/prefix inset, trailing gap, trailing inset, glyph
+    ['small', 'min-h-8', 'px-1', 'pl-1', 'gap-0.5', 'pl-1', 'ms-0.5', 'pr-1', 'w-3 h-3'],
+    ['medium', 'min-h-9', 'px-1', 'pl-2', 'gap-2', 'pl-2', 'ms-2', 'pr-2', 'w-4 h-4'],
+    ['large', 'min-h-12', 'px-1', 'pl-2', 'gap-2', 'pl-2', 'ms-2', 'pr-2', 'w-5 h-5'],
+  ] as const)(
+    "%s: Figma's slots — glyphs and text 8/12px in, a selector on the 4px padding",
+    (size, height, pad, textInset, leadingGap, iconInset, trailingGap, trailingInset, glyph) => {
+      const { getByTestId, getByText } = render(TextInputHarness, {
+        props: {
+          size,
+          accessibilityLabel: 'Amount',
+          leadingIcon: InfoIcon,
+          prefix: '₹',
+          withLeadingSnippet: true,
+          suffix: '.00',
+          trailingIcon: InfoIcon,
+          withTrailingSnippet: true,
+        },
+      });
+      const control = getByTestId('solo');
+      const box = control.parentElement!;
+      expectClass(box, height);
+      expectClass(box, pad);
+      expectClass(box, 'whitespace-nowrap');
+      expectClass(control, textInset);
+      const [leadingGroup, , trailingGroup] = [...box.children] as HTMLElement[];
+      expectClass(leadingGroup, leadingGap);
+      const [icon, prefix, slot] = [...leadingGroup.children] as HTMLElement[];
+      expectClass(icon, iconInset);
+      expectClass(icon.firstElementChild as HTMLElement, glyph);
+      expect(prefix).toBe(getByText('₹'));
+      expectClass(prefix, iconInset === 'pl-1' ? 'pl-0.5' : 'pl-2');
+      // The selector slot carries no inset of its own.
+      expect(slot.className).not.toMatch(/\bpl-/);
+      expect(slot.contains(getByTestId('picker'))).toBe(true);
+      expectClass(trailingGroup, trailingGap);
+      for (const item of trailingGroup.children) expectClass(item as HTMLElement, trailingInset);
+      expect(getByText('.00').parentElement).toBe(trailingGroup);
+    },
+  );
+
+  it('removes xsmall, which Figma does not draw', async () => {
+    const { TEXT_INPUT_AXES } = await import('../components/text-input/styles');
+    expect(TEXT_INPUT_AXES.size).toEqual(['small', 'medium', 'large']);
   });
 });

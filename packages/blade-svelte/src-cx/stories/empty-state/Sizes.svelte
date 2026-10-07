@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { EmptyState, EMPTY_STATE_AXES, Icon, icons } from '../../index';
+  import { EmptyState, EMPTY_STATE_AXES, Icon } from '../../index';
+  import { AlertTriangleIcon } from '../../icons';
 </script>
 
 <div class="flex flex-col gap-10">
@@ -9,7 +10,7 @@
       title="No content available"
       description={`A ${size} empty state.`}
     >
-      {#snippet asset()}<Icon source={icons.warning} size="xlarge" />{/snippet}
+      {#snippet asset()}<Icon source={AlertTriangleIcon} size="xlarge" />{/snippet}
     </EmptyState>
   {/each}
 </div>

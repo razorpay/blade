@@ -32,7 +32,7 @@
   <Button class="w-full" type="button" onClick={() => modal.close(true)}>
     Continue
   </Button>
-  <Button variant="tertiary" type="button" onClick={openAnother}>
+  <Button variant="secondary" type="button" onClick={openAnother}>
     Open another on top
   </Button>
 </div>

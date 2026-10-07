@@ -53,8 +53,19 @@ export interface TextInputClasses {
   focus: Record<TextInputFrame, Record<'focused' | 'blurred', string>>;
   /** Applied to the box per validation state. */
   validation: Record<TextInputFrame, Record<Validated, string>>;
-  /** The leading/trailing wrapper, text or snippet alike. */
-  affix: string;
+  /**
+   * The parts before the text, in Figma's order: `leadingIcon`, `prefix`,
+   * the `leading` snippet. The group spaces them; each carries its own
+   * inset from the field's edge (see the README).
+   */
+  leading: Record<'group' | 'icon' | 'prefix' | 'slot', string>;
+  /**
+   * The parts after the text: the clear button, `suffix`, `trailingIcon`,
+   * the `trailing` snippet. The group sits the field's gap after the text.
+   */
+  trailing: Record<'group' | 'item', string>;
+  /** The glyphs' size: 12, 16, 20px. */
+  iconSize: 'small' | 'medium' | 'large';
   /** The clear button (`showClearButton`): IconButton's medium look. */
   clear: string;
   /** The hint line and the character counter, side by side. */
@@ -68,7 +79,7 @@ export type TextInputStyleResolver<P> = (props: P) => TextInputClasses;
 
 /** The blade taxonomy as data. */
 export const TEXT_INPUT_AXES = {
-  size: ['xsmall', 'small', 'medium', 'large'],
+  size: ['small', 'medium', 'large'],
   textAlign: ['left', 'center', 'right'],
 } as const;
 
@@ -82,34 +93,58 @@ export interface TextInputStyleProps {
   textAlign?: Axis<'textAlign'>;
 }
 
-// Blade's baseInput per size (baseInputTokens.ts): the height, the side
-// padding, the body text (letter-spacing -1.3%, -3.3% at large), and the
-// radius. Medium keeps 16px text on phones — iOS zooms into a smaller
-// field — and Blade's 14px from `m` up.
-const SIZE: Record<Axis<'size'>, { box: string; text: string; radius: string; framed: string }> = {
-  xsmall: {
-    box: 'min-h-7 px-2',
-    text: 'text-25 leading-25 tracking-50',
-    radius: 'rounded-small',
-    framed: 'min-h-7 px-2 py-1',
-  },
+// Blade DSL's Text Input (Figma) per size: 32/36/48px tall, the body text
+// (letter-spacing -1.3%, -3.3% at large), 8px round (12px at large). Figma
+// builds the field as 4px of padding round its parts, each part carrying
+// its own inset beside it: the text 4px (8px from medium), a glyph or the
+// prefix the same, a selector (the `leading` snippet) none. So text and
+// glyphs sit 8px (12px) from the edge, a selector 4px. Between the parts:
+// the leading ones 2px apart (8px), the text 4px (8px) after them, and
+// the trailing ones 2px (8px) after the text and 4px (8px) apart.
+// Medium keeps 16px text on phones — iOS zooms into a smaller field — and
+// Figma's 14px from `m` up.
+const SIZE: Record<
+  Axis<'size'>,
+  {
+    box: string;
+    text: string;
+    radius: string;
+    framed: string;
+    control: string;
+    leading: Record<'group' | 'icon' | 'prefix', string>;
+    trailing: Record<'group' | 'item', string>;
+    icon: TextInputClasses['iconSize'];
+  }
+> = {
   small: {
-    box: 'min-h-8 px-2',
+    box: 'min-h-8 px-1',
     text: 'text-75 leading-75 tracking-50',
     radius: 'rounded-small',
     framed: 'min-h-8 px-2 py-1',
+    control: 'pl-1',
+    leading: { group: 'gap-0.5', icon: 'pl-1', prefix: 'pl-0.5' },
+    trailing: { group: 'ms-0.5', item: 'pr-1' },
+    icon: 'small',
   },
   medium: {
-    box: 'min-h-9 px-3',
+    box: 'min-h-9 px-1',
     text: 'text-200 leading-200 tracking-25 m:text-100 m:leading-100 m:tracking-50',
     radius: 'rounded-small',
     framed: 'min-h-9 px-3 py-2',
+    control: 'pl-2',
+    leading: { group: 'gap-2', icon: 'pl-2', prefix: 'pl-2' },
+    trailing: { group: 'ms-2', item: 'pr-2' },
+    icon: 'medium',
   },
   large: {
-    box: 'min-h-12 px-3',
+    box: 'min-h-12 px-1',
     text: 'text-200 leading-200 tracking-25',
     radius: 'rounded-medium',
-    framed: 'min-h-12 p-3',
+    framed: 'min-h-12 px-3 py-2',
+    control: 'pl-2',
+    leading: { group: 'gap-2', icon: 'pl-2', prefix: 'pl-2' },
+    trailing: { group: 'ms-2', item: 'pr-2' },
+    icon: 'large',
   },
 };
 
@@ -119,10 +154,10 @@ const ALIGN: Record<Axis<'textAlign'>, string> = {
   right: 'text-right',
 };
 
-// The box is the field: the affixes sit inside its border and its flex row
-// spaces them, so the control carries no frame and no side padding.
-const BOX = `relative flex w-full cursor-text items-center gap-2 text-surface-gray-muted ${INPUT_FILL}`;
-const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent p-0 ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
+// The box is the field: the parts sit inside its border, in one row with no
+// gap of its own — each part carries its spacing, as in Figma.
+const BOX = `relative flex w-full cursor-text flex-row items-center whitespace-nowrap text-surface-gray-muted ${INPUT_FILL}`;
+const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 pr-0 ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
 
 // In an InputGroup the member draws the same frame it has alone — the
 // group rounds the corners it holds — and overlaps its neighbours' by a
@@ -173,7 +208,7 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
     },
     box: `${BOX} ${look.box} ${look.text}`,
     // Inputs do not inherit letter-spacing: the control takes the type too.
-    control: `${CONTROL} ${look.text} ${ALIGN[props.textAlign ?? 'left']}`,
+    control: `${CONTROL} ${look.control} ${look.text} ${ALIGN[props.textAlign ?? 'left']}`,
     frame: { solo: `${FRAME.solo} ${look.radius}`, grouped: FRAME.grouped },
     focus: FOCUS,
     // Blade: error overrides the border (thick negative) in every state but
@@ -188,7 +223,17 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
         success: '',
       },
     },
-    affix: 'flex shrink-0 items-center',
+    leading: {
+      group: `flex shrink-0 flex-row items-center ${look.leading.group}`,
+      icon: `flex shrink-0 items-center ${look.leading.icon}`,
+      prefix: `flex shrink-0 items-center ${look.leading.prefix}`,
+      slot: 'flex shrink-0 items-center',
+    },
+    trailing: {
+      group: `flex shrink-0 flex-row items-center ${look.trailing.group}`,
+      item: `flex shrink-0 items-center ${look.trailing.item}`,
+    },
+    iconSize: look.icon,
     clear: resolveIconButton({ size: 'medium' }).root,
     footer: 'flex items-start justify-between gap-2',
     counter: `ms-auto me-0.5 flex shrink-0 ${props.size === 'large' ? 'mt-2' : 'mt-1'}`,

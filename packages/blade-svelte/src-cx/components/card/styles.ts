@@ -29,7 +29,7 @@ export type CardStyleResolver<P> = (props: P, isSelected?: boolean) => CardClass
 /** The blade taxonomy as data. */
 export const CARD_AXES = {
   variant: ['primary', 'secondary'],
-  padding: ['spacing.0', 'spacing.3', 'spacing.4', 'spacing.5', 'spacing.7'],
+  padding: ['spacing.5', 'spacing.7'],
   color: INTENTS,
 } as const;
 
@@ -42,16 +42,16 @@ export interface CardStyleProps {
    * @default 'primary'
    */
   variant?: Axis<'variant'>;
-  /** Around everything in the card: 0, 8, 12, 16 or 24px. @default 'spacing.7' */
+  /**
+   * Around everything in the card: Blade DSL's Card (Figma) is 24px in; 16px
+   * is its metric card's. @default 'spacing.7'
+   */
   padding?: Axis<'padding'>;
   /** A tinted card (v2's MagicCard tones); unset keeps the variant's surface. */
   color?: Axis<'color'>;
 }
 
 const PADDING: Record<Axis<'padding'>, string> = {
-  'spacing.0': 'p-0',
-  'spacing.3': 'p-2',
-  'spacing.4': 'p-3',
   'spacing.5': 'p-4',
   'spacing.7': 'p-6',
 };

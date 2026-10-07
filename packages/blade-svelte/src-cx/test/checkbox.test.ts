@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import CheckboxHarness from './fixtures/CheckboxHarness.svelte';
-import { expectClass, expectMarkup, expectNoClass } from './classes';
+import { expectClass, expectGlyph, expectMarkup, expectNoClass } from './classes';
+import { InfoIcon } from '../icons';
 
 const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 const indicator = (control: HTMLElement): HTMLElement => control.nextElementSibling as HTMLElement;
@@ -117,7 +118,7 @@ describe('Checkbox standalone', () => {
     // led by its icon (FieldHint): the line carries the id.
     const line = error.parentElement!;
     expect(control.getAttribute('aria-describedby')).toBe(`${getByText('Help').id} ${line.id}`);
-    expectMarkup(line, '<svg');
+    expectGlyph(line, InfoIcon);
     expect(control.getAttribute('aria-invalid')).toBe('true');
     expectClass(indicator(control), 'border-interactive-negative-default');
     expectClass(error, 'text-feedback-negative-intense');
@@ -188,5 +189,12 @@ describe('Checkbox in a Form', () => {
 
     expect(onSubmit).toHaveBeenCalledTimes(1);
     expect(onSubmit.mock.calls[0][0]).toEqual({ consent: 1 });
+  });
+
+  it("small sits 3px down, as Figma centres the 12px box on the 17px line", async () => {
+    const { resolveCheckbox } = await import('../components/checkbox/styles');
+    expect(resolveCheckbox({ size: 'small' }).indicator.root).toContain('mx-0.5 mb-0.5 [margin-top:3px]');
+    expect(resolveCheckbox({ size: 'medium' }).indicator.root).toContain('m-0.5');
+    expect(resolveCheckbox({ size: 'large' }).indicator.root).toContain('m-0.5');
   });
 });

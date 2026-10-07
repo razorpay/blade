@@ -14,7 +14,6 @@
   let {
     isOpen = $bindable(false),
     variant,
-    size,
     pace,
     isDraggable,
     ...modal
@@ -22,7 +21,6 @@
 
   const style = useComponentDefaults('BottomSheet', () => ({
     variant,
-    size,
     pace,
     isDraggable,
   }));
@@ -32,7 +30,6 @@
   bind:isOpen
   {...modal}
   variant={style.current.variant ?? 'sheet'}
-  size={style.current.size}
   pace={style.current.pace}
   isDraggable={style.current.isDraggable}
 />

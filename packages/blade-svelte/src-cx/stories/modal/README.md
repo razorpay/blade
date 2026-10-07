@@ -30,8 +30,8 @@ field's country picker follows them.
 
 `<BottomSheet>` is Modal with `variant` defaulting to `sheet`, passed
 explicitly, so a provider's Modal defaults never change it. `drawer` is
-Blade's Drawer: full height on the right edge, sliding in from it, 90% wide
-on phones, 375px from 480px, 420px from 768px (`size` does not apply);
+Blade's Drawer: full height on the right edge, sliding in from it,
+24px short of the screen's width on phones, 380px from 768px (`size` does not apply), as Blade DSL's Drawer (Figma);
 `left-drawer` is the same on the left. `<Drawer>` is Modal with `variant`
 defaulting to `drawer`.
 
@@ -65,13 +65,36 @@ it.
 | `onDismiss` | `({ source, close })` on every dismissal — `source` is `cross`, `blur`, `escape`, `back` or `drag` — whether or not it is dismissible. Dismissible: the modal closes right after the handler, and nothing prevents it. Not dismissible: it stays open until the handler (or anything later) calls `close`. Not fired for a snippet's `close` or when the host sets `isOpen = false` |
 | `isDismissible` | Default `true`. Whether a dismissal closes it by itself, and whether the close button shows |
 | `role` | `modal` (default) or `alertdialog` |
-| `title`, `subtitle`, `header` | `title` is a string (Blade's 16px semibold header type) or a snippet, and names the modal either way; `subtitle` is one muted line under it (Blade's body small) and describes the modal (`aria-describedby`); `header({ title, subtitle, close })` lays out the header: it receives the drawn title and subtitle as snippets and places them among its own content — a back button before the title, a badge beside it, a line under them. Render `title`, which names the modal. Without `header` the two render on their own |
+| `title`, `subtitle`, `header` | `title` is a string (Figma's Heading/SmallSemibold, 18/24, on a modal or drawer; Body/LargeSemibold, 16/24, on a sheet) or a snippet, and names the modal either way; `subtitle` is one muted line under it (Blade's body small) and describes the modal (`aria-describedby`); `header({ title, subtitle, close })` lays out the header: it receives the drawn title and subtitle as snippets and places them among its own content — a back button before the title, a badge beside it, a line under them. Render `title`, which names the modal. Without `header` the two render on their own |
 | `chrome` | Things that hang off the panel; see Chrome |
 | `body`, `children` | `body` renders in the component's padded, scrolling container; `children` render raw, owning their box, and win when both are given |
 | `footer` | The component's padded footer: actions in a row |
 | `{ close }` | `header`, `body`, `children`, `footer` and `chrome` all receive it for their own actions (Cancel, Done, a back button); it closes without a dismissal |
 | `closeLabel` | The close button's name, default `Close`. The button shows while the modal is dismissible, as in Blade: in the header, or floating at the top edge when there is none |
 | `accessibilityLabel`, `testID`, `class` | The only escape hatches; `class` is merged last onto the panel |
+
+| `icon`, `leading` | Before the title, 8px from it: a glyph on the title's 28px first line (Modal only), or an asset or avatar (Modal and BottomSheet) |
+| `titleSuffix` | Beside the title, 8px from it: a Counter or a Badge |
+| `trailing({ close })` | After the title block, 16px clear of it and of the close button: a Badge, text, a Link or an action (Modal and BottomSheet); a Link or an action (Drawer) |
+
+### Why `icon`, `leading`, `titleSuffix` and `trailing` are props
+
+Blade DSL's headers (Figma's _Modal Header, _Bottom Sheet Header, _Drawer
+Header) space each part differently, so the header places them itself:
+
+| Part | Gap | Box |
+| --- | --- | --- |
+| leading item → title | 8px | glyph 20px on the 28px title line; asset 32px; avatar up to 48px |
+| title → suffix | 8px | centred on the 28px title line |
+| title block → trailing item | 16px | 28px tall |
+| trailing item → close button | 16px | the close button is 20px |
+
+The header itself is 16px in (20px above and beside from `m`) and 16px
+above its hairline on a modal, 12px under the handle strip on a sheet, and
+20px all round with no hairline on a drawer. The footer's actions are 16px
+under their hairline (20px on a drawer), 16px in (20px from `m`). A Drawer's
+leading item belongs to a detail block under its title, a pattern not
+ported yet. A BottomSheet has no `size`: from `m` it is the small column.
 
 ## Layers
 

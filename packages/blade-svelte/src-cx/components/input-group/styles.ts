@@ -34,11 +34,15 @@ export interface InputGroupClasses {
 /** Style props in, the parts out. */
 export type InputGroupStyleResolver<P> = (props: P) => InputGroupClasses;
 
-/** No style axes yet: a member's width is its own `span`. */
+/** The blade taxonomy as data: Blade DSL's Input Group (Figma) sizes. */
+export const INPUT_GROUP_AXES = {
+  size: ['medium', 'large'],
+} as const;
+
 /** Blade's InputGroup sizes its members and its label and hint. */
 export interface InputGroupStyleProps {
   /** Every member's size, and the label's and hint's. @default 'medium' */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: (typeof INPUT_GROUP_AXES.size)[number];
 }
 
 // The box is a 12-track grid (12 divides by 2, 3 and 4), so a member's

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import type { HintContent } from '../../runes/form/hint';
-  import { check, info } from '../icons';
+  import { CheckIcon, InfoIcon } from '../../icons';
   import Icon from '../icon/Icon.svelte';
   import {
     resolveFieldHint,
@@ -29,11 +29,11 @@
 <span class={classes.root} {id}>
   {#if tone === 'error'}
     <span class={classes.icon}>
-      <Icon source={info} size={iconSize} color="danger" />
+      <Icon source={InfoIcon} size={iconSize} color="danger" />
     </span>
   {:else if tone === 'success'}
     <span class={classes.icon}>
-      <Icon source={check} size={iconSize} color="success" />
+      <Icon source={CheckIcon} size={iconSize} color="success" />
     </span>
   {/if}
   <span class={classes.text}>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getCollapsible } from '../../runes/collapsible/context';
   import Icon from '../icon/Icon.svelte';
-  import { chevronDown } from '../icons';
+  import { ChevronDownIcon } from '../../icons';
   import { resolveCollapsibleChevron } from './styles';
 
   // Blade's CollapsibleChevronIcon: points down while collapsed, flips while
@@ -18,5 +18,5 @@
 </script>
 
 <span class={turn} aria-hidden="true">
-  <Icon source={chevronDown} {size} />
+  <Icon source={ChevronDownIcon} {size} />
 </span>

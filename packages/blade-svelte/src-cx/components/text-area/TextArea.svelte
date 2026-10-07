@@ -7,7 +7,7 @@
   import FieldLabel from '../shared/FieldLabel.svelte';
   import FieldCounter from '../shared/FieldCounter.svelte';
   import Icon from '../icon/Icon.svelte';
-  import { close } from '../icons';
+  import { CloseIcon } from '../../icons';
   import { hintToneOf } from '../shared/field';
   import { pickHintText } from '../../runes/form/hint';
   import { createFieldLine } from '../../runes/form/field-line.svelte';
@@ -196,7 +196,7 @@
       disabled={isDisabled || undefined}
       onclick={clearField}
     >
-      <Icon source={close} size="medium" />
+      <Icon source={CloseIcon} size="medium" />
     </button>
   {/if}
   </div>

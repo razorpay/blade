@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Badge } from '../../components/badge';
   import type { BadgeStyleProps } from '../../components/badge';
-  import { check } from '../../components/icons';
+  import { CheckIcon } from '../../icons';
 
   interface Props extends BadgeStyleProps {
     label?: string;
@@ -12,6 +12,6 @@
   let { label = 'Paid', withIcon = false, class: className, ...style }: Props = $props();
 </script>
 
-<Badge {...style} icon={withIcon ? check : undefined} testID="badge" class={className}>
+<Badge {...style} icon={withIcon ? CheckIcon : undefined} testID="badge" class={className}>
   {label}
 </Badge>

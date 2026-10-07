@@ -56,10 +56,33 @@ describe('Progress (preset component)', () => {
     });
     const ring = getByTestId('ring');
     const [track, arc] = Array.from(ring.querySelectorAll('circle'));
-    expect(ring.className).toContain('w-10');
+    expect(ring.className).toContain('w-[72px] h-[72px]');
     expect(ring.style.getPropertyValue('--progress')).toBe('0.75');
     expect(track.getAttribute('class')).toContain('opacity-100');
     expect(arc.getAttribute('pathLength')).toBe('1');
     expect(arc.getAttribute('class')).toContain('stroke-dashoffset');
+  });
+
+  it.each([
+    ['small', 'w-6 h-6', '15.66', '4.68'],
+    ['medium', 'w-12 h-12', '16.2', '3.6'],
+    ['large', 'w-[72px] h-[72px]', '16.38', '3.24'],
+  ] as const)("a %s ring is Figma's circular size and thickness", (size, box, r, stroke) => {
+    const { getByTestId } = render(Progress, { props: { type: 'ring', size, value: 50, testID: 'ring' } });
+    const ring = getByTestId('ring');
+    expect(ring.className).toContain(box);
+    for (const circle of ring.querySelectorAll('circle')) {
+      expect(circle.getAttribute('r')).toBe(r);
+      expect(circle.getAttribute('stroke-width')).toBe(stroke);
+    }
+  });
+
+  it.each([
+    ['small', 'h-0.5'],
+    ['medium', 'h-1'],
+    ['large', 'h-1'],
+  ] as const)("a %s bar is Figma's linear thickness", (size, height) => {
+    const { getByTestId } = render(Progress, { props: { type: 'bar', size, value: 50, testID: 'bar' } });
+    expect(getByTestId('bar').className).toContain(height);
   });
 });

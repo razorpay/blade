@@ -32,8 +32,10 @@ export interface PopoverContentClasses {
   layout: string;
   /** The header and the content, 4px apart. */
   main: string;
-  /** Title leading, title and close button in a row. */
+  /** The title row and the close button, 12px apart. */
   header: string;
+  /** The title's leading item and the title, 8px apart, 12px before the close. */
+  titleRow: string;
   title: string;
   /** The close button beside the title. */
   close: string;
@@ -81,15 +83,18 @@ export const resolvePopover = (_props: PopoverStyleProps = {}): PopoverLook => (
   gap: 16,
   arrow: ARROW,
   arrowSide: ARROW_SIDE,
-  // Blade's PopoverContent: 16px in, the footer 16px under; the header 4px
-  // over the content; leading, title and close 8px apart, the title large
-  // semibold with 12px after it.
+  // Blade's PopoverContent (and Blade DSL's Popover in Figma): 16px in, the
+  // footer 16px under; the header 4px over the content. The header is
+  // _Popover Title — the leading item (a 20px icon, or an asset) 8px before
+  // the title, the title large semibold with 12px after it — then 12px to
+  // the close button: 24px from the title's end to the close.
   content: {
     layout: 'flex flex-col gap-4 p-4',
     main: 'flex flex-col gap-1',
-    header: 'flex items-center gap-2',
+    header: 'flex items-center gap-3',
+    titleRow: 'flex min-w-0 items-center gap-2 pr-3',
     title:
-      'm-0 pr-3 font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+      'm-0 font-text font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
     close: `ms-auto ${CLOSE}`,
     floatingClose: `absolute top-3 right-3 z-1 rounded-max p-2 ${CLOSE}`,
   },

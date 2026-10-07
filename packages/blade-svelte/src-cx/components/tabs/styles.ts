@@ -26,6 +26,8 @@ export interface TabsClasses {
   label: string;
   /** The glyph before the label. */
   icon: IconStyleProps;
+  /** The box a `leading` asset sits in: the icon's size. */
+  leading: string;
   /** The picked tab's marker; absent when the tab fills itself (filled, vertical). */
   indicator?: string;
   panel: string;
@@ -61,14 +63,15 @@ type Size = Axis<'size'>;
 // which the repo's prettier cannot parse yet).
 const bySize = (map: Record<Size, string>): Record<Size, string> => map;
 
-// Blade's TabItem (tabTokens.ts): the label body medium (large at large),
-// medium weight, letter-spaced; the glyph 16px (20px at large), 8px from
-// the label; colours per state — picked `interactive.text.gray.normal`,
+// Blade's TabItem (tabTokens.ts, and Blade DSL's _Tabs/ Tab Item in Figma):
+// the label body medium (large at large), medium weight, letter-spaced; the
+// leading item (an icon, or an asset in its 16px box, 20px at large) and the
+// trailing item each 8px from the label — one flat row with one gap; colours per state — picked `interactive.text.gray.normal`,
 // unpicked `…muted`, `…subtle` on hover, disabled greyed; everything moves
 // at gentle/standard. Focus is the inset 4px `surface.border.primary.muted`
 // ring over the `interactive.background.gray.default` fill.
 const TAB =
-  'relative flex shrink-0 cursor-pointer items-center gap-2 whitespace-nowrap font-text font-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
+  'relative flex shrink-0 flex-row cursor-pointer items-center gap-2 whitespace-nowrap font-text font-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
 const LABEL: Record<Size, string> = {
   small: 'text-100 leading-100 tracking-50',
   medium: 'text-100 leading-100 tracking-50',
@@ -78,6 +81,11 @@ const ICON: Record<Size, IconStyleProps> = {
   small: { size: 'medium' },
   medium: { size: 'medium' },
   large: { size: 'large' },
+};
+const LEADING: Record<Size, string> = {
+  small: 'flex shrink-0 items-center justify-center w-4 h-4',
+  medium: 'flex shrink-0 items-center justify-center w-4 h-4',
+  large: 'flex shrink-0 items-center justify-center w-5 h-5',
 };
 // Each state names its own fill: `cx` resolves no conflicts, so the base
 // sets none (the preflight already zeroes the button's border).
@@ -93,9 +101,11 @@ const TEXT = {
 // tab's hover; the picked tab is marked by the sliding indicator in
 // `interactive.border.neutral.highlighted`. Bordered adds the
 // `surface.border.gray.muted` track under the row (beside the column).
+// Blade DSL's Tabs (Figma) spaces horizontal tabs per size, not per
+// breakpoint: 24px at small, 32px at medium and large.
 const BORDERED = {
   horizontal: {
-    list: 'flex gap-6 m:gap-8',
+    list: bySize({ small: 'flex gap-6', medium: 'flex gap-8', large: 'flex gap-8' }),
     tab:
       'border-b-thicker border-solid border-transparent px-0 focus-visible:border-transparent focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
     pad: bySize({
@@ -109,7 +119,11 @@ const BORDERED = {
     track: 'border-b-thin border-solid border-surface-gray-muted',
   },
   vertical: {
-    list: 'flex flex-col items-start',
+    list: bySize({
+      small: 'flex flex-col items-start',
+      medium: 'flex flex-col items-start',
+      large: 'flex flex-col items-start',
+    }),
     tab:
       'w-full border-l-thick border-solid border-transparent px-3 focus-visible:rounded-medium focus-visible:bg-interactive-gray-default',
     pad: bySize({
@@ -172,6 +186,7 @@ export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
     root: isVertical ? 'flex w-full flex-row' : 'flex w-full flex-col',
     label: LABEL[size],
     icon: ICON[size],
+    leading: LEADING[size],
     panel: 'min-w-0 flex-1 outline-none',
   };
 
@@ -209,7 +224,7 @@ export const resolveTabs: TabsStyleResolver<TabsStyleProps> = (props = {}) => {
   return {
     ...base,
     listBox: `relative shrink-0 ${isVertical ? '' : 'overflow-x-auto'} ${track}`.trim(),
-    list: axis.list,
+    list: axis.list[size],
     tab: `${TAB} ${axis.tab} ${axis.pad[size]} ${
       isFullWidthTabItem && !isVertical ? 'min-w-0 flex-1 justify-center' : ''
     }`.trim(),

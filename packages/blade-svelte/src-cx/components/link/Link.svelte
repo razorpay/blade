@@ -31,8 +31,10 @@
   }
 
   interface CommonProps {
+    /** Before the text (Figma's leading icon); alone, it is the link and needs a name. */
     icon?: IconSource;
-    iconPosition?: 'leading' | 'trailing';
+    /** After the text (Figma's trailing icon); both may show. */
+    trailingIcon?: IconSource;
     /** Before navigation; `event.preventDefault()` cancels it. */
     onClick?: (event: MouseEvent) => void;
     isDisabled?: boolean;
@@ -55,7 +57,7 @@
     rel,
     download,
     icon,
-    iconPosition = 'leading',
+    trailingIcon,
     onClick,
     isDisabled = false,
     accessibilityLabel,
@@ -92,9 +94,10 @@
 </script>
 
 {#snippet glyph(side: 'leading' | 'trailing')}
-  {#if icon && iconPosition === side}
+  {@const source = side === 'leading' ? icon : trailingIcon}
+  {#if source}
     <span class={classes.iconSlot[side]}>
-      <Icon source={icon} {...classes.icon} />
+      <Icon {source} {...classes.icon} />
     </span>
   {/if}
 {/snippet}

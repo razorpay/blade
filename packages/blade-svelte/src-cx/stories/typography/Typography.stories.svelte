@@ -2,9 +2,13 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import readme from './README.md?raw';
   import meta from './index';
+  import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
   import TextStory from './Text.svelte';
+  import TextSource from './Text.svelte?raw';
   import HeadingStory from './Heading.svelte';
+  import HeadingSource from './Heading.svelte?raw';
   import ScaleStory from './Scale.svelte';
+  import ScaleSource from './Scale.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/Typography",
@@ -19,8 +23,8 @@
 <Story
   name="Text"
   args={meta.stories.Text.args}
-  argTypes={meta.stories.Text.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Text.description } } }}
+  argTypes={storyArgTypes(meta, 'Text') as never}
+  parameters={{ docs: { description: { story: meta.stories.Text.description }, source: exampleSource(TextSource) }, controls: { disable: hasNoControls(meta, 'Text') } }}
 >
   {#snippet template(args)}
     <TextStory args={args as never} />
@@ -30,8 +34,8 @@
 <Story
   name="Heading"
   args={meta.stories.Heading.args}
-  argTypes={meta.stories.Heading.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Heading.description } } }}
+  argTypes={storyArgTypes(meta, 'Heading') as never}
+  parameters={{ docs: { description: { story: meta.stories.Heading.description }, source: exampleSource(HeadingSource) }, controls: { disable: hasNoControls(meta, 'Heading') } }}
 >
   {#snippet template(args)}
     <HeadingStory args={args as never} />
@@ -41,8 +45,8 @@
 <Story
   name="Scale"
   args={meta.stories.Scale.args}
-  argTypes={meta.stories.Scale.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Scale.description } } }}
+  argTypes={storyArgTypes(meta, 'Scale') as never}
+  parameters={{ docs: { description: { story: meta.stories.Scale.description }, source: exampleSource(ScaleSource) }, controls: { disable: hasNoControls(meta, 'Scale') } }}
 >
   {#snippet template(args)}
     <ScaleStory args={args as never} />

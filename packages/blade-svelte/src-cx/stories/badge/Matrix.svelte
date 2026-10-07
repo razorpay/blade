@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Badge, BADGE_AXES, icons } from '../../index';
+  import { Badge, BADGE_AXES } from '../../index';
+  import { CheckCircleIcon } from '../../icons';
 </script>
 
 <div class="grid gap-3">
@@ -12,7 +13,7 @@
   {/each}
   <div class="flex flex-wrap items-center gap-2">
     {#each BADGE_AXES.size as size (size)}
-      <Badge {size} color="positive" icon={icons.checkCircle}>{size}</Badge>
+      <Badge {size} color="positive" icon={CheckCircleIcon}>{size}</Badge>
     {/each}
   </div>
   <!-- One line: a label cut off by its container carries its full text as a title. -->

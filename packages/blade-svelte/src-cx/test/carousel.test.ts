@@ -27,7 +27,12 @@ describe('Carousel', () => {
     const { getByRole } = render(CarouselHarness, { props: { onChange } });
     const third = getByRole('button', { name: 'Offer 3 of 3' });
     expectClass(third, 'bg-overlay-moderate');
+    // Figma's indicators: 6px dots, the current one an 18px pill, 4px apart.
+    expectClass(third, 'w-1.5');
+    expectClass(third, 'h-1.5');
+    expectClass(third.parentElement, 'gap-1');
     return fireEvent.click(third).then(() => {
+      expectClass(third, 'w-[18px]');
       expect(onChange).toHaveBeenCalledWith(2);
       expect(third.getAttribute('aria-current')).toBe('true');
       expectClass(third, 'icon-interactive-gray-muted');

@@ -21,6 +21,7 @@
   const {
     content: text,
     icon,
+    leading,
     action,
     closeLabel = 'Dismiss toast',
     onDismissButtonClick,
@@ -43,7 +44,9 @@
   aria-live={classes.role === 'alert' ? 'assertive' : 'polite'}
   data-testid={testID}
 >
-  <span class={classes.icon}><Icon source={glyph} /></span>
+  <span class={classes.icon}>
+    {#if leading}{@render leading()}{:else}<Icon source={glyph} />{/if}
+  </span>
   <span class={classes.body}><span class={classes.content}>{text}</span></span>
   <span class={classes.trailing}>
     {#if action}

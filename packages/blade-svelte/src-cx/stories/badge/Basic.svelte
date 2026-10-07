@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Badge, icons, type BadgeStyleProps } from '../../index';
+  import { Badge, type BadgeStyleProps } from '../../index';
+  import { CheckCircleIcon } from '../../icons';
 
   interface Props {
     args: BadgeStyleProps & { content?: string; withIcon?: boolean };
@@ -12,7 +13,7 @@
   color={args.color}
   emphasis={args.emphasis}
   size={args.size}
-  icon={args.withIcon ? icons.checkCircle : undefined}
+  icon={args.withIcon ? CheckCircleIcon : undefined}
 >
   {args.content}
 </Badge>

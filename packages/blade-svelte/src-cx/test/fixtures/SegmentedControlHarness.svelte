@@ -7,6 +7,7 @@
     SegmentedControlItem,
     type SegmentedControlStyleProps,
   } from '../../components/segmented-control';
+  import { WalletIcon } from '../../icons';
 
   interface Props {
     inForm?: boolean;
@@ -38,8 +39,7 @@
     iconOnly = false,
   }: Props = $props();
 
-  const GLYPH =
-    '<svg viewBox="0 0 16 16" data-glyph="wallet"><path d="M0 0h16v16H0z" fill="currentColor"/></svg>';
+  const GLYPH = WalletIcon;
 </script>
 
 {#snippet control(required: boolean)}

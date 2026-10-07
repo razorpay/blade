@@ -1,6 +1,6 @@
 <script lang="ts">
   import Alert from '../../components/alert/Alert.svelte';
-  import { warning } from '../../components/icons';
+  import { AlertTriangleIcon } from '../../icons';
 
   interface Props {
     isOpen?: boolean;
@@ -24,7 +24,7 @@
   {onDismiss}
   title="Payment failed"
   description="Try another method"
-  icon={warning}
+  icon={AlertTriangleIcon}
   testID="problem"
   class="mt-2"
 />

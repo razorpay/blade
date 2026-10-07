@@ -12,6 +12,11 @@
     value: string;
     /** A glyph before the label; alone, it needs `accessibilityLabel`. */
     icon?: IconSource;
+    /**
+     * Before the label in place of an `icon`: an asset (a logo, an avatar) in
+     * the icon's box. Receives the tab's state.
+     */
+    leading?: Snippet<[TabItemState]>;
     /** After the label: a Badge or a Counter, which may follow the tab's state. */
     trailing?: Snippet<[TabItemState]>;
     /** @default false */
@@ -30,6 +35,7 @@
   let {
     value,
     icon,
+    leading,
     trailing,
     isDisabled = false,
     href,
@@ -85,6 +91,8 @@
 >
   {#if icon}
     <Icon source={icon} {...classes.icon} />
+  {:else if leading}
+    <span class={classes.leading}>{@render leading(snippetState)}</span>
   {/if}
   {#if children}
     <span class={classes.label}>{@render children(snippetState)}</span>

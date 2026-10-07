@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import PopoverHarness from './fixtures/PopoverHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectGlyph } from './classes';
+import { InfoIcon } from '../icons';
 
 describe('Popover', () => {
   it('the trigger snippet reads the open state and wires nothing', () => {
@@ -193,6 +194,24 @@ describe('Popover, as Blade', () => {
     expect(getByRole('button', { name: 'Settle' })).toBeTruthy();
     await fireEvent.click(getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(queryByTestId('panel')).toBeNull());
+  });
+
+  it("titleIcon draws a 20px glyph before the title, in Figma's header: 8px to the title, 24px to the close", async () => {
+    const { getByRole, getByTestId, queryByTestId } = render(
+      (await import('./fixtures/PopoverTitledHarness.svelte')).default,
+      { props: { withIcon: true } },
+    );
+    await fireEvent.click(getByRole('button', { name: 'Settlement' }));
+    const panel = await waitFor(() => getByTestId('panel'));
+    const title = panel.querySelector('p')!;
+    const row = title.parentElement!;
+    expectGlyph(row, InfoIcon);
+    expectClass(row.querySelector('[data-icon]') as HTMLElement, 'w-5 h-5');
+    // The icon wins over the titleLeading asset.
+    expect(queryByTestId('leading')).toBeNull();
+    expectClass(row, 'gap-2');
+    expectClass(row, 'pr-3');
+    expectClass(row.parentElement!, 'gap-3');
   });
 
   it('opens on hover without a close button, and stays open over the panel', async () => {

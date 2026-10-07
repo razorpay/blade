@@ -1,6 +1,12 @@
 import type { AxisValue } from '../../axes';
 import type { IconSource } from '../../runes/icon/source';
-import { alertOctagon, alertTriangle, checkCircle, close, info } from '../icons';
+import {
+  AlertOctagonIcon,
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  CloseIcon,
+  InfoIcon,
+} from '../../icons';
 import { INTENTS } from '../shared/intent';
 
 /**
@@ -81,12 +87,12 @@ const ICON_TONE: Record<Color, string> = {
 };
 
 const DEFAULT_ICON: Record<Color, IconSource> = {
-  neutral: info,
-  information: info,
-  positive: checkCircle,
-  notice: alertTriangle,
-  negative: alertOctagon,
-  primary: info,
+  neutral: InfoIcon,
+  information: InfoIcon,
+  positive: CheckCircleIcon,
+  notice: AlertTriangleIcon,
+  negative: AlertOctagonIcon,
+  primary: InfoIcon,
 };
 
 const TEXT: Record<Emphasis, { title: string; description: string; close: string }> = {
@@ -125,16 +131,19 @@ export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (props, hasTitl
       emphasis === 'intense' ? 'icon-surface-static-white-normal' : ICON_TONE[color]
     }`,
     defaultIcon: DEFAULT_ICON[color],
-    text: 'flex min-w-0 flex-1 flex-col pl-2 pr-1',
+    // Blade DSL's full-width Alert (Figma): the icon 8px before the text,
+    // the text 12px before the dismiss button.
+    text: 'flex min-w-0 flex-1 flex-col pl-2 pr-3',
     title: `m-0 mb-1 text-100 leading-100 font-semibold ${text.title}`,
     description: `m-0 text-75 leading-75 ${hasTitle ? '' : 'mt-0.5'} ${text.description}`.replace(
       /\s+/g,
       ' ',
     ),
-    close: `flex shrink-0 items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${
+    // The dismiss button stays at the top, as in Blade, while the row centres.
+    close: `flex shrink-0 self-start items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${
       hasTitle ? '' : 'mt-0.5'
     } ${text.close}`,
-    closeIcon: close,
+    closeIcon: CloseIcon,
     role: URGENT.includes(color) ? 'alert' : 'status',
     live: color === 'notice' ? 'polite' : undefined,
     slide: 200,

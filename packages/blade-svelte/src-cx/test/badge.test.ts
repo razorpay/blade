@@ -18,7 +18,6 @@ describe('Badge', () => {
   });
 
   it.each([
-    ['xsmall', 'h-3.5', 'px-1', 'mx-0.5', 'text-25'],
     ['small', 'h-4', 'px-1', 'mx-0.5', 'text-25'],
     ['medium', 'h-5', 'px-1', 'mx-1', 'text-75'],
     ['large', 'h-6', 'px-2', 'mx-1', 'text-75'],

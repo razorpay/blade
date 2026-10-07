@@ -2,11 +2,17 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import readme from './README.md?raw';
   import meta from './index';
+  import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
   import BasicStory from './Basic.svelte';
+  import BasicSource from './Basic.svelte?raw';
   import BusyCausesStory from './BusyCauses.svelte';
+  import BusyCausesSource from './BusyCauses.svelte?raw';
   import ValidateStory from './Validate.svelte';
+  import ValidateSource from './Validate.svelte?raw';
   import AutoPressStory from './AutoPress.svelte';
+  import AutoPressSource from './AutoPress.svelte?raw';
   import MatrixStory from './Matrix.svelte';
+  import MatrixSource from './Matrix.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/Button",
@@ -21,8 +27,8 @@
 <Story
   name="Basic"
   args={meta.stories.Basic.args}
-  argTypes={meta.stories.Basic.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Basic.description } } }}
+  argTypes={storyArgTypes(meta, 'Basic') as never}
+  parameters={{ docs: { description: { story: meta.stories.Basic.description }, source: exampleSource(BasicSource) }, controls: { disable: hasNoControls(meta, 'Basic') } }}
 >
   {#snippet template(args)}
     <BasicStory args={args as never} />
@@ -32,8 +38,8 @@
 <Story
   name="Busy causes"
   args={meta.stories.BusyCauses.args}
-  argTypes={meta.stories.BusyCauses.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.BusyCauses.description } } }}
+  argTypes={storyArgTypes(meta, 'BusyCauses') as never}
+  parameters={{ docs: { description: { story: meta.stories.BusyCauses.description }, source: exampleSource(BusyCausesSource) }, controls: { disable: hasNoControls(meta, 'BusyCauses') } }}
 >
   {#snippet template(args)}
     <BusyCausesStory args={args as never} />
@@ -43,8 +49,8 @@
 <Story
   name="Validate before press"
   args={meta.stories.Validate.args}
-  argTypes={meta.stories.Validate.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Validate.description } } }}
+  argTypes={storyArgTypes(meta, 'Validate') as never}
+  parameters={{ docs: { description: { story: meta.stories.Validate.description }, source: exampleSource(ValidateSource) }, controls: { disable: hasNoControls(meta, 'Validate') } }}
 >
   {#snippet template(args)}
     <ValidateStory args={args as never} />
@@ -54,8 +60,8 @@
 <Story
   name="Auto press"
   args={meta.stories.AutoPress.args}
-  argTypes={meta.stories.AutoPress.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.AutoPress.description } } }}
+  argTypes={storyArgTypes(meta, 'AutoPress') as never}
+  parameters={{ docs: { description: { story: meta.stories.AutoPress.description }, source: exampleSource(AutoPressSource) }, controls: { disable: hasNoControls(meta, 'AutoPress') } }}
 >
   {#snippet template(args)}
     <AutoPressStory args={args as never} />
@@ -65,8 +71,8 @@
 <Story
   name="Variant matrix"
   args={meta.stories.Matrix.args}
-  argTypes={meta.stories.Matrix.argTypes}
-  parameters={{ docs: { description: { story: meta.stories.Matrix.description } } }}
+  argTypes={storyArgTypes(meta, 'Matrix') as never}
+  parameters={{ docs: { description: { story: meta.stories.Matrix.description }, source: exampleSource(MatrixSource) }, controls: { disable: hasNoControls(meta, 'Matrix') } }}
 >
   {#snippet template(args)}
     <MatrixStory args={args as never} />

@@ -62,12 +62,13 @@ const meta: StoryMeta = {
       argTypes: {},
     },
     Affixes: {
-      description: 'leading / trailing take text or a snippet.',
+      description:
+        "Figma's slots: leadingIcon, prefix, the leading selector snippet; suffix, trailingIcon, the trailing link snippet. Each kind keeps its own inset and gap.",
       argTypes: {
-        leading: { control: 'text' },
-        trailing: { control: 'text' },
+        prefix: { control: 'text' },
+        suffix: { control: 'text' },
       },
-      args: { leading: '', trailing: '@okaxis' },
+      args: { prefix: '', suffix: '@okaxis' },
     },
     Formatted: {
       description:
@@ -91,7 +92,7 @@ const meta: StoryMeta = {
           control: 'select',
           options: ['current-password', 'new-password', 'off'],
         },
-        size: { control: 'select', options: TEXT_INPUT_AXES.size },
+        size: { control: 'select', options: ['medium', 'large'] },
       },
       args: {
         label: 'Password',
@@ -113,7 +114,7 @@ const meta: StoryMeta = {
         helpText: { control: 'text' },
         isDisabled: { control: 'boolean' },
         showSearchIcon: { control: 'boolean' },
-        size: { control: 'select', options: TEXT_INPUT_AXES.size },
+        size: { control: 'select', options: ['medium', 'large'] },
       },
       args: {
         label: '',
@@ -136,7 +137,7 @@ const meta: StoryMeta = {
         showClearButton: { control: 'boolean' },
         numberOfLines: { control: 'number' },
         maxCharacters: { control: 'number' },
-        size: { control: 'select', options: TEXT_INPUT_AXES.size },
+        size: { control: 'select', options: ['medium', 'large'] },
       },
       args: {
         label: 'Delivery note',

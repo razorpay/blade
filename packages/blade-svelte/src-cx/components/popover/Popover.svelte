@@ -5,7 +5,8 @@
   import type { Placement } from '../../runes/layer/placement';
   import { createPopover } from '../../runes/popover/popover.svelte';
   import Icon from '../icon/Icon.svelte';
-  import { close as closeGlyph } from '../icons';
+  import { CloseIcon } from '../../icons';
+  import type { IconSource } from '../../runes/icon/source';
   import PopoverPanel from './PopoverPanel.svelte';
   import { resolvePopover, type PopoverStyleProps } from './styles';
 
@@ -25,7 +26,9 @@
      * snippet sits in the title's box and inherits its type.
      */
     title?: string | Snippet;
-    /** Before the title: an icon. */
+    /** Before the title: a glyph, drawn at 20px. */
+    titleIcon?: IconSource;
+    /** Before the title in place of `titleIcon`: an asset (a logo, an avatar). */
     titleLeading?: Snippet<[{ close: () => void }]>;
     /** Under the content: actions. `close` is for them. */
     footer?: Snippet<[{ close: () => void }]>;
@@ -52,6 +55,7 @@
     placement = 'top',
     openInteraction = 'click',
     title,
+    titleIcon,
     titleLeading,
     footer,
     closeLabel = 'Close',
@@ -87,7 +91,7 @@
   // Blade shows the close button when a click opened the popover — and so
   // does a hover popover on a device that cannot hover, which a tap opens.
   const hasClose = $derived(!popover.opensOnHover);
-  const hasHeader = $derived(Boolean(title || titleLeading));
+  const hasHeader = $derived(Boolean(title || titleIcon || titleLeading));
 </script>
 
 {#snippet closeButton(className: string)}
@@ -97,7 +101,7 @@
     aria-label={closeLabel}
     onclick={popover.close}
   >
-    <Icon source={closeGlyph} size="medium" />
+    <Icon source={CloseIcon} size="medium" />
   </button>
 {/snippet}
 
@@ -132,12 +136,18 @@
         <div class={parts.main}>
           {#if hasHeader}
             <div class={parts.header}>
-              {@render titleLeading?.({ close: popover.close })}
-              {#if typeof title === 'string' && title}
-                <p id={titleId} class={parts.title}>{title}</p>
-              {:else if title && typeof title !== 'string'}
-                <div id={titleId} class={parts.title}>{@render title()}</div>
-              {/if}
+              <div class={parts.titleRow}>
+                {#if titleIcon}
+                  <Icon source={titleIcon} size="large" />
+                {:else}
+                  {@render titleLeading?.({ close: popover.close })}
+                {/if}
+                {#if typeof title === 'string' && title}
+                  <p id={titleId} class={parts.title}>{title}</p>
+                {:else if title && typeof title !== 'string'}
+                  <div id={titleId} class={parts.title}>{@render title()}</div>
+                {/if}
+              </div>
               {#if hasClose}
                 {@render closeButton(parts.close)}
               {/if}

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Button, Icon, icons, LayerHost, Popover, Text, Tooltip } from '../../index';
+  import { Button, Icon, LayerHost, Popover, Text, Tooltip } from '../../index';
+  import { InfoIcon } from '../../icons';
 
   interface Props {
     args: {
@@ -31,7 +32,7 @@
     {#snippet trigger()}
       <Button variant="secondary" size="small" type="button" testID="trigger">Why a fee?</Button>
     {/snippet}
-    {#snippet titleLeading()}<Icon source={icons.info} size="medium" />{/snippet}
+    {#snippet titleLeading()}<Icon source={InfoIcon} size="medium" />{/snippet}
     {#snippet children()}
       <Text size="small">
         Your bank charges 2% for this card. It goes to the bank, not to the

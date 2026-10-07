@@ -22,6 +22,26 @@ move, and each checkbox is its own tab stop.
 
 `Chip`: `value`, `children` (the label), `icon` or `leading`, `color` (the
 group's when omitted), `isDisabled`, `testID`, `class`. Width limits go
-through `class`.
+through `class`. The label is optional: an icon-only chip is Figma's
+`showLabel` off.
+
+The large chip sets its label in Heading/MediumRegular (the heading face,
+20/26), as Blade DSL's _Chip (Figma) does; the smaller sizes use body type.
+
+## Why `icon` and `leading` are props
+
+The chip places what comes before the label itself, because Figma spaces it
+differently from the label. The label carries 4px on each side, which is the
+gap after a leading icon or asset and also the text's inset when there is
+none. The leading item has no spacing of its own.
+
+| Size | Text only (left / right) | With a leading item (item inset / gap / right) |
+| --- | --- | --- |
+| xsmall, small | 12 / 12 | 8 / 4 / 12 |
+| medium | 16 / 16 | 12 / 4 / 16 |
+| large | 20 / 20 | 16 / 4 / 20 |
+
+`icon` is a glyph the chip sizes and tints (12/12/16/20px). `leading` is an
+asset (an avatar, a flag) for the same slot.
 
 Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.

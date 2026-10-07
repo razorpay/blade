@@ -2,7 +2,9 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import readme from './README.md?raw';
   import meta from './index';
+  import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
   import BasicStory from './Basic.svelte';
+  import BasicSource from './Basic.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/BladeProvider",
@@ -17,7 +19,7 @@
 <Story
   name="Basic"
   args={meta.stories.Basic.args}
-  parameters={{ docs: { description: { story: meta.stories.Basic.description } } }}
+  parameters={{ docs: { description: { story: meta.stories.Basic.description }, source: exampleSource(BasicSource) }, controls: { disable: hasNoControls(meta, 'Basic') } }}
 >
   {#snippet template(args)}
     <BasicStory args={args as never} />

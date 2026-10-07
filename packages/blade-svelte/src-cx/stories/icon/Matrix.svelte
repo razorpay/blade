@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { ICON_AXES, Icon, icons, Text } from '../../index';
+  import { ICON_AXES, Icon, Text } from '../../index';
+  import { LockIcon } from '../../icons';
 </script>
 
 <div class="flex flex-col gap-3">
@@ -18,7 +19,7 @@
         {color}
       </Text>
       {#each ICON_AXES.size as size (size)}
-        <Icon source={icons.lock} {size} {color} />
+        <Icon source={LockIcon} {size} {color} />
       {/each}
     </div>
   {/each}

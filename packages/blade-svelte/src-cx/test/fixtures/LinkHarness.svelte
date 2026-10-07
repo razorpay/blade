@@ -1,7 +1,7 @@
 <script lang="ts">
   import { provideAdapters } from '../../adapters';
   import Link from '../../components/link/Link.svelte';
-  import { chevronDown } from '../../components/icons';
+  import { ChevronDownIcon } from '../../icons';
 
   interface Props {
     href?: string;
@@ -46,8 +46,8 @@
     {target}
     {rel}
     {isDisabled}
-    {iconPosition}
-    icon={withIcon ? chevronDown : undefined}
+    icon={withIcon && iconPosition !== 'trailing' ? ChevronDownIcon : undefined}
+    trailingIcon={withIcon && iconPosition === 'trailing' ? ChevronDownIcon : undefined}
     {color}
     {size}
     {onClick}

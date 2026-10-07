@@ -21,8 +21,6 @@ export interface RadioClasses {
   /** Under the row, lined up with the label: the Radio's `helpText`. */
   support?: string;
   supportText?: string;
-  /** After the label: the Radio's `trailing`. */
-  trailing?: string;
   /** A glyph's size inside the label (a segment's `leading`). */
   iconSize?: 'medium' | 'large';
   /**
@@ -103,29 +101,32 @@ const GAP: Record<Axis<'size'>, string> = {
   large: 'gap-3',
 };
 
-// Per size, as Checkbox (Blade's SelectorTitle, SelectorSupportText and
-// radioTokens.ts `icon`): the circle, its dot (4, 6 or 8px), the title's
-// type, the help text's indent (the circle plus 8px) and caption.
+// Per size, as Checkbox (Blade DSL's Radio in Figma; Blade's SelectorTitle,
+// SelectorSupportText and radioTokens.ts `icon`): the circle in its 2px
+// margin, its dot (4, 6 or 8px), the title's type, the help text's indent
+// (the circle plus 8px) and caption. At small the circle sits 3px from the
+// top (2px elsewhere): with the margin it spans the 17px title line, which
+// puts it where Figma's 1px-padded container does.
 const SIZE: Record<
   Axis<'size'>,
   { circle: string; dot: string; title: string; indent: string; caption: string }
 > = {
   small: {
-    circle: 'w-3 h-3',
+    circle: 'w-3 h-3 mx-0.5 mb-0.5 [margin-top:3px]',
     dot: 'w-1 h-1',
     title: 'text-75 leading-75 tracking-50',
     indent: 'ml-5',
     caption: 'text-50 leading-50',
   },
   medium: {
-    circle: 'w-4 h-4',
+    circle: 'w-4 h-4 m-0.5',
     dot: 'w-1.5 h-1.5',
     title: 'text-100 leading-100 tracking-50',
     indent: 'ml-6',
     caption: 'text-50 leading-50',
   },
   large: {
-    circle: 'w-5 h-5',
+    circle: 'w-5 h-5 m-0.5',
     dot: 'w-2 h-2',
     title: 'text-200 leading-200 tracking-25',
     indent: 'ml-7',
@@ -155,7 +156,7 @@ const UNPICKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
 const DOT = 'rounded-max bg-current';
 const INDICATOR = {
   root:
-    'relative m-0.5 flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
+    'relative flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
   look: {
     default: {
       picked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${PICKED_DISABLED}`,
@@ -201,7 +202,6 @@ export const resolveRadioGroup: RadioGroupStyleResolver<RadioGroupStyleProps> = 
       // A full-width line under the row, so the row wraps it below.
       support: `w-full ${look.indent}`,
       supportText: `font-text font-regular tracking-50 text-surface-gray-muted ${look.caption}`,
-      trailing: 'ml-2 flex items-center',
       indicator: {
         ...INDICATOR,
         root: `${INDICATOR.root} ${look.circle}`,

@@ -71,7 +71,7 @@ const CHECKED_DISABLED =
 const UNCHECKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
 const INDICATOR = {
   root:
-    'relative m-0.5 flex shrink-0 items-center justify-center rounded-xsmall border-solid icon-interactive-on-primary-normal peer-disabled:icon-interactive-static-white-disabled peer-hover:transition-colors peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
+    'relative flex shrink-0 items-center justify-center rounded-xsmall border-solid icon-interactive-on-primary-normal peer-disabled:icon-interactive-static-white-disabled peer-hover:transition-colors peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
   look: {
     default: {
       checked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${CHECKED_DISABLED}`,
@@ -90,10 +90,12 @@ const INDICATOR = {
   },
 };
 
-// Per size (checkboxTokens.ts, checkbox.module.css): the box and its border,
-// the mark, the title's type, and the help text's indent (the box plus
-// 8px) and caption. The error line is the shared FieldHint. The small box nudges its
-// tick 1px down; the dash stays centred (`smallTick`).
+// Per size (Blade DSL's Checkbox in Figma, and checkboxTokens.ts): the box
+// in its 2px margin, its border, the mark, the title's type, and the help
+// text's indent (the box plus 8px) and caption. The error line is the shared
+// FieldHint. At small the box sits 1px lower (3px above, 2px elsewhere), so
+// the 12px box centres on the 17px title line, as Figma's container does;
+// its tick also nudges 1px down, while the dash stays centred (`smallTick`).
 const SIZE: Record<
   Axis<'size'>,
   {
@@ -106,7 +108,7 @@ const SIZE: Record<
   }
 > = {
   small: {
-    box: 'w-3 h-3 border-thick',
+    box: 'w-3 h-3 mx-0.5 mb-0.5 [margin-top:3px] border-thick',
     smallTick: 'pt-px',
     mark: 'w-2 h-2',
     title: 'text-75 leading-75 tracking-50',
@@ -114,7 +116,7 @@ const SIZE: Record<
     caption: 'text-50 leading-50',
   },
   medium: {
-    box: 'w-4 h-4 border-thick',
+    box: 'w-4 h-4 m-0.5 border-thick',
     smallTick: '',
     mark: 'w-3 h-3',
     title: 'text-100 leading-100 tracking-50',
@@ -122,7 +124,7 @@ const SIZE: Record<
     caption: 'text-50 leading-50',
   },
   large: {
-    box: 'w-5 h-5 border-thicker',
+    box: 'w-5 h-5 m-0.5 border-thicker',
     smallTick: '',
     mark: 'w-4 h-4',
     title: 'text-200 leading-200 tracking-25',

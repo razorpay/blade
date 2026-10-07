@@ -1,11 +1,14 @@
 <script lang="ts">
   import { Alert, Button, type AlertStyleProps } from '../../index';
+  import * as glyphs from '../../icons/glyphs';
 
   interface Props {
     args: AlertStyleProps & {
       title?: string;
       description?: string;
       isDismissible?: boolean;
+      /** `default` keeps the colour's icon. */
+      icon: 'default' | keyof typeof glyphs;
     };
   }
 
@@ -19,6 +22,7 @@
     bind:isOpen
     color={args.color}
     emphasis={args.emphasis}
+    icon={args.icon === 'default' ? undefined : glyphs[args.icon]}
     title={args.title || undefined}
     description={args.description ?? ''}
     isDismissible={args.isDismissible}

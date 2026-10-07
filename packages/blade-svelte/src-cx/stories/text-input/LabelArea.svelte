@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Icon, icons, Link, TextInput, Tooltip } from '../../index';
+  import { Icon, Link, TextInput, Tooltip } from '../../index';
+  import { InfoIcon } from '../../icons';
 </script>
 
 <div class="grid max-w-96 gap-4">
@@ -13,7 +14,7 @@
             class="flex border-none bg-transparent p-0"
             aria-label="About GSTIN"
           >
-            <Icon source={icons.info} size="small" color="muted" />
+            <Icon source={InfoIcon} size="small" color="muted" />
           </button>
         {/snippet}
       </Tooltip>

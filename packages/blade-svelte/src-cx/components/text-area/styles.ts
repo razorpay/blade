@@ -32,15 +32,21 @@ export interface TextAreaClasses {
 /** Style props in, the parts out. */
 export type TextAreaStyleResolver<P> = (props: P) => TextAreaClasses;
 
+/** The blade taxonomy as data: Blade DSL's TextArea Input (Figma) sizes. */
+export const TEXT_AREA_AXES = {
+  size: ['medium', 'large'],
+} as const;
+
 /** The text field's sizes. */
 export interface TextAreaStyleProps {
   /** Also sizes the label and the hint. @default 'medium' */
-  size?: TextInputStyleProps['size'];
+  size?: Extract<TextInputStyleProps['size'], 'medium' | 'large'>;
 }
 
 // A text area is blade's text field grown to several lines: every part
 // comes from text-input's styles, so the two cannot drift. It has no
-// affixes, so its control draws the frame itself.
+// affixes, so its control draws the frame itself: 8px top and bottom, 12px
+// in, 8px round (12px at large), as Blade DSL's TextArea Input (Figma).
 export const resolveTextArea: TextAreaStyleResolver<TextAreaStyleProps> = (
   props: TextAreaStyleProps = {},
 ) => {

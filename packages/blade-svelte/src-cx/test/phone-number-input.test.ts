@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import PhoneNumberInputHarness from './fixtures/PhoneNumberInputHarness.svelte';
+import { glyphsIn } from './classes';
+import { ChevronUpDownIcon, InfoIcon } from '../icons';
 
 function type(control: HTMLElement, text: string): Promise<boolean> {
   (control as HTMLInputElement).value = text;
@@ -8,9 +10,9 @@ function type(control: HTMLElement, text: string): Promise<boolean> {
 }
 
 describe('PhoneNumberInput', () => {
-  it('takes a string trailing, as TextInput does', () => {
-    const { getByText } = render(PhoneNumberInputHarness, { props: { trailing: 'mobile' } });
-    expect(getByText('mobile')).toBeTruthy();
+  it('takes a trailing glyph, as Figma draws one', () => {
+    const { container } = render(PhoneNumberInputHarness, { props: { trailingIcon: InfoIcon } });
+    expect(glyphsIn(container, InfoIcon)).toHaveLength(1);
   });
 
   it('shows the national number and stores the whole one', () => {
@@ -179,14 +181,22 @@ describe('PhoneNumberInput', () => {
       });
   });
 
-  it('draws the country selector as Blade does: 6px round, tints on hover, a 16px chevron', () => {
-    const { getByTestId } = render(PhoneNumberInputHarness);
-    const button = getByTestId('phone-country');
-    expect(button.className).toContain('h-7');
-    expect(button.className).toContain('[border-radius:6px]');
-    expect(button.className).toContain('bg-transparent');
-    expect(button.className).toContain('hover:enabled:bg-interactive-gray-faded');
-    expect(button.className).toContain('text-surface-gray-muted');
-    expect(button.querySelector('svg')?.parentElement?.className).toContain('w-4');
-  });
+  it.each([
+    ['medium', 'h-7', '[padding-inline:6.5px]', '[border-radius:6px]', 'w-5'],
+    ['large', 'h-9', '[padding-inline:9px]', 'rounded-small', 'w-6'],
+  ] as const)(
+    "%s: Figma's selector — on the field's padding, a 12px chevron, the dial code 4px on",
+    (size, height, inset, radius, flag) => {
+      const { getByTestId } = render(PhoneNumberInputHarness, { props: { size } });
+      const button = getByTestId('phone-country');
+      expect(button.className).toContain(height);
+      expect(button.className).toContain(inset);
+      expect(button.className).toContain(radius);
+      expect(button.className).not.toContain('-ml-2');
+      expect(button.className).toContain('hover:enabled:bg-interactive-gray-faded');
+      expect(glyphsIn(button, ChevronUpDownIcon)[0]?.className).toContain('w-3');
+      expect(button.querySelector('img')?.className).toContain(flag);
+      expect((button.nextElementSibling as HTMLElement).className).toContain('ml-1');
+    },
+  );
 });

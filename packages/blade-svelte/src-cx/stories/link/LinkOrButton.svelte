@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { icons, Link, Text } from '../../index';
+  import { Link, Text } from '../../index';
+  import { InfoIcon } from '../../icons';
 </script>
 
 <div class="flex max-w-96 flex-col gap-4">
@@ -20,7 +21,7 @@
     <Link
       href="https://razorpay.com/support"
       target="_blank"
-      icon={icons.info}
+      icon={InfoIcon}
       accessibilityLabel="Help"
       htmlTitle="Help"
     />

@@ -49,7 +49,8 @@ describe('Modal', () => {
     expect(title.parentElement).toBe(row);
     expect(title.previousElementSibling).toBe(getByTestId('header-back'));
     expect(title.nextElementSibling).toBe(getByTestId('badge-beside'));
-    expectClass(title, 'text-200');
+    // Figma's Heading/SmallSemibold, 18/24.
+    expectClass(title, 'font-heading font-semibold text-300 leading-300');
     // The subtitle keeps its look and still describes the modal.
     const subtitle = getByText('Visa');
     expectClass(subtitle, 'text-surface-gray-muted');
@@ -261,9 +262,9 @@ describe('Modal', () => {
     expect(getByTestId('badge')).toBeTruthy();
   });
 
-  it('the title block leaves room for the close button only while it shows', async () => {
+  it('the header row leaves room for the close button only while it shows', async () => {
     const { getByText, rerender } = render(ModalHarness, { props: { isOpen: true } });
-    const block = (): HTMLElement => getByText('Remove card').parentElement!;
+    const block = (): HTMLElement => getByText('Remove card').parentElement!.parentElement!;
     expectClass(block(), 'pr-9');
     await rerender({ isOpen: true, isDismissible: false });
     expect(block().className).not.toContain('pr-9');
@@ -612,8 +613,54 @@ describe('Modal, as Blade', () => {
   it('leaves the footer to its content: a padded box, no layout of its own', async () => {
     const { resolveModal } = await import('../components/modal/styles');
     const { footer } = resolveModal({});
-    expect(footer).toContain('p-4');
-    expect(footer).toContain('m:p-5');
+    // Figma's _Modal Footer: 16px under the hairline, 20px beside and below from `m`.
+    expect(footer).toContain('p-4 m:px-5 m:pb-5');
     expect(footer).not.toContain('flex');
+  });
+
+  it("header slots sit where Figma's _Modal Header puts them", () => {
+    const { getByText, getByTestId } = render(ModalHarness, {
+      props: { isOpen: true, withSlots: 'leading' },
+    });
+    const title = getByText('Remove card');
+    const titleRow = title.parentElement!;
+    const block = titleRow.parentElement!;
+    const row = block.parentElement!;
+    // The leading item, 8px before the title block.
+    const leading = getByTestId('logo').parentElement!;
+    expect(row.firstElementChild).toBe(leading);
+    expectClass(leading, 'me-2');
+    // The suffix beside the title, 8px from it, centred on its 28px line.
+    expectClass(titleRow, 'gap-2');
+    expectClass(getByTestId('count').parentElement, 'h-7');
+    // The trailing item after the block, 16px clear, with room for the close.
+    const trailing = getByTestId('trailing-action').parentElement!;
+    expect(row.lastElementChild).toBe(trailing);
+    expectClass(trailing, 'ms-4');
+    expectClass(row, 'pr-9');
+  });
+
+  it('a leading icon is a large glyph on the title line', () => {
+    const { getByText } = render(ModalHarness, { props: { isOpen: true, withSlots: 'icon' } });
+    const row = getByText('Remove card').parentElement!.parentElement!.parentElement!;
+    const box = row.firstElementChild as HTMLElement;
+    expectClass(box, 'h-7');
+    expectClass(box.firstElementChild as HTMLElement, 'w-5 h-5');
+  });
+
+  it("each variant takes its Figma header, title and close position", async () => {
+    const { resolveModal } = await import('../components/modal/styles');
+    const modal = resolveModal({});
+    expect(modal.header).toContain('p-4 m:px-5 m:pt-5');
+    expect(modal.title).toContain('font-heading font-semibold text-300 leading-300');
+    const sheet = resolveModal({ variant: 'sheet' });
+    expect(sheet.header).toContain('px-4 pt-3 pb-4');
+    expect(sheet.title).toContain('font-text text-200 leading-200');
+    expect(sheet.close).toContain('top-9 right-4');
+    const drawer = resolveModal({ variant: 'drawer' });
+    expect(drawer.header).toBe('shrink-0 p-5');
+    expect(drawer.footer).toContain('p-5');
+    expect(drawer.close).toContain('top-6 right-5');
+    expect(drawer.panel).toContain('w-[calc(100%_-_1.5rem)] m:w-[380px]');
   });
 });

@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { Icon, icons, type IconStyleProps } from '../../index';
+  import { Icon, type IconStyleProps } from '../../index';
+  import * as glyphs from '../../icons/glyphs';
 
   interface Props {
     args: IconStyleProps & {
-      glyph: keyof typeof icons;
+      source: keyof typeof glyphs;
       accessibilityLabel?: string;
     };
   }
@@ -12,7 +13,7 @@
 </script>
 
 <Icon
-  source={icons[args.glyph]}
+  source={glyphs[args.source]}
   size={args.size}
   color={args.color}
   accessibilityLabel={args.accessibilityLabel || undefined}

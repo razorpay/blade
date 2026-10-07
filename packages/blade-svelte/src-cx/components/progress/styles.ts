@@ -11,7 +11,7 @@ type Axis<K extends keyof typeof PROGRESS_AXES> = AxisValue<typeof PROGRESS_AXES
 /** Derived from PROGRESS_AXES: add a value there, never here. */
 export interface ProgressStyleProps {
   type?: Axis<'type'>;
-  /** Dots and ring; a bar takes its width from the caller's `class`. */
+  /** Every kind; a bar takes its width from the caller's `class`. */
   size?: Axis<'size'>;
 }
 
@@ -32,12 +32,26 @@ export interface ProgressClasses {
    * root; `bar` scales its fill by it, `ring` offsets its arc's dash.
    */
   fill?: { kind: 'bar' | 'ring'; track: string; value: string };
+  /** Ring only: the circle's radius and stroke in its 36-unit viewBox. */
+  ring?: { r: number; stroke: number };
 }
 
-const RING: Record<Axis<'size'>, string> = {
-  small: 'w-4 h-4',
-  medium: 'w-6 h-6',
-  large: 'w-10 h-10',
+// Blade DSL's Progress Bar (Figma), circular: 24/48/72px, the ring's
+// thickness a share of its radius (inner radius 74%, 80%, 82%), so in the
+// 36-unit viewBox the stroke is 18 × (1 − inner) and the circle sits on its
+// middle.
+const RING: Record<Axis<'size'>, { box: string; r: number; stroke: number }> = {
+  small: { box: 'w-6 h-6', r: 15.66, stroke: 4.68 },
+  medium: { box: 'w-12 h-12', r: 16.2, stroke: 3.6 },
+  large: { box: 'w-[72px] h-[72px]', r: 16.38, stroke: 3.24 },
+};
+
+// Figma's linear bar: 2px at small, 4px at medium. Figma draws no large
+// linear bar; large keeps medium's 4px.
+const BAR: Record<Axis<'size'>, string> = {
+  small: 'h-0.5',
+  medium: 'h-1',
+  large: 'h-1',
 };
 
 // Ported from sidecart's ProgressBar and CircularProgressBar; the tween is a
@@ -53,7 +67,7 @@ export function resolveProgress(props: ProgressStyleProps = {}): ProgressClasses
   // what Blade's subtle feedback fills are made of.
   if (type === 'bar') {
     return {
-      root: 'block h-1 w-full overflow-hidden rounded-max bg-feedback-neutral-subtle',
+      root: `block w-full overflow-hidden rounded-max bg-feedback-neutral-subtle ${BAR[size]}`,
       dots: [],
       fill: {
         kind: 'bar',
@@ -64,8 +78,9 @@ export function resolveProgress(props: ProgressStyleProps = {}): ProgressClasses
   }
   if (type === 'ring') {
     return {
-      root: `inline-block -rotate-90 ${RING[size]}`,
+      root: `inline-block -rotate-90 ${RING[size].box}`,
       dots: [],
+      ring: { r: RING[size].r, stroke: RING[size].stroke },
       fill: {
         kind: 'ring',
         track: 'fill-none stroke-current opacity-100',

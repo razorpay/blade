@@ -55,15 +55,19 @@ describe('Switch', () => {
   });
 });
 
-describe('Switch sizes, as Blade', () => {
-  it('is bigger on phones and takes the desktop size from m', async () => {
+describe('Switch sizes, as Figma', () => {
+  it("one size set at every width, in Figma's 2px wrapper", async () => {
     const { resolveSwitch } = await import('../components/switch/styles');
     const medium = resolveSwitch({});
-    expect(medium.track.off).toContain('h-6 w-11');
-    expect(medium.track.off).toContain('m:h-5 m:w-9');
-    expect(medium.thumb.on).toContain('w-5 h-5 m:w-4 m:h-4');
-    expect(medium.icon.on).toContain('!w-[10px]');
+    expect(medium.track.off).toContain('h-5 w-9');
+    expect(medium.track.off).toContain('m-0.5');
+    expect(medium.track.off).not.toMatch(/\bm:/);
+    expect(medium.thumb.on).toContain('w-4 h-4');
+    expect(medium.thumb.on).not.toMatch(/\bm:/);
+    expect(medium.icon.on).toContain('!w-2 !h-2');
     const small = resolveSwitch({ size: 'small' });
-    expect(small.track.on).toContain('h-5 w-9 m:h-4 m:w-7');
+    expect(small.track.on).toContain('h-4 w-7');
+    expect(small.thumb.off).toContain('w-3 h-3');
+    expect(small.icon.on).toContain('!w-[6px] !h-[6px]');
   });
 });

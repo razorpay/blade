@@ -2,7 +2,6 @@
   import Card from '../../components/card/Card.svelte';
   import { Divider } from '../../components/divider';
   import { EmptyState } from '../../components/empty-state';
-  import { FooterBar } from '../../components/footer-bar';
   import { Screen } from '../../components/screen';
   import { TrustBadge } from '../../components/trust-badge';
 </script>
@@ -23,10 +22,7 @@
 <Screen isDisabled accessibilityLabel="Card" testID="screen" class="mt-3">
   Card form
   {#snippet footer()}
-    <FooterBar testID="bar">
-      {#snippet summary()}Total{/snippet}
-      <button type="button">Pay</button>
-    </FooterBar>
+    <div data-testid="bar"><button type="button">Pay</button></div>
   {/snippet}
 </Screen>
 

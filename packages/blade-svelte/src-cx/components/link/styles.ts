@@ -23,15 +23,8 @@ export interface LinkClasses {
 
 export type LinkStyleResolver<P> = (props: P) => LinkClasses;
 
-export const LINK_COLORS = [
-  'primary',
-  'white',
-  'positive',
-  'negative',
-  'notice',
-  'information',
-  'neutral',
-] as const;
+// Blade DSL's Link (Figma): five colours, four sizes.
+export const LINK_COLORS = ['primary', 'white', 'positive', 'negative', 'neutral'] as const;
 export const LINK_SIZES = ['xsmall', 'small', 'medium', 'large'] as const;
 
 export type LinkColor = typeof LINK_COLORS[number];
@@ -55,21 +48,19 @@ const COLOR: Record<LinkColor, string> = {
     'text-interactive-neutral-normal hover:text-interactive-neutral-subtle focus-visible:text-interactive-neutral-subtle',
   white:
     'text-interactive-static-white-normal hover:text-interactive-static-white-subtle focus-visible:text-interactive-static-white-subtle',
-  notice:
-    'text-interactive-notice-normal hover:text-interactive-notice-subtle focus-visible:text-interactive-notice-subtle',
-  information:
-    'text-interactive-information-normal hover:text-interactive-information-subtle focus-visible:text-interactive-information-subtle',
   positive:
     'text-interactive-positive-normal hover:text-interactive-positive-subtle focus-visible:text-interactive-positive-subtle',
   negative:
     'text-interactive-negative-normal hover:text-interactive-negative-subtle focus-visible:text-interactive-negative-subtle',
 };
 
+// Figma's labels: Medium in body 10/13, 12/17, 14/20 (letter-spaced −1.3%)
+// and 16/24 (−3.3%).
 const SIZE: Record<LinkSize, string> = {
-  xsmall: 'text-25 leading-25',
-  small: 'text-75 leading-75',
-  medium: 'text-100 leading-100',
-  large: 'text-200 leading-200',
+  xsmall: 'text-25 leading-25 tracking-50',
+  small: 'text-75 leading-75 tracking-50',
+  medium: 'text-100 leading-100 tracking-50',
+  large: 'text-200 leading-200 tracking-25',
 };
 
 const ICON: Record<LinkSize, IconStyleProps> = {
@@ -110,14 +101,6 @@ const DISABLED: Record<LinkColor, { toggled: string; native: string }> = {
     toggled: 'pointer-events-none text-interactive-static-white-disabled',
     native: 'disabled:pointer-events-none disabled:text-interactive-static-white-disabled',
   },
-  notice: {
-    toggled: 'pointer-events-none text-interactive-notice-disabled',
-    native: 'disabled:pointer-events-none disabled:text-interactive-notice-disabled',
-  },
-  information: {
-    toggled: 'pointer-events-none text-interactive-information-disabled',
-    native: 'disabled:pointer-events-none disabled:text-interactive-information-disabled',
-  },
 };
 
 export function linkDisabled(color: LinkColor, on: 'toggled' | 'native' = 'toggled'): string {
@@ -128,7 +111,10 @@ export function linkIcon(size: LinkSize): IconStyleProps {
   return ICON[size];
 }
 
-/** A glyph inside the inline run: spaced from the text, on its midline. */
+/**
+ * A glyph inside the inline run: 4px from the text (Figma's row gap), on its
+ * midline. The glyph carries the gap, so a text-only link has no inset.
+ */
 export const LINK_ICON_SLOT = {
   leading: 'me-1 inline-flex [vertical-align:-0.125em]',
   trailing: 'ms-1 inline-flex [vertical-align:-0.125em]',

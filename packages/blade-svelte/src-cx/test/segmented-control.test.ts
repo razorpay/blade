@@ -1,6 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import SegmentedControlHarness from './fixtures/SegmentedControlHarness.svelte';
+import { glyphsIn } from './classes';
+import { WalletIcon } from '../icons';
+import { createRawSnippet } from 'svelte';
+import SegmentedControlItem from '../components/segmented-control/SegmentedControlItem.svelte';
 
 // Blade-owned: the preset ships SegmentedControl whole, over the segmented
 // RadioGroup. The radios' behaviour is RadioGroup's and is tested there;
@@ -73,9 +77,9 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
   it('an icon sits before the label; alone, it names the segment', () => {
     const labelled = render(SegmentedControlHarness);
     const wallet = labelled.getByTestId('wallet');
-    const icon = segment(wallet).querySelector('svg[data-glyph="wallet"]');
-    expect(icon).not.toBeNull();
-    expect(icon?.parentElement?.getAttribute('aria-hidden')).toBe('true');
+    const [icon] = glyphsIn(segment(wallet), WalletIcon);
+    expect(icon).toBeTruthy();
+    expect(icon.getAttribute('aria-hidden')).toBe('true');
     expect(labelled.getByRole('radio', { name: 'Wallet' })).toBe(wallet);
     labelled.unmount();
 
@@ -113,17 +117,17 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     expect(pill(getByTestId('upi')).querySelector(':scope > [aria-hidden="true"]')).toBeNull();
   });
 
-  it("size: Blade's track, segment height, radius and type", () => {
-    for (const [size, height, text, radius] of [
-      ['small', 'h-6', 'text-75', 'rounded-xsmall'],
-      ['medium', 'h-7', 'text-100', 'rounded-xsmall'],
-      ['large', 'h-10', 'text-200', 'rounded-small'],
+  it("size: Figma's track, segment height, radius and type", () => {
+    for (const [size, height, text, radius, inset, thumb] of [
+      ['small', 'h-6', 'text-100', 'rounded-xsmall', 'p-0.5', 'inset-y-0.5'],
+      ['medium', 'h-7', 'text-100', 'rounded-xsmall', 'p-1', 'inset-y-1'],
+      ['large', 'h-10', 'text-200', 'rounded-small', 'p-1', 'inset-y-1'],
     ] as const) {
       const view = render(SegmentedControlHarness, { props: { value: 'upi', size } });
       const upi = view.getByTestId('upi');
-      // Every size: the track 4px in, the thumb on the same inset.
-      expect(pill(upi).className).toContain('p-1');
-      expect(pill(upi).firstElementChild?.className).toContain('inset-y-1');
+      // The track 2px in at small, 4px otherwise; the thumb on the same inset.
+      expect(pill(upi).className).toContain(inset);
+      expect(pill(upi).firstElementChild?.className).toContain(thumb);
       const label = upi.nextElementSibling!.className;
       expect(label).toContain(height);
       expect(label).toContain(text);
@@ -181,5 +185,19 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     await flush();
     expect(onSubmit).toHaveBeenCalledTimes(1);
     expect(onSubmit.mock.calls[0][0]).toEqual({ flow: 'card' });
+  });
+
+  it('a segment is one row: leading asset, label, trailing item', () => {
+    const leading = createRawSnippet(() => ({ render: () => '<img data-testid="logo" alt="" />' }));
+    const children = createRawSnippet(() => ({ render: () => '<span data-testid="text">UPI</span>' }));
+    const trailing = createRawSnippet(() => ({ render: () => '<span data-testid="count">3</span>' }));
+    const { getByTestId } = render(SegmentedControlItem, {
+      props: { value: 'upi', leading, children, trailing },
+    });
+    const logo = getByTestId('logo');
+    expect(logo.parentElement!.className).toContain('w-4 h-4');
+    const row = logo.parentElement!.parentElement!;
+    expect(row.contains(getByTestId('text'))).toBe(true);
+    expect(row.lastElementChild).toBe(getByTestId('count'));
   });
 });

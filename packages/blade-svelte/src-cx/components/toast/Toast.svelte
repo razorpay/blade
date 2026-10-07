@@ -23,6 +23,7 @@
   const {
     content: text,
     icon,
+    leading,
     action,
     closeLabel = 'Dismiss toast',
     onDismissButtonClick,
@@ -56,7 +57,9 @@
   transition:presence.transition|global
   {@attach presence.mount}
 >
-  <span class={classes.icon}><Icon source={glyph} /></span>
+  <span class={classes.icon}>
+    {#if leading}{@render leading()}{:else}<Icon source={glyph} />{/if}
+  </span>
   <span class={classes.body}><span class={classes.content}>{text}</span></span>
   <span class={classes.trailing}>
     {#if action}

@@ -83,7 +83,7 @@ describe('Card', () => {
     expect(getByTestId('card').tagName).toBe('LABEL');
   });
 
-  it('primary is Blade’s raised surface, 24px in by default; padding steps', () => {
+  it('primary is Blade’s raised surface, 24px in by default; 16px is the other step', () => {
     const primary = render(Card, { props: { children, testID: 'a' } }).getByTestId('a');
     expectClass(surfaceOf(primary), 'surface-raised');
     expectClass(surfaceOf(primary), 'bg-surface-gray-intense');
@@ -91,9 +91,9 @@ describe('Card', () => {
     expectClass(surfaceOf(primary), 'p-6');
     primary.remove();
     const tight = render(Card, {
-      props: { children, padding: 'spacing.4', variant: 'secondary', testID: 'b' },
+      props: { children, padding: 'spacing.5', variant: 'secondary', testID: 'b' },
     }).getByTestId('b');
-    expectClass(surfaceOf(tight), 'p-3');
+    expectClass(surfaceOf(tight), 'p-4');
     expectClass(surfaceOf(tight), 'bg-surface-gray-moderate');
     expect(surfaceOf(tight).className).not.toContain('surface-raised');
   });

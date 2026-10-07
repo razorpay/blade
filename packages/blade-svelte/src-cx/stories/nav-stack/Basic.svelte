@@ -4,11 +4,11 @@
     ModalStack,
     getNav,
     IconButton,
-    icons,
     LayerHost,
     NavStack,
     Text,
   } from '../../index';
+  import { ArrowLeftIcon } from '../../icons';
   import Step from './Step.svelte';
 
   const nav = getNav<{ title: string }>();
@@ -36,7 +36,7 @@
   >
     {#if nav.entries.length > 1}
       <IconButton
-        icon={icons.arrowLeft}
+        icon={ArrowLeftIcon}
         accessibilityLabel="Back"
         onClick={() => nav.back()}
       />

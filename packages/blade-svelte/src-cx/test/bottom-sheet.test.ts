@@ -61,17 +61,17 @@ describe('BottomSheet (blade)', () => {
     expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
   });
 
-  it('keeps the size and pace axes and appends the caller class last', () => {
+  it('keeps the pace axis, is the small column from `m`, and appends the caller class last', () => {
     const { getByTestId } = render(BottomSheetHarness, {
       props: {
         isOpen: true,
-        size: 'full',
         pace: 'snappy',
         className: '[z-index:70]',
       },
     });
     const panel = getByTestId('sheet');
-    expect(panel.className).not.toMatch(/m:w-/);
+    // Figma's Bottom Sheet has no sizes.
+    expect(panel.className).toContain('m:w-[400px]');
     expect(panel.className).toContain('[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]');
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });

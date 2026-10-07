@@ -25,11 +25,13 @@ export interface TextStyleProps {
   truncate?: TextAxis<'truncate'>;
 }
 
+// Blade DSL's Body styles (Figma): XSmall 10/13, Small 12/17, Medium 14/20,
+// Large 16/24, letter-spaced -1.3% (-3.3% at Large).
 const SIZE: Record<TextAxis<'size'>, string> = {
-  xsmall: 'text-25 leading-50',
-  small: 'text-75 leading-50',
-  medium: 'text-100 leading-100',
-  large: 'text-200 leading-200',
+  xsmall: 'text-25 leading-25 tracking-50',
+  small: 'text-75 leading-75 tracking-50',
+  medium: 'text-100 leading-100 tracking-50',
+  large: 'text-200 leading-200 tracking-25',
 };
 
 const WEIGHT: Record<TextAxis<'weight'>, string> = {
@@ -77,10 +79,13 @@ export function resolveText(props: TextStyleProps = {}): string {
   return `m-0 font-text ${SIZE[size]} ${WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]} ${TRUNCATE[truncate]}`.trim();
 }
 
-/** The blade taxonomy as data — owned here, not by the headless core. */
+/**
+ * The blade taxonomy as data — owned here, not by the headless core. Blade
+ * DSL's Heading styles (Figma) come in Regular and Semibold only.
+ */
 export const HEADING_AXES = {
-  size: ['small', 'medium', 'large', 'xlarge'],
-  weight: ['regular', 'medium', 'semibold'],
+  size: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+  weight: ['regular', 'semibold'],
   color: ['default', 'muted', 'primary', 'inherit'],
   textAlign: ['start', 'center', 'end'],
 } as const;
@@ -95,17 +100,24 @@ export interface HeadingStyleProps {
   textAlign?: HeadingAxis<'textAlign'>;
 }
 
-// medium + semibold reproduces app/v2/components/heading/Heading.svelte.
+// Blade DSL's Heading styles (Figma): Small 18/24, Medium 20/26, Large
+// 24/32, XLarge 32/38, 2XLarge 40/46, the heading face, no letter-spacing.
 const HEADING_SIZE: Record<HeadingAxis<'size'>, string> = {
-  small: 'text-200 leading-200',
-  medium: 'text-300 leading-300',
-  large: 'text-400 leading-400',
-  xlarge: 'text-500 leading-500',
+  small: 'text-300 leading-300',
+  medium: 'text-400 leading-400',
+  large: 'text-500 leading-500',
+  xlarge: 'text-600 leading-600',
+  '2xlarge': 'text-700 leading-700',
+};
+
+const HEADING_WEIGHT: Record<HeadingAxis<'weight'>, string> = {
+  regular: 'font-regular',
+  semibold: 'font-semibold',
 };
 
 export function resolveHeading(props: HeadingStyleProps = {}): string {
   const { size = 'medium', weight = 'semibold', color = 'default', textAlign = 'start' } = props;
-  return `m-0 font-heading ${HEADING_SIZE[size]} ${WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]}`;
+  return `m-0 font-heading ${HEADING_SIZE[size]} ${HEADING_WEIGHT[weight]} ${COLOR[color]} ${TEXT_ALIGN[textAlign]}`;
 }
 
 /**

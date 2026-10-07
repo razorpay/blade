@@ -93,4 +93,19 @@ describe('CounterInput', () => {
     await flush();
     expect(onSubmit.mock.calls[0][0]).toEqual({ quantity: 3 });
   });
+
+  it.each([
+    ['xsmall', 'min-w-[76px] h-7', 'w-5 h-5', 'small'],
+    ['small', 'min-w-[84px] h-8', 'w-6 h-6', 'medium'],
+    ['medium', 'min-w-[92px] h-9', 'w-7 h-7', 'medium'],
+    ['large', 'min-w-[120px] h-12', 'w-10 h-10', 'large'],
+  ] as const)("%s: Figma's box (border inside), buttons and icon", async (size, box, button, icon) => {
+    const { resolveCounterInput } = await import('../components/counter-input/styles');
+    const classes = resolveCounterInput({ size });
+    expect(classes.box.live).toContain(box);
+    expect(classes.button.decrement).toContain(button);
+    expect(classes.button.decrement).toContain('[margin:3px_0_3px_3px]');
+    expect(classes.button.increment).toContain('[margin:3px_3px_3px_0]');
+    expect(classes.iconSize).toBe(icon);
+  });
 });

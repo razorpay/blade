@@ -2,6 +2,7 @@
   import type { DialogDismissEvent } from '../../runes';
   import Modal from '../../components/modal/Modal.svelte';
   import LayerHost from '../../components/layer/LayerHost.svelte';
+  import { InfoIcon } from '../../icons';
 
   interface Props {
     withHost?: boolean;
@@ -23,6 +24,8 @@
     variant?: 'modal' | 'sheet' | 'drawer' | 'left-drawer';
     /** Fills the chrome snippet: a badge above the panel, and a close. */
     withChrome?: boolean;
+    /** Fills the header's slots: `icon` (or `leading` with 'leading'), `titleSuffix`, `trailing`. */
+    withSlots?: 'icon' | 'leading';
     className?: string;
   }
 
@@ -44,6 +47,7 @@
     pace,
     variant,
     withChrome = false,
+    withSlots,
     className,
   }: Props = $props();
 </script>
@@ -89,6 +93,18 @@
   <button data-testid="chrome-close" onclick={close}>Done</button>
 {/snippet}
 
+{#snippet leadingAsset()}
+  <img data-testid="logo" alt="" />
+{/snippet}
+
+{#snippet suffix()}
+  <span data-testid="count">3</span>
+{/snippet}
+
+{#snippet trailingAction({ close }: { close: () => void })}
+  <button data-testid="trailing-action" onclick={close}>Help</button>
+{/snippet}
+
 {#snippet bodyContent({ close }: { close: () => void })}
   <button data-testid="body-first">First</button>
   <button data-testid="body-cancel" onclick={close}>Cancel</button>
@@ -109,6 +125,10 @@
   {pace}
   {variant}
   chrome={withChrome ? chromeContent : undefined}
+  icon={withSlots === 'icon' ? InfoIcon : undefined}
+  leading={withSlots === 'leading' ? leadingAsset : undefined}
+  titleSuffix={withSlots ? suffix : undefined}
+  trailing={withSlots ? trailingAction : undefined}
   class={className}
   testID="modal"
 >

@@ -1,13 +1,25 @@
-/** An icon as data: SVG markup (what `*.svg?raw` yields) or a URL. */
-export type IconSource = string;
+/**
+ * An icon, as an `icon`/`source` prop takes it. Without a font plugin it is
+ * the URL of a single-colour SVG (what importing the file yields), drawn as a
+ * mask in the text colour. With `bladeIconFontPlugin` (Vite or webpack) the
+ * same import yields a `Glyph`: one character of the `blade-icons` font the
+ * app's build makes from the icons it imports. Either way it paints with the
+ * text colour; anything with its own colours is an Image.
+ */
+export type IconSource = string | Glyph;
 
-export function isIconMarkup(source: IconSource): boolean {
-  return source.trimStart().startsWith('<');
+/** One glyph of the `blade-icons` font. */
+export interface Glyph {
+  /** The glyph's name: the SVG's file name, and `data-icon`. */
+  readonly name: string;
+  /** The glyph's codepoint, a Private Use Area character. */
+  readonly code: string;
 }
 
-/** What an `<img>` can load: markup becomes a data URI, a URL passes through. */
-export function iconUrl(source: IconSource): string {
-  return isIconMarkup(source)
-    ? `data:image/svg+xml;utf8,${encodeURIComponent(source.trim())}`
-    : source;
+export function glyph(name: string, code: string): Glyph {
+  return { name, code };
+}
+
+export function isGlyph(source: IconSource): source is Glyph {
+  return typeof source === 'object';
 }

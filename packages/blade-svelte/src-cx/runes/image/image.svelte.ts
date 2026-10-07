@@ -1,10 +1,9 @@
-import { iconUrl } from '../icon/source';
-import type { IconSource } from '../icon/source';
+import { imageUrl, type ImageData } from './source';
 import { getAdapters } from '../../adapters';
 
 type Module<T> = T | { default: T };
 
-export type ImageSource = IconSource | Promise<Module<IconSource>> | undefined;
+export type ImageSource = ImageData | Promise<Module<ImageData>> | undefined;
 
 export interface ImageOptions {
   /** A URL, SVG markup, or the promise of either (a lazy asset chunk). */
@@ -36,9 +35,9 @@ export function createImage(options: ImageOptions): Image {
 
   // Markup goes through a data URI as well: an <img> runs no script, so a
   // source the app did not bundle cannot inject any.
-  function show(source: IconSource | undefined): void {
+  function show(source: ImageData | undefined): void {
     if (source) {
-      url = iconUrl(source);
+      url = imageUrl(source);
       status = 'ready';
     } else {
       status = 'failed';

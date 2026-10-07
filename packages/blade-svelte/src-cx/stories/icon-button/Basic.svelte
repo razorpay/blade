@@ -1,13 +1,10 @@
 <script lang="ts">
-  import {
-    IconButton,
-    icons,
-    type IconButtonStyleProps,
-  } from '../../index';
+  import { IconButton, type IconButtonStyleProps } from '../../index';
+  import * as glyphs from '../../icons/glyphs';
 
   interface Props {
     args: IconButtonStyleProps & {
-      glyph: keyof typeof icons;
+      icon: keyof typeof glyphs;
       accessibilityLabel: string;
       isDisabled?: boolean;
       isLoading?: boolean;
@@ -18,7 +15,7 @@
 </script>
 
 <IconButton
-  icon={icons[args.glyph]}
+  icon={glyphs[args.icon]}
   accessibilityLabel={args.accessibilityLabel}
   emphasis={args.emphasis}
   isHighlighted={args.isHighlighted}

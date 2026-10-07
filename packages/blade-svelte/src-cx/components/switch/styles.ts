@@ -19,8 +19,6 @@ export interface SwitchClasses {
   loading: string;
   /** The check inside the thumb: shown while on (and enabled). */
   icon: Record<'on' | 'off', string>;
-  /** The check's Icon size. */
-  iconSize: '2xsmall' | 'xsmall';
   /** The label text (the component's children). */
   label: string;
 }
@@ -42,8 +40,9 @@ export interface SwitchStyleProps {
 // Blade's Switch motion (switchTokens.ts `switchMotion`, getTrackStyles.ts,
 // AnimatedThumb.web.tsx): the track's colour changes in `2xquick`, the thumb
 // slides its own width in `quick`, both on the standard easing.
+// The track sits in Figma's 2px wrapper (the switch is 32×20 / 40×24).
 const TRACK =
-  'relative inline-flex shrink-0 items-center rounded-max p-0.5 transition-colors duration-2xquick ease-standard motion-reduce:transition-none peer-focus-visible:shadow-focus';
+  'relative m-0.5 inline-flex shrink-0 items-center rounded-max p-0.5 transition-colors duration-2xquick ease-standard motion-reduce:transition-none peer-focus-visible:shadow-focus';
 // Blade's Switch (blade-core Switch/switch.module.css): the thumb is
 // `interactive.background.static-white.default`, `…static-white.disabled`
 // while disabled (read off the row's `data-disabled`: the thumb is no
@@ -62,44 +61,37 @@ const ICON = 'transition-opacity duration-quick ease-standard motion-reduce:tran
 // and shifts it toward where it will travel: `left` 12.5% of the thumb's
 // width while off, -39% while on. In px here, as `left` would otherwise
 // resolve against the track.
-// Blade's switchTokens.ts per device: phones get the bigger switch, from
-// `m` up the desktop one. Track 36×20 / 44×24 on phones, 28×16 / 36×20 on
-// desktop; the thumb 4px under the track's height; the check 8/10px on
-// phones, 6/8px on desktop (important: Icon's own size sits on the same
-// element). Pressed, the thumb widens to 125% and shifts so it grows from
-// its centre (Blade's -39% on, 12.5% off, of the thumb's width).
+// Blade DSL's Switch (Figma) has one size set at every width: track 28×16
+// (small) and 36×20 (medium), the thumb 4px under the track's height, the
+// check 6/8px. React's switchTokens.ts adds bigger phone sizes; Figma does
+// not, so neither does cx. Pressed, the thumb widens to 125% and shifts so
+// it grows from its centre (Blade's -39% on, 12.5% off, of the thumb's
+// width).
 const SIZE: Record<
   Axis<'size'>,
   {
     track: string;
     thumb: string;
     pressed: Record<'on' | 'off', string>;
-    icon: SwitchClasses['iconSize'];
     iconBox: string;
   }
 > = {
   small: {
-    track: 'h-5 w-9 m:h-4 m:w-7',
-    thumb: 'w-4 h-4 m:w-3 m:h-3',
-    icon: '2xsmall',
-    iconBox: '!w-2 !h-2 m:!w-[6px] m:!h-[6px]',
+    track: 'h-4 w-7',
+    thumb: 'w-3 h-3',
+    iconBox: '!w-[6px] !h-[6px]',
     pressed: {
-      on:
-        'group-active:w-5 group-active:[left:-6.24px] m:group-active:w-[15px] m:group-active:[left:-4.68px]',
-      off:
-        'group-active:w-5 group-active:[left:2px] m:group-active:w-[15px] m:group-active:[left:1.5px]',
+      on: 'group-active:w-[15px] group-active:[left:-4.68px]',
+      off: 'group-active:w-[15px] group-active:[left:1.5px]',
     },
   },
   medium: {
-    track: 'h-6 w-11 m:h-5 m:w-9',
-    thumb: 'w-5 h-5 m:w-4 m:h-4',
-    icon: 'xsmall',
-    iconBox: '!w-[10px] !h-[10px] m:!w-2 m:!h-2',
+    track: 'h-5 w-9',
+    thumb: 'w-4 h-4',
+    iconBox: '!w-2 !h-2',
     pressed: {
-      on:
-        'group-active:w-[25px] group-active:[left:-7.8px] m:group-active:w-5 m:group-active:[left:-6.24px]',
-      off:
-        'group-active:w-[25px] group-active:[left:2.5px] m:group-active:w-5 m:group-active:[left:2px]',
+      on: 'group-active:w-5 group-active:[left:-6.24px]',
+      off: 'group-active:w-5 group-active:[left:2px]',
     },
   },
 };
@@ -131,7 +123,6 @@ export const resolveSwitch: SwitchStyleResolver<SwitchStyleProps> = (props) => {
       on: `${ICON} ${size.iconBox} opacity-1300 delay-2xquick group-data-[disabled]:opacity-0 group-data-[disabled]:[transition-delay:0ms]`,
       off: `${ICON} ${size.iconBox} opacity-0`,
     },
-    iconSize: size.icon,
     loading:
       'block w-full h-full animate-spin rounded-max border-thicker border-solid border-surface-primary-normal border-t-transparent motion-reduce:animate-none',
     // Blade's Switch draws no label; this follows its SelectorTitle siblings

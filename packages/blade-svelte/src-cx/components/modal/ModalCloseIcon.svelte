@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '../icon/Icon.svelte';
-  import { close } from '../icons';
+  import { CloseIcon } from '../../icons';
   import type { ModalStyleProps } from './styles';
 
   // Decorative only: the close button and its accessible name belong to
@@ -8,4 +8,4 @@
   const _props: ModalStyleProps = $props();
 </script>
 
-<Icon source={close} size="large" />
+<Icon source={CloseIcon} size="large" />

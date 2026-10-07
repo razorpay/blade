@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import ChipHarness from './fixtures/ChipHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
+import { resolveChip } from '../components/chip/styles';
 
 const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 const input = (chip: HTMLElement): HTMLInputElement => chip.querySelector('input')!;
@@ -98,5 +99,19 @@ describe('ChipGroup', () => {
     await fireEvent.click(getByTestId('continue'));
     await flush();
     expect(onSubmit.mock.calls[0][0]).toEqual({ type: 'public' });
+  });
+
+  it.each([
+    ['xsmall', 'font-text font-regular text-75 leading-75'],
+    ['small', 'font-text font-regular text-100 leading-100'],
+    ['medium', 'font-text font-regular text-200 leading-200'],
+    // Figma's _Chip sets the large label in Heading/MediumRegular, 20/26.
+    ['large', 'font-heading font-regular text-400 leading-400 tracking-100'],
+  ] as const)('%s: the label in Figma\'s type, on one unbroken row', (size, type) => {
+    const classes = resolveChip(size, 'unchecked', 'primary');
+    expect(classes.text).toContain(type);
+    expect(classes.text).toContain('px-1');
+    expect(classes.inner).toContain('flex-row');
+    expect(classes.inner).toContain('whitespace-nowrap');
   });
 });

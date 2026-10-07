@@ -23,8 +23,7 @@
     {@render label()}<span data-testid="plans-extra">compare</span>
   {/snippet}
   <Radio value="monthly" testID="radio-monthly">
-    Monthly
-    {#snippet trailing({ isChecked })}<span data-testid="radio-trailing" data-checked={isChecked}></span>{/snippet}
+    {#snippet children({ isChecked })}Monthly<span data-testid="radio-state" data-checked={isChecked}></span>{/snippet}
   </Radio>
   <Radio value="yearly" isDisabled>
     {#snippet children({ isDisabled })}Yearly<span data-testid="radio-yearly" data-disabled={isDisabled}></span>{/snippet}

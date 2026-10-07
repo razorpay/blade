@@ -145,4 +145,10 @@ describe('Radio, as Blade', () => {
     expect(large.radio.label).toContain('text-200');
     expect(resolveRadioGroup({ size: 'small' }).options).toContain('gap-1');
   });
+
+  it("small sits 3px down, as Figma's 1px-padded container puts it", async () => {
+    const { resolveRadioGroup } = await import('../components/radio/styles');
+    expect(resolveRadioGroup({ size: 'small' }).radio.indicator?.root).toContain('mx-0.5 mb-0.5 [margin-top:3px]');
+    expect(resolveRadioGroup({ size: 'medium' }).radio.indicator?.root).toContain('m-0.5');
+  });
 });

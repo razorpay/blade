@@ -1,6 +1,7 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import UnoCSS from 'unocss/vite';
+import { bladeIconFontPlugin } from '../src-cx/plugin/vite.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageRoot = resolve(__dirname, '..');
@@ -40,6 +41,8 @@ const config = {
   viteFinal: async (config) => {
     config.plugins = [
       ...(config.plugins ?? []),
+      // The Icon gallery imports the whole set, so the font holds every glyph.
+      ...bladeIconFontPlugin(),
       UnoCSS({
         configFile: resolve(packageRoot, 'uno.config.ts'),
         // Class maps live in plain `.ts` (`styles.ts`), which the default

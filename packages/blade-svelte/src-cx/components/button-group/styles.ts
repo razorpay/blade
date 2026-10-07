@@ -23,14 +23,13 @@ export interface ButtonGroupClasses {
   button: Required<ButtonStyleProps>;
 }
 
-// Blade's ButtonGroup: buttons touching in a row, clipped to the group's
-// radius (8px, 12px at large) through a 1px transparent border. Inner
-// corners square off; the end buttons keep their outer corners, as Blade's
-// do. Filled buttons are split by a 1px line (Blade's
-// separator, here a 1px gap over the divider fill, as the children are one
-// snippet); outlined ones overlap by 1px so their rims read as one line.
-const ROOT =
-  'inline-flex overflow-hidden border-thin border-solid border-transparent [background-clip:padding-box] [&_button]:rounded-none [&_a]:rounded-none';
+// Blade DSL's Button Group (Figma): buttons touching in a row, clipped to
+// the group's radius (8px, 12px at large); the group is exactly its
+// buttons, no border. Inner corners square off; the end buttons keep their
+// outer corners. Filled buttons are split by a 1px subtle divider that takes
+// no width (drawn on the following button's left edge, as the children are
+// one snippet); outlined ones overlap by 1px so their rims read as one line.
+const ROOT = 'inline-flex overflow-hidden [&_button]:rounded-none [&_a]:rounded-none';
 
 const RADIUS: Record<Axis<'size'>, string> = {
   xsmall:
@@ -44,7 +43,8 @@ const RADIUS: Record<Axis<'size'>, string> = {
 };
 
 const JOIN: Record<'filled' | 'outlined', string> = {
-  filled: 'gap-px bg-divider-gray-subtle',
+  filled:
+    'after:[&>*+*]:content-empty after:[&>*+*]:pointer-events-none after:[&>*+*]:absolute after:[&>*+*]:inset-y-0 after:[&>*+*]:left-0 after:[&>*+*]:w-px after:[&>*+*]:bg-divider-gray-subtle',
   outlined: '[&>*+*]:-ml-px',
 };
 

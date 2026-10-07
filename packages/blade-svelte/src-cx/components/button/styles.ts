@@ -16,8 +16,15 @@ import type { ButtonBusyCause } from '../../runes/button/press.svelte';
  */
 export interface ButtonClasses {
   root: string;
-  /** Wraps the children: lays out icons and label alike. */
+  /**
+   * The row: the leading icon, the label and the trailing icon, with no gap
+   * between them — the label's own 4px each side is the gap.
+   */
   content: string;
+  /** Around the children: 4px each side, the icon gap and the text inset. */
+  label: string;
+  /** The leading and trailing icons' size: 12px to small, 16px above; 16px icon-only. */
+  iconSize: 'small' | 'medium';
   /**
    * Applied to `content` while busy: the children stay rendered, so the
    * button keeps its width and its accessible name, but read as gone.
@@ -45,7 +52,11 @@ export interface ButtonClasses {
   autoFill: string;
 }
 
-export type ButtonStyleResolver<P> = (props: P) => ButtonClasses;
+/**
+ * The second argument: whether the button is an icon and no label, which
+ * Figma draws as a square of the button's height.
+ */
+export type ButtonStyleResolver<P> = (props: P, isIconOnly?: boolean) => ButtonClasses;
 
 export type { ButtonBusyCause };
 
@@ -54,7 +65,8 @@ export type ButtonLoaderSnippet<P> = Snippet<[P, Snippet, ButtonBusyCause]>;
 
 /** The blade taxonomy as data. */
 export const BUTTON_AXES = {
-  variant: ['primary', 'secondary', 'tertiary'],
+  // Blade DSL's Button (Figma) marks tertiary deprecated: not ported.
+  variant: ['primary', 'secondary'],
   color: ['primary', 'white', 'neutral', 'positive', 'negative'],
   size: ['xsmall', 'small', 'medium', 'large'],
 } as const;
@@ -68,11 +80,7 @@ type Size = Axis<'size'>;
 export interface ButtonStyleProps {
   /** @default 'primary' */
   variant?: Variant;
-  /**
-   * `tertiary` takes `primary` or `white` only, as in Blade; another colour
-   * draws as `primary`.
-   * @default 'primary'
-   */
+  /** @default 'primary' */
   color?: Color;
   /** @default 'medium' */
   size?: Size;
@@ -84,11 +92,11 @@ export interface ButtonStyleProps {
 // shadows in uno.config.ts; focus draws the highlighted frame under Blade's
 // 4px ring as one box-shadow. Width is the caller's (`class="w-full"`).
 const ROOT =
-  'group relative inline-flex items-center justify-center overflow-hidden border-none font-text font-medium no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
+  'group relative inline-flex items-center justify-center overflow-hidden border-none font-text font-semibold no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
 // The content presses to 95% (Blade's AnimatedButtonContent); positioned,
 // it paints over the sheen.
 const CONTENT =
-  'relative z-1 flex flex-1 items-center justify-center gap-1 px-1 group-active:enabled:scale-95';
+  'relative z-1 flex flex-1 flex-row items-center justify-center whitespace-nowrap group-active:enabled:scale-95';
 
 // The filled button's resting sheen, from its top-left corner, gone on
 // hover, press and focus as the fill darkens.
@@ -120,7 +128,7 @@ const FILLED: Record<Color, string> = {
     'shadow-button-white focus-visible:shadow-button-white-focus focus-visible:outline-none disabled:shadow-none bg-interactive-static-white-default text-interactive-static-black-muted hover:bg-interactive-static-white-highlighted focus-visible:bg-interactive-static-white-highlighted active:bg-interactive-static-white-highlighted disabled:bg-interactive-static-white-disabled disabled:text-interactive-static-black-disabled',
 };
 
-// Outlined (`secondary`, and `tertiary`, which Blade draws the same): a white
+// Outlined (`secondary`): a white
 // box in the gray frame, its rim darker on hover, press and focus; the text
 // gray for primary, the colour's own for the rest. Neutral rings in its own
 // faded gray.
@@ -137,13 +145,28 @@ const OUTLINED: Record<Color, string> = {
     'bg-interactive-static-white-faded shadow-button-white-outlined hover:bg-interactive-static-black-faded active:bg-interactive-static-black-faded focus-visible:bg-interactive-static-black-faded focus-visible:shadow-button-white-outlined-focus focus-visible:outline-none disabled:bg-interactive-gray-disabled disabled:shadow-button-white-outlined-disabled text-interactive-static-white-normal disabled:text-interactive-static-white-disabled',
 };
 
-// Blade's sizes: a min height, side padding (the label adds 4px more, its
-// own margin, which is also the icon gap), type, and a 12px radius at large.
+// Blade DSL's Button (Figma): a min height (28/32/36/48px), side padding
+// (the label adds 4px more each side, its own, which is also the icon gap),
+// the label Semi Bold in body small/medium/large, letter-spaced, and a 12px
+// radius at large, 8px below.
 const SIZE: Record<Size, string> = {
-  xsmall: 'min-h-7 px-2 text-75 leading-75 rounded-small',
-  small: 'min-h-8 px-2 text-75 leading-75 rounded-small',
-  medium: 'min-h-9 px-3 text-100 leading-100 rounded-small',
-  large: 'min-h-12 px-4 text-200 leading-200 rounded-medium',
+  xsmall: 'min-h-7 px-2 text-75 leading-75 tracking-50 rounded-small',
+  small: 'min-h-8 px-2 text-75 leading-75 tracking-50 rounded-small',
+  medium: 'min-h-9 px-3 text-100 leading-100 tracking-50 rounded-small',
+  large: 'min-h-12 px-4 text-200 leading-200 tracking-25 rounded-medium',
+};
+// Icon only: a square of the button's height around a 16px glyph, no padding.
+const ICON_ONLY_SIZE: Record<Size, string> = {
+  xsmall: 'w-7 h-7 rounded-small',
+  small: 'w-8 h-8 rounded-small',
+  medium: 'w-9 h-9 rounded-small',
+  large: 'w-12 h-12 rounded-medium',
+};
+const ICON_SIZE: Record<Size, ButtonClasses['iconSize']> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
 };
 
 // The filled button's sheen, sized to the button.
@@ -183,11 +206,10 @@ const DOT_COLOR: Record<'filled' | 'outlined', Record<Color, string>> = {
 
 export const resolveButton: ButtonStyleResolver<ButtonStyleProps> = (
   props: ButtonStyleProps = {},
+  isIconOnly = false,
 ) => {
   const { variant = 'primary', size = 'medium' } = props;
-  // Blade's tertiary takes primary or white only.
-  const requested = props.color ?? 'primary';
-  const color: Color = variant === 'tertiary' && requested !== 'white' ? 'primary' : requested;
+  const color: Color = props.color ?? 'primary';
   const kind = variant === 'primary' ? 'filled' : 'outlined';
   const look =
     kind === 'filled'
@@ -195,8 +217,10 @@ export const resolveButton: ButtonStyleResolver<ButtonStyleProps> = (
       : OUTLINED[color];
   const dots = DOTS[size];
   return {
-    root: `${ROOT} ${look} ${SIZE[size]}`.replace(/\s+/g, ' '),
+    root: `${ROOT} ${look} ${isIconOnly ? ICON_ONLY_SIZE[size] : SIZE[size]}`.replace(/\s+/g, ' '),
     content: CONTENT,
+    label: 'px-1',
+    iconSize: isIconOnly ? 'medium' : ICON_SIZE[size],
     busyContent: 'opacity-0',
     loader: `absolute inset-0 z-1 flex items-center justify-center ${dots.loader}`,
     dot: `rounded-max bg-current [opacity:0.42] animate-dot motion-reduce:animate-none ${dots.dot} ${DOT_COLOR[kind][color]}`,

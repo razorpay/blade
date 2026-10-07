@@ -2,7 +2,8 @@
   import { PasswordInput, type TextInputStyleProps } from '../../index';
 
   interface Props {
-    args: TextInputStyleProps & {
+    args: Omit<TextInputStyleProps, 'size'> & {
+      size?: 'medium' | 'large';
       label?: string;
       placeholder?: string;
       helpText?: string;

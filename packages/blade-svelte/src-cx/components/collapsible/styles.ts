@@ -10,8 +10,9 @@ export interface CollapsibleClasses {
 
 // Blade's Collapsible (Collapsible.tsx, styles.web.ts, commonStyles.ts): a
 // column, reversed for `top`, at least 200px wide and at most the viewport
-// less 40px (from `s`), 640px (from `m`) or 1136px (from `l`); the body 12px
-// from the trigger, inside the panel so the slide measures it.
+// less 40px (from `s`), 640px (from `m`) or 1136px (from `l`). Blade DSL's
+// Collapsible (Figma) puts the body right against the trigger (no gap; React
+// adds 12px): spacing inside the body is the body's own.
 export function resolveCollapsible(): CollapsibleClasses {
   const column =
     'flex items-start min-w-[200px] s:max-w-[calc(100vw_-_40px)] m:max-w-[640px] l:max-w-[1136px]';
@@ -21,7 +22,7 @@ export function resolveCollapsible(): CollapsibleClasses {
       top: `${column} flex-col-reverse`,
     },
     trigger: 'contents',
-    body: { bottom: 'mt-3', top: 'mb-3' },
+    body: { bottom: '', top: '' },
   };
 }
 

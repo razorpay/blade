@@ -359,6 +359,39 @@ const typographyRules: Rule[] = [
     'font-heading',
     { 'font-family': String(fonts.family.heading), 'font-variation-settings': "'opsz' 60" },
   ],
+  // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
+  // it enables (src-cx/plugin). A glyph is text, so this resets everything
+  // text inherits that would bend it.
+  [
+    'icon-font',
+    {
+      'font-family': "'blade-icons'",
+      'font-style': 'normal',
+      'font-weight': 'normal',
+      'font-variant': 'normal',
+      'text-transform': 'none',
+      'letter-spacing': 'normal',
+      'line-height': '1',
+      speak: 'never',
+      '-webkit-font-smoothing': 'antialiased',
+      '-moz-osx-font-smoothing': 'grayscale',
+    },
+  ],
+  // Icon without a font plugin: the SVG (its URL inline, as `mask-image`)
+  // stencils a fill of the text colour. Both spellings: older WebViews and
+  // Safari before 15.4 only read the prefixed one.
+  [
+    'icon-mask',
+    {
+      'background-color': 'currentColor',
+      '-webkit-mask-size': 'contain',
+      'mask-size': 'contain',
+      '-webkit-mask-repeat': 'no-repeat',
+      'mask-repeat': 'no-repeat',
+      '-webkit-mask-position': 'center',
+      'mask-position': 'center',
+    },
+  ],
   // Tokens are % of the font size, e.g. `tracking-25` → -3.3% → -0.033em
   ...rules(
     'tracking',
@@ -630,6 +663,8 @@ const namedShadows: Scale = {
   dropdown: `inset 0px 0px 0px 1px ${color('popup-border-gray-subtle')}, ${
     elevation.onLight.midRaised
   }`,
+  // Blade DSL's Bottom Bar (Figma's Bottom Nav effect): 8px up, 24px blur
+  bottomBar: `0px -8px 24px 0px ${color('surface-border-gray-muted')}`,
   // Blade's bottom sheet: an upward drop shadow
   bottomSheet: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
   // Blade's toast: a white bevel along the top edge, under its popup border

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import CardGroupHarness from './fixtures/CardGroupHarness.svelte';
+import { glyphsIn } from './classes';
+import { ChevronDownIcon } from '../icons';
 
 describe('CardGroup', () => {
   it('is a labelled group of header buttons; the caller class comes last', () => {
@@ -128,7 +130,7 @@ describe('CardGroup', () => {
 
   it('an actionable item draws the chevron pointing right', () => {
     const { getByTestId } = render(CardGroupHarness);
-    const chevron = getByTestId('methods-1').querySelector('svg')!.parentElement!;
+    const [chevron] = glyphsIn(getByTestId('methods-1'), ChevronDownIcon);
     expect(chevron.className).toContain('-rotate-90');
   });
 
@@ -137,7 +139,7 @@ describe('CardGroup', () => {
       props: { withTrailing: true },
     });
     const header = getByTestId('methods-0');
-    expect(header.querySelector('svg')).toBeNull();
+    expect(glyphsIn(header)).toHaveLength(0);
     expect(getByTestId('status-upi')).toBeTruthy();
   });
 
@@ -150,7 +152,7 @@ describe('CardGroup', () => {
     const subtitle = [...header.querySelectorAll('span')].find(
       (node) => node.textContent?.trim() === 'Any UPI app',
     ) as HTMLElement;
-    expect(title.className).toContain('font-semibold');
+    expect(title.className).toContain('font-medium');
     expect(title.className).toContain('text-200');
     expect(subtitle.className).toContain('text-surface-gray-muted');
   });
@@ -223,7 +225,7 @@ describe('CardGroup (blade)', () => {
     const header = getByTestId('methods-0');
     const indicator = header.querySelector('[aria-hidden="true"]')!.parentElement!;
     expect(indicator.className).toContain('icon-interactive-gray-muted');
-    expect(indicator.className).toContain('h-7');
+    expect(indicator.className).toContain('h-6');
     expect(header.querySelector('.border-b-thinner')).toBeNull();
     await fireEvent.click(header);
     expect(indicator.firstElementChild?.className).toContain('-rotate-180');
@@ -232,7 +234,7 @@ describe('CardGroup (blade)', () => {
     expect(header.querySelector('.border-b-thinner')).not.toBeNull();
     await waitFor(() => {
       const body = getByTestId('content-upi').parentElement!;
-      expect(body.className).toContain('mx-4 mb-4 mt-3');
+      expect(body.className).toContain('mx-4 mb-4 mt-4');
     });
   });
 
@@ -247,6 +249,30 @@ describe('CardGroup (blade)', () => {
     ) as HTMLElement;
     expect(prefix.className).toContain('text-100');
     expect(prefix.className).toContain('h-5');
+  });
+
+  it("medium: Figma's 16px chevron, the 20px line, the body 12px below and 12px apart", async () => {
+    const { getByTestId } = render(CardGroupHarness, { props: { size: 'medium' } });
+    const header = getByTestId('methods-0');
+    const [chevron] = glyphsIn(header, ChevronDownIcon);
+    expect(chevron.className).toContain('w-4 h-4');
+    expect(chevron.parentElement!.className).toContain('h-5');
+    await fireEvent.click(header);
+    await waitFor(() => {
+      const body = getByTestId('content-upi').parentElement!;
+      expect(body.className).toContain('mx-4 mb-3 mt-4');
+      expect(body.className).toContain('gap-3');
+    });
+  });
+
+  it('the title block: 2px between title and subtitle, 12px before the chevron', () => {
+    const { getByTestId } = render(CardGroupHarness);
+    const title = [...getByTestId('methods-0').querySelectorAll('span')].find(
+      (node) => node.textContent?.trim() === 'UPI',
+    ) as HTMLElement;
+    const block = title.parentElement!;
+    expect(block.className).toContain('gap-0.5');
+    expect(block.className).toContain('pr-3');
   });
 
   it('children: a custom body at full width, outside the body box', async () => {

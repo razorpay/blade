@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import IconButtonHarness from './fixtures/IconButtonHarness.svelte';
-import { expectClass, expectMarkup } from './classes';
+import { ICON_BUTTON_AXES } from '../components/icon-button/styles';
+import { expectClass, expectMarkup, glyphsIn } from './classes';
 
 describe('IconButton', () => {
   it('is named by its label, holds a decorative glyph and leaves the form alone', () => {
@@ -15,7 +16,7 @@ describe('IconButton', () => {
     expect(button.getAttribute('aria-label')).toBe('Dismiss');
     expect(button.className.endsWith('ml-2')).toBe(true);
 
-    const glyph = button.querySelector('svg')?.parentElement;
+    const [glyph] = glyphsIn(button);
     expect(glyph?.getAttribute('aria-hidden')).toBe('true');
 
     return fireEvent.click(button).then(() => {
@@ -37,7 +38,7 @@ describe('IconButton', () => {
       const button = getByTestId('dismiss');
       expect(button.className).not.toMatch(/\bw-\d/);
       expectClass(button, 'rounded-2xsmall');
-      expect(button.querySelector('svg')?.parentElement?.className).toContain(glyph);
+      expect(glyphsIn(button)[0]?.className).toContain(glyph);
       unmount();
     }
   });
@@ -51,23 +52,31 @@ describe('IconButton', () => {
       small.getByTestId('dismiss'),
       'hover:enabled:bg-interactive-gray-faded-highlighted',
     );
+    expectClass(small.getByTestId('dismiss'), 'rounded-small');
     small.unmount();
+    // Figma rounds the 32px box at 12px.
+    const medium = render(IconButtonHarness, {
+      props: { size: 'medium', isHighlighted: true },
+    });
+    expectClass(medium.getByTestId('dismiss'), 'w-8');
+    expectClass(medium.getByTestId('dismiss'), 'rounded-medium');
+    medium.unmount();
     const large = render(IconButtonHarness, {
       props: { size: 'large', isHighlighted: true },
     });
     expect(large.getByTestId('dismiss').className).not.toContain('w-');
   });
 
-  it('intense is gray; subtle and moderate are white, moderate on a faint box', () => {
+  it("intense is gray; subtle is white: Figma's two emphases", () => {
     const intense = render(IconButtonHarness).getByTestId('dismiss');
     expectClass(intense, 'icon-interactive-gray-muted');
     intense.remove();
-    const moderate = render(IconButtonHarness, {
-      props: { emphasis: 'moderate' },
+    const subtle = render(IconButtonHarness, {
+      props: { emphasis: 'subtle' },
     }).getByTestId('dismiss');
-    expectClass(moderate, 'icon-interactive-static-white-normal');
-    expectClass(moderate, 'bg-interactive-static-white-faded');
-    expectClass(moderate, 'w-8');
+    expectClass(subtle, 'icon-interactive-static-white-normal');
+    expect(subtle.className).not.toContain('w-8');
+    expect(ICON_BUTTON_AXES.emphasis).toEqual(['intense', 'subtle']);
   });
 
   it('a disabled button swallows a synthetic click', () => {
@@ -99,7 +108,7 @@ describe('IconButton', () => {
       .click(button)
       .then(() => waitFor(() => expect(button.getAttribute('aria-busy')).toBe('true')))
       .then(() => {
-        expect(button.querySelector('svg')).toBeNull();
+        expect(glyphsIn(button)).toHaveLength(0);
         expectMarkup(button, 'animate-spin');
         expect(button.getAttribute('aria-label')).toBe('Dismiss');
         expect(button.querySelector('[role="status"]')?.textContent).toContain('Working');
@@ -111,7 +120,7 @@ describe('IconButton', () => {
         return waitFor(() => expect(button.hasAttribute('aria-busy')).toBe(false));
       })
       .then(() => {
-        expect(button.querySelector('svg')).not.toBeNull();
+        expect(glyphsIn(button)).not.toHaveLength(0);
       });
   });
 

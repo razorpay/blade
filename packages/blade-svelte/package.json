@@ -35,6 +35,18 @@
       "svelte": "./src-cx/runes/index.ts",
       "default": "./src-cx/runes/index.ts"
     },
+    "./icons": {
+      "types": "./src-cx/icons/index.d.ts",
+      "default": "./src-cx/icons/index.js"
+    },
+    "./vite": {
+      "types": "./src-cx/plugin/vite.d.ts",
+      "default": "./src-cx/plugin/vite.js"
+    },
+    "./webpack": {
+      "types": "./src-cx/plugin/webpack.d.ts",
+      "default": "./src-cx/plugin/webpack.js"
+    },
     "./cx/*": "./src-cx/*",
     "./uno.config": {
       "types": "./uno.config.ts",
@@ -77,7 +89,11 @@
     "@razorpay/blade-core": ">=0.21.0",
     "@razorpay/i18nify-js": "1.12.8",
     "@use-gesture/vanilla": "10.2.24",
-    "class-variance-authority": "^0.7.0"
+    "class-variance-authority": "^0.7.0",
+    "svg-pathdata": "^7.2.0",
+    "svg2ttf": "^6.1.0",
+    "svgicons2svgfont": "^15.0.1",
+    "wawoff2": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",

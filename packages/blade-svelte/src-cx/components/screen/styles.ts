@@ -41,6 +41,6 @@ export interface ScreenBehaviourProps {
   testID?: string;
   class?: string;
   children: Snippet;
-  /** Pinned under the scrolling content: a FooterBar. */
+  /** Pinned under the scrolling content: a BottomBar, say. */
   footer?: Snippet;
 }

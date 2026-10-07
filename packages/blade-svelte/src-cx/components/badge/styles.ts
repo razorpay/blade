@@ -18,7 +18,7 @@ export interface BadgeClasses {
 export const BADGE_AXES = {
   color: [...INTENTS, 'primary'],
   emphasis: ['subtle', 'intense'],
-  size: ['xsmall', 'small', 'medium', 'large'],
+  size: ['small', 'medium', 'large'],
 } as const;
 
 type Axis<K extends keyof typeof BADGE_AXES> = AxisValue<typeof BADGE_AXES, K>;
@@ -56,11 +56,12 @@ const COLOR: Record<Axis<'emphasis'>, Record<Axis<'color'>, string>> = {
   },
 };
 
-// Blade's badgeTokens: the height, the box's side padding, and the text's own
-// side margin (which is also the icon-to-text gap), with body xsmall or
-// small type.
+// Blade DSL's Badge (Figma): the height, the frame's side padding, and the
+// label container's own side spacing, which is also the icon-to-text gap,
+// with body xsmall or small type. Figma draws small, medium and large only.
+// The frame's padding plus the label's spacing make a text-only badge
+// symmetric (6, 8, 12px); a leading icon sits one gap closer to the edge.
 const SIZE: Record<Axis<'size'>, { root: string; text: string; icon: BadgeClasses['iconSize'] }> = {
-  xsmall: { root: 'h-3.5 px-1', text: 'mx-0.5 text-25 leading-25', icon: 'xsmall' },
   small: { root: 'h-4 px-1', text: 'mx-0.5 text-25 leading-25', icon: 'xsmall' },
   medium: { root: 'h-5 px-1', text: 'mx-1 text-75 leading-75', icon: 'small' },
   large: { root: 'h-6 px-2', text: 'mx-1 text-75 leading-75', icon: 'small' },
@@ -77,7 +78,7 @@ export function resolveBadge(props: BadgeStyleProps = {}): BadgeClasses {
   const { color = 'neutral', emphasis = 'subtle', size = 'medium' } = props;
   const spec = SIZE[size];
   return {
-    root: `inline-flex w-fit max-w-full items-center justify-center overflow-hidden rounded-max ${spec.root} ${COLOR[emphasis][color]}`,
+    root: `inline-flex w-fit max-w-full flex-row items-center justify-center overflow-hidden whitespace-nowrap rounded-max ${spec.root} ${COLOR[emphasis][color]}`,
     icon: 'flex shrink-0',
     iconSize: spec.icon,
     text: `m-0 min-w-0 clamp-1 font-text tracking-50 ${WEIGHT[emphasis]} ${spec.text}`,

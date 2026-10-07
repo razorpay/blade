@@ -32,8 +32,11 @@ describe('ButtonGroup', () => {
 
   it('filled buttons are split by a 1px divider; outlined ones overlap their rims', () => {
     const filled = render(ButtonGroupHarness).getByTestId('group');
-    expectClass(filled, 'gap-px');
-    expectClass(filled, 'bg-divider-gray-subtle');
+    // Figma's divider takes no width: a 1px line on each following button.
+    expectClass(filled, 'after:[&>*+*]:w-px');
+    expectClass(filled, 'after:[&>*+*]:bg-divider-gray-subtle');
+    expectNoClass(filled, 'gap-px');
+    expectNoClass(filled, 'border-transparent');
     filled.remove();
     const outlined = render(ButtonGroupHarness, {
       props: { variant: 'secondary' },

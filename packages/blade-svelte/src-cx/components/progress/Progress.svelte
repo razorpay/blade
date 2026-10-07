@@ -41,15 +41,15 @@
           class={resolveProgress(style.current).fill?.track}
           cx="18"
           cy="18"
-          r="16"
-          stroke-width="4"
+          r={resolveProgress(style.current).ring?.r}
+          stroke-width={resolveProgress(style.current).ring?.stroke}
         />
         <circle
           class={resolveProgress(style.current).fill?.value}
           cx="18"
           cy="18"
-          r="16"
-          stroke-width="4"
+          r={resolveProgress(style.current).ring?.r}
+          stroke-width={resolveProgress(style.current).ring?.stroke}
           pathLength="1"
           stroke-dasharray="1"
         />

@@ -21,7 +21,8 @@ const preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Guides', 'Components'],
+        // cx-only components (no React counterpart) sit under their own heading.
+        order: ['Guides', 'Components', 'Extra Components'],
       },
     },
   },

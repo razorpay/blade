@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { ComponentProps } from 'svelte';
-  import Icon from '../icon/Icon.svelte';
-  import { search } from '../icons';
+  import { SearchIcon } from '../../icons';
   import TextInput from '../text-input/TextInput.svelte';
 
   type TextInputProps = ComponentProps<typeof TextInput>;
@@ -29,13 +28,14 @@
     | 'autoCapitalize'
     | 'name'
     | 'trailing'
-    | 'size'
     | 'testID'
     | 'class'
     | 'attach'
   > & {
     /** The search glyph ahead of the text. @default true */
     showSearchIcon?: boolean;
+    /** Blade DSL's Search Input (Figma) has medium and large only. @default 'medium' */
+    size?: 'medium' | 'large';
   };
 
   let {
@@ -45,10 +45,6 @@
   }: Props = $props();
 </script>
 
-{#snippet glyph()}
-  <Icon source={search} />
-{/snippet}
-
 <TextInput
   bind:value
   {...rest}
@@ -56,5 +52,5 @@
   role="searchbox"
   enterKeyHint="search"
   showClearButton
-  leading={showSearchIcon ? glyph : undefined}
+  leadingIcon={showSearchIcon ? SearchIcon : undefined}
 />

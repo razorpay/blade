@@ -4,12 +4,14 @@ import type {
 } from '../../runes/card-group/card-group.svelte';
 import type { AxisValue } from '../../axes';
 import type { IconSource } from '../../runes/icon/source';
-import { chevronDown } from '../icons';
+import { ChevronDownIcon } from '../../icons';
 
 export type { CardGroupValidationState };
 
-// CardGroup's look is Blade React's Accordion (the component was cx's
-// Accordion, renamed): the `Blade's …` notes below name React's parts.
+// CardGroup's look is Blade DSL's Accordion (Figma ❖ Accordion: _Accordion
+// Item, _Accordion Item Header, _Accordion Item Body), whose sizes and parts
+// it has; Figma's separate Card Group (a list of 48px slot rows) is what the
+// `go` kind and slot headers draw. The `Blade's …` notes name React's parts.
 
 /**
  * The parts CardGroup reads its classes by. Parts that share a property are
@@ -59,6 +61,8 @@ export interface CardGroupClasses {
   chevron: IconSource;
   /** Around the `content` snippet: Blade's AccordionItemBody box. `children` skip it. */
   body: string;
+  /** The chevron's Icon size: Figma's 20px at large, 16px at medium. */
+  chevronSize: 'medium' | 'large';
   /** How long the panel slides, in ms (Blade's `moderate`); 0 for none. */
   slide: number;
 }
@@ -130,10 +134,19 @@ const VARIANT: Record<
   },
 };
 
-// The header's first line: Blade centres the prefix and the chevron on it.
+// The header's first line: the title's line box (Figma: 24px at large, 20px
+// at medium), on which the leading item, the prefix and the chevron centre.
 const LINE: Record<Axis<'size'>, string> = {
-  large: 'h-7',
+  large: 'h-6',
   medium: 'h-5',
+};
+
+// Figma's _Accordion Item Body: 16px under the header and in from the sides,
+// 16px below (12px at medium); the description and the slot 16px apart
+// (12px at medium).
+const BODY: Record<Axis<'size'>, string> = {
+  large: 'mx-4 mb-4 mt-4 flex flex-col gap-4',
+  medium: 'mx-4 mb-3 mt-4 flex flex-col gap-3',
 };
 
 // Blade's title: Text large or medium, and the number prefix with it.
@@ -172,11 +185,13 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
     headerState: { expanded: '', collapsed: look.collapsed },
     headerRow: 'flex w-full select-none px-4 py-4',
     headerRowAlign: { center: 'items-center', start: 'items-start' },
-    // Blade nudges the title 1px down and the number 1px up.
-    headerContent: 'flex min-w-0 flex-1 flex-col pr-4 pt-px',
+    // Figma: the title and subtitle 2px apart, 12px before the trailing
+    // item and chevron.
+    headerContent: 'flex min-w-0 flex-1 flex-col gap-0.5 pr-3',
     prefix: `${line} -mt-px mr-2 font-semibold text-surface-gray-normal ${TITLE_TEXT[size]}`,
     leading: `${line} mr-2 overflow-hidden ${LEADING_MAX[size]}`,
-    title: `font-semibold [word-break:break-word] text-surface-gray-normal ${DISABLED_TEXT} ${TITLE_TEXT[size]}`,
+    // Figma's header title: Body Large/Medium Medium (500), not semibold.
+    title: `font-medium [word-break:break-word] text-surface-gray-normal ${DISABLED_TEXT} ${TITLE_TEXT[size]}`,
     // Small whatever the card group's size, as in Blade.
     subtitle: `text-75 leading-75 tracking-50 text-surface-gray-muted ${DISABLED_TEXT}`,
     headerDivider: `pointer-events-none absolute inset-x-0 bottom-0 border-b-thinner ${DIVIDER} transition-opacity duration-2xquick ease-standard group-hover:opacity-0 group-focus-visible:opacity-0`,
@@ -193,9 +208,9 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
       collapsed: `rotate-0 ${TURN}`,
       go: `-rotate-90 ${TURN}`,
     },
-    chevron: chevronDown,
-    // Blade's AccordionItemBody: 12px under the header, 16px in and below.
-    body: 'mx-4 mb-4 mt-3 flex flex-col gap-4',
+    chevron: ChevronDownIcon,
+    body: BODY[size],
+    chevronSize: size === 'large' ? 'large' : 'medium',
     slide: 280,
   };
 };

@@ -50,6 +50,9 @@ import { TABS_AXES } from './tabs/styles';
 import type { TabsStyleProps } from './tabs/styles';
 import type { TextAreaStyleProps } from './text-area/styles';
 import { TEXT_INPUT_AXES } from './text-input/styles';
+import { TEXT_AREA_AXES } from './text-area/styles';
+import { PHONE_NUMBER_INPUT_AXES } from './phone-number-input/styles';
+import { INPUT_GROUP_AXES } from './input-group/styles';
 import type { TextInputStyleProps } from './text-input/styles';
 import type { ToastStyleProps } from './toast/styles';
 import type { TooltipStyleProps } from './tooltip/styles';
@@ -117,9 +120,9 @@ export const SIZED_CONTROLS: Partial<Record<ComponentName, readonly string[]>> =
   IconButton: ICON_BUTTON_AXES.size,
   Link: LINK_AXES.size,
   TextInput: TEXT_INPUT_AXES.size,
-  TextArea: TEXT_INPUT_AXES.size,
-  PhoneNumberInput: TEXT_INPUT_AXES.size,
-  InputGroup: TEXT_INPUT_AXES.size,
+  TextArea: TEXT_AREA_AXES.size,
+  PhoneNumberInput: PHONE_NUMBER_INPUT_AXES.size,
+  InputGroup: INPUT_GROUP_AXES.size,
   OTPInput: OTP_INPUT_AXES.size,
   CounterInput: COUNTER_INPUT_AXES.size,
   Checkbox: CHECKBOX_AXES.size,

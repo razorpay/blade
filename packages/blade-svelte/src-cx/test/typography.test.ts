@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import TypographyHarness from './fixtures/TypographyHarness.svelte';
+import { HEADING_AXES, resolveHeading, resolveText } from '../components/shared/typography';
 
 describe('Text and Heading (preset components)', () => {
   it('Text renders the chosen element with the preset defaults', () => {
@@ -32,7 +33,31 @@ describe('Text and Heading (preset components)', () => {
     const { getByRole } = render(TypographyHarness);
     const heading = getByRole('heading', { level: 1, name: 'Card details' });
     expect(heading.className).toContain('font-heading');
-    expect(heading.className).toContain('text-400');
+    // Figma's Heading/Large: 24/32.
+    expect(heading.className).toContain('text-500 leading-500');
     expect(heading.className).toContain('text-center');
+  });
+
+  it.each([
+    ['xsmall', 'text-25 leading-25 tracking-50'],
+    ['small', 'text-75 leading-75 tracking-50'],
+    ['medium', 'text-100 leading-100 tracking-50'],
+    ['large', 'text-200 leading-200 tracking-25'],
+  ] as const)("Text %s is Figma's Body style", (size, classes) => {
+    expect(resolveText({ size })).toContain(classes);
+  });
+
+  it.each([
+    ['small', 'text-300 leading-300'],
+    ['medium', 'text-400 leading-400'],
+    ['large', 'text-500 leading-500'],
+    ['xlarge', 'text-600 leading-600'],
+    ['2xlarge', 'text-700 leading-700'],
+  ] as const)("Heading %s is Figma's Heading style", (size, classes) => {
+    expect(resolveHeading({ size })).toContain(classes);
+  });
+
+  it('Heading comes in Figma\'s two weights only', () => {
+    expect(HEADING_AXES.weight).toEqual(['regular', 'semibold']);
   });
 });

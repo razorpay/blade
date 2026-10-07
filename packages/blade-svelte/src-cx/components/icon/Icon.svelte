@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
-  import { isIconMarkup } from '../../runes/icon/source';
+  import { isGlyph } from '../../runes/icon/source';
   import {
     resolveIcon,
     type IconBehaviourProps,
@@ -21,19 +21,18 @@
   const style = useComponentDefaults('Icon', () => styleProps);
 
   const classes = $derived(resolveIcon(style.current));
+  // Without a font plugin the icon is its SVG's URL, drawn as a mask.
+  const mask = $derived(isGlyph(source) ? undefined : `url(${JSON.stringify(source)})`);
 </script>
 
+<!-- A glyph is one private-use character of the blade-icons font; a URL is a
+     mask over the text colour. -->
 <span
-  class={cx(classes.root, className)}
+  class={cx(classes.root, mask && classes.mask, className)}
+  style:mask-image={mask}
+  style:-webkit-mask-image={mask}
   role={accessibilityLabel ? 'img' : undefined}
   aria-label={accessibilityLabel}
   aria-hidden={accessibilityLabel ? undefined : 'true'}
-  data-testid={testID}
->
-  {#if isIconMarkup(source)}
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -- a bundled ?raw SVG asset, never user content -->
-    {@html source}
-  {:else}
-    <img src={source} alt="" />
-  {/if}
-</span>
+  data-icon={isGlyph(source) ? source.name : undefined}
+  data-testid={testID}>{isGlyph(source) ? source.code : ''}</span>

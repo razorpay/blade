@@ -7,6 +7,8 @@
     type ButtonType,
   } from '../../runes/button/press.svelte';
   import { getButtonGroup } from '../../runes/button/group';
+  import type { IconSource } from '../../runes/icon/source';
+  import Icon from '../icon/Icon.svelte';
   import { resolveButton, type ButtonStyleProps } from './styles';
 
   interface BehaviourProps {
@@ -46,11 +48,20 @@
      * readers). The library ships no copy — pass the consumer's `$t(...)`.
      */
     loadingAnnouncement?: string;
+    /** Names the button; required when it is an `icon` and no label. */
     accessibilityLabel?: string;
     testID?: string;
     class?: string;
-    /** The label, with any icons: the content lays out whatever is passed. */
-    children: Snippet;
+    /**
+     * Before the label (Figma's leading icon). Alone, with no `children`, the
+     * button is icon-only: a square of its height, which `accessibilityLabel`
+     * names.
+     */
+    icon?: IconSource;
+    /** After the label (Figma's trailing icon). */
+    trailingIcon?: IconSource;
+    /** The label. Optional when `icon` stands alone. */
+    children?: Snippet;
   }
 
   // Closed prop set: behaviour props declared here, style props by styles.ts.
@@ -71,6 +82,8 @@
     accessibilityLabel,
     testID,
     class: className = '',
+    icon,
+    trailingIcon,
     children,
     ...styleProps
   }: Props = $props();
@@ -91,8 +104,16 @@
     autoPressAfter: () => autoPressAfter,
   });
 
-  const classes = $derived(resolveButton(group?.shared ?? style.current));
+  const isIconOnly = $derived(Boolean(icon) && !children && !trailingIcon);
+  const classes = $derived(resolveButton(group?.shared ?? style.current, isIconOnly));
 </script>
+
+<!-- Figma's row: the leading icon, the label in its 4px, the trailing icon. -->
+{#snippet content()}
+  {#if icon}<Icon source={icon} size={classes.iconSize} />{/if}
+  {#if children}<span class={classes.label}>{@render children()}</span>{/if}
+  {#if trailingIcon}<Icon source={trailingIcon} size={classes.iconSize} />{/if}
+{/snippet}
 
 <!--
   Blade's DotLoader draws in a layer over the children, which stay rendered
@@ -116,7 +137,7 @@
     data-testid={testID}
     onclick={(event) => onClick?.(event)}
   >
-    <span class={classes.content}>{@render children()}</span>
+    <span class={classes.content}>{@render content()}</span>
   </a>
 {:else}
   <button
@@ -146,7 +167,7 @@
       class={cx(classes.content, press.busyCause && classes.busyContent)}
       data-part="content"
     >
-      {@render children()}
+      {@render content()}
     </span>
     {#if press.busyCause}
       {@render loader()}

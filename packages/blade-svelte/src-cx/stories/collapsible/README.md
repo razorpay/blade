@@ -22,3 +22,6 @@ Props: `isExpanded` (bindable), `onExpandChange` (`{ isExpanded }`), `direction`
 focusable element gets `aria-expanded` and, while the body shows,
 `aria-controls`. `CollapsibleChevron` is Blade's turning chevron, for the
 CollapsibleLink look.
+
+The body sits right against the trigger, as Blade DSL's Collapsible in Figma
+draws it (React adds 12px): spacing inside the body is the body's own.

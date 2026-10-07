@@ -4,11 +4,7 @@
   import type { ControlState } from '../shared/control-state';
   import { cx } from '../../cx';
   import { createToggle } from '../../runes/toggle/toggle.svelte';
-  import Icon from '../icon/Icon.svelte';
   import { resolveSwitch, type SwitchStyleProps } from './styles';
-  // Blade's Switch check (ThumbIcon.tsx), not in `icons`: its viewBox and
-  // weight are drawn for the thumb.
-  import switchCheck from './switch-check.svg?raw';
 
   interface BehaviourProps {
     /** The initial state, a `bind:isChecked`, or a value the host keeps driving. */
@@ -100,11 +96,20 @@
       {#if isLoading}
         <span class={classes.loading}></span>
       {:else}
-        <Icon
-          source={switchCheck}
-          size={classes.iconSize}
-          class={classes.icon[track]}
-        />
+        <!-- Blade's Switch check (ThumbIcon.tsx), drawn for the thumb: not a
+             font glyph, so the Switch needs nothing enabled in the app's font. -->
+        <svg
+          class={cx('inline-flex shrink-0', classes.icon[track])}
+          viewBox="0 0 11 8"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+          />
+        </svg>
       {/if}
     </span>
   </span>

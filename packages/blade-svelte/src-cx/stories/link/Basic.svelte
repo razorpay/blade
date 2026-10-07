@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { icons, Link, type LinkStyleProps } from '../../index';
+  import { Link, type LinkStyleProps } from '../../index';
+  import { ExternalLinkIcon, InfoIcon } from '../../icons';
 
   interface Props {
     args: LinkStyleProps & {
-      iconPosition?: 'leading' | 'trailing';
       withIcon?: boolean;
+      withTrailingIcon?: boolean;
       isDisabled?: boolean;
       newTab?: boolean;
     };
@@ -18,8 +19,8 @@
   target={args.newTab ? '_blank' : undefined}
   color={args.color}
   size={args.size}
-  icon={args.withIcon ? icons.external : undefined}
-  iconPosition={args.iconPosition}
+  icon={args.withIcon ? InfoIcon : undefined}
+  trailingIcon={args.withTrailingIcon ? ExternalLinkIcon : undefined}
   isDisabled={args.isDisabled}
 >
   Contact support

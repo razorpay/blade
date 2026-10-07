@@ -8,8 +8,8 @@ const meta: StoryMeta = {
   argTypes: {
     color: { control: 'select', options: LINK_AXES.color },
     size: { control: 'select', options: LINK_AXES.size },
-    iconPosition: { control: 'select', options: ['leading', 'trailing'] },
-    withIcon: { control: 'boolean' },
+    withIcon: { control: 'boolean', description: 'icon: a leading glyph' },
+    withTrailingIcon: { control: 'boolean', description: 'trailingIcon: a trailing glyph' },
     isDisabled: { control: 'boolean' },
     newTab: { control: 'boolean' },
   },
@@ -18,8 +18,8 @@ const meta: StoryMeta = {
       args: {
         color: 'primary',
         size: 'medium',
-        iconPosition: 'trailing',
         withIcon: false,
+        withTrailingIcon: true,
         isDisabled: false,
         newTab: true,
       },

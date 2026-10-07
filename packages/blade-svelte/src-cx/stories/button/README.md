@@ -1,12 +1,17 @@
 # Button
 
 Blade's Button over the press model (`runes/button/press.svelte.ts`). Its
-styles own React's axes: `variant` (`primary` filled, `secondary` and
-`tertiary` outlined; tertiary takes `primary` or `white` only), `color`
+styles own React's axes: `variant` (`primary` filled, `secondary`
+outlined; Blade DSL deprecates `tertiary`, so it isn't ported), `color`
 (`primary` — the default, blue — `white`, `neutral`, `positive`,
-`negative`) and `size` (`xsmall` 28px to `large` 48px). The label and any
-icons are `children`: size an icon there (12px up to small, 16px above,
-as in Blade).
+`negative`) and `size` (`xsmall` 28px to `large` 48px). The label is
+`children`, Semi Bold and letter-spaced as Blade DSL's Button (Figma) sets it.
+
+```svelte
+<Button icon={WalletIcon}>Pay with wallet</Button>
+<Button trailingIcon={ArrowRightIcon}>Continue</Button>
+<Button icon={CloseIcon} accessibilityLabel="Close" />
+```
 
 ## Behaviour props
 
@@ -19,7 +24,24 @@ as in Blade).
 | `isLoading` | Host-driven busy (`host` cause): Blade's DotLoader over the faded label, and the disabled look |
 | `isDisabled` | Real `disabled`; busy never sets it, so focus is preserved |
 | `loadingAnnouncement` | Live-region copy while busy; pass the app's localized string |
+| `icon`, `trailingIcon` | Glyphs before and after the label (Figma's leading and trailing icon), 12px up to small and 16px above; both may show. `icon` alone, with no `children`, makes an icon-only square button (28/32/36/48px, a 16px glyph) that `accessibilityLabel` names |
 | `accessibilityLabel`, `testID`, `class` | The only escape hatches; `class` is merged last for layout |
+
+## Why `icon` and `trailingIcon` are props
+
+The button places its icons itself, because Figma spaces them differently
+from the label. The label carries 4px on each side, which is the gap to an
+icon and also the text's inset when there is none; the icons have no
+spacing of their own and sit right at the padding.
+
+| Size | Text only (left / right) | With icons (icon inset / gap) | Icon |
+| --- | --- | --- | --- |
+| xsmall, small | 12 / 12 | 8 / 4 | 12px |
+| medium | 16 / 16 | 12 / 4 | 16px |
+| large | 20 / 20 | 16 / 4 | 16px |
+
+An icon in `children` would land inside the label's 4px and sit 4px too far
+in, so it has its own prop.
 
 ## Busy is derived, never wired
 

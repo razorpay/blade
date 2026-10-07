@@ -11,7 +11,7 @@ the core.
 | Prop | Notes |
 | --- | --- |
 | `type` | Style axis: `dots` (default), `bar`, `ring` |
-| `size` | Style axis for dots and ring. A bar takes its width from `class` |
+| `size` | Style axis for every kind. Per Blade DSL's Progress Bar (Figma): a bar is 2px thick at small and 4px at medium (large keeps 4px; Figma has no large bar); a ring is 24, 48 or 72px across, its thickness Figma's share of the radius. A bar takes its width from `class` |
 | `accessibilityLabel` | Announces the wait as `role="status"`. Without it the visual is `aria-hidden` — right wherever something else already says "busy" |
 | `class`, `testID` | As everywhere |
 

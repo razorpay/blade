@@ -4,9 +4,9 @@
     Icon,
     Modal,
     LayerHost,
-    icons,
     type ModalStyleProps,
   } from '../../index';
+  import { CreditCardIcon } from '../../icons';
 
   interface Props {
     args: ModalStyleProps & {
@@ -54,7 +54,7 @@
         aria-hidden="true"
         data-testid="chrome-badge"
       >
-        <Icon source={icons.card} size="large" />
+        <Icon source={CreditCardIcon} size="large" />
       </div>
     {/if}
   {/snippet}

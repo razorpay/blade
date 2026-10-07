@@ -23,11 +23,19 @@ const meta: StoryMeta = {
     PaymentMethods: {
       description:
         'The MobileHome shape: a default-open method, actionable methods that go to another screen, lazy content, a method facing issues whose press is vetoed, and an indicator swapped while details load.',
-      argTypes: {},
+      args: { variant: 'transparent', size: 'large' },
+      argTypes: {
+        variant: { control: 'select', options: CARD_GROUP_AXES.variant },
+        size: { control: 'select', options: CARD_GROUP_AXES.size },
+      },
     },
     InForm: {
       description: 'With `name` and `isRequired` the open item is a required form value.',
-      argTypes: {},
+      args: { variant: 'transparent', size: 'large' },
+      argTypes: {
+        variant: { control: 'select', options: CARD_GROUP_AXES.variant },
+        size: { control: 'select', options: CARD_GROUP_AXES.size },
+      },
     },
   },
 };

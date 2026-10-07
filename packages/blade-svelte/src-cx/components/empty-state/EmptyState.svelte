@@ -1,6 +1,7 @@
 <script lang="ts">
   import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
+  import Icon from '../icon/Icon.svelte';
   import {
     type EmptyStateBehaviourProps,
     resolveEmptyState,
@@ -11,6 +12,7 @@
 
   let {
     title,
+    icon,
     description,
     asset,
     children,
@@ -24,6 +26,18 @@
   const classes = $derived(resolveEmptyState(style.current));
 </script>
 
+{#snippet heading()}
+  <svelte:element this={classes.headingLevel} class={classes.title}>
+    {#if typeof title === 'string'}{title}{:else if title}{@render title()}{/if}
+  </svelte:element>
+{/snippet}
+
+{#snippet body()}
+  <p class={classes.description}>
+    {#if typeof description === 'string'}{description}{:else if description}{@render description()}{/if}
+  </p>
+{/snippet}
+
 <div class={cx(classes.root, className)} data-testid={testID}>
   {#if asset}
     <div class={classes.asset}>
@@ -33,14 +47,22 @@
   {#if title || description}
     <div class={classes.content}>
       {#if title}
-        <svelte:element this={classes.headingLevel} class={classes.title}>
-          {#if typeof title === 'string'}{title}{:else}{@render title()}{/if}
-        </svelte:element>
+        {#if icon}
+          <div class={classes.lead}>
+            <Icon source={icon} size={classes.iconSize} />{@render heading()}
+          </div>
+        {:else}
+          {@render heading()}
+        {/if}
       {/if}
       {#if description}
-        <p class={classes.description}>
-          {#if typeof description === 'string'}{description}{:else}{@render description()}{/if}
-        </p>
+        {#if icon && !title}
+          <div class={classes.lead}>
+            <Icon source={icon} size={classes.iconSize} />{@render body()}
+          </div>
+        {:else}
+          {@render body()}
+        {/if}
       {/if}
     </div>
   {/if}

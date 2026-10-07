@@ -4,6 +4,7 @@ import CollapsibleHarness from './fixtures/CollapsibleHarness.svelte';
 import Link from '../components/link/Link.svelte';
 import { createRawSnippet } from 'svelte';
 import { expectClass, expectNoClass } from './classes';
+import { resolveCollapsible } from '../components/collapsible/styles';
 
 describe('Collapsible', () => {
   it('the wrapper toggles on a press of an unwired trigger, which reads isExpanded', async () => {
@@ -71,5 +72,11 @@ describe('Link variant="button"', () => {
 
     await rerender({ variant: 'button', onClick, children: label, isDisabled: true });
     expect(getByRole('button', { name: 'Act' })).toHaveProperty('disabled', true);
+  });
+
+  it("puts the body against the trigger, as Figma's Collapsible (no gap)", () => {
+    const classes = resolveCollapsible();
+    expect(classes.body.bottom).toBe('');
+    expect(classes.body.top).toBe('');
   });
 });

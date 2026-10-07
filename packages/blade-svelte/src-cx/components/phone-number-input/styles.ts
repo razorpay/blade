@@ -1,7 +1,7 @@
 import type { IconSource } from '../../runes/icon/source';
 import type { PhoneParts } from '../../runes/phone/parts';
 import type { IconStyleProps } from '../icon';
-import { chevronUpDown } from '../icons';
+import { ChevronUpDownIcon } from '../../icons';
 import type { OptionListStyleProps } from '../option-list';
 import type { TextInputStyleProps } from '../text-input/styles';
 
@@ -38,30 +38,43 @@ export type PhoneNumberInputStyleResolver<P, L> = (props: P) => PhoneNumberInput
 
 export type PhoneNumberChange = PhoneParts;
 
+/** The blade taxonomy as data: Blade DSL's Phone Number Input (Figma) sizes. */
+export const PHONE_NUMBER_INPUT_AXES = {
+  size: ['medium', 'large'],
+} as const;
+
 /** The text field's sizes. */
 export interface PhoneNumberInputStyleProps {
   /** @default 'medium' */
-  size?: TextInputStyleProps['size'];
+  size?: Extract<TextInputStyleProps['size'], 'medium' | 'large'>;
 }
+
+// Blade DSL's _Input / Selector (Figma): a 28px pill (36px at large) round
+// the flag (20×15, 24×18 at large) and a 12px chevron 4px apart, 6.5px in
+// (9px at large), 6px round (8px at large). It sits on the field's 4px
+// padding (2px more at large); the dial code follows 4px on, and the
+// number 8px after that.
+const SELECTOR = {
+  medium: { country: 'h-7 [padding-inline:6.5px] [border-radius:6px]', flag: 'h-[15px] w-5' },
+  large: { country: 'ml-0.5 h-9 [padding-inline:9px] rounded-small', flag: 'h-[18px] w-6' },
+};
 
 export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   PhoneNumberInputStyleProps,
   OptionListStyleProps
-> = () => ({
-  // Blade's leading country selector: a 28px pill (6px padding, 8px radius)
-  // round the flag and a small chevron, tinted on hover. Pulled left so the
-  // flag sits where the field's own padding would put it.
-  // Blade's CountrySelector: a 56×28 button 4px in from the box, 6px
-  // round, a 20px flag and a 16px chevron 4px apart; the gray faded fill
-  // on hover and focus, and the 4px focus outline flush with it. The dial
-  // code follows 12px on, in the muted body text.
-  country:
-    '-ml-2 flex h-7 shrink-0 items-center gap-1 [border-radius:6px] border-none bg-transparent px-2 py-0 text-surface-gray-muted hover:enabled:bg-interactive-gray-faded focus-visible:bg-interactive-gray-faded focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-0 focus-visible:outline-surface-primary-muted',
-  flag: 'h-[15px] w-5 shrink-0 [border-radius:1px] object-cover',
-  dialCode: 'ml-3 tabular-nums text-surface-gray-muted',
-  dialCodeAlone: 'ml-0',
-  chevron: chevronUpDown,
-  chevronIcon: { size: 'medium' },
+> = (props = {}) => {
+  const selector = SELECTOR[props.size === 'large' ? 'large' : 'medium'];
+  return {
+  // The gray faded fill on hover and focus, and the 4px focus outline flush
+  // with it.
+  country: `flex shrink-0 items-center gap-1 border-none bg-transparent py-0 text-surface-gray-muted hover:enabled:bg-interactive-gray-faded focus-visible:bg-interactive-gray-faded focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-0 focus-visible:outline-surface-primary-muted ${selector.country}`,
+  flag: `shrink-0 [border-radius:1px] object-cover ${selector.flag}`,
+  dialCode: 'ml-1 tabular-nums text-surface-gray-muted',
+  // With no selector the dial code is TextInput's prefix inset: 8px past the
+  // field's padding.
+  dialCodeAlone: 'ml-2',
+  chevron: ChevronUpDownIcon,
+  chevronIcon: { size: 'small' },
   search: 'mb-3',
   list: 'h-80',
   row: 'flex w-full items-center gap-3',
@@ -70,4 +83,5 @@ export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   rowDialCode: 'shrink-0 tabular-nums text-interactive-gray-muted',
   empty: 'py-8 text-center text-75 leading-50 text-surface-gray-subtle',
   optionList: { variant: 'plain', indicator: 'none' },
-});
+  };
+};

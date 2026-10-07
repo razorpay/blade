@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '../icon/Icon.svelte';
-  import { close } from '../icons';
+  import { CloseIcon } from '../../icons';
   import type { ToastStyleProps } from './styles';
 
   // Decorative only: the dismiss button and its accessible name belong to
@@ -8,4 +8,4 @@
   const _props: ToastStyleProps = $props();
 </script>
 
-<Icon source={close} />
+<Icon source={CloseIcon} />

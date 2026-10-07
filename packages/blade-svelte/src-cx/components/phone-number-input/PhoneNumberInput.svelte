@@ -8,6 +8,7 @@
   import { createPhone } from '../../runes/phone/phone.svelte';
   import { getOverlays } from '../modal/overlays';
   import Icon from '../icon/Icon.svelte';
+  import type { IconSource } from '../../runes/icon/source';
   import type { ComponentProps } from 'svelte';
   import type PhoneCountryPicker from './PhoneCountryPicker.svelte';
   import type { InputGroupSpan } from '../input-group/styles';
@@ -65,8 +66,12 @@
     autoComplete?: HTMLInputAttributes['autocomplete'];
     /** Hides the country button; the dial code still shows. @default true */
     showCountrySelector?: boolean;
-    /** After the number, before the clear button: a string or a snippet (an icon). */
-    trailing?: string | Snippet;
+    /** A glyph after the country and dial code, before the number. */
+    leadingIcon?: IconSource;
+    /** A glyph after the number. */
+    trailingIcon?: IconSource;
+    /** After the number, last: a Link or a button. */
+    trailing?: Snippet;
     isDisabled?: boolean;
     isRequired?: boolean;
     /** Shows the country as text only: no button, no picker. */
@@ -117,6 +122,8 @@
     enterKeyHint,
     autoComplete = 'tel',
     showCountrySelector = true,
+    leadingIcon,
+    trailingIcon,
     trailing,
     isDisabled = false,
     isRequired = false,
@@ -223,8 +230,13 @@
   {:else}
     <span class={classes.country}>{@render flag()}</span>
   {/if}
+  {#if leadingIcon}
+    <span class={cx('flex shrink-0 items-center', classes.dialCode)}>
+      <Icon source={leadingIcon} size={style.current.size === 'large' ? 'large' : 'medium'} />
+    </span>
+  {/if}
   {#if showDialCode}
-    <span class={cx(classes.dialCode, !showCountrySelector && classes.dialCodeAlone)}>{selected?.dialCode}</span>
+    <span class={cx(classes.dialCode, !showCountrySelector && !leadingIcon && classes.dialCodeAlone)}>{selected?.dialCode}</span>
   {/if}
 {/snippet}
 
@@ -242,6 +254,7 @@
   {onClearButtonClick}
   {enterKeyHint}
   {autoComplete}
+  {trailingIcon}
   {trailing}
   showClearButton
   size={style.current.size}

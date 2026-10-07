@@ -8,7 +8,7 @@
     isDisabled?: boolean;
     isLoading?: boolean;
     loadingAnnouncement?: string;
-    variant?: 'primary' | 'secondary' | 'tertiary';
+    variant?: 'primary' | 'secondary';
     color?: 'primary' | 'neutral' | 'positive' | 'negative';
     className?: string;
     autoPressAfter?: number;

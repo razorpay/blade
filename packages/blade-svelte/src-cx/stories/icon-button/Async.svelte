@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { IconButton, icons, Text } from '../../index';
+  import { IconButton, Text } from '../../index';
+  import { CopyIcon } from '../../icons';
 
   let copies = $state(0);
 
@@ -16,7 +17,7 @@
 <div class="flex items-center gap-2">
   <Text>pay_Q1w2e3r4t5y6u7</Text>
   <IconButton
-    icon={icons.copy}
+    icon={CopyIcon}
     accessibilityLabel="Copy payment id"
     loadingAnnouncement="Copying"
     onClick={copy}

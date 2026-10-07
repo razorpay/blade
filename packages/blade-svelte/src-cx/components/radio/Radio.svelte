@@ -19,8 +19,6 @@
     children?: Snippet<[ControlState]>;
     /** Under the label, lined up with it: text, or a snippet (a Link in it). */
     helpText?: string | Snippet;
-    /** After the label: a Badge, an Amount, which may follow the state. */
-    trailing?: Snippet<[ControlState]>;
   }
 
   // No style props: the look of a radio is the group's decision, and its
@@ -33,7 +31,6 @@
     class: className = '',
     children,
     helpText,
-    trailing,
   }: Props = $props();
 
   const uid = $props.id();
@@ -88,9 +85,6 @@
   {/if}
   {#if children}
     <span id={titleId} class={classes?.label}>{@render children(controlState)}</span>
-  {/if}
-  {#if trailing}
-    <span class={classes?.trailing}>{@render trailing(controlState)}</span>
   {/if}
   {#if helpText}
     <span class={classes?.support}>

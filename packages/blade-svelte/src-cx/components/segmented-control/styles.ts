@@ -25,38 +25,45 @@ export type SegmentSize = typeof SEGMENT_SIZES[number];
 // draws `medium` 36px tall: 14px text on 28px segments in a 12px-radius
 // track that is the faded gray (6%) over whatever it sits on.
 // Blade's SegmentedControlIndicator: the surface-intense pill under the
-// picked segment, sliding at moderate/standard.
+// picked segment, sliding at moderate/standard. Its inset (and so its
+// width) follows the track's padding, per size.
 const THUMB =
-  'pointer-events-none absolute inset-y-1 left-1 w-[calc((100%_-_0.5rem_-_(var(--segment-count)_-_1)*0.125rem)/var(--segment-count))] [translate:calc(var(--segment-index)*(100%_+_0.125rem))_0] bg-surface-gray-intense transition-transform duration-moderate ease-standard motion-reduce:transition-none';
+  'pointer-events-none absolute [translate:calc(var(--segment-index)*(100%_+_0.125rem))_0] bg-surface-gray-intense transition-transform duration-moderate ease-standard motion-reduce:transition-none';
+// Spelt out, not built: UnoCSS emits the classes it finds in the source.
+const THUMB_INSET_2PX =
+  'inset-y-0.5 left-0.5 w-[calc((100%_-_0.25rem_-_(var(--segment-count)_-_1)*0.125rem)/var(--segment-count))]';
+const THUMB_INSET_4PX =
+  'inset-y-1 left-1 w-[calc((100%_-_0.5rem_-_(var(--segment-count)_-_1)*0.125rem)/var(--segment-count))]';
 
-// Blade's segmentedControlTokens.ts: the track 32/36/48px tall with 4px
-// in and 2px between segments, round at 8px (12px at large); segments
-// 24/28/40px, round at 4px (8px at large), 8px in; the label body
-// small/medium/large, medium weight, letter-spaced; icons 16px (20px at
-// large), 8px from the label.
+// Blade DSL's Segmented Control (Figma): the track 28/36/48px tall with
+// 2px in at small and 4px otherwise, 2px between segments, round at 8px
+// (12px at large); segments 24/28/40px, round at 4px (8px at large), 8px
+// in; the label Body Medium at small and medium (14/20), Body Large at
+// large (16/24), medium weight, letter-spaced; the leading item (16px,
+// 20px at large) and the trailing item each 8px from the label.
 const SEGMENT_SIZE: Record<
   SegmentSize,
   { options: string; row: string; label: string; thumb: string; icon: 'medium' | 'large' }
 > = {
   small: {
-    options: 'gap-0.5 rounded-small p-1',
+    options: 'gap-0.5 rounded-small p-0.5',
     row: 'rounded-xsmall',
-    label: 'h-6 rounded-xsmall px-2 text-75 leading-75 tracking-50',
-    thumb: 'rounded-xsmall',
+    label: 'h-6 rounded-xsmall px-2 text-100 leading-100 tracking-50',
+    thumb: `${THUMB_INSET_2PX} rounded-xsmall`,
     icon: 'medium',
   },
   medium: {
     options: 'gap-0.5 rounded-small p-1',
     row: 'rounded-xsmall',
     label: 'h-7 rounded-xsmall px-2 text-100 leading-100 tracking-50',
-    thumb: 'rounded-xsmall',
+    thumb: `${THUMB_INSET_4PX} rounded-xsmall`,
     icon: 'medium',
   },
   large: {
     options: 'gap-0.5 rounded-medium p-1',
     row: 'rounded-small',
     label: 'h-10 rounded-small px-2 text-200 leading-200 tracking-25',
-    thumb: 'rounded-small',
+    thumb: `${THUMB_INSET_4PX} rounded-small`,
     icon: 'large',
   },
 };
@@ -124,8 +131,9 @@ export function segmentedLook(
       // (`focus-visible`): on a click a ring would reach the new segment
       // before the thumb does. The label fills the segment to carry it.
       control: 'peer sr-only',
-      // A flex label: a segment may carry an icon before its text.
-      label: `flex min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap font-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
+      // One flat row: the leading item, the text and the trailing item,
+      // 8px apart.
+      label: `flex min-w-0 flex-1 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
       iconSize: segment.icon,
     },
   };
@@ -183,12 +191,22 @@ export interface SegmentedControlProps extends SegmentedControlStyleProps {
   children: Snippet;
 }
 
-/** One segment: a Radio whose label may start with an icon. */
+/**
+ * One segment: a Radio whose label is one row — a leading item, the text,
+ * a trailing item — 8px apart.
+ */
 export interface SegmentedControlItemProps {
   /** What the control's `value` becomes when this segment is picked. */
   value: string;
   /** An icon before the label; alone, it is the label and needs a name. */
   icon?: IconSource;
+  /**
+   * Before the label in place of an `icon`: an asset (a logo, an avatar) in
+   * the icon's box. Receives the segment's state.
+   */
+  leading?: Snippet<[ControlState]>;
+  /** After the label: a Counter or a Badge. Receives the segment's state. */
+  trailing?: Snippet<[ControlState]>;
   isDisabled?: boolean;
   /** Names an icon-only segment. */
   accessibilityLabel?: string;

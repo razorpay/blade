@@ -1,12 +1,13 @@
-import { ICON_AXES, icons } from '../../index';
+import { ICON_AXES } from '../../index';
+import * as glyphs from '../../icons/glyphs';
 import type { StoryMeta } from '../types';
 
 const meta: StoryMeta = {
   title: 'Icon',
   description:
-    'An icon is data — SVG markup or a URL — that a host renders and sizes. The glyph set ships with it (packages/blade/components/icons).',
+    'An icon is an SVG import (`InfoIcon` from `@razorpay/blade-svelte/icons`, or the app’s own) that a host sizes and tints. With `bladeIconFontPlugin` it is a glyph of a font holding exactly the icons the app imports; without, its URL drawn as a mask. Single colour only; anything with its own colours is an Image.',
   argTypes: {
-    glyph: { control: 'select', options: Object.keys(icons) },
+    source: { control: 'select', options: Object.keys(glyphs) },
     size: { control: 'select', options: ICON_AXES.size },
     color: { control: 'select', options: ICON_AXES.color },
     accessibilityLabel: { control: 'text' },
@@ -14,14 +15,14 @@ const meta: StoryMeta = {
   stories: {
     Basic: {
       args: {
-        glyph: 'chevronDown',
+        source: 'ChevronDownIcon',
         size: 'medium',
         color: 'inherit',
         accessibilityLabel: '',
       },
     },
     Gallery: {
-      description: 'Every glyph in the set, by export name.',
+      description: 'Every predefined glyph, by export name. Type to filter.',
       argTypes: {},
     },
     Matrix: {

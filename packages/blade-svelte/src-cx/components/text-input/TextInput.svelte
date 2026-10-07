@@ -21,7 +21,8 @@
   import { getInputGroup } from '../../runes/input-group/context';
   import { createTextControl } from '../../runes/text-input/text-control.svelte';
   import Icon from '../icon/Icon.svelte';
-  import { close } from '../icons';
+  import { CloseIcon } from '../../icons';
+  import type { IconSource } from '../../runes/icon/source';
   import type { InputGroupSpan } from '../input-group/styles';
   import { resolveKeyboard, type TextInputType } from './keyboard';
   import {
@@ -94,10 +95,22 @@
     errorText?: string | Snippet;
     /** The line while `validationState` is `success`. */
     successText?: string | Snippet;
-    /** Before the text: a string (₹, +91) or a snippet (an icon, both). */
-    leading?: string | Snippet;
-    /** After the text: a string (@okaxis) or a snippet (an icon, a button). */
-    trailing?: string | Snippet;
+    /** A glyph before the text, sized and tinted by the field. */
+    leadingIcon?: IconSource;
+    /** Text before the value: ₹, +91. */
+    prefix?: string;
+    /**
+     * Before the text, after `leadingIcon` and `prefix`: Figma's leading
+     * selector slot (a currency or country picker). It sits on the field's
+     * own 4px padding, with no inset of its own.
+     */
+    leading?: Snippet;
+    /** Text after the value: @okaxis. */
+    suffix?: string;
+    /** A glyph after the text, sized and tinted by the field. */
+    trailingIcon?: IconSource;
+    /** After the text, last: Figma's trailing link slot (a Link, a button). */
+    trailing?: Snippet;
     autoFocus?: boolean;
     /** A clear button while the field holds text. @default false */
     showClearButton?: boolean;
@@ -154,7 +167,11 @@
     helpText,
     errorText,
     successText,
+    leadingIcon,
+    prefix,
     leading,
+    suffix,
+    trailingIcon,
     trailing,
     autoFocus = false,
     showClearButton = false,
@@ -269,11 +286,6 @@
   }
 </script>
 
-{#snippet affix(content: string | Snippet)}
-  <span class={cx(classes.affix, disabled && classes.disabled.affix)}>
-    {#if typeof content === 'string'}{content}{:else}{@render content()}{/if}
-  </span>
-{/snippet}
 
 <div
   class={cx(
@@ -312,8 +324,16 @@
     )}
     for={controlId}
   >
-    {#if leading}
-      {@render affix(leading)}
+    {#if leadingIcon || prefix || leading}
+      <span class={cx(classes.leading.group, disabled && classes.disabled.affix)}>
+        {#if leadingIcon}
+          <span class={classes.leading.icon}>
+            <Icon source={leadingIcon} size={classes.iconSize} />
+          </span>
+        {/if}
+        {#if prefix}<span class={classes.leading.prefix}>{prefix}</span>{/if}
+        {#if leading}<span class={classes.leading.slot}>{@render leading()}</span>{/if}
+      </span>
     {/if}
     <input
       id={controlId}
@@ -350,19 +370,29 @@
       {@attach control.attach}
       {@attach attach}
     />
-    {#if showClearButton && hasText}
-      <button
-        type="button"
-        class={classes.clear}
-        aria-label="Clear Input Content"
-        disabled={disabled || undefined}
-        onclick={clearField}
-      >
-        <Icon source={close} size="medium" />
-      </button>
-    {/if}
-    {#if trailing}
-      {@render affix(trailing)}
+    {#if (showClearButton && hasText) || suffix || trailingIcon || trailing}
+      <span class={cx(classes.trailing.group, disabled && classes.disabled.affix)}>
+        {#if showClearButton && hasText}
+          <span class={classes.trailing.item}>
+            <button
+              type="button"
+              class={classes.clear}
+              aria-label="Clear Input Content"
+              disabled={disabled || undefined}
+              onclick={clearField}
+            >
+              <Icon source={CloseIcon} size={classes.iconSize} />
+            </button>
+          </span>
+        {/if}
+        {#if suffix}<span class={classes.trailing.item}>{suffix}</span>{/if}
+        {#if trailingIcon}
+          <span class={classes.trailing.item}>
+            <Icon source={trailingIcon} size={classes.iconSize} />
+          </span>
+        {/if}
+        {#if trailing}<span class={classes.trailing.item}>{@render trailing()}</span>{/if}
+      </span>
     {/if}
   </label>
   {#if !group && (hint.text || counterMax)}

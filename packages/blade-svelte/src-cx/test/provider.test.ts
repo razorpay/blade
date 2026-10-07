@@ -24,8 +24,8 @@ describe('BladeProvider defaults', () => {
     expect(getByTestId('button').className).toContain('min-h-12');
     expect(inputBox(getByTestId('input')).className).toContain('min-h-12');
     expect(checkboxBox(getByTestId('checkbox')).className).toContain('w-5 h-5');
-    // Switch has small and medium only: large snaps to medium.
-    expect(switchTrack(getByTestId('switch')).className).toContain('h-6 w-11');
+    // Switch has small and medium only (Figma): large snaps to medium, 36×20.
+    expect(switchTrack(getByTestId('switch')).className).toContain('h-5 w-9');
   });
 
   it('leaves display components out of the overall size', () => {

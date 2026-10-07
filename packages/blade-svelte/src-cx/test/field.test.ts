@@ -24,6 +24,9 @@ describe('FieldLabel, as Blade FormLabel', () => {
     expect(span.querySelector('.sr-only')?.textContent?.trim()).toBe('required');
     const mark = [...span.querySelectorAll('[aria-hidden="true"]')];
     expect(mark.map((m) => m.textContent)).toEqual(['*']);
+    // Figma's _FormGroup-Header: a semibold `*`, 2px after the text.
+    expect(mark[0].className).toContain('ms-0.5');
+    expect(mark[0].className).toContain('font-semibold');
   });
 
   it('takes the type, colour and gap per size', () => {
@@ -73,5 +76,13 @@ describe('FieldCounter, as Blade CharacterCounter', () => {
     const counter = container.querySelector('span')!;
     expect(counter.textContent).toBe('3/10');
     expect(counter.className).toContain('text-surface-gray-muted');
+  });
+
+  it('keeps the count 11/16 at every size, as Figma', () => {
+    for (const size of ['small', 'medium', 'large'] as const) {
+      const { container, unmount } = render(FieldCounter, { props: { current: 3, max: 10, size } });
+      expect(container.querySelector('span')!.className).toContain('text-50 leading-50');
+      unmount();
+    }
   });
 });

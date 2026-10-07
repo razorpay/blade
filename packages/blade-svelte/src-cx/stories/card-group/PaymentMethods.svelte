@@ -4,16 +4,27 @@
     CardGroupItem,
     Badge,
     Icon,
-    icons,
     Skeleton,
     Text,
+    type CardGroupStyleProps,
   } from '../../index';
+  import {
+    BankIcon,
+    CreditCardIcon,
+    InfoIcon,
+    PhoneIcon,
+    WalletIcon,
+    type IconSource,
+  } from '../../icons';
+
+  // The meta's controls: variant and size restyle the list.
+  let { args = {} }: { args?: CardGroupStyleProps } = $props();
 
   interface Method {
     name: string;
     title: string;
     subtitle?: string;
-    glyph: string;
+    glyph: IconSource;
     inline?: boolean;
     critical?: boolean;
     offer?: string;
@@ -24,18 +35,18 @@
       name: 'upi',
       title: 'UPI',
       subtitle: 'Pay with any UPI app',
-      glyph: icons.phone,
+      glyph: PhoneIcon,
       inline: true,
       offer: 'Offers',
     },
-    { name: 'card', title: 'Cards', glyph: icons.card },
+    { name: 'card', title: 'Cards', glyph: CreditCardIcon },
     {
       name: 'netbanking',
       title: 'Netbanking',
-      glyph: icons.bank,
+      glyph: BankIcon,
       critical: true,
     },
-    { name: 'wallet', title: 'Wallets', glyph: icons.lock, inline: true },
+    { name: 'wallet', title: 'Wallets', glyph: WalletIcon, inline: true },
   ];
 
   let open = $state<string | number | null>(methods[0]?.name ?? null);
@@ -74,7 +85,7 @@
 </script>
 
 <div class="flex max-w-96 flex-col gap-3">
-  <CardGroup bind:value={open} label="All payment options">
+  <CardGroup bind:value={open} label="All payment options" variant={args.variant} size={args.size}>
     {#each methods as method (method.name)}
       {#snippet glyph()}
         <span class={method.critical ? 'opacity-700 grayscale' : ''}>
@@ -92,7 +103,7 @@
       <!-- Trailing replaces the chevron while there is something to say. -->
       {#snippet status()}
         {#if method.critical}
-          <Icon source={icons.info} size="large" />
+          <Icon source={InfoIcon} size="large" />
         {:else}
           <Skeleton class="w-5 h-5 rounded-2xsmall" />
         {/if}

@@ -8,12 +8,12 @@ left alone and outside the keyboard.
 ```svelte
 <Menu accessibilityLabel="Address actions" onSelect={(action) => run(action)}>
   {#snippet trigger()}
-    <IconButton icon={icons.more} accessibilityLabel="Address actions" />
+    <IconButton icon={MoreHorizontalIcon} accessibilityLabel="Address actions" />
   {/snippet}
-  <MenuItem value="edit" title="Edit address" icon={icons.user} />
-  <MenuItem value="copy" title="Copy address" icon={icons.copy} />
+  <MenuItem value="edit" title="Edit address" icon={UserIcon} />
+  <MenuItem value="copy" title="Copy address" icon={CopyIcon} />
   <hr />
-  <MenuItem value="remove" title="Remove" icon={icons.close} />
+  <MenuItem value="remove" title="Remove" icon={CloseIcon} />
 </Menu>
 ```
 
@@ -31,10 +31,23 @@ left alone and outside the keyboard.
 | Prop | Notes |
 | --- | --- |
 | `title` | What shows, and what typeahead matches |
-| `icon`, `isDisabled` | Per item |
+| `icon` | A 16px glyph before the title |
+| `leading` | In place of `icon`: an asset or an avatar in a 20px box |
+| `titleSuffix` | Beside the title: a Badge |
+| `trailing` | After the title: a glyph (a check, a chevron) or shortcut text |
+| `isDisabled` | Per item |
 | `value` | Reported to the Menu's `onSelect` |
 | `onClick` | The item's own act, before `onSelect` |
-| `children` | Custom content in place of the icon and title |
+| `children` | Custom content in place of the whole row |
+
+### Why `icon`, `leading`, `titleSuffix` and `trailing` are props
+
+Blade DSL's _Menu Item (Figma) is one 36px row, 8px in, whose parts sit 8px
+apart: the leading item (a 16px glyph on the 20px title line, or a 20px
+asset or avatar), the title (Body/Medium 14/20) with its suffix, and the
+trailing item (a 16px glyph or Caption/Small shortcut text). The item owns
+that row and its boxes, so each part is a prop. Rows sit 2px apart, 8px
+inside the menu.
 
 On the trigger, arrows, Enter and Space open it; inside, arrows rove (wrapping,
 skipping disabled items), Home/End jump, a typed letter finds a match, Escape

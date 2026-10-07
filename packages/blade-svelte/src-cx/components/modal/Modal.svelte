@@ -8,6 +8,8 @@
   import type { ResponsiveProps } from '../../runes/defaults/responsive';
   import { useComponentDefaults } from '../defaults';
   import Surface from '../layer/Surface.svelte';
+  import Icon from '../icon/Icon.svelte';
+  import type { IconSource } from '../../runes/icon/source';
   import ModalCloseIcon from './ModalCloseIcon.svelte';
   import { resolveModal, type ModalStyleProps } from './styles';
 
@@ -33,6 +35,17 @@
     title?: string | Snippet;
     /** One muted line under the title; it describes the modal. */
     subtitle?: string;
+    /** A glyph before the title, on its first line, 8px from it. */
+    icon?: IconSource;
+    /** Before the title in place of an `icon`: an asset (32px) or an avatar, 8px from it. */
+    leading?: Snippet;
+    /** Beside the title, 8px from it: a Counter or a Badge. */
+    titleSuffix?: Snippet;
+    /**
+     * After the title block, 16px clear of it and of the close button: a
+     * Badge, text, a Link or an action.
+     */
+    trailing?: Snippet<[{ close: () => void }]>;
     /**
      * The header's content, around the drawn title and subtitle: it receives
      * them as snippets (`title`, `subtitle`; each renders nothing when its
@@ -86,6 +99,10 @@
     role = 'dialog',
     title,
     subtitle,
+    icon,
+    leading,
+    titleSuffix,
+    trailing,
     header: headerContent,
     body,
     footer,
@@ -114,7 +131,9 @@
   const style = useComponentDefaults('Modal', () => styleProps);
   const classes = $derived(resolveModal(style.current));
   const close = () => dialog.close();
-  const hasHeader = $derived(Boolean(title || subtitle || headerContent));
+  const hasHeader = $derived(
+    Boolean(title || subtitle || headerContent || icon || leading || trailing)
+  );
 </script>
 
 <!--
@@ -142,7 +161,12 @@
 
 <!-- The drawn title and subtitle: on their own, or handed to `header`. -->
 {#snippet titleSlot()}
-  {#if title}
+  {#if title && titleSuffix}
+    <div class={classes.titleRow}>
+      {@render text(title, classes.title, titleId)}
+      <span class={classes.titleSuffix}>{@render titleSuffix()}</span>
+    </div>
+  {:else if title}
     {@render text(title, classes.title, titleId)}
   {/if}
 {/snippet}
@@ -156,8 +180,15 @@
 {#snippet header()}
   {#if hasHeader}
     <div class={classes.header}>
-      <div class={classes.headerRow}>
-        <div class={cx(classes.titleBlock, isDismissible && classes.closeClearance)}>
+      <div class={cx(classes.headerRow, isDismissible && classes.closeClearance)}>
+        {#if icon}
+          <span class={cx(classes.leading, classes.leadingIcon)}>
+            <Icon source={icon} size="large" />
+          </span>
+        {:else if leading}
+          <span class={classes.leading}>{@render leading()}</span>
+        {/if}
+        <div class={classes.titleBlock}>
           {#if headerContent}
             {@render headerContent({ title: titleSlot, subtitle: subtitleSlot, close })}
           {:else}
@@ -165,6 +196,9 @@
             {@render subtitleSlot()}
           {/if}
         </div>
+        {#if trailing}
+          <div class={classes.trailing}>{@render trailing({ close })}</div>
+        {/if}
       </div>
     </div>
   {:else}

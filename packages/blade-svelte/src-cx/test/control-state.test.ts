@@ -16,9 +16,9 @@ describe('selection controls: snippet state, label area and rich hints', () => {
 
   it("radio snippets follow the radio's state", async () => {
     const { getByTestId } = render(ControlStateHarness);
-    expect(getByTestId('radio-trailing').dataset.checked).toBe('false');
+    expect(getByTestId('radio-state').dataset.checked).toBe('false');
     await fireEvent.click(getByTestId('radio-monthly'));
-    expect(getByTestId('radio-trailing').dataset.checked).toBe('true');
+    expect(getByTestId('radio-state').dataset.checked).toBe('true');
     expect(getByTestId('radio-yearly').dataset.disabled).toBe('true');
   });
 

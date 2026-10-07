@@ -3,7 +3,8 @@ import { flushSync, createRawSnippet } from 'svelte';
 import { fireEvent, render } from '@testing-library/svelte';
 import Button from '../components/button/Button.svelte';
 import ButtonHarness from './fixtures/ButtonHarness.svelte';
-import { expectClass, expectMarkup, expectNoClass } from './classes';
+import { expectClass, expectGlyph, expectMarkup, expectNoClass, glyphsIn } from './classes';
+import { ArrowRightIcon, CloseIcon, WalletIcon } from '../icons';
 
 const label = createRawSnippet(() => ({ render: () => '<span>Pay</span>' }));
 
@@ -79,7 +80,8 @@ describe('Button standalone', () => {
     expectClass(button, 'inline-flex');
     expectClass(button, 'bg-interactive-primary-default');
     expectClass(button, 'min-h-9');
-    expectClass(button, 'font-medium');
+    // Figma's label is Semi Bold.
+    expectClass(button, 'font-semibold');
   });
 
   it('renders an anchor with href, and ignores isDisabled there', () => {
@@ -93,11 +95,11 @@ describe('Button standalone', () => {
   });
 
   it.each([
-    ['xsmall', 'min-h-7', 'px-2', 'text-75'],
-    ['small', 'min-h-8', 'px-2', 'text-75'],
-    ['medium', 'min-h-9', 'px-3', 'text-100'],
-    ['large', 'min-h-12', 'px-4', 'text-200'],
-  ] as const)('%s: Blade’s height, padding and type', (size, height, pad, type) => {
+    ['xsmall', 'min-h-7', 'px-2', 'text-75', 'tracking-50'],
+    ['small', 'min-h-8', 'px-2', 'text-75', 'tracking-50'],
+    ['medium', 'min-h-9', 'px-3', 'text-100', 'tracking-50'],
+    ['large', 'min-h-12', 'px-4', 'text-200', 'tracking-25'],
+  ] as const)('%s: Figma’s height, padding and type', (size, height, pad, type, tracking) => {
     const { getByTestId } = render(Button, {
       props: { children: label, size, testID: 'b' },
     });
@@ -105,6 +107,38 @@ describe('Button standalone', () => {
     expectClass(button, height);
     expectClass(button, pad);
     expectClass(button, type);
+    expectClass(button, tracking);
+  });
+
+  it.each([
+    ['xsmall', 'w-3 h-3'],
+    ['small', 'w-3 h-3'],
+    ['medium', 'w-4 h-4'],
+    ['large', 'w-4 h-4'],
+  ] as const)('%s: leading and trailing icons on the row, the label 4px each side', (size, iconBox) => {
+    const { getByTestId } = render(Button, {
+      props: { children: label, size, icon: WalletIcon, trailingIcon: ArrowRightIcon, testID: 'b' },
+    });
+    const content = getByTestId('b').querySelector('[data-part="content"]')!;
+    const [leading, labelBox, trailing] = [...content.children] as HTMLElement[];
+    expectGlyph(leading.parentElement, WalletIcon);
+    expect(leading.dataset.icon).toBe('wallet');
+    expectClass(labelBox, 'px-1');
+    expect(trailing.dataset.icon).toBe('arrow-right');
+    expectClass(leading, iconBox);
+    expectClass(content, 'whitespace-nowrap');
+    expect(content.className).not.toContain('gap-');
+  });
+
+  it('an icon alone is a square of the height around a 16px glyph, named by its label', () => {
+    const { getByTestId } = render(Button, {
+      props: { icon: CloseIcon, size: 'small', accessibilityLabel: 'Close', testID: 'b' },
+    });
+    const button = getByTestId('b');
+    expectClass(button, 'w-8 h-8');
+    expect(button.className).not.toContain('px-2');
+    expect(button.getAttribute('aria-label')).toBe('Close');
+    expectClass(glyphsIn(button)[0], 'w-4 h-4');
   });
 
   it('white: a white fill with black text; outlined, a white rim', () => {
@@ -120,12 +154,9 @@ describe('Button standalone', () => {
     expectClass(outlined, 'text-interactive-static-white-normal');
   });
 
-  it('tertiary takes primary or white; another colour draws as primary', () => {
-    const tertiary = render(Button, {
-      props: { children: label, variant: 'tertiary', color: 'negative', testID: 'b' },
-    }).getByTestId('b');
-    expectClass(tertiary, 'shadow-button-outlined');
-    expectClass(tertiary, 'text-interactive-gray-normal');
+  it('has no tertiary: Blade DSL (Figma) deprecates it', async () => {
+    const { BUTTON_AXES } = await import('../components/button/styles');
+    expect(BUTTON_AXES.variant).toEqual(['primary', 'secondary']);
   });
 
   it('resolves preset style props and appends the caller class last', () => {

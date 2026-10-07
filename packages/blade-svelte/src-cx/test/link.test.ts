@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import LinkHarness from './fixtures/LinkHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectGlyph } from './classes';
 
 const prevented = (): string | undefined => document.body.dataset.prevented;
 
@@ -36,7 +36,7 @@ describe('Link', () => {
   it('puts the glyph on the asked side, sized by the link', () => {
     const leading = render(LinkHarness, { props: { withIcon: true } });
     const first = leading.getByTestId('link').firstElementChild;
-    expect(first?.querySelector('svg')).not.toBeNull();
+    expectGlyph(first);
     expectClass(first?.firstElementChild, 'w-4 h-4');
     leading.unmount();
 
@@ -44,8 +44,26 @@ describe('Link', () => {
       props: { withIcon: true, iconPosition: 'trailing', size: 'small' },
     });
     const last = trailing.getByTestId('link').lastElementChild;
-    expect(last?.querySelector('svg')).not.toBeNull();
+    expectGlyph(last);
     expectClass(last?.firstElementChild, 'w-3 h-3');
+  });
+
+  it('shows a leading and a trailing icon together, 4px from the text, letter-spaced', async () => {
+    const { InfoIcon, ExternalLinkIcon } = await import('../icons');
+    const { default: Link } = await import('../components/link/Link.svelte');
+    const { createRawSnippet } = await import('svelte');
+    const children = createRawSnippet(() => ({ render: () => '<span>Help</span>' }));
+    const { getByTestId } = render(Link, {
+      props: { href: '/help', icon: InfoIcon, trailingIcon: ExternalLinkIcon, testID: 'l', children },
+    });
+    const link = getByTestId('l');
+    const first = link.firstElementChild as HTMLElement;
+    const last = link.lastElementChild as HTMLElement;
+    expectClass(first, 'me-1');
+    expectGlyph(first, InfoIcon);
+    expectClass(last, 'ms-1');
+    expectGlyph(last, ExternalLinkIcon);
+    expectClass(link, 'tracking-50');
   });
 
   it('a disabled link has no href, says so, and swallows the click', () => {
@@ -141,10 +159,10 @@ describe('Link, as Blade', () => {
     expect(link.root).toContain('rounded-xsmall');
   });
 
-  it("takes Blade's seven colours", async () => {
+  it("takes Figma's five colours", async () => {
     const { LINK_COLORS, resolveLink } = await import('../components/link/styles');
     expect([...LINK_COLORS].sort()).toEqual(
-      ['information', 'negative', 'neutral', 'notice', 'positive', 'primary', 'white'].sort(),
+      ['negative', 'neutral', 'positive', 'primary', 'white'].sort(),
     );
     expect(resolveLink({ color: 'white' }).root).toContain('text-interactive-static-white-normal');
   });
