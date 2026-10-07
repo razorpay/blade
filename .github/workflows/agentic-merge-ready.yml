@@ -1,0 +1,67 @@
+# Agentic Merge Ready
+#
+# Labels a PR `✨ Agentic Merge Ready ✨` when the required blade-validate
+# checks are green AND comments are ready (none, or every visible thread is
+# Slash rocket / -1, and the review is not CHANGES_REQUESTED) AND CI is either
+# first-attempt green or red→green via a Slash commit. Human-fixed CI after a
+# failure does not qualify.
+# resolve-comments skill does NOT mark threads resolved — we read reactions.
+#
+# A new commit (pull_request synchronize) drops the label immediately. The
+# label is earned again only when Blade Validate completes via workflow_run.
+#
+# WHY workflow_run and NOT check_suite: GitHub does not fire check_suite for
+# Actions-created suites.
+#
+# Green = every check in GATE_CHECK_NAMES (evaluate.js) passes. Not
+# `gh pr checks --required` (omits still-Expected contexts).
+#
+# This job never fails the PR: it only adds, removes, or leaves the label,
+# and writes gateStatus to the job summary / notice. workflow_run only runs
+# the default-branch copy.
+
+name: Agentic Repo / Agentic Merge Ready
+
+on:
+  workflow_run:
+    workflows:
+      - "Blade Validate"
+      - "Agentic Repo / Slash Auto-Resolve PR Comments"
+    types: [completed]
+  pull_request:
+    types: [synchronize]
+
+permissions:
+  contents: read
+  checks: read
+  statuses: read
+  actions: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: agentic-merge-ready-${{ github.event.workflow_run.head_sha || github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  label:
+    name: Maybe label Agentic Merge Ready
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      # Always run the default-branch script, never PR-modified code.
+      - name: Checkout label script
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/scripts
+
+      - name: Evaluate and sync label
+        uses: actions/github-script@v7
+        with:
+          # Fork PRs get no secrets; fall back so the job still evaluates.
+          github-token: ${{ secrets.CI_BOT_TOKEN || github.token }}
+          script: |
+            const { run } = require('./.github/scripts/agentic-merge-ready/add-label.js');
+            await run({ github, context, core });

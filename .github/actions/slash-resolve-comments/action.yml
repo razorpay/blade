@@ -1,0 +1,218 @@
+name: Slash Resolve Comments
+description: |
+  Auto-resolve PR review comments via Slash agent.
+  Checks reviewer authorization (PR author, configured allowlist, or bot),
+  skips once the PR has more than max_runs bot reviews, unless a comment in
+  the triggering review mentions slash_mentions. Filters eligible comments
+  (manual @slash delegation or top-level bot review comments; bot replies never
+  re-trigger), triggers a Slash agent task, and posts reply comments with
+  a link to the execution logs.
+
+inputs:
+  # ── GitHub context ──────────────────────────────────────────────
+  github_token:
+    description: "GitHub token for API calls (use secrets.GITHUB_TOKEN)"
+    required: true
+  pr_number:
+    description: "Pull request number"
+    required: true
+  review_id:
+    description: "Review ID (github.event.review.id)"
+    required: true
+  pr_author:
+    description: "PR author login (github.event.pull_request.user.login)"
+    required: true
+  actor:
+    description: "Actor who submitted the review (github.actor)"
+    required: true
+  repository:
+    description: "Repository in org/repo format (github.repository)"
+    required: true
+
+  # ── Slash API credentials ───────────────────────────────────────
+  branch:
+    description: "Feature branch for the Slash agent to work on (passed through to the slash action's 'branch' input). Cannot be 'main' or 'master'."
+    required: false
+  slash_username:
+    description: "Slash API username (Basic auth). 'dashboard' is blocked; use 'ci' or 'admin'."
+    required: false
+    default: ci
+  slash_password:
+    description: "Slash API password. Pass via secrets."
+    required: true
+
+  # ── Configuration ───────────────────────────────────────────────
+  enabled:
+    description: "Master kill switch. Set to 'false' to skip all processing."
+    required: false
+    default: "true"
+  allowed_usernames:
+    description: "Comma-separated list of GitHub usernames allowed to trigger auto-resolve. Empty = everyone allowed."
+    required: false
+    default: ""
+  max_runs:
+    description: "Maximum review blocks from bot_login to still auto-resolve. A block is a submitted review. Empty reviews created for rzp-slash[bot] / rzp-slash-public[bot] inline replies do not count; an empty summary from any other bot_login does. Skipped when more than this many exist, unless a comment in the triggering review mentions slash_mentions."
+    required: false
+    default: "4"
+  bot_login:
+    description: "Comma-separated bot logins whose top-level review comments are auto-resolved. Replies from these bots never re-trigger."
+    required: false
+    default: rzp-slash-public[bot]
+  slash_mentions:
+    description: "Comma-separated mention strings that indicate manual delegation"
+    required: false
+    default: "@rzp-slash-public,@razorpay/slash-public"
+  prompt_template:
+    description: |
+      Prompt template for the Slash agent. Use {pr_number} and {comment_urls} as placeholders.
+    required: false
+    default: "Resolve the review comments on PR #{pr_number} using the /resolve-comments skill. COMMENT_URLS:\n{comment_urls}\n\nStrictly use the resolve-comments skill only. Do not use any other skill.\nIf the resolve-comments skill is not found on the current branch, look for it on the master branch before terminating. If it exists on master, you can read it as markdown file and execute it since you won't be able to use it as skill directly."
+  reply_template:
+    description: "Reply message template. Use {execution_url} as placeholder."
+    required: false
+    default: "**✨ Agentic Resolution ✨:** Auto Comment Resolution Triggered ([**View Logs**]({execution_url}))"
+  human_help_label:
+    description: "Label to add to the PR when max runs is reached"
+    required: false
+    default: "Human Help Needed 🧑🏻‍💻"
+  execution_logs_base_url:
+    description: "Base URL for Slash execution logs"
+    required: false
+    default: https://slash.concierge.razorpay.com
+
+  # ── Slash action polling ────────────────────────────────────────
+  base_url:
+    description: "Slash API base URL"
+    required: false
+    default: https://slash-api.concierge.razorpay.com
+  wait_for_completion:
+    description: "Whether to poll until the Slash task completes (false = fire-and-forget, matching original behavior)"
+    required: false
+    default: "false"
+  initial_wait_seconds:
+    description: "Sleep before the first poll (only when wait_for_completion is true)"
+    required: false
+    default: "30"
+  poll_interval_seconds:
+    description: "Seconds between polls"
+    required: false
+    default: "15"
+  poll_timeout_minutes:
+    description: "Hard timeout for the poll loop in minutes"
+    required: false
+    default: "90"
+
+outputs:
+  task_id:
+    description: "Slash task ID (if a task was triggered)"
+    value: ${{ steps.slash.outputs.task_id }}
+  status:
+    description: "Slash task final status"
+    value: ${{ steps.slash.outputs.status }}
+  pr_url:
+    description: "PR URL opened by Slash (if any)"
+    value: ${{ steps.slash.outputs.pr_url }}
+  triggered:
+    description: "Whether a Slash task was triggered ('true' or 'false')"
+    value: ${{ steps.fetch-comments.outputs.has_comments || 'false' }}
+  authorized:
+    description: "Whether the reviewer was authorized ('true' or 'false')"
+    value: ${{ steps.auth-check.outputs.authorized || 'false' }}
+  allowed:
+    description: "Whether the run was allowed — bot reviews are within max_runs ('true' or 'false')"
+    value: ${{ steps.run-count-check.outputs.allowed || 'false' }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check enabled
+      id: enabled-check
+      shell: bash
+      env:
+        ENABLED: ${{ inputs.enabled }}
+      run: |
+        if [ "$ENABLED" = "true" ]; then
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "Auto-resolve disabled via enabled=false — skipping."
+          echo "enabled=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    # ── 1. Auth check ──────────────────────────────────────────────
+    - name: Check if reviewer is allowed to trigger auto-resolve
+      id: auth-check
+      if: steps.enabled-check.outputs.enabled == 'true'
+      shell: bash
+      env:
+        ACTOR: ${{ inputs.actor }}
+        PR_AUTHOR: ${{ inputs.pr_author }}
+        BOT_LOGIN: ${{ inputs.bot_login }}
+        ALLOWED_USERNAMES: ${{ inputs.allowed_usernames }}
+      run: ${{ github.action_path }}/scripts/check-auth.sh
+
+    # ── 2. Bot-review cap ──────────────────────────────────────────
+    - name: Check bot review count
+      id: run-count-check
+      if: steps.auth-check.outputs.authorized == 'true'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
+        REPO: ${{ inputs.repository }}
+        PR_NUMBER: ${{ inputs.pr_number }}
+        MAX_RUNS: ${{ inputs.max_runs }}
+        BOT_LOGIN: ${{ inputs.bot_login }}
+        REVIEW_ID: ${{ inputs.review_id }}
+        SLASH_MENTIONS: ${{ inputs.slash_mentions }}
+        HUMAN_HELP_LABEL: ${{ inputs.human_help_label }}
+      run: ${{ github.action_path }}/scripts/check-run-count.sh
+
+    # ── 3. Fetch & filter review comments, build prompt ────────────
+    - name: Fetch review comments and build prompt
+      id: fetch-comments
+      if: steps.auth-check.outputs.authorized == 'true' && steps.run-count-check.outputs.allowed == 'true'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
+        REPO: ${{ inputs.repository }}
+        PR_NUMBER: ${{ inputs.pr_number }}
+        REVIEW_ID: ${{ inputs.review_id }}
+        BOT_LOGIN: ${{ inputs.bot_login }}
+        SLASH_MENTIONS: ${{ inputs.slash_mentions }}
+        PROMPT_TEMPLATE: ${{ inputs.prompt_template }}
+        EVENT_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+      run: ${{ github.action_path }}/scripts/fetch-comments.sh
+
+    # ── 4. Trigger Slash agent ─────────────────────────────────────
+    - name: Trigger Slash
+      id: slash
+      if: steps.fetch-comments.outputs.has_comments == 'true'
+        # Local paths resolve against the caller's checked-out workspace, so the
+      # calling workflow must check out .github/actions.
+      uses: ./.github/actions/slash
+      with:
+        mode: run
+        prompt: ${{ steps.fetch-comments.outputs.prompt }}
+        repository_url: https://github.com/${{ inputs.repository }}
+        branch: ${{ inputs.branch || github.event.pull_request.head.ref || steps.fetch-comments.outputs.head_ref }}
+        username: ${{ inputs.slash_username }}
+        password: ${{ inputs.slash_password }}
+        base_url: ${{ inputs.base_url }}
+        initial_wait_seconds: ${{ inputs.wait_for_completion == 'true' && inputs.initial_wait_seconds || '0' }}
+        poll_interval_seconds: ${{ inputs.poll_interval_seconds }}
+        poll_timeout_minutes: ${{ inputs.wait_for_completion == 'true' && inputs.poll_timeout_minutes || '0' }}
+        fail_on_timeout: ${{ inputs.wait_for_completion == 'true' && 'true' || 'false' }}
+        fail_on_agent_failure: ${{ inputs.wait_for_completion == 'true' && 'true' || 'false' }}
+
+    # ── 5. Post reply comments ─────────────────────────────────────
+    - name: Post reply comments
+      if: steps.fetch-comments.outputs.has_comments == 'true' && steps.slash.outputs.task_id != ''
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
+        REPO: ${{ inputs.repository }}
+        PR_NUMBER: ${{ inputs.pr_number }}
+        COMMENT_IDS: ${{ steps.fetch-comments.outputs.comment_ids }}
+        TASK_ID: ${{ steps.slash.outputs.task_id }}
+        REPLY_TEMPLATE: ${{ inputs.reply_template }}
+        EXECUTION_LOGS_BASE_URL: ${{ inputs.execution_logs_base_url }}
+      run: ${{ github.action_path }}/scripts/post-reply.sh

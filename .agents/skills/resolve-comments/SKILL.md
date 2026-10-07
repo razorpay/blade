@@ -55,3 +55,18 @@ git add -A && git diff --cached --quiet || (git commit -m "fix: <relevant commit
 After resolving, reply to each inlined comment with small message and add `[resolved by agent]` at the end (if you have not already done so).
 
 - Never post a new comment on the PR. Only reply to the inlined comments.
+
+### 6. React to the Original Comment
+
+React to the original (first) comment of each thread based on how it was resolved. The `✨ Agentic Merge Ready ✨` label reads these reactions, so never skip this step.
+
+| Resolution                    | Reaction   |
+| ----------------------------- | ---------- |
+| Code fix required             | `rocket`   |
+| Clarification request         | `rocket`   |
+| Invalid or irrelevant comment | `-1`       |
+| Needs PR author input         | `confused` |
+
+```bash
+gh api repos/razorpay/blade/pulls/comments/{COMMENT_ID}/reactions --method POST --field content=rocket
+```

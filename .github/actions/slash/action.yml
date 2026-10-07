@@ -1,0 +1,1085 @@
+name: Slash Agent
+description: |
+  Trigger a Slash autonomous agent task and poll it to completion.
+  Supports run / batch / multi-repo / resume modes. Emits task_id, status, PR URL(s),
+  and the full result/metadata blobs as outputs, plus a markdown Job Summary.
+
+inputs:
+  mode:
+    description: "One of: run | batch | multi-repo | resume"
+    required: false
+    default: run
+  base_url:
+    description: "Slash API base URL"
+    required: false
+    default: https://slash-api.concierge.razorpay.com
+  username:
+    description: "Basic-auth username (service account role). 'dashboard' is blocked server-side; use 'ci' or 'admin'."
+    required: false
+    default: ci
+  password:
+    description: "Basic-auth password for the service account. Pass via secrets."
+    required: true
+
+  prompt:
+    description: "Prompt for the agent (required for run / batch / multi-repo)."
+    required: false
+  repository_url:
+    description: "Repository URL (mode=run). Omit for clean-slate mode."
+    required: false
+  branch:
+    description: "Feature branch (mode=run). Cannot be 'main' or 'master'."
+    required: false
+  repositories_json:
+    description: |
+      JSON array of repos for batch / multi-repo, e.g.
+      [{"repository_url":"https://github.com/razorpay/foo","branch":"feat/x"}, ...]
+      batch: 1-50 entries. multi-repo: 1-10 entries.
+    required: false
+  skills:
+    description: "Newline- or comma-separated list of skills."
+    required: false
+  plugins:
+    description: "Newline- or comma-separated list of plugins. Each must match ^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+    required: false
+  model:
+    description: "Model for the Slash session (e.g. 'claude-sonnet-4-6'). Empty = server-side default routing."
+    required: false
+  slack_channel:
+    description: "Slack channel for completion notification (leading '#' is stripped server-side)."
+    required: false
+  plugin:
+    description: "Preferred plugin directory name (alternative to 'agent')."
+    required: false
+  agent:
+    description: "Explicit agent override."
+    required: false
+  source_id:
+    description: "Source identifier (e.g. DevRev ticket id)."
+    required: false
+  connector:
+    description: "One of: devrev | dashboard | slack. Default 'dashboard'."
+    required: false
+    default: dashboard
+  sandbox:
+    description: "Sandbox execution profile (e.g. 'agentic-ci'). Sent as X-Sandbox header. Empty = default routing."
+    required: false
+    default: ""
+  user_email:
+    description: "Triggering user email (server only honors this for 'admin' Basic-auth)."
+    required: false
+
+  parent_task_id:
+    description: |
+      Root task id (mode=resume; required). ALWAYS pass the task_id returned
+      by the original run/batch/multi-repo call - never the task_id of a
+      previous resume turn. The server walks parent.metadata.children itself
+      to find the most recent completed turn and threads its session +
+      checkpoint into the new child. Cycle counter and children list are
+      managed server-side; the consumer only ever knows the root id.
+    required: false
+  enrichment_comments_json:
+    description: |
+      JSON array of comments for resume, e.g.
+      [{"author":"...","author_email":"...","body":"...","created_at":"..."}, ...]
+    required: false
+  resume_context_json:
+    description: "JSON object: resume context (DevRev or Slack-shaped)."
+    required: false
+  ticket_context_json:
+    description: "JSON object: legacy ticket context (merged into resume_context server-side)."
+    required: false
+  resume_source:
+    description: "One of: devrev | slack_reengagement. Default 'devrev'."
+    required: false
+    default: devrev
+
+  initial_wait_seconds:
+    description: "Sleep before the first poll (covers SQS pickup + clone)."
+    required: false
+    default: "30"
+  poll_interval_seconds:
+    description: "Seconds between polls of /api/v1/tasks/{task_id}."
+    required: false
+    default: "15"
+  poll_timeout_minutes:
+    description: "Hard timeout for the poll loop in minutes."
+    required: false
+    default: "90"
+  fail_on_timeout:
+    description: "Fail the step (exit 1) when polling times out."
+    required: false
+    default: "true"
+  fail_on_agent_failure:
+    description: "Fail the step (exit 1) when the agent terminates with status in {failed, cancelled}."
+    required: false
+    default: "true"
+  poll_children:
+    description: "When mode=batch, poll each child task on completion to harvest per-child status + PR URLs."
+    required: false
+    default: "false"
+
+  # ── Agent-platform routing ─────────────────────────────────────
+  backend:
+    description: |
+      Which backend dispatches the run: "swe-agent" (default, current
+      behaviour), "agent-platform" (force new platform), or "splitz"
+      (evaluate Splitz experiment per repo for gradual migration).
+      Only mode=run is routable; batch/multi-repo/resume warn and stay
+      on swe-agent.  When branch is set, forces swe-agent (AP does
+      not yet support branch targeting).
+    required: false
+    default: "swe-agent"
+  api_key:
+    description: |
+      Agent-platform API key (ak_...).  Required when backend is
+      "agent-platform" or "splitz".  Pass via secrets, e.g.
+      secrets.SLASH_CI_API_KEY.
+    required: false
+    default: ""
+  splitz_password:
+    description: |
+      Splitz Basic-auth password for experiment evaluation.
+      Required when backend is "splitz".  Pass via secrets, e.g.
+      secrets.SPLITZ_PASSWORD.
+    required: false
+    default: ""
+  splitz_experiment:
+    description: |
+      Splitz experiment name for per-repo routing.
+      Only used when backend is "splitz".
+    required: false
+    default: "ci_migration_to_agent_platform"
+
+outputs:
+  task_id:
+    description: |
+      Task id from the trigger response. For run/batch/multi-repo this is the
+      new ROOT task id - keep it and pass it as parent_task_id for any future
+      resume. For resume this is the new CHILD task id for THIS turn - use it
+      to inspect this turn's status / PR / result, but do NOT seed the next
+      resume with it (always re-use the original root id for that).
+    value: ${{ steps.platform_trigger.outputs.task_id || steps.outputs.outputs.task_id }}
+  status:
+    description: "Final task status (e.g. completed, failed, cancelled, timeout, already_running)."
+    value: ${{ steps.platform_trigger.outputs.status || steps.outputs.outputs.status }}
+  progress:
+    description: "Final progress integer (0-100), or empty."
+    value: ${{ steps.outputs.outputs.progress }}
+  result_json:
+    description: "Final 'result' object as compact JSON. Empty if not present."
+    value: ${{ steps.platform_trigger.outputs.result_json || steps.outputs.outputs.result_json }}
+  metadata_json:
+    description: "Final 'metadata' object as compact JSON. Empty if not present."
+    value: ${{ steps.platform_trigger.outputs.metadata_json || steps.outputs.outputs.metadata_json }}
+  pr_url:
+    description: "First razorpay PR URL extracted from the result blob. Empty if none."
+    value: ${{ steps.platform_trigger.outputs.pr_url || steps.outputs.outputs.pr_url }}
+  pr_urls_json:
+    description: "JSON array of all unique razorpay PR URLs extracted."
+    value: ${{ steps.platform_trigger.outputs.pr_urls_json || steps.outputs.outputs.pr_urls_json }}
+  child_task_ids_json:
+    description: "JSON array of child task ids (mode=batch only)."
+    value: ${{ steps.outputs.outputs.child_task_ids_json }}
+  routed_to:
+    description: "Which backend handled this run: swe-agent or agent-platform."
+    value: ${{ steps.platform_trigger.outputs.routed_to || 'swe-agent' }}
+
+runs:
+  using: composite
+  steps:
+    - name: Validate inputs
+      id: validate
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        PROMPT: ${{ inputs.prompt }}
+        BRANCH: ${{ inputs.branch }}
+        REPOS_JSON: ${{ inputs.repositories_json }}
+        PLUGINS: ${{ inputs.plugins }}
+        PARENT_TASK_ID: ${{ inputs.parent_task_id }}
+        ENRICHMENT_COMMENTS_JSON: ${{ inputs.enrichment_comments_json }}
+        PASSWORD: ${{ inputs.password }}
+        BACKEND: ${{ inputs.backend }}
+        API_KEY_SET: ${{ inputs.api_key != '' }}
+        HAS_BRANCH: ${{ inputs.branch != '' }}
+      run: |
+        set -euo pipefail
+
+        # ── Validate backend ──
+        case "$BACKEND" in
+          swe-agent|agent-platform|splitz) ;;
+          *) echo "::error::Invalid backend '$BACKEND'. Must be one of: swe-agent, agent-platform, splitz."; exit 1 ;;
+        esac
+
+        # ── Validate password: required unless backend=agent-platform ──
+        if [[ "$BACKEND" != "agent-platform" ]] && [ -z "${PASSWORD:-}" ]; then
+          echo "::error::Input 'password' is required (Basic-auth password) when backend is not agent-platform."
+          exit 1
+        fi
+
+        # ── Warn when non-run mode forces swe-agent ──
+        if [[ "$BACKEND" != "swe-agent" && "$MODE" != "run" ]]; then
+          echo "::warning::backend=$BACKEND with mode=$MODE — only mode=run is routable, falling back to swe-agent"
+        fi
+
+        # branch targeting not yet supported on AP (501 execution_plan_unsupported)
+
+        case "$MODE" in
+          run|batch|multi-repo|resume) ;;
+          *) echo "::error::Invalid mode '$MODE'. Must be one of: run, batch, multi-repo, resume."; exit 1 ;;
+        esac
+
+        case "$MODE" in
+          run|batch|multi-repo)
+            if [ -z "${PROMPT:-}" ]; then
+              echo "::error::'prompt' is required for mode=$MODE."
+              exit 1
+            fi
+            ;;
+          resume)
+            if [ -z "${PARENT_TASK_ID:-}" ]; then
+              echo "::error::'parent_task_id' is required for mode=resume."
+              exit 1
+            fi
+            if [ -n "${ENRICHMENT_COMMENTS_JSON:-}" ]; then
+              # Validate JSON shape: must be an array; each entry must have
+              # non-empty 'body' AND 'created_at'. Server filters bot comments
+              # and takes at most 5 newest by created_at - missing either
+              # field silently drops the comment, leading to "no human
+              # comments" warnings and a verbatim re-run of the original task.
+              # Heredoc body deliberately lives at the YAML block's base indent
+              # (column 0 once YAML strips, so Python sees column 0) - same
+              # pattern as the Build payload step below.
+              ENRICHMENT_VALIDATION=$(ENRICHMENT_COMMENTS_JSON="$ENRICHMENT_COMMENTS_JSON" python3 - <<'PY'
+        import json, os
+        raw = os.environ.get("ENRICHMENT_COMMENTS_JSON", "")
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as e:
+            print(f"INVALID_JSON: {e}")
+            raise SystemExit(0)
+        if not isinstance(data, list):
+            print("NOT_AN_ARRAY")
+            raise SystemExit(0)
+        problems = []
+        for i, c in enumerate(data):
+            if not isinstance(c, dict):
+                problems.append(f"index {i}: not an object")
+                continue
+            if not c.get("body"):
+                problems.append(f"index {i}: missing or empty 'body'")
+            if not c.get("created_at"):
+                problems.append(f"index {i}: missing or empty 'created_at'")
+        if problems:
+            print("BAD_SHAPE: " + "; ".join(problems))
+        else:
+            print("OK")
+        PY
+              )
+              case "$ENRICHMENT_VALIDATION" in
+                OK) ;;
+                INVALID_JSON*)
+                  echo "::error::'enrichment_comments_json' is not valid JSON: ${ENRICHMENT_VALIDATION#INVALID_JSON: }"
+                  exit 1
+                  ;;
+                NOT_AN_ARRAY)
+                  echo "::error::'enrichment_comments_json' must be a JSON array (got non-array)."
+                  exit 1
+                  ;;
+                BAD_SHAPE*)
+                  echo "::error::'enrichment_comments_json' has malformed entries: ${ENRICHMENT_VALIDATION#BAD_SHAPE: }. Each entry needs at least 'body' and 'created_at' (ISO-8601 timestamp); 'author' / 'author_email' are recommended."
+                  exit 1
+                  ;;
+                *)
+                  echo "::error::Unexpected enrichment validation output: $ENRICHMENT_VALIDATION"
+                  exit 1
+                  ;;
+              esac
+            fi
+            ;;
+        esac
+
+        if [ "$MODE" = "run" ] && [ -n "${BRANCH:-}" ]; then
+          if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+            echo "::error::'branch' cannot be 'main' or 'master' (server returns 422)."
+            exit 1
+          fi
+        fi
+
+        if [ "$MODE" = "batch" ] || [ "$MODE" = "multi-repo" ]; then
+          if [ -z "${REPOS_JSON:-}" ]; then
+            echo "::error::'repositories_json' is required for mode=$MODE."
+            exit 1
+          fi
+          COUNT=$(printf '%s' "$REPOS_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(len(d) if isinstance(d,list) else -1)' 2>/dev/null || echo "-1")
+          if [ "$COUNT" = "-1" ]; then
+            echo "::error::'repositories_json' must be a JSON array."
+            exit 1
+          fi
+          if [ "$MODE" = "batch" ] && { [ "$COUNT" -lt 1 ] || [ "$COUNT" -gt 50 ]; }; then
+            echo "::error::batch requires 1-50 repositories (got $COUNT)."
+            exit 1
+          fi
+          if [ "$MODE" = "multi-repo" ] && { [ "$COUNT" -lt 1 ] || [ "$COUNT" -gt 10 ]; }; then
+            echo "::error::multi-repo requires 1-10 repositories (got $COUNT)."
+            exit 1
+          fi
+        fi
+
+        if [ -n "${PLUGINS:-}" ]; then
+          PLUGINS_NORMALIZED=$(printf '%s' "$PLUGINS" | tr ',\n' '  ')
+          for p in $PLUGINS_NORMALIZED; do
+            if ! printf '%s' "$p" | grep -Eq '^[a-zA-Z0-9][a-zA-Z0-9._-]*$'; then
+              echo "::error::Plugin '$p' violates ^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+              exit 1
+            fi
+          done
+        fi
+
+        echo "Inputs validated for mode=$MODE."
+
+    - name: Build payload
+      id: payload
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        PROMPT: ${{ inputs.prompt }}
+        REPOSITORY_URL: ${{ inputs.repository_url }}
+        BRANCH: ${{ inputs.branch }}
+        REPOS_JSON: ${{ inputs.repositories_json }}
+        SKILLS: ${{ inputs.skills }}
+        PLUGINS: ${{ inputs.plugins }}
+        MODEL: ${{ inputs.model }}
+        SLACK_CHANNEL: ${{ inputs.slack_channel }}
+        PLUGIN: ${{ inputs.plugin }}
+        AGENT_NAME: ${{ inputs.agent }}
+        SOURCE_ID: ${{ inputs.source_id }}
+        CONNECTOR: ${{ inputs.connector }}
+        USER_EMAIL: ${{ inputs.user_email }}
+        PARENT_TASK_ID: ${{ inputs.parent_task_id }}
+        ENRICHMENT_COMMENTS_JSON: ${{ inputs.enrichment_comments_json }}
+        RESUME_CONTEXT_JSON: ${{ inputs.resume_context_json }}
+        TICKET_CONTEXT_JSON: ${{ inputs.ticket_context_json }}
+        RESUME_SOURCE: ${{ inputs.resume_source }}
+      run: |
+        set -euo pipefail
+        PAYLOAD_FILE="$RUNNER_TEMP/slash-payload.json"
+
+        python3 - <<'PY' > "$PAYLOAD_FILE"
+        import json, os, re
+
+        def get(name):
+            v = os.environ.get(name)
+            return v if v not in (None, "") else None
+
+        def split_list(name):
+            raw = get(name)
+            if raw is None:
+                return None
+            parts = [p.strip() for p in re.split(r'[,\n]', raw) if p.strip()]
+            return parts or None
+
+        def load_json(name):
+            raw = get(name)
+            if raw is None:
+                return None
+            try:
+                return json.loads(raw)
+            except json.JSONDecodeError as e:
+                raise SystemExit(f"::error::Failed to parse {name} as JSON: {e}")
+
+        mode = os.environ["MODE"]
+
+        common = {
+            "prompt": get("PROMPT"),
+            "skills": split_list("SKILLS") or [],
+            "plugins": split_list("PLUGINS") or [],
+            "model": get("MODEL"),
+            "slack_channel": get("SLACK_CHANNEL"),
+            "plugin": get("PLUGIN"),
+            "agent": get("AGENT_NAME"),
+            "source_id": get("SOURCE_ID"),
+            "connector": get("CONNECTOR") or "dashboard",
+        }
+
+        if mode == "run":
+            payload = {
+                **common,
+                "repository_url": get("REPOSITORY_URL"),
+                "branch": get("BRANCH"),
+                "user_email": get("USER_EMAIL"),
+            }
+        elif mode in ("batch", "multi-repo"):
+            payload = {
+                **common,
+                "repositories": load_json("REPOS_JSON"),
+                "user_email": get("USER_EMAIL"),
+            }
+        elif mode == "resume":
+            payload = {
+                "parent_task_id": get("PARENT_TASK_ID"),
+                "enrichment_comments": load_json("ENRICHMENT_COMMENTS_JSON") or [],
+                "resume_context": load_json("RESUME_CONTEXT_JSON"),
+                "ticket_context": load_json("TICKET_CONTEXT_JSON"),
+                "resume_source": get("RESUME_SOURCE") or "devrev",
+                "skills": split_list("SKILLS") or [],
+                "plugins": split_list("PLUGINS") or [],
+                "user_email": get("USER_EMAIL"),
+            }
+        else:
+            raise SystemExit(f"::error::Unsupported mode '{mode}'")
+
+        cleaned = {k: v for k, v in payload.items() if v not in (None, "")}
+        json.dump(cleaned, __import__("sys").stdout, separators=(",", ":"))
+        PY
+
+        echo "payload_file=$PAYLOAD_FILE" >> "$GITHUB_OUTPUT"
+        echo "Built payload at $PAYLOAD_FILE"
+        BYTES=$(wc -c < "$PAYLOAD_FILE" | tr -d ' ')
+        echo "Payload size: ${BYTES} bytes"
+
+    - name: Route to agent-platform
+      if: (inputs.backend == 'agent-platform' || inputs.backend == 'splitz') && inputs.mode == 'run'
+      id: platform_trigger
+      shell: bash
+      env:
+        BACKEND: ${{ inputs.backend }}
+        API_KEY: ${{ inputs.api_key }}
+        SPLITZ_PASS: ${{ inputs.splitz_password }}
+        SPLITZ_EXPERIMENT: ${{ inputs.splitz_experiment }}
+        PROMPT: ${{ inputs.prompt }}
+        PLUGIN: ${{ inputs.plugin }}
+        PLUGINS: ${{ inputs.plugins }}
+        SKILLS: ${{ inputs.skills }}
+        AGENT: ${{ inputs.agent }}
+        REPO_URL: ${{ inputs.repository_url }}
+        BRANCH: ${{ inputs.branch }}  # only used by the guard to fall back to swe-agent
+        MODEL: ${{ inputs.model }}
+        SOURCE_ID: ${{ inputs.source_id }}
+        POLL_INTERVAL: ${{ inputs.poll_interval_seconds }}
+        POLL_TIMEOUT: ${{ inputs.poll_timeout_minutes }}
+        FAIL_ON_TIMEOUT: ${{ inputs.fail_on_timeout }}
+        FAIL_ON_FAILURE: ${{ inputs.fail_on_agent_failure }}
+      run: |
+        set +e  # Handle curl failures explicitly, not via pipefail
+
+        # ── Splitz evaluation (backend=splitz) ──
+        if [[ "$BACKEND" == "splitz" ]]; then
+          if [[ -z "${SPLITZ_PASS:-}" ]]; then
+            echo "::warning::backend=splitz but splitz_password is empty — falling back to swe-agent"
+            echo "routed_to=swe-agent" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          SPLITZ_AUTH=$(printf '%s' "swe-agent:$SPLITZ_PASS" | base64 | tr -d '\n')
+          echo "::add-mask::$SPLITZ_AUTH"
+          SPLITZ_RESP=$(curl -s --max-time 5 --connect-timeout 10 -X POST \
+            "https://splitz.razorpay.com/twirp/rzp.splitz.evaluate.v1.EvaluateAPI/Evaluate" \
+            -H "Authorization: Basic $SPLITZ_AUTH" \
+            -H "Content-Type: application/json" \
+            -d "{\"id\":\"$GITHUB_REPOSITORY\",\"experiment_name\":\"$SPLITZ_EXPERIMENT\",\"request_data\":\"{\\\"id\\\":\\\"$GITHUB_REPOSITORY\\\"}\"}" \
+            2>/dev/null || echo '{}')
+          # agent-platform's own client reads .variant.name
+          VARIANT=$(echo "$SPLITZ_RESP" | jq -r '.variant.name // .result.variant // "control"' 2>/dev/null || echo "control")
+          echo "Splitz: experiment=$SPLITZ_EXPERIMENT entity=$GITHUB_REPOSITORY variant=$VARIANT"
+          if [[ "$VARIANT" != "platform" ]]; then
+            echo "→ Splitz routes to swe-agent (variant=$VARIANT)"
+            echo "routed_to=swe-agent" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "→ Splitz routes to agent-platform"
+        fi
+
+        # ── Branch guard: AP does not support branch targeting yet (501) ──
+        if [[ -n "${BRANCH:-}" ]]; then
+          echo "::warning::branch targeting is not yet supported on agent-platform — falling back to swe-agent"
+          echo "routed_to=swe-agent" >> "$GITHUB_OUTPUT"
+          echo "status=dispatched" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        if [[ -z "$API_KEY" ]]; then
+          echo "::error::backend=$BACKEND but api_key is empty"
+          exit 1
+        fi
+
+        # ── Build the JSON body ──
+        # Use inputs.agent if set, otherwise default to "slash"
+        AGENT_NAME="${AGENT:-slash}"
+        BODY=$(jq -n --arg a "$AGENT_NAME" --arg p "$PROMPT" '{agent_name: $a, prompt: $p}')
+
+        # Merge plugin (singular) + plugins (plural, newline/comma-separated)
+        MERGED_PLUGINS=""
+        if [[ -n "${PLUGIN:-}" ]]; then
+          MERGED_PLUGINS="$PLUGIN"
+        fi
+        if [[ -n "${PLUGINS:-}" ]]; then
+          if [[ -n "$MERGED_PLUGINS" ]]; then
+            MERGED_PLUGINS="$MERGED_PLUGINS,$PLUGINS"
+          else
+            MERGED_PLUGINS="$PLUGINS"
+          fi
+        fi
+        if [[ -n "$MERGED_PLUGINS" ]]; then
+          BODY=$(echo "$BODY" | jq --arg pl "$MERGED_PLUGINS" \
+            '. + {plugins: ($pl | split("[,\n]"; null) | map(gsub("^\\s+|\\s+$";"")) | map(select(length>0)))}')
+        fi
+
+        # Skills (newline/comma-separated → array, strip + drop empty)
+        if [[ -n "${SKILLS:-}" ]]; then
+          BODY=$(echo "$BODY" | jq --arg s "$SKILLS" \
+            '. + {skills: ($s | split("[,\n]"; null) | map(gsub("^\\s+|\\s+$";"")) | map(select(length>0)))}')
+        fi
+
+        # Repository (branch is guarded above — never reaches here with branch set)
+        if [[ -n "${REPO_URL:-}" ]]; then
+          BODY=$(echo "$BODY" | jq --arg r "$REPO_URL" '. + {repositories: [$r]}')
+        fi
+
+        # Optional model override
+        if [[ -n "${MODEL:-}" ]]; then
+          BODY=$(echo "$BODY" | jq --arg m "$MODEL" '. + {model: $m}')
+        fi
+
+        # Idempotency key: repo + run + attempt + job + agent to prevent duplicate runs
+        IDEM_KEY="${GITHUB_REPOSITORY}/${GITHUB_RUN_ID}/${GITHUB_RUN_ATTEMPT}/${GITHUB_JOB}/${AGENT_NAME}"
+
+        echo "::add-mask::$API_KEY"
+        echo "Dispatching to agent-platform (slash.razorpay.com/v2/runs)..."
+
+        HTTP_CODE=$(curl -s -o "$RUNNER_TEMP/ap-response.json" -w '%{http_code}' \
+          --max-time 30 --connect-timeout 10 \
+          -X POST "https://slash.razorpay.com/v2/runs" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $API_KEY" \
+          -H "Idempotency-Key: $IDEM_KEY" \
+          -d "$BODY" 2>"$RUNNER_TEMP/ap-curl-err.log")
+        CURL_EXIT=$?
+
+        if [[ $CURL_EXIT -ne 0 ]]; then
+          echo "::error::curl failed with exit code $CURL_EXIT"
+          cat "$RUNNER_TEMP/ap-curl-err.log" 2>/dev/null
+          exit 1
+        fi
+
+        echo "HTTP $HTTP_CODE"
+        if [[ "$HTTP_CODE" -lt 200 || "$HTTP_CODE" -ge 300 ]]; then
+          echo "::error::agent-platform returned HTTP $HTTP_CODE"
+          cat "$RUNNER_TEMP/ap-response.json" 2>/dev/null
+          exit 1
+        fi
+
+        RUN_ID=$(jq -r '.id // empty' "$RUNNER_TEMP/ap-response.json")
+        if [[ -z "$RUN_ID" ]]; then
+          echo "::error::No run id in agent-platform response"
+          cat "$RUNNER_TEMP/ap-response.json"
+          exit 1
+        fi
+
+        echo "✓ Dispatched to agent-platform: run_id=$RUN_ID"
+
+        # ── Poll for completion ──
+        POLL_URL="https://slash.razorpay.com/v2/runs/$RUN_ID"
+        TIMEOUT_SECS=$(( ${POLL_TIMEOUT:-90} * 60 ))
+        INTERVAL="${POLL_INTERVAL:-15}"
+        STARTED=$(date +%s)
+        STATUS="pending"
+
+        echo "Polling $POLL_URL every ${INTERVAL}s (timeout ${POLL_TIMEOUT:-90}m)..."
+        sleep "${POLL_INTERVAL:-30}"  # initial wait
+
+        while true; do
+          ELAPSED=$(( $(date +%s) - STARTED ))
+          if [[ $ELAPSED -ge $TIMEOUT_SECS ]]; then
+            echo "::warning::Poll timeout after ${POLL_TIMEOUT:-90} minutes"
+            STATUS="timeout"
+            break
+          fi
+
+          POLL_RESP=$(curl -s --max-time 15 --connect-timeout 10 \
+            "$POLL_URL" \
+            -H "Authorization: Bearer $API_KEY" 2>/dev/null || echo '{}')
+
+          STATUS=$(echo "$POLL_RESP" | jq -r '.current_turn.status // "unknown"' 2>/dev/null || echo "unknown")
+          echo "[$(( ELAPSED / 60 ))m${ELAPSED}s] status=$STATUS"
+
+          case "$STATUS" in
+            completed|failed|cancelled)
+              echo "$POLL_RESP" > "$RUNNER_TEMP/ap-response.json"
+              break
+              ;;
+          esac
+
+          sleep "$INTERVAL"
+        done
+
+        # ── Extract outputs ──
+        RESULT_TEXT=$(jq -r '.current_turn.result_text // ""' "$RUNNER_TEMP/ap-response.json" 2>/dev/null || echo "")
+        COST=$(jq -r '.current_turn.cost_usd // ""' "$RUNNER_TEMP/ap-response.json" 2>/dev/null || echo "")
+        MODEL_USED=$(jq -r '.current_turn.model // ""' "$RUNNER_TEMP/ap-response.json" 2>/dev/null || echo "")
+
+        # Extract PR URLs from result_text (same regex pattern as swe-agent path)
+        PR_URLS=$(echo "$RESULT_TEXT" | grep -oE 'https://github\.com/razorpay/[^/]+/pull/[0-9]+' | sort -u || true)
+        FIRST_PR=$(echo "$PR_URLS" | head -1)
+        PR_URLS_JSON=$(echo "$PR_URLS" | jq -R -s 'split("\n") | map(select(length>0))' 2>/dev/null || echo '[]')
+
+        # Build result_json and metadata_json
+        RESULT_JSON=$(jq -n --arg t "$RESULT_TEXT" '{result_text: $t}')
+        META_JSON=$(jq -n --arg m "$MODEL_USED" --arg c "$COST" '{model: $m, cost_usd: $c}')
+
+        echo "task_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+        echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+        echo "routed_to=agent-platform" >> "$GITHUB_OUTPUT"
+        echo "pr_url=$FIRST_PR" >> "$GITHUB_OUTPUT"
+
+        # Multi-line outputs via delimiter
+        EOF_DELIM=$(dd if=/dev/urandom bs=15 count=1 2>/dev/null | base64)
+        echo "result_json<<$EOF_DELIM" >> "$GITHUB_OUTPUT"
+        echo "$RESULT_JSON" >> "$GITHUB_OUTPUT"
+        echo "$EOF_DELIM" >> "$GITHUB_OUTPUT"
+        echo "metadata_json<<$EOF_DELIM" >> "$GITHUB_OUTPUT"
+        echo "$META_JSON" >> "$GITHUB_OUTPUT"
+        echo "$EOF_DELIM" >> "$GITHUB_OUTPUT"
+        echo "pr_urls_json<<$EOF_DELIM" >> "$GITHUB_OUTPUT"
+        echo "$PR_URLS_JSON" >> "$GITHUB_OUTPUT"
+        echo "$EOF_DELIM" >> "$GITHUB_OUTPUT"
+
+        echo ""
+        echo "── Agent-Platform Run Complete ──"
+        echo "Run:    $RUN_ID"
+        echo "Status: $STATUS"
+        echo "Model:  $MODEL_USED"
+        echo "Cost:   $COST"
+        [[ -n "$FIRST_PR" ]] && echo "PR:     $FIRST_PR"
+
+        # ── Conditional fail ──
+        if [[ "$STATUS" == "timeout" && "$FAIL_ON_TIMEOUT" == "true" ]]; then
+          echo "::error::Agent-platform run timed out after ${POLL_TIMEOUT:-90} minutes"
+          exit 1
+        fi
+        if [[ "$STATUS" == "failed" && "$FAIL_ON_FAILURE" == "true" ]]; then
+          echo "::error::Agent-platform run failed"
+          exit 1
+        fi
+        if [[ "$STATUS" == "cancelled" && "$FAIL_ON_FAILURE" == "true" ]]; then
+          echo "::error::Agent-platform run was cancelled"
+          exit 1
+        fi
+
+    - name: Trigger agent
+      if: steps.platform_trigger.outputs.routed_to != 'agent-platform'
+      id: trigger
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        BASE_URL: ${{ inputs.base_url }}
+        USERNAME: ${{ inputs.username }}
+        PASSWORD: ${{ inputs.password }}
+        PAYLOAD_FILE: ${{ steps.payload.outputs.payload_file }}
+        SANDBOX: ${{ inputs.sandbox }}
+      run: |
+        set -euo pipefail
+
+        case "$MODE" in
+          run)        ENDPOINT="run" ;;
+          batch)      ENDPOINT="batch" ;;
+          multi-repo) ENDPOINT="multi-repo" ;;
+          resume)     ENDPOINT="resume" ;;
+        esac
+
+        AUTH_B64=$(printf '%s' "$USERNAME:$PASSWORD" | base64 | tr -d '\n')
+        echo "::add-mask::$AUTH_B64"
+        AUTH_HEADER="Authorization: Basic $AUTH_B64"
+        URL="${BASE_URL%/}/api/v1/agents/$ENDPOINT"
+        RESP_FILE="$RUNNER_TEMP/slash-trigger-response.json"
+
+        # Assemble curl args as an array so header values with spaces stay intact.
+        # NOTE: Do NOT switch this to `eval curl ... $SANDBOX_HEADER ...` — eval
+        # word-splits the already-expanded "$AUTH_HEADER" value
+        # ("Authorization: Basic <base64>") into separate args, which curl then
+        # interprets as URLs (Could not resolve host: Basic / <base64>).
+        CURL_ARGS=(
+          --silent --show-error
+          --max-time 30
+          --connect-timeout 10
+          --output "$RESP_FILE"
+          --write-out '%{http_code}'
+          -X POST "$URL"
+          -H "$AUTH_HEADER"
+          -H "Content-Type: application/json"
+        )
+        if [ -n "${SANDBOX:-}" ]; then
+          CURL_ARGS+=( -H "X-Sandbox: $SANDBOX" )
+          echo "Sandbox: $SANDBOX"
+        fi
+        CURL_ARGS+=( --data "@$PAYLOAD_FILE" )
+
+        echo "::group::POST $URL"
+        set +e
+        HTTP_CODE=$(curl "${CURL_ARGS[@]}" 2> "$RUNNER_TEMP/slash-trigger-curl-err.log")
+        CURL_EXIT=$?
+        set -e
+        echo "HTTP $HTTP_CODE (curl exit $CURL_EXIT)"
+        if [ -s "$RUNNER_TEMP/slash-trigger-curl-err.log" ]; then
+          echo "curl stderr:"
+          cat "$RUNNER_TEMP/slash-trigger-curl-err.log"
+        fi
+        if [ -s "$RESP_FILE" ]; then
+          jq '.' "$RESP_FILE" 2>/dev/null || cat "$RESP_FILE"
+        fi
+        echo "::endgroup::"
+
+        if [ "$CURL_EXIT" -ne 0 ] || [ -z "$HTTP_CODE" ] || [ "$HTTP_CODE" = "000" ]; then
+          echo "::error::Could not reach Slash API at $URL (curl exit $CURL_EXIT). This is usually a network/DNS issue."
+          exit 1
+        fi
+        if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "201" ]; then
+          echo "::error::Trigger request failed with HTTP $HTTP_CODE"
+          exit 1
+        fi
+
+        TASK_ID=$(jq -r '.task_id // empty' "$RESP_FILE")
+        STATUS=$(jq -r '.status // empty' "$RESP_FILE")
+        MESSAGE=$(jq -r '.message // ""' "$RESP_FILE")
+        METADATA_JSON=$(jq -c '.metadata // {}' "$RESP_FILE")
+        CHILD_TASK_IDS_JSON=$(jq -c '(.metadata.child_task_ids // [])' "$RESP_FILE")
+
+        if [ -z "$TASK_ID" ]; then
+          echo "::error::Trigger response missing task_id. Response: $(cat "$RESP_FILE")"
+          exit 1
+        fi
+
+        echo "task_id=$TASK_ID" >> "$GITHUB_OUTPUT"
+        echo "trigger_status=$STATUS" >> "$GITHUB_OUTPUT"
+        echo "trigger_message=$MESSAGE" >> "$GITHUB_OUTPUT"
+        {
+          echo "trigger_metadata_json<<__SLASH_EOF__"
+          echo "$METADATA_JSON"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+        {
+          echo "child_task_ids_json<<__SLASH_EOF__"
+          echo "$CHILD_TASK_IDS_JSON"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+
+        echo "::notice::Slash task triggered: task_id=$TASK_ID status=$STATUS"
+
+    - name: Poll task to completion
+      if: steps.platform_trigger.outputs.routed_to != 'agent-platform'
+      id: poll
+      shell: bash
+      env:
+        BASE_URL: ${{ inputs.base_url }}
+        USERNAME: ${{ inputs.username }}
+        PASSWORD: ${{ inputs.password }}
+        TASK_ID: ${{ steps.trigger.outputs.task_id }}
+        TRIGGER_STATUS: ${{ steps.trigger.outputs.trigger_status }}
+        INITIAL_WAIT_SECONDS: ${{ inputs.initial_wait_seconds }}
+        POLL_INTERVAL_SECONDS: ${{ inputs.poll_interval_seconds }}
+        POLL_TIMEOUT_MINUTES: ${{ inputs.poll_timeout_minutes }}
+        MODE: ${{ inputs.mode }}
+        POLL_CHILDREN: ${{ inputs.poll_children }}
+        CHILD_TASK_IDS_JSON: ${{ steps.trigger.outputs.child_task_ids_json }}
+      run: |
+        set -euo pipefail
+
+        AUTH_B64=$(printf '%s' "$USERNAME:$PASSWORD" | base64 | tr -d '\n')
+        echo "::add-mask::$AUTH_B64"
+        AUTH_HEADER="Authorization: Basic $AUTH_B64"
+        TASK_FILE="$RUNNER_TEMP/slash-task.json"
+        TIMED_OUT="false"
+        FINAL_STATUS=""
+        FINAL_PROGRESS=""
+
+        if [ "$TRIGGER_STATUS" = "already_running" ]; then
+          echo "::notice::Resume returned already_running - skipping poll loop, surfacing trigger response."
+          FINAL_STATUS="already_running"
+          echo "final_status=$FINAL_STATUS" >> "$GITHUB_OUTPUT"
+          echo "final_progress=" >> "$GITHUB_OUTPUT"
+          echo "timed_out=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        TIMEOUT_SECONDS=$(( POLL_TIMEOUT_MINUTES * 60 ))
+        if [ "$TIMEOUT_SECONDS" -le 0 ]; then
+          echo "::notice::poll_timeout_minutes<=0 — skipping poll (fire-and-forget)."
+          FINAL_STATUS="${TRIGGER_STATUS:-triggered}"
+          echo "final_status=$FINAL_STATUS" >> "$GITHUB_OUTPUT"
+          echo "final_progress=" >> "$GITHUB_OUTPUT"
+          echo "timed_out=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        echo "Initial wait of ${INITIAL_WAIT_SECONDS}s before first poll..."
+        sleep "$INITIAL_WAIT_SECONDS"
+
+        START_EPOCH=$(date +%s)
+        URL="${BASE_URL%/}/api/v1/tasks/$TASK_ID"
+        LAST_STATUS=""
+
+        poll_once() {
+          local out_file="$1"
+          local attempt=0
+          local max_attempts=3
+          local sleep_s=2
+          while [ $attempt -lt $max_attempts ]; do
+            local http_code
+            http_code=$(curl --silent --show-error --max-time 30 --connect-timeout 10 \
+              --output "$out_file" --write-out '%{http_code}' \
+              -H "$AUTH_HEADER" "$URL" || echo "000")
+            if [ "$http_code" = "200" ]; then
+              return 0
+            fi
+            attempt=$(( attempt + 1 ))
+            echo "Poll attempt $attempt failed (HTTP $http_code); retrying in ${sleep_s}s..." >&2
+            sleep "$sleep_s"
+            sleep_s=$(( sleep_s * 2 ))
+          done
+          echo "::error::Polling failed after $max_attempts retries (last HTTP $http_code)"
+          return 1
+        }
+
+        while :; do
+          NOW=$(date +%s)
+          ELAPSED=$(( NOW - START_EPOCH ))
+          if [ "$ELAPSED" -ge "$TIMEOUT_SECONDS" ]; then
+            echo "::warning::Polling timed out after ${POLL_TIMEOUT_MINUTES} minutes."
+            TIMED_OUT="true"
+            break
+          fi
+
+          echo "::group::GET /api/v1/tasks/$TASK_ID  (elapsed ${ELAPSED}s)"
+          if ! poll_once "$TASK_FILE"; then
+            echo "::endgroup::"
+            exit 1
+          fi
+          STATUS=$(jq -r '.status // empty' "$TASK_FILE")
+          PROGRESS=$(jq -r '.progress // empty' "$TASK_FILE")
+          echo "status=$STATUS progress=${PROGRESS:-n/a}"
+          echo "::endgroup::"
+
+          if [ -n "$STATUS" ] && [ "$STATUS" != "$LAST_STATUS" ]; then
+            echo "::notice::Slash task $TASK_ID status -> $STATUS"
+            LAST_STATUS="$STATUS"
+          fi
+
+          case "$STATUS" in
+            completed|failed|cancelled)
+              FINAL_STATUS="$STATUS"
+              FINAL_PROGRESS="$PROGRESS"
+              break
+              ;;
+          esac
+
+          sleep "$POLL_INTERVAL_SECONDS"
+        done
+
+        if [ "$TIMED_OUT" = "true" ]; then
+          FINAL_STATUS="timeout"
+        fi
+
+        if [ "$MODE" = "batch" ] && [ "$POLL_CHILDREN" = "true" ] && [ "$TIMED_OUT" != "true" ]; then
+          echo "::group::Polling child tasks"
+          CHILDREN_FILE="$RUNNER_TEMP/slash-children.json"
+          echo '[]' > "$CHILDREN_FILE"
+          for CID in $(echo "$CHILD_TASK_IDS_JSON" | jq -r '.[]?'); do
+            CFILE="$RUNNER_TEMP/slash-child-$CID.json"
+            CURL="${BASE_URL%/}/api/v1/tasks/$CID"
+            HC=$(curl --silent --show-error --max-time 30 --connect-timeout 10 \
+              --output "$CFILE" --write-out '%{http_code}' \
+              -H "$AUTH_HEADER" "$CURL" || echo "000")
+            if [ "$HC" = "200" ]; then
+              echo "child $CID -> $(jq -r '.status // "?"' "$CFILE")"
+              jq --slurpfile child "$CFILE" '. + [$child[0]]' "$CHILDREN_FILE" > "$CHILDREN_FILE.tmp" && mv "$CHILDREN_FILE.tmp" "$CHILDREN_FILE"
+            else
+              echo "::warning::Failed to fetch child $CID (HTTP $HC)"
+            fi
+          done
+          echo "::endgroup::"
+          echo "children_file=$CHILDREN_FILE" >> "$GITHUB_OUTPUT"
+        fi
+
+        echo "task_file=$TASK_FILE" >> "$GITHUB_OUTPUT"
+        echo "final_status=$FINAL_STATUS" >> "$GITHUB_OUTPUT"
+        echo "final_progress=$FINAL_PROGRESS" >> "$GITHUB_OUTPUT"
+        echo "timed_out=$TIMED_OUT" >> "$GITHUB_OUTPUT"
+
+    - name: Extract outputs
+      if: steps.platform_trigger.outputs.routed_to != 'agent-platform'
+      id: outputs
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        TASK_ID: ${{ steps.trigger.outputs.task_id }}
+        TRIGGER_STATUS: ${{ steps.trigger.outputs.trigger_status }}
+        TRIGGER_METADATA_JSON: ${{ steps.trigger.outputs.trigger_metadata_json }}
+        CHILD_TASK_IDS_JSON: ${{ steps.trigger.outputs.child_task_ids_json }}
+        TASK_FILE: ${{ steps.poll.outputs.task_file }}
+        CHILDREN_FILE: ${{ steps.poll.outputs.children_file }}
+        FINAL_STATUS: ${{ steps.poll.outputs.final_status }}
+        FINAL_PROGRESS: ${{ steps.poll.outputs.final_progress }}
+      run: |
+        set -euo pipefail
+
+        if [ -s "$TASK_FILE" ]; then
+          RESULT_JSON=$(jq -c '.result // {}' "$TASK_FILE")
+          METADATA_JSON=$(jq -c '.metadata // {}' "$TASK_FILE")
+        else
+          RESULT_JSON='{}'
+          METADATA_JSON="${TRIGGER_METADATA_JSON:-}"
+          [ -n "$METADATA_JSON" ] || METADATA_JSON='{}'
+        fi
+
+        SEARCH_BLOB=$(printf '%s' "$RESULT_JSON")
+        if [ -n "${CHILDREN_FILE:-}" ] && [ -s "$CHILDREN_FILE" ]; then
+          CHILDREN_BLOB=$(jq -c '.' "$CHILDREN_FILE")
+          SEARCH_BLOB="$SEARCH_BLOB $CHILDREN_BLOB"
+        fi
+
+        PR_URLS=$(printf '%s' "$SEARCH_BLOB" \
+          | grep -oE 'https://github\.com/razorpay/[a-zA-Z0-9_.-]+/pull/[0-9]+' \
+          | sort -u || true)
+        PR_URL=$(printf '%s\n' "$PR_URLS" | head -n 1 || true)
+        PR_URLS_JSON=$(printf '%s\n' "$PR_URLS" | jq -R . | jq -s -c 'map(select(length > 0))')
+
+        echo "task_id=$TASK_ID" >> "$GITHUB_OUTPUT"
+        echo "status=$FINAL_STATUS" >> "$GITHUB_OUTPUT"
+        echo "progress=$FINAL_PROGRESS" >> "$GITHUB_OUTPUT"
+        {
+          echo "result_json<<__SLASH_EOF__"
+          echo "$RESULT_JSON"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+        {
+          echo "metadata_json<<__SLASH_EOF__"
+          echo "$METADATA_JSON"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+        echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+        {
+          echo "pr_urls_json<<__SLASH_EOF__"
+          echo "$PR_URLS_JSON"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+        {
+          echo "child_task_ids_json<<__SLASH_EOF__"
+          echo "${CHILD_TASK_IDS_JSON:-[]}"
+          echo "__SLASH_EOF__"
+        } >> "$GITHUB_OUTPUT"
+
+        echo "::notice::Slash final: task_id=$TASK_ID status=$FINAL_STATUS pr_url=${PR_URL:-<none>}"
+
+    - name: Write Job Summary
+      if: steps.platform_trigger.outputs.routed_to != 'agent-platform'
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        BASE_URL: ${{ inputs.base_url }}
+        TASK_ID: ${{ steps.trigger.outputs.task_id }}
+        TRIGGER_STATUS: ${{ steps.trigger.outputs.trigger_status }}
+        TRIGGER_MESSAGE: ${{ steps.trigger.outputs.trigger_message }}
+        FINAL_STATUS: ${{ steps.outputs.outputs.status }}
+        FINAL_PROGRESS: ${{ steps.outputs.outputs.progress }}
+        PR_URL: ${{ steps.outputs.outputs.pr_url }}
+        PR_URLS_JSON: ${{ steps.outputs.outputs.pr_urls_json }}
+        CHILD_TASK_IDS_JSON: ${{ steps.outputs.outputs.child_task_ids_json }}
+        RESULT_JSON: ${{ steps.outputs.outputs.result_json }}
+        METADATA_JSON: ${{ steps.outputs.outputs.metadata_json }}
+        CHILDREN_FILE: ${{ steps.poll.outputs.children_file }}
+      run: |
+        set -euo pipefail
+
+        SUMMARY="$GITHUB_STEP_SUMMARY"
+        {
+          echo "## Slash Agent (\`mode=$MODE\`)"
+          echo ""
+          echo "| Field | Value |"
+          echo "|---|---|"
+          echo "| Task ID | \`$TASK_ID\` |"
+          echo "| Trigger status | \`$TRIGGER_STATUS\` |"
+          echo "| Final status | \`$FINAL_STATUS\` |"
+          if [ -n "$FINAL_PROGRESS" ]; then
+            echo "| Progress | $FINAL_PROGRESS |"
+          fi
+          if [ -n "$TRIGGER_MESSAGE" ]; then
+            echo "| Message | $TRIGGER_MESSAGE |"
+          fi
+          echo "| Base URL | $BASE_URL |"
+          echo ""
+        } >> "$SUMMARY"
+
+        PR_COUNT=$(printf '%s' "$PR_URLS_JSON" | jq 'length' 2>/dev/null || echo 0)
+        if [ "$PR_COUNT" -gt 0 ]; then
+          {
+            echo "### Pull Requests"
+            echo ""
+            printf '%s' "$PR_URLS_JSON" | jq -r '.[] | "- [" + . + "](" + . + ")"'
+            echo ""
+          } >> "$SUMMARY"
+        fi
+
+        if [ "$MODE" = "batch" ]; then
+          {
+            echo "### Children"
+            echo ""
+            CHILD_COUNT=$(printf '%s' "$CHILD_TASK_IDS_JSON" | jq 'length' 2>/dev/null || echo 0)
+            echo "Child task count: $CHILD_COUNT"
+            echo ""
+            if [ -n "${CHILDREN_FILE:-}" ] && [ -s "${CHILDREN_FILE:-/dev/null}" ]; then
+              echo "| Child task ID | Status | Progress |"
+              echo "|---|---|---|"
+              jq -r '.[] | "| `\(.id)` | \(.status // "?") | \(.progress // "")|"' "$CHILDREN_FILE"
+              echo ""
+            elif [ "$CHILD_COUNT" -gt 0 ]; then
+              echo "Child task IDs (set \`poll_children: true\` to expand):"
+              echo ""
+              printf '%s' "$CHILD_TASK_IDS_JSON" | jq -r '.[] | "- `" + . + "`"'
+              echo ""
+            fi
+          } >> "$SUMMARY"
+        fi
+
+        {
+          echo "<details><summary>Result JSON</summary>"
+          echo ""
+          echo '```json'
+          printf '%s' "$RESULT_JSON" | jq '.' 2>/dev/null || printf '%s' "$RESULT_JSON"
+          echo ""
+          echo '```'
+          echo ""
+          echo "</details>"
+          echo ""
+          echo "<details><summary>Metadata JSON</summary>"
+          echo ""
+          echo '```json'
+          printf '%s' "$METADATA_JSON" | jq '.' 2>/dev/null || printf '%s' "$METADATA_JSON"
+          echo ""
+          echo '```'
+          echo ""
+          echo "</details>"
+        } >> "$SUMMARY"
+
+    - name: Conditional fail
+      if: steps.platform_trigger.outputs.routed_to != 'agent-platform'
+      shell: bash
+      env:
+        FINAL_STATUS: ${{ steps.outputs.outputs.status }}
+        TIMED_OUT: ${{ steps.poll.outputs.timed_out }}
+        FAIL_ON_TIMEOUT: ${{ inputs.fail_on_timeout }}
+        FAIL_ON_AGENT_FAILURE: ${{ inputs.fail_on_agent_failure }}
+      run: |
+        set -euo pipefail
+        if [ "$TIMED_OUT" = "true" ] && [ "$FAIL_ON_TIMEOUT" = "true" ]; then
+          echo "::error::Slash task timed out and fail_on_timeout=true."
+          exit 1
+        fi
+        case "$FINAL_STATUS" in
+          failed|cancelled)
+            if [ "$FAIL_ON_AGENT_FAILURE" = "true" ]; then
+              echo "::error::Slash task ended with status=$FINAL_STATUS and fail_on_agent_failure=true."
+              exit 1
+            fi
+            ;;
+        esac
+        exit 0
