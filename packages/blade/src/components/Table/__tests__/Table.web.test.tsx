@@ -1596,4 +1596,403 @@ describe('<Table />', () => {
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  // Skeleton Enhancement Tests
+  it('should render skeleton with row count derived from pagination defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={100}
+            onPageChange={jest.fn()}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    // 25 body skeleton rows + 1 header skeleton row = 26 rows
+    // Each skeleton row is a div (not a <tr>), so we check by testID
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toBeInTheDocument();
+    // Count the direct child divs that are skeleton rows (header + body)
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(26); // 1 header + 25 body
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with default page size when pagination has no explicit defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        pagination={
+          <TablePagination paginationType="server" totalItemCount={100} onPageChange={jest.fn()} />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    // 10 body skeleton rows (tablePagination.defaultPageSize) + 1 header = 11
+    expect(directChildren?.length).toBe(11);
+  });
+
+  it('should render skeleton with explicit skeletonRowCount prop', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={10}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(11); // 1 header + 10 body
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with skeletonRowCount overriding pagination defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={5}
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={100}
+            onPageChange={jest.fn()}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(6); // 1 header + 5 body
+  });
+
+  it('should render skeleton with rowDensity respecting comfortable density', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} rowDensity="comfortable" skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton header row with compact minHeight regardless of rowDensity', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} rowDensity="comfortable" skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const headerSkeletonRow = skeleton?.children[0];
+    // The loaded header row is always compact (36px) regardless of rowDensity,
+    // so the skeleton header must match that, not the body rowDensity.
+    expect(headerSkeletonRow).toHaveStyle('min-height: 36px');
+  });
+
+  it('should render skeleton with explicit skeletonRowMinHeight prop', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowMinHeight="72px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    // Body skeleton rows (skip header) should have min-height: 72px
+    const bodyRows = skeleton?.querySelectorAll('[data-blade-component="base-box"]');
+    expect(bodyRows?.length).toBeGreaterThan(0);
+    expect(bodyRows?.[bodyRows.length - 1]).toHaveStyle('min-height: 72px');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with responsive skeletonRowMinHeight prop', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={2}
+        skeletonRowMinHeight={{ base: '36px', m: '48px' }}
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with gridTemplateColumns matching consumer columns', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={3}
+        gridTemplateColumns="176px 132px minmax(168px, 1.05fr)"
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply skeletonMinHeight to the skeleton so it reserves the loaded table footprint', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonMinHeight="500px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('min-height: 500px');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should default to flex:1 on skeleton container when skeletonMinHeight is not set (backward compatible)', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('flex: 1');
+  });
+
+  it('should render skeleton with min-content prefix when selectionType is multiple', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} selectionType="multiple" skeletonRowCount={2}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const headerRow = skeleton?.children[0];
+    // The skeleton grid template should start with 'min-content' to mirror
+    // the loaded table's checkbox column when selectionType is 'multiple'
+    expect(headerRow).toHaveStyle('grid-template-columns: min-content repeat(3,minmax(100px,1fr))');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with all enhancement props combined', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={25}
+        skeletonRowMinHeight="48px"
+        skeletonMinHeight="1200px"
+        gridTemplateColumns="176px 132px minmax(168px, 1.05fr) 100px 80px"
+        rowDensity="normal"
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={500}
+            onPageChange={jest.fn()}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('min-height: 1200px');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(26); // 1 header + 25 body
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should warn in __DEV__ when both non-default rowDensity and skeletonRowMinHeight are set', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={2}
+        rowDensity="comfortable"
+        skeletonRowMinHeight="48px"
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Both `rowDensity="comfortable"` and `skeletonRowMinHeight` are set'),
+    );
+    warnSpy.mockRestore();
+  });
+
+  it('should not warn when skeletonRowMinHeight is set with default rowDensity', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={2} skeletonRowMinHeight="48px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(warnSpy).not.toHaveBeenCalledWith(
+      expect.stringContaining('and `skeletonRowMinHeight` are set'),
+    );
+    warnSpy.mockRestore();
+  });
 });
