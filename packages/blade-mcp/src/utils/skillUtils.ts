@@ -2,11 +2,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 // eslint-disable-next-line import/no-cycle
 import { createBladeSkillToolName } from '../tools/createBladeSkill.js';
-import {
-  SKILL_VERSION,
-  CONSUMER_SKILL_RELATIVE_PATH,
-  SKILL_REFERENCES_RAW_BASE_URL,
-} from './tokens.js';
+import { SKILL_VERSION, CONSUMER_SKILL_RELATIVE_PATH } from './tokens.js';
 import { hasOutdatedSkill } from './generalUtils.js';
 import { handleError } from './analyticsUtils.js';
 import type { McpToolResponse } from './types.js';
@@ -18,14 +14,13 @@ const bashScriptContent = `
   REFS_DIR="$SKILL_DIR/references"
   SYMLINK_DIR=".claude/skills/ui-code-guidelines"
   BASE_URL="https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-mcp/skillTemplate"
-  REFS_BASE_URL="${SKILL_REFERENCES_RAW_BASE_URL}"
   # Create directories
   mkdir -p "$SKILL_DIR"
   mkdir -p "$REFS_DIR"
   # Download SKILL.md and reference files
   curl -sSL "$BASE_URL/SKILL.md" -o "$SKILL_DIR/SKILL.md"
-  curl -sSL "$REFS_BASE_URL/styled-props-types.md" -o "$REFS_DIR/styled-props-types.md"
-  curl -sSL "$REFS_BASE_URL/common-utility-types.md" -o "$REFS_DIR/common-utility-types.md"
+  curl -sSL "$BASE_URL/references/styled-props-types.md" -o "$REFS_DIR/styled-props-types.md"
+  curl -sSL "$BASE_URL/references/common-utility-types.md" -o "$REFS_DIR/common-utility-types.md"
   # Create symlink for Claude Code support
   mkdir -p ".claude/skills"
   if [ ! -L "$SYMLINK_DIR" ] && [ ! -e "$SYMLINK_DIR" ]; then

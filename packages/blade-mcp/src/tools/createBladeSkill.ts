@@ -1,13 +1,20 @@
 import { join, basename } from 'path';
-import { existsSync, symlinkSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import {
+  existsSync,
+  symlinkSync,
+  unlinkSync,
+  mkdirSync,
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+} from 'fs';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import {
   BLADE_SKILL_FILE_PATH,
   SKILL_VERSION,
   SKILL_DIRECTORY_NAME,
-  SKILL_REFERENCE_FILE_NAMES,
-  KNOWLEDGEBASE_DIRECTORY,
+  SKILL_REFERENCES_DIRECTORY,
   analyticsToolCallEventName,
 } from '../utils/tokens.js';
 
@@ -85,13 +92,15 @@ const createBladeSkillCore = ({
     writeFileSync(skillFilePath, skillFileTemplateContent);
 
     // Copy reference files
+    const refsSourceDir = SKILL_REFERENCES_DIRECTORY;
     const refsDestDir = join(skillDir, 'references');
-    if (existsSync(KNOWLEDGEBASE_DIRECTORY)) {
+    if (existsSync(refsSourceDir)) {
       if (!existsSync(refsDestDir)) {
         mkdirSync(refsDestDir, { recursive: true });
       }
-      for (const refFile of SKILL_REFERENCE_FILE_NAMES) {
-        const refContent = readFileSync(join(KNOWLEDGEBASE_DIRECTORY, refFile), 'utf8');
+      const refFiles = readdirSync(refsSourceDir);
+      for (const refFile of refFiles) {
+        const refContent = readFileSync(join(refsSourceDir, refFile), 'utf8');
         writeFileSync(join(refsDestDir, refFile), refContent);
       }
     }

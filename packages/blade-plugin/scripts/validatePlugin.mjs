@@ -78,6 +78,25 @@ for (const required of [
   if (!fs.existsSync(path.join(refs, required))) errors.push(`references/${required} missing`);
 }
 
+// Published blade-mcp versions (HTTP transport) curl these from
+// packages/blade-mcp/skillTemplate/references on master, so that copy must exist
+// and match. Update both together.
+const mcpRefs = path.join(root, '..', 'blade-mcp', 'skillTemplate', 'references');
+for (const file of ['styled-props-types.md', 'common-utility-types.md']) {
+  const mcpFile = path.join(mcpRefs, file);
+  const pluginFile = path.join(refs, file);
+  if (!fs.existsSync(mcpFile)) {
+    errors.push(`blade-mcp/skillTemplate/references/${file} missing (old MCP versions download it)`);
+  } else if (
+    fs.existsSync(pluginFile) &&
+    fs.readFileSync(mcpFile, 'utf8') !== fs.readFileSync(pluginFile, 'utf8')
+  ) {
+    errors.push(
+      `references/${file} differs from blade-mcp/skillTemplate/references/${file}; update both`,
+    );
+  }
+}
+
 const listed = mainSkill.match(/## Available components\n\n([^\n]+)/);
 if (listed) {
   for (const name of listed[1].split(',').map((s) => s.trim())) {

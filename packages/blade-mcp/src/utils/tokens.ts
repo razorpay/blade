@@ -15,10 +15,7 @@ const SKILL_VERSION_STRING = `version: '${SKILL_VERSION}'`;
 
 const SKILL_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'skillTemplate');
 const BLADE_SKILL_FILE_PATH = join(SKILL_TEMPLATE_DIRECTORY, 'SKILL.md');
-// Type references live in the shared knowledgebase (copied from blade-plugin).
-const SKILL_REFERENCE_FILE_NAMES = ['styled-props-types.md', 'common-utility-types.md'];
-const SKILL_REFERENCES_RAW_BASE_URL =
-  'https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-plugin/skills/blade/references';
+const SKILL_REFERENCES_DIRECTORY = join(SKILL_TEMPLATE_DIRECTORY, 'references');
 
 const SKILL_FILE_NAME = 'SKILL.md';
 const SKILL_DIRECTORY_NAME = 'ui-code-guidelines';
@@ -35,11 +32,24 @@ grep -o "version: '[0-9.]*'" .agents/skills/ui-code-guidelines/SKILL.md
 \`\`\`
 `;
 
+// Legacy Cursor Rules Tokens (kept for backward compatibility)
+const CURSOR_RULES_VERSION = '0.0.8';
+const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
+
+const CURSOR_RULES_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'cursorRules');
+const BLADE_CURSOR_RULES_FILE_PATH = join(
+  CURSOR_RULES_TEMPLATE_DIRECTORY,
+  'frontend-blade-rules.mdc',
+);
+
+const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
+
+const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
+
 // Blade Template
 const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
 
-// Knowledgebase (copied from packages/blade-plugin/skills/blade/references by
-// scripts/copyKnowledgebase.mjs)
+// Knowledgebase
 const KNOWLEDGEBASE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'knowledgebase');
 const COMPONENTS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'components');
 const PATTERNS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'patterns');
@@ -52,13 +62,19 @@ export {
   SKILL_VERSION_STRING,
   SKILL_TEMPLATE_DIRECTORY,
   BLADE_SKILL_FILE_PATH,
-  SKILL_REFERENCE_FILE_NAMES,
-  SKILL_REFERENCES_RAW_BASE_URL,
+  SKILL_REFERENCES_DIRECTORY,
   SKILL_FILE_NAME,
   SKILL_DIRECTORY_NAME,
   CONSUMER_SKILL_RELATIVE_PATH,
   CONSUMER_SKILL_SYMLINK_RELATIVE_PATH,
   CHECK_SKILL_VERSION_DESCRIPTION,
+  // Legacy cursor tokens (backward compat)
+  CURSOR_RULES_VERSION,
+  CURSOR_RULES_VERSION_STRING,
+  CURSOR_RULES_TEMPLATE_DIRECTORY,
+  BLADE_CURSOR_RULES_FILE_PATH,
+  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
+  CURSOR_RULES_FILE_NAME,
   // Other
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,
