@@ -4,54 +4,79 @@ on:
   pull_request_review:
     types: [submitted]
 
+permissions:
+  pull-requests: write
+  contents: read
+
 concurrency:
-  # One resolution job per PR at a time to avoid conflicting edits.
   group: ${{ github.repository }}-${{ github.event.pull_request.number }}-slash-resolve-comments
   cancel-in-progress: false
 
 jobs:
   resolve-comments:
     name: Resolve PR review comments via Slash
-    # Allow human reviewers and rzp-slash-public[bot] reviews through; exclude
-    # all other bots to prevent feedback loops and avoid wasted CI runs.
-    if: |
-      github.event.review.user.type != 'Bot' || github.actor == 'rzp-slash-public[bot]'
+    if: "github.actor != 'github-actions[bot]' && !contains(github.event.pull_request.labels.*.name, 'Agentic Comment Resolution: Skip')"
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    timeout-minutes: 120
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github/scripts
+            .github/actions
+            .github/slash-resolve-comments-config.yml
             CODEOWNERS
 
-      - name: Check if reviewer is CODEOWNER or PR author
-        id: auth-check
+      - name: Check if auto-resolution is enabled for PR author
+        id: check-enabled
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ACTOR: ${{ github.actor }}
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-        run: node .github/scripts/slash-resolve-comments/check-auth.js
+        run: |
+          config=$(cat .github/slash-resolve-comments-config.yml 2>/dev/null || true)
 
-      - name: Check auto-resolve run count
-        id: run-count-check
-        if: steps.auth-check.outputs.authorized == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          REVIEW_ID: ${{ github.event.review.id }}
-          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: node .github/scripts/slash-resolve-comments/check-resolve-run-count.js
+          # Fail open: missing/unreadable config must not silently disable resolution.
+          enabled=true
+          if echo "$config" | grep -qE "^\s*default_enabled:\s*false\s*$"; then
+            enabled=false
+          fi
+          if echo "$config" | grep -qE "^\s*${PR_AUTHOR}:\s*true\s*$"; then
+            enabled=true
+          elif echo "$config" | grep -qE "^\s*${PR_AUTHOR}:\s*false\s*$"; then
+            enabled=false
+          fi
 
-      - name: Fetch review comments and trigger Slash
-        if: steps.auth-check.outputs.authorized == 'true' && steps.run-count-check.outputs.allowed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
-          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
-          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          REVIEW_ID: ${{ github.event.review.id }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: node .github/scripts/slash-resolve-comments/resolve-review-comments.js
+          echo "Auto-resolve-comments enabled for $PR_AUTHOR: $enabled"
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+
+      # Public repo: anyone can submit a review, so only CODEOWNERS (plus the PR
+      # author and bot_login, which the action always allows) may trigger Slash.
+      - name: Collect CODEOWNERS
+        id: codeowners
+        if: steps.check-enabled.outputs.enabled == 'true'
+        run: |
+          owners=$(grep -oE '@[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)?' CODEOWNERS | grep -v '/' | sed 's/^@//' | sort -u | paste -sd, -)
+          echo "allowed_usernames=$owners" >> "$GITHUB_OUTPUT"
+
+      - uses: ./.github/actions/slash-resolve-comments
+        if: steps.check-enabled.outputs.enabled == 'true' && steps.codeowners.outputs.allowed_usernames != ''
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
+          review_id: ${{ github.event.review.id }}
+          branch: ${{ github.event.pull_request.head.ref }}
+          pr_author: ${{ github.event.pull_request.user.login }}
+          actor: ${{ github.actor }}
+          repository: ${{ github.repository }}
+          allowed_usernames: ${{ steps.codeowners.outputs.allowed_usernames }}
+          bot_login: "rzp-slash-public[bot],rzp-slash[bot],slash-code-review[bot],cursor[bot],kamaleshs-bridge4"
+          slash_mentions: "@rzp-slash-public,@razorpay/slash-public"
+          base_url: https://slash-api-ext.razorpay.com
+          slash_username: ${{ secrets.SLASH_API_USERNAME }}
+          slash_password: ${{ secrets.SLASH_API_PASSWORD }}
+          # Wait for the Slash task to finish so this workflow only completes
+          # after Slash has reacted/replied. The Agentic Merge Ready label reads
+          # Slash reactions, and its `workflow_run` trigger fires when THIS
+          # workflow completes — with fire-and-forget it fired before Slash
+          # reacted, so reply-only resolutions (no commit) never re-triggered
+          # and the label was never added.
+          wait_for_completion: true

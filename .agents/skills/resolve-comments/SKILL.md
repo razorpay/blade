@@ -1,57 +1,44 @@
 ---
 name: resolve-comments
-description: Resolve PR review comments by pushing code fixes or replying with explanations. Use when a PR has review comments that need to be auto-resolved.
-disable-model-invocation: true
+description: Resolve comments on a pull request. Use whenever the user asks to resolve comments on a pull request.
 ---
 
-# Resolve PR Review Comments
+Your role is to read the comments that are given to you, validate them to see if they are valid, resolve them, and comment the resolution back to the user. You smartly delegate the comment to human when you're not sure.
 
 ## Arguments
 
-- PR: Link / Number of the PR to resolve comments on
-- COMMENT_URLS: Newline-separated list of comment URLs to resolve
+- `comments`: the comments to resolve
+- `pr_url`: the URL of the pull request to resolve the comments on
 
-## Steps
+## Step 1: Validating the Comment
 
-### 1. Fetch Comment Details
+Comment can be clubbed into one of the following 4 categories:
 
-Use `gh` CLI to fetch the PR and each comment:
+- **Invalid Comment**: After exploring the comment, codebase, and PR, you found the comment to be not applicable to the PR.
+- **Requires Human Intervention**: You are not sure or confident about your analysis and need human intervention (always be biased towards this category when you have smallest of doubt). For any large change or change in core behaviour, always classify it as Requires Human Intervention.
+- **Requires Small/Medium Code Changes**: The comment is valid and the change required is small or medium. For any large change, change in core behaviour, or any failure in resolution or inability to push commit to the PR, always classify it as Requires Human Intervention.
+- **Query**: General questions, feedback, notes, anything worth mentioning, etc.
 
-```bash
-gh pr view {PR_NUMBER} --repo razorpay/blade
-gh api repos/razorpay/blade/pulls/comments/{COMMENT_ID}
-```
+Create a todo list with each comment, and its category so that its easier for you to track in next steps.
 
-### 2. Resolve Each Comment
+## Step 2: Making the necessary changes
 
-For each comment in `COMMENT_URLS`, determine the appropriate resolution:
+- For **Requires Small/Medium Code Changes**, make the necessary changes, push the changes to the PR as commits, and reply to the comment summarizing what changed and the commit id of the change. Do a good research on the comment while making any changes. You can reclassify the comment as Requires Human Intervention if you find something later in the next step or you couldn't push the changes to the PR thus the commit id is not available.
+- For **Requires Human Intervention**, respond to the comment with the clarification and ask the human to handle the change.
+- For **Invalid Comment**, respond to the comment with the explanation of why it doesn't apply.
+- For **Query**, respond to the comment with the answer.
 
-- **Code fix required**: push a fix commit to the PR branch, reply to the inlined comment (mention `[resolved by agent]`) at the end, and mark the inlined comment thread as resolved on GitHub.
-- **Clarification request**: reply to the inlined comment with a clear explanation and `[resolved by agent]` at the end.
-- **Invalid or irrelevant comment**: skip resolving it, reply with why it is invalid or irrelevant, and add `[resolved by agent]` at the end.
-  - Go through the rest of the relevant code, commits, PR info, whenever applicable, to determine if the comment is invalid or irrelevant.
-- **Needs PR author input**: add the label `Human Help Needed 🧑🏻‍💻` to the PR instead of guessing.
+## Step 3: Replying to comment
 
-#### Handling mismatched changes
+Always respond to the comment as mentioned in the step 2.
 
-- Case 1: Diff has piece of change that doesn't match the title or description of the PR.
-  - In most cases, its safe to assume that the code was changed but the PR info was not updated to reflect the changes. You can go and update the PR info instead of reverting the change.
+## Step 4: React to original comment with appropriate emoji from ReactionEmojiMap below
 
-### 3. Making Changes in branch
+Depending on the category of the comment, react to the original comment with the appropriate emoji from emoji map below. Do not mark the comment thread resolved (this is so that the human can see the reaction and know that the comment status instead of github collapsing the comment thread).
 
-- Try not to deviate from the original change the PR was intended for (check PR info, diff, relevant code state in that branch, etc to get context whenever needed).
-- Its possible that while working on the change, you find out that the comment is invalid or irrelevant or you don't need to make the change at all. In that case, just reply to the inlined comment with small message and add `[resolved by agent]` at the end.
-
-### 4. Push Fixes
-
-If any code fixes were made:
-
-```bash
-git add -A && git diff --cached --quiet || (git commit -m "fix: <relevant commit message> [resolved by agent]" && git push)
-```
-
-### 5. Reply to Comments
-
-After resolving, reply to each inlined comment with small message and add `[resolved by agent]` at the end (if you have not already done so).
-
-- Never post a new comment on the PR. Only reply to the inlined comments.
+<ReactionEmojiMap>
+  "Requires Small/Medium Code Changes": "rocket",
+  "Requires Human Intervention": "confused",
+  "Invalid Comment": "-1",
+  "Query": "rocket"
+</ReactionEmojiMap>
