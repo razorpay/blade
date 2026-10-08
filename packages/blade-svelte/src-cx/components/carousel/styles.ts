@@ -26,8 +26,7 @@ const DOT =
 // row with its scrollbar hidden, and a dot per slide.
 export const resolveCarousel: CarouselStyleResolver<CarouselStyleProps> = () => ({
   root: 'flex w-full flex-col items-center gap-2 overflow-hidden',
-  track:
-    'flex w-full scrollbar-none [&::-webkit-scrollbar]:hidden snap-x-mandatory overflow-x-auto overscroll-x-contain',
+  track: 'flex w-full scrollbar-none snap-x-mandatory overflow-x-auto overscroll-x-contain',
   slide: 'w-full shrink-0 snap-center',
   dots: 'flex items-center gap-1',
   // Blade's gray indicators (Carousel/Indicators): the current dot filled

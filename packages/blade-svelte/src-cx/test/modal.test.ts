@@ -599,7 +599,7 @@ describe('Modal, as Blade', () => {
   it("takes Blade's sizes: a column, capped at 80% when centred, or the host 8px in", async () => {
     const { resolveModal } = await import('../components/modal/styles');
     expect(resolveModal({}).panel).toContain('d:w-[400px]');
-    expect(resolveModal({}).panel).toContain('!max-h-[80%]');
+    expect(resolveModal({}).panel).toContain('max-h-[80%]!');
     expect(resolveModal({ size: 'medium' }).panel).toContain('d:w-[760px]');
     expect(resolveModal({ size: 'large' }).panel).toContain('d:w-[1024px]');
     const full = resolveModal({ size: 'full' });

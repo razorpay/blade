@@ -56,14 +56,35 @@ npm install @razorpay/blade-svelte
 
 The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
 
-### cx: compile Blade's CSS in your app
+### Two component sets
 
-`@razorpay/blade-svelte/cx` ships no prebuilt stylesheet: your build compiles
-it with UnoCSS (`unocss` is a peer dependency) from Blade's config, so the
-options you pass — the desktop width `d:` uses — reach the output.
+The package holds two component sets at different paths, so an app can use
+both:
+
+| Import                              | Components                                            |
+| ----------------------------------- | ----------------------------------------------------- |
+| `@razorpay/blade-svelte`            | cx: styled by UnoCSS from Blade's config (see below)  |
+| `@razorpay/blade-svelte/runes`      | cx's headless state, for building your own components |
+| `@razorpay/blade-svelte/components` | Blade's components, with prebuilt CSS from blade-core |
+| `@razorpay/blade-svelte/utils`      | utilities for `/components`                           |
+
+Both read blade-core's tokens (`@razorpay/blade-core/tokens/theme.css`). Some
+names exist in both, such as `Text`; rename one on import to use both in a
+file:
 
 ```ts
-// uno.blade.config.ts
+import { Text } from '@razorpay/blade-svelte';
+import { Text as BladeText } from '@razorpay/blade-svelte/components';
+```
+
+### cx: compile Blade's CSS in your app
+
+`@razorpay/blade-svelte` (the root) ships no prebuilt stylesheet: your build compiles
+it with UnoCSS (`unocss` is a peer dependency) from Blade's config, so the
+options you pass reach the output.
+
+```ts
+// uno.config.ts
 import { bladeUnoConfig } from '@razorpay/blade-svelte/uno.config';
 
 export default {
@@ -72,21 +93,55 @@ export default {
 };
 ```
 
-Then emit it with the UnoCSS plugin your bundler uses (`unocss/vite`,
+Emit it with the UnoCSS plugin your bundler uses (`unocss/vite`,
 `@unocss/webpack`), or with `@unocss/postcss` and a `@unocss;` directive in a
-stylesheet. An app on UnoCSS itself can run one pass over its own markup and
-Blade's: spread `bladeUnoConfig({ desktop })`, put its own rules before
-Blade's (Uno lets later rules win, so Blade's definitions stay Blade's), and
-add its files to `content`. Import Blade's plain stylesheets beside it:
+stylesheet. Import Blade's plain stylesheets beside it:
 
 ```ts
-import '@razorpay/blade-svelte/cx/blade.css'; // opacity-blade-*, font-blade-*
-import '@razorpay/blade-svelte/cx/fonts.css'; // Tasa, Inter (woff2)
+import '@razorpay/blade-svelte/blade.css'; // opacity-blade-*, font-blade-*
+import '@razorpay/blade-svelte/fonts.css'; // Tasa, Inter (woff2)
 ```
 
-Components are mobile first; their desktop styles are `d:` classes. Give your
-own `d:` the same width — `bladeVariants({ desktop })` for your UnoCSS pass,
-or Tailwind's `screens: { d: '62.5rem' }`.
+Components are mobile first; their desktop styles are `d:` classes, and
+`max-d:` is below it. Your markup uses the same variants.
+
+#### Your own classes, without Tailwind
+
+Pass your `tailwind.config.js` theme and Blade also generates Tailwind v3's
+utilities from it, in one pass over your files and Blade's: colours with
+`/50` and `*-opacity-*`, type, borders, shadows, rings, gradients, filters,
+animations, `@apply`, and Tailwind's preflight reset. (`theme()` in a class or
+in CSS is not read: write the value, `[--rim:hsl(var(--cta))]`.)
+
+```ts
+export default {
+  ...bladeUnoConfig({
+    desktop: '62.5rem',
+    // tailwind.config.js's `theme`: keys replace Tailwind's defaults,
+    // `extend` merges into them, a key may be a function of `theme()`.
+    theme: {
+      colors: { primary: { DEFAULT: 'hsl(var(--primary) / <alpha-value>)' } },
+      fontSize: { sm: ['0.75rem', { lineHeight: '1rem' }] },
+      extend: { spacing: { 19: '4.75rem' } },
+    },
+    presets: [{ theme: { extend: { boxShadow: { card: '…' } } } }],
+    // addVariant's strings
+    variants: { 'quick-buy': '[data-quick-buy="true"] &' },
+    preflight: true, // the default with a theme
+  }),
+  content: { filesystem: ['./src/**/*.{svelte,ts}', './node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+};
+```
+
+- The defaults are Tailwind v3.4's scales, without its colour palette or
+  breakpoints: name your colours; `d:` is the breakpoint.
+- A class both define (`rounded-none`, `mx-auto`, `shadow-card`) is written
+  once, as Blade defines it, at Tailwind's place in the stylesheet, so it
+  wins and loses against your other classes as it did under Tailwind.
+- Transforms and filters compose through Blade's variables (`--blade-*`), so
+  `grayscale brightness-0` keeps both.
+- The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
+  them apart (in a cascade layer), `@unocss !base;` emits the rest.
 
 ### Setup Theme CSS
 

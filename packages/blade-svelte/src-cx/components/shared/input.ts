@@ -31,7 +31,7 @@ export const INPUT_ACTIVE_ON_FOCUS =
  */
 // Important: it overrides the fill and border on the same element, and `cx`
 // resolves no conflicts.
-export const INPUT_DISABLED_FILL = '!bg-surface-gray-moderate !border-interactive-gray-disabled';
+export const INPUT_DISABLED_FILL = 'bg-surface-gray-moderate! border-interactive-gray-disabled!';
 export const INPUT_DISABLED_CONTENT = 'text-surface-gray-disabled';
 export const INPUT_DISABLED_TEXT_ON_CONTROL =
   'disabled:cursor-not-allowed disabled:text-surface-gray-disabled';

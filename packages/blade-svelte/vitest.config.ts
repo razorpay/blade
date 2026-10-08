@@ -7,7 +7,8 @@ import { bladeIconFontPlugin } from './src-cx/plugin/vite.js';
 const dir = fileURLToPath(new URL('.', import.meta.url));
 const bladeCoreRoot = resolve(dir, '../blade-core/src');
 
-// blade-core is consumed as source (not built) during tests:
+// blade-core is consumed as source (not built) during tests. These aliases mirror
+// `.storybook/main.js` viteFinal so test resolution matches Storybook/dev exactly:
 // - exact `@razorpay/blade-core/*` entry points -> blade-core source index files
 // - blade-core's internal `~utils` / `~tokens` / `~src` imports -> blade-core source
 // - `.web.ts` extension resolution so platform-split modules (elevation, fontFamily) resolve
@@ -42,37 +43,85 @@ const bladeCoreAlias = [
   { find: /^~src(\/.*)?$/, replacement: resolve(bladeCoreRoot, '$1') },
 ];
 
+// A fresh svelte plugin instance is created per project on purpose: sharing one
+// instance makes Vitest's deep-merge of project configs recurse on the plugin's
+// internal circular refs and blow the stack.
+const sveltePlugin = (): ReturnType<typeof svelte> => svelte({ preprocess: vitePreprocess() });
+
 export default defineConfig({
-  // blade-core source is only read by uno.config.ts, for the token contract test.
-  plugins: [
-    svelte({
-      preprocess: vitePreprocess(),
-      compilerOptions: { compatibility: { componentApi: 4 } },
-    }),
-    // As an app builds them: icons are font glyphs. Icon's own tests cover
-    // the no-plugin path (a URL drawn as a mask).
-    ...bladeIconFontPlugin(),
-  ],
-  resolve: {
-    conditions: ['browser'],
-    dedupe: ['svelte'],
-    alias: bladeCoreAlias,
-    extensions: bladeCoreExtensions,
-  },
   test: {
-    name: 'cx',
-    environment: 'jsdom',
-    globals: true,
-    include: ['src-cx/**/*.test.ts'],
+    // One project per component set:
+    // - `client` and `ssr` (src/, `/components`): the React package's CSR/SSR
+    //   split (packages/blade/jest.web.config.js), in jsdom and in node
+    // - `cx` (src-cx/, the package root): component tests in jsdom
+    projects: [
+      {
+        plugins: [sveltePlugin()],
+        define: { __DEV__: true },
+        resolve: {
+          // Browser (client) entry points so Testing Library mounts real DOM under jsdom.
+          conditions: ['browser'],
+          alias: bladeCoreAlias,
+          extensions: bladeCoreExtensions,
+        },
+        test: {
+          name: 'client',
+          environment: 'jsdom',
+          globals: true,
+          setupFiles: ['./vitest-setup.ts'],
+          include: ['src/**/*.{test,spec}.{js,ts}'],
+          exclude: ['src/**/*.ssr.{test,spec}.{js,ts}'],
+        },
+      },
+      {
+        plugins: [sveltePlugin()],
+        define: { __DEV__: true },
+        resolve: { alias: bladeCoreAlias, extensions: bladeCoreExtensions },
+        test: {
+          name: 'ssr',
+          environment: 'node',
+          globals: true,
+          include: ['src/**/*.ssr.{test,spec}.{js,ts}'],
+        },
+      },
+      {
+        plugins: [
+          svelte({
+            preprocess: vitePreprocess(),
+            compilerOptions: { compatibility: { componentApi: 4 } },
+          }),
+          // As an app builds them: icons are font glyphs. Icon's own tests cover
+          // the no-plugin path (a URL drawn as a mask).
+          ...bladeIconFontPlugin(),
+        ],
+        resolve: {
+          conditions: ['browser'],
+          dedupe: ['svelte'],
+          alias: bladeCoreAlias,
+          extensions: bladeCoreExtensions,
+        },
+        test: {
+          name: 'cx',
+          environment: 'jsdom',
+          globals: true,
+          // Some tests import a component on first use; with the src/ projects
+          // running beside them, that can pass Vitest's 5s default.
+          testTimeout: 15_000,
+          include: ['src-cx/**/*.test.ts'],
+        },
+      },
+    ],
     coverage: {
       provider: 'v8',
-      include: ['src-cx/**/*.{svelte,ts}'],
+      include: ['src/**/*.{svelte,ts}', 'src-cx/**/*.{svelte,ts}'],
       exclude: [
+        'src/**/*.stories.*',
+        'src/**/types.ts',
         'src-cx/stories/**',
         'src-cx/test/**',
-        'src-cx/**/*.test.ts',
-        'src-cx/**/index.ts',
-        'src-cx/**/*.d.ts',
+        '**/*.test.ts',
+        '**/index.ts',
+        '**/*.d.ts',
       ],
       // React parity target (packages/blade/jest.web.config.js). These gate
       // `test:coverage` only; CI runs `yarn test` (non-gating) while coverage ramps up.

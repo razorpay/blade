@@ -4,7 +4,7 @@ An icon is **an SVG file**, imported like any asset. Blade's set is `@razorpay/b
 
 ```svelte
 <script lang="ts">
-  import { Alert, Icon } from '@razorpay/blade-svelte/cx';
+  import { Alert, Icon } from '@razorpay/blade-svelte';
   import { ChevronDownIcon, WalletIcon } from '@razorpay/blade-svelte/icons';
   import RocketIcon from '../icons/rocket.svg';
 </script>

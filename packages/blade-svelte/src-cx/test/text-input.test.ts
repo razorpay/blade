@@ -198,14 +198,14 @@ describe('TextInput standalone', () => {
     expect(queryByText('Help')).toBeNull();
     expect(control.getAttribute('aria-describedby')).toBe(error.closest('[id]')?.id);
     expect(control.getAttribute('aria-invalid')).toBe('true');
-    expectClass(control.parentElement, '!border-interactive-negative-default');
+    expectClass(control.parentElement, 'border-interactive-negative-default!');
     expectClass(error, 'text-feedback-negative-intense');
 
     await rerender({ ...texts, validationState: 'success' });
     expectClass(getByText('Good'), 'text-feedback-positive-intense');
     // Blade keeps the gray border on success: only the hint turns positive.
     expectClass(control.parentElement, 'border-interactive-gray-default');
-    expectNoClass(control.parentElement, '!border-interactive-positive-default');
+    expectNoClass(control.parentElement, 'border-interactive-positive-default!');
     expect(control.getAttribute('aria-invalid')).toBeNull();
   });
 
@@ -224,7 +224,7 @@ describe('TextInput standalone', () => {
     });
     expect((getByTestId('solo') as HTMLInputElement).disabled).toBe(true);
     expectClass(container.firstElementChild as HTMLElement, 'pointer-events-none');
-    expectClass(getByTestId('solo').parentElement, '!bg-surface-gray-moderate');
+    expectClass(getByTestId('solo').parentElement, 'bg-surface-gray-moderate!');
   });
 
   it.each([

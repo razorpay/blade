@@ -69,7 +69,7 @@ export const resolveOTPInput: OTPInputStyleResolver<OTPInputStyleProps> = (
     // Blade's baseInput: error is a thick negative border with the usual
     // primary-muted focus ring; success keeps the gray border.
     validation: {
-      error: '!border-thick !border-interactive-negative-default',
+      error: 'border-thick! border-interactive-negative-default!',
       success: '',
     },
   };

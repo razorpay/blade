@@ -4,7 +4,7 @@
  *
  * ```svelte
  * <script>
- *   import { Alert } from '@razorpay/blade-svelte/cx';
+ *   import { Alert } from '@razorpay/blade-svelte';
  *   import { WalletIcon } from '@razorpay/blade-svelte/icons';
  * </script>
  *

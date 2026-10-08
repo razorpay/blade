@@ -164,7 +164,7 @@ const SIZE: Record<Axis<'size'>, string> = {
   full: '',
 };
 // Important: the panel's `max-h-full` sits on the same element.
-const CENTRED_HEIGHT = '!max-h-[80%]';
+const CENTRED_HEIGHT = 'max-h-[80%]!';
 // A centred `full` modal fills the host, 8px in (Blade's `modalMargin`), in
 // place of the centred root's 16px.
 const CENTRED_FULL = { root: 'items-center justify-center p-2', panel: 'h-full' };

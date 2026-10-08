@@ -25,16 +25,18 @@
     "blade"
   ],
   "exports": {
-    "./cx": {
+    ".": {
       "types": "./src-cx/index.ts",
       "svelte": "./src-cx/index.ts",
       "default": "./src-cx/index.ts"
     },
-    "./cx/runes": {
+    "./runes": {
       "types": "./src-cx/runes/index.ts",
       "svelte": "./src-cx/runes/index.ts",
       "default": "./src-cx/runes/index.ts"
     },
+    "./blade.css": "./src-cx/blade.css",
+    "./fonts.css": "./src-cx/fonts.css",
     "./icons": {
       "types": "./src-cx/icons/index.d.ts",
       "default": "./src-cx/icons/index.js"
@@ -47,41 +49,60 @@
       "types": "./src-cx/plugin/webpack.d.ts",
       "default": "./src-cx/plugin/webpack.js"
     },
-    "./cx/*": "./src-cx/*",
     "./uno.config": {
       "types": "./uno.config.ts",
       "default": "./uno.config.ts"
+    },
+    "./components": {
+      "types": "./dist/types/components/index.d.ts",
+      "svelte": "./dist/lib/components/index.js",
+      "default": "./dist/lib/components/index.js"
+    },
+    "./utils": {
+      "types": "./dist/types/utils/index.d.ts",
+      "default": "./dist/lib/utils/index.js"
     },
     "./package.json": "./package.json"
   },
   "svelte": "./src-cx/index.ts",
   "files": [
+    "dist",
+    "!dist/**/__tests__",
     "src-cx",
     "!src-cx/test",
     "!src-cx/stories",
     "!src-cx/**/*.test.ts",
     "!src-cx/**/*.tmp.ts",
-    "uno.config.ts"
+    "uno.config.ts",
+    "uno"
   ],
   "scripts": {
-    "svelte-check": "svelte-check --tsconfig ./tsconfig.cx.json",
+    "prepare": "yarn build",
+    "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:lib",
+    "build:clean": "rm -rf dist",
+    "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
+    "build:generate-svelte-types": "node ./scripts/generate-svelte-component-types.mjs",
+    "build:lib": "rollup -c",
+    "svelte-check": "svelte-check --tsconfig ./tsconfig.json && svelte-check --tsconfig ./tsconfig.cx.json",
     "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.cx.json --watch",
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",
     "test:coverage": "vitest run --config vitest.config.ts --coverage",
-    "dev": "npm-run-all --parallel dev:blade-core storybook",
+    "dev": "npm-run-all --parallel dev:blade-core storybook storybook:cx",
     "dev:blade-core": "cd ../blade-core && yarn build:watch",
     "start:web": "yarn dev",
     "prestorybook": "cd ../blade-core && yarn build",
-    "storybook": "storybook dev -p 6008 -c .storybook-cx --host 0.0.0.0",
-    "build-storybook": "storybook build -c .storybook-cx -o storybook-static",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build -o storybook-static",
     "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",
     "test:browserstack:local": "CHROMATIC_URL=https://blade.razorpay.com playwright test -c tests/browserstack/playwright.config.cts",
     "test:browserstack:mobile": "browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
     "test:browserstack:mobile:local": "CHROMATIC_URL=https://blade.razorpay.com browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
     "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
     "test:e2e:ui": "playwright test -c tests/e2e/playwright.config.ts --ui",
-    "test:e2e:browserstack": "TARGET=browserstack BROWSERSTACK_CONFIG_FILE=tests/e2e/browserstack.yml browserstack-node-sdk playwright test -c tests/e2e/playwright.config.ts"
+    "test:e2e:browserstack": "TARGET=browserstack BROWSERSTACK_CONFIG_FILE=tests/e2e/browserstack.yml browserstack-node-sdk playwright test -c tests/e2e/playwright.config.ts",
+    "storybook:cx": "storybook dev -p 6008 -c .storybook-cx --host 0.0.0.0",
+    "build-storybook:cx": "storybook build -c .storybook-cx -o storybook-static-cx"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",

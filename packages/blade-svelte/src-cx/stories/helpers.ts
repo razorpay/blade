@@ -119,9 +119,9 @@ export function toExample(raw: string, args: ArgsRecord): string {
     // An icon picked by name from the set: the icon itself.
     .replace(/\bglyphs\["(\w+)"\]/g, '$1')
     // The paths an app imports from, not the stories' own.
-    .replace(/(['"])(?:\.\.\/)+index\1/g, "'@razorpay/blade-svelte/cx'")
+    .replace(/(['"])(?:\.\.\/)+index\1/g, "'@razorpay/blade-svelte'")
     .replace(/(['"])(?:\.\.\/)+icons(?:\/glyphs)?\1/g, "'@razorpay/blade-svelte/icons'")
-    .replace(/(['"])(?:\.\.\/)+runes\1/g, "'@razorpay/blade-svelte/cx/runes'")
+    .replace(/(['"])(?:\.\.\/)+runes\1/g, "'@razorpay/blade-svelte/runes'")
     .replace(/\n{3,}/g, '\n\n')
     .replace(/\n(?:[ \t]*\n)+(<\/script>)/g, '\n$1')
     .replace(/import \* as glyphs from '@razorpay\/blade-svelte\/icons';/, (line, _o: number, code: string) => {

@@ -188,7 +188,7 @@ export function framedControl(size: Axis<'size'> = 'medium'): string {
 // keeps the gray border — only its hint line turns positive.
 export const FRAMED_VALIDATION = {
   error:
-    'z-1 !border-thick !border-interactive-negative-default focus:!border-interactive-negative-default',
+    'z-1 border-thick! border-interactive-negative-default! focus:border-interactive-negative-default!',
   success: '',
 };
 
@@ -216,7 +216,7 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
     // leaves the focus ring primary-muted; success keeps the gray border.
     validation: {
       solo: {
-        error: 'z-1 !border-thick !border-interactive-negative-default',
+        error: 'z-1 border-thick! border-interactive-negative-default!',
         success: '',
       },
       // In a group the error is the group's line, not a red frame.

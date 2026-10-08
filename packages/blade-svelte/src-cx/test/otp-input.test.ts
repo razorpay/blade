@@ -159,7 +159,7 @@ describe('OTPInput standalone', () => {
     const error = queries.getByText('Wrong OTP');
     expect(group.getAttribute('aria-describedby')).toBe(error.closest('[id]')?.id);
     expect(cell(queries, 0).getAttribute('aria-invalid')).toBe('true');
-    expectClass(cell(queries, 0), '!border-interactive-negative');
+    expectClass(cell(queries, 0), 'border-interactive-negative-default!');
     expectClass(error, 'text-feedback-negative-intense');
   });
 

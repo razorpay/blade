@@ -64,10 +64,10 @@ describe('Switch sizes, as Figma', () => {
     expect(medium.track.off).not.toMatch(/\bm:/);
     expect(medium.thumb.on).toContain('w-4 h-4');
     expect(medium.thumb.on).not.toMatch(/\bm:/);
-    expect(medium.icon.on).toContain('!w-2 !h-2');
+    expect(medium.icon.on).toContain('w-2! h-2!');
     const small = resolveSwitch({ size: 'small' });
     expect(small.track.on).toContain('h-4 w-7');
     expect(small.thumb.off).toContain('w-3 h-3');
-    expect(small.icon.on).toContain('!w-[6px] !h-[6px]');
+    expect(small.icon.on).toContain('w-[6px]! h-[6px]!');
   });
 });

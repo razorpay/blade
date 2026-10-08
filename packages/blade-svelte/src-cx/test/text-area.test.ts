@@ -59,7 +59,7 @@ describe('TextArea', () => {
       getByText('Too long').closest('[id]')?.id,
     );
     expect(control.getAttribute('aria-invalid')).toBe('true');
-    expectClass(control, '!border-interactive-negative-default');
+    expectClass(control, 'border-interactive-negative-default!');
   });
 
   it('isDisabled disables the control and applies the disabled part to the root', () => {

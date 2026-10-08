@@ -23,7 +23,7 @@ describe('toExample', () => {
     expect(code).not.toContain('$props()');
     expect(code).not.toContain('args.');
     expect(code).toContain('<Badge color="positive" isOpen={true}>');
-    expect(code).toContain("import { Badge } from '@razorpay/blade-svelte/cx';");
+    expect(code).toContain("import { Badge } from '@razorpay/blade-svelte';");
     expect(code).not.toMatch(/\n\s*\n<\/script>/);
     expect(toExample(story, { withIcon: true })).toContain('icon={CheckIcon}');
     expect(code).toContain('>\n  New\n</Badge>');
@@ -31,6 +31,6 @@ describe('toExample', () => {
 
   it('leaves a story without controls as written, but for its import paths', () => {
     const matrix = `<script lang="ts">\n  import { Badge } from '../../index';\n</script>\n\n<Badge>New</Badge>`;
-    expect(toExample(matrix, {})).toBe(matrix.replace("'../../index'", "'@razorpay/blade-svelte/cx'"));
+    expect(toExample(matrix, {})).toBe(matrix.replace("'../../index'", "'@razorpay/blade-svelte'"));
   });
 });

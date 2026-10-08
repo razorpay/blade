@@ -79,7 +79,7 @@ const SIZE: Record<
   small: {
     track: 'h-4 w-7',
     thumb: 'w-3 h-3',
-    iconBox: '!w-[6px] !h-[6px]',
+    iconBox: 'w-[6px]! h-[6px]!',
     pressed: {
       on: 'group-active:w-[15px] group-active:[left:-4.68px]',
       off: 'group-active:w-[15px] group-active:[left:1.5px]',
@@ -88,7 +88,7 @@ const SIZE: Record<
   medium: {
     track: 'h-5 w-9',
     thumb: 'w-4 h-4',
-    iconBox: '!w-2 !h-2',
+    iconBox: 'w-2! h-2!',
     pressed: {
       on: 'group-active:w-5 group-active:[left:-6.24px]',
       off: 'group-active:w-5 group-active:[left:2px]',

@@ -10,11 +10,25 @@ import {
   typography,
 } from '@razorpay/blade-core/tokens';
 import { colorsToCSSVariables } from '@razorpay/blade-core/utils';
+import {
+  customVariants,
+  defaultTheme,
+  defaultsCSS,
+  preflightCSS,
+  resolveTheme,
+  tailwindRules,
+} from './uno/tailwind';
+import type { ThemeConfig } from './uno/tailwind';
 
 /**
- * Every class maps to exactly one CSS property with a static value, so the processed output can be
- * turned into JSON for non-web rendering surfaces. Lengths are px, except typography which is rem
- * (and em for letter spacing), so it can be scaled for mobile by scaling the root font size.
+ * A class maps to one CSS property with a static value where it can, so the processed output can
+ * be turned into JSON for non-web rendering surfaces; the exceptions compose (transforms and
+ * filters set a variable and the one composed property) or are Tailwind's (`line-clamp-*`).
+ * Lengths are px, except typography which is rem (and em for letter spacing), so it can be scaled
+ * for mobile by scaling the root font size.
+ *
+ * Given an app's Tailwind theme (`bladeUnoConfig({ theme })`), Tailwind v3's utilities come too
+ * (uno/tailwind), so the app needs no Tailwind of its own.
  */
 
 type Scale = Record<string | number, string | number>;
@@ -350,11 +364,58 @@ const borderRules: Rule[] = [
 
 // ===== Elevation & Motion =====
 
+/**
+ * Filters as one composed `filter` (Tailwind v3's model, as transforms): each
+ * class sets only its own variable, so `grayscale brightness-0` keep both.
+ * `filterVariables` sets them empty on every element; an app's Tailwind
+ * classes (`bladeUnoConfig({ theme })`) set the same variables.
+ */
+export const FILTER_FUNCTIONS = [
+  'blur',
+  'brightness',
+  'contrast',
+  'grayscale',
+  'hue-rotate',
+  'invert',
+  'saturate',
+  'sepia',
+  'drop-shadow',
+];
+export const BACKDROP_FILTER_FUNCTIONS = [
+  'blur',
+  'brightness',
+  'contrast',
+  'grayscale',
+  'hue-rotate',
+  'invert',
+  'opacity',
+  'saturate',
+  'sepia',
+];
+const FILTER = FILTER_FUNCTIONS.map((name) => `var(--blade-${name})`).join(' ');
+const BACKDROP_FILTER = BACKDROP_FILTER_FUNCTIONS.map(
+  (name) => `var(--blade-backdrop-${name})`,
+).join(' ');
+
+/** The filter variables at rest, on every element: see `FILTER`. */
+export const filterVariables = {
+  getCSS: () =>
+    `*, ::before, ::after { ${[
+      ...FILTER_FUNCTIONS.map((name) => `--blade-${name}: ;`),
+      ...BACKDROP_FILTER_FUNCTIONS.map((name) => `--blade-backdrop-${name}: ;`),
+    ].join(' ')} }`,
+};
+
 const effectRules: Rule[] = [
   // e.g. `shadow-midRaised`, light mode only
   ...rules('shadow', 'box-shadow', elevation.onLight),
-  // e.g. `backdrop-blur-medium` → blur(8px)
-  ...rules('backdrop-blur', 'backdrop-filter', backdropBlur, (value) => `blur(${px(value)})`),
+  // e.g. `backdrop-blur-medium` → blur(8px), composed (see `FILTER`)
+  ...Object.entries(backdropBlur).map(
+    ([key, value]): Rule => [
+      `backdrop-blur-${key}`,
+      { '--blade-backdrop-blur': `blur(${px(value)})`, 'backdrop-filter': BACKDROP_FILTER },
+    ],
+  ),
 ];
 
 // ===== Typography =====
@@ -936,9 +997,15 @@ const visualRules: Rule[] = [
   ...rules('shadow', 'box-shadow', namedShadows, String),
   ...rules('bg', 'background-image', backgroundImages, String),
   ...keywords('background-image', { 'bg-none': 'none' }),
-  // e.g. `blur-medium` → blur(8px), `grayscale` → grayscale(1)
-  ...rules('blur', 'filter', backdropBlur, (value) => `blur(${px(value)})`),
-  ...keywords('filter', { grayscale: 'grayscale(1)', 'filter-none': 'none' }),
+  // e.g. `blur-medium` → blur(8px), `grayscale` → grayscale(1), composed (see `FILTER`)
+  ...Object.entries(backdropBlur).map(
+    ([key, value]): Rule => [
+      `blur-${key}`,
+      { '--blade-blur': `blur(${px(value)})`, filter: FILTER },
+    ],
+  ),
+  ['grayscale', { '--blade-grayscale': 'grayscale(1)', filter: FILTER }],
+  ...keywords('filter', { 'filter-none': 'none' }),
   ...keywords('border-radius', { 'rounded-inherit': 'inherit' }),
   // `::before` and `::after` render only with content
   ...keywords('content', { 'content-empty': "''" }),
@@ -1033,7 +1100,18 @@ const interactionRules: Rule[] = [
   ...keywords('scroll-snap-type', { 'snap-x-mandatory': 'x mandatory', 'snap-none': 'none' }),
   ...keywords('scroll-snap-align', { 'snap-start': 'start', 'snap-center': 'center' }),
   ...keywords('overscroll-behavior-x', { 'overscroll-x-contain': 'contain' }),
-  ...keywords('scrollbar-width', { 'scrollbar-none': 'none' }),
+  // No scrollbar on the element, in every engine; it still scrolls.
+  // `[&_*]:scrollbar-none` reaches its descendants too.
+  [
+    'scrollbar-none',
+    [
+      { 'scrollbar-width': 'none', '-ms-overflow-style': 'none' },
+      {
+        [symbols.selector]: (selector: string) => `${selector}::-webkit-scrollbar`,
+        display: 'none',
+      },
+    ],
+  ],
 ];
 
 // ===== More layout & text =====
@@ -1048,11 +1126,17 @@ const moreLayoutRules: Rule[] = [
   ...keywords('object-fit', { 'object-contain': 'contain', 'object-cover': 'cover' }),
   ...keywords('order', { 'order-first': '-9999', 'order-last': '9999', 'order-none': '0' }),
   ...keywords('-webkit-box-orient', { 'box-vertical': 'vertical' }),
-  ...rules(
-    'line-clamp',
-    '-webkit-line-clamp',
-    Object.fromEntries([1, 2, 3, 4].map((lines) => [lines, lines])),
-    String,
+  // Tailwind's `line-clamp-*`: the box it needs comes with it
+  ...[1, 2, 3, 4, 5, 6].map(
+    (lines): Rule => [
+      `line-clamp-${lines}`,
+      {
+        overflow: 'hidden',
+        display: '-webkit-box',
+        '-webkit-box-orient': 'vertical',
+        '-webkit-line-clamp': String(lines),
+      },
+    ],
   ),
   // e.g. `grid-cols-12` → repeat(12, minmax(0, 1fr)), `col-span-6` → span 6 / span 6
   ...Array.from({ length: 12 }, (_, i): Rule[] => [
@@ -1099,8 +1183,7 @@ const textRules: Rule[] = [
  * `[stroke-linecap:round]`, `[--tab-index:2]`, `[width:calc(100%/var(--tab-count))]`.
  * `_` stands for a space.
  */
-// A `theme()` lookup is a Tailwind value, not Blade's: left to the app's Tailwind
-// (styles-contract.test.ts keeps it out of Blade's own classes).
+// A `theme()` lookup is not read: write the value (`[--rim:hsl(var(--cta))]`).
 const arbitraryPropertyRule: Rule = [
   /^\[(--[\w-]+|[a-z-]+):(.+)\]$/,
   ([, property, value]) => (/\btheme\(/.test(value) ? undefined : { [property]: arbitrary(value) }),
@@ -1111,12 +1194,7 @@ const arbitraryPropertyRule: Rule = [
 /** Multi-property utilities, spelled out as single-property classes */
 const shortcuts: Record<string, string> = {
   truncate: 'overflow-hidden text-ellipsis whitespace-nowrap',
-  ...Object.fromEntries(
-    [1, 2, 3, 4].map((lines) => [
-      `clamp-${lines}`,
-      `overflow-hidden display-box box-vertical line-clamp-${lines}`,
-    ]),
-  ),
+  ...Object.fromEntries([1, 2, 3, 4].map((lines) => [`clamp-${lines}`, `line-clamp-${lines}`])),
   'sr-only':
     'absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-none [clip:rect(0,0,0,0)]',
 };
@@ -1243,8 +1321,11 @@ const selectorVariant: Variant = (matcher) => {
     return { matcher: matcher.slice(2), selector: (selector) => `${selector} > *` };
   }
   const bracket = leadingBracket(matcher);
-  if (!bracket || !bracket.rest) return undefined;
+  if (!bracket?.rest) return undefined;
   const template = bracket.inner.replace(/_/g, ' ');
+  // `\\` is a JS-escaped copy of the class (`'[&_.\\!x]:…'` in script), not
+  // a selector: the CSS would be invalid, and a minifier fails on it.
+  if (template.includes('\\\\')) return undefined;
   if (template.startsWith('@')) return { matcher: bracket.rest, parent: template };
   if (!template.includes('&')) return undefined;
   return { matcher: bracket.rest, selector: (selector) => template.replace(/&/g, selector) };
@@ -1261,6 +1342,26 @@ export interface BladeUnoOptions {
    * @default '62.5rem'
    */
   desktop?: string;
+  /**
+   * The app's tailwind.config.js `theme` (`colors`, `fontSize`, `extend`…):
+   * given, Blade also generates Tailwind v3's utilities from it, so the app
+   * can drop Tailwind and keep its classes (uno/tailwind). Blade's own
+   * classes stay Blade's where a name is both.
+   */
+  theme?: ThemeConfig;
+  /** Tailwind presets' themes, below `theme` (tailwind.config.js `presets`). */
+  presets?: { theme?: ThemeConfig }[];
+  /**
+   * The app's variants, as Tailwind's `addVariant` writes them:
+   * `{ 'quick-buy': '[data-quick-buy="true"] &' }`.
+   */
+  variants?: Record<string, string>;
+  /**
+   * Tailwind's preflight reset, in the `base` layer (`@unocss base;` puts it
+   * apart, e.g. in a cascade layer). Only with `theme`.
+   * @default true
+   */
+  preflight?: boolean;
 }
 
 /** The desktop media query `d:` uses: `(min-width: 62.5rem)` by default. */
@@ -1271,6 +1372,12 @@ export function desktopMedia(options: BladeUnoOptions = {}): string {
 const desktopVariant = (media: string): VariantFunction => (matcher) =>
   matcher.startsWith('d:') ? { matcher: matcher.slice(2), parent: `@media ${media}` } : undefined;
 
+/** `max-d:` — below desktop, `d:`'s complement. */
+const belowDesktopVariant = (media: string): VariantFunction => (matcher) =>
+  matcher.startsWith('max-d:')
+    ? { matcher: matcher.slice('max-d:'.length), parent: `@media not all and ${media}` }
+    : undefined;
+
 const motionReduceVariant: Variant = (matcher) => {
   if (!matcher.startsWith('motion-reduce:')) return undefined;
   return {
@@ -1279,11 +1386,14 @@ const motionReduceVariant: Variant = (matcher) => {
   };
 };
 
-/** `!border-thin` → `border-width: 1px !important` */
+/**
+ * `border-thin!` → `border-width: 1px !important`; after variants too,
+ * `hover:border-thin!` (Tailwind v4's spelling; v3's leading `!` is not read).
+ */
 const importantVariant: Variant = (matcher) => {
-  if (!matcher.startsWith('!')) return undefined;
+  if (!matcher.endsWith('!')) return undefined;
   return {
-    matcher: matcher.slice(1),
+    matcher: matcher.slice(0, -1),
     body: (body) => {
       for (const entry of body) {
         if (entry[1] != null && !String(entry[1]).endsWith('!important')) {
@@ -1297,10 +1407,17 @@ const importantVariant: Variant = (matcher) => {
 
 const preflights = [
   transformVariables,
+  filterVariables,
+  // Resets, in the `base` layer with Tailwind's preflight: an app that puts
+  // its base in a cascade layer (`@layer x { @unocss base; }`) puts these
+  // there too, under its components' layers.
   // Borders are opt-in per side: `border-t-thin border-solid` draws only the top edge
-  { getCSS: () => '*, ::before, ::after { border-width: 0; }' },
+  { layer: 'base', getCSS: () => '*, ::before, ::after { border-width: 0; }' },
   // Buttons show they are pressable, as the browser leaves them on the arrow
-  { getCSS: () => 'button, [role="button"] { cursor: pointer; } :disabled { cursor: default; }' },
+  {
+    layer: 'base',
+    getCSS: () => 'button, [role="button"] { cursor: pointer; } :disabled { cursor: default; }',
+  },
   {
     getCSS: () =>
       Object.entries({ ...keyframes, ...counterKeyframes })
@@ -1318,10 +1435,98 @@ export function bladeVariants(options: BladeUnoOptions = {}): Variant[] {
     groupPeerVariant,
     dataVariant,
     desktopVariant(desktopMedia(options)),
+    belowDesktopVariant(desktopMedia(options)),
     motionReduceVariant,
     pseudoClassVariant,
   ] as VariantFunction[];
   return matchers.map((match): Variant => ({ match, multiPass: true }));
+}
+
+type StaticRule = [string, unknown, unknown?];
+type DynamicRule = [RegExp, (match: RegExpMatchArray, context: unknown) => unknown, unknown?];
+const isStatic = (rule: Rule): boolean => typeof rule[0] === 'string';
+
+/**
+ * Tailwind's place, Blade's definition. A class both define (`rounded-none`,
+ * `mx-auto`, `line-clamp-2`, `border-transparent`) is written by the
+ * Tailwind rule, at its place in Tailwind's order, so it wins and loses
+ * against the app's other classes as it did under Tailwind; what it writes
+ * is Blade's CSS, so it is still one definition per class. Blade's own rule
+ * for it steps aside.
+ */
+function mergeOwnership(
+  tailwind: Rule[],
+  blade: Rule[],
+  bladeShortcuts: Record<string, string>,
+): { rules: Rule[]; shortcuts: Record<string, string> } {
+  const tailwindStatic = new Set(
+    (tailwind.filter(isStatic) as StaticRule[]).map((rule) => rule[0]),
+  );
+  const tailwindDynamic = (tailwind.filter((rule) => !isStatic(rule)) as DynamicRule[]).reverse();
+  const bladeStatic = new Map(
+    (blade.filter(isStatic) as StaticRule[]).map((rule) => [rule[0], rule[1]]),
+  );
+  const bladeDynamic = (blade.filter((rule) => !isStatic(rule)) as DynamicRule[]).reverse();
+
+  // Uno tries the later of two rules first: so do these.
+  const firstOf = (rules: DynamicRule[], name: string, context: unknown): unknown => {
+    for (const [pattern, handle] of rules) {
+      const match = pattern.exec(name);
+      if (!match) continue;
+      const result = handle(match, context);
+      if (result != null) return result;
+    }
+    return undefined;
+  };
+  const claims = new Map<string, boolean>();
+  const tailwindClaims = (name: string, context: unknown): boolean => {
+    let claimed = claims.get(name);
+    if (claimed === undefined) {
+      claimed = tailwindStatic.has(name) || firstOf(tailwindDynamic, name, context) !== undefined;
+      claims.set(name, claimed);
+    }
+    return claimed;
+  };
+  const bladeCSS = (name: string, context: unknown): unknown =>
+    bladeStatic.has(name) ? bladeStatic.get(name) : firstOf(bladeDynamic, name, context);
+
+  const rules: Rule[] = [
+    ...tailwind.map(
+      (rule): Rule => {
+        if (isStatic(rule)) {
+          const [name, , meta] = rule as StaticRule;
+          const css = bladeCSS(name, {});
+          return css === undefined ? rule : (([name, css, meta] as unknown) as Rule);
+        }
+        const [pattern, handle, meta] = rule as DynamicRule;
+        return [
+          pattern,
+          (match, context) => {
+            const css = handle(match, context);
+            if (css == null) return undefined;
+            return bladeCSS(match[0], context) ?? css;
+          },
+          meta,
+        ] as Rule;
+      },
+    ),
+    ...blade.flatMap((rule): Rule[] => {
+      if (isStatic(rule)) return tailwindClaims((rule as StaticRule)[0], {}) ? [] : [rule];
+      const [pattern, handle, meta] = rule as DynamicRule;
+      return [
+        [
+          pattern,
+          (match, context) =>
+            tailwindClaims(match[0], context) ? undefined : handle(match, context),
+          meta,
+        ] as Rule,
+      ];
+    }),
+  ];
+  const shortcuts = Object.fromEntries(
+    Object.entries(bladeShortcuts).filter(([name]) => !tailwindClaims(name, {})),
+  );
+  return { rules, shortcuts };
 }
 
 /**
@@ -1331,33 +1536,76 @@ export function bladeVariants(options: BladeUnoOptions = {}): Variant[] {
  * the defaults (Storybook, the tests).
  */
 export function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfig {
+  const theme =
+    options.theme === undefined
+      ? undefined
+      : resolveTheme([
+          options.theme,
+          ...(options.presets ?? []).map((preset) => preset.theme ?? {}),
+          defaultTheme,
+        ]);
+  const bladeRules: Rule[] = [
+    ...getColorRules(),
+    ...colorKeywordRules,
+    ...spacingRules,
+    ...sizeRules,
+    ...fractionRules,
+    ...borderRules,
+    ...effectRules,
+    ...opacityRules,
+    ...zIndexRules,
+    ...transformRules,
+    ...transitionRules,
+    ...visualRules,
+    ...animationRules,
+    ...interactionRules,
+    ...typographyRules,
+    ...textRules,
+    ...layoutRules,
+    ...moreLayoutRules,
+    arbitraryPropertyRule,
+  ];
+  const merged = theme
+    ? mergeOwnership(tailwindRules(theme), bladeRules, shortcuts)
+    : { rules: bladeRules, shortcuts };
   return defineConfig({
     presets: [],
     separators: [':'],
-    rules: [
-      ...getColorRules(),
-      ...colorKeywordRules,
-      ...spacingRules,
-      ...sizeRules,
-      ...fractionRules,
-      ...borderRules,
-      ...effectRules,
-      ...opacityRules,
-      ...zIndexRules,
-      ...transformRules,
-      ...transitionRules,
-      ...visualRules,
-      ...animationRules,
-      ...interactionRules,
-      ...typographyRules,
-      ...textRules,
-      ...layoutRules,
-      ...moreLayoutRules,
-      arbitraryPropertyRule,
+    rules: merged.rules,
+    shortcuts: merged.shortcuts,
+    // A rule stays where its class sorts: merging equal bodies into one
+    // selector list would move rules in the cascade (Tailwind never does),
+    // and one selector a browser rejects would drop the whole list.
+    mergeSelectors: false,
+    variants: [...customVariants(options.variants), ...bladeVariants(options)],
+    preflights: [
+      ...(theme
+        ? [
+            {
+              layer: 'base',
+              getCSS: () =>
+                (options.preflight === false ? '' : preflightCSS(theme)) + defaultsCSS(theme),
+            },
+          ]
+        : []),
+      ...preflights,
     ],
-    shortcuts,
-    variants: bladeVariants(options),
-    preflights,
+    layers: { base: -200 },
+    ...(theme
+      ? {
+          // Tailwind's `before:`/`after:` give the pseudo-element its
+          // `content` (`var(--tw-content)`, set by `content-[…]`), unless the
+          // rule sets one itself (Blade's icon glyph does).
+          postprocess: (util) => {
+            if (
+              /::(before|after)$/.test(util.selector) &&
+              !util.entries.some(([property]) => property === 'content')
+            ) {
+              util.entries.unshift(['content', 'var(--tw-content)']);
+            }
+          },
+        }
+      : {}),
   });
 }
 
