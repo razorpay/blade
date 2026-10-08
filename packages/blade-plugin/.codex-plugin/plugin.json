@@ -7,15 +7,9 @@
     "email": "frontend-core@razorpay.com",
     "url": "https://github.com/razorpay"
   },
-  "keywords": [
-    "blade",
-    "design-system",
-    "react",
-    "razorpay",
-    "ui",
-    "skills"
-  ],
+  "keywords": ["blade", "design-system", "react", "razorpay", "ui", "skills"],
   "homepage": "https://github.com/razorpay/blade/tree/master/packages/blade-plugin",
   "repository": "https://github.com/razorpay/blade",
-  "license": "MIT"
+  "license": "MIT",
+  "hooks": "./hooks/hooks.json"
 }
