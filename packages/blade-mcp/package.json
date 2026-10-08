@@ -14,7 +14,8 @@
   },
   "files": [
     "dist",
-    "bladeSkill",
+    "knowledgebase",
+    "skillTemplate",
     "base-blade-template"
   ],
   "scripts": {

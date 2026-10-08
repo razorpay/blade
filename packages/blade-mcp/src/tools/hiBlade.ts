@@ -1,5 +1,5 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { analyticsToolCallEventName, PLUGIN_MIGRATION_NOTICE } from '../utils/tokens.js';
+import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getPackageJSONVersion } from '../utils/generalUtils.js';
 import { sendAnalytics } from '../utils/analyticsUtils.js';
 
@@ -14,7 +14,7 @@ Here's what I can help you with:
 • 📚 Learn components — ask: "How do I use the OTPInput component?"
 • ...and much more!
 
-${PLUGIN_MIGRATION_NOTICE}
+Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade plugin for Claude Code, Cursor and other agents: https://github.com/razorpay/blade/tree/master/packages/blade-plugin
 
 Happy vibe coding! 💙
 `;

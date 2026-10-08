@@ -22,7 +22,7 @@ scripts/validatePlugin.mjs   # Structural checks run in CI
 
 ## Rules
 
-- Knowledgebase edits happen here. `packages/blade-mcp` copies `skills/blade` at build time; never edit `packages/blade-mcp/bladeSkill`.
+- Knowledgebase edits happen here. `packages/blade-mcp` copies `skills/blade/references` into its gitignored `knowledgebase/` at build time; never edit it there. Only the docs are shared: `SKILL.md`, scripts and analytics here never reach MCP users.
 - When adding a component doc, also add it to the `## Available components` list in `skills/blade/SKILL.md` and regenerate `references/components/index.md` (one line from the doc's Description). `yarn validate:blade-plugin` fails otherwise.
 - Every changeset that touches this package uses `'@razorpay/blade-mcp': patch|minor` (fixed version group); do not add a separate `@razorpay/blade-plugin` line.
 - Do not bump versions by hand. `scripts/syncPluginManifestVersion.js` stamps plugin.json files and `SKILL.md` `metadata.version` from `package.json` during release.

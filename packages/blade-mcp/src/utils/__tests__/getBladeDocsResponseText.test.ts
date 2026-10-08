@@ -8,7 +8,6 @@ vi.mock('fs');
 vi.mock('path');
 vi.mock('../tokens.js', () => ({
   KNOWLEDGEBASE_DIRECTORY: '/mock/knowledgebase',
-  PLUGIN_MIGRATION_NOTICE: 'mock plugin migration notice',
 }));
 
 describe('getBladeDocsResponseText', () => {

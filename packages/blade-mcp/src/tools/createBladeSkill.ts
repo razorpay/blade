@@ -1,16 +1,13 @@
 import { join, basename } from 'path';
-import { existsSync, symlinkSync, mkdirSync, rmSync, cpSync, lstatSync } from 'fs';
+import { existsSync, symlinkSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import {
-  BLADE_SKILL_DIRECTORY,
+  BLADE_SKILL_FILE_PATH,
   SKILL_VERSION,
   SKILL_DIRECTORY_NAME,
-  SKILL_FILE_NAME,
-  CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH,
-  CONSUMER_SKILL_SYMLINK_RELATIVE_PATH,
-  CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH,
-  CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH,
+  SKILL_REFERENCE_FILE_NAMES,
+  KNOWLEDGEBASE_DIRECTORY,
   analyticsToolCallEventName,
 } from '../utils/tokens.js';
 
@@ -23,7 +20,7 @@ import type { McpToolResponse } from '../utils/types.js';
 const createBladeSkillToolName = 'create_blade_skill';
 
 const createBladeSkillToolDescription =
-  'Installs the blade skill (Blade component, pattern and token docs) into the consumer project for AI-assisted frontend code generation. Scaffolds .agents/skills/blade and symlinks .claude/skills/blade for Claude Code. Not needed when the Blade Claude Code plugin is installed.';
+  'Creates the UI code guidelines skill for AI-assisted frontend code generation with Blade. Scaffolds the skill in .agents/skills/ui-code-guidelines and creates a symlink in .claude/skills for Claude Code support.';
 
 const createBladeSkillToolSchema = {
   currentProjectRootDirectory: z
@@ -31,15 +28,6 @@ const createBladeSkillToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-};
-
-const removeIfExists = (path: string): void => {
-  try {
-    lstatSync(path);
-  } catch {
-    return;
-  }
-  rmSync(path, { recursive: true, force: true });
 };
 
 // Core business logic function
@@ -72,40 +60,54 @@ const createBladeSkillCore = ({
       };
     }
 
-    const skillDir = join(currentProjectRootDirectory, CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH);
-    const skillFilePath = join(skillDir, SKILL_FILE_NAME);
+    const skillDir = join(currentProjectRootDirectory, '.agents/skills', SKILL_DIRECTORY_NAME);
+    const skillFilePath = join(skillDir, 'SKILL.md');
 
-    if (existsSync(skillFilePath) && !hasOutdatedSkill(skillFilePath)) {
-      return {
-        content: [
-          { type: 'text', text: 'Blade skill already exists and is up to date. Doing nothing' },
-        ],
-      };
+    if (existsSync(skillFilePath)) {
+      if (hasOutdatedSkill(skillFilePath)) {
+        // removes the outdated skill file and continues execution to generate new skill file
+        unlinkSync(skillFilePath);
+      } else {
+        return {
+          content: [
+            { type: 'text', text: 'Blade skill already exists and is up to date. Doing nothing' },
+          ],
+        };
+      }
     }
 
-    // Replace the whole tree so removed reference docs do not linger.
-    removeIfExists(skillDir);
-    mkdirSync(skillDir, { recursive: true });
-    cpSync(BLADE_SKILL_DIRECTORY, skillDir, { recursive: true });
+    const skillFileTemplateContent = readFileSync(BLADE_SKILL_FILE_PATH, 'utf8');
+
+    if (!existsSync(skillDir)) {
+      mkdirSync(skillDir, { recursive: true });
+    }
+
+    writeFileSync(skillFilePath, skillFileTemplateContent);
+
+    // Copy reference files
+    const refsDestDir = join(skillDir, 'references');
+    if (existsSync(KNOWLEDGEBASE_DIRECTORY)) {
+      if (!existsSync(refsDestDir)) {
+        mkdirSync(refsDestDir, { recursive: true });
+      }
+      for (const refFile of SKILL_REFERENCE_FILE_NAMES) {
+        const refContent = readFileSync(join(KNOWLEDGEBASE_DIRECTORY, refFile), 'utf8');
+        writeFileSync(join(refsDestDir, refFile), refContent);
+      }
+    }
 
     // Create symlink for Claude Code support
     const claudeSkillsDir = join(currentProjectRootDirectory, '.claude/skills');
-    const symlinkPath = join(currentProjectRootDirectory, CONSUMER_SKILL_SYMLINK_RELATIVE_PATH);
+    const symlinkPath = join(claudeSkillsDir, SKILL_DIRECTORY_NAME);
 
     if (!existsSync(claudeSkillsDir)) {
       mkdirSync(claudeSkillsDir, { recursive: true });
     }
 
     if (!existsSync(symlinkPath)) {
-      // Relative symlink: .claude/skills/blade -> ../../.agents/skills/blade
+      // Relative symlink: .claude/skills/ui-code-guidelines -> ../../.agents/skills/ui-code-guidelines
       symlinkSync(join('..', '..', '.agents', 'skills', SKILL_DIRECTORY_NAME), symlinkPath);
     }
-
-    // The ui-code-guidelines skill is superseded by the blade skill.
-    removeIfExists(join(currentProjectRootDirectory, CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH));
-    removeIfExists(
-      join(currentProjectRootDirectory, CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH),
-    );
 
     sendAnalytics({
       eventName: analyticsToolCallEventName,

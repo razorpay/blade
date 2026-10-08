@@ -7,7 +7,8 @@ Blade MCP is in maintenance mode. New capabilities go into `packages/blade-plugi
 ## Package Structure
 
 ```
-bladeSkill/          # Build output (gitignored). Copied from packages/blade-plugin/skills/blade by scripts/copyKnowledgebase.mjs. Never edit here.
+knowledgebase/       # Build output (gitignored). Copied from packages/blade-plugin/skills/blade/references by scripts/copyKnowledgebase.mjs. Never edit here.
+skillTemplate/       # The MCP's own `ui-code-guidelines` skill installed by create_blade_skill. Bump SKILL_VERSION in src/utils/tokens.ts when it changes.
 src/
   tools/      # MCP tool definitions
   utils/      # Shared utilities
