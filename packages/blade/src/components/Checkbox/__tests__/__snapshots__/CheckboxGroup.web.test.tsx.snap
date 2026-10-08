@@ -246,7 +246,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="checkbox-group-781-label-786"
+      aria-labelledby="checkbox-group-865-label-870"
       class="c0"
       data-analytics-checkbox-group="select fruits"
       data-blade-component="checkbox-group"
@@ -254,7 +254,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
     >
       <span
         data-blade-component="form-label"
-        id="checkbox-group-781-label-786"
+        id="checkbox-group-865-label-870"
         style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
