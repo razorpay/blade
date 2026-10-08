@@ -24,6 +24,8 @@ import type { ThemeConfig } from './uno/tailwind';
  * A class maps to one CSS property with a static value where it can, so the processed output can
  * be turned into JSON for non-web rendering surfaces; the exceptions compose (transforms and
  * filters set a variable and the one composed property) or are Tailwind's (`line-clamp-*`).
+ * Colours and font families read blade-core's token variables, the static value their fallback
+ * (`var(--interactive-background-primary-default, hsla(…))`), so an app themes Blade by setting them.
  * Lengths are px, except typography which is rem (and em for letter spacing), so it can be scaled
  * for mobile by scaling the root font size.
  *
@@ -108,6 +110,9 @@ const deprecatedColorTokens = new Set([
   '--popup-border-intense',
 ]);
 
+/** A token's variable, falling back to its value: `var(--surface-text-gray-normal, hsla(…))` */
+const themed = (token: string, value: string | number): string => `var(--${token}, ${value})`;
+
 /** Light mode color values of the neutral theme */
 const getColorRules = (): Rule[] => {
   const colorRules: Rule[] = [];
@@ -121,27 +126,25 @@ const getColorRules = (): Rule[] => {
     if (!colorProperty || !isColorProperty(colorProperty) || rest.length === 0) continue;
 
     const { prefix, property } = colorPropertyToUtility[colorProperty];
-    colorRules.push([[prefix, category, ...rest].join('-'), { [property]: String(value) }]);
+    const tokenValue = themed(cssVariable.replace(/^--/, ''), value);
+    colorRules.push([[prefix, category, ...rest].join('-'), { [property]: tokenValue }]);
     // Native checkboxes and radios take the fill tokens, e.g. `accent-interactive-primary-default`
     if (colorProperty === 'background') {
-      colorRules.push([['accent', category, ...rest].join('-'), { 'accent-color': String(value) }]);
+      colorRules.push([['accent', category, ...rest].join('-'), { 'accent-color': tokenValue }]);
     }
     // Focus outlines take the border tokens, e.g. `outline-surface-primary-muted`
     if (colorProperty === 'border') {
-      colorRules.push([
-        ['outline', category, ...rest].join('-'),
-        { 'outline-color': String(value) },
-      ]);
+      colorRules.push([['outline', category, ...rest].join('-'), { 'outline-color': tokenValue }]);
     }
   }
   return colorRules;
 };
 
-/** Light mode color value of a token, e.g. `color('surface-border-primary-muted')` */
+/** A token's variable over its light mode value, e.g. `color('surface-border-primary-muted')` */
 const color = (token: string): string => {
   const value = colorsToCSSVariables(bladeNeutralTheme.colors.onLight)[`--${token}`];
   if (!value) throw new Error(`Unknown color token: ${token}`);
-  return value;
+  return themed(token, value);
 };
 
 const colorKeywordRules: Rule[] = [
@@ -432,9 +435,10 @@ const round = (value: number): number => Number(value.toFixed(4));
 const rem = (value: string | number): string => `${round(Number(value) / ROOT_FONT_SIZE)}rem`;
 
 /**
- * The heading face, one class with checkout's: the merchant's heading font
- * when its theme sets one, else `Tasa` (src-cx/fonts.css). The fallback is
- * Arial sized to TASA Orbiter, so the swap does not shift the layout.
+ * The faces read blade-core's `--font-family-text`, `--font-family-heading` and
+ * `--font-family-code`, so an app sets its own (a merchant's). The heading face
+ * falls back to `Tasa` (src-cx/fonts.css), then Arial sized to TASA Orbiter, so
+ * the swap does not shift the layout.
  */
 // Blade's weights and its text and code faces under Tailwind's names
 // (blade-core's tokens). Unlike Blade's other classes, these give way to an
@@ -472,11 +476,11 @@ const fontRules: Rule[] = [
   ...Object.entries(fonts.weight).map(
     ([name, value]): Rule => [`font-${weightNames[name] ?? name}`, { 'font-weight': String(value) }],
   ),
-  ['font-sans', { 'font-family': fonts.family.text }],
-  ['font-mono', { 'font-family': fonts.family.code }],
+  ['font-sans', { 'font-family': themed('font-family-text', fonts.family.text) }],
+  ['font-mono', { 'font-family': themed('font-family-code', fonts.family.code) }],
   [
     'font-heading',
-    { 'font-family': 'var(--merchant-heading-font, Tasa), "TASA Orbiter Fallback Arial", Arial' },
+    { 'font-family': themed('font-family-heading', 'Tasa, "TASA Orbiter Fallback Arial", Arial') },
   ],
 ];
 
@@ -869,7 +873,7 @@ const filledFrame = ({
 const standardColor = (token: string): string => {
   const value = colorsToCSSVariables(bladeTheme.colors.onLight)[`--${token}`];
   if (!value) throw new Error(`Unknown color token: ${token}`);
-  return value;
+  return themed(token, value);
 };
 
 const buttonAccents = {
@@ -1674,7 +1678,7 @@ export const ruleGroups = {
   fraction: fractionRules,
   /** `opacity-*`: Tailwind's percentage scale */
   opacity: opacityRules,
-  /** `font-heading`: the heading face, the merchant's when its theme sets one */
+  /** `font-sans`, `font-mono`, `font-heading` (each over its `--font-family-*`), weights */
   font: fontRules,
   /** `translate-*`, `rotate-*`, `scale-*`, `origin-*`: needs `transformVariables` among the preflights */
   transform: transformRules,

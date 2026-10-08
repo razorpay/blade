@@ -50,8 +50,12 @@ describe('font utilities', () => {
     ['font-medium', { 'font-weight': String(weight.medium) }],
     ['font-semibold', { 'font-weight': String(weight.semibold) }],
     ['font-bold', { 'font-weight': String(weight.bold) }],
-    ['font-sans', { 'font-family': family.text }],
-    ['font-mono', { 'font-family': family.code }],
+    ['font-sans', { 'font-family': `var(--font-family-text, ${family.text})` }],
+    ['font-mono', { 'font-family': `var(--font-family-code, ${family.code})` }],
+    [
+      'font-heading',
+      { 'font-family': 'var(--font-family-heading, Tasa, "TASA Orbiter Fallback Arial", Arial)' },
+    ],
   ])('%s carries blade-core\'s token', async (name, expected) => {
     const uno = await createGenerator(defaultUnoConfig);
     const { css: out } = await uno.generate(name, { preflights: false });
@@ -74,12 +78,16 @@ describe('font utilities', () => {
     expect(await cssFor('font-sans', theme)).toContain('font-family:var(--body-font, Inter)');
     expect(await cssFor('font-medium', theme)).toContain('font-weight:var(--font-weight, 500)');
     // Keys the app leaves alone stay Blade's.
-    expect(await cssFor('font-mono', theme)).toContain(`font-family:${family.code}`);
+    expect(await cssFor('font-mono', theme)).toContain(
+      `font-family:var(--font-family-code, ${family.code})`,
+    );
   });
 
   it("keeps Blade's values over Tailwind's defaults when the app theme does not set them", async () => {
     const theme = { theme: { colors: { brand: '#123456' } } };
-    expect(await cssFor('font-sans', theme)).toContain(`font-family:${family.text}`);
+    expect(await cssFor('font-sans', theme)).toContain(
+      `font-family:var(--font-family-text, ${family.text})`,
+    );
     expect(await cssFor('font-semibold', theme)).toContain(`font-weight:${weight.semibold}`);
   });
 });

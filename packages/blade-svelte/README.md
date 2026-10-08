@@ -147,6 +147,49 @@ export default {
 - The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
   them apart (in a cascade layer), `@unocss !base;` emits the rest.
 
+#### Theming with CSS variables
+
+Blade's colours and faces read blade-core's token variables, their light mode
+values as the fallback, so nothing changes until you set one:
+
+```css
+.bg-interactive-primary-default {
+  background-color: var(--interactive-background-primary-default, hsla(218, 89%, 51%, 1));
+}
+```
+
+Set them anywhere up the tree (`:root`, a container) to theme the components
+under it:
+
+```css
+:root {
+  --interactive-background-primary-default: hsl(330 80% 45%);
+  --interactive-text-on-primary-normal: #fff;
+  --font-family-text: Georgia, serif;
+}
+```
+
+| Variables | |
+|---|---|
+| `--surface-{background,border,text,icon}-…` | 13, 5, 17, 17 |
+| `--feedback-{background,border,text,icon}-…` | 10 each |
+| `--interactive-{background,border,text,icon}-…` | 49, 38, 44, 44 |
+| `--popup-{background,border}-…` | 8 each |
+| `--overlay-background-…` | 2 |
+| `--font-family-text`, `--font-family-heading`, `--font-family-code` | `font-sans`, `font-heading`, `font-mono` |
+
+The full list of 285 colour variables is the snapshot of
+`src-cx/test/theme-variables.test.ts`. Composed values follow them too: a
+button's frame and focus ring, `surface-raised`, the skeleton. `--data-*`
+(charts) and the white and black bevels, sheens and elevation shadows stay
+fixed. For a brand colour on primary buttons, blade-core's
+`getPrimaryBrandCssVars({ bg })` (`@razorpay/blade-core/styles`) returns the
+five fill and frame variables.
+
+blade-core's `theme.css` (below) sets every variable to the *standard* theme's
+values, where the cx components fall back to the *neutral* theme's (black
+primary borders and text): import it only if you want the standard theme.
+
 ### Setup Theme CSS
 
 Import the theme CSS in your root layout or app entry file:

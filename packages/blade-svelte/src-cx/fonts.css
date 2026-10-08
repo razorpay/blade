@@ -11,8 +11,8 @@
  *
  * Rebuilt, with the Inter cuts, by scripts/fonts/build.sh (fontTools, FontForge).
  *
- * Named `Tasa`: checkout's merchant theme names its default heading font so
- * (`--merchant-heading-font: "Tasa"`), and `font-heading` falls back to it.
+ * Named `Tasa`: `font-heading` falls back to it when no `--font-family-heading`
+ * is set, and checkout's merchant theme names its default heading font so.
  */
 @font-face {
   font-family: 'Tasa';
