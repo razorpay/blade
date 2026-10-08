@@ -13,13 +13,19 @@ const here = dirname(fileURLToPath(import.meta.url));
 const packageRoot = join(here, '..');
 const source = join(packageRoot, '..', 'blade-plugin', 'skills', 'blade', 'references');
 const destination = join(packageRoot, 'knowledgebase');
+// Root-level references (type docs) are served from skillTemplate/references.
+const docFolders = ['components', 'patterns', 'general'];
 
-if (!existsSync(join(source, 'components'))) {
-  console.error(`[copyKnowledgebase] blade skill references not found at ${source}`);
-  process.exit(1);
+for (const folder of docFolders) {
+  if (!existsSync(join(source, folder))) {
+    console.error(`[copyKnowledgebase] ${folder} docs not found at ${join(source, folder)}`);
+    process.exit(1);
+  }
 }
 
 rmSync(destination, { recursive: true, force: true });
-cpSync(source, destination, { recursive: true });
+for (const folder of docFolders) {
+  cpSync(join(source, folder), join(destination, folder), { recursive: true });
+}
 
-console.log(`[copyKnowledgebase] copied blade skill references -> ${destination}`);
+console.log(`[copyKnowledgebase] copied ${docFolders.join(', ')} docs -> ${destination}`);
