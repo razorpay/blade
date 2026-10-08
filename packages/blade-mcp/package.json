@@ -30,7 +30,6 @@
     "test": "vitest",
     "test:updateSnapshots": "vitest -u",
     "prebuild": "node scripts/copyKnowledgebase.mjs",
-    "pretest": "node scripts/copyKnowledgebase.mjs",
     "predev": "node scripts/copyKnowledgebase.mjs"
   },
   "keywords": [

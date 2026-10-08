@@ -6,7 +6,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'packages', 'blade-plugin');
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'packages',
+  'blade-plugin',
+);
 const errors = [];
 
 const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8'));
