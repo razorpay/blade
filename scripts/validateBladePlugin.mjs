@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'packages', 'blade-plugin');
 const errors = [];
 
 const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8'));
@@ -74,6 +74,9 @@ for (const required of [
   'general/index.md',
   'styled-props-types.md',
   'common-utility-types.md',
+  'upgrade.md',
+  'new-project.md',
+  'figma-to-code.md',
 ]) {
   if (!fs.existsSync(path.join(refs, required))) errors.push(`references/${required} missing`);
 }

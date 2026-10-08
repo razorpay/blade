@@ -1,7 +1,7 @@
 ---
 name: blade
-description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging frontend code that uses @razorpay/blade, or when asked which Blade component, pattern or token to use.
-allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *)
+description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging code that uses @razorpay/blade, choosing a component, pattern or token, upgrading Blade, or turning a figma.com frame into Blade code.
+allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *) Bash(node *changelog.mjs*) Bash(node *figma-to-code.mjs*) Read
 metadata:
   version: '1.32.1'
 ---
@@ -54,7 +54,7 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 - `files` (non-empty) and `linesAddedTotal` / `linesRemovedTotal` are required; all numbers are non-negative integers.
 - `bladeUi*`: UI lines that import or use Blade components. `nonBladeUi*`: UI component lines that do not use Blade (custom components, other libraries). `nonUi*`: business logic, state, data fetching, utilities.
 - `currentProjectRootDirectory`: absolute path of the project, never `.` or `/`.
-- `toolsUsed`: the Blade skills you used in this conversation (`blade`, `blade-upgrade`, `blade-new-project`, `blade-figma-to-code`).
+- `toolsUsed`: always `["blade"]`.
 - `${CLAUDE_SKILL_DIR}` is this skill's directory. Agents that do not substitute it should use the path of the directory containing this SKILL.md.
 
 ## Available components
@@ -69,8 +69,10 @@ Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, A
 
 `references/general/<Name>.md`: Usage (BladeProvider setup), ChoosingComponents, Tokens, AvailableIcons, ChartColorSystem, WhiteLabelling. Summaries in `references/general/index.md`.
 
-## Related skills
+## Workflows
 
-- Upgrading Blade or reading release notes: `blade-upgrade`
-- Starting a new Vite + React + Blade app: `blade-new-project`
-- Converting a Figma frame to Blade code: `blade-figma-to-code`
+Read the matching file and follow its steps. Paths in them are relative to this skill's directory (`${CLAUDE_SKILL_DIR}`).
+
+- Upgrading Blade or reading release notes: `references/upgrade.md`
+- Converting a Figma frame to Blade code: `references/figma-to-code.md`
+- Starting a new Vite + React + Blade app: `references/new-project.md`. Only when the user explicitly asks for a brand-new project.

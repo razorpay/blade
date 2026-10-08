@@ -9,7 +9,7 @@
   },
   "scripts": {
     "sync-version": "node ../../scripts/syncPluginManifestVersion.js",
-    "validate": "node scripts/validatePlugin.mjs",
+    "validate": "node ../../scripts/validateBladePlugin.mjs",
     "test": "node --test tests/scripts.test.mjs"
   },
   "author": "Razorpay",

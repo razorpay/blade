@@ -6,6 +6,7 @@ on:
       - 'packages/blade-mcp/**'
       - 'packages/blade-plugin/**'
       - 'scripts/syncPluginManifestVersion.js'
+      - 'scripts/validateBladePlugin.mjs'
       - '.github/workflows/blade-mcp-validate.yml'
 
 permissions:
