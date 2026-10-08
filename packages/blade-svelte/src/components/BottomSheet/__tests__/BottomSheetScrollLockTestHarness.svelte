@@ -4,14 +4,16 @@
 
   let {
     isOpen = false,
+    disableScrollLock = false,
     onDismiss,
   }: {
     isOpen?: boolean;
+    disableScrollLock?: boolean;
     onDismiss?: () => void;
   } = $props();
 </script>
 
-<BottomSheet {isOpen} {onDismiss}>
+<BottomSheet {isOpen} {disableScrollLock} {onDismiss}>
   {#snippet children()}
     <BottomSheetBody>
       {#snippet children()}
