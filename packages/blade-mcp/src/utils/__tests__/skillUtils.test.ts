@@ -110,7 +110,7 @@ describe('skillUtils', () => {
       expect(result).toMatchObject({
         content: [{ type: 'text', text: expect.stringContaining('Blade skill does not exist') }],
       });
-      expect(result!.content[0].text).toContain(mockProjectRootDirectory);
+      expect(result?.content[0].text).toContain(mockProjectRootDirectory);
     });
 
     it('should return content with update instructions when skill is outdated', () => {
@@ -120,7 +120,7 @@ describe('skillUtils', () => {
       expect(result).toMatchObject({
         content: [{ type: 'text', text: expect.stringContaining('Blade skill is outdated') }],
       });
-      const text = result!.content[0].text;
+      const text = result?.content[0].text;
       expect(text).toContain(outdatedVersion);
       expect(text).toContain(SKILL_VERSION);
       expect(text).toContain(mockProjectRootDirectory);
@@ -138,7 +138,7 @@ describe('skillUtils', () => {
       expect(result).toMatchObject({
         content: [{ type: 'text', text: expect.stringContaining('Blade skill is outdated') }],
       });
-      const text = result!.content[0].text;
+      const text = result?.content[0].text;
       expect(text).toContain('0.0.0');
       expect(text).toContain(SKILL_VERSION);
     });

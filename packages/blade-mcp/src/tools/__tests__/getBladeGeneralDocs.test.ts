@@ -4,6 +4,7 @@ import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
+import * as detectFramework from '../../utils/detectFramework.js';
 import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
@@ -16,13 +17,29 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
 });
 vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
-vi.mock('../../utils/generalUtils.js', () => ({
-  getBladeDocsList: vi.fn(() => ['AvailableIcons', 'ChartColorSystem', 'Usage', 'WhiteLabelling']),
+vi.mock('../../utils/generalUtils.js', async (importOriginal) => {
+  const actual = await importOriginal<typeof generalUtils>();
+  return {
+    ...actual,
+    getBladeDocsList: vi.fn(() => [
+      'AvailableIcons',
+      'ChartColorSystem',
+      'Usage',
+      'WhiteLabelling',
+    ]),
+  };
+});
+vi.mock('../../utils/detectFramework.js', () => ({
+  detectFrameworkFromProject: vi.fn(() => 'react'),
 }));
-vi.mock('fs', () => ({
-  readFileSync: vi.fn(() => 'Mock guide content'),
-  existsSync: vi.fn(() => false),
-}));
+vi.mock('fs', async () => {
+  const actual = await vi.importActual('fs');
+  return {
+    ...(actual as object),
+    readFileSync: vi.fn(() => 'Mock guide content'),
+    existsSync: vi.fn(() => false),
+  };
+});
 
 // Create a mock context object for tool callbacks
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -44,6 +61,7 @@ describe('getBladeGeneralDocs Tool', () => {
       'WhiteLabelling',
     ]);
     vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('react');
   });
 
   it('should return general docs for valid topics', () => {
@@ -63,6 +81,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: mockTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -76,6 +95,7 @@ describe('getBladeGeneralDocs Tool', () => {
       properties: {
         toolName: 'get_blade_general_docs',
         topicsList: mockTopicsList,
+        framework: 'react',
         rootDirectoryName: 'project',
         skillVersion: SKILL_VERSION,
         clientName: 'cursor',
@@ -96,6 +116,39 @@ describe('getBladeGeneralDocs Tool', () => {
     expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
       docsList: mockTopicsList,
       documentationType: 'general',
+      framework: 'react',
+    });
+  });
+
+  it('should auto-detect framework when omitted', () => {
+    const mockCurrentProjectRootDirectory = '/Users/test/svelte-project';
+    const mockTopicsList = 'Usage';
+    const mockResponseText = 'Mock svelte general documentation';
+
+    vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Usage']);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('svelte');
+    vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockReturnValue(
+      mockResponseText,
+    );
+
+    getBladeGeneralDocsHttpCallback(
+      {
+        topicsList: mockTopicsList,
+        framework: undefined,
+        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        clientName: 'cursor',
+        skillVersion: SKILL_VERSION,
+      },
+      createMockContext(),
+    );
+
+    expect(detectFramework.detectFrameworkFromProject).toHaveBeenCalledWith(
+      mockCurrentProjectRootDirectory,
+    );
+    expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
+      docsList: mockTopicsList,
+      documentationType: 'general',
+      framework: 'svelte',
     });
   });
 
@@ -110,6 +163,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: mockTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -178,6 +232,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: testTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -232,6 +287,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: testTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
         skillVersion: SKILL_VERSION,

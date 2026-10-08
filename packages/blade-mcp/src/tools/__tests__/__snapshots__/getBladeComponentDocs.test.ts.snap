@@ -4,7 +4,7 @@ exports[`getBladeComponentDocs Tool > should return consistent component docs re
 {
   "content": [
     {
-      "text": "Blade components documentation for: Button, Accordion
+      "text": "Blade react components documentation for: Button, Accordion
 
 # Button
 ## Component Name
@@ -883,7 +883,7 @@ exports[`getBladeComponentDocs Tool > should return consistent component docs re
 {
   "content": [
     {
-      "text": "Blade components documentation for: Button, Accordion
+      "text": "Blade react components documentation for: Button, Accordion
 
 # Button
 ## Component Name
@@ -1762,7 +1762,7 @@ exports[`getBladeComponentDocs Tool > should return consistent component docs re
 {
   "content": [
     {
-      "text": "Blade components documentation for: Button, Accordion
+      "text": "Blade react components documentation for: Button, Accordion
 
 # Button
 ## Component Name
