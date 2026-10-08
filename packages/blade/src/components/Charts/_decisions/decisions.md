@@ -774,6 +774,8 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 > **Export scope:** the band renders in the two chart wrappers that have a band layer — `ChartLineWrapper` (`useReferenceBand`) and `ChartBarWrapper` (`useBarReferenceBand`). It is exported from the shared `CommonChartComponents` barrel only. Do **not** also re-export it from a chart module: `Charts/index.ts` star-exports every chart module plus `CommonChartComponents`, so a second export of the same name trips eslint `import/export` ("Multiple exports of name 'ChartReferenceBand'") even though TypeScript accepts it. Inside an `AreaChart` it still silently renders invisible bound lines with no visible band, so if it is ever scoped out of the shared barrel it must be re-exported from **both** `LineChart` and `BarChart` — and the shared barrel's export removed in the same change.
 
+> **Export scope:** `ChartReferenceBand` is exported from the `LineChart` module (not the shared `CommonChartComponents` barrel) because the band-rendering layer only exists in `ChartLineWrapper`'s `useReferenceBand`. Using it inside a `BarChart`/`AreaChart` would silently render invisible bound lines with no visible band — a silent no-op/footgun.
+
 | Prop           | Type                                                       | Required | Default                | Description                                  |
 | -------------- | ---------------------------------------------------------- | -------- | ---------------------- | -------------------------------------------- |
 | `lowerDataKey` | `string`                                                   | ✅       | -                      | Data key for the lower (min) bound           |
