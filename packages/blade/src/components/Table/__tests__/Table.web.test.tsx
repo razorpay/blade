@@ -1596,4 +1596,79 @@ describe('<Table />', () => {
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  it('should render table without TableHeader when columnCount prop is provided', () => {
+    const { container, getAllByRole, queryAllByRole } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 3) }} columnCount={3}>
+        {(tableData) => (
+          <TableBody>
+            {tableData.map((tableItem, index) => (
+              <TableRow key={index} item={tableItem}>
+                <TableCell>{tableItem.paymentId}</TableCell>
+                <TableCell>{tableItem.amount}</TableCell>
+                <TableCell>{tableItem.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+    expect(queryAllByRole('columnheader')).toHaveLength(0);
+    expect(getAllByRole('row')).toHaveLength(3);
+    expect(getAllByRole('cell')).toHaveLength(9);
+  });
+
+  it('should render table without TableFooter', () => {
+    const { container, getAllByRole, queryAllByRole } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 3) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getAllByRole('columnheader')).toHaveLength(3);
+    expect(getAllByRole('row')).toHaveLength(3);
+    expect(queryAllByRole('columnfooter')).toHaveLength(0);
+  });
+
+  it('should render TableCell with isRowHeader as role="rowheader"', () => {
+    const { getAllByRole } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 3) }} columnCount={3}>
+        {(tableData) => (
+          <TableBody>
+            {tableData.map((tableItem, index) => (
+              <TableRow key={index} item={tableItem}>
+                <TableCell isRowHeader>{tableItem.paymentId}</TableCell>
+                <TableCell>{tableItem.amount}</TableCell>
+                <TableCell>{tableItem.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
+      </Table>,
+    );
+    // 3 rows × 1 isRowHeader cell = 3 rowheader cells
+    expect(getAllByRole('rowheader')).toHaveLength(3);
+    // 3 rows × 2 regular cells = 6 cell elements
+    expect(getAllByRole('cell')).toHaveLength(6);
+  });
 });
