@@ -40,7 +40,7 @@ const offsetOf = (toast: HTMLElement): string =>
 describe('showToast', () => {
   it("icon replaces the colour's glyph", async () => {
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ content: 'Paid', duration: 0, icon: BankIcon, testID: 'paid' });
+    toasts.showToast({ content: 'Paid', duration: 0, leading: BankIcon, testID: 'paid' });
     await waitFor(() => getByTestId('paid'));
     expectGlyph(getByTestId('paid'), BankIcon);
   });

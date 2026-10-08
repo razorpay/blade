@@ -42,14 +42,13 @@
     /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
     necessityIndicator?: 'required' | 'optional' | 'none';
     /**
-     * The label's area, to put content beside the label (Blade's
+     * The label's row, to put content beside the label (Blade's
      * `labelSuffix` and `labelTrailing`): render the `label` snippet it
-     * receives and anything else. Today the area is the row above the
-     * control — items 4px apart, `ms-auto` pushes one to the end — and it
-     * stays the place for the label wherever a future `labelPosition` puts
-     * it. Only the label names the control.
+     * receives and anything else. The row sits above the control, items 4px
+     * apart, `ms-auto` pushing one to the end; a future `labelPosition`
+     * moves it whole. Only the label names the control.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     value?: Value;
     placeholder?: string;
     /**
@@ -95,22 +94,22 @@
     errorText?: string | Snippet;
     /** The line while `validationState` is `success`. */
     successText?: string | Snippet;
-    /** A glyph before the text, sized and tinted by the field. */
-    leadingIcon?: IconSource;
     /** Text before the value: ₹, +91. */
     prefix?: string;
     /**
-     * Before the text, after `leadingIcon` and `prefix`: Figma's leading
-     * selector slot (a currency or country picker). It sits on the field's
+     * Before the text. An icon is a glyph sized and tinted by the field,
+     * first, before `prefix`. A snippet is Figma's leading selector slot (a
+     * currency or country picker), after `prefix`: it sits on the field's
      * own 4px padding, with no inset of its own.
      */
-    leading?: Snippet;
+    leading?: IconSource | Snippet;
     /** Text after the value: @okaxis. */
     suffix?: string;
-    /** A glyph after the text, sized and tinted by the field. */
-    trailingIcon?: IconSource;
-    /** After the text, last: Figma's trailing link slot (a Link, a button). */
-    trailing?: Snippet;
+    /**
+     * After the text, last: an icon (a glyph sized and tinted by the
+     * field), or a snippet in Figma's trailing link slot (a Link, a button).
+     */
+    trailing?: IconSource | Snippet;
     autoFocus?: boolean;
     /** A clear button while the field holds text. @default false */
     showClearButton?: boolean;
@@ -152,7 +151,7 @@
   let {
     label,
     necessityIndicator = 'none',
-    labelArea,
+    labelRow,
     value = $bindable(''),
     placeholder,
     type = 'text',
@@ -167,11 +166,9 @@
     helpText,
     errorText,
     successText,
-    leadingIcon,
     prefix,
     leading,
     suffix,
-    trailingIcon,
     trailing,
     autoFocus = false,
     showClearButton = false,
@@ -303,7 +300,7 @@
       for={controlId}
       text={label}
       {necessityIndicator}
-      area={labelArea}
+      row={labelRow}
       size={style.current.size}
     />
   {/if}
@@ -324,15 +321,17 @@
     )}
     for={controlId}
   >
-    {#if leadingIcon || prefix || leading}
+    {#if prefix || leading}
       <span class={cx(classes.leading.group, disabled && classes.disabled.affix)}>
-        {#if leadingIcon}
+        {#if leading && typeof leading !== 'function'}
           <span class={classes.leading.icon}>
-            <Icon source={leadingIcon} size={classes.iconSize} />
+            <Icon source={leading} size={classes.iconSize} />
           </span>
         {/if}
         {#if prefix}<span class={classes.leading.prefix}>{prefix}</span>{/if}
-        {#if leading}<span class={classes.leading.slot}>{@render leading()}</span>{/if}
+        {#if typeof leading === 'function'}
+          <span class={classes.leading.slot}>{@render leading()}</span>
+        {/if}
       </span>
     {/if}
     <input
@@ -370,7 +369,7 @@
       {@attach control.attach}
       {@attach attach}
     />
-    {#if (showClearButton && hasText) || suffix || trailingIcon || trailing}
+    {#if (showClearButton && hasText) || suffix || trailing}
       <span class={cx(classes.trailing.group, disabled && classes.disabled.affix)}>
         {#if showClearButton && hasText}
           <span class={classes.trailing.item}>
@@ -386,12 +385,13 @@
           </span>
         {/if}
         {#if suffix}<span class={classes.trailing.item}>{suffix}</span>{/if}
-        {#if trailingIcon}
+        {#if typeof trailing === 'function'}
+          <span class={classes.trailing.item}>{@render trailing()}</span>
+        {:else if trailing}
           <span class={classes.trailing.item}>
-            <Icon source={trailingIcon} size={classes.iconSize} />
+            <Icon source={trailing} size={classes.iconSize} />
           </span>
         {/if}
-        {#if trailing}<span class={classes.trailing.item}>{@render trailing()}</span>{/if}
       </span>
     {/if}
   </label>

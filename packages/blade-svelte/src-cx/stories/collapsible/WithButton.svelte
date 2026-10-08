@@ -11,8 +11,8 @@
 
 <!-- Blade's CollapsibleButton: a Button (Blade's default primary) that toggles. -->
 <Collapsible direction={args.direction}>
-  {#snippet trigger()}
-    <Button color="primary">View Price Breakdown</Button>
+  <Button color="primary">View Price Breakdown</Button>
+  {#snippet content()}
+    <Breakdown />
   {/snippet}
-  <Breakdown />
 </Collapsible>

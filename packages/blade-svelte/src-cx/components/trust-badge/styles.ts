@@ -27,7 +27,7 @@ export function resolveTrustBadge(
   return {
     // A marker, not copy: dragging across the page should not pick it up.
     root: `inline-flex shrink-0 select-none items-center ${VARIANT[variant]}`,
-    label: 'whitespace-nowrap font-blade-text text-25 leading-50 text-surface-gray-subtle',
+    label: 'whitespace-nowrap font-sans text-25 leading-50 text-surface-gray-subtle',
   };
 }
 

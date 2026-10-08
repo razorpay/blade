@@ -1,7 +1,7 @@
 # Phone number input
 
 A composition, not a new field: a `TextInput` (`type="tel"`) for the national
-number, a country button in its `leading` slot, and a picker — a
+number, a country button in that input's `leading` slot, and a picker — a
 Modal holding a `VirtualOptionList`. The picker follows the app's Modal
 defaults: set `{ Modal: { variant: 'sheet' } }` on BladeProvider for a
 bottom sheet. The picker
@@ -29,12 +29,12 @@ from i18nify's dial codes and flags and the platform's localized region names.
 | `countryLabel` | Required, localized: names the button (`Country: India +91`) and titles the picker |
 | `searchLabel`, `emptyText`, `closeLabel` | Localized. The picker has a search box only with `searchLabel`; it matches name, ISO code and dial code |
 | `label`, `placeholder`, `helpText`, `errorText`, `successText`, `validationState`, `isRequired`, `isDisabled`, `autoFocus`, `span`, `name`, `accessibilityLabel`, `class` | As on TextInput |
-| `leadingIcon` | A glyph after the country and before the dial code |
-| `trailingIcon`, `trailing` | After the number and the clear button: a glyph, then a snippet (a Link or a button) |
+| `leading` | After the country button and before the dial code: an icon (`IconSource`), drawn as a glyph, or a snippet |
+| `trailing` | After the number and the clear button, last: an icon, drawn as a glyph, or a snippet (a Link or a button) |
 | `size` | `medium` (default) or `large`: Blade DSL's Phone Number Input (Figma) has no small |
 | `testID` | The number control; `-country`, `-picker`, `-search`, `-countries` suffix the parts |
 
-## Why `leadingIcon`, `trailingIcon` and `trailing` are props
+## Why `leading` and `trailing` are props
 
 Blade DSL's Phone Number Input (Figma) lays the field out as TextInput's
 (see the text-input README), with the country selector first:
@@ -48,8 +48,10 @@ Blade DSL's Phone Number Input (Figma) lays the field out as TextInput's
 | Number → trailing parts | 8px | 8px |
 
 The selector draws its own pill, so it sits on the field's padding; the
-glyphs and the trailing link need the field's insets. A string `trailing`
-is gone: Figma's trailing slot is a glyph or a link.
+glyphs and the trailing link need the field's insets. Each is one prop
+with two shapes, and the field places each: an icon draws as a glyph, a
+snippet goes in the slot. A string `trailing` is gone: Figma's trailing
+slot is a glyph or a link.
 
 Typing keeps digits only. Pasting a number that starts with `+` switches the
 country to match it. `country.pattern` validates the national number and

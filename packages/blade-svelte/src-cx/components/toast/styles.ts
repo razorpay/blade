@@ -124,7 +124,7 @@ export const resolveToast: ToastStyleResolver<ToastStyleProps> = (props) => {
     defaultIcon: LEADING[color],
     body: 'min-w-0 py-1',
     content:
-      'block font-blade-text font-blade-regular text-75 leading-75 tracking-50 text-surface-static-white-normal',
+      'block font-sans font-normal text-75 leading-75 tracking-50 text-surface-static-white-normal',
     // `pl-1` on the row's 8px gap: 12px after the content.
     trailing: 'ms-auto flex shrink-0 items-center gap-3 pl-1',
     action: resolveButton({ variant: 'secondary', color: 'white', size: 'xsmall' }).root,

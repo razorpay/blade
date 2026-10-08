@@ -26,8 +26,8 @@ expanding headers.
 | Prop | Notes |
 | --- | --- |
 | `children` | The `OptionItem`s and anything between them |
-| `value` | The picked option, or an array of them with `isMultiple`; bindable |
-| `isMultiple` | Rows become checkboxes and the root a `group`; otherwise radios in a `radiogroup` |
+| `value` | The picked option, or an array of them with `selectionType="multiple"`; bindable |
+| `selectionType` | `single` (default) or `multiple`: rows become checkboxes and the root a `group`; otherwise radios in a `radiogroup` |
 | `onChange` | Fires on a user pick with `{ name, value }` — "pick = submit" goes here, not in a button inside the row |
 | `classes` | A whole look (`OptionListClasses`) in place of the built-in one: `resolveActionList()`, or your own; see below |
 | `compare` | Value equality. Default: the same value, or plain objects alike in every key (so values bound to `$state`, which holds proxies, still match). Pass it to match by an id |

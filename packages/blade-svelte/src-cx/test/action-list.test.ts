@@ -47,7 +47,10 @@ describe('ActionList, standalone', () => {
   it('sections are labelled groups; a link row navigates and holds nothing; a negative row is red', async () => {
     const { getByRole, getByTestId } = render(ActionListHarness);
     expect(getByRole('group', { name: 'Plans' })).toBe(getByTestId('plans'));
-    expect(getByTestId('more').className).toContain('border-t-thin');
+    // Figma's separator row before every section but the first: a hairline 8px in.
+    const separator = getByTestId('more').firstElementChild!;
+    expect(separator.className).toContain('mx-2 my-[1.5px] h-0 border-t-thin');
+    expect(separator.className).toContain('group-first/section:hidden');
     const link = getByRole('link', { name: 'Compare plans' });
     expect(link.getAttribute('href')).toBe('/plans');
     expect(link.className).toContain('rounded-small');

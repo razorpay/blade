@@ -16,14 +16,14 @@
 
 <div class="grid max-w-96 gap-4">
   <OptionList label="Bank" bind:value>
-    <p class="m-0 px-4 py-2 text-75 leading-50 font-blade-medium text-surface-gray-muted">
+    <p class="m-0 px-4 py-2 text-75 leading-50 font-medium text-surface-gray-muted">
       Popular
     </p>
     {#each popular as bank (bank.code)}
       <OptionItem value={bank} title={bank.name} description={bank.note} />
     {/each}
     {#if showAll}
-      <p class="m-0 px-4 py-2 text-75 leading-50 font-blade-medium text-surface-gray-muted">
+      <p class="m-0 px-4 py-2 text-75 leading-50 font-medium text-surface-gray-muted">
         All banks
       </p>
       {#each rest as bank (bank.code)}

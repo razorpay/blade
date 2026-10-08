@@ -23,7 +23,7 @@
     <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
     <SegmentedControlItem value="yearly">Yearly</SegmentedControlItem>
   </SegmentedControl>
-  <Button>Continue</Button>
+  <Button type="submit">Continue</Button>
   {#if submitted}
     <pre class="text-25 leading-50 text-surface-gray-subtle">{JSON.stringify(
         submitted,

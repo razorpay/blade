@@ -45,14 +45,13 @@
     /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
     necessityIndicator?: 'required' | 'optional' | 'none';
     /**
-     * The label's area, to put content beside the label (Blade's
+     * The label's row, to put content beside the label (Blade's
      * `labelSuffix` and `labelTrailing`): render the `label` snippet it
-     * receives and anything else. Today the area is the row above the
-     * control — items 4px apart, `ms-auto` pushes one to the end — and it
-     * stays the place for the label wherever a future `labelPosition` puts
-     * it. Only the label names the control.
+     * receives and anything else. The row sits above the control, items 4px
+     * apart, `ms-auto` pushing one to the end; a future `labelPosition`
+     * moves it whole. Only the label names the control.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     /** @default Blade's example number for the country */
     placeholder?: string;
     onFocus?: (event: FocusEvent) => void;
@@ -66,12 +65,13 @@
     autoComplete?: HTMLInputAttributes['autocomplete'];
     /** Hides the country button; the dial code still shows. @default true */
     showCountrySelector?: boolean;
-    /** A glyph after the country and dial code, before the number. */
-    leadingIcon?: IconSource;
-    /** A glyph after the number. */
-    trailingIcon?: IconSource;
-    /** After the number, last: a Link or a button. */
-    trailing?: Snippet;
+    /**
+     * After the country button, before the dial code: an icon (a glyph), or
+     * a snippet.
+     */
+    leading?: IconSource | Snippet;
+    /** After the number, last: an icon (a glyph), or a snippet (a Link, a button). */
+    trailing?: IconSource | Snippet;
     isDisabled?: boolean;
     isRequired?: boolean;
     /** Shows the country as text only: no button, no picker. */
@@ -113,7 +113,7 @@
     onCountryChange,
     label,
     necessityIndicator = 'none',
-    labelArea,
+    labelRow,
     placeholder,
     onFocus,
     onBlur,
@@ -122,8 +122,7 @@
     enterKeyHint,
     autoComplete = 'tel',
     showCountrySelector = true,
-    leadingIcon,
-    trailingIcon,
+    leading,
     trailing,
     isDisabled = false,
     isRequired = false,
@@ -211,7 +210,7 @@
   {/if}
 {/snippet}
 
-{#snippet leading()}
+{#snippet countrySlot()}
   {#if !showCountrySelector}
     <!-- Blade: no selector, the dial code alone. -->
   {:else if phone.canPick}
@@ -230,13 +229,15 @@
   {:else}
     <span class={classes.country}>{@render flag()}</span>
   {/if}
-  {#if leadingIcon}
+  {#if typeof leading === 'function'}
+    <span class={cx('flex shrink-0 items-center', classes.dialCode)}>{@render leading()}</span>
+  {:else if leading}
     <span class={cx('flex shrink-0 items-center', classes.dialCode)}>
-      <Icon source={leadingIcon} size={style.current.size === 'large' ? 'large' : 'medium'} />
+      <Icon source={leading} size={style.current.size === 'large' ? 'large' : 'medium'} />
     </span>
   {/if}
   {#if showDialCode}
-    <span class={cx(classes.dialCode, !showCountrySelector && !leadingIcon && classes.dialCodeAlone)}>{selected?.dialCode}</span>
+    <span class={cx(classes.dialCode, !showCountrySelector && !leading && classes.dialCodeAlone)}>{selected?.dialCode}</span>
   {/if}
 {/snippet}
 
@@ -246,7 +247,7 @@
   bind:value
   {label}
   {necessityIndicator}
-  {labelArea}
+  {labelRow}
   {placeholder}
   {onFocus}
   {onBlur}
@@ -254,7 +255,6 @@
   {onClearButtonClick}
   {enterKeyHint}
   {autoComplete}
-  {trailingIcon}
   {trailing}
   showClearButton
   size={style.current.size}
@@ -270,7 +270,7 @@
   format={phone.format}
   pattern={selected?.pattern}
   maxCharacters={selected?.maxLength}
-  {leading}
+  leading={countrySlot}
   {accessibilityLabel}
   {testID}
   class={className}

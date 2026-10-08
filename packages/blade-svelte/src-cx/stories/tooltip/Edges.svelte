@@ -23,11 +23,9 @@
   {#each corners as corner, i (corner)}
     <div class="absolute {corner}">
       <Tooltip content="Stays inside the frame" placement={args.placement} testID={`tip-${i}`}>
-        {#snippet trigger()}
-          <button data-testid={`trigger-${i}`} class="rounded-xsmall border-thin border-solid border-surface-gray-muted px-2 py-1 text-25 leading-50">
-            Info
-          </button>
-        {/snippet}
+        <button data-testid={`trigger-${i}`} class="rounded-xsmall border-thin border-solid border-surface-gray-muted px-2 py-1 text-25 leading-50">
+          Info
+        </button>
       </Tooltip>
     </div>
   {/each}

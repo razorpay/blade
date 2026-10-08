@@ -10,12 +10,12 @@
     {isExpanded ? 'Collapse' : 'Expand'} from outside
   </Button>
   <Collapsible bind:isExpanded>
-    {#snippet trigger()}
-      <Link variant="button">
-        View Price Breakdown<CollapsibleChevron />
-      </Link>
+    <Link variant="button">
+      View Price Breakdown<CollapsibleChevron />
+    </Link>
+    {#snippet content()}
+      <Breakdown />
     {/snippet}
-    <Breakdown />
   </Collapsible>
   <Text size="small" color="muted">isExpanded: {isExpanded}</Text>
 </div>

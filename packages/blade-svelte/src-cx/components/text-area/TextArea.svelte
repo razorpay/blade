@@ -24,14 +24,13 @@
     /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
     necessityIndicator?: 'required' | 'optional' | 'none';
     /**
-     * The label's area, to put content beside the label (Blade's
+     * The label's row, to put content beside the label (Blade's
      * `labelSuffix` and `labelTrailing`): render the `label` snippet it
-     * receives and anything else. Today the area is the row above the
-     * control — items 4px apart, `ms-auto` pushes one to the end — and it
-     * stays the place for the label wherever a future `labelPosition` puts
-     * it. Only the label names the control.
+     * receives and anything else. The row sits above the control, items 4px
+     * apart, `ms-auto` pushing one to the end; a future `labelPosition`
+     * moves it whole. Only the label names the control.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     value?: string;
     placeholder?: string;
     /** Visible rows; the control does not grow with its content. */
@@ -79,7 +78,7 @@
   let {
     label,
     necessityIndicator = 'none',
-    labelArea,
+    labelRow,
     value = $bindable(''),
     placeholder,
     numberOfLines = 2,
@@ -157,7 +156,7 @@
       for={controlId}
       text={label}
       {necessityIndicator}
-      area={labelArea}
+      row={labelRow}
       size={style.current.size}
     />
   {/if}

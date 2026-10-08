@@ -1,15 +1,15 @@
 import type { AxisValue } from '../../axes';
 import type { PopoverClasses } from '../popover/styles';
 import {
+  ACTION_LIST_ROWS,
+  DROPDOWN_SURFACE,
   POPUP_CHECK,
   POPUP_FOOTER,
   POPUP_GAP,
   POPUP_HEADER,
   POPUP_ITEM,
-  POPUP_ROWS,
   POPUP_SECTION,
   POPUP_SELECTED,
-  POPUP_SURFACE,
 } from '../shared/popup-list';
 import type { PopupItemClasses } from '../shared/popup-list';
 import { INPUT_DISABLED_FILL } from '../shared/input';
@@ -31,7 +31,8 @@ export interface DropdownStyleProps {
 
 /**
  * The popover's parts, the shared row look (`shared/popup-list`, Menu's
- * too), and what a dropdown adds: the list box between the header and the
+ * too) in Figma's Dropdown panel (16px round, rows touching), and what a
+ * dropdown adds: the list box between the header and the
  * footer, the held pick, the multiple-choice checkbox, sections, the empty
  * and loading rows, and the select trigger.
  */
@@ -43,6 +44,8 @@ export interface DropdownClasses extends PopoverClasses, PopupItemClasses {
   /** The checkbox a multiple-choice row leads with (Checkbox's own box). */
   check: typeof POPUP_CHECK;
   section: string;
+  /** Figma's separator row before every section but the first. */
+  sectionSeparator: string;
   /** Figma's section-heading row: Semibold 12/17, muted, 8px in, 2px under. */
   sectionTitle: string;
   /** No results, loading: a muted row, centred. */
@@ -68,16 +71,17 @@ export const resolveDropdown: DropdownStyleResolver<DropdownStyleProps> = (props
   return {
     root: 'relative flex flex-col',
     // The surface holds the header, the list and the footer; the list carries
-    // the rows' spacing, as Menu's panel does.
-    panel: POPUP_SURFACE,
-    list: `${POPUP_ROWS} max-h-[320px] overflow-y-auto`,
+    // the rows' spacing (Figma's Body and _Action List insets).
+    panel: DROPDOWN_SURFACE,
+    list: `${ACTION_LIST_ROWS} max-h-[320px] overflow-y-auto`,
     ...POPUP_ITEM,
     itemSelected: POPUP_SELECTED,
     check: POPUP_CHECK,
     section: POPUP_SECTION.root,
+    sectionSeparator: POPUP_SECTION.separator,
     sectionTitle: POPUP_SECTION.title,
     stateRow:
-      'flex items-center justify-center gap-2 p-2 font-blade-text text-100 leading-100 tracking-50 text-surface-gray-muted',
+      'flex items-center justify-center gap-2 p-2 font-sans text-100 leading-100 tracking-50 text-surface-gray-muted',
     header: POPUP_HEADER,
     footer: POPUP_FOOTER,
     trigger: {

@@ -41,4 +41,4 @@ A Radio has no style props: its look is the group's decision. Roving arrow
 keys, the single tab stop and exclusivity are the browser's (and the native
 renderer's), not code here. A Radio outside a RadioGroup is unsupported.
 
-Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.
+Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelRow`, and every hint line is `string | Snippet`, as the inputs.

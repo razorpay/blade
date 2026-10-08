@@ -25,8 +25,8 @@
 
 <main data-testid="page">
   <Popover accessibilityLabel="Fee details" testID="panel" {onOpenChange}>
-    {#snippet trigger({ isOpen })}<button type="button" data-testid="fees" data-open={isOpen}>Fees</button>{/snippet}
-    {#snippet children({ close })}
+    {#snippet children({ isOpen })}<button type="button" data-testid="fees" data-open={isOpen}>Fees</button>{/snippet}
+    {#snippet content({ close })}
       <p>2% convenience fee</p>
       <button type="button" onclick={close}>Got it</button>
     {/snippet}
@@ -38,12 +38,14 @@
     accessibilityLabel="Card actions"
     testID="menu"
   >
-    {#snippet trigger({ isOpen })}
+    {#snippet children({ isOpen })}
       <button type="button" data-testid="more" data-open={isOpen}>More</button>
     {/snippet}
-    {#each ITEMS as item (item)}
-      <MenuItem value={item} title={item} isDisabled={item === 'Archive'} />
-    {/each}
+    {#snippet content()}
+      {#each ITEMS as item (item)}
+        <MenuItem value={item} title={item} isDisabled={item === 'Archive'} />
+      {/each}
+    {/snippet}
   </Menu>
   <button type="button" data-testid="elsewhere">Elsewhere</button>
   <output data-testid="menu-bound">{menuOpen}</output>

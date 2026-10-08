@@ -73,25 +73,25 @@ const SIZE: Record<
   xsmall: {
     radius: 'rounded-small',
     inner: 'h-6 px-2 border-thinner [border-radius:7px]',
-    text: 'font-blade-text font-blade-regular text-75 leading-75 tracking-50',
+    text: 'font-sans font-normal text-75 leading-75 tracking-50',
     icon: 'small',
   },
   small: {
     radius: 'rounded-small',
     inner: 'h-7 px-2 border-thinner [border-radius:7px]',
-    text: 'font-blade-text font-blade-regular text-100 leading-100 tracking-50',
+    text: 'font-sans font-normal text-100 leading-100 tracking-50',
     icon: 'small',
   },
   medium: {
     radius: 'rounded-small',
     inner: 'h-9 px-3 border-thin [border-radius:7px]',
-    text: 'font-blade-text font-blade-regular text-200 leading-200 tracking-25',
+    text: 'font-sans font-normal text-200 leading-200 tracking-25',
     icon: 'medium',
   },
   large: {
     radius: 'rounded-medium',
     inner: 'h-12 px-4 border-thin [border-radius:11px]',
-    text: 'font-heading font-blade-regular text-400 leading-400 tracking-100',
+    text: 'font-heading font-normal text-400 leading-400 tracking-100',
     icon: 'large',
   },
 };

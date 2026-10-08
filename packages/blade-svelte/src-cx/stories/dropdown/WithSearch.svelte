@@ -14,15 +14,17 @@
     {#snippet header()}
       <DropdownHeader hasSearch searchPlaceholder="Search banks" />
     {/snippet}
-    <ActionList>
-      {#each Object.entries(BANKS) as [section, banks] (section)}
-        <ActionListSection title={section}>
-          {#each banks as bank (bank)}
-            <ActionListItem value={bank} title={bank} />
-          {/each}
-        </ActionListSection>
-      {/each}
-    </ActionList>
+    {#snippet content()}
+      <ActionList>
+        {#each Object.entries(BANKS) as [section, banks] (section)}
+          <ActionListSection title={section}>
+            {#each banks as bank (bank)}
+              <ActionListItem value={bank} title={bank} />
+            {/each}
+          </ActionListSection>
+        {/each}
+      </ActionList>
+    {/snippet}
   </Dropdown>
   <LayerHost class="pointer-events-none absolute inset-0" />
 </div>

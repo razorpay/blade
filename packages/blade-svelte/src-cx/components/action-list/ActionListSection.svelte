@@ -22,6 +22,7 @@
   <DropdownSection {title} {testID}>{@render children()}</DropdownSection>
 {:else}
   <div class={POPUP_SECTION.root} role="group" aria-labelledby={id} data-testid={testID}>
+    <div class={POPUP_SECTION.separator} role="presentation"></div>
     <div {id} class={POPUP_SECTION.title}>{title}</div>
     {@render children()}
   </div>

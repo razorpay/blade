@@ -24,8 +24,11 @@
     variant?: 'modal' | 'sheet' | 'drawer' | 'left-drawer';
     /** Fills the chrome snippet: a badge above the panel, and a close. */
     withChrome?: boolean;
-    /** Fills the header's slots: `icon` (or `leading` with 'leading'), `titleSuffix`, `trailing`. */
+    /** Fills the header's slots: `leading` (an icon, or an asset with 'leading'), `titleSuffix`, `trailing`. */
     withSlots?: 'icon' | 'leading';
+    showBackButton?: boolean;
+    onBackButtonClick?: (event: { close: () => void }) => void;
+    backLabel?: string;
     className?: string;
   }
 
@@ -48,6 +51,9 @@
     variant,
     withChrome = false,
     withSlots,
+    showBackButton,
+    onBackButtonClick,
+    backLabel,
     className,
   }: Props = $props();
 </script>
@@ -112,6 +118,9 @@
 
 <Modal
   bind:isOpen
+  {showBackButton}
+  {onBackButtonClick}
+  {backLabel}
   {isDismissible}
   {onDismiss}
   {closeLabel}
@@ -125,8 +134,7 @@
   {pace}
   {variant}
   chrome={withChrome ? chromeContent : undefined}
-  icon={withSlots === 'icon' ? InfoIcon : undefined}
-  leading={withSlots === 'leading' ? leadingAsset : undefined}
+  leading={withSlots === 'icon' ? InfoIcon : withSlots === 'leading' ? leadingAsset : undefined}
   titleSuffix={withSlots ? suffix : undefined}
   trailing={withSlots ? trailingAction : undefined}
   class={className}

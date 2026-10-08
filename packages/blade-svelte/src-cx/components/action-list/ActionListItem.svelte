@@ -17,10 +17,11 @@
     title: string;
     /** Under the title, muted; it may wrap. */
     description?: string;
-    /** A 16px glyph before the title. */
-    icon?: IconSource;
-    /** Before the title in place of an `icon`: an asset (a flag), an avatar. */
-    leading?: Snippet;
+    /**
+     * Before the title: an icon (a 16px glyph), or a snippet with an asset
+     * (a flag) or an avatar.
+     */
+    leading?: IconSource | Snippet;
     /** Beside the title: a Badge. */
     titleSuffix?: Snippet;
     /** After the title: a counter, text, a glyph. */
@@ -62,7 +63,7 @@
     data-intent={intent === 'none' ? undefined : intent}
     data-testid={testID}
   >
-    <ActionListRow classes={POPUP_ITEM} {...row} />
+    <ActionListRow classes={POPUP_ITEM} {...row} {intent} />
   </a>
 {:else}
   <OptionItem value={row.value} isDisabled={row.isDisabled} text={row.title} {intent} {testID}>
@@ -70,6 +71,7 @@
       <ActionListRow
         classes={POPUP_ITEM}
         {...row}
+        {intent}
         hasCheck={list?.kind === 'checkbox'}
         isSelected={state.isSelected}
       />

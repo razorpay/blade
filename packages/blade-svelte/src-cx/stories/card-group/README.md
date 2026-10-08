@@ -85,4 +85,4 @@ the whole header, so a subtitle doesn't move them. Content in `title` or
 
 API parity with Blade React: see `src-cx/API-PARITY.md`.
 
-CardGroup takes `labelArea` and `string | Snippet` hint lines, as the inputs do.
+CardGroup takes `labelRow` and `string | Snippet` hint lines, as the inputs do.

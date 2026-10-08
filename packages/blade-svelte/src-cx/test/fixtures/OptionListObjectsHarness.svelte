@@ -19,7 +19,7 @@
   );
 </script>
 
-<OptionList label="Banks" {isMultiple} bind:value>
+<OptionList label="Banks" selectionType={isMultiple ? 'multiple' : 'single'} bind:value>
   {#each BANKS as bank (bank.code)}
     <OptionItem value={bank} title={bank.name} testID="opt-{bank.code}" />
   {/each}

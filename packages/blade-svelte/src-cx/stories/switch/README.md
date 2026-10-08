@@ -14,4 +14,4 @@ tech a `role="switch"`.
 
 No `activeColor` / `inactiveColor` (v2): colours are the theme's.
 
-Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.
+Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelRow`, and every hint line is `string | Snippet`, as the inputs.

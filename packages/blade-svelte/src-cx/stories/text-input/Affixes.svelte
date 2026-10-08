@@ -25,8 +25,8 @@
     label="Search"
     placeholder="Bank name"
     size={args.size}
-    leadingIcon={SearchIcon}
-    trailingIcon={InfoIcon}
+    leading={SearchIcon}
+    trailing={InfoIcon}
   />
 
   <TextInput label="Amount" placeholder="0.00" size={args.size} prefix="₹">

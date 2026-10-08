@@ -20,7 +20,7 @@
     helpText="Focus the field and press Enter"
     autoFocus
   />
-  <Button loadingAnnouncement="Verifying">Verify</Button>
+  <Button type="submit" loadingAnnouncement="Verifying">Verify</Button>
   <ul class="text-25 leading-50 text-surface-gray-subtle">
     {#each submissions as at (at)}
       <li>submitted at {at}</li>

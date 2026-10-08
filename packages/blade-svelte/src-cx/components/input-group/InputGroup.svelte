@@ -17,14 +17,13 @@
   interface BehaviourProps {
     label?: string;
     /**
-     * The label's area, to put content beside the label (Blade's
+     * The label's row, to put content beside the label (Blade's
      * `labelSuffix` and `labelTrailing`): render the `label` snippet it
-     * receives and anything else. Today the area is the row above the
-     * control — items 4px apart, `ms-auto` pushes one to the end — and it
-     * stays the place for the label wherever a future `labelPosition` puts
-     * it. Only the label names the group.
+     * receives and anything else. The row sits above the control, items 4px
+     * apart, `ms-auto` pushing one to the end; a future `labelPosition`
+     * moves it whole. Only the label names the group.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     /**
      * Omit inside a Form: the group mirrors its members' form errors.
      * Pass it to own the state of the frame and of every member.
@@ -55,7 +54,7 @@
 
   let {
     label,
-    labelArea,
+    labelRow,
     validationState,
     helpText,
     errorText,
@@ -119,7 +118,7 @@
       id={group.labelId}
       text={label}
       size={style.current.size}
-      area={labelArea}
+      row={labelRow}
     />
   {/if}
   <div class={classes.box}>

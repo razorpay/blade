@@ -12,7 +12,7 @@ up to a fixed width, so any code length fits.
 | `value` | Bindable; an outside change spreads over the cells without firing `onChange` or stealing focus |
 | `otpLength` | Number of cells, fixed at mount |
 | `onChange` | A user edit changed the value: `{ name, value }` (as `onOTPFilled`) |
-| `onFilled` | Every cell holds a character, by typing, paste, autofill or `value` |
+| `onOTPFilled` | `{ name, value }` once every cell holds a character, by typing, paste, autofill or `value` |
 | `accept` | Per-character sanitizer; the default accepts a single digit |
 | `isMasked`, `inputMode`, `autoComplete` | Cell input type, `inputmode` and the one-time-code hint |
 | `name`, `isRequired` | Registers with the enclosing Form; a partial code fails the pattern constraint |

@@ -5,6 +5,7 @@ import type { Component, Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
 import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
 import { MODAL_AXES } from '../modal/styles';
+import type { IconSource } from '../../runes/icon/source';
 
 /**
  * The blade taxonomy as data: the Modal axes a sheet still decides. Blade
@@ -64,8 +65,11 @@ export interface BottomSheetBehaviourProps {
   title?: string | Snippet;
   /** One muted line under the title; it describes the sheet. */
   subtitle?: string;
-  /** Before the title: an asset in Figma's 32px box, 8px from it. */
-  leading?: Snippet;
+  /**
+   * Before the title, 8px from it: an icon (a glyph on the title's first
+   * line), or a snippet with an asset in Figma's 32px box.
+   */
+  leading?: IconSource | Snippet;
   /** Beside the title, 8px from it: a Counter or a Badge. */
   titleSuffix?: Snippet;
   /**
@@ -98,6 +102,20 @@ export interface BottomSheetBehaviourProps {
    * over it (`absolute top-*`) — beside the close button and the handle.
    */
   chrome?: Snippet<[{ close: () => void }]>;
+  /**
+   * A back button first in the header, before the leading item and the
+   * title: a step back inside the sheet, not a dismissal (it fires no
+   * `onDismiss`).
+   * @default false
+   */
+  showBackButton?: boolean;
+  /** The back button was pressed; `close` closes the sheet without a dismissal. */
+  onBackButtonClick?: (event: { close: () => void }) => void;
+  /**
+   * The back button's accessible name.
+   * @default 'Back'
+   */
+  backLabel?: string;
   /**
    * The close button's accessible name; the button shows while the sheet
    * is dismissible.

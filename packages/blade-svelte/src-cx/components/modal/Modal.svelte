@@ -9,6 +9,7 @@
   import Surface from '../layer/Surface.svelte';
   import Icon from '../icon/Icon.svelte';
   import type { IconSource } from '../../runes/icon/source';
+  import { ChevronLeftIcon } from '../../icons';
   import ModalCloseIcon from './ModalCloseIcon.svelte';
   import { resolveModal, type ModalStyleProps } from './styles';
 
@@ -34,10 +35,12 @@
     title?: string | Snippet;
     /** One muted line under the title; it describes the modal. */
     subtitle?: string;
-    /** A glyph before the title, on its first line, 8px from it. */
-    icon?: IconSource;
-    /** Before the title in place of an `icon`: an asset (32px) or an avatar, 8px from it. */
-    leading?: Snippet;
+    /**
+     * Before the title, 8px from it. An icon (`IconSource`) is drawn as a
+     * 20px glyph on the title's first line; a snippet goes in a 32px slot
+     * centred on the title block: an asset or an avatar.
+     */
+    leading?: IconSource | Snippet;
     /** Beside the title, 8px from it: a Counter or a Badge. */
     titleSuffix?: Snippet;
     /**
@@ -72,6 +75,20 @@
      */
     chrome?: Snippet<[{ close: () => void }]>;
     /**
+     * A back button first in the header, before the leading item and the
+     * title: a step back inside the modal, not a dismissal (it fires no
+     * `onDismiss`).
+     * @default false
+     */
+    showBackButton?: boolean;
+    /** The back button was pressed; `close` closes the modal without a dismissal. */
+    onBackButtonClick?: (event: { close: () => void }) => void;
+    /**
+     * The back button's accessible name.
+     * @default 'Back'
+     */
+    backLabel?: string;
+    /**
      * The close button's accessible name; the button shows while the modal
      * is dismissible.
      * @default 'Close'
@@ -97,7 +114,6 @@
     role = 'dialog',
     title,
     subtitle,
-    icon,
     leading,
     titleSuffix,
     trailing,
@@ -106,6 +122,9 @@
     footer,
     children,
     chrome: chromeContent,
+    showBackButton = false,
+    onBackButtonClick,
+    backLabel = 'Back',
     closeLabel = 'Close',
     accessibilityLabel,
     testID,
@@ -130,7 +149,7 @@
   const classes = $derived(resolveModal(style.current));
   const close = () => dialog.close();
   const hasHeader = $derived(
-    Boolean(title || subtitle || headerContent || icon || leading || trailing)
+    Boolean(title || subtitle || headerContent || leading || trailing || showBackButton)
   );
 </script>
 
@@ -179,12 +198,22 @@
   {#if hasHeader}
     <div class={classes.header}>
       <div class={cx(classes.headerRow, isDismissible && classes.closeClearance)}>
-        {#if icon}
-          <span class={classes.leadingIcon}>
-            <Icon source={icon} size="large" />
-          </span>
-        {:else if leading}
+        {#if showBackButton}
+          <button
+            type="button"
+            class={classes.back}
+            aria-label={backLabel}
+            onclick={() => onBackButtonClick?.({ close })}
+          >
+            <Icon source={ChevronLeftIcon} size="large" />
+          </button>
+        {/if}
+        {#if typeof leading === 'function'}
           <span class={classes.leading}>{@render leading()}</span>
+        {:else if leading}
+          <span class={classes.leadingIcon}>
+            <Icon source={leading} size="large" />
+          </span>
         {/if}
         <div class={classes.titleBlock}>
           {#if headerContent}

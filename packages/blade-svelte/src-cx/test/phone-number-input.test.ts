@@ -11,7 +11,7 @@ function type(control: HTMLElement, text: string): Promise<boolean> {
 
 describe('PhoneNumberInput', () => {
   it('takes a trailing glyph, as Figma draws one', () => {
-    const { container } = render(PhoneNumberInputHarness, { props: { trailingIcon: InfoIcon } });
+    const { container } = render(PhoneNumberInputHarness, { props: { trailing: InfoIcon } });
     expect(glyphsIn(container, InfoIcon)).toHaveLength(1);
   });
 

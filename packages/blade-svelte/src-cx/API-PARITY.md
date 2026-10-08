@@ -39,13 +39,12 @@ its API (props, variants), except where one of the rules below applies.
    is a space). The numeric scale stays (`w-9` is 36px). `w-blade-N` used to
    read Blade's `size` tokens (`w-blade-400` was 400px); every such use was
    rewritten to the bracket form with the same length.
-9. **A field's label area is one `labelArea` snippet**, in place of React's
+9. **A field's label row is one `labelRow` snippet**, in place of React's
    `labelSuffix` and `labelTrailing`. `label` stays a string: it names the
    control. The snippet receives `{ label }`, the drawn label (text and
-   necessity) as a snippet, renders it, and puts anything beside it; today
-   the area is a row, items 4px apart, `ms-auto` pushing one to the end. It
-   is an area, not a row, so a future `labelPosition="left"` keeps the same
-   snippet. Every field with a label has it, CounterInput and InputGroup
+   necessity) as a snippet, renders it, and puts anything beside it: a
+   row, items 4px apart, `ms-auto` pushing one to the end. A future
+   `labelPosition="left"` moves the whole row and keeps the same snippet. Every field with a label has it, CounterInput and InputGroup
    included; OptionList and VirtualOptionList not yet (a `label` string,
    string hints). Hint lines (`helpText`, `errorText`, `successText`) take
    `string | Snippet` on the inputs, a superset of React's strings, for a
@@ -93,6 +92,21 @@ its API (props, variants), except where one of the rules below applies.
     cx: Tabs and Carousel `onChange(value)` — except Menu's (Dropdown's)
     `onOpenChange`, which takes `{ isOpen }` like every other overlay's.
     `onFocus`/`onBlur` pass the DOM event (OTPInput's also the cell's index).
+13. **`children` is the trigger, `content` what it reveals**, as in React
+    (Tooltip, Popover, Menu, Dropdown, Collapsible). `children` is a snippet
+    that reads the state: `{ isOpen }`, Dropdown's `{ isOpen, selected }`,
+    Collapsible's `{ isExpanded }`; the wrapper around it listens, so the
+    trigger wires nothing. `content` is Tooltip's text (`string | Snippet`),
+    Popover's panel (`string | Snippet<[{ close }]>`), Menu's MenuItems
+    (React's MenuOverlay), Dropdown's ActionList (React's DropdownOverlay)
+    and Collapsible's body (React's CollapsibleBody). There is no `trigger`
+    prop.
+14. **A slot named by position takes `IconSource | Snippet`** (`leading`,
+    `trailing`, `titleLeading`): an icon is drawn as the component's glyph,
+    a snippet in the asset box. `icon` exists only where there is one glyph
+    and no slot: Button, Link, IconButton, Badge, Alert, Avatar,
+    BreadcrumbItem, AnnouncementBanner, and EmptyState's title glyph. One
+    slot takes an icon or a snippet, not both.
 
 ## Inventory
 
@@ -252,7 +266,7 @@ data list is an `{#each}`.
 | `AccordionItemBody` | `body` snippet, inside Blade's body box | rule 2; named and resolved as Modal's `body` |
 | — | `children` snippet | cx-only: a full-width custom body without the body box; wins over `body`, as in Modal |
 | — | `collapse()` in the snippet state | cx-only: the body closes its own item |
-| — | CardGroup `labelArea`, `string \| Snippet` hints | as the inputs (rule 9) |
+| — | CardGroup `labelRow`, `string \| Snippet` hints | as the inputs (rule 9) |
 | `isDisabled` | `isDisabled` | same |
 | `testID` | `testID` | same; overrides the CardGroup's `${testID}-${index}` |
 | `title` / `description` / `icon` on AccordionItem (deprecated) | — | not ported (deprecated in React) |
@@ -563,7 +577,9 @@ desktop it keeps cx's capped, rounded panel, with `size` and `variant`. React's 
 | `zIndex` | — | n/a: the LayerHost stacks sheets |
 | `BottomSheetHeader.title` | `title: string \| Snippet` | same; it names the dialog |
 | `BottomSheetHeader.subtitle` | `subtitle: string` | same: one muted line under the title; it describes the dialog |
-| `BottomSheetHeader` `leading`, `trailing`, `titleSuffix`, `showBackButton`, `onBackButtonClick`, `children` | `header` snippet | **removed** by decision (rule 2): the caller renders them in `header`, which receives the drawn title and subtitle to place among them |
+| `BottomSheetHeader` `leading`, `titleSuffix`, `trailing` | `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing({ close })` | same names (rule 14 for `leading`); props again, per Figma (see Figma alignment) |
+| `BottomSheetHeader` `showBackButton`, `onBackButtonClick` | `showBackButton`, `onBackButtonClick({ close })`, `backLabel` (default `Back`) | same names; on every Modal variant. A step back, not a dismissal (no `onDismiss`); `close` is there for a back that closes. `backLabel` is **added** (React's name is fixed) |
+| `BottomSheetHeader` `children` | `header` snippet | rule 2: the caller renders it in `header`, which receives the drawn title and subtitle to place among them |
 | `BottomSheetBody` (`padding` spacing.5 \| spacing.0) | `body` snippet (16px) / `children` (raw) | rule 2 |
 | `BottomSheetFooter` | `footer` snippet | rule 2; a padded box, the caller lays out its content (was `flex gap-4`, changed with Modal) |
 | close button labelled "Close" | `closeLabel` (default `Close`) | **changed**: shows while dismissible, not only when labelled |
@@ -580,8 +596,8 @@ Measured against React Storybook at 390px. These match:
 - **Header:** Blade's BaseHeader box. 16px padding (20px on desktop (`d`, 62.5rem)), a
   hairline under it, and the title's type. The close button is centred on the
   title's first line. With no title, subtitle or header, an 8px strip holds the close
-  button, floating in a 28px circle. (Subtitle, back button and leading were
-  measured to match React, then removed by decision.)
+  button, floating in a 28px circle. The back button (`showBackButton`) is
+  BaseHeader's: a 20px chevron first in the row, 16px before what follows.
 - **Grab handle:** 56 × 4px, 12px from the top.
 - **Footer:** 16px (20px on desktop (`d`, 62.5rem)) on the sheet's surface, under a hairline.
 - **Dropped checkout look:** 8px radius, the 40px handle, the heading-face
@@ -626,7 +642,7 @@ passes; the DOM measurements at phone width match React Storybook.
 ### Figma alignment (Blade DSL)
 
 - `size` **removed**: Blade DSL's Bottom Sheet (Figma) has no sizes; the sheet is the 400px column on desktop (`d`).
-- **Added** `leading`, `titleSuffix`, `trailing` in the header, per Figma; the header sits 12px under the handle strip.
+- **Added** `leading` (`IconSource | Snippet`, rule 14), `titleSuffix`, `trailing` in the header, per Figma; the header sits 12px under the handle strip.
 - **Missing**: Figma's back button, input field and contentType variants.
 
 ---
@@ -1021,7 +1037,7 @@ is a tab stop.
 | `onChange({ name, values })` | same | rule 12: `values` is a list for single selection too |
 | `label`, `accessibilityLabel` | same | same |
 | `labelPosition` | — | not ported (rule 7): the label is always on top |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
 | `necessityIndicator` | same | **added** (first in cx): `*` or `(optional)` after the label; `required` also requires |
 | `helpText`, `errorText`, `validationState` | same | the error replaces the help text in one FormHint line, as React |
 | `isDisabled`, `isRequired`, `name`, `testID` | same | same |
@@ -1033,8 +1049,8 @@ is a tab stop.
 
 | React | cx | Action |
 | --- | --- | --- |
-| `value`, `children` (string) | `value`, `children` snippet (receives `{ isChecked, isDisabled }`; optional with `icon` or `leading`) | rule 2 |
-| `icon`, `leading` | same | same (`icon` is an icon source; `leading` a snippet). Props, not children: Figma spaces the leading item differently from the label (the label's 4px each side is the gap and the text inset; the leading item has none) |
+| `value`, `children` (string) | `value`, `children` snippet (receives `{ isChecked, isDisabled }`; optional with `leading`) | rule 2 |
+| `icon`, `leading` (one or the other) | `leading?: IconSource \| Snippet<[ControlState]>` | **merged** (rule 14): an icon, or a snippet (an Avatar, a flag) that receives `{ isChecked, isDisabled }`. Props, not children: Figma spaces the leading item differently from the label (the label's 4px each side is the gap and the text inset; the leading item has none) |
 | `color`, `isDisabled` | same | same; both fall back to the group's |
 | `width`, `minWidth`, `maxWidth` | `class` | rule 1 |
 | `testID` | same | same |
@@ -1092,9 +1108,9 @@ closing — React is a button plus a region too.
 | `isExpanded`, `defaultIsExpanded` | `isExpanded` (bindable) | rule 3 |
 | `onExpandChange({ isExpanded })` | same | rule 12 |
 | `direction: bottom \| top` | same | same: `top` opens the body above the trigger |
-| `CollapsibleButton` (a Button) | `trigger` snippet with `{ isExpanded }` | rule 2: the wrapper toggles on a press, the caller's Button wires nothing; its first focusable element gets `aria-expanded`, and `aria-controls` while the body is mounted |
-| `CollapsibleLink` (a BaseLink `button` with the chevron) | the caller's `Link variant="button"` with a `CollapsibleChevron` | rule 2; `CollapsibleChevron` is React's CollapsibleChevronIcon |
-| `CollapsibleBody` (+ `width`) | `children` | rule 2; width through `class` (rule 1) |
+| `CollapsibleButton` (a Button) | the `children` trigger (receives `{ isExpanded }`): the caller's Button | rule 13: the wrapper toggles on a press, the caller's Button wires nothing; its first focusable element gets `aria-expanded`, and `aria-controls` while the body is mounted |
+| `CollapsibleLink` (a BaseLink `button` with the chevron) | the `children` trigger: the caller's `Link variant="button"` with a `CollapsibleChevron` | rule 13; `CollapsibleChevron` is React's CollapsibleChevronIcon |
+| `CollapsibleBody` (+ `width`) | `content` snippet | rule 13; width through `class` (rule 1) |
 | `testID` | same | same |
 | `data-analytics-*` | — | **missing** (analytics pass) |
 | styled props | `class` | rule 1 |
@@ -1181,7 +1197,7 @@ React: `CounterInput`. cx: `CounterInput` (`components/counter-input/`),
 | `min` (default 0), `max` | same | same: steps and typed values clamp to the range; each button disables at its end |
 | `label`, `accessibilityLabel`, `name` | same | same; `name` registers the count with a Form |
 | `labelPosition` | — | not ported (rule 7) |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
 | `size: xsmall \| small \| medium \| large`, `emphasis: subtle \| intense` | same | same (defaults `medium`, `subtle`) |
 | `isLoading`, `isDisabled` | same | same: both stop the buttons and grey the number; loading draws the bar |
 | `onFocus`, `onBlur`, `testID` | same | same |
@@ -1296,20 +1312,22 @@ move focus onto each item; the visible behaviour is unchanged.
 
 | React | cx | Action |
 | --- | --- | --- |
-| `DropdownButton` / `DropdownLink` / `DropdownIconButton` | `trigger` snippet (Menu, and Dropdown) | rule 2; the wrapper stamps `aria-haspopup` / `aria-expanded` |
-| `SelectInput` | Dropdown without a `trigger`: `label`, `placeholder`, `helpText`/`errorText`/`successText`, `validationState`, `size`, `name`, `isRequired`, `isDisabled` | **changed**: the select field is the Dropdown's default trigger, not a separate component |
-| `selectionType: single \| multiple` | Dropdown `isMultiple` | **changed** name; Menu has no selection |
+| `DropdownButton` / `DropdownLink` / `DropdownIconButton` | the `children` trigger, the caller's Button or Link (Menu: receives `{ isOpen }`; Dropdown: `{ isOpen, selected }`, the picked rows' titles) | rule 13; the wrapper stamps `aria-haspopup` / `aria-expanded` |
+| `DropdownOverlay` (Menu: `MenuOverlay`) | `content` snippet: the ActionList (Menu: the MenuItems) | rule 13 |
+| `SelectInput` | Dropdown without `children`: `label`, `placeholder`, `helpText`/`errorText`/`successText`, `validationState`, `size`, `name`, `isRequired`, `isDisabled` | **changed**: the select field is what the Dropdown draws without a trigger, not a separate component |
+| `selectionType: single \| multiple` | Dropdown `selectionType` | same; Menu has no selection |
 | `ActionList` `onChange` (via SelectInput) | Dropdown `bind:value`, `onChange({ name, value })` | rule 3 |
 | `isOpen`, `onOpenChange(isOpen)` | `bind:isOpen`, `onOpenChange({ isOpen })` | **changed**: the object form, as the other overlays |
 | `DropdownOverlay` `defaultPlacement` (`bottom-start`) | `placement` | same default |
 | `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef` | — | **missing** (240–400px) |
 | `DropdownHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, search via AutoComplete) | `DropdownHeader` (`title`, `subtitle`, `trailing`, `hasSearch`) | same, minus `leading`/`titleSuffix`; search is built in |
 | `DropdownFooter` | `DropdownFooter`, in the `footer({ close })` snippet | rule 2 |
-| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | `ActionListItem` (Menu: `MenuItem`) same | same |
+| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | `ActionListItem` (Menu: `MenuItem`) same; `leading` is an icon or a snippet | same (rule 14) |
 | `ActionListItem` `intent: 'negative'` | `ActionListItem` / `MenuItem` `intent` | same; refused with the select field, as React (draws neutral) |
 | `ActionListItem` `isSelected` | — | derived from Dropdown's `value` |
 | `ActionListItem` `href`/`target` | `ActionListItem` `href`, `target`, `rel` | same: a link row follows its link, closes the list and holds no value |
 | `ActionListSection` | `ActionListSection` (Menu: anything between items) | same |
+| `MenuDivider` | `MenuDivider` | same: Figma's separator row; the keys pass over it |
 | — | Menu `onSelect(value)` | cx-only: an item's `value` is reported |
 | No results / loading | Dropdown `emptyText` (search), `isLoading` | same |
 | Nested dropdowns (submenus) | — | **missing** |
@@ -1317,20 +1335,32 @@ move focus onto each item; the visible behaviour is unchanged.
 | Below `m`: the overlay as a BottomSheet | — | **missing** |
 | `data-analytics-*` | — | **missing** (analytics pass) |
 
-### Look (one spec for both)
+### Look (Blade DSL, Figma)
 
-The designers agreed Menu and Dropdown should look the same; cx uses Menu's
-spacing for both (`components/shared/popup-list.ts`):
+One row, two panels (`components/shared/popup-list.ts`): Menu follows Figma's
+Menu and _Menu Item; Dropdown and a standalone ActionList follow Figma's
+Dropdown, _Action List and _Action List Item.
 
-- **Surface:** 240–400px wide, 12px radius, `popup.background.gray.moderate`, the 1px popup rim over the raised shadow (`shadow-dropdown`), the medium blur, 8px from the trigger. It opens sliding 8px down as it fades in, over `quick`.
-- **Rows:** 8px round them, 2px between; each 36px, 8px padding, 8px radius. The active row (pointer or keys) is `interactive.background.gray.default`; the keys add Blade's 4px `surface.border.primary.muted` ring.
-- **Dropdown adds:** the held single pick in Figma's darker wash (`interactive.background.gray.fadedHighlighted`); multiple rows lead with Checkbox's box; a header (16px in, 12px under); a footer (16px in); section headings (Semibold 12/17, muted).
-- **Menu adds:** `intent="negative"` rows in `interactive.text.negative.normal` with the `interactive.background.negative.faded` wash.
-- Figma's Dropdown is drawn with a 16px radius, no row gap and 4px list padding; per the designers, it follows Menu's here.
+- **Surface (both):** 240–400px wide, `popup.background.gray.moderate`, Figma's _components/Popup (the 1px rim over the raised shadow, the medium blur), 8px from the trigger. It opens sliding 8px down as it fades in, over `quick`. **Menu** is 12px round; **Dropdown** 16px.
+- **Rows' box:** 8px round the rows in both; **Menu**'s rows 2px apart, **Dropdown**'s and ActionList's touching (Figma's Body and _Action List insets, no gap).
+- **Row (both):** 36px, 8px padding, 8px radius, its parts 8px apart. Title Body/Medium in `interactive.text.gray.normal`; description Body/Small in `interactive.text.gray.muted`; glyph `interactive.icon.gray.normal` (negative: `feedback.icon.negative.intense`). Disabled: all three `…disabled`, and a multiple row's checkbox in Checkbox's disabled look. Active (pointer or keys): `interactive.background.gray.default`; the keys add Figma's 4px `interactive.border.primary.faded` ring.
+- **Dropdown adds:** the held single pick in `interactive.background.gray.fadedHighlighted`, kept under the pointer and the keys; multiple rows lead with Checkbox's box; sections: Figma's separator row (a hairline 8px in, 4px tall) before every section but the first, then the heading (Semibold 12/17, `interactive.text.gray.muted`, 8px in, 2px under); a header (16px in all round, 16px to the search, Figma's divider under it); a footer (Figma's divider over it, then 16px in, 16px between actions).
+- **Menu adds:** `intent="negative"` rows in `interactive.text.negative.normal` with the `interactive.background.negative.faded` wash; `MenuDivider`, Figma's separator row (a hairline 1px in from the panel's edges, 4px tall).
 
 ### Status
 
 Menu ported to the core with its look unchanged; Dropdown added. `test` passes (`test/dropdown.test.ts`, the Menu cases in `test/popover.test.ts`, `runes/menu/menu.test.ts`).
+
+
+### Figma alignment (Blade DSL)
+
+- The two panels split, per Figma (were both Menu's): Dropdown and ActionList 16px round (Dropdown) with rows touching (was 2px apart); Menu unchanged.
+- Figma's tokens throughout: descriptions `interactive.text.gray.muted` (was `surface.text.gray.muted`), glyphs `interactive.icon.*`, a disabled row's description, glyph and checkbox `…disabled` (were left enabled; ActionList dimmed the row with opacity), the keys' ring `interactive.border.primary.faded` (was `surface.border.primary.muted`, cx's other rings).
+- A picked row keeps its wash under the pointer (was the hover fill).
+- Dropdown's header and footer take Figma's dividers; the header is 16px in all round with 16px to the search (was 12px under, 12px to it); the footer 16px in all round (was 8px over it).
+- Sections take Figma's separator row, a hairline 8px in (was flush with the rows' box).
+- **Added** `MenuDivider` (React's), Figma's _Menu Item separator.
+- Not ported: Figma's _Menu Header / _Menu Footer (cx's Menu has neither); Figma's footer buttons sharing its width (the footer's content is the caller's).
 ---
 
 ## EmptyState
@@ -1409,8 +1439,8 @@ internal on both sides: fields take `label`, `necessityIndicator`,
 ### FieldLabel
 
 Props: `text`, `as: 'label' | 'span'` with `for` and `id`, `size`
-(`xsmall`…`large`), `necessityIndicator`, `accessibilityText`, and `area`
-(a field's `labelArea`, rule 9). The label element holds the text and its
+(`xsmall`…`large`), `necessityIndicator`, `accessibilityText`, and `row`
+(a field's `labelRow`, rule 9). The label element holds the text and its
 necessity only; the row around it holds the gap to the field.
 
 Measured against React Storybook (ChipGroup, required at small and optional
@@ -1543,7 +1573,7 @@ React: `TextInput` (over `BaseInput`). cx: `TextInput` (`components/text-input/`
 | --- | --- | --- |
 | `size: xsmall \| small \| medium \| large` | `size` | **added** |
 | `textAlign` | `textAlign` | **added** |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
 | `necessityIndicator` | same | **added**; `required` also makes the control required, as in React |
 | `showClearButton`, `onClearButtonClick` | same | **added**: IconButton's medium look, while there is text; clears (`onChange` fires) and refocuses |
 | `maxCharacters` | same | now also shows FieldCounter |
@@ -1552,7 +1582,8 @@ React: `TextInput` (over `BaseInput`). cx: `TextInput` (`components/text-input/`
 | `keyboardReturnKeyType`, `autoCapitalize`, `autoCompleteSuggestionType` | `enterKeyHint`, `autoCapitalize`, `autoComplete` | rule 10; **added** |
 | — | `inputMode` | rule 10; **added**: e.g. `numeric` digits in a `text` card-number field |
 | `onClick`, `onKeyDown` | same | **added** |
-| `prefix`, `suffix`, `leadingIcon`, `trailingIcon`, `leading`, `trailing`, `trailingButton` | `leadingIcon`, `prefix`, `leading` (selector snippet), `suffix`, `trailingIcon`, `trailing` (link snippet) | **changed**: Blade DSL's TextInput (Figma) has distinct slots, each with its own inset (text, glyphs and words 8/12px from the edge, a selector 4px) and gap; see the text-input README. `leading`/`trailing` are snippet-only (strings move to `prefix`/`suffix`) |
+| `prefix`, `suffix`, `leading`, `trailing` (an icon or an element) | same: `leading` (an icon, drawn before `prefix`, or a selector snippet after it), `prefix`, `suffix`, `trailing` (an icon, or a link snippet, last) | same names (rule 14); one side takes an icon or a snippet, not both. Blade DSL's TextInput (Figma) has distinct slots, each with its own inset (text, glyphs and words 8/12px from the edge, a selector 4px) and gap; see the text-input README. Strings go to `prefix`/`suffix` |
+| `leadingIcon`, `icon` (deprecated), `trailingIcon`, `trailingButton` (a Link) | `leading`, `trailing` | folded in (rule 14): an icon or a snippet per side |
 | `format` (a `#` mask) | `format` (parse/format functions or rule lists) | different: cx's is richer; a mask string is not accepted |
 | `isLoading` | — | **gap**: no spinner in cx yet |
 | `validationTextPlacement`, `showHelpTextOnFocus` | — | **gap** |
@@ -1606,7 +1637,7 @@ React: `TextArea`. cx: `TextArea` (`components/text-area/`).
 | React | cx | Action |
 | --- | --- | --- |
 | `size` | `size` | **added** (TextInput's sizes) |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
 | `necessityIndicator` | same | **added** |
 | `showClearButton`, `onClearButtonClick` | same | **added**: pinned 8px down and 12px in, the text keeps 36px clear of it |
 | `maxCharacters` | same | now also shows FieldCounter |
@@ -1632,13 +1663,13 @@ React: `OTPInput`. cx: `OTPInput` (`components/otp-input/`).
 | React | cx | Action |
 | --- | --- | --- |
 | `otpLength: 4 \| 6 \| 8` | `otpLength: number` | superset |
-| `onOTPFilled({ name, value })`, `onChange({ name, value })` | same | **renamed** from `onFilled`; rule 12 |
+| `onOTPFilled({ name, value })`, `onChange({ name, value })` | same | same name and payload as React; rule 12 |
 | `autoCompleteSuggestionType: none \| oneTimeCode` | `autoComplete` (default `one-time-code`) | rule 10 |
 | `keyboardType` (default `decimal`) | `inputMode` (default `numeric`) | rule 10 |
 | `keyboardReturnKeyType` | `enterKeyHint` | rule 10; **added** |
 | `placeholder` (one character per cell) | same | **added** |
 | `onFocus`, `onBlur` (with the cell's index) | `(event, index)` | **added** |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
 | `size` | same | same; the label and hint take it |
 
 **Look:** each cell takes Blade's natural input width, 88px, and shrinks in
@@ -1668,8 +1699,8 @@ React: `PhoneNumberInput` (a Dropdown country selector). cx:
 | `onFocus`, `onBlur`, `onClick` | same | **added** (through TextInput) |
 | `keyboardReturnKeyType`, `autoCompleteSuggestionType` | `enterKeyHint`, `autoComplete` (default `tel`) | rule 10; **added** |
 | clear button, `onClearButtonClick` | same | **added**: always on while there is a number, as React |
-| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
-| `trailingIcon` | `trailing` | rule 2 |
+| `labelSuffix`, `labelTrailing` | `labelRow` | rule 9 |
+| `leadingIcon`, `trailingIcon` | `leading`, `trailing` (each an icon or a snippet) | rule 14: `leading` after the country button, before the dial code; `trailing` last |
 | `defaultCountry`, `defaultValue` | `bind:country`, `bind:value` | rule 3 |
 | `showDialCode` | same | same |
 | `onChange` payload `{phoneNumber, dialCode, country, value, name}` | `PhoneNumberChange`: `{ country, dialCode, nationalNumber, value }` | **different**: no `name` (rule 12 not met) and no formatted `phoneNumber`; `nationalNumber` added |
@@ -1689,7 +1720,7 @@ a search, not a Dropdown — keep: it is checkout's flow; `countries`
 ### Figma alignment (Blade DSL)
 
 - `size`: medium, large (Figma). The selector follows Figma's _Input / Selector (28/36px tall, 6.5/9px in, a 20×15 or 24×18 flag, 12px chevron) on the field's padding; the dial code is 4px after it.
-- **Added** `leadingIcon`, `trailingIcon`; `trailing` is snippet-only (string removed).
+- `leading` and `trailing` each take an icon or a snippet (rule 14; were `leadingIcon`, and `trailingIcon` beside a snippet-only `trailing`).
 
 ---
 
@@ -1706,7 +1737,7 @@ React: `PasswordInput` (over `BaseInput`). cx: `PasswordInput`
 | `autoCompleteSuggestionType: none \| password \| newPassword` | `autoComplete: off \| current-password \| new-password` | rule 10 |
 | `keyboardReturnKeyType` | `enterKeyHint` | rule 10 |
 | autocapitalize off | `autoCapitalize="none"` | same |
-| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `errorText`, `successText`, `validationState`, `maxCharacters`, `isDisabled`, `isRequired`, `placeholder`, `name`, `autoFocus`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
+| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `errorText`, `successText`, `validationState`, `maxCharacters`, `isDisabled`, `isRequired`, `placeholder`, `name`, `autoFocus`, `size`, `testID` | same; `labelRow` | rule 9 for the label row |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
 | `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
 | — | `span`, `attach` | cx-only: an InputGroup cell (a CVV), a composition's handle |
@@ -1717,7 +1748,7 @@ TextInput `type="password"` at call sites (the InputGroup stories' CVV).
 
 ### Figma alignment (Blade DSL)
 
-- `size`: medium, large (Figma). **Added** `leadingIcon`, `prefix`, `suffix` and `trailing` (the link, 8px before the reveal button); the reveal glyph is 16/20px.
+- `size`: medium, large (Figma). **Added** `leading` (TextInput's: an icon or a selector snippet; was `leadingIcon`), `prefix`, `suffix` and `trailing` (a snippet, the link, 8px before the reveal button); the reveal glyph is 16/20px.
 
 ---
 
@@ -1731,9 +1762,9 @@ React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
 | searchbox, search key | same | a `type="text"` control with `role="searchbox"` and `enterkeyhint="search"`, as Blade (a `search` input draws a second clear button) |
 | `showSearchIcon` (default true) | same | **new**: the search glyph leads |
 | clear button while it holds text, `onClearButtonClick` | same | always on, as Blade: clears (`onChange` fires) and refocuses |
-| `trailing` | same (`string \| Snippet`) | after the clear button; Blade's trailing Dropdown is a **gap** |
+| `trailing` | same (`IconSource \| Snippet`, TextInput's) | after the clear button; Blade's trailing Dropdown is a **gap** |
 | `isLoading` | — | **gap**: no Spinner in cx yet |
-| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
+| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same; `labelRow` | rule 9 for the label row |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
 | Dropdown trigger (SearchInput inside a Dropdown) | `DropdownHeader hasSearch` | the search lives in the Dropdown's header |
 | `onSubmit` | — | covered by Form's Enter-to-submit |
@@ -1746,7 +1777,7 @@ here.
 
 ### Figma alignment (Blade DSL)
 
-- `size`: medium, large (Figma). The glyph is TextInput's `leadingIcon`, so it is sized per field, 12px in and 8px from the text.
+- `size`: medium, large (Figma). The glyph is passed as TextInput's `leading` (an icon), so it is sized per field, 12px in and 8px from the text.
 
 ---
 
@@ -1871,7 +1902,7 @@ BottomSheet; see its section for the header decisions (rule 2).
 | `accessibilityLabel` | same | same |
 | `initialFocusRef` | — | **missing**, as BottomSheet |
 | `zIndex` | — | n/a: the LayerHost stacks modals |
-| `ModalHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, back button) | `title`, `subtitle` + `header` snippet | `subtitle` kept as a string; the rest rule 2 (see BottomSheet) |
+| `ModalHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, back button) | `title`, `subtitle`, `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing({ close })` + `header` snippet | `subtitle` kept as a string; `leading` per rule 14; `showBackButton` + `onBackButtonClick` as on BottomSheet (ModalHeader has none in React) |
 | — | `chrome` snippet | cx-only: a zero-height box on the panel's top edge, unclipped, holding the close button and a sheet's handle; the caller adds things that hang off the panel |
 | `ModalBody` (`padding` spacing.6 \| spacing.0) | `body` snippet (20px) / `children` (raw) | rule 2 |
 | `ModalFooter` | `footer` snippet | rule 2 |
@@ -1913,8 +1944,8 @@ passes; the measurements match React Storybook at every size.
 ### Figma alignment (Blade DSL)
 
 - **Title:** Heading/SmallSemibold 18/24 (Figma); React uses body 16/24.
-- **Added** `icon`, `leading`, `titleSuffix` and `trailing({ close })` in the header, per Figma's _Modal Header: the leading item 8px from the title, the trailing item 16px from the title and from the close button. Why they are props: see the modal README.
-- **Sections:** header 20px above and beside, 16px below, at every width (Figma's _Modal Header; was 16px below `m`); the close a 20px glyph in Figma's 28px box, 24px from the top and the end, the title row leaving 44px for it; a `leading` snippet in Figma's 32px slot, centred on the title block (`icon` stays on the title line). Footer 16px above the actions (20px beside and below on desktop (`d`)).
+- **Added** `leading` (`IconSource | Snippet`, rule 14), `titleSuffix` and `trailing({ close })` in the header, per Figma's _Modal Header: the leading item 8px from the title, the trailing item 16px from the title and from the close button. Why they are props: see the modal README.
+- **Sections:** header 20px above and beside, 16px below, at every width (Figma's _Modal Header; was 16px below `m`); the close a 20px glyph in Figma's 28px box, 24px from the top and the end, the title row leaving 44px for it; a `leading` snippet in Figma's 32px slot, centred on the title block (an icon `leading` stays on the title line, a 20px glyph). Footer 16px above the actions (20px beside and below on desktop (`d`)).
 - **Drawer:** 380px on desktop (`d`) and 100% − 24px on phones (Figma; React 375/420px); header 20px in with no divider; **added** `titleSuffix`, `trailing`; Figma's detail block under the title is **missing**.
 - **Missing**: Figma's full-width square modal on phones, the `padding` variant (20/16/0), and the full-page modal.
 
@@ -1929,10 +1960,10 @@ cx: `Popover` (`components/popover/`), whose panel Menu shares.
 
 | React | cx | Action |
 | --- | --- | --- |
-| `children` (the trigger) | `trigger` snippet (receives `isOpen`) | **changed**: one name for the trigger across Popover, Tooltip, Menu and Collapsible |
-| `content` | `children` snippet (receives `close`) | **changed**: `children` is always the content |
+| `children` (the trigger) | `children` (receives `{ isOpen }`), in a wrapper that listens for hover, focus and taps | same name (rule 13); the trigger wires nothing |
+| `content` | `content: string \| Snippet<[{ close }]>` | same name (rule 13); a string renders as small body text |
 | `title` | `title: string \| Snippet` | **added**: the heading, and it names the dialog |
-| `titleLeading` | snippet (receives `close`) | **added** |
+| `titleLeading` | `titleLeading?: IconSource \| Snippet<[{ close }]>` | same name (rule 14): an icon is a 20px glyph, a snippet an asset |
 | `footer` | snippet (receives `close`) | **added** |
 | `placement` (default `top`) | same | default **changed** from `bottom-start` |
 | `openInteraction: click \| hover` | same | **added**: hover opens under the pointer, over the trigger or the panel (100ms to cross the gap), with no close button and no focus move |
@@ -1975,7 +2006,7 @@ passes; the panel, header, gap and arrow measure as React's.
 
 ### Figma alignment (Blade DSL)
 
-- **Added** `titleIcon` (`IconSource`, 20px) beside `titleLeading` (snippet, for an asset), per Figma's _Popover Title, whose leading item is an icon or an asset.
+- `titleLeading` takes an icon (`IconSource`, 20px) or a snippet (an asset), per Figma's _Popover Title, whose leading item is an icon or an asset (was `titleIcon` beside a snippet-only `titleLeading`).
 - Leading → title is 8px; title → close is 24px (the title's 12px plus the row's 12px), per Figma.
 
 ---
@@ -1995,8 +2026,8 @@ React: `SegmentedControl`, `SegmentedControlItem`. cx: the same
 | `necessityIndicator` | same | **added** (through RadioGroup) |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rule 3; rule 12 |
 | `labelPosition` | — | rule 7 |
-| `SegmentedControlItem` `value`, `leading`, `isDisabled`, `accessibilityLabel`, `children` | same, but React's `leading` icon → `icon` (an `IconSource`, as Chip, MenuItem, TabItem); **added** `leading` (an asset snippet) and `trailing` (a Counter or Badge), as Blade DSL's _Segmented Control / Item (Figma) has | **renamed**, **added** |
-| — | `labelArea`; hints `string \| Snippet`; item snippets receive `{ isChecked, isDisabled }` | cx-only, across Chip, Radio, Checkbox, Switch and SegmentedControl (rule 9) |
+| `SegmentedControlItem` `value`, `leading`, `isDisabled`, `accessibilityLabel`, `children` | same; `leading?: IconSource \| Snippet<[ControlState]>`: React's icon, or a snippet with an asset in the icon's box (rule 14); **added** `trailing` (a Counter or Badge), as Blade DSL's _Segmented Control / Item (Figma) has | same; **added** the snippet form and `trailing` |
+| — | `labelRow`; hints `string \| Snippet`; item snippets receive `{ isChecked, isDisabled }` | cx-only, across Chip, Radio, Checkbox, Switch and SegmentedControl (rule 9) |
 
 ### Look
 
@@ -2010,7 +2041,7 @@ Measured against React Storybook (Default, every size):
   Medium at small and medium (14/20) and Body Large at large (16/24), per
   Figma (React sets small in 12/17), medium weight, letter-spaced.
 - **Row:** the leading item, the label and the trailing item, 8px apart and
-  centred. That one gap, owned by the segment, is why `icon`, `leading` and
+  centred. That one gap, owned by the segment, is why `leading` and
   `trailing` are props rather than children.
 - **Icon:** 16px, 20px at large (was 16px everywhere), 8px from the label.
 - **Thumb:** `surface.background.gray.intense`, round as the segment,
@@ -2107,14 +2138,14 @@ React: `Tabs`, `TabList`, `TabItem`, `TabPanel`. cx: `Tabs`, `TabItem`,
 cx's Tabs were data-driven (`items`, `itemKey`, `itemLabel` and a panel
 snippet per item). Rule 4 makes them compose: TabItems register with Tabs
 and are read in document order, and each TabPanel names its tab by `value`.
-Blade's `TabList` is an intermediate container, so it becomes the `tabs`
+Blade's `TabList` is an intermediate container, so it becomes the `tabList`
 snippet (rule 2); the panels are `children`.
 
 ```svelte
 <Tabs bind:value>
-  {#snippet tabs()}
+  {#snippet tabList()}
     <TabItem value="upi">UPI</TabItem>
-    <TabItem value="card" icon={card}>Card</TabItem>
+    <TabItem value="card" leading={CreditCardIcon}>Card</TabItem>
   {/snippet}
   <TabPanel value="upi">…</TabPanel>
   <TabPanel value="card">…</TabPanel>
@@ -2131,8 +2162,8 @@ snippet (rule 2); the panels are `children`.
 | `isFullWidthTabItem` | same | **added** (replaces `layout="fill"`) |
 | `isLazy` | same | **added**: panels mount only while picked; otherwise all stay mounted, hidden, as Blade |
 | `value`, `defaultValue`, `onChange` | `bind:value`, `onChange` | rule 3; the first enabled tab is picked when unset, as Blade |
-| `TabList` | `tabs` snippet | rule 2 |
-| `TabItem` `value`, `leading`, `trailing`, `isDisabled`, `href`, `onClick`, `children` | same, but React's `leading` icon → `icon` (an `IconSource`, as MenuItem, Chip, Link), plus `leading` for an asset in the icon's box, as Blade DSL's _Tabs Leading Item (Figma) is an icon or an asset; `children`, `leading` and `trailing` receive `{ isSelected, isDisabled }` | **added**: all but `value` and the label; **renamed** `leading` |
+| `TabList` | `tabList` snippet | rule 2; same name |
+| `TabItem` `value`, `leading`, `trailing`, `isDisabled`, `href`, `onClick`, `children` | same; `leading?: IconSource \| Snippet<[TabItemState]>`: React's icon, or a snippet with an asset in the icon's box, as Blade DSL's _Tabs Leading Item (Figma) is an icon or an asset (rule 14); `children`, a `leading` snippet and `trailing` receive `{ isSelected, isDisabled }` | **added**: all but `value` and the label (was data-driven) |
 | `TabPanel` `value`, `children` | same | composed (was the per-item snippet) |
 | `items`, `itemKey`, `itemLabel`, `isItemDisabled`, `tab` | — | **removed**: rule 4 |
 
@@ -2192,7 +2223,7 @@ React: `useToast().show(…)` with a `ToastContainer`. cx: `showToast(…)`
 | React | cx | Action |
 | --- | --- | --- |
 | `content` | same | **renamed** from `message` (a string) |
-| `leading` | `icon` (`IconSource`) | **renamed** to `icon`, the library's name for a glyph (Alert, Chip, MenuItem, TabItem); each colour has Blade's default glyph (info, check-circle, alert-triangle, alert-octagon) |
+| `leading` | `leading?: IconSource \| Snippet` | same name (rule 14): an icon replaces the colour's default glyph (Blade's info, check-circle, alert-triangle, alert-octagon); a snippet (an asset) takes its place too |
 | `color` | same | same |
 | `action: { text, onClick, isLoading }` | same names; `onClick()` is required and takes no arguments | **renamed** from `{ label, onPress }`; `isLoading` added (disables it, `aria-busy`). Pressing it no longer dismisses the toast, as Blade: call the handle's `dismiss()` |
 | dismiss button | always shown, `closeLabel` (default `Dismiss toast`) | **changed**: it showed only when `closeLabel` was passed |
@@ -2232,7 +2263,7 @@ the toast measures as React's.
 
 ### Figma alignment (Blade DSL)
 
-- **Added** `leading` (a snippet, in place of the glyph) to `showToast`: Figma's leading item is an icon or an asset.
+- `showToast({ leading })` takes an icon or a snippet (an asset), in place of the glyph: Figma's leading item is an icon or an asset.
 - Content → action or cross is 12px (Figma). Figma's desktop action is a Link; cx keeps an xsmall secondary white Button.
 
 ---
@@ -2244,11 +2275,11 @@ trigger). cx: `Tooltip` (`components/tooltip/`).
 
 | React | cx | Action |
 | --- | --- | --- |
-| `content` (string) | `content: string`, or a `children` snippet for rich content | superset |
+| `content` (string) | `content: string \| Snippet` | same name (rule 13), superset: a snippet for rich content |
 | `title` | `title: string \| Snippet` | **added** |
 | `placement` (default `top`; no `left/right-start/end`) | same (all twelve) | superset |
 | `onOpenChange({ isOpen })` | same | rule 12 |
-| `children` (the trigger) | `trigger` snippet (receives `isOpen`) | **changed**: one name for the trigger across the overlays |
+| `children` (the trigger) | `children` (receives `{ isOpen }`), in a wrapper that listens for hover, focus and taps | same name (rule 13); the trigger wires nothing |
 | `maxWidth` | — | rule 1 would put it on `class`, which lands on the trigger; not ported |
 | `zIndex` | — | n/a: the LayerHost stacks it |
 
@@ -2300,16 +2331,16 @@ React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every
 
 - **Inside a Dropdown:** the items are the Dropdown's options (`role="option"`, or a link). The Dropdown holds the value; `ActionList` is only their group.
 - **Standalone:** a wrapper over `OptionList`, which takes ActionList's look as `classes` (`resolveActionList()`; native radios or checkboxes, `bind:value`, form field, keyboard, virtualisation). React's standalone ActionList takes a controlled `selectedValue`; cx binds the value, as OptionList.
-- **One row:** both contexts draw `shared/ActionListRow.svelte` with the `shared/popup-list` classes, so standalone rows match Menu and Dropdown (36px, 2px apart, 8px radius, the selected wash, a drawn checkbox for multiple). PhoneNumberInput's country picker uses it too.
+- **One row:** both contexts draw `shared/ActionListRow.svelte` with the `shared/popup-list` classes, so standalone rows match Dropdown's (36px, touching, 8px radius, the selected wash, a drawn checkbox for multiple), Menu's row in Figma's _Action List. PhoneNumberInput's country picker uses it too.
 
 | React | cx | Action |
 | --- | --- | --- |
 | `ActionList` `children` | `children` | rule 2 |
-| `ActionList` `selectionType`, `selectedValue` (standalone) | `isMultiple`, `bind:value`, `onChange` | **changed**: the list holds the value, as OptionList |
+| `ActionList` `selectionType`, `selectedValue` (standalone) | `selectionType`, `bind:value`, `onChange` | `selectionType` same; **changed**: the list holds the value (`bind:value`), as OptionList |
 | `ActionList` `isVirtualized` | `VirtualOptionList` with `classes={resolveActionList()}` | **changed** |
-| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | same (`icon` for a glyph leading) | same |
+| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | same; `leading` is an icon or a snippet | same (rule 14) |
 | `ActionListItem` `href`, `target` | `href`, `target`, `rel` | same: a link row, never a value |
 | `ActionListItem` `intent: 'negative'` | `intent` | same; with the Dropdown select field it draws neutral (React throws) |
 | `ActionListItem` `isSelected` | — | derived from the value |
 | `ActionListSection` (`title`, a divider after) | `ActionListSection` | same (the hairline is drawn above every section but the first) |
-| `ActionListItemIcon`, `…Asset`, `…Avatar`, `…Badge`, `…BadgeGroup`, `…Text` | `icon`, and `leading` / `titleSuffix` / `trailing` snippets | rule 2 |
+| `ActionListItemIcon`, `…Asset`, `…Avatar`, `…Badge`, `…BadgeGroup`, `…Text` | an icon `leading`, and `leading` / `titleSuffix` / `trailing` snippets | rules 2 and 14 |

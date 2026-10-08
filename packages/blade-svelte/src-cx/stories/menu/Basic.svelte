@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IconButton, LayerHost, Menu, MenuItem, Text } from '../../index';
+  import { IconButton, LayerHost, Menu, MenuDivider, MenuItem, Text } from '../../index';
   import { CheckIcon, CloseIcon, CopyIcon, MoreHorizontalIcon, UserIcon } from '../../icons';
 
   interface Props {
@@ -25,20 +25,20 @@
     accessibilityLabel="Address actions"
     testID="menu"
   >
-    {#snippet trigger()}
-      <IconButton icon={MoreHorizontalIcon} accessibilityLabel="Address actions" testID="trigger" />
+    <IconButton icon={MoreHorizontalIcon} accessibilityLabel="Address actions" testID="trigger" />
+    {#snippet content()}
+      {#each ACTIONS.slice(0, 3) as action (action.id)}
+        <MenuItem
+          value={action}
+          title={action.label}
+          leading={action.icon}
+          isDisabled={action.id === 'default'}
+        />
+      {/each}
+      <!-- A divider before the destructive one: the keys pass over it. -->
+      <MenuDivider />
+      <MenuItem value={ACTIONS[3]} title={ACTIONS[3].label} leading={ACTIONS[3].icon} intent="negative" />
     {/snippet}
-    {#each ACTIONS.slice(0, 3) as action (action.id)}
-      <MenuItem
-        value={action}
-        title={action.label}
-        icon={action.icon}
-        isDisabled={action.id === 'default'}
-      />
-    {/each}
-    <!-- Anything between items is left alone: a divider before the destructive one. -->
-    <hr class="my-1 border-t-thin border-solid border-surface-gray-muted" />
-    <MenuItem value={ACTIONS[3]} title={ACTIONS[3].label} icon={ACTIONS[3].icon} intent="negative" />
   </Menu>
   <Text size="small" color="muted">chose: <span data-testid="chose">{last}</span></Text>
   <LayerHost class="pointer-events-none absolute inset-0" />

@@ -50,7 +50,7 @@ describe('Modal', () => {
     expect(title.previousElementSibling).toBe(getByTestId('header-back'));
     expect(title.nextElementSibling).toBe(getByTestId('badge-beside'));
     // Figma's Heading/SmallSemibold, 18/24.
-    expectClass(title, 'font-heading font-blade-semibold text-300 leading-300');
+    expectClass(title, 'font-heading font-semibold text-300 leading-300');
     // The subtitle keeps its look and still describes the modal.
     const subtitle = getByText('Visa');
     expectClass(subtitle, 'text-surface-gray-muted');
@@ -644,6 +644,55 @@ describe('Modal, as Blade', () => {
     expectClass(row, 'pr-11');
   });
 
+  describe('back button', () => {
+    it('shows only with showBackButton, named by backLabel', () => {
+      const plain = render(ModalHarness, { props: { isOpen: true } });
+      expect(plain.queryByRole('button', { name: 'Back' })).toBeNull();
+      plain.unmount();
+      const { getByRole } = render(ModalHarness, {
+        props: { isOpen: true, showBackButton: true, backLabel: 'Previous step' },
+      });
+      expect(getByRole('button', { name: 'Previous step' })).toBeTruthy();
+    });
+
+    it('comes first in the header row, 16px before the leading item, on the title line', () => {
+      const { getByRole, getByTestId } = render(ModalHarness, {
+        props: { isOpen: true, showBackButton: true, withSlots: 'leading' },
+      });
+      const back = getByRole('button', { name: 'Back' });
+      const row = back.parentElement!;
+      expect(row.firstElementChild).toBe(back);
+      expect(back.nextElementSibling).toBe(getByTestId('logo').parentElement);
+      expectClass(back, 'me-4 h-7 w-5');
+    });
+
+    it('reports a press with close, and is not a dismissal', async () => {
+      const onDismiss = vi.fn();
+      const onBackButtonClick = vi.fn();
+      const { getByRole } = render(ModalHarness, {
+        props: { isOpen: true, showBackButton: true, onBackButtonClick, onDismiss },
+      });
+      await fireEvent.click(getByRole('button', { name: 'Back' }));
+      expect(onBackButtonClick).toHaveBeenCalledTimes(1);
+      expect(onDismiss).not.toHaveBeenCalled();
+      expect(getByRole('dialog')).toBeTruthy();
+      // The `close` it receives closes without a dismissal.
+      const [{ close }] = onBackButtonClick.mock.calls[0];
+      close();
+      await tick();
+      expect(onDismiss).not.toHaveBeenCalled();
+    });
+
+    it('makes a header on its own', () => {
+      const { getByRole } = render(ModalHarness, {
+        props: { isOpen: true, showBackButton: true, title: '', accessibilityLabel: 'Offer' },
+      });
+      const back = getByRole('button', { name: 'Back' });
+      // In the header row, not the 8px empty strip.
+      expect(back.parentElement!.className).toContain('flex');
+    });
+  });
+
   it('a leading icon is a large glyph on the title line', () => {
     const { getByText } = render(ModalHarness, { props: { isOpen: true, withSlots: 'icon' } });
     const row = getByText('Remove card').parentElement!.parentElement!.parentElement!;
@@ -658,10 +707,10 @@ describe('Modal, as Blade', () => {
     // Figma: 20px above and beside, 16px below, at every width.
     expect(modal.header).toContain('px-5 pt-5 pb-4');
     expect(modal.close).toContain('top-6 right-6');
-    expect(modal.title).toContain('font-heading font-blade-semibold text-300 leading-300');
+    expect(modal.title).toContain('font-heading font-semibold text-300 leading-300');
     const sheet = resolveModal({ variant: 'sheet' });
     expect(sheet.header).toContain('px-4 pt-3 pb-4');
-    expect(sheet.title).toContain('font-blade-text text-200 leading-200');
+    expect(sheet.title).toContain('font-sans text-200 leading-200');
     expect(sheet.close).toContain('top-9 right-4');
     const drawer = resolveModal({ variant: 'drawer' });
     expect(drawer.header).toBe('shrink-0 p-5');

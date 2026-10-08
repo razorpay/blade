@@ -10,13 +10,12 @@
   interface Props {
     /** What Tabs' `value` becomes when this tab is picked; its TabPanel's `value`. */
     value: string;
-    /** A glyph before the label; alone, it needs `accessibilityLabel`. */
-    icon?: IconSource;
     /**
-     * Before the label in place of an `icon`: an asset (a logo, an avatar) in
-     * the icon's box. Receives the tab's state.
+     * Before the label: an icon (alone, it needs `accessibilityLabel`), or a
+     * snippet with an asset (a logo, an avatar) in the icon's box, which
+     * receives the tab's state.
      */
-    leading?: Snippet<[TabItemState]>;
+    leading?: IconSource | Snippet<[TabItemState]>;
     /** After the label: a Badge or a Counter, which may follow the tab's state. */
     trailing?: Snippet<[TabItemState]>;
     /** @default false */
@@ -34,7 +33,6 @@
 
   let {
     value,
-    icon,
     leading,
     trailing,
     isDisabled = false,
@@ -89,10 +87,10 @@
   onfocus={tab.handleFocus}
   {@attach tab.attach}
 >
-  {#if icon}
-    <Icon source={icon} {...classes.icon} />
-  {:else if leading}
+  {#if typeof leading === 'function'}
     <span class={classes.leading}>{@render leading(snippetState)}</span>
+  {:else if leading}
+    <Icon source={leading} {...classes.icon} />
   {/if}
   {#if children}
     <span class={classes.label}>{@render children(snippetState)}</span>

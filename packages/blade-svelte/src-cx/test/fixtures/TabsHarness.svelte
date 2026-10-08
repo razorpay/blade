@@ -33,9 +33,9 @@
   accessibilityLabel="Payment methods"
   testID="tabs"
 >
-  {#snippet tabs()}
+  {#snippet tabList()}
     {#each ITEMS as item (item.id)}
-      <TabItem value={item.id} isDisabled={item.id === 'emi'} icon={item.id === 'card' ? InfoIcon : undefined}>
+      <TabItem value={item.id} isDisabled={item.id === 'emi'} leading={item.id === 'card' ? InfoIcon : undefined}>
         {#snippet children({ isSelected })}{item.label}{#if isSelected}<span data-testid={`picked-${item.id}`}> ✓</span>{/if}{/snippet}
         {#snippet trailing({ isSelected, isDisabled })}<span data-testid={`trailing-${item.id}`} data-selected={isSelected} data-disabled={isDisabled}></span>{/snippet}
       </TabItem>

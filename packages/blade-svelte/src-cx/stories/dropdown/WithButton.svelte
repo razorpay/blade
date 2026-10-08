@@ -14,14 +14,16 @@
 
 <div class="relative flex h-72 flex-col items-start gap-3 p-2">
   <Dropdown bind:value accessibilityLabel="Date range" testID="dropdown">
-    {#snippet trigger({ selected })}
+    {#snippet children({ selected })}
       <Button variant="secondary" trailingIcon={ChevronDownIcon}>{selected[0] ?? 'Date range'}</Button>
     {/snippet}
-    <ActionList>
-      {#each RANGES as range (range.id)}
-        <ActionListItem value={range.id} title={range.label} />
-      {/each}
-    </ActionList>
+    {#snippet content()}
+      <ActionList>
+        {#each RANGES as range (range.id)}
+          <ActionListItem value={range.id} title={range.label} />
+        {/each}
+      </ActionList>
+    {/snippet}
   </Dropdown>
   <Text size="small" color="muted">value: {JSON.stringify(value)}</Text>
   <LayerHost class="pointer-events-none absolute inset-0" />

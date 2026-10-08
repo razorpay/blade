@@ -109,7 +109,7 @@ export const resolveOptionList: OptionListStyleResolver<OptionListStyleProps> = 
   // less the border), or the inset active ring is cut at the corners.
   row: 'relative flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors first:[border-top-left-radius:7px] first:[border-top-right-radius:7px] last:[border-bottom-left-radius:7px] last:[border-bottom-right-radius:7px]',
   rowState: {
-    picked: 'bg-interactive-gray-faded-highlighted font-blade-medium text-interactive-gray-normal',
+    picked: 'bg-interactive-gray-faded-highlighted font-medium text-interactive-gray-normal',
     unpicked: 'bg-surface-gray-intense text-interactive-gray-normal hover:bg-interactive-gray-default',
   },
   // The box clips the rows, so the ring sits inside.

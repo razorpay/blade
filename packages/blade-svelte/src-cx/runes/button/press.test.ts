@@ -104,7 +104,7 @@ describe('inside a form', () => {
     expect(h.onFeedback).toHaveBeenCalledWith('medium');
   });
 
-  it('an invalid submit with validateForm shakes, reports errors and still forwards the click', async () => {
+  it('an invalid submit with validateForm shakes, reports errors and skips the click', async () => {
     const { form, onSubmit } = cardForm('');
     const onClick = vi.fn();
     const { model, hooks: h, timer } = button({
@@ -119,7 +119,7 @@ describe('inside a form', () => {
       'card.number': 'required',
     });
     expect(h.onFeedback).toHaveBeenCalledWith('warning');
-    expect(onClick).toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
     expect(model.shake).toBe(true);
     timer.tick();
     expect(model.shake).toBe(false);
@@ -149,6 +149,21 @@ describe('inside a form', () => {
     await decision.settled;
     expect(onSubmit).not.toHaveBeenCalled();
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it('type=button with validateForm on an invalid form skips the click', async () => {
+    const { form, onSubmit } = cardForm('');
+    const onClick = vi.fn();
+    const { model, hooks: h } = button({
+      form,
+      onClick,
+      type: () => 'button',
+      validateForm: () => true,
+    });
+    await model.press().settled;
+    expect(onSubmit).not.toHaveBeenCalled();
+    expect(h.onValidationFailed).toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
   });
 
   it('routes a submit failure to onError instead of rejecting settled', async () => {

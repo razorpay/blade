@@ -54,14 +54,14 @@ export interface TextInputClasses {
   /** Applied to the box per validation state. */
   validation: Record<TextInputFrame, Record<Validated, string>>;
   /**
-   * The parts before the text, in Figma's order: `leadingIcon`, `prefix`,
-   * the `leading` snippet. The group spaces them; each carries its own
+   * The parts before the text, in Figma's order: an icon `leading`,
+   * `prefix`, a snippet `leading`. The group spaces them; each carries its own
    * inset from the field's edge (see the README).
    */
   leading: Record<'group' | 'icon' | 'prefix' | 'slot', string>;
   /**
-   * The parts after the text: the clear button, `suffix`, `trailingIcon`,
-   * the `trailing` snippet. The group sits the field's gap after the text.
+   * The parts after the text: the clear button, `suffix`, then `trailing`
+   * (an icon or a snippet). The group sits the field's gap after the text.
    */
   trailing: Record<'group' | 'item', string>;
   /** The glyphs' size: 12, 16, 20px. */

@@ -9,8 +9,8 @@
   import ValidationSource from './Validation.svelte?raw';
   import AffixesStory from './Affixes.svelte';
   import AffixesSource from './Affixes.svelte?raw';
-  import LabelAreaStory from './LabelArea.svelte';
-  import LabelAreaSource from './LabelArea.svelte?raw';
+  import LabelRowStory from './LabelRow.svelte';
+  import LabelRowSource from './LabelRow.svelte?raw';
   import FormattedStory from './Formatted.svelte';
   import FormattedSource from './Formatted.svelte?raw';
 
@@ -68,10 +68,10 @@
 </Story>
 
 <Story
-  name="Label area"
-  parameters={{ docs: { description: { story: meta.stories.LabelArea.description }, source: exampleSource(LabelAreaSource) }, controls: { disable: hasNoControls(meta, 'LabelArea') } }}
+  name="Label row"
+  parameters={{ docs: { description: { story: meta.stories.LabelRow.description }, source: exampleSource(LabelRowSource) }, controls: { disable: hasNoControls(meta, 'LabelRow') } }}
 >
   {#snippet template()}
-    <LabelAreaStory />
+    <LabelRowStory />
   {/snippet}
 </Story>

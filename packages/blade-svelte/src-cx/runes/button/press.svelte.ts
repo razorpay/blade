@@ -58,6 +58,7 @@ const settledResult = (): void => undefined;
  * submit-typed button drives the form model directly (the native submit is
  * cancelled), so the form validates exactly once per press; `validateForm`
  * gets the same treatment for type=button, plus shake/reveal on failure.
+ * The consumer `onClick` runs only when the form passed.
  */
 export function createButton(options: ButtonOptions = {}): ButtonModel {
   let loading = $state(false);
@@ -93,11 +94,13 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
       if (form && (submits || options.validateForm?.())) {
         const settled = (async () => {
           let shook = false;
+          let isInvalid = false;
           try {
             const outcome = submits
               ? await form.submit({ source: 'button', field: form.name, event })
               : await form.validate();
-            if (!outcome.ok && options.validateForm?.()) {
+            isInvalid = !outcome.ok;
+            if (isInvalid && options.validateForm?.()) {
               shaking.show(true);
               shook = true;
               options.hooks?.onValidationFailed?.(outcome.errors);
@@ -106,7 +109,11 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
             options.hooks?.onError?.(error);
           }
           options.hooks?.onFeedback?.(shook ? 'warning' : 'medium');
-          await runOnClick(event);
+          // Validation blocked the press: the consumer's action does not run.
+          // A submit that threw has no verdict, so the click still goes on.
+          if (!isInvalid) {
+            await runOnClick(event);
+          }
         })();
         return { prevented: submits, settled };
       }

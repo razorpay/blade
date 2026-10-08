@@ -23,6 +23,10 @@
 <!-- A search spans sections: the headings step aside while one is typed. -->
 <div class={classes.section} role="group" aria-labelledby={id} data-testid={testID}>
   <div
+    class={cx(classes.sectionSeparator, dropdown?.query && 'hidden')}
+    role="presentation"
+  ></div>
+  <div
     {id}
     class={cx(classes.sectionTitle, dropdown?.query && 'hidden')}
     hidden={Boolean(dropdown?.query) || undefined}

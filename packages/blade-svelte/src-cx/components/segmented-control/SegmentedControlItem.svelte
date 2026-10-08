@@ -7,7 +7,6 @@
 
   let {
     value,
-    icon,
     leading,
     trailing,
     isDisabled,
@@ -33,14 +32,14 @@
 -->
 <Radio {value} {isDisabled} {testID} class={className}>
   {#snippet children(state)}
-  {#if icon}
+  {#if typeof leading === 'function'}
+    <span class={leadingBox}>{@render leading(state)}</span>
+  {:else if leading}
     <Icon
-      source={icon}
+      source={leading}
       size={iconSize}
       accessibilityLabel={label ? undefined : accessibilityLabel}
     />
-  {:else if leading}
-    <span class={leadingBox}>{@render leading(state)}</span>
   {/if}
   {#if label}{@render label(state)}{/if}
   {@render trailing?.(state)}

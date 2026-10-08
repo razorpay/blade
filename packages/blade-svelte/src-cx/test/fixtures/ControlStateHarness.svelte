@@ -8,7 +8,7 @@
 </script>
 
 <ChipGroup label="Tip" testID="chips">
-  {#snippet labelArea({ label })}
+  {#snippet labelRow({ label })}
     {@render label()}<span data-testid="chips-extra">optional</span>
   {/snippet}
   {#snippet helpText()}Tips go to <a href="#staff" data-testid="chips-link">the staff</a>{/snippet}
@@ -19,7 +19,7 @@
 </ChipGroup>
 
 <RadioGroup label="Plan" testID="plans">
-  {#snippet labelArea({ label })}
+  {#snippet labelRow({ label })}
     {@render label()}<span data-testid="plans-extra">compare</span>
   {/snippet}
   <Radio value="monthly" testID="radio-monthly">

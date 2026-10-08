@@ -5,6 +5,8 @@
   import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
   import BottomSheetStory from './BottomSheet.svelte';
   import BottomSheetSource from './BottomSheet.svelte?raw';
+  import BottomSheetStepsStory from './BottomSheetSteps.svelte';
+  import BottomSheetStepsSource from './BottomSheetSteps.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/BottomSheet",
@@ -23,5 +25,16 @@
 >
   {#snippet template(args)}
     <BottomSheetStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Back button"
+  args={meta.stories.BottomSheetSteps.args}
+  argTypes={storyArgTypes(meta, 'BottomSheetSteps') as never}
+  parameters={{ docs: { description: { story: meta.stories.BottomSheetSteps.description }, source: exampleSource(BottomSheetStepsSource) }, controls: { disable: hasNoControls(meta, 'BottomSheetSteps') } }}
+>
+  {#snippet template()}
+    <BottomSheetStepsStory />
   {/snippet}
 </Story>

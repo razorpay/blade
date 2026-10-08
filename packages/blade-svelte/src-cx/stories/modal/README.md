@@ -69,22 +69,23 @@ it.
 | `chrome` | Things that hang off the panel; see Chrome |
 | `body`, `children` | `body` renders in the component's padded, scrolling container; `children` render raw, owning their box, and win when both are given |
 | `footer` | The component's padded footer: actions in a row |
+| `showBackButton`, `onBackButtonClick({ close })`, `backLabel` | As in Blade's BottomSheetHeader, on every variant: a back button first in the header (a 20px chevron on the title line, 16px before what follows), named by `backLabel` (default `Back`). A step back, not a dismissal: no `onDismiss`. A header with only the back button still draws |
 | `{ close }` | `header`, `body`, `children`, `footer` and `chrome` all receive it for their own actions (Cancel, Done, a back button); it closes without a dismissal |
 | `closeLabel` | The close button's name, default `Close`. The button shows while the modal is dismissible, as in Blade: in the header, or floating at the top edge when there is none |
 | `accessibilityLabel`, `testID`, `class` | The only escape hatches; `class` is merged last onto the panel |
 
-| `icon`, `leading` | Before the title, 8px from it: a glyph on the title's 28px first line (Modal only), or an asset or avatar (Modal and BottomSheet) |
+| `leading` | Before the title, 8px from it: an icon (`leading={InfoIcon}`), drawn as a glyph on the title's 28px first line, or a snippet with an asset or avatar (Modal and BottomSheet) |
 | `titleSuffix` | Beside the title, 8px from it: a Counter or a Badge |
 | `trailing({ close })` | After the title block, 16px clear of it and of the close button: a Badge, text, a Link or an action (Modal and BottomSheet); a Link or an action (Drawer) |
 
-### Why `icon`, `leading`, `titleSuffix` and `trailing` are props
+### Why `leading`, `titleSuffix` and `trailing` are props
 
 Blade DSL's headers (Figma's _Modal Header, _Bottom Sheet Header, _Drawer
 Header) space each part differently, so the header places them itself:
 
 | Part | Gap | Box |
 | --- | --- | --- |
-| leading item → title | 8px | `icon`: a 20px glyph on the 28px title line; `leading`: Figma's 32px slot, centred on the title block |
+| leading item → title | 8px | an icon: a 20px glyph on the 28px title line; a snippet: Figma's 32px slot, centred on the title block |
 | title → suffix | 8px | centred on the 28px title line |
 | title block → trailing item | 16px | 28px tall |
 | trailing item → close button | 16px | the close button is a 20px glyph in a 28px box, 24px from the top and the end |

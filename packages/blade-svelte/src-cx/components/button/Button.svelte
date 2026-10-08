@@ -22,13 +22,15 @@
     isDisabled?: boolean;
     /**
      * The HTML type. `submit` presses the enclosing Form: an invalid form
-     * shakes the button and reports to the Form's `onValidationFailed`.
+     * shakes the button, reports to the Form's `onValidationFailed`, and
+     * skips `onClick`.
      * @default 'button'
      */
     type?: ButtonType;
     /**
      * A `button` that validates the Form before it acts, shaking and
-     * reporting as a submit would, without submitting.
+     * reporting as a submit would, without submitting. An invalid form
+     * stops the press: `onClick` does not run.
      */
     validateForm?: boolean;
     onClick?: (event: MouseEvent) => void;

@@ -16,8 +16,7 @@ toast.dismissed.then((reason) => …); // timeout | dismiss | evicted | cleared
 | `message` | Or pass a string to `showToast` |
 | `color` | Style axis (the shared intents); `negative` is a `role="alert"`, the rest `status` |
 | `duration` | ms; `0` stays until dismissed; the default (blade 4000) when omitted |
-| `icon` | Decorative glyph; each colour has a default |
-| `leading` | A snippet in place of the glyph: an asset (a bank's logo), as Figma's leading item is an icon or an asset |
+| `leading` | Before the content: an icon (`IconSource`) in place of the colour's default glyph, or a snippet with an asset (a bank's logo), as Figma's leading item is an icon or an asset. Without it, the colour's glyph |
 | `action` | One inline button; pressing it dismisses |
 | `closeLabel` | The dismiss button's localized name — the library ships no copy. No label, no button; with one, a hairline and the cross follow the action |
 | `onDismiss(reason)` | Same reason the handle's promise settles with |
@@ -40,12 +39,14 @@ toasts in a column instead. Toasts render into the LayerHost — over open modal
 layer: nothing goes inert, focus stays where it is, Escape is not theirs.
 `provideToasts()` gives an embedded surface its own queue.
 
-## Why `icon` and `leading` are options
+## Why `leading` is an option
 
 The toast lays out one row itself, spaced as Blade DSL's Toast (Figma): 12px
 in at the sides and 8px above and below, the leading item (an icon, or an
 asset in its place) 8px before the content, and the content 12px before the
-action or the dismiss cross, which sit 12px apart.
+action or the dismiss cross, which sit 12px apart. `leading` is one option
+with two shapes, and the toast places each: an icon draws as its glyph, a
+snippet goes in the glyph's place.
 
 | | Spacing |
 | --- | --- |

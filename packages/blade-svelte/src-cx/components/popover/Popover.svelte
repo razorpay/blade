@@ -26,10 +26,11 @@
      * snippet sits in the title's box and inherits its type.
      */
     title?: string | Snippet;
-    /** Before the title: a glyph, drawn at 20px. */
-    titleIcon?: IconSource;
-    /** Before the title in place of `titleIcon`: an asset (a logo, an avatar). */
-    titleLeading?: Snippet<[{ close: () => void }]>;
+    /**
+     * Before the title: an icon (a glyph, drawn at 20px), or a snippet with
+     * an asset (a logo, an avatar).
+     */
+    titleLeading?: IconSource | Snippet<[{ close: () => void }]>;
     /** Under the content: actions. `close` is for them. */
     footer?: Snippet<[{ close: () => void }]>;
     /** The close button's name. @default 'Close' */
@@ -44,9 +45,12 @@
      * the popover, so it wires nothing; `isOpen` is there to read (a
      * chevron that flips).
      */
-    trigger: Snippet<[{ isOpen: boolean }]>;
-    /** The panel's content. `close` is for its own actions. */
-    children: Snippet<[{ close: () => void }]>;
+    children: Snippet<[{ isOpen: boolean }]>;
+    /**
+     * The panel's content: a string (small body text), or a snippet whose
+     * `close` is for its own actions.
+     */
+    content: string | Snippet<[{ close: () => void }]>;
   };
 
   let {
@@ -55,7 +59,6 @@
     placement = 'top',
     openInteraction = 'click',
     title,
-    titleIcon,
     titleLeading,
     footer,
     closeLabel = 'Close',
@@ -63,8 +66,8 @@
     accessibilityLabel,
     testID,
     class: className = '',
-    trigger,
     children,
+    content,
     ...styleProps
   }: Props = $props();
 
@@ -91,7 +94,7 @@
   // Blade shows the close button when a click opened the popover — and so
   // does a hover popover on a device that cannot hover, which a tap opens.
   const hasClose = $derived(!popover.opensOnHover);
-  const hasHeader = $derived(Boolean(title || titleIcon || titleLeading));
+  const hasHeader = $derived(Boolean(title || titleLeading));
 </script>
 
 {#snippet closeButton(className: string)}
@@ -113,7 +116,7 @@
   onpointerleave={popover.handlePointerLeave}
   {@attach popover.root}
 >
-  {@render trigger({ isOpen })}
+  {@render children({ isOpen })}
   {#if isOpen && popover.anchor}
     <PopoverPanel
       id={panelId}
@@ -137,10 +140,10 @@
           {#if hasHeader}
             <div class={parts.header}>
               <div class={parts.titleRow}>
-                {#if titleIcon}
-                  <Icon source={titleIcon} size="large" />
-                {:else}
-                  {@render titleLeading?.({ close: popover.close })}
+                {#if typeof titleLeading === 'function'}
+                  {@render titleLeading({ close: popover.close })}
+                {:else if titleLeading}
+                  <Icon source={titleLeading} size="large" />
                 {/if}
                 {#if typeof title === 'string' && title}
                   <p id={titleId} class={parts.title}>{title}</p>
@@ -153,7 +156,11 @@
               {/if}
             </div>
           {/if}
-          <div>{@render children({ close: popover.close })}</div>
+          {#if typeof content === 'string'}
+            <p class={parts.text}>{content}</p>
+          {:else}
+            <div>{@render content({ close: popover.close })}</div>
+          {/if}
         </div>
         {#if footer}
           <div>{@render footer({ close: popover.close })}</div>

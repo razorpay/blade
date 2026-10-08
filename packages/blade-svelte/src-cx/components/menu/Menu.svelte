@@ -12,13 +12,13 @@
      * The trigger: a Button or an IconButton. The wrapper around it opens
      * the menu, so it wires nothing; `isOpen` is there to read.
      */
-    trigger: Snippet<[{ isOpen: boolean }]>;
+    children: Snippet<[{ isOpen: boolean }]>;
     /**
      * The MenuItems, in order, and anything else between them — a heading,
      * a Divider. Only MenuItems are items: the rest is outside the keyboard.
      * They mount while the menu is open.
      */
-    children: Snippet;
+    content: Snippet;
     /** A MenuItem with a `value` was chosen: the menu closes and reports it. */
     onSelect?: (value: T) => void;
     /**
@@ -36,8 +36,8 @@
   };
 
   let {
-    trigger,
     children,
+    content,
     onSelect,
     isOpen = $bindable(false),
     onOpenChange,
@@ -75,7 +75,7 @@
   onkeydown={menu.handleRootKeyDown}
   {@attach menu.root}
 >
-  {@render trigger({ isOpen: menu.isOpen })}
+  {@render children({ isOpen: menu.isOpen })}
   {#if menu.isOpen && menu.anchor}
     <PopoverPanel
       id={menuId}
@@ -91,7 +91,7 @@
       onDismiss={menu.close}
       onKeyDown={menu.handleKey}
     >
-      {@render children()}
+      {@render content()}
     </PopoverPanel>
   {/if}
 </span>

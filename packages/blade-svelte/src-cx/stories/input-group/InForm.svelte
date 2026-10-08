@@ -40,7 +40,7 @@
       isRequired
     />
   </InputGroup>
-  <Button>Pay</Button>
+  <Button type="submit">Pay</Button>
   {#if submitted}
     <pre class="text-25 leading-50 text-surface-gray-subtle">{JSON.stringify(
         submitted,

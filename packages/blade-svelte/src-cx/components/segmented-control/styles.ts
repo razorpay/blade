@@ -133,7 +133,7 @@ export function segmentedLook(
       control: 'peer sr-only',
       // One flat row: the leading item, the text and the trailing item,
       // 8px apart.
-      label: `flex min-w-0 flex-1 flex-row items-center justify-center gap-2 whitespace-nowrap font-blade-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
+      label: `flex min-w-0 flex-1 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium peer-focus-visible:shadow-focus-inset ${segment.label}`,
       iconSize: segment.icon,
     },
   };
@@ -161,10 +161,10 @@ export interface SegmentedControlStyleProps {
 export interface SegmentedControlProps extends SegmentedControlStyleProps {
   label?: string;
   /**
-   * The label's area, to put content beside the label: render the `label`
+   * The label's row, to put content beside the label: render the `label`
    * snippet it receives and anything else. Only the label names the control.
    */
-  labelArea?: Snippet<[{ label: Snippet }]>;
+  labelRow?: Snippet<[{ label: Snippet }]>;
   /** After the label: `*` or `(optional)`. Required also makes the pick required. @default 'none' */
   necessityIndicator?: 'required' | 'optional' | 'none';
   /**
@@ -198,13 +198,12 @@ export interface SegmentedControlProps extends SegmentedControlStyleProps {
 export interface SegmentedControlItemProps {
   /** What the control's `value` becomes when this segment is picked. */
   value: string;
-  /** An icon before the label; alone, it is the label and needs a name. */
-  icon?: IconSource;
   /**
-   * Before the label in place of an `icon`: an asset (a logo, an avatar) in
-   * the icon's box. Receives the segment's state.
+   * Before the label: an icon (alone, it is the label and needs a name), or
+   * a snippet with an asset (a logo, an avatar) in the icon's box, which
+   * receives the segment's state.
    */
-  leading?: Snippet<[ControlState]>;
+  leading?: IconSource | Snippet<[ControlState]>;
   /** After the label: a Counter or a Badge. Receives the segment's state. */
   trailing?: Snippet<[ControlState]>;
   isDisabled?: boolean;

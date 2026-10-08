@@ -147,12 +147,12 @@ const SCALE: Record<TypeName, Record<string, { value: Style; affix: Style }>> = 
   },
 };
 
-const FACE = { text: 'font-blade-text', heading: 'font-heading' } as const;
+const FACE = { text: 'font-sans', heading: 'font-heading' } as const;
 
 const WEIGHT: Record<Exclude<Axis<'weight'>, 'inherit'>, string> = {
-  regular: 'font-blade-regular',
-  medium: 'font-blade-medium',
-  semibold: 'font-blade-semibold',
+  regular: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
 };
 
 // While the size inherits, the affix is relative to the surrounding text.
@@ -167,7 +167,7 @@ export const resolveAmount: AmountStyleResolver<AmountStyleProps> = (
   const weightClass = weight === 'inherit' ? '' : WEIGHT[weight];
   const style = (s: Style): string => `${FACE[s.face]} ${s.type}`;
   // Figma sets the currency symbol in the body face whatever the type.
-  const currencyStyle = (s: Style): string => `font-blade-text ${s.type}`;
+  const currencyStyle = (s: Style): string => `font-sans ${s.type}`;
 
   let value = '';
   let affix = isAffixSubtle ? RELATIVE_AFFIX : '';

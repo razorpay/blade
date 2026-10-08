@@ -52,12 +52,12 @@
     errorText?: string | Snippet;
     label?: string;
     /**
-     * The label's area, to put content beside the label: render the
-     * `label` snippet it receives and anything else. Today a row above the
+     * The label's row, to put content beside the label: render the
+     * `label` snippet it receives and anything else. A row above the
      * items, items 4px apart, `ms-auto` pushing one to the end. Only the
      * label names the group.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     accessibilityLabel?: string;
     /** Lands on the root; each header gets `${testID}-${index}`. */
     testID?: string;
@@ -80,7 +80,7 @@
     helpText,
     errorText,
     label,
-    labelArea,
+    labelRow,
     accessibilityLabel,
     testID,
     class: className = '',
@@ -130,7 +130,7 @@
   data-testid={testID}
 >
   {#if label}
-    <FieldLabel id={cardGroup.labelId} text={label} area={labelArea} />
+    <FieldLabel id={cardGroup.labelId} text={label} row={labelRow} />
   {/if}
   <div
     class={cx(

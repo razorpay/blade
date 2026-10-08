@@ -18,7 +18,7 @@
 <div class="grid max-w-96 gap-4">
   <OptionList
     label="Banks to show first"
-    isMultiple
+    selectionType="multiple"
     bind:value
   >
     {#each BANKS as bank (bank.code)}

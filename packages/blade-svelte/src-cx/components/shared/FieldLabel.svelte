@@ -8,7 +8,7 @@
 
   // Blade's FormLabel, on top. The label element holds the text and its
   // necessity only — it names the control, so nothing else may sit inside
-  // it. `area` places it among other content: an info tooltip, a link.
+  // it. `row` places it among other content: an info tooltip, a link.
   interface Props {
     text: string;
     /** `label` names a control through `for`; `span` is named by `id`. */
@@ -22,11 +22,10 @@
     /** Read after the label, not shown. */
     accessibilityText?: string;
     /**
-     * The label's area: render the `label` snippet it receives with
-     * anything beside it. Today a row: items 4px apart, `ms-auto` pushes
-     * one to the end.
+     * The label's row: render the `label` snippet it receives with
+     * anything beside it, items 4px apart, `ms-auto` pushing one to the end.
      */
-    area?: Snippet<[{ label: Snippet }]>;
+    row?: Snippet<[{ label: Snippet }]>;
   }
 
   let {
@@ -37,7 +36,7 @@
     size = 'medium',
     necessityIndicator = 'none',
     accessibilityText,
-    area,
+    row,
   }: Props = $props();
 
   const classes = $derived(resolveFieldLabel(size, necessityIndicator));
@@ -67,8 +66,8 @@
 {/snippet}
 
 <div class={classes.row}>
-  {#if area}
-    {@render area({ label })}
+  {#if row}
+    {@render row({ label })}
   {:else}
     {@render label()}
   {/if}

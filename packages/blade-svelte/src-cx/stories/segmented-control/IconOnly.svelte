@@ -19,35 +19,35 @@
   <SegmentedControl bind:value={method} accessibilityLabel="Pay with">
     <SegmentedControlItem
       value="card"
-      icon={CreditCardIcon}
+      leading={CreditCardIcon}
       accessibilityLabel="Card"
     />
     <SegmentedControlItem
       value="bank"
-      icon={BankIcon}
+      leading={BankIcon}
       accessibilityLabel="Netbanking"
     />
     <SegmentedControlItem
       value="phone"
-      icon={PhoneIcon}
+      leading={PhoneIcon}
       accessibilityLabel="UPI"
     />
   </SegmentedControl>
   <SegmentedControl bind:value={method} accessibilityLabel="Pay with">
-    <SegmentedControlItem value="card" icon={CreditCardIcon}
+    <SegmentedControlItem value="card" leading={CreditCardIcon}
       >Card</SegmentedControlItem
     >
-    <SegmentedControlItem value="bank" icon={BankIcon}
+    <SegmentedControlItem value="bank" leading={BankIcon}
       >Bank</SegmentedControlItem
     >
-    <SegmentedControlItem value="phone" icon={PhoneIcon}
+    <SegmentedControlItem value="phone" leading={PhoneIcon}
       >UPI</SegmentedControlItem
     >
   </SegmentedControl>
   <!-- An asset in the icon's box, and a Counter after the label: one row,
        8px apart. -->
   <SegmentedControl bind:value={method} accessibilityLabel="Pay with">
-    <SegmentedControlItem value="card" icon={CreditCardIcon}>Card</SegmentedControlItem>
+    <SegmentedControlItem value="card" leading={CreditCardIcon}>Card</SegmentedControlItem>
     <SegmentedControlItem value="phone">
       {#snippet leading()}<Image src={appLogo} alt="" class="w-4 h-4" />{/snippet}
       UPI

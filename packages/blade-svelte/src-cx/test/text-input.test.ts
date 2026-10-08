@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { fireEvent, render } from '@testing-library/svelte';
+import { fireEvent, render, within } from '@testing-library/svelte';
 import type { FormatRule } from '../runes/text-input/format';
 import { InfoIcon } from '../icons';
 import TextInputHarness from './fixtures/TextInputHarness.svelte';
@@ -235,19 +235,19 @@ describe('TextInput standalone', () => {
   ] as const)(
     "%s: Figma's slots — glyphs and text 8/12px in, a selector on the 4px padding",
     (size, height, pad, textInset, leadingGap, iconInset, trailingGap, trailingInset, glyph) => {
-      const { getByTestId, getByText } = render(TextInputHarness, {
+      // `leading` and `trailing` as icons: the glyph comes first, before
+      // `prefix`, and last, after `suffix`.
+      const glyphs = render(TextInputHarness, {
         props: {
           size,
           accessibilityLabel: 'Amount',
           leadingIcon: InfoIcon,
           prefix: '₹',
-          withLeadingSnippet: true,
           suffix: '.00',
           trailingIcon: InfoIcon,
-          withTrailingSnippet: true,
         },
       });
-      const control = getByTestId('solo');
+      const control = within(glyphs.container).getByTestId('solo');
       const box = control.parentElement!;
       expectClass(box, height);
       expectClass(box, pad);
@@ -255,17 +255,32 @@ describe('TextInput standalone', () => {
       expectClass(control, textInset);
       const [leadingGroup, , trailingGroup] = [...box.children] as HTMLElement[];
       expectClass(leadingGroup, leadingGap);
-      const [icon, prefix, slot] = [...leadingGroup.children] as HTMLElement[];
+      const [icon, prefix] = [...leadingGroup.children] as HTMLElement[];
       expectClass(icon, iconInset);
       expectClass(icon.firstElementChild as HTMLElement, glyph);
-      expect(prefix).toBe(getByText('₹'));
+      expect(prefix).toBe(within(glyphs.container).getByText('₹'));
       expectClass(prefix, iconInset === 'pl-1' ? 'pl-0.5' : 'pl-2');
-      // The selector slot carries no inset of its own.
-      expect(slot.className).not.toMatch(/\bpl-/);
-      expect(slot.contains(getByTestId('picker'))).toBe(true);
       expectClass(trailingGroup, trailingGap);
       for (const item of trailingGroup.children) expectClass(item as HTMLElement, trailingInset);
-      expect(getByText('.00').parentElement).toBe(trailingGroup);
+      expect(within(glyphs.container).getByText('.00').parentElement).toBe(trailingGroup);
+
+      // As snippets: the selector slot comes after `prefix`.
+      const slots = render(TextInputHarness, {
+        props: {
+          size,
+          accessibilityLabel: 'Amount',
+          prefix: '₹',
+          withLeadingSnippet: true,
+          withTrailingSnippet: true,
+        },
+      });
+      const scope = within(slots.container);
+      const slotGroup = scope.getByTestId('solo').parentElement!.firstElementChild as HTMLElement;
+      const [slotPrefix, slot] = [...slotGroup.children] as HTMLElement[];
+      expect(slotPrefix).toBe(scope.getByText('₹'));
+      // The selector slot carries no inset of its own.
+      expect(slot.className).not.toMatch(/\bpl-/);
+      expect(slot.contains(scope.getByTestId('picker'))).toBe(true);
     },
   );
 

@@ -77,7 +77,7 @@
       isOptionDisabled={(bank) => bank.code === 'down'}
       compare={(a, b) => a?.code === b?.code}
       bind:value
-      {isMultiple}
+      selectionType={isMultiple ? 'multiple' : 'single'}
       {isDeselectable}
       {isDisabled}
       isRequired={required}
@@ -95,7 +95,7 @@
       label="Bank"
       compare={(a, b) => a?.code === b?.code}
       bind:value
-      {isMultiple}
+      selectionType={isMultiple ? 'multiple' : 'single'}
       {isDeselectable}
       {isDisabled}
       isRequired={required}

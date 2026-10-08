@@ -49,7 +49,7 @@ export interface OTPInputStyleProps {
 
 // Blade's cells take the input's natural width (88px) and shrink, never
 // grow, so the row is as wide as its cells until its box is narrower.
-const CELL = `box-border w-[88px] min-w-0 shrink border-thin border-solid p-0 text-center font-blade-regular ${INPUT_FILL} ${INPUT_TEXT} ${INPUT_INACTIVE} ${INPUT_ACTIVE_ON_FOCUS} ${INPUT_DISABLED_ON_CONTROL}`;
+const CELL = `box-border w-[88px] min-w-0 shrink border-thin border-solid p-0 text-center font-normal ${INPUT_FILL} ${INPUT_TEXT} ${INPUT_INACTIVE} ${INPUT_ACTIVE_ON_FOCUS} ${INPUT_DISABLED_ON_CONTROL}`;
 
 const CELL_SIZE: Record<Axis<'size'>, string> = {
   medium: 'h-9 rounded-small text-400 leading-400',

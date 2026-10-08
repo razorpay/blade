@@ -1,7 +1,8 @@
 # ActionList
 
-Blade's ActionList: rows that look the same as Menu's and Dropdown's
-(36px, 2px apart, 8px radius, the selected wash, a checkbox for multiple).
+Blade's ActionList: Menu's and Dropdown's row in Dropdown's list (Figma's
+_Action List: 36px rows, touching, 8px radius, the selected wash, a
+checkbox for multiple).
 One set of components works in two places:
 
 - **Inside a Dropdown** its items are the Dropdown's options. The Dropdown
@@ -14,10 +15,12 @@ One set of components works in two places:
 ```svelte
 <!-- In a Dropdown -->
 <Dropdown bind:value label="Payment method">
-  <ActionList>
-    <ActionListItem value="upi" title="UPI" icon={UpiIcon} />
-    <ActionListItem value="cards" title="Cards" />
-  </ActionList>
+  {#snippet content()}
+    <ActionList>
+      <ActionListItem value="upi" title="UPI" leading={UpiIcon} />
+      <ActionListItem value="cards" title="Cards" />
+    </ActionList>
+  {/snippet}
 </Dropdown>
 
 <!-- Standalone -->
@@ -29,8 +32,8 @@ One set of components works in two places:
 
 | `ActionList` prop (standalone) | Notes |
 | --- | --- |
-| `value`, `onChange` | Bindable: one value or null, or an array with `isMultiple` |
-| `isMultiple`, `isDeselectable`, `compare` | As OptionList |
+| `value`, `onChange` | Bindable: one value or null, or an array with `selectionType="multiple"` |
+| `selectionType`, `isDeselectable`, `compare` | As OptionList |
 | `name`, `isRequired`, `isDisabled`, `validationState` | A form field |
 | `label`, `helpText`, `errorText`, `accessibilityLabel` | Names and the hint line |
 
@@ -39,8 +42,8 @@ Inside a Dropdown these are ignored: set them on the Dropdown.
 | `ActionListItem` prop | Notes |
 | --- | --- |
 | `value`, `title` | What it holds, and what it shows (and typeahead and a search match) |
-| `description`, `icon` or `leading`, `titleSuffix`, `trailing` | The row's parts, as in Figma |
-| `href`, `target`, `rel` | A link row: it navigates and holds no value. In a Dropdown, Enter or a click follows it and closes the list, even with `isMultiple` |
+| `description`, `leading`, `titleSuffix`, `trailing` | The row's parts, as in Figma. `leading` is an icon (`IconSource`), drawn as a 16px glyph, or a snippet with an asset (a flag) or an avatar in a 20px box |
+| `href`, `target`, `rel` | A link row: it navigates and holds no value. In a Dropdown, Enter or a click follows it and closes the list, even with `selectionType="multiple"` |
 | `intent="negative"` | A destructive choice: red, with a red wash. In a Dropdown, not with the select field (it draws neutral there), as in React |
 | `onClick` | In a Dropdown: runs on the pick, before the value is held |
 | `isDisabled`, `testID` | |

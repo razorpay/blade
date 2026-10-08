@@ -4,7 +4,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Dropdown',
   description:
-    'Pick a value from a floating list: a select field by default, or any trigger of your own. A single pick closes it; with isMultiple, rows lead with a checkbox and the list stays open. Same core and look as Menu.',
+    'Pick a value from a floating list: a select field by default, or any trigger of your own. A single pick closes it; with selectionType="multiple", rows lead with a checkbox and the list stays open. Same core and look as Menu.',
   argTypes: {
     size: { control: 'select', options: DROPDOWN_AXES.size },
     isDisabled: { control: 'boolean' },
@@ -16,7 +16,7 @@ const meta: StoryMeta = {
       args: { size: 'medium', isDisabled: false, isDeselectable: false },
     },
     Multiple: {
-      description: 'isMultiple: every pick toggles a row and the list stays open; the footer applies or clears.',
+      description: 'selectionType="multiple": every pick toggles a row and the list stays open; the footer applies or clears.',
       argTypes: {},
     },
     WithSearch: {

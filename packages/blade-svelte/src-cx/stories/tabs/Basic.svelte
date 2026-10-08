@@ -26,9 +26,9 @@
       isLazy={args.isLazy}
       accessibilityLabel="Payment methods"
     >
-      {#snippet tabs()}
+      {#snippet tabList()}
         <TabItem value="upi">UPI</TabItem>
-        <TabItem value="card" icon={InfoIcon}>
+        <TabItem value="card" leading={InfoIcon}>
           Card
           {#snippet trailing()}<Badge size="small">New</Badge>{/snippet}
         </TabItem>

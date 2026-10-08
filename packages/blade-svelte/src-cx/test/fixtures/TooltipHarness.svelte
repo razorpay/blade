@@ -33,16 +33,15 @@
 
 {#snippet tip()}
   <Tooltip
-    content="Charged by your bank"
+    content={rich ? richContent : 'Charged by your bank'}
     {placement}
     {isDisabled}
     {onOpenChange}
     testID="tip"
     class="ml-2"
-    children={rich ? richContent : undefined}
     title={richTitle ? titleSnippet : undefined}
   >
-    {#snippet trigger({ isOpen })}<button data-testid="trigger" data-open={isOpen}>Fee</button>{/snippet}
+    {#snippet children({ isOpen })}<button data-testid="trigger" data-open={isOpen}>Fee</button>{/snippet}
   </Tooltip>
 {/snippet}
 

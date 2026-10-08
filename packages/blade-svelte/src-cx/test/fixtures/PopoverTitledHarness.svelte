@@ -18,18 +18,19 @@
   provideLayers();
 </script>
 
+{#snippet leadingAsset({ close }: { close: () => void })}<button type="button" data-testid="leading" onclick={close}>i</button>{/snippet}
+
 {#snippet titleSnippet()}<em data-testid="rich-title">Settlement</em> breakup{/snippet}
 
 <Popover
   title={richTitle ? titleSnippet : 'Settlement breakup'}
-  titleIcon={withIcon ? InfoIcon : undefined}
+  titleLeading={withIcon ? InfoIcon : leadingAsset}
   testID="panel"
   {openInteraction}
   {onOpenChange}
 >
-  {#snippet trigger()}<button type="button">Settlement</button>{/snippet}
-  {#snippet titleLeading({ close })}<button type="button" data-testid="leading" onclick={close}>i</button>{/snippet}
-  {#snippet children()}<p>Gross ₹100</p>{/snippet}
+  <button type="button">Settlement</button>
+  {#snippet content()}<p>Gross ₹100</p>{/snippet}
   {#snippet footer({ close })}<button type="button" onclick={close}>Settle</button>{/snippet}
 </Popover>
 <LayerHost />

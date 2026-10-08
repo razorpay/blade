@@ -42,9 +42,9 @@ describe('Amount', () => {
   });
 
   it.each([
-    ['body', 'small', 'font-blade-text text-75 leading-75', 'font-blade-text text-25 leading-25'],
-    ['body', 'large', 'font-blade-text text-200 leading-200', 'font-blade-text text-75 leading-75'],
-    ['heading', 'medium', 'font-heading text-400 leading-400', 'font-blade-text text-100 leading-100'],
+    ['body', 'small', 'font-sans text-75 leading-75', 'font-sans text-25 leading-25'],
+    ['body', 'large', 'font-sans text-200 leading-200', 'font-sans text-75 leading-75'],
+    ['heading', 'medium', 'font-heading text-400 leading-400', 'font-sans text-100 leading-100'],
     ['heading', '2xlarge', 'font-heading text-700 leading-700', 'font-heading text-500 leading-500'],
     ['display', 'xlarge', 'font-heading text-1100 leading-1100', 'font-heading text-800 leading-800'],
   ] as const)("%s %s: Figma's value style, and its affix one step down", (type, size, value, affix) => {
@@ -55,7 +55,7 @@ describe('Amount', () => {
     expectClass(part(a, 1), value);
     expectClass(part(a, 2), affix);
     // The currency symbol is always in the body face, at the affix size.
-    expectClass(part(a, 0), `font-blade-text ${affix.split(' ').slice(1).join(' ')}`);
+    expectClass(part(a, 0), `font-sans ${affix.split(' ').slice(1).join(' ')}`);
   });
 
   it('a plain affix takes the value style; the currency stays in the body face', () => {
@@ -65,7 +65,7 @@ describe('Amount', () => {
     const a = getByTestId('a');
     expect(shownParts(a)).toEqual(['₹', '10.50']);
     expectClass(part(a, 1), 'font-heading text-500 leading-500');
-    expectClass(part(a, 0), 'font-blade-text text-500 leading-500');
+    expectClass(part(a, 0), 'font-sans text-500 leading-500');
   });
 
   it('weight and colour land on the whole amount', () => {
@@ -73,7 +73,7 @@ describe('Amount', () => {
       props: { value: 10.5, type: 'display', size: 'small', weight: 'medium', color: 'success', testID: 'a' },
     });
     const a = getByTestId('a');
-    expectClass(a, 'font-blade-medium');
+    expectClass(a, 'font-medium');
     expectClass(a, 'text-feedback-positive-intense');
   });
 

@@ -37,7 +37,7 @@
   <Dropdown
     bind:value
     bind:isOpen
-    {isMultiple}
+    selectionType={isMultiple ? 'multiple' : 'single'}
     {isLoading}
     {onChange}
     name="method"
@@ -49,14 +49,16 @@
     {#snippet header()}
       {#if hasSearch}<DropdownHeader title="Methods" hasSearch />{/if}
     {/snippet}
-    <ActionList>
-      {#each methods as method (method)}
-        <ActionListItem value={method.toLowerCase()} title={method} isDisabled={method === 'Wallet'} testID="opt-{method.toLowerCase()}" />
-      {/each}
-      {#if hasLink}
-        <ActionListItem value="help" title="Payment help" href="#help" testID="opt-help" />
-      {/if}
-    </ActionList>
+    {#snippet content()}
+      <ActionList>
+        {#each methods as method (method)}
+          <ActionListItem value={method.toLowerCase()} title={method} isDisabled={method === 'Wallet'} testID="opt-{method.toLowerCase()}" />
+        {/each}
+        {#if hasLink}
+          <ActionListItem value="help" title="Payment help" href="#help" testID="opt-help" />
+        {/if}
+      </ActionList>
+    {/snippet}
     {#snippet footer({ close })}
       {#if hasFooter}
         <DropdownFooter><button type="button" data-testid="apply" onclick={close}>Apply</button></DropdownFooter>

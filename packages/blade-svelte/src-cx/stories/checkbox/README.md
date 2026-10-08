@@ -25,4 +25,4 @@ A Svelte prop is already an initial value the component then owns, a binding,
 or a value the host keeps driving — so the React-style
 `isChecked`/`defaultChecked` split is collapsed into `isChecked`.
 
-Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.
+Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelRow`, and every hint line is `string | Snippet`, as the inputs.

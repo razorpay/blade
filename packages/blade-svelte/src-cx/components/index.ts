@@ -47,6 +47,7 @@ export { Dropdown, DropdownHeader, DropdownFooter, DROPDOWN_AXES } from './dropd
 export { ActionList, ActionListItem, ActionListSection, resolveActionList } from './action-list';
 export { default as Menu } from './menu/Menu.svelte';
 export { default as MenuItem } from './menu/MenuItem.svelte';
+export { default as MenuDivider } from './menu/MenuDivider.svelte';
 export { default as NavStack } from './nav-stack/NavStack.svelte';
 export { createNav, getNav, globalNav, provideNav, pushScreen } from '../runes/nav-stack/nav';
 export type {

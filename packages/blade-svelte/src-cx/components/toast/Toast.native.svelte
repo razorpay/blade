@@ -20,7 +20,6 @@
 
   const {
     content: text,
-    icon,
     leading,
     action,
     closeLabel = 'Dismiss toast',
@@ -34,8 +33,7 @@
 
   const style = useComponentDefaults('Toast', () => styleProps);
   const classes = $derived(resolveToast(style.current));
-  // Blade gives every colour a glyph; `icon` replaces it.
-  const glyph = $derived(icon ?? classes.defaultIcon);
+  // Blade gives every colour a glyph; an icon `leading` replaces it.
 </script>
 
 <div
@@ -45,7 +43,11 @@
   data-testid={testID}
 >
   <span class={classes.icon}>
-    {#if leading}{@render leading()}{:else}<Icon source={glyph} />{/if}
+    {#if typeof leading === 'function'}
+      {@render leading()}
+    {:else}
+      <Icon source={leading ?? classes.defaultIcon} />
+    {/if}
   </span>
   <span class={classes.body}><span class={classes.content}>{text}</span></span>
   <span class={classes.trailing}>

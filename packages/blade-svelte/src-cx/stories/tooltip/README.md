@@ -8,13 +8,12 @@ has no style axes yet (`components/tooltip/index.ts`).
 
 | Prop | Notes |
 | --- | --- |
-| `content` | The text |
-| `children` | Rich content in place of `content` |
+| `content` | What it says: a string, or a snippet for rich content |
 | `title` | A heading above the content: a string or a snippet |
 | `placement` | `top`, `bottom`, `left`, `right`, each optionally `-start` / `-end`. The wanted side; the bubble flips when it lacks room |
 | `isDisabled` | Never opens; closes if open |
 | `onOpenChange` | Fires with `{ isOpen }` |
-| `trigger({ isOpen })` | The trigger. Make it focusable so the keyboard can reach the tooltip |
+| `children({ isOpen })` | The trigger, as in React. Make it focusable so the keyboard can reach the tooltip. While open, its first focusable element is `aria-describedby` the bubble |
 
 ## Opening
 

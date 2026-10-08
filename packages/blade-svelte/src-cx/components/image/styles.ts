@@ -54,6 +54,6 @@ export const resolveImage: ImageStyleResolver<ImageStyleProps> = (props) => {
     img: `w-full h-full ${FIT[fit]}`,
     pending: `w-full h-full ${resolveSkeleton()}`,
     fallback:
-      'flex w-full h-full items-center justify-center bg-interactive-neutral-faded font-blade-text font-blade-semibold text-interactive-neutral-normal',
+      'flex w-full h-full items-center justify-center bg-interactive-neutral-faded font-sans font-semibold text-interactive-neutral-normal',
   };
 };

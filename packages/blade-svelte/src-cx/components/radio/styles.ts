@@ -198,10 +198,10 @@ export const resolveRadioGroup: RadioGroupStyleResolver<RadioGroupStyleProps> = 
       disabled: 'pointer-events-none',
       control: 'peer sr-only',
       // Blade's SelectorTitle: `surface.text.gray.subtle`, disabled greyed.
-      label: `ml-1 font-blade-text font-blade-regular text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${look.title}`,
+      label: `ml-1 font-sans font-normal text-surface-gray-subtle peer-disabled:text-surface-gray-disabled ${look.title}`,
       // A full-width line under the row, so the row wraps it below.
       support: `w-full ${look.indent}`,
-      supportText: `font-blade-text font-blade-regular tracking-50 text-surface-gray-muted ${look.caption}`,
+      supportText: `font-sans font-normal tracking-50 text-surface-gray-muted ${look.caption}`,
       indicator: {
         ...INDICATOR,
         root: `${INDICATOR.root} ${look.circle}`,

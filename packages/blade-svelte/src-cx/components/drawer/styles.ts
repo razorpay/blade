@@ -94,6 +94,20 @@ export interface DrawerBehaviourProps {
    */
   chrome?: Snippet<[{ close: () => void }]>;
   /**
+   * A back button first in the header, before the title: a step back
+   * inside the drawer, not a dismissal (it fires no
+   * `onDismiss`).
+   * @default false
+   */
+  showBackButton?: boolean;
+  /** The back button was pressed; `close` closes the drawer without a dismissal. */
+  onBackButtonClick?: (event: { close: () => void }) => void;
+  /**
+   * The back button's accessible name.
+   * @default 'Back'
+   */
+  backLabel?: string;
+  /**
    * The close button's accessible name; the button shows while the drawer
    * is dismissible.
    * @default 'Close'

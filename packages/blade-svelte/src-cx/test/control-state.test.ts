@@ -3,8 +3,8 @@ import { fireEvent, render } from '@testing-library/svelte';
 import ControlStateHarness from './fixtures/ControlStateHarness.svelte';
 
 // The selection controls hand their snippets `{ isChecked, isDisabled }`,
-// and their groups take a labelArea and snippet hint lines, as the inputs do.
-describe('selection controls: snippet state, label area and rich hints', () => {
+// and their groups take a labelRow and snippet hint lines, as the inputs do.
+describe('selection controls: snippet state, label row and rich hints', () => {
   it("chip snippets follow the chip's state", async () => {
     const { getByTestId, queryByTestId } = render(ControlStateHarness);
     expect(getByTestId('chip-leading').dataset.checked).toBe('false');
@@ -32,7 +32,7 @@ describe('selection controls: snippet state, label area and rich hints', () => {
     expect(getByText('Notify on')).toBeTruthy();
   });
 
-  it('ChipGroup and RadioGroup take a labelArea', () => {
+  it('ChipGroup and RadioGroup take a labelRow', () => {
     const { getByTestId, getByText } = render(ControlStateHarness);
     expect(getByTestId('chips-extra').parentElement).toBe(
       getByText('Tip').parentElement?.parentElement,

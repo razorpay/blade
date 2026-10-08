@@ -44,7 +44,7 @@
       Clear
     </Button>
   </div>
-  <ul class="font-blade-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
+  <ul class="font-mono grid gap-1 text-25 leading-50 text-surface-gray-subtle">
     {#each log as line (line)}
       <li>{line}</li>
     {:else}

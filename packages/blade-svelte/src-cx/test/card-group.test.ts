@@ -152,7 +152,7 @@ describe('CardGroup', () => {
     const subtitle = [...header.querySelectorAll('span')].find(
       (node) => node.textContent?.trim() === 'Any UPI app',
     ) as HTMLElement;
-    expect(title.className).toContain('font-blade-medium');
+    expect(title.className).toContain('font-medium');
     expect(title.className).toContain('text-200');
     expect(subtitle.className).toContain('text-surface-gray-muted');
   });
@@ -320,7 +320,7 @@ describe('CardGroup (blade)', () => {
     expect(getByTestId('methods-0').getAttribute('aria-expanded')).toBe('false');
   });
 
-  it('takes a labelArea and a snippet help line, which describes the group', () => {
+  it('takes a labelRow and a snippet help line, which describes the group', () => {
     const { getByTestId, getByText } = render(CardGroupHarness, { props: { withExtras: true } });
     expect(getByTestId('label-extra').parentElement).toBe(
       getByText('Payment methods').parentElement?.parentElement,

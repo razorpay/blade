@@ -19,12 +19,12 @@
   interface BehaviourProps {
     label?: string;
     /**
-     * The label's area, to put content beside the label: render the
-     * `label` snippet it receives and anything else. Today a row above the
+     * The label's row, to put content beside the label: render the
+     * `label` snippet it receives and anything else. A row above the
      * options, items 4px apart, `ms-auto` pushing one to the end. Only the
      * label names the group.
      */
-    labelArea?: Snippet<[{ label: Snippet }]>;
+    labelRow?: Snippet<[{ label: Snippet }]>;
     /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
     necessityIndicator?: 'required' | 'optional' | 'none';
     /**
@@ -65,7 +65,7 @@
 
   let {
     label,
-    labelArea,
+    labelRow,
     necessityIndicator = 'none',
     value = $bindable(),
     onChange,
@@ -144,7 +144,7 @@
       text={label}
       {necessityIndicator}
       size={classes.fieldSize}
-      area={labelArea}
+      row={labelRow}
     />
   {/if}
   <div class={classes.options}>

@@ -15,7 +15,7 @@
     TextInputProps,
     | 'label'
     | 'accessibilityLabel'
-    | 'labelArea'
+    | 'labelRow'
     | 'value'
     | 'placeholder'
     | 'onChange'
@@ -32,7 +32,7 @@
     | 'enterKeyHint'
     | 'name'
     | 'span'
-    | 'leadingIcon'
+    | 'leading'
     | 'prefix'
     | 'suffix'
     | 'testID'

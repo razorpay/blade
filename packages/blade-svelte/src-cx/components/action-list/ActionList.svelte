@@ -11,12 +11,12 @@
     children: Snippet;
     /**
      * Standalone only — inside a Dropdown the Dropdown holds the value. The
-     * pick, an array with `isMultiple`; bindable.
+     * pick, an array with `selectionType="multiple"`; bindable.
      */
     value?: T | readonly T[] | null;
     onChange?: (change: FieldChange<T | readonly T[] | null>) => void;
-    /** Standalone: rows lead with a checkbox; the value is an array. @default false */
-    isMultiple?: boolean;
+    /** Standalone, `multiple`: rows lead with a checkbox; the value is an array. @default 'single' */
+    selectionType?: 'single' | 'multiple';
     /** Standalone, single: picking the pick clears it. @default false */
     isDeselectable?: boolean;
     compare?: (a: T, b: T) => boolean;

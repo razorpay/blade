@@ -86,9 +86,9 @@ export const resolveTooltip: TooltipStyleResolver<TooltipStyleProps> = () => ({
   bubble:
     'pointer-events-auto absolute z-50 flex w-max max-w-[200px] flex-col gap-1 rounded-medium bg-popup-gray-intense p-3 shadow-lowRaised backdrop-blur-high transition-opacity duration-xquick data-[state=closed]:opacity-0 motion-reduce:transition-none',
   title:
-    'block font-blade-text font-blade-semibold text-100 leading-100 tracking-50 text-surface-static-white-normal',
+    'block font-sans font-semibold text-100 leading-100 tracking-50 text-surface-static-white-normal',
   content:
-    'relative z-1 block font-blade-text font-blade-regular text-75 leading-75 tracking-50 text-surface-static-white-subtle [word-break:break-word]',
+    'relative z-1 block font-sans font-normal text-75 leading-75 tracking-50 text-surface-static-white-subtle [word-break:break-word]',
   arrow: 'absolute bg-popup-gray-intense',
   arrowSide: ARROW_SIDE,
   nativePlacement: NATIVE_PLACEMENT,

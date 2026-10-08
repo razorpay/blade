@@ -23,7 +23,7 @@
     withLeading?: boolean;
     /** Which body snippets to pass. */
     bodyKind?: 'body' | 'children' | 'both';
-    /** A labelArea and a snippet help line. */
+    /** A labelRow and a snippet help line. */
     withExtras?: boolean;
     onChange?: (change: { name: string | undefined; value: unknown }) => void;
     onClick?: (method: Method, event: MouseEvent) => boolean | void;
@@ -72,7 +72,7 @@
     {onChange}
     name="instrument"
     label="Payment methods"
-    labelArea={withExtras ? labelExtras : undefined}
+    labelRow={withExtras ? labelExtras : undefined}
     helpText={withExtras ? richHelp : undefined}
     testID="methods"
     class="mt-2"

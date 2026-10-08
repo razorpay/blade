@@ -56,9 +56,9 @@ const meta: StoryMeta = {
         successText: 'VPA verified',
       },
     },
-    LabelArea: {
+    LabelRow: {
       description:
-        "`labelArea` places the label among other content — Blade's labelSuffix (an info tooltip) and labelTrailing (a link, pushed to the end with `ms-auto`). Only the label names the control.",
+        "`labelRow` places the label among other content — Blade's labelSuffix (an info tooltip) and labelTrailing (a link, pushed to the end with `ms-auto`). Only the label names the control.",
       argTypes: {},
     },
     Affixes: {

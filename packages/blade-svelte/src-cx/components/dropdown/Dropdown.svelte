@@ -22,15 +22,15 @@
      * An ActionList of ActionListItems (and ActionListSections), and
      * anything between them — a Divider. Only ActionListItems are options.
      */
-    children: Snippet;
+    content: Snippet;
     /**
-     * The pick: one value or null, or an array with `isMultiple`. Bindable.
+     * The pick: one value or null, or an array with `selectionType="multiple"`. Bindable.
      */
     value?: T | readonly T[] | null;
     /** A pick changed the value. */
     onChange?: (change: { name?: string; value: T | readonly T[] | null }) => void;
-    /** Many picks: rows lead with a checkbox, and a pick keeps the list open. @default false */
-    isMultiple?: boolean;
+    /** `multiple`: many picks; rows lead with a checkbox, and a pick keeps the list open. @default 'single' */
+    selectionType?: 'single' | 'multiple';
     /** Single choice: picking the pick clears it. @default false */
     isDeselectable?: boolean;
     /** Defaults to identity; pass it when values are rebuilt objects. */
@@ -43,7 +43,7 @@
      * list. Without it the dropdown is a select field: `label`, the
      * picked rows' titles (or `placeholder`), a chevron, and the hint.
      */
-    trigger?: Snippet<[{ isOpen: boolean; selected: readonly string[] }]>;
+    children?: Snippet<[{ isOpen: boolean; selected: readonly string[] }]>;
     /** Above the list: a DropdownHeader (title, search). */
     header?: Snippet;
     /** Under the list: a DropdownFooter (Apply, Cancel); `close` closes it. */
@@ -75,15 +75,15 @@
   };
 
   let {
-    children,
+    content,
     value = $bindable(null),
     onChange,
-    isMultiple = false,
+    selectionType = 'single',
     isDeselectable = false,
     compare,
     isOpen = $bindable(false),
     onOpenChange,
-    trigger,
+    children: trigger,
     header,
     footer,
     isLoading = false,
@@ -104,6 +104,7 @@
     ...styleProps
   }: Props = $props();
 
+  const isMultiple = $derived(selectionType === 'multiple');
   const uid = $props.id();
   const style = useComponentDefaults('Dropdown', () => styleProps);
   const classes = $derived(resolveDropdown(style.current));
@@ -221,7 +222,7 @@
               <Progress type="dots" size="small" accessibilityLabel="Loading" />
             </div>
           {:else}
-            {@render children()}
+            {@render content()}
             {#if dropdown.hasNoResults}
               <div class={classes.stateRow} role="status">{emptyText}</div>
             {/if}
@@ -232,7 +233,7 @@
     {:else}
       <!-- Closed, the rows still register (hidden), so the field knows the
            picked rows' titles. -->
-      <div hidden>{@render children()}</div>
+      <div hidden>{@render content()}</div>
     {/if}
   </span>
   {#if !trigger && hint.text}

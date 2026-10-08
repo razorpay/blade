@@ -26,7 +26,7 @@ describe('Text and Heading (preset components)', () => {
     const { getByTestId } = render(TypographyHarness);
     const styled = getByTestId('styled');
     expect(styled.tagName).toBe('SPAN');
-    for (const name of ['text-75', 'font-blade-medium', 'text-surface-gray-muted', 'clamp-2']) {
+    for (const name of ['text-75', 'font-medium', 'text-surface-gray-muted', 'clamp-2']) {
       expect(styled.className).toContain(name);
     }
     expect(styled.className.endsWith('mt-2')).toBe(true);
@@ -79,15 +79,15 @@ describe('Display (preset component)', () => {
     const display = getByRole('heading', { level: 1, name: 'Accept payments' });
     expect(display.className).toContain('font-heading');
     expect(display.className).toContain('text-800 leading-800');
-    expect(display.className).toContain('font-blade-semibold');
+    expect(display.className).toContain('font-semibold');
     expect(display.className).not.toContain('tracking-');
   });
 
   it('sizes 48 to 72px; regular and medium are letter-spaced, semibold not', () => {
     expect(resolveDisplay({ size: 'xlarge' })).toContain('text-1100 leading-1100');
     expect(resolveDisplay({ size: 'large' })).toContain('text-1000 leading-1000');
-    expect(resolveDisplay({ weight: 'regular' })).toContain('font-blade-regular tracking-50');
-    expect(resolveDisplay({ weight: 'medium' })).toContain('font-blade-medium tracking-50');
+    expect(resolveDisplay({ weight: 'regular' })).toContain('font-normal tracking-50');
+    expect(resolveDisplay({ weight: 'medium' })).toContain('font-medium tracking-50');
   });
 });
 
@@ -101,14 +101,14 @@ describe('Code (preset component)', () => {
     expect(root.className.endsWith('ml-1')).toBe(true);
     const code = root.firstElementChild!;
     expect(code.tagName).toBe('CODE');
-    expect(code.className).toContain('font-blade-code');
+    expect(code.className).toContain('font-mono');
     expect(code.className).toContain('text-surface-gray-subtle');
     expect(code.textContent).toBe('KEY_ID');
   });
 
   it("follows Figma's 10/14 and 12/18; plain code takes a colour", () => {
     expect(resolveCode().code).toContain('text-25 [line-height:0.875rem]');
-    expect(resolveCode({ size: 'medium', weight: 'bold' }).code).toContain('text-75 [line-height:1.125rem] font-blade-bold');
+    expect(resolveCode({ size: 'medium', weight: 'bold' }).code).toContain('text-75 [line-height:1.125rem] font-bold');
     const plain = resolveCode({ isHighlighted: false, color: 'primary' });
     expect(plain.root).not.toContain('bg-');
     expect(plain.code).toContain('text-surface-primary-normal');

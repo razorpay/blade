@@ -93,7 +93,7 @@ describe('token contract', () => {
 
   it('uno.config.ts, or src-cx/blade.css, defines every class the style maps use', async () => {
     const uno = await createGenerator(unoConfig);
-    // Blade's own scales (`opacity-blade-*`, `font-blade-*`) are plain CSS.
+    // Blade's own opacity scale (`opacity-blade-*`) is plain CSS.
     const bladeCss = new Set(
       [...readFileSync(join(__dirname, '../blade.css'), 'utf8').matchAll(/^\.([\w-]+)/gm)].map(
         ([, name]) => name,

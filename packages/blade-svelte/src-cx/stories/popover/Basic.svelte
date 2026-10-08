@@ -29,11 +29,9 @@
     accessibilityLabel="Convenience fee"
     testID="popover"
   >
-    {#snippet trigger()}
-      <Button variant="secondary" size="small" type="button" testID="trigger">Why a fee?</Button>
-    {/snippet}
+    <Button variant="secondary" size="small" type="button" testID="trigger">Why a fee?</Button>
     {#snippet titleLeading()}<Icon source={InfoIcon} size="medium" />{/snippet}
-    {#snippet children()}
+    {#snippet content()}
       <Text size="small">
         Your bank charges 2% for this card. It goes to the bank, not to the
         merchant.
@@ -41,9 +39,7 @@
       {#if args.withTooltip}
         <!-- A tooltip inside the popover: Escape closes only the top one. -->
         <Tooltip content="Set by your bank" testID="tip">
-          {#snippet trigger()}
-            <button type="button" data-testid="tip-trigger" class="mt-2 text-75 underline">Who sets it?</button>
-          {/snippet}
+          <button type="button" data-testid="tip-trigger" class="mt-2 text-75 underline">Who sets it?</button>
         </Tooltip>
       {/if}
     {/snippet}

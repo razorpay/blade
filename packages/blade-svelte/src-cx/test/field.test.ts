@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import FieldCounter from '../components/shared/FieldCounter.svelte';
 import FieldLabel from '../components/shared/FieldLabel.svelte';
 import { resolveFieldLabel } from '../components/shared/field';
-import LabelAreaHarness from './fixtures/LabelAreaHarness.svelte';
+import LabelRowHarness from './fixtures/LabelRowHarness.svelte';
 
 describe('FieldLabel, as Blade FormLabel', () => {
   it('labels a control through `for`', () => {
@@ -26,7 +26,7 @@ describe('FieldLabel, as Blade FormLabel', () => {
     expect(mark.map((m) => m.textContent)).toEqual(['*']);
     // Figma's _FormGroup-Header: a semibold `*`, 2px after the text.
     expect(mark[0].className).toContain('ms-0.5');
-    expect(mark[0].className).toContain('font-blade-semibold');
+    expect(mark[0].className).toContain('font-semibold');
   });
 
   it('takes the type, colour and gap per size', () => {
@@ -39,9 +39,9 @@ describe('FieldLabel, as Blade FormLabel', () => {
   });
 });
 
-describe('labelArea: content beside the label', () => {
+describe('labelRow: content beside the label', () => {
   it('places the label among other content, which does not name the control', () => {
-    const { getByTestId, getByText, getByRole } = render(LabelAreaHarness);
+    const { getByTestId, getByText, getByRole } = render(LabelRowHarness);
     const control = getByTestId('gstin');
     const label = document.getElementById(control.getAttribute('aria-labelledby')!)!;
     expect(label.textContent).not.toContain('Learn more');
@@ -52,7 +52,7 @@ describe('labelArea: content beside the label', () => {
   });
 
   it('CounterInput and InputGroup take it too', () => {
-    const { getByTestId, getByText } = render(LabelAreaHarness);
+    const { getByTestId, getByText } = render(LabelRowHarness);
     expect(getByTestId('guests-extra').parentElement).toBe(
       getByText('Guests').closest('label')?.parentElement,
     );
@@ -62,7 +62,7 @@ describe('labelArea: content beside the label', () => {
   });
 
   it('a hint line may be a snippet: it renders, and the control is described by it', () => {
-    const { getByTestId } = render(LabelAreaHarness);
+    const { getByTestId } = render(LabelRowHarness);
     const control = getByTestId('gstin');
     const hint = document.getElementById(control.getAttribute('aria-describedby')!)!;
     expect(hint.contains(getByTestId('reset'))).toBe(true);

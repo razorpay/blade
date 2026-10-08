@@ -15,7 +15,7 @@
 </script>
 
 {#snippet list()}
-  <ActionList bind:value {isMultiple} name="plan" label="Plan" isRequired={inForm} testID="list">
+  <ActionList bind:value selectionType={isMultiple ? 'multiple' : 'single'} name="plan" label="Plan" isRequired={inForm} testID="list">
     <ActionListSection title="Plans" testID="plans">
       <ActionListItem value="basic" title="Basic" description="For new businesses" testID="basic" />
       <ActionListItem value="pro" title="Pro" testID="pro" />

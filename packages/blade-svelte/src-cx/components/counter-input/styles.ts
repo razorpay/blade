@@ -122,7 +122,7 @@ export function resolveCounterInput(props: CounterInputStyleProps = {}): Counter
   const { size = 'medium', emphasis = 'subtle' } = props;
   const look = SIZE[size];
   const tone = EMPHASIS[emphasis];
-  const input = `h-full w-full min-w-0 p-1 border-none outline-none bg-transparent text-center font-blade-text font-blade-semibold [appearance:textfield] [&::-webkit-inner-spin-button]:[appearance:none] [&::-webkit-outer-spin-button]:[appearance:none] ${look.text}`;
+  const input = `h-full w-full min-w-0 p-1 border-none outline-none bg-transparent text-center font-sans font-semibold [appearance:textfield] [&::-webkit-inner-spin-button]:[appearance:none] [&::-webkit-outer-spin-button]:[appearance:none] ${look.text}`;
   const box = `relative flex w-fit flex-col items-center overflow-hidden border-thin border-solid ${look.box}`;
   const button = `flex shrink-0 items-center justify-center border-none bg-transparent cursor-pointer disabled:cursor-not-allowed transition-colors duration-xquick ease-standard ${BUTTON_RING} ${look.button} ${tone.button}`;
   return {
@@ -140,7 +140,7 @@ export function resolveCounterInput(props: CounterInputStyleProps = {}): Counter
     },
     // The number's width is its digits in `ch` of its own font, plus the
     // input's 4px each side — so the font sits on the field too.
-    field: `flex h-full items-center justify-center font-blade-text font-blade-semibold w-[calc(var(--counter-digits)*1ch_+_8px)] ${look.text}`,
+    field: `flex h-full items-center justify-center font-sans font-semibold w-[calc(var(--counter-digits)*1ch_+_8px)] ${look.text}`,
     fieldFocus: FIELD_RING,
     slide: { up: 'animate-slide-up', down: 'animate-slide-down' },
     input: {

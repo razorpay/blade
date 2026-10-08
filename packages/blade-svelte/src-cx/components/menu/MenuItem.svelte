@@ -13,10 +13,11 @@
     title: string;
     /** Under the title, muted; it may wrap. */
     description?: string;
-    /** A 16px glyph before the title, 8px from it. */
-    icon?: IconSource;
-    /** Before the title in place of an `icon`: an asset or an avatar in a 20px box. */
-    leading?: Snippet;
+    /**
+     * Before the title, 8px from it: an icon (a 16px glyph), or a snippet
+     * with an asset or an avatar in a 20px box.
+     */
+    leading?: IconSource | Snippet;
     /** Beside the title, 8px from it: a Badge. */
     titleSuffix?: Snippet;
     /** After the title, 8px clear of it: a glyph (a check, a chevron) or shortcut text. */
@@ -37,7 +38,6 @@
   let {
     title,
     description,
-    icon,
     leading,
     titleSuffix,
     trailing,
@@ -90,12 +90,14 @@
   {#if children}
     {@render children()}
   {:else}
-    {#if icon}
-      <span class={classes.itemIcon}><Icon source={icon} /></span>
-    {:else if leading}
+    {#if typeof leading === 'function'}
       <span class={classes.itemLeading}>{@render leading()}</span>
+    {:else if leading}
+      <span class={cx(classes.itemIcon, classes.itemIconTone[isDisabled ? 'disabled' : intent])}>
+        <Icon source={leading} />
+      </span>
     {/if}
-    <span class={classes.itemBody}>
+    <span class={cx(classes.itemBody, isDisabled && classes.itemBodyDisabled)}>
       {#if titleSuffix}
         <span class={classes.itemTitleRow}>
           <span class={classes.itemTitle}>{title}</span>
@@ -105,7 +107,7 @@
         <span class={classes.itemTitle}>{title}</span>
       {/if}
       {#if description}
-        <span class={classes.itemDescription}>{description}</span>
+        <span class={classes.itemDescription[isDisabled ? 'disabled' : 'enabled']}>{description}</span>
       {/if}
     </span>
     {#if trailing}

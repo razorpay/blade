@@ -85,8 +85,8 @@ export function resolveEmptyState(props: EmptyStateStyleProps = {}): EmptyStateC
     content: 'flex flex-col items-center gap-1',
     lead: `flex flex-row items-center justify-center ${size.lead}`,
     iconSize: size.iconSize,
-    title: `m-0 text-center font-heading font-blade-semibold text-surface-gray-subtle ${size.title}`,
-    description: `m-0 text-center font-blade-text font-blade-regular text-surface-gray-muted ${size.description}`,
+    title: `m-0 text-center font-heading font-semibold text-surface-gray-subtle ${size.title}`,
+    description: `m-0 text-center font-sans font-normal text-surface-gray-muted ${size.description}`,
     headingLevel: size.headingLevel,
   };
 }

@@ -8,8 +8,11 @@
   import TooltipBubble from './TooltipBubble.svelte';
 
   interface BehaviourProps {
-    /** The text. For rich content, give `children` instead. */
-    content?: string;
+    /**
+     * What the tooltip says: a string, or a snippet for rich content (it
+     * sits in the content's box and inherits its type).
+     */
+    content: string | Snippet;
     /**
      * A heading above the content, a string or a snippet; a snippet sits in
      * the title's box and inherits its type.
@@ -30,9 +33,7 @@
      * reach anything, the keyboard only reaches what takes focus. The
      * wrapper around it opens the tooltip; `isOpen` is there to read.
      */
-    trigger: Snippet<[{ isOpen: boolean }]>;
-    /** Rich content in place of `content`. */
-    children?: Snippet;
+    children: Snippet<[{ isOpen: boolean }]>;
   }
 
   // Behaviour props declared here, style props by `./styles`; the typed
@@ -47,7 +48,6 @@
     onOpenChange,
     testID,
     class: className = '',
-    trigger,
     children,
     ...styleProps
   }: Props = $props();
@@ -76,14 +76,14 @@
   onclick={tooltip.handleClick}
   {@attach tooltip.root}
 >
-  {@render trigger({ isOpen: tooltip.isOpen })}
+  {@render children({ isOpen: tooltip.isOpen })}
   {#if tooltip.isOpen && tooltip.anchor}
     <TooltipBubble
       id={bubbleId}
       anchor={tooltip.anchor}
       {placement}
       {classes}
-      content={children ?? content ?? ''}
+      {content}
       {title}
       {testID}
       onPointerEnter={tooltip.handleBubbleEnter}

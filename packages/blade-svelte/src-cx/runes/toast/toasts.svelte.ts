@@ -169,13 +169,12 @@ export function createToasts<T>(options: ToastsOptions<T> = {}): ToastsModel<T> 
 export interface ToastContent {
   /** What the toast says. */
   content: string;
-  /** A glyph before the content; each colour has Blade's default. */
-  icon?: IconSource;
   /**
-   * Before the content in place of the glyph: an asset (a bank's logo), as
-   * Blade DSL's _Toast/ Leading Item (Figma) is an icon or an asset.
+   * Before the content: an icon in place of the colour's default glyph, or
+   * a snippet with an asset (a bank's logo), as Blade DSL's _Toast/ Leading
+   * Item (Figma) is an icon or an asset.
    */
-  leading?: Snippet;
+  leading?: IconSource | Snippet;
   /** ms before it goes. @default 4000 */
   duration?: number;
   /** `false`: it stays until dismissed. @default true */

@@ -15,8 +15,7 @@
     /** What the row shows, what the select field shows once picked, and what typeahead and a search match. */
     title: string;
     description?: string;
-    icon?: IconSource;
-    leading?: Snippet;
+    leading?: IconSource | Snippet;
     titleSuffix?: Snippet;
     trailing?: Snippet;
     /** A link row: picking it follows the link and closes the list. */
@@ -35,7 +34,6 @@
     value,
     title,
     description,
-    icon,
     leading,
     titleSuffix,
     trailing,
@@ -97,12 +95,13 @@
     {classes}
     {title}
     {description}
-    {icon}
     {leading}
     {titleSuffix}
     {trailing}
     hasCheck={isMultiple && !href}
     {isSelected}
+    intent={tone}
+    {isDisabled}
   />
 {/snippet}
 

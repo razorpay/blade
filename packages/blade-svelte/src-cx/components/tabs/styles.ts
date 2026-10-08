@@ -71,7 +71,7 @@ const bySize = (map: Record<Size, string>): Record<Size, string> => map;
 // at gentle/standard. Focus is the inset 4px `surface.border.primary.muted`
 // ring over the `interactive.background.gray.default` fill.
 const TAB =
-  'relative flex shrink-0 flex-row cursor-pointer items-center gap-2 whitespace-nowrap font-blade-text font-blade-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
+  'relative flex shrink-0 flex-row cursor-pointer items-center gap-2 whitespace-nowrap font-sans font-medium outline-none transition-all duration-gentle ease-standard focus-visible:shadow-focus-inset disabled:cursor-not-allowed';
 const LABEL: Record<Size, string> = {
   small: 'text-100 leading-100 tracking-50',
   medium: 'text-100 leading-100 tracking-50',

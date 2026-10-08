@@ -17,7 +17,7 @@ const meta: StoryMeta = {
       },
     },
     Multiple: {
-      description: 'isMultiple turns the rows into checkboxes and the value into an array.',
+      description: 'selectionType="multiple" turns the rows into checkboxes and the value into an array.',
       argTypes: {
               },
     },

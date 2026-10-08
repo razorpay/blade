@@ -175,7 +175,7 @@ describe('Tooltip, as Blade', () => {
     expect(look.bubble).toContain('rounded-medium');
     expect(look.bubble).toContain('p-3');
     expect(look.bubble).toContain('max-w-[200px]');
-    expect(look.title).toContain('font-blade-semibold');
+    expect(look.title).toContain('font-semibold');
     expect(look.content).toContain('text-75');
     expect(look.arrowSide.top).toContain('w-[14px]');
     expect(look.gap).toBe(12);

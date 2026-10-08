@@ -42,7 +42,7 @@ export function resolveAnnouncementBanner(
   return {
     root: `flex w-full flex-row items-center gap-1 bg-surface-gray-subtle px-4 py-2 ${ALIGNMENT[props.alignment ?? 'center']}`,
     icon: 'flex shrink-0 items-center text-surface-gray-subtle',
-    text: 'm-0 min-w-0 font-blade-text text-75 [line-height:1.125rem] font-blade-medium text-surface-gray-subtle clamp-1',
+    text: 'm-0 min-w-0 font-sans text-75 [line-height:1.125rem] font-medium text-surface-gray-subtle clamp-1',
   };
 }
 

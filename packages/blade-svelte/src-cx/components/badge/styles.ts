@@ -70,8 +70,8 @@ const SIZE: Record<Axis<'size'>, { root: string; text: string; icon: BadgeClasse
 // The intense badge sets its label lighter: regular on the fill, medium on
 // the tint.
 const WEIGHT: Record<Axis<'emphasis'>, string> = {
-  subtle: 'font-blade-medium',
-  intense: 'font-blade-regular',
+  subtle: 'font-medium',
+  intense: 'font-normal',
 };
 
 export function resolveBadge(props: BadgeStyleProps = {}): BadgeClasses {
@@ -81,7 +81,7 @@ export function resolveBadge(props: BadgeStyleProps = {}): BadgeClasses {
     root: `inline-flex w-fit max-w-full flex-row items-center justify-center overflow-hidden whitespace-nowrap rounded-max ${spec.root} ${COLOR[emphasis][color]}`,
     icon: 'flex shrink-0',
     iconSize: spec.icon,
-    text: `m-0 min-w-0 clamp-1 font-blade-text tracking-50 ${WEIGHT[emphasis]} ${spec.text}`,
+    text: `m-0 min-w-0 clamp-1 font-sans tracking-50 ${WEIGHT[emphasis]} ${spec.text}`,
   };
 }
 

@@ -14,7 +14,7 @@ const meta: StoryMeta = {
       args: { isDeselectable: false, isDisabled: false },
     },
     Multiple: {
-      description: 'isMultiple: rows lead with a checkbox; the value is an array.',
+      description: 'selectionType="multiple": rows lead with a checkbox; the value is an array.',
       argTypes: {},
     },
     LinksAndActions: {

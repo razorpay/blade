@@ -74,12 +74,12 @@
     {#if iconOnly}
       <SegmentedControlItem
         value="wallet"
-        icon={GLYPH}
+        leading={GLYPH}
         accessibilityLabel="Wallet"
         testID="wallet"
       />
     {:else}
-      <SegmentedControlItem value="wallet" icon={GLYPH} testID="wallet">
+      <SegmentedControlItem value="wallet" leading={GLYPH} testID="wallet">
         Wallet
       </SegmentedControlItem>
     {/if}

@@ -16,9 +16,11 @@ export interface ModalClasses extends SurfaceClasses {
   header: string;
   /** The row: the leading item, the title block, the trailing item; then the close button. */
   headerRow: string;
+  /** The back button, first in the row: a 20px glyph on the title's 28px line, 16px before what follows. */
+  back: string;
   /** Before the title block: an asset or avatar in Figma's 32px slot, centred on the title block, 8px from it. */
   leading: string;
-  /** A leading glyph (`icon`): on the title's 28px first line, 8px from it. */
+  /** A leading glyph (`leading` as an icon): on the title's 28px first line, 8px from it. */
   leadingIcon: string;
   /** The title and what follows it (`titleSuffix`), 8px apart. */
   titleRow: string;
@@ -220,6 +222,9 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     header:
       layout.header ?? 'shrink-0 border-b-thin border-solid border-surface-gray-muted px-5 pt-5 pb-4',
     headerRow: 'relative flex items-start select-none',
+    // Blade's BaseHeader: a large IconButton (ChevronLeft), 16px (spacing.5)
+    // before the leading item or the title, level with the title line.
+    back: `me-4 h-7 w-5 ${ICON_BUTTON}`,
     leading: 'me-2 flex w-8 h-8 shrink-0 items-center justify-center self-center',
     leadingIcon: 'me-2 flex h-7 shrink-0 items-center',
     titleRow: 'flex min-w-0 items-start gap-2',
@@ -231,9 +236,9 @@ function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalCl
     // Heading/SmallSemibold (18/24, the heading face) on a 28px line.
     title:
       layout.title ??
-      'm-0 pt-0.5 font-heading font-blade-semibold text-300 leading-300 [word-break:break-word] text-surface-gray-normal',
+      'm-0 pt-0.5 font-heading font-semibold text-300 leading-300 [word-break:break-word] text-surface-gray-normal',
     subtitle:
-      'm-0 font-blade-text text-75 leading-75 font-blade-regular [word-break:break-word] text-surface-gray-muted',
+      'm-0 font-sans text-75 leading-75 font-normal [word-break:break-word] text-surface-gray-muted',
     close: `${layout.close ?? CLOSE} w-5 h-5 ${ICON_BUTTON}`,
     floatingClose: `${
       layout.floatingClose ?? FLOATING_CLOSE
@@ -275,7 +280,7 @@ const SHEET: ModalLayout = {
   footer: 'shrink-0 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4',
   header: 'shrink-0 border-b-thin border-solid border-surface-gray-muted px-4 pt-3 pb-4',
   title:
-    'm-0 pt-0.5 font-blade-text text-200 leading-200 tracking-25 font-blade-semibold [word-break:break-word] text-surface-gray-normal',
+    'm-0 pt-0.5 font-sans text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
   close: 'absolute top-9 right-4',
   floatingClose: 'absolute top-4 right-4',
   // The 20px button 16px from the end, and 16px beside it.

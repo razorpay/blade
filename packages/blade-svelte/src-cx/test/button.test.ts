@@ -81,7 +81,7 @@ describe('Button standalone', () => {
     expectClass(button, 'bg-interactive-primary-default');
     expectClass(button, 'min-h-9');
     // Figma's label is Semi Bold.
-    expectClass(button, 'font-blade-semibold');
+    expectClass(button, 'font-semibold');
   });
 
   it('renders an anchor with href, and ignores isDisabled there', () => {

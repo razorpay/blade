@@ -14,6 +14,8 @@
       closeLabel?: string;
       title?: string;
       withChrome?: boolean;
+      leading?: 'none' | 'icon' | 'snippet';
+      showBackButton?: boolean;
     };
   }
 
@@ -34,12 +36,23 @@
   <LayerHost />
 </div>
 
+{#snippet logo()}
+  <img
+    src="https://cdn.razorpay.com/bank/HDFC.gif"
+    alt=""
+    class="h-8 w-8 rounded-small object-contain"
+  />
+{/snippet}
+
 <Modal
   bind:isOpen
   variant={args.variant}
   size={args.size}
   isDismissible={args.isDismissible}
   title={args.title}
+  showBackButton={args.showBackButton}
+  onBackButtonClick={() => (lastSource = 'back button (not a dismissal)')}
+  leading={args.leading === 'icon' ? CreditCardIcon : args.leading === 'snippet' ? logo : undefined}
   closeLabel={args.closeLabel || undefined}
   testID="modal"
   onDismiss={({ source }) => {

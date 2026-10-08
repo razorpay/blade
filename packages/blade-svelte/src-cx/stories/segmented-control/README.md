@@ -32,19 +32,20 @@ nothing of the pill.
 | Prop | Notes |
 | --- | --- |
 | `value` | What the control's `value` becomes when picked |
-| `icon` | An `IconSource` before the label. Alone, it is the label, and `accessibilityLabel` names it — the radio reads as that name through its label |
-| `leading({ isChecked, isDisabled })` | In place of `icon`: an asset (a logo, an avatar) in the icon's box, 16px (20px at large) |
+| `leading` | Before the label: an icon (`IconSource`), drawn as the segment's glyph — alone, it is the label, and `accessibilityLabel` names it, so the radio reads as that name through its label — or a snippet `leading({ isChecked, isDisabled })` with an asset (a logo, an avatar) in the icon's box, 16px (20px at large) |
 | `trailing({ isChecked, isDisabled })` | After the label: a Counter or a Badge |
 | `isDisabled` | This segment only |
 | `children({ isChecked, isDisabled })` | The label text |
 
-## Why `icon`, `leading` and `trailing` are props
+## Why `leading` and `trailing` are props
 
 Figma's _Segmented Control / Item is the same row as a tab: the leading item
 (an icon, or an asset in a 16px box, 20px at large), the label, and the
 trailing item (a Counter or a Badge), each 8px apart, centred in the
 segment. The segment owns that row, so each part is a prop that lands in its
-place, sized for the segment, with the gap between them.
+place, sized for the segment, with the gap between them. `leading` is one
+prop with two shapes, and the segment places each: an icon draws as its
+glyph, a snippet goes in the icon's box.
 
 ## Keys and the thumb
 
@@ -56,4 +57,4 @@ the row equally, so it is one segment wide and slides by whole segments plus
 the gap, sized per `size`. Nothing is measured, and native cannot resolve
 that `calc(var())`, so it shows no pick there.
 
-Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.
+Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelRow`, and every hint line is `string | Snippet`, as the inputs.

@@ -22,12 +22,14 @@
     isDeselectable={args.isDeselectable}
     testID="dropdown"
   >
-    <ActionList>
-      <ActionListItem value="upi" title="UPI" icon={UpiIcon} />
-      <ActionListItem value="netbanking" title="Netbanking" icon={BankIcon} />
-      <ActionListItem value="wallet" title="Wallet" description="Paytm, PhonePe, Amazon Pay" icon={WalletIcon} />
-      <ActionListItem value="emi" title="EMI" isDisabled />
-    </ActionList>
+    {#snippet content()}
+      <ActionList>
+        <ActionListItem value="upi" title="UPI" leading={UpiIcon} />
+        <ActionListItem value="netbanking" title="Netbanking" leading={BankIcon} />
+        <ActionListItem value="wallet" title="Wallet" description="Paytm, PhonePe, Amazon Pay" leading={WalletIcon} />
+        <ActionListItem value="emi" title="EMI" isDisabled />
+      </ActionList>
+    {/snippet}
   </Dropdown>
   <LayerHost class="pointer-events-none absolute inset-0" />
 </div>

@@ -436,7 +436,44 @@ const rem = (value: string | number): string => `${round(Number(value) / ROOT_FO
  * when its theme sets one, else `Tasa` (src-cx/fonts.css). The fallback is
  * Arial sized to TASA Orbiter, so the swap does not shift the layout.
  */
+// Blade's weights and its text and code faces under Tailwind's names
+// (blade-core's tokens). Unlike Blade's other classes, these give way to an
+// app's theme that sets the same key (`fontFamily.sans`, `fontWeight.medium`…):
+// Blade's text then follows the app's, a merchant's body font included.
+const weightNames: Record<string, string> = {
+  regular: 'normal',
+  medium: 'medium',
+  semibold: 'semibold',
+  bold: 'bold',
+};
+/** The font classes an app's theme may take over, by the theme key that does. */
+const APP_FONT_KEYS: Record<string, [section: string, key: string]> = {
+  ...Object.fromEntries(
+    Object.entries(weightNames).map(([, name]) => [`font-${name}`, ['fontWeight', name]]),
+  ),
+  'font-sans': ['fontFamily', 'sans'],
+  'font-mono': ['fontFamily', 'mono'],
+};
+
+/** The font classes whose key the app's theme, or a preset's, sets itself. */
+function appFontClasses(themes: ThemeConfig[]): Set<string> {
+  const sets = (theme: ThemeConfig, section: string, key: string): boolean =>
+    [theme[section], theme.extend?.[section]].some(
+      (entries) => typeof entries === 'object' && entries !== null && key in entries,
+    );
+  return new Set(
+    Object.entries(APP_FONT_KEYS)
+      .filter(([, [section, key]]) => themes.some((theme) => sets(theme, section, key)))
+      .map(([name]) => name),
+  );
+}
+
 const fontRules: Rule[] = [
+  ...Object.entries(fonts.weight).map(
+    ([name, value]): Rule => [`font-${weightNames[name] ?? name}`, { 'font-weight': String(value) }],
+  ),
+  ['font-sans', { 'font-family': fonts.family.text }],
+  ['font-mono', { 'font-family': fonts.family.code }],
   [
     'font-heading',
     { 'font-family': 'var(--merchant-heading-font, Tasa), "TASA Orbiter Fallback Arial", Arial' },
@@ -448,9 +485,7 @@ const typographyRules: Rule[] = [
   ...rules('text', 'font-size', fonts.size, rem),
   // e.g. `leading-100` → 1.25rem (20px)
   ...rules('leading', 'line-height', lineHeights, rem),
-  // Font weights and the text and code families are Blade's own names, in
-  // src-cx/blade.css (`font-blade-semibold`): `font-medium` and the like are
-  // an app's Tailwind's, often bound to its own variables.
+  // `font-normal`…`font-bold`, `font-sans`, `font-mono`, `font-heading`.
   ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
   // it enables (src-cx/plugin). A glyph is text, so this resets everything
@@ -1458,6 +1493,8 @@ function mergeOwnership(
   tailwind: Rule[],
   blade: Rule[],
   bladeShortcuts: Record<string, string>,
+  /** Names where the app's rule wins instead. */
+  appFirst: Set<string> = new Set(),
 ): { rules: Rule[]; shortcuts: Record<string, string> } {
   const tailwindStatic = new Set(
     (tailwind.filter(isStatic) as StaticRule[]).map((rule) => rule[0]),
@@ -1487,8 +1524,10 @@ function mergeOwnership(
     }
     return claimed;
   };
-  const bladeCSS = (name: string, context: unknown): unknown =>
-    bladeStatic.has(name) ? bladeStatic.get(name) : firstOf(bladeDynamic, name, context);
+  const bladeCSS = (name: string, context: unknown): unknown => {
+    if (appFirst.has(name)) return undefined;
+    return bladeStatic.has(name) ? bladeStatic.get(name) : firstOf(bladeDynamic, name, context);
+  };
 
   const rules: Rule[] = [
     ...tailwind.map(
@@ -1566,7 +1605,15 @@ export function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfig {
     arbitraryPropertyRule,
   ];
   const merged = theme
-    ? mergeOwnership(tailwindRules(theme), bladeRules, shortcuts)
+    ? mergeOwnership(
+        tailwindRules(theme),
+        bladeRules,
+        shortcuts,
+        appFontClasses([
+          options.theme ?? {},
+          ...(options.presets ?? []).map((preset) => preset.theme ?? {}),
+        ]),
+      )
     : { rules: bladeRules, shortcuts };
   return defineConfig({
     presets: [],

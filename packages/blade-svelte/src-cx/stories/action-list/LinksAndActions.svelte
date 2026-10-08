@@ -12,8 +12,8 @@
       <ActionListItem value="pro" title="Pro" />
     </ActionListSection>
     <ActionListSection title="More">
-      <ActionListItem value="pricing" title="Compare plans" href="#pricing" icon={ExternalLinkIcon} />
-      <ActionListItem value="close" title="Close account" intent="negative" icon={TrashIcon} />
+      <ActionListItem value="pricing" title="Compare plans" href="#pricing" leading={ExternalLinkIcon} />
+      <ActionListItem value="close" title="Close account" intent="negative" leading={TrashIcon} />
     </ActionListSection>
   </ActionList>
 </div>

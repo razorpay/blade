@@ -1,5 +1,5 @@
 /*
- * Blade's own scales, under Blade's own names: `opacity-blade-*`, `font-blade-*`.
+ * Blade's opacity scale, under Blade's own names: `opacity-blade-*`.
  * (The heading face is `font-heading`, shared with checkout: see fonts.css.)
  *
  * Kept out of uno.config.ts so they never share a name with a Tailwind
@@ -9,7 +9,7 @@
  * Plain classes, so no variants:
  * `hover:` or `data-[…]:` takes the Tailwind-named utilities (`opacity-0`).
  *
- * The values are blade-core's tokens (`opacity`, `typography.fonts`);
+ * The values are blade-core's tokens (`opacity`);
  * src-cx/test/blade-css.test.ts keeps them in step.
  */
 
@@ -30,13 +30,3 @@
 .opacity-blade-1100 { opacity: 0.88; }
 .opacity-blade-1200 { opacity: 0.94; }
 .opacity-blade-1300 { opacity: 1; }
-
-/* font weight */
-.font-blade-regular { font-weight: 400; }
-.font-blade-medium { font-weight: 500; }
-.font-blade-semibold { font-weight: 600; }
-.font-blade-bold { font-weight: 700; }
-
-/* font family */
-.font-blade-text { font-family: "Inter", "Inter Fallback Arial", Arial; }
-.font-blade-code { font-family: "Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace; }

@@ -92,7 +92,7 @@ export interface ButtonStyleProps {
 // shadows in uno.config.ts; focus draws the highlighted frame under Blade's
 // 4px ring as one box-shadow. Width is the caller's (`class="w-full"`).
 const ROOT =
-  'group relative inline-flex items-center justify-center overflow-hidden border-none font-blade-text font-blade-semibold no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
+  'group relative inline-flex items-center justify-center overflow-hidden border-none font-sans font-semibold no-underline [transition-property:background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed';
 // The content presses to 95% (Blade's AnimatedButtonContent); positioned,
 // it paints over the sheen.
 const CONTENT =

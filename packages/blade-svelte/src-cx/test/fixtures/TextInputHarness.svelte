@@ -84,16 +84,14 @@
   {maxCharacters}
   {prefix}
   {suffix}
-  {leadingIcon}
-  {trailingIcon}
   {size}
   {showClearButton}
-  leading={withLeadingSnippet ? picker : undefined}
+  leading={withLeadingSnippet ? picker : leadingIcon}
   {type}
   {inputMode}
   {enterKeyHint}
   {autoComplete}
-  trailing={withTrailingSnippet ? clear : undefined}
+  trailing={withTrailingSnippet ? clear : trailingIcon}
   class={className}
   testID="solo"
 />

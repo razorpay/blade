@@ -102,11 +102,11 @@ describe('ChipGroup', () => {
   });
 
   it.each([
-    ['xsmall', 'font-blade-text font-blade-regular text-75 leading-75'],
-    ['small', 'font-blade-text font-blade-regular text-100 leading-100'],
-    ['medium', 'font-blade-text font-blade-regular text-200 leading-200'],
+    ['xsmall', 'font-sans font-normal text-75 leading-75'],
+    ['small', 'font-sans font-normal text-100 leading-100'],
+    ['medium', 'font-sans font-normal text-200 leading-200'],
     // Figma's _Chip sets the large label in Heading/MediumRegular, 20/26.
-    ['large', 'font-heading font-blade-regular text-400 leading-400 tracking-100'],
+    ['large', 'font-heading font-normal text-400 leading-400 tracking-100'],
   ] as const)('%s: the label in Figma\'s type, on one unbroken row', (size, type) => {
     const classes = resolveChip(size, 'unchecked', 'primary');
     expect(classes.text).toContain(type);

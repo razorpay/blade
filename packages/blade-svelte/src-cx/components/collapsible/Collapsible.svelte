@@ -23,9 +23,9 @@
      * `aria-expanded` and `aria-controls`. Put a CollapsibleChevron in it
      * for Blade's CollapsibleLink look.
      */
-    trigger: Snippet<[{ isExpanded: boolean }]>;
-    /** The body. */
-    children: Snippet;
+    children: Snippet<[{ isExpanded: boolean }]>;
+    /** The body: what the trigger reveals. */
+    content: Snippet;
     testID?: string;
     class?: string;
   }
@@ -34,8 +34,8 @@
     isExpanded = $bindable(false),
     onExpandChange,
     direction = 'bottom',
-    trigger,
     children,
+    content,
     testID,
     class: className = '',
   }: Props = $props();
@@ -57,12 +57,12 @@
 <div class={cx(classes.root[direction], className)} data-testid={testID}>
   <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
   <span class={classes.trigger} onclick={collapsible.toggle} {@attach collapsible.trigger}>
-    {@render trigger({ isExpanded: collapsible.isExpanded })}
+    {@render children({ isExpanded: collapsible.isExpanded })}
   </span>
   {#if collapsible.isExpanded}
     <CollapsePanel id={collapsible.bodyId} duration={280} scrollIntoView={false}>
       <div class={classes.body[direction]}>
-        {@render children()}
+        {@render content()}
       </div>
     </CollapsePanel>
   {/if}

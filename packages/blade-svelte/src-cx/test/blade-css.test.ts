@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { createGenerator } from 'unocss';
 import { opacity, typography } from '@razorpay/blade-core/tokens';
+import defaultUnoConfig, { bladeUnoConfig } from '../../uno.config';
 
 /** src-cx/blade.css is written out by hand; blade-core's tokens are the source. */
 const css = readFileSync(join(__dirname, '../blade.css'), 'utf8');
@@ -23,26 +25,9 @@ function declarations(className: string): Record<string, string> {
 }
 
 describe('blade.css', () => {
-  const { weight, family } = typography.onDesktop.fonts;
-
   it('carries the whole opacity scale', () => {
     for (const [step, value] of Object.entries(opacity)) {
       expect(declarations(`opacity-blade-${step}`)).toEqual({ opacity: String(value) });
-    }
-  });
-
-  it('carries every font weight', () => {
-    for (const [name, value] of Object.entries(weight)) {
-      expect(declarations(`font-blade-${name}`)).toEqual({ 'font-weight': String(value) });
-    }
-  });
-
-  // The heading face is `font-heading` (uno.config.ts, fonts.css), shared with checkout.
-  const families = Object.entries(family).filter(([name]) => name !== 'heading');
-
-  it('carries the text and code families', () => {
-    for (const [name, value] of families) {
-      expect(declarations(`font-blade-${name}`)).toEqual({ 'font-family': String(value) });
     }
   });
 
@@ -51,9 +36,50 @@ describe('blade.css', () => {
     expect(names.sort()).toEqual(
       [
         ...Object.keys(opacity).map((step) => `opacity-blade-${step}`),
-        ...Object.keys(weight).map((name) => `font-blade-${name}`),
-        ...families.map(([name]) => `font-blade-${name}`),
       ].sort(),
     );
+  });
+});
+
+describe('font utilities', () => {
+  const { weight, family } = typography.onDesktop.fonts;
+
+  // Tailwind's names, Blade's values (uno.config.ts).
+  it.each([
+    ['font-normal', { 'font-weight': String(weight.regular) }],
+    ['font-medium', { 'font-weight': String(weight.medium) }],
+    ['font-semibold', { 'font-weight': String(weight.semibold) }],
+    ['font-bold', { 'font-weight': String(weight.bold) }],
+    ['font-sans', { 'font-family': family.text }],
+    ['font-mono', { 'font-family': family.code }],
+  ])('%s carries blade-core\'s token', async (name, expected) => {
+    const uno = await createGenerator(defaultUnoConfig);
+    const { css: out } = await uno.generate(name, { preflights: false });
+    const [property, value] = Object.entries(expected)[0];
+    expect(out).toContain(`.${name}{${property}:${value};}`);
+  });
+
+  async function cssFor(name: string, theme: Parameters<typeof bladeUnoConfig>[0]): Promise<string> {
+    const uno = await createGenerator(bladeUnoConfig(theme));
+    return (await uno.generate(name, { preflights: false })).css;
+  }
+
+  it("gives way to an app theme that sets the key: a merchant's body font", async () => {
+    const theme = {
+      theme: {
+        fontFamily: { sans: ['var(--body-font, Inter)'] },
+        extend: { fontWeight: { medium: 'var(--font-weight, 500)' } },
+      },
+    };
+    expect(await cssFor('font-sans', theme)).toContain('font-family:var(--body-font, Inter)');
+    expect(await cssFor('font-medium', theme)).toContain('font-weight:var(--font-weight, 500)');
+    // Keys the app leaves alone stay Blade's.
+    expect(await cssFor('font-mono', theme)).toContain(`font-family:${family.code}`);
+  });
+
+  it("keeps Blade's values over Tailwind's defaults when the app theme does not set them", async () => {
+    const theme = { theme: { colors: { brand: '#123456' } } };
+    expect(await cssFor('font-sans', theme)).toContain(`font-family:${family.text}`);
+    expect(await cssFor('font-semibold', theme)).toContain(`font-weight:${weight.semibold}`);
   });
 });

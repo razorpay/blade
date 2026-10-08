@@ -87,6 +87,6 @@ export function resolveCounter(props: CounterStyleProps = {}): CounterClasses {
     pill: `flex w-fit flex-nowrap items-center justify-center rounded-max max-w-[100px] d:max-w-[120px] ${look.pill} ${FILL[color][emphasis]}`,
     content: 'flex flex-row items-center justify-center overflow-hidden',
     wide: look.wide,
-    text: `truncate text-center font-blade-text font-blade-medium tracking-50 ${look.text}`,
+    text: `truncate text-center font-sans font-medium tracking-50 ${look.text}`,
   };
 }

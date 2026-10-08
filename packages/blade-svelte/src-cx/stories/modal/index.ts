@@ -27,8 +27,20 @@ const meta: StoryMeta = {
         closeLabel: 'Close',
         title: 'Remove this card?',
         withChrome: false,
+        leading: 'none',
+        showBackButton: false,
       },
       argTypes: {
+        showBackButton: {
+          control: 'boolean',
+          description: 'A back button first in the header; pressing it fires `onBackButtonClick`, not a dismissal',
+        },
+        leading: {
+          control: 'select',
+          options: ['none', 'icon', 'snippet'],
+          description:
+            'Fills `leading`: an icon (a glyph on the title line) or a snippet (an asset in the 32px slot)',
+        },
         withChrome: {
           control: 'boolean',
           description:
@@ -55,6 +67,12 @@ const meta: StoryMeta = {
         },
       },
       args: { isDismissible: true, variant: 'sheet', isDraggable: true },
+    },
+    BottomSheetSteps: {
+      name: 'Back button',
+      description:
+        'A two-step sheet: `showBackButton` on step 2, and `onBackButtonClick` returns to step 1. The back button is not a dismissal.',
+      argTypes: {},
     },
     Drawer: {
       name: 'Drawer',

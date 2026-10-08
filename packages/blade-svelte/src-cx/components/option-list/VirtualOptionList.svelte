@@ -33,11 +33,12 @@
     /** Enables typeahead: the text a typed prefix is matched against. */
     optionText?: (option: T) => string;
     /**
-     * The pick — an array of picks with `isMultiple`: the initial one, a
+     * The pick — an array of picks with `selectionType="multiple"`: the initial one, a
      * `bind:value`, or a value the host keeps driving.
      */
     value?: T | readonly T[] | null;
-    isMultiple?: boolean;
+    /** `multiple`: checkboxes instead of radios; the value is an array. @default 'single' */
+    selectionType?: 'single' | 'multiple';
     onChange?: (change: FieldChange<T | readonly T[] | null>) => void;
     /** Defaults to identity; pass it when options are rebuilt objects. */
     compare?: (a: T, b: T) => boolean;
@@ -75,7 +76,7 @@
     isOptionDisabled,
     optionText,
     value = $bindable(),
-    isMultiple = false,
+    selectionType = 'single',
     onChange,
     compare,
     isDeselectable = false,
@@ -96,6 +97,7 @@
 
   const style = useComponentDefaults('OptionList', () => styleProps);
 
+  const isMultiple = $derived(selectionType === 'multiple');
   const uid = $props.id();
   const lineText = $derived(
     pickHintText({ validationState, helpText, errorText })

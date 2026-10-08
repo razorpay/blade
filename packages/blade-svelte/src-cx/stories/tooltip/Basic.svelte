@@ -23,11 +23,9 @@
       log = [`${stamp()} onOpenChange ${isOpen}`, ...log].slice(0, 8);
     }}
   >
-    {#snippet trigger()}
-      <Button variant="secondary" type="button" testID="trigger">Convenience fee</Button>
-    {/snippet}
+    <Button variant="secondary" type="button" testID="trigger">Convenience fee</Button>
   </Tooltip>
-  <ul class="font-blade-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
+  <ul class="font-mono grid gap-1 text-25 leading-50 text-surface-gray-subtle">
     {#each log as line (line)}
       <li>{line}</li>
     {:else}

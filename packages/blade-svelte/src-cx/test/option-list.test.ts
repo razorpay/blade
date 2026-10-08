@@ -322,7 +322,8 @@ describe('OptionList with a look of its own (classes)', async () => {
     expect(resolveOptionList({}).options).toContain('rounded-small border-thin');
     expect(resolveOptionList({}).control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
     expect(resolveActionList().control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
-    expect(resolveActionList().options).toBe('flex flex-col gap-0.5');
+    // Figma's _Action List: rows touching.
+    expect(resolveActionList().options).toBe('flex flex-col');
   });
 });
 

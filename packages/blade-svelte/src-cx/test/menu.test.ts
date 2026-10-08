@@ -41,7 +41,7 @@ describe('MenuItem', () => {
   });
 
   it('a leading glyph is 16px on the 20px line', () => {
-    const { getByRole } = render(MenuItem, { props: { title: 'Help', icon: InfoIcon } });
+    const { getByRole } = render(MenuItem, { props: { title: 'Help', leading: InfoIcon } });
     const box = getByRole('menuitem').firstElementChild as HTMLElement;
     expectClass(box, 'h-5');
     expectClass(box.firstElementChild as HTMLElement, 'w-4 h-4');

@@ -5,7 +5,7 @@
 </script>
 
 <TextInput label="GSTIN" necessityIndicator="required" testID="gstin">
-  {#snippet labelArea({ label })}
+  {#snippet labelRow({ label })}
     {@render label()}
     <button type="button" aria-label="About GSTIN">i</button>
     <a href="#learn" class="ms-auto">Learn more</a>
@@ -16,14 +16,14 @@
 </TextInput>
 
 <CounterInput label="Guests" testID="guests">
-  {#snippet labelArea({ label })}
+  {#snippet labelRow({ label })}
     {@render label()}
     <span data-testid="guests-extra">max 4</span>
   {/snippet}
 </CounterInput>
 
 <InputGroup label="Card" testID="card">
-  {#snippet labelArea({ label })}
+  {#snippet labelRow({ label })}
     {@render label()}
     <span data-testid="card-extra">Secure</span>
   {/snippet}

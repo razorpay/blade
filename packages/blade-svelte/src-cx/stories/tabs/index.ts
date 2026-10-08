@@ -4,7 +4,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Tabs',
   description:
-    "Blade's Tabs, composed: TabItems in the `tabs` snippet (Blade's TabList), TabPanels as children. One tab always picked, one tab stop, arrows that move and (by default) pick, wrapping past the ends and skipping disabled tabs; the indicator slides to the pick.",
+    "Blade's Tabs, composed: TabItems in the `tabList` snippet (Blade's TabList), TabPanels as children. One tab always picked, one tab stop, arrows that move and (by default) pick, wrapping past the ends and skipping disabled tabs; the indicator slides to the pick.",
   argTypes: {
     variant: { control: 'select', options: TABS_AXES.variant },
     size: { control: 'select', options: TABS_AXES.size },

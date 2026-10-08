@@ -9,10 +9,10 @@
 
 <main>
   <Popover accessibilityLabel="Fee details" testID="panel">
-    {#snippet trigger()}<button type="button">Fees</button>{/snippet}
-    {#snippet children()}
+    <button type="button">Fees</button>
+    {#snippet content()}
       <Tooltip content="Charged by your bank" testID="tip">
-        {#snippet trigger()}<button type="button" data-testid="tip-trigger">Why?</button>{/snippet}
+        <button type="button" data-testid="tip-trigger">Why?</button>
       </Tooltip>
     {/snippet}
   </Popover>

@@ -5,7 +5,7 @@
 </script>
 
 <div class="grid max-w-80 gap-3">
-  <ActionList bind:value isMultiple label="Notify me by">
+  <ActionList bind:value selectionType="multiple" label="Notify me by">
     <ActionListItem value="email" title="Email" />
     <ActionListItem value="sms" title="SMS" />
     <ActionListItem value="whatsapp" title="WhatsApp">

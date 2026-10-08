@@ -15,7 +15,7 @@ describe('Breadcrumb', () => {
     const current = getByTestId('current');
     expect(current.tagName).toBe('SPAN');
     expect(current.closest('li')!.getAttribute('aria-current')).toBe('page');
-    expect(current.className).toContain('font-blade-medium text-100 leading-100');
+    expect(current.className).toContain('font-medium text-100 leading-100');
   });
 
   it('links between slashes, none after the last; an icon-only item is named', () => {

@@ -1,5 +1,6 @@
 import type { Placement, PlacementSide } from '../../runes/layer/placement';
 import { NATIVE_PLACEMENT } from '../tooltip/styles';
+import { resolveText } from '../shared/typography';
 
 /**
  * The parts of a floating panel. On web the panel is measured and placed by
@@ -37,6 +38,8 @@ export interface PopoverContentClasses {
   /** The title's leading item and the title, 8px apart, 12px before the close. */
   titleRow: string;
   title: string;
+  /** A string `content`: Blade's small body text. */
+  text: string;
   /** The close button beside the title. */
   close: string;
   /** With no title, the close button floats in the panel's corner. */
@@ -94,7 +97,8 @@ export const resolvePopover = (_props: PopoverStyleProps = {}): PopoverLook => (
     header: 'flex items-center gap-3',
     titleRow: 'flex min-w-0 items-center gap-2 pr-3',
     title:
-      'm-0 font-blade-text font-blade-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+      'm-0 font-sans font-semibold text-200 leading-200 tracking-25 text-surface-gray-normal',
+    text: resolveText({ size: 'small' }),
     close: `ms-auto ${CLOSE}`,
     floatingClose: `absolute top-3 right-3 z-1 rounded-max p-2 ${CLOSE}`,
   },

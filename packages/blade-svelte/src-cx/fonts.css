@@ -22,11 +22,11 @@
 }
 
 /*
- * The text face, for `font-blade-text` (src-cx/blade.css) and an app's own
+ * The text face, for `font-sans` (uno.config.ts) and an app's own
  * `Inter` (checkout's `font-sans`): Inter Regular, Medium and SemiBold —
  * blade-core's variable Inter pinned at wght 400 / 500 / 600, the cuts
  * checkout ships, glyph for glyph (Inter 3.019), ~7 KB each. The same
- * characters as the heading face, ₹ in every weight. Bold (`font-blade-bold`)
+ * characters as the heading face, ₹ in every weight. Bold (`font-bold`)
  * is synthesised from SemiBold.
  */
 @font-face {

@@ -16,12 +16,14 @@
 </script>
 
 <Collapsible bind:isExpanded {direction} {onExpandChange} testID="collapsible">
-  {#snippet trigger({ isExpanded })}
+  {#snippet children({ isExpanded })}
     <Link variant="button" testID="trigger">
       View Price Breakdown<CollapsibleChevron />
     </Link>
     <output data-testid="trigger-state">{isExpanded}</output>
   {/snippet}
-  <p>Actual amount</p>
+  {#snippet content()}
+    <p>Actual amount</p>
+  {/snippet}
 </Collapsible>
 <p data-testid="bound">{isExpanded}</p>

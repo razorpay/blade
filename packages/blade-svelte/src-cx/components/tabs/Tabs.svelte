@@ -22,8 +22,8 @@
     accessibilityLabel?: string;
     testID?: string;
     class?: string;
-    /** The TabItems (Blade's TabList). */
-    tabs: Snippet;
+    /** The TabItems, as Blade's TabList. */
+    tabList: Snippet;
     /** The TabPanels, and anything else under or beside the tabs. */
     children?: Snippet;
   };
@@ -36,7 +36,7 @@
     accessibilityLabel,
     testID,
     class: className = '',
-    tabs,
+    tabList,
     children,
     ...styleProps
   }: Props = $props();
@@ -46,7 +46,7 @@
   const uid = $props.id();
   const classes = $derived(resolveTabs(style.current));
 
-  const tablist = createTabs<TabsClasses>({
+  const group = createTabs<TabsClasses>({
     id: uid,
     value: () => value,
     onValue: (next) => {
@@ -57,19 +57,19 @@
     isLazy: () => isLazy,
     shared: () => classes,
   });
-  provideTabs(tablist);
-  const indicator = $derived(tablist.indicator);
+  provideTabs(group);
+  const indicator = $derived(group.indicator);
 </script>
 
 <div class={cx(classes.root, className)} data-testid={testID}>
-  <div class={classes.listBox} {@attach tablist.attachList}>
+  <div class={classes.listBox} {@attach group.attachList}>
     <div
       role="tablist"
       class={classes.list}
       aria-label={accessibilityLabel}
       aria-orientation={style.current.orientation === 'vertical' ? 'vertical' : undefined}
     >
-      {@render tabs()}
+      {@render tabList()}
     </div>
     {#if classes.indicator && indicator}
       <span

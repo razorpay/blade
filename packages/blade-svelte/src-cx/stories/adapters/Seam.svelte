@@ -38,12 +38,12 @@
     {#each FIELDS as name (name)}
       <TextInput {name} label={name} isRequired={name !== 'landmark'} />
     {/each}
-    <Button loadingAnnouncement="Saving">Save address</Button>
+    <Button type="submit" loadingAnnouncement="Saving">Save address</Button>
   </Form>
 
   <section class="grid [align-content:start] gap-2">
-    <h2 class="text-75 leading-50 font-blade-medium">Adapter log</h2>
-    <ul class="font-blade-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
+    <h2 class="text-75 leading-50 font-medium">Adapter log</h2>
+    <ul class="font-mono grid gap-1 text-25 leading-50 text-surface-gray-subtle">
       {#each log as line (line)}
         <li>{line}</li>
       {:else}

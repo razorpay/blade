@@ -8,15 +8,17 @@
 </script>
 
 <div class="relative flex h-[26rem] max-w-sm flex-col gap-3 p-2">
-  <Dropdown bind:value isMultiple label="Status" placeholder="Any status" testID="dropdown">
+  <Dropdown bind:value selectionType="multiple" label="Status" placeholder="Any status" testID="dropdown">
     {#snippet header()}
       <DropdownHeader title="Filter by status" />
     {/snippet}
-    <ActionList>
-      {#each STATUSES as status (status)}
-        <ActionListItem value={status.toLowerCase()} title={status} />
-      {/each}
-    </ActionList>
+    {#snippet content()}
+      <ActionList>
+        {#each STATUSES as status (status)}
+          <ActionListItem value={status.toLowerCase()} title={status} />
+        {/each}
+      </ActionList>
+    {/snippet}
     {#snippet footer({ close })}
       <DropdownFooter>
         <Button variant="secondary" size="small" onClick={() => (value = [])}>Clear</Button>

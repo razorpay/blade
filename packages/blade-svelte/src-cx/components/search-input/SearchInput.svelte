@@ -13,7 +13,7 @@
     TextInputProps,
     | 'label'
     | 'accessibilityLabel'
-    | 'labelArea'
+    | 'labelRow'
     | 'value'
     | 'placeholder'
     | 'onChange'
@@ -52,5 +52,5 @@
   role="searchbox"
   enterKeyHint="search"
   showClearButton
-  leadingIcon={showSearchIcon ? SearchIcon : undefined}
+  leading={showSearchIcon ? SearchIcon : undefined}
 />

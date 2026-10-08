@@ -23,7 +23,7 @@
     captureError?: (error: unknown) => void;
     /** The app's defaults: the picker's Modal follows them. */
     defaults?: ComponentDefaults;
-    trailingIcon?: import('../../runes/icon/source').IconSource;
+    trailing?: import('../../runes/icon/source').IconSource;
     size?: 'medium' | 'large';
   }
 
@@ -41,7 +41,7 @@
     withStack = true,
     captureError,
     defaults,
-    trailingIcon,
+    trailing,
     size,
   }: Props = $props();
 
@@ -86,7 +86,7 @@
     closeLabel="Close"
     emptyText="No country found"
     testID="phone"
-    {trailingIcon}
+    {trailing}
     {size}
   />
   <button type="submit" data-testid="submit">Pay</button>

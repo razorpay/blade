@@ -17,7 +17,7 @@ describe('AnnouncementBanner', () => {
     expect(banner.className).toContain('justify-center');
     const message = banner.lastElementChild!;
     expect(message.textContent).toBe('Zero setup fees');
-    expect(message.className).toContain('text-75 [line-height:1.125rem] font-blade-medium');
+    expect(message.className).toContain('text-75 [line-height:1.125rem] font-medium');
     expect(message.className).toContain('clamp-1');
   });
 

@@ -11,11 +11,13 @@
   interface Props {
     /** What the chip stands for in the ChipGroup's value. */
     value: string;
-    /** The label; optional with an `icon` or `leading`. Receives the chip's state. */
+    /** The label; optional with a `leading`. Receives the chip's state. */
     children?: Snippet<[ControlState]>;
-    icon?: IconSource;
-    /** Ahead of the label in place of an `icon`: an Avatar, a flag. Receives the chip's state. */
-    leading?: Snippet<[ControlState]>;
+    /**
+     * Ahead of the label: an icon, or a snippet with an Avatar or a flag,
+     * which receives the chip's state.
+     */
+    leading?: IconSource | Snippet<[ControlState]>;
     /** Picked colour; the group's when omitted. */
     color?: ChipColor;
     /** @default the group's */
@@ -27,7 +29,6 @@
   let {
     value,
     children,
-    icon,
     leading,
     color,
     isDisabled,
@@ -89,10 +90,10 @@
     />
     <span class={cx(classes.frame, chip.isPressed && classes.framePressed)}>
       <span class={classes.inner}>
-        {#if icon}
-          <span class={classes.icon}><Icon source={icon} size={classes.iconSize} /></span>
-        {:else if leading}
+        {#if typeof leading === 'function'}
           <span class="flex items-center">{@render leading(controlState)}</span>
+        {:else if leading}
+          <span class={classes.icon}><Icon source={leading} size={classes.iconSize} /></span>
         {/if}
         {#if children}
           <span class={classes.text}>{@render children(controlState)}</span>
