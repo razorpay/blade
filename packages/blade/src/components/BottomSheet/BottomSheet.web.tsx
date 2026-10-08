@@ -77,6 +77,7 @@ const _BottomSheet = ({
   snapPoints = [0.35, 0.5, 0.85],
   isDismissible = true,
   zIndex = componentZIndices.bottomSheet,
+  showDragHandle = true,
   ...dataAnalyticsProps
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -532,12 +533,14 @@ const _BottomSheet = ({
         {...makeAnalyticsAttribute(dataAnalyticsProps)}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetGrabHandle
-            ref={grabHandleRef}
-            isHeaderFloating={isHeaderFloating}
-            {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
-            {...bind()}
-          />
+          {showDragHandle ? (
+            <BottomSheetGrabHandle
+              ref={grabHandleRef}
+              isHeaderFloating={isHeaderFloating}
+              {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
+              {...bind()}
+            />
+          ) : null}
           {children}
         </BaseBox>
       </BottomSheetSurface>
