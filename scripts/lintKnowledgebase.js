@@ -1,4 +1,10 @@
 /* eslint-disable no-control-regex */
+const targetIndex = process.argv.indexOf('--target');
+if (targetIndex !== -1 && process.argv[targetIndex + 1] === 'svelte') {
+  // Runs synchronously and calls process.exit, so the React lint below never runs.
+  require('./lintKnowledgebaseSvelte');
+}
+
 const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');

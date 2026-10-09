@@ -1,7 +1,7 @@
 // Structural checks for the blade plugin that run in CI without Claude Code:
 // manifests parse and agree on name/version, every skill has valid frontmatter,
-// the package.json version matches the manifests, and the SKILL.md docs the
-// main skill promises actually exist.
+// the package.json version matches the manifests, and each knowledgebase
+// skill (blade, blade-svelte) lists exactly the component docs on disk.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -66,33 +66,30 @@ for (const skill of skillNames) {
   if (content.split('\n').length > 500) errors.push(`skills/${skill}/SKILL.md over 500 lines`);
 }
 
-const mainSkill = fs.readFileSync(path.join(skillsDir, 'blade', 'SKILL.md'), 'utf8');
-const versionLine = mainSkill.match(/version: '([^']+)'/);
-if (!versionLine || versionLine[1] !== pkg.version) {
-  errors.push(`skills/blade/SKILL.md metadata.version must be '${pkg.version}'`);
-}
-
-const refs = path.join(skillsDir, 'blade', 'references');
-for (const required of [
-  'components/index.md',
-  'patterns/index.md',
-  'general/index.md',
-  'styled-props-types.md',
-  'common-utility-types.md',
-  'upgrade.md',
-  'new-project.md',
-  'figma-to-code.md',
-]) {
-  if (!fs.existsSync(path.join(refs, required))) errors.push(`references/${required} missing`);
-}
+// Knowledgebase skills: one per framework. Each is self-contained because
+// `npx skills add` copies a single skill directory.
+const KNOWLEDGEBASE_SKILLS = {
+  blade: [
+    'components/index.md',
+    'patterns/index.md',
+    'general/index.md',
+    'styled-props-types.md',
+    'common-utility-types.md',
+    'upgrade.md',
+    'new-project.md',
+    'figma-to-code.md',
+  ],
+  'blade-svelte': ['components/index.md', 'general/index.md', 'general/Usage.md'],
+};
 
 // Published blade-mcp versions (HTTP transport) curl these from
 // packages/blade-mcp/skillTemplate/references on master, so that copy must exist
 // and match. Update both together.
+const bladeRefs = path.join(skillsDir, 'blade', 'references');
 const mcpRefs = path.join(root, '..', 'blade-mcp', 'skillTemplate', 'references');
 for (const file of ['styled-props-types.md', 'common-utility-types.md']) {
   const mcpFile = path.join(mcpRefs, file);
-  const pluginFile = path.join(refs, file);
+  const pluginFile = path.join(bladeRefs, file);
   if (!fs.existsSync(mcpFile)) {
     errors.push(`blade-mcp/skillTemplate/references/${file} missing (old MCP versions download it)`);
   } else if (
@@ -100,39 +97,74 @@ for (const file of ['styled-props-types.md', 'common-utility-types.md']) {
     fs.readFileSync(mcpFile, 'utf8') !== fs.readFileSync(pluginFile, 'utf8')
   ) {
     errors.push(
-      `references/${file} differs from blade-mcp/skillTemplate/references/${file}; update both`,
+      `skills/blade/references/${file} differs from blade-mcp/skillTemplate/references/${file}; update both`,
     );
   }
 }
 
-const listed = mainSkill.match(/## Available components\n\n([^\n]+)/);
-if (listed) {
-  for (const name of listed[1].split(',').map((s) => s.trim())) {
-    if (!fs.existsSync(path.join(refs, 'components', `${name}.md`))) {
-      errors.push(`SKILL.md lists ${name} but references/components/${name}.md is missing`);
+for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
+  const skillFile = path.join(skillsDir, skill, 'SKILL.md');
+  if (!fs.existsSync(skillFile)) {
+    errors.push(`knowledgebase skill skills/${skill} missing`);
+    continue;
+  }
+  const skillContent = fs.readFileSync(skillFile, 'utf8');
+  const versionLine = skillContent.match(/version: '([^']+)'/);
+  if (!versionLine || versionLine[1] !== pkg.version) {
+    errors.push(`skills/${skill}/SKILL.md metadata.version must be '${pkg.version}'`);
+  }
+
+  const refs = path.join(skillsDir, skill, 'references');
+  for (const required of requiredRefs) {
+    if (!fs.existsSync(path.join(refs, required)))
+      errors.push(`skills/${skill}/references/${required} missing`);
+  }
+
+  const componentsDir = path.join(refs, 'components');
+  const listed = skillContent.match(/## Available components\n\n([^\n]+)/);
+  if (!listed) {
+    errors.push(`skills/${skill}/SKILL.md needs an "## Available components" list`);
+    continue;
+  }
+  const listedNames = listed[1].split(',').map((s) => s.trim());
+  const onDisk = fs.existsSync(componentsDir)
+    ? fs
+        .readdirSync(componentsDir)
+        .filter((f) => f.endsWith('.md') && f !== 'index.md')
+        .map((f) => f.replace(/\.md$/, ''))
+    : [];
+  const indexContent = fs.existsSync(path.join(componentsDir, 'index.md'))
+    ? fs.readFileSync(path.join(componentsDir, 'index.md'), 'utf8')
+    : '';
+  for (const name of listedNames) {
+    if (!onDisk.includes(name)) {
+      errors.push(
+        `skills/${skill}/SKILL.md lists ${name} but references/components/${name}.md is missing`,
+      );
     }
   }
-  const onDisk = fs
-    .readdirSync(path.join(refs, 'components'))
-    .filter((f) => f.endsWith('.md') && f !== 'index.md')
-    .map((f) => f.replace(/\.md$/, ''));
-  const listedSet = new Set(listed[1].split(',').map((s) => s.trim()));
   for (const name of onDisk) {
-    if (!listedSet.has(name))
-      errors.push(`references/components/${name}.md exists but SKILL.md does not list it`);
+    if (!listedNames.includes(name)) {
+      errors.push(
+        `skills/${skill}/references/components/${name}.md exists but SKILL.md does not list it`,
+      );
+    }
+    if (!indexContent.includes(`**${name}**`)) {
+      errors.push(`skills/${skill}/references/components/index.md has no line for ${name}`);
+    }
   }
 }
 
-// Skills are installed one directory at a time, so each skill script keeps its
-// own copy of the analytics helper. The copies must not drift.
-const analyticsCopies = skillNames
-  .map((skill) => path.join(skillsDir, skill, 'scripts', 'analytics.mjs'))
-  .filter((file) => fs.existsSync(file));
-for (const file of analyticsCopies.slice(1)) {
-  if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(analyticsCopies[0], 'utf8')) {
-    errors.push(
-      `${path.relative(root, file)} differs from ${path.relative(root, analyticsCopies[0])}`,
-    );
+// Skills are installed one directory at a time, so each skill keeps its own
+// copy of shared scripts. The copies must not drift.
+for (const shared of ['analytics.mjs', 'publish-metric.mjs']) {
+  const copies = skillNames
+    .map((skill) => path.join(skillsDir, skill, 'scripts', shared))
+    .filter((file) => fs.existsSync(file));
+  for (const file of copies.slice(1)) {
+    if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(copies[0], 'utf8')) {
+      errors.push(`${path.relative(root, file)} differs from ${path.relative(root, copies[0])}`);
+    }
   }
 }
 

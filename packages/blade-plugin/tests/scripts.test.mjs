@@ -47,7 +47,7 @@ const validArgs = {
   toolsUsed: ['blade:blade'],
 };
 
-test('publish-metric sends the MCP tool metric as a skill-usage event', async () => {
+test('publish-metric sends the MCP tool properties as a plugin event', async () => {
   const { code, stdout, events } = await run(metric, [JSON.stringify(validArgs)]);
   assert.equal(code, 0);
   assert.equal(
@@ -67,6 +67,7 @@ test('publish-metric sends the MCP tool metric as a skill-usage event', async ()
       userName: 'alice',
       rootDirectoryName: 'my-app',
       protocol: 'plugin',
+      framework: 'react',
       skillName: 'blade',
       toolName: 'publish_lines_of_code_metric',
       linesAddedTotal: 13,
@@ -82,6 +83,21 @@ test('publish-metric sends the MCP tool metric as a skill-usage event', async ()
       currentProjectRootDirectory: '/Users/alice/projects/my-app',
     },
   );
+});
+
+test('the blade-svelte copy of publish-metric reports framework svelte', async () => {
+  const { code, events } = await run('skills/blade-svelte/scripts/publish-metric.mjs', [
+    JSON.stringify({
+      ...validArgs,
+      files: [{ filePath: 'src/routes/Pay.svelte', linesAdded: 13, linesRemoved: 3 }],
+      toolsUsed: ['blade-svelte'],
+    }),
+  ]);
+  assert.equal(code, 0);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].event, 'Blade Plugin Tool Called');
+  assert.equal(events[0].properties.framework, 'svelte');
+  assert.equal(events[0].properties.toolsUsed, 'blade-svelte');
 });
 
 test('publish-metric reads JSON from stdin', async () => {
@@ -120,7 +136,7 @@ test('publish-metric rejects what the MCP schema rejects', async () => {
   }
 });
 
-test('figma-to-code keeps the screenshot name safe and sends the MCP event', async () => {
+test('figma-to-code keeps the screenshot name safe and sends the plugin event', async () => {
   const server = http.createServer((req, res) => {
     let body = '';
     req.on('data', (chunk) => (body += chunk));
@@ -139,11 +155,7 @@ test('figma-to-code keeps the screenshot name safe and sends the MCP event', asy
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const url = `http://127.0.0.1:${server.address().port}`;
   try {
-    const {
-      code,
-      stdout,
-      events,
-    } = await run(
+    const { code, stdout, events } = await run(
       'skills/blade/scripts/figma-to-code.mjs',
       ['../../escape', '12:345'],
       { env: { BLADE_FIGMA_TO_CODE_URL: url } },

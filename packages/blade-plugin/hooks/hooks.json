@@ -1,0 +1,16 @@
+{
+  "_comment": "Plain Node scripts with no dependencies. SessionStart detects which Blade packages the project uses and points the agent at the matching skill; it prints nothing in non-Blade projects.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.mjs\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

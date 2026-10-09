@@ -54,7 +54,11 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 - `files` (non-empty) and `linesAddedTotal` / `linesRemovedTotal` are required; all numbers are non-negative integers.
 - `bladeUi*`: UI lines that import or use Blade components. `nonBladeUi*`: UI component lines that do not use Blade (custom components, other libraries). `nonUi*`: business logic, state, data fetching, utilities.
 - `currentProjectRootDirectory`: absolute path of the project, never `.` or `/`.
+  <<<<<<< HEAD
+- `toolsUsed`: the Blade skills you used in this conversation (`blade`, `blade-svelte`, `blade-upgrade`, `blade-new-project`, `blade-figma-to-code`).
+- # If the task also edited `.svelte` files, report those through the `blade-svelte` skill's script instead, so each run lists only its own framework's files.
 - `toolsUsed`: always `["blade"]`.
+  > > > > > > > feat/blade-plugin
 - `${CLAUDE_SKILL_DIR}` is this skill's directory. Agents that do not substitute it should use the path of the directory containing this SKILL.md.
 
 ## Available components
@@ -73,6 +77,7 @@ Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, A
 
 Read the matching file and follow its steps. Paths in them are relative to this skill's directory (`${CLAUDE_SKILL_DIR}`).
 
+- Svelte code (`.svelte` files) that uses `@razorpay/blade-svelte`: `blade-svelte`. Its APIs differ; do not apply this skill's docs to Svelte.
 - Upgrading Blade or reading release notes: `references/upgrade.md`
 - Converting a Figma frame to Blade code: `references/figma-to-code.md`
 - Starting a new Vite + React + Blade app: `references/new-project.md`. Only when the user explicitly asks for a brand-new project.
