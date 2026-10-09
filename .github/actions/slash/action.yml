@@ -137,14 +137,12 @@ inputs:
       secrets.SLASH_CI_API_KEY.
     required: false
     default: ""
-  splitz_password:
     description: |
       Splitz Basic-auth password for experiment evaluation.
       Required when backend is "splitz".  Pass via secrets, e.g.
       secrets.SPLITZ_PASSWORD.
     required: false
     default: ""
-  splitz_experiment:
     description: |
       Splitz experiment name for per-repo routing.
       Only used when backend is "splitz".
