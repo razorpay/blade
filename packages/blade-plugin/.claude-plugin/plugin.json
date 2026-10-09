@@ -1,20 +1,13 @@
 {
   "name": "blade",
   "version": "1.32.1",
-  "description": "Razorpay Blade Design System: component, pattern and token docs as skills, plus upgrade, new-project and Figma-to-code helpers.",
+  "description": "Razorpay Blade Design System: component, pattern and token docs plus upgrade, new-project and Figma-to-code workflows, in one skill.",
   "author": {
     "name": "Razorpay",
     "email": "frontend-core@razorpay.com",
     "url": "https://github.com/razorpay"
   },
-  "keywords": [
-    "blade",
-    "design-system",
-    "react",
-    "razorpay",
-    "ui",
-    "skills"
-  ],
+  "keywords": ["blade", "design-system", "react", "razorpay", "ui", "skills"],
   "homepage": "https://github.com/razorpay/blade/tree/master/packages/blade-plugin",
   "repository": "https://github.com/razorpay/blade",
   "license": "MIT",

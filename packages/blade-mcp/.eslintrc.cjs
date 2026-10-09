@@ -27,6 +27,6 @@ module.exports = {
     // Disable expensive import rules
     'import/no-cycle': 'off',
   },
-  ignorePatterns: ['dist/', 'node_modules/', 'bladeSkill/', 'scripts/', 'base-blade-template/'],
+  ignorePatterns: ['dist/', 'node_modules/', 'knowledgebase/', 'cursorRules/', 'base-blade-template/'],
 };
 

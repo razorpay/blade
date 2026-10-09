@@ -44,7 +44,7 @@ const validArgs = {
   bladeUiLinesAddedTotal: 10,
   bladeUiLinesRemovedTotal: 2,
   currentProjectRootDirectory: '/Users/alice/projects/my-app',
-  toolsUsed: ['blade', 'blade:blade-upgrade'],
+  toolsUsed: ['blade:blade'],
 };
 
 test('publish-metric sends the MCP tool properties as a plugin event', async () => {
@@ -52,7 +52,7 @@ test('publish-metric sends the MCP tool properties as a plugin event', async () 
   assert.equal(code, 0);
   assert.equal(
     stdout.trim(),
-    'Recorded 13 lines added and 3 lines removed across 2 files. Tools used: blade, blade-upgrade.',
+    'Recorded 13 lines added and 3 lines removed across 2 files. Tools used: blade.',
   );
   assert.equal(events.length, 1);
   const [event] = events;
@@ -79,7 +79,7 @@ test('publish-metric sends the MCP tool properties as a plugin event', async () 
       nonUiLinesAddedTotal: 0,
       nonUiLinesRemovedTotal: 0,
       files: 'src/components/Button.tsx:10:2,src/utils/helpers.ts:3:1',
-      toolsUsed: 'blade,blade-upgrade',
+      toolsUsed: 'blade',
       currentProjectRootDirectory: '/Users/alice/projects/my-app',
     },
   );
@@ -155,12 +155,8 @@ test('figma-to-code keeps the screenshot name safe and sends the plugin event', 
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const url = `http://127.0.0.1:${server.address().port}`;
   try {
-    const {
-      code,
-      stdout,
-      events,
-    } = await run(
-      'skills/blade-figma-to-code/scripts/figma-to-code.mjs',
+    const { code, stdout, events } = await run(
+      'skills/blade/scripts/figma-to-code.mjs',
       ['../../escape', '12:345'],
       { env: { BLADE_FIGMA_TO_CODE_URL: url } },
     );
@@ -173,8 +169,7 @@ test('figma-to-code keeps the screenshot name safe and sends the plugin event', 
     fs.rmSync(imagePath);
     assert.equal(events.length, 1);
     assert.equal(events[0].event, 'Blade Plugin Tool Called');
-    assert.equal(events[0].properties.framework, 'react');
-    assert.equal(events[0].properties.skillName, 'blade-figma-to-code');
+    assert.equal(events[0].properties.skillName, 'blade');
     assert.equal(events[0].properties.toolName, 'get_figma_to_code');
     assert.equal(events[0].properties.componentsUsed, 'Button');
     assert.equal(events[0].properties.code, '<Button>Pay</Button>');

@@ -872,11 +872,7 @@ const PaymentMethodsAccordion = () => {
     </Box>
   );
 };
-\`\`\`
-
-
----
-Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.",
+\`\`\`",
       "type": "text",
     },
   ],
@@ -1755,11 +1751,7 @@ const PaymentMethodsAccordion = () => {
     </Box>
   );
 };
-\`\`\`
-
-
----
-Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.",
+\`\`\`",
       "type": "text",
     },
   ],
@@ -2638,11 +2630,7 @@ const PaymentMethodsAccordion = () => {
     </Box>
   );
 };
-\`\`\`
-
-
----
-Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.",
+\`\`\`",
       "type": "text",
     },
   ],

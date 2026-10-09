@@ -1,8 +1,4 @@
----
-name: blade-upgrade
-description: Summarise @razorpay/blade changelog entries for a version or version range. Use when upgrading Blade, asking what changed in a release, or checking the latest Blade version.
-allowed-tools: Bash(node *changelog.mjs*)
----
+# Upgrading Blade
 
 Fetches `packages/blade/CHANGELOG.md` from GitHub and prints only the requested versions. The full changelog is over 250KB, so never fetch or read it directly.
 
@@ -13,13 +9,13 @@ Fetches `packages/blade/CHANGELOG.md` from GitHub and prints only the requested 
    - "what changed in 12.3.0": `from` only.
    - "what changed between 12.0.0 and 12.5.0": `from` and `to`.
    - "what is the latest version": `from` = `latest`.
-2. Run the script from this skill's directory:
+2. Run the script:
 
 ```bash
-node <path-to-this-skill>/scripts/changelog.mjs <from> [to]
+node scripts/changelog.mjs <from> [to]
 ```
 
-   Examples: `node scripts/changelog.mjs 12.0.0 latest`, `node scripts/changelog.mjs latest`, `node scripts/changelog.mjs 12.3.0`.
+   Examples: `12.0.0 latest`, `latest`, `12.3.0`.
 
 3. Summarise the output in this format. Omit empty sections.
 

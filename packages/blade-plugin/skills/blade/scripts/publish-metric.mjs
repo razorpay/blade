@@ -9,14 +9,9 @@ import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';
 
 const toolName = 'publish_lines_of_code_metric';
 
-// The plugin's skills replace the MCP's tool names in `toolsUsed`.
-const bladeSkillNames = [
-  'blade',
-  'blade-svelte',
-  'blade-upgrade',
-  'blade-new-project',
-  'blade-figma-to-code',
-];
+// The skill name replaces the MCP's tool names in `toolsUsed`. Workflows are
+// tracked by the events their own scripts send, not here.
+const bladeToolNames = ['blade', 'blade-svelte'];
 
 const OPTIONAL_TOTALS = [
   'bladeUiLinesAddedTotal',
@@ -66,8 +61,8 @@ const validate = (input) => {
     if (!Array.isArray(input.toolsUsed)) problems.push('toolsUsed must be an array');
     else {
       for (const name of input.toolsUsed) {
-        if (!bladeSkillNames.includes(String(name).replace(/^blade:/, ''))) {
-          problems.push(`toolsUsed: "${name}" is not one of ${bladeSkillNames.join(', ')}`);
+        if (!bladeToolNames.includes(String(name).replace(/^blade:/, ''))) {
+          problems.push(`toolsUsed: "${name}" is not one of ${bladeToolNames.join(', ')}`);
         }
       }
     }

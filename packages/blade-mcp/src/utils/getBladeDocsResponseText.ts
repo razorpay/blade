@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { KNOWLEDGEBASE_DIRECTORY, PLUGIN_MIGRATION_NOTICE } from './tokens.js';
+import { KNOWLEDGEBASE_DIRECTORY } from './tokens.js';
 import type { DocumentationType } from './generalUtils.js';
 
 const getBladeDocsResponseText = ({
@@ -28,8 +28,6 @@ const getBladeDocsResponseText = ({
       responseText += `⚠️ Error: Could not read documentation for ${docName} in ${documentationType}. The documentation may not exist or there may be an issue with the file.\n\n`;
     }
   }
-
-  responseText += `---\n${PLUGIN_MIGRATION_NOTICE}\n`;
 
   return responseText;
 };

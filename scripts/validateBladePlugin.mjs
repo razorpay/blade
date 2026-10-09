@@ -6,7 +6,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'packages',
+  'blade-plugin',
+);
 const errors = [];
 
 const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8'));
@@ -70,9 +75,32 @@ const KNOWLEDGEBASE_SKILLS = {
     'general/index.md',
     'styled-props-types.md',
     'common-utility-types.md',
+    'upgrade.md',
+    'new-project.md',
+    'figma-to-code.md',
   ],
   'blade-svelte': ['components/index.md', 'general/index.md', 'general/Usage.md'],
 };
+
+// Published blade-mcp versions (HTTP transport) curl these from
+// packages/blade-mcp/skillTemplate/references on master, so that copy must exist
+// and match. Update both together.
+const bladeRefs = path.join(skillsDir, 'blade', 'references');
+const mcpRefs = path.join(root, '..', 'blade-mcp', 'skillTemplate', 'references');
+for (const file of ['styled-props-types.md', 'common-utility-types.md']) {
+  const mcpFile = path.join(mcpRefs, file);
+  const pluginFile = path.join(bladeRefs, file);
+  if (!fs.existsSync(mcpFile)) {
+    errors.push(`blade-mcp/skillTemplate/references/${file} missing (old MCP versions download it)`);
+  } else if (
+    fs.existsSync(pluginFile) &&
+    fs.readFileSync(mcpFile, 'utf8') !== fs.readFileSync(pluginFile, 'utf8')
+  ) {
+    errors.push(
+      `skills/blade/references/${file} differs from blade-mcp/skillTemplate/references/${file}; update both`,
+    );
+  }
+}
 
 for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
   const skillFile = path.join(skillsDir, skill, 'SKILL.md');

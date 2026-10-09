@@ -1,9 +1,4 @@
----
-name: blade-new-project
-description: Scaffold a new Vite + React + TypeScript app preconfigured with @razorpay/blade. Use when the user asks to create a brand-new Blade project in an empty directory.
-disable-model-invocation: true
-allowed-tools: Bash(npx degit *) Bash(npm install *) Bash(npm run dev*) Bash(ls *)
----
+# New Blade project
 
 Creates a new Blade app from the `base-blade-template` in the razorpay/blade repository.
 

@@ -6,6 +6,7 @@ on:
       - 'packages/blade-mcp/**'
       - 'packages/blade-plugin/**'
       - 'scripts/syncPluginManifestVersion.js'
+      - 'scripts/validateBladePlugin.mjs'
       - '.github/workflows/blade-mcp-validate.yml'
 
 permissions:
@@ -30,5 +31,10 @@ jobs:
         run: yarn validate:blade-plugin
       - name: Run Unit Tests
         run: yarn test
+        working-directory: packages/blade-mcp
+      - name: Check Knowledgebase Ships In Tarball
+        run: |
+          rm -rf knowledgebase
+          npm pack --dry-run 2>&1 | grep 'knowledgebase/components/Button.md'
         working-directory: packages/blade-mcp
 
