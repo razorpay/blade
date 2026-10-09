@@ -1,0 +1,19 @@
+.github/scripts/run-slash.js
+  s_b068f83afdb9c2::t_85386356ce9604 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "eb66fad5151187ad10ea6e62ce5320a559199a3c",
+  "prompts": {},
+  "sessions": {
+    "s_b068f83afdb9c2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fc0284d-f1c0-45d9-a86d-fdd830942881",
+        "model": "unknown"
+      },
+      "human_author": "Nehal Kumar Singh <nehalksingh@outlook.com>"
+    }
+  }
+}
