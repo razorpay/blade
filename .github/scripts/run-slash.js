@@ -1,4 +1,4 @@
-const backend = process.env.SLASH_BACKEND || 'swe-agent';
+const backend = process.env.SLASH_BACKEND || 'agent-platform';
 
 // Agent-platform path
 const apBaseUrl = 'https://slash.razorpay.com';
