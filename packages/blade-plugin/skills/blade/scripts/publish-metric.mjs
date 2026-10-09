@@ -2,7 +2,7 @@
 // (packages/blade-mcp/src/tools/publishLinesOfCodeMetric.ts). Same arguments,
 // validation, properties and response text; the numbers are reported by the
 // agent. The blade and blade-svelte skills keep identical copies of this file
-// (scripts/validatePlugin.mjs fails if they differ).
+// (scripts/validateBladePlugin.mjs (repo root) fails if they differ).
 //
 // Usage: node publish-metric.mjs '<json>'   (or pipe the JSON on stdin)
 import { analyticsToolCallEventName, sendAnalytics } from './analytics.mjs';

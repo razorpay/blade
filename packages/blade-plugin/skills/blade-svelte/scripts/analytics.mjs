@@ -6,7 +6,7 @@
 //
 // Each skill that ships a script keeps an identical copy of this file, because
 // `npx skills add` installs one skill directory on its own.
-// scripts/validatePlugin.mjs fails if the copies differ.
+// scripts/validateBladePlugin.mjs (repo root) fails if the copies differ.
 //
 // Events are sent only when BLADE_SEGMENT_KEY is set (the MCP inlines it at
 // build time; plugins have no build step). BLADE_PLUGIN_DEBUG=1 prints each
@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 export const analyticsToolCallEventName = 'Blade Plugin Tool Called';
 
 const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
-// The skill this copy belongs to, e.g. 'blade' or 'blade-upgrade'.
+// The skill this script belongs to ('blade').
 const skillName = path.basename(path.dirname(scriptsDir));
 
 const framework = skillName === 'blade-svelte' ? 'svelte' : 'react';
