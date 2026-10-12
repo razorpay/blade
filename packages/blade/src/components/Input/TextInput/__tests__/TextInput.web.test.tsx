@@ -785,3 +785,149 @@ describe('<TextInput />', () => {
     });
   });
 });
+
+// ─── Formatted TextInput — controlled value sync ───────────────────────────────
+// Reproduces the checkout AddNewCard scenario: parent strips non-digits in
+// onChange and feeds the cleaned value back via `value`.
+const ControlledCardInput = (): ReactElement => {
+  const onlyDigits = (v: string): string => v.replace(/\D/g, '');
+  const [value, setValue] = useState<string>('');
+  return (
+    <>
+      <Button onClick={() => setValue('378282246310005')}>prefill</Button>
+      <Button onClick={() => setValue('')}>reset</Button>
+      <TextInput
+        label="Card"
+        format="#### #### #### ####"
+        value={value}
+        onChange={({ rawValue }) => setValue(onlyDigits(rawValue ?? ''))}
+      />
+    </>
+  );
+};
+
+describe('<TextInput /> formatted + controlled value', () => {
+  it('reflects consumer sanitisation (letters stripped) on screen', async () => {
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111abcd2222');
+    // Letters must be stripped; digits formatted, no trailing delimiter.
+    expect(input).toHaveValue('4111 2222');
+  });
+
+  it('rejects letters even when the sanitised value is unchanged', async () => {
+    // Typing letters after "1234" leaves the same stored value, so the `value`
+    // prop reference is identical. The display must still snap back to digits.
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '1234');
+    expect(input).toHaveValue('1234');
+
+    await userEvent.type(input, 'abc');
+    expect(input).toHaveValue('1234');
+
+    await userEvent.type(input, '1');
+    expect(input).toHaveValue('1234 1');
+  });
+
+  it('reflects programmatic prefill after mount', async () => {
+    const { getByLabelText, getByRole } = renderWithTheme(<ControlledCardInput />);
+    await userEvent.click(getByRole('button', { name: 'prefill' }));
+    expect(getByLabelText('Card')).toHaveValue('3782 8224 6310 005');
+  });
+
+  it('clears the field on programmatic reset', async () => {
+    const { getByLabelText, getByRole } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111');
+    expect(input).toHaveValue('4111');
+    await userEvent.click(getByRole('button', { name: 'reset' }));
+    expect(input).toHaveValue('');
+  });
+
+  it('does not leak a trailing delimiter when value ends on a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    // 16 digits fills all four groups of "#### #### #### ####" exactly.
+    await userEvent.type(input, '4111111111111111');
+    expect(input).toHaveValue('4111 1111 1111 1111');
+    // No trailing space after the 16th digit.
+    expect((input as HTMLInputElement).value.endsWith(' ')).toBe(false);
+  });
+
+  it('places caret after typed digit when formatter inserts a delimiter at a group boundary', async () => {
+    // Typing the 5th digit turns "1234" into "1234 5". The inserted space
+    // shifts the digit right; caret must land after "5" (index 6), not before it (5).
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '12345');
+    await waitFor(() => {
+      expect(input.value).toBe('1234 5');
+      expect(input.selectionStart).toBe(6); // after "5"
+    });
+  });
+});
+
+// ─── Formatted TextInput — uncontrolled value ──────────────────────────────────
+// Mirrors the controlled tests but uses `defaultValue` (no `value` prop), so the
+// component manages its own state without parent reconciliation.
+describe('<TextInput /> formatted + uncontrolled value', () => {
+  it('formats typed digits with delimiters', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111222233334444');
+    expect(input).toHaveValue('4111 2222 3333 4444');
+  });
+
+  it('formats defaultValue on initial render', () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" defaultValue="4111222233334444" />,
+    );
+    expect(getByLabelText('Card')).toHaveValue('4111 2222 3333 4444');
+  });
+
+  it('does not leak a trailing delimiter when value ends on a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111111111111111');
+    expect(input).toHaveValue('4111 1111 1111 1111');
+    expect((input as HTMLInputElement).value.endsWith(' ')).toBe(false);
+  });
+
+  it('places caret after typed digit when formatter inserts a delimiter at a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '12345');
+    await waitFor(() => {
+      expect(input.value).toBe('1234 5');
+      expect(input.selectionStart).toBe(6); // after "5"
+    });
+  });
+
+  it('calls onChange with rawValue stripped of delimiters', async () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" onChange={onChange} />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111');
+    expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ rawValue: '4111' }));
+  });
+
+  it('respects maxLength derived from the format pattern', () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card') as HTMLInputElement;
+    expect(input).toHaveAttribute('maxlength', '19');
+  });
+});
