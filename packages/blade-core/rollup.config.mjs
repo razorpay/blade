@@ -82,12 +82,17 @@ const aliases = pluginAlias({
 const copyCssPlugin = {
   name: 'copy-css',
   async generateBundle() {
-    const cssContent = await fs.readFile(path.resolve(__dirname, 'src/tokens/theme.css'), 'utf8');
-    this.emitFile({
-      type: 'asset',
-      fileName: 'tokens/theme.css',
-      source: cssContent,
-    });
+    // `theme.css` (combined) is kept for backwards compatibility; the split files let
+    // light-only consumers skip the dark override block.
+    const cssFiles = ['theme.css', 'theme-light.css', 'theme-dark.css'];
+    for (const fileName of cssFiles) {
+      const cssContent = await fs.readFile(path.resolve(__dirname, `src/tokens/${fileName}`), 'utf8');
+      this.emitFile({
+        type: 'asset',
+        fileName: `tokens/${fileName}`,
+        source: cssContent,
+      });
+    }
   },
 };
 

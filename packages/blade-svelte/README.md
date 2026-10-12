@@ -58,12 +58,15 @@ The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `u
 
 ### Setup Theme CSS
 
-Import the theme CSS in your root layout or app entry file:
+Import the theme CSS in your root layout or app entry file. The split files are recommended:
+`theme-light.css` is the base (global tokens, light theme, utility classes) and
+`theme-dark.css` is an additive override for dark mode:
 
 ```svelte
 <!-- src/routes/+layout.svelte or App.svelte -->
 <script>
-  import '@razorpay/blade-core/tokens/theme.css';
+  import '@razorpay/blade-core/tokens/theme-light.css';
+  import '@razorpay/blade-core/tokens/theme-dark.css';
 </script>
 ```
 
@@ -71,8 +74,15 @@ Or in a regular TypeScript/JavaScript file:
 
 ```ts
 // src/main.ts or src/app.ts
-import '@razorpay/blade-core/tokens/theme.css';
+import '@razorpay/blade-core/tokens/theme-light.css';
+import '@razorpay/blade-core/tokens/theme-dark.css';
 ```
+
+Only shipping light mode? Import just `theme-light.css` — you skip the entire dark-mode
+override block: ~39% smaller uncompressed (~26% smaller gzipped) than the combined file.
+
+`@razorpay/blade-core/tokens/theme.css` (both themes in one file) still works if you prefer
+a single import.
 
 ### Wrap with BladeProvider
 

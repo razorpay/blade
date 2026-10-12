@@ -72,7 +72,7 @@
 }
 
 /* Dark mode border. Matches the convention in
- * `@razorpay/blade-core/tokens/theme.css` (`body[data-theme='dark']` /
+ * `@razorpay/blade-core/tokens/theme-dark.css` (`body[data-theme='dark']` /
  * `:root[data-blade-color-scheme='dark']`). The compound selector (no space)
  * matches `<html>` where BladeProvider sets the attribute, so portaled
  * bubbles/arrows still inherit dark-mode styles. */

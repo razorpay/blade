@@ -83,7 +83,11 @@
         "name": "theme.css",
         "cwd": "packages/blade-core",
         "command": "yarn generate:tokens-css",
-        "outputs": ["packages/blade-core/src/tokens/theme.css"]
+        "outputs": [
+          "packages/blade-core/src/tokens/theme.css",
+          "packages/blade-core/src/tokens/theme-light.css",
+          "packages/blade-core/src/tokens/theme-dark.css"
+        ]
       }
     ],
     "typecheck": [
