@@ -58,7 +58,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_CI_API_KEY: ${{ secrets.SLASH_CI_API_KEY }}
-          SLASH_BACKEND: ${{ vars.SLASH_BACKEND || 'swe-agent' }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
@@ -113,7 +112,6 @@ jobs:
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_CI_API_KEY: ${{ secrets.SLASH_CI_API_KEY }}
-          SLASH_BACKEND: ${{ vars.SLASH_BACKEND || 'swe-agent' }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
           SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
           SLASH_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
