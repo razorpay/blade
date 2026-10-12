@@ -30,17 +30,22 @@ const StyledChevronRotator = styled(BaseBox)<{ isExpanded: boolean }>((props) =>
 /**
  * Internal chevron slot of TreeViewItem: a 20px slot with a 16px chevron on `medium`
  * and a 16px slot with a 12px chevron on `small` (or a Spinner while loading).
- * Every row reserves the slot - on leaves it stays empty (B9) so a leaf's content
- * lines up with the content of its branch siblings
+ * When the tree has at least one branch, every row reserves the slot - on leaves it
+ * stays empty (B9) so a leaf's content lines up with the content of its branch siblings.
+ * In a flat tree (no branches anywhere) the slot is dropped from every row
  */
 const TreeViewChevron = ({
   state,
   isDisabled,
   onClick,
-}: TreeViewChevronProps): React.ReactElement => {
-  const { size } = useTreeViewContext();
+}: TreeViewChevronProps): React.ReactElement | null => {
+  const { size, hasChevronSlot } = useTreeViewContext();
   const { chevronSlotSize, chevronIconSize } = treeViewTokens[size];
   const isExpandable = state === 'collapsed' || state === 'expanded';
+
+  if (!hasChevronSlot) {
+    return null;
+  }
 
   return (
     <BaseBox

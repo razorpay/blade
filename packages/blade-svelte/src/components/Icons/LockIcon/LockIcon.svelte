@@ -8,13 +8,7 @@
   const iconProps = $derived(getIconProps({ size, color }));
 </script>
 
-<Svg
-  width={iconProps.width}
-  height={iconProps.height}
-  viewBox="0 0 24 24"
-  fill="none"
-  {...rest}
->
+<Svg width={iconProps.width} height={iconProps.height} viewBox="0 0 24 24" {...rest}>
   <Path
     fillRule="evenodd"
     clipRule="evenodd"

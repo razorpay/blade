@@ -1,5 +1,5 @@
 // This file is auto generated
-// Modify at blade/plop/icon/iconReexports.ts.hbs
+// Modify at scripts/icons/plop/iconReexports.ts.hbs
 export * from './types';
 export { default as AcceptPaymentsFilledIcon } from './AcceptPaymentsFilledIcon';
 export { default as AcceptPaymentsIcon } from './AcceptPaymentsIcon';

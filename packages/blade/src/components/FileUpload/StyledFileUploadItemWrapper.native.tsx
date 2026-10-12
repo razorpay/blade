@@ -2,7 +2,7 @@ import React from 'react';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { fileUploadItemBackgroundColors, fileUploadHeightTokens } from './fileUploadTokens';
+import { fileUploadItemBackgroundColors, fileUploadItemHeightTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -56,7 +56,7 @@ const StyledFileUploadItemWrapper = ({
       borderStyle="solid"
       borderWidth={borderWidth}
       borderRadius={borderRadius}
-      minHeight={makeSize(fileUploadHeightTokens[size === 'variable' ? 'large' : size])}
+      minHeight={makeSize(fileUploadItemHeightTokens[size])}
       width={width}
       minWidth={minWidth}
       maxWidth={maxWidth}

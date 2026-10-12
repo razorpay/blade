@@ -81,16 +81,12 @@ describe('getColorScheme', () => {
 });
 
 describe('getTypographyPlatform', () => {
-  it('returns onMobile below breakpoints.m', () => {
-    expect(getTypographyPlatform(bladeTheme.breakpoints, bladeTheme.breakpoints.m - 1)).toBe(
-      'onMobile',
-    );
+  it('returns onMobile for mobile device type', () => {
+    expect(getTypographyPlatform('mobile')).toBe('onMobile');
   });
 
-  it('returns onDesktop at and above breakpoints.m', () => {
-    expect(getTypographyPlatform(bladeTheme.breakpoints, bladeTheme.breakpoints.m)).toBe(
-      'onDesktop',
-    );
+  it('returns onDesktop for desktop device type', () => {
+    expect(getTypographyPlatform('desktop')).toBe('onDesktop');
   });
 });
 
@@ -99,7 +95,7 @@ describe('resolveBladeTheme', () => {
     const { theme, colorScheme, platform } = resolveBladeTheme({
       themeTokens: bladeTheme,
       colorSchemeInput: 'dark',
-      viewportWidth: 1200,
+      deviceType: 'desktop',
     });
 
     expect(colorScheme).toBe('dark');
@@ -117,7 +113,7 @@ describe('resolveBladeTheme', () => {
     const { theme } = resolveBladeTheme({
       themeTokens,
       colorSchemeInput: 'light',
-      viewportWidth: 1200,
+      deviceType: 'desktop',
     });
 
     const vars = themeToCSSVariables({

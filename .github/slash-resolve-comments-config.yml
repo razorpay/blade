@@ -1,0 +1,8 @@
+# Controls whether the Slash auto-resolve-comments workflow runs for a PR,
+# keyed by the PR author's GitHub username.
+# Authors not listed here default to `default_enabled`.
+
+default_enabled: true
+
+overrides:
+  # some-github-username: false

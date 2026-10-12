@@ -21,6 +21,11 @@ type TreeViewContextType = {
   baseId: string;
   nodeMap: Record<string, TreeViewNodeType>;
   /**
+   * true when at least one row in the tree is a branch (has children or `hasChildren`).
+   * Rows reserve the chevron slot only then, so a flat tree renders flush like ActionList (B9)
+   */
+  hasChevronSlot: boolean;
+  /**
    * Source of truth for selection state, unified across modes:
    * - standalone: TreeView-owned Set of selected values
    * - Dropdown: derived from Dropdown's selectedIndices

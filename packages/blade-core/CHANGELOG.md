@@ -1,5 +1,38 @@
 # @razorpay/blade-core
 
+## 0.21.0
+
+### Minor Changes
+
+- 2ad731702: feat(blade-svelte): add CardGroup component
+
+  Adds `CardGroup`, `CardGroupItem`, `CardGroupCollapsibleItem`, and
+  `CardGroupCollapsibleItemBody` — a single-surface stack of navigating,
+  selecting, and disclosing rows. The group owns the border, radius, elevation,
+  top/bottom gradient, and the dividers between rows.
+
+### Patch Changes
+
+- f42708331: fix(CounterInput): match Figma container sizes
+
+  Every size was rendering 2px taller and wider than the Figma frames because the 1px border was added on top of the Figma size. Containers are now 28/32/36/48px tall and 76/84/92/120px wide (xsmall/small/medium/large), with the buttons still 4px from each edge. On React web, the buttons now also stay pinned to the edges when the value is shorter than the minimum width.
+
+## 0.20.0
+
+### Minor Changes
+
+- 7c457ef30: feat(blade-svelte): add `useBreakpoint()` as the Svelte equivalent of React Blade's `useBreakpoint`
+
+  `BladeProvider` now tracks the matched viewport breakpoint once and exposes it through context.
+  Call `useBreakpoint()` inside the provider tree to read `{ matchedBreakpoint, matchedDeviceType }`
+  reactively. `ToastContainer` and typography platform selection now consume the same source, so a
+  single breakpoint crossing flips both together.
+
+  `blade-core` gains framework-agnostic helpers under `utils`: `getMediaQuery`, `getBreakpointQueries`,
+  `getDeviceType`, and `subscribeToBreakpoint`.
+
+  During SSR the device type now resolves to `desktop` (matching React Blade) instead of `mobile`.
+
 ## 0.19.0
 
 ### Minor Changes

@@ -14,6 +14,8 @@
  * - `react`  → `@razorpay/blade`. One component serves web and native, since `Icons/_Svg` has a
  *              `.web` and a `.native` implementation of every element.
  * - `svelte` → `@razorpay/blade-svelte`, which keeps its own, smaller icon set.
+ *
+ * A React push also lists added icons in `@razorpay/blade-mcp`'s `AvailableIcons.md`.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -33,6 +35,13 @@ const REPO_ROOT = path.resolve(BLADE_ROOT, '../..');
 const REACT_ICONS_DIRECTORY = path.join(BLADE_ROOT, 'src/components/Icons');
 const SVELTE_ROOT = path.join(REPO_ROOT, 'packages/blade-svelte');
 const SVELTE_ICONS_DIRECTORY = path.join(SVELTE_ROOT, 'src/components/Icons');
+const MCP_ROOT = path.join(REPO_ROOT, 'packages/blade-mcp');
+const MCP_AVAILABLE_ICONS_FILE = path.join(MCP_ROOT, 'knowledgebase/general/AvailableIcons.md');
+const MCP_GENERAL_DOCS_SNAPSHOT = path.join(
+  MCP_ROOT,
+  'src/tools/__tests__/__snapshots__/getBladeGeneralDocs.test.ts.snap',
+);
+const MCP_PACKAGE_NAME = '@razorpay/blade-mcp';
 
 const TARGETS = {
   react: { packageName: '@razorpay/blade', label: 'React (web + native)' },
@@ -281,6 +290,80 @@ const verifyReactIcons = (changed) => {
       command: `cross-env FRAMEWORK=REACT_NATIVE yarn jest -c ./jest.native.config.js --updateSnapshot --forceExit --ci=false ${testPaths}`,
     });
   }
+};
+
+// ---------------------------------------------------------------------------------------------
+// blade-mcp (the icon list AI assistants pick from)
+// ---------------------------------------------------------------------------------------------
+
+const MCP_ICON_ROW_PATTERN = /^\| (\w+Icon) \| .* \|$/;
+
+/** A filled icon whose outline already has a row is described by it; nothing else can be. */
+const describeIcon = (componentName, listedNames) => {
+  const outlineName = componentName.replace(/FilledIcon$/, 'Icon');
+  if (outlineName !== componentName && listedNames.has(outlineName)) {
+    return { description: `Filled variant of ${outlineName}`, isPlaceholder: false };
+  }
+  const words = lodash.startCase(componentName.replace(/Icon$/, '')).toLowerCase();
+  return { description: `${lodash.upperFirst(words)} icon`, isPlaceholder: true };
+};
+
+/**
+ * The list is only roughly alphabetical, so re-sorting it would move rows nobody touched. A filled
+ * icon goes right after its outline, like the existing ones; anything else goes before the first
+ * row that sorts after it.
+ */
+const findMcpRowIndex = (lines, componentName) => {
+  const rows = lines
+    .map((line, index) => ({ name: MCP_ICON_ROW_PATTERN.exec(line)?.[1], index }))
+    .filter(({ name }) => name);
+
+  const outlineName = componentName.replace(/FilledIcon$/, 'Icon');
+  const outlineRow = outlineName !== componentName && rows.find(({ name }) => name === outlineName);
+  if (outlineRow) return outlineRow.index + 1;
+
+  const nextRow = rows.find(
+    ({ name }) => name.localeCompare(componentName, 'en', { sensitivity: 'base' }) > 0,
+  );
+  return nextRow ? nextRow.index : rows[rows.length - 1].index + 1;
+};
+
+/** Returns the paths it changed, which is none when every added icon is already listed. */
+const addIconsToMcpDocs = (addedComponentNames) => {
+  const lines = fs.readFileSync(MCP_AVAILABLE_ICONS_FILE, 'utf8').split('\n');
+  const listedNames = new Set(lines.map((line) => MCP_ICON_ROW_PATTERN.exec(line)?.[1]));
+  const placeholders = [];
+
+  [...addedComponentNames].sort().forEach((componentName) => {
+    if (listedNames.has(componentName)) return;
+    const { description, isPlaceholder } = describeIcon(componentName, listedNames);
+    lines.splice(findMcpRowIndex(lines, componentName), 0, `| ${componentName} | ${description} |`);
+    listedNames.add(componentName);
+    if (isPlaceholder) placeholders.push(componentName);
+  });
+
+  if (placeholders.length) {
+    warnings.push(
+      `${placeholders.map((name) => `\`${name}\``).join(', ')} ${
+        placeholders.length === 1 ? 'was' : 'were'
+      } added to \`packages/blade-mcp/knowledgebase/general/AvailableIcons.md\` with a description made from the name. Replace it with what the icon is for, so AI assistants pick it for the right use (e.g. "Star for ratings or favorites").`,
+    );
+  }
+
+  const updated = lines.join('\n');
+  if (updated === fs.readFileSync(MCP_AVAILABLE_ICONS_FILE, 'utf8')) return [];
+  fs.writeFileSync(MCP_AVAILABLE_ICONS_FILE, updated);
+  return [MCP_AVAILABLE_ICONS_FILE, MCP_GENERAL_DOCS_SNAPSHOT];
+};
+
+/** The general-docs snapshot embeds the icon list, so it moves with every row added. */
+const verifyMcpDocs = () => {
+  if (skipSnapshots) return;
+  runStep({
+    name: 'blade-mcp general docs snapshot',
+    cwd: MCP_ROOT,
+    command: 'yarn vitest run --update src/tools/__tests__/getBladeGeneralDocs.test.ts',
+  });
 };
 
 // ---------------------------------------------------------------------------------------------
@@ -581,7 +664,7 @@ const buildTargetSection = (target, result) => {
   return sections;
 };
 
-const buildPullRequestBody = (results) => {
+const buildPullRequestBody = (results, { isMcpDocsUpdated }) => {
   const sections = [
     'This PR was opened by the Icons Upload GitHub action from icons exported with the Blade Token Publisher Figma plugin.',
     '',
@@ -605,13 +688,26 @@ const buildPullRequestBody = (results) => {
     sections.push(...buildTargetSection(target, result));
   });
 
+  if (isMcpDocsUpdated) {
+    sections.push(
+      `## Blade MCP — \`${MCP_PACKAGE_NAME}\``,
+      '',
+      'Added icons are listed in `knowledgebase/general/AvailableIcons.md`, so AI assistants can suggest them.',
+      '',
+    );
+  }
+
   return sections.join('\n');
 };
 
-const writeChangeset = ({ branchName, title, results }) => {
-  const frontmatter = Object.entries(results)
-    .filter(([, result]) => changedIn(result).length)
-    .map(([target]) => `'${TARGETS[target].packageName}': patch`)
+const writeChangeset = ({ branchName, title, results, isMcpDocsUpdated }) => {
+  const frontmatter = [
+    ...Object.entries(results)
+      .filter(([, result]) => changedIn(result).length)
+      .map(([target]) => TARGETS[target].packageName),
+    ...(isMcpDocsUpdated ? [MCP_PACKAGE_NAME] : []),
+  ]
+    .map((packageName) => `'${packageName}': patch`)
     .join('\n');
   const changesetPath = path.join(REPO_ROOT, `.changeset/${branchName}.md`);
   fs.writeFileSync(changesetPath, `---\n${frontmatter}\n---\n\n${title}\n`);
@@ -630,8 +726,13 @@ const uploadIcons = async () => {
   const results = {};
   if (targets.has('react')) results.react = await generateReactIcons(icons);
   if (targets.has('svelte')) results.svelte = generateSvelteIcons(icons);
+  // the MCP docs describe `@razorpay/blade`'s icons, so only a React push lists new ones there
+  const mcpDocsPaths = results.react ? addIconsToMcpDocs(results.react.added) : [];
 
-  const touchedPaths = Object.values(results).flatMap((result) => result.touchedPaths);
+  const touchedPaths = [
+    ...Object.values(results).flatMap((result) => result.touchedPaths),
+    ...mcpDocsPaths,
+  ];
   if (!touchedPaths.length) {
     console.log('Every exported icon already matches the repo. Nothing to do.');
     blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
@@ -640,6 +741,7 @@ const uploadIcons = async () => {
 
   if (results.react && changedIn(results.react).length) verifyReactIcons(changedIn(results.react));
   if (results.svelte && changedIn(results.svelte).length) verifySvelteIcons();
+  if (mcpDocsPaths.length) verifyMcpDocs();
 
   Object.entries(results).forEach(([target, result]) => {
     console.log(
@@ -650,7 +752,7 @@ const uploadIcons = async () => {
   blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
 
   const title = buildTitle(results);
-  const body = buildPullRequestBody(results);
+  const body = buildPullRequestBody(results, { isMcpDocsUpdated: mcpDocsPaths.length > 0 });
 
   if (isDryRun) {
     console.log(`\n--dry-run: files written, git and GitHub untouched.\n\n# ${title}\n\n${body}`);
@@ -660,7 +762,12 @@ const uploadIcons = async () => {
   const branchName = `figma-icons-${randomNameGenerator
     .generator([randomNameGenerator.verb, randomNameGenerator.noun])
     .choose()}`;
-  const changesetPath = writeChangeset({ branchName, title, results });
+  const changesetPath = writeChangeset({
+    branchName,
+    title,
+    results,
+    isMcpDocsUpdated: mcpDocsPaths.length > 0,
+  });
 
   execa.sync('git', ['checkout', '-b', branchName], { cwd: REPO_ROOT });
   execa.sync('git', ['config', 'user.email', GITHUB_BOT_EMAIL], { cwd: REPO_ROOT });

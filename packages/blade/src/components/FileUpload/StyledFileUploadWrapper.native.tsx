@@ -7,6 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { StyledFileUploadWrapperProps } from './types';
 import {
+  fileUploadBorderRadiusTokens,
   fileUploadColorTokens,
   fileUploadHeightTokens,
   fileUploadMotionTokens,
@@ -61,7 +62,7 @@ const StyledFileUploadWrapper = ({
           borderStyle: 'dashed' as const,
           borderColor,
           borderWidth: 1,
-          borderRadius: theme.border.radius.medium,
+          borderRadius: theme.border.radius[fileUploadBorderRadiusTokens[size]],
           // Raw numeric size tokens (e.g. 56/64) — Animated.View style expects numbers,
           // unlike BaseBox which accepts makeSize()'s `${n}px` strings.
           minHeight: size === 'variable' ? undefined : fileUploadHeightTokens[size],

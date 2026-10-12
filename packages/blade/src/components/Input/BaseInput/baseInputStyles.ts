@@ -278,6 +278,11 @@ export const getBaseInputStyles = ({
   const isReactNative = getPlatformType() === 'react-native';
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const shouldHaveFlexibleHeight = isTextArea || isDropdownWithTags;
+  // CounterInput's container shares the same outer height as BaseInput and draws a border
+  // around the input, so the input only gets the space inside that top and bottom border.
+  const inputHeight = isInsideCounterInput
+    ? baseInputHeight[size] - theme.border.width.thin * 2
+    : baseInputHeight[size];
 
   return {
     ...(valueComponentType === 'heading'
@@ -332,8 +337,8 @@ export const getBaseInputStyles = ({
 
     textAlign,
     width: '100%',
-    height: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
-    minHeight: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
+    height: shouldHaveFlexibleHeight ? undefined : makeSpace(inputHeight),
+    minHeight: shouldHaveFlexibleHeight ? undefined : makeSpace(inputHeight),
     ...(isReactNative ? {} : { resize: 'none', boxSizing: 'border-box' }),
   };
 };

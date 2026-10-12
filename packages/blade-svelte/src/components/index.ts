@@ -150,6 +150,20 @@ export type {
   SectionedCardFooterProps,
 } from './Card';
 
+// CardGroup
+export {
+  CardGroup,
+  CardGroupItem,
+  CardGroupCollapsibleItem,
+  CardGroupCollapsibleItemBody,
+} from './CardGroup';
+export type {
+  CardGroupProps,
+  CardGroupItemProps,
+  CardGroupCollapsibleItemProps,
+  CardGroupCollapsibleItemBodyProps,
+} from './CardGroup';
+
 // AppBar
 export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
 export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';

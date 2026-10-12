@@ -14,7 +14,18 @@ import { Counter } from '~components/Counter';
 import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dropdown';
 import { DropdownFooter } from '~components/Dropdown/DropdownHeaderFooter';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { FileTextIcon, FolderIcon, LockIcon } from '~components/Icons';
+import {
+  CheckCircleIcon,
+  FileTextIcon,
+  FolderIcon,
+  LayoutIcon,
+  LoaderIcon,
+  LockIcon,
+  LogOutIcon,
+  PlayCircleIcon,
+  RefreshIcon,
+  SlashIcon,
+} from '~components/Icons';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { Avatar } from '~components/Avatar';
 import { Badge } from '~components/Badge';
@@ -54,6 +65,10 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Text marginTop="spacing.4">
+        When no row in the tree can expand, rows drop the empty chevron space and render flush. If
+        your data can never nest, prefer <Code>ActionList</Code>.
+      </Text>
       <Title>Keyboard Interactions</Title>
       <List>
         <ListItem>
@@ -319,6 +334,39 @@ const LoadMoreTemplate: StoryFn<typeof TreeViewComponent> = () => {
 };
 export const LoadMore = LoadMoreTemplate.bind({});
 LoadMore.storyName = 'Load More';
+
+// B9: with no branch anywhere in the tree, rows drop the chevron slot and render flush.
+// For data that can never nest, ActionList is the recommended component
+const FlatTreeTemplate: StoryFn<typeof TreeViewComponent> = () => {
+  const [visibleStateCount, setVisibleStateCount] = React.useState(2);
+  const [isLoadingStates, setIsLoadingStates] = React.useState(false);
+
+  return (
+    <Box maxWidth="400px">
+      <TreeViewComponent selectionType="multiple">
+        {OTHER_STATES.slice(0, visibleStateCount).map((state) => (
+          <TreeViewItem key={state} title={state} value={state.toLowerCase()} />
+        ))}
+        {visibleStateCount < OTHER_STATES.length ? (
+          <TreeViewLoadMore
+            isLoading={isLoadingStates}
+            onClick={() => {
+              setIsLoadingStates(true);
+              setTimeout(() => {
+                setVisibleStateCount((count) => Math.min(count + PAGE_SIZE, OTHER_STATES.length));
+                setIsLoadingStates(false);
+              }, 1500);
+            }}
+          >
+            Show more states
+          </TreeViewLoadMore>
+        ) : null}
+      </TreeViewComponent>
+    </Box>
+  );
+};
+export const FlatTree = FlatTreeTemplate.bind({});
+FlatTree.storyName = 'Flat Tree (No Nesting)';
 
 const DropdownSingleTemplate: StoryFn<typeof TreeViewComponent> = () => (
   <Box display="flex" gap="spacing.8" flexWrap="wrap" minHeight="400px">
@@ -609,3 +657,93 @@ const SizesTemplate: StoryFn<typeof TreeViewComponent> = () => (
 );
 export const Sizes = SizesTemplate.bind({});
 Sizes.storyName = 'Sizes';
+
+/**
+ * Stand-in for a screen preview image - in a real product this would usually be an `<img>`
+ */
+const ScreenPreview = ({ label }: { label: string }): React.ReactElement => (
+  <Box
+    width="220px"
+    height="280px"
+    borderRadius="medium"
+    backgroundColor="feedback.background.positive.intense"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    gap="spacing.4"
+  >
+    <CheckCircleIcon size="2xlarge" color="surface.icon.staticWhite.normal" />
+    <Text weight="semibold" color="surface.text.staticWhite.normal">
+      {label}
+    </Text>
+  </Box>
+);
+
+const HoverPreviewTemplate: StoryFn<typeof TreeViewComponent> = () => (
+  <Box maxWidth="320px">
+    <TreeViewComponent selectionType="single" defaultValue={['payment-success']}>
+      <TreeViewItem
+        title="Checkout"
+        value="checkout"
+        leading={<LayoutIcon />}
+        isSelectable={false}
+        defaultIsExpanded
+      >
+        <TreeViewItem
+          title="Payment Animation"
+          value="payment-animation"
+          leading={<PlayCircleIcon />}
+          popover={{
+            title: 'Payment Animation',
+            content: <ScreenPreview label="Confirming payment" />,
+          }}
+        />
+        <TreeViewItem
+          title="Payment Processing"
+          value="payment-processing"
+          leading={<LoaderIcon />}
+          popover={{
+            title: 'Payment Processing',
+            content: <ScreenPreview label="Processing payment" />,
+          }}
+        />
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          leading={<CheckCircleIcon />}
+          popover={{
+            title: 'Payment Success',
+            content: <ScreenPreview label="Payment Successful" />,
+          }}
+        />
+        <TreeViewItem
+          title="Retry Payment"
+          value="retry-payment"
+          leading={<RefreshIcon />}
+          popover={{
+            title: 'Retry Payment',
+            content: <ScreenPreview label="Retry Payment" />,
+          }}
+        />
+        <TreeViewItem
+          title="Cancel Payment"
+          value="cancel-payment"
+          leading={<SlashIcon />}
+          isDisabled
+        />
+        <TreeViewItem title="Exit Payment" value="exit-payment" leading={<LogOutIcon />} />
+      </TreeViewItem>
+    </TreeViewComponent>
+  </Box>
+);
+export const HoverPreview = HoverPreviewTemplate.bind({});
+HoverPreview.storyName = 'With Hover Preview';
+HoverPreview.parameters = {
+  docs: {
+    description: {
+      story:
+        'Pass `popover` to show a rich preview when the row is hovered with a mouse. It opens to the right of the row by default so it does not cover the rows above or below, and moving the pointer from row to row switches previews in place.',
+    },
+  },
+};
