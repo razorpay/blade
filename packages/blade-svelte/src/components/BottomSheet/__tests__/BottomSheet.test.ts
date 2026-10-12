@@ -151,4 +151,16 @@ describe('<BottomSheet /> body scroll lock', () => {
 
     await waitFor(() => expect(unlockBodyScroll).toHaveBeenCalledTimes(1));
   });
+
+  it('never acquires the lock when disableScrollLock is set', async () => {
+    mockMeasuredHeight(200);
+    render(BottomSheetScrollLockTestHarness, {
+      props: { isOpen: true, disableScrollLock: true },
+    });
+
+    await waitFor(() => expect(screen.getByTestId('sheet-body-content')).toBeInTheDocument());
+
+    expect(lockBodyScroll).not.toHaveBeenCalled();
+    expect(unlockBodyScroll).not.toHaveBeenCalled();
+  });
 });
