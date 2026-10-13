@@ -28,6 +28,11 @@
   // Register synchronously during component initialization (Accordion pattern).
   // This avoids $effect-based registration which causes effect_update_depth_exceeded
   // because mutating $state inside $effect creates a read→write reactive cycle.
+  // NOTE: Dynamic changes to isItemDisabled after mount are not reflected in
+  // firstEnabledValue / totalItems in the parent context. isDisabled still works
+  // correctly for rendering (button disabled attr, click guard) via the $derived
+  // isDisabled below. Re-registration on prop change would require a full
+  // effect-based approach which reintroduces the reactive cycle.
   const itemPosition = getCtx().registerItem(value, isItemDisabled);
 
   let buttonEl = $state<HTMLButtonElement | undefined>(undefined);
