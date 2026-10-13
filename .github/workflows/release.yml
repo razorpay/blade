@@ -48,7 +48,7 @@ jobs:
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
