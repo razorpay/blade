@@ -52,6 +52,22 @@ if (shouldSkipBuild) {
   }
 }
 
+// Install dashboard-template dependencies if node_modules is missing
+const dashboardNodeModulesDir = path.join(dashboardPlaygroundDir, 'node_modules');
+if (!fs.existsSync(dashboardNodeModulesDir)) {
+  console.log('Installing blade-dashboard-template dependencies...');
+  try {
+    execSync('yarn install --frozen-lockfile', {
+      cwd: dashboardPlaygroundDir,
+      stdio: 'inherit',
+    });
+    console.log('✓ Dashboard template dependencies installed');
+  } catch (error) {
+    console.error('✗ Failed to install dashboard template dependencies:', error.message);
+    process.exit(1);
+  }
+}
+
 // Build the dashboard playground
 console.log('Building blade-dashboard-template...');
 try {
