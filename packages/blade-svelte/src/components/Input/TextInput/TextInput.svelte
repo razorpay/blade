@@ -1,12 +1,12 @@
 <script lang="ts">
   import { untrack } from 'svelte';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import CharacterCounter from '../_Form/CharacterCounter.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon } from '../../Icons';
-  import { useFormId } from '../BaseInput/useFormId';
   import { createFormattedInput, stripPatternCharacters } from './useFormattedInput';
   import type { TextInputProps } from './types';
 
@@ -22,6 +22,7 @@
     defaultValue,
     value,
     name,
+    id,
     onChange,
     onFocus,
     onBlur,
@@ -60,10 +61,11 @@
     ...rest
   }: TextInputProps = $props();
 
+  const ids = useFormId('textinput', id);
+
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
   );
-  const ids = useFormId('textinput');
 
   // Rebuilds when `format` changes (e.g. card network detection swapping the
   // grouping pattern), so the pattern isn't frozen at mount time.
