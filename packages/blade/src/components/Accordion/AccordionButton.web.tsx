@@ -21,7 +21,7 @@ const _AccordionButton = ({
   isDisabled,
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
-  const { showNumberPrefix, expandedIndex, size, variant, numberOfItems } = useAccordion();
+  const { showNumberPrefix, expandedIndex, size, variant, numberOfItems, headingLevel } = useAccordion();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
   const onClick = (): void => toggleCollapse();
@@ -49,8 +49,7 @@ const _AccordionButton = ({
 
   return (
     <BaseBox
-      // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
-      {...makeAccessible({ role: 'heading', level: 3 })}
+      {...makeAccessible({ role: 'heading', level: headingLevel })}
       width="100%"
     >
       <StyledAccordionButton
