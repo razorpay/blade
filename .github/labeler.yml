@@ -14,6 +14,10 @@ blade-mcp:
   - changed-files:
       - any-glob-to-any-file: ['packages/blade-mcp/**']
 
+blade-plugin:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/blade-plugin/**']
+
 react-native:
   - changed-files:
       - any-glob-to-any-file:

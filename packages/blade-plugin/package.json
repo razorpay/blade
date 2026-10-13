@@ -1,0 +1,17 @@
+{
+  "name": "@razorpay/blade-plugin",
+  "version": "1.32.1",
+  "private": true,
+  "description": "Blade Design System as a Claude Code plugin and cross-agent skills. Source of truth for the Blade knowledgebase.",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/razorpay/blade.git"
+  },
+  "scripts": {
+    "sync-version": "node ../../scripts/syncPluginManifestVersion.js",
+    "validate": "node ../../scripts/validateBladePlugin.mjs",
+    "test": "node --test tests/scripts.test.mjs"
+  },
+  "author": "Razorpay",
+  "license": "MIT"
+}

@@ -40,7 +40,8 @@ This repository is organized as a monorepo containing several packages that work
 | Package                                                                              | Description                                                                                                            |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | [blade](./packages/blade/)                                                           | The core Blade Design System package with cross-platform UI components for React Web and React Native                  |
-| [blade-mcp](./packages/blade-mcp/)                                                   | Model Context Protocol (MCP) server for AI-assisted development using Blade components                                 |
+| [blade-plugin](./packages/blade-plugin/)                                             | Claude Code plugin and cross-agent skills with the Blade knowledgebase (source of truth for AI docs)                   |
+| [blade-mcp](./packages/blade-mcp/)                                                   | Model Context Protocol (MCP) server for AI-assisted development using Blade components (maintenance mode)              |
 | [plugin-figma-blade-coverage](./packages/plugin-figma-blade-coverage/)               | Figma plugin that measures Blade component usage and coverage in design files. It acts like a linter for design files. |
 | [plugin-figma-token-publisher](./packages/plugin-figma-token-publisher/)             | Figma plugin for publishing design tokens                                                                              |
 | [blade-coverage-extension](./packages/blade-coverage-extension/)                     | Browser extension for measuring Blade component usage                                                                  |
