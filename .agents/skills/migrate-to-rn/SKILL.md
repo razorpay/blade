@@ -27,8 +27,8 @@ Use this skill when the user asks to run the migrated source command `migrate-to
 ## Include
 
 Use the Read tool to load:
-1. `.claude/rules/orchestrator-guardrails.md`
-2. `.claude/rules/rn-migration.md`
+1. `.claude/context/orchestrator-guardrails.md`
+2. `.claude/context/rn-migration.md`
 
 ## Pre-flight: Skill extras
 
@@ -214,7 +214,7 @@ Agent(
     - Worktree (absolute base): {absolute_path_to_worktree}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
+    Read .claude/context/rn-migration.md and .claude/context/agent-base-directory.md first.
     
     React source: {Worktree}/packages/blade/src/components/{Name}/
     Output artifacts to: {Worktree}/.claude/artifacts/{Name}/
@@ -276,7 +276,7 @@ Agent(
     - Worktree (absolute base): {absolute_path_to_worktree}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
+    Read .claude/context/rn-migration.md and .claude/context/agent-base-directory.md first.
     
     Migration plan: {Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md
     Web source: {Worktree}/packages/blade/src/components/{Name}/
@@ -310,7 +310,7 @@ Agent(
     - Session name: {SessionName}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
+    Read .claude/context/rn-migration.md and .claude/context/agent-base-directory.md first.
     
     Discovery report: {Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md
     Screenshots dir: {Worktree}/.claude/artifacts/{Name}/screenshots/
