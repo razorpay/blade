@@ -56,139 +56,170 @@ npm install @razorpay/blade-svelte
 
 The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
 
-### Setup Theme CSS
+### Two component sets
 
-Import the theme CSS in your root layout or app entry file:
+The package holds two component sets at different paths, so an app can use
+both:
 
-```svelte
-<!-- src/routes/+layout.svelte or App.svelte -->
-<script>
-  import '@razorpay/blade-core/tokens/theme.css';
-</script>
-```
+| Import                              | Components                                                 |
+| ----------------------------------- | ---------------------------------------------------------- |
+| `@razorpay/blade-svelte`            | cx: styled by UnoCSS from Blade's config (see below)       |
+| `@razorpay/blade-svelte/components` | cx, plus Blade's `Modal` and `BottomSheet` (see below)     |
+| `@razorpay/blade-svelte/utils`      | Blade's utilities (`useInteraction`, `createPortal`)       |
 
-Or in a regular TypeScript/JavaScript file:
+`/components` is the root with two more names: until cx exports its own,
+`Modal` (`ModalHeader`, `ModalBody`, `ModalFooter`) and `BottomSheet`
+(`BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`) are Blade's,
+styled by blade-core's prebuilt CSS (see
+[Blade's Modal and BottomSheet](#blades-modal-and-bottomsheet)). Both sets
+read blade-core's tokens (`@razorpay/blade-core/tokens/theme.css`).
+
+### cx: compile Blade's CSS in your app
+
+`@razorpay/blade-svelte` (the root) ships no prebuilt stylesheet: your build compiles
+it with UnoCSS (`unocss` is a peer dependency) from Blade's config, so the
+options you pass reach the output.
 
 ```ts
-// src/main.ts or src/app.ts
+// uno.config.ts
+import { bladeUnoConfig } from '@razorpay/blade-svelte/configs/uno';
+
+export default {
+  ...bladeUnoConfig({ desktop: '62.5rem' }), // the default
+  content: { filesystem: ['./node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+};
+```
+
+Emit it with the UnoCSS plugin your bundler uses (`unocss/vite`,
+`@unocss/webpack`), or with `@unocss/postcss` and a `@unocss;` directive in a
+stylesheet. Import Blade's plain stylesheet beside it:
+
+```ts
+import '@razorpay/blade-svelte/blade.css'; // opacity-blade-*; Tasa, Inter (woff2)
+```
+
+Components are mobile first; their desktop styles are `d:` classes, and
+`max-d:` is below it. Your markup uses the same variants.
+
+#### Your own classes, without Tailwind
+
+Pass your `tailwind.config.js` theme and Blade also generates Tailwind v3's
+utilities from it, in one pass over your files and Blade's: colours with
+`/50` and `*-opacity-*`, type, borders, shadows, rings, gradients, filters,
+animations, `@apply`, and Tailwind's preflight reset. (`theme()` in a class or
+in CSS is not read: write the value, `[--rim:hsl(var(--cta))]`.)
+
+```ts
+export default {
+  ...bladeUnoConfig({
+    desktop: '62.5rem',
+    // tailwind.config.js's `theme`: keys replace Tailwind's defaults,
+    // `extend` merges into them, a key may be a function of `theme()`.
+    theme: {
+      colors: { primary: { DEFAULT: 'hsl(var(--primary) / <alpha-value>)' } },
+      fontSize: { sm: ['0.75rem', { lineHeight: '1rem' }] },
+      extend: { spacing: { 19: '4.75rem' } },
+    },
+    presets: [{ theme: { extend: { boxShadow: { card: '…' } } } }],
+    // addVariant's strings
+    variants: { 'quick-buy': '[data-quick-buy="true"] &' },
+    preflight: true, // the default with a theme
+  }),
+  content: { filesystem: ['./src/**/*.{svelte,ts}', './node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+};
+```
+
+- The defaults are Tailwind v3.4's scales, without its colour palette or
+  breakpoints: name your colours; `d:` is the breakpoint.
+- A class both define (`rounded-none`, `mx-auto`, `shadow-card`) is written
+  once, as Blade defines it, at Tailwind's place in the stylesheet, so it
+  wins and loses against your other classes as it did under Tailwind.
+- The font classes are the exception: `font-normal`…`font-bold`, `font-sans`
+  and `font-mono` are Blade's weights and faces (Inter, Menlo) until your
+  theme sets the same key (`fontFamily.sans`, `fontWeight.medium`…); then
+  yours wins, and Blade's text follows it.
+- Transforms and filters compose through Blade's variables (`--blade-*`), so
+  `grayscale brightness-0` keeps both.
+- The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
+  them apart (in a cascade layer), `@unocss !base;` emits the rest.
+
+#### Theming with CSS variables
+
+Blade's colours and faces read blade-core's token variables, their light mode
+values as the fallback, so nothing changes until you set one:
+
+```css
+.bg-interactive-primary-default {
+  background-color: var(--interactive-background-primary-default, hsla(218, 89%, 51%, 1));
+}
+```
+
+Set them anywhere up the tree (`:root`, a container) to theme the components
+under it:
+
+```css
+:root {
+  --interactive-background-primary-default: hsl(330 80% 45%);
+  --interactive-text-on-primary-normal: #fff;
+  --font-family-text: Georgia, serif;
+}
+```
+
+| Variables | |
+|---|---|
+| `--surface-{background,border,text,icon}-…` | 13, 5, 17, 17 |
+| `--feedback-{background,border,text,icon}-…` | 10 each |
+| `--interactive-{background,border,text,icon}-…` | 49, 38, 44, 44 |
+| `--popup-{background,border}-…` | 8 each |
+| `--overlay-background-…` | 2 |
+| `--font-family-text`, `--font-family-heading`, `--font-family-code` | `font-sans`, `font-heading`, `font-mono` |
+
+The full list of 285 colour variables is the snapshot of
+`src-cx/test/theme-variables.test.ts`. Composed values follow them too: a
+button's frame and focus ring, `surface-raised`, the skeleton. `--data-*`
+(charts) and the white and black bevels, sheens and elevation shadows stay
+fixed. For a brand colour on primary buttons, blade-core's
+`getPrimaryBrandCssVars({ bg })` (`@razorpay/blade-core/styles`) returns the
+five fill and frame variables.
+
+blade-core's `theme.css` (below) sets every variable to the *standard* theme's
+values, where the cx components fall back to the *neutral* theme's (black
+primary borders and text): import it only if you want the standard theme.
+
+### Blade's Modal and BottomSheet
+
+`/components` serves Blade's `Modal` and `BottomSheet` from `src/` until cx
+exports its own (the cx `ModalStack` and `openModal` stay at the root).
+They are portal overlays: consumers manage `isOpen`; focus, scroll lock,
+dismissal and animation are wired inside. Their CSS is blade-core's, so
+import the theme CSS once, in your root layout or app entry:
+
+```ts
 import '@razorpay/blade-core/tokens/theme.css';
 ```
 
-### Wrap with BladeProvider
-
 ```svelte
 <script>
-  import { BladeProvider, Button } from '@razorpay/blade-svelte/components';
-  import { createTheme } from '@razorpay/blade-core/tokens';
+  import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from '@razorpay/blade-svelte/components';
 
-  // Optional: custom brand + limited border radius overrides
-  const { theme } = createTheme({
-    brandColor: '#19BEA2',
-    borderRadius: { medium: 16 },
-  });
+  let isOpen = $state(false);
 </script>
 
-<BladeProvider themeTokens={theme} colorScheme="light">
-  <Button>Pay</Button>
-</BladeProvider>
+<Button onClick={() => (isOpen = true)}>Open</Button>
+<Modal {isOpen} onDismiss={() => (isOpen = false)} size="medium">
+  <ModalHeader title="Address Details" subtitle="Add a new address" />
+  <ModalBody>
+    <p>Body content goes here.</p>
+  </ModalBody>
+  <ModalFooter>
+    <Button onClick={() => (isOpen = false)}>Done</Button>
+  </ModalFooter>
+</Modal>
 ```
 
-`colorScheme` accepts `light` | `dark` | `system`. Nested `BladeProvider`s set
-`data-blade-color-scheme` on their root so light/dark can be scoped to a subtree.
-
-Use `useTheme()` inside the tree for `{ theme, colorScheme, setColorScheme, platform }`.
-
-Use `useBreakpoint()` (same API as React Blade) for the reactive
-viewport breakpoint. Read its fields inside `$derived` or the template; destructuring snapshots
-the values and loses reactivity.
-
-```svelte
-<script>
-  import { useBreakpoint } from '@razorpay/blade-svelte/components';
-  const breakpoint = useBreakpoint(); // { matchedBreakpoint, matchedDeviceType }
-  const isMobile = $derived(breakpoint.matchedDeviceType === 'mobile');
-</script>
-```
-
-### Install Fonts
-
-Blade uses two fonts: [TASA Orbiter](https://tasatype.localremote.co/) (for headings) and [Inter](https://rsms.me/inter/) (for body text).
-
-You can install fonts by importing the fonts CSS from `@razorpay/blade-core`:
-
-```ts
-import '@razorpay/blade-core/fonts.css';
-```
-
-Or add fonts via CDN in your HTML:
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@razorpay/blade-core@latest/fonts.css" />
-```
-
-### Usage
-
-```svelte
-<script>
-  import { Button, Text, Heading } from '@razorpay/blade-svelte/components';
-</script>
-
-<Heading size="large">Welcome to Blade</Heading>
-<Text>This is Blade Design System for Svelte.</Text>
-<Button variant="primary" onClick={() => alert('Clicked!')}>
-  Click me
-</Button>
-```
-
-### Available Components
-
-All components are imported from `@razorpay/blade-svelte/components`:
-
-| Category | Components |
-|----------|-----------|
-| Typography | `Heading`, `Text`, `Code` |
-| Buttons | `Button`, `IconButton` |
-| Inputs | `TextInput`, `SearchInput`, `PasswordInput`, `OTPInput`, `PhoneNumberInput`, `InputGroup`, `InputRow` |
-| Selection | `Checkbox`, `CheckboxGroup`, `Radio`, `RadioGroup`, `Switch`, `SegmentedControl`, `SegmentedControlItem` |
-| Layout | `Card` (+ `CardBody`, `CardHeader`, `CardFooter`, etc.), `Divider`, `Skeleton`, `AppBar` (+ `AppBarLeading`, `AppBarActions`) |
-| Feedback | `Alert`, `Toast`, `ToastContainer`, `Tooltip`, `Spinner`, `AnnouncementBanner` |
-| Display | `Badge`, `Avatar`, `AvatarGroup`, `Amount`, `Counter`, `CounterInput`, `TrustBadge`, `Breadcrumb`, `BreadcrumbItem` |
-| Navigation | `Tabs`, `TabList`, `TabItem`, `TabPanel`, `ActionList` (+ `ActionListItem`, etc.) |
-| Overlays | `BottomSheet` (+ `BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`), `TooltipInteractiveWrapper` |
-| Structure | `Accordion` (+ `AccordionItem`, `AccordionItemHeader`, `AccordionItemBody`), `Collapsible` (+ `CollapsibleButton`, `CollapsibleLink`, etc.), `Chip`, `ChipGroup`, `Link` |
-| Icons | All Blade icons via `Icons` |
-| Utilities | `useToast`, `useTheme`, `useBreakpoint`, `Theme` type |
-
-See the [Storybook documentation](https://blade.razorpay.com) for full component API references.
-
-### Dark Mode
-
-Prefer `BladeProvider` `colorScheme` (supports nested scopes):
-
-```svelte
-<script>
-  import { BladeProvider, Button } from '@razorpay/blade-svelte/components';
-  import { bladeTheme } from '@razorpay/blade-core/tokens';
-</script>
-
-<BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-  <Button>Dark scoped</Button>
-</BladeProvider>
-```
-
-```svelte
-<!-- ThemeToggle.svelte (must be under BladeProvider) -->
-<script>
-  import { useTheme } from '@razorpay/blade-svelte/components';
-  const theme = $derived(useTheme());
-</script>
-
-<button type="button" onclick={() => theme.setColorScheme(theme.colorScheme === 'dark' ? 'light' : 'dark')}>
-  Toggle
-</button>
-```
-
-Legacy: `data-theme="dark"` on `body` still works via dual CSS selectors during migration.
+`BottomSheet` composes the same way (`BottomSheetHeader`, `BottomSheetBody`,
+`BottomSheetFooter`), with `snapPoints` and drag-to-dismiss. See the
+[Storybook documentation](https://blade.razorpay.com) for their full API.
 
 ## 📝 License
 
