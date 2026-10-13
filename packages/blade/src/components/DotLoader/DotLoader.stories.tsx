@@ -85,7 +85,7 @@ const ColorsTemplate: StoryFn<typeof DotLoaderComponent> = () => {
 export const Colors = ColorsTemplate.bind({});
 Colors.storyName = 'Colors';
 
-const sizes: DotLoaderProps['size'][] = ['medium', 'large'];
+const sizes: DotLoaderProps['size'][] = ['small', 'medium', 'large'];
 
 const SizesTemplate: StoryFn<typeof DotLoaderComponent> = () => {
   return (
@@ -114,7 +114,7 @@ Sizes.parameters = {
   docs: {
     description: {
       story:
-        '`large` is `medium` scaled 1.5x. `Button` picks it automatically for `size="large"`, whose 48px height makes the default loader read as undersized; every shorter button size keeps `medium`.',
+        '`small` is `medium` scaled 0.75x, for compact hosts. `large` is `medium` scaled 1.5x. `Button` picks it automatically for `size="large"`, whose 48px height makes the default loader read as undersized; every shorter button size keeps `medium`.',
     },
   },
 };

@@ -54,6 +54,21 @@ describe('<DotLoader />', () => {
     expect(largeDot).toHaveStyle({ width: '6px', height: '6px' });
   });
 
+  it('should render small at 0.75x the medium geometry', () => {
+    const { getByTestId } = renderWithTheme(<DotLoader size="small" testID="small" />);
+
+    expect(getByTestId('small')).toHaveStyle({ width: '18px', height: '18px', gap: '1.5px' });
+
+    const [smallDot] = Array.from(getByTestId('small').children);
+    expect(smallDot).toHaveStyle({ width: '3px', height: '3px' });
+  });
+
+  it('should render small with the same dot count and a11y behaviour as medium', () => {
+    const { getByTestId } = renderWithTheme(<DotLoader size="small" testID="dot-loader-test" />);
+    expect(getByTestId('dot-loader-test').children).toHaveLength(3);
+    expect(getByTestId('dot-loader-test')).toHaveAttribute('aria-hidden', 'true');
+  });
+
   it('should render large with the same dot count and a11y behaviour as medium', () => {
     const { getByTestId } = renderWithTheme(<DotLoader size="large" testID="dot-loader-test" />);
     expect(getByTestId('dot-loader-test').children).toHaveLength(3);
