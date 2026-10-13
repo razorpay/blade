@@ -8,7 +8,7 @@
  *   days: number of days to look back (default: 1)
  */
 
-import { execSync } from "child_process";
+import { fetchComments, runGh } from "./github-cli.mjs";
 
 const REPO = "razorpay/blade";
 const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
@@ -18,8 +18,7 @@ const AUTO_APPROVE_LABEL = "✨ Agentic Merge Ready ✨";
 const IGNORE_LABEL = "Ignore - Test PR";
 
 function gh(...args) {
-  const result = execSync(`gh ${args.join(" ")}`, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] });
-  return result.trim() ? JSON.parse(result) : [];
+  return runGh(args);
 }
 
 function pct(n, d) {
@@ -56,8 +55,8 @@ let agentComments = 0;
 let resolvedByAgent = 0;
 
 for (const pr of prs) {
-  const reviewComments = gh("api", `repos/${REPO}/pulls/${pr.number}/comments`, "--paginate");
-  const issueComments = gh("api", `repos/${REPO}/issues/${pr.number}/comments`, "--paginate");
+  const reviewComments = fetchComments({ repo: REPO, prNumber: pr.number, type: "review" });
+  const issueComments = fetchComments({ repo: REPO, prNumber: pr.number, type: "issue" });
 
   for (const c of [...reviewComments, ...issueComments]) {
     const user = c.user.login;
