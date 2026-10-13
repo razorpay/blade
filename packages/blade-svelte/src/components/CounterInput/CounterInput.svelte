@@ -122,7 +122,6 @@
     let next = Number.isNaN(numeric) ? min : numeric;
     if (next < min) next = min;
     if (max !== undefined && next > max) next = max;
-    latestValue = next;
     commitValue(next);
   }
 
