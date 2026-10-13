@@ -2,8 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from '
 import { join } from 'node:path';
 
 /** sveld marks unset $props() defaults as literal `undefined`, optional or required. */
-const UNDEFINED_PROP_BLOCK =
-  /\n\s+\/\*\*\n(?:\s+\*[^\n]*\n)+\s+\*\/\n\s+[A-Za-z_$][\w$]*\??: undefined;/g;
+const UNDEFINED_PROP_BLOCK = /\n\s+\/\*\*\n(?:\s+\*[^\n]*\n)+\s+\*\/\n\s+[A-Za-z_$][\w$]*\??: undefined;/g;
 
 /** Conflicts with hand-written `children: Snippet | string` in shared prop types. */
 const CHILDREN_SNIPPET_OVERRIDE = /\n\s+children\?: \(this: void\) => void;/g;

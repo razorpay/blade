@@ -1,0 +1,32 @@
+import 'virtual:uno.css';
+import '../src-cx/blade.css';
+import './preview.css';
+
+/** @type { import('@storybook/svelte-vite').Preview } */
+const preview = {
+  parameters: {
+    layout: 'padded',
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    viewport: {
+      viewports: {
+        mobile: { name: 'Mobile', styles: { width: '360px', height: '740px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      },
+    },
+    options: {
+      storySort: {
+        method: 'alphabetical',
+        // cx-only components (no React counterpart) sit under their own heading;
+        // the guides come last.
+        order: ['Components', 'Extra Components', 'Guides'],
+      },
+    },
+  },
+};
+
+export default preview;
