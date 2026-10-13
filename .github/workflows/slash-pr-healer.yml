@@ -8,7 +8,7 @@ on:
         required: true
         type: string
   workflow_run:
-    workflows: ['Blade Validate']
+    workflows: ['Blade Validate', 'Knowledgebase Lint']
     types: [completed]
 
 concurrency:
