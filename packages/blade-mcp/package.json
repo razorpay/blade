@@ -28,7 +28,9 @@
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:updateSnapshots": "vitest -u"
+    "test:updateSnapshots": "vitest -u",
+    "prebuild": "node scripts/copyKnowledgebase.mjs",
+    "predev": "node scripts/copyKnowledgebase.mjs"
   },
   "keywords": [
     "razorpay",

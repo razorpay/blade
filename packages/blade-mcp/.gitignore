@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 .env.local
+# copied from packages/blade-plugin/skills/blade/references by scripts/copyKnowledgebase.mjs
+knowledgebase/

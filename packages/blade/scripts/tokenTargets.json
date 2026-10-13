@@ -68,7 +68,7 @@
     "packages/blade/codemods",
     "packages/blade-core/src",
     "packages/blade-svelte/src",
-    "packages/blade-mcp/knowledgebase"
+    "packages/blade-plugin/skills/blade/references"
   ],
   "referenceScanExtensions": [".ts", ".tsx", ".js", ".jsx", ".svelte", ".json", ".md", ".mdx"],
 

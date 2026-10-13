@@ -1,8 +1,8 @@
 /**
  * Finds drift between Blade component prop types (source of truth) and the
- * TypeScript types written in blade-mcp knowledgebase docs.
+ * TypeScript types written in blade-plugin knowledgebase docs.
  *
- * For every `packages/blade-mcp/knowledgebase/components/{Name}.md` it compares
+ * For every `packages/blade-plugin/skills/blade/references/components/{Name}.md` it compares
  * `{Name}Props` from the doc with `{Name}Props` exported by `packages/blade/src/components`:
  * - props that exist in code but are missing in the doc
  * - props that exist in the doc but not in code
@@ -25,7 +25,7 @@ const { Project, ts } = require('ts-morph');
 
 const rootDir = path.join(__dirname, '..');
 const bladeDir = path.join(rootDir, 'packages/blade');
-const componentsDocsDir = path.join(rootDir, 'packages/blade-mcp/knowledgebase/components');
+const componentsDocsDir = path.join(rootDir, 'packages/blade-plugin/skills/blade/references/components');
 const reportPath = path.join(rootDir, 'knowledgebase-drift-report.json');
 const ignoreConfig = require('./knowledgebaseDriftIgnore.json');
 
@@ -258,9 +258,10 @@ const readDocProps = (name) => {
 };
 
 // ---- compare ----
+// index.md is the human/agent-facing list of components, not a component doc.
 const docFiles = fs
   .readdirSync(componentsDocsDir)
-  .filter((file) => file.endsWith('.md'))
+  .filter((file) => file.endsWith('.md') && file !== 'index.md')
   .map((file) => file.replace(/\.md$/, ''))
   .filter((name) => selectedComponents.length === 0 || selectedComponents.includes(name));
 

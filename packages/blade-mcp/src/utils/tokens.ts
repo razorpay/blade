@@ -8,6 +8,8 @@ const PROJECT_ROOT_DIRECTORY = join(__dirname, '..', '..');
 const analyticsToolCallEventName = 'Blade MCP Tool Called';
 
 // Skill Tokens
+// Bump only when skillTemplate/SKILL.md changes: every bump forces all consumers
+// to reinstall the skill. Deliberately not tied to the package version.
 const SKILL_VERSION = '1.0.0';
 const SKILL_VERSION_STRING = `version: '${SKILL_VERSION}'`;
 

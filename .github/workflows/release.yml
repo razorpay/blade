@@ -41,6 +41,7 @@ jobs:
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
         with:
+          version: yarn changeset version && node scripts/syncPluginManifestVersion.js
           publish: yarn release
           commit: 'build: update version'
           title: 'build: update version'
