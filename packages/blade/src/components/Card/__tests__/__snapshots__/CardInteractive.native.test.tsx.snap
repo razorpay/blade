@@ -119,9 +119,12 @@ exports[`<Card /> should render a clickable Card 1`] = `
           data-blade-component="card-body"
           style={
             [
-              {},
+              {
+                "width": "100%",
+              },
             ]
           }
+          width="100%"
         >
           Plain Card
         </View>
@@ -250,9 +253,12 @@ exports[`<Card /> should render a interactive Card 1`] = `
           data-blade-component="card-body"
           style={
             [
-              {},
+              {
+                "width": "100%",
+              },
             ]
           }
+          width="100%"
         >
           Plain Card
         </View>
@@ -382,9 +388,12 @@ exports[`<Card /> should render a linkable Card 1`] = `
           data-blade-component="card-body"
           style={
             [
-              {},
+              {
+                "width": "100%",
+              },
             ]
           }
+          width="100%"
         >
           Plain Card
         </View>
@@ -514,9 +523,12 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
           data-blade-component="card-body"
           style={
             [
-              {},
+              {
+                "width": "100%",
+              },
             ]
           }
+          width="100%"
         >
           Plain Card
         </View>
