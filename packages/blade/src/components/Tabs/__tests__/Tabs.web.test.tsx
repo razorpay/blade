@@ -87,6 +87,26 @@ describe('Tabs', () => {
     expect(baseElement).toMatchSnapshot();
   });
 
+  it('should render with filled variant and small size', () => {
+    const { baseElement } = renderWithTheme(
+      <Tabs defaultValue="refunds" variant="filled" size="small">
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+      </Tabs>,
+    );
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   it('should render with isFullWidthTabItem', () => {
     const { baseElement } = renderWithTheme(
       <Tabs defaultValue="refunds" isFullWidthTabItem>
