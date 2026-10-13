@@ -111,6 +111,7 @@ const BaseInputTagSlot = ({
   return (
     <BaseBox
       justifyContent="flex-start"
+      alignItems="center"
       paddingY="spacing.1"
       paddingX="spacing.4"
       minHeight={makeSize(baseInputHeight[size])}
