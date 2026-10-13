@@ -225,3 +225,58 @@ describe('<DonutChart /> interactions (native)', () => {
     expect(selectedKeysArray).toEqual(expect.arrayContaining(['Group A', 'Group B']));
   });
 });
+
+describe('<DonutChart /> tooltip interactions (native)', () => {
+  it('should show tooltip when a slice is pressed and hide when pressed again', () => {
+    const { getByTestId, queryByTestId, getByText, queryByText } = renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper>
+          <ChartDonut data={mockData} dataKey="value" nameKey="name" />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+
+    flushLayout(getByTestId);
+
+    // Tooltip should not be visible initially
+    expect(queryByTestId('donut-tooltip')).toBeNull();
+
+    // Press the first slice — tooltip should appear with label and value
+    fireEvent.press(getByTestId('donut-slice-0'));
+    expect(getByTestId('donut-tooltip')).toBeTruthy();
+    expect(getByText('Desktop')).toBeTruthy();
+    expect(getByText('400')).toBeTruthy();
+
+    // Press the same slice again — tooltip should disappear
+    fireEvent.press(getByTestId('donut-slice-0'));
+    expect(queryByTestId('donut-tooltip')).toBeNull();
+    expect(queryByText('Desktop')).toBeNull();
+  });
+
+  it('should switch tooltip when a different slice is pressed', () => {
+    const { getByTestId, queryByTestId, getByText } = renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper>
+          <ChartDonut data={mockData} dataKey="value" nameKey="name" />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+
+    flushLayout(getByTestId);
+
+    // No tooltip initially
+    expect(queryByTestId('donut-tooltip')).toBeNull();
+
+    // Press first slice
+    fireEvent.press(getByTestId('donut-slice-0'));
+    expect(getByTestId('donut-tooltip')).toBeTruthy();
+    expect(getByText('Desktop')).toBeTruthy();
+
+    // Press second slice — tooltip should switch to the new slice
+    fireEvent.press(getByTestId('donut-slice-1'));
+    expect(getByTestId('donut-tooltip')).toBeTruthy();
+    expect(getByText('Mobile')).toBeTruthy();
+  });
+});
