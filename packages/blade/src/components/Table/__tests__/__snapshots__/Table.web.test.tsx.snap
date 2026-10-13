@@ -27419,6 +27419,1306 @@ exports[`<Table /> should render table with sticky header, footer & first column
 </div>
 `;
 
+exports[`<Table /> should render table without TableFooter 1`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: normal;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+  overflow: auto !important;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+  border: none;
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.06) 10.08%,hsla(206,10%,29%,0.06) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-bottom-style: solid;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:first-child th {
+  border-top: none;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
+  display: block;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div {
+  background-color: hsla(0,0%,97%,1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 36px;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c5.c5.c5.c5.c5 th:last-child {
+  border-right: none;
+}
+
+@media screen and (min-width:320px) {
+  .c13.c13.c13.c13.c13 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c13.c13.c13.c13.c13 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c13.c13.c13.c13.c13 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c13.c13.c13.c13.c13 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c13.c13.c13.c13.c13 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0 c1"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c2"
+      data-blade-component="table"
+    >
+      <div
+        class=""
+        data-blade-component="base-box"
+      />
+      <table
+        aria-multiselectable="false"
+        class="c3 css-1blk07o-Table"
+        data-blade-component="table"
+        data-table-library_table=""
+        role="table"
+        style="--data-table-library_grid-template-columns: 150px 150px 150px;"
+      >
+        <thead
+          class="c4 css-j1qa4q-Header"
+          data-blade-component="table-header"
+          role="rowgroup"
+        >
+          <tr
+            class="tr c5 tr-header css-jxklud-getHeaderRowContainerStyle-HeaderRow"
+            data-blade-component="table-header-row"
+            data-table-library_tr-header=""
+            role="rowheader"
+          >
+            <th
+              class="th c6 css-1opxlyq-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              data-blade-component="table-header-cell"
+              data-hide="false"
+              data-resize-min-width="75"
+              data-table-library_th=""
+              role="columnheader"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Payment ID
+                  </p>
+                </div>
+              </div>
+            </th>
+            <th
+              class="th c6 css-1opxlyq-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              data-blade-component="table-header-cell"
+              data-hide="false"
+              data-resize-min-width="75"
+              data-table-library_th=""
+              role="columnheader"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Amount
+                  </p>
+                </div>
+              </div>
+            </th>
+            <th
+              class="th c6 css-1opxlyq-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              data-blade-component="table-header-cell"
+              data-hide="false"
+              data-resize-min-width="75"
+              data-table-library_th=""
+              role="columnheader"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Status
+                  </p>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="c9 css-1vujicn-Body"
+          data-blade-component="table-body"
+          data-table-library_body=""
+        >
+          <tr
+            aria-selected="false"
+            class="tr tr-body c10 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp01
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    100
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr
+            aria-selected="false"
+            class="tr tr-body c10 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp02
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    240
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr
+            aria-selected="false"
+            class="tr tr-body c10 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp03
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    120
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c11 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c12 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c13 c14 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      failed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Table /> should render table without TableHeader when columnCount prop is provided 1`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: normal;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+  overflow: auto !important;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
+  border: none;
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.06) 10.08%,hsla(206,10%,29%,0.06) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-bottom-style: solid;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
+  background-color: transparent;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5:focus {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+@media screen and (min-width:320px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0 c1"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c2"
+      data-blade-component="table"
+    >
+      <div
+        class=""
+        data-blade-component="base-box"
+      />
+      <table
+        aria-multiselectable="false"
+        class="c3 css-1blk07o-Table"
+        data-blade-component="table"
+        data-table-library_table=""
+        role="table"
+      >
+        <tbody
+          class="c4 css-1vujicn-Body"
+          data-blade-component="table-body"
+          data-table-library_body=""
+        >
+          <tr
+            aria-selected="false"
+            class="tr tr-body c5 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp01
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    100
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr
+            aria-selected="false"
+            class="tr tr-body c5 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp02
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    240
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr
+            aria-selected="false"
+            class="tr tr-body c5 clickable css-ix64pr-getRowContainerStyle-Row"
+            data-blade-component="table-row"
+            data-table-library_tr-body=""
+            role="row"
+          >
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      rzp03
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    120
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td
+              class="td c6 css-12b6i54-CELL_CONTAINER_STYLE-Cell"
+              data-blade-component="table-cell"
+              data-table-library_td=""
+              role="cell"
+              tabindex="0"
+            >
+              <div>
+                <div
+                  class="c7 cell-wrapper-base"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8 c9 cell-wrapper"
+                    data-blade-component="table-cell-wrapper"
+                    pointer-events="auto"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      failed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Table /> should render virtualized table 1`] = `
 .c0.c0.c0.c0.c0 {
   overflow: hidden;
