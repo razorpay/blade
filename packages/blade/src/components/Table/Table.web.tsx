@@ -21,6 +21,7 @@ import {
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
+  tableRow,
   classes,
 } from './tokens';
 import type {
@@ -32,9 +33,9 @@ import type {
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
 import { TableSurface } from './TableSurface.web';
-import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { throwBladeError } from '~utils/logger';
+import { logger, throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
@@ -50,6 +51,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useListViewContext } from '~components/ListView/ListViewContext';
+import { size } from '~tokens/global';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -157,21 +159,25 @@ const SKELETON_CELL_WIDTHS = {
   headerRest: '60%',
 } as const;
 
-const StyledSkeletonRow = styled(BaseBox)<{ $columns: number; $isHeader?: boolean }>(
-  ({ theme, $columns, $isHeader }) => ({
-    display: 'grid',
-    gridTemplateColumns: `repeat(${$columns}, minmax(100px, 1fr))`,
-    paddingLeft: makeSpace(theme.spacing[4]),
-    paddingRight: makeSpace(theme.spacing[4]),
-    paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
-    paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
-    borderBottomWidth: makeSpace(theme.border.width.thin),
-    borderBottomColor: theme.colors.surface.border.gray.muted,
-    borderBottomStyle: 'solid',
-    gap: makeSpace(theme.spacing[4]),
-    alignItems: 'center',
-  }),
-);
+const StyledSkeletonRow = styled(BaseBox)<{
+  $columns: number;
+  $isHeader?: boolean;
+  $gridTemplateColumns?: string;
+  $rowDensity?: NonNullable<TableProps<unknown>['rowDensity']>;
+}>(({ theme, $columns, $isHeader, $gridTemplateColumns, $rowDensity }) => ({
+  display: 'grid',
+  gridTemplateColumns: $gridTemplateColumns ?? `repeat(${$columns}, minmax(100px, 1fr))`,
+  paddingLeft: makeSpace(theme.spacing[4]),
+  paddingRight: makeSpace(theme.spacing[4]),
+  paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+  paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+  minHeight: $rowDensity ? makeSize(getIn(size, tableRow.minHeight[$rowDensity])) : undefined,
+  borderBottomWidth: makeSpace(theme.border.width.thin),
+  borderBottomColor: theme.colors.surface.border.gray.muted,
+  borderBottomStyle: 'solid',
+  gap: makeSpace(theme.spacing[4]),
+  alignItems: 'center',
+}));
 
 const _Table = <Item,>({
   children,
@@ -197,6 +203,9 @@ const _Table = <Item,>({
   backgroundColor = tableBackgroundColor,
   isGrouped = false,
   checkboxDisplay = 'always',
+  skeletonRowCount,
+  skeletonRowMinHeight,
+  skeletonMinHeight,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -476,6 +485,37 @@ const _Table = <Item,>({
       ? (pagination.props as { defaultPageSize?: number }).defaultPageSize
       : undefined;
 
+  // Skeleton configuration: derive row count, row height, and grid template columns
+  // from existing props so the skeleton matches the loaded table's geometry.
+  const effectiveSkeletonRowCount =
+    skeletonRowCount ??
+    paginationDefaultPageSize ??
+    (hasPagination ? tablePagination.defaultPageSize : SKELETON_ROW_COUNT);
+  // When the consumer provides gridTemplateColumns, use it for skeleton rows too
+  // so column widths match between skeleton and loaded states.
+  // When no custom gridTemplateColumns is provided, build the default template
+  // in the component body (instead of inside the styled callback) so we can
+  // prepend a `min-content` track for the checkbox column when
+  // selectionType === 'multiple', mirroring the loaded table's grid template.
+  const skeletonGridTemplateColumns = gridTemplateColumns
+    ? gridTemplateColumns
+    : `${selectionType === 'multiple' ? 'min-content ' : ''}repeat(${
+        columnCount || 5
+      }, minmax(100px, 1fr))`;
+
+  // Warn when an explicit skeleton row min-height is combined with a non-default
+  // rowDensity: skeletonRowMinHeight overrides the min-height that rowDensity
+  // would derive, so a mismatched value defeats the skeleton/loaded alignment.
+  if (__DEV__) {
+    if (skeletonRowMinHeight && rowDensity !== 'normal') {
+      logger({
+        message: `Both \`rowDensity="${rowDensity}"\` and \`skeletonRowMinHeight\` are set. \`skeletonRowMinHeight\` takes precedence and overrides the min-height that would be derived from \`rowDensity\`. Ensure this value matches your loaded table's row height for the given density, otherwise the skeleton won't align with the loaded table.`,
+        moduleName: 'Table',
+        type: 'warn',
+      });
+    }
+  }
+
   const paginationConfig = usePagination(
     data,
     {
@@ -604,14 +644,26 @@ const _Table = <Item,>({
       >
         {isLoading ? (
           <BaseBox
-            flex={1}
+            // When `skeletonMinHeight` is provided, apply it so the skeleton
+            // reserves the loaded table's footprint and the page doesn't reflow
+            // once data arrives. Otherwise, fall back to the original `flex: 1`
+            // behavior to preserve backward compatibility for existing consumers.
+            flex={skeletonMinHeight ? undefined : 1}
+            {...(skeletonMinHeight ? { minHeight: skeletonMinHeight } : {})}
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
             testID="table-skeleton"
           >
-            {/* Header skeleton row */}
-            <StyledSkeletonRow $columns={columnCount || 5} $isHeader>
+            {/* Header skeleton row — always compact to match the loaded
+             * header row, which unconditionally sets headerRowDensity to
+             * 'compact' (see TableHeader.web.tsx _TableHeaderRow). */}
+            <StyledSkeletonRow
+              $columns={columnCount || 5}
+              $isHeader
+              $gridTemplateColumns={skeletonGridTemplateColumns}
+              $rowDensity="compact"
+            >
               {Array.from({ length: columnCount || 5 }).map((_, i) => (
                 <Skeleton
                   key={i}
@@ -624,8 +676,14 @@ const _Table = <Item,>({
               ))}
             </StyledSkeletonRow>
             {/* Body skeleton rows */}
-            {Array.from({ length: SKELETON_ROW_COUNT }).map((_, rowIdx) => (
-              <StyledSkeletonRow key={rowIdx} $columns={columnCount || 5}>
+            {Array.from({ length: effectiveSkeletonRowCount }).map((_, rowIdx) => (
+              <StyledSkeletonRow
+                key={rowIdx}
+                $columns={columnCount || 5}
+                $gridTemplateColumns={skeletonGridTemplateColumns}
+                $rowDensity={skeletonRowMinHeight ? undefined : rowDensity}
+                {...(skeletonRowMinHeight ? { minHeight: skeletonRowMinHeight } : {})}
+              >
                 {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
                   const cols = columnCount || 5;
                   const width =
