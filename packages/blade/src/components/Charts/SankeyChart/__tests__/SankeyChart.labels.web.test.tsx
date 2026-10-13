@@ -14,18 +14,28 @@ import type { ChartSankeyProps, SankeyDataLink, SankeyDataNode } from '../types'
 import { LABEL_COLUMN_CLEARANCE, LABEL_MAX_WIDTH } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
-// The chart width ResponsiveContainer would measure; a test may narrow it and must restore it.
-let mockContainerWidth = 800;
-jest.mock('recharts', () => {
-  const Recharts = jest.requireActual('recharts');
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { cloneElement, Children } = require('react');
-  return {
-    ...Recharts,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
-      cloneElement(Children.only(children), { width: mockContainerWidth, height: height ?? 400 }),
-  };
+// The wrapper measures itself with getBoundingClientRect; jsdom reports 0×0, so fix it at 800×400.
+const CONTAINER_RECT = {
+  width: 800,
+  height: 400,
+  top: 0,
+  left: 0,
+  right: 800,
+  bottom: 400,
+  x: 0,
+  y: 0,
+  toJSON: () => ({}),
+} as DOMRect;
+const setContainerWidth = (width: number): void => {
+  jest
+    .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+    .mockReturnValue({ ...CONTAINER_RECT, width, right: width } as DOMRect);
+};
+beforeAll(() => {
+  setContainerWidth(CONTAINER_RECT.width);
+});
+afterAll(() => {
+  jest.restoreAllMocks();
 });
 
 // 7px per character regardless of weight — close to Inter at 12px and, crucially, monotonic.
@@ -211,6 +221,8 @@ describe('SankeyChart — the full name of a truncated label', () => {
   const longNames: SankeyDataNode[] = nodes.map((node) =>
     node.id === 'card' ? { ...node, name: longName } : node,
   );
+  const getTooltipText = (container: HTMLElement): string | null =>
+    container.querySelector('[data-blade-component="ChartSankeyTooltip"]')?.textContent ?? null;
 
   it('gives assistive tech the full name and value on the label group', () => {
     const { container } = renderSankey({}, { nodes: longNames, links });
@@ -225,7 +237,7 @@ describe('SankeyChart — the full name of a truncated label', () => {
     )!;
     fireEvent.mouseEnter(truncated.closest('text')!);
     // The node's own tooltip: the full name with the node's value, not a ribbon's.
-    expect(container.textContent).toContain(`${longName}: 3,200 txn`);
+    expect(getTooltipText(container)).toContain(`${longName}: 3,200 txn`);
     // And the node's hover state: the other nodes dim.
     const opacities = Array.from(container.querySelectorAll('svg g[opacity]')).map((g) =>
       g.getAttribute('opacity'),
@@ -260,7 +272,7 @@ describe('SankeyChart — labels stay clear of the next column', () => {
   });
 
   it('shrinks middle-column labels to the gap on a narrow chart instead of overlapping', () => {
-    mockContainerWidth = 600;
+    setContainerWidth(600);
     try {
       const { container } = renderSankey({}, { nodes: longNames, links });
       const columns = columnXs(container);
@@ -276,12 +288,12 @@ describe('SankeyChart — labels stay clear of the next column', () => {
       expect(middle.length).toBeGreaterThan(0);
       middle.forEach((chip) => expect(chip.right - chip.left).toBeLessThan(LABEL_MAX_WIDTH - 1));
     } finally {
-      mockContainerWidth = 800;
+      setContainerWidth(CONTAINER_RECT.width);
     }
   });
 
   it('drops the share before the name when the gap leaves the name almost nothing', () => {
-    mockContainerWidth = 560;
+    setContainerWidth(560);
     try {
       const { container } = renderSankey({}, { nodes: longNames, links });
       const labels = Array.from(container.querySelectorAll('svg text')).map((text) =>
@@ -305,7 +317,7 @@ describe('SankeyChart — labels stay clear of the next column', () => {
           ?.getAttribute('aria-label'),
       ).toContain('(56%)');
     } finally {
-      mockContainerWidth = 800;
+      setContainerWidth(CONTAINER_RECT.width);
     }
   });
 });

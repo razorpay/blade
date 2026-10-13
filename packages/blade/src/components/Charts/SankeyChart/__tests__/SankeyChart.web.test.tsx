@@ -10,23 +10,26 @@ import type { SankeyDataNode } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
-// ── ResponsiveContainer mock ───────────────────────────────────────────────────
-// Recharts' ResponsiveContainer uses ResizeObserver internally, which jsdom
-// does not support. Bypassing it by passing fixed dimensions directly to the
-// Sankey component makes rendering fully synchronous — no waitFor needed,
-// no open handles, Jest exits cleanly.
-jest.mock('recharts', () => {
-  const Recharts = jest.requireActual('recharts');
-  // require('react') inside the factory runs after jest.mock hoisting,
-  // so React is available at call time.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { cloneElement, Children } = require('react');
-  return {
-    ...Recharts,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
-      cloneElement(Children.only(children), { width: 800, height: height ?? 400 }),
-  };
+// ── Container size mock ────────────────────────────────────────────────────────
+// The wrapper measures itself with getBoundingClientRect (and observes resizes), but jsdom
+// lays nothing out, so every element measures 0×0. Reporting a fixed 800×400 makes the
+// chart render synchronously with stable geometry — no waitFor needed.
+const CONTAINER_RECT = {
+  width: 800,
+  height: 400,
+  top: 0,
+  left: 0,
+  right: 800,
+  bottom: 400,
+  x: 0,
+  y: 0,
+  toJSON: () => ({}),
+} as DOMRect;
+beforeAll(() => {
+  jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(CONTAINER_RECT);
+});
+afterAll(() => {
+  jest.restoreAllMocks();
 });
 
 // ── Test data ──────────────────────────────────────────────────────────────────
@@ -182,16 +185,29 @@ describe('SankeyChart — interactivity', () => {
       }),
       0,
     );
+    // The consumer's own link object comes back, not a copy: code that compares by reference or
+    // reads its own fields off the link keeps working.
+    const [clickedLink, clickedIndex] = handleLinkClick.mock.calls[0];
+    expect(clickedLink).toBe(links[clickedIndex]);
+  });
+
+  it('shows a tooltip with the full node name and value on hover', () => {
+    const { container } = renderSankey({}, { labelUnit: 'txn' });
+    // Hover the node group of the first bar (events are attached to the node's <g>).
+    const firstNodeGroup = container.querySelector('svg g[opacity]')!;
+    fireEvent.mouseEnter(firstNodeGroup);
+    const tooltip = container.querySelector('[data-blade-component="ChartSankeyTooltip"]');
+    expect(tooltip).not.toBeNull();
+    expect(tooltip?.textContent).toMatch(/: [\d,]+ txn$/);
+    fireEvent.mouseLeave(firstNodeGroup);
+    expect(container.querySelector('[data-blade-component="ChartSankeyTooltip"]')).toBeNull();
   });
 
   it('does not show tooltip when showTooltip is false', () => {
     const { container } = renderSankey({ showTooltip: false });
-    const firstRect = container.querySelector('svg rect')!;
-    fireEvent.mouseEnter(firstRect);
-    const tooltipContent = container.querySelector(
-      '[data-blade-component="ChartSankeyWrapper"] > div > div[style*="position: absolute"]',
-    );
-    expect(tooltipContent).toBeNull();
+    const firstNodeGroup = container.querySelector('svg g[opacity]')!;
+    fireEvent.mouseEnter(firstNodeGroup);
+    expect(container.querySelector('[data-blade-component="ChartSankeyTooltip"]')).toBeNull();
   });
 
   it('renders node groups with opacity attribute wired up for hover dimming', () => {
@@ -263,7 +279,7 @@ describe('SankeyChart — color token resolution', () => {
 // ── Layout ─────────────────────────────────────────────────────────────────────
 
 describe('SankeyChart — layout', () => {
-  it('renders ResponsiveContainer without a scroll wrapper', () => {
+  it('renders the chart without a scroll wrapper', () => {
     const { container } = renderSankey();
     // No overflowX scroll wrapper — chart fills available width directly.
     const divs = Array.from(container.querySelectorAll('div'));
@@ -310,28 +326,91 @@ describe('SankeyChart — edge cases', () => {
     ).not.toThrow();
   });
 
-  it('does not emit NaN geometry for a node that has no links', () => {
+  it('names a ribbon tooltip "Source - Target", as the Recharts chart did', () => {
+    const { container } = renderSankey();
+    fireEvent.mouseEnter(container.querySelector('svg path:not([data-blade-component])')!);
+    const tooltip = container.querySelector('[data-blade-component="ChartSankeyTooltip"]');
+    expect(tooltip?.textContent).toBe('Total - UPI: 4,000');
+  });
+
+  it('still accepts every prop the released ChartSankey and ChartSankeyWrapper accept', () => {
+    // Type-checked in CI (tests are included): a prop removed or renamed here would fail to
+    // compile, which is exactly the break a consumer on the released version would hit.
     const { container } = renderWithTheme(
+      <ChartSankeyWrapper
+        showTooltip
+        colorTheme="categorical"
+        nodeColorOverride="data.background.categorical.blue.moderate"
+        linkColorOverride="data.background.categorical.gray.moderate"
+        testID="sankey"
+        orientation="horizontal"
+        width="900px"
+        height="346px"
+      >
+        <ChartSankey
+          data={data}
+          showLabels
+          showLabelChip
+          showPercentage
+          labelUnit="txn"
+          labelDensity="normal"
+          showColorIndicator={false}
+          formatValue={(value) => String(value)}
+          onNodeClick={() => undefined}
+          onLinkClick={() => undefined}
+          width={900}
+          height={346}
+        />
+      </ChartSankeyWrapper>,
+    );
+    expect(container.querySelector('svg')).not.toBeNull();
+  });
+
+  it('draws nothing when no link survives, as the Recharts chart did', () => {
+    // Nodes without any flow have nothing to lay out. The old chart rendered an empty canvas;
+    // drawing 1px bars labelled "0 (0%)" instead would look broken, and the empty state is the
+    // consumer's to show.
+    const noLinks = renderWithTheme(
+      <ChartSankeyWrapper>
+        <ChartSankey data={{ nodes: [{ id: 'x', name: 'Orphan' }], links: [] }} />
+      </ChartSankeyWrapper>,
+    );
+    expect(noLinks.container.querySelector('svg')).toBeNull();
+    expect(
+      noLinks.container.querySelector('[data-blade-component="ChartSankeyWrapper"]'),
+    ).not.toBeNull();
+
+    const onlyInvalidLinks = renderWithTheme(
       <ChartSankeyWrapper>
         <ChartSankey
           data={{
             nodes: [{ id: 'x', name: 'Orphan' }],
-            links: [],
+            links: [{ source: 'x', target: 'ghost', value: 10 }],
           }}
         />
       </ChartSankeyWrapper>,
     );
+    expect(onlyInvalidLinks.container.querySelector('svg')).toBeNull();
+  });
 
-    // A node with no links has no value for Recharts to lay out, so it must be
-    // skipped rather than rendered with NaN x/y/height attributes.
-    container.querySelectorAll('rect').forEach((rect) => {
-      ['x', 'y', 'width', 'height'].forEach((attribute) => {
-        expect(rect.getAttribute(attribute)).not.toBe('NaN');
-      });
-    });
-    container.querySelectorAll('path').forEach((path) => {
-      expect(path.getAttribute('d') ?? '').not.toContain('NaN');
-    });
+  it("accepts the dashboard card's props: deprecated width and height are typed and ignored", () => {
+    // Recharts' ResponsiveContainer used to inject width/height, and the Analytics transaction
+    // flow card passes them explicitly. They must still compile and must not change the layout,
+    // which comes from the wrapper's measured size (800px here).
+    const { container } = renderWithTheme(
+      <ChartSankeyWrapper showTooltip width="900px" height="346px">
+        <ChartSankey
+          data={data}
+          labelUnit="txn"
+          formatValue={(value) => String(value)}
+          width={300}
+          height={120}
+        />
+      </ChartSankeyWrapper>,
+    );
+    const bars = Array.from(container.querySelectorAll<SVGRectElement>('svg rect:not([stroke])'));
+    const lastColumnX = Math.max(...bars.map((r) => parseFloat(r.getAttribute('x') ?? '0')));
+    expect(lastColumnX).toBeGreaterThan(300);
   });
 
   it('silently ignores links that reference unknown node ids', () => {
