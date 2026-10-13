@@ -4,7 +4,7 @@ An icon is **an SVG file**, imported like any asset. Blade's set is `@razorpay/b
 
 ```svelte
 <script lang="ts">
-  import { Alert, Icon } from '@razorpay/blade-svelte';
+  import { Alert, Icon } from '@razorpay/blade-svelte/components';
   import { ChevronDownIcon, WalletIcon } from '@razorpay/blade-svelte/icons';
   import RocketIcon from '../icons/rocket.svg';
 </script>
@@ -17,26 +17,27 @@ An icon is **an SVG file**, imported like any asset. Blade's set is `@razorpay/b
 ## With and without the font plugin
 
 **Without a plugin**, an icon import is the SVG's URL. `Icon` draws it as a CSS mask over the text colour: tinted and sized like any icon, one small request (or an inlined data URI) per icon.
+
 - Webpack needs an asset rule for SVGs, e.g. `{ test: /\.svg$/, type: 'asset' }`.
 - Vite handles SVGs out of the box.
 
-**With `bladeIconFontPlugin`**, the same imports become glyphs of a `blade-icons` font that holds exactly the icons the build loads, from Blade's set and from the app's folders. No inline styles, one cached file.
+**With `bladePlugin`**, the same imports become glyphs of a `blade-icons` font that holds exactly the icons the build loads, from Blade's set and from the app's folders. No inline styles, one cached file.
 
 ```ts
 // vite.config.ts
-import { bladeIconFontPlugin } from '@razorpay/blade-svelte/configs/vite';
+import bladePlugin from '@razorpay/blade-svelte/configs/vite';
 
 export default defineConfig({
-  plugins: [bladeIconFontPlugin({ extra: ['./src/icons'] }), svelte()],
+  plugins: [bladePlugin({ extra: ['./src/icons'] }), svelte()],
 });
 ```
 
 ```js
 // webpack.config.mjs
-import { bladeIconFontPlugin } from '@razorpay/blade-svelte/configs/webpack';
+import bladePlugin from '@razorpay/blade-svelte/configs/webpack';
 
 export default {
-  plugins: [bladeIconFontPlugin({ extra: ['./src/icons'] })],
+  plugins: [bladePlugin({ extra: ['./src/icons'] })],
 };
 ```
 
@@ -49,19 +50,20 @@ export default {
 
 There is one chevron. Rotate it for the other directions (`-rotate-90` points right); the card group turns it in place so the change animates.
 
-| Prop | Notes |
-| --- | --- |
-| `source` | An icon import (`IconSource`): a glyph with the font plugin, the SVG's URL without |
-| `size` | Style axis: `small` 12px, `medium` 16px (default), `large` 20px, `xlarge` 24px |
-| `color` | Style axis, the Text colours. Default `inherit`: the glyph follows its host |
+| Prop                 | Notes                                                                                                                       |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `source`             | An icon import (`IconSource`): a glyph with the font plugin, the SVG's URL without                                          |
+| `size`               | Style axis: `small` 12px, `medium` 16px (default), `large` 20px, `xlarge` 24px                                              |
+| `color`              | Style axis, the Text colours. Default `inherit`: the glyph follows its host                                                 |
 | `accessibilityLabel` | Names the icon (`role="img"`). Without it the icon is `aria-hidden`, which is right inside anything that already has a name |
-| `class`, `testID` | As everywhere |
+| `class`, `testID`    | As everywhere                                                                                                               |
 
 Components that take an icon (`Alert.icon`, `IconButton.icon`, `Link.icon`, …) take a token and size it themselves. Free-form slots (TextInput's `leading`/`trailing`) stay snippets: put an `<Icon>` inside.
 
 ## The glyph set
 
 `src-cx/icons/` is generated from Blade React's icons by `scripts/icon-svgs/extract-blade.mjs`, which `yarn generate-icons` runs. It writes:
+
 - one `currentColor` SVG per glyph;
 - the barrel (`glyphs.js`, one `export { default as InfoIcon } from './svg/info.svg'` per icon, typed by `glyphs.d.ts`) and the names (`names.ts`);
 - `codepoints.json`, the lockfile. A glyph's codepoint never changes, and a removed glyph's code is never reused.

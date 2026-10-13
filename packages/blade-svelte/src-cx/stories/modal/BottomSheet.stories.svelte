@@ -2,7 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import readme from './README.md?raw';
   import meta from './index';
-  import { exampleSource, hasNoControls, storyArgTypes } from '../helpers';
+  import { exampleSource, hasNoControls, storyArgTypes, readmeBody } from '../helpers';
   import BottomSheetStory from './BottomSheet.svelte';
   import BottomSheetSource from './BottomSheet.svelte?raw';
   import BottomSheetStepsStory from './BottomSheetSteps.svelte';
@@ -13,7 +13,7 @@
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {
-      docs: { description: { component: readme } },
+      docs: { description: { component: readmeBody(readme) } },
     },
   });
 </script>

@@ -5,7 +5,7 @@
  * @example
  * ```svelte
  * <script>
- *   import { InputGroup, InputRow, TextInput } from '@razorpay/blade-svelte';
+ *   import { InputGroup, InputRow, TextInput } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <InputGroup label="Shipping Address" helpText="Where should we deliver your order?">

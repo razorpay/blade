@@ -2,7 +2,7 @@ import type { Attachment } from 'svelte/attachments';
 import { createNodeRef } from '../dom/node.svelte';
 import { getLayers } from './layers';
 
-export interface LayerHost {
+export interface OverlayHost {
   /** Whether a surface is open. */
   readonly occupied: boolean;
   /** On the host element. */
@@ -20,7 +20,7 @@ export interface LayerHost {
  * they are mounted. With `isolates`, everything beside the host goes inert
  * while a surface is open. Call during component initialisation.
  */
-export function createLayerHost(options: { isolates: boolean }): LayerHost {
+export function createOverlayHost(options: { isolates: boolean }): OverlayHost {
   const layers = getLayers();
   const host = createNodeRef<HTMLDivElement>();
   const scrim = createNodeRef<HTMLDivElement>();

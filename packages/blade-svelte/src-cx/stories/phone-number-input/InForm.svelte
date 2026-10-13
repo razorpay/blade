@@ -2,8 +2,7 @@
   import {
     Button,
     Form,
-    ModalStack,
-    LayerHost,
+    OverlayStack,
     PhoneNumberInput,
     Text,
   } from '../../index';
@@ -36,5 +35,4 @@
     </div>
   </Form>
 </div>
-<ModalStack />
-<LayerHost />
+<OverlayStack />

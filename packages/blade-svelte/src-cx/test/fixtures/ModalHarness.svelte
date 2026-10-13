@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { DialogDismissEvent } from '../../runes';
   import Modal from '../../components/modal/Modal.svelte';
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { InfoIcon } from '../../icons';
 
   interface Props {
@@ -63,7 +63,7 @@
     <button data-testid="trigger" onclick={() => (isOpen = true)}>Open</button>
   </main>
   {#if withHost}
-    <LayerHost testID="host" />
+    <OverlayStack testID="host" />
   {/if}
 </div>
 

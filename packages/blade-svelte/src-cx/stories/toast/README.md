@@ -11,17 +11,17 @@ const toast = showToast({ message: 'Card removed', color: 'neutral',
 toast.dismissed.then((reason) => …); // timeout | dismiss | evicted | cleared
 ```
 
-| Option | Notes |
-| --- | --- |
-| `message` | Or pass a string to `showToast` |
-| `color` | Style axis (the shared intents); `negative` is a `role="alert"`, the rest `status` |
-| `duration` | ms; `0` stays until dismissed; the default (blade 4000) when omitted |
-| `leading` | Before the content: an icon (`IconSource`) in place of the colour's default glyph, or a snippet with an asset (a bank's logo), as Figma's leading item is an icon or an asset. Without it, the colour's glyph |
-| `action` | One inline button; pressing it dismisses |
-| `closeLabel` | The dismiss button's localized name — the library ships no copy. No label, no button; with one, a hairline and the cross follow the action |
-| `onDismiss(reason)` | Same reason the handle's promise settles with |
+| Option              | Notes                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `message`           | Or pass a string to `showToast`                                                                                                                                                                               |
+| `color`             | Style axis (the shared intents); `negative` is a `role="alert"`, the rest `status`                                                                                                                            |
+| `duration`          | ms; `0` stays until dismissed; the default (blade 4000) when omitted                                                                                                                                          |
+| `leading`           | Before the content: an icon (`IconSource`) in place of the colour's default glyph, or a snippet with an asset (a bank's logo), as Figma's leading item is an icon or an asset. Without it, the colour's glyph |
+| `action`            | One inline button; pressing it dismisses                                                                                                                                                                      |
+| `closeLabel`        | The dismiss button's localized name — the library ships no copy. No label, no button; with one, a hairline and the cross follow the action                                                                    |
+| `onDismiss(reason)` | Same reason the handle's promise settles with                                                                                                                                                                 |
 
-Mount one `<ToastStack placement accessibilityLabel />` beside the `LayerHost`.
+Mount one `<ToastStack placement accessibilityLabel />` beside the `OverlayStack`.
 The stack brings the default numbers (capacity 3, duration), so `showToast`
 before it mounts shows nothing. Hover or focus inside the stack holds every
 timer.
@@ -35,9 +35,8 @@ height, three deep — until a hover expands them; on a phone the stack
 collapses past one toast and a tap expands it. Either also holds the timers.
 Every move takes 480ms on the standard curve (`layoutToastStack` in `runes/toast/stack-layout.ts`
 does the maths; the numbers are `resolveToastStack`'s). Native flows the
-toasts in a column instead. Toasts render into the LayerHost — over open modals — but push no
+toasts in a column instead. Toasts render into the OverlayStack — over open modals — but push no
 layer: nothing goes inert, focus stays where it is, Escape is not theirs.
-`provideToasts()` gives an embedded surface its own queue.
 
 ## Why `leading` is an option
 
@@ -48,9 +47,9 @@ action or the dismiss cross, which sit 12px apart. `leading` is one option
 with two shapes, and the toast places each: an icon draws as its glyph, a
 snippet goes in the glyph's place.
 
-| | Spacing |
-| --- | --- |
-| Edge → leading item | 12px |
-| Leading item → content | 8px |
-| Content → action (or cross) | 12px |
-| Action → cross | 12px |
+|                             | Spacing |
+| --------------------------- | ------- |
+| Edge → leading item         | 12px    |
+| Leading item → content      | 8px     |
+| Content → action (or cross) | 12px    |
+| Action → cross              | 12px    |

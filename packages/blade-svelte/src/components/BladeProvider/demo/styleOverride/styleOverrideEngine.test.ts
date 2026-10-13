@@ -79,7 +79,7 @@ describe('styleOverride demo engine', () => {
 
     it('writes an instance snippet with its import', () => {
       const snippet = buildInstanceSnippet('Button', slotClasses.Button);
-      expect(snippet).toContain("import { Button } from '@razorpay/blade-svelte';");
+      expect(snippet).toContain("import { Button } from '@razorpay/blade-svelte/components';");
       expect(snippet).toContain("root: 'bg-(--brand-bg)',");
     });
 

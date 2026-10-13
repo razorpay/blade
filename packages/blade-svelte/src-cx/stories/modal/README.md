@@ -4,7 +4,7 @@ The component is `packages/blade/components/modal/Modal.svelte` over the
 `createDialog` model. Its styles (`components/modal/styles.ts`) own the
 `variant`, `size` and `pace` axes, the enter/exit transitions and the close icon.
 `size` is the desktop width: a fixed column by default, or `full` to span the
-`LayerHost` frame. On mobile every panel spans the viewport.
+`OverlayStack` frame. On mobile every panel spans the viewport.
 
 ## Variants
 
@@ -42,8 +42,7 @@ handle strip and header; a drawer toward its own edge, by its header (it has
 no handle). A sheet shows its handle only while draggable, and without it
 the close button sits where a modal's does. Defaults: `true` for `sheet`,
 `false` for the drawers, as in Blade. It is a style prop, so BladeProvider
-sets it too — `{ BottomSheet: { isDraggable: false }, Drawer: { isDraggable:
-true } }`, or `Modal` for every modal.
+sets it too — `{ BottomSheet: { isDraggable: false }, Drawer: { isDraggable: true } }`, or `Modal` for every modal.
 
 ## Chrome
 
@@ -59,20 +58,20 @@ it.
 
 ## Behaviour props
 
-| Prop | Notes |
-| --- | --- |
-| `isOpen` | Bindable; written `false` whenever the modal closes itself |
-| `onDismiss` | `({ source, close })` on every dismissal — `source` is `cross`, `blur`, `escape`, `back` or `drag` — whether or not it is dismissible. Dismissible: the modal closes right after the handler, and nothing prevents it. Not dismissible: it stays open until the handler (or anything later) calls `close`. Not fired for a snippet's `close` or when the host sets `isOpen = false` |
-| `isDismissible` | Default `true`. Whether a dismissal closes it by itself, and whether the close button shows |
-| `role` | `modal` (default) or `alertdialog` |
-| `title`, `subtitle`, `header` | `title` is a string (Figma's Heading/SmallSemibold, 18/24, on a modal or drawer; Body/LargeSemibold, 16/24, on a sheet) or a snippet, and names the modal either way; `subtitle` is one muted line under it (Blade's body small) and describes the modal (`aria-describedby`); `header({ title, subtitle, close })` lays out the header: it receives the drawn title and subtitle as snippets and places them among its own content — a back button before the title, a badge beside it, a line under them. Render `title`, which names the modal. Without `header` the two render on their own |
-| `chrome` | Things that hang off the panel; see Chrome |
-| `body`, `children` | `body` renders in the component's padded, scrolling container; `children` render raw, owning their box, and win when both are given |
-| `footer` | The component's padded footer: actions in a row |
-| `showBackButton`, `onBackButtonClick({ close })`, `backLabel` | As in Blade's BottomSheetHeader, on every variant: a back button first in the header (a 20px chevron on the title line, 16px before what follows), named by `backLabel` (default `Back`). A step back, not a dismissal: no `onDismiss`. A header with only the back button still draws |
-| `{ close }` | `header`, `body`, `children`, `footer` and `chrome` all receive it for their own actions (Cancel, Done, a back button); it closes without a dismissal |
-| `closeLabel` | The close button's name, default `Close`. The button shows while the modal is dismissible, as in Blade: in the header, or floating at the top edge when there is none |
-| `accessibilityLabel`, `testID`, `class` | The only escape hatches; `class` is merged last onto the panel |
+| Prop                                                          | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isOpen`                                                      | Bindable; written `false` whenever the modal closes itself                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `onDismiss`                                                   | `({ source, close })` on every dismissal — `source` is `cross`, `blur`, `escape`, `back` or `drag` — whether or not it is dismissible. Dismissible: the modal closes right after the handler, and nothing prevents it. Not dismissible: it stays open until the handler (or anything later) calls `close`. Not fired for a snippet's `close` or when the host sets `isOpen = false`                                                                                                                                                                                                             |
+| `isDismissible`                                               | Default `true`. Whether a dismissal closes it by itself, and whether the close button shows                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `role`                                                        | `modal` (default) or `alertdialog`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `title`, `subtitle`, `header`                                 | `title` is a string (Figma's Heading/SmallSemibold, 18/24, on a modal or drawer; Body/LargeSemibold, 16/24, on a sheet) or a snippet, and names the modal either way; `subtitle` is one muted line under it (Blade's body small) and describes the modal (`aria-describedby`); `header({ title, subtitle, close })` lays out the header: it receives the drawn title and subtitle as snippets and places them among its own content — a back button before the title, a badge beside it, a line under them. Render `title`, which names the modal. Without `header` the two render on their own |
+| `chrome`                                                      | Things that hang off the panel; see Chrome                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `body`, `children`                                            | `body` renders in the component's padded, scrolling container; `children` render raw, owning their box, and win when both are given                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `footer`                                                      | The component's padded footer: actions in a row                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `showBackButton`, `onBackButtonClick({ close })`, `backLabel` | As in Blade's BottomSheetHeader, on every variant: a back button first in the header (a 20px chevron on the title line, 16px before what follows), named by `backLabel` (default `Back`). A step back, not a dismissal: no `onDismiss`. A header with only the back button still draws                                                                                                                                                                                                                                                                                                          |
+| `{ close }`                                                   | `header`, `body`, `children`, `footer` and `chrome` all receive it for their own actions (Cancel, Done, a back button); it closes without a dismissal                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `closeLabel`                                                  | The close button's name, default `Close`. The button shows while the modal is dismissible, as in Blade: in the header, or floating at the top edge when there is none                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `accessibilityLabel`, `testID`, `class`                       | The only escape hatches; `class` is merged last onto the panel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 | `leading` | Before the title, 8px from it: an icon (`leading={InfoIcon}`), drawn as a glyph on the title's 28px first line, or a snippet with an asset or avatar (Modal and BottomSheet) |
 | `titleSuffix` | Beside the title, 8px from it: a Counter or a Badge |
@@ -80,15 +79,15 @@ it.
 
 ### Why `leading`, `titleSuffix` and `trailing` are props
 
-Blade DSL's headers (Figma's _Modal Header, _Bottom Sheet Header, _Drawer
+Blade DSL's headers (Figma's \_Modal Header, \_Bottom Sheet Header, \_Drawer
 Header) space each part differently, so the header places them itself:
 
-| Part | Gap | Box |
-| --- | --- | --- |
-| leading item → title | 8px | an icon: a 20px glyph on the 28px title line; a snippet: Figma's 32px slot, centred on the title block |
-| title → suffix | 8px | centred on the 28px title line |
-| title block → trailing item | 16px | 28px tall |
-| trailing item → close button | 16px | the close button is a 20px glyph in a 28px box, 24px from the top and the end |
+| Part                         | Gap  | Box                                                                                                    |
+| ---------------------------- | ---- | ------------------------------------------------------------------------------------------------------ |
+| leading item → title         | 8px  | an icon: a 20px glyph on the 28px title line; a snippet: Figma's 32px slot, centred on the title block |
+| title → suffix               | 8px  | centred on the 28px title line                                                                         |
+| title block → trailing item  | 16px | 28px tall                                                                                              |
+| trailing item → close button | 16px | the close button is a 20px glyph in a 28px box, 24px from the top and the end                          |
 
 The header itself is 20px above and beside, 16px above its hairline, at
 every width on a modal, 12px under the handle strip on a sheet, and
@@ -101,10 +100,10 @@ ported yet. A BottomSheet has no `size`: on desktop (`d`) it is the small column
 
 Open modals register on the layer stack. One Escape listener
 reaches only the top layer, lower layers go `inert`, and the app's back
-handler calls `globalLayers.back()` (or the `provideLayers()` instance) before
+handler calls `globalLayers.back()` before
 its own navigation.
 
-Mount one `<LayerHost />` inside the frame modals must stay within (the
+Mount one `<OverlayStack />` inside the frame modals must stay within (the
 checkout modal card). Modals render into it, and everything beside the host
 is `inert` while a modal is open. The host owns the one scrim under every
 open modal: stacked modals share it, it fades in with the first panel and
@@ -150,15 +149,14 @@ const handle = openModal(RedirectNotice, {
 const proceed = await handle.result; // true, or undefined when dismissed
 ```
 
-Mount `<ModalStack />` once, beside `<LayerHost />`.
+`<OverlayStack />`, mounted once, renders them.
 
-| | |
-| --- | --- |
+|                                 |                                                                                                                                                                                                                                          |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `openModal(component, options)` | `component` may be a **promise** (a dynamic `import()` works as is): the modal opens at once and shows its shimmer (`ModalPending.svelte`) until it arrives. A failed load closes it, calls `onLoadError` and the `captureError` adapter |
-| options | `props`, `title`, `subtitle`, `closeLabel`, `pendingLabel`, `isDismissible`, `onDismiss({ source, close })`, `onLoadError`, `role`, `accessibilityLabel`, `testID`, `class`, plus Modal's style props (`variant`, `size`, `pace`) |
-| the component | gets one extra prop, `modal: { close(result?) }` |
-| handle | `close(result?)`, `result` (settles once: the close value, `undefined` on a dismiss), `update(props)` |
-| `provideOverlays()` / `getOverlays()` | A stack of its own for an embedded surface or a test; `openModal` uses the page's global one |
+| options                         | `props`, `title`, `subtitle`, `closeLabel`, `pendingLabel`, `isDismissible`, `onDismiss({ source, close })`, `onLoadError`, `role`, `accessibilityLabel`, `testID`, `class`, plus Modal's style props (`variant`, `size`, `pace`)        |
+| the component                   | gets one extra prop, `modal: { close(result?) }`                                                                                                                                                                                         |
+| handle                          | `close(result?)`, `result` (settles once: the close value, `undefined` on a dismiss), `update(props)`                                                                                                                                    |
 
 An entry leaves the DOM when its exit transition ends (Modal's new
 `onClosed`), not after a guessed timeout. Nothing closes an open modal when

@@ -24,7 +24,7 @@ way in on touch and on native — and a press elsewhere closes.
 
 ## Placement
 
-The bubble renders into the `LayerHost` (so the card's scroll and overflow
+The bubble renders into the `OverlayStack` (so the card's scroll and overflow
 cannot clip it) and joins the layers only as a floating layer: the page never
 goes inert, and Escape closes only the topmost overlay — the tooltip, not a
 popover or modal beneath it.

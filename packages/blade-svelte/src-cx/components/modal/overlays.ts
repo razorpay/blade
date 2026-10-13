@@ -24,7 +24,7 @@ export type { ModalComponent, ModalControl, ModalHandle } from '../../runes/moda
 /** One stack for the page; an embedded surface provides its own. */
 export const globalOverlays: Overlays = createOverlays<ModalStyle>();
 
-/** Call during component init; descendants and their ModalStack share it. */
+/** Call during component init; descendants and their OverlayStack share it. */
 export function provideOverlays(): Overlays {
   return provide(createOverlays<ModalStyle>());
 }
@@ -35,7 +35,7 @@ export function getOverlays(): Overlays {
 
 /**
  * Opens a modal from anywhere — a flow in a `.ts` file as much as a
- * component — on the page's stack. It needs a mounted `ModalStack`.
+ * component — on the page's stack. It needs a mounted `OverlayStack`.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- a component's props are its own
 export function openModal<P extends Record<string, any>, R = unknown>(

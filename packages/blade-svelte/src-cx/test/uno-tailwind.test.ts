@@ -10,7 +10,7 @@ import { createRequire } from 'node:module';
 import postcss from 'postcss';
 import { createGenerator } from 'unocss';
 import { describe, expect, it } from 'vitest';
-import { bladeUnoConfig } from '../../uno.config';
+import bladeUnoConfig from '../../uno/config';
 import type { ThemeConfig } from '../../uno/tailwind';
 
 type Rules = Record<string, Record<string, string>>;

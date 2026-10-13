@@ -78,14 +78,14 @@ describe('PhoneNumberInput', () => {
       });
   });
 
-  it('reports a missing ModalStack instead of failing silently', () => {
+  it('reports a missing OverlayStack instead of failing silently', () => {
     const captureError = vi.fn();
     const { getByTestId, queryByTestId } = render(PhoneNumberInputHarness, {
       props: { withStack: false, captureError },
     });
     return fireEvent.click(getByTestId('phone-country')).then(() => {
       expect(captureError).toHaveBeenCalledTimes(1);
-      expect(String(captureError.mock.calls[0]?.[0])).toContain('ModalStack');
+      expect(String(captureError.mock.calls[0]?.[0])).toContain('OverlayStack');
       expect(queryByTestId('phone-picker')).toBeNull();
     });
   });

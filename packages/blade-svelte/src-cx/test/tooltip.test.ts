@@ -104,7 +104,7 @@ describe('Tooltip', () => {
     expect(queryByRole('tooltip')).toBeNull();
   });
 
-  it('renders into the LayerHost without making the page inert', async () => {
+  it('renders into the OverlayStack without making the page inert', async () => {
     const { getByTestId, getByRole } = render(TooltipHarness, {
       props: { withHost: true },
     });

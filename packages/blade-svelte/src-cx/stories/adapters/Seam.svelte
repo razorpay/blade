@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Button, Form, TextInput, provideAdapters } from '../../index';
+  import { BladeProvider, Button, Form, TextInput } from '../../index';
+  import type { BladeAdapters } from '../../index';
   import { delay, describeConstraint, stamp } from '../helpers';
 
   const FIELDS = ['line1', 'line2', 'city', 'state', 'pincode', 'landmark'];
@@ -10,9 +11,8 @@
     log = [`${stamp()} ${line}`, ...log].slice(0, 30);
   }
 
-  // Must run during init of an ancestor of the Form; descendants read it
-  // with getAdapters().
-  provideAdapters({
+  // BladeProvider provides them to everything under it.
+  const adapters: BladeAdapters = {
     track: (event, payload) =>
       record(`track ${event} ${JSON.stringify(payload)}`),
     haptics: {
@@ -25,21 +25,23 @@
       handle.scrollIntoView();
       handle.focus();
     },
-  });
+  };
 </script>
 
 <div class="grid max-w-[760px] [grid-template-columns:1fr_1fr] gap-8">
-  <Form
-    name="address"
-    formatConstraintError={describeConstraint}
-    onSubmit={() => delay(800)}
-    class="grid gap-3"
-  >
-    {#each FIELDS as name (name)}
-      <TextInput {name} label={name} isRequired={name !== 'landmark'} />
-    {/each}
-    <Button type="submit" loadingAnnouncement="Saving">Save address</Button>
-  </Form>
+  <BladeProvider {adapters}>
+    <Form
+      name="address"
+      formatConstraintError={describeConstraint}
+      onSubmit={() => delay(800)}
+      class="grid gap-3"
+    >
+      {#each FIELDS as name (name)}
+        <TextInput {name} label={name} isRequired={name !== 'landmark'} />
+      {/each}
+      <Button type="submit" loadingAnnouncement="Saving">Save address</Button>
+    </Form>
+  </BladeProvider>
 
   <section class="grid [align-content:start] gap-2">
     <h2 class="text-75 leading-50 font-medium">Adapter log</h2>

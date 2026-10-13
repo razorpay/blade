@@ -4,7 +4,7 @@ import { resolveText } from '../shared/typography';
 
 /**
  * The parts of a floating panel. On web the panel is measured and placed by
- * PopoverPanel (inline left/top) inside the LayerHost; native cannot measure
+ * PopoverPanel (inline left/top) inside the OverlayStack; native cannot measure
  * into a host and places it with `nativePlacement` classes inside the root.
  * Enter/exit ride the panel's `data-state`, as everywhere. Popover and Menu
  * share it.

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, Button, Dropdown, DropdownFooter, DropdownHeader, ActionListItem, LayerHost, Text } from '../../index';
+  import { ActionList, Button, Dropdown, DropdownFooter, DropdownHeader, ActionListItem, OverlayStack, Text } from '../../index';
 
   const STATUSES = ['Captured', 'Authorized', 'Refunded', 'Failed', 'Disputed'];
 
@@ -33,5 +33,5 @@
     {/snippet}
   </Dropdown>
   <Text size="small" color="muted">Applied: {applied.join(', ') || 'none'}</Text>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

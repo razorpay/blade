@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, ActionListItem, Button, Dropdown, LayerHost, Text } from '../../index';
+  import { ActionList, ActionListItem, Button, Dropdown, OverlayStack, Text } from '../../index';
   import { ChevronDownIcon, ExternalLinkIcon } from '../../icons';
 
   let value = $state<string | readonly string[] | null>('active');
@@ -22,5 +22,5 @@
     {/snippet}
   </Dropdown>
   <Text size="small" color="muted">value: {JSON.stringify(value)}</Text>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

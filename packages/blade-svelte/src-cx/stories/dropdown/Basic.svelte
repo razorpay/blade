@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, Dropdown, ActionListItem, LayerHost, type DropdownStyleProps } from '../../index';
+  import { ActionList, Dropdown, ActionListItem, OverlayStack, type DropdownStyleProps } from '../../index';
   import { BankIcon, UpiIcon, WalletIcon } from '../../icons';
 
   interface Props {
@@ -31,5 +31,5 @@
       </ActionList>
     {/snippet}
   </Dropdown>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

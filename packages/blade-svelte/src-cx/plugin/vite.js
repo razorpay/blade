@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * `bladeIconFontPlugin()` for Vite. Icons stay SVG imports in the app's code;
+ * `bladePlugin()` for Vite. Icons stay SVG imports in the app's code;
  * this turns the ones from Blade's set and from the app's icon folders into
  * glyphs, and builds the `blade-icons` font from exactly the glyphs the build
  * loads. Plain JS: Vite loads it from node_modules, where Node strips no types.
@@ -16,7 +16,7 @@ const RESOLVED_FACE_ID = '\0virtual:blade-icons/face';
 /** Dev: how long to wait for more newly loaded glyphs before rebuilding. */
 const REBUILD_DELAY = 30;
 
-/** @typedef {import('./types.js').BladeIconFontPluginOptions} BladeIconFontPluginOptions */
+/** @typedef {import('./types.js').BladePluginOptions} BladePluginOptions */
 /** @typedef {import('./core.js').Format} Format */
 
 /** An SVG request the plugin may answer: a bare import, not `?url` or `?raw`. */
@@ -27,10 +27,10 @@ function svgFile(/** @type {string} */ id) {
 }
 
 /**
- * @param {BladeIconFontPluginOptions} [options]
+ * @param {BladePluginOptions} [options]
  * @returns {import('vite').Plugin[]}
  */
-export function bladeIconFontPlugin(options = {}) {
+export default function bladePlugin(options = {}) {
   const { formats = ['woff2'] } = options;
   /** @type {ReturnType<typeof createIconCore>} */
   let core;
@@ -156,5 +156,3 @@ export function bladeIconFontPlugin(options = {}) {
     },
   ];
 }
-
-export default bladeIconFontPlugin;

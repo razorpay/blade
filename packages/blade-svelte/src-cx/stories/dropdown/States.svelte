@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, Dropdown, DropdownHeader, ActionListItem, LayerHost } from '../../index';
+  import { ActionList, Dropdown, DropdownHeader, ActionListItem, OverlayStack } from '../../index';
 </script>
 
 <div class="relative flex h-72 max-w-2xl flex-row gap-4 p-2">
@@ -25,5 +25,5 @@
       {/snippet}
     </Dropdown>
   </div>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

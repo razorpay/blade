@@ -1,6 +1,6 @@
 <script lang="ts">
   import BladeProvider from '../../components/blade-provider/BladeProvider.svelte';
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import Modal from '../../components/modal/Modal.svelte';
   import { BottomSheet } from '../../components/bottom-sheet';
   import { Drawer } from '../../components/drawer';
@@ -14,7 +14,7 @@
 </script>
 
 <BladeProvider {defaults}>
-  <LayerHost />
+  <OverlayStack />
   <Modal isOpen title="Modal" testID="modal">
     {#snippet children()}<p>Body</p>{/snippet}
   </Modal>

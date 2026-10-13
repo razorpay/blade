@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, Button, Dropdown, ActionListItem, LayerHost, Text } from '../../index';
+  import { ActionList, Button, Dropdown, ActionListItem, OverlayStack, Text } from '../../index';
   import { ChevronDownIcon } from '../../icons';
 
   const RANGES = [
@@ -26,5 +26,5 @@
     {/snippet}
   </Dropdown>
   <Text size="small" color="muted">value: {JSON.stringify(value)}</Text>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

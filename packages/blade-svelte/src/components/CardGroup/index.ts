@@ -21,7 +21,7 @@
  *     CardGroupItem,
  *     CardGroupCollapsibleItem,
  *     CardGroupCollapsibleItemBody,
- *   } from '@razorpay/blade-svelte';
+ *   } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <CardGroup accessibilityLabel="Payment methods">

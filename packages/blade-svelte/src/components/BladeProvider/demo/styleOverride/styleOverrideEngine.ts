@@ -377,7 +377,7 @@ export const buildInstanceSnippet = (
   slotClasses: SlotClassMap = {},
 ): string => {
   const override = resolveStyleOverride(slotClasses);
-  const importLine = `import { ${component} } from '@razorpay/blade-svelte';`;
+  const importLine = `import { ${component} } from '@razorpay/blade-svelte/components';`;
 
   if (Object.keys(override).length === 0) {
     return `${importLine}\n\n<${component} />`;
@@ -409,7 +409,7 @@ ${indentedSlotEntries(override, '        ')}
     },`,
     );
 
-  const header = `import { BladeProvider } from '@razorpay/blade-svelte';
+  const header = `import { BladeProvider } from '@razorpay/blade-svelte/components';
 import { bladeTheme } from '@razorpay/blade-core/tokens';
 `;
 

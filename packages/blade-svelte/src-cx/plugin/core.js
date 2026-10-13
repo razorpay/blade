@@ -72,8 +72,7 @@ export function createIconCore({ root, extra }) {
     /** @type {{ name: string; file: string }[]} */
     const found = [];
     for (const folder of folders) {
-      if (!fs.existsSync(folder))
-        throw new Error(`bladeIconFontPlugin: no icon folder at ${folder}`);
+      if (!fs.existsSync(folder)) throw new Error(`bladePlugin: no icon folder at ${folder}`);
       for (const entry of fs.readdirSync(folder)) {
         if (entry.endsWith('.svg'))
           found.push({ name: entry.slice(0, -4), file: path.join(folder, entry) });
@@ -81,22 +80,19 @@ export function createIconCore({ root, extra }) {
     }
     found.sort((a, b) => a.name.localeCompare(b.name));
     if (FIRST_EXTRA + found.length - 1 > LAST_EXTRA)
-      throw new Error('bladeIconFontPlugin: too many extra icons');
+      throw new Error('bladePlugin: too many extra icons');
     const seen = new Set();
     extraByFile = new Map(
       found.map(({ name, file }, index) => {
         if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(name)) {
           throw new Error(
-            `bladeIconFontPlugin: icon file "${file}" must be named in kebab-case, e.g. rocket-launch.svg`,
+            `bladePlugin: icon file "${file}" must be named in kebab-case, e.g. rocket-launch.svg`,
           );
         }
         if (name in codes) {
-          throw new Error(
-            `bladeIconFontPlugin: "${file}" has a Blade icon's name ("${name}"); rename it`,
-          );
+          throw new Error(`bladePlugin: "${file}" has a Blade icon's name ("${name}"); rename it`);
         }
-        if (seen.has(name))
-          throw new Error(`bladeIconFontPlugin: two icon files are named "${name}.svg"`);
+        if (seen.has(name)) throw new Error(`bladePlugin: two icon files are named "${name}.svg"`);
         seen.add(name);
         return [file, { name, code: FIRST_EXTRA + index, file }];
       }),

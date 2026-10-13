@@ -33,7 +33,7 @@ export interface ToastStack<S extends object> {
   varsOf(id: number): ToastVars;
   /** Whether a toast is drawn: those deep behind a collapsed stack are not. */
   isShown(id: number): boolean;
-  /** On the root: renders it into the LayerHost once there is a toast. */
+  /** On the root: renders it into the OverlayStack once there is a toast. */
   readonly root: Attachment<HTMLElement>;
   /** On a toast's wrapper: measures it once, at its first paint. */
   measure(id: number): Attachment<HTMLElement>;
@@ -118,7 +118,7 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
       };
     },
     isShown: (id) => (placements[id]?.opacity ?? 1) === 1,
-    // Into the LayerHost, so toasts stay inside its frame and over open
+    // Into the OverlayStack, so toasts stay inside its frame and over open
     // modals. Looked up when a toast shows: the host may mount after this.
     root(node) {
       const host = layers.host();

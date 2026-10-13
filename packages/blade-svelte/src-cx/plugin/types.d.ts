@@ -1,4 +1,4 @@
-export interface BladeIconFontPluginOptions {
+export interface BladePluginOptions {
   /**
    * The app's icon folders, relative to the project root. Any plain import
    * of an SVG in them (`import RocketIcon from './icons/rocket.svg'`) becomes

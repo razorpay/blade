@@ -1,12 +1,12 @@
 // @ts-check
 /**
- * `bladeIconFontPlugin()` for webpack 5. As the Vite plugin: SVG imports from
+ * `bladePlugin()` for webpack 5. As the Vite plugin: SVG imports from
  * Blade's set and the app's icon folders become glyphs, and the build emits a
  * `blade-icons` font of exactly the glyphs it loaded.
  *
  * ```js
- * const { bladeIconFontPlugin } = require('@razorpay/blade-svelte/configs/webpack');
- * module.exports = { plugins: [bladeIconFontPlugin({ extra: './src/icons' })] };
+ * import bladePlugin from '@razorpay/blade-svelte/configs/webpack';
+ * export default { plugins: [bladePlugin({ extra: './src/icons' })] };
  * ```
  */
 import { fileURLToPath } from 'node:url';
@@ -14,17 +14,17 @@ import { createIconCore, faceModule } from './core.js';
 // eslint-disable-next-line import/extensions -- Node ESM resolves no extension
 import { REGISTRY } from './webpack-state.js';
 
-const NAME = 'BladeIconFontPlugin';
+const NAME = 'BladePlugin';
 const LOADER = fileURLToPath(new URL('./webpack-loader.js', import.meta.url));
 const FACE_FILE = fileURLToPath(new URL('./face.js', import.meta.url));
 
-/** @typedef {import('./types.js').BladeIconFontPluginOptions} BladeIconFontPluginOptions */
+/** @typedef {import('./types.js').BladePluginOptions} BladePluginOptions */
 /** @typedef {import('./core.js').Format} Format */
 
 let instances = 0;
 
-export class BladeIconFontPlugin {
-  /** @param {BladeIconFontPluginOptions} [options] */
+export class BladePlugin {
+  /** @param {BladePluginOptions} [options] */
   constructor(options = {}) {
     this.options = options;
     this.id = `blade-icons-${(instances += 1)}`;
@@ -123,9 +123,7 @@ export class BladeIconFontPlugin {
   }
 }
 
-/** @param {BladeIconFontPluginOptions} [options] */
-export function bladeIconFontPlugin(options) {
-  return new BladeIconFontPlugin(options);
+/** @param {BladePluginOptions} [options] */
+export default function bladePlugin(options) {
+  return new BladePlugin(options);
 }
-
-export default bladeIconFontPlugin;

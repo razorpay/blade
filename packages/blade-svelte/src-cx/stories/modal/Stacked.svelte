@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, LayerHost } from '../../index';
+  import { Button, OverlayStack } from '../../index';
   import { Modal } from '../../components/modal';
 
   let isOpen = $state(false);
@@ -12,7 +12,7 @@
   <div class="p-6">
     <Button class="w-40" onClick={() => (isOpen = true)}>Open modal</Button>
   </div>
-  <LayerHost />
+  <OverlayStack />
 </div>
 
 <Modal bind:isOpen variant="sheet" title="Saved cards" closeLabel="Close">

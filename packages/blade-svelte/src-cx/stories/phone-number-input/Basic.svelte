@@ -1,8 +1,7 @@
 <script lang="ts">
   import {
     BladeProvider,
-    ModalStack,
-    LayerHost,
+    OverlayStack,
     PhoneNumberInput,
     Text,
   } from '../../index';
@@ -52,6 +51,5 @@
     >value: <span data-testid="value">{value || '—'}</span> · country: <span data-testid="country">{country}</span></Text
   >
 </div>
-<ModalStack />
-<LayerHost />
+<OverlayStack />
 </BladeProvider>

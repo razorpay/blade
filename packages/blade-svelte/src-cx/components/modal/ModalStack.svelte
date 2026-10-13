@@ -6,7 +6,7 @@
 
   // Renders the modals `openModal` asked for, one Modal each: the layer
   // stack, the inert page, focus, presence and the native sheet are all
-  // Modal's. Mount it once, beside the LayerHost.
+  // Modal's. OverlayStack mounts it; it is not exported on its own.
   const overlays = getOverlays();
   const mounted = hostStack(overlays);
 </script>

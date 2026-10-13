@@ -1,11 +1,11 @@
 import type { Compiler } from 'webpack';
-import type { BladeIconFontPluginOptions } from './types.js';
+import type { BladePluginOptions } from './types.js';
 
-export type { BladeIconFontPluginOptions };
+export type { BladePluginOptions };
 
-/** The webpack 5 font plugin; `bladeIconFontPlugin()` makes one. */
-export declare class BladeIconFontPlugin {
-  constructor(options?: BladeIconFontPluginOptions);
+/** The webpack 5 font plugin; `bladePlugin()` makes one. */
+export declare class BladePlugin {
+  constructor(options?: BladePluginOptions);
   apply(compiler: Compiler): void;
 }
 
@@ -15,12 +15,12 @@ export declare class BladeIconFontPlugin {
  * every icon import is its SVG's URL (give SVGs an asset rule).
  *
  * ```js
- * import { bladeIconFontPlugin } from '@razorpay/blade-svelte/configs/webpack';
+ * import bladePlugin from '@razorpay/blade-svelte/configs/webpack';
  *
- * export default { plugins: [bladeIconFontPlugin({ extra: './src/icons' })] };
+ * export default { plugins: [bladePlugin({ extra: './src/icons' })] };
  * ```
  */
-export declare function bladeIconFontPlugin(
-  options?: BladeIconFontPluginOptions,
-): BladeIconFontPlugin;
-export default bladeIconFontPlugin;
+declare function bladePlugin(
+  options?: BladePluginOptions,
+): BladePlugin;
+export default bladePlugin;

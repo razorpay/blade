@@ -8,8 +8,8 @@ import type { Stats } from 'webpack';
 import { prepareSvg } from '../svg.js';
 import { buildFont } from '../font.js';
 import { createIconCore, ICON_SVGS, PACKAGE_ICONS } from '../core.js';
-import { bladeIconFontPlugin as vitePlugin } from '../vite.js';
-import { bladeIconFontPlugin as webpackPlugin } from '../webpack.js';
+import vitePlugin from '../vite.js';
+import webpackPlugin from '../webpack.js';
 
 const ICONS = path.resolve(__dirname, '../../icons');
 const svgOf = (name: string): string =>
@@ -226,7 +226,7 @@ function startVite(
   };
 }
 
-describe('bladeIconFontPlugin (Vite)', () => {
+describe('bladePlugin (Vite)', () => {
   it('turns icon SVGs into glyph modules and leaves other SVGs and ?url alone', async () => {
     const root = tempRoot();
     const vite = startVite({ extra: './src/icons' }, root);
@@ -283,7 +283,7 @@ describe('bladeIconFontPlugin (Vite)', () => {
   });
 });
 
-describe('bladeIconFontPlugin (webpack)', () => {
+describe('bladePlugin (webpack)', () => {
   it('compiles a font of the imported icons and points the face at it', async () => {
     // eslint-disable-next-line import/no-extraneous-dependencies -- hoisted from packages/blade's toolchain
     const { default: webpack } = await import('webpack');

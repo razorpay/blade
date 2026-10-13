@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { DialogDismissEvent } from '../../runes';
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { Drawer, type DrawerStyleProps } from '../../components/drawer';
 
   interface Props {
@@ -27,7 +27,7 @@
 </script>
 
 <button data-testid="trigger" onclick={() => (isOpen = true)}>Open</button>
-<LayerHost testID="host" />
+<OverlayStack testID="host" />
 
 <Drawer
   bind:isOpen

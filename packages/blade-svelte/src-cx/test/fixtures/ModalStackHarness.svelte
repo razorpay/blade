@@ -1,6 +1,5 @@
 <script lang="ts">
-  import ModalStack from '../../components/modal/ModalStack.svelte';
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import {
     provideOverlays,
     type Overlays,
@@ -23,5 +22,4 @@
 </script>
 
 <main data-testid="page">Checkout</main>
-<ModalStack />
-<LayerHost />
+<OverlayStack />

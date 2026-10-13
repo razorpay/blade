@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { provideLayers } from '../../runes/layer/layers';
   import Popover from '../../components/popover/Popover.svelte';
   import { InfoIcon } from '../../icons';
@@ -33,4 +33,4 @@
   {#snippet content()}<p>Gross ₹100</p>{/snippet}
   {#snippet footer({ close })}<button type="button" onclick={close}>Settle</button>{/snippet}
 </Popover>
-<LayerHost />
+<OverlayStack />

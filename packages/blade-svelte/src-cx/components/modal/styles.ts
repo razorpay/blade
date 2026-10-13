@@ -90,7 +90,7 @@ export interface ModalStyleProps {
 // app/v2/modules/common/components/Modal.svelte. Semantic tokens only —
 // merchant theming reaches every class through the CSS-var seam. Enter/exit
 // are CSS transitions keyed on the root's data-state, so an interrupted open
-// reverses from where it is; the scrim is the LayerHost's (../layer-host),
+// reverses from where it is; the scrim is the OverlayStack's (../overlay-stack),
 // one under every open modal, and fades at the default pace here.
 const PACE: Record<Axis<'pace'>, string> = {
   default: 'duration-moderate ease-entrance motion-reduce:transition-none',

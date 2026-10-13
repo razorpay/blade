@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IconButton, LayerHost, Menu, MenuDivider, MenuItem, Text } from '../../index';
+  import { IconButton, OverlayStack, Menu, MenuDivider, MenuItem, Text } from '../../index';
   import { CheckIcon, CloseIcon, CopyIcon, MoreHorizontalIcon, UserIcon } from '../../icons';
 
   interface Props {
@@ -41,5 +41,5 @@
     {/snippet}
   </Menu>
   <Text size="small" color="muted">chose: <span data-testid="chose">{last}</span></Text>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>
