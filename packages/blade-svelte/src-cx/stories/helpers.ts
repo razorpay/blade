@@ -1,5 +1,13 @@
 import type { StoryMeta } from './types';
 
+/**
+ * A README for the docs page: without its H1, which the page's own title
+ * (from the story's `title`) already shows.
+ */
+export function readmeBody(readme: string): string {
+  return readme.replace(/^# [^\n]*\n+/, '');
+}
+
 /** Story-only helpers: fake latency and a card-number mask for the demos. */
 export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => {
@@ -127,7 +135,7 @@ export function toExample(raw: string, args: ArgsRecord): string {
       // An icon picked by name from the set: the icon itself.
       .replace(/\bglyphs\["(\w+)"\]/g, '$1')
       // The paths an app imports from, not the stories' own.
-      .replace(/(['"])(?:\.\.\/)+index\1/g, "'@razorpay/blade-svelte'")
+      .replace(/(['"])(?:\.\.\/)+index\1/g, "'@razorpay/blade-svelte/components'")
       .replace(/(['"])(?:\.\.\/)+icons(?:\/glyphs)?\1/g, "'@razorpay/blade-svelte/icons'")
       .replace(/\n{3,}/g, '\n\n')
       .replace(/\n(?:[ \t]*\n)+(<\/script>)/g, '\n$1')

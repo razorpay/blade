@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LayerHost, Tooltip } from '../../index';
+  import { OverlayStack, Tooltip } from '../../index';
   import type { Placement } from '../../index';
 
   interface Props {
@@ -29,5 +29,5 @@
       </Tooltip>
     </div>
   {/each}
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

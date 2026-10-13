@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, Dropdown, DropdownHeader, ActionListItem, ActionListSection, LayerHost } from '../../index';
+  import { ActionList, Dropdown, DropdownHeader, ActionListItem, ActionListSection, OverlayStack } from '../../index';
 
   const BANKS = {
     Popular: ['HDFC Bank', 'ICICI Bank', 'State Bank of India', 'Axis Bank'],
@@ -26,5 +26,5 @@
       </ActionList>
     {/snippet}
   </Dropdown>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

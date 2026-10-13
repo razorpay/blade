@@ -3,7 +3,7 @@
     BladeProvider,
     Button,
     Checkbox,
-    LayerHost,
+    OverlayStack,
     RadioGroup,
     Radio,
     Switch,
@@ -50,7 +50,7 @@
     <Switch accessibilityLabel="Remember me" />
     <Button onClick={() => (isOpen = true)}>Continue</Button>
     <Button variant="secondary" size="small">Own prop: small</Button>
-    <LayerHost />
+    <OverlayStack />
   </div>
   <Modal bind:isOpen title="Confirm payment">
     {#snippet body()}

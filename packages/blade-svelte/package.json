@@ -25,11 +25,6 @@
     "blade"
   ],
   "exports": {
-    ".": {
-      "types": "./src-cx/index.ts",
-      "svelte": "./src-cx/index.ts",
-      "default": "./src-cx/index.ts"
-    },
     "./blade.css": "./src-cx/blade.css",
     "./icons": {
       "types": "./src-cx/icons/index.d.ts",
@@ -44,8 +39,8 @@
       "default": "./src-cx/plugin/webpack.js"
     },
     "./configs/uno": {
-      "types": "./uno.config.ts",
-      "default": "./uno.config.ts"
+      "types": "./uno/config.ts",
+      "default": "./uno/config.ts"
     },
     "./components": {
       "types": "./src-cx/components-entry.ts",
@@ -58,7 +53,6 @@
     },
     "./package.json": "./package.json"
   },
-  "svelte": "./src-cx/index.ts",
   "files": [
     "dist",
     "!dist/**/__tests__",
@@ -73,11 +67,10 @@
     "!src/**/*.stories.svelte",
     "!src/**/*.test.ts",
     "!src/**/*.test.svelte",
-    "uno.config.ts",
     "uno"
   ],
   "scripts": {
-    "prepare": "([ -d ../blade-core/dist ] || yarn --cwd ../blade-core build) && yarn build",
+    "prepare": "yarn build",
     "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:lib",
     "build:clean": "rm -rf dist",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
@@ -88,10 +81,8 @@
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",
     "test:coverage": "vitest run --config vitest.config.ts --coverage",
-    "dev": "npm-run-all --parallel dev:blade-core storybook",
-    "dev:blade-core": "cd ../blade-core && yarn build:watch",
+    "dev": "yarn storybook",
     "start:web": "yarn dev",
-    "prestorybook": "cd ../blade-core && yarn build",
     "storybook": "storybook dev -p 6008 -c .storybook-cx --host 0.0.0.0",
     "build-storybook": "storybook build -c .storybook-cx -o storybook-static",
     "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",
@@ -105,7 +96,6 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",
     "@razorpay/blade-core": ">=0.21.0",
-    "@razorpay/i18nify-js": "1.12.8",
     "@use-gesture/vanilla": "10.2.24",
     "class-variance-authority": "^0.7.0",
     "svg-pathdata": "^7.2.0",
@@ -117,6 +107,7 @@
     "@babel/core": "7.21.8",
     "@babel/preset-typescript": "7.16.5",
     "@playwright/test": "^1.52.0",
+    "@razorpay/i18nify-js": "1.12.8",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",
@@ -152,11 +143,15 @@
     "vitest": "3.2.6"
   },
   "peerDependencies": {
+    "@razorpay/i18nify-js": ">=1.12.8",
     "svelte": ">=5.56.10",
     "unocss": ">=66.0.0"
   },
   "peerDependenciesMeta": {
     "unocss": {
+      "optional": true
+    },
+    "@razorpay/i18nify-js": {
       "optional": true
     }
   }

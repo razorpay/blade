@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, LayerHost, Text } from '../../index';
+  import { Button, OverlayStack, Text } from '../../index';
   import { BottomSheet } from '../../components/bottom-sheet';
 
   let isOpen = $state(false);
@@ -20,7 +20,7 @@
       }}>Open sheet</Button
     >
   </div>
-  <LayerHost />
+  <OverlayStack />
 </div>
 
 <BottomSheet

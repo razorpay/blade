@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { provideLayers } from '../../runes/layer/layers';
   import ToastStack from '../../components/toast/ToastStack.svelte';
   import { provideToasts, type Toasts } from '../../components/toast/toasts';
@@ -18,4 +18,4 @@
 
 <main data-testid="page">Checkout</main>
 <ToastStack accessibilityLabel="Notifications" testID="toasts" />
-<LayerHost testID="host" />
+<OverlayStack testID="host" />

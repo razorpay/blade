@@ -1,7 +1,7 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import UnoCSS from 'unocss/vite';
-import { bladeIconFontPlugin } from '../src-cx/plugin/vite.js';
+import bladePlugin from '../src-cx/plugin/vite.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageRoot = resolve(__dirname, '..');
@@ -22,7 +22,8 @@ const config = {
     disableWhatsNewNotifications: true,
     disableTelemetry: true,
   },
-  stories: ['../src-cx/stories/**/*.stories.svelte'],
+  // Guides without a component are MDX pages.
+  stories: ['../src-cx/stories/**/*.stories.svelte', '../src-cx/stories/**/*.mdx'],
   addons: [
     getAbsolutePath('@storybook/addon-svelte-csf'),
     getAbsolutePath('@storybook/addon-docs'),
@@ -38,11 +39,15 @@ const config = {
   docs: {
     autodocs: true,
   },
+  features: {
+    // No "Getting started" checklist in the sidebar.
+    sidebarOnboardingChecklist: false,
+  },
   viteFinal: async (config) => {
     config.plugins = [
       ...(config.plugins ?? []),
       // The Icon gallery imports the whole set, so the font holds every glyph.
-      ...bladeIconFontPlugin(),
+      ...bladePlugin(),
       UnoCSS({
         configFile: resolve(packageRoot, 'uno.config.ts'),
         // Class maps live in plain `.ts` (`styles.ts`), which the default

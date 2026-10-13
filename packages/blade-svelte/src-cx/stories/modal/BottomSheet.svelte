@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, LayerHost, Text } from '../../index';
+  import { Button, OverlayStack, Text } from '../../index';
   import { BottomSheet } from '../../components/bottom-sheet';
 
   interface Props {
@@ -24,7 +24,7 @@
     <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open sheet</Button>
     <Text size="small" color="muted">Last closed by: <span data-testid="last-source">{lastSource}</span></Text>
   </div>
-  <LayerHost />
+  <OverlayStack />
 </div>
 
 <BottomSheet

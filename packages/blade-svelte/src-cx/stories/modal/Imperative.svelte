@@ -2,8 +2,7 @@
   import type { ComponentProps } from 'svelte';
   import {
     Button,
-    ModalStack,
-    LayerHost,
+    OverlayStack,
     openModal,
     Text,
   } from '../../index';
@@ -53,5 +52,4 @@
   </Button>
   <Text size="small" color="muted">answer: {answer}</Text>
 </div>
-<ModalStack />
-<LayerHost />
+<OverlayStack />

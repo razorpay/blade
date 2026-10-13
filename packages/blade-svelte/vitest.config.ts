@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { bladeIconFontPlugin } from './src-cx/plugin/vite.js';
+import bladePlugin from './src-cx/plugin/vite.js';
 
 const dir = fileURLToPath(new URL('.', import.meta.url));
 const bladeCoreRoot = resolve(dir, '../blade-core/src');
@@ -92,7 +92,7 @@ export default defineConfig({
           }),
           // As an app builds them: icons are font glyphs. Icon's own tests cover
           // the no-plugin path (a URL drawn as a mask).
-          ...bladeIconFontPlugin(),
+          ...bladePlugin(),
         ],
         resolve: {
           conditions: ['browser'],

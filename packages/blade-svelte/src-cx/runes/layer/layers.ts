@@ -35,7 +35,7 @@ export interface Layers {
   /** The scrim was tapped: asks the top layer to dismiss. Returns whether it closed. */
   dismissTop(source: 'blur'): boolean;
   /**
-   * The LayerHost's element: non-modal overlays (tooltips, popovers,
+   * The OverlayStack's element: non-modal overlays (tooltips, popovers,
    * toasts) render into it, above the surfaces box.
    */
   host(): HTMLElement | undefined;
@@ -43,11 +43,11 @@ export interface Layers {
   surfaces(): HTMLElement | undefined;
   /** The host's one scrim under every open modal; undefined without a web host. */
   scrim(): HTMLElement | undefined;
-  setHost(element: HTMLElement | undefined, parts?: LayerHostParts): void;
+  setHost(element: HTMLElement | undefined, parts?: OverlayStackParts): void;
 }
 
-/** What a web LayerHost registers beside its element. */
-export interface LayerHostParts {
+/** What a web OverlayStack registers beside its element. */
+export interface OverlayStackParts {
   surfaces?: HTMLElement;
   scrim?: HTMLElement;
 }
@@ -61,7 +61,7 @@ export interface LayerHostParts {
 export function createLayers(): Layers {
   const stack = createLayerStack<LayerEntry>();
   let hostElement: HTMLElement | undefined;
-  let hostParts: LayerHostParts = {};
+  let hostParts: OverlayStackParts = {};
   let listening = false;
 
   // Floating layers sit among the modal ones but take no part in the

@@ -156,12 +156,12 @@
     onChange: (change) => onChange?.(change),
     onCountryChange: (next) => onCountryChange?.({ country: next }),
     isCountryFixed: () => isCountryFixed,
-    // The picker is a modal on the page's stack (a mounted ModalStack), and
+    // The picker is a modal on the page's stack (a mounted OverlayStack), and
     // its body is its own chunk: neither is part of this field's cost.
     openPicker: (selectable, selected) => {
       if (!overlays.hasHost) {
         adapters.captureError?.(
-          new Error('PhoneNumberInput: the country picker needs a ModalStack')
+          new Error('PhoneNumberInput: the country picker needs an OverlayStack')
         );
         return undefined;
       }

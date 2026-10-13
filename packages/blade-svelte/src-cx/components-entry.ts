@@ -1,5 +1,5 @@
-// `@razorpay/blade-svelte/components`: the cx component library (the package
-// root, `./index`) plus Blade's Modal and BottomSheet from `src/`, which cx
+// `@razorpay/blade-svelte/components`: the cx component library (`./index`)
+// plus Blade's Modal and BottomSheet from `src/`, which cx
 // does not export yet (see `./components/index.ts`). Drawer has no `src/`
 // counterpart, so it is not here either. Blade's components read blade-core's
 // prebuilt CSS; import `@razorpay/blade-core/tokens/theme.css` for their

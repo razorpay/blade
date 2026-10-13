@@ -33,7 +33,7 @@ export interface Floating {
   readonly placed: Placed | undefined;
   readonly presence: ReturnType<typeof createPresence>;
   /**
-   * On the floating element: portals it into the LayerHost, keeps it placed
+   * On the floating element: portals it into the OverlayStack, keeps it placed
    * against the anchor, and answers Escape and outside presses.
    */
   readonly attach: Attachment<HTMLElement>;
@@ -41,7 +41,7 @@ export interface Floating {
 
 /**
  * The web half of a tooltip or popover: DOM-bound (portal, measurement,
- * outside presses). It renders into the LayerHost so scroll and overflow
+ * outside presses). It renders into the OverlayStack so scroll and overflow
  * cannot clip it, and joins the layer stack as a floating layer — not
  * modal, the page stays live, but Escape reaches only the topmost overlay.
  * Call during component initialisation; native twins never use it.

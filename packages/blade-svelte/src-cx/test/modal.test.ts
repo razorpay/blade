@@ -539,7 +539,7 @@ describe('Modal layers', () => {
     expect(globalLayers.back()).toBe(false);
   });
 
-  it('renders into the LayerHost and makes the rest of the frame inert', async () => {
+  it('renders into the OverlayStack and makes the rest of the frame inert', async () => {
     const { getByTestId } = render(ModalHarness, {
       props: { withHost: true },
     });

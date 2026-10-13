@@ -6,7 +6,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import { createGenerator } from 'unocss';
-import { bladeUnoConfig } from '../../uno.config';
+import bladeUnoConfig from '../../uno/config';
 import MenuDivider from '../components/menu/MenuDivider.svelte';
 import MenuItem from '../components/menu/MenuItem.svelte';
 import { resolveMenu } from '../components/menu/styles';

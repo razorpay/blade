@@ -4,7 +4,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Toast',
   description:
-    'showToast from anywhere, over the toast queue: a timer per toast that hover and focus hold, a capacity that evicts the oldest, and a reason for every exit. Toasts sit in the LayerHost but push no layer.',
+    'showToast from anywhere, over the toast queue: a timer per toast that hover and focus hold, a capacity that evicts the oldest, and a reason for every exit. Toasts sit in the OverlayStack but push no layer.',
   argTypes: {
     color: { control: 'select', options: TOAST_AXES.color },
     placement: { control: 'select', options: TOAST_STACK_AXES.placement },

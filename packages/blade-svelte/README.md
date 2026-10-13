@@ -40,19 +40,22 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/). This p
 Before you install the package, make sure that you have:
 
 - Node.js version >= 18.12.1
-- Svelte version >= 5.35.0
+- Svelte version >= 5.56.10
+- UnoCSS version >= 66
 
 ### Install the package
 
+`svelte` and `unocss` are peer dependencies, so install them with it:
+
 ```bash
 # Using yarn
-yarn add @razorpay/blade-svelte
+yarn add @razorpay/blade-svelte svelte unocss
 
 # Using npm
-npm install @razorpay/blade-svelte
+npm install @razorpay/blade-svelte svelte unocss
 ```
 
-> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency.
+> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency. `@razorpay/i18nify-js` (>= 1.12.8) is an optional peer dependency: the components do not import it, but the PhoneNumberInput stories build their country list with it.
 
 The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
 
@@ -61,13 +64,12 @@ The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `u
 The package holds two component sets at different paths, so an app can use
 both:
 
-| Import                              | Components                                                 |
-| ----------------------------------- | ---------------------------------------------------------- |
-| `@razorpay/blade-svelte`            | cx: styled by UnoCSS from Blade's config (see below)       |
-| `@razorpay/blade-svelte/components` | cx, plus Blade's `Modal` and `BottomSheet` (see below)     |
-| `@razorpay/blade-svelte/utils`      | Blade's utilities (`useInteraction`, `createPortal`)       |
+| Import                              | Components                                             |
+| ----------------------------------- | ------------------------------------------------------ |
+| `@razorpay/blade-svelte/components` | cx, plus Blade's `Modal` and `BottomSheet` (see below) |
+| `@razorpay/blade-svelte/utils`      | Blade's utilities (`useInteraction`, `createPortal`)   |
 
-`/components` is the root with two more names: until cx exports its own,
+`/components` is the cx set with two more names: until cx exports its own,
 `Modal` (`ModalHeader`, `ModalBody`, `ModalFooter`) and `BottomSheet`
 (`BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`) are Blade's,
 styled by blade-core's prebuilt CSS (see
@@ -76,13 +78,13 @@ read blade-core's tokens (`@razorpay/blade-core/tokens/theme.css`).
 
 ### cx: compile Blade's CSS in your app
 
-`@razorpay/blade-svelte` (the root) ships no prebuilt stylesheet: your build compiles
+`@razorpay/blade-svelte/components` (cx) ships no prebuilt stylesheet: your build compiles
 it with UnoCSS (`unocss` is a peer dependency) from Blade's config, so the
 options you pass reach the output.
 
 ```ts
 // uno.config.ts
-import { bladeUnoConfig } from '@razorpay/blade-svelte/configs/uno';
+import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
 
 export default {
   ...bladeUnoConfig({ desktop: '62.5rem' }), // the default
@@ -125,7 +127,12 @@ export default {
     variants: { 'quick-buy': '[data-quick-buy="true"] &' },
     preflight: true, // the default with a theme
   }),
-  content: { filesystem: ['./src/**/*.{svelte,ts}', './node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+  content: {
+    filesystem: [
+      './src/**/*.{svelte,ts}',
+      './node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}',
+    ],
+  },
 };
 ```
 
@@ -165,13 +172,13 @@ under it:
 }
 ```
 
-| Variables | |
-|---|---|
-| `--surface-{background,border,text,icon}-…` | 13, 5, 17, 17 |
-| `--feedback-{background,border,text,icon}-…` | 10 each |
-| `--interactive-{background,border,text,icon}-…` | 49, 38, 44, 44 |
-| `--popup-{background,border}-…` | 8 each |
-| `--overlay-background-…` | 2 |
+| Variables                                                           |                                          |
+| ------------------------------------------------------------------- | ---------------------------------------- |
+| `--surface-{background,border,text,icon}-…`                         | 13, 5, 17, 17                            |
+| `--feedback-{background,border,text,icon}-…`                        | 10 each                                  |
+| `--interactive-{background,border,text,icon}-…`                     | 49, 38, 44, 44                           |
+| `--popup-{background,border}-…`                                     | 8 each                                   |
+| `--overlay-background-…`                                            | 2                                        |
 | `--font-family-text`, `--font-family-heading`, `--font-family-code` | `font-sans`, `font-heading`, `font-mono` |
 
 The full list of 285 colour variables is the snapshot of
@@ -182,14 +189,14 @@ fixed. For a brand colour on primary buttons, blade-core's
 `getPrimaryBrandCssVars({ bg })` (`@razorpay/blade-core/styles`) returns the
 five fill and frame variables.
 
-blade-core's `theme.css` (below) sets every variable to the *standard* theme's
-values, where the cx components fall back to the *neutral* theme's (black
+blade-core's `theme.css` (below) sets every variable to the _standard_ theme's
+values, where the cx components fall back to the _neutral_ theme's (black
 primary borders and text): import it only if you want the standard theme.
 
 ### Blade's Modal and BottomSheet
 
 `/components` serves Blade's `Modal` and `BottomSheet` from `src/` until cx
-exports its own (the cx `ModalStack` and `openModal` stay at the root).
+exports its own (the cx `openModal` is there too).
 They are portal overlays: consumers manage `isOpen`; focus, scroll lock,
 dismissal and animation are wired inside. Their CSS is blade-core's, so
 import the theme CSS once, in your root layout or app entry:
@@ -228,4 +235,3 @@ Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/L
 <h1 aria-hidden="true"></h1>
 
 <p align="center">Interested in working with us? Checkout our <a href="https://razorpay.com/jobs">Jobs Page</a> for open roles 🤗</p>
-

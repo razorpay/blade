@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { provideLayers } from '../../runes/layer/layers';
   import Popover from '../../components/popover/Popover.svelte';
   import Tooltip from '../../components/tooltip/Tooltip.svelte';
@@ -17,4 +17,4 @@
     {/snippet}
   </Popover>
 </main>
-<LayerHost />
+<OverlayStack />

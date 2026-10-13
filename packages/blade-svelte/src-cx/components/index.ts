@@ -1,6 +1,10 @@
 // The checkout component library: stateful Svelte components over the
 // runes under `../runes`, styled by the class maps beside them
-// (`<name>/styles.ts`); runtime theming is CSS vars only.
+// (`<name>/styles.ts`); runtime theming is CSS vars only. Published as
+// `@razorpay/blade-svelte/components` (`../components-entry.ts`); the
+// package has no root entry. Context plumbing (`provide*`/`get*`) is not
+// exported: BladeProvider wires it, and the imperative APIs below use the
+// global instances.
 export { default as Alert } from './alert/Alert.svelte';
 export { default as Amount } from './amount/Amount.svelte';
 export { default as CardGroup } from './card-group/CardGroup.svelte';
@@ -18,18 +22,10 @@ export { default as CounterInput } from './counter-input/CounterInput.svelte';
 // modal stack stays, as PhoneNumberInput opens its country picker on it.
 // Meanwhile `/components` (`../components-entry.ts`) serves Blade's Modal and
 // BottomSheet from `src/`.
-export { default as ModalStack } from './modal/ModalStack.svelte';
-export { getOverlays, globalOverlays, openModal, provideOverlays } from './modal/overlays';
-export type {
-  ModalComponent,
-  ModalControl,
-  ModalHandle,
-  OpenModalOptions,
-  Overlays,
-} from './modal/overlays';
+export { openModal } from './modal/overlays';
+export type { ModalComponent, ModalControl, ModalHandle, OpenModalOptions } from './modal/overlays';
 export { default as Countdown } from './countdown/Countdown.svelte';
 export { default as BladeProvider } from './blade-provider/BladeProvider.svelte';
-export { SIZED_CONTROLS } from './defaults';
 export type {
   ComponentDefaults,
   ComponentName,
@@ -39,7 +35,7 @@ export type {
 export { default as Form } from './form/Form.svelte';
 export { default as Image } from './image/Image.svelte';
 export { default as InputGroup } from './input-group/InputGroup.svelte';
-export { default as LayerHost } from './layer/LayerHost.svelte';
+export { default as OverlayStack } from './layer/OverlayStack.svelte';
 export { default as IconButton } from './icon-button/IconButton.svelte';
 export { default as Icon } from './icon/Icon.svelte';
 export { default as Link } from './link/Link.svelte';
@@ -57,7 +53,7 @@ export { default as Menu } from './menu/Menu.svelte';
 export { default as MenuItem } from './menu/MenuItem.svelte';
 export { default as MenuDivider } from './menu/MenuDivider.svelte';
 export { default as NavStack } from './nav-stack/NavStack.svelte';
-export { createNav, getNav, globalNav, provideNav, pushScreen } from '../runes/nav-stack/nav';
+export { getNav, globalNav, pushScreen } from '../runes/nav-stack/nav';
 export type {
   Nav,
   NavComponent,
@@ -85,22 +81,22 @@ export { default as TabPanel } from './tabs/TabPanel.svelte';
 export { default as TextArea } from './text-area/TextArea.svelte';
 export { default as Tooltip } from './tooltip/Tooltip.svelte';
 export { default as ToastStack } from './toast/ToastStack.svelte';
-export { getToasts, globalToasts, provideToasts, showToast } from './toast/toasts';
-export type { ShowToastOptions, ToastHandle, Toasts } from './toast/toasts';
+export { showToast } from './toast/toasts';
+export type { ShowToastOptions, ToastHandle } from './toast/toasts';
 export { default as SearchInput } from './search-input/SearchInput.svelte';
 export { default as TextInput } from './text-input/TextInput.svelte';
 
 export { default as VirtualWindow } from './virtual/VirtualWindow.svelte';
 
-export { getAdapters, provideAdapters } from '../adapters';
 export type { BladeAdapters } from '../adapters';
-export { cx } from '../cx';
 export type { AxisValue, StyleAxes } from '../axes';
-export { getLayers, globalLayers, provideLayers } from '../runes/layer/layers';
+export { globalLayers } from '../runes/layer/layers';
 export type { LayerEntry, Layers } from '../runes/layer/layers';
-export type { LayerHostClasses, LayerHostStyleResolver, SurfaceClasses } from './layer/styles';
-export { getForm, getFormHooks, provideForm } from '../runes/form/context';
-export type { FormHooks } from '../runes/form/context';
+export type {
+  OverlayStackClasses,
+  OverlayStackStyleResolver,
+  SurfaceClasses,
+} from './layer/styles';
 export { setupField } from '../runes/form/field.svelte';
 // The types an app's handlers and props name; the runes behind the
 // components are not a subpath.
@@ -109,8 +105,6 @@ export type { FormatSpec } from '../runes/text-input/format';
 export type { Placement } from '../runes/layer/placement';
 export type { DialogDismissEvent } from '../runes/modal/dialog.svelte';
 export type { FieldSetup } from '../runes/form/field.svelte';
-export { getInputGroup, provideInputGroup } from '../runes/input-group/context';
-export type { InputGroupContext } from '../runes/input-group/context';
 
 export type {
   ButtonBusyCause,
@@ -153,7 +147,7 @@ export type {
 export { CHECKBOX_AXES } from './checkbox';
 export type { CheckboxStyleProps } from './checkbox';
 export type { ControlState } from './shared/control-state';
-export { CHIP_GROUP_AXES, resolveChip, resolveChipGroup } from './chip';
+export { CHIP_GROUP_AXES } from './chip';
 export type {
   ChipClasses,
   ChipColor,
@@ -164,9 +158,9 @@ export type {
   ChipSize,
   ChipTone,
 } from './chip';
-export { COUNTER_AXES, resolveCounter } from './counter';
+export { COUNTER_AXES } from './counter';
 export type { CounterClasses, CounterStyleProps } from './counter';
-export { COUNTER_INPUT_AXES, resolveCounterInput } from './counter-input';
+export { COUNTER_INPUT_AXES } from './counter-input';
 export type { CounterInputClasses, CounterInputStyleProps } from './counter-input';
 export type { AlertClasses, AlertStyleResolver } from './alert/styles';
 export { ALERT_AXES } from './alert';
@@ -200,7 +194,7 @@ export type {
   OptionSectionClasses,
   OptionState,
 } from './option-list/styles';
-export { OPTION_LIST_AXES, resolveOptionItem, resolveOptionList } from './option-list';
+export { OPTION_LIST_AXES, resolveOptionList } from './option-list';
 export type { OptionListStyleProps } from './option-list';
 export type {
   OTPInputClasses,
@@ -209,8 +203,6 @@ export type {
 } from './otp-input/styles';
 export { OTP_INPUT_AXES } from './otp-input';
 export type { OTPInputStyleProps } from './otp-input';
-export { getRadioGroup, provideRadioGroup } from '../runes/radio/context';
-export type { RadioGroupContext } from '../runes/radio/context';
 export type {
   RadioClasses,
   RadioGroupClasses,
@@ -261,7 +253,7 @@ export type { TooltipClasses, TooltipStyleResolver } from './tooltip/styles';
 export type { TooltipStyleProps } from './tooltip';
 export type { AmountClasses, AmountStyleResolver } from './amount/styles';
 export type { AmountStyleProps } from './amount';
-export { AMOUNT_AXES, AMOUNT_TYPE_SIZES, AMOUNT_TYPE_WEIGHTS } from './amount';
+export { AMOUNT_AXES } from './amount';
 export type { AmountSuffix } from '../runes/amount/amount';
 export type { LinkClasses, LinkStyleResolver } from './link/styles';
 export { LINK_AXES } from './link';

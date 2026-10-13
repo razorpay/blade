@@ -21,7 +21,7 @@ export interface SurfaceOptions {
 
 export interface Surface {
   readonly presence: ReturnType<typeof createPresence>;
-  /** On the root: renders it into the LayerHost's surfaces box. */
+  /** On the root: renders it into the OverlayStack's surfaces box. */
   readonly toHost: Attachment<HTMLElement>;
   /** On the panel: the element focus and the drag act on. */
   readonly panel: Attachment<HTMLElement>;
@@ -124,7 +124,7 @@ export function createSurface(options: SurfaceOptions): Surface {
 
   return {
     presence,
-    // Surfaces render into the LayerHost's surfaces box when the app mounted
+    // Surfaces render into the OverlayStack's surfaces box when the app mounted
     // one, so they stay inside its frame under its one scrim; without a host
     // they render in place, unscrimmed.
     toHost: portal(() => layers.surfaces() ?? layers.host()),

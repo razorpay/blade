@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createGenerator } from 'unocss';
 import { opacity, typography } from '@razorpay/blade-core/tokens';
-import defaultUnoConfig, { bladeUnoConfig } from '../../uno.config';
+import defaultUnoConfig from '../../uno.config';
+import bladeUnoConfig from '../../uno/config';
 
 /** src-cx/blade.css is written out by hand; blade-core's tokens are the source. */
 const css = readFileSync(join(__dirname, '../blade.css'), 'utf8');

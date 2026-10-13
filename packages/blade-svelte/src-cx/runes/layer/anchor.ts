@@ -5,7 +5,7 @@ export interface AnchorOptions {
   /** The element the floating one points at. */
   anchor: HTMLElement;
   floating: () => HTMLElement | undefined;
-  /** The LayerHost the floating element renders into, when there is one. */
+  /** The OverlayStack the floating element renders into, when there is one. */
   host: HTMLElement | undefined;
   placement: () => Placement;
   /** Distance between the two, in px. */

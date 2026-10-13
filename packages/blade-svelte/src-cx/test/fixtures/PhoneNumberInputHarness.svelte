@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PhoneCountry, PhoneParts } from '../../runes';
   import { provideAdapters } from '../../adapters';
-  import ModalStack from '../../components/modal/ModalStack.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { provideOverlays } from '../../components/modal/overlays';
   import Form from '../../components/form/Form.svelte';
   import PhoneNumberInput from '../../components/phone-number-input/PhoneNumberInput.svelte';
@@ -92,7 +92,7 @@
   <button type="submit" data-testid="submit">Pay</button>
 </Form>
 {#if withStack}
-  <ModalStack />
+  <OverlayStack />
 {/if}
 </BladeProvider>
 <button type="button" data-testid="focus" onclick={() => phone?.focus()}>

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { createRawSnippet } from 'svelte';
 import { fireEvent, render } from '@testing-library/svelte';
-import LayerHostNative from '../components/layer/LayerHost.native.svelte';
+import OverlayStackNative from '../components/layer/OverlayStack.native.svelte';
 import SurfaceNative from '../components/layer/Surface.native.svelte';
 import { globalLayers } from '../runes/layer/layers';
 import { resolveModal } from '../components/modal';
@@ -65,9 +65,9 @@ describe('Surface.native', () => {
 
 // The host's native twin: the element the stack knows, with no scrim and no
 // surfaces box — the platform's sheet host owns both.
-describe('LayerHost.native', () => {
+describe('OverlayStack.native', () => {
   it('renders one empty element and registers it', () => {
-    const { getByTestId, unmount } = render(LayerHostNative, {
+    const { getByTestId, unmount } = render(OverlayStackNative, {
       props: { testID: 'host' },
     });
     const host = getByTestId('host');

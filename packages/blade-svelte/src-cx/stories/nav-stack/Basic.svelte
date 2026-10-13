@@ -1,10 +1,9 @@
 <script lang="ts">
   import { onDestroy } from 'svelte';
   import {
-    ModalStack,
     getNav,
     IconButton,
-    LayerHost,
+    OverlayStack,
     NavStack,
     Text,
   } from '../../index';
@@ -49,7 +48,6 @@
       last = `${entry?.entry.name ?? 'none'} (${direction})`;
     }}
   />
-  <ModalStack />
-  <LayerHost />
+  <OverlayStack />
 </div>
 <Text size="small" color="muted" class="mt-2">onChange: {last}</Text>

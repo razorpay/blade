@@ -2,7 +2,7 @@
   import {
     Button,
     Icon,
-    LayerHost,
+    OverlayStack,
   } from '../../index';
   import { Modal, type ModalStyleProps } from '../../components/modal';
   import { CreditCardIcon } from '../../icons';
@@ -32,7 +32,7 @@
     <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open modal</Button>
     <p class="text-75 leading-50 text-surface-gray-subtle">Last closed by: <span data-testid="last-source">{lastSource}</span></p>
   </div>
-  <LayerHost />
+  <OverlayStack />
 </div>
 
 {#snippet logo()}

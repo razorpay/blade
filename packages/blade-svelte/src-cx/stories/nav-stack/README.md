@@ -4,7 +4,7 @@
 `NavScreen.svelte` (the platform leaf: presence, the slide, focus;
 `NavScreen.native.svelte` is its twin), over `packages/blade/runes/nav-stack/nav.ts`
 (the stack, over `createLayerStack`). Screens only — overlays are
-`openModal`/`ModalStack`.
+`openModal`.
 
 ## Pushing
 
@@ -17,14 +17,14 @@ const handle = pushScreen(import('./Otp.svelte'), {
 handle.result.then((otp) => …); // what the screen popped with
 ```
 
-| API | Notes |
-| --- | --- |
-| `push(component \| Promise, { props, name, meta, onBack, onLoadError })` | Returns `{ result, pop, popAfter, close, onBack, update }` |
-| `replace(…)` | Pushes, then drops every other screen once the new one can render |
-| `pop()`, `popTo(name)`, `clear()` | `pop` keeps the root screen |
-| `back()` | Open layers answer first, then the top screen's `onBack`, then the stack pops; `false` at the root |
-| `entries`, `direction` | Signals; the app's header, breadcrumbs and analytics read them |
-| `provideNav()` / `getNav()` / `globalNav` | An embedded surface provides its own; `pushScreen` uses the global one |
+| API                                                                      | Notes                                                                                              |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `push(component \| Promise, { props, name, meta, onBack, onLoadError })` | Returns `{ result, pop, popAfter, close, onBack, update }`                                         |
+| `replace(…)`                                                             | Pushes, then drops every other screen once the new one can render                                  |
+| `pop()`, `popTo(name)`, `clear()`                                        | `pop` keeps the root screen                                                                        |
+| `back()`                                                                 | Open layers answer first, then the top screen's `onBack`, then the stack pops; `false` at the root |
+| `entries`, `direction`                                                   | Signals; the app's header, breadcrumbs and analytics read them                                     |
+| `getNav()` / `globalNav`                                                 | The stack a screen's component reads; `pushScreen` and code outside components use the global one  |
 
 The pushed component gets a `screen` prop: `pop(result?)`, `popAfter()`,
 `close()`, and `onBack(handler)` for a veto it owns (answer `true`, pop later).

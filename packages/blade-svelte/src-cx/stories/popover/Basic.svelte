@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Icon, LayerHost, Popover, Text, Tooltip } from '../../index';
+  import { Button, Icon, OverlayStack, Popover, Text, Tooltip } from '../../index';
   import { InfoIcon } from '../../icons';
 
   interface Props {
@@ -49,5 +49,5 @@
       </div>
     {/snippet}
   </Popover>
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

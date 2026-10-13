@@ -154,7 +154,7 @@ export interface Overlays<S extends object> {
     component: ModalComponent<P>,
     options?: OpenModalOptions<P, S>,
   ): ModalHandle<P, R>;
-  /** Whether a ModalStack is mounted to render what gets opened. */
+  /** Whether a ModalStack (inside an OverlayStack) is mounted to render what gets opened. */
   hasHost: boolean;
   /** Set by the mounted ModalStack: where load failures are reported. */
   reportError?: (error: unknown) => void;
@@ -203,7 +203,7 @@ export function createOverlays<S extends object>(): Overlays<S> {
 
 const OVERLAYS = defineContext<unknown>('blade-overlays');
 
-/** Call during component init; descendants and their ModalStack share it. */
+/** Call during component init; descendants and their OverlayStack share it. */
 export function provideOverlays<S extends object>(overlays: Overlays<S>): Overlays<S> {
   OVERLAYS.set(overlays);
   return overlays;

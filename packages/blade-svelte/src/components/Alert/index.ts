@@ -4,7 +4,7 @@
  * @example
  * ```svelte
  * <script>
- *   import { Alert } from '@razorpay/blade-svelte';
+ *   import { Alert } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <Alert

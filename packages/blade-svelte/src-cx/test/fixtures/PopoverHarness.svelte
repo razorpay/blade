@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import { provideLayers } from '../../runes/layer/layers';
   import Menu from '../../components/menu/Menu.svelte';
   import MenuItem from '../../components/menu/MenuItem.svelte';
@@ -50,4 +50,4 @@
   <button type="button" data-testid="elsewhere">Elsewhere</button>
   <output data-testid="menu-bound">{menuOpen}</output>
 </main>
-<LayerHost testID="host" />
+<OverlayStack testID="host" />

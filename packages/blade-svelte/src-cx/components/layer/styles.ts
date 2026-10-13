@@ -5,8 +5,8 @@
 export interface SurfaceClasses {
   /**
    * Web: fills the host's surfaces box, lays the panel out and carries
-   * `data-state`. The scrim is the LayerHost's, one under every open
-   * surface (see `layer-host.ts`); native draws its own.
+   * `data-state`. The scrim is the OverlayStack's, one under every open
+   * surface (see `overlay-stack.ts`); native draws its own.
    */
   root: string;
   /** The surface itself, on both platforms. It does not clip. */
@@ -46,20 +46,20 @@ export interface SurfaceClasses {
 }
 
 /**
- * The parts the app's LayerHost needs from its styles: the one scrim under
+ * The parts the app's OverlayStack needs from its styles: the one scrim under
  * every open modal, and the box their panels mount in. Static class strings
  * only; the host stamps `data-state="open" | "closed"` on the scrim and the
  * styles key their fade on it.
  */
-export interface LayerHostClasses {
+export interface OverlayStackClasses {
   /** The shared scrim, fading with `data-state`. */
   backdrop: string;
   /** The container modal surfaces render into, above the scrim. */
   surfaces: string;
 }
 
-/** LayerHost has no style props: the parts out. */
-export type LayerHostStyleResolver = () => LayerHostClasses;
+/** OverlayStack has no style props: the parts out. */
+export type OverlayStackStyleResolver = () => OverlayStackClasses;
 
 // The one scrim under every open modal: Blade's subtle overlay (black at
 // 56%; each modal's own used to be 60%), fading over the modal's default
@@ -69,7 +69,7 @@ export type LayerHostStyleResolver = () => LayerHostClasses;
 // wrappers over it and takes no pointer of its own — the wrappers inherit
 // that and the panels opt back in — so a click beside a panel falls
 // through to the scrim.
-export const resolveLayerHost: LayerHostStyleResolver = () => ({
+export const resolveOverlayStack: OverlayStackStyleResolver = () => ({
   backdrop:
     'absolute inset-0 z-50 bg-overlay-subtle transition-opacity duration-moderate ease-entrance motion-reduce:transition-none data-[state=closed]:pointer-events-none data-[state=closed]:opacity-0',
   surfaces: 'pointer-events-none absolute inset-0 z-50',

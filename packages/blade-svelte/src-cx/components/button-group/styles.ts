@@ -26,10 +26,15 @@ export interface ButtonGroupClasses {
 // Blade DSL's Button Group (Figma): buttons touching in a row, clipped to
 // the group's radius (8px, 12px at large); the group is exactly its
 // buttons, no border. Inner corners square off; the end buttons keep their
-// outer corners. Filled buttons are split by a 1px subtle divider that takes
-// no width (drawn on the following button's left edge, as the children are
-// one snippet); outlined ones overlap by 1px so their rims read as one line.
-const ROOT = 'inline-flex overflow-hidden [&_button]:rounded-none [&_a]:rounded-none';
+// outer corners. Filled buttons are split by a 1px seam in
+// `surface.border.gray.subtle` (Figma draws that grey on blue and white
+// fills alike) that takes no width (drawn on the following button's left
+// edge, as the children are one snippet); outlined ones overlap by 1px so
+// their rims read as one line.
+// Figma lights the group's resting sheen once, from the first button's
+// corner: the following buttons lose theirs (React does the same).
+const ROOT =
+  'inline-flex overflow-hidden [&_button]:rounded-none [&_a]:rounded-none before:[&>*+*]:hidden';
 
 const RADIUS: Record<Axis<'size'>, string> = {
   xsmall:

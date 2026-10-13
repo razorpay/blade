@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ModalStack, LayerHost, PhoneNumberInput } from '../../index';
+  import { OverlayStack, PhoneNumberInput } from '../../index';
   import { buildCountries } from './countries';
 
   const countries = buildCountries();
@@ -25,5 +25,4 @@
     countryLabel="Country"
   />
 </div>
-<ModalStack />
-<LayerHost />
+<OverlayStack />

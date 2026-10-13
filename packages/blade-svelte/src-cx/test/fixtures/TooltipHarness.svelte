@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Placement } from '../../runes';
   import Modal from '../../components/modal/Modal.svelte';
-  import LayerHost from '../../components/layer/LayerHost.svelte';
+  import OverlayStack from '../../components/layer/OverlayStack.svelte';
   import Tooltip from '../../components/tooltip/Tooltip.svelte';
 
   interface Props {
@@ -53,7 +53,7 @@
     <button data-testid="elsewhere">Elsewhere</button>
   </main>
   {#if withHost}
-    <LayerHost testID="host" />
+    <OverlayStack testID="host" />
   {/if}
 </div>
 

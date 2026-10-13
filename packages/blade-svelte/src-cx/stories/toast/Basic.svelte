@@ -1,7 +1,7 @@
 <script lang="ts">
   import {
     Button,
-    LayerHost,
+    OverlayStack,
     showToast,
     Text,
     ToastStack,
@@ -39,5 +39,5 @@
   <Button type="button" onClick={show}>Show a toast</Button>
   <Text size="small" color="muted">last exit: {last}</Text>
   <ToastStack placement={args.placement} accessibilityLabel="Notifications" />
-  <LayerHost class="pointer-events-none absolute inset-0" />
+  <OverlayStack class="pointer-events-none absolute inset-0" />
 </div>

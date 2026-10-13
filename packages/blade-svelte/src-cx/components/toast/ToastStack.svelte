@@ -5,7 +5,7 @@
   import { resolveToastStack, type ToastStackStyleProps } from './styles';
   import Toast from './Toast.svelte';
 
-  // Renders what `showToast` asked for. Mount it once, beside the LayerHost:
+  // Renders what `showToast` asked for. Mount it once, beside the OverlayStack:
   // toasts render into the host so they sit over open modals, but they push
   // no layer — nothing goes inert, no focus moves, Escape is not theirs.
   // Blade's stack: the newest toast in front at the edge, the rest peeking

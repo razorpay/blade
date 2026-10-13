@@ -1,11 +1,6 @@
 <script lang="ts">
-  import {
-    Amount,
-    AMOUNT_TYPE_SIZES,
-    AMOUNT_TYPE_WEIGHTS,
-    Text,
-    type AmountStyleProps,
-  } from '../../index';
+  import { Amount, Text, type AmountStyleProps } from '../../index';
+  import { AMOUNT_TYPE_SIZES, AMOUNT_TYPE_WEIGHTS } from '../../components/amount';
 
   const types = ['body', 'heading', 'display'] as const;
 </script>

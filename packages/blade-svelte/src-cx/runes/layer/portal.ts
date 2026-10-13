@@ -1,7 +1,7 @@
 import type { Attachment } from 'svelte/attachments';
 
 /**
- * Moves the node into `target()` — the LayerHost, so scroll and overflow
+ * Moves the node into `target()` — the OverlayStack, so scroll and overflow
  * cannot clip it — and leaves it in place when there is none. With
  * `removesItself` it also leaves the target by its own hand on teardown:
  * moved out of the branch Svelte made it in, Svelte's teardown may no
