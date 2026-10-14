@@ -12,6 +12,7 @@ const hooksDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const makeProject = (files) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'blade-plugin-test-'));
   for (const [name, content] of Object.entries(files)) {
+    fs.mkdirSync(path.dirname(path.join(dir, name)), { recursive: true });
     fs.writeFileSync(
       path.join(dir, name),
       typeof content === 'string' ? content : JSON.stringify(content),
@@ -58,6 +59,78 @@ test('returns nothing for a non-Blade project', () => {
   const dir = makeProject({ 'package.json': { dependencies: { react: '^18.0.0' } } });
   assert.deepEqual(detectFrameworks(dir), []);
   assert.deepEqual(detectFrameworks(undefined), []);
+});
+
+test('detects from a subdirectory of the project', () => {
+  const dir = makeProject({
+    'package.json': { dependencies: { '@razorpay/blade': '^12.0.0' } },
+    'src/components/.keep': '',
+  });
+  assert.deepEqual(detectFrameworks(path.join(dir, 'src', 'components')), ['react']);
+});
+
+test('detects from inside a workspace whose own package.json does not list Blade', () => {
+  const dir = makeProject({
+    'package.json': { private: true, workspaces: ['apps/*'] },
+    'apps/web/package.json': { dependencies: { '@razorpay/blade-svelte': '^0.18.0' } },
+    'apps/api/package.json': { dependencies: { express: '^4.0.0' } },
+    'apps/api/src/.keep': '',
+  });
+  assert.deepEqual(detectFrameworks(path.join(dir, 'apps', 'api', 'src')), ['svelte']);
+});
+
+test('nearest package.json with Blade wins over the rest of the monorepo', () => {
+  const dir = makeProject({
+    'package.json': { private: true, workspaces: ['apps/*'] },
+    'apps/web/package.json': { dependencies: { '@razorpay/blade-svelte': '^0.18.0' } },
+    'apps/admin/package.json': { dependencies: { '@razorpay/blade': '^12.0.0' } },
+  });
+  assert.deepEqual(detectFrameworks(path.join(dir, 'apps', 'web')), ['svelte']);
+  assert.deepEqual(detectFrameworks(dir), ['react', 'svelte']);
+});
+
+test('workspace package.json files win over transitive lockfile mentions', () => {
+  const dir = makeProject({
+    'package.json': { private: true, workspaces: { packages: ['apps/*'] } },
+    'apps/web/package.json': { dependencies: { '@razorpay/blade-svelte': '^0.18.0' } },
+    // @razorpay/blade is pulled in by some shared library, not used directly
+    'yarn.lock': [
+      '"@razorpay/blade-svelte@^0.18.0":',
+      '  version "0.18.0"',
+      '',
+      '"@razorpay/blade@^12.0.0":',
+      '  version "12.0.0"',
+    ].join('\n'),
+  });
+  assert.deepEqual(detectFrameworks(dir), ['svelte']);
+});
+
+test('reads pnpm-workspace.yaml', () => {
+  const dir = makeProject({
+    'package.json': { private: true },
+    'pnpm-workspace.yaml': 'packages:\n  - \'apps/*\'\n  - "libs/ui"\n',
+    'apps/web/package.json': { dependencies: { '@razorpay/blade': '^12.0.0' } },
+    'libs/ui/package.json': { peerDependencies: { '@razorpay/blade-svelte': '*' } },
+  });
+  assert.deepEqual(detectFrameworks(dir), ['react', 'svelte']);
+});
+
+test('does not walk past the repository root', () => {
+  const outer = makeProject({
+    'package.json': { dependencies: { '@razorpay/blade': '^12.0.0' } },
+    'repo/.git/HEAD': 'ref: refs/heads/master\n',
+    'repo/package.json': { dependencies: { react: '^18.0.0' } },
+  });
+  assert.deepEqual(detectFrameworks(path.join(outer, 'repo')), []);
+});
+
+test('detects from bun.lock', () => {
+  const dir = makeProject({
+    'package.json': { private: true, workspaces: ['packages/**'] },
+    'bun.lock':
+      '{\n  "packages": {\n    "@razorpay/blade": ["@razorpay/blade@12.0.0", "", {}],\n  }\n}\n',
+  });
+  assert.deepEqual(detectFrameworks(dir), ['react']);
 });
 
 test('lockfile matching needs the whole package name', () => {
