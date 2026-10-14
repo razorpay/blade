@@ -94,7 +94,7 @@ test.describe('TextInput with format', () => {
 });
 
 test.describe('PhoneNumberInput', () => {
-  test('the picker is a sheet on a phone and a modal from 768px; picking a country keeps the number', async ({
+  test('the picker follows the provider Modal defaults (a sheet here); picking a country keeps the number', async ({
     page,
   }) => {
     await gotoStory(page, 'components-input-phonenumberinput--basic', { withSearch: true });
@@ -105,10 +105,10 @@ test.describe('PhoneNumberInput', () => {
     await page.getByTestId('phone-country').click();
     const picker = page.getByTestId('phone-picker');
     await expect(picker).toBeVisible();
-    const isPhone = (page.viewportSize()?.width ?? 0) < 768;
-    // The lazily loaded body arrives, then the form follows the viewport.
+    // The lazily loaded body arrives. The story's provider sets
+    // `{ Modal: { variant: 'sheet' } }`, so it is a draggable sheet at every width.
     await expect(page.getByTestId('phone-search')).toBeVisible();
-    await expect(page.getByTestId('phone-picker-drag-zone')).toHaveCount(isPhone ? 1 : 0);
+    await expect(page.getByTestId('phone-picker-drag-zone')).toHaveCount(1);
 
     await page.getByTestId('phone-search').fill('malay');
     await page.getByTestId('phone-countries').getByText('Malaysia').click();

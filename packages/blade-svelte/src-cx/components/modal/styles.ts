@@ -352,9 +352,10 @@ const DRAWER_SECTIONS = {
 
 // Blade's PopoverContentWrapper: the popup fill, 16px round, the popup
 // shadow (a 1px rim drawn inside over the raised shadow), the high backdrop
-// blur; 328px at most (288px on phones).
+// blur; 328px at most (288px on phones). Only opacity and scale animate:
+// `left`/`top` land once measured and must not slide in from the corner.
 const POPOVER_PANEL =
-  'pointer-events-auto absolute z-50 flex flex-col rounded-large bg-popup-gray-moderate text-surface-gray-normal shadow-dropdown backdrop-blur-high outline-none transition-all duration-xquick ease-entrance data-[state=closed]:scale-95 data-[state=closed]:opacity-0 motion-reduce:transition-none';
+  'pointer-events-auto absolute z-50 flex flex-col rounded-large bg-popup-gray-moderate text-surface-gray-normal shadow-dropdown backdrop-blur-high outline-none [transition-property:opacity,transform] duration-xquick ease-entrance data-[state=closed]:scale-95 data-[state=closed]:opacity-0 motion-reduce:transition-none';
 
 // Blade's popover arrow: 22×12, pointing at the trigger from the panel's
 // facing edge, in the panel's fill; the panel sits 4px past its tip.
