@@ -14,10 +14,11 @@ import { checkboxSizeParts, resolveCheckbox } from '../checkbox/styles';
 // `interactive.border.primary.faded` ring); a negative row (a destructive
 // action) has a red wash. Text, icons and descriptions take Figma's
 // `interactive.text.*` / `interactive.icon.*` tokens, `…disabled` when
-// disabled. The panel opens sliding 8px down as it fades in, over `quick`.
+// disabled. The panel opens sliding 8px down as it fades in, over `quick`;
+// only those animate, so `left`/`top` land once measured instead of sliding.
 
 const SURFACE =
-  'pointer-events-auto absolute z-50 flex min-w-[240px] max-w-[400px] flex-col bg-popup-gray-moderate text-surface-gray-normal shadow-dropdown backdrop-blur-medium outline-none transition-all duration-quick ease-entrance data-[state=closed]:-translate-y-2 data-[state=closed]:opacity-0 motion-reduce:transition-none';
+  'pointer-events-auto absolute z-50 flex min-w-[240px] max-w-[400px] flex-col bg-popup-gray-moderate text-surface-gray-normal shadow-dropdown backdrop-blur-medium outline-none [transition-property:opacity,transform] duration-quick ease-entrance data-[state=closed]:-translate-y-2 data-[state=closed]:opacity-0 motion-reduce:transition-none';
 
 /** Menu's panel: Figma's Menu, 12px round. */
 export const MENU_SURFACE = `${SURFACE} rounded-medium`;

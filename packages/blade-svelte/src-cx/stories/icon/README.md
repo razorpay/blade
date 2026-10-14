@@ -62,7 +62,7 @@ Components that take an icon (`Alert.icon`, `IconButton.icon`, `Link.icon`, …)
 
 ## The glyph set
 
-`src-cx/icons/` is generated from Blade React's icons by `scripts/icon-svgs/extract-blade.mjs`, which `yarn generate-icons` runs. It writes:
+`src-cx/icons/` is generated from Blade React's icons (`packages/blade/src/components/Icons`). The generator writes:
 
 - one `currentColor` SVG per glyph;
 - the barrel (`glyphs.js`, one `export { default as InfoIcon } from './svg/info.svg'` per icon, typed by `glyphs.d.ts`) and the names (`names.ts`);

@@ -44,7 +44,7 @@
  * TASA has no ₹, so it is drawn from TASA's own P bowl, E bars and R leg.
  * Kerning only. Other weights draw in this cut.
  *
- * Rebuilt, with the Inter cuts, by scripts/fonts/build.sh (fontTools, FontForge).
+ * Built, with the Inter cuts, with fontTools and FontForge.
  *
  * Named `Tasa`: `font-heading` falls back to it when no `--font-family-heading`
  * is set, and checkout's merchant theme names its default heading font so.

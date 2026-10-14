@@ -52,7 +52,9 @@ export function currencyExponent(currency: string): number {
 
 function intlOptions(suffix: AmountSuffix, fractionDigits: number | 'auto'): IntlOptions {
   if (suffix === 'humanize') {
-    return { notation: 'compact', maximumFractionDigits: 2 };
+    // Older engines keep the currency's two minimum digits in compact
+    // notation (1.50L); newer ones drop them (1.5L). Pin it.
+    return { notation: 'compact', minimumFractionDigits: 0, maximumFractionDigits: 2 };
   }
   if (suffix === 'none') {
     return { maximumFractionDigits: 0, roundingMode: 'floor' } as IntlOptions;

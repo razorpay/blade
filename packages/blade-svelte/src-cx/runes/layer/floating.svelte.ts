@@ -1,4 +1,4 @@
-import { untrack } from 'svelte';
+import { tick, untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { captureFocusReturn, focusableWithin } from '../dom/focus';
 import { anchorTo } from './anchor';
@@ -69,6 +69,10 @@ export function createFloating(options: FloatingOptions): Floating {
         removesItself: options.removesItself,
       })(node);
       const anchor = options.anchor();
+      const returnFocus = captureFocusReturn(() => node, { preventScroll: true });
+      // The element stays `visibility: hidden` until measured, and a browser
+      // will not focus a hidden element: move focus in once it is shown.
+      let isFocusPending = Boolean(options.isFocusMoved);
       const anchored = anchorTo({
         anchor,
         floating: () => node,
@@ -77,14 +81,18 @@ export function createFloating(options: FloatingOptions): Floating {
         gap: options.gap,
         onPlaced: (next) => {
           placed = next;
+          if (isFocusPending) {
+            isFocusPending = false;
+            void tick().then(() => {
+              if (node.isConnected) {
+                (focusableWithin(node)[0] ?? node).focus({ preventScroll: true });
+              }
+            });
+          }
         },
       });
       const described = options.describes ? focusableWithin(anchor)[0] ?? anchor : undefined;
       described?.setAttribute('aria-describedby', options.describes!);
-      const returnFocus = captureFocusReturn(() => node, { preventScroll: true });
-      if (options.isFocusMoved) {
-        (focusableWithin(node)[0] ?? node).focus({ preventScroll: true });
-      }
       // Untracked: joining the stack reads and writes it, and this
       // attachment must not re-run on that.
       const removeLayer = untrack(() =>
