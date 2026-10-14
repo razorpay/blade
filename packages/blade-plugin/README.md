@@ -15,13 +15,16 @@ It replaces the Blade MCP server for agents that support skills: no `npx` cold s
 
 ### Claude Code
 
-Try it from a checkout of this repo:
+```sh
+claude plugin marketplace add https://github.com/razorpay/claude-plugins.git
+claude plugin install blade@razorpay-marketplace
+```
+
+Or try it from a checkout of this repo:
 
 ```sh
 claude --plugin-dir packages/blade-plugin
 ```
-
-Marketplace distribution (a slim `razorpay/blade-plugin` repo synced from this package, plus the internal `razorpay-marketplace`) is tracked in the migration plan; install commands will be added here when it is live.
 
 ### Cursor, Codex, Copilot, Gemini CLI
 

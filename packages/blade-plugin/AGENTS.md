@@ -40,6 +40,7 @@ Structural checks run in CI live in the repo-root `scripts/validateBladePlugin.m
 | Task                              | Command (repo root)                                     |
 | --------------------------------- | ------------------------------------------------------- |
 | Validate plugin structure + hooks | `yarn validate:blade-plugin`                            |
+| Run script and hook tests         | `yarn --cwd packages/blade-plugin test`                 |
 | Typecheck React knowledgebase     | `yarn tsc:knowledgebase`                                |
 | Compile Svelte knowledgebase      | `yarn tsc:knowledgebase --target svelte`                |
 | Check React docs drift vs source  | `yarn check:knowledgebase-drift --fail`                 |
