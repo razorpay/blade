@@ -7,7 +7,6 @@
  */
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import postcss from 'postcss';
 import { createGenerator } from 'unocss';
 import { describe, expect, it } from 'vitest';
 import bladeUnoConfig from '../../uno/config';
@@ -70,24 +69,80 @@ function normalize(rules: Rules): Rules {
   );
 }
 
+/** Where a block opened at `open` closes, past strings and nested blocks. */
+function blockEnd(css: string, open: number): number {
+  let depth = 0;
+  for (let i = open; i < css.length; i++) {
+    const char = css[i];
+    if (char === '\\') i++;
+    else if (char === '"' || char === "'") i = css.indexOf(char, i + 1);
+    else if (char === '{') depth++;
+    else if (char === '}' && --depth === 0) return i;
+  }
+  return css.length;
+}
+
+/**
+ * The style rules at the top of UnoCSS's output, as selector and body. At-rules
+ * (`@keyframes`, `@media`) are skipped whole. A small reader in place of a CSS
+ * parser: Uno writes flat, well-formed CSS.
+ */
+function topLevelRules(css: string): { selector: string; body: string }[] {
+  const source = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  const rules: { selector: string; body: string }[] = [];
+  let start = 0;
+  while (start < source.length) {
+    const open = source.indexOf('{', start);
+    if (open === -1) break;
+    const end = blockEnd(source, open);
+    const selector = source.slice(start, open).trim();
+    if (!selector.startsWith('@')) rules.push({ selector, body: source.slice(open + 1, end) });
+    start = end + 1;
+  }
+  return rules;
+}
+
+/** A rule's declarations, property to value (`!important` dropped, as PostCSS reads them). */
+function declarations(body: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  let parens = 0;
+  let start = 0;
+  const add = (text: string): void => {
+    const colon = text.indexOf(':');
+    if (colon === -1) return;
+    out[text.slice(0, colon).trim()] = text
+      .slice(colon + 1)
+      .replace(/\s*!important\s*$/i, '')
+      .trim();
+  };
+  for (let i = 0; i < body.length; i++) {
+    const char = body[i];
+    if (char === '\\') i++;
+    else if (char === '"' || char === "'") i = body.indexOf(char, i + 1);
+    else if (char === '(') parens++;
+    else if (char === ')') parens--;
+    else if (char === ';' && parens === 0) {
+      add(body.slice(start, i));
+      start = i + 1;
+    }
+  }
+  add(body.slice(start));
+  return out;
+}
+
 async function generate(): Promise<{ classes: Record<string, Rules>; css: string }> {
   const uno = await createGenerator(
     bladeUnoConfig({ theme: fixture.theme, presets: fixture.presets, preflight: false }),
   );
   const { css } = await uno.generate(new Set(fixture.classes), { preflights: false });
   const classes: Record<string, Rules> = {};
-  postcss.parse(css).walkRules((rule) => {
-    if (rule.parent?.type === 'atrule') return;
+  for (const { selector, body } of topLevelRules(css)) {
     // `.bg-primary-500\/20 > :not([hidden])` → the class and the rest, as `&`
-    const match = /^\.((?:\\.|[\w-])+)(.*)$/s.exec(rule.selector);
-    if (!match) return;
+    const match = /^\.((?:\\.|[\w-])+)(.*)$/s.exec(selector);
+    if (!match) continue;
     const name = match[1].replace(/\\(.)/g, '$1');
-    const declarations: Record<string, string> = {};
-    rule.walkDecls((declaration) => {
-      declarations[declaration.prop] = declaration.value;
-    });
-    (classes[name] ??= {})[`&${match[2]}`] = declarations;
-  });
+    (classes[name] ??= {})[`&${match[2]}`] = declarations(body);
+  }
   return { classes, css };
 }
 
