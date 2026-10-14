@@ -14,8 +14,8 @@ PhoneNumberInput is a phone number field with a country selector (flag button), 
 - `onFocus`, `onBlur` and `onClick` use the plain `{ name, value }` payload
 - The component does not validate numbers; validate `value` or `phoneNumber` yourself and set `validationState`
 - The placeholder defaults to a sample number formatted for the selected country
-- The country list opens in a `BottomSheet` on every screen size; inside another `BottomSheet`, pass the same `portalTarget`
-- Partial port of React: the anchored desktop Dropdown for the country list and `showHelpTextOnFocus` are not available
+- `countrySelectorMode` picks where the country list opens: `'bottomsheet'` (default, every screen size), `'dropdown'` (anchored to the input) or `'auto'` (dropdown on desktop, bottom sheet elsewhere); inside another `BottomSheet`, pass the same `portalTarget`
+- Partial port of React: `showHelpTextOnFocus` is not available
 
 ## TypeScript Types
 
@@ -50,6 +50,8 @@ type AutoCompleteSuggestionType =
 
 /** Payload shape for `onFocus` / `onBlur` / `onClick`. */
 type FormInputOnEvent = (event: { name?: string; value?: string; rawValue?: string }) => void;
+
+type CountrySelectorMode = 'bottomsheet' | 'dropdown' | 'auto';
 
 type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 
@@ -143,6 +145,11 @@ interface PhoneNumberInputProps extends StyledPropsBlade {
   showDialCode?: boolean;
   /** Shows the country selector. @default true */
   showCountrySelector?: boolean;
+  /**
+   * Surface used to render the country selector list.
+   * @default 'bottomsheet'
+   */
+  countrySelectorMode?: CountrySelectorMode;
   /** Called when the clear button is clicked. */
   onClearButtonClick?: () => void;
   /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */

@@ -15,6 +15,7 @@ One line per component in `@razorpay/blade-svelte`. Read `<Name>.md` in this dir
 - **Breadcrumb**: Breadcrumb shows where the current page sits in the app's hierarchy and links back to its parent pages, for example Home / Payments / Settlements.
 - **Button**: Button triggers an action such as submitting a payment, saving settings or opening a flow.
 - **Card**: Card is an elevated container that groups related content and actions on one topic, such as a product summary, a metric or a selectable plan.
+- **CardGroup**: CardGroup stacks navigating, selecting and collapsible rows (`CardGroupItem`, `CardGroupCollapsibleItem`) on one card surface, for settings lists or payment methods.
 - **Checkbox**: Checkbox is a form control for selecting one or more independent options, or for confirming a single binary choice that takes effect on submit (for example "I accept the terms").
 - **Chip**: Chip is a compact, selectable pill for short 1-2 word options such as payment method filters or quick feedback answers.
 - **Code**: Code renders short inline code, such as API keys, IDs, environment variables or method names, in a monospace font.

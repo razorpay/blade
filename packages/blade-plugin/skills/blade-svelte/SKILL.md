@@ -48,7 +48,7 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 
 ## Available components
 
-Accordion, ActionList, Alert, Amount, AnnouncementBanner, AppBar, Avatar, Badge, BottomSheet, Box, Breadcrumb, Button, Card, Checkbox, Chip, Code, Collapsible, Counter, CounterInput, Divider, Dropdown, Heading, IconButton, Icons, InputGroup, Link, Modal, OTPInput, PasswordInput, PhoneNumberInput, Radio, SearchInput, SegmentedControl, Skeleton, Spinner, Switch, Tabs, Text, TextInput, Toast, Tooltip, TrustBadge
+Accordion, ActionList, Alert, Amount, AnnouncementBanner, AppBar, Avatar, Badge, BottomSheet, Box, Breadcrumb, Button, Card, CardGroup, Checkbox, Chip, Code, Collapsible, Counter, CounterInput, Divider, Dropdown, Heading, IconButton, Icons, InputGroup, Link, Modal, OTPInput, PasswordInput, PhoneNumberInput, Radio, SearchInput, SegmentedControl, Skeleton, Spinner, Switch, Tabs, Text, TextInput, Toast, Tooltip, TrustBadge
 
 ## General docs
 
