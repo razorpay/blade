@@ -9,6 +9,10 @@
   import StackedSource from './Stacked.svelte?raw';
   import ImperativeStory from './Imperative.svelte';
   import ImperativeSource from './Imperative.svelte?raw';
+  import PopoverStory from './Popover.svelte';
+  import PopoverSource from './Popover.svelte?raw';
+  import MenuStory from './Menu.svelte';
+  import MenuSource from './Menu.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/Modal",
@@ -49,5 +53,27 @@
 >
   {#snippet template(args)}
     <ImperativeStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Popover"
+  args={meta.stories.Popover.args}
+  argTypes={storyArgTypes(meta, 'Popover') as never}
+  parameters={{ docs: { description: { story: meta.stories.Popover.description }, source: exampleSource(PopoverSource) }, controls: { disable: hasNoControls(meta, 'Popover') } }}
+>
+  {#snippet template(args)}
+    <PopoverStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Menu"
+  args={meta.stories.Menu.args}
+  argTypes={storyArgTypes(meta, 'Menu') as never}
+  parameters={{ docs: { description: { story: meta.stories.Menu.description }, source: exampleSource(MenuSource) }, controls: { disable: hasNoControls(meta, 'Menu') } }}
+>
+  {#snippet template(args)}
+    <MenuStory args={args as never} />
   {/snippet}
 </Story>

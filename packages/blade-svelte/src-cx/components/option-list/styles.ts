@@ -55,7 +55,7 @@ export interface OptionListClasses extends OptionRowClasses {
   /**
    * The parts of a row's content (ActionListItem's: leading, title,
    * subtitle, suffix, trailing), so a row drawn inside the list matches
-   * the look. @default Dropdown's row parts
+   * the look. @default the menu's row parts
    */
   item?: PopupItemClasses;
 }
@@ -98,13 +98,13 @@ export type OptionListClassesProp =
 /** Style props in, the parts out. */
 export type OptionListStyleResolver<P> = (props: P) => OptionListClasses;
 
-/** One titled section of a VirtualOptionList's options. */
+/** One titled section of a VirtualOptionList's items. */
 export interface OptionSection<T> {
   /** Identifies the section; keys its heading row. */
   key: string;
-  /** The heading over the section's options. */
+  /** The heading over the section's items. */
   title: string;
-  options: readonly T[];
+  items: readonly T[];
 }
 
 /** What an OptionList hands its OptionItems. */
@@ -112,6 +112,8 @@ export interface OptionListShared {
   classes: OptionListClasses;
   /** The list's test id: each item's control gets `${testID}-${index}`. */
   testID?: string;
+  /** Inside an anchored menu (Modal `variant="menu"`): the rows are `menuitem`s. */
+  rowRole?: 'menuitem';
 }
 
 /** The usual content of a row: what OptionItem lays out when it has no `children`. */

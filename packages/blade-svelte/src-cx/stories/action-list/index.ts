@@ -3,7 +3,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'ActionList',
   description:
-    "Blade's ActionList: rows that look like Menu's and Dropdown's. Inside a Dropdown its items are the options; on its own it's a visible pick list (an OptionList in the action look) with bind:value, single or multiple, and form support.",
+    "Blade's ActionList: a visible pick list (an OptionList in the action look) with bind:value, single or multiple, and form support; inside a Modal menu its rows are the menu's items.",
   argTypes: {
     isDeselectable: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
@@ -24,17 +24,17 @@ const meta: StoryMeta = {
     },
     BankPicker: {
       description:
-        'variant="card" with sections, a SearchInput bound to query, and selectionType="none": each section is its own box under its heading, rows act and hold nothing, a section the search empties steps aside, and empty shows when none is left.',
+        'variant="card" with sections, isSearchable (the list\'s own SearchInput above the rows) and selectionType="none": each section is its own box under its heading, rows act and hold nothing, a section the search empties steps aside, and empty shows when none is left.',
       argTypes: {},
     },
     VirtualBankPicker: {
       description:
-        "VirtualOptionList with classes={actionListClasses('card')}: the same card look and sections for a long list — only the rows in view are mounted. Sections are data; the search filters them.",
+        'virtualizedSections: the same card look, sections and search for a long list — only the rows in view are mounted. The rows are data and children renders one; VirtualOptionList underneath.',
       argTypes: {},
     },
-    InADropdown: {
+    InAMenu: {
       description:
-        'The same items as a Dropdown’s options, with a negative choice and a link row (custom trigger: the select field refuses negative rows).',
+        'The same items inside a Modal `variant="menu"`: every row acts and closes the menu, with a negative choice and a link row.',
       argTypes: {},
     },
   },

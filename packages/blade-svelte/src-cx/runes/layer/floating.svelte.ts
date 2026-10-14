@@ -15,11 +15,18 @@ export interface FloatingOptions {
   gap: () => number;
   /**
    * Escape pressed while this is the topmost layer: a modal beneath, or a
-   * floating one under it, does not see it.
+   * floating one under it, does not see it. Unused when the owner holds
+   * the layer itself (`joinsLayers: false`).
    */
-  onEscape: () => void;
+  onEscape?: () => void;
   /** A press landed outside the anchor and the floating element. */
   onOutside: () => void;
+  /**
+   * Whether this joins the layer stack as a floating layer of its own.
+   * Off when the owner already holds a layer for it (Modal's dialog, which
+   * then answers Escape). Default true.
+   */
+  joinsLayers?: boolean;
   /** Opening moves focus in, closing returns it to where it was. */
   isFocusMoved?: boolean;
   /** Names the anchor's first focusable as described by this id, while open. */
@@ -81,17 +88,19 @@ export function createFloating(options: FloatingOptions): Floating {
       // Untracked: joining the stack reads and writes it, and this
       // attachment must not re-run on that.
       const removeLayer = untrack(() =>
-        layers.push({
-          isModal: false,
-          dismiss: (source) => {
-            if (source !== 'escape') {
-              return false;
-            }
-            options.onEscape();
-            return true;
-          },
-          back: () => undefined,
-        }),
+        options.joinsLayers === false
+          ? () => undefined
+          : layers.push({
+              isModal: false,
+              dismiss: (source) => {
+                if (source !== 'escape') {
+                  return false;
+                }
+                options.onEscape?.();
+                return true;
+              },
+              back: () => undefined,
+            }),
       );
 
       function handlePointerDown(event: PointerEvent): void {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ActionList, ActionListItem, ActionListSection, Icon, SearchInput, Text } from '../../index';
+  import { ActionList, ActionListItem, ActionListSection, Icon, Text } from '../../index';
   import { BankIcon, ChevronRightIcon } from '../../icons';
 
   interface Bank {
@@ -23,7 +23,6 @@
     { code: 'yes', name: 'Yes Bank' },
   ];
 
-  let query = $state('');
   let picked = $state('');
 </script>
 
@@ -40,11 +39,11 @@
 {/snippet}
 
 <div class="flex max-w-[30rem] flex-col gap-6">
-  <SearchInput bind:value={query} placeholder="Search for Banks" accessibilityLabel="Search for banks" size="large" />
   <ActionList
     variant="card"
     selectionType="none"
-    {query}
+    isSearchable
+    searchPlaceholder="Search for Banks"
     onChange={({ value }) => (picked = String(value))}
     accessibilityLabel="Banks"
   >

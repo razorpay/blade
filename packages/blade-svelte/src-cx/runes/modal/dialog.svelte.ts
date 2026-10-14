@@ -91,6 +91,12 @@ export interface DialogOptions {
   /** Fires on every dismissal; see `DialogDismissEvent`. */
   onDismiss?: (event: DialogDismissEvent) => void;
   isDismissible: () => boolean;
+  /**
+   * A modal surface (the scrim, the inert page, back) or a floating panel
+   * (a popover, a menu: Escape only while topmost). Read once per open.
+   * Default true.
+   */
+  isModal?: () => boolean;
 }
 
 export interface Dialog {
@@ -124,6 +130,7 @@ export function createDialog(options: DialogOptions): Dialog {
   // host makes (`isOpen = false`) just drops it: `onDismiss` reports only
   // what the user asked for.
   function open(): () => void {
+    entry.isModal = options.isModal?.() ?? true;
     model = createDialogModel({
       isDismissible: options.isDismissible,
       onDismiss: (event) => options.onDismiss?.(event),

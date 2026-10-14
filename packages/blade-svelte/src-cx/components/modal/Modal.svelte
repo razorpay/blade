@@ -5,7 +5,11 @@
     createDialog,
     type DialogDismissEvent,
   } from '../../runes/modal/dialog.svelte';
+  import { createTrigger } from '../../runes/dom/trigger.svelte';
+  import { provideOverlay } from '../../runes/layer/overlay';
+  import type { Placement } from '../../runes/layer/placement';
   import { useComponentDefaults } from '../defaults';
+  import FloatingPanel from '../layer/FloatingPanel.svelte';
   import Surface from '../layer/Surface.svelte';
   import Icon from '../icon/Icon.svelte';
   import type { IconSource } from '../../runes/icon/source';
@@ -15,6 +19,22 @@
 
   interface BehaviourProps {
     isOpen?: boolean;
+    /**
+     * The trigger: a Button or an IconButton. The wrapper around it opens
+     * the modal on a click (and, for a menu, on ArrowDown or ArrowUp), so
+     * it wires nothing; `isOpen` is there to read (a chevron that flips).
+     * Click only: hover has no touch counterpart, so nothing opens on it.
+     * The `popover` and `menu` variants need it: the panel hangs from it.
+     */
+    trigger?: Snippet<[{ isOpen: boolean }]>;
+    /**
+     * Where a `popover` or `menu` panel sits against its trigger; the
+     * variant's default otherwise (`top` for a popover, `bottom-start` for
+     * a menu). Ignored as a surface.
+     */
+    placement?: Placement;
+    /** The trigger does not open it. @default false */
+    isDisabled?: boolean;
     /**
      * The user asked it to go — the close button, the backdrop, Escape, back
      * or a drag (`source`) — whether or not it is dismissible. A dismissible
@@ -108,6 +128,9 @@
 
   let {
     isOpen = $bindable(false),
+    trigger,
+    placement,
+    isDisabled = false,
     onDismiss,
     onClosed,
     isDismissible = true,
@@ -135,6 +158,14 @@
   const uid = $props.id();
   const titleId = `${uid}-title`;
   const subtitleId = `${uid}-subtitle`;
+  const panelId = `${uid}-panel`;
+
+  const style = useComponentDefaults('Modal', () => styleProps);
+  const classes = $derived(resolveModal(style.current));
+  // A floating panel by the trigger (popover, menu), or a surface on the
+  // layer stack (modal, sheet, drawers — and a popover or menu presented
+  // as a sheet).
+  const isFloating = $derived(classes.kind === 'floating');
 
   const dialog = createDialog({
     isOpen: () => isOpen,
@@ -143,14 +174,61 @@
     },
     onDismiss: (event) => onDismiss?.(event),
     isDismissible: () => isDismissible,
+    isModal: () => !isFloating,
   });
 
-  const style = useComponentDefaults('Modal', () => styleProps);
-  const classes = $derived(resolveModal(style.current));
+  // The trigger side: the wrapper's ref (what a floating panel hangs from)
+  // and the aria state stamped on the control inside it.
+  const opener = createTrigger({
+    controls: panelId,
+    popup: panelId,
+    isExpanded: () => isOpen,
+    haspopup: () => classes.popup,
+  });
+
   const close = () => dialog.close();
   const hasHeader = $derived(
     Boolean(title || subtitle || headerContent || leading || trailing || showBackButton)
   );
+  // A menu has no close button: its rows are the way out (a pick, Escape).
+  const hasClose = $derived(isDismissible && !(isFloating && classes.popup === 'menu'));
+
+  provideOverlay({
+    get variant() {
+      return style.current.variant ?? 'modal';
+    },
+    get isAnchored() {
+      return isFloating;
+    },
+    panelId,
+    close,
+  });
+
+  function handleTriggerClick(event: MouseEvent): void {
+    // Native renders the panel in the wrapper: a press inside it is not the trigger's.
+    if (isDisabled || opener.isInside(event)) {
+      return;
+    }
+    if (isOpen) {
+      close();
+    } else {
+      isOpen = true;
+    }
+  }
+
+  function handleTriggerKeyDown(event: KeyboardEvent): void {
+    // Closed: the arrows open a menu from its trigger, as Blade.
+    if (
+      !isOpen &&
+      !isDisabled &&
+      classes.popup === 'menu' &&
+      event.target === opener.control() &&
+      (event.key === 'ArrowDown' || event.key === 'ArrowUp')
+    ) {
+      event.preventDefault();
+      isOpen = true;
+    }
+  }
 </script>
 
 <!--
@@ -235,12 +313,61 @@
 {/snippet}
 
 {#snippet chrome()}
-  {#if isDismissible}
+  {#if hasClose}
     {@render closeButton(hasHeader ? classes.close : classes.floatingClose)}
   {/if}
   {@render chromeContent?.({ close })}
 {/snippet}
 
+{#snippet sections()}
+  {#if children}
+    {@render children({ close })}
+  {:else if body}
+    <div class={classes.body}>{@render body({ close })}</div>
+  {/if}
+  {#if footer}
+    <div class={classes.footer}>{@render footer({ close })}</div>
+  {/if}
+{/snippet}
+
+{#if trigger}
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <span
+    class="relative inline-flex"
+    onclick={handleTriggerClick}
+    onkeydown={handleTriggerKeyDown}
+    {@attach opener.attach}
+  >
+    {@render trigger({ isOpen })}
+  </span>
+{/if}
+
+{#if isFloating}
+  {#if isOpen && opener.anchor && classes.floating}
+    <FloatingPanel
+      id={panelId}
+      anchor={opener.anchor}
+      placement={placement ?? (classes.popup === 'menu' ? 'bottom-start' : 'top')}
+      classes={classes.floating}
+      role={classes.popup}
+      {accessibilityLabel}
+      labelledBy={title ? titleId : undefined}
+      describedBy={subtitle ? subtitleId : undefined}
+      isFocusMoved
+      onOutside={() => dialog.dismiss('blur')}
+      {onClosed}
+      {testID}
+      class={className}
+    >
+      <!-- First, so what it holds (the close button) is early in tab order. -->
+      <div class={classes.chrome}>{@render chrome()}</div>
+      <div class={classes.content}>
+        {@render header()}
+        {@render sections()}
+      </div>
+    </FloatingPanel>
+  {/if}
+{:else}
 <Surface
   {isOpen}
   isTop={dialog.isTop}
@@ -257,12 +384,6 @@
   {header}
   {chrome}
 >
-  {#if children}
-    {@render children({ close })}
-  {:else if body}
-    <div class={classes.body}>{@render body({ close })}</div>
-  {/if}
-  {#if footer}
-    <div class={classes.footer}>{@render footer({ close })}</div>
-  {/if}
+  {@render sections()}
 </Surface>
+{/if}

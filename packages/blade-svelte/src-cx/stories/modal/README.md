@@ -8,8 +8,9 @@ The component is `packages/blade/components/modal/Modal.svelte` over the
 
 ## Variants
 
-`variant` is `modal` (default, centred), `sheet`, `drawer` or
-`left-drawer`. The sheet is Blade's
+`variant` is `modal` (default, centred), `sheet`, `drawer`, `left-drawer`,
+`popover` or `menu`. The last two are anchored panels by a `trigger`
+(below); the rest are surfaces on the layer stack. The sheet is Blade's
 BottomSheet — the same modal (model, layer stack, focus, Escape, back),
 anchored to the bottom edge with a handle and dragged down to dismiss. It
 has one resting height (no snap points): a release dismisses after a
@@ -34,6 +35,85 @@ Blade's Drawer: full height on the right edge, sliding in from it,
 24px short of the screen's width on phones, 380px on desktop (`d`, 62.5rem) (`size` does not apply), as Blade DSL's Drawer (Figma);
 `left-drawer` is the same on the left. `<Drawer>` is Modal with `variant`
 defaulting to `drawer`.
+
+## Trigger
+
+`trigger` is a snippet with the control that opens the modal — a Button,
+an IconButton — in a wrapper that opens it on a click (and, for a menu, on
+ArrowDown or ArrowUp), so the control wires nothing; it receives `isOpen`
+to read (a chevron that flips). The wrapper stamps `aria-haspopup`
+(`dialog`, or `menu` for a menu), `aria-expanded` and, while open,
+`aria-controls` on the control. Closing returns focus to it.
+
+**Click only.** Nothing opens on hover: hover has no touch counterpart, and
+checkout is mobile first, so React's `openInteraction="hover"` is not
+ported. Tooltip is the one overlay that shows on hover, and it opens on a
+tap where there is no pointer.
+
+`trigger` is the exception to the rule that `children` is the trigger
+(Tooltip's, Collapsible's): Modal's `children` is its raw body, as it was
+before the anchored variants, and `openModal` renders it with no trigger.
+
+## Popover and menu
+
+`popover` is Blade's Popover: a non-modal panel by its trigger with an
+arrow toward it, 16px round on the popup surface, at most 288px wide
+(328px on desktop). The panel is a `dialog` named by its `title` (or
+`accessibilityLabel`), with `leading` (a 20px glyph, or an asset), `body`
+16px in, the close button in the title row (floating in the corner with no
+title) and `footer`. `placement` defaults to `top`. Escape and a press
+outside dismiss it (`onDismiss` with `escape` or `blur`); the page stays
+live, with no scrim.
+
+`menu` is Blade's Menu: the panel of actions by its trigger, 12px round,
+240 to 400px wide, `placement` defaulting to `bottom-start`. The panel is
+the `role="menu"`, and the ActionList inside it supplies the items: every
+`ActionListItem` becomes a `menuitem` that acts and closes the menu, a
+press reporting through the list's `onChange`; a link row navigates and
+closes it; a `Divider` between rows is passed over by the keys. Opening
+lands focus on the first row; arrows, Home and End move over the enabled
+ones, typing jumps to a match, Enter or Space chooses. A menu has no close
+button. There is no `Menu`, `MenuItem` or `Popover` component: these are
+the variants.
+
+Both need a `trigger`: the panel hangs from it. `size` does not apply.
+
+```svelte
+<Modal variant="menu" accessibilityLabel="Card actions">
+  {#snippet trigger()}<IconButton icon={MoreHorizontalIcon} accessibilityLabel="Card actions" />{/snippet}
+  {#snippet body()}
+    <ActionList onChange={({ value }) => act(value)}>
+      <ActionListItem value="edit" title="Edit" leading={EditIcon} />
+      <ActionListItem value="remove" title="Remove" intent="negative" />
+    </ActionList>
+  {/snippet}
+</Modal>
+```
+
+**No select dropdown.** A field that opens a floating list of options
+(React's SelectInput, Dropdown, AutoComplete) is not ported by decision:
+it is not mobile friendly. A pick is an ActionList on the page, or in a
+`sheet` (or a `menu`, when the pick acts).
+
+## Presentation
+
+`presentation` is how `popover` and `menu` show: `anchored` (default),
+floating by the trigger, or as a bottom `sheet`. It is a style prop, so
+the app sets it once through BladeProvider defaults — the phone
+presentation for every popover and menu, with no breakpoint logic in the
+library (nothing reads the viewport):
+
+```svelte
+<BladeProvider defaults={{ Modal: { presentation: 'sheet' } }}>
+```
+
+As a sheet the same `trigger`, header, `body` and `footer` render through
+the sheet surface — the scrim, the handle, drag to dismiss, the close
+button — and `placement` is ignored. Semantics follow what shows: the
+sheet is a `dialog`, and a menu's rows are plain buttons in it, not
+`menuitem`s. Intent follows what was asked for: the trigger still promises
+a `menu`, and the rows still act and close it. The other variants ignore
+`presentation`.
 
 ## Dragging
 
@@ -60,6 +140,7 @@ it.
 
 | Prop                                                          | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `trigger`, `placement`, `isDisabled`                          | See Trigger: the control that opens it, where a popover or menu sits against it, and whether it opens                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `isOpen`                                                      | Bindable; written `false` whenever the modal closes itself                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `onDismiss`                                                   | `({ source, close })` on every dismissal — `source` is `cross`, `blur`, `escape`, `back` or `drag` — whether or not it is dismissible. Dismissible: the modal closes right after the handler, and nothing prevents it. Not dismissible: it stays open until the handler (or anything later) calls `close`. Not fired for a snippet's `close` or when the host sets `isOpen = false`                                                                                                                                                                                                             |
 | `isDismissible`                                               | Default `true`. Whether a dismissal closes it by itself, and whether the close button shows                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

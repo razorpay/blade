@@ -6,16 +6,28 @@
 
   interface Props {
     isMultiple?: boolean;
+    isSearchable?: boolean;
     inForm?: boolean;
     onSubmit?: (data: unknown) => void;
   }
 
-  let { isMultiple = false, inForm = false, onSubmit }: Props = $props();
+  let { isMultiple = false, isSearchable = false, inForm = false, onSubmit }: Props = $props();
   let value = $state<string | readonly string[] | null>(null);
 </script>
 
 {#snippet list()}
-  <ActionList bind:value selectionType={isMultiple ? 'multiple' : 'single'} name="plan" label="Plan" isRequired={inForm} testID="list">
+  <ActionList
+    bind:value
+    selectionType={isMultiple ? 'multiple' : 'single'}
+    name="plan"
+    label="Plan"
+    isRequired={inForm}
+    testID="list"
+    {...(isSearchable
+      ? { isSearchable: true as const, searchPlaceholder: 'Search plans' }
+      : { isSearchable: false as const })}
+    match={isSearchable ? (item, query) => item.title.toLowerCase().startsWith(query.toLowerCase()) : undefined}
+  >
     <ActionListSection title="Plans" testID="plans">
       <ActionListItem value="basic" title="Basic" description="For new businesses" testID="basic" />
       <ActionListItem value="pro" title="Pro" testID="pro" />
@@ -25,6 +37,7 @@
       <ActionListItem value="compare" title="Compare plans" href="/plans" testID="compare" />
       <ActionListItem value="cancel" title="Cancel subscription" intent="negative" testID="cancel" />
     </ActionListSection>
+    {#snippet empty({ query })}<span data-testid="none">Nothing for {query}</span>{/snippet}
   </ActionList>
 {/snippet}
 

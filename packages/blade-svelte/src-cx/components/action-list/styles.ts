@@ -6,7 +6,7 @@ import type {
 import { POPUP_ITEM, POPUP_SECTION } from '../shared/popup-list';
 import type { PopupItemClasses } from '../shared/popup-list';
 
-/** ActionList's looks: Dropdown's rows in no box, or rows divided in a card. */
+/** ActionList's looks: a menu's rows in no box, or rows divided in a card. */
 export const ACTION_LIST_AXES = {
   variant: ['plain', 'card'],
 } as const;
@@ -20,7 +20,7 @@ export interface ActionListLook extends Partial<OptionListLookState> {
 }
 
 // ActionList standalone, `plain`: OptionList's anatomy (a native radio or
-// checkbox row) in Dropdown's look (`shared/popup-list`; Figma's _Action
+// checkbox row) in a menu's look (`shared/popup-list`; Figma's _Action
 // List) — rows touching, in no box; each 36px, 8px in, 8px radius, its parts
 // side by side 8px apart; the selected wash, `interactive.background.gray
 // .default` under the pointer, Figma's 4px `interactive.border.primary
@@ -72,7 +72,7 @@ const CARD_ROW: typeof PLAIN_ROW = {
 };
 
 // Sections. `plain`: Figma's section heading inside the list, after a
-// hairline in every section but the first (as in a Dropdown). `card`: the
+// hairline in every section but the first (as in a menu). `card`: the
 // heading above, then the section's own box; sections 24px apart, the
 // heading 12px over its box. In a virtual list the heading is a row of its
 // own, and a card's box is drawn per row (rows are measured one by one, so
@@ -112,7 +112,7 @@ const PLAIN_SECTION: OptionSectionClasses = {
 /**
  * A `card` row's parts (ActionListRow): a 24px leading box (a bank's logo),
  * and the leading, trailing and glyph centred on the title block, as a
- * picker row draws them; the rest as Dropdown's.
+ * picker row draws them; the rest as a menu's.
  */
 const CARD_ITEM: PopupItemClasses = {
   ...POPUP_ITEM,

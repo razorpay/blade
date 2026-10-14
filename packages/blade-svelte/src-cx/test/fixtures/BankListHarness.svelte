@@ -8,7 +8,7 @@
     selectionType?: 'single' | 'multiple' | 'none';
     withSections?: boolean;
     query?: string;
-    filter?: (item: { title: string; value: string }, query: string) => boolean;
+    match?: (item: { title: string; value: string }, query: string) => boolean;
     onChange?: (change: { name?: string; value: unknown }) => void;
     onSbiClick?: () => void;
   }
@@ -18,7 +18,7 @@
     selectionType = 'none',
     withSections = true,
     query = '',
-    filter,
+    match,
     onChange,
     onSbiClick,
   }: Props = $props();
@@ -41,7 +41,7 @@
   {variant}
   {selectionType}
   {query}
-  {filter}
+  {match}
   {onChange}
   accessibilityLabel="Banks"
   testID="banks"

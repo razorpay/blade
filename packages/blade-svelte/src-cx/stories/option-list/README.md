@@ -29,9 +29,9 @@ expanding headers.
 | `value` | The picked option, or an array of them with `selectionType="multiple"`; bindable |
 | `selectionType` | `single` (default) or `multiple`: rows become checkboxes and the root a `group`; otherwise radios in a `radiogroup`. `none`: rows are buttons that act and hold nothing — each press reports through `onChange` with the row's value |
 | `onChange` | Fires on a user pick with `{ name, value }` — "pick = submit" goes here, not in a button inside the row |
-| `classes` | A whole look (`OptionListClasses`) in place of the built-in one — or a function of the list's state (`{ hasSections }`) returning one: `actionListClasses('card')`, `resolveActionList()`, or your own; see below |
+| `classes` | A whole look (`OptionListClasses`) in place of the built-in one — or a function of the list's state (`{ hasSections }`) returning one — your own, starting from `resolveOptionList()`; see below |
 | `query` | The search: options whose `text` (else `title`) doesn't hold it — ignoring case and outer spaces — aren't mounted, so the keys and the value's rows skip them; a section left with none steps aside |
-| `filter` | `({ title, value }, query) => boolean`, in place of the text match |
+| `match` | `({ title, value }, query) => boolean`, in place of the text match |
 | `empty` | `Snippet<[{ query }]>`, shown while a `query` leaves nothing, in a status region that announces it |
 | `compare` | Value equality. Default: the same value, or plain objects alike in every key (so values bound to `$state`, which holds proxies, still match). Pass it to match by an id |
 | `isDisabled` | The whole list; an `OptionItem`'s own `isDisabled` for one option |
@@ -53,7 +53,7 @@ expanding headers.
 
 `OptionListSection` groups options under a heading: a labelled
 `role="group"`, drawn by the look's `section` parts (a heading inside the
-one box here; a card of its own in `actionListClasses('card')`). The
+one box here; a card of its own in ActionList's `card` variant). The
 keyboard runs across sections as one list.
 
 ```svelte
@@ -85,9 +85,9 @@ OptionList's anatomy (the `<label>` and native input per row, the
 `radiogroup` / `group` root, label and hint) and behaviour (value, form
 field, keyboard, tab stop) don't depend on its looks. Pass `classes` (an
 `OptionListClasses` map) to `OptionList` or `VirtualOptionList` and it
-replaces the built-in look entirely. That's how ActionList brings Menu's
-and Dropdown's rows (`resolveActionList()`); `resolveOptionList()` gives
-the built-in one to start from. A map's `control` part decides the native
+replaces the built-in look entirely. That's how ActionList brings a menu's
+rows (its map is internal); `resolveOptionList()` gives the built-in one
+to start from. A map's `control` part decides the native
 input's look, so a custom look could show it.
 
 ```svelte
@@ -122,12 +122,12 @@ input. Active and picked are independent: moving never changes the value.
 
 `VirtualOptionList` mounts only the rows in view, so it cannot learn its
 options from the items inside it: it takes them as data — `options`,
-`optionKey`, `isOptionDisabled`, `optionText` — and a `children(option,
+`itemKey`, `isItemDisabled`, `itemText` — and a `children(option,
 state)` snippet that renders an `OptionItem` per row. Give it a bounded
 height through `class` (`h-80`).
 
 ```svelte
-<VirtualOptionList class="h-80" options={banks} optionKey={(b) => b.code} bind:value>
+<VirtualOptionList class="h-80" items={banks} itemKey={(b) => b.code} bind:value>
   {#snippet children(bank)}
     <OptionItem value={bank} title={bank.name} />
   {/snippet}
@@ -137,7 +137,7 @@ height through `class` (`h-80`).
 `sections` (`{ key, title, options }[]`) replaces `options` for titled
 groups: each heading is a row of its own, and a boxed look draws its box per
 row (rows are measured one by one, so no element holds a section). `query`,
-`filter` (`(option, query) => boolean`; the default matches `optionText`)
+`match` (`(option, query) => boolean`; the default matches `itemText`)
 and `empty` filter the data before it is laid out; an emptied section is
 left out.
  Rows can be of any height. Nothing is configured:
@@ -158,5 +158,5 @@ Limits: a focused row that is scrolled out of view by the pointer loses focus
 slightly while the prediction settles.
 
 On native the row is a pressable container carrying `checked` / `disabled`
-attributes (`OptionRow.native.svelte`). Dropdown and Menu are not part of
-this component.
+attributes (`OptionRow.native.svelte`). A menu (Modal `variant="menu"`)
+takes an ActionList, which is this component in the action look.

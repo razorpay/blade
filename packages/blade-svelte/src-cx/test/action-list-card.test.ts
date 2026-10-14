@@ -40,7 +40,7 @@ describe('ActionList variant="card"', () => {
   });
 });
 
-describe('ActionList search: query, filter, empty', () => {
+describe('ActionList search: query, match, empty', () => {
   it('a query hides the rows that fail it, and a section left with none', async () => {
     const { queryByTestId, getByTestId, rerender } = render(BankListHarness);
     await rerender({ query: '  AXIS ' });
@@ -62,11 +62,11 @@ describe('ActionList search: query, filter, empty', () => {
     expect(getByTestId('sbi')).toBeTruthy();
   });
 
-  it('filter replaces the title match', () => {
-    const filter = (item: { title: string; value: string }, query: string): boolean =>
+  it('match replaces the title match', () => {
+    const match = (item: { title: string; value: string }, query: string): boolean =>
       item.value.startsWith(query);
     const { queryByTestId, getByTestId } = render(BankListHarness, {
-      props: { filter, query: 'ko' },
+      props: { match, query: 'ko' },
     });
     expect(getByTestId('kotak')).toBeTruthy();
     expect(queryByTestId('axis')).toBeNull();
@@ -115,7 +115,7 @@ function stubLayout(): void {
   } as DOMRect);
 }
 
-describe('VirtualActionList with sections', () => {
+describe('ActionList virtualizedSections', () => {
   it('headings are rows of their own; a card frames each row by its place', async () => {
     stubLayout();
     const { getByText, getByTestId } = render(VirtualBankListHarness);
@@ -141,6 +141,19 @@ describe('VirtualActionList with sections', () => {
     expect(getByTestId('b3')).toBeTruthy();
     // The only row of its section: framed all round.
     expectClass(getByTestId('b3').parentElement, 'rounded-small');
+  });
+
+  it("isSearchable: the list's own search filters the data", async () => {
+    stubLayout();
+    const { getByRole, getByTestId, queryByTestId, queryByText } = render(VirtualBankListHarness, {
+      props: { isSearchable: true },
+    });
+    await waitFor(() => getByTestId('b0'));
+    const search = getByRole('searchbox', { name: 'Search for banks' });
+    await fireEvent.input(search, { target: { value: 'kotak' } });
+    await waitFor(() => expect(queryByTestId('b0')).toBeNull());
+    expect(getByTestId('kotak')).toBeTruthy();
+    expect(queryByText('All Banks')).toBeNull();
   });
 
   it('none: a press reports the option; an empty search shows the status', async () => {

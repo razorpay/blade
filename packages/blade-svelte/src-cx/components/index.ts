@@ -39,19 +39,8 @@ export { default as OverlayStack } from './layer/OverlayStack.svelte';
 export { default as IconButton } from './icon-button/IconButton.svelte';
 export { default as Icon } from './icon/Icon.svelte';
 export { default as Link } from './link/Link.svelte';
-export { Dropdown, DropdownHeader, DropdownFooter, DROPDOWN_AXES } from './dropdown';
-export {
-  ActionList,
-  ActionListItem,
-  ActionListSection,
-  ACTION_LIST_AXES,
-  actionListClasses,
-  resolveActionList,
-} from './action-list';
-export type { ActionListLook, ActionListVariant } from './action-list';
-export { default as Menu } from './menu/Menu.svelte';
-export { default as MenuItem } from './menu/MenuItem.svelte';
-export { default as MenuDivider } from './menu/MenuDivider.svelte';
+export { ActionList, ActionListItem, ActionListSection, ACTION_LIST_AXES } from './action-list';
+export type { ActionListVariant } from './action-list';
 export { default as NavStack } from './nav-stack/NavStack.svelte';
 export { getNav, globalNav, pushScreen } from '../runes/nav-stack/nav';
 export type {
@@ -71,7 +60,6 @@ export { default as VirtualOptionList } from './option-list/VirtualOptionList.sv
 export { default as OTPInput } from './otp-input/OTPInput.svelte';
 export { default as PasswordInput } from './password-input/PasswordInput.svelte';
 export { default as PhoneNumberInput } from './phone-number-input/PhoneNumberInput.svelte';
-export { default as Popover } from './popover/Popover.svelte';
 export { default as Radio } from './radio/Radio.svelte';
 export { default as RadioGroup } from './radio/RadioGroup.svelte';
 export { default as Switch } from './switch/Switch.svelte';
@@ -124,17 +112,7 @@ export { SWITCH_AXES } from './switch';
 export type { SwitchStyleProps } from './switch';
 export type { CarouselClasses, CarouselStyleResolver } from './carousel/styles';
 export type { CarouselStyleProps } from './carousel';
-export type { MenuClasses, MenuShared, MenuStyleResolver } from './menu/styles';
-export type {
-  DropdownClasses,
-  DropdownShared,
-  DropdownStyleProps,
-  DropdownStyleResolver,
-} from './dropdown/styles';
 export type { PopupItemClasses, PopupItemIntent } from './shared/popup-list';
-export type { MenuStyleProps } from './menu';
-export type { PopoverClasses, PopoverStyleResolver } from './popover/styles';
-export type { PopoverStyleProps } from './popover';
 export type { TabsClasses, TabsStyleResolver } from './tabs/styles';
 export { TABS_AXES } from './tabs';
 export type { TabItemState, TabsStyleProps } from './tabs';

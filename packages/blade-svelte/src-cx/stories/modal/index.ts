@@ -7,7 +7,7 @@ const meta: StoryMeta = {
   description:
     'Modal component over the dialog model (packages/blade/runes/modal) on the layer stack: variant and size come from its styles.',
   argTypes: {
-    variant: { control: 'select', options: MODAL_AXES.variant },
+    variant: { control: 'select', options: ['modal', 'sheet', 'drawer', 'left-drawer'] },
     size: { control: 'select', options: MODAL_AXES.size },
     isDismissible: {
       control: 'boolean',
@@ -97,6 +97,42 @@ const meta: StoryMeta = {
         },
       },
       args: { isDismissible: true, variant: 'drawer', pace: 'default', isDraggable: false },
+    },
+    Popover: {
+      name: 'Popover',
+      description:
+        "Blade's Popover is Modal in its `popover` variant: a non-modal panel by its `trigger` with an arrow toward it — a title with a leading icon, the body and a footer — placed and flipped like a Tooltip, rendered in the OverlayStack. A click toggles it and shows a close button; Escape or a press outside closes. Click only: nothing opens on hover, which has no touch counterpart. `presentation: 'sheet'` (normally the provider's) shows it as a bottom sheet instead.",
+      argTypes: {
+        placement: {
+          control: 'select',
+          options: ['top', 'top-start', 'bottom-start', 'bottom', 'bottom-end', 'right', 'left'],
+        },
+        presentation: { control: 'select', options: MODAL_AXES.presentation },
+        title: { control: 'text' },
+        withTooltip: {
+          control: 'boolean',
+          description: 'A tooltip inside the popover: Escape closes the tooltip first',
+        },
+      },
+      args: {
+        placement: 'top',
+        presentation: 'anchored',
+        title: 'Convenience fee',
+        withTooltip: false,
+      },
+    },
+    Menu: {
+      name: 'Menu',
+      description:
+        "Blade's Menu is Modal in its `menu` variant with an ActionList inside: the panel is the `menu`, its rows `menuitem`s that act and close it. Arrows open it from the trigger and move over the rows, typing jumps to a match, Enter or a click chooses. `presentation: 'sheet'` (normally the provider's) shows the same list as a bottom sheet: a dialog over plain buttons, still closing on a pick.",
+      argTypes: {
+        placement: {
+          control: 'select',
+          options: ['bottom-end', 'bottom-start', 'top-end', 'right'],
+        },
+        presentation: { control: 'select', options: MODAL_AXES.presentation },
+      },
+      args: { placement: 'bottom-end', presentation: 'anchored' },
     },
     Stacked: {
       name: 'Stacked modals',
