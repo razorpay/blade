@@ -8,21 +8,21 @@
 
   /** The window's rows from the options or sections, and each option's row. */
   function layoutRows<T>(
-    options: readonly T[] | undefined,
+    items: readonly T[] | undefined,
     sections: readonly Section<T>[] | undefined,
-    optionKey: (option: T) => string
+    itemKey: (item: T) => string
   ): { rows: LayoutRow<T>[]; keys: string[]; options: T[]; rowOf: number[] } {
     const rows: LayoutRow<T>[] = [];
     const flat: T[] = [];
     const rowOf: number[] = [];
     const add = (option: T, frame?: Frame): void => {
       rowOf.push(rows.length);
-      rows.push({ kind: 'option', key: optionKey(option), option, index: flat.length, frame });
+      rows.push({ kind: 'option', key: itemKey(option), option, index: flat.length, frame });
       flat.push(option);
     };
     if (sections) {
       for (const section of sections) {
-        const count = section.options.length;
+        const count = section.items.length;
         if (count === 0) {
           continue;
         }
@@ -33,7 +33,7 @@
           title: section.title,
           isFirst: rows.length === 0,
         });
-        section.options.forEach((option, at) =>
+        section.items.forEach((option, at) =>
           add(
             option,
             count === 1 ? 'only' : at === 0 ? 'first' : at === count - 1 ? 'last' : 'middle'
@@ -41,7 +41,7 @@
         );
       }
     } else {
-      (options ?? []).forEach((option) => add(option));
+      (items ?? []).forEach((option) => add(option));
     }
     return { rows, keys: rows.map((row) => row.key), options: flat, rowOf };
   }
@@ -69,6 +69,7 @@
   import { cx } from '../../cx';
   import FieldHint from '../shared/FieldHint.svelte';
   import FieldLabel from '../shared/FieldLabel.svelte';
+  import { getOverlay } from '../../runes/layer/overlay';
   import { provideOptionList } from '../../runes/option-list/context';
   import { createOptionList } from '../../runes/option-list/list.svelte';
   import VirtualWindow from '../virtual/VirtualWindow.svelte';
@@ -86,23 +87,23 @@
 
   interface BehaviourProps {
     /**
-     * Every option, as data: the list mounts only the rows in view, so it
+     * Every item, as data: the list mounts only the rows in view, so it
      * must know them all up front — for the keyboard, typeahead and opening
      * at the pick.
      */
-    options?: readonly T[];
+    items?: readonly T[];
     /**
-     * The options in titled sections, in place of `options`: each section's
+     * The items in titled sections, in place of `items`: each section's
      * heading is a row of its own, scrolled with the rest; the keyboard runs
      * across sections as one list. An empty section is left out.
      */
     sections?: readonly OptionSection<T>[];
-    /** Identifies an option across re-orders and filtering. */
-    optionKey: (option: T) => string;
+    /** Identifies an item across re-orders and filtering; unique across sections. */
+    itemKey: (item: T) => string;
     /** What the keyboard skips and the list refuses. */
-    isOptionDisabled?: (option: T, index: number) => boolean;
+    isItemDisabled?: (item: T, index: number) => boolean;
     /** Enables typeahead: the text a typed prefix is matched against. */
-    optionText?: (option: T) => string;
+    itemText?: (item: T) => string;
     /**
      * The pick — an array of picks with `selectionType="multiple"`: the initial one, a
      * `bind:value`, or a value the host keeps driving.
@@ -121,19 +122,19 @@
     isDeselectable?: boolean;
     /**
      * The list's look as a whole class map (`OptionListClasses`), or one per
-     * list state (`actionListClasses('card')`), in place of the built-in
+     * list state (`(state) => OptionListClasses`), in place of the built-in
      * look: how a library brings its own rows (ActionList does). The anatomy
      * and behaviour stay OptionList's.
      */
     classes?: OptionListClassesProp;
     /**
-     * The search: options whose `optionText` does not hold it, ignoring case
+     * The search: items whose `itemText` does not hold it, ignoring case
      * and outer spaces, are left out — and a section left with none. The
      * data is filtered before it is laid out. Bind a SearchInput's value to it.
      */
     query?: string;
-    /** Replaces the `optionText` match: whether an option passes the `query`. */
-    filter?: (option: T, query: string) => boolean;
+    /** Replaces the `itemText` match: whether an item passes the `query`. */
+    match?: (option: T, query: string) => boolean;
     /**
      * Shown in place of the rows while a `query` leaves none, in a status
      * region that announces it.
@@ -161,11 +162,11 @@
   type Props = BehaviourProps & OptionListStyleProps;
 
   let {
-    options: flatOptions,
+    items: flatItems,
     sections,
-    optionKey,
-    isOptionDisabled,
-    optionText,
+    itemKey,
+    isItemDisabled,
+    itemText,
     value = $bindable(),
     selectionType = 'single',
     onChange,
@@ -173,7 +174,7 @@
     isDeselectable = false,
     classes: customClasses,
     query = '',
-    filter,
+    match,
     empty,
     name,
     isRequired = false,
@@ -198,16 +199,16 @@
   // this one keeps its own search to itself.
   clearOptionListSearch();
   function passes(option: T): boolean {
-    return filter ? filter(option, query) : textMatches(optionText?.(option) ?? '', query);
+    return match ? match(option, query) : textMatches(itemText?.(option) ?? '', query);
   }
   const isSearching = $derived(query.trim() !== '');
-  const shownOptions = $derived(isSearching ? flatOptions?.filter(passes) : flatOptions);
+  const shownItems = $derived(isSearching ? flatItems?.filter(passes) : flatItems);
   const shownSections = $derived(
     isSearching
-      ? sections?.map((section) => ({ ...section, options: section.options.filter(passes) }))
+      ? sections?.map((section) => ({ ...section, items: section.items.filter(passes) }))
       : sections
   );
-  const layout = $derived(layoutRows(shownOptions, shownSections, optionKey));
+  const layout = $derived(layoutRows(shownItems, shownSections, itemKey));
   const isEmpty = $derived(isSearching && layout.options.length === 0);
   const options = $derived(layout.options);
   // Opens at the pick — or at its section's heading, when the pick heads
@@ -217,8 +218,14 @@
     return row > 0 && layout.rows[row - 1]?.kind === 'title' ? row - 1 : row;
   });
 
-  const isMultiple = $derived(selectionType === 'multiple');
-  const isAction = $derived(selectionType === 'none');
+  // Inside a Modal: a `menu` makes every row act and close the menu; an
+  // anchored one also makes the rows `menuitem`s, as OptionList does.
+  const overlay = getOverlay();
+  const inMenu = $derived(overlay?.variant === 'menu');
+  const isMenu = $derived(inMenu && Boolean(overlay?.isAnchored));
+
+  const isMultiple = $derived(selectionType === 'multiple' && !inMenu);
+  const isAction = $derived(selectionType === 'none' || inMenu);
   const uid = $props.id();
   const lineText = $derived(
     pickHintText({ validationState, helpText, errorText })
@@ -234,7 +241,7 @@
   // svelte-ignore state_referenced_locally
   const list = createOptionList<T, OptionListShared>({
     id: uid,
-    options: () => options,
+    items: () => options,
     value: () => value,
     onValue: (next) => {
       value = next;
@@ -242,17 +249,22 @@
     onChange: (next) => onChange?.({ name, value: next }),
     isMultiple: () => isMultiple,
     isAction: () => isAction,
-    onPick: (option) => onChange?.({ name, value: option }),
+    onPick: (option) => {
+      onChange?.({ name, value: option });
+      if (inMenu) {
+        overlay?.close();
+      }
+    },
     compare,
-    isOptionDisabled,
-    optionText,
+    isItemDisabled,
+    itemText,
     isDeselectable: () => isDeselectable,
     name: () => name,
     isRequired: () => isRequired,
     isDisabled: () => isDisabled,
     validationState: () => validationState,
     hint: () => lineText,
-    shared: () => ({ classes, testID }),
+    shared: () => ({ classes, testID, rowRole: isMenu ? 'menuitem' : undefined }),
   });
   provideOptionList(list);
 

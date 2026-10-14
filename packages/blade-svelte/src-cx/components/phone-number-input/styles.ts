@@ -80,7 +80,7 @@ export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
     // Blade's ActionListItemText trailing: `interactive.text.gray.muted`.
     rowDialCode: 'shrink-0 tabular-nums text-interactive-gray-muted',
     empty: 'py-8 text-center text-75 leading-50 text-surface-gray-subtle',
-    // ActionList's look (Menu's and Dropdown's rows), as Blade's CountrySelector:
+    // ActionList's look (a menu's rows), as Blade's CountrySelector:
     // its rows are ActionListItems.
     optionList: resolveActionList(),
   };

@@ -8,6 +8,8 @@
   interface Props {
     /** `button`: an action row, which acts and holds nothing. */
     kind: 'radio' | 'checkbox' | 'button';
+    /** An action row inside an anchored menu: a `menuitem`. */
+    role?: 'menuitem';
     name: string;
     isSelected: boolean;
     isDisabled: boolean;
@@ -36,6 +38,7 @@
 
   let {
     kind,
+    role,
     name,
     isSelected,
     isDisabled,
@@ -64,6 +67,7 @@
   <!-- An action row: a native button owns the press, Enter and Space. -->
   <button
     type="button"
+    {role}
     class={cx(
       classes.action ?? 'w-full text-start',
       classes.row,

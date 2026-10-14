@@ -1,11 +1,10 @@
 <script lang="ts" generics="T">
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
-  import { getDropdown } from '../../runes/dropdown/context';
+  import { getOverlay } from '../../runes/layer/overlay';
   import { createOptionMatch } from '../../runes/option-list/search.svelte';
   import type { IconSource } from '../../runes/icon/source';
   import { getOptionList } from '../../runes/option-list/context';
-  import DropdownItem from '../dropdown/DropdownItem.svelte';
   import OptionItem from '../option-list/OptionItem.svelte';
   import type { OptionListShared } from '../option-list/styles';
   import ActionListRow from '../shared/ActionListRow.svelte';
@@ -33,11 +32,7 @@
     rel?: string;
     /** `negative` for a destructive action: red, with a red wash. @default 'none' */
     intent?: PopupItemIntent;
-    /**
-     * The row was pressed. Inside a Dropdown it is also picked, before the
-     * value is held; standalone, it runs with the pick (or, with
-     * `selectionType="none"`, the press).
-     */
+    /** The row was pressed: with the pick, or the press (`selectionType="none"`, a menu). */
     onClick?: () => void;
     /** @default false */
     isDisabled?: boolean;
@@ -46,15 +41,23 @@
 
   let { href, target, rel, intent = 'none', onClick, testID, ...row }: Props = $props();
 
-  const inDropdown = Boolean(getDropdown());
   const list = getOptionList<T, OptionListShared>();
+  // A link row inside a menu closes it as it navigates.
+  const overlay = getOverlay();
   // The list's look carries the row's parts (a card's 24px logo box).
   const parts = $derived(list?.shared.classes.item ?? POPUP_ITEM);
   // A link row is no OptionItem: it takes its own part in the list's search
   // (an option row's OptionItem does that).
   const linkMatch = createOptionMatch(() =>
-    href && !inDropdown ? { title: row.title, value: row.value } : undefined
+    href ? { title: row.title, value: row.value } : undefined
   );
+
+  function handleLinkClick(): void {
+    onClick?.();
+    if (overlay?.variant === 'menu') {
+      overlay.close();
+    }
+  }
 
   const linkClasses = $derived(
     list
@@ -63,16 +66,16 @@
   );
 </script>
 
-{#if inDropdown}
-  <DropdownItem {...row} {href} {target} {rel} {intent} {onClick} {testID} />
-{:else if href}
+{#if href}
   {#if linkMatch.isShown}
-    <!-- Standalone link row: a navigation between the choices, not one of them. -->
+    <!-- A link row: a navigation between the choices, not one of them. -->
     <a
       class={linkClasses}
+      role={list?.shared.rowRole}
       {href}
       {target}
       {rel}
+      onclick={handleLinkClick}
       aria-disabled={row.isDisabled || undefined}
       data-intent={intent === 'none' ? undefined : intent}
       data-testid={testID}

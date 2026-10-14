@@ -6,6 +6,7 @@
   import { cx } from '../../cx';
   import FieldHint from '../shared/FieldHint.svelte';
   import FieldLabel from '../shared/FieldLabel.svelte';
+  import { getOverlay } from '../../runes/layer/overlay';
   import { provideOptionList } from '../../runes/option-list/context';
   import { createOptionList } from '../../runes/option-list/list.svelte';
   import {
@@ -40,7 +41,7 @@
     isDeselectable?: boolean;
     /**
      * The list's look as a whole class map (`OptionListClasses`), or one per
-     * list state (`actionListClasses('card')`), in place of the built-in
+     * list state (`(state) => OptionListClasses`), in place of the built-in
      * look: how a library brings its own rows (ActionList does). The anatomy
      * and behaviour stay OptionList's.
      */
@@ -53,7 +54,7 @@
      */
     query?: string;
     /** Replaces the text match: whether a row passes the `query`. */
-    filter?: (item: OptionSearchItem<T>, query: string) => boolean;
+    match?: (item: OptionSearchItem<T>, query: string) => boolean;
     /**
      * Shown in place of the rows while a `query` leaves none, in a status
      * region that announces it.
@@ -102,7 +103,7 @@
     isDeselectable = false,
     classes: customClasses,
     query = '',
-    filter,
+    match,
     empty,
     name,
     isRequired = false,
@@ -120,8 +121,15 @@
 
   const style = useComponentDefaults('OptionList', () => styleProps);
 
-  const isMultiple = $derived(selectionType === 'multiple');
-  const isAction = $derived(selectionType === 'none');
+  // Inside a Modal: a `menu` makes every row act and close the menu; an
+  // anchored one also makes the rows `menuitem`s (a menu presented as a
+  // sheet keeps plain buttons in a dialog).
+  const overlay = getOverlay();
+  const inMenu = $derived(overlay?.variant === 'menu');
+  const isMenu = $derived(inMenu && Boolean(overlay?.isAnchored));
+
+  const isMultiple = $derived(selectionType === 'multiple' && !inMenu);
+  const isAction = $derived(selectionType === 'none' || inMenu);
   const uid = $props.id();
   // Blade's two lines, one shown: the state's own, else the help text.
   const lineText = $derived(
@@ -129,7 +137,7 @@
   );
   const search = createOptionListSearch<T>({
     query: () => query,
-    filter: () => filter,
+    match: () => match,
   });
   const classes = $derived(
     typeof customClasses === 'function'
@@ -146,7 +154,12 @@
     onChange: (next) => onChange?.({ name, value: next }),
     isMultiple: () => isMultiple,
     isAction: () => isAction,
-    onPick: (option) => onChange?.({ name, value: option }),
+    onPick: (option) => {
+      onChange?.({ name, value: option });
+      if (inMenu) {
+        overlay?.close();
+      }
+    },
     compare,
     isDeselectable: () => isDeselectable,
     name: () => name,
@@ -154,7 +167,7 @@
     isDisabled: () => isDisabled,
     validationState: () => validationState,
     hint: () => lineText,
-    shared: () => ({ classes, testID }),
+    shared: () => ({ classes, testID, rowRole: isMenu ? 'menuitem' : undefined }),
   });
   provideOptionList(list);
 

@@ -16,8 +16,8 @@
   <VirtualOptionList
     class="h-80"
     label="Bank"
-    options={banks}
-    optionKey={(bank) => bank.code}
+    items={banks}
+    itemKey={(bank) => bank.code}
     bind:value
   >
     {#snippet children(bank)}

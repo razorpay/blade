@@ -12,8 +12,8 @@ export interface TriggerOptions {
    * Defaults to `controls`.
    */
   popup?: string;
-  /** For a trigger that opens a popup: the popup's kind. */
-  haspopup?: 'dialog' | 'menu' | 'listbox';
+  /** For a trigger that opens a popup: the popup's kind; a getter follows it. */
+  haspopup?: 'dialog' | 'menu' | (() => 'dialog' | 'menu');
 }
 
 export interface Trigger {
@@ -48,8 +48,10 @@ export function createTrigger(options: TriggerOptions): Trigger {
       const undo = root.attach(node);
       const control = controlIn(node);
       const isExpanded = options.isExpanded();
-      if (options.haspopup) {
-        control.setAttribute('aria-haspopup', options.haspopup);
+      const haspopup =
+        typeof options.haspopup === 'function' ? options.haspopup() : options.haspopup;
+      if (haspopup) {
+        control.setAttribute('aria-haspopup', haspopup);
       }
       control.setAttribute('aria-expanded', String(isExpanded));
       // What it controls mounts only while shown: point at it only then.

@@ -11,22 +11,6 @@ env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
 jobs:
-  changes:
-    name: Detect Changed Packages
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    outputs:
-      blade-svelte: ${{ steps.filter.outputs.blade-svelte }}
-    steps:
-      - name: Checkout Codebase
-        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
-      - name: Filter Changed Paths
-        uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3.0.4
-        id: filter
-        with:
-          filters: |
-            blade-svelte:
-              - 'packages/blade-svelte/**'
-
   validate:
     name: Validate Source Code
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
@@ -95,7 +79,7 @@ jobs:
         env:
           SHARD: ${{ matrix.shard }}/${{ matrix.totalShards }}
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: coverage-report-${{ matrix.shard }}
           path: packages/blade/coverage
@@ -104,8 +88,6 @@ jobs:
   svelte-test:
     name: Run Svelte Tests
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    needs: changes
-    if: needs.changes.outputs.blade-svelte == 'true'
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
@@ -122,34 +104,39 @@ jobs:
   svelte-e2e:
     name: Run Svelte cx E2E Tests
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    needs: changes
-    if: needs.changes.outputs.blade-svelte == 'true'
     steps:
       - name: Checkout Codebase
-        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2 # PR merge commit + its first parent (base branch tip)
+      # HEAD is the PR merge commit, so diffing against its first parent gives the PR's changed files.
+      - name: Detect blade-svelte Changes
+        id: changes
+        run: |
+          git diff --name-only HEAD^1 HEAD | grep -q '^packages/blade-svelte/' \
+            && echo "blade-svelte=true" >> "$GITHUB_OUTPUT" \
+            || echo "No changes under packages/blade-svelte, skipping E2E tests"
       - name: Use Node v22
-        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        if: steps.changes.outputs.blade-svelte == 'true'
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
       - name: Setup Cache & Install Dependencies
+        if: steps.changes.outputs.blade-svelte == 'true'
         uses: ./.github/actions/install-dependencies
-      - name: Build Blade Core
-        run: yarn build
-        working-directory: packages/blade-core
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium webkit
-        working-directory: packages/blade-svelte
-      - name: Build Svelte cx Storybook
-        run: yarn build-storybook
-        working-directory: packages/blade-svelte
       # Playwright's own browsers against the built Storybook: no credentials.
       # The same specs run on real devices with `yarn test:e2e:browserstack`.
-      - name: Run E2E Tests
-        run: yarn test:e2e
+      - name: Build & Run E2E Tests
+        if: steps.changes.outputs.blade-svelte == 'true'
+        run: |
+          yarn --cwd ../blade-core build
+          npx playwright install --with-deps chromium webkit
+          yarn build-storybook
+          yarn test:e2e
         working-directory: packages/blade-svelte
       - name: Upload E2E Report
-        if: failure()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: failure() && steps.changes.outputs.blade-svelte == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: svelte-cx-e2e-report
           path: |

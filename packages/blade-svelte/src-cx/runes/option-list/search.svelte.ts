@@ -62,7 +62,7 @@ const SECTION = defineContext<OptionListSectionContext>('blade-option-list-secti
 export interface OptionListSearchOptions<T> {
   query: () => string;
   /** Replaces the title match. */
-  filter: () => ((item: OptionSearchItem<T>, query: string) => boolean) | undefined;
+  match: () => ((item: OptionSearchItem<T>, query: string) => boolean) | undefined;
 }
 
 export interface OptionListSearch {
@@ -86,9 +86,9 @@ export function createOptionListSearch<T>(options: OptionListSearchOptions<T>): 
       return isSearching;
     },
     matches(item) {
-      const filter = options.filter();
-      return filter
-        ? filter(item as OptionSearchItem<T>, options.query())
+      const match = options.match();
+      return match
+        ? match(item as OptionSearchItem<T>, options.query())
         : textMatches(item.title, options.query());
     },
     shown,
@@ -173,4 +173,25 @@ export function createOptionMatch(item: () => OptionSearchItem<unknown> | undefi
 export function clearOptionListSearch(): void {
   SEARCH.set(undefined);
   SECTION.set(undefined);
+}
+
+/** A list's own search field: what is typed, bound from a SearchInput. */
+export interface OwnSearch {
+  query: string;
+}
+
+/**
+ * The query of a list that draws its own SearchInput (`isSearchable`), in
+ * place of one the caller binds. Call during component initialisation.
+ */
+export function createOwnSearch(): OwnSearch {
+  let query = $state('');
+  return {
+    get query() {
+      return query;
+    },
+    set query(next: string) {
+      query = next;
+    },
+  };
 }

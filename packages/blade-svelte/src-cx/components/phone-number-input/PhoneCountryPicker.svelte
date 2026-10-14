@@ -60,12 +60,12 @@
 <!-- ActionList's look over the virtual list: its rows are ActionListItems.
      Deselectable, so a tap on the country already picked still closes. -->
 <VirtualOptionList
-  options={countries}
+  items={countries}
   query={picker.query}
-  filter={phoneCountryMatches}
+  match={phoneCountryMatches}
   empty={emptyText ? noMatch : undefined}
-  optionKey={(option) => option.code}
-  optionText={(option) => option.name}
+  itemKey={(option) => option.code}
+  itemText={(option) => option.name}
   compare={(a, b) => a.code === b.code}
   isDeselectable
   value={findPhoneCountry(countries, selected)}

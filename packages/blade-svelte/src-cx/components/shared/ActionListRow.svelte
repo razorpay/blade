@@ -8,7 +8,7 @@
 
   // The inside of an ActionList row — the checkbox for a multiple choice, the
   // leading item, the title with its suffix and description, the trailing
-  // item — wherever the row lives: a Dropdown's option, a standalone list's
+  // item — wherever the row lives: a menu's item, a standalone list's
   // native radio or checkbox row, or a link. A view only: the host owns the
   // element, the semantics and the pick.
   interface Props {

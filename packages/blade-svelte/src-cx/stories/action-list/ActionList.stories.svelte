@@ -13,11 +13,11 @@
   import BankPickerSource from './BankPicker.svelte?raw';
   import VirtualBankPickerStory from './VirtualBankPicker.svelte';
   import VirtualBankPickerSource from './VirtualBankPicker.svelte?raw';
-  import InADropdownStory from './InADropdown.svelte';
-  import InADropdownSource from './InADropdown.svelte?raw';
+  import InAMenuStory from './InAMenu.svelte';
+  import InAMenuSource from './InAMenu.svelte?raw';
 
   const { Story } = defineMeta({
-    title: "Components/Dropdown/ActionList",
+    title: "Components/ActionList",
     tags: ['autodocs'],
     argTypes: meta.argTypes,
     parameters: {
@@ -60,13 +60,13 @@
 </Story>
 
 <Story
-  name="InADropdown"
-  args={meta.stories.InADropdown.args}
-  argTypes={storyArgTypes(meta, 'InADropdown') as never}
-  parameters={{ docs: { description: { story: meta.stories.InADropdown.description }, source: exampleSource(InADropdownSource) }, controls: { disable: hasNoControls(meta, 'InADropdown') } }}
+  name="InAMenu"
+  args={meta.stories.InAMenu.args}
+  argTypes={storyArgTypes(meta, 'InAMenu') as never}
+  parameters={{ docs: { description: { story: meta.stories.InAMenu.description }, source: exampleSource(InAMenuSource) }, controls: { disable: hasNoControls(meta, 'InAMenu') } }}
 >
   {#snippet template()}
-    <InADropdownStory />
+    <InAMenuStory />
   {/snippet}
 </Story>
 

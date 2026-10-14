@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { fireEvent, render, waitFor } from '@testing-library/svelte';
+import { fireEvent, render } from '@testing-library/svelte';
 import ActionListHarness from './fixtures/ActionListHarness.svelte';
-import DropdownHarness from './fixtures/DropdownHarness.svelte';
 
 const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 const control = (row: HTMLElement): HTMLInputElement => row as HTMLInputElement;
@@ -9,7 +8,7 @@ const control = (row: HTMLElement): HTMLInputElement => row as HTMLInputElement;
 const rowOf = (input: HTMLElement): HTMLElement => input.closest('label')!;
 
 describe('ActionList, standalone', () => {
-  it('is an OptionList of native radios in the action look: rows of Menu and Dropdown', () => {
+  it('is an OptionList of native radios in the action look: the rows of a menu', () => {
     const { getByRole, getByTestId } = render(ActionListHarness);
     expect(getByRole('radiogroup', { name: 'Plan' })).toBeTruthy();
     const basic = getByTestId('basic');
@@ -59,6 +58,25 @@ describe('ActionList, standalone', () => {
     expect(cancel.className).toContain('data-[intent=negative]:text-interactive-negative-normal');
   });
 
+  it('isSearchable: its own SearchInput searches the rows through `match`, and `empty` shows when none is left', async () => {
+    const { getByTestId, queryByTestId, getByRole } = render(ActionListHarness, {
+      props: { isSearchable: true },
+    });
+    const search = getByRole('searchbox', { name: 'Search plans' });
+    expect(search).toBe(getByTestId('list-search'));
+    expect(search.getAttribute('placeholder')).toBe('Search plans');
+    // A prefix match: "pro" keeps Pro, not "Compare plans" (which holds it mid-word).
+    await fireEvent.input(search, { target: { value: 'pro' } });
+    expect(getByTestId('pro')).toBeTruthy();
+    expect(queryByTestId('basic')).toBeNull();
+    expect(queryByTestId('compare')).toBeNull();
+    await fireEvent.input(search, { target: { value: 'zzz' } });
+    expect(getByTestId('none').textContent).toBe('Nothing for zzz');
+    await fireEvent.input(search, { target: { value: '' } });
+    expect(getByTestId('basic')).toBeTruthy();
+    expect(queryByTestId('none')).toBeNull();
+  });
+
   it('in a Form: required blocks submit, then the pick submits under its name', async () => {
     const onSubmit = vi.fn();
     const { getByTestId } = render(ActionListHarness, { props: { inForm: true, onSubmit } });
@@ -69,47 +87,5 @@ describe('ActionList, standalone', () => {
     await fireEvent.click(getByTestId('submit'));
     await flush();
     expect(onSubmit.mock.calls[0][0]).toEqual({ plan: 'basic' });
-  });
-});
-
-describe('ActionList inside a Dropdown', () => {
-  it('its items are the listbox options, held by the Dropdown', async () => {
-    const view = render(DropdownHarness);
-    await fireEvent.click(view.getByTestId('dd-trigger'));
-    await waitFor(() => view.getByRole('listbox'));
-    expect(view.getAllByRole('option').map((option) => option.textContent?.trim())).toEqual([
-      'UPI',
-      'Cards',
-      'Netbanking',
-      'Wallet',
-    ]);
-    expect(view.queryAllByRole('radio')).toHaveLength(0);
-  });
-
-  it('a link row follows its link, closes the list, and holds no value — even with isMultiple', async () => {
-    const view = render(DropdownHarness, { props: { hasLink: true, isMultiple: true } });
-    await fireEvent.click(view.getByTestId('dd-trigger'));
-    await waitFor(() => view.getByRole('listbox'));
-    const link = view.getByRole('link', { name: 'Payment help' });
-    expect(link.getAttribute('href')).toBe('#help');
-    expect(link.getAttribute('aria-selected')).toBeNull();
-    await fireEvent.click(link);
-    await waitFor(() => expect(view.queryByRole('listbox')).toBeNull());
-    expect(view.getByTestId('bound').textContent).toBe('null');
-  });
-
-  it('Enter on an active link row follows it', async () => {
-    const view = render(DropdownHarness, { props: { hasLink: true } });
-    const trigger = view.getByTestId('dd-trigger');
-    trigger.focus();
-    await fireEvent.keyDown(trigger, { key: 'ArrowUp' });
-    const list = await waitFor(() => view.getByRole('listbox'));
-    const link = view.getByRole('link', { name: 'Payment help' });
-    await waitFor(() => expect(list.getAttribute('aria-activedescendant')).toBe(link.id));
-    const followed = vi.fn((event: Event) => event.preventDefault());
-    link.addEventListener('click', followed);
-    await fireEvent.keyDown(list, { key: 'Enter' });
-    expect(followed).toHaveBeenCalledTimes(1);
-    await waitFor(() => expect(view.queryByRole('listbox')).toBeNull());
   });
 });

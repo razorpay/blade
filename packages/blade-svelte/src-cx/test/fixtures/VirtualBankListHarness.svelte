@@ -1,8 +1,9 @@
 <script lang="ts">
-  import VirtualOptionList from '../../components/option-list/VirtualOptionList.svelte';
-  import { actionListClasses } from '../../components/action-list/styles';
+  import ActionList from '../../components/action-list/ActionList.svelte';
   import ActionListItem from '../../components/action-list/ActionListItem.svelte';
 
+  // ActionList over data: `virtualizedSections` renders a VirtualOptionList
+  // in the action look, only the rows in view mounted.
   interface Bank {
     code: string;
     name: string;
@@ -12,35 +13,64 @@
     variant?: 'plain' | 'card';
     selectionType?: 'single' | 'multiple' | 'none';
     query?: string;
+    isSearchable?: boolean;
     onChange?: (change: { name?: string; value: unknown }) => void;
   }
 
-  let { variant = 'card', selectionType = 'none', query = '', onChange }: Props = $props();
+  let {
+    variant = 'card',
+    selectionType = 'none',
+    query = '',
+    isSearchable = false,
+    onChange,
+  }: Props = $props();
 
   const suggested: Bank[] = [
     { code: 'sbi', name: 'State Bank of India' },
     { code: 'kotak', name: 'Kotak Mahindra Bank' },
   ];
   const all: Bank[] = Array.from({ length: 6 }, (_, i) => ({ code: `b${i}`, name: `Bank ${i}` }));
+  const sections = [
+    { key: 'suggested', title: 'Suggested Banks', items: suggested },
+    { key: 'all', title: 'All Banks', items: all },
+  ];
 </script>
 
-<VirtualOptionList
-  classes={actionListClasses(variant)}
-  {selectionType}
-  {query}
-  {onChange}
-  sections={[
-    { key: 'suggested', title: 'Suggested Banks', options: suggested },
-    { key: 'all', title: 'All Banks', options: all },
-  ]}
-  optionKey={(bank) => bank.code}
-  optionText={(bank) => bank.name}
-  accessibilityLabel="Banks"
-  testID="banks"
-  class="h-96"
->
-  {#snippet children(bank)}
-    <ActionListItem value={bank} title={bank.name} testID={bank.code} />
-  {/snippet}
-  {#snippet empty({ query: typed })}No banks match "{typed}"{/snippet}
-</VirtualOptionList>
+{#snippet row(bank: Bank)}
+  <ActionListItem value={bank} title={bank.name} testID={bank.code} />
+{/snippet}
+
+{#snippet none({ query: typed }: { query: string })}No banks match "{typed}"{/snippet}
+
+{#if isSearchable}
+  <ActionList
+    {variant}
+    {selectionType}
+    {onChange}
+    isSearchable
+    searchPlaceholder="Search for banks"
+    virtualizedSections={sections}
+    itemKey={(bank) => bank.code}
+    itemText={(bank) => bank.name}
+    accessibilityLabel="Banks"
+    testID="banks"
+    class="h-96"
+    children={row}
+    empty={none}
+  />
+{:else}
+  <ActionList
+    {variant}
+    {selectionType}
+    {query}
+    {onChange}
+    virtualizedSections={sections}
+    itemKey={(bank) => bank.code}
+    itemText={(bank) => bank.name}
+    accessibilityLabel="Banks"
+    testID="banks"
+    class="h-96"
+    children={row}
+    empty={none}
+  />
+{/if}

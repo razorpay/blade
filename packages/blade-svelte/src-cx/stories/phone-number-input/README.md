@@ -4,7 +4,7 @@ A composition, not a new field: a `TextInput` (`type="tel"`) for the national
 number, a country button in that input's `leading` slot, and a picker — a
 Modal holding a `SearchInput` and a `VirtualOptionList` in ActionList's look,
 its rows `ActionListItem`s (the flag leading, the dial code trailing). The
-search is the list's own `query`, with `phoneCountryMatches` as its `filter`;
+search is the list's own `query`, with `phoneCountryMatches` as its `match`;
 the `emptyText` is its `empty` state. The picker follows the app's Modal
 defaults: set `{ Modal: { variant: 'sheet' } }` on BladeProvider for a
 bottom sheet. The picker

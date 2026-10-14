@@ -13,10 +13,10 @@ export interface OptionListOptions<T, Shared> {
   /** The host's `$props.id()`: the label and hint ids hang off it. */
   id: string;
   /**
-   * The options as data (a virtual list). Without it the options are the
+   * The items as data (a virtual list). Without it the items are the
    * OptionItems that register inside the list, in document order.
    */
-  options?: () => readonly T[];
+  items?: () => readonly T[];
   value: () => T | readonly T[] | null | undefined;
   /** The bindable write: every accepted value, user pick or not. */
   onValue: (value: T | readonly T[] | null) => void;
@@ -33,12 +33,12 @@ export interface OptionListOptions<T, Shared> {
   /** Defaults to identity; pass it when options are rebuilt objects. */
   compare?: (a: T, b: T) => boolean;
   /** Data only: registered items say it themselves. */
-  isOptionDisabled?: (option: T, index: number) => boolean;
+  isItemDisabled?: (option: T, index: number) => boolean;
   /**
    * Data only: enables typeahead, the text a typed prefix is matched
    * against. Fixed at mount. Registered items match their text.
    */
-  optionText?: (option: T) => string;
+  itemText?: (option: T) => string;
   isDeselectable: () => boolean;
   name: () => string | undefined;
   isRequired: () => boolean;
@@ -106,13 +106,13 @@ export function createOptionList<T, Shared>(
       return row?.querySelectorAll ? focusableWithin(row)[0] ?? row : row;
     },
   });
-  const optionText = options.optionText;
+  const itemText = options.itemText;
   const model = createChoiceList<T>(shell.field, {
-    items: options.options,
-    typeahead: optionText && ((option) => optionText(option) ?? ''),
+    items: options.items,
+    typeahead: itemText && ((option) => itemText(option) ?? ''),
     multiple: options.isMultiple,
     compare: sameOption,
-    isItemDisabled: (option, index) => Boolean(options.isOptionDisabled?.(option, index)),
+    isItemDisabled: (option, index) => Boolean(options.isItemDisabled?.(option, index)),
     deselectable: options.isDeselectable,
     disabled: options.isDisabled,
   });

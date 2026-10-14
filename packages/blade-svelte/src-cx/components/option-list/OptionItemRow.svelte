@@ -17,7 +17,7 @@
     value: T;
     /**
      * Refuses picks and skips the keyboard. Inside a VirtualOptionList the
-     * list's `isOptionDisabled` decides what the keyboard skips; this only
+     * list's `isItemDisabled` decides what the keyboard skips; this only
      * greys the row.
      * @default false
      */
@@ -100,6 +100,7 @@
 {#if list}
   <OptionRow
     kind={list.kind}
+    role={list.shared.rowRole}
     name={list.name}
     isSelected={state.isSelected}
     isDisabled={state.isDisabled}

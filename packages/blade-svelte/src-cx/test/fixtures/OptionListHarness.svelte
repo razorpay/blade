@@ -72,9 +72,9 @@
   {#if virtualize}
     <VirtualOptionList
       label="Bank"
-      options={banks}
-      optionKey={(bank) => bank.code}
-      isOptionDisabled={(bank) => bank.code === 'down'}
+      items={banks}
+      itemKey={(bank) => bank.code}
+      isItemDisabled={(bank) => bank.code === 'down'}
       compare={(a, b) => a?.code === b?.code}
       bind:value
       selectionType={isMultiple ? 'multiple' : 'single'}

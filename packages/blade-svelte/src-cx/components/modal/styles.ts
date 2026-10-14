@@ -1,5 +1,30 @@
 import type { AxisValue } from '../../axes';
+import type { Placement, PlacementSide } from '../../runes/layer/placement';
 import type { SurfaceClasses } from '../layer/styles';
+import { MENU_ROWS, MENU_SURFACE, POPUP_GAP } from '../shared/popup-list';
+import { NATIVE_PLACEMENT } from '../tooltip/styles';
+
+/**
+ * The parts of a floating panel: on web FloatingPanel measures and places
+ * it (inline left/top) inside the OverlayStack; native cannot measure into
+ * a host and places it with `nativePlacement` classes inside the trigger's
+ * wrapper. Enter/exit ride the panel's `data-state`, as everywhere.
+ */
+export interface FloatingClasses {
+  /** The floating element. */
+  panel: string;
+  /** Native only: applied to the panel per requested placement. */
+  nativePlacement: Record<Placement, string>;
+  /** Distance between the trigger and the panel, in px. */
+  gap: number;
+  /**
+   * The arrow toward the trigger, when the panel has one; FloatingPanel
+   * sets `--popover-arrow` to where it sits along the facing edge.
+   */
+  arrow?: string;
+  /** Applied to the arrow per side the panel ended up on. */
+  arrowSide?: Record<PlacementSide, string>;
+}
 
 /**
  * The parts of a Modal. Static class strings only. Open/closed styling
@@ -12,6 +37,16 @@ import type { SurfaceClasses } from '../layer/styles';
  * shaped through `nativeSheet` (see `SurfaceClasses`).
  */
 export interface ModalClasses extends SurfaceClasses {
+  /**
+   * How the variant renders: a `surface` on the layer stack (modal, sheet,
+   * drawers, and an anchored variant presented as a sheet), or a
+   * `floating` panel by its trigger (popover, menu).
+   */
+  kind: 'surface' | 'floating';
+  /** The trigger's `aria-haspopup`, and the panel's role for a floating one. */
+  popup: 'dialog' | 'menu';
+  /** The floating panel's parts; undefined for a surface. */
+  floating?: FloatingClasses;
   /** Blade's BaseHeader: the padded box with its hairline below. */
   header: string;
   /** The row: the leading item, the title block, the trailing item; then the close button. */
@@ -50,9 +85,10 @@ export type ModalStyleResolver<P> = (props: P) => ModalClasses;
 
 /** The blade taxonomy as data. */
 export const MODAL_AXES = {
-  variant: ['modal', 'sheet', 'drawer', 'left-drawer'],
+  variant: ['modal', 'sheet', 'drawer', 'left-drawer', 'popover', 'menu'],
   size: ['small', 'medium', 'large', 'full'],
   pace: ['default', 'snappy'],
+  presentation: ['anchored', 'sheet'],
 } as const;
 
 type Axis<K extends keyof typeof MODAL_AXES> = AxisValue<typeof MODAL_AXES, K>;
@@ -62,11 +98,23 @@ export interface ModalStyleProps {
   /**
    * `modal`: centred; `sheet`: Blade's BottomSheet — on the bottom edge
    * with a handle, dragged down to dismiss; `drawer`: Blade's Drawer, full
-   * height on the right edge; `left-drawer`: the same on the left. The
-   * app picks it; desktop tweaks within one variant are its `d:` classes.
+   * height on the right edge; `left-drawer`: the same on the left;
+   * `popover`: Blade's Popover, a non-modal panel by its `trigger` with an
+   * arrow toward it; `menu`: Blade's Menu, the panel of actions by its
+   * trigger (an ActionList inside takes `menuitem` rows). The app picks
+   * it; desktop tweaks within one variant are its `d:` classes.
    * @default 'modal'
    */
   variant?: Axis<'variant'>;
+  /**
+   * How `popover` and `menu` show: `anchored`, floating by the trigger, or
+   * as a bottom `sheet` — the phone presentation, set once for the app
+   * through BladeProvider defaults (`{ Modal: { presentation: 'sheet' } }`).
+   * Nothing reads the viewport: the app decides. The other variants
+   * ignore it.
+   * @default 'anchored'
+   */
+  presentation?: Axis<'presentation'>;
   /**
    * The panel's width on desktop (`d`) — Blade's 400, 760 or 1024px column, or
    * `full` to span the host, 8px in. Below `m` every panel spans the host.
@@ -211,6 +259,8 @@ const FLOATING_CLOSE = 'absolute -top-1 right-4';
 function modalClasses(layout: ModalLayout, props: ModalStyleProps = {}): ModalClasses {
   const { size = 'small', pace = 'default' } = props;
   return {
+    kind: 'surface',
+    popup: 'dialog',
     root: `${ROOT} ${layout.root}`,
     drag: layout.drag,
     nativeSheet: layout.nativeSheet,
@@ -300,8 +350,95 @@ const DRAWER_SECTIONS = {
   closeClearance: 'pr-9',
 };
 
+// Blade's PopoverContentWrapper: the popup fill, 16px round, the popup
+// shadow (a 1px rim drawn inside over the raised shadow), the high backdrop
+// blur; 328px at most (288px on phones).
+const POPOVER_PANEL =
+  'pointer-events-auto absolute z-50 flex flex-col rounded-large bg-popup-gray-moderate text-surface-gray-normal shadow-dropdown backdrop-blur-high outline-none transition-all duration-xquick ease-entrance data-[state=closed]:scale-95 data-[state=closed]:opacity-0 motion-reduce:transition-none';
+
+// Blade's popover arrow: 22×12, pointing at the trigger from the panel's
+// facing edge, in the panel's fill; the panel sits 4px past its tip.
+const ARROW = 'absolute bg-popup-gray-moderate';
+const ARROW_SIDE: Record<PlacementSide, string> = {
+  top:
+    'top-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(0_0,100%_0,50%_100%)]',
+  bottom:
+    'bottom-full w-[22px] h-3 [left:var(--popover-arrow)] -translate-x-1/2 [clip-path:polygon(50%_0,100%_100%,0_100%)]',
+  left:
+    'left-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(0_0,100%_50%,0_100%)]',
+  right:
+    'right-full w-3 h-[22px] [top:var(--popover-arrow)] -translate-y-1/2 [clip-path:polygon(100%_0,100%_100%,0_50%)]',
+};
+
+// Blade's IconButton, medium: a 16px muted glyph, subtle on hover and
+// focus, with the 4px focus ring — the popover's close, smaller than a
+// modal's.
+const POPOVER_CLOSE = `${ICON_BUTTON} rounded-2xsmall`;
+
+/**
+ * A floating variant's parts: the anchored panel in place of a surface,
+ * and the modal's sections laid out inside it. Blade's PopoverContent (and
+ * Blade DSL's Popover in Figma): 16px in, the header's leading item 8px
+ * before the title, the title large semibold, 24px from its end to the
+ * close button; the content 4px under the header, the footer 16px under
+ * the content. Menu: Figma's Menu panel (12px round), 8px round the rows.
+ */
+function floatingClasses(variant: 'popover' | 'menu', pace: Axis<'pace'>): ModalClasses {
+  const menu = variant === 'menu';
+  return {
+    kind: 'floating',
+    popup: menu ? 'menu' : 'dialog',
+    floating: menu
+      ? { panel: MENU_SURFACE, nativePlacement: NATIVE_PLACEMENT, gap: POPUP_GAP }
+      : {
+          panel: `${POPOVER_PANEL} w-max max-w-[288px] d:max-w-[328px]`,
+          nativePlacement: NATIVE_PLACEMENT,
+          gap: 16,
+          arrow: ARROW,
+          arrowSide: ARROW_SIDE,
+        },
+    root: '',
+    drag: NO_DRAG,
+    nativeSheet: {},
+    panel: PACE[pace],
+    content: 'flex min-h-0 flex-auto flex-col',
+    chrome: CHROME,
+    header: 'shrink-0 px-4 pt-4 pb-1',
+    headerRow: 'relative flex items-center select-none',
+    back: `me-2 h-6 w-5 ${ICON_BUTTON}`,
+    leading: 'me-2 flex w-5 h-5 shrink-0 items-center justify-center',
+    leadingIcon: 'me-2 flex h-6 shrink-0 items-center',
+    titleRow: 'flex min-w-0 items-center gap-2',
+    titleSuffix: 'flex h-6 shrink-0 items-center',
+    trailing: 'ms-3 flex h-6 shrink-0 items-center',
+    titleBlock: 'me-auto flex min-w-0 flex-auto flex-col',
+    // The title's 12px, then the 16px close in its 24px box: 24px from the title's end.
+    closeClearance: 'pr-9',
+    title:
+      'm-0 font-sans font-semibold text-200 leading-200 tracking-25 [word-break:break-word] text-surface-gray-normal',
+    subtitle:
+      'm-0 font-sans text-75 leading-75 font-normal [word-break:break-word] text-surface-gray-muted',
+    close: `absolute top-4 right-4 w-5 h-5 ${POPOVER_CLOSE}`,
+    floatingClose: `absolute top-3 right-3 w-6 h-6 rounded-max ${POPOVER_CLOSE}`,
+    emptyHeader: 'relative h-0 shrink-0',
+    body: menu ? `overflow-auto ${MENU_ROWS}` : 'overflow-auto p-4',
+    footer: 'shrink-0 px-4 pb-4',
+  };
+}
+
 export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalStyleProps = {}) => {
-  const { variant = 'modal', size = 'small', pace = 'default' } = props;
+  const { size = 'small', pace = 'default', presentation = 'anchored' } = props;
+  const { variant = 'modal' } = props;
+  if (variant === 'popover' || variant === 'menu') {
+    if (presentation === 'anchored') {
+      return floatingClasses(variant, pace);
+    }
+    // The phone presentation: the same content as a bottom sheet. The
+    // trigger's popup stays what was asked for, so a menu's rows still
+    // act and close; the sheet's role is a dialog's.
+    const sheet = resolveModal({ ...props, variant: 'sheet' });
+    return { ...sheet, popup: variant === 'menu' ? 'menu' : 'dialog' };
+  }
   if (variant === 'sheet') {
     if (props.isDraggable ?? true) {
       return modalClasses(SHEET, { size, pace });
