@@ -11,11 +11,13 @@ import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
   fileUploadHeightTokens,
-  fileUploadLinkBorderTokens,
+  fileUploadDropAreaTextSizeTokens,
+  fileUploadLinkIconSizeTokens,
   getFileIconExtension,
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { UploadIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
@@ -71,6 +73,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
+    dropAreaText,
     _motionMeta,
     ...rest
   }: FileUploadProps,
@@ -78,8 +81,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const variableSizeRest = rest as FileUploadVariableSizeProps;
-  const { actionButtonText, dropAreaText, height, width, ...styledRest } = variableSizeRest;
+  const { actionButtonText, height, width, ...styledRest } = variableSizeRest;
   const isSizeVariable = size === 'variable';
+  // An empty string hides the drop area text and leaves only the upload action
+  const shouldShowDropAreaText = dropAreaText !== '';
   const hasLoggedUnsupportedPropsRef = useRef(false);
 
   // onChange is web selection semantics; on native, consumers update fileList after their picker.
@@ -87,16 +92,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   void _name;
 
   if (__DEV__) {
-    if (!isSizeVariable && (actionButtonText || dropAreaText)) {
-      const propName =
-        actionButtonText && dropAreaText
-          ? 'actionButtonText and dropAreaText'
-          : dropAreaText
-          ? 'dropAreaText'
-          : 'actionButtonText';
-
+    if (!isSizeVariable && actionButtonText) {
       throwBladeError({
-        message: `${propName} can only be used when size is "variable"`,
+        message: 'actionButtonText can only be used when size is "variable"',
         moduleName: 'FileUpload',
       });
     }
@@ -327,7 +325,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 alignItems="center"
                 flexDirection="column"
                 gap={makeSize(6)}
-                padding="spacing.3"
+                // The 32px small area can't fit the default 8px vertical padding around a text line
+                padding={size === 'small' ? ['spacing.2', 'spacing.3'] : 'spacing.3'}
               >
                 {isSizeVariable && (
                   <FileUploadItemIcon
@@ -343,26 +342,33 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   flexDirection="row"
                   gap={makeSize(2)}
                 >
-                  <Text
-                    color={
-                      isDisabled
-                        ? fileUploadColorTokens.text.disabled
-                        : fileUploadColorTokens.text.default
-                    }
-                  >
-                    {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
-                  </Text>
-
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    alignItems="center"
-                    borderBottomColor={
-                      fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
-                    }
-                    borderBottomWidth={fileUploadLinkBorderTokens.width.default}
-                  >
+                  {shouldShowDropAreaText ? (
                     <Text
+                      size={fileUploadDropAreaTextSizeTokens[size]}
+                      color={
+                        isDisabled
+                          ? fileUploadColorTokens.text.disabled
+                          : fileUploadColorTokens.text.default
+                      }
+                    >
+                      {dropAreaText ?? (isSizeVariable ? 'Tap to upload your files' : 'Tap to')}{' '}
+                    </Text>
+                  ) : null}
+
+                  {/* Upload action: neutral link colors with a leading icon and an underlined label */}
+                  <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+                    <UploadIcon
+                      size={fileUploadLinkIconSizeTokens[size]}
+                      color={
+                        isDisabled
+                          ? fileUploadColorTokens.linkIcon.disabled
+                          : fileUploadColorTokens.linkIcon.default
+                      }
+                    />
+                    <Text
+                      size={fileUploadDropAreaTextSizeTokens[size]}
+                      weight="medium"
+                      textDecorationLine="underline"
                       color={
                         isDisabled
                           ? fileUploadColorTokens.link.disabled

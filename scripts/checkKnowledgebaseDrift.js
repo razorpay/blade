@@ -27,6 +27,10 @@ const path = require('path');
 const { Project, ts } = require('ts-morph');
 
 const rootDir = path.join(__dirname, '..');
+const bladeDir = path.join(rootDir, 'packages/blade');
+const componentsDocsDir = path.join(rootDir, 'packages/blade-plugin/skills/blade/references/components');
+const reportPath = path.join(rootDir, 'knowledgebase-drift-report.json');
+const ignoreConfig = require('./knowledgebaseDriftIgnore.json');
 
 const args = process.argv.slice(2);
 const targetIndex = args.indexOf('--target');

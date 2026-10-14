@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><span style="width:100%;flex-shrink:0;margin-right:0px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></div></div></span><label style="cursor:pointer;width:100%" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bksIuc StyledFileUploadWrapperweb__StyledFileUploadWrapper-sc-12lf2rw-0 haZVtL jqVJUi"><div data-blade-component="box" class="BaseBox-bksIuc eIRNUU"><p letter-spacing="50" class="StyledBaseText-foUshD hjkZVx" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 etksHY"/><div data-blade-component="box" class="BaseBox-bksIuc fvrzBR"><div data-blade-component="box" class="BaseBox-bksIuc froZgf"><p letter-spacing="50" class="StyledBaseText-foUshD fzXHjt" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bksIuc krcKbL"><div data-blade-component="base-box" class="BaseBox-bksIuc hlMTNd"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bksIuc clhaJX"><span data-blade-component="base-box" class="BaseBox-bksIuc orhco"><span letter-spacing="50" class="StyledBaseText-foUshD hCZErE" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
+exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><span style="width:100%;flex-shrink:0;margin-right:0px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></div></div></span><label style="cursor:pointer;width:100%" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bksIuc StyledFileUploadWrapperweb__StyledFileUploadWrapper-sc-12lf2rw-0 haZVtL jqVJUi"><div data-blade-component="box" class="BaseBox-bksIuc eIRNUU"><p letter-spacing="50" class="StyledBaseText-foUshD hjkZVx" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 etksHY"/><div data-blade-component="box" class="BaseBox-bksIuc fvrzBR"><div data-blade-component="box" class="BaseBox-bksIuc eHGxoV"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path><path d="M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD enUotr" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bksIuc krcKbL"><div data-blade-component="base-box" class="BaseBox-bksIuc hlMTNd"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bksIuc clhaJX"><span data-blade-component="base-box" class="BaseBox-bksIuc orhco"><span letter-spacing="50" class="StyledBaseText-foUshD hCZErE" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
 
 exports[`<FileUpload /> should render in SSR 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -135,28 +135,11 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   border-radius: 8px;
 }
 
-.c15.c15.c15.c15.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(218,89%,51%,1);
-  border-bottom-style: solid;
-}
-
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,11 +151,11 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   -ms-flex-pack: 'justify;justify-content:'space-between;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -263,14 +246,16 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
-  color: hsla(218,89%,51%,1);
+.c15.c15.c15.c15.c15 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-color: hsla(0,0%,2%,1);
+  text-decoration-color: hsla(0,0%,2%,1);
   line-height: 1.25rem;
   -webkit-letter-spacing: -0.18200000000000002px;
   -moz-letter-spacing: -0.18200000000000002px;
@@ -280,7 +265,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -409,36 +394,6 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   }
 }
 
-@media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
-    border-bottom-style: solid;
-  }
-}
-
 <div
   id="root"
 >
@@ -538,11 +493,31 @@ exports[`<FileUpload /> should render in SSR 2`] = `
                 data-blade-component="box"
               >
                 <div
-                  class="c15"
+                  class="c3"
                   data-blade-component="box"
                 >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                  >
+                    <path
+                      d="M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z"
+                      data-blade-component="svg-path"
+                      fill="hsla(0, 0%, 2%, 1)"
+                    />
+                    <path
+                      d="M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z"
+                      data-blade-component="svg-path"
+                      fill="hsla(0, 0%, 2%, 1)"
+                    />
+                  </svg>
                   <p
-                    class="c16"
+                    class="c15"
                     data-blade-component="text"
                     letter-spacing="50"
                   >
@@ -556,24 +531,24 @@ exports[`<FileUpload /> should render in SSR 2`] = `
       </label>
     </div>
     <div
-      class="c17"
+      class="c16"
       data-blade-component="base-box"
     >
       <div
-        class="c18"
+        class="c17"
         data-blade-component="base-box"
       >
         <div
-          class="c19"
+          class="c18"
           data-blade-component="base-box"
           id="fileuploadinput-1-helptext-4"
         >
           <span
-            class="c20"
+            class="c19"
             data-blade-component="base-box"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
               letter-spacing="50"
             >

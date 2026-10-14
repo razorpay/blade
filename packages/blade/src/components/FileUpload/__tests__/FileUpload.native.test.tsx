@@ -338,6 +338,80 @@ describe('<FileUpload /> (native)', () => {
     expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 
+  it('should render FileUpload with size="small"', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Upload GST certificate"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
+    expect(getByText('Tap to')).toBeTruthy();
+  });
+
+  it('should hide the drop area text when dropAreaText is an empty string', () => {
+    const onUploadPress = jest.fn();
+    const { queryByText, getByText, getByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        dropAreaText=""
+        fileList={[]}
+        onUploadPress={onUploadPress}
+      />,
+    );
+    expect(queryByText('Tap to')).toBeNull();
+    expect(getByText('Upload')).toBeTruthy();
+    fireEvent.press(getByRole('button'));
+    expect(onUploadPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render only the upload icon and text when dropAreaText is an empty string', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Logo"
+        dropAreaText=""
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+    expect(getByText('Upload')).toBeTruthy();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
+  });
+
+  it('should render a custom dropAreaText without size="variable"', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Logo"
+        dropAreaText="Tap here to"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+    expect(getByText('Tap here to')).toBeTruthy();
+    expect(queryByText('Tap to')).toBeNull();
+  });
+
+  it('should throw when actionButtonText is used without size="variable"', () => {
+    expect(() =>
+      renderWithTheme(
+        <FileUpload
+          uploadType="single"
+          label="Upload GST certificate"
+          actionButtonText="Choose file"
+          fileList={[]}
+          onUploadPress={jest.fn()}
+        />,
+      ),
+    ).toThrow('actionButtonText can only be used when size is "variable"');
+  });
+
   it('should render with accessibilityLabel when label is not provided', () => {
     const { getByLabelText, queryByText } = renderWithTheme(
       <FileUpload

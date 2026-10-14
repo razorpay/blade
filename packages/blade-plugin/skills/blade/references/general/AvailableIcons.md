@@ -100,6 +100,7 @@ import {
 | BoldIcon | Bold text formatting (B) |
 | BookIcon | Open book for reading or documentation |
 | BookmarkIcon | Bookmark flag for saving items |
+| BookmarkFilledIcon | Filled variant of BookmarkIcon |
 | BoxIcon | 3D box or package |
 | BriefcaseIcon | Briefcase for business or work |
 | BugIcon | Bug for error reporting or debugging |
@@ -404,6 +405,7 @@ import {
 | SquareIcon | Simple square shape |
 | StampIcon | Rubber stamp for approval or verification |
 | StarIcon | Star for ratings or favorites |
+| StarFilledIcon | Filled variant of StarIcon |
 | StopCircleIcon | Stop symbol in circle for media controls |
 | StorefrontIcon | Storefront/shop for retail or marketplace |
 | SubscriptionsIcon | Razorpay product icon for subscription management |

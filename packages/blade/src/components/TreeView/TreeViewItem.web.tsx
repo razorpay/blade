@@ -22,6 +22,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
+import { Popover } from '~components/Popover';
 
 const TreeViewItemCheckbox = ({
   isChecked,
@@ -53,6 +54,54 @@ const TreeViewItemCheckbox = ({
   );
 };
 
+/**
+ * Hover Popover of an item.
+ *
+ * Popover writes `aria-expanded` / `aria-haspopup` / `aria-controls` on its trigger, so the
+ * treeitem row cannot be the trigger: it would overwrite the row's own expanded state (and
+ * make leaves announce as collapsed branches), and a wrapper around the row is not an allowed
+ * child of `role="tree"`. Instead the Popover is anchored on an aria-hidden, non-interactive box
+ * laid over the row content, and opened (controlled) from the row's own hover handlers.
+ *
+ * As a hover popover it is part of BladeProvider's tooltip delay group: opening it replaces
+ * whichever tooltip or popover is showing in place, and another one opening asks it to close
+ * through `onOpenChange` (see Popover's useHoverPopoverDelayGroup)
+ */
+const TreeViewItemPopover = ({
+  popover,
+  isOpen,
+  onOpenChange,
+}: {
+  popover: NonNullable<TreeViewItemProps['popover']>;
+  isOpen: boolean;
+  onOpenChange: (isOpen: boolean) => void;
+}): React.ReactElement => {
+  return (
+    <Popover
+      placement="right"
+      {...popover}
+      // 'hover' keeps focus on the row when the popover opens and puts it in the tooltip group
+      openInteraction="hover"
+      // a hover preview never takes focus. With focus management on, a (non-modal) hover popover
+      // puts focus guards and an `aria-owns` next to its trigger, which is inside the row: extra
+      // tab stops, and the row's name would include the popover's content
+      _shouldManageFocus={false}
+      isOpen={isOpen}
+      onOpenChange={({ isOpen }) => onOpenChange(isOpen)}
+    >
+      <BaseBox
+        position="absolute"
+        top="0px"
+        right="0px"
+        bottom="0px"
+        left="0px"
+        pointerEvents="none"
+        {...makeAccessible({ hidden: true })}
+      />
+    </Popover>
+  );
+};
+
 const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   const {
     selectionType,
@@ -76,6 +125,13 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   } = useDropdown();
   const { theme } = useTheme();
   const { containerRef, textRef } = useTruncationTitle({ content: props.title });
+  const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
+  // the Popover is only rendered once the row has been hovered, so untouched rows don't each
+  // set up a floating element
+  const [isPopoverMounted, setIsPopoverMounted] = React.useState(false);
+  // mirrors isPopoverOpen for the delayed close, which runs after the render it was scheduled in
+  const isPopoverOpenRef = React.useRef(false);
+  const popoverCloseTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
 
   // distinguishes a children group mounting on the row's very first render (initial tree
@@ -85,6 +141,49 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   React.useEffect(() => {
     isRowFirstRenderRef.current = false;
   }, []);
+
+  const cancelPopoverClose = (): void => {
+    clearTimeout(popoverCloseTimeoutRef.current);
+    popoverCloseTimeoutRef.current = undefined;
+  };
+  React.useEffect(() => cancelPopoverClose, []);
+
+  const handlePopoverOpenChange = (isOpen: boolean): void => {
+    cancelPopoverClose();
+    if (isOpen) {
+      setIsPopoverMounted(true);
+    }
+    if (isOpen === isPopoverOpenRef.current) {
+      return;
+    }
+    isPopoverOpenRef.current = isOpen;
+    setIsPopoverOpen(isOpen);
+    props.popover?.onOpenChange?.({ isOpen });
+  };
+
+  // The popover content is rendered in a portal, but it is still a React child of this row, so
+  // React fires the row's pointerenter / pointerleave for it too: the pointer can travel from the
+  // row onto the popover without closing it. The delay bridges the gap between the two.
+  // When the pointer left for another row it is not heading to the popover, so the delay is
+  // shorter. It is not zero: if that row opens a popover, it replaces this one in
+  // place (Popover's delay group) instead of this one closing on its own and fading out
+  const schedulePopoverClose = (event: React.PointerEvent): void => {
+    cancelPopoverClose();
+    const nextElement = event.relatedTarget;
+    const isLeavingForAnotherRow =
+      nextElement instanceof Element &&
+      Boolean(nextElement.closest('[role="treeitem"]')) &&
+      !event.currentTarget.contains(nextElement);
+    popoverCloseTimeoutRef.current = setTimeout(
+      () => handlePopoverOpenChange(false),
+      isLeavingForAnotherRow ? theme.motion.delay['2xquick'] : theme.motion.delay.xquick,
+    );
+  };
+
+  // Events from the popover content bubble through the React tree into this row (see above).
+  // A click, focus or mousedown inside the popover must not select or focus the row
+  const isEventFromRow = (event: React.SyntheticEvent): boolean =>
+    event.currentTarget.contains(event.target as Node);
 
   const node = nodeMap[props.value];
 
@@ -122,7 +221,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   };
 
   const handleRowClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    if (node.isDisabled) {
+    if (node.isDisabled || !isEventFromRow(event)) {
       return;
     }
     if (isInsideDropdown) {
@@ -136,7 +235,8 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
 
   // Figma layout: [chevron slot] -4px- [checkbox] -8px- [leading] -8px- [title]
   // The chevron slot (20px on medium, 16px on small) is reserved on every row
-  // (empty on leaves), so rows of the same level line up whether or not they have children
+  // (empty on leaves), so rows of the same level line up whether or not they have children.
+  // In a flat tree (no branch anywhere) TreeViewChevron renders nothing and the row is flush
   const rowContent = (
     <BaseBox
       display="flex"
@@ -144,7 +244,15 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
       alignItems="flex-start"
       gap="spacing.2"
       width="100%"
+      position={props.popover ? 'relative' : undefined}
     >
+      {props.popover && isPopoverMounted ? (
+        <TreeViewItemPopover
+          popover={props.popover}
+          isOpen={isPopoverOpen}
+          onOpenChange={handlePopoverOpenChange}
+        />
+      ) : null}
       <TreeViewChevron
         state={chevronState}
         isDisabled={node.isDisabled}
@@ -268,19 +376,19 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
           }
           isKeydownPressed={isInsideDropdown ? isKeydownPressed : undefined}
           onClick={handleRowClick}
-          onFocus={() => {
-            if (!isInsideDropdown) {
+          onFocus={(event: React.FocusEvent) => {
+            if (!isInsideDropdown && isEventFromRow(event)) {
               setFocusedValue(props.value);
             }
           }}
-          onMouseDown={() => {
-            if (isInsideDropdown) {
+          onMouseDown={(event: React.MouseEvent) => {
+            if (isInsideDropdown && isEventFromRow(event)) {
               // keep focus on Dropdown's trigger while the row is being clicked (same as ActionListItem)
               setShouldIgnoreBlurAnimation(true);
             }
           }}
-          onMouseUp={() => {
-            if (isInsideDropdown) {
+          onMouseUp={(event: React.MouseEvent) => {
+            if (isInsideDropdown && isEventFromRow(event)) {
               setShouldIgnoreBlurAnimation(false);
             }
           }}
@@ -308,6 +416,20 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
             disabled: node.isDisabled ? true : undefined,
           })}
           {...makeAnalyticsAttribute(props)}
+          {...(props.popover
+            ? {
+                // mouse only: on touch screens a tap would open the popover and select the
+                // row at once, and the popover would cover the rows below. Pointer events
+                // (not mouse events) are used because browsers also fire emulated mouse
+                // events after a tap, which carry no pointer type
+                onPointerEnter: (event: React.PointerEvent) => {
+                  if (event.pointerType === 'mouse') {
+                    handlePopoverOpenChange(true);
+                  }
+                },
+                onPointerLeave: schedulePopoverClose,
+              }
+            : {})}
         >
           {rowContent}
         </BaseMenuItem>

@@ -6,18 +6,21 @@
   import { onDestroy, onMount, untrack } from 'svelte';
   import {
     cssVariablesToInlineStyle,
-    isBrowser,
+    getDeviceType,
+    subscribeToBreakpoint,
     themeToCSSVariables,
   } from '@razorpay/blade-core/utils';
+  import type { Breakpoint } from '@razorpay/blade-core/utils';
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import {
     getBladeThemeContextGetter,
     setBladeThemeContext,
   } from './bladeThemeContext';
+  import { setBreakpointContext } from './breakpointContext';
+  import type { BreakpointState } from './breakpointContext';
   import { colorSchemeNamesInput, isValidColorSchemeInput } from './getColorScheme';
   import { resolveBladeTheme } from './resolveBladeTheme';
   import type { BladeProviderProps, BladeThemeContextValue } from './types';
-  import { subscribeToViewportWidth } from '../../utils/subscribeToViewportWidth';
 
   let {
     themeTokens,
@@ -45,18 +48,20 @@
 
   /** Local override from setColorScheme; cleared when colorScheme prop changes. */
   let colorSchemeOverride = $state<ColorSchemeNamesInput | undefined>(undefined);
-  let viewportWidth = $state(isBrowser() ? window.innerWidth : 0);
+  let matchedBreakpoint = $state<Breakpoint | undefined>(undefined);
   let systemPrefersDark = $state(false);
+  const matchedDeviceType = $derived(getDeviceType(matchedBreakpoint));
 
   /*
    * Known SSR limitation: during server-side rendering, `systemPrefersDark`
-   * is `false` and `viewportWidth` is `0` (onMount does not run on the server).
-   * This means `colorScheme: 'system'` resolves to `'light'` and the platform
-   * resolves to `'onMobile'` in the server-rendered HTML. After hydration,
-   * onMount sets the actual values, which may cause a brief flash from
-   * light→dark and mobile→desktop typography. This is acceptable for the
-   * initial release; a future improvement could defer `data-blade-color-scheme`
-   * and the CSS variable inline style until after mount to avoid the flash.
+   * is `false` and `matchedBreakpoint` is `undefined` (onMount does not run on
+   * the server). This means `colorScheme: 'system'` resolves to `'light'` and
+   * the device type resolves to `'desktop'` (same default as React Blade's
+   * `useBreakpoint`) in the server-rendered HTML. After hydration, onMount sets
+   * the actual values, which may cause a brief flash from light→dark and
+   * desktop→mobile typography. This is acceptable for the initial release; a
+   * future improvement could defer `data-blade-color-scheme` and the CSS
+   * variable inline style until after mount to avoid the flash.
    */
 
   $effect(() => {
@@ -72,7 +77,7 @@
     resolveBladeTheme({
       themeTokens,
       colorSchemeInput,
-      viewportWidth,
+      deviceType: matchedDeviceType,
       systemPrefersDark,
     }),
   );
@@ -111,6 +116,17 @@
     componentConfig,
   }));
 
+  // Getters keep this reactive when read inside consumers' `$derived`/templates.
+  const breakpointState: BreakpointState = {
+    get matchedBreakpoint() {
+      return matchedBreakpoint;
+    },
+    get matchedDeviceType() {
+      return matchedDeviceType;
+    },
+  };
+  setBreakpointContext(() => breakpointState);
+
   $effect(() => {
     if (!isRootProvider || typeof document === 'undefined') {
       return;
@@ -125,8 +141,8 @@
   });
 
   onMount(() => {
-    const unsubscribeViewport = subscribeToViewportWidth((width) => {
-      viewportWidth = width;
+    const unsubscribeBreakpoint = subscribeToBreakpoint(themeTokens.breakpoints, (next) => {
+      matchedBreakpoint = next;
     });
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -137,7 +153,7 @@
     mediaQuery.addEventListener('change', syncSystemPreference);
 
     return () => {
-      unsubscribeViewport();
+      unsubscribeBreakpoint();
       mediaQuery.removeEventListener('change', syncSystemPreference);
     };
   });

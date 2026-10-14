@@ -1,0 +1,212 @@
+import React from 'react';
+import userEvents from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
+import { Popover } from '..';
+import { Button } from '~components/Button';
+import { Tooltip } from '~components/Tooltip';
+import { Text } from '~components/Typography';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import {
+  REPLACED_OVERLAY_TIME,
+  advanceTime,
+  getOpenTransitionDuration,
+} from '~utils/testing/overlayTransitions';
+
+// Hover popovers share BladeProvider's FloatingDelayGroup with every Tooltip. The switching tests
+// run on fake timers and advance a fixed time (see ~utils/testing/overlayTransitions); the
+// others use real timers
+
+// `renderWithTheme` wraps only the initial render; rerenders need the provider again
+const withTheme = (ui: React.ReactElement): React.ReactElement => (
+  <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+    {ui}
+  </BladeProvider>
+);
+
+describe('<Popover openInteraction="hover" /> in the tooltip delay group', () => {
+  describe('switching in place', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it('should switch from one hover popover to the next in place', async () => {
+      const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+      const { getByRole, getAllByRole } = renderWithTheme(
+        <>
+          <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+            <Button>Success</Button>
+          </Popover>
+          <Popover openInteraction="hover" title="Retry" content={<Text>Retry preview</Text>}>
+            <Button>Retry</Button>
+          </Popover>
+        </>,
+      );
+
+      await user.hover(getByRole('button', { name: 'Success' }));
+      // the first popover of a hover streak fades in as usual
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
+
+      await user.hover(getByRole('button', { name: 'Retry' }));
+      // the replaced popover does not fade out under the new one...
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
+      // ...and the new one appears in place instead of fading in. Its transition styles are applied
+      // on the next animation frame, so this waits the default timeout: it checks the value, not
+      // how quickly it arrives
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('0ms'));
+    });
+
+    it('should switch between a tooltip and a hover popover in place', async () => {
+      const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+      const { getByRole, findByRole, queryByRole } = renderWithTheme(
+        <>
+          <Tooltip content="Processing hint">
+            <Button>Processing</Button>
+          </Tooltip>
+          <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+            <Button>Success</Button>
+          </Popover>
+        </>,
+      );
+
+      await user.hover(getByRole('button', { name: 'Processing' }));
+      await findByRole('tooltip');
+
+      await user.hover(getByRole('button', { name: 'Success' }));
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('tooltip')).not.toBeInTheDocument();
+      expect(queryByRole('dialog')).toBeInTheDocument();
+
+      await user.hover(getByRole('button', { name: 'Processing' }));
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+      expect(queryByRole('tooltip')).toHaveTextContent('Processing hint');
+    });
+  });
+
+  it('should close when the pointer leaves for somewhere without an overlay', async () => {
+    const user = userEvents.setup();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <>
+        <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+          <Button>Success</Button>
+        </Popover>
+        <Button>Plain</Button>
+      </>,
+    );
+
+    await user.hover(getByRole('button', { name: 'Success' }));
+    await findByRole('dialog');
+
+    await user.hover(getByRole('button', { name: 'Plain' }));
+    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument());
+  });
+
+  it('should not close a click popover when a tooltip opens', async () => {
+    const user = userEvents.setup();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <>
+        <Popover title="Filters" content={<Text>Filter options</Text>}>
+          <Button>Filters</Button>
+        </Popover>
+        <Tooltip content="Processing hint">
+          <Button>Processing</Button>
+        </Tooltip>
+      </>,
+    );
+
+    await user.click(getByRole('button', { name: 'Filters' }));
+    await findByRole('dialog');
+
+    // the click popover is modal, so the rest of the page is hidden from the accessibility tree
+    await user.hover(getByRole('button', { name: 'Processing', hidden: true }));
+    await findByRole('tooltip', { hidden: true });
+    // longer than the exit animation: a popover the group closed would be gone by now
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+  });
+
+  it('should not hide the rest of the page from assistive tech while open', async () => {
+    const user = userEvents.setup();
+    const { getByRole, findByRole } = renderWithTheme(
+      <>
+        <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+          <Button>Success</Button>
+        </Popover>
+        <Button>Plain</Button>
+      </>,
+    );
+
+    await user.hover(getByRole('button', { name: 'Success' }));
+    await findByRole('dialog');
+    // a modal popover would mark everything outside it aria-hidden
+    expect(getByRole('button', { name: 'Plain' })).toBeInTheDocument();
+  });
+
+  it('should ask a controlled hover popover to close when another overlay replaces it', async () => {
+    const user = userEvents.setup();
+    const onOpenChange = jest.fn();
+    const { getByRole, findByRole } = renderWithTheme(
+      <>
+        <Popover
+          openInteraction="hover"
+          isOpen={true}
+          onOpenChange={onOpenChange}
+          title="Success"
+          content={<Text>Success preview</Text>}
+        >
+          <Button>Success</Button>
+        </Popover>
+        <Tooltip content="Processing hint">
+          <Button>Processing</Button>
+        </Tooltip>
+      </>,
+    );
+    await findByRole('dialog');
+
+    await user.hover(getByRole('button', { name: 'Processing' }));
+    await findByRole('tooltip');
+    expect(onOpenChange).toHaveBeenCalledWith({ isOpen: false });
+  });
+
+  it('should stay open when it mounts open while another overlay is showing', async () => {
+    const user = userEvents.setup();
+    const tooltipOnly = (
+      <Tooltip content="Processing hint">
+        <Button>Processing</Button>
+      </Tooltip>
+    );
+    const { getByRole, findByRole, queryByRole, rerender } = renderWithTheme(tooltipOnly);
+
+    await user.hover(getByRole('button', { name: 'Processing' }));
+    await findByRole('tooltip');
+
+    // the group closes every member that is not current; a popover that joins open must not be
+    // closed by that before it has taken over (uncontrolled, so nothing but Popover keeps it open)
+    rerender(
+      withTheme(
+        <>
+          {tooltipOnly}
+          <Popover
+            openInteraction="hover"
+            defaultIsOpen={true}
+            title="Success"
+            content={<Text>Success preview</Text>}
+          >
+            <Button>Success</Button>
+          </Popover>
+        </>,
+      ),
+    );
+    expect(await findByRole('dialog')).toBeInTheDocument();
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+  });
+});

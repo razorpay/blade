@@ -69,6 +69,17 @@ type PopoverProps = {
    */
   openInteraction?: 'hover' | 'click';
   /**
+   * Whether the open popover manages focus (floating-ui's FloatingFocusManager). A non-modal
+   * (hover) popover with focus management renders focus guards (`role="button"`, `tabindex="0"`)
+   * and an `aria-owns` span next to its trigger. TreeView turns it off for its hover previews:
+   * their trigger sits inside a `treeitem`, where those elements would add tab stops and make the
+   * row's accessible name include the popover's content
+   *
+   * @default true
+   * @private
+   */
+  _shouldManageFocus?: boolean;
+  /**
    * Sets the maximum width of the popover content
    *
    * @default 328px on desktop, 288px on mobile

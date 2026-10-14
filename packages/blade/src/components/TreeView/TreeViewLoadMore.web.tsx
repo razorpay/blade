@@ -23,6 +23,7 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
     isInsideDropdown,
     size,
     nodeMap,
+    hasChevronSlot,
     tabbableValue,
     onDropdownNodeClick,
     registerRowRef,
@@ -38,6 +39,8 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
   const parentValue = React.useContext(TreeViewParentContext);
   const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
   const { loadMoreIndentation, loadMoreTextSize } = treeViewTokens[size];
+  // follows the rows' chevron slot (B9): no offset in a flat tree, where rows render flush
+  const labelIndentation = hasChevronSlot ? loadMoreIndentation : undefined;
 
   // loadMore rows have no consumer-facing value, so we find our synthetic node
   // in the registry by parent (TreeView dev-warns on more than one per branch)
@@ -111,14 +114,15 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
         >
           {/* B7: no chevron and no checkbox of its own - the label is offset by one
             chevron slot plus the 4px gap after it (24px on medium, 20px on small) so it
-            lines up with the content of sibling rows (Figma: TreeViewItem/LoadMore) */}
+            lines up with the content of sibling rows (Figma: TreeViewItem/LoadMore).
+            In a flat tree the rows drop the slot, so the offset is dropped too */}
           {props.isLoading ? (
             <BaseBox
               display="flex"
               flexDirection="row"
               alignItems="center"
               gap="spacing.3"
-              paddingLeft={loadMoreIndentation}
+              paddingLeft={labelIndentation}
               height={makeSize(itemFirstRowHeight)}
             >
               {/* the row itself is aria-busy and the "Loading..." text is the announcement; the spinner is decorative */}
@@ -134,7 +138,7 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
               display="flex"
               flexDirection="row"
               alignItems="center"
-              paddingLeft={loadMoreIndentation}
+              paddingLeft={labelIndentation}
               height={makeSize(itemFirstRowHeight)}
             >
               <Text

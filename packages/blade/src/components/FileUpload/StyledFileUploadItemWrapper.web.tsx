@@ -3,7 +3,7 @@ import type { StyledFileUploadItemWrapperProps } from './types';
 import {
   fileUploadItemBackgroundColors,
   fileUploadMotionTokens,
-  fileUploadHeightTokens,
+  fileUploadItemHeightTokens,
 } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { castWebType, makeSize, useTheme } from '~utils';
@@ -29,7 +29,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       display: 'flex',
       justifyContent: 'space-between',
       borderStyle: 'solid',
-      minHeight: makeSize(fileUploadHeightTokens[size === 'variable' ? 'large' : size]),
+      minHeight: makeSize(fileUploadItemHeightTokens[size]),
       width: '100%',
       backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].default),
       transitionProperty: 'background-color',
