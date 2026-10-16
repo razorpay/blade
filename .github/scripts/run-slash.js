@@ -42,7 +42,10 @@ async function main() {
 
   if (process.env.SLASH_REPOSITORY_URL) {
     if (isAP) {
-      payload.repositories = [process.env.SLASH_REPOSITORY_URL];
+      // agent-platform rejects full URLs; it only accepts `owner/name` or a bare name.
+      payload.repositories = [
+        process.env.SLASH_REPOSITORY_URL.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, ''),
+      ];
     } else {
       payload.repository_url = process.env.SLASH_REPOSITORY_URL;
     }

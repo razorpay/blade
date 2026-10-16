@@ -530,8 +530,12 @@ runs:
         fi
 
         # Repository (branch is guarded above — never reaches here with branch set)
+        # agent-platform rejects full URLs; it only accepts `owner/name` or a bare name.
         if [[ -n "${REPO_URL:-}" ]]; then
-          BODY=$(echo "$BODY" | jq --arg r "$REPO_URL" '. + {repositories: [$r]}')
+          REPO_REF="${REPO_URL#http://github.com/}"
+          REPO_REF="${REPO_REF#https://github.com/}"
+          REPO_REF="${REPO_REF%.git}"
+          BODY=$(echo "$BODY" | jq --arg r "$REPO_REF" '. + {repositories: [$r]}')
         fi
 
         # Optional model override
