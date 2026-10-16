@@ -13,6 +13,7 @@ import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/Bot
 import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { useIsMobile } from '~utils/useIsMobile';
+import BaseBox from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -35,6 +36,14 @@ const flagSize = {
   small: makeSize(sizes[18]),
   medium: makeSize(sizes[20]),
   large: makeSize(sizes[24]),
+} as const;
+
+// Extra gap between the input edge and the country selector
+const countrySelectorPaddingLeft = {
+  xsmall: 'spacing.0',
+  small: 'spacing.0',
+  medium: 'spacing.0',
+  large: 'spacing.1',
 } as const;
 
 const CountrySelector = ({
@@ -78,25 +87,27 @@ const CountrySelector = ({
   );
 
   return (
-    <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-      <InputDropdownButton
-        value={selectedCountry}
-        onChange={({ value }) => onItemClick({ name: value })}
-        accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
-        isDisabled={isDisabled}
-        size={size}
-        leading={flagImage}
-        showDisplayValue={false}
-      />
-      {isMobile ? (
-        <BottomSheet>
-          <BottomSheetHeader title="Select A Country" />
-          <BottomSheetBody>{actionList}</BottomSheetBody>
-        </BottomSheet>
-      ) : (
-        <DropdownOverlay referenceRef={inputWrapperRef}>{actionList}</DropdownOverlay>
-      )}
-    </Dropdown>
+    <BaseBox display="flex" alignSelf="stretch" paddingLeft={countrySelectorPaddingLeft[size]}>
+      <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+        <InputDropdownButton
+          value={selectedCountry}
+          onChange={({ value }) => onItemClick({ name: value })}
+          accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
+          isDisabled={isDisabled}
+          size={size}
+          leading={flagImage}
+          showDisplayValue={false}
+        />
+        {isMobile ? (
+          <BottomSheet>
+            <BottomSheetHeader title="Select A Country" />
+            <BottomSheetBody>{actionList}</BottomSheetBody>
+          </BottomSheet>
+        ) : (
+          <DropdownOverlay referenceRef={inputWrapperRef}>{actionList}</DropdownOverlay>
+        )}
+      </Dropdown>
+    </BaseBox>
   );
 };
 

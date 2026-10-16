@@ -323,6 +323,14 @@ type BaseInputCommonProps = FormInputLabelProps &
      * back to its own internally tracked interaction state.
      */
     activeInteraction?: ActionStates;
+    /**
+     * @internal Puts the input text 2px after the leading interaction element
+     * (instead of the default input padding) when there is no prefix or leading icon.
+     *
+     * Used by PhoneNumberInput so the number sits next to the country selector
+     * the same way the dial code does.
+     */
+    hasCompactLeadingSpacing?: boolean;
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -951,6 +959,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelId,
     activeDescendant,
     hideLabelText,
+    hasCompactLeadingSpacing,
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -1328,6 +1337,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 color={color}
                 disabledColor={disabledColor}
                 isInsideCounterInput={isInsideCounterInput}
+                $hasCompactLeadingSpacing={hasCompactLeadingSpacing}
                 $caretColor={caretColor}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}

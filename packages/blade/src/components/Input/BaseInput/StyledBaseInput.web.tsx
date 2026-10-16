@@ -38,6 +38,7 @@ const getWebInputStyles = (
       color: props.color,
       disabledColor: props.disabledColor,
       isInsideCounterInput: props.isInsideCounterInput,
+      hasCompactLeadingSpacing: props.$hasCompactLeadingSpacing,
     }),
     outline: 'none',
     border: 'none',

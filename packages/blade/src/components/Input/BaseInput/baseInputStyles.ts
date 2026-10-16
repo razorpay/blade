@@ -50,6 +50,7 @@ type GetInputStyles = Pick<
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
   isInsideCounterInput?: boolean;
+  hasCompactLeadingSpacing?: boolean;
 };
 
 export const getBaseInputState = ({
@@ -149,13 +150,17 @@ const getLeftPadding = ({
   isDropdownTrigger,
   hasLeadingIcon,
   hasPrefix,
+  hasLeadingInteractionElement,
   size,
   hasLeadingDropdown,
   isInsideCounterInput,
+  hasCompactLeadingSpacing,
 }: {
   theme: Theme;
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
+  hasLeadingInteractionElement: boolean;
+  hasCompactLeadingSpacing?: boolean;
   isDropdownTrigger: GetInputStyles['isDropdownTrigger'];
   size: GetInputStyles['size'];
   hasLeadingDropdown: boolean;
@@ -163,6 +168,16 @@ const getLeftPadding = ({
 }): number => {
   if (isDropdownTrigger) {
     return theme.spacing[0];
+  }
+
+  // e.g. PhoneNumberInput: country selector + dial code sit closer to the value
+  if (hasPrefix && hasLeadingInteractionElement) {
+    return theme.spacing[2];
+  }
+
+  // e.g. PhoneNumberInput without dial code: number sits right after the country selector
+  if (hasCompactLeadingSpacing && hasLeadingInteractionElement && !hasLeadingIcon) {
+    return theme.spacing[1];
   }
 
   if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {
@@ -257,10 +272,12 @@ export const getBaseInputStyles = ({
   color,
   disabledColor,
   isInsideCounterInput,
+  hasCompactLeadingSpacing,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
     hasPrefix,
+    hasLeadingInteractionElement,
     hasTrailingInteractionElement,
     hasSuffix,
     hasTrailingIcon,
@@ -319,9 +336,11 @@ export const getBaseInputStyles = ({
           isDropdownTrigger,
           hasLeadingIcon,
           hasPrefix,
+          hasLeadingInteractionElement,
           size,
           hasLeadingDropdown,
           isInsideCounterInput,
+          hasCompactLeadingSpacing,
         }),
       ),
     paddingRight:

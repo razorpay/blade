@@ -149,6 +149,7 @@ const getRNInputStyles = (
       padding: props.$padding,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
+      hasCompactLeadingSpacing: props.$hasCompactLeadingSpacing,
     }),
     lineHeight: RNPlatform.select({
       android: makeSize(props.theme.typography.lineHeights[100]),
