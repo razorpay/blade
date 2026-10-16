@@ -1256,6 +1256,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={_isDisabled}
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
+              hasCompactLeadingSpacing={hasCompactLeadingSpacing}
             />
             <BaseInputTagSlot
               renderAs={as}

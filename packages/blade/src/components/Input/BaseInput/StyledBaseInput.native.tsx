@@ -208,6 +208,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     $padding,
     isTableInputCell,
     valueComponentType,
+    $hasCompactLeadingSpacing,
   }) =>
     getRNInputStyles({
       id,
@@ -230,6 +231,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       $padding,
       valueComponentType,
       isTableInputCell,
+      $hasCompactLeadingSpacing,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -254,6 +256,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     $padding,
     isTableInputCell,
     valueComponentType,
+    $hasCompactLeadingSpacing,
   }) => ({
     ...getRNInputStyles({
       id,
@@ -276,6 +279,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       $padding,
       valueComponentType,
       isTableInputCell,
+      $hasCompactLeadingSpacing,
     }),
   }),
 );

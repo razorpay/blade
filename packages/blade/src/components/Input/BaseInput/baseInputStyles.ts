@@ -170,14 +170,14 @@ const getLeftPadding = ({
     return theme.spacing[0];
   }
 
-  // e.g. PhoneNumberInput: country selector + dial code sit closer to the value
-  if (hasPrefix && hasLeadingInteractionElement) {
-    return theme.spacing[2];
-  }
-
-  // e.g. PhoneNumberInput without dial code: number sits right after the country selector
-  if (hasCompactLeadingSpacing && hasLeadingInteractionElement && !hasLeadingIcon) {
-    return theme.spacing[1];
+  // e.g. PhoneNumberInput: number sits close to the dial code, or to the country selector
+  if (hasCompactLeadingSpacing && hasLeadingInteractionElement) {
+    if (hasPrefix) {
+      return theme.spacing[2];
+    }
+    if (!hasLeadingIcon) {
+      return theme.spacing[1];
+    }
   }
 
   if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {

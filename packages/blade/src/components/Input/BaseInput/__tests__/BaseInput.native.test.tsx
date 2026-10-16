@@ -1,4 +1,5 @@
 import { fireEvent } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
@@ -313,5 +314,53 @@ describe('<BaseInput />', () => {
     );
 
     expect(getByTestId('base-input-test')).toBeTruthy();
+  });
+
+  it('should use compact left padding after the leading interaction element when hasCompactLeadingSpacing is set', () => {
+    const getInputPaddingLeft = (element: ReactElement): unknown => {
+      const { getByPlaceholderText } = renderWithTheme(element);
+      return StyleSheet.flatten(getByPlaceholderText('Phone number').props.style).paddingLeft;
+    };
+    const leading = <Link>IN</Link>;
+
+    // number right after the leading element (no prefix)
+    expect(
+      getInputPaddingLeft(
+        <BaseInput
+          label="Phone"
+          id="compact-no-prefix"
+          placeholder="Phone number"
+          leadingInteractionElement={leading}
+          hasCompactLeadingSpacing
+        />,
+      ),
+    ).toBe(2);
+
+    // number after a prefix
+    expect(
+      getInputPaddingLeft(
+        <BaseInput
+          label="Phone"
+          id="compact-prefix"
+          placeholder="Phone number"
+          leadingInteractionElement={leading}
+          prefix="+91"
+          hasCompactLeadingSpacing
+        />,
+      ),
+    ).toBe(4);
+
+    // without the flag, default spacing is kept
+    expect(
+      getInputPaddingLeft(
+        <BaseInput
+          label="Phone"
+          id="default-prefix"
+          placeholder="Phone number"
+          leadingInteractionElement={leading}
+          prefix="+91"
+        />,
+      ),
+    ).toBe(8);
   });
 });

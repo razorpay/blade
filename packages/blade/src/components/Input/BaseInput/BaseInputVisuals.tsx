@@ -33,6 +33,7 @@ type InputVisuals = Pick<
   | 'errorText'
   | 'successText'
   | 'validationTextPlacement'
+  | 'hasCompactLeadingSpacing'
 > & {
   size: NonNullable<BaseInputProps['size']>;
   errorTextId?: string;
@@ -86,11 +87,11 @@ const validationTextColor = {
 const getPrefixStyles = ({
   hasLeadingIcon,
   hasPrefix,
-  hasLeadingInteractionElement,
+  isCompactLeading,
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
-  hasLeadingInteractionElement?: boolean;
+  isCompactLeading?: boolean;
 }): Pick<BaseBoxProps, 'paddingLeft'> => {
   if (hasPrefix && hasLeadingIcon) {
     return {
@@ -99,7 +100,7 @@ const getPrefixStyles = ({
   }
 
   // e.g. dial code right after the country selector in PhoneNumberInput
-  if (hasPrefix && hasLeadingInteractionElement) {
+  if (hasPrefix && isCompactLeading) {
     return {
       paddingLeft: 'spacing.1',
     };
@@ -293,6 +294,7 @@ export const BaseInputVisuals = ({
   trailingButton: TrailingButton,
   errorTextId,
   successTextId,
+  hasCompactLeadingSpacing,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -316,6 +318,8 @@ export const BaseInputVisuals = ({
     trailingDropDown,
     size,
   });
+  // Tighter gaps after the leading interaction element (e.g. PhoneNumberInput's country selector)
+  const isCompactLeading = Boolean(hasCompactLeadingSpacing && hasLeadingInteractionElement);
 
   const insideValidationText =
     validationTextPlacement === 'inside' && validationState !== 'none'
@@ -373,10 +377,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {LeadingIcon ? (
-          <BaseBox
-            paddingLeft={hasLeadingInteractionElement ? 'spacing.1' : 'spacing.4'}
-            display="flex"
-          >
+          <BaseBox paddingLeft={isCompactLeading ? 'spacing.1' : 'spacing.4'} display="flex">
             <LeadingIcon
               size={iconSize[size]}
               color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
@@ -384,9 +385,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasPrefix ? (
-          <BaseInputAffix
-            {...getPrefixStyles({ hasLeadingIcon, hasPrefix, hasLeadingInteractionElement })}
-          >
+          <BaseInputAffix {...getPrefixStyles({ hasLeadingIcon, hasPrefix, isCompactLeading })}>
             <Text
               size={textSize[size]}
               variant="body"
