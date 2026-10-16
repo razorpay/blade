@@ -31,8 +31,8 @@ type CounterSelectorProps = {
 };
 
 const flagSize = {
-  xsmall: makeSize(sizes[16]),
-  small: makeSize(sizes[16]),
+  xsmall: makeSize(sizes[18]),
+  small: makeSize(sizes[18]),
   medium: makeSize(sizes[20]),
   large: makeSize(sizes[24]),
 } as const;

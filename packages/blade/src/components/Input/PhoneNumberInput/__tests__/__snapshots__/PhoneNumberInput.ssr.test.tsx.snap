@@ -149,8 +149,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 4px;
-  gap: 4px;
+  gap: 2px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -229,14 +228,16 @@ exports[`<PhoneNumberInput /> should render 2`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,0);
-  gap: 4px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
   height: 28px;
-  padding: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 6px;
+  padding-right: 4px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -595,9 +596,9 @@ exports[`<PhoneNumberInput /> should render 2`] = `
                         class="Svgweb__StyledSvg-vcmjs8-0"
                         data-blade-component="icon"
                         fill="none"
-                        height="16px"
+                        height="12px"
                         viewBox="0 0 24 24"
-                        width="16px"
+                        width="12px"
                       >
                         <path
                           d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L12 5.41421L15.2929 8.70711C15.6834 9.09763 16.3166 9.09763 16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289L12.7071 3.29289Z"

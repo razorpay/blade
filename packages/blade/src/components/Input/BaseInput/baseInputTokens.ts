@@ -95,6 +95,24 @@ export const inputDropdownButtonPadding = {
   large: 2,
 } as const;
 
+/**
+ * Horizontal padding inside input dropdown button (in px)
+ */
+export const inputDropdownButtonPaddingX = {
+  left: {
+    xsmall: size['5'],
+    small: size['5'],
+    medium: size['6'],
+    large: size['8'],
+  },
+  right: {
+    xsmall: size['2'],
+    small: size['2'],
+    medium: size['4'],
+    large: size['4'],
+  },
+} as const;
+
 export const baseInputBorderWidth = {
   default: 'thin',
   hovered: 'thin',
