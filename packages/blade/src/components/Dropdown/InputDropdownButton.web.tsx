@@ -25,6 +25,7 @@ import {
   inputDropdownButtonBorderRadius,
   baseInputHeight,
   inputDropdownButtonPadding,
+  inputDropdownButtonPaddingX,
 } from '~components/Input/BaseInput/baseInputTokens';
 import type { BaseInputProps } from '~components/Input/BaseInput/BaseInput';
 
@@ -123,11 +124,13 @@ const StyledSearchTrailingDropdown = styled.button<{
 
   return {
     backgroundColor: theme.colors.transparent,
-    gap: makeSpace(theme.spacing[2]),
     display: 'flex',
     boxSizing: 'border-box',
     height: makeSpace(buttonHeight),
-    padding: makeSpace(theme.spacing[2]),
+    paddingTop: makeSpace(theme.spacing[0]),
+    paddingBottom: makeSpace(theme.spacing[0]),
+    paddingLeft: makeSpace(inputDropdownButtonPaddingX.left[$size]),
+    paddingRight: makeSpace(inputDropdownButtonPaddingX.right[$size]),
     alignItems: 'center',
     border: 'none',
     cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -168,6 +171,8 @@ const _InputDropdownButton = ({
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
   const idBase = useId('input-drop-down-button');
+  const isSmallSize = size === 'xsmall' || size === 'small';
+  const textSize = isSmallSize ? 'small' : 'medium';
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -236,16 +241,11 @@ const _InputDropdownButton = ({
       {...makeAnalyticsAttribute(rest)}
       {...metaAttribute({ name: 'InputDropdownButton', testID })}
     >
-      <Box
-        padding={`spacing.${inputDropdownButtonPadding[size]}`}
-        display="flex"
-        gap="spacing.2"
-        alignItems="center"
-      >
+      <Box display="flex" gap="spacing.1" alignItems="center">
         {_isInsideSearchInput && (
           <Text
             variant="body"
-            size="medium"
+            size={textSize}
             weight="regular"
             color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
           >
@@ -256,7 +256,7 @@ const _InputDropdownButton = ({
         {leading}
         {Icon && (
           <Icon
-            size="medium"
+            size={size === 'large' ? 'large' : 'medium'}
             color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
           />
         )}
@@ -264,7 +264,7 @@ const _InputDropdownButton = ({
         {showDisplayValue && (
           <Text
             variant="body"
-            size="medium"
+            size={textSize}
             weight="regular"
             color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
           >
@@ -272,6 +272,7 @@ const _InputDropdownButton = ({
           </Text>
         )}
         <ChevronUpDownIcon
+          size={isSmallSize ? 'xsmall' : 'small'}
           color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
         />
       </Box>
