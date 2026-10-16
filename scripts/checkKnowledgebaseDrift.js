@@ -2,8 +2,9 @@
  * Finds drift between Blade component prop types (source of truth) and the
  * TypeScript types written in blade-plugin knowledgebase docs.
  *
- * For every `packages/blade-plugin/skills/blade/references/components/{Name}.md` it compares
- * `{Name}Props` from the doc with `{Name}Props` exported by `packages/blade/src/components`:
+ * For every `packages/blade-plugin/skills/{skill}/references/components/{Name}.md` it compares
+ * `{Name}Props` from the doc with `{Name}Props` exported by the target package's
+ * `src/components` (`--target react` = packages/blade, `--target svelte` = packages/blade-svelte):
  * - props that exist in code but are missing in the doc
  * - props that exist in the doc but not in code
  * - literal union values (e.g. `size`) that differ between doc and code.
@@ -12,34 +13,91 @@
  * It also lists exported components that have no knowledgebase doc.
  *
  * Known exceptions (internal props, docs that can't be compared) live in
- * `scripts/knowledgebaseDriftIgnore.json`. Every entry needs a reason.
+ * `scripts/knowledgebaseDriftIgnore.json` (react) and
+ * `scripts/knowledgebaseDriftIgnore.svelte.json` (svelte). Every entry needs a reason.
  *
  * Usage:
- *   yarn check:knowledgebase-drift                  # all components
+ *   yarn check:knowledgebase-drift                  # all react components
  *   yarn check:knowledgebase-drift TextInput Button  # selected components
  *   yarn check:knowledgebase-drift --fail            # exit 1 when drift is found
+ *   yarn check:knowledgebase-drift --target svelte   # blade-svelte knowledgebase
  */
 const fs = require('fs');
 const path = require('path');
 const { Project, ts } = require('ts-morph');
 
 const rootDir = path.join(__dirname, '..');
-const bladeDir = path.join(rootDir, 'packages/blade');
-const componentsDocsDir = path.join(rootDir, 'packages/blade-plugin/skills/blade/references/components');
-const reportPath = path.join(rootDir, 'knowledgebase-drift-report.json');
-const ignoreConfig = require('./knowledgebaseDriftIgnore.json');
 
 const args = process.argv.slice(2);
+const targetIndex = args.indexOf('--target');
+const targetName = targetIndex === -1 ? 'react' : args[targetIndex + 1];
 const shouldFail = args.includes('--fail');
-const selectedComponents = args.filter((arg) => !arg.startsWith('--'));
+const selectedComponents = args.filter(
+  (arg, index) => !arg.startsWith('--') && index !== targetIndex + 1,
+);
 
-// Props that come from shared helper types. Docs reference these types by name
-// (StyledPropsBlade, DataAnalyticsAttribute, TestID) instead of listing every prop.
-const SHARED_PROP_TYPES = ['StyledPropsBlade', 'DataAnalyticsAttribute', 'TestID'];
+// `docPreamble` is prepended to doc types so framework types (React, Snippet)
+// resolve. `shared` lists helper types docs reference by name instead of
+// listing every prop; `sharedEntry` imports them from the package source.
+const TARGETS = {
+  react: {
+    packageDir: path.join(rootDir, 'packages/blade'),
+    docsDir: path.join(rootDir, 'packages/blade-plugin/skills/blade/references/components'),
+    reportPath: path.join(rootDir, 'knowledgebase-drift-report.json'),
+    ignoreConfig: './knowledgebaseDriftIgnore.json',
+    shared: ['StyledPropsBlade', 'DataAnalyticsAttribute', 'TestID'],
+    sharedEntry: `import type { StyledPropsBlade } from './components/Box/styledProps';
+import type { DataAnalyticsAttribute, TestID } from './utils/types';
+export type __Shared = StyledPropsBlade & DataAnalyticsAttribute & TestID;`,
+    docPreamble: `import type React from 'react';`,
+    compilerOptions: {},
+    componentPropsFallback: (name) => `import type React from 'react';
+import type { ${name} } from './components';
+export type __Resolved = React.ComponentProps<typeof ${name}>;`,
+  },
+  svelte: {
+    packageDir: path.join(rootDir, 'packages/blade-svelte'),
+    docsDir: path.join(rootDir, 'packages/blade-plugin/skills/blade-svelte/references/components'),
+    reportPath: path.join(rootDir, 'knowledgebase-drift-report.svelte.json'),
+    ignoreConfig: './knowledgebaseDriftIgnore.svelte.json',
+    shared: ['StyledPropsBlade'],
+    sharedEntry: `import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+export type __Shared = StyledPropsBlade;`,
+    docPreamble: `import type { Snippet, Component } from 'svelte';`,
+    // blade-core is read from source so the check runs without building it.
+    compilerOptions: {
+      paths: {
+        '~components/*': ['src/components/*'],
+        '~src/*': ['src/*'],
+        '@razorpay/blade-core/*': ['../blade-core/src/*'],
+      },
+    },
+    // `.svelte` default exports don't resolve in ts-morph; docs must match an
+    // exported `{Name}Props` type.
+    componentPropsFallback: null,
+  },
+};
+
+const target = TARGETS[targetName];
+if (!target) {
+  console.error(`Unknown --target "${targetName}". Use one of: ${Object.keys(TARGETS).join(', ')}`);
+  process.exit(2);
+}
+const { packageDir: bladeDir, docsDir: componentsDocsDir, reportPath } = target;
+const ignoreConfig = require(target.ignoreConfig);
+const SHARED_PROP_TYPES = target.shared;
+
+/**
+ * The type expression compared for a component: `{Name}Props`, or an override
+ * from the ignore config's `propsTypes` for generic props types.
+ * @param {string} name
+ */
+const getPropsTypeExpression = (name) => ignoreConfig.propsTypes?.[name] ?? `${name}Props`;
 
 const project = new Project({
   tsConfigFilePath: path.join(bladeDir, 'tsconfig.json'),
   skipAddingFilesFromTsConfig: true,
+  compilerOptions: target.compilerOptions,
 });
 const checker = project.getTypeChecker().compilerObject;
 
@@ -106,18 +164,17 @@ const resolveType = (fileName, source) => {
 
 // ---- code side ----
 const codeEntryPath = path.join(bladeDir, 'src/__knowledgebaseDrift__.ts');
-const codeEntry = project.createSourceFile(
-  codeEntryPath,
-  `import type { StyledPropsBlade } from './components/Box/styledProps';
-import type { DataAnalyticsAttribute, TestID } from './utils/types';
-export type __Shared = StyledPropsBlade & DataAnalyticsAttribute & TestID;`,
-  { overwrite: true },
-);
+const codeEntry = project.createSourceFile(codeEntryPath, target.sharedEntry, { overwrite: true });
 const bladeModule = project
   .addSourceFileAtPath(path.join(bladeDir, 'src/components/index.ts'))
   .getExportedDeclarations();
 const sharedAlias = codeEntry.getTypeAliasOrThrow('__Shared');
-const sharedPropNames = new Set(sharedAlias.getType().getProperties().map((s) => s.getName()));
+const sharedPropNames = new Set(
+  sharedAlias
+    .getType()
+    .getProperties()
+    .map((s) => s.getName()),
+);
 
 /**
  * Shared helper props, React-only props (ref, key), internal props (`_` prefix)
@@ -156,13 +213,13 @@ const getCodeProps = (name) => {
   // Prefer the exported `{Name}Props` type. Fall back to the component's props
   // when only the component is exported.
   let source;
-  if (bladeModule.has(`${name}Props`)) {
-    source = `import type { ${name}Props } from './components';
-export type __Resolved = ${name}Props;`;
-  } else if (bladeModule.has(name)) {
-    source = `import type React from 'react';
-import type { ${name} } from './components';
-export type __Resolved = React.ComponentProps<typeof ${name}>;`;
+  const expression = getPropsTypeExpression(name);
+  const typeNames = expression.split(/[|&]/).map((part) => part.trim());
+  if (typeNames.every((typeName) => bladeModule.has(typeName))) {
+    source = `import type { ${typeNames.join(', ')} } from './components';
+export type __Resolved = ${expression};`;
+  } else if (bladeModule.has(name) && target.componentPropsFallback) {
+    source = target.componentPropsFallback(name);
   } else {
     return null;
   }
@@ -224,10 +281,10 @@ const getDocProps = (name, markdown) => {
     if (resolved) project.removeSourceFile(resolved.sourceFile);
     resolved = resolveType(
       docFilePath,
-      `import type React from 'react';
+      `${target.docPreamble}
 ${stubSource}
 ${docTypes}
-export type __Resolved = ${name}Props;`,
+export type __Resolved = ${getPropsTypeExpression(name)};`,
     );
     const missingNames = resolved.sourceFile
       .getPreEmitDiagnostics()
@@ -271,7 +328,7 @@ for (const name of docFiles) {
   const codeProps = getCodeProps(name);
   const { props: docProps, unresolvedTypes, reason, cleanup } = codeProps
     ? readDocProps(name)
-    : { props: null, reason: `No "${name}" export in blade` };
+    : { props: null, reason: `No "${name}Props" export in ${path.relative(rootDir, bladeDir)}` };
   if (!codeProps || !docProps) {
     const ignoreReason = ignoreConfig.skippedDocs[name];
     if (ignoreReason) report.ignoredSkipped.push({ component: name, reason: ignoreReason });
@@ -312,7 +369,13 @@ for (const name of docFiles) {
   cleanup();
 
   if (missingInDoc.length || notInCode.length || valueMismatches.length || unresolvedTypes.length) {
-    report.drift.push({ component: name, missingInDoc, notInCode, valueMismatches, unresolvedTypes });
+    report.drift.push({
+      component: name,
+      missingInDoc,
+      notInCode,
+      valueMismatches,
+      unresolvedTypes,
+    });
   }
 }
 
@@ -332,7 +395,13 @@ if (selectedComponents.length === 0) {
 fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf-8');
 
 // ---- print ----
-for (const { component, missingInDoc, notInCode, valueMismatches, unresolvedTypes } of report.drift) {
+for (const {
+  component,
+  missingInDoc,
+  notInCode,
+  valueMismatches,
+  unresolvedTypes,
+} of report.drift) {
   console.log(`\n❌ ${component}`);
   if (unresolvedTypes.length) {
     console.log(`  Types used in doc but not defined: ${unresolvedTypes.join(', ')}`);
@@ -341,7 +410,8 @@ for (const { component, missingInDoc, notInCode, valueMismatches, unresolvedType
   if (notInCode.length) console.log(`  Props in doc but not in code: ${notInCode.join(', ')}`);
   for (const mismatch of valueMismatches) {
     const parts = [];
-    if (mismatch.missingInDoc.length) parts.push(`missing in doc: ${mismatch.missingInDoc.join(' | ')}`);
+    if (mismatch.missingInDoc.length)
+      parts.push(`missing in doc: ${mismatch.missingInDoc.join(' | ')}`);
     if (mismatch.notInCode.length) parts.push(`not in code: ${mismatch.notInCode.join(' | ')}`);
     console.log(`  ${mismatch.prop} values — ${parts.join('; ')}`);
   }

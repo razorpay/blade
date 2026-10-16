@@ -1,15 +1,18 @@
 // Port of packages/blade-mcp/src/utils/analyticsUtils.ts + getUserName.ts for
 // skill scripts. Same user id and properties as Blade MCP, but a separate event
 // name so dashboards can tell skill usage from MCP tool calls. `toolName` keeps
-// the MCP tool's name and `skillName` says which skill sent the event.
+// the MCP tool's name, `skillName` says which skill sent the event and
+// `framework` comes from that skill (blade-svelte → svelte, otherwise react).
 //
 // Each skill that ships a script keeps an identical copy of this file, because
 // `npx skills add` installs one skill directory on its own.
 // scripts/validateBladePlugin.mjs (repo root) fails if the copies differ.
 //
-// Events are sent only when BLADE_SEGMENT_KEY is set (the MCP inlines it at
-// build time; plugins have no build step). BLADE_PLUGIN_DEBUG=1 prints each
-// event to stderr instead of relying on Segment.
+// The Segment write key is inlined because plugins have no build step to
+// inject it (the MCP inlines the same key into its npm dist). A write key can
+// only send events. BLADE_SEGMENT_KEY overrides it, and an empty value turns
+// sending off (tests rely on this). BLADE_PLUGIN_DEBUG=1 prints each event to
+// stderr.
 import os from 'os';
 import fs from 'fs';
 import path from 'path';
@@ -18,9 +21,13 @@ import { fileURLToPath } from 'url';
 
 export const analyticsToolCallEventName = 'Blade Plugin Tool Called';
 
+const segmentWriteKey = 'FRC1wLlDOhHQPLkFSvPeU0f1apsxtPFY'; // nosemgrep
+
 const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
 // The skill this script belongs to ('blade').
 const skillName = path.basename(path.dirname(scriptsDir));
+
+const framework = skillName === 'blade-svelte' ? 'svelte' : 'react';
 
 // Version of the installed plugin; skills installed without the plugin
 // manifest (npx skills add) report 'unknown'.
@@ -89,6 +96,7 @@ export const sendAnalytics = async ({ eventName, properties }) => {
         userName: userId,
         rootDirectoryName: path.basename(projectRootDirectory),
         protocol: 'plugin',
+        framework,
         skillName,
         ...properties,
       },
@@ -96,7 +104,7 @@ export const sendAnalytics = async ({ eventName, properties }) => {
     if (process.env.BLADE_PLUGIN_DEBUG) {
       process.stderr.write(`[blade-analytics] ${JSON.stringify(event)}\n`);
     }
-    const writeKey = process.env.BLADE_SEGMENT_KEY;
+    const writeKey = process.env.BLADE_SEGMENT_KEY ?? segmentWriteKey;
     if (!writeKey) return;
     await post('track', event, writeKey);
     await post('alias', { userId, previousId: getUniqueIdentifier() }, writeKey);

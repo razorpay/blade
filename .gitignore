@@ -99,8 +99,8 @@ buck-out/
 # CocoaPods
 **/ios/Pods/
 
-knowledgebase-ts-errors.json
-knowledgebase-drift-report.json
+knowledgebase-ts-errors*.json
+knowledgebase-drift-report*.json
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
 
