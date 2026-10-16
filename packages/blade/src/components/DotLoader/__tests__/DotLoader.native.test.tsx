@@ -56,6 +56,16 @@ describe('<DotLoader />', () => {
     expect(getByTestId('dot-loader-test')).toBeTruthy();
   });
 
+  it('should render DotLoader at the small size', () => {
+    const { toJSON } = renderWithTheme(<DotLoader size="small" />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should size the small box at 0.75x the medium box', () => {
+    const { getByTestId } = renderWithTheme(<DotLoader size="small" testID="small" />);
+    expect(getByTestId('small')).toHaveStyle({ width: 18, height: 18 });
+  });
+
   it('should render DotLoader at the large size', () => {
     const { toJSON } = renderWithTheme(<DotLoader size="large" />);
     expect(toJSON()).toMatchSnapshot();
@@ -97,6 +107,24 @@ describe('<DotLoader />', () => {
       ]);
 
       expect(toJSON()).toMatchSnapshot();
+    });
+
+    it('should hold the middle dot at peak transform/opacity and outer dots at rest (small)', () => {
+      mockUseReducedMotion.mockReturnValue(true);
+
+      const { getByTestId } = renderWithTheme(<DotLoader size="small" testID="dot-loader-test" />);
+      const dots = getDotViews(getByTestId('dot-loader-test'));
+
+      const { lift } = dotLoaderGeometry.small;
+
+      expect(dots[REDUCED_MOTION_LIFTED_DOT_INDEX]).toHaveStyle({
+        opacity: dotLoaderTokens.peakOpacity,
+      });
+      expect(dots[0]).toHaveStyle({ opacity: dotLoaderTokens.restOpacity });
+      expect(dots[2]).toHaveStyle({ opacity: dotLoaderTokens.restOpacity });
+      expect(getDotTransform(dots[REDUCED_MOTION_LIFTED_DOT_INDEX])).toEqual([
+        { translateY: -lift },
+      ]);
     });
 
     it('should hold the middle dot at peak transform/opacity and outer dots at rest (large)', () => {

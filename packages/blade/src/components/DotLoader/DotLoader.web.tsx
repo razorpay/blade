@@ -34,6 +34,7 @@ const makeDotPulse = (size: DotLoaderSize): ReturnType<typeof keyframes> => keyf
 `;
 
 const dotPulseBySize: Record<DotLoaderSize, ReturnType<typeof keyframes>> = {
+  small: makeDotPulse('small'),
   medium: makeDotPulse('medium'),
   large: makeDotPulse('large'),
 };

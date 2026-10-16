@@ -6,8 +6,9 @@ export type DotLoaderSize = keyof typeof dotLoaderGeometry;
 
 export type DotLoaderProps = {
   /**
-   * Size of the loader. `large` is the same loader scaled 1.5x, for hosts tall
-   * enough that the default reads as undersized (the 48px `large` Button).
+   * Size of the loader. `small` is the same loader scaled 0.75x, for compact
+   * hosts where the default reads as oversized. `large` is scaled 1.5x, for hosts
+   * tall enough that the default reads as undersized (the 48px `large` Button).
    *
    * @default 'medium'
    */

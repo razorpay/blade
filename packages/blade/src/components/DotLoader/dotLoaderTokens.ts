@@ -7,15 +7,21 @@
  */
 
 /**
- * Per-size geometry. `large` is `medium` scaled by 1.5 so the loader keeps its
- * proportions and motion character at both sizes rather than becoming a visually
- * different loader.
+ * Per-size geometry. `small` and `large` are `medium` scaled by 0.75 and 1.5 so
+ * the loader keeps its proportions and motion character at every size rather
+ * than becoming a visually different loader.
  *
  * The dots are centered in a `boxSize` square at rest and lift by `lift` at the
  * peak — they never dip below the rest line. The lift is a transform, so it does
  * not shift the resting position the dots are laid out at.
  */
 const dotLoaderGeometry = {
+  small: {
+    boxSize: 18,
+    dotSize: 3,
+    gap: 1.5,
+    lift: 3.75,
+  },
   medium: {
     boxSize: 24,
     dotSize: 4,

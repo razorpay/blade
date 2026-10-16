@@ -43,6 +43,7 @@ const makeSizeStyles = (size: DotLoaderSize): { box: ViewStyle; dot: ViewStyle }
 };
 
 const stylesBySize = {
+  small: StyleSheet.create(makeSizeStyles('small')),
   medium: StyleSheet.create(makeSizeStyles('medium')),
   large: StyleSheet.create(makeSizeStyles('large')),
 };
