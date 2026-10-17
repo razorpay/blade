@@ -158,6 +158,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       ref={mergedRef}
       id="phone-number-input"
       componentName={MetaConstants.PhoneNumberInput}
+      hasCompactLeadingSpacing
       label={label as string}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}

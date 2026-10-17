@@ -323,6 +323,15 @@ type BaseInputCommonProps = FormInputLabelProps &
      * back to its own internally tracked interaction state.
      */
     activeInteraction?: ActionStates;
+    /**
+     * @internal Tighter spacing around the leading interaction element, used by
+     * PhoneNumberInput for its country selector:
+     * - even gap between the field edge and the leading element on all sides
+     * - prefix or leading icon 2px after the leading element
+     * - input text 4px after a prefix or leading icon, or 2px after the leading
+     *   element when there's neither
+     */
+    hasCompactLeadingSpacing?: boolean;
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -951,6 +960,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelId,
     activeDescendant,
     hideLabelText,
+    hasCompactLeadingSpacing,
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -1247,6 +1257,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={_isDisabled}
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
+              hasCompactLeadingSpacing={hasCompactLeadingSpacing}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1328,6 +1339,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 color={color}
                 disabledColor={disabledColor}
                 isInsideCounterInput={isInsideCounterInput}
+                $hasCompactLeadingSpacing={hasCompactLeadingSpacing}
                 $caretColor={caretColor}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}

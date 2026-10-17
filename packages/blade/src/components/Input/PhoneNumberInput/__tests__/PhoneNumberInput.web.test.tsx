@@ -186,4 +186,20 @@ describe('<PhoneNumberInput />', () => {
       expect(getHintWrapper(container)).toBeNull();
     });
   });
+
+  it('should render without dial code', () => {
+    const { container } = renderWithTheme(
+      <PhoneNumberInput label="Enter phone number" showDialCode={false} />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render small size', () => {
+    const { container } = renderWithTheme(
+      <PhoneNumberInput label="Enter phone number" size="small" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -149,6 +149,7 @@ const getRNInputStyles = (
       padding: props.$padding,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
+      hasCompactLeadingSpacing: props.$hasCompactLeadingSpacing,
     }),
     lineHeight: RNPlatform.select({
       android: makeSize(props.theme.typography.lineHeights[100]),
@@ -207,6 +208,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     $padding,
     isTableInputCell,
     valueComponentType,
+    $hasCompactLeadingSpacing,
   }) =>
     getRNInputStyles({
       id,
@@ -229,6 +231,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       $padding,
       valueComponentType,
       isTableInputCell,
+      $hasCompactLeadingSpacing,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -253,6 +256,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     $padding,
     isTableInputCell,
     valueComponentType,
+    $hasCompactLeadingSpacing,
   }) => ({
     ...getRNInputStyles({
       id,
@@ -275,6 +279,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       $padding,
       valueComponentType,
       isTableInputCell,
+      $hasCompactLeadingSpacing,
     }),
   }),
 );
