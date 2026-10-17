@@ -15,6 +15,8 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
 import { isReactNative } from '~utils';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 /** Native onFileChange fires before pick with the current list — simulate a picked file for Storybook. */
 const createMockNativeAttachment = (index: number): BladeFileList[0] =>
@@ -875,3 +877,39 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+export const AmbientBorder: StoryFn<typeof ChatInput> = () => (
+  <Box display="flex" flexDirection="column" gap="spacing.6" maxWidth="640px">
+    {(['light', 'dark'] as const).map((colorScheme) => (
+      <BladeProvider key={colorScheme} themeTokens={bladeTheme} colorScheme={colorScheme}>
+        <Box
+          backgroundColor="surface.background.gray.intense"
+          padding="spacing.6"
+          borderRadius="large"
+        >
+          <Text marginBottom="spacing.5">{colorScheme === 'light' ? 'Light' : 'Dark'} theme</Text>
+          <ChatInput borderEffect="ambient" placeholder="Ask a question..." />
+        </Box>
+      </BladeProvider>
+    ))}
+  </Box>
+);
+AmbientBorder.parameters = {
+  docs: {
+    description: {
+      story:
+        'A decorative five-second pulse, independent of generation. Focus thickens the outline; errors and disabled state hide it; reduced motion renders a static outline. Web-only; native retains its default appearance.',
+    },
+  },
+};
+
+export const AmbientBorderStates: StoryFn<typeof ChatInput> = () => (
+  <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="600px" padding="spacing.6">
+    <ChatInput borderEffect="ambient" placeholder="Focus here to see the thicker ambient outline" />
+    <ChatInput borderEffect="ambient" isGenerating />
+    <ChatInput borderEffect="ambient" isDisabled />
+    <ChatInput borderEffect="ambient" validationState="error" errorText="Please try again" />
+  </Box>
+);
+
+AmbientBorderStates.storyName = 'Ambient Border Kitchen Sink';

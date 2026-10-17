@@ -580,7 +580,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
       type="file"
     />
     <div
-      class="c1"
+      class="c1 "
       data-blade-component="base-box"
     >
       <div
