@@ -1,4 +1,5 @@
 import type { BaseInputProps } from './BaseInput';
+import type { DotLoaderProps } from '~components/DotLoader';
 import { size, spacing } from '~tokens/global';
 
 export const BASEINPUT_MAX_ROWS = 4;
@@ -17,6 +18,20 @@ export const baseInputHeight: Record<
   small: size['32'],
   medium: size['36'],
   large: size['48'],
+};
+
+/**
+ * Size of the `DotLoader` shown in the trailing slot while an input is loading.
+ * Compact inputs use the scaled-down loader so it does not crowd the shorter field.
+ */
+export const baseInputLoaderSize: Record<
+  NonNullable<BaseInputProps['size']>,
+  NonNullable<DotLoaderProps['size']>
+> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
 };
 
 /**

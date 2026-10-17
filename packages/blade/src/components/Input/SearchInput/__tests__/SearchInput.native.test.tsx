@@ -50,7 +50,7 @@ describe('<SearchInput />', () => {
     expect(input).toBeDisabled();
   });
 
-  it('should show spinner when isLoading is passed', () => {
+  it('should show loader when isLoading is passed', () => {
     const label = 'Search here';
     const valueInitial = 'Kamlesh';
 
@@ -62,8 +62,8 @@ describe('<SearchInput />', () => {
     expect(clearButton).toBeFalsy();
     clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
-    const loadingSpinner = queryByRole('progressbar');
-    expect(loadingSpinner).toBeTruthy();
+    const loader = queryByRole('progressbar');
+    expect(loader).toBeTruthy();
   });
 
   it('should handle onChange', () => {
