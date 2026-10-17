@@ -362,12 +362,17 @@ export const BaseInputVisuals = ({
       <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
         {hasLeadingInteractionElement ? (
           <BaseBox
-            paddingLeft={getInteractionElementStyles({
-              hasTrailingIcon,
-              hasLeadingInteractionElement,
-              hasSuffix,
-              hasTrailingButton,
-            })}
+            paddingLeft={
+              // even gap on all sides, e.g. around PhoneNumberInput's country selector
+              isCompactLeading
+                ? `spacing.${inputDropdownButtonPadding[size]}`
+                : getInteractionElementStyles({
+                    hasTrailingIcon,
+                    hasLeadingInteractionElement,
+                    hasSuffix,
+                    hasTrailingButton,
+                  })
+            }
             paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"

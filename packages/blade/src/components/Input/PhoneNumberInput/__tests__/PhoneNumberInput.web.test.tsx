@@ -194,4 +194,12 @@ describe('<PhoneNumberInput />', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it('should render small size', () => {
+    const { container } = renderWithTheme(
+      <PhoneNumberInput label="Enter phone number" size="small" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
