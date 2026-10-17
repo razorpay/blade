@@ -170,14 +170,10 @@ const getLeftPadding = ({
     return theme.spacing[0];
   }
 
-  // e.g. PhoneNumberInput: number sits close to the dial code, or to the country selector
+  // e.g. PhoneNumberInput: the number sits 4px after the dial code or leading icon,
+  // or 2px after the country selector when there's neither
   if (hasCompactLeadingSpacing && hasLeadingInteractionElement) {
-    if (hasPrefix) {
-      return theme.spacing[2];
-    }
-    if (!hasLeadingIcon) {
-      return theme.spacing[1];
-    }
+    return hasPrefix || hasLeadingIcon ? theme.spacing[2] : theme.spacing[1];
   }
 
   if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {

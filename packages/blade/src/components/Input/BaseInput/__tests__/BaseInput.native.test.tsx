@@ -350,6 +350,20 @@ describe('<BaseInput />', () => {
       ),
     ).toBe(4);
 
+    // number after a leading icon (no prefix)
+    expect(
+      getInputPaddingLeft(
+        <BaseInput
+          label="Phone"
+          id="compact-icon"
+          placeholder="Phone number"
+          leadingInteractionElement={leading}
+          leadingIcon={EyeIcon}
+          hasCompactLeadingSpacing
+        />,
+      ),
+    ).toBe(4);
+
     // without the flag, default spacing is kept
     expect(
       getInputPaddingLeft(

@@ -324,11 +324,12 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     activeInteraction?: ActionStates;
     /**
-     * @internal Puts the input text 2px after the leading interaction element
-     * (instead of the default input padding) when there is no prefix or leading icon.
-     *
-     * Used by PhoneNumberInput so the number sits next to the country selector
-     * the same way the dial code does.
+     * @internal Tighter spacing around the leading interaction element, used by
+     * PhoneNumberInput for its country selector:
+     * - even gap between the field edge and the leading element on all sides
+     * - prefix or leading icon 2px after the leading element
+     * - input text 4px after a prefix or leading icon, or 2px after the leading
+     *   element when there's neither
      */
     hasCompactLeadingSpacing?: boolean;
     setInputWrapperRef?: (node: ContainerElementType) => void;
