@@ -503,3 +503,26 @@ from 55% to 95% opacity over a 240% background. Focus thickens the crisp edge to
 It occupies no layout space and receives no pointer events. Disabled/error states
 and forced colors hide it. Reduced motion renders a static outline at 70% opacity.
 React Native retains its default appearance; the effect is Web-only.
+
+### Review decisions
+
+- **Web-only contract:** `borderEffect` is annotated `@platform web` in both the
+  public type and the knowledgebase. Native deliberately retains the default
+  appearance instead of throwing: this optional decoration can be passed through
+  shared composer code without preventing native users from composing messages.
+- **Palette:** A primary-theme-token version was considered and implemented first.
+  Product review explicitly chose parity with Slash's shipped light/dark treatment.
+  The fixed gradients are therefore deliberate private ChatInput tokens. They
+  follow the provider's colour scheme, but do not promise brand recolouring for
+  custom themes. This limitation is documented rather than implied away.
+- **API naming:** `variant` was considered. `borderEffect` describes an additive,
+  opt-in decoration without selecting a different composer layout or changing its
+  controls. It stays independent of validation and generation state. We retain
+  `borderEffect` as the proposed API; final naming and palette approval remain with
+  the Blade design-system maintainers.
+- **Reuse:** Spark's `RazorSenseGradient` renders a canvas through an SVG mask;
+  it is not the lightweight CSS outline used here. GenUI's internal gradient
+  border uses conic perimeter travel and reveal/fade behaviour, rather than this
+  five-second breathing treatment. Reusing either would require changing the
+  approved visual or expanding its abstraction. This contribution deliberately
+  keeps the implementation private to ChatInput, with no generic outline export.

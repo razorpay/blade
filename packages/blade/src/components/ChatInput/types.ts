@@ -56,6 +56,7 @@ type ChatInputProps = {
    * On Web, thickens on focus and pauses to a static outline for reduced motion.
    * Hidden during errors, disabled states, and forced colors. Uses Slash light/dark palettes.
    * On React Native, retains the default appearance (no decorative outline).
+   * @platform web
    * @default 'none'
    */
   borderEffect?: 'none' | 'ambient';
