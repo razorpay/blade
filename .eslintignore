@@ -23,6 +23,8 @@ packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.native.js
 packages/blade/utils.d.ts
+# blade-svelte cx: generated/ambient declaration files
+packages/blade-svelte/src-cx/**/*.d.ts
 
 
 # misc

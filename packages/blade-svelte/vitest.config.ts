@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import bladePlugin from './src-cx/plugin/vite.js';
 
 const dir = fileURLToPath(new URL('.', import.meta.url));
 const bladeCoreRoot = resolve(dir, '../blade-core/src');
@@ -49,9 +50,10 @@ const sveltePlugin = (): ReturnType<typeof svelte> => svelte({ preprocess: viteP
 
 export default defineConfig({
   test: {
-    // Two projects mirror the React package's CSR/SSR split (packages/blade/jest.web.config.js):
-    // - `client`: component tests in jsdom (Testing Library, user interactions)
-    // - `ssr`: server-render smoke tests via `svelte/server` in a node environment
+    // One project per component set:
+    // - `client` and `ssr` (src/, `/components`): the React package's CSR/SSR
+    //   split (packages/blade/jest.web.config.js), in jsdom and in node
+    // - `cx` (src-cx/, the package root): component tests in jsdom
     projects: [
       {
         plugins: [sveltePlugin()],
@@ -82,11 +84,45 @@ export default defineConfig({
           include: ['src/**/*.ssr.{test,spec}.{js,ts}'],
         },
       },
+      {
+        plugins: [
+          svelte({
+            preprocess: vitePreprocess(),
+            compilerOptions: { compatibility: { componentApi: 4 } },
+          }),
+          // As an app builds them: icons are font glyphs. Icon's own tests cover
+          // the no-plugin path (a URL drawn as a mask).
+          ...bladePlugin(),
+        ],
+        resolve: {
+          conditions: ['browser'],
+          dedupe: ['svelte'],
+          alias: bladeCoreAlias,
+          extensions: bladeCoreExtensions,
+        },
+        test: {
+          name: 'cx',
+          environment: 'jsdom',
+          globals: true,
+          // Some tests import a component on first use; with the src/ projects
+          // running beside them, that can pass Vitest's 5s default.
+          testTimeout: 15_000,
+          include: ['src-cx/**/*.test.ts'],
+        },
+      },
     ],
     coverage: {
       provider: 'v8',
-      include: ['src/**/*.{svelte,ts}'],
-      exclude: ['src/**/*.stories.*', 'src/**/types.ts', 'src/**/index.ts', 'src/**/*.d.ts'],
+      include: ['src/**/*.{svelte,ts}', 'src-cx/**/*.{svelte,ts}'],
+      exclude: [
+        'src/**/*.stories.*',
+        'src/**/types.ts',
+        'src-cx/stories/**',
+        'src-cx/test/**',
+        '**/*.test.ts',
+        '**/index.ts',
+        '**/*.d.ts',
+      ],
       // React parity target (packages/blade/jest.web.config.js). These gate
       // `test:coverage` only; CI runs `yarn test` (non-gating) while coverage ramps up.
       thresholds: {

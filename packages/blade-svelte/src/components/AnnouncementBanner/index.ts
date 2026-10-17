@@ -5,8 +5,8 @@
  * @example
  * ```svelte
  * <script>
- *   import { AnnouncementBanner } from '@razorpay/blade-svelte';
- *   import { InfoIcon } from '@razorpay/blade-svelte';
+ *   import { AnnouncementBanner } from '@razorpay/blade-svelte/components';
+ *   import { InfoIcon } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <AnnouncementBanner icon={InfoIcon} alignment="center">

@@ -1,0 +1,25 @@
+/*
+ * The page defaults UnoCSS leaves to the host: uno.config.ts ships no
+ * preflight beyond the border reset, so the canvas sets the base font and
+ * box model the components assume.
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Inter Fallback Arial', Arial, sans-serif;
+  color: hsla(0, 0%, 2%, 1);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}

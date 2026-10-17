@@ -4,7 +4,7 @@
  * @example
  * ```svelte
  * <script>
- *   import { Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade-svelte';
+ *   import { Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <Breadcrumb>

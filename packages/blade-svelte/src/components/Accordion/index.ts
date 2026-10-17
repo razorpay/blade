@@ -8,7 +8,7 @@
  *
  * ```svelte
  * <script>
- *   import { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from '@razorpay/blade-svelte';
+ *   import { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from '@razorpay/blade-svelte/components';
  * </script>
  *
  * <Accordion>

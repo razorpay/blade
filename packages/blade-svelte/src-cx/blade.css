@@ -1,0 +1,102 @@
+/*
+ * Blade's plain stylesheet: the opacity scale and the font faces. Import it
+ * beside the CSS the app compiles from `bladeUnoConfig` (uno.config.ts).
+ *
+ * The values are blade-core's tokens (`opacity`);
+ * src-cx/test/blade-css.test.ts keeps them in step.
+ */
+
+/*
+ * Blade's opacity scale, under Blade's own names: `opacity-blade-*`.
+ *
+ * Kept out of uno.config.ts so they never share a name with a Tailwind
+ * utility: `opacity-100` is Tailwind's 1, Blade's `100` is 0.09, and an app
+ * whose own Tailwind (or Uno) emits `opacity-100` must not have the two
+ * meet. Plain classes, so no variants:
+ * `hover:` or `data-[…]:` takes the Tailwind-named utilities (`opacity-0`).
+ */
+/* opacity */
+.opacity-blade-0 { opacity: 0; }
+.opacity-blade-1 { opacity: 0.01; }
+.opacity-blade-50 { opacity: 0.06; }
+.opacity-blade-100 { opacity: 0.09; }
+.opacity-blade-200 { opacity: 0.12; }
+.opacity-blade-300 { opacity: 0.18; }
+.opacity-blade-400 { opacity: 0.24; }
+.opacity-blade-500 { opacity: 0.32; }
+.opacity-blade-600 { opacity: 0.48; }
+.opacity-blade-700 { opacity: 0.56; }
+.opacity-blade-800 { opacity: 0.64; }
+.opacity-blade-900 { opacity: 0.72; }
+.opacity-blade-1000 { opacity: 0.8; }
+.opacity-blade-1100 { opacity: 0.88; }
+.opacity-blade-1200 { opacity: 0.94; }
+.opacity-blade-1300 { opacity: 1; }
+
+/*
+ * Blade's faces, woff2 only.
+ *
+ * The heading face, for `font-heading` (uno.config.ts): TASA Orbiter Display
+ * SemiBold, a static 600 cut (5.7 KB) — blade-core's variable TASA Orbiter
+ * pinned at wght 600 / opsz 60, the cut checkout ships, glyph for glyph.
+ * Printable ASCII, ₹, ‘ ’ “ ” – — … • · and the no-break space: what
+ * checkout's copy shows all the time; anything else is the system font's.
+ * TASA has no ₹, so it is drawn from TASA's own P bowl, E bars and R leg.
+ * Kerning only. Other weights draw in this cut.
+ *
+ * Built, with the Inter cuts, with fontTools and FontForge.
+ *
+ * Named `Tasa`: `font-heading` falls back to it when no `--font-family-heading`
+ * is set, and checkout's merchant theme names its default heading font so.
+ */
+@font-face {
+  font-family: 'Tasa';
+  src: url('./fonts/tasa.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/*
+ * The text face, for `font-sans` (uno.config.ts) and an app's own
+ * `Inter` (checkout's `font-sans`): Inter Regular, Medium and SemiBold —
+ * blade-core's variable Inter pinned at wght 400 / 500 / 600, the cuts
+ * checkout ships, glyph for glyph (Inter 3.019), ~7 KB each. The same
+ * characters as the heading face, ₹ in every weight. Bold (`font-bold`)
+ * is synthesised from SemiBold.
+ */
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* Arial sized to Inter's and TASA Orbiter's metrics, so the swap does not shift the layout. */
+@font-face {
+  font-family: 'Inter Fallback Arial';
+  src: local(Arial);
+  size-adjust: 105%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 5%;
+}
+@font-face {
+  font-family: 'TASA Orbiter Fallback Arial';
+  src: local(Arial);
+  size-adjust: 98%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 7%;
+}
