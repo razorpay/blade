@@ -4,6 +4,7 @@ import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
+import { baseInputLoaderSize } from '../BaseInput/baseInputTokens';
 import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
 import { useTaggedInput } from '../BaseInput/useTaggedInput';
 import { useFormattedInput } from './useFormattedInput';
@@ -15,7 +16,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
-import { Spinner } from '~components/Spinner';
+import { DotLoader } from '~components/DotLoader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
@@ -423,7 +424,13 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
-      return <Spinner accessibilityLabel="Loading Content" color="primary" />;
+      return (
+        <DotLoader
+          accessibilityLabel="Loading Content"
+          color="interactive.icon.primary.subtle"
+          size={baseInputLoaderSize[size]}
+        />
+      );
     }
 
     if (shouldShowClearButton && hasTrailingDropDown) {
