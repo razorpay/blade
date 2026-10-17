@@ -52,6 +52,15 @@ type ChatInputProps = {
   isDisabled?: boolean;
 
   /**
+   * Optional decorative breathing outline for the chat composer. Independent of isGenerating.
+   * On Web, pauses to a static outline for reduced motion and is hidden during focus,
+   * errors, disabled states, and forced colors so functional indicators take precedence.
+   * On React Native, retains the default appearance (no decorative outline).
+   * @default 'none'
+   */
+  borderEffect?: 'none' | 'ambient';
+
+  /**
    * Whether the AI is currently generating a response.
    * When true, the submit button changes to a stop button.
    * @default false

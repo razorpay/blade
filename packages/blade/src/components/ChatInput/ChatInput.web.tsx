@@ -6,6 +6,7 @@ import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
+import { ChatInputAmbientBorder } from './ChatInputAmbientBorder.web';
 import { useTheme } from '~components/BladeProvider';
 import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
@@ -30,6 +31,12 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   scrollbarWidth: 'none' as const,
 }));
 
+const AmbientChatInputSurface = styled(BaseBox)`
+  &:focus-within > ${ChatInputAmbientBorder} {
+    display: none;
+  }
+`;
+
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
     value,
@@ -41,6 +48,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     placeholder = 'Ask a question...',
     isDisabled = false,
     isGenerating = false,
+    borderEffect = 'none',
     onStop,
     fileList,
     onFileChange,
@@ -234,7 +242,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
+      <AmbientChatInputSurface
+        position="relative"
+        zIndex={1}
+        onMouseDownCapture={handleInnerMouseDownCapture}
+      >
+        {borderEffect === 'ambient' && !isDisabled && !isError ? (
+          <ChatInputAmbientBorder aria-hidden="true" />
+        ) : null}
         <BaseInput
           ref={combinedRef}
           as="textarea"
@@ -279,7 +294,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           }
           {...makeAnalyticsAttribute(rest)}
         />
-      </BaseBox>
+      </AmbientChatInputSurface>
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

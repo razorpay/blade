@@ -1,5 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 import { ChatInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -147,5 +149,83 @@ describe('<ChatInput />', () => {
       <ChatInput accessibilityLabel={accessibilityLabel} placeholder="Ask a question..." />,
     );
     await assertAccessible(container);
+  });
+});
+
+describe('ChatInput ambient border', () => {
+  it.each(['light', 'dark'] as const)(
+    'uses the %s theme without changing its controls',
+    async (colorScheme) => {
+      const user = userEvent.setup();
+      const onSubmit = jest.fn();
+      const { getByRole, container } = renderWithTheme(
+        <BladeProvider themeTokens={bladeTheme} colorScheme={colorScheme}>
+          <ChatInput borderEffect="ambient" onSubmit={onSubmit} />
+        </BladeProvider>,
+      );
+      const decoration = container.querySelector('span[aria-hidden="true"]');
+      expect(decoration).toBeInTheDocument();
+      expect(decoration).toHaveStyle({ pointerEvents: 'none' });
+      await user.type(getByRole('textbox'), 'Hello{enter}');
+      expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello', fileList: [] });
+      await assertAccessible(container);
+    },
+  );
+
+  it.each([
+    {},
+    { borderEffect: 'none' as const },
+    { borderEffect: 'ambient' as const, isDisabled: true },
+    { borderEffect: 'ambient' as const, validationState: 'error' as const, errorText: 'Try again' },
+  ])('does not decorate default, disabled, or error states (%o)', (props) => {
+    const { container } = renderWithTheme(<ChatInput {...props} />);
+    expect(container.querySelector('span[aria-hidden="true"]')).not.toBeInTheDocument();
+  });
+
+  it('preserves the input and focus when the effect is toggled', async () => {
+    const user = userEvent.setup();
+    const { getByRole, rerender } = renderWithTheme(<ChatInput />);
+    const input = getByRole('textbox');
+    await user.type(input, 'Keep this draft');
+    rerender(
+      <BladeProvider themeTokens={bladeTheme}>
+        <ChatInput borderEffect="ambient" />
+      </BladeProvider>,
+    );
+    expect(getByRole('textbox')).toBe(input);
+    expect(input).toHaveFocus();
+    expect(input).toHaveValue('Keep this draft');
+    rerender(
+      <BladeProvider themeTokens={bladeTheme}>
+        <ChatInput borderEffect="none" />
+      </BladeProvider>,
+    );
+    expect(getByRole('textbox')).toBe(input);
+    expect(input).toHaveFocus();
+  });
+
+  it('keeps generation stop and file upload behavior with an ambient outline', async () => {
+    const user = userEvent.setup();
+    const onStop = jest.fn();
+    const onFileChange = jest.fn();
+    const { getByRole, container } = renderWithTheme(
+      <ChatInput borderEffect="ambient" isGenerating onStop={onStop} onFileChange={onFileChange} />,
+    );
+    await user.click(getByRole('button', { name: 'Stop generation' }));
+    expect(onStop).toHaveBeenCalledTimes(1);
+    const file = new File(['test'], 'test.txt', { type: 'text/plain' });
+    const previewScroll = jest.fn();
+    Object.defineProperty(HTMLElement.prototype, 'scrollTo', {
+      value: previewScroll,
+      configurable: true,
+    });
+    try {
+      await user.upload(container.querySelector('input[type="file"]') as HTMLInputElement, file);
+    } finally {
+      Reflect.deleteProperty(HTMLElement.prototype, 'scrollTo');
+    }
+    expect(onFileChange).toHaveBeenCalledWith({
+      fileList: [expect.objectContaining({ name: 'test.txt' })],
+    });
   });
 });

@@ -484,3 +484,19 @@ When submit is disabled because of an error or uploading file, no additional too
 - Blade FileUpload -- [`packages/blade/src/components/FileUpload`](../../FileUpload/) for `BladeFile`/`BladeFileList` types and file upload patterns
 - Blade TextArea -- [`packages/blade/src/components/Input/TextArea`](../../Input/TextArea/) for textarea input patterns
 - Blade ChatMessage -- [`packages/blade/src/components/ChatMessage`](../../ChatMessage/) for existing chat component patterns
+
+## Ambient border (Web)
+
+`borderEffect="ambient"` opts ChatInput into a subtle, five-second breathing outline.
+The default is `none`; existing consumers retain the same appearance. This API is
+exclusive to ChatInput, with no public generic border or wrapper component.
+
+The outline uses semantic primary border tokens resolved by BladeProvider, so both
+light and dark themes (and custom themes) use their own palette. It is a decorative
+invitation to compose, independent of `isGenerating`, never a progress indicator.
+It occupies no layout space and receives no pointer events. The existing input,
+file controls, submit/stop behavior, and focus styles remain unchanged.
+
+Focus within the composer, disabled/error states, and forced colors hide the
+outline. Reduced-motion preference renders a static outline. React Native accepts
+the shared prop and retains its default appearance; the effect is Web-only.
