@@ -32,6 +32,7 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
 }));
 
 const AmbientChatInputSurface = styled(BaseBox)`
+  /* stylelint-disable-next-line selector-type-no-unknown -- styled-component interpolation becomes a generated class */
   &:focus-within > ${ChatInputAmbientBorder}::before {
     padding: ${chatInputAmbientBorder.focusWidth}px;
   }

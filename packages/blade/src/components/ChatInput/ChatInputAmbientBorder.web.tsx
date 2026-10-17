@@ -24,7 +24,10 @@ const ChatInputAmbientBorder = styled.span<{ $colorScheme: 'light' | 'dark' }>`
     padding: ${chatInputAmbientBorder.width}px;
     background: ${({ $colorScheme }) => chatInputAmbientBorder[$colorScheme]};
     background-size: 240% 100%;
+    /* The WebKit prefixed mask is required for the content-box cut-out on Safari. */
+    /* stylelint-disable-next-line property-no-vendor-prefix -- Safari needs the prefixed property */
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    /* stylelint-disable-next-line property-no-vendor-prefix -- Safari uses a different composite keyword */
     -webkit-mask-composite: xor;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
