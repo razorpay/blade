@@ -898,14 +898,14 @@ AmbientBorder.parameters = {
   docs: {
     description: {
       story:
-        'A decorative five-second pulse, independent of generation. Focus, errors and disabled state hide it; reduced motion renders a static outline. Web-only; native retains its default appearance.',
+        'A decorative five-second pulse, independent of generation. Focus thickens the outline; errors and disabled state hide it; reduced motion renders a static outline. Web-only; native retains its default appearance.',
     },
   },
 };
 
 export const AmbientBorderStates: StoryFn<typeof ChatInput> = () => (
   <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="600px" padding="spacing.6">
-    <ChatInput borderEffect="ambient" placeholder="Focus here to see the normal focus indicator" />
+    <ChatInput borderEffect="ambient" placeholder="Focus here to see the thicker ambient outline" />
     <ChatInput borderEffect="ambient" isGenerating />
     <ChatInput borderEffect="ambient" isDisabled />
     <ChatInput borderEffect="ambient" validationState="error" errorText="Please try again" />

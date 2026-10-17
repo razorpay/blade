@@ -439,6 +439,7 @@ Whenever files are added (or the list changes), the file preview row automatical
 ### Implicit Disable on Error or Uploading Files
 
 The submit button (and Enter key) is blocked whenever:
+
 - There is no text **and** no files, **or**
 - Any attached file has `status === 'error'`, **or**
 - Any attached file has `status === 'uploading'`
@@ -491,12 +492,14 @@ When submit is disabled because of an error or uploading file, no additional too
 The default is `none`; existing consumers retain the same appearance. This API is
 exclusive to ChatInput, with no public generic border or wrapper component.
 
-The outline uses semantic primary border tokens resolved by BladeProvider, so both
-light and dark themes (and custom themes) use their own palette. It is a decorative
-invitation to compose, independent of `isGenerating`, never a progress indicator.
-It occupies no layout space and receives no pointer events. The existing input,
-file controls, submit/stop behavior, and focus styles remain unchanged.
+The outline matches Slash's shipped light blue–cyan and dark layered-blue gradients,
+selected through BladeProvider's color scheme. These are private ChatInput tokens;
+custom themes use the corresponding light/dark palette, not their primary colour.
+It is decorative and independent of `isGenerating`, never a progress indicator.
+The outline is 1px, with a 6px blurred duplicate and a five-second ease-in-out pulse
+from 55% to 95% opacity over a 240% background. Focus thickens the crisp edge to
+1.5px while preserving the existing accessible input focus indicator.
 
-Focus within the composer, disabled/error states, and forced colors hide the
-outline. Reduced-motion preference renders a static outline. React Native accepts
-the shared prop and retains its default appearance; the effect is Web-only.
+It occupies no layout space and receives no pointer events. Disabled/error states
+and forced colors hide it. Reduced motion renders a static outline at 70% opacity.
+React Native retains its default appearance; the effect is Web-only.

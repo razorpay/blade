@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { chatInputFilePreviewItemWidth, chatInputAmbientBorder } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
@@ -32,8 +32,8 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
 }));
 
 const AmbientChatInputSurface = styled(BaseBox)`
-  &:focus-within > ${ChatInputAmbientBorder} {
-    display: none;
+  &:focus-within > ${ChatInputAmbientBorder}::before {
+    padding: ${chatInputAmbientBorder.focusWidth}px;
   }
 `;
 
@@ -69,7 +69,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   },
   ref,
 ) => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
 
   const {
     fileInputRef,
@@ -248,7 +248,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         onMouseDownCapture={handleInnerMouseDownCapture}
       >
         {borderEffect === 'ambient' && !isDisabled && !isError ? (
-          <ChatInputAmbientBorder aria-hidden="true" />
+          <ChatInputAmbientBorder aria-hidden="true" $colorScheme={colorScheme} />
         ) : null}
         <BaseInput
           ref={combinedRef}

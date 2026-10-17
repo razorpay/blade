@@ -1,15 +1,16 @@
 import styled, { keyframes } from 'styled-components';
+import { chatInputAmbientBorder } from './chatInputTokens';
 import { makeSpace } from '~utils';
 
 const breathe = keyframes`
-  0%, 100% { opacity: 0.45; background-position: 0% 50%; }
-  50% { opacity: 0.8; background-position: 100% 50%; }
+  0%, 100% { opacity: 0.55; background-position: 0% 50%; }
+  50% { opacity: 0.95; background-position: 100% 50%; }
 `;
 
 // Private to ChatInput: this is an ambient affordance, never a loading or focus indicator.
-const ChatInputAmbientBorder = styled.span`
+const ChatInputAmbientBorder = styled.span<{ $colorScheme: 'light' | 'dark' }>`
   position: absolute;
-  inset: 0;
+  inset: -1px;
   z-index: 2;
   pointer-events: none;
   border-radius: ${({ theme }) => makeSpace(theme.border.radius.large)};
@@ -20,10 +21,9 @@ const ChatInputAmbientBorder = styled.span`
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: ${({ theme }) => makeSpace(theme.border.width.thin)};
-    background: ${({ theme }) =>
-      `linear-gradient(110deg, ${theme.colors.surface.border.primary.muted}, ${theme.colors.surface.border.primary.normal}, ${theme.colors.surface.border.primary.muted}, ${theme.colors.surface.border.primary.normal}, ${theme.colors.surface.border.primary.muted})`};
-    background-size: 200% 100%;
+    padding: ${chatInputAmbientBorder.width}px;
+    background: ${({ $colorScheme }) => chatInputAmbientBorder[$colorScheme]};
+    background-size: 240% 100%;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -39,14 +39,14 @@ const ChatInputAmbientBorder = styled.span`
   }
 
   &::after {
-    filter: blur(4px);
+    filter: blur(${chatInputAmbientBorder.glowBlur}px);
   }
 
   @media (prefers-reduced-motion: reduce) {
     &::before,
     &::after {
       animation: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
   }
 

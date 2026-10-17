@@ -53,8 +53,8 @@ type ChatInputProps = {
 
   /**
    * Optional decorative breathing outline for the chat composer. Independent of isGenerating.
-   * On Web, pauses to a static outline for reduced motion and is hidden during focus,
-   * errors, disabled states, and forced colors so functional indicators take precedence.
+   * On Web, thickens on focus and pauses to a static outline for reduced motion.
+   * Hidden during errors, disabled states, and forced colors. Uses Slash light/dark palettes.
    * On React Native, retains the default appearance (no decorative outline).
    * @default 'none'
    */

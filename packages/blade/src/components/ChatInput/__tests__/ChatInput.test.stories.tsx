@@ -36,11 +36,13 @@ AmbientLight.play = async ({ canvasElement }) => {
   const decoration = composer.querySelector('span[aria-hidden="true"]') as HTMLElement;
   await expect(decoration).toBeVisible();
   await expect(window.getComputedStyle(decoration).pointerEvents).toBe('none');
+  await expect(window.getComputedStyle(decoration, '::before').paddingTop).toBe('1px');
   const before = composer.getBoundingClientRect();
 
   await userEvent.click(textarea);
   await expect(textarea).toHaveFocus();
-  await expect(decoration).not.toBeVisible();
+  await expect(decoration).toBeVisible();
+  await expect(window.getComputedStyle(decoration, '::before').paddingTop).toBe('1.5px');
   const focused = composer.getBoundingClientRect();
   await expect(focused.width).toBe(before.width);
   await expect(focused.height).toBe(before.height);
