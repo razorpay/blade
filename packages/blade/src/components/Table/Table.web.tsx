@@ -157,21 +157,23 @@ const SKELETON_CELL_WIDTHS = {
   headerRest: '60%',
 } as const;
 
-const StyledSkeletonRow = styled(BaseBox)<{ $columns: number; $isHeader?: boolean }>(
-  ({ theme, $columns, $isHeader }) => ({
-    display: 'grid',
-    gridTemplateColumns: `repeat(${$columns}, minmax(100px, 1fr))`,
-    paddingLeft: makeSpace(theme.spacing[4]),
-    paddingRight: makeSpace(theme.spacing[4]),
-    paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
-    paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
-    borderBottomWidth: makeSpace(theme.border.width.thin),
-    borderBottomColor: theme.colors.surface.border.gray.muted,
-    borderBottomStyle: 'solid',
-    gap: makeSpace(theme.spacing[4]),
-    alignItems: 'center',
-  }),
-);
+const StyledSkeletonRow = styled(BaseBox)<{
+  $columns: number;
+  $isHeader?: boolean;
+  $gridTemplateColumns?: string;
+}>(({ theme, $columns, $isHeader, $gridTemplateColumns }) => ({
+  display: 'grid',
+  gridTemplateColumns: $gridTemplateColumns || `repeat(${$columns}, minmax(100px, 1fr))`,
+  paddingLeft: makeSpace(theme.spacing[4]),
+  paddingRight: makeSpace(theme.spacing[4]),
+  paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+  paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+  borderBottomWidth: makeSpace(theme.border.width.thin),
+  borderBottomColor: theme.colors.surface.border.gray.muted,
+  borderBottomStyle: 'solid',
+  gap: makeSpace(theme.spacing[4]),
+  alignItems: 'center',
+}));
 
 const _Table = <Item,>({
   children,
@@ -603,44 +605,70 @@ const _Table = <Item,>({
         backgroundColor={isInsideListView ? 'transparent' : 'surface.background.gray.intense'}
       >
         {isLoading ? (
-          <BaseBox
-            flex={1}
-            {...getStyledProps(rest)}
-            {...metaAttribute({ name: MetaConstants.Table })}
-            {...makeAnalyticsAttribute(rest)}
-            testID="table-skeleton"
-          >
-            {/* Header skeleton row */}
-            <StyledSkeletonRow $columns={columnCount || 5} $isHeader>
-              {Array.from({ length: columnCount || 5 }).map((_, i) => (
-                <Skeleton
-                  key={i}
-                  width={
-                    i === 0 ? SKELETON_CELL_WIDTHS.headerFirst : SKELETON_CELL_WIDTHS.headerRest
-                  }
-                  height="16px"
-                  borderRadius="medium"
-                />
-              ))}
-            </StyledSkeletonRow>
-            {/* Body skeleton rows */}
-            {Array.from({ length: SKELETON_ROW_COUNT }).map((_, rowIdx) => (
-              <StyledSkeletonRow key={rowIdx} $columns={columnCount || 5}>
-                {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
-                  const cols = columnCount || 5;
-                  const width =
-                    colIdx === 0
-                      ? SKELETON_CELL_WIDTHS.first
-                      : colIdx === cols - 1
-                      ? SKELETON_CELL_WIDTHS.last
-                      : SKELETON_CELL_WIDTHS.middle;
-                  return (
-                    <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />
-                  );
-                })}
-              </StyledSkeletonRow>
-            ))}
-          </BaseBox>
+          (() => {
+            const isMultiSelect = selectionType === 'multiple';
+            const skeletonColumnCount = isMultiSelect ? columnCount + 1 : columnCount;
+            const skeletonGridTemplateColumns = gridTemplateColumns
+              ? gridTemplateColumns
+              : `${isMultiSelect ? 'min-content' : ''} repeat(${columnCount}, minmax(100px, 1fr))`;
+            return (
+              <BaseBox
+                flex={1}
+                {...getStyledProps(rest)}
+                {...metaAttribute({ name: MetaConstants.Table })}
+                {...makeAnalyticsAttribute(rest)}
+                testID="table-skeleton"
+              >
+                {/* Header skeleton row */}
+                <StyledSkeletonRow
+                  $columns={skeletonColumnCount || 5}
+                  $gridTemplateColumns={skeletonGridTemplateColumns}
+                  $isHeader
+                >
+                  {Array.from({ length: skeletonColumnCount || 5 }).map((_, i) => {
+                    const isCheckboxColumn = isMultiSelect && i === 0;
+                    return (
+                      <Skeleton
+                        key={i}
+                        width={
+                          isCheckboxColumn
+                            ? '20px'
+                            : i === (isMultiSelect ? 1 : 0)
+                            ? SKELETON_CELL_WIDTHS.headerFirst
+                            : SKELETON_CELL_WIDTHS.headerRest
+                        }
+                        height="16px"
+                        borderRadius="medium"
+                      />
+                    );
+                  })}
+                </StyledSkeletonRow>
+                {/* Body skeleton rows */}
+                {Array.from({ length: SKELETON_ROW_COUNT }).map((_, rowIdx) => (
+                  <StyledSkeletonRow
+                    key={rowIdx}
+                    $columns={skeletonColumnCount || 5}
+                    $gridTemplateColumns={skeletonGridTemplateColumns}
+                  >
+                    {Array.from({ length: skeletonColumnCount || 5 }).map((_, colIdx) => {
+                      const isCheckboxColumn = isMultiSelect && colIdx === 0;
+                      const cols = skeletonColumnCount || 5;
+                      const width = isCheckboxColumn
+                        ? '20px'
+                        : colIdx === (isMultiSelect ? 1 : 0)
+                        ? SKELETON_CELL_WIDTHS.first
+                        : colIdx === cols - 1
+                        ? SKELETON_CELL_WIDTHS.last
+                        : SKELETON_CELL_WIDTHS.middle;
+                      return (
+                        <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />
+                      );
+                    })}
+                  </StyledSkeletonRow>
+                ))}
+              </BaseBox>
+            );
+          })()
         ) : (
           <BaseBox
             flex={1}
