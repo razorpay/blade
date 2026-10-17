@@ -9,7 +9,9 @@ import BaseBox from '~components/Box/BaseBox';
  * input text can render 1px apart (e.g. medium size: 14px text, 20px line height).
  */
 const BaseInputAffix = styled(BaseBox)({
-  '& > *': {
+  // `&&` doubles the class so this rule always beats the child Text's own
+  // line-height rule, instead of depending on which stylesheet rule comes last.
+  '&& > *': {
     lineHeight: 'normal',
   },
 });

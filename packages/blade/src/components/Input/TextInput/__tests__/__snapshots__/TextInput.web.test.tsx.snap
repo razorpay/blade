@@ -1080,7 +1080,7 @@ exports[`<TextInput /> should render large size 1`] = `
   justify-content: flex-end;
 }
 
-.c13.c13.c13.c13.c13 > * {
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 > * {
   line-height: normal;
 }
 
@@ -1790,7 +1790,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   justify-content: flex-end;
 }
 
-.c13.c13.c13.c13.c13 > * {
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 > * {
   line-height: normal;
 }
 

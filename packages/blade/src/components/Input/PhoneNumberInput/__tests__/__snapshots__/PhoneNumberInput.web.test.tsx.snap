@@ -271,7 +271,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   outline-offset: 0px;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > * {
   line-height: normal;
 }
 
@@ -935,7 +935,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   outline-offset: 0px;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > * {
   line-height: normal;
 }
 
@@ -1597,7 +1597,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   outline-offset: 0px;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > * {
   line-height: normal;
 }
 
@@ -2259,7 +2259,7 @@ exports[`<PhoneNumberInput /> should render small size 1`] = `
   outline-offset: 0px;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > * {
   line-height: normal;
 }
 
