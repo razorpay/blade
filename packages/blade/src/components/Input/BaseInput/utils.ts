@@ -58,7 +58,7 @@ const getKeyboardAndAutocompleteProps = ({
       keyboardType: 'search',
       keyboardReturnKeyType: 'search',
       autoCompleteSuggestionType: 'none',
-      autoCapitalize: undefined,
+      autoCapitalize: 'none',
     },
   } as const;
 
@@ -72,7 +72,7 @@ const getKeyboardAndAutocompleteProps = ({
   keyboardAndAutocompleteProps.autoCompleteSuggestionType =
     autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
 
-  keyboardAndAutocompleteProps.autoCapitalize = keyboardConfig.autoCapitalize;
+  keyboardAndAutocompleteProps.autoCapitalize = autoCapitalize ?? keyboardConfig.autoCapitalize;
 
   if (type === 'number') {
     /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
