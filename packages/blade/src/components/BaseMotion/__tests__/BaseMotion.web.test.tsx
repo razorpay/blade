@@ -77,6 +77,88 @@ describe('<BaseMotionBox />', () => {
     expect(mockMotionProps.variants.exit.transition.duration).toBe(0.0001);
   });
 
+  it('should add transitionEnd with transform when exit is skipped and variant has transform', () => {
+    renderWithTheme(
+      <BaseMotionBox
+        type="in"
+        motionVariants={{
+          initial: { opacity: 0, transform: 'translateY(16px)' },
+          animate: {
+            opacity: 1,
+            transform: 'translateY(0px)',
+            transition: { duration: 0.36, ease: [0, 0, 0.2, 1] },
+          },
+          exit: {
+            opacity: 0,
+            transform: 'translateY(16px)',
+            transition: { duration: 0.2, ease: [0.17, 0, 1, 1] },
+          },
+        }}
+        motionTriggers={['mount']}
+      >
+        <div>hi</div>
+      </BaseMotionBox>,
+    );
+
+    expect(mockMotionProps.variants.exit.transition.duration).toBe(0.0001);
+    expect(mockMotionProps.variants.exit.transitionEnd).toEqual({ transform: 'translateY(16px)' });
+  });
+
+  it('should not override existing transitionEnd.transform when exit is skipped', () => {
+    renderWithTheme(
+      <BaseMotionBox
+        type="in"
+        motionVariants={{
+          initial: { opacity: 0 },
+          animate: {
+            opacity: 1,
+            transform: ['translateY(100vh)', 'translateY(0%)'],
+            transition: { duration: 0.5, ease: [0, 0, 0.2, 1] },
+          },
+          exit: {
+            opacity: 0,
+            transform: 'translateY(100vh)',
+            transitionEnd: { transform: 'translateY(100vh)' },
+            transition: { duration: 0.3, ease: [0.17, 0, 1, 1] },
+          },
+        }}
+        motionTriggers={['mount']}
+      >
+        <div>hi</div>
+      </BaseMotionBox>,
+    );
+
+    expect(mockMotionProps.variants.exit.transition.duration).toBe(0.0001);
+    expect(mockMotionProps.variants.exit.transitionEnd).toEqual({ transform: 'translateY(100vh)' });
+  });
+
+  it('should add transitionEnd with final transform from keyframe array when entry is skipped', () => {
+    renderWithTheme(
+      <BaseMotionBox
+        type="out"
+        motionVariants={{
+          initial: { opacity: 0 },
+          animate: {
+            opacity: 1,
+            transform: ['translateY(100vh)', 'translateY(0%)'],
+            transition: { duration: 0.5, ease: [0, 0, 0.2, 1] },
+          },
+          exit: {
+            opacity: 0,
+            transform: 'translateY(100vh)',
+            transition: { duration: 0.3, ease: [0.17, 0, 1, 1] },
+          },
+        }}
+        motionTriggers={['mount']}
+      >
+        <div>hi</div>
+      </BaseMotionBox>,
+    );
+
+    expect(mockMotionProps.variants.animate.transition.duration).toBe(0.0001);
+    expect(mockMotionProps.variants.animate.transitionEnd).toEqual({ transform: 'translateY(0%)' });
+  });
+
   it('should disable entry animation when type is "out" transition', () => {
     renderWithTheme(
       <BaseMotionBox

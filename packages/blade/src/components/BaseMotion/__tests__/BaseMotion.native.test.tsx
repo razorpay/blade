@@ -60,6 +60,46 @@ describe('<BaseMotion /> (native)', () => {
     expect(variants?.exit.transition?.duration).toBe(0.0001);
   });
 
+  it('should add transitionEnd with transform when exit is skipped and variant has transform', () => {
+    const moveVariants: MotionVariantsType = {
+      initial: { opacity: 0, transform: 'translateY(16px)' },
+      animate: {
+        opacity: 1,
+        transform: 'translateY(0px)',
+        transition: { duration: 0.36, ease: [0, 0, 0.2, 1] },
+      },
+      exit: {
+        opacity: 0,
+        transform: 'translateY(16px)',
+        transition: { duration: 0.2, ease: [0.17, 0, 1, 1] },
+      },
+    };
+    const variants = useMotionVariants(moveVariants, 'in');
+
+    expect(variants?.exit.transition?.duration).toBe(0.0001);
+    expect(variants?.exit.transitionEnd).toEqual({ transform: 'translateY(16px)' });
+  });
+
+  it('should add transitionEnd with final transform from keyframe array when entry is skipped', () => {
+    const slideVariants: MotionVariantsType = {
+      initial: { opacity: 0 },
+      animate: {
+        opacity: 1,
+        transform: ['translateY(100vh)', 'translateY(0%)'],
+        transition: { duration: 0.5, ease: [0, 0, 0.2, 1] },
+      },
+      exit: {
+        opacity: 0,
+        transform: 'translateY(100vh)',
+        transition: { duration: 0.3, ease: [0.17, 0, 1, 1] },
+      },
+    };
+    const variants = useMotionVariants(slideVariants, 'out');
+
+    expect(variants?.animate.transition?.duration).toBe(0.0001);
+    expect(variants?.animate.transitionEnd).toEqual({ transform: 'translateY(0%)' });
+  });
+
   it('should zero the entry duration when type is "out"', () => {
     const variants = useMotionVariants(fadeVariants, 'out');
 
