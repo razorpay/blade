@@ -311,4 +311,24 @@ describe('<SearchInput />', () => {
 
     expect(getByTestId('search-input-test-id')).toBeTruthy();
   });
+
+  it('should default autoCapitalize to none', () => {
+    const placeholder = 'Search items';
+    const { getByPlaceholderText } = renderWithTheme(
+      <SearchInput label="Search" placeholder={placeholder} />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    expect(input).toHaveProp('autoCapitalize', 'none');
+  });
+
+  it('should respect caller autoCapitalize', () => {
+    const placeholder = 'Search items';
+    const { getByPlaceholderText } = renderWithTheme(
+      <SearchInput label="Search" placeholder={placeholder} autoCapitalize="words" />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    expect(input).toHaveProp('autoCapitalize', 'words');
+  });
 });

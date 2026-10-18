@@ -52,7 +52,7 @@ const keyboardConfigMap = {
     keyboardType: 'search',
     keyboardReturnKeyType: 'search',
     autoCompleteSuggestionType: 'none',
-    autoCapitalize: undefined,
+    autoCapitalize: 'none',
   },
 } as const;
 
