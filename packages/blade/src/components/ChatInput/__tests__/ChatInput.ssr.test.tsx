@@ -4,6 +4,27 @@ import { bladeTheme } from '~tokens/theme';
 import { ChatInput } from '../index';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
+// Run before renderWithSSR, whose hydration helper installs JSDOM globals.
+it('renders the ambient composer on the server', () => {
+  expect(typeof window).toBe('undefined');
+  expect(typeof document).toBe('undefined');
+  const html = renderToString(
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <ChatInput borderEffect="ambient" />
+    </BladeProvider>,
+  );
+  expect(html).toContain('<textarea');
+  expect(html).toMatch(/<span[^>]*aria-hidden="true"/);
+
+  const defaultHtml = renderToString(
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <ChatInput />
+    </BladeProvider>,
+  );
+  expect(defaultHtml).toMatch(/<input(?=[^>]*type="file")(?=[^>]*aria-hidden="true")[^>]*>/);
+  expect(defaultHtml).not.toMatch(/<span[^>]*aria-hidden="true"/);
+});
+
 describe('<ChatInput />', () => {
   it('should render ChatInput', () => {
     const { container } = renderWithSSR(
@@ -11,25 +32,4 @@ describe('<ChatInput />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-});
-
-it('renders the ambient composer on the server', () => {
-  const html = renderToString(
-    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-      <ChatInput borderEffect="ambient" />
-    </BladeProvider>,
-  );
-  expect(html).toContain('<textarea');
-  const container = document.createElement('div');
-  container.innerHTML = html;
-  expect(container.querySelector('span[aria-hidden="true"]')).not.toBeNull();
-
-  const defaultHtml = renderToString(
-    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-      <ChatInput />
-    </BladeProvider>,
-  );
-  container.innerHTML = defaultHtml;
-  expect(container.querySelector('input[type="file"][aria-hidden="true"]')).not.toBeNull();
-  expect(container.querySelector('span[aria-hidden="true"]')).toBeNull();
 });
