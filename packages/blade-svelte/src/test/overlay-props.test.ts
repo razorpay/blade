@@ -89,7 +89,7 @@ describe.each(ALL)('%s onOpenChange', (kind) => {
 });
 
 describe('DrawerBody padding', () => {
-  it("is Blade's drawerPadding by default, and none with spacing.0", async () => {
+  it("is Blade's drawerPadding by default, and none with spacing.0", () => {
     const padded = render(Harness, { props: { kind: 'drawer', isOpen: true } });
     expectClass(padded.getByTestId('drawer-body'), 'overflow-auto p-5');
     padded.unmount();

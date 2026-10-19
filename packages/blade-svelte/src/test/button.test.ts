@@ -247,7 +247,7 @@ describe('Button and the adapters', () => {
     expect(getByTestId('solo').getAttribute('data-analytics-action')).toBe('pay');
   });
 
-  it('an href routes a plain internal click through adapters.navigate, as Link', async () => {
+  it('an href routes a plain internal click through adapters.navigate, as Link', () => {
     const navigate = vi.fn(() => true);
     const onClick = vi.fn();
     const { getByTestId } = render(ButtonHarness, {

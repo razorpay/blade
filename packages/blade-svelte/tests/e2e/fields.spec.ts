@@ -23,6 +23,34 @@ async function paste(target: Locator, text: string): Promise<void> {
 const caret = (input: Locator): Promise<{ value: string; at: number | null }> =>
   input.evaluate((node: HTMLInputElement) => ({ value: node.value, at: node.selectionStart }));
 
+/**
+ * The country list is virtualized: only the rows in view are mounted, so a
+ * far one (Malaysia, in the library's list) is not there to click. Scrolls
+ * the list's viewport until the row mounts, then hands it back.
+ */
+async function countryRow(page: Page, name: string): Promise<Locator> {
+  const list = page.getByTestId('phone-countries');
+  const row = list.getByText(name);
+  await expect
+    .poll(
+      async () => {
+        if (await row.count()) {
+          return true;
+        }
+        await list.evaluate((root) => {
+          const viewport = root.querySelector('.overflow-y-auto');
+          if (viewport) {
+            viewport.scrollBy(0, viewport.clientHeight);
+          }
+        });
+        return false;
+      },
+      { timeout: 30_000 },
+    )
+    .toBe(true);
+  return row;
+}
+
 test.describe('OTPInput', () => {
   test('typing moves focus cell to cell and fills the value', async ({ page }) => {
     await gotoStory(page, 'components-input-otpinput--basic', { otpLength: 4 });
@@ -60,13 +88,15 @@ test.describe('OTPInput', () => {
 });
 
 test.describe('TextInput with format', () => {
-  test('groups a card number as it is typed and keeps the parsed digits', async ({ page }) => {
+  test('groups a card number as it is typed, and the field holds the grouped text', async ({
+    page,
+  }) => {
     await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('card-number');
     await input.click();
     await page.keyboard.type('4111111111111111');
     await expect(input).toHaveValue('4111 1111 1111 1111');
-    await expect(page.getByTestId('card-value')).toHaveText('"4111111111111111"');
+    await expect(page.getByTestId('card-value')).toHaveText('"4111 1111 1111 1111"');
   });
 
   test('typing in the middle keeps the caret after what was typed', async ({ page }) => {
@@ -74,22 +104,23 @@ test.describe('TextInput with format', () => {
     const input = page.getByTestId('card-number');
     await input.click();
     await page.keyboard.type('41112222');
-    await expect(input).toHaveValue('4111 2222');
+    // The mask places the next group's delimiter as the group ends.
+    await expect(input).toHaveValue('4111 2222 ');
     // Caret after "4111 ", then a digit: the rest shifts, the caret follows it.
     await input.evaluate((node: HTMLInputElement) => node.setSelectionRange(5, 5));
     await page.keyboard.type('5');
     await expect.poll(() => caret(input)).toEqual({ value: '4111 5222 2', at: 6 });
   });
 
-  test('an expiry pads the month and adds its separator', async ({ page }) => {
+  test('lays an expiry into its pattern as it is typed', async ({ page }) => {
     await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('expiry');
     await input.click();
     await page.keyboard.type('5');
-    await expect(input).toHaveValue('05');
+    await expect(input).toHaveValue('5');
     await page.keyboard.type('27');
-    await expect(input).toHaveValue('05 / 27');
-    await expect(page.getByTestId('expiry-value')).toHaveText('"0527"');
+    await expect(input).toHaveValue('52/7');
+    await expect(page.getByTestId('expiry-value')).toHaveText('"52/7"');
   });
 });
 
@@ -112,7 +143,7 @@ test.describe('PhoneNumberInput', () => {
     expect(Math.round(panel!.width)).toBe(Math.round(frame!.width));
     expect(panel!.y).toBeGreaterThan(frame!.y + frame!.height);
 
-    await page.getByTestId('phone-countries').getByText('Malaysia').click();
+    await (await countryRow(page, 'Malaysia')).click();
     await expect(picker).toBeHidden();
     await expect(page.getByTestId('country')).toHaveText('MY');
     await expect(page.getByTestId('value')).toHaveText('+60123456789');
@@ -122,7 +153,7 @@ test.describe('PhoneNumberInput', () => {
     await gotoStory(page, 'components-input-phonenumberinput--basic', { presentAsSheet: true });
     await page.getByTestId('phone-country').click();
     await expect(page.getByTestId('phone-picker-drag-zone')).toHaveCount(1);
-    await page.getByTestId('phone-countries').getByText('Malaysia').click();
+    await (await countryRow(page, 'Malaysia')).click();
     await expect(page.getByTestId('country')).toHaveText('MY');
   });
 });

@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { createRawSnippet } from 'svelte';
 import { fireEvent, render } from '@testing-library/svelte';
-import { resolveCardGroup } from '../components/card-group';
 import CardGroupHarness from './fixtures/CardGroupHarness.svelte';
 import { expectClass, expectNoClass } from './classes';
 

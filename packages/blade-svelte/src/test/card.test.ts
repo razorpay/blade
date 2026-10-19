@@ -171,6 +171,7 @@ describe('Card', () => {
     const later = getByRole('button', { name: 'Later' });
     const pay = getByRole('button', { name: 'Pay' });
     // Secondary, then primary.
+    // eslint-disable-next-line no-bitwise -- compareDocumentPosition returns a bit mask
     expect(later.compareDocumentPosition(pay) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     await fireEvent.click(pay);
     expect(onPrimary).toHaveBeenCalledTimes(1);

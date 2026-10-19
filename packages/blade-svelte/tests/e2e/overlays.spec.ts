@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { gotoStory } from './support/story';
 
-// Modal's popover and menu variants, and Tooltip, in a real browser: real
-// placement against the trigger and the frame's edges, tap, keyboard, and
-// one Escape reaching only the topmost overlay.
+// Popover and Menu, and Tooltip, in a real browser: real placement against
+// the trigger and the frame's edges, tap, keyboard, and one Escape reaching
+// only the topmost overlay.
 
 type Box = { x: number; y: number; width: number; height: number };
 
@@ -26,11 +26,11 @@ async function focusByKeyboard(page: Page, target: Locator): Promise<void> {
   await page.keyboard.press('Shift');
 }
 
-test.describe('Modal variant="popover"', () => {
+test.describe('Popover', () => {
   test('a press opens it above its trigger with focus inside; Escape closes it back to the trigger', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-modal--popover');
+    await gotoStory(page, 'components-popover--basic');
     const trigger = page.getByTestId('trigger');
     await trigger.click();
     const panel = page.getByTestId('popover');
@@ -55,7 +55,7 @@ test.describe('Modal variant="popover"', () => {
   test('placement bottom puts it under the trigger; a press outside closes it', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-modal--popover', { placement: 'bottom' });
+    await gotoStory(page, 'components-popover--basic', { placement: 'bottom' });
     const trigger = page.getByTestId('trigger');
     await trigger.click();
     const panel = page.getByTestId('popover');
@@ -70,7 +70,7 @@ test.describe('Modal variant="popover"', () => {
   test('one Escape closes only the topmost overlay: the tooltip inside, then the popover', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-modal--popover', { withTooltip: true });
+    await gotoStory(page, 'components-popover--basic', { withTooltip: true });
     await page.getByTestId('trigger').click();
     const panel = page.getByTestId('popover');
     await expect(panel).toBeVisible();
@@ -135,11 +135,11 @@ test.describe('Tooltip', () => {
   });
 });
 
-test.describe('Modal variant="menu"', () => {
+test.describe('Menu', () => {
   test('opens on its first item, arrows skip the disabled one, Enter chooses and closes back to the trigger', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-modal--menu');
+    await gotoStory(page, 'components-menu--basic');
     const trigger = page.getByTestId('trigger');
     await trigger.click();
     const menu = page.getByTestId('menu');
@@ -164,7 +164,7 @@ test.describe('Modal variant="menu"', () => {
   test('typing a letter jumps to the item, and Escape closes back to the trigger', async ({
     page,
   }) => {
-    await gotoStory(page, 'components-modal--menu');
+    await gotoStory(page, 'components-menu--basic');
     const trigger = page.getByTestId('trigger');
     await trigger.click();
     const menu = page.getByTestId('menu');

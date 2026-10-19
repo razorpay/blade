@@ -5,7 +5,7 @@ import Harness from './fixtures/ActionListDataHarness.svelte';
 const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve, 0));
 const rows = (container: HTMLElement): string[] =>
   Array.from(container.querySelectorAll<HTMLInputElement>('input')).map((input) =>
-    input.closest('label')!.textContent!.trim(),
+    input.closest('label')!.textContent.trim(),
   );
 
 describe('ActionList parity', () => {
@@ -55,7 +55,7 @@ describe('ActionList parity', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it("a link row goes through the app's router, with its click payload", async () => {
+  it("a link row goes through the app's router, with its click payload", () => {
     const navigate = vi.fn(() => true);
     const onItemClick = vi.fn();
     const { getByTestId } = render(Harness, { props: { navigate, onItemClick } });

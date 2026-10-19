@@ -67,7 +67,7 @@ export interface Phone {
  */
 export function createPhone(options: PhoneOptions): Phone {
   const adapters = getAdapters();
-  let control: HTMLInputElement | undefined;
+  let control: HTMLInputElement | undefined, pending: Cancel | undefined;
 
   const selectable = $derived(
     allowedPhoneCountries(options.countries(), options.allowedCountries()),
@@ -77,7 +77,6 @@ export function createPhone(options: PhoneOptions): Phone {
   const canPick = $derived(!options.isCountryFixed() && selectable.length > 1);
   // The pick pending in an app's presentation of the list: closed when the
   // field goes.
-  let pending: Cancel | undefined;
   $effect(() => () => pending?.cancel());
 
   // A value with a plus decides the country: keep the bindable in step.

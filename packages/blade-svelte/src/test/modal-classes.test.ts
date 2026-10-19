@@ -42,7 +42,7 @@ describe('Modal classes', () => {
         children,
       },
     });
-    const root = getByTestId('modal').parentElement as HTMLElement;
+    const root = getByTestId('modal').parentElement!;
     expectClass(root, 'items-start');
     expectClass(root, 'justify-end');
     expectNoClass(root, 'items-center');

@@ -1,7 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createRawSnippet } from 'svelte';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
-import { resolveTooltip } from '../components/tooltip';
 import TooltipHarness from './fixtures/TooltipHarness.svelte';
 import { expectClass } from './classes';
 

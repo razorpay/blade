@@ -14,8 +14,8 @@ function fakeForm(): FormAdapter & {
     blur: vi.fn(),
     errorOf: () => undefined,
     isSubmitting: false,
-    submit: async () => ({ ok: true, errors: {} }),
-    validate: async () => ({ ok: true, errors: {} }),
+    submit: () => Promise.resolve({ ok: true, errors: {} }),
+    validate: () => Promise.resolve({ ok: true, errors: {} }),
     invalid: () => undefined,
   };
 }
@@ -71,7 +71,7 @@ describe('fields and the app form', () => {
       const { container } = render(FormFieldsHarness, {
         props: { adapters: { form }, field, autoFocus: true },
       });
-      const control = container.querySelector('input, textarea') as HTMLElement;
+      const control = container.querySelector<HTMLElement>('input, textarea')!;
       expect(document.activeElement).toBe(control);
       await fireEvent.blur(control);
       await fireEvent.focusOut(control);
@@ -98,7 +98,7 @@ describe('a field record: its element and its reveal', () => {
     (field) => {
       const { form, records } = recordingForm();
       const { container } = render(FormFieldsHarness, { props: { adapters: { form }, field } });
-      const control = container.querySelector('input, textarea') as HTMLElement;
+      const control = container.querySelector<HTMLElement>('input, textarea')!;
       expect(records).toHaveLength(1);
       expect(records[0].element()).toBe(control);
       records[0].reveal();
@@ -139,7 +139,7 @@ describe('analytics', () => {
     async (field) => {
       const track = vi.fn();
       const { container } = render(FormFieldsHarness, { props: { adapters: { track }, field } });
-      const control = container.querySelector('input, textarea') as HTMLElement;
+      const control = container.querySelector<HTMLElement>('input, textarea')!;
       await type(control, '12');
       await fireEvent.blur(control);
       await fireEvent.focusOut(control);

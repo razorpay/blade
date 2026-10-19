@@ -62,12 +62,11 @@ export interface OverlayHostParts {
  */
 export function createLayers(): Layers {
   const stack = createLayerStack<LayerEntry>();
-  let hostElement: HTMLElement | undefined;
+  let hostElement: HTMLElement | undefined, hostChanged: (() => void) | undefined;
   let hostParts: OverlayHostParts = {};
   let listening = false;
   // The host's parts are read by whatever renders into them; a plain `.ts`
   // file has no runes, so a subscriber tells the readers.
-  let hostChanged: (() => void) | undefined;
   const watchHost = createSubscriber((update) => {
     hostChanged = update;
     return () => {

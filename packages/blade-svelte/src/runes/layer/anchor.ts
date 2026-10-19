@@ -32,21 +32,26 @@ export function anchorTo(
     }
     const host = options.host();
     const hostRect = host?.getBoundingClientRect();
+    // `place` answers in viewport space; the floating element is absolute,
+    // so its origin is the padding box of whatever positioned ancestor it
+    // has. That box is also the frame it must stay inside: the host is a
+    // zero-size marker of its own, so it says nothing about the frame.
+    const parent = floating.offsetParent;
+    const origin = parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
     const next = place({
       anchor: options.anchor.getBoundingClientRect(),
       floating: { width: floating.offsetWidth, height: floating.offsetHeight },
-      // The host's frame when it has one, else the viewport.
+      // The box the floating element lays out in, when it has one; the
+      // host's own frame when that is sized; else the viewport.
       boundary:
-        hostRect?.width && hostRect.height
+        origin?.width && origin.height
+          ? origin
+          : hostRect?.width && hostRect.height
           ? hostRect
           : { left: 0, top: 0, width: innerWidth, height: innerHeight },
       placement: options.placement(),
       gap: options.gap(),
     });
-    // `place` answers in viewport space; the floating element is absolute,
-    // so its origin is the padding box of whatever positioned ancestor it has.
-    const parent = floating.offsetParent;
-    const origin = parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
     options.onPlaced({
       ...next,
       anchorWidth: options.anchor.getBoundingClientRect().width,

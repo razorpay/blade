@@ -91,8 +91,8 @@ describe('PhoneNumberInput', () => {
       blur: vi.fn(),
       errorOf: () => undefined,
       isSubmitting: false,
-      submit: async () => ({ ok: true, errors: {} }),
-      validate: async () => ({ ok: true, errors: {} }),
+      submit: () => Promise.resolve({ ok: true, errors: {} }),
+      validate: () => Promise.resolve({ ok: true, errors: {} }),
       invalid: () => undefined,
     };
     const { getByTestId, getByText } = render(PhoneNumberInputHarness, {
@@ -121,8 +121,8 @@ describe('PhoneNumberInput', () => {
       blur: vi.fn(),
       errorOf: () => undefined,
       isSubmitting: false,
-      submit: async () => ({ ok: true, errors: {} }),
-      validate: async () => ({ ok: true, errors: {} }),
+      submit: () => Promise.resolve({ ok: true, errors: {} }),
+      validate: () => Promise.resolve({ ok: true, errors: {} }),
       invalid: () => undefined,
     };
     const { getByTestId, getByText } = render(PhoneNumberInputHarness, {
@@ -202,7 +202,7 @@ describe('PhoneNumberInput', () => {
   });
 
   it('cancels a presented list when the field goes, or opens another', async () => {
-    const flush = () => new Promise((resolve) => setTimeout(resolve));
+    const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve));
     const cancelled: boolean[] = [];
     const presentDropdown = vi.fn((_kind: string, request: { cancelled: Promise<void> }) => {
       const index = cancelled.push(false) - 1;

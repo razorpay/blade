@@ -186,18 +186,21 @@ describe('OTPInput standalone', () => {
 
   describe('adapters.readOTP', () => {
     type Request = { length: number; cancelled: Promise<void> };
-    const deferred = () => {
-      let resolve!: (code: string | undefined) => void;
-      let reject!: (error: unknown) => void;
+    const deferred = (): {
+      promise: Promise<string | undefined>;
+      resolve: (code: string | undefined) => void;
+      reject: (error: unknown) => void;
+    } => {
+      let resolve!: (code: string | undefined) => void, reject!: (error: unknown) => void;
       const promise = new Promise<string | undefined>((res, rej) => {
         resolve = res;
         reject = rej;
       });
       return { promise, resolve, reject };
     };
-    const flush = () => new Promise((resolve) => setTimeout(resolve));
+    const flush = (): Promise<unknown> => new Promise((resolve) => setTimeout(resolve));
     // Whether a request's `cancelled` has resolved, as of the last flush.
-    const watch = (request: Request) => {
+    const watch = (request: Request): { cancelled: boolean } => {
       const seen = { cancelled: false };
       void request.cancelled.then(() => {
         seen.cancelled = true;
@@ -256,9 +259,7 @@ describe('OTPInput standalone', () => {
     });
 
     it('waits while disabled, and cancels when the field is disabled', async () => {
-      const readOTP = vi.fn(
-        (_request: Request) => new Promise<undefined>(() => {}),
-      );
+      const readOTP = vi.fn((_request: Request) => new Promise<undefined>(() => undefined));
       const queries = render(OTPInputHarness, { props: { readOTP, isDisabled: true } });
       expect(readOTP).not.toHaveBeenCalled();
 
@@ -311,9 +312,7 @@ describe('OTPInput standalone', () => {
     });
 
     it('asks again on a reset after the user took over, once the field is enabled', async () => {
-      const readOTP = vi.fn(
-        (_request: Request) => new Promise<undefined>(() => {}),
-      );
+      const readOTP = vi.fn((_request: Request) => new Promise<undefined>(() => undefined));
       const queries = render(OTPInputHarness, { props: { otpLength: 4, readOTP } });
       await fireEvent.keyDown(cell(queries, 0), { key: '7' });
 
@@ -325,9 +324,7 @@ describe('OTPInput standalone', () => {
     });
 
     it('does not ask again when the user clears the cells by hand', async () => {
-      const readOTP = vi.fn(
-        (_request: Request) => new Promise<undefined>(() => {}),
-      );
+      const readOTP = vi.fn((_request: Request) => new Promise<undefined>(() => undefined));
       const onChange = vi.fn();
       const queries = render(OTPInputHarness, { props: { otpLength: 4, readOTP, onChange } });
 

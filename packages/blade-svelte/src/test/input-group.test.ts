@@ -86,7 +86,7 @@ describe('InputGroup', () => {
     expect(getByTestId('group').textContent).toContain('Card declined');
   });
 
-  it('takes a TextArea as a member, as Blade', async () => {
+  it('takes a TextArea as a member, as Blade', () => {
     const { getByTestId, getByLabelText, queryByText } = render(InputGroupHarness, {
       props: { withTextArea: true, helpText: 'Card and notes', isDisabled: true },
     });

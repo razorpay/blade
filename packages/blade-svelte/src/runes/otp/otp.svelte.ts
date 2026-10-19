@@ -310,7 +310,7 @@ export interface OTP {
  */
 export function createOTP(options: OTPOptions): OTP {
   const adapters = getAdapters();
-  let root: HTMLElement | undefined;
+  let root: HTMLElement | undefined, reading: Cancel | undefined;
   const cellRefs: Array<HTMLInputElement | undefined> = [];
   const autoFocus = options.autoFocus();
 
@@ -382,7 +382,6 @@ export function createOTP(options: OTPOptions): OTP {
   // overwrite it mid-entry (nor a platform prompt sit over their keyboard).
   // Unmounting or disabling cancels it; enabling again re-asks. The owner
   // resetting `value` to '' (a resend) asks afresh: a new code is coming.
-  let reading: Cancel | undefined;
   let readDone = false;
   let readRound = $state(0);
   $effect(() => {
@@ -390,7 +389,7 @@ export function createOTP(options: OTPOptions): OTP {
     void readRound;
     const readOTP = adapters.readOTP;
     if (!readOTP || readDone || options.isDisabled() || options.isReadOnly()) {
-      return;
+      return undefined;
     }
     const request = createCancel();
     reading = request;

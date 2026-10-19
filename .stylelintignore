@@ -10,5 +10,8 @@ coverage
 **/build
 **/dist
 
+# blade-svelte: generated/ambient declaration files
+packages/blade-svelte/src/**/*.d.ts
+
 # misc
 .DS_Store
