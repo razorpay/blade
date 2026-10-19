@@ -4,7 +4,7 @@
  *
  * For every `packages/blade-plugin/skills/{skill}/references/components/{Name}.md` it compares
  * `{Name}Props` from the doc with `{Name}Props` exported by the target package's
- * `src/components` (`--target react` = packages/blade, `--target svelte` = packages/blade-svelte):
+ * `src/components` (`--target react` = packages/blade, the default):
  * - props that exist in code but are missing in the doc
  * - props that exist in the doc but not in code
  * - literal union values (e.g. `size`) that differ between doc and code.
@@ -13,14 +13,12 @@
  * It also lists exported components that have no knowledgebase doc.
  *
  * Known exceptions (internal props, docs that can't be compared) live in
- * `scripts/knowledgebaseDriftIgnore.json` (react) and
- * `scripts/knowledgebaseDriftIgnore.svelte.json` (svelte). Every entry needs a reason.
+ * `scripts/knowledgebaseDriftIgnore.json`. Every entry needs a reason.
  *
  * Usage:
  *   yarn check:knowledgebase-drift                  # all react components
  *   yarn check:knowledgebase-drift TextInput Button  # selected components
  *   yarn check:knowledgebase-drift --fail            # exit 1 when drift is found
- *   yarn check:knowledgebase-drift --target svelte   # blade-svelte knowledgebase
  */
 const fs = require('fs');
 const path = require('path');
@@ -36,9 +34,9 @@ const selectedComponents = args.filter(
   (arg, index) => !arg.startsWith('--') && index !== targetIndex + 1,
 );
 
-// `docPreamble` is prepended to doc types so framework types (React, Snippet)
-// resolve. `shared` lists helper types docs reference by name instead of
-// listing every prop; `sharedEntry` imports them from the package source.
+// `docPreamble` is prepended to doc types so framework types (React) resolve.
+// `shared` lists helper types docs reference by name instead of listing every
+// prop; `sharedEntry` imports them from the package source.
 const TARGETS = {
   react: {
     packageDir: path.join(rootDir, 'packages/blade'),
@@ -54,27 +52,6 @@ export type __Shared = StyledPropsBlade & DataAnalyticsAttribute & TestID;`,
     componentPropsFallback: (name) => `import type React from 'react';
 import type { ${name} } from './components';
 export type __Resolved = React.ComponentProps<typeof ${name}>;`,
-  },
-  svelte: {
-    packageDir: path.join(rootDir, 'packages/blade-svelte'),
-    docsDir: path.join(rootDir, 'packages/blade-plugin/skills/blade-svelte/references/components'),
-    reportPath: path.join(rootDir, 'knowledgebase-drift-report.svelte.json'),
-    ignoreConfig: './knowledgebaseDriftIgnore.svelte.json',
-    shared: ['StyledPropsBlade'],
-    sharedEntry: `import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-export type __Shared = StyledPropsBlade;`,
-    docPreamble: `import type { Snippet, Component } from 'svelte';`,
-    // blade-core is read from source so the check runs without building it.
-    compilerOptions: {
-      paths: {
-        '~components/*': ['src/components/*'],
-        '~src/*': ['src/*'],
-        '@razorpay/blade-core/*': ['../blade-core/src/*'],
-      },
-    },
-    // `.svelte` default exports don't resolve in ts-morph; docs must match an
-    // exported `{Name}Props` type.
-    componentPropsFallback: null,
   },
 };
 

@@ -7,7 +7,7 @@ on:
         description: 'Icons exported from the Figma plugin (gzip + base64 JSON)'
         required: true
       targets:
-        description: 'Comma-separated packages to generate for: react (web + native), svelte'
+        description: 'Comma-separated packages to generate for: react (web + native)'
         required: false
         default: 'react'
 

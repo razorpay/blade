@@ -5,7 +5,7 @@
  * The payload is the same `[{ [iconName]: svgString }]` array that `scripts/icons.json` holds, so
  * a local export can be replayed with:
  *
- *   node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react,svelte --dry-run
+ *   node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react --dry-run
  *
  * In CI it arrives gzip + base64 encoded through the `ICONS_PAYLOAD` environment variable, and the
  * packages to generate for through `ICONS_TARGETS`.
@@ -13,7 +13,6 @@
  * Targets:
  * - `react`  → `@razorpay/blade`. One component serves web and native, since `Icons/_Svg` has a
  *              `.web` and a `.native` implementation of every element.
- * - `svelte` → `@razorpay/blade-svelte`, which keeps its own, smaller icon set.
  *
  * A React push also lists added icons in `@razorpay/blade-mcp`'s `AvailableIcons.md`.
  */
@@ -25,7 +24,6 @@ import execa from 'execa';
 import lodash from 'lodash';
 import nodePlop from 'node-plop';
 import randomNameGenerator from 'moniker';
-import { parseSync } from 'svgson';
 
 const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
 const GITHUB_BOT_USERNAME = 'rzpcibot';
@@ -33,8 +31,6 @@ const GITHUB_BOT_USERNAME = 'rzpcibot';
 const BLADE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPO_ROOT = path.resolve(BLADE_ROOT, '../..');
 const REACT_ICONS_DIRECTORY = path.join(BLADE_ROOT, 'src/components/Icons');
-const SVELTE_ROOT = path.join(REPO_ROOT, 'packages/blade-svelte');
-const SVELTE_ICONS_DIRECTORY = path.join(SVELTE_ROOT, 'src/components/Icons');
 const MCP_ROOT = path.join(REPO_ROOT, 'packages/blade-mcp');
 const MCP_AVAILABLE_ICONS_FILE = path.join(MCP_ROOT, 'knowledgebase/general/AvailableIcons.md');
 const MCP_GENERAL_DOCS_SNAPSHOT = path.join(
@@ -45,7 +41,6 @@ const MCP_PACKAGE_NAME = '@razorpay/blade-mcp';
 
 const TARGETS = {
   react: { packageName: '@razorpay/blade', label: 'React (web + native)' },
-  svelte: { packageName: '@razorpay/blade-svelte', label: 'Svelte' },
 };
 
 const args = process.argv.slice(2);
@@ -367,235 +362,6 @@ const verifyMcpDocs = () => {
 };
 
 // ---------------------------------------------------------------------------------------------
-// svelte (@razorpay/blade-svelte)
-// ---------------------------------------------------------------------------------------------
-
-/** `blade-svelte`'s `Icons/_Svg` only has `Svg` and `Path`, and `Path` only takes these props. */
-const SVELTE_PATH_PROPS = {
-  d: 'string',
-  fill: 'color',
-  fillOpacity: 'number',
-  fillRule: 'string',
-  clipRule: 'string',
-  stroke: 'color',
-  strokeWidth: 'number',
-  strokeLinecap: 'string',
-  strokeLinejoin: 'string',
-};
-
-const toSvelteProp = (name, value) => {
-  const kind = SVELTE_PATH_PROPS[name];
-  if (kind === 'color' && value !== 'none') return `${name}={iconProps.iconColor}`;
-  if (kind === 'number') return `${name}={${Number(value)}}`;
-  return `${name}="${value}"`;
-};
-
-/**
- * Returns the component source, or the reason the icon cannot be expressed with `blade-svelte`'s
- * primitives. Adding `Circle`, `G`, `ClipPath`... to `_Svg` is a design decision for that package,
- * not something to slip in through an icon push.
- */
-const toSvelteComponent = (svg) => {
-  const root = parseSync(svg, { camelcase: true });
-  const paths = root.children.filter((node) => node.type === 'element');
-
-  const unsupportedElements = [
-    ...new Set(paths.filter((node) => node.name !== 'path').map((node) => `<${node.name}>`)),
-  ];
-  if (unsupportedElements.length) {
-    return {
-      reason: `uses ${unsupportedElements.join(
-        ', ',
-      )}, and blade-svelte's \`Icons/_Svg\` only has \`Svg\` and \`Path\``,
-    };
-  }
-
-  const unsupportedProps = [
-    ...new Set(
-      paths.flatMap((node) =>
-        Object.keys(node.attributes).filter((key) => !SVELTE_PATH_PROPS[key]),
-      ),
-    ),
-  ];
-  if (unsupportedProps.length) {
-    return {
-      reason: `sets ${unsupportedProps
-        .map((prop) => `\`${prop}\``)
-        .join(', ')} on a path, which blade-svelte's \`Path\` does not accept`,
-    };
-  }
-
-  const pathSources = paths.map((node) => {
-    const props = Object.entries(node.attributes).map(([name, value]) => toSvelteProp(name, value));
-    return ['  <Path', ...props.map((prop) => `    ${prop}`), '  />'].join('\n');
-  });
-
-  return {
-    source: `<script lang="ts">
-  import { Svg, Path } from '../_Svg';
-  import { getIconProps } from '../getIconProps';
-  import type { IconProps } from '../types';
-
-  let { size = 'medium', color = 'surface.icon.gray.normal', ...rest }: IconProps = $props();
-
-  const iconProps = $derived(getIconProps({ size, color }));
-</script>
-
-<Svg
-  width={iconProps.width}
-  height={iconProps.height}
-  viewBox="0 0 24 24"
-  {...rest}
->
-${pathSources.join('\n')}
-</Svg>
-`,
-  };
-};
-
-/** Hand-written icons order attributes their own way; the artwork is what has to match. */
-const pathDataOf = (source) => [...source.matchAll(/\bd="([^"]*)"/g)].map((match) => match[1]);
-
-/**
- * `blade-svelte`'s `index.ts`, `iconMap.ts` and stories are grouped by hand, so a new icon goes at
- * the end of the group it belongs to rather than through a regenerated file.
- */
-const insertAfterBlock = ({ content, marker, line, blockPattern }) => {
-  const lines = content.split('\n');
-  const markerIndex = lines.findIndex((candidate) => candidate.trim() === marker);
-  if (markerIndex === -1) return null;
-  let insertAt = markerIndex + 1;
-  while (insertAt < lines.length && blockPattern.test(lines[insertAt])) insertAt += 1;
-  lines.splice(insertAt, 0, line);
-  return lines.join('\n');
-};
-
-const registerSvelteIcon = (componentName) => {
-  const isFilled = componentName.endsWith('FilledIcon');
-  const touched = [];
-
-  const indexPath = path.join(SVELTE_ICONS_DIRECTORY, 'index.ts');
-  const index = insertAfterBlock({
-    content: fs.readFileSync(indexPath, 'utf8'),
-    marker: isFilled ? '// Filled Icons' : '// Stroked Icons',
-    line: `export { ${componentName} } from './${componentName}';`,
-    blockPattern: /^export \{/,
-  });
-  if (index) {
-    fs.writeFileSync(indexPath, index);
-    touched.push(indexPath);
-  } else {
-    blockers.push(
-      `Could not find where to export \`${componentName}\` in \`packages/blade-svelte/src/components/Icons/index.ts\`. Add the export by hand.`,
-    );
-  }
-
-  const iconMapPath = path.join(SVELTE_ICONS_DIRECTORY, 'iconMap.ts');
-  let iconMap = fs.readFileSync(iconMapPath, 'utf8');
-  const lastImport = [...iconMap.matchAll(/^import \{ \w+ \} from '\.\/\w+';$/gm)].pop();
-  const mapEnd = iconMap.lastIndexOf('\n};');
-  if (lastImport && mapEnd !== -1) {
-    iconMap = `${iconMap.slice(0, mapEnd)}\n  ${componentName},${iconMap.slice(mapEnd)}`;
-    const importEnd = lastImport.index + lastImport[0].length;
-    iconMap = `${iconMap.slice(
-      0,
-      importEnd,
-    )}\nimport { ${componentName} } from './${componentName}';${iconMap.slice(importEnd)}`;
-    fs.writeFileSync(iconMapPath, iconMap);
-    touched.push(iconMapPath);
-  } else {
-    blockers.push(
-      `Could not add \`${componentName}\` to \`packages/blade-svelte/src/components/Icons/iconMap.ts\`. Add it by hand.`,
-    );
-  }
-
-  const storiesPath = path.join(SVELTE_ICONS_DIRECTORY, 'Icons.stories.svelte');
-  const storiesWithImport = insertAfterBlock({
-    content: fs.readFileSync(storiesPath, 'utf8'),
-    marker: isFilled ? '// Filled Icons' : '// Stroked Icons',
-    line: `  import { ${componentName} } from './${componentName}';`,
-    blockPattern: /^\s*import \{/,
-  });
-  const stories = storiesWithImport
-    ? insertAfterBlock({
-        content: storiesWithImport,
-        marker: isFilled ? 'const filledIcons = {' : 'const strokedIcons = {',
-        line: `    ${componentName},`,
-        blockPattern: /^\s+\w+,$/,
-      })
-    : null;
-  if (stories) {
-    fs.writeFileSync(storiesPath, stories);
-    touched.push(storiesPath);
-  } else {
-    warnings.push(`\`${componentName}\` was not added to the blade-svelte Icons stories.`);
-  }
-
-  return touched;
-};
-
-const generateSvelteIcons = (icons) => {
-  const result = { added: [], updated: [], unchanged: [], skipped: [] };
-  const touchedPaths = new Set();
-
-  icons.forEach(({ svg, componentName }) => {
-    const { source, reason } = toSvelteComponent(svg);
-    if (!source) {
-      result.skipped.push(componentName);
-      blockers.push(`\`${componentName}\` was not generated for Svelte: it ${reason}.`);
-      return;
-    }
-
-    const iconDirectory = path.join(SVELTE_ICONS_DIRECTORY, componentName);
-    const componentPath = path.join(iconDirectory, `${componentName}.svelte`);
-    const previous = readIfExists(componentPath);
-
-    if (previous !== null && pathDataOf(previous).join('\n') === pathDataOf(source).join('\n')) {
-      result.unchanged.push(componentName);
-      return;
-    }
-
-    fs.mkdirSync(iconDirectory, { recursive: true });
-    fs.writeFileSync(componentPath, source);
-    touchedPaths.add(iconDirectory);
-
-    if (previous !== null) {
-      result.updated.push(componentName);
-      return;
-    }
-
-    fs.writeFileSync(
-      path.join(iconDirectory, 'index.ts'),
-      `export { default as ${componentName} } from './${componentName}.svelte';\n`,
-    );
-    registerSvelteIcon(componentName).forEach((touched) => touchedPaths.add(touched));
-    result.added.push(componentName);
-  });
-
-  // .svelte files are written pre-formatted; the repo has no Svelte parser for prettier
-  prettierWrite([...touchedPaths].filter((touched) => touched.endsWith('.ts')));
-  result.touchedPaths = [...touchedPaths];
-  return result;
-};
-
-const verifySvelteIcons = () => {
-  if (skipTypecheck) return;
-  // svelte-check resolves `@razorpay/blade-core/utils` through its built output
-  const isCoreBuilt = runStep({
-    name: '@razorpay/blade-core build',
-    cwd: path.join(REPO_ROOT, 'packages/blade-core'),
-    command: 'yarn build',
-  });
-  if (isCoreBuilt) {
-    runStep({
-      name: '@razorpay/blade-svelte svelte-check',
-      cwd: SVELTE_ROOT,
-      command: 'yarn svelte-check --threshold error',
-    });
-  }
-};
-
-// ---------------------------------------------------------------------------------------------
 // reporting
 // ---------------------------------------------------------------------------------------------
 
@@ -615,13 +381,11 @@ const buildTitle = (results) => {
       .flatMap((result) => result.updated)
       .filter((name) => !added.includes(name)),
   );
-  const scope = Object.keys(results).length === 1 && results.svelte ? 'blade-svelte' : 'icons';
-
   if (added.length && updated.length) {
-    return `feat(${scope}): add ${describeIcons(added)}, update ${describeIcons(updated)}`;
+    return `feat(icons): add ${describeIcons(added)}, update ${describeIcons(updated)}`;
   }
-  if (added.length) return `feat(${scope}): add ${describeIcons(added)}`;
-  return `fix(${scope}): update ${describeIcons(updated)}`;
+  if (added.length) return `feat(icons): add ${describeIcons(added)}`;
+  return `fix(icons): update ${describeIcons(updated)}`;
 };
 
 const bulletList = (componentNames) => componentNames.map((name) => `- \`${name}\``).join('\n');
@@ -725,7 +489,6 @@ const uploadIcons = async () => {
 
   const results = {};
   if (targets.has('react')) results.react = await generateReactIcons(icons);
-  if (targets.has('svelte')) results.svelte = generateSvelteIcons(icons);
   // the MCP docs describe `@razorpay/blade`'s icons, so only a React push lists new ones there
   const mcpDocsPaths = results.react ? addIconsToMcpDocs(results.react.added) : [];
 
@@ -740,7 +503,6 @@ const uploadIcons = async () => {
   }
 
   if (results.react && changedIn(results.react).length) verifyReactIcons(changedIn(results.react));
-  if (results.svelte && changedIn(results.svelte).length) verifySvelteIcons();
   if (mcpDocsPaths.length) verifyMcpDocs();
 
   Object.entries(results).forEach(([target, result]) => {

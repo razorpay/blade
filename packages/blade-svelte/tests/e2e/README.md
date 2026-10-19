@@ -1,12 +1,12 @@
-# src-cx end-to-end tests
+# blade-svelte end-to-end tests
 
-One suite, two targets. The specs open src-cx stories and check what unit
+One suite, two targets. The specs open the stories and check what unit
 tests in jsdom cannot: real transitions, focus, pointer drags and layout.
 
 ## Run locally (no credentials)
 
 ```sh
-yarn build-storybook          # once, and after changing src-cx
+yarn build-storybook          # once, and after changing src
 npx playwright install chromium webkit
 yarn test:e2e                    # desktop and emulated phones, Chromium and WebKit
 yarn test:e2e --project=desktop-chromium

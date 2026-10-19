@@ -1,7 +1,7 @@
 // Port of Blade MCP's publish_lines_of_code_metric tool
 // (packages/blade-mcp/src/tools/publishLinesOfCodeMetric.ts). Same arguments,
 // validation, properties and response text; the numbers are reported by the
-// agent. The blade and blade-svelte skills keep identical copies of this file
+// agent. Any other skill that ships this script keeps an identical copy
 // (scripts/validateBladePlugin.mjs (repo root) fails if they differ).
 //
 // Usage: node publish-metric.mjs '<json>'   (or pipe the JSON on stdin)
@@ -11,7 +11,7 @@ const toolName = 'publish_lines_of_code_metric';
 
 // The skill name replaces the MCP's tool names in `toolsUsed`. Workflows are
 // tracked by the events their own scripts send, not here.
-const bladeToolNames = ['blade', 'blade-svelte'];
+const bladeToolNames = ['blade'];
 
 const OPTIONAL_TOTALS = [
   'bladeUiLinesAddedTotal',

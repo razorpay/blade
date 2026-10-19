@@ -1,4 +1,4 @@
-// Serves the built src-cx Storybook (`yarn build-storybook`) for the e2e
+// Serves the built Storybook (`yarn build-storybook`) for the e2e
 // suite: a static file server with no dependencies, started by Playwright's
 // `webServer`. Usage: node serve.mjs [port] [dir]
 import { createServer } from 'node:http';

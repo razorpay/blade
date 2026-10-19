@@ -25,79 +25,60 @@
     "blade"
   ],
   "exports": {
-    "./blade.css": "./src-cx/blade.css",
+    "./blade.css": "./src/blade.css",
     "./icons": {
-      "types": "./src-cx/icons/index.d.ts",
-      "default": "./src-cx/icons/index.js"
+      "types": "./src/icons/index.d.ts",
+      "default": "./src/icons/index.js"
     },
     "./configs/vite": {
-      "types": "./src-cx/plugin/vite.d.ts",
-      "default": "./src-cx/plugin/vite.js"
+      "types": "./src/plugin/vite.d.ts",
+      "default": "./src/plugin/vite.js"
     },
     "./configs/webpack": {
-      "types": "./src-cx/plugin/webpack.d.ts",
-      "default": "./src-cx/plugin/webpack.js"
+      "types": "./src/plugin/webpack.d.ts",
+      "default": "./src/plugin/webpack.js"
     },
     "./configs/uno": {
       "types": "./uno/config.ts",
       "default": "./uno/config.ts"
     },
     "./components": {
-      "types": "./src-cx/components-entry.ts",
-      "svelte": "./src-cx/components-entry.ts",
-      "default": "./src-cx/components-entry.ts"
+      "types": "./src/components-entry.ts",
+      "svelte": "./src/components-entry.ts",
+      "default": "./src/components-entry.ts"
     },
-    "./utils": {
-      "types": "./dist/types/utils/index.d.ts",
-      "default": "./dist/lib/utils/index.js"
+    "./runes": {
+      "types": "./src/runes/index.ts",
+      "svelte": "./src/runes/index.ts",
+      "default": "./src/runes/index.ts"
     },
     "./package.json": "./package.json"
   },
   "files": [
-    "dist",
-    "!dist/**/__tests__",
-    "src-cx",
-    "!src-cx/test",
-    "!src-cx/stories",
-    "!src-cx/**/*.test.ts",
-    "!src-cx/**/*.tmp.ts",
-    "src/components",
-    "src/utils",
-    "!src/**/__tests__",
-    "!src/**/*.stories.svelte",
+    "src",
+    "!src/test",
+    "!src/stories",
     "!src/**/*.test.ts",
-    "!src/**/*.test.svelte",
+    "!src/**/*.tmp.ts",
     "uno"
   ],
   "scripts": {
-    "prepare": "yarn build",
-    "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:lib",
-    "build:clean": "rm -rf dist",
-    "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
-    "build:generate-svelte-types": "node ./scripts/generate-svelte-component-types.mjs",
-    "build:lib": "rollup -c",
-    "svelte-check": "svelte-check --tsconfig ./tsconfig.json && svelte-check --tsconfig ./tsconfig.cx.json",
-    "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.cx.json --watch",
+    "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
+    "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",
     "test:coverage": "vitest run --config vitest.config.ts --coverage",
+    "check:tree-shaking": "node ./scripts/check-tree-shaking.mjs",
     "dev": "yarn storybook",
     "start:web": "yarn dev",
-    "storybook": "storybook dev -p 6008 -c .storybook-cx --host 0.0.0.0",
-    "build-storybook": "storybook build -c .storybook-cx -o storybook-static",
-    "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",
-    "test:browserstack:local": "CHROMATIC_URL=https://blade.razorpay.com playwright test -c tests/browserstack/playwright.config.cts",
-    "test:browserstack:mobile": "browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
-    "test:browserstack:mobile:local": "CHROMATIC_URL=https://blade.razorpay.com browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
+    "storybook": "storybook dev -p 6008 -c .storybook --host 0.0.0.0",
+    "build-storybook": "storybook build -c .storybook -o storybook-static",
     "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
     "test:e2e:ui": "playwright test -c tests/e2e/playwright.config.ts --ui",
     "test:e2e:browserstack": "TARGET=browserstack BROWSERSTACK_CONFIG_FILE=tests/e2e/browserstack.yml browserstack-node-sdk playwright test -c tests/e2e/playwright.config.ts"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.0",
     "@razorpay/blade-core": ">=0.21.0",
-    "@use-gesture/vanilla": "10.2.24",
-    "class-variance-authority": "^0.7.0",
     "svg-pathdata": "^7.2.0",
     "svg2ttf": "^6.1.0",
     "svgicons2svgfont": "^15.0.1",
@@ -108,10 +89,6 @@
     "@babel/preset-typescript": "7.16.5",
     "@playwright/test": "^1.52.0",
     "@razorpay/i18nify-js": "1.12.8",
-    "@rollup/plugin-alias": "5.0.0",
-    "@rollup/plugin-babel": "6.0.3",
-    "@rollup/plugin-commonjs": "25.0.4",
-    "@rollup/plugin-node-resolve": "15.2.1",
     "@storybook/addon-docs": "10.2.16",
     "@storybook/addon-links": "10.2.16",
     "@storybook/addon-svelte-csf": "^5.0.10",
@@ -127,16 +104,9 @@
     "jsdom": "^25",
     "magic-string": "^0.30.5",
     "npm-run-all": "4.1.5",
-    "postcss": "^8.4.0",
-    "rollup": "3.30.0",
-    "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-postcss": "4.0.2",
-    "rollup-plugin-svelte": "^7.2.2",
     "storybook": "10.2.16",
-    "sveld": "^0.36.1",
     "svelte": "5.56.10",
     "svelte-check": "^4.0.0",
-    "svelte-preprocess": "^6.0.3",
     "typescript": "^5.0.0",
     "unocss": "^66.10.5",
     "vite": "^5.0.0",

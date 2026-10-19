@@ -81,12 +81,3 @@ jobs:
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
-
-  browserstack-tests:
-    name: BrowserStack Tests
-    needs: chromatic-deployment
-    if: ${{ github.event.label.name == 'Run Interaction Tests' || (github.event_name == 'push' && github.ref == 'refs/heads/master') }}
-    uses: ./.github/workflows/blade-browserstack.yml
-    with:
-      chromatic_url: ${{ needs.chromatic-deployment.outputs.storybookUrl }}
-    secrets: inherit

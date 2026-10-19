@@ -45,7 +45,6 @@
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-core": "lerna run --scope @razorpay/blade-core build",
     "build:blade-mcp": "lerna run --scope @razorpay/blade-mcp build",
-    "build:blade-svelte": "lerna run --scope @razorpay/blade-svelte build",
     "build:eslint-plugin-blade": "lerna run --scope eslint-plugin-blade build",
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "generate-icons": "node scripts/icons/generate.mjs",
@@ -54,7 +53,7 @@
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
     "ci:codesandbox": "yarn install --ignore-engines",
     "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
-    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte",
+    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core",
     "validate:blade-plugin": "node scripts/validateBladePlugin.mjs && node scripts/syncPluginManifestVersion.js --check && node --test packages/blade-plugin/tests/scripts.test.mjs packages/blade-plugin/hooks/__tests__/frameworks.test.mjs"
   },
   "devDependencies": {

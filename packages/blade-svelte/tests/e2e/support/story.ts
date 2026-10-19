@@ -4,7 +4,7 @@ import type { Page } from '@playwright/test';
 type Arg = string | number | boolean;
 
 /**
- * The iframe URL of a src-cx story, relative to the suite's `baseURL`:
+ * The iframe URL of a story, relative to the suite's `baseURL`:
  * `storyUrl('components-modal--basic', { isDismissible: false })`. Args use
  * Storybook's URL grammar (`key:value;key:value`); keep values simple — no
  * spaces or reserved characters.

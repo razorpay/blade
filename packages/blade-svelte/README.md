@@ -57,24 +57,15 @@ npm install @razorpay/blade-svelte svelte unocss
 
 > **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency. `@razorpay/i18nify-js` (>= 1.12.8) is an optional peer dependency: the components do not import it, but the PhoneNumberInput stories build their country list with it.
 
-The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
+### Entry points
 
-### Two component sets
-
-The package holds two component sets at different paths, so an app can use
-both:
-
-| Import                              | Components                                             |
-| ----------------------------------- | ------------------------------------------------------ |
-| `@razorpay/blade-svelte/components` | cx, plus Blade's `Modal` and `BottomSheet` (see below) |
-| `@razorpay/blade-svelte/utils`      | Blade's utilities (`useInteraction`, `createPortal`)   |
-
-`/components` is the cx set with two more names: until cx exports its own,
-`Modal` (`ModalHeader`, `ModalBody`, `ModalFooter`) and `BottomSheet`
-(`BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`) are Blade's,
-styled by blade-core's prebuilt CSS (see
-[Blade's Modal and BottomSheet](#blades-modal-and-bottomsheet)). Both sets
-read blade-core's tokens (`@razorpay/blade-core/tokens/theme.css`).
+| Import                                                    | What                                  |
+| --------------------------------------------------------- | ------------------------------------- |
+| `@razorpay/blade-svelte/components`                       | The components, the overlays included |
+| `@razorpay/blade-svelte/icons`                            | Blade's icons, as data (`IconSource`) |
+| `@razorpay/blade-svelte/configs/uno`                      | The UnoCSS preset (`bladeUnoConfig`)  |
+| `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                  |
+| `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles             |
 
 ### cx: compile Blade's CSS in your app
 
@@ -88,7 +79,7 @@ import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
 
 export default {
   ...bladeUnoConfig({ desktop: '62.5rem' }), // the default
-  content: { filesystem: ['./node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}'] },
+  content: { filesystem: ['./node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}'] },
 };
 ```
 
@@ -130,7 +121,7 @@ export default {
   content: {
     filesystem: [
       './src/**/*.{svelte,ts}',
-      './node_modules/@razorpay/blade-svelte/src-cx/**/*.{ts,svelte}',
+      './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}',
     ],
   },
 };
@@ -182,7 +173,7 @@ under it:
 | `--font-family-text`, `--font-family-heading`, `--font-family-code` | `font-sans`, `font-heading`, `font-mono` |
 
 The full list of 285 colour variables is the snapshot of
-`src-cx/test/theme-variables.test.ts`. Composed values follow them too: a
+`src/test/theme-variables.test.ts`. Composed values follow them too: a
 button's frame and focus ring, `surface-raised`, the skeleton. `--data-*`
 (charts) and the white and black bevels, sheens and elevation shadows stay
 fixed. For a brand colour on primary buttons, blade-core's
@@ -193,40 +184,90 @@ blade-core's `theme.css` (below) sets every variable to the _standard_ theme's
 values, where the cx components fall back to the _neutral_ theme's (black
 primary borders and text): import it only if you want the standard theme.
 
-### Blade's Modal and BottomSheet
+### Overlays
 
-`/components` serves Blade's `Modal` and `BottomSheet` from `src/` until cx
-exports its own (the cx `openModal` is there too).
-They are portal overlays: consumers manage `isOpen`; focus, scroll lock,
-dismissal and animation are wired inside. Their CSS is blade-core's, so
-import the theme CSS once, in your root layout or app entry:
+`/components` exports one overlay per shape, each its own component over the
+same runes (`createOverlay`: the layer stack, focus, Escape, back,
+presence): `Modal` (the centred dialog), `BottomSheet`, `Drawer` (`side`),
+`Popover` and `Menu`. Modal, BottomSheet and Drawer open from a bound
+`isOpen`; Popover and Menu also from their trigger (`children`). Each
+reports `onOpenChange` (the opens and closes it makes itself, not the
+owner's `isOpen`), and all but Menu take `initialFocusRef`. There is no base component: an app's own overlay (one
+that switches by screen, say) composes these.
 
-```ts
-import '@razorpay/blade-core/tokens/theme.css';
-```
+BladeProvider renders the overlay host (the one scrim, the box modals
+mount in, and a polite live region) and the toasts after its content, in
+the nearest positioned ancestor: put it inside the frame overlays must stay
+within. The outermost provider hosts every overlay on the page; a nested
+provider with a toast queue of its own (`adapters.toasts`, `createToasts()`,
+read when it mounts) renders its stack in that host. Nothing renders twice.
+An app's back handler asks the open overlays first: `back()` returns
+whether one handled it. Toasts are data: `showToast(toast, { cancelled })` returns a promise of
+why the toast left, and `cancelled` resolving dismisses it. `cancelled` is a
+plain `Promise<void>`, never an `AbortSignal` (older engines have none, and
+a signal can't cross a bridge to a native host): `createCancel()` makes one
+(`{ cancelled, cancel(), isCancelled }`). An overlay's panel
+sets `--overlay-gutter` per layout (20px on a modal or a drawer, 16px on a
+sheet, a popover or a menu; unset outside one): content on a bare body
+pads its own rows by it (`px-[var(--overlay-gutter,0px)]`, ActionList's
+`inset="overlay"`). A modal goes anywhere in the host through
+`classes`: `<Modal classes={{ root: 'items-start justify-end p-6' }}>` sits
+top right.
+
+### Adapters
+
+BladeProvider's `adapters` are the app's services. They are live: a
+component reads them through getters, so an adapter the app swaps reaches
+what is already mounted (`toasts` is read at mount). An
+adapter left out is the enclosing provider's; `null` unsets it for the
+subtree.
+
+| Adapter            | What it does                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `track`            | Analytics events; `field_change` sends `{ name }` only                                                        |
+| `navigate`         | The app's router: every `href` (Link, a link Button, Card, a link row or tab) offers it plain internal clicks |
+| `vibrate`          | Told what a press meant: `press`, `select` (Radio, Chip), `toggle` (Checkbox, Switch), `warning`              |
+| `announce`         | Says a message politely; defaults to the host's live region (a Button starting and stopping loading)          |
+| `locale`           | Amount's locale; i18nify's global state is the fallback                                                       |
+| `toasts`           | The toast queue: Blade's (`createToasts()`), which the provider renders, or the app's own `{ showToast }`     |
+| `form`             | The app's form (`FormAdapter`), below                                                                         |
+| `presentDropdown`  | Shows a library dropdown (PhoneNumberInput's countries) the app's own way                                     |
+| `readOTP`          | Reads a one-time code for OTPInput (an SMS retriever, WebOTP); cancelled on unmount, disable or a user edit; asked again when the owner resets `value` to `''` |
+| `reportError`     | Errors the components catch                                                                                   |
+
+Components pass `data-analytics-*` props to their element, as React's (a
+toast takes them in `showToast`'s options).
+
+### What the app brings
+
+Blade ships UI parts. The headless hosts and flows around them are the app's,
+and builds them on Blade's public entries: `/components`, and `/runes`,
+the small set of runes an app composes its own hosts on (the layer stack,
+`defineContext`, the presence timings, `phoneDigits`, `isPromise`), not
+the whole runes layer:
+
+| The app's                                                                                                      | What Blade gives it                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host and the toasts BladeProvider renders (`adapters.toasts`), back (`back()`), and `presentDropdown`    to show a library dropdown its own way    |
+| A form                                                                                                         | `adapters.form` (`FormAdapter`): what fields register with (a `FieldRecord` with its `element()` and `reveal()`) and show errors from, and what submit buttons submit |
+| Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose; provider defaults extend to them (`ComponentStyleProps` is an interface)                                                                     |
+
+Blade is web only: a native renderer brings its own `.native.svelte` twins,
+over the same classes.
+
+Modal, BottomSheet and Drawer compose their content from Blade React's parts
+— `ModalHeader`, `ModalBody`, `ModalFooter`, `BottomSheetHeader`, …,
+`DrawerFooter` — each over its own classes, exported apart
+(`resolveModalHeader()`, …) for a header of your own, wired by
+`useModalHeader()`:
 
 ```svelte
-<script>
-  import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from '@razorpay/blade-svelte/components';
-
-  let isOpen = $state(false);
-</script>
-
-<Button onClick={() => (isOpen = true)}>Open</Button>
-<Modal {isOpen} onDismiss={() => (isOpen = false)} size="medium">
-  <ModalHeader title="Address Details" subtitle="Add a new address" />
-  <ModalBody>
-    <p>Body content goes here.</p>
-  </ModalBody>
-  <ModalFooter>
-    <Button onClick={() => (isOpen = false)}>Done</Button>
-  </ModalFooter>
+<Modal bind:isOpen>
+  <ModalHeader title="Remove card?" subtitle="Ending 1111" />
+  <ModalBody>The card will be removed from this device.</ModalBody>
+  <ModalFooter><Button color="negative">Remove</Button></ModalFooter>
 </Modal>
 ```
-
-`BottomSheet` composes the same way (`BottomSheetHeader`, `BottomSheetBody`,
-`BottomSheetFooter`), with `snapPoints` and drag-to-dismiss. See the
-[Storybook documentation](https://blade.razorpay.com) for their full API.
 
 ## 📝 License
 

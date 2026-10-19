@@ -115,24 +115,16 @@ Select a frame of icons, a variant set, or the icons themselves. A variant is na
 plus every value that differs from the set's default variant, so `star` / `variant=filled` becomes
 `StarFilledIcon`. Icons whose generated code already matches the repo are left out of the PR.
 
-**Raise for** picks the packages the PR generates icons in:
-
-| Option                        | Package                  | Checks                              |
-| ----------------------------- | ------------------------ | ----------------------------------- |
-| React (web + native), default | `@razorpay/blade`        | typecheck, web and native snapshots |
-| Svelte                        | `@razorpay/blade-svelte` | `blade-core` build, `svelte-check`  |
-| Both                          | both of the above        | both of the above                   |
-
+The PR generates icons in `@razorpay/blade` and runs a typecheck plus web and native snapshots.
 A React icon is one component for web and native, because `Icons/_Svg` has a `.web` and a
-`.native` implementation of every element. `blade-svelte`'s `_Svg` only has `Svg` and `Path`, so an
-icon that needs `<circle>`, `<g>`, `<clipPath>`… is skipped for Svelte and listed as blocking.
+`.native` implementation of every element.
 
 The workflow opens the PR as a draft when an icon is not drawn on a 24×24 frame, cannot be
-generated for a selected package, or when a check fails. To generate locally instead, use **Copy JSON** and run:
+generated, or when a check fails. To generate locally instead, use **Copy JSON** and run:
 
 ```bash
 cd packages/blade
-node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react,svelte --dry-run
+node ./scripts/uploadIcons.mjs ./scripts/icons.json --dry-run
 ```
 
 ### Replaying a payload locally

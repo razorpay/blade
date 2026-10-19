@@ -180,13 +180,16 @@ module.exports = {
       },
     },
     {
-      // blade-svelte's src-cx runes wire models that refer to each other: a
+      // blade-svelte's runes wire models that refer to each other: a
       // closure may read a const declared after it, since it only runs once
       // both exist, and a function declaration is hoisted. A const used before
       // its definition in the same scope is still an error.
-      files: ['packages/blade-svelte/src-cx/**/*.ts'],
+      files: ['packages/blade-svelte/src/**/*.ts'],
       rules: {
-        '@typescript-eslint/no-use-before-define': ['error', { functions: false, variables: false }],
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          { functions: false, variables: false },
+        ],
       },
     },
     {

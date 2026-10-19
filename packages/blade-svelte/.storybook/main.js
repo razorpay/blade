@@ -1,23 +1,28 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import UnoCSS from 'unocss/vite';
+import bladePlugin from '../src/plugin/vite.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const packageRoot = resolve(__dirname, '..');
 
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
 function getAbsolutePath(value) {
   return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }
 
-/** @type { import('@storybook/svelte-vite').StorybookConfig } */
+/**
+ * Storybook for src, styled by UnoCSS (`uno.config.ts`).
+ *
+ * @type { import('@storybook/svelte-vite').StorybookConfig }
+ */
 const config = {
   core: {
     disableWhatsNewNotifications: true,
     disableTelemetry: true,
   },
-  stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
+  // Guides without a component are MDX pages.
+  stories: ['../src/stories/**/*.stories.svelte', '../src/stories/**/*.mdx'],
   addons: [
     getAbsolutePath('@storybook/addon-svelte-csf'),
     getAbsolutePath('@storybook/addon-docs'),
@@ -25,57 +30,33 @@ const config = {
   ],
   framework: {
     name: getAbsolutePath('@storybook/svelte-vite'),
-    options: {},
+    // Docgen re-parses each component and chokes on typed optional snippet
+    // params. Stories take a custom `args` object, so
+    // there are no component prop tables to generate anyway.
+    options: { docgen: false },
   },
   docs: {
     autodocs: true,
   },
+  features: {
+    // No "Getting started" checklist in the sidebar.
+    sidebarOnboardingChecklist: false,
+  },
   viteFinal: async (config) => {
-    // Resolve blade-core imports directly to source files for better re-export handling
-    // Note: We use a custom resolve function to handle exact matches only
-    const bladeCoreRoot = resolve(__dirname, '../../blade-core/src');
-    // blade-core source uses bare `__DEV__` (replaced at rollup build time).
-    // Storybook aliases to source, so define it here like vitest/rollup.
-    config.define = {
-      ...config.define,
-      __DEV__: true,
-    };
-    config.resolve = config.resolve || {};
-    // Prefer .web.ts so platform-split modules (elevation, fontFamily) resolve under Vite
-    config.resolve.extensions = [
-      '.web.ts',
-      '.web.tsx',
-      '.web.js',
-      ...(config.resolve.extensions ?? ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']),
-    ];
-    config.resolve.alias = [
-      ...(Array.isArray(config.resolve.alias) ? config.resolve.alias : []),
-      // Only match exact paths (not sub-paths like tokens/theme.css)
-      {
-        find: /^@razorpay\/blade-core\/utils$/,
-        replacement: resolve(bladeCoreRoot, 'utils/index.ts'),
-      },
-      {
-        find: /^@razorpay\/blade-core\/styles$/,
-        replacement: resolve(bladeCoreRoot, 'styles/index.ts'),
-      },
-      {
-        find: /^@razorpay\/blade-core\/tokens$/,
-        replacement: resolve(bladeCoreRoot, 'tokens/index.ts'),
-      },
-      // Internal blade-core aliases (needed when resolving source files)
-      {
-        find: /^~utils(\/.*)?$/,
-        replacement: resolve(bladeCoreRoot, 'utils$1'),
-      },
-      {
-        find: /^~tokens(\/.*)?$/,
-        replacement: resolve(bladeCoreRoot, 'tokens$1'),
-      },
-      {
-        find: /^~src(\/.*)?$/,
-        replacement: resolve(bladeCoreRoot, '$1'),
-      },
+    config.plugins = [
+      // The framework compiles no `.svelte` itself: it expects the app's plugin.
+      svelte(),
+      ...(config.plugins ?? []),
+      // The Icon gallery imports the whole set, so the font holds every glyph.
+      ...bladePlugin(),
+      UnoCSS({
+        configFile: resolve(packageRoot, 'uno.config.ts'),
+        // Class maps live in plain `.ts` (`styles.ts`), which the default
+        // pipeline does not scan.
+        content: {
+          pipeline: { include: [/\.(svelte|ts)($|\?)/] },
+        },
+      }),
     ];
     return config;
   },

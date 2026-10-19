@@ -164,6 +164,21 @@ const colorKeywordRules: Rule[] = [
   ...keywords('color', { 'text-current': 'currentColor', 'text-inherit': 'inherit' }),
   ...keywords('fill', { 'fill-none': 'none', 'fill-current': 'currentColor' }),
   ...keywords('stroke', { 'stroke-none': 'none', 'stroke-current': 'currentColor' }),
+  // Blade's ProgressBar draws its circular track and fill in background tokens
+  ...keywords(
+    'stroke',
+    Object.fromEntries(
+      [
+        'feedback-background-neutral-subtle',
+        'feedback-background-neutral-intense',
+        'feedback-background-information-intense',
+        'feedback-background-positive-intense',
+        'feedback-background-notice-intense',
+        'feedback-background-negative-intense',
+        'surface-background-primary-intense',
+      ].map((token) => [`stroke-${token.replace('-background', '')}`, color(token)]),
+    ),
+  ),
   ...keywords('accent-color', { 'accent-current': 'currentColor' }),
 ];
 
@@ -437,7 +452,7 @@ const rem = (value: string | number): string => `${round(Number(value) / ROOT_FO
 /**
  * The faces read blade-core's `--font-family-text`, `--font-family-heading` and
  * `--font-family-code`, so an app sets its own (a merchant's). The heading face
- * falls back to `Tasa` (src-cx/blade.css), then Arial sized to TASA Orbiter, so
+ * falls back to `Tasa` (src/blade.css), then Arial sized to TASA Orbiter, so
  * the swap does not shift the layout.
  */
 // Blade's weights and its text and code faces under Tailwind's names
@@ -495,7 +510,7 @@ const typographyRules: Rule[] = [
   // `font-normal`…`font-bold`, `font-sans`, `font-mono`, `font-heading`.
   ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
-  // it enables (src-cx/plugin). A glyph is text, so this resets everything
+  // it enables (src/plugin). A glyph is text, so this resets everything
   // text inherits that would bend it. The glyph itself is generated content
   // (`::before` from `data-glyph`), never a text node: an icon acts like an
   // image, not selectable, copyable or found by find-in-page.
@@ -642,7 +657,7 @@ const fractionRules: Rule[] = [
 /**
  * Tailwind's percentage scale, as an app's Tailwind means it: `opacity-0`,
  * `opacity-50` → 0.5, `opacity-[.65]`. Blade's own scale is `opacity-blade-*`
- * (src-cx/blade.css): its `100` is 0.09, so it cannot share these names.
+ * (src/blade.css): its `100` is 0.09, so it cannot share these names.
  */
 const opacityRules: Rule[] = [
   ...rules(
@@ -922,6 +937,14 @@ const namedShadows: Scale = {
   // Blade's focus ring, on its own and inset
   focus: focusRing(FOCUS_PRIMARY),
   'focus-inset': `inset ${focusRing(FOCUS_PRIMARY)}`,
+  // Blade's CardGroup: the raised surface's rim and lip, redrawn over the rows
+  // (their fills cover the surface's own); a picked row's 1.5px primary ring,
+  // and the 4px faded primary focus ring, both inset as the group clips.
+  'card-group-rim': `inset 0px 0px 0px 1px ${color(
+    'interactive-border-gray-disabled',
+  )}, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
+  'card-group-picked': `inset 0 0 0 1.5px ${color('surface-border-primary-normal')}`,
+  'card-group-focus': `inset 0 0 0 4px ${color('interactive-border-primary-faded')}`,
   'focus-negative': focusRing(FOCUS_NEGATIVE),
   'focus-neutral': focusRing(FOCUS_NEUTRAL),
   ...Object.fromEntries(
@@ -1095,6 +1118,15 @@ const counterKeyframes = {
   oscillate: '0%, 100% { left: -40% } 25%, 75% { left: 50% } 50% { left: 100% }',
 };
 
+// Blade's ProgressBar: a white sheen pulsing over the fill; indeterminate, a
+// short fill sliding across and stretching mid-way; the circular fill dimming.
+const progressBarKeyframes = {
+  'progress-pulse': '0%, 100% { opacity: 0 } 50% { opacity: 0.25 }',
+  'progress-slide':
+    '0% { left: -8%; transform: scaleX(1) } 50% { left: 50%; transform: scaleX(5) } 100% { left: 103%; transform: scaleX(1) }',
+  'progress-ring-pulse': '0%, 100% { opacity: 1 } 50% { opacity: 0.65 }',
+};
+
 /** Blade's Skeleton pulse: 2xgentle on, xmoderate off, alternating */
 // Blade's PulseAnimation: fade in over 2xgentle (`both`, so reduced motion,
 // which drops the animation, still shows the bone), then pulse, alternating.
@@ -1115,6 +1147,9 @@ const animationRules: Rule[] = keywords('animation', {
   'animate-slide-up': `slide-up ${motion.duration.quick}ms ease-out`,
   'animate-slide-down': `slide-down ${motion.duration.quick}ms ease-out`,
   'animate-oscillate': `oscillate ${motion.duration['2xgentle']}ms linear infinite`,
+  'animate-progress-pulse': `progress-pulse ${motion.duration['2xgentle']}ms ${motion.easing.emphasized} ${motion.delay.long}ms infinite`,
+  'animate-progress-slide': `progress-slide ${motion.duration['2xgentle']}ms linear infinite`,
+  'animate-progress-ring-pulse': `progress-ring-pulse ${motion.duration['2xgentle']}ms ${motion.easing.emphasized} infinite`,
 });
 
 // ===== Interaction =====
@@ -1464,7 +1499,7 @@ const preflights = [
   },
   {
     getCSS: () =>
-      Object.entries({ ...keyframes, ...counterKeyframes })
+      Object.entries({ ...keyframes, ...counterKeyframes, ...progressBarKeyframes })
         .map(([name, frames]) => `@keyframes ${name} { ${frames} }`)
         .join('\n'),
   },
@@ -1579,7 +1614,7 @@ function mergeOwnership(
 
 /**
  * Blade's UnoCSS config. The app compiles Blade's CSS itself — scanning the
- * package's `src-cx` (or the modules it bundles) — so `options` reach the
+ * package's `src` (or the modules it bundles) — so `options` reach the
  * output; there is no prebuilt stylesheet. The default export is this with
  * the defaults (Storybook, the tests).
  */

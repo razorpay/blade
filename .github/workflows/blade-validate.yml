@@ -31,9 +31,6 @@ jobs:
       - name: Build Blade
         run: yarn build
         working-directory: packages/blade
-      - name: Build Blade Svelte
-        run: yarn build
-        working-directory: packages/blade-svelte
       - name: Lint Blade
         run: yarn lint:blade
       - name: Lint Blade Core
@@ -102,7 +99,7 @@ jobs:
         working-directory: packages/blade-svelte
 
   svelte-e2e:
-    name: Run Svelte cx E2E Tests
+    name: Run Svelte E2E Tests
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase

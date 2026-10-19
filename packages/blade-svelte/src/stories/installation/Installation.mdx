@@ -1,0 +1,206 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Installation" />
+
+# Installation
+
+`@razorpay/blade-svelte` is a Svelte 5 component library shipped as source.
+Its styles are utility classes that your build compiles with UnoCSS from
+Blade's config, so the package has no prebuilt stylesheet to import.
+
+## Prerequisites
+
+- Node.js 18.12 or later
+- Svelte 5.56.10 or later
+- UnoCSS 66 or later
+
+## 1. Install the packages
+
+`svelte` and `unocss` are peer dependencies, so install them with the package:
+
+```bash
+# yarn
+yarn add @razorpay/blade-svelte svelte unocss
+
+# npm
+npm install @razorpay/blade-svelte svelte unocss
+```
+
+`@razorpay/blade-core` (design tokens) is installed as a dependency.
+`@razorpay/i18nify-js` (1.12.8 or later) is an optional peer dependency: the
+components do not import it, but the PhoneNumberInput stories build their
+country list from its dial codes and flags, and an app can do the same.
+
+## 2. Compile the CSS
+
+Make a `uno.config.ts` from Blade's config. The `content.filesystem` entry
+lets UnoCSS see the classes inside the package.
+
+```ts
+// uno.config.ts
+import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
+
+export default {
+  ...bladeUnoConfig({ desktop: '62.5rem' }), // the default breakpoint
+  content: {
+    filesystem: [
+      './src/**/*.{svelte,ts}',
+      './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}',
+    ],
+  },
+};
+```
+
+Emit the stylesheet with the UnoCSS plugin your bundler uses. With Vite:
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import UnoCSS from 'unocss/vite';
+import bladePlugin from '@razorpay/blade-svelte/configs/vite';
+
+export default defineConfig({
+  plugins: [svelte(), UnoCSS(), bladePlugin()],
+});
+```
+
+With webpack 5:
+
+```js
+// webpack.config.js
+import UnoCSS from '@unocss/webpack';
+import bladePlugin from '@razorpay/blade-svelte/configs/webpack';
+
+export default {
+  resolve: {
+    extensions: ['.ts', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main'],
+    conditionNames: ['svelte', 'browser', 'import', 'default'],
+  },
+  module: {
+    rules: [
+      // Rune modules (`*.svelte.ts`): svelte-loader 3.2+ compiles the runes
+      // but takes no TypeScript, so a TS loader strips the types first.
+      { test: /\.svelte\.ts$/, use: ['svelte-loader', 'ts-loader'] },
+      // Other TypeScript; the lookbehind keeps rune modules out of this rule.
+      { test: /(?<!\.svelte)\.ts$/, use: 'ts-loader' },
+      { test: /\.(svelte|svelte\.js)$/, use: 'svelte-loader' },
+      // Svelte's own ESM files import without extensions.
+      { test: /node_modules\/svelte\/.*\.mjs$/, resolve: { fullySpecified: false } },
+    ],
+  },
+  plugins: [UnoCSS(), bladePlugin()],
+};
+```
+
+The package ships Svelte 5 source, `.svelte` components over `.svelte.ts`
+rune modules, so these rules must reach into `node_modules`: do not add an
+`exclude` for it. A babel-based setup works the same way with
+`@babel/preset-typescript` in place of `ts-loader`.
+
+With another bundler, `@unocss/postcss` and an `@unocss;` directive in a
+stylesheet emit the utilities.
+
+`bladePlugin` is optional: it builds one `blade-icons` font from the icons
+your app imports. Without it, each icon is its SVG, drawn as a mask. Under
+webpack, give SVGs an asset rule in that case.
+
+## 3. Import the stylesheets
+
+Once, in your app entry:
+
+```ts
+import 'virtual:uno.css'; // the compiled utilities (Vite)
+import '@razorpay/blade-svelte/blade.css'; // Blade's resets and fonts (Tasa, Inter)
+```
+
+## 4. Use the components
+
+Everything is on `@razorpay/blade-svelte/components`; the icons are on
+`@razorpay/blade-svelte/icons`.
+
+```svelte
+<script lang="ts">
+  import { BladeProvider, Button, TextInput } from '@razorpay/blade-svelte/components';
+  import { ArrowRightIcon } from '@razorpay/blade-svelte/icons';
+
+  let name = $state('');
+</script>
+
+<BladeProvider>
+  <TextInput bind:value={name} label="Name" />
+  <Button trailingIcon={ArrowRightIcon}>Continue</Button>
+</BladeProvider>
+```
+
+`BladeProvider` is optional. It sets a default `size` for every sized
+control, per-component `defaults`, and the app `adapters` (analytics,
+router, haptics, announcements, locale, the form, error capture; see the
+Adapters guide).
+
+Components are mobile first. Their desktop styles are `d:` classes, and
+`max-d:` is below the breakpoint; your own markup can use the same variants.
+
+### Overlays and toasts
+
+`BladeProvider` hosts the overlays and the toasts: put it inside the frame
+overlays must stay within (a positioned element).
+
+```svelte
+<div class="relative h-full">
+  <BladeProvider toastsLabel="Notifications">
+    <App />
+  </BladeProvider>
+</div>
+```
+
+Modals mount in its surfaces box, under its one scrim, and floating
+overlays (menus, popovers, tooltips, toasts) append after that box, so a
+popover opened inside a modal paints above the modal. Drive them from
+outside through `adapters`, read when the provider mounts: `layers`
+(`createLayers()`, whose `back()` your router calls) and `toasts`
+(`createToasts()`, or the page's `showToast`).
+
+## Theming
+
+The components read blade-core's token variables, with the light theme as the
+fallback. Set a variable anywhere up the tree to theme what is under it:
+
+```css
+:root {
+  --interactive-background-primary-default: hsl(330 80% 45%);
+  --interactive-text-on-primary-normal: #fff;
+  --font-family-text: Georgia, serif;
+}
+```
+
+## Your own classes, without Tailwind
+
+Pass your `tailwind.config.js` theme to `bladeUnoConfig` and Blade generates
+Tailwind v3's utilities from it in the same pass, so an app can drop
+Tailwind:
+
+```ts
+export default {
+  ...bladeUnoConfig({
+    desktop: '62.5rem',
+    theme: {
+      colors: { primary: { DEFAULT: 'hsl(var(--primary) / <alpha-value>)' } },
+      extend: { spacing: { 19: '4.75rem' } },
+    },
+    variants: { 'quick-buy': '[data-quick-buy="true"] &' },
+    preflight: true,
+  }),
+  content: {
+    filesystem: [
+      './src/**/*.{svelte,ts}',
+      './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}',
+    ],
+  },
+};
+```
+
+The package README covers the details: which Tailwind features are
+generated, how the preflight and Blade's resets layer, and the full list of
+theme variables.

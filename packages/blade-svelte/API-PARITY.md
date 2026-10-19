@@ -1,16 +1,49 @@
-# API parity: Blade React ↔ src-cx
+# API parity: Blade React ↔ blade-svelte
 
-Where src-cx differs from Blade React (`packages/blade/src/components`), one
-component at a time. For each common component, src-cx matches React's look and
+Where blade-svelte differs from Blade React (`packages/blade/src/components`), one
+component at a time. For each common component, blade-svelte matches React's look and
 its API (props, variants), except where one of the rules below applies.
 
-**Not exported yet:** Modal, BottomSheet, Drawer, Collapsible and Card are built
-and documented below, but the package does not export them.
-`openModal` stays exported, as PhoneNumberInput opens its country picker
-on the modal stack, which OverlayStack renders. Meanwhile
-`@razorpay/blade-svelte/components` (`components-entry.ts`) is the cx set
-(`index.ts`) plus Blade's Modal and BottomSheet from `src/`; Drawer has no
-`src/` counterpart. The package has no root entry.
+**Exports:** `@razorpay/blade-svelte/components` (`components-entry.ts`) is
+the cx set (`index.ts`), the overlays included (Modal, BottomSheet, Drawer,
+Popover, Menu). Nothing from `src/` is exported, and there is no `/utils`
+subpath. Collapsible is built and documented below but not exported yet. The
+package has no root entry.
+
+**UI parts only.** Blade ships what React's Blade ships: UI parts. The
+headless hosts and flows around them, and the extras built on the parts, are
+the app's, and moved out of the library; an app builds them on Blade's
+public entries (`/components`, and `/runes`, the few runes an app
+composes on):
+
+| The app's                                                                                                      | What the library keeps for it                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| A form (`createForm`)                                                                                          | `adapters.form` (`FormAdapter`): fields register (a `FieldRecord`: `element()`, `reveal()`), report edits and show `errorOf`; submit buttons submit. Validation, when an error shows, document order and which field to reveal are the form's |
+| An opener (overlays opened from code)                                                                          | The overlay host BladeProvider renders; back (`back()`); the dropdown           presenter's contract (`adapters.presentDropdown`, `PresentDropdownAdapter`)                 |
+| Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose. `ComponentStyleProps` is an interface, so they take provider defaults too                                                                              |
+
+**Web only.** The `.native.svelte` twins moved out too: a consumer with a
+native renderer implements its own, over the same classes.
+
+An app composes them from the public components, and from what else is
+public: `/components` exports `useComponentDefaults` and `getAdapters`
+(adapters are passed through BladeProvider); `/runes` is not the runes
+layer but the small set an app composes its own hosts and flows on:
+`createLayerStack` (`Layer`), `defineContext`, `longestTransition` and
+`phaseTransition`, `isPromise`, `phoneDigits`, `isGlyph` (`Glyph`,
+`IconSource`), and the types `BackAnswer` and `FieldConstraints`. Across
+the boundary go plain functions, promises and data, not
+handles or registries: a field record's `element()` and `reveal()`,
+`showToast`'s promise, `back()`, `presentDropdown`'s promise, and the
+overlay gutter as a CSS variable (`--overlay-gutter`). A withdrawal is a
+`cancelled: Promise<void>` that resolves once and never rejects, not an
+`AbortSignal`: older engines have none, and a signal can't cross a bridge
+to a native host (`request.cancelled.then(() => bridge.send('…dismiss'))`
+can). `createCancel()` makes one; a request Blade hands over is never
+already cancelled. The components'
+own runes stay internal. There is no
+overlay base component: an app's overlay composes Modal, BottomSheet,
+Drawer, Popover or Menu.
 
 ## Rules
 
@@ -22,17 +55,24 @@ on the modal stack, which OverlayStack renders. Meanwhile
    etc. directly. Their props go too, when a snippet covers them (a header's
    `subtitle`, `leading`, `trailing`, back button). Only what behaviour or
    accessibility needs stays a prop, such as a `title` that names a dialog.
+   **Exception:** Card, Modal, BottomSheet and Drawer compose React's parts
+   (`CardHeader`, `CardBody`, `CardFooter`, `ModalHeader`, `ModalBody`,
+   `ModalFooter`, `BottomSheet*`, `Drawer*`), each its own component over
+   its own exported classes; the overlays' headers build on CardHeader.
+   Popover and Menu keep the snippets (drawn by an internal
+   OverlaySections, which Modal, BottomSheet and Drawer never load).
 3. **`defaultValue`, `defaultChecked`, `defaultCountry`, `defaultExpandedIndex`, …
    are folded into the bindable prop** (`bind:value`, …). There is no separate
    default prop.
 4. **Collections compose, as in React**: item components (`CardGroupItem`,
-   `OptionItem`, `MenuItem`, …) register with their parent and are read in
+   `MenuItem`, …) register with their parent and are read in
    document order, so anything else may sit between them (a heading, a
    divider). A collection is data plus an item snippet only where it must
-   know every item up front: a virtual list (`VirtualOptionList`) and
-   `Carousel`. The headless core is `runes/base/choice-list.svelte.ts`
-   (OptionList, CardGroup, Tabs, RadioGroup, ChipGroup) over
-   `runes/base/ordered-entries.svelte.ts` (also Menu, InputGroup, Form).
+   know every item up front: `Carousel`, and a long CardGroup or ActionList
+   (`items` or `sections` with a `row` snippet, for `isVirtualized`). The
+   headless core is `runes/base/choice-list.svelte.ts` (CardGroup, Tabs,
+   RadioGroup, ChipGroup) over `runes/base/ordered-entries.svelte.ts` (also
+   InputGroup, OTPInput, Breadcrumb, AvatarGroup).
 5. **The look follows React.** Checkout-specific looks are dropped and noted per
    component.
 6. **cx-only features** (props React lacks) are listed per component with a
@@ -72,288 +112,312 @@ on the modal stack, which OverlayStack renders. Meanwhile
     variables. The provider takes an overall `size`, which every sized
     control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
     ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
-    per-component `defaults` for any style prop; and `adapters`. No value
-    differs per breakpoint and nothing reads the viewport in JS: components
-    are mobile first, and their desktop differences are `d:` classes (one
-    breakpoint, 62.5rem — checkout's). A prop wins;
+    per-component `defaults` for any style prop; `adapters` (app services,
+    plus `toasts`, the app's queue, and `presentDropdown`, the app's
+    presenter for library dropdowns; see rule 15). No value differs per breakpoint and
+    nothing in the library reads the viewport in JS: an app's own components
+    that switch by screen read it themselves (`matchMedia` on the query `d:`
+    uses). Components are mobile first, and their desktop
+    differences are `d:` classes (one breakpoint, 62.5rem — checkout's). A prop wins;
     then, nearest provider first, its entry for the component, then its
     overall `size`; then Blade's default. React's `themeTokens` and
-    `colorScheme` are not ported. Modal's `variant` (`modal | sheet | drawer | left-drawer | popover | menu`) replaces BottomSheet's `adaptive` (Modal is not exported
-    yet), and Modal's `presentation` (`anchored | sheet`), set through the provider, shows every popover and menu as a bottom sheet on phones (see Overlays).
+    `colorScheme` are not ported. BottomSheet's `adaptive` is not ported: an overlay that switches by screen is the app's own (see Overlays).
 12. **Change callbacks take Blade's payload object**: a field reports
     `onChange({ name, value })` (`FieldChange`, `components/shared/change.ts`),
-    Checkbox `onChange({ isChecked, value })`, Switch
-    `onChange({ isChecked })`, ChipGroup `onChange({ name, values })` (a
-    list either way), Collapsible (not exported yet) `onExpandChange({ isExpanded })`, Popover,
-    Tooltip `onOpenChange({ isOpen })`, PhoneNumberInput
-    `onCountryChange({ country })`, OTPInput `onOTPFilled({ name, value })`.
+    Checkbox and Switch `onChange({ isChecked, value })`, ChipGroup,
+    CardGroup and ActionList `onChange({ name, value })` with `value`
+    shaped as `bind:value` (an array with `multiple`; React's groups send
+    `values`, a list even for one pick), their items' `onClick({ name, value, event })`
+    (`name` the item's value, `value` whether it was selected),
+    Collapsible (not exported yet) `onExpandChange({ isExpanded })`, every
+    overlay and Tooltip `onOpenChange({ isOpen })`, PhoneNumberInput
+    `onCountryChange({ country })`, OTPInput `onOTPFilled({ name, value, method })`
+    (`method` is cx's addition, as on its `onChange`).
     PhoneNumberInput's `onChange` is the exception: `{ country, dialCode, nationalNumber, value }`, with no `name`.
-    Blade's `event` is not passed. Where Blade passes a bare value, so does
-    cx: Tabs and Carousel `onChange(value)`. A popover or menu (Modal)
-    binds `isOpen` and reports dismissals through `onDismiss`.
+    Blade's `event` is not passed, except to an item's `onClick`. Where
+    Blade passes a bare value, so does cx: Tabs and Carousel
+    `onChange(value)`. Every overlay binds `isOpen` and reports dismissals
+    through `onDismiss`.
     `onFocus`/`onBlur` pass the DOM event (OTPInput's also the cell's index).
 13. **`children` is the trigger, `content` what it reveals**, as in React
     (Tooltip; Collapsible, not exported yet). `children` is a snippet
     that reads the state: `{ isOpen }`,
     Collapsible's `{ isExpanded }`; the wrapper around it listens, so the
     trigger wires nothing. `content` is Tooltip's text (`string | Snippet`)
-    and Collapsible's body (React's CollapsibleBody). There is no `trigger`
-    prop — except on Modal, whose `children` was its raw body before it
-    grew the anchored variants: its trigger is the `trigger` snippet (see
-    Overlays).
+    and Collapsible's body (React's CollapsibleBody), as it is Popover's
+    and Menu's raw content (in place of `body` and `footer`) and a
+    CardGroupItem's disclosed part. There is no `trigger` prop. Modal,
+    BottomSheet and Drawer have no trigger at all (they open from code),
+    so their `children` is the content (see Overlays).
 14. **A slot named by position takes `IconSource | Snippet`** (`leading`,
     `trailing`, `titleLeading`): an icon is drawn as the component's glyph,
     a snippet in the asset box. `icon` exists only where there is one glyph
     and no slot: Button, Link, IconButton, Badge, Alert, Avatar,
     BreadcrumbItem, AnnouncementBanner, and EmptyState's title glyph. One
     slot takes an icon or a snippet, not both.
+15. **The app's services are adapters** (BladeProvider's `adapters`,
+    `BladeAdapters`). They are live: components read them through getters,
+    so an adapter the app swaps reaches what is mounted (`toasts` is read
+    when the provider mounts). An adapter left out is the
+    enclosing provider's; `null` unsets it for the subtree
+    (`BladeAdaptersOverride`). Beside `toasts`, `form` and
+    `presentDropdown`:
+    - `track(event, payload)`: `field_change` sends `{ name }` only.
+    - `navigate(href, event)`: every `href` renderer (Link, a link Button,
+      Card, Avatar, BreadcrumbItem, a link row, a link tab) shares
+      `createLink` (`runes/link/link.ts`): a plain click on an internal href
+      goes to the router, and `target="_blank"` adds `noopener noreferrer`
+      to the caller's `rel`. React has no router hook.
+    - `announce(message)`: one polite live region per overlay host (the
+      default). Button and IconButton say `loadingAnnouncement` and
+      `loadedAnnouncement` ("Started loading", "Stopped loading"), where
+      React's LiveAnnouncer says fixed English.
+    - `locale`: Amount's locale, reactive; i18nify's global state is the
+      fallback. cx-only.
+    - `vibrate(kind)`: `press` (a button), `select` (Radio, Chip), `toggle`
+      (Checkbox, Switch), `warning` (a press a form refused). Blade only
+      reports. cx-only.
+    - `readOTP({ length, cancelled })`: OTPInput asks it once mounted and
+      enabled, for a native host's SMS retriever or the WebOTP API. A
+      resolved code fills the cells as a paste does (`otp_fill` with
+      `method: 'adapter'`, never the code); `undefined` and a result after
+      the cancel (a rejection too) are ignored; otherwise a rejection goes
+      to `reportError`. `cancelled` resolves on unmount, on `isDisabled`,
+      and on the user's first edit. The owner resetting `value` to `''` (a
+      resend) asks again once the field is enabled and editable; a request
+      still pending then is kept, not doubled. A user clearing the cells by
+      hand does not ask again.
+      React only sets `autoComplete="one-time-code"`. cx-only.
+    - `data-analytics-*` props land where React's do, on every component
+      (a toast takes them in `showToast`'s options).
 
 ## Inventory
 
-Status: `common` means present on both sides, `react-only` means src-cx lacks it,
+Status: `common` means present on both sides, `react-only` means blade-svelte lacks it,
 `cx-only` means React lacks it, and `n/a` means internal, a motion preset, or
 replaced by a rule.
 
-| React                                                     | src-cx                                                                       | Status                                                                                                                                                                           |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion                                                 | `card-group` (renamed `CardGroup`)                                           | common, **done**; cx names it CardGroup (see below)                                                                                                                              |
-| ActionList                                                | `action-list` (ActionList, ActionListItem, ActionListSection)                | common, **done**: Dropdown's rows, and a standalone pick list over OptionList (see ActionList)                                                                                   |
-| Alert                                                     | `alert`                                                                      | common, **done**                                                                                                                                                                 |
-| Amount                                                    | `amount`                                                                     | common, **done**                                                                                                                                                                 |
-| AnimateInteractions                                       | —                                                                            | n/a (motion)                                                                                                                                                                     |
-| AnnouncementBanner                                        | `announcement-banner`                                                        | common, **done**: Blade DSL's Announcement Banner (Figma) (see AnnouncementBanner)                                                                                               |
-| AppBar                                                    | —                                                                            | react-only                                                                                                                                                                       |
-| AutoComplete                                              | —                                                                            | react-only                                                                                                                                                                       |
-| Avatar, AvatarGroup                                       | `avatar`                                                                     | common, **done**: Blade DSL's Avatar and Avatar Group (Figma) (see Avatar)                                                                                                       |
-| Badge                                                     | `badge`                                                                      | common, **done**                                                                                                                                                                 |
-| BaseAnimatedValue, BaseHeaderFooter, BaseMenu, BaseMotion | —                                                                            | n/a (internal)                                                                                                                                                                   |
-| BladeProvider                                             | `blade-provider`                                                             | **different**: component defaults, not theme tokens (rule 11); `Modal.presentation` shifts popovers and menus to bottom sheets (see Overlays)                                    |
-| BottomBar                                                 | `bottom-bar`                                                                 | common, **done**: Blade DSL's Bottom Bar (Figma), a container; positioning is the consumer's (see BottomBar)                                                                     |
-| BottomDock                                                | —                                                                            | react-only                                                                                                                                                                       |
-| BottomNav                                                 | —                                                                            | react-only                                                                                                                                                                       |
-| BottomSheet                                               | `bottom-sheet`                                                               | common, **done**; **not exported**                                                                                                                                               |
-| Box                                                       | —                                                                            | n/a (rule 1)                                                                                                                                                                     |
-| Breadcrumb                                                | `breadcrumb`                                                                 | common, **done**: Blade DSL's Breadcrumb (Figma), subtle and intense (see Breadcrumb)                                                                                            |
-| Button / IconButton                                       | `button` / `icon-button`                                                     | common, **done**                                                                                                                                                                 |
-| ButtonGroup                                               | `button-group`                                                               | common, **done** (new)                                                                                                                                                           |
-| Card                                                      | `card`                                                                       | common, **done**; **not exported**                                                                                                                                               |
-| Carousel                                                  | `carousel`                                                                   | common                                                                                                                                                                           |
-| Charts                                                    | —                                                                            | react-only                                                                                                                                                                       |
-| ChatInput, ChatMessage                                    | —                                                                            | react-only                                                                                                                                                                       |
-| Checkbox                                                  | `checkbox`                                                                   | common, **done**                                                                                                                                                                 |
-| Chip, ChipGroup                                           | `chip`                                                                       | common, **done** (new)                                                                                                                                                           |
-| Collapsible                                               | `collapsible`                                                                | common, **done** (new); **not exported**                                                                                                                                         |
-| Confirmation                                              | —                                                                            | react-only                                                                                                                                                                       |
-| Counter                                                   | `counter`                                                                    | common, **done** (new)                                                                                                                                                           |
-| CounterInput                                              | `counter-input`                                                              | common, **done** (new)                                                                                                                                                           |
-| CreationView                                              | —                                                                            | react-only                                                                                                                                                                       |
-| DatePicker                                                | —                                                                            | react-only                                                                                                                                                                       |
-| DetailedView                                              | —                                                                            | react-only                                                                                                                                                                       |
-| Divider                                                   | `divider`                                                                    | common, **done**                                                                                                                                                                 |
-| DotLoader                                                 | —                                                                            | react-only (cx Button draws its own loader)                                                                                                                                      |
-| Drawer                                                    | `drawer`                                                                     | common, **done** (Modal's `drawer` variant; `left-drawer` docks it left); **not exported**                                                                                       |
-| Dropdown                                                  | —                                                                            | **not ported** by decision: a select dropdown is not mobile friendly. A pick list is ActionList on the page or in a Modal sheet; an action list is Modal's `menu` (see Overlays) |
-| Elevate, Fade, Morph, Move, Scale, Slide, Stagger         | —                                                                            | n/a (motion)                                                                                                                                                                     |
-| EmptyState                                                | `empty-state`                                                                | common, **done**                                                                                                                                                                 |
-| FileUpload                                                | —                                                                            | react-only                                                                                                                                                                       |
-| FilterChip                                                | —                                                                            | react-only                                                                                                                                                                       |
-| FloatingActionButton                                      | —                                                                            | react-only                                                                                                                                                                       |
-| Form (FormLabel, FormHint, CharacterCounter)              | `shared/FieldLabel`, `shared/FieldHint`, `shared/FieldCounter`               | common, **done** (cx's `form`, a `<form>` with field registration, is cx-only)                                                                                                   |
-| FormGroup                                                 | —                                                                            | react-only                                                                                                                                                                       |
-| GenUI                                                     | —                                                                            | react-only                                                                                                                                                                       |
-| Icons                                                     | `icon`, `@razorpay/blade-svelte/icons`, `/vite`, `/webpack`                  | common, **done**: Blade's icons by name, as SVG imports; a font plugin makes them glyphs (see Icons)                                                                             |
-| Indicator                                                 | —                                                                            | react-only                                                                                                                                                                       |
-| InfoGroup                                                 | —                                                                            | react-only                                                                                                                                                                       |
-| Input / TextInput                                         | `text-input`                                                                 | common, **done**                                                                                                                                                                 |
-| Input / TextArea                                          | `text-area`                                                                  | common, **done**                                                                                                                                                                 |
-| Input / OTPInput                                          | `otp-input`                                                                  | common, **done**                                                                                                                                                                 |
-| Input / PhoneNumberInput                                  | `phone-number-input`                                                         | common, **done**                                                                                                                                                                 |
-| Input / PasswordInput                                     | `password-input`                                                             | common (new): over TextInput                                                                                                                                                     |
-| Input / SearchInput                                       | `search-input`                                                               | common (new): over TextInput; `isLoading` and a trailing Dropdown are gaps                                                                                                       |
-| Input / PaymentInput, ColorInput, SliderInput             | —                                                                            | react-only                                                                                                                                                                       |
-| SelectInput, AutoComplete                                 | —                                                                            | **not ported** by decision: a select dropdown is not mobile friendly (see Overlays)                                                                                              |
-| InputGroup                                                | `input-group`                                                                | common, **done**                                                                                                                                                                 |
-| LightBox                                                  | —                                                                            | react-only                                                                                                                                                                       |
-| Link                                                      | `link`                                                                       | common, **done**                                                                                                                                                                 |
-| List                                                      | —                                                                            | react-only                                                                                                                                                                       |
-| ListView                                                  | —                                                                            | react-only                                                                                                                                                                       |
-| LiveAnnouncer                                             | —                                                                            | n/a                                                                                                                                                                              |
-| Menu                                                      | `modal` (`variant="menu"`) + ActionList                                      | common, **done**: Modal's `menu` variant with an ActionList inside; no Menu, MenuItem or MenuDivider component (see Overlays)                                                    |
-| Modal                                                     | `modal`                                                                      | common, **done**; **not exported** (`openModal` is; OverlayStack renders its modals). Also Blade's Popover and Menu, as variants (see Overlays)                                  |
-| OverlayContextReset                                       | —                                                                            | n/a                                                                                                                                                                              |
-| Pagination                                                | —                                                                            | react-only                                                                                                                                                                       |
-| Popover                                                   | `modal` (`variant="popover"`)                                                | common, **done**: Modal's `popover` variant; no Popover component. Click only (see Overlays)                                                                                     |
-| PopupArrow                                                | —                                                                            | n/a (internal)                                                                                                                                                                   |
-| Preview                                                   | —                                                                            | react-only                                                                                                                                                                       |
-| ProgressBar                                               | — (`progress` is a different thing)                                          | react-only; cx's `progress` is a loader (dots, bar, ring) with no value, label or colour, so it counts as cx-only (Storybook: Extra Components)                                  |
-| QuickFilters                                              | —                                                                            | react-only                                                                                                                                                                       |
-| Radio                                                     | `radio`                                                                      | common, **done**                                                                                                                                                                 |
-| RollingText                                               | —                                                                            | react-only                                                                                                                                                                       |
-| SegmentedControl                                          | `segmented-control`                                                          | common, **done**                                                                                                                                                                 |
-| SelectableCard                                            | —                                                                            | react-only                                                                                                                                                                       |
-| Settings                                                  | —                                                                            | react-only                                                                                                                                                                       |
-| SideNav                                                   | —                                                                            | react-only                                                                                                                                                                       |
-| Skeleton                                                  | `skeleton`                                                                   | common, **done**                                                                                                                                                                 |
-| SkipNav                                                   | —                                                                            | react-only                                                                                                                                                                       |
-| Spark                                                     | —                                                                            | react-only                                                                                                                                                                       |
-| Spinner                                                   | —                                                                            | react-only                                                                                                                                                                       |
-| SpotlightPopoverTour                                      | —                                                                            | react-only                                                                                                                                                                       |
-| StepGroup                                                 | —                                                                            | react-only                                                                                                                                                                       |
-| Switch                                                    | `switch`                                                                     | common, **done**                                                                                                                                                                 |
-| Table                                                     | —                                                                            | react-only                                                                                                                                                                       |
-| Tabs                                                      | `tabs`                                                                       | common, **done**                                                                                                                                                                 |
-| Tag                                                       | —                                                                            | react-only                                                                                                                                                                       |
-| TimePicker                                                | —                                                                            | react-only                                                                                                                                                                       |
-| Toast                                                     | `toast`                                                                      | common, **done**                                                                                                                                                                 |
-| Tooltip                                                   | `tooltip`                                                                    | common, **done**                                                                                                                                                                 |
-| TopNav                                                    | —                                                                            | react-only                                                                                                                                                                       |
-| TreeView                                                  | —                                                                            | react-only                                                                                                                                                                       |
-| TrustBadge                                                | `trust-badge`                                                                | common                                                                                                                                                                           |
-| Typography (Text, Heading)                                | `text`, `heading`                                                            | common; **known gap:** no letter-spacing (see Chip)                                                                                                                              |
-| Typography (Display, Code)                                | `display`, `code`                                                            | common, **done**: Figma's Display and Code styles (see Typography)                                                                                                               |
-| VisuallyHidden                                            | —                                                                            | n/a (`sr-only` class)                                                                                                                                                            |
-| —                                                         | `async`                                                                      | cx-only                                                                                                                                                                          |
-| —                                                         | `countdown`                                                                  | cx-only                                                                                                                                                                          |
-| —                                                         | `image`                                                                      | cx-only                                                                                                                                                                          |
-| —                                                         | `layer` (OverlayStack, Surface)                                              | cx-only (overlay infrastructure)                                                                                                                                                 |
-| —                                                         | `nav-stack`                                                                  | cx-only                                                                                                                                                                          |
-| —                                                         | `option-list` (OptionList, OptionItem, OptionListSection, VirtualOptionList) | cx-only: an always-visible choice list, not a popup — single, multiple or action rows (`none`), sections, and a `query` search; ActionList is it in ActionList's look            |
-| —                                                         | `screen`                                                                     | cx-only                                                                                                                                                                          |
-| —                                                         | `virtual`                                                                    | cx-only                                                                                                                                                                          |
-| —                                                         | `shared`                                                                     | n/a (internal)                                                                                                                                                                   |
+| React                                                     | blade-svelte                                                   | Status                                                                                                                                                                                                  |
+| --------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accordion                                                 | —                                                              | react-only: cx's Accordion (formerly named CardGroup) is removed; disclosure is a CardGroupItem's `content`                                                                                                |
+| ActionList                                                | `action-list` (ActionList, ActionListItem, ActionListSection)  | common, **done**: a look over CardGroup (Menu's rows), `actionListClasses()` exported; `isVirtualized` over data rows; no search (see ActionList)                                                       |
+| Alert                                                     | `alert`                                                        | common, **done**                                                                                                                                                                                        |
+| Amount                                                    | `amount`                                                       | common, **done**                                                                                                                                                                                        |
+| AnimateInteractions                                       | —                                                              | n/a (motion)                                                                                                                                                                                            |
+| AnnouncementBanner                                        | `announcement-banner`                                          | common, **done**: Blade DSL's Announcement Banner (Figma) (see AnnouncementBanner)                                                                                                                      |
+| AppBar                                                    | —                                                              | react-only                                                                                                                                                                                              |
+| AutoComplete                                              | —                                                              | react-only                                                                                                                                                                                              |
+| Avatar, AvatarGroup                                       | `avatar`                                                       | common, **done**: Blade DSL's Avatar and Avatar Group (Figma) (see Avatar)                                                                                                                              |
+| Badge                                                     | `badge`                                                        | common, **done**                                                                                                                                                                                        |
+| BaseAnimatedValue, BaseHeaderFooter, BaseMenu, BaseMotion | —                                                              | n/a (internal)                                                                                                                                                                                          |
+| BladeProvider                                             | `blade-provider`                                               | **different**: component defaults, not theme tokens (rule 11)                                                                                                                                           |
+| BottomBar                                                 | `bottom-bar`                                                   | common, **done**: Blade DSL's Bottom Bar (Figma), a container; positioning is the consumer's (see BottomBar)                                                                                            |
+| BottomDock                                                | —                                                              | react-only                                                                                                                                                                                              |
+| BottomNav                                                 | —                                                              | react-only                                                                                                                                                                                              |
+| BottomSheet                                               | `bottom-sheet`                                                 | common, **done**: always a sheet; no `adaptive`                                                                                                                                                         |
+| Box                                                       | —                                                              | n/a (rule 1)                                                                                                                                                                                            |
+| Breadcrumb                                                | `breadcrumb`                                                   | common, **done**: Blade DSL's Breadcrumb (Figma), subtle and intense (see Breadcrumb)                                                                                                                   |
+| Button / IconButton                                       | `button` / `icon-button`                                       | common, **done**                                                                                                                                                                                        |
+| ButtonGroup                                               | `button-group`                                                 | common, **done** (new)                                                                                                                                                                                  |
+| Card                                                      | `card`, `card-children` (CardHeader, CardBody, CardFooter)     | common, **done**: composed as React's; each part's classes exported apart; Card does not bundle its parts                                                                                               |
+| Carousel                                                  | `carousel`                                                     | common                                                                                                                                                                                                  |
+| Charts                                                    | —                                                              | react-only                                                                                                                                                                                              |
+| ChatInput, ChatMessage                                    | —                                                              | react-only                                                                                                                                                                                              |
+| Checkbox                                                  | `checkbox`                                                     | common, **done**                                                                                                                                                                                        |
+| Chip, ChipGroup                                           | `chip`                                                         | common, **done** (new)                                                                                                                                                                                  |
+| Collapsible                                               | `collapsible`                                                  | common, **done** (new); **not exported**                                                                                                                                                                |
+| Confirmation                                              | —                                                              | react-only                                                                                                                                                                                              |
+| Counter                                                   | `counter`                                                      | common, **done** (new)                                                                                                                                                                                  |
+| CounterInput                                              | `counter-input`                                                | common, **done** (new)                                                                                                                                                                                  |
+| CreationView                                              | —                                                              | react-only                                                                                                                                                                                              |
+| DatePicker                                                | —                                                              | react-only                                                                                                                                                                                              |
+| DetailedView                                              | —                                                              | react-only                                                                                                                                                                                              |
+| Divider                                                   | `divider`                                                      | common, **done**                                                                                                                                                                                        |
+| DotLoader                                                 | `dot-loader`                                                   | common, **done** (new); cx Button draws it                                                                                                                                                              |
+| Drawer                                                    | `drawer`                                                       | common, **done**; `side: right \| left` (cx-only `left`); `DrawerHeader` (`color`, `showDivider`: default `false`, Figma draws none), `DrawerBody` (`padding`, cx-only), `DrawerFooter` (`showDivider`) |
+| Dropdown                                                  | —                                                              | **not ported** by decision: a select dropdown is not mobile friendly. A pick list is ActionList on the page or in a BottomSheet; an action list is a Menu (see Overlays)                                |
+| Elevate, Fade, Morph, Move, Scale, Slide, Stagger         | —                                                              | n/a (motion)                                                                                                                                                                                            |
+| EmptyState                                                | `empty-state`                                                  | common, **done**                                                                                                                                                                                        |
+| FileUpload                                                | —                                                              | react-only                                                                                                                                                                                              |
+| FilterChip                                                | —                                                              | react-only                                                                                                                                                                                              |
+| FloatingActionButton                                      | —                                                              | react-only                                                                                                                                                                                              |
+| Form (FormLabel, FormHint, CharacterCounter)              | `shared/FieldLabel`, `shared/FieldHint`, `shared/FieldCounter` | common, **done**; fields register with the app's form through `adapters.form` (cx-only)                                                                                                                 |
+| FormGroup                                                 | —                                                              | react-only                                                                                                                                                                                              |
+| GenUI                                                     | —                                                              | react-only                                                                                                                                                                                              |
+| Icons                                                     | `icon`, `@razorpay/blade-svelte/icons`, `/vite`, `/webpack`    | common, **done**: Blade's icons by name, as SVG imports; a font plugin makes them glyphs (see Icons)                                                                                                    |
+| Indicator                                                 | —                                                              | react-only                                                                                                                                                                                              |
+| InfoGroup                                                 | —                                                              | react-only                                                                                                                                                                                              |
+| Input / TextInput                                         | `text-input`                                                   | common, **done**                                                                                                                                                                                        |
+| Input / TextArea                                          | `text-area`                                                    | common, **done**                                                                                                                                                                                        |
+| Input / OTPInput                                          | `otp-input`                                                    | common, **done**                                                                                                                                                                                        |
+| Input / PhoneNumberInput                                  | `phone-number-input`                                           | common, **done**                                                                                                                                                                                        |
+| Input / PasswordInput                                     | `password-input`                                               | common (new): over TextInput                                                                                                                                                                            |
+| Input / SearchInput                                       | `search-input`                                                 | common (new): over TextInput; `isLoading` and a trailing Dropdown are gaps                                                                                                                              |
+| Input / PaymentInput, ColorInput, SliderInput             | —                                                              | react-only                                                                                                                                                                                              |
+| SelectInput, AutoComplete                                 | —                                                              | **not ported** by decision: a select dropdown is not mobile friendly (see Overlays)                                                                                                                     |
+| InputGroup                                                | `input-group`                                                  | common, **done**                                                                                                                                                                                        |
+| LightBox                                                  | —                                                              | react-only                                                                                                                                                                                              |
+| Link                                                      | `link`                                                         | common, **done**                                                                                                                                                                                        |
+| List                                                      | —                                                              | react-only                                                                                                                                                                                              |
+| ListView                                                  | —                                                              | react-only                                                                                                                                                                                              |
+| LiveAnnouncer                                             | —                                                              | n/a                                                                                                                                                                                                     |
+| Menu                                                      | `menu` (Menu) + any content                                    | common, **changed**: Menu's look on a `dialog` panel by its trigger (`children`); an ActionList inside is an ordinary choice list whose `onPick` closes it (see Overlays)                                          |
+| Modal                                                     | `modal`                                                        | common, **done**: the centred dialog only (no `variant`); opening from code is the app's, on these overlays                                                                                             |
+| OverlayContextReset                                       | —                                                              | n/a                                                                                                                                                                                                     |
+| Pagination                                                | —                                                              | react-only                                                                                                                                                                                              |
+| Popover                                                   | `popover` (Popover)                                            | common, **done**: a non-modal panel by its trigger (`children`, as React's) (see Overlays)                                                                                                                                     |
+| PopupArrow                                                | —                                                              | n/a (internal)                                                                                                                                                                                          |
+| Preview                                                   | —                                                              | react-only                                                                                                                                                                                              |
+| ProgressBar                                               | `progress-bar`                                                 | common, **done** (new); replaces cx's `progress` loader, which is removed                                                                                                                               |
+| QuickFilters                                              | —                                                              | react-only                                                                                                                                                                                              |
+| Radio                                                     | `radio`                                                        | common, **done**                                                                                                                                                                                        |
+| RollingText                                               | —                                                              | react-only                                                                                                                                                                                              |
+| SegmentedControl                                          | `segmented-control`                                            | common, **done**                                                                                                                                                                                        |
+| SelectableCard                                            | —                                                              | react-only                                                                                                                                                                                              |
+| Settings                                                  | —                                                              | react-only                                                                                                                                                                                              |
+| SideNav                                                   | —                                                              | react-only                                                                                                                                                                                              |
+| Skeleton                                                  | `skeleton`                                                     | common, **done**                                                                                                                                                                                        |
+| SkipNav                                                   | —                                                              | react-only                                                                                                                                                                                              |
+| Spark                                                     | —                                                              | react-only                                                                                                                                                                                              |
+| Spinner                                                   | —                                                              | react-only                                                                                                                                                                                              |
+| SpotlightPopoverTour                                      | —                                                              | react-only                                                                                                                                                                                              |
+| StepGroup                                                 | —                                                              | react-only                                                                                                                                                                                              |
+| Switch                                                    | `switch`                                                       | common, **done**                                                                                                                                                                                        |
+| Table                                                     | —                                                              | react-only                                                                                                                                                                                              |
+| Tabs                                                      | `tabs`                                                         | common, **done**                                                                                                                                                                                        |
+| Tag                                                       | —                                                              | react-only                                                                                                                                                                                              |
+| TimePicker                                                | —                                                              | react-only                                                                                                                                                                                              |
+| Toast                                                     | `toast`                                                        | common, **done**                                                                                                                                                                                        |
+| Tooltip                                                   | `tooltip`                                                      | common, **done**                                                                                                                                                                                        |
+| TopNav                                                    | —                                                              | react-only                                                                                                                                                                                              |
+| TreeView                                                  | —                                                              | react-only                                                                                                                                                                                              |
+| TrustBadge                                                | `trust-badge`                                                  | common                                                                                                                                                                                                  |
+| Typography (Text, Heading)                                | `text`, `heading`                                              | common; **known gap:** no letter-spacing (see Chip)                                                                                                                                                     |
+| Typography (Display, Code)                                | `display`, `code`                                              | common, **done**: Figma's Display and Code styles (see Typography)                                                                                                                                      |
+| VisuallyHidden                                            | —                                                              | n/a (`sr-only` class)                                                                                                                                                                                   |
+| —                                                         | `layer` (Surface), `blade-provider/OverlayHost`                | cx-only (overlay infrastructure): BladeProvider renders the overlay host and the toasts (not exported); `adapters.toasts` drives the toasts, `back()` asks the overlays                              |
+| —                                                         | `card-group` (CardGroup, CardGroupItem, CardGroupSection)      | cx-only in React's terms: Blade DSL's Card Group, the always-visible choice list (formerly OptionList) with link and disclosure rows (see CardGroup)                                 |
+| —                                                         | —                                                              | n/a: Countdown and Image are app compositions, libui's (`@razorpay/libui`), not Blade DSL parts                                                                                                         |
+| —                                                         | `shared`                                                       | n/a (internal)                                                                                                                                                                                          |
 
 ---
 
-## CardGroup (React's Accordion)
+## CardGroup
 
-React: `Accordion`, `AccordionItem`, `AccordionItemHeader`, `AccordionItemBody`.
-cx: `CardGroup` and `CardGroupItem` (`components/card-group/`) over
-`runes/card-group`. It was cx's `Accordion`, renamed (a rename only): what
-it is in checkout — cards to pick one of, the picked one expanding — is the
-CardGroup/CardGroupItem pair of Blade's interactive-cards decision. Its look
-and behaviour are React's Accordion, compared below; the tables name React's
-components on the left and cx's on the right.
-Compositional like React (rule 4): items are `CardGroupItem` children, and a
-data list is an `{#each}`.
+React has no CardGroup. The reference is `src/`'s CardGroup (Blade DSL's ❖
+Card Group): `CardGroup`, `CardGroupItem`, `CardGroupCollapsibleItem` and
+`CardGroupCollapsibleItemBody`. cx: `CardGroup` and `CardGroupItem`
+(`components/card-group/`) over `runes/card-group`, plus `CardGroupSection`. src's collapsible pair is a `body` snippet on
+`CardGroupItem` (below). CardGroup and ActionList are two looks over one
+internal `BaseCardGroup`, which neither exports.
+
+**Two changes from before this port:**
+
+- **OptionList is CardGroup now.** The rename covers OptionList, OptionItem,
+  OptionListSection, VirtualOptionList, `OptionListClasses` and the rest.
+  CardGroup inherits OptionList's engine: the value, `selectionType`, the
+  form field, the keyboard, sections and virtualisation. The search
+  (`query`/`match`/`empty`) is gone, and so is `classes`: the look is
+  CardGroup's own, and ActionList's is its own component.
+- **cx's former CardGroup is removed.** It was React's Accordion, renamed.
+  React's `Accordion` has no cx counterpart now. Disclosure is a
+  CardGroupItem's `content`.
 
 ### Props
 
-`Accordion` → `CardGroup`:
+`CardGroup` (src → cx):
 
-| React                                                      | cx                                               | Action                                                                                       |
-| ---------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `variant: 'filled' \| 'transparent'` (default transparent) | `variant`                                        | same as React; checkout's cx called it `boxed`/`plain`; default now `transparent`            |
-| `size: 'large' \| 'medium'` (default large)                | `size`                                           | **added**                                                                                    |
-| `showNumberPrefix`                                         | `showNumberPrefix`                               | **added** (`1.`, `2.`, …); wins over `leading`, as in React                                  |
-| `expandedIndex`, `defaultExpandedIndex`                    | `bind:value`                                     | rule 3. The value is the item's `value`, its index by default, so an index works as in React |
-| `onExpandChange({ expandedIndex })` (-1 = none)            | `onChange({ name, value })` (`value` or `null`)  | rule 12; `null` for none. Same behaviour: one open at a time, a second press closes it       |
-| `children: AccordionItem[]`                                | `children`                                       | same                                                                                         |
-| `maxWidth`, `minWidth`, styled props                       | `class`                                          | exempt (rule 1). React's MAX/MIN_WIDTH defaults (200–360 min, 640/800 max) are not baked in  |
-| `testID`                                                   | `testID` (each header gets `${testID}-${index}`) | same                                                                                         |
-| `data-analytics-*`                                         | —                                                | **missing**, to add with the analytics pass across components                                |
+| src                            | cx                                                                                     | Action                                                                       |
+| ------------------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `children`                     | same                                                                                   | same                                                                         |
+| `accessibilityLabel`           | same, or `label`                                                                       | same; a visible `label` names it too                                         |
+| — (selection is the caller's)  | `bind:value`, `selectionType` (`single`, `multiple`), `compare`, `isDeselectable`      | **added**: the group holds the pick, so rows are native radios or checkboxes |
+| —                              | `onChange({ name, value })`, an array with `multiple`                                  | **added**: one key, shaped as `bind:value` (React's CheckboxGroup sends `values`)                    |
+| —                              | `name`, `isRequired`, `validationState`, `helpText`, `errorText`, `isDisabled`         | **added**: a form field                                                      |
+| —                              | `onPick`                                                                               | **added**: every user pick, changed or not (pick = submit)                   |
+| —                              | `items` or `sections`, `row`, `itemKey`, `isVirtualized`, `itemText`, `isItemDisabled` | **added**: the options as data, rendered by `row`; virtualised on demand     |
+| `testID`, analytics attributes | same                                                                                   | same; each choice's control gets `${testID}-${index}` and its own analytics  |
+| styled props                   | `class`                                                                                | rule 1                                                                       |
 
-`AccordionItem` → `CardGroupItem` (React's `AccordionItemHeader` props flattened onto it):
+`CardGroupItem`:
 
-| React                                                          | cx                                      | Action                                                                                                                                                                                                                        |
-| -------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| _(index)_                                                      | `value` (default: index)                | **added**: a stable identity for `bind:value`                                                                                                                                                                                 |
-| `AccordionItemHeader.title`                                    | `title: string \| Snippet`              | same; a snippet sizes its own text                                                                                                                                                                                            |
-| `AccordionItemHeader.subtitle`                                 | `subtitle: string \| Snippet`           | same                                                                                                                                                                                                                          |
-| `AccordionItemHeader.leading`                                  | `leading` snippet                       | same (rule 2)                                                                                                                                                                                                                 |
-| `AccordionItemHeader.trailing`                                 | `trailing` snippet                      | **changed**: replaces the chevron. React's `trailing` sits before the chevron                                                                                                                                                 |
-| `AccordionItemHeader.titleSuffix`                              | —                                       | **dropped** by decision; use a `title` snippet                                                                                                                                                                                |
-| `AccordionItemHeader.children`                                 | —                                       | **dropped**; use `header`                                                                                                                                                                                                     |
-| —                                                              | `header` snippet                        | cx-only: lays out the header's content, receiving the drawn `title` and `subtitle` as snippets — one meaning of `header` across Modal, Card and CardGroupItem: the header box's content, placing the drawn `title`/`subtitle` |
-| `AccordionItemBody`                                            | `body` snippet, inside Blade's body box | rule 2; named and resolved as Modal's `body`                                                                                                                                                                                  |
-| —                                                              | `children` snippet                      | cx-only: a full-width custom body without the body box; wins over `body`, as in Modal                                                                                                                                         |
-| —                                                              | `collapse()` in the snippet state       | cx-only: the body closes its own item                                                                                                                                                                                         |
-| —                                                              | CardGroup `string \| Snippet` hints     | as the inputs (rule 9)                                                                                                                                                                                                        |
-| `isDisabled`                                                   | `isDisabled`                            | same                                                                                                                                                                                                                          |
-| `testID`                                                       | `testID`                                | same; overrides the CardGroup's `${testID}-${index}`                                                                                                                                                                          |
-| `title` / `description` / `icon` on AccordionItem (deprecated) | —                                       | not ported (deprecated in React)                                                                                                                                                                                              |
+| src                                      | cx                                                                                                | Action                                                                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `children` (the free slot)               | `title`, `description`, `leading`, `trailing`, or `children(state)`                               | **changed**: the usual layout from props; `children` replaces it                                                             |
+| `leading`, `trailing`                    | same (`string \| Snippet`)                                                                        | same                                                                                                                         |
+| `href`, `target`, `rel`                  | same                                                                                              | same: a link with a chevron pointing right                                                                                   |
+| `onClick` + `isSelected` (caller-driven) | `value`, picked through the group's `bind:value`; `onClick({ name, value, event })` after a press | **changed**: a choice is a native radio or checkbox row. The ring is the same. `onClick` gets React's ActionListItem payload |
+| `isDisabled`                             | same                                                                                              | same; a disabled link loses its `href` and leaves the tab order                                                              |
+| `accessibilityLabel`                     | same                                                                                              | same, for rows with no value                                                                                                 |
+| —                                        | `text`                                                                                            | **added**: what typeahead matches                                                                                            |
+| `testID`, analytics attributes           | same                                                                                              | same                                                                                                                         |
+
+`CardGroupCollapsibleItem` and `CardGroupCollapsibleItemBody` → a `body`
+snippet on `CardGroupItem`:
+
+- **No `value`:** the row is the disclosure. src's `isExpanded`,
+  `defaultIsExpanded` and `onExpandChange` become a bindable `isExpanded`
+  (rule 3) and `onExpandChange({ isExpanded })` on the item.
+- **With a `value`:** the body follows the pick, which covers src's
+  "Selection With Nested Input". Passing `isExpanded` overrides this.
+- A row inside a body is just a row, as in `src/`.
+- The types refuse a `body` on a link and an `onExpandChange` on a choice.
+
+**No `selectionType="none"`.** There are no rows that act and hold nothing,
+in CardGroup or ActionList. A list where a pick
+submits uses **`onPick`**, which fires on every user pick (pointer, Enter or
+Space) with the row's value, whether the value changed or not, so the same
+row picked again still reports. A row's `onClick` fires for keyboard picks
+too: before this change, Enter and Space went past it.
+
+**Keys:** a single choice is a radio group, so the arrows pick as they
+move (`selectsOnMove`); ActionList's arrows only move, as a listbox's.
+
+**CardGroup has no search**, as React: it takes no `query`, `match` or
+`empty`. An app filters its data and renders `CardGroupItem`s (or passes
+the filtered `items`). **Rows as data:** with `items` (or titled
+`sections`) and a `row` snippet the list lays its rows out itself, keyed by
+`itemKey`; `isVirtualized` then mounts only the rows in view, as React's
+ActionList `isVirtualized` (give the list a bounded height in `class`).
+Rows from data with none to show (a search emptied them) render no rows
+box; the label and the hint stay.
+The type checks are in `test/fixtures/CardGroupTypes.svelte`.
 
 ### Look
 
-Matched against React Storybook (`WithShowNumberPrefix`, filled/transparent ×
-large/medium) by measuring the DOM. These now match:
+As `src/`'s `cardGroup.module.css`:
 
-- header height;
-- prefix, title and chevron positions and fonts;
-- body offsets (12px above, 16px sides and bottom);
-- the filled surface (radius, three-part shadow, background);
-- the focus ring (4px `surface.border.primary.muted`, offset 1, radius small);
-- the chevron colours (muted, subtle when hovered, focused or expanded, disabled).
+- **Surface:** Card's `primary` raised surface with 12px corners. The rim and
+  lip are redrawn above the rows (`after:shadow-card-group-rim`).
+- **Rows:** 16px padding, 8px gaps, body medium in medium weight, with
+  `surface.border.gray.subtle` hairlines between them and the group's corners
+  on the end rows.
+- **Hover:** `surface.background.gray.moderate`.
+- **Picked:** a 1.5px `surface.border.primary.normal` inset ring with no fill.
+- **Focus:** a 4px `interactive.border.primary.faded` inset ring, drawn on the
+  row's `::before` so it composes with the picked ring. The roving row's ring
+  shows when the keyboard moves; links and triggers use `:focus-visible`.
+- **Disabled:** 50% on `interactive.background.gray.disabled`.
+- **Sections** (cx-only): each `CardGroupSection` is a raised card of its
+  own under its heading (body medium, `surface.text.gray.subtle`), 12px
+  above it, with sections 24px apart, as checkout's net-banking list. The
+  look reads the list's `{ hasSections }`.
+- **Chevrons:** `surface.icon.gray.subtle`; a trigger's flips over
+  `moderate`.
+- **Body:** a hairline above, 16px by 12px padding, on
+  `surface.background.gray.subtle`.
 
-- **transparent:** no surface; a 1px `surface.border.gray.muted` divider after every item.
-- **filled:** new Uno class `surface-raised` (Blade's `getSurfaceStyles`, light mode) plus
-  `rounded-medium bg-surface-gray-intense`; dividers between items only. The hover fill
-  follows the box corners.
-- **Header:** 16px padding; hover/focus fill `interactive.background.gray.faded` in
-  2xquick; a 0.5px hairline under an expanded header, hidden on hover/focus. The
-  number prefix sits in a 28px/20px line box.
-- **Collapse:** 280ms (`moderate`), standard easing, opacity 0.8 → 1
-  (`cubicBezier`/`easeStandard` added to `runes/dom/motion.ts`).
-- **Dropped checkout look:** the `boxed` card (`shadow-card`, `border-interactive-gray-disabled`),
-  gray `bg-surface-gray-subtle` panels, `px-4` headers with 11px corner radii,
-  and the `opacity-blade-600` disabled root.
-- **Not copied from React:**
-  - React still shows the hover fill on a disabled header.
-  - React doesn't grey the number prefix when disabled.
-- **Side fix (Typography):** Text and Heading now reset `margin` to 0, like Blade's
-  BaseText. Before, a `<p>` kept the browser's 1em margins. A caller's `m*-` classes still win.
+**Not copied from `src/`:**
 
-### Accessibility
-
-cx does more than React here, and keeps it:
-
-- header `id` plus the region's `aria-labelledby`;
-- Up/Down/Home/End moving between headers.
-
-Added from React: the `role="heading" aria-level="3"` wrapper around each button.
-
-### cx-only features
-
-**Removed (decided):**
-
-- `isMultiple`: React allows one open item.
-- `isCollapsible`: React always closes the open item on a second press.
-  - Checkout's home method list used `isCollapsible={false}`; it now collapses like React.
-- `items`, `itemKey`, `compare`, `isItemDisabled`: the CardGroup is compositional
-  now, so these become per-item props or an `{#each}`.
-- `indicator` and `isActionable`: replaced by `trailing`, and by an item having
-  no body. An item without `body` or `children` acts instead of expanding
-  and draws a chevron pointing right.
-
-**Decision pending:**
-
-| Feature                                                                                         | What it does                                                                         | Recommendation                                                              |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| `CardGroupItem.onClick(event) → false`                                                          | vetoes an expand (downtime sheet, address gate); the only action of a body-less item | **keep**: needed by checkout; not expressible otherwise                     |
-| `scrollOnExpand` (default true)                                                                 | scrolls the opened panel into view                                                   | keep                                                                        |
-| `name`, `isRequired`, `validationState`, `helpText`, `errorText`, `label`, `accessibilityLabel` | the open item as a form field                                                        | **decide**: no React equivalent; checkout home uses it as a required choice |
-
-### Checkout call sites affected
-
-These use the old `items` + snippets API and need a port to
-`<CardGroupItem>` children. Use `variant="filled"` if the old card look is wanted:
-
-- `app/v2/sidecart/sidecart-iframe/components/widgets/free-gifts/FreeGiftMultiRuleSheet.svelte`
-- `app/v2/sidecart/sidecart-iframe/components/widgets/coupons/unlock-milestone/components/eligible-products/EligibleProductsScreen.svelte`
-- `app/v3/surfaces/international-checkout/components/MobileCheckout.svelte`
-- `app/v3/surfaces/international-checkout/components/DesktopCheckout.svelte`
-- `app/v3/components/payment/RetryScreen.svelte`
+- **Native rows:** a choice is a native radio or checkbox. `src/` uses a
+  `<button aria-current>`.
+- **Body motion:** the body opens with the Collapsible motion (280ms) and
+  unmounts when closed.
 
 ### Status
 
-Audited, fixed, and verified after the compositional rewrite: `svelte-check`
-gives 0 errors; `test` passes; the DOM measurements match React
-Storybook, unchanged from before the rewrite.
-
-### Figma alignment (Blade DSL)
-
-- cx CardGroup follows Blade DSL's ❖ Accordion (Figma), not its ❖ Card Group (48px navigation rows; cx's `go` items approximate it).
-- Header line box 24px at large and 20px at medium; 8px leading → title; 12px title → trailing or chevron; title and subtitle 2px apart in medium weight (React: semibold); chevron 20/16px. Body 16px above and inside, 16px below and between parts (12px at medium); React's body is 12px above.
-- Why `leading` and `trailing` are props: see the card-group README.
+`svelte-check` gives 0 errors and `test` passes. It hasn't been measured
+against `src/`'s Storybook yet.
 
 ---
 
@@ -376,7 +440,7 @@ React: `Alert`. cx: `Alert` (`components/alert/`).
 | `maxWidth` (default 584px)            | —                                | **removed** by decision: no width of its own; a cap is a `class` (rule 1)                                                                 |
 | `actions: { primary, secondary }`     | —                                | **removed** by decision (was an `actions` snippet); no checkout call site used it                                                         |
 | `testID`                              | `testID`                         | same                                                                                                                                      |
-| styled props, `data-analytics-*`      | `class`; —                       | rule 1; analytics **missing** (analytics pass)                                                                                            |
+| styled props, `data-analytics-*`      | `class`; same                    | rule 1; analytics same                                                                                                                    |
 
 ### Look
 
@@ -430,18 +494,18 @@ variants (Figma), every one of them ported.
 
 ### Props
 
-| React                                                 | cx                                                    | Action                                                                                                                                                                                                                                                              |
-| ----------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`                                               | `value`                                               | same                                                                                                                                                                                                                                                                |
-| `currency` (default `INR`)                            | `currency`                                            | **default added** (was required)                                                                                                                                                                                                                                    |
-| `type`, `size`, `weight`, `color`                     | same, `size`/`weight`/`color` defaulting to `inherit` | **added**, Figma's variants: body xsmall–large, heading small–2xlarge, display small–xlarge; weights regular/medium/semibold (heading: no medium); `color` takes Text's colours. Sizes and weights are typed per `type`. React defaults to body medium; cx inherits |
-| `suffix: decimals \| none \| humanize`                | `suffix`                                              | **added**                                                                                                                                                                                                                                                           |
-| `fractionDigits: number \| 'auto'` (default 2)        | `fractionDigits`                                      | same as React (checkout's cx used to default to the currency's own digits)                                                                                                                                                                                          |
-| `isAffixSubtle` (default true)                        | `isAffixSubtle`                                       | same as React (checkout's cx called it `affix: subtle \| normal`). With a set size the affix takes Figma's style one step down (see the amount README); while the size inherits it is 0.75em of the text                                                            |
-| `currencyIndicator: currency-symbol \| currency-code` | `currencyIndicator`                                   | same as React (checkout's cx called it `currencyDisplay: symbol \| code`)                                                                                                                                                                                           |
-| `isStrikethrough`                                     | `isStrikethrough`                                     | same; a `<del>` whose own line follows the text, where React draws a 1px/2px line                                                                                                                                                                                   |
-| `testID`                                              | `testID`                                              | same                                                                                                                                                                                                                                                                |
-| styled props, `data-analytics-*`                      | `class`; —                                            | rule 1; analytics **missing** (analytics pass)                                                                                                                                                                                                                      |
+| React                                                 | cx                                                    | Action                                                                                                                                                                                                                                                                   |
+| ----------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `value`                                               | `value`                                               | same                                                                                                                                                                                                                                                                     |
+| `currency` (default `INR`)                            | `currency`                                            | **default added** (was required)                                                                                                                                                                                                                                         |
+| `type`, `size`, `weight`, `color`                     | same, `size`/`weight`/`color` defaulting to `inherit` | **added**, Figma's variants: body xsmall–large, heading small–2xlarge, display small–xlarge; weights regular/medium/semibold (heading: no medium); `color` takes Text's colours. Sizes and weights are typed per `type`. React defaults to body medium; cx inherits      |
+| `suffix: decimals \| none \| humanize`                | `suffix`                                              | **added**                                                                                                                                                                                                                                                                |
+| `fractionDigits: number \| 'auto'` (default 2)        | `fractionDigits`                                      | same as React (checkout's cx used to default to the currency's own digits)                                                                                                                                                                                               |
+| `isAffixSubtle` (default true)                        | `isAffixSubtle`                                       | same as React: one step smaller at 64% opacity, the decimals in the number's face (checkout's cx called it `affix: subtle \| normal`). With a set size the affix takes the style one step down (see the amount README); while the size inherits it is 0.75em of the text |
+| `currencyIndicator: currency-symbol \| currency-code` | `currencyIndicator`                                   | same as React (checkout's cx called it `currencyDisplay: symbol \| code`)                                                                                                                                                                                                |
+| `isStrikethrough`                                     | `isStrikethrough`                                     | same: one line across the whole amount, currency included, 1px (body) or 2px (heading, display); kept a `<del>` for readers                                                                                                                                              |
+| `testID`                                              | `testID`                                              | same                                                                                                                                                                                                                                                                     |
+| styled props, `data-analytics-*`                      | `class`; `data-analytics-*`                           | rule 1; analytics same (on the root)                                                                                                                                                                                                                                     |
 
 ### Formatting
 
@@ -462,7 +526,8 @@ Only the layout is Amount's own, and it matches React:
 - parts on one baseline;
 - 4px either side of the minus sign;
 - 2px between currency and number, on the locale's side;
-- subtle affixes smaller only: Figma's subtle affix is never faded (React and cx used to set 64% opacity).
+- subtle affixes one step smaller at React's 64% opacity (`opacity-blade-800`); the decimals in the number's face, the currency in the body face;
+- the strikethrough, React's line across the whole amount (1px body, 2px heading and display).
 
 Everything else follows the text around it.
 
@@ -480,11 +545,11 @@ string, with the styled parts `aria-hidden`. React reads the spans in order.
 
 ### cx-only features — decision pending
 
-| Feature                | What it does                                               | Recommendation                                   |
-| ---------------------- | ---------------------------------------------------------- | ------------------------------------------------ |
-| `unit: major \| minor` | takes paise or cents and scales by the currency's exponent | keep: checkout amounts are in minor units        |
-| `locale`               | pins grouping and currency side                            | keep: React has only i18nify's global locale     |
-| `symbol`               | replaces the currency symbol with the app's own            | keep or drop: checkout's own symbol table (`RM`) |
+| Feature                | What it does                                                                                               | Recommendation                                   |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `unit: major \| minor` | takes paise or cents and scales by the currency's exponent                                                 | keep: checkout amounts are in minor units        |
+| `locale`               | pins grouping and currency side; app-wide through `adapters.locale` (rule 15), over i18nify's global state | keep: React has only i18nify's global locale     |
+| `symbol`               | replaces the currency symbol with the app's own                                                            | keep or drop: checkout's own symbol table (`RM`) |
 
 ### Checkout call sites
 
@@ -518,7 +583,7 @@ React: `Badge`. cx: `Badge` (`components/badge/`).
 | `size: xsmall \| small \| medium \| large` (default medium) | `size: small \| medium \| large` | **removed** `xsmall`: Blade DSL's Badge (Figma) draws small, medium and large only |
 | `icon`                                                      | `icon`                           | **added** (a glyph token, see Icons)                                               |
 | `testID`                                                    | `testID`                         | same                                                                               |
-| styled props, `data-analytics-*`                            | `class`; —                       | rule 1; analytics **missing** (analytics pass)                                     |
+| styled props, `data-analytics-*`                            | `class`; same                    | rule 1; analytics same                                                             |
 
 ### Look
 
@@ -558,36 +623,37 @@ passes; the DOM measurements match React Storybook.
 
 ## BottomSheet
 
-> **Not exported:** the code is in `src-cx/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
-
 React: `BottomSheet`, `BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`.
-cx: `BottomSheet` (`components/bottom-sheet/`), which is Modal in its
-`sheet` variant. The header changes below are Modal's, so Modal has them
-too.
+cx: `BottomSheet` (`components/bottom-sheet/`), over the overlay runes
+(`createOverlay`) as a surface on the bottom edge, through the internal
+`OverlaySurface` Modal and Drawer share. The header changes below are shared, so Modal has
+them too.
 
 **Decisions:** the sheet keeps its content height, with no snap points. On
-desktop it keeps cx's capped, rounded panel, with `size` and `variant`. React's web sheet is full width at every size.
+desktop it keeps cx's capped, rounded panel. React's web sheet is full width
+at every size. A sheet on phones and a modal on desktop is an app's own
+overlay that switches by screen.
 
 ### Props
 
-| React                                                     | cx                                                                             | Action                                                                                                                                                                       |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isOpen` (controlled)                                     | `bind:isOpen`                                                                  | same                                                                                                                                                                         |
-| `onDismiss()`                                             | `onDismiss({ source, close })`                                                 | **changed**: fires on every dismissal, dismissible or not; a dismissible sheet then closes, otherwise `close` ends it. Replaces `onBack`                                     |
-| `isDismissible` (default true)                            | `isDismissible`                                                                | same: whether a dismissal closes it by itself; hides the close button, as in React                                                                                           |
-| `snapPoints` (default [0.35, 0.5, 0.85])                  | —                                                                              | **not ported** by decision: content height, drag only dismisses                                                                                                              |
-| —                                                         | `isDraggable` (default true)                                                   | cx-only: off hides the handle and stops the drag; settable through BladeProvider                                                                                             |
-| `initialFocusRef`                                         | —                                                                              | **missing**: the panel takes focus, or content with `autofocus`                                                                                                              |
-| `zIndex`                                                  | —                                                                              | n/a: the OverlayStack stacks sheets                                                                                                                                          |
-| `BottomSheetHeader.title`                                 | `title: string \| Snippet`                                                     | same; it names the dialog                                                                                                                                                    |
-| `BottomSheetHeader.subtitle`                              | `subtitle: string`                                                             | same: one muted line under the title; it describes the dialog                                                                                                                |
-| `BottomSheetHeader` `leading`, `titleSuffix`, `trailing`  | `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing({ close })`        | same names (rule 14 for `leading`); props again, per Figma (see Figma alignment)                                                                                             |
-| `BottomSheetHeader` `showBackButton`, `onBackButtonClick` | `showBackButton`, `onBackButtonClick({ close })`, `backLabel` (default `Back`) | same names; on every Modal variant. A step back, not a dismissal (no `onDismiss`); `close` is there for a back that closes. `backLabel` is **added** (React's name is fixed) |
-| `BottomSheetHeader` `children`                            | `header` snippet                                                               | rule 2: the caller renders it in `header`, which receives the drawn title and subtitle to place among them                                                                   |
-| `BottomSheetBody` (`padding` spacing.5 \| spacing.0)      | `body` snippet (16px) / `children` (raw)                                       | rule 2                                                                                                                                                                       |
-| `BottomSheetFooter`                                       | `footer` snippet                                                               | rule 2; a padded box, the caller lays out its content (was `flex gap-4`, changed with Modal)                                                                                 |
-| close button labelled "Close"                             | `closeLabel` (default `Close`)                                                 | **changed**: shows while dismissible, not only when labelled                                                                                                                 |
-| `data-analytics-*`                                        | —                                                                              | **missing** (analytics pass)                                                                                                                                                 |
+| React                                                     | cx                                      | Action                                                                                                                                   |
+| --------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `isOpen` (controlled)                                     | `bind:isOpen`                           | same                                                                                                                                     |
+| —                                                         | `onOpenChange({ isOpen })`              | **added**, as Popover's: the opens and closes the sheet makes, not the owner's `isOpen`                                                   |
+| `onDismiss()`                                             | `onDismiss({ source, close })`          | **changed**: fires on every dismissal, dismissible or not; a dismissible sheet then closes, otherwise `close` ends it. Replaces `onBack` |
+| `isDismissible` (default true)                            | `isDismissible`                         | same: whether a dismissal closes it by itself; hides the close button, as in React                                                       |
+| `snapPoints` (default [0.35, 0.5, 0.85])                  | —                                       | **not ported** by decision: content height, drag only dismisses                                                                          |
+| —                                                         | `isDraggable` (default true)            | cx-only: off hides the handle and stops the drag; settable through BladeProvider                                                         |
+| `initialFocusRef`                                         | same                                    | same: an element inside, bound with `bind:this`; else the panel takes focus, or content with `autofocus`                                 |
+| `zIndex`                                                  | —                                       | n/a: the overlay host stacks sheets                                                                                                      |
+| `BottomSheetHeader` `title`, `subtitle`                   | same, on `BottomSheetHeader`            | same: the title names the sheet, the subtitle describes it                                                                               |
+| `BottomSheetHeader` `leading`, `titleSuffix`, `trailing`  | same                                    | same names (rule 14 for `leading`)                                                                                                       |
+| `BottomSheetHeader` `showBackButton`, `onBackButtonClick` | same, plus `backLabel` (default `Back`) | same; a step back, not a dismissal                                                                                                       |
+| `BottomSheetHeader` `children`                            | `children`                              | same: under the header's row                                                                                                             |
+| `BottomSheetBody` (`padding` spacing.5 \| spacing.0)      | `BottomSheetBody` (`padding`)           | same; `overflow` is `class`. Classes: `resolveBottomSheetBody({ padding })`                                                              |
+| `BottomSheetFooter`                                       | `BottomSheetFooter`                     | same. Classes: `resolveBottomSheetFooter()`                                                                                              |
+| close button labelled "Close"                             | `closeLabel` (default `Close`)          | **changed**: shows while dismissible, not only when labelled                                                                             |
+| `data-analytics-*`                                        | same                                    | same                                                                                                                                     |
 
 ### Look (at phone width)
 
@@ -619,18 +685,19 @@ cx does more than React's web sheet here, and keeps it:
 - Escape closes (React's docs specify it; the web code doesn't).
 - The focus trap.
 - `aria-labelledby` pointing at the title.
-- The Android back button, as a dismissal (`source: 'back'`).
+- Back, as a dismissal (`source: 'back'`): the app's back handler calls
+  `back()` first; `true` means an overlay handled it.
 
 ### cx-only features — decision pending
 
-| Feature                       | What it does                                                                                                                        | Recommendation               |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `onClosed`                    | the exit finished                                                                                                                   | keep                         |
-| `role: dialog \| alertdialog` | the dialog's role                                                                                                                   | keep                         |
-| `accessibilityLabel`          | names an untitled sheet                                                                                                             | keep                         |
-| `chrome` snippet              | content hung off the panel's top edge (above it or over it), beside the close button and handle; receives `close`. Modal's too      | keep                         |
-| `pace`                        | v2's quicker drawer easing                                                                                                          | decide                       |
-| `size`, `variant`             | desktop panel width; `variant` picks `sheet` or `modal`; the app decides which (was `adaptive`, rule 11; no breakpoint switches it) | kept by the desktop decision |
+| Feature                       | What it does                                                                                                                   | Recommendation                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| `onClosed`                    | the exit finished                                                                                                              | keep                                     |
+| `role: dialog \| alertdialog` | the dialog's role                                                                                                              | keep                                     |
+| `accessibilityLabel`          | names an untitled sheet                                                                                                        | keep                                     |
+| `chrome` snippet              | content hung off the panel's top edge (above it or over it), beside the close button and handle; receives `close`. Modal's too | keep                                     |
+| `pace`                        | v2's quicker drawer easing                                                                                                     | decide                                   |
+| `adaptive`                    | an app's own responsive overlay (not in the library)                                                                           | **moved**: BottomSheet is always a sheet |
 
 ### Checkout call sites
 
@@ -684,7 +751,7 @@ React: `Avatar`, `AvatarGroup`. cx: the same (`components/avatar/`), from Blade 
 | `topAddon` (Indicator only), `bottomAddon` (IconComponent)      | `topAddon`, `bottomAddon` snippets | rule 2: each in a box sized and placed per size; a trusted badge is an image, not a tintable glyph |
 | `AvatarGroup` `size`, `density`, `maxCount`                     | same                               | same; avatars register with the group, so `maxCount` needs no child counting                       |
 | —                                                               | `AvatarGroup` `accessibilityLabel` | **added**: names the `role="group"`                                                                |
-| `BladeCommonEvents`, styled props, `data-analytics-*`           | `class`, `testID`                  | rule 1 / **missing** (analytics pass)                                                              |
+| `BladeCommonEvents`, styled props, `data-analytics-*`           | `class`, `testID`, same            | rule 1 / same                                                                                      |
 
 ### Figma alignment (Blade DSL)
 
@@ -705,7 +772,7 @@ React: `Breadcrumb`, `BreadcrumbItem`. cx: the same (`components/breadcrumb/`), 
 | `size`, `color` (default `primary`), `showLastSeparator`, `accessibilityLabel`                | same                             | same                                                                       |
 | —                                                                                             | `emphasis` (`subtle`, `intense`) | **added** from Figma: intense is the stepper-like pill trail with chevrons |
 | `BreadcrumbItem` `href`, `onClick`, `isCurrentPage`, `children`, `icon`, `accessibilityLabel` | same (`children` a snippet)      | same / rule 2                                                              |
-| styled props, `data-analytics-*`                                                              | `class`, `testID`                | rule 1 / **missing** (analytics pass)                                      |
+| styled props, `data-analytics-*`                                                              | `class`, `testID`, same          | rule 1 / same                                                              |
 
 ### Figma alignment (Blade DSL)
 
@@ -722,11 +789,12 @@ React: `BottomBar` (renders fixed to the bottom). cx: `BottomBar` (`components/b
 itself. The consumer fixes it through `class` (`fixed inset-x-0 bottom-0`,
 `sticky`, or in the flow), where React fixes it to the viewport.
 
-| React             | cx                 | Action                                          |
-| ----------------- | ------------------ | ----------------------------------------------- |
-| `children`        | `children` snippet | rule 2                                          |
-| fixed positioning | —                  | **changed** by decision: the consumer's `class` |
-| `testID`          | `testID`           | same                                            |
+| React                        | cx                 | Action                                          |
+| ---------------------------- | ------------------ | ----------------------------------------------- |
+| `children`                   | `children` snippet | rule 2                                          |
+| fixed positioning            | —                  | **changed** by decision: the consumer's `class` |
+| `accessibilityLabel`         | same               | same: names the `role="group"`, as React's      |
+| `testID`, `data-analytics-*` | same               | same                                            |
 
 ### Figma alignment (Blade DSL)
 
@@ -743,30 +811,30 @@ React: `Button`, `IconButton`. cx: `Button` (`components/button/`) and
 
 ### Button props
 
-| React                                                                | cx                                                      | Action                                                                                                                                                                                                                                                  |
-| -------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `variant: primary \| secondary \| tertiary`                          | `variant`                                               | **removed** `tertiary` (deprecated in Blade DSL's Button, Figma; it drew as `secondary`); **removed** `link` by decision (an action that reads as a link waits for Link's button form, in the Link pass)                                                |
-| `color: primary \| white \| positive \| negative` (default primary)  | `color` + `neutral`                                     | **added** `white`; `neutral` kept (Blade supports it with its own tokens); **default now `primary`** (blue), was neutral (black)                                                                                                                        |
-| `size` (default medium)                                              | `size`                                                  | same values; now Blade's heights, padding and type                                                                                                                                                                                                      |
-| `icon`, `iconPosition`                                               | `icon` (leading), `trailingIcon`                        | **changed**: Blade DSL's Button (Figma) has a leading and a trailing icon that may both show; `icon` alone is the icon-only square (28/32/36/48px, 16px glyph). Props, not children: the label's 4px each side is the gap, the icons sit on the padding |
-| `children` (string)                                                  | `children` snippet                                      | the label and any icons                                                                                                                                                                                                                                 |
-| `type` (default `button`)                                            | `type`                                                  | **default changed** from `submit` to `button`                                                                                                                                                                                                           |
-| `href`, `target`, `rel`                                              | same                                                    | **added**: an anchor; `isDisabled` ignored there, as in React                                                                                                                                                                                           |
-| `isFullWidth`                                                        | `class="w-full"`                                        | rule 1                                                                                                                                                                                                                                                  |
-| `isLoading`, `isDisabled`, `accessibilityLabel`, `onClick`, `testID` | same                                                    | same                                                                                                                                                                                                                                                    |
-| `onBlur`, `onFocus`, pointer and touch events, `tabIndex`            | —                                                       | **missing**; add on demand                                                                                                                                                                                                                              |
-| `data-analytics-*`                                                   | —                                                       | **missing** (analytics pass)                                                                                                                                                                                                                            |
-| —                                                                    | `validateForm`, `autoPressAfter`, `loadingAnnouncement` | cx-only, pending (below)                                                                                                                                                                                                                                |
+| React                                                                | cx                                                          | Action                                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant: primary \| secondary \| tertiary`                          | `variant`                                                   | **removed** `tertiary` (deprecated in Blade DSL's Button, Figma; it drew as `secondary`); **removed** `link` by decision (an action that reads as a link waits for Link's button form, in the Link pass)                                                |
+| `color: primary \| white \| positive \| negative` (default primary)  | `color` + `neutral`                                         | **added** `white`; `neutral` kept (Blade supports it with its own tokens); **default now `primary`** (blue), was neutral (black)                                                                                                                        |
+| `size` (default medium)                                              | `size`                                                      | same values; now Blade's heights, padding and type                                                                                                                                                                                                      |
+| `icon`, `iconPosition`                                               | `icon` (leading), `trailingIcon`                            | **changed**: Blade DSL's Button (Figma) has a leading and a trailing icon that may both show; `icon` alone is the icon-only square (28/32/36/48px, 16px glyph). Props, not children: the label's 4px each side is the gap, the icons sit on the padding |
+| `children` (string)                                                  | `children` snippet                                          | the label and any icons                                                                                                                                                                                                                                 |
+| `type` (default `button`)                                            | `type`                                                      | **default changed** from `submit` to `button`                                                                                                                                                                                                           |
+| `href`, `target`, `rel`                                              | same                                                        | **added**: an anchor; `isDisabled` ignored there, as in React                                                                                                                                                                                           |
+| `isFullWidth`                                                        | `class="w-full"`                                            | rule 1                                                                                                                                                                                                                                                  |
+| `isLoading`, `isDisabled`, `accessibilityLabel`, `onClick`, `testID` | same                                                        | same                                                                                                                                                                                                                                                    |
+| `onBlur`, `onFocus`, pointer and touch events, `tabIndex`            | —                                                           | **missing**; add on demand                                                                                                                                                                                                                              |
+| `data-analytics-*`                                                   | same                                                        | same                                                                                                                                                                                                                                                    |
+| —                                                                    | `validateForm`, `loadingAnnouncement`, `loadedAnnouncement` | cx-only, pending (below)                                                                                                                                                                                                                                |
 
 ### IconButton props
 
-| React                                                                      | cx                                                         | Action                                                                                                         |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `emphasis: intense \| subtle \| moderate` (default intense)                | `emphasis: intense \| subtle`                              | **added**, replacing `variant: plain \| boxed`; **removed** `moderate` (not in Blade DSL's Icon Button, Figma) |
-| `isHighlighted`                                                            | `isHighlighted`                                            | **added**                                                                                                      |
-| `size: small \| medium \| large`                                           | `size`                                                     | same; glyph 12/16/20px; a 24/32px box (8px radius) only when highlighted or moderate, never at large           |
-| `icon`, `accessibilityLabel` (required), `isDisabled`, `onClick`, `testID` | same                                                       | same                                                                                                           |
-| —                                                                          | `isLoading`, `type`, `validateForm`, `loadingAnnouncement` | cx-only, pending (below)                                                                                       |
+| React                                                                      | cx                                                                               | Action                                                                                                         |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `emphasis: intense \| subtle \| moderate` (default intense)                | `emphasis: intense \| subtle`                                                    | **added**, replacing `variant: plain \| boxed`; **removed** `moderate` (not in Blade DSL's Icon Button, Figma) |
+| `isHighlighted`                                                            | `isHighlighted`                                                                  | **added**                                                                                                      |
+| `size: small \| medium \| large`                                           | `size`                                                                           | same; glyph 12/16/20px; a 24/32px box (8px radius) only when highlighted or moderate, never at large           |
+| `icon`, `accessibilityLabel` (required), `isDisabled`, `onClick`, `testID` | same                                                                             | same                                                                                                           |
+| —                                                                          | `isLoading`, `type`, `validateForm`, `loadingAnnouncement`, `loadedAnnouncement` | cx-only, pending (below)                                                                                       |
 
 ### Look
 
@@ -801,13 +869,12 @@ These match exactly:
 
 ### cx-only features — decision pending
 
-| Feature                                        | What it does                                          | Recommendation                              |
-| ---------------------------------------------- | ----------------------------------------------------- | ------------------------------------------- |
-| Busy keeps focus                               | `aria-disabled` + `aria-busy` rather than `disabled`  | keep: React's disabled drops keyboard focus |
-| `validateForm`                                 | a `button` that validates the Form without submitting | keep: checkout forms                        |
-| `autoPressAfter`                               | self-presses after N seconds, with a fill             | keep: checkout redirects                    |
-| `loadingAnnouncement`                          | live-region copy while busy                           | keep: React announces fixed English         |
-| IconButton `isLoading`, `type`, `validateForm` | IconButton shares Button's press                      | keep                                        |
+| Feature                                        | What it does                                                                                  | Recommendation                              |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| Busy keeps focus                               | `aria-disabled` + `aria-busy` rather than `disabled`                                          | keep: React's disabled drops keyboard focus |
+| `validateForm`                                 | a `button` that validates the app's form without submitting                                   | keep: checkout forms                        |
+| `loadingAnnouncement`, `loadedAnnouncement`    | what `adapters.announce` says on turning busy and idle ("Started loading", "Stopped loading") | keep: React announces fixed English         |
+| IconButton `isLoading`, `type`, `validateForm` | IconButton shares Button's press                                                              | keep                                        |
 
 ### Checkout call sites
 
@@ -845,7 +912,7 @@ with its context in `runes/button/group.ts`.
 | `isFullWidth`                                                  | —                  | **removed** by decision: `class="w-full [&>*]:flex-1"` (rule 1)      |
 | `children` (Button, Dropdown, Tooltip, Popover)                | `children` snippet | same; React's dev check on child types is not ported                 |
 | `testID`                                                       | `testID`           | same                                                                 |
-| styled props, `data-analytics-*`                               | `class`; —         | rule 1; analytics **missing** (analytics pass)                       |
+| styled props, `data-analytics-*`                               | `class`; same      | rule 1; analytics same                                               |
 
 ### Look
 
@@ -871,7 +938,7 @@ Measured against React Storybook for primary and secondary. These match:
 - `role="group"`. It is not a toolbar: each button is its own Tab stop.
 - `resetButtonGroup()` (`runes/button/group.ts`) is React's
   OverlayContextReset: Buttons inside an overlay's content aren't styled by an
-  enclosing group. Popover and Menu content should call it in their passes.
+  enclosing group. Popover and Menu call it (their `FloatingPanel`).
 
 ### Status
 
@@ -886,33 +953,38 @@ measurements match React Storybook.
 
 ## Card
 
-> **Not exported:** the code is in `src-cx/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
-
 React: `Card`, `CardHeader*`, `CardBody`, `CardFooter*` (+ `TicketCard`,
-`InfoCard`). cx: `Card` (`components/card/`).
+`InfoCard`). cx: `Card` (`components/card/`) composing `CardHeader`,
+`CardBody` and `CardFooter` (`components/card-children/`), each over its own
+classes (`resolveCardHeader`, `resolveCardBody`, `resolveCardFooter`),
+exported apart. Card renders its parts as children: an app that imports
+only Card does not bundle them (`yarn check:tree-shaking` checks it).
+CardHeader is also the base of ModalHeader, BottomSheetHeader and
+DrawerHeader, which pass their own classes, a back button (`start`), the ids
+that name their dialog and the drag zone (`attach`).
 
 ### Props
 
-| React                                                                                    | cx                                                | Action                                                                                                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CardHeaderLeading` `title`, `subtitle`                                                  | `title`, `subtitle` on Card (`string \| Snippet`) | **moved** to Card: drawn as React's (Text large semibold; Text small, `surface.text.gray.subtle`) in the header box. The title names the card, or its overlay, without `accessibilityLabel`                                                                                                             |
-| `CardHeader` (+ Leading, Trailing, Icon, Counter, Badge, Amount, Text, Link, IconButton) | `header` snippet, receiving `{ title, subtitle }` | rule 2: prefix, suffix and trailing are the caller's, laid in the header box's row (CardHeader's: centred, ends apart, 16px — the title block's `spacing.5` — between items); the snippet places the drawn title and subtitle among them — one meaning of `header` across Modal, Card and CardGroupItem |
-| `CardBody`                                                                               | `children`                                        | rule 2; the `body` snippet is **removed** (same as `children` now)                                                                                                                                                                                                                                      |
-| `CardFooter` (+ Leading, Trailing, `actions`)                                            | `footer` snippet                                  | rule 2: the actions are the caller's Buttons                                                                                                                                                                                                                                                            |
-| `size: large \| medium`                                                                  | —                                                 | not ported: it only sized the header's title; cx draws React's default, `large`                                                                                                                                                                                                                         |
-| `variant: primary \| secondary`                                                          | `variant`                                         | same                                                                                                                                                                                                                                                                                                    |
-| `padding` (`spacing.0` \| `.3` \| `.4` \| `.5` \| `.7`, default `.7`)                    | `padding: spacing.5 \| spacing.7`                 | **added**; **removed** spacing.0/.3/.4: Blade DSL's Card (Figma) is 24px in, 16px its metric card's                                                                                                                                                                                                     |
-| `onClick`                                                                                | `onClick`                                         | same as React; checkout's cx called it `onPress`; now React's overlay button, where the card was itself one `<button>`                                                                                                                                                                                  |
-| `href`, `target`, `rel`                                                                  | same                                              | **added**: a link overlay                                                                                                                                                                                                                                                                               |
-| `isSelected`                                                                             | `isSelected`                                      | **added**                                                                                                                                                                                                                                                                                               |
-| `isDisabled`                                                                             | `isDisabled`                                      | same; now `aria-disabled` with no overlay                                                                                                                                                                                                                                                               |
-| `as: 'label'`                                                                            | `as`                                              | **added**                                                                                                                                                                                                                                                                                               |
-| `accessibilityLabel`, `testID`                                                           | same                                              | same                                                                                                                                                                                                                                                                                                    |
-| `onHover`                                                                                | —                                                 | **missing**; add on demand                                                                                                                                                                                                                                                                              |
-| `elevation`, `backgroundColor`, `borderRadius`, `shouldScaleOnHover`                     | —                                                 | deprecated in React (no-ops); not ported                                                                                                                                                                                                                                                                |
-| `width`, `height`, min and max sizes, styled props                                       | `class`                                           | rule 1                                                                                                                                                                                                                                                                                                  |
-| `data-analytics-*`                                                                       | —                                                 | **missing** (analytics pass)                                                                                                                                                                                                                                                                            |
-| `TicketCard`, `InfoCard`                                                                 | —                                                 | react-only                                                                                                                                                                                                                                                                                              |
+| React                                                                                                                            | cx                                                                                                   | Action                                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CardHeaderLeading` (`title`, `subtitle`, `prefix`, `suffix`)                                                                    | `CardHeader` `title`, `subtitle` (`string \| Snippet`), `prefix` (`IconSource \| Snippet`), `suffix` | **flattened** onto CardHeader (rule 14 for `prefix`). Its title names the card, or its overlay, without `accessibilityLabel`; `suffix` shows without a title too                               |
+| `CardHeader` (`showDivider`), `CardHeaderTrailing` (`visual`), leaf parts (Icon, Counter, Badge, Amount, Text, Link, IconButton) | `CardHeader` `showDivider`, `trailing` snippet                                                       | same; the leaves are the caller's components in `prefix`, `suffix`, `trailing`. cx-only: `classes`, `start`, `content`, `children`, `titleId`, `subtitleId`, `attach`, for headers built on it |
+| `CardBody`                                                                                                                       | `CardBody`                                                                                           | same                                                                                                                                                                                           |
+| `CardFooter` (`showDivider`), `CardFooterLeading` (`title`, `subtitle`), `CardFooterTrailing` (`actions`)                        | `CardFooter` `title`, `subtitle`, `actions` (`primary`, `secondary`), `showDivider`; or `children`   | **flattened** onto CardFooter; `children` in place of the leading text and actions                                                                                                             |
+| `size: large \| medium`                                                                                                          | —                                                                                                    | not ported: it only sized the header's title; cx draws React's default, `large`                                                                                                                |
+| `variant: primary \| secondary`                                                                                                  | `variant`                                                                                            | same                                                                                                                                                                                           |
+| `padding` (`spacing.0` \| `.3` \| `.4` \| `.5` \| `.7`, default `.7`)                                                            | `padding`                                                                                            | same                                                                                                                                                                                           |
+| `onClick`                                                                                                                        | `onClick`                                                                                            | same as React; checkout's cx called it `onPress`; now React's overlay button, where the card was itself one `<button>`                                                                         |
+| `href`, `target`, `rel`                                                                                                          | same                                                                                                 | **added**: a link overlay, routed as Link's (rule 15)                                                                                                                                          |
+| `isSelected`                                                                                                                     | `isSelected`                                                                                         | **added**                                                                                                                                                                                      |
+| `isDisabled`                                                                                                                     | `isDisabled`                                                                                         | same; now `aria-disabled` with no overlay                                                                                                                                                      |
+| `as: 'label'`                                                                                                                    | `as`                                                                                                 | **added**                                                                                                                                                                                      |
+| `accessibilityLabel`, `testID`                                                                                                   | same                                                                                                 | same                                                                                                                                                                                           |
+| `onHover`                                                                                                                        | —                                                                                                    | **missing**; add on demand                                                                                                                                                                     |
+| `elevation`, `backgroundColor`, `borderRadius`, `shouldScaleOnHover`                                                             | —                                                                                                    | deprecated in React (no-ops); not ported                                                                                                                                                       |
+| `width`, `height`, min and max sizes, styled props                                                                               | `class`                                                                                              | rule 1                                                                                                                                                                                         |
+| `data-analytics-*`                                                                                                               | same                                                                                                 | same                                                                                                                                                                                           |
+| `TicketCard`, `InfoCard`                                                                                                         | —                                                                                                    | react-only                                                                                                                                                                                     |
 
 ### Look
 
@@ -929,11 +1001,10 @@ top shade), and the two 16px gradients' position and size.
 - **Dropped checkout look:** per-section padding, the 1px border plus
   `shadow-card` surface, and the whole-card button with its press nudge.
 
-### cx-only features — decision pending
+### cx-only features
 
-| Feature | What it does                         | Recommendation             |
-| ------- | ------------------------------------ | -------------------------- |
-| `color` | a tinted card (v2's MagicCard tones) | decide: React has no tints |
+**Removed (decided):** `color`, a tinted card (v2's MagicCard tones): React
+has no tints.
 
 ### Checkout call sites
 
@@ -969,7 +1040,7 @@ React: `Checkbox`, `CheckboxGroup`. cx: `Checkbox` (`components/checkbox/`).
 | `name`, `isDisabled`, `isRequired`, `testID` | same                                                      | same                                                                                                                                                         |
 | `value`                                      | `value`                                                   | **added**: the input's `value` attribute                                                                                                                     |
 | `tabIndex`                                   | `tabIndex`                                                | **added**                                                                                                                                                    |
-| `data-analytics-*`                           | —                                                         | **missing** (analytics pass)                                                                                                                                 |
+| `data-analytics-*`                           | same                                                      | same                                                                                                                                                         |
 | styled props                                 | `class`                                                   | rule 1                                                                                                                                                       |
 | `CheckboxGroup`                              | —                                                         | react-only; add on demand (checkout has no group)                                                                                                            |
 
@@ -997,10 +1068,10 @@ ErrorText, Indeterminate) with the same state on both sides:
 
 ### cx-only features — decision pending
 
-| Feature              | What it does                                  | Recommendation                                            |
-| -------------------- | --------------------------------------------- | --------------------------------------------------------- |
-| `accessibilityLabel` | names a checkbox with no `children`           | keep: React needs a visually hidden child for this        |
-| `parse`              | maps `isChecked` to the value a Form collects | keep: checkout's Form integration needs it (5 call sites) |
+| Feature              | What it does                                          | Recommendation                                            |
+| -------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| `accessibilityLabel` | names a checkbox with no `children`                   | keep: React needs a visually hidden child for this        |
+| `parse`              | maps `isChecked` to the value the app's form collects | keep: checkout's form integration needs it (5 call sites) |
 
 ### Checkout call sites
 
@@ -1029,27 +1100,27 @@ React: `Chip`, `ChipGroup`. cx: `Chip`, `ChipGroup` (`components/chip/`), **new*
 
 A ChipGroup is Radio/Checkbox semantics drawn as chips: `single` is native
 radios, `multiple` native checkboxes. It is built on the headless choice list
-(`runes/base/choice-list.svelte.ts`) like OptionList, but keeps the platform's
+(`runes/base/choice-list.svelte.ts`) like CardGroup, but keeps the platform's
 keys, as React does: a radio group picks as the arrows move, and each checkbox
 is a tab stop.
 
 ### ChipGroup props
 
-| React                                               | cx                                                        | Action                                                                                 |
-| --------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `children` (Chips)                                  | `children`                                                | rule 4: Chips register; anything may sit between them                                  |
-| `selectionType: single \| multiple`                 | same                                                      | same (default `single`)                                                                |
-| `value`, `defaultValue` (`string \| string[]`)      | `value` (bindable; a string, or an array with `multiple`) | rule 3                                                                                 |
-| `onChange({ name, values })`                        | same                                                      | rule 12: `values` is a list for single selection too                                   |
-| `label`, `accessibilityLabel`                       | same                                                      | same                                                                                   |
-| `labelPosition`                                     | —                                                         | not ported (rule 7): the label is always on top                                        |
-| `labelSuffix`, `labelTrailing`                      | —                                                         | not ported (rule 9)                                                                    |
-| `necessityIndicator`                                | same                                                      | **added** (first in cx): `*` or `(optional)` after the label; `required` also requires |
-| `helpText`, `errorText`, `validationState`          | same                                                      | the error replaces the help text in one FormHint line, as React                        |
-| `isDisabled`, `isRequired`, `name`, `testID`        | same                                                      | same                                                                                   |
-| `size: xsmall \| small \| medium \| large`, `color` | same                                                      | same (defaults `small`, `primary`)                                                     |
-| `data-analytics-*`                                  | —                                                         | **missing** (analytics pass)                                                           |
-| styled props                                        | `class`                                                   | rule 1                                                                                 |
+| React                                               | cx                                                        | Action                                                                                                                                        |
+| --------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children` (Chips)                                  | `children`                                                | rule 4: Chips register; anything may sit between them                                                                                         |
+| `selectionType: single \| multiple`                 | same                                                      | same (default `single`)                                                                                                                       |
+| `value`, `defaultValue` (`string \| string[]`)      | `value` (bindable; a string, or an array with `multiple`) | rule 3                                                                                                                                        |
+| `onChange({ name, values })`                        | `onChange({ name, value })`                               | **changed** (rule 12): one key, `value` shaped as `bind:value` (an array with `multiple`)                                                                                          |
+| `label`, `accessibilityLabel`                       | same                                                      | same                                                                                                                                          |
+| `labelPosition`                                     | —                                                         | not ported (rule 7): the label is always on top                                                                                               |
+| `labelSuffix`, `labelTrailing`                      | —                                                         | not ported (rule 9)                                                                                                                           |
+| `necessityIndicator`                                | same                                                      | **added** (first in cx): `*` or `(optional)` after the label; `required` also requires                                                        |
+| `helpText`, `errorText`, `validationState`          | same                                                      | the error replaces the help text in one FormHint line, as React                                                                               |
+| `isDisabled`, `isRequired`, `name`, `testID`        | same                                                      | same; a single-choice group is a `radiogroup` carrying `aria-required` and `aria-invalid`, not each chip; each Chip gets `${testID}-${index}` |
+| `size: xsmall \| small \| medium \| large`, `color` | same                                                      | same (defaults `small`, `primary`)                                                                                                            |
+| `data-analytics-*`                                  | same                                                      | same                                                                                                                                          |
+| styled props                                        | `class`                                                   | rule 1                                                                                                                                        |
 
 ### Chip props
 
@@ -1100,7 +1171,7 @@ React Storybook.
 
 ## Collapsible
 
-> **Not exported:** the code is in `src-cx/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
+> **Not exported:** the code is in `src/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
 
 React: `Collapsible`, `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
 (`CollapsibleText` is internal to other components). cx: `Collapsible` and
@@ -1111,17 +1182,17 @@ closing — React is a button plus a region too.
 
 ### Props
 
-| React                                                    | cx                                                                                       | Action                                                                                                                                                                      |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isExpanded`, `defaultIsExpanded`                        | `isExpanded` (bindable)                                                                  | rule 3                                                                                                                                                                      |
-| `onExpandChange({ isExpanded })`                         | same                                                                                     | rule 12                                                                                                                                                                     |
-| `direction: bottom \| top`                               | same                                                                                     | same: `top` opens the body above the trigger                                                                                                                                |
-| `CollapsibleButton` (a Button)                           | the `children` trigger (receives `{ isExpanded }`): the caller's Button                  | rule 13: the wrapper toggles on a press, the caller's Button wires nothing; its first focusable element gets `aria-expanded`, and `aria-controls` while the body is mounted |
-| `CollapsibleLink` (a BaseLink `button` with the chevron) | the `children` trigger: the caller's `Link variant="button"` with a `CollapsibleChevron` | rule 13; `CollapsibleChevron` is React's CollapsibleChevronIcon                                                                                                             |
-| `CollapsibleBody` (+ `width`)                            | `content` snippet                                                                        | rule 13; width through `class` (rule 1)                                                                                                                                     |
-| `testID`                                                 | same                                                                                     | same                                                                                                                                                                        |
-| `data-analytics-*`                                       | —                                                                                        | **missing** (analytics pass)                                                                                                                                                |
-| styled props                                             | `class`                                                                                  | rule 1                                                                                                                                                                      |
+| React                                                    | cx                                                                                       | Action                                                                                                                                                                                                                     |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isExpanded`, `defaultIsExpanded`                        | `isExpanded` (bindable)                                                                  | rule 3                                                                                                                                                                                                                     |
+| `onExpandChange({ isExpanded })`                         | same                                                                                     | rule 12                                                                                                                                                                                                                    |
+| `direction: bottom \| top`                               | same                                                                                     | same: `top` opens the body above the trigger                                                                                                                                                                               |
+| `CollapsibleButton` (a Button)                           | the `children` trigger (receives `{ isExpanded }`): the caller's Button                  | rule 13: the wrapper toggles on a press that no handler prevented (`defaultPrevented`), the caller's Button wires nothing; its first focusable element gets `aria-expanded`, and `aria-controls` while the body is mounted |
+| `CollapsibleLink` (a BaseLink `button` with the chevron) | the `children` trigger: the caller's `Link variant="button"` with a `CollapsibleChevron` | rule 13; `CollapsibleChevron` is React's CollapsibleChevronIcon                                                                                                                                                            |
+| `CollapsibleBody` (+ `width`)                            | `content` snippet                                                                        | rule 13; width through `class` (rule 1)                                                                                                                                                                                    |
+| `testID`                                                 | same                                                                                     | same                                                                                                                                                                                                                       |
+| `data-analytics-*`                                       | same                                                                                     | same                                                                                                                                                                                                                       |
+| styled props                                             | `class`                                                                                  | rule 1                                                                                                                                                                                                                     |
 
 **Side addition (Link):** `variant: 'anchor' | 'button'`, React's Link API —
 `button` renders a `<button>` that acts and reads as a link (no `href`).
@@ -1161,14 +1232,14 @@ React, as checkout had none.
 
 ### Props
 
-| React                                                                           | cx      | Action                           |
-| ------------------------------------------------------------------------------- | ------- | -------------------------------- |
-| `value`, `max`                                                                  | same    | same: past `max` it reads `max+` |
-| `color` (`neutral`, `positive`, `negative`, `notice`, `information`, `primary`) | same    | same (default `neutral`)         |
-| `emphasis: subtle \| intense`, `size: small \| medium \| large`                 | same    | same                             |
-| `testID`                                                                        | same    | same                             |
-| `data-analytics-*`                                                              | —       | **missing** (analytics pass)     |
-| styled props                                                                    | `class` | rule 1                           |
+| React                                                                           | cx      | Action                                                                                               |
+| ------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `value`, `max`                                                                  | same    | same: past `max` it reads `max+`. **Different:** `max={0}` counts (`0+`); React treats 0 as no `max` |
+| `color` (`neutral`, `positive`, `negative`, `notice`, `information`, `primary`) | same    | same (default `neutral`)                                                                             |
+| `emphasis: subtle \| intense`, `size: small \| medium \| large`                 | same    | same                                                                                                 |
+| `testID`                                                                        | same    | same                                                                                                 |
+| `data-analytics-*`                                                              | same    | same                                                                                                 |
+| styled props                                                                    | `class` | rule 1                                                                                               |
 
 ### Look
 
@@ -1196,19 +1267,19 @@ React: `CounterInput`. cx: `CounterInput` (`components/counter-input/`),
 
 ### Props
 
-| React                                                                     | cx                          | Action                                                                           |
-| ------------------------------------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------- |
-| `value`, `defaultValue`                                                   | `value` (bindable)          | rule 3                                                                           |
-| `onChange({ value })`                                                     | `onChange({ name, value })` | rule 12                                                                          |
-| `min` (default 0), `max`                                                  | same                        | same: steps and typed values clamp to the range; each button disables at its end |
-| `label`, `accessibilityLabel`, `name`                                     | same                        | same; `name` registers the count with a Form                                     |
-| `labelPosition`                                                           | —                           | not ported (rule 7)                                                              |
-| `labelSuffix`, `labelTrailing`                                            | —                           | not ported (rule 9)                                                              |
-| `size: xsmall \| small \| medium \| large`, `emphasis: subtle \| intense` | same                        | same (defaults `medium`, `subtle`)                                               |
-| `isLoading`, `isDisabled`                                                 | same                        | same: both stop the buttons and grey the number; loading draws the bar           |
-| `onFocus`, `onBlur`, `testID`                                             | same                        | same                                                                             |
-| `data-analytics-*`                                                        | —                           | **missing** (analytics pass)                                                     |
-| styled props                                                              | `class`                     | rule 1                                                                           |
+| React                                                                     | cx                          | Action                                                                                    |
+| ------------------------------------------------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+| `value`, `defaultValue`                                                   | `value` (bindable)          | rule 3                                                                                    |
+| `onChange({ value })`                                                     | `onChange({ name, value })` | rule 12                                                                                   |
+| `min` (default 0), `max`                                                  | same                        | same: steps and typed values clamp to the range; each button disables at its end          |
+| `label`, `accessibilityLabel`, `name`                                     | same                        | same; `name` registers the count with the app's form                                      |
+| `labelPosition`                                                           | —                           | not ported (rule 7)                                                                       |
+| `labelSuffix`, `labelTrailing`                                            | —                           | not ported (rule 9)                                                                       |
+| `size: xsmall \| small \| medium \| large`, `emphasis: subtle \| intense` | same                        | same (defaults `medium`, `subtle`)                                                        |
+| `isLoading`, `isDisabled`                                                 | same                        | same: both stop the buttons, disable the field and grey the number; loading draws the bar |
+| `onFocus`, `onBlur`, `testID`                                             | same                        | same                                                                                      |
+| `data-analytics-*`                                                        | same                        | same                                                                                      |
+| styled props                                                              | `class`                     | rule 1                                                                                    |
 
 ### Look
 
@@ -1291,9 +1362,9 @@ passes; the measurements above match React Storybook.
 ## Dropdown and Menu
 
 > **Superseded (decided):** the Dropdown and Menu components below were
-> removed. Menu is Modal's `menu` variant with an ActionList inside; a
-> select dropdown is not ported, as it is not mobile friendly. See
-> Overlays at the end. The comparison stays as the record of what the
+> removed. Menu is its own overlay (`components/menu/`) with an ActionList
+> inside; a select dropdown is not ported, as it is not mobile friendly.
+> See Overlays at the end. The comparison stays as the record of what the
 > rows and the keyboard do.
 
 React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
@@ -1331,7 +1402,7 @@ move focus onto each item; the visible behaviour is unchanged.
 | `isOpen`, `onOpenChange(isOpen)`                                                                                | `bind:isOpen`, `onOpenChange({ isOpen })`                                                                                                                | **changed**: the object form, as the other overlays                                                  |
 | `DropdownOverlay` `defaultPlacement` (`bottom-start`)                                                           | `placement`                                                                                                                                              | same default                                                                                         |
 | `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef`                                 | —                                                                                                                                                        | **missing** (240–400px)                                                                              |
-| `DropdownHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, search via AutoComplete)           | `DropdownHeader` (`title`, `subtitle`, `trailing`, `hasSearch`)                                                                                          | same, minus `leading`/`titleSuffix`; search is built in                                              |
+| `DropdownHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, search via AutoComplete)           | —                                                                                                                                                        | not ported (no Dropdown); a search is an app's own searchable list                                   |
 | `DropdownFooter`                                                                                                | `DropdownFooter`, in the `footer({ close })` snippet                                                                                                     | rule 2                                                                                               |
 | `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | `ActionListItem` (Menu: `MenuItem`) same; `leading` is an icon or a snippet                                                                              | same (rule 14)                                                                                       |
 | `ActionListItem` `intent: 'negative'`                                                                           | `ActionListItem` / `MenuItem` `intent`                                                                                                                   | same; refused with the select field, as React (draws neutral)                                        |
@@ -1344,7 +1415,7 @@ move focus onto each item; the visible behaviour is unchanged.
 | Nested dropdowns (submenus)                                                                                     | —                                                                                                                                                        | **missing**                                                                                          |
 | `AutoComplete`, `FilterChipSelectInput`, tree view, country selector, virtualised list                          | —                                                                                                                                                        | **missing**                                                                                          |
 | Below `m`: the overlay as a BottomSheet                                                                         | —                                                                                                                                                        | **missing**                                                                                          |
-| `data-analytics-*`                                                                                              | —                                                                                                                                                        | **missing** (analytics pass)                                                                         |
+| `data-analytics-*`                                                                                              | Menu: on the panel                                                                                                                                       | same                                                                                                 |
 
 ### Look (Blade DSL, Figma)
 
@@ -1374,6 +1445,33 @@ Menu ported to the core with its look unchanged; Dropdown added. `test` passes (
 
 ---
 
+## DotLoader
+
+React: `DotLoader` (internal to Blade React: not exported from its components
+index). cx: `DotLoader` (`components/dot-loader/`), exported. Button draws it
+over its label while loading.
+
+### Props
+
+| React                                                       | cx      | Action                                                                                                                             |
+| ----------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `size: small \| medium \| large` (default medium)           | same    | same                                                                                                                               |
+| `color: IconColors` (default `interactive.icon.gray.muted`) | `color` | **changed**: Icon's colour axis (`muted` default, …, `inherit`), as everywhere in cx; `muted` is the same value as React's default |
+| `accessibilityLabel`                                        | same    | same: `role="status"` when set, else `aria-hidden`                                                                                 |
+| `testID`                                                    | same    | same                                                                                                                               |
+| —                                                           | `class` | rule 1                                                                                                                             |
+
+### Look
+
+Geometry and motion from React's `dotLoaderTokens`: 18/24/36px squares,
+3/4/6px dots, 1.5/2/3px apart, rising 3.75/5/7.5px. The loop is 1.2s and the
+dots are staggered by 150ms. They rest at 42% opacity and peak at 100%. Under
+reduced motion the middle dot is held at its peak.
+
+### Status
+
+New; `svelte-check` gives 0 errors; `test` passes.
+
 ## EmptyState
 
 React: `EmptyState`. cx: `EmptyState` (`components/empty-state/`).
@@ -1389,7 +1487,7 @@ React: `EmptyState`. cx: `EmptyState` (`components/empty-state/`).
 | `size: small \| medium \| large \| xlarge` | `size` (default `medium`)         | **added**                                                                                            |
 | `testID`                                   | same                              | same                                                                                                 |
 | styled props                               | `class`                           | rule 1                                                                                               |
-| analytics                                  | —                                 | not ported (none of cx has them yet)                                                                 |
+| analytics                                  | same                              | same                                                                                                 |
 | —                                          | ~~`color`~~                       | cx-only, **removed** (below)                                                                         |
 
 ### Look
@@ -1471,24 +1569,50 @@ at medium, desktop width): the same box, type, colours, gaps and offsets.
 
 `current/max`, a regular caption in `surface.text.gray.muted` at the hint's
 size. TextInput and TextArea show it at the end of the hint row, 2px from
-the edge, while `maxCharacters` is set (TextInput: unless `format` is).
+the edge, while `maxCharacters` is set (TextInput: unless `format` or
+`transform` is).
 
 ### Fields on the shared chrome
 
 Every field draws FieldLabel and FieldHint: ChipGroup, CounterInput,
 TextInput, TextArea, OTPInput, PhoneNumberInput (through TextInput),
-InputGroup, RadioGroup, SegmentedControl (through RadioGroup), OptionList,
-VirtualOptionList and CardGroup (its cx-only field mode); Checkbox's title
-is its label, and it draws FieldHint. The per-field label and hint strings
+InputGroup, RadioGroup, SegmentedControl (through RadioGroup) and CardGroup;
+Checkbox's title
+is its label, and it draws FieldHint. Every field registers through one
+field shell (`createFieldShell`, `runes/form/field.svelte.ts`). An
+autofocused field's first blur counts as a visit, as in React (cx used to
+skip it). The per-field label and hint strings
 (`FIELD_LABEL`, `FIELD_HINT`, `FIELD_HINT_TONE`, `INPUT_LABEL`) are gone,
 and so are the roots' `gap`s: the label and the hint carry their own.
 
-### cx-only: `Form`
+### cx-only: `Form` (the app's)
 
-`components/form/Form.svelte` is a `<form>` whose fields register with it:
-validation, submit, errors and revealing the first invalid field. React has no
-equivalent; checkout depends on it. Recommendation: **keep**. It is not
-pending on anything React has.
+**Moved** out of the library: the library keeps the seam its fields and
+buttons use, `adapters.form` (`FormAdapter`); an app's Form passes one on a
+BladeProvider around its fields. The form owns validation, when an error
+shows (`errorOf`), submission and revealing the first invalid field; Blade
+only displays and asks. A field's record carries `element()` (its element
+once mounted; a form wanting document order sorts by
+`compareDocumentPosition`) and `reveal()` (focus without scrolling, then
+`scrollIntoView({ block: 'center' })`, smooth unless the user prefers
+reduced motion; an OTP focuses its first empty cell, a CardGroup the
+control in its row, a PhoneNumberInput its number). There is no
+`FormAdapter.reorder` and no element handle type.
+
+**Changed** from React, which has no form registration (fields take a
+native `name`; `type="submit"` submits natively). Inside an app's form:
+
+- fields register with it and show its error for them in place of
+  `errorText` while it shows (an explicit `validationState` wins);
+- a `type="submit"` Button cancels the native submit and calls
+  `form.submit()`, showing busy while it runs, and shakes on a failure;
+- a `validateForm` Button validates the form before its `onClick`;
+- fields report their first touch through `adapters.track`
+  (`field_change`, with `{ name }` only).
+
+There is no `Form` component: the app's (checkout's) form implements
+`FormAdapter`. Recommendation: **keep** the seam. It is not pending on
+anything React has.
 
 ### Status
 
@@ -1523,14 +1647,14 @@ size is the box, so a theme switch costs no JS.
 | `color` (`surface.icon.gray.normal`…) on the icon | `color` axis on `Icon` (`default`, `subtle`, `muted`, `primary`, …), or the host's text colour | **changed**: a host tints it, as everywhere in cx                         |
 | `size` `xsmall`…`2xlarge`                         | `size` `2xsmall`…`xlarge` (6–24px)                                                             | same scale, less 32px                                                     |
 | `BluetoothIcon`, `ScissorsIcon`                   | —                                                                                              | **missing**: stroke-drawn, a font only fills; outline them in Blade first |
-| multicolour marks (`RazorpayTrustIcon`…)          | `Image`                                                                                        | **moved**: icons are single-colour                                        |
+| multicolour marks (`RazorpayTrustIcon`…)          | an image (`<img>`)                                                                             | **moved**: icons are single-colour                                        |
 
 ### The font
 
 The package ships no font:
 
 - each glyph as a `currentColor` SVG;
-- a codepoint lockfile (`src-cx/icons/codepoints.json`, U+E000–U+EFFF);
+- a codepoint lockfile (`src/icons/codepoints.json`, U+E000–U+EFFF);
 - a barrel re-exporting the files.
 
 `bladePlugin` (`@razorpay/blade-svelte/configs/vite` or `/configs/webpack`) works like this:
@@ -1551,7 +1675,7 @@ The rewrite runs on compiled JS, matching import statements by pattern:
 - a string literal that contains a barrel import would be rewritten too, which is very unlikely in app code;
 - an app whose loaders turn imports into CommonJS `require` gets no rewrite, so the barrel brings the whole set.
 
-The predefined set is regenerated from Blade React by `yarn generate-icons`. Codepoints never move: new glyphs append, and removed glyphs retire their code.
+The predefined set is regenerated from Blade React by `node scripts/icon-svgs/extract-blade.mjs`. Codepoints never move: new glyphs append, and removed glyphs retire their code.
 
 ### cx names that changed
 
@@ -1568,7 +1692,7 @@ The rest map directly, e.g. `chevronDown` → `ChevronDownIcon`. Switch's thumb 
 
 ### Risks
 
-- **Native renderer** (`packages/native`): needs to load the font (`formats: ['ttf']`) and honour `font-family`. Not yet verified; the image-based native Icon is gone.
+- **A consumer's native renderer** (Blade is web only): it needs to load the font (`formats: ['ttf']`) and honour `font-family`. Not verified; the image-based native Icon is gone.
 - **Loading:** glyphs are blank until the font loads (`font-display: block`). The box is sized, so nothing shifts; preload the woff2 on critical screens.
 - **User font overrides** (Firefox's "allow pages to choose their own fonts" off, dyslexia extensions) show boxes. A known icon-font limitation; accepted.
 - **CSP:** with the plugin, `font-src` must allow the asset's origin, and no inline styles are needed. Without it, each icon's mask URL is an inline `style`.
@@ -1590,17 +1714,18 @@ React: `TextInput` (over `BaseInput`). cx: `TextInput` (`components/text-input/`
 | `showClearButton`, `onClearButtonClick`                                       | same                                                                                                                                                | **added**: IconButton's medium look, while there is text; clears (`onChange` fires) and refocuses                                                                                                                                                                                |
 | `maxCharacters`                                                               | same                                                                                                                                                | now also shows FieldCounter                                                                                                                                                                                                                                                      |
 | `type: text \| telephone \| email \| url \| number \| search`                 | `type: text \| tel \| email \| url \| number`                                                                                                       | rule 10: the HTML types, with Blade's per-type defaults; `number` renders as `text`. `search` is SearchInput's (below)                                                                                                                                                           |
-| `onChange({ name, value })`                                                   | same                                                                                                                                                | rule 12                                                                                                                                                                                                                                                                          |
+| `onChange({ name, value })`                                                   | same, plus `rawValue` with `format`                                                                                                                 | rule 12; with `format`, `value` is the formatted text and `rawValue` the typed characters, as React                                                                                                                                                                              |
 | `keyboardReturnKeyType`, `autoCapitalize`, `autoCompleteSuggestionType`       | `enterKeyHint`, `autoCapitalize`, `autoComplete`                                                                                                    | rule 10; **added**                                                                                                                                                                                                                                                               |
 | —                                                                             | `inputMode`                                                                                                                                         | rule 10; **added**: e.g. `numeric` digits in a `text` card-number field                                                                                                                                                                                                          |
 | `onClick`, `onKeyDown`                                                        | same                                                                                                                                                | **added**                                                                                                                                                                                                                                                                        |
 | `prefix`, `suffix`, `leading`, `trailing` (an icon or an element)             | same: `leading` (an icon, drawn before `prefix`, or a selector snippet after it), `prefix`, `suffix`, `trailing` (an icon, or a link snippet, last) | same names (rule 14); one side takes an icon or a snippet, not both. Blade DSL's TextInput (Figma) has distinct slots, each with its own inset (text, glyphs and words 8/12px from the edge, a selector 4px) and gap; see the text-input README. Strings go to `prefix`/`suffix` |
 | `leadingIcon`, `icon` (deprecated), `trailingIcon`, `trailingButton` (a Link) | `leading`, `trailing`                                                                                                                               | folded in (rule 14): an icon or a snippet per side                                                                                                                                                                                                                               |
-| `format` (a `#` mask)                                                         | `format` (parse/format functions or rule lists)                                                                                                     | different: cx's is richer; a mask string is not accepted                                                                                                                                                                                                                         |
+| `format` (a `#` mask)                                                         | same                                                                                                                                                | same: `#` takes one typed character, anything else is a delimiter the field places, React's caret rules included; it caps the length and hides the counter. The rule-list form is removed                                                                                        |
+| —                                                                             | `transform` (`{ parse, format }`)                                                                                                                   | cx-only: a stored value that differs from the text shown (PhoneNumberInput's `+919876543210`), which a mask cannot say; ignored with `format`                                                                                                                                    |
 | `isLoading`                                                                   | —                                                                                                                                                   | **gap**: no spinner in cx yet                                                                                                                                                                                                                                                    |
 | `validationTextPlacement`, `showHelpTextOnFocus`                              | —                                                                                                                                                   | **gap**                                                                                                                                                                                                                                                                          |
 | tags (`isTaggedInput`, `tags`, …), dropdown slots                             | —                                                                                                                                                   | **gap**                                                                                                                                                                                                                                                                          |
-| `onSubmit`                                                                    | —                                                                                                                                                   | covered by Form's Enter-to-submit                                                                                                                                                                                                                                                |
+| `onSubmit`                                                                    | —                                                                                                                                                   | not ported: Enter submits the enclosing `<form>`, natively                                                                                                                                                                                                                       |
 | `labelPosition`                                                               | —                                                                                                                                                   | rule 7                                                                                                                                                                                                                                                                           |
 | `defaultValue`                                                                | `bind:value`                                                                                                                                        | rule 3                                                                                                                                                                                                                                                                           |
 
@@ -1654,6 +1779,7 @@ React: `TextArea`. cx: `TextArea` (`components/text-area/`).
 | `maxCharacters`                         | same   | now also shows FieldCounter                                             |
 | `onKeyDown`                             | same   | **added**                                                               |
 | `numberOfLines` (default 2)             | same   | same                                                                    |
+| —                                       | `span` | cx-only: a member of an InputGroup, as TextInput                        |
 | tags, `showHelpTextOnFocus`             | —      | **gap**                                                                 |
 
 Measured against React (Text Area): 2 lines are 56px of content plus the
@@ -1673,7 +1799,7 @@ React: `OTPInput`. cx: `OTPInput` (`components/otp-input/`).
 | React                                                       | cx                                       | Action                                  |
 | ----------------------------------------------------------- | ---------------------------------------- | --------------------------------------- |
 | `otpLength: 4 \| 6 \| 8`                                    | `otpLength: number`                      | superset                                |
-| `onOTPFilled({ name, value })`, `onChange({ name, value })` | same                                     | same name and payload as React; rule 12 |
+| `onOTPFilled({ name, value })`, `onChange({ name, value })` | `({ name, value, method })`              | rule 12; **added** `method`             |
 | `autoCompleteSuggestionType: none \| oneTimeCode`           | `autoComplete` (default `one-time-code`) | rule 10                                 |
 | `keyboardType` (default `decimal`)                          | `inputMode` (default `numeric`)          | rule 10                                 |
 | `keyboardReturnKeyType`                                     | `enterKeyHint`                           | rule 10; **added**                      |
@@ -1685,6 +1811,14 @@ React: `OTPInput`. cx: `OTPInput` (`components/otp-input/`).
 **Look:** each cell takes Blade's natural input width, 88px, and shrinks in
 a narrower box; the row is as wide as its cells (was: cells shared the full
 width). Cell type 20/26 (24/32 at large), 36/48px tall, 8px apart.
+
+**cx addition, `method`:** `onChange` and `onOTPFilled` add `method` to
+React's `{ name, value }` (`OTPInputChange`): `typed` (a keystroke or
+delete in a cell), `paste`, `autofill` (the platform's multi-character
+commit), `adapter` (`adapters.readOTP`), and on `onOTPFilled` only `value`
+(the owner's write completed the code). React's payload says nothing of
+how the code arrived; checkout auto-submits an auto-read code and reports
+the fill method.
 
 **cx-only, pending:** `onClick`, `accept` (per-character filter),
 `isRequired`, `isReadOnly`, `cellAccessibilityLabel` — keep all: checkout's
@@ -1699,7 +1833,8 @@ auto-read and i18n use them.
 ## Input / PhoneNumberInput
 
 React: `PhoneNumberInput` (a Dropdown country selector). cx:
-`PhoneNumberInput` (a TextInput, and a Modal picker from a ModalStack).
+`PhoneNumberInput` (a TextInput, and a country dropdown under the field, or
+the app's presenter's, `adapters.presentDropdown`).
 
 | React                                                              | cx                                                                  | Action                                                                                            |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -1713,20 +1848,37 @@ React: `PhoneNumberInput` (a Dropdown country selector). cx:
 | `defaultCountry`, `defaultValue`                                   | `bind:country`, `bind:value`                                        | rule 3                                                                                            |
 | `showDialCode`                                                     | same                                                                | same                                                                                              |
 | `onChange` payload `{phoneNumber, dialCode, country, value, name}` | `PhoneNumberChange`: `{ country, dialCode, nationalNumber, value }` | **different**: no `name` (rule 12 not met) and no formatted `phoneNumber`; `nationalNumber` added |
-| `onCountryChange({ country })`                                     | same                                                                | rule 12                                                                                           |
+| `onCountryChange({ country })`                                     | same                                                                | rule 12; the pick also reaches the app's form                                                     |
+| `placeholder`                                                      | same                                                                | same: unset, an example number for the country, as React                                          |
 
 **Look:** the country button is React's: 56×28, 4px in, 6px round, a 20px
 flag and a 16px chevron 4px apart, the gray faded fill on hover, the focus
 outline flush; the dial code 12px on. It used to show the browser's grey
 button background.
 
-**cx-only, pending:** the picker is a Modal (a bottom sheet on phones) with
-a search, not a Dropdown. Its body is ActionList's parts: a `SearchInput` over
-a `VirtualOptionList` in ActionList's look, `ActionListItem` rows, the search
-the list's `query` (`phoneCountryMatches` as `match`), `emptyText` its
-`empty` — keep: it is checkout's flow; `countries`
-(required: the library ships no country data, the app supplies it); `isCountryFixed`,
-`countryLabel`, `searchLabel`, `emptyText`, `closeLabel` — keep.
+**The picker is React's Dropdown:** a panel under the field, hanging from
+its frame (React's `DropdownOverlay referenceRef={inputWrapperRef}`), as
+wide as it, with a list in ActionList's look (`actionListClasses()`) over
+the countries, `ActionListItem` rows (the flag leading, the dial code
+trailing) and `onPick` closing it (the country already picked too). No
+search, as React. The list is virtualized (`isVirtualized` over the
+countries as `items`), so it mounts only the rows in view. React
+switches to a BottomSheet on mobile; cx leaves that to the app:
+`adapters.presentDropdown('dial-code', request)` gets an
+`ActionListRequest` (ActionList's `items`, `value`, `itemKey`, `itemText`
+and `label`, as data) and a `cancelled` promise, with no element, so it can
+cross a bridge to a native host; a presenter that returns a promise of the pick shows the list its own way (a
+sheet, a modal, the exported `PhoneCountryList` under its own search). `countries` (optional: i18nify's by
+default), `isCountryFixed`, `countryLabel`, `closeLabel` (for a presenter's
+close button) — keep. The list's gutter is the overlay's: every overlay's
+panel sets `--overlay-gutter` (20px on a modal or a drawer, 16px on a
+sheet, a popover or a menu; unset outside an overlay, 0px in the field's
+own dropdown), and the rows pad by it (ActionList `inset="overlay"`), so
+it follows a layout switch. A presenter's own search beside the list
+takes `px-[var(--overlay-gutter,0px)]`. (`resolvePhoneCountryInset` is
+removed.) `searchLabel` and `emptyText` are removed. The
+countries carry no national-number patterns: `defaultPhoneCountries()`
+(exported) is the default list, for an app that adds its own.
 
 ### Figma alignment (Blade DSL)
 
@@ -1776,8 +1928,8 @@ React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
 | `isLoading`                                                                                                                                                                                    | —                                           | **gap**: no Spinner in cx yet                                                                                                        |
 | `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same, except `labelSuffix`/`labelTrailing`  | rule 9: those two are not ported                                                                                                     |
 | `value`, `defaultValue`, `onChange({ name, value })`                                                                                                                                           | `bind:value`, same                          | rules 3 and 12                                                                                                                       |
-| Dropdown trigger (SearchInput inside a Dropdown)                                                                                                                                               | `DropdownHeader hasSearch`                  | the search lives in the Dropdown's header                                                                                            |
-| `onSubmit`                                                                                                                                                                                     | —                                           | covered by Form's Enter-to-submit                                                                                                    |
+| Dropdown trigger (SearchInput inside a Dropdown)                                                                                                                                               | —                                           | not ported (no Dropdown)                                                                                                             |
+| `onSubmit`                                                                                                                                                                                     | —                                           | not ported: Enter submits the enclosing `<form>`, natively                                                                           |
 | —                                                                                                                                                                                              | `onKeyDown`                                 | cx-only, pending: keep                                                                                                               |
 | `showHelpTextOnFocus`, `labelPosition`                                                                                                                                                         | —                                           | gap; rule 7                                                                                                                          |
 
@@ -1811,6 +1963,47 @@ hint sits 4px under — as React's Default story.
 
 ## **Error, as React:** the group's error doesn't turn the members' frames red. React's InputGroup uses `validationState` only for its hint line; cx's hint line turns negative and carries it, and the members stay `aria-invalid`. (cx used to draw the thick negative border on every member.)
 
+## ProgressBar
+
+React: `ProgressBar`. cx: `ProgressBar` (`components/progress-bar/`). It
+replaces cx's `Progress` (dots, bar, ring), which is removed: its dots are
+DotLoader now, and its bar and ring are this component.
+
+### Props
+
+| React                                                       | cx                      | Action                                                                         |
+| ----------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------ |
+| `variant: linear \| circular`                               | same (default `linear`) | same                                                                           |
+| `variant: progress \| meter` (the older spelling of `type`) | `type`                  | **removed**: pass `type` with `variant="linear"`                               |
+| `type: progress \| meter` (default progress)                | same                    | same: `role="progressbar"` or `role="meter"`, React's `aria-value*`            |
+| `size: small \| medium \| large` (default small)            | same                    | same; `large` is typed out for linear, where React throws in dev               |
+| `color: FeedbackColors`                                     | same                    | same; unset, the primary surface's intense fill                                |
+| `value`, `min`, `max`, `label`, `accessibilityLabel`        | same                    | same                                                                           |
+| `isIndeterminate`                                           | same                    | same; typed out for a meter, and a ring ignores it (React throws in dev)       |
+| `showPercentage` (default true)                             | same                    | same. A circular meter hides it, as the prop's doc says; React's ring shows it |
+| `_oscillation` (private)                                    | —                       | not ported                                                                     |
+| `testID`, analytics attributes                              | same                    | same                                                                           |
+| styled props                                                | `class`                 | rule 1                                                                         |
+
+### Look
+
+- **Linear:** a 2/4px track in feedback neutral-subtle with 2px corners. The
+  label and the percentage sit above it, in body small subtle, with the
+  percentage 4px above the track. The fill eases its width over 2xgentle
+  (emphasized). On a `progress` bar a white sheen pulses over the fill (to
+  25% and back, from a 2s delay). When indeterminate, a 5% fill slides
+  across, stretching mid-way.
+- **Circular:** 24/48/72px with a 3/5/7px stroke, starting at 12 o'clock.
+  The percentage is semibold, inside the ring above small and below a small
+  ring. The label sits 8px under. The arc dims to 65% and back until it is
+  full.
+- Under reduced motion the fill jumps to its value and nothing pulses or
+  slides.
+
+### Status
+
+New; `svelte-check` gives 0 errors; `test` passes.
+
 ## Radio, RadioGroup
 
 React: `RadioGroup`, `Radio`. cx: same (`components/radio/`).
@@ -1842,7 +2035,11 @@ without this the help text joined the name, as it does in React.
 
 ## Link
 
-React: `Link` (over `BaseLink`). cx: `Link` (`components/link/`).
+React: `Link` (over `BaseLink`). cx: `Link` (`components/link/`). Its
+anchor behaviour is `createLink` (`runes/link/link.ts`), which every `href`
+renderer shares: a link Button, Card, Avatar, BreadcrumbItem, a CardGroup or
+ActionList link row and a link tab route plain internal clicks through
+`adapters.navigate` and take the same `rel` as Link.
 
 ### Props
 
@@ -1856,7 +2053,8 @@ React: `Link` (over `BaseLink`). cx: `Link` (`components/link/`).
 | `htmlTitle`                                                                           | same                             | **added** (`title`)                                                                     |
 | `href`, `target`, `rel`                                                               | same                             | same; `_blank` adds `noopener noreferrer`                                               |
 | `isDisabled` (button only)                                                            | on both                          | cx-only on the anchor, pending (below)                                                  |
-| `onClick`                                                                             | same                             | same; an app router takes plain internal clicks (adapter)                               |
+| `onClick`                                                                             | same                             | same; then `adapters.navigate` may take a plain internal click (rule 15)                |
+| `testID`, `data-analytics-*`                                                          | same                             | same                                                                                    |
 | `accessibilityProps`, `hitSlop`, `opacity`, pointer events                            | —                                | not ported (`accessibilityLabel` covers naming)                                         |
 
 ### Look
@@ -1892,27 +2090,31 @@ Button, Disabled Link Button, Link Sizes; hover and keyboard focus):
 
 ## Modal
 
-> **Not exported:** the code is in `src-cx/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
-
 React: `Modal`, `ModalHeader`, `ModalBody`, `ModalFooter`. cx: `Modal`
-(`components/modal/`). The header, body and footer are shared with
-BottomSheet; see its section for the header decisions (rule 2).
+(`components/modal/`), the centred dialog, over the internal
+`OverlaySurface` it shares with BottomSheet and Drawer. It has **no `variant`**: a sheet,
+a drawer, a popover and a menu are their own components (BottomSheet,
+Drawer, Popover, Menu) over the same runes (`createOverlay`); an overlay
+that picks one per screen is the app's own (see Overlays). The header, body and
+footer are shared with BottomSheet; see its section for the header decisions
+(rule 2).
 
 ### Props
 
-| React                                                                                  | cx                                                                                                              | Action                                                                                                                                                       |
-| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `isOpen`, `onDismiss()`                                                                | `bind:isOpen`, `onDismiss({ source, close })`                                                                   | **changed**, as BottomSheet: fires on every dismissal, dismissible or not; a dismissible modal then closes, otherwise `close` ends it                        |
-| `isDismissible`                                                                        | same                                                                                                            | same                                                                                                                                                         |
-| `size: small \| medium \| large \| full` (default `small`)                             | same                                                                                                            | **changed** from `default \| full`: Blade's 400, 760 and 1024px columns                                                                                      |
-| `accessibilityLabel`                                                                   | same                                                                                                            | same                                                                                                                                                         |
-| `initialFocusRef`                                                                      | —                                                                                                               | **missing**, as BottomSheet                                                                                                                                  |
-| `zIndex`                                                                               | —                                                                                                               | n/a: the OverlayStack stacks modals                                                                                                                          |
-| `ModalHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, back button) | `title`, `subtitle`, `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing({ close })` + `header` snippet | `subtitle` kept as a string; `leading` per rule 14; `showBackButton` + `onBackButtonClick` as on BottomSheet (ModalHeader has none in React)                 |
-| —                                                                                      | `chrome` snippet                                                                                                | cx-only: a zero-height box on the panel's top edge, unclipped, holding the close button and a sheet's handle; the caller adds things that hang off the panel |
-| `ModalBody` (`padding` spacing.6 \| spacing.0)                                         | `body` snippet (20px) / `children` (raw)                                                                        | rule 2                                                                                                                                                       |
-| `ModalFooter`                                                                          | `footer` snippet                                                                                                | rule 2                                                                                                                                                       |
-| `data-analytics-*`                                                                     | —                                                                                                               | **missing** (analytics pass)                                                                                                                                 |
+| React                                                                     | cx                                                                                                                   | Action                                                                                                                                                       |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `isOpen`, `onDismiss()`                                                   | `bind:isOpen`, `onDismiss({ source, close })`                                                                        | **changed**, as BottomSheet: fires on every dismissal, dismissible or not; a dismissible modal then closes, otherwise `close` ends it                        |
+| —                                                                         | `onOpenChange({ isOpen })`                                                                                           | **added** on Modal and Drawer, as Popover's: the opens and closes it makes, not the owner's `isOpen`                                                         |
+| `isDismissible`                                                           | same                                                                                                                 | same                                                                                                                                                         |
+| `size: small \| medium \| large \| full` (default `small`)                | same                                                                                                                 | **changed** from `default \| full`: Blade's 400, 760 and 1024px columns                                                                                      |
+| `accessibilityLabel`                                                      | same                                                                                                                 | same                                                                                                                                                         |
+| `initialFocusRef`                                                         | same                                                                                                                 | same, as BottomSheet                                                                                                                                         |
+| `zIndex`                                                                  | —                                                                                                                    | n/a: the overlay host stacks modals                                                                                                                          |
+| `ModalHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`) | `ModalHeader` (`title: string \| Snippet`, `subtitle`, `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing`) | same component (`components/modal-children/`); `leading` per rule 14; no back button, as React. Its classes are `resolveModalHeader()`                       |
+| —                                                                         | `chrome` snippet                                                                                                     | cx-only: a zero-height box on the panel's top edge, unclipped, holding the close button and a sheet's handle; the caller adds things that hang off the panel |
+| `ModalBody` (`padding` spacing.6 \| spacing.0)                            | `ModalBody` (`padding`)                                                                                              | same; `height` is `class` (rule 1). Classes: `resolveModalBody({ padding })`                                                                                 |
+| `ModalFooter`                                                             | `ModalFooter`                                                                                                        | same; a padded box, the caller lays out the actions. Classes: `resolveModalFooter()`                                                                         |
+| `data-analytics-*`                                                        | same                                                                                                                 | same                                                                                                                                                         |
 
 ### Look
 
@@ -1929,18 +2131,15 @@ Measured against React Storybook (Simple Modal, every size, 1200×800):
   Blade's BaseFooter: the caller lays out its buttons (the story right-aligns
   them 12px apart). It was a `flex gap-4` row with 16px above; BottomSheet's
   footer changed with it.
-- **Scrim:** `overlay.background.subtle`, the OverlayStack's.
+- **Scrim:** `overlay.background.subtle`, the overlay host's.
 - Not ported: React's 320px minimum width (a checkout frame can be narrower).
 
 ### cx-only features — decision pending
 
-| Feature                                                               | What it does                                                                                                           | Recommendation                                                     |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `variant: modal \| sheet \| drawer \| left-drawer \| popover \| menu` | centred, Blade's BottomSheet, Blade's Drawer, the drawer on the left, Blade's Popover, Blade's Menu; the app picks     | keep: BottomSheet, Drawer, Popover and Menu ride it (see Overlays) |
-| `trigger`, `placement`, `isDisabled`, `presentation`                  | the control that opens it; where a popover or menu sits; whether it opens; anchored or a bottom sheet (the provider's) | keep (see Overlays)                                                |
-| `pace`                                                                | v2's quicker easing                                                                                                    | decide (as BottomSheet)                                            |
-| `onClosed`, `role`, `closeLabel`                                      | as BottomSheet                                                                                                         | keep                                                               |
-| imperative `openModal` (OverlayStack renders them)                    | a stack of modals opened from code, a lazy body with a pending state                                                   | keep                                                               |
+| Feature                          | What it does                                | Recommendation          |
+| -------------------------------- | ------------------------------------------- | ----------------------- |
+| `pace`                           | v2's quicker easing                         | decide (as BottomSheet) |
+| `onClosed`, `role`, `closeLabel` | as BottomSheet                              | keep                    |
 
 ### Status
 
@@ -1959,32 +2158,32 @@ passes; the measurements match React Storybook at every size.
 
 ## Popover
 
-> **Superseded (decided):** the Popover component below was removed. It is
-> Modal's `popover` variant: `children` becomes `trigger`, `content`
-> becomes `body`, `titleLeading` becomes `leading`; `openInteraction` is
-> not ported (click only). See Overlays at the end.
-
 React: `Popover` (with `PopoverInteractiveWrapper` for a non-button trigger).
-cx: Modal `variant="popover"` (`components/modal/`), whose floating panel a menu shares.
+cx: `Popover` (`components/popover/`) over the overlay runes, whose
+floating panel (`FloatingPanel`) Menu shares. Its content is
+`OverlaySections`: the header, body and footer as props and snippets, as
+Menu's. `children` is the trigger, as React's; `content` is raw content in
+place of the sections; React's `content` is `body`, `titleLeading` is
+`leading`.
 
 ### Props
 
-| React                                | cx                                                                                      | Action                                                                                                                                |
-| ------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `children` (the trigger)             | `children` (receives `{ isOpen }`), in a wrapper that listens for hover, focus and taps | same name (rule 13); the trigger wires nothing                                                                                        |
-| `content`                            | `content: string \| Snippet<[{ close }]>`                                               | same name (rule 13); a string renders as small body text                                                                              |
-| `title`                              | `title: string \| Snippet`                                                              | **added**: the heading, and it names the dialog                                                                                       |
-| `titleLeading`                       | `titleLeading?: IconSource \| Snippet<[{ close }]>`                                     | same name (rule 14): an icon is a 20px glyph, a snippet an asset                                                                      |
-| `footer`                             | snippet (receives `close`)                                                              | **added**                                                                                                                             |
-| `placement` (default `top`)          | same                                                                                    | default **changed** from `bottom-start`                                                                                               |
-| `openInteraction: click \| hover`    | —                                                                                       | **not ported** by decision: click only. Hover has no touch counterpart and checkout is mobile first; Tooltip is the one hover overlay |
-| close button (with `click`)          | same, `closeLabel` (default `Close`)                                                    | **added**: beside the title, or floating in the corner without one                                                                    |
-| `isOpen`, `onOpenChange({ isOpen })` | `bind:isOpen`, same                                                                     | rule 12                                                                                                                               |
-| `defaultIsOpen`                      | `bind:isOpen`                                                                           | rule 3                                                                                                                                |
-| `maxWidth`                           | —                                                                                       | rule 1 would put it on `class`, which lands on the trigger; not ported                                                                |
-| `initialFocusRef`                    | —                                                                                       | **missing**: focus goes to the first control (as React without it)                                                                    |
-| `zIndex`                             | —                                                                                       | n/a: the OverlayStack stacks panels                                                                                                   |
-| `data-analytics-*`                   | —                                                                                       | **missing** (analytics pass)                                                                                                          |
+| React                                | cx                                                                       | Action                                                                                                                                |
+| ------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `children` (the trigger)             | `children` (receives `{ isOpen }`), in a wrapper that opens it on a click | same; the trigger wires nothing |
+| `content`                            | `body: Snippet<[{ close }]>`, or raw `content`                           | **renamed**: the padded body, or content that owns its box; `padding: default \| none`                                                |
+| `title`                              | `title: string \| Snippet`, `subtitle`                                   | **added**: the heading, and it names the dialog                                                                                       |
+| `titleLeading`                       | `leading?: IconSource \| Snippet`, `titleSuffix`, `trailing`             | **renamed** (rule 14): an icon is a 20px glyph, a snippet an asset                                                                    |
+| `footer`                             | snippet (receives `close`)                                               | **added**                                                                                                                             |
+| `placement` (default `top`)          | same                                                                     | default **changed** from `bottom-start`                                                                                               |
+| `openInteraction: click \| hover`    | —                                                                        | **not ported** by decision: click only. Hover has no touch counterpart and checkout is mobile first; Tooltip is the one hover overlay |
+| close button (with `click`)          | same, `closeLabel` (default `Close`)                                     | **added**: beside the title, or floating in the corner without one                                                                    |
+| `isOpen`, `onOpenChange({ isOpen })` | `bind:isOpen`, same                                                      | rule 12: fires on every open and close, whoever asked; dismissals also report `onDismiss`                                             |
+| `defaultIsOpen`                      | `bind:isOpen`                                                            | rule 3                                                                                                                                |
+| `maxWidth`                           | —                                                                        | rule 1 would put it on `class`, which lands on the trigger; not ported                                                                |
+| `initialFocusRef`                    | same                                                                     | same; without it focus goes to the first control (the close button), as React                                                         |
+| `zIndex`                             | —                                                                        | n/a: the overlay host stacks panels                                                                                                   |
+| `data-analytics-*`                   | same                                                                     | same                                                                                                                                  |
 
 ### Look
 
@@ -2004,10 +2203,13 @@ Measured against React Storybook (Default, 1200×800):
 
 ### cx-only features — decision pending
 
-| Feature              | What it does                 | Recommendation |
-| -------------------- | ---------------------------- | -------------- |
-| `isDisabled`         | the trigger does not open it | keep           |
-| `accessibilityLabel` | names an untitled panel      | keep           |
+| Feature                                            | What it does                 | Recommendation |
+| -------------------------------------------------- | ---------------------------- | -------------- |
+| `isDisabled`                                       | the trigger does not open it | keep           |
+| `accessibilityLabel`                               | names an untitled panel      | keep           |
+| `onDismiss`, `onClosed`, `isDismissible`, `chrome` | as Modal's                   | keep           |
+
+`pace` is removed.
 
 ### Status
 
@@ -2024,8 +2226,8 @@ passes; the panel, header, gap and arrow measure as React's.
 ## SegmentedControl
 
 React: `SegmentedControl`, `SegmentedControlItem`. cx: the same
-(`components/segmented-control/`), a RadioGroup drawn through its internal
-`look`.
+(`components/segmented-control/`), the internal `BaseRadioGroup` in its
+own look (RadioGroup's `look` prop is removed).
 
 ### Props
 
@@ -2089,8 +2291,7 @@ React: `Skeleton`. cx: `Skeleton` (`components/skeleton/`).
   the standard curve. cx only pulsed. The fade uses `both` fill, so with
   reduced motion (no animation) the bone still shows.
 - **No default radius**, as React: it was 4px. The shape is the caller's
-  `class`; ModalPending and the stories now pass `rounded-xsmall`; Async's
-  bones pass none.
+  `class`; the stories now pass `rounded-xsmall`.
 
 No cx-only features. **Status:** done; `svelte-check` gives 0 errors and
 `test` passes.
@@ -2104,15 +2305,19 @@ No cx-only features. **Status:** done; `svelte-check` gives 0 errors and
 ## Switch
 
 React: `Switch`. cx: `Switch` (`components/switch/`). Its colours, motion
-and thumb check were ported from React earlier.
+and thumb check were ported from React earlier. The check is
+`surface.icon.primary.normal`, where React's is `interactive.icon.primary.subtle`:
+the same blue in the standard theme, but the latter is black in the neutral
+theme cx's classes fall back to, so the check would not match the track.
 
-| React                                                                  | cx                                          | Action                                                     |
-| ---------------------------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------------- |
-| `isChecked`, `defaultChecked`, `onChange({ isChecked, value, event })` | `bind:isChecked`, `onChange({ isChecked })` | rule 3; rule 12 (no `value`: cx's form value is `parse`)   |
-| `size: small \| medium`                                                | same                                        | same                                                       |
-| `isDisabled`, `name`, `accessibilityLabel`, `testID`                   | same                                        | same                                                       |
-| `value` (the submitted string)                                         | `parse`                                     | cx's form model: `parse(isChecked)` is the submitted value |
-| `id`                                                                   | —                                           | not ported (the control's id is internal)                  |
+| React                                                                    | cx                                                 | Action                                                      |
+| ------------------------------------------------------------------------ | -------------------------------------------------- | ----------------------------------------------------------- |
+| `isChecked`, `defaultChecked`, `onChange({ isChecked, value, event })`   | `bind:isChecked`, `onChange({ isChecked, value })` | rule 3; rule 12                                             |
+| `size: small \| medium`                                                  | same                                               | same                                                        |
+| `isDisabled`, `name`, `accessibilityLabel`, `testID`, `data-analytics-*` | same                                               | same                                                        |
+| `value` (the submitted string)                                           | same                                               | same: what a native form submits while it is on             |
+| —                                                                        | `parse`                                            | cx-only: `parse(isChecked)` is what the app's form collects |
+| `id`                                                                     | —                                                  | not ported (the control's id is internal)                   |
 
 **Look** — measured against React Storybook at 1200 and 390px, on and off:
 
@@ -2202,16 +2407,16 @@ orientations):
 ### Behaviour
 
 One tab stop; arrows on either axis, Home and End move between enabled
-tabs, wrapping. cx keeps `activation` (default `automatic`: moving focus
-picks, the APG default); `manual` picks on a press, Enter or Space, as
-Blade does.
+tabs, wrapping. `activation` defaults to `manual`, as Blade: a press, Enter
+or Space picks. cx keeps `automatic` (moving focus picks, the APG
+default).
 
 ### cx-only features — decision pending
 
-| Feature                           | What it does               | Recommendation           |
-| --------------------------------- | -------------------------- | ------------------------ |
-| `activation: automatic \| manual` | whether focus moving picks | keep (Blade is `manual`) |
-| `accessibilityLabel`              | names the tablist          | keep                     |
+| Feature                           | What it does               | Recommendation                    |
+| --------------------------------- | -------------------------- | --------------------------------- |
+| `activation: automatic \| manual` | whether focus moving picks | keep (default `manual`, as Blade) |
+| `accessibilityLabel`              | names the tablist          | keep                              |
 
 ### Status
 
@@ -2222,21 +2427,32 @@ passes; every variant, size and orientation measures as React's.
 
 ## Toast
 
-React: `useToast().show(…)` with a `ToastContainer`. cx: `showToast(…)`
-(from anywhere, over a queue) with a `ToastStack` (`components/toast/`).
+React: `useToast().show(…)` with a `ToastContainer`. cx:
+`showToast(toast, { cancelled }?)` (from anywhere, on the page's queue),
+which returns a `Promise<ToastDismissReason>`; `cancelled` resolving
+dismisses the toast (one resolved already goes on the next microtask,
+before it paints). BladeProvider
+renders the stack (not exported). A queue made before any stack mounts
+keeps its toasts, timers held, and shows them once one mounts. The public
+`Toasts` type is just `{ showToast }`: an app's own queue is
+`createToasts()`, passed as `adapters.toasts`, or an object of its own
+with a `showToast`, which BladeProvider does not render. A nested provider
+with a Blade queue of its own renders its stack in the enclosing overlay
+host. Internally (`runes/toast/`, not exported) the model is
+`createToastsModel` and the queue `createToastQueue`.
 
 ### Options
 
 | React                                                   | cx                                                         | Action                                                                                                                                                                                        |
 | ------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `content`                                               | same                                                       | same as React; checkout's cx called it `message` (a string)                                                                                                                                   |
-| `leading`                                               | `leading?: IconSource \| Snippet`                          | same name (rule 14): an icon replaces the colour's default glyph (Blade's info, check-circle, alert-triangle, alert-octagon); a snippet (an asset) takes its place too                        |
+| `leading`                                               | `leading?: IconSource \| { image, alt? }`                  | same name; data only (an exception to rule 14: a toast is shown from a `.ts` call): an icon replaces the colour's default glyph (Blade's info, check-circle, alert-triangle, alert-octagon); an image (an asset, 20px) takes its place too |
 | `color`                                                 | same                                                       | same                                                                                                                                                                                          |
-| `action: { text, onClick, isLoading }`                  | same names; `onClick()` is required and takes no arguments | same as React; checkout's cx called it `{ label, onPress }`; `isLoading` added (disables it, `aria-busy`). Pressing it no longer dismisses the toast, as Blade: call the handle's `dismiss()` |
+| `action: { text, onClick, isLoading }`                  | `{ text, onClick(): void \| Promise<unknown> }`             | **changed**: a returned promise shows the action busy (disabled, `aria-busy`) until it settles, a rejection going to `adapters.reportError`, in place of a static `isLoading`. Pressing it doesn't dismiss the toast, as Blade: resolve `cancelled` |
 | dismiss button                                          | always shown, `closeLabel` (default `Dismiss toast`)       | **changed**: it showed only when `closeLabel` was passed                                                                                                                                      |
 | `onDismissButtonClick`                                  | `onDismissButtonClick()` (no arguments)                    | **added**                                                                                                                                                                                     |
 | `autoDismiss` (default true), `duration` (default 4000) | same                                                       | **added** `autoDismiss`; `duration` now defaults to 4000 here                                                                                                                                 |
-| `id`, `toast.dismiss(id)`                               | the returned handle's `dismiss()` and `dismissed`          | cx's handle                                                                                                                                                                                   |
+| `id`, `toast.dismiss(id)`                               | `showToast`'s `cancelled`, and the promise it returns      | **changed**: no handle; resolve `cancelled` to dismiss, await the promise for why it left                                                                                                      |
 | `type: promotional`                                     | —                                                          | **gap**: arbitrary content, gray, the action under it                                                                                                                                         |
 
 ### Look
@@ -2261,7 +2477,7 @@ Measured against React Storybook (Basic, neutral):
 
 | Feature                          | What it does                                                                       | Recommendation |
 | -------------------------------- | ---------------------------------------------------------------------------------- | -------------- |
-| `onDismiss(reason)`, `dismissed` | how it went: `timeout`, `dismiss` (the button or the handle), `evicted`, `cleared` | keep           |
+| `onDismiss(reason)`, the promise | how it went: `timeout`, `dismiss` (the button or `cancelled`), `evicted`, `cleared` | keep           |
 | `closeLabel`                     | i18n for the dismiss button                                                        | keep           |
 
 **Status:** done; `svelte-check` gives 0 errors and `test` passes;
@@ -2269,7 +2485,7 @@ the toast measures as React's.
 
 ### Figma alignment (Blade DSL)
 
-- `showToast({ leading })` takes an icon or a snippet (an asset), in place of the glyph: Figma's leading item is an icon or an asset.
+- `showToast({ leading })` takes an icon or an image (`{ image, alt }`, an asset), in place of the glyph: Figma's leading item is an icon or an asset.
 - Content → action or cross is 12px (Figma). Figma's desktop action is a Link; cx keeps an xsmall secondary white Button.
 
 ---
@@ -2279,15 +2495,17 @@ the toast measures as React's.
 React: `Tooltip` (with `TooltipInteractiveWrapper` for a non-focusable
 trigger). cx: `Tooltip` (`components/tooltip/`).
 
-| React                                                  | cx                                                                                      | Action                                                                 |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `content` (string)                                     | `content: string \| Snippet`                                                            | same name (rule 13), superset: a snippet for rich content              |
-| `title`                                                | `title: string \| Snippet`                                                              | **added**                                                              |
-| `placement` (default `top`; no `left/right-start/end`) | same (all twelve)                                                                       | superset                                                               |
-| `onOpenChange({ isOpen })`                             | same                                                                                    | rule 12                                                                |
-| `children` (the trigger)                               | `children` (receives `{ isOpen }`), in a wrapper that listens for hover, focus and taps | same name (rule 13); the trigger wires nothing                         |
-| `maxWidth`                                             | —                                                                                       | rule 1 would put it on `class`, which lands on the trigger; not ported |
-| `zIndex`                                               | —                                                                                       | n/a: the OverlayStack stacks it                                        |
+| React                                                  | cx                                                                                      | Action                                                                                          |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `content` (string)                                     | `content: string \| Snippet`                                                            | same name (rule 13), superset: a snippet for rich content                                       |
+| `title`                                                | `title: string \| Snippet`                                                              | **added**                                                                                       |
+| `placement` (default `top`; no `left/right-start/end`) | same (all twelve)                                                                       | superset                                                                                        |
+| `onOpenChange({ isOpen })`                             | same                                                                                    | rule 12                                                                                         |
+| `children` (the trigger)                               | `children` (receives `{ isOpen }`), in a wrapper that listens for hover, focus and taps | same name (rule 13); the trigger wires nothing                                                  |
+| `maxWidth`                                             | —                                                                                       | rule 1 would put it on `class`, which lands on the trigger; not ported                          |
+| `zIndex`                                               | —                                                                                       | n/a: the overlay host stacks it                                                                 |
+| BladeProvider's `FloatingDelayGroup` (300/300 ms)      | the tooltips under one layer stack share a delay group                                  | same: 300 ms to open and to close; once one is open the next opens at once and the first closes |
+| `data-analytics-*`                                     | same, on the bubble                                                                     | same                                                                                            |
 
 **Look** — measured against React Storybook (Default, With Title):
 
@@ -2319,11 +2537,30 @@ Blade DSL's Typography page (Figma) defines the scale:
 - Heading `weight: medium` **removed**: Figma has regular and semibold only.
 - **Display** (added) is Figma's Display styles: small 48/56, medium 56/64, large 64/70, xlarge 72/78, in the heading face; regular and medium at −1.3%, semibold at 0%. Same as React: `size` (default small), `weight` (default semibold), `color`, `textAlign`, `as` (`span`, `h1`–`h6`; cx defaults to `h1`, React to a plain text element).
 - **Code** (added) is Figma's Code styles: small 10/14, medium 12/18, Menlo, regular or bold. Same as React: `size` (default small), `weight`, `isHighlighted` (default true, a neutral chip in the subtle text colour), and `color` only when not highlighted, enforced by the type. **Different:** the line heights follow Figma; React uses 13 and 17. React's `textTransform` is left to `class`.
+- **Colours:** Text's `negative` and `positive`, as React (`danger` and `success` are removed).
+- **Truncation:** Text's `truncateAfterLines`, as React (was `truncate`). **Different:** capped at 6 lines (the generated clamps).
+- Text, Heading, Display and Code pass `data-analytics-*`.
 - Caption styles have no component yet.
 
 ---
 
 ## Carousel
+
+React: `Carousel`. cx: `Carousel` (`components/carousel/`), data plus a
+slide snippet (rule 4: `items`, `itemKey`, `children(item, index)`).
+
+| React                                         | cx                                                             | Action                                                                                |
+| --------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `activeSlide`, `defaultActiveSlide`           | `bind:activeSlide`                                             | rule 3                                                                                |
+| `onChange(slideIndex)`                        | same                                                           | same                                                                                  |
+| `autoPlay`                                    | same                                                           | same: every 6s, paused while the pointer or focus is inside, off under reduced motion |
+| `showIndicators`                              | same                                                           | same                                                                                  |
+| `accessibilityLabel`                          | same                                                           | same                                                                                  |
+| —                                             | `slideLabel`, `indicatorLabel`, `indicatorsAccessibilityLabel` | cx-only: localized names for the slides, the dots and their row                       |
+| `visibleItems`, `navigationButtonPosition`, … | —                                                              | **missing** (below)                                                                   |
+
+**Semantics:** the dots are a `tablist` of `tab`s and each slide a
+`tabpanel` (`aria-roledescription="slide"`).
 
 - Indicators: 6px dots 4px apart; the current one an 18px pill, with its width animating (Figma \_Carousel Indicators). Before: 8px dots 6px apart.
 - **Missing**: Figma's navigation buttons, `visibleItems` and `navPosition`, white and blue indicators, and the 10px root gap (cx 8px).
@@ -2332,94 +2569,161 @@ Blade DSL's Typography page (Figma) defines the scale:
 
 ## ActionList
 
-React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every Dropdown, of BottomSheet bodies and of the country selector. cx: the same names (`components/action-list/`). **ActionList is OptionList, designed:** OptionList is the headless list (value, keyboard, form, search, sections); ActionList is its look and its rows, usable anywhere a list of choices or actions goes — a page, a sheet, a Dropdown, a `VirtualOptionList`. It works in two contexts:
+React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every Dropdown, of BottomSheet bodies and of the country selector. cx: the same names (`components/action-list/`). **ActionList is a look:**
 
-- **Inside a Dropdown:** the items are the Dropdown's options (`role="option"`, or a link). The Dropdown holds the value; `ActionList` is only their group.
-- **Standalone:** a thin wrapper over `OptionList`, which takes ActionList's look as `classes` (internal; the helper is not exported). Everything else is OptionList's: native radios or checkboxes — or buttons, with `selectionType="none"` — `bind:value`, form field, keyboard, the `query` / `match` / `empty` search and `OptionListSection` (which `ActionListSection` renders standalone). A long list is `virtualizedItems` / `virtualizedSections` on ActionList, VirtualOptionList underneath. React has no standalone ActionList: it reads `selectionType` and the selection from the Dropdown context (`useDropdown`) and renders only inside a Dropdown or a BottomSheet. cx's standalone list holds its own value, as OptionList.
-- **One row:** both contexts draw `shared/ActionListRow.svelte` with the `shared/popup-list` classes, so standalone rows match Dropdown's (36px, touching, 8px radius, the selected wash, a drawn checkbox for multiple), Menu's row in Figma's \_Action List. PhoneNumberInput's country picker is `ActionListItem` rows in a `VirtualOptionList` with ActionList's look, searched through the list's `query`.
+- **ActionList** is CardGroup's internal `BaseCardGroup` with `actionListClasses(variant, inset)`, plus `variant` and `inset`. Everything else is CardGroup's: native radios or checkboxes, `bind:value`, `onChange`, `onPick`, the form field, sections (`ActionListSection` renders a `CardGroupSection`), rows as data and `isVirtualized`. Its keys are a listbox's, as React's: the arrows move and pick nothing, Enter and Space pick. React has no standalone ActionList: it reads `selectionType` and the selection from the Dropdown context (`useDropdown`) and renders only inside a Dropdown or a BottomSheet. cx's list holds its own value, as CardGroup.
+- **`actionListClasses()` is exported**, for an app's own list in ActionList's look. The look has no search parts.
+- **Removed from ActionList** (not in React's ActionList; an app's own list brings them): `isSearchable`, `searchPlaceholder`, `query`, `match`, `empty`, `virtualizedItems`, `virtualizedSections`. **Removed everywhere:** `selectionType="none"`. A list where a pick submits uses `onPick`.
+- **Not coupled to Menu.** Inside a Menu, ActionList is an ordinary choice list. Its rows are radios, not `menuitem`s, and nothing closes the menu for it: its `onPick` calls the body's `close`.
+- **Link rows:** an `ActionListItem` with `href` is CardGroupItem's link row in ActionList's look (`chevron: 'hidden'`), routed as Link's (rule 15). When disabled it drops its `href` and leaves the tab order. A link closes a menu from its own `onClick`.
+- **One row:** rows draw `shared/ActionListRow.svelte` with the `shared/popup-list` classes (36px, touching, 8px radius, the selected wash, a drawn checkbox for multiple), Menu's row in Figma's \_Action List.
 
-| React                                                                                                           | cx                                                                                                                                   | Action                                                                                                                                                                                                                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ActionList` `children`                                                                                         | `children`                                                                                                                           | rule 2                                                                                                                                                                                                                                                                                                                             |
-| Dropdown's `selectionType`; the selection from the Dropdown context (no standalone ActionList)                  | `selectionType`, `bind:value`, `onChange` (standalone)                                                                               | `selectionType` same, **added** `none` (rows are buttons that act and hold nothing; each press reports through `onChange`); **added**: standalone, the list holds the value (`bind:value`), as OptionList                                                                                                                          |
-| —                                                                                                               | `variant: plain \| card`                                                                                                             | cx-only: `card` draws rows divided in a bordered box, each section its own box under its heading (checkout's bank list; to be checked against Figma)                                                                                                                                                                               |
-| —                                                                                                               | `isSearchable`, `searchPlaceholder`; or `query`; and `match`, `empty`                                                                | cx-only: the standalone search. React searches only inside a Dropdown (`AutoComplete` in `DropdownHeader`); here `isSearchable` draws the list's own SearchInput above the rows, or a SearchInput placed anywhere binds to `query` (exclusive); `match` decides the match for either, and a section the search empties steps aside |
-| `ActionList` `isVirtualized`                                                                                    | `virtualizedItems` or `virtualizedSections` (data), `itemKey`, `itemText`, `isItemDisabled`; `children(item, state)` renders the row | **changed**: the rows are data; sections are data, each heading a row; VirtualOptionList underneath                                                                                                                                                                                                                                |
-| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | same; `leading` is an icon or a snippet                                                                                              | same (rule 14)                                                                                                                                                                                                                                                                                                                     |
-| `ActionListItem` `href`, `target`                                                                               | `href`, `target`, `rel`                                                                                                              | same: a link row, never a value                                                                                                                                                                                                                                                                                                    |
-| `ActionListItem` `intent: 'negative'`                                                                           | `intent`                                                                                                                             | same; with the Dropdown select field it draws neutral (React throws)                                                                                                                                                                                                                                                               |
-| `ActionListItem` `isSelected`                                                                                   | —                                                                                                                                    | derived from the value                                                                                                                                                                                                                                                                                                             |
-| `ActionListSection` (`title`, a divider after)                                                                  | `ActionListSection`                                                                                                                  | same (the hairline is drawn above every section but the first)                                                                                                                                                                                                                                                                     |
-| `ActionListItemIcon`, `…Asset`, `…Avatar`, `…Badge`, `…BadgeGroup`, `…Text`                                     | an icon `leading`, and `leading` / `titleSuffix` / `trailing` snippets                                                               | rules 2 and 14                                                                                                                                                                                                                                                                                                                     |
+**Migration:**
 
-### Virtualization (done)
+| Was                                                          | Is                                                                                                  |
+| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `<ActionList isSearchable …>` (or `query`, `match`, `empty`) | an app's own searchable list (not in the library) that filters `items`, or `actionListClasses()`    |
+| `<ActionList virtualizedItems … itemKey … children={row}>`   | `<ActionList items={…} itemKey={…} row={…} isVirtualized>` (or `sections`)                          |
+| `selectionType="none"` with `onChange`                       | `onPick` (every pick, the same row again too); the rows are radios                                  |
+| an ActionList in a menu closing it by itself                 | `onPick` calls the body's `close`; a link row's `onClick` too                                       |
+| `onChange(value)`, an item's `onClick(event)`                | `onChange({ name, value })` (an array with `multiple`), `onClick({ name, value, event })` |
 
-- **`virtualizedItems` / `virtualizedSections` on ActionList**, in place of a flag. React's `isVirtualized` walks `children` as element data; a Svelte snippet is opaque, and the compositional list learns of an item only when it mounts and registers (`registerEntry` in `runes/option-list/item.svelte.ts`), which a virtual list exists to avoid. So a long ActionList takes its rows as data: `virtualizedItems={banks}` or `virtualizedSections={[{ key, title, items }]}`, with `itemKey`, `itemText` (typeahead and the search; required with `isSearchable`) and `isItemDisabled`, and `children` becomes the row snippet, `children(item, state)`, rendering one `ActionListItem`. The three shapes — composed `children`, `virtualizedItems`, `virtualizedSections` — are exclusive at the type level. Underneath it is `VirtualOptionList` with ActionList's look as `classes` (the helper is internal, not exported); `variant`, `selectionType`, `isSearchable` / `query`, `match`, `empty`, `bind:value` and the field props work unchanged. `VirtualOptionList` stays exported as the headless form, and its own props use the same vocabulary: `items`, `sections` (`{ key, title, items }`), `itemKey`, `itemText`, `isItemDisabled` (they were `options`, `optionKey`, `optionText`, `isOptionDisabled`).
-- **Not per section.** `ActionListSection` takes no `virtualItems`: a virtual section inside a composed list would need its own list model, window and scroll viewport, splitting one `bind:value`, one radio group and one arrow-key sequence into two. `VirtualOptionList` flattens sections into one row list (a heading is a row, keyed `§{section.key}`) under one scroll viewport, so cost follows the mounted rows, not the sections, and the keyboard, the tab stop and opening at the pick work on one row index. Option keys must be unique across sections: the keyed `{#each}` and the size map are by key.
-- **Inside a Modal `menu`** the virtual form behaves as the composed one: rows are `menuitem`s, every pick closes the menu. `VirtualOptionList` reads the overlay context as `OptionList` does.
+| React                                                                                                | cx                                                                     | Action                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ActionList` `children`                                                                              | `children`                                                             | rule 2                                                                                                                                                      |
+| Dropdown's `selectionType`; the selection from the Dropdown context (no standalone ActionList)       | `selectionType`, `bind:value`, `onChange`, `onPick` (standalone)       | `selectionType` same (`single`, `multiple`); **added**: standalone, the list holds the value (`bind:value`), as CardGroup; `onPick` for a pick that submits |
+| —                                                                                                    | `variant: plain \| card`, `inset`                                      | cx-only: `card` draws rows divided in a bordered box, each section its own box under its heading (checkout's bank list; to be checked against Figma)        |
+| `ActionList` `isVirtualized`                                                                         | `isVirtualized`, with `items` or `sections`, `row` and `itemKey`       | **changed**: React walks `children` as element data; a Svelte snippet is opaque, so a virtual list takes its options as data and renders each with `row`    |
+| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled` | same; `leading` is an icon or a snippet                                | same (rule 14)                                                                                                                                              |
+| `ActionListItem` `onClick({ name, value, event })`                                                   | same                                                                   | same: `name` is the row's value, `value` whether it was selected when pressed                                                                               |
+| `ActionListItem` `href`, `target`                                                                    | `href`, `target`, `rel`                                                | same: a link row, never a value                                                                                                                             |
+| `ActionListItem` `intent: 'negative'`                                                                | `intent`                                                               | same                                                                                                                                                        |
+| `ActionListItem` `isSelected`                                                                        | —                                                                      | derived from the value                                                                                                                                      |
+| `ActionListSection` (`title`, a divider after)                                                       | `ActionListSection`                                                    | same (the hairline is drawn above every section but the first)                                                                                              |
+| `ActionListItemIcon`, `…Asset`, `…Avatar`, `…Badge`, `…BadgeGroup`, `…Text`                          | an icon `leading`, and `leading` / `titleSuffix` / `trailing` snippets | rules 2 and 14                                                                                                                                              |
+| `testID`, `data-analytics-*`                                                                         | same                                                                   | same; each row's control gets `${testID}-${index}` and its own analytics                                                                                    |
+
+### Virtualization
+
+- **Over data, not children.** React's `isVirtualized` walks `children` as element data; a Svelte snippet is opaque, and a composed list learns of an item only when it mounts and registers (`registerEntry` in `runes/card-group/item.svelte.ts`), which a virtual list exists to avoid. So CardGroup and ActionList take the options as data (`items`, or titled `sections`) with a `row` snippet that renders one, keyed by `itemKey`. With `isVirtualized` only the rows in view mount (`components/virtual-window/`), heights measured and remembered by key; give the list a bounded height in `class`. The keyboard, typeahead and the value cover every option, mounted or not.
+
+---
+
+## Overlays
 
 ### What there is
 
-- **`Modal`** with `variant: modal | sheet | drawer | left-drawer | popover | menu`.
-  The first four are surfaces on the layer stack (the scrim, the inert
-  page, the focus trap, back); `popover` and `menu` are floating panels
-  by a `trigger`. One disclosure model (`createDialog`) holds the layer
-  for both kinds, as a modal or a floating layer, so `onDismiss` reports
-  the same `{ source, close }` (`cross`, `blur`, `escape`, `back`, `drag`)
-  and Escape reaches only the topmost overlay.
-- **`trigger`**: a snippet with the control that opens the modal, in a
-  wrapper that stamps `aria-haspopup` (`dialog`, or `menu`),
-  `aria-expanded` and `aria-controls`. Click only (and the arrows for a
-  menu): nothing opens on hover, which has no touch counterpart, so React
-  Popover's `openInteraction="hover"` is not ported. Tooltip stays the one
-  hover overlay. `trigger` is the one exception to rule 13.
-- **`presentation: anchored | sheet`**, a Modal style prop: how a popover
-  or menu shows. The app sets it once through BladeProvider defaults
-  (`{ Modal: { presentation: 'sheet' } }`) — the phone presentation for
-  every popover and menu, with nothing reading the viewport (rule 11).
-  React does this per breakpoint inside DropdownOverlay; cx does it per
-  app, in the provider.
-- **ActionList** supplies a menu's rows. Inside a `menu` every row acts
-  and closes the menu (`selectionType` is `none`), a press reporting
-  through `onChange`; a link row navigates and closes it; a `Divider`
-  between rows is passed over.
-- **No Dropdown, Popover or Menu components**, in `src-cx` or exported
-  from `src`: Popover and Menu are variants, and a select dropdown
-  (React's SelectInput, Dropdown, AutoComplete, FilterChipSelectInput) is
-  not ported by decision — a field opening a floating list of options is
-  not mobile friendly. A pick is an ActionList on the page or in a
-  `sheet`; an action list is a `menu`.
+- **Five components, no base.** Each overlay is its own component, with
+  its own props, styles (`resolveModal`, `resolveBottomSheet`,
+  `resolveDrawer`, `resolvePopover`, `resolveMenu`) and provider defaults:
+  `Modal` (centred), `BottomSheet`, `Drawer` (`side`), `Popover` and `Menu`
+  (floating by their trigger), as in React. What they share is runes:
+  `createOverlay` (the dialog model, the header registry, the trigger's
+  wiring, the overlay context) over `createDialog`. Modal, BottomSheet and
+  Drawer render the internal `OverlaySurface` (the overlay and the
+  `Surface` with its close button); Popover and Menu `FloatingPanel`.
+  The first three are surfaces on the layer stack (the scrim, the inert
+  page, the focus trap, back); Popover and Menu are floating panels. One
+  disclosure model (`createDialog`) holds the layer for both kinds, so
+  `onDismiss` reports the same `{ source, close }` (`cross`, `blur`,
+  `escape`, `back`, `drag`) and Escape reaches only the topmost overlay.
+  Modal has no `variant`.
+- **The overlay host:** BladeProvider renders it after its content (the
+  one scrim, the box surfaces mount in, the toasts and a polite live
+  region for `adapters.announce`). The outermost provider hosts every
+  overlay on the page (the layers coordinator is internal); a nested one
+  with a toast queue of its own renders its stack in that host. Nothing
+  renders twice. (It was `OverlayStack`, a component to mount.) The layers
+  keep stacking, Escape and back, which the app's back handler asks first
+  (`back()`); the layer
+  stack's navigation (`popAfter`, `popTill`, `resolve`, a stack `back`) is
+  the app's own.
+- **The trigger**: Popover's and Menu's `children` (rule 13), a snippet
+  with the control that opens the panel, in a wrapper that stamps
+  `aria-haspopup` (`dialog`), `aria-expanded` and `aria-controls`, with
+  `isDisabled`. Click only (and the arrows for a menu): nothing opens on
+  hover, which has no touch counterpart, so React Popover's
+  `openInteraction="hover"` is not ported. Tooltip stays the one hover
+  overlay. Modal, BottomSheet and Drawer have none, as React's: they open
+  from code (`isOpen`), and closing returns focus to what had it when they
+  opened.
+- **`onOpenChange({ isOpen })`** on every overlay (React's Popover and
+  Menu have it; cx adds it to Modal, BottomSheet and Drawer): every open
+  and close the overlay makes, whoever asked — Popover's and Menu's
+  trigger, a dismissal or `close` — never a change the owner makes to
+  `isOpen`.
+- **`initialFocusRef`** on Modal, BottomSheet, Drawer and Popover, as
+  React's: the element that takes focus on open.
+- **ButtonGroup reset:** Popover and Menu content is not styled by an
+  enclosing ButtonGroup (React's OverlayContextReset, `resetButtonGroup()`).
+- **Tooltip delay group:** the tooltips under one layer stack share a group
+  with React's 300/300 ms delays (see Tooltip).
+- **Switching by screen is the app's.** No library overlay changes layout
+  by screen: an app's own overlay that switches by screen composes these,
+  on the query `d:` uses (`(min-width: 62.5rem)` by default). Modal's `presentation` and
+  BottomSheet's `adaptive` are not ported. React does this per breakpoint
+  inside DropdownOverlay and BottomSheet.
+- **Opening from code is the app's**: a stack of opened components it
+  renders on these overlays. No library component opens one.
+- **`presentDropdown(kind, request)`** lets an app show a library dropdown
+  (`'dial-code'`: PhoneNumberInput's country list) its own way, resolving
+  a promise with the pick;
+  without it, or when it
+  returns `undefined`, the dropdown hangs under its field.
+- **A menu holds whatever the app puts in it.** Menu and ActionList are
+  not coupled: Menu is Blade's Menu look (no close button, `bottom-start`, the
+  arrows open it from its trigger) on a `dialog` panel, with no
+  `closeLabel`, `role` or `pace`. An ActionList inside is an ordinary
+  choice list whose `onPick` calls the body's `close`; a link row closes it
+  from its `onClick`. **Changed** from React, whose Menu is a `role="menu"`
+  of `menuitem`s.
+- **No Dropdown:** a select dropdown (React's SelectInput, Dropdown,
+  AutoComplete, FilterChipSelectInput) is not ported by decision — a field
+  opening a floating list of options is not mobile friendly. A pick is an
+  ActionList on the page, in a BottomSheet or in a Menu.
 
-### Roles follow the resolved variant
+### Roles
 
-| Resolved variant                             | Panel                                           | Trigger `aria-haspopup` | ActionList inside                                       |
-| -------------------------------------------- | ----------------------------------------------- | ----------------------- | ------------------------------------------------------- |
-| `modal`, `sheet`, `drawer`, `left-drawer`    | `role="dialog"` (or `alertdialog`), modal layer | `dialog`                | `group` / `radiogroup` of native controls, as on a page |
-| `popover`                                    | `role="dialog"`, floating layer, no scrim       | `dialog`                | as above                                                |
-| `menu`                                       | `role="menu"`, floating layer, no close button  | `menu`                  | `menuitem` rows, one tab stop, act and close            |
-| `menu` or `popover` as `presentation: sheet` | `role="dialog"`, the sheet surface              | what was asked for      | plain buttons in a dialog; a menu's still act and close |
-
-Semantics follow what shows (a menu as a sheet is a dialog over buttons,
-as a native action sheet reads); intent follows what was asked for (the
-trigger still promises a menu, and its rows still close it).
+| Overlay                    | Panel                                           | Trigger `aria-haspopup` | ActionList inside                                       |
+| -------------------------- | ----------------------------------------------- | ----------------------- | ------------------------------------------------------- |
+| Modal, BottomSheet, Drawer | `role="dialog"` (or `alertdialog`), modal layer | `dialog`                | `group` / `radiogroup` of native controls, as on a page |
+| Popover, Menu              | `role="dialog"`, floating layer, no scrim       | `dialog`                | as above; a Menu has no close button                    |
 
 ### What moved where
 
-| Was                                                                 | Is                                                             |
-| ------------------------------------------------------------------- | -------------------------------------------------------------- |
-| `Popover` `children`, `content`, `titleLeading`                     | Modal `trigger`, `body`, `leading`                             |
-| `Popover` `content: string`                                         | a `Text size="small"` in `body`                                |
-| `Menu` `content` of `MenuItem`s, `onSelect`                         | an ActionList of `ActionListItem`s in `body`, its `onChange`   |
-| `MenuDivider`                                                       | `Divider`                                                      |
-| `Dropdown` select field, `DropdownHeader hasSearch`                 | not ported; ActionList `isSearchable` in a sheet               |
-| `DropdownFooter`                                                    | Modal `footer`                                                 |
-| `runes/popup-list`, `runes/menu`, `runes/dropdown`, `runes/popover` | `runes/layer/overlay` (the context), OptionList's own keyboard |
-| `PopoverPanel`                                                      | `components/layer/FloatingPanel` (web and native)              |
+| Was                                                                            | Is                                                                                                                       |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `<Modal variant="sheet">`, `<BottomSheet variant="modal">`                     | `<BottomSheet>`, `<Modal>`                                                                                               |
+| `<Modal variant="drawer">` / `"left-drawer"`, `<Drawer variant="left-drawer">` | `<Drawer>` / `<Drawer side="left">`                                                                                      |
+| `<Modal variant="popover">`, `<Modal variant="menu">`                          | `<Popover>`, `<Menu>`                                                                                                    |
+| `presentation` / `{ Modal: { presentation: 'sheet' } }`                        | an app's own responsive overlay (not in the library)                                                                     |
+| `{ Modal: { variant: 'sheet' } }` for the app                                  | an app's own responsive overlay where the screen decides; `BottomSheet` where it is always a sheet                       |
+| `<Modal title=… body={…} footer={…}>` (and BottomSheet, Drawer)                | `<Modal><ModalHeader title=… /><ModalBody>…</ModalBody><ModalFooter>…</ModalFooter></Modal>` (`BottomSheet*`, `Drawer*`) |
+| `padding` on Modal, BottomSheet, Drawer                                        | the body part's `padding` (`spacing.0`); DrawerBody's is cx-only (React's DrawerBody has none), as ModalBody's           |
+| `showBackButton` on Modal or Drawer                                            | BottomSheetHeader only, as React                                                                                         |
+| `openModal(c, { variant: 'sheet' })` / `{ as: 'sheet' }`                       | the app's own opener (not in the library)                                                                                |
+| `OverlayStack`, `ToastStack` mounted by the app                                | the overlay host BladeProvider renders                                                                                   |
+| `provideLayers()`, `provideToasts()`                                           | `adapters.toasts` on a BladeProvider; `back()`                                                                         |
+| `adapters.layers`, `createLayers()`, `globalLayers`, `getLayers()`, `Layers`   | internal: the outermost provider hosts; `back()` for back                                                                 |
+| `showToast()`'s `{ dismiss, dismissed }`, `ToastHandle`, `action.isLoading`    | `showToast(toast, { cancelled })`'s promise; an `onClick` returning a promise                                            |
+| `resolvePhoneCountryInset(getOverlay()?.layout)`                               | `--overlay-gutter` (ActionList `inset="overlay"`, `px-[var(--overlay-gutter,0px)]`)                                      |
+
+| Was                                                                 | Is                                                                                   |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `Popover` `children`, `content`, `titleLeading`                     | Popover `children` (the trigger), `body`, `leading`                                  |
+| `Popover` `content: string`                                         | a `Text size="small"` in `body`                                                      |
+| `pace` on Popover or Menu; Menu's `closeLabel`, `role`              | removed (`pace` stays on Modal, BottomSheet and Drawer)                              |
+| `Menu` `content` of `MenuItem`s, `onSelect`                         | Menu with an ActionList of `ActionListItem`s in `body`, its `onPick` calling `close` |
+| `MenuDivider`                                                       | `Divider`                                                                            |
+| `Dropdown` select field, `DropdownHeader hasSearch`                 | not ported; an app's own searchable list in a sheet                                  |
+| `DropdownFooter`                                                    | the overlay's `footer`                                                               |
+| `runes/popup-list`, `runes/menu`, `runes/dropdown`, `runes/popover` | `runes/layer/overlay` (the context), CardGroup's own keyboard                        |
+| `PopoverPanel`                                                      | `components/layer/FloatingPanel` (web only)                                          |
 
 ### Status
 
 Done and verified: `svelte-check` gives 0 errors; `test` passes
-(`test/modal-anchored.test.ts` covers the trigger, both variants, the
-provider's sheet presentation and the layer order). Modal stays
-unexported; `Dropdown`, `Popover` and `Menu` are gone from `src-cx`'s
-exports and were never in `/components` from `src`.
+(`test/modal-anchored.test.ts` covers the trigger, Popover and Menu and
+the layer order; `test/overlay-host.test.ts` the host and nested
+providers). The overlays are exported from `/components`; `Dropdown` is
+gone from `src`.

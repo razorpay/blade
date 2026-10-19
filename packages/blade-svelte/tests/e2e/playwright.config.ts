@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 
 /**
- * The src-cx end-to-end suite: the same specs on two targets.
+ * The end-to-end suite: the same specs on two targets.
  *
  * - `TARGET=local` (default): Playwright's own browsers, desktop and
  *   emulated phones, against the built Storybook served on localhost. Needs

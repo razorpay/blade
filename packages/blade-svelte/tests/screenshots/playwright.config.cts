@@ -21,7 +21,7 @@ import dotenv from 'dotenv';
  *   CHROMIUM_EXECUTABLE         Optional path to a local Chromium binary for SCREENSHOT_TARGET=local.
  *   STORY_TITLE_FILTER          Regex applied to story titles. Default `^Components/`.
  */
-// Package-level .env.local (matches tests/browserstack/*), with the repo root as a fallback.
+// Package-level .env.local, with the repo root as a fallback.
 dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
 dotenv.config({ path: path.resolve(__dirname, '../../../../.env.local') });
 

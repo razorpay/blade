@@ -1,0 +1,80 @@
+<script lang="ts">
+  import { BladeProvider, Button, Icon } from '../../index';
+    import { Modal, type ModalStyleProps } from '../../components/modal';
+  import { ModalBody, ModalFooter, ModalHeader } from '../../components/modal-children';
+  import { CreditCardIcon } from '../../icons';
+
+  interface Props {
+    args: ModalStyleProps & {
+      isDismissible?: boolean;
+      closeLabel?: string;
+      title?: string;
+      withChrome?: boolean;
+      leading?: 'none' | 'icon' | 'snippet';
+    };
+  }
+
+  let { args }: Props = $props();
+
+  let isOpen = $state(false);
+  let lastSource = $state('—');
+</script>
+
+<!-- The frame stands in for the checkout modal card: the modal stays inside it. -->
+<div
+  class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
+>
+<BladeProvider>
+  <div class="grid gap-4 p-6">
+    <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open modal</Button>
+    <p class="text-75 leading-50 text-surface-gray-subtle">Last closed by: <span data-testid="last-source">{lastSource}</span></p>
+  </div>
+</BladeProvider>
+</div>
+
+{#snippet logo()}
+  <img
+    src="https://cdn.razorpay.com/bank/HDFC.gif"
+    alt=""
+    class="h-8 w-8 rounded-small object-contain"
+  />
+{/snippet}
+
+<Modal
+  bind:isOpen
+  size={args.size}
+  isDismissible={args.isDismissible}
+  closeLabel={args.closeLabel || undefined}
+  testID="modal"
+  onDismiss={({ source }) => {
+    lastSource = source;
+  }}
+>
+  {#snippet chrome()}
+    {#if args.withChrome}
+      <!-- Hangs half over the panel's top edge; the panel does not clip it. -->
+      <div
+        class="absolute left-1/2 top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-max border-thin border-solid border-surface-gray-muted bg-popup-gray-subtle text-surface-gray-normal shadow-highRaised"
+        aria-hidden="true"
+        data-testid="chrome-badge"
+      >
+        <Icon source={CreditCardIcon} size="large" />
+      </div>
+    {/if}
+  {/snippet}
+  <ModalHeader
+    title={args.title}
+    leading={args.leading === 'icon' ? CreditCardIcon : args.leading === 'snippet' ? logo : undefined}
+  />
+  <ModalBody>
+    <p class="text-100 leading-100 text-surface-gray-subtle">
+      The card ending 1111 will be removed from this device.
+    </p>
+  </ModalBody>
+  <ModalFooter>
+    <div class="flex justify-end gap-3">
+      <Button variant="secondary" onClick={() => (isOpen = false)}>Cancel</Button>
+      <Button color="negative" onClick={() => (isOpen = false)}>Remove</Button>
+    </div>
+  </ModalFooter>
+</Modal>

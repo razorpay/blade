@@ -1,16 +1,15 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src"],
-  "exclude": ["node_modules/**/*", "**/*.test.ts", "**/*.test.svelte"],
+  "include": ["src/**/*.ts", "src/**/*.svelte"],
+  "exclude": ["node_modules/**/*"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~components/*": ["src/components/*"],
-      "~src/*": ["src/*"]
-    },
-    "moduleSuffixes": [""],
-    "types": ["svelte"],
+    "types": ["svelte", "node"],
+    "target": "ES2022",
+    "lib": ["dom", "ES2022", "dom.iterable"],
+    "moduleResolution": "bundler",
     "verbatimModuleSyntax": true,
-    "moduleResolution": "bundler"
+    "allowArbitraryExtensions": true,
+    // As in the checkout, where src comes from
+    "noUnusedLocals": false
   }
 }

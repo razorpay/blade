@@ -9,7 +9,7 @@ const WORKFLOW_INPUT_LIMIT = 65535;
 type ColorTokens = Record<string, any>;
 export type ExportedIcons = Record<string, string>[];
 /** `react` is `@razorpay/blade`, one component for web and native. */
-export type IconTarget = 'react' | 'svelte';
+export type IconTarget = 'react';
 
 // GitHub's workflow_dispatch inputs are capped at 65,535 characters. The token payload can
 // exceed that (especially with multiple themes), so we gzip + base64 it before sending.
