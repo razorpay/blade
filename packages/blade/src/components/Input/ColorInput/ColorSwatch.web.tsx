@@ -48,12 +48,17 @@ const SWATCH_CLASSNAME = '__blade-color-swatch';
  * focus ring of its own. It is drawn around the colour square rather than the whole padded
  * button so it lines up with what the user sees.
  */
-const StyledSwatchButton = styled(BaseBox)(({ theme }) => ({
-  '&:focus': {
-    outline: 'none',
-  },
-  [`&:focus-visible .${SWATCH_CLASSNAME}`]: getFocusRingStyles({ theme }),
-}));
+const StyledSwatchButton = styled(BaseBox)(({ theme }) => {
+  // Leave out the ring's z-index: the swatch is a flex item, so it would lift the square above
+  // the invisible colour input that sits on top to catch clicks, and the picker wouldn't open.
+  const { zIndex: _zIndex, ...focusRingStyles } = getFocusRingStyles({ theme });
+  return {
+    '&:focus': {
+      outline: 'none',
+    },
+    [`&:focus-visible .${SWATCH_CLASSNAME}`]: focusRingStyles,
+  };
+});
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
   ({ color, size: inputSize, isDisabled, onChange, onFocus, onBlur }, ref) => {
