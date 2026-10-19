@@ -1,0 +1,54 @@
+# Blade Svelte Components Index
+
+One line per component. Read `<Name>.md` in this directory for its props, constraints, guidelines and examples. Sub-components are documented in their parent's doc (ModalHeader in Modal.md, CardGroupItem in CardGroup.md).
+
+- **ActionList**: ActionList is a list of compact menu-style rows to pick from: on a page, in a BottomSheet or Modal, or inside a Menu whose pick closes it.
+- **Alert**: Alert is an inline message on the page: an icon, an optional title, a description and a dismiss button, in one of six colours and a `subtle` or `intense` emphasis.
+- **Amount**: Amount shows a money value with its currency, formatted by i18nify for the locale: symbol or code, grouping, the currency's side, two decimals by default, floored or compact (1.5K, 2L, 1Cr) on request.
+- **AnnouncementBanner**: AnnouncementBanner is a one-line message across the top of a page or section, such as an offer or a maintenance notice, on the subtle gray surface with an optional 16px icon before it.
+- **Avatar**: Avatar shows a person or a business at a glance: their image, else their initials (from `name`), else a glyph (`UserIcon` by default).
+- **Badge**: Badge is a small, non-interactive pill that labels a status or attribute: Paid, Failed, Beta, New, an offer.
+- **BladeProvider**: BladeProvider wraps the app once and gives every Blade component under it an overall control `size`, per-component style `defaults` and the app's services as `adapters` (see Adapters.md).
+- **BottomBar**: BottomBar is the surface along the bottom edge of a screen that holds bottom navigation or the screen's main actions.
+- **BottomSheet**: BottomSheet is the phone-first dialog on the bottom edge, for a picker, a confirmation or a short step, opened from a bound `isOpen` and composed from BottomSheetHeader, Body and Footer.
+- **Breadcrumb**: Breadcrumb shows where the user is as a trail of links, from the top of the app to the current page.
+- **Button**: Button triggers an action: submitting a form, paying, opening a dialog, going to the next step.
+- **ButtonGroup**: ButtonGroup joins related Buttons into one row, such as a split of actions or a set of time ranges, with only the outer corners rounded and a 1px seam between filled buttons (outlined ones share their rims).
+- **Card**: Card is a surface that groups related content: an order summary, a payment method, a settings block.
+- **CardGroup**: CardGroup stacks rows on one raised card with hairlines between them: a list of choices (a bank, a payment option, a plan), a list of links, or rows that disclose more under them.
+- **Carousel**: Carousel shows a row of full-width slides one at a time, swiped, scrolled or picked from the dots under them: offers, onboarding tips, featured cards.
+- **Checkbox**: Checkbox is a single on/off choice with a label: agreeing to terms, opting in, picking one of several independent options.
+- **Chip**: ChipGroup is a choice drawn as a row of wrapping chips: one pick (`selectionType="single"`, native radios) or several (`"multiple"`, checkboxes), for short options like a business type, filters or capabilities.
+- **Code**: Code marks a short piece of code inside a line of text: a key name, a variable, a status value, an API path.
+- **Collapsible**: Collapsible shows and hides a body under (or above) a trigger: a price breakdown, more details, advanced options.
+- **Counter**: Counter shows a count in a small pill: unread notifications, items in a filter, pending tasks.
+- **CounterInput**: CounterInput picks a whole number between `min` and `max` with minus and plus buttons beside a typed number: a quantity in a cart, a number of guests, seats or tickets.
+- **Display**: Display sets the largest text in Blade, the Display styles from 48 to 72px in the heading face, for hero headlines, landing-page statements and a single big number.
+- **Divider**: Divider is a thin line that separates content: rows in a list, sections of a card, items in a toolbar.
+- **DotLoader**: DotLoader is Blade's indefinite three-dot loader, for a short wait with no progress to report: the dots rise in turn and settle back, never dipping below the rest line.
+- **Drawer**: Drawer is a full-height dialog docked to the right edge (or the left, `side="left"`) for filters, details or a side flow, opened from a bound `isOpen` and composed from DrawerHeader, DrawerBody and DrawerFooter.
+- **EmptyState**: EmptyState is the centred stack a screen or section shows instead of content: nothing here yet, no search results, or something went wrong.
+- **Heading**: Heading titles a page, section, card or dialog in Blade's Heading styles, in the heading face (Tasa).
+- **Icon**: Icon draws one icon from `@razorpay/blade-svelte/icons` (or one of the app's own single-colour SVGs) at a Blade size and colour.
+- **IconButton**: IconButton is a button whose whole content is one icon, for compact actions such as close, copy, edit, more or refresh.
+- **InputGroup**: InputGroup joins related fields into one framed block with one label and one hint line: a card's number, expiry and CVV, or an address.
+- **Link**: Link is a text link that reads inline with its sentence: terms and privacy in a footnote, "View details", "Resend code".
+- **Menu**: Menu is the floating panel of actions that opens from its trigger (a "more" IconButton, a Button), with an ActionList inside whose pick runs an action and closes the menu.
+- **Modal**: Modal is the centred dialog for a focused task or a confirmation, opened from code through a bound `isOpen` and composed from ModalHeader, ModalBody and ModalFooter.
+- **OTPInput**: OTPInput is the one-time-code field: a row of single-character cells (6 by default) that take a typed, pasted or autofilled code and report `onOTPFilled` once it is complete.
+- **PasswordInput**: PasswordInput is the masked field for a password, a PIN or a CVV, with a reveal button that toggles the text between hidden and shown.
+- **PhoneNumberInput**: PhoneNumberInput is the phone number field: a country button (flag and chevron) and the dial code before a `tel` control for the national number, with a clear button while there is a number.
+- **Popover**: Popover is a non-modal panel that opens on a click of its trigger and hangs beside it with an arrow, for a short explanation or a small action next to the thing it is about.
+- **ProgressBar**: ProgressBar shows how far along a task is (`type="progress"`, `role="progressbar"`) or where a value sits in a range (`type="meter"`, `role="meter"`), as a linear bar or a ring (`variant="circular"`).
+- **Radio**: RadioGroup asks one question with a few mutually exclusive answers, each a `Radio` with a label: a delivery speed, an account type, how to pay.
+- **SearchInput**: SearchInput is the field for searching or filtering a list: a `searchbox` text control with the search key, led by the search glyph, with a clear button whenever it holds text.
+- **SegmentedControl**: SegmentedControl picks one value from a few short options drawn as one joined pill with a sliding thumb: an EMI tenure, a period, a view.
+- **Skeleton**: Skeleton is a placeholder that stands in for content while it loads: a line of text, an avatar, a card.
+- **Switch**: Switch turns a setting on or off with immediate effect: auto-capture, notifications, a feature flag.
+- **Tabs**: Tabs switch between panels of related content in one place: payment methods, settings sections, order details.
+- **Text**: Text sets body copy in Blade's Body styles: paragraphs, labels, captions, helper lines and inline runs inside other text.
+- **TextArea**: TextArea is the multi-line text field: a delivery note, an address, a reason for a refund.
+- **TextInput**: TextInput is the single-line text field: a name, an email, a UPI ID, an amount, a card number.
+- **Toast**: Toasts are short, timed messages (a card removed, a link copied) shown by calling `showToast` from anywhere and rendered by the one `ToastContainer` the app mounts inside its BladeProvider.
+- **Tooltip**: Tooltip shows a short hint in a dark bubble beside its trigger: on hover after a 300ms rest, at once on keyboard focus, and on a tap where there is no pointer.
+- **TrustBadge**: TrustBadge is the "Razorpay Trusted Business" marker: Razorpay's brand shield and a line of text in a 24px tinted pill, or the shield alone (`variant="icon-only"`).

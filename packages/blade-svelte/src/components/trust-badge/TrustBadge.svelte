@@ -1,6 +1,7 @@
 <script lang="ts">
   import { imageUrl } from '../../runes/image/source';
   import { cx } from '../../cx';
+  import { useComponentDefaults } from '../defaults';
   import { analyticsAttributes } from '../../runes/dom/analytics';
   // An image, not an Icon: icons are single-colour font glyphs, and a brand
   // mark keeps its own colours whatever the theme.
@@ -15,9 +16,10 @@
 
   let { label, testID, class: className = '', ...rest }: Props = $props();
 
-  const classes = $derived(resolveTrustBadge(rest));
+  const style = useComponentDefaults('TrustBadge', () => rest);
+  const classes = $derived(resolveTrustBadge(style.current));
   const analytics = $derived(analyticsAttributes(rest));
-  const isIconOnly = $derived(rest.variant === 'icon-only');
+  const isIconOnly = $derived(style.current.variant === 'icon-only');
 </script>
 
 <!-- Alone, the shield is an image named by the label; beside it, decoration. -->

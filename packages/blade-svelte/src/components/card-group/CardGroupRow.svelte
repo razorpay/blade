@@ -58,6 +58,7 @@
     isSelected: () => isSelected,
     isActive: () => isActive,
     onToggle: (event) => onToggle(event),
+    onBlur: () => onBlur(),
   });
 </script>
 
@@ -83,7 +84,7 @@
     {...analytics}
     onclick={row.handleClick}
     onfocus={onFocus}
-    onfocusout={onBlur}
+    onfocusout={row.handleFocusOut}
     onkeydown={onKeyDown}
     {@attach row.attach}
   />

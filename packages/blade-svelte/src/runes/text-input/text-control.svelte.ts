@@ -1,4 +1,4 @@
-import { onDestroy } from 'svelte';
+import { onDestroy, tick } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { createFieldShell } from '../form/field.svelte';
 import type { FieldModel, FieldShell } from '../form/field.svelte';
@@ -184,13 +184,24 @@ export function createTextControl(options: TextControlOptions): TextControl {
       const accepted = edit(target.value, target.selectionStart, event);
       if (accepted.rewrite) {
         target.value = accepted.display;
-        if (accepted.caret !== null) {
-          try {
-            target.selectionStart = accepted.caret;
-            target.selectionEnd = accepted.caret;
-          } catch (e: unknown) {
-            // Some input types (email, number) forbid selection access.
-          }
+        const { caret } = accepted;
+        if (caret !== null) {
+          const place = (): void => {
+            try {
+              target.setSelectionRange(caret, caret);
+            } catch (e: unknown) {
+              // Some input types (email, number) forbid selection access.
+            }
+          };
+          place();
+          // The render that follows writes the same text to the control,
+          // which Chrome answers by moving the caret to the end: place it
+          // again once that has happened, unless the text changed since.
+          void tick().then(() => {
+            if (target.value === accepted.display && document.activeElement === target) {
+              place();
+            }
+          });
         }
       }
     },

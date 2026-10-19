@@ -100,8 +100,20 @@ export function createVirtual(options: VirtualOptions): Virtual {
       return;
     }
     opened = true;
-    viewport.scrollTop = model.offset(opensAt);
-    update();
+    const node = viewport;
+    const open = (): void => {
+      node.scrollTop = model.offset(opensAt);
+      update();
+    };
+    untrack(open);
+    // Moving an element resets its scroll: a panel that mounts the list and
+    // then moves into the overlay host (a sheet) lands back at the top.
+    // Scroll again once it has moved, unless something scrolled it since.
+    requestAnimationFrame(() => {
+      if (node.isConnected && node.scrollTop === 0) {
+        untrack(open);
+      }
+    });
   });
 
   // After every render of a new slice: measure it, and watch it for late

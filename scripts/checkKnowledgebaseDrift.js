@@ -15,11 +15,27 @@
  * Known exceptions (internal props, docs that can't be compared) live in
  * `scripts/knowledgebaseDriftIgnore.json`. Every entry needs a reason.
  *
+ * `--target svelte` runs `checkKnowledgebaseDriftSvelte.js` instead.
+ *
  * Usage:
  *   yarn check:knowledgebase-drift                  # all react components
  *   yarn check:knowledgebase-drift TextInput Button  # selected components
  *   yarn check:knowledgebase-drift --fail            # exit 1 when drift is found
  */
+if (
+  process.argv.includes('--target') &&
+  process.argv[process.argv.indexOf('--target') + 1] === 'svelte'
+) {
+  // blade-svelte declares props on `$props()`, not as exported types: its
+  // own check, waited for here, so the React check below never runs.
+  const { status } = require('child_process').spawnSync(
+    process.execPath,
+    [require('path').join(__dirname, 'checkKnowledgebaseDriftSvelte.js'), ...process.argv.slice(2)],
+    { stdio: 'inherit' },
+  );
+  process.exit(status ?? 1);
+}
+
 const fs = require('fs');
 const path = require('path');
 const { Project, ts } = require('ts-morph');

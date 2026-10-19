@@ -97,4 +97,10 @@ describe('ChipGroup', () => {
     expect(classes.inner).toContain('flex-row');
     expect(classes.inner).toContain('whitespace-nowrap');
   });
+
+  it('an icon-only chip is named by its accessibilityLabel; a labelled one by its label', () => {
+    const { getByRole } = render(ChipHarness);
+    expect(getByRole('radio', { name: 'Wallet' })).toBeTruthy();
+    expect(getByRole('radio', { name: 'Public' }).hasAttribute('aria-label')).toBe(false);
+  });
 });

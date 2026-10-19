@@ -1,6 +1,7 @@
 <script lang="ts">
   import Chip from '../../components/chip/Chip.svelte';
   import ChipGroup from '../../components/chip/ChipGroup.svelte';
+  import { WalletIcon } from '../../icons';
 
   interface Props {
     selectionType?: 'single' | 'multiple';
@@ -46,5 +47,6 @@
   <Chip value="public" testID="chip-1">Public</Chip>
   <Chip value="closed" isDisabled testID="chip-2">Closed</Chip>
   <Chip value="npo" color="negative" testID="chip-3">Non-profit</Chip>
+  <Chip value="wallet" leading={WalletIcon} accessibilityLabel="Wallet" testID="chip-4" />
 </ChipGroup>
 <p data-testid="bound">{bound}</p>

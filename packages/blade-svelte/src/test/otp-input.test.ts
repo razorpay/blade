@@ -186,11 +186,12 @@ describe('OTPInput standalone', () => {
 
   describe('adapters.readOTP', () => {
     type Request = { length: number; cancelled: Promise<void> };
-    const deferred = (): {
+    type Deferred = {
       promise: Promise<string | undefined>;
       resolve: (code: string | undefined) => void;
       reject: (error: unknown) => void;
-    } => {
+    };
+    const deferred = (): Deferred => {
       let resolve!: (code: string | undefined) => void, reject!: (error: unknown) => void;
       const promise = new Promise<string | undefined>((res, rej) => {
         resolve = res;

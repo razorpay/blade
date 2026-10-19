@@ -10,8 +10,8 @@
     <Chip value="bank" leading={BankIcon}>Netbanking</Chip>
   </ChipGroup>
   <ChipGroup accessibilityLabel="Icon only" value="card">
-    <Chip value="upi" leading={PhoneIcon} />
-    <Chip value="card" leading={CreditCardIcon} />
-    <Chip value="bank" leading={BankIcon} />
+    <Chip value="upi" leading={PhoneIcon} accessibilityLabel="UPI" />
+    <Chip value="card" leading={CreditCardIcon} accessibilityLabel="Cards" />
+    <Chip value="bank" leading={BankIcon} accessibilityLabel="Netbanking" />
   </ChipGroup>
 </div>

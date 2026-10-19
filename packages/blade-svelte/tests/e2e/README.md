@@ -32,6 +32,10 @@ BROWSERSTACK_USERNAME=… BROWSERSTACK_ACCESS_KEY=… yarn test:e2e:browserstack
 `browserstack.yml` (desktop Chrome and WebKit, a Pixel and an iPhone) and opens
 a BrowserStack Local tunnel to the locally served Storybook.
 
+CI runs it after the Chromatic deployment (`.github/workflows/blade-browserstack.yml`,
+on a push to master or the `Run Interaction Tests` label), against the Svelte
+Storybook deployed beside the React one (`STORYBOOK_URL=<chromatic url>/svelte`).
+
 ## Writing specs
 
 - Open a story with `gotoStory(page, 'components-modal--basic', { isDismissible: false })`;

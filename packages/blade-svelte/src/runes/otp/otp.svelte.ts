@@ -310,6 +310,7 @@ export interface OTP {
  */
 export function createOTP(options: OTPOptions): OTP {
   const adapters = getAdapters();
+  // `reading`: the app's auto-read in flight (below).
   let root: HTMLElement | undefined, reading: Cancel | undefined;
   const cellRefs: Array<HTMLInputElement | undefined> = [];
   const autoFocus = options.autoFocus();

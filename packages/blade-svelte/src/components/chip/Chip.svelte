@@ -23,6 +23,8 @@
     color?: ChipColor;
     /** @default the group's */
     isDisabled?: boolean;
+    /** Names a chip with no label (a `leading` alone); required then. */
+    accessibilityLabel?: string;
     /** On the chip's root; else the group's `${testID}-${index}`. */
     testID?: string;
     class?: string;
@@ -34,6 +36,7 @@
     leading,
     color,
     isDisabled,
+    accessibilityLabel,
     testID,
     class: className = '',
     ...rest
@@ -87,6 +90,7 @@
       checked={chip.isChecked}
       disabled={chip.isDisabled}
       aria-invalid={group?.isInvalid ? 'true' : undefined}
+      aria-label={children ? undefined : accessibilityLabel}
       {...analyticsAttributes(rest)}
       onchange={chip.handleChange}
       {@attach chip.attach}

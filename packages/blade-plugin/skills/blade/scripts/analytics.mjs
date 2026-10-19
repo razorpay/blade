@@ -2,7 +2,7 @@
 // skill scripts. Same user id and properties as Blade MCP, but a separate event
 // name so dashboards can tell skill usage from MCP tool calls. `toolName` keeps
 // the MCP tool's name, `skillName` says which skill sent the event and
-// `framework` is always 'react' (kept so events match the MCP's properties).
+// `framework` comes from that skill (blade-svelte → svelte, otherwise react).
 //
 // Each skill that ships a script keeps an identical copy of this file, because
 // `npx skills add` installs one skill directory on its own.
@@ -27,7 +27,7 @@ const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
 // The skill this script belongs to ('blade').
 const skillName = path.basename(path.dirname(scriptsDir));
 
-const framework = 'react';
+const framework = skillName === 'blade-svelte' ? 'svelte' : 'react';
 
 // Version of the installed plugin; skills installed without the plugin
 // manifest (npx skills add) report 'unknown'.

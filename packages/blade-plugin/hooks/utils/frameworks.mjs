@@ -6,9 +6,7 @@ const DEPENDENCY_FIELDS = ['dependencies', 'devDependencies', 'peerDependencies'
 
 export const FRAMEWORKS = {
   react: { packageName: '@razorpay/blade', skill: 'blade', fileTypes: '.tsx/.jsx' },
-  // No skill documents blade-svelte. It is still detected so a Svelte app whose
-  // lockfile pulls in @razorpay/blade transitively is not told it uses React.
-  svelte: { packageName: '@razorpay/blade-svelte', skill: null, fileTypes: '.svelte' },
+  svelte: { packageName: '@razorpay/blade-svelte', skill: 'blade-svelte', fileTypes: '.svelte' },
 };
 
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
@@ -110,12 +108,16 @@ export const detectFrameworks = (cwd) => {
   }
 };
 
-// Returns null when no detected framework has a skill (a blade-svelte-only
-// project), so the hook prints nothing.
 export const getNudge = (frameworks) => {
-  if (!frameworks.includes('react')) return null;
-  const { packageName, skill } = FRAMEWORKS.react;
-  const nudge = `This project uses ${packageName}. Before writing or reviewing UI code, invoke the ${skill} skill and read the component docs it points to.`;
-  if (!frameworks.includes('svelte')) return nudge;
-  return `${nudge} The ${skill} skill covers ${FRAMEWORKS.react.fileTypes} files only; do not apply its APIs to .svelte files that use ${FRAMEWORKS.svelte.packageName}.`;
+  if (frameworks.length === 1) {
+    const { packageName, skill } = FRAMEWORKS[frameworks[0]];
+    return `This project uses ${packageName}. Before writing or reviewing UI code, invoke the ${skill} skill and read the component docs it points to.`;
+  }
+  const perFramework = frameworks
+    .map((framework) => {
+      const { packageName, skill, fileTypes } = FRAMEWORKS[framework];
+      return `the ${skill} skill for ${fileTypes} files that use ${packageName}`;
+    })
+    .join(' and ');
+  return `This project uses more than one Blade package. Before writing or reviewing UI code, invoke ${perFramework}, then read the component docs it points to. Do not mix APIs between them.`;
 };

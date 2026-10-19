@@ -36,16 +36,33 @@ async function open(page: Page, panel: string): Promise<Locator> {
 }
 
 /** Drags from the middle of `zone` by (dx, dy) with a real pointer, in steps. */
-async function drag(page: Page, zone: Locator, dx: number, dy: number): Promise<void> {
+/**
+ * Drags from the middle of `zone` by (dx, dy). Over `duration` ms, in steps:
+ * the sheet reads speed as well as distance (a fast flick dismisses), so a
+ * drag meant to settle has to be slow, as a finger's is.
+ */
+async function drag(
+  page: Page,
+  zone: Locator,
+  dx: number,
+  dy: number,
+  duration = 0,
+): Promise<void> {
   const box = await zone.boundingBox();
   if (!box) {
     throw new Error('drag zone is not laid out');
   }
   const x = box.x + box.width / 2;
   const y = box.y + box.height / 2;
+  const steps = 12;
   await page.mouse.move(x, y);
   await page.mouse.down();
-  await page.mouse.move(x + dx, y + dy, { steps: 12 });
+  /* eslint-disable no-await-in-loop -- one pointer move at a time, paced */
+  for (let step = 1; step <= steps; step += 1) {
+    await page.mouse.move(x + (dx * step) / steps, y + (dy * step) / steps);
+    if (duration) await page.waitForTimeout(duration / steps);
+  }
+  /* eslint-enable no-await-in-loop */
   await page.mouse.up();
 }
 
@@ -136,7 +153,8 @@ test.describe('BottomSheet', () => {
     await gotoStory(page, 'components-bottomsheet--basic');
     const sheet = await open(page, 'sheet');
     const before = await sheet.boundingBox();
-    await drag(page, page.getByTestId('sheet-drag-zone'), 0, 24);
+    // 24px over 480ms: 50px/s, far below a fling.
+    await drag(page, page.getByTestId('sheet-drag-zone'), 0, 24, 480);
     await expect(sheet).toBeVisible();
     await expect(lastSource(page)).toHaveText('—');
     // Settled where it rests, with the inline transform gone.

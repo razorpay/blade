@@ -1,7 +1,7 @@
 // Structural checks for the blade plugin that run in CI without Claude Code:
 // manifests parse and agree on name/version, every skill has valid frontmatter,
 // the package.json version matches the manifests, and each knowledgebase
-// skill (blade) lists exactly the component docs on disk.
+// skill (blade, blade-svelte) lists exactly the component docs on disk.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -66,8 +66,8 @@ for (const skill of skillNames) {
   if (content.split('\n').length > 500) errors.push(`skills/${skill}/SKILL.md over 500 lines`);
 }
 
-// Knowledgebase skills. Each is self-contained because `npx skills add` copies
-// a single skill directory.
+// Knowledgebase skills: one per framework. Each is self-contained because
+// `npx skills add` copies a single skill directory.
 const KNOWLEDGEBASE_SKILLS = {
   blade: [
     'components/index.md',
@@ -79,6 +79,7 @@ const KNOWLEDGEBASE_SKILLS = {
     'new-project.md',
     'figma-to-code.md',
   ],
+  'blade-svelte': ['components/index.md', 'general/index.md', 'general/Usage.md'],
 };
 
 // Published blade-mcp versions (HTTP transport) curl these from

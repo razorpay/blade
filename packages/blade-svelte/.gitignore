@@ -33,8 +33,9 @@ playwright-report/
 .env.local
 browserstackSetupConfig.json
 
-# Local helper scripts, not tracked
+# Local helper scripts, not tracked, except the ones package.json runs
 scripts/*
+!scripts/check-tree-shaking.mjs
 
 # npm pack output (a local build for consumers)
 *.tgz

@@ -208,7 +208,7 @@ export interface SegmentedControlItemProps extends Partial<AnalyticsAttributes> 
   /** After the label: a Counter or a Badge. Receives the segment's state. */
   trailing?: Snippet<[ControlState]>;
   isDisabled?: boolean;
-  /** Names an icon-only segment. */
+  /** Names a segment with no label (an icon or a `leading` snippet alone). */
   accessibilityLabel?: string;
   /** Lands on the radio input, the element tests click. */
   testID?: string;

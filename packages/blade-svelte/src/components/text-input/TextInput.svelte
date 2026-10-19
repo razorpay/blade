@@ -119,6 +119,10 @@
     /** Inside an InputGroup: this field's share of its row. */
     span?: InputGroupSpan;
     name?: string;
+    /**
+     * Caps the length and shows a counter. Ignored with `format`, as in
+     * Blade React: the mask's length is the cap, and there is no counter.
+     */
     maxCharacters?: number;
     pattern?: string | RegExp;
     /**

@@ -10,9 +10,9 @@
 </script>
 
 <!-- Blade's CollapsibleButton: a Button (Blade's default primary) that toggles. -->
-<Collapsible direction={args.direction}>
-  <Button color="primary">View Price Breakdown</Button>
+<Collapsible direction={args.direction} testID="collapsible">
+  <Button color="primary" testID="trigger">View Price Breakdown</Button>
   {#snippet content()}
-    <Breakdown />
+    <div data-testid="body"><Breakdown /></div>
   {/snippet}
 </Collapsible>

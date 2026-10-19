@@ -122,13 +122,13 @@
 {/snippet}
 
 {#snippet sections({ close }: { close: () => void })}
-  {#snippet trailing()}{@render trailingAction({ close })}{/snippet}
   {@const head = {
     title: withTitleSnippet ? titleSnippet : title,
     subtitle,
     leading: withSlots === 'icon' ? InfoIcon : withSlots === 'leading' ? leadingAsset : undefined,
     titleSuffix: withSlots ? suffix : undefined,
-    trailing: withSlots ? trailing : undefined,
+    // The header hands `trailing` the overlay's close.
+    trailing: withSlots ? trailingAction : undefined,
   }}
   {#if variant === 'sheet'}
     <BottomSheetHeader

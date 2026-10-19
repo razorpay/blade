@@ -148,30 +148,21 @@ test('lockfile matching needs the whole package name', () => {
   assert.ok(!lockfileMentions('"@razorpay/blade@^12.0.0":', svelte));
 });
 
-test('nudges to the blade skill only when the project uses @razorpay/blade', () => {
+test('nudge names the skill for each framework', () => {
   assert.match(getNudge(['react']), /invoke the blade skill/);
-  assert.equal(getNudge(['svelte']), null);
-  assert.equal(getNudge([]), null);
+  assert.match(getNudge(['svelte']), /@razorpay\/blade-svelte.*invoke the blade-svelte skill/);
   const both = getNudge(['react', 'svelte']);
-  assert.match(both, /invoke the blade skill/);
-  assert.match(both, /\.tsx\/\.jsx files only/);
-  assert.doesNotMatch(both, /blade-svelte skill/);
+  assert.match(both, /blade skill for \.tsx\/\.jsx files/);
+  assert.match(both, /blade-svelte skill for \.svelte files/);
 });
 
-test('SessionStart hook prints the blade nudge in a react project', () => {
-  const dir = makeProject({ 'package.json': { dependencies: { '@razorpay/blade': '^12.0.0' } } });
-  const { hookSpecificOutput } = JSON.parse(runSessionStart(dir));
-  assert.equal(hookSpecificOutput.hookEventName, 'SessionStart');
-  assert.match(hookSpecificOutput.additionalContext, /blade skill/);
-});
-
-test('SessionStart hook prints nothing in a blade-svelte-only project', () => {
+test('SessionStart hook prints the svelte nudge in a svelte project', () => {
   const dir = makeProject({
     'package.json': { dependencies: { '@razorpay/blade-svelte': '^0.18.0' } },
-    // @razorpay/blade pulled in transitively must not trigger the React nudge
-    'yarn.lock': '"@razorpay/blade@^12.0.0":\n  version "12.0.0"\n',
   });
-  assert.equal(runSessionStart(dir), '');
+  const { hookSpecificOutput } = JSON.parse(runSessionStart(dir));
+  assert.equal(hookSpecificOutput.hookEventName, 'SessionStart');
+  assert.match(hookSpecificOutput.additionalContext, /blade-svelte skill/);
 });
 
 test('SessionStart hook prints nothing outside Blade projects', () => {

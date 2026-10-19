@@ -85,6 +85,21 @@ test('publish-metric sends the MCP tool properties as a plugin event', async () 
   );
 });
 
+test('the blade-svelte copy of publish-metric reports framework svelte', async () => {
+  const { code, events } = await run('skills/blade-svelte/scripts/publish-metric.mjs', [
+    JSON.stringify({
+      ...validArgs,
+      files: [{ filePath: 'src/routes/Pay.svelte', linesAdded: 13, linesRemoved: 3 }],
+      toolsUsed: ['blade-svelte'],
+    }),
+  ]);
+  assert.equal(code, 0);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].event, 'Blade Plugin Tool Called');
+  assert.equal(events[0].properties.framework, 'svelte');
+  assert.equal(events[0].properties.toolsUsed, 'blade-svelte');
+});
+
 test('publish-metric reads JSON from stdin', async () => {
   const { code, events } = await run(metric, [], { input: JSON.stringify(validArgs) });
   assert.equal(code, 0);

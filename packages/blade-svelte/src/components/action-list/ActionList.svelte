@@ -1,6 +1,7 @@
 <script lang="ts" generics="T">
   import type { ComponentProps } from 'svelte';
   import BaseCardGroup from '../card-group/BaseCardGroup.svelte';
+  import { useComponentDefaults } from '../defaults';
   import { actionListClasses, type ActionListInset, type ActionListVariant } from './styles';
 
   // ActionList is a look: CardGroup's anatomy and behaviour — the value, the
@@ -27,12 +28,14 @@
     inset?: ActionListInset;
   };
 
-  let { value = $bindable(null), variant = 'plain', inset = 'none', ...props }: Props = $props();
+  let { value = $bindable(null), variant, inset, ...props }: Props = $props();
+
+  const style = useComponentDefaults('ActionList', () => ({ variant, inset }));
 </script>
 
 <BaseCardGroup
   bind:value
-  classes={actionListClasses(variant, inset)}
+  classes={actionListClasses(style.current.variant ?? 'plain', style.current.inset ?? 'none')}
   selectsOnMove={false}
   {...props}
 />

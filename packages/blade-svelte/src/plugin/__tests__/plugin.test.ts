@@ -191,11 +191,14 @@ describe('createIconCore', () => {
 type Hook = (this: unknown, ...args: unknown[]) => unknown;
 
 interface ViteRun {
-  context: { addWatchFile: Mock; emitFile: Mock; setAssetSource: Mock };
+  context: { addWatchFile: Mock; emitFile: Mock; getFileName: Mock };
+  /** Emitted assets' sources, by file name. */
   sources: Map<string, Buffer>;
   load: (id: string, ssr?: boolean) => Promise<string | null>;
   transform: (code: string, id: string) => { code: string } | null;
   end: () => Promise<void>;
+  /** generateBundle over these chunks (file name → code); returns them after. */
+  generate: (chunks: Record<string, string>) => Record<string, string>;
 }
 
 /** The Vite plugin pair past configResolved, with a Rollup-like context. */
@@ -209,11 +212,19 @@ function startVite(
     (plugin as Record<string, Hook>)[name].call(ctx, ...args);
   call(glyphs, 'configResolved', glyphs, { root, command });
   const sources = new Map<string, Buffer>();
+  const names = new Map<string, string>();
   let emitted = 0;
   const context = {
     addWatchFile: vi.fn(),
-    emitFile: vi.fn(() => `ref${(emitted += 1)}`),
-    setAssetSource: vi.fn((ref: string, source: Buffer) => sources.set(ref, source)),
+    // Vite 8's bundler takes an asset's source when it is emitted.
+    emitFile: vi.fn((file: { name: string; source: Buffer }) => {
+      const reference = `ref${(emitted += 1)}`;
+      const fileName = `assets/${file.name}`;
+      names.set(reference, fileName);
+      sources.set(fileName, file.source);
+      return reference;
+    }),
+    getFileName: vi.fn((reference: string) => names.get(reference)),
   };
   return {
     context,
@@ -223,6 +234,16 @@ function startVite(
     transform: (code: string, id: string) =>
       call(imports, 'transform', context, code, id) as { code: string } | null,
     end: () => call(glyphs, 'buildEnd', context) as Promise<void>,
+    generate: (chunks) => {
+      const bundle = Object.fromEntries(
+        Object.entries(chunks).map(([fileName, code]) => [
+          fileName,
+          { type: 'chunk', fileName, code },
+        ]),
+      );
+      call(glyphs, 'generateBundle', context, {}, bundle);
+      return Object.fromEntries(Object.entries(bundle).map(([name, chunk]) => [name, chunk.code]));
+    },
   };
 }
 
@@ -242,18 +263,34 @@ describe('bladePlugin (Vite)', () => {
     expect(await vite.load(path.join(root, 'src/logo.svg'))).toBeNull();
   });
 
-  it('builds the font from the glyph modules loaded, at buildEnd', async () => {
+  it('builds the font from the glyph modules loaded, and emits it with the bundle', async () => {
     const root = tempRoot();
     const vite = startVite({ extra: './src/icons' }, root);
     const face = (await vite.load('\0virtual:blade-icons/face'))!;
-    expect(face).toContain('import.meta.ROLLUP_FILE_URL_ref1');
+    expect(face).toContain(
+      'new URL(/* @vite-ignore */ "__BLADE_ICONS_FONT_woff2__", import.meta.url).href',
+    );
     await vite.load(path.join(ICON_SVGS, 'info.svg'));
     await vite.load(path.join(ICON_SVGS, 'wallet.svg'));
     await vite.load(path.join(root, 'src/icons/rocket.svg'));
-    expect(vite.context.setAssetSource).not.toHaveBeenCalled();
     await vite.end();
+    expect(vite.context.emitFile).not.toHaveBeenCalled();
+    // A minifier may requote the placeholder: the bare token is swapped, for
+    // a path relative to each chunk that carries it.
+    const out = vite.generate({
+      'assets/index.js': 'new URL(`__BLADE_ICONS_FONT_woff2__`,import.meta.url)',
+      'nested/lazy.js': 'new URL("__BLADE_ICONS_FONT_woff2__",import.meta.url)',
+      'assets/other.js': 'console.log(1)',
+    });
+    expect(out['assets/index.js']).toBe('new URL(`./blade-icons.woff2`,import.meta.url)');
+    expect(out['nested/lazy.js']).toBe('new URL("../assets/blade-icons.woff2",import.meta.url)');
+    expect(out['assets/other.js']).toBe('console.log(1)');
     // gift-card sits in the folder but nothing imported it.
-    expect(await glyphCodes(vite.sources.get('ref1')!)).toEqual([0xe0d0, 0xe1b4, 0xf001]);
+    expect(await glyphCodes(vite.sources.get('assets/blade-icons.woff2')!)).toEqual([
+      0xe0d0,
+      0xe1b4,
+      0xf001,
+    ]);
   });
 
   it('leaves ?raw and ?url modules alone: their import lines are text', () => {

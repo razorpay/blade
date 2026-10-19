@@ -25,8 +25,11 @@
     leading?: IconSource | Snippet;
     /** Beside the title, 8px from it: a Counter or a Badge. */
     titleSuffix?: Snippet;
-    /** After the title block: a Badge, text, a Link or an action. */
-    trailing?: Snippet;
+    /**
+     * After the title block: a Badge, text, a Link or an action. Receives
+     * `close`, which closes the overlay without a dismissal.
+     */
+    trailing?: Snippet<[{ close: () => void }]>;
     testID?: string;
     class?: string;
   }
@@ -57,6 +60,11 @@
   });
 </script>
 
+<!-- The caller's trailing, handed the overlay's close. -->
+{#snippet trailingWithClose()}
+  {@render trailing?.({ close: wiring.close })}
+{/snippet}
+
 {#if hasContent}
   <CardHeader
     {classes}
@@ -64,7 +72,7 @@
     {subtitle}
     prefix={leading}
     suffix={titleSuffix}
-    {trailing}
+    trailing={trailing ? trailingWithClose : undefined}
     titleId={wiring.titleId}
     subtitleId={wiring.subtitleId}
     attach={wiring.dragZone?.attach}

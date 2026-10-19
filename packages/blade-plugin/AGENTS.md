@@ -1,13 +1,13 @@
 # blade-plugin — Agent Context
 
-Claude Code plugin and cross-agent skills for the Blade Design System. Source of truth for the Blade knowledgebase (React, `@razorpay/blade`).
+Claude Code plugin and cross-agent skills for the Blade Design System. Source of truth for the Blade knowledgebases (React and Svelte).
 
 ## Package Structure
 
 ```
 .claude-plugin/plugin.json   # Claude Code manifest (name "blade"); version mirrors package.json
 .codex-plugin/plugin.json    # Codex manifest, byte-identical to the Claude one
-hooks/                       # SessionStart Blade detection + blade skill nudge (plain Node, no deps)
+hooks/                       # SessionStart framework detection + skill nudge (plain Node, no deps)
 skills/
   blade/                     # React knowledgebase (@razorpay/blade). SKILL.md stays small; docs live in references/
     references/components/   # One <Component>.md per component + index.md
@@ -17,6 +17,10 @@ skills/
     scripts/publish-metric.mjs # Port of the MCP publish_lines_of_code_metric tool
     scripts/changelog.mjs      # Changelog slicing for references/upgrade.md
     scripts/figma-to-code.mjs  # Razorpay-internal figma-to-code backend
+  blade-svelte/              # Svelte knowledgebase (@razorpay/blade-svelte)
+    references/components/   # One <Component>.md per component family + index.md
+    references/general/      # Usage, Styling, Theming, Adapters, AvailableIcons
+    scripts/                 # Identical copies of blade's analytics.mjs and publish-metric.mjs
 authoring/                   # Prompts used to generate component/pattern docs
 ```
 
@@ -26,6 +30,8 @@ Structural checks run in CI live in the repo-root `scripts/validateBladePlugin.m
 
 - Knowledgebase edits happen here. `packages/blade-mcp` copies `skills/blade/references` into its gitignored `knowledgebase/` at build time; never edit it there. Only the docs are shared: `SKILL.md`, scripts and analytics here never reach MCP users.
 - When adding a component doc, also add it to the `## Available components` list in that skill's `SKILL.md` and regenerate `references/components/index.md` (one line from the doc's Description). `yarn validate:blade-plugin` fails otherwise.
+- Svelte docs follow `authoring/svelte-components.prompt.txt`: props from each component's `$props()` type (the drift check reads the same), examples as ```svelte blocks using runes, imports from `@razorpay/blade-svelte/components`, `/icons` or `/runes`, icons as sources, and classes that pass Blade's class lint (`yarn tsc:knowledgebase --target svelte` checks all of it).
+- The blade-svelte general docs are its own (Usage, Styling, Theming, Adapters, AvailableIcons), not copies of the React ones: blade-svelte styles with token classes and themes through CSS variables. `AvailableIcons.md` lists exactly the package's icon exports; the Svelte lint checks this.
 - `@razorpay/blade-plugin` versions independently of `@razorpay/blade-mcp`. Every changeset that touches this package uses `'@razorpay/blade-plugin': patch|minor`; also add `'@razorpay/blade-mcp'` when the change is in `skills/blade/references`, because blade-mcp ships those docs.
 - Do not bump versions by hand. `scripts/syncPluginManifestVersion.js` stamps plugin.json files and `SKILL.md` `metadata.version` from `package.json` during release.
 - Everything in this directory ships to Claude Code plugin users. Put repo tooling in the root `scripts/`, not here, so it does not clash with `skills/blade/scripts/`.
@@ -35,11 +41,13 @@ Structural checks run in CI live in the repo-root `scripts/validateBladePlugin.m
 
 ## Quick Commands
 
-| Task                              | Command (repo root)                         |
-| --------------------------------- | ------------------------------------------- |
-| Validate plugin structure + hooks | `yarn validate:blade-plugin`                |
-| Run script and hook tests         | `yarn --cwd packages/blade-plugin test`     |
-| Typecheck React knowledgebase     | `yarn tsc:knowledgebase`                    |
-| Check React docs drift vs source  | `yarn check:knowledgebase-drift --fail`     |
-| Try locally in Claude Code        | `claude --plugin-dir packages/blade-plugin` |
-| Sync manifest versions            | `node scripts/syncPluginManifestVersion.js` |
+| Task                              | Command (repo root)                                     |
+| --------------------------------- | ------------------------------------------------------- |
+| Validate plugin structure + hooks | `yarn validate:blade-plugin`                            |
+| Run script and hook tests         | `yarn --cwd packages/blade-plugin test`                 |
+| Typecheck React knowledgebase     | `yarn tsc:knowledgebase`                                |
+| Compile Svelte knowledgebase      | `yarn tsc:knowledgebase --target svelte`                |
+| Check React docs drift vs source  | `yarn check:knowledgebase-drift --fail`                 |
+| Check Svelte docs drift vs source | `yarn check:knowledgebase-drift --target svelte --fail` |
+| Try locally in Claude Code        | `claude --plugin-dir packages/blade-plugin`             |
+| Sync manifest versions            | `node scripts/syncPluginManifestVersion.js`             |

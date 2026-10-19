@@ -1,0 +1,25 @@
+/*
+ * The page defaults Blade leaves to the app (its config ships no reset
+ * beyond borders): the base font, the box model, and form controls that
+ * inherit the font. A merchant's own body font goes here too.
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Inter Fallback Arial', Arial, sans-serif;
+  color: hsla(0, 0%, 2%, 1);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}

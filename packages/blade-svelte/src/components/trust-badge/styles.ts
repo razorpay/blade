@@ -10,7 +10,10 @@ type Axis<K extends keyof typeof TRUST_BADGE_AXES> = AxisValue<typeof TRUST_BADG
 
 /** Derived from TRUST_BADGE_AXES: add a value there, never here. */
 export interface TrustBadgeStyleProps {
-  /** `default`: the shield and its line in a tinted pill. `icon-only`: the shield. */
+  /**
+   * `default`: the shield and its line in a tinted pill. `icon-only`: the shield.
+   * @default 'default'
+   */
   variant?: Axis<'variant'>;
 }
 

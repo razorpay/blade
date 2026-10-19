@@ -35,6 +35,7 @@
     showBackButton,
     onBackButtonClick,
     backLabel,
+    padding = 'default',
     ...rest
   }: MenuBehaviourProps & MenuStyleProps = $props();
 
@@ -96,7 +97,7 @@
         {showBackButton}
         {onBackButtonClick}
         {backLabel}
-        padding="default"
+        {padding}
         close={overlay.close}
       />
     </div>

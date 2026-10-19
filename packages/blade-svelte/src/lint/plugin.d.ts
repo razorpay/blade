@@ -31,7 +31,7 @@ export function lintClasses(
 ): BladeLintFinding[];
 
 /** The recommended severities, keyed `blade/<rule>`. */
-export const recommended: Record<`blade/${BladeLintFinding['ruleId']}`, 'error' | 'warn'>;
+export declare const recommended: Record<`blade/${BladeLintFinding['ruleId']}`, 'error' | 'warn'>;
 
 /** The plugin, ESLint-shaped: oxlint's `jsPlugins` and ESLint's flat config both load it. */
 declare const plugin: {

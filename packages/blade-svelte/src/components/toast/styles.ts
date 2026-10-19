@@ -83,6 +83,12 @@ export interface ToastStyleProps {
 
 export interface ToastContainerStyleProps {
   placement?: AxisValue<typeof TOAST_CONTAINER_AXES, 'placement'>;
+  /**
+   * ms a toast stays when `showToast` passes no `duration`; settable for
+   * the app in BladeProvider's `defaults.ToastContainer`.
+   * @default 4000
+   */
+  duration?: number;
 }
 
 const URGENT: Intent[] = ['negative'];
@@ -172,7 +178,7 @@ const PLACEMENT: Record<
 export const resolveToastContainer: ToastContainerStyleResolver<ToastContainerStyleProps> = (
   props,
 ) => {
-  const { placement = 'bottom' } = props;
+  const { placement = 'bottom', duration = 4000 } = props;
   const edge = PLACEMENT[placement];
   return {
     root: `pointer-events-none absolute inset-x-4 z-60 mx-auto max-w-[360px] d:inset-x-6 ${edge.root}`,
@@ -180,7 +186,7 @@ export const resolveToastContainer: ToastContainerStyleResolver<ToastContainerSt
     hover: `absolute inset-x-0 [z-index:-100] h-[calc(var(--hover-height)*1px)] data-[expanded=true]:pointer-events-auto ${edge.hover}`,
     slide: edge.slide,
     capacity: 3,
-    duration: 4000,
+    duration,
     geometry: { gutter: 12, peek: 12, scaleStep: 0.05, front: 1, peeks: 3 },
     minShown: 1,
   };

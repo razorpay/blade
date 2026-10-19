@@ -114,7 +114,7 @@ export {
   ACTION_LIST_AXES,
   actionListClasses,
 } from './action-list';
-export type { ActionListVariant, ActionListInset } from './action-list';
+export type { ActionListVariant, ActionListInset, ActionListStyleProps } from './action-list';
 export { default as CardGroup } from './card-group/CardGroup.svelte';
 export { default as CardGroupItem } from './card-group/CardGroupItem.svelte';
 export { default as CardGroupSection } from './card-group/CardGroupSection.svelte';

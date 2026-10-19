@@ -1,0 +1,65 @@
+Write the blade-svelte knowledgebase doc for {ComponentName} and save it as
+packages/blade-plugin/skills/blade-svelte/references/components/{ComponentName}.md.
+Sub-components are documented in their parent's doc (CardHeader in Card.md). Do not touch any
+other file, and never edit component source: report a bug or an odd API instead.
+
+Sources, in this order of authority:
+1. The type on `$props()` in packages/blade-svelte/src/components/{dir}/{ComponentName}.svelte:
+   behaviour props with their JSDoc, and the style props from `{ComponentName}StyleProps` /
+   `{NAME}_AXES` in that folder's styles.ts (the exact enum values).
+   `node -e "const kb=require('./scripts/svelteKnowledgebase.js'); console.log([...kb.getComponentProps('{ComponentName}')])"`
+   prints the prop names the drift check compares against.
+2. packages/blade-svelte/src/stories/{dir}/README.md (behaviour and decisions) and its .svelte
+   stories (real usage).
+3. The component's section in packages/blade-svelte/API-PARITY.md, and the rules at its top
+   (callback payloads, bindable values, children/content, slots, adapters).
+4. The general docs in skills/blade-svelte/references/general/ state the conventions every
+   component follows: rely on them instead of repeating them.
+Never take an API, value or behaviour from Blade React: blade-svelte differs. Every size,
+colour, default and payload you state must come from the sources above.
+
+Use exactly these sections (references/components/Button.md is the model):
+
+## Component Name
+
+## Description
+
+One paragraph an agent can use to pick this component; its first sentence is the line in
+components/index.md. Mention the sub-components documented in this file.
+
+## Important Constraints
+
+Hard rules: what the component requires, ignores or rejects (an icon-only Button needs
+`accessibilityLabel`; `isDisabled` is ignored with `href`). Take them from the source.
+
+## Props
+
+One ```typescript block with `interface {Name}Props { … }` for the component and for every
+sub-component this doc covers: every prop by its exact name, each with a short JSDoc (meaning,
+`@default`). Declare small helper unions (sizes, colours) as their own `type` in the block.
+List members explicitly (no `extends`). `Snippet`, `IconSource` and other type names may be
+used without declaring them. `yarn check:knowledgebase-drift --target svelte {ComponentName}`
+compares the names with the component's props.
+
+## Guidelines
+
+Do and Don't bullets, one actionable line each: component choice (vs similar components),
+composition, prop combinations, content length, accessibility. Every Don't names the right
+alternative.
+
+## Examples
+
+One `### Title` + one ```svelte block per distinct use case (2-5), in realistic Razorpay
+scenarios (payments, settlements, checkout). Every example:
+- is a complete component: `<script lang="ts">` with all imports, then markup;
+- uses Svelte 5 runes and snippets only: never `export let`, `$:`, `on:click`, `<slot>`;
+- imports from `@razorpay/blade-svelte/components`, `/icons` or `/runes` only, names those
+  entries export, and nothing from `@razorpay/blade`;
+- passes Blade components only their props; binds values (`bind:value`) instead of
+  `defaultValue`;
+- passes icons as sources (`icon={WalletIcon}`, `<Icon source={InfoIcon} />`), never as tags;
+- places a Blade component with `class` (margin, width, flex or grid item, position,
+  `hidden`) and never restyles it; styles its own elements with Blade's token classes
+  (`p-blade-5`, `gap-blade-3`, `bg-surface-gray-subtle`), every class written in full.
+`yarn tsc:knowledgebase --target svelte` compiles each example and checks all of this,
+Blade's class lint included.

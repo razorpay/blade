@@ -4,7 +4,7 @@
 
 feat(blade-svelte): Tailwind port of the Svelte components
 
-- **A new implementation.** The components are a Svelte 5 runes library styled with Tailwind utility classes, shipped as source. The app compiles Blade's classes with the UnoCSS preset (`@razorpay/blade-svelte/configs/uno`) and icons with the Vite or webpack plugin (`/configs/vite`, `/configs/webpack`); `blade.css` holds the fonts and Blade's own scales. The previous implementation, the package root export and the `/utils` subpath are removed.
+- **A new implementation.** The components are a Svelte 5 runes library styled with Tailwind utility classes, shipped as source. The app compiles Blade's classes with the UnoCSS preset (`@razorpay/blade-svelte/configs/uno`) and icons with the Vite 8 or webpack plugin (`/configs/vite`, `/configs/webpack`); `blade.css` holds the fonts and Blade's own scales. The previous implementation, the package root export and the `/utils` subpath are removed.
 - **Theming is CSS variables:** every colour class reads its token's variable, falling back to Blade's standard theme (React's default); an app's brand sets only what branding changes.
 - **Entry points:** `@razorpay/blade-svelte/components` (components, their class resolvers and types, `BladeProvider`, `useComponentDefaults`, `getAdapters`, `createCancel`), `/runes` (the runes an app's own components build on) and `/icons`.
 - **UI only, web only.** Headless hosts and flows (a form, an opener for overlays opened from code, navigation, async content) and composed components (an overlay that switches by screen, a searchable list) are the app's; Blade keeps their seams as adapters. `ComponentStyleProps` is an interface an app extends, so its own components take provider defaults.

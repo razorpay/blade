@@ -19,37 +19,34 @@ async function paste(target: Locator, text: string): Promise<void> {
   }, text);
 }
 
+/** The text of the row holding the focused control. */
+const focusedRow = (page: Page): Promise<string> =>
+  page.evaluate(() => document.activeElement?.closest('label')?.textContent?.trim() ?? '');
+
+/**
+ * Picks a country in the open list the keyboard's way: Tab into the rows
+ * (past a sheet's close button), type the name (the list scrolls to rows it
+ * has not mounted), then Enter.
+ */
+async function pickByTypeahead(page: Page, name: string): Promise<void> {
+  const inRows = (): Promise<boolean> =>
+    page.evaluate(() =>
+      Boolean(document.activeElement?.closest('[data-testid="phone-countries"]')),
+    );
+  // One Tab at a time, checking where each lands.
+  /* eslint-disable no-await-in-loop */
+  for (let tabs = 0; tabs < 3 && !(await inRows()); tabs += 1) {
+    await page.keyboard.press('Tab');
+  }
+  /* eslint-enable no-await-in-loop */
+  await page.keyboard.type(name);
+  await expect.poll(() => focusedRow(page)).toContain(name);
+  await page.keyboard.press('Enter');
+}
+
 /** The control's text and caret, read together. */
 const caret = (input: Locator): Promise<{ value: string; at: number | null }> =>
   input.evaluate((node: HTMLInputElement) => ({ value: node.value, at: node.selectionStart }));
-
-/**
- * The country list is virtualized: only the rows in view are mounted, so a
- * far one (Malaysia, in the library's list) is not there to click. Scrolls
- * the list's viewport until the row mounts, then hands it back.
- */
-async function countryRow(page: Page, name: string): Promise<Locator> {
-  const list = page.getByTestId('phone-countries');
-  const row = list.getByText(name);
-  await expect
-    .poll(
-      async () => {
-        if (await row.count()) {
-          return true;
-        }
-        await list.evaluate((root) => {
-          const viewport = root.querySelector('.overflow-y-auto');
-          if (viewport) {
-            viewport.scrollBy(0, viewport.clientHeight);
-          }
-        });
-        return false;
-      },
-      { timeout: 30_000 },
-    )
-    .toBe(true);
-  return row;
-}
 
 test.describe('OTPInput', () => {
   test('typing moves focus cell to cell and fills the value', async ({ page }) => {
@@ -88,7 +85,7 @@ test.describe('OTPInput', () => {
 });
 
 test.describe('TextInput with format', () => {
-  test('groups a card number as it is typed, and the field holds the grouped text', async ({
+  test('groups a card number as it is typed; the value is the formatted text, as Blade', async ({
     page,
   }) => {
     await gotoStory(page, 'components-input-textinput--formatted');
@@ -104,7 +101,7 @@ test.describe('TextInput with format', () => {
     const input = page.getByTestId('card-number');
     await input.click();
     await page.keyboard.type('41112222');
-    // The mask places the next group's delimiter as the group ends.
+    // A full group places the next delimiter, as Blade's formatter does.
     await expect(input).toHaveValue('4111 2222 ');
     // Caret after "4111 ", then a digit: the rest shifts, the caret follows it.
     await input.evaluate((node: HTMLInputElement) => node.setSelectionRange(5, 5));
@@ -112,15 +109,16 @@ test.describe('TextInput with format', () => {
     await expect.poll(() => caret(input)).toEqual({ value: '4111 5222 2', at: 6 });
   });
 
-  test('lays an expiry into its pattern as it is typed', async ({ page }) => {
+  test('an expiry places its separator, and the mask caps the length', async ({ page }) => {
     await gotoStory(page, 'components-input-textinput--formatted');
     const input = page.getByTestId('expiry');
     await input.click();
-    await page.keyboard.type('5');
-    await expect(input).toHaveValue('5');
-    await page.keyboard.type('27');
-    await expect(input).toHaveValue('52/7');
-    await expect(page.getByTestId('expiry-value')).toHaveText('"52/7"');
+    await page.keyboard.type('12');
+    // A full group places its delimiter, as Blade's formatter does.
+    await expect(input).toHaveValue('12/');
+    await page.keyboard.type('2599');
+    await expect(input).toHaveValue('12/25');
+    await expect(page.getByTestId('expiry-value')).toHaveText('"12/25"');
   });
 });
 
@@ -136,14 +134,16 @@ test.describe('PhoneNumberInput', () => {
     await page.getByTestId('phone-country').click();
     const picker = page.getByTestId('phone-picker');
     await expect(picker).toBeVisible();
-    // The lazily loaded list arrives, in a dropdown as wide as the field's frame.
+    // The list arrives in a dropdown as wide as the field's frame.
     await expect(page.getByTestId('phone-countries')).toBeVisible();
     const frame = await number.locator('xpath=..').boundingBox();
     const panel = await picker.boundingBox();
     expect(Math.round(panel!.width)).toBe(Math.round(frame!.width));
     expect(panel!.y).toBeGreaterThan(frame!.y + frame!.height);
 
-    await (await countryRow(page, 'Malaysia')).click();
+    // The list is virtual and opens at the pick: Malaysia is not mounted yet.
+    // Typeahead scrolls to it, and focus follows the jump.
+    await pickByTypeahead(page, 'Malaysia');
     await expect(picker).toBeHidden();
     await expect(page.getByTestId('country')).toHaveText('MY');
     await expect(page.getByTestId('value')).toHaveText('+60123456789');
@@ -153,7 +153,7 @@ test.describe('PhoneNumberInput', () => {
     await gotoStory(page, 'components-input-phonenumberinput--basic', { presentAsSheet: true });
     await page.getByTestId('phone-country').click();
     await expect(page.getByTestId('phone-picker-drag-zone')).toHaveCount(1);
-    await (await countryRow(page, 'Malaysia')).click();
+    await pickByTypeahead(page, 'Malaysia');
     await expect(page.getByTestId('country')).toHaveText('MY');
   });
 });

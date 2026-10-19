@@ -8,10 +8,20 @@ export interface CardGroupRowOptions {
   isActive: () => boolean;
   /** A user pick. Returns whether the option is picked afterwards. */
   onToggle: (event: Event) => boolean;
+  /** Focus left the row for somewhere outside it. */
+  onBlur: () => void;
 }
 
 export interface CardGroupRow {
   handleClick(event: MouseEvent): void;
+  /**
+   * On the control's `focusout`. Focus moving to another element is a blur
+   * (the next row's focus takes it back). Focus going nowhere is a blur only
+   * while the row stays in the page: a row that leaves it (a virtual window
+   * scrolled it out on a keyboard jump) hands focus to the row that mounts
+   * in its place, so the list keeps its focus.
+   */
+  handleFocusOut(event: FocusEvent): void;
   /**
    * On the control: follows the value when it changes from the outside or
    * another row takes the pick (a user pick is already on the control), and
@@ -33,6 +43,20 @@ export function createCardGroupRow(options: CardGroupRowOptions): CardGroupRow {
       if (target.checked !== shown) {
         target.checked = shown;
       }
+    },
+    handleFocusOut(event) {
+      if (event.relatedTarget) {
+        options.onBlur();
+        return;
+      }
+      // The browser blurs a focused node it is removing while it is still
+      // attached: wait until the removal is done to tell the two apart.
+      const node = event.currentTarget as HTMLElement;
+      queueMicrotask(() => {
+        if (node.isConnected) {
+          options.onBlur();
+        }
+      });
     },
     attach(node) {
       const undo = write(node);

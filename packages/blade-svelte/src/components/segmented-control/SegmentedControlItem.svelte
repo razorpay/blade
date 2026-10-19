@@ -23,21 +23,18 @@
 </script>
 
 <!--
-  The Radio's label is the segment. An icon-only segment is named through
-  that label: the Icon carries the name, so the radio reads as its text.
+  The Radio's label is the segment. A segment with no label (an icon or a
+  snippet alone) is named by hidden text in that label, so the radio reads
+  as it.
 -->
 <Radio {value} {isDisabled} {testID} class={className} {...analytics}>
   {#snippet children(state)}
   {#if typeof leading === 'function'}
     <span class={leadingBox}>{@render leading(state)}</span>
   {:else if leading}
-    <Icon
-      source={leading}
-      size={iconSize}
-      accessibilityLabel={label ? undefined : accessibilityLabel}
-    />
+    <Icon source={leading} size={iconSize} />
   {/if}
-  {#if label}{@render label(state)}{/if}
+  {#if label}{@render label(state)}{:else if accessibilityLabel}<span class="sr-only">{accessibilityLabel}</span>{/if}
   {@render trailing?.(state)}
   {/snippet}
 </Radio>

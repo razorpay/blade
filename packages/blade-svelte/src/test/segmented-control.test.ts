@@ -86,8 +86,11 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     const { getByRole, getByTestId } = render(SegmentedControlHarness, {
       props: { iconOnly: true },
     });
+    // Named by hidden text in the label, so a snippet `leading` is named too.
     expect(getByRole('radio', { name: 'Wallet' })).toBe(getByTestId('wallet'));
-    expect(segment(getByTestId('wallet')).querySelector('[role="img"]')).not.toBeNull();
+    expect(segment(getByTestId('wallet')).querySelector('span.sr-only')?.textContent).toBe(
+      'Wallet',
+    );
   });
 
   it('the pick is a thumb, not a segment style', async () => {

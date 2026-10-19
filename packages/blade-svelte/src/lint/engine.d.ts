@@ -18,7 +18,7 @@ export function conflictsIn(
 export function isBladeShaped(utility: string, index?: ClassIndex): boolean;
 export function isKnown(utility: string, index?: ClassIndex): boolean;
 export function tokenFor(utility: string, index?: ClassIndex): string | undefined;
-export const COMPONENT_KEYS: Record<string, string[]>;
+export declare const COMPONENT_KEYS: Record<string, string[]>;
 export function restyles(
   token: string,
   component: string,

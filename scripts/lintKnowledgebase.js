@@ -1,4 +1,16 @@
 /* eslint-disable no-control-regex */
+const targetIndex = process.argv.indexOf('--target');
+if (targetIndex !== -1 && process.argv[targetIndex + 1] === 'svelte') {
+  // A process of its own (it loads Blade's class lint, an ES module), waited
+  // for here, so the React lint below never runs.
+  const { status } = require('child_process').spawnSync(
+    process.execPath,
+    [require('path').join(__dirname, 'lintKnowledgebaseSvelte.js')],
+    { stdio: 'inherit' },
+  );
+  process.exit(status ?? 1);
+}
+
 const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');

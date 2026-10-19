@@ -3,7 +3,8 @@ import { fireEvent, render } from '@testing-library/svelte';
 import Harness from './fixtures/ChoiceConsistencyHarness.svelte';
 
 describe('choice components, one way', () => {
-  it("an item without a test id of its own gets an id from the group's testID and its index", () => {
+  // eslint-disable-next-line no-template-curly-in-string -- names the id's pattern
+  it("an item without a test id of its own gets the group's `${testID}-${index}`", () => {
     const { getByTestId } = render(Harness);
     expect(getByTestId('pay-0').getAttribute('value')).toBe('qr');
     expect(getByTestId('pay-1').getAttribute('value')).toBe('web');

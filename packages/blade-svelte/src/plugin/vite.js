@@ -5,6 +5,7 @@
  * glyphs, and builds the `blade-icons` font from exactly the glyphs the build
  * loads. Plain JS: Vite loads it from node_modules, where Node strips no types.
  */
+import { posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createIconCore, faceModule, FONT_FAMILY, SOURCE_MODULE } from './core.js';
 
@@ -37,9 +38,16 @@ export default function bladePlugin(options = {}) {
   let isBuild = false;
   /** The SVG files of the glyphs loaded so far. */
   const used = new Set();
-  /** Build: the font files, emitted empty and filled in at buildEnd. */
-  /** @type {Partial<Record<Format, string>>} */
-  const assets = {};
+  /**
+   * Build: the font files, made at buildEnd once every glyph is known and
+   * emitted with the bundle. Vite 8's bundler cannot fill in an asset
+   * emitted earlier, so the face module carries a placeholder per format
+   * that generateBundle swaps for the emitted file's path.
+   * @type {{ files?: Awaited<ReturnType<ReturnType<typeof createIconCore>['font']>> }}
+   */
+  const built = {};
+  let wantsFont = false;
+  const placeholder = (/** @type {Format} */ format) => `__BLADE_ICONS_FONT_${format}__`;
   /** Dev: the glyph set the current font was built from. */
   let devKey = '';
   /**
@@ -82,13 +90,17 @@ export default function bladePlugin(options = {}) {
           // The client build owns the font; a server build only needs the module.
           if (loadOptions?.ssr) return faceModule([], formats);
           if (isBuild) {
-            // The glyph set is only known once every module is loaded, so the
-            // files are emitted empty now and filled in at buildEnd.
-            for (const format of formats) {
-              assets[format] ??= this.emitFile({ type: 'asset', name: `${FONT_FAMILY}.${format}` });
-            }
+            // The glyph set is only known once every module is loaded: the
+            // URL is resolved against the chunk once the font is emitted.
+            wantsFont = true;
             return faceModule(
-              formats.map((format) => `import.meta.ROLLUP_FILE_URL_${assets[format]}`),
+              formats.map(
+                // Not a file yet: Vite's asset handling must leave it alone.
+                (format) =>
+                  `new URL(/* @vite-ignore */ ${JSON.stringify(
+                    placeholder(format),
+                  )}, import.meta.url).href`,
+              ),
               formats,
             );
           }
@@ -109,11 +121,31 @@ export default function bladePlugin(options = {}) {
         return core.glyphModule(glyph, FACE_ID);
       },
       async buildEnd(error) {
-        if (error || !isBuild || Object.keys(assets).length === 0) return;
-        const files = await core.font(used, formats);
+        if (error || !isBuild || !wantsFont) return;
+        built.files = await core.font(used, formats);
+      },
+      generateBundle(_options, bundle) {
+        const { files } = built;
+        if (!files) return;
+        built.files = undefined;
         for (const format of formats) {
-          const reference = assets[format];
-          if (reference) this.setAssetSource(reference, files[format].source);
+          const reference = this.emitFile({
+            type: 'asset',
+            name: `${FONT_FAMILY}.${format}`,
+            source: files[format].source,
+          });
+          const fileName = this.getFileName(reference);
+          // The bare token: a minifier may requote the string (backticks).
+          const token = placeholder(format);
+          for (const chunk of Object.values(bundle)) {
+            if (chunk.type !== 'chunk' || !chunk.code.includes(token)) continue;
+            // Relative to the chunk, which `new URL(…, import.meta.url)` reads it from.
+            const relative = posix.relative(posix.dirname(chunk.fileName), fileName);
+            chunk.code = chunk.code.replaceAll(
+              token,
+              relative.startsWith('.') ? relative : `./${relative}`,
+            );
+          }
         }
       },
       configureServer(devServer) {

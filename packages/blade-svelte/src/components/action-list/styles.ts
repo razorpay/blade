@@ -18,6 +18,12 @@ export const ACTION_LIST_AXES = {
 export type ActionListVariant = typeof ACTION_LIST_AXES.variant[number];
 export type ActionListInset = typeof ACTION_LIST_AXES.inset[number];
 
+/** ActionList's style props: what BladeProvider's `defaults.ActionList` sets. */
+export interface ActionListStyleProps {
+  variant?: ActionListVariant;
+  inset?: ActionListInset;
+}
+
 /** What the look depends on: the variant, the inset, and whether the list has sections. */
 interface ActionListLook extends Partial<CardGroupLookState> {
   /** @default 'plain' */

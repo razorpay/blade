@@ -80,17 +80,26 @@ import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
 
 export default {
   ...bladeUnoConfig({ desktop: '62.5rem' }), // the default
-  content: { filesystem: ['./node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}'] },
+  // The bundled modules, Blade's `styles.ts` maps included: only the
+  // components you import reach the CSS.
+  content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
 };
 ```
 
-Emit it with the UnoCSS plugin your bundler uses (`unocss/vite`,
-`@unocss/webpack`), or with `@unocss/postcss` and a `@unocss;` directive in a
-stylesheet. Import Blade's plain stylesheet beside it:
+Emit it with the UnoCSS plugin your bundler uses (`unocss/vite` on Vite 8,
+`@unocss/webpack`). With `@unocss/postcss` and a `@unocss;` directive
+instead, UnoCSS scans files: list Blade's source in `content.filesystem`
+(`./node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}`), which the
+bundler plugins skip. Import Blade's plain stylesheet beside it:
 
 ```ts
 import '@razorpay/blade-svelte/blade.css'; // opacity-blade-*; Tasa, Inter (woff2)
 ```
+
+Blade sets no page defaults beyond a border reset: set the base font, the
+box model and `font: inherit` on form controls in your app's CSS, or field
+values and amounts fall back to the browser's serif (see
+`packages/examples/svelte-app/src/app.css`).
 
 Components are mobile first; their desktop styles are `d:` classes, and
 `max-d:` is below it. Your markup uses the same variants.
@@ -119,12 +128,7 @@ export default {
     variants: { 'quick-buy': '[data-quick-buy="true"] &' },
     preflight: true, // the default with a theme
   }),
-  content: {
-    filesystem: [
-      './src/**/*.{svelte,ts}',
-      './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}',
-    ],
-  },
+  content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
 };
 ```
 

@@ -1,6 +1,6 @@
-// SessionStart: when the project depends on @razorpay/blade, tell the agent to
-// use the blade skill. Prints nothing otherwise (including projects that only
-// use @razorpay/blade-svelte, which has no skill). Must never fail the session, so errors are swallowed.
+// SessionStart: when the project depends on @razorpay/blade and/or
+// @razorpay/blade-svelte, tell the agent which Blade skill to use. Prints
+// nothing otherwise. Must never fail the session, so errors are swallowed.
 import { detectFrameworks, getNudge } from './utils/frameworks.mjs';
 
 const readStdinJSON = async () => {
@@ -15,14 +15,14 @@ const readStdinJSON = async () => {
 
 const main = async () => {
   const input = await readStdinJSON();
-  const nudge = getNudge(detectFrameworks(input.cwd || process.cwd()));
-  if (!nudge) return;
+  const frameworks = detectFrameworks(input.cwd || process.cwd());
+  if (frameworks.length === 0) return;
 
   process.stdout.write(
     JSON.stringify({
       hookSpecificOutput: {
         hookEventName: 'SessionStart',
-        additionalContext: nudge,
+        additionalContext: getNudge(frameworks),
       },
     }),
   );

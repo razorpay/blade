@@ -27,8 +27,11 @@
     leading?: IconSource | Snippet;
     /** Beside the title, 8px from it: a Counter or a Badge. */
     titleSuffix?: Snippet;
-    /** After the title block: a Badge, text, a Link or an action. */
-    trailing?: Snippet;
+    /**
+     * After the title block: a Badge, text, a Link or an action. Receives
+     * `close`, which closes the overlay without a dismissal.
+     */
+    trailing?: Snippet<[{ close: () => void }]>;
     /**
      * A back button first in the row, before the leading item and the
      * title: a step back inside the sheet, not a dismissal.
@@ -74,6 +77,11 @@
   });
 </script>
 
+<!-- The caller's trailing, handed the overlay's close. -->
+{#snippet trailingWithClose()}
+  {@render trailing?.({ close: wiring.close })}
+{/snippet}
+
 {#snippet backButton()}
   <button type="button" class={classes.back} aria-label={backLabel} onclick={() => onBackButtonClick?.()}>
     <Icon source={ChevronLeftIcon} size="large" />
@@ -87,7 +95,7 @@
     {subtitle}
     prefix={leading}
     suffix={titleSuffix}
-    {trailing}
+    trailing={trailing ? trailingWithClose : undefined}
     titleId={wiring.titleId}
     subtitleId={wiring.subtitleId}
     attach={wiring.dragZone?.attach}

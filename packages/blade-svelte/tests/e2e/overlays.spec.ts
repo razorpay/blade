@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { gotoStory } from './support/story';
 
-// Popover and Menu, and Tooltip, in a real browser: real placement against
-// the trigger and the frame's edges, tap, keyboard, and one Escape reaching
-// only the topmost overlay.
+// Popover, Menu and Tooltip in a real browser: real placement against the
+// trigger and the frame's edges, tap, keyboard, and one Escape reaching only
+// the topmost overlay.
 
 type Box = { x: number; y: number; width: number; height: number };
 
@@ -18,6 +18,10 @@ async function boxOf(locator: Locator): Promise<Box> {
 
 const focusedWithin = (locator: Locator): Promise<boolean> =>
   locator.evaluate((node) => node.contains(document.activeElement));
+
+/** The text of the row holding the focused control (a Menu's rows are radios in labels). */
+const focusedRow = (page: Page): Promise<string> =>
+  page.evaluate(() => document.activeElement?.closest('label')?.textContent?.trim() ?? '');
 
 /** Moves focus to an element the keyboard's way, without a pointer. */
 async function focusByKeyboard(page: Page, target: Locator): Promise<void> {
@@ -39,12 +43,15 @@ test.describe('Popover', () => {
     await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     await expect.poll(() => focusedWithin(panel)).toBe(true);
 
-    // `placement: top`: the panel sits above the trigger, centred on it.
+    // `placement: top`: the panel sits above the trigger, centred on it —
+    // unless centring would leave the screen (a phone narrower than the
+    // story's frame), where it shifts to sit flush with the edge instead.
     const [panelBox, triggerBox] = await Promise.all([boxOf(panel), boxOf(trigger)]);
     expect(panelBox.y + panelBox.height).toBeLessThanOrEqual(triggerBox.y);
-    expect(
-      Math.abs(panelBox.x + panelBox.width / 2 - (triggerBox.x + triggerBox.width / 2)),
-    ).toBeLessThan(2);
+    const screenWidth = await page.evaluate(() => window.innerWidth);
+    const centredLeft = triggerBox.x + triggerBox.width / 2 - panelBox.width / 2;
+    const expectedLeft = Math.min(Math.max(centredLeft, 0), screenWidth - panelBox.width);
+    expect(Math.abs(panelBox.x - expectedLeft)).toBeLessThan(2);
 
     await page.keyboard.press('Escape');
     await expect(panel).toBeHidden();
@@ -136,7 +143,7 @@ test.describe('Tooltip', () => {
 });
 
 test.describe('Menu', () => {
-  test('opens on its first item, arrows skip the disabled one, Enter chooses and closes back to the trigger', async ({
+  test('opens on its first row, arrows skip the disabled one, Enter chooses and closes back to the trigger', async ({
     page,
   }) => {
     await gotoStory(page, 'components-menu--basic');
@@ -144,16 +151,17 @@ test.describe('Menu', () => {
     await trigger.click();
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
-    await expect(menu).toHaveAttribute('role', 'menu');
+    await expect(menu).toHaveAttribute('role', 'dialog');
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     await expect(trigger).toHaveAttribute('aria-controls', (await menu.getAttribute('id')) ?? '');
 
-    const items = menu.getByRole('menuitem');
-    await expect(items.first()).toBeFocused();
+    // The rows are an ActionList's: the keyboard moves focus over them.
+    await expect.poll(() => focusedRow(page)).toBe('Edit address');
     await page.keyboard.press('ArrowDown');
-    await expect(items.nth(1)).toBeFocused();
-    // "Make default" is disabled: the arrow lands on "Remove".
+    await expect.poll(() => focusedRow(page)).toBe('Copy address');
+    // "Make default" is disabled, and the divider is no row: the arrow lands on "Remove".
     await page.keyboard.press('ArrowDown');
-    await expect(items.nth(3)).toBeFocused();
+    await expect.poll(() => focusedRow(page)).toBe('Remove');
 
     await page.keyboard.press('Enter');
     await expect(menu).toBeHidden();
@@ -161,16 +169,16 @@ test.describe('Menu', () => {
     await expect(trigger).toBeFocused();
   });
 
-  test('typing a letter jumps to the item, and Escape closes back to the trigger', async ({
+  test('typing a letter jumps to the row, and Escape closes back to the trigger', async ({
     page,
   }) => {
     await gotoStory(page, 'components-menu--basic');
     const trigger = page.getByTestId('trigger');
     await trigger.click();
     const menu = page.getByTestId('menu');
-    await expect(menu.getByRole('menuitem').first()).toBeFocused();
+    await expect.poll(() => focusedRow(page)).toBe('Edit address');
     await page.keyboard.press('c');
-    await expect(menu.getByRole('menuitem', { name: 'Copy address' })).toBeFocused();
+    await expect.poll(() => focusedRow(page)).toBe('Copy address');
 
     await page.keyboard.press('Escape');
     await expect(menu).toBeHidden();

@@ -1,5 +1,5 @@
 import { place } from './placement';
-import type { Placed, Placement } from './placement';
+import type { Placed, Placement, PlacementRect } from './placement';
 
 export interface AnchorOptions {
   /** The element the floating one points at. */
@@ -11,6 +11,25 @@ export interface AnchorOptions {
   /** Distance between the two, in px. */
   gap: () => number;
   onPlaced: (placed: Placed) => void;
+}
+
+/**
+ * What a floating element stays inside: the frame the overlay host sits in
+ * (its nearest positioned ancestor — the host itself has no box of its own),
+ * as much of it as the viewport shows; the viewport without one.
+ */
+function frameOf(host: HTMLElement | undefined): PlacementRect {
+  const viewport = { left: 0, top: 0, width: innerWidth, height: innerHeight };
+  const frame = host?.offsetParent;
+  if (!(frame instanceof HTMLElement) || frame === document.body) {
+    return viewport;
+  }
+  const rect = frame.getBoundingClientRect();
+  const left = Math.max(rect.left, 0);
+  const top = Math.max(rect.top, 0);
+  const width = Math.min(rect.right, innerWidth) - left;
+  const height = Math.min(rect.bottom, innerHeight) - top;
+  return width > 0 && height > 0 ? { left, top, width, height } : viewport;
 }
 
 /**
@@ -30,28 +49,17 @@ export function anchorTo(
     if (!floating) {
       return;
     }
-    const host = options.host();
-    const hostRect = host?.getBoundingClientRect();
-    // `place` answers in viewport space; the floating element is absolute,
-    // so its origin is the padding box of whatever positioned ancestor it
-    // has. That box is also the frame it must stay inside: the host is a
-    // zero-size marker of its own, so it says nothing about the frame.
-    const parent = floating.offsetParent;
-    const origin = parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
     const next = place({
       anchor: options.anchor.getBoundingClientRect(),
       floating: { width: floating.offsetWidth, height: floating.offsetHeight },
-      // The box the floating element lays out in, when it has one; the
-      // host's own frame when that is sized; else the viewport.
-      boundary:
-        origin?.width && origin.height
-          ? origin
-          : hostRect?.width && hostRect.height
-          ? hostRect
-          : { left: 0, top: 0, width: innerWidth, height: innerHeight },
+      boundary: frameOf(options.host()),
       placement: options.placement(),
       gap: options.gap(),
     });
+    // `place` answers in viewport space; the floating element is absolute,
+    // so its origin is the padding box of whatever positioned ancestor it has.
+    const parent = floating.offsetParent;
+    const origin = parent instanceof HTMLElement ? parent.getBoundingClientRect() : undefined;
     options.onPlaced({
       ...next,
       anchorWidth: options.anchor.getBoundingClientRect().width,

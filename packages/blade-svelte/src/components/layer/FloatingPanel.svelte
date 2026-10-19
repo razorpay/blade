@@ -19,7 +19,7 @@
     matchesAnchorWidth?: boolean;
     placement: Placement;
     classes: FloatingClasses;
-    role: 'dialog' | 'menu';
+    role: 'dialog' | 'alertdialog' | 'menu';
     accessibilityLabel?: string;
     /** The id of the element that names the panel (its title). */
     labelledBy?: string;

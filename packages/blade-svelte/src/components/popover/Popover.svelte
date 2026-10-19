@@ -40,8 +40,9 @@
     showBackButton,
     onBackButtonClick,
     backLabel,
-    // `role`: a popover is a dialog; the rest: analytics attributes.
-    role: _role,
+    // A dialog; `alertdialog` for one that asks to confirm. The rest:
+    // analytics attributes.
+    role = 'dialog',
     ...rest
   }: PopoverBehaviourProps & PopoverStyleProps = $props();
 
@@ -74,7 +75,7 @@
     anchor={overlay.trigger.anchor}
     {placement}
     classes={classes.floating}
-    role="dialog"
+    {role}
     {accessibilityLabel}
     labelledBy={overlay.labelledBy}
     describedBy={overlay.describedBy}

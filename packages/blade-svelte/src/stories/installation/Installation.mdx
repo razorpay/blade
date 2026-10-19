@@ -33,8 +33,10 @@ country list from its dial codes and flags, and an app can do the same.
 
 ## 2. Compile the CSS
 
-Make a `uno.config.ts` from Blade's config. The `content.filesystem` entry
-lets UnoCSS see the classes inside the package.
+Make a `uno.config.ts` from Blade's config. UnoCSS reads the classes from
+the modules your build bundles, Blade's included, so only the components
+you import reach the CSS. Blade's class maps are plain `.ts` (`styles.ts`),
+which the default pipeline skips: include them.
 
 ```ts
 // uno.config.ts
@@ -42,16 +44,14 @@ import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
 
 export default {
   ...bladeUnoConfig({ desktop: '62.5rem' }), // the default breakpoint
-  content: {
-    filesystem: [
-      './src/**/*.{svelte,ts}',
-      './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}',
-    ],
-  },
+  content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
 };
 ```
 
-Emit the stylesheet with the UnoCSS plugin your bundler uses. With Vite:
+(`content.filesystem` does not reach the package under the Vite and webpack
+plugins: they skip `node_modules`. It is for `@unocss/postcss`, below.)
+
+Emit the stylesheet with the UnoCSS plugin your bundler uses. With Vite 8:
 
 ```ts
 // vite.config.ts
@@ -100,7 +100,8 @@ rune modules, so these rules must reach into `node_modules`: do not add an
 `@babel/preset-typescript` in place of `ts-loader`.
 
 With another bundler, `@unocss/postcss` and an `@unocss;` directive in a
-stylesheet emit the utilities.
+stylesheet emit the utilities; it scans files, so list Blade's source:
+`content: { filesystem: ['./src/**/*.svelte', './node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}'] }`.
 
 `bladePlugin` is optional: it builds one `blade-icons` font from the icons
 your app imports. Without it, each icon is its SVG, drawn as a mask. Under
@@ -114,6 +115,20 @@ Once, in your app entry:
 import 'virtual:uno.css'; // the compiled utilities (Vite)
 import '@razorpay/blade-svelte/blade.css'; // Blade's resets and fonts (Tasa, Inter)
 ```
+
+Blade sets no page defaults beyond a border reset: the app sets the base
+font (a merchant's, or Blade's Inter), the box model, and form controls
+that inherit the font. Without them, text Blade leaves to inherit (field
+values, amounts) falls back to the browser's serif.
+
+```css
+*, ::before, ::after { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', 'Inter Fallback Arial', Arial, sans-serif; color: hsla(0, 0%, 2%, 1); }
+button, input, textarea, select { font: inherit; color: inherit; }
+```
+
+`packages/examples/svelte-app` in the Blade repo is a working Vite 8 app
+with all of this.
 
 ## 4. Use the components
 

@@ -26,8 +26,11 @@
     leading?: IconSource | Snippet;
     /** Beside the title, 8px from it: a Counter or a Badge. */
     titleSuffix?: Snippet;
-    /** After the title block: a Badge, text, a Link or an action. */
-    trailing?: Snippet;
+    /**
+     * After the title block: a Badge, text, a Link or an action. Receives
+     * `close`, which closes the overlay without a dismissal.
+     */
+    trailing?: Snippet<[{ close: () => void }]>;
     /** A feedback colour's subtle fill behind the header. */
     color?: Intent;
     /** A hairline under the header; Figma's _Drawer Header draws none. @default false */
@@ -67,6 +70,11 @@
   });
 </script>
 
+<!-- The caller's trailing, handed the overlay's close. -->
+{#snippet trailingWithClose()}
+  {@render trailing?.({ close: wiring.close })}
+{/snippet}
+
 {#if hasContent}
   <CardHeader
     {classes}
@@ -74,7 +82,7 @@
     {subtitle}
     prefix={leading}
     suffix={titleSuffix}
-    {trailing}
+    trailing={trailing ? trailingWithClose : undefined}
     titleId={wiring.titleId}
     subtitleId={wiring.subtitleId}
     attach={wiring.dragZone?.attach}

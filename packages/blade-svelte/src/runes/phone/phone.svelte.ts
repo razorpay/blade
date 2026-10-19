@@ -67,6 +67,7 @@ export interface Phone {
  */
 export function createPhone(options: PhoneOptions): Phone {
   const adapters = getAdapters();
+  // `pending`: the pick pending in an app's presentation of the list (below).
   let control: HTMLInputElement | undefined, pending: Cancel | undefined;
 
   const selectable = $derived(

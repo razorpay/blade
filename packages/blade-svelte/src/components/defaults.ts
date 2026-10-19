@@ -8,6 +8,7 @@ import type { AlertStyleProps } from './alert/styles';
 import type { AmountStyleProps } from './amount/styles';
 import type { AnnouncementBannerStyleProps } from './announcement-banner/styles';
 import type { AvatarGroupStyleProps, AvatarStyleProps } from './avatar/styles';
+import type { ActionListStyleProps } from './action-list/styles';
 import type { BadgeStyleProps } from './badge/styles';
 import type { BreadcrumbStyleProps } from './breadcrumb/styles';
 import type { BottomSheetStyleProps } from './bottom-sheet/styles';
@@ -62,6 +63,7 @@ import { INPUT_GROUP_AXES } from './input-group/styles';
 import type { TextInputStyleProps } from './text-input/styles';
 import type { ToastContainerStyleProps, ToastStyleProps } from './toast/styles';
 import type { TooltipStyleProps } from './tooltip/styles';
+import type { TrustBadgeStyleProps } from './trust-badge/styles';
 
 /**
  * Every component a provider can default, by name, with its style props. An
@@ -73,6 +75,7 @@ export interface ComponentStyleProps {
   AnnouncementBanner: AnnouncementBannerStyleProps;
   Avatar: AvatarStyleProps;
   AvatarGroup: AvatarGroupStyleProps;
+  ActionList: ActionListStyleProps;
   Badge: BadgeStyleProps;
   BottomSheet: BottomSheetStyleProps;
   Breadcrumb: BreadcrumbStyleProps;
@@ -111,6 +114,7 @@ export interface ComponentStyleProps {
   Toast: ToastStyleProps;
   ToastContainer: ToastContainerStyleProps;
   Tooltip: TooltipStyleProps;
+  TrustBadge: TrustBadgeStyleProps;
 }
 
 export type ComponentName = keyof ComponentStyleProps;
