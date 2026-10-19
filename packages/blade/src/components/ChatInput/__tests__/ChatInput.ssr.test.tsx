@@ -20,5 +20,16 @@ it('renders the ambient composer on the server', () => {
     </BladeProvider>,
   );
   expect(html).toContain('<textarea');
-  expect(html).toContain('aria-hidden="true"');
+  const container = document.createElement('div');
+  container.innerHTML = html;
+  expect(container.querySelector('span[aria-hidden="true"]')).not.toBeNull();
+
+  const defaultHtml = renderToString(
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <ChatInput />
+    </BladeProvider>,
+  );
+  container.innerHTML = defaultHtml;
+  expect(container.querySelector('input[type="file"][aria-hidden="true"]')).not.toBeNull();
+  expect(container.querySelector('span[aria-hidden="true"]')).toBeNull();
 });

@@ -31,7 +31,8 @@ const ChatInputAmbientBorder = styled.span<{ $colorScheme: 'light' | 'dark' }>`
     -webkit-mask-composite: xor;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
-    animation: ${breathe} 5s ease-in-out infinite;
+    animation: ${breathe} ${chatInputAmbientBorder.duration}ms ${chatInputAmbientBorder.easing}
+      infinite;
   }
 
   @supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
@@ -41,7 +42,12 @@ const ChatInputAmbientBorder = styled.span<{ $colorScheme: 'light' | 'dark' }>`
     }
   }
 
+  &::before {
+    z-index: 1;
+  }
+
   &::after {
+    z-index: 0;
     filter: blur(${chatInputAmbientBorder.glowBlur}px);
   }
 

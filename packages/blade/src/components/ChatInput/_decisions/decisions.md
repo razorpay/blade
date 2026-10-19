@@ -526,3 +526,33 @@ React Native retains its default appearance; the effect is Web-only.
   five-second breathing treatment. Reusing either would require changing the
   approved visual or expanding its abstraction. This contribution deliberately
   keeps the implementation private to ChatInput, with no generic outline export.
+
+### Follow-up review notes
+
+- The stable styled wrapper is intentional: conditionally switching between BaseBox
+  and a styled component remounts the textarea and loses focus/selection. Default
+  visuals stay the same, but generated classes and consumer DOM snapshots change;
+  the changeset calls this out.
+- Focus is intentionally composer-wide, including upload and submit controls,
+  matching Slash's `:focus-within`. It indicates activity anywhere in the composer.
+- The ambient loop retains a component-specific 5000ms duration and ease-in-out.
+  Blade's duration tokens currently stop at 960ms and none of its easing tokens
+  matches ease-in-out. Reusing a delay token as a duration would misrepresent its
+  purpose. These values are centralized in ChatInput tokens pending a future
+  ambient-motion token decision; changing the cadence would break approved parity.
+- Fixed light/dark palette and public API naming still require explicit Blade
+  design sign-off before merge. This PR does not grant or imply that approval.
+
+- The blurred duplicate uses Slash's existing filter-and-mask order. The mask
+  confines the blur to the ring; it is not a six-pixel outward halo. The crisp
+  edge now explicitly stacks above the duplicate. A separate unmasked halo would
+  change the approved treatment and is not introduced by this review fix.
+- Review verification: 21 Web/SSR tests and ESLint passed. Chrome and Playwright
+  WebKit passed the light/dark interaction stories and upload-control focus checks.
+  Screenshots below use reduced motion to capture a stable frame. WebKit is a
+  compatibility check, not a claim of testing Safari: SafariDriver is disabled on
+  this machine, so actual Safari verification remains outstanding.
+
+![Chrome light and dark ambient outline](./ambient-chrome.png)
+
+![Playwright WebKit light and dark ambient outline](./ambient-webkit.png)

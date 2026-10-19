@@ -15,6 +15,9 @@ const chatInputAmbientBorder = {
   width: 1,
   focusWidth: 1.5,
   glowBlur: 6,
+  // Ambient loop, not a transition: Blade duration tokens currently stop at 960ms.
+  duration: 5000,
+  easing: 'ease-in-out',
 } as const;
 
 export {
