@@ -113,12 +113,26 @@ const deprecatedColorTokens = new Set([
 /** A token's variable, falling back to its value: `var(--surface-text-gray-normal, hsla(…))` */
 const themed = (token: string, value: string | number): string => `var(--${token}, ${value})`;
 
-/** Light mode color values of the neutral theme */
+/**
+ * Light mode colour values: Blade's standard theme, Blade React's default and the base
+ * `createTheme` brands, so an app's brand overrides only what branding changes. The tokens it
+ * leaves `transparent` (`surface-background-primary-faint`, `-moderate`, `-strong`,
+ * `surface-background-accent-intense`), which only the neutral theme defines, keep the neutral
+ * theme's value.
+ */
+const lightColors: Record<string, string> = (() => {
+  const neutral = colorsToCSSVariables(bladeNeutralTheme.colors.onLight);
+  return Object.fromEntries(
+    Object.entries(colorsToCSSVariables(bladeTheme.colors.onLight)).map(([token, value]) => [
+      token,
+      value === 'transparent' ? neutral[token] ?? value : value,
+    ]),
+  );
+})();
+
 const getColorRules = (): Rule[] => {
   const colorRules: Rule[] = [];
-  // Only used for token naming: '--surface-background-gray-subtle' → value
-  const colors = colorsToCSSVariables(bladeNeutralTheme.colors.onLight);
-  for (const [cssVariable, value] of Object.entries(colors)) {
+  for (const [cssVariable, value] of Object.entries(lightColors)) {
     // '--surface-background-gray-subtle' → ['surface', 'background', 'gray', 'subtle']
     const [category, colorProperty, ...rest] = cssVariable.replace(/^--/, '').split('-');
     // Skips excluded categories and tokens without a property segment like `transparent`
@@ -142,7 +156,7 @@ const getColorRules = (): Rule[] => {
 
 /** A token's variable over its light mode value, e.g. `color('surface-border-primary-muted')` */
 const color = (token: string): string => {
-  const value = colorsToCSSVariables(bladeNeutralTheme.colors.onLight)[`--${token}`];
+  const value = lightColors[`--${token}`];
   if (!value) throw new Error(`Unknown color token: ${token}`);
   return themed(token, value);
 };
@@ -185,7 +199,7 @@ const colorKeywordRules: Rule[] = [
 // ===== Spacing =====
 
 /** e.g. `p-blade-1` → 2px */
-const spacing = bladePrefixed(bladeNeutralTheme.spacing);
+const spacing = bladePrefixed(bladeTheme.spacing);
 
 /**
  * Tailwind's default spacing scale in px (1 unit = 4px), for spacing and sizing classes.
@@ -883,21 +897,10 @@ const filledFrame = ({
   };
 };
 
-/**
- * Light mode value of a token in Blade's standard theme. The neutral theme pairs its blue primary
- * fill with black primary borders; the primary button's frame takes the standard theme's blue, as
- * Blade React draws it, so its rim and edge match its fill.
- */
-const standardColor = (token: string): string => {
-  const value = colorsToCSSVariables(bladeTheme.colors.onLight)[`--${token}`];
-  if (!value) throw new Error(`Unknown color token: ${token}`);
-  return themed(token, value);
-};
-
 const buttonAccents = {
   primary: {
-    rim: standardColor('interactive-border-primary-default'),
-    edge: standardColor('interactive-border-primary-highlighted'),
+    rim: color('interactive-border-primary-default'),
+    edge: color('interactive-border-primary-highlighted'),
     bevel: 'hsla(0, 0%, 100%, 0.18)',
     ring: FOCUS_PRIMARY,
   },

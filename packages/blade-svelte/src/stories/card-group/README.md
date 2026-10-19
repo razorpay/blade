@@ -73,7 +73,9 @@ This is Blade DSL's Card Group, as `src/` draws it:
 - **Hover:** `surface.background.gray.moderate`.
 - **Focus:** a 4px `interactive.border.primary.faded` ring, inset because the
   group clips.
-- **Disabled:** at 50% on the disabled fill.
+- **Disabled:** like a disabled ActionListItem: no fade; the title and
+  description in the disabled text colour, the chevron in the disabled icon
+  colour. Content you pass as a snippet keeps its own colours.
 - **Sections:** each `CardGroupSection` is a card of its own, with its
   heading (body medium, subtle) 12px above it and sections 24px apart, like
   checkout's net-banking list.

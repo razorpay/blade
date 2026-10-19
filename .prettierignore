@@ -22,3 +22,6 @@ packages/blade/utils.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# generated: blade-svelte's class index (src/test/lint-index.test.ts writes it)
+packages/blade-svelte/src/lint/index.json

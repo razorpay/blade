@@ -33,7 +33,6 @@ describe('@razorpay/blade-svelte/components', () => {
       'ResponsiveModal',
       'SearchableCardGroup',
       'VirtualWindow',
-      'ToastStack',
       // Kept internal: an app passes adapters through BladeProvider, and
       // brings its own class joiner and field parts.
       'provideAdapters',

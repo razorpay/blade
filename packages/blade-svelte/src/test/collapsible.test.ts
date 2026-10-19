@@ -85,9 +85,9 @@ describe('Link variant="button"', () => {
     expect(getByRole('button', { name: 'Act' })).toHaveProperty('disabled', true);
   });
 
-  it("puts the body against the trigger, as Figma's Collapsible (no gap)", () => {
+  it("draws nothing: no width bounds, the body against the trigger (Figma's, no gap)", () => {
     const classes = resolveCollapsible();
-    expect(classes.body.bottom).toBe('');
-    expect(classes.body.top).toBe('');
+    expect(classes.root).toEqual({ bottom: 'flex flex-col', top: 'flex flex-col-reverse' });
+    expect(classes.trigger).toBe('flex');
   });
 });

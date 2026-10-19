@@ -1,5 +1,6 @@
 <script lang="ts">
   import BladeProvider from '../../components/blade-provider/BladeProvider.svelte';
+  import ToastContainer from '../../components/toast/ToastContainer.svelte';
   import type { Toasts } from '../../components/toast/toasts';
 
   interface Props {
@@ -20,7 +21,9 @@
         adapters={{ toasts: innerToasts }}
       >
         <p>Embedded</p>
+        {#if innerToasts}<ToastContainer testID="inner-toasts" />{/if}
       </BladeProvider>
     {/if}
   </div>
+  <ToastContainer testID="outer-toasts" />
 </BladeProvider>

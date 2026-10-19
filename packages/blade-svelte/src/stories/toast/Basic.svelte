@@ -5,12 +5,13 @@
     createCancel,
     showToast,
     Text,
-    type ToastStackStyleProps,
+    ToastContainer,
+    type ToastContainerStyleProps,
     type ToastStyleProps,
   } from '../../index';
 
   interface Props {
-    args: ToastStyleProps & ToastStackStyleProps & { duration?: number };
+    args: ToastStyleProps & ToastContainerStyleProps & { duration?: number };
   }
 
   let { args }: Props = $props();
@@ -48,9 +49,10 @@
 <div
   class="relative flex h-80 w-full max-w-96 flex-col items-start gap-3 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted p-4"
 >
-  <!-- BladeProvider renders the toasts, placed by its defaults. -->
-  <BladeProvider defaults={{ ToastStack: { placement: args.placement } }} toastsLabel="Notifications">
+  <BladeProvider>
     <Button type="button" onClick={show}>Show a toast</Button>
     <Text size="small" color="muted">last exit: {last}</Text>
+    <!-- Rendered once, inside the provider: it shows what showToast asks for. -->
+    <ToastContainer placement={args.placement} />
   </BladeProvider>
 </div>

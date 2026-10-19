@@ -207,7 +207,7 @@ export interface ToastContent extends Partial<AnalyticsAttributes> {
   content: string;
   /** Before the content: an icon, or an image. @default the colour's glyph */
   leading?: ToastLeading;
-  /** ms before it goes. @default the stack's (`defaults.ToastStack.duration`), 4000 */
+  /** ms before it goes. @default the stack's (`defaults.ToastContainer.duration`), 4000 */
   duration?: number;
   /** `false`: it stays until dismissed. @default true */
   autoDismiss?: boolean;
@@ -237,8 +237,8 @@ export interface ShowToastControl {
 /**
  * A queue of toasts, as the app sees it: what `showToast` adds to. Pass
  * one as BladeProvider's `adapters.toasts` — Blade's (`createToasts()`),
- * which the provider renders, or the app's own `{ showToast }`, which shows
- * them its own way.
+ * which a ToastContainer shows, or the app's own `{ showToast }`, which
+ * shows them its own way.
  */
 export interface Toasts<S extends object> {
   /** Shows a toast; resolves with why it left. Never rejects. */
@@ -248,12 +248,12 @@ export interface Toasts<S extends object> {
   ): Promise<ToastDismissReason>;
 }
 
-/** What a ToastStack renders a Blade queue through. Internal. */
+/** What a ToastContainer renders a Blade queue through. Internal. */
 export interface ToastQueue<S extends object> {
   /** The queue's toasts, from the first `showToast` on: they wait for a stack. */
   readonly model: ToastsModel<ShowToastOptions<S>>;
   /**
-   * A ToastStack mounted over the queue: the first brings its defaults and
+   * A ToastContainer mounted over the queue: the first brings its defaults and
    * starts the timers; a later one shares the model.
    */
   attach(limits: { capacity: number; duration: number }): ToastsModel<ShowToastOptions<S>>;
@@ -271,7 +271,7 @@ export function queueOf<S extends object>(
   return toasts ? (queues.get(toasts) as ToastQueue<S> | undefined) : undefined;
 }
 
-/** A queue of toasts, rendered by the ToastStacks that attach to it. */
+/** A queue of toasts, rendered by the ToastContainers that attach to it. */
 export function createToastQueue<S extends object>(): Toasts<S> {
   // Up front: a toast shown before any stack mounts waits, its timer held,
   // and shows once one does. Blade: 4s, until a stack brings its own.

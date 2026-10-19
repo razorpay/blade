@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Link } from '../../index';
-  import { Collapsible, CollapsibleChevron } from '../../components/collapsible';
+  import { Collapsible, CollapsibleChevron, Link } from '../../index';
   import Breakdown from './Breakdown.svelte';
 
   interface Props {

@@ -135,25 +135,27 @@ const SIZE: Record<
 // `interactive.border.gray.disabled`. The dot is
 // `interactive.icon.on-primary.normal`. The hidden input is the `peer`, so
 // hovering the label (which hovers the labelled control) and keyboard focus
-// restyle the circle. Colours move at Blade's xquick/exit, hover in at
-// 2xquick/standard. The dot stays mounted: picked, it scales in at
+// restyle the circle. The dot stays mounted: picked, it scales in at
 // xquick/entrance; unpicked, it only fades at xquick/exit and snaps small
-// once invisible — its size holds while it leaves.
+// once invisible — its size holds while it leaves. The circle's colours move
+// with it, on the same curves (the look moved to sets the easing), hover
+// included: the white dot fades out over the fill it fades with, not over a
+// circle already emptied.
 const PICKED_DISABLED =
   'peer-disabled:bg-interactive-primary-disabled peer-disabled:border-transparent';
 const UNPICKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
 const DOT = 'rounded-max bg-current';
 const INDICATOR = {
   root:
-    'relative flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
+    'relative flex shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick motion-reduce:transition-none peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
   look: {
     default: {
-      picked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${PICKED_DISABLED}`,
-      unpicked: `border-interactive-gray-highlighted bg-transparent peer-hover:bg-interactive-gray-faded ${UNPICKED_DISABLED}`,
+      picked: `ease-entrance border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${PICKED_DISABLED}`,
+      unpicked: `ease-exit border-interactive-gray-highlighted bg-transparent peer-hover:bg-interactive-gray-faded ${UNPICKED_DISABLED}`,
     },
     invalid: {
-      picked: `border-interactive-negative-default bg-interactive-negative-default ${PICKED_DISABLED}`,
-      unpicked: `border-interactive-negative-default bg-transparent ${UNPICKED_DISABLED}`,
+      picked: `ease-entrance border-interactive-negative-default bg-interactive-negative-default ${PICKED_DISABLED}`,
+      unpicked: `ease-exit border-interactive-negative-default bg-transparent ${UNPICKED_DISABLED}`,
     },
   },
   dot: {

@@ -1,9 +1,16 @@
 # Toast
 
 `src/components/toast/`: `toasts.ts` (`showToast`, `createToasts`,
-`getToasts`), `ToastStack.svelte` (the stack, rendered by BladeProvider; not
-exported) and `Toast.svelte` (one toast). The queue and the model are runes:
+`getToasts`), `ToastContainer.svelte` (Blade's ToastContainer: the stack,
+rendered once by the app) and `Toast.svelte` (one toast, not exported). The queue and the model are runes:
 `createToastQueue` and `createToastsModel` in `src/runes/toast/`.
+
+```svelte
+<BladeProvider>
+  <App />
+  <ToastContainer />
+</BladeProvider>
+```
 
 ```ts
 const request = createCancel();
@@ -23,7 +30,7 @@ const reason = await showToast(
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `content`              | What it says. Or pass a string to `showToast`                                                                                                                                                                 |
 | `color`                | Style axis (the shared intents); `negative` is a `role="alert"` (assertive), the rest `status` (polite)                                                                                                       |
-| `duration`             | ms; default the stack's (`defaults.ToastStack.duration`), 4000                                                                                                                                                |
+| `duration`             | ms; default the stack's (`defaults.ToastContainer.duration`), 4000                                                                                                                                            |
 | `autoDismiss`          | `false`: it stays until dismissed                                                                                                                                                                             |
 | `leading`              | Before the content, as data: an icon (`IconSource`) in place of the colour's default glyph, or an image (`{ image, alt? }`, a bank's logo, 20px), as Figma's leading item is an icon or an asset. Without it, the colour's glyph |
 | `action`               | One inline button (`{ text, onClick }`); an `onClick` returning a promise shows it busy until it settles (a rejection goes to `adapters.reportError`). Pressing it does not dismiss — resolve `cancelled` |
@@ -43,15 +50,18 @@ it at all.
 type is just `{ showToast }`. A queue of the app's own (`createToasts()`)
 goes in as BladeProvider's `adapters.toasts`, and the app calls its
 `showToast`; an object of the app's own with a `showToast` goes in the same
-way, and BladeProvider renders no stack for it (the app shows its toasts its
-own way). `getToasts()` reads the nearest provider's, else the page's.
-BladeProvider renders the stack: its `toastsLabel` names the
-region and `defaults={{ ToastStack: { placement } }}` places it. A nested
-provider with a queue of its own renders its own stack, in the enclosing
-overlay host; one without shares the enclosing stack, so nothing renders
-twice. The stack brings its numbers (capacity 3, duration 4000). A toast
-shown before any stack mounts waits, its timer held, and shows once one
-does. Hover or focus inside the stack holds every timer.
+way, and a ToastContainer renders nothing for it (the app shows its toasts
+its own way). `getToasts()` reads the nearest provider's, else the page's.
+The app renders a ToastContainer once, inside BladeProvider, as Blade
+React's: it shows the queue `getToasts()` finds when it mounts, its
+`accessibilityLabel` (default `Notifications`) names the region and
+`placement` (or `defaults={{ ToastContainer: { placement } }}`) places it.
+Toasts that should land on a nested provider's own queue need a
+ToastContainer under that provider; two containers on one queue show it
+twice. Without a ToastContainer, no toast code ships: BladeProvider does
+not import it. The stack brings its numbers (capacity 3, duration 4000). A
+toast shown before any container mounts waits, its timer held, and shows
+once one does. Hover or focus inside the stack holds every timer.
 
 The motion is Blade's. A toast slides in from the stack's edge over 480ms
 (entrance curve) and out over 280ms (exit curve), fading both ways. The
@@ -61,7 +71,7 @@ front one — each peeking 12px, 5% smaller, cropped to the front toast's
 height, three deep — until a hover expands them; on a phone the stack
 collapses past one toast and a tap expands it. Either also holds the timers.
 Every move takes 480ms on the standard curve (`layoutToastStack` in `runes/toast/stack-layout.ts`
-does the maths; the numbers are `resolveToastStack`'s). Toasts render into the overlay host — over open modals — but push no
+does the maths; the numbers are `resolveToastContainer`'s). Toasts render into the overlay host — over open modals — but push no
 layer: nothing goes inert, focus stays where it is, Escape is not theirs.
 
 ## Why `leading` is an option

@@ -72,9 +72,7 @@
   </span>
   {#if collapsible.isExpanded}
     <CollapsePanel id={collapsible.bodyId} duration={280} scrollIntoView={false}>
-      <div class={classes.body[direction]}>
-        {@render content()}
-      </div>
+      {@render content()}
     </CollapsePanel>
   {/if}
 </div>

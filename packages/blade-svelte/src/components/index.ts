@@ -13,6 +13,8 @@ export { default as Carousel } from './carousel/Carousel.svelte';
 export { default as Checkbox } from './checkbox/Checkbox.svelte';
 export { default as Chip } from './chip/Chip.svelte';
 export { default as ChipGroup } from './chip/ChipGroup.svelte';
+export { default as Collapsible } from './collapsible/Collapsible.svelte';
+export { default as CollapsibleChevron } from './collapsible/CollapsibleChevron.svelte';
 export { default as Counter } from './counter/Counter.svelte';
 export { default as CounterInput } from './counter-input/CounterInput.svelte';
 // Card and its parts, as Blade React spells them; each part's classes are
@@ -33,7 +35,6 @@ export type {
 // The overlays: a component per shape over the same runes (`createOverlay`).
 // Modal, BottomSheet and Drawer render their parts as children, so their
 // parts load only when used.
-// Not exported yet: Collapsible.
 export { Modal, MODAL_AXES } from './modal';
 export type {
   ModalStyleProps,
@@ -129,6 +130,8 @@ export { default as TabItem } from './tabs/TabItem.svelte';
 export { default as TabPanel } from './tabs/TabPanel.svelte';
 export { default as TextArea } from './text-area/TextArea.svelte';
 export { default as Tooltip } from './tooltip/Tooltip.svelte';
+// Blade's toasts: the app renders a ToastContainer, `showToast` fills it.
+export { default as ToastContainer } from './toast/ToastContainer.svelte';
 export { showToast, createToasts } from './toast/toasts';
 // A withdrawal an app hands Blade (`showToast`'s `cancelled`), or Blade hands it.
 export { createCancel } from '../runes/base/cancel';
@@ -149,8 +152,9 @@ export type { AxisValue, StyleAxes } from '../axes';
 // Back: an app's back handler asks the open overlays first (`back()`).
 export { back } from '../runes/layer/layers';
 // The seams an app drives Blade through, all BladeProvider adapters
-// (BladeProvider renders the overlay host and the toasts):
-// - `adapters.toasts` is the toast queue (`createToasts()`, or the app's own);
+// (BladeProvider renders the overlay host):
+// - `adapters.toasts` is the toast queue a ToastContainer shows
+//   (`createToasts()`, or the app's own);
 // - `adapters.form` is the app's form around the fields (`FormAdapter`);
 // - `adapters.presentDropdown` may show a library dropdown its own way;
 // - `adapters.vibrate`, `adapters.announce`, `adapters.locale`.
@@ -284,12 +288,13 @@ export { INPUT_GROUP_AXES } from './input-group/styles';
 export type {
   ToastClasses,
   ToastCloseIconSnippet,
-  ToastStackClasses,
-  ToastStackStyleResolver,
+  ToastContainerClasses,
+  ToastContainerStyleResolver,
   ToastStyleResolver,
 } from './toast/styles';
-export { TOAST_AXES, TOAST_STACK_AXES } from './toast';
-export type { ToastStackStyleProps, ToastStyleProps } from './toast';
+export { TOAST_AXES, TOAST_CONTAINER_AXES } from './toast';
+export type { ToastContainerStyleProps, ToastStyleProps } from './toast';
+export type { CollapsibleClasses } from './collapsible/styles';
 export type { TooltipClasses, TooltipStyleResolver } from './tooltip/styles';
 export type { TooltipStyleProps } from './tooltip';
 export type { AmountClasses, AmountStyleResolver } from './amount/styles';

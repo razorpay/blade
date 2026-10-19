@@ -88,7 +88,9 @@
     )
   );
 
-  const chevron = $derived(cx(layout.chevron, classes.chevron));
+  const chevron = $derived(
+    cx(isDisabled ? layout.chevronDisabled : layout.chevron, classes.chevron)
+  );
 
   const analytics = $derived(analyticsAttributes(rest));
   // As Link: the app's router may take a plain click on an internal href.
@@ -119,7 +121,7 @@
       {#if leading}<span class={layout.leading}>{@render edge(leading)}</span>{/if}
       <span class={layout.text}>
         <span class={layout.title}>{title}</span>
-        {#if description}<span class={layout.description}>{description}</span>{/if}
+        {#if description}<span class={isDisabled ? layout.descriptionDisabled : layout.description}>{description}</span>{/if}
       </span>
       {#if trailing}<span class={layout.trailing}>{@render edge(trailing)}</span>{/if}
     </span>

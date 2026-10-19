@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Button, Link, Text } from '../../index';
-  import { Collapsible, CollapsibleChevron } from '../../components/collapsible';
+  import { Button, Collapsible, CollapsibleChevron, Link, Text } from '../../index';
   import Breakdown from './Breakdown.svelte';
 
   let isExpanded = $state(false);

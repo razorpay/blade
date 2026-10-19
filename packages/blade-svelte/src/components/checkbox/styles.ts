@@ -61,25 +61,27 @@ export interface CheckboxStyleProps {
 // `interactive.icon.on-primary.normal`, `interactive.icon.static-white.
 // disabled` when disabled — set on the box, and the marks fill with
 // `currentColor`. The hidden input is the `peer`, so hovering the label
-// (which hovers the labelled control) and keyboard focus restyle the box;
-// hover in moves at 2xquick/standard, the rest is instant, as in Blade. The
-// marks stay mounted and scale between .6 and 1 while they fade, xquick —
-// entrance easing in, exit easing out. Focus is Blade's 4px outline, 1px
-// off the box.
+// (which hovers the labelled control) and keyboard focus restyle the box.
+// The marks stay mounted and scale between .6 and 1 while they fade, xquick —
+// entrance easing in, exit easing out — and the box's colours move with
+// them, on the same curves (the look moved to sets the easing), hover
+// included: the white tick fades out over the fill it fades with, not over
+// a box already emptied (Blade's box changes at once, so its tick cuts
+// out). Focus is Blade's 4px outline, 1px off the box.
 const CHECKED_DISABLED =
   'peer-disabled:bg-interactive-primary-disabled peer-disabled:border-transparent';
 const UNCHECKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
 const INDICATOR = {
   root:
-    'relative flex shrink-0 items-center justify-center rounded-xsmall border-solid icon-interactive-on-primary-normal peer-disabled:icon-interactive-static-white-disabled peer-hover:transition-colors peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
+    'relative flex shrink-0 items-center justify-center rounded-xsmall border-solid icon-interactive-on-primary-normal peer-disabled:icon-interactive-static-white-disabled transition-colors duration-xquick motion-reduce:transition-none peer-focus-visible:outline-solid peer-focus-visible:outline-4 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-surface-primary-muted',
   look: {
     default: {
-      checked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${CHECKED_DISABLED}`,
-      unchecked: `border-interactive-gray-highlighted bg-transparent peer-hover:bg-interactive-gray-faded ${UNCHECKED_DISABLED}`,
+      checked: `ease-entrance border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${CHECKED_DISABLED}`,
+      unchecked: `ease-exit border-interactive-gray-highlighted bg-transparent peer-hover:bg-interactive-gray-faded ${UNCHECKED_DISABLED}`,
     },
     invalid: {
-      checked: `border-interactive-negative-default bg-interactive-negative-default ${CHECKED_DISABLED}`,
-      unchecked: `border-interactive-negative-default bg-transparent ${UNCHECKED_DISABLED}`,
+      checked: `ease-entrance border-interactive-negative-default bg-interactive-negative-default ${CHECKED_DISABLED}`,
+      unchecked: `ease-exit border-interactive-negative-default bg-transparent ${UNCHECKED_DISABLED}`,
     },
   },
   mark: {

@@ -100,7 +100,7 @@ const SIZE: Record<
 // inner fill and border (hover a step up), and the text and icon.
 const TONE: Record<
   ChipTone,
-  Record<ChipColor, { frame: string; inner: string; content: string }>
+  Record<ChipColor, { frame: string; inner: string; content: string; icon: string }>
 > = {
   unchecked: {
     primary: uncheckedLook(),
@@ -124,15 +124,18 @@ const TONE: Record<
   },
 };
 
-function uncheckedLook(): { frame: string; inner: string; content: string } {
+function uncheckedLook(): { frame: string; inner: string; content: string; icon: string } {
   return {
     frame: 'border-interactive-gray-faded',
     inner: 'border-transparent bg-surface-gray-intense hover:bg-interactive-gray-faded',
-    content: 'text-interactive-gray-subtle icon-interactive-gray-subtle',
+    content: 'text-interactive-gray-subtle',
+    icon: 'icon-interactive-gray-subtle',
   };
 }
 
-function checkedLook(color: ChipColor): { frame: string; inner: string; content: string } {
+function checkedLook(
+  color: ChipColor,
+): { frame: string; inner: string; content: string; icon: string } {
   const frame = {
     primary: 'border-interactive-primary-default',
     positive: 'border-interactive-positive-default',
@@ -147,22 +150,31 @@ function checkedLook(color: ChipColor): { frame: string; inner: string; content:
       'border-interactive-negative-default bg-interactive-negative-faded hover:bg-interactive-negative-faded-highlighted',
   }[color];
   const content = {
-    primary: 'text-interactive-primary-normal icon-interactive-primary-normal',
-    positive: 'text-interactive-positive-normal icon-interactive-positive-normal',
-    negative: 'text-interactive-negative-normal icon-interactive-negative-normal',
+    primary: 'text-interactive-primary-normal',
+    positive: 'text-interactive-positive-normal',
+    negative: 'text-interactive-negative-normal',
   }[color];
-  return { frame, inner, content };
+  // On the icon's own element: `icon-*` and `text-*` both set `color`.
+  const icon = {
+    primary: 'icon-interactive-primary-normal',
+    positive: 'icon-interactive-positive-normal',
+    negative: 'icon-interactive-negative-normal',
+  }[color];
+  return { frame, inner, content, icon };
 }
 
-function uncheckedDisabledLook(): { frame: string; inner: string; content: string } {
+function uncheckedDisabledLook(): { frame: string; inner: string; content: string; icon: string } {
   return {
     frame: 'border-interactive-gray-disabled',
     inner: 'pointer-events-none border-transparent bg-transparent',
-    content: 'text-interactive-gray-disabled icon-interactive-gray-disabled',
+    content: 'text-interactive-gray-disabled',
+    icon: 'icon-interactive-gray-disabled',
   };
 }
 
-function checkedDisabledLook(color: ChipColor): { frame: string; inner: string; content: string } {
+function checkedDisabledLook(
+  color: ChipColor,
+): { frame: string; inner: string; content: string; icon: string } {
   const frame = {
     primary: 'border-interactive-primary-disabled',
     positive: 'border-interactive-positive-disabled',
@@ -179,7 +191,8 @@ function checkedDisabledLook(color: ChipColor): { frame: string; inner: string; 
   return {
     frame,
     inner,
-    content: 'text-interactive-gray-disabled icon-interactive-gray-disabled',
+    content: 'text-interactive-gray-disabled',
+    icon: 'icon-interactive-gray-disabled',
   };
 }
 
@@ -198,7 +211,7 @@ export function resolveChip(size: ChipSize, tone: ChipTone, color: ChipColor): C
     frame: `flex w-full items-center justify-center text-left border-thin border-solid bg-transparent [transition-property:transform] duration-xquick ease-standard max-w-[280px] d:max-w-[420px] peer-focus-visible:outline-solid peer-focus-visible:outline-thicker peer-focus-visible:outline-offset-2 peer-focus-visible:outline-interactive-primary-default ${look.radius} ${colors.frame}`,
     framePressed: 'scale-[.92]',
     inner: `flex w-full flex-row items-center justify-center overflow-hidden whitespace-nowrap border-solid transition-colors duration-xquick ease-standard ${look.inner} ${colors.inner} ${colors.content}`,
-    icon: 'flex',
+    icon: `flex ${colors.icon}`,
     // The label container's 4px each side: the gap after a leading icon or
     // slot, and the text's own inset when there is none.
     text: `truncate px-1 ${look.text}`,

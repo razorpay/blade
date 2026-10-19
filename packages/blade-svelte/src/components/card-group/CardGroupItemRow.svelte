@@ -110,7 +110,7 @@
       <span class={layout.text}>
         <span class={layout.title}>{title}</span>
         {#if description}
-          <span class={layout.description}>{description}</span>
+          <span class={state.isDisabled ? layout.descriptionDisabled : layout.description}>{description}</span>
         {/if}
       </span>
       {#if trailing}

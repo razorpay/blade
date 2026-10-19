@@ -144,13 +144,15 @@ Components are mobile first. Their desktop styles are `d:` classes, and
 
 ### Overlays and toasts
 
-`BladeProvider` hosts the overlays and the toasts: put it inside the frame
-overlays must stay within (a positioned element).
+`BladeProvider` hosts the overlays: put it inside the frame overlays must
+stay within (a positioned element). Render a `ToastContainer` once inside it
+if the app shows toasts.
 
 ```svelte
 <div class="relative h-full">
-  <BladeProvider toastsLabel="Notifications">
+  <BladeProvider>
     <App />
+    <ToastContainer />
   </BladeProvider>
 </div>
 ```
@@ -158,8 +160,7 @@ overlays must stay within (a positioned element).
 Modals mount in its surfaces box, under its one scrim, and floating
 overlays (menus, popovers, tooltips, toasts) append after that box, so a
 popover opened inside a modal paints above the modal. Drive them from
-outside through `adapters`, read when the provider mounts: `layers`
-(`createLayers()`, whose `back()` your router calls) and `toasts`
+outside: `back()`, which your router calls, and `adapters.toasts`
 (`createToasts()`, or the page's `showToast`).
 
 ## Theming

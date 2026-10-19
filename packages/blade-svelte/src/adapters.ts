@@ -49,10 +49,9 @@ export interface BladeAdapters {
   navigate?: (href: string, event: MouseEvent) => boolean;
   /**
    * The toast queue under this provider: a Blade queue (`createToasts()`),
-   * which BladeProvider renders, or the app's own `{ showToast }`, which
-   * shows toasts its own way. A nested provider with a Blade queue renders
-   * its own stack, in the enclosing overlay host; one without shares the
-   * enclosing queue and stack. Read when the provider mounts.
+   * which a ToastContainer under it shows, or the app's own
+   * `{ showToast }`, which shows toasts its own way. Read when the
+   * ToastContainer mounts.
    * @default the page's (`showToast`)
    */
   toasts?: Toasts;

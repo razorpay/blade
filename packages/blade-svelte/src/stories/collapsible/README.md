@@ -27,3 +27,7 @@ for the CollapsibleLink look.
 
 The body sits right against the trigger, as Blade DSL's Collapsible in Figma
 draws it (React adds 12px): spacing inside the body is the body's own.
+
+Collapsible is a pure disclosure: it draws nothing, so a Button trigger keeps
+its own width and the body takes the column's. React's body width bounds are
+the caller's `class`.

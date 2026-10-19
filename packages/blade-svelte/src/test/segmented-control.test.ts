@@ -63,9 +63,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     });
     expect(all.getAllByRole('radio').every((radio) => input(radio).disabled)).toBe(true);
     // Blade fades nothing: each segment takes the disabled text colour.
-    expect(segment(all.getByTestId('card')).className).toContain(
-      'peer-disabled:text-interactive-gray-disabled',
-    );
+    expect(segment(all.getByTestId('card')).className).toContain('text-interactive-gray-disabled!');
     all.unmount();
 
     const { getByTestId } = render(SegmentedControlHarness, {
@@ -73,9 +71,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     });
     expect(input(getByTestId('card')).disabled).toBe(true);
     expect(input(getByTestId('upi')).disabled).toBe(false);
-    expect(segment(getByTestId('card')).className).toContain(
-      'peer-disabled:text-interactive-gray-disabled',
-    );
+    expect(segment(getByTestId('card')).className).toContain('text-interactive-gray-disabled!');
   });
 
   it('an icon sits before the label; alone, it names the segment', () => {

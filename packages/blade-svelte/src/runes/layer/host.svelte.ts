@@ -2,8 +2,6 @@ import { tick } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { defineContext } from '../context';
 import { createNodeRef } from '../dom/node.svelte';
-import { queueOf } from '../toast/toasts.svelte';
-import type { ToastQueue, Toasts } from '../toast/toasts.svelte';
 import { getLayers } from './layers';
 
 export interface OverlayHost {
@@ -80,36 +78,14 @@ export function createOverlayHost(options: { isolates: boolean }): OverlayHost {
   };
 }
 
-/** What the nearest provider above renders: the toast queue its stack shows, if any. */
-interface Hosted {
-  toasts: unknown;
-}
-
-const HOSTED = defineContext<Hosted>('blade-overlay-hosted');
-
-/** What a BladeProvider renders after its content. */
-export interface OverlayHostClaim<S extends object> {
-  /** The overlay host: no provider above, so this one hosts the page's overlays. */
-  readonly host: boolean;
-  /**
-   * The queue its toast stack renders: a Blade queue (`createToasts()`) no
-   * provider above renders. Undefined for none — the enclosing stack shows
-   * it, or the app's own `Toasts` shows its toasts its own way.
-   */
-  readonly toasts: ToastQueue<S> | undefined;
-}
+const HOSTED = defineContext<true>('blade-overlay-hosted');
 
 /**
- * What a BladeProvider renders after its content: the overlay host when it
- * is the outermost provider, and a toast stack for a Blade queue no
- * provider above renders — so a nested provider with toasts of its own
- * shows them, in the enclosing host, and none shows a queue twice. Call
- * during component init.
+ * Whether this BladeProvider renders the overlay host: it does when no
+ * provider above does. Call during component init.
  */
-export function claimOverlayHost<S extends object>(toasts: Toasts<S>): OverlayHostClaim<S> {
-  const above = HOSTED.get();
-  const queue = queueOf(toasts);
-  const renders = queue !== undefined && above?.toasts !== toasts;
-  HOSTED.set({ toasts: renders ? toasts : above?.toasts });
-  return { host: above === undefined, toasts: renders ? queue : undefined };
+export function claimOverlayHost(): boolean {
+  const isHost = HOSTED.get() === undefined;
+  HOSTED.set(true);
+  return isHost;
 }

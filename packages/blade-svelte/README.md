@@ -65,6 +65,7 @@ npm install @razorpay/blade-svelte svelte unocss
 | `@razorpay/blade-svelte/icons`                            | Blade's icons, as data (`IconSource`) |
 | `@razorpay/blade-svelte/configs/uno`                      | The UnoCSS preset (`bladeUnoConfig`)  |
 | `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                  |
+| `@razorpay/blade-svelte/configs/lint`                     | Class lint rules, for oxlint or ESLint |
 | `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles             |
 
 ### cx: compile Blade's CSS in your app
@@ -181,8 +182,9 @@ fixed. For a brand colour on primary buttons, blade-core's
 five fill and frame variables.
 
 blade-core's `theme.css` (below) sets every variable to the _standard_ theme's
-values, where the cx components fall back to the _neutral_ theme's (black
-primary borders and text): import it only if you want the standard theme.
+values, which the cx components already fall back to: there is no need to
+import it. (It also sets the four tokens the standard theme leaves
+`transparent`, which the components fall back to the neutral theme's for.)
 
 ### Overlays
 
@@ -196,12 +198,12 @@ owner's `isOpen`), and all but Menu take `initialFocusRef`. There is no base com
 that switches by screen, say) composes these.
 
 BladeProvider renders the overlay host (the one scrim, the box modals
-mount in, and a polite live region) and the toasts after its content, in
-the nearest positioned ancestor: put it inside the frame overlays must stay
-within. The outermost provider hosts every overlay on the page; a nested
-provider with a toast queue of its own (`adapters.toasts`, `createToasts()`,
-read when it mounts) renders its stack in that host. Nothing renders twice.
-An app's back handler asks the open overlays first: `back()` returns
+mount in, and a polite live region) after its content, in the nearest
+positioned ancestor: put it inside the frame overlays must stay within. The
+outermost provider hosts every overlay on the page. Toasts are the app's to
+render, as in React: a `<ToastContainer />` inside the provider shows its
+queue (`adapters.toasts`, `createToasts()`, else the page's) and moves its
+toasts into the host; without one, no toast code ships. An app's back handler asks the open overlays first: `back()` returns
 whether one handled it. Toasts are data: `showToast(toast, { cancelled })` returns a promise of
 why the toast left, and `cancelled` resolving dismisses it. `cancelled` is a
 plain `Promise<void>`, never an `AbortSignal` (older engines have none, and
@@ -218,7 +220,7 @@ top right.
 
 BladeProvider's `adapters` are the app's services. They are live: a
 component reads them through getters, so an adapter the app swaps reaches
-what is already mounted (`toasts` is read at mount). An
+what is already mounted (`toasts` is read when a ToastContainer mounts). An
 adapter left out is the enclosing provider's; `null` unsets it for the
 subtree.
 
@@ -229,7 +231,7 @@ subtree.
 | `vibrate`          | Told what a press meant: `press`, `select` (Radio, Chip), `toggle` (Checkbox, Switch), `warning`              |
 | `announce`         | Says a message politely; defaults to the host's live region (a Button starting and stopping loading)          |
 | `locale`           | Amount's locale; i18nify's global state is the fallback                                                       |
-| `toasts`           | The toast queue: Blade's (`createToasts()`), which the provider renders, or the app's own `{ showToast }`     |
+| `toasts`           | The toast queue: Blade's (`createToasts()`), which a ToastContainer shows, or the app's own `{ showToast }`   |
 | `form`             | The app's form (`FormAdapter`), below                                                                         |
 | `presentDropdown`  | Shows a library dropdown (PhoneNumberInput's countries) the app's own way                                     |
 | `readOTP`          | Reads a one-time code for OTPInput (an SMS retriever, WebOTP); cancelled on unmount, disable or a user edit; asked again when the owner resets `value` to `''` |
@@ -248,7 +250,7 @@ the whole runes layer:
 
 | The app's                                                                                                      | What Blade gives it                                                                                                                                                  |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host and the toasts BladeProvider renders (`adapters.toasts`), back (`back()`), and `presentDropdown`    to show a library dropdown its own way    |
+| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host BladeProvider renders, `ToastContainer` (`adapters.toasts`), back (`back()`), and `presentDropdown` to show a library dropdown its own way      |
 | A form                                                                                                         | `adapters.form` (`FormAdapter`): what fields register with (a `FieldRecord` with its `element()` and `reveal()`) and show errors from, and what submit buttons submit |
 | Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose; provider defaults extend to them (`ComponentStyleProps` is an interface)                                                                     |
 
@@ -268,6 +270,46 @@ Modal, BottomSheet and Drawer compose their content from Blade React's parts
   <ModalFooter><Button color="negative">Remove</Button></ModalFooter>
 </Modal>
 ```
+
+### Lint the classes you write
+
+`@razorpay/blade-svelte/configs/lint` is an ESLint-shaped plugin, `blade`, that
+oxlint loads through `jsPlugins` and ESLint through its flat config:
+
+```jsonc
+// .oxlintrc.json
+"jsPlugins": ["@razorpay/blade-svelte/configs/lint"],
+"rules": {
+  "blade/no-conflicting-classes": "error",
+  "blade/no-interpolated-classes": "error",
+  "blade/no-unknown-blade-class": "error",
+  "blade/no-restyle": "error",
+  "blade/prefer-token": "warn"
+}
+```
+
+| Rule                      | Flags                                                                                                     |
+| ------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `no-conflicting-classes`  | Two classes in one list that set one property (`px-2 px-4`): `cx` joins, it doesn't merge                  |
+| `no-interpolated-classes` | A class built from pieces (`bg-${tone}`, `class="bg-{tone}"`), which no generator sees                     |
+| `no-unknown-blade-class`  | A class in Blade's vocabulary that Blade doesn't define (`bg-surface-gray-mutd`); an app's own are left be |
+| `prefer-token`            | An arbitrary length that is a spacing token (`p-[16px]` → `p-blade-5`)                                    |
+| `no-restyle`              | A Blade component's `class` that restyles it rather than placing it                                       |
+
+`no-restyle` is what `styleOverride` was: a Blade component's `class` places
+it — margin, size, its part in a flex or grid parent, position, `hidden` —
+or repoints a token (`[--interactive-background-primary-default:…]`); its
+look is its props. Typography also takes its alignment, and Skeleton its
+radius. An app widens it per component with class globs:
+`["error", { "allow": { "Button": ["rounded-*"] } }]`. Every rule takes
+`callees` (class calls, default `cx`, `cn`, `clsx`, `classNames`,
+`twMerge`) and `sources` (where a tag counts as Blade's, default
+`@razorpay/blade-svelte/components`).
+
+oxlint hands a plugin only a `.svelte` file's `<script>`, so the rules read
+the markup from disk; their reports sit on the script's first line with the
+real `[line:col]` in the message. A component with no `<script>` never
+reaches a plugin: `lintClasses(text, filename)` lints one directly.
 
 ## 📝 License
 

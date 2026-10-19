@@ -12,7 +12,7 @@ import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, InfoIcon } from '
  * The parts of a toast. Enter/exit ride the root's `data-state="open" |
  * "closed"` as CSS transitions, as the modal's do; a leaving toast stays
  * mounted for its longest computed transition. The edge it slides from is
- * the stack's (`ToastStackClasses.slide`).
+ * the stack's (`ToastContainerClasses.slide`).
  */
 export interface ToastClasses {
   /** One per toast. */
@@ -38,7 +38,7 @@ export interface ToastClasses {
 /** The dismiss button's icon; `ToastCloseIcon.svelte` is the component. */
 export type ToastCloseIconSnippet<P> = Snippet<[P]>;
 
-export interface ToastStackClasses {
+export interface ToastContainerClasses {
   /**
    * The box at the host's edge the toasts are placed in, with no height of
    * its own; each toast sits in a `wrapper` moved by the stack's
@@ -65,14 +65,14 @@ export interface ToastStackClasses {
 }
 
 export type ToastStyleResolver<P> = (props: P) => ToastClasses;
-export type ToastStackStyleResolver<P> = (props: P) => ToastStackClasses;
+export type ToastContainerStyleResolver<P> = (props: P) => ToastContainerClasses;
 
 /** The blade taxonomy as data. */
 export const TOAST_AXES = {
   color: INTENTS,
 } as const;
 
-export const TOAST_STACK_AXES = {
+export const TOAST_CONTAINER_AXES = {
   placement: ['bottom', 'top'],
 } as const;
 
@@ -81,8 +81,8 @@ export interface ToastStyleProps {
   color?: AxisValue<typeof TOAST_AXES, 'color'>;
 }
 
-export interface ToastStackStyleProps {
-  placement?: AxisValue<typeof TOAST_STACK_AXES, 'placement'>;
+export interface ToastContainerStyleProps {
+  placement?: AxisValue<typeof TOAST_CONTAINER_AXES, 'placement'>;
 }
 
 const URGENT: Intent[] = ['negative'];
@@ -145,7 +145,7 @@ const MOTION =
   '[transition-property:transform,opacity,height] duration-gentle ease-standard motion-reduce:transition-none';
 
 const PLACEMENT: Record<
-  AxisValue<typeof TOAST_STACK_AXES, 'placement'>,
+  AxisValue<typeof TOAST_CONTAINER_AXES, 'placement'>,
   {
     root: string;
     wrapper: string;
@@ -169,7 +169,9 @@ const PLACEMENT: Record<
 
 // Blade's numbers: 12px gutters and peeks, 5% per step, one toast in front,
 // three peeking; one toast expanded.
-export const resolveToastStack: ToastStackStyleResolver<ToastStackStyleProps> = (props) => {
+export const resolveToastContainer: ToastContainerStyleResolver<ToastContainerStyleProps> = (
+  props,
+) => {
   const { placement = 'bottom' } = props;
   const edge = PLACEMENT[placement];
   return {

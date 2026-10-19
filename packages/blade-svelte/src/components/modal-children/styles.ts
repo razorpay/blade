@@ -27,8 +27,10 @@ export interface OverlayFooterClasses {
  * press and keyboard focus, with Blade's 4px focus ring. The back button's,
  * and the overlays' close button's.
  */
-export const OVERLAY_ICON_BUTTON =
-  'flex shrink-0 items-center justify-center border-none bg-transparent p-0 icon-interactive-gray-muted transition-colors duration-xquick ease-standard hover:icon-interactive-gray-subtle active:icon-interactive-gray-subtle focus-visible:icon-interactive-gray-subtle focus-visible:rounded-2xsmall focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
+export const OVERLAY_ICON_BUTTON_BASE =
+  'flex shrink-0 items-center justify-center border-none p-0 icon-interactive-gray-muted transition-colors duration-xquick ease-standard hover:icon-interactive-gray-subtle active:icon-interactive-gray-subtle focus-visible:icon-interactive-gray-subtle focus-visible:rounded-2xsmall focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
+/** The icon button with no fill, as the headers draw it. */
+export const OVERLAY_ICON_BUTTON = `${OVERLAY_ICON_BUTTON_BASE} bg-transparent`;
 
 const HAIRLINE_BELOW = 'border-b-thin border-solid border-surface-gray-muted';
 const HAIRLINE_ABOVE = 'border-t-thin border-solid border-surface-gray-muted';

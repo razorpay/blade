@@ -7,7 +7,7 @@ its API (props, variants), except where one of the rules below applies.
 **Exports:** `@razorpay/blade-svelte/components` (`components-entry.ts`) is
 the cx set (`index.ts`), the overlays included (Modal, BottomSheet, Drawer,
 Popover, Menu). Nothing from `src/` is exported, and there is no `/utils`
-subpath. Collapsible is built and documented below but not exported yet. The
+subpath. The
 package has no root entry.
 
 **UI parts only.** Blade ships what React's Blade ships: UI parts. The
@@ -109,7 +109,10 @@ Drawer, Popover or Menu.
     `keyboardReturnKeyType` and `autoCompleteSuggestionType` are not
     ported; `inputMode` is independent of `type`, which Blade can't express.
 11. **BladeProvider sets component defaults, not a theme.** Theming stays CSS
-    variables. The provider takes an overall `size`, which every sized
+    variables: each colour class reads its token's variable, falling back to
+    Blade's standard theme (`bladeTheme`, React's default; the neutral
+    theme's value for the four tokens it leaves `transparent`), so an app's
+    brand sets only what branding changes. The provider takes an overall `size`, which every sized
     control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
     ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
     per-component `defaults` for any style prop; `adapters` (app services,
@@ -129,7 +132,7 @@ Drawer, Popover or Menu.
     shaped as `bind:value` (an array with `multiple`; React's groups send
     `values`, a list even for one pick), their items' `onClick({ name, value, event })`
     (`name` the item's value, `value` whether it was selected),
-    Collapsible (not exported yet) `onExpandChange({ isExpanded })`, every
+    Collapsible `onExpandChange({ isExpanded })`, every
     overlay and Tooltip `onOpenChange({ isOpen })`, PhoneNumberInput
     `onCountryChange({ country })`, OTPInput `onOTPFilled({ name, value, method })`
     (`method` is cx's addition, as on its `onChange`).
@@ -140,7 +143,7 @@ Drawer, Popover or Menu.
     through `onDismiss`.
     `onFocus`/`onBlur` pass the DOM event (OTPInput's also the cell's index).
 13. **`children` is the trigger, `content` what it reveals**, as in React
-    (Tooltip; Collapsible, not exported yet). `children` is a snippet
+    (Tooltip, Collapsible). `children` is a snippet
     that reads the state: `{ isOpen }`,
     Collapsible's `{ isExpanded }`; the wrapper around it listens, so the
     trigger wires nothing. `content` is Tooltip's text (`string | Snippet`)
@@ -158,7 +161,7 @@ Drawer, Popover or Menu.
 15. **The app's services are adapters** (BladeProvider's `adapters`,
     `BladeAdapters`). They are live: components read them through getters,
     so an adapter the app swaps reaches what is mounted (`toasts` is read
-    when the provider mounts). An adapter left out is the
+    when a ToastContainer mounts). An adapter left out is the
     enclosing provider's; `null` unsets it for the subtree
     (`BladeAdaptersOverride`). Beside `toasts`, `form` and
     `presentDropdown`:
@@ -225,7 +228,7 @@ replaced by a rule.
 | ChatInput, ChatMessage                                    | —                                                              | react-only                                                                                                                                                                                              |
 | Checkbox                                                  | `checkbox`                                                     | common, **done**                                                                                                                                                                                        |
 | Chip, ChipGroup                                           | `chip`                                                         | common, **done** (new)                                                                                                                                                                                  |
-| Collapsible                                               | `collapsible`                                                  | common, **done** (new); **not exported**                                                                                                                                                                |
+| Collapsible                                               | `collapsible`                                                  | common, **done** (new): a pure disclosure, with `CollapsibleChevron`                                                                                                                                           |
 | Confirmation                                              | —                                                              | react-only                                                                                                                                                                                              |
 | Counter                                                   | `counter`                                                      | common, **done** (new)                                                                                                                                                                                  |
 | CounterInput                                              | `counter-input`                                                | common, **done** (new)                                                                                                                                                                                  |
@@ -295,7 +298,7 @@ replaced by a rule.
 | Typography (Text, Heading)                                | `text`, `heading`                                              | common; **known gap:** no letter-spacing (see Chip)                                                                                                                                                     |
 | Typography (Display, Code)                                | `display`, `code`                                              | common, **done**: Figma's Display and Code styles (see Typography)                                                                                                                                      |
 | VisuallyHidden                                            | —                                                              | n/a (`sr-only` class)                                                                                                                                                                                   |
-| —                                                         | `layer` (Surface), `blade-provider/OverlayHost`                | cx-only (overlay infrastructure): BladeProvider renders the overlay host and the toasts (not exported); `adapters.toasts` drives the toasts, `back()` asks the overlays                              |
+| —                                                         | `layer` (Surface), `blade-provider/OverlayHost`                | cx-only (overlay infrastructure): BladeProvider renders the overlay host (not exported), a ToastContainer's toasts move into it; `back()` asks the overlays |
 | —                                                         | `card-group` (CardGroup, CardGroupItem, CardGroupSection)      | cx-only in React's terms: Blade DSL's Card Group, the always-visible choice list (formerly OptionList) with link and disclosure rows (see CardGroup)                                 |
 | —                                                         | —                                                              | n/a: Countdown and Image are app compositions, libui's (`@razorpay/libui`), not Blade DSL parts                                                                                                         |
 | —                                                         | `shared`                                                       | n/a (internal)                                                                                                                                                                                          |
@@ -397,7 +400,9 @@ As `src/`'s `cardGroup.module.css`:
 - **Focus:** a 4px `interactive.border.primary.faded` inset ring, drawn on the
   row's `::before` so it composes with the picked ring. The roving row's ring
   shows when the keyboard moves; links and triggers use `:focus-visible`.
-- **Disabled:** 50% on `interactive.background.gray.disabled`.
+- **Disabled:** as Blade's disabled ActionListItem: no fade, the title in
+  `interactive.text.gray.disabled`, the description too, the chevron in
+  `interactive.icon.gray.disabled`; a caller's snippet keeps its own colours.
 - **Sections** (cx-only): each `CardGroupSection` is a raised card of its
   own under its heading (body medium, `surface.text.gray.subtle`), 12px
   above it, with sections 24px apart, as checkout's net-banking list. The
@@ -605,10 +610,6 @@ These match exactly:
   (`runes/dom/truncation.ts`, new).
 - **Dropped checkout look:** the transparent 1px border, the flex gap, and the
   16px line height.
-- **Theme note:** cx's colours are Blade's _neutral_ theme (`uno.config.ts`),
-  and React Storybook defaults to `bladeTheme`. They differ for primary subtle:
-  opaque azure 100 against azure at 9%. Every other Badge colour is the same
-  in both. This is a theme choice, not a Badge difference.
 
 ### Checkout call sites
 
@@ -856,11 +857,6 @@ These match exactly:
   disabled look.
 - **IconButton loading:** a 2px spinner in place of the glyph, at the glyph's
   size (12/16/20px), not the DotLoader.
-- **Theme note:** cx's Uno colours come from Blade's neutral theme, which
-  pairs a blue primary fill with black primary borders and icons. The primary
-  button's frame now takes the standard theme's blue rim and edge
-  (`standardColor` in `uno.config.ts`), as React draws it. The primary loader
-  dots are still the neutral theme's black.
 - **Dropped checkout look:** the heading face, semibold, fixed heights
   (32/36/44/48) with all-round padding, bouncing dots, and IconButton's
   `boxed` MiniButton.
@@ -1062,9 +1058,6 @@ ErrorText, Indeterminate) with the same state on both sides:
   no pointer. It was pointer-events off with the default cursor.
 - **Error line:** Blade's FormHint — the info icon 2px down, 4px before the
   text, 4px under the label (8px at large).
-- **Theme:** the checked border is `interactive.border.primary.default`, black
-  in the neutral theme `uno.config.ts` uses, blue in React Storybook's default
-  theme.
 
 ### cx-only features — decision pending
 
@@ -1153,8 +1146,6 @@ same state:
   (`tracking-25` on large body). The chip text, the group label, Checkbox's title
   and help text, and `FieldHint` now carry it. cx's Text and Heading do not yet:
   that is Typography's to fix.
-- **Theme:** picked `primary` is black here (neutral theme), blue in React
-  Storybook.
 
 ### Checkout call sites
 
@@ -1170,8 +1161,6 @@ React Storybook.
 ---
 
 ## Collapsible
-
-> **Not exported:** the code is in `src/components/` and documented here, but `@razorpay/blade-svelte` does not export it yet.
 
 React: `Collapsible`, `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
 (`CollapsibleText` is internal to other components). cx: `Collapsible` and
@@ -1205,13 +1194,17 @@ WithDirection):
 - **Triggers** are the caller's Link or Button, and match React to the tenth of
   a pixel (169.2×20 and 181.2×36 for the story's label); the chevron is 16px,
   4px after the label, and flips (-180°) over 280ms on the standard easing.
-- **Body:** 12px from the trigger (below, or above with `top`); it slides its
+- **A pure disclosure:** Collapsible draws nothing of its own: a column of
+  the trigger (at its own width) and the body (at the column's), reversed
+  for `top`. The look is the trigger's and the body's.
+- **Body:** right against the trigger, as Blade DSL's Figma draws it (React
+  adds 12px; spacing inside the body is the body's own); it slides its
   height open and closed over 280ms on the standard easing, fading from 0.8 —
   the same panel as CardGroup's (now `components/shared/CollapsePanel.svelte`).
   Unlike React, a collapsed body is unmounted, as CardGroup's is.
-- **Width:** at least 200px; at most the viewport less 40px, 640px on
-  desktop (`d`). React's 1136px step needs a second breakpoint; cx has one.
-- **Theme:** the link trigger is black here (neutral theme), blue in React.
+- **Width:** none of its own. React's CollapsibleBody is at least 200px and at
+  most the viewport less 40px (640px, then 1136px): the caller's, through
+  `class` (rule 1), e.g. `min-w-[200px] max-w-[calc(100vw_-_40px)] d:max-w-[640px]`.
 
 ### Status
 
@@ -1302,8 +1295,6 @@ loading set through args):
 - **Focus:** Blade's inset 4px ring on a button's keyboard focus, and on the
   number field after Tab only (React's rule: `:focus-visible` would ring a
   click too).
-- **Theme:** `intense` is black here (neutral theme), blue in React
-  Storybook.
 
 ### Status
 
@@ -2307,8 +2298,8 @@ No cx-only features. **Status:** done; `svelte-check` gives 0 errors and
 React: `Switch`. cx: `Switch` (`components/switch/`). Its colours, motion
 and thumb check were ported from React earlier. The check is
 `surface.icon.primary.normal`, where React's is `interactive.icon.primary.subtle`:
-the same blue in the standard theme, but the latter is black in the neutral
-theme cx's classes fall back to, so the check would not match the track.
+the same blue in the standard theme cx's classes fall back to. (It was chosen
+when they fell back to the neutral theme, where React's is black.)
 
 | React                                                                    | cx                                                 | Action                                                      |
 | ------------------------------------------------------------------------ | -------------------------------------------------- | ----------------------------------------------------------- |
@@ -2431,14 +2422,18 @@ React: `useToast().show(…)` with a `ToastContainer`. cx:
 `showToast(toast, { cancelled }?)` (from anywhere, on the page's queue),
 which returns a `Promise<ToastDismissReason>`; `cancelled` resolving
 dismisses the toast (one resolved already goes on the next microtask,
-before it paints). BladeProvider
-renders the stack (not exported). A queue made before any stack mounts
-keeps its toasts, timers held, and shows them once one mounts. The public
-`Toasts` type is just `{ showToast }`: an app's own queue is
-`createToasts()`, passed as `adapters.toasts`, or an object of its own
-with a `showToast`, which BladeProvider does not render. A nested provider
-with a Blade queue of its own renders its stack in the enclosing overlay
-host. Internally (`runes/toast/`, not exported) the model is
+before it paints). `ToastContainer` is React's: the app renders it once,
+inside BladeProvider, and it shows the queue it finds at mount (the
+nearest `adapters.toasts`, else the page's), its toasts moved into the
+overlay host. BladeProvider imports no toast code, so an app without a
+ToastContainer ships none. React's `offsetBottom` is a margin (`class`),
+its `zIndex` the host's; `placement` (`bottom`, `top`) and
+`accessibilityLabel` (default `Notifications`) are cx's. A queue made
+before any container mounts keeps its toasts, timers held, and shows them
+once one mounts. The public `Toasts` type is just `{ showToast }`: an
+app's own queue is `createToasts()`, passed as `adapters.toasts`, or an
+object of its own with a `showToast`, which a ToastContainer does not
+render. A nested provider's queue needs a ToastContainer under it. Internally (`runes/toast/`, not exported) the model is
 `createToastsModel` and the queue `createToastQueue`.
 
 ### Options
@@ -2629,11 +2624,10 @@ React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every
   `escape`, `back`, `drag`) and Escape reaches only the topmost overlay.
   Modal has no `variant`.
 - **The overlay host:** BladeProvider renders it after its content (the
-  one scrim, the box surfaces mount in, the toasts and a polite live
-  region for `adapters.announce`). The outermost provider hosts every
-  overlay on the page (the layers coordinator is internal); a nested one
-  with a toast queue of its own renders its stack in that host. Nothing
-  renders twice. (It was `OverlayStack`, a component to mount.) The layers
+  one scrim, the box surfaces mount in and a polite live region for
+  `adapters.announce`); a ToastContainer's toasts move into it. The
+  outermost provider hosts every overlay on the page (the layers
+  coordinator is internal). Nothing renders twice. (It was `OverlayStack`, a component to mount.) The layers
   keep stacking, Escape and back, which the app's back handler asks first
   (`back()`); the layer
   stack's navigation (`popAfter`, `popTill`, `resolve`, a stack `back`) is
@@ -2702,7 +2696,8 @@ React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every
 | `padding` on Modal, BottomSheet, Drawer                                        | the body part's `padding` (`spacing.0`); DrawerBody's is cx-only (React's DrawerBody has none), as ModalBody's           |
 | `showBackButton` on Modal or Drawer                                            | BottomSheetHeader only, as React                                                                                         |
 | `openModal(c, { variant: 'sheet' })` / `{ as: 'sheet' }`                       | the app's own opener (not in the library)                                                                                |
-| `OverlayStack`, `ToastStack` mounted by the app                                | the overlay host BladeProvider renders                                                                                   |
+| `OverlayStack` mounted by the app | the overlay host BladeProvider renders |
+| `ToastStack` mounted by the app | `ToastContainer` mounted by the app, as React's |
 | `provideLayers()`, `provideToasts()`                                           | `adapters.toasts` on a BladeProvider; `back()`                                                                         |
 | `adapters.layers`, `createLayers()`, `globalLayers`, `getLayers()`, `Layers`   | internal: the outermost provider hosts; `back()` for back                                                                 |
 | `showToast()`'s `{ dismiss, dismissed }`, `ToastHandle`, `action.isLoading`    | `showToast(toast, { cancelled })`'s promise; an `onClick` returning a promise                                            |

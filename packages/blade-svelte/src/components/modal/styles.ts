@@ -1,6 +1,6 @@
 import type { AxisValue } from '../../axes';
 import type { AnalyticsAttributes } from '../../runes/dom/analytics';
-import { OVERLAY_ICON_BUTTON } from '../modal-children/styles';
+import { OVERLAY_ICON_BUTTON, OVERLAY_ICON_BUTTON_BASE } from '../modal-children/styles';
 import type { Snippet } from 'svelte';
 import type { PlacementSide } from '../../runes/layer/placement';
 import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
@@ -244,7 +244,7 @@ export function surfaceClasses(layout: SurfaceSpec, props: ModalStyleProps = {})
     close: `${layout.close ?? CLOSE} w-5 h-5 ${OVERLAY_ICON_BUTTON}`,
     floatingClose: `${
       layout.floatingClose ?? FLOATING_CLOSE
-    } w-7 h-7 rounded-max bg-popup-gray-subtle ${OVERLAY_ICON_BUTTON}`,
+    } w-7 h-7 rounded-max bg-popup-gray-subtle ${OVERLAY_ICON_BUTTON_BASE}`,
     // Blade's empty header: an 8px strip under the floating close.
     emptyHeader: 'relative h-2 shrink-0',
   };
@@ -268,7 +268,7 @@ export function floatingOverlayClasses(floating: FloatingClasses): FloatingOverl
     content: `flex min-h-0 flex-auto flex-col ${OVERLAY_GUTTER.popover}`,
     chrome: CHROME,
     close: `absolute top-4 right-4 w-5 h-5 ${FLOATING_PANEL_CLOSE}`,
-    floatingClose: `absolute top-3 right-3 w-6 h-6 rounded-max ${FLOATING_PANEL_CLOSE}`,
+    floatingClose: `absolute top-3 right-3 w-6 h-6 rounded-max ${OVERLAY_ICON_BUTTON}`,
     emptyHeader: 'relative h-0 shrink-0',
   };
 }

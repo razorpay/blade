@@ -171,9 +171,13 @@ export interface CardGroupItemClasses {
   text: string;
   title: string;
   description: string;
+  /** The description of a disabled row: `interactive.text.gray.disabled`. */
+  descriptionDisabled: string;
   trailing: string;
   /** A link row's chevron (right) and a disclosure trigger's (down). */
   chevron: string;
+  /** The chevron of a disabled row: `interactive.icon.gray.disabled`. */
+  chevronDisabled: string;
   /** Added to the trigger's chevron while its content shows: it flips. */
   chevronExpanded: string;
 }
@@ -288,7 +292,10 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
   },
   // The keyboard's row: Blade's 4px faded primary ring, inset as the group clips.
   rowActive: FOCUS_RING,
-  rowDisabled: 'pointer-events-none opacity-50 bg-interactive-gray-disabled',
+  // As Blade's disabled ActionListItem: no fade, the disabled text colour —
+  // the title's here (important, over the row's own), the description's and
+  // the chevron's in their disabled classes; a caller's snippet keeps its own.
+  rowDisabled: 'pointer-events-none text-interactive-gray-disabled!',
   rowFocusVisible:
     'outline-none focus-visible:z-5 focus-visible:before:content-empty focus-visible:before:pointer-events-none focus-visible:before:absolute focus-visible:before:inset-0 focus-visible:before:rounded-inherit focus-visible:before:shadow-card-group-focus',
   control: { radio: 'sr-only', checkbox: 'sr-only' },
@@ -312,6 +319,10 @@ export const resolveCardGroup: CardGroupStyleResolver<CardGroupStyleProps> = (
   virtual: virtualLook(hasSections),
 });
 
+const DESCRIPTION = 'font-normal text-75 leading-75 tracking-50';
+const CHEVRON =
+  'flex shrink-0 items-center transition-transform duration-moderate ease-standard motion-reduce:transition-none';
+
 /** One look: the row decides the colours, the content only lays out. */
 export function resolveCardGroupItem(): CardGroupItemClasses {
   return {
@@ -322,10 +333,11 @@ export function resolveCardGroupItem(): CardGroupItemClasses {
     text: 'flex min-w-0 flex-1 flex-col',
     // No colour of its own: the row's colours the title.
     title: 'truncate',
-    description: 'font-normal text-75 leading-75 tracking-50 text-surface-gray-muted',
+    description: `${DESCRIPTION} text-surface-gray-muted`,
+    descriptionDisabled: `${DESCRIPTION} text-interactive-gray-disabled`,
     trailing: 'flex shrink-0 items-center',
-    chevron:
-      'flex shrink-0 items-center icon-surface-gray-subtle transition-transform duration-moderate ease-standard motion-reduce:transition-none',
+    chevron: `${CHEVRON} icon-surface-gray-subtle`,
+    chevronDisabled: `${CHEVRON} icon-interactive-gray-disabled`,
     chevronExpanded: '-rotate-180',
   };
 }

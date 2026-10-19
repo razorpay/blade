@@ -42,6 +42,10 @@
       "types": "./uno/config.ts",
       "default": "./uno/config.ts"
     },
+    "./configs/lint": {
+      "types": "./src/lint/plugin.d.ts",
+      "default": "./src/lint/plugin.js"
+    },
     "./components": {
       "types": "./src/components-entry.ts",
       "svelte": "./src/components-entry.ts",

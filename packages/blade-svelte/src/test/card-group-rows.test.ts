@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import { tick } from 'svelte';
 import CardGroupRowsHarness from './fixtures/CardGroupRowsHarness.svelte';
-import { expectClass } from './classes';
+import { expectClass, expectNoClass } from './classes';
 
 // Blade DSL's Card Group: rows that pick (a `value`), navigate (`href`),
 // disclose (`content`) or just show.
@@ -23,7 +23,9 @@ describe('CardGroup rows without a value', () => {
     expect(emi.hasAttribute('href')).toBe(false);
     expect(emi.getAttribute('aria-disabled')).toBe('true');
     expect(emi.getAttribute('tabindex')).toBe('-1');
-    expectClass(emi, 'opacity-50');
+    // As Blade's disabled ActionListItem: the disabled text colour, no fade.
+    expectClass(emi, 'text-interactive-gray-disabled!');
+    expectNoClass(emi, 'opacity-50');
   });
 
   it("a disabled link's onClick does not run, even when a click reaches it", async () => {

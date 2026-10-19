@@ -61,8 +61,11 @@ export interface TextInputClasses {
   /**
    * The parts after the text: the clear button, `suffix`, then `trailing`
    * (an icon or a snippet). The group sits the field's gap after the text.
+   * `tone`: the suffix's and the icon's colour, gray-subtle (Blade's
+   * trailing visuals; the leading ones stay the box's muted), in place of
+   * `disabled.affix` while enabled.
    */
-  trailing: Record<'group' | 'item', string>;
+  trailing: Record<'group' | 'item' | 'tone', string>;
   /** The glyphs' size: 12, 16, 20px. */
   iconSize: 'small' | 'medium' | 'large';
   /** The clear button (`showClearButton`): IconButton's medium look. */
@@ -239,6 +242,7 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
     trailing: {
       group: `flex shrink-0 flex-row items-center ${look.trailing.group}`,
       item: `flex shrink-0 items-center ${look.trailing.item}`,
+      tone: 'text-surface-gray-subtle',
     },
     iconSize: look.icon,
     clear: resolveIconButton({ size: 'medium' }).root,

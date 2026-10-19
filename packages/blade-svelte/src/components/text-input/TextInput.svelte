@@ -381,7 +381,7 @@
       {@attach attach}
     />
     {#if (showClearButton && hasText) || suffix || trailing}
-      <span class={cx(classes.trailing.group, disabled && classes.disabled.affix)}>
+      <span class={cx(classes.trailing.group, disabled ? classes.disabled.affix : classes.trailing.tone)}>
         {#if showClearButton && hasText}
           <span class={classes.trailing.item}>
             <button

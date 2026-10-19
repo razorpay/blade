@@ -60,7 +60,7 @@ import { TEXT_AREA_AXES } from './text-area/styles';
 import { PHONE_NUMBER_INPUT_AXES } from './phone-number-input/styles';
 import { INPUT_GROUP_AXES } from './input-group/styles';
 import type { TextInputStyleProps } from './text-input/styles';
-import type { ToastStackStyleProps, ToastStyleProps } from './toast/styles';
+import type { ToastContainerStyleProps, ToastStyleProps } from './toast/styles';
 import type { TooltipStyleProps } from './tooltip/styles';
 
 /**
@@ -109,7 +109,7 @@ export interface ComponentStyleProps {
   TextArea: TextAreaStyleProps;
   TextInput: TextInputStyleProps;
   Toast: ToastStyleProps;
-  ToastStack: ToastStackStyleProps;
+  ToastContainer: ToastContainerStyleProps;
   Tooltip: TooltipStyleProps;
 }
 

@@ -59,8 +59,9 @@ describe('theme variables', () => {
   it("falls back to the token's light mode value, so nothing changes until one is set", async () => {
     for (const [token, fallback] of tokenReads(await bladeCSS())) {
       if (!(`--${token}` in neutral)) continue;
-      // The primary button's frame takes the standard theme's blue (`standardColor`).
-      expect([neutral[`--${token}`], standard[`--${token}`]]).toContain(fallback);
+      // The standard theme's; a token it leaves `transparent` keeps the neutral theme's.
+      const value = standard[`--${token}`];
+      expect(fallback).toBe(value === 'transparent' ? neutral[`--${token}`] : value);
     }
   });
 
@@ -70,7 +71,7 @@ describe('theme variables', () => {
       preflights: false,
     });
     expect(css).toContain(
-      `background-color:var(--interactive-background-primary-default, ${neutral['--interactive-background-primary-default']})`,
+      `background-color:var(--interactive-background-primary-default, ${standard['--interactive-background-primary-default']})`,
     );
     expect(css).toContain(
       `var(--interactive-border-primary-default, ${standard['--interactive-border-primary-default']})`,

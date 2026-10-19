@@ -1,4 +1,4 @@
-import { TOAST_AXES, TOAST_STACK_AXES } from '../../index';
+import { TOAST_AXES, TOAST_CONTAINER_AXES } from '../../index';
 import type { StoryMeta } from '../types';
 
 const meta: StoryMeta = {
@@ -7,7 +7,7 @@ const meta: StoryMeta = {
     'showToast from anywhere, over the toast queue: a timer per toast that hover and focus hold, a capacity that evicts the oldest, and a reason for every exit. Toasts sit in the overlay host BladeProvider renders, but push no layer.',
   argTypes: {
     color: { control: 'select', options: TOAST_AXES.color },
-    placement: { control: 'select', options: TOAST_STACK_AXES.placement },
+    placement: { control: 'select', options: TOAST_CONTAINER_AXES.placement },
     duration: { control: 'number', description: 'ms; 0 stays' },
   },
   stories: {

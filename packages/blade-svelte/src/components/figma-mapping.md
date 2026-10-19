@@ -36,7 +36,7 @@ Examples:
 | `feedback.text.positive.intense`         | `text-feedback-positive-intense`          |
 | `surface.border.primary.muted`           | `outline-surface-primary-muted`           |
 
-Values are the neutral theme's light-mode literals, static on purpose: every
-class is one CSS property with a static value, so the generated CSS can be
-turned into JSON for non-web surfaces. The checkout's runtime merchant
-theming (CSS-var colour scales) does not carry over.
+Each colour class reads the token's variable, falling back to Blade's
+standard theme's light-mode value (the neutral theme's for the few tokens the
+standard theme leaves `transparent`): an app themes Blade, a merchant's brand
+included, by setting the variables.

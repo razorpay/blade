@@ -26,15 +26,15 @@ export function createToasts(): Toasts {
 
 /** The nearest provider's `adapters.toasts`, else the page's. Call during component init. */
 export function getToasts(): Toasts {
-  return (getAdapters().toasts as Toasts | undefined) ?? globalToasts;
+  return getAdapters().toasts ?? globalToasts;
 }
 
 /**
  * Shows a toast from anywhere — a flow in a `.ts` file as much as a
- * component — on the page's queue, which BladeProvider renders. Resolves
+ * component — on the page's queue, which a ToastContainer shows. Resolves
  * with why it left (`timeout`, `dismiss`, `evicted`, `cleared`); its
- * `cancelled` resolving dismisses it (`createCancel()` makes one). A toast shown before a provider mounts waits for
- * its stack. An app with a queue of its own (`adapters.toasts`) calls its
+ * `cancelled` resolving dismisses it (`createCancel()` makes one). A toast
+ * shown before a ToastContainer mounts waits for it. An app with a queue of its own (`adapters.toasts`) calls its
  * `showToast`.
  */
 export function showToast(

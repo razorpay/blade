@@ -1,5 +1,6 @@
 <script lang="ts">
   import BladeProvider from '../../components/blade-provider/BladeProvider.svelte';
+  import ToastContainer from '../../components/toast/ToastContainer.svelte';
   import { createToasts, type Toasts } from '../../components/toast/toasts';
 
   interface Props {
@@ -19,4 +20,5 @@
 
 <BladeProvider {adapters} testID="host">
   <main data-testid="page">Checkout</main>
+  <ToastContainer testID="host-toasts" />
 </BladeProvider>

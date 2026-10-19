@@ -82,13 +82,13 @@ const SEGMENT_COLOR: Record<
   neutral: {
     options: 'bg-interactive-gray-faded',
     unpicked: 'text-interactive-gray-muted hover:bg-interactive-gray-default',
-    disabled: 'peer-disabled:text-interactive-gray-disabled',
+    disabled: 'text-interactive-gray-disabled!',
   },
   // No Blade counterpart: the neutral rules in the static-white tokens.
   white: {
     options: 'bg-interactive-static-white-faded',
     unpicked: 'text-interactive-static-white-normal hover:bg-interactive-static-white-faded',
-    disabled: 'peer-disabled:text-interactive-static-white-disabled',
+    disabled: 'text-interactive-static-white-disabled!',
   },
 };
 
@@ -120,7 +120,8 @@ export function segmentedLook(
         picked: 'text-interactive-gray-normal',
         unpicked: tint.unpicked,
       },
-      // The input is the label's peer, so the disabled colour outranks the pick's.
+      // Toggled from JS on the row (the input is inside it, so `peer-` cannot
+      // reach it); important, so it outranks the pick's colour beside it.
       disabled: `pointer-events-none ${tint.disabled}`,
       // The segment is the visual; the input stays for semantics and keys.
       // It is the label's `peer`, so the focus ring is the keyboard's only
