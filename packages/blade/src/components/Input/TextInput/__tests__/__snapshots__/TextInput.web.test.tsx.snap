@@ -350,18 +350,6 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 <div>
   <div
     class=""
@@ -806,18 +794,6 @@ exports[`<TextInput /> should render 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 <div>
@@ -1386,18 +1362,6 @@ exports[`<TextInput /> should render large size 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 12px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -2074,18 +2038,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 <div>

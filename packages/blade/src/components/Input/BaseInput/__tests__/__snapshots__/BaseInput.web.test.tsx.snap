@@ -393,18 +393,6 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
   width: 100%;
 }
 
-.c13.c13.c13.c13.c13:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 .c9.c9.c9.c9.c9 {
   padding: 0;
   background-color: transparent;
@@ -930,18 +918,6 @@ exports[`<BaseInput /> should render 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 <div>
@@ -1784,18 +1760,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 <div>
   <div
     class=""
@@ -2403,18 +2367,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 <div>
   <div
     class=""
@@ -3020,18 +2972,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 .c13.c13.c13.c13.c13 {
   padding: 0;
   background-color: transparent;
@@ -3540,18 +3480,6 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 <div>

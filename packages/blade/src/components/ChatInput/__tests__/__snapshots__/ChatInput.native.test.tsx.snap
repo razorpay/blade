@@ -64,7 +64,6 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
             data-blade-component="base-box"
             elevation="highRaised"
             isTableInputCell={false}
-            shouldAddLimitedFocus={false}
             style={
               [
                 {},
@@ -754,7 +753,6 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
             data-blade-component="base-box"
             elevation="highRaised"
             isTableInputCell={false}
-            shouldAddLimitedFocus={false}
             style={
               [
                 {},

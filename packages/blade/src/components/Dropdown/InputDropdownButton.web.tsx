@@ -139,13 +139,15 @@ const StyledSearchTrailingDropdown = styled.button<{
       pointerEvents: 'none',
     },
     '&:focus': {
-      ...getFocusRingStyles({ theme }),
+      outline: 'none',
       backgroundColor: theme.colors.interactive.background.gray.faded,
     },
     '&:hover': {
       backgroundColor: theme.colors.interactive.background.gray.faded,
     },
+    // Ring only for keyboard focus, matching IconButton, so a mouse click doesn't flash it
     '&:focus-visible': {
+      ...getFocusRingStyles({ theme }),
       outlineOffset: makeSpace(theme.spacing[0]),
     },
     borderRadius: inputDropdownButtonBorderRadius[$size],
