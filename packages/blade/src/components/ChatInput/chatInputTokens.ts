@@ -8,7 +8,20 @@ const chatInputFilePreviewItemWidth = '200px';
 
 const chatInputFilePreviewItemWidthNative = 200;
 
+// ChatInput-only visual tokens, matching Slash's shipped breathing outline.
+const chatInputAmbientBorder = {
+  light: 'linear-gradient(110deg, #5a81f1, #87d0ff, #c0f8fc, #87d0ff, #5a81f1)',
+  dark: 'linear-gradient(110deg, #152349, #395eb7, #7894d9, #284694, #152349)',
+  width: 1,
+  focusWidth: 1.5,
+  glowBlur: 6,
+  // Ambient loop, not a transition: Blade duration tokens currently stop at 960ms.
+  duration: 5000,
+  easing: 'ease-in-out',
+} as const;
+
 export {
+  chatInputAmbientBorder,
   chatInputBorderRadius,
   chatInputMaxTextAreaHeight,
   chatInputSuggestionCycleInterval,

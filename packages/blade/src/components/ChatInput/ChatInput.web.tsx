@@ -2,10 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { chatInputFilePreviewItemWidth, chatInputAmbientBorder } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
+import { ChatInputAmbientBorder } from './ChatInputAmbientBorder.web';
 import { useTheme } from '~components/BladeProvider';
 import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
@@ -30,6 +31,13 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   scrollbarWidth: 'none' as const,
 }));
 
+const AmbientChatInputSurface = styled(BaseBox)`
+  /* stylelint-disable-next-line selector-type-no-unknown -- styled-component interpolation becomes a generated class */
+  &:focus-within > ${ChatInputAmbientBorder}::before {
+    padding: ${chatInputAmbientBorder.focusWidth}px;
+  }
+`;
+
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
     value,
@@ -41,6 +49,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     placeholder = 'Ask a question...',
     isDisabled = false,
     isGenerating = false,
+    borderEffect = 'none',
     onStop,
     fileList,
     onFileChange,
@@ -61,7 +70,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   },
   ref,
 ) => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
 
   const {
     fileInputRef,
@@ -234,7 +243,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
+      <AmbientChatInputSurface
+        position="relative"
+        zIndex={1}
+        onMouseDownCapture={handleInnerMouseDownCapture}
+      >
+        {borderEffect === 'ambient' && !isDisabled && !isError ? (
+          <ChatInputAmbientBorder aria-hidden="true" $colorScheme={colorScheme} />
+        ) : null}
         <BaseInput
           ref={combinedRef}
           as="textarea"
@@ -279,7 +295,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           }
           {...makeAnalyticsAttribute(rest)}
         />
-      </BaseBox>
+      </AmbientChatInputSurface>
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

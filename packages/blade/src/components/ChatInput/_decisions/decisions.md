@@ -439,6 +439,7 @@ Whenever files are added (or the list changes), the file preview row automatical
 ### Implicit Disable on Error or Uploading Files
 
 The submit button (and Enter key) is blocked whenever:
+
 - There is no text **and** no files, **or**
 - Any attached file has `status === 'error'`, **or**
 - Any attached file has `status === 'uploading'`
@@ -484,3 +485,74 @@ When submit is disabled because of an error or uploading file, no additional too
 - Blade FileUpload -- [`packages/blade/src/components/FileUpload`](../../FileUpload/) for `BladeFile`/`BladeFileList` types and file upload patterns
 - Blade TextArea -- [`packages/blade/src/components/Input/TextArea`](../../Input/TextArea/) for textarea input patterns
 - Blade ChatMessage -- [`packages/blade/src/components/ChatMessage`](../../ChatMessage/) for existing chat component patterns
+
+## Ambient border (Web)
+
+`borderEffect="ambient"` opts ChatInput into a subtle, five-second breathing outline.
+The default is `none`; existing consumers retain the same appearance. This API is
+exclusive to ChatInput, with no public generic border or wrapper component.
+
+The outline matches Slash's shipped light blue–cyan and dark layered-blue gradients,
+selected through BladeProvider's color scheme. These are private ChatInput tokens;
+custom themes use the corresponding light/dark palette, not their primary colour.
+It is decorative and independent of `isGenerating`, never a progress indicator.
+The outline is 1px, with a 6px blurred duplicate and a five-second ease-in-out pulse
+from 55% to 95% opacity over a 240% background. Focus thickens the crisp edge to
+1.5px while preserving the existing accessible input focus indicator.
+
+It occupies no layout space and receives no pointer events. Disabled/error states
+and forced colors hide it. Reduced motion renders a static outline at 70% opacity.
+React Native retains its default appearance; the effect is Web-only.
+
+### Review decisions
+
+- **Web-only contract:** `borderEffect` is annotated `@platform web` in both the
+  public type and the knowledgebase. Native deliberately retains the default
+  appearance instead of throwing: this optional decoration can be passed through
+  shared composer code without preventing native users from composing messages.
+- **Palette:** A primary-theme-token version was considered and implemented first.
+  Product review explicitly chose parity with Slash's shipped light/dark treatment.
+  The fixed gradients are therefore deliberate private ChatInput tokens. They
+  follow the provider's colour scheme, but do not promise brand recolouring for
+  custom themes. This limitation is documented rather than implied away.
+- **API naming:** `variant` was considered. `borderEffect` describes an additive,
+  opt-in decoration without selecting a different composer layout or changing its
+  controls. It stays independent of validation and generation state. We retain
+  `borderEffect` as the proposed API; final naming and palette approval remain with
+  the Blade design-system maintainers.
+- **Reuse:** Spark's `RazorSenseGradient` renders a canvas through an SVG mask;
+  it is not the lightweight CSS outline used here. GenUI's internal gradient
+  border uses conic perimeter travel and reveal/fade behaviour, rather than this
+  five-second breathing treatment. Reusing either would require changing the
+  approved visual or expanding its abstraction. This contribution deliberately
+  keeps the implementation private to ChatInput, with no generic outline export.
+
+### Follow-up review notes
+
+- The stable styled wrapper is intentional: conditionally switching between BaseBox
+  and a styled component remounts the textarea and loses focus/selection. Default
+  visuals stay the same, but generated classes and consumer DOM snapshots change;
+  the changeset calls this out.
+- Focus is intentionally composer-wide, including upload and submit controls,
+  matching Slash's `:focus-within`. It indicates activity anywhere in the composer.
+- The ambient loop retains a component-specific 5000ms duration and ease-in-out.
+  Blade's duration tokens currently stop at 960ms and none of its easing tokens
+  matches ease-in-out. Reusing a delay token as a duration would misrepresent its
+  purpose. These values are centralized in ChatInput tokens pending a future
+  ambient-motion token decision; changing the cadence would break approved parity.
+- Fixed light/dark palette and public API naming still require explicit Blade
+  design sign-off before merge. This PR does not grant or imply that approval.
+
+- The blurred duplicate uses Slash's existing filter-and-mask order. The mask
+  confines the blur to the ring; it is not a six-pixel outward halo. The crisp
+  edge now explicitly stacks above the duplicate. A separate unmasked halo would
+  change the approved treatment and is not introduced by this review fix.
+- Review verification: 21 Web/SSR tests and ESLint passed. Chrome and Playwright
+  WebKit passed the light/dark interaction stories and upload-control focus checks.
+  Screenshots below use reduced motion to capture a stable frame. WebKit is a
+  compatibility check, not a claim of testing Safari: SafariDriver is disabled on
+  this machine, so actual Safari verification remains outstanding.
+
+![Chrome light and dark ambient outline](./ambient-chrome.png)
+
+![Playwright WebKit light and dark ambient outline](./ambient-webkit.png)

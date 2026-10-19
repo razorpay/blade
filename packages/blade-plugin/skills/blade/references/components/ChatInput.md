@@ -40,10 +40,26 @@ type ChatInputProps = {
   onChange?: ({ value }: { value: string }) => void;
 
   /** Callback fired when the text input receives focus */
-  onFocus?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onFocus?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /** Callback fired when the text input loses focus */
-  onBlur?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onBlur?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
@@ -59,6 +75,16 @@ type ChatInputProps = {
    * @default false
    */
   isDisabled?: boolean;
+
+  /**
+   * Optional decorative breathing outline for the chat composer. Independent of isGenerating.
+   * On Web, thickens on focus and pauses to a static outline for reduced motion.
+   * Hidden during errors, disabled states, and forced colors. Uses Slash light/dark palettes.
+   * On React Native, retains the default appearance (no decorative outline).
+   * @platform web
+   * @default 'none'
+   */
+  borderEffect?: 'none' | 'ambient';
 
   /**
    * Whether the AI is currently generating a response.

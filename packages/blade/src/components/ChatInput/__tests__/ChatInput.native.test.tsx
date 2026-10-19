@@ -161,3 +161,17 @@ describe('<ChatInput /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 });
+
+describe('ChatInput ambient border native fallback', () => {
+  it('accepts the web decoration prop while preserving native submit behavior', () => {
+    const onSubmit = jest.fn();
+    const { getByRole, getByLabelText } = renderWithTheme(
+      <ChatInput borderEffect="ambient" onSubmit={onSubmit} />,
+    );
+    const input = getByLabelText(accessibilityLabel);
+    expect(input.props.borderEffect).toBeUndefined();
+    fireEvent.changeText(input, 'Hello');
+    fireEvent.press(getByRole('button', { name: 'Submit' }));
+    expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello', fileList: [] });
+  });
+});
