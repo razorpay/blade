@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import type { StyledFileUploadItemWrapperProps } from './types';
-import {
-  fileUploadItemBackgroundColors,
-  fileUploadMotionTokens,
-  fileUploadItemHeightTokens,
-} from './fileUploadTokens';
+import { fileUploadItemColorTokens, fileUploadItemHeightTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
-import { castWebType, makeSize, useTheme } from '~utils';
+import { makeSize, useTheme } from '~utils';
 import { colors as globalColors } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime } from '~utils/makeMotionTime';
 
 const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperProps>(
   ({ theme, status, size }) => {
@@ -18,10 +13,6 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       colorScheme === 'light'
         ? globalColors.neutral.blueGrayLight.a906
         : globalColors.neutral.black[50];
-    const easing = getIn(theme.motion, fileUploadMotionTokens.easing);
-    const duration = castWebType(
-      makeMotionTime(getIn(theme.motion, fileUploadMotionTokens.duration)),
-    );
 
     return {
       position: 'relative',
@@ -31,22 +22,13 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       borderStyle: 'solid',
       minHeight: makeSize(fileUploadItemHeightTokens[size]),
       width: '100%',
-      backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].default),
-      transitionProperty: 'background-color',
-      transitionTimingFunction: easing,
-      transitionDuration: duration,
-      borderColor:
-        status === 'error'
-          ? theme.colors.interactive.border.negative.faded
-          : theme.colors.surface.border.gray.subtle,
+      backgroundColor: getIn(theme.colors, fileUploadItemColorTokens.background),
+      borderColor: getIn(
+        theme.colors,
+        fileUploadItemColorTokens.border[status === 'error' ? 'error' : 'default'],
+      ),
       wordBreak: 'break-all',
       boxShadow: `0px 0.5px 4px 0px ${boxShadowColor}`,
-
-      ...(status !== 'uploading' && {
-        '&:hover': {
-          backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].hover),
-        },
-      }),
     };
   },
 );

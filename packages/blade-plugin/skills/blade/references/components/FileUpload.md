@@ -251,6 +251,7 @@ type FileUploadItemProps = {
 - Use controlled mode (`fileList` prop) when you need to manage upload progress and status externally.
 - Use `uploadType="multiple"` when users need to attach several files at once.
 - Use `size="small"` with `dropAreaText=""` for compact upload fields, such as a logo field in a settings panel. The upload action always shows an upload icon.
+- Handle `onReupload` for failed files. Inside `FileUpload`, a failed file offers only a "Reupload" action, which removes the file and reopens the file picker.
 - Manage the actual file upload to your server — the component only handles selection and validation.
 
 **Don't**

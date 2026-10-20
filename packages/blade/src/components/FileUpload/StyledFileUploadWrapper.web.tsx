@@ -16,12 +16,12 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
     return {
       display: 'flex',
       borderStyle: 'dashed',
-      transitionProperty: 'background-color',
+      transitionProperty: 'background-color, border-color',
       transitionTimingFunction: easing,
       transitionDuration: duration,
       borderColor: getIn(
         theme.colors,
-        fileUploadColorTokens.border[isDisabled ? 'disabled' : 'default'],
+        fileUploadColorTokens.border[isDisabled ? 'disabled' : isActive ? 'active' : 'default'],
       ),
 
       ...(isActive && {

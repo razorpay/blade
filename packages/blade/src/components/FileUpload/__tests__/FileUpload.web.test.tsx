@@ -301,4 +301,108 @@ describe('<FileUploadItem />', () => {
 
     expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
   });
+
+  it('should show the Reupload label when reupload is the only action in error state', () => {
+    const { getByRole, getByText, queryByRole } = renderWithTheme(
+      <FileUploadItem file={errorFile} onReupload={jest.fn()} />,
+    );
+
+    expect(getByRole('button', { name: 'Reupload test.png' })).toBeTruthy();
+    expect(getByText('Reupload')).toBeVisible();
+    expect(queryByRole('button', { name: 'Remove test.png' })).toBeNull();
+  });
+
+  it('should show an icon-only reupload button next to trash when both actions are provided', () => {
+    const { getByRole, queryByText } = renderWithTheme(
+      <FileUploadItem file={errorFile} onReupload={jest.fn()} onRemove={jest.fn()} />,
+    );
+
+    expect(getByRole('button', { name: 'Reupload test.png' })).toBeTruthy();
+    expect(getByRole('button', { name: 'Remove test.png' })).toBeTruthy();
+    expect(queryByText('Reupload')).toBeNull();
+  });
+
+  it('should not show a reupload button in error state when onReupload is not provided', () => {
+    const { queryByRole } = renderWithTheme(<FileUploadItem file={errorFile} />);
+
+    expect(queryByRole('button', { name: 'Reupload test.png' })).toBeNull();
+  });
+
+  it('should keep the file name findable while the file is uploading', () => {
+    const uploadingFile = {
+      id: 'file-3',
+      name: 'video.mp4',
+      size: 10240,
+      status: 'uploading',
+      uploadPercent: 45,
+    } as BladeFile;
+
+    const { getByText } = renderWithTheme(<FileUploadItem file={uploadingFile} />);
+
+    expect(getByText('video.mp4')).toBeVisible();
+    expect(getByText(/^Uploading/)).toBeVisible();
+  });
+
+  it('should hide the uploading prefix in compact layout', () => {
+    const uploadingFile = {
+      id: 'file-3',
+      name: 'video.mp4',
+      size: 10240,
+      status: 'uploading',
+      uploadPercent: 45,
+    } as BladeFile;
+
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUploadItem _isCompact file={uploadingFile} />,
+    );
+
+    expect(getByText('video.mp4')).toBeVisible();
+    expect(queryByText(/Uploading/)).toBeNull();
+  });
+
+  it('should not show a file-type label in the leading icon', () => {
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success',
+    } as BladeFile;
+
+    const { queryByText } = renderWithTheme(<FileUploadItem file={successFile} />);
+
+    expect(queryByText('.pdf')).toBeNull();
+  });
+});
+
+describe('<FileUpload /> failed files', () => {
+  const errorFile = {
+    id: 'file-1',
+    name: 'test.png',
+    size: 1024,
+    status: 'error',
+    errorText: 'Upload failed',
+  } as BladeFile;
+
+  it('should offer Reupload and no trash button for a failed file', () => {
+    const { getByRole, getByText, queryByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="multiple"
+        label="Upload documents"
+        fileList={[errorFile]}
+        onRemove={jest.fn()}
+      />,
+    );
+
+    expect(getByRole('button', { name: 'Reupload test.png' })).toBeTruthy();
+    expect(getByText('Reupload')).toBeVisible();
+    expect(queryByRole('button', { name: 'Remove test.png' })).toBeNull();
+  });
+
+  it('should not show a file-type label in the variable size drop area', () => {
+    const { queryByText } = renderWithTheme(
+      <FileUpload uploadType="single" label="Upload GST" size="variable" accept=".pdf" />,
+    );
+
+    expect(queryByText('.pdf')).toBeNull();
+  });
 });

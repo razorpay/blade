@@ -164,6 +164,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           style={{ width: chatInputFilePreviewItemWidthNative }}
         >
           <FileUploadItem
+            _isCompact
             file={file}
             onRemove={() => handleFileRemove(file)}
             onDismiss={() => handleFileDismiss(file)}

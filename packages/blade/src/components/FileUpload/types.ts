@@ -1,7 +1,6 @@
 import type { MotionMetaProp } from '~components/BaseMotion';
 import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import type { Platform } from '~utils';
@@ -214,6 +213,14 @@ type FileUploadItemProps = Pick<
   flexShrink?: BoxProps['flexShrink'];
   flexGrow?: BoxProps['flexGrow'];
   flexBasis?: BoxProps['flexBasis'];
+  /**
+   * @private
+   *
+   * Compact layout for narrow containers such as ChatInput attachments. Hides the "Uploading" prefix while a file uploads.
+   *
+   * @default false
+   */
+  _isCompact?: boolean;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
@@ -232,18 +239,6 @@ type StyledFileUploadItemWrapperProps = {
   children: React.ReactNode;
 };
 
-type InteractiveBackgroundColors<
-  T extends 'gray' | 'negative'
-> = `interactive.background.${T}.${DotNotationToken<
-  Theme['colors']['interactive']['background'][T]
->}`;
-
-type FileUploadItemBackgroundColors =
-  | InteractiveBackgroundColors<'gray'>
-  | InteractiveBackgroundColors<'negative'>
-  | 'feedback.background.negative.subtle'
-  | 'surface.background.gray.intense';
-
 export type {
   BladeFile,
   BladeFileList,
@@ -251,6 +246,5 @@ export type {
   FileUploadItemProps,
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
-  FileUploadItemBackgroundColors,
   FileUploadVariableSizeProps,
 };

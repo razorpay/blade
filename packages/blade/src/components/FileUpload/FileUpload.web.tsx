@@ -16,7 +16,7 @@ import {
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { isFileAccepted } from './isFileAccepted';
-import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { FileUploadDropAreaIcon } from './FileUploadItemIcon';
 import { UploadIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
@@ -217,17 +217,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     event.target.value = '';
   };
 
-  const getFileIconExtension = (acceptValue?: string): string => {
-    if (!acceptValue) return 'example.xyz';
-
-    const extensions = acceptValue
-      .split(',')
-      .map((ext) => ext.trim())
-      .filter((ext) => ext.startsWith('.'));
-
-    return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
-  };
-
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
 
@@ -295,15 +284,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 justifyContent="center"
                 alignItems="center"
                 flexDirection={{ base: 'column', s: `${isSizeVariable ? 'column' : 'row'}` }}
-                gap={makeSize(6)}
+                gap={isSizeVariable ? 'spacing.2' : makeSize(6)}
                 // The 32px small area can't fit the default 8px vertical padding around a text line
                 padding={size === 'small' ? ['spacing.2', 'spacing.3'] : 'spacing.3'}
               >
                 {isSizeVariable && (
-                  <FileUploadItemIcon
-                    fileName={getFileIconExtension(accept)}
-                    uploadStatus="success"
-                  />
+                  // 8px margin plus the 4px gap keeps 12px between the icon and the text below it
+                  <BaseBox marginBottom="spacing.3">
+                    <FileUploadDropAreaIcon isDisabled={isDisabled} />
+                  </BaseBox>
                 )}
 
                 {shouldShowDropAreaText ? (
@@ -348,7 +337,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   flexDirection={{ base: 'column', s: 'row' }}
                   borderRadius="small"
                 >
-                  {/* Upload action: neutral link colors with a leading icon and an underlined label */}
+                  {/* Upload action: neutral link colors with a leading icon */}
                   <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
                     <UploadIcon
                       size={fileUploadLinkIconSizeTokens[size]}
@@ -361,7 +350,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     <Text
                       size={fileUploadDropAreaTextSizeTokens[size]}
                       weight="medium"
-                      textDecorationLine="underline"
                       color={
                         isDisabled
                           ? fileUploadColorTokens.link.disabled
@@ -380,12 +368,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={selectedFiles[0]}
             size={size}
-            onRemove={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-              setSelectedFiles(() => newFiles);
+            // Failed files only offer Reupload, which already removes the file before reopening the picker
+            onRemove={
+              selectedFiles[0].status === 'error'
+                ? undefined
+                : () => {
+                    const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+                    setSelectedFiles(() => newFiles);
 
-              onRemove?.({ file: selectedFiles[0] });
-            }}
+                    onRemove?.({ file: selectedFiles[0] });
+                  }
+            }
             onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
@@ -446,11 +439,16 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
-              onRemove={() => {
-                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-                setSelectedFiles(() => newFiles);
-                onRemove?.({ file });
-              }}
+              // Failed files only offer Reupload, which already removes the file before reopening the picker
+              onRemove={
+                file.status === 'error'
+                  ? undefined
+                  : () => {
+                      const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                      setSelectedFiles(() => newFiles);
+                      onRemove?.({ file });
+                    }
+              }
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
