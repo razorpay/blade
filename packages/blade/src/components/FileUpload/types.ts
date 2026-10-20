@@ -107,7 +107,10 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when a file upload is retried.
    *
-   * The file is removed from the selection before this is called, and the file picker reopens on web.
+   * Inside `FileUpload`, the file is removed from the internal selection before this is called, and the file picker
+   * reopens on web. In controlled mode `fileList` decides what is shown, so remove or replace the failed file from
+   * `fileList` inside `onReupload`. `FileUploadItem` used on its own only calls this callback; it doesn't remove the
+   * file or open a picker.
    *
    * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
    * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
