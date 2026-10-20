@@ -190,10 +190,12 @@ const FileUploadItem = memo(
                       icon={EyeIcon}
                       onClick={() => onPreview({ file })}
                     />
-                    <Divider orientation="vertical" thickness="thinner" variant="normal" />
+                    {onRemove ? (
+                      <Divider orientation="vertical" thickness="thinner" variant="normal" />
+                    ) : null}
                   </>
                 ) : null}
-                {removeButton}
+                {onRemove ? removeButton : null}
               </BaseBox>
             )}
           </BaseBox>

@@ -360,6 +360,22 @@ describe('<FileUploadItem />', () => {
     expect(queryByText(/Uploading/)).toBeNull();
   });
 
+  it('should not show a remove button for a successful file when onRemove is not provided', () => {
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success',
+    } as BladeFile;
+
+    const { queryByRole, getByRole } = renderWithTheme(
+      <FileUploadItem file={successFile} onPreview={jest.fn()} />,
+    );
+
+    expect(queryByRole('button', { name: 'Remove report.pdf' })).toBeNull();
+    expect(getByRole('button', { name: 'Preview report.pdf' })).toBeTruthy();
+  });
+
   it('should not show a file-type label in the leading icon', () => {
     const successFile = {
       id: 'file-1',

@@ -96,11 +96,17 @@ type FileUploadCommonProps = {
    */
   onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
-   * Callback function triggered when a file is removed
+   * Callback function triggered when a file is removed with the remove (trash) button.
+   *
+   * Files with `status: 'error'` show only a Reupload action, so `onRemove` is not called for them from that row.
+   * When `onReupload` is not passed, clicking Reupload calls `onRemove` instead. In controlled mode, remove or replace
+   * the failed file from `fileList` inside `onReupload`.
    */
   onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is retried.
+   *
+   * The file is removed from the selection before this is called, and the file picker reopens on web.
    *
    * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
    * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
