@@ -98,9 +98,10 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when a file is removed with the remove (trash) button.
    *
-   * Files with `status: 'error'` show only a Reupload action, so `onRemove` is not called for them from that row.
-   * When `onReupload` is not passed, clicking Reupload calls `onRemove` instead. In controlled mode, remove or replace
-   * the failed file from `fileList` inside `onReupload`.
+   * Inside `FileUpload`, files with `status: 'error'` show only a Reupload action, so `onRemove` is not called for
+   * them from that row. When `onReupload` is not passed, clicking Reupload calls `onRemove` instead. In controlled mode,
+   * remove or replace the failed file from `fileList` inside `onReupload`. `FileUploadItem` used on its own shows the
+   * remove button whenever `onRemove` is passed, including for failed files.
    */
   onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
