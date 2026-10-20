@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': patch
+'@razorpay/blade': minor
 '@razorpay/blade-plugin': patch
 '@razorpay/blade-mcp': patch
 ---
