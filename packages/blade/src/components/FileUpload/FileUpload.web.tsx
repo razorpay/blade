@@ -105,6 +105,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
+  const [isDragActive, setIsDragActive] = useState(false);
 
   const isMultiple = uploadType === 'multiple';
   const isOneFileSelectedWithSingleUpload = !isMultiple && selectedFiles.length === 1;
@@ -180,16 +181,19 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const handleDragOver = (event: React.DragEvent): void => {
     event.preventDefault();
     setIsActive(true);
+    setIsDragActive(true);
   };
 
   const handleDragLeave = (event: React.DragEvent): void => {
     event.preventDefault();
     setIsActive(false);
+    setIsDragActive(false);
   };
 
   const handleDrop = (event: React.DragEvent): void => {
     event.preventDefault();
     setIsActive(false);
+    setIsDragActive(false);
 
     const droppedFiles = Array.from(event.dataTransfer.files);
     const allFiles = selectedFiles.length > 0 ? [...selectedFiles, ...droppedFiles] : droppedFiles;
@@ -262,6 +266,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               size={size}
               isDisabled={isDisabled}
               isActive={isActive}
+              isDragActive={isDragActive}
               display="flex"
               flexDirection="row"
               justifyContent="center"

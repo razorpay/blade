@@ -233,6 +233,10 @@ type FileUploadItemProps = Pick<
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
   isActive: boolean;
+  /**
+   * A file is being dragged over the drop area (web only). Drives the active border colour.
+   */
+  isDragActive?: boolean;
   size: NonNullable<FileUploadProps['size']>;
   theme: Theme;
   children: React.ReactNode;

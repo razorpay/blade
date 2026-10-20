@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/react';
 import { FileUpload } from '../FileUpload';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../FileUpload.web';
@@ -387,6 +388,29 @@ describe('<FileUploadItem />', () => {
     const { queryByText } = renderWithTheme(<FileUploadItem file={successFile} />);
 
     expect(queryByText('.pdf')).toBeNull();
+  });
+});
+
+describe('<FileUpload /> drop area border', () => {
+  const getDropArea = (container: HTMLElement): HTMLElement =>
+    container.querySelector('[data-comp="f"]') as HTMLElement;
+
+  it('should keep the default border after a click and use the active border only while dragging', () => {
+    const { container } = renderWithTheme(
+      <FileUpload uploadType="single" label="Upload GST" name="gst" />,
+    );
+    const dropArea = getDropArea(container);
+    const defaultBorder = getComputedStyle(dropArea).borderColor;
+
+    fireEvent.click(dropArea);
+    expect(getComputedStyle(dropArea).borderColor).toBe(defaultBorder);
+
+    fireEvent.dragOver(dropArea);
+    const dragBorder = getComputedStyle(dropArea).borderColor;
+    expect(dragBorder).not.toBe(defaultBorder);
+
+    fireEvent.dragLeave(dropArea);
+    expect(getComputedStyle(dropArea).borderColor).toBe(defaultBorder);
   });
 });
 
