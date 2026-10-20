@@ -393,7 +393,7 @@ describe('<FileUploadItem />', () => {
 
 describe('<FileUpload /> drop area border', () => {
   const getDropArea = (container: HTMLElement): HTMLElement =>
-    container.querySelector('[data-comp="f"]') as HTMLElement;
+    container.querySelector<HTMLElement>('[data-comp="f"]')!;
 
   it('should keep the default border after a click and use the active border only while dragging', () => {
     const { container } = renderWithTheme(
