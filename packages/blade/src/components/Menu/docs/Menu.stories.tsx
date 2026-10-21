@@ -169,6 +169,18 @@ export default {
 
 type TemplateProps = MenuProps & { trigger: React.ReactElement };
 
+// Menu doesn't ship a section heading component, so consumers compose one.
+// Styles mirror the section title of ActionList.
+const MenuSectionHeading = ({ title }: { title: string }): React.ReactElement => {
+  return (
+    <Box padding="spacing.3">
+      <Text size="small" weight="semibold" color="surface.text.gray.muted">
+        {title}
+      </Text>
+    </Box>
+  );
+};
+
 const accountsMenuOverlayContent = (
   <>
     <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
@@ -184,7 +196,8 @@ const accountsMenuOverlayContent = (
     <Button variant="tertiary" isFullWidth size="xsmall">
       Switch Merchant
     </Button>
-    <MenuDivider marginY="spacing.3" />
+    <MenuDivider marginTop="spacing.3" />
+    <MenuSectionHeading title="Quick Actions" />
     <MenuItem
       title="Enable Test Mode"
       leading={<TestIcon size="small" />}
