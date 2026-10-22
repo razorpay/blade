@@ -37,11 +37,17 @@
     </div>
 
     <div style="margin-top: 24px;">
-      <Heading size="large">Step 2: Import Theme CSS</Heading>
-      <Text size="medium" color="surface.text.gray.muted">Add to your entry file or layout:</Text>
+      <Heading size="large">Step 2: Import Theme CSS and Component Styles</Heading>
+      <Text size="medium" color="surface.text.gray.muted">
+        Add to your entry file or layout. Component styles ship as a single stylesheet, so
+        components render unstyled without the styles.css import:
+      </Text>
       <pre
         style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"
-        ><code>import '@razorpay/blade-core/tokens/theme.css';</code></pre
+        ><code
+          >{`import '@razorpay/blade-core/tokens/theme.css';
+import '@razorpay/blade-core/styles.css';`}</code
+        ></pre
       >
     </div>
 
