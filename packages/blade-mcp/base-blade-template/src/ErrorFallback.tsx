@@ -1,6 +1,9 @@
 import { Alert, Box, Heading, Text } from '@razorpay/blade/components';
 import { useEffect, useState } from 'react';
-const ErrorFallback = ({ error }: { error: Error; resetErrorBoundary?: () => void }) => {
+import type { FallbackProps } from 'react-error-boundary';
+
+const ErrorFallback = ({ error: thrown }: FallbackProps) => {
+  const error = thrown instanceof Error ? thrown : new Error(String(thrown));
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {

@@ -34,7 +34,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onError={(error, info) => {
-          console.error(`[ErrorBoundary]: ${error.message}\nError Stack: ${info.componentStack}`);
+          console.error(
+            `[ErrorBoundary]: ${
+              error instanceof Error ? error.message : String(error)
+            }\nError Stack: ${info.componentStack}`,
+          );
         }}
       >
         <App />
