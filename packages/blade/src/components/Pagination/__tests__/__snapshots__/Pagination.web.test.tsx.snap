@@ -1307,18 +1307,6 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 .c32.c32.c32.c32.c32 {
   background-color: hsla(206,10%,29%,0.09);
   border: none;
@@ -3419,18 +3407,6 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 .c7.c7.c7.c7.c7 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c7.c7.c7.c7.c7:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 @media screen and (min-width:768px) {

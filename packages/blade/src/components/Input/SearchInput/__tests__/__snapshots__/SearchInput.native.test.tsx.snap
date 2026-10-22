@@ -198,7 +198,6 @@ exports[`<SearchInput /> should render 1`] = `
           currentInteraction="default"
           data-blade-component="base-box"
           isTableInputCell={false}
-          shouldAddLimitedFocus={false}
           style={
             [
               {},
