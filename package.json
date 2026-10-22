@@ -38,6 +38,7 @@
     "lint:fix:eslint-plugin": "eslint --ext js,jsx,ts,tsx packages/eslint-plugin-blade --fix",
     "lint:fix:stylelint": "stylelint '**/*.{js,jsx,ts,tsx}' --fix",
     "publish-npm": "node ./scripts/publishToNpm.js",
+    "version-packages": "changeset version && node ./scripts/syncPluginManifestVersion.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "postinstall": "yarn build:eslint-plugin-blade",
     "reinstall": "rm -rf packages/blade-core/node_modules packages/blade-svelte/node_modules && yarn install",
