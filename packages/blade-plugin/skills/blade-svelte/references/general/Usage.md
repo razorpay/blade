@@ -12,12 +12,13 @@ Requirements: Node.js 18.12.1 or later and Svelte 5.56.0 or later. `@razorpay/bl
 
 ## Set up the app
 
-Import the theme CSS and fonts once, in the root layout (SvelteKit `src/routes/+layout.svelte`) or the app entry (`App.svelte`), then wrap the app in `BladeProvider`.
+Import the theme CSS, component styles and fonts once, in the root layout (SvelteKit `src/routes/+layout.svelte`) or the app entry (`App.svelte`), then wrap the app in `BladeProvider`.
 
 ```svelte
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import '@razorpay/blade-core/tokens/theme.css';
+  import '@razorpay/blade-core/styles.css';
   import '@razorpay/blade-core/fonts.css';
   import { BladeProvider } from '@razorpay/blade-svelte/components';
   import { bladeTheme } from '@razorpay/blade-core/tokens';
@@ -29,6 +30,8 @@ Import the theme CSS and fonts once, in the root layout (SvelteKit `src/routes/+
   {@render children()}
 </BladeProvider>
 ```
+
+`@razorpay/blade-core/styles.css` holds the component styles. blade-core ships them as one stylesheet instead of injecting them at runtime, so without this import components render unstyled. Blade does not style `body`, so set `body { font-family: var(--font-family-text); }` in your global CSS if plain text outside Blade components should use Blade's font.
 
 `colorScheme` accepts `light`, `dark` or `system`. A nested `BladeProvider` scopes its color scheme to its own subtree, for example a dark section on a light page. Avoid nesting it when you don't need a different scheme.
 

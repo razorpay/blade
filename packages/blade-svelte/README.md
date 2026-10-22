@@ -56,14 +56,15 @@ npm install @razorpay/blade-svelte
 
 The package also exports utilities from `@razorpay/blade-svelte/utils` (e.g., `useInteraction`, `createPortal`).
 
-### Setup Theme CSS
+### Setup Theme CSS and Component Styles
 
-Import the theme CSS in your root layout or app entry file:
+Import the theme CSS and the component styles in your root layout or app entry file. Component styles ship as a single stylesheet (`styles.css`), not injected at runtime, so components render unstyled without it:
 
 ```svelte
 <!-- src/routes/+layout.svelte or App.svelte -->
 <script>
   import '@razorpay/blade-core/tokens/theme.css';
+  import '@razorpay/blade-core/styles.css';
 </script>
 ```
 
@@ -72,6 +73,7 @@ Or in a regular TypeScript/JavaScript file:
 ```ts
 // src/main.ts or src/app.ts
 import '@razorpay/blade-core/tokens/theme.css';
+import '@razorpay/blade-core/styles.css';
 ```
 
 ### Wrap with BladeProvider
