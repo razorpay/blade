@@ -70,7 +70,7 @@ describe('<SearchInput />', () => {
     expect(input).toBeDisabled();
   });
 
-  it('should show spinner when isLoading is passed', async () => {
+  it('should show loader when isLoading is passed', async () => {
     const user = userEvent.setup();
     const label = 'Search here';
 
@@ -89,8 +89,8 @@ describe('<SearchInput />', () => {
     await user.type(input, 'Kamlesh');
     clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
-    const loadingSpinner = queryByRole('progressbar');
-    expect(loadingSpinner).toBeTruthy();
+    const loader = queryByRole('status', { name: 'Loading Content' });
+    expect(loader).toBeTruthy();
   });
 
   it('should handle onChange', async () => {
