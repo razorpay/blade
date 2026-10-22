@@ -3,6 +3,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { inputDropdownButtonPadding } from './baseInputTokens';
+import { BaseInputAffix } from './BaseInputAffix';
 import { throwBladeError, logger } from '~utils/logger';
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
@@ -32,6 +33,7 @@ type InputVisuals = Pick<
   | 'errorText'
   | 'successText'
   | 'validationTextPlacement'
+  | 'hasCompactLeadingSpacing'
 > & {
   size: NonNullable<BaseInputProps['size']>;
   errorTextId?: string;
@@ -85,13 +87,22 @@ const validationTextColor = {
 const getPrefixStyles = ({
   hasLeadingIcon,
   hasPrefix,
+  isCompactLeading,
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
+  isCompactLeading?: boolean;
 }): Pick<BaseBoxProps, 'paddingLeft'> => {
   if (hasPrefix && hasLeadingIcon) {
     return {
       paddingLeft: 'spacing.3',
+    };
+  }
+
+  // e.g. dial code right after the country selector in PhoneNumberInput
+  if (hasPrefix && isCompactLeading) {
+    return {
+      paddingLeft: 'spacing.1',
     };
   }
 
@@ -283,6 +294,7 @@ export const BaseInputVisuals = ({
   trailingButton: TrailingButton,
   errorTextId,
   successTextId,
+  hasCompactLeadingSpacing,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -306,6 +318,8 @@ export const BaseInputVisuals = ({
     trailingDropDown,
     size,
   });
+  // Tighter gaps after the leading interaction element (e.g. PhoneNumberInput's country selector)
+  const isCompactLeading = Boolean(hasCompactLeadingSpacing && hasLeadingInteractionElement);
 
   const insideValidationText =
     validationTextPlacement === 'inside' && validationState !== 'none'
@@ -348,12 +362,17 @@ export const BaseInputVisuals = ({
       <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
         {hasLeadingInteractionElement ? (
           <BaseBox
-            paddingLeft={getInteractionElementStyles({
-              hasTrailingIcon,
-              hasLeadingInteractionElement,
-              hasSuffix,
-              hasTrailingButton,
-            })}
+            paddingLeft={
+              // even gap on all sides, e.g. around PhoneNumberInput's country selector
+              isCompactLeading
+                ? `spacing.${inputDropdownButtonPadding[size]}`
+                : getInteractionElementStyles({
+                    hasTrailingIcon,
+                    hasLeadingInteractionElement,
+                    hasSuffix,
+                    hasTrailingButton,
+                  })
+            }
             paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"
@@ -363,7 +382,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {LeadingIcon ? (
-          <BaseBox paddingLeft="spacing.4" display="flex">
+          <BaseBox paddingLeft={isCompactLeading ? 'spacing.1' : 'spacing.4'} display="flex">
             <LeadingIcon
               size={iconSize[size]}
               color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
@@ -371,7 +390,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasPrefix ? (
-          <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
+          <BaseInputAffix {...getPrefixStyles({ hasLeadingIcon, hasPrefix, isCompactLeading })}>
             <Text
               size={textSize[size]}
               variant="body"
@@ -380,7 +399,7 @@ export const BaseInputVisuals = ({
             >
               {prefix}
             </Text>
-          </BaseBox>
+          </BaseInputAffix>
         ) : null}
         {leadingDropDown ? (
           <BaseBox
@@ -431,7 +450,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasSuffix ? (
-          <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingButton })}>
+          <BaseInputAffix {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingButton })}>
             <Text
               size={textSize[size]}
               variant="body"
@@ -440,7 +459,7 @@ export const BaseInputVisuals = ({
             >
               {suffix}
             </Text>
-          </BaseBox>
+          </BaseInputAffix>
         ) : null}
         {hasInsideValidationText ? (
           <BaseBox
