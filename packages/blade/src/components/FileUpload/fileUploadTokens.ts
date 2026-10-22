@@ -1,4 +1,3 @@
-import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import { size } from '~tokens/global';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
@@ -39,7 +38,7 @@ const fileUploadItemHeightTokens = {
 
 const fileUploadBorderRadiusTokens = {
   small: 'small',
-  medium: 'medium',
+  medium: 'small',
   large: 'medium',
   variable: 'medium',
 } as const;
@@ -65,7 +64,9 @@ const fileUploadColorTokens = {
     disabled: 'surface.text.gray.disabled',
   },
   border: {
-    default: 'interactive.border.gray.default',
+    default: 'interactive.border.gray.highlighted',
+    // While a file is dragged over the area (web) or the area is pressed (native)
+    active: 'interactive.border.primary.faded',
     disabled: 'interactive.border.gray.disabled',
   },
   background: {
@@ -87,44 +88,51 @@ const fileUploadColorTokens = {
   },
 } as const;
 
-const fileUploadItemBackgroundColors: Record<
-  NonNullable<BladeFile['status']>,
-  Record<'default' | 'hover', FileUploadItemBackgroundColors>
-> = {
-  success: {
-    default: 'surface.background.gray.intense',
-    hover: 'surface.background.gray.intense',
+const fileUploadItemColorTokens = {
+  background: 'surface.background.gray.intense',
+  border: {
+    default: 'surface.border.gray.subtle',
+    error: 'interactive.border.negative.faded',
   },
-  error: {
-    default: 'interactive.background.negative.faded',
-    hover: 'interactive.background.negative.fadedHighlighted',
+} as const;
+
+// Leading tile of an uploaded file row
+const fileUploadItemIconTokens = {
+  size: size['40'],
+  background: {
+    default: 'surface.background.gray.subtle',
+    error: 'feedback.background.negative.subtle',
   },
-  uploading: {
-    default: 'surface.background.gray.intense',
-    hover: 'surface.background.gray.intense',
+  icon: {
+    default: 'surface.icon.gray.muted',
+    error: 'interactive.icon.negative.normal',
   },
-};
+} as const;
 
-const getFileIconExtension = (acceptValue?: string): string => {
-  if (!acceptValue) return 'example.xyz';
-
-  const extensions = acceptValue
-    .split(',')
-    .map((ext) => ext.trim())
-    .filter((ext) => ext.startsWith('.'));
-
-  return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
-};
+// File icon above the drop area text when size="variable"
+const fileUploadDropAreaIconTokens = {
+  size: size['56'],
+  background: 'surface.background.gray.intense',
+  border: {
+    default: 'surface.border.gray.muted',
+    disabled: 'interactive.border.gray.disabled',
+  },
+  icon: {
+    default: 'surface.icon.gray.muted',
+    disabled: 'surface.icon.gray.disabled',
+  },
+} as const;
 
 export {
   getFileUploadInputHoverTokens,
   fileUploadMotionTokens,
-  fileUploadItemBackgroundColors,
   fileUploadColorTokens,
+  fileUploadItemColorTokens,
+  fileUploadItemIconTokens,
+  fileUploadDropAreaIconTokens,
   fileUploadHeightTokens,
   fileUploadItemHeightTokens,
   fileUploadBorderRadiusTokens,
   fileUploadDropAreaTextSizeTokens,
   fileUploadLinkIconSizeTokens,
-  getFileIconExtension,
 };

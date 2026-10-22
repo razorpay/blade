@@ -2,7 +2,7 @@ import React from 'react';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { fileUploadItemBackgroundColors, fileUploadItemHeightTokens } from './fileUploadTokens';
+import { fileUploadItemColorTokens, fileUploadItemHeightTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -63,15 +63,11 @@ const StyledFileUploadItemWrapper = ({
       flexShrink={flexShrink}
       flexGrow={flexGrow}
       flexBasis={flexBasis}
-      backgroundColor={getIn(
+      backgroundColor={getIn(theme.colors, fileUploadItemColorTokens.background)}
+      borderColor={getIn(
         theme.colors,
-        fileUploadItemBackgroundColors[status ?? 'success'].default,
+        fileUploadItemColorTokens.border[status === 'error' ? 'error' : 'default'],
       )}
-      borderColor={
-        status === 'error'
-          ? getIn(theme.colors, 'interactive.border.negative.faded')
-          : getIn(theme.colors, 'surface.border.gray.subtle')
-      }
       style={{
         shadowColor,
         shadowOffset: { width: 0, height: 0.5 },

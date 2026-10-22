@@ -1,7 +1,6 @@
 import type { MotionMetaProp } from '~components/BaseMotion';
 import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import type { Platform } from '~utils';
@@ -97,11 +96,21 @@ type FileUploadCommonProps = {
    */
   onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
-   * Callback function triggered when a file is removed
+   * Callback function triggered when a file is removed with the remove (trash) button.
+   *
+   * Inside `FileUpload`, files with `status: 'error'` show only a Reupload action, so `onRemove` is not called for
+   * them from that row. When `onReupload` is not passed, clicking Reupload calls `onRemove` instead. In controlled mode,
+   * remove or replace the failed file from `fileList` inside `onReupload`. `FileUploadItem` used on its own shows the
+   * remove button whenever `onRemove` is passed, including for failed files.
    */
   onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is retried.
+   *
+   * Inside `FileUpload`, the file is removed from the internal selection before this is called, and the file picker
+   * reopens on web. In controlled mode `fileList` decides what is shown, so remove or replace the failed file from
+   * `fileList` inside `onReupload`. `FileUploadItem` used on its own only calls this callback; it doesn't remove the
+   * file or open a picker.
    *
    * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
    * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
@@ -214,12 +223,24 @@ type FileUploadItemProps = Pick<
   flexShrink?: BoxProps['flexShrink'];
   flexGrow?: BoxProps['flexGrow'];
   flexBasis?: BoxProps['flexBasis'];
+  /**
+   * @private
+   *
+   * Compact layout for narrow containers such as ChatInput attachments. Hides the "Uploading" prefix while a file uploads.
+   *
+   * @default false
+   */
+  _isCompact?: boolean;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
   isActive: boolean;
+  /**
+   * A file is being dragged over the drop area (web only). Drives the active border colour.
+   */
+  isDragActive?: boolean;
   size: NonNullable<FileUploadProps['size']>;
   theme: Theme;
   children: React.ReactNode;
@@ -232,18 +253,6 @@ type StyledFileUploadItemWrapperProps = {
   children: React.ReactNode;
 };
 
-type InteractiveBackgroundColors<
-  T extends 'gray' | 'negative'
-> = `interactive.background.${T}.${DotNotationToken<
-  Theme['colors']['interactive']['background'][T]
->}`;
-
-type FileUploadItemBackgroundColors =
-  | InteractiveBackgroundColors<'gray'>
-  | InteractiveBackgroundColors<'negative'>
-  | 'feedback.background.negative.subtle'
-  | 'surface.background.gray.intense';
-
 export type {
   BladeFile,
   BladeFileList,
@@ -251,6 +260,5 @@ export type {
   FileUploadItemProps,
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
-  FileUploadItemBackgroundColors,
   FileUploadVariableSizeProps,
 };
