@@ -251,15 +251,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
+  outline: none;
   background-color: hsla(206,10%,29%,0.06);
 }
 
@@ -268,7 +260,15 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -468,18 +468,6 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -911,15 +899,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
+  outline: none;
   background-color: hsla(206,10%,29%,0.06);
 }
 
@@ -928,7 +908,15 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1128,18 +1116,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 8px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -1569,15 +1545,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
+  outline: none;
   background-color: hsla(206,10%,29%,0.06);
 }
 
@@ -1586,7 +1554,15 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1786,18 +1762,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 .c8.c8.c8.c8.c8 {
   border-radius: 12px;
   width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
 }
 
 @media screen and (min-width:768px) {

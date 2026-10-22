@@ -187,7 +187,6 @@ exports[`<TextInput /> should render 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
-        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -545,7 +544,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
-        shouldAddLimitedFocus={false}
         style={
           [
             {},
