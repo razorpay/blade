@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-plugin",
-  "version": "1.33.0",
+  "version": "1.33.1",
   "private": true,
   "description": "Blade Design System as a Claude Code plugin and cross-agent skills. Source of truth for the Blade knowledgebase.",
   "repository": {
