@@ -25,6 +25,14 @@ function mouse(type: 'pointerenter' | 'pointerleave'): Event {
   return event;
 }
 
+/** The pointerdown that begins a gesture: jsdom has no PointerEvent for it. */
+function pointerDown(type: 'mouse' | 'touch'): Event {
+  // Bubbling, as a real pointerdown does: Svelte delegates it to the root.
+  const event = new Event('pointerdown', { bubbles: true });
+  Object.defineProperty(event, 'pointerType', { value: type });
+  return event;
+}
+
 const wrapper = (toast: HTMLElement): HTMLElement => toast.parentElement!;
 const offsetOf = (toast: HTMLElement): string =>
   wrapper(toast).style.getPropertyValue('--toast-offset');
@@ -303,6 +311,32 @@ describe('showToast', () => {
       .then(() => {
         expect(wrapper(getByTestId('one')).style.getPropertyValue('--toast-scale')).toBe('1');
       });
+  });
+
+  it("a tap expands the stack where the click itself reads as a mouse's", () => {
+    // WebKit reports a tap's click as a mouse pointer event, so the
+    // pointerdown that began the gesture decides, as the tooltip's does.
+    vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
+    const { getByTestId } = setup();
+    void toasts.showToast({ content: '1', duration: 0, testID: 'one' });
+    void toasts.showToast({ content: '2', duration: 0, testID: 'two' });
+    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
+      .then(() => fireEvent(getByTestId('host-toasts'), pointerDown('touch')))
+      .then(() => fireEvent.click(getByTestId('host-toasts')))
+      .then(() => waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')));
+  });
+
+  it('a mouse click leaves the stack as the hover holds it', () => {
+    vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
+    const { getByTestId } = setup();
+    void toasts.showToast({ content: '1', duration: 0, testID: 'one' });
+    void toasts.showToast({ content: '2', duration: 0, testID: 'two' });
+    return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
+      .then(() => fireEvent(getByTestId('host-toasts'), mouse('pointerenter')))
+      .then(() => waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')))
+      .then(() => fireEvent(getByTestId('host-toasts'), pointerDown('mouse')))
+      .then(() => fireEvent.click(getByTestId('host-toasts')))
+      .then(() => expect(offsetOf(getByTestId('one'))).toBe('56'));
   });
 });
 

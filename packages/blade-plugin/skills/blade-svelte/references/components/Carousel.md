@@ -4,16 +4,17 @@ Carousel
 
 ## Description
 
-Carousel shows a row of full-width slides one at a time, swiped, scrolled or picked from the dots under them: offers, onboarding tips, featured cards. It takes its slides as data (`items` with `itemKey`) and renders each with the `children(item, index)` snippet; it binds `activeSlide`, reports `onChange(slideIndex)` with the bare index, can `autoPlay` every 6 seconds (held while the pointer or focus is inside, off under reduced motion), and names its slides and dots through localizable label props.
+Carousel shows a row of full-width slides one at a time, swiped, scrolled, picked from the dots under them or stepped with its previous/next buttons: offers, onboarding tips, featured cards. It takes its slides as data (`items` with `itemKey`) and renders each with the `children(item, index)` snippet; it binds `activeSlide`, reports `onChange(slideIndex)` with the bare index, can `autoPlay` every 6 seconds (held while the pointer or focus is inside, off under reduced motion), and names its slides, dots and buttons through localizable label props.
 
 ## Important Constraints
 
 - Slides are data: `items` and `itemKey` are required, and `children` is a snippet `(item, index)` that renders one slide. There is no CarouselItem
 - `activeSlide` is a zero-based index, bindable; there is no `defaultActiveSlide`. `onChange` gets the bare index
-- Every slide is full width; slides not on show are `inert`. There is no `visibleItems` and no previous/next buttons
-- The dots show only with more than one slide; `showIndicators={false}` hides them
+- Every slide is full width; slides not on show are `inert`. There is no `visibleItems`, no `carouselItemWidth` and no partial slides
+- The previous/next buttons sit under the slides around the dots by default; `navigationButtonPosition` moves them beside the slides, and phones always keep them under the slides
+- `showNavigationButtons={false}` hides the buttons at every width; Blade hides them on phones only
 - The track is a native scroll-snap row: touch, wheel and keyboard scrolling are the platform's
-- Carousel has no style props; size it with `class` on it or its parent
+- Its only style props are the buttons' (`navigationButtonVariant`, `navigationButtonPosition`); size it with `class` on it or its parent
 
 ## Props
 
@@ -31,6 +32,16 @@ interface CarouselProps<T> {
   autoPlay?: boolean;
   /** The dots under the slides, each going to its slide. @default true */
   showIndicators?: boolean;
+  /** The previous and next buttons; off hides them at every width. @default true */
+  showNavigationButtons?: boolean;
+  /** `bottom` (under the slides, around the dots), `side` or `side-overlap` (half past the edge); phones always use `bottom`. @default 'bottom' */
+  navigationButtonPosition?: 'bottom' | 'side' | 'side-overlap';
+  /** `filled` (white and raised) or `stroked` (a white wash). @default 'filled' */
+  navigationButtonVariant?: 'filled' | 'stroked';
+  /** Localized; names the previous button. @default 'Previous Slide' */
+  previousButtonLabel?: string;
+  /** Localized; names the next button. @default 'Next Slide' */
+  nextButtonLabel?: string;
   /** Names the carousel. */
   accessibilityLabel?: string;
   /** Localized; names each slide. @default (position, count) => `${position} of ${count}` */
@@ -51,7 +62,8 @@ interface CarouselProps<T> {
 
 - Use Carousel for a few promotional or explanatory slides of equal weight; don't hide content the user must see in a later slide.
 - Give it an `accessibilityLabel` that says what the slides are ("Offers").
-- Localize `slideLabel`, `indicatorLabel` and `indicatorsAccessibilityLabel` for non-English apps.
+- Localize `slideLabel`, `indicatorLabel`, `indicatorsAccessibilityLabel`, `previousButtonLabel` and `nextButtonLabel` for non-English apps.
+- Leave the buttons in their `bottom` position on phones: `side` and `side-overlap` only take effect from the `d:` breakpoint up.
 - Use `autoPlay` only for short promotional content.
 - Bind `activeSlide` to drive it from your own controls or to read where the user is.
 

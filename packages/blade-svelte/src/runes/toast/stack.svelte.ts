@@ -44,8 +44,10 @@ export interface ToastStack<S extends object> {
   /** A mouse over the stack: expands it and holds the timers. */
   handlePointerEnter(event: PointerEvent): void;
   handlePointerLeave(event: PointerEvent): void;
+  /** What started the gesture: a tap's click cannot name its own pointer. */
+  handlePointerDown(event: PointerEvent): void;
   /** A tap (touch, pen) on the stack: toggles both. */
-  handleClick(event: MouseEvent): void;
+  handleClick(): void;
 }
 
 /**
@@ -66,6 +68,10 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
   // height, which must never overwrite its own.
   let heights = $state.raw<Record<number, number>>({});
   let isHeld = $state(false);
+  // What started the gesture in flight. WebKit reports a tap's click as a
+  // mouse pointer event, so the click's own `pointerType` cannot be trusted:
+  // the pointerdown that began it is what says whether a mouse did it.
+  let pointer: string | undefined;
 
   // Front first: the model keeps the newest last.
   const order = $derived([...model.entries].reverse().map((entry) => entry.id));
@@ -156,10 +162,15 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
         hold(false);
       }
     },
-    handleClick(event) {
-      if ((event as PointerEvent).pointerType !== 'mouse') {
-        hold(!isHeld);
-      }
+    handlePointerDown(event) {
+      pointer = event.pointerType;
+    },
+    handleClick() {
+      const via = pointer;
+      pointer = undefined;
+      // A mouse has the stack through hover already; what is left is a tap.
+      if (via === 'mouse') return;
+      hold(!isHeld);
     },
   };
 }

@@ -183,6 +183,8 @@ const shellOf = (page: Page): Locator =>
 test.describe('Shell', () => {
   test('a full-height shell scrolls its content; a modal opens in view and nothing behind it scrolls', async ({
     page,
+    browserName,
+    isMobile,
   }) => {
     await gotoStory(page, 'components-modal--basic');
     await reshape(page, 'full');
@@ -199,6 +201,10 @@ test.describe('Shell', () => {
     await settled(dialog);
     await expect(dialog).toBeInViewport({ ratio: 1 });
 
+    // Mobile WebKit has no mouse wheel: the wheel behind the overlay is a
+    // desktop's to prove.
+    if (browserName === 'webkit' && isMobile) return;
+
     const box = (await dialog.boundingBox())!;
     // Over the scrim (inside the shell: Storybook pads around it), then the panel.
     await page.mouse.move(shell!.x + 10, viewport.height / 2);
@@ -210,7 +216,10 @@ test.describe('Shell', () => {
 
   test('over a shorter shell the overlay covers only the shell, and a wheel over it moves no page', async ({
     page,
+    browserName,
+    isMobile,
   }) => {
+    test.skip(browserName === 'webkit' && isMobile, 'mobile WebKit has no mouse wheel');
     await gotoStory(page, 'components-modal--basic');
     await reshape(page, 'short');
     await open(page, 'modal');
