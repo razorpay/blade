@@ -12,7 +12,7 @@
  * ```
  *
  * Each icon is its SVG file: a URL, drawn as a mask. With `bladePlugin`
- * (`@razorpay/blade-svelte/vite` or `/webpack`) in the build, it is a glyph of
+ * (`@razorpay/blade-svelte/configs/vite` or `/configs/webpack`) in the build, it is a glyph of
  * a font holding exactly the icons the app imports.
  */
 export * from './glyphs.js';
