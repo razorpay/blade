@@ -25,7 +25,9 @@ export interface HeaderRegistry {
 
 /** Call during component initialisation (the host). */
 export function createHeaderRegistry(id: string): HeaderRegistry {
-  let entries = $state<HeaderParts[]>([]);
+  // Raw: an entry is found again by identity on unregister, and a deep
+  // state array would hand back its proxy instead.
+  let entries = $state.raw<readonly HeaderParts[]>([]);
   return {
     titleId: `${id}-title`,
     subtitleId: `${id}-subtitle`,

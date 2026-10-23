@@ -26,8 +26,10 @@
   }: Props = $props();
 
   const reduced = prefersReducedMotion();
-  // Svelte slides through the Web Animations API: without it, just mount.
-  const still = reduced || typeof document.body.animate !== 'function';
+  // Svelte slides through the Web Animations API: without it (or on the
+  // server, where there is no document), just mount.
+  const still =
+    reduced || typeof document === 'undefined' || typeof document.body.animate !== 'function';
 
   // Blade's Collapsible: the height on the standard easing, fading from 0.8.
   function collapse(node: Element): TransitionConfig {

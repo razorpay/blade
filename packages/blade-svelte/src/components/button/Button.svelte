@@ -114,7 +114,11 @@
     loadingAnnouncement: () => loadingAnnouncement,
     loadedAnnouncement: () => loadedAnnouncement,
   });
-  const link = createLink(() => ({ href, target, rel }));
+  // A link button refuses the press while its group is disabled or it is
+  // busy, as Blade's BaseButton; its own `isDisabled` stays ignored with
+  // `href`. Group-disabled, it drops its href, as Link does.
+  const isLinkDisabled = $derived(Boolean(group?.isDisabled) || press.busy);
+  const link = createLink(() => ({ href, target, rel, isDisabled: isLinkDisabled }));
 
   const isIconOnly = $derived(Boolean(icon) && !children && !trailingIcon);
   const classes = $derived(resolveButton(group?.shared ?? style.current, isIconOnly));
@@ -139,16 +143,26 @@
 
 {#if href}
   <a
-    {href}
+    href={group?.isDisabled ? undefined : href}
     {target}
     rel={link.rel}
-    class={cx(classes.root, className)}
+    class={cx(classes.root, press.busy && classes.busy, className)}
+    aria-disabled={isLinkDisabled ? 'true' : undefined}
+    aria-busy={press.busy ? 'true' : undefined}
     aria-label={accessibilityLabel}
     data-testid={testID}
     {...analytics}
     onclick={(event) => link.click(event, onClick)}
   >
-    <span class={classes.content} data-part="content">{@render content()}</span>
+    <span
+      class={cx(classes.content, press.busyCause && classes.busyContent)}
+      data-part="content"
+    >
+      {@render content()}
+    </span>
+    {#if press.busyCause}
+      {@render loader()}
+    {/if}
   </a>
 {:else}
   <button

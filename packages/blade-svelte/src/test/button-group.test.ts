@@ -53,6 +53,18 @@ describe('ButtonGroup', () => {
     expectClass(group, '[&>:first-child]:rounded-bl-medium');
   });
 
+  it('a disabled group disables its link buttons too: no href, the click refused', () => {
+    const onClick = vi.fn();
+    const { getByTestId } = render(ButtonGroupHarness, {
+      props: { isDisabled: true, withLink: true, onClick },
+    });
+    const link = getByTestId('link');
+    expect(link.hasAttribute('href')).toBe(false);
+    expect(link.getAttribute('aria-disabled')).toBe('true');
+    link.click();
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   it('disabled joins: the group disables all, a button may disable itself', async () => {
     const onClick = vi.fn();
     const enabled = render(ButtonGroupHarness, { props: { onClick } });

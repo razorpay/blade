@@ -85,6 +85,21 @@ describe('Button standalone', () => {
     expectClass(button, 'font-semibold');
   });
 
+  it('a loading link is busy as the button is, and refuses the click', () => {
+    const onClick = vi.fn();
+    const { getByTestId } = render(Button, {
+      props: { children: label, href: '/pay', isLoading: true, onClick, testID: 'b' },
+    });
+    const anchor = getByTestId('b');
+    expect(anchor.getAttribute('aria-busy')).toBe('true');
+    expect(anchor.getAttribute('aria-disabled')).toBe('true');
+    expect(anchor.getAttribute('href')).toBe('/pay');
+    const click = new MouseEvent('click', { bubbles: true, cancelable: true });
+    anchor.dispatchEvent(click);
+    expect(click.defaultPrevented).toBe(true);
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   it('renders an anchor with href, and ignores isDisabled there', () => {
     const { getByTestId } = render(Button, {
       props: { children: label, href: '/pay', isDisabled: true, testID: 'b' },

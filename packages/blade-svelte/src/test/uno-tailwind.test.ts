@@ -166,6 +166,18 @@ describe('Tailwind v3 utilities from an app theme', async () => {
   });
 });
 
+describe('comma-bearing theme values', () => {
+  it('keeps commas inside brackets: grid templates stay valid CSS', async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({
+        theme: { gridTemplateRows: { layout: 'repeat(3, minmax(0, 1fr))' } } as ThemeConfig,
+      }),
+    );
+    const { css } = await uno.generate(new Set(['grid-rows-layout']), { preflights: false });
+    expect(css).toContain('grid-template-rows:repeat(3, minmax(0, 1fr))');
+  });
+});
+
 describe('theme() in a class', () => {
   it('is not read: a class writes the value itself', async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));

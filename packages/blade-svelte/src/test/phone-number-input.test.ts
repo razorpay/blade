@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import PhoneNumberInputHarness from './fixtures/PhoneNumberInputHarness.svelte';
+import InputGroupHarness from './fixtures/InputGroupHarness.svelte';
 import { glyphsIn } from './classes';
 import { ChevronUpDownIcon, InfoIcon } from '../icons';
 import type { FieldRecord } from '../runes/form/types';
@@ -314,5 +315,15 @@ describe("the country list's gutter: the overlay's `--overlay-gutter`", () => {
         ),
       ).toBe(true),
     );
+  });
+});
+
+describe('PhoneNumberInput in an InputGroup', () => {
+  it('a disabled group disables the country picker as well as the number', () => {
+    const { getByTestId } = render(InputGroupHarness, {
+      props: { isDisabled: true, withPhone: true },
+    });
+    expect((getByTestId('phone-country') as HTMLButtonElement).disabled).toBe(true);
+    expect((getByTestId('phone') as HTMLInputElement).disabled).toBe(true);
   });
 });

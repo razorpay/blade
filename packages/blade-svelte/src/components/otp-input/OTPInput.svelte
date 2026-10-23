@@ -207,6 +207,10 @@
       />
     {/each}
   </div>
+  <!-- What a plain form submit posts, as React's: the cells carry no name. -->
+  {#if name}
+    <input type="hidden" {name} value={value ?? ''} disabled={isDisabled} />
+  {/if}
   {#if hint.text}
     <FieldHint
       id={otp.hintId}

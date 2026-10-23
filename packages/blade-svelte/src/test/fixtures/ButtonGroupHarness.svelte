@@ -10,9 +10,11 @@
     onClick?: () => void;
     /** An open overlay whose trigger sits in the group, with a Button inside. */
     overlay?: 'popover' | 'menu';
+    /** A link Button (`href`) in the group too. */
+    withLink?: boolean;
   }
 
-  let { isDisabled, onClick, overlay, ...style }: Props = $props();
+  let { isDisabled, onClick, overlay, withLink = false, ...style }: Props = $props();
 </script>
 
 {#snippet trigger()}
@@ -28,6 +30,7 @@
   <Button variant="secondary" color="negative" size="large" testID="one" {onClick}>One</Button>
   <Button testID="two">Two</Button>
   <Button isDisabled testID="three">Three</Button>
+  {#if withLink}<Button href="/more" testID="link" {onClick}>Link</Button>{/if}
   {#if overlay === 'popover'}
     <Popover isOpen children={trigger} accessibilityLabel="More" content={inner} />
   {:else if overlay === 'menu'}

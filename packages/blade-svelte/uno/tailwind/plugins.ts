@@ -64,6 +64,34 @@ const CSS_TOUCH_ACTION = 'var(--tw-pan-x) var(--tw-pan-y) var(--tw-pinch-zoom)';
 const CSS_FONT_VARIANT_NUMERIC =
   'var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)';
 
+/**
+ * `postcss.list.comma`: the parts between commas outside brackets and
+ * quotes, so `repeat(3, minmax(0, 1fr))` stays one part.
+ */
+function splitTopLevelCommas(value: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let quote = '';
+  let start = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    const char = value[index];
+    if (quote) {
+      if (char === quote && value[index - 1] !== '\\') quote = '';
+    } else if (char === '"' || char === "'") {
+      quote = char;
+    } else if (char === '(' || char === '[') {
+      depth += 1;
+    } else if (char === ')' || char === ']') {
+      depth = Math.max(0, depth - 1);
+    } else if (char === ',' && depth === 0) {
+      parts.push(value.slice(start, index));
+      start = index + 1;
+    }
+  }
+  parts.push(value.slice(start));
+  return parts.map((part) => part.trim()).filter(Boolean);
+}
+
 /** How a theme key's value becomes CSS (src/util/transformThemeValue.js). */
 function transformThemeValue(themeKey: string): (value: any) => any {
   if (['fontSize', 'outline'].includes(themeKey)) {
@@ -93,14 +121,7 @@ function transformThemeValue(themeKey: string): (value: any) => any {
   }
   if (['gridTemplateColumns', 'gridTemplateRows', 'objectPosition'].includes(themeKey)) {
     // postcss.list.comma, joined with spaces
-    return (value) =>
-      typeof value === 'string'
-        ? value
-            .split(/,(?![^(]*\))/)
-            .map((part) => part.trim())
-            .filter(Boolean)
-            .join(' ')
-        : value;
+    return (value) => (typeof value === 'string' ? splitTopLevelCommas(value).join(' ') : value);
   }
   return (value) => value;
 }

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import OTPInputHarness from './fixtures/OTPInputHarness.svelte';
+import OTPInput from '../components/otp-input/OTPInput.svelte';
 import { expectClass } from './classes';
 
 type Queries = { getByTestId: (id: string) => HTMLElement };
@@ -15,7 +16,8 @@ describe('OTPInput standalone', () => {
   it('renders one named cell per character with recipe classes', () => {
     const queries = render(OTPInputHarness, { props: { otpLength: 4 } });
 
-    expect(queries.container.querySelectorAll('input')).toHaveLength(4);
+    // The cells; a named OTPInput also carries one hidden input for a form.
+    expect(queries.container.querySelectorAll('input:not([type="hidden"])')).toHaveLength(4);
     // Classes come from the component's own styles.
     expectClass(cell(queries, 0), 'rounded-small');
     expect(cell(queries, 2).getAttribute('aria-label')).toBe('Enter OTP 3');
@@ -377,5 +379,14 @@ describe('OTPInput standalone', () => {
       await flush();
       expect(reportError).toHaveBeenCalledWith(error);
     });
+  });
+});
+
+describe('OTPInput in a plain form', () => {
+  it('posts the code under its name, through one hidden input', () => {
+    const { container } = render(OTPInput, { props: { name: 'otp', value: '1234', otpLength: 4 } });
+    const hidden = container.querySelector<HTMLInputElement>('input[type="hidden"][name="otp"]');
+    expect(hidden?.value).toBe('1234');
+    expect(container.querySelectorAll('input[name="otp"]')).toHaveLength(1);
   });
 });

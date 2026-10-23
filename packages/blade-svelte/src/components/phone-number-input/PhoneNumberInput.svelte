@@ -17,6 +17,7 @@
   import { createNodeRef } from '../../runes/dom/node.svelte';
   import type { InputGroupSpan } from '../input-group/styles';
   import TextInput from '../text-input/TextInput.svelte';
+  import { getInputGroup } from '../../runes/input-group/context';
   import type { TextInputValidationState } from '../text-input/styles';
   import {
     resolvePhoneNumberInput,
@@ -139,6 +140,10 @@
   // Blade puts them on the number control.
   const analytics = $derived(analyticsAttributes(styleProps));
   const adapters = getAdapters();
+  // An enclosing disabled InputGroup disables the country picker too, as it
+  // does the number field (TextInput reads the group itself).
+  const group = getInputGroup();
+  const disabled = $derived(isDisabled || Boolean(group?.isDisabled()));
   // The number field, which a country pick edits as typing does.
   let numberField: { change: (value: string) => boolean } | undefined;
 
@@ -203,6 +208,7 @@
   const dropdown = createLocalOverlay<Omit<ListProps, 'onPick'>, PhoneCountry>();
 
   function handleCountryClick(): void {
+    if (disabled) return;
     if (dropdown.isOpen) {
       dropdown.close();
     } else {
@@ -229,7 +235,7 @@
     <button
       type="button"
       class={classes.country}
-      disabled={isDisabled}
+      {disabled}
       aria-haspopup="dialog"
       aria-expanded={dropdown.isOpen}
       aria-controls={dropdown.isOpen ? dropdownId : undefined}
