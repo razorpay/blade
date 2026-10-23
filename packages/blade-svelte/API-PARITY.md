@@ -65,7 +65,7 @@ Drawer, Popover or Menu.
    are folded into the bindable prop** (`bind:value`, …). There is no separate
    default prop.
 4. **Collections compose, as in React**: item components (`CardGroupItem`,
-   `MenuItem`, …) register with their parent and are read in
+   `ActionListItem`, …) register with their parent and are read in
    document order, so anything else may sit between them (a heading, a
    divider). A collection is data plus an item snippet only where it must
    know every item up front: `Carousel`, and a long CardGroup or ActionList
@@ -264,7 +264,7 @@ replaced by a rule.
 | List                                                      | —                                                              | react-only                                                                                                                                                                                              |
 | ListView                                                  | —                                                              | react-only                                                                                                                                                                                              |
 | LiveAnnouncer                                             | —                                                              | n/a                                                                                                                                                                                                     |
-| Menu                                                      | `menu` (Menu) + any content                                    | common, **changed**: Menu's look on a `dialog` panel by its trigger (`children`); an ActionList inside is an ordinary choice list whose `onPick` closes it (see Overlays)                                          |
+| Menu                                                      | `menu` (Menu) + any content                                    | common, **changed**: Menu's look on a `dialog` panel by its trigger (`children`); an ActionList inside is an ordinary choice list whose `onPick` closes it (see Menu, Overlays)                                     |
 | Modal                                                     | `modal`                                                        | common, **done**: the centred dialog only (no `variant`); opening from code is the app's, on these overlays                                                                                             |
 | OverlayContextReset                                       | —                                                              | n/a                                                                                                                                                                                                     |
 | Pagination                                                | —                                                              | react-only                                                                                                                                                                                              |
@@ -1350,89 +1350,51 @@ passes; the measurements above match React Storybook.
 
 ---
 
-## Dropdown and Menu
+## Menu
 
-> **Superseded (decided):** the Dropdown and Menu components below were
-> removed. Menu is its own overlay (`components/menu/`) with an ActionList
-> inside; a select dropdown is not ported, as it is not mobile friendly.
-> See Overlays at the end. The comparison stays as the record of what the
-> rows and the keyboard do.
+React: `Menu` (`MenuOverlay`, `MenuItem`, `MenuHeader`, `MenuFooter`,
+`MenuDivider`), a `role="menu"` of `menuitem`s; and `Dropdown` with a
+trigger (`DropdownButton`, `DropdownLink`, `DropdownIconButton`, or an input
+trigger: `SelectInput`, `AutoComplete`, `FilterChipSelectInput`), a
+`DropdownOverlay` (+ `DropdownHeader`, `DropdownFooter`) and an `ActionList`.
 
-React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
-`DropdownIconButton`, or an input trigger: `SelectInput`, `AutoComplete`,
-`FilterChipSelectInput`), a `DropdownOverlay` (+ `DropdownHeader`,
-`DropdownFooter`) and an `ActionList`. One component does both jobs; the
-trigger and `selectionType` decide whether it's an action menu or a picker.
+cx: **`Menu` only** (`components/menu/`): Blade's Menu look on a floating
+panel by its trigger, holding whatever the app puts in it — usually an
+ActionList whose `onPick` calls the body's `close`. Its semantics, a
+`dialog` rather than React's `menu`, are under Overlays.
 
-cx: two components on one core.
-
-- **`Menu` + `MenuItem`** (`components/menu/`): do something; items act like buttons and every pick closes it.
-- **`Dropdown` + `ActionList` (`ActionListItem`, `ActionListSection`), `DropdownHeader`, `DropdownFooter`** (`components/dropdown/`, `components/action-list/`): pick a value; the row stays selected.
-
-**Decision:** split, as the Blade designers do ("if the click saves a
-choice, use Dropdown; if it triggers an action, use Menu"). Neither extends
-the other: both are thin layers over `createPopupList`
-(`runes/popup-list/`): ordered rows, the keyboard, the disclosure and the
-trigger. Menu adds a momentary pick (act and close). Dropdown adds a held
-pick in a form field (`heldSelection` from `base/choice-list`,
-`createFieldShell`), closing on a single pick only, as React.
-
-**Focus model:** both keep focus on one element (the list, or a search
-field) and name the active row with `aria-activedescendant`. Menu used to
-move focus onto each item; the visible behaviour is unchanged.
+**Decision:** no Dropdown. A select dropdown (React's SelectInput,
+Dropdown, AutoComplete, FilterChipSelectInput) is not ported: a field
+opening a floating list is not mobile friendly. A pick is an ActionList on
+the page, in a BottomSheet or in a Menu. React's Menu parts are not ported
+either: the rows are ActionList's.
 
 ### Props
 
-| React                                                                                                           | cx                                                                                                                                                       | Action                                                                                               |
-| --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `DropdownButton` / `DropdownLink` / `DropdownIconButton`                                                        | the `children` trigger, the caller's Button or Link (Menu: receives `{ isOpen }`; Dropdown: `{ isOpen, selected }`, the picked rows' titles)             | rule 13; the wrapper stamps `aria-haspopup` / `aria-expanded`                                        |
-| `DropdownOverlay` (Menu: `MenuOverlay`)                                                                         | `content` snippet: the ActionList (Menu: the MenuItems)                                                                                                  | rule 13                                                                                              |
-| `SelectInput`                                                                                                   | Dropdown without `children`: `label`, `placeholder`, `helpText`/`errorText`/`successText`, `validationState`, `size`, `name`, `isRequired`, `isDisabled` | **changed**: the select field is what the Dropdown draws without a trigger, not a separate component |
-| `selectionType: single \| multiple`                                                                             | Dropdown `selectionType`                                                                                                                                 | same; Menu has no selection                                                                          |
-| `ActionList` `onChange` (via SelectInput)                                                                       | Dropdown `bind:value`, `onChange({ name, value })`                                                                                                       | rule 3                                                                                               |
-| `isOpen`, `onOpenChange(isOpen)`                                                                                | `bind:isOpen`, `onOpenChange({ isOpen })`                                                                                                                | **changed**: the object form, as the other overlays                                                  |
-| `DropdownOverlay` `defaultPlacement` (`bottom-start`)                                                           | `placement`                                                                                                                                              | same default                                                                                         |
-| `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef`                                 | —                                                                                                                                                        | **missing** (240–400px)                                                                              |
-| `DropdownHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, search via AutoComplete)           | —                                                                                                                                                        | not ported (no Dropdown); a search is an app's own searchable list                                   |
-| `DropdownFooter`                                                                                                | `DropdownFooter`, in the `footer({ close })` snippet                                                                                                     | rule 2                                                                                               |
-| `ActionListItem` `title`, `value`, `description`, `leading`, `trailing`, `titleSuffix`, `isDisabled`, `onClick` | `ActionListItem` (Menu: `MenuItem`) same; `leading` is an icon or a snippet                                                                              | same (rule 14)                                                                                       |
-| `ActionListItem` `intent: 'negative'`                                                                           | `ActionListItem` / `MenuItem` `intent`                                                                                                                   | same; refused with the select field, as React (draws neutral)                                        |
-| `ActionListItem` `isSelected`                                                                                   | —                                                                                                                                                        | derived from Dropdown's `value`                                                                      |
-| `ActionListItem` `href`/`target`                                                                                | `ActionListItem` `href`, `target`, `rel`                                                                                                                 | same: a link row follows its link, closes the list and holds no value                                |
-| `ActionListSection`                                                                                             | `ActionListSection` (Menu: anything between items)                                                                                                       | same                                                                                                 |
-| `MenuDivider`                                                                                                   | `MenuDivider`                                                                                                                                            | same: Figma's separator row; the keys pass over it                                                   |
-| —                                                                                                               | Menu `onSelect(value)`                                                                                                                                   | cx-only: an item's `value` is reported                                                               |
-| No results / loading                                                                                            | Dropdown `emptyText` (search), `isLoading`                                                                                                               | same                                                                                                 |
-| Nested dropdowns (submenus)                                                                                     | —                                                                                                                                                        | **missing**                                                                                          |
-| `AutoComplete`, `FilterChipSelectInput`, tree view, country selector, virtualised list                          | —                                                                                                                                                        | **missing**                                                                                          |
-| Below `m`: the overlay as a BottomSheet                                                                         | —                                                                                                                                                        | **missing**                                                                                          |
-| `data-analytics-*`                                                                                              | Menu: on the panel                                                                                                                                       | same                                                                                                 |
+| React                                                                     | cx                                                                                                       | Action                                                                                   |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| The trigger (`DropdownButton`, a Menu's child)                            | `children({ isOpen })`: the app's Button or IconButton                                                   | rule 13; the wrapper opens it on a click and on ArrowDown/ArrowUp, and stamps `aria-haspopup`, `aria-expanded`, `aria-controls` |
+| `MenuOverlay` with `MenuItem`s                                            | the sections (`title`, `subtitle`, `leading`, `titleSuffix`, `trailing`, `header`, `body`, `footer`), or raw `content({ close })` | **changed**: the content is the app's, an ActionList (`ActionListItem`, `ActionListSection`) in `body` |
+| `MenuItem` `title`, `description`, `leading`, `trailing`, `isDisabled`, `intent`, `onClick`, `href` | `ActionListItem`, the same props                                                                         | **removed**: ActionList's rows; a link row closes nothing itself — its `onClick` calls `close` |
+| `MenuHeader`, `MenuFooter`                                                | the header sections; `footer({ close })`                                                                 | **changed**: Popover's sections                                                          |
+| `MenuDivider`                                                             | —                                                                                                        | **removed**: a `Divider`, or an `ActionListSection` per group                            |
+| `isOpen`, `onOpenChange(isOpen)`                                          | `bind:isOpen`, `onOpenChange({ isOpen })`                                                                | **changed**: the object form, as the other overlays                                      |
+| —                                                                         | `onDismiss({ source, close })`, `isDismissible`, `onClosed`, `isDisabled`                                | cx-only, as the other overlays                                                           |
+| `openInteraction: 'hover'`                                                | —                                                                                                        | not ported: click only, as Popover                                                       |
+| `defaultPlacement` (`bottom-start`)                                       | `placement`                                                                                              | same default                                                                             |
+| `width`, `minWidth`, `maxWidth`, `zIndex`                                 | —                                                                                                        | **missing**: 240–400px; the overlay host stacks it                                       |
+| Dropdown's `selectionType`, `SelectInput`, `AutoComplete`, `FilterChipSelectInput`, `DropdownHeader`, `DropdownFooter` | —                                                                        | **not ported** (decision above)                                                          |
+| Submenus                                                                  | —                                                                                                        | **missing**                                                                              |
+| `data-analytics-*`                                                        | on the panel                                                                                             | same                                                                                     |
 
 ### Look (Blade DSL, Figma)
 
-One row, two panels (`components/shared/popup-list.ts`): Menu follows Figma's
-Menu and \_Menu Item; Dropdown and a standalone ActionList follow Figma's
-Dropdown, \_Action List and \_Action List Item.
+`components/shared/popup-list.ts`, after Figma's Menu and \_Menu Item:
 
-- **Surface (both):** 240–400px wide, `popup.background.gray.moderate`, Figma's \_components/Popup (the 1px rim over the raised shadow, the medium blur), 8px from the trigger. It opens sliding 8px down as it fades in, over `quick`. **Menu** is 12px round; **Dropdown** 16px.
-- **Rows' box:** 8px round the rows in both; **Menu**'s rows 2px apart, **Dropdown**'s and ActionList's touching (Figma's Body and \_Action List insets, no gap).
-- **Row (both):** 36px, 8px padding, 8px radius, its parts 8px apart. Title Body/Medium in `interactive.text.gray.normal`; description Body/Small in `interactive.text.gray.muted`; glyph `interactive.icon.gray.normal` (negative: `feedback.icon.negative.intense`). Disabled: all three `…disabled`, and a multiple row's checkbox in Checkbox's disabled look. Active (pointer or keys): `interactive.background.gray.default`; the keys add Figma's 4px `interactive.border.primary.faded` ring.
-- **Dropdown adds:** the held single pick in `interactive.background.gray.fadedHighlighted`, kept under the pointer and the keys; multiple rows lead with Checkbox's box; sections: Figma's separator row (a hairline 8px in, 4px tall) before every section but the first, then the heading (Semibold 12/17, `interactive.text.gray.muted`, 8px in, 2px under); a header (16px in all round, 16px to the search, Figma's divider under it); a footer (Figma's divider over it, then 16px in, 16px between actions).
-- **Menu adds:** `intent="negative"` rows in `interactive.text.negative.normal` with the `interactive.background.negative.faded` wash; `MenuDivider`, Figma's separator row (a hairline 1px in from the panel's edges, 4px tall).
-
-### Status
-
-Menu ported to the core with its look unchanged; Dropdown added. `test` passes (`test/dropdown.test.ts`, the Menu cases in `test/popover.test.ts`, `runes/menu/menu.test.ts`).
-
-### Figma alignment (Blade DSL)
-
-- The two panels split, per Figma (were both Menu's): Dropdown and ActionList 16px round (Dropdown) with rows touching (was 2px apart); Menu unchanged.
-- Figma's tokens throughout: descriptions `interactive.text.gray.muted` (was `surface.text.gray.muted`), glyphs `interactive.icon.*`, a disabled row's description, glyph and checkbox `…disabled` (were left enabled; ActionList dimmed the row with opacity), the keys' ring `interactive.border.primary.faded` (was `surface.border.primary.muted`, cx's other rings).
-- A picked row keeps its wash under the pointer (was the hover fill).
-- Dropdown's header and footer take Figma's dividers; the header is 16px in all round with 16px to the search (was 12px under, 12px to it); the footer 16px in all round (was 8px over it).
-- Sections take Figma's separator row, a hairline 8px in (was flush with the rows' box).
-- **Added** `MenuDivider` (React's), Figma's \_Menu Item separator.
-- Not ported: Figma's \_Menu Header / \_Menu Footer (cx's Menu has neither); Figma's footer buttons sharing its width (the footer's content is the caller's).
+- **Panel:** 240–400px wide, 12px round, `popup.background.gray.moderate`, Figma's \_components/Popup (the 1px rim over the raised shadow, the medium blur), 8px from the trigger. It opens sliding 8px down as it fades in, over `quick`. No close button.
+- **Body:** 8px round its rows, 2px between them (`resolveMenuBody`).
+- **Rows:** ActionList's, which share Figma's \_Menu Item row: 36px, 8px padding and radius, the leading item, title, description and trailing item 8px apart; active `interactive.background.gray.default`, with the keys' 4px `interactive.border.primary.faded` ring; `intent="negative"` in `interactive.text.negative.normal` with the `interactive.background.negative.faded` wash.
+- Not ported: Figma's \_Menu Header and \_Menu Footer looks (the sections are Popover's).
 
 ---
 
