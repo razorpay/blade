@@ -735,12 +735,87 @@ describe('<Table />', () => {
       expect(headerCellZIndex).toBeGreaterThan(bodyCellZIndex);
     });
 
-    // The corner (checkbox) header cell is above the sticky first data column header cell.
+    // The corner (checkbox) header cell is never below the sticky first data column header cell.
+    // They share the corner z-index on purpose: the data column sticks at the fixed 44px offset
+    // while the checkbox column can be wider, and on that overlap the later cell in the DOM
+    // (the data column) must win, exactly like on master.
     const cornerZIndex = Number(window.getComputedStyle(headerCells[0] as HTMLElement).zIndex);
     const firstDataColumnZIndex = Number(
       window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
     );
-    expect(cornerZIndex).toBeGreaterThan(firstDataColumnZIndex);
+    expect(cornerZIndex).toBeGreaterThanOrEqual(firstDataColumnZIndex);
+  });
+
+  it('should not cover the first data column cells when the checkbox column is wider than 44px', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        height="300px"
+        selectionType="multiple"
+        isFirstColumnSticky
+        isHeaderSticky
+        isFooterSticky
+        gridTemplateColumns="min-content 280px 280px 280px"
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                {/* text in the first footer cell widens the checkbox column beyond 44px, so the
+                sticky first data column footer cell sticks at 44px and overlaps it */}
+                <TableFooterCell>Total</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>,
+    );
+
+    const headerCells = container.querySelectorAll('th');
+    const footerCells = container.querySelectorAll('tfoot td, [role="columnfooter"]');
+
+    // The first data column header/footer cells share the checkbox cells' z-index instead of
+    // sitting below them, so the overlap is resolved by DOM order (the data column is later)
+    // and "Name" and the footer "-" stay visible when the table is scrolled right.
+    const checkboxHeaderZIndex = Number(
+      window.getComputedStyle(headerCells[0] as HTMLElement).zIndex,
+    );
+    const firstDataColumnHeaderZIndex = Number(
+      window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
+    );
+    expect(checkboxHeaderZIndex).toBe(firstDataColumnHeaderZIndex);
+
+    const checkboxFooterZIndex = Number(
+      window.getComputedStyle(footerCells[0] as HTMLElement).zIndex,
+    );
+    const firstDataColumnFooterZIndex = Number(
+      window.getComputedStyle(footerCells[1] as HTMLElement).zIndex,
+    );
+    expect(checkboxFooterZIndex).toBe(firstDataColumnFooterZIndex);
+
+    // and both still clear the sticky first column body cells
+    const bodyCellZIndex = Number(
+      window.getComputedStyle(container.querySelector('td') as HTMLElement).zIndex,
+    );
+    expect(firstDataColumnHeaderZIndex).toBeGreaterThan(bodyCellZIndex);
   });
 
   it('should keep the refresh overlay above the sticky header cells while refreshing', () => {

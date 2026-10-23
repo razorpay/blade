@@ -18,7 +18,6 @@ import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
   firstColumnStickyCornerZIndex,
-  firstColumnStickyHeaderZIndex,
   firstColumnStickySpannedZIndex,
   firstColumnStickyZIndex,
   refreshWrapperZIndex,
@@ -134,6 +133,13 @@ const StyledReactTable = styled(ReactTable)<{
   };
 });
 
+// The sticky cells and the refresh overlay use z-indexes that only make sense inside the table.
+// Isolating them in the wrapper's own stacking context keeps that scale from competing with
+// app-level layers around the table (a page header scrolled over it, for example).
+const StyledTableWrapper = styled(BaseBox)({
+  isolation: 'isolate',
+});
+
 const RefreshWrapper = styled(BaseBox)<{
   isRefreshSpinnerVisible: boolean;
   isRefreshSpinnerEntering: boolean;
@@ -236,10 +242,13 @@ const _Table = <Item,>({
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
   /*
-   * Sticky stacking order: corner > header/footer cells > sticky first column body cells > other
-   * cells. The corner cell (sticky both vertically and horizontally) must outrank the sticky body
-   * cells, otherwise the body cells - which come later in the DOM - paint over it when the table
-   * is scrolled.
+   * Sticky stacking order: corner/first sticky header/footer cells > sticky first column body
+   * cells > other cells. The corner cell (sticky both vertically and horizontally) must outrank
+   * the sticky body cells, otherwise the body cells - which come later in the DOM - paint over it
+   * when the table is scrolled. The nth-of-type(2) header/footer cells (the first data column
+   * next to the multi-select checkbox column) share the corner's z-index on purpose: they stick
+   * at the fixed 44px offset while the checkbox column can be wider than that, so with equal
+   * z-index the later cell in the DOM wins that overlap, exactly like it does on master.
    */
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
@@ -257,7 +266,7 @@ const _Table = <Item,>({
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderZIndex} !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   `
   }`
@@ -278,7 +287,7 @@ const _Table = <Item,>({
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderZIndex} !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   `
   }`
@@ -651,7 +660,7 @@ const _Table = <Item,>({
             ))}
           </BaseBox>
         ) : (
-          <BaseBox
+          <StyledTableWrapper
             flex={1}
             position="relative"
             {...getStyledProps(rest)}
@@ -702,7 +711,7 @@ const _Table = <Item,>({
               {children}
             </StyledReactTable>
             {pagination}
-          </BaseBox>
+          </StyledTableWrapper>
         )}
       </TableSurface>
     </TableContext.Provider>

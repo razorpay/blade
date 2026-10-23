@@ -393,6 +393,71 @@ export const TableWithStickyHeaderAndFirstColumn = (): React.ReactElement => {
   );
 };
 
+const stickyFirstColumnMultiSelectTableData = createTableData(20);
+
+export const TableWithStickyFirstColumnAndMultiSelect = (): React.ReactElement => {
+  return (
+    <ExampleWrapper
+      title="Table with Sticky Header, Footer & Sticky First Column (Multi Select)"
+      description="The footer text in the checkbox column widens it beyond the checkbox width - scroll right and check that the first data column's header and footer cells stay visible above the checkbox column."
+    >
+      <Box maxWidth="620px">
+        <Table
+          data={stickyFirstColumnMultiSelectTableData}
+          selectionType="multiple"
+          isHeaderSticky
+          isFooterSticky
+          isFirstColumnSticky
+          height="400px"
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Account</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Date</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow key={index} item={tableItem}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{formatDate(tableItem.date)}</TableCell>
+                    <TableCell>
+                      <Badge size="medium" color={getStatusColor(tableItem.status)}>
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>
+      </Box>
+    </ExampleWrapper>
+  );
+};
+
 const singleSelectableTableData = createTableData(5);
 
 export const SingleSelectableTable = (): React.ReactElement => {
@@ -858,7 +923,6 @@ const editableCellsTableData = createTableData(5);
 export const TableWithEditableCells = (): React.ReactElement => {
   return (
     <ExampleWrapper title="Table with Editable Cells">
-      {' '}
       <Table data={editableCellsTableData} showBorderedCells>
         {(tableData) => (
           <>

@@ -3,15 +3,15 @@ import { size } from '~tokens/global';
 
 /*
  * Sticky cells in a Table can overlap each other, so their stacking order is fixed explicitly:
- * refresh overlay > corner (header/footer first cell, sticky both ways) > sticky header/footer
- * cells > sticky first column body cells > other cells. Ties are resolved by DOM order, which is
- * why the corner cell needs a strictly higher z-index than the body cells painted after it, and
+ * refresh overlay > sticky first column header/footer cells (corner and multi-select first data
+ * column) > sticky first column body cells > other cells. Ties are resolved by DOM order, which
+ * is why the corner cell needs a strictly higher z-index than the body cells painted after it,
  * why the isRefreshing overlay sits above every sticky cell so the whole table - corner included
- * - dims evenly while refreshing.
+ * - dims evenly while refreshing, and why the multi-select nth-of-type(2) cells share the corner
+ * z-index instead of a lower one (see the comment in Table.web.tsx).
  */
 const firstColumnStickyZIndex = 2;
 const firstColumnStickySpannedZIndex = 3;
-const firstColumnStickyHeaderZIndex = 4;
 const firstColumnStickyCornerZIndex = 5;
 
 // Above the entire sticky scale (see the stacking order above) so the refresh overlay covers
@@ -155,7 +155,6 @@ export {
   tableBackgroundColor,
   firstColumnStickyZIndex,
   firstColumnStickySpannedZIndex,
-  firstColumnStickyHeaderZIndex,
   firstColumnStickyCornerZIndex,
   checkboxCellWidth,
   tableEditableCellRowDensityToInputSizeMap,
