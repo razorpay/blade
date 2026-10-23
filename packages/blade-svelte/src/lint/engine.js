@@ -79,12 +79,14 @@ export function conflictsIn(tokens, index = loadIndex()) {
     const keys = keysOf(utility, index);
     if (!keys) continue;
     for (const key of keys) {
-      const slot = `${variants}|${property(key)}`;
+      // Keyed by importance too: an important class must not hide a
+      // conflict between two plain ones after it (`!p-1 p-2 p-3`).
+      const slot = `${variants}|${property(key)}|${important}`;
       const earlier = seen.get(slot);
-      if (earlier && earlier.important === important) {
-        conflicts.push({ first: earlier.token, second: token, property: property(key) });
-      } else if (!earlier) {
-        seen.set(slot, { token, important });
+      if (earlier) {
+        conflicts.push({ first: earlier, second: token, property: property(key) });
+      } else {
+        seen.set(slot, token);
       }
     }
   }

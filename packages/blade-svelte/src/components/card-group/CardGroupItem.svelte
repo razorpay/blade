@@ -61,9 +61,9 @@
     rel?: never;
     /**
      * Makes the row a disclosure: a button with a chevron that flips,
-     * revealing this under it. Without it the row is plain content.
+     * revealing this under it.
      */
-    content?: Snippet;
+    content: Snippet;
     /**
      * Whether the content shows: the initial state, a `bind:isExpanded`, or a
      * value the host keeps driving.
@@ -76,7 +76,19 @@
     onClick?: (click: CardGroupItemClick<undefined>) => void;
   };
 
-  type Props = RowProps & (Choice | Link | Disclosure);
+  // Plain content: nothing to press, so no `onClick` (it would be dropped).
+  type Static = {
+    value?: undefined;
+    href?: undefined;
+    target?: never;
+    rel?: never;
+    content?: undefined;
+    isExpanded?: never;
+    onExpandChange?: never;
+    onClick?: never;
+  };
+
+  type Props = RowProps & (Choice | Link | Disclosure | Static);
 
   let {
     href,

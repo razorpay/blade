@@ -127,4 +127,22 @@ describe('Carousel', () => {
     expectClass(sidePrevious, 'bg-interactive-static-white-faded');
     expectClass(bottomPrevious, 'd:hidden');
   });
+
+  it('a swipe settles once the track is still: a fling reports only where it rests', () => {
+    vi.useFakeTimers();
+    const onChange = vi.fn();
+    const { getAllByRole } = render(CarouselHarness, { props: { onChange } });
+    flushSync();
+    const track = getAllByRole('tabpanel', { hidden: true })[0].parentElement!;
+    Object.defineProperty(track, 'clientWidth', { configurable: true, value: 100 });
+    for (const left of [60, 120, 180, 210]) {
+      track.scrollLeft = left;
+      track.dispatchEvent(new Event('scroll'));
+      vi.advanceTimersByTime(20);
+    }
+    expect(onChange).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(50);
+    flushSync();
+    expect(onChange.mock.calls).toEqual([[2]]);
+  });
 });

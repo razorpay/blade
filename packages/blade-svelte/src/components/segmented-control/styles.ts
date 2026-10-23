@@ -105,6 +105,8 @@ export function segmentedLook(
   const tint = SEGMENT_COLOR[color];
   const classes: RadioGroupClasses = {
     root: 'flex flex-col',
+    // The label and hint follow the control's size, as Blade's.
+    fieldSize: size,
     // Blade fades nothing: each segment takes its disabled text colour.
     disabled: '',
     options: `relative flex w-full items-center ${tint.options} ${segment.options}`,

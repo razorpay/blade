@@ -5,6 +5,7 @@ import { glyphsIn } from './classes';
 import { WalletIcon } from '../icons';
 import { createRawSnippet } from 'svelte';
 import SegmentedControlItem from '../components/segmented-control/SegmentedControlItem.svelte';
+import { segmentedLook } from '../components/segmented-control/styles';
 
 // Blade-owned: the preset ships SegmentedControl whole, over the segmented
 // RadioGroup. The radios' behaviour is RadioGroup's and is tested there;
@@ -178,5 +179,12 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     const row = logo.parentElement!.parentElement!;
     expect(row.contains(getByTestId('text'))).toBe(true);
     expect(row.lastElementChild).toBe(getByTestId('count'));
+  });
+});
+
+describe('segmentedLook', () => {
+  it("sizes the label and hint with the control, as Blade's FormLabel and FormHint", () => {
+    expect(segmentedLook('small').fieldSize).toBe('small');
+    expect(segmentedLook('large').fieldSize).toBe('large');
   });
 });

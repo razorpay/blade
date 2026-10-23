@@ -126,9 +126,6 @@
     "unocss": {
       "optional": true
     },
-    "@razorpay/i18nify-js": {
-      "optional": true
-    },
     "vite": {
       "optional": true
     }

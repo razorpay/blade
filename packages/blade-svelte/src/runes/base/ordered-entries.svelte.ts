@@ -21,6 +21,8 @@ export interface OrderedEntries<E extends OrderedEntry> extends EntryHost<E> {
   readonly ordered: readonly E[];
 }
 
+// `compareDocumentPosition`: the two nodes are in different trees.
+const DISCONNECTED = 1;
 // `compareDocumentPosition`: the other node precedes this one.
 const PRECEDING = 2;
 
@@ -49,8 +51,14 @@ export function createOrderedEntries<E extends OrderedEntry>(): OrderedEntries<E
       if (!one?.compareDocumentPosition || !two) {
         return 0;
       }
+      const position = one.compareDocumentPosition(two);
+      // One node, or two in different trees (one not attached yet): equal,
+      // so the stable sort keeps their mount order. A detached pair's
+      // PRECEDING/FOLLOWING bit is arbitrary, not an order.
       // eslint-disable-next-line no-bitwise -- compareDocumentPosition returns a bit mask
-      return one.compareDocumentPosition(two) & PRECEDING ? 1 : -1;
+      if (one === two || position & DISCONNECTED) return 0;
+      // eslint-disable-next-line no-bitwise -- as above
+      return position & PRECEDING ? 1 : -1;
     });
   });
 

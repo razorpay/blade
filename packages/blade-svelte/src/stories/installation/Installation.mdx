@@ -16,20 +16,21 @@ Blade's config, so the package has no prebuilt stylesheet to import.
 
 ## 1. Install the packages
 
-`svelte` and `unocss` are peer dependencies, so install them with the package:
+`svelte`, `unocss` and `@razorpay/i18nify-js` are peer dependencies, so install
+them with the package:
 
 ```bash
 # yarn
-yarn add @razorpay/blade-svelte svelte unocss
+yarn add @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 
 # npm
-npm install @razorpay/blade-svelte svelte unocss
+npm install @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 ```
 
 `@razorpay/blade-core` (design tokens) is installed as a dependency.
-`@razorpay/i18nify-js` (1.12.8 or later) is an optional peer dependency: the
-components do not import it, but the PhoneNumberInput stories build their
-country list from its dial codes and flags, and an app can do the same.
+`@razorpay/i18nify-js` (1.12.8 or later) is a required peer dependency:
+Amount formats with it, and PhoneNumberInput takes its dial codes, flags and
+number formats from it.
 
 ## 2. Compile the CSS
 

@@ -21,5 +21,6 @@ export function glyph(name: string, code: string): Glyph {
 }
 
 export function isGlyph(source: IconSource): source is Glyph {
-  return typeof source === 'object';
+  // `typeof null` is 'object' too: an untyped caller's null is no glyph.
+  return source !== null && typeof source === 'object';
 }

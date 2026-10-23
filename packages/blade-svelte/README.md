@@ -45,17 +45,17 @@ Before you install the package, make sure that you have:
 
 ### Install the package
 
-`svelte` and `unocss` are peer dependencies, so install them with it:
+`svelte`, `unocss` and `@razorpay/i18nify-js` are peer dependencies, so install them with it:
 
 ```bash
 # Using yarn
-yarn add @razorpay/blade-svelte svelte unocss
+yarn add @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 
 # Using npm
-npm install @razorpay/blade-svelte svelte unocss
+npm install @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 ```
 
-> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency. `@razorpay/i18nify-js` (>= 1.12.8) is an optional peer dependency: the components do not import it, but the PhoneNumberInput stories build their country list with it.
+> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency. `@razorpay/i18nify-js` (>= 1.12.8) is a required peer dependency: Amount formats with it and PhoneNumberInput takes its dial codes, flags and number formats from it.
 
 ### Entry points
 

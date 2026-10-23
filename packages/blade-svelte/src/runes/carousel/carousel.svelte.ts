@@ -6,6 +6,9 @@ import { createTicker } from '../base/schedule';
 /** Blade's auto-play pace: a slide every 6 seconds. */
 export const CAROUSEL_AUTOPLAY_INTERVAL = 6000;
 
+/** ms the track must be still before a swipe settles (React's debounce). */
+const CAROUSEL_SCROLL_REST = 50;
+
 export interface CarouselOptions {
   count: () => number;
   /** The slide on show. */
@@ -41,7 +44,12 @@ export function createCarousel(options: CarouselOptions): Carousel {
   let isHeld = $state(false);
   // The slide a smooth scroll is heading to. On the way, the track passes
   // the slide it left (and any between): those are not where it rests.
-  let heading: number | undefined, headingTimer: ReturnType<typeof setTimeout> | undefined;
+  // `restTimer`: a swipe settles once the track is still for a moment, as
+  // React's debounced scroll: a fling past several slides reports only the
+  // last.
+  let heading: number | undefined,
+    headingTimer: ReturnType<typeof setTimeout> | undefined,
+    restTimer: ReturnType<typeof setTimeout> | undefined;
 
   function arrive(): void {
     heading = undefined;
@@ -115,8 +123,16 @@ export function createCarousel(options: CarouselOptions): Carousel {
     handleScroll() {
       if (!track?.clientWidth) return;
       const resting = Math.round(track.scrollLeft / stride());
-      if (heading === undefined) settle(resting);
-      else if (resting === heading) arrive();
+      if (heading !== undefined) {
+        if (resting === heading) arrive();
+        return;
+      }
+      clearTimeout(restTimer);
+      restTimer = setTimeout(() => {
+        if (track?.clientWidth && heading === undefined) {
+          settle(Math.round(track.scrollLeft / stride()));
+        }
+      }, CAROUSEL_SCROLL_REST);
     },
     hold() {
       isHeld = true;
@@ -140,6 +156,7 @@ export function createCarousel(options: CarouselOptions): Carousel {
       return () => {
         node.removeEventListener('scrollend', handleScrollEnd);
         arrive();
+        clearTimeout(restTimer);
         track = undefined;
       };
     },

@@ -191,6 +191,18 @@ function conflictsOf(
   );
 }
 
+describe('conflictsIn', () => {
+  it('pairs plain classes on one property; an important one overrides, and hides nothing', () => {
+    expect(conflictsIn(['p-2', 'p-3'])).toEqual([
+      { first: 'p-2', second: 'p-3', property: 'padding' },
+    ]);
+    expect(conflictsIn(['!p-1', 'p-2'])).toEqual([]);
+    expect(conflictsIn(['!p-1', 'p-2', 'p-3'])).toEqual([
+      { first: 'p-2', second: 'p-3', property: 'padding' },
+    ]);
+  });
+});
+
 describe("Blade's own classes", () => {
   it('no resolved class list sets one property twice, in any combination of its axes', () => {
     const found = new Set<string>();
