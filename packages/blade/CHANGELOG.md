@@ -1,5 +1,66 @@
 # @razorpay/blade
 
+## 12.130.0
+
+### Minor Changes
+
+- fde07c801: feat(DotLoader): add `size="small"`
+
+  - `small` is `medium` scaled 0.75x: three 3px dots with 1.5px gaps inside an 18 x 18 box, matching the `Small` size of `_DotLoader` in Figma
+
+- be69e99d4: fix(FileUpload): refresh the uploaded-file row and drop area to match Figma
+
+  Uploaded-file row (`FileUploadItem`):
+
+  - The colour-coded file-type icon is replaced by a 40px tile with a generic file icon. A failed file shows a red info icon instead
+  - File name is 12px medium and the size or error line is 11px. The success check icon is 12px, 4px after the name
+  - Failed rows have a white background and no hover colour change. The red border stays
+  - A failed file inside `FileUpload` now offers only "Reupload", shown with its label. Reupload already removes the file before reopening the picker. When `FileUploadItem` is used directly with both `onReupload` and `onRemove`, it keeps the icon-only reupload button next to the trash button
+  - The reupload button only renders when `onReupload` is passed, and the trash button only renders when `onRemove` is passed
+  - Uploading rows read "Uploading {file name} ...". ChatInput attachments keep the plain file name
+  - Row heights are unchanged: 56px for small and medium, 64px for large and variable
+
+  Drop area:
+
+  - Border uses `interactive.border.gray.highlighted`, and `interactive.border.primary.faded` while a file is dragged over it (web) or it is pressed (native)
+  - Medium size has 8px corners (was 12px). Small stays 8px; large and variable stay 12px
+  - `size="variable"` shows a 56px circle with a generic file icon instead of the file-type icon, with 12px between the icon and the text
+  - The "Upload" link label is no longer underlined
+
+  **Behaviour change:** inside `FileUpload`, failed files (`status: 'error'`) no longer show a trash button, so `onRemove` is not called from a failed row. Clicking Reupload removes the file and reopens the picker, then calls `onReupload`, or `onRemove` when `onReupload` is not passed. In controlled mode, remove or replace the failed file from `fileList` inside `onReupload`.
+
+  No props were added, removed or renamed. The FileUpload knowledgebase doc notes that failed files offer only Reupload.
+
+### Patch Changes
+
+- ad6dc1094: feat(TextInput, SearchInput): show `DotLoader` instead of `Spinner` in the trailing slot when `isLoading` is set
+
+  Small and xsmall inputs use the 18px loader; medium and large use the 24px loader. On web the loader is now exposed with `role="status"` instead of `role="progressbar"`, so tests that query the loading indicator by role need updating.
+
+- 433e79047: fix(InputDropdownButton): update horizontal spacing to match Figma
+
+  - Inner left/right padding is now size-based: large 8/4px, medium 6/4px, small and xsmall 5/2px
+  - Gap between items reduced from 4px to 2px
+  - Chevron is 12px (medium, large) and 8px (small, xsmall); leading icon is 20px on large
+  - Label text is 12px on small and xsmall
+  - PhoneNumberInput flag is 18px wide on small and xsmall
+  - Button height and its gap to the input edge are unchanged
+
+- 6b87f17cd: fix(Input): show a single focus ring when a button inside an input is focused
+
+  The input's outer focus ring now only shows while its own text field is focused. Buttons inside the input, like the clear button, the show password button and the phone number country selector, keep their own focus ring, so the two no longer show together. ColorInput's swatch now has its own focus ring, and the country selector button shows its ring only for keyboard focus.
+
+  **If you pass a custom focusable element to `leading` or `trailing`:** the input's outer ring no longer shows while that element has focus, so the element needs its own visible focus ring. Blade's `Button`, `IconButton` and `Link` already have one, so nothing changes when you use those. If you pass a hand-built element, such as a `div` with `tabIndex` or an unstyled `button`, give it a `:focus-visible` style so keyboard users can still see where focus is. Component props are unchanged.
+
+- e1580ccfd: fix(PhoneNumberInput): tighten spacing around country selector and dial code
+
+  - Country selector to dial code: 12px → 2px; dial code to number: 8px → 4px
+  - Without dial code, the number sits 2px after the country selector
+  - With a leading icon and no dial code, the number sits 4px after the icon
+  - Country selector to leading icon: 12px → 2px
+  - Country selector has an even gap from the field edge on all sides (2px on small and xsmall, 4px on medium and large)
+  - fix(BaseInput): prefix and suffix text now sit on the same baseline as the input text (fixes a 1px offset at medium size)
+
 ## 12.129.0
 
 ### Minor Changes
