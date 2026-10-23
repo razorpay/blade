@@ -71,6 +71,12 @@ export default {
   component: ChatInput,
   tags: ['autodocs'],
   argTypes: {
+    size: {
+      control: { type: 'radio' },
+      options: ['medium', 'small'],
+      description: 'Size of the chat input. `small` is a one-row composer with inline actions.',
+      table: { defaultValue: { summary: 'medium' } },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
@@ -262,6 +268,146 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
   );
 };
 FullFeatured.storyName = 'Full Featured';
+
+export const SmallSize: StoryFn<typeof ChatInput> = () => {
+  const [text, setText] = useState('');
+  const [files, setFiles] = useState<BladeFileList>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
+
+  const handleSubmit = ({ value, fileList }: { value: string; fileList: BladeFileList }): void => {
+    console.log('Submitted:', value, 'Files:', fileList);
+    const controller = new AbortController();
+    abortRef.current = controller;
+    setIsGenerating(true);
+    setText('');
+    setFiles([]);
+
+    setTimeout(() => {
+      setIsGenerating(false);
+    }, 3000);
+  };
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        size="small"
+        value={text}
+        onChange={({ value }) => setText(value)}
+        onSubmit={handleSubmit}
+        placeholder="Ask a question..."
+        isGenerating={isGenerating}
+        onStop={() => {
+          abortRef.current?.abort();
+          setIsGenerating(false);
+        }}
+        fileList={files}
+        onFileChange={handlePlatformFileChange(setFiles)}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        accept=".jpg,.png,.pdf,.xlsx"
+        suggestions={[
+          'How do I integrate payment gateway?',
+          'Show me recent transactions',
+          'Help me set up webhooks',
+        ]}
+        onSuggestionAccept={({ suggestion }) => {
+          setText(suggestion);
+        }}
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        {`size="small" keeps every ChatInput feature and fits the composer in one row: upload on the left, submit or stop on the right. The text area grows as you type (Shift+Enter for a new line).`}
+      </Text>
+    </Box>
+  );
+};
+SmallSize.storyName = 'Small Size';
+
+const sizeComparisonStates: {
+  name: string;
+  props: Partial<ChatInputProps>;
+}[] = [
+  { name: 'Idle', props: {} },
+  { name: 'With text', props: { defaultValue: 'Show me the settlements from last week' } },
+  {
+    name: 'With long text',
+    props: {
+      defaultValue:
+        'I run a small bakery and sell on Instagram. Which documents do I need to finish onboarding, and how long does the review usually take once I submit them?',
+    },
+  },
+  {
+    name: 'With a file attached',
+    props: {
+      fileList: [
+        {
+          name: 'business-pan.pdf',
+          size: 204800,
+          status: 'success',
+          id: 'size-comparison-file',
+        } as BladeFileList[0],
+      ],
+    },
+  },
+  {
+    name: 'Error',
+    props: {
+      validationState: 'error',
+      errorText: 'Something went wrong. Please try again.',
+      onErrorDismiss: () => console.log('Error dismissed'),
+    },
+  },
+  {
+    name: 'Generating',
+    props: { defaultValue: 'Show me the settlements from last week', isGenerating: true },
+  },
+  { name: 'Disabled', props: { isDisabled: true } },
+  { name: 'Without file upload', props: { hideFileUpload: true } },
+];
+
+export const SizeComparison: StoryFn<typeof ChatInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {sizeComparisonStates.map((state) => (
+        <Box
+          key={state.name}
+          display="flex"
+          flexDirection="column"
+          gap="spacing.3"
+          testID={`size-comparison-${state.name}`}
+        >
+          <Heading size="small">{state.name}</Heading>
+          <Box display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.7">
+            {(['medium', 'small'] as const).map((size) => (
+              <Box
+                key={size}
+                flex="1"
+                minWidth="300px"
+                maxWidth="480px"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.3"
+                testID={`size-comparison-${state.name}-${size}`}
+              >
+                <Text size="small" color="surface.text.gray.muted">
+                  {`size="${size}"`}
+                </Text>
+                <Box paddingTop={state.props.validationState === 'error' ? 'spacing.9' : undefined}>
+                  <ChatInput
+                    size={size}
+                    placeholder="Ask a question..."
+                    accessibilityLabel={`${state.name}, ${size}`}
+                    {...state.props}
+                  />
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+SizeComparison.storyName = 'Size Comparison';
 
 export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);

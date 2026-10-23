@@ -8,15 +8,21 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative, chatInputMaxTextAreaHeight } from './chatInputTokens';
-import { ChatInputActionBar } from './ChatInputActionBar';
+import {
+  ChatInputActionBar,
+  ChatInputSubmitAction,
+  ChatInputUploadAction,
+} from './ChatInputActionBar';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
+import { minHeight as buttonMinHeight } from '~components/Button/BaseButton/buttonTokens';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { CloseIcon, InfoIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
+import { inputDropdownButtonPadding } from '~components/Input/BaseInput/baseInputTokens';
 import { Text } from '~components/Typography';
 import { castNativeType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -37,6 +43,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onBlur,
     onSubmit,
     placeholder = 'Ask a question...',
+    size = 'medium',
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -58,6 +65,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const isSmall = size === 'small';
   const inputId = useId('chatinput');
 
   if (__DEV__) {
@@ -175,16 +183,46 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </ScrollView>
   ) : null;
 
+  const handleUploadClick = (): void => onFileChange?.({ fileList: files });
+
   const actionBarContent = (
     <ChatInputActionBar
       isDisabled={isDisabled}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
       hideFileUpload={hideFileUpload}
-      onUploadClick={() => onFileChange?.({ fileList: files })}
+      onUploadClick={handleUploadClick}
       onSubmit={handleSubmit}
       onStop={onStop}
     />
+  );
+
+  // size="small": upload and submit sit inline with the text, pinned to the bottom row as the
+  // text area grows. Same insets as web: the submit button is centred on a single line of text and
+  // the upload icon sits on the text line.
+  const inlineActionBottomInset = makeSpace(
+    (theme.spacing[5] * 2 + theme.typography.lineHeights[100] - buttonMinHeight.small) / 2,
+  );
+  const inlineUploadBottomInset = makeSpace(
+    theme.spacing[5] - theme.spacing[inputDropdownButtonPadding.medium],
+  );
+
+  const inlineUploadAction = hideFileUpload ? undefined : (
+    <BaseBox paddingLeft="spacing.3" paddingBottom={inlineUploadBottomInset} display="flex">
+      <ChatInputUploadAction isDisabled={isDisabled} onUploadClick={handleUploadClick} />
+    </BaseBox>
+  );
+
+  const inlineSubmitAction = (
+    <BaseBox paddingBottom={inlineActionBottomInset} display="flex">
+      <ChatInputSubmitAction
+        isDisabled={isDisabled}
+        isGenerating={isGenerating}
+        isSubmitDisabled={isSubmitDisabled}
+        onSubmit={handleSubmit}
+        onStop={onStop}
+      />
+    </BaseBox>
   );
 
   return (
@@ -259,7 +297,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onFocus={onFocus}
           onBlur={onBlur}
           isDisabled={isDisabled}
-          numberOfLines={2}
+          numberOfLines={isSmall ? 1 : 2}
           autoGrowMaxHeight={chatInputMaxTextAreaHeight}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -268,7 +306,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           borderRadius="large"
           caretColor="surface.icon.onSea.onSubtle"
           topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          bottomContent={isSmall ? undefined : actionBarContent}
+          leadingInteractionElement={isSmall ? inlineUploadAction : undefined}
+          trailingInteractionElement={isSmall ? inlineSubmitAction : undefined}
+          visualsAlignment={isSmall ? 'bottom' : undefined}
           {...makeAnalyticsAttribute(rest)}
         />
       </BaseBox>

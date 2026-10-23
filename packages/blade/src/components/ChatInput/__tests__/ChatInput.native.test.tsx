@@ -160,4 +160,71 @@ describe('<ChatInput /> (native)', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
+  describe('size="small"', () => {
+    it('should render inline upload and submit buttons', () => {
+      const { toJSON, getByRole, queryByText } = renderWithTheme(
+        <ChatInput
+          size="small"
+          placeholder="Ask a question..."
+          accessibilityLabel={accessibilityLabel}
+        />,
+      );
+
+      expect(getByRole('button', { name: 'Upload file' })).toBeTruthy();
+      expect(getByRole('button', { name: 'Submit' })).toBeTruthy();
+      expect(queryByText('Upload file')).toBeNull();
+      expect(toJSON()).toMatchSnapshot();
+    });
+
+    it('should call onSubmit from the inline submit button', () => {
+      const onSubmit = jest.fn();
+      const { getByRole, getByLabelText } = renderWithTheme(
+        <ChatInput size="small" accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+      );
+
+      fireEvent.changeText(getByLabelText(accessibilityLabel), 'Hello world');
+      fireEvent.press(getByRole('button', { name: 'Submit' }));
+
+      expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello world', fileList: [] });
+    });
+
+    it('should call onFileChange from the inline upload button', () => {
+      const onFileChange = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          size="small"
+          accessibilityLabel={accessibilityLabel}
+          onFileChange={onFileChange}
+        />,
+      );
+
+      fireEvent.press(getByRole('button', { name: 'Upload file' }));
+      expect(onFileChange).toHaveBeenCalledWith({ fileList: [] });
+    });
+
+    it('should show the inline stop button while generating', () => {
+      const onStop = jest.fn();
+      const { getByRole, queryByRole } = renderWithTheme(
+        <ChatInput
+          size="small"
+          accessibilityLabel={accessibilityLabel}
+          isGenerating
+          onStop={onStop}
+        />,
+      );
+
+      expect(queryByRole('button', { name: 'Submit' })).toBeNull();
+      fireEvent.press(getByRole('button', { name: 'Stop generation' }));
+      expect(onStop).toHaveBeenCalledTimes(1);
+    });
+
+    it('should hide the inline upload button when hideFileUpload is true', () => {
+      const { queryByRole } = renderWithTheme(
+        <ChatInput size="small" accessibilityLabel={accessibilityLabel} hideFileUpload />,
+      );
+
+      expect(queryByRole('button', { name: 'Upload file' })).toBeNull();
+    });
+  });
 });

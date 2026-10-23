@@ -46,6 +46,20 @@ type ChatInputProps = {
   placeholder?: string;
 
   /**
+   * Size of the chat input.
+   *
+   * - `medium`: two-row text area with an action bar below it ("Upload file" on the left,
+   *   submit or stop on the right).
+   * - `small`: compact composer. A single-row text area with the upload button inline on the left
+   *   and the submit or stop button inline on the right. The text area grows as the user types,
+   *   up to the same maximum height as `medium`.
+   *
+   * Every other behaviour is the same in both sizes.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
+
+  /**
    * Disables the text input, file upload button, and submit button
    * @default false
    */

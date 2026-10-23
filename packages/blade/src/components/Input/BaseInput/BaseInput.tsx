@@ -332,6 +332,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      *   element when there's neither
      */
     hasCompactLeadingSpacing?: boolean;
+    /**
+     * @internal Vertical alignment of the leading and trailing visuals in the input row.
+     * `bottom` keeps them on the last row while a textarea grows, used by ChatInput's
+     * `size="small"` for its inline upload and submit buttons.
+     * @default 'center'
+     */
+    visualsAlignment?: 'center' | 'bottom';
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -954,6 +961,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
     hideLabelText,
     hasCompactLeadingSpacing,
+    visualsAlignment = 'center',
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -1245,6 +1253,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
               hasCompactLeadingSpacing={hasCompactLeadingSpacing}
+              visualsAlignment={visualsAlignment}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1348,6 +1357,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingDropDown={trailingDropDown}
               errorTextId={errorTextId}
               successTextId={successTextId}
+              visualsAlignment={visualsAlignment}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>

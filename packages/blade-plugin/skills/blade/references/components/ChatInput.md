@@ -2,7 +2,7 @@
 
 ## Description
 
-`ChatInput` is an input component designed for AI chat interfaces. It combines a resizable textarea, optional file upload with attachment previews, ghost suggestion autocomplete (cycling suggestions with a crossfade animation), and a submit/stop action button into a single composable input. It supports both controlled and uncontrolled text value usage, validation state with an animated error popup, and a generating state that swaps the submit button for a stop button to cancel in-flight AI responses.
+`ChatInput` is an input component designed for AI chat interfaces. It combines a resizable textarea, optional file upload with attachment previews, ghost suggestion autocomplete (cycling suggestions with a crossfade animation), and a submit/stop action button into a single composable input. It supports both controlled and uncontrolled text value usage, validation state with an animated error popup, and a generating state that swaps the submit button for a stop button to cancel in-flight AI responses. It comes in two sizes: `medium` (default, two-row textarea with an action bar below) and `small` (one row, with the upload and submit buttons inline). Both sizes have the same features.
 
 ## Important Constraints
 
@@ -40,10 +40,26 @@ type ChatInputProps = {
   onChange?: ({ value }: { value: string }) => void;
 
   /** Callback fired when the text input receives focus */
-  onFocus?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onFocus?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /** Callback fired when the text input loses focus */
-  onBlur?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onBlur?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
@@ -53,6 +69,17 @@ type ChatInputProps = {
 
   /** Placeholder text shown when the input is empty */
   placeholder?: string;
+
+  /**
+   * Size of the chat input.
+   * - `medium`: two-row textarea with an action bar below it ("Upload file" left, submit or stop right).
+   * - `small`: compact composer. A single-row textarea with the upload button inline on the left and
+   *   the submit or stop button inline on the right. The textarea grows as the user types, up to the
+   *   same maximum height as `medium`.
+   * Every other behaviour is the same in both sizes.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 
   /**
    * Disables the text input, file upload button, and submit button
@@ -159,6 +186,7 @@ type ChatInputProps = {
 - Use `suggestions` with `onSuggestionAccept` to show cycling ghost suggestions that users accept with Tab.
 - Use `fileList` with `onFileChange`/`onFileRemove` for file attachment workflows.
 - Handle Enter for submit and Shift+Enter for newline in the textarea.
+- Use `size="small"` where vertical space is tight, such as a chat on a phone screen or a side panel. It keeps every feature of `medium`.
 
 **Don't**
 
@@ -168,6 +196,34 @@ type ChatInputProps = {
 - Don't forget that the submit button auto-disables when there's no text and no files, or when files are uploading/errored.
 
 ## Examples
+
+### Compact Chat Input (small size)
+
+Use `size="small"` for a one-row composer: upload on the left, submit or stop on the right. The textarea grows as the user types, and attachments, ghost suggestions, the error popup and the stop button work as in `medium`.
+
+```tsx
+import { useState } from 'react';
+import { ChatInput } from '@razorpay/blade/components';
+import type { BladeFileList } from '@razorpay/blade/components';
+
+function CompactChatInput() {
+  const [files, setFiles] = useState<BladeFileList>([]);
+
+  return (
+    <ChatInput
+      size="small"
+      placeholder="Ask a question..."
+      fileList={files}
+      onFileChange={({ fileList }) => setFiles(fileList)}
+      onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+      onSubmit={({ value, fileList }) => {
+        console.log('Submitted:', value, fileList);
+        setFiles([]);
+      }}
+    />
+  );
+}
+```
 
 ### Basic Chat Input with File Upload
 
