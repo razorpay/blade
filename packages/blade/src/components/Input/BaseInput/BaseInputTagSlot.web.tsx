@@ -212,12 +212,18 @@ const BaseInputTagSlot = ({
 
   // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
   const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
+  // In a TableEditableDropdownCell the trigger (SelectInput/AutoComplete button) already occupies
+  // the full input height and the slot is clamped to that same height, so vertical padding here
+  // pushes the trigger 4px down and clips it — the value/placeholder ends up sitting below the
+  // leading icon and the chevron. Keep the slot flush so the trigger shares the same vertical
+  // centre as the icons around it.
+  const tagSlotPaddingY = isInsideTableEditableCell ? 'spacing.0' : paddingYWithTags;
 
   return (
     <TagSlotContainer
       ref={slotRef}
       className="tags-slot"
-      paddingY={paddingYWithTags}
+      paddingY={tagSlotPaddingY}
       paddingLeft="spacing.4"
       display="flex"
       flex="1"

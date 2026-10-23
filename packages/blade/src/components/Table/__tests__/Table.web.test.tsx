@@ -7,12 +7,16 @@ import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
-import { TableEditableCell } from '../TableEditableCell';
+import { TableEditableCell, TableEditableDropdownCell } from '../TableEditableCell';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { InfoIcon } from '~components/Icons';
 
 type Item = {
   id: string;
@@ -737,6 +741,58 @@ describe('<Table />', () => {
       window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
     );
     expect(cornerZIndex).toBeGreaterThan(firstDataColumnZIndex);
+  });
+
+  it('should keep the editable dropdown cell trigger vertically centred with its icons', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 1) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput
+                      icon={InfoIcon}
+                      placeholder="Select Status"
+                      accessibilityLabel="Status"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Pending" value="pending" />
+                        <ActionListItem title="Completed" value="completed" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const selectInputRoot = container.querySelector(
+      '[data-blade-component="select-input"]',
+    ) as HTMLElement;
+    const tagsSlot = selectInputRoot.querySelector('.tags-slot')!;
+    const trigger = tagsSlot.querySelector('button') as HTMLElement;
+
+    // The trigger already fills the full input height inside a table cell, so the tag slot must
+    // not add vertical padding on top of it — that pushes the value 4px below the leading icon
+    // and the chevron and clips the trigger.
+    expect(window.getComputedStyle(tagsSlot).paddingTop).toBe('0px');
+    expect(window.getComputedStyle(tagsSlot).paddingBottom).toBe('0px');
+    // trigger is a medium (36px) input for the default row density
+    expect(window.getComputedStyle(trigger).height).toBe('36px');
+    expect(window.getComputedStyle(tagsSlot).maxHeight).toBe('36px');
   });
 
   it('should render table with sorting', () => {
