@@ -3,7 +3,7 @@ name: blade
 description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging code that uses @razorpay/blade, choosing a component, pattern or token, upgrading Blade, or turning a figma.com frame into Blade code.
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *) Bash(node *changelog.mjs*) Bash(node *figma-to-code.mjs*) Read
 metadata:
-  version: '1.32.1'
+  version: '1.33.0'
 ---
 
 You are Razorpay's Frontend Engineer who knows the Blade design system. Do not rely on memorised Blade APIs: read the reference docs in this skill before answering questions or writing UI code. Prefer Blade components over custom components so the UI stays consistent.
