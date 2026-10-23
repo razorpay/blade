@@ -67,7 +67,13 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
   // Measured once each, at first paint: a cropped toast reads a cropped
   // height, which must never overwrite its own.
   let heights = $state.raw<Record<number, number>>({});
-  let isHeld = $state(false);
+  // Two ways to hold it, kept apart: a mouse's hover and a tap's toggle. One
+  // flag for both would let the mouse events a tap drags along (iOS Safari
+  // types a tap's compatibility events 'mouse') leave the stack it just
+  // expanded.
+  let isHovered = $state(false);
+  let isTapped = $state(false);
+  const isHeld = $derived(isHovered || isTapped);
   // What started the gesture in flight. WebKit reports a tap's click as a
   // mouse pointer event, so the click's own `pointerType` cannot be trusted:
   // the pointerdown that began it is what says whether a mouse did it.
@@ -94,13 +100,24 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
     return isExpanded ? total : heights[order[0]] ?? 0;
   });
 
-  function hold(next: boolean): void {
-    isHeld = next;
-    if (next) {
+  function hold(): void {
+    if (isHeld) {
       model.pause();
     } else {
       model.resume();
     }
+  }
+
+  function hover(next: boolean): void {
+    if (isHovered === next) return;
+    isHovered = next;
+    hold();
+  }
+
+  function tap(next: boolean): void {
+    if (isTapped === next) return;
+    isTapped = next;
+    hold();
   }
 
   return {
@@ -154,12 +171,12 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
     // pointer, not the viewport: no breakpoint decides it.
     handlePointerEnter(event) {
       if (event.pointerType === 'mouse') {
-        hold(true);
+        hover(true);
       }
     },
     handlePointerLeave(event) {
       if (event.pointerType === 'mouse') {
-        hold(false);
+        hover(false);
       }
     },
     handlePointerDown(event) {
@@ -170,7 +187,7 @@ export function createToastStack<S extends object>(options: ToastStackOptions<S>
       pointer = undefined;
       // A mouse has the stack through hover already; what is left is a tap.
       if (via === 'mouse') return;
-      hold(!isHeld);
+      tap(!isTapped);
     },
   };
 }

@@ -338,6 +338,23 @@ describe('showToast', () => {
       .then(() => fireEvent.click(getByTestId('host-toasts')))
       .then(() => expect(offsetOf(getByTestId('one'))).toBe('56'));
   });
+
+  it("a tap's compatibility mouse events do not leave the stack it expanded", async () => {
+    // iOS Safari follows a tap with mouse events typed 'mouse': a hover that
+    // ends when the tap does. The tap it began still holds the stack.
+    vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
+    const { getByTestId } = setup();
+    void toasts.showToast({ content: '1', duration: 0, testID: 'one' });
+    void toasts.showToast({ content: '2', duration: 0, testID: 'two' });
+    await waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'));
+
+    const stack = getByTestId('host-toasts');
+    await fireEvent(stack, pointerDown('touch'));
+    await fireEvent.click(stack);
+    await fireEvent(stack, mouse('pointerenter'));
+    await fireEvent(stack, mouse('pointerleave'));
+    await waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56'));
+  });
 });
 
 describe('the queue', () => {
