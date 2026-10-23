@@ -17,6 +17,9 @@ import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
+  firstColumnStickyCornerZIndex,
+  firstColumnStickyHeaderZIndex,
+  firstColumnStickySpannedZIndex,
   firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
@@ -232,23 +235,29 @@ const _Table = <Item,>({
 
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
+  /*
+   * Sticky stacking order: corner > header/footer cells > sticky first column body cells > other
+   * cells. The corner cell (sticky both vertically and horizontally) must outrank the sticky body
+   * cells, otherwise the body cells - which come later in the DOM - paint over it when the table
+   * is scrolled.
+   */
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
   &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: 3 !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
+    z-index: ${firstColumnStickyHeaderZIndex} !important;
   }
   `
   }`
@@ -258,18 +267,18 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
   &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: 3 !important;
+    z-index: ${firstColumnStickyCornerZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
+    z-index: ${firstColumnStickyHeaderZIndex} !important;
   }
   `
   }`
@@ -283,7 +292,7 @@ const _Table = <Item,>({
   }
   /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
   &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: 3 !important;
+    z-index: ${firstColumnStickySpannedZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&

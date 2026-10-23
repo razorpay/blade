@@ -25441,7 +25441,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             role="rowheader"
           >
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -25465,7 +25465,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -25489,7 +25489,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -25513,7 +25513,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -25537,7 +25537,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -25561,7 +25561,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c6 css-1n9bung-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c6 css-1k7u0yh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-header-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27304,7 +27304,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             role="rowfooter"
           >
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27322,7 +27322,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27340,7 +27340,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27358,7 +27358,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27376,7 +27376,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"
@@ -27394,7 +27394,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               </div>
             </th>
             <th
-              class="th c18 css-1dnl1gj-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+              class="th c18 css-17gkppm-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
               data-blade-component="table-footer-cell"
               data-hide="false"
               data-resize-min-width="75"

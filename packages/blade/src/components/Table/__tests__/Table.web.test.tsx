@@ -646,6 +646,99 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should stack the sticky first header cell above sticky first column body cells', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 10) }} height="300px" isFirstColumnSticky isHeaderSticky>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    // The corner header cell (sticky both vertically and horizontally) must outrank the sticky
+    // first column body cells, otherwise the body cells paint over the header label on scroll.
+    const headerCell = container.querySelector('th') as HTMLElement;
+    const bodyCell = container.querySelector('td') as HTMLElement;
+    const headerCellZIndex = Number(window.getComputedStyle(headerCell).zIndex);
+    const bodyCellZIndex = Number(window.getComputedStyle(bodyCell).zIndex);
+
+    expect(headerCellZIndex).toBeGreaterThan(0);
+    expect(bodyCellZIndex).toBeGreaterThan(0);
+    expect(headerCellZIndex).toBeGreaterThan(bodyCellZIndex);
+  });
+
+  it('should stack the sticky multi-select checkbox header cell above its body cells', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 10) }}
+        height="300px"
+        selectionType="multiple"
+        isFirstColumnSticky
+        isHeaderSticky
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const headerCells = container.querySelectorAll('th');
+    const bodyCells = container.querySelectorAll('td');
+
+    // With multiple selection the checkbox column (nth-of-type(1)) and the first data column
+    // (nth-of-type(2)) are both sticky, each must clear its own body cells.
+    [0, 1].forEach((cellIndex) => {
+      const headerCellZIndex = Number(
+        window.getComputedStyle(headerCells[cellIndex] as HTMLElement).zIndex,
+      );
+      const bodyCellZIndex = Number(
+        window.getComputedStyle(bodyCells[cellIndex] as HTMLElement).zIndex,
+      );
+      expect(headerCellZIndex).toBeGreaterThan(bodyCellZIndex);
+    });
+
+    // The corner (checkbox) header cell is above the sticky first data column header cell.
+    const cornerZIndex = Number(window.getComputedStyle(headerCells[0] as HTMLElement).zIndex);
+    const firstDataColumnZIndex = Number(
+      window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
+    );
+    expect(cornerZIndex).toBeGreaterThan(firstDataColumnZIndex);
+  });
+
   it('should render table with sorting', () => {
     const onSortChange = jest.fn();
     const { getByLabelText, getAllByRole } = renderWithTheme(

@@ -1,7 +1,16 @@
 import { AlertCircleIcon, CheckIcon } from '~components/Icons';
 import { size } from '~tokens/global';
 
+/*
+ * Sticky cells in a Table can overlap each other, so their stacking order is fixed explicitly:
+ * corner (header/footer first cell, sticky both ways) > sticky header/footer cells > sticky first
+ * column body cells > other cells. Ties are resolved by DOM order, which is why the corner cell
+ * needs a strictly higher z-index than the body cells painted after it.
+ */
 const firstColumnStickyZIndex = 2;
+const firstColumnStickySpannedZIndex = 3;
+const firstColumnStickyHeaderZIndex = 4;
+const firstColumnStickyCornerZIndex = 5;
 
 const refreshWrapperZIndex = 3;
 
@@ -141,6 +150,9 @@ export {
   refreshWrapperZIndex,
   tableBackgroundColor,
   firstColumnStickyZIndex,
+  firstColumnStickySpannedZIndex,
+  firstColumnStickyHeaderZIndex,
+  firstColumnStickyCornerZIndex,
   checkboxCellWidth,
   tableEditableCellRowDensityToInputSizeMap,
   validationStateToInputTrailingIconMap,

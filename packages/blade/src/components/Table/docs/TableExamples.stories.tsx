@@ -328,6 +328,58 @@ export const TableWithStickyFirstColumn = (): React.ReactElement => {
   );
 };
 
+const stickyHeaderAndFirstColumnTableData = createTableData(30);
+
+export const TableWithStickyHeaderAndFirstColumn = (): React.ReactElement => {
+  return (
+    <ExampleWrapper
+      title="Table with Sticky Header & Sticky First Column"
+      description="Scroll vertically and horizontally - the first header cell (corner) stays above the sticky body cells."
+    >
+      <Table
+        data={stickyHeaderAndFirstColumnTableData}
+        isHeaderSticky
+        isFirstColumnSticky
+        height="400px"
+        gridTemplateColumns="280px 280px 280px 280px 280px 280px"
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{formatDate(tableItem.date)}</TableCell>
+                  <TableCell>
+                    <Badge size="medium" color={getStatusColor(tableItem.status)}>
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </ExampleWrapper>
+  );
+};
+
 const singleSelectableTableData = createTableData(5);
 
 export const SingleSelectableTable = (): React.ReactElement => {
