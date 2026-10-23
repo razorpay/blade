@@ -42,6 +42,10 @@ type ChatInputProps = {
 
   /**
    * Placeholder text shown when the input is empty
+   *
+   * In `size="small"` the placeholder stays on one line, so the empty input stays one row tall.
+   * Text that does not fit is cut off (Safari adds "..."; Chrome does not). Keep it to about
+   * 25 characters there: a 320px-wide phone leaves about 176px for text.
    */
   placeholder?: string;
 

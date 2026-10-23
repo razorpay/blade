@@ -768,7 +768,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -780,15 +780,15 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   width: 100%;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-radius: 16px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -799,7 +799,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -814,7 +814,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -831,7 +831,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   align-self: flex-end;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -848,7 +848,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding-left: 4px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -857,7 +857,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding-left: 8px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -874,7 +874,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   align-self: center;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -889,7 +889,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding-right: 12px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -897,7 +897,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding-bottom: 10px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -919,7 +919,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   z-index: 1;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -934,7 +934,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   justify-content: center;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   position: absolute;
   z-index: 0;
   right: 0px;
@@ -942,7 +942,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -964,7 +964,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   border-top-right-radius: 12px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   min-height: 32px;
   height: 32px;
   width: 32px;
@@ -1001,24 +1001,24 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   position: relative;
 }
 
-.c17.c17.c17.c17.c17:hover {
+.c18.c18.c18.c18.c18:hover {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c17.c17.c17.c17.c17:active {
+.c18.c18.c18.c18.c18:active {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c17.c17.c17.c17.c17:focus-visible {
+.c18.c18.c18.c18.c18:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c17.c17.c17.c17.c17 * {
+.c18.c18.c18.c18.c18 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -1027,7 +1027,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1037,7 +1037,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-timing-function: 160px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1060,11 +1060,11 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   overflow-wrap: break-word;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   opacity: 1;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1093,12 +1093,12 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c12.c12.c12.c12.c12:hover:not([disabled]) {
+.c13.c13.c13.c13.c13:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: hsla(206,10%,29%,0.09);
 }
 
-.c12.c12.c12.c12.c12:focus-visible {
+.c13.c13.c13.c13.c13:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1112,11 +1112,11 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   background-color: hsla(206,10%,29%,0.09);
 }
 
-.c12.c12.c12.c12.c12:active {
+.c13.c13.c13.c13.c13:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1138,7 +1138,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   border-top-right-radius: 12px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1170,7 +1170,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   cursor: auto;
 }
 
-.c13.c13.c13.c13.c13::-webkit-input-placeholder {
+.c14.c14.c14.c14.c14::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1187,7 +1187,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13::-moz-placeholder {
+.c14.c14.c14.c14.c14::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1204,7 +1204,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13:-ms-input-placeholder {
+.c14.c14.c14.c14.c14:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1221,7 +1221,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13::placeholder {
+.c14.c14.c14.c14.c14::placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1238,11 +1238,11 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13:focus {
+.c14.c14.c14.c14.c14:focus {
   outline: none;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -1271,7 +1271,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c6.c6.c6.c6.c6:hover {
+.c7.c7.c7.c7.c7:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -1302,7 +1302,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6.c6.c6.c6.c6:focus-within {
+.c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -1331,9 +1331,33 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   border-radius: 16px;
   width: 100%;
+}
+
+.c2.c2.c2.c2.c2 textarea::-webkit-input-placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c2.c2.c2.c2.c2 textarea::-moz-placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c2.c2.c2.c2.c2 textarea:-ms-input-placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c2.c2.c2.c2.c2 textarea::placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 <div>
@@ -1348,7 +1372,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
       type="file"
     />
     <div
-      class="c1"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
@@ -1356,41 +1380,41 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c2"
+          class="c3"
           data-blade-component="base-box"
         >
           <div
-            class="c3 c4 focus-ring-wrapper"
+            class="c4 c5 focus-ring-wrapper"
             data-blade-component="base-box"
             elevation="highRaised"
           >
             <div
-              class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c5 c6 __blade-base-input-wrapper"
+              class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 c7 __blade-base-input-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class="c7"
+                class="c8"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8"
+                  class="c9"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c10"
+                      class="c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c11"
+                        class="c12"
                         data-blade-component="base-box"
                       >
                         <button
                           aria-label="Upload file"
-                          class="c12"
+                          class="c13"
                           data-blade-component="icon-button"
                           type="button"
                         >
@@ -1419,7 +1443,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
                     aria-invalid="false"
                     aria-label="Chat input"
                     aria-required="false"
-                    class="c13"
+                    class="c14"
                     data-blade-component="styled-base-input"
                     id="chat-input-19-input-20"
                     placeholder="Ask a question..."
@@ -1428,39 +1452,39 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
                     type="text"
                   />
                   <div
-                    class="c9"
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c15"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c15"
+                        class="c16"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c16"
+                          class="c17"
                           data-blade-component="base-box"
                         >
                           <button
                             aria-label="Submit"
-                            class="c17"
+                            class="c18"
                             data-blade-component="button"
                             disabled=""
                             role="button"
                             type="button"
                           >
                             <div
-                              class=" c18"
+                              class=" c19"
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c19 c20"
+                                class="c20 c21"
                                 data-blade-component="base-box"
                               >
                                 <div
-                                  class="c21"
+                                  class="c22"
                                   data-blade-component="base-box"
                                 >
                                   <svg
@@ -1494,11 +1518,11 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
       </div>
     </div>
     <div
-      class="c22"
+      class="c23"
       data-blade-component="base-box"
     >
       <div
-        class="c23 c24"
+        class="c24 c25"
         data-blade-component="base-box"
         role="alert"
         style="opacity: 0;"
@@ -1531,7 +1555,7 @@ exports[`<ChatInput /> should render ChatInput with size small 1`] = `
           />
         </svg>
         <p
-          class="c25"
+          class="c26"
           data-blade-component="text"
           letter-spacing="50"
         />

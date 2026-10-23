@@ -51,7 +51,12 @@ type ChatInputProps = {
    */
   onSubmit?: ({ value, fileList }: { value: string; fileList: BladeFileList }) => void;
 
-  /** Placeholder text shown when the input is empty */
+  /**
+   * Placeholder text shown when the input is empty.
+   * In `size="small"` it stays on one line, so the empty input stays one row tall.
+   * Text that does not fit is cut off (Safari adds "..."; Chrome does not).
+   * Keep it to about 25 characters there: a 320px-wide phone leaves about 176px for text.
+   */
   placeholder?: string;
 
   /**
@@ -171,6 +176,7 @@ type ChatInputProps = {
 - Use `fileList` with `onFileChange`/`onFileRemove` for file attachment workflows.
 - Handle Enter for submit and Shift+Enter for newline in the textarea.
 - Use `size="small"` where vertical space is tight, such as a chat on a phone screen or a side panel. It keeps every feature of `medium`.
+- With `size="small"`, keep `placeholder` to about 25 characters (for example "Ask a question..."). Longer text is cut off on narrow phones. Ghost `suggestions` are shown on desktop widths only and are also cut with "..." when they do not fit, so keep them short too.
 
 **Don't**
 

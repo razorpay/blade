@@ -35,6 +35,21 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   scrollbarWidth: 'none' as const,
 }));
 
+// size="small": the placeholder stays on one line, so a long placeholder cannot make the empty
+// composer taller than one row. Overflow is cut off; Safari adds "...", Chrome ignores
+// text-overflow on a textarea placeholder.
+const ChatInputCardBox = styled(BaseBox)<{ $isSmall: boolean }>(({ $isSmall }) =>
+  $isSmall
+    ? {
+        '& textarea::placeholder': {
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        },
+      }
+    : {},
+);
+
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
     value,
@@ -259,7 +274,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
+      <ChatInputCardBox
+        $isSmall={isSmall}
+        position="relative"
+        zIndex={1}
+        onMouseDownCapture={handleInnerMouseDownCapture}
+      >
         <BaseInput
           ref={combinedRef}
           as="textarea"
@@ -312,7 +332,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           }
           {...makeAnalyticsAttribute(rest)}
         />
-      </BaseBox>
+      </ChatInputCardBox>
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

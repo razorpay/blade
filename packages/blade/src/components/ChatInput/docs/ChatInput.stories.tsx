@@ -362,6 +362,10 @@ const sizeComparisonStates: {
     name: 'Generating',
     props: { defaultValue: 'Show me the settlements from last week', isGenerating: true },
   },
+  {
+    name: 'Long placeholder',
+    props: { placeholder: 'Ask anything about your onboarding documents or account' },
+  },
   { name: 'Disabled', props: { isDisabled: true } },
   { name: 'Without file upload', props: { hideFileUpload: true } },
 ];

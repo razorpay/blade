@@ -449,6 +449,10 @@ As the text grows past one row in `small`, the upload and submit buttons stay on
 
 The insets that line the buttons up with the text are computed in `getChatInputInlineLayout` (`ChatInputInlineActions.tsx`), shared by web and native.
 
+### Placeholder length in `small`
+
+The text area in `small` is narrower, because the buttons share its row: on a 320px-wide phone it leaves about 176px for text against 264px in `medium`. A placeholder that wrapped would make the empty composer taller, so in `small` the placeholder stays on one line. Text that does not fit is cut off: Safari adds "...", Chrome does not, because Chrome ignores `text-overflow` on a textarea placeholder. Drawing our own placeholder to get "..." everywhere was ruled out: it would duplicate native placeholder behaviour and could overlap text during IME composition. The guideline is the real constraint: keep it to about 25 characters ("Ask a question..." is 17), which fits on a 320px-wide phone. Ghost suggestions only show on desktop widths and are already cut with "..." in both sizes.
+
 ### Why a textarea in both sizes
 
 `small` keeps the `<textarea>` instead of switching to a single-line `<input>`. Messages can still wrap and Shift+Enter still adds a new line, so the compact composer is only a layout change.
