@@ -448,6 +448,7 @@ export const TableWithStickyFirstColumnAndMultiSelect = (): React.ReactElement =
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
                 </TableFooterRow>
               </TableFooter>
             </>
