@@ -14,7 +14,8 @@
  * - `react`  → `@razorpay/blade`. One component serves web and native, since `Icons/_Svg` has a
  *              `.web` and a `.native` implementation of every element.
  *
- * A React push also lists added icons in `@razorpay/blade-mcp`'s `AvailableIcons.md`.
+ * A React push also lists added icons in the Blade knowledgebase's `AvailableIcons.md`, which
+ * `@razorpay/blade-plugin` owns and `@razorpay/blade-mcp` ships a copy of.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -31,13 +32,19 @@ const GITHUB_BOT_USERNAME = 'rzpcibot';
 const BLADE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPO_ROOT = path.resolve(BLADE_ROOT, '../..');
 const REACT_ICONS_DIRECTORY = path.join(BLADE_ROOT, 'src/components/Icons');
+// Shared with `yarn generate-icons`. The `Blade Icons Upload Check` workflow replays an upload
+// whenever it changes, so a move breaks that PR instead of the next icon upload.
+const ICON_PLOPFILE = path.join(REPO_ROOT, 'scripts/icons/plopfile.js');
 const MCP_ROOT = path.join(REPO_ROOT, 'packages/blade-mcp');
-const MCP_AVAILABLE_ICONS_FILE = path.join(MCP_ROOT, 'knowledgebase/general/AvailableIcons.md');
+// blade-mcp's `knowledgebase/` is a gitignored copy of this, made by `scripts/copyKnowledgebase.mjs`
+const MCP_AVAILABLE_ICONS_RELATIVE_PATH =
+  'packages/blade-plugin/skills/blade/references/general/AvailableIcons.md';
+const MCP_AVAILABLE_ICONS_FILE = path.join(REPO_ROOT, MCP_AVAILABLE_ICONS_RELATIVE_PATH);
 const MCP_GENERAL_DOCS_SNAPSHOT = path.join(
   MCP_ROOT,
   'src/tools/__tests__/__snapshots__/getBladeGeneralDocs.test.ts.snap',
 );
-const MCP_PACKAGE_NAME = '@razorpay/blade-mcp';
+const MCP_PACKAGE_NAMES = ['@razorpay/blade-plugin', '@razorpay/blade-mcp'];
 
 const TARGETS = {
   react: { packageName: '@razorpay/blade', label: 'React (web + native)' },
@@ -92,7 +99,7 @@ const readTargets = () => {
   return new Set(requested);
 };
 
-/** Must match `plopfile.js`, which names the folder and the component. */
+/** Must match `scripts/icons/plopfile.js`, which names the folder and the component. */
 const toComponentName = (iconName) => `${lodash.startCase(iconName).trim().replace(/\s/g, '')}Icon`;
 
 /**
@@ -196,9 +203,7 @@ const readRegisteredIcons = ({ file, entryPattern }) =>
   );
 
 const generateReactIcons = async (icons) => {
-  // the plop generators resolve `./src/...` against the working directory
-  process.chdir(BLADE_ROOT);
-  const plop = await nodePlop(path.join(BLADE_ROOT, 'plopfile.js'));
+  const plop = await nodePlop(ICON_PLOPFILE);
   const iconGenerator = plop.getGenerator('generate-icons');
   const reexportsGenerator = plop.getGenerator('generate-reexports');
 
@@ -341,7 +346,7 @@ const addIconsToMcpDocs = (addedComponentNames) => {
     warnings.push(
       `${placeholders.map((name) => `\`${name}\``).join(', ')} ${
         placeholders.length === 1 ? 'was' : 'were'
-      } added to \`packages/blade-mcp/knowledgebase/general/AvailableIcons.md\` with a description made from the name. Replace it with what the icon is for, so AI assistants pick it for the right use (e.g. "Star for ratings or favorites").`,
+      } added to \`${MCP_AVAILABLE_ICONS_RELATIVE_PATH}\` with a description made from the name. Replace it with what the icon is for, so AI assistants pick it for the right use (e.g. "Star for ratings or favorites").`,
     );
   }
 
@@ -351,13 +356,17 @@ const addIconsToMcpDocs = (addedComponentNames) => {
   return [MCP_AVAILABLE_ICONS_FILE, MCP_GENERAL_DOCS_SNAPSHOT];
 };
 
-/** The general-docs snapshot embeds the icon list, so it moves with every row added. */
+/**
+ * The general-docs snapshot embeds the icon list, so it moves with every row added. The MCP reads
+ * the copy made at install time, so copy the edited list over before updating it.
+ */
 const verifyMcpDocs = () => {
   if (skipSnapshots) return;
   runStep({
     name: 'blade-mcp general docs snapshot',
     cwd: MCP_ROOT,
-    command: 'yarn vitest run --update src/tools/__tests__/getBladeGeneralDocs.test.ts',
+    command:
+      'node scripts/copyKnowledgebase.mjs && yarn vitest run --update src/tools/__tests__/getBladeGeneralDocs.test.ts',
   });
 };
 
@@ -454,9 +463,9 @@ const buildPullRequestBody = (results, { isMcpDocsUpdated }) => {
 
   if (isMcpDocsUpdated) {
     sections.push(
-      `## Blade MCP — \`${MCP_PACKAGE_NAME}\``,
+      `## Blade knowledgebase — ${MCP_PACKAGE_NAMES.map((name) => `\`${name}\``).join(', ')}`,
       '',
-      'Added icons are listed in `knowledgebase/general/AvailableIcons.md`, so AI assistants can suggest them.',
+      `Added icons are listed in \`${MCP_AVAILABLE_ICONS_RELATIVE_PATH}\`, so AI assistants can suggest them.`,
       '',
     );
   }
@@ -469,7 +478,7 @@ const writeChangeset = ({ branchName, title, results, isMcpDocsUpdated }) => {
     ...Object.entries(results)
       .filter(([, result]) => changedIn(result).length)
       .map(([target]) => TARGETS[target].packageName),
-    ...(isMcpDocsUpdated ? [MCP_PACKAGE_NAME] : []),
+    ...(isMcpDocsUpdated ? MCP_PACKAGE_NAMES : []),
   ]
     .map((packageName) => `'${packageName}': patch`)
     .join('\n');
@@ -499,6 +508,7 @@ const uploadIcons = async () => {
   if (!touchedPaths.length) {
     console.log('Every exported icon already matches the repo. Nothing to do.');
     blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
+    if (isDryRun && blockers.length) process.exitCode = 1;
     return;
   }
 
@@ -518,6 +528,8 @@ const uploadIcons = async () => {
 
   if (isDryRun) {
     console.log(`\n--dry-run: files written, git and GitHub untouched.\n\n# ${title}\n\n${body}`);
+    // a real upload would open a draft PR here; fail instead, so CI can rehearse an upload
+    if (blockers.length) process.exitCode = 1;
     return;
   }
 
