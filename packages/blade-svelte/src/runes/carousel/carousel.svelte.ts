@@ -25,6 +25,8 @@ export interface Carousel {
   /** The pointer or focus is inside: the auto-play holds. */
   hold(): void;
   release(): void;
+  /** Auto-play is moving the slides: on, not held, motion allowed. */
+  readonly isPlaying: boolean;
   /** On the track. */
   readonly track: Attachment<HTMLElement>;
 }
@@ -37,6 +39,21 @@ export function createCarousel(options: CarouselOptions): Carousel {
   const isStill = prefersReducedMotion();
   let track = $state<HTMLElement>();
   let isHeld = $state(false);
+  // The slide a smooth scroll is heading to. On the way, the track passes
+  // the slide it left (and any between): those are not where it rests.
+  let heading: number | undefined, headingTimer: ReturnType<typeof setTimeout> | undefined;
+
+  function arrive(): void {
+    heading = undefined;
+    clearTimeout(headingTimer);
+  }
+
+  // A slide is the track's width plus the gap between slides.
+  function stride(): number {
+    if (!track?.clientWidth) return 0;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+    return track.clientWidth + gap;
+  }
 
   function settle(next: number): void {
     if (next !== options.activeSlide()) {
@@ -47,11 +64,16 @@ export function createCarousel(options: CarouselOptions): Carousel {
 
   function go(next: number): void {
     const count = options.count();
-    const width = track?.clientWidth ?? 0;
     const target = ((next % count) + count) % count;
     if (track && typeof track.scrollTo === 'function') {
+      if (!isStill) {
+        heading = target;
+        clearTimeout(headingTimer);
+        // Without `scrollend`, a scroll cut short never arrives.
+        headingTimer = setTimeout(arrive, 1000);
+      }
       track.scrollTo({
-        left: target * width,
+        left: target * stride(),
         behavior: isStill ? 'auto' : 'smooth',
       });
     }
@@ -60,9 +82,14 @@ export function createCarousel(options: CarouselOptions): Carousel {
 
   // A host-driven slide scrolls the track there.
   $effect(() => {
-    const width = track?.clientWidth ?? 0;
+    const width = track?.clientWidth ? stride() : 0;
     const activeSlide = options.activeSlide();
-    if (track && width && Math.round(track.scrollLeft / width) !== activeSlide) {
+    if (
+      track &&
+      width &&
+      heading !== activeSlide &&
+      Math.round(track.scrollLeft / width) !== activeSlide
+    ) {
       go(activeSlide);
     }
   });
@@ -86,9 +113,10 @@ export function createCarousel(options: CarouselOptions): Carousel {
     go,
     // Where the track rests is the truth: a swipe moves it without asking.
     handleScroll() {
-      if (track?.clientWidth) {
-        settle(Math.round(track.scrollLeft / track.clientWidth));
-      }
+      if (!track?.clientWidth) return;
+      const resting = Math.round(track.scrollLeft / stride());
+      if (heading === undefined) settle(resting);
+      else if (resting === heading) arrive();
     },
     hold() {
       isHeld = true;
@@ -96,9 +124,22 @@ export function createCarousel(options: CarouselOptions): Carousel {
     release() {
       isHeld = false;
     },
+    get isPlaying() {
+      return options.interval() > 0 && !isStill && !isHeld && options.count() > 1;
+    },
     track(node) {
       track = node;
+      // A scroll that stops short of where it was heading (a swipe takes
+      // over) rests where it stopped.
+      const handleScrollEnd = (): void => {
+        if (heading === undefined) return;
+        arrive();
+        if (node.clientWidth) settle(Math.round(node.scrollLeft / stride()));
+      };
+      node.addEventListener('scrollend', handleScrollEnd);
       return () => {
+        node.removeEventListener('scrollend', handleScrollEnd);
+        arrive();
         track = undefined;
       };
     },

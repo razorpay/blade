@@ -2550,15 +2550,17 @@ slide snippet (rule 4: `items`, `itemKey`, `children(item, index)`).
 | `onChange(slideIndex)`                        | same                                                           | same                                                                                  |
 | `autoPlay`                                    | same                                                           | same: every 6s, paused while the pointer or focus is inside, off under reduced motion |
 | `showIndicators`                              | same                                                           | same                                                                                  |
+| `navigationButtonVariant`, `navigationButtonPosition`, `showNavigationButtons` | same | same; phones keep the buttons under the slides, as Blade's |
 | `accessibilityLabel`                          | same                                                           | same                                                                                  |
 | —                                             | `slideLabel`, `indicatorLabel`, `indicatorsAccessibilityLabel` | cx-only: localized names for the slides, the dots and their row                       |
-| `visibleItems`, `navigationButtonPosition`, … | —                                                              | **missing** (below)                                                                   |
+| `visibleItems`, `snapAlign`, `gap`, …          | —                                                              | **missing** (below)                                                                   |
 
 **Semantics:** the dots are a `tablist` of `tab`s and each slide a
 `tabpanel` (`aria-roledescription="slide"`).
 
-- Indicators: 6px dots 4px apart; the current one an 18px pill, with its width animating (Figma \_Carousel Indicators). Before: 8px dots 6px apart.
-- **Missing**: Figma's navigation buttons, `visibleItems` and `navPosition`, white and blue indicators, and the 10px root gap (cx 8px).
+- Layout as Carousel.web.tsx: slides 12px apart (16px from `d:`), controls 24px below, 12px around the dots; NavigationButton's filled and stroked looks.
+- Indicators: phones draw CircularIndicatorButton (a 6px dot, ringed over the 6s while auto-playing); from `d:` up, 6px dots 4px apart, the current one an 18px pill with its width animating.
+- **Missing**: `visibleItems`, `indicatorVariant` (gray only), `carouselItemWidth`, `shouldAddStartEndSpacing`, `scrollOverlayColor`, `snapAlign`, `gap`, `carouselItemAlignment`.
 
 ---
 

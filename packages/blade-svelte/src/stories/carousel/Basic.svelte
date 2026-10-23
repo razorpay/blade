@@ -1,9 +1,14 @@
 <script lang="ts">
   import { Carousel, Text } from '../../index';
   import { Card } from '../../components/card';
+  import type { CarouselStyleProps } from '../../components/carousel';
 
   interface Props {
-    args: { autoPlay?: boolean; showIndicators?: boolean };
+    args: CarouselStyleProps & {
+      autoPlay?: boolean;
+      showIndicators?: boolean;
+      showNavigationButtons?: boolean;
+    };
   }
 
   let { args }: Props = $props();
@@ -24,6 +29,9 @@
     bind:activeSlide
     autoPlay={args.autoPlay}
     showIndicators={args.showIndicators}
+    showNavigationButtons={args.showNavigationButtons}
+    navigationButtonPosition={args.navigationButtonPosition}
+    navigationButtonVariant={args.navigationButtonVariant}
     accessibilityLabel="Offers"
   >
     {#snippet children(offer)}

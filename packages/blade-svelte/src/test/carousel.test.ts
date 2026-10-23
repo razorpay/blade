@@ -21,10 +21,13 @@ describe('Carousel', () => {
     expect(slides[0].getAttribute('aria-label')).toBe('Offer 1 of 3');
     expect((slides[0] as HTMLElement & { inert: boolean }).inert).toBe(false);
     expect((slides[1] as HTMLElement & { inert: boolean }).inert).toBe(true);
-    expectClass(slides[0], 'snap-center');
+    expectClass(slides[0], 'snap-start');
+    // Blade's slide gap: 12px, 16px from `d:` up.
+    expectClass(slides[0].parentElement, 'gap-3');
+    expectClass(slides[0].parentElement, 'd:gap-4');
   });
 
-  it('a dot goes to its slide and becomes the current one', () => {
+  it('a dot goes to its slide and becomes the current one', async () => {
     const onChange = vi.fn();
     const { getByRole, getAllByRole } = render(CarouselHarness, { props: { onChange } });
     const third = getByRole('tab', { name: 'Go to offer 3' });
@@ -33,16 +36,17 @@ describe('Carousel', () => {
       getAllByRole('tabpanel', { hidden: true })[2].id,
     );
     expectClass(third, 'bg-overlay-moderate');
-    // Figma's indicators: 6px dots, the current one an 18px pill, 4px apart.
-    expectClass(third, 'w-1.5');
-    expectClass(third, 'h-1.5');
+    // Blade's indicators: 6px dots 4px apart; from `d:` up the current one
+    // is an 18px pill.
+    expectClass(third, 'd:w-1.5');
+    expectClass(third, 'd:h-1.5');
     expectClass(third.parentElement, 'gap-1');
-    return fireEvent.click(third).then(() => {
-      expectClass(third, 'w-[18px]');
-      expect(onChange).toHaveBeenCalledWith(2);
-      expect(third.getAttribute('aria-selected')).toBe('true');
-      expectClass(third, 'icon-interactive-gray-muted');
-    });
+    await fireEvent.click(third);
+    flushSync();
+    expectClass(third, 'd:w-[18px]');
+    expect(onChange).toHaveBeenCalledWith(2);
+    expect(third.getAttribute('aria-selected')).toBe('true');
+    expectClass(third, 'icon-interactive-gray-muted');
   });
 
   it("names slides and dots in Blade's English by default", () => {
@@ -65,7 +69,7 @@ describe('Carousel', () => {
     expect(queryAllByRole('tab')).toHaveLength(0);
   });
 
-  it('auto-plays every 6s, wraps, and holds while the pointer is inside', () => {
+  it('auto-plays every 6s, wraps, and holds while the pointer is inside', async () => {
     vi.useFakeTimers();
     const onChange = vi.fn();
     const { getByTestId } = render(CarouselHarness, {
@@ -77,10 +81,10 @@ describe('Carousel', () => {
     vi.advanceTimersByTime(12001);
     expect(onChange.mock.calls.map(([index]) => index)).toEqual([1, 2, 0]);
 
-    return fireEvent.pointerEnter(getByTestId('offers')).then(() => {
-      vi.advanceTimersByTime(30000);
-      expect(onChange).toHaveBeenCalledTimes(3);
-    });
+    await fireEvent.pointerEnter(getByTestId('offers'));
+    flushSync();
+    vi.advanceTimersByTime(30000);
+    expect(onChange).toHaveBeenCalledTimes(3);
   });
 
   it('turning autoPlay on later starts at its pace, not at the pace it mounted with', () => {
@@ -96,5 +100,31 @@ describe('Carousel', () => {
       vi.advanceTimersByTime(5900);
       expect(onChange).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it('the previous and next buttons step through the slides, wrapping', async () => {
+    const onChange = vi.fn();
+    const { getByRole } = render(CarouselHarness, { props: { onChange } });
+    const previous = getByRole('button', { name: 'Previous Slide' });
+    const next = getByRole('button', { name: 'Next Slide' });
+    // Blade's filled NavigationButton, under the slides around the dots.
+    expectClass(previous, 'bg-interactive-static-white-default');
+    expectClass(previous, 'shadow-lowRaised');
+    expect(previous.parentElement?.contains(getByRole('tablist'))).toBe(true);
+    await fireEvent.click(previous);
+    flushSync();
+    await fireEvent.click(next);
+    flushSync();
+    expect(onChange.mock.calls.map(([index]) => index)).toEqual([2, 0]);
+  });
+
+  it('puts the buttons either side from `d:` up, and under the slides on phones', () => {
+    const { getAllByRole } = render(CarouselHarness, {
+      props: { navigationButtonPosition: 'side', navigationButtonVariant: 'stroked' },
+    });
+    const [sidePrevious, bottomPrevious] = getAllByRole('button', { name: 'Previous Slide' });
+    expectClass(sidePrevious, 'd:flex');
+    expectClass(sidePrevious, 'bg-interactive-static-white-faded');
+    expectClass(bottomPrevious, 'd:hidden');
   });
 });
