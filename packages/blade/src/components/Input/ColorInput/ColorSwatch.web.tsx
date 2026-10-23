@@ -1,4 +1,5 @@
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { useTheme } from '~components/BladeProvider';
@@ -7,6 +8,7 @@ import { opacity, size } from '~tokens/global';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { padHexForPicker } from './ColorInput.utils';
 import getIn from '~utils/lodashButBetter/get';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type ColorSwatchProps = {
   color: string;
@@ -39,6 +41,25 @@ const swatchLeftPaddingTokens = {
   large: 'spacing.3',
 } as const;
 
+const SWATCH_CLASSNAME = '__blade-color-swatch';
+
+/**
+ * The input's outer focus ring only shows while the hex field is focused, so the swatch needs a
+ * focus ring of its own. It is drawn around the colour square rather than the whole padded
+ * button so it lines up with what the user sees.
+ */
+const StyledSwatchButton = styled(BaseBox)(({ theme }) => {
+  // Leave out the ring's z-index: the swatch is a flex item, so it would lift the square above
+  // the invisible colour input that sits on top to catch clicks, and the picker wouldn't open.
+  const { zIndex: _zIndex, ...focusRingStyles } = getFocusRingStyles({ theme });
+  return {
+    '&:focus': {
+      outline: 'none',
+    },
+    [`&:focus-visible .${SWATCH_CLASSNAME}`]: focusRingStyles,
+  };
+});
+
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
   ({ color, size: inputSize, isDisabled, onChange, onFocus, onBlur }, ref) => {
     const colorInputRef = useRef<HTMLInputElement>(null);
@@ -69,7 +90,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
     const dimension = swatchSizeTokens[inputSize];
 
     return (
-      <BaseBox
+      <StyledSwatchButton
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -85,6 +106,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
       >
         <BaseBox
           as="div"
+          className={SWATCH_CLASSNAME}
           width={makeSize(dimension)}
           height={makeSize(dimension)}
           borderRadius="xsmall"
@@ -114,7 +136,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
             cursor: isDisabled ? 'not-allowed' : 'pointer',
           }}
         />
-      </BaseBox>
+      </StyledSwatchButton>
     );
   },
 );

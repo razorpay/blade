@@ -108,7 +108,7 @@ describe('<TextInput />', () => {
     expect(input).toBeDisabled();
   });
 
-  it('should show spinner when isLoading is passed', () => {
+  it('should show loader when isLoading is passed', () => {
     const label = 'Enter name';
     const valueInitial = 'Kamlesh';
 
@@ -120,8 +120,8 @@ describe('<TextInput />', () => {
     expect(clearButton).toBeFalsy();
     clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
-    const loadingSpinner = queryByRole('progressbar');
-    expect(loadingSpinner).toBeTruthy();
+    const loader = queryByRole('progressbar');
+    expect(loader).toBeTruthy();
   });
 
   it('should handle onChange', () => {

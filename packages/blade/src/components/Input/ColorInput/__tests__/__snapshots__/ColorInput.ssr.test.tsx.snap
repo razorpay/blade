@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ColorInput /> should render 1`] = `"<div id="root"><div data-blade-component="color-input" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><label for="color-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="color-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Enter color</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bksIuc StyledColorInput-sc-1gdzo5z-0  hDVeet"><div class="BaseBox-bksIuc fZLfoV __blade-color-input-row" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0  kQyKqH focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kRulcj __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc kXHuQ"><div data-blade-component="base-box" class="BaseBox-bksIuc iGKBAO"><div role="button" aria-label="Open color picker" tabindex="0" data-blade-component="base-box" class="BaseBox-bksIuc cONepc"><div style="background-color:#FFFFFF;border:1px solid hsla(204, 8%, 88%, 1);opacity:1" data-blade-component="base-box" class="BaseBox-bksIuc eIcXgZ"></div><input type="color" tabindex="-1" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer" value="#ffffff"/></div></div></div><input type="text" maxLength="6" id="color-input-undefined-input-undefined-undefined-input-undefined" placeholder="000000" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter color" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eRvRXi" value="FFFFFF"/></div></div></div></div></div><div class="BaseBox-bksIuc hLCzaX __blade-color-input-row" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0  kQyKqH focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kRulcj __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" id="color-input-undefined-input-undefined-opacity-undefined-input-undefined" placeholder="100" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Color opacity percentage" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eMXbUV" value="100"/><div data-blade-component="base-box" class="BaseBox-bksIuc kXHuQ"><div data-blade-component="base-box" class="BaseBox-bksIuc iFXooM"><p letter-spacing="50" class="StyledBaseText-foUshD hjkZVx" data-blade-component="text">%</p></div></div></div></div></div></div></div></div></div></div></div>"`;
+exports[`<ColorInput /> should render 1`] = `"<div id="root"><div data-blade-component="color-input" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><label for="color-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="color-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Enter color</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bksIuc StyledColorInput-sc-1gdzo5z-0  hDVeet"><div class="BaseBox-bksIuc fZLfoV __blade-color-input-row" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0  cdwWee focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kRulcj __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc kXHuQ"><div data-blade-component="base-box" class="BaseBox-bksIuc iGKBAO"><div role="button" aria-label="Open color picker" tabindex="0" data-blade-component="base-box" class="BaseBox-bksIuc ColorSwatchweb__StyledSwatchButton-sc-2ktlft-0 cONepc ghAWJA"><div class="BaseBox-bksIuc eIcXgZ __blade-color-swatch" style="background-color:#FFFFFF;border:1px solid hsla(204, 8%, 88%, 1);opacity:1" data-blade-component="base-box"></div><input type="color" tabindex="-1" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer" value="#ffffff"/></div></div></div><input type="text" maxLength="6" id="color-input-undefined-input-undefined-undefined-input-undefined" placeholder="000000" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter color" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eRvRXi" value="FFFFFF"/></div></div></div></div></div><div class="BaseBox-bksIuc hLCzaX __blade-color-input-row" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0  cdwWee focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kRulcj __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" id="color-input-undefined-input-undefined-opacity-undefined-input-undefined" placeholder="100" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Color opacity percentage" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eMXbUV" value="100"/><div data-blade-component="base-box" class="BaseBox-bksIuc kXHuQ"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseInputAffixweb__BaseInputAffix-sc-1x4lya7-0 iFXooM gYfDym"><p letter-spacing="50" class="StyledBaseText-foUshD hjkZVx" data-blade-component="text">%</p></div></div></div></div></div></div></div></div></div></div></div>"`;
 
 exports[`<ColorInput /> should render 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -142,7 +142,7 @@ exports[`<ColorInput /> should render 2`] = `
   cursor: pointer;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -151,15 +151,30 @@ exports[`<ColorInput /> should render 2`] = `
   border-radius: 4px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 80px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   padding-right: 12px;
+}
+
+.c16.c16.c16.c16.c16:focus {
+  outline: none;
+}
+
+.c16.c16.c16.c16.c16:focus-visible .__blade-color-swatch {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -212,6 +227,10 @@ exports[`<ColorInput /> should render 2`] = `
   border-radius: 8px;
 }
 
+.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22 > * {
+  line-height: normal;
+}
+
 .c5.c5.c5.c5.c5 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -252,7 +271,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c23.c23.c23.c23.c23 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -269,7 +288,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -303,7 +322,7 @@ exports[`<ColorInput /> should render 2`] = `
   cursor: auto;
 }
 
-.c17.c17.c17.c17.c17::-webkit-input-placeholder {
+.c18.c18.c18.c18.c18::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -321,7 +340,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17::-moz-placeholder {
+.c18.c18.c18.c18.c18::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -339,7 +358,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17:-ms-input-placeholder {
+.c18.c18.c18.c18.c18:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -357,7 +376,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17::placeholder {
+.c18.c18.c18.c18.c18::placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -375,11 +394,11 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17:focus {
+.c18.c18.c18.c18.c18:focus {
   outline: none;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -413,7 +432,7 @@ exports[`<ColorInput /> should render 2`] = `
   cursor: auto;
 }
 
-.c19.c19.c19.c19.c19::-webkit-input-placeholder {
+.c20.c20.c20.c20.c20::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -431,7 +450,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19::-moz-placeholder {
+.c20.c20.c20.c20.c20::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -449,7 +468,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19:-ms-input-placeholder {
+.c20.c20.c20.c20.c20:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -467,7 +486,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19::placeholder {
+.c20.c20.c20.c20.c20::placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -485,7 +504,7 @@ exports[`<ColorInput /> should render 2`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19:focus {
+.c20.c20.c20.c20.c20:focus {
   outline: none;
 }
 
@@ -600,18 +619,6 @@ exports[`<ColorInput /> should render 2`] = `
   width: 100%;
 }
 
-.c11.c11.c11.c11.c11:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
 <div
   id="root"
 >
@@ -701,13 +708,13 @@ exports[`<ColorInput /> should render 2`] = `
                     >
                       <div
                         aria-label="Open color picker"
-                        class="c15"
+                        class="c15 c16"
                         data-blade-component="base-box"
                         role="button"
                         tabindex="0"
                       >
                         <div
-                          class="c16"
+                          class="c17 __blade-color-swatch"
                           data-blade-component="base-box"
                           style="background-color:#FFFFFF;border:1px solid hsla(204, 8%, 88%, 1);opacity:1"
                         />
@@ -727,7 +734,7 @@ exports[`<ColorInput /> should render 2`] = `
                     aria-invalid="false"
                     aria-label="Enter color"
                     aria-required="false"
-                    class="c17"
+                    class="c18"
                     data-blade-component="styled-base-input"
                     id="color-input-13-input-14-1-input-2"
                     maxlength="6"
@@ -741,7 +748,7 @@ exports[`<ColorInput /> should render 2`] = `
           </div>
         </div>
         <div
-          class="c18 __blade-color-input-row"
+          class="c19 __blade-color-input-row"
           data-blade-component="base-box"
         >
           <div
@@ -766,7 +773,7 @@ exports[`<ColorInput /> should render 2`] = `
                     aria-invalid="false"
                     aria-label="Color opacity percentage"
                     aria-required="false"
-                    class="c19"
+                    class="c20"
                     data-blade-component="styled-base-input"
                     id="color-input-13-input-14-opacity-7-input-8"
                     placeholder="100"
@@ -778,11 +785,11 @@ exports[`<ColorInput /> should render 2`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c20"
+                      class="c21 c22"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c21"
+                        class="c23"
                         data-blade-component="text"
                         letter-spacing="50"
                       >

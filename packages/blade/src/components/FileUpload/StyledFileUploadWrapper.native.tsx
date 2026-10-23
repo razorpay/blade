@@ -42,7 +42,7 @@ const StyledFileUploadWrapper = ({
 
   const borderColor = getIn(
     theme.colors,
-    fileUploadColorTokens.border[isDisabled ? 'disabled' : 'default'],
+    fileUploadColorTokens.border[isDisabled ? 'disabled' : isActive ? 'active' : 'default'],
   );
 
   const activeBgColor = getIn(theme.colors, fileUploadColorTokens.background.active);

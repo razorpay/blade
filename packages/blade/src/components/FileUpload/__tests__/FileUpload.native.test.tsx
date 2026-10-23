@@ -562,6 +562,49 @@ describe('<FileUploadItem /> (native)', () => {
     expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
   });
 
+  it('should show the Reupload label when reupload is the only action in error state', () => {
+    const { getByLabelText, getByText, queryByLabelText } = renderWithTheme(
+      <FileUploadItem file={errorFile} onReupload={jest.fn()} />,
+    );
+
+    expect(getByLabelText(`Reupload ${errorFile.name}`)).toBeTruthy();
+    expect(getByText('Reupload')).toBeTruthy();
+    expect(queryByLabelText(`Remove ${errorFile.name}`)).toBeNull();
+  });
+
+  it('should not show a reupload button in error state when onReupload is not provided', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <FileUploadItem file={errorFile} onRemove={jest.fn()} />,
+    );
+
+    expect(queryByLabelText(`Reupload ${errorFile.name}`)).toBeNull();
+    expect(queryByLabelText(`Remove ${errorFile.name}`)).toBeTruthy();
+  });
+
+  it('should hide the uploading prefix in compact layout', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUploadItem _isCompact file={uploadingFile} />,
+    );
+
+    expect(getByText('video.mp4')).toBeTruthy();
+    expect(queryByText(/Uploading/)).toBeNull();
+  });
+
+  it('should offer Reupload and no trash button for a failed file inside FileUpload', () => {
+    const { getByLabelText, queryByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="multiple"
+        label="Upload documents"
+        fileList={[errorFile]}
+        onUploadPress={jest.fn()}
+        onRemove={jest.fn()}
+      />,
+    );
+
+    expect(getByLabelText(`Reupload ${errorFile.name}`)).toBeTruthy();
+    expect(queryByLabelText(`Remove ${errorFile.name}`)).toBeNull();
+  });
+
   it('should render multiple file items', () => {
     const files = [successFile, errorFile];
     const { toJSON } = renderWithTheme(

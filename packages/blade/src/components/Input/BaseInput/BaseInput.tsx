@@ -323,6 +323,15 @@ type BaseInputCommonProps = FormInputLabelProps &
      * back to its own internally tracked interaction state.
      */
     activeInteraction?: ActionStates;
+    /**
+     * @internal Tighter spacing around the leading interaction element, used by
+     * PhoneNumberInput for its country selector:
+     * - even gap between the field edge and the leading element on all sides
+     * - prefix or leading icon 2px after the leading element
+     * - input text 4px after a prefix or leading icon, or 2px after the leading
+     *   element when there's neither
+     */
+    hasCompactLeadingSpacing?: boolean;
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -844,59 +853,52 @@ const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   className: string;
-  shouldAddLimitedFocus: boolean;
   $size: NonNullable<BaseInputProps['size']>;
   $borderRadius?: BaseInputProps['borderRadius'];
-}>(
-  ({
-    theme,
-    currentInteraction,
-    isTableInputCell,
-    shouldAddLimitedFocus,
-    $size,
-    $borderRadius,
-  }) => ({
-    borderRadius: makeBorderSize(
-      isTableInputCell
-        ? theme.border.radius.none
-        : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
-    ),
-    width: '100%',
-    // `&:focus-within` is a web-only pseudo-selector. On React Native,
-    // styled-components/native (css-to-react-native) cannot parse a nested rule and
-    // logs "Node of type rule not supported as an inline style" for every rendered
-    // input. focus-within has no effect on native, so we omit the nested rule there.
-    ...(getPlatformType() === 'react-native'
-      ? {}
-      : {
-          '&:focus-within':
-            !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
-              ? {
-                  ...getFocusRingStyles({
-                    theme,
-                  }),
-                  transitionDuration: castWebType(
-                    makeMotionTime(
-                      getIn(
-                        theme.motion.duration,
-                        baseInputBorderBackgroundMotion[
-                          currentInteraction === 'focus' ? 'enter' : 'exit'
-                        ].duration,
-                      ),
-                    ),
-                  ),
-                  transitionTimingFunction: castWebType(
-                    theme.motion.easing[
+}>(({ theme, currentInteraction, isTableInputCell, $size, $borderRadius }) => ({
+  borderRadius: makeBorderSize(
+    isTableInputCell
+      ? theme.border.radius.none
+      : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
+  ),
+  width: '100%',
+  // `&:focus-within` is a web-only pseudo-selector. On React Native,
+  // styled-components/native (css-to-react-native) cannot parse a nested rule and
+  // logs "Node of type rule not supported as an inline style" for every rendered
+  // input. focus-within has no effect on native, so we omit the nested rule there.
+  ...(getPlatformType() === 'react-native'
+    ? {}
+    : {
+        // The ring only shows while the input's own field has focus. Buttons inside the input
+        // (clear, show password, country selector, etc.) draw their own focus ring, so showing
+        // this one too while they are focused would give two rings at once.
+        '&:focus-within':
+          !isTableInputCell && currentInteraction === 'focus'
+            ? {
+                ...getFocusRingStyles({
+                  theme,
+                }),
+                transitionDuration: castWebType(
+                  makeMotionTime(
+                    getIn(
+                      theme.motion.duration,
                       baseInputBorderBackgroundMotion[
                         currentInteraction === 'focus' ? 'enter' : 'exit'
-                      ].easing
-                    ],
+                      ].duration,
+                    ),
                   ),
-                }
-              : {},
-        }),
-  }),
-);
+                ),
+                transitionTimingFunction: castWebType(
+                  theme.motion.easing[
+                    baseInputBorderBackgroundMotion[
+                      currentInteraction === 'focus' ? 'enter' : 'exit'
+                    ].easing
+                  ],
+                ),
+              }
+            : {},
+      }),
+}));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
@@ -951,6 +953,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelId,
     activeDescendant,
     hideLabelText,
+    hasCompactLeadingSpacing,
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -1134,11 +1137,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   }
 
   const isTextArea = as === 'textarea';
-  const hasLeadingDropdown = Boolean(leadingDropDown);
-  const hasTrailingDropdown = Boolean(trailingDropDown);
-
-  const shouldAddLimitedFocus = hasLeadingDropdown || hasTrailingDropdown;
-
   /**
    * Held in a variable so the contextual branch below can wrap the *same* element
    * rather than duplicating it. When `showHelpTextOnFocus` is off this renders
@@ -1199,7 +1197,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           currentInteraction={visualInteraction}
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
-          shouldAddLimitedFocus={shouldAddLimitedFocus}
           $size={_size}
           $borderRadius={borderRadius}
           elevation={elevation}
@@ -1247,6 +1244,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={_isDisabled}
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
+              hasCompactLeadingSpacing={hasCompactLeadingSpacing}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1328,6 +1326,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 color={color}
                 disabledColor={disabledColor}
                 isInsideCounterInput={isInsideCounterInput}
+                $hasCompactLeadingSpacing={hasCompactLeadingSpacing}
                 $caretColor={caretColor}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}

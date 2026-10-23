@@ -218,7 +218,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -405,7 +404,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -592,7 +590,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -779,7 +776,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -966,7 +962,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -1153,7 +1148,6 @@ exports[`<OTPInput /> should render 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -1531,7 +1525,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -1719,7 +1712,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -1907,7 +1899,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -2095,7 +2086,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -2283,7 +2273,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},
@@ -2470,7 +2459,6 @@ exports[`<OTPInput /> should render large size 1`] = `
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
-                shouldAddLimitedFocus={false}
                 style={
                   [
                     {},

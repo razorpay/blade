@@ -209,7 +209,6 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
             currentInteraction="default"
             data-blade-component="base-box"
             isTableInputCell={false}
-            shouldAddLimitedFocus={false}
             style={
               [
                 {},
@@ -6488,7 +6487,6 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
             currentInteraction="default"
             data-blade-component="base-box"
             isTableInputCell={false}
-            shouldAddLimitedFocus={false}
             style={
               [
                 {},

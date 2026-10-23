@@ -89,7 +89,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
 }
@@ -174,8 +174,8 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -246,10 +246,8 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(206,10%,29%,0.32);
-  text-decoration-color: hsla(206,10%,29%,0.32);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.25rem;
   -webkit-letter-spacing: -0.18200000000000002px;
   -moz-letter-spacing: -0.18200000000000002px;
@@ -635,7 +633,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
 }
@@ -720,13 +718,13 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -796,10 +794,8 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(0,0%,2%,1);
-  text-decoration-color: hsla(0,0%,2%,1);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.25rem;
   -webkit-letter-spacing: -0.18200000000000002px;
   -moz-letter-spacing: -0.18200000000000002px;
@@ -1277,13 +1273,13 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -1353,10 +1349,8 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(0,0%,2%,1);
-  text-decoration-color: hsla(0,0%,2%,1);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.25rem;
   -webkit-letter-spacing: -0.18200000000000002px;
   -moz-letter-spacing: -0.18200000000000002px;
@@ -1834,13 +1828,13 @@ exports[`<FileUpload /> should render FileUpload with size="small" 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -1910,10 +1904,8 @@ exports[`<FileUpload /> should render FileUpload with size="small" 1`] = `
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(0,0%,2%,1);
-  text-decoration-color: hsla(0,0%,2%,1);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.0625rem;
   -webkit-letter-spacing: -0.15600000000000003px;
   -moz-letter-spacing: -0.15600000000000003px;
@@ -2356,13 +2348,13 @@ exports[`<FileUpload /> should render the upload icon before the action text 1`]
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -2415,10 +2407,8 @@ exports[`<FileUpload /> should render the upload icon before the action text 1`]
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(0,0%,2%,1);
-  text-decoration-color: hsla(0,0%,2%,1);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.0625rem;
   -webkit-letter-spacing: -0.15600000000000003px;
   -moz-letter-spacing: -0.15600000000000003px;
@@ -2756,7 +2746,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
 }
@@ -2841,8 +2831,8 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
+  -webkit-transition-property: background-color,border-color;
+  transition-property: background-color,border-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -2913,10 +2903,8 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
-  -webkit-text-decoration-line: underline;
-  text-decoration-line: underline;
-  -webkit-text-decoration-color: hsla(206,10%,29%,0.32);
-  text-decoration-color: hsla(206,10%,29%,0.32);
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
   line-height: 1.25rem;
   -webkit-letter-spacing: -0.18200000000000002px;
   -moz-letter-spacing: -0.18200000000000002px;
