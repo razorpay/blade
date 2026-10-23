@@ -9,6 +9,11 @@ import Animated, {
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative, chatInputMaxTextAreaHeight } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
+import {
+  ChatInputInlineSubmit,
+  ChatInputInlineUpload,
+  getChatInputInlineLayout,
+} from './ChatInputInlineActions';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -37,6 +42,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onBlur,
     onSubmit,
     placeholder = 'Ask a question...',
+    size = 'medium',
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -58,6 +64,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const isSmall = size === 'small';
   const inputId = useId('chatinput');
 
   if (__DEV__) {
@@ -175,13 +182,30 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </ScrollView>
   ) : null;
 
+  const handleUploadClick = (): void => onFileChange?.({ fileList: files });
+
   const actionBarContent = (
     <ChatInputActionBar
       isDisabled={isDisabled}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
       hideFileUpload={hideFileUpload}
-      onUploadClick={() => onFileChange?.({ fileList: files })}
+      onUploadClick={handleUploadClick}
+      onSubmit={handleSubmit}
+      onStop={onStop}
+    />
+  );
+
+  // size="small": upload and submit sit inline with the text instead of in the action bar
+  const inlineUploadAction = hideFileUpload ? undefined : (
+    <ChatInputInlineUpload isDisabled={isDisabled} onUploadClick={handleUploadClick} />
+  );
+
+  const inlineSubmitAction = (
+    <ChatInputInlineSubmit
+      isDisabled={isDisabled}
+      isGenerating={isGenerating}
+      isSubmitDisabled={isSubmitDisabled}
       onSubmit={handleSubmit}
       onStop={onStop}
     />
@@ -259,16 +283,22 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onFocus={onFocus}
           onBlur={onBlur}
           isDisabled={isDisabled}
-          numberOfLines={2}
+          numberOfLines={isSmall ? 1 : 2}
           autoGrowMaxHeight={chatInputMaxTextAreaHeight}
+          autoGrowMinHeight={isSmall ? getChatInputInlineLayout(theme).singleRowHeight : undefined}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           padding={makeSpace(theme.spacing[5])}
           borderRadius="large"
           caretColor="surface.icon.onSea.onSubtle"
-          topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          // size="small" has no bottomContent, so a null topContent would change BaseInput's tree
+          // when the first file is added and remount the TextInput (closing the keyboard)
+          topContent={isSmall ? filePreviewContent ?? <View /> : filePreviewContent}
+          bottomContent={isSmall ? undefined : actionBarContent}
+          leadingInteractionElement={isSmall ? inlineUploadAction : undefined}
+          trailingInteractionElement={isSmall ? inlineSubmitAction : undefined}
+          visualsAlignment={isSmall ? 'bottom' : undefined}
           {...makeAnalyticsAttribute(rest)}
         />
       </BaseBox>

@@ -257,6 +257,14 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     autoGrowMaxHeight?: number;
     /**
+     * @internal Minimum height (in px) of a React Native auto-growing textarea, used with
+     * `autoGrowMaxHeight`. Defaults to the input height times `numberOfLines`. ChatInput's
+     * `size="small"` sets it so a single row with its padding does not start short.
+     *
+     * **Note (Web):** No effect.
+     */
+    autoGrowMinHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -332,6 +340,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      *   element when there's neither
      */
     hasCompactLeadingSpacing?: boolean;
+    /**
+     * @internal Vertical alignment of the leading and trailing visuals in the input row.
+     * `bottom` keeps them on the last row while a textarea grows, used by ChatInput's
+     * `size="small"` for its inline upload and submit buttons.
+     * @default 'center'
+     */
+    visualsAlignment?: 'center' | 'bottom';
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -947,6 +962,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingFooterSlot,
     numberOfLines,
     autoGrowMaxHeight,
+    autoGrowMinHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -954,6 +970,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
     hideLabelText,
     hasCompactLeadingSpacing,
+    visualsAlignment = 'center',
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -1245,6 +1262,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
               hasCompactLeadingSpacing={hasCompactLeadingSpacing}
+              visualsAlignment={visualsAlignment}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1309,7 +1327,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
                 // Native-only: do not forward to web StyledBaseInput
-                {...(isReactNative && autoGrowMaxHeight ? { autoGrowMaxHeight } : null)}
+                {...(isReactNative && autoGrowMaxHeight
+                  ? { autoGrowMaxHeight, autoGrowMinHeight }
+                  : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}
@@ -1348,6 +1368,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingDropDown={trailingDropDown}
               errorTextId={errorTextId}
               successTextId={successTextId}
+              visualsAlignment={visualsAlignment}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>

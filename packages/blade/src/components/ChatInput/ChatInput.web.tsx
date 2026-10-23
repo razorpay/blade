@@ -4,6 +4,11 @@ import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
+import {
+  ChatInputInlineSubmit,
+  ChatInputInlineUpload,
+  getChatInputInlineLayout,
+} from './ChatInputInlineActions';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -30,6 +35,21 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   scrollbarWidth: 'none' as const,
 }));
 
+// size="small": the placeholder stays on one line, so a long placeholder cannot make the empty
+// composer taller than one row. Overflow is cut off; Safari adds "...", Chrome ignores
+// text-overflow on a textarea placeholder.
+const ChatInputCardBox = styled(BaseBox)<{ $isSmall: boolean }>(({ $isSmall }) =>
+  $isSmall
+    ? {
+        '& textarea::placeholder': {
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        },
+      }
+    : {},
+);
+
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
     value,
@@ -39,6 +59,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onBlur,
     onSubmit,
     placeholder = 'Ask a question...',
+    size = 'medium',
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -62,6 +83,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const isSmall = size === 'small';
 
   const {
     fileInputRef,
@@ -215,6 +237,23 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
+  // size="small": upload and submit sit inline with the text instead of in the action bar
+  const inlineLayout = getChatInputInlineLayout(theme);
+
+  const inlineUploadAction = hideFileUpload ? undefined : (
+    <ChatInputInlineUpload isDisabled={isDisabled} onUploadClick={handleUploadClick} />
+  );
+
+  const inlineSubmitAction = (
+    <ChatInputInlineSubmit
+      isDisabled={isDisabled}
+      isGenerating={isGenerating}
+      isSubmitDisabled={isSubmitDisabled}
+      onSubmit={handleSubmit}
+      onStop={onStop}
+    />
+  );
+
   const isError = validationState === 'error';
 
   return (
@@ -235,7 +274,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
+      <ChatInputCardBox
+        $isSmall={isSmall}
+        position="relative"
+        zIndex={1}
+        onMouseDownCapture={handleInnerMouseDownCapture}
+      >
         <BaseInput
           ref={combinedRef}
           as="textarea"
@@ -253,20 +297,28 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           isDisabled={isDisabled}
-          numberOfLines={2}
+          numberOfLines={isSmall ? 1 : 2}
           size="medium"
           padding={makeSpace(theme.spacing[5])}
           borderRadius="large"
           caretColor="surface.icon.onSea.onSubtle"
           topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          bottomContent={isSmall ? undefined : actionBarContent}
+          leadingInteractionElement={isSmall ? inlineUploadAction : undefined}
+          trailingInteractionElement={isSmall ? inlineSubmitAction : undefined}
+          visualsAlignment={isSmall ? 'bottom' : undefined}
           inputRowOverlay={
             showGhostSuggestion && suggestions ? (
               <BaseBox
                 position="absolute"
                 top="spacing.5"
-                left="spacing.5"
-                right="spacing.5"
+                // in size="small", start where the typed text starts and stop before submit
+                left={
+                  isSmall && !hideFileUpload
+                    ? makeSpace(inlineLayout.textStartWithUpload)
+                    : 'spacing.5'
+                }
+                right={isSmall ? makeSpace(inlineLayout.textEndBeforeSubmit) : 'spacing.5'}
                 pointerEvents="none"
                 zIndex={3}
               >
@@ -280,7 +332,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           }
           {...makeAnalyticsAttribute(rest)}
         />
-      </BaseBox>
+      </ChatInputCardBox>
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

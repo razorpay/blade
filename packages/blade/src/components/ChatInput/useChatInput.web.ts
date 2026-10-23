@@ -106,6 +106,42 @@ const useChatInput = (
     adjustTextareaHeight();
   }, [textValue, adjustTextareaHeight]);
 
+  // Text can re-wrap without the value changing: the textarea gets narrower (container or window
+  // resize) or the web font loads after mount. Re-measure then, so wrapped lines are never clipped.
+  // Only width changes count, and the re-measure runs on the next frame: changing the observed
+  // element's height inside the observer callback makes browsers report a ResizeObserver loop error.
+  React.useEffect(() => {
+    const textarea = textareaRef.current;
+    if (!(textarea instanceof HTMLTextAreaElement)) return undefined;
+
+    let isMounted = true;
+    void document.fonts?.ready.then(() => {
+      if (isMounted) adjustTextareaHeight();
+    });
+
+    if (typeof ResizeObserver === 'undefined') {
+      return () => {
+        isMounted = false;
+      };
+    }
+
+    let lastWidth = textarea.clientWidth;
+    let frame = 0;
+    const resizeObserver = new ResizeObserver(() => {
+      if (textarea.clientWidth === lastWidth) return;
+      lastWidth = textarea.clientWidth;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(adjustTextareaHeight);
+    });
+    resizeObserver.observe(textarea);
+
+    return () => {
+      isMounted = false;
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+    };
+  }, [adjustTextareaHeight]);
+
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
       setTextValue(() => newValue ?? '');

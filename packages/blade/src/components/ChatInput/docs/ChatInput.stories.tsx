@@ -14,6 +14,7 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { Checkbox } from '~components/Checkbox';
 import { isReactNative } from '~utils';
 
 /** Native onFileChange fires before pick with the current list — simulate a picked file for Storybook. */
@@ -71,6 +72,12 @@ export default {
   component: ChatInput,
   tags: ['autodocs'],
   argTypes: {
+    size: {
+      control: { type: 'radio' },
+      options: ['medium', 'small'],
+      description: 'Size of the chat input. `small` is a one-row composer with inline actions.',
+      table: { defaultValue: { summary: 'medium' } },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
@@ -262,6 +269,151 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
   );
 };
 FullFeatured.storyName = 'Full Featured';
+
+export const SmallSize: StoryFn<typeof ChatInput> = () => {
+  const [text, setText] = useState('');
+  const [files, setFiles] = useState<BladeFileList>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const generationTimerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(generationTimerRef.current), []);
+
+  const handleSubmit = ({ value, fileList }: { value: string; fileList: BladeFileList }): void => {
+    console.log('Submitted:', value, 'Files:', fileList);
+    setIsGenerating(true);
+    setText('');
+    setFiles([]);
+
+    clearTimeout(generationTimerRef.current);
+    generationTimerRef.current = setTimeout(() => {
+      setIsGenerating(false);
+    }, 3000);
+  };
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        size="small"
+        value={text}
+        onChange={({ value }) => setText(value)}
+        onSubmit={handleSubmit}
+        placeholder="Ask a question..."
+        isGenerating={isGenerating}
+        onStop={() => {
+          clearTimeout(generationTimerRef.current);
+          setIsGenerating(false);
+        }}
+        fileList={files}
+        onFileChange={handlePlatformFileChange(setFiles)}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        accept=".jpg,.png,.pdf,.xlsx"
+        suggestions={[
+          'How do I integrate payment gateway?',
+          'Show me recent transactions',
+          'Help me set up webhooks',
+        ]}
+        onSuggestionAccept={({ suggestion }) => {
+          setText(suggestion);
+        }}
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        {`size="small" keeps every ChatInput feature and fits the composer in one row: upload on the left, submit or stop on the right. The text area grows as you type (Shift+Enter for a new line).`}
+      </Text>
+    </Box>
+  );
+};
+SmallSize.storyName = 'Small Size';
+
+const sizeComparisonStates: {
+  name: string;
+  props: Partial<ChatInputProps>;
+}[] = [
+  { name: 'Idle', props: {} },
+  { name: 'With text', props: { defaultValue: 'Show me the settlements from last week' } },
+  {
+    name: 'With long text',
+    props: {
+      defaultValue:
+        'I run a small bakery and sell on Instagram. Which documents do I need to finish onboarding, and how long does the review usually take once I submit them?',
+    },
+  },
+  {
+    name: 'With a file attached',
+    props: {
+      fileList: [
+        {
+          name: 'business-pan.pdf',
+          size: 204800,
+          status: 'success',
+          id: 'size-comparison-file',
+        } as BladeFileList[0],
+      ],
+    },
+  },
+  {
+    name: 'Error',
+    props: {
+      validationState: 'error',
+      errorText: 'Something went wrong. Please try again.',
+      onErrorDismiss: () => console.log('Error dismissed'),
+    },
+  },
+  {
+    name: 'Generating',
+    props: { defaultValue: 'Show me the settlements from last week', isGenerating: true },
+  },
+  {
+    name: 'Long placeholder',
+    props: { placeholder: 'Ask anything about your onboarding documents or account' },
+  },
+  { name: 'Disabled', props: { isDisabled: true } },
+  { name: 'Without file upload', props: { hideFileUpload: true } },
+];
+
+export const SizeComparison: StoryFn<typeof ChatInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {sizeComparisonStates.map((state) => (
+        <Box
+          key={state.name}
+          display="flex"
+          flexDirection="column"
+          gap="spacing.3"
+          testID={`size-comparison-${state.name}`}
+        >
+          <Heading size="small">{state.name}</Heading>
+          <Box display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.7">
+            {(['medium', 'small'] as const).map((size) => (
+              <Box
+                key={size}
+                flex="1"
+                minWidth="300px"
+                maxWidth="480px"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.3"
+                testID={`size-comparison-${state.name}-${size}`}
+              >
+                <Text size="small" color="surface.text.gray.muted">
+                  {`size="${size}"`}
+                </Text>
+                <Box paddingTop={state.props.validationState === 'error' ? 'spacing.9' : undefined}>
+                  <ChatInput
+                    size={size}
+                    placeholder="Ask a question..."
+                    accessibilityLabel={`${state.name}, ${size}`}
+                    {...state.props}
+                  />
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+SizeComparison.storyName = 'Size Comparison';
 
 export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
@@ -875,3 +1027,286 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+// ─── Size Playground ─────────────────────────────────────────────────────────
+
+type PlaygroundOptions = {
+  hasSuggestions: boolean;
+  isDisabled: boolean;
+  hideFileUpload: boolean;
+  hasError: boolean;
+};
+
+type PlaygroundMsg = Pick<ChatMsg, 'id' | 'senderType' | 'content' | 'isLoading' | 'loadingTexts'>;
+
+const playgroundSuggestions = [
+  'Which documents do I need?',
+  'How long does the review take?',
+  'Can I change my business name later?',
+];
+
+const PlaygroundChat = ({
+  size,
+  device,
+  options,
+}: {
+  size: NonNullable<ChatInputProps['size']>;
+  device: 'desktop' | 'mobile';
+  options: PlaygroundOptions;
+}): React.ReactElement => {
+  const isMobileFrame = device === 'mobile';
+  const frameHeight = isMobileFrame ? 760 : 560;
+  const [messages, setMessages] = useState<PlaygroundMsg[]>([
+    {
+      id: 'welcome',
+      senderType: 'other',
+      content: 'Hi! Ask me anything about onboarding. You can also attach a document.',
+    },
+  ]);
+  const [text, setText] = useState('');
+  const [files, setFiles] = useState<BladeFileList>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [errorText, setErrorText] = useState<string | undefined>();
+  const [composerHeight, setComposerHeight] = useState(0);
+  const [disclaimerHeight, setDisclaimerHeight] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const composerRef = useRef<HTMLDivElement | null>(null);
+  const disclaimerRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setErrorText(options.hasError ? 'Something went wrong. Please try again.' : undefined);
+  }, [options.hasError]);
+
+  // Live heights for the label above the frame. ChatInput's root is as tall as its card; the error
+  // popup is positioned outside it.
+  useEffect(() => {
+    const composer = composerRef.current;
+    const disclaimer = disclaimerRef.current;
+    if (!composer || !disclaimer || typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(() => {
+      setComposerHeight(Math.round(composer.getBoundingClientRect().height));
+      setDisclaimerHeight(Math.round(disclaimer.getBoundingClientRect().height));
+    });
+    observer.observe(composer);
+    observer.observe(disclaimer);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
+  }, [messages]);
+
+  useEffect(() => () => clearTimeout(timerRef.current), []);
+
+  const handleSubmit = ({ value, fileList }: { value: string; fileList: BladeFileList }): void => {
+    const id = `${Date.now()}`;
+    const attachments = fileList.length > 0 ? ` (${fileList.length} file attached)` : '';
+    setMessages((prev) => [
+      ...prev,
+      { id: `user-${id}`, senderType: 'self', content: `${value}${attachments}`.trim() },
+      {
+        id: `reply-${id}`,
+        senderType: 'other',
+        content: '',
+        isLoading: true,
+        loadingTexts: LOADING_TEXTS,
+      },
+    ]);
+    setText('');
+    setFiles([]);
+    setIsGenerating(true);
+    timerRef.current = setTimeout(() => {
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === `reply-${id}`
+            ? {
+                ...msg,
+                isLoading: false,
+                loadingTexts: undefined,
+                content:
+                  'Got it. This is a sample reply so you can see how the composer sits under a conversation.',
+              }
+            : msg,
+        ),
+      );
+      setIsGenerating(false);
+    }, 4000);
+  };
+
+  const handleStop = (): void => {
+    clearTimeout(timerRef.current);
+    setMessages((prev) =>
+      prev.map((msg) =>
+        msg.isLoading
+          ? {
+              ...msg,
+              isLoading: false,
+              loadingTexts: undefined,
+              content: 'Generation was stopped.',
+            }
+          : msg,
+      ),
+    );
+    setIsGenerating(false);
+  };
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Box display="flex" justifyContent="space-between" alignItems="baseline" gap="spacing.4">
+        <Text size="small" weight="semibold">
+          {isMobileFrame ? 'Mobile web, 390px' : 'Desktop web, 720px panel'}
+        </Text>
+        <Text size="small" color="surface.text.gray.muted">
+          {`Composer ${composerHeight}px`}
+          {isMobileFrame
+            ? `, ${Math.round(
+                ((composerHeight + disclaimerHeight) / frameHeight) * 100,
+              )}% of screen with disclaimer`
+            : ''}
+        </Text>
+      </Box>
+      <Box
+        width={isMobileFrame ? '390px' : '720px'}
+        maxWidth="100%"
+        height={`${frameHeight}px`}
+        display="flex"
+        flexDirection="column"
+        overflow="hidden"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        borderRadius={isMobileFrame ? '2xlarge' : 'large'}
+        backgroundColor="surface.background.gray.intense"
+      >
+        <Box
+          display="flex"
+          alignItems="center"
+          gap="spacing.3"
+          paddingX="spacing.4"
+          paddingY="spacing.3"
+          borderBottomWidth="thin"
+          borderBottomColor="surface.border.gray.muted"
+        >
+          <RayIcon size="large" color="surface.icon.onSea.onSubtle" />
+          <Text size="small" weight="semibold">
+            {isGenerating ? 'Ray is typing...' : 'Ray'}
+          </Text>
+        </Box>
+        <Box
+          ref={scrollRef}
+          flex="1"
+          overflow="auto"
+          padding="spacing.4"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.4"
+        >
+          {messages.map((msg) => (
+            <Box
+              key={msg.id}
+              display="flex"
+              flexDirection="column"
+              alignItems={msg.senderType === 'self' ? 'flex-end' : 'flex-start'}
+            >
+              <ChatMessage
+                senderType={msg.senderType}
+                isLoading={msg.isLoading}
+                loadingText={msg.loadingTexts}
+                leading={
+                  msg.senderType === 'other' ? (
+                    <RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />
+                  ) : undefined
+                }
+              >
+                {msg.isLoading ? undefined : msg.content}
+              </ChatMessage>
+            </Box>
+          ))}
+        </Box>
+        <Box paddingX="spacing.4" paddingTop="spacing.8">
+          <Box ref={composerRef}>
+            <ChatInput
+              size={size}
+              placeholder="Ask a question..."
+              value={text}
+              onChange={({ value }) => setText(value)}
+              onSubmit={handleSubmit}
+              isGenerating={isGenerating}
+              onStop={handleStop}
+              fileList={files}
+              onFileChange={handlePlatformFileChange(setFiles)}
+              onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+              accept="image/*,.pdf"
+              suggestions={options.hasSuggestions ? playgroundSuggestions : undefined}
+              onSuggestionAccept={({ suggestion }) => setText(suggestion)}
+              isDisabled={options.isDisabled}
+              hideFileUpload={options.hideFileUpload}
+              validationState={errorText ? 'error' : 'none'}
+              errorText={errorText}
+              onErrorDismiss={() => setErrorText(undefined)}
+            />
+          </Box>
+        </Box>
+        <Box ref={disclaimerRef} paddingY="spacing.3" display="flex" justifyContent="center">
+          <Text size="xsmall" color="surface.text.gray.muted">
+            AI can make mistakes. Check important info.
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const SizePlayground: StoryFn<typeof ChatInput> = () => {
+  const [options, setOptions] = useState<PlaygroundOptions>({
+    hasSuggestions: true,
+    isDisabled: false,
+    hideFileUpload: false,
+    hasError: false,
+  });
+  const toggles: { key: keyof PlaygroundOptions; label: string }[] = [
+    { key: 'hasSuggestions', label: 'Ghost suggestions' },
+    { key: 'hideFileUpload', label: 'Hide file upload' },
+    { key: 'hasError', label: 'Validation error' },
+    { key: 'isDisabled', label: 'Disabled' },
+  ];
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.7">
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Heading size="medium">ChatInput size playground</Heading>
+        <Text size="small" color="surface.text.gray.muted">
+          Every frame is a live chat. Type, press Enter to send, Shift+Enter for a new line, Tab to
+          accept a suggestion, attach or paste a file, and stop a reply while it is generating.
+          Replies take 4 seconds so the stop button stays visible. On a real phone, ghost
+          suggestions are hidden by ChatInput; inside these frames they still show because the
+          browser window is desktop sized.
+        </Text>
+        <Box display="flex" flexWrap="wrap" gap="spacing.6">
+          {toggles.map(({ key, label }) => (
+            <Checkbox
+              key={key}
+              isChecked={options[key]}
+              onChange={({ isChecked }) => setOptions((prev) => ({ ...prev, [key]: isChecked }))}
+            >
+              {label}
+            </Checkbox>
+          ))}
+        </Box>
+      </Box>
+      {(['medium', 'small'] as const).map((size) => (
+        <Box key={size} display="flex" flexDirection="column" gap="spacing.4">
+          <Heading size="small">
+            {size === 'medium' ? 'size="medium" (today)' : 'size="small" (compact)'}
+          </Heading>
+          <Box display="flex" flexWrap="wrap" gap="spacing.8" alignItems="flex-start">
+            <PlaygroundChat size={size} device="desktop" options={options} />
+            <PlaygroundChat size={size} device="mobile" options={options} />
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+SizePlayground.storyName = 'Size Playground';
+SizePlayground.parameters = { layout: 'fullscreen' };

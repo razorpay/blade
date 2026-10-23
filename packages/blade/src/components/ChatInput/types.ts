@@ -42,8 +42,26 @@ type ChatInputProps = {
 
   /**
    * Placeholder text shown when the input is empty
+   *
+   * In `size="small"` the placeholder stays on one line, so the empty input stays one row tall.
+   * Text that does not fit is cut off (Safari adds "..."; Chrome does not). Keep it to about
+   * 25 characters there: a 320px-wide phone leaves about 176px for text.
    */
   placeholder?: string;
+
+  /**
+   * Size of the chat input.
+   *
+   * - `medium`: two-row text area with an action bar below it ("Upload file" on the left,
+   *   submit or stop on the right).
+   * - `small`: compact composer. A single-row text area with the upload button inline on the left
+   *   and the submit or stop button inline on the right. The text area grows as the user types,
+   *   up to the same maximum height as `medium`.
+   *
+   * Text size and every other behaviour are the same in both sizes. `small` changes the layout only.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 
   /**
    * Disables the text input, file upload button, and submit button
