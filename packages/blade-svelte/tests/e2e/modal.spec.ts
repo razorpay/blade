@@ -139,6 +139,111 @@ test.describe('Modal', () => {
   });
 });
 
+// The app's shell, as the docs recommend: BladeProvider's positioned parent,
+// at most the screen, with the app's scrolling element as BladeProvider's
+// direct child — so the overlay host BladeProvider renders after it covers
+// exactly the shell. These reshape the story's box (already the positioned
+// parent) into a full-height shell or a short one inside a longer page.
+type Shell = 'full' | 'short';
+
+async function reshape(page: Page, shell: Shell): Promise<void> {
+  await page.evaluate((kind) => {
+    const box = document.querySelector<HTMLElement>('#storybook-root > div')!;
+    const scrim = document.querySelector<HTMLElement>('[aria-hidden="true"][data-state]')!;
+    const content = scrim.parentElement!.previousElementSibling as HTMLElement;
+    Object.assign(box.style, {
+      height: 'auto',
+      overflow: 'visible',
+      display: 'flex',
+      flexDirection: 'column',
+    });
+    content.dataset.testid = 'shell-content';
+    const tall = document.createElement('div');
+    tall.style.height = '3000px';
+    if (kind === 'full') {
+      box.style.maxHeight = '100dvh';
+      Object.assign(content.style, { minHeight: '0', flex: '1 1 auto', overflow: 'auto' });
+      content.append(tall);
+    } else {
+      box.after(tall);
+    }
+  }, shell);
+}
+
+const scrollPositions = (page: Page): Promise<{ page: number; content: number }> =>
+  page.evaluate(() => ({
+    page: Math.round(scrollY),
+    content: Math.round(document.querySelector('[data-testid="shell-content"]')!.scrollTop),
+  }));
+
+/** The shell: the overlay host's parent. */
+const shellOf = (page: Page): Locator =>
+  page.locator('[aria-hidden="true"][data-state]').locator('xpath=../..');
+
+test.describe('Shell', () => {
+  test('a full-height shell scrolls its content; a modal opens in view and nothing behind it scrolls', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--basic');
+    await reshape(page, 'full');
+    const viewport = page.viewportSize()!;
+    const shell = await shellOf(page).boundingBox();
+    expect(shell && Math.round(shell.height)).toBe(viewport.height);
+
+    await page.getByTestId('shell-content').evaluate((node) => {
+      node.scrollTop = 1500;
+    });
+    await page.getByTestId('open').evaluate((node: HTMLElement) => node.click());
+    const dialog = page.getByTestId('modal');
+    await expect(dialog).toBeVisible();
+    await settled(dialog);
+    await expect(dialog).toBeInViewport({ ratio: 1 });
+
+    const box = (await dialog.boundingBox())!;
+    // Over the scrim (inside the shell: Storybook pads around it), then the panel.
+    await page.mouse.move(shell!.x + 10, viewport.height / 2);
+    await page.mouse.wheel(0, 1200);
+    await page.mouse.move(box.x + 20, box.y + 15);
+    await page.mouse.wheel(0, 1200);
+    await expect.poll(() => scrollPositions(page)).toEqual({ page: 0, content: 1500 });
+  });
+
+  test('over a shorter shell the overlay covers only the shell, and a wheel over it moves no page', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--basic');
+    await reshape(page, 'short');
+    await open(page, 'modal');
+    const [shell, scrim] = await Promise.all([
+      shellOf(page).boundingBox(),
+      page.locator('[aria-hidden="true"][data-state]').boundingBox(),
+    ]);
+    // Inside the story box's 1px border.
+    expect(scrim).toEqual({
+      x: shell!.x + 1,
+      y: shell!.y + 1,
+      width: shell!.width - 2,
+      height: shell!.height - 2,
+    });
+    expect(shell!.height).toBeLessThan(page.viewportSize()!.height);
+
+    await page.mouse.move(shell!.x + 10, shell!.y + shell!.height - 10);
+    await page.mouse.wheel(0, 1200);
+    await expect.poll(() => scrollPositions(page)).toEqual({ page: 0, content: 0 });
+  });
+
+  test('a shell of set height is what the overlay covers', async ({ page }) => {
+    await gotoStory(page, 'components-modal--basic');
+    await open(page, 'modal');
+    const [shell, scrim] = await Promise.all([
+      page.locator('#storybook-root > div').boundingBox(),
+      page.locator('[aria-hidden="true"][data-state]').boundingBox(),
+    ]);
+    // Inside the story box's 1px border.
+    expect(Math.round(scrim!.height)).toBe(Math.round(shell!.height) - 2);
+  });
+});
+
 test.describe('BottomSheet', () => {
   test('a drag down past half its height dismisses it with source drag', async ({ page }) => {
     await gotoStory(page, 'components-bottomsheet--basic');

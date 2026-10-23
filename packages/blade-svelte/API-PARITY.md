@@ -2628,7 +2628,16 @@ React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every
   Modal has no `variant`.
 - **The overlay host:** BladeProvider renders it after its content (the
   one scrim, the box surfaces mount in and a polite live region for
-  `adapters.announce`); a ToastContainer's toasts move into it. The
+  `adapters.announce`); a ToastContainer's toasts move into it. It covers
+  BladeProvider's positioned parent, the app's shell: the app makes that
+  at most the screen (and `overflow-hidden`, which clips a toast stack
+  taller than the shell) and its scrolling element BladeProvider's direct child,
+  so a modal opens in view however far the content has scrolled. **No
+  scroll lock** (React's `lockScroll`): nothing behind an overlay can
+  scroll — the scroller is beside the overlay, not around it, and the scrim
+  and surfaces box are `overscroll-contain` scroll containers, so a wheel
+  or swipe over them never reaches the page either. Blade adds no markup
+  around the app's content: the shell is the app's. The
   outermost provider hosts every overlay on the page (the layers
   coordinator is internal). Nothing renders twice. (It was `OverlayStack`, a component to mount.) The layers
   keep stacking, Escape and back, which the app's back handler asks first

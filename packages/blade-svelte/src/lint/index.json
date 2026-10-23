@@ -2573,6 +2573,7 @@
   "overflow-x-hidden": "overflow-x",
   "overflow-y-auto": "overflow-y",
   "overflow-y-hidden": "overflow-y",
+  "overscroll-contain": "overscroll-behavior",
   "overscroll-x-contain": "overscroll-behavior-x",
   "p-0": "padding",
   "p-0.5": "padding",

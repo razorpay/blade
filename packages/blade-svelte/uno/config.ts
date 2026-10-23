@@ -1181,6 +1181,7 @@ const interactionRules: Rule[] = [
   ...keywords('resize', { resize: 'both', 'resize-none': 'none', 'resize-y': 'vertical' }),
   ...keywords('scroll-snap-type', { 'snap-x-mandatory': 'x mandatory', 'snap-none': 'none' }),
   ...keywords('scroll-snap-align', { 'snap-start': 'start', 'snap-center': 'center' }),
+  ...keywords('overscroll-behavior', { 'overscroll-contain': 'contain' }),
   ...keywords('overscroll-behavior-x', { 'overscroll-x-contain': 'contain' }),
   // No scrollbar on the element, in every engine; it still scrolls.
   // `[&_*]:scrollbar-none` reaches its descendants too.

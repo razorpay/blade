@@ -60,4 +60,44 @@ test.describe('ToastContainer', () => {
     await expect(toast).toBeHidden({ timeout: 4000 });
     await expect(page.getByTestId('last')).toHaveText('undone');
   });
+
+  test('in a short shell (overflow-hidden, as documented) an expanded stack stays inside it', async ({
+    page,
+    isMobile,
+  }) => {
+    await gotoStory(page, 'components-toast--basic', { duration: 0 });
+    // The story's box is the shell: as tall as its content, so three
+    // expanded toasts are taller than it.
+    const shell = page.locator('#storybook-root > div');
+    await shell.evaluate((node: HTMLElement) => {
+      node.style.height = 'auto';
+    });
+    const show = page.getByTestId('show');
+    for (let shown = 0; shown < 3; shown += 1) {
+      // A toast covers the trigger in a shell this short.
+      // eslint-disable-next-line no-await-in-loop -- one toast at a time, in order
+      await show.evaluate((node: HTMLElement) => node.click());
+    }
+    const newest = page.getByTestId('toast-3');
+    await expect(newest).toBeVisible();
+    // A pointer holds the stack expanded; a tap toggles it.
+    await (isMobile ? newest.tap() : newest.hover());
+    const toasts = page.locator('[data-testid^="toast-"]');
+    await expect
+      .poll(async () => {
+        const [box, tops] = await Promise.all([
+          shell.boundingBox(),
+          toasts.evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().top)),
+        ]);
+        return Boolean(box) && Math.min(...tops) < box!.y;
+      })
+      .toBe(true);
+    // The stack reaches past the shell's top, but nothing of it is drawn there.
+    const drawnAbove = await shell.evaluate((node) => {
+      const box = node.getBoundingClientRect();
+      const hit = document.elementFromPoint(box.left + box.width / 2, box.top - 4);
+      return Boolean(hit?.closest('[data-testid^="toast-"]'));
+    });
+    expect(drawnAbove).toBe(false);
+  });
 });

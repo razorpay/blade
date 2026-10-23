@@ -28,8 +28,12 @@ Defaults for component axes — not theme tokens (theming is CSS variables).
 
 **BladeProvider hosts the overlays.** After its content it renders the
 overlay host (not exported): the one scrim under every open modal and the
-box modal surfaces mount in, in the nearest positioned ancestor — so put the
-provider inside the frame overlays must stay within. The outermost provider
+box modal surfaces mount in, covering the nearest positioned ancestor — so
+make the provider's parent the app's shell (positioned, at most the screen,
+`overflow-hidden` so toasts and popovers stay inside it)
+and the app's scrolling element its direct child: overlays then cover the
+shell, a modal opens in view however far the content has scrolled, and
+nothing behind an open overlay scrolls. The outermost provider
 hosts every overlay on the page. Toasts are the app's to render: a
 ToastContainer inside the provider moves its toasts into the host, over open
 modals; without one, no toast code ships. The app's back handler asks the open overlays first: `back()` returns
@@ -45,9 +49,9 @@ whether one handled it, from a component or a `.ts` flow:
   // await toasts.showToast('Saved'); if (!back()) router.back();
 </script>
 
-<div class="relative h-full">
+<div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->
   <BladeProvider {adapters}>
-    <App />
+    <main class="min-h-0 flex-1 overflow-auto"><App /></main> <!-- scrolls -->
     <Opened /> <!-- the app's: what it opened from code -->
     <ToastContainer placement="top" />
   </BladeProvider>

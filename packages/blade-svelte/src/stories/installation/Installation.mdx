@@ -160,18 +160,35 @@ Components are mobile first. Their desktop styles are `d:` classes, and
 
 ### Overlays and toasts
 
-`BladeProvider` hosts the overlays: put it inside the frame overlays must
-stay within (a positioned element). Render a `ToastContainer` once inside it
-if the app shows toasts.
+`BladeProvider` hosts the overlays: after its children it renders the
+overlay host, which covers its positioned parent. Make that parent the
+app's shell, and the app's scrolling element BladeProvider's direct child.
+Render a `ToastContainer` once inside it if the app shows toasts.
 
 ```svelte
-<div class="relative h-full">
+<!-- The app's shell: positioned, at most the screen -->
+<div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden">
   <BladeProvider>
-    <App />
+    <!-- The app's scrolling element, BladeProvider's direct child -->
+    <main class="min-h-0 flex-1 overflow-auto">
+      <App />
+    </main>
     <ToastContainer />
   </BladeProvider>
 </div>
 ```
+
+- The overlays cover the shell: its height when the app is shorter than the
+  screen, the screen when it fills it (`100dvh` follows a phone's address
+  bar).
+- A modal opens in view however far `<main>` has scrolled, and nothing
+  behind an open overlay scrolls: `<main>` is beside the overlay, not
+  around it, and the overlay keeps a wheel or swipe to itself.
+- `overflow-hidden` clips what renders against the shell to it: a stack of
+  toasts taller than a short shell, say.
+- The classes are yours; Blade adds no markup around your content. Inside
+  the scroller, the overlay would scroll with the content; with no
+  positioned parent, it covers the page from its top.
 
 Modals mount in its surfaces box, under its one scrim, and floating
 overlays (menus, popovers, tooltips, toasts) append after that box, so a
