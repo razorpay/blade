@@ -94,12 +94,14 @@
   const isOnSide = $derived(style.current.navigationButtonPosition?.startsWith('side') ?? false);
   // Phones keep the buttons under the slides, as Blade's. `null`: no
   // buttons under the slides at all.
+  // As the dots: nothing to step through with fewer than two slides.
+  const hasSlides = $derived(items.length > 1);
   const bottomButtons = $derived.by(() => {
-    if (!showNavigationButtons) return null;
+    if (!showNavigationButtons || !hasSlides) return null;
     return isOnSide ? 'd:hidden' : '';
   });
-  const sideButtons = $derived(isOnSide && showNavigationButtons);
-  const hasDots = $derived(showIndicators && items.length > 1);
+  const sideButtons = $derived(isOnSide && showNavigationButtons && hasSlides);
+  const hasDots = $derived(showIndicators && hasSlides);
   // Without dots, the row under the slides shows where its buttons do.
   const controlsPlacement = $derived(hasDots ? '' : bottomButtons);
 

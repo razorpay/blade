@@ -15,6 +15,7 @@
   let {
     maxCount,
     accessibilityLabel,
+    overflowLabel = (count) => `${count} more`,
     testID,
     class: className = '',
     children,
@@ -41,7 +42,7 @@
 >
   {@render children()}
   {#if group.overflow > 0}
-    <span class={cx(classes.more.root, classes.overlap)} role="img" aria-label="{group.overflow} more">
+    <span class={cx(classes.more.root, classes.overlap)} role="img" aria-label={overflowLabel(group.overflow)}>
       <span class={classes.more.face}>
         <span class={classes.more.text} aria-hidden="true">+{group.overflow}</span>
       </span>

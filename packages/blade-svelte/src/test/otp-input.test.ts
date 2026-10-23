@@ -155,9 +155,12 @@ describe('OTPInput standalone', () => {
     expect(await fireEvent.keyDown(cell(queries, 3), { key: 'Tab' })).toBe(true);
   });
 
-  it('isMasked hides the characters', () => {
+  it('isMasked hides a character once typed; empty cells stay text, for autofill', async () => {
     const queries = render(OTPInputHarness, { props: { isMasked: true } });
+    expect(cell(queries, 0).type).toBe('text');
+    await fireEvent.input(cell(queries, 0), { target: { value: '7' } });
     expect(cell(queries, 0).type).toBe('password');
+    expect(cell(queries, 1).type).toBe('text');
   });
 
   it('describes the group with the hint and marks cells invalid', async () => {

@@ -34,6 +34,7 @@ entity.
 | `size` | Every avatar's size |
 | `density` | How far each avatar overlaps the one before: `compact` (half an avatar, default), `normal` (16px; 14px at xsmall), `comfortable` (8px) |
 | `maxCount` | How many show; the rest fold into a "+N" avatar |
+| `overflowLabel(count)` | Localized; names the "+N" avatar (default `${count} more`) |
 | `accessibilityLabel` | Names the group |
 
 ### Why `topAddon` and `bottomAddon` are snippets

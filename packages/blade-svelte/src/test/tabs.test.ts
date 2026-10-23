@@ -148,6 +148,25 @@ describe('Tabs', () => {
     expect(resolveTabs({ size: 'medium' }).list).not.toContain('d:gap');
   });
 
+  it('outside Tabs it points at no panel: no empty id or aria-controls', () => {
+    const children = createRawSnippet(() => ({ render: () => '<span>Bank</span>' }));
+    const { getByRole } = render(TabItem, { props: { value: 'bank', children } });
+    const tab = getByRole('tab');
+    expect(tab.hasAttribute('id')).toBe(false);
+    expect(tab.hasAttribute('aria-controls')).toBe(false);
+  });
+
+  it('lazy, only the selected tab controls a panel: the rest are not mounted', () => {
+    const { getAllByRole } = render(TabsHarness, { props: { isLazy: true } });
+    const tabs = getAllByRole('tab');
+    const selected = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')!;
+    const controlled = selected.getAttribute('aria-controls');
+    expect(controlled && document.getElementById(controlled)).toBeTruthy();
+    for (const tab of tabs.filter((tab) => tab !== selected)) {
+      expect(tab.hasAttribute('aria-controls')).toBe(false);
+    }
+  });
+
   it('a leading asset sits in the icon box, on the 8px row with the label', () => {
     const leading = createRawSnippet(() => ({ render: () => '<img data-testid="logo" alt="" />' }));
     const children = createRawSnippet(() => ({ render: () => '<span>Bank</span>' }));

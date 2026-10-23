@@ -176,9 +176,12 @@
     aria-describedby={hint.text ? otp.hintId : undefined}
     onfocusout={otp.handleFocusOut}
   >
+    <!-- Masked, a cell turns `password` once it holds a character, as React's:
+         an empty password field turns autofill and the platform's one-time
+         code suggestion away, and invites password managers. -->
     {#each otp.cells as cell, index (index)}
       <input
-        type={isMasked ? 'password' : 'text'}
+        type={isMasked && cell ? 'password' : 'text'}
         inputmode={inputMode}
         enterkeyhint={enterKeyHint}
         placeholder={Array.from(placeholder ?? '')[index] ?? ''}

@@ -72,6 +72,8 @@ export function createCarousel(options: CarouselOptions): Carousel {
 
   function go(next: number): void {
     const count = options.count();
+    // No slides yet (data loading): nowhere to go, and `% 0` is NaN.
+    if (!count) return;
     const target = ((next % count) + count) % count;
     if (track && typeof track.scrollTo === 'function') {
       if (!isStill) {

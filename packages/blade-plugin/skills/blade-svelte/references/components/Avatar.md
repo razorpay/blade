@@ -70,6 +70,8 @@ interface AvatarGroupProps {
   density?: AvatarGroupDensity;
   /** Names the group (`role="group"`). */
   accessibilityLabel?: string;
+  /** Localized; names the "+N" avatar for a screen reader. @default (count) => `${count} more` */
+  overflowLabel?: (count: number) => string;
   testID?: string;
   /** Placement only. */
   class?: string;

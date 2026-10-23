@@ -25,3 +25,5 @@ yarn-error.log*
 
 # generated: blade-svelte's class index (src/test/lint-index.test.ts writes it)
 packages/blade-svelte/src/lint/index.json
+# generated: blade-svelte's bundled UnoCSS config (scripts/build-uno-config.mjs)
+packages/blade-svelte/uno/config.js

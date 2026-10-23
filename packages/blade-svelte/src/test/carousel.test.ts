@@ -155,4 +155,13 @@ describe('Carousel', () => {
       unmount();
     }
   });
+
+  it('with fewer than two slides (or none, while loading) there is nothing to step: no buttons, no dots', () => {
+    for (const offers of [[], ['Only offer']]) {
+      const { queryAllByRole, unmount } = render(CarouselHarness, { props: { offers } });
+      expect(queryAllByRole('button', { name: /Slide$/ })).toHaveLength(0);
+      expect(queryAllByRole('tab')).toHaveLength(0);
+      unmount();
+    }
+  });
 });

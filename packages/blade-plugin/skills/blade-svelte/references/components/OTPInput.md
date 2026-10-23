@@ -53,7 +53,7 @@ interface OTPInputProps {
   onFocus?: (event: FocusEvent, index: number) => void;
   /** A cell lost focus. */
   onBlur?: (event: FocusEvent, index: number) => void;
-  /** Masks the cells like a password. @default false */
+  /** Masks each cell like a password once it holds a character (empty cells stay text, so autofill still reaches them). @default false */
   isMasked?: boolean;
   /** @default false */
   isDisabled?: boolean;

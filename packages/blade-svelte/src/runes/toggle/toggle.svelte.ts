@@ -25,9 +25,10 @@ export interface CheckboxModel {
  */
 export function createCheckbox(
   field: FieldModel,
-  options: { disabled?: () => boolean } = {},
+  options: { disabled?: () => boolean; toChecked?: (value: unknown) => boolean } = {},
 ): CheckboxModel {
-  const isChecked = (): boolean => Boolean(field.record.value);
+  const toChecked = options.toChecked ?? Boolean;
+  const isChecked = (): boolean => toChecked(field.record.value);
 
   return {
     isChecked,
@@ -87,6 +88,17 @@ export interface Toggle {
 export function createToggle(options: ToggleOptions): Toggle {
   let node: HTMLInputElement | undefined;
   const haptics = getHaptics();
+  // The field holds what `parse` made of the state ('Y'/'N', say), not the
+  // state: read the state back by matching the two parsed values, so a
+  // truthy "unchecked" value is not taken for checked.
+  const toChecked = (value: unknown): boolean => {
+    const parse = options.parse?.();
+    if (parse) {
+      if (Object.is(value, parse(true))) return true;
+      if (Object.is(value, parse(false))) return false;
+    }
+    return Boolean(value);
+  };
 
   const shell = createFieldShell({
     id: options.id,
@@ -98,7 +110,7 @@ export function createToggle(options: ToggleOptions): Toggle {
       required: options.isRequired?.() ?? false,
       disabled: options.isDisabled(),
     }),
-    onValue: (next) => options.onValue(Boolean(next)),
+    onValue: (next) => options.onValue(toChecked(next)),
     line: () => ({
       validationState: options.validationState?.(),
       hint: options.hint?.(),
@@ -109,6 +121,7 @@ export function createToggle(options: ToggleOptions): Toggle {
   $effect.pre(shell.syncProps);
   const model = createCheckbox(shell.field, {
     disabled: () => options.isDisabled() || Boolean(options.isBusy?.()),
+    toChecked,
   });
 
   // The control follows the field through `sync`.
@@ -134,8 +147,8 @@ export function createToggle(options: ToggleOptions): Toggle {
       const shown = shell.edit(
         (onValue) => model.toggle(target.checked, onValue),
         (next) => {
-          options.onValue(Boolean(next));
-          options.onChange?.(Boolean(next));
+          options.onValue(toChecked(next));
+          options.onChange?.(toChecked(next));
           haptics('toggle');
         },
         event,

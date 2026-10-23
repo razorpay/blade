@@ -26,7 +26,7 @@ After completing the code, ask the user if they want a playground link. Only cal
 
 Unit/component tests run on **Vitest** + **@testing-library/svelte** (the React package uses Jest; Svelte 5 requires the Vite/Vitest toolchain, so this is the framework-correct split — see https://svelte.dev/docs/svelte/testing).
 
-- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`; `yarn svelte-check`; `yarn check:tree-shaking`; `yarn icons:generate`, `yarn icons:check`.
+- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`; `yarn svelte-check`; `yarn check:tree-shaking`; `yarn icons:generate`, `yarn icons:check`; `yarn build:uno-config` after editing `uno/` (it writes the committed `uno/config.js` that `/configs/uno` loads; a test fails while it is stale).
 - **Config:** `vitest.config.ts` runs `src/**/*.test.ts` (and the icon extractor's, `scripts/**/*.test.ts`) in jsdom with browser resolve conditions and the package's own Vite plugin (icons as font glyphs, as an app builds them).
 - **File naming:** `*.test.ts`, next to a rune (`src/runes/**`) or under `src/test/` for components; `src/test/styles-contract.test.ts` enforces the styling contract.
 - **blade-core** is resolved from source via aliases in `vitest.config.ts`, so no build step is needed to run tests.

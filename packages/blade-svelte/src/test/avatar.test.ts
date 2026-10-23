@@ -96,4 +96,11 @@ describe('AvatarGroup', () => {
     expect(more.textContent?.trim()).toBe('+2');
     expect(more.firstElementChild!.className).toContain('bg-surface-gray-subtle');
   });
+
+  it('the "+N" avatar takes a localized name', () => {
+    const { getByRole } = render(AvatarHarness, {
+      props: { maxCount: 3, overflowLabel: (count: number) => `${count} और` },
+    });
+    expect(getByRole('img', { name: '2 और' })).toBeTruthy();
+  });
 });

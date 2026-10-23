@@ -24,8 +24,9 @@
     /**
      * App services, merged over the enclosing ones and kept live: analytics,
      * router, errors, haptics, the screen-reader announcer, the locale, the
-     * dropdown takeover (`presentDropdown`), and the toast queue a
-     * ToastContainer under it shows (`toasts`) (`BladeAdapters`).
+     * form, the dropdown takeover (`presentDropdown`) and OTP reading
+     * (`readOTP`) (`BladeAdapters`). Toasts are not an adapter: `showToast`
+     * adds to the page's one queue.
      * `null` unsets the enclosing one for this subtree.
      */
     adapters?: BladeAdaptersOverride;

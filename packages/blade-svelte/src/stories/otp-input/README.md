@@ -15,7 +15,7 @@ up to a fixed width, so any code length fits.
 | `onChange` | A user edit, or a code from `adapters.readOTP`, changed the value: `{ name, value, method }` (`OTPInputChange`, as `onOTPFilled`) |
 | `onOTPFilled` | `{ name, value, method }` once every cell holds a character, by typing, paste, autofill, `readOTP` or `value` |
 | `accept` | Per-character sanitizer; the default accepts a single digit |
-| `isMasked`, `inputMode`, `autoComplete` | Cell input type, `inputmode` and the one-time-code hint |
+| `isMasked`, `inputMode`, `autoComplete` | Cell input type (masked: `password` once a cell holds a character, as React's, so autofill reaches empty cells), `inputmode` and the one-time-code hint |
 | `name`, `isRequired` | Registers with the app's form (`adapters.form`); a partial code fails the pattern constraint |
 | `validationState`, `helpText`, `errorText`, `successText` | Omit `validationState` inside a Form to mirror its error once focus left the group or a submit was attempted (the message replaces `hint` while it lasts) |
 | `accessibilityLabel`, `cellAccessibilityLabel` | Name the group and each cell; the library ships no copy |

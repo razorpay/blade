@@ -70,6 +70,11 @@
       onClick?.(clicked);
     });
   }
+  // Only a panel that is mounted: none outside Tabs, and with `isLazy`
+  // only the selected tab's.
+  const controls = $derived(
+    tab.panelId && (tab.isSelected || !tab.tabs?.isLazy) ? tab.panelId : undefined,
+  );
 </script>
 
 <svelte:element
@@ -77,11 +82,11 @@
   type={href ? undefined : 'button'}
   href={isDisabled ? undefined : href}
   role="tab"
-  id={tab.tabId}
+  id={tab.tabId || undefined}
   class={cx(classes.tab, classes.tabState[state], className)}
   tabindex={tab.isTabStop ? 0 : -1}
   aria-selected={tab.isSelected}
-  aria-controls={tab.panelId}
+  aria-controls={controls}
   aria-disabled={isDisabled || undefined}
   aria-label={accessibilityLabel}
   disabled={href ? undefined : isDisabled || undefined}

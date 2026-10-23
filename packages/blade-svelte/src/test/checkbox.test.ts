@@ -124,6 +124,22 @@ describe('Checkbox standalone', () => {
   });
 });
 
+describe('Checkbox with parse', () => {
+  it("a parse whose unchecked value is truthy ('N') still reads as unchecked", async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CheckboxHarness, {
+      props: { parse: (checked: boolean) => (checked ? 'Y' : 'N'), onChange },
+    });
+    const control = getByTestId('solo') as HTMLInputElement;
+    expect(control.checked).toBe(false);
+    await fireEvent.click(control);
+    expect(control.checked).toBe(true);
+    await fireEvent.click(control);
+    expect(control.checked).toBe(false);
+    expect(onChange.mock.calls.map(([change]) => change.isChecked)).toEqual([true, false]);
+  });
+});
+
 describe('Checkbox, as Blade', () => {
   it('isIndeterminate draws the dash on a checked box and reads as mixed', () => {
     const { getByTestId } = render(CheckboxHarness, {

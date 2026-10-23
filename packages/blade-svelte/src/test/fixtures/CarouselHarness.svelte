@@ -8,15 +8,22 @@
     showNavigationButtons?: boolean;
     withLabels?: boolean;
     onChange?: (index: number) => void;
+    /** The slides. @default three offers */
+    offers?: string[];
   }
 
-  let { autoPlay, showIndicators, withLabels = true, onChange, ...style }: Props = $props();
-
-  const OFFERS = ['10% off', 'No-cost EMI', 'Cashback'];
+  let {
+    autoPlay,
+    showIndicators,
+    withLabels = true,
+    onChange,
+    offers = ['10% off', 'No-cost EMI', 'Cashback'],
+    ...style
+  }: Props = $props();
 </script>
 
 <Carousel
-  items={OFFERS}
+  items={offers}
   itemKey={(offer) => offer}
   {autoPlay}
   {showIndicators}

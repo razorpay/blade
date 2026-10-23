@@ -271,6 +271,11 @@ export interface AvatarGroupBehaviourProps extends Partial<AnalyticsAttributes> 
   maxCount?: number;
   /** Names the group. */
   accessibilityLabel?: string;
+  /**
+   * Localized; names the "+N" avatar for a screen reader.
+   * @default (count) => `${count} more`
+   */
+  overflowLabel?: (count: number) => string;
   testID?: string;
   class?: string;
   /** The Avatars. */

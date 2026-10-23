@@ -4,10 +4,11 @@
 
   interface Props {
     maxCount?: number;
+    overflowLabel?: (count: number) => string;
     onClick?: () => void;
   }
 
-  let { maxCount, onClick }: Props = $props();
+  let { maxCount, overflowLabel, onClick }: Props = $props();
   const people = ['Asha Rao', 'Dev Mehta', 'Ira Khan', 'Kabir Sen', 'Meera Iyer'];
 </script>
 
@@ -22,7 +23,7 @@
   {#snippet bottomAddon()}<span data-testid="badge"></span>{/snippet}
 </Avatar>
 
-<AvatarGroup size="small" density="normal" {maxCount} accessibilityLabel="Team" testID="group">
+<AvatarGroup size="small" density="normal" {maxCount} {overflowLabel} accessibilityLabel="Team" testID="group">
   {#each people as person (person)}
     <Avatar name={person} size="xlarge" testID="member-{person.split(' ')[0].toLowerCase()}" />
   {/each}
