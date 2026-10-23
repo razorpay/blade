@@ -12,6 +12,7 @@ on:
       - 'packages/blade-svelte/scripts/icon-svgs/**'
       - 'packages/blade-plugin/skills/blade/references/general/AvailableIcons.md'
       - 'packages/blade-mcp/scripts/copyKnowledgebase.mjs'
+      - 'packages/blade-mcp/src/tools/__tests__/getBladeGeneralDocs.test.ts'
       - '.github/workflows/blade-icons-upload.yml'
       - '.github/workflows/blade-icons-upload-check.yml'
 

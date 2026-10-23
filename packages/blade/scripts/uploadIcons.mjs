@@ -2,10 +2,10 @@
 /**
  * Turns an icon payload from the Figma plugin into icon components and opens a PR.
  *
- * The payload is the same `[{ [iconName]: svgString }]` array that `scripts/icons.json` holds, so
- * a local export can be replayed with:
+ * The payload is the same `[{ [iconName]: svgString }]` array that `scripts/icons/icons.json` (at
+ * the repo root) holds, so a local export can be replayed from `packages/blade` with:
  *
- *   node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react --dry-run
+ *   node ./scripts/uploadIcons.mjs ../../scripts/icons/icons.json --targets=react --dry-run
  *
  * In CI it arrives gzip + base64 encoded through the `ICONS_PAYLOAD` environment variable, and the
  * packages to generate for through `ICONS_TARGETS`.
@@ -473,17 +473,38 @@ const buildPullRequestBody = (results, { isMcpDocsUpdated }) => {
   return sections.join('\n');
 };
 
-const writeChangeset = ({ branchName, title, results, isMcpDocsUpdated }) => {
-  const frontmatter = [
+const readWorkspacePackageNames = () =>
+  new Set(
+    fs
+      .readdirSync(path.join(REPO_ROOT, 'packages'))
+      .map((directory) => path.join(REPO_ROOT, 'packages', directory, 'package.json'))
+      .filter((packageJson) => fs.existsSync(packageJson))
+      .map((packageJson) => JSON.parse(fs.readFileSync(packageJson, 'utf8')).name),
+  );
+
+/** Built before the dry-run exit, so a package that was renamed or moved fails the rehearsal. */
+const buildChangeset = ({ title, results, isMcpDocsUpdated }) => {
+  const packageNames = [
     ...Object.entries(results)
       .filter(([, result]) => changedIn(result).length)
       .map(([target]) => TARGETS[target].packageName),
     ...(isMcpDocsUpdated ? MCP_PACKAGE_NAMES : []),
-  ]
-    .map((packageName) => `'${packageName}': patch`)
-    .join('\n');
+  ];
+  const workspacePackageNames = readWorkspacePackageNames();
+  packageNames
+    .filter((packageName) => !workspacePackageNames.has(packageName))
+    .forEach((packageName) => {
+      blockers.push(
+        `The changeset lists \`${packageName}\`, which is not a package in this repo. Update \`uploadIcons.mjs\`.`,
+      );
+    });
+  const frontmatter = packageNames.map((packageName) => `'${packageName}': patch`).join('\n');
+  return `---\n${frontmatter}\n---\n\n${title}\n`;
+};
+
+const writeChangeset = ({ branchName, changeset }) => {
   const changesetPath = path.join(REPO_ROOT, `.changeset/${branchName}.md`);
-  fs.writeFileSync(changesetPath, `---\n${frontmatter}\n---\n\n${title}\n`);
+  fs.writeFileSync(changesetPath, changeset);
   return changesetPath;
 };
 
@@ -515,6 +536,10 @@ const uploadIcons = async () => {
   if (results.react && changedIn(results.react).length) verifyReactIcons(changedIn(results.react));
   if (mcpDocsPaths.length) verifyMcpDocs();
 
+  const isMcpDocsUpdated = mcpDocsPaths.length > 0;
+  const title = buildTitle(results);
+  const changeset = buildChangeset({ title, results, isMcpDocsUpdated });
+
   Object.entries(results).forEach(([target, result]) => {
     console.log(
       `\n${TARGETS[target].label}: ${result.added.length} added, ${result.updated.length} updated, ${result.unchanged.length} unchanged, ${result.skipped.length} skipped.`,
@@ -523,11 +548,12 @@ const uploadIcons = async () => {
   warnings.forEach((warning) => console.warn(`⚠️  ${warning}`));
   blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
 
-  const title = buildTitle(results);
-  const body = buildPullRequestBody(results, { isMcpDocsUpdated: mcpDocsPaths.length > 0 });
+  const body = buildPullRequestBody(results, { isMcpDocsUpdated });
 
   if (isDryRun) {
-    console.log(`\n--dry-run: files written, git and GitHub untouched.\n\n# ${title}\n\n${body}`);
+    console.log(
+      `\n--dry-run: files written, git and GitHub untouched.\n\n# ${title}\n\n${body}\n\nChangeset:\n\n${changeset}`,
+    );
     // a real upload would open a draft PR here; fail instead, so CI can rehearse an upload
     if (blockers.length) process.exitCode = 1;
     return;
@@ -536,12 +562,7 @@ const uploadIcons = async () => {
   const branchName = `figma-icons-${randomNameGenerator
     .generator([randomNameGenerator.verb, randomNameGenerator.noun])
     .choose()}`;
-  const changesetPath = writeChangeset({
-    branchName,
-    title,
-    results,
-    isMcpDocsUpdated: mcpDocsPaths.length > 0,
-  });
+  const changesetPath = writeChangeset({ branchName, changeset });
 
   execa.sync('git', ['checkout', '-b', branchName], { cwd: REPO_ROOT });
   execa.sync('git', ['config', 'user.email', GITHUB_BOT_EMAIL], { cwd: REPO_ROOT });
