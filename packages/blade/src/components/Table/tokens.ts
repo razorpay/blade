@@ -3,16 +3,20 @@ import { size } from '~tokens/global';
 
 /*
  * Sticky cells in a Table can overlap each other, so their stacking order is fixed explicitly:
- * corner (header/footer first cell, sticky both ways) > sticky header/footer cells > sticky first
- * column body cells > other cells. Ties are resolved by DOM order, which is why the corner cell
- * needs a strictly higher z-index than the body cells painted after it.
+ * refresh overlay > corner (header/footer first cell, sticky both ways) > sticky header/footer
+ * cells > sticky first column body cells > other cells. Ties are resolved by DOM order, which is
+ * why the corner cell needs a strictly higher z-index than the body cells painted after it, and
+ * why the isRefreshing overlay sits above every sticky cell so the whole table - corner included
+ * - dims evenly while refreshing.
  */
 const firstColumnStickyZIndex = 2;
 const firstColumnStickySpannedZIndex = 3;
 const firstColumnStickyHeaderZIndex = 4;
 const firstColumnStickyCornerZIndex = 5;
 
-const refreshWrapperZIndex = 3;
+// Above the entire sticky scale (see the stacking order above) so the refresh overlay covers
+// the sticky header/footer corner cells too instead of leaving them bright while refreshing.
+const refreshWrapperZIndex = firstColumnStickyCornerZIndex + 1;
 
 const checkboxCellWidth = size['44'];
 

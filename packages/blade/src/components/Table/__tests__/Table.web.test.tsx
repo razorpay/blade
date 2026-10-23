@@ -743,6 +743,72 @@ describe('<Table />', () => {
     expect(cornerZIndex).toBeGreaterThan(firstDataColumnZIndex);
   });
 
+  it('should keep the refresh overlay above the sticky header cells while refreshing', () => {
+    const renderTable = (selectionType: 'none' | 'multiple'): HTMLElement => {
+      const { container } = renderWithTheme(
+        <Table
+          data={{ nodes: nodes.slice(0, 5) }}
+          height="300px"
+          isHeaderSticky
+          isFirstColumnSticky
+          isRefreshing={true}
+          selectionType={selectionType}
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+      return container;
+    };
+
+    const getRefreshOverlayZIndex = (container: HTMLElement): number => {
+      const spinner = container.querySelector('[data-blade-component="spinner"]');
+      // the refresh overlay is the wrapper that renders the spinner
+      const refreshOverlay = spinner!.parentElement!;
+      expect(refreshOverlay).not.toBeNull();
+      return Number(window.getComputedStyle(refreshOverlay).zIndex);
+    };
+
+    // Without selection the corner header cell is the highest sticky cell.
+    const singleSelectContainer = renderTable('none');
+    const cornerHeaderCellZIndex = Number(
+      window.getComputedStyle(singleSelectContainer.querySelector('th') as HTMLElement).zIndex,
+    );
+    expect(getRefreshOverlayZIndex(singleSelectContainer)).toBeGreaterThan(cornerHeaderCellZIndex);
+
+    // With multiple selection the corner (checkbox) and the first data column header cells are
+    // both sticky - the overlay must clear them too.
+    const multiSelectContainer = renderTable('multiple');
+    const multiSelectHeaderCells = multiSelectContainer.querySelectorAll('th');
+    const multiSelectCornerZIndex = Number(
+      window.getComputedStyle(multiSelectHeaderCells[0] as HTMLElement).zIndex,
+    );
+    const multiSelectFirstDataColumnZIndex = Number(
+      window.getComputedStyle(multiSelectHeaderCells[1] as HTMLElement).zIndex,
+    );
+    const multiSelectOverlayZIndex = getRefreshOverlayZIndex(multiSelectContainer);
+    expect(multiSelectOverlayZIndex).toBeGreaterThan(multiSelectCornerZIndex);
+    expect(multiSelectOverlayZIndex).toBeGreaterThan(multiSelectFirstDataColumnZIndex);
+  });
+
   it('should keep the editable dropdown cell trigger vertically centred with its icons', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 1) }}>

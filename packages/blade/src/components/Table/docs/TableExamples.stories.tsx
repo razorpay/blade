@@ -331,15 +331,28 @@ export const TableWithStickyFirstColumn = (): React.ReactElement => {
 const stickyHeaderAndFirstColumnTableData = createTableData(30);
 
 export const TableWithStickyHeaderAndFirstColumn = (): React.ReactElement => {
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
+
   return (
     <ExampleWrapper
       title="Table with Sticky Header & Sticky First Column"
-      description="Scroll vertically and horizontally - the first header cell (corner) stays above the sticky body cells."
+      description="Scroll vertically and horizontally - the first header cell (corner) stays above the sticky body cells. Toggle Refresh to check that the refresh overlay dims the whole table, the corner cell included."
     >
+      <Box paddingBottom="spacing.4">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setIsRefreshing(!isRefreshing);
+          }}
+        >
+          {isRefreshing ? 'Stop Refreshing' : 'Start Refreshing'}
+        </Button>
+      </Box>
       <Table
         data={stickyHeaderAndFirstColumnTableData}
         isHeaderSticky
         isFirstColumnSticky
+        isRefreshing={isRefreshing}
         height="400px"
         gridTemplateColumns="280px 280px 280px 280px 280px 280px"
       >
