@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { ChatInputActionBar } from './ChatInputActionBar';
 import {
-  ChatInputActionBar,
-  ChatInputSubmitAction,
-  ChatInputUploadAction,
-} from './ChatInputActionBar';
+  ChatInputInlineSubmit,
+  ChatInputInlineUpload,
+  getChatInputInlineLayout,
+} from './ChatInputInlineActions';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -15,13 +16,10 @@ import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import { minHeight as buttonMinHeight } from '~components/Button/BaseButton/buttonTokens';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { CloseIcon, InfoIcon } from '~components/Icons';
-import { iconSizeMap } from '~components/Icons/useIconProps/iconSizeMap';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
-import { inputDropdownButtonPadding } from '~components/Input/BaseInput/baseInputTokens';
 import { Text } from '~components/Typography';
 import { castWebType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -224,47 +222,21 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
-  // size="small": upload and submit sit inline with the text, pinned to the bottom row as the
-  // text area grows. The bottom inset centres the submit button on a single line of text.
-  const inlineActionBottomInset = makeSpace(
-    (theme.spacing[5] * 2 + theme.typography.lineHeights[100] - buttonMinHeight.small) / 2,
-  );
-
-  // The upload icon is as tall as a line of text, so it sits on the text line: its bottom inset is
-  // the text area padding, minus the padding BaseInput already puts around a leading element.
-  const inlineUploadBottomInset = makeSpace(
-    theme.spacing[5] - theme.spacing[inputDropdownButtonPadding.medium],
-  );
+  // size="small": upload and submit sit inline with the text instead of in the action bar
+  const inlineLayout = getChatInputInlineLayout(theme);
 
   const inlineUploadAction = hideFileUpload ? undefined : (
-    <BaseBox paddingLeft="spacing.3" paddingBottom={inlineUploadBottomInset} display="flex">
-      <ChatInputUploadAction isDisabled={isDisabled} onUploadClick={handleUploadClick} />
-    </BaseBox>
+    <ChatInputInlineUpload isDisabled={isDisabled} onUploadClick={handleUploadClick} />
   );
 
   const inlineSubmitAction = (
-    <BaseBox paddingBottom={inlineActionBottomInset} display="flex">
-      <ChatInputSubmitAction
-        isDisabled={isDisabled}
-        isGenerating={isGenerating}
-        isSubmitDisabled={isSubmitDisabled}
-        onSubmit={handleSubmit}
-        onStop={onStop}
-      />
-    </BaseBox>
-  );
-
-  // Ghost suggestions start where the typed text starts and stop before the submit button.
-  const inlineGhostLeftInset = makeSpace(
-    hideFileUpload
-      ? theme.spacing[5]
-      : theme.spacing[inputDropdownButtonPadding.medium] +
-          theme.spacing[3] +
-          iconSizeMap.large +
-          theme.spacing[5],
-  );
-  const inlineGhostRightInset = makeSpace(
-    theme.spacing[5] + buttonMinHeight.small + theme.spacing[4],
+    <ChatInputInlineSubmit
+      isDisabled={isDisabled}
+      isGenerating={isGenerating}
+      isSubmitDisabled={isSubmitDisabled}
+      onSubmit={handleSubmit}
+      onStop={onStop}
+    />
   );
 
   const isError = validationState === 'error';
@@ -320,8 +292,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
               <BaseBox
                 position="absolute"
                 top="spacing.5"
-                left={isSmall ? inlineGhostLeftInset : 'spacing.5'}
-                right={isSmall ? inlineGhostRightInset : 'spacing.5'}
+                // in size="small", start where the typed text starts and stop before submit
+                left={
+                  isSmall && !hideFileUpload
+                    ? makeSpace(inlineLayout.textStartWithUpload)
+                    : 'spacing.5'
+                }
+                right={isSmall ? makeSpace(inlineLayout.textEndBeforeSubmit) : 'spacing.5'}
                 pointerEvents="none"
                 zIndex={3}
               >

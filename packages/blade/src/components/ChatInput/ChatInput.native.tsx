@@ -8,21 +8,20 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative, chatInputMaxTextAreaHeight } from './chatInputTokens';
+import { ChatInputActionBar } from './ChatInputActionBar';
 import {
-  ChatInputActionBar,
-  ChatInputSubmitAction,
-  ChatInputUploadAction,
-} from './ChatInputActionBar';
+  ChatInputInlineSubmit,
+  ChatInputInlineUpload,
+  getChatInputInlineLayout,
+} from './ChatInputInlineActions';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import { minHeight as buttonMinHeight } from '~components/Button/BaseButton/buttonTokens';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { CloseIcon, InfoIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
-import { inputDropdownButtonPadding } from '~components/Input/BaseInput/baseInputTokens';
 import { Text } from '~components/Typography';
 import { castNativeType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -197,32 +196,19 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
-  // size="small": upload and submit sit inline with the text, pinned to the bottom row as the
-  // text area grows. Same insets as web: the submit button is centred on a single line of text and
-  // the upload icon sits on the text line.
-  const inlineActionBottomInset = makeSpace(
-    (theme.spacing[5] * 2 + theme.typography.lineHeights[100] - buttonMinHeight.small) / 2,
-  );
-  const inlineUploadBottomInset = makeSpace(
-    theme.spacing[5] - theme.spacing[inputDropdownButtonPadding.medium],
-  );
-
+  // size="small": upload and submit sit inline with the text instead of in the action bar
   const inlineUploadAction = hideFileUpload ? undefined : (
-    <BaseBox paddingLeft="spacing.3" paddingBottom={inlineUploadBottomInset} display="flex">
-      <ChatInputUploadAction isDisabled={isDisabled} onUploadClick={handleUploadClick} />
-    </BaseBox>
+    <ChatInputInlineUpload isDisabled={isDisabled} onUploadClick={handleUploadClick} />
   );
 
   const inlineSubmitAction = (
-    <BaseBox paddingBottom={inlineActionBottomInset} display="flex">
-      <ChatInputSubmitAction
-        isDisabled={isDisabled}
-        isGenerating={isGenerating}
-        isSubmitDisabled={isSubmitDisabled}
-        onSubmit={handleSubmit}
-        onStop={onStop}
-      />
-    </BaseBox>
+    <ChatInputInlineSubmit
+      isDisabled={isDisabled}
+      isGenerating={isGenerating}
+      isSubmitDisabled={isSubmitDisabled}
+      onSubmit={handleSubmit}
+      onStop={onStop}
+    />
   );
 
   return (
@@ -299,13 +285,16 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           isDisabled={isDisabled}
           numberOfLines={isSmall ? 1 : 2}
           autoGrowMaxHeight={chatInputMaxTextAreaHeight}
+          autoGrowMinHeight={isSmall ? getChatInputInlineLayout(theme).singleRowHeight : undefined}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           padding={makeSpace(theme.spacing[5])}
           borderRadius="large"
           caretColor="surface.icon.onSea.onSubtle"
-          topContent={filePreviewContent}
+          // size="small" has no bottomContent, so a null topContent would change BaseInput's tree
+          // when the first file is added and remount the TextInput (closing the keyboard)
+          topContent={isSmall ? filePreviewContent ?? <View /> : filePreviewContent}
           bottomContent={isSmall ? undefined : actionBarContent}
           leadingInteractionElement={isSmall ? inlineUploadAction : undefined}
           trailingInteractionElement={isSmall ? inlineSubmitAction : undefined}

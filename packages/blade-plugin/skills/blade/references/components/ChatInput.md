@@ -40,26 +40,10 @@ type ChatInputProps = {
   onChange?: ({ value }: { value: string }) => void;
 
   /** Callback fired when the text input receives focus */
-  onFocus?: ({
-    name,
-    value,
-    rawValue,
-  }: {
-    name?: string;
-    value?: string;
-    rawValue?: string;
-  }) => void;
+  onFocus?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
 
   /** Callback fired when the text input loses focus */
-  onBlur?: ({
-    name,
-    value,
-    rawValue,
-  }: {
-    name?: string;
-    value?: string;
-    rawValue?: string;
-  }) => void;
+  onBlur?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
 
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
@@ -76,7 +60,7 @@ type ChatInputProps = {
    * - `small`: compact composer. A single-row textarea with the upload button inline on the left and
    *   the submit or stop button inline on the right. The textarea grows as the user types, up to the
    *   same maximum height as `medium`.
-   * Every other behaviour is the same in both sizes.
+   * Text size and every other behaviour are the same in both sizes. `small` changes the layout only.
    * @default 'medium'
    */
   size?: 'small' | 'medium';

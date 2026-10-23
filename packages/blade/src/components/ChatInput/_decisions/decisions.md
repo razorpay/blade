@@ -431,21 +431,23 @@ const FullFeaturedChat = () => {
 
 ## Sizes
 
-`size` follows the size naming of other Blade inputs and controls (`'small' | 'medium'`, like `Switch` and `Link`). `medium` is the default and is unchanged.
+`size` uses the `'small' | 'medium'` set of `Switch` and `TreeView`. Like `FileUpload`, `small` changes the layout, not only the scale: text size stays the same. `medium` is the default and is unchanged. There is no `large`, since `medium` is already the roomy layout.
 
-|               | `medium` (default)                                  | `small`                                                                |
-| ------------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
-| Textarea      | 2 rows minimum                                      | 1 row minimum                                                          |
-| Growth        | Up to 200px, then scrolls                           | Same                                                                   |
-| Upload        | "Upload file" link in the action bar below the text | `+` icon button inline on the left, same accessible name "Upload file" |
-| Submit / stop | Right side of the action bar                        | Inline on the right                                                    |
-| Idle height   | 136px                                               | 52px                                                                   |
+|               | `medium` (default)                                  | `small`                                                                                       |
+| ------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Textarea      | 2 rows minimum                                      | 1 row minimum                                                                                 |
+| Growth        | Up to 200px, then scrolls                           | Same                                                                                          |
+| Upload        | "Upload file" link in the action bar below the text | `+` icon button inline on the left (32px hit area on web), same accessible name "Upload file" |
+| Submit / stop | Right side of the action bar                        | Inline on the right                                                                           |
+| Idle height   | 136px                                               | 52px                                                                                          |
 
-`small` is for places where vertical space is tight, such as a chat on a phone screen. On a 390px wide phone, `medium` with its disclaimer takes about a fifth of the screen.
+`small` is for places where vertical space is tight, such as a chat on a phone screen, where `medium` takes 136px before the user has typed anything.
 
 Everything else is shared between sizes: attachment previews above the text, pasted images, ghost suggestions with Tab to accept, the validation error popup, the stop button while `isGenerating`, `isDisabled`, `hideFileUpload`, focus ring, keyboard behaviour, accessibility labels and analytics attributes.
 
-As the text grows past one row in `small`, the upload and submit buttons stay on the bottom row, next to where the user is typing. This uses an internal `visualsAlignment="bottom"` option on `BaseInput`; the default stays centred, so other inputs are unchanged.
+As the text grows past one row in `small`, the upload and submit buttons stay on the bottom row, next to where the user is typing. This uses an internal `visualsAlignment="bottom"` option on `BaseInput`; the default stays centred, so other inputs are unchanged. On React Native, `small` also sets BaseInput's internal `autoGrowMinHeight` so the single row starts at its full height.
+
+The insets that line the buttons up with the text are computed in `getChatInputInlineLayout` (`ChatInputInlineActions.tsx`), shared by web and native.
 
 ### Why a textarea in both sizes
 

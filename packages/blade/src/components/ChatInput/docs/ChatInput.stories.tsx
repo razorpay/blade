@@ -274,17 +274,18 @@ export const SmallSize: StoryFn<typeof ChatInput> = () => {
   const [text, setText] = useState('');
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const abortRef = useRef<AbortController | null>(null);
+  const generationTimerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(generationTimerRef.current), []);
 
   const handleSubmit = ({ value, fileList }: { value: string; fileList: BladeFileList }): void => {
     console.log('Submitted:', value, 'Files:', fileList);
-    const controller = new AbortController();
-    abortRef.current = controller;
     setIsGenerating(true);
     setText('');
     setFiles([]);
 
-    setTimeout(() => {
+    clearTimeout(generationTimerRef.current);
+    generationTimerRef.current = setTimeout(() => {
       setIsGenerating(false);
     }, 3000);
   };
@@ -299,7 +300,7 @@ export const SmallSize: StoryFn<typeof ChatInput> = () => {
         placeholder="Ask a question..."
         isGenerating={isGenerating}
         onStop={() => {
-          abortRef.current?.abort();
+          clearTimeout(generationTimerRef.current);
           setIsGenerating(false);
         }}
         fileList={files}
@@ -1063,21 +1064,28 @@ const PlaygroundChat = ({
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorText, setErrorText] = useState<string | undefined>();
   const [composerHeight, setComposerHeight] = useState(0);
+  const [disclaimerHeight, setDisclaimerHeight] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
-  const composerRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const composerRef = useRef<HTMLDivElement | null>(null);
+  const disclaimerRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setErrorText(options.hasError ? 'Something went wrong. Please try again.' : undefined);
   }, [options.hasError]);
 
+  // Live heights for the label above the frame. ChatInput's root is as tall as its card; the error
+  // popup is positioned outside it.
   useEffect(() => {
-    const card = composerRef.current?.querySelector('.focus-ring-wrapper');
-    if (!card || typeof ResizeObserver === 'undefined') return undefined;
-    const observer = new ResizeObserver(() =>
-      setComposerHeight(Math.round(card.getBoundingClientRect().height)),
-    );
-    observer.observe(card);
+    const composer = composerRef.current;
+    const disclaimer = disclaimerRef.current;
+    if (!composer || !disclaimer || typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(() => {
+      setComposerHeight(Math.round(composer.getBoundingClientRect().height));
+      setDisclaimerHeight(Math.round(disclaimer.getBoundingClientRect().height));
+    });
+    observer.observe(composer);
+    observer.observe(disclaimer);
     return () => observer.disconnect();
   }, []);
 
@@ -1149,7 +1157,7 @@ const PlaygroundChat = ({
           {`Composer ${composerHeight}px`}
           {isMobileFrame
             ? `, ${Math.round(
-                ((composerHeight + 32) / frameHeight) * 100,
+                ((composerHeight + disclaimerHeight) / frameHeight) * 100,
               )}% of screen with disclaimer`
             : ''}
         </Text>
@@ -1181,7 +1189,7 @@ const PlaygroundChat = ({
           </Text>
         </Box>
         <Box
-          ref={scrollRef as never}
+          ref={scrollRef}
           flex="1"
           overflow="auto"
           padding="spacing.4"
@@ -1211,29 +1219,31 @@ const PlaygroundChat = ({
             </Box>
           ))}
         </Box>
-        <Box ref={composerRef as never} paddingX="spacing.4" paddingTop="spacing.8">
-          <ChatInput
-            size={size}
-            placeholder="Ask a question..."
-            value={text}
-            onChange={({ value }) => setText(value)}
-            onSubmit={handleSubmit}
-            isGenerating={isGenerating}
-            onStop={handleStop}
-            fileList={files}
-            onFileChange={handlePlatformFileChange(setFiles)}
-            onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
-            accept="image/*,.pdf"
-            suggestions={options.hasSuggestions ? playgroundSuggestions : undefined}
-            onSuggestionAccept={({ suggestion }) => setText(suggestion)}
-            isDisabled={options.isDisabled}
-            hideFileUpload={options.hideFileUpload}
-            validationState={errorText ? 'error' : 'none'}
-            errorText={errorText}
-            onErrorDismiss={() => setErrorText(undefined)}
-          />
+        <Box paddingX="spacing.4" paddingTop="spacing.8">
+          <Box ref={composerRef}>
+            <ChatInput
+              size={size}
+              placeholder="Ask a question..."
+              value={text}
+              onChange={({ value }) => setText(value)}
+              onSubmit={handleSubmit}
+              isGenerating={isGenerating}
+              onStop={handleStop}
+              fileList={files}
+              onFileChange={handlePlatformFileChange(setFiles)}
+              onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+              accept="image/*,.pdf"
+              suggestions={options.hasSuggestions ? playgroundSuggestions : undefined}
+              onSuggestionAccept={({ suggestion }) => setText(suggestion)}
+              isDisabled={options.isDisabled}
+              hideFileUpload={options.hideFileUpload}
+              validationState={errorText ? 'error' : 'none'}
+              errorText={errorText}
+              onErrorDismiss={() => setErrorText(undefined)}
+            />
+          </Box>
         </Box>
-        <Box paddingY="spacing.3" display="flex" justifyContent="center">
+        <Box ref={disclaimerRef} paddingY="spacing.3" display="flex" justifyContent="center">
           <Text size="xsmall" color="surface.text.gray.muted">
             AI can make mistakes. Check important info.
           </Text>

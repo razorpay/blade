@@ -82,6 +82,7 @@ export type StyledBaseInputProps = {
   | 'as'
   | 'numberOfLines'
   | 'autoGrowMaxHeight'
+  | 'autoGrowMinHeight'
   | 'id'
   | 'name'
   | 'type'

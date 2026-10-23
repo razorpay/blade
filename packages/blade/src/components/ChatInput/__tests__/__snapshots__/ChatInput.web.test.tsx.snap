@@ -758,7 +758,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 </div>
 `;
 
-exports[`<ChatInput /> size="small" should render a single-row text area with inline upload and submit buttons 1`] = `
+exports[`<ChatInput /> should render ChatInput with size small 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
 }
@@ -853,7 +853,7 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 12px;
+  padding-bottom: 6px;
   padding-left: 8px;
 }
 
@@ -1068,7 +1068,9 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  height: 32px;
+  width: 32px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1093,7 +1095,7 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
 
 .c12.c12.c12.c12.c12:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
-  background-color: transparent;
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c12.c12.c12.c12.c12:focus-visible {
@@ -1107,7 +1109,7 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
-  background-color: transparent;
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c12.c12.c12.c12.c12:active {
@@ -1397,9 +1399,9 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
                             class="Svgweb__StyledSvg-vcmjs8-0"
                             data-blade-component="icon"
                             fill="none"
-                            height="20px"
+                            height="16px"
                             viewBox="0 0 24 24"
-                            width="20px"
+                            width="16px"
                           >
                             <path
                               d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
@@ -1419,7 +1421,7 @@ exports[`<ChatInput /> size="small" should render a single-row text area with in
                     aria-required="false"
                     class="c13"
                     data-blade-component="styled-base-input"
-                    id="chat-input-337-input-338"
+                    id="chat-input-19-input-20"
                     placeholder="Ask a question..."
                     rows="1"
                     style="height: 0px;"

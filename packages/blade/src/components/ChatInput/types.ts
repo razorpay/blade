@@ -54,7 +54,7 @@ type ChatInputProps = {
    *   and the submit or stop button inline on the right. The text area grows as the user types,
    *   up to the same maximum height as `medium`.
    *
-   * Every other behaviour is the same in both sizes.
+   * Text size and every other behaviour are the same in both sizes. `small` changes the layout only.
    * @default 'medium'
    */
   size?: 'small' | 'medium';

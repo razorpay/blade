@@ -161,26 +161,44 @@ describe('<ChatInput /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  describe('size="small"', () => {
-    it('should render inline upload and submit buttons', () => {
-      const { toJSON, getByRole, queryByText } = renderWithTheme(
-        <ChatInput
-          size="small"
-          placeholder="Ask a question..."
-          accessibilityLabel={accessibilityLabel}
-        />,
-      );
+  it('should render with size small', () => {
+    const { toJSON } = renderWithTheme(
+      <ChatInput
+        size="small"
+        placeholder="Ask a question..."
+        accessibilityLabel={accessibilityLabel}
+      />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
 
-      expect(getByRole('button', { name: 'Upload file' })).toBeTruthy();
-      expect(getByRole('button', { name: 'Submit' })).toBeTruthy();
-      expect(queryByText('Upload file')).toBeNull();
-      expect(toJSON()).toMatchSnapshot();
-    });
+  it('should render inline upload and submit buttons when size is small', () => {
+    const { getByRole, queryByText } = renderWithTheme(
+      <ChatInput size="small" accessibilityLabel={accessibilityLabel} />,
+    );
 
-    it('should call onSubmit from the inline submit button', () => {
+    expect(getByRole('button', { name: 'Upload file' })).toBeTruthy();
+    expect(getByRole('button', { name: 'Submit' })).toBeTruthy();
+    expect(queryByText('Upload file')).toBeNull();
+  });
+
+  it.each([
+    ['medium', 72],
+    ['small', 52],
+  ] as const)('should start the size="%s" text area at %ipx', (size, height) => {
+    const { getByLabelText } = renderWithTheme(
+      <ChatInput size={size} accessibilityLabel={accessibilityLabel} />,
+    );
+
+    expect(getByLabelText(accessibilityLabel)).toHaveStyle({ height });
+  });
+
+  // Every behaviour below must be the same in both sizes
+  describe.each(['medium', 'small'] as const)('size="%s"', (size) => {
+    it('should call onSubmit from the submit button', () => {
       const onSubmit = jest.fn();
       const { getByRole, getByLabelText } = renderWithTheme(
-        <ChatInput size="small" accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+        <ChatInput size={size} accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
       );
 
       fireEvent.changeText(getByLabelText(accessibilityLabel), 'Hello world');
@@ -189,11 +207,19 @@ describe('<ChatInput /> (native)', () => {
       expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello world', fileList: [] });
     });
 
-    it('should call onFileChange from the inline upload button', () => {
+    it('should keep submit button disabled when input is empty', () => {
+      const { getByRole } = renderWithTheme(
+        <ChatInput size={size} accessibilityLabel={accessibilityLabel} />,
+      );
+
+      expect(getByRole('button', { name: 'Submit' }).props.accessibilityState?.disabled).toBe(true);
+    });
+
+    it('should call onFileChange from the upload button', () => {
       const onFileChange = jest.fn();
       const { getByRole } = renderWithTheme(
         <ChatInput
-          size="small"
+          size={size}
           accessibilityLabel={accessibilityLabel}
           onFileChange={onFileChange}
         />,
@@ -203,11 +229,11 @@ describe('<ChatInput /> (native)', () => {
       expect(onFileChange).toHaveBeenCalledWith({ fileList: [] });
     });
 
-    it('should show the inline stop button while generating', () => {
+    it('should show the stop button while generating and call onStop', () => {
       const onStop = jest.fn();
       const { getByRole, queryByRole } = renderWithTheme(
         <ChatInput
-          size="small"
+          size={size}
           accessibilityLabel={accessibilityLabel}
           isGenerating
           onStop={onStop}
@@ -219,12 +245,35 @@ describe('<ChatInput /> (native)', () => {
       expect(onStop).toHaveBeenCalledTimes(1);
     });
 
-    it('should hide the inline upload button when hideFileUpload is true', () => {
+    it('should hide the upload button when hideFileUpload is true', () => {
       const { queryByRole } = renderWithTheme(
-        <ChatInput size="small" accessibilityLabel={accessibilityLabel} hideFileUpload />,
+        <ChatInput size={size} accessibilityLabel={accessibilityLabel} hideFileUpload />,
       );
 
       expect(queryByRole('button', { name: 'Upload file' })).toBeNull();
+    });
+
+    it('should keep the same text field when the first file is attached', () => {
+      const mounts: unknown[] = [];
+      const ref = (node: unknown): void => {
+        if (node) mounts.push(node);
+      };
+      const file = { id: 'file-1', name: 'document.pdf', status: 'success' as const, size: 1024 };
+
+      const { rerender } = renderWithTheme(
+        <ChatInput ref={ref} size={size} accessibilityLabel={accessibilityLabel} fileList={[]} />,
+      );
+      rerender(
+        <ChatInput
+          ref={ref}
+          size={size}
+          accessibilityLabel={accessibilityLabel}
+          fileList={[file as never]}
+        />,
+      );
+
+      // a remount would attach the ref to a new text field and close the keyboard
+      expect(mounts).toHaveLength(1);
     });
   });
 });

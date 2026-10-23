@@ -257,6 +257,14 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     autoGrowMaxHeight?: number;
     /**
+     * @internal Minimum height (in px) of a React Native auto-growing textarea, used with
+     * `autoGrowMaxHeight`. Defaults to the input height times `numberOfLines`. ChatInput's
+     * `size="small"` sets it so a single row with its padding does not start short.
+     *
+     * **Note (Web):** No effect.
+     */
+    autoGrowMinHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -954,6 +962,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingFooterSlot,
     numberOfLines,
     autoGrowMaxHeight,
+    autoGrowMinHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -1318,7 +1327,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
                 // Native-only: do not forward to web StyledBaseInput
-                {...(isReactNative && autoGrowMaxHeight ? { autoGrowMaxHeight } : null)}
+                {...(isReactNative && autoGrowMaxHeight
+                  ? { autoGrowMaxHeight, autoGrowMinHeight }
+                  : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}

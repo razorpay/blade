@@ -2,8 +2,10 @@ import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
+import type { IconButtonProps } from '~components/Button/IconButton';
 import { Link } from '~components/Link';
 import { ArrowUpIcon, StopCircleIcon, PlusIcon } from '~components/Icons';
+import { isReactNative } from '~utils';
 
 type ChatInputActionBarProps = {
   isDisabled?: boolean;
@@ -15,24 +17,20 @@ type ChatInputActionBarProps = {
   onStop?: () => void;
 };
 
-type ChatInputSubmitActionProps = Pick<
-  ChatInputActionBarProps,
-  'isDisabled' | 'isGenerating' | 'isSubmitDisabled' | 'onSubmit' | 'onStop'
->;
-
-type ChatInputUploadActionProps = Pick<ChatInputActionBarProps, 'isDisabled' | 'onUploadClick'>;
-
 /**
  * Submit button, or the stop button while `isGenerating` is true.
  * Shared by the action bar (`size="medium"`) and the inline row (`size="small"`).
  */
-const ChatInputSubmitAction = ({
+const ChatInputSubmitButton = ({
   isDisabled,
   isGenerating,
   isSubmitDisabled,
   onSubmit,
   onStop,
-}: ChatInputSubmitActionProps): React.ReactElement => {
+}: Pick<
+  ChatInputActionBarProps,
+  'isDisabled' | 'isGenerating' | 'isSubmitDisabled' | 'onSubmit' | 'onStop'
+>): React.ReactElement => {
   if (isGenerating) {
     return (
       <Button
@@ -59,19 +57,24 @@ const ChatInputSubmitAction = ({
   );
 };
 
+// Web: a highlighted IconButton, so the hit area is a 32px square like the submit button and not
+// only the icon. React Native has no highlighted IconButton, so it keeps the larger plain icon.
+const uploadButtonSizeProps = (isReactNative()
+  ? { size: 'large' }
+  : { size: 'medium', isHighlighted: true }) as Pick<IconButtonProps, 'size' | 'isHighlighted'>;
+
 /**
  * Icon-only upload button for the inline row of `size="small"`.
- * Keeps the same accessible name as the "Upload file" link in the action bar.
+ * Keeps the accessible name of the "Upload file" link in the action bar.
  */
-const ChatInputUploadAction = ({
+const ChatInputUploadButton = ({
   isDisabled,
   onUploadClick,
-}: ChatInputUploadActionProps): React.ReactElement => {
+}: Pick<ChatInputActionBarProps, 'isDisabled' | 'onUploadClick'>): React.ReactElement => {
   return (
     <IconButton
       icon={PlusIcon}
-      size="large"
-      emphasis="intense"
+      {...uploadButtonSizeProps}
       accessibilityLabel="Upload file"
       onClick={onUploadClick}
       isDisabled={isDisabled}
@@ -113,7 +116,7 @@ const ChatInputActionBar = ({
         </BaseBox>
       )}
       <BaseBox>
-        <ChatInputSubmitAction
+        <ChatInputSubmitButton
           isDisabled={isDisabled}
           isGenerating={isGenerating}
           isSubmitDisabled={isSubmitDisabled}
@@ -125,5 +128,5 @@ const ChatInputActionBar = ({
   );
 };
 
-export { ChatInputActionBar, ChatInputSubmitAction, ChatInputUploadAction };
-export type { ChatInputActionBarProps, ChatInputSubmitActionProps, ChatInputUploadActionProps };
+export { ChatInputActionBar, ChatInputSubmitButton, ChatInputUploadButton };
+export type { ChatInputActionBarProps };
