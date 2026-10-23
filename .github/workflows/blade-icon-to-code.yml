@@ -41,6 +41,21 @@ jobs:
       # Writes React icons (packages/blade)
       - name: Generate icons
         run: yarn run generate-icons
+
+      # blade-svelte's icons are made from React's components, so after them
+      - name: Generate Svelte icons
+        working-directory: packages/blade-svelte
+        run: yarn icons:generate
+
+      # The extractor's tests, and src/icons matching what it makes
+      - name: Check Svelte icons
+        working-directory: packages/blade-svelte
+        # A warning: the icon PR is still worth opening, and says what to fix
+        continue-on-error: true
+        run: |
+          yarn vitest run scripts/icon-svgs
+          yarn icons:check
+
       # 4. create the pull request
       - name : Update React Tests 
         run: |

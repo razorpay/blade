@@ -73,6 +73,8 @@
     "test:watch": "vitest --config vitest.config.ts",
     "test:coverage": "vitest run --config vitest.config.ts --coverage",
     "check:tree-shaking": "node ./scripts/check-tree-shaking.mjs",
+    "icons:generate": "node ./scripts/icon-svgs/extract-blade.mjs",
+    "icons:check": "node ./scripts/icon-svgs/extract-blade.mjs --check",
     "dev": "yarn storybook",
     "start:web": "yarn dev",
     "storybook": "storybook dev -p 6008 -c .storybook --host 0.0.0.0",

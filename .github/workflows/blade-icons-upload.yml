@@ -34,3 +34,26 @@ jobs:
           ICONS_PAYLOAD: ${{ github.event.inputs.icons }}
           ICONS_TARGETS: ${{ github.event.inputs.targets }}
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+      # blade-svelte's icons are made from React's components. uploadIcons.mjs
+      # leaves the runner on the branch it pushed (with the bot as git user), so
+      # the svelte icons follow on that branch, in the same PR.
+      - name: Add Svelte Icons
+        env:
+          BASE_BRANCH: ${{ github.ref_name }}
+        run: |
+          branch="$(git branch --show-current)"
+          if [ "$branch" = "$BASE_BRANCH" ]; then
+            echo "No icon branch was pushed: nothing to add."
+            exit 0
+          fi
+          yarn workspace @razorpay/blade-svelte icons:generate
+          paths="packages/blade-svelte/src/icons packages/blade-plugin/skills/blade-svelte"
+          if [ -z "$(git status --porcelain -- $paths)" ]; then
+            echo "blade-svelte's icons already match."
+            exit 0
+          fi
+          changeset=".changeset/${branch}-svelte.md"
+          printf -- "---\n'@razorpay/blade-svelte': patch\n'@razorpay/blade-plugin': patch\n---\n\nfeat(blade-svelte): add the new icons from Blade React\n" > "$changeset"
+          git add -- $paths "$changeset"
+          HUSKY_SKIP_HOOKS=1 git commit -m "feat(blade-svelte): add the new icons from Blade React"
+          git push origin "$branch"

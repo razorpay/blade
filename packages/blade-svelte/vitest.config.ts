@@ -64,7 +64,8 @@ export default defineConfig({
     // Some tests import a component on first use, which can pass Vitest's
     // 5s default.
     testTimeout: 15_000,
-    include: ['src/**/*.test.ts'],
+    // `scripts/`: the icon extractor the icon pipeline runs.
+    include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{svelte,ts}'],

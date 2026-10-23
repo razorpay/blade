@@ -26,9 +26,13 @@ After completing the code, ask the user if they want a playground link. Only cal
 
 Unit/component tests run on **Vitest** + **@testing-library/svelte** (the React package uses Jest; Svelte 5 requires the Vite/Vitest toolchain, so this is the framework-correct split — see https://svelte.dev/docs/svelte/testing).
 
-- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`; `yarn svelte-check`; `yarn check:tree-shaking`.
-- **Config:** `vitest.config.ts` runs `src/**/*.test.ts` in jsdom with browser resolve conditions and the package's own Vite plugin (icons as font glyphs, as an app builds them).
+- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`; `yarn svelte-check`; `yarn check:tree-shaking`; `yarn icons:generate`, `yarn icons:check`.
+- **Config:** `vitest.config.ts` runs `src/**/*.test.ts` (and the icon extractor's, `scripts/**/*.test.ts`) in jsdom with browser resolve conditions and the package's own Vite plugin (icons as font glyphs, as an app builds them).
 - **File naming:** `*.test.ts`, next to a rune (`src/runes/**`) or under `src/test/` for components; `src/test/styles-contract.test.ts` enforces the styling contract.
 - **blade-core** is resolved from source via aliases in `vitest.config.ts`, so no build step is needed to run tests.
 - Coverage thresholds target 75% (React parity) but gate `test:coverage` only; CI runs `yarn test` while coverage ramps up.
 - **End-to-end:** `yarn test:e2e` runs `tests/e2e` against the built Storybook (`yarn build-storybook`).
+
+## Icons
+
+`src/icons` (SVGs, `codepoints.json`, the exports) and the blade-svelte skill's `AvailableIcons.md` are generated from Blade React's icon components by `scripts/icon-svgs/extract-blade.mjs`: never edit them by hand. After an icon changes in React, run `yarn icons:generate` (from the repo root: `yarn workspace @razorpay/blade-svelte icons:generate`); the icon workflows do this. `yarn icons:check` reports drift; CI runs it as an optional step. Stroke-drawn icons are skipped, since a font cannot draw strokes.

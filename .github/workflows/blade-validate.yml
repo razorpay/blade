@@ -97,6 +97,19 @@ jobs:
       - name: Run Unit Tests
         run: yarn test
         working-directory: packages/blade-svelte
+      # blade-svelte's icons are made from Blade React's: an icon added or changed
+      # in React without `yarn icons:generate` leaves them behind.
+      # Optional: the step fails with a warning, the job does not.
+      - name: Check Svelte Icons Match React
+        # Runs even when the tests fail, so the warning is never hidden
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        working-directory: packages/blade-svelte
+        run: |
+          yarn icons:check || {
+            echo "::warning title=blade-svelte icons out of date::Run 'yarn workspace @razorpay/blade-svelte icons:generate' and commit the result."
+            exit 1
+          }
 
   svelte-e2e:
     name: Run Svelte E2E Tests
