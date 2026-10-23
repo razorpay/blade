@@ -145,4 +145,14 @@ describe('Carousel', () => {
     flushSync();
     expect(onChange.mock.calls).toEqual([[2]]);
   });
+
+  it('showNavigationButtons off hides the buttons at every width, in any position', () => {
+    for (const navigationButtonPosition of ['bottom', 'side', 'side-overlap'] as const) {
+      const { queryAllByRole, unmount } = render(CarouselHarness, {
+        props: { showNavigationButtons: false, navigationButtonPosition },
+      });
+      expect(queryAllByRole('button', { name: /Slide$/ })).toHaveLength(0);
+      unmount();
+    }
+  });
 });

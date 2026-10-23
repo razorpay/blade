@@ -2550,7 +2550,8 @@ slide snippet (rule 4: `items`, `itemKey`, `children(item, index)`).
 | `onChange(slideIndex)`                        | same                                                           | same                                                                                  |
 | `autoPlay`                                    | same                                                           | same: every 6s, paused while the pointer or focus is inside, off under reduced motion |
 | `showIndicators`                              | same                                                           | same                                                                                  |
-| `navigationButtonVariant`, `navigationButtonPosition`, `showNavigationButtons` | same | same; phones keep the buttons under the slides, as Blade's |
+| `navigationButtonVariant`, `navigationButtonPosition` | same | same; phones keep the buttons under the slides, as Blade's |
+| `showNavigationButtons` | same | **changed**: off hides the buttons at every width; Blade hides them on mobile only |
 | `accessibilityLabel`                          | same                                                           | same                                                                                  |
 | —                                             | `slideLabel`, `indicatorLabel`, `indicatorsAccessibilityLabel` | cx-only: localized names for the slides, the dots and their row                       |
 | `visibleItems`, `snapAlign`, `gap`, …          | —                                                              | **missing** (below)                                                                   |

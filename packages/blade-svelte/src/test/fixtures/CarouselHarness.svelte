@@ -5,6 +5,7 @@
   interface Props extends CarouselStyleProps {
     autoPlay?: boolean;
     showIndicators?: boolean;
+    showNavigationButtons?: boolean;
     withLabels?: boolean;
     onChange?: (index: number) => void;
   }

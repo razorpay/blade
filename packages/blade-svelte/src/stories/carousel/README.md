@@ -10,7 +10,7 @@ scrolling work as the platform does them.
 | `activeSlide` | Bindable, or host-driven (scrolls there), default `0`; `onChange(slideIndex)` |
 | `autoPlay` | A slide every 6s, wrapping; off by default. Held while the pointer or focus is inside; off under reduced motion |
 | `showIndicators` | The dots under the slides (default `true`), each going to its slide; none for one slide |
-| `showNavigationButtons` | The previous and next buttons (default `true`); off hides them on phones only, as Blade's |
+| `showNavigationButtons` | The previous and next buttons (default `true`); off hides them at every width (Blade hides them on phones only) |
 | `navigationButtonPosition` | `bottom` (default, around the dots), `side` or `side-overlap` (half past the edge); phones always use `bottom` |
 | `navigationButtonVariant` | `filled` (default, white and raised) or `stroked` (a white wash) |
 | `previousButtonLabel`, `nextButtonLabel` | Localized; default `Previous Slide`, `Next Slide` |

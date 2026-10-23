@@ -33,8 +33,8 @@
       /** The dots under the slides; each goes to its slide. @default true */
       showIndicators?: boolean;
       /**
-       * The previous and next buttons. Off hides them on phones only, as
-       * Blade's: from `d:` up they always show.
+       * The previous and next buttons. Off hides them at every width (Blade
+       * hides them on phones only).
        * @default true
        */
       showNavigationButtons?: boolean;
@@ -92,12 +92,13 @@
   });
 
   const isOnSide = $derived(style.current.navigationButtonPosition?.startsWith('side') ?? false);
-  // Blade's: phones keep the buttons under the slides, and turning them off
-  // hides them only there. `null`: no buttons under the slides at all.
+  // Phones keep the buttons under the slides, as Blade's. `null`: no
+  // buttons under the slides at all.
   const bottomButtons = $derived.by(() => {
-    if (!isOnSide) return showNavigationButtons ? '' : 'hidden d:flex';
-    return showNavigationButtons ? 'd:hidden' : null;
+    if (!showNavigationButtons) return null;
+    return isOnSide ? 'd:hidden' : '';
   });
+  const sideButtons = $derived(isOnSide && showNavigationButtons);
   const hasDots = $derived(showIndicators && items.length > 1);
   // Without dots, the row under the slides shows where its buttons do.
   const controlsPlacement = $derived(hasDots ? '' : bottomButtons);
@@ -148,7 +149,7 @@
   onfocusout={carousel.release}
 >
   <div class={classes.body}>
-    {#if isOnSide}{@render navigationButton('previous', classes.side.previous)}{/if}
+    {#if sideButtons}{@render navigationButton('previous', classes.side.previous)}{/if}
     <div
       class={classes.track}
       onscroll={carousel.handleScroll}
@@ -167,7 +168,7 @@
         </div>
       {/each}
     </div>
-    {#if isOnSide}{@render navigationButton('next', classes.side.next)}{/if}
+    {#if sideButtons}{@render navigationButton('next', classes.side.next)}{/if}
   </div>
   {#if controlsPlacement !== null}
     <div class={cx(classes.controls, controlsPlacement)}>
