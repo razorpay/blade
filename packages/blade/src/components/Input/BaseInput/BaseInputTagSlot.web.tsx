@@ -212,18 +212,21 @@ const BaseInputTagSlot = ({
 
   // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
   const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
-  // In a TableEditableDropdownCell the trigger (SelectInput/AutoComplete button) already occupies
-  // the full input height and the slot is clamped to that same height, so vertical padding here
-  // pushes the trigger 4px down and clips it — the value/placeholder ends up sitting below the
-  // leading icon and the chevron. Keep the slot flush so the trigger shares the same vertical
-  // centre as the icons around it.
-  const tagSlotPaddingY = isInsideTableEditableCell ? 'spacing.0' : paddingYWithTags;
+  // The vertical padding exists to make room for tags. Inside a TableEditableCell no tags are
+  // rendered (a multi selection collapses to a "N Selected" text) while the slot is clamped to
+  // the input height, so the padding pushes the height constrained dropdown trigger down and
+  // out of the row - misaligning its value/placeholder with the leading icon, validation icon
+  // and chevron, which are centred on the row. Keep the slot flush there so the trigger fills
+  // the row and shares the same vertical centre as the icons around it. A tagged (multi
+  // selection) cell keeps the padding, which the `marginTop: -4px` on the children below
+  // compensates for.
+  const shouldApplyVerticalPadding = !isInsideTableEditableCell || Boolean(hasTags);
 
   return (
     <TagSlotContainer
       ref={slotRef}
       className="tags-slot"
-      paddingY={tagSlotPaddingY}
+      paddingY={shouldApplyVerticalPadding ? paddingYWithTags : 'spacing.0'}
       paddingLeft="spacing.4"
       display="flex"
       flex="1"
