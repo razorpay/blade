@@ -36,6 +36,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2t64 libffi8 libx264-dev
+      # react:storybook:build also builds the Svelte Storybook (see copySvelteStorybook.js),
+      # whose UnoCSS config imports @razorpay/blade-core/tokens from blade-core's dist output.
+      - name: Build blade-core
+        run: yarn build:blade-core
       - name: Run Interaction Tests
         run: |
           node node_modules/@storybook/test-runner/node_modules/.bin/playwright install chromium chromium-headless-shell firefox --with-deps
