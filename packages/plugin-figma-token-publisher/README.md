@@ -124,7 +124,7 @@ generated, or when a check fails. To generate locally instead, use **Copy JSON**
 
 ```bash
 cd packages/blade
-node ./scripts/uploadIcons.mjs ./scripts/icons.json --dry-run
+node ./scripts/uploadIcons.mjs ../../scripts/icons/icons.json --targets=react --dry-run
 ```
 
 ### Replaying a payload locally
