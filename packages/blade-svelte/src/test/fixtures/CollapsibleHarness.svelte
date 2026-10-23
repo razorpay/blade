@@ -1,0 +1,36 @@
+<script lang="ts">
+  import Collapsible from '../../components/collapsible/Collapsible.svelte';
+  import CollapsibleChevron from '../../components/collapsible/CollapsibleChevron.svelte';
+  import Link from '../../components/link/Link.svelte';
+
+  interface Props {
+    isExpanded?: boolean;
+    direction?: 'bottom' | 'top';
+    onExpandChange?: (change: { isExpanded: boolean }) => void;
+    onTriggerClick?: (event: MouseEvent) => void;
+  }
+
+  let { isExpanded: initial = false, direction, onExpandChange, onTriggerClick }: Props = $props();
+
+  // svelte-ignore state_referenced_locally
+  let isExpanded = $state(initial);
+</script>
+
+<Collapsible
+  bind:isExpanded
+  {direction}
+  {onExpandChange}
+  data-analytics-section="price"
+  testID="collapsible"
+>
+  {#snippet children({ isExpanded })}
+    <Link variant="button" onClick={onTriggerClick} testID="trigger">
+      View Price Breakdown<CollapsibleChevron />
+    </Link>
+    <output data-testid="trigger-state">{isExpanded}</output>
+  {/snippet}
+  {#snippet content()}
+    <p>Actual amount</p>
+  {/snippet}
+</Collapsible>
+<p data-testid="bound">{isExpanded}</p>

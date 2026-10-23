@@ -1,358 +1,400 @@
-// Re-export Base components with their original names to ensure they're available
-// when other components reference them at runtime
-export { default as BaseText } from './Typography/BaseText/BaseText.svelte';
-export { default as BaseButton } from './Button/BaseButton/BaseButton.svelte';
-export { default as BaseSpinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
-export { default as BaseAmount } from './Amount/BaseAmount/BaseAmount.svelte';
-export { default as BaseLink } from './Link/BaseLink/BaseLink.svelte';
-export { default as BaseCounter } from './Counter/BaseCounter/BaseCounter.svelte';
-
-// Box
-export { default as Box } from './Box/Box.svelte';
-export type { BoxProps, BoxAs } from './Box';
-
-// Typography
-export { default as Text } from './Typography/Text/Text.svelte';
-export { default as Heading } from './Typography/Heading/Heading.svelte';
-export { default as Code } from './Typography/Code/Code.svelte';
-export type { HeadingProps } from './Typography/Heading';
-export type { CodeProps } from './Typography/Code';
+// The checkout component library: stateful Svelte components over the
+// runes under `../runes`, styled by the class maps beside them
+// (`<name>/styles.ts`); runtime theming is CSS vars only. Published as
+// `@razorpay/blade-svelte/components` (`../components-entry.ts`); the
+// package has no root entry. Context plumbing (`provide*`/`get*`) is not
+// exported: BladeProvider wires it, and the imperative APIs below use the
+// global instances.
+export { default as Alert } from './alert/Alert.svelte';
+export { default as Amount } from './amount/Amount.svelte';
+export { default as Button } from './button/Button.svelte';
+export { default as ButtonGroup } from './button-group/ButtonGroup.svelte';
+export { default as Carousel } from './carousel/Carousel.svelte';
+export { default as Checkbox } from './checkbox/Checkbox.svelte';
+export { default as Chip } from './chip/Chip.svelte';
+export { default as ChipGroup } from './chip/ChipGroup.svelte';
+export { default as Collapsible } from './collapsible/Collapsible.svelte';
+export { default as CollapsibleChevron } from './collapsible/CollapsibleChevron.svelte';
+export { default as Counter } from './counter/Counter.svelte';
+export { default as CounterInput } from './counter-input/CounterInput.svelte';
+// Card and its parts, as Blade React spells them; each part's classes are
+// exported apart. Card renders its parts as children: importing Card does
+// not bring CardHeader, CardBody or CardFooter along.
+export { Card, CARD_AXES, resolveCard } from './card';
+export type { CardStyleProps, CardClasses, CardStyleResolver } from './card';
+export { CardHeader, CardBody, CardFooter } from './card-children';
+export { resolveCardHeader, resolveCardBody, resolveCardFooter } from './card-children/styles';
 export type {
-  TextProps,
-  TextBodyVariant,
-  TextCaptionVariant,
-  TextVariant,
-  GetTextProps,
-} from './Typography/Text/types';
-
-// Button
-export { default as Button } from './Button/Button.svelte';
-export type { ButtonProps, BaseButtonProps } from './Button';
-
-// IconButton
-export { default as IconButton } from './Button/IconButton/IconButton.svelte';
-export type { IconButtonProps } from './Button/IconButton/types';
-export { BaseIconButton } from './Button/IconButton/BaseIconButton';
-
-// Link
-export { default as Link } from './Link/Link.svelte';
-export type { LinkProps } from './Link/types';
-export type { BaseLinkProps } from './Link/BaseLink/types';
-
-// Spinner (alias to BaseSpinner for backward compatibility)
-export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
-
-// Amount
-export { default as Amount } from './Amount/Amount.svelte';
-export type {
-  BaseAmountProps,
-  AmountTypeProps,
-  AmountCommonProps,
-  AmountDisplayProps,
-  AmountHeadingProps,
-  AmountBodyProps,
-} from './Amount';
-
-// Icons
-export * from './Icons';
-// Badge
-export { default as Badge } from './Badge/Badge.svelte';
-export type { BadgeProps } from './Badge';
-
-// Counter
-export { default as Counter } from './Counter/Counter.svelte';
-export type { CounterProps, BaseCounterProps } from './Counter';
-// CounterInput
-export { default as CounterInput } from './CounterInput/CounterInput.svelte';
-export type {
-  CounterInputProps,
-  CounterInputEmphasis,
-  CounterInputSize,
-  CounterInputOnChange,
-} from './CounterInput/types';
-// Divider
-export { default as Divider } from './Divider/Divider.svelte';
-export type { DividerProps } from './Divider';
-// Skeleton
-export { default as Skeleton } from './Skeleton/Skeleton.svelte';
-export type { SkeletonProps } from './Skeleton/types';
-
-// Accordion
-export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
-export type {
-  AccordionProps,
-  AccordionItemProps,
-  AccordionItemHeaderProps,
-  AccordionItemBodyProps,
-  AccordionVariantType,
-} from './Accordion';
-
-// Collapsible
-export {
-  Collapsible,
-  CollapsibleButton,
-  CollapsibleLink,
-  CollapsibleText,
-  CollapsibleBody,
-} from './Collapsible';
-export type {
-  CollapsibleProps,
-  CollapsibleButtonProps,
-  CollapsibleLinkProps,
-  CollapsibleTextProps,
-  CollapsibleBodyProps,
-} from './Collapsible';
-
-// Switch
-export { default as Switch } from './Switch/Switch.svelte';
-export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
-
-// Card
-export {
-  Card,
-  CardBody,
-  TicketCard,
-  TicketCardBody,
-  TicketCardFooter,
-  InfoCard,
-  InfoCardBody,
-  InfoCardFooter,
-  CardHeader,
-  CardHeaderLeading,
-  CardHeaderTrailing,
-  CardHeaderIcon,
-  CardHeaderCounter,
-  CardHeaderBadge,
-  CardHeaderAmount,
-  CardHeaderText,
-  CardHeaderLink,
-  CardHeaderIconButton,
-  CardFooter,
-  CardFooterLeading,
-  CardFooterTrailing,
-} from './Card';
-export type {
-  CardProps,
-  CardBodyProps,
-  CardHeaderProps,
-  CardHeaderLeadingProps,
-  CardHeaderTrailingProps,
-  CardHeaderIconButtonProps,
-  CardHeaderLinkProps,
-  CardFooterProps,
+  HeaderClasses,
+  BodyClasses,
+  FooterClasses,
+  CardHeaderLook,
+  CardFooterLook,
   CardFooterAction,
-  CardFooterLeadingProps,
-  CardFooterTrailingProps,
-  CardSpacingValueType,
-  TicketCardProps,
-  InfoCardProps,
-  SectionedCardBodyProps,
-  SectionedCardFooterProps,
-} from './Card';
-
-// CardGroup
+} from './card-children/styles';
+// The overlays: a component per shape over the same runes (`createOverlay`).
+// Modal, BottomSheet and Drawer render their parts as children, so their
+// parts load only when used.
+export { Modal, MODAL_AXES } from './modal';
+export type {
+  ModalStyleProps,
+  ModalBehaviourProps,
+  ModalClassesOverride,
+  ModalClassesProp,
+} from './modal';
+export { BottomSheet, BOTTOM_SHEET_AXES } from './bottom-sheet';
+export type {
+  BottomSheetStyleProps,
+  BottomSheetBehaviourProps,
+  BottomSheetComponent,
+} from './bottom-sheet';
+export { Drawer, DRAWER_AXES } from './drawer';
+export type { DrawerStyleProps, DrawerBehaviourProps, DrawerComponent } from './drawer';
+export { Popover, POPOVER_AXES } from './popover';
+export type { PopoverStyleProps, PopoverBehaviourProps, PopoverComponent } from './popover';
+export { Menu } from './menu';
+export type { MenuStyleProps, MenuBehaviourProps, MenuComponent } from './menu';
+// Their parts, as Blade React spells them, each over its own classes; the
+// classes are exported apart for a part of the consumer's own, wired by
+// `useModalHeader`.
 export {
-  CardGroup,
-  CardGroupItem,
-  CardGroupCollapsibleItem,
-  CardGroupCollapsibleItemBody,
-} from './CardGroup';
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+} from './modal-children';
+export {
+  resolvePopoverHeader,
+  resolvePopoverBody,
+  resolvePopoverFooter,
+  resolveMenuBody,
+  resolveModalHeader,
+  resolveModalBody,
+  resolveModalFooter,
+  resolveBottomSheetHeader,
+  resolveBottomSheetBody,
+  resolveBottomSheetFooter,
+  resolveDrawerHeader,
+  resolveDrawerBody,
+  resolveDrawerFooter,
+} from './modal-children/styles';
 export type {
-  CardGroupProps,
-  CardGroupItemProps,
-  CardGroupCollapsibleItemProps,
-  CardGroupCollapsibleItemBodyProps,
-} from './CardGroup';
-
-// AppBar
-export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
-export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
-
-// TrustBadge
-export { TrustBadge } from './TrustBadge';
-export type { TrustBadgeProps, TrustBadgeVariant } from './TrustBadge';
-
-// Chip
-export { default as Chip } from './Chip/Chip.svelte';
-export { default as ChipGroup } from './Chip/ChipGroup.svelte';
-export type { ChipProps, ChipGroupProps } from './Chip';
-
-// Checkbox
-export { default as Checkbox } from './Checkbox/Checkbox.svelte';
-export { default as CheckboxGroup } from './Checkbox/CheckboxGroup.svelte';
+  OverlayHeaderClasses,
+  OverlayBodyClasses,
+  OverlayFooterClasses,
+  BottomSheetHeaderLook,
+  DrawerHeaderLook,
+  ModalBodyLook,
+  BottomSheetBodyLook,
+  DrawerBodyLook,
+  DrawerFooterLook,
+} from './modal-children/styles';
+export { useModalHeader } from '../runes/modal/header.svelte';
+export type { ModalHeaderOptions, ModalHeaderWiring } from '../runes/modal/header.svelte';
+export { default as BladeProvider } from './blade-provider/BladeProvider.svelte';
 export type {
-  CheckboxProps,
-  CheckboxGroupProps,
-  CheckboxOnChange,
-  CheckboxGroupOnChange,
-  CheckboxInstance,
-  CheckboxSize,
-} from './Checkbox/types';
-
-// ActionList
+  ComponentDefaults,
+  ComponentName,
+  ComponentStyleProps,
+  DefaultSize,
+} from './defaults';
+export { default as InputGroup } from './input-group/InputGroup.svelte';
+export { default as IconButton } from './icon-button/IconButton.svelte';
+export { default as Icon } from './icon/Icon.svelte';
+export { default as Link } from './link/Link.svelte';
 export {
   ActionList,
   ActionListItem,
-  ActionListItemAsset,
-  ActionListItemText,
-  ActionListItemIcon,
-  ActionListItemAvatar,
-  ActionListItemBadge,
-  ActionListItemBadgeGroup,
   ActionListSection,
-} from './ActionList';
+  ACTION_LIST_AXES,
+  actionListClasses,
+} from './action-list';
+export type { ActionListVariant, ActionListInset, ActionListStyleProps } from './action-list';
+export { default as CardGroup } from './card-group/CardGroup.svelte';
+export { default as CardGroupItem } from './card-group/CardGroupItem.svelte';
+export { default as CardGroupSection } from './card-group/CardGroupSection.svelte';
+export { default as OTPInput } from './otp-input/OTPInput.svelte';
+export { default as PasswordInput } from './password-input/PasswordInput.svelte';
+export { default as PhoneNumberInput } from './phone-number-input/PhoneNumberInput.svelte';
+export { default as PhoneCountryList } from './phone-number-input/PhoneCountryList.svelte';
+export { default as Radio } from './radio/Radio.svelte';
+export { default as RadioGroup } from './radio/RadioGroup.svelte';
+export { default as Switch } from './switch/Switch.svelte';
+export { default as Tabs } from './tabs/Tabs.svelte';
+export { default as TabItem } from './tabs/TabItem.svelte';
+export { default as TabPanel } from './tabs/TabPanel.svelte';
+export { default as TextArea } from './text-area/TextArea.svelte';
+export { default as Tooltip } from './tooltip/Tooltip.svelte';
+// Blade's toasts: the app renders a ToastContainer, `showToast` fills it.
+export { default as ToastContainer } from './toast/ToastContainer.svelte';
+export { showToast } from './toast/toasts';
+// A withdrawal an app hands Blade (`showToast`'s `cancelled`), or Blade hands it.
+export { createCancel } from '../runes/base/cancel';
+export type { Cancel } from '../runes/base/cancel';
 export type {
-  ActionListProps,
-  ActionListItemProps,
-  ActionListItemAssetProps,
-  ActionListItemTextProps,
-  ActionListItemIconProps,
-  ActionListItemAvatarProps,
-  ActionListItemBadgeProps,
-  ActionListItemBadgeGroupProps,
-  ActionListSectionProps,
-  ActionListSelectionType,
-  ActionListItemClickPayload,
-  ActionListItemSelectPayload,
-} from './ActionList';
-
-// Radio
-export { default as Radio } from './Radio/Radio.svelte';
-export { default as RadioGroup } from './Radio/RadioGroup.svelte';
-export type {
-  RadioProps,
-  RadioGroupProps,
-  RadioGroupOnChange,
-  RadioInstance,
-  RadioSize,
-} from './Radio/types';
-
-// Alert
-export { default as Alert } from './Alert/Alert.svelte';
-export type {
-  AlertProps,
-  AlertActions,
-  AlertColor,
-  AlertEmphasis,
-  PrimaryAction as AlertPrimaryAction,
-  SecondaryAction as AlertSecondaryAction,
-} from './Alert';
-
-// AnnouncementBanner
-export { default as AnnouncementBanner } from './AnnouncementBanner/AnnouncementBanner.svelte';
-export type { AnnouncementBannerProps } from './AnnouncementBanner/types';
-
-// Avatar
-export { default as Avatar } from './Avatar/Avatar.svelte';
-export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
-export type {
-  AvatarProps,
-  AvatarGroupProps,
-  AvatarSize,
-  AvatarVariant,
-  AvatarColor,
-} from './Avatar';
-
-// Breadcrumb
-export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
-export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
-export type {
-  BreadcrumbProps,
-  BreadcrumbItemProps,
-  BreadcrumbSize,
-  BreadcrumbColor,
-  BreadcrumbVariant,
-} from './Breadcrumb';
-
-// Tooltip
-export { default as Tooltip } from './Tooltip/Tooltip.svelte';
-export { default as TooltipInteractiveWrapper } from './Tooltip/TooltipInteractiveWrapper.svelte';
-export type {
-  TooltipProps,
-  TooltipPlacement,
-  TooltipInteractiveWrapperProps,
-} from './Tooltip/types';
-
-// Toast
-export { default as Toast } from './Toast/Toast.svelte';
-export { default as ToastContainer } from './Toast/ToastContainer.svelte';
-export { useToast } from './Toast/useToast';
-export type {
-  ToastProps,
-  ToastContainerProps,
-  ToastType,
-  ToastColor,
+  ShowToastControl,
+  ShowToastOptions,
   ToastAction,
-  ToastCallbackPayload,
-  BladeToast,
-  UseToastReturn,
-} from './Toast/types';
+  ToastDismissReason,
+  ToastLeading,
+} from './toast/toasts';
+export { default as SearchInput } from './search-input/SearchInput.svelte';
+export { default as TextInput } from './text-input/TextInput.svelte';
 
-// BottomSheet
-export { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from './BottomSheet';
+export type { BladeAdapters, BladeAdaptersOverride } from '../adapters';
+export type { AxisValue, StyleAxes } from '../axes';
+// Back: an app's back handler asks the open overlays first (`back()`).
+export { back } from '../runes/layer/layers';
+// The seams an app drives Blade through, all BladeProvider adapters
+// (BladeProvider renders the overlay host):
+// - `adapters.form` is the app's form around the fields (`FormAdapter`);
+// - `adapters.presentDropdown` may show a library dropdown its own way;
+// - `adapters.vibrate`, `adapters.announce`, `adapters.locale`.
+export type { HapticKind } from '../adapters';
+export type { FormAdapter, FormVerdict, FieldRecord } from '../runes/form/types';
 export type {
-  BottomSheetProps,
-  BottomSheetHeaderProps,
-  BottomSheetBodyProps,
-  BottomSheetFooterProps,
-  SnapPoints,
-} from './BottomSheet';
+  ActionListRequest,
+  DropdownKind,
+  DropdownValues,
+  PresentDropdownAdapter,
+} from '../runes/modal/dropdown';
+export type { SurfaceClasses } from './layer/styles';
+// The types an app's handlers and props name; the runes behind the
+// components are not a subpath.
+export type { FormErrors } from '../runes/form/types';
+export type { Placement } from '../runes/layer/placement';
+export type { DialogDismissEvent } from '../runes/modal/dialog.svelte';
 
-// Modal
-export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
-export type { ModalProps, ModalHeaderProps, ModalBodyProps, ModalFooterProps } from './Modal';
-
-// SegmentedControl
-export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';
+export type { ButtonBusyCause, ButtonClasses, ButtonStyleResolver } from './button/styles';
+// The style taxonomy. The *_AXES values are for the component explorer; app
+// code needs only the types.
+export { BUTTON_AXES } from './button';
+export type { ButtonStyleProps } from './button';
+export type { SwitchClasses, SwitchStyleResolver } from './switch/styles';
+export { SWITCH_AXES } from './switch';
+export type { SwitchStyleProps } from './switch';
+export type { CarouselClasses, CarouselStyleResolver } from './carousel/styles';
+export type { CarouselStyleProps } from './carousel';
+export type { PopupItemClasses, PopupItemIntent } from './shared/popup-list';
+export type { TabsClasses, TabsStyleResolver } from './tabs/styles';
+export { TABS_AXES } from './tabs';
+export type { TabItemState, TabsStyleProps } from './tabs';
 export type {
-  SegmentedControlProps,
-  SegmentedControlItemProps,
-  SegmentedControlSize,
-} from './SegmentedControl';
-
-// Input
-export { TextInput } from './Input/TextInput';
-export type { TextInputProps, TextInputType } from './Input/TextInput';
-export { SearchInput } from './Input/SearchInput';
-export type { SearchInputProps } from './Input/SearchInput';
-export { PasswordInput } from './Input/PasswordInput';
-export type { PasswordInputProps } from './Input/PasswordInput';
-export { OTPInput } from './Input/OTPInput';
-export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
-export { PhoneNumberInput } from './Input/PhoneNumberInput';
+  CheckboxClasses,
+  CheckboxSizeParts,
+  CheckboxStyleResolver,
+  CheckboxValidationState,
+} from './checkbox/styles';
+export { CHECKBOX_AXES } from './checkbox';
+export type { CheckboxStyleProps } from './checkbox';
+export type { ControlState } from './shared/control-state';
+export { CHIP_GROUP_AXES } from './chip';
 export type {
-  PhoneNumberInputProps,
-  PhoneNumberInputInstance,
-  PhoneNumberChangePayload,
-} from './Input/PhoneNumberInput';
-
-// InputGroup
-export { InputGroup, InputRow } from './InputGroup';
-export type { InputGroupProps, InputRowProps } from './InputGroup';
-
-// BladeProvider
-export * from './BladeProvider';
-
-// Dropdown
+  ChipClasses,
+  ChipColor,
+  ChipGroupClasses,
+  ChipGroupStyleProps,
+  ChipGroupValidationState,
+  ChipShared,
+  ChipSize,
+  ChipTone,
+} from './chip';
+export { COUNTER_AXES } from './counter';
+export type { CounterClasses, CounterStyleProps } from './counter';
+export { COUNTER_INPUT_AXES } from './counter-input';
+export type { CounterInputClasses, CounterInputStyleProps } from './counter-input';
+export type { AlertClasses, AlertStyleResolver } from './alert/styles';
+export { ALERT_AXES } from './alert';
+export type { AlertStyleProps } from './alert';
+export type {
+  InputGroupClasses,
+  InputGroupSpan,
+  InputGroupStyleResolver,
+  InputGroupValidationState,
+} from './input-group/styles';
+export type { InputGroupStyleProps } from './input-group';
+export type {
+  CardGroupItemClasses,
+  CardGroupItemContentProps,
+  CardGroupClasses,
+  CardGroupShared,
+  CardGroupStyleResolver,
+  CardGroupValidationState,
+  CardGroupRowClasses,
+  CardGroupClassesProp,
+  CardGroupLookState,
+  CardGroupSectionClasses,
+  CardGroupItemState,
+  CardGroupView,
+  CardGroupChange,
+  CardGroupItemClick,
+  CardGroupDataSection,
+  CardGroupVirtualClasses,
+} from './card-group/styles';
+export { CARD_GROUP_AXES, resolveCardGroup } from './card-group';
+export type { CardGroupStyleProps } from './card-group';
+export type {
+  OTPInputChange,
+  OTPInputClasses,
+  OTPInputMethod,
+  OTPInputStyleResolver,
+  OTPInputValidationState,
+} from './otp-input/styles';
+export { OTP_INPUT_AXES } from './otp-input';
+export type { OTPInputStyleProps } from './otp-input';
+export type {
+  RadioClasses,
+  RadioGroupClasses,
+  RadioGroupStyleResolver,
+  RadioGroupValidationState,
+} from './radio/styles';
+export { RADIO_GROUP_AXES } from './radio';
+export type { RadioGroupStyleProps } from './radio';
 export {
-  Dropdown,
-  DropdownOverlay,
-  DropdownHeader,
-  DropdownFooter,
-  InputDropdownButton,
-} from './Dropdown';
+  SegmentedControl,
+  SegmentedControlItem,
+  SEGMENTED_CONTROL_AXES,
+} from './segmented-control';
 export type {
-  DropdownProps,
-  DropdownOverlayProps,
-  DropdownHeaderProps,
-  DropdownFooterProps,
-  InputDropdownButtonProps,
-  DropdownSelectionType,
-} from './Dropdown';
+  SegmentedControlItemProps,
+  SegmentedControlProps,
+  SegmentedControlStyleProps,
+} from './segmented-control';
+export type {
+  TextAreaClasses,
+  TextAreaStyleResolver,
+  TextAreaValidationState,
+} from './text-area/styles';
+export type { TextAreaStyleProps } from './text-area';
+export type {
+  TextInputClasses,
+  TextInputFrame,
+  TextInputStyleResolver,
+  TextInputValidationState,
+} from './text-input/styles';
+export type { TextInputStyleProps } from './text-input';
+export { TEXT_INPUT_AXES } from './text-input/styles';
+export { TEXT_AREA_AXES } from './text-area/styles';
+export { PHONE_NUMBER_INPUT_AXES } from './phone-number-input/styles';
+export { INPUT_GROUP_AXES } from './input-group/styles';
+export type {
+  ToastClasses,
+  ToastCloseIconSnippet,
+  ToastContainerClasses,
+  ToastContainerStyleResolver,
+  ToastStyleResolver,
+} from './toast/styles';
+export { TOAST_AXES, TOAST_CONTAINER_AXES } from './toast';
+export type { ToastContainerStyleProps, ToastStyleProps } from './toast';
+export type { CollapsibleClasses } from './collapsible/styles';
+export type { TooltipClasses, TooltipStyleResolver } from './tooltip/styles';
+export type { TooltipStyleProps } from './tooltip';
+export type { AmountClasses, AmountStyleResolver } from './amount/styles';
+export type { AmountStyleProps } from './amount';
+export { AMOUNT_AXES } from './amount';
+export type { AmountSuffix } from '../runes/amount/amount';
+export type { LinkClasses, LinkStyleResolver } from './link/styles';
+export { LINK_AXES } from './link';
+export type { LinkStyleProps } from './link';
+export type { IconButtonClasses, IconButtonStyleResolver } from './icon-button/styles';
+export type { ButtonType } from '../runes/button/press.svelte';
+export { ICON_BUTTON_AXES } from './icon-button';
+export type { IconButtonStyleProps } from './icon-button';
+export { BUTTON_GROUP_AXES } from './button-group';
+export type { ButtonGroupStyleProps } from './button-group';
+export type {
+  PhoneNumberChange,
+  PhoneNumberInputClasses,
+  PhoneNumberInputStyleResolver,
+} from './phone-number-input/styles';
+export type { PhoneCountry, PhoneParts } from '../runes/phone/parts';
+export type { OverlayLayout } from '../runes/layer/overlay';
+// The default country list, for an app that adds its own patterns to it.
+export { defaultPhoneCountries } from '../runes/phone/countries';
+export type { PhoneNumberInputStyleProps } from './phone-number-input';
+export type { IconBehaviourProps, IconClasses, IconStyleResolver } from './icon/styles';
+export type { IconSource } from '../runes/icon/source';
+export { ICON_AXES } from './icon';
+export type { IconStyleProps } from './icon';
+// The icons themselves are `@razorpay/blade-svelte/icons`.
+export type { Glyph } from '../runes/icon/source';
+// Style-only components: no behaviour model behind them.
+export { AnnouncementBanner, ANNOUNCEMENT_BANNER_AXES } from './announcement-banner';
+export type {
+  AnnouncementBannerStyleProps,
+  AnnouncementBannerBehaviourProps,
+  AnnouncementBannerClasses,
+  AnnouncementBannerComponent,
+} from './announcement-banner';
+export { Avatar, AvatarGroup, AVATAR_AXES, AVATAR_GROUP_AXES } from './avatar';
+export type {
+  AvatarStyleProps,
+  AvatarBehaviourProps,
+  AvatarClasses,
+  AvatarComponent,
+  AvatarGroupStyleProps,
+  AvatarGroupBehaviourProps,
+  AvatarGroupClasses,
+  AvatarGroupComponent,
+} from './avatar';
+export { Breadcrumb, BreadcrumbItem, BREADCRUMB_AXES } from './breadcrumb';
+export type {
+  BreadcrumbStyleProps,
+  BreadcrumbBehaviourProps,
+  BreadcrumbItemProps,
+  BreadcrumbClasses,
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+} from './breadcrumb';
+export { Badge, BADGE_AXES } from './badge';
+export type { BadgeStyleProps, BadgeBehaviourProps, BadgeComponent } from './badge';
+export { TrustBadge, TRUST_BADGE_AXES } from './trust-badge';
+export type {
+  TrustBadgeStyleProps,
+  TrustBadgeBehaviourProps,
+  TrustBadgeComponent,
+} from './trust-badge';
+export { EmptyState, EMPTY_STATE_AXES } from './empty-state';
+export type {
+  EmptyStateStyleProps,
+  EmptyStateBehaviourProps,
+  EmptyStateComponent,
+} from './empty-state';
+export { BottomBar } from './bottom-bar';
+export type { BottomBarBehaviourProps, BottomBarClasses, BottomBarComponent } from './bottom-bar';
+export { Divider, DIVIDER_AXES } from './divider';
+export type { DividerStyleProps, DividerBehaviourProps, DividerComponent } from './divider';
+export { DotLoader, DOT_LOADER_AXES } from './dot-loader';
+export type {
+  DotLoaderStyleProps,
+  DotLoaderBehaviourProps,
+  DotLoaderComponent,
+} from './dot-loader';
+export { ProgressBar, PROGRESS_BAR_AXES } from './progress-bar';
+export type {
+  ProgressBarStyleProps,
+  ProgressBarBehaviourProps,
+  ProgressBarComponent,
+} from './progress-bar';
+export { Skeleton } from './skeleton';
+export type { SkeletonBehaviourProps, SkeletonComponent } from './skeleton';
+export { Display, DISPLAY_AXES } from './display';
+export type { DisplayStyleProps, DisplayBehaviourProps, DisplayComponent } from './display';
+export { Code, CODE_AXES } from './code';
+export type { CodeStyleProps, CodeBehaviourProps, CodeClasses, CodeComponent } from './code';
+export { Heading, HEADING_AXES } from './heading';
+export type { HeadingStyleProps, HeadingBehaviourProps, HeadingComponent } from './heading';
+export { Text, TEXT_AXES } from './text';
+export type { TextStyleProps, TextBehaviourProps, TextComponent } from './text';
 
-// Tabs
-export { default as Tabs } from './Tabs/Tabs.svelte';
-export { default as TabList } from './Tabs/TabList.svelte';
-export { default as TabItem } from './Tabs/TabItem.svelte';
-export { default as TabPanel } from './Tabs/TabPanel.svelte';
-export type { TabsProps, TabItemProps, TabListProps, TabPanelProps } from './Tabs/types';
+// What an app's own components take from Blade besides the components
+// above: the provider defaults and the app's services (`adapters`). The
+// few runes an app composes on are `@razorpay/blade-svelte/runes`.
+export type { FieldChange } from './shared/change';
+export { useComponentDefaults } from './defaults';
+export { getAdapters } from '../adapters';

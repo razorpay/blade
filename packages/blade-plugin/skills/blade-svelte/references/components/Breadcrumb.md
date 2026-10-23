@@ -4,208 +4,128 @@ Breadcrumb
 
 ## Description
 
-Breadcrumb shows where the current page sits in the app's hierarchy and links back to its parent pages, for example Home / Payments / Settlements. Compose it with `BreadcrumbItem` links, marking the last one with `isCurrentPage`. Separators are added automatically. The `stepper` variant renders the items as pills separated by chevrons, for multi-step flows such as checkout.
+Breadcrumb shows where the user is as a trail of links, from the top of the app to the current page. It renders a `<nav>` (named "Breadcrumb" by default) around an ordered list of `BreadcrumbItem`s, in three sizes and three colours. The `subtle` emphasis (default) is links between slashes; `intense` is Blade DSL's trail of pills between chevrons, with the current page in a tinted pill. The current page is plain text marked `aria-current="page"`.
 
 ## Important Constraints
 
-- `BreadcrumbItem` must be rendered inside `Breadcrumb`; it reads size, color and variant from the Breadcrumb context and fails without it
-- `href` is required on every `BreadcrumbItem`, but an item with `isCurrentPage` renders as plain text and ignores `href` and `onClick`
-- Separators are inserted by `Breadcrumb`; the separator after the last item is hidden unless `showLastSeparator` is set
-- `icon` only accepts an icon component exported by `@razorpay/blade-svelte/components`
-- Partial port of React: `BreadcrumbItem` has no `as` prop for router link components; use `onClick` with `event.preventDefault()` for client-side routing
+- `Breadcrumb`'s children are `BreadcrumbItem`s; each item's label is its `children`
+- Mark the last item `isCurrentPage`: it renders as text, not a link, and its `href` is not used
+- An icon-only item (`icon` and no `children`) needs `accessibilityLabel`
+- `icon` takes an icon source from `@razorpay/blade-svelte/icons`
+- `href` routes through `adapters.navigate`; `onClick` runs first, and `event.preventDefault()` keeps the user in place
+- `size` applies to `subtle` only: `intense` has one size
+- Breadcrumb's `class` places the trail; BreadcrumbItem takes no `class`
 
-## TypeScript Types
-
-These are the props the Breadcrumb component and BreadcrumbItem accept.
+## Props
 
 ```typescript
 type BreadcrumbSize = 'small' | 'medium' | 'large';
-type BreadcrumbColor = 'neutral' | 'primary' | 'white';
-type BreadcrumbVariant = 'default' | 'stepper';
+type BreadcrumbColor = 'primary' | 'neutral' | 'white';
+type BreadcrumbEmphasis = 'subtle' | 'intense';
 
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. HomeIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-interface BreadcrumbProps extends StyledPropsBlade {
-  /**
-   * Content of the Breadcrumb, accepts BreadcrumbItem components.
-   */
+interface BreadcrumbProps {
+  /** The BreadcrumbItems. */
   children: Snippet;
-
-  /**
-   * Size of the Breadcrumb.
-   * @default 'medium'
-   */
+  /** Subtle only: 12, 14 or 16px links. @default 'medium' */
   size?: BreadcrumbSize;
-
-  /**
-   * Color of the Breadcrumb.
-   * @default 'primary'
-   */
+  /** `white` over a dark or brand-coloured surface. @default 'primary' */
   color?: BreadcrumbColor;
-
-  /**
-   * Visual variant of the Breadcrumb.
-   * - `default`: text links separated by a `/`.
-   * - `stepper`: progress steps where the current page is a filled pill and
-   *   items are separated by a chevron icon.
-   * @default 'default'
-   */
-  variant?: BreadcrumbVariant;
-
-  /**
-   * Whether to show the last separator.
-   * @default false
-   */
+  /** `subtle`: links between slashes. `intense`: pills between chevrons. @default 'subtle' */
+  emphasis?: BreadcrumbEmphasis;
+  /** A separator after the last item too. @default false */
   showLastSeparator?: boolean;
-
-  /**
-   * Accessibility label for the breadcrumb navigation.
-   * @default 'Breadcrumb'
-   */
+  /** Names the nav. @default 'Breadcrumb' */
   accessibilityLabel?: string;
-
-  /** Test ID for the element. */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
 }
 
 interface BreadcrumbItemProps {
-  /**
-   * Href of the BreadcrumbItem.
-   */
+  /** Where it goes, routed through `adapters.navigate`. Required: every item is a link. */
   href: string;
-
-  /**
-   * Function to be called on click of the BreadcrumbItem.
-   * Can be used to integrate with routing libraries.
-   */
+  /** Called on click, before navigation; `event.preventDefault()` cancels it. */
   onClick?: (event: MouseEvent) => void;
-
-  /**
-   * Whether the BreadcrumbItem is the current page.
-   * Sets the aria-current attribute to `page`.
-   * @default false
-   */
+  /** The page the user is on: plain text (or the selected pill), `aria-current="page"`. @default false */
   isCurrentPage?: boolean;
-
-  /**
-   * Content of the BreadcrumbItem.
-   */
-  children?: Snippet | string;
-
-  /**
-   * Icon to be shown before the BreadcrumbItem.
-   */
-  icon?: IconComponent;
-
-  /**
-   * Accessibility label for the BreadcrumbItem, can be used in icon-only variants.
-   */
+  /** The label; omit for an icon-only item. */
+  children?: Snippet;
+  /** Before the label. */
+  icon?: IconSource;
+  /** Names an icon-only item. */
   accessibilityLabel?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  testID?: string;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Breadcrumb` on pages that are two or more levels deep, such as a single settlement inside Settlements.
-- Mark the last item with `isCurrentPage` so it gets `aria-current="page"` and is not a link.
-- Pass `accessibilityLabel` on icon-only items, such as a Home item with only `HomeIcon`.
-- Use `color="white"` on dark or colored surfaces, and `primary` or `neutral` on light surfaces.
-- Use `onClick` with `event.preventDefault()` to hand navigation to your router, and keep `href` for open-in-new-tab.
-- Use `variant="stepper"` to show progress through a short, ordered flow such as Contact, Address, Payment.
-- Keep item labels short, using the page titles users see in navigation.
-
-**Don't**
-
-- Don't type separators such as `/` or `>` yourself; Breadcrumb adds them.
-- Don't use Breadcrumb as the main navigation; use it alongside a navigation component.
-- Don't use Breadcrumb to switch between views of the same page; use `Tabs`.
-- Don't build very deep trails; collapse intermediate levels or link to the nearest meaningful parent.
+- Use a breadcrumb on pages two or more levels deep, with the current page last.
+- Start the trail with a home item, often icon-only (`icon={HomeIcon}` with `accessibilityLabel="Home"`).
+- Use `color="white"` on dark or brand-coloured surfaces and `neutral` where primary links would compete with the page.
+- Use `emphasis="intense"` for a step-like trail (Contact, Address, Payment) where the current step should stand out.
+- Don't use a breadcrumb as the main navigation or for a single level.
+- Don't put Links inside a BreadcrumbItem: the item is already a link.
 
 ## Examples
 
-### Settlement details trail
-
-A default breadcrumb with an icon-only Home item, client-side routing and analytics attributes.
+### A trail
 
 ```svelte
 <script lang="ts">
-  import { Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade-svelte/components';
-
-  let currentPath = $state('/settlements/setl_NkP8x2Zc1');
-
-  function navigateTo(path: string) {
-    return (event: MouseEvent) => {
-      event.preventDefault();
-      currentPath = path;
-    };
-  }
+  import { Breadcrumb, BreadcrumbItem } from '@razorpay/blade-svelte/components';
+  import { HomeIcon } from '@razorpay/blade-svelte/icons';
 </script>
 
-<Breadcrumb size="medium" color="primary" data-analytics-section="settlement-breadcrumb">
-  {#snippet children()}
-    <BreadcrumbItem
-      icon={HomeIcon}
-      href="/home"
-      accessibilityLabel="Home"
-      onClick={navigateTo('/home')}
-    />
-    <BreadcrumbItem href="/settlements" onClick={navigateTo('/settlements')}>
-      Settlements
-    </BreadcrumbItem>
-    <BreadcrumbItem isCurrentPage href={currentPath}>setl_NkP8x2Zc1</BreadcrumbItem>
-  {/snippet}
+<Breadcrumb>
+  <BreadcrumbItem href="/" icon={HomeIcon} accessibilityLabel="Home" />
+  <BreadcrumbItem href="/payments">Payments</BreadcrumbItem>
+  <BreadcrumbItem href="/payments/settlements">Settlements</BreadcrumbItem>
+  <BreadcrumbItem isCurrentPage>Settlement 4521</BreadcrumbItem>
 </Breadcrumb>
 ```
 
-### Checkout stepper
+### Neutral, small, on a brand surface
 
-The `stepper` variant tracks progress through checkout; the current step is a filled pill.
+```svelte
+<script lang="ts">
+  import { Breadcrumb, BreadcrumbItem } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex flex-col gap-blade-5">
+  <Breadcrumb size="small" color="neutral">
+    <BreadcrumbItem href="/settings">Settings</BreadcrumbItem>
+    <BreadcrumbItem isCurrentPage>Webhooks</BreadcrumbItem>
+  </Breadcrumb>
+  <div class="rounded-medium bg-interactive-primary-default p-blade-4">
+    <Breadcrumb color="white">
+      <BreadcrumbItem href="/reports">Reports</BreadcrumbItem>
+      <BreadcrumbItem isCurrentPage>Monthly</BreadcrumbItem>
+    </Breadcrumb>
+  </div>
+</div>
+```
+
+### Intense steps with a click handler
 
 ```svelte
 <script lang="ts">
   import { Breadcrumb, BreadcrumbItem } from '@razorpay/blade-svelte/components';
 
-  const steps = [
-    { path: '/checkout/contact', label: 'Contact' },
-    { path: '/checkout/address', label: 'Address' },
-    { path: '/checkout/payment', label: 'Payment' },
-  ];
+  const steps = ['Contact', 'Address', 'Payment'];
+  let current = $state('Address');
 
-  let currentStep = $state('/checkout/contact');
-
-  function goToStep(path: string) {
-    return (event: MouseEvent) => {
-      event.preventDefault();
-      currentStep = path;
-    };
+  function go(step: string, event: MouseEvent): void {
+    event.preventDefault();
+    current = step;
   }
 </script>
 
-<Breadcrumb variant="stepper" color="neutral" size="small" accessibilityLabel="Checkout steps">
-  {#snippet children()}
-    {#each steps as step (step.path)}
-      <BreadcrumbItem
-        href={step.path}
-        isCurrentPage={currentStep === step.path}
-        onClick={goToStep(step.path)}
-      >
-        {step.label}
-      </BreadcrumbItem>
-    {/each}
-  {/snippet}
+<Breadcrumb emphasis="intense" accessibilityLabel="Checkout steps">
+  {#each steps as step (step)}
+    <BreadcrumbItem href="#{step.toLowerCase()}" isCurrentPage={current === step} onClick={(event) => go(step, event)}>
+      {step}
+    </BreadcrumbItem>
+  {/each}
 </Breadcrumb>
 ```

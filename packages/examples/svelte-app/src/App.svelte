@@ -1,47 +1,69 @@
-<script>
-  import { Text, Button } from '@razorpay/blade-svelte/components';
+<script lang="ts">
+  import {
+    BladeProvider,
+    Button,
+    Heading,
+    Link,
+    Text,
+    ToastContainer,
+    showToast,
+  } from '@razorpay/blade-svelte/components';
+  import Contact from './Contact.svelte';
+  import PaymentMethods from './PaymentMethods.svelte';
+  import Summary from './Summary.svelte';
 
-  const avatars = [
-    { name: 'Divya Sharma' },
-    { name: 'Rahul Verma' },
-    { name: 'Ananya Iyer' },
-  ];
+  // A merchant's brand reaches Blade through its token variables: the
+  // standard theme is the fallback, so only what branding changes is set.
+  const BRANDS = {
+    blade: undefined,
+    plum: 'hsla(285, 60%, 42%, 1)',
+  } as const;
+  let brand = $state<keyof typeof BRANDS>('blade');
 
-  // Gate the avatar button behind a click so the Avatar chunk is NOT loaded on
-  // initial paint. Open the Network tab, load the page (no Avatar-*.js request),
-  // then click "Show avatar button" and watch the Avatar chunk fetch on demand.
-  let showAvatarButton = $state(false);
+  let method = $state<string | null>('upi');
+
+  // The confirmation loads on demand: its chunk (Modal and its parts) is
+  // fetched on the first Pay, not on page load. Watch the Network tab.
+  let confirm = $state<typeof import('./Confirm.svelte').default>();
+  let isConfirming = $state(false);
+  async function pay(): Promise<void> {
+    confirm ??= (await import('./Confirm.svelte')).default;
+    isConfirming = true;
+  }
+
+  function paid(): void {
+    isConfirming = false;
+    void showToast({ content: 'Payment successful', color: 'positive' });
+  }
 </script>
 
-<main>
-  <h1>blade-svelte bundle size example</h1>
+<div
+  class="relative min-h-screen bg-surface-gray-subtle"
+  style:--interactive-background-primary-default={BRANDS[brand]}
+>
+  <BladeProvider>
+    <main class="mx-auto flex max-w-[480px] flex-col gap-6 px-4 py-8">
+      <header class="flex items-center justify-between">
+        <Heading size="medium">Checkout</Heading>
+        <Link variant="button" onClick={() => (brand = brand === 'blade' ? 'plum' : 'blade')}>
+          {brand === 'blade' ? 'Try a brand colour' : 'Back to Blade blue'}
+        </Link>
+      </header>
 
-  <Text>Hello, world!</Text>
-  <Button>Click me</Button>
+      <Summary />
+      <Contact />
+      <PaymentMethods bind:value={method} />
 
-  <Button variant="secondary" onClick={() => (showAvatarButton = true)}>
-    Show avatar button
-  </Button>
+      <Button class="w-full" size="large" isDisabled={!method} onClick={pay}>Pay ₹1,299</Button>
+      <Text size="small" color="muted" class="text-center">Secured by Razorpay</Text>
+    </main>
 
-  {#if showAvatarButton}
-    <div class="row">
-      <Button size="large" {avatars}>Shared with</Button>
-    </div>
-  {/if}
-</main>
+    {#if confirm}
+      {@const Confirm = confirm}
+      <Confirm bind:isOpen={isConfirming} {method} onPaid={paid} />
+    {/if}
 
-<style>
-  main {
-    max-width: 480px;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-</style>
+    <!-- Rendered once: it shows what showToast asks for. -->
+    <ToastContainer />
+  </BladeProvider>
+</div>

@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["@razorpay/blade-svelte/configs/lint"],
+  "rules": {
+    "blade/no-conflicting-classes": "error",
+    "blade/no-interpolated-classes": "error",
+    "blade/no-unknown-blade-class": "error",
+    "blade/prefer-token": "warn",
+    "blade/no-restyle": "error"
+  }
+}

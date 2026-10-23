@@ -9,18 +9,18 @@ description: Enforce agent boundaries when the orchestrator is running a migrati
 1. **Set up worktrees + branches** via Bash tool (one per component):
 
    ```bash
-   git worktree add -B feat/blade-svelte/{Name} .claude/worktrees/{Name} origin/master
+   git worktree add -B feat/blade-rn/{Name} .claude/worktrees/{Name} origin/master
    ```
 
 2. **Spawn agents in parallel** via the Agent tool, where the pipeline allows. To run a phase across N components in parallel, send **one message containing N Agent tool calls**:
 
    ```text
-   Agent(subagent_type: "plan-svelte-migration", description: "Plan {Name}",   prompt: "<...>", run_in_background: false)
-   Agent(subagent_type: "execute-svelte-migration", description: "Execute {Name}", prompt: "<...>", run_in_background: false)
-   Agent(subagent_type: "verify-svelte-migration",  description: "Verify {Name}",  prompt: "<...>", run_in_background: false)
+   Agent(subagent_type: "plan-rn-migration",    description: "Plan {Name}",    prompt: "<...>", run_in_background: false)
+   Agent(subagent_type: "execute-rn-migration", description: "Execute {Name}", prompt: "<...>", run_in_background: false)
+   Agent(subagent_type: "verify-rn-migration",  description: "Verify {Name}",  prompt: "<...>", run_in_background: false)
    ```
 
-   Each agent file is loaded automatically by the matching `subagent_type` (`plan-svelte-migration` → `.claude/agents/plan-svelte-migration.md`, `execute-svelte-migration` → `.claude/agents/execute-svelte-migration.md`, `verify-svelte-migration` → `.claude/agents/verify-svelte-migration.md`). You do not need to read those files yourself.
+   Each agent file is loaded automatically by the matching `subagent_type` (`plan-rn-migration` → `.claude/agents/rn-agents/plan-rn-migration.md`, `execute-rn-migration` → `.claude/agents/rn-agents/execute-rn-migration.md`, `verify-rn-migration` → `.claude/agents/rn-agents/verify-rn-migration.md`). You do not need to read those files yourself.
 
 3. **Pass the worktree absolute path** to each agent in its prompt. The Agent tool does not accept a `working_directory` parameter, so the agent uses the absolute path as the prefix for all its file/shell operations.
 
@@ -45,6 +45,6 @@ Plan, Execute, and Verify each run all-in-parallel via one Agent batch per phase
 If component A depends on component B and both are in the same batch:
 
 - Both run Plan in parallel.
-- Step 2 detects the edge and marks A `🟡 deferred-to-next-batch`.
+- The Plan Gate detects the edge and marks A `🟡 deferred-to-next-batch`.
 - Only B continues through Execute / Verify / PR.
 - User re-runs A as a follow-up batch after B's PR merges.

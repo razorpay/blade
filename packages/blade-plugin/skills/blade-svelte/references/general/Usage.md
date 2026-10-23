@@ -1,150 +1,170 @@
-# How to use Blade in Svelte
+# Usage
 
-`@razorpay/blade-svelte` is Blade for Svelte 5. It shares design tokens with React Blade through `@razorpay/blade-core`, and its component APIs follow the React ones where Svelte allows. Components use Svelte 5 runes only.
+## Description
 
-## Install
+How a Svelte 5 app sets up `@razorpay/blade-svelte`, and the conventions every component follows. Read this once per task before the component docs.
 
-```bash
-npm install @razorpay/blade-svelte
+## Setup
+
+`@razorpay/blade-svelte` ships Svelte 5 source. The app's build compiles it, generates Blade's CSS with UnoCSS from Blade's config, and (optionally) turns the icons it imports into one font. Peer dependencies: `svelte` (5.56+), `unocss` (66+), `@razorpay/i18nify-js` (Amount, PhoneNumberInput), and Vite 8 for the Vite plugin.
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import UnoCSS from 'unocss/vite';
+import bladePlugin from '@razorpay/blade-svelte/configs/vite';
+
+export default defineConfig({
+  plugins: [bladePlugin(), UnoCSS(), svelte()],
+});
 ```
 
-Requirements: Node.js 18.12.1 or later and Svelte 5.56.0 or later. `@razorpay/blade-core` (tokens, CSS and fonts) is installed as a dependency.
+```ts
+// uno.config.ts
+import bladeUnoConfig from '@razorpay/blade-svelte/configs/uno';
 
-## Set up the app
+export default {
+  ...bladeUnoConfig({ desktop: '62.5rem' }), // the `d:` breakpoint
+  // The bundled modules, Blade's `styles.ts` class maps included.
+  content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
+};
+```
 
-Import the theme CSS and fonts once, in the root layout (SvelteKit `src/routes/+layout.svelte`) or the app entry (`App.svelte`), then wrap the app in `BladeProvider`.
+With webpack 5 use `@razorpay/blade-svelte/configs/webpack` and `@unocss/webpack` the same way. With `@unocss/postcss`, UnoCSS scans files instead: list `./node_modules/@razorpay/blade-svelte/src/**/*.{ts,svelte}` in `content.filesystem`.
+
+In the app entry, import the generated utilities and Blade's stylesheet, and set the page defaults Blade leaves to the app (base font, box model, form controls inheriting the font):
+
+```ts
+// main.ts
+import '@razorpay/blade-svelte/blade.css'; // Blade's faces (Inter, Tasa) and opacity steps
+import 'virtual:uno.css';
+import './app.css'; // *, ::before, ::after { box-sizing: border-box } body { margin: 0; font-family: 'Inter', … } button, input, textarea, select { font: inherit; color: inherit }
+```
+
+Wrap the app in one `BladeProvider` whose parent is the app's shell (positioned, at most the screen, `overflow-hidden`) and whose direct child is the app's scrolling element, and render one `ToastContainer` if the app shows toasts. Overlays then cover the shell, a modal opens in view however far the content has scrolled, and nothing behind an open overlay scrolls. The classes are the app's: Blade adds no markup around its content.
 
 ```svelte
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  import '@razorpay/blade-core/tokens/theme.css';
-  import '@razorpay/blade-core/fonts.css';
-  import { BladeProvider } from '@razorpay/blade-svelte/components';
-  import { bladeTheme } from '@razorpay/blade-core/tokens';
-
-  let { children }: { children: Snippet } = $props();
+  import { BladeProvider, Button, ToastContainer, showToast } from '@razorpay/blade-svelte/components';
 </script>
 
-<BladeProvider themeTokens={bladeTheme} colorScheme="light">
-  {@render children()}
-</BladeProvider>
-```
-
-`colorScheme` accepts `light`, `dark` or `system`. A nested `BladeProvider` scopes its color scheme to its own subtree, for example a dark section on a light page. Avoid nesting it when you don't need a different scheme.
-
-To switch the scheme at runtime, call `useTheme()` in a component rendered inside `BladeProvider`. It returns `{ theme, colorScheme, setColorScheme, platform }`.
-
-```svelte
-<script lang="ts">
-  import { Button, useTheme } from '@razorpay/blade-svelte/components';
-
-  const theme = $derived(useTheme());
-</script>
-
-<Button
-  variant="tertiary"
-  onClick={() => theme.setColorScheme(theme.colorScheme === 'dark' ? 'light' : 'dark')}
->
-  Toggle dark mode
-</Button>
-```
-
-## Imports
-
-- Components, icons, `useTheme` and `useToast`: `@razorpay/blade-svelte/components`
-- Utilities (`useInteraction`, `createPortal`): `@razorpay/blade-svelte/utils`
-- Theme tokens and `createTheme`: `@razorpay/blade-core/tokens`
-
-Never import from `@razorpay/blade`. That is the React package and its components do not run in Svelte.
-
-## Svelte conventions used by every component
-
-- Pass event handlers as callback props: `onClick={handleClick}`, `onChange={({ value }) => ...}`. There are no `on:click` directives or `createEventDispatcher` events.
-- `children` is either a string or a snippet. `<Button>Pay</Button>` works, and so does `{#snippet}` content for components that render rich children.
-- Named content slots are snippet props, for example `{#snippet trailing()}...{/snippet}` inside the component tag.
-- Keep state in runes: `let value = $state('')`, `const isValid = $derived(value.length > 0)`.
-- Controlled inputs take `value` plus an `onChange` callback. Don't use `bind:` on a Blade prop unless its component doc says the prop is bindable (for example `BottomSheet`'s `isOpen`).
-
-## Overriding styles
-
-Some components accept a `styleOverride` prop: a map from the component's named parts (slots) to your own class names, for example `{ root: 'pay-button', text: 'pay-button-text' }` for `Button`. The slot names for each component are listed in its doc. To apply the same classes to every instance, set them once on the provider with `componentConfig`. An instance `styleOverride` wins over `componentConfig`, and both win over Blade's internal styles without `!important`, because Blade's CSS sits in a lower cascade layer.
-
-```svelte
-<script lang="ts">
-  import { BladeProvider, Button } from '@razorpay/blade-svelte/components';
-  import { bladeTheme } from '@razorpay/blade-core/tokens';
-</script>
-
-<BladeProvider themeTokens={bladeTheme} componentConfig={{ Button: { styleOverride: { root: 'checkout-button' } } }}>
-  <Button variant="primary" styleOverride={{ text: 'checkout-button-label' }}>Pay now</Button>
-</BladeProvider>
-```
-
-Use overrides for brand-specific tweaks only. Reach for component props and tokens first.
-
-## Layout
-
-`Box` in blade-svelte is deliberately minimal. It renders an element (`as`) and forwards `className`, `testID` and HTML attributes. It has **no** style props: `display`, `gap`, `padding`, `flexDirection` or `alignItems` on `Box` do nothing. Lay it out with the utility classes that `theme.css` already ships:
-
-- Display: `display-flex`, `display-grid`, `display-inline-flex`, `display-block`, `display-none`
-- Flex: `flex-row`, `flex-col`, `flex-wrap-wrap`, `items-center`, `items-start`, `justify-between`, `justify-center`, `justify-end`
-- Gap: `gap-spacing-0` to `gap-spacing-11`, plus `gap-x-spacing-N` and `gap-y-spacing-N`
-- Margin: `margin-spacing-N`, `margin-top-spacing-N`, `margin-bottom-spacing-N`, `margin-left-spacing-N`, `margin-right-spacing-N`, `margin-x-spacing-N`, `margin-y-spacing-N`
-- Position: `position-relative`, `position-absolute`, `position-sticky`
-
-```svelte
-<script lang="ts">
-  import { Box, Button, Heading, Text } from '@razorpay/blade-svelte/components';
-</script>
-
-<Box as="section" className="display-flex flex-col gap-spacing-4">
-  <Heading size="medium">Settlements</Heading>
-  <Text>Your next settlement is scheduled for tomorrow.</Text>
-  <Box className="display-flex justify-end gap-spacing-3">
-    <Button variant="secondary">View schedule</Button>
-    <Button variant="primary">Settle now</Button>
-  </Box>
-</Box>
-```
-
-There are no padding, width or color utility classes. For those, use a component that owns them (`Card` has `padding`, `width`, `elevation`) or your own class on an element you render yourself (a Svelte `<style>` block only styles elements in the same component, so it won't reach the element `Box` renders).
-
-Other Blade components that accept `StyledPropsBlade` take margin and position props directly, for example `<Button marginTop="spacing.4">`. Each component doc says whether it does.
-
-## Mapping from Figma
-
-Blade follows "what you see in Figma is what you get in code". Select a component in Figma, open its properties, and copy the same property names and values onto the Svelte component.
-
-```svelte
-<script lang="ts">
-  import { Button, CreditCardIcon } from '@razorpay/blade-svelte/components';
-</script>
-
-<Button variant="secondary" size="medium" icon={CreditCardIcon} iconPosition="left">Pay by card</Button>
-```
-
-## Using tokens in your own styles
-
-Never hardcode colors, spacing or radii. Every Blade token is a CSS variable from `theme.css`. Replace the dots in a token path with dashes: `surface.background.gray.moderate` becomes `var(--surface-background-gray-moderate)` and `spacing.4` becomes `var(--spacing-4)`. The values follow the active color scheme automatically.
-
-```svelte
-<script lang="ts">
-  import type { Snippet } from 'svelte';
-
-  let { children }: { children: Snippet } = $props();
-</script>
-
-<div class="summary">
-  {@render children()}
+<div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->
+  <BladeProvider>
+    <main class="min-h-0 flex-1 overflow-auto"> <!-- scrolls -->
+      <Button onClick={() => showToast({ content: 'Saved', color: 'positive' })}>Save</Button>
+    </main>
+    <ToastContainer />
+  </BladeProvider>
 </div>
-
-<style>
-  .summary {
-    background-color: var(--surface-background-gray-moderate);
-    padding: var(--spacing-4);
-    border-radius: var(--border-radius-medium);
-  }
-</style>
 ```
 
-Prefer Blade components, their props and the layout classes above over custom CSS. Write custom styles only when none of those can express the design. See `Tokens.md` for the full token list.
+## Entry points
+
+| Import from | What |
+| --- | --- |
+| `@razorpay/blade-svelte/components` | Every component, `showToast`, `createCancel`, `back`, `getAdapters`, `useComponentDefaults`, the components' class resolvers and types |
+| `@razorpay/blade-svelte/icons` | The icons (`InfoIcon`, `WalletIcon`…): sources, not components (see Icons below) |
+| `@razorpay/blade-svelte/runes` | The few runes an app composes its own hosts on (`createLayerStack`, `defineContext`, `phoneDigits`…) |
+| `@razorpay/blade-svelte/configs/uno`, `/configs/vite`, `/configs/webpack`, `/configs/lint` | Build and lint configuration |
+| `@razorpay/blade-svelte/blade.css` | Blade's stylesheet |
+
+There is no root import (`@razorpay/blade-svelte`), and never import from React's `@razorpay/blade`.
+
+## Svelte 5 only
+
+Runes and snippets: `$state`, `$derived`, `$props`, `$effect`, `{#snippet}`, `{@render}`. Never `export let`, `$:`, `on:event` directives, `<slot>` or `createEventDispatcher`.
+
+## Conventions
+
+**Events are callback props** (`onClick`, `onChange`) with Blade's payload object: a field reports `onChange({ name, value })`; Checkbox and Switch `onChange({ isChecked, value })`; CardGroup, ChipGroup and ActionList `onChange({ name, value })` with `value` shaped like `bind:value` (an array with `selectionType="multiple"`); Collapsible `onExpandChange({ isExpanded })`; every overlay and Tooltip `onOpenChange({ isOpen })`. Tabs and Carousel pass the bare value. No DOM event is passed, except to an item's `onClick` and to `onFocus`/`onBlur`.
+
+**Values bind.** The current value is a bindable prop (`bind:value`, `bind:isChecked`, `bind:isOpen`, `bind:isExpanded`); there is no `defaultValue`: pass the initial value, or bind it.
+
+```svelte
+<script lang="ts">
+  import { Checkbox, TextInput } from '@razorpay/blade-svelte/components';
+
+  let email = $state('');
+  let agreed = $state(false);
+</script>
+
+<TextInput bind:value={email} label="Email" type="email" />
+<Checkbox bind:isChecked={agreed}>I agree to the terms</Checkbox>
+```
+
+**`children` is the trigger, `content` is what it reveals** (Tooltip, Popover, Menu, Collapsible, a CardGroupItem). Modal, BottomSheet and Drawer have no trigger: they open from a bound `isOpen`, and `children` is their content.
+
+**Named slots are snippets.** Pass rich content as a snippet. Some slots also take an icon directly (Alert's `icon`, Button's `icon`, a header's `leading`), others a string or a snippet: check each component's props. To put an icon in a snippet slot, draw it with `Icon`:
+
+```svelte
+<script lang="ts">
+  import { Badge, CardGroup, CardGroupItem, Icon } from '@razorpay/blade-svelte/components';
+  import { WalletIcon } from '@razorpay/blade-svelte/icons';
+
+  let method = $state<string | null>('wallet');
+</script>
+
+<CardGroup label="Pay with" bind:value={method}>
+  <CardGroupItem value="wallet" title="Wallet">
+    {#snippet leading()}<Icon source={WalletIcon} />{/snippet}
+    {#snippet trailing()}<Badge color="positive">Offer</Badge>{/snippet}
+  </CardGroupItem>
+</CardGroup>
+```
+
+**Icons are sources, not components.** Pass an icon to a component's `icon` or `leading` prop, or draw one with `Icon`. Never write `<InfoIcon />`. Only the icons in `AvailableIcons.md` exist.
+
+```svelte
+<script lang="ts">
+  import { Button, Icon } from '@razorpay/blade-svelte/components';
+  import { DownloadIcon, InfoIcon } from '@razorpay/blade-svelte/icons';
+</script>
+
+<Button icon={DownloadIcon}>Download</Button>
+<Icon source={InfoIcon} size="small" color="muted" />
+```
+
+**Styling is classes, and a Blade component's look is its props.** Use `variant`, `size`, `color` and the other style props for a component's look. Its `class` only places it: margin, size, its part in a flex or grid parent, position, `hidden`. Lay out and style your own elements with Blade's token classes (`p-blade-5`, `bg-surface-gray-subtle`); see `Styling.md`. There is no `Box`, no styled props (`marginTop="spacing.4"`) and no `styleOverride`.
+
+```svelte
+<script lang="ts">
+  import { Button, Text } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex flex-col gap-blade-4 rounded-medium bg-surface-gray-intense p-blade-5 surface-raised">
+  <Text weight="semibold">Order summary</Text>
+  <Button class="w-full" variant="secondary">View details</Button>
+</div>
+```
+
+**Labels are plain strings above their field.** `label`, `helpText`, `errorText` and `successText` name and describe a field; the hint lines also take a snippet. Validation is `validationState="error"` with `errorText`.
+
+**Tests and analytics.** `testID` lands as `data-testid`; `data-analytics-*` props land on the component's element.
+
+**Defaults and services come from BladeProvider.** `size` snaps every sized control; `defaults` sets any style prop per component (`{ Button: { color: 'neutral' } }`); `adapters` are the app's services (`Adapters.md`). A component's own prop always wins.
+
+**Overlays open from state.** Modal, BottomSheet and Drawer bind `isOpen` and report `onDismiss({ source })` (`cross`, `blur`, `escape`, `back`, `drag`); Popover and Menu also open from their trigger. Call `back()` from the app's back handler first: it returns whether an open overlay handled it.
+
+**Toasts are data.** `showToast(toast, { cancelled })` returns a promise of why the toast left (`timeout`, `dismiss`, `evicted`, `cleared`); resolving `cancelled` (from `createCancel()`) dismisses it. The app renders one `ToastContainer`.
+
+## Lint
+
+`@razorpay/blade-svelte/configs/lint` is an oxlint and ESLint plugin (`blade/*` rules) for the classes you write: no conflicting classes in one list (`px-2 px-4`), no classes built from pieces (`` `bg-${tone}` ``: write each class in full), no misspelled Blade tokens, spacing tokens over equal lengths (`p-[16px]` → `p-blade-5`), and no restyling of a Blade component through `class`.
+
+```json
+{
+  "jsPlugins": ["@razorpay/blade-svelte/configs/lint"],
+  "rules": {
+    "blade/no-conflicting-classes": "error",
+    "blade/no-interpolated-classes": "error",
+    "blade/no-unknown-blade-class": "error",
+    "blade/prefer-token": "warn",
+    "blade/no-restyle": "error"
+  }
+}
+```
+
+## Mobile first
+
+Components are mobile first; their desktop differences are `d:` classes (one breakpoint, 62.5rem by default), and `max-d:` is below it. Your markup uses the same variants: `class="flex-col d:flex-row"`. Nothing reads the viewport in JS.

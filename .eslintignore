@@ -23,6 +23,10 @@ packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.native.js
 packages/blade/utils.d.ts
+# blade-svelte: generated/ambient declaration files
+packages/blade-svelte/src/**/*.d.ts
+# generated: blade-svelte's bundled UnoCSS config (scripts/build-uno-config.mjs)
+packages/blade-svelte/uno/config.js
 
 
 # misc

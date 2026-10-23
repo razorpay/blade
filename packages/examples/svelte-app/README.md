@@ -1,34 +1,36 @@
-# svelte-app example
+# blade-svelte example app
 
-A minimal Vite + Svelte 5 app that consumes `@razorpay/blade-svelte` (via the built `dist`,
-same as a real consumer would), with a bundle size analyzer wired into the build.
-
-## Usage
-
-Build `blade-svelte` first so this app can resolve it:
+A Vite 8 + Svelte 5 checkout screen on `@razorpay/blade-svelte`, set up the
+way an app uses Blade, with a bundle report.
 
 ```sh
-yarn workspace @razorpay/blade-svelte build
+npm install        # links the package from ../../blade-svelte
+npm run dev        # http://localhost:5173
+npm run build      # dist/
+npm run analyze    # dist/stats.html: what each module costs
+npm run lint       # oxlint with Blade's class lint
 ```
 
-Then build this app and open the report:
+## What it shows
 
-```sh
-yarn workspace svelte-app analyze
-```
+| File | Blade |
+| --- | --- |
+| `vite.config.ts` | `bladePlugin()` (icons as one font of the glyphs used), `unocss/vite`, `@sveltejs/vite-plugin-svelte` |
+| `uno.config.ts` | Blade's UnoCSS config; the pipeline reads the bundled modules, Blade's `styles.ts` included |
+| `src/main.ts`, `src/app.css` | `blade.css`, the generated utilities, and the page defaults Blade leaves to the app (base font, box model) |
+| `src/App.svelte` | `BladeProvider`, the app's `<ToastContainer />` and `showToast`, a brand colour through a token variable, a lazily loaded chunk |
+| `src/Summary.svelte` | `Collapsible` with a `Link` trigger and `CollapsibleChevron`, `Amount` |
+| `src/Contact.svelte` | `PhoneNumberInput`, `TextInput` with `format`, `Tooltip`, an icon as a source (`<Icon source={InfoIcon} />`) |
+| `src/PaymentMethods.svelte` | `CardGroup` of choices, a disabled row, a picked row revealing `content` |
+| `src/Confirm.svelte` | `Modal` with its parts and `OTPInput`, loaded on the first Pay |
+| `.oxlintrc.json` | `@razorpay/blade-svelte/configs/lint`: classes that conflict, are built from pieces, misspell a Blade token, or restyle a Blade component |
 
-Or step by step:
+## Bundle size
 
-```sh
-yarn workspace svelte-app build   # writes dist/ + dist/stats.html
-open packages/examples/svelte-app/dist/stats.html
-```
+`Confirm.svelte` is imported on demand, so the Modal and its parts are a
+chunk of their own: load the page with the Network tab open, then press Pay.
+`npm run analyze` shows what each module adds; the icon font holds only the
+glyphs the app imports.
 
-`dist/stats.html` is an interactive treemap (via `rollup-plugin-visualizer`) showing gzip/brotli
-size per module — Blade components, Svelte runtime, blade-core utils, etc.
-
-For a dev server instead:
-
-```sh
-yarn workspace svelte-app dev
-```
+The package is linked from the monorepo, so `vite.config.ts` dedupes
+`svelte`: one runtime, the app's.

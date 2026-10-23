@@ -1,0 +1,316 @@
+import { describe, it, expect, vi } from 'vitest';
+import { createRawSnippet } from 'svelte';
+import { fireEvent, render } from '@testing-library/svelte';
+import CardGroupHarness from './fixtures/CardGroupHarness.svelte';
+import { expectClass, expectNoClass } from './classes';
+
+const input = (element: HTMLElement): HTMLInputElement => element as HTMLInputElement;
+
+describe('CardGroup', () => {
+  it('is a radiogroup of native radios sharing a name', () => {
+    const { getByRole, getByTestId } = render(CardGroupHarness);
+    const root = getByRole('radiogroup', { name: 'Bank' });
+    expect(root).toBe(getByTestId('banks'));
+    expect(root.className.endsWith('mt-2')).toBe(true);
+    const first = input(getByTestId('banks-0'));
+    expect(first.type).toBe('radio');
+    expect(first.name).not.toBe('');
+    expect(input(getByTestId('banks-1')).name).toBe(first.name);
+  });
+
+  it('a pick reports onChange, binds the option and moves the row look', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CardGroupHarness, { props: { onChange } });
+    await fireEvent.click(getByTestId('banks-1'));
+    expect(onChange).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({ value: { code: 'icici', name: 'ICICI Bank' } }),
+    );
+    expect(getByTestId('bound').textContent).toBe('icici');
+    expectClass(getByTestId('banks-1').parentElement, 'shadow-card-group-picked');
+    expectNoClass(getByTestId('banks-0').parentElement, 'shadow-card-group-picked');
+  });
+
+  it('tells the item children the index, pick and disabled state', async () => {
+    const { getByTestId, getByText } = render(CardGroupHarness);
+    expect(getByText('2:off:disabled')).toBeTruthy();
+    await fireEvent.click(getByTestId('banks-0'));
+    expect(getByText('0:on:enabled')).toBeTruthy();
+    expect(getByText('1:off:enabled')).toBeTruthy();
+  });
+
+  it('matches rebuilt option objects through compare', () => {
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { value: { code: 'icici', name: 'copy' } },
+    });
+    expect(input(getByTestId('banks-1')).checked).toBe(true);
+  });
+
+  it('keeps the pick on a second click unless deselectable', async () => {
+    const kept = render(CardGroupHarness);
+    await fireEvent.click(kept.getByTestId('banks-0'));
+    await fireEvent.click(kept.getByTestId('banks-0'));
+    expect(kept.getByTestId('bound').textContent).toBe('hdfc');
+    kept.unmount();
+
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { isDeselectable: true },
+    });
+    await fireEvent.click(getByTestId('banks-0'));
+    await fireEvent.click(getByTestId('banks-0'));
+    expect(getByTestId('bound').textContent).toBe('none');
+    expect(input(getByTestId('banks-0')).checked).toBe(false);
+  });
+
+  it('a disabled option refuses a synthetic pick and writes it back', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CardGroupHarness, { props: { onChange } });
+    const down = input(getByTestId('banks-2'));
+    expect(down.disabled).toBe(true);
+    down.disabled = false;
+    await fireEvent.click(down);
+    expect(onChange).not.toHaveBeenCalled();
+    expect(down.checked).toBe(false);
+  });
+
+  it('isMultiple is a group of checkboxes collecting an array', async () => {
+    const { getByRole, getByTestId } = render(CardGroupHarness, {
+      props: { isMultiple: true },
+    });
+    expect(getByRole('group', { name: 'Bank' })).toBeTruthy();
+    expect(input(getByTestId('banks-0')).type).toBe('checkbox');
+    await fireEvent.click(getByTestId('banks-0'));
+    await fireEvent.click(getByTestId('banks-1'));
+    expect(getByTestId('bound').textContent).toBe('hdfc,icici');
+    await fireEvent.click(getByTestId('banks-0'));
+    expect(getByTestId('bound').textContent).toBe('icici');
+  });
+
+  it('the native control is always visually hidden: the row shows the pick', () => {
+    const { getByTestId } = render(CardGroupHarness);
+    expectClass(getByTestId('banks-0'), 'sr-only');
+    expect(getByTestId('banks-0').tagName).toBe('INPUT');
+  });
+
+  it('filtering keeps the pick on the option, not on the position', async () => {
+    const { getByTestId, rerender } = render(CardGroupHarness);
+    await fireEvent.click(getByTestId('banks-1'));
+    await rerender({ banks: [{ code: 'icici', name: 'ICICI Bank' }] });
+    expect(input(getByTestId('banks-0')).checked).toBe(true);
+  });
+});
+
+describe('CardGroup keyboard', () => {
+  const ring = 'before:shadow-card-group-focus';
+  const row = (element: HTMLElement): HTMLElement => element.parentElement!;
+
+  it('multiple: arrows move focus and pick nothing; Enter and Space pick', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { isMultiple: true, onChange },
+    });
+    const first = getByTestId('banks-0');
+    first.focus();
+    await fireEvent.keyDown(first, { key: 'ArrowDown' });
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+    expect(onChange).not.toHaveBeenCalled();
+    expect(input(getByTestId('banks-1')).checked).toBe(false);
+    expect(row(getByTestId('banks-1')).className).toContain(ring);
+
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'Enter' });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(input(getByTestId('banks-1')).checked).toBe(true);
+
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'Home' });
+    const space = await fireEvent.keyDown(getByTestId('banks-0'), {
+      key: ' ',
+    });
+    // Handled here, so the platform does not toggle a second time.
+    expect(space).toBe(false);
+    expect(input(getByTestId('banks-0')).checked).toBe(true);
+    expect(input(getByTestId('banks-1')).checked).toBe(true);
+  });
+
+  it('single: the arrows pick as they move, as a radio group; Enter and Space keep the pick', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CardGroupHarness, { props: { onChange } });
+    const first = getByTestId('banks-0');
+    first.focus();
+    await fireEvent.keyDown(first, { key: 'ArrowDown' });
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+    expect(onChange).toHaveBeenCalledExactlyOnceWith({
+      name: undefined,
+      value: { code: 'icici', name: 'ICICI Bank' },
+    });
+    expect(input(getByTestId('banks-1')).checked).toBe(true);
+    expect(getByTestId('bound').textContent).toBe('icici');
+    expect(row(getByTestId('banks-1')).className).toContain(ring);
+
+    // The pick is already here: Enter changes nothing.
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'Enter' });
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    const home = await fireEvent.keyDown(getByTestId('banks-1'), { key: 'Home' });
+    expect(home).toBe(false);
+    expect(input(getByTestId('banks-0')).checked).toBe(true);
+    expect(input(getByTestId('banks-1')).checked).toBe(false);
+    expect(onChange).toHaveBeenCalledTimes(2);
+  });
+
+  it('multiple: onChange reports the value as an array', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { isMultiple: true, onChange, name: 'banks' },
+    });
+    await fireEvent.click(getByTestId('banks-1'));
+    expect(onChange).toHaveBeenCalledExactlyOnceWith({
+      name: 'banks',
+      value: [{ code: 'icici', name: 'ICICI Bank' }],
+    });
+  });
+
+  it('skips disabled options and stops at the ends', async () => {
+    const { getByTestId } = render(CardGroupHarness);
+    getByTestId('banks-1').focus();
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'ArrowDown' });
+    // banks-2 is disabled: there is nowhere further to go.
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'End' });
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+  });
+
+  it('is one tab stop: the pick, else the first enabled row', async () => {
+    const stops = (getByTestId: (id: string) => HTMLElement): number[] =>
+      [0, 1, 2].map((i) => input(getByTestId(`banks-${i}`)).tabIndex);
+    const fresh = render(CardGroupHarness, { props: { isMultiple: true } });
+    expect(stops(fresh.getByTestId)).toEqual([0, -1, -1]);
+    fresh.unmount();
+
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { value: { code: 'icici', name: 'ICICI Bank' } },
+    });
+    expect(stops(getByTestId)).toEqual([-1, 0, -1]);
+
+    // The stop is the pick, which the arrows carry: the rows are one radio
+    // group, which the browser tabs into at its checked member only.
+    getByTestId('banks-1').focus();
+    await fireEvent.keyDown(getByTestId('banks-1'), { key: 'ArrowUp' });
+    expect(document.activeElement).toBe(getByTestId('banks-0'));
+    await fireEvent.focusOut(getByTestId('banks-0'));
+    expect(stops(getByTestId)).toEqual([0, -1, -1]);
+  });
+
+  it('a multiple list has no checked-radio rule: the stop follows the keyboard', async () => {
+    const { getByTestId } = render(CardGroupHarness, {
+      props: { isMultiple: true },
+    });
+    getByTestId('banks-0').focus();
+    await fireEvent.keyDown(getByTestId('banks-0'), { key: 'ArrowDown' });
+    expect(input(getByTestId('banks-1')).tabIndex).toBe(0);
+    expect(input(getByTestId('banks-0')).tabIndex).toBe(-1);
+  });
+
+  it('draws the ring for the keyboard only, not for a pointer', async () => {
+    const { getByTestId } = render(CardGroupHarness);
+    const second = getByTestId('banks-1');
+    await fireEvent.pointerDown(second);
+    second.focus();
+    await fireEvent.click(second);
+    expect(row(second).className).not.toContain(ring);
+
+    await fireEvent.keyDown(second, { key: 'ArrowUp' });
+    expect(row(getByTestId('banks-0')).className).toContain(ring);
+    // Leaving the list takes the ring with it.
+    await fireEvent.focusOut(getByTestId('banks-0'));
+    expect(row(getByTestId('banks-0')).className).not.toContain(ring);
+  });
+
+  it('leaves Tab and Escape to the page', async () => {
+    const { getByTestId } = render(CardGroupHarness);
+    getByTestId('banks-0').focus();
+    expect(await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Tab' })).toBe(true);
+    expect(await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Escape' })).toBe(true);
+  });
+});
+
+describe('CardGroup children', () => {
+  it('leaves non-item children out of the options, the value and the keyboard', async () => {
+    const { getByTestId, getByRole } = render(CardGroupHarness, {
+      props: { extras: true },
+    });
+    // The heading and the button sit between items; indices skip them.
+    expect(getByTestId('banks-1')).toBeTruthy();
+    const more = getByRole('button', { name: 'All options' });
+    getByTestId('banks-0').focus();
+    await fireEvent.keyDown(getByTestId('banks-0'), { key: 'ArrowDown' });
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+    expect(getByTestId('bound').textContent).toBe('icici');
+    // The button keeps its own Enter: the list does not take it as a pick.
+    more.focus();
+    expect(await fireEvent.keyDown(more, { key: 'Enter' })).toBe(true);
+    expect(getByTestId('bound').textContent).toBe('icici');
+  });
+});
+
+describe('CardGroup with object values bound to $state', async () => {
+  const Harness = (await import('./fixtures/CardGroupObjectsHarness.svelte')).default;
+
+  it('multiple: a picked row stays checked though the host holds proxies of the objects', async () => {
+    const { getByLabelText } = render(Harness, { props: { isMultiple: true } });
+    const sbi = getByLabelText('State Bank of India') as HTMLInputElement;
+    await fireEvent.click(sbi);
+    await fireEvent.click(getByLabelText('HDFC Bank'));
+    // The host's proxied value flows back in before the check is read.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(sbi.checked).toBe(true);
+    expect((getByLabelText('HDFC Bank') as HTMLInputElement).checked).toBe(true);
+    expect(sbi.closest('label')?.className).toContain('shadow-card-group-picked');
+  });
+
+  it('single: the pick stays checked', async () => {
+    const { getByLabelText } = render(Harness);
+    const sbi = getByLabelText('State Bank of India') as HTMLInputElement;
+    await fireEvent.click(sbi);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(sbi.checked).toBe(true);
+    expect(sbi.closest('label')?.className).toContain('shadow-card-group-picked');
+  });
+});
+
+describe('CardGroup with a look of its own (the base)', async () => {
+  const { resolveCardGroup } = await import('../components/card-group/styles');
+  const { resolveActionList } = await import('../components/action-list/styles');
+  const BaseCardGroup = (await import('../components/card-group/BaseCardGroup.svelte')).default;
+
+  it("a classes map replaces the built-in look (ActionList's way in); the anatomy stays", () => {
+    const classes = { ...resolveCardGroup({}), root: 'my-root', options: 'my-options' };
+    const { getByRole } = render(BaseCardGroup, {
+      props: {
+        label: 'Plan',
+        classes,
+        selectsOnMove: true,
+        children: createRawSnippet(() => ({ render: () => '<span></span>' })),
+      },
+    });
+    const group = getByRole('radiogroup', { name: 'Plan' });
+    expect(group.className).toContain('my-root');
+    expect(group.querySelector('.my-options')).not.toBeNull();
+    expect(group.innerHTML).not.toContain('gap-2');
+  });
+
+  it("no style axes: one built-in look with the control hidden; ActionList's lives with ActionList", async () => {
+    const { CARD_GROUP_AXES } = await import('../components/card-group/styles');
+    expect(Object.keys(CARD_GROUP_AXES)).toEqual([]);
+    expect(resolveCardGroup({}).options).toContain(
+      'rounded-medium bg-surface-gray-intense surface-raised',
+    );
+    // With sections, each section is a card of its own under its heading.
+    const sectioned = resolveCardGroup({}, { hasSections: true });
+    expect(sectioned.options).toBe('flex flex-col gap-6');
+    expect(sectioned.section?.box).toContain('surface-raised');
+    expect(sectioned.section?.root).toContain('gap-3');
+    expect(resolveCardGroup({}).control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
+    expect(resolveActionList().control).toEqual({ radio: 'sr-only', checkbox: 'sr-only' });
+    // Figma's _Action List: rows touching.
+    expect(resolveActionList().options).toBe('flex flex-col');
+  });
+});

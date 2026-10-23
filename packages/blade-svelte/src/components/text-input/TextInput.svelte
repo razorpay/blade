@@ -1,0 +1,434 @@
+<script lang="ts">
+  import type { FieldChange } from '../shared/change';
+  import { useComponentDefaults } from '../defaults';
+  import type { Snippet } from 'svelte';
+  import type { Attachment } from 'svelte/attachments';
+  import type { HTMLInputAttributes } from 'svelte/elements';
+  import { cx } from '../../cx';
+  import FieldHint from '../shared/FieldHint.svelte';
+  import FieldLabel from '../shared/FieldLabel.svelte';
+  import FieldCounter from '../shared/FieldCounter.svelte';
+  import { hintToneOf } from '../shared/field';
+  import { pickHintText } from '../../runes/form/hint';
+  import { analyticsAttributes, type AnalyticsAttributes } from '../../runes/dom/analytics';
+  import { maskValue, stripMask } from '../../runes/text-input/mask';
+  import { getInputGroup } from '../../runes/input-group/context';
+  import { createTextControl } from '../../runes/text-input/text-control.svelte';
+  import Icon from '../icon/Icon.svelte';
+  import { CloseIcon } from '../../icons';
+  import type { IconSource } from '../../runes/icon/source';
+  import type { InputGroupSpan } from '../input-group/styles';
+  import { resolveKeyboard, type TextInputType } from './keyboard';
+  import {
+    resolveTextInput,
+    type TextInputStyleProps,
+    type TextInputValidationState,
+  } from './styles';
+
+  type Value = string | number | null | undefined;
+
+  /** How a stored value and the text a field shows relate, as two functions. */
+  interface TextInputTransform {
+    /** The control's text (or a stored value) to the value stored. */
+    parse: (value: Value) => Value;
+    /** The value stored to the text shown. */
+    format: (value: Value) => string;
+  }
+
+  interface BehaviourProps {
+    label?: string;
+    /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
+    necessityIndicator?: 'required' | 'optional' | 'none';
+    value?: Value;
+    placeholder?: string;
+    /**
+     * The HTML input type, which brings its keyboard, return key and
+     * autofill (`tel` → `autocomplete="tel"`, `url` → the Go key, …; any
+     * given attribute wins). `number` renders as `text` with the decimal
+     * keypad, as Blade. For a password or a search field use PasswordInput
+     * or SearchInput, which draw their own buttons; `password` here is the
+     * bare masked control they build on.
+     * @default 'text'
+     */
+    type?: TextInputType;
+    /**
+     * The control's role, for a composition that is one (SearchInput's
+     * `searchbox`). A plain text field has none.
+     */
+    role?: 'searchbox';
+    /**
+     * The virtual keyboard, when it should differ from the one `type`
+     * brings — `numeric` for digits in a `text` field (a card number).
+     */
+    inputMode?: HTMLInputAttributes['inputmode'];
+    /**
+     * A user edit: the field's `name` and its new value. With `format`, the
+     * value is the formatted text and `rawValue` the typed characters
+     * alone, as Blade.
+     */
+    onChange?: (change: FieldChange<Value> & { rawValue?: string }) => void;
+    onBlur?: (event: FocusEvent) => void;
+    onFocus?: (event: FocusEvent) => void;
+    isDisabled?: boolean;
+    isRequired?: boolean;
+    isReadOnly?: boolean;
+    /**
+     * Omit inside a Form: the field mirrors its own form error once it is
+     * touched or a submit was attempted. Pass it to own the state instead.
+     */
+    validationState?: TextInputValidationState;
+    /**
+     * The line under the control while the state is `none`, and the
+     * stand-in for the other two. Inside a Form a visible field error
+     * replaces the line while it lasts. A snippet for a line with more than
+     * text in it (a Link).
+     */
+    helpText?: string | Snippet;
+    /** The line while `validationState` is `error`. */
+    errorText?: string | Snippet;
+    /** The line while `validationState` is `success`. */
+    successText?: string | Snippet;
+    /** Text before the value: ₹, +91. */
+    prefix?: string;
+    /**
+     * Before the text. An icon is a glyph sized and tinted by the field,
+     * first, before `prefix`. A snippet is Figma's leading selector slot (a
+     * currency or country picker), after `prefix`: it sits on the field's
+     * own 4px padding, with no inset of its own.
+     */
+    leading?: IconSource | Snippet;
+    /** Text after the value: @okaxis. */
+    suffix?: string;
+    /**
+     * After the text, last: an icon (a glyph sized and tinted by the
+     * field), or a snippet in Figma's trailing link slot (a Link, a button).
+     */
+    trailing?: IconSource | Snippet;
+    autoFocus?: boolean;
+    /** A clear button while the field holds text. @default false */
+    showClearButton?: boolean;
+    /** The clear button was pressed; the field is already empty. */
+    onClearButtonClick?: () => void;
+    /** The return key's label on a virtual keyboard. */
+    enterKeyHint?: HTMLInputAttributes['enterkeyhint'];
+    autoCapitalize?: HTMLInputAttributes['autocapitalize'];
+    /** An HTML autofill token: `name`, `tel`, `one-time-code`, `off`, … */
+    autoComplete?: HTMLInputAttributes['autocomplete'];
+    onClick?: (event: MouseEvent) => void;
+    onKeyDown?: (event: KeyboardEvent) => void;
+    /** Inside an InputGroup: this field's share of its row. */
+    span?: InputGroupSpan;
+    name?: string;
+    /**
+     * Caps the length and shows a counter. Ignored with `format`, as in
+     * Blade React: the mask's length is the cap, and there is no counter.
+     */
+    maxCharacters?: number;
+    pattern?: string | RegExp;
+    /**
+     * Blade's format pattern: `#` takes one typed character, anything else
+     * is a delimiter the field places (`#### #### #### ####`, `##/##`).
+     * Typing keeps letters and digits only; the pattern caps the length and
+     * hides the character counter. Use no letters or digits in it.
+     */
+    format?:
+      | '#### #### #### ####'
+      | '##/##'
+      | '##/##/####'
+      | '(###) ###-####'
+      | '###-##-####'
+      | '##:##'
+      | '##:##:##'
+      | '#### #### ####'
+      | '###.###.###.###'
+      | '## ## ####'
+      | '##-###-##'
+      // Any other pattern; the suggestions above stay.
+      | (string & {});
+    /**
+     * A stored value that differs from the text shown, which a pattern
+     * cannot say: PhoneNumberInput stores `+919876543210` and shows the
+     * national part. Ignored with `format`. Not in Blade React.
+     */
+    transform?: TextInputTransform;
+    /** Names the control when there is no visible `label`. */
+    accessibilityLabel?: string;
+    /** Lands on the control, the element tests type into. */
+    testID?: string;
+    class?: string;
+    /** A composition's handle on the control (PhoneNumberInput's). */
+    attach?: Attachment<HTMLInputElement>;
+    /**
+     * A composition's handle on the field, handed over once at init:
+     * `change` sets a value as a user edit would — `onChange` fires and the
+     * form hears it — and answers whether it changed (PhoneNumberInput's
+     * country pick).
+     */
+    field?: (field: { change: (value: Value) => boolean }) => void;
+  }
+
+  // Closed prop set: behaviour props declared here, style props in
+  // `./styles`; the typed rest is handed to the resolver opaquely.
+  type Props = BehaviourProps & TextInputStyleProps & AnalyticsAttributes;
+
+  let {
+    label,
+    necessityIndicator = 'none',
+    value = $bindable(''),
+    placeholder,
+    type = 'text',
+    role,
+    onChange,
+    onBlur,
+    onFocus,
+    isDisabled = false,
+    isRequired = false,
+    isReadOnly = false,
+    validationState,
+    helpText,
+    errorText,
+    successText,
+    prefix,
+    leading,
+    suffix,
+    trailing,
+    autoFocus = false,
+    showClearButton = false,
+    onClearButtonClick,
+    inputMode,
+    enterKeyHint,
+    autoCapitalize,
+    autoComplete,
+    onClick,
+    onKeyDown,
+    span = 'full',
+    name,
+    maxCharacters,
+    pattern,
+    format,
+    transform,
+    accessibilityLabel,
+    testID,
+    class: className = '',
+    attach,
+    field: onField,
+    ...styleProps
+  }: Props = $props();
+
+  const style = useComponentDefaults('TextInput', () => styleProps);
+  // Blade puts them on the control.
+  const analytics = $derived(analyticsAttributes(styleProps));
+
+  const keyboard = $derived(
+    resolveKeyboard(type, { inputMode, enterKeyHint, autoComplete, autoCapitalize })
+  );
+
+  const uid = $props.id();
+  const controlId = `${uid}-control`;
+
+  // Inside an InputGroup the group shows the label and the one hint line
+  // and draws the frame; this field keeps its label as the control's name.
+  const group = getInputGroup();
+  const frame = group ? 'grouped' : 'solo';
+  const disabled = $derived(isDisabled || Boolean(group?.isDisabled()));
+
+  const fieldProps = () => ({
+    name,
+    value,
+    // With a pattern the field stores what it shows (the mask runs on
+    // every edit, and lays an outside value into the pattern too).
+    parse: format ? (next: unknown) => maskValue(next, format) : transform?.parse,
+    format: format ? undefined : transform?.format,
+    required: isRequired || necessityIndicator === 'required',
+    pattern,
+    type,
+    disabled,
+    readonly: isReadOnly,
+  });
+
+  const state = $derived(validationState ?? group?.validationState());
+  // Blade's three lines, one shown: the state's own, else the help text.
+  const lineText = $derived(
+    pickHintText({ validationState: state, helpText, errorText, successText })
+  );
+
+  const control = createTextControl({
+    id: uid,
+    props: fieldProps,
+    line: () => ({ validationState: state, hint: lineText }),
+    mask: () => format || undefined,
+    autoFocus: () => autoFocus,
+    onValue: (next) => {
+      value = next as Exclude<Value, undefined>;
+    },
+    onChange: (next) =>
+      onChange?.(
+        format
+          ? { name, value: next as Value, rawValue: stripMask(String(next ?? '')) }
+          : { name, value: next as Value }
+      ),
+    onFocus: (event) => onFocus?.(event),
+    onBlur: (event) => onBlur?.(event),
+    group,
+    span: () => span,
+  });
+  const { field, labelId, hintId } = control;
+  // svelte-ignore state_referenced_locally
+  onField?.({ change: control.change });
+
+  // Inside an InputGroup the group's size wins, as in Blade.
+  const classes = $derived(
+    resolveTextInput({ ...style.current, size: group?.size() ?? style.current.size })
+  );
+  const hint = $derived(control.hint);
+
+  const hasText = $derived(String(value ?? '').length > 0);
+  // A pattern caps the length, as Blade.
+  const maxLength = $derived(format ? format.length : maxCharacters);
+  // Blade shows the count under a field with a limit, unless it is formatted.
+  const counterMax = $derived(format || transform ? undefined : maxCharacters);
+
+  function clearField() {
+    control.clear();
+    onClearButtonClick?.();
+  }
+
+  /** For a host that moves focus itself (an error, a step change). */
+  export function focus() {
+    control.focus();
+  }
+</script>
+
+
+<div
+  class={cx(
+    group ? classes.grouped : classes.root,
+    group?.spanClass(span),
+    group?.joinClass(),
+    isDisabled && classes.disabled.root,
+    className
+  )}
+>
+  {#if label && !group}
+    <FieldLabel
+      as="label"
+      id={labelId}
+      for={controlId}
+      text={label}
+      {necessityIndicator}
+      size={style.current.size}
+    />
+  {/if}
+  <!--
+    A label, so a click on an affix or the padding lands in the control.
+    `for` is explicit: an affix may hold a button, and an implicit label
+    would hand its clicks to that first labelable descendant.
+  -->
+  <label
+    class={cx(
+      classes.box,
+      classes.frame[frame],
+      classes.focus[frame][control.isFocused ? 'focused' : 'blurred'],
+      hint.validationState !== 'none' &&
+        classes.validation[frame][hint.validationState],
+      disabled && classes.disabled.box,
+      group?.cornerClass(field.record)
+    )}
+    for={controlId}
+  >
+    {#if prefix || leading}
+      <span class={cx(classes.leading.group, disabled && classes.disabled.affix)}>
+        {#if leading && typeof leading !== 'function'}
+          <span class={classes.leading.icon}>
+            <Icon source={leading} size={classes.iconSize} />
+          </span>
+        {/if}
+        {#if prefix}<span class={classes.leading.prefix}>{prefix}</span>{/if}
+        {#if typeof leading === 'function'}
+          <span class={classes.leading.slot}>{@render leading()}</span>
+        {/if}
+      </span>
+    {/if}
+    <input
+      id={controlId}
+      class={classes.control}
+      value={control.display()}
+      {name}
+      {placeholder}
+      type={keyboard.type}
+      {role}
+      inputmode={keyboard.inputMode}
+      autocomplete={keyboard.autoComplete}
+      autocapitalize={keyboard.autoCapitalize}
+      required={isRequired || necessityIndicator === 'required' || undefined}
+      disabled={disabled || undefined}
+      readonly={isReadOnly || undefined}
+      enterkeyhint={keyboard.enterKeyHint}
+      spellcheck={false}
+      aria-label={group
+        ? (accessibilityLabel ?? label)
+        : label
+          ? undefined
+          : accessibilityLabel}
+      aria-labelledby={label && !group ? labelId : undefined}
+      aria-invalid={hint.validationState === 'error' ? 'true' : undefined}
+      aria-describedby={group ? group.hintId() : hint.text ? hintId : undefined}
+      data-testid={testID}
+      oninput={control.handleInput}
+      onblur={control.handleBlur}
+      onfocus={control.handleFocus}
+      onclick={onClick}
+      onkeydown={onKeyDown}
+      maxlength={maxLength}
+      {...analytics}
+      {@attach control.attach}
+      {@attach attach}
+    />
+    {#if (showClearButton && hasText) || suffix || trailing}
+      <span class={cx(classes.trailing.group, disabled ? classes.disabled.affix : classes.trailing.tone)}>
+        {#if showClearButton && hasText}
+          <span class={classes.trailing.item}>
+            <button
+              type="button"
+              class={classes.clear}
+              aria-label="Clear Input Content"
+              disabled={disabled || undefined}
+              onclick={clearField}
+            >
+              <Icon source={CloseIcon} size={classes.iconSize} />
+            </button>
+          </span>
+        {/if}
+        {#if suffix}<span class={classes.trailing.item}>{suffix}</span>{/if}
+        {#if typeof trailing === 'function'}
+          <span class={classes.trailing.item}>{@render trailing()}</span>
+        {:else if trailing}
+          <span class={classes.trailing.item}>
+            <Icon source={trailing} size={classes.iconSize} />
+          </span>
+        {/if}
+      </span>
+    {/if}
+  </label>
+  {#if !group && (hint.text || counterMax)}
+    <div class={classes.footer}>
+      {#if hint.text}
+        <FieldHint
+          id={hintId}
+          text={hint.text}
+          tone={hintToneOf(hint.validationState)}
+          size={style.current.size}
+        />
+      {/if}
+      {#if counterMax}
+        <span class={classes.counter}>
+          <FieldCounter
+            current={String(value ?? '').length}
+            max={counterMax}
+            size={style.current.size}
+          />
+        </span>
+      {/if}
+    </div>
+  {/if}
+</div>

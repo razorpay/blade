@@ -41,7 +41,8 @@ jobs:
           node-version: 22
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
-      # Compiles every svelte example with svelte/compiler; no build needed.
+      # Compiles every svelte example, checks its imports and props against
+      # the source, and runs Blade's class lint on it; no build needed.
       - name: Run Svelte Lint Script
         run: yarn tsc:knowledgebase --target svelte
 

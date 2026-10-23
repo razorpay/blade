@@ -26,19 +26,13 @@ After completing the code, ask the user if they want a playground link. Only cal
 
 Unit/component tests run on **Vitest** + **@testing-library/svelte** (the React package uses Jest; Svelte 5 requires the Vite/Vitest toolchain, so this is the framework-correct split — see https://svelte.dev/docs/svelte/testing).
 
-- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`.
-- **Config:** `vitest.config.ts` defines two projects mirroring the React package's CSR/SSR split:
-  - `client` — jsdom environment, browser resolve conditions; component tests via Testing Library + `@testing-library/user-event`.
-  - `ssr` — node environment; server-render smoke tests via `render` from `svelte/server`.
-- **Setup:** `vitest-setup.ts` registers jest-dom matchers, Testing Library auto-cleanup, and jsdom shims (ResizeObserver/IntersectionObserver/matchMedia). `src/testing.d.ts` type-augments `expect` for tsc/svelte-check and is excluded from the published types build.
-- **File naming:** client tests `*.test.ts`, server tests `*.ssr.test.ts`; co-locate under a component's `__tests__/` directory (see `src/components/Button/__tests__/`).
-- **blade-core** is resolved from source via aliases in `vitest.config.ts` (mirroring `.storybook/main.js`), so no build step is needed to run tests.
+- **Commands:** `yarn test` (run once), `yarn test:watch`, `yarn test:coverage`; `yarn svelte-check`; `yarn check:tree-shaking`; `yarn icons:generate`, `yarn icons:check`; `yarn build:uno-config` after editing `uno/` (it writes the committed `uno/config.js` that `/configs/uno` loads; a test fails while it is stale).
+- **Config:** `vitest.config.ts` runs `src/**/*.test.ts` (and the icon extractor's, `scripts/**/*.test.ts`) in jsdom with browser resolve conditions and the package's own Vite plugin (icons as font glyphs, as an app builds them).
+- **File naming:** `*.test.ts`, next to a rune (`src/runes/**`) or under `src/test/` for components; `src/test/styles-contract.test.ts` enforces the styling contract.
+- **blade-core** is resolved from source via aliases in `vitest.config.ts`, so no build step is needed to run tests.
 - Coverage thresholds target 75% (React parity) but gate `test:coverage` only; CI runs `yarn test` while coverage ramps up.
+- **End-to-end:** `yarn test:e2e` runs `tests/e2e` against the built Storybook (`yarn build-storybook`).
 
-## Knowledgebase
+## Icons
 
-Agent-facing docs for every public component live in `packages/blade-plugin/skills/blade-svelte/references/components/<Name>.md` (format: `packages/blade-plugin/authoring/svelte-components.prompt.txt`).
-
-- When you add a public component, add its doc, list it in `skills/blade-svelte/SKILL.md` and `references/components/index.md`.
-- When you change a component's props in `types.ts`, update its doc. CI fails on drift: `yarn check:knowledgebase-drift --target svelte --fail` (repo root).
-- When you add an icon, add it to `references/general/AvailableIcons.md`. `yarn tsc:knowledgebase --target svelte` fails when that list differs from `src/components/Icons/index.ts` or a doc names an icon that is not exported.
+`src/icons` (SVGs, `codepoints.json`, the exports) and the blade-svelte skill's `AvailableIcons.md` are generated from Blade React's icon components by `scripts/icon-svgs/extract-blade.mjs`: never edit them by hand. After an icon changes in React, run `yarn icons:generate` (from the repo root: `yarn workspace @razorpay/blade-svelte icons:generate`); the icon workflows do this. `yarn icons:check` reports drift; CI runs it as an optional step. Stroke-drawn icons are skipped, since a font cannot draw strokes.

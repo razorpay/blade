@@ -46,7 +46,6 @@
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-core": "lerna run --scope @razorpay/blade-core build",
     "build:blade-mcp": "lerna run --scope @razorpay/blade-mcp build",
-    "build:blade-svelte": "lerna run --scope @razorpay/blade-svelte build",
     "build:eslint-plugin-blade": "lerna run --scope eslint-plugin-blade build",
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "generate-icons": "node scripts/icons/generate.mjs",
@@ -55,7 +54,7 @@
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
     "ci:codesandbox": "yarn install --ignore-engines",
     "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
-    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte",
+    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core",
     "validate:blade-plugin": "node scripts/validateBladePlugin.mjs && node scripts/syncPluginManifestVersion.js --check && node --test packages/blade-plugin/tests/scripts.test.mjs packages/blade-plugin/hooks/__tests__/frameworks.test.mjs"
   },
   "devDependencies": {
@@ -115,7 +114,7 @@
     "shell-quote": "^1.8.2",
     "http-proxy-middleware": "2.0.10",
     "hono": "4.12.25",
-    "vite": "6.4.3",
+    "vite": "6.4.4",
     "@hono/node-server": "1.19.13",
     "handlebars": "4.7.9",
     "yaml": "1.10.3",
@@ -134,7 +133,7 @@
   "overrides": {
     "http-proxy-middleware": "2.0.10",
     "hono": "4.12.25",
-    "vite": "6.4.3",
+    "vite": "6.4.4",
     "@hono/node-server": "1.19.13",
     "handlebars": "4.7.9",
     "yaml": "1.10.3",

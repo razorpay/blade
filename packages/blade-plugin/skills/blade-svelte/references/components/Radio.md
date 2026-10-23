@@ -4,243 +4,146 @@ Radio
 
 ## Description
 
-Radio lets users select exactly one option from a small set of mutually exclusive choices, typically 2-5 options with descriptive labels or per-option help text. `RadioGroup`, documented here, owns the selection, label, validation, size and orientation; each `Radio` supplies a `value`, a label and optional help text.
+RadioGroup asks one question with a few mutually exclusive answers, each a `Radio` with a label: a delivery speed, an account type, how to pay. The group is the form field: it binds the picked Radio's `value`, reports `onChange({ name, value })`, carries the label, help and error lines, and sets every Radio's size (`small`, `medium`, `large`) and the `vertical` or `horizontal` layout. A Radio can carry its own help text under its title.
 
 ## Important Constraints
 
-- `Radio` only works inside `RadioGroup`; outside a group it renders but can never be selected
-- Every `Radio` needs a unique `value` within its group
-- Selection state, `name`, validation and required state live on `RadioGroup`; `Radio` accepts only `value`, `children`, `helpText`, `isDisabled` and `size`
-- The group's `size` overrides each radio's own `size`
-- A checked radio cannot be unchecked by clicking it again
-- A disabled `RadioGroup` ignores clicks and does not call `onChange`
-- In controlled mode, if `onChange` does not update `value`, the selection snaps back to `value`
-- `errorText` renders only when `validationState` is `'error'` and replaces `helpText`
-- `RadioGroup` has no `accessibilityLabel` prop; pass a visible `label` so the radiogroup has an accessible name
-- Use `bind:this` on a `Radio` to get a `RadioInstance` with a `focus()` method
+- A `Radio` only works inside a `RadioGroup`; the value, `name`, size and validation live on the group
+- `value` is a string on both: the group's `value` is the picked Radio's `value`. There is no `defaultValue`: pass the initial value or bind it
+- `onChange` gets `{ name, value }`, never the DOM event
+- The Radio's label is `children` (a snippet that receives `{ isChecked, isDisabled }`); one without `children` needs `accessibilityLabel`
+- Radio has no style props and no `trailing` slot; the group's `size` and `orientation` decide the look
+- The arrows move the pick and the group is one tab stop: the browser's radio behaviour
+- Horizontal radios wrap onto more lines when they run out of room
 
-## TypeScript Types
-
-These are the props the Radio and RadioGroup components accept.
+## Props
 
 ```typescript
-type RadioSize = 'small' | 'medium' | 'large';
+type RadioGroupSize = 'small' | 'medium' | 'large';
 
-interface RadioProps extends StyledPropsBlade {
-  /**
-   * Sets the label text of the Radio.
-   * Accepts a string or a snippet.
-   */
-  children?: Snippet | string;
-  /**
-   * Help text for the Radio, rendered below the label.
-   */
-  helpText?: string;
-  /**
-   * The value to be used in the Radio input.
-   * This is the value that will be returned on form submission.
-   */
-  value: string;
-  /**
-   * If `true`, the Radio will be disabled.
-   * Merges with the parent `RadioGroup`'s `isDisabled`.
-   *
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * Size of the radio. The parent `RadioGroup`'s size takes precedence.
-   *
-   * @default 'medium'
-   */
-  size?: RadioSize;
-  /**
-   * Test ID for the element.
-   */
-  testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
-}
-
-/**
- * Imperative handle exposed via `bind:this={instance}`.
- * Mirrors React's `BladeElementRef` for the Radio component.
- */
-interface RadioInstance {
-  /** Move keyboard focus to the underlying input element. */
-  focus: () => void;
-}
-
-/**
- * Payload passed to the `RadioGroup` `onChange` callback when selection changes.
- */
-type RadioGroupOnChange = (payload: {
-  name: string | undefined;
-  value: string;
-  event?: Event;
-}) => void;
-
-type RadioGroupProps = {
-  /** Snippet children (Radio components). */
-  children: Snippet;
-  /** Help text of the radio group, rendered below the radios. */
-  helpText?: string;
-  /**
-   * Error text of the radio group. Renders when `validationState` is `'error'`.
-   * Overrides `helpText`.
-   */
-  errorText?: string;
-  /**
-   * Sets the validation state of the radio group.
-   * When `'error'`, renders `errorText` and propagates `invalid` to every radio.
-   *
-   * @default 'none'
-   */
-  validationState?: 'error' | 'none';
-  /**
-   * Renders a necessity indicator after the radio group label.
-   *
-   * @default 'none'
-   */
-  necessityIndicator?: 'required' | 'optional' | 'none';
-  /**
-   * Sets the disabled state of the radio group.
-   * Propagates down to all the radios.
-   *
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * Sets the required state of the radio group.
-   *
-   * @default false
-   */
-  isRequired?: boolean;
-  /** Renders the label of the radio group. */
+interface RadioGroupProps {
+  /** The visible label above the radios. */
   label?: string;
-  /**
-   * Sets the position of the label.
-   *
-   * @default 'top'
-   */
-  labelPosition?: 'top' | 'left';
-  /** Initial value of the radio group (uncontrolled). */
-  defaultValue?: string;
-  /** Value of the radio group (controlled). Use with `onChange`. */
+  /** After the label: `*` or `(optional)`; `required` also marks the group required. @default 'none' */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /** The picked Radio's `value`: initial, bound, or host-driven. */
   value?: string;
-  /** The callback invoked when any of the radio's state changes. */
-  onChange?: RadioGroupOnChange;
-  /**
-   * The name of the input field in a radio (useful for form submission).
-   * Auto-generated if not provided.
-   */
+  /** A user pick. */
+  onChange?: (change: { name: string | undefined; value: string }) => void;
+  /** Registers the group with the app's form (`adapters.form`); the radios share it. */
   name?: string;
-  /**
-   * Size of the radios.
-   *
-   * @default 'medium'
-   */
-  size?: RadioSize;
-  /**
-   * Orientation of the radio group.
-   *
-   * @default 'vertical'
-   */
-  orientation?: 'vertical' | 'horizontal';
-  /**
-   * Wrapping behaviour of the radios in the items container. Useful with
-   * `orientation="horizontal"` when the radios (or radio-wrapped cards) should
-   * wrap onto multiple lines instead of overflowing.
-   *
-   * @default 'nowrap'
-   */
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  /** Test ID for the element. */
+  /** Disables every Radio. @default false */
+  isDisabled?: boolean;
+  /** The app's form blocks submission until a radio is picked. @default false */
+  isRequired?: boolean;
+  /** Omit inside a form to mirror its error; pass it to own the state. */
+  validationState?: 'none' | 'error';
+  /** The line under the radios while the state is `none`. */
+  helpText?: string | Snippet;
+  /** The line while `validationState` is `error`. */
+  errorText?: string | Snippet;
+  /** Names the group when there is no visible `label`. */
+  accessibilityLabel?: string;
+  /** On the group; each Radio's input gets `${testID}-${index}`. */
   testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
-} & StyledPropsBlade;
+  /** Placement only. */
+  class?: string;
+  /** @default 'vertical' */
+  orientation?: 'vertical' | 'horizontal';
+  /** Every Radio's size, and the label's and hint's: circles 12, 16 or 20px. @default 'medium' (or BladeProvider's `size`) */
+  size?: RadioGroupSize;
+  /** The Radios. */
+  children: Snippet;
+}
+
+interface RadioProps {
+  /** What the group's `value` becomes when this radio is picked. */
+  value: string;
+  /** This radio only. @default false */
+  isDisabled?: boolean;
+  /** Under the title, lined up with it; describes the radio. */
+  helpText?: string | Snippet;
+  /** Names the radio when there are no `children`. */
+  accessibilityLabel?: string;
+  /** Lands on the input; else the group's `${testID}-${index}`. */
+  testID?: string;
+  /** Placement only. */
+  class?: string;
+  /** The label; receives `{ isChecked, isDisabled }`. */
+  children?: Snippet<[{ isChecked: boolean; isDisabled: boolean }]>;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Radio` inside `RadioGroup` when exactly one of 2-5 mutually exclusive options must be chosen.
-- Use `helpText` on individual radios to explain what each option means, such as settlement timelines.
-- Use `necessityIndicator` on `RadioGroup` to show whether a selection is required or optional.
-- Use `value` with `onChange={({ value }) => ...}` when other UI depends on the selection; use `defaultValue` when the value is only read on submit.
-- Set `name` on `RadioGroup` when the value is submitted with a native form.
-- Use `orientation="horizontal"` with `flexWrap="wrap"` for two or three short options.
-
-**Don't**
-
-- Don't use `Radio` when multiple options can be selected; use `CheckboxGroup`.
-- Don't use `Radio` for an instant on/off setting; use `Switch`.
-- Don't use `Radio` for short 1-2 word options in a compact selector; use `ChipGroup` with `selectionType="single"` or `SegmentedControl`.
-- Don't use `Radio` for more than 5 options; use `Dropdown`.
-- Don't pass both `value` and `defaultValue` to the same `RadioGroup`; pick controlled or uncontrolled.
+- Use RadioGroup for a few exclusive answers that should all be visible; use SegmentedControl for a compact switch between views or values, ChipGroup for short tags, and CardGroup for checkout's card-style options.
+- Bind `value` on the group, or read `onChange`'s `value`.
+- Give the group a `label` (or `accessibilityLabel`) that asks the question.
+- Use `orientation="horizontal"` only for short labels.
+- Use a Radio's `helpText` for a detail about that one answer and the group's `helpText` for the question.
+- Don't set `size` on a Radio: set it on the group.
 
 ## Examples
 
-### Settlement schedule
-
-An uncontrolled group with per-option help text, a required indicator and a disabled option.
+### A vertical group with help text
 
 ```svelte
 <script lang="ts">
   import { Radio, RadioGroup } from '@razorpay/blade-svelte/components';
 
-  function handleScheduleChange(name: string | undefined, value: string): void {
-    console.log(`${name} changed to ${value}`);
-  }
+  let method = $state('qr');
 </script>
 
-<RadioGroup
-  label="Settlement schedule"
-  name="settlement-schedule"
-  helpText="Changes apply from the next settlement cycle"
-  necessityIndicator="required"
-  defaultValue="t2"
-  onChange={({ name, value }) => handleScheduleChange(name, value)}
-  data-analytics-section="settlement-schedule"
->
-  <Radio value="t2" helpText="Standard, no extra fee">T+2 days</Radio>
-  <Radio value="t1" helpText="0.15% fee per settlement">T+1 day</Radio>
-  <Radio value="instant" helpText="Available after 3 months of activity" isDisabled>
-    Instant settlements
-  </Radio>
+<RadioGroup bind:value={method} label="Pay via" helpText="You can change this later">
+  <Radio value="qr">QR code</Radio>
+  <Radio value="web" helpText="Redirects to your bank">Bank website</Radio>
+  <Radio value="app" isDisabled>Bank app (unavailable)</Radio>
 </RadioGroup>
 ```
 
-### Controlled refund mode with validation
-
-A controlled group with the label on the left that shows an error until the merchant picks an option.
+### Horizontal and small
 
 ```svelte
 <script lang="ts">
-  import { Box, Button, Radio, RadioGroup } from '@razorpay/blade-svelte/components';
-
-  let refundSpeed = $state<string | undefined>(undefined);
-  let hasSubmitted = $state(false);
-
-  const showError = $derived(hasSubmitted && refundSpeed === undefined);
+  import { Radio, RadioGroup } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box className="display-flex flex-col gap-spacing-5">
+<RadioGroup
+  label="Settlement"
+  orientation="horizontal"
+  size="small"
+  value="daily"
+  onChange={({ value }) => console.log('Settle', value)}
+>
+  <Radio value="daily">Daily</Radio>
+  <Radio value="weekly">Weekly</Radio>
+  <Radio value="monthly">Monthly</Radio>
+</RadioGroup>
+```
+
+### Required, with an error
+
+```svelte
+<script lang="ts">
+  import { Button, Radio, RadioGroup } from '@razorpay/blade-svelte/components';
+
+  let accountType = $state<string | undefined>(undefined);
+  let submitted = $state(false);
+</script>
+
+<div class="flex flex-col items-start gap-blade-4">
   <RadioGroup
-    label="Refund speed"
-    labelPosition="left"
-    size="small"
-    value={refundSpeed}
-    onChange={({ value }) => (refundSpeed = value)}
-    validationState={showError ? 'error' : 'none'}
-    errorText="Choose how fast refunds should reach customers"
-    helpText={refundSpeed ? `Selected: ${refundSpeed}` : 'Applies to all new refunds'}
+    bind:value={accountType}
+    name="accountType"
+    label="Account type"
+    necessityIndicator="required"
+    isRequired
+    validationState={submitted && !accountType ? 'error' : 'none'}
+    errorText="Pick an account type"
   >
-    <Radio value="normal" helpText="5-7 working days">Normal</Radio>
-    <Radio value="optimum" helpText="Instant where the bank supports it">Optimum</Radio>
+    <Radio value="savings">Savings</Radio>
+    <Radio value="current">Current</Radio>
   </RadioGroup>
-  <Button variant="primary" onClick={() => (hasSubmitted = true)}>Save refund settings</Button>
-</Box>
+  <Button onClick={() => (submitted = true)}>Continue</Button>
+</div>
 ```

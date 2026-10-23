@@ -1,43 +1,25 @@
 /*
- * Storybook canvas chrome — mirrors React blade's StoryCanvas decorator.
- *
- * The React Storybook (packages/blade/.storybook/react/preview.tsx) wraps every
- * story in a styled `StoryCanvas` div with 2rem padding + a gray-intense surface
- * background. svelte-csf's global decorator support is unreliable, so we apply
- * the same chrome via CSS targeting Storybook's canonical canvas selectors.
- *
- * Selectors mirror Storybook's own backgrounds addon convention:
- *   - story view: #storybook-root  (single root mount inside the iframe)
- *   - docs view:  .docs-story      (per-story wrapper inside the docs page)
+ * The page defaults UnoCSS leaves to the host: uno.config.ts ships no
+ * preflight beyond the border reset, so the canvas sets the base font and
+ * box model the components assume.
  */
-
-#storybook-root {
-  width: 100%;
-  height: 100vh;
-  overflow: auto;
-  padding: 2rem;
-  background-color: var(--surface-background-gray-intense);
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-.docs-story {
-  padding: 2rem;
-  background-color: var(--surface-background-gray-intense);
-  border-radius: var(--border-radius-medium, 12px);
-  box-sizing: border-box;
+body {
+  margin: 0;
+  font-family: 'Inter', 'Inter Fallback Arial', Arial, sans-serif;
+  color: hsla(0, 0%, 2%, 1);
+  -webkit-font-smoothing: antialiased;
 }
 
-.sb-story {
-  padding: 12px;
-}
-
-@media (max-width: 768px) {
-  #storybook-root,
-  .docs-story {
-    padding: 12px;
-  }
-}
-
-body[data-theme='dark'] {
-  background-color: rgb(10, 17, 26);
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
 }

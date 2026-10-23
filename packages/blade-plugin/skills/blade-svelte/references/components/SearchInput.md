@@ -4,183 +4,118 @@ SearchInput
 
 ## Description
 
-SearchInput is a text field preset for search and filtering: it shows a leading search icon, a clear button once there is a value, and an optional loading spinner for async lookups. Use it for filtering payments or settlements lists, searching a product catalog, or a global dashboard search.
+SearchInput is the field for searching or filtering a list: a `searchbox` text control with the search key, led by the search glyph, with a clear button whenever it holds text. It is TextInput's field underneath, with the same label and help line, and takes a `trailing` icon or snippet after the clear button. It comes in `medium` and `large`.
 
 ## Important Constraints
 
-- Either `label` or `accessibilityLabel` is required; without a visible `label`, `accessibilityLabel` names the field
-- `onChange` fires on every keystroke with `{ name, value }`
-- The clear button does not call `onChange`; in controlled mode it does not clear the field either, so reset `value` in `onClearButtonClick`
-- The `trailing` snippet is hidden while the clear button or the loading spinner is shown
-- The search icon is always on the leading side; `showSearchIcon={false}` removes it
-- Partial port of React: Dropdown integration (search results as a trigger), `onSubmit`, `showHelpTextOnFocus` and TopNav/Modal theming are not available
+- Name it with `label` (a plain string above the field) or, for a bare search bar, `accessibilityLabel`
+- `onChange` receives `{ name, value }` on every edit; bind the value with `bind:value`
+- The clear button is always on while there is text: it empties the field, fires `onChange`, refocuses, then calls `onClearButtonClick`
+- The control is `type="text"` with `role="searchbox"` and `enterkeyhint="search"`, as Blade; there is no `onSubmit`: Enter submits an enclosing `<form>` natively, or handle it in `onKeyDown`
+- `showSearchIcon` (default on) shows the leading search glyph; there is no other `leading`
+- It has only `helpText`: no validation state, error or success text
+- `size` is `medium` (36px, default) or `large` (48px); there is no `small`
 
-## TypeScript Types
-
-These are the props the SearchInput component accepts.
+## Props
 
 ```typescript
-type BaseInputSize = 'xsmall' | 'small' | 'medium' | 'large';
-type LabelPosition = 'top' | 'left';
-type AutoCapitalize = 'none' | 'sentences' | 'words' | 'characters';
-
-/**
- * Payload shape for input value events (`onChange`/`onFocus`/`onBlur`/`onClick`).
- * `value` is extracted from the DOM event internally.
- */
-type FormInputOnEvent = (event: { name?: string; value?: string; rawValue?: string }) => void;
-
-type SearchInputPropsWithLabel = {
-  /** Label shown for the input. */
-  label: string;
-  /** Accessibility label (optional when `label` is provided). */
+interface SearchInputProps {
+  /** Plain text above the field. */
+  label?: string;
+  /** Names the control when there is no visible `label`. */
   accessibilityLabel?: string;
-};
-
-type SearchInputPropsWithA11yLabel = {
-  /** Label shown for the input. */
-  label?: undefined;
-  /** Accessibility label (required when `label` is absent). */
-  accessibilityLabel: string;
-};
-
-interface SearchInputCommonProps extends StyledPropsBlade {
-  /** Label position. @default 'top' */
-  labelPosition?: LabelPosition;
-  /** Suffix element rendered after the label text. */
-  labelSuffix?: Snippet;
-  /** Trailing element rendered at the end of the label row. */
-  labelTrailing?: Snippet;
-  /** Help text below the input. */
-  helpText?: string;
-  /** Placeholder text. */
+  /** Bindable. @default '' */
+  value?: string | number | null | undefined;
   placeholder?: string;
-  /** Uncontrolled default value. */
-  defaultValue?: string;
-  /** Controlled value. */
-  value?: string;
-  /** Name of the input. */
-  name?: string;
-  /** Change callback. Fires on every keystroke (matches React SearchInput onChange). */
-  onChange?: FormInputOnEvent;
-  /** Focus callback. */
-  onFocus?: FormInputOnEvent;
-  /** Blur callback. */
-  onBlur?: FormInputOnEvent;
-  /** Click callback. */
-  onClick?: FormInputOnEvent;
-  /** Click handler for the clear button. */
+  /** Every edit, the clear button's included: `{ name, value }`. */
+  onChange?: (change: { name: string | undefined; value: string | number | null | undefined }) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onClick?: (event: MouseEvent) => void;
+  /** Enter, arrows: for moving into results or running the search. */
+  onKeyDown?: (event: KeyboardEvent) => void;
+  /** The clear button was pressed; the field is already empty. */
   onClearButtonClick?: () => void;
-  /** Shows a loading spinner in the trailing slot. */
-  isLoading?: boolean;
-  /** Toggle visibility of the search icon. @default true */
-  showSearchIcon?: boolean;
-  /** Trailing element rendered at the end of the input. */
-  trailing?: Snippet;
-  /** Disables the input. */
+  /** @default false */
   isDisabled?: boolean;
-  /** Focus the input on mount. */
+  /** The line under the field. */
+  helpText?: string | Snippet;
+  /** @default false */
   autoFocus?: boolean;
-  /** Autocapitalize behaviour. */
-  autoCapitalize?: AutoCapitalize;
-  /** Input size. @default 'medium' */
-  size?: BaseInputSize;
-  /** Test ID for the element. */
+  /** HTML `autocapitalize`. */
+  autoCapitalize?: string;
+  /** The key the app's form submits it under. */
+  name?: string;
+  /** After the clear button: an icon (a glyph) or a snippet. */
+  trailing?: IconSource | Snippet;
+  /** Lands on the `<input>`. */
   testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
+  /** A composition's attachment on the `<input>`. */
+  attach?: (node: HTMLInputElement) => void | (() => void);
+  /** The search glyph ahead of the text. @default true */
+  showSearchIcon?: boolean;
+  /** 36 or 48px tall. @default 'medium' (or BladeProvider's `size`) */
+  size?: 'medium' | 'large';
 }
-
-type SearchInputProps = (SearchInputPropsWithLabel | SearchInputPropsWithA11yLabel) &
-  SearchInputCommonProps;
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `SearchInput` for search and filter fields: payments list filters, customer lookup, product catalog search.
-- Set `isLoading` while an async search runs and turn it off when results arrive or the query is empty.
-- Reset the controlled `value` (and any results) in `onClearButtonClick`.
-- Use `accessibilityLabel` with a descriptive placeholder for compact search bars without a visible label.
-- Use `size="small"` or `size="xsmall"` above dense tables.
-
-**Don't**
-
-- Don't use `SearchInput` for general text entry; use `TextInput`.
-- Don't add prefix, suffix, a character counter or `format`; SearchInput doesn't support them, so use `TextInput` when you need them.
-- Don't put essential content in `trailing`; it is hidden while the clear button or spinner is visible.
-- Don't use `bind:value`; use `value` with `onChange`.
+- Filter as the user types from the bound value (a `$derived` list), or debounce `onChange` for a server search.
+- Give a search bar with no visible label an `accessibilityLabel` that says what it searches ("Search banks").
+- Use `class="w-full"` to make it span its container.
+- Don't use TextInput with a `SearchIcon` for search: SearchInput brings the role, key and clear button.
+- Don't add your own clear button; use `onClearButtonClick` to react to the built-in one.
 
 ## Examples
 
-### Filter payments by ID or email
-
-A controlled search that filters a list as the user types and resets it from the clear button.
+### Filtering a list as you type
 
 ```svelte
 <script lang="ts">
-  import { SearchInput, Box, Text } from '@razorpay/blade-svelte/components';
+  import { SearchInput, Text } from '@razorpay/blade-svelte/components';
 
-  const payments = [
-    { id: 'pay_29QQoUBi66xm2f', email: 'riya@example.com' },
-    { id: 'pay_2A1fXkO9lZ3Kq8', email: 'arjun@example.com' },
-    { id: 'pay_2B7hTzP0mN5Rw4', email: 'meera@example.com' },
-  ];
-
-  let query = $state('');
-
-  const results = $derived(
-    payments.filter(
-      (payment) => payment.id.includes(query) || payment.email.includes(query.toLowerCase()),
-    ),
+  const banks = ['Axis Bank', 'HDFC Bank', 'ICICI Bank', 'State Bank of India', 'Yes Bank'];
+  let query = $state<string | number | null | undefined>('');
+  const matches = $derived(
+    banks.filter((bank) => bank.toLowerCase().includes(String(query ?? '').toLowerCase()))
   );
 </script>
 
-<Box className="display-flex flex-col gap-spacing-4">
-  <SearchInput
-    label="Search payments"
-    name="paymentSearch"
-    placeholder="Search by payment ID or email"
-    helpText="Matches are shown as you type"
-    value={query}
-    onChange={({ value }) => (query = value ?? '')}
-    onClearButtonClick={() => (query = '')}
-    data-analytics-section="payments-search"
-  />
-  {#each results as payment (payment.id)}
-    <Text size="small">{payment.id} · {payment.email}</Text>
+<div class="flex flex-col gap-blade-4">
+  <SearchInput bind:value={query} accessibilityLabel="Search banks" placeholder="Search banks" class="w-full" />
+  {#each matches as bank (bank)}
+    <Text>{bank}</Text>
+  {:else}
+    <Text color="muted">No bank matches “{query}”</Text>
   {/each}
-</Box>
+</div>
 ```
 
-### Compact async search without a visible label
-
-A small search bar above a settlements table that shows a spinner while results load.
+### Running a search on Enter
 
 ```svelte
 <script lang="ts">
   import { SearchInput } from '@razorpay/blade-svelte/components';
 
-  let query = $state('');
-  let isSearching = $state(false);
-  let timer: ReturnType<typeof setTimeout> | undefined;
+  let query = $state<string | number | null | undefined>('');
 
-  const search = (value: string): void => {
-    query = value;
-    clearTimeout(timer);
-    isSearching = value.length > 0;
-    if (value) timer = setTimeout(() => (isSearching = false), 800);
-  };
+  function search(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      void fetch(`/api/payments?q=${encodeURIComponent(String(query ?? ''))}`);
+    }
+  }
 </script>
 
 <SearchInput
-  accessibilityLabel="Search settlements"
-  placeholder="Search by settlement ID or UTR"
-  size="small"
-  isLoading={isSearching}
-  value={query}
-  onChange={({ value }) => search(value ?? '')}
-  onClearButtonClick={() => search('')}
+  bind:value={query}
+  label="Payments"
+  placeholder="Payment ID, email or phone"
+  helpText="Press Enter to search"
+  size="large"
+  onKeyDown={search}
+  onClearButtonClick={() => console.debug('cleared')}
 />
 ```

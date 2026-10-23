@@ -60,12 +60,6 @@ jobs:
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
         run: yarn build
-      - name: Build Blade Svelte if not built by changeset
-        if: steps.changesets.outputs.published == 'false'
-        working-directory: packages/blade-svelte
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-        run: yarn build
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.

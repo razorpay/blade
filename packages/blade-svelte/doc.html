@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en" data-aidocs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blade Svelte (cx) vs Blade React - API Differences</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1a1a2e;
+      --ink-muted: #555570;
+      --border: #e1e4e8;
+      --code-bg: #f6f8fa;
+      --code-inline-bg: #eef0f3;
+      --blockquote-bg: #f0f4ff;
+      --blockquote-border: #4f6ef7;
+      --heading-color: #0f1a3d;
+      --link: #2563eb;
+      --tag-bg: #e8f0fe;
+      --tag-color: #1a56db;
+      --table-header-bg: #f0f2f5;
+      --table-row-alt: #fafbfc;
+      --pill-bg: #e8f5e9;
+      --pill-color: #2e7d32;
+      --section-accent: #4f6ef7;
+      --toc-bg: #f8f9ff;
+      --shadow: rgba(0,0,0,0.06);
+      --status-live-bg: #e8f5e9;    --status-live-fg: #2e7d32;
+      --status-soon-bg: #fff4e0;    --status-soon-fg: #b26a00;
+      --status-ongoing-bg: #e6f0ff; --status-ongoing-fg: #1a56db;
+      --status-planned-bg: #efe8fb; --status-planned-fg: #6d28d9;
+      --status-external-bg: #eef0f3;--status-external-fg: #555570;
+    }
+    :root[data-aidocs-theme="dark"] {
+      --bg: #0b0d12;
+      --ink: #e7ecf3;
+      --ink-muted: #8892a4;
+      --border: #232735;
+      --code-bg: #161b25;
+      --code-inline-bg: #1e2435;
+      --blockquote-bg: #131829;
+      --blockquote-border: #6b8cff;
+      --heading-color: #c5d4f0;
+      --link: #7ca4ff;
+      --tag-bg: #1e2a44;
+      --tag-color: #7ca4ff;
+      --table-header-bg: #161b25;
+      --table-row-alt: #0f1118;
+      --pill-bg: #1a2e1a;
+      --pill-color: #81c784;
+      --section-accent: #6b8cff;
+      --toc-bg: #0f1118;
+      --shadow: rgba(0,0,0,0.3);
+      --status-live-bg: #12291a;    --status-live-fg: #81c784;
+      --status-soon-bg: #2e2410;    --status-soon-fg: #e6b45e;
+      --status-ongoing-bg: #14203a; --status-ongoing-fg: #7ca4ff;
+      --status-planned-bg: #221a3a; --status-planned-fg: #b191f0;
+      --status-external-bg: #1e2435;--status-external-fg: #8892a4;
+    }
+    html { color-scheme: light; }
+    :root[data-aidocs-theme="dark"] { color-scheme: dark; }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .toc-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--toc-bg);
+      border-right: 1px solid var(--border);
+      padding: 32px 16px;
+    }
+    .toc-sidebar h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin: 0 0 16px 8px;
+    }
+    .toc-list { list-style: none; margin: 0; padding: 0; }
+    .toc-list li { margin: 2px 0; }
+    .toc-list a {
+      display: block;
+      padding: 5px 8px;
+      border-radius: 6px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.4;
+      transition: background 0.15s, color 0.15s;
+    }
+    .toc-list a:hover, .toc-list a.active {
+      background: var(--code-bg);
+      color: var(--ink);
+    }
+    .toc-list .toc-h3 a { padding-left: 20px; font-size: 12px; }
+
+    .content {
+      padding: 48px 56px 80px;
+      min-width: 0;
+    }
+
+    .doc-header {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--border);
+    }
+    .doc-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--heading-color);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .doc-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .doc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .note {
+      background: var(--blockquote-bg);
+      border-left: 3px solid var(--blockquote-border);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 0 0 32px;
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+    .note strong { color: var(--ink); }
+
+    .section { margin-bottom: 56px; }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--heading-color);
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.01em;
+    }
+    h2 .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--section-accent);
+      color: #fff;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      margin: 32px 0 12px;
+    }
+
+    p { margin: 0 0 16px; }
+    a { color: var(--link); }
+
+    code {
+      background: var(--code-inline-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: 0.85em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: inherit;
+      border-radius: 0;
+    }
+
+    .diagram-wrap {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .diagram-wrap.narrow {
+      max-width: 340px;
+    }
+    .mermaid { display: block; width: 100%; }
+    .mermaid svg { width: 100% !important; max-width: 100% !important; height: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 14px;
+    }
+    th {
+      background: var(--table-header-bg);
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--heading-color);
+    }
+    td {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: var(--table-row-alt); }
+
+    ul, ol { padding-left: 24px; margin: 0 0 16px; }
+    li { margin-bottom: 6px; }
+    li strong { color: var(--heading-color); }
+
+    .callout {
+      background: var(--blockquote-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--section-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    /* status pills */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      font-style: normal;
+    }
+    .status::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .status.live     { background: var(--status-live-bg);     color: var(--status-live-fg); }
+    .status.soon     { background: var(--status-soon-bg);     color: var(--status-soon-fg); }
+    .status.ongoing  { background: var(--status-ongoing-bg);  color: var(--status-ongoing-fg); }
+    .status.planned  { background: var(--status-planned-bg);  color: var(--status-planned-fg); }
+    .status.external { background: var(--status-external-bg); color: var(--status-external-fg); }
+    .status.proposed { background: transparent; color: var(--status-planned-fg); border: 1px dashed var(--status-planned-fg); }
+
+    :root { --gate: #2e7d32; --gate-bg: #eef7ef; --brain: #6d28d9; --brain-bg: #f4effd; }
+    :root[data-aidocs-theme="dark"] { --gate: #81c784; --gate-bg: #12291a; --brain: #b191f0; --brain-bg: #221a3a; }
+
+    .tldr {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 0 0 28px;
+      background: var(--toc-bg);
+    }
+    .tldr p { margin: 0 0 8px; font-weight: 600; }
+    .tldr ul { margin: 0; }
+    .tldr li { margin-bottom: 4px; }
+    .tag-gate, .tag-brain { font-weight: 700; }
+    .tag-gate { color: var(--gate); }
+    .tag-brain { color: var(--brain); }
+
+
+    table.compare td:first-child { font-weight: 600; width: 22%; color: var(--heading-color); }
+    table.compare th.gate { color: var(--gate); }
+    table.compare th.brain { color: var(--brain); }
+    ul.rules li { margin-bottom: 8px; }
+    .muted { color: var(--ink-muted); font-size: 14px; }
+    table.status-table td:first-child { width: 20%; }
+    table.status-table td:nth-child(2) { width: 1%; white-space: nowrap; }
+    h3.group-h { margin-top: 40px; font-size: 1.25rem; }
+    .layer {
+      border-left: 3px solid var(--border);
+      padding: 2px 0 2px 18px;
+      margin: 0 0 28px;
+    }
+    .layer h3.layer-h {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin: 0 0 10px;
+    }
+    .layer h4 { font-size: 1rem; margin: 18px 0 8px; color: var(--heading-color); }
+    .layer-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--code-bg); border: 1px solid var(--border);
+      font-size: 12px; font-weight: 700;
+    }
+
+    /* layer heading: title + status on one row */
+    h2 .h2-title { flex: 1; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin: 0 0 8px;
+      padding: 14px 18px;
+      background: var(--toc-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .content { padding: 32px 20px 60px; }
+      h2 { font-size: 1.35rem; flex-wrap: wrap; }
+    }
+    /* ---- status pill for "bad" (this doc's red) ---- */
+    :root { --status-bad-bg: #fdeaea; --status-bad-fg: #b42318; --ok-bar: #6fbf85; --dead-bar: #d97b7b; }
+    :root[data-aidocs-theme="dark"] { --status-bad-bg: #3a1a1a; --status-bad-fg: #f2a0a0; --ok-bar: #3f8a55; --dead-bar: #a05252; }
+    .status.bad { background: var(--status-bad-bg); color: var(--status-bad-fg); }
+    .status { font-weight: 600; }
+    td .status { margin: 0 6px 2px 0; }
+
+    /* ---- aliases so the SVG figures keep their colours ---- */
+    :root, :root[data-aidocs-theme="dark"] {
+      --muted: var(--ink-muted); --line: var(--border); --panel: var(--code-bg);
+      --panel2: var(--table-header-bg); --accent-ink: var(--section-accent); --accent-soft: var(--tag-bg);
+      --p0-ink: var(--status-bad-fg); --p0s-ink: var(--status-soon-fg); --p1-ink: var(--status-live-fg);
+      --boot-ink: var(--status-planned-fg); --diag-line: var(--ink-muted); --diag-soft: var(--border);
+    }
+
+    p, li { max-width: 80ch; }
+    h4 { font-size: 1rem; font-weight: 600; color: var(--heading-color); margin: 24px 0 8px; }
+    .callout { font-style: normal; font-size: 15px; }
+    .callout > :first-child { margin-top: 0; } .callout > :last-child { margin-bottom: 0; }
+    .muted { color: var(--ink-muted); font-size: 14px; }
+    .tablewrap { overflow-x: auto; }
+    .tablewrap table { margin: 12px 0 24px; }
+    th { white-space: nowrap; }
+    td ul { margin: 2px 0; padding-left: 16px; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 16px 0 24px; }
+    .card { border: 1px solid var(--border); border-top: 3px solid var(--border); border-radius: 8px; padding: 14px 16px; background: var(--bg); }
+    .card.t-p0  { border-top-color: var(--status-bad-fg); }
+    .card.t-p0s { border-top-color: var(--status-soon-fg); }
+    .card.t-p1  { border-top-color: var(--status-live-fg); }
+    .card h4 { margin: 0 0 4px; font-size: 0.98rem; }
+    .card .sub { font-size: 13px; color: var(--ink-muted); margin: 0 0 10px; }
+    .card ul { margin: 0; padding-left: 18px; font-size: 14px; }
+    .card li { margin: 2px 0; }
+
+    figure { margin: 20px 0; }
+    figure.diagram { background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 14px 8px; overflow-x: auto; }
+    figcaption { color: var(--ink-muted); font-size: 13.5px; margin: 8px 6px 4px; }
+    figure svg { width: 100%; height: auto; display: block; }
+    svg .lbl { fill: var(--ink); font-size: 12.5px; }
+    svg .lbl-b { fill: var(--ink); font-size: 13px; font-weight: 600; }
+    svg .lbl-s { fill: var(--ink-muted); font-size: 11px; }
+    svg .lbl-code { fill: var(--ink); font-size: 11.5px; font-family: 'SF Mono', Menlo, monospace; }
+    svg .lbl-p0 { fill: var(--status-bad-fg); font-weight: 600; }
+    svg .lbl-p1 { fill: var(--status-live-fg); font-weight: 600; }
+    svg .lbl-p0s { fill: var(--status-soon-fg); font-weight: 600; }
+    svg .cluster { fill: var(--bg); stroke: var(--border); stroke-width: 1.2; rx: 12; }
+    svg .cluster-spine { fill: var(--tag-bg); stroke: var(--section-accent); stroke-width: 1.6; rx: 12; }
+    svg .cluster-title { fill: var(--ink); font-size: 12.5px; font-weight: 700; letter-spacing: 0.02em; }
+    svg .arrhead { fill: var(--ink-muted); } svg .arrhead-soft { fill: var(--border); }
+    svg .arrhead-mf { fill: var(--section-accent); } svg .arrhead-sp { fill: var(--status-planned-fg); } svg .arrhead-dcs { fill: var(--status-soon-fg); }
+    svg .bar-ok { fill: var(--ok-bar); rx: 4; } svg .bar-dead { fill: var(--dead-bar); rx: 4; }
+    svg .bar-desk { fill: var(--border); rx: 4; }
+    svg .bar-wait { fill: none; stroke: var(--border); stroke-dasharray: 4 4; rx: 4; }
+    svg .gridline { stroke: var(--border); stroke-width: 1; }
+
+    /* ---- diagram boxes and edges (Figs 1–2) ---- */
+    :root { --p0-bg: var(--status-bad-bg); --p0-line: #d98282; --p0s-bg: var(--status-soon-bg); --p0s-line: #dcb35e;
+            --p1-bg: var(--status-live-bg); --p1-line: #7fbf8e; --boot-bg: var(--status-planned-bg); }
+    :root[data-aidocs-theme="dark"] { --p0-line: #8a4444; --p0s-line: #8a7426; --p1-line: #3f7a4e; }
+    svg .box { fill: var(--bg); stroke: var(--ink-muted); stroke-width: 1.2; rx: 7; }
+    svg .box-accent { fill: var(--tag-bg); stroke: var(--section-accent); stroke-width: 1.6; }
+    svg .box-p0  { fill: var(--p0-bg);  stroke: var(--p0-line); }
+    svg .box-p0s { fill: var(--p0s-bg); stroke: var(--p0s-line); }
+    svg .box-p1  { fill: var(--p1-bg);  stroke: var(--p1-line); }
+    svg .box-boot { fill: var(--boot-bg); stroke: var(--status-planned-fg); }
+    svg .box-ghost { fill: none; stroke: var(--border); stroke-dasharray: 5 4; }
+    svg .cedge { stroke: var(--ink-muted); stroke-width: 2.2; fill: none; opacity: 0.9; }
+    svg .cedge-soft { stroke: var(--border); stroke-width: 1.4; fill: none; }
+    svg .edge { stroke: var(--ink-muted); stroke-width: 1.3; fill: none; opacity: 0.85; }
+    svg .edge-soft { stroke: var(--border); stroke-width: 1.1; fill: none; opacity: 0.8; }
+    svg .edge-dash { stroke: var(--ink-muted); stroke-width: 1.3; fill: none; stroke-dasharray: 6 5; }
+    svg .e-mf { stroke: var(--section-accent); stroke-width: 1.5; fill: none; opacity: 0.9; }
+    svg .e-sp { stroke: var(--status-planned-fg); stroke-width: 1.5; fill: none; opacity: 0.9; }
+    svg .e-dcs { stroke: var(--status-soon-fg); stroke-width: 1.5; fill: none; opacity: 0.9; }
+    svg .pbadge { fill: var(--table-header-bg); stroke: var(--border); stroke-width: 1; }
+    svg .pbtxt { fill: var(--ink-muted); font-size: 10.5px; font-weight: 600; }
+    svg .xmark { stroke: var(--status-bad-fg); stroke-width: 2.4; stroke-linecap: round; }
+
+    /* ---- §2 architecture stack ---- */
+    .stack { border: 1px solid var(--border); border-radius: 10px; background: var(--code-bg); padding: 6px 20px; margin: 16px 0 24px; }
+    .tier { display: grid; grid-template-columns: 130px 1fr; gap: 14px; align-items: start; padding: 14px 0; }
+    .tier + .tier { border-top: 1px dashed var(--border); }
+    .tier .tl { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); padding-top: 10px; line-height: 1.5; }
+    .tier .tl code { font-size: 10.5px; text-transform: none; letter-spacing: 0; }
+    .tier.owned .tl { color: var(--section-accent); }
+    .tier .nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+    .node { border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; background: var(--bg); font-size: 14px; line-height: 1.4; }
+    .node b { display: block; color: var(--heading-color); }
+    .node span { color: var(--ink-muted); font-size: 12.5px; display: block; }
+    .node.owned { border: 2px solid var(--section-accent); }
+    .node.dashed { border-style: dashed; background: var(--code-bg); }
+    @media (max-width: 700px) { .tier { grid-template-columns: 1fr; gap: 8px; } .tier .tl { padding-top: 0; } }
+  </style>
+  <style>
+    .status.same { background: var(--status-live-bg); color: var(--status-live-fg); }
+    .status.changed { background: var(--status-soon-bg); color: var(--status-soon-fg); }
+    .status.removed { background: var(--status-bad-bg); color: var(--status-bad-fg); }
+    .status.missing { background: var(--status-planned-bg); color: var(--status-planned-fg); }
+    .status.cxonly { background: var(--status-external-bg); color: var(--status-external-fg); }
+    table.api td:first-child { width: 18%; font-weight: 600; color: var(--heading-color); }
+    table.api.rs td:nth-child(3) { width: 1%; white-space: nowrap; }
+    table.api.rs td:first-child { width: 24%; }
+  </style>
+
+  <style>
+    .doc-header { margin-bottom: 24px; padding-bottom: 24px; }
+    .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin: 0 0 36px; }
+    .tabs [role=tab] {
+      appearance: none; background: none; border: none; cursor: pointer;
+      font: inherit; font-size: 15px; font-weight: 600; color: var(--ink-muted);
+      padding: 10px 16px; margin-bottom: -1px; border-bottom: 2px solid transparent;
+      border-radius: 6px 6px 0 0;
+    }
+    .tabs [role=tab]:hover { color: var(--ink); background: var(--code-bg); }
+    .tabs [role=tab][aria-selected=true] { color: var(--section-accent); border-bottom-color: var(--section-accent); }
+    .tabs [role=tab]:focus-visible { outline: 2px solid var(--section-accent); outline-offset: 2px; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0 8px; }
+    .pair > div { display: flex; flex-direction: column; min-width: 0; }
+    .pair pre { margin: 0; flex: 1; white-space: pre; overflow-x: auto; font-size: 12.5px; }
+    .pair-h { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 6px 2px; }
+    @media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+  <nav class="toc-sidebar" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ul class="toc-list" data-tab="summary">
+      <li><a href="#rules">1. The ten rules</a></li>
+      <li class="toc-h3"><a href="#rules-layout">Layout and composition</a></li>
+      <li class="toc-h3"><a href="#rules-state">State and events</a></li>
+      <li class="toc-h3"><a href="#rules-fields">Fields and inputs</a></li>
+      <li class="toc-h3"><a href="#rules-system">Theming, icons, defaults</a></li>
+      <li><a href="#reshaped">2. Reshaped components</a></li>
+      <li class="toc-h3"><a href="#reshaped-action-list">ActionList</a></li>
+      <li class="toc-h3"><a href="#reshaped-other">Renamed and narrowed</a></li>
+      <li><a href="#components">3. Component by component</a></li>
+      <li class="toc-h3"><a href="#c-actions">Actions</a></li>
+      <li class="toc-h3"><a href="#c-feedback">Feedback and display</a></li>
+      <li class="toc-h3"><a href="#c-inputs">Inputs and forms</a></li>
+      <li class="toc-h3"><a href="#c-layout">Layout and navigation</a></li>
+      <li><a href="#figma">4. Figma over React</a></li>
+      <li><a href="#cx-only">5. Only in cx</a></li>
+      <li><a href="#missing">6. Later</a></li>
+    </ul>
+    <ul class="toc-list" data-tab="details" hidden>
+      <li><a href="#d-tooltip">1. Tooltip</a></li>
+      <li><a href="#d-action-list">2. ActionList</a></li>
+      <li><a href="#d-field-label">3. Field label</a></li>
+      <li><a href="#d-field-hint">4. Hint lines</a></li>
+      <li><a href="#d-text-input-affixes">5. TextInput leading and trailing</a></li>
+      <li><a href="#d-password-trailing">6. PasswordInput</a></li>
+      <li><a href="#d-phone-affixes">7. PhoneNumberInput</a></li>
+      <li><a href="#d-field-slots">8. Which field takes which slot</a></li>
+      <li><a href="#d-checkbox">9. Checkbox</a></li>
+      <li><a href="#d-radio">10. RadioGroup and Radio</a></li>
+      <li><a href="#d-switch">11. Switch</a></li>
+      <li><a href="#d-chip">12. ChipGroup and Chip</a></li>
+      <li><a href="#d-segmented-control">13. SegmentedControl</a></li>
+      <li><a href="#d-card-group">14. CardGroup vs Accordion</a></li>
+      <li><a href="#d-alert">15. Alert</a></li>
+      <li><a href="#d-empty-state">16. EmptyState</a></li>
+      <li><a href="#d-avatar">17. Avatar</a></li>
+      <li><a href="#d-tabs">18. Tabs</a></li>
+      <li><a href="#d-carousel">19. Carousel</a></li>
+    </ul>
+    <ul class="toc-list" data-tab="extras" hidden>
+      <li><a href="#x-image">1. Image</a></li>
+      <li><a href="#x-countdown">2. Countdown</a></li>
+      <li><a href="#x-async">3. Async</a></li>
+      <li><a href="#x-form">4. Form</a></li>
+      <li><a href="#x-screen">5. Screen</a></li>
+      <li><a href="#x-nav-stack">6. NavStack</a></li>
+      <li><a href="#x-overlay-stack">7. OverlayStack and openModal</a></li>
+      <li><a href="#x-virtual">8. VirtualWindow and VirtualOptionList</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <div class="doc-header">
+      <h1>Blade Svelte (cx) vs Blade React - API Differences</h1>
+      <div class="doc-meta">
+        <span class="doc-tag">blade-svelte</span>
+        <span class="doc-tag">vs packages/blade</span>
+        <span class="doc-tag">source: packages/blade-svelte/API-PARITY.md</span>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Views">
+      <button type="button" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="true">Summary</button>
+      <button type="button" role="tab" id="tab-details" aria-controls="panel-details" aria-selected="false" tabindex="-1">Snippet Examples</button>
+      <button type="button" role="tab" id="tab-extras" aria-controls="panel-extras" aria-selected="false" tabindex="-1">Extra Components</button>
+    </div>
+    <div class="tab-panel" role="tabpanel" id="panel-summary" aria-labelledby="tab-summary">
+<div class="section" id="rules">
+<h2><span class="section-num">1</span> <span class="h2-title">The ten rules</span></h2>
+<p>Most differences are ten rules applied everywhere; learn them and most of cx's API follows from React's. The cx component set is <code>@razorpay/blade-svelte/components</code>.</p>
+<h3 id="rules-layout" class="group-h">1.1 Layout and composition</h3>
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">1</span> Layout goes through <code>class</code></h3>
+<p>No <code>Box</code>, no styled props (<code>margin</code>, <code>padding</code>, <code>width</code>, <code>maxWidth</code>, <code>display</code>…). Every component takes a root <code>class</code> of Uno (Tailwind-style) classes. <code>*-blade-N</code> is Blade spacing token N (0–11); other lengths use brackets (<code>w-[176px]</code>).</p>
+  <p class="muted"><span class="tag-brain">Effect:</span> one layout language; props cover only what the component decides.</p>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">2</span> Render props and sub-components become snippets</h3>
+<p><code>AccordionItemHeader</code>, <code>ActionListItemAsset</code>, header <code>leading</code> / <code>trailing</code> / <code>titleSuffix</code> and footers become Svelte <b>snippets</b>, where the caller renders <code>Text</code>, <code>Icon</code>, <code>Badge</code> directly. Snippets that close their surface receive <code>{ close }</code>. Props remain only where behaviour or accessibility need them, e.g. a <code>title</code> naming a tooltip.</p>
+  <p>Collections compose: items (<code>CardGroupItem</code>, <code>ActionListItem</code>, <code>TabItem</code>, <code>Chip</code>…) register with their parent in document order, so headings or dividers can sit between. Data plus an item snippet only where every item must be known up front: <code>VirtualOptionList</code>, <code>Carousel</code>.</p>
+</div>
+
+<h3 id="rules-state" class="group-h">1.2 State and events</h3>
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">3</span> No <code>default*</code> props: state is bindable</h3>
+<p><code>defaultValue</code>, <code>defaultChecked</code>, <code>defaultCountry</code>, <code>defaultExpandedIndex</code>, <code>defaultIsOpen</code>… fold into the bindable prop: uncontrolled is <code>bind:value</code> with an initial value; controlled is a value the host keeps driving.</p>
+<pre><code>&lt;!-- React --&gt;
+&lt;TextInput defaultValue=&quot;Asha&quot; /&gt;
+&lt;!-- cx --&gt;
+&lt;TextInput bind:value={name} /&gt;</code></pre>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">4</span> Callbacks keep Blade's payloads, without <code>event</code></h3>
+<p>Fields report <code>onChange({ name, value })</code>, Checkbox <code>{ isChecked, value }</code>, Switch <code>{ isChecked }</code>, ChipGroup <code>{ name, values }</code>, OTPInput <code>onOTPFilled({ name, value })</code>. No <code>event</code>: callers get values, not DOM objects. Where React passes a bare value, so does cx (Tabs, Carousel).</p>
+  <p class="muted"><span class="tag-brain">Overlays:</span> Tooltip reports <code>onOpenChange({ isOpen })</code>.</p>
+</div>
+
+<h3 id="rules-fields" class="group-h">1.3 Fields and inputs</h3>
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">5</span> <code>label</code> is a plain string</h3>
+<p><code>label</code> is a string on every field: it names the control. React's <code>labelSuffix</code> and <code>labelTrailing</code> are not ported; nothing sits beside the label. Hint lines (<code>helpText</code>, <code>errorText</code>, <code>successText</code>) take <code>string | Snippet</code>, e.g. for a link.</p>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">6</span> Web names for keyboards and autofill</h3>
+<p>HTML names replace React Native's: <code>type="tel"</code> (not <code>telephone</code>), <code>inputMode</code>, <code>enterKeyHint</code> (for <code>keyboardReturnKeyType</code>), <code>autoComplete</code> (for <code>autoCompleteSuggestionType</code>), <code>autoCapitalize</code>. Each <code>type</code> keeps Blade's defaults; <code>number</code> renders as <code>type="text"</code>. Search and password fields are their own components over TextInput.</p>
+</div>
+
+<h3 id="rules-system" class="group-h">1.4 Theming, icons, defaults</h3>
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">7</span> BladeProvider sets component defaults, not a theme</h3>
+<p>Theming stays CSS variables; <code>themeTokens</code> and <code>colorScheme</code> are not ported. The provider takes an overall <code>size</code> every sized control snaps to, per-component <code>defaults</code> for any style prop, and <code>adapters</code>. Nothing reads the viewport in JS: components are mobile first and their desktop differences are <code>d:</code> classes (one breakpoint, 62.5rem). A prop wins, then the nearest provider's entry for the component, then its overall size, then Blade's default.</p>
+  <p class="muted"><span class="tag-brain">Colour:</span> cx uses Blade's neutral theme, where "primary" text is black; Figma's blue primary is the standard theme.</p>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">8</span> Icons are data, not components</h3>
+<p>React's ~450 <code>*Icon</code> components become 450 same-named SVG exports in <code>@razorpay/blade-svelte/icons</code>, as Svelte cannot pass an instantiated component (React's <code>&lt;InfoIcon /&gt;</code>) as a value. Draw one with <code>&lt;Icon source={…} /&gt;</code> or pass it to a component's <code>icon</code> or slot. The build plugin (<code>bladePlugin</code> from <code>@razorpay/blade-svelte/configs/vite</code> or <code>/configs/webpack</code>) turns an app's imported icons into one font; without it they render as CSS masks. Icons are single-colour and take their host's colour.</p>
+  <p>A slot named by position (<code>leading</code>, <code>trailing</code>) takes an icon, drawn as the component's sized, tinted glyph, or a snippet, placed in the asset box — one or the other. <code>icon</code> exists only for a single glyph with no slot: Button, Link, IconButton, Badge, Alert, Avatar, BreadcrumbItem, AnnouncementBanner, EmptyState's title glyph.</p>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">9</span> <code>children</code> is what you press, <code>content</code> what it reveals</h3>
+<p>Tooltip (and Collapsible, not exported yet) take the trigger as <code>children</code>, as in React. As a snippet it receives <code>{ isOpen }</code>; the wrapper around it listens, so the trigger wires nothing. The revealed part is <code>content</code>.</p>
+</div>
+
+<div class="layer">
+  <h3 class="layer-h"><span class="layer-num">10</span> Deferred</h3>
+<p>Safe to port later:</p>
+<ul><li><code>data-analytics-*</code> props, pending an analytics pass.</li><li><code>labelPosition</code>: labels sit above fields.</li></ul>
+</div>
+
+</div>
+
+<div class="section" id="reshaped">
+<h2><span class="section-num">2</span> <span class="h2-title">Reshaped components</span></h2>
+<p>Components organised differently from React, not just renamed.</p>
+<h3 id="reshaped-action-list">2.1 ActionList</h3>
+<p>React's ActionList lives inside a Dropdown or a BottomSheet and reads their context. cx's is a real list control — OptionList in the action look — that works on its own, anywhere on a page.</p>
+<div class="tablewrap"><table class="api rs">
+<tr><th>React</th><th>cx</th><th></th><th>Notes</th></tr>
+<tr><td>inside a Dropdown: the rows</td><td>—</td><td><span class="status removed">dropped</span></td><td>no select dropdown by decision: a pick list lives on the page</td></tr>
+<tr><td>standalone: <code>selectionType</code>, <code>selectedValue</code></td><td><code>bind:value</code>, <code>selectionType: single | multiple | none</code>, <code>label</code>, hint lines, Form support</td><td><span class="status changed">changed</span></td><td>hidden native radios or checkboxes; <code>none</code> makes rows buttons that act</td></tr>
+<tr><td>search: <code>AutoComplete</code> in a <code>DropdownHeader</code></td><td><code>isSearchable</code> + <code>searchPlaceholder</code> (its own SearchInput), or <code>query</code> bound from yours; <code>match</code>, <code>empty</code></td><td><span class="status cxonly">cx-only</span></td><td>the two sources are exclusive; <code>match</code> decides the match for either</td></tr>
+<tr><td><code>isVirtualized</code></td><td><code>virtualizedItems</code> / <code>virtualizedSections</code>, <code>itemKey</code>, <code>itemText</code>, <code>isItemDisabled</code>; <code>children(item, state)</code></td><td><span class="status changed">changed</span></td><td>a snippet is opaque, so a long list takes its rows as data; VirtualOptionList underneath</td></tr>
+<tr><td><code>leading={&lt;ActionListItemIcon /&gt;}</code>, <code>ActionListItemAsset</code> / <code>Avatar</code></td><td><code>leading={HomeIcon}</code>, or a snippet</td><td><span class="status changed">changed</span></td><td>rule 8</td></tr>
+<tr><td><code>ActionListItemBadge</code>, <code>ActionListItemText</code> in <code>titleSuffix</code> / <code>trailing</code></td><td>snippets with a plain Badge or Text</td><td><span class="status changed">changed</span></td><td>rule 2</td></tr>
+<tr><td>—</td><td><code>variant: plain | card</code></td><td><span class="status cxonly">cx-only</span></td><td><code>card</code>: rows divided in a bordered box, one per section</td></tr>
+</table></div>
+<h3 id="reshaped-other">2.2 Renamed and narrowed</h3>
+<div class="tablewrap"><table class="api rs">
+<tr><th>React</th><th>cx</th><th></th><th>Notes</th></tr>
+<tr><td><code>Accordion</code></td><td><code>CardGroup</code></td><td><span class="status changed">changed</span></td><td>adds <code>variant: filled | transparent</code>, <code>size</code>, <code>showNumberPrefix</code>, a <code>value</code> per item</td></tr>
+<tr><td><code>BottomBar</code> (fixed to the viewport)</td><td><code>BottomBar</code> (surface only)</td><td><span class="status changed">changed</span></td><td>position it with <code>class</code></td></tr>
+<tr><td><code>ProgressBar</code>, <code>Spinner</code></td><td><code>Progress</code> (loader: dots, bar, ring)</td><td><span class="status changed">changed</span></td><td>not a port of either; see Extra Components</td></tr>
+<tr><td><code>Form</code> (FormLabel, FormHint, CharacterCounter)</td><td>shared field chrome; <code>&lt;Form&gt;</code> is a real form</td><td><span class="status cxonly">cx-only</span></td><td>field registration, validation, submit</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="components">
+<h2><span class="section-num">3</span> <span class="h2-title">Component by component</span></h2>
+<p>Only differences beyond the rules.</p>
+<h3 id="c-actions" class="group-h">3.1 Actions</h3>
+<div class="tablewrap"><table class="api">
+<tr><th>Component</th><th>React</th><th>cx</th><th>Notes</th></tr>
+<tr><td>Button</td><td><code>icon</code> + <code>iconPosition</code></td><td><code>icon</code> + <code>trailingIcon</code> <span class="status changed">changed</span></td><td>both may show (Figma); <code>icon</code> alone is icon-only</td></tr>
+<tr><td></td><td><code>variant: tertiary</code>, <code>link</code></td><td>— <span class="status removed">dropped</span></td><td>tertiary is deprecated in Figma (use secondary); a link-looking action is <code>Link variant="button"</code></td></tr>
+<tr><td></td><td><code>color: primary | white | positive | negative</code></td><td>same, plus <code>neutral</code> <span class="status cxonly">cx-only</span></td><td>default <code>primary</code>; <code>type</code> defaults to <code>button</code></td></tr>
+<tr><td></td><td><code>onFocus</code>, <code>onBlur</code>, <code>role</code></td><td>— <span class="status missing">later</span></td><td>add on demand</td></tr>
+<tr><td></td><td>—</td><td><code>validateForm</code>, <code>autoPressAfter</code>, <code>loadingAnnouncement</code> <span class="status cxonly">cx-only</span></td><td>validates the Form without submitting; self-presses after N seconds (a redirect); live-region copy while busy</td></tr>
+<tr><td>IconButton</td><td><code>emphasis: intense | subtle | moderate</code></td><td><code>intense | subtle</code> <span class="status removed">dropped</span></td><td>moderate not in Figma; <code>isHighlighted</code> kept</td></tr>
+<tr><td></td><td><code>onFocus</code>, <code>onBlur</code></td><td><code>isLoading</code>, <code>type</code>, <code>validateForm</code>, <code>loadingAnnouncement</code> <span class="status cxonly">cx-only</span></td><td>shares Button's press; a spinner replaces the glyph while loading</td></tr>
+<tr><td>Link</td><td><code>icon</code> + <code>iconPosition</code></td><td><code>icon</code> + <code>trailingIcon</code> <span class="status changed">changed</span></td><td>colours <code>notice</code> / <code>information</code> dropped (not in Figma); <code>htmlTitle</code> added</td></tr>
+<tr><td></td><td><code>hitSlop</code>, <code>onFocus</code>, <code>onBlur</code></td><td><code>download</code>, <code>isDisabled</code> on an anchor <span class="status cxonly">cx-only</span></td><td><code>hitSlop</code> is React Native's; a disabled anchor drops its <code>href</code> and is <code>aria-disabled</code></td></tr>
+<tr><td>ButtonGroup</td><td><code>isFullWidth</code></td><td>— <span class="status removed">dropped</span></td><td><code>class="w-full [&amp;&gt;*]:flex-1"</code></td></tr>
+<tr><td>Tabs, SegmentedControl</td><td>item <code>leading</code> icon</td><td><code>leading</code> <span class="status same">same</span></td><td>also a snippet for an asset (rule 8); SegmentedControlItem gains <code>trailing</code></td></tr>
+<tr><td>Chip</td><td><code>icon</code> or <code>leading</code> node</td><td><code>leading</code>: an icon or a snippet <span class="status changed">changed</span></td><td>rule 8</td></tr>
+</table></div>
+<h3 id="c-feedback" class="group-h">3.2 Feedback and display</h3>
+<div class="tablewrap"><table class="api">
+<tr><th>Component</th><th>React</th><th>cx</th><th>Notes</th></tr>
+<tr><td>Alert</td><td><code>description</code></td><td><code>description: string | Snippet</code> <span class="status same">same</span></td><td>a snippet allows a Link inside; <code>title</code> too</td></tr>
+<tr><td></td><td><code>isFullWidth</code>, <code>maxWidth</code>, <code>actions</code></td><td>— <span class="status removed">dropped</span></td><td>always full width; cap via <code>class</code>; actions go in the description</td></tr>
+<tr><td>Toast</td><td><code>useToast().show()</code>, <code>leading</code></td><td><code>showToast()</code>, <code>leading</code> <span class="status same">same</span></td><td>icon replaces the colour's glyph, snippet is an asset; the dismiss button always shows, named <code>closeLabel</code>; <code>action.onClick</code></td></tr>
+<tr><td>Badge</td><td><code>size: xsmall…large</code></td><td><code>small | medium | large</code> <span class="status removed">dropped</span></td><td>xsmall not in Figma</td></tr>
+<tr><td>Amount</td><td><code>size</code>, <code>weight</code>, <code>color</code> default to body medium regular</td><td>default <code>inherit</code> <span class="status changed">changed</span></td><td>takes the surrounding text's unless set; <code>currencyIndicator</code>, <code>isAffixSubtle</code>, <code>suffix</code>, <code>fractionDigits</code> (default 2, or <code>auto</code>) are the same as React; <code>unit</code>, <code>locale</code>, <code>symbol</code> are cx-only</td></tr>
+<tr><td>EmptyState</td><td><code>asset</code> node, <code>description</code> string</td><td><code>asset</code> snippet, <code>description: string | Snippet</code> <span class="status same">same</span></td><td>same names; <code>icon</code> before the title (cx-only)</td></tr>
+<tr><td>Avatar</td><td><code>topAddon</code>, <code>bottomAddon</code> components</td><td>snippets <span class="status changed">changed</span></td><td>sized and placed per Figma; a broken image falls back to initials</td></tr>
+<tr><td>AvatarGroup</td><td>—</td><td><code>accessibilityLabel</code> <span class="status cxonly">cx-only</span></td><td>names the group</td></tr>
+<tr><td>Breadcrumb</td><td>—</td><td><code>emphasis: subtle | intense</code> <span class="status cxonly">cx-only</span></td><td>Figma's pill trail</td></tr>
+<tr><td>Typography</td><td><code>textTransform</code>, <code>textDecorationLine</code>, <code>wordBreak</code></td><td>— <span class="status removed">dropped</span></td><td>use <code>class</code>; Code's lines follow Figma; Display added; Heading has no <code>medium</code> weight (Figma)</td></tr>
+<tr><td>Skeleton</td><td><code>width</code>, <code>height</code>, <code>borderRadius</code>, flex props</td><td><code>class</code> <span class="status changed">changed</span></td><td>no default radius: the shape is the caller's class</td></tr>
+<tr><td>Divider</td><td><code>variant</code>, <code>thickness</code>, <code>dividerStyle</code></td><td>same <span class="status same">same</span></td><td>an <code>&lt;hr&gt;</code></td></tr>
+</table></div>
+<h3 id="c-inputs" class="group-h">3.3 Inputs and forms</h3>
+<div class="tablewrap"><table class="api">
+<tr><th>Component</th><th>React</th><th>cx</th><th>Notes</th></tr>
+<tr><td>TextInput</td><td><code>size: xsmall…large</code></td><td><code>small | medium | large</code> <span class="status removed">dropped</span></td><td>xsmall not in Figma</td></tr>
+<tr><td></td><td><code>prefix</code>, <code>suffix</code>, <code>leading</code>, <code>trailing</code>, <code>leadingIcon</code>, <code>trailingIcon</code>, <code>trailingButton</code></td><td><code>prefix</code>, <code>suffix</code>, <code>leading</code>, <code>trailing</code> <span class="status changed">changed</span></td><td><code>*Icon</code> props fold into <code>leading</code> / <code>trailing</code> (icon or snippet); not both on one side</td></tr>
+<tr><td></td><td><code>isLoading</code>, tags (<code>isTaggedInput</code>, <code>tags</code>, <code>onTagChange</code>), <code>showHelpTextOnFocus</code>, <code>validationTextPlacement</code>, <code>onSubmit</code></td><td>— <span class="status missing">later</span></td><td>Enter-to-submit is the Form's; <code>as</code>, <code>icon</code> and the dropdown-trigger internals (<code>hasPopup</code>, <code>isPopupExpanded</code>, <code>popupId</code>) have no counterpart</td></tr>
+<tr><td></td><td>—</td><td><code>isReadOnly</code>, <code>inputMode</code>, <code>pattern</code>, <code>parse</code>, <code>span</code>, <code>role</code> <span class="status cxonly">cx-only</span></td><td>a read-only control; the keypad independent of <code>type</code>; the control's validity pattern; the value a Form collects; an InputGroup cell; <code>searchbox</code></td></tr>
+<tr><td>SearchInput, PasswordInput</td><td>over BaseInput</td><td>over TextInput <span class="status same">same</span></td><td><code>showSearchIcon</code>, <code>showRevealButton</code>; SearchInput's <code>isLoading</code> is a gap; SearchInput adds <code>onKeyDown</code>, PasswordInput adds <code>leading</code>, <code>prefix</code>, <code>suffix</code>, <code>trailing</code></td></tr>
+<tr><td>TextArea</td><td>tags, <code>showHelpTextOnFocus</code>, <code>onSubmit</code></td><td><code>isReadOnly</code> <span class="status cxonly">cx-only</span></td><td><code>size</code>, <code>necessityIndicator</code>, the clear button and <code>onKeyDown</code> added as on TextInput</td></tr>
+<tr><td>OTPInput</td><td><code>onOTPFilled({ name, value })</code></td><td>same <span class="status same">same</span></td><td>focus and blur also pass the cell index; <code>otpLength</code> any number</td></tr>
+<tr><td></td><td>—</td><td><code>accept</code>, <code>placeholder</code>, <code>onClick</code>, <code>isRequired</code>, <code>isReadOnly</code>, <code>cellAccessibilityLabel</code> <span class="status cxonly">cx-only</span></td><td>a per-character filter; one placeholder character per cell; the cells' names for i18n</td></tr>
+<tr><td>PhoneNumberInput</td><td><code>onChange</code></td><td><code>onChange({ country, dialCode, nationalNumber, value })</code> <span class="status changed">changed</span></td><td>the country picker opens on the modal stack, with ActionListItem rows and a search; <code>countries</code> is the app's</td></tr>
+<tr><td></td><td>—</td><td><code>countries</code>, <code>countryLabel</code>, <code>searchLabel</code>, <code>emptyText</code>, <code>closeLabel</code>, <code>isCountryFixed</code> <span class="status cxonly">cx-only</span></td><td>the library ships no country data or copy; <code>isCountryFixed</code> shows the country as text with no picker</td></tr>
+<tr><td>InputGroup</td><td><code>InputRow</code> + <code>gridTemplateColumns</code></td><td>member <code>span</code> <span class="status changed">changed</span></td><td>errors show on the group's line, not red member borders</td></tr>
+<tr><td>Radio</td><td>—</td><td><code>Radio.trailing</code> <span class="status removed">dropped</span></td><td>was cx-only; no slot in Figma; <code>helpText</code> added</td></tr>
+<tr><td>Checkbox</td><td>same incl. <code>isIndeterminate</code>, <code>size</code></td><td><span class="status same">same</span></td><td>the error is a shared hint under the control; no CheckboxGroup; <code>accessibilityLabel</code> and <code>parse</code> are cx-only, as on Switch (<code>parse</code> replaces its <code>value</code>)</td></tr>
+<tr><td>ActionList</td><td><code>isVirtualized</code></td><td><code>bind:value</code>, <code>selectionType</code>, <code>isSearchable</code>, <code>match</code>, <code>empty</code>, <code>isDeselectable</code>, <code>compare</code>, <code>virtualizedItems</code> / <code>virtualizedSections</code>, field props <span class="status cxonly">cx-only</span></td><td>a real list control; see Reshaped components</td></tr>
+<tr><td>CounterInput, Counter</td><td>—</td><td>ported <span class="status same">same</span></td><td></td></tr>
+</table></div>
+<h3 id="c-layout" class="group-h">3.4 Layout and navigation</h3>
+<div class="tablewrap"><table class="api">
+<tr><th>Component</th><th>React</th><th>cx</th><th>Notes</th></tr>
+<tr><td>Tabs</td><td>composed <code>TabList</code></td><td><code>tabList</code> snippet <span class="status changed">changed</span></td><td><code>variant</code>, <code>orientation</code>, <code>isLazy</code> unchanged; <code>activation</code> added</td></tr>
+<tr><td>Carousel</td><td><code>CarouselItem</code> children</td><td>data + item snippet <span class="status changed">changed</span></td><td>needs every slide up front; <code>activeSlide</code> is <code>bind:index</code>, <code>autoPlay</code> is <code>autoAdvance</code>, <code>showIndicators</code> is <code>slideLabel</code></td></tr>
+<tr><td></td><td><code>visibleItems</code>, <code>carouselItemWidth</code>, <code>carouselItemAlignment</code>, <code>snapAlign</code>, <code>gap</code>, <code>shouldAddStartEndSpacing</code>, <code>showNavigationButtons</code>, <code>navigationButtonPosition</code>, <code>navigationButtonVariant</code>, <code>indicatorVariant</code>, <code>scrollOverlayColor</code></td><td>— <span class="status missing">later</span></td><td>one full-width slide at a time, native scroll-snap</td></tr>
+<tr><td>BottomBar</td><td><code>accessibilityLabel</code>, fixed to the viewport</td><td>surface only <span class="status changed">changed</span></td><td>position it with <code>class</code></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="figma">
+<h2><span class="section-num">4</span> <span class="h2-title">Figma over React</span></h2>
+<p>Where Blade DSL in Figma and React disagree, cx follows Figma:</p>
+<ul><li>Options cut to what Figma draws: Badge and TextInput <code>xsmall</code>, IconButton <code>moderate</code>, Button <code>tertiary</code>, Link <code>notice</code> / <code>information</code>.</li><li>Slots added where Figma draws them: Button and Link trailing icons, ActionListItem descriptions and suffixes.</li><li>Figma's tokens for ActionList row text, icons and the keyboard ring.</li><li>Measurements: Avatar rim, Code's 14/18 lines, Display's letter-spacing, Breadcrumb's intense pills, Switch at one size on every width.</li></ul>
+</div>
+
+<div class="section" id="cx-only">
+<h2><span class="section-num">5</span> <span class="h2-title">Only in cx</span></h2>
+<p>Worked examples: Extra Components tab.</p>
+<div class="tablewrap"><table class="status-table">
+<tr><th>Component or feature</th><th>Status</th><th>What it is</th></tr>
+<tr><td><code>OptionList</code>, <code>VirtualOptionList</code></td><td><span class="status cxonly">cx-only</span></td><td>the headless version of ActionList, for snowflakes</td></tr>
+<tr><td><code>VirtualWindow</code></td><td><span class="status cxonly">cx-only</span></td><td>renders only the rows in view</td></tr>
+<tr><td><code>Async</code>, <code>Countdown</code>, <code>Image</code>, <code>NavStack</code>, <code>Screen</code></td><td><span class="status cxonly">cx-only</span></td><td>app-level building blocks from checkout</td></tr>
+<tr><td><code>Form</code></td><td><span class="status cxonly">cx-only</span></td><td>field registration, constraint validation, submit</td></tr>
+<tr><td><code>OverlayStack</code>, <code>openModal</code></td><td><span class="status cxonly">cx-only</span></td><td>the one overlay root and scrim; surfaces opened from code</td></tr>
+<tr><td>ActionList <code>isSearchable</code>, <code>variant="card"</code></td><td><span class="status cxonly">cx-only</span></td><td>its own search field; the bank-list card look</td></tr>
+<tr><td>Icon font plugin</td><td><span class="status cxonly">cx-only</span></td><td>builds a font from the icons an app imports</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="missing">
+<h2><span class="section-num">6</span> <span class="h2-title">Later</span></h2>
+<p>In Figma and React, not yet ported:</p>
+<div class="tablewrap"><table class="status-table">
+<tr><th>Area</th><th>Status</th><th>Components</th></tr>
+<tr><td>Navigation</td><td><span class="status missing">later</span></td><td>AppBar, BottomNav, SideNav, TopNav, Pagination, StepGroup, TreeView</td></tr>
+<tr><td>Data display</td><td><span class="status missing">later</span></td><td>Table, List, InfoGroup, Tag, Indicator, Preview, Charts</td></tr>
+<tr><td>Inputs</td><td><span class="status missing">later</span></td><td>DatePicker, TimePicker, FileUpload, QuickFilters</td></tr>
+<tr><td>Feedback</td><td><span class="status missing">later</span></td><td>ProgressBar, Spinner (cx's Progress is a different loader)</td></tr>
+<tr><td>Overlays</td><td><span class="status missing">later</span></td><td>Modal, BottomSheet, Drawer, Popover, Menu: not in the exported set yet and not covered here. <code>openModal</code> and <code>OverlayStack</code> are exported for PhoneNumberInput's country picker</td></tr>
+<tr><td>Chat and onboarding</td><td><span class="status missing">later</span></td><td>ChatMessage, ChatInput, SpotlightPopoverTour</td></tr>
+<tr><td>Not needed</td><td><span class="status removed">dropped</span></td><td>Box (classes), VisuallyHidden (<code>sr-only</code>), motion presets (per-component CSS transitions), OverlayContextReset (the OverlayStack)</td></tr>
+</table></div>
+</div>
+
+    </div>
+    <div class="tab-panel" role="tabpanel" id="panel-details" aria-labelledby="tab-details" hidden>
+<div class="section" id="d-tooltip">
+<h2><span class="section-num">1</span> <span class="h2-title">Tooltip: children and content, as in React</span></h2>
+<p>React clones handlers onto its single child. cx renders <code>children</code> inside a wrapper that listens for hover, focus and taps, so the trigger wires nothing; <code>children({ isOpen })</code> reads the state. <code>content</code> is a string or a snippet.</p>
+<h3>1. A plain tooltip</h3>
+<pre><code>&lt;Tooltip
+  title=&quot;Convenience fee&quot;
+  content=&quot;Charged by your bank&quot;
+&gt;
+  &lt;Button variant=&quot;secondary&quot;&gt;
+    Why a fee?
+  &lt;/Button&gt;
+&lt;/Tooltip&gt;</code></pre>
+<ul><li>Identical markup in both.</li><li>Hover opens after a short rest and closes after a short grace, so the pointer can reach the bubble. Focus opens at once. A tap toggles; the only way in on touch and native.</li><li>Escape closes only the tooltip, not an overlay beneath it.</li><li>While open, the bubble describes the trigger's first focusable element (<code>aria-describedby</code>).</li></ul>
+<h3>2. A trigger that is not a control</h3>
+<pre><code>&lt;Tooltip content=&quot;Set by your bank&quot;&gt;
+  &lt;IconButton
+    icon={InfoIcon}
+    accessibilityLabel=&quot;Fee details&quot;
+  /&gt;
+&lt;/Tooltip&gt;</code></pre>
+<p>React's <code>TooltipInteractiveWrapper</code> is an inline-block div carrying the ref and handlers a non-interactive child (icon, Badge, Counter) can't. cx's wrapper is always there: hover and taps reach anything inside, but the keyboard reaches only focusable content, so use a button or link.</p>
+<h3>3. Rich content: <code>content</code> and <code>title</code> as snippets</h3>
+<pre><code>&lt;Tooltip&gt;
+  &lt;Button variant=&quot;secondary&quot;&gt;
+    Settlement
+  &lt;/Button&gt;
+  {#snippet title()}
+    Settles in &lt;b&gt;T+2&lt;/b&gt;
+  {/snippet}
+  {#snippet content()}
+    Weekends and bank holidays
+    excluded.
+  {/snippet}
+&lt;/Tooltip&gt;</code></pre>
+<p>React takes strings only. A cx snippet sits in its box and inherits its type.</p>
+<h3>4. Reading and blocking the open state</h3>
+<pre><code>&lt;Tooltip
+  content=&quot;Copied&quot;
+  isDisabled={!hasCopied}
+  onOpenChange={({ isOpen }) =&gt;
+    track(isOpen)}
+&gt;
+  {#snippet children({ isOpen })}
+    &lt;IconButton
+      icon={CopyIcon}
+      accessibilityLabel=&quot;Copy&quot;
+      isHighlighted={isOpen}
+    /&gt;
+  {/snippet}
+&lt;/Tooltip&gt;</code></pre>
+<p><code>onOpenChange({ isOpen })</code> matches React. <code>isDisabled</code> (cx only) never opens, and closes if open. No <code>isOpen</code> prop; the tooltip owns its state.</p>
+<h3>5. Placement</h3>
+<p>Both default to <code>top</code>. React excludes <code>left-start</code>, <code>left-end</code>, <code>right-start</code> and <code>right-end</code>; cx accepts all twelve. On web the bubble renders in the OverlayStack, flips when short of room and clamps on the cross axis, arrow kept on the trigger. On native it sits in the wrapper at the requested placement, unmeasured.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Trigger</td><td>single child; <code>TooltipInteractiveWrapper</code> for non-controls</td><td><code>children</code> in a listening wrapper, or <code>children({ isOpen })</code></td></tr>
+<tr><td>Content</td><td><code>content: string</code></td><td><code>content: string | Snippet</code></td></tr>
+<tr><td>Title</td><td>string</td><td><code>string | Snippet</code></td></tr>
+<tr><td>Disabling</td><td>none</td><td><code>isDisabled</code></td></tr>
+<tr><td>Width, stacking</td><td><code>maxWidth</code>, <code>zIndex</code></td><td>fixed 200px max; the layer stack orders it</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-action-list">
+<h2><span class="section-num">2</span> <span class="h2-title">ActionList: row parts as props and snippets</span></h2>
+<p>ActionList is OptionList, designed. OptionList is the headless list (value, keyboard, form field, search, sections); ActionList is its look (<code>variant</code>) and its rows (<code>ActionListItem</code>). Use it on a page, composed or over data (<code>virtualizedItems</code>, <code>virtualizedSections</code>). PhoneNumberInput's country picker is the last: ActionListItem rows searched through the list's <code>query</code>.</p>
+<p>React fills ActionListItem slots with wrappers (<code>ActionListItemIcon</code>, <code>ActionListItemAsset</code>, <code>ActionListItemAvatar</code>, <code>ActionListItemBadge</code>, <code>ActionListItemText</code>). cx has none: <code>leading</code> takes an icon or a snippet; <code>titleSuffix</code> and <code>trailing</code> are snippets the row sizes and places.</p>
+<h3>1. Before the title: <code>leading</code></h3>
+<pre><code>&lt;ActionListItem
+  value=&quot;upi&quot;
+  title=&quot;UPI&quot;
+  leading={UpiIcon}
+/&gt;
+
+&lt;ActionListItem
+  value=&quot;in&quot;
+  title=&quot;India&quot;
+&gt;
+  {#snippet leading()}
+    &lt;img src={flagIn} alt=&quot;&quot; /&gt;
+  {/snippet}
+&lt;/ActionListItem&gt;</code></pre>
+<ul><li>An icon draws a 16px glyph before the title; a snippet holds an asset or avatar.</li><li>With <code>selectionType="multiple"</code>, the checkbox comes first.</li><li>React's <code>description</code> keeps its name: the muted line under the title.</li></ul>
+<h3>2. Beside and after the title</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;ActionListItem
+  value=&quot;whatsapp&quot;
+  title=&quot;WhatsApp&quot;
+  titleSuffix={
+    &lt;ActionListItemBadge
+      color=&quot;positive&quot;
+    &gt;
+      New
+    &lt;/ActionListItemBadge&gt;
+  }
+  trailing={
+    &lt;ActionListItemText&gt;
+      ⌘ W
+    &lt;/ActionListItemText&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;ActionListItem
+  value=&quot;whatsapp&quot;
+  title=&quot;WhatsApp&quot;
+&gt;
+  {#snippet titleSuffix()}
+    &lt;Badge
+      size=&quot;small&quot;
+      color=&quot;positive&quot;
+    &gt;
+      New
+    &lt;/Badge&gt;
+  {/snippet}
+  {#snippet trailing()}
+    &lt;Text size=&quot;small&quot; color=&quot;muted&quot;&gt;
+      ⌘ W
+    &lt;/Text&gt;
+  {/snippet}
+&lt;/ActionListItem&gt;</code></pre>
+</div>
+</div>
+<p>You choose component and size; the row keeps the gaps.</p>
+<h3>3. Links, destructive rows and <code>onClick</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;ActionListItem
+  value=&quot;block&quot;
+  title=&quot;Block&quot;
+  intent=&quot;negative&quot;
+  onClick={({ name, value }) =&gt;
+    log(name, value)}
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;ActionListItem
+  value=&quot;block&quot;
+  title=&quot;Block&quot;
+  intent=&quot;negative&quot;
+  onClick={() =&gt; log(&#x27;block&#x27;)}
+/&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>href</code>, <code>target</code>, <code>intent</code> and <code>isDisabled</code> keep their names; cx adds <code>rel</code>.</li><li>A link row (<code>href</code>) navigates and holds no value.</li><li>cx <code>onClick</code> takes no arguments and runs with the pick (or the press, for an action row). No <code>isSelected</code>: the list's value decides.</li></ul>
+<h3>4. A visible pick list</h3>
+<pre><code>&lt;ActionList
+  bind:value
+  selectionType=&quot;multiple&quot;
+  label=&quot;Notify me by&quot;
+&gt;
+  &lt;ActionListItem
+    value=&quot;email&quot;
+    title=&quot;Email&quot;
+  /&gt;
+  &lt;ActionListItem
+    value=&quot;sms&quot;
+    title=&quot;SMS&quot;
+  /&gt;
+&lt;/ActionList&gt;</code></pre>
+<ul><li>cx only; React's ActionList reads its Dropdown (or BottomSheet) context.</li><li>An OptionList in the action look: hidden native radios or checkboxes, <code>bind:value</code>, <code>label</code>, <code>helpText</code>, <code>errorText</code>, form support.</li><li><code>ActionListSection</code> is unchanged: a titled <code>role="group"</code>, hairline above every section but the first.</li></ul>
+<h3>5. A card list with sections, its own search and action rows</h3>
+<pre><code>&lt;ActionList
+  variant=&quot;card&quot;
+  selectionType=&quot;none&quot;
+  isSearchable
+  searchPlaceholder=&quot;Search for Banks&quot;
+  onChange={({ value }) =&gt; open(value)}
+&gt;
+  &lt;ActionListSection title=&quot;Suggested Banks&quot;&gt;
+    &lt;ActionListItem
+      value=&quot;icici-corp&quot;
+      title=&quot;ICICI Bank - Corporate Banking&quot;
+      description=&quot;For Businesses&quot;
+    &gt;
+      {#snippet leading()}
+        &lt;img src={iciciLogo} alt=&quot;&quot; /&gt;
+      {/snippet}
+      {#snippet trailing()}
+        &lt;Icon source={ChevronRightIcon} /&gt;
+      {/snippet}
+    &lt;/ActionListItem&gt;
+  &lt;/ActionListSection&gt;
+  &lt;ActionListSection title=&quot;All Banks&quot;&gt;…&lt;/ActionListSection&gt;
+  {#snippet empty({ query })}
+    &lt;Text color=&quot;muted&quot;&gt;No banks match “{query}”&lt;/Text&gt;
+  {/snippet}
+&lt;/ActionList&gt;</code></pre>
+<ul><li><code>variant="card"</code> (cx only): rows divided by hairlines in a bordered box, 16px in; each section its own box with its heading above, sections 24px apart; a 24px leading box for a logo.</li><li><code>selectionType="none"</code>: rows are buttons that act and hold nothing; every press reports through <code>onChange</code> (and the row's <code>onClick</code>). The arrows still move between rows, across sections.</li><li><code>isSearchable</code> (cx only) draws the list's own SearchInput above the rows, named by <code>searchPlaceholder</code>: rows whose title doesn't hold what is typed aren't drawn, and a section left with none steps aside. <code>query</code> instead binds a SearchInput you place yourself; the two are exclusive. <code>match</code> replaces the title match for either; <code>empty</code> shows in a status region when nothing is left. React searches only inside a Dropdown.</li></ul>
+<h3>6. Long lists: <code>virtualizedItems</code> and <code>virtualizedSections</code></h3>
+<pre><code>&lt;ActionList
+  variant=&quot;card&quot;
+  selectionType=&quot;none&quot;
+  isSearchable
+  searchPlaceholder=&quot;Search for Banks&quot;
+  virtualizedSections={[
+    { key: &#x27;suggested&#x27;, title: &#x27;Suggested Banks&#x27;, items: suggested },
+    { key: &#x27;all&#x27;, title: &#x27;All Banks&#x27;, items: banks },
+  ]}
+  itemKey={(bank) =&gt; bank.code}
+  itemText={(bank) =&gt; bank.name}
+  onChange={({ value }) =&gt; open(value)}
+  class=&quot;h-[28rem]&quot;
+&gt;
+  {#snippet children(bank)}
+    &lt;ActionListItem
+      value={bank}
+      title={bank.name}
+      description={bank.note}
+    /&gt;
+  {/snippet}
+&lt;/ActionList&gt;</code></pre>
+<ul><li>Replaces React's <code>isVirtualized</code>: only the rows in view are mounted. A snippet is opaque, so a long list takes its rows as data — <code>virtualizedItems</code> (flat) or <code>virtualizedSections</code> (<code>{ key, title, items }</code>) in place of composed <code>children</code>, which becomes the row snippet, <code>children(item, state)</code>. The three shapes are exclusive.</li><li><code>itemKey</code> identifies an item across filtering and re-orders, unique across sections; <code>itemText</code> feeds typeahead and the search, and is required with <code>isSearchable</code> (pass it with <code>query</code> too, or nothing matches); <code>isItemDisabled</code> decides what the keyboard skips.</li><li>Everything else works as on the composed list: <code>variant</code>, <code>selectionType</code>, <code>isSearchable</code> / <code>query</code>, <code>match</code>, <code>empty</code>, <code>bind:value</code>, the field props. Give the list a bounded height with <code>class</code>.</li><li>One window over one row list: a heading is a row of its own, and a card's box is drawn per row. <code>ActionListSection</code> takes no data of its own. Underneath is <code>VirtualOptionList</code>, the headless form, with the same prop names.</li></ul>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Glyph</td><td><code>leading={&lt;ActionListItemIcon /&gt;}</code></td><td><code>leading={UpiIcon}</code></td></tr>
+<tr><td>Asset, avatar</td><td><code>ActionListItemAsset</code>, <code>ActionListItemAvatar</code></td><td><code>leading</code> snippet</td></tr>
+<tr><td>Badge, text</td><td><code>ActionListItemBadge</code>, <code>ActionListItemText</code></td><td><code>titleSuffix</code>, <code>trailing</code> snippets</td></tr>
+<tr><td><code>value</code></td><td>string</td><td>any type, matched by <code>compare</code></td></tr>
+<tr><td><code>onClick</code></td><td><code>({ name, value, event })</code></td><td><code>()</code></td></tr>
+<tr><td>Where it lives</td><td>a Dropdown or BottomSheet</td><td>anywhere on a page</td></tr>
+<tr><td>Standalone</td><td>no</td><td>yes, as an OptionList: <code>variant</code>, <code>selectionType</code> (adds <code>none</code>), <code>isSearchable</code> / <code>query</code>, <code>match</code>, <code>empty</code></td></tr>
+<tr><td>Virtualised</td><td><code>isVirtualized</code></td><td><code>virtualizedItems</code> / <code>virtualizedSections</code> with <code>itemKey</code>; <code>children(item, state)</code> renders the row</td></tr>
+<tr><td>Not in cx</td><td><code>ActionListItemBadgeGroup</code></td><td></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-field-label">
+<h2><span class="section-num">3</span> <span class="h2-title">Field label: a plain string</span></h2>
+<p>React has two label slots beside <code>label</code>: <code>labelSuffix</code> (after the label) and <code>labelTrailing</code> (row end). cx ports neither: <code>label</code> is a string, drawn with its necessity mark, and nothing else sits on its row.</p>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;TextInput
+  label=&quot;Enter GSTIN&quot;
+  necessityIndicator=&quot;required&quot;
+  labelTrailing={
+    &lt;Link size=&quot;small&quot;&gt;Learn more&lt;/Link&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TextInput
+  label=&quot;Enter GSTIN&quot;
+  necessityIndicator=&quot;required&quot;
+&gt;
+  {#snippet helpText()}
+    &lt;Link href=&quot;#gstin&quot; size=&quot;small&quot;&gt;
+      Learn more
+    &lt;/Link&gt;
+  {/snippet}
+&lt;/TextInput&gt;</code></pre>
+</div>
+</div>
+<ul><li>A link or explanation that React puts beside the label goes in a hint line, which takes a snippet (next section).</li><li><code>necessityIndicator</code> stays a prop: the <code>*</code> or <code>(optional)</code> is drawn after the text.</li><li>The label element holds only text and mark, so it alone names the control. Row-to-field gap: 4px, 8px at large.</li><li>Every labelled field shares this label: TextInput, PasswordInput, SearchInput, PhoneNumberInput, TextArea, OTPInput, CounterInput, InputGroup, ChipGroup, RadioGroup, SegmentedControl, CardGroup, ActionList. On the groups the label names the group, not a control.</li></ul>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td><code>label</code></td><td>string</td><td>string</td></tr>
+<tr><td>Slots beside it</td><td><code>labelSuffix</code>, <code>labelTrailing</code></td><td>none</td></tr>
+<tr><td><code>labelPosition="left"</code></td><td>supported</td><td>not yet</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-field-hint">
+<h2><span class="section-num">4</span> <span class="h2-title">Hint lines: strings or snippets</span></h2>
+<p><code>helpText</code>, <code>errorText</code> and <code>successText</code> are strings in React, <code>string | Snippet</code> in cx (TextInput, PasswordInput, PhoneNumberInput, TextArea, OTPInput, InputGroup). The state's own text shows, else <code>helpText</code>. CounterInput has no hint line in either.</p>
+<h3>1. Plain text: the same in both</h3>
+<pre><code>&lt;TextInput
+  label=&quot;UPI ID&quot;
+  bind:value={upi}
+  validationState={state}
+  helpText=&quot;e.g. name@okaxis&quot;
+  errorText=&quot;Enter a valid UPI ID&quot;
+  successText=&quot;Verified&quot;
+/&gt;</code></pre>
+<p>React uses <code>value</code> + <code>onChange</code> for <code>bind:value</code>. Error and success lines lead with their icon (12px, 16px at large) in both.</p>
+<h3>2. A line with a link in it</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>// helpText is a string: the link
+// goes outside the field.
+&lt;TextInput
+  label=&quot;GSTIN&quot;
+  helpText=&quot;Forgot it?&quot;
+/&gt;
+&lt;Link href=&quot;/gstin&quot; size=&quot;small&quot;&gt;
+  Find your GSTIN
+&lt;/Link&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TextInput label=&quot;GSTIN&quot;&gt;
+  {#snippet helpText()}
+    Forgot it?
+    &lt;Link href=&quot;/gstin&quot; size=&quot;small&quot;&gt;
+      Find your GSTIN
+    &lt;/Link&gt;
+  {/snippet}
+&lt;/TextInput&gt;</code></pre>
+</div>
+</div>
+<ul><li>The snippet takes the hint's text style and colour, under the control; <code>aria-describedby</code> still points at it.</li><li>An <code>errorText</code> snippet (e.g. “Wrong password. Reset it”) still gets the field's error icon before it.</li><li>Strings and snippets mix: a string <code>helpText</code> with a snippet <code>errorText</code> is fine.</li></ul>
+<h3>3. Inside a Form: leave out <code>validationState</code></h3>
+<pre><code>&lt;Form name=&quot;login&quot; onSubmit={submit}&gt;
+  &lt;TextInput
+    label=&quot;Email&quot;
+    name=&quot;email&quot;
+    type=&quot;email&quot;
+    isRequired
+    helpText=&quot;We send the receipt here&quot;
+  /&gt;
+&lt;/Form&gt;</code></pre>
+<p>Without <code>validationState</code> the field shows its form error once touched or after a submit attempt, replacing the line. Pass <code>validationState</code> to own the state. React has no form context.</p>
+<h3>4. InputGroup: one line for all members</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;InputGroup
+  label=&quot;Card details&quot;
+  helpText=&quot;We don&#x27;t store your CVV&quot;
+&gt;
+  &lt;InputRow gridTemplateColumns=&quot;1fr&quot;&gt;
+    &lt;TextInput label=&quot;Card number&quot; /&gt;
+  &lt;/InputRow&gt;
+  &lt;InputRow
+    gridTemplateColumns=&quot;1fr 1fr&quot;
+  &gt;
+    &lt;TextInput label=&quot;Expiry&quot; /&gt;
+    &lt;PasswordInput label=&quot;CVV&quot; /&gt;
+  &lt;/InputRow&gt;
+&lt;/InputGroup&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;InputGroup label=&quot;Card details&quot;&gt;
+  {#snippet helpText()}
+    We don&#x27;t store your CVV.
+    &lt;Link href=&quot;/security&quot; size=&quot;small&quot;&gt;
+      How we keep it safe
+    &lt;/Link&gt;
+  {/snippet}
+  &lt;TextInput label=&quot;Card number&quot; /&gt;
+  &lt;TextInput
+    label=&quot;Expiry&quot;
+    span=&quot;1/2&quot;
+  /&gt;
+  &lt;PasswordInput
+    label=&quot;CVV&quot;
+    span=&quot;1/2&quot;
+  /&gt;
+&lt;/InputGroup&gt;</code></pre>
+</div>
+</div>
+<ul><li>A member's label stays its accessible name but neither it nor a hint line shows; the group's line describes every member.</li><li>An error turns the group's line negative and marks members <code>aria-invalid</code>; their frames stay grey, as React.</li><li><code>InputRow</code> + <code>gridTemplateColumns</code> becomes <code>span</code> per member (<code>full</code>, <code>1/2</code>, <code>1/3</code>, <code>2/3</code>, <code>1/4</code>, <code>3/4</code>).</li></ul>
+</div>
+
+<div class="section" id="d-text-input-affixes">
+<h2><span class="section-num">5</span> <span class="h2-title">TextInput leading and trailing</span></h2>
+<p>React's TextInput has <code>leading</code>/<code>trailing</code> (icon or element), plus <code>leadingIcon</code>, <code>prefix</code>, <code>suffix</code>, <code>trailingIcon</code> and <code>trailingButton</code>. cx keeps <code>prefix</code>, <code>suffix</code>, <code>leading</code> and <code>trailing</code>; the last two take an icon or a snippet (not both on one side) and absorb the <code>*Icon</code> props and <code>trailingButton</code>.</p>
+<p>Rule of thumb: a glyph is <code>leading={Icon}</code> / <code>trailing={Icon}</code>, a word is <code>prefix</code> / <code>suffix</code>, anything you render is a <code>leading</code> / <code>trailing</code> snippet. The field insets each kind.</p>
+<h3>1. Icons and text: unchanged</h3>
+<pre><code>&lt;TextInput
+  label=&quot;Bank&quot;
+  leading={BankIcon}
+  trailing={InfoIcon}
+/&gt;
+&lt;TextInput
+  label=&quot;UPI ID&quot;
+  placeholder=&quot;handle&quot;
+  suffix=&quot;@okaxis&quot;
+/&gt;
+&lt;TextInput
+  label=&quot;Amount&quot;
+  prefix=&quot;₹&quot;
+/&gt;</code></pre>
+<ul><li>Same call in both. <code>leadingIcon</code>/<code>trailingIcon</code> map to <code>leading</code>/<code>trailing</code>.</li><li>An icon comes first on the leading side (before <code>prefix</code>) and last on the trailing side (after <code>suffix</code>).</li><li>Glyph size: 12px small, 16px medium, 20px large.</li></ul>
+<h3>2. An element before the text: a <code>leading</code> snippet</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;TextInput
+  label=&quot;Mobile&quot;
+  leading={&lt;Badge&gt;+91&lt;/Badge&gt;}
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TextInput label=&quot;Mobile&quot;&gt;
+  {#snippet leading()}
+    &lt;Badge&gt;+91&lt;/Badge&gt;
+  {/snippet}
+&lt;/TextInput&gt;</code></pre>
+</div>
+</div>
+<p>Figma's leading selector slot, after <code>prefix</code>. No inset beyond the field's 4px padding, so a self-padded pill lines up (icons and prefix get an inset). A selector is any button you render here; React's <code>InputDropdownButton</code> has no counterpart.</p>
+<h3>3. A link after the text: <code>trailingButton</code> becomes <code>trailing</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;TextInput
+  label=&quot;Coupon&quot;
+  isDisabled={isApplying}
+  trailingButton={
+    &lt;Link onClick={apply}&gt;Apply&lt;/Link&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TextInput
+  label=&quot;Coupon&quot;
+  isDisabled={isApplying}
+&gt;
+  {#snippet trailing()}
+    &lt;Link
+      variant=&quot;button&quot;
+      size=&quot;small&quot;
+      onClick={apply}
+    &gt;
+      Apply
+    &lt;/Link&gt;
+  {/snippet}
+&lt;/TextInput&gt;</code></pre>
+</div>
+</div>
+<ul><li>React clones the Link to set size, <code>variant="button"</code> and <code>isDisabled</code>; in cx you set them. A disabled field greys the slot and blocks pointer events.</li><li><code>trailing</code> is Figma's trailing link slot and comes last, after the clear button and <code>suffix</code>.</li><li>React's <code>trailing</code> element (Badge, Dropdown) maps to the same snippet.</li><li>With <code>showClearButton</code>, React puts a vertical Divider between the clear button and a trailing element; cx draws none and spaces them as Figma's trailing items.</li></ul>
+<h3>4. The order differs</h3>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Before the text</td><td>leading element, <code>leadingIcon</code>, <code>prefix</code></td><td>leading icon, <code>prefix</code>, leading snippet</td></tr>
+<tr><td>After the text</td><td>clear button or trailing element, <code>suffix</code>, <code>trailingIcon</code>, <code>trailingButton</code></td><td>clear button, <code>suffix</code>, <code>trailing</code> (icon or snippet)</td></tr>
+</table></div>
+<p>A React leading element plus prefix swap order in cx.</p>
+<h4>Where the field puts each part</h4>
+<p>From the text-input README (Blade DSL's Text Input in Figma). 4px field padding, then each part's own inset.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th>Part</th><th>small</th><th>medium, large</th></tr>
+<tr><td>Text, from the edge</td><td>8px</td><td>12px</td></tr>
+<tr><td>leading icon, prefix, suffix, trailing, from the edge</td><td>8px</td><td>12px</td></tr>
+<tr><td>leading snippet, from the edge</td><td>4px</td><td>4px</td></tr>
+<tr><td>Between leading parts</td><td>2px</td><td>8px</td></tr>
+<tr><td>Last leading part to text</td><td>4px</td><td>8px</td></tr>
+<tr><td>Text to first trailing part</td><td>2px</td><td>8px</td></tr>
+<tr><td>Between trailing parts</td><td>4px</td><td>8px</td></tr>
+<tr><td>Glyph size</td><td>12px</td><td>16px, 20px</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-password-trailing">
+<h2><span class="section-num">6</span> <span class="h2-title">PasswordInput: trailing link and affixes</span></h2>
+<p>React's PasswordInput has no affix props: label, hint lines, reveal button. cx follows Blade DSL's Password Input in Figma, adding a leading glyph, <code>prefix</code>, <code>suffix</code> and a trailing link, placed as on TextInput. Sizes: medium, large.</p>
+<h3>1. A link beside the reveal button: <code>trailing</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>// No slot in the field: the link
+// goes in the label row.
+&lt;PasswordInput
+  label=&quot;Password&quot;
+  labelTrailing={
+    &lt;Link href=&quot;/reset&quot; size=&quot;small&quot;&gt;
+      Forgot?
+    &lt;/Link&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;PasswordInput
+  label=&quot;Password&quot;
+  bind:value={password}
+&gt;
+  {#snippet trailing()}
+    &lt;Link href=&quot;/reset&quot; size=&quot;small&quot;&gt;
+      Forgot?
+    &lt;/Link&gt;
+  {/snippet}
+&lt;/PasswordInput&gt;</code></pre>
+</div>
+</div>
+<ul><li>Link first, then the reveal button (an IconButton sized to the field), 8px apart, both in TextInput's trailing slot.</li><li><code>leading</code>, <code>prefix</code>, <code>suffix</code> pass through to TextInput with the same insets; <code>trailing</code> takes a snippet only.</li><li><code>showRevealButton</code> as in React (default true). A disabled field has no button and stays masked. <code>autoComplete</code> is <code>current-password</code> / <code>new-password</code> / <code>off</code>.</li></ul>
+</div>
+
+<div class="section" id="d-phone-affixes">
+<h2><span class="section-num">7</span> <span class="h2-title">PhoneNumberInput: country slot and trailing</span></h2>
+<p>A TextInput (<code>type="tel"</code>) with the country button first in its leading slot. React's <code>leadingIcon</code>/<code>trailingIcon</code> fold into <code>leading</code>/<code>trailing</code> (icon or snippet). Sizes: medium, large.</p>
+<ul><li><code>leading</code> sits after the country button and before the dial code, 4px from the selector; otherwise both work as on TextInput.</li><li><code>countries</code> and <code>countryLabel</code> are required in cx: the library ships no country data or copy. The picker opens on the modal stack through <code>openModal</code> (which is why it and <code>OverlayStack</code> are exported): a SearchInput over ActionListItem rows, searched through the list's <code>query</code>.</li></ul>
+<h3>1. The country slot</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;PhoneNumberInput
+  label=&quot;Mobile&quot;
+  showCountrySelector={false}
+  showDialCode
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;PhoneNumberInput
+  label=&quot;Mobile&quot;
+  {countries}
+  countryLabel=&quot;Country&quot;
+  showCountrySelector={false}
+  showDialCode
+/&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>showCountrySelector</code> and <code>showDialCode</code> keep names and defaults (true).</li><li>cx adds <code>isCountryFixed</code>: country as text, no button or picker. A single <code>allowedCountries</code> entry does the same.</li><li><code>onChange({ country, dialCode, nationalNumber, value })</code> and <code>onCountryChange({ country })</code>; <code>bind:value</code>, <code>bind:country</code>.</li></ul>
+<div class="tablewrap"><table class="compare">
+<tr><th>Part</th><th>medium</th><th>large</th></tr>
+<tr><td>Country selector, from the edge</td><td>4px (field padding)</td><td>6px</td></tr>
+<tr><td>Selector</td><td>28px pill, 20×15 flag, 12px chevron</td><td>36px pill, 24×18 flag</td></tr>
+<tr><td>Selector to glyph or dial code</td><td>4px</td><td>4px</td></tr>
+<tr><td>Dial code to number</td><td>8px</td><td>8px</td></tr>
+<tr><td>Number to trailing parts</td><td>8px</td><td>8px</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-field-slots">
+<h2><span class="section-num">8</span> <span class="h2-title">Which field takes which slot</span></h2>
+<p>TextArea, OTPInput and CounterInput have no in-control slots in either. TextArea: label, hints, clear button, counter; OTPInput: label, hints; CounterInput: label.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th>Field</th><th>React</th><th>cx</th></tr>
+<tr><td>TextInput</td><td><code>labelSuffix</code>, <code>labelTrailing</code>, <code>leading</code>, <code>trailing</code>, <code>leadingIcon</code>, <code>trailingIcon</code>, <code>prefix</code>, <code>suffix</code>, <code>trailingButton</code></td><td><code>leading</code> and <code>trailing</code> (icon or snippet), <code>prefix</code>, <code>suffix</code></td></tr>
+<tr><td>PasswordInput</td><td><code>labelSuffix</code>, <code>labelTrailing</code></td><td><code>leading</code> (icon or snippet), <code>trailing</code> (snippet), <code>prefix</code>, <code>suffix</code></td></tr>
+<tr><td>SearchInput</td><td><code>labelSuffix</code>, <code>labelTrailing</code>, <code>trailing</code></td><td><code>trailing</code> (icon or snippet); the search glyph is <code>showSearchIcon</code></td></tr>
+<tr><td>PhoneNumberInput</td><td><code>labelSuffix</code>, <code>labelTrailing</code>, <code>leadingIcon</code>, <code>trailingIcon</code></td><td><code>leading</code> and <code>trailing</code> (icon or snippet)</td></tr>
+<tr><td>TextArea</td><td><code>labelSuffix</code>, <code>labelTrailing</code></td><td>none</td></tr>
+<tr><td>OTPInput</td><td><code>labelSuffix</code>, <code>labelTrailing</code></td><td>none</td></tr>
+<tr><td>Hint lines</td><td>strings</td><td><code>string | Snippet</code>; CounterInput has none</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-checkbox">
+<h2><span class="section-num">9</span> <span class="h2-title">Checkbox: one checked prop, a label snippet</span></h2>
+<p>Names match React's, but cx folds <code>isChecked</code>/<code>defaultChecked</code> into one bindable <code>isChecked</code>, drops <code>event</code> from <code>onChange</code>, and makes the label a snippet. <code>helpText</code> and <code>errorText</code> take a string or a snippet. No CheckboxGroup.</p>
+<p><b>ControlState:</b> every label snippet of a checkable control, and its <code>leading</code> / <code>trailing</code> where it has them, receives <code>{ isChecked, isDisabled }</code>. Used by Checkbox, Radio, Switch, Chip and SegmentedControlItem.</p>
+<h3>1. Checked state: <code>bind:isChecked</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>const [agreed, setAgreed] =
+  React.useState(false);
+
+&lt;Checkbox
+  isChecked={agreed}
+  onChange={({ isChecked }) =&gt;
+    setAgreed(isChecked)
+  }
+&gt;
+  I agree to the terms
+&lt;/Checkbox&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>let agreed = $state(false);
+
+&lt;Checkbox bind:isChecked={agreed}&gt;
+  I agree to the terms
+&lt;/Checkbox&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>isChecked</code> is the initial value, a binding, or host-driven.</li><li><code>onChange({ isChecked, value })</code> fires on a user toggle; <code>value</code> is the input's value attribute.</li></ul>
+<h3>2. The label reads the state: <code>children({ isChecked, isDisabled })</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Checkbox
+  isChecked={autopay}
+  onChange={({ isChecked }) =&gt;
+    setAutopay(isChecked)
+  }
+&gt;
+  {autopay
+    ? &#x27;Autopay on&#x27;
+    : &#x27;Turn on autopay&#x27;}
+&lt;/Checkbox&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Checkbox bind:isChecked={autopay}&gt;
+  {#snippet children({ isChecked })}
+    {isChecked
+      ? &#x27;Autopay on&#x27;
+      : &#x27;Turn on autopay&#x27;}
+  {/snippet}
+&lt;/Checkbox&gt;</code></pre>
+</div>
+</div>
+<p>Plain content still works. The label goes in the title element beside the box.</p>
+<h3>3. <code>helpText</code>: a string or a snippet</h3>
+<pre><code>&lt;Checkbox bind:isChecked={agreed}&gt;
+  I agree to the terms
+  {#snippet helpText()}
+    Read the
+    &lt;Link href=&quot;/terms&quot;&gt;full terms&lt;/Link&gt;
+  {/snippet}
+&lt;/Checkbox&gt;</code></pre>
+<p>React takes a string. In both it sits under the title, aligned with it, in every state. In cx the title alone names the control; the help text describes it (<code>aria-describedby</code>).</p>
+<h3>4. Errors: own the state, or let the Form</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Checkbox
+  validationState=&quot;error&quot;
+  errorText=&quot;Accept the terms&quot;
+&gt;
+  I accept the terms and conditions
+&lt;/Checkbox&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Form {onSubmit}&gt;
+  &lt;Checkbox
+    name=&quot;terms&quot;
+    isRequired
+    parse={(checked) =&gt;
+      checked ? &#x27;accepted&#x27; : &#x27;&#x27;}
+  &gt;
+    I agree to the terms
+  &lt;/Checkbox&gt;
+&lt;/Form&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>validationState</code> + <code>errorText</code> work as in React when you own the state.</li><li>In a Form, omit <code>validationState</code>: the checkbox mirrors its form error once toggled or after a submit attempt.</li><li>The error is a separate line under the whole control, led by Blade's error icon; the help text stays.</li><li><code>parse</code> (cx-only) maps the boolean to the form value. Keep the unchecked result falsy.</li></ul>
+<h3>5. A parent over a list: <code>isIndeterminate</code></h3>
+<pre><code>&lt;Checkbox
+  isChecked={all}
+  isIndeterminate={some &amp;&amp; !all}
+  onChange={({ isChecked }) =&gt;
+    pickAll(isChecked)
+  }
+&gt;
+  All banks
+&lt;/Checkbox&gt;</code></pre>
+<p>Same in both. cx draws the dash whatever <code>isChecked</code> is and sets the input's <code>indeterminate</code> property so it reads as mixed. <code>isChecked</code> is driven, not bound, since it derives from the list.</p>
+<h3>6. No visible label: <code>accessibilityLabel</code></h3>
+<pre><code>&lt;Checkbox
+  bind:isChecked={picked}
+  accessibilityLabel=&quot;Select order 1042&quot;
+/&gt;</code></pre>
+<p>React has no such prop (wrap children in VisuallyHidden). In cx it names the control when there are no children.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Checked state</td><td><code>isChecked</code>, <code>defaultChecked</code></td><td><code>isChecked</code>, bindable</td></tr>
+<tr><td>Change</td><td><code>onChange({ isChecked, event, value })</code></td><td><code>onChange({ isChecked, value })</code></td></tr>
+<tr><td>Label</td><td>children node</td><td><code>children</code> snippet with ControlState</td></tr>
+<tr><td>Help and error lines</td><td>strings</td><td><code>string | Snippet</code></td></tr>
+<tr><td>Form value</td><td><code>name</code>, <code>value</code></td><td><code>name</code>, <code>value</code>, <code>parse</code></td></tr>
+<tr><td>Size</td><td>small, medium, large</td><td>same</td></tr>
+<tr><td>Group</td><td><code>CheckboxGroup</code></td><td>none</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-radio">
+<h2><span class="section-num">10</span> <span class="h2-title">RadioGroup and Radio: a bound value, label snippets</span></h2>
+<p>React's structure: RadioGroup owns the value, field line and look; each Radio is one option. In cx the group's value is bindable, Radio labels are ControlState snippets, and the group gains snippet hint lines. A Radio has no style props and no <code>trailing</code>.</p>
+<h3>1. The pick: <code>bind:value</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;RadioGroup
+  label=&quot;Pay via&quot;
+  value={flow}
+  onChange={({ value }) =&gt;
+    setFlow(value)
+  }
+&gt;
+  &lt;Radio value=&quot;qr&quot;&gt;QR code&lt;/Radio&gt;
+&lt;/RadioGroup&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;RadioGroup
+  label=&quot;Pay via&quot;
+  bind:value={flow}
+&gt;
+  &lt;Radio value=&quot;qr&quot;&gt;QR code&lt;/Radio&gt;
+&lt;/RadioGroup&gt;</code></pre>
+</div>
+</div>
+<ul><li>No <code>defaultValue</code>: <code>value</code> is the initial pick, a binding, or host-driven.</li><li><code>onChange({ name, value })</code> fires on a user pick, without <code>event</code>.</li></ul>
+<h3>2. One radio's help text</h3>
+<pre><code>&lt;Radio value=&quot;app&quot;&gt;
+  Bank app
+  {#snippet helpText()}
+    Needs the
+    &lt;Link href=&quot;/apps&quot;&gt;latest app&lt;/Link&gt;
+  {/snippet}
+&lt;/Radio&gt;</code></pre>
+<p>Indented under the title in both. A string works as in React; cx also takes a snippet. The title alone names the radio; the help text describes it.</p>
+<h3>3. Content after the label: no <code>trailing</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Radio
+  value=&quot;upi&quot;
+  trailing={
+    &lt;Badge color=&quot;positive&quot;&gt;
+      Offer
+    &lt;/Badge&gt;
+  }
+&gt;
+  UPI
+&lt;/Radio&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Radio value=&quot;upi&quot;&gt;
+  {#snippet children({ isChecked })}
+    UPI
+    {#if !isChecked}
+      &lt;Badge color=&quot;positive&quot;&gt;
+        Offer
+      &lt;/Badge&gt;
+    {/if}
+  {/snippet}
+&lt;/Radio&gt;</code></pre>
+</div>
+</div>
+<p>React's <code>Radio.trailing</code> renders only in a vertical group. cx removed it, as Blade DSL's Radio in Figma has no trailing slot; put extra content in the label snippet and lay it out yourself.</p>
+<h3>4. Group help and error lines</h3>
+<p>Same props as React (<code>validationState</code>, <code>errorText</code>, <code>helpText</code>): one line under the options, the error while <code>validationState</code> is <code>error</code>, else the help text. In cx either can be a snippet.</p>
+<h3>5. In a Form</h3>
+<p>With <code>isRequired</code>, <code>name</code> registers the group; the Radios share it. Omit <code>validationState</code>: the group mirrors its form error once a radio is picked or after a submit attempt.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Value</td><td><code>value</code>, <code>defaultValue</code></td><td><code>value</code>, bindable</td></tr>
+<tr><td>Radio label</td><td>string children</td><td><code>children</code> snippet with ControlState</td></tr>
+<tr><td><code>Radio.trailing</code></td><td>a node, vertical groups only</td><td>removed</td></tr>
+<tr><td><code>Radio.size</code></td><td>the group's wins</td><td>not ported; <code>size</code> is on the group</td></tr>
+<tr><td><code>labelPosition</code></td><td>top, left</td><td>not ported; always top</td></tr>
+<tr><td>Horizontal rows</td><td>no wrap</td><td>wrap</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-switch">
+<h2><span class="section-num">11</span> <span class="h2-title">Switch: a label of its own, a loading state</span></h2>
+<p>React's Switch has no label: <code>accessibilityLabel</code> is required and the caller lays out visible text. cx takes an optional <code>children</code> snippet label (with ControlState), adds <code>isLoading</code>, and replaces <code>value</code> with <code>parse</code>. Assistive tech sees <code>role="switch"</code>; a Form sees a checkbox.</p>
+<h3>1. State and label</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Box
+  display=&quot;flex&quot;
+  alignItems=&quot;center&quot;
+  gap=&quot;spacing.3&quot;
+&gt;
+  &lt;Switch
+    accessibilityLabel=&quot;Save card&quot;
+    isChecked={save}
+    onChange={({ isChecked }) =&gt;
+      setSave(isChecked)
+    }
+  /&gt;
+  &lt;Text&gt;Save card&lt;/Text&gt;
+&lt;/Box&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Switch bind:isChecked={save}&gt;
+  Save card
+&lt;/Switch&gt;</code></pre>
+</div>
+</div>
+<ul><li>The label is inside the same <code>&lt;label&gt;</code>: clicking it toggles the switch, and it names it.</li><li><code>onChange({ isChecked })</code>: no <code>event</code>, no <code>value</code>.</li><li>Without children, <code>accessibilityLabel</code> names it.</li></ul>
+<h3>2. A change in flight: <code>isLoading</code></h3>
+<pre><code>&lt;Switch
+  isChecked={saved}
+  isLoading={isSaving}
+  onChange={save}
+&gt;
+  Saved on the server
+&lt;/Switch&gt;</code></pre>
+<p>cx-only. The thumb shows a spinner, the input gets <code>aria-busy</code> and refuses toggles, but unlike <code>isDisabled</code> stays in the tab order. <code>isChecked</code> is driven here, showing the server's state.</p>
+<h3>3. The form value: <code>parse</code> instead of <code>value</code></h3>
+<pre><code>&lt;Switch
+  name=&quot;autopay&quot;
+  parse={(on) =&gt; (on ? &#x27;on&#x27; : &#x27;off&#x27;)}
+&gt;
+  Autopay
+&lt;/Switch&gt;</code></pre>
+<p>Replaces React's <code>value="on"</code>. The Form collects <code>parse(isChecked)</code> under <code>name</code>.</p>
+<h3>4. Size</h3>
+<p><code>small</code> (28×16 track) and <code>medium</code> (36×20, default) in a 2px margin, the same at every width, as Blade DSL's Switch in Figma. React's bigger phone sizes are not ported. No <code>id</code> prop; the id is internal.</p>
+</div>
+
+<div class="section" id="d-chip">
+<h2><span class="section-num">12</span> <span class="h2-title">ChipGroup and Chip: leading and label snippets</span></h2>
+<p>React's shape: ChipGroup holds the value and field line; Chips are options. <code>single</code> is native radios, <code>multiple</code> native checkboxes. In cx <code>value</code> is bindable (a string, or an array with <code>multiple</code>), the label is a snippet and <code>leading</code> takes an icon or a snippet; snippets receive ControlState.</p>
+<h3>1. One pick</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;ChipGroup
+  label=&quot;Business type&quot;
+  value={type}
+  onChange={({ values }) =&gt;
+    setType(values[0])
+  }
+&gt;
+  &lt;Chip value=&quot;public&quot;&gt;Public&lt;/Chip&gt;
+&lt;/ChipGroup&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;ChipGroup
+  label=&quot;Business type&quot;
+  bind:value={type}
+&gt;
+  &lt;Chip value=&quot;public&quot;&gt;Public&lt;/Chip&gt;
+&lt;/ChipGroup&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>onChange({ name, values })</code> is kept: <code>values</code> is a list even for single selection. The bound value is the string itself.</li><li>With <code>selectionType="multiple"</code>, bind an array (<code>$state([])</code>).</li></ul>
+<h3>2. A glyph before the label: <code>icon</code> becomes <code>leading</code></h3>
+<pre><code>&lt;Chip value=&quot;upi&quot; leading={PhoneIcon}&gt;
+  UPI
+&lt;/Chip&gt;
+&lt;Chip
+  value=&quot;card&quot;
+  leading={CreditCardIcon}
+/&gt;</code></pre>
+<p>React's mutually exclusive <code>icon</code> and <code>leading</code> merge into <code>leading</code>, which takes an IconSource the chip sizes (12/12/16/20px by size) and tints. Without a label the chip is icon-only (Figma's showLabel off).</p>
+<h3>3. An asset before the label: a <code>leading</code> snippet</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Chip
+  value=&quot;in&quot;
+  leading={
+    &lt;img src={inFlag} alt=&quot;&quot; /&gt;
+  }
+&gt;
+  India
+&lt;/Chip&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Chip value=&quot;in&quot;&gt;
+  {#snippet leading()}
+    &lt;img src={inFlag} alt=&quot;&quot; /&gt;
+  {/snippet}
+  India
+&lt;/Chip&gt;</code></pre>
+</div>
+</div>
+<ul><li>The chip places it, since Figma spaces it differently from the label: the label carries 4px each side, the leading item none.</li><li>At small: text alone is inset 12/12; with a leading item, 8px inset, 4px gap, 12px right.</li><li><code>leading</code> and <code>children</code> snippets both receive <code>{ isChecked, isDisabled }</code>; React's children is a string.</li></ul>
+<h3>4. Group label, lines and Form</h3>
+<pre><code>&lt;ChipGroup
+  label=&quot;Business type&quot;
+  name=&quot;type&quot;
+  necessityIndicator=&quot;required&quot;
+  helpText=&quot;Pick the closest match&quot;
+&gt;
+  &lt;Chip value=&quot;public&quot;&gt;Public&lt;/Chip&gt;
+  &lt;Chip value=&quot;small&quot;&gt;Small business&lt;/Chip&gt;
+&lt;/ChipGroup&gt;</code></pre>
+<ul><li><code>label</code> is a plain string, as React.</li><li><code>necessityIndicator="required"</code> also makes the group required.</li><li>The error replaces the help text in one line; in a Form, omit <code>validationState</code> to mirror the form error.</li><li>Label always on top: <code>labelPosition</code> not ported.</li></ul>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td>Value</td><td><code>value</code>, <code>defaultValue</code></td><td><code>value</code>, bindable</td></tr>
+<tr><td>Chip label</td><td>string</td><td>snippet with ControlState; optional with <code>leading</code></td></tr>
+<tr><td><code>leading</code></td><td>a node; a glyph is <code>icon</code></td><td>an icon, or a snippet with ControlState</td></tr>
+<tr><td>Chip width</td><td><code>width</code>, <code>minWidth</code>, <code>maxWidth</code></td><td><code>class</code></td></tr>
+<tr><td><code>color</code>, <code>isDisabled</code></td><td>on the chip, else the group's</td><td>same</td></tr>
+<tr><td>Size, colour axes</td><td>xsmall–large; primary, positive, negative</td><td>same</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-segmented-control">
+<h2><span class="section-num">13</span> <span class="h2-title">SegmentedControl: leading and trailing</span></h2>
+<p>In cx SegmentedControl is a RadioGroup drawn as a pill and SegmentedControlItem a Radio: every group prop but <code>size</code> and <code>color</code> is RadioGroup's. <code>leading</code> takes an icon (as React) or a snippet, and cx adds a <code>trailing</code> snippet, as Blade DSL's _Segmented Control / Item in Figma has.</p>
+<h3>1. The pick: <code>bind:value</code></h3>
+<pre><code>&lt;SegmentedControl
+  accessibilityLabel=&quot;EMI tenure&quot;
+  bind:value={tenure}
+&gt;
+  &lt;SegmentedControlItem value=&quot;6&quot;&gt;
+    6 months
+  &lt;/SegmentedControlItem&gt;
+&lt;/SegmentedControl&gt;</code></pre>
+<p>Replaces React's <code>value</code> + setter; <code>onChange({ name, value })</code> unchanged. A native radiogroup: one tab stop, arrows move the pick, no panels.</p>
+<h3>2. An icon: <code>leading</code>, unchanged</h3>
+<pre><code>&lt;SegmentedControlItem
+  value=&quot;bank&quot;
+  leading={BankIcon}
+  accessibilityLabel=&quot;Netbanking&quot;
+/&gt;</code></pre>
+<p>Same call in both. 16px, 20px at large. Alone, the icon is the label and <code>accessibilityLabel</code> names it.</p>
+<h3>3. An asset and a count: <code>leading</code>, <code>trailing</code> snippets</h3>
+<pre><code>&lt;SegmentedControlItem value=&quot;phone&quot;&gt;
+  {#snippet leading()}
+    &lt;Image
+      src={appLogo}
+      alt=&quot;&quot;
+      class=&quot;w-4 h-4&quot;
+    /&gt;
+  {/snippet}
+  UPI
+  {#snippet trailing()}
+    &lt;Counter value={3} size=&quot;small&quot; /&gt;
+  {/snippet}
+&lt;/SegmentedControlItem&gt;</code></pre>
+<ul><li>cx-only. One row: leading (an icon, or an asset in a 16px box, 20px at large), label, trailing, 8px apart and centred.</li><li><code>leading</code>, <code>trailing</code> and <code>children</code> snippets each receive <code>{ isChecked, isDisabled }</code>.</li></ul>
+<h3>4. Over a brand-colour pane: <code>color="white"</code></h3>
+<p>cx-only. <code>neutral</code> (default) tints the track grey; <code>white</code> draws a white 18% track and white unpicked text, with the same white thumb and dark text.</p>
+<h3>5. The group's field props</h3>
+<p>From RadioGroup: <code>name</code>, <code>isRequired</code>, <code>validationState</code>, <code>errorText</code> and <code>necessityIndicator</code> (new to SegmentedControl). Hint lines take a string or snippet. <code>labelPosition</code> not ported.</p>
+</div>
+
+<div class="section" id="d-card-group">
+<h2><span class="section-num">14</span> <span class="h2-title">CardGroup vs Accordion</span></h2>
+<p>CardGroup is React's Accordion in look and behaviour, renamed per Blade's interactive-cards decision (CardGroup/CardGroupItem: pick one card, it expands). cx flattens AccordionItemHeader's props onto CardGroupItem and makes AccordionItemBody a snippet. The open item is the group's value, so it can be required in a Form.</p>
+<p><b>Item state:</b> every CardGroupItem snippet receives <code>{ index, isExpanded, isDisabled, isActionable, size, collapse }</code>. <code>isActionable</code> is true for an item without a body; <code>collapse()</code> closes the item.</p>
+<h3>1. Items, title, body</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Accordion&gt;
+  &lt;AccordionItem&gt;
+    &lt;AccordionItemHeader
+      title=&quot;When do refunds arrive?&quot;
+      subtitle=&quot;Refunds&quot;
+    /&gt;
+    &lt;AccordionItemBody&gt;
+      Within five to seven days.
+    &lt;/AccordionItemBody&gt;
+  &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;CardGroup&gt;
+  &lt;CardGroupItem
+    title=&quot;When do refunds arrive?&quot;
+    subtitle=&quot;Refunds&quot;
+  &gt;
+    {#snippet body()}
+      Within five to seven days.
+    {/snippet}
+  &lt;/CardGroupItem&gt;
+&lt;/CardGroup&gt;</code></pre>
+</div>
+</div>
+<p><code>body</code> fills Figma's body box: 16px above and in, 16px below (12px at medium). Mounted only while open, so lazy content loads on expand.</p>
+<h3>2. The open item: <code>bind:value</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Accordion
+  expandedIndex={open}
+  onExpandChange={({
+    expandedIndex,
+  }) =&gt; setOpen(expandedIndex)}
+&gt;
+  …
+&lt;/Accordion&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>let open = $state(&#x27;refund&#x27;);
+
+&lt;CardGroup bind:value={open}&gt;
+  &lt;CardGroupItem
+    value=&quot;refund&quot;
+    title=&quot;Refunds&quot;
+  &gt;
+    …
+  &lt;/CardGroupItem&gt;
+&lt;/CardGroup&gt;</code></pre>
+</div>
+</div>
+<ul><li>The value is the item's <code>value</code>, else its index, so indexes work as in React.</li><li>None open is <code>null</code> (React: -1). <code>onChange({ name, value })</code> fires after a press changes it.</li><li>One open at a time; pressing the open item closes it.</li></ul>
+<h3>3. Before and after the title: <code>leading</code>, <code>trailing</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;AccordionItemHeader
+  title=&quot;Netbanking&quot;
+  leading={
+    &lt;BankIcon size=&quot;large&quot; /&gt;
+  }
+  trailing={
+    &lt;Badge color=&quot;notice&quot;&gt;
+      Slow
+    &lt;/Badge&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;CardGroupItem title=&quot;Netbanking&quot;&gt;
+  {#snippet leading()}
+    &lt;Icon source={BankIcon} size=&quot;large&quot; /&gt;
+  {/snippet}
+  {#snippet trailing()}
+    &lt;Badge color=&quot;notice&quot;&gt;Slow&lt;/Badge&gt;
+  {/snippet}
+&lt;/CardGroupItem&gt;</code></pre>
+</div>
+</div>
+<ul><li>cx <code>trailing</code> replaces the chevron and owns its look, turning included; React's sits before the chevron.</li><li><code>leading</code> is capped at 32px (24px at medium), 8px before the title. Leading and chevron centre on the title's first line, so a subtitle doesn't move them.</li><li>Group <code>showNumberPrefix</code> numbers items and wins over <code>leading</code>, as in React.</li></ul>
+<h3>4. A rich title: <code>title</code> as a snippet</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;AccordionItemHeader
+  title=&quot;UPI&quot;
+  titleSuffix={
+    &lt;Badge color=&quot;positive&quot;&gt;
+      Offers
+    &lt;/Badge&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;CardGroupItem value=&quot;upi&quot;&gt;
+  {#snippet title()}
+    &lt;span class=&quot;flex items-center gap-2&quot;&gt;
+      &lt;Text as=&quot;span&quot; weight=&quot;semibold&quot;&gt;
+        UPI
+      &lt;/Text&gt;
+      &lt;Badge color=&quot;positive&quot;&gt;
+        Offers
+      &lt;/Badge&gt;
+    &lt;/span&gt;
+  {/snippet}
+&lt;/CardGroupItem&gt;</code></pre>
+</div>
+</div>
+<p><code>titleSuffix</code> was dropped by decision. A string title uses Figma's medium weight at the group's size; a snippet sizes its own text. The title sits inside the header <code>&lt;button&gt;</code>: phrasing content only, nothing interactive.</p>
+<h3>5. The header's layout: <code>header({ title, subtitle, … })</code></h3>
+<pre><code>&lt;CardGroupItem
+  value=&quot;upi&quot;
+  title=&quot;UPI&quot;
+  subtitle=&quot;Pay with any UPI app&quot;
+&gt;
+  {#snippet header({ title, subtitle })}
+    &lt;span class=&quot;flex items-center gap-2&quot;&gt;
+      {@render title()}
+      &lt;Badge size=&quot;small&quot;&gt;New&lt;/Badge&gt;
+    &lt;/span&gt;
+    {@render subtitle()}
+  {/snippet}
+&lt;/CardGroupItem&gt;</code></pre>
+<p>cx-only; replaces React's AccordionItemHeader children. Fills the header between leading and trailing; receives the drawn title and subtitle as snippets plus item state; each renders nothing when its prop is unset.</p>
+<h3>6. A body that closes its item: <code>collapse</code></h3>
+<pre><code>&lt;CardGroupItem value=&quot;card&quot; title=&quot;Cards&quot;&gt;
+  {#snippet body({ collapse })}
+    &lt;SavedCards bind:selected /&gt;
+    &lt;Button onClick={collapse}&gt;
+      Use this card
+    &lt;/Button&gt;
+  {/snippet}
+&lt;/CardGroupItem&gt;</code></pre>
+<p><code>children</code> instead of <code>body</code> gives a full-width custom body without the body box's padding or background; it wins over <code>body</code>.</p>
+<h3>7. Expand or go: <code>onClick</code></h3>
+<pre><code>&lt;CardGroupItem
+  value=&quot;netbanking&quot;
+  title=&quot;Netbanking&quot;
+  subtitle=&quot;Facing issues&quot;
+  onClick={() =&gt; {
+    openDowntimeSheet();
+    return false;
+  }}
+&gt;
+  {#snippet body()}
+    …
+  {/snippet}
+&lt;/CardGroupItem&gt;</code></pre>
+<ul><li>cx-only. <code>onClick(event)</code> fires on every header press, before anything changes; <code>return false</code> vetoes the expand.</li><li>An item with no <code>body</code> or <code>children</code> never expands: the press is all it does (e.g. <code>onClick={() =&gt; goto('/card')}</code>), and its chevron points right.</li></ul>
+<h3>8. A required choice</h3>
+<p>In a Form with <code>isRequired</code>, <code>name</code> submits the open item's value. The group also takes <code>helpText</code>, <code>errorText</code> (<code>string | Snippet</code>), <code>validationState</code> and <code>accessibilityLabel</code>, none of which Accordion has.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th>React</th><th>cx</th><th>Note</th></tr>
+<tr><td><code>Accordion</code></td><td><code>CardGroup</code></td><td><code>variant</code>, <code>size</code>, <code>showNumberPrefix</code> as React</td></tr>
+<tr><td><code>expandedIndex</code>, <code>defaultExpandedIndex</code>, <code>onExpandChange</code></td><td><code>bind:value</code>, <code>onChange({ name, value })</code></td><td><code>null</code> for none</td></tr>
+<tr><td><code>AccordionItemHeader</code> <code>title</code>, <code>subtitle</code></td><td><code>title</code>, <code>subtitle</code> on the item</td><td>string or snippet</td></tr>
+<tr><td><code>leading</code>, <code>trailing</code></td><td>snippets</td><td><code>trailing</code> replaces the chevron</td></tr>
+<tr><td><code>titleSuffix</code>, header children</td><td>—</td><td>use a <code>title</code> snippet or <code>header</code></td></tr>
+<tr><td><code>AccordionItemBody</code></td><td><code>body</code> snippet</td><td><code>children</code> for a full-width body</td></tr>
+<tr><td>—</td><td><code>onClick</code> with veto, <code>scrollOnExpand</code>, form props</td><td>cx-only</td></tr>
+<tr><td><code>maxWidth</code>, <code>minWidth</code></td><td><code>class</code></td><td>no built-in width defaults</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-alert">
+<h2><span class="section-num">15</span> <span class="h2-title">Alert: title and description as text or snippets</span></h2>
+<p>React takes <code>title</code> as a string and <code>description</code> as a ReactChild; cx takes <code>string | Snippet</code> for both. <code>color</code>, <code>emphasis</code>, <code>icon</code>, <code>isDismissible</code> and <code>onDismiss</code> are unchanged.</p>
+<h3>1. Text: the same props</h3>
+<pre><code>&lt;Alert
+  color=&quot;positive&quot;
+  title=&quot;Refund started&quot;
+  description=&quot;Back on the card in 5 days.&quot;
+/&gt;</code></pre>
+<ul><li><code>negative</code> and <code>notice</code> announce as <code>role="alert"</code> (notice politely), the rest as <code>role="status"</code>.</li><li>React caps width at 584px unless <code>isFullWidth</code>, and takes <code>maxWidth</code>. cx spans its container; set a width via <code>class</code>.</li></ul>
+<h3>2. A link in the description: a snippet</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Alert
+  color=&quot;notice&quot;
+  description={
+    &lt;&gt;
+      Pay by 5 June.{&#x27; &#x27;}
+      &lt;Link href=&quot;/bills&quot;&gt;View bill&lt;/Link&gt;
+    &lt;/&gt;
+  }
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Alert color=&quot;notice&quot;&gt;
+  {#snippet description()}
+    Pay by 5 June.
+    &lt;Link href=&quot;/bills&quot;&gt;View bill&lt;/Link&gt;
+  {/snippet}
+&lt;/Alert&gt;</code></pre>
+</div>
+</div>
+<p><code>description</code> is required in both. Both docs allow a Link at most; the snippet renders inside the description's paragraph.</p>
+<h3>3. A rich title: <code>title</code> as a snippet</h3>
+<pre><code>&lt;Alert
+  color=&quot;notice&quot;
+  description=&quot;Add a PAN for payouts.&quot;
+&gt;
+  {#snippet title()}
+    KYC pending
+    &lt;Badge size=&quot;small&quot; color=&quot;notice&quot;&gt;
+      Action needed
+    &lt;/Badge&gt;
+  {/snippet}
+&lt;/Alert&gt;</code></pre>
+<p>No React equivalent. A text title is a paragraph; a snippet gets a box with the same classes. The icon aligns with the title's first line.</p>
+<h3>4. Dismissing: <code>bind:isOpen</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Alert
+  description=&quot;Draft saved.&quot;
+  onDismiss={() =&gt; track(&#x27;dismiss&#x27;)}
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Alert
+  bind:isOpen
+  description=&quot;Draft saved.&quot;
+  onDismiss={() =&gt; track(&#x27;dismiss&#x27;)}
+/&gt;
+
+{#if !isOpen}
+  &lt;Button
+    size=&quot;small&quot;
+    onClick={() =&gt; (isOpen = true)}
+  &gt;
+    Show it again
+  &lt;/Button&gt;
+{/if}</code></pre>
+</div>
+</div>
+<p>React's open state is internal. In cx, dismiss calls <code>onDismiss</code>, sets <code>isOpen</code> to false and slides the alert shut (instantly under reduced motion); setting it back reopens it. The button's name is <code>closeLabel</code>, default "Dismiss alert".</p>
+<h3>5. Actions: not in cx</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Alert
+  color=&quot;negative&quot;
+  description=&quot;The payout failed.&quot;
+  actions={{
+    primary: {
+      text: &#x27;Retry&#x27;,
+      onClick: retry,
+    },
+    secondary: {
+      text: &#x27;Details&#x27;,
+      href: &#x27;/payouts/42&#x27;,
+    },
+  }}
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Alert color=&quot;negative&quot;&gt;
+  {#snippet description()}
+    The payout failed.
+    &lt;Link href=&quot;/payouts/42&quot;&gt;
+      Details
+    &lt;/Link&gt;
+  {/snippet}
+&lt;/Alert&gt;</code></pre>
+</div>
+</div>
+<p>Figma's full-width Alert has no actions. Use a link in the description; put buttons outside.</p>
+<div class="tablewrap"><table class="compare">
+<tr><th></th><th>React</th><th>cx</th></tr>
+<tr><td><code>title</code></td><td>string</td><td><code>string | Snippet</code></td></tr>
+<tr><td><code>description</code></td><td>ReactChild</td><td><code>string | Snippet</code></td></tr>
+<tr><td>Open state</td><td>internal; gone once dismissed</td><td><code>bind:isOpen</code>, default true</td></tr>
+<tr><td>Width</td><td>584px, <code>isFullWidth</code>, <code>maxWidth</code></td><td>full width; <code>class</code></td></tr>
+<tr><td><code>actions</code></td><td>primary button, secondary link</td><td>none</td></tr>
+<tr><td>Dismiss button name</td><td>fixed, "Dismiss alert"</td><td><code>closeLabel</code></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="d-empty-state">
+<h2><span class="section-num">16</span> <span class="h2-title">EmptyState: asset, title and description</span></h2>
+<p>React takes <code>asset</code> as a node, <code>title</code> and <code>description</code> as strings, actions in children. In cx <code>asset</code> is a snippet, <code>title</code> and <code>description</code> are <code>string | Snippet</code>, and <code>icon</code> leads the first line.</p>
+<h3>1. Asset, text and an action</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;EmptyState
+  asset={
+    &lt;img src={noData} alt=&quot;&quot; /&gt;
+  }
+  title=&quot;No payment links yet&quot;
+  description=&quot;Share one to get paid.&quot;
+&gt;
+  &lt;Button&gt;Create Payment Link&lt;/Button&gt;
+&lt;/EmptyState&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;EmptyState
+  title=&quot;No payment links yet&quot;
+  description=&quot;Share one to get paid.&quot;
+&gt;
+  {#snippet asset()}
+    &lt;img src={noData} alt=&quot;&quot; /&gt;
+  {/snippet}
+  &lt;Button&gt;Create Payment Link&lt;/Button&gt;
+&lt;/EmptyState&gt;</code></pre>
+</div>
+</div>
+<ul><li>The asset box is capped per size: 60, 90, 120, 160px for small, medium (default), large, xlarge.</li><li>The title's heading level follows the size, as in React.</li><li>Illustration choice is app data; load one lazily with <code>Image</code> (<code>src={import('./empty.svg?raw')}</code>, <code>class="h-full w-full"</code>).</li></ul>
+<h3>2. An icon before the title: <code>icon</code></h3>
+<pre><code>&lt;EmptyState
+  size=&quot;small&quot;
+  icon={AlertTriangleIcon}
+  description=&quot;Couldn&#x27;t load refunds.&quot;
+/&gt;</code></pre>
+<p>cx only. By size the icon is 12, 16, 20 or 32px with a 4, 8, 12 or 12px gap. With no title it leads the description (Figma's single-line small empty state).</p>
+<h3>3. A link in the description</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;EmptyState
+  title=&quot;No customers&quot;
+  description=&quot;Add one from a payment.&quot;
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;EmptyState title=&quot;No customers&quot;&gt;
+  {#snippet description()}
+    Add one from a payment, or
+    &lt;Link href=&quot;/import&quot;&gt;
+      import a CSV
+    &lt;/Link&gt;.
+  {/snippet}
+&lt;/EmptyState&gt;</code></pre>
+</div>
+</div>
+<p>React's description is a string. A cx description snippet renders inside its paragraph; a title snippet inside the heading, which keeps its level.</p>
+</div>
+
+<div class="section" id="d-avatar">
+<h2><span class="section-num">17</span> <span class="h2-title">Avatar: topAddon and bottomAddon</span></h2>
+<p>React takes <code>topAddon</code> as an element (only Indicator) and <code>bottomAddon</code> as an IconComponent (in practice TrustedBadgeIcon). In cx both are snippets filling a box sized and placed per avatar size.</p>
+<h3>1. An indicator and a trusted badge</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Avatar
+  name=&quot;Dev Shah&quot;
+  topAddon={
+    &lt;Indicator color=&quot;positive&quot; /&gt;
+  }
+  bottomAddon={TrustedBadgeIcon}
+/&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Avatar name=&quot;Dev Shah&quot;&gt;
+  {#snippet topAddon()}
+    &lt;span
+      class=&quot;h-full w-full rounded-max
+             bg-interactive-positive-default&quot;
+    &gt;&lt;/span&gt;
+  {/snippet}
+  {#snippet bottomAddon()}
+    &lt;img
+      src={trustBadge}
+      alt=&quot;&quot;
+      class=&quot;h-full w-full&quot;
+    /&gt;
+  {/snippet}
+&lt;/Avatar&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>topAddon</code>: top right, 6–10px box. cx has no Indicator, so the dot is a filled span.</li><li><code>bottomAddon</code>: bottom right, 8–20px box. It takes any content because a trusted badge is a multi-coloured image, not a tintable glyph.</li><li>Both boxes ignore the pointer, so a clickable avatar stays one target.</li><li>A top-level snippet is a value and can go to many avatars as a prop (<code>topAddon={indicator} bottomAddon={trusted}</code>).</li></ul>
+<h3>2. AvatarGroup: plain children</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;AvatarGroup size=&quot;small&quot; maxCount={3}&gt;
+  &lt;Avatar name=&quot;Asha Rao&quot; /&gt;
+  &lt;Avatar name=&quot;Dev Mehta&quot; /&gt;
+  &lt;Avatar name=&quot;Ira Khan&quot; /&gt;
+  &lt;Avatar name=&quot;Kabir Sen&quot; /&gt;
+&lt;/AvatarGroup&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;AvatarGroup
+  size=&quot;small&quot;
+  maxCount={3}
+  accessibilityLabel=&quot;Reviewers&quot;
+&gt;
+  &lt;Avatar name=&quot;Asha Rao&quot; /&gt;
+  &lt;Avatar name=&quot;Dev Mehta&quot; /&gt;
+  &lt;Avatar name=&quot;Ira Khan&quot; /&gt;
+  &lt;Avatar name=&quot;Kabir Sen&quot; /&gt;
+&lt;/AvatarGroup&gt;</code></pre>
+</div>
+</div>
+<ul><li>The group reaches avatars through context; its size wins over each avatar's.</li><li>Past <code>maxCount</code> the rest fold into a "+N" avatar.</li><li>cx adds <code>density</code> for the overlap: compact (default), normal, comfortable.</li></ul>
+</div>
+
+<div class="section" id="d-tabs">
+<h2><span class="section-num">18</span> <span class="h2-title">Tabs: the tabList snippet and TabItem state</span></h2>
+<p>React nests a <code>&lt;TabList&gt;</code> of <code>&lt;TabItem&gt;</code>s and <code>&lt;TabPanel&gt;</code>s in <code>&lt;Tabs&gt;</code>. cx keeps TabItem and TabPanel; TabList becomes a <code>tabList</code> snippet rendered inside the <code>role="tablist"</code> element, and panels go in children. A TabItem's <code>leading</code>, <code>trailing</code> and label snippets receive TabItemState: <code>{ isSelected, isDisabled }</code>.</p>
+<h3>1. The list and the panels</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Tabs
+  value={value}
+  onChange={setValue}
+&gt;
+  &lt;TabList&gt;
+    &lt;TabItem value=&quot;upi&quot;&gt;UPI&lt;/TabItem&gt;
+    &lt;TabItem value=&quot;card&quot;&gt;Card&lt;/TabItem&gt;
+  &lt;/TabList&gt;
+  &lt;TabPanel value=&quot;upi&quot;&gt;…&lt;/TabPanel&gt;
+  &lt;TabPanel value=&quot;card&quot;&gt;…&lt;/TabPanel&gt;
+&lt;/Tabs&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Tabs
+  bind:value
+  accessibilityLabel=&quot;Payment methods&quot;
+&gt;
+  {#snippet tabList()}
+    &lt;TabItem value=&quot;upi&quot;&gt;UPI&lt;/TabItem&gt;
+    &lt;TabItem value=&quot;card&quot;&gt;Card&lt;/TabItem&gt;
+  {/snippet}
+  &lt;TabPanel value=&quot;upi&quot;&gt;…&lt;/TabPanel&gt;
+  &lt;TabPanel value=&quot;card&quot;&gt;…&lt;/TabPanel&gt;
+&lt;/Tabs&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>bind:value</code> replaces <code>value</code> + <code>onChange</code> (and <code>defaultValue</code>); unset, it picks the first enabled tab. <code>onChange</code> still receives the bare value.</li><li><code>accessibilityLabel</code> names the tablist.</li><li><code>variant</code>, <code>size</code>, <code>orientation</code>, <code>isFullWidthTabItem</code>, <code>isLazy</code> are unchanged.</li><li>cx adds <code>activation</code>: <code>automatic</code> (default, arrows pick) or <code>manual</code> (Enter or Space picks).</li></ul>
+<h3>2. After the label: <code>trailing</code>, with the tab's state</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;TabItem
+  value=&quot;card&quot;
+  trailing={&lt;Badge&gt;New&lt;/Badge&gt;}
+&gt;
+  Card
+&lt;/TabItem&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TabItem value=&quot;card&quot;&gt;
+  Card
+  {#snippet trailing({ isSelected })}
+    &lt;Badge
+      size=&quot;small&quot;
+      emphasis={isSelected
+        ? &#x27;intense&#x27;
+        : &#x27;subtle&#x27;}
+    &gt;
+      New
+    &lt;/Badge&gt;
+  {/snippet}
+&lt;/TabItem&gt;</code></pre>
+</div>
+</div>
+<p>React's <code>trailing</code> is a static node; cx passes the tab's state, so a Badge or Counter can follow the pick. Content outside the snippets is the label.</p>
+<h3>3. Before the label: <code>leading</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;TabItem value=&quot;upi&quot; leading={InfoIcon}&gt;
+  UPI
+&lt;/TabItem&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;TabItem value=&quot;wallet&quot;&gt;
+  {#snippet leading()}
+    &lt;Image
+      src={walletLogo}
+      alt=&quot;&quot;
+      class=&quot;h-full w-full&quot;
+    /&gt;
+  {/snippet}
+  Wallet
+&lt;/TabItem&gt;</code></pre>
+</div>
+</div>
+<p>React's <code>leading</code> is an IconComponent; cx takes the same icon or a snippet (a logo, an avatar) in the icon's 16px box (20px at large), receiving the tab's state. An icon-only tab needs <code>accessibilityLabel</code>.</p>
+<h3>4. The label as a snippet: <code>children(state)</code></h3>
+<pre><code>&lt;TabItem value=&quot;emi&quot;&gt;
+  {#snippet children({ isSelected })}
+    {isSelected ? &#x27;EMI · 3 plans&#x27; : &#x27;EMI&#x27;}
+  {/snippet}
+&lt;/TabItem&gt;</code></pre>
+<p>No React equivalent (React's children is a node). Plain content also works.</p>
+<p class="muted">The tab owns its Figma row, hence a prop per part: leading, label, trailing 8px apart; horizontal tabs 24px apart at small, 32px at medium and large.</p>
+</div>
+
+<div class="section" id="d-carousel">
+<h2><span class="section-num">19</span> <span class="h2-title">Carousel: children(item, index)</span></h2>
+<p>React takes one <code>&lt;CarouselItem&gt;</code> child per slide. cx takes <code>items</code>, an <code>itemKey</code>, and a <code>children</code> snippet that gets each item and index and renders one full-width slide.</p>
+<h3>1. Slides from data</h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Carousel
+  visibleItems={1}
+  showIndicators
+  accessibilityLabel=&quot;Offers&quot;
+&gt;
+  {offers.map((offer) =&gt; (
+    &lt;CarouselItem key={offer.id}&gt;
+      &lt;Card&gt;…&lt;/Card&gt;
+    &lt;/CarouselItem&gt;
+  ))}
+&lt;/Carousel&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Carousel
+  items={offers}
+  itemKey={(offer) =&gt; offer.id}
+  accessibilityLabel=&quot;Offers&quot;
+  slideLabel={(n, count) =&gt;
+    `Offer ${n} of ${count}`}
+&gt;
+  {#snippet children(offer, index)}
+    &lt;div class=&quot;rounded-medium p-4&quot;&gt;…&lt;/div&gt;
+  {/snippet}
+&lt;/Carousel&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>accessibilityLabel</code> is required in cx; it names the <code>aria-roledescription="carousel"</code> section.</li><li>Dots appear only with <code>slideLabel</code> (React: <code>showIndicators</code>); it names each slide and dot, localised by the caller.</li><li>Slides off show are inert.</li></ul>
+<h3>2. Slide on show and auto-advance: <code>bind:index</code>, <code>autoAdvance</code></h3>
+<div class="pair">
+  <div><div class="pair-h">React</div><pre><code>&lt;Carousel
+  activeSlide={active}
+  onChange={setActive}
+  autoPlay
+&gt;
+  …
+&lt;/Carousel&gt;</code></pre>
+</div>
+  <div><div class="pair-h">cx</div><pre><code>&lt;Carousel
+  items={offers}
+  itemKey={(offer) =&gt; offer.id}
+  accessibilityLabel=&quot;Offers&quot;
+  bind:index
+  autoAdvance={4000}
+&gt;
+  …
+&lt;/Carousel&gt;</code></pre>
+</div>
+</div>
+<ul><li><code>index</code> replaces <code>activeSlide</code> and <code>defaultActiveSlide</code>; setting it scrolls there. <code>onChange(index)</code> is in both.</li><li><code>autoAdvance</code>: ms between slides, wrapping at the end; 0 (default) is off. Pauses while pointer or focus is inside, never runs under reduced motion, fixed at mount.</li></ul>
+<p>The track is a scroll-snap row: touch, wheel and keyboard scrolling are native. One full-width slide shows at a time, so React's <code>visibleItems</code>, <code>gap</code>, <code>snapAlign</code>, <code>carouselItemWidth</code>, <code>shouldAddStartEndSpacing</code>, navigation buttons and <code>indicatorVariant</code> have no cx counterpart.</p>
+</div>
+
+    </div>
+    <div class="tab-panel" role="tabpanel" id="panel-extras" aria-labelledby="tab-extras" hidden>
+<div class="section" id="x-image">
+<h2><span class="section-num">1</span> <span class="h2-title">Image: the fallback snippet</span></h2>
+<p><code>&lt;Image&gt;</code> draws a picture in a box with no size of its own: size it by <code>class</code>. <code>src</code> is a URL, SVG markup, or a promise of either; <code>alt</code> is required. Style props: <code>shape</code> (square, rounded, circle), <code>fit</code> (contain, cover).</p>
+<h3>1. Default stand-in: the initial of <code>alt</code></h3>
+<pre><code>&lt;Image
+  src={bank.logo}
+  alt=&quot;HDFC Bank&quot;
+  shape=&quot;rounded&quot;
+  class=&quot;h-10 w-10&quot;
+/&gt;</code></pre>
+<p>A missing or failed <code>src</code> shows the upper-cased first character of <code>alt</code>, as a <code>role="img"</code> named by the whole alt. An empty <code>alt</code> marks decoration: no stand-in.</p>
+<h3>2. Your own stand-in: <code>fallback</code></h3>
+<pre><code>&lt;Image
+  src={bank.logo}
+  alt=&quot;HDFC Bank&quot;
+  class=&quot;h-10 w-10&quot;
+&gt;
+  {#snippet fallback()}
+    &lt;Icon source={BankIcon} /&gt;
+  {/snippet}
+&lt;/Image&gt;</code></pre>
+<p>Replaces the initial; takes no arguments.</p>
+<h3>3. A lazy source</h3>
+<pre><code>&lt;Image
+  src={import(&#x27;./logos/hdfc.svg?raw&#x27;)}
+  alt=&quot;HDFC Bank&quot;
+  isPendingShown
+  class=&quot;h-10 w-10&quot;
+/&gt;</code></pre>
+<ul><li>A promise may resolve to the data or a module with a default export, so a dynamic import works.</li><li><code>isPendingShown</code> shows a shimmer while waiting; otherwise the box stays empty.</li><li>A rejected promise shows the stand-in and goes to <code>onError</code> and <code>adapters.captureError</code>; a failed <code>&lt;img&gt;</code> goes to <code>onError</code> only. <code>onLoad</code> fires on load.</li><li>Markup renders through a data-URI <code>&lt;img&gt;</code>, never as HTML: no script, no <code>currentColor</code>. A themed glyph is an <code>Icon</code>.</li></ul>
+</div>
+
+<div class="section" id="x-countdown">
+<h2><span class="section-num">2</span> <span class="h2-title">Countdown: children(CountdownState)</span></h2>
+<p><code>&lt;Countdown&gt;</code> renders a <code>role="timer"</code> <code>&lt;time&gt;</code> showing mm:ss. A <code>children</code> snippet replaces the figure and receives CountdownState: <code>{ remaining, progress }</code>. <code>variant</code>: <code>text</code> (default; inherits size and colour) or <code>pill</code> (session-timer chip).</p>
+<h3>1. The default figure</h3>
+<pre><code>&lt;Countdown
+  variant=&quot;pill&quot;
+  seconds={600}
+  urgentBelow={60}
+  accessibilityLabel=&quot;Session expires in&quot;
+  onElapsed={closeCheckout}
+/&gt;</code></pre>
+<ul><li>A new <code>seconds</code> restarts; <code>isPaused</code> holds the time left.</li><li>At or under <code>urgentBelow</code>: urgent look (red).</li><li><code>onElapsed</code> fires once, at zero; what zero means is the caller's.</li><li>Not live: never interrupts a screen reader, which reads the time on request.</li></ul>
+<h3>2. Your own figure</h3>
+<pre><code>&lt;Countdown seconds={300} class=&quot;w-full&quot;&gt;
+  {#snippet children({ progress })}
+    &lt;Progress
+      type=&quot;bar&quot;
+      value={100 - progress}
+      accessibilityLabel=&quot;Time left&quot;
+    /&gt;
+  {/snippet}
+&lt;/Countdown&gt;</code></pre>
+<ul><li><code>remaining</code>: whole seconds left, never negative (e.g. <code>{remaining}s</code>).</li><li><code>progress</code>: 0 to 100, the share elapsed.</li><li>Each tick recomputes from a deadline, so a throttled background tab can't stretch it.</li></ul>
+</div>
+
+<div class="section" id="x-async">
+<h2><span class="section-num">3</span> <span class="h2-title">Async: children({ value }), pending, failed({ error })</span></h2>
+<p><code>&lt;Async&gt;</code> takes a promise and renders <code>children({ value })</code> on resolve, <code>failed({ error })</code> on reject, and <code>pending</code> in between, only after <code>pendingDelay</code> ms (default 150), so a fast load never flashes it.</p>
+<h3>1. The value</h3>
+<pre><code>&lt;Async
+  promise={banksPromise}
+  pendingLabel=&quot;Loading banks&quot;
+&gt;
+  {#snippet children({ value: banks })}
+    {#each banks as bank (bank)}
+      &lt;Text&gt;{bank}&lt;/Text&gt;
+    {/each}
+  {/snippet}
+&lt;/Async&gt;</code></pre>
+<ul><li>The wait renders in a <code>role="status"</code> box with <code>aria-busy</code>, named by <code>pendingLabel</code>. <code>class</code> and <code>testID</code> land on it; settled content renders bare.</li><li>Without a <code>pending</code> snippet it shows skeleton lines. A <code>pending</code> snippet takes no arguments.</li></ul>
+<h3>2. The failure: <code>failed({ error })</code></h3>
+<pre><code>&lt;Async promise={banksPromise}&gt;
+  {#snippet children({ value: banks })}
+    …
+  {/snippet}
+  {#snippet failed({ error })}
+    &lt;Alert
+      color=&quot;negative&quot;
+      description={(error as Error).message}
+      isDismissible={false}
+    /&gt;
+  {/snippet}
+&lt;/Async&gt;</code></pre>
+<ul><li><code>error</code> is <code>unknown</code>. Without <code>failed</code> a failure renders nothing but still goes to <code>onError</code> and <code>adapters.captureError</code>.</li><li>Retry by assigning a new promise (e.g. <code>promise = loadBanks()</code> on a <code>$state</code>). Keyed on <code>promise</code> alone: the same one is never awaited twice, a new one starts over, an old one can't land.</li></ul>
+</div>
+
+<div class="section" id="x-form">
+<h2><span class="section-num">4</span> <span class="h2-title">Form: children(FormState)</span></h2>
+<p>React Blade ships only field parts (FormLabel, FormHint, CharacterCounter); the <code>&lt;form&gt;</code> and its state are the app's. <code>&lt;Form&gt;</code> provides a form model through context: fields register by <code>name</code>, and a submit Button inside validates and submits. Its optional <code>children</code> snippet receives FormState: <code>{ data, touched, errors, submitted, submitting }</code>.</p>
+<h3>1. Fields, submit and state</h3>
+<pre><code>&lt;Form
+  name=&quot;payment&quot;
+  {validator}
+  {onSubmit}
+&gt;
+  {#snippet children(form)}
+    &lt;TextInput
+      name=&quot;vpa&quot;
+      label=&quot;UPI ID&quot;
+      isRequired
+    /&gt;
+    &lt;Button type=&quot;submit&quot;&gt;Pay&lt;/Button&gt;
+    {#if form.submitting}
+      &lt;Text size=&quot;small&quot;&gt;Paying…&lt;/Text&gt;
+    {/if}
+  {/snippet}
+&lt;/Form&gt;</code></pre>
+<ul><li>Button's <code>type</code> defaults to <code>button</code>; only <code>type="submit"</code> submits. An invalid form shakes it; it shows busy while <code>onSubmit</code>'s promise is out.</li><li>Enter in a field submits too, with <code>source: 'enter'</code>.</li><li>Plain content works; the snippet is only for reading state.</li><li><code>data</code>, <code>errors</code>, <code>touched</code> are keyed by field name. <code>submitting</code> is true while <code>onSubmit</code>'s promise is out. <code>submitted</code> turns true at the first submit or validate attempt, valid or not; from then every field counts as touched.</li><li>Dotted names nest: <code>card.number</code> and <code>card.expiry</code> reach <code>onSubmit</code> as <code>{ card: { number, expiry } }</code>; <code>touched</code> nests too.</li><li><code>onInput(data)</code> hears every edit; <code>accessibilityLabel</code> names the form, making it a landmark.</li></ul>
+<h3>2. Validation</h3>
+<pre><code>&lt;Form
+  name=&quot;payment&quot;
+  validator={(data) =&gt;
+    String(data.vpa).endsWith(&#x27;@fail&#x27;)
+      ? { vpa: &#x27;Not reachable&#x27; }
+      : {}}
+  formatConstraintError={(code) =&gt;
+    $t(`form.${code}`)}
+  onValidationFailed={(errors) =&gt;
+    track(&#x27;invalid&#x27;, errors)}
+  {onSubmit}
+&gt;
+  …
+&lt;/Form&gt;</code></pre>
+<ul><li><code>validator</code> may be sync or async; its errors merge over the fields' declarative ones (required, pattern, email), which <code>formatConstraintError</code> turns into copy.</li><li><code>onValidationFailed</code> hears every failed attempt (button or Enter); the first invalid field is revealed either way.</li></ul>
+<h3>3. Validate without submitting: <code>validateForm</code></h3>
+<pre><code>&lt;Form name=&quot;details&quot; {onValidationFailed}&gt;
+  &lt;TextInput
+    name=&quot;email&quot;
+    label=&quot;Email&quot;
+    type=&quot;email&quot;
+    isRequired
+  /&gt;
+  &lt;Button validateForm&gt;Check&lt;/Button&gt;
+&lt;/Form&gt;</code></pre>
+<p>On errors it behaves like a submit (shake, <code>onValidationFailed</code>, reveal) but never calls <code>onSubmit</code>. Its <code>onClick</code> runs only when the form is valid.</p>
+</div>
+
+<div class="section" id="x-screen">
+<h2><span class="section-num">5</span> <span class="h2-title">Screen: the footer snippet</span></h2>
+<p><code>&lt;Screen&gt;</code> is the page shell inside a NavStack: a <code>&lt;section&gt;</code> with a centred, scrolling column, capped at 30rem from the <code>d</code> breakpoint. <code>children</code> scrolls; <code>footer</code> is pinned under it.</p>
+<h3>1. A body and a pinned bar</h3>
+<pre><code>&lt;Screen accessibilityLabel=&quot;Pay&quot;&gt;
+  &lt;OrderSummary {order} /&gt;
+  {#snippet footer()}
+    &lt;BottomBar&gt;
+      &lt;div class=&quot;p-3&quot;&gt;
+        &lt;Button
+          class=&quot;w-full&quot;
+          onClick={pay}
+        &gt;
+          Pay
+        &lt;/Button&gt;
+      &lt;/div&gt;
+    &lt;/BottomBar&gt;
+  {/snippet}
+&lt;/Screen&gt;</code></pre>
+<ul><li>The footer renders outside the scrolling body. BottomBar draws only the surface; padding is yours.</li><li><code>isDisabled</code> (e.g. a payment in flight): shown but inert and greyed, footer included.</li><li><code>padding</code>: <code>medium</code> (16px, default) or <code>none</code> for edge-to-edge content.</li></ul>
+</div>
+
+<div class="section" id="x-nav-stack">
+<h2><span class="section-num">6</span> <span class="h2-title">NavStack: screens pushed from code</span></h2>
+<p><code>&lt;NavStack&gt;</code> shows one screen at a time from a stack the app drives with <code>nav.push(Component, options)</code>, from a component or a <code>.ts</code> flow. Each pushed component gets a <code>screen</code> prop. Header, back button and titles are the app's, read from <code>nav.entries</code>. Overlays go through <code>openModal</code>, not the stack.</p>
+<h3>1. Mount it and push the first screen</h3>
+<pre><code>&lt;script lang=&quot;ts&quot;&gt;
+  const nav = getNav&lt;{ title: string }&gt;();
+  const top = $derived(nav.entries.at(-1));
+
+  nav.push(Methods, {
+    name: &#x27;methods&#x27;,
+    meta: { title: &#x27;Pay&#x27; },
+  });
+&lt;/script&gt;
+
+&lt;header class=&quot;flex h-12 items-center&quot;&gt;
+  {#if nav.entries.length &gt; 1}
+    &lt;IconButton
+      icon={ArrowLeftIcon}
+      accessibilityLabel=&quot;Back&quot;
+      onClick={() =&gt; nav.back()}
+    /&gt;
+  {/if}
+  &lt;Text weight=&quot;semibold&quot;&gt;
+    {top?.entry.meta?.title}
+  &lt;/Text&gt;
+&lt;/header&gt;
+&lt;NavStack accessibilityLabel=&quot;Checkout&quot; /&gt;</code></pre>
+<ul><li><code>name</code> is stable (analytics, tests, <code>data-screen</code>); <code>meta</code> is the app's own data.</li><li>The first screen doesn't slide; later ones slide in (full slide on mobile, 20px drift with a fade from <code>d</code>) and take focus.</li><li>Only the top screen is mounted: a covered screen's local state is lost.</li></ul>
+<h3>2. A screen: the <code>screen</code> prop</h3>
+<pre><code>&lt;!-- Otp.svelte --&gt;
+&lt;script lang=&quot;ts&quot;&gt;
+  interface Props {
+    phone: string;
+    screen: NavScreenControl&lt;string&gt;;
+  }
+  let { phone, screen }: Props = $props();
+  let otp = $state(&#x27;&#x27;);
+&lt;/script&gt;
+
+&lt;Screen&gt;
+  …
+  {#snippet footer()}
+    &lt;BottomBar&gt;
+      &lt;Button
+        onClick={() =&gt; screen.pop(otp)}
+      &gt;
+        Verify
+      &lt;/Button&gt;
+    &lt;/BottomBar&gt;
+  {/snippet}
+&lt;/Screen&gt;</code></pre>
+<pre><code>const handle = nav.push(Otp, {
+  props: { phone },
+  name: &#x27;otp&#x27;,
+});
+handle.result.then((otp) =&gt; verify(otp));</code></pre>
+<ul><li><code>screen.pop(result)</code> leaves this screen and all above, settling the pusher's <code>result</code>; any other exit settles <code>undefined</code>.</li><li><code>screen.popAfter()</code> removes the screens above; <code>screen.close()</code> removes only this one, wherever it sits.</li><li>The handle has the same three, plus <code>update(props)</code>.</li><li>A lazy screen, <code>nav.push(import('./Otp.svelte'), …)</code>, joins the stack at once but shows only once loaded: the current screen stays, the root carries <code>aria-busy</code>, one slide, never a blank. A failed load removes the entry, settles <code>result</code> with <code>undefined</code>, and goes to <code>onLoadError</code> and <code>adapters.captureError</code>.</li></ul>
+<h3>3. Back</h3>
+<pre><code>// the back button, popstate, the SDK bridge
+function onBack() {
+  if (!nav.back()) {
+    closeCheckout();
+  }
+}</code></pre>
+<pre><code>&lt;!-- in a screen with unsaved input --&gt;
+&lt;script lang=&quot;ts&quot;&gt;
+  onDestroy(
+    screen.onBack(() =&gt;
+      isDirty ? true : undefined
+    )
+  );
+&lt;/script&gt;</code></pre>
+<ul><li><code>nav.back()</code> asks open modals, then the top screen's handler, then pops. At the root it returns <code>false</code>; leaving is the app's call.</li><li>A handler returns <code>true</code> (handled; the screen stays until it pops itself), <code>false</code> (<code>back()</code> returns false) or <code>undefined</code> (pop as usual).</li><li>Set it via <code>push(…, { onBack })</code> or <code>screen.onBack</code>, which replaces the pusher's and returns the undo.</li></ul>
+<h3>4. Other moves</h3>
+<pre><code>// after payment: the status screen alone
+nav.replace(Status, {
+  props: { paymentId },
+  name: &#x27;status&#x27;,
+});
+
+// back to the method list
+nav.popTo(&#x27;methods&#x27;);
+
+// leave the flow
+nav.clear();</code></pre>
+<ul><li><code>replace</code> pushes, then drops every other screen once the new one can render.</li><li><code>pop()</code> removes the top screen but keeps the root; <code>popTo(name)</code> returns <code>false</code> if no screen has that name.</li><li><code>depth()</code> and <code>top()</code> read the stack.</li></ul>
+<h3>5. One stack per surface</h3>
+<pre><code>&lt;script lang=&quot;ts&quot;&gt;
+  // an embedded surface: its own stack
+  const nav = provideNav();
+&lt;/script&gt;
+
+&lt;NavStack
+  onChange={(entry, direction) =&gt;
+    track(&#x27;screen&#x27;, {
+      name: entry?.entry.name,
+      direction,
+    })}
+/&gt;</code></pre>
+<ul><li><code>getNav()</code> returns the nearest provided stack, else the page's <code>globalNav</code>.</li><li><code>pushScreen(Component, options)</code> always pushes on <code>globalNav</code>, so a <code>.ts</code> flow needs no context; it needs a mounted NavStack.</li><li><code>onChange(entry, direction)</code> reports the screen on show and <code>forward</code> or <code>back</code>.</li></ul>
+</div>
+
+<div class="section" id="x-overlay-stack">
+<h2><span class="section-num">7</span> <span class="h2-title">OverlayStack and openModal: one overlay root</span></h2>
+<p>React's Modal portals to <code>document.body</code> with its own backdrop. In cx every overlay renders into one <code>&lt;OverlayStack&gt;</code>, mounted in the frame overlays must stay within (the checkout card). It holds the one scrim, the box surfaces mount in, and the stack that renders what <code>openModal</code> opens.</p>
+<h3>1. One host in the frame</h3>
+<pre><code>&lt;div class=&quot;relative h-full&quot;&gt;
+  &lt;Header /&gt;
+  &lt;NavStack /&gt;
+  &lt;OverlayStack /&gt;
+&lt;/div&gt;</code></pre>
+<ul><li>Surfaces opened with <code>openModal</code> render into the host's surfaces box; while one is open, everything beside the host is <code>inert</code>.</li><li>The host owns one shared scrim: it fades in with the first surface and out with the last; a tap closes only the top one (source <code>blur</code>).</li><li>Tooltips and toasts render after the surfaces, so they paint above them, unclipped by overflow.</li><li>Scrim and surfaces box are <code>absolute inset-0</code>: the frame needs <code>relative</code>. Without a host a surface renders in place, unscrimmed.</li></ul>
+<h3>2. Tooltips kept inside a frame</h3>
+<pre><code>&lt;div class=&quot;relative h-80&quot;&gt;
+  &lt;Tooltip content=&quot;Charged by your bank&quot;&gt;
+    &lt;Button&gt;Why a fee?&lt;/Button&gt;
+  &lt;/Tooltip&gt;
+  &lt;OverlayStack
+    class=&quot;pointer-events-none absolute inset-0&quot;
+  /&gt;
+&lt;/div&gt;</code></pre>
+<ul><li>Floating overlays are placed within the host's box if it has one, else the viewport.</li><li><code>pointer-events-none</code> keeps the empty host off page clicks. Omit it on a host that shows surfaces, or the scrim inherits it and ignores taps.</li></ul>
+<h3>3. Opening a surface from code: <code>openModal</code></h3>
+<pre><code>const handle = openModal(RedirectNotice, {
+  props: { bank },
+  title: $t(&#x27;redirecting&#x27;),
+  closeLabel: $t(&#x27;close&#x27;),
+  variant: &#x27;sheet&#x27;,
+});
+const isContinued = await handle.result;</code></pre>
+<pre><code>&lt;!-- RedirectNotice.svelte --&gt;
+&lt;script lang=&quot;ts&quot;&gt;
+  interface Props {
+    bank: string;
+    modal: ModalControl&lt;boolean&gt;;
+  }
+  let { bank, modal }: Props = $props();
+&lt;/script&gt;
+
+&lt;Text&gt;Redirecting to {bank}.&lt;/Text&gt;
+&lt;Button onClick={() =&gt; modal.close(true)}&gt;
+  Continue
+&lt;/Button&gt;</code></pre>
+<ul><li>The component is the surface's body, with one extra prop, <code>modal: { close(result?) }</code>.</li><li><code>result</code> settles once: with <code>close</code>'s argument, or <code>undefined</code> on dismiss.</li><li>A lazy component (<code>import('./Offers.svelte')</code>) opens at once with a shimmer, announced by <code>pendingLabel</code>; a failed load closes it and goes to <code>onLoadError</code> and <code>adapters.captureError</code>.</li><li>Options: <code>props</code>, <code>title</code>, <code>subtitle</code>, <code>closeLabel</code>, <code>pendingLabel</code>, <code>isDismissible</code>, <code>onDismiss({ source, close })</code>, <code>onLoadError</code>, <code>role</code>, <code>accessibilityLabel</code>, <code>testID</code>, <code>class</code>, plus the surface's style props (<code>variant: modal | sheet | drawer | left-drawer</code>, <code>size</code>, <code>pace</code>).</li></ul>
+<h3>4. Driving it from outside: <code>update</code>, <code>close</code></h3>
+<pre><code>const handle = openModal(PaymentStatus, {
+  props: { status: &#x27;pending&#x27; },
+  title: &#x27;Payment&#x27;,
+  isDismissible: false,
+});
+poll().then((status) =&gt; {
+  handle.update({ status });
+});
+// later
+handle.close();</code></pre>
+<p><code>update</code> passes new props. With <code>isDismissible: false</code> there is no close button; a dismissal only reaches <code>onDismiss</code>, whose <code>close</code> ends it.</p>
+<h3>5. Stacking, back and scope</h3>
+<pre><code>// the app&#x27;s back handler, before
+// its own navigation
+function onBack() {
+  if (globalLayers.back()) {
+    return;
+  }
+  …
+}</code></pre>
+<ul><li>A surface opened over another stacks: Escape and scrim taps reach only the top one; those below go inert. A tooltip over a surface is above it too: one Escape closes the tooltip, the next the surface.</li><li><code>globalLayers.back()</code> asks the top surface; <code>nav.back()</code> already does this first.</li><li><code>provideLayers()</code> and <code>provideOverlays()</code> give an embedded surface (or a test) its own layers and stack; <code>openModal</code> always uses the global stack.</li></ul>
+</div>
+
+<div class="section" id="x-virtual">
+<h2><span class="section-num">8</span> <span class="h2-title">VirtualWindow and VirtualOptionList: long lists</span></h2>
+<p>React's ActionList takes <code>isVirtualized</code> (react-window). cx has <code>&lt;VirtualWindow&gt;</code> for any list and <code>&lt;VirtualOptionList&gt;</code> built on it, which ActionList's <code>virtualizedItems</code> and <code>virtualizedSections</code> use underneath. Both mount only rows in view plus overscan rows (default 3) beyond each edge.</p>
+<h3>1. VirtualWindow: <code>children({ start, end })</code></h3>
+<pre><code>&lt;VirtualWindow
+  keys={rows.map((row) =&gt; row.key)}
+  class=&quot;h-80&quot;
+  contentClass=&quot;flex flex-col&quot;
+&gt;
+  {#snippet children({ start, end })}
+    {#each rows.slice(start, end)
+      as row (row.key)}
+      &lt;PaymentRow {row} /&gt;
+    {/each}
+  {/snippet}
+&lt;/VirtualWindow&gt;</code></pre>
+<ul><li><code>class</code> is the scroll viewport: give it a bounded height.</li><li>Render rows <code>start</code> to <code>end - 1</code> only, as direct children of the <code>contentClass</code> element: child i is measured as row <code>start + i</code>.</li><li>Padding stands in for unmounted rows; no spacer elements.</li></ul>
+<h3>2. Rows of any height</h3>
+<p>No configuration. Each mounted row is measured and remembered by key; an unseen row counts as the mean of the measured ones. When rows above the view differ from the prediction, scroll is corrected so the visible content stays put. The total is a prediction until every row has been seen, so the scrollbar settles as you scroll. A row a pixel off its last size is the same row, so a hairline that depends on its place never re-measures.</p>
+<h3>3. Where it opens, and the keyboard: <code>startAt</code>, <code>reveal</code></h3>
+<pre><code>&lt;VirtualWindow
+  {keys}
+  startAt={keys.indexOf(pickedKey)}
+  reveal={activeIndex}
+  class=&quot;h-80&quot;
+&gt;
+  …
+&lt;/VirtualWindow&gt;</code></pre>
+<ul><li><code>startAt</code>: the row it opens scrolled to, read once at mount.</li><li><code>reveal</code>: a row that must be mounted (keyboard focus); if outside the slice, the window scrolls to its predicted position.</li><li><code>-1</code> (default for both) means none.</li></ul>
+<h3>4. VirtualOptionList: items as data</h3>
+<pre><code>&lt;VirtualOptionList
+  class=&quot;h-80&quot;
+  label=&quot;Bank&quot;
+  items={banks}
+  itemKey={(bank) =&gt; bank.code}
+  itemText={(bank) =&gt; bank.name}
+  isItemDisabled={(bank) =&gt;
+    Boolean(bank.isDown)}
+  bind:value
+&gt;
+  {#snippet children(bank)}
+    &lt;OptionItem
+      value={bank}
+      title={bank.name}
+      description={bank.note}
+    /&gt;
+  {/snippet}
+&lt;/VirtualOptionList&gt;</code></pre>
+<ul><li>Items come up front, since unmounted rows can't register; <code>itemKey</code> tracks each across re-orders and filtering, and must be unique across sections.</li><li>The snippet renders one OptionItem per row and also receives its state (index, isSelected, isDisabled).</li><li><code>isItemDisabled</code> decides what the keyboard skips and the list refuses; an OptionItem's own <code>isDisabled</code> only greys the row.</li><li><code>itemText</code> enables typeahead over unmounted rows and the default <code>query</code> match.</li><li><code>sections</code> (<code>{ key, title, items }</code>) in place of <code>items</code>: each heading is a row of its own, scrolled with the rest, under one window; the keyboard runs across sections as one list.</li><li>Opens scrolled to its pick and stays one tab stop: if the pick is beyond the slice, the first enabled row in view holds it. Home, End, PageUp, PageDown scroll to mount the row they reach.</li><li>Otherwise OptionList's field contract: <code>name</code>, <code>isRequired</code>, <code>selectionType</code> (<code>multiple</code>, <code>none</code>), <code>validationState</code>, hint lines, <code>query</code> / <code>match</code> / <code>empty</code>.</li></ul>
+</div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section[id], h3[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach((l) => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  sections.forEach((s) => observer.observe(s));
+</script>
+
+<script>
+  (function () {
+    const tabs = [...document.querySelectorAll('.tabs [role=tab]')];
+    const names = { 'tab-summary': 'summary', 'tab-details': 'details', 'tab-extras': 'extras' };
+    function show(tab, focus) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      const name = names[tab.id];
+      document.querySelectorAll('.toc-list[data-tab]').forEach((l) => { l.hidden = l.dataset.tab !== name; });
+      if (focus) tab.focus();
+      history.replaceState(null, '', '#' + name);
+      window.scrollTo({ top: 0 });
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => show(t));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          show(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true);
+        }
+      });
+    });
+    // Open the tab a hash belongs to: #details or a `d-` anchor, #extras or an
+    // `x-` anchor; #summary or a summary anchor goes back.
+    function fromHash() {
+      const hash = location.hash.slice(1);
+      if (!hash) return;
+      const inDetails = hash === 'details' || hash.startsWith('d-');
+      const inExtras = hash === 'extras' || hash.startsWith('x-');
+      const tab = tabs[inExtras ? 2 : inDetails ? 1 : 0];
+      if (tab.getAttribute('aria-selected') !== 'true') show(tab);
+      const target = document.getElementById(hash);
+      if (target && !['summary', 'details', 'extras'].includes(hash)) target.scrollIntoView();
+    }
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+  })();
+</script>
+</body>
+</html>

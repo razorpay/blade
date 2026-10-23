@@ -1,5 +1,5 @@
 ---
-description: How sub-agents in the Svelte migration pipeline resolve paths relative to a base directory.
+description: How sub-agents in a migration pipeline (e.g. React Native migration) resolve paths relative to a base directory.
 ---
 
 # Agent Base Directory

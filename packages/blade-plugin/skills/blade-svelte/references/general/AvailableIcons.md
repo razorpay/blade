@@ -1,22 +1,10 @@
-# Available Icons in Blade Svelte
+# AvailableIcons
 
-These are all the icons `@razorpay/blade-svelte` exports. Use only names from this list; if a design needs an icon that is missing here, tell the user instead of inventing a name.
+## Description
 
-## How to use Icons
+Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An icon is a source: pass it to a component's `icon`, `leading` or `trailing` prop, or draw it with `<Icon source={…} />` (`size`: `2xsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `2xlarge`; `color`: `default`, `subtle`, `muted`, `primary`, `negative`, `positive`, `white`, `inherit`). Never render an icon as a tag. If an icon you need is not listed, it does not exist in blade-svelte: pick the closest listed one.
 
-Import icons from `@razorpay/blade-svelte/components`. Pass them to any prop typed `IconComponent` (for example `icon` on `Button`, `Badge` or `IconButton`), or render them on their own. See `../components/Icons.md` for the icon props (`size`, `color`).
-
-```svelte
-<script lang="ts">
-  import { Button, Badge, CheckCircleIcon, CreditCardIcon } from '@razorpay/blade-svelte/components';
-</script>
-
-<Button icon={CreditCardIcon}>Pay by card</Button>
-<Badge icon={CheckCircleIcon} color="positive">Paid</Badge>
-<CheckCircleIcon size="large" color="feedback.icon.positive.intense" />
-```
-
-## Icons
+450 icons. `yarn tsc:knowledgebase --target svelte` fails when this list and the exports differ.
 
 - AcceptPaymentsFilledIcon
 - AcceptPaymentsIcon
@@ -82,7 +70,6 @@ Import icons from `@razorpay/blade-svelte/components`. Pass them to any prop typ
 - BillIcon
 - BillMeFilledIcon
 - BillMeIcon
-- BluetoothIcon
 - BoldIcon
 - BookIcon
 - BookmarkFilledIcon
@@ -336,7 +323,6 @@ Import icons from `@razorpay/blade-svelte/components`. Pass them to any prop typ
 - RadioIcon
 - RayIcon
 - RazorpayIcon
-- RazorpayTrustIcon
 - RazorpayXIcon
 - RazorpayxPayrollFilledIcon
 - RazorpayxPayrollIcon
@@ -356,7 +342,6 @@ Import icons from `@razorpay/blade-svelte/components`. Pass them to any prop typ
 - SaasFilledIcon
 - SaasIcon
 - SaveIcon
-- ScissorsIcon
 - SearchIcon
 - SendIcon
 - ServerIcon
@@ -391,6 +376,7 @@ Import icons from `@razorpay/blade-svelte/components`. Pass them to any prop typ
 - SpeakerIcon
 - SquareIcon
 - StampIcon
+- StarFilledIcon
 - StarIcon
 - StopCircleIcon
 - StorefrontIcon

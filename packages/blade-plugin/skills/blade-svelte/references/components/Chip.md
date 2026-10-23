@@ -4,261 +4,147 @@ Chip
 
 ## Description
 
-Chip is a compact, selectable pill for short 1-2 word options such as payment method filters or quick feedback answers. Chips always live inside `ChipGroup`, documented here, which sets single (radio-like) or multiple (checkbox-like) selection, size, color, label and validation for all its chips. A chip can show an icon, a label, or both.
+ChipGroup is a choice drawn as a row of wrapping chips: one pick (`selectionType="single"`, native radios) or several (`"multiple"`, checkboxes), for short options like a business type, filters or capabilities. The group is the form field: it binds `value` (a string, or an array with `multiple`), reports `onChange({ name, value })`, carries the label, help and error lines, and sets every chip's `size` (`xsmall` to `large`) and picked `color` (`primary`, `positive`, `negative`). Each `Chip` has a label and an optional `leading` icon or asset.
 
 ## Important Constraints
 
-- `Chip` only works inside `ChipGroup`; outside a group it renders but can never be selected
-- Every `Chip` needs a unique `value`; a chip without `value` cannot be toggled
-- `children` is required when no `icon` is passed
-- Chip size comes only from the group's `size`; `Chip` has no `size` prop
-- Chip labels are truncated to one line
-- `ChipGroup` passes `isDisabled`, `size`, `color`, `selectionType`, `validationState`, `necessityIndicator` and `name` to its chips once, when it mounts; later changes to these props do not reach the chips. Re-mount the group (for example with `{#key}`) if one of them must change
-- `onChange` always receives `values` as a `string[]`, even with `selectionType="single"` (use `values[0]`)
-- `value` and `defaultValue` accept a string for single selection and a `string[]` for multiple selection
-- A disabled `ChipGroup` ignores clicks and does not call `onChange`
-- `ChipGroup` requires either `label` or `accessibilityLabel`
-- `icon` only accepts an icon component exported by `@razorpay/blade-svelte/components`
+- A `Chip` only works inside a `ChipGroup`; the value, `name`, `size` and validation live on the group
+- `value` is a string per Chip; the group's `value` is the picked chip's value, or an array of them with `selectionType="multiple"`. There is no `defaultValue`
+- `onChange` gets `{ name, value }`, `value` shaped as `bind:value` (an array with `multiple`, `null` when nothing is picked in `single`)
+- The label is `children` (a snippet that receives `{ isChecked, isDisabled }`); it is optional with a `leading`, and a chip without one needs `accessibilityLabel`
+- `leading` is an icon source (sized and tinted by the chip) or a snippet with an asset (an Avatar, a flag) that receives the chip's state
+- A single-choice group picks as the arrows move; in a multiple group each chip is its own tab stop
+- A Chip's `color` and `isDisabled` fall back to the group's; size is the group's only
 
-## TypeScript Types
-
-These are the props the Chip and ChipGroup components accept.
+## Props
 
 ```typescript
-type ChipColor = 'primary' | 'positive' | 'negative';
 type ChipSize = 'xsmall' | 'small' | 'medium' | 'large';
+type ChipColor = 'primary' | 'positive' | 'negative';
 
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. CreditCardIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-type ChipCommonProps = {
-  /**
-   * Icon component to display in the Chip.
-   */
-  icon?: IconComponent;
-  /**
-   * Color variant of the Chip.
-   * Overrides the color set by parent ChipGroup.
-   */
-  color?: ChipColor;
-  /**
-   * Whether the chip is disabled.
-   * @default false
-   */
-  isDisabled?: boolean;
-  /** Value used for selection state tracking. */
-  value?: string;
-  /** CSS width of the chip container. */
-  width?: string;
-  /** CSS max-width of the chip container. */
-  maxWidth?: string;
-  /** CSS min-width of the chip container. */
-  minWidth?: string;
-  /** Test ID for the element. */
-  testID?: string;
-} & StyledPropsBlade;
-
-type ChipWithoutIconProps = ChipCommonProps & {
-  icon?: undefined;
-  /** Text content for the chip. Required when no icon is provided. */
-  children: Snippet;
-};
-
-type ChipWithIconProps = ChipCommonProps & {
-  icon: IconComponent;
-  /** Text content for the chip. Optional when icon is provided. */
-  children?: Snippet;
-};
-
-type ChipProps = (ChipWithoutIconProps | ChipWithIconProps) & {
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
-};
-
-type ChipGroupCommonProps = {
-  /** Snippet children (Chip components). */
-  children: Snippet;
-  /**
-   * Position of the label relative to the chip group.
-   * @default 'top'
-   */
-  labelPosition?: 'top' | 'left';
-  /** Help text displayed below the chip group. */
-  helpText?: string;
-  /** Error text displayed below the chip group when validation fails. */
-  errorText?: string;
-  /**
-   * Validation state of the chip group.
-   * @default 'none'
-   */
-  validationState?: 'error' | 'none';
-  /**
-   * Necessity indicator displayed after the label.
-   * @default 'none'
-   */
-  necessityIndicator?: 'required' | 'optional' | 'none';
-  /** Default selected value(s) for uncontrolled usage. */
-  defaultValue?: string | string[];
-  /**
-   * Whether all chips in the group are disabled.
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * Whether selection is required.
-   * @default false
-   */
-  isRequired?: boolean;
-  /** Name attribute for form submission. Auto-generated if not provided. */
-  name?: string;
-  /** Callback fired when selection changes. */
-  onChange?: (payload: { name: string; values: string[] }) => void;
-  /**
-   * Selection behavior: single (radio) or multiple (checkbox).
-   * @default 'single'
-   */
-  selectionType?: 'single' | 'multiple';
-  /**
-   * Size of the chips in the group.
-   * @default 'small'
-   */
-  size?: ChipSize;
-  /**
-   * Color variant for all chips in the group.
-   * @default 'primary'
-   */
-  color?: ChipColor;
-  /** Controlled value(s). Use with onChange. */
-  value?: string | string[];
-  /** Test ID for the element. */
-  testID?: string;
-} & StyledPropsBlade;
-
-type ChipGroupPropsWithA11yLabel = {
-  label?: undefined;
-  /** Accessibility label when no visible label is provided. */
-  accessibilityLabel: string;
-};
-
-type ChipGroupPropsWithLabel = {
-  /** Visible label for the chip group. */
-  label: string;
-  /** Additional accessibility label. */
+interface ChipGroupProps {
+  /** The visible label above the chips. */
+  label?: string;
+  /** Names the group when there is no visible `label`. */
   accessibilityLabel?: string;
-};
+  /** `single`: radios. `multiple`: checkboxes, and `value` is an array. @default 'single' */
+  selectionType?: 'single' | 'multiple';
+  /** The picked chip's value, or an array with `multiple`: initial, bound, or host-driven. */
+  value?: string | readonly string[] | null;
+  /** A user pick; `value` is shaped as `bind:value`. */
+  onChange?: (change: { name: string | undefined; value: string | null | string[] }) => void;
+  /** Registers the group with the app's form (`adapters.form`) under this key. */
+  name?: string;
+  /** Disables every chip. @default false */
+  isDisabled?: boolean;
+  /** @default false */
+  isRequired?: boolean;
+  /** After the label: `*` or `(optional)`; `required` also requires. @default 'none' */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /** Omit inside a form to mirror its error; pass it to own the state. */
+  validationState?: 'none' | 'error';
+  /** The line under the chips while the state is `none`. */
+  helpText?: string | Snippet;
+  /** The line while `validationState` is `error`; it replaces the help text. */
+  errorText?: string | Snippet;
+  /** On the root; each Chip gets `${testID}-${index}`. */
+  testID?: string;
+  /** Placement only. */
+  class?: string;
+  /** Every chip's size. @default 'small' (or BladeProvider's `size`) */
+  size?: ChipSize;
+  /** The picked chips' colour; a Chip's own `color` wins. @default 'primary' */
+  color?: ChipColor;
+  /** The Chips, and anything else between them. */
+  children: Snippet;
+}
 
-type ChipGroupProps = (ChipGroupPropsWithA11yLabel | ChipGroupPropsWithLabel) &
-  ChipGroupCommonProps & {
-    // Analytics attributes
-    [key: `data-analytics-${string}`]: string;
-  };
+interface ChipProps {
+  /** What the chip stands for in the group's value. */
+  value: string;
+  /** The label; optional with a `leading`. Receives `{ isChecked, isDisabled }`. */
+  children?: Snippet<[{ isChecked: boolean; isDisabled: boolean }]>;
+  /** Before the label: an icon, or a snippet with an Avatar or a flag that receives the chip's state. */
+  leading?: IconSource | Snippet<[{ isChecked: boolean; isDisabled: boolean }]>;
+  /** Picked colour. @default the group's */
+  color?: ChipColor;
+  /** @default the group's */
+  isDisabled?: boolean;
+  /** Names a chip with no label (a `leading` alone); required then. */
+  accessibilityLabel?: string;
+  /** On the chip; else the group's `${testID}-${index}`. */
+  testID?: string;
+  /** Placement only, width limits included. */
+  class?: string;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `ChipGroup` with `selectionType="single"` for 2-5 mutually exclusive options with short, uniform labels, such as refund amounts or date ranges.
-- Use `ChipGroup` with `selectionType="multiple"` for compact filters, such as payment methods on a transactions page.
-- Give every group a `label`, or an `accessibilityLabel` when no visible label is shown.
-- Use `color="positive"` and `color="negative"` on individual chips only when the choice itself has that meaning, such as Yes/No feedback.
-- Add an `icon` when it helps recognition, for example `CreditCardIcon` for a Cards filter.
-- Keep the group controlled with `value` and `onChange={({ values }) => ...}` when the selection drives a query or other UI.
-
-**Don't**
-
-- Don't use `Chip` for long or uneven labels; use `RadioGroup` for single selection or `CheckboxGroup` for multiple selection.
-- Don't use `Chip` as a read-only label; use `Badge`.
-- Don't use `Chip` for 10 or more options; use `Dropdown`.
-- Don't use icon-only chips without a visible group label; chips have no `accessibilityLabel`, so keep the text label or state the options in the group label.
-- Don't use a single-select `ChipGroup` to switch views within a page; use `SegmentedControl` or `Tabs`.
+- Use ChipGroup for short, scannable options and filters; use RadioGroup or CardGroup when the options need longer labels or descriptions.
+- Bind `value` on the group; use `selectionType="multiple"` for filters and multi-picks.
+- Keep chip labels to a word or two.
+- Give the group a `label`, or an `accessibilityLabel` when the question is clear from context.
+- Use `color="positive"` or `"negative"` only when the pick carries that meaning.
+- Don't put an icon in the label: use `leading`.
 
 ## Examples
 
-### Payment method filter
-
-A controlled multi-select filter with icons that drives a transactions query.
-
-```svelte
-<script lang="ts">
-  import { Box, Chip, ChipGroup, CreditCardIcon, BankIcon, PhoneIcon, Text } from '@razorpay/blade-svelte/components';
-
-  let methods = $state<string[]>(['card', 'upi']);
-
-  const summary = $derived(methods.length ? methods.join(', ') : 'all methods');
-</script>
-
-<Box className="display-flex flex-col gap-spacing-3">
-  <ChipGroup
-    label="Payment method"
-    selectionType="multiple"
-    size="small"
-    name="payment-method"
-    value={methods}
-    onChange={({ values }) => (methods = values)}
-    data-analytics-section="transactions-filter"
-  >
-    <Chip value="card" icon={CreditCardIcon}>Cards</Chip>
-    <Chip value="netbanking" icon={BankIcon}>Netbanking</Chip>
-    <Chip value="upi" icon={PhoneIcon}>UPI</Chip>
-    <Chip value="emi" isDisabled>EMI</Chip>
-  </ChipGroup>
-  <Text size="small" color="surface.text.gray.muted">Showing payments from {summary}</Text>
-</Box>
-```
-
-### Required single selection
-
-A controlled single-select group for the settlement cycle with the label on the left, a required indicator and help text.
+### Single choice
 
 ```svelte
 <script lang="ts">
   import { Chip, ChipGroup } from '@razorpay/blade-svelte/components';
 
-  let cycle = $state('');
+  let businessType = $state<string | null>(null);
 </script>
 
-<ChipGroup
-  label="Settlement cycle"
-  labelPosition="left"
-  selectionType="single"
-  size="medium"
-  necessityIndicator="required"
-  value={cycle}
-  onChange={({ values }) => (cycle = values[0] ?? '')}
-  helpText="Faster cycles have a higher fee"
->
-  <Chip value="t0">Same day</Chip>
-  <Chip value="t1">T+1</Chip>
-  <Chip value="t2">T+2</Chip>
+<ChipGroup label="Business type" name="businessType" bind:value={businessType} necessityIndicator="required" isRequired>
+  <Chip value="proprietorship">Proprietorship</Chip>
+  <Chip value="public">Public</Chip>
+  <Chip value="small-business">Small Business</Chip>
 </ChipGroup>
 ```
 
-### Feedback with semantic colors
-
-An uncontrolled Yes/No group where each chip carries its own color and icon.
+### Multiple choice with icons
 
 ```svelte
 <script lang="ts">
-  import { Chip, ChipGroup, CheckIcon, CloseIcon } from '@razorpay/blade-svelte/components';
+  import { Chip, ChipGroup } from '@razorpay/blade-svelte/components';
+  import { BankIcon, CreditCardIcon, PhoneIcon } from '@razorpay/blade-svelte/icons';
 
-  function recordFeedback(values: string[]): void {
-    console.log('Settlement report helpful:', values[0]);
-  }
+  let methods = $state<string[]>(['upi']);
 </script>
 
 <ChipGroup
-  label="Was this settlement report helpful?"
-  selectionType="single"
-  defaultValue="yes"
-  onChange={({ values }) => recordFeedback(values)}
+  label="Accept payments by"
+  selectionType="multiple"
+  size="medium"
+  bind:value={methods}
+  onChange={({ value }) => console.log('Methods', value)}
 >
-  <Chip value="yes" color="positive" icon={CheckIcon}>Yes</Chip>
-  <Chip value="no" color="negative" icon={CloseIcon}>No</Chip>
+  <Chip value="upi" leading={PhoneIcon}>UPI</Chip>
+  <Chip value="card" leading={CreditCardIcon}>Cards</Chip>
+  <Chip value="bank" leading={BankIcon} isDisabled>Netbanking</Chip>
+</ChipGroup>
+```
+
+### Colours and an error
+
+```svelte
+<script lang="ts">
+  import { Chip, ChipGroup } from '@razorpay/blade-svelte/components';
+
+  let feedback = $state<string | null>(null);
+</script>
+
+<ChipGroup
+  label="How was the checkout?"
+  bind:value={feedback}
+  validationState={feedback ? 'none' : 'error'}
+  errorText="Pick one to continue"
+>
+  <Chip value="good" color="positive">Smooth</Chip>
+  <Chip value="bad" color="negative">Confusing</Chip>
 </ChipGroup>
 ```

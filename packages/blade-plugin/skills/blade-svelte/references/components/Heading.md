@@ -4,117 +4,91 @@ Heading
 
 ## Description
 
-Heading renders page and section titles with Blade heading typography. Each `size` maps to a semantic tag automatically (`small` → h6, `medium` → h5, `large` → h4, `xlarge` → h3, `2xlarge` → h2), and `as` overrides the tag when the visual size and the document outline differ. `weight`, `color` and text props adjust the style, and `as="span"` nests Headings for inline color changes.
+Heading titles a page, section, card or dialog in Blade's Heading styles, in the heading face (Tasa). It comes in five sizes from 18 to 40px, regular or semibold, and four colours, and renders `h1` to `h6` (default `h2`), a document level chosen apart from its visual size. It has no behaviour of its own.
 
 ## Important Constraints
 
-- `as` only accepts `span`, `h1`, `h2`, `h3`, `h4`, `h5` and `h6`; other values log an error.
-- Setting `styleOverride.root` switches the heading color to `currentColor`, so the override class must set `color`.
-- Only `data-analytics-*` attributes reach the DOM besides the documented props; `id`, `aria-*` and other HTML attributes are not supported.
-- `textDecorationLine="dotted"` from React Blade is not supported.
+- The title is `children`, a snippet (plain text between the tags works)
+- `as` sets the document level (`h1`–`h6`, default `h2`) and is independent of `size`: pick the level from the page's outline, the size from the design
+- `weight` is `regular` or `semibold` only (no `medium`)
+- `color` is `default`, `muted`, `primary` or `inherit` only; there is no `subtle`, `negative`, `positive` or `white` heading
+- `class` places it and may set text alignment; its look is `size`, `weight` and `color`
 
-## TypeScript Types
-
-These are the props the Heading component accepts; defaults are `size="small"`, `weight="semibold"` and `color="surface.text.gray.normal"`, and the tag follows `size` unless `as` is set.
+## Props
 
 ```typescript
-type HeadingAs = 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type HeadingSize = 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 
-/**
- * Text color tokens, e.g. 'surface.text.gray.normal', 'surface.text.primary.normal',
- * 'feedback.text.information.intense'. See Tokens.md for the full list.
- */
-type TextColors =
-  | `interactive.text.${string}`
-  | `surface.text.${string}`
-  | `feedback.text.${string}`;
-
-type HeadingSlot = 'root';
-
-type HeadingProps = {
-  as?: HeadingAs;
-  /**
-   * Overrides the color of the Heading component.
-   *
-   * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
-   */
-  color?: TextColors | 'currentColor';
-  weight?: 'regular' | 'medium' | 'semibold';
-  children: Snippet | string;
-  textAlign?: 'center' | 'justify' | 'left' | 'right';
-  textDecorationLine?: 'line-through' | 'none' | 'underline';
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-  textTransform?:
-    | 'none'
-    | 'capitalize'
-    | 'uppercase'
-    | 'lowercase'
-    | 'full-width'
-    | 'full-size-kana';
-  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+interface HeadingProps {
+  /** The document level; independent of the visual `size`. @default 'h2' */
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  /** 18/24, 20/26, 24/32, 32/38 or 40/46px (size/line height). @default 'medium' */
+  size?: HeadingSize;
+  /** @default 'semibold' */
+  weight?: 'regular' | 'semibold';
+  /** @default 'default' */
+  color?: 'default' | 'muted' | 'primary' | 'inherit';
+  /** @default 'start' */
+  textAlign?: 'start' | 'center' | 'end';
+  /** The title. */
+  children: Snippet;
   testID?: string;
-  styleOverride?: Partial<Record<HeadingSlot, string>>;
-} & StyledPropsBlade;
+  /** Placement and text alignment only. */
+  class?: string;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Heading` for page titles, section titles and card titles.
-- Keep one heading level per section and don't skip levels in the page outline.
-- Use `as` to fix the semantic level when the visual size differs, for example `size="large" as="h1"` for a dashboard page title.
-- Use `as="span"` on a nested Heading to change the color or weight of part of a title.
-- Keep the default `weight="semibold"` for hierarchy; use `regular` only for secondary headings the design calls for.
-
-**Don't**
-
-- Don't use `Heading` for paragraphs, labels or helper copy; use `Text`.
-- Don't override `as` just to change the size; pick the matching `size` instead.
-- Don't use large sizes for card or table titles; use `small` or `medium` and save `xlarge`/`2xlarge` for page titles.
-- Don't style headings with custom font CSS; use `size`, `weight` and `color`.
+- Set `as` to keep the heading levels in order (one `h1` per page), whatever size the design asks for.
+- Use `small` or `medium` for card and section titles, `large` and above for page titles.
+- Pair a Heading with a `Text color="muted"` line below it for a subtitle, inside your own flex column with a `gap-blade-*` class.
+- Use Display for hero numbers and marketing headlines above 40px.
+- Don't use Heading for body text that only needs to be bold: use `Text weight="semibold"`.
+- Don't change its size or font through `class`.
 
 ## Examples
 
-### Dashboard page and section titles
-
-A page title with an explicit `h1`, a section title and an inline colored span.
+### Sizes and levels
 
 ```svelte
 <script lang="ts">
-  import { Box, Heading, Text } from '@razorpay/blade-svelte/components';
-
-  const merchantName = 'Acme Retail';
+  import { Heading } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box as="header" className="display-flex flex-col gap-spacing-2">
-  <Heading as="h1" size="xlarge" testID="page-title">Payments</Heading>
-  <Text color="surface.text.gray.muted">Track every payment collected by {merchantName}.</Text>
-</Box>
-
-<Box as="section" className="display-flex flex-col gap-spacing-3 margin-top-spacing-6">
-  <Heading size="large">
-    Accept payments at just <Heading as="span" size="large" color="feedback.text.information.intense">2%</Heading>
-  </Heading>
-  <Text>Enable UPI, cards and netbanking from a single integration.</Text>
-</Box>
+<div class="flex flex-col gap-blade-3">
+  <Heading as="h1" size="xlarge">Payments</Heading>
+  <Heading as="h2" size="large">Today</Heading>
+  <Heading as="h3" size="medium">Failed payments</Heading>
+  <Heading as="h4" size="small" weight="regular" color="muted">Last 7 days</Heading>
+</div>
 ```
 
-### Card title with muted subtitle
-
-A small heading paired with a caption-sized subtitle inside a settings block.
+### A section title with a subtitle
 
 ```svelte
 <script lang="ts">
-  import { Box, Divider, Heading, Text } from '@razorpay/blade-svelte/components';
+  import { Button, Heading, Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box as="section" className="display-flex flex-col">
-  <Heading as="h2" size="small" weight="semibold" textTransform="capitalize" marginBottom="spacing.1">
-    settlement preferences
-  </Heading>
-  <Text size="small" color="surface.text.gray.muted">Choose how often funds reach your bank account.</Text>
-  <Divider marginY="spacing.4" />
-  <Heading as="h3" size="small" weight="regular" color="surface.text.gray.subtle">Instant settlements</Heading>
-</Box>
+<header class="flex items-start justify-between gap-blade-4">
+  <div class="flex flex-col gap-blade-1">
+    <Heading as="h2" size="small">Settlements</Heading>
+    <Text size="small" color="muted">Money moved to your bank account</Text>
+  </div>
+  <Button variant="secondary" size="small">Download report</Button>
+</header>
+```
+
+### Centred
+
+```svelte
+<script lang="ts">
+  import { Heading, Text } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex flex-col items-center gap-blade-2 p-blade-7">
+  <Heading as="h1" size="large" textAlign="center">Your store is live</Heading>
+  <Text textAlign="center" color="subtle">Share the link to start taking orders.</Text>
+</div>
 ```

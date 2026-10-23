@@ -4,230 +4,132 @@ Amount
 
 ## Description
 
-Amount formats and displays a monetary value with its currency symbol or code, grouping separators and decimals. `type` (body, heading, display) and `size` scale it from table cells to hero balances, `suffix` switches between decimals, whole numbers and humanized values (for example 1.2M), and the currency symbol and decimals can be rendered subtle. It formats only; it does not convert currencies.
+Amount shows a money value with its currency, formatted by i18nify for the locale: symbol or code, grouping, the currency's side, two decimals by default, floored or compact (1.5K, 2L, 1Cr) on request. By default it takes the size, weight and colour of the text around it; with `type` and `size` it draws one of Blade's Amount variants (body, heading, display). It fades the currency and decimals as a subtle affix, can strike through an old price, and accepts minor units (paise, cents).
 
 ## Important Constraints
 
-- `value` is required and must be a number; Amount throws `` `value` prop must be of type `number` for Amount. `` otherwise (localhost only)
-- `size` must match `type`, otherwise Amount throws `size="..." is not allowed with type="..."` (localhost only):
-  - `type="body"` (default): `xsmall`, `small`, `medium`, `large`
-  - `type="heading"`: `small`, `medium`, `large`, `xlarge`, `2xlarge`
-  - `type="display"`: `small`, `medium`, `large`, `xlarge`
-- `type="heading"` only accepts `weight="regular"` or `weight="semibold"` (enforced by the types)
-- `color="neutral"` throws `` `neutral` color is not supported. ``; pass a text color token
-- `fractionDigits` only applies when `suffix="decimals"`, and only accepts a number (React also accepts `'auto'`)
-- blade-svelte does not export an `AmountProps` type; the props below are the component's real props (exported as `BaseAmountProps`)
+- `value` is required and is a number; `currency` is ISO 4217 and defaults to `INR`
+- `size`, `weight` and `color` default to `inherit`: put the Amount inside a `Text` or `Heading`, or set `type` and `size`
+- `size` and `weight` depend on `type`: `body` takes `xsmall`–`large`; `heading` `small`–`2xlarge` and no `medium` weight; `display` `small`–`xlarge`
+- `unit="minor"` scales the value by the currency's exponent (`129900` paise is ₹1,299.00); the default `major` takes it as is
+- It has no children; screen readers get the whole amount as one string
+- `class` places it and may set text alignment
 
-## TypeScript Types
-
-These are the props the Amount component accepts.
+## Props
 
 ```typescript
-/**
- * Text color token, e.g. 'surface.text.gray.normal' or 'feedback.text.positive.intense'.
- * See Tokens.md for the full list.
- */
-type TextColors =
-  | `interactive.text.${string}`
-  | `surface.text.${string}`
-  | `feedback.text.${string}`;
+type AmountType = 'body' | 'heading' | 'display';
+type AmountSize = 'inherit' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+type AmountColor = 'inherit' | 'default' | 'subtle' | 'muted' | 'primary' | 'negative' | 'positive' | 'white';
 
-/**
- * ISO 4217 currency code supported by @razorpay/i18nify-js, e.g. 'INR', 'USD', 'EUR'.
- */
-type CurrencyCodeType = string;
-
-type AmountSlot = 'currency' | 'value';
-
-type AmountDisplayProps = {
-  type?: 'display';
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
-  weight?: 'regular' | 'medium' | 'semibold';
-};
-
-type AmountHeadingProps = {
-  type?: 'heading';
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-  weight?: 'regular' | 'semibold';
-};
-
-type AmountBodyProps = {
-  type?: 'body';
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-  weight?: 'regular' | 'medium' | 'semibold';
-};
-
-type AmountTypeProps = AmountDisplayProps | AmountHeadingProps | AmountBodyProps;
-
-type AmountCommonProps = {
-  /**
-   * The value to be rendered within the component.
-   */
+interface AmountProps {
+  /** The amount, in major units unless `unit="minor"`. */
   value: number;
-  /**
-   * Sets the color of the amount.
-   *
-   * @default undefined
-   */
-  color?: TextColors | 'currentColor';
-  /**
-   * Indicates what the suffix of amount should be
-   *
-   * @default 'decimals'
-   */
-  suffix?: 'decimals' | 'none' | 'humanize';
-  /**
-   * Makes the currency indicator(currency symbol/code) and decimal digits small and faded
-   *
-   * @default true
-   */
-  isAffixSubtle?: boolean;
-  /**
-   * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
-   *
-   * @default 'currency-symbol'
-   */
-  currencyIndicator?: 'currency-symbol' | 'currency-code';
-  /**
-   * The currency of the amount.  Note that this component
-   * only displays the provided value in the specified currency, it does not perform any currency conversion.
-   *
-   * @default 'INR'
-   */
+  /** ISO 4217. @default 'INR' */
   currency?: CurrencyCodeType;
-  /**
-   * If true, the amount text will have a line through it.
-   *
-   * @default false
-   */
+  /** `decimals`: fixed decimals; `none`: floored to the integer; `humanize`: compact (1.5K, 2L, 1Cr, by locale). @default 'decimals' */
+  suffix?: 'decimals' | 'none' | 'humanize';
+  /** With `suffix="decimals"`: how many; `auto` takes the currency's own (JPY 0, KWD 3). @default 2 */
+  fractionDigits?: number | 'auto';
+  /** The symbol (`₹`) or the code (`INR`). @default 'currency-symbol' */
+  currencyIndicator?: 'currency-symbol' | 'currency-code';
+  /** An old price: one line across the whole amount, currency included; rendered as a `<del>`. @default false */
   isStrikethrough?: boolean;
-  /**
-   * Controls the number of decimal places to display when suffix is 'decimals'.
-   *
-   * @default 2
-   */
-  fractionDigits?: number;
+  /** `minor` for paise or cents: scaled by the currency's exponent. @default 'major' */
+  unit?: 'major' | 'minor';
+  /** Grouping and currency side for this amount. @default BladeProvider's `adapters.locale`, else i18nify's */
+  locale?: string;
+  /** Replaces the currency symbol with the app's own (`RM`). */
+  symbol?: string;
+  /** Which of Blade's scales `size` picks from. @default 'body' */
+  type?: AmountType;
+  /** `inherit` takes the surrounding text's; otherwise one of the `type`'s sizes. @default 'inherit' */
+  size?: AmountSize;
+  /** `medium` is not available for `heading`. @default 'inherit' */
+  weight?: 'inherit' | 'regular' | 'medium' | 'semibold';
+  /** Text's colours, or `inherit`. @default 'inherit' */
+  color?: AmountColor;
+  /** The currency and decimals one step smaller at 64% opacity (0.75em of the text while `size` inherits). @default true */
+  isAffixSubtle?: boolean;
   testID?: string;
-  /**
-   * Per-slot classname overrides. Merged under provider `componentConfig.Amount.styleOverride`;
-   * instance values win on conflicts.
-   */
-  styleOverride?: Partial<Record<AmountSlot, string>>;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
-};
-
-/**
- * `type` defaults to 'body', `size` to 'medium' and `weight` to 'regular'.
- */
-type AmountProps = AmountTypeProps & AmountCommonProps & StyledPropsBlade;
+  /** Placement and text alignment only. */
+  class?: string;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Amount` for every monetary value so symbols, grouping and decimals follow the currency.
-- Pass `value` in the main currency unit (rupees, dollars); convert paise or cents first.
-- Match `type` to context: `body` in tables and rows, `heading` for section totals, `display` for hero balances.
-- Use `suffix="humanize"` for large figures in summaries and charts, where compact values read faster than full figures.
-- Use `suffix="none"` when decimals add noise, such as whole-rupee plan prices.
-- Use feedback text colors to show direction, such as `feedback.text.positive.intense` for credits and `feedback.text.negative.intense` for debits.
-- Use `isStrikethrough` for the original price next to a discounted one.
-- Use `currencyIndicator="currency-code"` when several currencies appear together.
-
-**Don't**
-
-- Don't use `Amount` for non-monetary numbers such as counts or percentages; use `Text` or `Counter`.
-- Don't pick a `size` outside the range for the chosen `type`; switch `type` instead.
-- Don't pass `color="neutral"`; use `surface.text.gray.normal` or omit `color`.
-- Don't format the number yourself and pass it as text; pass the number to `value`.
+- Use Amount for every money value; don't format currency yourself with `toLocaleString` or a hard-coded `₹`.
+- Inside running text, nest it in the `Text` or `Heading` and let it inherit.
+- Use `type` and `size` for a standalone figure, such as an order total (`type="heading"`) or a hero balance (`type="display"`).
+- Pass amounts from the API in paise with `unit="minor"`, not divided by 100 yourself.
+- Show a discount as the old price with `isStrikethrough` in a `muted` Text next to the new price.
+- Use `suffix="humanize"` for dashboard summaries, and full decimals wherever the user pays or reconciles.
+- Set `locale` only to pin one amount; set the app's locale once through BladeProvider's `adapters.locale`.
 
 ## Examples
 
-### Settlement summary
-
-A hero balance, a humanized monthly total, and signed credits and debits in a settlement summary.
+### Inheriting the surrounding text
 
 ```svelte
 <script lang="ts">
-  import { Amount, Text } from '@razorpay/blade-svelte/components';
-
-  const settlement = {
-    available: 482350.75,
-    monthToDate: 12845000,
-    credits: 125000,
-    refunds: 4320.5,
-  };
+  import { Amount, Heading, Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<div class="summary">
-  <Text size="small" color="surface.text.gray.muted">Available for settlement</Text>
-  <Amount value={settlement.available} type="display" size="medium" weight="semibold" testID="available-balance" />
-
-  <Text size="small" color="surface.text.gray.muted">Processed this month</Text>
-  <Amount value={settlement.monthToDate} type="heading" size="small" suffix="humanize" />
-
-  <div class="row">
-    <Text size="small">Credits</Text>
-    <Amount value={settlement.credits} size="small" color="feedback.text.positive.intense" suffix="none" />
-  </div>
-  <div class="row">
-    <Text size="small">Refunds</Text>
-    <Amount
-      value={settlement.refunds}
-      size="small"
-      color="feedback.text.negative.intense"
-      data-analytics-amount="refunds"
-    />
-  </div>
+<div class="flex flex-col gap-blade-2">
+  <Text size="small" color="muted">Total payable</Text>
+  <Heading as="p" size="large">
+    <Amount value={1299.5} />
+  </Heading>
+  <Text>
+    You saved <Amount value={200} color="positive" /> on this order.
+  </Text>
 </div>
-
-<style>
-  .summary {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2);
-  }
-
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-</style>
 ```
 
-### Discounted plan price in another currency
-
-An original price struck through next to the discounted price, shown with the currency code.
+### Blade's Amount variants
 
 ```svelte
 <script lang="ts">
   import { Amount } from '@razorpay/blade-svelte/components';
-
-  let originalPrice = $state(49.99);
-  const discountedPrice = $derived(Math.round(originalPrice * 0.8 * 100) / 100);
 </script>
 
-<div class="price">
-  <Amount value={originalPrice} currency="USD" currencyIndicator="currency-code" size="small" isStrikethrough />
-  <Amount
-    value={discountedPrice}
-    currency="USD"
-    currencyIndicator="currency-code"
-    type="heading"
-    size="medium"
-    weight="semibold"
-    isAffixSubtle={false}
-    marginLeft="spacing.3"
-  />
+<div class="flex flex-col gap-blade-3">
+  <Amount value={4999.5} type="body" size="medium" weight="regular" />
+  <Amount value={4999.5} type="heading" size="large" weight="semibold" color="positive" />
+  <Amount value={4999.5} type="display" size="small" weight="medium" />
+  <Amount value={4999.5} type="heading" size="medium" isAffixSubtle={false} />
 </div>
+```
 
-<style>
-  .price {
-    display: flex;
-    align-items: baseline;
-  }
-</style>
+### A discounted price in minor units
+
+```svelte
+<script lang="ts">
+  import { Amount, Text } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex items-baseline gap-blade-3">
+  <Text size="large" weight="semibold">
+    <Amount value={99900} unit="minor" />
+  </Text>
+  <Text color="muted">
+    <Amount value={129900} unit="minor" isStrikethrough />
+  </Text>
+</div>
+```
+
+### Other currencies, codes and compact values
+
+```svelte
+<script lang="ts">
+  import { Amount, Text } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex flex-col gap-blade-2">
+  <Text><Amount value={1234.5} currency="USD" locale="en-US" /></Text>
+  <Text><Amount value={1234567} currency="JPY" locale="ja-JP" fractionDigits="auto" /></Text>
+  <Text><Amount value={2500} currencyIndicator="currency-code" /></Text>
+  <Text weight="semibold"><Amount value={15000000} suffix="humanize" /></Text>
+</div>
 ```

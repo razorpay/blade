@@ -29,5 +29,17 @@ yarn-error.log*
 # BrowserStack
 log/
 test-results/
+playwright-report/
 .env.local
 browserstackSetupConfig.json
+
+# Local helper scripts, not tracked, except the ones package.json runs
+scripts/*
+!scripts/check-tree-shaking.mjs
+!scripts/icon-svgs/
+!scripts/build-uno-config.mjs
+!scripts/build-uno-config.d.mts
+!scripts/build-uno-config.test.ts
+
+# npm pack output (a local build for consumers)
+*.tgz

@@ -4,228 +4,102 @@ CounterInput
 
 ## Description
 
-CounterInput is a numeric field with built-in minus and plus buttons and manual typing, for small integer quantities such as item counts, subscription seats or retry attempts. It clamps values to `min` and `max`, disables the matching button at each limit, and has a loading state for async updates. It works controlled or uncontrolled, in four sizes and two emphasis levels.
+CounterInput picks a whole number between `min` and `max` with minus and plus buttons beside a typed number: a quantity in a cart, a number of guests, seats or tickets. It comes in four sizes and two emphases, clamps every step and typed value to its range, disables each button at its end, and shows a loading bar while a change is being saved (`isLoading`).
 
 ## Important Constraints
 
-- Values are integers that change by 1; typed input is parsed with `parseInt` and clamped to `min`/`max`
-- `min` defaults to `0`; the uncontrolled value starts at `defaultValue`, or `min` when `defaultValue` is not set
-- Empty or non-numeric typed input resets the value to `min`
-- `isLoading` and `isDisabled` both block the buttons and typing, and `onChange` is not called
-- In controlled mode the displayed value only changes when you update `value` from `onChange`
-- `onFocus` and `onBlur` receive the value as a string (`{ name, value }`), while `onChange` receives a number (`{ value }`)
-- `labelPosition="left"` applies only at 768px and wider; smaller screens fall back to `top`
-- CounterInput has no help text, error text or validation state
+- `value` is a number; bind it with `bind:value` (no `defaultValue`); unset, it starts at `min`
+- `onChange` receives `{ name, value }` on a step or a typed change
+- `min` defaults to 0; `max` is unbounded unless set. A step or typed value outside the range is clamped, and the minus or plus button disables at its end
+- `isLoading` and `isDisabled` both stop the buttons and disable the field; loading also draws a bar along the bottom edge
+- `label` is a plain string, always above the box; without one, name it with `accessibilityLabel`
+- It has no help or error text
+- `size` is `xsmall`, `small`, `medium` (default) or `large` (28, 32, 36, 48px tall); `emphasis` is `subtle` (default) or `intense`
 
-## TypeScript Types
-
-These are the props the CounterInput component accepts.
+## Props
 
 ```typescript
-/**
- * Visual emphasis of the `CounterInput`.
- */
-type CounterInputEmphasis = 'subtle' | 'intense';
-
-/**
- * Size of the `CounterInput`.
- */
-type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
-
-/**
- * Payload passed to the `onChange` callback when the value changes.
- */
-type CounterInputOnChange = (args: { value: number }) => void;
-
-interface CounterInputProps extends StyledPropsBlade {
-  /**
-   * Label to be shown for the counter input. Rendered inside a native `<label>`.
-   */
+interface CounterInputProps {
+  /** Plain text above the box. */
   label?: string;
-  /**
-   * Accessibility label for the input (optional override). Exposed to screen readers
-   * on the underlying spinbutton input.
-   */
+  /** Names the field when there is no visible `label`. */
   accessibilityLabel?: string;
-  /**
-   * Position of the label relative to the counter. `left` only applies on desktop
-   * (≥768px); it falls back to `top` on smaller screens.
-   *
-   * @default 'top'
-   */
-  labelPosition?: 'top' | 'left';
-  /**
-   * The name of the input field (useful for form submission).
-   */
-  name?: string;
-  /**
-   * The numerical value of the counter input. Passing this makes the component controlled.
-   */
+  /** Bindable count. @default `min` */
   value?: number;
-  /**
-   * The default numerical value when the component is uncontrolled.
-   */
-  defaultValue?: number;
-  /**
-   * Minimum allowed value. When reached, the decrement button is disabled.
-   *
-   * @default 0
-   */
+  /** A step or typed change: `{ name, value }`. */
+  onChange?: (change: { name: string | undefined; value: number }) => void;
+  /** @default 0 */
   min?: number;
-  /**
-   * Maximum allowed value. When reached, the increment button is disabled.
-   * If not provided, the increment button is never disabled by an upper bound.
-   */
+  /** No upper bound when unset. */
   max?: number;
-  /**
-   * Visual emphasis of the counter input.
-   *
-   * @default 'subtle'
-   */
-  emphasis?: CounterInputEmphasis;
-  /**
-   * Size of the counter input.
-   *
-   * @default 'medium'
-   */
-  size?: CounterInputSize;
-  /**
-   * Shows a loading indicator and disables interaction.
-   *
-   * @default false
-   */
-  isLoading?: boolean;
-  /**
-   * If `true`, the counter input is disabled.
-   *
-   * @default false
-   */
+  /** The key the app's form submits the count under. */
+  name?: string;
+  /** @default false */
   isDisabled?: boolean;
-  /**
-   * Called when the value changes via increment, decrement, or manual input.
-   */
-  onChange?: CounterInputOnChange;
-  /**
-   * Called when the input receives focus.
-   * Receives `{ name, value }` matching the React `FormInputOnEvent` signature.
-   */
-  onFocus?: (args: { name?: string; value?: string; rawValue?: string }) => void;
-  /**
-   * Called when the input loses focus.
-   * Receives `{ name, value }` matching the React `FormInputOnEvent` signature.
-   */
-  onBlur?: (args: { name?: string; value?: string; rawValue?: string }) => void;
-  /**
-   * Test ID for the outer wrapper element.
-   */
+  /** A change is being saved: no input, and a bar along the bottom. @default false */
+  isLoading?: boolean;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
   testID?: string;
-  /**
-   * Analytics data attributes (`data-analytics-*`).
-   */
-  [key: `data-analytics-${string}`]: string | undefined;
+  /** Placement only. */
+  class?: string;
+  /** 28, 32, 36 or 48px tall. @default 'medium' (or BladeProvider's `size`) */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /** @default 'subtle' */
+  emphasis?: 'subtle' | 'intense';
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `CounterInput` for small integer quantities, typically under 100, such as team seats or payment retry attempts.
-- Always set sensible `min` and `max` values so the buttons disable at the limits.
-- Use `isLoading` while an async update (for example a cart or seat-count API call) is in flight, and update `value` only after it succeeds.
-- Give every CounterInput a `label`; use `accessibilityLabel` when the visible label is elsewhere, such as a table column header.
-- Use `size="xsmall"` or `size="small"` inside tables and cart rows; use `medium` or `large` for standalone form fields.
-- Use `emphasis="intense"` only for the primary quantity on a page; keep secondary counters `subtle`.
-
-**Don't**
-
-- Don't use `CounterInput` for large numbers; use `TextInput` with `type="number"`.
-- Don't use `CounterInput` for decimals, currency or amounts; use `TextInput` for entry and `Amount` for display.
-- Don't use `CounterInput` for values that are not quantities, such as IDs or phone numbers; use `TextInput` or `PhoneNumberInput`.
-- Don't pass both `value` and `defaultValue`; pick controlled or uncontrolled.
+- Set `max` from stock or a policy limit so the plus button disables there.
+- Set `isLoading` while a cart update is in flight, so the user can't step past what the server has.
+- Use `size="small"` or `"xsmall"` inside dense rows (a cart line), `medium` in forms.
+- Don't use CounterInput for large or free numbers (an amount): use TextInput `type="number"`.
 
 ## Examples
 
-### Subscription seats with async save
-
-A controlled counter that shows a loading state while the new seat count is saved, and keeps the old value if the request fails.
+### Quantity in a cart
 
 ```svelte
 <script lang="ts">
-  import { Box, CounterInput, Text } from '@razorpay/blade-svelte/components';
+  import { CounterInput, Text } from '@razorpay/blade-svelte/components';
 
-  let seats = $state(5);
+  let quantity = $state(1);
   let isSaving = $state(false);
-  let saveError = $state('');
 
-  async function updateSeats({ value }: { value: number }): Promise<void> {
+  async function save({ value }: { name: string | undefined; value: number }): Promise<void> {
     isSaving = true;
-    saveError = '';
-    try {
-      const response = await fetch('/api/subscription/seats', {
-        method: 'PUT',
-        body: JSON.stringify({ seats: value }),
-      });
-      if (!response.ok) throw new Error('Request failed');
-      seats = value;
-    } catch {
-      saveError = 'Could not update seats. Try again.';
-    } finally {
-      isSaving = false;
-    }
+    await fetch('/api/cart', { method: 'POST', body: JSON.stringify({ quantity: value }) });
+    isSaving = false;
   }
 </script>
 
-<Box className="display-flex flex-col gap-spacing-3">
+<div class="flex items-center justify-between gap-blade-4">
+  <Text weight="semibold">Cotton T-shirt</Text>
   <CounterInput
-    label="Dashboard seats"
-    name="seats"
-    value={seats}
+    bind:value={quantity}
+    accessibilityLabel="Quantity"
     min={1}
-    max={50}
+    max={10}
+    size="small"
     isLoading={isSaving}
-    onChange={updateSeats}
-    data-analytics-section="subscription-seats"
+    onChange={save}
   />
-  {#if saveError}
-    <Text size="small" color="feedback.text.negative.intense">{saveError}</Text>
-  {/if}
-</Box>
+</div>
 ```
 
-### Compact uncontrolled counters
-
-Small, uncontrolled counters with left labels for payment retry settings, including a disabled field.
+### Sizes and emphases
 
 ```svelte
 <script lang="ts">
-  import { Box, CounterInput } from '@razorpay/blade-svelte/components';
-
-  function logChange(field: string, value: number): void {
-    console.log(`${field} set to ${value}`);
-  }
+  import { CounterInput } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box className="display-flex flex-col gap-spacing-4">
-  <CounterInput
-    label="Retry attempts"
-    labelPosition="left"
-    size="small"
-    defaultValue={3}
-    min={1}
-    max={5}
-    onChange={({ value }) => logChange('retries', value)}
-  />
-  <CounterInput
-    label="Retry interval (hours)"
-    labelPosition="left"
-    size="small"
-    emphasis="intense"
-    defaultValue={6}
-    min={1}
-    max={24}
-    onBlur={({ value }) => logChange('interval', Number(value))}
-  />
-  <CounterInput label="Max refunds per day" labelPosition="left" size="small" defaultValue={10} isDisabled />
-</Box>
+<div class="flex flex-wrap items-end gap-blade-6">
+  <CounterInput label="Adults" value={2} min={1} max={9} />
+  <CounterInput label="Children" value={0} max={6} emphasis="intense" />
+  <CounterInput label="Rooms" value={1} min={1} size="large" />
+  <CounterInput label="Unavailable" value={3} isDisabled />
+</div>
 ```

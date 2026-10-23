@@ -4,213 +4,163 @@ OTPInput
 
 ## Description
 
-OTPInput is a row of single-character fields (4, 6 or 8) for one-time passwords, verification codes and PINs. It moves focus between fields as the user types, handles Backspace, Delete and arrow keys, spreads a pasted code across the fields, can mask entered characters, and submits the joined code through a hidden input named `name`.
+OTPInput is the one-time-code field: a row of single-character cells (6 by default) that take a typed, pasted or autofilled code and report `onOTPFilled` once it is complete. The cells advance as the user types. It hints `autocomplete="one-time-code"` and the numeric keypad, can mask the cells, has the inputs' label and hint lines, and can fill itself from an app's SMS reader through `adapters.readOTP`.
 
 ## Important Constraints
 
-- Either `label` or `accessibilityLabel` is required; each field is announced as "<label> character N"
-- Controlled mode is decided once, on mount: pass `value` from the first render (use `''` for empty) to control it; a `value` that appears later is ignored. There is no `defaultValue`
-- `onChange` fires on every keystroke, paste and delete with `{ name, value }`, where `value` is the joined code
-- `onOTPFilled` fires once each time the code becomes complete with a new value, with `{ name, value }`
-- `onFocus`, `onBlur` and `onKeyDown` payloads include `inputIndex`, the index of the field
-- Spaces are ignored; a paste always fills from the first field regardless of which field is focused
-- Calling `event.preventDefault()` in `onKeyDown` turns off the built-in Backspace, Delete and arrow-key navigation for that key press
-- `placeholder` is split into characters, one per field
-- To focus a field from code, bind the component instance and call `focus(index)`
+- `otpLength` is fixed at mount: wrap the field in `{#key}` to change it
+- `onChange` and `onOTPFilled` receive `{ name, value, method }` (`OTPInputChange`). `method` is `typed`, `paste`, `autofill` or `adapter` (a code from `adapters.readOTP`); `onOTPFilled` also reports `value` when the owner's own write completed the code
+- An outside change to `value` spreads over the cells without firing `onChange` or moving focus; it does fire `onOTPFilled` when it completes the code. Setting `value` to `''` (a resend) asks `adapters.readOTP` again
+- `accept` sanitizes each character (return `''` to reject); the default accepts a single digit, so pass `accept` and `inputMode="text"` for an alphanumeric code
+- Keyboard: Backspace on an empty cell clears the previous one and moves back; arrow keys move between cells; Enter submits the form; Tab leaves the group
+- `onFocus` and `onBlur` receive the DOM event and the cell's index
+- `cellAccessibilityLabel` names each cell (the library ships no copy); default: the group's name and the cell's position. `testID` lands on each cell as `${testID}-${index}`
+- `size` is `medium` (36px cells, default) or `large` (48px)
 
-## TypeScript Types
-
-These are the props the OTPInput component accepts.
+## Props
 
 ```typescript
-type BaseInputSize = 'xsmall' | 'small' | 'medium' | 'large';
-type BaseInputValidationState = 'none' | 'error' | 'success';
-type LabelPosition = 'top' | 'left';
-type KeyboardType = 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal' | 'numeric';
-type KeyboardReturnKeyType = 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
+type OTPInputMethod = 'typed' | 'paste' | 'autofill' | 'adapter' | 'value';
 
-/** Payload shape for `onChange` / `onOTPFilled`; `value` is the joined OTP. */
-type FormInputOnEvent = (event: { name?: string; value?: string; rawValue?: string }) => void;
-
-/** Event payload for OTP focus/blur, including the field index. */
-type OTPInputOnEventWithIndex = (event: {
-  name?: string;
-  value?: string;
-  inputIndex: number;
-}) => void;
-
-/** Event payload for OTP `onKeyDown`, including the field index. */
-type OTPInputOnKeyDownEvent = (event: {
-  name?: string;
-  key?: string;
-  code?: string;
-  event: KeyboardEvent;
-  inputIndex: number;
-}) => void;
-
-type OTPInputPropsWithLabel = {
-  /** Label shown above/beside the OTP fields. */
-  label: string;
-  /** Accessibility label (optional when `label` is provided). */
-  accessibilityLabel?: string;
-};
-
-type OTPInputPropsWithA11yLabel = {
-  /** Label shown above/beside the OTP fields. */
-  label?: undefined;
-  /** Accessibility label (required when `label` is absent). */
-  accessibilityLabel: string;
-};
-
-interface OTPInputCommonProps extends StyledPropsBlade {
-  /** Label position. @default 'top' */
-  labelPosition?: LabelPosition;
-  /** Suffix element rendered after the label text. */
-  labelSuffix?: Snippet;
-  /** Trailing element rendered at the end of the label row. */
-  labelTrailing?: Snippet;
-  /** Validation state. @default 'none' */
-  validationState?: BaseInputValidationState;
-  /** Help text below the fields. */
-  helpText?: string;
-  /** Error text (with `validationState="error"`). */
-  errorText?: string;
-  /** Success text (with `validationState="success"`). */
-  successText?: string;
-  /** Name of the aggregate hidden input. */
-  name?: string;
-  /** Change callback with the joined OTP value. */
-  onChange?: FormInputOnEvent;
-  /** Focus callback (includes the focused field index). */
-  onFocus?: OTPInputOnEventWithIndex;
-  /** Blur callback (includes the blurred field index). */
-  onBlur?: OTPInputOnEventWithIndex;
-  /** Called when all fields are filled. */
-  onOTPFilled?: FormInputOnEvent;
-  /** Controlled value. */
-  value?: string;
-  /** Disables all fields. */
-  isDisabled?: boolean;
-  /** Focus the first field on mount. */
-  autoFocus?: boolean;
-  /** Return-key type on virtual keyboards. */
-  keyboardReturnKeyType?: KeyboardReturnKeyType;
-  /** Virtual keyboard type. @default 'decimal' */
-  keyboardType?: KeyboardType;
-  /** Placeholder — one character per field. */
-  placeholder?: string;
-  /** Number of OTP fields. @default 6 */
-  otpLength?: 4 | 6 | 8;
-  /** Masks the entered characters (renders `password` after entry). */
-  isMasked?: boolean;
-  /** Autocomplete suggestion type. @default 'oneTimeCode' */
-  autoCompleteSuggestionType?: 'none' | 'oneTimeCode';
-  /** KeyDown callback for custom keyboard navigation between fields. */
-  onKeyDown?: OTPInputOnKeyDownEvent;
-  /** Input size. @default 'medium' */
-  size?: BaseInputSize;
-  /** Test ID for the outer wrapper. */
-  testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+interface OTPInputChange {
+  name: string | undefined;
+  value: string;
+  method: OTPInputMethod;
 }
 
-type OTPInputProps = (OTPInputPropsWithLabel | OTPInputPropsWithA11yLabel) & OTPInputCommonProps;
-
-/** Imperative handle exposed via `bind:this`. */
-interface OTPInputInstance {
-  /** Focus a specific OTP field by index. */
-  focus: (index?: number) => void;
+interface OTPInputProps {
+  /** Plain text above the cells. */
+  label?: string;
+  /** Bindable. @default '' */
+  value?: string;
+  /** Number of cells; fixed at mount. @default 6 */
+  otpLength?: number;
+  /** A user edit or a `readOTP` code changed the value; outside `value` changes don't fire it. */
+  onChange?: (change: OTPInputChange) => void;
+  /** Every cell holds a character, by any method, `value` included. */
+  onOTPFilled?: (change: OTPInputChange) => void;
+  /** A cell was clicked (e.g. to take over from an auto-read). */
+  onClick?: (event: MouseEvent) => void;
+  /** Per-character sanitizer: return '' to reject. @default a single digit */
+  accept?: (char: string) => string;
+  /** The virtual keyboard. @default 'numeric' */
+  inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+  /** The return key's label on a virtual keyboard. */
+  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  /** One character: each cell's placeholder. */
+  placeholder?: string;
+  /** A cell took focus. */
+  onFocus?: (event: FocusEvent, index: number) => void;
+  /** A cell lost focus. */
+  onBlur?: (event: FocusEvent, index: number) => void;
+  /** Masks each cell like a password once it holds a character (empty cells stay text, so autofill still reaches them). @default false */
+  isMasked?: boolean;
+  /** @default false */
+  isDisabled?: boolean;
+  /** A partial code then fails the app's form. @default false */
+  isRequired?: boolean;
+  /** @default false */
+  isReadOnly?: boolean;
+  /** Omit inside the app's form to mirror its error. @default 'none' */
+  validationState?: 'none' | 'error' | 'success';
+  /** The line under the cells, and the stand-in for a missing error or success text. */
+  helpText?: string | Snippet;
+  /** The line while `validationState` is `error`. */
+  errorText?: string | Snippet;
+  /** The line while `validationState` is `success`. */
+  successText?: string | Snippet;
+  /** @default false */
+  autoFocus?: boolean;
+  /** An HTML autofill token. @default 'one-time-code' */
+  autoComplete?: string;
+  /** The key the app's form submits the code under. */
+  name?: string;
+  /** Names the group when there is no visible `label`. */
+  accessibilityLabel?: string;
+  /** Names one cell: `(index, total) => string`. @default the group's name and the cell's position */
+  cellAccessibilityLabel?: (index: number, total: number) => string;
+  /** Each cell gets `${testID}-${index}`. */
+  testID?: string;
+  /** Placement only. */
+  class?: string;
+  /** @default 'medium' (or BladeProvider's `size`) */
+  size?: 'medium' | 'large';
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `OTPInput` for SMS and email verification codes, 2FA codes and transaction PINs.
-- Verify the code in `onOTPFilled` instead of asking the user to press a button.
-- Use `otpLength={4}` for short PINs and the default `6` for verification codes; match the length your backend sends.
-- Use `isMasked` for PINs that should not be visible on screen.
-- Keep `autoCompleteSuggestionType="oneTimeCode"` (the default) so browsers can autofill SMS codes.
-- On a wrong code, set `validationState="error"` with `errorText`, clear `value` and call `focus(0)`.
-
-**Don't**
-
-- Don't build an OTP field from several `TextInput`s; use `OTPInput`, which handles focus, paste and deletion.
-- Don't use `OTPInput` for card numbers, phone numbers or other long sequences; use `TextInput` with `format` or `PhoneNumberInput`.
-- Don't use `OTPInput` for passwords; use `PasswordInput`.
-- Don't switch between controlled and uncontrolled after mount; pass `value=''` from the start if you need to reset the code.
+- Submit or verify in `onOTPFilled`; check `method` if you auto-submit only codes that were read for the user (`autofill`, `adapter`).
+- Show a wrong code with `validationState="error"` and `errorText`, and clear it by setting `value` to `''`.
+- Reset `value` to `''` on "Resend OTP" so the cells empty and `adapters.readOTP` is asked again.
+- Pass `cellAccessibilityLabel` for localized cell names ("Digit 1 of 6").
+- Don't build a code field from several TextInputs; OTPInput handles paste, autofill and focus movement.
 
 ## Examples
 
-### Verify a payment with an SMS OTP
-
-A controlled six-digit OTP that verifies on completion, shows an error for a wrong code and refocuses the first field.
+### Verify when the code is complete
 
 ```svelte
 <script lang="ts">
-  import { OTPInput, Box, Link } from '@razorpay/blade-svelte/components';
+  import { OTPInput, type OTPInputChange } from '@razorpay/blade-svelte/components';
 
-  let otp = $state('');
-  let hasError = $state(false);
-  let otpField: { focus: (index?: number) => void } | undefined = $state();
+  let code = $state('');
+  let isWrong = $state(false);
 
-  const verifyOtp = (code: string): void => {
-    if (code !== '123456') {
-      hasError = true;
-      otp = '';
-      otpField?.focus(0);
-    }
-  };
+  async function verify({ value }: OTPInputChange): Promise<void> {
+    const response = await fetch('/api/verify-otp', { method: 'POST', body: value });
+    isWrong = !response.ok;
+  }
 </script>
 
-<Box className="display-flex flex-col gap-spacing-3">
-  <OTPInput
-    bind:this={otpField}
-    label="Enter the OTP sent to +91 98XXX XX210"
-    name="paymentOtp"
-    autoFocus
-    value={otp}
-    onChange={({ value }) => {
-      otp = value ?? '';
-      hasError = false;
-    }}
-    onOTPFilled={({ value }) => verifyOtp(value ?? '')}
-    validationState={hasError ? 'error' : 'none'}
-    errorText="Incorrect OTP. Try again."
-    helpText="The OTP is valid for 10 minutes"
-    data-analytics-section="payment-otp"
-  >
-    {#snippet labelTrailing()}
-      <Link size="small" onClick={() => (otp = '')}>Resend OTP</Link>
-    {/snippet}
-  </OTPInput>
-</Box>
+<OTPInput
+  bind:value={code}
+  label="Enter the OTP sent to +91 98765 43210"
+  name="otp"
+  onOTPFilled={verify}
+  onChange={() => (isWrong = false)}
+  validationState={isWrong ? 'error' : 'none'}
+  errorText="That code is incorrect"
+/>
 ```
 
-### Masked 4-digit PIN
+### Four masked cells, cleared from outside
 
-An uncontrolled, masked PIN with the label on the left, used to confirm a payout.
+```svelte
+<script lang="ts">
+  import { Link, OTPInput } from '@razorpay/blade-svelte/components';
+
+  let pin = $state('');
+</script>
+
+<div class="flex flex-col gap-blade-3">
+  <OTPInput
+    bind:value={pin}
+    otpLength={4}
+    isMasked
+    size="large"
+    label="Card PIN"
+    cellAccessibilityLabel={(index, total) => `Digit ${index + 1} of ${total}`}
+  />
+  <Link variant="button" size="small" onClick={() => (pin = '')}>Clear</Link>
+</div>
+```
+
+### An alphanumeric code
 
 ```svelte
 <script lang="ts">
   import { OTPInput } from '@razorpay/blade-svelte/components';
 
-  let pin = $state('');
-  let focusedField = $state(0);
+  let code = $state('');
 </script>
 
 <OTPInput
-  label="Payout PIN"
-  labelPosition="left"
-  name="payoutPin"
-  otpLength={4}
-  isMasked
-  keyboardType="numeric"
-  autoCompleteSuggestionType="none"
-  onChange={({ value }) => (pin = value ?? '')}
-  onFocus={({ inputIndex }) => (focusedField = inputIndex)}
-  helpText={pin.length === 4 ? 'PIN entered' : `Enter digit ${focusedField + 1} of 4`}
+  bind:value={code}
+  otpLength={6}
+  label="Verification code"
+  inputMode="text"
+  accept={(char) => (/^[a-z0-9]$/i.test(char) ? char.toUpperCase() : '')}
+  helpText="Letters and digits from the email we sent"
 />
 ```

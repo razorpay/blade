@@ -4,146 +4,89 @@ Badge
 
 ## Description
 
-Badge is a small, color-coded, non-interactive label for short metadata such as a payment status, a count or a category. Colors carry meaning (positive, negative, notice, information), emphasis controls contrast, and sizes fit dense tables as well as standalone callouts. An optional icon reinforces the label.
+Badge is a small, non-interactive pill that labels a status or attribute: Paid, Failed, Beta, New, an offer. It comes in six colours (`neutral`, `information`, `positive`, `notice`, `negative`, `primary`), a tinted (`subtle`) or filled (`intense`) emphasis and three sizes (16, 20 and 24px tall), and takes an optional leading icon. The label stays on one line and carries its full text as a tooltip-style `title` when cut off.
 
 ## Important Constraints
 
-- `children` is required and must be non-empty text; Badge throws `Text as children is required for Badge.` otherwise
-- `icon` only accepts an icon component exported by `@razorpay/blade-svelte/components`
+- The label is `children`, short text; it is not clickable (use Chip for a choice, Button for an action)
+- `icon` takes an icon source from `@razorpay/blade-svelte/icons`, never a component; it is drawn before the label in the label's colour (8px at `small`, 12px above)
+- `size` is `small`, `medium` or `large`; React's `xsmall` does not exist
+- For a number, use Counter
+- `class` places it; its look is `color`, `emphasis` and `size`
 
-## TypeScript Types
-
-These are the props the Badge component accepts.
+## Props
 
 ```typescript
-type BadgeSize = 'xsmall' | 'small' | 'medium' | 'large';
-type BadgeColor = 'neutral' | 'positive' | 'negative' | 'notice' | 'information' | 'primary';
-type BadgeEmphasis = 'subtle' | 'intense';
+type BadgeColor = 'neutral' | 'information' | 'positive' | 'notice' | 'negative' | 'primary';
 
-/**
- * Children type for Badge - can be a string or a snippet
- */
-type BadgeChildren = string | Snippet;
-
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. CheckCircleIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-interface BadgeProps extends StyledPropsBlade {
-  /**
-   * Sets the label for the badge.
-   * Text content is required. Can be passed as slot content: `<Badge>text</Badge>`
-   * or as a prop: `<Badge children="text" />`
-   */
-  children: BadgeChildren;
-  /**
-   * Sets the color of the badge.
-   * @default 'neutral'
-   */
+interface BadgeProps {
+  /** @default 'neutral' */
   color?: BadgeColor;
-  /**
-   * Sets the emphasis (contrast) of the badge.
-   * @default 'subtle'
-   */
-  emphasis?: BadgeEmphasis;
-  /**
-   * Sets the size of the badge.
-   * @default 'medium'
-   */
-  size?: BadgeSize;
-  /**
-   * Icon to be displayed in the badge.
-   * Accepts an icon component from Blade.
-   */
-  icon?: IconComponent;
-  /**
-   * Test ID for the badge element.
-   */
+  /** `subtle` is tinted with medium-weight text; `intense` is filled with white, regular-weight text. @default 'subtle' */
+  emphasis?: 'subtle' | 'intense';
+  /** 16, 20 or 24px tall. @default 'medium' */
+  size?: 'small' | 'medium' | 'large';
+  /** Before the label, in its colour. */
+  icon?: IconSource;
+  /** The label: text. */
+  children: Snippet;
   testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Badge` for read-only status and metadata, such as "Captured", "Refunded" or "Test mode".
-- Use semantic colors for meaning: `positive` for success, `negative` for failures, `notice` for pending or at-risk states, `information` for neutral facts.
-- Use `emphasis="intense"` for the one status that must stand out; keep supporting badges `subtle`.
+- Map colour to meaning: `positive` for success, `negative` for failure, `notice` for pending or attention, `information` for neutral facts, `primary` for brand highlights like "New".
+- Use `subtle` by default; keep `intense` for the one badge that must stand out.
 - Keep labels to one or two words.
-- Use `size="small"` or `size="xsmall"` inside table rows and list items; use `medium` or `large` for standalone callouts.
-- Pair an icon with the label when it helps scanning, for example `CheckCircleIcon` on a success badge.
-
-**Don't**
-
-- Don't make a Badge clickable; use `Button`, `Link` or `Chip` for actions and selection.
-- Don't use a Badge for counts on another element; use `Counter`.
-- Don't rely on color alone; the text must state the status.
-- Don't mix `intense` and `subtle` badges for items of equal importance in the same group.
+- Use `icon` for an icon, never an `<Icon>` inside `children`: the badge spaces its own icon.
+- Don't restyle it with `bg-*`, `text-*` or `px-*` classes.
 
 ## Examples
 
-### Payment status badges
-
-Status badges in a transaction summary, combining semantic colors, emphasis, sizes, an icon and analytics attributes.
+### Status colours
 
 ```svelte
 <script lang="ts">
-  import { Badge, Box, CheckCircleIcon, AlertTriangleIcon } from '@razorpay/blade-svelte/components';
-
-  type PaymentStatus = 'captured' | 'failed' | 'pending';
-
-  let status: PaymentStatus = $state('captured');
-
-  const badgeColor = $derived(
-    status === 'captured' ? 'positive' : status === 'failed' ? 'negative' : 'notice',
-  );
+  import { Badge } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box className="display-flex items-center gap-spacing-3">
-  <Badge
-    color={badgeColor}
-    emphasis="intense"
-    size="medium"
-    icon={status === 'captured' ? CheckCircleIcon : AlertTriangleIcon}
-    testID="payment-status-badge"
-    data-analytics-section="payment-status"
-  >
-    {status === 'captured' ? 'Captured' : status === 'failed' ? 'Failed' : 'Pending'}
-  </Badge>
-  <Badge color="information" emphasis="subtle" size="small">UPI</Badge>
-  <Badge color="neutral" size="small" marginLeft="spacing.2">Test mode</Badge>
-</Box>
+<div class="flex flex-wrap items-center gap-blade-3">
+  <Badge color="positive">Captured</Badge>
+  <Badge color="negative">Failed</Badge>
+  <Badge color="notice">Pending</Badge>
+  <Badge color="information">Refunded</Badge>
+  <Badge>Draft</Badge>
+  <Badge color="primary" emphasis="intense">New</Badge>
+</div>
 ```
 
-### Badges in a dense list
-
-Extra-small badges that label settlement rows without competing with the amounts.
+### Sizes with an icon
 
 ```svelte
 <script lang="ts">
-  import { Badge, Box, Text } from '@razorpay/blade-svelte/components';
-
-  const settlements = [
-    { id: 'setl_01', label: 'Settlement to HDFC ••4521', state: 'Processed' },
-    { id: 'setl_02', label: 'Settlement to ICICI ••9087', state: 'On hold' },
-  ];
+  import { Badge } from '@razorpay/blade-svelte/components';
+  import { CheckCircleIcon, ClockIcon } from '@razorpay/blade-svelte/icons';
 </script>
 
-<Box className="display-flex flex-col gap-spacing-3">
-  {#each settlements as settlement (settlement.id)}
-    <Box className="display-flex justify-between items-center">
-      <Text size="small">{settlement.label}</Text>
-      <Badge size="xsmall" color={settlement.state === 'Processed' ? 'positive' : 'notice'}>
-        {settlement.state}
-      </Badge>
-    </Box>
-  {/each}
-</Box>
+<div class="flex flex-wrap items-center gap-blade-3">
+  <Badge size="small" color="positive" icon={CheckCircleIcon}>Verified</Badge>
+  <Badge color="positive" icon={CheckCircleIcon}>Verified</Badge>
+  <Badge size="large" color="notice" icon={ClockIcon}>Awaiting KYC</Badge>
+</div>
+```
+
+### Next to a title
+
+```svelte
+<script lang="ts">
+  import { Badge, Heading } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex items-center gap-blade-3">
+  <Heading as="h2" size="small">Payment links</Heading>
+  <Badge color="primary" size="small">Beta</Badge>
+</div>
 ```

@@ -4,377 +4,199 @@ Modal
 
 ## Description
 
-Modal is a centered dialog that appears in front of the page to ask for a decision or input, blocking everything behind it until it closes. Compose it from `ModalHeader` (title, subtitle, leading, trailing, close button), `ModalBody` (scrollable content) and `ModalFooter` (actions). Focus trap, focus return, Escape and backdrop dismissal, body scroll lock and the enter/exit animation are built in; you only control `isOpen`. Sizes are small, medium, large and full.
+Modal is the centred dialog for a focused task or a confirmation, opened from code through a bound `isOpen` and composed from ModalHeader, ModalBody and ModalFooter. On desktop (`d`) it is a 400, 760 or 1024px column (`size`), or `full` to fill the overlay host 8px in; below desktop every size spans the host. It sits over the one scrim BladeProvider's overlay host draws, traps focus, closes on Escape, a press on the scrim, its close button and `back()`, and returns focus to whatever had it when it opened.
 
 ## Important Constraints
 
-- `isOpen` is controlled, not bindable; set it to `false` inside `onDismiss` or the Modal stays open
-- `children` is a snippet; render `ModalHeader`, `ModalBody` and `ModalFooter` in that order inside it
-- The close button is rendered by `ModalHeader`; a Modal without a `ModalHeader` has no close button. For a headerless layout with a floating close button, render `<ModalHeader />` with no props
-- With `isDismissible={false}`, Escape, backdrop click and the close button do nothing and `onDismiss` is not called; close the Modal from a footer button
-- A warning is logged when `accessibilityLabel` is missing
-- `initialFocusRef` takes an `HTMLElement` (from `bind:this` on a native element); without it, focus moves to the close button
-- `ModalBody` `padding` accepts only `'spacing.0'` or `'spacing.6'`
-- Background content is made `inert` while the Modal is mounted
+- Modal has no trigger: open it by setting the bound `isOpen` (a Button's `onClick`); `children` is its content, not a trigger
+- It renders into the overlay host of the app's BladeProvider (the examples assume the app has one); without a provider it renders in place, unscrimmed
+- Compose the content from `ModalHeader`, `ModalBody` and `ModalFooter`; there is no `title`, `body` or `footer` prop on Modal, and no `variant` (a sheet is BottomSheet, a side panel Drawer)
+- `onDismiss({ source, close })` fires on every user dismissal (`cross`, `blur`, `escape`, `back`); with `isDismissible={false}` the modal stays open until `close` is called, and the close button is hidden
+- `onOpenChange` reports only the closes the modal makes itself, never your own write to `isOpen`
+- A modal without a ModalHeader title needs `accessibilityLabel` to be named
+- `class` lands on the panel and only places it; `classes={{ root, panel }}` replaces where the panel sits in the host and its look
 
-## TypeScript Types
-
-These are the props the Modal, ModalHeader, ModalBody and ModalFooter components accept.
+## Props
 
 ```typescript
 type ModalSize = 'small' | 'medium' | 'large' | 'full';
-type ModalBodyPadding = 'spacing.0' | 'spacing.6';
+type ModalPace = 'default' | 'snappy';
+type DismissSource = 'cross' | 'blur' | 'escape' | 'back' | 'drag';
 
-interface ModalProps extends StyledPropsBlade {
-  /**
-   * Children of the Modal — typically a `ModalHeader`, `ModalBody`, and/or
-   * `ModalFooter` rendered in that order.
-   */
-  children: Snippet;
-
-  /**
-   * Sets the modal to open or close.
-   *
-   * @default false
-   */
+interface ModalProps {
+  /** Bindable. Written `false` whenever the modal closes itself. @default false */
   isOpen?: boolean;
-
-  /**
-   * Callback fired when the user clicks the close button, clicks the backdrop,
-   * or presses the escape key.
-   */
-  onDismiss?: () => void;
-
-  /**
-   * Whether the modal can be dismissed by clicking outside or pressing the
-   * escape key. When `false` the close button is hidden and the modal must be
-   * closed programmatically (typically via a footer button).
-   *
-   * @default true
-   */
+  /** Every user dismissal, dismissible or not; `close` ends a non-dismissible one. */
+  onDismiss?: (event: { source: DismissSource; close: () => void }) => void;
+  /** It opened or closed by itself (a dismissal or `close`), not when you set `isOpen`. */
+  onOpenChange?: (change: { isOpen: boolean }) => void;
+  /** The exit animation finished and the modal left the DOM. */
+  onClosed?: () => void;
+  /** Whether a dismissal closes it by itself, and whether the close button shows. @default true */
   isDismissible?: boolean;
-
-  /**
-   * Element that should receive keyboard focus when the modal opens. By default
-   * focus moves to the close button. Svelte callers pass the element obtained
-   * via `bind:this`.
-   *
-   * @default null
-   */
-  initialFocusRef?: HTMLElement | null;
-
-  /**
-   * Size of the modal.
-   *
-   * @default 'small'
-   */
-  size?: ModalSize;
-
-  /**
-   * Accessibility label for the modal dialog.
-   */
+  /** @default 'dialog' */
+  role?: 'dialog' | 'alertdialog';
+  /** The content: ModalHeader, ModalBody, ModalFooter. `close` closes without a dismissal. */
+  children?: Snippet<[{ close: () => void }]>;
+  /** A zero-height box on the panel's top edge, unclipped; what goes in positions itself (`absolute bottom-full`). */
+  chrome?: Snippet<[{ close: () => void }]>;
+  /** The close button's accessible name. @default 'Close' */
+  closeLabel?: string;
+  /** Names the modal when its header has no title. */
   accessibilityLabel?: string;
-
-  /**
-   * Sets the z-index of the modal.
-   *
-   * @default 1000
-   */
-  zIndex?: number;
-
-  /** Test ID applied to the surface element. */
+  /** An element inside, bound with `bind:this`, that takes focus on open in place of the panel. */
+  initialFocusRef?: HTMLElement | null;
+  /** Lands on the panel (the element with the dialog role). */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** `root`: the panel's alignment and gutter in the host; `panel`: its look and size. Or a function rewriting every class. */
+  classes?: { root?: string; panel?: string } | ((classes: ModalClasses) => ModalClasses);
+  /** Placement only, merged last onto the panel. */
+  class?: string;
+  /** Desktop width: 400, 760 or 1024px, or `full` (the host, 8px in, full height). @default 'small' */
+  size?: ModalSize;
+  /** `snappy`: an expo-out easing; both run 280ms. @default 'default' */
+  pace?: ModalPace;
 }
 
-interface ModalHeaderProps extends StyledPropsBlade {
-  /** Header title text. */
-  title?: string;
-
-  /** Header subtitle text rendered below the title. */
+interface ModalHeaderProps {
+  /** Names the modal. */
+  title?: string | Snippet;
+  /** One muted line under the title; it describes the modal. */
   subtitle?: string;
-
-  /**
-   * Leading slot rendered before the title (e.g. an icon).
-   * Pass a Svelte snippet.
-   */
-  leading?: Snippet;
-
-  /**
-   * Trailing slot rendered after the title (e.g. a `Badge`, `Text`, `Button`,
-   * or `Link`). Pass a Svelte snippet.
-   */
-  trailing?: Snippet;
-
-  /**
-   * Adornment rendered alongside the title (e.g. a `Counter`).
-   * Pass a Svelte snippet.
-   */
+  /** Before the title: an icon (a 20px glyph) or a snippet (an asset or avatar in a 32px slot). */
+  leading?: IconSource | Snippet;
+  /** Beside the title: a Counter or a Badge. */
   titleSuffix?: Snippet;
-
-  /** Test ID applied to the header element. */
+  /** After the title block, clear of the close button: a Badge, text, a Link or an action. Receives `close`, which closes the overlay without a dismissal. */
+  trailing?: Snippet<[{ close: () => void }]>;
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
 }
 
-interface ModalBodyProps extends StyledPropsBlade {
-  /** Body content. */
-  children: Snippet;
-
-  /**
-   * Equal padding applied on all sides of the body content. Only `spacing.0`
-   * and `spacing.6` are allowed deliberately.
-   *
-   * @default 'spacing.6'
-   */
-  padding?: ModalBodyPadding;
-
-  /**
-   * Explicit height for the body scroll container (e.g. `'100%'`). Accepts any
-   * CSS length string.
-   */
-  height?: string;
-
-  /** Test ID applied to the body element. */
+interface ModalBodyProps {
+  /** 20px all round, or none for content with its own scroll box. @default 'spacing.6' */
+  padding?: 'spacing.6' | 'spacing.0';
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only (a fixed height, say). */
+  class?: string;
+  children: Snippet;
 }
 
-interface ModalFooterProps extends StyledPropsBlade {
-  /** Footer content — typically `Button`s or other CTAs. */
-  children: Snippet;
-
-  /** Test ID applied to the footer element. */
+interface ModalFooterProps {
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
+  /** The actions; you lay them out (a flex row of Buttons). */
+  children: Snippet;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Modal` on desktop for a focused task or decision, such as confirming a refund or editing a settlement account.
-- Pick `size` by content: `small` (400px) for confirmations, `medium` (760px) for forms, `large` (1024px) for complex content, `full` for media or full-screen flows.
-- Always pass `accessibilityLabel`, usually the same text as the header `title`.
-- Put primary and secondary actions in `ModalFooter`, laid out in a flex row; keep the primary action last.
-- Use `ModalHeader`'s `trailing` for a `Badge`, `Text`, `Button` or `Link` and `titleSuffix` for a `Counter`.
-- Use `isDismissible={false}` only when the user must choose an explicit option before continuing.
-- Use `ModalBody padding="spacing.0"` with `height="100%"` for edge-to-edge media in a `full` Modal.
-
-**Don't**
-
-- Don't use `Modal` on mobile web; use `BottomSheet`.
-- Don't use `Modal` for non-blocking hints or side content; use `Popover` or `Tooltip`.
-- Don't use `Modal` for a transient success message after the action completes; use `Toast`.
-- Don't use `bind:isOpen`; pass `isOpen` and reset it in `onDismiss`.
-- Don't nest a Modal inside another Modal; replace the content of the open Modal or use a multi-step body.
+- Use Modal for a short task or a confirmation that needs the user's answer before going on; use BottomSheet on phone-first flows and Drawer for a side panel of filters or details.
+- Give every modal a `ModalHeader` with a `title`; it names the dialog for screen readers.
+- Lay the footer out yourself: a `flex justify-end gap-blade-4` row with one primary Button and a secondary one.
+- Use `isDismissible={false}` (and `role="alertdialog"`) only when the user must choose; handle `onDismiss` and call `close` when the choice is made.
+- Close from inside with the `close` that `children({ close })` receives, or by setting `isOpen = false`.
+- Don't nest a Modal inside another's markup to stack them: render both side by side and open the second from the first; they stack on the layer stack and share one scrim.
+- Don't restyle the panel through `class`; use `size`, or `classes.panel` when the layout must change.
 
 ## Examples
 
-### Refund form
-
-A medium Modal with a header badge, a form body and footer actions; `onDismiss` resets the controlled `isOpen`.
+### A confirmation
 
 ```svelte
 <script lang="ts">
-  import {
-    Badge,
-    Button,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    TextInput,
-  } from '@razorpay/blade-svelte/components';
+  import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Text } from '@razorpay/blade-svelte/components';
 
   let isOpen = $state(false);
-  let refundAmount = $state('');
-  let isSubmitting = $state(false);
-
-  const isValid = $derived(Number(refundAmount) > 0);
-
-  const closeModal = (): void => {
-    isOpen = false;
-    refundAmount = '';
-  };
-
-  const submitRefund = async (): Promise<void> => {
-    isSubmitting = true;
-    await fetch('/api/payments/pay_29QQoUBi66xm2f/refund', {
-      method: 'POST',
-      body: JSON.stringify({ amount: Number(refundAmount) }),
-    });
-    isSubmitting = false;
-    closeModal();
-  };
 </script>
 
-<Button onClick={() => (isOpen = true)}>Issue refund</Button>
+<Button color="negative" variant="secondary" onClick={() => (isOpen = true)}>Remove card</Button>
 
+<Modal bind:isOpen>
+  <ModalHeader title="Remove this card?" subtitle="Card ending 1111" />
+  <ModalBody>
+    <Text color="muted">You will need to add it again to pay with it.</Text>
+  </ModalBody>
+  <ModalFooter>
+    <div class="flex justify-end gap-blade-4">
+      <Button variant="secondary" onClick={() => (isOpen = false)}>Cancel</Button>
+      <Button color="negative" onClick={() => (isOpen = false)}>Remove</Button>
+    </div>
+  </ModalFooter>
+</Modal>
+```
+
+### A header with a leading icon, a suffix and a trailing item
+
+```svelte
+<script lang="ts">
+  import { Badge, Button, Counter, Modal, ModalBody, ModalHeader, Text } from '@razorpay/blade-svelte/components';
+  import { CreditCardIcon } from '@razorpay/blade-svelte/icons';
+
+  let isOpen = $state(false);
+</script>
+
+<Button variant="secondary" onClick={() => (isOpen = true)}>Saved cards</Button>
+
+<Modal bind:isOpen size="medium">
+  <ModalHeader title="Saved cards" leading={CreditCardIcon}>
+    {#snippet titleSuffix()}<Counter value={3} />{/snippet}
+    {#snippet trailing()}<Badge color="positive">Secure</Badge>{/snippet}
+  </ModalHeader>
+  <ModalBody>
+    <Text>Cards are tokenised and stored with your bank's approval.</Text>
+  </ModalBody>
+</Modal>
+```
+
+### A required choice: not dismissible
+
+```svelte
+<script lang="ts">
+  import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Text } from '@razorpay/blade-svelte/components';
+
+  let { isOpen = $bindable(false) }: { isOpen?: boolean } = $props();
+  let choice = $state<'stay' | 'leave' | null>(null);
+</script>
+
+<Modal bind:isOpen isDismissible={false} role="alertdialog">
+  {#snippet children({ close })}
+    <ModalHeader title="Leave without paying?" />
+    <ModalBody>
+      <Text color="muted">Your order will be held for 10 minutes.</Text>
+    </ModalBody>
+    <ModalFooter>
+      <div class="flex justify-end gap-blade-4">
+        <Button variant="secondary" onClick={() => { choice = 'leave'; close(); }}>Leave</Button>
+        <Button onClick={() => { choice = 'stay'; close(); }}>Continue paying</Button>
+      </div>
+    </ModalFooter>
+  {/snippet}
+</Modal>
+```
+
+### Placed in the host and logging how it closed
+
+```svelte
+<script lang="ts">
+  import { Button, Modal, ModalBody, ModalHeader, Text } from '@razorpay/blade-svelte/components';
+
+  let isOpen = $state(false);
+  let lastSource = $state('');
+</script>
+
+<Button onClick={() => (isOpen = true)}>Fees</Button>
+
+<!-- `classes.root` moves the panel to the host's top-right corner. -->
 <Modal
-  {isOpen}
-  onDismiss={closeModal}
-  size="medium"
-  accessibilityLabel="Issue refund"
-  testID="refund-modal"
-  data-analytics-section="refund-modal"
+  bind:isOpen
+  classes={{ root: 'items-start justify-end p-blade-7' }}
+  onDismiss={({ source }) => (lastSource = source)}
 >
-  {#snippet children()}
-    <ModalHeader title="Issue refund" subtitle="Payment pay_29QQoUBi66xm2f · ₹2,499">
-      {#snippet trailing()}
-        <Badge color="positive" size="small">Captured</Badge>
-      {/snippet}
-    </ModalHeader>
-    <ModalBody>
-      {#snippet children()}
-        <TextInput
-          label="Refund amount"
-          prefix="₹"
-          type="number"
-          name="refundAmount"
-          placeholder="Up to 2,499"
-          helpText="Refunds reach the customer in 5-7 working days"
-          value={refundAmount}
-          onChange={({ value }) => (refundAmount = value ?? '')}
-        />
-      {/snippet}
-    </ModalBody>
-    <ModalFooter>
-      {#snippet children()}
-        <div class="footer-actions">
-          <Button variant="secondary" onClick={closeModal}>Cancel</Button>
-          <Button isDisabled={!isValid} isLoading={isSubmitting} onClick={submitRefund}>
-            Refund
-          </Button>
-        </div>
-      {/snippet}
-    </ModalFooter>
-  {/snippet}
+  <ModalHeader title="Convenience fee" />
+  <ModalBody><Text>2% on credit cards, charged by your bank.</Text></ModalBody>
 </Modal>
-
-<style>
-  .footer-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--spacing-3);
-    width: 100%;
-  }
-</style>
-```
-
-### Non-dismissible destructive confirmation
-
-A small Modal that can only be closed through its footer buttons.
-
-```svelte
-<script lang="ts">
-  import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    Text,
-  } from '@razorpay/blade-svelte/components';
-
-  let { onRevoke }: { onRevoke: () => void } = $props();
-
-  let isOpen = $state(false);
-
-  const revoke = (): void => {
-    onRevoke();
-    isOpen = false;
-  };
-</script>
-
-<Button color="negative" variant="secondary" onClick={() => (isOpen = true)}>Revoke API key</Button>
-
-<Modal {isOpen} isDismissible={false} size="small" accessibilityLabel="Revoke API key">
-  {#snippet children()}
-    <ModalHeader title="Revoke API key?" />
-    <ModalBody>
-      {#snippet children()}
-        <Text size="medium" color="surface.text.gray.subtle">
-          Integrations using rzp_live_••••4f2c will stop accepting payments immediately.
-        </Text>
-      {/snippet}
-    </ModalBody>
-    <ModalFooter>
-      {#snippet children()}
-        <div class="footer-actions">
-          <Button variant="tertiary" onClick={() => (isOpen = false)}>No, keep it</Button>
-          <Button color="negative" onClick={revoke}>Revoke</Button>
-        </div>
-      {/snippet}
-    </ModalFooter>
-  {/snippet}
-</Modal>
-
-<style>
-  .footer-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--spacing-3);
-    width: 100%;
-  }
-</style>
-```
-
-### Headerless modal with a floating close button
-
-An empty `ModalHeader` renders only the floating close button above self-explanatory content.
-
-```svelte
-<script lang="ts">
-  import {
-    Button,
-    Heading,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    Text,
-  } from '@razorpay/blade-svelte/components';
-
-  let isOpen = $state(true);
-</script>
-
-<Modal {isOpen} onDismiss={() => (isOpen = false)} accessibilityLabel="Turbo UPI is live">
-  {#snippet children()}
-    <ModalHeader />
-    <ModalBody>
-      {#snippet children()}
-        <Heading size="medium">Turbo UPI is live</Heading>
-        <Text size="medium" marginTop="spacing.2">
-          Customers can now pay in-app without switching to a UPI app.
-        </Text>
-      {/snippet}
-    </ModalBody>
-    <ModalFooter>
-      {#snippet children()}
-        <div class="footer-actions">
-          <Button variant="secondary" isFullWidth onClick={() => (isOpen = false)}>Later</Button>
-          <Button isFullWidth onClick={() => (isOpen = false)}>Enable now</Button>
-        </div>
-      {/snippet}
-    </ModalFooter>
-  {/snippet}
-</Modal>
-
-<style>
-  .footer-actions {
-    display: flex;
-    gap: var(--spacing-3);
-    width: 100%;
-  }
-</style>
 ```

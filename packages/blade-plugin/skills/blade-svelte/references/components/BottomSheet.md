@@ -4,266 +4,111 @@ BottomSheet
 
 ## Description
 
-BottomSheet is a mobile-first overlay that slides up from the bottom of the viewport to show a form, a selection or extra detail without leaving the page. Compose it from `BottomSheetHeader` (title, subtitle, back and close buttons), `BottomSheetBody` (the only scrolling region) and `BottomSheetFooter` (actions). By default it sizes itself to its content; pass `snapPoints` for draggable height detents. Drag-to-dismiss, focus management, body scroll lock and stacking of several sheets are built in, and `isOpen` is bindable.
+BottomSheet is the phone-first dialog on the bottom edge, for a picker, a confirmation or a short step, opened from a bound `isOpen` and composed from BottomSheetHeader, Body and Footer. It renders into the overlay host. It keeps its content's height (no snap points), shows a grab handle and is dragged down to dismiss by its handle strip and header; on desktop (`d`) it is a 400px column floating 8px in at the end. It shares Modal's behaviour: the scrim, the focus trap, Escape, `back()`, and focus returning to what had it.
 
 ## Important Constraints
 
-- `isOpen` is `$bindable`: with `bind:isOpen` the sheet sets it to `false` itself on dismiss. Without `bind:`, set it to `false` in `onDismiss` or the sheet stays open
-- `onDismiss` fires on swipe down, backdrop tap, Escape and the header close button, but only when `isDismissible` is `true`
-- With `isDismissible={false}`, the close button is hidden and swipe, backdrop and Escape do nothing; close the sheet from a footer button
-- `children` is a snippet; render `BottomSheetHeader`, `BottomSheetBody` and `BottomSheetFooter` in that order inside it. The close button lives in `BottomSheetHeader`, so render `<BottomSheetHeader />` with no props for a headerless sheet that still has a close button
-- `snapPoints` must be three fractions of the viewport height between 0 and 1, `[lower, middle, upper]`; without it the sheet runs in auto mode (content height, capped by `maxHeight`, drag only dismisses)
-- `maxHeight` is ignored when `snapPoints` is set
-- Only the body scrolls; header and footer stay fixed
-- `BottomSheetBody` `padding` accepts only `'spacing.0'` or `'spacing.5'`
-- When stacking sheets, give every sheet the same `zIndex`; the stack order is computed internally and only the top sheet responds to drag and Escape
-- Partial port: React's `snapToContentHeight` and `isContentPanningGestureEnabled` props are not available (auto mode replaces `snapToContentHeight`), the default `zIndex` is 100 instead of 400, and `BottomSheetHeader` `children` (for AutoComplete in the header) is reserved because Dropdown/AutoComplete are not fully ported
+- BottomSheet has no trigger: open it by setting the bound `isOpen`; `children` is its content
+- It renders into the overlay host of the app's BladeProvider (the examples assume the app has one)
+- Compose the content from `BottomSheetHeader`, `BottomSheetBody` and `BottomSheetFooter`; there is no `size`, `snapPoints`, `title` or `padding` on the sheet itself
+- A release dismisses after a downward fling or past half the sheet's height, reporting `onDismiss({ source: 'drag' })`; a shorter drag settles back
+- With `isDismissible={false}` the close button is hidden and a drag resists; the sheet stays open until `close` is called
+- `isDraggable={false}` hides the handle and stops the drag; it is a style prop, so `BladeProvider` `defaults={{ BottomSheet: { isDraggable: false } }}` sets it too (Modal's defaults never reach a sheet)
+- The header's back button (`showBackButton`) is a step back inside the sheet, not a dismissal: handle it in `onBackButtonClick`
 
-## TypeScript Types
-
-These are the props the BottomSheet, BottomSheetHeader, BottomSheetBody and BottomSheetFooter components accept.
+## Props
 
 ```typescript
-/**
- * Snap points expressed as fractions of the viewport height (between 0 and 1).
- * `[lower, middle, upper]` — e.g. `[0.35, 0.5, 0.85]`.
- */
-type SnapPoints = [number, number, number];
+type DismissSource = 'cross' | 'blur' | 'escape' | 'back' | 'drag';
 
-type BottomSheetBodyPadding = 'spacing.0' | 'spacing.5';
-type BottomSheetBodyOverflow = 'auto' | 'hidden' | 'visible';
-
-interface BottomSheetProps extends StyledPropsBlade {
-  /**
-   * Children of the BottomSheet — typically a `BottomSheetHeader`,
-   * `BottomSheetBody`, and/or `BottomSheetFooter` rendered in that order.
-   */
-  children: Snippet;
-
-  /**
-   * Multi-detent snap points. Each value is a fraction of the viewport height;
-   * e.g. `0.5` means 50% of the screen.
-   *
-   * When omitted the sheet enters **auto mode**: it opens at its natural content
-   * height (capped by `maxHeight`), resizes as content changes, and collapses
-   * entirely on dismiss. Drag-to-dismiss is available; drag-to-resize is not.
-   *
-   * @default undefined (auto mode)
-   */
-  snapPoints?: SnapPoints;
-
-  /**
-   * Maximum height the sheet may reach in auto mode, expressed as a fraction
-   * of the viewport (or portal container) height. Content taller than this cap
-   * scrolls inside the body instead of growing the sheet further.
-   *
-   * Has no effect when `snapPoints` is provided — in that case the upper snap
-   * point is the effective ceiling.
-   *
-   * @default 0.97
-   */
-  maxHeight?: number;
-
-  /**
-   * Called when the bottom sheet is closed via swipe down or backdrop tap.
-   */
-  onDismiss?: () => void;
-
-  /**
-   * Whether the bottom sheet can be dismissed by tapping the backdrop or
-   * swiping down. When `false` the close button is hidden and the sheet must
-   * be closed programmatically by the caller (typically via a footer button).
-   *
-   * @default true
-   */
-  isDismissible?: boolean;
-
-  /**
-   * Toggles bottom sheet open state.
-   *
-   * @default false
-   */
+interface BottomSheetProps {
+  /** Bindable. Written `false` whenever the sheet closes itself. @default false */
   isOpen?: boolean;
-
-  /**
-   * Element that should receive keyboard focus when the sheet opens. By
-   * default focus is moved to the close button. Svelte callers pass the
-   * element obtained via `bind:this`.
-   *
-   * @default null
-   */
+  /** Every user dismissal (including a drag), dismissible or not; `close` ends a non-dismissible one. */
+  onDismiss?: (event: { source: DismissSource; close: () => void }) => void;
+  /** It opened or closed by itself (a dismissal or `close`), not when you set `isOpen`. */
+  onOpenChange?: (change: { isOpen: boolean }) => void;
+  /** The exit animation finished and the sheet left the DOM. */
+  onClosed?: () => void;
+  /** Whether a dismissal closes it by itself, and whether the close button shows. @default true */
+  isDismissible?: boolean;
+  /** @default 'dialog' */
+  role?: 'dialog' | 'alertdialog';
+  /** The content: BottomSheetHeader, BottomSheetBody, BottomSheetFooter. `close` closes without a dismissal. */
+  children?: Snippet<[{ close: () => void }]>;
+  /** A zero-height box on the panel's top edge, beside the handle and close button; what goes in positions itself. */
+  chrome?: Snippet<[{ close: () => void }]>;
+  /** The close button's accessible name. @default 'Close' */
+  closeLabel?: string;
+  /** Names the sheet when its header has no title. */
+  accessibilityLabel?: string;
+  /** An element inside, bound with `bind:this`, that takes focus on open in place of the panel. */
   initialFocusRef?: HTMLElement | null;
-
-  /**
-   * Sets the z-index of the bottom sheet. When stacking multiple sheets keep
-   * `zIndex` identical across all of them — the stacking context is computed
-   * internally.
-   *
-   * @default 100
-   */
-  zIndex?: number;
-
-  /**
-   * Mounts the overlay (backdrop + surface) into this element. Defaults to
-   * `document.body`. Use a custom target when the sheet is nested inside
-   * another overlay or an ancestor with `overflow: hidden` / `transform`
-   * (e.g. a phone-frame preview). Snap-point math uses the target's height
-   * when set.
-   */
-  portalTarget?: HTMLElement | null;
-
-  /**
-   * Mounts the backdrop into this element. Defaults to `portalTarget`. Set a
-   * wider ancestor when the sheet surface should stay in a nested container
-   * but the dim overlay must cover a larger region (e.g. a checkout card
-   * sidebar + main pane). The surface `portalTarget` must be a descendant of
-   * this element, and an intermediate ancestor should establish a higher
-   * stacking context for the surface (e.g. `z-index: 1`).
-   */
-  backdropPortalTarget?: HTMLElement | null;
-
-  /**
-   * Toggles the drag handle (the pill affordance rendered at the top of the
-   * sheet) and drag-to-move/dismiss gestures. Set to `false` for desktop flows
-   * where dragging is not expected — this hides the handle and disables all
-   * sheet drag gestures. The sheet can still be dismissed via the backdrop,
-   * `esc`, or programmatically.
-   *
-   * @default true
-   */
-  showDragHandle?: boolean;
-
-  /** Test ID applied to the surface element. */
+  /** Lands on the panel (the element with the dialog role). */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** `root`: where the panel sits in the host; `panel`: its look (keep `translate-y-0` for the drag). Or a function rewriting every class. */
+  classes?: { root?: string; panel?: string } | ((classes: ModalClasses) => ModalClasses);
+  /** Placement only, merged last onto the panel. */
+  class?: string;
+  /** `snappy`: an expo-out easing; both run 280ms. @default 'default' */
+  pace?: 'default' | 'snappy';
+  /** Dragged down to dismiss by its handle strip and header; the handle shows only while true. @default true */
+  isDraggable?: boolean;
 }
 
-interface BottomSheetHeaderProps extends StyledPropsBlade {
-  /** Header title text. */
-  title?: string;
-
-  /** Header subtitle text rendered below the title. */
+interface BottomSheetHeaderProps {
+  /** Names the sheet. */
+  title?: string | Snippet;
+  /** One muted line under the title; it describes the sheet. */
   subtitle?: string;
-
-  /**
-   * Leading slot rendered before the title (e.g. an icon).
-   * Pass a Svelte snippet.
-   */
-  leading?: Snippet;
-
-  /**
-   * Trailing slot rendered after the title (e.g. a `Badge`, `Text`, `Button`,
-   * or `Link`). Pass a Svelte snippet.
-   */
-  trailing?: Snippet;
-
-  /**
-   * Adornment rendered alongside the title (e.g. a `Counter`).
-   * Pass a Svelte snippet.
-   */
+  /** Before the title: an icon (a 20px glyph) or a snippet (an asset or avatar in a 32px slot). */
+  leading?: IconSource | Snippet;
+  /** Beside the title: a Counter or a Badge. */
   titleSuffix?: Snippet;
-
-  /**
-   * Show a back button on the left side of the header. Wires up
-   * `onBackButtonClick` when present.
-   *
-   * @default false
-   */
+  /** After the title block: a Badge, text, a Link or an action. Receives `close`, which closes the overlay without a dismissal. */
+  trailing?: Snippet<[{ close: () => void }]>;
+  /** A back button first in the row: a step back inside the sheet, not a dismissal. @default false */
   showBackButton?: boolean;
-
-  /** Called when the back button is clicked. */
   onBackButtonClick?: () => void;
-
-  /**
-   * Reserved for future AutoComplete-in-header integration. Accepts a Svelte
-   * snippet and renders it after the header content. The full integration
-   * depends on Dropdown/AutoComplete which are not yet migrated.
-   */
+  /** The back button's accessible name. @default 'Back' */
+  backLabel?: string;
+  /** Under the title row, inside the header: a search field, a stepper. */
   children?: Snippet;
-
-  /** Test ID applied to the header element. */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
 }
 
-interface BottomSheetBodyProps extends StyledPropsBlade {
-  /** Body content. */
-  children: Snippet;
-
-  /**
-   * Equal padding applied on all sides of the body content. Only `spacing.0`
-   * and `spacing.5` are allowed deliberately.
-   *
-   * @default 'spacing.5'
-   */
-  padding?: BottomSheetBodyPadding;
-
-  /**
-   * Native CSS `overflow` value applied to the body scroll container.
-   *
-   * @default 'auto'
-   */
-  overflow?: BottomSheetBodyOverflow;
-
-  /**
-   * Set to `true` when the body contains an `ActionList` (or similar
-   * full-bleed list). The body padding will collapse to `spacing.3` to match
-   * React's `React.Children.forEach` ActionList detection. Svelte cannot
-   * introspect snippets, so this is exposed as an explicit prop.
-   *
-   * @default false
-   */
-  hasActionList?: boolean;
-
-  /** Test ID applied to the body element. */
+interface BottomSheetBodyProps {
+  /** 16px all round, or none for content with its own scroll box. @default 'spacing.5' */
+  padding?: 'spacing.5' | 'spacing.0';
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
+  children: Snippet;
 }
 
-interface BottomSheetFooterProps extends StyledPropsBlade {
-  /** Footer content — typically `Button`s or other CTAs. */
-  children: Snippet;
-
-  /** Test ID applied to the footer element. */
+interface BottomSheetFooterProps {
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only. */
+  class?: string;
+  /** The actions, on the sheet's surface under a hairline; you lay them out. */
+  children: Snippet;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `BottomSheet` on mobile and mobile web for short forms, pickers and detail views, such as choosing a payment method or a UPI app.
-- Use `bind:isOpen` for the simplest open/close wiring, and add `onDismiss` only for side effects like resetting form state.
-- Leave `snapPoints` unset for content-sized sheets; set them only when the user should be able to drag between heights, for example `[0.35, 0.5, 0.85]` for a long list.
-- Use `showBackButton` with `onBackButtonClick` for multi-step flows inside one sheet.
-- Put the primary action in `BottomSheetFooter` so it stays visible while the body scrolls.
-- Use `BottomSheetBody padding="spacing.0"` for full-bleed banners or images, and add padding to the inner content yourself.
-- Use `portalTarget` when the sheet must stay inside a bounded container such as a checkout frame or phone preview.
-- Use `showDragHandle={false}` on desktop layouts where dragging is not expected.
-
-**Don't**
-
-- Don't use `BottomSheet` for desktop dialogs; use `Modal`.
-- Don't use a BottomSheet for a one-line confirmation after an action; use `Toast`.
-- Don't set `isDismissible={false}` unless the flow must end with an explicit choice, and then always provide a footer button that closes it.
-- Don't pass snap point values outside 0 to 1 or fewer than three values; use auto mode with `maxHeight` instead.
-- Don't give stacked sheets different `zIndex` values; keep one shared value.
+- Use BottomSheet for phone-first pickers and confirmations; use Modal for a centred dialog and Drawer for a side panel. A sheet on phones and a modal on desktop is the app's own component composing both.
+- Give it a `BottomSheetHeader` with a `title`; it names the dialog and is part of the drag zone.
+- Make the footer's main action full width (`class="w-full"` on the Button).
+- Build a multi-step sheet with one sheet and a `step` state: `showBackButton` and `onBackButtonClick` on the header go back a step.
+- Put a list that scrolls to the sheet's edges in `BottomSheetBody padding="spacing.0"`, and pad its rows by the overlay gutter (ActionList's `inset="overlay"`).
+- Don't put a search field in the body when it should stay put: pass it as the header's `children`.
 
 ## Examples
 
-### Select a payment method with bind:isOpen
-
-A content-sized sheet whose open state is bound, with a radio list in the body and a sticky footer action.
+### Confirm a payment
 
 ```svelte
 <script lang="ts">
@@ -271,162 +116,103 @@ A content-sized sheet whose open state is bound, with a radio list in the body a
     BottomSheet,
     BottomSheetBody,
     BottomSheetFooter,
-    BottomSheetHeader,
-    Button,
-    Radio,
-    RadioGroup,
-  } from '@razorpay/blade-svelte/components';
-
-  let isOpen = $state(false);
-  let method = $state<string | undefined>(undefined);
-  let confirmedMethod = $state('Choose payment method');
-</script>
-
-<Button isFullWidth variant="secondary" onClick={() => (isOpen = true)}>{confirmedMethod}</Button>
-
-<BottomSheet
-  bind:isOpen
-  onDismiss={() => (method = undefined)}
-  testID="payment-method-sheet"
-  data-analytics-section="payment-method"
->
-  {#snippet children()}
-    <BottomSheetHeader title="Pay ₹1,250" subtitle="Choose how you want to pay" />
-    <BottomSheetBody>
-      {#snippet children()}
-        <RadioGroup
-          name="payment-method"
-          label="Payment method"
-          value={method}
-          onChange={({ value }) => (method = value)}
-        >
-          <Radio value="upi">UPI</Radio>
-          <Radio value="card">Credit or debit card</Radio>
-          <Radio value="netbanking">Netbanking</Radio>
-        </RadioGroup>
-      {/snippet}
-    </BottomSheetBody>
-    <BottomSheetFooter>
-      {#snippet children()}
-        <Button
-          isFullWidth
-          isDisabled={!method}
-          onClick={() => {
-            confirmedMethod = `Pay with ${method}`;
-            isOpen = false;
-          }}
-        >
-          Continue
-        </Button>
-      {/snippet}
-    </BottomSheetFooter>
-  {/snippet}
-</BottomSheet>
-```
-
-### Mandatory SIM selection with snap points
-
-A non-dismissible sheet with draggable detents and a back button; the caller controls `isOpen` and closes it from the footer.
-
-```svelte
-<script lang="ts">
-  import {
-    BottomSheet,
-    BottomSheetBody,
-    BottomSheetFooter,
-    BottomSheetHeader,
-    Button,
-    Radio,
-    RadioGroup,
-  } from '@razorpay/blade-svelte/components';
-
-  let { isOpen, onClose }: { isOpen: boolean; onClose: () => void } = $props();
-
-  const simNumbers = ['+91 98765 43210', '+91 91234 56789'];
-  let selectedSim = $state<string | undefined>(undefined);
-</script>
-
-<BottomSheet {isOpen} isDismissible={false} snapPoints={[0.35, 0.5, 0.85]} zIndex={400}>
-  {#snippet children()}
-    <BottomSheetHeader title="Verify mobile number" showBackButton onBackButtonClick={onClose} />
-    <BottomSheetBody>
-      {#snippet children()}
-        <RadioGroup
-          name="select-sim"
-          label="Select the SIM registered with your bank"
-          value={selectedSim}
-          onChange={({ value }) => (selectedSim = value)}
-        >
-          {#each simNumbers as simNumber (simNumber)}
-            <Radio value={simNumber}>{simNumber}</Radio>
-          {/each}
-        </RadioGroup>
-      {/snippet}
-    </BottomSheetBody>
-    <BottomSheetFooter>
-      {#snippet children()}
-        <div class="footer-actions">
-          <Button isFullWidth isDisabled={!selectedSim} onClick={onClose}>Verify</Button>
-          <Button isFullWidth variant="tertiary" onClick={onClose}>Use another number</Button>
-        </div>
-      {/snippet}
-    </BottomSheetFooter>
-  {/snippet}
-</BottomSheet>
-
-<style>
-  .footer-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-3);
-  }
-</style>
-```
-
-### Sheet inside a bounded checkout frame
-
-`portalTarget` keeps the overlay inside a container instead of `document.body`; an empty header keeps the close button.
-
-```svelte
-<script lang="ts">
-  import {
-    BottomSheet,
-    BottomSheetBody,
     BottomSheetHeader,
     Button,
     Text,
   } from '@razorpay/blade-svelte/components';
 
-  let frameEl = $state<HTMLDivElement | null>(null);
   let isOpen = $state(false);
 </script>
 
-<div class="checkout-frame" bind:this={frameEl}>
-  <Button onClick={() => (isOpen = true)}>View offer details</Button>
+<Button onClick={() => (isOpen = true)}>Pay ₹2,000</Button>
 
-  <BottomSheet bind:isOpen portalTarget={frameEl} maxHeight={0.6}>
-    {#snippet children()}
-      <BottomSheetHeader />
-      <BottomSheetBody>
-        {#snippet children()}
-          <Text size="medium" weight="semibold">Flat ₹100 cashback on UPI</Text>
-          <Text size="small" marginTop="spacing.2">
-            Valid on payments above ₹999 until 31 December. One use per customer.
-          </Text>
-        {/snippet}
-      </BottomSheetBody>
-    {/snippet}
-  </BottomSheet>
-</div>
+<BottomSheet bind:isOpen>
+  <BottomSheetHeader title="Confirm payment" subtitle="To Acme Stores" />
+  <BottomSheetBody>
+    <Text color="muted">₹2,000 will be debited from your HDFC Bank account.</Text>
+  </BottomSheetBody>
+  <BottomSheetFooter>
+    <Button class="w-full" onClick={() => (isOpen = false)}>Pay now</Button>
+  </BottomSheetFooter>
+</BottomSheet>
+```
 
-<style>
-  .checkout-frame {
-    position: relative;
-    height: 640px;
-    overflow: hidden;
-    padding: var(--spacing-5);
-    border-radius: var(--border-radius-large);
-    background-color: var(--surface-background-gray-moderate);
-  }
-</style>
+### Two steps with a back button
+
+```svelte
+<script lang="ts">
+  import {
+    BottomSheet,
+    BottomSheetBody,
+    BottomSheetFooter,
+    BottomSheetHeader,
+    Button,
+    Text,
+  } from '@razorpay/blade-svelte/components';
+
+  let isOpen = $state(false);
+  let step = $state<1 | 2>(1);
+</script>
+
+<Button onClick={() => { step = 1; isOpen = true; }}>Pay by netbanking</Button>
+
+<BottomSheet bind:isOpen>
+  <BottomSheetHeader
+    title={step === 1 ? 'Choose a bank' : 'HDFC Bank'}
+    showBackButton={step === 2}
+    onBackButtonClick={() => (step = 1)}
+  />
+  <BottomSheetBody>
+    {#if step === 1}
+      <Button variant="secondary" class="w-full" onClick={() => (step = 2)}>HDFC Bank</Button>
+    {:else}
+      <Text color="muted">You will be redirected to HDFC Bank to complete the payment.</Text>
+    {/if}
+  </BottomSheetBody>
+  {#if step === 2}
+    <BottomSheetFooter>
+      <Button class="w-full" onClick={() => (isOpen = false)}>Continue</Button>
+    </BottomSheetFooter>
+  {/if}
+</BottomSheet>
+```
+
+### A pick list with a search field in the header
+
+```svelte
+<script lang="ts">
+  import {
+    ActionList,
+    ActionListItem,
+    BottomSheet,
+    BottomSheetBody,
+    BottomSheetHeader,
+    Button,
+    SearchInput,
+  } from '@razorpay/blade-svelte/components';
+  import { BankIcon } from '@razorpay/blade-svelte/icons';
+
+  let isOpen = $state(false);
+  let query = $state('');
+  let bank = $state<string | null>(null);
+  const BANKS = ['HDFC Bank', 'ICICI Bank', 'State Bank of India', 'Axis Bank'];
+  const shown = $derived(BANKS.filter((name) => name.toLowerCase().includes(query.toLowerCase())));
+</script>
+
+<Button variant="secondary" onClick={() => (isOpen = true)}>{bank ?? 'Select a bank'}</Button>
+
+<BottomSheet bind:isOpen>
+  {#snippet children({ close })}
+    <BottomSheetHeader title="Select a bank">
+      <SearchInput bind:value={query} accessibilityLabel="Search banks" placeholder="Search banks" />
+    </BottomSheetHeader>
+    <BottomSheetBody padding="spacing.0">
+      <ActionList inset="overlay" onPick={({ value }) => { bank = value as string; close(); }}>
+        {#each shown as name (name)}
+          <ActionListItem value={name} title={name} leading={BankIcon} />
+        {/each}
+      </ActionList>
+    </BottomSheetBody>
+  {/snippet}
+</BottomSheet>
 ```

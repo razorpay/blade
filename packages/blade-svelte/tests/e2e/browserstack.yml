@@ -1,0 +1,26 @@
+# Platforms for `yarn test:e2e:browserstack` (browserstack-node-sdk). The SDK
+# runs every spec on each platform, reports session status itself, and opens
+# a BrowserStack Local tunnel so the Storybook served on localhost is
+# reachable. Credentials come from the environment.
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+projectName: Blade Svelte cx
+buildName: Blade Svelte cx e2e
+browserstackLocal: true
+framework: playwright
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: chrome
+    browserVersion: latest
+  - os: OS X
+    osVersion: Sonoma
+    browserName: playwright-webkit
+    browserVersion: latest
+  - deviceName: Google Pixel 7
+    osVersion: 13.0
+    browserName: chrome
+  - deviceName: iPhone 15 Pro
+    osVersion: 17
+    browserName: safari
+parallelsPerPlatform: 1

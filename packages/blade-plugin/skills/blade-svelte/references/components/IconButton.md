@@ -4,208 +4,121 @@ IconButton
 
 ## Description
 
-IconButton is a clickable icon with a transparent background for compact actions such as closing a modal, clearing an input or dismissing a banner. Emphasis sets the contrast for light (`intense`) or dark (`subtle`, `moderate`) surfaces, and `isHighlighted` adds a faded square background on hover and focus. For actions that need a visible label, use `Button` with its `icon` prop.
+IconButton is a button whose whole content is one icon, for compact actions such as close, copy, edit, more or refresh. It draws a bare glyph (12, 16 or 20px) in gray for light surfaces (`intense`) or white for dark ones (`subtle`), optionally with a box behind it on hover and focus, and needs an `accessibilityLabel`. It shares Button's press: an `onClick` that returns a promise keeps it busy with a spinner, and `type="submit"` submits the app's form.
 
 ## Important Constraints
 
-- `accessibilityLabel` and `onClick` are required
-- `size="large"` is not allowed with `isHighlighted` or `emphasis="moderate"`; IconButton logs an error (localhost only) and still renders
-- `emphasis="moderate"` is not compatible with `isHighlighted`; IconButton logs an error (localhost only)
-- When `isDisabled` is true, `onClick` and every other event callback is not called
-- IconButton always renders `<button type="button">`; it has no `href` or `type` prop
-- `IconButtonProps` has no `testID` prop
+- `icon` and `accessibilityLabel` are required; the label is the button's only name, so localise it
+- `icon` takes an icon source from `@razorpay/blade-svelte/icons`, never a component or snippet
+- `emphasis="subtle"` is a white glyph, for dark or brand surfaces; `intense` (default) is gray, for light ones. React's `moderate` does not exist
+- `isHighlighted` adds a box on hover and focus (24px at `small`, 32px at `medium`); there is no box at `large`
+- `type` defaults to `button`: a press leaves the app's form alone; `type="submit"` presses `adapters.form`
+- `class` places it (margin, position); a close button flush with a corner can be pulled in with a negative margin
 
-## TypeScript Types
-
-These are the props the IconButton component accepts.
+## Props
 
 ```typescript
-type IconButtonSize = 'small' | 'medium' | 'large';
-type IconButtonEmphasis = 'subtle' | 'intense' | 'moderate';
-
-type IconButtonSlot = 'root' | 'icon';
-
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. CloseIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-interface IconButtonProps extends StyledPropsBlade {
-  /**
-   * Icon component to be rendered, eg. `CloseIcon`.
-   */
-  icon: IconComponent;
-  /**
-   * Icon size.
-   * @default 'medium'
-   */
-  size?: IconButtonSize;
-  /**
-   * Icon emphasis (contrast).
-   * @default 'intense'
-   */
-  emphasis?: IconButtonEmphasis;
-  /**
-   * Sets `aria-label` to help users know what the action does, eg 'Dismiss alert'.
-   */
+interface IconButtonProps {
+  /** The glyph; the button sizes it. */
+  icon: IconSource;
+  /** Required: the glyph is decorative, this is the button's only name. */
   accessibilityLabel: string;
-  /**
-   * Disabled state for IconButton.
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * Changes the hover/focus interaction to highlight the icon more by rendering a
-   * fixed-size square with a faded background. Web-only.
-   *
-   * Note: not supported with `size="large"`.
-   * @default false
-   */
+  /** Return a promise to keep the button busy until it settles. */
+  onClick?: (event: MouseEvent) => void;
+  /** `intense`: a gray glyph, for light surfaces; `subtle`: a white glyph, for dark ones. @default 'intense' */
+  emphasis?: 'intense' | 'subtle';
+  /** The glyph: 12, 16 or 20px. @default 'medium' */
+  size?: 'small' | 'medium' | 'large';
+  /** A box behind the glyph on hover and focus; not with `size="large"`. @default false */
   isHighlighted?: boolean;
-  /**
-   * Called when the IconButton is clicked.
-   */
-  onClick: (event: MouseEvent) => void;
-  /** Called when the IconButton loses focus. */
-  onBlur?: (event: FocusEvent) => void;
-  /** Called when the IconButton receives focus. */
-  onFocus?: (event: FocusEvent) => void;
-  /** Called when the pointer leaves the IconButton. */
-  onMouseLeave?: (event: MouseEvent) => void;
-  /** Called when the pointer moves over the IconButton. */
-  onMouseMove?: (event: MouseEvent) => void;
-  /** Called when a pointer becomes active over the IconButton. */
-  onPointerDown?: (event: PointerEvent) => void;
-  /** Called when a pointer enters the IconButton. */
-  onPointerEnter?: (event: PointerEvent) => void;
-  /** Called when a touch point is placed on the IconButton. */
-  onTouchStart?: (event: TouchEvent) => void;
-  /** Called when a touch point is removed from the IconButton. */
-  onTouchEnd?: (event: TouchEvent) => void;
-  /** Called when a key is pressed while the IconButton is focused. */
-  onKeyDown?: (event: KeyboardEvent) => void;
-  /**
-   * Per-slot classname overrides. Merged under provider `componentConfig.IconButton.styleOverride`;
-   * instance values win on conflicts.
-   */
-  styleOverride?: Partial<Record<IconButtonSlot, string>>;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+  /** Host-driven busy: a spinner in place of the glyph; focus stays. @default false */
+  isLoading?: boolean;
+  /** @default false */
+  isDisabled?: boolean;
+  /** `submit` presses the app's form (`adapters.form`). @default 'button' */
+  type?: 'button' | 'submit';
+  /** A `button` that validates the app's form first, without submitting. @default false */
+  validateForm?: boolean;
+  /** Localized; said to a screen reader when the button turns busy. @default 'Started loading' */
+  loadingAnnouncement?: string;
+  /** Localized; said when it is no longer busy. @default 'Stopped loading' */
+  loadedAnnouncement?: string;
+  testID?: string;
+  /** Placement only. */
+  class?: string;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `IconButton` for well-known icon-only actions in tight spaces: close, clear, more options.
-- Write an `accessibilityLabel` that names the action and its target, such as "Close refund details" or "Clear search".
-- Use `emphasis="intense"` (default) on light surfaces and `emphasis="subtle"` on dark or brand-colored surfaces.
-- Use `emphasis="moderate"` for trailing actions on a dark header, where the icon needs a persistent faded background.
-- Use `isHighlighted` with `size="small"` or `size="medium"` when the icon sits in a toolbar and needs a clearer hover target.
-- Match `size` to nearby text: `small` in inputs and dense rows, `medium` in cards and modals, `large` for standalone actions.
-
-**Don't**
-
-- Don't use `IconButton` when the icon's meaning is not obvious; use `Button` with `icon` and a text label.
-- Don't use generic labels such as "Button" or "Icon"; describe the action.
-- Don't combine `size="large"` with `isHighlighted` or `emphasis="moderate"`; use `size="medium"`.
-- Don't use `IconButton` for navigation; use `Link` with an `icon`.
-- Don't use `IconButton` to submit a form; use `Button` with `type="submit"`.
+- Use IconButton only for actions whose icon is universally understood (close, copy, edit, more); otherwise use a Button with a label.
+- Write `accessibilityLabel` as the action and its object ("Copy payment ID", "Close dialog"), not the icon's name.
+- Use `emphasis="subtle"` on dark or brand-coloured surfaces only.
+- Turn on `isHighlighted` where the button sits alone and needs a visible hover target, such as a toolbar.
+- Return the request's promise from `onClick` to show the spinner, instead of managing `isLoading`.
+- Wrap it in a Tooltip when the icon's meaning is not obvious.
+- Don't use Button with only an `icon` where an IconButton fits: IconButton is the borderless glyph.
 
 ## Examples
 
-### Dismissible payment details panel
-
-A close action in a panel header plus a highlighted "more options" action.
+### Sizes, emphasis and the highlight box
 
 ```svelte
 <script lang="ts">
-  import { Heading, IconButton, CloseIcon, MoreHorizontalIcon } from '@razorpay/blade-svelte/components';
-
-  let isOpen = $state(true);
-  let isMenuOpen = $state(false);
+  import { IconButton } from '@razorpay/blade-svelte/components';
+  import { CloseIcon, EditIcon, MoreVerticalIcon } from '@razorpay/blade-svelte/icons';
 </script>
 
-{#if isOpen}
-  <div class="panel-header">
-    <Heading size="small">Payment pay_29QQoUBi66xm2f</Heading>
-    <div class="panel-actions">
-      <IconButton
-        icon={MoreHorizontalIcon}
-        size="medium"
-        isHighlighted
-        accessibilityLabel="More actions for this payment"
-        onClick={() => (isMenuOpen = !isMenuOpen)}
-        data-analytics-action="payment-more-actions"
-      />
-      <IconButton
-        icon={CloseIcon}
-        size="medium"
-        accessibilityLabel="Close payment details"
-        onClick={() => (isOpen = false)}
-      />
-    </div>
+<div class="flex flex-col gap-blade-4">
+  <div class="flex items-center gap-blade-4">
+    <IconButton icon={EditIcon} size="small" accessibilityLabel="Edit address" />
+    <IconButton icon={MoreVerticalIcon} isHighlighted accessibilityLabel="More actions" />
+    <IconButton icon={CloseIcon} size="large" accessibilityLabel="Close" />
   </div>
-{/if}
-
-<style>
-  .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-4);
-  }
-
-  .panel-actions {
-    display: flex;
-    gap: var(--spacing-2);
-  }
-</style>
+  <div class="flex items-center gap-blade-4 rounded-medium bg-feedback-neutral-intense p-blade-4">
+    <IconButton icon={CloseIcon} emphasis="subtle" isHighlighted accessibilityLabel="Dismiss banner" />
+  </div>
+</div>
 ```
 
-### Clear a search field and dark-surface actions
-
-A small clear action next to an input, and `subtle` / `moderate` icon buttons on a dark announcement strip; the clear action is disabled while the query is empty.
+### Busy while copying
 
 ```svelte
 <script lang="ts">
-  import { IconButton, Text, CloseIcon, InfoIcon } from '@razorpay/blade-svelte/components';
+  import { IconButton, Text, showToast } from '@razorpay/blade-svelte/components';
+  import { CopyIcon } from '@razorpay/blade-svelte/icons';
 
-  let query = $state('order_');
+  async function copy(): Promise<void> {
+    await navigator.clipboard.writeText('pay_Q1w2e3r4t5y6u7');
+    void showToast({ content: 'Payment ID copied', color: 'positive' });
+  }
 </script>
 
-<div class="search-row">
-  <Text size="small">Searching for "{query}"</Text>
-  <IconButton
-    icon={CloseIcon}
-    size="small"
-    isDisabled={query.length === 0}
-    accessibilityLabel="Clear search"
-    onClick={() => (query = '')}
-  />
+<div class="flex items-center gap-blade-2">
+  <Text>pay_Q1w2e3r4t5y6u7</Text>
+  <IconButton icon={CopyIcon} size="small" accessibilityLabel="Copy payment ID" loadingAnnouncement="Copying" onClick={copy} />
 </div>
+```
 
-<div class="dark-strip">
-  <Text size="small" color="surface.text.staticWhite.normal">Settlements are delayed today</Text>
-  <IconButton icon={InfoIcon} emphasis="moderate" accessibilityLabel="Why are settlements delayed" onClick={() => {}} />
-  <IconButton icon={CloseIcon} emphasis="subtle" accessibilityLabel="Dismiss settlement notice" onClick={() => {}} />
-</div>
+### A close button in a card corner
 
-<style>
-  .search-row,
-  .dark-strip {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3);
-    padding: var(--spacing-3);
-  }
+```svelte
+<script lang="ts">
+  import { IconButton, Text } from '@razorpay/blade-svelte/components';
+  import { CloseIcon } from '@razorpay/blade-svelte/icons';
 
-  .dark-strip {
-    background-color: var(--surface-background-primary-intense);
-  }
-</style>
+  let isVisible = $state(true);
+</script>
+
+{#if isVisible}
+  <div class="relative rounded-medium bg-surface-gray-intense p-blade-5 surface-raised">
+    <IconButton
+      icon={CloseIcon}
+      accessibilityLabel="Dismiss tip"
+      class="absolute top-blade-3 right-blade-3"
+      onClick={() => (isVisible = false)}
+    />
+    <Text>Enable instant settlements to receive money in minutes.</Text>
+  </div>
+{/if}
 ```

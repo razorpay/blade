@@ -4,379 +4,223 @@ TextInput
 
 ## Description
 
-TextInput is a single-line text field for names, emails, URLs, numbers, UPI IDs and other short values. It supports a label or accessibility label, help, error and success text, prefix and suffix text, leading and trailing icons, leading and trailing snippets (for example a `Badge`), a trailing `Link` button, a clear button, a loading spinner, a character counter and `#`-pattern formatting for card numbers and dates.
+TextInput is the single-line text field: a name, an email, a UPI ID, an amount, a card number. It shows a label above the control and one hint line below it (help, error or success), takes text affixes (`prefix`, `suffix`) and icon or snippet slots (`leading`, `trailing`), an optional clear button and a character counter (`maxCharacters`), and lays typed characters into a Blade `format` mask such as `#### #### #### ####`. `type` is the HTML input type, and each type brings Blade's keyboard and autofill defaults.
 
 ## Important Constraints
 
-- Either `label` or `accessibilityLabel` is required; without a visible `label`, `accessibilityLabel` names the field
-- `onChange` fires on every keystroke with `{ name, value }`; when `format` is set it also carries `rawValue` (the value without delimiters)
-- `format` accepts only `#` and special characters; letters and digits in the pattern are treated as delimiters and break formatting
-- When `format` is set, `maxCharacters` is ignored (the pattern length is the limit) and no character counter is shown
-- The clear button only resets the DOM field and calls `onClearButtonClick`; it does not call `onChange`, so a controlled parent must reset its `value` in `onClearButtonClick`
-- Icons go in `leadingIcon` / `trailingIcon`; `leading` / `trailing` take snippets only (a component passed there is not rendered as an icon)
-- Inside an `InputGroup`, the input's own label and hint text are not rendered and the group's `size` and `isDisabled` override the input's
-- Partial port of React: tagged input (`isTaggedInput`, `tags`, `onTagChange`), `onSubmit`, `showHelpTextOnFocus` and Dropdown in `leading` / `trailing` are not available
+- `label` is a plain string above the field; without one, name the control with `accessibilityLabel`
+- `onChange` receives `{ name, value }`, never a DOM event; bind the value with `bind:value` (there is no `defaultValue`)
+- With `format`, the value is the formatted text, as in Blade React (`1225` under `##/##` is `"12/25"`), and `onChange` adds `rawValue`, the typed characters alone (`"1225"`). A completed group places its delimiter right away: typing `12` gives `"12/"`
+- `format` keeps letters and digits only, caps the length at the pattern's length and hides the character counter; `#` is a typed character and anything else a delimiter, so use no letters or digits in the pattern
+- `type` is the HTML type: `text`, `tel`, `email`, `url`, `number` (rendered as `type="text"` with the decimal keypad, as Blade). `tel` brings `autocomplete="tel"` and the done key, `email` `autocomplete="email"` and no autocapitalize, `url` the go key. `inputMode`, `enterKeyHint`, `autoComplete` and `autoCapitalize` override them. For a password or a search field use PasswordInput or SearchInput, not `type`
+- `leading` and `trailing` each take an icon source or a snippet, not both. An icon `leading` sits first, before `prefix`; a snippet `leading` (a currency or country selector) sits after `prefix`. A snippet `trailing` is for a Link or a button
+- `size` is `small` (32px), `medium` (36px, default) or `large` (48px). Inside an InputGroup the group's `size` wins, the group shows the label and hint line, and the field's `span` sets its share of the row
+- Omit `validationState` inside the app's form (`adapters.form`): the field shows its form error once touched or after a submit. Pass it to own the state
 
-## TypeScript Types
-
-These are the props the TextInput component accepts.
+## Props
 
 ```typescript
-/** Input type. `password` is intentionally excluded — use a PasswordInput instead. */
-type TextInputType = 'text' | 'telephone' | 'email' | 'url' | 'number' | 'search';
+type TextInputType = 'text' | 'tel' | 'email' | 'url' | 'number' | 'password';
+type TextInputValue = string | number | null | undefined;
+type InputGroupSpan = 'full' | '1/2' | '1/3' | '2/3' | '1/4' | '3/4';
 
-type BaseInputSize = 'xsmall' | 'small' | 'medium' | 'large';
-type BaseInputValidationState = 'none' | 'error' | 'success';
-type LabelPosition = 'top' | 'left';
-type ValidationTextPlacement = 'outside' | 'inside';
-type NecessityIndicator = 'required' | 'optional' | 'none';
-
-type KeyboardType = 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal' | 'numeric';
-type KeyboardReturnKeyType = 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
-type AutoCompleteSuggestionType =
-  | 'none'
-  | 'on'
-  | 'name'
-  | 'email'
-  | 'username'
-  | 'password'
-  | 'newPassword'
-  | 'oneTimeCode'
-  | 'telephone'
-  | 'postalCode'
-  | 'countryName'
-  | 'creditCardNumber'
-  | 'creditCardCSC'
-  | 'creditCardExpiry'
-  | 'creditCardExpiryMonth'
-  | 'creditCardExpiryYear';
-type AutoCapitalize = 'none' | 'sentences' | 'words' | 'characters';
-
-/**
- * Payload shape for input value events (`onChange`/`onFocus`/`onBlur`/`onInput`/
- * `onClick`). `value` is extracted from the DOM event internally; `rawValue` is
- * emitted by formatted inputs.
- */
-type FormInputOnEvent = (event: { name?: string; value?: string; rawValue?: string }) => void;
-
-/** Payload shape for `onKeyDown` (web-only). */
-type FormInputOnKeyDownEvent = (event: {
-  name?: string;
-  key?: string;
-  code?: string;
-  event: KeyboardEvent;
-}) => void;
-
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. SearchIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-type TextInputPropsWithLabel = {
-  /** Label shown for the input. */
-  label: string;
-  /** Accessibility label (optional when `label` is provided). */
-  accessibilityLabel?: string;
-};
-
-type TextInputPropsWithA11yLabel = {
-  /** Label shown for the input. */
-  label?: undefined;
-  /** Accessibility label (required when `label` is absent). */
-  accessibilityLabel: string;
-};
-
-interface TextInputCommonProps extends StyledPropsBlade {
-  /** Label position. @default 'top' */
-  labelPosition?: LabelPosition;
-  /** Suffix element rendered after the label text. */
-  labelSuffix?: Snippet;
-  /** Trailing element rendered at the end of the label row. */
-  labelTrailing?: Snippet;
-  /** Necessity indicator shown after the label text. */
-  necessityIndicator?: NecessityIndicator;
-  /** Placeholder text. */
+interface TextInputProps {
+  /** Plain text above the field; it names the control. */
+  label?: string;
+  /** After the label: `*` or `(optional)`. `required` also makes the control required. @default 'none' */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /** Bindable. With `format`, the formatted text. @default '' */
+  value?: TextInputValue;
   placeholder?: string;
-  /** Input type. @default 'text' */
+  /** The HTML input type, with Blade's keyboard and autofill defaults; `number` renders as `text` with the decimal keypad. `password` is the bare masked control PasswordInput builds on. @default 'text' */
   type?: TextInputType;
-  /** Uncontrolled default value. */
-  defaultValue?: string;
-  /** Controlled value. */
-  value?: string;
-  /** Name of the input. */
-  name?: string;
-  /** Change callback (`{ name, value, rawValue }`). */
-  onChange?: FormInputOnEvent;
-  /** Focus callback. */
-  onFocus?: FormInputOnEvent;
-  /** Blur callback. */
-  onBlur?: FormInputOnEvent;
-  /** Click callback. */
-  onClick?: FormInputOnEvent;
-  /** KeyDown callback (web-only). */
-  onKeyDown?: FormInputOnKeyDownEvent;
-  /** Disables the input. */
+  /** The control's role, for a composition that is one (SearchInput's `searchbox`). */
+  role?: 'searchbox';
+  /** The virtual keyboard when it should differ from the type's: `numeric` for digits in a `text` field. */
+  inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+  /** A user edit: `{ name, value }`; with `format`, also `rawValue`, the typed characters alone. */
+  onChange?: (change: { name: string | undefined; value: TextInputValue; rawValue?: string }) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  /** @default false */
   isDisabled?: boolean;
-  /** Makes the input read-only (keeps it focusable, disables editing). */
-  isReadOnly?: boolean;
-  /** Controls the browser spellcheck on the input. */
-  spellCheck?: boolean;
-  /** Marks the input required. */
+  /** @default false */
   isRequired?: boolean;
-  /** Prefix text rendered at the start. */
+  /** @default false */
+  isReadOnly?: boolean;
+  /** Omit inside the app's form to mirror its error. @default 'none' */
+  validationState?: 'none' | 'error' | 'success';
+  /** The line under the field, and the stand-in for a missing error or success text. A snippet for a line with a Link. */
+  helpText?: string | Snippet;
+  /** The line while `validationState` is `error`. */
+  errorText?: string | Snippet;
+  /** The line while `validationState` is `success`. */
+  successText?: string | Snippet;
+  /** Text before the value: ₹, +91. */
   prefix?: string;
-  /** Suffix text rendered at the end. */
+  /** Before the text: an icon (a glyph, before `prefix`) or a snippet (a selector, after `prefix`). */
+  leading?: IconSource | Snippet;
+  /** Text after the value: @okaxis. */
   suffix?: string;
-  /** Character counter limit. */
-  maxCharacters?: number;
-  /** Focus the input on mount. */
+  /** After the text, last: an icon (a glyph) or a snippet (a Link, a button). */
+  trailing?: IconSource | Snippet;
+  /** @default false */
   autoFocus?: boolean;
-  /** Return-key type on virtual keyboards. */
-  keyboardReturnKeyType?: KeyboardReturnKeyType;
-  /**
-   * Overrides the virtual keyboard hint derived from `type` (maps to `inputMode`).
-   * Use `'numeric'` for digit-only entry (card number, CVV) where `type="number"`'s
-   * default `decimal` inputmode would show an unwanted decimal-point key.
-   */
-  keyboardType?: KeyboardType;
-  /** Autocomplete suggestion type. */
-  autoCompleteSuggestionType?: AutoCompleteSuggestionType;
-  /** Autocapitalize behaviour. */
-  autoCapitalize?: AutoCapitalize;
-  /** Validation state. @default 'none' */
-  validationState?: BaseInputValidationState;
-  /** Placement of the validation text. @default 'outside' */
-  validationTextPlacement?: ValidationTextPlacement;
-  /** Help text below the input. */
-  helpText?: string;
-  /** Error text (with `validationState="error"`). */
-  errorText?: string;
-  /** Success text (with `validationState="success"`). */
-  successText?: string;
-  /** Input size. @default 'medium' */
-  size?: BaseInputSize;
-  /** Text alignment of the value. */
-  textAlign?: 'left' | 'center' | 'right';
-  /** Renders a clear (×) icon button while there is a value. */
+  /** A clear button while the field holds text. @default false */
   showClearButton?: boolean;
-  /** Click handler for the clear button. */
+  /** The clear button was pressed; the field is already empty and `onChange` has fired. */
   onClearButtonClick?: () => void;
-  /** Shows a loading spinner in the trailing slot. */
-  isLoading?: boolean;
-  /** Leading icon component. */
-  leadingIcon?: IconComponent;
-  /** Trailing icon component. */
-  trailingIcon?: IconComponent;
-  /** Trailing `Link`-style button (snippet). */
-  trailingButton?: Snippet;
-  /**
-   * Leading element rendered at the start of the input (e.g. a `Badge`).
-   *
-   * Deviation from React: React's `leading` accepts an icon component OR an
-   * element. In Svelte a component and a snippet are both functions and can't
-   * be told apart reliably, so pass icons via `leadingIcon` and elements via
-   * this snippet.
-   */
-  leading?: Snippet;
-  /**
-   * Trailing element rendered at the end of the input (e.g. a `Badge`).
-   * See `leading` for the icon-vs-element deviation.
-   */
-  trailing?: Snippet;
-  /**
-   * Format pattern where `#` represents input characters and other symbols act
-   * as delimiters. When set, input is auto-formatted and `onChange` includes
-   * `rawValue`. Only `#` + special characters are allowed (no letters/numbers).
-   *
-   * @example "#### #### #### ####" for card numbers
-   * @example "##/##" for expiry dates
-   */
+  /** The return key's label on a virtual keyboard (`done`, `go`, `next`, `search`, `send`…). */
+  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  /** HTML `autocapitalize`: `none`, `sentences`, `words`, `characters`. */
+  autoCapitalize?: string;
+  /** An HTML autofill token: `name`, `tel`, `email`, `one-time-code`, `off`… */
+  autoComplete?: string;
+  onClick?: (event: MouseEvent) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
+  /** Inside an InputGroup: this field's share of its row. @default 'full' */
+  span?: InputGroupSpan;
+  /** The key the app's form registers and submits the field under. */
+  name?: string;
+  /** Caps the length and shows a counter under the field (not with `format`). */
+  maxCharacters?: number;
+  /** A validity pattern the field hands the app's form. */
+  pattern?: string | RegExp;
+  /** Blade's mask: `#` takes one typed letter or digit, anything else is a delimiter the field places (`#### #### #### ####`, `##/##`, `##/##/####`, `(###) ###-####`, `##:##`…). */
   format?: string;
-  /** Component name for the `data-blade-component` attribute. */
-  componentName?: string;
-  /** Test ID for the element. */
+  /** A stored value that differs from the text shown, as two functions; ignored with `format`. Not in Blade React. */
+  transform?: { parse: (value: TextInputValue) => TextInputValue; format: (value: TextInputValue) => string };
+  /** Names the control when there is no visible `label`. */
+  accessibilityLabel?: string;
+  /** Lands on the `<input>`, the element tests type into. */
   testID?: string;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only: margin, width, its part in a flex or grid parent. */
+  class?: string;
+  /** A composition's attachment on the `<input>` (PhoneNumberInput's). */
+  attach?: (node: HTMLInputElement) => void | (() => void);
+  /** A composition's handle on the field: `change(value)` sets a value as a user edit would. */
+  field?: (field: { change: (value: TextInputValue) => boolean }) => void;
+  /** 32, 36 or 48px tall; also sizes the label and hint. @default 'medium' (or BladeProvider's `size`) */
+  size?: 'small' | 'medium' | 'large';
+  /** @default 'left' */
+  textAlign?: 'left' | 'center' | 'right';
 }
-
-type TextInputProps = (TextInputPropsWithLabel | TextInputPropsWithA11yLabel) &
-  TextInputCommonProps;
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `TextInput` for single-line values such as business name, GSTIN, email, website URL or UPI ID.
-- Keep controlled inputs as `value` plus `onChange={({ value }) => (field = value ?? '')}`.
-- Use `format` with `#` patterns for structured values (card number `#### #### #### ####`, expiry `##/##`) and store `rawValue` from `onChange`.
-- Set `type` for the right mobile keyboard (`email`, `url`, `telephone`, `number`) and `keyboardType="numeric"` for digit-only fields like CVV.
-- Use `prefix` / `suffix` for fixed units such as `₹` or `.razorpay.com`, and `leading` / `trailing` snippets for a `Badge`.
-- Use `maxCharacters` when there is a hard limit, so the counter shows remaining space.
-- Pair `validationState="error"` with `errorText` that says how to fix the value.
-- Use `labelSuffix` for an info `Tooltip` and `labelTrailing` for a small `Link` next to the label.
-
-**Don't**
-
-- Don't use `TextInput` for passwords; use `PasswordInput`.
-- Don't use `TextInput` for search bars; use `SearchInput`, which adds the search icon and clear behaviour.
-- Don't use `TextInput` for phone numbers with a country code; use `PhoneNumberInput`.
-- Don't use `TextInput` for multi-line text; use `TextArea`.
-- Don't pass an icon component to `leading` / `trailing`; use `leadingIcon` / `trailingIcon`.
-- Don't hide the label without setting `accessibilityLabel`; screen readers need a name for the field.
-- Don't use `bind:value`; use `value` with `onChange`.
+- Pick the HTML `type` that matches the data (`email`, `tel`, `url`) for the right keyboard and autofill; add `inputMode="numeric"` to a `text` field that takes digits, such as a card number or an expiry.
+- Use `format` for fixed-shape values (card numbers, dates, expiries); store and validate the formatted text, or read `rawValue` from `onChange` when you need the digits alone.
+- Use `prefix`/`suffix` for text affixes (₹, @okaxis) and `leading`/`trailing` for icons or a snippet; don't put an icon into `prefix`.
+- Show validation with `validationState="error"` and `errorText`; keep `helpText` for guidance, it stands in when `errorText` or `successText` is missing.
+- Make a field full width or place it with `class` (`w-full`, `mt-blade-4`); its look is `size` and `textAlign`.
+- Don't use `type="password"` or a search icon on TextInput for those fields: use PasswordInput or SearchInput.
+- Don't set `maxCharacters` with `format`: the pattern caps the length and the counter is hidden.
+- `bind:this` exposes `focus()` for moving focus to the field from code.
 
 ## Examples
 
-### Merchant profile fields with validation
-
-Controlled fields for a merchant settings form, combining validation states, prefix and suffix, necessity indicators and analytics attributes.
+### Labels, types and hint lines
 
 ```svelte
 <script lang="ts">
-  import { TextInput, Box } from '@razorpay/blade-svelte/components';
+  import { TextInput } from '@razorpay/blade-svelte/components';
 
-  let businessName = $state('Acme Payments');
-  let email = $state('');
-  let subdomain = $state('acme');
-
-  const isEmailValid = $derived(email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  let email = $state<string | number | null | undefined>('');
+  let note = $state<string | number | null | undefined>('');
 </script>
 
-<Box className="display-flex flex-col gap-spacing-5">
+<div class="flex flex-col gap-blade-5">
   <TextInput
-    label="Business name"
-    name="businessName"
-    necessityIndicator="required"
-    isRequired
-    maxCharacters={50}
-    value={businessName}
-    onChange={({ value }) => (businessName = value ?? '')}
-    data-analytics-field="business-name"
-  />
-  <TextInput
-    label="Support email"
-    name="supportEmail"
+    bind:value={email}
+    label="Email"
     type="email"
-    placeholder="support@acme.com"
-    autoCompleteSuggestionType="email"
-    value={email}
-    onChange={({ value }) => (email = value ?? '')}
-    validationState={isEmailValid ? 'none' : 'error'}
-    errorText="Enter a valid email address"
-    helpText="Customers see this on payment receipts"
+    name="email"
+    placeholder="you@example.com"
+    necessityIndicator="required"
+    helpText="We'll send the receipt here"
   />
   <TextInput
-    label="Payment page URL"
-    name="subdomain"
-    prefix="https://"
-    suffix=".razorpay.me"
-    value={subdomain}
-    onChange={({ value }) => (subdomain = value ?? '')}
-    validationState={subdomain.length >= 3 ? 'success' : 'none'}
-    successText="This URL is available"
+    bind:value={note}
+    label="Note for the merchant"
+    necessityIndicator="optional"
+    maxCharacters={40}
+    showClearButton
   />
-</Box>
+</div>
 ```
 
-### Formatted card fields
-
-Card number and expiry use `format` and store the `rawValue`; CVV uses `maxCharacters` with a numeric keyboard.
+### Formatted card number and expiry
 
 ```svelte
 <script lang="ts">
-  import { TextInput, Box, Button, CreditCardIcon } from '@razorpay/blade-svelte/components';
+  import { TextInput } from '@razorpay/blade-svelte/components';
 
-  let cardNumber = $state('');
-  let expiry = $state('');
-  let cvv = $state('');
-
-  const digits = (input: string): string => input.replace(/\D/g, '');
-
-  const resetCard = (): void => {
-    cardNumber = '';
-    expiry = '';
-    cvv = '';
-  };
+  let card = $state<string | number | null | undefined>('');
+  let expiry = $state<string | number | null | undefined>('');
+  let digits = $state('');
 </script>
 
-<Box className="display-flex flex-col gap-spacing-4">
+<div class="flex flex-col gap-blade-5">
+  <!-- value is "4111 1111 1111 1111"; rawValue is "4111111111111111". -->
   <TextInput
+    bind:value={card}
     label="Card number"
-    placeholder="1234 5678 9012 3456"
-    type="telephone"
+    inputMode="numeric"
+    autoComplete="cc-number"
+    placeholder="0000 0000 0000 0000"
     format="#### #### #### ####"
-    leadingIcon={CreditCardIcon}
-    autoCompleteSuggestionType="creditCardNumber"
-    value={cardNumber}
-    onChange={({ rawValue }) => (cardNumber = digits(rawValue ?? ''))}
+    onChange={({ rawValue }) => (digits = rawValue ?? '')}
   />
-  <Box className="display-flex flex-row gap-spacing-4">
-    <TextInput
-      label="Expiry"
-      placeholder="MM/YY"
-      type="telephone"
-      format="##/##"
-      autoCompleteSuggestionType="creditCardExpiry"
-      value={expiry}
-      onChange={({ rawValue }) => (expiry = digits(rawValue ?? ''))}
-    />
-    <TextInput
-      label="CVV"
-      placeholder="123"
-      keyboardType="numeric"
-      maxCharacters={3}
-      autoCompleteSuggestionType="creditCardCSC"
-      value={cvv}
-      onChange={({ value }) => (cvv = digits(value ?? ''))}
-    />
-  </Box>
-  <Button variant="tertiary" onClick={resetCard}>Clear card details</Button>
-</Box>
+  <!-- Typing 12 shows "12/"; 1225 shows "12/25". -->
+  <TextInput
+    bind:value={expiry}
+    label="Expiry"
+    inputMode="numeric"
+    autoComplete="cc-exp"
+    placeholder="MM/YY"
+    format="##/##"
+  />
+</div>
 ```
 
-### UPI ID with trailing badge, clear button and apply link
-
-Snippets for the label suffix, trailing badge and trailing button, plus a clear button that resets the controlled value.
+### Prefix, suffix, icons and a trailing link
 
 ```svelte
 <script lang="ts">
-  import { TextInput, Badge, Link, Tooltip, InfoIcon } from '@razorpay/blade-svelte/components';
+  import { Link, TextInput } from '@razorpay/blade-svelte/components';
+  import { InfoIcon, SearchIcon } from '@razorpay/blade-svelte/icons';
+</script>
 
-  let upiHandle = $state('');
-  let isVerifying = $state(false);
+<div class="flex flex-col gap-blade-5">
+  <TextInput label="UPI ID" placeholder="handle" suffix="@okaxis" />
+  <TextInput label="Bank" placeholder="Bank name" leading={SearchIcon} trailing={InfoIcon} />
+  <TextInput label="Amount" type="number" placeholder="0.00" prefix="₹" textAlign="right">
+    {#snippet trailing()}
+      <Link href="/rates" size="small">Rates</Link>
+    {/snippet}
+  </TextInput>
+</div>
+```
 
-  const verifyUpi = (): void => {
-    isVerifying = true;
-    setTimeout(() => (isVerifying = false), 1500);
-  };
+### Validation the app owns
+
+```svelte
+<script lang="ts">
+  import { TextInput } from '@razorpay/blade-svelte/components';
+
+  let upi = $state<string | number | null | undefined>('');
+  const isValid = $derived(/^[\w.-]+@[\w]+$/.test(String(upi ?? '')));
+  const upiState = $derived(upi === '' ? 'none' : isValid ? 'success' : 'error');
 </script>
 
 <TextInput
+  bind:value={upi}
   label="UPI ID"
-  name="upiId"
-  placeholder="yourname"
-  showClearButton
-  isLoading={isVerifying}
-  value={upiHandle}
-  onChange={({ value }) => (upiHandle = value ?? '')}
-  onClearButtonClick={() => (upiHandle = '')}
-  helpText="Refunds for this customer are sent to this UPI ID"
->
-  {#snippet labelSuffix()}
-    <Tooltip content="Your UPI ID is shown in your UPI app" placement="right">
-      <InfoIcon size="small" color="surface.icon.gray.muted" />
-    </Tooltip>
-  {/snippet}
-  {#snippet trailing()}
-    <Badge color="neutral" size="small">@oksbi</Badge>
-  {/snippet}
-  {#snippet trailingButton()}
-    <Link onClick={verifyUpi}>Verify</Link>
-  {/snippet}
-</TextInput>
+  placeholder="name@bank"
+  validationState={upiState}
+  helpText="Find it in your UPI app"
+  errorText="Enter a UPI ID like name@bank"
+  successText="UPI ID verified"
+/>
 ```

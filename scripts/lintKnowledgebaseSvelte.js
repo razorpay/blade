@@ -2,93 +2,40 @@
  * Lints the ```svelte examples in the blade-svelte knowledgebase.
  *
  * `tsc` can't check Svelte markup, so each example is instead:
- * - compiled with `svelte/compiler` in runes mode (catches syntax errors,
- *   Svelte 4 leftovers like `export let` / `on:click`, and a11y warnings)
- * - checked so every name imported from `@razorpay/blade-svelte/components`
- *   is a real export, and every `<PascalCase>` tag is imported or declared.
- * Every attribute and snippet passed to a Blade component must be one of its
- * props (from the exported `{Name}Props` type), so invented props fail.
- * Every `*Icon` name anywhere in a doc must also be a blade-svelte export, and
- * general/AvailableIcons.md must list exactly the exported icons.
+ * - compiled with `svelte/compiler` in runes mode (syntax errors, Svelte 4
+ *   leftovers like `export let` / `on:click`, a11y warnings);
+ * - checked so every name imported from `@razorpay/blade-svelte/components`,
+ *   `/runes` or `/icons` is a real export of that entry, every `<PascalCase>`
+ *   tag is imported or declared, and no icon is used as a tag (icons are
+ *   sources: `<Icon source={InfoIcon} />`, or a component's `icon` prop);
+ * - checked so every attribute, binding and snippet passed to a Blade
+ *   component is one of its props (read from the component's `$props()`);
+ * - run through Blade's class lint (`@razorpay/blade-svelte/configs/lint`):
+ *   no conflicting, interpolated or misspelled classes, and a Blade
+ *   component's `class` places it, never restyles it.
+ * Every `*Icon` named anywhere in a doc must be a blade-svelte icon, and
+ * general/AvailableIcons.md must list exactly the icons the package exports.
  *
  * Usage: yarn tsc:knowledgebase --target svelte
  */
 const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');
-const { Project } = require('ts-morph');
+// Hoisted from blade-svelte's dependencies in the workspace.
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { compile, parse } = require('svelte/compiler');
-
-const rootDir = path.join(__dirname, '..');
-const knowledgebasePath = path.join(
+const {
   rootDir,
-  'packages/blade-plugin/skills/blade-svelte/references',
-);
-const svelteDir = path.join(rootDir, 'packages/blade-svelte');
+  svelteDir,
+  knowledgebasePath,
+  ENTRIES,
+  exportedNames,
+  getComponentProps,
+  propTakesIcon,
+} = require('./svelteKnowledgebase');
+
 const reportPath = path.join(rootDir, 'knowledgebase-ts-errors.svelte.json');
-const COMPONENTS_IMPORT = '@razorpay/blade-svelte/components';
-
-const project = new Project({
-  tsConfigFilePath: path.join(svelteDir, 'tsconfig.json'),
-  skipAddingFilesFromTsConfig: true,
-  // blade-core is read from source so the lint runs without building it.
-  compilerOptions: {
-    paths: {
-      '~components/*': ['src/components/*'],
-      '~src/*': ['src/*'],
-      '@razorpay/blade-core/*': ['../blade-core/src/*'],
-    },
-  },
-});
-const exportedNames = new Set(
-  project
-    .addSourceFileAtPath(path.join(svelteDir, 'src/components/index.ts'))
-    .getExportedDeclarations()
-    .keys(),
-);
-
-const iconsIndex = fs.readFileSync(path.join(svelteDir, 'src/components/Icons/index.ts'), 'utf8');
-const exportedIcons = new Set(
-  [...iconsIndex.matchAll(/export \{ (\w+Icon) \}/g)].map(([, name]) => name),
-);
-
-const propsCache = new Map();
-const { propsTypes = {} } = require('./knowledgebaseDriftIgnore.svelte.json');
-
-/**
- * Prop names a component accepts, from its exported `{Name}Props` type
- * (`IconProps` for icons). Returns null when no props type is exported.
- * @param {string} name
- * @returns {Set<string> | null}
- */
-const getComponentProps = (name) => {
-  if (propsCache.has(name)) return propsCache.get(name);
-  const isIcon = exportedIcons.has(name);
-  const expression = isIcon ? 'IconProps' : propsTypes[name] ?? `${name}Props`;
-  const typeNames = expression.split(/[|&]/).map((part) => part.trim());
-  let props = null;
-  if (typeNames.every((typeName) => exportedNames.has(typeName))) {
-    const sourceFile = project.createSourceFile(
-      path.join(svelteDir, `src/__knowledgebaseLint__${name}.ts`),
-      `import type { ${typeNames.join(
-        ', ',
-      )} } from './components';\nexport type __Resolved = ${expression};`,
-      { overwrite: true },
-    );
-    const type = sourceFile.getTypeAliasOrThrow('__Resolved').getType();
-    if (type.isAny()) {
-      throw new Error(
-        `${expression} resolves to any; add a propsTypes override in knowledgebaseDriftIgnore.svelte.json`,
-      );
-    }
-    props = new Set();
-    for (const member of type.isUnion() ? type.getUnionTypes() : [type]) {
-      for (const symbol of member.getProperties()) props.add(symbol.getName());
-    }
-  }
-  propsCache.set(name, props);
-  return props;
-};
+const entryOf = new Map(Object.entries(ENTRIES).map(([key, specifier]) => [specifier, key]));
 
 /**
  * Yields every AST node below `node`.
@@ -107,23 +54,16 @@ function* walk(node) {
 }
 
 /**
- * Attributes and snippets passed to Blade components must be real props.
- * @param {string} code
+ * Attributes, bindings and snippets passed to Blade components must be props.
+ * @param {any} ast
  * @param {Map<string, string>} bladeComponents local name -> exported name
  * @returns {string[]}
  */
-const lintComponentProps = (code, bladeComponents) => {
+const lintComponentProps = (ast, bladeComponents) => {
   const problems = [];
-  let ast;
-  try {
-    ast = parse(code, { modern: true });
-  } catch {
-    return problems;
-  }
   for (const node of walk(ast.fragment)) {
     if (node.type !== 'Component' || !bladeComponents.has(node.name)) continue;
-    const exportName = bladeComponents.get(node.name);
-    const props = getComponentProps(exportName);
+    const props = getComponentProps(bladeComponents.get(node.name));
     if (!props) continue;
     const passed = [];
     for (const attribute of node.attributes) {
@@ -132,12 +72,27 @@ const lintComponentProps = (code, bladeComponents) => {
         passed.push(attribute.name);
     }
     for (const child of node.fragment.nodes) {
-      if (child.type === 'SnippetBlock' && child.expression.name !== 'children')
-        passed.push(child.expression.name);
+      if (child.type === 'SnippetBlock') passed.push(child.expression.name);
     }
     for (const name of passed) {
       if (name.startsWith('data-') || name.startsWith('aria-') || props.has(name)) continue;
       problems.push(`<${node.name}> has no "${name}" prop`);
+    }
+    // An icon passed to a prop that takes no icon source (`string | Snippet`).
+    for (const attribute of node.attributes) {
+      const value = Array.isArray(attribute.value) ? attribute.value[0] : attribute.value;
+      const expression = value?.expression;
+      if (
+        attribute.type === 'Attribute' &&
+        expression?.type === 'Identifier' &&
+        exportedNames.icons.has(expression.name) &&
+        props.has(attribute.name) &&
+        !propTakesIcon(bladeComponents.get(node.name), attribute.name)
+      ) {
+        problems.push(
+          `<${node.name}> ${attribute.name}={${expression.name}}: "${attribute.name}" takes no icon; draw it in a snippet with <Icon source={${expression.name}} />`,
+        );
+      }
     }
   }
   return problems;
@@ -146,21 +101,25 @@ const lintComponentProps = (code, bladeComponents) => {
 const codeBlockRegex = /^```svelte[^\n]*\n([\s\S]*?)^```/gm;
 const importRegex = /import\s+(type\s+)?\{([^}]*)\}\s+from\s+['"]([^'"]+)['"]/g;
 
+let lintClasses;
+
 /**
  * @param {string} code
  * @returns {string[]}
  */
 const lintBlock = (code) => {
   const problems = [];
-
+  let ast;
   try {
     const { warnings } = compile(code, {
       runes: true,
       generate: 'client',
       filename: 'Example.svelte',
     });
-    for (const warning of warnings)
+    for (const warning of warnings) {
       problems.push(`svelte warning ${warning.code}: ${warning.message}`);
+    }
+    ast = parse(code, { modern: true });
   } catch (error) {
     problems.push(`svelte compile error: ${error.message}`);
   }
@@ -168,95 +127,115 @@ const lintBlock = (code) => {
   const declared = new Set();
   const bladeComponents = new Map();
   for (const [, , names, source] of code.matchAll(importRegex)) {
-    const imported = names
+    const entry = entryOf.get(source);
+    if (source.startsWith('@razorpay/blade/') || source === '@razorpay/blade') {
+      problems.push(`imports from the React package "${source}"`);
+    } else if (source.startsWith('@razorpay/blade-svelte') && !entry) {
+      problems.push(`"${source}" is not an entry: use ${Object.values(ENTRIES).join(', ')}`);
+    }
+    for (const part of names
       .split(',')
       .map((name) => name.trim())
-      .filter(Boolean)
-      .map((name) => {
-        const [original, alias] = name.replace(/^type\s+/, '').split(/\s+as\s+/);
-        declared.add((alias ?? original).trim());
-        if (source === COMPONENTS_IMPORT)
-          bladeComponents.set((alias ?? original).trim(), original.trim());
-        return original.trim();
-      });
-    if (source === '@razorpay/blade/components') {
-      problems.push(`imports from the React package "${source}"; use "${COMPONENTS_IMPORT}"`);
-    }
-    if (source === COMPONENTS_IMPORT) {
-      for (const name of imported) {
-        if (!exportedNames.has(name))
-          problems.push(`"${name}" is not exported by ${COMPONENTS_IMPORT}`);
+      .filter(Boolean)) {
+      const [original, alias] = part
+        .replace(/^type\s+/, '')
+        .split(/\s+as\s+/)
+        .map((s) => s.trim());
+      declared.add(alias ?? original);
+      if (!entry) continue;
+      if (!exportedNames[entry].has(original)) {
+        problems.push(`"${original}" is not exported by ${source}`);
+      } else if (entry === 'components') {
+        bladeComponents.set(alias ?? original, original);
       }
     }
   }
   for (const [, name] of code.matchAll(/import\s+([A-Z]\w*)\s+from/g)) declared.add(name);
   for (const [, name] of code.matchAll(/(?:const|let|function)\s+([A-Z]\w*)/g)) declared.add(name);
   for (const [, name] of code.matchAll(/\{#snippet\s+([A-Za-z]\w*)/g)) declared.add(name);
+  for (const [, name] of code.matchAll(/\{@const\s+([A-Z]\w*)/g)) declared.add(name);
 
   const markup = code.replace(/<script[\s\S]*?<\/script>/g, '');
   for (const [, tag] of markup.matchAll(/<([A-Z]\w*)[\s/>]/g)) {
-    if (!declared.has(tag)) problems.push(`<${tag}> is used but not imported`);
+    if (exportedNames.icons.has(tag)) {
+      problems.push(
+        `<${tag}> is an icon used as a component: icons are sources, <Icon source={${tag}} />`,
+      );
+    } else if (!declared.has(tag)) {
+      problems.push(`<${tag}> is used but not imported`);
+    }
   }
-  problems.push(...lintComponentProps(code, bladeComponents));
+  if (ast) problems.push(...lintComponentProps(ast, bladeComponents));
+  for (const finding of lintClasses(code, 'Example.svelte')) {
+    problems.push(
+      `blade/${finding.ruleId} [${finding.line}:${finding.column}]: ${finding.message}`,
+    );
+  }
   return [...new Set(problems)];
 };
 
-const errors = [];
-let blockCount = 0;
-for (const file of glob.sync(`${knowledgebasePath}/**/*.md`).sort()) {
-  const content = fs.readFileSync(file, 'utf8');
-  const fileErrors = [];
-  // blade-svelte ships far fewer icons than React Blade; any icon named in a
-  // doc (prose included) must exist.
-  const unknownIcons = new Set(
-    [...content.matchAll(/\b([A-Z][A-Za-z0-9]*Icon)\b/g)]
-      .map(([, name]) => name)
-      .filter((name) => !exportedNames.has(name)),
-  );
-  for (const name of unknownIcons) {
-    fileErrors.push({
-      error: `"${name}" is not exported by ${COMPONENTS_IMPORT}`,
-      markdownLineNumber: 0,
-    });
-  }
-  for (const match of content.matchAll(codeBlockRegex)) {
-    blockCount += 1;
-    const markdownLineNumber = content.slice(0, match.index).split('\n').length;
-    for (const error of lintBlock(match[1])) fileErrors.push({ error, markdownLineNumber });
-  }
-  if (fileErrors.length) errors.push({ file: path.relative(rootDir, file), errors: fileErrors });
-}
-
-// AvailableIcons.md must list exactly the icons blade-svelte exports.
-const iconsDocPath = path.join(knowledgebasePath, 'general/AvailableIcons.md');
-const listedIcons = new Set(
-  [...fs.readFileSync(iconsDocPath, 'utf8').matchAll(/^- (\w+Icon)$/gm)].map(([, name]) => name),
-);
-const iconListErrors = [
-  ...[...exportedIcons]
-    .filter((name) => !listedIcons.has(name))
-    .map((name) => `${name} is exported but not listed`),
-  ...[...listedIcons]
-    .filter((name) => !exportedIcons.has(name))
-    .map((name) => `${name} is listed but not exported`),
-].map((error) => ({ error, markdownLineNumber: 0 }));
-if (iconListErrors.length)
-  errors.push({ file: path.relative(rootDir, iconsDocPath), errors: iconListErrors });
-
-fs.writeFileSync(reportPath, JSON.stringify(errors, null, 2), 'utf-8');
-
-console.log('--------------------------------');
-if (errors.length > 0) {
-  console.log(`❌ ${errors.length} files have errors in the blade-svelte knowledgebase\n`);
-  for (const { file, errors: fileErrors } of errors) {
-    console.log(file);
-    for (const { error, markdownLineNumber } of fileErrors) {
-      console.log(markdownLineNumber ? `  line ${markdownLineNumber}: ${error}` : `  ${error}`);
+async function main() {
+  ({ lintClasses } = await import(path.join(svelteDir, 'src/lint/plugin.js')));
+  const errors = [];
+  let blockCount = 0;
+  for (const file of glob.sync(`${knowledgebasePath}/**/*.md`).sort()) {
+    const content = fs.readFileSync(file, 'utf8');
+    const fileErrors = [];
+    // Any icon a doc names (prose included) must exist.
+    const unknownIcons = new Set(
+      [...content.matchAll(/\b([A-Z][A-Za-z0-9]*Icon)\b/g)]
+        .map(([, name]) => name)
+        .filter((name) => !exportedNames.icons.has(name)),
+    );
+    for (const name of unknownIcons) {
+      fileErrors.push({ error: `"${name}" is not a blade-svelte icon`, markdownLineNumber: 0 });
     }
+    for (const match of content.matchAll(codeBlockRegex)) {
+      blockCount += 1;
+      const markdownLineNumber = content.slice(0, match.index).split('\n').length;
+      for (const error of lintBlock(match[1])) fileErrors.push({ error, markdownLineNumber });
+    }
+    if (fileErrors.length) errors.push({ file: path.relative(rootDir, file), errors: fileErrors });
   }
+
+  // AvailableIcons.md lists exactly the icons blade-svelte exports.
+  const iconsDocPath = path.join(knowledgebasePath, 'general/AvailableIcons.md');
+  const listedIcons = new Set(
+    fs.existsSync(iconsDocPath)
+      ? [...fs.readFileSync(iconsDocPath, 'utf8').matchAll(/^- (\w+Icon)$/gm)].map(([, n]) => n)
+      : [],
+  );
+  const iconListErrors = [
+    ...[...exportedNames.icons]
+      .filter((name) => !listedIcons.has(name))
+      .map((name) => `${name} is exported but not listed`),
+    ...[...listedIcons]
+      .filter((name) => !exportedNames.icons.has(name))
+      .map((name) => `${name} is listed but not exported`),
+  ].map((error) => ({ error, markdownLineNumber: 0 }));
+  if (iconListErrors.length) {
+    errors.push({ file: path.relative(rootDir, iconsDocPath), errors: iconListErrors });
+  }
+
+  fs.writeFileSync(reportPath, JSON.stringify(errors, null, 2), 'utf-8');
   console.log('--------------------------------');
-  process.exit(1);
+  if (errors.length > 0) {
+    console.log(`❌ ${errors.length} files have errors in the blade-svelte knowledgebase\n`);
+    for (const { file, errors: fileErrors } of errors) {
+      console.log(file);
+      for (const { error, markdownLineNumber } of fileErrors) {
+        console.log(markdownLineNumber ? `  line ${markdownLineNumber}: ${error}` : `  ${error}`);
+      }
+    }
+    console.log('--------------------------------');
+    process.exit(1);
+  }
+  console.log(`✅ ${blockCount} svelte examples pass in the blade-svelte knowledgebase`);
+  console.log('--------------------------------');
+  process.exit(0);
 }
-console.log(`✅ ${blockCount} svelte examples compile in the blade-svelte knowledgebase`);
-console.log('--------------------------------');
-process.exit(0);
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

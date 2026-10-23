@@ -4,237 +4,99 @@ Alert
 
 ## Description
 
-Alert is an inline, contextual message that tells users about a significant change, an error or an explanation inside a page section. It supports a title, a text or snippet description, a primary button and a secondary link action, and comes in semantic colors with subtle or intense emphasis. Alerts are dismissible by default and can span the full width of their container.
+Alert is an inline message on the page: an icon, an optional title, a description and a dismiss button, in one of six colours and a `subtle` or `intense` emphasis. It spans its container (on desktop, `d`, the content centres on the row), brings the colour's icon unless given one, and slides shut when dismissed; a bound `isOpen` brings it back. `negative` and `notice` announce as `role="alert"` (`notice` politely), the rest as `role="status"`.
 
 ## Important Constraints
 
-- `description` is required; pass a string or a snippet
-- The leading icon is chosen from `color` (`CheckCircleIcon` for positive, `AlertOctagonIcon` for negative, `AlertTriangleIcon` for notice, `InfoIcon` otherwise) unless `icon` is passed
-- Dismissing hides the Alert through internal state; there is no prop to show it again, so re-mount it (for example with `{#if}`) to bring it back
-- `negative` and `notice` alerts get `role="alert"`; other colors get `role="status"`
-- Partial port: the React `maxWidth` prop is not available; non-full-width alerts are capped at 584px
+- `description` is required: a string, or a snippet holding text and at most a Link
+- It is dismissible by default (`isDismissible` defaults to `true`): pass `isDismissible={false}` for a message that must stay
+- Dismissing calls `onDismiss`, then sets `isOpen` to `false`; bind `isOpen` to show it again
+- `icon` takes an icon source from `@razorpay/blade-svelte/icons`; without it, the colour's icon shows (info, check-circle, alert-triangle, alert-octagon)
+- There is no `actions`, `isFullWidth` or `maxWidth`: put buttons beside the alert in your own layout, and cap its width with `class` (`max-w-[584px]`)
+- A field's own error line is not an Alert: use the input's `errorText`
 
-## TypeScript Types
-
-These are the props the Alert component accepts.
+## Props
 
 ```typescript
-type AlertColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive' | 'primary';
-type AlertEmphasis = 'subtle' | 'intense';
+type AlertColor = 'neutral' | 'information' | 'positive' | 'notice' | 'negative' | 'primary';
 
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. InfoIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-type PrimaryAction = {
-  /** Button label text */
-  text: string;
-  /** Callback when button is clicked */
-  onClick: () => void;
-};
-
-type SecondaryActionButton = {
-  /** Link button label text */
-  text: string;
-  /** Callback when link button is clicked */
-  onClick: () => void;
-};
-
-type SecondaryActionLinkButton = {
-  /** Link button label text */
-  text: string;
-  /** URL to navigate to */
-  href: string;
-  /** Optional click callback */
-  onClick?: () => void;
-  /** Link target attribute */
-  target?: string;
-  /**
-   * Link rel attribute.
-   * When `target` is set to `_blank` this is automatically set to `noopener noreferrer`
-   */
-  rel?: string;
-};
-
-type SecondaryAction = SecondaryActionButton | SecondaryActionLinkButton;
-
-type AlertActions = {
-  /**
-   * Renders a button (should **always** be present if `secondary` action is being used)
-   */
-  primary?: PrimaryAction;
-  /**
-   * Renders a Link button
-   */
-  secondary?: SecondaryAction;
-};
-
-interface AlertProps extends StyledPropsBlade {
-  /**
-   * Body content, pass text or a Snippet. Avoid passing components except `Link` to customize the content.
-   */
-  description: Snippet | string;
-
-  /**
-   * A brief heading
-   */
-  title?: string;
-
-  /**
-   * Shows a dismiss button
-   * @default true
-   */
-  isDismissible?: boolean;
-
-  /**
-   * A callback when the dismiss button is clicked
-   */
-  onDismiss?: () => void;
-
-  /**
-   * Can be used to render a custom icon
-   */
-  icon?: IconComponent;
-
-  /**
-   * Can be set to `intense` for a more prominent look. Not to be confused with a11y emphasis.
-   * @default 'subtle'
-   */
-  emphasis?: AlertEmphasis;
-
-  /**
-   * Makes the Alert span the entire container width, instead of the default max width of `584px`.
-   * This also makes the alert borderless, useful for creating full bleed layouts.
-   * @default false
-   */
-  isFullWidth?: boolean;
-
-  /**
-   * Sets the color tone
-   * @default 'neutral'
-   */
+interface AlertProps {
+  /** The message: text, or a snippet (a Link at most). */
+  description: string | Snippet;
+  /** A heading line above the description. */
+  title?: string | Snippet;
+  /** @default 'neutral' */
   color?: AlertColor;
-
-  /**
-   * Renders a primary action button and a secondary action link button
-   */
-  actions?: AlertActions;
-
-  /**
-   * Test ID for the element.
-   */
+  /** `subtle`: the colour's tinted fill with gray text; `intense`: its solid fill, everything white. @default 'subtle' */
+  emphasis?: 'subtle' | 'intense';
+  /** Before the text. @default the colour's icon */
+  icon?: IconSource;
+  /** Shows the dismiss button; pressing it closes the alert. @default true */
+  isDismissible?: boolean;
+  /** The dismiss button was pressed, before the alert closes. */
+  onDismiss?: () => void;
+  /** Bindable. Whether it shows; dismissing sets it to `false`. @default true */
+  isOpen?: boolean;
+  /** The dismiss button's accessible name. @default 'Dismiss alert' */
+  closeLabel?: string;
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+  /** Placement only: margin, a width cap. */
+  class?: string;
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Alert` for important messages tied to a section of the page, such as a KYC reminder above settlement details.
-- Match `color` to intent: `negative` for errors, `notice` for warnings, `positive` for confirmations, `information` or `neutral` for general info, `primary` for feature promotion.
-- Keep `title` short and put the explanation in `description`; use a snippet description only to add a `Link` or emphasized `Text`.
-- Add a `primary` action when there is one clear next step; add `secondary` only next to a primary action.
-- Use `isFullWidth` for alerts that run edge to edge across a card or page section.
-- Set `isDismissible={false}` for alerts the user must not hide, such as a blocking compliance message.
-- Reserve `emphasis="intense"` for the single most critical alert on screen.
-
-**Don't**
-
-- Don't use `Alert` for transient feedback after an action; use `Toast`.
-- Don't use `Alert` for a product-wide broadcast at the top of the app; use `AnnouncementBanner`.
-- Don't put buttons or form fields inside `description`; use `actions` for buttons and a `Modal` for input.
-- Don't pass `secondary` without `primary`; promote the only action to `primary`.
-- Don't override `icon` just for decoration; keep the color-driven default so meaning stays consistent.
-- Don't stack several alerts for one issue; combine them into one Alert.
+- Use Alert for a message about the page or the flow that should stay in view; use a toast for a passing confirmation.
+- Pick the colour by meaning: `negative` for a failure, `notice` for a warning, `positive` for success, `information` or `neutral` for context.
+- Use `emphasis="intense"` sparingly, for the one message the user must not miss.
+- Keep the description to one or two sentences; add a `title` when it needs a summary.
+- Don't use an alert as a container for a form or buttons.
 
 ## Examples
 
-### Failed payout with actions
-
-A dismissible negative alert with a retry button and a link to the help article.
+### Colours and a title
 
 ```svelte
 <script lang="ts">
   import { Alert } from '@razorpay/blade-svelte/components';
-
-  let isRetrying = $state(false);
-
-  const retryPayout = (): void => {
-    isRetrying = true;
-  };
 </script>
 
-<Alert
-  title="Payout to HDFC ••4521 failed"
-  description="The beneficiary bank rejected the transfer of ₹12,450. Retry the payout or update the bank account."
-  color="negative"
-  emphasis="subtle"
-  marginBottom="spacing.4"
-  onDismiss={() => (isRetrying = false)}
-  testID="payout-failed-alert"
-  data-analytics-section="payouts"
-  actions={{
-    primary: { text: isRetrying ? 'Retrying...' : 'Retry payout', onClick: retryPayout },
-    secondary: {
-      text: 'Why payouts fail',
-      href: 'https://razorpay.com/docs/payments/payouts/',
-      target: '_blank',
-    },
-  }}
-/>
+<div class="flex flex-col gap-blade-4">
+  <Alert color="information" description="Payouts are paused on bank holidays." isDismissible={false} />
+  <Alert color="positive" title="KYC verified" description="You can now accept international payments." />
+  <Alert color="negative" emphasis="intense" title="Payment failed" description="No money was debited. Try another method." />
+</div>
 ```
 
-### Full-width KYC reminder with rich description
-
-A non-dismissible, intense full-width alert whose description is a snippet with a Link.
+### A custom icon and a link in the description
 
 ```svelte
 <script lang="ts">
-  import { Alert, Link, Text } from '@razorpay/blade-svelte/components';
+  import { Alert, Link } from '@razorpay/blade-svelte/components';
+  import { BankIcon } from '@razorpay/blade-svelte/icons';
 </script>
 
-<Alert
-  color="notice"
-  emphasis="intense"
-  isFullWidth={true}
-  isDismissible={false}
-  actions={{
-    primary: { text: 'Complete KYC', onClick: () => {} },
-  }}
->
+<Alert color="notice" icon={BankIcon} class="max-w-[584px]">
   {#snippet description()}
-    <Text size="small" color="surface.text.staticWhite.normal">
-      Settlements are on hold until you complete KYC.
-      <Link href="https://razorpay.com/docs/payments/kyc/" size="small" color="white">See required documents</Link>
-    </Text>
+    HDFC Bank netbanking is slow right now. <Link href="#status" size="small">See status</Link>
   {/snippet}
 </Alert>
 ```
 
-### Description-only information alert
-
-A compact alert with no title or actions, shown conditionally.
+### Bring it back after a dismiss
 
 ```svelte
 <script lang="ts">
-  import { Alert } from '@razorpay/blade-svelte/components';
+  import { Alert, Button } from '@razorpay/blade-svelte/components';
 
-  let { isOlderThanSixMonths = true }: { isOlderThanSixMonths?: boolean } = $props();
+  let isOpen = $state(true);
 </script>
 
-{#if isOlderThanSixMonths}
-  <Alert
-    description="This payment was made more than 6 months ago, so it can't be refunded."
-    color="information"
-    isDismissible={false}
-  />
-{/if}
+<div class="flex flex-col items-start gap-blade-4">
+  <Alert bind:isOpen color="primary" description="Try UPI for instant refunds." />
+  {#if !isOpen}
+    <Button size="small" variant="secondary" onClick={() => (isOpen = true)}>Show tip again</Button>
+  {/if}
+</div>
 ```

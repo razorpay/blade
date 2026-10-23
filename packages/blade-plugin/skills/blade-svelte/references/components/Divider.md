@@ -4,135 +4,91 @@ Divider
 
 ## Description
 
-Divider is a thin line that separates content sections or groups within a layout. It renders horizontally between stacked content or vertically between items placed side by side. `variant`, `thickness` and `dividerStyle` (solid or dashed) control how prominent the separation is.
+Divider is a thin line that separates content: rows in a list, sections of a card, items in a toolbar. It renders an `<hr>` (a separator to assistive tech) that is horizontal by default or vertical in a flex row, solid or dashed, in three gray shades (`surface.border.gray.{variant}`) and four of Blade's border widths. It has no margin of its own: spacing around it goes in `class`.
 
 ## Important Constraints
 
-- Divider renders a `<div role="separator">` with no children; it cannot hold a label.
-- A vertical Divider gets its height from `align-self: stretch`, so it only shows inside a flex row (for example a Box with `className="display-flex"`).
+- A horizontal divider is a bottom border that grows along its parent (`flex-grow` in a flex row); a vertical one is a left border stretched to the row's height, so put it in a flex row
+- A vertical divider needs a parent with a height: a flex row whose items give it one, or a fixed `h-*`
+- Spacing around the line goes in `class` (`my-blade-4`, `mx-blade-3`); so does a fixed width or height
+- Its look is `variant`, `thickness` and `dividerStyle`, never colour or border classes
+- The prop is `dividerStyle`, not `line` or `style`
 
-## TypeScript Types
-
-These are the props the Divider component accepts.
+## Props
 
 ```typescript
-type DividerSlot = 'root';
+type DividerOrientation = 'horizontal' | 'vertical';
+type DividerStyle = 'solid' | 'dashed';
+type DividerVariant = 'normal' | 'subtle' | 'muted';
+type DividerThickness = 'thinner' | 'thin' | 'thick' | 'thicker';
 
-type DividerProps = {
-  /**
-   * Sets the orientation of divider
-   *
-   * @default 'horizontal'
-   */
-  orientation?: 'horizontal' | 'vertical';
-  /**
-   * Sets the style of divider
-   *
-   * @default 'solid'
-   */
-  dividerStyle?: 'solid' | 'dashed';
-  /**
-   * Sets the variant of divider
-   *
-   * @default 'muted'
-   */
-  variant?: 'normal' | 'subtle' | 'muted';
-  /**
-   * Sets the thickness of divider
-   *
-   * @default 'thin'
-   */
-  thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
-  /**
-   * Test ID for testing
-   */
+interface DividerProps {
+  /** `vertical` sets `aria-orientation` and stretches across a flex row. @default 'horizontal' */
+  orientation?: DividerOrientation;
+  /** @default 'solid' */
+  dividerStyle?: DividerStyle;
+  /** The line's colour: `surface.border.gray.{variant}`. @default 'muted' */
+  variant?: DividerVariant;
+  /** The line's width, Blade's border widths. @default 'thin' */
+  thickness?: DividerThickness;
   testID?: string;
-  /**
-   * Additional class names
-   */
+  /** Spacing around the line, and a width or height. */
   class?: string;
-  /**
-   * Per-slot classname overrides. Merged under provider `componentConfig.Divider.styleOverride`;
-   * instance values win on conflicts.
-   */
-  styleOverride?: Partial<Record<DividerSlot, string>>;
-} & StyledPropsBlade;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Divider` to separate groups of related content, such as a summary from its line items.
-- Use `orientation="horizontal"` between stacked content and `orientation="vertical"` between items in a row.
-- Keep the default `variant="muted"` for most separations; use `normal` only where the split needs more emphasis.
-- Space the Divider from its neighbours with margin props such as `marginY="spacing.4"` or `marginX="spacing.4"`.
-- Use `dividerStyle="dashed"` for soft separations, such as between a subtotal and the grand total.
-
-**Don't**
-
-- Don't use Divider as a container border; style the container with Card or token-based CSS (`var(--surface-border-gray-muted)`).
-- Don't use Divider to add spacing; use `gap-spacing-*` classes on the parent or margin props.
-- Don't put a Divider between every row of a short list; use spacing, and keep Dividers for section breaks.
-- Don't pass `className`; Divider takes `class` for extra classes and `styleOverride` for slot overrides.
+- Keep the default `muted` `thin` line for separating content; use `normal` or a thicker line only where a section needs a stronger break.
+- Use `dashed` for a soft break, such as before a total in a bill.
+- Put the spacing on the Divider (`my-blade-4`) or use `gap-*` on the parent, not both.
+- Don't draw a separator with a bordered `<div>`: use Divider.
+- Don't put a Divider between a CardHeader or CardFooter and the body: they draw their own hairline (`showDivider`).
 
 ## Examples
 
-### Settlement summary sections
-
-A horizontal Divider splits a settlement summary from its breakdown, and a dashed Divider marks the final total.
+### Between sections
 
 ```svelte
 <script lang="ts">
-  import { Box, Divider, Heading, Text } from '@razorpay/blade-svelte/components';
-
-  const lineItems = [
-    { id: 'gross', label: 'Gross amount', value: '₹1,24,500.00' },
-    { id: 'fees', label: 'Razorpay fees', value: '- ₹2,490.00' },
-    { id: 'gst', label: 'GST on fees', value: '- ₹448.20' },
-  ];
+  import { Divider, Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box as="section" className="display-flex flex-col">
-  <Heading size="medium">Settlement setl_Nf29aK1</Heading>
-  <Text size="small" color="surface.text.gray.muted">Credited to HDFC ••4521 on 12 Aug</Text>
-  <Divider marginY="spacing.4" testID="settlement-divider" />
-  <Box className="display-flex flex-col gap-spacing-3">
-    {#each lineItems as item (item.id)}
-      <Box className="display-flex justify-between">
-        <Text size="small">{item.label}</Text>
-        <Text size="small">{item.value}</Text>
-      </Box>
-    {/each}
-  </Box>
-  <Divider dividerStyle="dashed" variant="normal" marginY="spacing.4" />
-  <Box className="display-flex justify-between">
-    <Text weight="semibold">Net settlement</Text>
-    <Text weight="semibold">₹1,21,561.80</Text>
-  </Box>
-</Box>
+<div class="flex max-w-[24rem] flex-col">
+  <Text>Subtotal ₹1,800</Text>
+  <Text>GST ₹200</Text>
+  <Divider class="my-blade-4" dividerStyle="dashed" />
+  <Text weight="semibold">Total ₹2,000</Text>
+</div>
 ```
 
-### Vertical divider between actions
-
-A vertical Divider separates two groups of actions in a toolbar row.
+### Vertical, in a row
 
 ```svelte
 <script lang="ts">
-  import { Box, Button, Divider } from '@razorpay/blade-svelte/components';
-
-  let isExporting = $state(false);
-
-  const exportSettlements = () => {
-    isExporting = true;
-  };
+  import { Divider, Link } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box className="display-flex items-center">
-  <Button variant="secondary" size="small" isLoading={isExporting} onClick={exportSettlements}>
-    Export CSV
-  </Button>
-  <Divider orientation="vertical" thickness="thin" marginX="spacing.4" />
-  <Button variant="tertiary" size="small">Filters</Button>
-</Box>
+<div class="flex h-blade-7 items-center gap-blade-4">
+  <Link href="/terms" size="small">Terms</Link>
+  <Divider orientation="vertical" />
+  <Link href="/privacy" size="small">Privacy</Link>
+  <Divider orientation="vertical" />
+  <Link href="/help" size="small">Help</Link>
+</div>
+```
+
+### Variants and thickness
+
+```svelte
+<script lang="ts">
+  import { Divider } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex flex-col gap-blade-5">
+  <Divider variant="subtle" />
+  <Divider />
+  <Divider variant="normal" thickness="thick" />
+  <Divider variant="normal" thickness="thicker" dividerStyle="dashed" />
+</div>
 ```

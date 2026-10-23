@@ -4,162 +4,98 @@ Text
 
 ## Description
 
-Text renders body copy and supporting text with Blade typography tokens. `variant="body"` is for main content and `variant="caption"` for small supporting text; `size`, `weight` and `color` tune it, and `truncateAfterLines` clamps long content. Use `as` to render it as a paragraph, inline span, label, citation or abbreviation, and nest Text inside Text for inline emphasis.
+Text sets body copy in Blade's Body styles: paragraphs, labels, captions, helper lines and inline runs inside other text. It comes in four sizes (10, 12, 14 and 16px), three weights and eight colours, renders a `p`, `span` or `div`, and can clamp itself to a number of lines with an ellipsis. It has no behaviour of its own; it is the text style most other content sits in, and Amount and Code inherit from it.
 
 ## Important Constraints
 
-- `variant="caption"` only accepts `size="small"` or `size="medium"`; any other size logs an error and falls back to `small`.
-- `as` only accepts `p`, `span`, `div`, `abbr`, `figcaption`, `cite`, `q` and `label`; other values log an error.
-- `truncateAfterLines` only clamps between 1 and 10 lines, and is read once when the component mounts.
-- Setting `styleOverride.root` switches the text color to `currentColor`, so the override class must set `color`.
-- Only `data-analytics-*` attributes reach the DOM besides the documented props; `id`, `for`, `aria-*` and other HTML attributes are not supported.
-- `textDecorationLine="dotted"` from React Blade is not supported.
+- The content is `children`, a snippet (plain text between the tags works); there is no `content` or `text` prop
+- `as` is `p` (default), `span` or `div` only; use `span` for a run inside another Text, never `p` in `p`
+- `color` is one of `default`, `subtle`, `muted`, `primary`, `negative`, `positive`, `white`, `inherit`; React's `danger` and `success` do not exist
+- `truncateAfterLines` clamps to at most 6 lines
+- `class` places it and may set text alignment; its size, weight and colour are props, never `text-*` or `font-*` classes
 
-## TypeScript Types
-
-These are the props the Text component accepts; defaults are `as="p"`, `variant="body"`, `size="medium"` (body), `weight="regular"` and `color="surface.text.gray.normal"`.
+## Props
 
 ```typescript
-type TextVariant = 'body' | 'caption';
+type TextSize = 'xsmall' | 'small' | 'medium' | 'large';
+type TextWeight = 'regular' | 'medium' | 'semibold';
+type TextColor = 'default' | 'subtle' | 'muted' | 'primary' | 'negative' | 'positive' | 'white' | 'inherit';
 
-type TextAs = 'p' | 'span' | 'div' | 'abbr' | 'figcaption' | 'cite' | 'q' | 'label';
-
-/**
- * Text color tokens, e.g. 'surface.text.gray.normal', 'surface.text.gray.muted',
- * 'surface.text.primary.normal', 'feedback.text.positive.intense',
- * 'interactive.text.primary.normal'. See Tokens.md for the full list.
- */
-type TextColors =
-  | `interactive.text.${string}`
-  | `surface.text.${string}`
-  | `feedback.text.${string}`;
-
-type TextSlot = 'root';
-
-type TextCommonProps = {
-  as?: TextAs;
+interface TextProps {
+  /** The element: prose (`p`), inline (`span`), a block (`div`). @default 'p' */
+  as?: 'p' | 'span' | 'div';
+  /** Body styles: 10/13, 12/17, 14/20 or 16/24px (size/line height). @default 'medium' */
+  size?: TextSize;
+  /** @default 'regular' */
+  weight?: TextWeight;
+  /** `white` is static, for dark or brand surfaces; `inherit` takes the parent's colour. @default 'default' */
+  color?: TextColor;
+  /** @default 'start' */
+  textAlign?: 'start' | 'center' | 'end';
+  /** Cuts the text off with an ellipsis after this many lines (1 to 6; more is capped at 6). */
   truncateAfterLines?: number;
-  children: Snippet | string;
-  weight?: 'regular' | 'medium' | 'semibold';
-  /**
-   * Overrides the color of the Text component.
-   *
-   * **Note** This takes priority over `type` and `contrast` prop to decide color of text
-   */
-  color?: TextColors | 'currentColor';
-  textAlign?: 'center' | 'justify' | 'left' | 'right';
-  textTransform?:
-    | 'none'
-    | 'capitalize'
-    | 'uppercase'
-    | 'lowercase'
-    | 'full-width'
-    | 'full-size-kana';
-  textDecorationLine?: 'line-through' | 'none' | 'underline';
-  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  /** The text. */
+  children: Snippet;
   testID?: string;
-  className?: string;
-  styleOverride?: Partial<Record<TextSlot, string>>;
-} & StyledPropsBlade;
-
-type TextBodyVariant = TextCommonProps & {
-  variant?: 'body';
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-};
-
-type TextCaptionVariant = TextCommonProps & {
-  variant?: 'caption';
-  size?: 'small' | 'medium';
-};
-
-type TextProps<T> = T extends { variant: infer Variant }
-  ? Variant extends 'caption'
-    ? TextCaptionVariant
-    : Variant extends 'body'
-    ? TextBodyVariant
-    : T
-  : T;
+  /** Placement and text alignment only. */
+  class?: string;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `Text` for paragraphs, descriptions, table cell content and helper copy.
-- Use `variant="body"` for main content and `variant="caption"` with `size="small"` or `size="medium"` for fine print such as timestamps or footnotes.
-- Use `as="span"` for inline emphasis inside another Text, and `as="label"` for plain labels next to custom controls.
-- Use `color="surface.text.gray.muted"` for secondary information and `feedback.text.*` tokens for status copy.
-- Use `truncateAfterLines` for descriptions in fixed-height layouts such as cards and list rows.
-- Space Text from neighbours with margin props (`marginBottom="spacing.3"`).
-
-**Don't**
-
-- Don't use `Text` for page or section titles; use `Heading`.
-- Don't use `Text` for inline code, API keys or IDs; use `Code`.
-- Don't use `Text` for actions; use `Link` or `Button`.
-- Don't nest Text more than one level deep; split the copy into separate Text elements instead.
+- Use `color="muted"` or `subtle` for secondary lines (helper text, timestamps), not a smaller size alone.
+- Use `color="negative"` and `positive` for inline status text; for a block message use Alert.
+- Nest `<Text as="span">` to change the weight or colour of a few words inside a paragraph.
+- Use `truncateAfterLines` for descriptions in a list or card that must keep a fixed height.
+- Use Heading for titles and Display for hero numbers or words, not a large Text.
+- Don't style text with `text-*`, `font-*` or `leading-*` classes on a Text: use `size`, `weight` and `color`.
+- Don't use `color="white"` on light surfaces; it does not follow the theme.
 
 ## Examples
 
-### Payment confirmation copy
-
-Body, muted and caption text with an inline semibold span and a status color.
+### Sizes, weights and colours
 
 ```svelte
 <script lang="ts">
-  import { Box, Text } from '@razorpay/blade-svelte/components';
-
-  const amount = '₹4,999.00';
-  const paymentId = 'pay_Nf29aK1xYz';
+  import { Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box className="display-flex flex-col gap-spacing-2">
-  <Text size="large" weight="semibold" color="feedback.text.positive.intense">Payment successful</Text>
-  <Text>
-    We have received <Text as="span" weight="semibold">{amount}</Text> from Acme Retail. It will be
-    settled to your bank account in T+2 working days.
-  </Text>
-  <Text size="small" color="surface.text.gray.muted" testID="payment-id">
-    Payment ID: {paymentId}
-  </Text>
-  <Text variant="caption" size="small" color="surface.text.gray.muted" marginTop="spacing.2">
-    Settlement timelines may vary on bank holidays.
-  </Text>
-</Box>
+<div class="flex flex-col gap-blade-2">
+  <Text size="large" weight="semibold">Payment received</Text>
+  <Text>Your payment of ₹1,299 to Acme Store was successful.</Text>
+  <Text size="small" color="muted">12 Oct 2026, 4:32 PM</Text>
+  <Text size="xsmall" color="subtle">Transaction ID pay_Q1w2e3r4t5y6u7</Text>
+  <Text color="negative">The card has expired</Text>
+</div>
 ```
 
-### Truncated description in a list
-
-Clamp long plan descriptions to two lines so rows keep the same height.
+### Inline emphasis
 
 ```svelte
 <script lang="ts">
-  import { Box, Heading, Text } from '@razorpay/blade-svelte/components';
-
-  const plans = [
-    {
-      id: 'plan_monthly',
-      name: 'Monthly subscription',
-      description:
-        'Charges customers every month on the billing date. Failed charges are retried three times over five days before the subscription is halted.',
-    },
-    {
-      id: 'plan_annual',
-      name: 'Annual subscription',
-      description:
-        'Charges customers once a year with an optional upfront discount. Customers get a reminder email seven days before renewal.',
-    },
-  ];
+  import { Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<Box as="section" className="display-flex flex-col gap-spacing-4">
-  {#each plans as plan (plan.id)}
-    <Box className="display-flex flex-col gap-spacing-1">
-      <Heading size="small">{plan.name}</Heading>
-      <Text size="small" truncateAfterLines={2} wordBreak="break-word" color="surface.text.gray.muted">
-        {plan.description}
-      </Text>
-    </Box>
-  {/each}
-</Box>
+<Text>
+  Settlements reach your bank in
+  <Text as="span" weight="semibold">2 working days</Text>.
+  Instant settlements are
+  <Text as="span" color="positive" weight="medium">enabled</Text>.
+</Text>
+```
+
+### Truncated and centred
+
+```svelte
+<script lang="ts">
+  import { Text } from '@razorpay/blade-svelte/components';
+</script>
+
+<div class="flex w-[240px] flex-col gap-blade-3">
+  <Text truncateAfterLines={2} size="small">
+    Accept payments through UPI, cards, netbanking and wallets with one integration, and get settlements the next day.
+  </Text>
+  <Text class="text-center" size="xsmall" color="muted">Secured by Razorpay</Text>
+</div>
 ```

@@ -4,253 +4,258 @@ PhoneNumberInput
 
 ## Description
 
-PhoneNumberInput is a phone number field with a country selector (flag button), a dial-code prefix and a clear button. Its `onChange` returns a rich payload with the typed number, the formatted number with dial code, the dial code and the ISO country code. Use it for customer contact numbers, merchant onboarding and support callbacks, domestic or international.
+PhoneNumberInput is the phone number field: a country button (flag and chevron) and the dial code before a `tel` control for the national number, with a clear button while there is a number. Its value is the whole number with its dial code (`+919876543210`), and picking a country opens Blade's country dropdown under the field, or the app's own presenter through `adapters.presentDropdown`, which can render the exported PhoneCountryList, the same virtualized country list, in a sheet or a modal.
 
 ## Important Constraints
 
-- `onChange` receives `{ name, value, phoneNumber, dialCode, country }`, not the `{ name, value }` shape of other inputs; `value` is the raw typed number and `phoneNumber` is the formatted number with dial code (or `undefined` when empty)
-- `onChange` fires on every keystroke, when a country is selected and when the clear button is pressed
-- Country control is decided once, on mount: pass `country` from the first render to control it, otherwise `defaultCountry` seeds the internal state
-- `onFocus`, `onBlur` and `onClick` use the plain `{ name, value }` payload
-- The component does not validate numbers; validate `value` or `phoneNumber` yourself and set `validationState`
-- The placeholder defaults to a sample number formatted for the selected country
-- `countrySelectorMode` picks where the country list opens: `'bottomsheet'` (default, every screen size), `'dropdown'` (anchored to the input) or `'auto'` (dropdown on desktop, bottom sheet elsewhere); inside another `BottomSheet`, pass the same `portalTarget`
-- Partial port of React: `showHelpTextOnFocus` is not available
+- `countryLabel` is required and localized: it names the country button (`Country: India +91`) and the list; the library ships no copy
+- `value` (bindable) is the whole number with the plus and dial code, `+919876543210`, which is also what the app's form submits under `name`; a value without a plus is read as national to `country`
+- `country` (bindable) is an ISO code (`IN`); a `value` with a plus names its own country and wins
+- `onChange` is the exception to `{ name, value }`: it receives `{ country, dialCode, nationalNumber, value }` (`PhoneNumberChange`), with no `name`, on every edit and country pick; `onCountryChange` receives `{ country }` on a pick
+- Typing keeps digits only; pasting a number that starts with `+` switches the country to match
+- Without `countries` the field offers `defaultPhoneCountries()`: every country `@razorpay/i18nify-js` (a peer dependency) knows, by English name, with no `pattern` or `maxLength`. A country's `pattern` validates the national number and `maxLength` caps it; richer validation is the app's, through `validationState` and the texts
+- `allowedCountries` narrows the list by ISO code; with one country left there is no picker. `isCountryFixed` shows the country as text with no button
+- `leading` sits after the country button, before the dial code; `trailing` sits last. Each takes an icon or a snippet
+- `size` is `medium` (default) or `large`
+- PhoneCountryList is only for an app's own presenter (see `Adapters.md`): its container must bound its height (the list is virtualized), and `onPick` returns the country
 
-## TypeScript Types
-
-These are the props the PhoneNumberInput component accepts.
+## Props
 
 ```typescript
-/** ISO 3166-1 alpha-2 country code from @razorpay/i18nify-js, e.g. 'IN', 'US', 'MY'. */
-type CountryCodeType = string;
-
-type BaseInputSize = 'xsmall' | 'small' | 'medium' | 'large';
-type BaseInputValidationState = 'none' | 'error' | 'success';
-type LabelPosition = 'top' | 'left';
-type NecessityIndicator = 'required' | 'optional' | 'none';
-type KeyboardReturnKeyType = 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
-type AutoCompleteSuggestionType =
-  | 'none'
-  | 'on'
-  | 'name'
-  | 'email'
-  | 'username'
-  | 'password'
-  | 'newPassword'
-  | 'oneTimeCode'
-  | 'telephone'
-  | 'postalCode'
-  | 'countryName'
-  | 'creditCardNumber'
-  | 'creditCardCSC'
-  | 'creditCardExpiry'
-  | 'creditCardExpiryMonth'
-  | 'creditCardExpiryYear';
-
-/** Payload shape for `onFocus` / `onBlur` / `onClick`. */
-type FormInputOnEvent = (event: { name?: string; value?: string; rawValue?: string }) => void;
-
-type CountrySelectorMode = 'bottomsheet' | 'dropdown' | 'auto';
-
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. PhoneIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-/** Rich payload emitted by PhoneNumberInput's `onChange`. */
-type PhoneNumberChangePayload = {
-  /** Formatted phone number with dial code, e.g. `"+91 123456789"`. */
-  phoneNumber?: string;
-  /** Dial code of the selected country, e.g. `"+91"`. */
-  dialCode: string;
-  /** ISO country code of the selected country, e.g. `"IN"`. */
-  country: CountryCodeType;
-  /** Raw value typed by the user. */
-  value: string;
-  /** Name of the input. */
+interface PhoneCountry {
+  /** ISO 3166-1 alpha-2, the identity: `IN`. */
+  code: string;
   name: string;
-};
-
-interface PhoneNumberInputProps extends StyledPropsBlade {
-  /** Label of the input. */
-  label?: string;
-  /** Position of the label. @default 'top' */
-  labelPosition?: LabelPosition;
-  /** Suffix element rendered after the label text. */
-  labelSuffix?: Snippet;
-  /** Trailing element rendered at the end of the label row. */
-  labelTrailing?: Snippet;
-  /** Name of the input, submitted with the form. */
-  name?: string;
-  /** Size of the input. @default 'medium' */
-  size?: BaseInputSize;
-  /** Validation state — drives border color and hint. @default 'none' */
-  validationState?: BaseInputValidationState;
-  /** Error text (shown with `validationState="error"`). */
-  errorText?: string;
-  /** Success text (shown with `validationState="success"`). */
-  successText?: string;
-  /** Help text rendered below the input. */
-  helpText?: string;
-  /** Necessity indicator rendered next to the label. */
-  necessityIndicator?: NecessityIndicator;
-  /** Marks the field required. */
-  isRequired?: boolean;
-  /** Disables the input and the country selector. */
-  isDisabled?: boolean;
-  /** Leading icon rendered before the value. */
-  leadingIcon?: IconComponent;
-  /** Trailing icon rendered after the value. */
-  trailingIcon?: IconComponent;
-  /** Accessibility label. @default 'Enter phone number' */
-  accessibilityLabel?: string;
-  /** Focus the input on mount. */
-  autoFocus?: boolean;
-  /** Test ID for the input. */
-  testID?: string;
-  /** Return-key type on virtual keyboards. @default 'done' */
-  keyboardReturnKeyType?: KeyboardReturnKeyType;
-  /** Autocomplete suggestion type. */
-  autoCompleteSuggestionType?: AutoCompleteSuggestionType;
-  /** Placeholder text. Defaults to a formatted sample number. */
-  placeholder?: string;
-  /** Default value of the input (uncontrolled). */
-  defaultValue?: string;
-  /** Value of the input (controlled). */
-  value?: string;
-  /**
-   * Default country code (uncontrolled country state).
-   * @default 'IN'
-   */
-  defaultCountry?: CountryCodeType;
-  /** Controlled country code. */
-  country?: CountryCodeType;
-  /** Called when a country is selected. */
-  onCountryChange?: (event: { country: CountryCodeType }) => void;
-  /** Restricts the country selector to these countries. */
-  allowedCountries?: CountryCodeType[];
-  /** Called when the value of the input changes (rich payload). */
-  onChange?: (event: PhoneNumberChangePayload) => void;
-  /** Called on focus. */
-  onFocus?: FormInputOnEvent;
-  /** Called on blur. */
-  onBlur?: FormInputOnEvent;
-  /** Called on click. */
-  onClick?: FormInputOnEvent;
-  /** Shows the dial code prefix. @default true */
-  showDialCode?: boolean;
-  /** Shows the country selector. @default true */
-  showCountrySelector?: boolean;
-  /**
-   * Surface used to render the country selector list.
-   * @default 'bottomsheet'
-   */
-  countrySelectorMode?: CountrySelectorMode;
-  /** Called when the clear button is clicked. */
-  onClearButtonClick?: () => void;
-  /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */
-  id?: string;
-  /**
-   * Portals the country-selector bottom sheet into this element. Pass the same
-   * target used by a parent `BottomSheet` when the input lives inside one.
-   */
-  portalTarget?: HTMLElement | null;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
+  /** With the plus: `+91`. */
+  dialCode: string;
+  flag?: string;
+  /** Validates the national number. */
+  pattern?: string | RegExp;
+  maxLength?: number;
 }
 
-/** Imperative handle exposed via `bind:this`. */
-interface PhoneNumberInputInstance {
-  /** Focus the phone number input. */
-  focus: () => void;
-  /** Get the underlying `<input>` element. */
-  getInput: () => HTMLInputElement | null;
+interface PhoneNumberChange {
+  country: string;
+  dialCode: string;
+  /** Digits only, without the dial code. */
+  nationalNumber: string;
+  /** `dialCode` + `nationalNumber`; empty while there is no number. */
+  value: string;
+}
+
+interface PhoneNumberInputProps {
+  /** The selectable countries, in display order. @default defaultPhoneCountries() (i18nify's, by name) */
+  countries?: readonly PhoneCountry[];
+  /** ISO codes narrowing `countries`; one left means no picker. */
+  allowedCountries?: readonly string[];
+  /** Bindable: the whole number with its dial code (`+919876543210`). @default '' */
+  value?: string;
+  /** Bindable ISO code. A `value` with a plus names its own country and wins. */
+  country?: string;
+  /** Every edit and country pick: `{ country, dialCode, nationalNumber, value }`, no `name`. */
+  onChange?: (change: PhoneNumberChange) => void;
+  /** A country was picked. */
+  onCountryChange?: (change: { country: string }) => void;
+  /** Plain text above the field. */
+  label?: string;
+  /** After the label: `*` or `(optional)`. @default 'none' */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /** @default Blade's example number for the country, `1234 567890` for India */
+  placeholder?: string;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onClick?: (event: MouseEvent) => void;
+  /** The clear button (shown while there is a number) was pressed. */
+  onClearButtonClick?: () => void;
+  /** The return key's label on a virtual keyboard. */
+  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  /** An HTML autofill token. @default 'tel' */
+  autoComplete?: string;
+  /** Off hides the country button; the dial code still shows. @default true */
+  showCountrySelector?: boolean;
+  /** After the country button, before the dial code: an icon or a snippet. */
+  leading?: IconSource | Snippet;
+  /** After the number, last: an icon or a snippet (a Link, a button). */
+  trailing?: IconSource | Snippet;
+  /** @default false */
+  isDisabled?: boolean;
+  /** @default false */
+  isRequired?: boolean;
+  /** The country as text only: no button, no picker. @default false */
+  isCountryFixed?: boolean;
+  /** The dial code beside the flag. @default true */
+  showDialCode?: boolean;
+  /** Omit inside the app's form to mirror its error. @default 'none' */
+  validationState?: 'none' | 'error' | 'success';
+  helpText?: string | Snippet;
+  errorText?: string | Snippet;
+  successText?: string | Snippet;
+  /** @default false */
+  autoFocus?: boolean;
+  /** Inside an InputGroup: this field's share of its row. */
+  span?: 'full' | '1/2' | '1/3' | '2/3' | '1/4' | '3/4';
+  /** The key the app's form submits the whole number under. */
+  name?: string;
+  /** Required, localized: names the country button and the list. */
+  countryLabel: string;
+  /** Localized; handed to the app's presenter for its close button. */
+  closeLabel?: string;
+  /** Names the number control when there is no visible `label`. */
+  accessibilityLabel?: string;
+  /** Lands on the number control; `-country`, `-picker` and `-countries` suffix the button, dropdown and list. */
+  testID?: string;
+  /** Placement only. */
+  class?: string;
+  /** @default 'medium' (or BladeProvider's `size`) */
+  size?: 'medium' | 'large';
+}
+
+interface PhoneCountryListProps {
+  /** The countries to pick from (the request's `items`). */
+  items: readonly PhoneCountry[];
+  /** The country picked now (the request's `value`). */
+  value?: PhoneCountry;
+  /** Localized; the list's accessible name (the request's `label`). */
+  label: string;
+  /** Lands on the list; rows are `${testID}-${index}`. */
+  testID?: string;
+  /** A row was picked, the current one too. */
+  onPick: (country: PhoneCountry) => void;
+  /** @default 'medium' */
+  size?: 'medium' | 'large';
 }
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `PhoneNumberInput` whenever you collect a phone number, so the country and dial code travel with it.
-- Store `value` for the controlled field and send `phoneNumber` (or `dialCode` + `value`) to the backend.
-- Use `allowedCountries` to limit the list to countries you operate in, for example `['IN', 'MY', 'SG']`.
-- Use `showCountrySelector={false}` for India-only flows; keep `showDialCode` so users see `+91`.
-- Use `onCountryChange` to adjust your validation rules when the country changes.
-- Use `autoCompleteSuggestionType="telephone"` so browsers can fill the number.
-
-**Don't**
-
-- Don't use `TextInput` with `format` for phone numbers; `PhoneNumberInput` handles dial codes and country formats.
-- Don't use `PhoneNumberInput` for other numeric values; use `TextInput` with `type="number"` or `CounterInput`.
-- Don't treat `phoneNumber` as validated; check the number yourself and set `validationState="error"` with `errorText`.
-- Don't destructure `onChange` as `{ value }` alone when you need the country; read `country` and `dialCode` from the same payload.
+- Store and submit the bound `value` (E.164-style `+919876543210`); read `nationalNumber` from `onChange` only when the backend wants the parts.
+- Always pass a localized `countryLabel` (and `closeLabel` if the app presents the list itself).
+- Use `allowedCountries` for markets you serve, and `country` for the initial country.
+- Add `pattern`/`maxLength` to `defaultPhoneCountries()` entries for the countries you validate, or validate with i18nify and drive `validationState`.
+- Present the list your own way (a BottomSheet on phones) through `adapters.presentDropdown`, rendering PhoneCountryList; don't render PhoneCountryList beside the field.
+- Don't parse the number from a plain TextInput `type="tel"` when a country matters: use PhoneNumberInput.
 
 ## Examples
 
-### Customer contact number with validation
-
-A controlled number and country for a payment link form, limited to three countries and validated on blur.
+### A phone field with India as the default
 
 ```svelte
 <script lang="ts">
   import { PhoneNumberInput } from '@razorpay/blade-svelte/components';
 
   let phone = $state('');
-  let selectedCountry = $state('IN');
-  let formattedNumber = $state('');
-  let hasError = $state(false);
-
-  const minDigits = $derived(selectedCountry === 'IN' ? 10 : 8);
+  let country = $state('IN');
 </script>
 
 <PhoneNumberInput
-  label="Customer phone number"
-  name="customerPhone"
+  bind:value={phone}
+  bind:country
+  label="Mobile number"
+  name="phone"
   necessityIndicator="required"
-  isRequired
-  allowedCountries={['IN', 'MY', 'SG']}
-  country={selectedCountry}
-  onCountryChange={({ country }) => (selectedCountry = country)}
-  value={phone}
-  onChange={({ value, phoneNumber }) => {
-    phone = value;
-    formattedNumber = phoneNumber ?? '';
-    hasError = false;
-  }}
-  onBlur={() => (hasError = phone.replace(/\D/g, '').length < minDigits)}
-  autoCompleteSuggestionType="telephone"
-  validationState={hasError ? 'error' : 'none'}
-  errorText="Enter a valid phone number"
-  helpText={formattedNumber ? `Payment link will be sent to ${formattedNumber}` : 'We send the payment link by SMS'}
-  data-analytics-field="customer-phone"
+  countryLabel="Country"
+  helpText="We'll send an OTP to this number"
+  onChange={({ nationalNumber, dialCode }) => console.debug(dialCode, nationalNumber)}
 />
 ```
 
-### India-only support callback number
-
-No country selector, a leading phone icon and an uncontrolled default value.
+### Allowed countries and a fixed country
 
 ```svelte
 <script lang="ts">
-  import { PhoneNumberInput, PhoneIcon } from '@razorpay/blade-svelte/components';
+  import { PhoneNumberInput } from '@razorpay/blade-svelte/components';
 
-  let callbackNumber = $state('');
+  let gulf = $state('');
+  let local = $state('');
+</script>
+
+<div class="flex flex-col gap-blade-5">
+  <PhoneNumberInput
+    bind:value={gulf}
+    allowedCountries={['AE', 'SA', 'KW', 'BH', 'QA']}
+    country="AE"
+    label="Phone"
+    countryLabel="Country"
+  />
+  <PhoneNumberInput bind:value={local} country="IN" isCountryFixed label="Phone (India only)" countryLabel="Country" />
+</div>
+```
+
+### Validating with country patterns
+
+```svelte
+<script lang="ts">
+  import { PhoneNumberInput, defaultPhoneCountries } from '@razorpay/blade-svelte/components';
+
+  const countries = defaultPhoneCountries().map((c) =>
+    c.code === 'IN' ? { ...c, pattern: /^[6-9]\d{9}$/, maxLength: 10 } : c
+  );
+  let phone = $state('');
+  let national = $state('');
+  const invalid = $derived(national.length > 0 && !/^[6-9]\d{9}$/.test(national));
 </script>
 
 <PhoneNumberInput
-  label="Callback number"
-  name="callbackNumber"
-  defaultCountry="IN"
-  showCountrySelector={false}
-  leadingIcon={PhoneIcon}
-  defaultValue="9876543210"
-  size="large"
-  onChange={({ dialCode, value }) => (callbackNumber = `${dialCode}${value}`)}
-  helpText="Our support team calls this number within 2 hours"
+  {countries}
+  bind:value={phone}
+  country="IN"
+  label="Mobile number"
+  countryLabel="Country"
+  validationState={invalid ? 'error' : 'none'}
+  errorText="Enter a 10-digit mobile number"
+  onChange={({ nationalNumber }) => (national = nationalNumber)}
 />
+```
+
+### The app presents the country list in a BottomSheet
+
+```svelte
+<script lang="ts">
+  import {
+    BladeProvider,
+    BottomSheet,
+    BottomSheetBody,
+    BottomSheetHeader,
+    PhoneCountryList,
+    PhoneNumberInput,
+    type ActionListRequest,
+    type PhoneCountry,
+    type PresentDropdownAdapter,
+  } from '@razorpay/blade-svelte/components';
+
+  let request = $state<ActionListRequest<PhoneCountry> | null>(null);
+  let resolvePick: (country: PhoneCountry | undefined) => void = () => {};
+  let phone = $state('');
+
+  const presentDropdown: PresentDropdownAdapter = (_kind, next) =>
+    new Promise((resolve) => {
+      request = next;
+      resolvePick = (country) => {
+        request = null;
+        resolve(country);
+      };
+      void next.cancelled.then(() => resolvePick(undefined));
+    });
+</script>
+
+<BladeProvider adapters={{ presentDropdown }}>
+  <PhoneNumberInput bind:value={phone} label="Mobile number" countryLabel="Country" closeLabel="Close" />
+  <BottomSheet
+    isOpen={request !== null}
+    closeLabel={request?.closeLabel ?? 'Close'}
+    onDismiss={() => resolvePick(undefined)}
+  >
+    <BottomSheetHeader title={request?.label ?? ''} />
+    <BottomSheetBody padding="spacing.0">
+      {#if request}
+        <PhoneCountryList
+          items={request.items}
+          value={request.value}
+          label={request.label}
+          onPick={(country) => resolvePick(country)}
+        />
+      {/if}
+    </BottomSheetBody>
+  </BottomSheet>
+</BladeProvider>
 ```

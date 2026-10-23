@@ -4,171 +4,120 @@ Link
 
 ## Description
 
-Link is inline, text-styled navigation or action. `variant="anchor"` (default) renders an `<a>` that navigates to `href`; `variant="button"` renders a `<button>` for in-place actions that should look like a link, such as "View details" or "Retry". It supports colors, sizes, and an optional icon on either side, and can sit inside running text.
+Link is a text link that reads inline with its sentence: terms and privacy in a footnote, "View details", "Resend code". As an `anchor` (the default) it is an `<a>` that goes to an `href`, routing plain internal clicks through the app's router (`adapters.navigate`); as `variant="button"` it is a `<button>` that acts but reads as a link. It comes in five colours and four sizes, and takes a leading `icon` and a `trailingIcon`, which may both show; an icon alone is an icon-only link.
 
 ## Important Constraints
 
-- At least one of `icon` or non-empty `children` is required; otherwise Link logs `BaseLink: At least one of icon or text is required to render a link.` (localhost only)
-- `href`, `target` and `rel` are only applied when `variant="anchor"`; they are dropped for `variant="button"`
-- `isDisabled` is only applied when `variant="button"`; it is dropped for `variant="anchor"`
-- With `target="_blank"` and no `rel`, Link sets `rel="noreferrer noopener"`
-- `LinkProps` does not include styled props (margin, padding, etc.); wrap the Link in a layout element to space it
+- `variant="anchor"` (default) needs `href`; `variant="button"` takes no `href`, `target`, `rel` or `download`, and acts through `onClick`
+- The text is `children`; an icon-only link (`icon` with no `children`) needs `accessibilityLabel`
+- `icon` and `trailingIcon` take an icon source from `@razorpay/blade-svelte/icons`, never a component; they are 12px at `xsmall` and `small`, 16px above, 4px from the text
+- `target="_blank"` adds `noopener noreferrer` to `rel`
+- `isDisabled` on an anchor drops its `href` and marks it `aria-disabled`; on a button it disables it
+- `onClick` runs before navigation; `event.preventDefault()` cancels it. A plain click on an internal `href` then goes to `adapters.navigate`; new tabs, downloads and other origins stay the browser's
+- `color` is `primary`, `white`, `neutral`, `positive` or `negative`; `size` is `xsmall`, `small`, `medium` or `large`. There is no `notice` or `information` colour
+- The anchor is `inline`, so a long link wraps with its sentence; underline shows on hover and focus only
 
-## TypeScript Types
-
-These are the props the Link component accepts.
+## Props
 
 ```typescript
-type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+type LinkColor = 'primary' | 'white' | 'neutral' | 'positive' | 'negative';
+type LinkSize = 'xsmall' | 'small' | 'medium' | 'large';
 
-/**
- * Any icon exported by @razorpay/blade-svelte/components, e.g. InfoIcon.
- * Color values are the icon color tokens listed in Icons.md.
- */
-type IconComponent = Component<{ size?: IconSize; color?: string }>;
-
-type LinkProps = {
-  /**
-   * `anchor` renders an `<a>` for navigation; `button` renders a `<button>` for actions.
-   * @default 'anchor'
-   */
+interface LinkProps {
+  /** `anchor` goes somewhere (an `<a>`); `button` acts (a `<button>`) and reads as a link. @default 'anchor' */
   variant?: 'anchor' | 'button';
-  /**
-   * Icon rendered next to the text. Accepts an icon component from Blade.
-   */
-  icon?: IconComponent;
-  /**
-   * @default 'primary'
-   */
-  color?: 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
-  /**
-   * @default 'left'
-   */
-  iconPosition?: 'left' | 'right';
-  /**
-   * Disables the link. Only applies when `variant` is `button`.
-   * @default false
-   */
-  isDisabled?: boolean;
-  onClick?: (event: MouseEvent) => void;
-  /**
-   * URL to navigate to. Only applies when `variant` is `anchor`.
-   */
+  /** Where it goes. Required for `anchor`; none on `button`. */
   href?: string;
-  /**
-   * Anchor `target`. Only applies when `variant` is `anchor`.
-   */
-  target?: string;
-  /**
-   * Anchor `rel`. Only applies when `variant` is `anchor`.
-   * Defaults to 'noreferrer noopener' when `target` is '_blank'.
-   */
+  /** Anchor only. */
+  target?: '_self' | '_blank' | '_parent' | '_top';
+  /** Anchor only; `noopener noreferrer` is added for `_blank`. */
   rel?: string;
-  /**
-   * Sets `aria-label`. Required for icon-only links.
-   */
+  /** Anchor only: saves the target instead of opening it; a string names the file. */
+  download?: boolean | string;
+  /** Before the text; alone, it is an icon-only link that needs `accessibilityLabel`. */
+  icon?: IconSource;
+  /** After the text; both icons may show. */
+  trailingIcon?: IconSource;
+  /** Before navigation; `event.preventDefault()` cancels it. */
+  onClick?: (event: MouseEvent) => void;
+  /** An anchor loses its `href`; a button is disabled. @default false */
+  isDisabled?: boolean;
+  /** Names the link; required for an icon-only link. */
   accessibilityLabel?: string;
-  'aria-describedby'?: string;
-  /**
-   * @default 'medium'
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-  testID?: string;
-  /**
-   * Sets the HTML `title` attribute (native tooltip).
-   */
+  /** A tooltip on hover: the element's `title`. */
   htmlTitle?: string;
-  children?: Snippet | string;
-  onBlur?: (event: FocusEvent) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onMouseLeave?: (event: MouseEvent) => void;
-  onMouseMove?: (event: MouseEvent) => void;
-  onPointerDown?: (event: PointerEvent) => void;
-  onPointerEnter?: (event: PointerEvent) => void;
-  onTouchStart?: (event: TouchEvent) => void;
-  onTouchEnd?: (event: TouchEvent) => void;
-  onMouseDown?: (event: MouseEvent) => void;
-  onMouseUp?: (event: MouseEvent) => void;
-  // Analytics attributes
-  [key: `data-analytics-${string}`]: string;
-};
+  testID?: string;
+  /** Placement only. */
+  class?: string;
+  /** The text; omit for an icon-only link. */
+  children?: Snippet;
+  /** `white` for dark or brand-coloured surfaces. @default 'primary' */
+  color?: LinkColor;
+  /** 10/13, 12/17, 14/20 or 16/24 type. @default 'medium' (or BladeProvider's `size`) */
+  size?: LinkSize;
+}
 ```
 
-## Usage Guidelines
+## Guidelines
 
-**Do**
-
-- Use `variant="anchor"` with `href` for navigation to another page or an external doc.
-- Use `variant="button"` for actions that stay on the page but should read as text, such as "View details" or "Retry".
-- Place Links inline inside `Text` for contextual navigation, and match the Link `size` to the surrounding text size.
-- Use `target="_blank"` for external documentation so merchants keep their place in the Dashboard.
-- Use `icon` with `iconPosition="right"` to hint at direction or an external destination.
-- Set `accessibilityLabel` on icon-only links, and when the visible text alone is ambiguous (for example "Learn more").
-- Use `color="white"` on dark or brand-colored surfaces.
-
-**Don't**
-
-- Don't use `Link` for the primary action of a form or page; use `Button`.
-- Don't set `isDisabled` on `variant="anchor"`; switch to `variant="button"` or remove the link.
-- Don't pass `href`, `target` or `rel` to `variant="button"`; use `variant="anchor"` for navigation.
-- Don't use `Link` for a compact icon-only action such as close; use `IconButton`.
+- Use Link for navigation and inline actions in text; use Button for a form's or a page's main actions.
+- Match the link's `size` to the surrounding Text's size so it sits in the line.
+- Use `variant="button"` for an action with no destination ("Resend code", "Edit"), not an anchor with `href="#"`.
+- Add `trailingIcon={ExternalLinkIcon}` and `target="_blank"` for links that leave the app.
+- Let the app's router take internal links through `adapters.navigate` rather than handling every `onClick`.
+- Don't put an icon in `children`; use `icon` or `trailingIcon`, which Blade sizes and spaces.
 
 ## Examples
 
-### Inline help link in a settlement notice
-
-An anchor link inside running text that opens documentation in a new tab.
+### Links inside text
 
 ```svelte
 <script lang="ts">
-  import { Link, Text, ChevronRightIcon } from '@razorpay/blade-svelte/components';
+  import { Link, Text } from '@razorpay/blade-svelte/components';
 </script>
 
-<Text size="medium">
-  Settlements are processed on T+2 working days.
-  <Link
-    href="https://razorpay.com/docs/payments/settlements/"
-    target="_blank"
-    size="medium"
-    icon={ChevronRightIcon}
-    iconPosition="right"
-    accessibilityLabel="Learn more about settlement timelines"
-    data-analytics-link="settlement-docs"
-  >
-    Learn more
-  </Link>
+<Text size="small" color="muted">
+  By continuing you agree to the
+  <Link href="https://razorpay.com/terms" target="_blank" size="small">terms of use</Link>
+  and the
+  <Link href="https://razorpay.com/privacy" target="_blank" size="small">privacy policy</Link>.
 </Text>
 ```
 
-### Link as an action
+### Icons, colours and an icon-only link
 
-A button-variant link that retries a failed webhook and is disabled while the retry runs.
+```svelte
+<script lang="ts">
+  import { Link } from '@razorpay/blade-svelte/components';
+  import { ArrowRightIcon, ExternalLinkIcon, HelpCircleIcon } from '@razorpay/blade-svelte/icons';
+</script>
+
+<div class="flex flex-wrap items-center gap-blade-5">
+  <Link href="/payments" trailingIcon={ArrowRightIcon}>View all payments</Link>
+  <Link href="https://razorpay.com/docs/" target="_blank" trailingIcon={ExternalLinkIcon} color="neutral">
+    Read the docs
+  </Link>
+  <Link href="/settlements" color="positive" size="small">Settled</Link>
+  <Link href="/help" icon={HelpCircleIcon} accessibilityLabel="Help" htmlTitle="Help" />
+</div>
+```
+
+### An action that reads as a link
 
 ```svelte
 <script lang="ts">
   import { Link, Text } from '@razorpay/blade-svelte/components';
 
-  let isRetrying = $state(false);
+  let secondsLeft = $state(0);
 
-  async function retryWebhook(): Promise<void> {
-    isRetrying = true;
-    await fetch('/api/webhooks/wh_01/retry', { method: 'POST' });
-    isRetrying = false;
+  function resend(): void {
+    secondsLeft = 30;
+    void fetch('/api/resend-otp', { method: 'POST' });
   }
 </script>
 
-<div class="webhook-row">
-  <Text size="small" color="feedback.text.negative.intense">Delivery failed for payment.captured</Text>
-  <Link variant="button" size="small" color="negative" isDisabled={isRetrying} onClick={retryWebhook}>
-    {isRetrying ? 'Retrying…' : 'Retry now'}
-  </Link>
+<div class="flex items-center gap-blade-3">
+  <Text size="small" color="muted">Didn't get the code?</Text>
+  <Link variant="button" size="small" isDisabled={secondsLeft > 0} onClick={resend}>Resend OTP</Link>
 </div>
-
-<style>
-  .webhook-row {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3);
-  }
-</style>
 ```
