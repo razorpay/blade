@@ -2,9 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import { tick } from 'svelte';
 import NestedHostHarness from './fixtures/NestedHostHarness.svelte';
-import NestedToastsHarness from './fixtures/NestedToastsHarness.svelte';
 import FirstRenderHarness from './fixtures/FirstRenderHarness.svelte';
-import { createToasts } from '../components/toast/toasts';
 import type { Layers } from '../runes/layer/layers';
 
 describe('BladeProvider overlay host', () => {
@@ -15,35 +13,6 @@ describe('BladeProvider overlay host', () => {
     expect(getByTestId('outer-surfaces')).toBeTruthy();
     expect(queryByTestId('outer-toasts')).toBeNull();
     expect(queryByTestId('inner')).toBeNull();
-  });
-});
-
-describe('BladeProvider toasts, nested', () => {
-  it('a ToastContainer under a nested provider with a queue of its own shows its toasts, in the enclosing host', async () => {
-    const outerToasts = createToasts();
-    const innerToasts = createToasts();
-    const { getByTestId, findByText } = render(NestedToastsHarness, {
-      props: { outerToasts, innerToasts },
-    });
-    expect(getByTestId('inner-toasts')).toBeTruthy();
-    void innerToasts.showToast({ content: 'Inner saved', duration: 0 });
-    const toast = await findByText('Inner saved');
-    expect(getByTestId('outer').contains(toast)).toBe(true);
-  });
-
-  it('a nested provider without a queue of its own renders no host, and leaves the toasts working when it goes', async () => {
-    const outerToasts = createToasts();
-    const { queryByTestId, findAllByText, rerender } = render(NestedToastsHarness, {
-      props: { outerToasts },
-    });
-    expect(queryByTestId('inner')).toBeNull();
-    expect(queryByTestId('inner-toasts')).toBeNull();
-    void outerToasts.showToast({ content: 'Paid', duration: 0 });
-    expect(await findAllByText('Paid')).toHaveLength(1);
-
-    await rerender({ outerToasts, showInner: false });
-    void outerToasts.showToast({ content: 'Refunded', duration: 0 });
-    expect(await findAllByText('Refunded')).toHaveLength(1);
   });
 });
 

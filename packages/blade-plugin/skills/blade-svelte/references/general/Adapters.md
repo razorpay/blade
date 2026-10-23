@@ -14,7 +14,6 @@ The app's services reach Blade through `BladeProvider`'s `adapters` (`BladeAdapt
 | `announce` | `(message: string) => void` | Says a message to a screen reader (a Button starting and stopping loading). Default: the live region BladeProvider renders |
 | `locale` | `string` | The BCP 47 locale Amount formats with; i18nify's own locale without one |
 | `reportError` | `(error: unknown) => void` | Errors the components catch: a rejected press or toast action, a failed `readOTP` or `presentDropdown` |
-| `toasts` | `Toasts` (`{ showToast }`) | The toast queue under this provider: `createToasts()` (shown by a `ToastContainer` under it), or the app's own `{ showToast }`. Default: the page's queue (`showToast`) |
 | `form` | `FormAdapter` | The app's form around the fields: what they register with, report edits to, show errors from, and what submit Buttons submit |
 | `presentDropdown` | `PresentDropdownAdapter` | Shows a library dropdown (PhoneNumberInput's country list) the app's own way, returning a promise of the pick; return `undefined` for Blade's dropdown |
 | `readOTP` | `({ length, cancelled }) => Promise<string \| undefined>` | Reads a one-time code for OTPInput (an SMS retriever, the WebOTP API); a resolved code fills the cells |
@@ -23,14 +22,12 @@ The app's services reach Blade through `BladeProvider`'s `adapters` (`BladeAdapt
 
 ```svelte
 <script lang="ts">
-  import { BladeProvider, ToastContainer, createToasts } from '@razorpay/blade-svelte/components';
+  import { BladeProvider, ToastContainer } from '@razorpay/blade-svelte/components';
   import type { Snippet } from 'svelte';
 
   let { children }: { children: Snippet } = $props();
 
-  const toasts = createToasts();
   const adapters = {
-    toasts,
     track: (event: string, payload?: Record<string, unknown>) => console.debug(event, payload),
     navigate: (href: string) => {
       history.pushState({}, '', href);
@@ -46,7 +43,7 @@ The app's services reach Blade through `BladeProvider`'s `adapters` (`BladeAdapt
 </BladeProvider>
 ```
 
-`toasts.showToast(…)` then shows a toast in this provider's container; `showToast` from `/components` uses the page's queue.
+Toasts are not an adapter: `showToast` from `/components` adds to the page's one queue, which the `ToastContainer` shows.
 
 ## Cancellation
 

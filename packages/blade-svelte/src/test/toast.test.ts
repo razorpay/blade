@@ -1,25 +1,15 @@
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
-import type { Toasts } from '../components/toast/toasts';
 import ToastHarness from './fixtures/ToastHarness.svelte';
 import { expectClass, expectGlyph, glyphsIn } from './classes';
 import { BankIcon } from '../icons';
-import type { RenderResult } from '@testing-library/svelte';
-import { createToasts, showToast } from '../components/toast/toasts';
-import { queueOf } from '../runes/toast/toasts.svelte';
+import { showToast } from '../components/toast/toasts';
 import { createCancel } from '../runes/base/cancel';
 
-function setup(): RenderResult<typeof ToastHarness> & { toasts: Toasts } {
-  let toasts: Toasts | undefined;
-  const view = render(ToastHarness, {
-    props: {
-      onReady: (ready: Toasts) => {
-        toasts = ready;
-      },
-    },
-  });
-  return { ...view, toasts: toasts! };
-}
+// The page's queue: unmounting the container clears it between tests.
+const toasts = { showToast };
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- RenderResult does not type a prop-less component
+const setup = () => render(ToastHarness);
 
 afterEach(() => {
   vi.useRealTimers();
@@ -41,14 +31,14 @@ const offsetOf = (toast: HTMLElement): string =>
 
 describe('showToast', () => {
   it("icon replaces the colour's glyph", async () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Paid', duration: 0, leading: BankIcon, testID: 'paid' });
     await waitFor(() => getByTestId('paid'));
     expectGlyph(getByTestId('paid'), BankIcon);
   });
 
   it('an image leading puts an asset where the glyph goes', async () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({
       content: 'Paid',
       duration: 0,
@@ -64,7 +54,7 @@ describe('showToast', () => {
   });
 
   it("spaces the row as Figma's Toast: the content 12px before the trailing controls", async () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Saved', duration: 0, testID: 'saved' });
     await waitFor(() => getByTestId('saved'));
     const toast = getByTestId('saved');
@@ -73,7 +63,7 @@ describe('showToast', () => {
   });
 
   it('shows a message in the host, as a status, without taking the page', () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Card saved', duration: 0, testID: 'saved' });
 
     return waitFor(() => expect(getByTestId('saved')).toBeTruthy()).then(() => {
@@ -93,7 +83,7 @@ describe('showToast', () => {
   });
 
   it('opens: a toast the stack mounts leaves `closed`', () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Hi', duration: 0, testID: 'hi' });
     return waitFor(() => expect(getByTestId('hi').dataset.state).toBe('open'));
   });
@@ -101,7 +91,7 @@ describe('showToast', () => {
   it('times out, and says why it left', () => {
     vi.useFakeTimers();
     const onDismiss = vi.fn();
-    const { toasts } = setup();
+    setup();
     const dismissed = toasts.showToast({
       content: 'Copied',
       duration: 1000,
@@ -118,7 +108,7 @@ describe('showToast', () => {
   it('a mouse over the stack holds the timers; leaving resumes them', () => {
     vi.useFakeTimers();
     const onDismiss = vi.fn();
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Copied', duration: 1000, onDismiss });
     const stack = getByTestId('host-toasts');
 
@@ -136,7 +126,7 @@ describe('showToast', () => {
 
   it('an action runs and leaves the toast up, as Blade', () => {
     const onClick = vi.fn();
-    const { toasts, getByRole, getByTestId } = setup();
+    const { getByRole, getByTestId } = setup();
     void toasts.showToast({
       content: 'Card removed',
       duration: 0,
@@ -168,7 +158,7 @@ describe('showToast', () => {
             fail = reject;
           }),
       );
-    const { toasts, getByRole } = setup();
+    const { getByRole } = setup();
     void toasts.showToast({
       content: 'Card removed',
       duration: 0,
@@ -190,7 +180,7 @@ describe('showToast', () => {
   });
 
   it('its `cancelled` resolving dismisses it, once; one cancelled already goes at once', async () => {
-    const { toasts, getByTestId, queryByTestId } = setup();
+    const { getByTestId, queryByTestId } = setup();
     const request = createCancel();
     const onDismiss = vi.fn();
     const dismissed = toasts.showToast(
@@ -211,7 +201,7 @@ describe('showToast', () => {
   });
 
   it('a `cancelled` resolving after the toast left does nothing', async () => {
-    const { toasts, getByRole } = setup();
+    const { getByRole } = setup();
     const request = createCancel();
     const onDismiss = vi.fn();
     const dismissed = toasts.showToast(
@@ -227,7 +217,7 @@ describe('showToast', () => {
 
   it('always has a dismiss button, which closes it and reports', () => {
     const onDismissButtonClick = vi.fn();
-    const { toasts, getByRole, getByTestId } = setup();
+    const { getByRole, getByTestId } = setup();
     const dismissed = toasts.showToast({
       content: 'Card removed',
       duration: 0,
@@ -248,7 +238,7 @@ describe('showToast', () => {
   });
 
   it('a newer toast evicts the oldest beyond the capacity', () => {
-    const { toasts } = setup();
+    setup();
     const first = toasts.showToast({ content: '1', duration: 0 });
     void toasts.showToast({ content: '2', duration: 0 });
     void toasts.showToast({ content: '3', duration: 0 });
@@ -257,7 +247,7 @@ describe('showToast', () => {
   });
 
   it('a failure interrupts: negative is an alert', () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({
       content: 'Payment failed',
       color: 'negative',
@@ -271,7 +261,7 @@ describe('showToast', () => {
   });
 
   it("slides in from the stack's edge at Blade's pace and out at its exit pace", () => {
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: 'Hi', duration: 0, testID: 'hi' });
     return waitFor(() => expect(getByTestId('hi').dataset.state).toBe('open')).then(() => {
       const toast = getByTestId('hi');
@@ -284,7 +274,7 @@ describe('showToast', () => {
 
   it('a mouse over the stack expands it: the older toast sits a gutter above the newest', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: '1', duration: 0, testID: 'one' });
     void toasts.showToast({ content: '2', duration: 0, testID: 'two' });
     return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
@@ -299,7 +289,7 @@ describe('showToast', () => {
 
   it('the rest peek behind the front, smaller, until a tap expands them', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
-    const { toasts, getByTestId } = setup();
+    const { getByTestId } = setup();
     void toasts.showToast({ content: '1', duration: 0, testID: 'one' });
     void toasts.showToast({ content: '2', duration: 0, testID: 'two' });
     return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
@@ -317,33 +307,16 @@ describe('showToast', () => {
 });
 
 describe('the queue', () => {
-  it('is only `showToast` to the app', () => {
-    const toasts = createToasts();
-    expect(Object.keys(toasts)).toEqual(['showToast']);
-    expect(queueOf(toasts)).toBeDefined();
-    expect(queueOf({ showToast: () => Promise.resolve('dismiss' as const) })).toBeUndefined();
-  });
-
   it('a toast shown before any stack mounts waits, its timer held, and shows once one does', async () => {
-    const toasts = createToasts();
     const onDismiss = vi.fn();
-    void toasts.showToast({ content: 'Early', duration: 50, onDismiss, testID: 'early' });
+    void showToast({ content: 'Early', duration: 50, onDismiss, testID: 'early' });
     await new Promise((resolve) => {
       setTimeout(resolve, 80);
     });
     expect(onDismiss).not.toHaveBeenCalled();
-    const { findByTestId } = render(ToastHarness, { props: { onReady: () => undefined, toasts } });
+    const { findByTestId } = render(ToastHarness);
     expect(await findByTestId('early')).toBeTruthy();
     await waitFor(() => expect(onDismiss).toHaveBeenCalledWith('timeout'));
-  });
-
-  it("an app's own queue renders no stack: its `showToast` gets the calls", () => {
-    const own = { showToast: vi.fn(() => Promise.resolve('dismiss' as const)) };
-    const { queryByTestId } = render(ToastHarness, {
-      props: { onReady: () => undefined, toasts: own },
-    });
-    expect(queryByTestId('host')).toBeTruthy();
-    expect(queryByTestId('host-toasts')).toBeNull();
   });
 
   it('the page’s `showToast` takes `cancelled` too', () => {

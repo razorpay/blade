@@ -42,16 +42,18 @@ import 'virtual:uno.css';
 import './app.css'; // *, ::before, ::after { box-sizing: border-box } body { margin: 0; font-family: 'Inter', … } button, input, textarea, select { font: inherit; color: inherit }
 ```
 
-Wrap the app in one `BladeProvider`, inside the element overlays must stay within (a positioned element), and render one `ToastContainer` if the app shows toasts:
+Wrap the app in one `BladeProvider` whose parent is the app's shell (positioned, at most the screen, `overflow-hidden`) and whose direct child is the app's scrolling element, and render one `ToastContainer` if the app shows toasts. Overlays then cover the shell, a modal opens in view however far the content has scrolled, and nothing behind an open overlay scrolls. The classes are the app's: Blade adds no markup around its content.
 
 ```svelte
 <script lang="ts">
   import { BladeProvider, Button, ToastContainer, showToast } from '@razorpay/blade-svelte/components';
 </script>
 
-<div class="relative min-h-screen">
+<div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->
   <BladeProvider>
-    <Button onClick={() => showToast({ content: 'Saved', color: 'positive' })}>Save</Button>
+    <main class="min-h-0 flex-1 overflow-auto"> <!-- scrolls -->
+      <Button onClick={() => showToast({ content: 'Saved', color: 'positive' })}>Save</Button>
+    </main>
     <ToastContainer />
   </BladeProvider>
 </div>
@@ -61,7 +63,7 @@ Wrap the app in one `BladeProvider`, inside the element overlays must stay withi
 
 | Import from | What |
 | --- | --- |
-| `@razorpay/blade-svelte/components` | Every component, `showToast`, `createToasts`, `createCancel`, `back`, `getAdapters`, `useComponentDefaults`, the components' class resolvers and types |
+| `@razorpay/blade-svelte/components` | Every component, `showToast`, `createCancel`, `back`, `getAdapters`, `useComponentDefaults`, the components' class resolvers and types |
 | `@razorpay/blade-svelte/icons` | The icons (`InfoIcon`, `WalletIcon`…): sources, not components (see Icons below) |
 | `@razorpay/blade-svelte/runes` | The few runes an app composes its own hosts on (`createLayerStack`, `defineContext`, `phoneDigits`…) |
 | `@razorpay/blade-svelte/configs/uno`, `/configs/vite`, `/configs/webpack`, `/configs/lint` | Build and lint configuration |

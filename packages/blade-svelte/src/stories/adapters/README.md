@@ -13,7 +13,6 @@ and runtime theming is CSS variables only.
 | `form` (`FormAdapter`)     | Fields register (a `FieldRecord` with `element()` and `reveal()`), report edits and blurs and show `errorOf(name)`; a submit Button calls `submit`, a `validateForm` one `validate`, and `invalid` on a failure |
 | `reportError(error)`      | Anything the models reject with                                                                                                                               |
 | `navigate(href, event)`    | Every `href` (Link, Button, Card, CardGroupItem, TabItem, BreadcrumbItem, Avatar) on a plain click on an internal href; return true once handled              |
-| `toasts`                   | The toast queue: Blade's (`createToasts()`), which BladeProvider renders, or the app's own `{ showToast }`; read at mount                                     |
 | `presentDropdown(kind, request)` | PhoneNumberInput's country list, shown the app's way                                                                                                          |
 | `readOTP({ length, cancelled })` | OTPInput, once mounted and enabled: a code from a native host's SMS retriever or WebOTP fills the cells as a paste; `cancelled` resolves on unmount, disable or the user's first edit |
 

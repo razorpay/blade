@@ -1,7 +1,7 @@
 # Toast
 
-`src/components/toast/`: `toasts.ts` (`showToast`, `createToasts`,
-`getToasts`), `ToastContainer.svelte` (Blade's ToastContainer: the stack,
+`src/components/toast/`: `toasts.ts` (`showToast` and the page's queue),
+`ToastContainer.svelte` (Blade's ToastContainer: the stack,
 rendered once by the app) and `Toast.svelte` (one toast, not exported). The queue and the model are runes:
 `createToastQueue` and `createToastsModel` in `src/runes/toast/`.
 
@@ -46,19 +46,13 @@ dismisses the toast (`dismiss`), once; one resolved already is dismissed on
 the next microtask, before it paints, so check `isCancelled` and don't show
 it at all.
 
-`showToast` adds to the page's queue (`globalToasts`). The public `Toasts`
-type is just `{ showToast }`. A queue of the app's own (`createToasts()`)
-goes in as BladeProvider's `adapters.toasts`, and the app calls its
-`showToast`; an object of the app's own with a `showToast` goes in the same
-way, and a ToastContainer renders nothing for it (the app shows its toasts
-its own way). `getToasts()` reads the nearest provider's, else the page's.
+`showToast` adds to the page's one queue (`globalToasts`, internal): there
+is no other, so `showToast` and every ToastContainer always agree.
 The app renders a ToastContainer once, inside BladeProvider, as Blade
-React's: it shows the queue `getToasts()` finds when it mounts, its
+React's: it shows that queue, its
 `accessibilityLabel` (default `Notifications`) names the region and
 `placement` (or `defaults={{ ToastContainer: { placement } }}`) places it.
-Toasts that should land on a nested provider's own queue need a
-ToastContainer under that provider; two containers on one queue show it
-twice. Without a ToastContainer, no toast code ships: BladeProvider does
+Two containers show the queue twice. Without a ToastContainer, no toast code ships: BladeProvider does
 not import it. The stack brings its numbers (capacity 3, duration 4000). A
 toast shown before any container mounts waits, its timer held, and shows
 once one does. Hover or focus inside the stack holds every timer.

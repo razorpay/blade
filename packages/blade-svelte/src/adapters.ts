@@ -1,6 +1,5 @@
 import { defineContext } from './runes/context';
 import type { FormAdapter } from './runes/form/types';
-import type { Toasts } from './components/toast/toasts';
 import type { PresentDropdownAdapter } from './runes/modal/dropdown';
 
 export type { PresentDropdownAdapter };
@@ -47,14 +46,6 @@ export interface BladeAdapters {
    * cancelled.
    */
   navigate?: (href: string, event: MouseEvent) => boolean;
-  /**
-   * The toast queue under this provider: a Blade queue (`createToasts()`),
-   * which a ToastContainer under it shows, or the app's own
-   * `{ showToast }`, which shows toasts its own way. Read when the
-   * ToastContainer mounts.
-   * @default the page's (`showToast`)
-   */
-  toasts?: Toasts;
   /**
    * The app's form around these fields (`FormAdapter`): what they register
    * with, report edits to, and what submit buttons submit. An app's Form

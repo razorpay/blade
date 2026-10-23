@@ -58,7 +58,7 @@ describe('@razorpay/blade-svelte/components', () => {
       expect(name in components, name).toBe(false);
     }
     // The seams those hosts plug into stay.
-    for (const name of ['back', 'createToasts', 'showToast']) {
+    for (const name of ['back', 'showToast']) {
       expect(name in components, name).toBe(true);
     }
   });

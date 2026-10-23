@@ -132,7 +132,7 @@ export { default as TextArea } from './text-area/TextArea.svelte';
 export { default as Tooltip } from './tooltip/Tooltip.svelte';
 // Blade's toasts: the app renders a ToastContainer, `showToast` fills it.
 export { default as ToastContainer } from './toast/ToastContainer.svelte';
-export { showToast, createToasts } from './toast/toasts';
+export { showToast } from './toast/toasts';
 // A withdrawal an app hands Blade (`showToast`'s `cancelled`), or Blade hands it.
 export { createCancel } from '../runes/base/cancel';
 export type { Cancel } from '../runes/base/cancel';
@@ -142,7 +142,6 @@ export type {
   ToastAction,
   ToastDismissReason,
   ToastLeading,
-  Toasts,
 } from './toast/toasts';
 export { default as SearchInput } from './search-input/SearchInput.svelte';
 export { default as TextInput } from './text-input/TextInput.svelte';
@@ -153,8 +152,6 @@ export type { AxisValue, StyleAxes } from '../axes';
 export { back } from '../runes/layer/layers';
 // The seams an app drives Blade through, all BladeProvider adapters
 // (BladeProvider renders the overlay host):
-// - `adapters.toasts` is the toast queue a ToastContainer shows
-//   (`createToasts()`, or the app's own);
 // - `adapters.form` is the app's form around the fields (`FormAdapter`);
 // - `adapters.presentDropdown` may show a library dropdown its own way;
 // - `adapters.vibrate`, `adapters.announce`, `adapters.locale`.

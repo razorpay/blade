@@ -13,7 +13,7 @@ Toasts are short, timed messages (a card removed, a link copied) shown by callin
 - `showToast`'s options are data: `leading` is an icon source or `{ image, alt }`, never a snippet; `content` is a string
 - Pressing the `action` does not dismiss the toast: call `cancel()` when the action is done. An `action.onClick` that returns a promise shows the action busy until it settles; a rejection goes to `adapters.reportError`
 - The dismiss button always shows; `duration` defaults to the container's (4000ms unless its `duration` or `defaults.ToastContainer.duration` says otherwise), and `autoDismiss: false` keeps the toast until it is dismissed
-- `showToast` from `/components` uses the page's queue. An app that passes `adapters.toasts = createToasts()` calls that queue's `toasts.showToast(…)`, and needs a ToastContainer under that provider
+- `showToast` from `/components` adds to the page's one queue, from a component or a `.ts` flow; the app's one `ToastContainer` shows it. There is no per-provider queue
 - Toasts push no layer: nothing goes inert, focus stays put, Escape is not theirs; a `negative` toast is announced as an `alert`, the rest politely
 
 ## Props

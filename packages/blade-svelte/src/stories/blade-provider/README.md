@@ -23,7 +23,6 @@ Defaults for component axes — not theme tokens (theming is CSS variables).
 | `locale`                   | The BCP 47 locale Amount formats with; i18nify's own locale without one                                                                                                                                                   |
 | `navigate(href, event)`    | An app router's hook into every `href` (Link, Button, CardGroupItem…): return `true` once the navigation is handled                                                                                                       |
 | `form`                     | The app's form around the fields (`FormAdapter`): they register with it and show its errors, and submit Buttons submit it. An app's Form passes it on a BladeProvider around its fields                                   |
-| `toasts`                   | The toast queue (`{ showToast }`): Blade's (`createToasts()`), which a ToastContainer under the provider shows, or the app's own, which it doesn't. Without one, the page's (`showToast`) |
 | `presentDropdown(kind, request)` | Takes a library dropdown over: `'dial-code'` is PhoneNumberInput's country list, as an `ActionListRequest` (ActionList's `items`, `value`, `itemKey`, `itemText`, `label` as data, plus a `cancelled` promise; no element, so the request can cross a bridge to a native host). Return a promise of the pick to show it your way (with `PhoneCountryList`), `undefined` for Blade's dropdown |
 
 **BladeProvider hosts the overlays.** After its content it renders the
@@ -41,12 +40,11 @@ whether one handled it, from a component or a `.ts` flow:
 
 ```svelte
 <script>
-  import { BladeProvider, ToastContainer, back, createToasts } from '@razorpay/blade-svelte/components';
+  import { BladeProvider, ToastContainer, back, showToast } from '@razorpay/blade-svelte/components';
   import { Opened } from './lib'; // the app's own overlays opened from code
 
-  const toasts = createToasts();
-  const adapters = { toasts, navigate, track };
-  // await toasts.showToast('Saved'); if (!back()) router.back();
+  const adapters = { navigate, track };
+  // await showToast('Saved'); if (!back()) router.back();
 </script>
 
 <div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->

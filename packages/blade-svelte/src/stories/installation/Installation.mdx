@@ -193,8 +193,8 @@ Render a `ToastContainer` once inside it if the app shows toasts.
 Modals mount in its surfaces box, under its one scrim, and floating
 overlays (menus, popovers, tooltips, toasts) append after that box, so a
 popover opened inside a modal paints above the modal. Drive them from
-outside: `back()`, which your router calls, and `adapters.toasts`
-(`createToasts()`, or the page's `showToast`).
+outside: `back()`, which your router calls, and `showToast()`, from a
+component or a `.ts` flow.
 
 ## Theming
 

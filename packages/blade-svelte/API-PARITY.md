@@ -116,7 +116,7 @@ Drawer, Popover or Menu.
     control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
     ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
     per-component `defaults` for any style prop; `adapters` (app services,
-    plus `toasts`, the app's queue, and `presentDropdown`, the app's
+    plus `presentDropdown`, the app's
     presenter for library dropdowns; see rule 15). No value differs per breakpoint and
     nothing in the library reads the viewport in JS: an app's own components
     that switch by screen read it themselves (`matchMedia` on the query `d:`
@@ -160,11 +160,9 @@ Drawer, Popover or Menu.
     slot takes an icon or a snippet, not both.
 15. **The app's services are adapters** (BladeProvider's `adapters`,
     `BladeAdapters`). They are live: components read them through getters,
-    so an adapter the app swaps reaches what is mounted (`toasts` is read
-    when a ToastContainer mounts). An adapter left out is the
-    enclosing provider's; `null` unsets it for the subtree
-    (`BladeAdaptersOverride`). Beside `toasts`, `form` and
-    `presentDropdown`:
+    so an adapter the app swaps reaches what is mounted. An adapter left
+    out is the enclosing provider's; `null` unsets it for the subtree
+    (`BladeAdaptersOverride`). Beside `form` and `presentDropdown`:
     - `track(event, payload)`: `field_change` sends `{ name }` only.
     - `navigate(href, event)`: every `href` renderer (Link, a link Button,
       Card, Avatar, BreadcrumbItem, a link row, a link tab) shares
@@ -2385,17 +2383,15 @@ React: `useToast().show(…)` with a `ToastContainer`. cx:
 which returns a `Promise<ToastDismissReason>`; `cancelled` resolving
 dismisses the toast (one resolved already goes on the next microtask,
 before it paints). `ToastContainer` is React's: the app renders it once,
-inside BladeProvider, and it shows the queue it finds at mount (the
-nearest `adapters.toasts`, else the page's), its toasts moved into the
-overlay host. BladeProvider imports no toast code, so an app without a
+inside BladeProvider, and it shows the page's one queue, its toasts moved
+into the overlay host. BladeProvider imports no toast code, so an app without a
 ToastContainer ships none. React's `offsetBottom` is a margin (`class`),
 its `zIndex` the host's; `placement` (`bottom`, `top`) and
 `accessibilityLabel` (default `Notifications`) are cx's. A queue made
 before any container mounts keeps its toasts, timers held, and shows them
-once one mounts. The public `Toasts` type is just `{ showToast }`: an
-app's own queue is `createToasts()`, passed as `adapters.toasts`, or an
-object of its own with a `showToast`, which a ToastContainer does not
-render. A nested provider's queue needs a ToastContainer under it. Internally (`runes/toast/`, not exported) the model is
+once one mounts. **One queue, by decision:** there is no
+`adapters.toasts` or `createToasts()` — `showToast` and every
+ToastContainer use the page's queue, so they cannot disagree. Internally (`runes/toast/`, not exported) the model is
 `createToastsModel` and the queue `createToastQueue`.
 
 ### Options
@@ -2672,7 +2668,7 @@ React: `ActionList`, `ActionListItem`, `ActionListSection` — the rows of every
 | `openModal(c, { variant: 'sheet' })` / `{ as: 'sheet' }`                       | the app's own opener (not in the library)                                                                                |
 | `OverlayStack` mounted by the app | the overlay host BladeProvider renders |
 | `ToastStack` mounted by the app | `ToastContainer` mounted by the app, as React's |
-| `provideLayers()`, `provideToasts()`                                           | `adapters.toasts` on a BladeProvider; `back()`                                                                         |
+| `provideLayers()`, `provideToasts()`                                           | `showToast()` and a ToastContainer; `back()`                                                                         |
 | `adapters.layers`, `createLayers()`, `globalLayers`, `getLayers()`, `Layers`   | internal: the outermost provider hosts; `back()` for back                                                                 |
 | `showToast()`'s `{ dismiss, dismissed }`, `ToastHandle`, `action.isLoading`    | `showToast(toast, { cancelled })`'s promise; an `onClick` returning a promise                                            |
 | `resolvePhoneCountryInset(getOverlay()?.layout)`                               | `--overlay-gutter` (ActionList `inset="overlay"`, `px-[var(--overlay-gutter,0px)]`)                                      |

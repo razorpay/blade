@@ -234,12 +234,7 @@ export interface ShowToastControl {
   cancelled?: Promise<void>;
 }
 
-/**
- * A queue of toasts, as the app sees it: what `showToast` adds to. Pass
- * one as BladeProvider's `adapters.toasts` — Blade's (`createToasts()`),
- * which a ToastContainer shows, or the app's own `{ showToast }`, which
- * shows them its own way.
- */
+/** A queue of toasts: what `showToast` adds to, and a ToastContainer shows. */
 export interface Toasts<S extends object> {
   /** Shows a toast; resolves with why it left. Never rejects. */
   showToast(

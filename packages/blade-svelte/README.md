@@ -205,9 +205,8 @@ BladeProvider renders the overlay host (the one scrim, the box modals
 mount in, and a polite live region) after its content, in the nearest
 positioned ancestor: put it inside the frame overlays must stay within. The
 outermost provider hosts every overlay on the page. Toasts are the app's to
-render, as in React: a `<ToastContainer />` inside the provider shows its
-queue (`adapters.toasts`, `createToasts()`, else the page's) and moves its
-toasts into the host; without one, no toast code ships. An app's back handler asks the open overlays first: `back()` returns
+render, as in React: a `<ToastContainer />` inside the provider shows the
+page's queue (what `showToast` adds to) and moves its toasts into the host; without one, no toast code ships. An app's back handler asks the open overlays first: `back()` returns
 whether one handled it. Toasts are data: `showToast(toast, { cancelled })` returns a promise of
 why the toast left, and `cancelled` resolving dismisses it. `cancelled` is a
 plain `Promise<void>`, never an `AbortSignal` (older engines have none, and
@@ -224,8 +223,7 @@ top right.
 
 BladeProvider's `adapters` are the app's services. They are live: a
 component reads them through getters, so an adapter the app swaps reaches
-what is already mounted (`toasts` is read when a ToastContainer mounts). An
-adapter left out is the enclosing provider's; `null` unsets it for the
+what is already mounted. An adapter left out is the enclosing provider's; `null` unsets it for the
 subtree.
 
 | Adapter            | What it does                                                                                                  |
@@ -235,7 +233,6 @@ subtree.
 | `vibrate`          | Told what a press meant: `press`, `select` (Radio, Chip), `toggle` (Checkbox, Switch), `warning`              |
 | `announce`         | Says a message politely; defaults to the host's live region (a Button starting and stopping loading)          |
 | `locale`           | Amount's locale; i18nify's global state is the fallback                                                       |
-| `toasts`           | The toast queue: Blade's (`createToasts()`), which a ToastContainer shows, or the app's own `{ showToast }`   |
 | `form`             | The app's form (`FormAdapter`), below                                                                         |
 | `presentDropdown`  | Shows a library dropdown (PhoneNumberInput's countries) the app's own way                                     |
 | `readOTP`          | Reads a one-time code for OTPInput (an SMS retriever, WebOTP); cancelled on unmount, disable or a user edit; asked again when the owner resets `value` to `''` |
@@ -254,7 +251,7 @@ the whole runes layer:
 
 | The app's                                                                                                      | What Blade gives it                                                                                                                                                  |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host BladeProvider renders, `ToastContainer` (`adapters.toasts`), back (`back()`), and `presentDropdown` to show a library dropdown its own way      |
+| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host BladeProvider renders, `ToastContainer` (`showToast`), back (`back()`), and `presentDropdown` to show a library dropdown its own way      |
 | A form                                                                                                         | `adapters.form` (`FormAdapter`): what fields register with (a `FieldRecord` with its `element()` and `reveal()`) and show errors from, and what submit buttons submit |
 | Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose; provider defaults extend to them (`ComponentStyleProps` is an interface)                                                                     |
 

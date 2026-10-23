@@ -8,15 +8,13 @@
     type ToastContainerStyleProps,
     type ToastStyleProps,
   } from './styles';
-  import { getToasts } from './toasts';
+  import { globalToasts } from './toasts';
   import Toast from './Toast.svelte';
 
   // Blade's ToastContainer: the app renders it once, inside BladeProvider,
-  // and it shows what `showToast` asks for — the nearest provider's
-  // `adapters.toasts`, else the page's queue. An app's own `Toasts` shows
-  // its toasts its own way: nothing renders. Its toasts move into the
-  // overlay host: they sit over open modals, but push no layer — nothing
-  // goes inert, no focus moves, Escape is not theirs.
+  // and it shows the page's queue, what `showToast` asks for. Its toasts
+  // move into the overlay host: they sit over open modals, but push no
+  // layer — nothing goes inert, no focus moves, Escape is not theirs.
   // Blade's stack: the newest toast in front at the edge, the rest peeking
   // behind it until a hover (desktop) or a tap (phone) expands the column;
   // either also holds the timers.
@@ -40,8 +38,7 @@
 
   const style = useComponentDefaults('ToastContainer', () => styleProps);
   const classes = $derived(resolveToastContainer(style.current));
-  // The queue, read once.
-  const queue = queueOf(getToasts()) as ToastQueue<ToastStyleProps> | undefined;
+  const queue = queueOf(globalToasts) as ToastQueue<ToastStyleProps> | undefined;
   const stack = queue
     ? createToastStack({
         queue,

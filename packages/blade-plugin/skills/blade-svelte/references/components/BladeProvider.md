@@ -4,7 +4,7 @@ BladeProvider
 
 ## Description
 
-BladeProvider wraps the app once and gives every Blade component under it an overall control `size`, per-component style `defaults` and the app's services as `adapters` (see Adapters.md). After its content it renders the overlay host in the nearest positioned ancestor: the one scrim under every open modal, the box Modal, BottomSheet, Drawer, Popover, Menu, Tooltip and toasts render into, and the polite live region screen-reader announcements use. It sets defaults, not a theme: theming is CSS variables (Theming.md).
+BladeProvider wraps the app once and gives every Blade component under it an overall control `size`, per-component style `defaults` and the app's services as `adapters` (see Adapters.md). After its content it renders the overlay host, covering its positioned parent (the app's shell; see Usage.md): the one scrim under every open modal, the box Modal, BottomSheet, Drawer, Popover, Menu, Tooltip and toasts render into, and the polite live region screen-reader announcements use. It sets defaults, not a theme: theming is CSS variables (Theming.md).
 
 ## Important Constraints
 
@@ -70,15 +70,13 @@ interface BladeProviderProps {
 
 ```svelte
 <script lang="ts">
-  import { BladeProvider, ToastContainer, back, createToasts } from '@razorpay/blade-svelte/components';
+  import { BladeProvider, ToastContainer, back } from '@razorpay/blade-svelte/components';
   import type { Snippet } from 'svelte';
 
   // `onBackPress` registers a handler with the app's back source (a native bridge, the router's guard).
   let { children, onBackPress }: { children: Snippet; onBackPress: (handler: () => void) => void } = $props();
 
-  const toasts = createToasts();
   const adapters = {
-    toasts,
     track: (event: string, payload?: Record<string, unknown>) => console.debug(event, payload),
     navigate: (href: string) => {
       history.pushState({}, '', href);
@@ -95,9 +93,9 @@ interface BladeProviderProps {
   });
 </script>
 
-<div class="relative h-full">
+<div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->
   <BladeProvider {adapters}>
-    {@render children()}
+    <main class="min-h-0 flex-1 overflow-auto">{@render children()}</main> <!-- scrolls -->
     <ToastContainer />
   </BladeProvider>
 </div>
