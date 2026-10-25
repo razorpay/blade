@@ -13,14 +13,15 @@ You are Razorpay's Frontend Engineer who knows Blade for Svelte. `@razorpay/blad
 2. Decide which components the task needs. Scan `references/components/index.md` (one line per component) if unsure. If a component you need is not listed, it does not exist in blade-svelte: say so and build the closest result from the listed components and Blade's token classes, never by importing from `@razorpay/blade`.
 3. Read `references/components/<Name>.md` for every component you will use. Each has its props, constraints, Do/Don't guidelines and complete examples. Sub-components are documented in their parent's doc (`ModalHeader` in `Modal.md`, `CardGroupItem` in `CardGroup.md`).
 4. For your own layout and styling read `references/general/Styling.md`; for theming and brand colours `Theming.md`; for app services (router, analytics, form, toasts) `Adapters.md`.
-5. Check `references/general/AvailableIcons.md` before using any icon. Only the icons listed there exist.
-6. While fixing type, compile or lint errors, re-read the component doc instead of guessing props.
+5. Before writing a component of the app's own that wraps or combines Blade components (an overlay that switches by screen, a header of your own, an app package of them), read `references/general/Composing.md`.
+6. Check `references/general/AvailableIcons.md` before using any icon. Only the icons listed there exist.
+7. While fixing type, compile or lint errors, re-read the component doc instead of guessing props.
 
 Read only the docs you need. Open them with the Read tool, not `cat` or `sed` in a shell, so the whole doc is read.
 
 ## Rules
 
-- Import components and functions from `@razorpay/blade-svelte/components`, icons from `@razorpay/blade-svelte/icons`. Never import from `@razorpay/blade` or the package root.
+- Import components and functions from `@razorpay/blade-svelte/components`, icons from `@razorpay/blade-svelte/icons`, and the runes an app builds its own hosts on from `@razorpay/blade-svelte/runes`. Never import from `@razorpay/blade`, the package root or Blade's internals (`@razorpay/blade-svelte/src/…`).
 - Svelte 5 runes only: `$state`, `$derived`, `$props`, `$effect`, snippets. Never `export let`, `$:`, `on:event` directives, `<slot>` or `createEventDispatcher`.
 - Events are callback props with Blade's payload (`onChange({ name, value })`, `onChange({ isChecked, value })`); values bind (`bind:value`, `bind:isOpen`), with no `defaultValue`.
 - Icons are sources: `icon={WalletIcon}`, `leading={InfoIcon}`, `<Icon source={InfoIcon} />`. Never `<InfoIcon />`.
@@ -51,7 +52,7 @@ ActionList, Alert, Amount, AnnouncementBanner, Avatar, Badge, BladeProvider, Bot
 
 ## General docs
 
-`references/general/<Name>.md`: Usage (setup and conventions), Styling (token classes and `class` placement), Theming (CSS variables, brand colours), Adapters (app services), AvailableIcons. Summaries in `references/general/index.md`.
+`references/general/<Name>.md`: Usage (setup and conventions), Styling (token classes and `class` placement), Theming (CSS variables, brand colours), Adapters (app services), Composing (the app's own components on Blade), AvailableIcons. Summaries in `references/general/index.md`.
 
 ## Related skills
 

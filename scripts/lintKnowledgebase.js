@@ -5,7 +5,7 @@ if (targetIndex !== -1 && process.argv[targetIndex + 1] === 'svelte') {
   // for here, so the React lint below never runs.
   const { status } = require('child_process').spawnSync(
     process.execPath,
-    [require('path').join(__dirname, 'lintKnowledgebaseSvelte.js')],
+    [require('path').join(__dirname, 'lintKnowledgebaseSvelte.js'), ...process.argv.slice(2)],
     { stdio: 'inherit' },
   );
   process.exit(status ?? 1);

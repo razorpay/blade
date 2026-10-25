@@ -15,30 +15,29 @@
  * `components` (no doc needed) and `props` (`{ Name: { prop: reason } }`).
  * Every entry needs a reason.
  *
+ * Given a package built on blade-svelte (`--package <dir> --docs <dir>`, or
+ * `--config <file>`: see `svelteKnowledgebase.js`), it compares that
+ * package's own components with the `{Name}Props` in its docs
+ * (`--component-docs`, default `--docs`), with `--drift-ignore <file>` as
+ * its ignore file.
+ *
  * Usage:
  *   yarn check:knowledgebase-drift --target svelte          # all components
  *   yarn check:knowledgebase-drift --target svelte Button   # selected ones
  *   yarn check:knowledgebase-drift --target svelte --fail   # exit 1 on drift
+ *   yarn check:knowledgebase-drift --target svelte --config ../app/packages/ui/knowledgebase.json --fail
  */
 const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');
 const { Project, Node } = require('ts-morph');
-const {
-  rootDir,
-  knowledgebasePath,
-  exportedNames,
-  getComponentProps,
-} = require('./svelteKnowledgebase');
+const { rootDir, createKnowledgebase, parseArgs } = require('./svelteKnowledgebase');
 
-const args = process.argv.slice(2);
-const shouldFail = args.includes('--fail');
-const targetIndex = args.indexOf('--target');
-const selected = args.filter((arg, index) => !arg.startsWith('--') && index !== targetIndex + 1);
-const reportPath = path.join(rootDir, 'knowledgebase-drift-report.svelte.json');
-const ignore = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'knowledgebaseDriftIgnore.svelte.json'), 'utf8'),
-);
+const { options, positionals: selected, booleans } = parseArgs(process.argv.slice(2));
+const kb = createKnowledgebase(options);
+const shouldFail = booleans.has('--fail');
+const reportPath = kb.report ?? path.join(rootDir, 'knowledgebase-drift-report.svelte.json');
+const ignore = kb.driftIgnore ? JSON.parse(fs.readFileSync(kb.driftIgnore, 'utf8')) : {};
 
 // Doc types are read for their member names only: unknown types are fine.
 const docs = new Project({ useInMemoryFileSystem: true, compilerOptions: { strict: true } });
@@ -68,7 +67,7 @@ function memberNames(declaration) {
 
 /** `{Name}Props` declared in the docs → { file, props }. */
 const documented = new Map();
-for (const file of glob.sync(`${knowledgebasePath}/components/*.md`).sort()) {
+for (const file of glob.sync(`${kb.componentDocsDir}/*.md`).sort()) {
   const content = fs.readFileSync(file, 'utf8');
   const blocks = [...content.matchAll(/^```typescript[^\n]*\n([\s\S]*?)^```/gm)];
   blocks.forEach(([, code], block) => {
@@ -79,7 +78,7 @@ for (const file of glob.sync(`${knowledgebasePath}/components/*.md`).sort()) {
       .filter((declaration) => declaration.getName().endsWith('Props'))
       .forEach((declaration) => {
         documented.set(declaration.getName(), {
-          file: path.relative(rootDir, file),
+          file: path.relative(kb.baseDir, file),
           props: memberNames(declaration),
         });
       });
@@ -88,13 +87,15 @@ for (const file of glob.sync(`${knowledgebasePath}/components/*.md`).sort()) {
 
 const report = [];
 let checked = 0;
-const components = [...exportedNames.components]
-  .filter((name) => /^[A-Z]/.test(name))
-  .filter((name) => !selected.length || selected.includes(name))
-  .sort();
+const components = kb
+  .ownComponents()
+  .flatMap(([spec, names]) => names.map((name) => ({ spec, name })))
+  .filter(({ name }) => /^[A-Z]/.test(name))
+  .filter(({ name }) => !selected.length || selected.includes(name))
+  .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 
-for (const name of components) {
-  const actual = getComponentProps(name);
+for (const { spec, name } of components) {
+  const actual = kb.getComponentProps(name, spec);
   if (!actual) continue; // a type or a value that is not a component
   if (ignore.components?.[name]) continue;
   checked += 1;
@@ -114,7 +115,7 @@ for (const name of components) {
 fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf-8');
 console.log('--------------------------------');
 if (report.length) {
-  console.log(`⚠️  ${report.length} blade-svelte components drift from the knowledgebase\n`);
+  console.log(`⚠️  ${report.length} ${kb.name} components drift from the knowledgebase\n`);
   for (const entry of report) {
     if (entry.issue) {
       console.log(`${entry.component}: ${entry.issue}`);
@@ -128,5 +129,12 @@ if (report.length) {
   console.log('--------------------------------');
   process.exit(shouldFail ? 1 : 0);
 }
-console.log(`✅ ${checked} blade-svelte components match their docs`);
+if (!checked) {
+  console.log(
+    `⚠️  no ${kb.name} components were found: the entry's re-exports lead to no .svelte file (see --entry, --components-dir)`,
+  );
+  console.log('--------------------------------');
+  process.exit(shouldFail ? 1 : 0);
+}
+console.log(`✅ ${checked} ${kb.name} components match their docs`);
 console.log('--------------------------------');

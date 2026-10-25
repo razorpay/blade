@@ -1,7 +1,8 @@
 // Structural checks for the blade plugin that run in CI without Claude Code:
 // manifests parse and agree on name/version, every skill has valid frontmatter,
-// the package.json version matches the manifests, and each knowledgebase
-// skill (blade, blade-svelte) lists exactly the component docs on disk.
+// the package.json version matches the manifests, each knowledgebase
+// skill (blade, blade-svelte) lists exactly the component docs on disk, and
+// blade-svelte's index lists its general docs.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -79,8 +80,17 @@ const KNOWLEDGEBASE_SKILLS = {
     'new-project.md',
     'figma-to-code.md',
   ],
-  'blade-svelte': ['components/index.md', 'general/index.md', 'general/Usage.md'],
+  'blade-svelte': [
+    'components/index.md',
+    'general/index.md',
+    'general/Usage.md',
+    'general/Composing.md',
+  ],
 };
+
+// Skills whose general docs are each listed in general/index.md (a
+// `**Name**` line) and in SKILL.md's "General docs" line.
+const LISTED_GENERAL_DOCS = ['blade-svelte'];
 
 // Published blade-mcp versions (HTTP transport) curl these from
 // packages/blade-mcp/skillTemplate/references on master, so that copy must exist
@@ -151,6 +161,27 @@ for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
     }
     if (!indexContent.includes(`**${name}**`)) {
       errors.push(`skills/${skill}/references/components/index.md has no line for ${name}`);
+    }
+  }
+}
+
+for (const skill of LISTED_GENERAL_DOCS) {
+  const generalDir = path.join(skillsDir, skill, 'references', 'general');
+  const skillFile = path.join(skillsDir, skill, 'SKILL.md');
+  const indexFile = path.join(generalDir, 'index.md');
+  if (!fs.existsSync(generalDir) || !fs.existsSync(skillFile) || !fs.existsSync(indexFile))
+    continue;
+  const index = fs.readFileSync(indexFile, 'utf8');
+  const generalLine = fs.readFileSync(skillFile, 'utf8').match(/## General docs\n\n([^\n]+)/);
+  if (!generalLine) errors.push(`skills/${skill}/SKILL.md needs a "## General docs" line`);
+  for (const file of fs.readdirSync(generalDir)) {
+    if (!file.endsWith('.md') || file === 'index.md') continue;
+    const name = file.replace(/\.md$/, '');
+    if (!index.includes(`**${name}**`)) {
+      errors.push(`skills/${skill}/references/general/index.md has no line for ${name}`);
+    }
+    if (generalLine && !new RegExp(`\\b${name}\\b`).test(generalLine[1])) {
+      errors.push(`skills/${skill}/SKILL.md "General docs" does not name ${name}`);
     }
   }
 }

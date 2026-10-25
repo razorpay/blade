@@ -1,0 +1,83 @@
+Write the knowledgebase doc for {ComponentName}, a component of {PackageName} built on
+@razorpay/blade-svelte, and save it as {DocsDir}/{ComponentName}.md.
+- {PackageName}: the package's name, as apps import it (its package.json `name`).
+- {SourceDir}: the package's directory (its package.json and tsconfig.json; the components
+  under it, one folder each: `<folder>/{ComponentName}.svelte`, `styles.ts`, `index.ts`).
+- {DocsDir}: the directory of the package's component docs.
+Sub-components are documented in their parent's doc. Do not touch any other file, and never
+edit component source: report a bug or an odd API instead.
+
+Sources, in this order of authority:
+1. The type on `$props()` in {SourceDir}/<folder>/{ComponentName}.svelte: behaviour props
+   with their JSDoc, and the style props from `{ComponentName}StyleProps` / `{NAME}_AXES` in
+   that folder's styles.ts (the exact values). A prop typed from a Blade part
+   (`size?: ModalStyleProps['size']`, `ModalClassesProp`) takes that part's values: read them
+   in blade-svelte's source (`src/components/<name>/styles.ts`), never from memory.
+2. The `useComponentDefaults('{ComponentName}', …)` call and the package's `ComponentStyleProps`
+   augmentation (its `declare module '@razorpay/blade-svelte/components'`): the style props
+   BladeProvider's `defaults={{ {ComponentName}: … }}` sets. Behaviour props are never
+   defaulted.
+3. The Blade parts the component renders, and their docs in the blade-svelte skill
+   (`references/components/<Part>.md`): what it inherits from them (focus, dismissal, the
+   scrim, `onDismiss` sources) and what it passes through (`class`, `classes`, `testID`).
+4. The package's own docs, stories and tests for the component (behaviour and decisions).
+5. The blade-svelte skill's general docs (Usage, Styling, Adapters, Composing) state the
+   conventions every component follows: rely on them instead of repeating them.
+Never take an API, value or behaviour from Blade React, or from another package. Every size,
+colour, default and payload you state must come from the sources above.
+
+Use exactly these sections (the blade-svelte skill's references/components/Button.md is the
+model):
+
+## Component Name
+
+## Description
+
+One paragraph an agent can use to pick this component; its first sentence is the line in the
+package's components index, if it has one. Name the Blade parts it composes (a BottomSheet on
+phones, a Modal on desktop) and the sub-components documented in this file.
+
+## Important Constraints
+
+Hard rules: what the component requires, ignores or rejects, what it needs around it (a
+BladeProvider, the package's own host), which Blade defaults reach its parts. Take them from
+the source.
+
+## Props
+
+One ```typescript block with `interface {Name}Props { … }` for the component and for every
+sub-component this doc covers: every prop by its exact name, each with a short JSDoc (meaning,
+`@default`). Declare small helper unions (sizes, layouts) as their own `type` in the block.
+List members explicitly (no `extends`), the style props too. `Snippet`, `IconSource` and
+other type names may be used without declaring them.
+
+## Guidelines
+
+Do and Don't bullets, one actionable line each: when to use it rather than the Blade
+component it composes, composition, prop combinations, content length, accessibility. Every
+Don't names the right alternative.
+
+## Examples
+
+One `### Title` + one ```svelte block per distinct use case (2-5), in realistic scenarios
+for the app. Every example:
+- is a complete component: `<script lang="ts">` with all imports, then markup;
+- uses Svelte 5 runes and snippets only: never `export let`, `$:`, `on:click`, `<slot>`;
+- imports the component from {PackageName} (one of its package.json `exports`), never from
+  its file, and Blade from `@razorpay/blade-svelte/components`, `/icons` or `/runes` only,
+  naming what those entries export, and nothing from `@razorpay/blade`;
+- passes components only their props; binds values (`bind:value`, `bind:isOpen`) instead of
+  `defaultValue`;
+- passes icons as sources (`icon={WalletIcon}`, `<Icon source={InfoIcon} />`), never as tags;
+- places a component with `class` (margin, width, flex or grid item, position, `hidden`) and
+  never restyles it; styles its own elements with Blade's token classes (`p-blade-5`,
+  `gap-blade-3`, `bg-surface-gray-subtle`), every class written in full;
+- sets the component's look app-wide, when it has style props, through
+  `<BladeProvider defaults={{ {ComponentName}: { … } }}>` in one example.
+
+Check the doc from a Blade checkout (razorpay/blade, after `yarn install`):
+  node scripts/lintKnowledgebaseSvelte.js --package {SourceDir} --docs {DocsDir}
+compiles each example and checks the imports, every component's props and Blade's class lint
+(the package's components count as Blade's: their `class` places them).
+  node scripts/checkKnowledgebaseDriftSvelte.js --package {SourceDir} --docs {DocsDir} {ComponentName}
+compares the names in `{ComponentName}Props` with the component's `$props()`.
