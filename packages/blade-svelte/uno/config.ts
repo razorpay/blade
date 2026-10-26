@@ -1469,14 +1469,27 @@ const motionReduceVariant: Variant = (matcher) => {
   };
 };
 
+/** Whether a class has a variant left: a `:` outside its brackets */
+const hasVariant = (name: string): boolean => {
+  let depth = 0;
+  for (const char of name) {
+    if (char === '[') depth += 1;
+    else if (char === ']') depth -= 1;
+    else if (char === ':' && depth === 0) return true;
+  }
+  return false;
+};
+
 /**
  * `border-thin!` → `border-width: 1px !important`; after variants too,
- * `hover:border-thin!` (Tailwind v4's spelling; v3's leading `!` is not read).
+ * `hover:border-thin!` (Tailwind v4's spelling). Tailwind v3's leading `!`
+ * too, on the utility after its variants: `!border-thin`, `hover:!border-thin`.
  */
 const importantVariant: Variant = (matcher) => {
-  if (!matcher.endsWith('!')) return undefined;
+  const leading = matcher.startsWith('!') && !hasVariant(matcher);
+  if (!leading && !matcher.endsWith('!')) return undefined;
   return {
-    matcher: matcher.slice(0, -1),
+    matcher: leading ? matcher.slice(1) : matcher.slice(0, -1),
     body: (body) => {
       for (const entry of body) {
         if (entry[1] != null && !String(entry[1]).endsWith('!important')) {

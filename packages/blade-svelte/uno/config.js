@@ -4496,10 +4496,20 @@ var motionReduceVariant = (matcher) => {
     parent: "@media (prefers-reduced-motion: reduce)"
   };
 };
+var hasVariant = (name) => {
+  let depth = 0;
+  for (const char of name) {
+    if (char === "[") depth += 1;
+    else if (char === "]") depth -= 1;
+    else if (char === ":" && depth === 0) return true;
+  }
+  return false;
+};
 var importantVariant = (matcher) => {
-  if (!matcher.endsWith("!")) return void 0;
+  const leading = matcher.startsWith("!") && !hasVariant(matcher);
+  if (!leading && !matcher.endsWith("!")) return void 0;
   return {
-    matcher: matcher.slice(0, -1),
+    matcher: leading ? matcher.slice(1) : matcher.slice(0, -1),
     body: (body) => {
       for (const entry of body) {
         if (entry[1] != null && !String(entry[1]).endsWith("!important")) {
