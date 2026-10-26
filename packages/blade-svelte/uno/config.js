@@ -1677,28 +1677,28 @@ function createEngine(context) {
     return [
       [
         new RegExp(`^(-)?(${alternatives})(?:-(.+))?$`),
-        ([, negative, identifier, rest]) => {
+        ([, negative2, identifier, rest]) => {
           const entry = entries.get(identifier);
           let modifier = rest ?? "DEFAULT";
-          if (negative) modifier = `-${modifier}`;
+          if (negative2) modifier = `-${modifier}`;
           if (isArbitraryValue(modifier) && arbitraryOwner(identifier, modifier) !== entry) {
             return void 0;
           }
           const css = generate(entry, modifier);
           if (!css) return void 0;
           const place = [identifierOrder.get(identifier), entries.size];
-          return withCandidateOrder(css, candidateOrder(Boolean(negative), place, rest));
+          return withCandidateOrder(css, candidateOrder(Boolean(negative2), place, rest));
         }
       ]
     ];
   }
   return { matchUtilities };
 }
-function candidateOrder(negative, identifier, value) {
+function candidateOrder(negative2, identifier, value) {
   const first = value?.[0] ?? "";
   const bucket = first === "[" ? 1 : /[0-9]/.test(first) || first === "" ? 0 : 2;
   const [index, count] = identifier;
-  return (negative ? 0 : count * 3) + index * 3 + bucket;
+  return (negative2 ? 0 : count * 3) + index * 3 + bucket;
 }
 var isEntries = (value) => Array.isArray(value) && value.every((pair) => Array.isArray(pair));
 var asList = (css) => Array.isArray(css) && css.length > 0 && isEntries(css) ? [css] : Array.isArray(css) ? css : [css];
@@ -1876,23 +1876,23 @@ function tailwindRules(theme) {
     { [identifier]: output },
     { values: dropDefault ? withoutDefault(colors(key)) : colors(key), type }
   );
-  const filter = (identifier, key, name = identifier, negative = false) => matchUtilities(
+  const filter = (identifier, key, name = identifier, negative2 = false) => matchUtilities(
     {
       [identifier]: (value) => ({
         [`--blade-${name}`]: `${name}(${value})`,
         filter: CSS_FILTER
       })
     },
-    { values: theme[key], supportsNegativeValues: negative }
+    { values: theme[key], supportsNegativeValues: negative2 }
   );
-  const backdrop = (identifier, key, name, negative = false) => matchUtilities(
+  const backdrop = (identifier, key, name, negative2 = false) => matchUtilities(
     {
       [`backdrop-${identifier}`]: (value) => ({
         [`--blade-backdrop-${identifier}`]: `${name}(${value})`,
         "backdrop-filter": CSS_BACKDROP_FILTER
       })
     },
-    { values: theme[key], supportsNegativeValues: negative }
+    { values: theme[key], supportsNegativeValues: negative2 }
   );
   const keyframes2 = Object.fromEntries(
     Object.entries(theme.keyframes ?? {}).map(([name, frames]) => [
@@ -3446,6 +3446,16 @@ function customVariants(variants = {}, layered2 = (_, handler) => handler) {
 
 // uno/config.ts
 var px = (value) => typeof value === "number" ? `${value}px` : value;
+var round = (value) => Number(value.toFixed(4));
+var inUnit = (unit, rootFontSize) => unit === "rem" ? (value) => typeof value === "number" ? `${round(value / rootFontSize)}rem` : value : px;
+var lengths = (units = {}) => {
+  const rootFontSize = units.rootFontSize ?? 16;
+  return {
+    layout: inUnit(units.layout ?? "px", rootFontSize),
+    font: inUnit(units.font ?? "rem", rootFontSize)
+  };
+};
+var negative = (format) => (value) => `-${format(value)}`;
 var rules = (prefix, property, scale, format = px) => Object.entries(scale).map(([key, value]) => [`${prefix}-${key}`, { [property]: format(value) }]);
 var rulesFor = (prefixToProperty, scale, format) => Object.entries(prefixToProperty).flatMap(
   ([prefix, property]) => rules(prefix, property, scale, format)
@@ -3630,13 +3640,17 @@ var negativeInset = {
   "-left": "left"
 };
 var negativePx = (value) => `-${px(value)}`;
-var spacingRules = [
-  ...rulesFor({ ...paddingAndMargin, ...gap, ...inset }, { ...spacing, ...builtInSpacing }),
+var spacingRules = (length2) => [
+  ...rulesFor(
+    { ...paddingAndMargin, ...gap, ...inset },
+    { ...spacing, ...builtInSpacing },
+    length2.layout
+  ),
   // Negative margins and insets, e.g. `-mt-blade-1` → -2px, `-top-1` → -4px
   ...rulesFor(
     { ...negativeMargin, ...negativeInset },
     { ...spacing, ...builtInSpacing },
-    negativePx
+    negative(length2.layout)
   ),
   ...keywords("margin", { "m-auto": "auto" }),
   ...keywords("margin-inline", { "mx-auto": "auto" }),
@@ -3644,7 +3658,7 @@ var spacingRules = [
   // `-left-[9px]`, `top-[calc(50%+1px)]`.
   [
     /^(-?)(p[xytrbl]?|m[xytrbl]?|m[se]|gap(?:-[xy])?|inset(?:-[xy])?|top|right|bottom|left)-\[(.+)\]$/,
-    ([, negative, prefix, value]) => {
+    ([, negative2, prefix, value]) => {
       const property = {
         ...paddingAndMargin,
         ...gap,
@@ -3652,9 +3666,9 @@ var spacingRules = [
         ms: "margin-inline-start",
         me: "margin-inline-end"
       }[prefix];
-      if (!property || negative && prefix.startsWith("p")) return void 0;
+      if (!property || negative2 && prefix.startsWith("p")) return void 0;
       const css = arbitrary(value);
-      if (!negative) return { [property]: css };
+      if (!negative2) return { [property]: css };
       return { [property]: /^[\d.]+[a-z%]*$/.test(css) ? `-${css}` : `calc(${css} * -1)` };
     }
   ]
@@ -3667,8 +3681,12 @@ var sizeProperties = {
   "max-w": "max-width",
   "max-h": "max-height"
 };
-var sizeRules = [
-  ...rulesFor(sizeProperties, { ...spacing, ...builtInSpacing, full: "100%", auto: "auto" }),
+var sizeRules = (length2) => [
+  ...rulesFor(
+    sizeProperties,
+    { ...spacing, ...builtInSpacing, full: "100%", auto: "auto" },
+    length2.layout
+  ),
   [
     /^(w|h|min-w|min-h|max-w|max-h)-\[(.+)\]$/,
     ([, prefix, value]) => ({
@@ -3676,7 +3694,7 @@ var sizeRules = [
     })
   ]
 ];
-var borderRules = [
+var borderRules = (length2) => [
   // e.g. `rounded-medium` → 12px, `rounded-tl-small` → 8px
   ...rulesFor(
     {
@@ -3686,7 +3704,8 @@ var borderRules = [
       "rounded-br": "border-bottom-right-radius",
       "rounded-bl": "border-bottom-left-radius"
     },
-    border.radius
+    border.radius,
+    length2.layout
   ),
   // e.g. `border-thin` → 1px, `border-t-thicker` → 2px
   ...rulesFor(
@@ -3739,21 +3758,21 @@ var filterVariables = {
     ...BACKDROP_FILTER_FUNCTIONS.map((name) => `--blade-backdrop-${name}: ;`)
   ].join(" ")} }`
 };
-var effectRules = [
+var effectRules = (length2) => [
   // e.g. `shadow-midRaised`, light mode only
   ...rules("shadow", "box-shadow", elevation.onLight),
   // e.g. `backdrop-blur-medium` → blur(8px), composed (see `FILTER`)
   ...Object.entries(backdropBlur).map(
     ([key, value]) => [
       `backdrop-blur-${key}`,
-      { "--blade-backdrop-blur": `blur(${px(value)})`, "backdrop-filter": BACKDROP_FILTER }
+      {
+        "--blade-backdrop-blur": `blur(${length2.layout(value)})`,
+        "backdrop-filter": BACKDROP_FILTER
+      }
     ]
   )
 ];
 var { fonts, lineHeights, letterSpacings } = typography.onDesktop;
-var ROOT_FONT_SIZE = 16;
-var round = (value) => Number(value.toFixed(4));
-var rem = (value) => `${round(Number(value) / ROOT_FONT_SIZE)}rem`;
 var weightNames = {
   regular: "normal",
   medium: "medium",
@@ -3789,11 +3808,11 @@ var fontRules = [
     { "font-family": themed("font-family-heading", 'Tasa, "TASA Orbiter Fallback Arial", Arial') }
   ]
 ];
-var typographyRules = [
+var typographyRules = (length2) => [
   // e.g. `text-100` → 0.875rem (14px)
-  ...rules("text", "font-size", fonts.size, rem),
+  ...rules("text", "font-size", fonts.size, length2.font),
   // e.g. `leading-100` → 1.25rem (20px)
-  ...rules("leading", "line-height", lineHeights, rem),
+  ...rules("leading", "line-height", lineHeights, length2.font),
   // `font-normal`…`font-bold`, `font-sans`, `font-mono`, `font-heading`.
   ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
@@ -3915,7 +3934,7 @@ var fractions = {
   "5/6": "83.333333%",
   full: "100%"
 };
-var fractionRules = [
+var fractionRules = (length2) => [
   ...rulesFor(
     { ...inset, w: "width", h: "height", "max-w": "max-width", "max-h": "max-height" },
     fractions
@@ -3927,7 +3946,8 @@ var fractionRules = [
   // Logical margins, e.g. `ms-1` → 4px
   ...rulesFor(
     { ms: "margin-inline-start", me: "margin-inline-end" },
-    { ...spacing, ...builtInSpacing }
+    { ...spacing, ...builtInSpacing },
+    length2.layout
   )
 ];
 var opacityRules = [
@@ -3983,17 +4003,17 @@ var scaleAxes = (axes, value) => ({
 var translateScale = { ...builtInSpacing, ...fractions, "2/4": "50%" };
 var rotateScale = [0, 1, 2, 3, 6, 12, 45, 90, 180];
 var scaleScale = [0, 50, 75, 90, 95, 100, 105, 110, 125, 150];
-var transformRules = [
+var transformRules = (length2) => [
   // e.g. `-translate-x-1/2` → -50% on x, `translate-y-[calc(var(--offset)*1px)]`
   ...Object.entries(translateScale).flatMap(
     ([key, value]) => ["x", "y"].flatMap((axis) => [
-      [`translate-${axis}-${key}`, translateAxis(axis, px(value))],
-      [`-translate-${axis}-${key}`, translateAxis(axis, negate(px(value)))]
+      [`translate-${axis}-${key}`, translateAxis(axis, length2.layout(value))],
+      [`-translate-${axis}-${key}`, translateAxis(axis, negate(length2.layout(value)))]
     ])
   ),
   [
     /^(-?)translate-([xy])-\[(.+)\]$/,
-    ([, negative, axis, value]) => translateAxis(axis, negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, axis, value]) => translateAxis(axis, negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   // e.g. `rotate-45`, `-rotate-90`, `rotate-[270deg]`
   ...rotateScale.flatMap((degrees) => [
@@ -4002,7 +4022,7 @@ var transformRules = [
   ]),
   [
     /^(-?)rotate-\[(.+)\]$/,
-    ([, negative, value]) => rotateBy(negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, value]) => rotateBy(negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   // e.g. `scale-95`, `-scale-x-100` (a mirror), `scale-y-[var(--progress)]`
   ...scaleScale.flatMap(
@@ -4016,7 +4036,7 @@ var transformRules = [
   ),
   [
     /^(-?)scale-(?:([xy])-)?\[(.+)\]$/,
-    ([, negative, axes = "", value]) => scaleAxes(axes, negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, axes = "", value]) => scaleAxes(axes, negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   ...keywords("transform-origin", {
     "origin-center": "center",
@@ -4239,7 +4259,7 @@ var surfaceRaisedBorderless = [
 var dividerFillRules = keywords("background-color", {
   "bg-divider-gray-subtle": color2("surface-border-gray-subtle")
 });
-var visualRules = [
+var visualRules = (length2) => [
   surfaceRaised,
   surfaceRaisedBorderless,
   ...dividerFillRules,
@@ -4250,7 +4270,7 @@ var visualRules = [
   ...Object.entries(backdropBlur).map(
     ([key, value]) => [
       `blur-${key}`,
-      { "--blade-blur": `blur(${px(value)})`, filter: FILTER }
+      { "--blade-blur": `blur(${length2.layout(value)})`, filter: FILTER }
     ]
   ),
   ["grayscale", { "--blade-grayscale": "grayscale(1)", filter: FILTER }],
@@ -4716,22 +4736,23 @@ function bladeUnoConfig(options = {}) {
     ...(options.presets ?? []).map((preset) => preset.theme ?? {}),
     defaultTheme
   ]);
+  const length2 = lengths(options.units);
   const bladeRules = [
     ...getColorRules(),
     ...colorKeywordRules,
-    ...spacingRules,
-    ...sizeRules,
-    ...fractionRules,
-    ...borderRules,
-    ...effectRules,
+    ...spacingRules(length2),
+    ...sizeRules(length2),
+    ...fractionRules(length2),
+    ...borderRules(length2),
+    ...effectRules(length2),
     ...opacityRules,
     ...zIndexRules,
-    ...transformRules,
+    ...transformRules(length2),
     ...transitionRules,
-    ...visualRules,
+    ...visualRules(length2),
     ...animationRules,
     ...interactionRules,
-    ...typographyRules,
+    ...typographyRules(length2),
     ...textRules,
     ...layoutRules,
     ...moreLayoutRules,
@@ -4779,18 +4800,18 @@ function bladeUnoConfig(options = {}) {
   });
 }
 var ruleGroups = {
-  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` */
-  spacing: spacingRules,
-  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values */
-  size: sizeRules,
-  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` */
-  fraction: fractionRules,
+  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` (px: the default units) */
+  spacing: spacingRules(lengths()),
+  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values (px) */
+  size: sizeRules(lengths()),
+  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` (px) */
+  fraction: fractionRules(lengths()),
   /** `opacity-*`: Tailwind's percentage scale */
   opacity: opacityRules,
   /** `font-sans`, `font-mono`, `font-heading` (each over its `--font-family-*`), weights */
   font: fontRules,
-  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*`: needs `transformVariables` among the preflights */
-  transform: transformRules,
+  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*` (px): needs `transformVariables` among the preflights */
+  transform: transformRules(lengths()),
   /** `transition*`, `duration-*`, `ease-*`, `delay-*` */
   transition: transitionRules
 };

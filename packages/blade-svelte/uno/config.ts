@@ -28,8 +28,8 @@ import type { ThemeConfig } from './tailwind';
  * filters set a variable and the one composed property) or are Tailwind's (`line-clamp-*`).
  * Colours and font families read blade-core's token variables, the static value their fallback
  * (`var(--interactive-background-primary-default, hsla(…))`), so an app themes Blade by setting them.
- * Lengths are px, except typography which is rem (and em for letter spacing), so it can be scaled
- * for mobile by scaling the root font size.
+ * Lengths are px and typography is rem (letter spacing em) unless the app says otherwise
+ * (`bladeUnoConfig({ units })`): rem lengths follow the root font size, as the type does.
  *
  * Given an app's Tailwind theme (`bladeUnoConfig({ theme })`), Tailwind v3's utilities come too
  * (uno/tailwind), so the app needs no Tailwind of its own.
@@ -37,8 +37,57 @@ import type { ThemeConfig } from './tailwind';
 
 type Scale = Record<string | number, string | number>;
 
+type Format = (value: string | number) => string;
+
 /** Adds `px` to numeric token values, keeps string values like `50%` as is */
-const px = (value: string | number): string => (typeof value === 'number' ? `${value}px` : value);
+const px: Format = (value) => (typeof value === 'number' ? `${value}px` : value);
+
+/** Avoids floating point artifacts, e.g. -1.3 / 100 → -0.013 instead of -0.013000000000000001 */
+const round = (value: number): number => Number(value.toFixed(4));
+
+export type LengthUnit = 'px' | 'rem';
+
+/** How Blade's numeric tokens are written (`BladeUnoOptions.units`). */
+export interface UnitOptions {
+  /**
+   * Font size and line height (`text-*`, `leading-*`). Letter spacing stays em.
+   * @default 'rem'
+   */
+  font?: LengthUnit;
+  /**
+   * Spacing, sizing, insets, gaps, translate, radius, blur. Border widths,
+   * shadows and outline offsets stay px, as Tailwind keeps them.
+   * @default 'px'
+   */
+  layout?: LengthUnit;
+  /**
+   * The px a rem stands for when a token is converted.
+   * @default 16
+   */
+  rootFontSize?: number;
+}
+
+/** The formatters `units` asks for: a token in px, or in rem of `rootFontSize`. */
+interface Lengths {
+  layout: Format;
+  font: Format;
+}
+
+const inUnit = (unit: LengthUnit, rootFontSize: number): Format =>
+  unit === 'rem'
+    ? (value) => (typeof value === 'number' ? `${round(value / rootFontSize)}rem` : value)
+    : px;
+
+const lengths = (units: UnitOptions = {}): Lengths => {
+  const rootFontSize = units.rootFontSize ?? 16;
+  return {
+    layout: inUnit(units.layout ?? 'px', rootFontSize),
+    font: inUnit(units.font ?? 'rem', rootFontSize),
+  };
+};
+
+/** `-` before what `format` writes: `-mt-2` → -8px, `-mt-2` in rem → -0.5rem */
+const negative = (format: Format): Format => (value) => `-${format(value)}`;
 
 /** `rules('p', 'padding', { 1: 2 })` → `[['p-1', { padding: '2px' }]]` */
 const rules = (
@@ -305,13 +354,17 @@ const negativeInset = {
 const negativePx = (value: string | number): string => `-${px(value)}`;
 
 /** Logical properties (`padding-inline`) keep axis classes like `px-*` to a single property */
-const spacingRules: Rule[] = [
-  ...rulesFor({ ...paddingAndMargin, ...gap, ...inset }, { ...spacing, ...builtInSpacing }),
+const spacingRules = (length: Lengths): Rule[] => [
+  ...rulesFor(
+    { ...paddingAndMargin, ...gap, ...inset },
+    { ...spacing, ...builtInSpacing },
+    length.layout,
+  ),
   // Negative margins and insets, e.g. `-mt-blade-1` → -2px, `-top-1` → -4px
   ...rulesFor(
     { ...negativeMargin, ...negativeInset },
     { ...spacing, ...builtInSpacing },
-    negativePx,
+    negative(length.layout),
   ),
   ...keywords('margin', { 'm-auto': 'auto' }),
   ...keywords('margin-inline', { 'mx-auto': 'auto' }),
@@ -352,8 +405,12 @@ const sizeProperties = {
   'max-h': 'max-height',
 };
 
-const sizeRules: Rule[] = [
-  ...rulesFor(sizeProperties, { ...spacing, ...builtInSpacing, full: '100%', auto: 'auto' }),
+const sizeRules = (length: Lengths): Rule[] => [
+  ...rulesFor(
+    sizeProperties,
+    { ...spacing, ...builtInSpacing, full: '100%', auto: 'auto' },
+    length.layout,
+  ),
   [
     /^(w|h|min-w|min-h|max-w|max-h)-\[(.+)\]$/,
     ([, prefix, value]) => ({
@@ -364,7 +421,7 @@ const sizeRules: Rule[] = [
 
 // ===== Border =====
 
-const borderRules: Rule[] = [
+const borderRules = (length: Lengths): Rule[] => [
   // e.g. `rounded-medium` → 12px, `rounded-tl-small` → 8px
   ...rulesFor(
     {
@@ -375,6 +432,7 @@ const borderRules: Rule[] = [
       'rounded-bl': 'border-bottom-left-radius',
     },
     border.radius,
+    length.layout,
   ),
   // e.g. `border-thin` → 1px, `border-t-thicker` → 2px
   ...rulesFor(
@@ -440,14 +498,17 @@ export const filterVariables = {
     ].join(' ')} }`,
 };
 
-const effectRules: Rule[] = [
+const effectRules = (length: Lengths): Rule[] => [
   // e.g. `shadow-midRaised`, light mode only
   ...rules('shadow', 'box-shadow', elevation.onLight),
   // e.g. `backdrop-blur-medium` → blur(8px), composed (see `FILTER`)
   ...Object.entries(backdropBlur).map(
     ([key, value]): Rule => [
       `backdrop-blur-${key}`,
-      { '--blade-backdrop-blur': `blur(${px(value)})`, 'backdrop-filter': BACKDROP_FILTER },
+      {
+        '--blade-backdrop-blur': `blur(${length.layout(value)})`,
+        'backdrop-filter': BACKDROP_FILTER,
+      },
     ],
   ),
 ];
@@ -456,14 +517,6 @@ const effectRules: Rule[] = [
 
 /** Desktop values, mobile is handled by scaling the root font size */
 const { fonts, lineHeights, letterSpacings } = typography.onDesktop;
-
-/** Root font size the rem values are based on */
-const ROOT_FONT_SIZE = 16;
-
-/** Avoids floating point artifacts, e.g. -1.3 / 100 → -0.013 instead of -0.013000000000000001 */
-const round = (value: number): number => Number(value.toFixed(4));
-
-const rem = (value: string | number): string => `${round(Number(value) / ROOT_FONT_SIZE)}rem`;
 
 /**
  * The faces read blade-core's `--font-family-text`, `--font-family-heading` and
@@ -518,11 +571,11 @@ const fontRules: Rule[] = [
   ],
 ];
 
-const typographyRules: Rule[] = [
+const typographyRules = (length: Lengths): Rule[] => [
   // e.g. `text-100` → 0.875rem (14px)
-  ...rules('text', 'font-size', fonts.size, rem),
+  ...rules('text', 'font-size', fonts.size, length.font),
   // e.g. `leading-100` → 1.25rem (20px)
-  ...rules('leading', 'line-height', lineHeights, rem),
+  ...rules('leading', 'line-height', lineHeights, length.font),
   // `font-normal`…`font-bold`, `font-sans`, `font-mono`, `font-heading`.
   ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
@@ -652,7 +705,7 @@ const fractions: Scale = {
   full: '100%',
 };
 
-const fractionRules: Rule[] = [
+const fractionRules = (length: Lengths): Rule[] => [
   ...rulesFor(
     { ...inset, w: 'width', h: 'height', 'max-w': 'max-width', 'max-h': 'max-height' },
     fractions,
@@ -665,6 +718,7 @@ const fractionRules: Rule[] = [
   ...rulesFor(
     { ms: 'margin-inline-start', me: 'margin-inline-end' },
     { ...spacing, ...builtInSpacing },
+    length.layout,
   ),
 ];
 
@@ -750,12 +804,12 @@ const translateScale: Scale = { ...builtInSpacing, ...fractions, '2/4': '50%' };
 const rotateScale = [0, 1, 2, 3, 6, 12, 45, 90, 180];
 const scaleScale = [0, 50, 75, 90, 95, 100, 105, 110, 125, 150];
 
-const transformRules: Rule[] = [
+const transformRules = (length: Lengths): Rule[] => [
   // e.g. `-translate-x-1/2` → -50% on x, `translate-y-[calc(var(--offset)*1px)]`
   ...Object.entries(translateScale).flatMap(([key, value]): Rule[] =>
     ['x', 'y'].flatMap((axis): Rule[] => [
-      [`translate-${axis}-${key}`, translateAxis(axis, px(value))],
-      [`-translate-${axis}-${key}`, translateAxis(axis, negate(px(value)))],
+      [`translate-${axis}-${key}`, translateAxis(axis, length.layout(value))],
+      [`-translate-${axis}-${key}`, translateAxis(axis, negate(length.layout(value)))],
     ]),
   ),
   [
@@ -1062,7 +1116,7 @@ const dividerFillRules: Rule[] = keywords('background-color', {
   'bg-divider-gray-subtle': color('surface-border-gray-subtle'),
 });
 
-const visualRules: Rule[] = [
+const visualRules = (length: Lengths): Rule[] => [
   surfaceRaised,
   surfaceRaisedBorderless,
   ...dividerFillRules,
@@ -1073,7 +1127,7 @@ const visualRules: Rule[] = [
   ...Object.entries(backdropBlur).map(
     ([key, value]): Rule => [
       `blur-${key}`,
-      { '--blade-blur': `blur(${px(value)})`, filter: FILTER },
+      { '--blade-blur': `blur(${length.layout(value)})`, filter: FILTER },
     ],
   ),
   ['grayscale', { '--blade-grayscale': 'grayscale(1)', filter: FILTER }],
@@ -1535,6 +1589,14 @@ export interface BladeUnoOptions {
    * @default true
    */
   preflight?: boolean;
+  /**
+   * The units Blade's numeric tokens are written in: `layout` for lengths
+   * (px by default), `font` for type (rem by default). Values from `theme`
+   * and bracketed values are written as given. A class both define (`p-4`)
+   * is Blade's, so `layout` decides it: `{ layout: 'rem' }` keeps a Tailwind
+   * app's spacing in rem, following the root font size as its type does.
+   */
+  units?: UnitOptions;
 }
 
 /** The desktop media query `d:` uses: `(min-width: 62.5rem)` by default. */
@@ -1744,22 +1806,23 @@ export default function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfi
           ...(options.presets ?? []).map((preset) => preset.theme ?? {}),
           defaultTheme,
         ]);
+  const length = lengths(options.units);
   const bladeRules: Rule[] = [
     ...getColorRules(),
     ...colorKeywordRules,
-    ...spacingRules,
-    ...sizeRules,
-    ...fractionRules,
-    ...borderRules,
-    ...effectRules,
+    ...spacingRules(length),
+    ...sizeRules(length),
+    ...fractionRules(length),
+    ...borderRules(length),
+    ...effectRules(length),
     ...opacityRules,
     ...zIndexRules,
-    ...transformRules,
+    ...transformRules(length),
     ...transitionRules,
-    ...visualRules,
+    ...visualRules(length),
     ...animationRules,
     ...interactionRules,
-    ...typographyRules,
+    ...typographyRules(length),
     ...textRules,
     ...layoutRules,
     ...moreLayoutRules,
@@ -1825,18 +1888,18 @@ export default function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfi
  * defined twice.
  */
 export const ruleGroups = {
-  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` */
-  spacing: spacingRules,
-  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values */
-  size: sizeRules,
-  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` */
-  fraction: fractionRules,
+  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` (px: the default units) */
+  spacing: spacingRules(lengths()),
+  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values (px) */
+  size: sizeRules(lengths()),
+  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` (px) */
+  fraction: fractionRules(lengths()),
   /** `opacity-*`: Tailwind's percentage scale */
   opacity: opacityRules,
   /** `font-sans`, `font-mono`, `font-heading` (each over its `--font-family-*`), weights */
   font: fontRules,
-  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*`: needs `transformVariables` among the preflights */
-  transform: transformRules,
+  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*` (px): needs `transformVariables` among the preflights */
+  transform: transformRules(lengths()),
   /** `transition*`, `duration-*`, `ease-*`, `delay-*` */
   transition: transitionRules,
 };

@@ -236,6 +236,74 @@ describe('without a theme', () => {
   });
 });
 
+describe('units', () => {
+  const classes = new Set([
+    'p-4',
+    '-mt-2',
+    'h-11',
+    'rounded-medium',
+    'translate-x-4',
+    'blur-medium',
+    'text-100',
+    'leading-100',
+    'border-thin',
+    'outline-offset-1',
+    'p-[13px]',
+  ]);
+
+  it('is px for lengths and rem for type by default', async () => {
+    const uno = await createGenerator(bladeUnoConfig());
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:16px;}');
+    expect(css).toContain('.h-11{height:44px;}');
+    expect(css).toContain('.text-100{font-size:0.875rem;}');
+  });
+
+  it('writes lengths in rem of the root font size with `layout: rem`', async () => {
+    const uno = await createGenerator(bladeUnoConfig({ units: { layout: 'rem' } }));
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:1rem;}');
+    expect(css).toContain('.-mt-2{margin-top:-0.5rem;}');
+    expect(css).toContain('.h-11{height:2.75rem;}');
+    expect(css).toContain('.rounded-medium{border-radius:0.75rem;}');
+    expect(css).toContain('--blade-translate-x:1rem');
+    expect(css).toContain('--blade-blur:blur(0.5rem)');
+    // Type keeps its own unit; hairlines, offsets and bracketed values stay as written.
+    expect(css).toContain('.text-100{font-size:0.875rem;}');
+    expect(css).toContain('.border-thin{border-width:1px;}');
+    expect(css).toContain('.outline-offset-1{outline-offset:1px;}');
+    expect(css).toContain('.p-\\[13px\\]{padding:13px;}');
+  });
+
+  it('writes type in px with `font: px`, lengths untouched', async () => {
+    const uno = await createGenerator(bladeUnoConfig({ units: { font: 'px' } }));
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.text-100{font-size:14px;}');
+    expect(css).toContain('.leading-100{line-height:20px;}');
+    expect(css).toContain('.p-4{padding:16px;}');
+  });
+
+  it('converts against `rootFontSize`', async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({ units: { layout: 'rem', font: 'rem', rootFontSize: 10 } }),
+    );
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:1.6rem;}');
+    expect(css).toContain('.text-100{font-size:1.4rem;}');
+  });
+
+  it("decides a class both define, at Tailwind's place: a Tailwind app keeps rem spacing", async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({ theme: fixture.theme, units: { layout: 'rem' } }),
+    );
+    const { css } = await uno.generate(new Set(['p-4', 'p-[13px]', 'mx-auto']), {
+      preflights: false,
+    });
+    expect(css).toContain('.p-4{padding:1rem;}');
+    expect(css.indexOf('.p-4{')).toBeLessThan(css.indexOf('.p-\\[13px\\]{'));
+  });
+});
+
 describe("Tailwind's place, Blade's definition", () => {
   it("writes a class both define at its place among Tailwind's, as Blade defines it", async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
