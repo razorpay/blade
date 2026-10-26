@@ -207,9 +207,19 @@ describe('important', () => {
     expect(css).toMatch(/\.hover\\:bg-primary-500\\!:hover\{[^}]*background-color:[^;]*!important/);
   });
 
-  it('is not a leading `!`', async () => {
+  it("is Tailwind v3's leading `!` on the utility, after variants too", async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
-    const { css } = await uno.generate(new Set(['!p-4', 'hover:!p-4']), { preflights: false });
+    const { css } = await uno.generate(new Set(['!p-4', 'hover:!p-4', '!-mt-2']), {
+      preflights: false,
+    });
+    expect(css).toMatch(/\.\\!p-4\{padding:16px !important;\}/);
+    expect(css).toMatch(/\.hover\\:\\!p-4:hover\{padding:16px !important;\}/);
+    expect(css).toMatch(/\.\\!-mt-2\{margin-top:-8px !important;\}/);
+  });
+
+  it('is not a leading `!` before a variant', async () => {
+    const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
+    const { css } = await uno.generate(new Set(['!hover:p-4']), { preflights: false });
     expect(css).toBe('');
   });
 });
