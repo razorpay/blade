@@ -253,6 +253,36 @@ describe("Tailwind's place, Blade's definition", () => {
     expect(css).toContain('.mx-auto{margin-inline:auto;}');
   });
 
+  it("orders a rule's classes as Tailwind does: negatives, digits, `[…]`, words", async () => {
+    const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
+    const classes = ['h-auto', 'h-[13px]', 'h-4', '-mt-[1px]', 'mt-1', 'mt-[2px]', 'mt-auto'];
+    const { css } = await uno.generate(new Set(classes), { preflights: false });
+    const at = (name: string): number => css.indexOf(`.${name.replace(/[[\]]/g, '\\$&')}{`);
+    // `h-4 h-[13px]` on one element is 13px, as under Tailwind; `h-[20px] h-full` is full.
+    expect(at('h-4')).toBeLessThan(at('h-[13px]'));
+    expect(at('h-[13px]')).toBeLessThan(at('h-auto'));
+    // Tailwind sorts the candidates with `<`: a negative sorts first.
+    expect(at('-mt-[1px]')).toBeLessThan(at('mt-1'));
+    expect(at('mt-1')).toBeLessThan(at('mt-[2px]'));
+    expect(at('mt-[2px]')).toBeLessThan(at('mt-auto'));
+    // Blade's body (`p-4` is Blade's) keeps Tailwind's place among them.
+    const padded = await uno.generate(new Set(['p-[13px]', 'p-4', 'd:p-[13px]', 'd:p-4']), {
+      preflights: false,
+    });
+    const padAt = (name: string): number =>
+      padded.css.indexOf(`.${name.replace(/[[\]:]/g, '\\$&')}{`);
+    expect(padAt('p-4')).toBeLessThan(padAt('p-[13px]'));
+    expect(padAt('d:p-4')).toBeLessThan(padAt('d:p-[13px]'));
+    // Under the identifier: a rule's identifiers keep their name order.
+    const corners = await uno.generate(new Set(['rounded-t', 'rounded-b-lg', 'rounded-tl-[3px]']), {
+      preflights: false,
+    });
+    const cornerAt = (name: string): number =>
+      corners.css.indexOf(`.${name.replace(/[[\]]/g, '\\$&')}{`);
+    expect(cornerAt('rounded-b-lg')).toBeLessThan(cornerAt('rounded-t'));
+    expect(cornerAt('rounded-t')).toBeLessThan(cornerAt('rounded-tl-[3px]'));
+  });
+
   it("composes Tailwind's filters with Blade's: `grayscale brightness-0` keep both", async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
     const { css } = await uno.generate(new Set(['grayscale', 'brightness-0']), {

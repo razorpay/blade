@@ -11,12 +11,14 @@ import {
 } from '@razorpay/blade-core/tokens';
 import { colorsToCSSVariables } from '@razorpay/blade-core/utils';
 import {
+  candidateOrderOf,
   customVariants,
   defaultTheme,
   defaultsCSS,
   preflightCSS,
   resolveTheme,
   tailwindRules,
+  withCandidateOrder,
 } from './tailwind';
 import type { ThemeConfig } from './tailwind';
 
@@ -1604,7 +1606,12 @@ function mergeOwnership(
           (match, context) => {
             const css = handle(match, context);
             if (css == null) return undefined;
-            return bladeCSS(match[0], context) ?? css;
+            const blade = bladeCSS(match[0], context);
+            if (blade === undefined) return css;
+            // Blade's body at Tailwind's place: the place includes the order
+            // among the rule's classes (engine.ts candidateOrder).
+            const sort = candidateOrderOf(css);
+            return sort === undefined ? blade : withCandidateOrder(blade, sort);
           },
           meta,
         ] as Rule;

@@ -1672,6 +1672,7 @@ function createEngine(context) {
       byIdentifier.get(identifier)?.push(entry);
       entries.set(identifier, entry);
     }
+    const identifierOrder = new Map([...entries.keys()].sort().map((id, index) => [id, index]));
     const alternatives = [...entries.keys()].sort((a, b) => b.length - a.length).map((identifier) => identifier.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")).join("|");
     return [
       [
@@ -1683,12 +1684,38 @@ function createEngine(context) {
           if (isArbitraryValue(modifier) && arbitraryOwner(identifier, modifier) !== entry) {
             return void 0;
           }
-          return generate(entry, modifier);
+          const css = generate(entry, modifier);
+          if (!css) return void 0;
+          const place = [identifierOrder.get(identifier), entries.size];
+          return withCandidateOrder(css, candidateOrder(Boolean(negative), place, rest));
         }
       ]
     ];
   }
   return { matchUtilities };
+}
+function candidateOrder(negative, identifier, value) {
+  const first = value?.[0] ?? "";
+  const bucket = first === "[" ? 1 : /[0-9]/.test(first) || first === "" ? 0 : 2;
+  const [index, count] = identifier;
+  return (negative ? 0 : count * 3) + index * 3 + bucket;
+}
+var isEntries = (value) => Array.isArray(value) && value.every((pair) => Array.isArray(pair));
+var asList = (css) => Array.isArray(css) && css.length > 0 && isEntries(css) ? [css] : Array.isArray(css) ? css : [css];
+var sortKey = symbols.sort;
+function withCandidateOrder(css, sort) {
+  return asList(css).map((item) => {
+    if (isEntries(item)) return [...item.filter(([key]) => key !== sortKey), [sortKey, sort]];
+    if (item && typeof item === "object") return { ...item, [sortKey]: sort };
+    return item;
+  });
+}
+function candidateOrderOf(css) {
+  for (const item of asList(css)) {
+    const sort = isEntries(item) ? item.find(([key]) => key === sortKey)?.[1] : item && typeof item === "object" ? item[sortKey] : void 0;
+    if (typeof sort === "number") return sort;
+  }
+  return void 0;
 }
 function addUtilities(utilities) {
   return Object.entries(utilities).map(
@@ -4596,7 +4623,10 @@ function mergeOwnership(tailwind, blade, bladeShortcuts, appFirst = /* @__PURE__
           (match, context) => {
             const css = handle(match, context);
             if (css == null) return void 0;
-            return bladeCSS(match[0], context) ?? css;
+            const blade2 = bladeCSS(match[0], context);
+            if (blade2 === void 0) return css;
+            const sort = candidateOrderOf(css);
+            return sort === void 0 ? blade2 : withCandidateOrder(blade2, sort);
           },
           meta
         ];
