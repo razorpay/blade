@@ -7,6 +7,7 @@ import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
+import { isReactNative } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -63,10 +64,17 @@ type IconButtonProps = {
        * **Only available on web currently**
        */
       isHighlighted?: boolean;
+      _hitSlop?: undefined;
     };
     native: {
       onClick: (event: GestureResponderEvent) => void;
       isHighlighted?: undefined;
+      /**
+       * Extends the tap area by this many pixels on each side without changing the layout.
+       *
+       * **Internal, React Native only**
+       */
+      _hitSlop?: number;
     };
   }>;
 
@@ -92,6 +100,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onTouchStart,
     isHighlighted,
     _tabIndex,
+    _hitSlop,
     ...rest
   },
   ref,
@@ -104,6 +113,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       size={size}
       icon={icon}
       tabIndex={_tabIndex}
+      {...(isReactNative() ? { hitSlop: _hitSlop } : {})}
       accessibilityLabel={accessibilityLabel}
       isDisabled={isDisabled}
       isHighlighted={isHighlighted}

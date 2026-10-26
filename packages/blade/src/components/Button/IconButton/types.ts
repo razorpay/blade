@@ -15,6 +15,8 @@ export type StyledIconButtonProps = {
   isDisabled?: IconButtonProps['isDisabled'];
   isHighlighted?: IconButtonProps['isHighlighted'];
   tabIndex?: IconButtonProps['_tabIndex'];
+  /** React Native only: extra tap area on each side, in pixels */
+  hitSlop?: number;
   onClick?: IconButtonProps['onClick'];
   onKeyDown?: Platform.Select<{
     web: React.KeyboardEventHandler;

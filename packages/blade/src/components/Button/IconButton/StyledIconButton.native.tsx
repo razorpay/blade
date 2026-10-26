@@ -41,6 +41,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
       emphasis,
       accessibilityLabel,
       accessibilityProps,
+      hitSlop,
     },
     ref,
   ) => {
@@ -63,6 +64,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
         ref={ref as any}
         emphasis={emphasis}
         onPress={castNativeType(onClick)}
+        hitSlop={hitSlop}
         disabled={isDisabled}
         onPressIn={() => setIsPressed(true)}
         onPressOut={() => setIsPressed(false)}

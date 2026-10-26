@@ -1631,6 +1631,7 @@ exports[`<ChatInput /> (native) should render with size small 1`] = `
                             collapsable={false}
                             emphasis="intense"
                             focusable={true}
+                            hitSlop={6}
                             onBlur={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}

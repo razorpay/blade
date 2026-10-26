@@ -43,9 +43,12 @@ type ChatInputProps = {
   /**
    * Placeholder text shown when the input is empty
    *
-   * In `size="small"` the placeholder stays on one line, so the empty input stays one row tall.
-   * Text that does not fit is cut off (Safari adds "..."; Chrome does not). Keep it to about
+   * In `size="small"` on web the placeholder stays on one line, so the empty input stays one row
+   * tall. Text that does not fit is cut off (Safari adds "..."; Chrome does not). Keep it to about
    * 25 characters there: a 320px-wide phone leaves about 176px for text.
+   *
+   * **Note (React Native):** the placeholder is not held to one line. A long placeholder wraps and
+   * makes the empty input taller, so keep it short there too.
    */
   placeholder?: string;
 
@@ -59,6 +62,8 @@ type ChatInputProps = {
    *   up to the same maximum height as `medium`.
    *
    * Text size and every other behaviour are the same in both sizes. `small` changes the layout only.
+   * Unlike `TextInput` and `TextArea`, whose `small` also shrinks the text, ChatInput keeps 16px
+   * text: below 16px, iOS Safari zooms the page when the text area takes focus.
    * @default 'medium'
    */
   size?: 'small' | 'medium';

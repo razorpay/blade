@@ -182,6 +182,14 @@ describe('<ChatInput /> (native)', () => {
     expect(queryByText('Upload file')).toBeNull();
   });
 
+  // The upload icon is 20px; hit slop on each side gives it the 32px tap area of the submit button.
+  it('should give the inline upload button a 32px tap area with hit slop', () => {
+    const { getByRole } = renderWithTheme(
+      <ChatInput size="small" accessibilityLabel="Chat input" />,
+    );
+    expect(getByRole('button', { name: 'Upload file' }).props.hitSlop).toBe(6);
+  });
+
   it.each([
     ['medium', 72],
     ['small', 52],

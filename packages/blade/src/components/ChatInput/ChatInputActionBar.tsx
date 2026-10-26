@@ -1,10 +1,12 @@
 import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
+import { minHeight as buttonMinHeight } from '~components/Button/BaseButton/buttonTokens';
 import { IconButton } from '~components/Button/IconButton';
 import type { IconButtonProps } from '~components/Button/IconButton';
 import { Link } from '~components/Link';
 import { ArrowUpIcon, StopCircleIcon, PlusIcon } from '~components/Icons';
+import { iconSizeMap } from '~components/Icons/useIconProps/iconSizeMap';
 import { isReactNative } from '~utils';
 
 type ChatInputActionBarProps = {
@@ -57,11 +59,16 @@ const ChatInputSubmitButton = ({
   );
 };
 
-// Web: a highlighted IconButton, so the hit area is a 32px square like the submit button and not
-// only the icon. React Native has no highlighted IconButton, so it keeps the larger plain icon.
+// The tap area is a 32px square, like the submit button, and not only the icon.
+// Web: a highlighted IconButton, whose container is that square.
+// React Native has no highlighted IconButton: it keeps the larger plain icon (20px) and extends
+// the tap area with hit slop, which leaves the layout unchanged.
 const uploadButtonSizeProps = (isReactNative()
-  ? { size: 'large' }
-  : { size: 'medium', isHighlighted: true }) as Pick<IconButtonProps, 'size' | 'isHighlighted'>;
+  ? { size: 'large', _hitSlop: (buttonMinHeight.small - iconSizeMap.large) / 2 }
+  : { size: 'medium', isHighlighted: true }) as Pick<
+  IconButtonProps,
+  'size' | 'isHighlighted' | '_hitSlop'
+>;
 
 /**
  * Icon-only upload button for the inline row of `size="small"`.

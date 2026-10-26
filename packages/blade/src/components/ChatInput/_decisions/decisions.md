@@ -431,13 +431,17 @@ const FullFeaturedChat = () => {
 
 ## Sizes
 
-`size` uses the `'small' | 'medium'` set of `Switch` and `TreeView`. Like `FileUpload`, `small` changes the layout, not only the scale: text size stays the same. `medium` is the default and is unchanged. There is no `large`, since `medium` is already the roomy layout.
+`size` uses the `'small' | 'medium'` set of `Switch` and `TreeView`. `medium` is the default and is unchanged. There is no `large`, since `medium` is already the roomy layout.
+
+`small` changes the layout, not the text: text stays at 16px in both sizes. This differs from the rest of the input family. `TextInput`, `TextArea` and `FileUpload` shrink their text and icons in `small`, and so does `TreeView` for its titles. So next to a `small` TextInput, a `small` ChatInput has larger text. The reason is the phone composer `small` is for: below 16px, iOS Safari zooms the page when the text area takes focus, and the user has to zoom back out after every message.
+
+Naming the variant for its layout (`variant="compact"`) was considered, so that `size` keeps one meaning across inputs. It is still open for the design system team to decide. `size` is kept until then; switching is a rename of one prop value.
 
 |               | `medium` (default)                                  | `small`                                                                                       |
 | ------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | Textarea      | 2 rows minimum                                      | 1 row minimum                                                                                 |
 | Growth        | Up to 200px, then scrolls                           | Same                                                                                          |
-| Upload        | "Upload file" link in the action bar below the text | `+` icon button inline on the left (32px hit area on web), same accessible name "Upload file" |
+| Upload        | "Upload file" link in the action bar below the text | `+` icon button inline on the left (32px hit area: a square container on web, hit slop on native), same accessible name "Upload file" |
 | Submit / stop | Right side of the action bar                        | Inline on the right                                                                           |
 | Idle height   | 136px                                               | 52px                                                                                          |
 
@@ -451,7 +455,7 @@ The insets that line the buttons up with the text are computed in `getChatInputI
 
 ### Placeholder length in `small`
 
-The text area in `small` is narrower, because the buttons share its row: on a 320px-wide phone it leaves about 176px for text against 264px in `medium`. A placeholder that wrapped would make the empty composer taller, so in `small` the placeholder stays on one line. Text that does not fit is cut off: Safari adds "...", Chrome does not, because Chrome ignores `text-overflow` on a textarea placeholder. Drawing our own placeholder to get "..." everywhere was ruled out: it would duplicate native placeholder behaviour and could overlap text during IME composition. The guideline is the real constraint: keep it to about 25 characters ("Ask a question..." is 17), which fits on a 320px-wide phone. Ghost suggestions only show on desktop widths and are already cut with "..." in both sizes.
+The text area in `small` is narrower, because the buttons share its row: on a 320px-wide phone it leaves about 176px for text against 264px in `medium`. A placeholder that wrapped would make the empty composer taller, so in `small` on web the placeholder stays on one line (a `textarea::placeholder` rule in `ChatInput.web.tsx`). React Native has no equivalent for a multiline `TextInput` placeholder, so there a long placeholder still wraps; the length guideline matters even more. Text that does not fit is cut off: Safari adds "...", Chrome does not, because Chrome ignores `text-overflow` on a textarea placeholder. Drawing our own placeholder to get "..." everywhere was ruled out: it would duplicate native placeholder behaviour and could overlap text during IME composition. The guideline is the real constraint: keep it to about 25 characters ("Ask a question..." is 17), which fits on a 320px-wide phone. Ghost suggestions only show on desktop widths and are already cut with "..." in both sizes.
 
 ### Why a textarea in both sizes
 
