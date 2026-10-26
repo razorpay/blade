@@ -1,5 +1,5 @@
 import { defineConfig, symbols } from 'unocss';
-import type { CSSObject, Rule, UserConfig, Variant, VariantFunction } from 'unocss';
+import type { CSSObject, Rule, UserConfig, Variant, VariantFunction, VariantHandler } from 'unocss';
 import {
   backdropBlur,
   bladeNeutralTheme,
@@ -1286,6 +1286,87 @@ const shortcuts: Record<string, string> = {
 
 // ===== Variants =====
 
+/**
+ * A variant's utilities after the plain ones, variant by variant, as
+ * Tailwind writes them: its sort puts the variants a class carries before
+ * the plugin index (src/lib/offsets.js `compare`), so every `hover:` rule
+ * follows every plain rule, every `active:` rule follows every `hover:`
+ * rule, and `hover:bg-a active:bg-b` is the pressed colour. Uno has no such
+ * step (rule index, then `meta.sort`, then the selector), so each variant
+ * puts its utilities in its own layer, the layers in Tailwind's order of
+ * registering the variants (src/lib/setupContextUtils.js `resolvePlugins`:
+ * the child variant, pseudo-elements, pseudo-classes, group and peer, data,
+ * an app's own, then reduced motion and the screens; bracketed variants are
+ * registered as met, after all of these). Stacked variants take the later
+ * layer, as Tailwind takes the later bit. `!` is not a variant to Tailwind
+ * and moves nothing.
+ */
+const VARIANT_KINDS = [
+  'child',
+  'first-letter',
+  'placeholder',
+  'before',
+  'after',
+  'first',
+  'last',
+  'only',
+  'odd',
+  'even',
+  'first-of-type',
+  'last-of-type',
+  'checked',
+  'empty',
+  'focus-within',
+  'hover',
+  'focus',
+  'focus-visible',
+  'active',
+  'enabled',
+  'disabled',
+  'group',
+  'peer',
+  'data',
+] as const;
+const LATER_VARIANT_KINDS = ['motion-reduce', 'max-d', 'd', 'arbitrary'] as const;
+
+/** The layer of a variant kind (an app's own: `custom:<name>`). */
+export const variantLayer = (kind: string): string => `variant-${kind}`;
+
+const LAYER_POSITION: Record<string, number> = Object.fromEntries(
+  [...VARIANT_KINDS, ...LATER_VARIANT_KINDS].map((kind, index) => [
+    variantLayer(kind),
+    index < VARIANT_KINDS.length ? index + 1 : index + 2,
+  ]),
+);
+
+/**
+ * Uno's `layers`: Blade's `base` first, the plain utilities (`default`, 0),
+ * then one layer per variant kind in Tailwind's order. An app's own variants
+ * sit where Tailwind registers a plugin's, after `data` and before
+ * `motion-reduce`, in the order given.
+ */
+export function variantLayers(customNames: string[] = []): Record<string, number> {
+  const custom = customNames.map((name, index): [string, number] => {
+    const layer = variantLayer(`custom:${name}`);
+    const position = VARIANT_KINDS.length + (index + 1) / (customNames.length + 1);
+    LAYER_POSITION[layer] = position;
+    return [layer, position];
+  });
+  return { ...LAYER_POSITION, ...Object.fromEntries(custom) };
+}
+const later = (a: string | undefined, b: string): string =>
+  a === undefined || (LAYER_POSITION[a] ?? Infinity) < (LAYER_POSITION[b] ?? Infinity) ? b : a;
+
+/** `handler` with the utility in `kind`'s layer, or a later variant's it stacks with. */
+export const layered = (kind: string, handler: VariantHandler): VariantHandler => ({
+  ...handler,
+  handle: (input, next) =>
+    next({
+      ...input,
+      layer: later((input as { layer?: string }).layer, variantLayer(kind)),
+    } as typeof input),
+});
+
 /** e.g. `hover:bg-…` → `.hover\:bg-…:hover` */
 const pseudoClasses: Record<string, string> = {
   hover: ':hover',
@@ -1332,11 +1413,11 @@ const pseudoClassVariant: Variant = (matcher) => {
   const [name, ...rest] = matcher.split(':');
   const pseudoClass = pseudoClasses[name];
   if (!pseudoClass || rest.length === 0) return undefined;
-  return {
+  return layered(name, {
     matcher: rest.join(':'),
     selector: (selector) => withState(selector, pseudoClass),
     ...(name === 'hover' ? { parent: HOVER_MEDIA } : {}),
-  };
+  });
 };
 
 /** `data-[state=closed]:` → `[data-state="closed"]` */
@@ -1356,10 +1437,10 @@ const stateSelector = (state: string): string | undefined => {
 const dataVariant: Variant = (matcher) => {
   const match = /^data-\[([^\]]+)\]:(.+)$/.exec(matcher);
   if (!match) return undefined;
-  return {
+  return layered('data', {
     matcher: match[2],
     selector: (selector) => withState(selector, dataAttribute(match[1])),
-  };
+  });
 };
 
 /**
@@ -1373,12 +1454,12 @@ const groupPeerVariant: Variant = (matcher) => {
   const pseudo = stateSelector(state);
   if (!pseudo) return undefined;
   const marker = `.${kind}${name ? `\\/${name}` : ''}${pseudo}`;
-  return {
+  return layered(kind, {
     matcher: rest,
     selector: (selector) =>
       kind === 'group' ? `${marker} ${selector}` : `${marker} ~ ${selector}`,
     ...(state === 'hover' ? { parent: HOVER_MEDIA } : {}),
-  };
+  });
 };
 
 /** The `[…]` a matcher starts with, brackets inside it balanced: `[&_[data-x]]:…` */
@@ -1403,7 +1484,10 @@ const leadingBracket = (matcher: string): { inner: string; rest: string } | unde
  */
 const selectorVariant: Variant = (matcher) => {
   if (matcher.startsWith('*:')) {
-    return { matcher: matcher.slice(2), selector: (selector) => `${selector} > *` };
+    return layered('child', {
+      matcher: matcher.slice(2),
+      selector: (selector) => `${selector} > *`,
+    });
   }
   const bracket = leadingBracket(matcher);
   if (!bracket?.rest) return undefined;
@@ -1411,9 +1495,13 @@ const selectorVariant: Variant = (matcher) => {
   // `\\` is a JS-escaped copy of the class (`'[&_.\\!x]:…'` in script), not
   // a selector: the CSS would be invalid, and a minifier fails on it.
   if (template.includes('\\\\')) return undefined;
-  if (template.startsWith('@')) return { matcher: bracket.rest, parent: template };
+  if (template.startsWith('@'))
+    return layered('arbitrary', { matcher: bracket.rest, parent: template });
   if (!template.includes('&')) return undefined;
-  return { matcher: bracket.rest, selector: (selector) => template.replace(/&/g, selector) };
+  return layered('arbitrary', {
+    matcher: bracket.rest,
+    selector: (selector) => template.replace(/&/g, selector),
+  });
 };
 
 /** What an app decides when it compiles Blade's CSS (`bladeUnoConfig`). */
@@ -1455,20 +1543,25 @@ export function desktopMedia(options: BladeUnoOptions = {}): string {
 }
 
 const desktopVariant = (media: string): VariantFunction => (matcher) =>
-  matcher.startsWith('d:') ? { matcher: matcher.slice(2), parent: `@media ${media}` } : undefined;
+  matcher.startsWith('d:')
+    ? layered('d', { matcher: matcher.slice(2), parent: `@media ${media}` })
+    : undefined;
 
 /** `max-d:` — below desktop, `d:`'s complement. */
 const belowDesktopVariant = (media: string): VariantFunction => (matcher) =>
   matcher.startsWith('max-d:')
-    ? { matcher: matcher.slice('max-d:'.length), parent: `@media not all and ${media}` }
+    ? layered('max-d', {
+        matcher: matcher.slice('max-d:'.length),
+        parent: `@media not all and ${media}`,
+      })
     : undefined;
 
 const motionReduceVariant: Variant = (matcher) => {
   if (!matcher.startsWith('motion-reduce:')) return undefined;
-  return {
+  return layered('motion-reduce', {
     matcher: matcher.slice('motion-reduce:'.length),
     parent: '@media (prefers-reduced-motion: reduce)',
-  };
+  });
 };
 
 /** Whether a class has a variant left: a `:` outside its brackets */
@@ -1692,7 +1785,7 @@ export default function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfi
     // selector list would move rules in the cascade (Tailwind never does),
     // and one selector a browser rejects would drop the whole list.
     mergeSelectors: false,
-    variants: [...customVariants(options.variants), ...bladeVariants(options)],
+    variants: [...customVariants(options.variants, layered), ...bladeVariants(options)],
     preflights: [
       ...(theme
         ? [
@@ -1705,7 +1798,7 @@ export default function bladeUnoConfig(options: BladeUnoOptions = {}): UserConfi
         : []),
       ...preflights,
     ],
-    layers: { base: -200 },
+    layers: { base: -200, ...variantLayers(Object.keys(options.variants ?? {})) },
     ...(theme
       ? {
           // Tailwind's `before:`/`after:` give the pseudo-element its

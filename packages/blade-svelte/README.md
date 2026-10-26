@@ -145,6 +145,12 @@ export default {
   `grayscale brightness-0` keeps both.
 - The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
   them apart (in a cascade layer), `@unocss !base;` emits the rest.
+- A variant's utilities come after the plain ones, variant by variant in
+  Tailwind's order (`hover:` before `focus:` before `active:` before
+  `disabled:`, the screens last), each in its own `variant-*` layer:
+  `hover:bg-a active:bg-b` is the pressed colour, as under Tailwind. Within a
+  variant, and among the plain utilities, classes sort as Tailwind sorts them
+  (`h-4`, then `h-[13px]`, then `h-auto`).
 
 #### Theming with CSS variables
 

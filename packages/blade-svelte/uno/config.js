@@ -3431,13 +3431,13 @@ ${body}
 }
 
 // uno/tailwind/variants.ts
-function customVariants(variants = {}) {
+function customVariants(variants = {}, layered2 = (_, handler) => handler) {
   return Object.entries(variants).map(
     ([name, template]) => {
       const prefix = `${name}:`;
       const handle = template.trim().startsWith("@") ? { parent: template.trim() } : { selector: (selector) => template.replace(/&/g, selector) };
       return {
-        match: (matcher) => matcher.startsWith(prefix) ? { matcher: matcher.slice(prefix.length), ...handle } : void 0,
+        match: (matcher) => matcher.startsWith(prefix) ? layered2(`custom:${name}`, { matcher: matcher.slice(prefix.length), ...handle }) : void 0,
         multiPass: true
       };
     }
@@ -4418,6 +4418,57 @@ var shortcuts = {
   ...Object.fromEntries([1, 2, 3, 4].map((lines) => [`clamp-${lines}`, `line-clamp-${lines}`])),
   "sr-only": "absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-none [clip:rect(0,0,0,0)]"
 };
+var VARIANT_KINDS = [
+  "child",
+  "first-letter",
+  "placeholder",
+  "before",
+  "after",
+  "first",
+  "last",
+  "only",
+  "odd",
+  "even",
+  "first-of-type",
+  "last-of-type",
+  "checked",
+  "empty",
+  "focus-within",
+  "hover",
+  "focus",
+  "focus-visible",
+  "active",
+  "enabled",
+  "disabled",
+  "group",
+  "peer",
+  "data"
+];
+var LATER_VARIANT_KINDS = ["motion-reduce", "max-d", "d", "arbitrary"];
+var variantLayer = (kind) => `variant-${kind}`;
+var LAYER_POSITION = Object.fromEntries(
+  [...VARIANT_KINDS, ...LATER_VARIANT_KINDS].map((kind, index) => [
+    variantLayer(kind),
+    index < VARIANT_KINDS.length ? index + 1 : index + 2
+  ])
+);
+function variantLayers(customNames = []) {
+  const custom = customNames.map((name, index) => {
+    const layer = variantLayer(`custom:${name}`);
+    const position2 = VARIANT_KINDS.length + (index + 1) / (customNames.length + 1);
+    LAYER_POSITION[layer] = position2;
+    return [layer, position2];
+  });
+  return { ...LAYER_POSITION, ...Object.fromEntries(custom) };
+}
+var later = (a, b) => a === void 0 || (LAYER_POSITION[a] ?? Infinity) < (LAYER_POSITION[b] ?? Infinity) ? b : a;
+var layered = (kind, handler) => ({
+  ...handler,
+  handle: (input, next) => next({
+    ...input,
+    layer: later(input.layer, variantLayer(kind))
+  })
+});
 var pseudoClasses = {
   hover: ":hover",
   focus: ":focus",
@@ -4452,11 +4503,11 @@ var pseudoClassVariant = (matcher) => {
   const [name, ...rest] = matcher.split(":");
   const pseudoClass = pseudoClasses[name];
   if (!pseudoClass || rest.length === 0) return void 0;
-  return {
+  return layered(name, {
     matcher: rest.join(":"),
     selector: (selector) => withState(selector, pseudoClass),
     ...name === "hover" ? { parent: HOVER_MEDIA } : {}
-  };
+  });
 };
 var dataAttribute = (condition) => {
   const [key, value] = condition.split("=");
@@ -4470,10 +4521,10 @@ var stateSelector = (state) => {
 var dataVariant = (matcher) => {
   const match = /^data-\[([^\]]+)\]:(.+)$/.exec(matcher);
   if (!match) return void 0;
-  return {
+  return layered("data", {
     matcher: match[2],
     selector: (selector) => withState(selector, dataAttribute(match[1]))
-  };
+  });
 };
 var groupPeerVariant = (matcher) => {
   const match = /^(group|peer)-(data-\[[^\]]+\]|[a-z-]+)(?:\/([\w-]+))?:(.+)$/.exec(matcher);
@@ -4482,11 +4533,11 @@ var groupPeerVariant = (matcher) => {
   const pseudo = stateSelector(state);
   if (!pseudo) return void 0;
   const marker = `.${kind}${name ? `\\/${name}` : ""}${pseudo}`;
-  return {
+  return layered(kind, {
     matcher: rest,
     selector: (selector) => kind === "group" ? `${marker} ${selector}` : `${marker} ~ ${selector}`,
     ...state === "hover" ? { parent: HOVER_MEDIA } : {}
-  };
+  });
 };
 var leadingBracket = (matcher) => {
   if (!matcher.startsWith("[")) return void 0;
@@ -4501,27 +4552,37 @@ var leadingBracket = (matcher) => {
 };
 var selectorVariant = (matcher) => {
   if (matcher.startsWith("*:")) {
-    return { matcher: matcher.slice(2), selector: (selector) => `${selector} > *` };
+    return layered("child", {
+      matcher: matcher.slice(2),
+      selector: (selector) => `${selector} > *`
+    });
   }
   const bracket = leadingBracket(matcher);
   if (!bracket?.rest) return void 0;
   const template = bracket.inner.replace(/_/g, " ");
   if (template.includes("\\\\")) return void 0;
-  if (template.startsWith("@")) return { matcher: bracket.rest, parent: template };
+  if (template.startsWith("@"))
+    return layered("arbitrary", { matcher: bracket.rest, parent: template });
   if (!template.includes("&")) return void 0;
-  return { matcher: bracket.rest, selector: (selector) => template.replace(/&/g, selector) };
+  return layered("arbitrary", {
+    matcher: bracket.rest,
+    selector: (selector) => template.replace(/&/g, selector)
+  });
 };
 function desktopMedia(options = {}) {
   return `(min-width: ${options.desktop ?? "62.5rem"})`;
 }
-var desktopVariant = (media) => (matcher) => matcher.startsWith("d:") ? { matcher: matcher.slice(2), parent: `@media ${media}` } : void 0;
-var belowDesktopVariant = (media) => (matcher) => matcher.startsWith("max-d:") ? { matcher: matcher.slice("max-d:".length), parent: `@media not all and ${media}` } : void 0;
+var desktopVariant = (media) => (matcher) => matcher.startsWith("d:") ? layered("d", { matcher: matcher.slice(2), parent: `@media ${media}` }) : void 0;
+var belowDesktopVariant = (media) => (matcher) => matcher.startsWith("max-d:") ? layered("max-d", {
+  matcher: matcher.slice("max-d:".length),
+  parent: `@media not all and ${media}`
+}) : void 0;
 var motionReduceVariant = (matcher) => {
   if (!matcher.startsWith("motion-reduce:")) return void 0;
-  return {
+  return layered("motion-reduce", {
     matcher: matcher.slice("motion-reduce:".length),
     parent: "@media (prefers-reduced-motion: reduce)"
-  };
+  });
 };
 var hasVariant = (name) => {
   let depth = 0;
@@ -4694,7 +4755,7 @@ function bladeUnoConfig(options = {}) {
     // selector list would move rules in the cascade (Tailwind never does),
     // and one selector a browser rejects would drop the whole list.
     mergeSelectors: false,
-    variants: [...customVariants(options.variants), ...bladeVariants(options)],
+    variants: [...customVariants(options.variants, layered), ...bladeVariants(options)],
     preflights: [
       ...theme ? [
         {
@@ -4704,7 +4765,7 @@ function bladeUnoConfig(options = {}) {
       ] : [],
       ...preflights
     ],
-    layers: { base: -200 },
+    layers: { base: -200, ...variantLayers(Object.keys(options.variants ?? {})) },
     ...theme ? {
       // Tailwind's `before:`/`after:` give the pseudo-element its
       // `content` (`var(--tw-content)`, set by `content-[…]`), unless the
@@ -4741,6 +4802,9 @@ export {
   bladeUnoConfig as default,
   desktopMedia,
   filterVariables,
+  layered,
   ruleGroups,
-  transformVariables
+  transformVariables,
+  variantLayer,
+  variantLayers
 };

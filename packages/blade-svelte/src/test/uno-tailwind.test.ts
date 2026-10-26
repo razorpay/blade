@@ -283,6 +283,83 @@ describe("Tailwind's place, Blade's definition", () => {
     expect(cornerAt('rounded-t')).toBeLessThan(cornerAt('rounded-tl-[3px]'));
   });
 
+  it("writes a variant's utilities after the plain ones, variant by variant, as Tailwind does", async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({
+        theme: fixture.theme,
+        variants: { 'quick-buy': '[data-quick-buy="true"] &' },
+      }),
+    );
+    const classes = [
+      'd:bg-primary-500',
+      '[&_svg]:bg-primary-500',
+      'motion-reduce:bg-primary-500',
+      'quick-buy:bg-primary-500',
+      'data-[state=open]:bg-primary-500',
+      'peer-checked:bg-primary-500',
+      'group-hover:bg-primary-500',
+      'disabled:bg-primary-500',
+      'active:bg-primary-500',
+      'focus:bg-primary-500',
+      'hover:bg-primary-500',
+      'first:bg-primary-500',
+      'after:bg-primary-500',
+      '*:bg-primary-500',
+      'bg-primary-500',
+      'enabled:hover:bg-primary-500',
+      'd:hover:bg-primary-500',
+      'hover:!bg-primary-500',
+      'p-4',
+    ];
+    const { css } = await uno.generate(new Set(classes), { preflights: false });
+    const at = (name: string): number => {
+      const index = css.indexOf(`.${name.replace(/[^\w-]/g, '\\$&')}`);
+      expect(index, name).toBeGreaterThanOrEqual(0);
+      return index;
+    };
+    // Every plain utility, whatever its rule, before every variant's.
+    expect(at('p-4')).toBeLessThan(at('*:bg-primary-500'));
+    // Tailwind's registration order: child, pseudo-elements, pseudo-classes
+    // (hover < focus < active < disabled), group, peer, data, the app's own,
+    // reduced motion, the screens, bracketed selectors.
+    const order = [
+      '*:bg-primary-500',
+      'after:bg-primary-500',
+      'first:bg-primary-500',
+      'hover:bg-primary-500',
+      'focus:bg-primary-500',
+      'active:bg-primary-500',
+      'disabled:bg-primary-500',
+      'group-hover:bg-primary-500',
+      'peer-checked:bg-primary-500',
+      'data-[state=open]:bg-primary-500',
+      'quick-buy:bg-primary-500',
+      'motion-reduce:bg-primary-500',
+      'd:bg-primary-500',
+      '[&_svg]:bg-primary-500',
+    ];
+    order.slice(1).forEach((name, index) => {
+      expect(at(order[index]), `${order[index]} before ${name}`).toBeLessThan(at(name));
+    });
+    // Stacked variants take the later one's place: `enabled:hover:` is among
+    // `enabled:`, `d:hover:` among `d:`. `!` moves nothing.
+    expect(at('enabled:hover:bg-primary-500')).toBeGreaterThan(at('focus:bg-primary-500'));
+    expect(at('enabled:hover:bg-primary-500')).toBeLessThan(at('disabled:bg-primary-500'));
+    expect(at('d:hover:bg-primary-500')).toBeGreaterThan(at('motion-reduce:bg-primary-500'));
+    expect(at('hover:!bg-primary-500')).toBeGreaterThan(at('first:bg-primary-500'));
+    expect(at('hover:!bg-primary-500')).toBeLessThan(at('focus:bg-primary-500'));
+    // Within a variant's layer, the plain order still holds.
+    const sized = await uno.generate(new Set(['hover:h-4', 'hover:h-[13px]', 'hover:h-auto']), {
+      preflights: false,
+    });
+    expect(sized.css.indexOf('.hover\\:h-4')).toBeLessThan(
+      sized.css.indexOf('.hover\\:h-\\[13px\\]'),
+    );
+    expect(sized.css.indexOf('.hover\\:h-\\[13px\\]')).toBeLessThan(
+      sized.css.indexOf('.hover\\:h-auto'),
+    );
+  });
+
   it("composes Tailwind's filters with Blade's: `grayscale brightness-0` keep both", async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
     const { css } = await uno.generate(new Set(['grayscale', 'brightness-0']), {
