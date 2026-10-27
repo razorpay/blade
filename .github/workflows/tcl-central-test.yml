@@ -1,0 +1,34 @@
+# yamllint disable rule:line-length
+---
+# Required by the org ruleset "Telemetry CI Lint required" ("Require workflows
+# to pass before merging"), so it runs on every PR of every repo the ruleset
+# targets, whether or not the repo calls the rCoRe suite. It makes sure the
+# ruleset's required status telemetry/ci-lint is written: "not enabled"
+# success within seconds for a repo that is not opted in
+# (.github/actions/resolve-exclusions/tasks/telemetry_ci_lint.json); for an
+# opted-in repo the suite's lint writes the verdict and this writes nothing
+# (telemetry-ci-lint/status/status.js central).
+#
+# Not a workflow_call workflow: the ruleset runs this file itself. The job's
+# name must never be telemetry/ci-lint: a check run of that name would
+# satisfy the required status on its own, lint or no lint.
+# pull_request_target: a fork PR's pull_request token cannot write statuses.
+# Safe here, since nothing checks out or runs the PR's code. The ruleset
+# ignores event filters and runs only on opened, synchronize and reopened.
+name: telemetry/ci-lint
+
+"on":
+  pull_request:
+
+permissions:
+  actions: read     # lists the repo's workflows, for the opted-in summary
+  contents: read
+  statuses: write
+
+jobs:
+  central:
+    name: Telemetry CI Lint central
+    runs-on: ubuntu-latest  # GitHub-hosted: the target repo may have no rcore runners
+    timeout-minutes: 5
+    steps:
+      - uses: razorpay/actions/telemetry-ci-lint/central@fm/tcl-central-required
