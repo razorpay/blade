@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TerminalIcon /> should render TerminalIcon 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    data-blade-component="icon"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        [
+          {},
+        ],
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M20.0001 18C20.5524 18 21.0001 18.4477 21.0001 19C21.0001 19.5522 20.5523 20 20.0001 20H12.0001C11.4479 20 11.0002 19.5522 11.0001 19C11.0001 18.4477 11.4478 18 12.0001 18H20.0001ZM3.29309 4.29297C3.68362 3.90244 4.31663 3.90244 4.70715 4.29297L10.7072 10.293C11.0976 10.6835 11.0977 11.3165 10.7072 11.707L4.70715 17.707C4.31665 18.0975 3.68362 18.0975 3.29309 17.707C2.90257 17.3165 2.90257 16.6835 3.29309 16.293L8.58606 11L3.29309 5.70703C2.90257 5.31651 2.90257 4.68349 3.29309 4.29297Z"
+        fill={
+          {
+            "payload": 4280889138,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

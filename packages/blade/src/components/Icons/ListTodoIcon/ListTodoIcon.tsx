@@ -1,0 +1,23 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _ListTodoIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M8.29297 14.293C8.68349 13.9024 9.31651 13.9024 9.70703 14.293C10.0976 14.6835 10.0976 15.3165 9.70703 15.707L5.70703 19.707C5.31651 20.0976 4.68349 20.0976 4.29297 19.707L2.29297 17.707C1.90244 17.3165 1.90244 16.6835 2.29297 16.293C2.68349 15.9024 3.31651 15.9024 3.70703 16.293L5 17.5859L8.29297 14.293ZM21 17C21.5523 17 22 17.4477 22 18C22 18.5523 21.5523 19 21 19H13C12.4477 19 12 18.5523 12 18C12 17.4477 12.4477 17 13 17H21ZM21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H13C12.4477 13 12 12.5523 12 12C12 11.4477 12.4477 11 13 11H21ZM8 4C9.10457 4 10 4.89543 10 6V10C10 11.1046 9.10457 12 8 12H4C2.89543 12 2 11.1046 2 10V6C2 4.89543 2.89543 4 4 4H8ZM4 10H8V6H4V10ZM21 5C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H13C12.4477 7 12 6.55228 12 6C12 5.44772 12.4477 5 13 5H21Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const ListTodoIcon = assignWithoutSideEffects(_ListTodoIcon, {
+  componentId: 'ListTodoIcon',
+});
+
+export default ListTodoIcon;
