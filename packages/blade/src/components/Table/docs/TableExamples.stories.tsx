@@ -28,8 +28,8 @@ import { IconButton } from '~components/Button/IconButton';
 import { Link } from '~components/Link';
 import { Tooltip } from '~components/Tooltip';
 import { Radio, RadioGroup } from '~components/Radio';
-import { CopyIcon, InfoIcon, TrashIcon } from '~components/Icons';
-import { AutoComplete } from '~components/Input/DropdownInputTriggers';
+import { CopyIcon, CreditCardIcon, InfoIcon, TrashIcon, UserIcon } from '~components/Icons';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import { DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useTheme } from '~components/BladeProvider';
@@ -324,6 +324,137 @@ export const TableWithStickyFirstColumn = (): React.ReactElement => {
           </>
         )}
       </Table>
+    </ExampleWrapper>
+  );
+};
+
+const stickyHeaderAndFirstColumnTableData = createTableData(30);
+
+export const TableWithStickyHeaderAndFirstColumn = (): React.ReactElement => {
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
+
+  return (
+    <ExampleWrapper
+      title="Table with Sticky Header & Sticky First Column"
+      description="Scroll vertically and horizontally - the first header cell (corner) stays above the sticky body cells. Toggle Refresh to check that the refresh overlay dims the whole table, the corner cell included."
+    >
+      <Box paddingBottom="spacing.4">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setIsRefreshing(!isRefreshing);
+          }}
+        >
+          {isRefreshing ? 'Stop Refreshing' : 'Start Refreshing'}
+        </Button>
+      </Box>
+      <Table
+        data={stickyHeaderAndFirstColumnTableData}
+        isHeaderSticky
+        isFirstColumnSticky
+        isRefreshing={isRefreshing}
+        height="400px"
+        gridTemplateColumns="280px 280px 280px 280px 280px 280px"
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{formatDate(tableItem.date)}</TableCell>
+                  <TableCell>
+                    <Badge size="medium" color={getStatusColor(tableItem.status)}>
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </ExampleWrapper>
+  );
+};
+
+const stickyFirstColumnMultiSelectTableData = createTableData(20);
+
+export const TableWithStickyFirstColumnAndMultiSelect = (): React.ReactElement => {
+  return (
+    <ExampleWrapper
+      title="Table with Sticky Header, Footer & Sticky First Column (Multi Select)"
+      description="The footer text in the checkbox column widens it beyond the checkbox width - scroll right and check that the first data column's header and footer cells stay visible above the checkbox column."
+    >
+      <Box maxWidth="620px">
+        <Table
+          data={stickyFirstColumnMultiSelectTableData}
+          selectionType="multiple"
+          isHeaderSticky
+          isFooterSticky
+          isFirstColumnSticky
+          height="400px"
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Account</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Date</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow key={index} item={tableItem}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{formatDate(tableItem.date)}</TableCell>
+                    <TableCell>
+                      <Badge size="medium" color={getStatusColor(tableItem.status)}>
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>
+      </Box>
     </ExampleWrapper>
   );
 };
@@ -829,6 +960,76 @@ export const TableWithEditableCells = (): React.ReactElement => {
                         <ActionListItem title="Credit Card" value="credit" />
                         <ActionListItem title="Debit Card" value="debit" />
                         <ActionListItem title="Cash" value="cash" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </ExampleWrapper>
+  );
+};
+
+const editableDropdownCellsTableData = createTableData(3);
+
+export const TableWithEditableDropdownCells = (): React.ReactElement => {
+  return (
+    <ExampleWrapper
+      title="Table with Editable Dropdown Cells"
+      description="The selected value, placeholder, leading icon, validation icon and chevron share one vertical centre in the resting, error and open states."
+    >
+      <Table data={editableDropdownCellsTableData} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Customer</TableHeaderCell>
+                <TableHeaderCell>Payment Method</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Box display="flex" alignItems="center" gap="spacing.3">
+                      <UserIcon color="surface.icon.gray.subtle" size="small" />
+                      {tableItem.name}
+                    </Box>
+                  </TableCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput
+                      icon={CreditCardIcon}
+                      placeholder="Select Method"
+                      defaultValue={index === 0 ? 'upi' : undefined}
+                      accessibilityLabel="Payment Method"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="UPI" value="upi" />
+                        <ActionListItem title="Credit Card" value="credit" />
+                        <ActionListItem title="Netbanking" value="netbanking" />
+                        <ActionListItem title="Wallet" value="wallet" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput
+                      icon={InfoIcon}
+                      placeholder="Select Status"
+                      defaultValue={index === 0 ? 'pending' : undefined}
+                      validationState="error"
+                      errorText="Invalid Status"
+                      accessibilityLabel="Status"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Pending" value="pending" />
+                        <ActionListItem title="Completed" value="completed" />
+                        <ActionListItem title="Failed" value="failed" />
                       </ActionList>
                     </DropdownOverlay>
                   </TableEditableDropdownCell>
