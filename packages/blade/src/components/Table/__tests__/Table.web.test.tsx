@@ -9,6 +9,7 @@ import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import { TableEditableCell, TableEditableDropdownCell } from '../TableEditableCell';
 import type { TableProps } from '../types';
+import { firstColumnStickyZIndex } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import * as useIsMobileModule from '~utils/useIsMobile';
 import { Amount } from '~components/Amount';
@@ -1934,11 +1935,15 @@ describe('<Table />', () => {
       return container;
     };
 
-    // Index of each cell of the row that is pinned with `position: sticky` and a `left` offset
+    // Index of each cell of the row that is pinned. jsdom drops the `left: var(...)` offset, so a
+    // pinned cell is told apart by the sticky column z-index it gets along with it.
     const getStickyCellIndexes = (row: Element): number[] =>
       Array.from(row.children)
         .map((cell, index) => ({ index, style: window.getComputedStyle(cell as HTMLElement) }))
-        .filter(({ style }) => style.position === 'sticky' && style.left !== '')
+        .filter(
+          ({ style }) =>
+            style.position === 'sticky' && Number(style.zIndex) >= firstColumnStickyZIndex,
+        )
         .map(({ index }) => index);
 
     const getRows = (
@@ -1948,45 +1953,121 @@ describe('<Table />', () => {
       return { header: rows[0], body: rows[1], footer: rows[rows.length - 1] };
     };
 
-    it('should pin the first N columns in the header, body and footer', () => {
-      const { header, body, footer } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
-
-      [header, body, footer].forEach((row) => {
-        expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
-      });
-    });
-
-    it('should pin the checkbox column without counting it towards stickyColumns', () => {
-      const { header, body, footer } = getRows(
-        renderStickyColumnsTable({ stickyColumns: 2, selectionType: 'multiple' }),
+    // The `left` offset of each pinned cell, read from the CSS variables the table sets
+    const getStickyCellOffsets = (container: HTMLElement): string[] => {
+      const tableWrapper = container.querySelector<HTMLElement>(
+        '[style*="--blade-table-sticky-cell-left-0"]',
       );
+      if (!tableWrapper) return [];
+      return Array.from(tableWrapper.style)
+        .filter((property) => property.startsWith('--blade-table-sticky-cell-left-'))
+        .map((property) => tableWrapper.style.getPropertyValue(property));
+    };
 
-      [header, body, footer].forEach((row) => {
-        expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+    // jsdom has no layout, so the table grid is made to report the column widths a browser would
+    // resolve
+    const mockGridColumnWidths = (gridTemplateColumns: string): jest.SpyInstance => {
+      const getComputedStyle = window.getComputedStyle.bind(window);
+      return jest.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) => {
+        const style = getComputedStyle(element, pseudoElement);
+        if (element.getAttribute('role') !== 'table' || element.tagName !== 'TABLE') return style;
+        return new Proxy(style, {
+          get: (target, property) => {
+            if (property === 'display') return 'grid';
+            if (property === 'gridTemplateColumns') return gridTemplateColumns;
+            const value = Reflect.get(target, property);
+            return typeof value === 'function' ? value.bind(target) : value;
+          },
+        });
+      });
+    };
+
+    afterEach(() => {
+      jest.restoreAllMocks();
+    });
+
+    it('should pin the first N columns in the header, body and footer', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
+
+      // the rows render after the first measurement, so the columns are pinned once measured
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        [header, body, footer].forEach((row) => {
+          expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+        });
       });
     });
 
-    it('should keep the sticky header and footer cells above the sticky body cells', () => {
-      const { header, body, footer } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
+    it('should pin the checkbox column without counting it towards stickyColumns', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 2, selectionType: 'multiple' });
+
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        [header, body, footer].forEach((row) => {
+          expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+        });
+      });
+    });
+
+    it('should offset each sticky column by the measured widths of the columns before it', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' });
+
+      await waitFor(() => {
+        expect(getStickyCellOffsets(container)).toEqual(['0px', '64px', '224px', '404px']);
+      });
+    });
+
+    it('should pin only the first column until the column widths are measured', () => {
+      // without a mocked grid, jsdom never resolves the column widths
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
+      expect(getStickyCellIndexes(getRows(container).body)).toEqual([0]);
+      expect(getStickyCellOffsets(container)).toEqual(['0px']);
+
+      const multiSelectContainer = renderStickyColumnsTable({
+        stickyColumns: 3,
+        selectionType: 'multiple',
+      });
+      expect(getStickyCellIndexes(getRows(multiSelectContainer).body)).toEqual([0, 1]);
+      expect(getStickyCellOffsets(multiSelectContainer)).toEqual(['0px', '44px']);
+    });
+
+    it('should pin every column when stickyColumns is more than the table has', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 8 });
+
+      await waitFor(() => {
+        expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1, 2, 3, 4]);
+      });
+    });
+
+    it('should keep the sticky header and footer cells above the sticky body cells', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
       const getZIndex = (row: Element, index: number): number =>
         Number(window.getComputedStyle(row.children[index] as HTMLElement).zIndex);
 
-      [0, 1, 2].forEach((index) => {
-        expect(getZIndex(header, index)).toBeGreaterThan(getZIndex(body, index));
-        expect(getZIndex(footer, index)).toBeGreaterThan(getZIndex(body, index));
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        expect(getStickyCellIndexes(body)).toEqual([0, 1, 2]);
+        [0, 1, 2].forEach((index) => {
+          expect(getZIndex(header, index)).toBeGreaterThan(getZIndex(body, index));
+          expect(getZIndex(footer, index)).toBeGreaterThan(getZIndex(body, index));
+        });
       });
     });
 
-    it('should give stickyColumns precedence over isFirstColumnSticky', () => {
-      const { body } = getRows(
-        renderStickyColumnsTable({ stickyColumns: 2, isFirstColumnSticky: true }),
-      );
-      expect(getStickyCellIndexes(body)).toEqual([0, 1]);
+    it('should give stickyColumns precedence over isFirstColumnSticky', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 2, isFirstColumnSticky: true });
+      await waitFor(() => {
+        expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1]);
+      });
 
-      const { body: firstColumnBody } = getRows(
-        renderStickyColumnsTable({ isFirstColumnSticky: true }),
-      );
-      expect(getStickyCellIndexes(firstColumnBody)).toEqual([0]);
+      const firstColumnContainer = renderStickyColumnsTable({ isFirstColumnSticky: true });
+      expect(getStickyCellIndexes(getRows(firstColumnContainer).body)).toEqual([0]);
     });
 
     it('should not pin any column by default', () => {
@@ -1994,53 +2075,15 @@ describe('<Table />', () => {
       expect(getStickyCellIndexes(body)).toEqual([]);
     });
 
-    it('should pin only the first column on mobile', () => {
-      const useIsMobileSpy = jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
+    it('should pin only the first column on mobile', async () => {
+      jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
 
-      const { body } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
-      expect(getStickyCellIndexes(body)).toEqual([0]);
-
-      const { body: multiSelectBody } = getRows(
-        renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' }),
-      );
-      expect(getStickyCellIndexes(multiSelectBody)).toEqual([0, 1]);
-
-      useIsMobileSpy.mockRestore();
-    });
-
-    it('should offset each sticky column by the measured widths of the columns before it', async () => {
-      // jsdom has no layout, so the table grid reports the column widths a browser would resolve
-      const getComputedStyle = window.getComputedStyle.bind(window);
-      const getComputedStyleSpy = jest
-        .spyOn(window, 'getComputedStyle')
-        .mockImplementation((element, pseudoElement) => {
-          const style = getComputedStyle(element, pseudoElement);
-          if (element.getAttribute('role') !== 'table' || element.tagName !== 'TABLE') return style;
-          return new Proxy(style, {
-            get: (target, property) => {
-              if (property === 'display') return 'grid';
-              if (property === 'gridTemplateColumns') return '64px 160px 180px 200px 200px 200px';
-              const value = Reflect.get(target, property);
-              return typeof value === 'function' ? value.bind(target) : value;
-            },
-          });
-        });
-
-      const { header, body, footer } = getRows(
-        renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' }),
-      );
-
-      // the rows render after the first measurement, so the offsets update once they are measured
+      const container = renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' });
       await waitFor(() => {
-        [header, body, footer].forEach((row) => {
-          const offsets = Array.from(row.children)
-            .slice(0, 4)
-            .map((cell) => window.getComputedStyle(cell as HTMLElement).left);
-          expect(offsets).toEqual(['0px', '64px', '224px', '404px']);
-        });
+        expect(getStickyCellOffsets(container)).toEqual(['0px', '64px']);
       });
-
-      getComputedStyleSpy.mockRestore();
+      expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1]);
     });
   });
 });

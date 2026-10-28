@@ -267,6 +267,15 @@ const _Table = <Item,>({
     columnCount,
     isLoading,
   });
+  // Cells are pinned once their offset is known, which can be fewer than asked for (see the hook)
+  const pinnedCellCount = stickyCellOffsets.length;
+  // The offsets change whenever a column resizes, so they go in CSS variables rather than in the
+  // table theme, which would otherwise inject a new copy of the sticky styles on every change
+  const getStickyCellOffsetVariable = (index: number): string =>
+    `--blade-table-sticky-cell-left-${index}`;
+  const stickyCellOffsetVariables = Object.fromEntries(
+    stickyCellOffsets.map((offset, index) => [getStickyCellOffsetVariable(index), `${offset}px`]),
+  ) as React.CSSProperties;
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -283,9 +292,9 @@ const _Table = <Item,>({
    * other cells. The corner cells (sticky both vertically and horizontally) must outrank the
    * sticky body cells, otherwise the body cells - which come later in the DOM - paint over them
    * when the table is scrolled. All sticky header/footer cells share the corner z-index on
-   * purpose: until the real column widths are measured, a sticky cell can sit on a fallback
-   * offset that overlaps the cell before it, and with equal z-index the later cell in the DOM
-   * wins that overlap.
+   * purpose: until the real column widths are measured, the first data column sits right after
+   * a checkbox column assumed to be 44px wide, which overlaps it when it is wider, and with equal
+   * z-index the later cell in the DOM wins that overlap.
    */
   // The divider is the right border of a transparent layer over the last sticky cell. The layer
   // covers the whole cell so that its shadow comes off a full edge rather than a 1px line.
@@ -322,13 +331,13 @@ const _Table = <Item,>({
    */
   const getStickyColumnDividerSelector = (rowCellCounts: number[]): string =>
     gridColumnCount === null
-      ? `&:nth-of-type(${stickyCellCount})::after`
+      ? `&:nth-of-type(${pinnedCellCount})::after`
       : rowCellCounts
-          .filter((rowCellCount) => rowCellCount >= stickyCellCount)
+          .filter((rowCellCount) => rowCellCount >= pinnedCellCount)
           .map(
             (rowCellCount) =>
-              `&:nth-of-type(${stickyCellCount}):nth-last-of-type(${
-                rowCellCount - stickyCellCount + 1
+              `&:nth-of-type(${pinnedCellCount}):nth-last-of-type(${
+                rowCellCount - pinnedCellCount + 1
               })::after`,
           )
           .join(', ');
@@ -354,11 +363,11 @@ const _Table = <Item,>({
     spannedZIndex: number;
     dividerSelector: string;
   }): string =>
-    Array.from({ length: stickyCellCount }, (_, index) => {
+    Array.from({ length: pinnedCellCount }, (_, index) => {
       const nth = index + 1;
       return `
   &:nth-of-type(${nth}) {
-    left: ${stickyCellOffsets[index] ?? 0}px !important;
+    left: var(${getStickyCellOffsetVariable(index)}) !important;
     position: sticky !important;
     z-index: ${zIndex} !important;
   }
@@ -368,7 +377,7 @@ const _Table = <Item,>({
   }`;
     })
       .concat(
-        stickyCellCount > 0 && dividerSelector
+        pinnedCellCount > 0 && dividerSelector
           ? `
   ${dividerSelector} {
     ${stickyColumnDividerCSS}
@@ -740,6 +749,7 @@ const _Table = <Item,>({
         ) : (
           <StyledTableWrapper
             ref={tableWrapperRef}
+            style={stickyCellOffsetVariables}
             flex={1}
             position="relative"
             {...getStyledProps(rest)}

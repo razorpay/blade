@@ -3,7 +3,11 @@ import { checkboxCellWidth } from './tokens';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type StickyColumnsLayout = {
-  /** `left` offset of each sticky cell: the sum of the widths of the columns before it */
+  /**
+   * `left` offset of each cell to pin: the sum of the widths of the columns before it. Only cells
+   * whose offset is known are listed, so it can be shorter than the number of sticky cells asked
+   * for: before the grid is measured, or when the table has fewer columns than that.
+   */
   stickyCellOffsets: number[];
   /** Number of columns in the table grid, `null` until the grid is measured */
   gridColumnCount: number | null;
@@ -15,9 +19,10 @@ type StickyColumnsState = StickyColumnsLayout & {
 };
 
 /**
- * Offsets used until the grid is measured, and wherever there is no layout to measure (jsdom).
- * The checkbox column is assumed to be its default width, which is exactly what a single sticky
- * column (with or without the checkbox column) needs.
+ * Offsets used until the grid is measured, and wherever there is no layout to measure (a hidden
+ * table, jsdom). Only the first column's offset is known without measuring (after the checkbox
+ * column, assumed to be its default width), so the columns after it aren't pinned until then
+ * rather than all being stacked on the same offset.
  */
 const getFallbackOffsets = ({
   stickyCellCount,
@@ -25,10 +30,7 @@ const getFallbackOffsets = ({
 }: {
   stickyCellCount: number;
   hasCheckboxColumn: boolean;
-}): number[] =>
-  Array.from({ length: stickyCellCount }, (_, index) =>
-    hasCheckboxColumn && index > 0 ? checkboxCellWidth : 0,
-  );
+}): number[] => (hasCheckboxColumn ? [0, checkboxCellWidth] : [0]).slice(0, stickyCellCount);
 
 /**
  * Reads the column widths from the resolved `grid-template-columns` of the grid the cells are
@@ -113,8 +115,9 @@ const useStickyColumnsLayout = ({
         .forEach((cell) => observe(cell));
 
       const columnWidths = getGridColumnWidths(grid);
-      if (!columnWidths || columnWidths.length < stickyCellCount) return;
+      if (!columnWidths) return;
 
+      // Asking for more sticky columns than the table has pins all of them
       const layout: StickyColumnsLayout = {
         stickyCellOffsets: columnWidths
           .slice(0, stickyCellCount)
@@ -158,8 +161,11 @@ const useStickyColumnsLayout = ({
     return () => tableWrapper.removeEventListener('scroll', handleScroll, { capture: true });
   }, [tableWrapperRef, stickyCellCount, isLoading]);
 
+  // A measurement taken for a different number of sticky cells is stale until the next one
   const layout =
-    measuredLayout && measuredLayout.stickyCellOffsets.length === stickyCellCount
+    typeof measuredLayout?.gridColumnCount === 'number' &&
+    measuredLayout.stickyCellOffsets.length ===
+      Math.min(stickyCellCount, measuredLayout.gridColumnCount)
       ? measuredLayout
       : { stickyCellOffsets: fallbackOffsets, gridColumnCount: null };
 
