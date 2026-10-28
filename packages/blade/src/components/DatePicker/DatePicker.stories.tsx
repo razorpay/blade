@@ -535,7 +535,7 @@ export const MonthPicker: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
       >
         Note: picker is only supported in single selection mode
       </Text>
-      <DatePickerComponent format="MMM" picker="month" selectionType="single" {...args} />
+      <DatePickerComponent format="MMM YYYY" picker="month" selectionType="single" {...args} />
     </Box>
   );
 };
