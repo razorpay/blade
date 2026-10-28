@@ -74,6 +74,7 @@ const _BottomSheet = ({
   initialFocusRef,
   zIndex = componentZIndices.bottomSheet,
   snapToContentHeight = false,
+  showDragHandle = true,
 }: BottomSheetProps): React.ReactElement => {
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
@@ -316,13 +317,15 @@ const _BottomSheet = ({
           setHeaderHeight(nativeEvent.layout.height);
         }}
       >
-        <BaseBox zIndex={bottomSheetZIndex}>
-          <BottomSheetGrabHandle />
-        </BaseBox>
+        {showDragHandle ? (
+          <BaseBox zIndex={bottomSheetZIndex}>
+            <BottomSheetGrabHandle />
+          </BaseBox>
+        ) : null}
         {header}
       </BaseBox>
     );
-  }, [isHeaderEmpty, bottomSheetZIndex, header]);
+  }, [isHeaderEmpty, bottomSheetZIndex, header, showDragHandle]);
 
   const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue = React.useMemo<BottomSheetContextProps>(
