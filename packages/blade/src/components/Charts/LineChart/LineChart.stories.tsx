@@ -8,9 +8,8 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-  ChartReferenceBand,
 } from '~components/Charts/CommonChartComponents';
-import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
+import { ChartLine, ChartLineWrapper, ChartReferenceBand } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
