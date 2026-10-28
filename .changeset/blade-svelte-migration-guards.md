@@ -5,7 +5,6 @@
 
 fix(blade-svelte): guard the paths a 0.x app trips on
 
-- **TextInput**: a `type` outside the union (Blade 0.x's `telephone`, `search`) renders as text with one console warning naming the accepted values, instead of failing to mount.
 - **PhoneNumberInput**: `country` defaults to `'IN'`, as Blade React's, instead of the first country by name (Afghanistan); `countryLabel` is optional, `'Country'` by default, instead of rendering `undefined` into the button's name.
 - **OTPInput**: a composing soft keyboard's keydown (`Unidentified`, keyCode 229, `Process`, `isComposing`) is left to `input`, so Android keyboards fill the cells.
 - **BladeProvider**: `isolatePage={false}` keeps the page live behind an open modal, sheet or drawer, for an app that stages its own content beside one.

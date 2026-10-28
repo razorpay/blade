@@ -141,21 +141,6 @@ describe('TextInput standalone', () => {
     expect(control.getAttribute('autocapitalize')).toBeNull();
   });
 
-  it("renders a type outside the union as text and says so once: Blade 0.x's telephone", async () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-    const { getByTestId, rerender } = render(TextInputHarness, {
-      props: { type: 'telephone' as 'tel', accessibilityLabel: 'Phone' },
-    });
-    const control = getByTestId('solo');
-    expect(control.getAttribute('type')).toBe('text');
-    expect(warn).toHaveBeenCalledTimes(1);
-    expect(warn.mock.calls[0][0]).toContain('type="telephone"');
-    expect(warn.mock.calls[0][0]).toContain('"tel"');
-    await rerender({ type: 'telephone' as 'tel', autoComplete: 'off' });
-    expect(warn).toHaveBeenCalledTimes(1);
-    warn.mockRestore();
-  });
-
   it('renders number as text with the decimal keypad, as Blade', () => {
     const { getByTestId } = render(TextInputHarness, {
       props: { type: 'number', accessibilityLabel: 'Amount' },
