@@ -295,6 +295,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   }
                 >
                   <View
+                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
@@ -305,6 +306,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     style={
                       [
                         {
+                          "alignItems": "center",
                           "display": "flex",
                           "flexBasis": 0,
                           "flexDirection": "row",

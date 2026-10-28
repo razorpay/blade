@@ -363,6 +363,7 @@ exports[`<SearchInput /> should render 1`] = `
                 </View>
               </View>
               <View
+                alignItems="center"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
@@ -373,6 +374,7 @@ exports[`<SearchInput /> should render 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "display": "flex",
                       "flexBasis": 0,
                       "flexDirection": "row",
