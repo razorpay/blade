@@ -323,82 +323,101 @@ const _Table = <Item,>({
     )} ${getIn(theme.motion, tableStickyColumn.shadowMotionEasing)};
   `;
   /*
-   * The divider goes on the last sticky cell of a row, but only in rows that have a cell for every
-   * column. In a row with a cell spanning columns, or below a cell spanning rows, the nth sticky
-   * cell isn't in the nth column, so those rows get no divider rather than one in the wrong place
-   * (a sticky cell spanning rows still draws it down its full height). Until the grid is measured
-   * (and in jsdom) the column count isn't known, so every row gets it.
+   * Cells are pinned by their position in the row (nth-of-type), which only matches their column
+   * in rows that have a cell for every column. A cell spanning columns leaves placeholder cells
+   * behind so its row stays complete, but a cell spanning rows doesn't, so in the rows below it
+   * the nth cell is further right than the nth column. So the first column (and the checkbox
+   * column) are pinned in every row as before, while the further sticky columns and the divider
+   * only go in rows with a cell for every column, rather than pinning cells at the wrong offset
+   * (a sticky cell spanning rows still draws the divider down its full height). Until the grid is
+   * measured (and in jsdom) the column count isn't known, but then only the first column is
+   * pinned anyway.
    */
-  const getStickyColumnDividerSelector = (rowCellCounts: number[]): string =>
+  const alwaysPinnedCellCount = selectionType === 'multiple' ? 2 : 1;
+  const getCellInFullRowSelector = ({
+    nth,
+    rowCellCounts,
+    pseudoSelector = '',
+  }: {
+    nth: number;
+    rowCellCounts: number[];
+    pseudoSelector?: string;
+  }): string =>
     gridColumnCount === null
-      ? `&:nth-of-type(${pinnedCellCount})::after`
+      ? `&:nth-of-type(${nth})${pseudoSelector}`
       : rowCellCounts
-          .filter((rowCellCount) => rowCellCount >= pinnedCellCount)
+          .filter((rowCellCount) => rowCellCount >= nth)
           .map(
             (rowCellCount) =>
-              `&:nth-of-type(${pinnedCellCount}):nth-last-of-type(${
-                rowCellCount - pinnedCellCount + 1
-              })::after`,
+              `&:nth-of-type(${nth}):nth-last-of-type(${rowCellCount - nth + 1})${pseudoSelector}`,
           )
           .join(', ');
   // The header renders a cell for the hover actions column, body rows only when they have hover
   // actions, and footer rows never do
   const hoverActionsCellCount = hasHoverActions ? 1 : 0;
   const gridColumnCountWithoutHoverActions = (gridColumnCount ?? 0) - hoverActionsCellCount;
-  const stickyHeaderCellDividerSelector = getStickyColumnDividerSelector([gridColumnCount ?? 0]);
-  const stickyBodyCellDividerSelector = getStickyColumnDividerSelector(
-    hasHoverActions
-      ? [gridColumnCount ?? 0, gridColumnCountWithoutHoverActions]
-      : [gridColumnCount ?? 0],
-  );
-  const stickyFooterCellDividerSelector = getStickyColumnDividerSelector([
-    gridColumnCountWithoutHoverActions,
-  ]);
   const getStickyCellCSS = ({
     zIndex,
     spannedZIndex,
-    dividerSelector,
+    rowCellCounts,
   }: {
     zIndex: number;
     spannedZIndex: number;
-    dividerSelector: string;
-  }): string =>
-    Array.from({ length: pinnedCellCount }, (_, index) => {
+    rowCellCounts: number[];
+  }): string => {
+    const stickyCellCSS = Array.from({ length: pinnedCellCount }, (_, index) => {
       const nth = index + 1;
+      const cellSelector =
+        nth <= alwaysPinnedCellCount
+          ? `&:nth-of-type(${nth})`
+          : getCellInFullRowSelector({ nth, rowCellCounts });
+      if (!cellSelector) return '';
+      // Higher z-index for sticky cells that also span rows to prevent stacking issues
+      const spannedCellSelector = cellSelector
+        .split(', ')
+        .map((selector) => `${selector}.${classes.HAS_ROW_SPANNING}`)
+        .join(', ');
       return `
-  &:nth-of-type(${nth}) {
+  ${cellSelector} {
     left: var(${getStickyCellOffsetVariable(index)}) !important;
     position: sticky !important;
     z-index: ${zIndex} !important;
   }
-  /* Higher z-index for sticky cells that also span rows to prevent stacking issues */
-  &:nth-of-type(${nth}).${classes.HAS_ROW_SPANNING} {
+  ${spannedCellSelector} {
     z-index: ${spannedZIndex} !important;
   }`;
-    })
-      .concat(
-        pinnedCellCount > 0 && dividerSelector
-          ? `
+    }).join('');
+    const dividerSelector =
+      pinnedCellCount > 0
+        ? getCellInFullRowSelector({
+            nth: pinnedCellCount,
+            rowCellCounts,
+            pseudoSelector: '::after',
+          })
+        : '';
+    return dividerSelector
+      ? `${stickyCellCSS}
   ${dividerSelector} {
     ${stickyColumnDividerCSS}
   }`
-          : [],
-      )
-      .join('');
+      : stickyCellCSS;
+  };
   const stickyHeaderCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyCornerZIndex,
     spannedZIndex: firstColumnStickyCornerZIndex,
-    dividerSelector: stickyHeaderCellDividerSelector,
+    rowCellCounts: [gridColumnCount ?? 0],
   });
   const stickyBodyCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyZIndex,
     spannedZIndex: firstColumnStickySpannedZIndex,
-    dividerSelector: stickyBodyCellDividerSelector,
+    rowCellCounts: hasHoverActions
+      ? [gridColumnCount ?? 0, gridColumnCountWithoutHoverActions]
+      : [gridColumnCount ?? 0],
   });
   const stickyFooterCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyCornerZIndex,
     spannedZIndex: firstColumnStickyCornerZIndex,
-    dividerSelector: stickyFooterCellDividerSelector,
+    rowCellCounts: [gridColumnCountWithoutHoverActions],
   });
 
   const tableTheme = useTableTheme({

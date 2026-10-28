@@ -2075,6 +2075,56 @@ describe('<Table />', () => {
       expect(getStickyCellIndexes(body)).toEqual([]);
     });
 
+    it('should pin the further sticky columns only in rows with a cell for every column', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 3) }} height="300px" stickyColumns={3}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    {/* the first cell spans the first two body rows, so the second row has no
+                    cell for the first column */}
+                    {index === 0 ? (
+                      <TableCell gridRowStart={2} gridRowEnd={4}>
+                        {tableItem.name}
+                      </TableCell>
+                    ) : null}
+                    {index === 2 ? <TableCell>{tableItem.name}</TableCell> : null}
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const [, firstRow, rowBelowSpanningCell, fullRow] = Array.from(
+          container.querySelectorAll('tr'),
+        );
+        expect(getStickyCellIndexes(firstRow)).toEqual([0, 1, 2]);
+        expect(getStickyCellIndexes(fullRow)).toEqual([0, 1, 2]);
+        // the cells of this row are one column further right than their position in the row, so
+        // only the first one stays pinned as before
+        expect(getStickyCellIndexes(rowBelowSpanningCell)).toEqual([0]);
+      });
+    });
+
     it('should pin only the first column on mobile', async () => {
       jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
       mockGridColumnWidths('64px 160px 180px 200px 200px 200px');

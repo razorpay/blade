@@ -169,7 +169,8 @@ type TableProps<Item> = {
    * The isFirstColumnSticky prop determines whether the first column is sticky or not.
    * The default value is `false`.
    *
-   * @deprecated Use `stickyColumns={1}` instead.
+   * @deprecated Use `stickyColumns={1}` instead. Both now draw the divider and scroll shadow
+   * after the first column.
    **/
   isFirstColumnSticky?: boolean;
   /**
