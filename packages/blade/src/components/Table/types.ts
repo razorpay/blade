@@ -168,8 +168,24 @@ type TableProps<Item> = {
   /**
    * The isFirstColumnSticky prop determines whether the first column is sticky or not.
    * The default value is `false`.
+   *
+   * @deprecated Use `stickyColumns={1}` instead.
    **/
   isFirstColumnSticky?: boolean;
+  /**
+   * The number of columns, counted from the left, that stay in view while the table scrolls
+   * horizontally. A divider is drawn after the last sticky column, with a shadow once scrolled.
+   *
+   * When `selectionType="multiple"`, the checkbox column is also sticky and does not count
+   * towards this number.
+   *
+   * On mobile, only the first column is kept sticky so the pinned columns don't fill the screen.
+   *
+   * Takes precedence over `isFirstColumnSticky`.
+   *
+   * @default 0
+   **/
+  stickyColumns?: number;
   /**
    * The rowDensity prop determines the density of the table.
    * The rowDensity prop can be 'compact', 'normal', or'comfortable'.

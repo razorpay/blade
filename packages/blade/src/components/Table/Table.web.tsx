@@ -15,14 +15,15 @@ import usePresence from 'use-presence';
 import type { TableContextType } from './TableContext';
 import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
+import { useStickyColumnsLayout } from './useStickyColumnsLayout.web';
 import {
-  checkboxCellWidth,
   firstColumnStickyCornerZIndex,
   firstColumnStickySpannedZIndex,
   firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
+  tableStickyColumn,
   classes,
 } from './tokens';
 import type {
@@ -103,6 +104,7 @@ const StyledReactTable = styled(ReactTable)<{
     isVirtualized?: boolean;
     isSelectable?: boolean;
     showStripedRows?: boolean;
+    hasStickyColumns?: boolean;
   };
 }>(({ $styledProps }) => {
   const { theme } = useTheme();
@@ -129,6 +131,17 @@ const StyledReactTable = styled(ReactTable)<{
           isSelectable: $isSelectable,
           showStripedRows: $showStripedRows,
         })
+      : null),
+    // A sticky cell can't move past the edge of the box that contains it. In a virtualized table
+    // the header wrapper and the body rows are only as wide as the visible area, so when the
+    // columns overflow, sticky cells would get pushed out of view on scrolling. Letting the
+    // virtual list's inner element and the rows grow to the width of their columns fixes that.
+    ...($styledProps?.isVirtualized && $styledProps?.hasStickyColumns
+      ? {
+          '& > div > div > div, tbody div tr': {
+            minWidth: 'min-content',
+          },
+        }
       : null),
   };
 });
@@ -191,6 +204,7 @@ const _Table = <Item,>({
   isHeaderSticky,
   isFooterSticky,
   isFirstColumnSticky,
+  stickyColumns,
   rowDensity = 'normal',
   onSortChange,
   sortFunctions,
@@ -224,11 +238,35 @@ const _Table = <Item,>({
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
   const tableRootComponent = children([]);
   const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
-  // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isVirtualized || isHeaderSticky || isFirstColumnSticky;
-
   const isMobile = useIsMobile();
   const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
+
+  // stickyColumns takes precedence, isFirstColumnSticky is the older way of pinning one column.
+  // On mobile only the first column stays pinned so the pinned columns don't fill the screen.
+  const requestedStickyColumnCount = Math.max(
+    0,
+    Math.floor(stickyColumns ?? (isFirstColumnSticky ? 1 : 0)),
+  );
+  const stickyColumnCount = isMobile
+    ? Math.min(requestedStickyColumnCount, 1)
+    : requestedStickyColumnCount;
+  // The multi-select checkbox column is pinned along with the sticky columns but isn't counted
+  const stickyCellCount =
+    stickyColumnCount > 0 && selectionType === 'multiple'
+      ? stickyColumnCount + 1
+      : stickyColumnCount;
+  // Need to make header is sticky if a column is sticky otherwise the sticky header cells will not be sticky
+  const shouldHeaderBeSticky = isVirtualized || isHeaderSticky || stickyColumnCount > 0;
+
+  const columnCount = getTableHeaderCellCount(children);
+  const tableWrapperRef = React.useRef<HTMLDivElement>(null);
+  const { stickyCellOffsets, gridColumnCount, isScrolledHorizontally } = useStickyColumnsLayout({
+    tableWrapperRef,
+    stickyCellCount,
+    hasCheckboxColumn: selectionType === 'multiple',
+    columnCount,
+    isLoading,
+  });
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -240,79 +278,119 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children);
   /*
-   * Sticky stacking order: corner/first sticky header/footer cells > sticky first column body
-   * cells > other cells. The corner cell (sticky both vertically and horizontally) must outrank
-   * the sticky body cells, otherwise the body cells - which come later in the DOM - paint over it
-   * when the table is scrolled. The nth-of-type(2) header/footer cells (the first data column
-   * next to the multi-select checkbox column) share the corner's z-index on purpose: they stick
-   * at the fixed 44px offset while the checkbox column can be wider than that, so with equal
-   * z-index the later cell in the DOM wins that overlap, exactly like it does on master.
+   * Sticky stacking order: sticky header/footer cells (the corners) > sticky column body cells >
+   * other cells. The corner cells (sticky both vertically and horizontally) must outrank the
+   * sticky body cells, otherwise the body cells - which come later in the DOM - paint over them
+   * when the table is scrolled. All sticky header/footer cells share the corner z-index on
+   * purpose: until the real column widths are measured, a sticky cell can sit on a fallback
+   * offset that overlaps the cell before it, and with equal z-index the later cell in the DOM
+   * wins that overlap.
    */
-  const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
+  // The divider is the right border of a transparent layer over the last sticky cell. The layer
+  // covers the whole cell so that its shadow comes off a full edge rather than a 1px line.
+  // Once scrolled, the shadow shows how far the sticky columns reach. The layer reaches above the
+  // cell so the shadow's downward offset still covers the top of the row, and the clip trims it
+  // back to the row, keeping only the right side, so the shadows of stacked rows line up into one
+  // even edge.
+  const stickyColumnShadowOverhang = makeSpace(theme.spacing[7]);
+  const stickyColumnDividerCSS = `
+    content: '';
+    position: absolute;
+    top: -${stickyColumnShadowOverhang};
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-right: ${makeBorderSize(
+      getIn(theme.border.width, tableStickyColumn.dividerWidth),
+    )} solid ${getIn(theme.colors, tableStickyColumn.dividerColor)};
+    pointer-events: none;
+    box-shadow: ${
+      isScrolledHorizontally ? theme.elevation[tableStickyColumn.shadowElevation] : 'none'
+    };
+    clip-path: inset(${stickyColumnShadowOverhang} -${stickyColumnShadowOverhang} 0 0);
+    transition: box-shadow ${makeMotionTime(
+      getIn(theme.motion, tableStickyColumn.shadowMotionDuration),
+    )} ${getIn(theme.motion, tableStickyColumn.shadowMotionEasing)};
+  `;
+  /*
+   * The divider goes on the last sticky cell of a row, but only in rows that have a cell for every
+   * column. In a row with a cell spanning columns, or below a cell spanning rows, the nth sticky
+   * cell isn't in the nth column, so those rows get no divider rather than one in the wrong place
+   * (a sticky cell spanning rows still draws it down its full height). Until the grid is measured
+   * (and in jsdom) the column count isn't known, so every row gets it.
+   */
+  const getStickyColumnDividerSelector = (rowCellCounts: number[]): string =>
+    gridColumnCount === null
+      ? `&:nth-of-type(${stickyCellCount})::after`
+      : rowCellCounts
+          .filter((rowCellCount) => rowCellCount >= stickyCellCount)
+          .map(
+            (rowCellCount) =>
+              `&:nth-of-type(${stickyCellCount}):nth-last-of-type(${
+                rowCellCount - stickyCellCount + 1
+              })::after`,
+          )
+          .join(', ');
+  // The header renders a cell for the hover actions column, body rows only when they have hover
+  // actions, and footer rows never do
+  const hoverActionsCellCount = hasHoverActions ? 1 : 0;
+  const gridColumnCountWithoutHoverActions = (gridColumnCount ?? 0) - hoverActionsCellCount;
+  const stickyHeaderCellDividerSelector = getStickyColumnDividerSelector([gridColumnCount ?? 0]);
+  const stickyBodyCellDividerSelector = getStickyColumnDividerSelector(
+    hasHoverActions
+      ? [gridColumnCount ?? 0, gridColumnCountWithoutHoverActions]
+      : [gridColumnCount ?? 0],
+  );
+  const stickyFooterCellDividerSelector = getStickyColumnDividerSelector([
+    gridColumnCountWithoutHoverActions,
+  ]);
+  const getStickyCellCSS = ({
+    zIndex,
+    spannedZIndex,
+    dividerSelector,
+  }: {
+    zIndex: number;
+    spannedZIndex: number;
+    dividerSelector: string;
+  }): string =>
+    Array.from({ length: stickyCellCount }, (_, index) => {
+      const nth = index + 1;
+      return `
+  &:nth-of-type(${nth}) {
+    left: ${stickyCellOffsets[index] ?? 0}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyCornerZIndex} !important;
+    z-index: ${zIndex} !important;
   }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: ${firstColumnStickyCornerZIndex} !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyCornerZIndex} !important;
-  }
-  `
+  /* Higher z-index for sticky cells that also span rows to prevent stacking issues */
+  &:nth-of-type(${nth}).${classes.HAS_ROW_SPANNING} {
+    z-index: ${spannedZIndex} !important;
+  }`;
+    })
+      .concat(
+        stickyCellCount > 0 && dividerSelector
+          ? `
+  ${dividerSelector} {
+    ${stickyColumnDividerCSS}
   }`
-    : '';
-  const firstColumnStickyFooterCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyCornerZIndex} !important;
-  }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: ${firstColumnStickyCornerZIndex} !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyCornerZIndex} !important;
-  }
-  `
-  }`
-    : '';
-  const firstColumnStickyBodyCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: ${firstColumnStickySpannedZIndex} !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  `
-  }`
-    : '';
+          : [],
+      )
+      .join('');
+  const stickyHeaderCellCSS = getStickyCellCSS({
+    zIndex: firstColumnStickyCornerZIndex,
+    spannedZIndex: firstColumnStickyCornerZIndex,
+    dividerSelector: stickyHeaderCellDividerSelector,
+  });
+  const stickyBodyCellCSS = getStickyCellCSS({
+    zIndex: firstColumnStickyZIndex,
+    spannedZIndex: firstColumnStickySpannedZIndex,
+    dividerSelector: stickyBodyCellDividerSelector,
+  });
+  const stickyFooterCellCSS = getStickyCellCSS({
+    zIndex: firstColumnStickyCornerZIndex,
+    spannedZIndex: firstColumnStickyCornerZIndex,
+    dividerSelector: stickyFooterCellDividerSelector,
+  });
 
   const tableTheme = useTableTheme({
     Table: `
@@ -346,15 +424,15 @@ const _Table = <Item,>({
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
     
     top: ${shouldHeaderBeSticky ? '0' : undefined};
-    ${firstColumnStickyHeaderCellCSS}
+    ${stickyHeaderCellCSS}
     `,
     Cell: `
-    ${firstColumnStickyBodyCellCSS}
+    ${stickyBodyCellCSS}
     `,
     FooterCell: `
     position: ${isFooterSticky ? 'sticky' : 'relative'};
     bottom: ${isFooterSticky ? '0' : undefined};
-    ${firstColumnStickyFooterCellCSS}
+    ${stickyFooterCellCSS}
     `,
   });
 
@@ -661,6 +739,7 @@ const _Table = <Item,>({
           </BaseBox>
         ) : (
           <StyledTableWrapper
+            ref={tableWrapperRef}
             flex={1}
             position="relative"
             {...getStyledProps(rest)}
@@ -702,6 +781,7 @@ const _Table = <Item,>({
                 isVirtualized,
                 isSelectable: selectionType !== 'none',
                 showStripedRows,
+                hasStickyColumns: stickyCellCount > 0,
               }}
               pagination={hasPagination ? paginationConfig : null}
               {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}

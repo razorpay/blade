@@ -3,12 +3,12 @@ import { size } from '~tokens/global';
 
 /*
  * Sticky cells in a Table can overlap each other, so their stacking order is fixed explicitly:
- * refresh overlay > sticky first column header/footer cells (corner and multi-select first data
- * column) > sticky first column body cells > other cells. Ties are resolved by DOM order, which
- * is why the corner cell needs a strictly higher z-index than the body cells painted after it,
- * why the isRefreshing overlay sits above every sticky cell so the whole table - corner included
- * - dims evenly while refreshing, and why the multi-select nth-of-type(2) cells share the corner
- * z-index instead of a lower one (see the comment in Table.web.tsx).
+ * refresh overlay > sticky column header/footer cells (the corners) > sticky column body cells >
+ * other cells. Ties are resolved by DOM order, which is why the corner cells need a strictly
+ * higher z-index than the body cells painted after them, why the isRefreshing overlay sits above
+ * every sticky cell so the whole table - corners included - dims evenly while refreshing, and why
+ * all sticky header/footer cells share the corner z-index instead of a lower one (see the comment
+ * in Table.web.tsx).
  */
 const firstColumnStickyZIndex = 2;
 const firstColumnStickySpannedZIndex = 3;
@@ -19,6 +19,17 @@ const firstColumnStickyCornerZIndex = 5;
 const refreshWrapperZIndex = firstColumnStickyCornerZIndex + 1;
 
 const checkboxCellWidth = size['44'];
+
+// Divider drawn after the last sticky column so the scrolling columns read as sliding under it.
+// A step stronger than the row/cell borders so it still stands out with showBorderedCells. Once
+// the table is scrolled horizontally the divider also casts a shadow over the scrolling columns.
+const tableStickyColumn = {
+  dividerWidth: 'thin',
+  dividerColor: 'surface.border.gray.subtle',
+  shadowElevation: 'midRaised',
+  shadowMotionDuration: 'duration.quick',
+  shadowMotionEasing: 'easing.standard',
+} as const;
 
 const tableBackgroundColor = 'surface.background.gray.intense';
 const tableHeader = {
@@ -157,6 +168,7 @@ export {
   firstColumnStickySpannedZIndex,
   firstColumnStickyCornerZIndex,
   checkboxCellWidth,
+  tableStickyColumn,
   tableEditableCellRowDensityToInputSizeMap,
   validationStateToInputTrailingIconMap,
   rowDensityToIsTableInputCellMapping,

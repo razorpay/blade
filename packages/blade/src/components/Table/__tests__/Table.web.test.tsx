@@ -8,7 +8,9 @@ import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import { TableEditableCell, TableEditableDropdownCell } from '../TableEditableCell';
+import type { TableProps } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import * as useIsMobileModule from '~utils/useIsMobile';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
@@ -1885,5 +1887,160 @@ describe('<Table />', () => {
 
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
+  });
+
+  describe('stickyColumns', () => {
+    const renderStickyColumnsTable = (
+      props: Omit<Partial<TableProps<Item>>, 'children' | 'data'> = {},
+    ): HTMLElement => {
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 5) }} height="300px" isFooterSticky {...props}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  {props.selectionType === 'multiple' ? <TableFooterCell>-</TableFooterCell> : null}
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>,
+      );
+      return container;
+    };
+
+    // Index of each cell of the row that is pinned with `position: sticky` and a `left` offset
+    const getStickyCellIndexes = (row: Element): number[] =>
+      Array.from(row.children)
+        .map((cell, index) => ({ index, style: window.getComputedStyle(cell as HTMLElement) }))
+        .filter(({ style }) => style.position === 'sticky' && style.left !== '')
+        .map(({ index }) => index);
+
+    const getRows = (
+      container: HTMLElement,
+    ): { header: Element; body: Element; footer: Element } => {
+      const rows = container.querySelectorAll('tr');
+      return { header: rows[0], body: rows[1], footer: rows[rows.length - 1] };
+    };
+
+    it('should pin the first N columns in the header, body and footer', () => {
+      const { header, body, footer } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
+
+      [header, body, footer].forEach((row) => {
+        expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+      });
+    });
+
+    it('should pin the checkbox column without counting it towards stickyColumns', () => {
+      const { header, body, footer } = getRows(
+        renderStickyColumnsTable({ stickyColumns: 2, selectionType: 'multiple' }),
+      );
+
+      [header, body, footer].forEach((row) => {
+        expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+      });
+    });
+
+    it('should keep the sticky header and footer cells above the sticky body cells', () => {
+      const { header, body, footer } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
+      const getZIndex = (row: Element, index: number): number =>
+        Number(window.getComputedStyle(row.children[index] as HTMLElement).zIndex);
+
+      [0, 1, 2].forEach((index) => {
+        expect(getZIndex(header, index)).toBeGreaterThan(getZIndex(body, index));
+        expect(getZIndex(footer, index)).toBeGreaterThan(getZIndex(body, index));
+      });
+    });
+
+    it('should give stickyColumns precedence over isFirstColumnSticky', () => {
+      const { body } = getRows(
+        renderStickyColumnsTable({ stickyColumns: 2, isFirstColumnSticky: true }),
+      );
+      expect(getStickyCellIndexes(body)).toEqual([0, 1]);
+
+      const { body: firstColumnBody } = getRows(
+        renderStickyColumnsTable({ isFirstColumnSticky: true }),
+      );
+      expect(getStickyCellIndexes(firstColumnBody)).toEqual([0]);
+    });
+
+    it('should not pin any column by default', () => {
+      const { body } = getRows(renderStickyColumnsTable());
+      expect(getStickyCellIndexes(body)).toEqual([]);
+    });
+
+    it('should pin only the first column on mobile', () => {
+      const useIsMobileSpy = jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
+
+      const { body } = getRows(renderStickyColumnsTable({ stickyColumns: 3 }));
+      expect(getStickyCellIndexes(body)).toEqual([0]);
+
+      const { body: multiSelectBody } = getRows(
+        renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' }),
+      );
+      expect(getStickyCellIndexes(multiSelectBody)).toEqual([0, 1]);
+
+      useIsMobileSpy.mockRestore();
+    });
+
+    it('should offset each sticky column by the measured widths of the columns before it', async () => {
+      // jsdom has no layout, so the table grid reports the column widths a browser would resolve
+      const getComputedStyle = window.getComputedStyle.bind(window);
+      const getComputedStyleSpy = jest
+        .spyOn(window, 'getComputedStyle')
+        .mockImplementation((element, pseudoElement) => {
+          const style = getComputedStyle(element, pseudoElement);
+          if (element.getAttribute('role') !== 'table' || element.tagName !== 'TABLE') return style;
+          return new Proxy(style, {
+            get: (target, property) => {
+              if (property === 'display') return 'grid';
+              if (property === 'gridTemplateColumns') return '64px 160px 180px 200px 200px 200px';
+              const value = Reflect.get(target, property);
+              return typeof value === 'function' ? value.bind(target) : value;
+            },
+          });
+        });
+
+      const { header, body, footer } = getRows(
+        renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' }),
+      );
+
+      // the rows render after the first measurement, so the offsets update once they are measured
+      await waitFor(() => {
+        [header, body, footer].forEach((row) => {
+          const offsets = Array.from(row.children)
+            .slice(0, 4)
+            .map((cell) => window.getComputedStyle(cell as HTMLElement).left);
+          expect(offsets).toEqual(['0px', '64px', '224px', '404px']);
+        });
+      });
+
+      getComputedStyleSpy.mockRestore();
+    });
   });
 });
