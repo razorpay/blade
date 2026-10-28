@@ -12,13 +12,15 @@ export type DialogDismissSource = 'cross' | 'blur' | 'escape' | 'drag' | 'back';
 export type DialogCloseSource = DialogDismissSource | 'programmatic';
 
 /**
- * A dismissal, as the owner hears it. `close` ends it — needed only when
- * the dialog is not dismissible; a dismissible one closes on its own once
- * the handler returns.
+ * A dismissal, as the owner hears it. A dismissible dialog closes on its
+ * own once the handler returns, unless `preventDefault` was called: then,
+ * as one that is not dismissible, it stays open until `close`.
  */
 export interface DialogDismissEvent {
   source: DialogDismissSource;
   close: () => void;
+  /** Keeps it open this time: the owner asks before it goes. */
+  preventDefault: () => void;
 }
 
 export interface DialogModelOptions {
@@ -43,8 +45,8 @@ export interface DialogModel {
   close(source?: DialogCloseSource): void;
   /**
    * The user asks it to go (the close button, backdrop, Escape, a drag,
-   * back): `onDismiss` runs, then a dismissible dialog closes. Returns
-   * whether it closed.
+   * back): `onDismiss` runs, then a dismissible dialog closes unless the
+   * handler prevented it. Returns whether it closed.
    */
   dismiss(source: DialogDismissSource): boolean;
   /**

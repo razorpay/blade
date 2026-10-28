@@ -48,8 +48,8 @@ export interface DrawerBehaviourProps extends Partial<AnalyticsAttributes> {
   /**
    * The user asked it to go — the close button, the backdrop, Escape, back
    * or a drag (`source`) — whether or not it is dismissible. A dismissible
-   * drawer closes once this returns, and nothing prevents it; otherwise it
-   * stays open until `close` is called.
+   * drawer closes once this returns, unless the event's `preventDefault` was
+   * called (to ask first); otherwise it stays open until `close` is called.
    */
   onDismiss?: (event: DialogDismissEvent) => void;
   /**

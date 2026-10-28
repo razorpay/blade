@@ -31,6 +31,16 @@
      */
     adapters?: BladeAdaptersOverride;
     /**
+     * While a modal, sheet or drawer is open, everything beside the overlay
+     * host goes inert: focus, clicks and the screen reader stay in the
+     * overlay. `false` keeps the page live behind the scrim, for an app that
+     * stages its own content beside a sheet (a card art, a countdown) that
+     * the screen reader must still reach. Focus still stays in the overlay.
+     * Only the outermost provider's value counts.
+     * @default true
+     */
+    isolatePage?: boolean;
+    /**
      * Lands on the overlay host; its scrim, surfaces box and live region
      * get `${testID}-backdrop`, `-surfaces`, `-live`.
      */
@@ -42,6 +52,7 @@
     size,
     defaults,
     adapters,
+    isolatePage = true,
     testID,
     children,
   }: Props = $props();
@@ -57,5 +68,5 @@
 
 {@render children()}
 {#if region}
-  <OverlayHost {testID} {region} />
+  <OverlayHost {testID} {region} isolates={isolatePage} />
 {/if}

@@ -19,10 +19,11 @@ export interface OverlayHost {
 
 /**
  * BladeProvider's overlay host: registers the host element and its parts
- * with the layers for as long as they are mounted. With `isolates`, everything beside the host goes inert
- * while a surface is open. Call during component initialisation.
+ * with the layers for as long as they are mounted. With `isolates` (read
+ * live), everything beside the host goes inert while a surface is open.
+ * Call during component initialisation.
  */
-export function createOverlayHost(options: { isolates: boolean }): OverlayHost {
+export function createOverlayHost(options: { readonly isolates: boolean }): OverlayHost {
   const layers = getLayers();
   const host = createNodeRef<HTMLElement>();
   const scrim = createNodeRef<HTMLElement>();

@@ -26,6 +26,13 @@ describe('an overlay open on the first render', () => {
     expect(getByTestId('page').hasAttribute('inert')).toBe(true);
   });
 
+  it('isolatePage={false} keeps the page live behind an open modal', async () => {
+    const { getByTestId } = render(FirstRenderHarness, { props: { isolatePage: false } });
+    await tick();
+    expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(true);
+    expect(getByTestId('page').hasAttribute('inert')).toBe(false);
+  });
+
   it('a popover lands in the host, and the page stays live', async () => {
     const { getByTestId } = render(FirstRenderHarness, { props: { kind: 'popover' } });
     await tick();
