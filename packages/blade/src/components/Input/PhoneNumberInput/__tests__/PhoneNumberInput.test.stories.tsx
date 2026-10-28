@@ -24,11 +24,11 @@ SelectACountry.play = async () => {
   await userEvent.click(getByRole('button', { name: /select country/i }));
   await sleep(300);
 
-  // Use arrow keys to navigate to a country
+  // Search is auto-focused on open; arrow-down moves focus into the list
   await userEvent.keyboard('{arrowdown}');
   await userEvent.keyboard('{arrowdown}');
 
-  // Click on the country to select it
+  // Select the focused country
   await userEvent.keyboard('{enter}');
   await sleep(300);
 
@@ -173,6 +173,102 @@ AutoFocus.play = async () => {
   await sleep(100);
   // Ensure the input is focused
   await expect(getByLabelText(label)).toHaveFocus();
+};
+
+export const SearchByCountryName: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
+};
+
+SearchByCountryName.play = async () => {
+  const { getByRole, queryByRole, getByLabelText } = within(document.body);
+
+  await sleep(100);
+
+  // Open the country selector
+  await userEvent.click(getByRole('button', { name: /select country/i }));
+  await sleep(300);
+
+  // Search input should be visible
+  const searchInput = getByRole('textbox', { name: /search countries/i });
+  await expect(searchInput).toBeVisible();
+
+  // Type a country name
+  await userEvent.type(searchInput, 'germany');
+  await sleep(200);
+
+  // Germany should be visible, India should not
+  await expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /india/i })).not.toBeInTheDocument();
+
+  // Select Germany
+  await userEvent.click(getByRole('menuitem', { name: /germany/i }));
+  await sleep(300);
+
+  // Dropdown should close
+  await expect(queryByRole('textbox', { name: /search countries/i })).not.toBeInTheDocument();
+
+  // Country selector button should reflect Germany (+49)
+  await expect(getByRole('button', { name: /germany - select country/i })).toBeInTheDocument();
+
+  // Focus should return to the phone input
+  await expect(getByLabelText(label)).toHaveFocus();
+};
+
+export const SearchByDialCode: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
+};
+
+SearchByDialCode.play = async () => {
+  const { getByRole, queryByRole } = within(document.body);
+
+  await sleep(100);
+
+  // Open the country selector
+  await userEvent.click(getByRole('button', { name: /select country/i }));
+  await sleep(300);
+
+  const searchInput = getByRole('textbox', { name: /search countries/i });
+
+  // Search by dial code with "+" prefix (India = +91)
+  await userEvent.type(searchInput, '+91');
+  await sleep(200);
+
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /germany/i })).not.toBeInTheDocument();
+};
+
+export const SearchResetOnClose: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
+};
+
+SearchResetOnClose.play = async () => {
+  const { getByRole, queryByRole } = within(document.body);
+
+  await sleep(100);
+
+  // Open, type, then close
+  await userEvent.click(getByRole('button', { name: /select country/i }));
+  await sleep(300);
+
+  const searchInput = getByRole('textbox', { name: /search countries/i });
+  await userEvent.type(searchInput, 'india');
+  await sleep(200);
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
+
+  // Close via Escape
+  await userEvent.keyboard('{Escape}');
+  await sleep(300);
+
+  // Reopen
+  await userEvent.click(getByRole('button', { name: /select country/i }));
+  await sleep(300);
+
+  // Search should be cleared — all allowed countries should appear
+  const reopenedSearch = getByRole('textbox', { name: /search countries/i });
+  await expect(reopenedSearch).toHaveValue('');
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /zzzznotacountry/i })).not.toBeInTheDocument();
 };
 
 export default {
