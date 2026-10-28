@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent, expect, fn } from 'storybook/test';
+import { within, userEvent, expect, fn, waitFor } from 'storybook/test';
 import React from 'react';
 import type { ToastProps } from '../types';
 import { useToast } from '../useToast';
@@ -50,7 +50,7 @@ TestToastShow.play = async () => {
   await sleep(400);
   await expect(queryByText(toastContent)).toBeVisible();
   await sleep(4000);
-  await expect(queryByText(toastContent)).not.toBeVisible();
+  await waitFor(() => expect(queryByText(toastContent)).not.toBeVisible());
 };
 
 export const TestToastDismiss: StoryFn<typeof Toast> = (): React.ReactElement => {
@@ -71,8 +71,7 @@ TestToastDismiss.play = async () => {
   const dismissButton = getByRole('button', { name: 'Dismiss toast' });
   await userEvent.click(dismissButton);
   await expect(onDismissButtonClick).toBeCalledTimes(1);
-  await sleep(400);
-  await expect(queryByText(toastContent)).not.toBeVisible();
+  await waitFor(() => expect(queryByText(toastContent)).not.toBeVisible());
 };
 
 export const ToastHover: StoryFn<typeof Toast> = (): React.ReactElement => {
@@ -99,7 +98,7 @@ ToastHover.play = async () => {
   // hover out of toast container
   await userEvent.unhover(toastContainer);
   await sleep(1000);
-  await expect(queryByText(toastContent)).not.toBeVisible();
+  await waitFor(() => expect(queryByText(toastContent)).not.toBeVisible());
 };
 
 export const ToastStacking: StoryFn<typeof Toast> = (): React.ReactElement => {
