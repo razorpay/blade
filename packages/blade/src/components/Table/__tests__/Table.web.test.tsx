@@ -2125,7 +2125,7 @@ describe('<Table />', () => {
       });
     });
 
-    it('should pin the further sticky columns only in rows with hover actions when the table has them', async () => {
+    it('should pin every sticky column in rows with and without hover actions', async () => {
       // the hover actions column is the last grid track
       mockGridColumnWidths('160px 180px 200px 200px 200px 0px');
       const { container } = renderWithTheme(
@@ -2166,9 +2166,9 @@ describe('<Table />', () => {
           container.querySelectorAll('tr'),
         );
         expect(getStickyCellIndexes(rowWithHoverActions)).toEqual([0, 1, 2]);
-        // a row without hover actions is one cell short, just like a row below a row-spanning
-        // cell, so it keeps only the first column pinned
-        expect(getStickyCellIndexes(rowWithoutHoverActions)).toEqual([0]);
+        // a row without hover actions is one cell short, but it is told apart from a row below a
+        // row-spanning cell by not being marked as having hover actions
+        expect(getStickyCellIndexes(rowWithoutHoverActions)).toEqual([0, 1, 2]);
       });
     });
 

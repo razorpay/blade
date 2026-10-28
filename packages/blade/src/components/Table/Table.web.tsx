@@ -334,46 +334,63 @@ const _Table = <Item,>({
    * pinned anyway.
    */
   const alwaysPinnedCellCount = selectionType === 'multiple' ? 2 : 1;
+  // How many cells a complete row has, optionally only for rows matching `rowSelector`
+  type CompleteRow = { rowSelector: string; cellCount: number };
   const getCellInFullRowSelector = ({
     nth,
-    rowCellCounts,
+    completeRows,
     pseudoSelector = '',
   }: {
     nth: number;
-    rowCellCounts: number[];
+    completeRows: CompleteRow[];
     pseudoSelector?: string;
   }): string =>
     gridColumnCount === null
       ? `&:nth-of-type(${nth})${pseudoSelector}`
-      : rowCellCounts
-          .filter((rowCellCount) => rowCellCount >= nth)
+      : completeRows
+          .filter(({ cellCount }) => cellCount >= nth)
           .map(
-            (rowCellCount) =>
-              `&:nth-of-type(${nth}):nth-last-of-type(${rowCellCount - nth + 1})${pseudoSelector}`,
+            ({ rowSelector, cellCount }) =>
+              `${rowSelector}&:nth-of-type(${nth}):nth-last-of-type(${
+                cellCount - nth + 1
+              })${pseudoSelector}`,
           )
           .join(', ');
   // The header renders a cell for the hover actions column, body rows only when they have hover
-  // actions, and footer rows never do. A body row without hover actions has as many cells as a row
-  // with them that sits below a cell spanning rows, so when the table has hover actions only body
-  // rows with them count as complete: rows without them keep just the first column pinned rather
-  // than risk pinning cells at the wrong offset.
-  const hoverActionsCellCount = hasHoverActions ? 1 : 0;
-  const gridColumnCountWithoutHoverActions = (gridColumnCount ?? 0) - hoverActionsCellCount;
+  // actions (they are marked with a class so a row without them isn't mistaken for a row below a
+  // cell spanning rows, which is one cell short too), and footer rows never do
+  const gridColumnCountWithoutHoverActions = (gridColumnCount ?? 0) - (hasHoverActions ? 1 : 0);
+  const completeHeaderRows: CompleteRow[] = [{ rowSelector: '', cellCount: gridColumnCount ?? 0 }];
+  const completeBodyRows: CompleteRow[] = hasHoverActions
+    ? [
+        {
+          rowSelector: `.tr-body.${classes.HAS_HOVER_ACTIONS} > `,
+          cellCount: gridColumnCount ?? 0,
+        },
+        {
+          rowSelector: `.tr-body:not(.${classes.HAS_HOVER_ACTIONS}) > `,
+          cellCount: gridColumnCountWithoutHoverActions,
+        },
+      ]
+    : completeHeaderRows;
+  const completeFooterRows: CompleteRow[] = [
+    { rowSelector: '', cellCount: gridColumnCountWithoutHoverActions },
+  ];
   const getStickyCellCSS = ({
     zIndex,
     spannedZIndex,
-    rowCellCounts,
+    completeRows,
   }: {
     zIndex: number;
     spannedZIndex: number;
-    rowCellCounts: number[];
+    completeRows: CompleteRow[];
   }): string => {
     const stickyCellCSS = Array.from({ length: pinnedCellCount }, (_, index) => {
       const nth = index + 1;
       const cellSelector =
         nth <= alwaysPinnedCellCount
           ? `&:nth-of-type(${nth})`
-          : getCellInFullRowSelector({ nth, rowCellCounts });
+          : getCellInFullRowSelector({ nth, completeRows });
       if (!cellSelector) return '';
       // Higher z-index for sticky cells that also span rows to prevent stacking issues
       const spannedCellSelector = cellSelector
@@ -394,7 +411,7 @@ const _Table = <Item,>({
       pinnedCellCount > 0
         ? getCellInFullRowSelector({
             nth: pinnedCellCount,
-            rowCellCounts,
+            completeRows,
             pseudoSelector: '::after',
           })
         : '';
@@ -408,17 +425,17 @@ const _Table = <Item,>({
   const stickyHeaderCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyCornerZIndex,
     spannedZIndex: firstColumnStickyCornerZIndex,
-    rowCellCounts: [gridColumnCount ?? 0],
+    completeRows: completeHeaderRows,
   });
   const stickyBodyCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyZIndex,
     spannedZIndex: firstColumnStickySpannedZIndex,
-    rowCellCounts: [gridColumnCount ?? 0],
+    completeRows: completeBodyRows,
   });
   const stickyFooterCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyCornerZIndex,
     spannedZIndex: firstColumnStickyCornerZIndex,
-    rowCellCounts: [gridColumnCountWithoutHoverActions],
+    completeRows: completeFooterRows,
   });
 
   const tableTheme = useTableTheme({
