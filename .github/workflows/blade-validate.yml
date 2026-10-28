@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
+      - name: Test Agentic Scripts
+        run: |
+          find .github/scripts -type f \( -name "*.test.js" -o -name "*.test.mjs" \) -print0 \
+            | xargs -0 --no-run-if-empty node --test
       - name: Pre-Generate Documentation Lock File
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
