@@ -12,10 +12,9 @@
     kind?: 'modal' | 'popover';
     /** The provider's layers, for a test that drives the host. */
     onLayers?: (layers: Layers) => void;
-    isolatePage?: boolean;
   }
 
-  let { adapters, kind = 'modal', onLayers, isolatePage = true }: Props = $props();
+  let { adapters, kind = 'modal', onLayers }: Props = $props();
   // Open from the first render: the host mounts after it.
   let isOpen = $state(true);
 </script>
@@ -24,7 +23,7 @@
   <button type="button" data-testid="open">Open</button>
 {/snippet}
 
-<BladeProvider {adapters} {isolatePage} testID="host">
+<BladeProvider {adapters} testID="host">
   <p data-testid="page">Page</p>
   {#if onLayers}<LayersProbe onReady={(layers) => onLayers(layers)} />{/if}
   {#if kind === 'modal'}
