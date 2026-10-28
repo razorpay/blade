@@ -101,8 +101,10 @@ const useStickyColumnsLayout = ({
         resizeObserver.observe(element);
       }
     };
-    // The row the last measurement was taken from, see the mutation observer below
+    // The row the last measurement was taken from and how many cells it had, see the mutation
+    // observer below
     let measuredRow: Element | null = null;
+    let measuredRowCellCount = 0;
 
     function measure(): void {
       // The table library renders its rows after this effect runs, so the cells are looked up on
@@ -119,6 +121,7 @@ const useStickyColumnsLayout = ({
       const columnWidths = getGridColumnWidths(grid);
       if (!columnWidths) return;
       measuredRow = firstRow;
+      measuredRowCellCount = firstRow.children.length;
 
       // Asking for more sticky columns than the table has pins all of them
       const layout: StickyColumnsLayout = {
@@ -133,14 +136,18 @@ const useStickyColumnsLayout = ({
     }
 
     measure();
-    // Measure again when the rows render or the first row is replaced, since its cells may not have
-    // existed yet. Other changes are skipped: a virtualized table swaps rows on every scroll frame,
-    // and column width changes are already caught by the resize observer.
+    // Measure again when the rows render, the first row is replaced, or it gains or loses cells
+    // (the hover actions column is added once a row reports hover actions, which changes the grid
+    // without resizing anything). Other changes are skipped: a virtualized table swaps rows on
+    // every scroll frame, and column width changes are already caught by the resize observer.
     const mutationObserver =
       typeof MutationObserver === 'undefined'
         ? null
         : new MutationObserver(() => {
-            if (tableWrapper.querySelector('tr') !== measuredRow) measure();
+            const firstRow = tableWrapper.querySelector('tr');
+            if (firstRow !== measuredRow || firstRow?.children.length !== measuredRowCellCount) {
+              measure();
+            }
           });
     mutationObserver?.observe(tableWrapper, { childList: true, subtree: true });
     return () => {

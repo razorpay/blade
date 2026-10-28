@@ -182,7 +182,8 @@ type TableProps<Item> = {
    *
    * On mobile, only the first column is kept sticky so the pinned columns don't fill the screen.
    *
-   * Sticky columns also make the header sticky, so the sticky header cells stay above the body.
+   * Sticky columns also make the header sticky, even when `isHeaderSticky` is `false`, so the
+   * sticky header cells stay above the body.
    *
    * Takes precedence over `isFirstColumnSticky`.
    *

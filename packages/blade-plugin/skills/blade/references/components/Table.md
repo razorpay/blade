@@ -91,7 +91,7 @@ type TableProps<Item> = {
    * horizontally. A divider is drawn after the last sticky column, with a shadow once scrolled.
    * When `selectionType="multiple"`, the checkbox column is also sticky and does not count
    * towards this number. On mobile, only the first column is kept sticky.
-   * Sticky columns also make the header sticky.
+   * Sticky columns also make the header sticky, even when `isHeaderSticky` is `false`.
    * Takes precedence over `isFirstColumnSticky`.
    * @default 0
    **/
