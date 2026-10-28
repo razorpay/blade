@@ -94,12 +94,18 @@ const useStickyColumnsLayout = ({
 
     const resizeObserver =
       typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => measure());
-    const observedElements = new Set<Element>();
-    const observe = (element: Element): void => {
-      if (resizeObserver && !observedElements.has(element)) {
-        observedElements.add(element);
-        resizeObserver.observe(element);
-      }
+    // Only the current grid and sticky cells are observed: when they are replaced, the old ones are
+    // let go so removed cells aren't kept alive
+    let observedElements: Element[] = [];
+    const observeOnly = (elements: Element[]): void => {
+      if (!resizeObserver) return;
+      observedElements
+        .filter((element) => !elements.includes(element))
+        .forEach((element) => resizeObserver.unobserve(element));
+      elements
+        .filter((element) => !observedElements.includes(element))
+        .forEach((element) => resizeObserver.observe(element));
+      observedElements = elements;
     };
     // The row the last measurement was taken from and how many cells it had, see the mutation
     // observer below
@@ -113,10 +119,7 @@ const useStickyColumnsLayout = ({
       const grid = getClosestGrid(firstRow?.firstElementChild ?? null);
       if (!firstRow || !grid) return;
       // The grid resizes with the table and the sticky cells resize when their column does
-      observe(grid);
-      Array.from(firstRow.children)
-        .slice(0, stickyCellCount)
-        .forEach((cell) => observe(cell));
+      observeOnly([grid, ...Array.from(firstRow.children).slice(0, stickyCellCount)]);
 
       const columnWidths = getGridColumnWidths(grid);
       if (!columnWidths) return;
