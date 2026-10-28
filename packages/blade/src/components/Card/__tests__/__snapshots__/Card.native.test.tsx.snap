@@ -79,9 +79,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         data-blade-component="card-body"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <Text
           accessible={true}
@@ -1711,9 +1714,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
         data-blade-component="card-body"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <Text
           accessible={true}
@@ -1835,9 +1841,12 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
         data-blade-component="card-body"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         Plain Card
       </View>
@@ -1925,9 +1934,12 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
         data-blade-component="card-body"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <Text
           accessible={true}
@@ -2049,9 +2061,12 @@ exports[`<Card /> should render a plain Card 1`] = `
         data-blade-component="card-body"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <Text
           accessible={true}
