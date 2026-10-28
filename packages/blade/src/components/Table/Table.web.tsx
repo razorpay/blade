@@ -353,7 +353,10 @@ const _Table = <Item,>({
           )
           .join(', ');
   // The header renders a cell for the hover actions column, body rows only when they have hover
-  // actions, and footer rows never do
+  // actions, and footer rows never do. A body row without hover actions has as many cells as a row
+  // with them that sits below a cell spanning rows, so when the table has hover actions only body
+  // rows with them count as complete: rows without them keep just the first column pinned rather
+  // than risk pinning cells at the wrong offset.
   const hoverActionsCellCount = hasHoverActions ? 1 : 0;
   const gridColumnCountWithoutHoverActions = (gridColumnCount ?? 0) - hoverActionsCellCount;
   const getStickyCellCSS = ({
@@ -410,9 +413,7 @@ const _Table = <Item,>({
   const stickyBodyCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyZIndex,
     spannedZIndex: firstColumnStickySpannedZIndex,
-    rowCellCounts: hasHoverActions
-      ? [gridColumnCount ?? 0, gridColumnCountWithoutHoverActions]
-      : [gridColumnCount ?? 0],
+    rowCellCounts: [gridColumnCount ?? 0],
   });
   const stickyFooterCellCSS = getStickyCellCSS({
     zIndex: firstColumnStickyCornerZIndex,
