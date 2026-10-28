@@ -7,12 +7,16 @@ import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
-import { TableEditableCell } from '../TableEditableCell';
+import { TableEditableCell, TableEditableDropdownCell } from '../TableEditableCell';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { InfoIcon } from '~components/Icons';
 
 type Item = {
   id: string;
@@ -644,6 +648,292 @@ describe('<Table />', () => {
       </Table>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should stack the sticky first header cell above sticky first column body cells', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 10) }} height="300px" isFirstColumnSticky isHeaderSticky>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    // The corner header cell (sticky both vertically and horizontally) must outrank the sticky
+    // first column body cells, otherwise the body cells paint over the header label on scroll.
+    const headerCell = container.querySelector('th') as HTMLElement;
+    const bodyCell = container.querySelector('td') as HTMLElement;
+    const headerCellZIndex = Number(window.getComputedStyle(headerCell).zIndex);
+    const bodyCellZIndex = Number(window.getComputedStyle(bodyCell).zIndex);
+
+    expect(headerCellZIndex).toBeGreaterThan(0);
+    expect(bodyCellZIndex).toBeGreaterThan(0);
+    expect(headerCellZIndex).toBeGreaterThan(bodyCellZIndex);
+  });
+
+  it('should stack the sticky multi-select checkbox header cell above its body cells', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 10) }}
+        height="300px"
+        selectionType="multiple"
+        isFirstColumnSticky
+        isHeaderSticky
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const headerCells = container.querySelectorAll('th');
+    const bodyCells = container.querySelectorAll('td');
+
+    // With multiple selection the checkbox column (nth-of-type(1)) and the first data column
+    // (nth-of-type(2)) are both sticky, each must clear its own body cells.
+    [0, 1].forEach((cellIndex) => {
+      const headerCellZIndex = Number(
+        window.getComputedStyle(headerCells[cellIndex] as HTMLElement).zIndex,
+      );
+      const bodyCellZIndex = Number(
+        window.getComputedStyle(bodyCells[cellIndex] as HTMLElement).zIndex,
+      );
+      expect(headerCellZIndex).toBeGreaterThan(bodyCellZIndex);
+    });
+
+    // The corner (checkbox) header cell is never below the sticky first data column header cell.
+    // They share the corner z-index on purpose: the data column sticks at the fixed 44px offset
+    // while the checkbox column can be wider, and on that overlap the later cell in the DOM
+    // (the data column) must win, exactly like on master.
+    const cornerZIndex = Number(window.getComputedStyle(headerCells[0] as HTMLElement).zIndex);
+    const firstDataColumnZIndex = Number(
+      window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
+    );
+    expect(cornerZIndex).toBeGreaterThanOrEqual(firstDataColumnZIndex);
+  });
+
+  it('should not cover the first data column cells when the checkbox column is wider than 44px', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        height="300px"
+        selectionType="multiple"
+        isFirstColumnSticky
+        isHeaderSticky
+        isFooterSticky
+        gridTemplateColumns="min-content 280px 280px 280px"
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                {/* text in the first footer cell widens the checkbox column beyond 44px, so the
+                sticky first data column footer cell sticks at 44px and overlaps it */}
+                <TableFooterCell>Total</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>,
+    );
+
+    const headerCells = container.querySelectorAll('th');
+    const footerCells = container.querySelectorAll('tfoot td, [role="columnfooter"]');
+
+    // The first data column header/footer cells share the checkbox cells' z-index instead of
+    // sitting below them, so the overlap is resolved by DOM order (the data column is later)
+    // and "Name" and the footer "-" stay visible when the table is scrolled right.
+    const checkboxHeaderZIndex = Number(
+      window.getComputedStyle(headerCells[0] as HTMLElement).zIndex,
+    );
+    const firstDataColumnHeaderZIndex = Number(
+      window.getComputedStyle(headerCells[1] as HTMLElement).zIndex,
+    );
+    expect(checkboxHeaderZIndex).toBe(firstDataColumnHeaderZIndex);
+
+    const checkboxFooterZIndex = Number(
+      window.getComputedStyle(footerCells[0] as HTMLElement).zIndex,
+    );
+    const firstDataColumnFooterZIndex = Number(
+      window.getComputedStyle(footerCells[1] as HTMLElement).zIndex,
+    );
+    expect(checkboxFooterZIndex).toBe(firstDataColumnFooterZIndex);
+
+    // and both still clear the sticky first column body cells
+    const bodyCellZIndex = Number(
+      window.getComputedStyle(container.querySelector('td') as HTMLElement).zIndex,
+    );
+    expect(firstDataColumnHeaderZIndex).toBeGreaterThan(bodyCellZIndex);
+  });
+
+  it('should keep the refresh overlay above the sticky header cells while refreshing', () => {
+    const renderTable = (selectionType: 'none' | 'multiple'): HTMLElement => {
+      const { container } = renderWithTheme(
+        <Table
+          data={{ nodes: nodes.slice(0, 5) }}
+          height="300px"
+          isHeaderSticky
+          isFirstColumnSticky
+          isRefreshing={true}
+          selectionType={selectionType}
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+      return container;
+    };
+
+    const getRefreshOverlayZIndex = (container: HTMLElement): number => {
+      const spinner = container.querySelector('[data-blade-component="spinner"]');
+      // the refresh overlay is the wrapper that renders the spinner
+      const refreshOverlay = spinner!.parentElement!;
+      expect(refreshOverlay).not.toBeNull();
+      return Number(window.getComputedStyle(refreshOverlay).zIndex);
+    };
+
+    // Without selection the corner header cell is the highest sticky cell.
+    const singleSelectContainer = renderTable('none');
+    const cornerHeaderCellZIndex = Number(
+      window.getComputedStyle(singleSelectContainer.querySelector('th') as HTMLElement).zIndex,
+    );
+    expect(getRefreshOverlayZIndex(singleSelectContainer)).toBeGreaterThan(cornerHeaderCellZIndex);
+
+    // With multiple selection the corner (checkbox) and the first data column header cells are
+    // both sticky - the overlay must clear them too.
+    const multiSelectContainer = renderTable('multiple');
+    const multiSelectHeaderCells = multiSelectContainer.querySelectorAll('th');
+    const multiSelectCornerZIndex = Number(
+      window.getComputedStyle(multiSelectHeaderCells[0] as HTMLElement).zIndex,
+    );
+    const multiSelectFirstDataColumnZIndex = Number(
+      window.getComputedStyle(multiSelectHeaderCells[1] as HTMLElement).zIndex,
+    );
+    const multiSelectOverlayZIndex = getRefreshOverlayZIndex(multiSelectContainer);
+    expect(multiSelectOverlayZIndex).toBeGreaterThan(multiSelectCornerZIndex);
+    expect(multiSelectOverlayZIndex).toBeGreaterThan(multiSelectFirstDataColumnZIndex);
+  });
+
+  it('should keep the editable dropdown cell trigger vertically centred with its icons', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 1) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput
+                      icon={InfoIcon}
+                      placeholder="Select Status"
+                      accessibilityLabel="Status"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Pending" value="pending" />
+                        <ActionListItem title="Completed" value="completed" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const selectInputRoot = container.querySelector(
+      '[data-blade-component="select-input"]',
+    ) as HTMLElement;
+    const tagsSlot = selectInputRoot.querySelector('.tags-slot')!;
+    const trigger = tagsSlot.querySelector('button') as HTMLElement;
+
+    // The trigger already fills the full input height inside a table cell, so the tag slot must
+    // not add vertical padding on top of it — that pushes the value 4px below the leading icon
+    // and the chevron and clips the trigger.
+    expect(window.getComputedStyle(tagsSlot).paddingTop).toBe('0px');
+    expect(window.getComputedStyle(tagsSlot).paddingBottom).toBe('0px');
+    // trigger is a medium (36px) input for the default row density
+    expect(window.getComputedStyle(trigger).height).toBe('36px');
+    expect(window.getComputedStyle(tagsSlot).maxHeight).toBe('36px');
   });
 
   it('should render table with sorting', () => {

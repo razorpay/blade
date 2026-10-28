@@ -187,6 +187,7 @@ import FilterIconComponent from './FilterIcon';
 import FlagIconComponent from './FlagIcon';
 import FlaskIconComponent from './FlaskIcon';
 import FolderIconComponent from './FolderIcon';
+import FolderOpenIconComponent from './FolderOpenIcon';
 import ForexManagementFilledIconComponent from './ForexManagementFilledIcon';
 import ForexManagementIconComponent from './ForexManagementIcon';
 import FreelanceFilledIconComponent from './FreelanceFilledIcon';
@@ -225,8 +226,10 @@ import LayoutIconComponent from './LayoutIcon';
 import LeftCircularCornerIconComponent from './LeftCircularCornerIcon';
 import LifeBuoyIconComponent from './LifeBuoyIcon';
 import LinkIconComponent from './LinkIcon';
+import ListChecksIconComponent from './ListChecksIcon';
 import ListIconComponent from './ListIcon';
 import ListSearchIconComponent from './ListSearchIcon';
+import ListTodoIconComponent from './ListTodoIcon';
 import LoaderIconComponent from './LoaderIcon';
 import LoansForBusinessesFilledIconComponent from './LoansForBusinessesFilledIcon';
 import LoansForBusinessesIconComponent from './LoansForBusinessesIcon';
@@ -386,6 +389,7 @@ import TagIconComponent from './TagIcon';
 import TargetIconComponent from './TargetIcon';
 import TaxPaymentsFilledIconComponent from './TaxPaymentsFilledIcon';
 import TaxPaymentsIconComponent from './TaxPaymentsIcon';
+import TerminalIconComponent from './TerminalIcon';
 import TestIconComponent from './TestIcon';
 import ThermometerIconComponent from './ThermometerIcon';
 import ThumbsDownIconComponent from './ThumbsDownIcon';
@@ -446,6 +450,7 @@ import WifiIconComponent from './WifiIcon';
 import WifiOffIconComponent from './WifiOffIcon';
 import WindIconComponent from './WindIcon';
 import WorldwideIconComponent from './WorldwideIcon';
+import WrenchIconComponent from './WrenchIcon';
 import XCircleIconComponent from './XCircleIcon';
 import XSquareIconComponent from './XSquareIcon';
 import YoutubeIconComponent from './YoutubeIcon';
@@ -642,6 +647,7 @@ const iconMap: Record<string, IconComponent> = {
   FlagIcon: FlagIconComponent,
   FlaskIcon: FlaskIconComponent,
   FolderIcon: FolderIconComponent,
+  FolderOpenIcon: FolderOpenIconComponent,
   ForexManagementFilledIcon: ForexManagementFilledIconComponent,
   ForexManagementIcon: ForexManagementIconComponent,
   FreelanceFilledIcon: FreelanceFilledIconComponent,
@@ -680,8 +686,10 @@ const iconMap: Record<string, IconComponent> = {
   LeftCircularCornerIcon: LeftCircularCornerIconComponent,
   LifeBuoyIcon: LifeBuoyIconComponent,
   LinkIcon: LinkIconComponent,
+  ListChecksIcon: ListChecksIconComponent,
   ListIcon: ListIconComponent,
   ListSearchIcon: ListSearchIconComponent,
+  ListTodoIcon: ListTodoIconComponent,
   LoaderIcon: LoaderIconComponent,
   LoansForBusinessesFilledIcon: LoansForBusinessesFilledIconComponent,
   LoansForBusinessesIcon: LoansForBusinessesIconComponent,
@@ -841,6 +849,7 @@ const iconMap: Record<string, IconComponent> = {
   TargetIcon: TargetIconComponent,
   TaxPaymentsFilledIcon: TaxPaymentsFilledIconComponent,
   TaxPaymentsIcon: TaxPaymentsIconComponent,
+  TerminalIcon: TerminalIconComponent,
   TestIcon: TestIconComponent,
   ThermometerIcon: ThermometerIconComponent,
   ThumbsDownIcon: ThumbsDownIconComponent,
@@ -901,6 +910,7 @@ const iconMap: Record<string, IconComponent> = {
   WifiOffIcon: WifiOffIconComponent,
   WindIcon: WindIconComponent,
   WorldwideIcon: WorldwideIconComponent,
+  WrenchIcon: WrenchIconComponent,
   XCircleIcon: XCircleIconComponent,
   XSquareIcon: XSquareIconComponent,
   YoutubeIcon: YoutubeIconComponent,

@@ -1,0 +1,41 @@
+name: Blade Icons Upload Check
+
+# Blade Icons Upload only runs when someone exports icons from Figma, so a change that breaks it
+# goes unnoticed until then. This replays an upload of a made-up icon on every PR that touches the
+# icon pipeline, without pushing anything.
+on:
+  pull_request:
+    paths:
+      - 'scripts/icons/**'
+      - 'packages/blade/scripts/uploadIcons.mjs'
+      - 'packages/blade/scripts/__fixtures__/uploadIconsCheck.json'
+      - 'packages/blade-svelte/scripts/icon-svgs/**'
+      - 'packages/blade-plugin/skills/blade/references/general/AvailableIcons.md'
+      - 'packages/blade-mcp/scripts/copyKnowledgebase.mjs'
+      - 'packages/blade-mcp/src/tools/__tests__/getBladeGeneralDocs.test.ts'
+      - '.github/workflows/blade-icons-upload.yml'
+      - '.github/workflows/blade-icons-upload-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  icons-upload-check:
+    name: Rehearse Icons Upload
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - name: Use Node v20
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 20.19.5
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      # same command as Blade Icons Upload; --dry-run writes the files but skips git and GitHub,
+      # and fails on anything that would have made the upload PR a draft
+      - name: Upload Icons (dry run)
+        working-directory: packages/blade
+        run: node ./scripts/uploadIcons.mjs ./scripts/__fixtures__/uploadIconsCheck.json --targets=react --dry-run
+      - name: Add Svelte Icons
+        run: yarn workspace @razorpay/blade-svelte icons:generate
