@@ -20,7 +20,7 @@ exports[`<StopCircleIcon /> should render StopCircleIcon 1`] = `
     />
     <path
       clip-rule="evenodd"
-      d="M8 9C8 8.44772 8.44772 8 9 8H15C15.5523 8 16 8.44772 16 9V15C16 15.5523 15.5523 16 15 16H9C8.44772 16 8 15.5523 8 15V9ZM10 10V14H14V10H10Z"
+      d="M8 9C8 8.44772 8.44772 8 9 8H15C15.5523 8 16 8.44772 16 9V15C16 15.5523 15.5523 16 15 16H9C8.44772 16 8 15.5523 8 15V9Z"
       data-blade-component="svg-path"
       fill="hsla(200, 10%, 18%, 1)"
       fill-rule="evenodd"
