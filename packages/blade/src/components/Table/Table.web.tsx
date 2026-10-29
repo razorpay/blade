@@ -364,11 +364,11 @@ const _Table = <Item,>({
   const completeBodyRows: CompleteRow[] = hasHoverActions
     ? [
         {
-          rowSelector: `.tr-body.${classes.HAS_HOVER_ACTIONS} > `,
+          rowSelector: `.${classes.BODY_ROW}.${classes.HAS_HOVER_ACTIONS} > `,
           cellCount: gridColumnCount ?? 0,
         },
         {
-          rowSelector: `.tr-body:not(.${classes.HAS_HOVER_ACTIONS}) > `,
+          rowSelector: `.${classes.BODY_ROW}:not(.${classes.HAS_HOVER_ACTIONS}) > `,
           cellCount: gridColumnCountWithoutHoverActions,
         },
       ]

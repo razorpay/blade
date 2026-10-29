@@ -413,6 +413,7 @@ const _TableRow = <Item,>({
       $showBorderedCells={showBorderedCells}
       item={item}
       className={[
+        classes.BODY_ROW,
         isDisabled ? 'disabled-row' : '',
         hasHoverActions ? classes.HAS_HOVER_ACTIONS : '',
       ]

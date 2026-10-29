@@ -555,7 +555,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-analytics-row="table-row-test"
             data-blade-component="table-row"
             data-table-library_tr-body=""
@@ -671,7 +671,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-analytics-row="table-row-test"
             data-blade-component="table-row"
             data-table-library_tr-body=""
@@ -787,7 +787,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-analytics-row="table-row-test"
             data-blade-component="table-row"
             data-table-library_tr-body=""
@@ -903,7 +903,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-analytics-row="table-row-test"
             data-blade-component="table-row"
             data-table-library_tr-body=""
@@ -1019,7 +1019,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-analytics-row="table-row-test"
             data-blade-component="table-row"
             data-table-library_tr-body=""
@@ -1817,7 +1817,7 @@ exports[`<Table /> should render table 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -1987,7 +1987,7 @@ exports[`<Table /> should render table 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -2157,7 +2157,7 @@ exports[`<Table /> should render table 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -2327,7 +2327,7 @@ exports[`<Table /> should render table 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -2497,7 +2497,7 @@ exports[`<Table /> should render table 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -3785,7 +3785,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -3993,7 +3993,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -4817,7 +4817,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -4855,7 +4855,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -4941,7 +4941,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -5027,7 +5027,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -5731,7 +5731,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -5901,7 +5901,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -6810,7 +6810,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -6980,7 +6980,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -7835,7 +7835,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -7921,7 +7921,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8007,7 +8007,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8643,7 +8643,7 @@ exports[`<Table /> should render table with grouping 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body row-tree row-tree-expanded c11 clickable css-1vxtxke-getRowContainerStyle-Row"
+            class="tr tr-body row-tree row-tree-expanded c11 blade-table-body-row clickable css-1vxtxke-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8683,7 +8683,7 @@ exports[`<Table /> should render table with grouping 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 clickable css-1cw1scs-getRowContainerStyle-Row"
+            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 blade-table-body-row clickable css-1cw1scs-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8741,7 +8741,7 @@ exports[`<Table /> should render table with grouping 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 clickable css-1cw1scs-getRowContainerStyle-Row"
+            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 blade-table-body-row clickable css-1cw1scs-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8799,7 +8799,7 @@ exports[`<Table /> should render table with grouping 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-tree row-tree-expanded c11 clickable css-1vxtxke-getRowContainerStyle-Row"
+            class="tr tr-body row-tree row-tree-expanded c11 blade-table-body-row clickable css-1vxtxke-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -8839,7 +8839,7 @@ exports[`<Table /> should render table with grouping 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 clickable css-1cw1scs-getRowContainerStyle-Row"
+            class="tr tr-body row-tree row-tree-expanded row-tree-leaf c17 blade-table-body-row clickable css-1cw1scs-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -9839,7 +9839,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
         >
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded c19 clickable css-1ds51gb-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded c19 blade-table-body-row clickable css-1ds51gb-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -9995,7 +9995,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
           </tr>
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded row-tree-leaf c26 clickable css-1l5bonh-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded row-tree-leaf c26 blade-table-body-row clickable css-1l5bonh-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -10169,7 +10169,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
           </tr>
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded row-tree-leaf c26 clickable css-1l5bonh-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected row-tree row-tree-expanded row-tree-leaf c26 blade-table-body-row clickable css-1l5bonh-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -10343,7 +10343,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable row-tree row-tree-expanded c19 clickable css-1ds51gb-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-tree row-tree-expanded c19 blade-table-body-row clickable css-1ds51gb-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -10477,7 +10477,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable row-tree row-tree-expanded row-tree-leaf c26 clickable css-1l5bonh-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-tree row-tree-expanded row-tree-leaf c26 blade-table-body-row clickable css-1l5bonh-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -11107,7 +11107,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -11193,7 +11193,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -11279,7 +11279,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -12498,7 +12498,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -12668,7 +12668,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c15 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c15 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -14216,7 +14216,7 @@ exports[`<Table /> should render table with multi select 1`] = `
         >
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -14532,7 +14532,7 @@ exports[`<Table /> should render table with multi select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -14826,7 +14826,7 @@ exports[`<Table /> should render table with multi select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -15120,7 +15120,7 @@ exports[`<Table /> should render table with multi select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -15414,7 +15414,7 @@ exports[`<Table /> should render table with multi select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -16965,7 +16965,7 @@ exports[`<Table /> should render table with multi select 2`] = `
         >
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -17281,7 +17281,7 @@ exports[`<Table /> should render table with multi select 2`] = `
           </tr>
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-selected c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-selected c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -17597,7 +17597,7 @@ exports[`<Table /> should render table with multi select 2`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -17891,7 +17891,7 @@ exports[`<Table /> should render table with multi select 2`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -18185,7 +18185,7 @@ exports[`<Table /> should render table with multi select 2`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c29 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c29 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -19531,7 +19531,7 @@ exports[`<Table /> should render table with multi select 3`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c22 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c22 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -19825,7 +19825,7 @@ exports[`<Table /> should render table with multi select 3`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c22 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c22 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -20119,7 +20119,7 @@ exports[`<Table /> should render table with multi select 3`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c22 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c22 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -20413,7 +20413,7 @@ exports[`<Table /> should render table with multi select 3`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c22 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c22 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -20707,7 +20707,7 @@ exports[`<Table /> should render table with multi select 3`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c22 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c22 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -21489,7 +21489,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -21575,7 +21575,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -21618,7 +21618,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -22223,7 +22223,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -22309,7 +22309,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -22367,7 +22367,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -23076,7 +23076,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -23246,7 +23246,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -24200,7 +24200,7 @@ exports[`<Table /> should render table with single select 1`] = `
         >
           <tr
             aria-selected="true"
-            class="tr tr-body row-select row-select-clickable row-select-single-selected c11 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable row-select-single-selected c11 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -24370,7 +24370,7 @@ exports[`<Table /> should render table with single select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c11 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c11 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -24540,7 +24540,7 @@ exports[`<Table /> should render table with single select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c11 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c11 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -24710,7 +24710,7 @@ exports[`<Table /> should render table with single select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c11 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c11 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -24880,7 +24880,7 @@ exports[`<Table /> should render table with single select 1`] = `
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body row-select row-select-clickable c11 clickable css-14p8z18-getRowContainerStyle-Row"
+            class="tr tr-body row-select row-select-clickable c11 blade-table-body-row clickable css-14p8z18-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -25670,7 +25670,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
         >
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -25840,7 +25840,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26010,7 +26010,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26180,7 +26180,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26350,7 +26350,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26520,7 +26520,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26690,7 +26690,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -26860,7 +26860,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -27030,7 +27030,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
@@ -27200,7 +27200,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </tr>
           <tr
             aria-selected="false"
-            class="tr tr-body c11 clickable css-ix64pr-getRowContainerStyle-Row"
+            class="tr tr-body c11 blade-table-body-row clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
             data-table-library_tr-body=""
             role="row"
