@@ -2223,6 +2223,61 @@ describe('<Table />', () => {
       });
     });
 
+    it('should pin the sticky columns in a multi-select footer without a checkbox cell', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table
+          data={{ nodes: nodes.slice(0, 2) }}
+          height="300px"
+          selectionType="multiple"
+          stickyColumns={2}
+          isFooterSticky
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  {/* no cell for the checkbox column, so the row is one cell short at the end */}
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const rows = Array.from(container.querySelectorAll('tr'));
+        const footer = rows[rows.length - 1];
+        expect(footer.children).toHaveLength(5);
+        expect(getStickyCellIndexes(footer)).toEqual([0, 1, 2]);
+      });
+    });
+
     it('should pin only the first column on mobile', async () => {
       jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
       mockGridColumnWidths('64px 160px 180px 200px 200px 200px');

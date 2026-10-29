@@ -166,13 +166,14 @@ const useStickyColumnsLayout = ({
     if (stickyCellCount <= 0 || isLoading || !tableWrapper) return undefined;
 
     // Scroll events don't bubble, so they are caught on the way down. Which element scrolls
-    // differs between a regular and a virtualized table, so any scroll container holding the rows
-    // counts, while scrolling inside a cell (a text area, say) doesn't.
+    // differs between a regular table and a virtualized one (where the header and the body rows
+    // can sit in different containers), so any scroll container holding rows of this table counts,
+    // while scrolling inside a cell (a text area, or a nested table) doesn't.
     const handleScroll = (event: Event): void => {
       const scrollContainer = event.target;
       if (!(scrollContainer instanceof Element)) return;
-      const firstRow = tableWrapper.querySelector('tr');
-      if (!firstRow || !scrollContainer.contains(firstRow)) return;
+      const row = scrollContainer.querySelector('tr');
+      if (row?.closest('table')?.parentElement !== tableWrapper) return;
       setIsScrolledHorizontally(scrollContainer.scrollLeft > 0);
     };
 

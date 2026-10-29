@@ -373,8 +373,13 @@ const _Table = <Item,>({
         },
       ]
     : completeHeaderRows;
+  // Footer rows often leave out the checkbox column's cell, which only drops the last column's
+  // cell (the others stay in their own columns), so such a row counts as complete too
   const completeFooterRows: CompleteRow[] = [
     { rowSelector: '', cellCount: gridColumnCountWithoutHoverActions },
+    ...(selectionType === 'multiple'
+      ? [{ rowSelector: '', cellCount: gridColumnCountWithoutHoverActions - 1 }]
+      : []),
   ];
   const getStickyCellCSS = ({
     zIndex,
