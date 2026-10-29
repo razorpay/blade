@@ -7,7 +7,8 @@ import {
 } from '@razorpay/i18nify-js';
 import React from 'react';
 import type { PhoneNumberInputProps } from './types';
-import { countryNameFormatter, CountrySelector } from './CountrySelector';
+import { CountrySelector } from './CountrySelector';
+import { countryNameFormatter } from './countryNameFormatter';
 import { BaseInput } from '~components/Input/BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
@@ -105,7 +106,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       return allowedCountries.map((countryCode) => {
         return {
           code: countryCode,
-          name: countryNameFormatter.of(countryCode)!,
+          name: countryNameFormatter.of(countryCode),
         };
       });
     }
@@ -115,7 +116,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       .map((countryCode) => {
         return {
           code: countryCode,
-          name: countryNameFormatter.of(countryCode)!,
+          name: countryNameFormatter.of(countryCode),
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
