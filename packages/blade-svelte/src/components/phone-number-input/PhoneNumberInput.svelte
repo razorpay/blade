@@ -41,7 +41,10 @@
      * `country`.
      */
     value?: string;
-    /** ISO code. A `value` with a plus names its own country and wins. */
+    /**
+     * ISO code. A `value` with a plus names its own country and wins.
+     * @default 'IN', as Blade React's; the first of `countries` when it holds no India
+     */
     country?: string;
     onChange?: (change: PhoneNumberChange) => void;
     onCountryChange?: (change: { country: string }) => void;
@@ -82,10 +85,10 @@
     span?: InputGroupSpan;
     name?: string;
     /**
-     * Localized name of the country button and of the country list — the
-     * library ships no copy.
+     * Localized name of the country button and of the country list.
+     * @default 'Country'
      */
-    countryLabel: string;
+    countryLabel?: string;
     /** Localized; handed to an app presenting the list (`adapters.presentDropdown`), for its close button. */
     closeLabel?: string;
     accessibilityLabel?: string;
@@ -100,7 +103,7 @@
     countries,
     allowedCountries,
     value = $bindable(''),
-    country = $bindable(),
+    country = $bindable('IN'),
     onChange,
     onCountryChange,
     label,
@@ -126,7 +129,7 @@
     autoFocus = false,
     span,
     name,
-    countryLabel,
+    countryLabel = 'Country',
     closeLabel,
     accessibilityLabel,
     testID,

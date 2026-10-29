@@ -67,6 +67,25 @@ describe('OTPInput standalone', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
+  it('lets a composing soft keyboard through to input: Android says Unidentified at keydown', async () => {
+    const onChange = vi.fn();
+    const queries = render(OTPInputHarness, { props: { onChange } });
+
+    // Not prevented: the digit arrives at `input` and sets the cell.
+    expect(await fireEvent.keyDown(cell(queries, 0), { key: 'Unidentified', keyCode: 229 })).toBe(
+      true,
+    );
+    expect(await fireEvent.keyDown(cell(queries, 0), { key: 'Process', isComposing: true })).toBe(
+      true,
+    );
+    cell(queries, 0).value = '4';
+    await fireEvent.input(cell(queries, 0));
+
+    expect(cell(queries, 0).value).toBe('4');
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ value: '4' }));
+    expect(document.activeElement).toBe(cell(queries, 1));
+  });
+
   it('an empty commit clears the cell', async () => {
     const onChange = vi.fn();
     const queries = render(OTPInputHarness, {

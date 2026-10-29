@@ -73,8 +73,10 @@ export interface ButtonStyleProps {
 }
 
 // Blade's Button, colour by variant by state (Button/buttonTokens.ts). Hover,
-// press and keyboard focus all take the highlighted step; disabled (and
-// busy, which disables) its own. Borders are inset shadows, baked into named
+// press and keyboard focus all take the highlighted step, and only while
+// enabled: disabled (and busy, which looks it) keeps its own look under a
+// pointer or focus, where a tie in specificity would otherwise let the
+// state rule win. Borders are inset shadows, baked into named
 // shadows in uno.config.ts; focus draws the highlighted frame under Blade's
 // 4px ring as one box-shadow. Width is the caller's (`class="w-full"`).
 // Pressed anywhere on it, an enabled, idle button presses its content to 95%
@@ -89,31 +91,31 @@ const CONTENT = 'relative z-1 flex flex-1 flex-row items-center justify-center w
 // The filled button's resting sheen, from its top-left corner, gone on
 // hover, press and focus as the fill darkens.
 const SHEEN =
-  'before:content-empty before:pointer-events-none before:absolute before:inset-0 before:rounded-inherit before:transition-opacity before:duration-xquick before:ease-standard hover:before:opacity-0 focus-visible:before:opacity-0 active:before:opacity-0 disabled:before:opacity-0';
+  'before:content-empty before:pointer-events-none before:absolute before:inset-0 before:rounded-inherit before:transition-opacity before:duration-xquick before:ease-standard hover:enabled:before:opacity-0 focus-visible:enabled:before:opacity-0 active:enabled:before:opacity-0 disabled:before:opacity-0';
 
 // Literal per colour: Uno extracts class names from source, so none may be
 // built by interpolation.
 const FRAME = {
   primary:
-    'shadow-button-primary hover:shadow-button-primary-highlighted active:shadow-button-primary-highlighted focus-visible:shadow-button-primary-focus',
+    'shadow-button-primary hover:enabled:shadow-button-primary-highlighted active:enabled:shadow-button-primary-highlighted focus-visible:enabled:shadow-button-primary-focus',
   neutral:
-    'shadow-button-neutral hover:shadow-button-neutral-highlighted active:shadow-button-neutral-highlighted focus-visible:shadow-button-neutral-focus',
+    'shadow-button-neutral hover:enabled:shadow-button-neutral-highlighted active:enabled:shadow-button-neutral-highlighted focus-visible:enabled:shadow-button-neutral-focus',
   positive:
-    'shadow-button-positive hover:shadow-button-positive-highlighted active:shadow-button-positive-highlighted focus-visible:shadow-button-positive-focus',
+    'shadow-button-positive hover:enabled:shadow-button-positive-highlighted active:enabled:shadow-button-positive-highlighted focus-visible:enabled:shadow-button-positive-focus',
   negative:
-    'shadow-button-negative hover:shadow-button-negative-highlighted active:shadow-button-negative-highlighted focus-visible:shadow-button-negative-focus',
+    'shadow-button-negative hover:enabled:shadow-button-negative-highlighted active:enabled:shadow-button-negative-highlighted focus-visible:enabled:shadow-button-negative-focus',
 };
 const FILLED_FRAME = 'focus-visible:outline-none disabled:shadow-none';
 
 // Filled (`primary`): the colour's fill and frame, white text (neutral's own
 // on-neutral text; white's is black).
 const FILLED: Record<Color, string> = {
-  primary: `${SHEEN} ${FRAME.primary} ${FILLED_FRAME} bg-interactive-primary-default text-interactive-on-primary-normal hover:bg-interactive-primary-highlighted focus-visible:bg-interactive-primary-highlighted active:bg-interactive-primary-highlighted disabled:bg-interactive-primary-disabled disabled:text-interactive-primary-disabled`,
-  neutral: `${SHEEN} ${FRAME.neutral} ${FILLED_FRAME} bg-interactive-neutral-default text-interactive-on-neutral-normal hover:bg-interactive-neutral-highlighted focus-visible:bg-interactive-neutral-highlighted active:bg-interactive-neutral-highlighted disabled:bg-interactive-neutral-disabled disabled:text-interactive-on-neutral-disabled`,
-  positive: `${SHEEN} ${FRAME.positive} ${FILLED_FRAME} bg-interactive-positive-default text-interactive-static-white-normal hover:bg-interactive-positive-highlighted focus-visible:bg-interactive-positive-highlighted active:bg-interactive-positive-highlighted disabled:bg-interactive-positive-disabled disabled:text-interactive-positive-disabled`,
-  negative: `${SHEEN} ${FRAME.negative} ${FILLED_FRAME} bg-interactive-negative-default text-interactive-static-white-normal hover:bg-interactive-negative-highlighted focus-visible:bg-interactive-negative-highlighted active:bg-interactive-negative-highlighted disabled:bg-interactive-negative-disabled disabled:text-interactive-negative-disabled`,
+  primary: `${SHEEN} ${FRAME.primary} ${FILLED_FRAME} bg-interactive-primary-default text-interactive-on-primary-normal hover:enabled:bg-interactive-primary-highlighted focus-visible:enabled:bg-interactive-primary-highlighted active:enabled:bg-interactive-primary-highlighted disabled:bg-interactive-primary-disabled disabled:text-interactive-primary-disabled`,
+  neutral: `${SHEEN} ${FRAME.neutral} ${FILLED_FRAME} bg-interactive-neutral-default text-interactive-on-neutral-normal hover:enabled:bg-interactive-neutral-highlighted focus-visible:enabled:bg-interactive-neutral-highlighted active:enabled:bg-interactive-neutral-highlighted disabled:bg-interactive-neutral-disabled disabled:text-interactive-on-neutral-disabled`,
+  positive: `${SHEEN} ${FRAME.positive} ${FILLED_FRAME} bg-interactive-positive-default text-interactive-static-white-normal hover:enabled:bg-interactive-positive-highlighted focus-visible:enabled:bg-interactive-positive-highlighted active:enabled:bg-interactive-positive-highlighted disabled:bg-interactive-positive-disabled disabled:text-interactive-positive-disabled`,
+  negative: `${SHEEN} ${FRAME.negative} ${FILLED_FRAME} bg-interactive-negative-default text-interactive-static-white-normal hover:enabled:bg-interactive-negative-highlighted focus-visible:enabled:bg-interactive-negative-highlighted active:enabled:bg-interactive-negative-highlighted disabled:bg-interactive-negative-disabled disabled:text-interactive-negative-disabled`,
   white:
-    'shadow-button-white focus-visible:shadow-button-white-focus focus-visible:outline-none disabled:shadow-none bg-interactive-static-white-default text-interactive-static-black-muted hover:bg-interactive-static-white-highlighted focus-visible:bg-interactive-static-white-highlighted active:bg-interactive-static-white-highlighted disabled:bg-interactive-static-white-disabled disabled:text-interactive-static-black-disabled',
+    'shadow-button-white focus-visible:enabled:shadow-button-white-focus focus-visible:outline-none disabled:shadow-none bg-interactive-static-white-default text-interactive-static-black-muted hover:enabled:bg-interactive-static-white-highlighted focus-visible:enabled:bg-interactive-static-white-highlighted active:enabled:bg-interactive-static-white-highlighted disabled:bg-interactive-static-white-disabled disabled:text-interactive-static-black-disabled',
 };
 
 // Outlined (`secondary`): a white
@@ -121,16 +123,16 @@ const FILLED: Record<Color, string> = {
 // gray for primary, the colour's own for the rest. Neutral rings in its own
 // faded gray.
 const OUTLINE =
-  'bg-surface-gray-intense shadow-button-outlined hover:shadow-button-outlined-highlighted active:shadow-button-outlined-highlighted focus-visible:outline-none disabled:bg-interactive-static-white-ghost disabled:shadow-button-outlined-disabled';
+  'bg-surface-gray-intense shadow-button-outlined hover:enabled:shadow-button-outlined-highlighted active:enabled:shadow-button-outlined-highlighted focus-visible:outline-none disabled:bg-interactive-static-white-ghost disabled:shadow-button-outlined-disabled';
 const OUTLINE_FOCUS = 'focus-visible:shadow-button-outlined-focus';
 const OUTLINED: Record<Color, string> = {
   primary: `${OUTLINE} ${OUTLINE_FOCUS} text-interactive-gray-normal disabled:text-interactive-gray-disabled`,
-  neutral: `${OUTLINE} focus-visible:shadow-button-outlined-neutral-focus text-interactive-neutral-normal disabled:text-interactive-neutral-disabled`,
+  neutral: `${OUTLINE} focus-visible:enabled:shadow-button-outlined-neutral-focus text-interactive-neutral-normal disabled:text-interactive-neutral-disabled`,
   positive: `${OUTLINE} ${OUTLINE_FOCUS} text-interactive-positive-normal disabled:text-interactive-positive-disabled`,
   negative: `${OUTLINE} ${OUTLINE_FOCUS} text-interactive-negative-normal disabled:text-interactive-negative-disabled`,
   // On a dark surface: a faint white box in a white rim, white text.
   white:
-    'bg-interactive-static-white-faded shadow-button-white-outlined hover:bg-interactive-static-black-faded active:bg-interactive-static-black-faded focus-visible:bg-interactive-static-black-faded focus-visible:shadow-button-white-outlined-focus focus-visible:outline-none disabled:bg-interactive-gray-disabled disabled:shadow-button-white-outlined-disabled text-interactive-static-white-normal disabled:text-interactive-static-white-disabled',
+    'bg-interactive-static-white-faded shadow-button-white-outlined hover:enabled:bg-interactive-static-black-faded active:enabled:bg-interactive-static-black-faded focus-visible:enabled:bg-interactive-static-black-faded focus-visible:enabled:shadow-button-white-outlined-focus focus-visible:outline-none disabled:bg-interactive-gray-disabled disabled:shadow-button-white-outlined-disabled text-interactive-static-white-normal disabled:text-interactive-static-white-disabled',
 };
 
 // Blade DSL's Button (Figma): a min height (28/32/36/48px), side padding

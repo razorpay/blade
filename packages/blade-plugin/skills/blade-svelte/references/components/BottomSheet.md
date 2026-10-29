@@ -12,7 +12,7 @@ BottomSheet is the phone-first dialog on the bottom edge, for a picker, a confir
 - It renders into the overlay host of the app's BladeProvider (the examples assume the app has one)
 - Compose the content from `BottomSheetHeader`, `BottomSheetBody` and `BottomSheetFooter`; there is no `size`, `snapPoints`, `title` or `padding` on the sheet itself
 - A release dismisses after a downward fling or past half the sheet's height, reporting `onDismiss({ source: 'drag' })`; a shorter drag settles back
-- With `isDismissible={false}` the close button is hidden and a drag resists; the sheet stays open until `close` is called
+- `onDismiss({ source, close, preventDefault })` fires on every user dismissal; `preventDefault()` keeps the sheet open this time (ask first, then `close()`). With `isDismissible={false}` the close button is hidden and a drag resists; the sheet stays open until `close` is called
 - `isDraggable={false}` hides the handle and stops the drag; it is a style prop, so `BladeProvider` `defaults={{ BottomSheet: { isDraggable: false } }}` sets it too (Modal's defaults never reach a sheet)
 - The header's back button (`showBackButton`) is a step back inside the sheet, not a dismissal: handle it in `onBackButtonClick`
 

@@ -141,6 +141,27 @@ describe('Modal', () => {
     expect(queryByTestId('modal')).toBeNull();
   });
 
+  it('onDismiss can prevent the close, keeping the close button and asking first', async () => {
+    let asking = true;
+    const onDismiss = vi.fn((event: { preventDefault: () => void }) => {
+      if (asking) {
+        event.preventDefault();
+      }
+    });
+    const { getByTestId, getByRole, queryByTestId } = render(ModalHarness, {
+      props: { withHost: true, isOpen: true, onDismiss },
+    });
+    await fireEvent.click(getByTestId('host-backdrop'));
+    await escape();
+    expect(onDismiss).toHaveBeenCalledTimes(2);
+    expect(queryByTestId('modal')).not.toBeNull();
+    // Still dismissible: the close button stays, and the next dismissal closes.
+    expect(getByRole('button', { name: 'Close' })).toBeTruthy();
+    asking = false;
+    await escape();
+    expect(queryByTestId('modal')).toBeNull();
+  });
+
   it.each([
     ['children', 'cancel'],
     ['body', 'body-cancel'],
@@ -282,8 +303,11 @@ describe('Modal', () => {
     await fireEvent.keyDown(close, { key: 'Tab', shiftKey: true });
     expect(document.activeElement).toBe(last);
 
+    // Handed back as it moved in: without the browser's scroll jump.
+    const focus = vi.spyOn(trigger, 'focus');
     await escape();
     expect(document.activeElement).toBe(trigger);
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
   });
 });
 
