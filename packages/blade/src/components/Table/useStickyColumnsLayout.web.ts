@@ -46,7 +46,9 @@ const getGridColumnWidths = (grid: Element): number[] | null => {
 };
 
 // Rows (tr) are `display: contents` in a regular table, so the grid is the table element, while
-// in a virtualized table every row and the header wrapper are grids of their own.
+// in a virtualized table every row and the header wrapper are grids of their own. The walk starts
+// at the row, since a cell can be a grid itself (header cells with showBorderedCells in a
+// virtualized table) and its own tracks aren't the table's columns.
 const getClosestGrid = (element: Element | null): Element | null => {
   let current = element;
   while (current) {
@@ -116,7 +118,7 @@ const useStickyColumnsLayout = ({
       // The table library renders its rows after this effect runs, so the cells are looked up on
       // every measurement
       const firstRow = tableWrapper?.querySelector('tr');
-      const grid = getClosestGrid(firstRow?.firstElementChild ?? null);
+      const grid = getClosestGrid(firstRow ?? null);
       if (!firstRow || !grid) return;
       // The grid resizes with the table and the sticky cells resize when their column does
       observeOnly([grid, ...Array.from(firstRow.children).slice(0, stickyCellCount)]);

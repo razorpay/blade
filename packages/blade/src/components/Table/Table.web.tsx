@@ -273,9 +273,19 @@ const _Table = <Item,>({
   // table theme, which would otherwise inject a new copy of the sticky styles on every change
   const getStickyCellOffsetVariable = (index: number): string =>
     `--blade-table-sticky-cell-left-${index}`;
-  const stickyCellOffsetVariables = Object.fromEntries(
-    stickyCellOffsets.map((offset, index) => [getStickyCellOffsetVariable(index), `${offset}px`]),
-  ) as React.CSSProperties;
+  // The scroll shadow is switched the same way, so scrolling away from the left edge doesn't
+  // regenerate the theme either
+  const stickyColumnShadowVariable = '--blade-table-sticky-column-shadow';
+  const stickyCellOffsetVariables = {
+    ...Object.fromEntries(
+      stickyCellOffsets.map((offset, index) => [getStickyCellOffsetVariable(index), `${offset}px`]),
+    ),
+    ...(pinnedCellCount > 0 && {
+      [stickyColumnShadowVariable]: isScrolledHorizontally
+        ? theme.elevation[tableStickyColumn.shadowElevation]
+        : 'none',
+    }),
+  } as React.CSSProperties;
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -314,9 +324,7 @@ const _Table = <Item,>({
       getIn(theme.border.width, tableStickyColumn.dividerWidth),
     )} solid ${getIn(theme.colors, tableStickyColumn.dividerColor)};
     pointer-events: none;
-    box-shadow: ${
-      isScrolledHorizontally ? theme.elevation[tableStickyColumn.shadowElevation] : 'none'
-    };
+    box-shadow: var(${stickyColumnShadowVariable}, none);
     clip-path: inset(${stickyColumnShadowOverhang} -${stickyColumnShadowOverhang} 0 0);
     transition: box-shadow ${makeMotionTime(
       getIn(theme.motion, tableStickyColumn.shadowMotionDuration),
