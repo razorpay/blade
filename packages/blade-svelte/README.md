@@ -127,6 +127,9 @@ export default {
     // addVariant's strings
     variants: { 'quick-buy': '[data-quick-buy="true"] &' },
     preflight: true, // the default with a theme
+    // Blade's tokens: lengths in px, type in rem (the defaults); a Tailwind
+    // app whose spacing was rem keeps it with `layout: 'rem'`.
+    units: { layout: 'px', font: 'rem', rootFontSize: 16 },
   }),
   content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
 };
@@ -137,6 +140,10 @@ export default {
 - A class both define (`rounded-none`, `mx-auto`, `shadow-card`) is written
   once, as Blade defines it, at Tailwind's place in the stylesheet, so it
   wins and loses against your other classes as it did under Tailwind.
+- `units` decides how such a class is written: `p-4` is 16px by default
+  and 1rem with `units: { layout: 'rem' }`. Values from your `theme` and
+  bracketed values are written as given; border widths, shadows and outline
+  offsets stay px, as Tailwind keeps them.
 - The font classes are the exception: `font-normal`…`font-bold`, `font-sans`
   and `font-mono` are Blade's weights and faces (Inter, Menlo) until your
   theme sets the same key (`fontFamily.sans`, `fontWeight.medium`…); then
@@ -145,6 +152,12 @@ export default {
   `grayscale brightness-0` keeps both.
 - The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
   them apart (in a cascade layer), `@unocss !base;` emits the rest.
+- A variant's utilities come after the plain ones, variant by variant in
+  Tailwind's order (`hover:` before `focus:` before `active:` before
+  `disabled:`, the screens last), each in its own `variant-*` layer:
+  `hover:bg-a active:bg-b` is the pressed colour, as under Tailwind. Within a
+  variant, and among the plain utilities, classes sort as Tailwind sorts them
+  (`h-4`, then `h-[13px]`, then `h-auto`).
 
 #### Theming with CSS variables
 
