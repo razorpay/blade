@@ -11,4 +11,4 @@ feat(Table): add `stickyColumns` to pin more than one column
 - A divider is drawn after the last sticky column, and it casts a `midRaised` shadow over the scrolling columns as soon as the table is scrolled horizontally. In rows below a cell that spans rows, only the first column stays pinned and there is no divider, rather than cells pinned at the wrong offset.
 - On mobile, only the first column stays sticky so the pinned columns don't fill the screen.
 - Works in virtualized tables: the rows and header now grow to the width of their columns so sticky cells don't slide out of view when scrolled far right.
-- `isFirstColumnSticky` keeps working and is now deprecated in favour of `stickyColumns={1}`. `stickyColumns` takes precedence when both are set. Tables using `isFirstColumnSticky` also get the new divider and scroll shadow after the first column.
+- `isFirstColumnSticky` keeps working and is now deprecated in favour of `stickyColumns={1}`. `stickyColumns` takes precedence when both are set. The divider and scroll shadow only come with `stickyColumns`, so tables using `isFirstColumnSticky` look the same as before.

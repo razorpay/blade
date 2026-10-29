@@ -269,6 +269,9 @@ const _Table = <Item,>({
   });
   // Cells are pinned once their offset is known, which can be fewer than asked for (see the hook)
   const pinnedCellCount = stickyCellOffsets.length;
+  // The divider and scroll shadow come with stickyColumns only, so tables still using
+  // isFirstColumnSticky look as they did before it was deprecated
+  const hasStickyColumnDivider = pinnedCellCount > 0 && stickyColumns !== undefined;
   // The offsets change whenever a column resizes, so they go in CSS variables rather than in the
   // table theme, which would otherwise inject a new copy of the sticky styles on every change
   const getStickyCellOffsetVariable = (index: number): string =>
@@ -280,7 +283,7 @@ const _Table = <Item,>({
     ...Object.fromEntries(
       stickyCellOffsets.map((offset, index) => [getStickyCellOffsetVariable(index), `${offset}px`]),
     ),
-    ...(pinnedCellCount > 0 && {
+    ...(hasStickyColumnDivider && {
       [stickyColumnShadowVariable]: isScrolledHorizontally
         ? theme.elevation[tableStickyColumn.shadowElevation]
         : 'none',
@@ -420,14 +423,13 @@ const _Table = <Item,>({
     z-index: ${spannedZIndex} !important;
   }`;
     }).join('');
-    const dividerSelector =
-      pinnedCellCount > 0
-        ? getCellInFullRowSelector({
-            nth: pinnedCellCount,
-            completeRows,
-            pseudoSelector: '::after',
-          })
-        : '';
+    const dividerSelector = hasStickyColumnDivider
+      ? getCellInFullRowSelector({
+          nth: pinnedCellCount,
+          completeRows,
+          pseudoSelector: '::after',
+        })
+      : '';
     return dividerSelector
       ? `${stickyCellCSS}
   ${dividerSelector} {

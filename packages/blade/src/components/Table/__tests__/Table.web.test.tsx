@@ -2070,6 +2070,17 @@ describe('<Table />', () => {
       expect(getStickyCellIndexes(getRows(firstColumnContainer).body)).toEqual([0]);
     });
 
+    it('should draw the divider and scroll shadow for stickyColumns but not isFirstColumnSticky', () => {
+      // the shadow is switched with a CSS variable that is only set when the divider is drawn
+      const getShadowVariable = (container: HTMLElement): string | undefined =>
+        container
+          .querySelector<HTMLElement>('[style*="--blade-table-sticky-cell-left-0"]')
+          ?.style.getPropertyValue('--blade-table-sticky-column-shadow');
+
+      expect(getShadowVariable(renderStickyColumnsTable({ stickyColumns: 1 }))).toBe('none');
+      expect(getShadowVariable(renderStickyColumnsTable({ isFirstColumnSticky: true }))).toBe('');
+    });
+
     it('should not pin any column by default', () => {
       const { body } = getRows(renderStickyColumnsTable());
       expect(getStickyCellIndexes(body)).toEqual([]);
