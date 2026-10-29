@@ -2075,6 +2075,57 @@ describe('<Table />', () => {
       expect(getStickyCellIndexes(body)).toEqual([]);
     });
 
+    it('should keep pinning the sticky columns in a row with a cell spanning columns', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 2) }} height="300px" stickyColumns={3}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    {index === 0 ? (
+                      <TableCell gridColumnStart={1} gridColumnEnd={3}>
+                        {tableItem.name}
+                      </TableCell>
+                    ) : (
+                      <>
+                        <TableCell>{tableItem.name}</TableCell>
+                        <TableCell>{tableItem.paymentId}</TableCell>
+                      </>
+                    )}
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const [, spanningRow, fullRow] = Array.from(container.querySelectorAll('tr'));
+        expect(getStickyCellIndexes(fullRow)).toEqual([0, 1, 2]);
+        // a cell spanning columns is followed by a hidden placeholder cell for each column it
+        // covers, so the row keeps a cell per column: the spanning cell is pinned at the first
+        // column's offset and the Method cell at the third column's, the placeholder stays hidden
+        expect(spanningRow.children).toHaveLength(5);
+        expect(spanningRow.children[1].classList.contains('colspan')).toBe(true);
+        expect(getStickyCellIndexes(spanningRow)).toEqual([0, 2]);
+      });
+    });
+
     it('should pin the further sticky columns only in rows with a cell for every column', async () => {
       mockGridColumnWidths('160px 180px 200px 200px 200px');
       const { container } = renderWithTheme(
