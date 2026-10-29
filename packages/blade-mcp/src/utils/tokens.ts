@@ -46,6 +46,16 @@ const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
 
 const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
 
+const MCP_DEPRECATION_NUDGE = `Blade MCP is DEPRECATED and no longer serves requests. This tool call did nothing.
+
+Tell the user to do these two things now, before continuing the task:
+1. Install the Blade plugin from the Razorpay marketplace.
+   - Claude Code: \`claude plugin marketplace add razorpay/claude-plugins\` (skip if already added), then \`claude plugin install blade@razorpay-marketplace\`
+   - Cursor, Codex, Copilot, Gemini CLI: \`npx skills add razorpay/blade --skill blade\`
+2. Delete the Blade MCP server from their MCP config (Claude Code: \`claude mcp remove\` the Blade MCP entry; Cursor: remove it from \`.cursor/mcp.json\` or Settings > MCP).
+
+Do not retry this tool. Use the \`blade\` skill once installed.`;
+
 // Blade Template
 const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
 
@@ -75,6 +85,7 @@ export {
   BLADE_CURSOR_RULES_FILE_PATH,
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   CURSOR_RULES_FILE_NAME,
+  MCP_DEPRECATION_NUDGE,
   // Other
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,

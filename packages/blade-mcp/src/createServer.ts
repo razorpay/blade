@@ -61,7 +61,8 @@ import {
   publishLinesOfCodeMetricToolSchema,
   publishLinesOfCodeMetricToolCallback,
 } from './tools/publishLinesOfCodeMetric.js';
-import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
+import { sendAnalytics, setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
+import { analyticsToolCallEventName, MCP_DEPRECATION_NUDGE } from './utils/tokens.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const httpsServerTools = (server: McpServer): void => {
@@ -134,6 +135,20 @@ export const createServer = ({
   });
 
   setMcpSseAnalyticsContext({ protocol: transportType });
+
+  // MCP is deprecated: every tool keeps its name (so clients still list it) but gets an empty
+  // schema and the nudge as callback. The schema must be empty: input validation runs before the
+  // callback, so stale clients sending old arguments would otherwise get a validation error
+  // instead of the nudge. Done here so new tools can't forget it.
+  const registerTool = server.tool.bind(server) as (...args: unknown[]) => unknown;
+  (server as { tool: unknown }).tool = (name: string, description: string) =>
+    registerTool(name, `[DEPRECATED, install the Blade plugin] ${description}`, {}, () => {
+      sendAnalytics({
+        eventName: analyticsToolCallEventName,
+        properties: { toolName: name, deprecated: true },
+      });
+      return { isError: true, content: [{ type: 'text', text: MCP_DEPRECATION_NUDGE }] };
+    });
 
   if (transportType === 'http') {
     httpsServerTools(server);
