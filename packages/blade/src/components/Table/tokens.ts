@@ -20,15 +20,16 @@ const refreshWrapperZIndex = firstColumnStickyCornerZIndex + 1;
 
 const checkboxCellWidth = size['44'];
 
-// Divider drawn after the last sticky column so the scrolling columns read as sliding under it.
-// A step stronger than the row/cell borders so it still stands out with showBorderedCells. Once
-// the table is scrolled horizontally the divider also casts a shadow over the scrolling columns.
+// Divider drawn after the last sticky column once the table is scrolled horizontally, so the
+// scrolling columns read as sliding under it. A step stronger than the row/cell borders so it
+// still stands out with showBorderedCells. It fades in together with a shadow over the scrolling
+// columns.
 const tableStickyColumn = {
   dividerWidth: 'thin',
   dividerColor: 'surface.border.gray.subtle',
   shadowElevation: 'midRaised',
-  shadowMotionDuration: 'duration.quick',
-  shadowMotionEasing: 'easing.standard',
+  motionDuration: 'duration.quick',
+  motionEasing: 'easing.standard',
 } as const;
 
 const tableBackgroundColor = 'surface.background.gray.intense';

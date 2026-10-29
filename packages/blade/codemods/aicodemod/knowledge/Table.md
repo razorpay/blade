@@ -122,13 +122,14 @@ type TableProps<Item> = {
    * The isFirstColumnSticky prop determines whether the first column is sticky or not.
    * The default value is `false`.
    *
-   * @deprecated Use `stickyColumns={1}` instead, which also draws a divider and a scroll shadow
-   * after the first column.
+   * @deprecated Use `stickyColumns={1}` instead, which also shows a divider and a shadow
+   * after the first column once the table is scrolled.
    **/
   isFirstColumnSticky?: boolean;
   /**
    * The number of columns, counted from the left, that stay in view while the table scrolls
-   * horizontally. A divider is drawn after the last sticky column, with a shadow once scrolled.
+   * horizontally. Once the table is scrolled, a divider and a shadow fade in after the last
+   * sticky column.
    *
    * When `selectionType="multiple"`, the checkbox column is also sticky and does not count
    * towards this number.
@@ -624,7 +625,6 @@ Out implementation of virtualized table is an wrapper on top of react-table-libr
 ## Props
 
 most of props are same as Table component. we have added following table component.
-
 
 but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized that takes TableHeader, TableBody components.
 VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.

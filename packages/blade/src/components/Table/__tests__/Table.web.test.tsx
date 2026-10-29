@@ -2071,14 +2071,26 @@ describe('<Table />', () => {
     });
 
     it('should draw the divider and scroll shadow for stickyColumns but not isFirstColumnSticky', () => {
-      // the shadow is switched with a CSS variable that is only set when the divider is drawn
-      const getShadowVariable = (container: HTMLElement): string | undefined =>
-        container
-          .querySelector<HTMLElement>('[style*="--blade-table-sticky-cell-left-0"]')
-          ?.style.getPropertyValue('--blade-table-sticky-column-shadow');
+      // the divider and shadow are switched with CSS variables that are only set for stickyColumns,
+      // and both stay hidden until the table is scrolled
+      const getDividerVariables = (container: HTMLElement): string[] => {
+        const tableWrapper = container.querySelector<HTMLElement>(
+          '[style*="--blade-table-sticky-cell-left-0"]',
+        );
+        return [
+          tableWrapper?.style.getPropertyValue('--blade-table-sticky-column-shadow') ?? '',
+          tableWrapper?.style.getPropertyValue('--blade-table-sticky-column-divider-color') ?? '',
+        ];
+      };
 
-      expect(getShadowVariable(renderStickyColumnsTable({ stickyColumns: 1 }))).toBe('none');
-      expect(getShadowVariable(renderStickyColumnsTable({ isFirstColumnSticky: true }))).toBe('');
+      expect(getDividerVariables(renderStickyColumnsTable({ stickyColumns: 1 }))).toEqual([
+        'none',
+        'transparent',
+      ]);
+      expect(getDividerVariables(renderStickyColumnsTable({ isFirstColumnSticky: true }))).toEqual([
+        '',
+        '',
+      ]);
     });
 
     it('should not pin any column by default', () => {

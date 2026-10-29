@@ -471,7 +471,7 @@ export const TableWithStickyColumns = (): React.ReactElement => {
   return (
     <ExampleWrapper
       title="Table with Sticky Columns"
-      description="Use stickyColumns to keep the first few columns in view while scrolling right. A divider marks where the sticky columns end and casts a shadow once you scroll. On mobile only the first column stays sticky."
+      description="Use stickyColumns to keep the first few columns in view while scrolling right. Once you scroll, a divider and a shadow fade in to mark where the sticky columns end. On mobile only the first column stays sticky."
     >
       <Box display="flex" gap="spacing.8" paddingBottom="spacing.4" flexWrap="wrap">
         <RadioGroup

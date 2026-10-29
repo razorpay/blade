@@ -276,9 +276,10 @@ const _Table = <Item,>({
   // table theme, which would otherwise inject a new copy of the sticky styles on every change
   const getStickyCellOffsetVariable = (index: number): string =>
     `--blade-table-sticky-cell-left-${index}`;
-  // The scroll shadow is switched the same way, so scrolling away from the left edge doesn't
-  // regenerate the theme either
+  // The divider and its shadow only show once the table is scrolled, and they are switched the same
+  // way, so scrolling away from the left edge doesn't regenerate the theme either
   const stickyColumnShadowVariable = '--blade-table-sticky-column-shadow';
+  const stickyColumnDividerColorVariable = '--blade-table-sticky-column-divider-color';
   const stickyCellOffsetVariables = {
     ...Object.fromEntries(
       stickyCellOffsets.map((offset, index) => [getStickyCellOffsetVariable(index), `${offset}px`]),
@@ -287,6 +288,9 @@ const _Table = <Item,>({
       [stickyColumnShadowVariable]: isScrolledHorizontally
         ? theme.elevation[tableStickyColumn.shadowElevation]
         : 'none',
+      [stickyColumnDividerColorVariable]: isScrolledHorizontally
+        ? getIn(theme.colors, tableStickyColumn.dividerColor)
+        : 'transparent',
     }),
   } as React.CSSProperties;
 
@@ -311,7 +315,8 @@ const _Table = <Item,>({
    */
   // The divider is the right border of a transparent layer over the last sticky cell. The layer
   // covers the whole cell so that its shadow comes off a full edge rather than a 1px line.
-  // Once scrolled, the shadow shows how far the sticky columns reach. The layer reaches above the
+  // Both fade in once the table is scrolled, to show how far the sticky columns reach, and stay
+  // hidden at the left edge where nothing is underneath them yet. The layer reaches above the
   // cell so the shadow's downward offset still covers the top of the row, and the clip trims it
   // back to the row, keeping only the right side, so the shadows of stacked rows line up into one
   // even edge.
@@ -325,13 +330,13 @@ const _Table = <Item,>({
     left: 0;
     border-right: ${makeBorderSize(
       getIn(theme.border.width, tableStickyColumn.dividerWidth),
-    )} solid ${getIn(theme.colors, tableStickyColumn.dividerColor)};
+    )} solid var(${stickyColumnDividerColorVariable}, transparent);
     pointer-events: none;
     box-shadow: var(${stickyColumnShadowVariable}, none);
     clip-path: inset(${stickyColumnShadowOverhang} -${stickyColumnShadowOverhang} 0 0);
-    transition: box-shadow ${makeMotionTime(
-      getIn(theme.motion, tableStickyColumn.shadowMotionDuration),
-    )} ${getIn(theme.motion, tableStickyColumn.shadowMotionEasing)};
+    transition-property: box-shadow, border-color;
+    transition-duration: ${makeMotionTime(getIn(theme.motion, tableStickyColumn.motionDuration))};
+    transition-timing-function: ${getIn(theme.motion, tableStickyColumn.motionEasing)};
   `;
   /*
    * Cells are pinned by their position in the row (nth-of-type), which only matches their column
