@@ -385,6 +385,21 @@ describe('<ChatInput />', () => {
       expect(onFileChange.mock.calls[0][0].fileList).toHaveLength(1);
     });
 
+    it('reports file errors after the accepted files, so they are not cleared', () => {
+      const calls: string[] = [];
+      const { container } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          maxFileCount={1}
+          onFileChange={() => calls.push('change')}
+          onFileError={() => calls.push('error')}
+        />,
+      );
+      const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+      fireEvent.change(input, { target: { files: [makeFile('a.png', 1), makeFile('b.png', 1)] } });
+      expect(calls).toEqual(['change', 'error']);
+    });
+
     it('applies accept to pasted files too', () => {
       const onFileError = jest.fn();
       const onFileChange = jest.fn();

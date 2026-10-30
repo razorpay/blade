@@ -164,6 +164,7 @@ type ChatInputProps = {
 
   /**
    * Called for each file that is not added, because of `maxFileCount`, `maxFileSize` or `accept`.
+   * It is called after `onFileChange` for the files that were added from the same batch.
    *
    * **Note (React Native):** No effect.
    */

@@ -243,10 +243,6 @@ const useChatInput = (
         maxFileSize,
       });
 
-      for (const fileError of fileErrors) {
-        onFileError?.(fileError);
-      }
-
       for (const file of acceptedFiles) {
         if (!file.id) {
           file.id = generateFileId();
@@ -257,6 +253,12 @@ const useChatInput = (
         const newFileList = [...files, ...acceptedFiles];
         setFiles(() => newFileList);
         onFileChange?.({ fileList: newFileList });
+      }
+
+      // Errors come after onFileChange, so a product that clears its error message when files
+      // change still shows the error for a batch where only some files were added.
+      for (const fileError of fileErrors) {
+        onFileError?.(fileError);
       }
     },
     [files, accept, maxFileCount, maxFileSize, onFileError, setFiles, onFileChange],

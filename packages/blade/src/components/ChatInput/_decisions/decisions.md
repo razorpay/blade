@@ -498,7 +498,7 @@ Typing `/` at the start of the text opens a list of `commands` above the input, 
 
 ### Files
 
-The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxFileSize`, then `maxFileCount`. Each file that is not added calls `onFileError` with a code and a message. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
+The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxFileSize`, then `maxFileCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
 
 ### Ambient Border
 

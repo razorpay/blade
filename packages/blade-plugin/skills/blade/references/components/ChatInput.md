@@ -656,6 +656,11 @@ const ChatInputWithFileLimits = () => {
 ### Ambient Border
 
 ```tsx
-<ChatInput showAmbientBorder placeholder="Ask Ray anything" accessibilityLabel="Ask Ray" />
+import React from 'react';
+import { ChatInput } from '@razorpay/blade/components';
+
+const ChatInputWithAmbientBorder = () => (
+  <ChatInput showAmbientBorder placeholder="Ask Ray anything" accessibilityLabel="Ask Ray" />
+);
 ```
 
