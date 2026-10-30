@@ -35,12 +35,14 @@ describe('<ChatInput /> (native)', () => {
 
   it('should hide Send until there is something to send', () => {
     const { queryByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
-    expect(queryByRole('button', { name: 'Submit' })).toBeNull();
+    expect(queryByRole('button', { name: 'Submit', includeHiddenElements: false })).toBeNull();
 
     const { getAllByRole } = renderWithTheme(
       <ChatInput accessibilityLabel={accessibilityLabel} defaultValue="Hi" />,
     );
-    expect(getAllByRole('button', { name: 'Submit' })).toHaveLength(1);
+    expect(getAllByRole('button', { name: 'Submit', includeHiddenElements: false })).toHaveLength(
+      1,
+    );
   });
 
   it('should show Stop for status="streaming" and Retry for status="error"', () => {
@@ -100,7 +102,7 @@ describe('<ChatInput /> (native)', () => {
       <ChatInput accessibilityLabel={accessibilityLabel} isGenerating onStop={onStop} />,
     );
 
-    expect(queryByRole('button', { name: 'Submit' })).toBeNull();
+    expect(queryByRole('button', { name: 'Submit', includeHiddenElements: false })).toBeNull();
     const stopButton = getByRole('button', { name: 'Stop generation' });
     fireEvent.press(stopButton);
     expect(onStop).toHaveBeenCalledTimes(1);
