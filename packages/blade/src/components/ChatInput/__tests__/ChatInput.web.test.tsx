@@ -319,6 +319,43 @@ describe('<ChatInput />', () => {
     expect(await findByText('Upload files')).toBeInTheDocument();
   });
 
+  it('lets an actionMenu item open the file picker', async () => {
+    const user = userEvent.setup();
+    const { getByRole, findByText, container } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        actionMenu={({ openFilePicker }) => (
+          <MenuOverlay>
+            <MenuItem title="Upload files" onClick={openFilePicker} />
+          </MenuOverlay>
+        )}
+      />,
+    );
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    const clickSpy = jest.spyOn(input, 'click');
+    await user.click(getByRole('button', { name: 'Add files and more' }));
+    await user.click(await findByText('Upload files'));
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps pasted text when the clipboard also has a file', () => {
+    const onFileChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} onFileChange={onFileChange} />,
+    );
+    const textarea = getByRole('textbox', { name: accessibilityLabel });
+    const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+    Object.assign(pasteEvent, {
+      clipboardData: {
+        files: [new File(['x'], 'cells.png', { type: 'image/png' })],
+        getData: (type: string) => (type === 'text/plain' ? 'A1\tB1' : ''),
+      },
+    });
+    textarea.dispatchEvent(pasteEvent);
+    expect(pasteEvent.defaultPrevented).toBe(false);
+    expect(onFileChange).toHaveBeenCalledTimes(1);
+  });
+
   describe('slash commands', () => {
     const commands = [
       { value: 'refund', label: '/refund', description: 'Refund a payment' },

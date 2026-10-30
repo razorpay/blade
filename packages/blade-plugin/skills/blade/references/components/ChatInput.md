@@ -43,6 +43,13 @@ type FormInputOnEvent = ({
   rawValue?: string;
 }) => void;
 
+// MenuOverlayProps: the props of Blade's MenuOverlay (see the Menu doc)
+type MenuOverlayProps = {
+  children: React.ReactNode;
+  zIndex?: number;
+  width?: string;
+};
+
 type ChatInputStatus = 'ready' | 'submitted' | 'streaming' | 'error';
 
 type ChatInputCommand = {
@@ -160,15 +167,21 @@ type ChatInputProps = {
    * Content above the text, such as context chips (Blade `Tag`s) for the payment, order or report
    * the message is about.
    */
-  header?: React.ReactElement;
+  header?: React.ReactNode;
 
   /**
    * A Blade `MenuOverlay` that the "+" button opens, such as "Upload files" and "Add a payment".
    * Without it, the "+" button opens the file picker.
    *
+   * Pass a function to get `openFilePicker`, so a menu item can open ChatInput's own file picker:
+   * `actionMenu={({ openFilePicker }) => <MenuOverlay><MenuItem title="Upload files" onClick={openFilePicker} /></MenuOverlay>}`.
+   * With `actionMenu`, the "+" shows even when `hideFileUpload` is set, because it opens the menu.
+   *
    * **Note (React Native):** No effect. The "+" button calls `onFileChange`, as before.
    */
-  actionMenu?: React.ReactElement;
+  actionMenu?:
+    | React.ReactElement<MenuOverlayProps>
+    | ((helpers: { openFilePicker: () => void }) => React.ReactElement<MenuOverlayProps>);
 
   /**
    * Slash commands. Typing `/` at the start of the text opens a list of these above the input,
@@ -601,11 +614,11 @@ const AIComposer = ({ sendMessage, stop }: { sendMessage: (text: string) => Prom
       header={
         hasContext ? <Tag onDismiss={() => setHasContext(false)}>pay_Qx81Lm2</Tag> : undefined
       }
-      actionMenu={
+      actionMenu={({ openFilePicker }) => (
         <MenuOverlay>
-          <MenuItem title="Upload files" leading={<PaperclipIcon />} />
+          <MenuItem title="Upload files" leading={<PaperclipIcon />} onClick={openFilePicker} />
         </MenuOverlay>
-      }
+      )}
       commands={[{ value: 'refund', label: '/refund', description: 'Refund a payment' }]}
       onCommandSelect={({ value }) => console.log('command', value)}
       onSubmit={async ({ value }) => {

@@ -368,15 +368,15 @@ export const ContextAndActionMenu: StoryFn<typeof ChatInput> = () => {
             </>
           ) : undefined
         }
-        actionMenu={
+        actionMenu={({ openFilePicker }) => (
           <MenuOverlay>
-            <MenuItem title="Upload files" leading={<PaperclipIcon />} />
+            <MenuItem title="Upload files" leading={<PaperclipIcon />} onClick={openFilePicker} />
             <MenuItem title="Add a payment, order or settlement" leading={<FileTextIcon />} />
             <MenuDivider />
             <MenuHeader title="Tools" />
             <MenuItem title="Web search" leading={<GlobeIcon />} trailing="Off" />
           </MenuOverlay>
-        }
+        )}
       />
     </Box>
   );

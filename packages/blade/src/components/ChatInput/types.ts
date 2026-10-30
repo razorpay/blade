@@ -3,6 +3,7 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
+import type { MenuOverlayProps } from '~components/Menu';
 
 type ChatInputStatus = 'ready' | 'submitted' | 'streaming' | 'error';
 
@@ -121,15 +122,21 @@ type ChatInputProps = {
    * Content above the text, such as context chips (Blade `Tag`s) for the payment, order or report
    * the message is about.
    */
-  header?: React.ReactElement;
+  header?: React.ReactNode;
 
   /**
    * A Blade `MenuOverlay` that the "+" button opens, such as "Upload files" and "Add a payment".
    * Without it, the "+" button opens the file picker.
    *
+   * Pass a function to get `openFilePicker`, so a menu item can open ChatInput's own file picker:
+   * `actionMenu={({ openFilePicker }) => <MenuOverlay><MenuItem title="Upload files" onClick={openFilePicker} /></MenuOverlay>}`.
+   * With `actionMenu`, the "+" shows even when `hideFileUpload` is set, because it opens the menu.
+   *
    * **Note (React Native):** No effect. The "+" button calls `onFileChange`, as before.
    */
-  actionMenu?: React.ReactElement;
+  actionMenu?:
+    | React.ReactElement<MenuOverlayProps>
+    | ((helpers: { openFilePicker: () => void }) => React.ReactElement<MenuOverlayProps>);
 
   /**
    * Slash commands. Typing `/` at the start of the text opens a list of these above the input,

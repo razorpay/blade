@@ -41,8 +41,19 @@ const ChatInputCommandMenu = ({
   onSelect,
   onActiveIndexChange,
 }: ChatInputCommandMenuProps): React.ReactElement => {
+  const listRef = React.useRef<HTMLDivElement>(null);
+
+  // keep the highlighted command in view while arrow keys move through a long list
+  React.useEffect(() => {
+    const option = listRef.current?.querySelector<HTMLElement>(
+      `#${CSS.escape(getOptionId(activeIndex))}`,
+    );
+    option?.scrollIntoView?.({ block: 'nearest' });
+  }, [activeIndex, getOptionId]);
+
   return (
     <BaseBox
+      ref={listRef}
       id={listboxId}
       position="absolute"
       bottom="100%"

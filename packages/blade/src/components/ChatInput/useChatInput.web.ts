@@ -408,7 +408,11 @@ const useChatInput = (
     (event: React.ClipboardEvent<HTMLInputElement>) => {
       const clipboardFiles = Array.from(event.clipboardData?.files ?? []) as BladeFile[];
       if (clipboardFiles.length === 0) return;
-      event.preventDefault();
+      // Copying from Excel, Word or Numbers puts both text and an image on the clipboard: keep the
+      // text pasting as usual and attach the file too. Only a file-only paste is taken over.
+      if (!event.clipboardData?.getData?.('text/plain')) {
+        event.preventDefault();
+      }
       addFiles(clipboardFiles);
     },
     [addFiles],

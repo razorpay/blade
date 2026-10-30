@@ -287,7 +287,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             accessibilityLabel="Add files and more"
             isDisabled={isDisabled}
           />
-          {actionMenu}
+          {typeof actionMenu === 'function'
+            ? actionMenu({ openFilePicker: handleUploadClick })
+            : actionMenu}
         </Menu>
       );
     }
