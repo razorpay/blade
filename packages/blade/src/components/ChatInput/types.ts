@@ -120,8 +120,10 @@ type ChatInputProps = {
    * - `ready`: Send, once there is text or a file to send
    * - `submitted`: a loader, while the request is on its way
    * - `streaming`: Stop, while the reply streams (calls `onStop`)
-   * - `error`: Retry, after the request failed (calls `onSubmit` again; disabled without it). This
-   *   is about the request; `validationState="error"` is about what the person typed or attached.
+   * - `error`: Retry, after the request failed. It calls `onSubmit` with the last message sent,
+   *   even if the box has been cleared or edited since; before any send, with what is in the box.
+   *   It is disabled without `onSubmit`. This is about the request; `validationState="error"` is
+   *   about what the person typed or attached.
    *
    * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
    * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
@@ -164,6 +166,7 @@ type ChatInputProps = {
 
   /**
    * Called when a command is picked from the slash command list. ChatInput clears the `/...` text.
+   * Pass it whenever you pass `commands`; without it, Blade warns in development.
    *
    * **Note (React Native):** No effect.
    */
@@ -171,8 +174,7 @@ type ChatInputProps = {
 
   /**
    * Most files that can be attached in total, as in `FileUpload`. Files over the limit are not
-   * added, and
-   * `onFileError` is called with `code: 'maxCount'`.
+   * added, and `onFileError` is called with `code: 'maxCount'`.
    *
    * **Note (React Native):** No effect. Limit files in your own file picker.
    */

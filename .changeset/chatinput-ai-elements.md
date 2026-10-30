@@ -7,7 +7,7 @@ feat(ChatInput): AI Elements look, `status`, compact size, context chips, "+" me
 
 No prop is renamed or removed, and `onSubmit` only widens its return type, so no code has to change. New optional props:
 
-- `status`: `ready`, `submitted`, `streaming` or `error`, for Send, a loader, Stop or Retry. `isGenerating` still works but is now deprecated: use `status="streaming"`. Blade warns in development when Stop shows without `onStop`.
+- `status`: `ready`, `submitted`, `streaming` or `error`, for Send, a loader, Stop or Retry. Retry sends the last message again, even if the box was cleared. `isGenerating` still works but is now deprecated: use `status="streaming"`. Blade warns in development when Stop shows without `onStop`.
 - `size="small"`: a compact one-row composer that opens into the full layout once the text wraps.
 - `header`: context chips (Blade `Tag`s) above the text.
 - `actionMenu`: a `MenuOverlay` the "+" opens instead of the file picker, or a function that receives `openFilePicker` so a menu item can still open it (web).

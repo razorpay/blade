@@ -131,6 +131,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     resolvedStatus,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleFileRemove,
     handleFileDismiss,
   } = useChatInput(
@@ -251,7 +253,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       size={buttonSize}
       onSubmit={handleSubmit}
-      canRetry={Boolean(onSubmit)}
+      onRetry={handleRetry}
+      canRetry={canRetry}
       onStop={onStop}
     />
   );

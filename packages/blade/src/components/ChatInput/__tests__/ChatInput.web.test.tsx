@@ -242,6 +242,36 @@ describe('<ChatInput />', () => {
       await user.click(getByRole('button', { name: 'Retry' }));
       expect(onSubmit).toHaveBeenCalledWith({ value: 'Refund pay_123', fileList: [] });
     });
+
+    it('retries the message that failed, even after the product cleared the box', async () => {
+      const user = userEvent.setup();
+      const onSubmit = jest.fn();
+      const Parent = (): React.ReactElement => {
+        const [text, setText] = React.useState('');
+        const [status, setStatus] = React.useState<'ready' | 'error'>('ready');
+        return (
+          <ChatInput
+            accessibilityLabel={accessibilityLabel}
+            value={text}
+            onChange={({ value }) => setText(value)}
+            status={status}
+            onSubmit={(message) => {
+              onSubmit(message);
+              setText('');
+              setStatus('error');
+            }}
+          />
+        );
+      };
+      const { getByRole } = renderWithTheme(<Parent />);
+      await user.type(getByRole('textbox', { name: accessibilityLabel }), 'Refund pay_123{enter}');
+      expect(getByRole('textbox', { name: accessibilityLabel })).toHaveValue('');
+      const retry = getByRole('button', { name: 'Retry' });
+      expect(retry).toBeEnabled();
+      await user.click(retry);
+      expect(onSubmit).toHaveBeenCalledTimes(2);
+      expect(onSubmit).toHaveBeenLastCalledWith({ value: 'Refund pay_123', fileList: [] });
+    });
   });
 
   describe('clearOnSubmit', () => {
@@ -503,6 +533,13 @@ describe('<ChatInput />', () => {
       expect(textarea).not.toHaveAttribute('aria-activedescendant');
       fireEvent.focus(textarea);
       expect(getByRole('listbox')).toBeInTheDocument();
+    });
+
+    it('warns in development when commands has no onCommandSelect', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} commands={commands} />);
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('`onCommandSelect` is not'));
+      warn.mockRestore();
     });
 
     it('closes on Escape', async () => {

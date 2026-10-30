@@ -10,8 +10,9 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useId } from '~utils/useId';
 import { useCallbackRef } from '~utils/useCallbackRef';
+import { logger } from '~utils/logger';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
-import { useChatInputSubmit } from './useChatInputSubmit';
+import { useChatInputSubmit, useChatInputRetry } from './useChatInputSubmit';
 import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
@@ -112,6 +113,8 @@ const useChatInput = (
   commandMenu: CommandMenuState;
   handleTextChange: (args: { name?: string; value?: string }) => void;
   handleSubmit: () => void;
+  handleRetry: () => void;
+  canRetry: boolean;
   handleKeyDown: (args: {
     name?: string;
     key?: string;
@@ -272,7 +275,7 @@ const useChatInput = (
     onFileChange?.({ fileList: [] });
   }, [onFileChange]);
 
-  const submit = useChatInputSubmit({
+  const { submit, lastSent } = useChatInputSubmit({
     onSubmit,
     clearOnSubmit,
     textValue,
@@ -290,7 +293,29 @@ const useChatInput = (
     submit({ value: textValue, fileList: files });
   }, [isSubmitDisabled, resolvedStatus, submit, textValue, files]);
 
+  const { handleRetry, canRetry } = useChatInputRetry({
+    submit,
+    lastSent,
+    onSubmit,
+    textValue,
+    files,
+    isSubmitDisabled,
+  });
+
   // ---------- slash commands ----------
+  // Picking a command clears the "/..." text, so without a handler a pick would just lose it
+  const hasCommandsWithoutHandler = Boolean(commands?.length) && !onCommandSelect;
+  React.useEffect(() => {
+    if (hasCommandsWithoutHandler) {
+      logger({
+        type: 'warn',
+        moduleName: 'ChatInput',
+        message:
+          '`commands` is set but `onCommandSelect` is not, so picking a command only clears the text. Pass `onCommandSelect` to run the command.',
+      });
+    }
+  }, [hasCommandsWithoutHandler]);
+
   const listboxId = useId('chat-input-commands');
   const [commandActiveIndex, setCommandActiveIndex] = React.useState(0);
   const [dismissedCommandText, setDismissedCommandText] = React.useState<string | null>(null);
@@ -543,6 +568,8 @@ const useChatInput = (
     },
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleKeyDown,
     handleUploadClick,
     handleFileInputChange,

@@ -115,6 +115,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     commandMenu,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleKeyDown,
     handleUploadClick,
     handleFileInputChange,
@@ -317,7 +319,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       size={buttonSize}
       onSubmit={handleSubmit}
-      canRetry={Boolean(onSubmit)}
+      onRetry={handleRetry}
+      canRetry={canRetry}
       onStop={onStop}
     />
   );

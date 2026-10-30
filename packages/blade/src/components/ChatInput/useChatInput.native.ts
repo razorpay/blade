@@ -6,7 +6,7 @@ import { generateFileId } from '~components/FileUpload/generateFileId';
 import { useControllableState } from '~utils/useControllable';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
-import { useChatInputSubmit } from './useChatInputSubmit';
+import { useChatInputSubmit, useChatInputRetry } from './useChatInputSubmit';
 import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
@@ -49,6 +49,8 @@ const useChatInput = (
   resolvedStatus: ChatInputStatus;
   handleTextChange: (args: { name?: string; value?: string }) => void;
   handleSubmit: () => void;
+  handleRetry: () => void;
+  canRetry: boolean;
   handleFileRemove: (file: BladeFile) => void;
   handleFileDismiss: (file: BladeFile) => void;
 } => {
@@ -87,7 +89,7 @@ const useChatInput = (
   );
 
   // Native never calls onFileChange here: on native it means "open your file picker"
-  const submit = useChatInputSubmit({
+  const { submit, lastSent } = useChatInputSubmit({
     onSubmit,
     clearOnSubmit,
     textValue,
@@ -102,6 +104,15 @@ const useChatInput = (
     if (isSubmitDisabled) return;
     submit({ value: textValue, fileList: files });
   }, [isSubmitDisabled, submit, textValue, files]);
+
+  const { handleRetry, canRetry } = useChatInputRetry({
+    submit,
+    lastSent,
+    onSubmit,
+    textValue,
+    files,
+    isSubmitDisabled,
+  });
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
@@ -131,6 +142,8 @@ const useChatInput = (
     resolvedStatus,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleFileRemove,
     handleFileDismiss,
   };
