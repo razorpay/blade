@@ -102,7 +102,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onChange,
       onSubmit,
       fileList,
-      onFileChange,
       onFileRemove,
       onFileDismiss,
       status,

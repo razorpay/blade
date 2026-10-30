@@ -75,8 +75,9 @@ type ChatInputProps = {
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    *
-   * If it returns a promise, ChatInput clears the text and files once the promise resolves, and
-   * keeps them if it rejects, so a failed send can be retried. A plain function works as before:
+   * If it returns a promise, ChatInput clears the sent text and files once the promise resolves,
+   * and keeps them if it rejects, so a failed send can be retried. Text typed or files added while
+   * the request was in flight are kept. A plain function works as before:
    * ChatInput never clears the box itself.
    */
   onSubmit?: ({

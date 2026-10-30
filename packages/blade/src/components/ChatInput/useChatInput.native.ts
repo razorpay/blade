@@ -6,6 +6,7 @@ import { generateFileId } from '~components/FileUpload/generateFileId';
 import { useControllableState } from '~utils/useControllable';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
+import { useChatInputSubmit } from './useChatInputSubmit';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -14,7 +15,6 @@ type UseChatInputProps = Pick<
   | 'onChange'
   | 'onSubmit'
   | 'fileList'
-  | 'onFileChange'
   | 'onFileRemove'
   | 'onFileDismiss'
   | 'status'
@@ -28,7 +28,6 @@ const useChatInput = (
     onChange,
     onSubmit,
     fileList: controlledFileList,
-    onFileChange,
     onFileRemove,
     onFileDismiss,
     status,
@@ -50,14 +49,6 @@ const useChatInput = (
 } => {
   const inputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
-  const isMountedRef = React.useRef(true);
-
-  React.useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
 
   const [textValue, setTextValue] = useControllableState({
     value: controlledValue,
@@ -90,26 +81,13 @@ const useChatInput = (
     [setTextValue],
   );
 
+  // Native never calls onFileChange here: on native it means "open your file picker"
+  const submit = useChatInputSubmit({ onSubmit, textValue, files, setTextValue, setFiles });
+
   const handleSubmit = React.useCallback(() => {
     if (isSubmitDisabled) return;
-    const result = onSubmit?.({ value: textValue, fileList: files });
-    // A promise means ChatInput owns clearing: clear once it resolves, keep everything if it rejects.
-    if (result && typeof (result as Promise<void>).then === 'function') {
-      (result as Promise<void>).then(
-        () => {
-          if (!isMountedRef.current) return;
-          setTextValue(() => '');
-          if (files.length > 0) {
-            setFiles(() => []);
-            onFileChange?.({ fileList: [] });
-          }
-        },
-        () => {
-          // rejected: keep the text and files so the send can be retried
-        },
-      );
-    }
-  }, [isSubmitDisabled, onSubmit, textValue, files, setTextValue, setFiles, onFileChange]);
+    submit({ value: textValue, fileList: files });
+  }, [isSubmitDisabled, submit, textValue, files]);
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {

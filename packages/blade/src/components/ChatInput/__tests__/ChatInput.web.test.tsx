@@ -222,6 +222,27 @@ describe('<ChatInput />', () => {
       await waitFor(() => expect(textarea).toHaveValue(''));
     });
 
+    it('keeps text typed while the request was in flight', async () => {
+      const user = userEvent.setup();
+      let resolveSend: () => void = () => undefined;
+      const onSubmit = jest.fn(
+        () =>
+          new Promise<void>((resolve) => {
+            resolveSend = resolve;
+          }),
+      );
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      await user.type(textarea, 'First{enter}');
+      await user.type(textarea, ' and more');
+      resolveSend();
+      await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      expect(textarea).toHaveValue('First and more');
+    });
+
     it('keeps the text when the promise rejects', async () => {
       const user = userEvent.setup();
       const onSubmit = jest.fn(() => Promise.reject(new Error('failed')));

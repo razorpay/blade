@@ -490,7 +490,7 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 ### Promise Submit
 
-When `onSubmit` returns a promise, ChatInput clears the text and files once it resolves and keeps them if it rejects. A plain function works as before: ChatInput never clears the box itself.
+When `onSubmit` returns a promise, ChatInput clears what was sent once it resolves and keeps it if it rejects. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". A plain function works as before: ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
 
 ### Slash Commands
 

@@ -64,6 +64,23 @@ describe('<ChatInput /> (native)', () => {
     expect(onSubmit).toHaveBeenCalledWith({ value: 'Refund pay_123', fileList: [] });
   });
 
+  it('should not open the file picker when a promise submit resolves', async () => {
+    const onFileChange = jest.fn();
+    const file = { id: 'file-1', name: 'a.pdf', size: 1, status: 'success' };
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        defaultValue="Hi"
+        fileList={[file as never]}
+        onFileChange={onFileChange}
+        onSubmit={() => Promise.resolve()}
+      />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Submit' }));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(onFileChange).not.toHaveBeenCalled();
+  });
+
   it('should render the compact size and header', () => {
     const { toJSON, getByText } = renderWithTheme(
       <ChatInput

@@ -9,6 +9,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useId } from '~utils/useId';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
+import { useChatInputSubmit } from './useChatInputSubmit';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -122,14 +123,6 @@ const useChatInput = (
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const textareaRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, textareaRef);
-  const isMountedRef = React.useRef(true);
-
-  React.useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
 
   const [textValue, setTextValue] = useControllableState({
     value: controlledValue,
@@ -264,26 +257,23 @@ const useChatInput = (
     [files, accept, maxFileCount, maxFileSize, onFileError, setFiles, onFileChange],
   );
 
+  const clearFilesForProduct = React.useCallback(() => {
+    onFileChange?.({ fileList: [] });
+  }, [onFileChange]);
+
+  const submit = useChatInputSubmit({
+    onSubmit,
+    textValue,
+    files,
+    setTextValue,
+    setFiles,
+    onFilesCleared: clearFilesForProduct,
+  });
+
   const handleSubmit = React.useCallback(() => {
     if (isSubmitDisabled) return;
-    const result = onSubmit?.({ value: textValue, fileList: files });
-    // A promise means ChatInput owns clearing: clear once it resolves, keep everything if it rejects.
-    if (result && typeof (result as Promise<void>).then === 'function') {
-      (result as Promise<void>).then(
-        () => {
-          if (!isMountedRef.current) return;
-          setTextValue(() => '');
-          if (files.length > 0) {
-            setFiles(() => []);
-            onFileChange?.({ fileList: [] });
-          }
-        },
-        () => {
-          // rejected: keep the text and files so the send can be retried
-        },
-      );
-    }
-  }, [isSubmitDisabled, onSubmit, textValue, files, setTextValue, setFiles, onFileChange]);
+    submit({ value: textValue, fileList: files });
+  }, [isSubmitDisabled, submit, textValue, files]);
 
   // ---------- slash commands ----------
   const listboxId = useId('chat-input-commands');
