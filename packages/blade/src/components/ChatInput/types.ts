@@ -14,7 +14,8 @@ type ChatInputCommand = {
    */
   value: string;
   /**
-   * Text shown in the list, such as `/refund`. Named `title` to match `ActionListItem` and
+   * The command's name without the slash, such as `refund`. ChatInput shows it as `/refund`, so
+   * every product renders commands the same way. Named `title` to match `ActionListItem` and
    * `MenuItem`.
    */
   title: string;

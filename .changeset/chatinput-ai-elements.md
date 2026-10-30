@@ -11,7 +11,7 @@ No prop is renamed or removed, and `onSubmit` only widens its return type, so no
 - `size="small"`: a compact one-row composer that opens into the full layout once the text wraps.
 - `header`: context chips (Blade `Tag`s) above the text.
 - `actionMenu`: a `MenuOverlay` the "+" opens instead of the file picker, or a function that receives `openFilePicker` so a menu item can still open it (web).
-- `commands` and `onCommandSelect`: slash commands (web). Each command has `value`, `title` and an optional `description`, like `ActionListItem`.
+- `commands` and `onCommandSelect`: slash commands (web). Each command has `value`, `title` (the name without the slash; ChatInput adds it) and an optional `description`, like `ActionListItem`.
 - `maxCount`, `maxSize` and `onFileError`: file limits for picked, pasted and dropped files (web). They only guide people; servers must still check files.
 - `dropTarget`: drop files on the input (default), anywhere on the page, or `none` to turn dropping off (web). With `hideFileUpload` and no `actionMenu`, dropping is off too; pasting files works as before.
 - `showAmbientBorder`: a slow, decorative blue border.

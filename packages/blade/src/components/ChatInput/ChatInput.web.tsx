@@ -149,6 +149,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onCommandSelect,
       size,
       canDropFiles: !hideFileUpload || Boolean(actionMenu),
+      isFocused,
     },
     ref,
   );

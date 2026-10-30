@@ -41,6 +41,8 @@ type UseChatInputProps = Pick<
 > & {
   /** False when there is no visible way to attach files, so dropped files are not taken */
   canDropFiles?: boolean;
+  /** Whether the text box has focus. The slash command list only shows while it does. */
+  isFocused?: boolean;
 };
 
 type CommandMenuState = {
@@ -88,6 +90,7 @@ const useChatInput = (
     onCommandSelect,
     size = 'medium',
     canDropFiles = true,
+    isFocused = false,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -298,8 +301,9 @@ const useChatInput = (
       return command.value.toLowerCase().startsWith(commandQuery) || title.startsWith(commandQuery);
     });
   }, [commands, commandQuery]);
+  // closes when focus leaves the box, and opens again when it comes back
   const isCommandMenuOpen =
-    commandItems.length > 0 && dismissedCommandText !== textValue && !isDisabled;
+    commandItems.length > 0 && dismissedCommandText !== textValue && !isDisabled && isFocused;
 
   React.useEffect(() => {
     setCommandActiveIndex(0);

@@ -308,6 +308,17 @@ describe('<ChatInput />', () => {
       expect(textarea).toHaveValue('Hello');
     });
 
+    it('warns in development when clearOnSubmit gets no promise', async () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const user = userEvent.setup();
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={jest.fn()} clearOnSubmit />,
+      );
+      await user.type(getByRole('textbox', { name: accessibilityLabel }), 'Hello{enter}');
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('did not return a promise'));
+      warn.mockRestore();
+    });
+
     it('never clears the text for a plain function', async () => {
       const user = userEvent.setup();
       const { getByRole } = renderWithTheme(
@@ -396,9 +407,9 @@ describe('<ChatInput />', () => {
 
   describe('slash commands', () => {
     const commands = [
-      { value: 'refund', title: '/refund', description: 'Refund a payment' },
-      { value: 'report', title: '/report' },
-      { value: 'link', title: '/resend-link' },
+      { value: 'refund', title: 'refund', description: 'Refund a payment' },
+      { value: 'report', title: 'report' },
+      { value: 'link', title: 'resend-link' },
     ];
 
     it('filters the list as you type and picks with the keyboard', async () => {
@@ -457,6 +468,31 @@ describe('<ChatInput />', () => {
       );
       await user.type(getByRole('textbox', { name: accessibilityLabel }), '/');
       await assertAccessible(container);
+    });
+
+    it('shows each title with a slash in front', async () => {
+      const user = userEvent.setup();
+      const { getByRole, getByText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} commands={commands} />,
+      );
+      await user.type(getByRole('textbox', { name: accessibilityLabel }), '/');
+      expect(getByText('/refund')).toBeInTheDocument();
+      expect(getByText('/resend-link')).toBeInTheDocument();
+    });
+
+    it('closes when the text box loses focus and opens again on focus', async () => {
+      const user = userEvent.setup();
+      const { getByRole, queryByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} commands={commands} />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      await user.type(textarea, '/re');
+      expect(getByRole('listbox')).toBeInTheDocument();
+      fireEvent.blur(textarea);
+      expect(queryByRole('listbox')).not.toBeInTheDocument();
+      expect(textarea).not.toHaveAttribute('aria-activedescendant');
+      fireEvent.focus(textarea);
+      expect(getByRole('listbox')).toBeInTheDocument();
     });
 
     it('closes on Escape', async () => {

@@ -59,7 +59,8 @@ type ChatInputCommand = {
    */
   value: string;
   /**
-   * Text shown in the list, such as `/refund`. Named `title` to match `ActionListItem` and
+   * The command's name without the slash, such as `refund`. ChatInput shows it as `/refund`, so
+   * every product renders commands the same way. Named `title` to match `ActionListItem` and
    * `MenuItem`.
    */
   title: string;
@@ -641,7 +642,7 @@ const AIComposer = ({ sendMessage, stop }: { sendMessage: (text: string) => Prom
           <MenuItem title="Upload files" leading={<PaperclipIcon />} onClick={openFilePicker} />
         </MenuOverlay>
       )}
-      commands={[{ value: 'refund', title: '/refund', description: 'Refund a payment' }]}
+      commands={[{ value: 'refund', title: 'refund', description: 'Refund a payment' }]}
       onCommandSelect={({ value }) => console.log('command', value)}
       clearOnSubmit
       onSubmit={async ({ value }) => {

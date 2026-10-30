@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ChatInputProps } from './types';
+import { logger } from '~utils/logger';
 import type { BladeFileList } from '~components/FileUpload/types';
 
 /**
@@ -38,6 +39,7 @@ const useChatInputSubmit = ({
   const latestRef = React.useRef({ textValue, files });
   latestRef.current = { textValue, files };
   const isMountedRef = React.useRef(true);
+  const hasWarnedNoPromiseRef = React.useRef(false);
 
   React.useEffect(() => {
     isMountedRef.current = true;
@@ -50,8 +52,19 @@ const useChatInputSubmit = ({
     ({ value, fileList }: { value: string; fileList: BladeFileList }) => {
       // typed `void` so any handler fits; an async handler still returns its promise at runtime
       const result = onSubmit?.({ value, fileList }) as unknown;
-      if (!clearOnSubmit || !result || typeof (result as Promise<unknown>).then !== 'function')
+      if (!clearOnSubmit) return;
+      if (!result || typeof (result as Promise<unknown>).then !== 'function') {
+        if (!hasWarnedNoPromiseRef.current) {
+          hasWarnedNoPromiseRef.current = true;
+          logger({
+            type: 'warn',
+            moduleName: 'ChatInput',
+            message:
+              '`clearOnSubmit` is set but `onSubmit` did not return a promise, so nothing was cleared. Return the promise for your send (an `async` handler does this).',
+          });
+        }
         return;
+      }
       (result as Promise<unknown>).then(
         () => {
           if (!isMountedRef.current) return;
