@@ -38,7 +38,10 @@ type UseChatInputProps = Pick<
   | 'commands'
   | 'onCommandSelect'
   | 'size'
->;
+> & {
+  /** False when there is no visible way to attach files, so paste and drop don't add any */
+  canAttachFiles?: boolean;
+};
 
 type CommandMenuState = {
   isOpen: boolean;
@@ -84,6 +87,7 @@ const useChatInput = (
     commands,
     onCommandSelect,
     size = 'medium',
+    canAttachFiles = true,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -277,9 +281,10 @@ const useChatInput = (
   });
 
   const handleSubmit = React.useCallback(() => {
-    if (isSubmitDisabled) return;
+    // while the request is on its way, Send is a disabled loader: Enter must not send it twice
+    if (isSubmitDisabled || resolvedStatus === 'submitted') return;
     submit({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, submit, textValue, files]);
+  }, [isSubmitDisabled, resolvedStatus, submit, textValue, files]);
 
   // ---------- slash commands ----------
   const listboxId = useId('chat-input-commands');
@@ -416,6 +421,7 @@ const useChatInput = (
 
   const handlePaste = React.useCallback(
     (event: React.ClipboardEvent<HTMLInputElement>) => {
+      if (!canAttachFiles) return;
       const clipboardFiles = Array.from(event.clipboardData?.files ?? []) as BladeFile[];
       if (clipboardFiles.length === 0) return;
       // Copying from Excel, Word or Numbers puts both text and an image on the clipboard: keep the
@@ -425,13 +431,13 @@ const useChatInput = (
       }
       addFiles(clipboardFiles);
     },
-    [addFiles],
+    [addFiles, canAttachFiles],
   );
 
   // ---------- drop ----------
   const [isDraggingFiles, setIsDraggingFiles] = React.useState(false);
   const dragDepthRef = React.useRef(0);
-  const canDrop = !isDisabled;
+  const canDrop = !isDisabled && canAttachFiles && dropTarget !== 'none';
 
   // One set of handlers for both drop targets. Only drags that carry files are handled, so
   // dragging text or links keeps working as usual.

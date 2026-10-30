@@ -2,7 +2,7 @@
 
 ## Description
 
-`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
+`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page, or not at all (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
 
 ## Important Constraints
 
@@ -174,6 +174,8 @@ type ChatInputProps = {
    * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
    * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
    * `status` wins.
+   * While `submitted`, Enter does not send again. While `streaming`, Enter still calls `onSubmit`,
+   * so the product can queue the next message or ignore it.
    * @default 'ready'
    */
   status?: ChatInputStatus;
@@ -246,11 +248,15 @@ type ChatInputProps = {
    * Where files can be dropped.
    * - `input`: on the chat input only
    * - `page`: anywhere on the page, for full-page chat screens
+   * - `none`: dropping is off, for example when the page has its own drop zone
+   *
+   * Dropping and pasting files are also off when `hideFileUpload` is set without an `actionMenu`,
+   * since there is then no way to attach files.
    * @default 'input'
    *
    * **Note (React Native):** No effect.
    */
-  dropTarget?: 'input' | 'page';
+  dropTarget?: 'input' | 'page' | 'none';
 
   /**
    * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
@@ -375,7 +381,7 @@ type ChatInputProps = {
 
   /**
    * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
-   * and opens the menu.
+   * and opens the menu. Without an `actionMenu`, dropping and pasting files are off too.
    * @default false
    */
   hideFileUpload?: boolean;

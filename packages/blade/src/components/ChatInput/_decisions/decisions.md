@@ -483,7 +483,7 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 ### Status
 
-`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` still works but is deprecated in favour of `status="streaming"`, and will be removed in a future major; `status` wins when both are set. Retry calls `onSubmit` again with the current text and files. The names `submitted` and `streaming` match the Vercel AI SDK's `useChat` status, so its value can be passed straight through; that is why it is `submitted`, not `submitting`. `status="error"` is about the request, while `validationState="error"` is about what was typed or attached. `onStop` stays optional rather than required with `streaming` (a discriminated union would make every consumer that spreads a `status` variable narrow it first); instead Blade warns in development when Stop shows without `onStop`.
+`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` still works but is deprecated in favour of `status="streaming"`, and will be removed in a future major; `status` wins when both are set. Retry calls `onSubmit` again with the current text and files. While `submitted`, Enter does not send again, matching the disabled loader. While `streaming`, Enter still calls `onSubmit` so the product can queue the next message or ignore it. The names `submitted` and `streaming` match the Vercel AI SDK's `useChat` status, so its value can be passed straight through; that is why it is `submitted`, not `submitting`. `status="error"` is about the request, while `validationState="error"` is about what was typed or attached. `onStop` stays optional rather than required with `streaming` (a discriminated union would make every consumer that spreads a `status` variable narrow it first); instead Blade warns in development when Stop shows without `onStop`.
 
 ### Compact Size
 
@@ -499,7 +499,7 @@ Typing `/` at the start of the text opens a list of `commands` above the input, 
 
 ### Files
 
-The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxSize`, then `maxCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
+The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxSize`, then `maxCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files. `dropTarget="none"` turns dropping off for pages with their own drop zone. When `hideFileUpload` is set without an `actionMenu` there is no visible way to attach files, so paste and drop don't add any either.
 
 ### Ambient Border
 

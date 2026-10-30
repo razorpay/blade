@@ -129,6 +129,8 @@ type ChatInputProps = {
    * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
    * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
    * `status` wins.
+   * While `submitted`, Enter does not send again. While `streaming`, Enter still calls `onSubmit`,
+   * so the product can queue the next message or ignore it.
    * @default 'ready'
    */
   status?: ChatInputStatus;
@@ -201,11 +203,15 @@ type ChatInputProps = {
    * Where files can be dropped.
    * - `input`: on the chat input only
    * - `page`: anywhere on the page, for full-page chat screens
+   * - `none`: dropping is off, for example when the page has its own drop zone
+   *
+   * Dropping and pasting files are also off when `hideFileUpload` is set without an `actionMenu`,
+   * since there is then no way to attach files.
    * @default 'input'
    *
    * **Note (React Native):** No effect.
    */
-  dropTarget?: 'input' | 'page';
+  dropTarget?: 'input' | 'page' | 'none';
 
   /**
    * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
@@ -330,7 +336,7 @@ type ChatInputProps = {
 
   /**
    * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
-   * and opens the menu.
+   * and opens the menu. Without an `actionMenu`, dropping and pasting files are off too.
    * @default false
    */
   hideFileUpload?: boolean;

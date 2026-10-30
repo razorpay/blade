@@ -1,4 +1,4 @@
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { ChatInput } from '../index';
@@ -199,6 +199,20 @@ describe('<ChatInput />', () => {
         <ChatInput accessibilityLabel={accessibilityLabel} status="submitted" />,
       );
       expect(getByRole('button', { name: 'Sending' })).toBeDisabled();
+    });
+
+    it('does not send again on Enter while submitted', () => {
+      const onSubmit = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          status="submitted"
+          defaultValue="Refund pay_123"
+          onSubmit={onSubmit}
+        />,
+      );
+      fireEvent.keyDown(getByRole('textbox', { name: accessibilityLabel }), { key: 'Enter' });
+      expect(onSubmit).not.toHaveBeenCalled();
     });
 
     it('shows Retry on error, which sends again', async () => {
@@ -568,6 +582,43 @@ describe('<ChatInput />', () => {
       const dataTransfer = { types: ['Files'], files: [makeFile('drop.png', 1)] };
       fireEvent.drop(window, { dataTransfer });
       expect(onFileChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('ignores dropped files with dropTarget="none"', () => {
+      const onFileChange = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          dropTarget="none"
+          onFileChange={onFileChange}
+        />,
+      );
+      const card = getByRole('textbox', { name: accessibilityLabel }).closest(
+        '[data-blade-component="base-box"]',
+      ) as HTMLElement;
+      const dataTransfer = { types: ['Files'], files: [makeFile('drop.png', 1)] };
+      fireEvent.dragEnter(card, { dataTransfer });
+      fireEvent.drop(card, { dataTransfer });
+      expect(onFileChange).not.toHaveBeenCalled();
+    });
+
+    it('takes no pasted or dropped files when hideFileUpload is set', () => {
+      const onFileChange = jest.fn();
+      renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          hideFileUpload
+          dropTarget="page"
+          onFileChange={onFileChange}
+        />,
+      );
+      fireEvent.paste(screen.getByRole('textbox', { name: accessibilityLabel }), {
+        clipboardData: { files: [makeFile('paste.png', 1)] },
+      });
+      fireEvent.drop(window, {
+        dataTransfer: { types: ['Files'], files: [makeFile('drop.png', 1)] },
+      });
+      expect(onFileChange).not.toHaveBeenCalled();
     });
 
     it('ignores drags without files', () => {

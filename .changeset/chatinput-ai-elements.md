@@ -13,7 +13,7 @@ No prop is renamed or removed, and `onSubmit` only widens its return type, so no
 - `actionMenu`: a `MenuOverlay` the "+" opens instead of the file picker, or a function that receives `openFilePicker` so a menu item can still open it (web).
 - `commands` and `onCommandSelect`: slash commands (web).
 - `maxCount`, `maxSize` and `onFileError`: file limits for picked, pasted and dropped files (web). They only guide people; servers must still check files.
-- `dropTarget`: drop files on the input (default) or anywhere on the page (web).
+- `dropTarget`: drop files on the input (default), anywhere on the page, or `none` to turn dropping off (web). With `hideFileUpload` and no `actionMenu`, pasting and dropping files are off too.
 - `showAmbientBorder`: a slow, decorative blue border.
 - `clearOnSubmit` (opt-in): when `onSubmit` returns a promise, ChatInput clears what it sent once it resolves (only the text and files it owns, so controlled values are untouched) and keeps it when it rejects.
 
