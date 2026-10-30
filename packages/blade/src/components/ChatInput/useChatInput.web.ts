@@ -456,9 +456,12 @@ const useChatInput = (
         if (!hasFilesInDrag(event)) return;
         event.preventDefault();
       },
-      onDragLeave: (event: DragLikeEvent): void => {
-        if (!hasFilesInDrag(event)) return;
-        dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+      onDragLeave: (): void => {
+        // Count down for every leave once a file drag has started, without checking the drag
+        // again: some browsers send the last leave without the file types, which would leave the
+        // overlay stuck.
+        if (dragDepthRef.current === 0) return;
+        dragDepthRef.current -= 1;
         if (dragDepthRef.current === 0) setIsDraggingFiles(false);
       },
       onDrop: (event: DragLikeEvent): void => {
@@ -485,8 +488,17 @@ const useChatInput = (
       window.removeEventListener('dragleave', onDragLeave);
       window.removeEventListener('drop', onDrop);
       dragDepthRef.current = 0;
+      setIsDraggingFiles(false);
     };
   }, [dropTarget, canDrop, dragHandlers]);
+
+  // If dropping is turned off mid-drag, the leave and drop events stop coming, so clear the
+  // overlay here
+  React.useEffect(() => {
+    if (canDrop) return;
+    dragDepthRef.current = 0;
+    setIsDraggingFiles(false);
+  }, [canDrop]);
 
   const dropZoneProps = dropTarget === 'input' && canDrop ? dragHandlers : {};
 

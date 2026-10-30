@@ -609,6 +609,17 @@ describe('<ChatInput />', () => {
       expect(onFileChange).toHaveBeenCalledTimes(1);
     });
 
+    it('hides the drop overlay even when the last dragleave has no file types', () => {
+      const { getByRole, queryByText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} dropTarget="page" />,
+      );
+      expect(getByRole('textbox', { name: accessibilityLabel })).toBeInTheDocument();
+      fireEvent.dragEnter(window, { dataTransfer: { types: ['Files'], files: [] } });
+      expect(queryByText('Drop files to attach')).toBeInTheDocument();
+      fireEvent.dragLeave(window, { dataTransfer: null });
+      expect(queryByText('Drop files to attach')).not.toBeInTheDocument();
+    });
+
     it('adds files dropped anywhere on the page with dropTarget="page"', () => {
       const onFileChange = jest.fn();
       renderWithTheme(
