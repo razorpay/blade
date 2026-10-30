@@ -14,7 +14,35 @@
 
 ## TypeScript Types
 
+These are the props accepted by `ChatInput` and the related types it depends on.
+
 ```typescript
+// BladeFile: the native File with upload state fields
+interface BladeFile extends File {
+  /** Unique identifier for the file */
+  id?: string;
+  /** Upload status of the file */
+  status?: 'uploading' | 'success' | 'error';
+  /** Upload completion percentage */
+  uploadPercent?: number;
+  /** Error text when status is 'error' */
+  errorText?: string;
+}
+
+// BladeFileList: an array of BladeFile objects
+type BladeFileList = BladeFile[];
+
+// FormInputOnEvent: the focus and blur callback shared by Blade inputs
+type FormInputOnEvent = ({
+  name,
+  value,
+  rawValue,
+}: {
+  name?: string;
+  value?: string;
+  rawValue?: string;
+}) => void;
+
 type ChatInputStatus = 'ready' | 'submitted' | 'streaming' | 'error';
 
 type ChatInputCommand = {
