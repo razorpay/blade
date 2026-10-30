@@ -17,6 +17,18 @@ describe('<ChatInput /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('warns once that web-only props have no effect', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const { rerender } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} maxCount={3} showAmbientBorder />,
+    );
+    rerender(<ChatInput accessibilityLabel={accessibilityLabel} maxCount={3} showAmbientBorder />);
+    const messages = warn.mock.calls.map(([message]) => String(message));
+    expect(messages.filter((message) => message.includes('only work on web'))).toHaveLength(1);
+    expect(messages.join(' ')).toContain('`maxCount`, `showAmbientBorder`');
+    warn.mockRestore();
+  });
+
   it('should call onSubmit with value when submit button is pressed', () => {
     const onSubmit = jest.fn();
 

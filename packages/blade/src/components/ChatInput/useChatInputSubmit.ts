@@ -48,7 +48,8 @@ const useChatInputSubmit = ({
 
   return React.useCallback(
     ({ value, fileList }: { value: string; fileList: BladeFileList }) => {
-      const result = onSubmit?.({ value, fileList });
+      // typed `void` so any handler fits; an async handler still returns its promise at runtime
+      const result = onSubmit?.({ value, fileList }) as unknown;
       if (!clearOnSubmit || !result || typeof (result as Promise<unknown>).then !== 'function')
         return;
       (result as Promise<unknown>).then(

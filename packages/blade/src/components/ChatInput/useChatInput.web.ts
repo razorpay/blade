@@ -39,8 +39,8 @@ type UseChatInputProps = Pick<
   | 'onCommandSelect'
   | 'size'
 > & {
-  /** False when there is no visible way to attach files, so paste and drop don't add any */
-  canAttachFiles?: boolean;
+  /** False when there is no visible way to attach files, so dropped files are not taken */
+  canDropFiles?: boolean;
 };
 
 type CommandMenuState = {
@@ -87,7 +87,7 @@ const useChatInput = (
     commands,
     onCommandSelect,
     size = 'medium',
-    canAttachFiles = true,
+    canDropFiles = true,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -294,8 +294,8 @@ const useChatInput = (
   const commandItems = React.useMemo(() => {
     if (commandQuery === null || !commands) return [];
     return commands.filter((command) => {
-      const label = command.label.replace(/^\//, '').toLowerCase();
-      return command.value.toLowerCase().startsWith(commandQuery) || label.startsWith(commandQuery);
+      const title = command.title.replace(/^\//, '').toLowerCase();
+      return command.value.toLowerCase().startsWith(commandQuery) || title.startsWith(commandQuery);
     });
   }, [commands, commandQuery]);
   const isCommandMenuOpen =
@@ -421,7 +421,6 @@ const useChatInput = (
 
   const handlePaste = React.useCallback(
     (event: React.ClipboardEvent<HTMLInputElement>) => {
-      if (!canAttachFiles) return;
       const clipboardFiles = Array.from(event.clipboardData?.files ?? []) as BladeFile[];
       if (clipboardFiles.length === 0) return;
       // Copying from Excel, Word or Numbers puts both text and an image on the clipboard: keep the
@@ -431,13 +430,13 @@ const useChatInput = (
       }
       addFiles(clipboardFiles);
     },
-    [addFiles, canAttachFiles],
+    [addFiles],
   );
 
   // ---------- drop ----------
   const [isDraggingFiles, setIsDraggingFiles] = React.useState(false);
   const dragDepthRef = React.useRef(0);
-  const canDrop = !isDisabled && canAttachFiles && dropTarget !== 'none';
+  const canDrop = !isDisabled && canDropFiles && dropTarget !== 'none';
 
   // One set of handlers for both drop targets. Only drags that carry files are handled, so
   // dragging text or links keeps working as usual.

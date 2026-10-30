@@ -32,7 +32,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import type { BladeElementRef } from '~utils/types';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
@@ -63,6 +63,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     autoFocus = false,
     accessibilityLabel = 'Chat input',
     accept: _accept,
+    actionMenu,
+    commands,
+    onCommandSelect,
+    maxCount,
+    maxSize,
+    onFileError,
+    dropTarget,
+    showAmbientBorder,
     testID,
     ...rest
   },
@@ -77,6 +85,35 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         message:
           'The `accept` prop has no effect on React Native. File filtering should be handled by your file picker (see onFileChange).',
         moduleName: 'ChatInput',
+      });
+    }
+  }
+
+  // Web-only props are ignored here. Say so once per mount, so shared product code gets a signal
+  // without the console filling up on every render.
+  const hasLoggedWebOnlyPropsRef = React.useRef(false);
+  if (__DEV__ && !hasLoggedWebOnlyPropsRef.current) {
+    hasLoggedWebOnlyPropsRef.current = true;
+    const webOnlyProps = {
+      actionMenu,
+      commands,
+      onCommandSelect,
+      maxCount,
+      maxSize,
+      onFileError,
+      dropTarget,
+      showAmbientBorder,
+    };
+    const ignoredProps = Object.keys(webOnlyProps).filter(
+      (name) => webOnlyProps[name as keyof typeof webOnlyProps] !== undefined,
+    );
+    if (ignoredProps.length > 0) {
+      logger({
+        type: 'warn',
+        moduleName: 'ChatInput',
+        message: `${ignoredProps
+          .map((name) => `\`${name}\``)
+          .join(', ')} only work on web and have no effect on React Native.`,
       });
     }
   }

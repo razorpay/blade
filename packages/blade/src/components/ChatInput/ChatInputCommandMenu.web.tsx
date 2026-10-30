@@ -83,7 +83,7 @@ const ChatInputCommandMenu = ({
           onClick={() => onSelect(command)}
         >
           <Text size="medium" color="surface.text.gray.normal">
-            {command.label}
+            {command.title}
           </Text>
           {command.description ? (
             <Text size="small" color="surface.text.gray.muted">

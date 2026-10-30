@@ -41,6 +41,8 @@ const ChatInputSubmit = ({
         size={size}
         icon={StopCircleIcon}
         accessibilityProps={{ label: 'Stop generation' }}
+        // without onStop there is nothing to stop, so don't offer a button that does nothing
+        isDisabled={isDisabled || !onStop}
         onClick={() => onStop?.()}
       />
     );

@@ -10,13 +10,14 @@ type ChatInputStatus = 'ready' | 'submitted' | 'streaming' | 'error';
 type ChatInputCommand = {
   /**
    * Value passed to `onCommandSelect`, such as `refund`. Typing `/` followed by the start of the
-   * value or label filters the list.
+   * value or title filters the list.
    */
   value: string;
   /**
-   * Text shown in the list, such as `/refund`
+   * Text shown in the list, such as `/refund`. Named `title` to match `ActionListItem` and
+   * `MenuItem`.
    */
-  label: string;
+  title: string;
   /**
    * Optional second line, such as "Refund a payment, in full or in part"
    */
@@ -76,16 +77,11 @@ type ChatInputProps = {
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    *
-   * ChatInput does not clear the box on its own. Set `clearOnSubmit` to have it clear what was
-   * sent once the promise you return resolves.
+   * ChatInput does not clear the box on its own. Set `clearOnSubmit` and return a promise (an
+   * `async` handler works as is) to have it clear what was sent once that promise resolves. The
+   * return type stays `void` so every handler that compiled before still does.
    */
-  onSubmit?: ({
-    value,
-    fileList,
-  }: {
-    value: string;
-    fileList: BladeFileList;
-  }) => void | Promise<unknown>;
+  onSubmit?: ({ value, fileList }: { value: string; fileList: BladeFileList }) => void;
 
   /**
    * Clears what was sent once the promise returned by `onSubmit` resolves. If it rejects,
@@ -205,8 +201,8 @@ type ChatInputProps = {
    * - `page`: anywhere on the page, for full-page chat screens
    * - `none`: dropping is off, for example when the page has its own drop zone
    *
-   * Dropping and pasting files are also off when `hideFileUpload` is set without an `actionMenu`,
-   * since there is then no way to attach files.
+   * Dropping is also off when `hideFileUpload` is set without an `actionMenu`, since there is then
+   * no visible way to attach files. Pasting files works as before.
    * @default 'input'
    *
    * **Note (React Native):** No effect.
@@ -242,7 +238,7 @@ type ChatInputProps = {
 
   /**
    * Callback fired when the user clicks the stop button (visible when `status="streaming"`).
-   * Use this to cancel an in-flight AI generation. Without it the Stop button does nothing, and
+   * Use this to cancel an in-flight AI generation. Without it the Stop button is disabled, and
    * Blade warns in development.
    */
   onStop?: () => void;
@@ -336,7 +332,7 @@ type ChatInputProps = {
 
   /**
    * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
-   * and opens the menu. Without an `actionMenu`, dropping and pasting files are off too.
+   * and opens the menu. Without an `actionMenu`, dropping files is off too; pasting still works.
    * @default false
    */
   hideFileUpload?: boolean;

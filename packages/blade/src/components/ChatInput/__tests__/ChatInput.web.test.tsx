@@ -174,9 +174,12 @@ describe('<ChatInput />', () => {
       expect(onStop).toHaveBeenCalledTimes(1);
     });
 
-    it('warns in development when Stop has no onStop', () => {
+    it('disables Stop and warns in development when there is no onStop', () => {
       const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-      renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} status="streaming" />);
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} status="streaming" />,
+      );
+      expect(getByRole('button', { name: 'Stop generation' })).toBeDisabled();
       expect(warn).toHaveBeenCalledWith(expect.stringContaining('`onStop` is not set'));
       warn.mockRestore();
     });
@@ -393,9 +396,9 @@ describe('<ChatInput />', () => {
 
   describe('slash commands', () => {
     const commands = [
-      { value: 'refund', label: '/refund', description: 'Refund a payment' },
-      { value: 'report', label: '/report' },
-      { value: 'link', label: '/resend-link' },
+      { value: 'refund', title: '/refund', description: 'Refund a payment' },
+      { value: 'report', title: '/report' },
+      { value: 'link', title: '/resend-link' },
     ];
 
     it('filters the list as you type and picks with the keyboard', async () => {
@@ -602,7 +605,7 @@ describe('<ChatInput />', () => {
       expect(onFileChange).not.toHaveBeenCalled();
     });
 
-    it('takes no pasted or dropped files when hideFileUpload is set', () => {
+    it('takes no dropped files when hideFileUpload is set, but still takes pasted ones', () => {
       const onFileChange = jest.fn();
       renderWithTheme(
         <ChatInput
@@ -615,10 +618,11 @@ describe('<ChatInput />', () => {
       fireEvent.paste(screen.getByRole('textbox', { name: accessibilityLabel }), {
         clipboardData: { files: [makeFile('paste.png', 1)] },
       });
+      expect(onFileChange).toHaveBeenCalledTimes(1);
       fireEvent.drop(window, {
         dataTransfer: { types: ['Files'], files: [makeFile('drop.png', 1)] },
       });
-      expect(onFileChange).not.toHaveBeenCalled();
+      expect(onFileChange).toHaveBeenCalledTimes(1);
     });
 
     it('ignores drags without files', () => {

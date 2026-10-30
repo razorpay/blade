@@ -393,15 +393,15 @@ export const SlashCommands: StoryFn<typeof ChatInput> = () => {
         commands={[
           {
             value: 'refund',
-            label: '/refund',
+            title: '/refund',
             description: 'Refund a payment, in full or in part',
           },
           {
             value: 'report',
-            label: '/report',
+            title: '/report',
             description: 'Download a payments or settlements report',
           },
-          { value: 'resend-link', label: '/resend-link', description: 'Send a payment link again' },
+          { value: 'resend-link', title: '/resend-link', description: 'Send a payment link again' },
         ]}
         onCommandSelect={({ value }) => setPicked(value)}
       />
@@ -503,12 +503,12 @@ export const AIComposer: StoryFn<typeof ChatInput> = () => {
         commands={[
           {
             value: 'refund',
-            label: '/refund',
+            title: '/refund',
             description: 'Refund a payment, in full or in part',
           },
           {
             value: 'report',
-            label: '/report',
+            title: '/report',
             description: 'Download a payments or settlements report',
           },
         ]}

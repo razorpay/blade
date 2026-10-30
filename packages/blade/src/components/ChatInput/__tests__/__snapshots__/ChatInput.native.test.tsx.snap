@@ -179,7 +179,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                       editable={false}
                       hasLeadingDropdown={false}
                       hasTags={false}
-                      id="chatinput-225-226-input-227"
+                      id="chatinput-246-247-input-248"
                       includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
@@ -1216,7 +1216,7 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                       editable={true}
                       hasLeadingDropdown={false}
                       hasTags={false}
-                      id="chatinput-113-114-input-115"
+                      id="chatinput-134-135-input-136"
                       includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
