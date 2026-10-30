@@ -34,7 +34,13 @@ export type BaseInputTagSlotProps = {
 
 export type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'isDropdownTrigger'
+  | 'isDisabled'
+  | 'validationState'
+  | 'showAllTags'
+  | 'maxTagRows'
+  | 'isDropdownTrigger'
+  | 'focusIndicator'
+  | 'hoverIndicator'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -76,12 +82,13 @@ export type StyledBaseInputProps = {
   disabledColor?: BaseTextProps['color'];
   isInsideCounterInput?: boolean;
   $hasCompactLeadingSpacing?: boolean;
-  $caretColor?: 'surface.icon.onSea.onSubtle';
+  $caretColor?: BaseInputProps['caretColor'];
 } & Pick<
   BaseInputProps,
   | 'as'
   | 'numberOfLines'
   | 'autoGrowMaxHeight'
+  | 'autoGrowMinHeight'
   | 'id'
   | 'name'
   | 'type'

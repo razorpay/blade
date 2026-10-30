@@ -1,13 +1,19 @@
 import React from 'react';
-import type { ChatInputProps } from './types';
+import type { ChatInputCommand, ChatInputProps, ChatInputStatus } from './types';
 import { chatInputMaxTextAreaHeight } from './chatInputTokens';
+import { validateChatInputFiles } from './validateChatInputFiles';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
-import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
+import { generateFileId } from '~components/FileUpload/generateFileId';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { useId } from '~utils/useId';
+import { useCallbackRef } from '~utils/useCallbackRef';
+import { logger } from '~utils/logger';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
+import { useChatInputSubmit, useChatInputRetry } from './useChatInputSubmit';
+import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -15,17 +21,50 @@ type UseChatInputProps = Pick<
   | 'defaultValue'
   | 'onChange'
   | 'onSubmit'
+  | 'clearOnSubmit'
   | 'isDisabled'
   | 'isGenerating'
+  | 'status'
   | 'onStop'
   | 'fileList'
   | 'onFileChange'
   | 'onFileRemove'
   | 'onFileDismiss'
   | 'accept'
+  | 'maxCount'
+  | 'maxSize'
+  | 'onFileError'
+  | 'dropTarget'
   | 'suggestions'
   | 'onSuggestionAccept'
->;
+  | 'commands'
+  | 'onCommandSelect'
+  | 'size'
+> & {
+  /** False when there is no visible way to attach files, so dropped files are not taken */
+  canDropFiles?: boolean;
+  /** Whether the text box has focus. The slash command list only shows while it does. */
+  isFocused?: boolean;
+};
+
+type CommandMenuState = {
+  isOpen: boolean;
+  listboxId: string;
+  items: ChatInputCommand[];
+  activeIndex: number;
+  setActiveIndex: (index: number) => void;
+  getOptionId: (index: number) => string;
+  select: (command: ChatInputCommand) => void;
+};
+
+const hasFilesInDrag = (event: Pick<DragEvent, 'dataTransfer'>): boolean =>
+  Array.from(event.dataTransfer?.types ?? []).includes('Files');
+
+// "/ref" -> "ref". Only the first word after a leading slash counts as a command query.
+const getCommandQuery = (text: string): string | null => {
+  const match = /^\/(\S*)$/.exec(text);
+  return match ? match[1].toLowerCase() : null;
+};
 
 const useChatInput = (
   {
@@ -33,13 +72,27 @@ const useChatInput = (
     defaultValue,
     onChange,
     onSubmit,
+    clearOnSubmit = false,
+    isDisabled = false,
+    isGenerating = false,
+    status,
+    onStop,
     fileList: controlledFileList,
     onFileChange,
     onFileRemove,
     onFileDismiss,
     accept,
+    maxCount,
+    maxSize,
+    onFileError,
+    dropTarget = 'input',
     suggestions,
     onSuggestionAccept,
+    commands,
+    onCommandSelect,
+    size = 'medium',
+    canDropFiles = true,
+    isFocused = false,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -51,10 +104,17 @@ const useChatInput = (
   setActiveSuggestionIndex: React.Dispatch<React.SetStateAction<number>>;
   hasText: boolean;
   hasFiles: boolean;
+  hasContent: boolean;
   isSubmitDisabled: boolean;
   showGhostSuggestion: boolean;
+  resolvedStatus: ChatInputStatus;
+  isExpanded: boolean;
+  isDraggingFiles: boolean;
+  commandMenu: CommandMenuState;
   handleTextChange: (args: { name?: string; value?: string }) => void;
   handleSubmit: () => void;
+  handleRetry: () => void;
+  canRetry: boolean;
   handleKeyDown: (args: {
     name?: string;
     key?: string;
@@ -67,6 +127,12 @@ const useChatInput = (
   handleFileDismiss: (file: BladeFile) => void;
   handlePaste: (event: React.ClipboardEvent<HTMLInputElement>) => void;
   handleInnerMouseDownCapture: (event: React.MouseEvent) => void;
+  dropZoneProps: {
+    onDragEnter?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDragOver?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDragLeave?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDrop?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+  };
 } => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const textareaRef = React.useRef<BladeElementRef>(null);
@@ -91,20 +157,79 @@ const useChatInput = (
 
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
+  const hasContent = hasText || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop, onSubmit });
+
+  // size="small" starts as one row and opens into the full layout once the text needs a second
+  // line. It stays open until the text is cleared, so it never flips back and forth while typing.
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const isSmall = size === 'small';
 
   const adjustTextareaHeight = React.useCallback(() => {
     const textarea = textareaRef.current;
     if (textarea && textarea instanceof HTMLTextAreaElement) {
       textarea.style.height = 'auto';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, chatInputMaxTextAreaHeight)}px`;
+      const { scrollHeight } = textarea;
+      textarea.style.height = `${Math.min(scrollHeight, chatInputMaxTextAreaHeight)}px`;
+
+      if (isSmall && !isExpanded && typeof window !== 'undefined') {
+        const style = window.getComputedStyle(textarea);
+        const lineHeight = parseFloat(style.lineHeight);
+        const verticalPadding = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+        if (lineHeight > 0 && scrollHeight - verticalPadding > lineHeight * 1.5) {
+          setIsExpanded(true);
+        }
+      }
     }
-  }, []);
+  }, [isSmall, isExpanded]);
+
+  React.useEffect(() => {
+    if (textValue.length === 0 && isExpanded) {
+      setIsExpanded(false);
+    }
+  }, [textValue, isExpanded]);
 
   React.useEffect(() => {
     adjustTextareaHeight();
-  }, [textValue, adjustTextareaHeight]);
+  }, [textValue, isExpanded, adjustTextareaHeight]);
+
+  // Text can re-wrap without the value changing: the textarea gets narrower (container or window
+  // resize) or the web font loads after mount. Re-measure then, so wrapped lines are never clipped.
+  // Only width changes count, and the re-measure runs on the next frame: changing the observed
+  // element's height inside the observer callback makes browsers report a ResizeObserver loop error.
+  React.useEffect(() => {
+    const textarea = textareaRef.current;
+    if (!(textarea instanceof HTMLTextAreaElement)) return undefined;
+
+    let isActive = true;
+    void document.fonts?.ready.then(() => {
+      if (isActive) adjustTextareaHeight();
+    });
+
+    if (typeof ResizeObserver === 'undefined') {
+      return () => {
+        isActive = false;
+      };
+    }
+
+    let lastWidth = textarea.clientWidth;
+    let frame = 0;
+    const resizeObserver = new ResizeObserver(() => {
+      if (textarea.clientWidth === lastWidth) return;
+      lastWidth = textarea.clientWidth;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(adjustTextareaHeight);
+    });
+    resizeObserver.observe(textarea);
+
+    return () => {
+      isActive = false;
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+    };
+  }, [adjustTextareaHeight]);
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
@@ -113,10 +238,115 @@ const useChatInput = (
     [setTextValue],
   );
 
+  // ---------- files: the picker, paste and drop all go through the same checks ----------
+  const addFiles = React.useCallback(
+    (incomingFiles: BladeFile[]) => {
+      if (incomingFiles.length === 0) return;
+      const { acceptedFiles, fileErrors } = validateChatInputFiles({
+        incomingFiles,
+        existingFileCount: files.length,
+        accept,
+        maxCount,
+        maxSize,
+      });
+
+      for (const file of acceptedFiles) {
+        if (!file.id) {
+          file.id = generateFileId();
+        }
+      }
+
+      if (acceptedFiles.length > 0) {
+        const newFileList = [...files, ...acceptedFiles];
+        setFiles(() => newFileList);
+        onFileChange?.({ fileList: newFileList });
+      }
+
+      // Errors come after onFileChange, so a product that clears its error message when files
+      // change still shows the error for a batch where only some files were added.
+      for (const fileError of fileErrors) {
+        onFileError?.(fileError);
+      }
+    },
+    [files, accept, maxCount, maxSize, onFileError, setFiles, onFileChange],
+  );
+
+  const clearFilesForProduct = React.useCallback(() => {
+    onFileChange?.({ fileList: [] });
+  }, [onFileChange]);
+
+  const { submit, lastSent } = useChatInputSubmit({
+    onSubmit,
+    clearOnSubmit,
+    textValue,
+    files,
+    setTextValue,
+    setFiles,
+    isTextControlled: controlledValue !== undefined,
+    isFilesControlled: controlledFileList !== undefined,
+    onFilesCleared: clearFilesForProduct,
+  });
+
   const handleSubmit = React.useCallback(() => {
-    if (isSubmitDisabled) return;
-    onSubmit?.({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, onSubmit, textValue, files]);
+    // while the request is on its way, Send is a disabled loader: Enter must not send it twice
+    if (isSubmitDisabled || resolvedStatus === 'submitted') return;
+    submit({ value: textValue, fileList: files });
+  }, [isSubmitDisabled, resolvedStatus, submit, textValue, files]);
+
+  const { handleRetry, canRetry } = useChatInputRetry({
+    submit,
+    lastSent,
+    onSubmit,
+    textValue,
+    files,
+    isSubmitDisabled,
+  });
+
+  // ---------- slash commands ----------
+  // Picking a command clears the "/..." text, so without a handler a pick would just lose it
+  const hasCommandsWithoutHandler = Boolean(commands?.length) && !onCommandSelect;
+  React.useEffect(() => {
+    if (hasCommandsWithoutHandler) {
+      logger({
+        type: 'warn',
+        moduleName: 'ChatInput',
+        message:
+          '`commands` is set but `onCommandSelect` is not, so picking a command only clears the text. Pass `onCommandSelect` to run the command.',
+      });
+    }
+  }, [hasCommandsWithoutHandler]);
+
+  const listboxId = useId('chat-input-commands');
+  const [commandActiveIndex, setCommandActiveIndex] = React.useState(0);
+  const [dismissedCommandText, setDismissedCommandText] = React.useState<string | null>(null);
+  const commandQuery = commands?.length ? getCommandQuery(textValue) : null;
+  const commandItems = React.useMemo(() => {
+    if (commandQuery === null || !commands) return [];
+    return commands.filter((command) => {
+      const title = command.title.replace(/^\//, '').toLowerCase();
+      return command.value.toLowerCase().startsWith(commandQuery) || title.startsWith(commandQuery);
+    });
+  }, [commands, commandQuery]);
+  // closes when focus leaves the box, and opens again when it comes back
+  const isCommandMenuOpen =
+    commandItems.length > 0 && dismissedCommandText !== textValue && !isDisabled && isFocused;
+
+  React.useEffect(() => {
+    setCommandActiveIndex(0);
+  }, [commandQuery]);
+
+  const selectCommand = React.useCallback(
+    (command: ChatInputCommand) => {
+      onCommandSelect?.({ value: command.value });
+      setTextValue(() => '');
+      setDismissedCommandText(null);
+    },
+    [onCommandSelect, setTextValue],
+  );
+
+  const getOptionId = React.useCallback((index: number) => `${listboxId}-option-${index}`, [
+    listboxId,
+  ]);
 
   const handleKeyDown = React.useCallback(
     ({
@@ -128,8 +358,40 @@ const useChatInput = (
       event: React.KeyboardEvent<HTMLInputElement>;
     }) => {
       if (!event) return;
+      // An input method editor (Chinese, Japanese, Korean, ...) uses Enter to confirm a word.
+      // That Enter must not send the message or pick a command.
+      const isComposing = event.nativeEvent?.isComposing || event.keyCode === 229;
+
+      if (isCommandMenuOpen && !isComposing) {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          setCommandActiveIndex((index) => (index + 1) % commandItems.length);
+          return;
+        }
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          setCommandActiveIndex((index) => (index - 1 + commandItems.length) % commandItems.length);
+          return;
+        }
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          selectCommand(commandItems[commandActiveIndex] ?? commandItems[0]);
+          return;
+        }
+        if (event.key === 'Tab') {
+          // Tab keeps its usual meaning: close the list and move focus on
+          setDismissedCommandText(textValue);
+          return;
+        }
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          setDismissedCommandText(textValue);
+          return;
+        }
+      }
 
       if (event.key === 'Enter' && !event.shiftKey) {
+        if (isComposing) return;
         event.preventDefault();
         handleSubmit();
         return;
@@ -143,6 +405,11 @@ const useChatInput = (
       }
     },
     [
+      isCommandMenuOpen,
+      commandItems,
+      commandActiveIndex,
+      selectCommand,
+      textValue,
       handleSubmit,
       showGhostSuggestion,
       suggestions,
@@ -158,28 +425,10 @@ const useChatInput = (
 
   const handleFileInputChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const inputFiles = Array.from(event.target.files ?? []) as BladeFileList;
-
-      const validFiles = inputFiles.filter((file) => {
-        if (accept && !isFileAccepted(file, accept)) return false;
-        return true;
-      });
-
-      for (const file of validFiles) {
-        if (!file.id) {
-          file.id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
-        }
-      }
-
-      if (validFiles.length > 0) {
-        const newFileList = [...files, ...validFiles];
-        setFiles(() => newFileList);
-        onFileChange?.({ fileList: newFileList });
-      }
-
+      addFiles(Array.from(event.target.files ?? []) as BladeFile[]);
       event.target.value = '';
     },
-    [accept, files, setFiles, onFileChange],
+    [addFiles],
   );
 
   const handleFileRemove = React.useCallback(
@@ -202,25 +451,85 @@ const useChatInput = (
 
   const handlePaste = React.useCallback(
     (event: React.ClipboardEvent<HTMLInputElement>) => {
-      const clipboardFiles = Array.from(event.clipboardData?.files ?? []);
+      const clipboardFiles = Array.from(event.clipboardData?.files ?? []) as BladeFile[];
       if (clipboardFiles.length === 0) return;
-
-      event.preventDefault();
-
-      for (const file of clipboardFiles) {
-        if (!(file as BladeFile).id) {
-          (file as BladeFile).id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
-        }
+      // Copying from Excel, Word or Numbers puts both text and an image on the clipboard: keep the
+      // text pasting as usual and attach the file too. Only a file-only paste is taken over.
+      if (!event.clipboardData?.getData?.('text/plain')) {
+        event.preventDefault();
       }
-
-      if (clipboardFiles.length > 0) {
-        const newFileList = [...files, ...clipboardFiles] as BladeFileList;
-        setFiles(() => newFileList);
-        onFileChange?.({ fileList: newFileList });
-      }
+      addFiles(clipboardFiles);
     },
-    [files, setFiles, onFileChange],
+    [addFiles],
   );
+
+  // ---------- drop ----------
+  const [isDraggingFiles, setIsDraggingFiles] = React.useState(false);
+  const dragDepthRef = React.useRef(0);
+  const canDrop = !isDisabled && canDropFiles && dropTarget !== 'none';
+
+  // One set of handlers for both drop targets. Only drags that carry files are handled, so
+  // dragging text or links keeps working as usual.
+  // Stable across re-renders, so a parent re-rendering mid-drag (for example while a reply
+  // streams in) doesn't remove and re-add the page listeners and lose the drag
+  const addDroppedFiles = useCallbackRef(addFiles);
+  const dragHandlers = React.useMemo(() => {
+    type DragLikeEvent = Pick<DragEvent, 'dataTransfer' | 'preventDefault'>;
+    return {
+      onDragEnter: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        dragDepthRef.current += 1;
+        setIsDraggingFiles(true);
+      },
+      onDragOver: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        event.preventDefault();
+      },
+      onDragLeave: (): void => {
+        // Count down for every leave once a file drag has started, without checking the drag
+        // again: some browsers send the last leave without the file types, which would leave the
+        // overlay stuck.
+        if (dragDepthRef.current === 0) return;
+        dragDepthRef.current -= 1;
+        if (dragDepthRef.current === 0) setIsDraggingFiles(false);
+      },
+      onDrop: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        event.preventDefault();
+        dragDepthRef.current = 0;
+        setIsDraggingFiles(false);
+        addDroppedFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
+      },
+    };
+  }, [addDroppedFiles]);
+
+  // dropTarget="page": files can be dropped anywhere on the page
+  React.useEffect(() => {
+    if (dropTarget !== 'page' || !canDrop || typeof window === 'undefined') return undefined;
+    const { onDragEnter, onDragOver, onDragLeave, onDrop } = dragHandlers;
+    window.addEventListener('dragenter', onDragEnter);
+    window.addEventListener('dragover', onDragOver);
+    window.addEventListener('dragleave', onDragLeave);
+    window.addEventListener('drop', onDrop);
+    return () => {
+      window.removeEventListener('dragenter', onDragEnter);
+      window.removeEventListener('dragover', onDragOver);
+      window.removeEventListener('dragleave', onDragLeave);
+      window.removeEventListener('drop', onDrop);
+      dragDepthRef.current = 0;
+      setIsDraggingFiles(false);
+    };
+  }, [dropTarget, canDrop, dragHandlers]);
+
+  // If dropping is turned off mid-drag, the leave and drop events stop coming, so clear the
+  // overlay here
+  React.useEffect(() => {
+    if (canDrop) return;
+    dragDepthRef.current = 0;
+    setIsDraggingFiles(false);
+  }, [canDrop]);
+
+  const dropZoneProps = dropTarget === 'input' && canDrop ? dragHandlers : {};
 
   const handleInnerMouseDownCapture = React.useCallback((event: React.MouseEvent): void => {
     const target = event.target as HTMLElement | null;
@@ -242,10 +551,25 @@ const useChatInput = (
     setActiveSuggestionIndex,
     hasText,
     hasFiles,
+    hasContent,
     isSubmitDisabled,
     showGhostSuggestion,
+    resolvedStatus,
+    isExpanded,
+    isDraggingFiles,
+    commandMenu: {
+      isOpen: isCommandMenuOpen,
+      listboxId,
+      items: commandItems,
+      activeIndex: commandActiveIndex,
+      setActiveIndex: setCommandActiveIndex,
+      getOptionId,
+      select: selectCommand,
+    },
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleKeyDown,
     handleUploadClick,
     handleFileInputChange,
@@ -253,6 +577,7 @@ const useChatInput = (
     handleFileDismiss,
     handlePaste,
     handleInnerMouseDownCapture,
+    dropZoneProps,
   };
 };
 

@@ -22,6 +22,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isDropdownTrigger'
     | 'maxTagRows'
     | 'isTableInputCell'
+    | 'focusIndicator'
+    | 'hoverIndicator'
     | 'size'
     | 'borderRadius'
   >
@@ -34,6 +36,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
+    focusIndicator: props.focusIndicator,
+    hoverIndicator: props.hoverIndicator,
     size: props.size,
     borderRadius: props.borderRadius,
   }),
@@ -47,6 +51,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
       isTableInputCell: props.isTableInputCell,
+      focusIndicator: props.focusIndicator,
+      hoverIndicator: props.hoverIndicator,
       size: props.size,
       borderRadius: props.borderRadius,
     }),
@@ -63,6 +69,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
       isTableInputCell: props.isTableInputCell,
+      focusIndicator: props.focusIndicator,
+      hoverIndicator: props.hoverIndicator,
       size: props.size,
       borderRadius: props.borderRadius,
     }),
@@ -160,6 +168,8 @@ to {
         }
       }}
       isTableInputCell={rest.isTableInputCell}
+      focusIndicator={rest.focusIndicator}
+      hoverIndicator={rest.hoverIndicator}
       className="__blade-base-input-wrapper"
     />
   );

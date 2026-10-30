@@ -7,15 +7,22 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidthNative, chatInputMaxTextAreaHeight } from './chatInputTokens';
+import {
+  chatInputBorderRadius,
+  chatInputFilePreviewItemWidthNative,
+  chatInputMaxTextAreaHeight,
+} from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputButton } from './ChatInputButton';
+import { ChatInputSubmit } from './ChatInputSubmit';
+import { getChatInputCompactLayout } from './getChatInputCompactLayout';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { CloseIcon, InfoIcon } from '~components/Icons';
+import { CloseIcon, InfoIcon, PlusIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { Text } from '~components/Typography';
 import { castNativeType, makeSpace } from '~utils';
@@ -25,7 +32,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import type { BladeElementRef } from '~utils/types';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
@@ -36,7 +43,11 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onFocus,
     onBlur,
     onSubmit,
+    clearOnSubmit = false,
     placeholder = 'Ask a question...',
+    size = 'medium',
+    status,
+    header,
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -52,6 +63,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     autoFocus = false,
     accessibilityLabel = 'Chat input',
     accept: _accept,
+    actionMenu,
+    commands,
+    onCommandSelect,
+    maxCount,
+    maxSize,
+    onFileError,
+    dropTarget,
+    showAmbientBorder,
     testID,
     ...rest
   },
@@ -70,6 +89,35 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     }
   }
 
+  // Web-only props are ignored here. Say so once per mount, so shared product code gets a signal
+  // without the console filling up on every render.
+  const hasLoggedWebOnlyPropsRef = React.useRef(false);
+  if (__DEV__ && !hasLoggedWebOnlyPropsRef.current) {
+    hasLoggedWebOnlyPropsRef.current = true;
+    const webOnlyProps = {
+      actionMenu,
+      commands,
+      onCommandSelect,
+      maxCount,
+      maxSize,
+      onFileError,
+      dropTarget,
+      showAmbientBorder,
+    };
+    const ignoredProps = Object.keys(webOnlyProps).filter(
+      (name) => webOnlyProps[name as keyof typeof webOnlyProps] !== undefined,
+    );
+    if (ignoredProps.length > 0) {
+      logger({
+        type: 'warn',
+        moduleName: 'ChatInput',
+        message: `${ignoredProps
+          .map((name) => `\`${name}\``)
+          .join(', ')} only work on web and have no effect on React Native.`,
+      });
+    }
+  }
+
   const themeMotionRef = React.useRef(theme.motion);
   themeMotionRef.current = theme.motion;
 
@@ -78,9 +126,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     textValue,
     files,
     hasFiles,
+    hasContent,
     isSubmitDisabled,
+    resolvedStatus,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleFileRemove,
     handleFileDismiss,
   } = useChatInput(
@@ -89,9 +141,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       defaultValue,
       onChange,
       onSubmit,
+      clearOnSubmit,
       fileList,
       onFileRemove,
       onFileDismiss,
+      status,
+      isGenerating,
+      onStop,
     },
     ref,
   );
@@ -154,8 +210,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       accessible={false}
       contentContainerStyle={{
         gap: getIn(theme, 'spacing.3') as number,
-        paddingTop: getIn(theme, 'spacing.5') as number,
-        paddingHorizontal: getIn(theme, 'spacing.5') as number,
+        paddingTop: getIn(theme, 'spacing.4') as number,
+        paddingHorizontal: getIn(theme, 'spacing.4') as number,
       }}
     >
       {files.map((file, index) => (
@@ -175,16 +231,82 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </ScrollView>
   ) : null;
 
-  const actionBarContent = (
-    <ChatInputActionBar
-      isDisabled={isDisabled}
-      isGenerating={isGenerating}
+  const isSmall = size === 'small';
+  const compactLayout = getChatInputCompactLayout(theme);
+
+  const getLeadingAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
+    hideFileUpload ? null : (
+      <ChatInputButton
+        icon={PlusIcon}
+        size={buttonSize}
+        accessibilityLabel="Upload file"
+        isDisabled={isDisabled}
+        onClick={() => onFileChange?.({ fileList: files })}
+      />
+    );
+
+  const getSubmitAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement => (
+    <ChatInputSubmit
+      status={resolvedStatus}
+      hasContent={hasContent}
       isSubmitDisabled={isSubmitDisabled}
-      hideFileUpload={hideFileUpload}
-      onUploadClick={() => onFileChange?.({ fileList: files })}
+      isDisabled={isDisabled}
+      size={buttonSize}
       onSubmit={handleSubmit}
+      onRetry={handleRetry}
+      canRetry={canRetry}
       onStop={onStop}
     />
+  );
+
+  const actionBarContent = (
+    <ChatInputActionBar
+      leadingAction={getLeadingAction('small')}
+      submitAction={getSubmitAction('small')}
+    />
+  );
+
+  // size="small": the "+" and Send sit inline with the text and stay on the bottom row as it grows
+  const compactLeading = getLeadingAction('xsmall');
+  const compactLeadingAction = compactLeading ? (
+    <BaseBox
+      display="flex"
+      paddingLeft={makeSpace(compactLayout.leadingPaddingLeft)}
+      paddingBottom={makeSpace(compactLayout.leadingBottomInset)}
+      marginRight={makeSpace(compactLayout.leadingMarginRight)}
+    >
+      {compactLeading}
+    </BaseBox>
+  ) : undefined;
+
+  const compactTrailingAction = (
+    <BaseBox
+      display="flex"
+      paddingBottom={makeSpace(compactLayout.trailingBottomInset)}
+      marginLeft={makeSpace(compactLayout.trailingMarginLeft)}
+      marginRight={makeSpace(compactLayout.trailingMarginRight)}
+    >
+      {getSubmitAction('xsmall')}
+    </BaseBox>
+  );
+
+  const topContent = (
+    <>
+      {header ? (
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          alignItems="center"
+          gap="spacing.3"
+          paddingTop="spacing.4"
+          paddingX="spacing.4"
+        >
+          {header}
+        </BaseBox>
+      ) : null}
+      {filePreviewContent}
+    </>
   );
 
   return (
@@ -248,7 +370,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           ref={mergedRef}
           as="textarea"
           id={inputId}
-          elevation="highRaised"
+          elevation="lowRaised"
+          focusIndicator="border"
           label={undefined}
           accessibilityLabel={accessibilityLabel}
           hideLabelText
@@ -259,16 +382,20 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onFocus={onFocus}
           onBlur={onBlur}
           isDisabled={isDisabled}
-          numberOfLines={2}
+          numberOfLines={1}
           autoGrowMaxHeight={chatInputMaxTextAreaHeight}
+          autoGrowMinHeight={isSmall ? compactLayout.singleRowHeight : undefined}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
-          padding={makeSpace(theme.spacing[5])}
-          borderRadius="large"
-          caretColor="surface.icon.onSea.onSubtle"
-          topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          padding={makeSpace(compactLayout.textAreaPadding)}
+          borderRadius={chatInputBorderRadius}
+          caretColor="interactive.text.primary.normal"
+          topContent={topContent}
+          bottomContent={isSmall ? undefined : actionBarContent}
+          leadingInteractionElement={isSmall ? compactLeadingAction : undefined}
+          trailingInteractionElement={isSmall ? compactTrailingAction : undefined}
+          visualsAlignment={isSmall ? 'bottom' : undefined}
           {...makeAnalyticsAttribute(rest)}
         />
       </BaseBox>

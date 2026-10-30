@@ -34,6 +34,7 @@ type InputVisuals = Pick<
   | 'successText'
   | 'validationTextPlacement'
   | 'hasCompactLeadingSpacing'
+  | 'visualsAlignment'
 > & {
   size: NonNullable<BaseInputProps['size']>;
   errorTextId?: string;
@@ -42,13 +43,15 @@ type InputVisuals = Pick<
 
 const getVisualContainerStyles = ({
   shouldStretch,
+  visualsAlignment = 'center',
 }: {
   shouldStretch?: boolean;
+  visualsAlignment?: InputVisuals['visualsAlignment'];
 } = {}): Pick<BaseBoxProps, 'display' | 'flexDirection' | 'alignItems' | 'alignSelf'> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  alignSelf: shouldStretch ? 'stretch' : 'center',
+  alignSelf: shouldStretch ? 'stretch' : visualsAlignment === 'bottom' ? 'flex-end' : 'center',
 });
 
 const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, IconColors> = {
@@ -295,6 +298,7 @@ export const BaseInputVisuals = ({
   errorTextId,
   successTextId,
   hasCompactLeadingSpacing,
+  visualsAlignment,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -359,7 +363,9 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
+      <BaseBox
+        {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown, visualsAlignment })}
+      >
         {hasLeadingInteractionElement ? (
           <BaseBox
             paddingLeft={
@@ -423,6 +429,7 @@ export const BaseInputVisuals = ({
           shouldStretch:
             (hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick)) ||
             hasTrailingDropDown,
+          visualsAlignment,
         })}
       >
         {hasTrailingInteractionElement ? (

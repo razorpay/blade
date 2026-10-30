@@ -1,7 +1,47 @@
+import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
+import type { MenuOverlayProps } from '~components/Menu';
+
+type ChatInputStatus = 'ready' | 'submitted' | 'streaming' | 'error';
+
+type ChatInputCommand = {
+  /**
+   * Value passed to `onCommandSelect`, such as `refund`. Typing `/` followed by the start of the
+   * value or title filters the list.
+   */
+  value: string;
+  /**
+   * The command's name without the slash, such as `refund`. ChatInput shows it as `/refund`, so
+   * every product renders commands the same way. Named `title` to match `ActionListItem` and
+   * `MenuItem`.
+   */
+  title: string;
+  /**
+   * Optional second line, such as "Refund a payment, in full or in part"
+   */
+  description?: string;
+};
+
+type ChatInputFileError = {
+  /**
+   * Why the file was not added:
+   * - `maxCount`: adding it would go over `maxCount`
+   * - `maxSize`: it is larger than `maxSize`
+   * - `accept`: its type is not in `accept`
+   */
+  code: 'maxCount' | 'maxSize' | 'accept';
+  /**
+   * A message that can be shown as is, such as "invoice.pdf is larger than 10 MB"
+   */
+  message: string;
+  /**
+   * The file that was not added
+   */
+  file: BladeFile;
+};
 
 type ChatInputProps = {
   /**
@@ -37,13 +77,152 @@ type ChatInputProps = {
    *
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
+   *
+   * ChatInput does not clear the box on its own. Set `clearOnSubmit` and return a promise (an
+   * `async` handler works as is) to have it clear what was sent once that promise resolves. The
+   * return type stays `void` so every handler that compiled before still does.
    */
   onSubmit?: ({ value, fileList }: { value: string; fileList: BladeFileList }) => void;
+
+  /**
+   * Clears what was sent once the promise returned by `onSubmit` resolves. If it rejects,
+   * everything is kept so the send can be retried.
+   *
+   * Only the parts ChatInput owns are cleared: the text when there is no `value` prop, and the
+   * files when there is no `fileList` prop. Controlled values stay in your hands. Text typed or
+   * files added while the request was in flight are kept. Has no effect when `onSubmit` does not
+   * return a promise.
+   * @default false
+   */
+  clearOnSubmit?: boolean;
 
   /**
    * Placeholder text shown when the input is empty
    */
   placeholder?: string;
+
+  /**
+   * Size of the chat input.
+   *
+   * - `medium`: the text sits above a toolbar with the "+" on the left and Send on the right.
+   * - `small`: a compact, one-row composer. The "+" and Send sit inline with the text. Once the
+   *   text needs a second line, it opens into the `medium` layout, and closes back to one row when
+   *   the text is cleared.
+   *
+   * **Note (React Native):** `small` stays one row with the "+" and Send inline, and the text area
+   * grows upwards as you type. It does not switch to the `medium` layout.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
+
+  /**
+   * State of the current request, which decides what the submit button shows:
+   * - `ready`: Send, once there is text or a file to send
+   * - `submitted`: a loader, while the request is on its way
+   * - `streaming`: Stop, while the reply streams (calls `onStop`)
+   * - `error`: Retry, after the request failed. It calls `onSubmit` with the last message sent,
+   *   even if the box has been cleared or edited since; before any send, with what is in the box.
+   *   It is disabled without `onSubmit`. This is about the request; `validationState="error"` is
+   *   about what the person typed or attached.
+   *
+   * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
+   * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
+   * `status` wins.
+   * While `submitted`, Enter does not send again. While `streaming`, Enter still calls `onSubmit`,
+   * so the product can queue the next message or ignore it.
+   * @default 'ready'
+   */
+  status?: ChatInputStatus;
+
+  /**
+   * Content above the text, such as context chips (Blade `Tag`s) for the payment, order or report
+   * the message is about.
+   */
+  header?: React.ReactNode;
+
+  /**
+   * A Blade `MenuOverlay` that the "+" button opens, such as "Upload files" and "Add a payment".
+   * Without it, the "+" button opens the file picker.
+   *
+   * Pass a function to get `openFilePicker`, so a menu item can open ChatInput's own file picker:
+   * `actionMenu={({ openFilePicker }) => <MenuOverlay><MenuItem title="Upload files" onClick={openFilePicker} /></MenuOverlay>}`.
+   * With `actionMenu`, the "+" shows even when `hideFileUpload` is set, because it opens the menu.
+   *
+   * **Note (React Native):** No effect. The "+" button calls `onFileChange`, as before.
+   */
+  actionMenu?:
+    | React.ReactElement<MenuOverlayProps>
+    | ((helpers: { openFilePicker: () => void }) => React.ReactElement<MenuOverlayProps>);
+
+  /**
+   * Slash commands. Typing `/` at the start of the text opens a list of these above the input,
+   * filtered by what follows the slash. Arrow keys move, Enter picks, and Escape or Tab closes it
+   * (Tab then moves focus on as usual). The text box points at the list with `aria-haspopup`,
+   * `aria-controls` and `aria-activedescendant`.
+   *
+   * **Note (React Native):** No effect.
+   */
+  commands?: ChatInputCommand[];
+
+  /**
+   * Called when a command is picked from the slash command list. ChatInput clears the `/...` text.
+   * Pass it whenever you pass `commands`; without it, Blade warns in development.
+   *
+   * **Note (React Native):** No effect.
+   */
+  onCommandSelect?: ({ value }: { value: string }) => void;
+
+  /**
+   * Most files that can be attached in total, as in `FileUpload`. Files over the limit are not
+   * added, and `onFileError` is called with `code: 'maxCount'`.
+   *
+   * **Note (React Native):** No effect. Limit files in your own file picker.
+   */
+  maxCount?: number;
+
+  /**
+   * Largest file size allowed, in bytes. Larger files are not added, and `onFileError` is called
+   * with `code: 'maxSize'`.
+   *
+   * These checks only guide people in the browser. Your server must still check every file.
+   *
+   * **Note (React Native):** No effect. Limit files in your own file picker.
+   */
+  maxSize?: number;
+
+  /**
+   * Called for each file that is not added, because of `maxCount`, `maxSize` or `accept`.
+   * It is called after `onFileChange` for the files that were added from the same batch.
+   *
+   * **Note (React Native):** No effect.
+   */
+  onFileError?: (error: ChatInputFileError) => void;
+
+  /**
+   * Where files can be dropped.
+   * - `input`: on the chat input only
+   * - `page`: anywhere on the page, for full-page chat screens
+   * - `none`: dropping is off, for example when the page has its own drop zone
+   *
+   * Dropping is also off when `hideFileUpload` is set without an `actionMenu`, since there is then
+   * no visible way to attach files. Pasting files works as before.
+   * @default 'input'
+   *
+   * **Note (React Native):** No effect.
+   */
+  dropTarget?: 'input' | 'page' | 'none';
+
+  /**
+   * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
+   * the box, about once every 12 seconds. While the cursor is in the box, the border is full blue
+   * and the streak becomes a soft white shine. It is decoration and does not mean the agent is
+   * working. With reduced motion nothing moves; `validationState="error"`, `status="error"` and
+   * `isDisabled` turn it off.
+   *
+   * **Note (React Native):** Shows the plain borders.
+   * @default false
+   */
+  showAmbientBorder?: boolean;
 
   /**
    * Disables the text input, file upload button, and submit button
@@ -54,13 +233,16 @@ type ChatInputProps = {
   /**
    * Whether the AI is currently generating a response.
    * When true, the submit button changes to a stop button.
+   * @deprecated Use `status="streaming"` instead. This prop will be removed in a future major
+   * version. When both are set, `status` wins.
    * @default false
    */
   isGenerating?: boolean;
 
   /**
-   * Callback fired when the user clicks the stop button (visible when isGenerating is true).
-   * Use this to cancel an in-flight AI generation.
+   * Callback fired when the user clicks the stop button (visible when `status="streaming"`).
+   * Use this to cancel an in-flight AI generation. Without it the Stop button is disabled, and
+   * Blade warns in development.
    */
   onStop?: () => void;
 
@@ -152,7 +334,8 @@ type ChatInputProps = {
   onErrorDismiss?: () => void;
 
   /**
-   * Hides the file upload button in the action bar.
+   * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
+   * and opens the menu. Without an `actionMenu`, dropping files is off too; pasting still works.
    * @default false
    */
   hideFileUpload?: boolean;
@@ -171,4 +354,4 @@ type ChatInputProps = {
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
-export type { ChatInputProps };
+export type { ChatInputProps, ChatInputStatus, ChatInputCommand, ChatInputFileError };
