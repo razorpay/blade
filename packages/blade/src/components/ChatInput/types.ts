@@ -143,7 +143,9 @@ type ChatInputProps = {
 
   /**
    * Slash commands. Typing `/` at the start of the text opens a list of these above the input,
-   * filtered by what follows the slash. Arrow keys move, Enter picks and Escape closes.
+   * filtered by what follows the slash. Arrow keys move, Enter picks, and Escape or Tab closes it
+   * (Tab then moves focus on as usual). The text box points at the list with `aria-haspopup`,
+   * `aria-controls` and `aria-activedescendant`.
    *
    * **Note (React Native):** No effect.
    */

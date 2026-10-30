@@ -391,6 +391,36 @@ describe('<ChatInput />', () => {
       expect(queryByRole('listbox')).not.toBeInTheDocument();
     });
 
+    it('points the text box at the list, and Tab closes it without picking', async () => {
+      const user = userEvent.setup();
+      const onCommandSelect = jest.fn();
+      const { getByRole, queryByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          commands={commands}
+          onCommandSelect={onCommandSelect}
+        />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      expect(textarea).toHaveAttribute('aria-haspopup', 'listbox');
+      expect(textarea).not.toHaveAttribute('aria-expanded');
+      await user.type(textarea, '/re');
+      expect(textarea).toHaveAttribute('aria-controls', getByRole('listbox').id);
+      expect(textarea).toHaveAttribute('aria-activedescendant');
+      await user.keyboard('{Tab}');
+      expect(queryByRole('listbox')).not.toBeInTheDocument();
+      expect(onCommandSelect).not.toHaveBeenCalled();
+    });
+
+    it('has no accessibility violations with the list open', async () => {
+      const user = userEvent.setup();
+      const { getByRole, container } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} commands={commands} />,
+      );
+      await user.type(getByRole('textbox', { name: accessibilityLabel }), '/');
+      await assertAccessible(container);
+    });
+
     it('closes on Escape', async () => {
       const user = userEvent.setup();
       const { getByRole, queryByRole } = renderWithTheme(

@@ -494,7 +494,7 @@ When `onSubmit` returns a promise, ChatInput clears what was sent once it resolv
 
 ### Slash Commands
 
-Typing `/` at the start of the text opens a list of `commands` above the input, filtered by what follows the slash. Arrow keys move, Enter or Tab picks, Escape closes. Focus stays in the text box, which points at the highlighted option with `aria-activedescendant`. `aria-expanded` is not used, because a text box may not carry it.
+Typing `/` at the start of the text opens a list of `commands` above the input, filtered by what follows the slash. Arrow keys move, Enter picks, and Escape or Tab closes it (Tab then moves focus on). Focus stays in the text box. With `commands`, the text box carries `aria-haspopup="listbox"`, `aria-controls` (the list) and `aria-activedescendant` (the highlighted option), through BaseInput's `hasPopup` and `popupId`. It stays `role="textbox"`: axe rejects `role="combobox"` on a textarea (`aria-allowed-role`), and a textbox may not carry `aria-expanded`, so BaseInput leaves that out when the role is `textbox`.
 
 ### Files
 

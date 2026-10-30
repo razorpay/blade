@@ -417,6 +417,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           padding={textAreaPadding}
           borderRadius={chatInputBorderRadius}
           caretColor="interactive.text.primary.normal"
+          // with commands, the text box points at the slash command list: aria-haspopup,
+          // aria-controls and aria-activedescendant. It stays a textbox, because a combobox role
+          // (and aria-expanded) is not allowed on a textarea.
+          role={commands?.length ? 'textbox' : undefined}
+          hasPopup={commands?.length ? 'listbox' : undefined}
+          popupId={commands?.length ? commandMenu.listboxId : undefined}
+          isPopupExpanded={commands?.length ? commandMenu.isOpen : undefined}
           activeDescendant={
             commandMenu.isOpen ? commandMenu.getOptionId(commandMenu.activeIndex) : undefined
           }

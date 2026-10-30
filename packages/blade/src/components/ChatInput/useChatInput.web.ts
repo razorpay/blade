@@ -333,9 +333,14 @@ const useChatInput = (
           setCommandActiveIndex((index) => (index - 1 + commandItems.length) % commandItems.length);
           return;
         }
-        if (event.key === 'Enter' || event.key === 'Tab') {
+        if (event.key === 'Enter') {
           event.preventDefault();
           selectCommand(commandItems[commandActiveIndex] ?? commandItems[0]);
+          return;
+        }
+        if (event.key === 'Tab') {
+          // Tab keeps its usual meaning: close the list and move focus on
+          setDismissedCommandText(textValue);
           return;
         }
         if (event.key === 'Escape') {

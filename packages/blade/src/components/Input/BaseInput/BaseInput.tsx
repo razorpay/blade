@@ -1113,7 +1113,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     }),
     label: accessibilityLabel,
     hasPopup,
-    expanded: hasPopup ? isPopupExpanded : undefined,
+    // a text box may not carry aria-expanded, so a textbox with a popup only gets
+    // aria-haspopup, aria-controls and aria-activedescendant (ChatInput's slash commands)
+    expanded: hasPopup && role !== 'textbox' ? isPopupExpanded : undefined,
     controls: hasPopup ? popupId : undefined,
     role: role ?? defaultRole,
     activeDescendant,
