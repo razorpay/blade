@@ -339,6 +339,8 @@ export const RequestStatus: StoryFn<typeof ChatInput> = () => {
             defaultValue={status === 'ready' || status === 'error' ? 'Refund pay_Qx81Lm2' : ''}
             placeholder="Ask a follow-up"
             accessibilityLabel={`Chat input, ${status}`}
+            onSubmit={({ value }) => console.log('Submitted:', value)}
+            onStop={() => console.log('Stopped')}
           />
         </Box>
       ))}

@@ -17,6 +17,10 @@ type ChatInputSubmitProps = {
    */
   size: 'small' | 'xsmall';
   onSubmit: () => void;
+  /**
+   * False when the product passed no `onSubmit`, so Retry would do nothing
+   */
+  canRetry: boolean;
   onStop?: () => void;
 };
 
@@ -31,6 +35,7 @@ const ChatInputSubmit = ({
   isDisabled,
   size,
   onSubmit,
+  canRetry,
   onStop,
 }: ChatInputSubmitProps): React.ReactElement => {
   if (status === 'streaming') {
@@ -70,8 +75,9 @@ const ChatInputSubmit = ({
         icon={RotateCounterClockWiseIcon}
         accessibilityProps={{ label: 'Retry' }}
         onClick={onSubmit}
+        // like Stop, don't offer a Retry that does nothing
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-        isDisabled={isSubmitDisabled || isDisabled}
+        isDisabled={isSubmitDisabled || isDisabled || !canRetry}
       />
     );
   }

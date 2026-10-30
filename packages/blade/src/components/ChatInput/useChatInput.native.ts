@@ -77,7 +77,7 @@ const useChatInput = (
   const hasFiles = files.length > 0;
   const hasContent = textValue.trim().length > 0 || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
-  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop });
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop, onSubmit });
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {

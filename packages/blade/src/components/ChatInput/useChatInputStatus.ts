@@ -4,14 +4,15 @@ import { logger } from '~utils/logger';
 
 /**
  * Works out which request state the submit button shows. `status` wins over the deprecated
- * `isGenerating`. In development it warns when the Stop button is disabled because `onStop` is
- * missing. Shared by web and native so the two never drift.
+ * `isGenerating`. In development it warns when Stop or Retry is disabled because `onStop` or
+ * `onSubmit` is missing. Shared by web and native so the two never drift.
  */
 const useChatInputStatus = ({
   status,
   isGenerating = false,
   onStop,
-}: Pick<ChatInputProps, 'status' | 'isGenerating' | 'onStop'>): ChatInputStatus => {
+  onSubmit,
+}: Pick<ChatInputProps, 'status' | 'isGenerating' | 'onStop' | 'onSubmit'>): ChatInputStatus => {
   const resolvedStatus: ChatInputStatus = status ?? (isGenerating ? 'streaming' : 'ready');
   const isStopInert = resolvedStatus === 'streaming' && !onStop;
 
@@ -25,6 +26,18 @@ const useChatInputStatus = ({
       });
     }
   }, [isStopInert]);
+
+  const isRetryInert = resolvedStatus === 'error' && !onSubmit;
+  React.useEffect(() => {
+    if (isRetryInert) {
+      logger({
+        type: 'warn',
+        moduleName: 'ChatInput',
+        message:
+          'The Retry button is showing but `onSubmit` is not set, so it is disabled. Pass `onSubmit` to let people send again.',
+      });
+    }
+  }, [isRetryInert]);
 
   return resolvedStatus;
 };

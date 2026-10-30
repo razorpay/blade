@@ -9,6 +9,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useId } from '~utils/useId';
+import { useCallbackRef } from '~utils/useCallbackRef';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 import { useChatInputSubmit } from './useChatInputSubmit';
 import { useChatInputStatus } from './useChatInputStatus';
@@ -156,7 +157,7 @@ const useChatInput = (
   const hasContent = hasText || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
-  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop });
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop, onSubmit });
 
   // size="small" starts as one row and opens into the full layout once the text needs a second
   // line. It stays open until the text is cleared, so it never flips back and forth while typing.
@@ -444,6 +445,9 @@ const useChatInput = (
 
   // One set of handlers for both drop targets. Only drags that carry files are handled, so
   // dragging text or links keeps working as usual.
+  // Stable across re-renders, so a parent re-rendering mid-drag (for example while a reply
+  // streams in) doesn't remove and re-add the page listeners and lose the drag
+  const addDroppedFiles = useCallbackRef(addFiles);
   const dragHandlers = React.useMemo(() => {
     type DragLikeEvent = Pick<DragEvent, 'dataTransfer' | 'preventDefault'>;
     return {
@@ -469,10 +473,10 @@ const useChatInput = (
         event.preventDefault();
         dragDepthRef.current = 0;
         setIsDraggingFiles(false);
-        addFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
+        addDroppedFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
       },
     };
-  }, [addFiles]);
+  }, [addDroppedFiles]);
 
   // dropTarget="page": files can be dropped anywhere on the page
   React.useEffect(() => {

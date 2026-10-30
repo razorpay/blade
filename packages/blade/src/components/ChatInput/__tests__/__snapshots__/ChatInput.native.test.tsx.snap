@@ -1292,6 +1292,7 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                           paddingBottom="8px"
                         >
                           <ChatInputSubmit
+                            canRetry={false}
                             hasContent={false}
                             isDisabled={false}
                             isSubmitDisabled={true}

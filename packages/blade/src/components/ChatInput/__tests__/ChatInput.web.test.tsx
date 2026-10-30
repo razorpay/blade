@@ -204,6 +204,16 @@ describe('<ChatInput />', () => {
       expect(getByRole('button', { name: 'Sending' })).toBeDisabled();
     });
 
+    it('disables Retry and warns in development when there is no onSubmit', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} status="error" defaultValue="Hi" />,
+      );
+      expect(getByRole('button', { name: 'Retry' })).toBeDisabled();
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('`onSubmit` is not set'));
+      warn.mockRestore();
+    });
+
     it('does not send again on Enter while submitted', () => {
       const onSubmit = jest.fn();
       const { getByRole } = renderWithTheme(
@@ -618,6 +628,29 @@ describe('<ChatInput />', () => {
       expect(queryByText('Drop files to attach')).toBeInTheDocument();
       fireEvent.dragLeave(window, { dataTransfer: null });
       expect(queryByText('Drop files to attach')).not.toBeInTheDocument();
+    });
+
+    it('keeps the drop overlay when the parent re-renders mid-drag', () => {
+      const Parent = (): React.ReactElement => {
+        const [renders, setRenders] = React.useState(0);
+        return (
+          <>
+            <button type="button" onClick={() => setRenders(renders + 1)}>
+              Re-render
+            </button>
+            <ChatInput
+              accessibilityLabel={accessibilityLabel}
+              dropTarget="page"
+              // a new function every render, like most product code
+              onFileChange={() => renders}
+            />
+          </>
+        );
+      };
+      const { getByRole, queryByText } = renderWithTheme(<Parent />);
+      fireEvent.dragEnter(window, { dataTransfer: { types: ['Files'], files: [] } });
+      fireEvent.click(getByRole('button', { name: 'Re-render' }));
+      expect(queryByText('Drop files to attach')).toBeInTheDocument();
     });
 
     it('adds files dropped anywhere on the page with dropTarget="page"', () => {

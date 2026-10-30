@@ -317,6 +317,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       size={buttonSize}
       onSubmit={handleSubmit}
+      canRetry={Boolean(onSubmit)}
       onStop={onStop}
     />
   );

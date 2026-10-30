@@ -120,8 +120,8 @@ type ChatInputProps = {
    * - `ready`: Send, once there is text or a file to send
    * - `submitted`: a loader, while the request is on its way
    * - `streaming`: Stop, while the reply streams (calls `onStop`)
-   * - `error`: Retry, after the request failed (calls `onSubmit` again). This is about the
-   *   request; `validationState="error"` is about what the person typed or attached.
+   * - `error`: Retry, after the request failed (calls `onSubmit` again; disabled without it). This
+   *   is about the request; `validationState="error"` is about what the person typed or attached.
    *
    * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
    * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
