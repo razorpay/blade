@@ -192,7 +192,7 @@ export const StopGeneration: StoryFn<typeof ChatInput> = () => {
     <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
-        isGenerating={isGenerating}
+        status={isGenerating ? 'streaming' : 'ready'}
         onSubmit={({ value }) => {
           console.log('Submitted:', value);
           const controller = new AbortController();
@@ -242,7 +242,7 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
         onChange={({ value }) => setText(value)}
         onSubmit={handleSubmit}
         placeholder="Ask a question..."
-        isGenerating={isGenerating}
+        status={isGenerating ? 'streaming' : 'ready'}
         onStop={() => {
           abortRef.current?.abort();
           setIsGenerating(false);
@@ -512,6 +512,7 @@ export const AIComposer: StoryFn<typeof ChatInput> = () => {
             description: 'Download a payments or settlements report',
           },
         ]}
+        clearOnSubmit
         onSubmit={({ value }) =>
           new Promise<void>((resolve) => {
             setLastMessage(value);
@@ -952,7 +953,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
           validationState={inputErrorText ? 'error' : 'none'}
           errorText={inputErrorText}
           onErrorDismiss={() => setInputErrorText(undefined)}
-          isGenerating={isGenerating}
+          status={isGenerating ? 'streaming' : 'ready'}
           onStop={handleStop}
           fileList={files}
           onFileChange={({ fileList }) => {

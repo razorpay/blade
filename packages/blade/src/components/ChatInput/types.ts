@@ -76,11 +76,8 @@ type ChatInputProps = {
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    *
-   * If it returns a promise, ChatInput clears what was sent once the promise resolves, and keeps
-   * it if it rejects, so a failed send can be retried. It only clears what it owns: the text when
-   * there is no `value` prop, and the files when there is no `fileList` prop. Controlled values
-   * are left to you. Text typed or files added while the request was in flight are kept. A plain function works as before:
-   * ChatInput never clears the box itself.
+   * ChatInput does not clear the box on its own. Set `clearOnSubmit` to have it clear what was
+   * sent once the promise you return resolves.
    */
   onSubmit?: ({
     value,
@@ -89,6 +86,18 @@ type ChatInputProps = {
     value: string;
     fileList: BladeFileList;
   }) => void | Promise<unknown>;
+
+  /**
+   * Clears what was sent once the promise returned by `onSubmit` resolves. If it rejects,
+   * everything is kept so the send can be retried.
+   *
+   * Only the parts ChatInput owns are cleared: the text when there is no `value` prop, and the
+   * files when there is no `fileList` prop. Controlled values stay in your hands. Text typed or
+   * files added while the request was in flight are kept. Has no effect when `onSubmit` does not
+   * return a promise.
+   * @default false
+   */
+  clearOnSubmit?: boolean;
 
   /**
    * Placeholder text shown when the input is empty
@@ -114,9 +123,12 @@ type ChatInputProps = {
    * - `ready`: Send, once there is text or a file to send
    * - `submitted`: a loader, while the request is on its way
    * - `streaming`: Stop, while the reply streams (calls `onStop`)
-   * - `error`: Retry, after the request failed (calls `onSubmit` again)
+   * - `error`: Retry, after the request failed (calls `onSubmit` again). This is about the
+   *   request; `validationState="error"` is about what the person typed or attached.
    *
-   * `isGenerating` stays as a shorthand for `streaming`. When both are set, `status` wins.
+   * `submitted` and `streaming` match the status names used by the Vercel AI SDK, so its `status`
+   * can be passed straight through. When `status` and the deprecated `isGenerating` are both set,
+   * `status` wins.
    * @default 'ready'
    */
   status?: ChatInputStatus;
@@ -216,14 +228,16 @@ type ChatInputProps = {
   /**
    * Whether the AI is currently generating a response.
    * When true, the submit button changes to a stop button.
-   * Shorthand for `status="streaming"`; `status` wins when both are set.
+   * @deprecated Use `status="streaming"` instead. This prop will be removed in a future major
+   * version. When both are set, `status` wins.
    * @default false
    */
   isGenerating?: boolean;
 
   /**
-   * Callback fired when the user clicks the stop button (visible when isGenerating is true).
-   * Use this to cancel an in-flight AI generation.
+   * Callback fired when the user clicks the stop button (visible when `status="streaming"`).
+   * Use this to cancel an in-flight AI generation. Without it the Stop button does nothing, and
+   * Blade warns in development.
    */
   onStop?: () => void;
 

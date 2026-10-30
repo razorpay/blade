@@ -7,6 +7,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 import { useChatInputSubmit } from './useChatInputSubmit';
+import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -14,11 +15,13 @@ type UseChatInputProps = Pick<
   | 'defaultValue'
   | 'onChange'
   | 'onSubmit'
+  | 'clearOnSubmit'
   | 'fileList'
   | 'onFileRemove'
   | 'onFileDismiss'
   | 'status'
   | 'isGenerating'
+  | 'onStop'
 >;
 
 const useChatInput = (
@@ -27,11 +30,13 @@ const useChatInput = (
     defaultValue,
     onChange,
     onSubmit,
+    clearOnSubmit = false,
     fileList: controlledFileList,
     onFileRemove,
     onFileDismiss,
     status,
     isGenerating = false,
+    onStop,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -72,7 +77,7 @@ const useChatInput = (
   const hasFiles = files.length > 0;
   const hasContent = textValue.trim().length > 0 || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
-  const resolvedStatus: ChatInputStatus = status ?? (isGenerating ? 'streaming' : 'ready');
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop });
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
@@ -84,6 +89,7 @@ const useChatInput = (
   // Native never calls onFileChange here: on native it means "open your file picker"
   const submit = useChatInputSubmit({
     onSubmit,
+    clearOnSubmit,
     textValue,
     files,
     setTextValue,

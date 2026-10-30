@@ -3,16 +3,16 @@ import type { ChatInputProps } from './types';
 import type { BladeFileList } from '~components/FileUpload/types';
 
 /**
- * Calls `onSubmit`. When it returns a promise, ChatInput clears what was sent once it resolves,
- * and keeps everything if it rejects so the send can be retried. It only clears what it owns:
- * the text when there is no `value` prop, and the files when there is no `fileList` prop.
- * Controlled inputs stay fully in the product's hands, so a handler that already returned a
- * promise (react-hook-form, Formik, mutateAsync) sees no change. Only what was sent is cleared:
- * text typed or files added while the request was in flight stay. Shared by web and native so
- * the two never drift.
+ * Calls `onSubmit`. With `clearOnSubmit`, and when `onSubmit` returns a promise, ChatInput clears
+ * what was sent once it resolves, and keeps everything if it rejects so the send can be retried.
+ * Without `clearOnSubmit` the return value is ignored, so existing async handlers see no change.
+ * It only clears what it owns: the text when there is no `value` prop, and the files when there is
+ * no `fileList` prop. Only what was sent is cleared: text typed or files added while the request
+ * was in flight stay. Shared by web and native so the two never drift.
  */
 const useChatInputSubmit = ({
   onSubmit,
+  clearOnSubmit,
   textValue,
   files,
   setTextValue,
@@ -22,6 +22,7 @@ const useChatInputSubmit = ({
   onFilesCleared,
 }: {
   onSubmit: ChatInputProps['onSubmit'];
+  clearOnSubmit: boolean;
   textValue: string;
   files: BladeFileList;
   setTextValue: (updater: () => string) => void;
@@ -48,7 +49,8 @@ const useChatInputSubmit = ({
   return React.useCallback(
     ({ value, fileList }: { value: string; fileList: BladeFileList }) => {
       const result = onSubmit?.({ value, fileList });
-      if (!result || typeof (result as Promise<unknown>).then !== 'function') return;
+      if (!clearOnSubmit || !result || typeof (result as Promise<unknown>).then !== 'function')
+        return;
       (result as Promise<unknown>).then(
         () => {
           if (!isMountedRef.current) return;
@@ -65,7 +67,15 @@ const useChatInputSubmit = ({
         },
       );
     },
-    [onSubmit, setTextValue, setFiles, isTextControlled, isFilesControlled, onFilesCleared],
+    [
+      onSubmit,
+      clearOnSubmit,
+      setTextValue,
+      setFiles,
+      isTextControlled,
+      isFilesControlled,
+      onFilesCleared,
+    ],
   );
 };
 

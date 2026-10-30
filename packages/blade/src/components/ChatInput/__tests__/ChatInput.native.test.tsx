@@ -76,6 +76,7 @@ describe('<ChatInput /> (native)', () => {
         fileList={[file as never]}
         onFileChange={onFileChange}
         onSubmit={() => Promise.resolve()}
+        clearOnSubmit
       />,
     );
     fireEvent.press(getByRole('button', { name: 'Submit' }));

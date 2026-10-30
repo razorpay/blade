@@ -174,6 +174,13 @@ describe('<ChatInput />', () => {
       expect(onStop).toHaveBeenCalledTimes(1);
     });
 
+    it('warns in development when Stop has no onStop', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} status="streaming" />);
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('`onStop` is not set'));
+      warn.mockRestore();
+    });
+
     it('lets status win over isGenerating', () => {
       const { queryByRole } = renderWithTheme(
         <ChatInput
@@ -210,12 +217,25 @@ describe('<ChatInput />', () => {
     });
   });
 
-  describe('onSubmit returning a promise', () => {
-    it('clears the text once the promise resolves', async () => {
+  describe('clearOnSubmit', () => {
+    it('leaves the text alone by default, even for an async handler', async () => {
       const user = userEvent.setup();
       const onSubmit = jest.fn(() => Promise.resolve());
       const { getByRole } = renderWithTheme(
         <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      await user.type(textarea, 'Hello{enter}');
+      await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      expect(textarea).toHaveValue('Hello');
+    });
+
+    it('clears the text once the promise resolves', async () => {
+      const user = userEvent.setup();
+      const onSubmit = jest.fn(() => Promise.resolve());
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} clearOnSubmit />,
       );
       const textarea = getByRole('textbox', { name: accessibilityLabel });
       await user.type(textarea, 'Hello{enter}');
@@ -232,7 +252,7 @@ describe('<ChatInput />', () => {
           }),
       );
       const { getByRole } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} clearOnSubmit />,
       );
       const textarea = getByRole('textbox', { name: accessibilityLabel });
       await user.type(textarea, 'First{enter}');
@@ -251,6 +271,7 @@ describe('<ChatInput />', () => {
           value="Hello"
           onChange={onChange}
           onSubmit={() => Promise.resolve({ ok: true })}
+          clearOnSubmit
         />,
       );
       fireEvent.keyDown(getByRole('textbox', { name: accessibilityLabel }), { key: 'Enter' });
@@ -262,7 +283,7 @@ describe('<ChatInput />', () => {
       const user = userEvent.setup();
       const onSubmit = jest.fn(() => Promise.reject(new Error('failed')));
       const { getByRole } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={onSubmit} clearOnSubmit />,
       );
       const textarea = getByRole('textbox', { name: accessibilityLabel });
       await user.type(textarea, 'Hello{enter}');
@@ -273,7 +294,7 @@ describe('<ChatInput />', () => {
     it('never clears the text for a plain function', async () => {
       const user = userEvent.setup();
       const { getByRole } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={jest.fn()} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} onSubmit={jest.fn()} clearOnSubmit />,
       );
       const textarea = getByRole('textbox', { name: accessibilityLabel });
       await user.type(textarea, 'Hello{enter}');

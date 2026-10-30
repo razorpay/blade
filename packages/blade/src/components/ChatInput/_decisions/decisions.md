@@ -439,6 +439,7 @@ Whenever files are added (or the list changes), the file preview row automatical
 ### Implicit Disable on Error or Uploading Files
 
 The submit button (and Enter key) is blocked whenever:
+
 - There is no text **and** no files, **or**
 - Any attached file has `status === 'error'`, **or**
 - Any attached file has `status === 'uploading'`
@@ -482,15 +483,15 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 ### Status
 
-`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` stays as a shorthand for `streaming`; `status` wins when both are set. Retry calls `onSubmit` again with the current text and files.
+`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` still works but is deprecated in favour of `status="streaming"`, and will be removed in a future major; `status` wins when both are set. Retry calls `onSubmit` again with the current text and files. The names `submitted` and `streaming` match the Vercel AI SDK's `useChat` status, so its value can be passed straight through; that is why it is `submitted`, not `submitting`. `status="error"` is about the request, while `validationState="error"` is about what was typed or attached. `onStop` stays optional rather than required with `streaming` (a discriminated union would make every consumer that spreads a `status` variable narrow it first); instead Blade warns in development when Stop shows without `onStop`.
 
 ### Compact Size
 
 `size="small"` is one 44 px row with the "+" and Send inline (BaseInput `visualsAlignment="bottom"` keeps them on the last line). Once the text needs a second line it opens into the `medium` layout and stays open until the text is cleared, so it never flips back and forth while typing. On React Native it stays one row and grows, as in the closed draft PR #4076 this builds on.
 
-### Promise Submit
+### Clear On Submit
 
-When `onSubmit` returns a promise, ChatInput clears what was sent once it resolves and keeps it if it rejects. It only clears what it owns: the text without a `value` prop and the files without a `fileList` prop, so a handler that already returned a promise with controlled values (react-hook-form, Formik, mutateAsync) sees no change. `onSubmit` returns `void | Promise<unknown>`, so existing handlers returning any promise still typecheck. `maxCount` and `maxSize` match `FileUpload`. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". A plain function works as before: ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
+Clearing is opt-in through `clearOnSubmit` (default `false`), so an existing `async` handler on an uncontrolled ChatInput keeps today's behaviour. We first inferred it from a promise return value, but that silently changed behaviour for the most common handler shape. With `clearOnSubmit`, ChatInput clears what was sent once the promise from `onSubmit` resolves and keeps it if it rejects. It only clears what it owns: the text without a `value` prop and the files without a `fileList` prop, so controlled values (react-hook-form, Formik) are never touched. `onSubmit` returns `void | Promise<unknown>`, so existing handlers returning any promise still typecheck. `maxCount` and `maxSize` match `FileUpload`. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". Without `clearOnSubmit`, or when `onSubmit` returns nothing, ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
 
 ### Slash Commands
 

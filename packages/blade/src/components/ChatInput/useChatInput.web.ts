@@ -11,6 +11,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { useId } from '~utils/useId';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 import { useChatInputSubmit } from './useChatInputSubmit';
+import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -18,6 +19,7 @@ type UseChatInputProps = Pick<
   | 'defaultValue'
   | 'onChange'
   | 'onSubmit'
+  | 'clearOnSubmit'
   | 'isDisabled'
   | 'isGenerating'
   | 'status'
@@ -63,9 +65,11 @@ const useChatInput = (
     defaultValue,
     onChange,
     onSubmit,
+    clearOnSubmit = false,
     isDisabled = false,
     isGenerating = false,
     status,
+    onStop,
     fileList: controlledFileList,
     onFileChange,
     onFileRemove,
@@ -145,7 +149,7 @@ const useChatInput = (
   const hasContent = hasText || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
-  const resolvedStatus: ChatInputStatus = status ?? (isGenerating ? 'streaming' : 'ready');
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop });
 
   // size="small" starts as one row and opens into the full layout once the text needs a second
   // line. It stays open until the text is cleared, so it never flips back and forth while typing.
@@ -262,6 +266,7 @@ const useChatInput = (
 
   const submit = useChatInputSubmit({
     onSubmit,
+    clearOnSubmit,
     textValue,
     files,
     setTextValue,
