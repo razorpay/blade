@@ -34,6 +34,26 @@ describe('createDisclosure', () => {
     expect(d.back()).toBeUndefined();
   });
 
+  it("the event's preventDefault keeps a dismissible one open, this time only", () => {
+    const onOpenChange = vi.fn();
+    let asks = true;
+    const d = createDisclosure({
+      defaultOpen: true,
+      onDismiss: (event) => {
+        if (asks) {
+          event.preventDefault();
+        }
+      },
+      onOpenChange,
+    });
+    expect(d.dismiss('escape')).toBe(false);
+    expect(d.isOpen()).toBe(true);
+    expect(onOpenChange).not.toHaveBeenCalled();
+    asks = false;
+    expect(d.dismiss('escape')).toBe(true);
+    expect(onOpenChange).toHaveBeenCalledExactlyOnceWith(false, 'escape');
+  });
+
   it("the event's close ends a non-dismissible one, under the dismissal's source", () => {
     const onOpenChange = vi.fn();
     const d = createDisclosure({

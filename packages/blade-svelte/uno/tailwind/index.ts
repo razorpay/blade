@@ -10,3 +10,4 @@ export type { ThemeConfig, ResolvedTheme } from './theme';
 export { tailwindRules } from './plugins';
 export { preflightCSS, defaultsCSS } from './preflight';
 export { customVariants } from './variants';
+export { candidateOrderOf, withCandidateOrder } from './engine';

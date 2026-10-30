@@ -365,7 +365,8 @@ export function createEngine(
   /**
    * One Uno rule per call, as Tailwind gives one call one place in the
    * stylesheet: `rounded-t-none rounded-r-none` sort by name within it, as
-   * Tailwind sorts them (Uno breaks ties by selector).
+   * Tailwind sorts them (`candidateOrder`, since Uno's own tie-break, a
+   * `localeCompare` of the selectors, puts `h-[13px]` before `h-4`).
    */
   function matchUtilities(
     utilities: Record<string, UtilityFunction>,
@@ -379,6 +380,7 @@ export function createEngine(
       byIdentifier.get(identifier)?.push(entry);
       entries.set(identifier, entry);
     }
+    const identifierOrder = new Map([...entries.keys()].sort().map((id, index) => [id, index]));
     const alternatives = [...entries.keys()]
       .sort((a, b) => b.length - a.length)
       .map((identifier) => identifier.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&'))
@@ -393,13 +395,69 @@ export function createEngine(
           if (isArbitraryValue(modifier) && arbitraryOwner(identifier, modifier) !== entry) {
             return undefined;
           }
-          return generate(entry, modifier) as any;
+          const css = generate(entry, modifier);
+          if (!css) return undefined;
+          const place: [number, number] = [identifierOrder.get(identifier)!, entries.size];
+          return withCandidateOrder(css, candidateOrder(Boolean(negative), place, rest)) as any;
         },
       ],
     ];
   }
 
   return { matchUtilities };
+}
+
+/**
+ * Where a class sorts among the ones its rule makes. Tailwind writes the
+ * utilities of one plugin in code-unit order of the class names
+ * (src/lib/expandTailwindAtRules.js sorts the candidates with `<`, and
+ * src/lib/offsets.js keeps that order among equal offsets): negatives first,
+ * then `h-4`, `h-[13px]`, `h-auto`. Uno breaks ties among a rule's
+ * utilities by `meta.sort` and then a `localeCompare` of the selectors,
+ * which puts `[` before a digit; this rank settles that one case, under
+ * the sign and the identifier (`rounded-b-lg` stays before `rounded-t`),
+ * and leaves the rest to the compare, which agrees with Tailwind there.
+ */
+export function candidateOrder(
+  negative: boolean,
+  /** The identifier's place among the rule's, in code-unit order, and how many there are. */
+  identifier: [index: number, count: number],
+  value: string | undefined,
+): number {
+  const first = value?.[0] ?? '';
+  const bucket = first === '[' ? 1 : /[0-9]/.test(first) || first === '' ? 0 : 2;
+  const [index, count] = identifier;
+  return (negative ? 0 : count * 3) + index * 3 + bucket;
+}
+
+type Entries = [string, unknown][];
+const isEntries = (value: unknown): value is Entries =>
+  Array.isArray(value) && value.every((pair) => Array.isArray(pair));
+/** Uno's `normalizeCSSValues`: one entries list, or a list of objects, entries and strings. */
+const asList = (css: unknown): unknown[] =>
+  Array.isArray(css) && css.length > 0 && isEntries(css) ? [css] : Array.isArray(css) ? css : [css];
+const sortKey = (symbols.sort as unknown) as string;
+
+/** `css` with `sort` as the Uno sort meta of each of its objects or entries lists. */
+export function withCandidateOrder(css: unknown, sort: number): unknown {
+  return asList(css).map((item) => {
+    if (isEntries(item)) return [...item.filter(([key]) => key !== sortKey), [sortKey, sort]];
+    if (item && typeof item === 'object') return { ...(item as CSSObject), [sortKey]: sort };
+    return item;
+  });
+}
+
+/** The sort meta `withCandidateOrder` gave `css`, if any. */
+export function candidateOrderOf(css: unknown): number | undefined {
+  for (const item of asList(css)) {
+    const sort = isEntries(item)
+      ? item.find(([key]) => key === sortKey)?.[1]
+      : item && typeof item === 'object'
+      ? (item as CSSObject)[sortKey]
+      : undefined;
+    if (typeof sort === 'number') return sort;
+  }
+  return undefined;
 }
 
 /**
