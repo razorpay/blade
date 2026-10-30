@@ -2,14 +2,14 @@
 
 ## Description
 
-`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxFileCount`, `maxFileSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. It supports controlled and uncontrolled text, a validation error popup, and `onSubmit` returning a promise (the box clears when it resolves).
+`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. It supports controlled and uncontrolled text, a validation error popup, and `onSubmit` returning a promise (the box clears when it resolves).
 
 ## Important Constraints
 
 - `suggestions` and `onSuggestionAccept` must be used together — providing `suggestions` without `onSuggestionAccept` means accepted suggestions are not propagated back to state.
 - Most functionality of ChatInput is always controlled on consumer.
-- File checks (`accept`, `maxFileCount`, `maxFileSize`) only guide people in the browser. The server must still check every uploaded file's name, type and size.
-- `actionMenu`, `commands`, `onCommandSelect`, `maxFileCount`, `maxFileSize`, `onFileError` and `dropTarget` are web only. On React Native they have no effect, and `showAmbientBorder` shows the plain borders.
+- File checks (`accept`, `maxCount`, `maxSize`) only guide people in the browser. The server must still check every uploaded file's name, type and size.
+- `actionMenu`, `commands`, `onCommandSelect`, `maxCount`, `maxSize`, `onFileError` and `dropTarget` are web only. On React Native they have no effect, and `showAmbientBorder` shows the plain borders.
 - Send is hidden (not disabled) while there is no text and no file.
 
 ## TypeScript Types
@@ -64,11 +64,11 @@ type ChatInputCommand = {
 type ChatInputFileError = {
   /**
    * Why the file was not added:
-   * - `maxFileCount`: adding it would go over `maxFileCount`
-   * - `maxFileSize`: it is larger than `maxFileSize`
+   * - `maxCount`: adding it would go over `maxCount`
+   * - `maxSize`: it is larger than `maxSize`
    * - `accept`: its type is not in `accept`
    */
-  code: 'maxFileCount' | 'maxFileSize' | 'accept';
+  code: 'maxCount' | 'maxSize' | 'accept';
   /**
    * A message that can be shown as is, such as "invoice.pdf is larger than 10 MB"
    */
@@ -114,8 +114,10 @@ type ChatInputProps = {
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    *
-   * If it returns a promise, ChatInput clears the text and files once the promise resolves, and
-   * keeps them if it rejects, so a failed send can be retried. A plain function works as before:
+   * If it returns a promise, ChatInput clears what was sent once the promise resolves, and keeps
+   * it if it rejects, so a failed send can be retried. It only clears what it owns: the text when
+   * there is no `value` prop, and the files when there is no `fileList` prop. Controlled values
+   * are left to you. Text typed or files added while the request was in flight are kept. A plain function works as before:
    * ChatInput never clears the box itself.
    */
   onSubmit?: ({
@@ -124,7 +126,7 @@ type ChatInputProps = {
   }: {
     value: string;
     fileList: BladeFileList;
-  }) => void | Promise<void>;
+  }) => void | Promise<unknown>;
 
   /**
    * Placeholder text shown when the input is empty
@@ -184,25 +186,27 @@ type ChatInputProps = {
   onCommandSelect?: ({ value }: { value: string }) => void;
 
   /**
-   * Most files that can be attached at once. Files over the limit are not added, and
-   * `onFileError` is called with `code: 'maxFileCount'`.
+   * Most files that can be attached in total, as in `FileUpload`. Files over the limit are not
+   * added, and
+   * `onFileError` is called with `code: 'maxCount'`.
    *
    * **Note (React Native):** No effect. Limit files in your own file picker.
    */
-  maxFileCount?: number;
+  maxCount?: number;
 
   /**
    * Largest file size allowed, in bytes. Larger files are not added, and `onFileError` is called
-   * with `code: 'maxFileSize'`.
+   * with `code: 'maxSize'`.
    *
    * These checks only guide people in the browser. Your server must still check every file.
    *
    * **Note (React Native):** No effect. Limit files in your own file picker.
    */
-  maxFileSize?: number;
+  maxSize?: number;
 
   /**
-   * Called for each file that is not added, because of `maxFileCount`, `maxFileSize` or `accept`.
+   * Called for each file that is not added, because of `maxCount`, `maxSize` or `accept`.
+   * It is called after `onFileChange` for the files that were added from the same batch.
    *
    * **Note (React Native):** No effect.
    */
@@ -364,12 +368,12 @@ type ChatInputProps = {
 
 - Use `ChatInput` for AI chat interfaces and conversational UIs.
 - Use `status` (`ready`, `submitted`, `streaming`, `error`) to follow the request: Send, a loader, Stop or Retry. `isGenerating` still works as a shorthand for `streaming`.
-- Return a promise from `onSubmit` to let ChatInput clear the box when the send succeeds and keep it when it fails.
+- Return a promise from `onSubmit` to let ChatInput clear the box when the send succeeds and keep it when it fails. With a controlled `value` or `fileList`, clear them yourself.
 - Use `size="small"` where height is tight, such as a chat panel on a phone. Keep its placeholder to about 25 characters.
 - Use `header` for removable context `Tag`s, such as the payment or report the message is about.
 - Use `actionMenu` with a `MenuOverlay` when the "+" should offer more than file upload.
 - Use `commands` with `onCommandSelect` for slash commands.
-- Use `maxFileCount`, `maxFileSize` and `onFileError` to explain why a file was not attached.
+- Use `maxCount`, `maxSize` and `onFileError` to explain why a file was not attached.
 - Use `dropTarget="page"` on full-page chat screens.
 - Use `suggestions` with `onSuggestionAccept` to show cycling ghost suggestions that people accept with Tab.
 
@@ -637,8 +641,8 @@ const ChatInputWithFileLimits = () => {
   return (
     <ChatInput
       accept="image/*,.pdf"
-      maxFileCount={3}
-      maxFileSize={5 * 1024 * 1024}
+      maxCount={3}
+      maxSize={5 * 1024 * 1024}
       dropTarget="page"
       fileList={files}
       onFileChange={({ fileList }) => setFiles(fileList)}

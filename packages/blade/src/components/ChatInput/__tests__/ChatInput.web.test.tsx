@@ -243,6 +243,21 @@ describe('<ChatInput />', () => {
       expect(textarea).toHaveValue('First and more');
     });
 
+    it('leaves a controlled value to the product', async () => {
+      const onChange = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          value="Hello"
+          onChange={onChange}
+          onSubmit={() => Promise.resolve({ ok: true })}
+        />,
+      );
+      fireEvent.keyDown(getByRole('textbox', { name: accessibilityLabel }), { key: 'Enter' });
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
     it('keeps the text when the promise rejects', async () => {
       const user = userEvent.setup();
       const onSubmit = jest.fn(() => Promise.reject(new Error('failed')));
@@ -364,13 +379,13 @@ describe('<ChatInput />', () => {
     const makeFile = (name: string, bytes: number, type = 'image/png'): File =>
       new File(['x'.repeat(bytes)], name, { type });
 
-    it('rejects files over maxFileSize and reports them', () => {
+    it('rejects files over maxSize and reports them', () => {
       const onFileError = jest.fn();
       const onFileChange = jest.fn();
       const { container } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          maxFileSize={10}
+          maxSize={10}
           onFileError={onFileError}
           onFileChange={onFileChange}
         />,
@@ -381,7 +396,7 @@ describe('<ChatInput />', () => {
       });
       expect(onFileError).toHaveBeenCalledWith(
         expect.objectContaining({
-          code: 'maxFileSize',
+          code: 'maxSize',
           message: 'big.png is larger than 10 bytes',
         }),
       );
@@ -389,20 +404,20 @@ describe('<ChatInput />', () => {
       expect(onFileChange.mock.calls[0][0].fileList.map((f: File) => f.name)).toEqual(['ok.png']);
     });
 
-    it('stops at maxFileCount', () => {
+    it('stops at maxCount', () => {
       const onFileError = jest.fn();
       const onFileChange = jest.fn();
       const { container } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          maxFileCount={1}
+          maxCount={1}
           onFileError={onFileError}
           onFileChange={onFileChange}
         />,
       );
       const input = container.querySelector('input[type="file"]') as HTMLInputElement;
       fireEvent.change(input, { target: { files: [makeFile('a.png', 1), makeFile('b.png', 1)] } });
-      expect(onFileError).toHaveBeenCalledWith(expect.objectContaining({ code: 'maxFileCount' }));
+      expect(onFileError).toHaveBeenCalledWith(expect.objectContaining({ code: 'maxCount' }));
       expect(onFileChange.mock.calls[0][0].fileList).toHaveLength(1);
     });
 
@@ -411,7 +426,7 @@ describe('<ChatInput />', () => {
       const { container } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          maxFileCount={1}
+          maxCount={1}
           onFileChange={() => calls.push('change')}
           onFileError={() => calls.push('error')}
         />,

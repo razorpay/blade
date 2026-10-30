@@ -82,7 +82,15 @@ const useChatInput = (
   );
 
   // Native never calls onFileChange here: on native it means "open your file picker"
-  const submit = useChatInputSubmit({ onSubmit, textValue, files, setTextValue, setFiles });
+  const submit = useChatInputSubmit({
+    onSubmit,
+    textValue,
+    files,
+    setTextValue,
+    setFiles,
+    isTextControlled: controlledValue !== undefined,
+    isFilesControlled: controlledFileList !== undefined,
+  });
 
   const handleSubmit = React.useCallback(() => {
     if (isSubmitDisabled) return;

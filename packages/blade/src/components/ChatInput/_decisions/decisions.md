@@ -26,8 +26,8 @@ import { ChatInput } from '@razorpay/blade/components';
   onFileChange={({ fileList }) => setFiles(fileList)}
   onFileRemove={({ file }) => removeFile(file)}
   accept=".jpg,.png,.pdf,.xlsx"
-  maxFileSize={5242880}
-  maxFileCount={5}
+  maxSize={5242880}
+  maxCount={5}
   suggestions={[
     'How do I integrate payment gateway?',
     'Show me recent transactions',
@@ -188,12 +188,12 @@ type ChatInputProps = {
   /**
    * Maximum file size in bytes per file
    */
-  maxFileSize?: number;
+  maxSize?: number;
 
   /**
    * Maximum number of files that can be attached
    */
-  maxFileCount?: number;
+  maxCount?: number;
 
   /**
    * List of ghost suggestions displayed as faded text in the input.
@@ -261,8 +261,8 @@ const ChatWithFiles = () => {
       onFileChange={({ fileList }) => setFiles(fileList)}
       onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
+      maxSize={5 * 1024 * 1024}
+      maxCount={5}
     />
   );
 };
@@ -407,8 +407,8 @@ const FullFeaturedChat = () => {
       onFileChange={({ fileList }) => setFiles(fileList)}
       onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
+      maxSize={5 * 1024 * 1024}
+      maxCount={5}
       suggestions={suggestions}
       onSuggestionAccept={({ suggestion }) => {
         setText(suggestion);
@@ -490,7 +490,7 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 ### Promise Submit
 
-When `onSubmit` returns a promise, ChatInput clears what was sent once it resolves and keeps it if it rejects. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". A plain function works as before: ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
+When `onSubmit` returns a promise, ChatInput clears what was sent once it resolves and keeps it if it rejects. It only clears what it owns: the text without a `value` prop and the files without a `fileList` prop, so a handler that already returned a promise with controlled values (react-hook-form, Formik, mutateAsync) sees no change. `onSubmit` returns `void | Promise<unknown>`, so existing handlers returning any promise still typecheck. `maxCount` and `maxSize` match `FileUpload`. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". A plain function works as before: ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
 
 ### Slash Commands
 
@@ -498,7 +498,7 @@ Typing `/` at the start of the text opens a list of `commands` above the input, 
 
 ### Files
 
-The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxFileSize`, then `maxFileCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
+The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxSize`, then `maxCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
 
 ### Ambient Border
 

@@ -424,8 +424,8 @@ export const FileLimitsAndDrop: StoryFn<typeof ChatInput> = () => {
         placeholder="Drop files anywhere on this page"
         accessibilityLabel="Chat input with file limits"
         accept="image/*,.pdf"
-        maxFileCount={3}
-        maxFileSize={5 * 1024 * 1024}
+        maxCount={3}
+        maxSize={5 * 1024 * 1024}
         dropTarget="page"
         fileList={files}
         onFileChange={({ fileList }) => {

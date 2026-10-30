@@ -4,7 +4,10 @@ import type { BladeFileList } from '~components/FileUpload/types';
 
 /**
  * Calls `onSubmit`. When it returns a promise, ChatInput clears what was sent once it resolves,
- * and keeps everything if it rejects so the send can be retried. Only what was sent is cleared:
+ * and keeps everything if it rejects so the send can be retried. It only clears what it owns:
+ * the text when there is no `value` prop, and the files when there is no `fileList` prop.
+ * Controlled inputs stay fully in the product's hands, so a handler that already returned a
+ * promise (react-hook-form, Formik, mutateAsync) sees no change. Only what was sent is cleared:
  * text typed or files added while the request was in flight stay. Shared by web and native so
  * the two never drift.
  */
@@ -14,6 +17,8 @@ const useChatInputSubmit = ({
   files,
   setTextValue,
   setFiles,
+  isTextControlled,
+  isFilesControlled,
   onFilesCleared,
 }: {
   onSubmit: ChatInputProps['onSubmit'];
@@ -21,6 +26,8 @@ const useChatInputSubmit = ({
   files: BladeFileList;
   setTextValue: (updater: () => string) => void;
   setFiles: (updater: () => BladeFileList) => void;
+  isTextControlled: boolean;
+  isFilesControlled: boolean;
   /**
    * Web tells the product the list is now empty through `onFileChange`. Native must not: there
    * `onFileChange` means "open your file picker".
@@ -41,14 +48,14 @@ const useChatInputSubmit = ({
   return React.useCallback(
     ({ value, fileList }: { value: string; fileList: BladeFileList }) => {
       const result = onSubmit?.({ value, fileList });
-      if (!result || typeof (result as Promise<void>).then !== 'function') return;
-      (result as Promise<void>).then(
+      if (!result || typeof (result as Promise<unknown>).then !== 'function') return;
+      (result as Promise<unknown>).then(
         () => {
           if (!isMountedRef.current) return;
-          if (latestRef.current.textValue === value) {
+          if (!isTextControlled && latestRef.current.textValue === value) {
             setTextValue(() => '');
           }
-          if (fileList.length > 0 && latestRef.current.files === fileList) {
+          if (!isFilesControlled && fileList.length > 0 && latestRef.current.files === fileList) {
             setFiles(() => []);
             onFilesCleared?.();
           }
@@ -58,7 +65,7 @@ const useChatInputSubmit = ({
         },
       );
     },
-    [onSubmit, setTextValue, setFiles, onFilesCleared],
+    [onSubmit, setTextValue, setFiles, isTextControlled, isFilesControlled, onFilesCleared],
   );
 };
 

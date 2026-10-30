@@ -4,6 +4,7 @@ import { chatInputMaxTextAreaHeight } from './chatInputTokens';
 import { validateChatInputFiles } from './validateChatInputFiles';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
+import { generateFileId } from '~components/FileUpload/generateFileId';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
@@ -26,8 +27,8 @@ type UseChatInputProps = Pick<
   | 'onFileRemove'
   | 'onFileDismiss'
   | 'accept'
-  | 'maxFileCount'
-  | 'maxFileSize'
+  | 'maxCount'
+  | 'maxSize'
   | 'onFileError'
   | 'dropTarget'
   | 'suggestions'
@@ -47,9 +48,7 @@ type CommandMenuState = {
   select: (command: ChatInputCommand) => void;
 };
 
-const generateFileId = (): string => `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
-
-const hasFilesInDrag = (event: DragEvent | React.DragEvent): boolean =>
+const hasFilesInDrag = (event: Pick<DragEvent, 'dataTransfer'>): boolean =>
   Array.from(event.dataTransfer?.types ?? []).includes('Files');
 
 // "/ref" -> "ref". Only the first word after a leading slash counts as a command query.
@@ -72,8 +71,8 @@ const useChatInput = (
     onFileRemove,
     onFileDismiss,
     accept,
-    maxFileCount,
-    maxFileSize,
+    maxCount,
+    maxSize,
     onFileError,
     dropTarget = 'input',
     suggestions,
@@ -114,10 +113,10 @@ const useChatInput = (
   handlePaste: (event: React.ClipboardEvent<HTMLInputElement>) => void;
   handleInnerMouseDownCapture: (event: React.MouseEvent) => void;
   dropZoneProps: {
-    onDragEnter?: React.DragEventHandler<HTMLElement>;
-    onDragOver?: React.DragEventHandler<HTMLElement>;
-    onDragLeave?: React.DragEventHandler<HTMLElement>;
-    onDrop?: React.DragEventHandler<HTMLElement>;
+    onDragEnter?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDragOver?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDragLeave?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
+    onDrop?: (event: Pick<DragEvent, 'dataTransfer' | 'preventDefault'>) => void;
   };
 } => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -232,8 +231,8 @@ const useChatInput = (
         incomingFiles,
         existingFileCount: files.length,
         accept,
-        maxFileCount,
-        maxFileSize,
+        maxCount,
+        maxSize,
       });
 
       for (const file of acceptedFiles) {
@@ -254,7 +253,7 @@ const useChatInput = (
         onFileError?.(fileError);
       }
     },
-    [files, accept, maxFileCount, maxFileSize, onFileError, setFiles, onFileChange],
+    [files, accept, maxCount, maxSize, onFileError, setFiles, onFileChange],
   );
 
   const clearFilesForProduct = React.useCallback(() => {
@@ -267,6 +266,8 @@ const useChatInput = (
     files,
     setTextValue,
     setFiles,
+    isTextControlled: controlledValue !== undefined,
+    isFilesControlled: controlledFileList !== undefined,
     onFilesCleared: clearFilesForProduct,
   });
 
@@ -418,72 +419,53 @@ const useChatInput = (
   const dragDepthRef = React.useRef(0);
   const canDrop = !isDisabled;
 
-  // dropTarget="page": files can be dropped anywhere on the page. Only drags that carry files are
-  // handled, so dragging text or links around the page keeps working as usual.
+  // One set of handlers for both drop targets. Only drags that carry files are handled, so
+  // dragging text or links keeps working as usual.
+  const dragHandlers = React.useMemo(() => {
+    type DragLikeEvent = Pick<DragEvent, 'dataTransfer' | 'preventDefault'>;
+    return {
+      onDragEnter: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        dragDepthRef.current += 1;
+        setIsDraggingFiles(true);
+      },
+      onDragOver: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        event.preventDefault();
+      },
+      onDragLeave: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+        if (dragDepthRef.current === 0) setIsDraggingFiles(false);
+      },
+      onDrop: (event: DragLikeEvent): void => {
+        if (!hasFilesInDrag(event)) return;
+        event.preventDefault();
+        dragDepthRef.current = 0;
+        setIsDraggingFiles(false);
+        addFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
+      },
+    };
+  }, [addFiles]);
+
+  // dropTarget="page": files can be dropped anywhere on the page
   React.useEffect(() => {
     if (dropTarget !== 'page' || !canDrop || typeof window === 'undefined') return undefined;
-
-    const onWindowDragEnter = (event: DragEvent): void => {
-      if (!hasFilesInDrag(event)) return;
-      dragDepthRef.current += 1;
-      setIsDraggingFiles(true);
-    };
-    const onWindowDragOver = (event: DragEvent): void => {
-      if (!hasFilesInDrag(event)) return;
-      event.preventDefault();
-    };
-    const onWindowDragLeave = (event: DragEvent): void => {
-      if (!hasFilesInDrag(event)) return;
-      dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
-      if (dragDepthRef.current === 0) setIsDraggingFiles(false);
-    };
-    const onWindowDrop = (event: DragEvent): void => {
-      if (!hasFilesInDrag(event)) return;
-      event.preventDefault();
-      dragDepthRef.current = 0;
-      setIsDraggingFiles(false);
-      addFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
-    };
-
-    window.addEventListener('dragenter', onWindowDragEnter);
-    window.addEventListener('dragover', onWindowDragOver);
-    window.addEventListener('dragleave', onWindowDragLeave);
-    window.addEventListener('drop', onWindowDrop);
+    const { onDragEnter, onDragOver, onDragLeave, onDrop } = dragHandlers;
+    window.addEventListener('dragenter', onDragEnter);
+    window.addEventListener('dragover', onDragOver);
+    window.addEventListener('dragleave', onDragLeave);
+    window.addEventListener('drop', onDrop);
     return () => {
-      window.removeEventListener('dragenter', onWindowDragEnter);
-      window.removeEventListener('dragover', onWindowDragOver);
-      window.removeEventListener('dragleave', onWindowDragLeave);
-      window.removeEventListener('drop', onWindowDrop);
+      window.removeEventListener('dragenter', onDragEnter);
+      window.removeEventListener('dragover', onDragOver);
+      window.removeEventListener('dragleave', onDragLeave);
+      window.removeEventListener('drop', onDrop);
       dragDepthRef.current = 0;
     };
-  }, [dropTarget, canDrop, addFiles]);
+  }, [dropTarget, canDrop, dragHandlers]);
 
-  const dropZoneProps =
-    dropTarget === 'input' && canDrop
-      ? {
-          onDragEnter: (event: React.DragEvent<HTMLElement>) => {
-            if (!hasFilesInDrag(event)) return;
-            dragDepthRef.current += 1;
-            setIsDraggingFiles(true);
-          },
-          onDragOver: (event: React.DragEvent<HTMLElement>) => {
-            if (!hasFilesInDrag(event)) return;
-            event.preventDefault();
-          },
-          onDragLeave: (event: React.DragEvent<HTMLElement>) => {
-            if (!hasFilesInDrag(event)) return;
-            dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
-            if (dragDepthRef.current === 0) setIsDraggingFiles(false);
-          },
-          onDrop: (event: React.DragEvent<HTMLElement>) => {
-            if (!hasFilesInDrag(event)) return;
-            event.preventDefault();
-            dragDepthRef.current = 0;
-            setIsDraggingFiles(false);
-            addFiles(Array.from(event.dataTransfer?.files ?? []) as BladeFile[]);
-          },
-        }
-      : {};
+  const dropZoneProps = dropTarget === 'input' && canDrop ? dragHandlers : {};
 
   const handleInnerMouseDownCapture = React.useCallback((event: React.MouseEvent): void => {
     const target = event.target as HTMLElement | null;

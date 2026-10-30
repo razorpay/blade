@@ -25,11 +25,11 @@ type ChatInputCommand = {
 type ChatInputFileError = {
   /**
    * Why the file was not added:
-   * - `maxFileCount`: adding it would go over `maxFileCount`
-   * - `maxFileSize`: it is larger than `maxFileSize`
+   * - `maxCount`: adding it would go over `maxCount`
+   * - `maxSize`: it is larger than `maxSize`
    * - `accept`: its type is not in `accept`
    */
-  code: 'maxFileCount' | 'maxFileSize' | 'accept';
+  code: 'maxCount' | 'maxSize' | 'accept';
   /**
    * A message that can be shown as is, such as "invoice.pdf is larger than 10 MB"
    */
@@ -75,9 +75,10 @@ type ChatInputProps = {
    * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
    * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    *
-   * If it returns a promise, ChatInput clears the sent text and files once the promise resolves,
-   * and keeps them if it rejects, so a failed send can be retried. Text typed or files added while
-   * the request was in flight are kept. A plain function works as before:
+   * If it returns a promise, ChatInput clears what was sent once the promise resolves, and keeps
+   * it if it rejects, so a failed send can be retried. It only clears what it owns: the text when
+   * there is no `value` prop, and the files when there is no `fileList` prop. Controlled values
+   * are left to you. Text typed or files added while the request was in flight are kept. A plain function works as before:
    * ChatInput never clears the box itself.
    */
   onSubmit?: ({
@@ -86,7 +87,7 @@ type ChatInputProps = {
   }: {
     value: string;
     fileList: BladeFileList;
-  }) => void | Promise<void>;
+  }) => void | Promise<unknown>;
 
   /**
    * Placeholder text shown when the input is empty
@@ -146,25 +147,26 @@ type ChatInputProps = {
   onCommandSelect?: ({ value }: { value: string }) => void;
 
   /**
-   * Most files that can be attached at once. Files over the limit are not added, and
-   * `onFileError` is called with `code: 'maxFileCount'`.
+   * Most files that can be attached in total, as in `FileUpload`. Files over the limit are not
+   * added, and
+   * `onFileError` is called with `code: 'maxCount'`.
    *
    * **Note (React Native):** No effect. Limit files in your own file picker.
    */
-  maxFileCount?: number;
+  maxCount?: number;
 
   /**
    * Largest file size allowed, in bytes. Larger files are not added, and `onFileError` is called
-   * with `code: 'maxFileSize'`.
+   * with `code: 'maxSize'`.
    *
    * These checks only guide people in the browser. Your server must still check every file.
    *
    * **Note (React Native):** No effect. Limit files in your own file picker.
    */
-  maxFileSize?: number;
+  maxSize?: number;
 
   /**
-   * Called for each file that is not added, because of `maxFileCount`, `maxFileSize` or `accept`.
+   * Called for each file that is not added, because of `maxCount`, `maxSize` or `accept`.
    * It is called after `onFileChange` for the files that were added from the same batch.
    *
    * **Note (React Native):** No effect.

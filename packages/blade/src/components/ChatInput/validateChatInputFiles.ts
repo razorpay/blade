@@ -14,7 +14,7 @@ const formatFileSize = (bytes: number): string => {
 };
 
 /**
- * Checks files against `accept`, `maxFileSize` and `maxFileCount` before they are attached.
+ * Checks files against `accept`, `maxSize` and `maxCount` before they are attached.
  * Every way in (the file picker, paste and drop) goes through this, so the rules are the same.
  * These checks only guide people in the browser; the server must still check every file.
  */
@@ -22,12 +22,12 @@ const validateChatInputFiles = ({
   incomingFiles,
   existingFileCount,
   accept,
-  maxFileCount,
-  maxFileSize,
+  maxCount,
+  maxSize,
 }: {
   incomingFiles: BladeFile[];
   existingFileCount: number;
-} & Pick<ChatInputProps, 'accept' | 'maxFileCount' | 'maxFileSize'>): {
+} & Pick<ChatInputProps, 'accept' | 'maxCount' | 'maxSize'>): {
   acceptedFiles: BladeFile[];
   fileErrors: ChatInputFileError[];
 } => {
@@ -41,19 +41,16 @@ const validateChatInputFiles = ({
         message: `${file.name} isn't a supported file type`,
         file,
       });
-    } else if (maxFileSize !== undefined && file.size > maxFileSize) {
+    } else if (maxSize !== undefined && file.size > maxSize) {
       fileErrors.push({
-        code: 'maxFileSize',
-        message: `${file.name} is larger than ${formatFileSize(maxFileSize)}`,
+        code: 'maxSize',
+        message: `${file.name} is larger than ${formatFileSize(maxSize)}`,
         file,
       });
-    } else if (
-      maxFileCount !== undefined &&
-      existingFileCount + acceptedFiles.length >= maxFileCount
-    ) {
+    } else if (maxCount !== undefined && existingFileCount + acceptedFiles.length >= maxCount) {
       fileErrors.push({
-        code: 'maxFileCount',
-        message: `You can attach up to ${maxFileCount} ${maxFileCount === 1 ? 'file' : 'files'}`,
+        code: 'maxCount',
+        message: `You can attach up to ${maxCount} ${maxCount === 1 ? 'file' : 'files'}`,
         file,
       });
     } else {
