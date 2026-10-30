@@ -49,20 +49,19 @@ const StyledBaseColor = styled.div<{ $isActive: boolean }>(({ theme, $isActive }
   transitionTimingFunction: castWebType(theme.motion.easing.standard),
 }));
 
-const StyledStreak = styled.svg<{ $isShown: boolean }>(
-  ({ theme, $isShown }) => css`
+const StyledStreak = styled.svg(
+  ({ theme }) => css`
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     overflow: visible;
-    opacity: ${$isShown ? 1 : 0};
-    transition-property: opacity;
-    transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
-    transition-timing-function: ${castWebType(theme.motion.easing.standard)};
 
     rect {
       animation: ${travel} ${chatInputAmbientBorderLoopDuration}ms linear infinite;
+      transition-property: stroke;
+      transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
+      transition-timing-function: ${castWebType(theme.motion.easing.standard)};
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -71,7 +70,7 @@ const StyledStreak = styled.svg<{ $isShown: boolean }>(
   `,
 );
 
-type StreakLayer = { length: number; color: string; opacity: number };
+type StreakLayer = { length: number; opacity: number };
 
 // How many layers make up the fade, and how long the streak is (in outline units)
 const STREAK_STEPS = 24;
@@ -83,30 +82,27 @@ const STREAK_LENGTH = 20;
  * exactly `1/N` per step, so the fade is a straight line from nothing at the tail to full at the
  * head.
  */
-const getFadeLayers = (color: string): StreakLayer[] =>
-  Array.from({ length: STREAK_STEPS }, (_, index) => {
-    const step = index + 1;
-    return {
-      length: (STREAK_LENGTH * (STREAK_STEPS - step + 1)) / STREAK_STEPS,
-      color,
-      opacity: 1 / (STREAK_STEPS - step + 1),
-    };
-  });
+const fadeLayers: StreakLayer[] = Array.from({ length: STREAK_STEPS }, (_, index) => {
+  const step = index + 1;
+  return {
+    length: (STREAK_LENGTH * (STREAK_STEPS - step + 1)) / STREAK_STEPS,
+    opacity: 1 / (STREAK_STEPS - step + 1),
+  };
+});
 
-// Layers share their leading end, so they stack up towards the head of the streak.
+// One streak, so only one animation runs. Its layers share their leading end, so they stack up
+// towards the head. Changing colour only changes the stroke, so the streak keeps its place.
 const Streak = ({
-  layers,
-  isShown,
+  color,
   radius,
   strokeWidth,
 }: {
-  layers: StreakLayer[];
-  isShown: boolean;
+  color: string;
   radius: number;
   strokeWidth: number;
 }): React.ReactElement => (
-  <StyledStreak $isShown={isShown} aria-hidden="true" focusable="false">
-    {layers.map(({ length, color, opacity }) => (
+  <StyledStreak aria-hidden="true" focusable="false">
+    {fadeLayers.map(({ length, opacity }) => (
       <rect
         key={length}
         x="0"
@@ -117,7 +113,7 @@ const Streak = ({
         ry={radius}
         pathLength={OUTLINE_LENGTH}
         fill="none"
-        stroke={color}
+        style={{ stroke: color }}
         strokeOpacity={opacity}
         // centred on the edge: the inner half is the visible ring, the outer half is cut away
         strokeWidth={strokeWidth}
@@ -144,18 +140,7 @@ const ChatInputAmbientBorder = ({ isActive }: { isActive: boolean }): React.Reac
   return (
     <StyledRing aria-hidden="true" data-blade-component="chat-input-ambient-border">
       <StyledBaseColor $isActive={isActive} />
-      <Streak
-        isShown={!isActive}
-        radius={radius}
-        strokeWidth={strokeWidth}
-        layers={getFadeLayers(primary)}
-      />
-      <Streak
-        isShown={isActive}
-        radius={radius}
-        strokeWidth={strokeWidth}
-        layers={getFadeLayers(shineCore)}
-      />
+      <Streak color={isActive ? shineCore : primary} radius={radius} strokeWidth={strokeWidth} />
     </StyledRing>
   );
 };

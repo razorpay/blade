@@ -453,7 +453,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           {...makeAnalyticsAttribute(rest)}
         />
 
-        {showAmbientBorder && !isDisabled && !isError ? (
+        {showAmbientBorder && !isDisabled && !isError && resolvedStatus !== 'error' ? (
           <ChatInputAmbientBorder isActive={isFocused} />
         ) : null}
 

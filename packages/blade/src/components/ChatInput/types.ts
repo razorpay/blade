@@ -102,6 +102,9 @@ type ChatInputProps = {
    * - `small`: a compact, one-row composer. The "+" and Send sit inline with the text. Once the
    *   text needs a second line, it opens into the `medium` layout, and closes back to one row when
    *   the text is cleared.
+   *
+   * **Note (React Native):** `small` stays one row with the "+" and Send inline, and the text area
+   * grows upwards as you type. It does not switch to the `medium` layout.
    * @default 'medium'
    */
   size?: 'small' | 'medium';
@@ -194,7 +197,8 @@ type ChatInputProps = {
    * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
    * the box, about once every 12 seconds. While the cursor is in the box, the border is full blue
    * and the streak becomes a soft white shine. It is decoration and does not mean the agent is
-   * working. With reduced motion nothing moves; error and disabled turn it off.
+   * working. With reduced motion nothing moves; `validationState="error"`, `status="error"` and
+   * `isDisabled` turn it off.
    *
    * **Note (React Native):** Shows the plain borders.
    * @default false
