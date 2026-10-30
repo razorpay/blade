@@ -1,27 +1,20 @@
 import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
-import { Button } from '~components/Button';
-import { Link } from '~components/Link';
-import { ArrowUpIcon, StopCircleIcon, PlusIcon } from '~components/Icons';
 
 type ChatInputActionBarProps = {
-  isDisabled?: boolean;
-  isGenerating?: boolean;
-  isSubmitDisabled?: boolean;
-  hideFileUpload?: boolean;
-  onUploadClick: () => void;
-  onSubmit: () => void;
-  onStop?: () => void;
+  /**
+   * The "+" button, on the left
+   */
+  leadingAction?: React.ReactNode;
+  /**
+   * Send, the loader, Stop or Retry, on the right
+   */
+  submitAction: React.ReactNode;
 };
 
 const ChatInputActionBar = ({
-  isDisabled,
-  isGenerating,
-  isSubmitDisabled,
-  hideFileUpload = false,
-  onUploadClick,
-  onSubmit,
-  onStop,
+  leadingAction,
+  submitAction,
 }: ChatInputActionBarProps): React.ReactElement => {
   return (
     <BaseBox
@@ -29,45 +22,18 @@ const ChatInputActionBar = ({
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
-      padding="spacing.5"
+      gap="spacing.3"
+      // Figma: 8 px above the toolbar (the text's bottom padding is 12 px) and 12 px on the
+      // other sides, so an empty medium box is 96 px
+      paddingTop="spacing.3"
+      paddingBottom="spacing.4"
+      paddingX="spacing.4"
     >
-      {hideFileUpload ? (
-        <BaseBox />
-      ) : (
-        <BaseBox display="flex" alignItems="center">
-          <Link
-            variant="button"
-            color="neutral"
-            size="small"
-            icon={PlusIcon}
-            onClick={onUploadClick}
-            isDisabled={isDisabled}
-          >
-            Upload file
-          </Link>
-        </BaseBox>
-      )}
-      <BaseBox>
-        {isGenerating ? (
-          <Button
-            icon={StopCircleIcon}
-            variant="secondary"
-            accessibilityLabel="Stop generation"
-            onClick={() => onStop?.()}
-            size="small"
-          />
-        ) : (
-          <Button
-            icon={ArrowUpIcon}
-            variant="primary"
-            color="primary"
-            accessibilityLabel="Submit"
-            onClick={onSubmit}
-            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-            isDisabled={isSubmitDisabled || isDisabled}
-            size="small"
-          />
-        )}
+      <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+        {leadingAction}
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="row" alignItems="center">
+        {submitAction}
       </BaseBox>
     </BaseBox>
   );

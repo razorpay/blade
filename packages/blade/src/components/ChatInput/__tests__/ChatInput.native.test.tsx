@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
+import { Text } from '~components/Typography';
 import { ChatInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
@@ -32,11 +33,47 @@ describe('<ChatInput /> (native)', () => {
     expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello world', fileList: [] });
   });
 
-  it('should keep submit button disabled when input is empty', () => {
-    const { getByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
+  it('should hide Send until there is something to send', () => {
+    const { queryByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
+    expect(queryByRole('button', { name: 'Submit' })).toBeNull();
 
-    const submitButton = getByRole('button', { name: 'Submit' });
-    expect(submitButton.props.accessibilityState?.disabled).toBe(true);
+    const { getAllByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} defaultValue="Hi" />,
+    );
+    expect(getAllByRole('button', { name: 'Submit' })).toHaveLength(1);
+  });
+
+  it('should show Stop for status="streaming" and Retry for status="error"', () => {
+    const onStop = jest.fn();
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} status="streaming" onStop={onStop} />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Stop generation' }));
+    expect(onStop).toHaveBeenCalledTimes(1);
+
+    const { getByRole: getByRoleError } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        status="error"
+        defaultValue="Refund pay_123"
+        onSubmit={onSubmit}
+      />,
+    );
+    fireEvent.press(getByRoleError('button', { name: 'Retry' }));
+    expect(onSubmit).toHaveBeenCalledWith({ value: 'Refund pay_123', fileList: [] });
+  });
+
+  it('should render the compact size and header', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        size="small"
+        header={<Text>pay_Qx81Lm2</Text>}
+      />,
+    );
+    expect(getByText('pay_Qx81Lm2')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should show stop button when isGenerating is true and call onStop', () => {

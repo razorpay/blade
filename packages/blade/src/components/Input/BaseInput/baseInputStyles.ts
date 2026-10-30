@@ -46,6 +46,8 @@ type GetInputStyles = Pick<
   padding?: BaseInputProps['padding'];
   borderRadius?: BaseInputProps['borderRadius'];
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+  focusIndicator?: BaseInputProps['focusIndicator'];
+  hoverIndicator?: BaseInputProps['hoverIndicator'];
   hasLeadingDropdown?: boolean;
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
@@ -82,6 +84,8 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
+  focusIndicator,
+  hoverIndicator,
   size = 'medium',
   borderRadius,
 }: Pick<
@@ -94,6 +98,8 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isTextArea'
   | 'isDropdownTrigger'
   | 'isTableInputCell'
+  | 'focusIndicator'
+  | 'hoverIndicator'
   | 'size'
   | 'borderRadius'
 >): CSSObject => {
@@ -108,7 +114,12 @@ export const getInputBackgroundAndBorderStyles = ({
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
   let zIndex: number | undefined;
 
-  const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
+  const baseInputState = getBaseInputState({
+    isFocused,
+    // hoverIndicator="none": the input draws its own hover, so keep the rest look
+    isHovered: hoverIndicator === 'none' ? false : isHovered,
+    isDisabled,
+  });
 
   backgroundColor = getIn(theme.colors, backgroundColorTokens[baseInputState]);
   borderColor =
@@ -116,6 +127,10 @@ export const getInputBackgroundAndBorderStyles = ({
       ? theme.colors.transparent
       : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
+  // focusIndicator="border": focus changes only the border colour, not its width
+  if (focusIndicator === 'border' && baseInputState === 'focused') {
+    borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
+  }
 
   if (!isTableInputCell && validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);

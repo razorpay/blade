@@ -9,12 +9,14 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { ChatMessage } from '~components/ChatMessage';
-import { RayIcon } from '~components/Icons';
+import { FileTextIcon, GlobeIcon, PaperclipIcon, RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
 import { isReactNative } from '~utils';
+import { Tag } from '~components/Tag';
+import { MenuDivider, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 
 /** Native onFileChange fires before pick with the current list — simulate a picked file for Storybook. */
 const createMockNativeAttachment = (index: number): BladeFileList[0] =>
@@ -295,6 +297,240 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
   );
 };
 PasteImageUpload.storyName = 'Paste Image Upload';
+
+// ─── AI Elements: compact size, status, context, menu, commands, files, ambient border ───
+
+export const CompactSize: StoryFn<typeof ChatInput> = () => {
+  const [value, setValue] = useState('');
+  return (
+    <Box maxWidth="360px">
+      <ChatInput
+        size="small"
+        placeholder="Ask Ray anything"
+        value={value}
+        onChange={({ value: newValue }) => setValue(newValue)}
+        onSubmit={() => setValue('')}
+        accessibilityLabel="Compact chat input"
+      />
+      <Text marginTop="spacing.3" size="small" color="surface.text.gray.muted">
+        Starts as one 44 px row and opens into the full layout once the text wraps.
+      </Text>
+    </Box>
+  );
+};
+CompactSize.storyName = 'Compact Size';
+
+export const RequestStatus: StoryFn<typeof ChatInput> = () => {
+  const statuses: NonNullable<ChatInputProps['status']>[] = [
+    'ready',
+    'submitted',
+    'streaming',
+    'error',
+  ];
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7" maxWidth="600px">
+      {statuses.map((status) => (
+        <Box key={status} display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" weight="semibold">
+            status=&quot;{status}&quot;
+          </Text>
+          <ChatInput
+            status={status}
+            defaultValue={status === 'ready' || status === 'error' ? 'Refund pay_Qx81Lm2' : ''}
+            placeholder="Ask a follow-up"
+            accessibilityLabel={`Chat input, ${status}`}
+          />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+RequestStatus.storyName = 'Request Status';
+
+export const ContextAndActionMenu: StoryFn<typeof ChatInput> = () => {
+  const [contexts, setContexts] = useState(['pay_Qx81Lm2', 'Settlements · Oct 2026']);
+  return (
+    <Box maxWidth="600px">
+      <ChatInput
+        placeholder="Ask Ray anything about your payments"
+        accessibilityLabel="Chat input with context"
+        header={
+          contexts.length ? (
+            <>
+              {contexts.map((context) => (
+                <Tag
+                  key={context}
+                  onDismiss={() => setContexts((items) => items.filter((item) => item !== context))}
+                >
+                  {context}
+                </Tag>
+              ))}
+            </>
+          ) : undefined
+        }
+        actionMenu={
+          <MenuOverlay>
+            <MenuItem title="Upload files" leading={<PaperclipIcon />} />
+            <MenuItem title="Add a payment, order or settlement" leading={<FileTextIcon />} />
+            <MenuDivider />
+            <MenuHeader title="Tools" />
+            <MenuItem title="Web search" leading={<GlobeIcon />} trailing="Off" />
+          </MenuOverlay>
+        }
+      />
+    </Box>
+  );
+};
+ContextAndActionMenu.storyName = 'Context Chips and + Menu';
+
+export const SlashCommands: StoryFn<typeof ChatInput> = () => {
+  const [picked, setPicked] = useState<string | null>(null);
+  return (
+    <Box maxWidth="600px" paddingTop="200px">
+      <ChatInput
+        placeholder="Type / for commands"
+        accessibilityLabel="Chat input with commands"
+        commands={[
+          {
+            value: 'refund',
+            label: '/refund',
+            description: 'Refund a payment, in full or in part',
+          },
+          {
+            value: 'report',
+            label: '/report',
+            description: 'Download a payments or settlements report',
+          },
+          { value: 'resend-link', label: '/resend-link', description: 'Send a payment link again' },
+        ]}
+        onCommandSelect={({ value }) => setPicked(value)}
+      />
+      <Text marginTop="spacing.3" size="small" color="surface.text.gray.muted">
+        {picked
+          ? `Picked: ${picked}`
+          : 'Type / to open the list. Arrow keys move, Enter picks, Esc closes.'}
+      </Text>
+    </Box>
+  );
+};
+SlashCommands.storyName = 'Slash Commands';
+
+export const FileLimitsAndDrop: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = useState<BladeFileList>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
+  return (
+    <Box maxWidth="600px">
+      <ChatInput
+        placeholder="Drop files anywhere on this page"
+        accessibilityLabel="Chat input with file limits"
+        accept="image/*,.pdf"
+        maxFileCount={3}
+        maxFileSize={5 * 1024 * 1024}
+        dropTarget="page"
+        fileList={files}
+        onFileChange={({ fileList }) => {
+          setFileError(null);
+          setFiles(fileList);
+        }}
+        onFileRemove={({ file }) => setFiles((items) => items.filter((f) => f.id !== file.id))}
+        onFileError={({ message }) => setFileError(message)}
+      />
+      <Text
+        marginTop="spacing.3"
+        size="small"
+        color={fileError ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'}
+      >
+        {fileError ??
+          'Images and PDFs, up to 3 files of 5 MB each. These checks only guide people; the server must check every file too.'}
+      </Text>
+    </Box>
+  );
+};
+FileLimitsAndDrop.storyName = 'File Limits and Drop';
+
+export const AmbientBorder: StoryFn<typeof ChatInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7" maxWidth="600px">
+      <ChatInput
+        showAmbientBorder
+        placeholder="Ask Ray anything about your payments"
+        accessibilityLabel="Chat input with ambient border"
+      />
+      <ChatInput
+        showAmbientBorder
+        size="small"
+        placeholder="Ask Ray anything"
+        accessibilityLabel="Compact chat input with ambient border"
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        Click into a box: the border turns full blue and the streak becomes a soft white shine. With
+        reduced motion, nothing moves.
+      </Text>
+    </Box>
+  );
+};
+AmbientBorder.storyName = 'Ambient Border';
+
+export const AIComposer: StoryFn<typeof ChatInput> = () => {
+  const [status, setStatus] = useState<NonNullable<ChatInputProps['status']>>('ready');
+  const [lastMessage, setLastMessage] = useState<string | null>(null);
+  const [hasContext, setHasContext] = useState(true);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  return (
+    <Box maxWidth="640px" paddingTop="200px">
+      {lastMessage ? (
+        <Text marginBottom="spacing.5" size="medium">
+          You: {lastMessage}
+        </Text>
+      ) : null}
+      <ChatInput
+        showAmbientBorder
+        status={status}
+        placeholder="Ask Ray anything about your payments"
+        accessibilityLabel="AI composer"
+        header={
+          hasContext ? <Tag onDismiss={() => setHasContext(false)}>pay_Qx81Lm2</Tag> : undefined
+        }
+        actionMenu={
+          <MenuOverlay>
+            <MenuItem title="Upload files" leading={<PaperclipIcon />} />
+            <MenuItem title="Add a payment, order or settlement" leading={<FileTextIcon />} />
+          </MenuOverlay>
+        }
+        commands={[
+          {
+            value: 'refund',
+            label: '/refund',
+            description: 'Refund a payment, in full or in part',
+          },
+          {
+            value: 'report',
+            label: '/report',
+            description: 'Download a payments or settlements report',
+          },
+        ]}
+        onSubmit={({ value }) =>
+          new Promise<void>((resolve) => {
+            setLastMessage(value);
+            setStatus('submitted');
+            timers.current.push(
+              setTimeout(() => {
+                setStatus('streaming');
+                resolve();
+              }, 800),
+              setTimeout(() => setStatus('ready'), 3200),
+            );
+          })
+        }
+        onStop={() => setStatus('ready')}
+      />
+    </Box>
+  );
+};
+AIComposer.storyName = 'AI Composer';
 
 // ─── Product Usecase: Chat Experience ───────────────────────────────────────
 

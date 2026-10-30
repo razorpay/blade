@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ChatInputProps } from './types';
+import type { ChatInputProps, ChatInputStatus } from './types';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import { generateFileId } from '~components/FileUpload/generateFileId';
@@ -9,7 +9,16 @@ import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
-  'value' | 'defaultValue' | 'onChange' | 'onSubmit' | 'fileList' | 'onFileRemove' | 'onFileDismiss'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'onSubmit'
+  | 'fileList'
+  | 'onFileChange'
+  | 'onFileRemove'
+  | 'onFileDismiss'
+  | 'status'
+  | 'isGenerating'
 >;
 
 const useChatInput = (
@@ -19,8 +28,11 @@ const useChatInput = (
     onChange,
     onSubmit,
     fileList: controlledFileList,
+    onFileChange,
     onFileRemove,
     onFileDismiss,
+    status,
+    isGenerating = false,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -28,7 +40,9 @@ const useChatInput = (
   textValue: string;
   files: BladeFileList;
   hasFiles: boolean;
+  hasContent: boolean;
   isSubmitDisabled: boolean;
+  resolvedStatus: ChatInputStatus;
   handleTextChange: (args: { name?: string; value?: string }) => void;
   handleSubmit: () => void;
   handleFileRemove: (file: BladeFile) => void;
@@ -36,6 +50,14 @@ const useChatInput = (
 } => {
   const inputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
+  const isMountedRef = React.useRef(true);
+
+  React.useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const [textValue, setTextValue] = useControllableState({
     value: controlledValue,
@@ -57,7 +79,9 @@ const useChatInput = (
   );
 
   const hasFiles = files.length > 0;
+  const hasContent = textValue.trim().length > 0 || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
+  const resolvedStatus: ChatInputStatus = status ?? (isGenerating ? 'streaming' : 'ready');
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
@@ -68,8 +92,24 @@ const useChatInput = (
 
   const handleSubmit = React.useCallback(() => {
     if (isSubmitDisabled) return;
-    onSubmit?.({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, onSubmit, textValue, files]);
+    const result = onSubmit?.({ value: textValue, fileList: files });
+    // A promise means ChatInput owns clearing: clear once it resolves, keep everything if it rejects.
+    if (result && typeof (result as Promise<void>).then === 'function') {
+      (result as Promise<void>).then(
+        () => {
+          if (!isMountedRef.current) return;
+          setTextValue(() => '');
+          if (files.length > 0) {
+            setFiles(() => []);
+            onFileChange?.({ fileList: [] });
+          }
+        },
+        () => {
+          // rejected: keep the text and files so the send can be retried
+        },
+      );
+    }
+  }, [isSubmitDisabled, onSubmit, textValue, files, setTextValue, setFiles, onFileChange]);
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
@@ -94,7 +134,9 @@ const useChatInput = (
     textValue,
     files,
     hasFiles,
+    hasContent,
     isSubmitDisabled,
+    resolvedStatus,
     handleTextChange,
     handleSubmit,
     handleFileRemove,

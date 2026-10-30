@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChatInput /> should render ChatInput 1`] = `"<div id="root"><div data-blade-component="chat-input" class="BaseBox-bksIuc emXDue"><input type="file" multiple="" style="display:none" aria-hidden="true"/><div data-blade-component="base-box" class="BaseBox-bksIuc dhbiRH"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0 kQXlnf fnVLBF focus-ring-wrapper" elevation="highRaised" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 ikooGF kzXtQx __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc eCIwtI"><textarea type="text" rows="2" id="chat-input-undefined-input-undefined" placeholder="Ask a question..." data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Chat input" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 ideLwR"></textarea></div><div data-blade-component="base-box" class="BaseBox-bksIuc jjHIMt"><div data-blade-component="base-box" class="BaseBox-bksIuc bZHJre"><button data-blade-component="link" type="button" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 fbBTol" role="button" aria-disabled="false"><span class="BaseBox-bksIuc hbpipW content-container" data-blade-component="base-box"><span data-blade-component="base-box" class="BaseBox-bksIuc dmzGFD"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path></svg></span><span class="StyledBaseText-foUshD cglRbf" data-blade-component="base-text">Upload file</span></span></button></div><div data-blade-component="base-box" class="BaseBox-bksIuc"><button disabled="" type="button" data-blade-component="button" aria-label="Submit" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gxCno"><div data-blade-component="base-box" class="BaseBox-bksIuc AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  gYMLpr"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseButton__ButtonContent-zf1huq-0 jbTreI cdAugm"><div data-blade-component="base-box" class="BaseBox-bksIuc juovFm"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z" fill="hsla(218, 89%, 51%, 0.32)" data-blade-component="svg-path"></path></svg></div></div></div></button></div></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc brrdDG"><div role="alert" style="opacity:0" class="BaseBox-bksIuc gSAviZ BaseMotionweb__StyledDiv-gsyvko-0 hrLUhl" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 85%, 44%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 85%, 44%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 85%, 44%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD jFszoz" data-blade-component="text"></p></div></div></div></div>"`;
+exports[`<ChatInput /> should render ChatInput 1`] = `"<div id="root"><div data-blade-component="chat-input" class="BaseBox-bksIuc emXDue"><input type="file" multiple="" style="display:none" aria-hidden="true"/><div data-blade-component="base-box" class="BaseBox-bksIuc ChatInputweb__ChatInputCardBox-sc-13ok6nm-1 dhbiRH"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc lhbwwB"><div class="BaseBox-bksIuc BaseInput__FocusRingWrapper-sc-177qd3e-0 kgLRFS fnVLBF focus-ring-wrapper" elevation="lowRaised" data-blade-component="base-box"><div class="BaseBox-bksIuc AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 ikooGF bNXnjK __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc eCIwtI"><textarea type="text" rows="1" id="chat-input-undefined-input-undefined" placeholder="Ask a question..." data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Chat input" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 hAYwjU"></textarea></div><div data-blade-component="base-box" class="BaseBox-bksIuc krEOVl"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><button type="button" data-blade-component="button" aria-label="Upload file" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cZNtls"><div data-blade-component="base-box" class="BaseBox-bksIuc AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  gYMLpr"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseButton__ButtonContent-zf1huq-0 jbTreI cdAugm"><div data-blade-component="base-box" class="BaseBox-bksIuc juovFm"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(204, 9%, 42%, 1)" data-blade-component="svg-path"></path></svg></div></div></div></button></div><div data-blade-component="base-box" class="BaseBox-bksIuc hbpipW"><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc ChatInputSendSlotweb__StyledSendSlot-sc-137xv98-0  kGHaGv"><button disabled="" type="button" data-blade-component="button" aria-label="Submit" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fQyUcW"><div data-blade-component="base-box" class="BaseBox-bksIuc AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  gYMLpr"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseButton__ButtonContent-zf1huq-0 jbTreI cdAugm"><div data-blade-component="base-box" class="BaseBox-bksIuc juovFm"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z" fill="hsla(0, 0%, 100%, 0.32)" data-blade-component="svg-path"></path></svg></div></div></div></button></div></div></div></div></div></div></div></div><div aria-hidden="true" data-blade-component="chat-input-hover-border" class="ChatInputHoverBorderweb__StyledHoverRing-sc-1wzr850-0 ghbMea"></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc brrdDG"><div role="alert" style="opacity:0" class="BaseBox-bksIuc gSAviZ BaseMotionweb__StyledDiv-gsyvko-0 hrLUhl" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 85%, 44%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 85%, 44%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 85%, 44%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD jFszoz" data-blade-component="text"></p></div></div></div></div>"`;
 
 exports[`<ChatInput /> should render ChatInput 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -25,7 +25,7 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -74,21 +74,14 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 16px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-right: 12px;
+  padding-left: 12px;
+  gap: 8px;
 }
 
 .c11.c11.c11.c11.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -100,21 +93,10 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 4px;
 }
 
 .c14.c14.c14.c14.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 4px;
-}
-
-.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -136,7 +118,7 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   z-index: 1;
 }
 
-.c20.c20.c20.c20.c20 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,6 +131,20 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c21.c21.c21.c21.c21 {
@@ -181,12 +177,12 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   border-top-right-radius: 12px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c12.c12.c12.c12.c12 {
   min-height: 32px;
   height: 32px;
   width: 32px;
-  cursor: not-allowed;
-  background-color: hsla(218,89%,51%,0.18);
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
   padding-top: 0px;
@@ -218,24 +214,36 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   position: relative;
 }
 
-.c16.c16.c16.c16.c16:hover {
-  background-color: hsla(218,89%,51%,0.18);
+.c12.c12.c12.c12.c12:hover {
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
-.c16.c16.c16.c16.c16:active {
-  background-color: hsla(218,89%,51%,0.18);
+.c12.c12.c12.c12.c12:hover.c12.c12.c12.c12.c12:hover [data-blade-component="svg-path"] {
+  fill: hsla(200,10%,18%,1);
+}
+
+.c12.c12.c12.c12.c12:active {
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
-.c16.c16.c16.c16.c16:focus-visible {
-  background-color: hsla(218,89%,51%,0.18);
+.c12.c12.c12.c12.c12:active.c12.c12.c12.c12.c12:active [data-blade-component="svg-path"] {
+  fill: hsla(200,10%,18%,1);
+}
+
+.c12.c12.c12.c12.c12:focus-visible {
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c16.c16.c16.c16.c16 * {
+.c12.c12.c12.c12.c12:focus-visible.c12.c12.c12.c12.c12:focus-visible [data-blade-component="svg-path"] {
+  fill: hsla(200,10%,18%,1);
+}
+
+.c12.c12.c12.c12.c12 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -244,7 +252,70 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17 {
+.c19.c19.c19.c19.c19 {
+  min-height: 32px;
+  height: 32px;
+  width: 32px;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,0%,0.18);
+  border: none;
+  border-radius: 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c19.c19.c19.c19.c19:hover {
+  background-color: hsla(0,0%,0%,0.18);
+  background-image: none;
+}
+
+.c19.c19.c19.c19.c19:active {
+  background-color: hsla(0,0%,0%,0.18);
+  background-image: none;
+}
+
+.c19.c19.c19.c19.c19:focus-visible {
+  background-color: hsla(0,0%,0%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(206,10%,29%,0.12);
+}
+
+.c19.c19.c19.c19.c19 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -252,24 +323,6 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   transition-duration: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: 160px;
   transition-timing-function: 160px;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(0,0%,2%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 .c24.c24.c24.c24.c24 {
@@ -295,47 +348,8 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   overflow-wrap: break-word;
 }
 
-.c19.c19.c19.c19.c19 {
+.c15.c15.c15.c15.c15 {
   opacity: 1;
-}
-
-.c12.c12.c12.c12.c12 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 8px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-}
-
-.c12.c12.c12.c12.c12 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 4px;
-}
-
-.c12.c12.c12.c12.c12:focus-visible .content-container {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-}
-
-.c12.c12.c12.c12.c12 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -360,6 +374,46 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   border-top-right-radius: 12px;
 }
 
+.c20.c20.c20.c20.c20 {
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  padding: 1px;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(140px circle at var(--chat-input-pointer-x,50%) var(--chat-input-pointer-y,50%),hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 35%,transparent 75%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  visibility: hidden;
+  -webkit-transition-property: opacity,-webkit-transform,visibility;
+  -webkit-transition-property: opacity,transform,visibility;
+  transition-property: opacity,transform,visibility;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -379,16 +433,16 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   -ms-flex: 1;
   flex: 1;
   background-color: hsla(0,0%,100%,0);
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
   width: 100%;
   resize: none;
   box-sizing: border-box;
   outline: none;
   border: none;
-  caret-color: hsla(155,100%,31%,1);
+  caret-color: hsla(218,87%,43%,1);
   cursor: auto;
 }
 
@@ -513,7 +567,7 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -558,6 +612,19 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
   width: 100%;
 }
 
+@media (forced-colors:active) {
+  .c20.c20.c20.c20.c20 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c18.c18.c18.c18.c18 {
+    -webkit-transition-duration: 0ms;
+    transition-duration: 0ms;
+  }
+}
+
 <div
   id="root"
 >
@@ -586,7 +653,7 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
           <div
             class="c3 c4 focus-ring-wrapper"
             data-blade-component="base-box"
-            elevation="highRaised"
+            elevation="lowRaised"
           >
             <div
               class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c5 c6 __blade-base-input-wrapper"
@@ -610,7 +677,7 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
                     data-blade-component="styled-base-input"
                     id="chat-input-1-input-2"
                     placeholder="Ask a question..."
-                    rows="2"
+                    rows="1"
                     style="height: 0px;"
                     type="text"
                   />
@@ -624,67 +691,22 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
                     data-blade-component="base-box"
                   >
                     <button
-                      aria-disabled="false"
+                      aria-label="Upload file"
                       class="c12"
-                      data-blade-component="link"
-                      role="button"
-                      type="button"
-                    >
-                      <span
-                        class="c13 content-container"
-                        data-blade-component="base-box"
-                      >
-                        <span
-                          class="c14"
-                          data-blade-component="base-box"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="Svgweb__StyledSvg-vcmjs8-0"
-                            data-blade-component="icon"
-                            fill="none"
-                            height="12px"
-                            viewBox="0 0 24 24"
-                            width="12px"
-                          >
-                            <path
-                              d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(0, 0%, 2%, 1)"
-                            />
-                          </svg>
-                        </span>
-                        <span
-                          class="c15"
-                          data-blade-component="base-text"
-                        >
-                          Upload file
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class=""
-                    data-blade-component="base-box"
-                  >
-                    <button
-                      aria-label="Submit"
-                      class="c16"
                       data-blade-component="button"
-                      disabled=""
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c17"
+                        class=" c13"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c18 c19"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c20"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -697,9 +719,9 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
                               width="16px"
                             >
                               <path
-                                d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(218, 89%, 51%, 0.32)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                             </svg>
                           </div>
@@ -707,12 +729,67 @@ exports[`<ChatInput /> should render ChatInput 2`] = `
                       </div>
                     </button>
                   </div>
+                  <div
+                    class="c17"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      aria-hidden="true"
+                      class=" c18"
+                      data-blade-component="base-box"
+                    >
+                      <button
+                        aria-label="Submit"
+                        class="c19"
+                        data-blade-component="button"
+                        disabled=""
+                        role="button"
+                        type="button"
+                      >
+                        <div
+                          class=" c13"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c14 c15"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c16"
+                              data-blade-component="base-box"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="Svgweb__StyledSvg-vcmjs8-0"
+                                data-blade-component="icon"
+                                fill="none"
+                                height="16px"
+                                viewBox="0 0 24 24"
+                                width="16px"
+                              >
+                                <path
+                                  d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                  data-blade-component="svg-path"
+                                  fill="hsla(0, 0%, 100%, 0.32)"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div
+        aria-hidden="true"
+        class="c20"
+        data-blade-component="chat-input-hover-border"
+      />
     </div>
     <div
       class="c21"

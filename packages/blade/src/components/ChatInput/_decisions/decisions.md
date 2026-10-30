@@ -469,6 +469,46 @@ When submit is disabled because of an error or uploading file, no additional too
   - Ghost suggestion text is announced via `aria-describedby` so screen readers can read the suggestion
   - File attachment count is announced when files are added or removed
 
+## AI Elements Update (October 2026)
+
+ChatInput takes the AI Elements design (Figma: the Chat Input component, merged from the AI Elements page). Props stay compatible: every new prop is optional, and no prop is renamed, removed or retyped. The look changes for everyone.
+
+### Look
+
+- The "+" is an icon-only ghost button (an internal `ChatInputButton`, not exported) instead of the "Upload file" text link. Its accessible name stays "Upload file". With `actionMenu` it opens a Blade `Menu` instead of the file picker.
+- Send is a neutral (black) primary button, hidden until there is text or a file. It fades in, keeps its slot so the text box never moves, and is out of the tab order while hidden. The accessible names "Submit" and "Stop generation" stay.
+- Focus shows a 1 px primary border with no focus ring, through BaseInput's new internal `focusIndicator="border"`. Every other input keeps the ring.
+- The shadow is `elevation.lowRaised`, the text starts at one line with `spacing.4` padding, the corner radius is `large`, and the caret is `interactive.text.primary.normal`.
+
+### Status
+
+`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` stays as a shorthand for `streaming`; `status` wins when both are set. Retry calls `onSubmit` again with the current text and files.
+
+### Compact Size
+
+`size="small"` is one 44 px row with the "+" and Send inline (BaseInput `visualsAlignment="bottom"` keeps them on the last line). Once the text needs a second line it opens into the `medium` layout and stays open until the text is cleared, so it never flips back and forth while typing. On React Native it stays one row and grows, as in the closed draft PR #4076 this builds on.
+
+### Promise Submit
+
+When `onSubmit` returns a promise, ChatInput clears the text and files once it resolves and keeps them if it rejects. A plain function works as before: ChatInput never clears the box itself.
+
+### Slash Commands
+
+Typing `/` at the start of the text opens a list of `commands` above the input, filtered by what follows the slash. Arrow keys move, Enter or Tab picks, Escape closes. Focus stays in the text box, which points at the highlighted option with `aria-activedescendant`. `aria-expanded` is not used, because a text box may not carry it.
+
+### Files
+
+The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxFileSize`, then `maxFileCount`. Each file that is not added calls `onFileError` with a code and a message. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files.
+
+### Ambient Border
+
+`showAmbientBorder` draws a 1 px masked ring over BaseInput's border. At rest it is `interactive.border.primary.faded` with a brighter `interactive.border.primary.default` streak; while the cursor is in the box it is full primary with a subtle white glaze (`interactive.border.staticWhite.fadedHighlighted`, 32% white), so the shine reads as a lighter blue. The 80% white token looked like a gap in the border. The streak is a dash on an SVG copy of the rounded outline (`pathLength` 100, animated `stroke-dashoffset`), so it is the same share of the outline at any size and only ever lights the edge it is passing. An earlier version moved a glow square with CSS `offset-path`; on the 44 px compact box the square was taller than the box and lit the top and bottom borders at once. The streak goes counterclockwise, once every 12 seconds (a component constant: motion tokens stop at 640 ms). Reduced motion shows the plain ring; forced colours, error and disabled turn it off. It replaces the pulsing border in PR #4068, which will be closed. On React Native the prop shows the plain borders.
+
+### Not In This Change
+
+- `tools`: tool buttons and the model picker need a public button, and `ChatInputButton` stays internal for now.
+- Smooth height animation and Backspace removing the last attachment.
+
 ## Open Questions
 
 - Should the textarea auto-resize as the user types (grow vertically up to a max height)? Or should it have a fixed height with scroll?

@@ -35,6 +35,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
+    focusIndicator: props.focusIndicator,
     size: props.size,
     borderRadius: props.borderRadius,
   }),
@@ -131,7 +132,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const targetBorderWidth = rest.isTableInputCell
     ? theme.border.width.none
-    : isFocused
+    : isFocused && rest.focusIndicator !== 'border'
     ? theme.border.width.thick
     : theme.border.width.thin;
 
@@ -162,7 +163,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     <FocusRingWrapper
       isFocused={isFocused}
       borderRadius={inputBorderRadius}
-      disabled={rest.isTableInputCell}
+      disabled={rest.isTableInputCell || rest.focusIndicator === 'border'}
     >
       <StyledBaseInputWrapper
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

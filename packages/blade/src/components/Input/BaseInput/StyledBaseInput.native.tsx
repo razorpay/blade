@@ -86,7 +86,11 @@ const KeyboardTypeToNativeValuesMap = {
 
 type StyledComponentInputProps = Omit<
   StyledBaseInputProps,
-  'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction' | 'autoGrowMaxHeight'
+  | 'accessibilityProps'
+  | 'setCurrentInteraction'
+  | 'currentInteraction'
+  | 'autoGrowMaxHeight'
+  | 'autoGrowMinHeight'
 > & {
   isTextArea?: boolean;
   isFocused: boolean;
@@ -309,6 +313,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     type,
     numberOfLines,
     autoGrowMaxHeight,
+    autoGrowMinHeight,
     isTextArea,
     hasPopup,
     shouldIgnoreBlurAnimation,
@@ -325,6 +330,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
   // Auto-grow is opt-in (ChatInput only today). Default path must match prior textarea height behavior.
   const isAutoGrowing = Boolean(isTextArea && autoGrowMaxHeight);
   const minAutoGrowHeight =
+    autoGrowMinHeight ??
     baseInputHeight[$size] * (props.isDropdownTrigger ? 1 : numberOfLines ?? 1);
   const [autoGrowHeight, setAutoGrowHeight] = React.useState(minAutoGrowHeight);
 
