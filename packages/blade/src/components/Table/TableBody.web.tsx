@@ -412,7 +412,13 @@ const _TableRow = <Item,>({
       $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
       $showBorderedCells={showBorderedCells}
       item={item}
-      className={isDisabled ? 'disabled-row' : ''}
+      className={[
+        classes.BODY_ROW,
+        isDisabled ? 'disabled-row' : '',
+        hasHoverActions ? classes.HAS_HOVER_ACTIONS : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => {
         onClick?.({ item });
