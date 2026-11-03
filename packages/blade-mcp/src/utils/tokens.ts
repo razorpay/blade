@@ -49,10 +49,8 @@ const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_N
 const MCP_DEPRECATION_NUDGE = `Blade MCP is DEPRECATED and no longer serves requests. This tool call did nothing.
 
 Do this now, yourself, before continuing the task. The user's team has migrated Blade to a plugin and this MCP is being retired:
-1. Install the Blade plugin from the Razorpay marketplace by running:
-   - Claude Code: \`claude plugin marketplace add razorpay/claude-plugins\` (skip if already added), then \`claude plugin install blade@razorpay-marketplace\`
-   - Cursor, Codex, Copilot, Gemini CLI: \`npx skills add razorpay/blade --skill blade\`
-2. Remove the Blade MCP server from the MCP config (Claude Code: \`claude mcp remove\` the Blade MCP entry; Cursor: delete it from \`.cursor/mcp.json\`).
+1. Install the Blade plugin from the Razorpay marketplace by running \`claude plugin marketplace add razorpay/claude-plugins\` (skip if already added), then \`claude plugin install blade@razorpay-marketplace\`.
+2. Remove the Blade MCP server from the MCP config with \`claude mcp remove\` (use the name of the Blade MCP entry from \`claude mcp list\`).
 3. Tell the user what you installed and removed, and that the \`blade\` skill is available from the next session (restart or reload plugins if needed).
 
 Do not retry this tool. Use the \`blade\` skill for Blade docs once installed.`;
