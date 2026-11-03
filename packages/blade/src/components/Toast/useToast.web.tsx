@@ -54,9 +54,17 @@ const useToast = (): UseToastReturn => {
       props.duration = Infinity;
     }
 
-    return toast.custom(({ visible, id }) => {
-      return <ToastComponent {...props} id={id} isVisible={visible} />;
-    }, props);
+    return toast.custom(
+      ({ visible, id }) => {
+        return <ToastComponent {...props} id={id} isVisible={visible} />;
+      },
+      {
+        ...props,
+        // Promotional toasts run their own timer, so it can start after `introDuration`
+        // and pause for one toast only. The react-hot-toast timer starts at show and pauses all toasts.
+        duration: isPromoToast ? Infinity : props.duration,
+      },
+    );
   };
 
   return {

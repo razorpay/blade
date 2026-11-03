@@ -102,6 +102,38 @@ ToastHover.play = async () => {
   await expect(queryByText(toastContent)).not.toBeVisible();
 };
 
+export const PromotionalToastHover: StoryFn<typeof Toast> = (): React.ReactElement => {
+  return (
+    <ToastExample
+      type="promotional"
+      content="Promo Toast"
+      autoDismiss
+      duration={1000}
+      showProgressBar
+    />
+  );
+};
+
+PromotionalToastHover.play = async () => {
+  const { getByRole, getByTestId, queryByText } = within(document.body);
+  await sleep(1000);
+
+  const toastContent = 'Promo Toast';
+  await expect(queryByText(toastContent)).not.toBeInTheDocument();
+  await userEvent.click(getByRole('button', { name: 'Show Toast' }));
+  await sleep(400);
+  await expect(queryByText(toastContent)).toBeVisible();
+  await expect(getByTestId('toast-progress-bar')).toBeInTheDocument();
+  // hover the promotional toast, the timer pauses
+  await userEvent.hover(queryByText(toastContent)!);
+  await sleep(2000);
+  await expect(queryByText(toastContent)).toBeVisible();
+  // leave the promotional toast, the timer resumes and dismisses the toast
+  await userEvent.unhover(queryByText(toastContent)!);
+  await sleep(1000);
+  await expect(queryByText(toastContent)).not.toBeVisible();
+};
+
 export const ToastStacking: StoryFn<typeof Toast> = (): React.ReactElement => {
   const toast = useToast();
 
