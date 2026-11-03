@@ -28,7 +28,6 @@ import type {
   ChartXAxisProps,
   ChartYAxisProps,
   ChartReferenceLineProps,
-  ChartReferenceBandProps,
   ChartTooltipProps,
   ChartLegendProps,
   DataColorMapping,
@@ -36,6 +35,7 @@ import type {
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  ChartReferenceBandProps,
 } from '../CommonChartComponents/types';
 import {
   REFERENCE_BAND_DEFAULT_COLOR,
