@@ -785,3 +785,147 @@ describe('<TextInput />', () => {
     });
   });
 });
+
+// ─── Formatted TextInput — controlled value sync ───────────────────────────────
+// Reproduces the checkout AddNewCard scenario: parent strips non-digits in
+// onChange and feeds the cleaned value back via `value`.
+const ControlledCardInput = (): ReactElement => {
+  const onlyDigits = (v: string): string => v.replace(/\D/g, '');
+  const [value, setValue] = useState<string>('');
+  return (
+    <>
+      <Button onClick={() => setValue('378282246310005')}>prefill</Button>
+      <Button onClick={() => setValue('')}>reset</Button>
+      <TextInput
+        label="Card"
+        format="#### #### #### ####"
+        value={value}
+        onChange={({ rawValue }) => setValue(onlyDigits(rawValue ?? ''))}
+      />
+    </>
+  );
+};
+
+describe('<TextInput /> formatted + controlled value', () => {
+  it('reflects consumer sanitisation (letters stripped) on screen', async () => {
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111abcd2222');
+    // Letters must be stripped; digits formatted, no trailing delimiter.
+    expect(input).toHaveValue('4111 2222');
+  });
+
+  it('rejects letters even when the sanitised value is unchanged', async () => {
+    // Typing letters after "1234" leaves the same stored value, so the `value`
+    // prop reference is identical. The display must still snap back to digits.
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '1234');
+    expect(input).toHaveValue('1234');
+
+    await userEvent.type(input, 'abc');
+    expect(input).toHaveValue('1234');
+
+    await userEvent.type(input, '1');
+    expect(input).toHaveValue('1234 1');
+  });
+
+  it('reflects programmatic prefill after mount', async () => {
+    const { getByLabelText, getByRole } = renderWithTheme(<ControlledCardInput />);
+    await userEvent.click(getByRole('button', { name: 'prefill' }));
+    expect(getByLabelText('Card')).toHaveValue('3782 8224 6310 005');
+  });
+
+  it('clears the field on programmatic reset', async () => {
+    const { getByLabelText, getByRole } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111');
+    expect(input).toHaveValue('4111');
+    await userEvent.click(getByRole('button', { name: 'reset' }));
+    expect(input).toHaveValue('');
+  });
+
+  it('does not leak a trailing delimiter when value ends on a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card');
+    // 16 digits fills all four groups of "#### #### #### ####" exactly.
+    await userEvent.type(input, '4111111111111111');
+    expect(input).toHaveValue('4111 1111 1111 1111');
+    // No trailing space after the 16th digit.
+    expect((input as HTMLInputElement).value.endsWith(' ')).toBe(false);
+  });
+
+  it('places caret after typed digit when formatter inserts a delimiter at a group boundary', async () => {
+    // Typing the 5th digit turns "1234" into "1234 5". The inserted space
+    // shifts the digit right; caret must land after "5" (index 6), not before it (5).
+    const { getByLabelText } = renderWithTheme(<ControlledCardInput />);
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '12345');
+    await waitFor(() => {
+      expect(input.value).toBe('1234 5');
+      expect(input.selectionStart).toBe(6); // after "5"
+    });
+  });
+});
+
+// ─── Formatted TextInput — bracket delimiter handling ─────────────────────────
+// When the format pattern contains structural bracket pairs like "(###) ###-####",
+// the closing bracket must always be emitted even when the value ends exactly
+// on a group boundary inside the brackets.  Non-bracket delimiters (spaces,
+// dashes, slashes) should still be suppressed to avoid trailing junk.
+const BracketFormatInput = ({
+  pattern,
+  value,
+}: {
+  pattern: string;
+  value: string;
+}): ReactElement => {
+  const onlyDigits = (v: string): string => v.replace(/\D/g, '');
+  const [internalValue, setInternalValue] = useState<string>(value);
+  return (
+    <TextInput
+      label="Phone"
+      format={pattern}
+      value={internalValue}
+      onChange={({ rawValue }) => setInternalValue(onlyDigits(rawValue ?? ''))}
+    />
+  );
+};
+
+describe('<TextInput /> formatted — bracket delimiters', () => {
+  it('preserves closing bracket when value fills the bracketed group exactly', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(###) ###-####" value="123" />,
+    );
+    // "(123)" not "(123" — the ")" must survive even though value is exhausted.
+    expect(getByLabelText('Phone')).toHaveValue('(123)');
+  });
+
+  it('does not emit trailing non-bracket delimiters after the closing bracket', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(###) ###-####" value="123" />,
+    );
+    const input = getByLabelText('Phone') as HTMLInputElement;
+    // No trailing space or dash after "(123)".
+    expect(input.value).toBe('(123)');
+  });
+
+  it('preserves closing bracket for (####)-####-#### custom pattern', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(####)-####-####" value="1234" />,
+    );
+    // "(1234)" not "(1234" — the ")" must survive.
+    expect(getByLabelText('Phone')).toHaveValue('(1234)');
+  });
+
+  it('still strips trailing space for non-bracket patterns (card number)', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="#### #### #### ####" value="4111111111111111" />,
+    );
+    const input = getByLabelText('Phone') as HTMLInputElement;
+    expect(input.value).toBe('4111 1111 1111 1111');
+    expect(input.value.endsWith(' ')).toBe(false);
+  });
+});
