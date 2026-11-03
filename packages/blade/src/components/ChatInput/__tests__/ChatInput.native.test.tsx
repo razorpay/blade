@@ -96,6 +96,21 @@ describe('<ChatInput /> (native)', () => {
     expect(onFileChange).not.toHaveBeenCalled();
   });
 
+  it('gives one line its full height in both sizes', () => {
+    for (const size of ['medium', 'small'] as const) {
+      const { getByLabelText } = renderWithTheme(
+        <ChatInput accessibilityLabel={`Chat input ${size}`} size={size} />,
+      );
+      const style = [getByLabelText(`Chat input ${size}`).props.style].flat(Infinity);
+      const minHeight = style.reduce(
+        (found: number | undefined, part: { minHeight?: number; height?: number } | undefined) =>
+          part?.minHeight ?? part?.height ?? found,
+        undefined,
+      );
+      expect(minHeight).toBeGreaterThanOrEqual(44);
+    }
+  });
+
   it('shows a mic before Send when onVoiceInput is passed', () => {
     const onVoiceInput = jest.fn();
     const { getByRole } = renderWithTheme(

@@ -414,7 +414,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           isDisabled={isDisabled}
           numberOfLines={1}
           autoGrowMaxHeight={chatInputMaxTextAreaHeight}
-          autoGrowMinHeight={isSmall ? compactLayout.singleRowHeight : undefined}
+          // one 20 px line with 12 px above and below, in both sizes; BaseInput's default is shorter
+          autoGrowMinHeight={compactLayout.singleRowHeight}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}

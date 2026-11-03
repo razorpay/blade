@@ -180,7 +180,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                       editable={false}
                       hasLeadingDropdown={false}
                       hasTags={false}
-                      id="chatinput-295-296-input-297"
+                      id="chatinput-323-324-input-325"
                       includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
@@ -227,7 +227,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                             "width": "100%",
                           },
                           {
-                            "height": 36,
+                            "height": 44,
                             "maxHeight": 200,
                           },
                         ]
@@ -1220,7 +1220,7 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                       editable={true}
                       hasLeadingDropdown={false}
                       hasTags={false}
-                      id="chatinput-183-184-input-185"
+                      id="chatinput-211-212-input-213"
                       includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
@@ -1838,7 +1838,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                             "width": "100%",
                           },
                           {
-                            "height": 36,
+                            "height": 44,
                             "maxHeight": 200,
                           },
                         ]
