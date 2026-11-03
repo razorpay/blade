@@ -542,6 +542,23 @@ describe('<ChatInput />', () => {
       warn.mockRestore();
     });
 
+    it('adds a new line on Shift+Enter instead of picking a command', async () => {
+      const user = userEvent.setup();
+      const onCommandSelect = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          commands={commands}
+          onCommandSelect={onCommandSelect}
+        />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      await user.type(textarea, '/re');
+      await user.keyboard('{Shift>}{Enter}{/Shift}');
+      expect(onCommandSelect).not.toHaveBeenCalled();
+      expect(textarea).toHaveValue('/re\n');
+    });
+
     it('closes on Escape', async () => {
       const user = userEvent.setup();
       const { getByRole, queryByRole } = renderWithTheme(

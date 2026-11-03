@@ -373,7 +373,8 @@ const useChatInput = (
           setCommandActiveIndex((index) => (index - 1 + commandItems.length) % commandItems.length);
           return;
         }
-        if (event.key === 'Enter') {
+        // Shift+Enter still adds a new line, as it does everywhere else in the box
+        if (event.key === 'Enter' && !event.shiftKey) {
           event.preventDefault();
           selectCommand(commandItems[commandActiveIndex] ?? commandItems[0]);
           return;
