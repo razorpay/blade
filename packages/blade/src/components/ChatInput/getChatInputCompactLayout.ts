@@ -14,6 +14,7 @@ import { inputDropdownButtonPadding } from '~components/Input/BaseInput/baseInpu
  */
 const getChatInputCompactLayout = (
   theme: Theme,
+  { hasVoiceInput = false }: { hasVoiceInput?: boolean } = {},
 ): {
   textAreaPadding: number;
   singleRowHeight: number;
@@ -40,7 +41,9 @@ const getChatInputCompactLayout = (
 
   const leadingPaddingLeft = edgeInset - leadingSlotPaddingLeft;
   const textStartWithLeading = edgeInset + buttonSize + gapToText;
-  const textEndBeforeTrailing = edgeInset + buttonSize + gapToText;
+  // with a mic, the mic and Send sit side by side, 8 px apart
+  const trailingWidth = hasVoiceInput ? buttonSize * 2 + theme.spacing[3] : buttonSize;
+  const textEndBeforeTrailing = edgeInset + trailingWidth + gapToText;
 
   return {
     textAreaPadding,

@@ -16,7 +16,7 @@ const travel = keyframes`
   to { stroke-dashoffset: ${OUTLINE_LENGTH}; }
 `;
 
-const StyledRing = styled.div(({ theme }) => {
+const StyledRing = styled.div<{ $isHidden: boolean }>(({ theme, $isHidden }) => {
   const borderWidth = theme.border.width.thin;
   return {
     position: 'absolute',
@@ -32,25 +32,25 @@ const StyledRing = styled.div(({ theme }) => {
     WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
     WebkitMaskComposite: 'xor',
     mask: 'linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0)',
+    // hover and focus draw their own border, so the light steps aside without losing its place
+    opacity: $isHidden ? 0 : 1,
+    transitionProperty: 'opacity',
+    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.moderate)),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
     '@media (forced-colors: active)': {
       display: 'none',
     },
   };
 });
 
-const StyledBaseColor = styled.div<{ $isActive: boolean }>(({ theme, $isActive }) => ({
+const StyledBaseColor = styled.div(({ theme }) => ({
   position: 'absolute',
   inset: 0,
-  backgroundColor: $isActive
-    ? theme.colors.interactive.border.primary.default
-    : theme.colors.interactive.border.primary.faded,
-  transitionProperty: 'background-color',
-  transitionDuration: castWebType(makeMotionTime(theme.motion.duration.moderate)),
-  transitionTimingFunction: castWebType(theme.motion.easing.standard),
+  backgroundColor: theme.colors.interactive.border.primary.faded,
 }));
 
 const StyledStreak = styled.svg(
-  ({ theme }) => css`
+  () => css`
     position: absolute;
     inset: 0;
     width: 100%;
@@ -59,9 +59,6 @@ const StyledStreak = styled.svg(
 
     rect {
       animation: ${travel} ${chatInputAmbientBorderLoopDuration}ms linear infinite;
-      transition-property: stroke;
-      transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
-      transition-timing-function: ${castWebType(theme.motion.easing.standard)};
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -91,7 +88,7 @@ const fadeLayers: StreakLayer[] = Array.from({ length: STREAK_STEPS }, (_, index
 });
 
 // One streak, so only one animation runs. Its layers share their leading end, so they stack up
-// towards the head. Changing colour only changes the stroke, so the streak keeps its place.
+// towards the head.
 const Streak = ({
   color,
   radius,
@@ -124,23 +121,28 @@ const Streak = ({
 );
 
 /**
- * The ambient border. At rest: a soft blue border with a brighter blue streak. While the cursor is
- * in the box: a full blue border with a soft white shine. The streak keeps its place when the
- * colours change, and goes once around the box about every 12 seconds. With reduced motion nothing
- * moves.
+ * The ambient border: a soft blue border with a brighter blue streak that goes once around the
+ * box every 15 seconds. It fades out while the box is hovered or focused, since those states show
+ * their own border, and keeps running underneath so it picks up where it was. With reduced motion
+ * nothing moves.
  */
-const ChatInputAmbientBorder = ({ isActive }: { isActive: boolean }): React.ReactElement => {
+const ChatInputAmbientBorder = ({ isHidden }: { isHidden: boolean }): React.ReactElement => {
   const { theme } = useTheme();
   const radius = theme.border.radius[chatInputBorderRadius] + theme.border.width.thin;
   const strokeWidth = theme.border.width.thin * 2;
-  const primary = theme.colors.interactive.border.primary.default;
-  // a light white glaze over the blue (32% white), so the shine reads as a lighter blue, not white
-  const shineCore = theme.colors.interactive.border.staticWhite.fadedHighlighted;
 
   return (
-    <StyledRing aria-hidden="true" data-blade-component="chat-input-ambient-border">
-      <StyledBaseColor $isActive={isActive} />
-      <Streak color={isActive ? shineCore : primary} radius={radius} strokeWidth={strokeWidth} />
+    <StyledRing
+      $isHidden={isHidden}
+      aria-hidden="true"
+      data-blade-component="chat-input-ambient-border"
+    >
+      <StyledBaseColor />
+      <Streak
+        color={theme.colors.interactive.border.primary.default}
+        radius={radius}
+        strokeWidth={strokeWidth}
+      />
     </StyledRing>
   );
 };

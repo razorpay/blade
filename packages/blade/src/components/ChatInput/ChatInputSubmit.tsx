@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChatInputButton } from './ChatInputButton';
 import { ChatInputSendSlot } from './ChatInputSendSlot';
 import type { ChatInputStatus } from './types';
 import BaseButton from '~components/Button/BaseButton';
@@ -45,12 +46,11 @@ const ChatInputSubmit = ({
 }: ChatInputSubmitProps): React.ReactElement => {
   if (status === 'streaming') {
     return (
-      <BaseButton
-        variant="primary"
-        color="neutral"
-        size={size}
+      // a quiet ghost button, like the "+", so a long reply doesn't keep a black button in view
+      <ChatInputButton
         icon={StopCircleIcon}
-        accessibilityProps={{ label: 'Stop generation' }}
+        size={size}
+        accessibilityLabel="Stop generation"
         // without onStop there is nothing to stop, so don't offer a button that does nothing
         isDisabled={isDisabled || !onStop}
         onClick={() => onStop?.()}

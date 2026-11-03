@@ -7,6 +7,10 @@ type ChatInputActionBarProps = {
    */
   leadingAction?: React.ReactNode;
   /**
+   * The optional mic, just before Send
+   */
+  voiceAction?: React.ReactNode;
+  /**
    * Send, the loader, Stop or Retry, on the right
    */
   submitAction: React.ReactNode;
@@ -14,6 +18,7 @@ type ChatInputActionBarProps = {
 
 const ChatInputActionBar = ({
   leadingAction,
+  voiceAction,
   submitAction,
 }: ChatInputActionBarProps): React.ReactElement => {
   return (
@@ -32,7 +37,8 @@ const ChatInputActionBar = ({
       <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
         {leadingAction}
       </BaseBox>
-      <BaseBox display="flex" flexDirection="row" alignItems="center">
+      <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+        {voiceAction}
         {submitAction}
       </BaseBox>
     </BaseBox>

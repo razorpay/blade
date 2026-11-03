@@ -24,6 +24,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isTableInputCell'
     | 'focusIndicator'
     | 'hoverIndicator'
+    | 'restBorderColor'
     | 'size'
     | 'borderRadius'
   >
@@ -38,6 +39,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     isTableInputCell: props.isTableInputCell,
     focusIndicator: props.focusIndicator,
     hoverIndicator: props.hoverIndicator,
+    restBorderColor: props.restBorderColor,
     size: props.size,
     borderRadius: props.borderRadius,
   }),
@@ -53,6 +55,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isTableInputCell: props.isTableInputCell,
       focusIndicator: props.focusIndicator,
       hoverIndicator: props.hoverIndicator,
+      restBorderColor: props.restBorderColor,
       size: props.size,
       borderRadius: props.borderRadius,
     }),
@@ -71,6 +74,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isTableInputCell: props.isTableInputCell,
       focusIndicator: props.focusIndicator,
       hoverIndicator: props.hoverIndicator,
+      restBorderColor: props.restBorderColor,
       size: props.size,
       borderRadius: props.borderRadius,
     }),
@@ -170,6 +174,7 @@ to {
       isTableInputCell={rest.isTableInputCell}
       focusIndicator={rest.focusIndicator}
       hoverIndicator={rest.hoverIndicator}
+      restBorderColor={rest.restBorderColor}
       className="__blade-base-input-wrapper"
     />
   );

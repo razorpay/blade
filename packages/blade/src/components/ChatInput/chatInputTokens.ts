@@ -13,12 +13,18 @@ const chatInputFilePreviewItemWidthNative = 200;
  * loop rather than a transition, so it is a component constant instead of a motion token (Blade's
  * duration tokens stop at 640 ms).
  */
-const chatInputAmbientBorderLoopDuration = 12000;
+const chatInputAmbientBorderLoopDuration = 15000;
 
 /**
- * Radius, in px, of the hover glow that follows the pointer along the border
+ * Size, in px, of the elliptical hover glow that follows the pointer along the border
  */
-const chatInputHoverGlowRadius = 140;
+const chatInputHoverGlowSize = { width: 200, height: 94 } as const;
+
+/**
+ * How near, in px, the pointer must be for the hover glow. Within `full` of the box it is at full
+ * strength; it fades in over the next `fade` px as the pointer approaches.
+ */
+const chatInputHoverGlowReach = { full: 24, fade: 90 } as const;
 
 /**
  * Width of the slash command list, matching the AI Elements design.
@@ -33,5 +39,6 @@ export {
   chatInputFilePreviewItemWidthNative,
   chatInputAmbientBorderLoopDuration,
   chatInputCommandMenuWidth,
-  chatInputHoverGlowRadius,
+  chatInputHoverGlowSize,
+  chatInputHoverGlowReach,
 };

@@ -320,6 +320,47 @@ export const CompactSize: StoryFn<typeof ChatInput> = () => {
 };
 CompactSize.storyName = 'Compact Size';
 
+export const VoiceInputAndHelpText: StoryFn<typeof ChatInput> = () => {
+  const [value, setValue] = useState('');
+  const [isListening, setIsListening] = useState(false);
+  const helpText = 'Ray is AI and can make mistakes. Please check important information';
+  const listen = (): void => {
+    // a real product would record here and turn the speech into text
+    setIsListening(true);
+    setTimeout(() => {
+      setValue('Why is ₹46K on hold?');
+      setIsListening(false);
+    }, 1200);
+  };
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="600px">
+      <ChatInput
+        placeholder="Ask Ray about orders, failures or reports"
+        accessibilityLabel="Chat input with voice"
+        value={value}
+        onChange={({ value: newValue }) => setValue(newValue)}
+        onSubmit={() => setValue('')}
+        onVoiceInput={listen}
+      />
+      <Box maxWidth="360px">
+        <ChatInput
+          size="small"
+          placeholder="Ask anything..."
+          accessibilityLabel="Compact chat input with voice and help text"
+          onVoiceInput={listen}
+          helpText={helpText}
+        />
+      </Box>
+      <Text size="small" color="surface.text.gray.muted">
+        {isListening
+          ? 'Listening...'
+          : 'onVoiceInput adds a mic just before Send. helpText adds a muted line under the box.'}
+      </Text>
+    </Box>
+  );
+};
+VoiceInputAndHelpText.storyName = 'Voice Input and Help Text';
+
 export const RequestStatus: StoryFn<typeof ChatInput> = () => {
   const statuses: NonNullable<ChatInputProps['status']>[] = [
     'ready',
@@ -465,8 +506,9 @@ export const AmbientBorder: StoryFn<typeof ChatInput> = () => {
         accessibilityLabel="Compact chat input with ambient border"
       />
       <Text size="small" color="surface.text.gray.muted">
-        Click into a box: the border turns full blue and the streak becomes a soft white shine. With
-        reduced motion, nothing moves.
+        The streak goes around once every 15 seconds. Point at a box or click into it and the light
+        fades out, so hover and focus show only their own border. With reduced motion, nothing
+        moves.
       </Text>
     </Box>
   );

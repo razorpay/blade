@@ -36,6 +36,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
     focusIndicator: props.focusIndicator,
+    restBorderColor: props.restBorderColor,
     size: props.size,
     borderRadius: props.borderRadius,
   }),
@@ -105,6 +106,9 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   });
 
   let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  if (rest.restBorderColor && !rest.isTableInputCell && baseInputState === 'default') {
+    borderColor = getIn(theme.colors, rest.restBorderColor);
+  }
   const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
 
   if (rest.validationState === 'error') {
@@ -132,7 +136,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const targetBorderWidth = rest.isTableInputCell
     ? theme.border.width.none
-    : isFocused && rest.focusIndicator !== 'border'
+    : isFocused
     ? theme.border.width.thick
     : theme.border.width.thin;
 

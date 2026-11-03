@@ -96,6 +96,25 @@ describe('<ChatInput /> (native)', () => {
     expect(onFileChange).not.toHaveBeenCalled();
   });
 
+  it('shows a mic before Send when onVoiceInput is passed', () => {
+    const onVoiceInput = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={onVoiceInput} />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Voice input' }));
+    expect(onVoiceInput).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows help text under the box', () => {
+    const { getByText } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        helpText="Ray is AI and can make mistakes"
+      />,
+    );
+    expect(getByText('Ray is AI and can make mistakes')).toBeTruthy();
+  });
+
   it('should render the compact size and header', () => {
     const { toJSON, getByText } = renderWithTheme(
       <ChatInput

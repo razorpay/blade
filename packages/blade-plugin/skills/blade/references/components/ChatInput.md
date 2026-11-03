@@ -2,7 +2,7 @@
 
 ## Description
 
-`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page, or not at all (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
+`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page, or not at all (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. `onVoiceInput` adds a mic before Send, and `helpText` adds a muted line under the box. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
 
 ## Important Constraints
 
@@ -259,10 +259,10 @@ type ChatInputProps = {
 
   /**
    * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
-   * the box, about once every 12 seconds. While the cursor is in the box, the border is full blue
-   * and the streak becomes a soft white shine. It is decoration and does not mean the agent is
-   * working. With reduced motion nothing moves; `validationState="error"`, `status="error"` and
-   * `isDisabled` turn it off.
+   * the box, once every 15 seconds. It fades out while the cursor is over the box or the box has
+   * focus, since hover and focus show their own border. It is decoration and does not mean the
+   * agent is working. With reduced motion nothing moves; `validationState="error"`,
+   * `status="error"` and `isDisabled` turn it off.
    *
    * **Note (React Native):** Shows the plain borders.
    * @default false
@@ -290,6 +290,20 @@ type ChatInputProps = {
    * Blade warns in development.
    */
   onStop?: () => void;
+
+  /**
+   * Shows a mic button just before Send, and is called when it is pressed. Start voice input in
+   * your product, for example by recording and then setting the text. Without it there is no mic.
+   *
+   * **Note (React Native):** Also works; the mic sits before Send.
+   */
+  onVoiceInput?: () => void;
+
+  /**
+   * A short muted line under the box, such as "Ray is AI and can make mistakes. Please check
+   * important information". The text box is described by it for screen readers on web.
+   */
+  helpText?: string;
 
   /**
    * List of attached files. Used for controlled file management.
@@ -405,6 +419,8 @@ type ChatInputProps = {
 **Do**
 
 - Use `ChatInput` for AI chat interfaces and conversational UIs.
+- Pass `onVoiceInput` only when your product can take voice input; the mic shows only then.
+- Use `helpText` for a short, steady note such as an AI disclaimer, not for errors (use `validationState` and `errorText`).
 - Use `status` (`ready`, `submitted`, `streaming`, `error`) to follow the request: Send, a loader, Stop or Retry. `isGenerating` is deprecated: use `status="streaming"`, and pass `onStop` so Stop works.
 - Set `clearOnSubmit` and return a promise from `onSubmit` to let ChatInput clear the box when the send succeeds and keep it when it fails. With a controlled `value` or `fileList`, clear them yourself.
 - Use `size="small"` where height is tight, such as a chat panel on a phone. Keep its placeholder to about 25 characters.

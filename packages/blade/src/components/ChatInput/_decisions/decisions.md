@@ -478,8 +478,15 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 - The "+" is an icon-only ghost button (an internal `ChatInputButton`, not exported) instead of the "Upload file" text link. Its accessible name stays "Upload file". With `actionMenu` it opens a Blade `Menu` instead of the file picker.
 - Send is a neutral (black) primary button, hidden until there is text or a file. It fades in, keeps its slot so the text box never moves, and is out of the tab order while hidden. The accessible names "Submit" and "Stop generation" stay.
-- Focus shows a 1 px primary border with no focus ring, through BaseInput's new internal `focusIndicator="border"`. Every other input keeps the ring.
-- The shadow is `elevation.lowRaised`, the text starts at one line with `spacing.4` padding, the corner radius is `large`, and the caret is `interactive.text.primary.normal`.
+- At rest the border is `surface.border.gray.muted` (a see-through grey), through BaseInput's internal `restBorderColor`. Focus shows a 1.5 px (`border.width.thick`) primary border with no focus ring, through `focusIndicator="border"`. Every other input keeps its border and ring.
+- Hover lights the border only near the pointer: a 1.5 px, 200 x 94 px oval of primary blue fading through `interactive.border.primary.faded`. It trails the pointer by `duration.2xquick` and fades in as the pointer comes within about 114 px of the box. It is off while focused, off for touch, and does not trail with reduced motion.
+- The shadow is `elevation.lowRaised`, the text starts at one line with `spacing.4` above and below, and in the two-row layout it starts `spacing.6` (20 px) in, through BaseInput's internal `paddingX`. The corner radius stays `large`, and the caret is `interactive.border.primary.default`.
+- Send springs in from 0.3x with `easing.overshoot` over `duration.gentle` and shrinks away over `duration.quick` with `easing.exit`. Stop is a ghost `ChatInputButton` with `StopCircleIcon`, so a long reply doesn't keep a black button in view.
+- The buttons keep their sizes: 32 px (`small`) in the two-row toolbar and 28 px (`xsmall`) in the one-row bar, which keeps that bar at 44 px. We tried 36 px buttons and a 60 px bar to match the design team's flow 9 box, and went back.
+
+### Voice Input and Help Text
+
+`onVoiceInput` shows a mic (`MicIcon` in the same ghost button as "+") just before Send, 8 px apart, on web and native. There is no mic without it, so no product gets a button it can't handle. `helpText` shows a muted body-small line `spacing.4` under the box, centred. On web the text box is described by it; BaseInput only links its own form hint, so ChatInput sets `aria-describedby` itself.
 
 ### Status
 
@@ -503,7 +510,7 @@ The picker, paste and drop all go through one check (`validateChatInputFiles`): 
 
 ### Ambient Border
 
-`showAmbientBorder` draws a 1 px masked ring over BaseInput's border. At rest it is `interactive.border.primary.faded` with a brighter `interactive.border.primary.default` streak; while the cursor is in the box it is full primary with a subtle white glaze (`interactive.border.staticWhite.fadedHighlighted`, 32% white), so the shine reads as a lighter blue. The 80% white token looked like a gap in the border. The streak is a dash on an SVG copy of the rounded outline (`pathLength` 100, animated `stroke-dashoffset`), so it is the same share of the outline at any size and only ever lights the edge it is passing. An earlier version moved a glow square with CSS `offset-path`; on the 44 px compact box the square was taller than the box and lit the top and bottom borders at once. The streak goes counterclockwise, once every 12 seconds (a component constant: motion tokens stop at 640 ms). One streak element runs one animation and changes colour on focus, so it keeps its place. Reduced motion shows the plain ring; forced colours, `validationState="error"`, `status="error"` and disabled turn it off. It replaces the pulsing border in PR #4068, which will be closed. On React Native the prop shows the plain borders.
+`showAmbientBorder` draws a 1 px masked ring over BaseInput's border. It is `interactive.border.primary.faded` with a brighter `interactive.border.primary.default` streak. It stays opt-in, so existing ChatInputs don't start animating. While the box is hovered or focused the whole ring fades out, since those states show their own border; it keeps running underneath, so it picks up where it was. (An earlier version turned the streak into a white shine on focus instead.) The streak is a dash on an SVG copy of the rounded outline (`pathLength` 100, animated `stroke-dashoffset`), so it is the same share of the outline at any size and only ever lights the edge it is passing. An earlier version moved a glow square with CSS `offset-path`; on the 44 px compact box the square was taller than the box and lit the top and bottom borders at once. The streak goes counterclockwise, once every 15 seconds (a component constant: motion tokens stop at 960 ms). One streak element runs one animation. Reduced motion shows the plain ring; forced colours, `validationState="error"`, `status="error"` and disabled turn it off. It replaces the pulsing border in PR #4068, which will be closed. On React Native the prop shows the plain borders.
 
 ### Not In This Change
 

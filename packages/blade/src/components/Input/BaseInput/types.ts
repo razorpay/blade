@@ -41,6 +41,7 @@ export type BaseInputWrapperProps = Pick<
   | 'isDropdownTrigger'
   | 'focusIndicator'
   | 'hoverIndicator'
+  | 'restBorderColor'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -75,6 +76,7 @@ export type StyledBaseInputProps = {
   hasTags?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
   $padding?: string;
+  $paddingX?: string;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
   hasLeadingDropdown?: boolean;

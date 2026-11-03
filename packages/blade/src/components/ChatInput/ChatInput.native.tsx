@@ -22,7 +22,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { CloseIcon, InfoIcon, PlusIcon } from '~components/Icons';
+import { CloseIcon, InfoIcon, MicIcon, PlusIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { Text } from '~components/Typography';
 import { castNativeType, makeSpace } from '~utils';
@@ -71,6 +71,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onFileError,
     dropTarget,
     showAmbientBorder,
+    onVoiceInput,
+    helpText,
     testID,
     ...rest
   },
@@ -232,7 +234,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ) : null;
 
   const isSmall = size === 'small';
-  const compactLayout = getChatInputCompactLayout(theme);
+  const compactLayout = getChatInputCompactLayout(theme, { hasVoiceInput: Boolean(onVoiceInput) });
 
   const getLeadingAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
     hideFileUpload ? null : (
@@ -259,9 +261,21 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
+  const getVoiceAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
+    onVoiceInput ? (
+      <ChatInputButton
+        icon={MicIcon}
+        size={buttonSize}
+        accessibilityLabel="Voice input"
+        isDisabled={isDisabled}
+        onClick={() => onVoiceInput()}
+      />
+    ) : null;
+
   const actionBarContent = (
     <ChatInputActionBar
       leadingAction={getLeadingAction('small')}
+      voiceAction={getVoiceAction('small')}
       submitAction={getSubmitAction('small')}
     />
   );
@@ -285,7 +299,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       paddingBottom={makeSpace(compactLayout.trailingBottomInset)}
       marginLeft={makeSpace(compactLayout.trailingMarginLeft)}
       marginRight={makeSpace(compactLayout.trailingMarginRight)}
+      flexDirection="row"
+      gap="spacing.3"
     >
+      {getVoiceAction('xsmall')}
       {getSubmitAction('xsmall')}
     </BaseBox>
   );
@@ -372,6 +389,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           id={inputId}
           elevation="lowRaised"
           focusIndicator="border"
+          restBorderColor="surface.border.gray.muted"
           label={undefined}
           accessibilityLabel={accessibilityLabel}
           hideLabelText
@@ -389,8 +407,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           padding={makeSpace(compactLayout.textAreaPadding)}
+          // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
+          paddingX={isSmall ? undefined : makeSpace(theme.spacing[6])}
           borderRadius={chatInputBorderRadius}
-          caretColor="interactive.text.primary.normal"
+          caretColor="interactive.border.primary.default"
           topContent={topContent}
           bottomContent={isSmall ? undefined : actionBarContent}
           leadingInteractionElement={isSmall ? compactLeadingAction : undefined}
@@ -399,6 +419,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           {...makeAnalyticsAttribute(rest)}
         />
       </BaseBox>
+
+      {helpText ? (
+        <BaseBox marginTop="spacing.4" alignItems="center">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            {helpText}
+          </Text>
+        </BaseBox>
+      ) : null}
     </BaseBox>
   );
 };

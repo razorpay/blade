@@ -143,6 +143,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 8px;
 }
 
 .c21.c21.c21.c21.c21 {
@@ -374,23 +375,17 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 
 .c20.c20.c20.c20.c20 {
   position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  padding: 1px;
+  inset: -1.5px;
+  border-radius: 17.5px;
+  padding: 1.5px;
   pointer-events: none;
   z-index: 2;
-  background: radial-gradient(140px circle at var(--chat-input-pointer-x,50%) var(--chat-input-pointer-y,50%),hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 35%,transparent 75%);
+  background: radial-gradient(100px 47px at var(--chat-input-pointer-x,50%) var(--chat-input-pointer-y,50%),hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 42%,hsla(218,89%,51%,0.18) 70%,transparent 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   -webkit-mask: linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
   opacity: 0;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-  -webkit-transition-duration: 200ms;
-  transition-duration: 200ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c18.c18.c18.c18.c18 {
@@ -399,17 +394,17 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   display: -ms-flexbox;
   display: flex;
   opacity: 0;
-  -webkit-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  transform: scale(0.8);
+  -webkit-transform: scale(0.3);
+  -ms-transform: scale(0.3);
+  transform: scale(0.3);
   visibility: hidden;
   -webkit-transition-property: opacity,-webkit-transform,visibility;
   -webkit-transition-property: opacity,transform,visibility;
   transition-property: opacity,transform,visibility;
   -webkit-transition-duration: 200ms;
   transition-duration: 200ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -433,14 +428,14 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   background-color: hsla(0,0%,100%,0);
   padding-top: 12px;
   padding-bottom: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   width: 100%;
   resize: none;
   box-sizing: border-box;
   outline: none;
   border: none;
-  caret-color: hsla(218,87%,43%,1);
+  caret-color: hsla(218,89%,51%,1);
   cursor: auto;
 }
 
@@ -536,7 +531,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(206,10%,29%,0.12) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -565,7 +560,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(206,10%,29%,0.12) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -596,7 +591,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(206,10%,29%,0.12) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;

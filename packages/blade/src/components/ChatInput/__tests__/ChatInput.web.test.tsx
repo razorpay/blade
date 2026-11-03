@@ -771,6 +771,54 @@ describe('<ChatInput />', () => {
     });
   });
 
+  describe('voice input', () => {
+    it('shows a mic only when onVoiceInput is passed, and calls it on click', async () => {
+      const user = userEvent.setup();
+      const onVoiceInput = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={onVoiceInput} />,
+      );
+      await user.click(getByRole('button', { name: 'Voice input' }));
+      expect(onVoiceInput).toHaveBeenCalledTimes(1);
+
+      const { container } = renderWithTheme(<ChatInput accessibilityLabel="Without voice" />);
+      expect(container.querySelector('button[aria-label="Voice input"]')).toBeNull();
+    });
+
+    it('disables the mic with the input', () => {
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={jest.fn()} isDisabled />,
+      );
+      expect(getByRole('button', { name: 'Voice input' })).toBeDisabled();
+    });
+
+    it('sits next to Send in the one-row size', () => {
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          size="small"
+          defaultValue="Hi"
+          onVoiceInput={jest.fn()}
+        />,
+      );
+      expect(getByRole('button', { name: 'Voice input' })).toBeInTheDocument();
+      expect(getByRole('button', { name: 'Submit' })).toBeInTheDocument();
+    });
+  });
+
+  it('shows help text under the box and describes the text box with it', () => {
+    const helpText = 'Ray is AI and can make mistakes. Please check important information';
+    const { getByRole, getByText } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} helpText={helpText} />,
+    );
+    const hint = getByText(helpText);
+    const describedBy = getByRole('textbox', { name: accessibilityLabel }).getAttribute(
+      'aria-describedby',
+    );
+    expect(describedBy).toBeTruthy();
+    expect(hint.closest(`[id="${describedBy}"]`)).toBeInTheDocument();
+  });
+
   it('renders the compact size with the + and Send in one row', () => {
     const { getByRole } = renderWithTheme(
       <ChatInput accessibilityLabel={accessibilityLabel} size="small" defaultValue="Hi" />,

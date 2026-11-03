@@ -19,7 +19,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { CloseIcon, InfoIcon, PlusIcon } from '~components/Icons';
+import { CloseIcon, InfoIcon, MicIcon, PlusIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { Menu } from '~components/Menu';
 import { Text } from '~components/Typography';
@@ -29,6 +29,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { useId } from '~utils/useId';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
@@ -73,6 +74,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onFileError,
     dropTarget = 'input',
     showAmbientBorder = false,
+    onVoiceInput,
+    helpText,
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -97,7 +100,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 ) => {
   const { theme } = useTheme();
   const [isFocused, setIsFocused] = React.useState(false);
-  const { hoverBorder, hoverHandlers } = useChatInputHoverBorder();
+  // while focused the border is already blue, so the hover glow steps aside
+  const { hoverBorder, isPointerInside } = useChatInputHoverBorder({
+    isEnabled: !isDisabled,
+    isShown: !isFocused,
+  });
+  const helpTextId = useId('chat-input-help-text');
 
   const {
     fileInputRef,
@@ -200,6 +208,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const inputRef = useRef<BladeElementRef>(null);
   const combinedRef = useMergeRefs(mergedRef, inputRef);
 
+  // BaseInput only links its own help text, so point the text box at ours by hand
+  useEffect(() => {
+    const input = inputRef.current;
+    if (!helpText || !(input instanceof HTMLElement)) return undefined;
+    input.setAttribute('aria-describedby', helpTextId);
+    return () => input.removeAttribute('aria-describedby');
+  }, [helpText, helpTextId]);
+
   useEffect(() => {
     if (autoFocus && inputRef.current instanceof HTMLElement) {
       inputRef.current.focus();
@@ -224,7 +240,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const isSmall = size === 'small';
   // size="small" is one row until the text needs a second line; then it uses the full layout
   const isCompactRow = isSmall && !isExpanded;
-  const compactLayout = getChatInputCompactLayout(theme);
+  const hasVoiceInput = Boolean(onVoiceInput);
+  const compactLayout = getChatInputCompactLayout(theme, { hasVoiceInput });
+  // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
+  const textPaddingX = isCompactRow ? undefined : makeSpace(theme.spacing[6]);
 
   const filePreviewContent = (
     <AnimatePresence>
@@ -325,6 +344,17 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
+  const getVoiceAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
+    onVoiceInput ? (
+      <ChatInputButton
+        icon={MicIcon}
+        size={buttonSize}
+        accessibilityLabel="Voice input"
+        isDisabled={isDisabled}
+        onClick={() => onVoiceInput()}
+      />
+    ) : null;
+
   const compactLeading = getLeadingAction('xsmall');
   const compactLeadingAction = compactLeading ? (
     <BaseBox
@@ -343,7 +373,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       paddingBottom={makeSpace(compactLayout.trailingBottomInset)}
       marginLeft={makeSpace(compactLayout.trailingMarginLeft)}
       marginRight={makeSpace(compactLayout.trailingMarginRight)}
+      gap="spacing.3"
     >
+      {getVoiceAction('xsmall')}
       {getSubmitAction('xsmall')}
     </BaseBox>
   );
@@ -351,6 +383,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const actionBarContent = (
     <ChatInputActionBar
       leadingAction={getLeadingAction('small')}
+      voiceAction={getVoiceAction('small')}
       submitAction={getSubmitAction('small')}
     />
   );
@@ -393,7 +426,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         zIndex={1}
         onMouseDownCapture={handleInnerMouseDownCapture}
         {...dropZoneProps}
-        {...(isDisabled ? {} : hoverHandlers)}
       >
         <BaseInput
           ref={combinedRef}
@@ -402,6 +434,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           elevation="lowRaised"
           focusIndicator="border"
           hoverIndicator="none"
+          restBorderColor="surface.border.gray.muted"
           label={undefined}
           accessibilityLabel={accessibilityLabel}
           hideLabelText
@@ -423,8 +456,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           numberOfLines={1}
           size="medium"
           padding={textAreaPadding}
+          paddingX={textPaddingX}
           borderRadius={chatInputBorderRadius}
-          caretColor="interactive.text.primary.normal"
+          caretColor="interactive.border.primary.default"
           // with commands, the text box points at the slash command list: aria-haspopup,
           // aria-controls and aria-activedescendant. It stays a textbox, because a combobox role
           // (and aria-expanded) is not allowed on a textarea.
@@ -449,10 +483,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
                 left={
                   isCompactRow && compactLeadingAction
                     ? makeSpace(compactLayout.textStartWithLeading)
-                    : textAreaPadding
+                    : textPaddingX ?? textAreaPadding
                 }
                 right={
-                  isCompactRow ? makeSpace(compactLayout.textEndBeforeTrailing) : textAreaPadding
+                  isCompactRow
+                    ? makeSpace(compactLayout.textEndBeforeTrailing)
+                    : textPaddingX ?? textAreaPadding
                 }
                 pointerEvents="none"
                 zIndex={3}
@@ -469,11 +505,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         />
 
         {showAmbientBorder && !isDisabled && !isError && resolvedStatus !== 'error' ? (
-          <ChatInputAmbientBorder isActive={isFocused} />
+          <ChatInputAmbientBorder isHidden={isFocused || isPointerInside} />
         ) : null}
 
-        {/* while focused the border is already blue, so the hover glow steps aside */}
-        {isDisabled || isFocused ? null : hoverBorder}
+        {isDisabled ? null : hoverBorder}
 
         {isDraggingFiles ? (
           <BaseBox
@@ -499,6 +534,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           </BaseBox>
         ) : null}
       </ChatInputCardBox>
+
+      {helpText ? (
+        <BaseBox id={helpTextId} marginTop="spacing.4" display="flex" justifyContent="center">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            {helpText}
+          </Text>
+        </BaseBox>
+      ) : null}
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

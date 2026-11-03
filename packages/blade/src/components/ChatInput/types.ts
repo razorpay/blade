@@ -214,10 +214,10 @@ type ChatInputProps = {
 
   /**
    * Shows the ambient border: a soft blue border with a brighter streak that travels slowly around
-   * the box, about once every 12 seconds. While the cursor is in the box, the border is full blue
-   * and the streak becomes a soft white shine. It is decoration and does not mean the agent is
-   * working. With reduced motion nothing moves; `validationState="error"`, `status="error"` and
-   * `isDisabled` turn it off.
+   * the box, once every 15 seconds. It fades out while the cursor is over the box or the box has
+   * focus, since hover and focus show their own border. It is decoration and does not mean the
+   * agent is working. With reduced motion nothing moves; `validationState="error"`,
+   * `status="error"` and `isDisabled` turn it off.
    *
    * **Note (React Native):** Shows the plain borders.
    * @default false
@@ -245,6 +245,20 @@ type ChatInputProps = {
    * Blade warns in development.
    */
   onStop?: () => void;
+
+  /**
+   * Shows a mic button just before Send, and is called when it is pressed. Start voice input in
+   * your product, for example by recording and then setting the text. Without it there is no mic.
+   *
+   * **Note (React Native):** Also works; the mic sits before Send.
+   */
+  onVoiceInput?: () => void;
+
+  /**
+   * A short muted line under the box, such as "Ray is AI and can make mistakes. Please check
+   * important information". The text box is described by it for screen readers on web.
+   */
+  helpText?: string;
 
   /**
    * List of attached files. Used for controlled file management.

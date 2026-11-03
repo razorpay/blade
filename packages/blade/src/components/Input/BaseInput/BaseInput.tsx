@@ -404,6 +404,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     padding?: string;
     /**
+     * @internal Overrides only the left and right padding, on top of `padding`. Accepts CSS
+     * values like `"20px"`. Used by ChatInput to start its text further in than its top padding.
+     */
+    paddingX?: string;
+    /**
      * Overrides the border radius of the input independently of the `size` prop.
      * Accepts border radius tokens like `"large"`.
      */
@@ -452,12 +457,14 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Overrides the caret (text cursor) color of the input.
      */
-    caretColor?: 'surface.icon.onSea.onSubtle' | 'interactive.text.primary.normal';
+    caretColor?:
+      | 'surface.icon.onSea.onSubtle'
+      | 'interactive.text.primary.normal'
+      | 'interactive.border.primary.default';
     /**
      * @internal How the input shows focus.
      * - `ring`: the thick focus border and the focus ring every input uses.
-     * - `border`: the border keeps its rest width and only changes colour; no focus ring.
-     *   Used by ChatInput.
+     * - `border`: the thick primary focus border without the focus ring. Used by ChatInput.
      * @default 'ring'
      */
     focusIndicator?: 'ring' | 'border';
@@ -469,6 +476,12 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default 'border'
      */
     hoverIndicator?: 'border' | 'none';
+    /**
+     * @internal Border colour at rest, instead of `interactive.border.gray.default`. Hover, focus,
+     * disabled and error keep their own colours. Used by ChatInput for its lighter, see-through
+     * border.
+     */
+    restBorderColor?: 'surface.border.gray.muted';
     /**
      * Content rendered inside the input wrapper, above the input row.
      * Used by ChatInput for file previews.
@@ -1004,6 +1017,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isLabelInsideInput,
     size = 'medium',
     padding,
+    paddingX,
     borderRadius,
     elevation,
     trailingButton,
@@ -1025,6 +1039,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     caretColor,
     focusIndicator,
     hoverIndicator,
+    restBorderColor,
     ...rest
   },
   ref,
@@ -1274,6 +1289,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             isTableInputCell={isTableInputCell}
             focusIndicator={focusIndicator}
             hoverIndicator={hoverIndicator}
+            restBorderColor={restBorderColor}
             topContent={topContent}
             bottomContent={bottomContent}
             inputRowOverlay={inputRowOverlay}
@@ -1362,6 +1378,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isDropdownTrigger={isDropdownTrigger}
                 $size={_size}
                 $padding={padding}
+                $paddingX={paddingX}
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
