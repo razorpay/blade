@@ -90,6 +90,142 @@ describe('<Carousel />', () => {
 
     expect(queryAllByRole('tab').length).toBe(0);
   });
+
+  test('carouselItemAlignment="stretch" should set height:auto (no min-height) so flexbox stretch works', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="stretch">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('auto');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+  });
+
+  test('default carouselItemAlignment should preserve height:100% and min-height:100% on slides', () => {
+    const { container } = renderWithTheme(
+      <Carousel>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('100%');
+      expect(computedStyle.minHeight).toBe('100%');
+    });
+  });
+
+  test('carouselItemAlignment="normal" should set height:auto (no min-height) since normal is flexbox-equivalent to stretch', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="normal">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('auto');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+  });
+
+  test('responsive carouselItemAlignment should resolve stretch at the correct breakpoint', () => {
+    const originalMatchMedia = window.matchMedia;
+    // Mock matchMedia to simulate the `m` breakpoint (768px–1023px)
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === 'screen and (min-width: 768px) and (max-width: 1023px)',
+      media: query,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
+
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment={{ base: 'start', m: 'stretch' }}>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('auto');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+
+    window.matchMedia = originalMatchMedia;
+  });
+
+  test('when showIndicators=false and showNavigationButtons=false on mobile, no controls container should be rendered', () => {
+    const originalMatchMedia = window.matchMedia;
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query.includes('max-width') && parseInt(query.match(/\d+/)?.[0] || '0', 10) >= 320,
+      media: query,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
+
+    const { container } = renderWithTheme(
+      <Carousel showIndicators={false} showNavigationButtons={false}>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const navButtons = container.querySelectorAll('[data-blade-component="NavigationButton"]');
+    expect(navButtons.length).toBe(0);
+
+    const indicators = container.querySelectorAll(
+      '[data-blade-component="carousel-indicator-button"]',
+    );
+    expect(indicators.length).toBe(0);
+
+    const controlsBoxes = container.querySelectorAll('[data-blade-component="box"]');
+    controlsBoxes.forEach((box) => {
+      const computedStyle = window.getComputedStyle(box);
+      expect(computedStyle.marginTop).not.toBe('24px');
+    });
+
+    window.matchMedia = originalMatchMedia;
+  });
 });
 
 describe('Carousel Snapshots', () => {
