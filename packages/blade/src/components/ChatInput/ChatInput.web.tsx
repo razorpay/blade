@@ -10,6 +10,8 @@ import { ChatInputCommandMenu } from './ChatInputCommandMenu';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInputHoverBorder } from './ChatInputHoverBorder';
 import { ChatInputSubmit } from './ChatInputSubmit';
+import { ChatInputVoiceSlot } from './ChatInputVoiceSlot';
+import { getChatInputVoiceShift } from './getChatInputVoiceShift';
 import { getChatInputCompactLayout } from './getChatInputCompactLayout';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -346,13 +348,23 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   const getVoiceAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
     onVoiceInput ? (
-      <ChatInputButton
-        icon={MicIcon}
-        size={buttonSize}
-        accessibilityLabel="Voice input"
-        isDisabled={isDisabled}
-        onClick={() => onVoiceInput()}
-      />
+      <ChatInputVoiceSlot
+        shift={getChatInputVoiceShift({
+          theme,
+          status: resolvedStatus,
+          hasContent,
+          isDisabled,
+          buttonSize,
+        })}
+      >
+        <ChatInputButton
+          icon={MicIcon}
+          size={buttonSize}
+          accessibilityLabel="Voice input"
+          isDisabled={isDisabled}
+          onClick={() => onVoiceInput()}
+        />
+      </ChatInputVoiceSlot>
     ) : null;
 
   const compactLeading = getLeadingAction('xsmall');

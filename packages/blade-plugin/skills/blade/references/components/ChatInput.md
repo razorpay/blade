@@ -294,6 +294,8 @@ type ChatInputProps = {
   /**
    * Shows a mic button just before Send, and is called when it is pressed. Start voice input in
    * your product, for example by recording and then setting the text. Without it there is no mic.
+   * While the box is empty the mic sits in Send's place at the end of the row, and slides left as
+   * Send appears.
    *
    * **Note (React Native):** Also works; the mic sits before Send.
    */

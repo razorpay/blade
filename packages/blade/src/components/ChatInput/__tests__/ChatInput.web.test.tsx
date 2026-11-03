@@ -802,6 +802,33 @@ describe('<ChatInput />', () => {
       expect(container.querySelector('button[aria-label="Voice input"]')).toBeNull();
     });
 
+    it('moves the mic into the empty Send slot, and back once there is text', async () => {
+      const user = userEvent.setup();
+      const { getByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={jest.fn()} />,
+      );
+      const slot = (): HTMLElement =>
+        getByRole('button', { name: 'Voice input' }).parentElement as HTMLElement;
+      // Send (32 px) plus the 8 px gap
+      expect(slot()).toHaveStyle({ transform: 'translateX(40px)' });
+      await user.type(getByRole('textbox', { name: accessibilityLabel }), 'Hi');
+      expect(slot()).toHaveStyle({ transform: 'translateX(0px)' });
+    });
+
+    it('keeps the mic in place while Stop shows', () => {
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          onVoiceInput={jest.fn()}
+          status="streaming"
+          onStop={jest.fn()}
+        />,
+      );
+      expect(getByRole('button', { name: 'Voice input' }).parentElement).toHaveStyle({
+        transform: 'translateX(0px)',
+      });
+    });
+
     it('disables the mic with the input', () => {
       const { getByRole } = renderWithTheme(
         <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={jest.fn()} isDisabled />,

@@ -486,7 +486,7 @@ ChatInput takes the AI Elements design (Figma: the Chat Input component, merged 
 
 ### Voice Input and Help Text
 
-`onVoiceInput` shows a mic (`MicIcon` in the same ghost button as "+") just before Send, 8 px apart, on web and native. There is no mic without it, so no product gets a button it can't handle. `helpText` shows a muted body-small line `spacing.4` under the box, centred. On web the text box is described by it; BaseInput only links its own form hint, so ChatInput sets `aria-describedby` itself.
+`onVoiceInput` shows a mic (`MicIcon` in the same ghost button as "+") just before Send, 8 px apart, on web and native. While Send is hidden (an empty box with `status="ready"`), the mic moves into Send's place so there is no gap at the end of the row; once there is text it slides back over `duration.xmoderate` with `easing.entrance` as Send springs in, as in the design team's flow 9 box. Stop, the loader and Retry always show, so the mic stays put for them. There is no mic without it, so no product gets a button it can't handle. `helpText` shows a muted body-small line `spacing.4` under the box, centred. On web the text box is described by it; BaseInput only links its own form hint, so ChatInput sets `aria-describedby` itself.
 
 ### Status
 
