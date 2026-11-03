@@ -493,6 +493,7 @@ describe('<ChatInput />', () => {
       const textarea = getByRole('textbox', { name: accessibilityLabel });
       expect(textarea).toHaveAttribute('aria-haspopup', 'listbox');
       expect(textarea).not.toHaveAttribute('aria-expanded');
+      expect(textarea).not.toHaveAttribute('aria-controls');
       await user.type(textarea, '/re');
       expect(textarea).toHaveAttribute('aria-controls', getByRole('listbox').id);
       expect(textarea).toHaveAttribute('aria-activedescendant');
@@ -745,14 +746,29 @@ describe('<ChatInput />', () => {
         <ChatInput
           accessibilityLabel={accessibilityLabel}
           hideFileUpload
+          onFileChange={onFileChange}
+        />,
+      );
+      const textarea = screen.getByRole('textbox', { name: accessibilityLabel });
+      fireEvent.paste(textarea, { clipboardData: { files: [makeFile('paste.png', 1)] } });
+      expect(onFileChange).toHaveBeenCalledTimes(1);
+      const card = textarea.closest('[data-blade-component="base-box"]')!;
+      const dataTransfer = { types: ['Files'], files: [makeFile('drop.png', 1)] };
+      fireEvent.dragEnter(card, { dataTransfer });
+      fireEvent.drop(card, { dataTransfer });
+      expect(onFileChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('lets an explicit dropTarget turn dropping back on with hideFileUpload', () => {
+      const onFileChange = jest.fn();
+      renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          hideFileUpload
           dropTarget="page"
           onFileChange={onFileChange}
         />,
       );
-      fireEvent.paste(screen.getByRole('textbox', { name: accessibilityLabel }), {
-        clipboardData: { files: [makeFile('paste.png', 1)] },
-      });
-      expect(onFileChange).toHaveBeenCalledTimes(1);
       fireEvent.drop(window, {
         dataTransfer: { types: ['Files'], files: [makeFile('drop.png', 1)] },
       });

@@ -74,7 +74,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     maxCount,
     maxSize,
     onFileError,
-    dropTarget = 'input',
+    dropTarget,
     showAmbientBorder = false,
     onVoiceInput,
     helpText,
@@ -160,7 +160,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       commands,
       onCommandSelect,
       size,
-      canDropFiles: !hideFileUpload || Boolean(actionMenu),
+      // with the "+" hidden and no menu there is no visible way to attach files, so dropping is off
+      // too, unless the product asks for a drop target itself
+      canDropFiles: dropTarget !== undefined || !hideFileUpload || Boolean(actionMenu),
       isFocused,
     },
     ref,
@@ -476,8 +478,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           // (and aria-expanded) is not allowed on a textarea.
           role={commands?.length ? 'textbox' : undefined}
           hasPopup={commands?.length ? 'listbox' : undefined}
-          popupId={commands?.length ? commandMenu.listboxId : undefined}
-          isPopupExpanded={commands?.length ? commandMenu.isOpen : undefined}
+          // aria-controls only while the list is on the page, so it never points at nothing
+          popupId={commandMenu.isOpen ? commandMenu.listboxId : undefined}
           activeDescendant={
             commandMenu.isOpen ? commandMenu.getOptionId(commandMenu.activeIndex) : undefined
           }

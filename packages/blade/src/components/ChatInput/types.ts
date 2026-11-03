@@ -204,8 +204,9 @@ type ChatInputProps = {
    * - `page`: anywhere on the page, for full-page chat screens
    * - `none`: dropping is off, for example when the page has its own drop zone
    *
-   * Dropping is also off when `hideFileUpload` is set without an `actionMenu`, since there is then
-   * no visible way to attach files. Pasting files works as before.
+   * When `dropTarget` is not set and `hideFileUpload` is set without an `actionMenu`, dropping is
+   * off, since there is then no visible way to attach files. Setting `dropTarget` turns it back on,
+   * for example for a full-page chat with its own way to attach. Pasting files works as before.
    * @default 'input'
    *
    * **Note (React Native):** No effect.
@@ -351,7 +352,8 @@ type ChatInputProps = {
 
   /**
    * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
-   * and opens the menu. Without an `actionMenu`, dropping files is off too; pasting still works.
+   * and opens the menu. Without an `actionMenu`, dropping files is off too unless `dropTarget` is
+   * set; pasting still works.
    * @default false
    */
   hideFileUpload?: boolean;
