@@ -62,7 +62,11 @@ import {
   publishLinesOfCodeMetricToolCallback,
 } from './tools/publishLinesOfCodeMetric.js';
 import { sendAnalytics, setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
-import { analyticsToolCallEventName, MCP_DEPRECATION_NUDGE } from './utils/tokens.js';
+import {
+  analyticsToolCallEventName,
+  MCP_DEPRECATION_INSTRUCTIONS,
+  MCP_DEPRECATION_NUDGE,
+} from './utils/tokens.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const httpsServerTools = (server: McpServer): void => {
@@ -129,10 +133,15 @@ export const createServer = ({
 }: {
   transportType?: 'stdio' | 'http';
 }): McpServer => {
-  const server = new McpServer({
-    name: 'Blade MCP',
-    version: getPackageJSONVersion(),
-  });
+  // Clients put server instructions in the system prompt at session start, so agents see the
+  // deprecation even if they never call a tool.
+  const server = new McpServer(
+    {
+      name: 'Blade MCP',
+      version: getPackageJSONVersion(),
+    },
+    { instructions: MCP_DEPRECATION_INSTRUCTIONS },
+  );
 
   setMcpSseAnalyticsContext({ protocol: transportType });
 
@@ -145,7 +154,13 @@ export const createServer = ({
     registerTool(name, `[DEPRECATED, install the Blade plugin] ${description}`, {}, () => {
       sendAnalytics({
         eventName: analyticsToolCallEventName,
-        properties: { toolName: name, deprecated: true },
+        properties: {
+          toolName: name,
+          deprecated: true,
+          // The client starts a stdio server in the project folder, so the username can be read
+          // from it. http has no such folder.
+          ...(transportType === 'stdio' && { currentProjectRootDirectory: process.cwd() }),
+        },
       });
       return { isError: true, content: [{ type: 'text', text: MCP_DEPRECATION_NUDGE }] };
     });
