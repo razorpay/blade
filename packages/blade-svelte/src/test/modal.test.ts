@@ -321,10 +321,12 @@ describe('Modal presence', () => {
     // jsdom computes no transitions and has no WAAPI: report the styles'
     // 300ms and hand Svelte a controllable animation clock.
     const real = window.getComputedStyle.bind(window);
+    // Own value properties: jsdom's style setters reject anything but a real
+    // CSSStyleProperties, so the overrides can't be assigned through them.
     vi.spyOn(window, 'getComputedStyle').mockImplementation((element) =>
-      Object.assign(Object.create(real(element)), {
-        transitionDuration: '0.3s',
-        transitionDelay: '0s',
+      Object.defineProperties(Object.create(real(element)), {
+        transitionDuration: { value: '0.3s' },
+        transitionDelay: { value: '0s' },
       }),
     );
     const running: Array<{ onfinish: () => void }> = [];

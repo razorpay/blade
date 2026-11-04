@@ -1,12 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import type { FieldRecord, FormAdapter } from '../runes/form/types';
 import FormFieldsHarness from './fixtures/FormFieldsHarness.svelte';
 import CardGroupFormHarness from './fixtures/CardGroupFormHarness.svelte';
 
 function fakeForm(): FormAdapter & {
-  input: ReturnType<typeof vi.fn>;
-  blur: ReturnType<typeof vi.fn>;
+  input: Mock<FormAdapter['input']>;
+  blur: Mock<FormAdapter['blur']>;
 } {
   return {
     register: () => () => undefined,
