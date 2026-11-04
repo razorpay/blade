@@ -23,7 +23,6 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { Theme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 
 const iconMap = {
@@ -76,17 +75,13 @@ const fadeIn = keyframes`
   }
 `;
 
-// Shows the action and the progress bar when the intro ends
-const getIntroFadeIn = (theme: Theme): FlattenSimpleInterpolation => css`
-  ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
-    ${castWebType(theme.motion.easing.entrance)} both
-`;
-
 // Keeps the space of the action during the intro, so the toast height does not change
+// Shows the action when the intro ends
 const IntroAction = styled(BaseBox)<{ isIntroDone: boolean }>(({ isIntroDone, theme }) =>
   isIntroDone
     ? css`
-        animation: ${getIntroFadeIn(theme)};
+        animation: ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
+          ${castWebType(theme.motion.easing.entrance)} both;
       `
     : css`
         visibility: hidden;
@@ -103,6 +98,7 @@ const shrink = keyframes`
   }
 `;
 
+// A negative delay starts the progress bar part way, for example after a remount
 const ToastProgressBar = styled(BaseBox)<{
   duration: number;
   elapsedTime: number;
@@ -110,11 +106,6 @@ const ToastProgressBar = styled(BaseBox)<{
   hasIntro: boolean;
   isIntroDone: boolean;
 }>(({ duration, elapsedTime, isRunning, hasIntro, isIntroDone, theme }) => {
-  // A negative delay starts the bar part way, for example after a remount
-  const shrinkAnimation = css`
-    ${shrink} ${makeMotionTime(duration)} ${castWebType(theme.motion.easing.linear)}
-      ${makeMotionTime(-elapsedTime)} forwards
-  `;
   const playState = isRunning ? 'running' : 'paused';
 
   return css`
@@ -131,11 +122,15 @@ const ToastProgressBar = styled(BaseBox)<{
         `
       : hasIntro
       ? css`
-          animation: ${shrinkAnimation}, ${getIntroFadeIn(theme)};
+          animation: ${shrink} ${makeMotionTime(duration)}
+              ${castWebType(theme.motion.easing.linear)} ${makeMotionTime(-elapsedTime)} forwards,
+            ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
+              ${castWebType(theme.motion.easing.entrance)} both;
           animation-play-state: ${playState}, running;
         `
       : css`
-          animation: ${shrinkAnimation};
+          animation: ${shrink} ${makeMotionTime(duration)}
+            ${castWebType(theme.motion.easing.linear)} ${makeMotionTime(-elapsedTime)} forwards;
           animation-play-state: ${playState};
         `}
   `;
