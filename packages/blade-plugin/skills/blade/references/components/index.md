@@ -43,6 +43,9 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **Fade**: The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear.
 - **FileUpload**: The FileUpload component is used to handle file attachments, including drag-and-drop interactions.
 - **FloatingActionButton**: FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.
+- **FreshChatBackground**: FreshChatBackground is RazorSense behind a chat input: idle, a soft fluted strip drifts and breathes; as someone types it pulses into its typing surge and dies back down to idle when they stop.
+- **FreshLLM**: FreshLLM is RazorSense in an assistant chat: thinking loops near the top while the answer is worked out, surges down to the chat input when it's in, and settles there to idle, pulsing into its typing surge as the next question is typed.
+- **FreshLoaderSplash**: FreshLoaderSplash is RazorSense's loading splash: the Razorpay glyph loops while the page loads, then grows and fades to the plain background and calls `onComplete`.
 - **Heading**: The Heading component is designed for creating section headings in a page's hierarchy.
 - **IconButton**: The IconButton component provides an accessible way to trigger actions using only icons.
 - **Icons**: Blade provides a collection of pre-designed icons that can be used throughout your application.
