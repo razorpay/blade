@@ -37,7 +37,7 @@ const BARREL_FILES = new Set(
 const FIRST_EXTRA = 0xf000;
 const LAST_EXTRA = 0xf8ff;
 /** Bumped when the font's build changes, so cached fonts are rebuilt. */
-const BUILD_VERSION = '3';
+const BUILD_VERSION = '4';
 
 /** @typedef {'woff2' | 'ttf'} Format */
 /** @typedef {{ name: string; code: number; file: string }} GlyphFile */

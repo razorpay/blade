@@ -6,6 +6,7 @@
  */
 import { Readable } from 'node:stream';
 import { prepareSvg } from './svg.js';
+import { toWoff2 } from './woff2.js';
 
 export const FONT_FAMILY = 'blade-icons';
 
@@ -21,11 +22,10 @@ export const FONT_FAMILY = 'blade-icons';
  * @returns {Promise<{ ttf: Buffer; woff2: Buffer }>}
  */
 export async function buildFont(glyphs) {
-  const [
-    { SVGIcons2SVGFontStream },
-    { default: svg2ttf },
-    { default: wawoff2 },
-  ] = await Promise.all([import('svgicons2svgfont'), import('svg2ttf'), import('wawoff2')]);
+  const [{ SVGIcons2SVGFontStream }, { default: svg2ttf }] = await Promise.all([
+    import('svgicons2svgfont'),
+    import('svg2ttf'),
+  ]);
 
   const svgFont = await new Promise((resolve, reject) => {
     // Every glyph is an em square: the icon's box is its font size, and with
@@ -58,6 +58,5 @@ export async function buildFont(glyphs) {
 
   // `ts: 0` pins the creation date the font records, keeping builds identical.
   const ttf = Buffer.from(svg2ttf(svgFont, { ts: 0, description: FONT_FAMILY, url: '' }).buffer);
-  const woff2 = Buffer.from(await wawoff2.compress(ttf));
-  return { ttf, woff2 };
+  return { ttf, woff2: toWoff2(ttf) };
 }
