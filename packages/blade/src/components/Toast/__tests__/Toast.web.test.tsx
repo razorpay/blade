@@ -23,6 +23,45 @@ const ToastExample = (props: ToastProps) => {
   );
 };
 
+const RemountExample = (props: ToastProps) => {
+  const { show } = useToast();
+  const [containerKey, setContainerKey] = React.useState(0);
+
+  return (
+    <>
+      <Button onClick={() => show({ ...props })}>Show Toast</Button>
+      <Button onClick={() => setContainerKey((key) => key + 1)}>Remount</Button>
+      <ToastContainer key={containerKey} />
+    </>
+  );
+};
+
+const UpdateExample = () => {
+  const { show } = useToast();
+
+  return (
+    <>
+      <Button onClick={() => show({ id: 'update', content: 'Saving report' })}>Show Info</Button>
+      <Button
+        onClick={() =>
+          show({
+            id: 'update',
+            type: 'promotional',
+            content: <Text>Report is ready</Text>,
+            autoDismiss: true,
+            duration: 2000,
+            introDuration: 1000,
+            action: { text: 'Try now' },
+          })
+        }
+      >
+        Show Promo
+      </Button>
+      <ToastContainer />
+    </>
+  );
+};
+
 const promotionalProps: ToastProps = {
   type: 'promotional',
   content: <Text>Reports are now faster</Text>,
@@ -33,6 +72,19 @@ const promotionalProps: ToastProps = {
 const advanceTime = (ms: number) => {
   act(() => {
     jest.advanceTimersByTime(ms);
+  });
+};
+
+// jsdom has no PointerEvent, so set `pointerType` on a mouse event
+const firePointer = (
+  element: Element,
+  eventType: 'pointerover' | 'pointerout',
+  pointerType = 'mouse',
+) => {
+  const event = new MouseEvent(eventType, { bubbles: true });
+  Object.defineProperty(event, 'pointerType', { value: pointerType });
+  act(() => {
+    element.dispatchEvent(event);
   });
 };
 
@@ -104,18 +156,103 @@ describe('<Toast /> promotional timer', () => {
     advanceTime(0);
     advanceTime(1000);
 
-    fireEvent.mouseEnter(getByRole('status'));
+    firePointer(getByRole('status'), 'pointerover');
     advanceTime(5000);
     expect(dismissSpy).not.toHaveBeenCalled();
 
-    fireEvent.mouseLeave(getByRole('status'));
+    firePointer(getByRole('status'), 'pointerout');
     advanceTime(999);
     expect(dismissSpy).not.toHaveBeenCalled();
     advanceTime(1);
     expect(dismissSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should pause while focus is inside the toast', () => {
+  it('should not pause for a touch pointer', () => {
+    const { getByRole } = renderWithTheme(<ToastExample {...promotionalProps} />);
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+    advanceTime(1000);
+
+    firePointer(getByRole('status'), 'pointerover', 'touch');
+    advanceTime(1000);
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not stay paused after a click on the action', () => {
+    const { getByRole } = renderWithTheme(
+      <ToastExample {...promotionalProps} action={{ text: 'Try now' }} />,
+    );
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+    advanceTime(1000);
+
+    const actionButton = getByRole('button', { name: 'Try now' });
+    // A mouse click focuses the action, but the focus does not match `:focus-visible`
+    const matchesSpy = jest.spyOn(actionButton, 'matches').mockReturnValue(false);
+    firePointer(actionButton, 'pointerover');
+    act(() => {
+      actionButton.focus();
+    });
+    fireEvent.click(actionButton);
+    matchesSpy.mockRestore();
+    firePointer(actionButton, 'pointerout');
+
+    advanceTime(999);
+    expect(dismissSpy).not.toHaveBeenCalled();
+    advanceTime(1);
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should stay paused while focus moves inside the toast', () => {
+    const { getByRole } = renderWithTheme(
+      <ToastExample {...promotionalProps} action={{ text: 'Try now' }} />,
+    );
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+    advanceTime(500);
+
+    const dismissButton = getByRole('button', { name: 'Dismiss toast' });
+    act(() => {
+      getByRole('button', { name: 'Try now' }).focus();
+    });
+    act(() => {
+      dismissButton.focus();
+    });
+    advanceTime(5000);
+    expect(dismissSpy).not.toHaveBeenCalled();
+
+    act(() => {
+      dismissButton.blur();
+    });
+    advanceTime(1500);
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should keep the time left when the toast remounts', () => {
+    const { getByRole } = renderWithTheme(<RemountExample {...promotionalProps} />);
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+    advanceTime(1500);
+
+    fireEvent.click(getByRole('button', { name: 'Remount' }));
+    advanceTime(499);
+    expect(dismissSpy).not.toHaveBeenCalled();
+    advanceTime(1);
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should play the intro and run the new duration after an update by id', () => {
+    const { getByRole, queryByRole } = renderWithTheme(<UpdateExample />);
+    fireEvent.click(getByRole('button', { name: 'Show Info' }));
+    advanceTime(500);
+    fireEvent.click(getByRole('button', { name: 'Show Promo' }));
+
+    expect(queryByRole('button', { name: 'Try now' })).not.toBeInTheDocument();
+    advanceTime(1000);
+    expect(getByRole('button', { name: 'Try now' })).toBeInTheDocument();
+    advanceTime(1999);
+    expect(dismissSpy).not.toHaveBeenCalled();
+    advanceTime(1);
+    expect(dismissSpy).toHaveBeenCalledWith('update');
+  });
+
+  it('should pause while keyboard focus is inside the toast', () => {
     const { getByRole } = renderWithTheme(<ToastExample {...promotionalProps} />);
     fireEvent.click(getByRole('button', { name: 'Show Toast' }));
     advanceTime(0);
@@ -148,7 +285,7 @@ describe('<Toast /> promotional timer', () => {
     expect(progressBar).toHaveAttribute('aria-hidden', 'true');
     expect(progressBar).toHaveStyle({ animationPlayState: 'running' });
 
-    fireEvent.mouseEnter(getByRole('status'));
+    firePointer(getByRole('status'), 'pointerover');
     expect(progressBar).toHaveStyle({ animationPlayState: 'paused' });
   });
 

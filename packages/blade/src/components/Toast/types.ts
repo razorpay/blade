@@ -5,13 +5,6 @@ import type { FeedbackColors } from '~tokens/theme/theme';
 
 type ToastActionCommon = {
   text: string;
-  onClick?: ({
-    event,
-    toastId,
-  }: {
-    event: React.MouseEvent<HTMLButtonElement>;
-    toastId: string;
-  }) => void;
   /**
    * Icon of the action
    *
@@ -35,6 +28,13 @@ type ToastButtonAction = ToastActionCommon & {
    * @default 'button'
    */
   variant?: 'button';
+  onClick?: ({
+    event,
+    toastId,
+  }: {
+    event: React.MouseEvent<HTMLButtonElement>;
+    toastId: string;
+  }) => void;
   isLoading?: boolean;
   href?: undefined;
   target?: undefined;
@@ -49,6 +49,16 @@ type ToastLinkAction = ToastActionCommon & {
    * @default 'button'
    */
   variant: 'link';
+  /**
+   * With `href`, the event comes from an anchor element. Without `href`, it comes from a button element.
+   */
+  onClick?: ({
+    event,
+    toastId,
+  }: {
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
+    toastId: string;
+  }) => void;
   isLoading?: undefined;
   /**
    * URL of the link. Without `href`, the link renders as a button element.
@@ -103,6 +113,7 @@ type ToastProps = {
    * Duration in milliseconds for which the toast will be visible
    *
    * On web, a promotional toast pauses this timer while the pointer is over it or focus is inside it.
+   * Blade runs the timer of a promotional toast with `autoDismiss`, so `useToast().toasts` shows `duration: Infinity` for it.
    *
    * @default 4000 for informational toast
    * @default 8000 for promotional toast

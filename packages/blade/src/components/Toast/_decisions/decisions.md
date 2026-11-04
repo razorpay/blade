@@ -305,7 +305,7 @@ toast.show({
 - `introDuration` delays the auto dismiss timer and the progress bar. The consumer plays the intro motion inside `content`. Blade does not animate the content.
 - With `introDuration`, Blade holds the action and the progress bar until the intro ends, then fades them in. The bar starts to shrink at the same time. Both keep their space during the intro, so nothing moves. The dismiss button shows from the start.
 - `showProgressBar` shows a 2px bar on the bottom edge of the toast. The bar shrinks from full width to zero over `duration` with linear easing.
-- The timer and the bar pause when the pointer is over the toast or focus is inside it. They resume from where they stopped.
+- The timer and the bar pause when a mouse pointer is over the toast or keyboard focus is inside it. They resume from where they stopped. A touch tap and focus from a mouse click do not pause. A remount of `ToastContainer` keeps the time left.
 - `action.variant: 'link'` renders a `Link`. It renders an anchor when `href` is given, else a button element.
 
 <details>
@@ -407,13 +407,6 @@ type ToastProps = {
 ```typescript
 type ToastActionCommon = {
   text: string;
-  onClick?: ({
-    event,
-    toastId,
-  }: {
-    event: React.MouseEvent<HTMLButtonElement>;
-    toastId: string;
-  }) => void;
   /**
    * @platform web
    */
@@ -433,11 +426,19 @@ type ToastButtonAction = ToastActionCommon & {
    * @default 'button'
    */
   variant?: 'button';
+  onClick?: (args: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
   isLoading?: boolean;
 };
 
 type ToastLinkAction = ToastActionCommon & {
   variant: 'link';
+  /**
+   * With `href`, the event comes from an anchor element
+   */
+  onClick?: (args: {
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
+    toastId: string;
+  }) => void;
   /**
    * Renders an anchor when given, else a button element
    */
@@ -522,7 +523,7 @@ toast.show({
 ### Accessibility
 
 - The progress bar has `aria-hidden`. It is decoration. The toast's `role="status"` stays the same.
-- Focus inside the toast pauses the timer. A keyboard user can reach the action and the dismiss button before the toast dismisses.
+- Keyboard focus (`:focus-visible`) inside the toast pauses the timer. A keyboard user can reach the action and the dismiss button before the toast dismisses.
 - Pointer over the toast pauses the timer. The user gets more time to read the content.
 - The link action renders `Link`. With `href` it is an anchor with link semantics. Without `href` it is a button element.
 - `introDuration` adds no motion. The consumer owns the intro motion and its reduced motion behaviour.

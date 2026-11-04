@@ -22,7 +22,6 @@ type IconComponent = React.ComponentType<{
 
 type ToastActionCommon = {
   text: string;
-  onClick?: ({ event, toastId }: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
   /**
    * Icon of the action (web only)
    */
@@ -37,12 +36,21 @@ type ToastActionCommon = {
 // Renders a Button (default)
 type ToastButtonAction = ToastActionCommon & {
   variant?: 'button';
+  onClick?: ({ event, toastId }: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
   isLoading?: boolean;
 };
 
 // Renders a Link (web only). Renders an anchor when `href` is given, else a button element.
 type ToastLinkAction = ToastActionCommon & {
   variant: 'link';
+  // With `href`, the event comes from an anchor element
+  onClick?: ({
+    event,
+    toastId,
+  }: {
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
+    toastId: string;
+  }) => void;
   href?: string;
   target?: string;
   /**
