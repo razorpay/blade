@@ -49,13 +49,15 @@
   provideDefaults(() => ({ size, components: defaults as Record<string, Record<string, unknown>> }));
   // Live: an adapter the app swaps reaches the components already mounted.
   provideAdapters(() => adapters ?? {});
-  // After the content, in the nearest positioned ancestor: the outermost
-  // provider's overlay host (with the live region), which coordinates the
-  // overlays below it. A nested provider renders none.
+  // The outermost provider wraps the content (what a modal makes inert) and
+  // renders the overlay host after it, with the live region; the host
+  // coordinates the overlays below it. A nested provider renders its
+  // content bare.
   const region = claimOverlayHost() ? provideLiveRegion() : undefined;
 </script>
 
-{@render children()}
 {#if region}
-  <OverlayHost {testID} {region} />
+  <OverlayHost {testID} {region} {children} />
+{:else}
+  {@render children()}
 {/if}

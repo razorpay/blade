@@ -10,6 +10,7 @@ BladeProvider wraps the app once and gives every Blade component under it an ove
 
 - Put it inside the element overlays must stay within, and make that element positioned (`relative`): the overlay host fills it
 - The outermost provider hosts every overlay on the page; a nested provider renders no host and only layers its own `size`, `defaults` and `adapters` over the enclosing ones
+- The outermost provider wraps its content in a `display: contents` element that goes inert while a modal, sheet or drawer is open; everything outside the provider (a partner SDK's popup in `<body>`) stays usable. Put everything the modal must block inside the provider. The wrapper does not change layout, but CSS child combinators across the provider (`.shell > main`) no longer match
 - `size` snaps every sized control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup, ChipGroup, Switch, SegmentedControl, Tabs) to its nearest size; display components and the overlays keep their own
 - `defaults` takes style props only (`variant`, `color`, `size`, `placement`…), keyed by component name; behaviour props cannot be defaulted. A component's own prop wins, then the nearest provider's entry for it, then its `size`, then Blade's default
 - `adapters` merge over the enclosing provider's and stay live (a swapped adapter reaches mounted components); `null` unsets one for the subtree

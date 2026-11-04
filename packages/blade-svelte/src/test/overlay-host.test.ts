@@ -13,6 +13,9 @@ describe('BladeProvider overlay host', () => {
     expect(getByTestId('outer-surfaces')).toBeTruthy();
     expect(queryByTestId('outer-toasts')).toBeNull();
     expect(queryByTestId('inner')).toBeNull();
+    // Only the outermost provider wraps its content.
+    expect(queryByTestId('outer-content')).toBeTruthy();
+    expect(queryByTestId('inner-content')).toBeNull();
   });
 });
 
@@ -22,8 +25,12 @@ describe('an overlay open on the first render', () => {
     await tick();
     const modal = getByTestId('modal');
     expect(getByTestId('host-surfaces').contains(modal)).toBe(true);
-    expect(modal.closest('[inert]')).toBeNull();
-    expect(getByTestId('page').hasAttribute('inert')).toBe(true);
+    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
+    expect(content.contains(modal)).toBe(false);
+    expect(content.contains(getByTestId('page'))).toBe(true);
+    expect(content.inert).toBe(true);
+    // Focus moved in, though the modal rendered inside the content first.
+    expect(modal.contains(document.activeElement)).toBe(true);
   });
 
   it('a popover lands in the host, and the page stays live', async () => {
