@@ -545,24 +545,55 @@ describe('Modal layers', () => {
     expect(back()).toBe(false);
   });
 
-  it('renders into the overlay host and makes the rest of the frame inert', async () => {
+  it('renders into the overlay host and makes the provider’s content inert', async () => {
     const { getByTestId } = render(ModalHarness, {
       props: { withHost: true },
     });
     const host = getByTestId('host');
     const page = getByTestId('page');
-    expect(page.hasAttribute('inert')).toBe(false);
+    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
+    expect(content.inert).toBe(false);
 
     await fireEvent.click(getByTestId('trigger'));
     expect(host.contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-backdrop').dataset.state).toBe('open');
-    expect(page.hasAttribute('inert')).toBe(true);
+    expect(content.contains(page)).toBe(true);
+    expect(content.inert).toBe(true);
+    // The host (the modal, the live region) is beside the content, never in it.
+    expect(content.contains(host)).toBe(false);
 
     await escape();
     expect(getByTestId('host-surfaces').children).toHaveLength(0);
     expect(getByTestId('host-backdrop').dataset.state).toBe('closed');
-    expect(page.hasAttribute('inert')).toBe(false);
+    expect(content.inert).toBe(false);
+  });
+
+  it('leaves live what others add beside the provider (a partner SDK’s popup)', async () => {
+    const { getByTestId } = render(ModalHarness, {
+      props: { withHost: true },
+    });
+    const parent = getByTestId('host').parentElement!;
+    // As Apple Pay's QR sheet: added to the provider's parent (<body>) after
+    // the app mounted, at either end.
+    const appended = document.createElement('div');
+    const prepended = document.createElement('div');
+    parent.append(appended);
+    parent.prepend(prepended);
+
+    await fireEvent.click(getByTestId('trigger'));
+    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
+    expect(content.inert).toBe(true);
+    // Only the content goes inert; nothing beside it is touched.
+    for (const element of [appended, prepended]) {
+      expect(content.contains(element)).toBe(false);
+      expect((element as HTMLElement & { inert?: boolean }).inert).toBeFalsy();
+      expect(element.hasAttribute('inert')).toBe(false);
+    }
+
+    await escape();
+    appended.remove();
+    prepended.remove();
   });
 
   it('stacked modals share the host scrim, and a tap on it closes the top one only', async () => {

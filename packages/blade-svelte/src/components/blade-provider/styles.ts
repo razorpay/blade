@@ -5,6 +5,8 @@
  * and the styles key their fade on it.
  */
 export interface OverlayHostClasses {
+  /** The provider's content, inert while a modal is open: no box of its own. */
+  content: string;
   /** The shared scrim, fading with `data-state`. */
   backdrop: string;
   /** The container modal surfaces render into, above the scrim. */
@@ -26,6 +28,7 @@ export interface OverlayHostClasses {
 // page that scrolls as a whole. The surfaces box keeps its panels within the
 // shell.
 export const resolveOverlayHost = (): OverlayHostClasses => ({
+  content: 'contents',
   backdrop:
     'absolute inset-0 z-50 overflow-hidden overscroll-contain bg-overlay-subtle transition-opacity duration-moderate ease-entrance motion-reduce:transition-none data-[state=closed]:pointer-events-none data-[state=closed]:opacity-0',
   surfaces: 'pointer-events-none absolute inset-0 z-50 overflow-hidden overscroll-contain',

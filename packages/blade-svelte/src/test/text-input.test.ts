@@ -212,12 +212,12 @@ describe('TextInput standalone', () => {
   });
 
   it.each([
-    // height, box padding, text inset, leading gap, icon/prefix inset, trailing gap, trailing inset, glyph
+    // height, edge padding, text inset, leading gap, icon/prefix inset, trailing gap, trailing inset, glyph
     {
       size: 'small',
       height: 'min-h-8',
-      pad: 'px-1',
       textInset: 'pl-1',
+      edgeInset: 'first:pl-2',
       leadingGap: 'gap-0.5',
       iconInset: 'pl-1',
       trailingGap: 'ms-0.5',
@@ -227,8 +227,8 @@ describe('TextInput standalone', () => {
     {
       size: 'medium',
       height: 'min-h-9',
-      pad: 'px-1',
       textInset: 'pl-2',
+      edgeInset: 'first:pl-3',
       leadingGap: 'gap-2',
       iconInset: 'pl-2',
       trailingGap: 'ms-2',
@@ -238,8 +238,8 @@ describe('TextInput standalone', () => {
     {
       size: 'large',
       height: 'min-h-12',
-      pad: 'px-1',
       textInset: 'pl-2',
+      edgeInset: 'first:pl-3',
       leadingGap: 'gap-2',
       iconInset: 'pl-2',
       trailingGap: 'ms-2',
@@ -251,8 +251,8 @@ describe('TextInput standalone', () => {
     ({
       size,
       height,
-      pad,
       textInset,
+      edgeInset,
       leadingGap,
       iconInset,
       trailingGap,
@@ -274,10 +274,14 @@ describe('TextInput standalone', () => {
       const control = within(glyphs.container).getByTestId('solo');
       const box = control.parentElement!;
       expectClass(box, height);
-      expectClass(box, pad);
+      expect(box.className).not.toMatch(/\bp[xlr]-/);
       expectClass(box, 'whitespace-nowrap');
       expectClass(control, textInset);
+      expectClass(control, edgeInset);
       const [leadingGroup, , trailingGroup] = [...box.children] as HTMLElement[];
+      // The box's 4px is on the parts at its edges.
+      expectClass(leadingGroup, 'pl-1');
+      expectClass(trailingGroup, 'pr-1');
       expectClass(leadingGroup, leadingGap);
       const [icon, prefix] = [...leadingGroup.children] as HTMLElement[];
       expectClass(icon, iconInset);

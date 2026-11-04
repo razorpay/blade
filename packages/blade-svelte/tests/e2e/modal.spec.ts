@@ -93,6 +93,34 @@ test.describe('Modal', () => {
     await expect(page.getByTestId('open')).toBeFocused();
   });
 
+  test('a partner popup added beside the provider takes clicks while the modal is open', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--basic');
+    // As Apple Pay's QR sheet in Chrome: the SDK's own popup, added after the
+    // app mounted, beside it and above everything, with its own close button.
+    await page.evaluate(() => {
+      // The host's parent (the host holds the live region): where the
+      // provider's content sits, so the popup is its sibling.
+      const host = document.querySelector('[role="log"][aria-live="polite"]')?.parentElement;
+      const parent = host?.parentElement ?? document.body;
+      const popup = document.createElement('div');
+      popup.style.cssText = 'position:fixed;top:8px;right:8px;z-index:2147483647';
+      popup.innerHTML = '<button type="button" data-testid="partner-close">Close</button>';
+      popup.querySelector('button')?.addEventListener('click', () => {
+        popup.dataset.clicked = 'true';
+      });
+      parent.append(popup);
+    });
+    const dialog = await open(page, 'modal');
+
+    const partnerClose = page.getByTestId('partner-close');
+    await partnerClose.click();
+    await expect(partnerClose.locator('..')).toHaveAttribute('data-clicked', 'true');
+    // The click was the popup's: the modal is still open.
+    await expect(dialog).toBeVisible();
+  });
+
   test('the close button and the scrim dismiss it, each reporting its source', async ({ page }) => {
     await gotoStory(page, 'components-modal--basic');
     let dialog = await open(page, 'modal');
@@ -150,7 +178,9 @@ async function reshape(page: Page, shell: Shell): Promise<void> {
   await page.evaluate((kind) => {
     const box = document.querySelector<HTMLElement>('#storybook-root > div')!;
     const scrim = document.querySelector<HTMLElement>('[aria-hidden="true"][data-state]')!;
-    const content = scrim.parentElement!.previousElementSibling as HTMLElement;
+    // The app's root: the first element in the provider's content wrapper
+    // (`display: contents`, the host's previous sibling), laid out by the shell.
+    const content = scrim.parentElement!.previousElementSibling!.firstElementChild as HTMLElement;
     Object.assign(box.style, {
       height: 'auto',
       overflow: 'visible',

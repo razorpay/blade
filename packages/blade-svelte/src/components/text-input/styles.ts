@@ -105,6 +105,9 @@ export interface TextInputStyleProps {
 // the trailing ones 2px (8px) after the text and 4px (8px) apart.
 // Medium keeps 16px text on phones — iOS zooms into a smaller field — and
 // Figma's 14px on desktop (`d`).
+// That 4px goes on the part at each edge, not the box, so the control
+// reaches the box's edge as Blade React's does: the browser's autofill
+// tint, which fills only the control, then fills the field.
 const SIZE: Record<
   Axis<'size'>,
   {
@@ -119,31 +122,31 @@ const SIZE: Record<
   }
 > = {
   small: {
-    box: 'min-h-8 px-1',
+    box: 'min-h-8',
     text: 'text-75 leading-75 tracking-50',
     radius: 'rounded-small',
     framed: 'min-h-8 px-2 py-1',
-    control: 'pl-1',
+    control: 'pl-1 first:pl-2',
     leading: { group: 'gap-0.5', icon: 'pl-1', prefix: 'pl-0.5' },
     trailing: { group: 'ms-0.5', item: 'pr-1' },
     icon: 'small',
   },
   medium: {
-    box: 'min-h-9 px-1',
+    box: 'min-h-9',
     text: 'text-200 leading-200 tracking-25 d:text-100 d:leading-100 d:tracking-50',
     radius: 'rounded-small',
     framed: 'min-h-9 px-3 py-2',
-    control: 'pl-2',
+    control: 'pl-2 first:pl-3',
     leading: { group: 'gap-2', icon: 'pl-2', prefix: 'pl-2' },
     trailing: { group: 'ms-2', item: 'pr-2' },
     icon: 'medium',
   },
   large: {
-    box: 'min-h-12 px-1',
+    box: 'min-h-12',
     text: 'text-200 leading-200 tracking-25',
     radius: 'rounded-medium',
     framed: 'min-h-12 px-3 py-2',
-    control: 'pl-2',
+    control: 'pl-2 first:pl-3',
     leading: { group: 'gap-2', icon: 'pl-2', prefix: 'pl-2' },
     trailing: { group: 'ms-2', item: 'pr-2' },
     icon: 'large',
@@ -159,7 +162,11 @@ const ALIGN: Record<Axis<'textAlign'>, string> = {
 // The box is the field: the parts sit inside its border, in one row with no
 // gap of its own — each part carries its spacing, as in Figma.
 const BOX = `relative flex w-full cursor-text flex-row items-center whitespace-nowrap text-surface-gray-muted ${INPUT_FILL}`;
-const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 pr-0 ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
+// At an edge the control takes the box's 4px and its corners, so its fill
+// (the autofill tint) follows the frame.
+const CONTROL_EDGES =
+  'last:pr-1 first:[border-top-left-radius:inherit] first:[border-bottom-left-radius:inherit] last:[border-top-right-radius:inherit] last:[border-bottom-right-radius:inherit]';
+const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 pr-0 ${CONTROL_EDGES} ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
 
 // In an InputGroup the member draws the same frame it has alone — the
 // group rounds the corners it holds — and overlaps its neighbours' by a
@@ -234,13 +241,13 @@ export const resolveTextInput: TextInputStyleResolver<TextInputStyleProps> = (
       grouped: { error: '', success: '' },
     },
     leading: {
-      group: `flex shrink-0 flex-row items-center ${look.leading.group}`,
+      group: `flex shrink-0 flex-row items-center pl-1 ${look.leading.group}`,
       icon: `flex shrink-0 items-center ${look.leading.icon}`,
       prefix: `flex shrink-0 items-center ${look.leading.prefix}`,
       slot: 'flex shrink-0 items-center',
     },
     trailing: {
-      group: `flex shrink-0 flex-row items-center ${look.trailing.group}`,
+      group: `flex shrink-0 flex-row items-center pr-1 ${look.trailing.group}`,
       item: `flex shrink-0 items-center ${look.trailing.item}`,
       tone: 'text-surface-gray-subtle',
     },

@@ -217,7 +217,12 @@ that switches by screen, say) composes these.
 BladeProvider renders the overlay host (the one scrim, the box modals
 mount in, and a polite live region) after its content, in the nearest
 positioned ancestor: put it inside the frame overlays must stay within. The
-outermost provider hosts every overlay on the page. Toasts are the app's to
+outermost provider hosts every overlay on the page. It wraps its content in a
+`display: contents` element that goes inert while a modal is open: only what
+the app renders inside the provider is disabled, so a partner SDK's popup
+added to `<body>` (Apple Pay's) stays usable. The wrapper takes no part in
+layout, but it is a DOM node: a child combinator across the provider
+(`.shell > main`) needs the wrapper in it. Toasts are the app's to
 render, as in React: a `<ToastContainer />` inside the provider shows the
 page's queue (what `showToast` adds to) and moves its toasts into the host; without one, no toast code ships. An app's back handler asks the open overlays first: `back()` returns
 whether one handled it. Toasts are data: `showToast(toast, { cancelled })` returns a promise of

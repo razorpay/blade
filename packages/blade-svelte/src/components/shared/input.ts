@@ -5,8 +5,14 @@
 // variant on a control that draws its own frame. Both spellings of a
 // state sit together here; change them together.
 
-/** Placeholder and inactive: the fill, the typed text and its hint. */
-export const INPUT_FILL = 'bg-surface-gray-intense transition-all duration-xquick ease-standard';
+/**
+ * Placeholder and inactive: the fill, the typed text and its hint. Motion is
+ * Blade's baseInput: fill and border over xgentle, emphasized, and the focus
+ * ring growing out of the box (outline-width only). The ring's colour never
+ * transitions, so it does not fade in from the text colour.
+ */
+export const INPUT_FILL =
+  'bg-surface-gray-intense transition-[background-color,border-color,outline-width] duration-xgentle ease-emphasized';
 // Blade's baseInput: the value in `interactive.text.gray.normal`, the
 // placeholder in `surface.text.gray.disabled`.
 export const INPUT_TEXT =
