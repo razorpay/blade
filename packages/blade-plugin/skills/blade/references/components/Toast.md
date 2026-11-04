@@ -111,6 +111,17 @@ type ToastProps = {
   }) => void;
 
   /**
+   * Look of a promotional toast (web only).
+   * `glass` uses a lighter backdrop blur, a thinner border and a larger corner radius.
+   * It scales in and out from its centre instead of sliding.
+   *
+   * Works only on promotional toasts. Informational toasts ignore it.
+   *
+   * @default 'default'
+   */
+  variant?: 'default' | 'glass';
+
+  /**
    * Time in ms of the intro motion that `content` plays. Blade does not animate the content.
    * Blade holds the action and the progress bar until the intro ends, then fades them in.
    * With `autoDismiss`, the timer and the progress bar also start after the intro.
@@ -170,6 +181,7 @@ type UseToastReturn = {
 - Use `introDuration` when the promotional `content` plays its own intro. Set it to the length of the intro. The action and the progress bar fade in when the intro ends, and the timer starts then.
 - Keep every frame of multi-frame `content` the same height, for example with one grid cell for all frames. The toast measures its height once, at show.
 - Use `action.variant: 'link'` with `href` for a call to action that opens a page.
+- Use `variant: 'glass'` on a promotional toast for a lighter blur, a thinner border, a larger corner radius and a scale motion. It works with `introDuration`, `showProgressBar` and the link action.
 - Use semantic `color` values to match the feedback intent (`positive` for success, `negative` for errors).
 
 **Don't**
@@ -180,7 +192,7 @@ type UseToastReturn = {
 - Don't render `ToastContainer` inside `BladeProvider` children if you have nested providers — place it at the app root.
 - Don't rely on `onDismissButtonClick` for detecting auto-dismiss — it only fires on manual dismiss.
 - Don't use long sentences as toast content — keep messages concise and scannable.
-- Don't use `introDuration` or `showProgressBar` on informational toasts — they work only on promotional toasts. `showProgressBar` also needs `autoDismiss`.
+- Don't use `introDuration`, `showProgressBar` or `variant` on informational toasts — they work only on promotional toasts. `showProgressBar` also needs `autoDismiss`.
 
 ## Example
 
@@ -522,6 +534,58 @@ function PromotionalIntroExample() {
             showProgressBar: true,
             introDuration,
             content: <IntroContent introDuration={introDuration} />,
+          });
+        }}
+      >
+        Show Promotional Toast
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Glass Promotional Toast
+
+This example uses the glass look on a promotional toast with a progress bar and a link action. The toast scales in and out from its centre.
+
+```tsx
+import {
+  ToastContainer,
+  useToast,
+  Box,
+  Button,
+  Heading,
+  Text,
+  ArrowRightIcon,
+} from '@razorpay/blade/components';
+
+function GlassPromotionalToastExample() {
+  const toast = useToast();
+
+  return (
+    <Box>
+      <ToastContainer />
+      <Button
+        onClick={() => {
+          toast.show({
+            type: 'promotional',
+            variant: 'glass',
+            autoDismiss: true,
+            showProgressBar: true,
+            content: (
+              <Box display="flex" gap="spacing.2" flexDirection="column">
+                <Heading size="small">Reports are now faster</Heading>
+                <Text size="small">Download any report in a few seconds.</Text>
+              </Box>
+            ),
+            action: {
+              text: 'See what is new',
+              variant: 'link',
+              href: 'https://example.com/whats-new',
+              target: '_blank',
+              icon: ArrowRightIcon,
+              iconPosition: 'right',
+            },
           });
         }}
       >

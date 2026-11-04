@@ -88,6 +88,34 @@ const firePointer = (
   });
 };
 
+// jsdom does not compute `backdrop-filter` or keyframes,
+// so match the CSS that styled-components injects for the element's classes
+const getInjectedCss = () =>
+  Array.from(document.querySelectorAll('style'))
+    .map((styleTag) => styleTag.textContent ?? '')
+    .join('');
+
+const getClassRuleMatch = (element: HTMLElement, pattern: string) => {
+  const css = getInjectedCss();
+  return element.className
+    .split(' ')
+    .filter(Boolean)
+    .map((className) => new RegExp(`\\.${className}[^{]*\\{[^}]*${pattern}`).exec(css))
+    .find(Boolean);
+};
+
+const hasCssRule = (element: HTMLElement, declaration: string) =>
+  Boolean(getClassRuleMatch(element, declaration));
+
+const getAnimationKeyframes = (element: HTMLElement) => {
+  const animationName = getClassRuleMatch(element, 'animation:\\s*([\\w-]+)')?.[1];
+  return (
+    new RegExp(`@keyframes ${animationName}\\s*\\{([\\s\\S]*?\\})\\s*\\}`).exec(
+      getInjectedCss(),
+    )?.[1] ?? ''
+  );
+};
+
 describe('<Toast /> promotional timer', () => {
   let dismissSpy: jest.SpyInstance;
 
@@ -345,5 +373,45 @@ describe('<Toast /> promotional timer', () => {
     // axe needs real timers
     jest.useRealTimers();
     await assertAccessible(container);
+  });
+});
+
+describe('<Toast /> glass variant', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    act(() => {
+      toast.remove();
+    });
+    jest.useRealTimers();
+  });
+
+  it('should apply the glass surface and the scale keyframes on promotional toast', () => {
+    const { getByRole } = renderWithTheme(<ToastExample {...promotionalProps} variant="glass" />);
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+
+    const toastElement = getByRole('status');
+    expect(hasCssRule(toastElement, 'backdrop-filter:\\s*blur\\(4px\\)')).toBe(true);
+    expect(hasCssRule(toastElement, 'inset 0 0 0 0\\.5px')).toBe(true);
+    expect(hasCssRule(toastElement, 'border-radius:\\s*16px')).toBe(true);
+    expect(getAnimationKeyframes(toastElement)).toContain('scale(0.5)');
+
+    fireEvent.click(getByRole('button', { name: 'Dismiss toast' }));
+    expect(getAnimationKeyframes(getByRole('status'))).toContain('scale(0.92)');
+  });
+
+  it('should ignore the glass variant on informational toast', () => {
+    const { getByRole } = renderWithTheme(
+      <ToastExample content="Payment successful" variant="glass" />,
+    );
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+
+    const toastElement = getByRole('status');
+    expect(hasCssRule(toastElement, 'backdrop-filter:\\s*blur\\(8px\\)')).toBe(true);
+    expect(hasCssRule(toastElement, 'inset 0 0 0 1px')).toBe(true);
+    expect(hasCssRule(toastElement, 'border-radius:\\s*12px')).toBe(true);
+    expect(getAnimationKeyframes(toastElement)).toContain('translateY(100%)');
   });
 });

@@ -540,3 +540,176 @@ toast.show({
   - A. Open. Informational toasts use react-hot-toast's timer. Their pause is global for the stack. A bar would need the Blade timer for informational toasts too.
 - Q. Can multi-frame `content` change its height between frames?
   - A. Not now. `ToastContainer` measures the toast height once, at show. Keep every frame the same height, for example with one grid cell for all frames.
+
+---
+
+## Promotional Toast: Glass Variant
+
+`variant: 'glass'` is an opt-in look for promotional toasts on web. The toast gets a lighter backdrop blur, a thinner border and a larger corner radius. It scales in and out from its centre instead of sliding. Toasts without `variant`, and all informational toasts, do not change.
+
+### API
+
+```jsx
+import { ArrowRightIcon, Box, Heading, Text, useToast } from '@razorpay/blade/components';
+
+const toast = useToast();
+
+toast.show({
+  type: 'promotional',
+  variant: 'glass',
+  content: (
+    <Box display="flex" gap="spacing.2" flexDirection="column">
+      <Heading size="small">Reports are now faster</Heading>
+      <Text size="small">Download any report in a few seconds.</Text>
+    </Box>
+  ),
+  autoDismiss: true,
+  showProgressBar: true,
+  action: {
+    text: 'See what is new',
+    variant: 'link',
+    href: 'https://example.com/whats-new',
+    target: '_blank',
+    icon: ArrowRightIcon,
+    iconPosition: 'right',
+  },
+});
+```
+
+- `variant` works only on promotional toasts. Informational toasts ignore it.
+- The glass surface uses existing tokens only. Open Questions lists each mapping.
+- Entry: scale 0.5 to 1, opacity 0 to 1, blur 0.5px to none. It uses `duration.moderate` and `easing.entrance`.
+- Exit: scale 1 to 0.92, opacity 1 to 0. It uses `duration.quick` and `easing.exit`.
+- The toast scales from its centre.
+- `introDuration`, `showProgressBar`, the pause on hover and focus, and the link action work with both variants.
+
+<details>
+  <summary>Alternate APIs</summary>
+
+#### Alternate API 1: `variant` plus `entryMotion`
+
+```jsx
+toast.show({
+  type: 'promotional',
+  variant: 'glass',
+  entryMotion: 'scale',
+  content: <Text size="small">Reports are now faster</Text>,
+});
+```
+
+- Pros
+  - The surface and the motion can change one at a time.
+- Cons
+  - Two props for one look. Consumers can make mixes that design did not draw, for example the default surface with the scale motion.
+  - The glass look also changes the exit. `entryMotion` names the entry only, so the name does not match what it does.
+  - Each new look adds a value to two props, not one.
+
+#### Alternate API 2: `emphasis` instead of `variant`
+
+```jsx
+toast.show({
+  type: 'promotional',
+  emphasis: 'subtle',
+  content: <Text size="small">Reports are now faster</Text>,
+});
+```
+
+- Pros
+  - `emphasis` is a common Blade prop name.
+- Cons
+  - In Blade, `emphasis` sets colour strength with `subtle` and `intense`, for example on `Badge`, `Alert` and `Indicator`. The glass look changes the surface and the motion, not the colour strength.
+  - `subtle` or `intense` does not tell the reader that the toast is see-through or that it scales.
+  - Blade uses `variant` for a different look of one component, for example on `Tabs`, `AppBar` and `TrustBadge`. `TrustBadge` also uses `'default'` as a `variant` value.
+
+</details>
+
+### Props
+
+#### ToastProps (additions)
+
+```typescript
+type ToastProps = {
+  // ...existing props
+
+  /**
+   * Look of a promotional toast.
+   *
+   * `glass` uses a lighter backdrop blur, a thinner border and a larger corner radius.
+   * It scales in and out from its centre instead of sliding.
+   *
+   * Works only on promotional toasts. Informational toasts ignore it.
+   *
+   * @platform web
+   * @default 'default'
+   */
+  variant?: 'default' | 'glass';
+};
+```
+
+### Examples
+
+#### Glass promotional toast
+
+The toast scales in from its centre. The dismiss button and the action do not change.
+
+```jsx
+toast.show({
+  type: 'promotional',
+  variant: 'glass',
+  content: <Text size="small">Your settlement report is ready</Text>,
+  action: { text: 'Download', onClick: ({ toastId }) => toast.dismiss(toastId) },
+});
+```
+
+#### Glass promotional toast with an intro and a progress bar
+
+The intro, the progress bar and the pause work as on the default variant.
+
+```jsx
+toast.show({
+  type: 'promotional',
+  variant: 'glass',
+  content: <IntroContent introDuration={2000} />,
+  autoDismiss: true,
+  introDuration: 2000,
+  showProgressBar: true,
+});
+```
+
+### Accessibility
+
+- `variant` changes only the surface and the motion. The `status` role, the live region, the focus order and the pause do not change.
+- The glass surface keeps `popup.background.gray.moderate`, so text contrast is the same as on the default variant.
+- The blur in the entry is 0.5px for one short motion. Text is sharp when the entry ends.
+
+### Open Questions
+
+- Q. Which Blade token maps to each value of the reference design?
+  - A. The table lists each mapping and the gap. No new token. No hex value in code.
+
+| Reference value                           | Blade value                                             | Gap                                                                                         |
+| ----------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Surface white at 90%                      | `popup.background.gray.moderate`, white at 94% in light | 4% less see-through. Blade has no more see-through gray popup token.                        |
+| Backdrop blur 4px                         | `backdropBlur.low`, 4px                                 | None                                                                                        |
+| Stroke width 0.5px                        | `border.width.thinner`, 0.5px                           | None                                                                                        |
+| Stroke colour `#CED4DA`                   | `popup.border.gray.moderate`                            | The Blade colour is lighter. It is the same border colour as the default promotional toast. |
+| Corner radius 16px                        | `border.radius.large`, 16px                             | None                                                                                        |
+| Width 320px                               | `ToastContainer` width, max `size.360`                  | Blade's toast is up to 40px wider.                                                          |
+| Entry 240ms                               | `duration.moderate`, 280ms                              | 40ms longer                                                                                 |
+| Exit 180ms                                | `duration.quick`, 200ms                                 | 20ms longer                                                                                 |
+| Entry easing `cubic-bezier(0, 0, 0.2, 1)` | `easing.entrance`                                       | None                                                                                        |
+| Exit easing `cubic-bezier(0.17, 0, 1, 1)` | `easing.exit`                                           | None                                                                                        |
+| Scale 0.5, scale 0.92, blur 0.5px         | Values in the keyframes                                 | Blade has no token for scale or filter blur. `Scale` and `GenUI` also use plain values.     |
+
+- Q. Should Blade add a more see-through gray popup background token, for example white at 90%?
+  - A. Open. Design to decide. Until then, glass keeps `popup.background.gray.moderate`. At 94% white, only a little of the page shows through the glass surface.
+- Q. Why `duration.moderate` and `duration.quick`?
+  - A. 240ms is the same distance from `quick` (200ms) and `moderate` (280ms). 180ms is the same distance from `xquick` (160ms) and `quick` (200ms). Glass rounds both up, so the exit stays shorter than the entry, as in the reference. Blade's `Scale` motion preset also uses `duration.moderate`. Design to confirm.
+- Q. Should the entry animate a blur?
+  - A. Yes. Blade already animates `filter: blur()` in `GenUI` text and in `RollingText`. The entry ends at `filter: none`, so the toast keeps no filter after the entry.
+- Q. Should the glass toast be 320px wide?
+  - A. Not now. `ToastContainer` sets one width for all toasts. A width for one toast would change how the stack lines up.
+- Q. Should the scale motion change when the user prefers reduced motion?
+  - A. Open. The slide motion of the default variant does not change today. Both variants should follow one rule.
+- Q. Should React Native support `variant`?
+  - A. Not now. The prop is web only. Native ignores it.
