@@ -13,7 +13,8 @@ FreshLLM is RazorSense in an assistant chat: thinking loops near the top while t
 - It fills the chat panel it's laid over (an absolutely positioned `Box` covering the panel), on a clear background; the chat's messages and input sit above it.
 - It follows the elements you point it at: `chatInputRef` (idle sits under the chat input, centred) and `thinkingRef` (thinking loops on the thinking row's spot). It measures them every frame, so it follows them as the chat moves. Without them, it lays itself out as Razorpay's reference chat (a chat input centred across the panel near its bottom).
 - `scale` is held between 0.75 and 1.25 (the whole effect, bands included).
-- Typing reaches it through `inputValue`: every change counts as a keystroke, while idle.
+- Typing reaches it through `inputValue`, a typing signal: every change counts as a keystroke while idle; the text itself is never read or shown.
+- It's decorative: hidden from screen readers (`aria-hidden`).
 - It pauses off-screen; with reduced motion on, it shows one still frame of where it is.
 
 ## TypeScript Types
@@ -30,8 +31,8 @@ type FreshLLMProps = {
    */
   variant?: 'thinking' | 'idle';
   /**
-   * The text in the chat input. While idle, every change is a keystroke: it pulses into its typing surge and dies back down to
-   * idle after.
+   * The text in the chat input, as a typing signal: only its changes are read. While idle, each change is a keystroke: it
+   * pulses into its typing surge and dies back down to idle after. The text itself is never read or shown.
    */
   inputValue?: string;
   /**

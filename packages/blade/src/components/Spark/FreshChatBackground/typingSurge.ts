@@ -95,7 +95,7 @@ class TypingSurge {
     this.rate += 1;
   }
 
-  /** held typing (the 'typingSurge' variant): as if typing on, without a key count */
+  /** held typing (the 'typing-surge' variant): as if typing on, without a key count */
   public setHeld(isHeld: boolean, s: number): void {
     if (isHeld && !this.isHeld && s - this.last > this.tune.hold) this.first = s;
     this.isHeld = isHeld;

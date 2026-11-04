@@ -6,6 +6,7 @@ import type { FreshEngine } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 /** flow 9's landing chat input in the comp (CSS px; the comp is 1440 x 856 CSS, made at 2x): what the comp is laid against */
 const INPUT = { x: 332, y: 206, w: 840, h: 97 };
@@ -61,6 +62,8 @@ const FreshChatBackground = ({
   const typingRef = useRef<TypingSurge | null>(null);
   const variantRef = useRef(variant);
   variantRef.current = variant;
+  // reduced motion: draws the still frame for the current variant (set once the engine is up)
+  const stillRef = useRef<(() => void) | null>(null);
 
   // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
   const fitRef = useRef<() => void>(() => undefined);
@@ -128,17 +131,20 @@ const FreshChatBackground = ({
         fitRef.current();
         const duration = doc.tl.dur;
         if (stage.reducedMotion) {
-          // reduced motion: held still (in its typing surge, if that's the variant)
-          engine.player.comp('ty', {
-            op: variantRef.current === 'typingSurge' ? setup.tune.level : 0,
-          });
-          typing.pose(engine.player, 1);
-          engine.player.seek(0, 0);
+          // reduced motion: held still (in its typing surge, if that's the variant), and again whenever the variant changes
+          stillRef.current = () => {
+            engine.player.comp('ty', {
+              op: variantRef.current === 'typing-surge' ? setup.tune.level : 0,
+            });
+            typing.pose(engine.player, 1);
+            engine.player.seek(0, 0);
+          };
+          stillRef.current();
           return;
         }
         stage.setDriver((eng, dt) => {
           const now = performance.now() / 1000;
-          typing.setHeld(variantRef.current === 'typingSurge', now);
+          typing.setHeld(variantRef.current === 'typing-surge', now);
           typing.step(eng.player, dt, now, duration);
         });
         stage.setPaused(isPaused);
@@ -152,6 +158,7 @@ const FreshChatBackground = ({
       stageRef.current = null;
       engineRef.current = null;
       typingRef.current = null;
+      stillRef.current = null;
     };
     // variant and isPaused are read live; a new color scheme or scale starts it again
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -160,6 +167,10 @@ const FreshChatBackground = ({
   useEffect(() => {
     stageRef.current?.setPaused(isPaused);
   }, [isPaused]);
+
+  useEffect(() => {
+    stillRef.current?.();
+  }, [variant]);
 
   // every change to the chat input's text is a keystroke (not the first value)
   const lastValue = useRef(inputValue);
@@ -173,6 +184,7 @@ const FreshChatBackground = ({
     <div
       ref={boxRef}
       {...metaAttribute({ name: MetaConstants.FreshChatBackground, testID })}
+      {...makeAccessible({ hidden: true })}
       style={{
         position: 'relative',
         pointerEvents: 'none',

@@ -13,7 +13,8 @@ FreshChatBackground is RazorSense behind a chat input: idle, a soft fluted strip
 - Its box is the chat input's box: lay it over the chat input (an absolutely positioned `Box` the input's size) and keep the input above it. Its glow spills outside the box on a clear background.
 - The strip stretches to the box's width and height while the bands keep their size. It fits chat inputs 504–1260 px wide and 58–146 px tall; outside that it stretches as for the nearest end, centred on the input, with a warning in development.
 - `scale` is held between 0.75 and 1.25 (the whole effect, bands included).
-- Typing reaches it through `inputValue`: every change counts as a keystroke.
+- Typing reaches it through `inputValue`, a typing signal: every change counts as a keystroke; the text itself is never read or shown.
+- It's decorative: hidden from screen readers (`aria-hidden`).
 - It pauses off-screen; with reduced motion on, it holds still.
 
 ## TypeScript Types
@@ -23,14 +24,15 @@ The following types represent the props that the FreshChatBackground component a
 ```ts
 type FreshChatBackgroundProps = {
   /**
-   * `idle`: the soft fluted strip behind the chat input, drifting and breathing. `typingSurge`: held in its typing surge, as
+   * `idle`: the soft fluted strip behind the chat input, drifting and breathing. `typing-surge`: held in its typing surge, as
    * while someone types, with its rhythm. Either way, every change to `inputValue` is a keystroke: the typing surge pulses in
    * with it and dies back down to idle after.
    * @default 'idle'
    */
-  variant?: 'idle' | 'typingSurge';
+  variant?: 'idle' | 'typing-surge';
   /**
-   * The text in the chat input it sits behind. Every change counts as a keystroke.
+   * The text in the chat input it sits behind, as a typing signal: only its changes are read (each one counts as a keystroke).
+   * The text itself is never read or shown.
    */
   inputValue?: string;
   /**
@@ -63,7 +65,7 @@ type FreshChatBackgroundProps = {
 
 - Lay it over the chat input with the same size, and keep the chat input above it (a positioned wrapper after it).
 - Pass the chat input's text as `inputValue` so the typing surge follows the user's typing.
-- Use `variant="typingSurge"` to hold the surge while input arrives another way (for example, voice input).
+- Use `variant="typing-surge"` to hold the surge while input arrives another way (for example, voice input).
 - Leave room round the chat input: the glow spills well outside the box.
 
 **Don't**
@@ -114,7 +116,7 @@ import { Box, FreshChatBackground } from '@razorpay/blade/components';
 const VoiceChatBackground = ({ isListening, text }) => {
   return (
     <Box position="absolute" top="spacing.0" left="spacing.0" width="100%" height="100%">
-      <FreshChatBackground variant={isListening ? 'typingSurge' : 'idle'} inputValue={text} />
+      <FreshChatBackground variant={isListening ? 'typing-surge' : 'idle'} inputValue={text} />
     </Box>
   );
 };

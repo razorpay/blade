@@ -29,7 +29,7 @@ export default {
   argTypes: {
     variant: {
       control: 'inline-radio',
-      options: ['idle', 'typingSurge'],
+      options: ['idle', 'typing-surge'],
     },
     width: { control: { type: 'range', min: 504, max: 1260, step: 4 } },
     height: { control: { type: 'range', min: 58, max: 146, step: 1 } },

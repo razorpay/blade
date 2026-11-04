@@ -6,6 +6,7 @@ import { FreshStage, loadFreshEngine, withRoom } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 /**
  * Room round the chat comp (CSS px at scale 1, each side: half the comp again). It was made for flow 9's 1512 x 982 window: on a
@@ -58,6 +59,8 @@ const FreshLLM = ({
   const driverRef = useRef<ChatDriver | null>(null);
   const variantRef = useRef(variant);
   variantRef.current = variant;
+  // reduced motion: moves to a variant and draws its settled still frame (set once the engine is up)
+  const stillRef = useRef<((next: NonNullable<FreshLLMProps['variant']>) => void) | null>(null);
   const s = holdInRange(scale, FRESH_RANGES.scale, 'FreshLLM', 'scale');
   // where the chat's parts are in this box: the elements pointed at, else flow 9's chat
   const anchorsRef = useRef<() => ChatAnchors>(() => flow9Anchors(1512 - 12, 982 - 54));
@@ -103,10 +106,20 @@ const FreshLLM = ({
         driver.think();
         if (variantRef.current === 'idle') driver.answer(now);
         if (stage.reducedMotion) {
-          // reduced motion: one still frame of where it is (thinking, or the answer settled to idle)
+          // reduced motion: one still frame of where it is (thinking, or the answer settled to idle); when the variant changes,
+          // the new one, settled. The steps run on a clock of their own that only goes forward.
           const steps = variantRef.current === 'idle' ? 60 : 0;
           for (let i = 0; i < steps; i++) driver.step(engine.player, 0.25, now + i * 250, false);
-          driver.step(engine.player, 0, now + steps * 250);
+          let clock = now + steps * 250;
+          driver.step(engine.player, 0, clock);
+          stillRef.current = (next) => {
+            clock = Math.max(clock, performance.now());
+            if (next === 'idle') driver.answer(clock);
+            else driver.think();
+            for (let i = 0; i < 60; i++) driver.step(engine.player, 0.25, clock + i * 250, false);
+            clock += 60 * 250;
+            driver.step(engine.player, 0, clock);
+          };
           return;
         }
         stage.setDriver((eng, dt) => {
@@ -123,6 +136,7 @@ const FreshLLM = ({
       stageRef.current?.destroy();
       stageRef.current = null;
       driverRef.current = null;
+      stillRef.current = null;
     };
     // variant and isPaused have their own effects; a new color scheme or scale starts it again
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,6 +147,10 @@ const FreshLLM = ({
   }, [isPaused]);
 
   useEffect(() => {
+    if (stillRef.current) {
+      stillRef.current(variant);
+      return;
+    }
     const driver = driverRef.current;
     if (!driver) return;
     if (variant === 'idle') driver.answer(performance.now());
@@ -151,6 +169,7 @@ const FreshLLM = ({
     <div
       ref={boxRef}
       {...metaAttribute({ name: MetaConstants.FreshLLM, testID })}
+      {...makeAccessible({ hidden: true })}
       style={{
         position: 'relative',
         overflow: 'hidden',

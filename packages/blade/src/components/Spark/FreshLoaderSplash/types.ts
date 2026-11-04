@@ -8,7 +8,8 @@ type FreshLoaderSplashProps = {
    */
   isLoading?: boolean;
   /**
-   * Holds the animation where it is.
+   * Holds the animation where it is while loading. Once `isLoading` turns false the splash always plays out and calls
+   * `onComplete`, so a pause never holds the page up.
    * @default false
    */
   isPaused?: boolean;
@@ -17,6 +18,11 @@ type FreshLoaderSplashProps = {
    * @default 1
    */
   scale?: number;
+  /**
+   * What screen readers announce: the splash is exposed as a progress bar, as Spinner is.
+   * @default 'Loading'
+   */
+  accessibilityLabel?: string;
   /**
    * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place.
    */

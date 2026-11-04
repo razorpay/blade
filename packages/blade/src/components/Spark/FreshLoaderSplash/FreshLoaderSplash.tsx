@@ -7,6 +7,7 @@ import type { FreshEngine } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 /** The page colour under the splash: before its first frame, after it has faded, and when WebGL2 isn't there. */
 const GROUND = { light: '#ffffff', dark: '#131315' } as const;
@@ -30,6 +31,7 @@ const FreshLoaderSplash = ({
   isPaused = false,
   onComplete,
   scale = 1,
+  accessibilityLabel = 'Loading',
   width = '100%',
   height = '100%',
   testID,
@@ -102,7 +104,7 @@ const FreshLoaderSplash = ({
             complete();
           }
         });
-        stage.setPaused(isPaused);
+        stage.setPaused(isPaused && isLoadingRef.current);
       })
       .catch(() => {
         if (!isMounted) return;
@@ -121,9 +123,11 @@ const FreshLoaderSplash = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode, s]);
 
+  // a pause holds it only while loading: once loading ends it always plays out and calls onComplete, so the page is never held up
   useEffect(() => {
-    stageRef.current?.setPaused(isPaused);
-  }, [isPaused]);
+    if (isDoneRef.current) return;
+    stageRef.current?.setPaused(isPaused && isLoading);
+  }, [isPaused, isLoading]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -144,6 +148,7 @@ const FreshLoaderSplash = ({
     <div
       ref={boxRef}
       {...metaAttribute({ name: MetaConstants.FreshLoaderSplash, testID })}
+      {...makeAccessible({ role: 'progressbar', label: accessibilityLabel })}
       style={{
         position: 'relative',
         overflow: 'hidden',

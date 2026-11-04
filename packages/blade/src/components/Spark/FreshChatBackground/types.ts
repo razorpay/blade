@@ -2,14 +2,15 @@ import type { TestID } from '~utils/types';
 
 type FreshChatBackgroundProps = {
   /**
-   * `idle`: the soft fluted strip behind the chat input, drifting and breathing. `typingSurge`: held in its typing surge, as
+   * `idle`: the soft fluted strip behind the chat input, drifting and breathing. `typing-surge`: held in its typing surge, as
    * while someone types, with its rhythm. Either way, every change to `inputValue` is a keystroke: the typing surge pulses in
    * with it and dies back down to idle after.
    * @default 'idle'
    */
-  variant?: 'idle' | 'typingSurge';
+  variant?: 'idle' | 'typing-surge';
   /**
-   * The text in the chat input it sits behind. Every change counts as a keystroke.
+   * The text in the chat input it sits behind, as a typing signal: only its changes are read (each one counts as a keystroke).
+   * The text itself is never read or shown.
    */
   inputValue?: string;
   /**

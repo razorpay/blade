@@ -10,8 +10,8 @@ type FreshLLMProps = {
    */
   variant?: 'thinking' | 'idle';
   /**
-   * The text in the chat input. While idle, every change is a keystroke: it pulses into its typing surge and dies back down to
-   * idle after.
+   * The text in the chat input, as a typing signal: only its changes are read. While idle, each change is a keystroke: it
+   * pulses into its typing surge and dies back down to idle after. The text itself is never read or shown.
    */
   inputValue?: string;
   /**

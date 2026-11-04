@@ -13,6 +13,8 @@ FreshLoaderSplash is RazorSense's loading splash: the Razorpay glyph loops while
 - It fills its box, cropping the comp's edges to cover it: give it a sized container, such as a fixed full-screen `Box`.
 - `scale` is held between 0.75 and 1.25; a value outside that range is held at the nearest end, with a warning in development.
 - Without WebGL2, or with reduced motion on, it shows the plain background and calls `onComplete` as soon as `isLoading` turns false.
+- Screen readers see it as a progress bar labelled by `accessibilityLabel` (default "Loading"), as `Spinner` is.
+- `isPaused` only holds it while loading: once `isLoading` turns false it always plays out and calls `onComplete`.
 - The engine and the splash's data load on demand (a dynamic import) the first time it renders.
 
 ## TypeScript Types
@@ -28,7 +30,8 @@ type FreshLoaderSplashProps = {
    */
   isLoading?: boolean;
   /**
-   * Holds the animation where it is.
+   * Holds the animation where it is while loading. Once `isLoading` turns false the splash always plays out and calls
+   * `onComplete`, so a pause never holds the page up.
    * @default false
    */
   isPaused?: boolean;
@@ -37,6 +40,11 @@ type FreshLoaderSplashProps = {
    * @default 1
    */
   scale?: number;
+  /**
+   * What screen readers announce: the splash is exposed as a progress bar, as Spinner is.
+   * @default 'Loading'
+   */
+  accessibilityLabel?: string;
   /**
    * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place.
    */
