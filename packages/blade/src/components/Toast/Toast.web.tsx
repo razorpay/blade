@@ -213,13 +213,14 @@ const usePromotionalTimer = ({
   }
 
   React.useEffect(() => {
-    if (isIntroDone) return undefined;
+    // A toast dismissed during its intro must not save its state again
+    if (isIntroDone || !isVisible) return undefined;
     const introTimeout = setTimeout(() => {
       savedTimers.set(id, { configKey, remainingTime: duration, isIntroDone: true });
       setTimerState({ configKey, isIntroDone: true, elapsedTime: 0 });
     }, introDuration);
     return () => clearTimeout(introTimeout);
-  }, [id, configKey, duration, introDuration, isIntroDone]);
+  }, [id, configKey, duration, introDuration, isIntroDone, isVisible]);
 
   React.useEffect(() => {
     if (!isEnabled || isPaused) return undefined;
