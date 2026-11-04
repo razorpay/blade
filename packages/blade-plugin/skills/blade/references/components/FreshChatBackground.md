@@ -9,6 +9,7 @@ FreshChatBackground is RazorSense behind a chat input: idle, a soft fluted strip
 ## Important Constraints
 
 - Web only: it draws with WebGL2. On React Native it throws.
+- It's for a chat input on its own (a landing, a home screen). Inside an assistant chat use `FreshLLM`: its idle is this same strip under the chat input, so don't put both on one chat input (two strips would overlap).
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - Its box is the chat input's box: lay it over the chat input (an absolutely positioned `Box` the input's size) and keep the input above it. Its glow spills outside the box on a clear background.
 - The strip stretches to the box's width and height while the bands keep their size. It fits chat inputs 504–1260 px wide and 58–146 px tall; outside that it stretches as for the nearest end, centred on the input, with a warning in development.

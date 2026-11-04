@@ -45,6 +45,9 @@ const FreshLoaderSplash = ({
   const clockRef = useRef<SplashClock | null>(null);
   const isLoadingRef = useRef(isLoading);
   isLoadingRef.current = isLoading;
+  // read when the engine is up (it loads asynchronously, so a pause set before then still counts)
+  const isPausedRef = useRef(isPaused);
+  isPausedRef.current = isPaused;
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
   const isDoneRef = useRef(false);
@@ -57,8 +60,10 @@ const FreshLoaderSplash = ({
   };
 
   useEffect(() => {
+    // a splash that has played out stays done: a new color scheme or scale doesn't start it again (the box shows the plain
+    // background), so onComplete is only ever called once
+    if (isDoneRef.current) return undefined;
     let isMounted = true;
-    isDoneRef.current = false;
     setHasFailed(false);
 
     void Promise.all([loadFreshEngine(), import('./comps')])
@@ -104,7 +109,7 @@ const FreshLoaderSplash = ({
             complete();
           }
         });
-        stage.setPaused(isPaused && isLoadingRef.current);
+        stage.setPaused(isPausedRef.current && isLoadingRef.current);
       })
       .catch(() => {
         if (!isMounted) return;

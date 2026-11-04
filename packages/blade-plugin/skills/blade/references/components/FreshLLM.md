@@ -9,6 +9,7 @@ FreshLLM is RazorSense in an assistant chat: thinking loops near the top while t
 ## Important Constraints
 
 - Web only: it draws with WebGL2. On React Native it throws.
+- Its idle is the same strip `FreshChatBackground` draws, so in a chat it takes that one's place: don't put both on one chat input (two strips would overlap).
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - It fills the chat panel it's laid over (an absolutely positioned `Box` covering the panel), on a clear background; the chat's messages and input sit above it.
 - It follows the elements you point it at: `chatInputRef` (idle sits under the chat input, centred) and `thinkingRef` (thinking loops on the thinking row's spot). It measures them every frame, so it follows them as the chat moves. Without them, it lays itself out as Razorpay's reference chat (a chat input centred across the panel near its bottom).

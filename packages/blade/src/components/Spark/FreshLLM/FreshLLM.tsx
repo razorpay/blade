@@ -21,7 +21,8 @@ const ROOM = { x: 0, y: 491 };
  * in, and settles there to idle, pulsing into its typing surge as the next question is typed. Like RazorSense, it follows
  * Blade's color scheme (BladeProvider): light and dark are the same component. It draws on a clear background over the chat
  * panel it fills, following the chat input and the thinking row you point it at (`chatInputRef`, `thinkingRef`; without them,
- * flow 9's chat layout). Paused off-screen.
+ * flow 9's chat layout). Its idle is FreshChatBackground's strip, so it takes that one's place in a chat: don't put both on one
+ * chat input. Paused off-screen.
  *
  * @example
  * ```tsx
@@ -58,6 +59,9 @@ const FreshLLM = ({
   const stageRef = useRef<FreshStage | null>(null);
   const driverRef = useRef<ChatDriver | null>(null);
   const variantRef = useRef(variant);
+  // read when the engine is up (it loads asynchronously, so a pause set before then still counts)
+  const isPausedRef = useRef(isPaused);
+  isPausedRef.current = isPaused;
   variantRef.current = variant;
   // reduced motion: moves to a variant and draws its settled still frame (set once the engine is up)
   const stillRef = useRef<((next: NonNullable<FreshLLMProps['variant']>) => void) | null>(null);
@@ -126,7 +130,7 @@ const FreshLLM = ({
           driver.setAnchors(anchorsRef.current(), s, ROOM); // (every frame, as flow 9: the chat moves, it follows)
           driver.step(eng.player, dt, performance.now());
         });
-        stage.setPaused(isPaused);
+        stage.setPaused(isPausedRef.current);
       })
       .catch(() => {
         // the engine couldn't load: nothing drawn

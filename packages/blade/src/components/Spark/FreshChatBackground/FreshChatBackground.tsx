@@ -30,6 +30,9 @@ const INPUT_MIDDLE: [number, number] = [
  * pulses into its typing surge and dies back down to idle when they stop. Like RazorSense, it follows Blade's color scheme
  * (BladeProvider): light and dark are the same component.
  *
+ * It's for a chat input on its own (a landing, a home screen). Inside an assistant chat, use FreshLLM: its idle is this same
+ * strip under the chat input, so don't put both on one chat input (two strips would overlap).
+ *
  * Its box is the chat input's: lay it over the chat input. The strip stretches to the input's width and height (the bands keep
  * their size) and its glow spills outside the box, on a clear background, so the page shows through. Paused off-screen.
  *
@@ -61,6 +64,9 @@ const FreshChatBackground = ({
   const engineRef = useRef<FreshEngine | null>(null);
   const typingRef = useRef<TypingSurge | null>(null);
   const variantRef = useRef(variant);
+  // read when the engine is up (it loads asynchronously, so a pause set before then still counts)
+  const isPausedRef = useRef(isPaused);
+  isPausedRef.current = isPaused;
   variantRef.current = variant;
   // reduced motion: draws the still frame for the current variant (set once the engine is up)
   const stillRef = useRef<(() => void) | null>(null);
@@ -147,7 +153,7 @@ const FreshChatBackground = ({
           typing.setHeld(variantRef.current === 'typing-surge', now);
           typing.step(eng.player, dt, now, duration);
         });
-        stage.setPaused(isPaused);
+        stage.setPaused(isPausedRef.current);
       })
       .catch(() => {
         // the engine couldn't load: nothing drawn
