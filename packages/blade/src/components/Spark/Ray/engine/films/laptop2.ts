@@ -247,7 +247,7 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 // blended into it, its screen going on in real time (cut: when, how far on we jumped, where the laptop was). Handed off (the films page): the
 // next film's Ray starts from his pose at once, and this page draws only the laptop going, above or below that Ray as it's in front or behind
 let PACE = 1, cut = null, only = false, sentFront = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
-const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'working' }, '*'); } };
+const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'working' }); } };
 if (EMBED) document.body.classList.add('embed');
 const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height; view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -540, 404, 0.3, 0.68); view.scale *= ZOOM; };   // embedded: every film on the same stage
 addEventListener('resize', size); size();
@@ -276,13 +276,13 @@ function frame(now) {
   if (P.vis && !P.front) drawLaptop(ctx, P);                                                  // behind him: his body covers it
   if (!only) ctx.drawImage(off, 0, 0);
   if (P.vis && P.front) drawLaptop(ctx, P);
-  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'working', v: P.front }, '*'); }   // the films page puts this page above or below the next one's Ray
+  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'working', v: P.front }); }   // the films page puts this page above or below the next one's Ray
   document.getElementById('phase').textContent = phaseOf(t);
   document.getElementById('leave').disabled = leaving;
 }
 requestAnimationFrame(frame);
 function leave(handoff) { if (leaving) return; const now = performance.now(), t = now - t0; leaving = true; only = !!(EMBED && handoff);
-  if (only) parent.postMessage({ ray: 'left', film: 'working', f: capCarry(lastF) }, '*');   // his pose (and the cap's swing): the next film's Ray starts from it
+  if (only) parent.postMessage({ ray: 'left', film: 'working', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, d: F.X - t, p0: LS.pos.slice(), k0: LS.k }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; SH.last = F.X; }   // the keys it skipped don't all land at once
 function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; clickT = null; seed = 1; F = film(Q, seed); sim = simulate(F.SCRIPT, { seed }); t0 = performance.now(); LS.x = S0[0]; LS.pos = S0; LS.k = K0; LS.front = false; Object.assign(SH, { x: 0, y: 0, a: 0, lid: 0, vx: 0, vy: 0, va: 0, vl: 0, bx: 0, by: 0, ba: 0, vbx: 0, vby: 0, vba: 0, sx: 0, vsx: 0, last: -1 }); }
 function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
@@ -319,11 +319,11 @@ document.getElementById('replay').onclick = replay; document.getElementById('lea
 document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
 addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
   if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }, '*'); return; }   // inside the films page: its keys are the page's
+  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
   if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
-if (EMBED) parent.postMessage({ ray: 'ready', film: 'working' }, '*');
+if (EMBED) parent.postMessage({ ray: 'ready', film: 'working' });
 // ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
 const HIST = { undo: [], redo: [], snap: null };
 panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was

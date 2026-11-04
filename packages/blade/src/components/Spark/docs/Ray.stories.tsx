@@ -93,30 +93,92 @@ const OnChatInput = ({
   );
 };
 
+const NAMES: Record<Cycle, string> = {
+  coffee: 'Coffee',
+  look: 'Look around',
+  cash: 'Cash',
+  reading: 'Reading box',
+  sleep: 'Nightcap',
+};
+const clock = (hour: number): string =>
+  `${hour % 12 === 0 ? 12 : hour % 12} ${hour < 12 ? 'am' : 'pm'}`;
+const odds = (hour: number): string =>
+  IDLE_CYCLE.map((i) => `${NAMES[i]} ${Math.round(idleChances(hour)[i] * 100)}%`).join(' · ');
+const NOW = -1; // the `hour` control's "now": the real clock
+
 /**
  * The Ray on the chat input: his idle, the typing look, the hover look, the coin flip, and the hop off (`isHidden`, what
  * he does when a question is sent). The answer states aren't here: on the dashboard the Ray on the input hides while a
  * separate Ray in the answer's row plays them (see Answer row).
+ *
+ * `idle: timeOfDay` picks his idle by the clock (the nightcap only and likeliest 9pm–6am, never Coffee then; Coffee likeliest
+ * 7–10am). With it the `hour` control appears: Now is the real clock; another hour shows what he'd get then, by the same rules.
  */
-const OnChatBoxTemplate: StoryFn<typeof Ray> = (args) => (
-  <Box
-    padding="spacing.10"
-    display="flex"
-    flexDirection="column"
-    alignItems="center"
-    gap="spacing.6"
-  >
-    <OnChatInput rayProps={args} />
-    <Text size="small" color="surface.text.gray.muted">
-      Type to see him watch the caret. Move the pointer anywhere: he looks at it. Click him for a
-      coin flip (click again while it&apos;s up for another).
-    </Text>
-  </Box>
-);
+const OnChatBoxTemplate: StoryFn<RayProps & { hour?: number }> = ({ hour = NOW, ...args }) => {
+  const byClock = args.idle === 'timeOfDay';
+  const pretend = byClock && hour !== NOW;
+  const [pick, setPick] = useState<{ hour: number; idle: Cycle } | null>(null);
+  const current = pretend && pick?.hour === hour ? pick : null;
+  if (pretend && !current) setPick({ hour, idle: idleAt(hour, Math.random, pick?.idle) }); // another hour: his pick for it
+  const idle = pretend ? current?.idle ?? 'rest' : args.idle;
+  return (
+    <Box
+      padding="spacing.10"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      gap="spacing.6"
+    >
+      <OnChatInput rayProps={{ ...args, idle }} />
+      <Text size="small" color="surface.text.gray.muted">
+        Type to see him watch the caret. Move the pointer anywhere: he looks at it. Click him for a
+        coin flip (click again while it&apos;s up for another).
+      </Text>
+      {byClock ? (
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <Text size="small">
+            {current
+              ? `At ${clock(hour)} he got ${NAMES[current.idle]}. The odds then: ${odds(hour)}`
+              : `By your clock (${clock(new Date().getHours())}): ${odds(new Date().getHours())}`}
+          </Text>
+          {current ? (
+            <Button
+              size="small"
+              variant="secondary"
+              onClick={() => setPick({ hour, idle: idleAt(hour, Math.random, current.idle) })}
+            >
+              Pick again
+            </Button>
+          ) : null}
+        </Box>
+      ) : null}
+    </Box>
+  );
+};
 
 export const OnChatBox = OnChatBoxTemplate.bind({});
 OnChatBox.storyName = 'On the chat box';
-OnChatBox.args = { idle: 'rotate', size: 'medium', isHidden: false, isInteractive: true };
+OnChatBox.args = {
+  idle: 'rotate',
+  size: 'medium',
+  isHidden: false,
+  isInteractive: true,
+  hour: NOW,
+};
+OnChatBox.argTypes = {
+  hour: {
+    description: "Pretend it's this hour (for `idle: timeOfDay`). Now uses the real clock.",
+    options: [NOW, ...Array.from({ length: 24 }, (_, h) => h)],
+    control: {
+      type: 'select',
+      labels: Object.fromEntries([
+        [NOW, 'Now (your clock)'],
+        ...Array.from({ length: 24 }, (_, h) => [h, clock(h)]),
+      ]),
+    },
+    if: { arg: 'idle', eq: 'timeOfDay' },
+  },
+};
 OnChatBox.parameters = { controls: { exclude: ['state'] } };
 
 /**
@@ -302,58 +364,3 @@ const AllIdlesTemplate: StoryFn<typeof Ray> = () => (
 export const AllIdles = AllIdlesTemplate.bind({});
 AllIdles.storyName = 'All idles';
 AllIdles.parameters = { controls: { disable: true } };
-
-const NAMES: Record<Cycle, string> = {
-  coffee: 'Coffee',
-  look: 'Look around',
-  cash: 'Cash',
-  reading: 'Reading box',
-  sleep: 'Nightcap',
-};
-const clock = (hour: number): string =>
-  `${hour % 12 === 0 ? 12 : hour % 12} ${hour < 12 ? 'am' : 'pm'}`;
-
-/**
- * `idle="timeOfDay"`: his idle by the viewer's clock, checked each time a Ray appears. The nightcap (Sleep) only at night,
- * 9pm–6am, and likeliest then (half the time), never Coffee then; Coffee likeliest 7–10am (half the time); evenly otherwise, and not
- * the last Ray's idle again unless it's the hour's favourite. While he's up the clock's checked every half minute, and an idle the
- * hour has since ruled out (Coffee at 9pm) gives way to another. Here the hour is pretend (`hour`), so any time can be tried: Next
- * load draws what the next Ray would get. (On the chat box with `idle: timeOfDay` uses the real clock.)
- */
-const TimeOfDayTemplate: StoryFn<{ hour: number }> = ({ hour }) => {
-  const [pick, setPick] = useState(() => ({ hour, idle: idleAt(hour, Math.random) }));
-  if (pick.hour !== hour) setPick({ hour, idle: idleAt(hour, Math.random, pick.idle) }); // another hour: another load's pick
-  const { idle } = pick;
-  const chances = idleChances(hour);
-  return (
-    <Box
-      padding="spacing.10"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      gap="spacing.6"
-    >
-      <OnChatInput rayProps={{ idle }} />
-      <Text size="small">
-        At {clock(hour)} this load got {NAMES[idle]}.
-      </Text>
-      <Text size="small" color="surface.text.gray.muted">
-        Chances at {clock(hour)}:{' '}
-        {IDLE_CYCLE.map((i) => `${NAMES[i]} ${Math.round(chances[i] * 100)}%`).join(' · ')}
-      </Text>
-      <Button
-        size="small"
-        variant="secondary"
-        onClick={() => setPick({ hour, idle: idleAt(hour, Math.random, idle) })}
-      >
-        Next load
-      </Button>
-    </Box>
-  );
-};
-
-export const TimeOfDay = TimeOfDayTemplate.bind({});
-TimeOfDay.storyName = 'Time of day';
-TimeOfDay.args = { hour: new Date().getHours() };
-TimeOfDay.argTypes = { hour: { control: { type: 'range', min: 0, max: 23, step: 1 } } };
-TimeOfDay.parameters = { controls: { include: ['hour'] } };

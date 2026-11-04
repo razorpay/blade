@@ -61,8 +61,8 @@ type RayProps = {
    */
   inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement>;
   /**
-   * Whether he reacts to the pointer: he looks at it when it's near him, and a click on him flips a coin (click again
-   * while it's up for another).
+   * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
+   * again while it's up for another).
    *
    * @default true
    */

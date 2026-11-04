@@ -304,11 +304,11 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 // leaving at any moment: the exit starts now from wherever it is, his pose and the paper blended into it (cut: when, where it was). Handed off
 // (the films page): the next film's Ray starts from his pose at once, and this page draws only the paper going
 let PACE = 1, only = false, sentFront = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number' && k !== 'q') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
-const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'readbox' }, '*'); } };
-const exiting = () => { if (EMBED) parent.postMessage({ ray: 'exiting', film: 'readbox', f: lastF }, '*'); };   // asked to go: the bit he was on is finished, his exit starts now
+const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'readbox' }); } };
+const exiting = () => { if (EMBED) parent.postMessage({ ray: 'exiting', film: 'readbox', f: lastF }); };   // asked to go: the bit he was on is finished, his exit starts now
 const finished = () => { if (COINFLIP.ask) { flipStart(lastF, COINFLIP.ask.toss); return; } SQH.tell = true; sqGo(performance.now()); };   // the bit's over: into the flip's squash (from rest it's already on its way)   // 'finished' once he's eased into his rest look (restTell, from the frame)
-const restTell = () => { SQH.tell = false; if (EMBED) parent.postMessage({ ray: 'finished', film: 'readbox', pose: 'squash', f: lastF }, '*'); };   // in the squash, still: flow 9's engine takes him on into the throw   // (asked for the flip: it starts here, from this pose)
-const flipped = () => { if (EMBED) parent.postMessage({ ray: 'flipped', film: 'readbox' }, '*'); };   // the flip done, he's back in his loop   // asked to finish: the bit's at its end, he's at rest by the box, holding there
+const restTell = () => { SQH.tell = false; if (EMBED) parent.postMessage({ ray: 'finished', film: 'readbox', pose: 'squash', f: lastF }); };   // in the squash, still: flow 9's engine takes him on into the throw   // (asked for the flip: it starts here, from this pose)
+const flipped = () => { if (EMBED) parent.postMessage({ ray: 'flipped', film: 'readbox' }); };   // the flip done, he's back in his loop   // asked to finish: the bit's at its end, he's at rest by the box, holding there
 if (EMBED) document.body.classList.add('embed');
 const cv = document.getElementById('stage'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
 const PARK_EASE = 500;   // ms: his last moves slow to a stop as he comes to the hold (no sudden halt)
@@ -365,7 +365,7 @@ function frame(now) {
   if (P.vis && !P.front) drawPaper(ctx, P);                                                 // behind him: his body covers it
   if (!only) ctx.drawImage(off, 0, 0);
   if (P.vis && P.front) drawPaper(ctx, P);
-  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'readbox', v: P.front }, '*'); }   // the films page puts this page above or below the next one's Ray
+  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'readbox', v: P.front }); }   // the films page puts this page above or below the next one's Ray
   document.getElementById('phase').textContent = phaseOf(t);
   document.getElementById('leave').disabled = leaving || !!pendingLeave;
 }
@@ -376,7 +376,7 @@ function leave(handoff, finish) { if (leaving || pendingLeave) return; if (parke
   if (finish && t >= F.pull[0] && t < F.fly[1] + 260) { pendingLeave = { at: F.fly[1] + 260, handoff }; return; }   // asked to finish (flow 9): the paper in hand read, thrown, him back at the box, at its own pace
   doLeave(handoff); }
 function doLeave(handoff) { if (leaving) return; const now = performance.now(), t = now - t0; leaving = true; only = !!(EMBED && handoff); exiting();
-  if (only) parent.postMessage({ ray: 'left', film: 'readbox', f: capCarry(lastF) }, '*');   // his pose (and the cap's swing): the next film's Ray starts from it
+  if (only) parent.postMessage({ ray: 'left', film: 'readbox', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, tc: Math.max(F.E, Math.min(t, F.X)) }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }   // it stays where it's slid to
 // ---- finishing (flow 9, the user 2026-10-30: a click on him "shouldn't instantly do the coin flip, he should finish these motions, then flip; a random
 //      loop, like scanning the paper 5 times, he finishes the current pass"): the bit he's on runs to its natural end at its own pace (the box tilted or
@@ -475,13 +475,13 @@ document.getElementById('replay').onclick = replay; document.getElementById('lea
 document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
 addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
   if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }, '*'); return; }   // inside the films page: its keys are the page's
+  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
   if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'flip') { if (COINFLIP.on && (flipSpam() || !COINFLIP.backed)) return; if (COINFLIP.ask || leaving) return;   // (mid-flip: another coin, while this one's up; back from it, its coin still falling: another flip)
     if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; } if (m.ray === 'undo') return undoRedo(!!m.redo); if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; return; }   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; if (parked != null || parkAt != null) resume(m); else { replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff, !!m.finish);
   else if (m.ray === 'finish') finish(); else if (m.ray === 'resume') { asleep = false; resume(m); } else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
-if (EMBED) parent.postMessage({ ray: 'ready', film: 'readbox', flip: true, fromPose: true }, '*');   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
+if (EMBED) parent.postMessage({ ray: 'ready', film: 'readbox', flip: true, fromPose: true });   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
 // ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
 const HIST = { undo: [], redo: [], snap: null };
 panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was

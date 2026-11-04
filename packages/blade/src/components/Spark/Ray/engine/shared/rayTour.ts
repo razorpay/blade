@@ -20,7 +20,7 @@ function placed(view, cw) {   // the film's view, or Ray where the page wants hi
   const p = TOUR.place; if (!p) return view; const d = cw / Math.max(1, $h.innerWidth), scale = p.k * d / FIG;
   return { ...view, scale, ox: p.x * d + FIG * 404.5 / 2 * scale, oy: p.y * d };
 }
-function tourLoop(film) { if (TOUR.on && parent !== window) parent.postMessage({ ray: 'loop', film }, '*'); }   // a loop played
+function tourLoop(film) { if (TOUR.on && parent !== window) parent.postMessage({ ray: 'loop', film }); }   // a loop played
 
 return { TOUR, placeMsg, placed, tourLoop };
 }

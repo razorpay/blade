@@ -209,7 +209,7 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 // leaving at any moment (the films page switches the moment you click): the exit starts now from wherever it is, his pose and the glass
 // blended into it. Handed off (the films page): the next film's Ray starts from his pose at once, and this page draws only the glass going
 let PACE = 1, cut = null, only = false, sentFront = null, lastP = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
-const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'search' }, '*'); } };
+const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'search' }); } };
 if (EMBED) document.body.classList.add('embed');
 const size = () => { const d = $h.devicePixelRatio || 1; for (const c of [rayCv, lensCv, glassCv]) { c.width = Math.round($h.innerWidth * d); c.height = Math.round($h.innerHeight * d); } off.width = rayCv.width; off.height = rayCv.height;
   view = EMBED ? fitTravel(rayCv.width, rayCv.height, -740, 404, 0.3, 0.68) : fitTravel(rayCv.width, rayCv.height, -260, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, rayCv.width); };   // embedded: every film on the same stage (or where the page puts him)
@@ -236,7 +236,7 @@ function frame(now) {
   ctx.setTransform(1, 0, 0, 1, 0, 0); if (EMBED) ctx.clearRect(0, 0, rayCv.width, rayCv.height); else { ctx.fillStyle = mode === 'dark' ? '#131315' : '#FFFFFF'; ctx.fillRect(0, 0, rayCv.width, rayCv.height); }   // embedded: the films page paints the page
   if (P.vis && !P.front) drawRing(ctx, P);                                                  // behind him: his body covers it
   if (!only) ctx.drawImage(off, 0, 0);
-  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'search', v: P.front }, '*'); }   // the films page puts this page above or below the next one's Ray
+  if (only && P.front !== sentFront) { sentFront = P.front; parent.postMessage({ ray: 'front', film: 'search', v: P.front }); }   // the films page puts this page above or below the next one's Ray
   gctx.setTransform(1, 0, 0, 1, 0, 0); gctx.clearRect(0, 0, glassCv.width, glassCv.height);
   if (P.vis && P.front) { const c = toCanvas(view, [P.x * FIG, (P.y - 377) * FIG]); if (only) drawLens(0, 0, 0); else drawLens(c[0], c[1], magOf().lensR * FIG * view.scale * P.k); drawRing(gctx, P); }   // handed off: clear glass (the Ray behind it is the next film's)
   else drawLens(0, 0, 0);
@@ -246,7 +246,7 @@ function frame(now) {
 }
 requestAnimationFrame(frame);
 function leave(handoff) { if (leaving) return; const now = performance.now(), t = now - t0; leaving = true; only = !!(EMBED && handoff);
-  if (only) parent.postMessage({ ray: 'left', film: 'search', f: capCarry(lastF) }, '*');   // his pose (and the cap's swing): the next film's Ray starts from it
+  if (only) parent.postMessage({ ray: 'left', film: 'search', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, vis0: !!(lastP && lastP.vis) }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
 function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
 function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
@@ -280,11 +280,11 @@ document.getElementById('replay').onclick = replay; document.getElementById('lea
 document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
 addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
   if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }, '*'); return; }   // inside the films page: its keys are the page's
+  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
   if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
-if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' }, '*');
+if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' });
 // ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
 const HIST = { undo: [], redo: [], snap: null };
 panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was

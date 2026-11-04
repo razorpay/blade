@@ -55,10 +55,10 @@ function recolourNow() {   // the cup's art (its version) in the chosen colours 
 // ---- playback: its entry, round and round, its exit when asked (the whole of it: an idle state doesn't hand off); embedded in the films page ----
 const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(new URLSearchParams(location.search).get('zoom') || 1), asleep = false, held = EMBED, doneSent = false;
 let PACE = 1;
-const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'coffee' }, '*'); } };
+const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'coffee' }); } };
 const finished = () => { if (COINFLIP.ask) { flipStart(lastF, COINFLIP.ask.toss); return; } SQH.tell = true; sqGo(performance.now()); };   // 'finished' once he's in the squash (restTell, from the frame)
-const restTell = () => { SQH.tell = false; if (EMBED) parent.postMessage({ ray: 'finished', film: 'coffee', pose: 'squash', f: lastF }, '*'); };   // in the squash, still, the cup away: flow 9's engine takes him on into the throw   // (asked for the flip: it starts here, from this pose)
-const flipped = () => { if (EMBED) parent.postMessage({ ray: 'flipped', film: 'coffee' }, '*'); };   // the flip done, he's back in his loop   // asked to finish: the bit's at its end, he's at rest with the cup by him, holding there
+const restTell = () => { SQH.tell = false; if (EMBED) parent.postMessage({ ray: 'finished', film: 'coffee', pose: 'squash', f: lastF }); };   // in the squash, still, the cup away: flow 9's engine takes him on into the throw   // (asked for the flip: it starts here, from this pose)
+const flipped = () => { if (EMBED) parent.postMessage({ ray: 'flipped', film: 'coffee' }); };   // the flip done, he's back in his loop   // asked to finish: the bit's at its end, he's at rest with the cup by him, holding there
 if (EMBED) document.body.classList.add('embed');
 const cv = document.getElementById('stage'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
 const F = { E: SCRIPT0.entry, X: SCRIPT0.exit };
@@ -164,13 +164,13 @@ document.getElementById('replay').onclick = replay; document.getElementById('lea
 document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
 addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
   if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }, '*'); return; }   // inside the films page: its keys are the page's
+  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
   if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'flip') { if (COINFLIP.on && (flipSpam() || !COINFLIP.backed)) return; if (COINFLIP.ask || leaving) return;   // (mid-flip: another coin, while this one's up; back from it, its coin still falling: another flip)
     if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; } if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; if (parked != null || parkAt != null || awayHeld) resume(m); else replay(); } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave();
   else if (m.ray === 'finish') finish(); else if (m.ray === 'resume') { asleep = false; resume(m); } else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; } else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
-if (EMBED) parent.postMessage({ ray: 'ready', film: 'coffee', flip: true, fromPose: true }, '*');   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
+if (EMBED) parent.postMessage({ ray: 'ready', film: 'coffee', flip: true, fromPose: true });   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
 // ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
 const HIST = { undo: [], redo: [], snap: null };
 panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
