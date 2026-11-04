@@ -123,7 +123,8 @@ type ToastProps = {
   /**
    * Time in milliseconds of the intro motion that `content` plays. Blade does not animate the content.
    *
-   * Works only on promotional toasts. Blade holds the action until the intro ends, then fades it in.
+   * Works only on promotional toasts. Blade holds the action and the progress bar until the intro
+   * ends, then fades them in.
    * With `autoDismiss`, the timer and the progress bar also start after the intro.
    *
    * @platform web

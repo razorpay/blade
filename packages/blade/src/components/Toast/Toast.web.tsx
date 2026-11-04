@@ -23,6 +23,7 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
+import type { Theme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 
 const iconMap = {
@@ -75,12 +76,17 @@ const fadeIn = keyframes`
   }
 `;
 
+// Shows the action and the progress bar when the intro ends
+const getIntroFadeIn = (theme: Theme): FlattenSimpleInterpolation => css`
+  ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
+    ${castWebType(theme.motion.easing.entrance)} both
+`;
+
 // Keeps the space of the action during the intro, so the toast height does not change
 const IntroAction = styled(BaseBox)<{ isIntroDone: boolean }>(({ isIntroDone, theme }) =>
   isIntroDone
     ? css`
-        animation: ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
-          ${castWebType(theme.motion.easing.entrance)} both;
+        animation: ${getIntroFadeIn(theme)};
       `
     : css`
         visibility: hidden;
@@ -100,8 +106,15 @@ const shrink = keyframes`
 const ToastProgressBar = styled(BaseBox)<{
   duration: number;
   isRunning: boolean;
-}>(
-  ({ duration, isRunning, theme }) => css`
+  hasIntro: boolean;
+  isIntroDone: boolean;
+}>(({ duration, isRunning, hasIntro, isIntroDone, theme }) => {
+  const shrinkAnimation = css`
+    ${shrink} ${makeMotionTime(duration)} ${castWebType(theme.motion.easing.linear)} forwards
+  `;
+  const playState = isRunning ? 'running' : 'paused';
+
+  return css`
     position: absolute;
     left: 0;
     right: 0;
@@ -109,11 +122,21 @@ const ToastProgressBar = styled(BaseBox)<{
     height: ${makeSize(TOAST_PROGRESS_BAR_HEIGHT)};
     background-color: ${theme.colors.interactive.background.neutral.default};
     transform-origin: left;
-    animation: ${shrink} ${makeMotionTime(duration)} ${castWebType(theme.motion.easing.linear)}
-      forwards;
-    animation-play-state: ${isRunning ? 'running' : 'paused'};
-  `,
-);
+    ${!isIntroDone
+      ? css`
+          visibility: hidden;
+        `
+      : hasIntro
+      ? css`
+          animation: ${shrinkAnimation}, ${getIntroFadeIn(theme)};
+          animation-play-state: ${playState}, running;
+        `
+      : css`
+          animation: ${shrinkAnimation};
+          animation-play-state: ${playState};
+        `}
+  `;
+});
 
 /**
  * Runs the auto dismiss timer of a promotional toast.
@@ -357,6 +380,8 @@ const Toast = ({
           {...makeAccessible({ hidden: true })}
           duration={duration}
           isRunning={isRunning}
+          hasIntro={hasIntro}
+          isIntroDone={isIntroDone}
           testID="toast-progress-bar"
         />
       ) : null}

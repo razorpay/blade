@@ -66,16 +66,23 @@ describe('<Toast /> promotional timer', () => {
     expect(dismissSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should hold the action until the intro ends', () => {
-    const { getByRole, queryByRole } = renderWithTheme(
-      <ToastExample {...promotionalProps} introDuration={1000} action={{ text: 'Try now' }} />,
+  it('should hold the action and the progress bar until the intro ends', () => {
+    const { getByRole, getByTestId, queryByRole } = renderWithTheme(
+      <ToastExample
+        {...promotionalProps}
+        introDuration={1000}
+        showProgressBar
+        action={{ text: 'Try now' }}
+      />,
     );
     fireEvent.click(getByRole('button', { name: 'Show Toast' }));
 
     expect(queryByRole('button', { name: 'Try now' })).not.toBeInTheDocument();
+    expect(getByTestId('toast-progress-bar')).toHaveStyle({ visibility: 'hidden' });
     expect(getByRole('button', { name: 'Dismiss toast' })).toBeInTheDocument();
     advanceTime(1000);
     expect(getByRole('button', { name: 'Try now' })).toBeInTheDocument();
+    expect(getByTestId('toast-progress-bar')).not.toHaveStyle({ visibility: 'hidden' });
   });
 
   it('should dismiss the toast at the end of duration', () => {
