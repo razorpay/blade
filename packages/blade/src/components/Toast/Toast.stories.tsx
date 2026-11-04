@@ -531,3 +531,46 @@ const PromotionalWithIntroTemplate: StoryFn<ToastProps> = () => {
 
 export const PromotionalWithIntro = PromotionalWithIntroTemplate.bind({});
 PromotionalWithIntro.storyName = 'Promotional With Intro';
+
+const PromotionalGlassTemplate: StoryFn<ToastProps> = () => {
+  const toast = useToast();
+  const { theme } = useTheme();
+  const hasPromoToast = toast.toasts.some((t) => t.type === 'promotional');
+  const introDuration = theme.motion.delay.long;
+
+  const showToast = () => {
+    toast.show({
+      type: 'promotional',
+      variant: 'glass',
+      autoDismiss: true,
+      showProgressBar: true,
+      introDuration,
+      content: <IntroContent introDuration={introDuration} />,
+      action: {
+        text: 'See what is new',
+        variant: 'link',
+        href: 'https://blade.razorpay.com',
+        target: '_blank',
+        icon: ArrowRightIcon,
+        iconPosition: 'right',
+      },
+    });
+  };
+
+  return (
+    <Box height="80vh">
+      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
+        The glass variant has a lighter blur, a thinner border and a larger corner radius. It scales
+        in and out from its centre. The intro, the progress bar, the pause and the link action work
+        as on the default variant.
+      </Text>
+      <Button onClick={showToast} isDisabled={hasPromoToast}>
+        Show Promotional Toast
+      </Button>
+      <ToastContainer />
+    </Box>
+  );
+};
+
+export const PromotionalGlass = PromotionalGlassTemplate.bind({});
+PromotionalGlass.storyName = 'Promotional Glass';

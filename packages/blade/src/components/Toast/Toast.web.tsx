@@ -66,6 +66,48 @@ const slideOut = keyframes`
   }
 `;
 
+const scaleIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: blur(0.5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: none;
+  }
+`;
+
+const scaleOut = keyframes`
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+`;
+
+// Informational toasts always use the `default` motion
+const toastMotion = {
+  default: {
+    enter: slideIn,
+    enterDuration: 'gentle',
+    exit: slideOut,
+    exitDuration: 'moderate',
+  },
+  glass: {
+    enter: scaleIn,
+    enterDuration: 'moderate',
+    exit: scaleOut,
+    exitDuration: 'quick',
+  },
+} as const;
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -272,10 +314,12 @@ const usePromotionalTimer = ({
 const AnimatedFade = styled(BaseBox)<{
   animationType: FlattenSimpleInterpolation | null;
   toastBorderColor: string;
-}>(({ animationType, toastBorderColor, theme }) => {
-  const borderShadow = `inset 0 0 0 1px ${toastBorderColor}`;
+  isGlass: boolean;
+}>(({ animationType, toastBorderColor, isGlass, theme }) => {
+  const borderWidth = isGlass ? theme.border.width.thinner : theme.border.width.thin;
+  const borderShadow = `inset 0 0 0 ${borderWidth}px ${toastBorderColor}`;
   const highlightShadow = `inset 0px 1.5px 0px 0px ${theme.colors.interactive.background.staticWhite.fadedHighlighted}`;
-  const backdropBlur = theme.backdropBlur.medium;
+  const backdropBlur = isGlass ? theme.backdropBlur.low : theme.backdropBlur.medium;
 
   return css`
     overflow: hidden;
@@ -296,6 +340,7 @@ const Toast = ({
   duration = Infinity,
   introDuration = 0,
   showProgressBar = false,
+  variant = 'default',
   isVisible,
   id,
 }: ToastProps & {
@@ -303,6 +348,8 @@ const Toast = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const isPromotional = type === 'promotional';
+  const isGlass = isPromotional && variant === 'glass';
+  const motion = toastMotion[isGlass ? 'glass' : 'default'];
   const Icon = isPromotional ? leading : leading || iconMap[color];
   const hasAutoDismissTimer = isPromotional && Boolean(autoDismiss) && Number.isFinite(duration);
   const hasProgressBar = hasAutoDismissTimer && showProgressBar;
@@ -378,13 +425,13 @@ const Toast = ({
 
   const enter = css`
     opacity: 0;
-    animation: ${slideIn} ${makeMotionTime(theme.motion.duration.gentle)}
+    animation: ${motion.enter} ${makeMotionTime(theme.motion.duration[motion.enterDuration])}
       ${castWebType(theme.motion.easing.entrance)} forwards;
   `;
 
   const exit = css`
     opacity: 1;
-    animation: ${slideOut} ${makeMotionTime(theme.motion.duration.moderate)}
+    animation: ${motion.exit} ${makeMotionTime(theme.motion.duration[motion.exitDuration])}
       ${castWebType(theme.motion.easing.exit)} forwards;
   `;
 
@@ -398,13 +445,14 @@ const Toast = ({
         isPromotional ? 'popup.border.gray.moderate' : borderColorMap[color],
       )}
       animationType={isVisible ? enter : exit}
+      isGlass={isGlass}
       position={hasProgressBar ? 'relative' : undefined}
       width="100%"
       display="flex"
       gap="spacing.3"
       paddingX="spacing.4"
       paddingY={isPromotional ? 'spacing.4' : 'spacing.3'}
-      borderRadius="medium"
+      borderRadius={isGlass ? 'large' : 'medium'}
       alignItems="center"
       backgroundColor={
         isPromotional ? 'popup.background.gray.moderate' : `popup.background.${color}.moderate`

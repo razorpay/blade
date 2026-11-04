@@ -132,6 +132,19 @@ type ToastProps = {
   }) => void;
 
   /**
+   * Look of a promotional toast.
+   *
+   * `glass` uses a lighter backdrop blur, a thinner border and a larger corner radius.
+   * It scales in and out from its centre instead of sliding.
+   *
+   * Works only on promotional toasts. Informational toasts ignore it.
+   *
+   * @platform web
+   * @default 'default'
+   */
+  variant?: 'default' | 'glass';
+
+  /**
    * Time in milliseconds of the intro motion that `content` plays. Blade does not animate the content.
    *
    * Works only on promotional toasts. Blade holds the action and the progress bar until the intro
