@@ -303,6 +303,7 @@ toast.show({
 ```
 
 - `introDuration` delays the auto dismiss timer and the progress bar. The consumer plays the intro motion inside `content`. Blade does not animate the content.
+- With `introDuration`, Blade holds the action until the intro ends, then fades it in. The action keeps its space during the intro, so the toast height does not change. The dismiss button shows from the start.
 - `showProgressBar` shows a 2px bar on the bottom edge of the toast. The bar shrinks from full width to zero over `duration` with linear easing.
 - The timer and the bar pause when the pointer is over the toast or focus is inside it. They resume from where they stopped.
 - `action.variant: 'link'` renders a `Link`. It renders an anchor when `href` is given, else a button element.
@@ -373,10 +374,11 @@ type ToastProps = {
   // ...existing props
 
   /**
-   * Time in ms before the auto dismiss timer and the progress bar start.
-   * Use it when `content` plays its own intro motion.
+   * Time in ms of the intro motion that `content` plays.
+   * Blade holds the action until the intro ends, then fades it in.
+   * With `autoDismiss`, the timer and the progress bar also start after the intro.
    *
-   * Works only on promotional toasts with `autoDismiss`.
+   * Works only on promotional toasts.
    *
    * @platform web
    * @default 0

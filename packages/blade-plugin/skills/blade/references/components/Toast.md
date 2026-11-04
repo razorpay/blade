@@ -103,10 +103,11 @@ type ToastProps = {
   }) => void;
 
   /**
-   * Time in ms before the auto dismiss timer and the progress bar start.
-   * Use it when `content` plays its own intro motion. Blade does not animate the content.
+   * Time in ms of the intro motion that `content` plays. Blade does not animate the content.
+   * Blade holds the action until the intro ends, then fades it in.
+   * With `autoDismiss`, the timer and the progress bar also start after the intro.
    *
-   * Works only on promotional toasts with `autoDismiss` (web only).
+   * Works only on promotional toasts (web only).
    *
    * @default 0
    */
@@ -158,7 +159,7 @@ type UseToastReturn = {
 - Use `type="promotional"` for richer content that requires user acknowledgment.
 - Keep action labels short — a single verb like "Undo" or "Retry".
 - Use `showProgressBar` on a promotional toast with `autoDismiss` to show the time left. The timer and the bar pause while the pointer is over the toast or focus is inside it.
-- Use `introDuration` when the promotional `content` plays its own intro. Set it to the length of the intro, so the timer starts with the main content.
+- Use `introDuration` when the promotional `content` plays its own intro. Set it to the length of the intro. The action fades in when the intro ends, and the timer starts then.
 - Keep every frame of multi-frame `content` the same height, for example with one grid cell for all frames. The toast measures its height once, at show.
 - Use `action.variant: 'link'` with `href` for a call to action that opens a page.
 - Use semantic `color` values to match the feedback intent (`positive` for success, `negative` for errors).
@@ -171,7 +172,7 @@ type UseToastReturn = {
 - Don't render `ToastContainer` inside `BladeProvider` children if you have nested providers — place it at the app root.
 - Don't rely on `onDismissButtonClick` for detecting auto-dismiss — it only fires on manual dismiss.
 - Don't use long sentences as toast content — keep messages concise and scannable.
-- Don't use `introDuration` or `showProgressBar` on informational toasts — they work only on promotional toasts with `autoDismiss`.
+- Don't use `introDuration` or `showProgressBar` on informational toasts — they work only on promotional toasts. `showProgressBar` also needs `autoDismiss`.
 
 ## Example
 

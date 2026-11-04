@@ -18,7 +18,6 @@ import { Button } from '~components/Button';
 import { Heading, Text } from '~components/Typography';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { AnnouncementIcon, ArrowRightIcon } from '~components/Icons';
-import { Link } from '~components/Link';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
 
 const Page = (): React.ReactElement => {
@@ -454,17 +453,6 @@ const IntroContent = ({ introDuration }: { introDuration: number }) => {
         <Box display="flex" gap="spacing.2" flexDirection="column">
           <Heading size="small">Reports are now faster</Heading>
           <Text size="small">Download any report in a few seconds.</Text>
-          <Box>
-            <Link
-              size="small"
-              href="https://blade.razorpay.com"
-              target="_blank"
-              icon={ArrowRightIcon}
-              iconPosition="right"
-            >
-              See what is new
-            </Link>
-          </Box>
         </Box>
       </Frame>
     </Box>
@@ -484,14 +472,22 @@ const PromotionalWithIntroTemplate: StoryFn<ToastProps> = () => {
       showProgressBar: true,
       introDuration,
       content: <IntroContent introDuration={introDuration} />,
+      action: {
+        text: 'See what is new',
+        variant: 'link',
+        href: 'https://blade.razorpay.com',
+        target: '_blank',
+        icon: ArrowRightIcon,
+        iconPosition: 'right',
+      },
     });
   };
 
   return (
     <Box height="80vh">
       <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
-        The content plays its own intro. The introDuration prop matches the intro, so the timer and
-        the bar start with the main content. Keep every frame the same height.
+        The content plays its own intro. The introDuration prop matches the intro, so the action,
+        the timer and the bar start with the main content. Keep every frame the same height.
       </Text>
       <Button onClick={showToast} isDisabled={hasPromoToast}>
         Show Promotional Toast

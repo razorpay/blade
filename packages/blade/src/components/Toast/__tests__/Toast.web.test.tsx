@@ -66,6 +66,18 @@ describe('<Toast /> promotional timer', () => {
     expect(dismissSpy).toHaveBeenCalledTimes(1);
   });
 
+  it('should hold the action until the intro ends', () => {
+    const { getByRole, queryByRole } = renderWithTheme(
+      <ToastExample {...promotionalProps} introDuration={1000} action={{ text: 'Try now' }} />,
+    );
+    fireEvent.click(getByRole('button', { name: 'Show Toast' }));
+
+    expect(queryByRole('button', { name: 'Try now' })).not.toBeInTheDocument();
+    expect(getByRole('button', { name: 'Dismiss toast' })).toBeInTheDocument();
+    advanceTime(1000);
+    expect(getByRole('button', { name: 'Try now' })).toBeInTheDocument();
+  });
+
   it('should dismiss the toast at the end of duration', () => {
     const { getByRole, queryByText } = renderWithTheme(<ToastExample {...promotionalProps} />);
     fireEvent.click(getByRole('button', { name: 'Show Toast' }));
