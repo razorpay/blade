@@ -458,23 +458,30 @@ const Frame = styled.div<{ phase: 'waiting' | 'entering' | 'exiting' }>(
 );
 
 const IntroContent = ({ introDuration }: { introDuration: number }) => {
-  const [isIntroDone, setIsIntroDone] = React.useState(false);
+  const { theme } = useTheme();
+  const [step, setStep] = React.useState<'intro' | 'introExit' | 'main'>('intro');
+  const exitDuration = theme.motion.duration.moderate;
 
   React.useEffect(() => {
-    const timeout = setTimeout(() => setIsIntroDone(true), introDuration);
-    return () => clearTimeout(timeout);
-  }, [introDuration]);
+    // The intro frame is fully gone at introDuration, so two frames never show together
+    const exitTimeout = setTimeout(() => setStep('introExit'), introDuration - exitDuration);
+    const mainTimeout = setTimeout(() => setStep('main'), introDuration);
+    return () => {
+      clearTimeout(exitTimeout);
+      clearTimeout(mainTimeout);
+    };
+  }, [introDuration, exitDuration]);
 
   return (
     <Box display="grid">
-      <Frame phase={isIntroDone ? 'exiting' : 'entering'}>
+      <Frame phase={step === 'intro' ? 'entering' : 'exiting'}>
         <Heading size="large">
           Meet your new
           <br />
           reports page
         </Heading>
       </Frame>
-      <Frame phase={isIntroDone ? 'entering' : 'waiting'}>
+      <Frame phase={step === 'main' ? 'entering' : 'waiting'}>
         <Box display="flex" gap="spacing.2" flexDirection="column">
           <Heading size="small">Reports are now faster</Heading>
           <Text size="small">Download any report in a few seconds.</Text>
