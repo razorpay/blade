@@ -53,7 +53,7 @@ export default {
     state: { control: 'select', options: ['idle', 'searching', 'calling', 'writing', 'working'] },
     idle: {
       control: 'select',
-      options: ['rotate', 'rest', 'coffee', 'look', 'cash', 'reading', 'sleep', 'timeOfDay'],
+      options: ['rotate', 'rest', 'coffee', 'look', 'cash', 'reading', 'sleep', 'time-of-day'],
     },
     size: { control: 'radio', options: ['small', 'medium'] },
     inputRef: { table: { disable: true } },
@@ -79,7 +79,7 @@ const OnChatInput = ({
       </Box>
       <Box position="relative" zIndex={1}>
         <ChatInput
-          ref={inputRef as never}
+          ref={inputRef}
           value={value}
           onChange={({ value: v }) => setValue(v ?? '')}
           onSubmit={({ value: v }) => {
@@ -111,11 +111,11 @@ const NOW = -1; // the `hour` control's "now": the real clock
  * he does when a question is sent). The answer states aren't here: on the dashboard the Ray on the input hides while a
  * separate Ray in the answer's row plays them (see Answer row).
  *
- * `idle: timeOfDay` picks his idle by the clock (the nightcap only and likeliest 9pm–6am, never Coffee then; Coffee likeliest
+ * `idle: time-of-day` picks his idle by the clock (the nightcap only and likeliest 9pm–6am, never Coffee then; Coffee likeliest
  * 7–10am). With it the `hour` control appears: Now is the real clock; another hour shows what he'd get then, by the same rules.
  */
 const OnChatBoxTemplate: StoryFn<RayProps & { hour?: number }> = ({ hour = NOW, ...args }) => {
-  const byClock = args.idle === 'timeOfDay';
+  const byClock = args.idle === 'time-of-day';
   const pretend = byClock && hour !== NOW;
   const [pick, setPick] = useState<{ hour: number; idle: Cycle } | null>(null);
   const current = pretend && pick?.hour === hour ? pick : null;
@@ -167,7 +167,7 @@ OnChatBox.args = {
 };
 OnChatBox.argTypes = {
   hour: {
-    description: "Pretend it's this hour (for `idle: timeOfDay`). Now uses the real clock.",
+    description: "Pretend it's this hour (for `idle: time-of-day`). Now uses the real clock.",
     options: [NOW, ...Array.from({ length: 24 }, (_, h) => h)],
     control: {
       type: 'select',
@@ -176,7 +176,7 @@ OnChatBox.argTypes = {
         ...Array.from({ length: 24 }, (_, h) => [h, clock(h)]),
       ]),
     },
-    if: { arg: 'idle', eq: 'timeOfDay' },
+    if: { arg: 'idle', eq: 'time-of-day' },
   },
 };
 OnChatBox.parameters = { controls: { exclude: ['state'] } };
@@ -328,7 +328,7 @@ export const DashboardFlow = DashboardFlowTemplate.bind({});
 DashboardFlow.storyName = 'Dashboard flow';
 DashboardFlow.parameters = { controls: { disable: true } };
 
-const IDLES: Exclude<RayIdle, 'rotate' | 'rest' | 'timeOfDay'>[] = [
+const IDLES: Exclude<RayIdle, 'rotate' | 'rest' | 'time-of-day'>[] = [
   'coffee',
   'look',
   'cash',

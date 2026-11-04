@@ -3,7 +3,7 @@ import { idleAllowed, idleAt, idleByClock, idleChances } from '../rayIdles';
 const HOURS = Array.from({ length: 24 }, (_, h) => h);
 const isNight = (h: number): boolean => h >= 21 || h < 6;
 
-describe('idle="timeOfDay"', () => {
+describe('idle="time-of-day"', () => {
   it('should only give the nightcap at night (9pm-6am), as the likeliest idle then', () => {
     HOURS.forEach((h) => {
       const c = idleChances(h);

@@ -22,7 +22,7 @@ import type { RayIdle, RayState } from './types';
 const RC = RayCore as any;
 
 type ActiveState = Exclude<RayState, 'idle'>;
-type Idle = Exclude<RayIdle, 'rotate' | 'timeOfDay'>;
+type Idle = Exclude<RayIdle, 'rotate' | 'time-of-day'>;
 
 const ANSWER_ORDER: ActiveState[] = ['searching', 'calling', 'writing', 'working']; // an answer's states, in the order they come
 const ANSWER_FILMS: Record<ActiveState, string> = {
@@ -44,10 +44,11 @@ const HANDOFF_WAIT_MS = 160; // the next answer film starts anyway if the old on
 const FILM_SHOW_TICKS = 3; // a film shows once it has run this many frames since its start (fresh, never a stale canvas)
 const UNDER_MS = 34; // his own canvas stays this long under a film that has just shown
 const EXIT_WAIT_MS = 5000; // a film that never says it's done is let go
+const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn't load, its script threw) is given up on: he rests, and it's tried again
 const REST_BLEND_MS = 320;
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const WATCH_SETTLED_MS = 970; // his move out to the caret is over
-const CLOCK_CHECK_MS = 30000; // idle="timeOfDay": how often a Ray that's up checks the clock again
+const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
 const WIDTHS = { small: 38, medium: 48 };
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
@@ -188,7 +189,7 @@ class RayMount {
   private caretCache: number | null = null; // the caret's gaze, till the text, the caret, a scroll or a resize moves it
   private options: RayMountOptions;
   private holder: Holder;
-  private inputRef: { current: HTMLInputElement | HTMLTextAreaElement | null } | null = null;
+  private inputRef: { current: HTMLElement | null } | null = null;
   private pointer: [number, number] | null = null;
   private playerIdle: Idle | null = null; // which idle his own Ray is playing (Look around, or the sleep cycle)
   private napped = false; // the sleep cycle has had him once (found asleep then; in awake after)
@@ -202,7 +203,7 @@ class RayMount {
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
-  private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="timeOfDay": this Ray's own pick
+  private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
 
   constructor(root: HTMLElement, options: RayMountOptions) {
     this.root = root;
@@ -282,12 +283,13 @@ class RayMount {
   }
 
   /** The text field he watches (read live: it may mount after him). */
-  setInputRef(ref: { current: HTMLInputElement | HTMLTextAreaElement | null } | null): void {
+  setInputRef(ref: { current: HTMLElement | null } | null): void {
     this.inputRef = ref;
   }
 
   private get input(): HTMLInputElement | HTMLTextAreaElement | null {
-    return this.inputRef?.current ?? null;
+    const el = this.inputRef?.current;
+    return el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el : null; // (only a text field has a caret)
   }
 
   /** A click on him: the coin flip where his idle allows it. */
@@ -331,12 +333,12 @@ class RayMount {
   }
 
   /**
-   * His idle as asked; `rotate`: this page load's step of the cycle; `timeOfDay`: by the clock as this Ray comes, and checked
+   * His idle as asked; `rotate`: this page load's step of the cycle; `time-of-day`: by the clock as this Ray comes, and checked
    * again every half minute while he's up: an idle the hour has since ruled out (Coffee at 9pm, the nightcap at 6am) gives way to
    * another (the film plays its exit first), one it still allows stays.
    */
   private idleOf(idle: RayIdle, now: number): Idle {
-    if (idle !== 'timeOfDay') return idleOfThisLoad(idle);
+    if (idle !== 'time-of-day') return idleOfThisLoad(idle);
     const C = this.clockIdle;
     if (!C) {
       this.clockIdle = { idle: idleByClock(), checkedAt: now };
@@ -362,7 +364,10 @@ class RayMount {
 
     if (h.by === 'film') {
       const film = this.films[h.id];
-      if (!h.started) return;
+      if (!h.started) {
+        if (now - h.since > START_WAIT_MS) this.giveUpOn(h.id, now);
+        return;
+      }
       if (h.leaving === 'handoff' && now - h.since > HANDOFF_WAIT_MS)
         this.handOn(film, h.next!, null);
       if (h.leaving === 'exit' && now - h.since > EXIT_WAIT_MS) this.filmDone(film);
@@ -550,7 +555,18 @@ class RayMount {
     return null;
   }
 
+  /** A film that never got going: let go (it's loaded again the next time it's wanted), his own Ray at rest meanwhile. */
+  private giveUpOn(id: string, now: number): void {
+    if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests and it's tried again`);
+    this.films[id]?.host.dispose();
+    Reflect.deleteProperty(this.films, id);
+    Reflect.deleteProperty(this.loading, id);
+    this.holder = { by: 'player', act: 'rest', since: now };
+    this.player.rest(REST_BLEND_MS);
+  }
+
   private mountFilm(id: string, module: FilmModule): void {
+    if (this.films[id]) return; // (a load that was given up on and asked for again: the first one in stays)
     const film: Film = {
       id,
       ready: false,

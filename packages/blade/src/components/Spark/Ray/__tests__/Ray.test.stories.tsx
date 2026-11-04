@@ -34,7 +34,7 @@ export const TestRayWatchesWhatsTyped: StoryFn<typeof Ray> = () => {
           <Ray idle="look" inputRef={inputRef} />
         </Box>
         <ChatInput
-          ref={inputRef as never}
+          ref={inputRef}
           value={value}
           onChange={({ value: v }) => setValue(v ?? '')}
           placeholder="Ask Ray anything…"
@@ -187,7 +187,7 @@ export const TestRayNudges: StoryFn<typeof Ray> = () => {
           <Ray idle="look" inputRef={inputRef} />
         </Box>
         <ChatInput
-          ref={inputRef as never}
+          ref={inputRef}
           value={value}
           onChange={({ value: v }) => setValue(v ?? '')}
           placeholder="Ask Ray anything…"

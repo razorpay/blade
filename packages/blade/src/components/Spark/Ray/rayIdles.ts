@@ -1,16 +1,16 @@
 /**
  * rayIdles
  *
- * Which idle he plays when he's left to choose: `rotate` (flow 9's cycle, one step per page load) or `timeOfDay` (each Ray by
+ * Which idle he plays when he's left to choose: `rotate` (flow 9's cycle, one step per page load) or `time-of-day` (each Ray by
  * the viewer's clock as it comes, the user 2026-11-04: "the coffee one is more likely to be the idle state in the time of 7am - 10am, and the
  * nightcap one is more likely at 9pm - 12am; the coffee doesn't come at night"; then: "no nightcap outside 9pm to 6am, and keep the
  * nightcap likely time that only, 9pm to 6am"; "the calling instance should check the time each time it's called").
  */
 import type { RayIdle } from './types';
 
-type Idle = Exclude<RayIdle, 'rotate' | 'timeOfDay'>;
+type Idle = Exclude<RayIdle, 'rotate' | 'time-of-day'>;
 type Cycle = Exclude<Idle, 'rest'>; // the idles a load can be given
-type Chooser = Extract<RayIdle, 'rotate' | 'timeOfDay'>;
+type Chooser = Extract<RayIdle, 'rotate' | 'time-of-day'>;
 
 const IDLE_CYCLE: Cycle[] = ['coffee', 'look', 'cash', 'reading', 'sleep']; // flow 9's cycle ('rest' isn't in it)
 const ROTATE_KEY = 'blade-ray-idle'; // the cycle's step
@@ -101,8 +101,8 @@ const idleByClock = (instead?: Cycle): Cycle => {
 
 let rotated: Cycle | null = null; // the cycle's step for this page load, for every Ray on it
 
-/** The idle a Ray plays: as asked, or this page load's step of the cycle (`rotate`). (`timeOfDay` is each Ray's own: idleByClock.) */
-const idleOfThisLoad = (idle: Exclude<RayIdle, 'timeOfDay'>): Exclude<RayIdle, Chooser> => {
+/** The idle a Ray plays: as asked, or this page load's step of the cycle (`rotate`). (`time-of-day` is each Ray's own: idleByClock.) */
+const idleOfThisLoad = (idle: Exclude<RayIdle, 'time-of-day'>): Exclude<RayIdle, Chooser> => {
   if (idle !== 'rotate') return idle;
   rotated = rotated ?? rotateStep();
   return rotated;

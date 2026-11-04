@@ -11,12 +11,12 @@ type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 /**
  * His idle. `rotate` takes the next one of the cycle (coffee, look, cash, reading, sleep) on each page load, as the dashboard does.
  * `rest` keeps him at rest (breathing, blinking, the hover look): for a Ray between an answer's states, like the answer's row.
- * `timeOfDay` picks one by the viewer's clock as each Ray appears: the nightcap (Sleep) only at night, 9pm–6am, and likeliest
+ * `time-of-day` picks one by the viewer's clock as each Ray appears: the nightcap (Sleep) only at night, 9pm–6am, and likeliest
  * then (half the time), never Coffee then; Coffee likeliest 7–10am (half the time); evenly otherwise, and not the last Ray's
  * idle again unless it's the hour's favourite. While he's up the clock's checked again every half minute: an idle the hour has
  * since ruled out (Coffee at 9pm, the nightcap at 6am) gives way to another.
  */
-type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'timeOfDay';
+type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'time-of-day';
 
 type RaySize = 'small' | 'medium';
 
@@ -37,7 +37,7 @@ type RayProps = {
    */
   state?: RayState;
   /**
-   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `timeOfDay` choose
+   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `time-of-day` choose
    * for him (per page load, or by the clock) and remember the last pick in `localStorage` (`blade-ray-idle`,
    * `blade-ray-idle-time`), so they're opt-in.
    *
@@ -58,10 +58,11 @@ type RayProps = {
    */
   isVisible?: boolean;
   /**
-   * The text field he watches. While it has text and focus he leans out towards the caret and follows it with his body
-   * and eyes; when it's cleared or loses focus he goes back to his idle.
+   * The text field he watches: an `<input>` or a `<textarea>` (the ref Blade's ChatInput, TextArea or TextInput forwards
+   * works as it is). While it has text and focus he leans out towards the caret and follows it with his body and eyes;
+   * when it's cleared or loses focus he goes back to his idle.
    */
-  inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement>;
+  inputRef?: React.RefObject<HTMLElement>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
    * again while it's up for another).

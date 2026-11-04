@@ -158,7 +158,8 @@ function glassAt(f, t, dt) {
 const rayCv = document.getElementById('ray'), lensCv = document.getElementById('lens'), glassCv = document.getElementById('glass');
 const ctx = rayCv.getContext('2d'), gctx = glassCv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d'), src = document.createElement('canvas'), sctx = src.getContext('2d');
 const gl = lensCv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
-const LENS = (() => {
+// (Blade's PR review, 2026-11-04: with no WebGL, or a shader that won't compile, the lens is skipped; the ring and the 2D frame still draw)
+const LENS = (() => { try {
   if (!gl) return null;
   const sh = (type, s) => { const o = gl.createShader(type); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(o)); return o; };
   const pr = gl.createProgram();
@@ -184,9 +185,10 @@ void main() {
   for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
   const U = n => gl.getUniformLocation(pr, n);
   return { U, uni: Object.fromEntries(['uTex', 'uSrc', 'uC', 'uCanvas', 'uR', 'uMag', 'uBarrel', 'uCA', 'uTint', 'uRim', 'uFres', 'uGlint', 'uTintC'].map(n => [n, U(n)])) };
-})();
+} catch (e) { return null; } })();
 function drawLens(cx, cy, R) {   // canvas px: the lens's middle and radius
-  gl.viewport(0, 0, lensCv.width, lensCv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); if (!LENS || R < 2) return;
+  if (!gl || !LENS) return;
+  gl.viewport(0, 0, lensCv.width, lensCv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); if (R < 2) return;
   const half = Math.ceil(R * 1.7), x0 = Math.round(cx - half), y0 = Math.round(cy - half), N = 2 * half;   // what's behind it (and round it, for the rim's bend)
   if (src.width !== N) { src.width = N; src.height = N; } if (EMBED) { sctx.fillStyle = mode === 'dark' ? '#131315' : '#FDFDFD'; sctx.fillRect(0, 0, N, N); } else sctx.clearRect(0, 0, N, N); sctx.drawImage(rayCv, x0, y0, N, N, 0, 0, N, N);   // embedded the page is see-through: the films page's colour under it
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);

@@ -27,12 +27,12 @@ type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 /**
  * His idle. `rotate` takes the next one of the cycle (coffee, look, cash, reading, sleep) on each page load, as the dashboard does.
  * `rest` keeps him at rest (breathing, blinking, the hover look): for a Ray between an answer's states, like the answer's row.
- * `timeOfDay` picks one by the viewer's clock as each Ray appears: the nightcap (Sleep) only at night, 9pm–6am, and likeliest
+ * `time-of-day` picks one by the viewer's clock as each Ray appears: the nightcap (Sleep) only at night, 9pm–6am, and likeliest
  * then (half the time), never Coffee then; Coffee likeliest 7–10am (half the time); evenly otherwise, and not the last Ray's
  * idle again unless it's the hour's favourite. While he's up the clock's checked again every half minute: an idle the hour has
  * since ruled out (Coffee at 9pm, the nightcap at 6am) gives way to another.
  */
-type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'timeOfDay';
+type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'time-of-day';
 
 type RaySize = 'small' | 'medium';
 
@@ -53,7 +53,7 @@ type RayProps = {
    */
   state?: RayState;
   /**
-   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `timeOfDay` choose
+   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `time-of-day` choose
    * for him (per page load, or by the clock) and remember the last pick in `localStorage` (`blade-ray-idle`,
    * `blade-ray-idle-time`), so they're opt-in.
    *
@@ -74,10 +74,11 @@ type RayProps = {
    */
   isVisible?: boolean;
   /**
-   * The text field he watches. While it has text and focus he leans out towards the caret and follows it with his body
-   * and eyes; when it's cleared or loses focus he goes back to his idle.
+   * The text field he watches: an `<input>` or a `<textarea>` (the ref Blade's ChatInput, TextArea or TextInput forwards
+   * works as it is). While it has text and focus he leans out towards the caret and follows it with his body and eyes;
+   * when it's cleared or loses focus he goes back to his idle.
    */
-  inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement>;
+  inputRef?: React.RefObject<HTMLElement>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
    * again while it's up for another).
@@ -102,7 +103,7 @@ type RayProps = {
 - Set `isVisible={false}` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through `searching`, `calling`, `writing` and `working`.
 - Give the answer row's Ray `idle="rest"` and `isInteractive={false}`, so he rests between states and when the answer is done.
 - Use `entrance="dash"` only on the Ray that's on screen as the page lands (the chat input's).
-- Use `idle="rotate"` or `idle="timeOfDay"` on the dashboard's chat input to vary his idle across visits; leave a named idle where he should look the same every time (tests, docs, screenshots).
+- Use `idle="rotate"` or `idle="time-of-day"` on the dashboard's chat input to vary his idle across visits; leave a named idle where he should look the same every time (tests, docs, screenshots).
 - Use `size="small"` in side panels and `size="medium"` on the dashboard and full-page chat.
 - Leave `accessibilityLabel` unset when the surrounding UI already says what's happening; set it only when Ray carries meaning on his own.
 
@@ -131,7 +132,7 @@ const ChatInputWithRay = () => {
   return (
     <Box position="relative" width="100%" maxWidth="720px" marginTop="spacing.11">
       <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-        <Ray entrance="dash" idle="timeOfDay" inputRef={inputRef} isVisible={!isAnswering} />
+        <Ray entrance="dash" idle="time-of-day" inputRef={inputRef} isVisible={!isAnswering} />
       </Box>
       <Box position="relative" zIndex={1}>
         <ChatInput
