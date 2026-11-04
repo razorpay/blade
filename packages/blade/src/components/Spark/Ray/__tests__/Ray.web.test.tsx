@@ -32,7 +32,7 @@ describe('<Ray />', () => {
     const states = ['idle', 'searching', 'calling', 'writing', 'working'] as const;
     states.forEach((state) => {
       const { getByTestId, unmount } = renderWithTheme(
-        <Ray testID={`ray-${state}`} state={state} isHidden={state === 'working'} />,
+        <Ray testID={`ray-${state}`} state={state} isVisible={state !== 'working'} />,
       );
       expect(getByTestId(`ray-${state}`)).toBeInTheDocument();
       unmount();

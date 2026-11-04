@@ -17,13 +17,13 @@ const inputRef = useRef(null);
 // on the chat input: dashes in on the landing, idles, watches the caret while typing (and nudges when it stops), hops off when a question is sent
 <Box position="relative">
   <Box position="absolute" bottom="100%" right="spacing.10">
-    <Ray entrance="dash" inputRef={inputRef} isHidden={isAnswering} />
+    <Ray entrance="dash" idle="rotate" inputRef={inputRef} isVisible={!isAnswering} />
   </Box>
   <ChatInput ref={inputRef} … />
 </Box>
 
 // in the answer's row: its states, handing over mid-move; at rest between them; drops out when it's done
-<Ray state={step} idle="rest" isHidden={isDone} isInteractive={false} />
+<Ray state={step} idle="rest" isVisible={!isDone} isInteractive={false} />
 ```
 
 ### Props
@@ -32,9 +32,9 @@ const inputRef = useRef(null);
 | --- | --- | --- | --- |
 | `entrance` | `'none' \| 'dash'` | `'none'` | How he arrives on mount. `dash` is the dashboard's landing: he dashes in along the surface from its left (from 200px inside the input's left edge when `inputRef` is given), brakes, hops into place and starts his idle. Typing, the hop or an answer cuts it short. Skipped when he starts hidden, with reduced motion, and when his idle is Sleep (he's found asleep). |
 | `state` | `'idle' \| 'searching' \| 'calling' \| 'writing' \| 'working'` | `'idle'` | What he's doing. The four answer states are his films; going from one to the next hands him over mid-move. |
-| `idle` | `'rotate' \| 'rest' \| 'coffee' \| 'look' \| 'cash' \| 'reading' \| 'sleep' \| 'timeOfDay'` | `'rotate'` | His idle while `state` is `idle`. `rotate` takes the next of coffee → look → cash → reading → sleep on each page load (as the dashboard does). `rest` keeps him at rest. `timeOfDay` picks one by the viewer's clock as each Ray appears, and checks it again every half minute while he's up (an idle the hour has since ruled out gives way to another): the nightcap (Sleep) only 9pm–6am and likeliest then (half the loads), never Coffee then; Coffee likeliest 7–10am (half the loads); evenly otherwise, and not the last load's idle again unless it's the hour's favourite (the last pick is remembered in `localStorage`, `blade-ray-idle-time`). `sleep` is the sleep cycle: found asleep with the nightcap on, he wakes himself after about 10 s, looks around awake, and nods off again after a minute with nobody near; a pointer near him or a click wakes him, and the cap stays on for the visit (his flip is then the toss). |
+| `idle` | `'rotate' \| 'rest' \| 'coffee' \| 'look' \| 'cash' \| 'reading' \| 'sleep' \| 'timeOfDay'` | `'look'` | His idle while `state` is `idle`. A named idle renders the same every time; `rotate` and `timeOfDay` are opt-in (they choose for him and use `localStorage`). `rotate` takes the next of coffee → look → cash → reading → sleep on each page load (as the dashboard does). `rest` keeps him at rest. `timeOfDay` picks one by the viewer's clock as each Ray appears, and checks it again every half minute while he's up (an idle the hour has since ruled out gives way to another): the nightcap (Sleep) only 9pm–6am and likeliest then (half the loads), never Coffee then; Coffee likeliest 7–10am (half the loads); evenly otherwise, and not the last load's idle again unless it's the hour's favourite (the last pick is remembered in `localStorage`, `blade-ray-idle-time`). `sleep` is the sleep cycle: found asleep with the nightcap on, he wakes himself after about 10 s, looks around awake, and nods off again after a minute with nobody near; a pointer near him or a click wakes him, and the cap stays on for the visit (his flip is then the toss). |
 | `size` | `'small' \| 'medium'` | `'medium'` | 38px (a side panel) or 48px (the dashboard and chat). |
-| `isHidden` | `boolean` | `false` | He hops up and drops behind the surface he sits on; `false` again brings him back up out of it. Whatever he's playing finishes its bit first. |
+| `isVisible` | `boolean` | `true` | `false`: he hops up and drops behind the surface he sits on; `true` again brings him back up out of it (as Blade's other animated surfaces, `isVisible`). Whatever he's playing finishes its bit first. |
 | `inputRef` | `RefObject<HTMLInputElement \| HTMLTextAreaElement>` | – | The field he watches: with text and focus he leans out to the caret and follows it (body along the four watch frames, eyes on the caret). After 10 s with no typing he nudges (canon Nudge: a look straight out, then back to the caret); typing during it takes him straight back to watching. There's no prop for the nudge: it comes with `inputRef`. |
 | `isInteractive` | `boolean` | `true` | The hover look (he looks at the pointer anywhere on the page) and the coin flip on click (click again while a coin is up for another). It works on every idle. Look around and Cash flip at once. Reading box and Coffee first finish what they're doing; Coffee's sip and Cash's reload always play out first. Sleep wakes him first. |
 | `accessibilityLabel` | `string` | – | Exposes him as an image with this label; leave unset when he's decorative. |

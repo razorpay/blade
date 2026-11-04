@@ -33,9 +33,9 @@ const _Ray = (
   {
     entrance = 'none',
     state = 'idle',
-    idle = 'rotate',
+    idle = 'look',
     size = 'medium',
-    isHidden = false,
+    isVisible = true,
     inputRef,
     isInteractive = true,
     accessibilityLabel,
@@ -54,7 +54,7 @@ const _Ray = (
     state,
     idle,
     size,
-    isHidden,
+    isHidden: !isVisible,
     isInteractive,
     colorScheme: scheme,
   } as const;
@@ -73,7 +73,7 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isHidden, isInteractive, scheme]);
+  }, [state, idle, size, isVisible, isInteractive, scheme]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(inputRef ?? null);

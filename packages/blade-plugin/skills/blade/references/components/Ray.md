@@ -53,9 +53,11 @@ type RayProps = {
    */
   state?: RayState;
   /**
-   * Which idle he plays while `state` is `idle`.
+   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `timeOfDay` choose
+   * for him (per page load, or by the clock) and remember the last pick in `localStorage` (`blade-ray-idle`,
+   * `blade-ray-idle-time`), so they're opt-in.
    *
-   * @default 'rotate'
+   * @default 'look'
    */
   idle?: RayIdle;
   /**
@@ -65,12 +67,12 @@ type RayProps = {
    */
   size?: RaySize;
   /**
-   * Ray sits on a surface (a chat input, a card). When hidden he hops up and drops behind it; when shown again he comes
+   * Ray sits on a surface (a chat input, a card). Set to `false`, he hops up and drops behind it; `true` again, he comes
    * back up out of it and lands. His own box keeps its size either way, so the layout never moves.
    *
-   * @default false
+   * @default true
    */
-  isHidden?: boolean;
+  isVisible?: boolean;
   /**
    * The text field he watches. While it has text and focus he leans out towards the caret and follows it with his body
    * and eyes; when it's cleared or loses focus he goes back to his idle.
@@ -97,9 +99,10 @@ type RayProps = {
 **Do**
 
 - Sit the Ray on the chat input's top edge, near its right end (absolutely positioned above it), and pass the input as `inputRef` so he watches what's typed.
-- Set `isHidden` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through `searching`, `calling`, `writing` and `working`.
+- Set `isVisible={false}` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through `searching`, `calling`, `writing` and `working`.
 - Give the answer row's Ray `idle="rest"` and `isInteractive={false}`, so he rests between states and when the answer is done.
 - Use `entrance="dash"` only on the Ray that's on screen as the page lands (the chat input's).
+- Use `idle="rotate"` or `idle="timeOfDay"` on the dashboard's chat input to vary his idle across visits; leave a named idle where he should look the same every time (tests, docs, screenshots).
 - Use `size="small"` in side panels and `size="medium"` on the dashboard and full-page chat.
 - Leave `accessibilityLabel` unset when the surrounding UI already says what's happening; set it only when Ray carries meaning on his own.
 
@@ -107,7 +110,7 @@ type RayProps = {
 
 - Don't render him inside a container with `overflow: hidden`; give him room above and around his box instead.
 - Don't set `entrance="dash"` on an answer row's Ray; it's for the landing only.
-- Don't drive `state` on the chat input's Ray; hide it with `isHidden` and use a separate Ray in the answer's row.
+- Don't drive `state` on the chat input's Ray; hide it with `isVisible={false}` and use a separate Ray in the answer's row.
 - Don't use Ray as a loading spinner for non-AI work; use `Spinner` or `ProgressBar`.
 
 ## Example
@@ -128,7 +131,7 @@ const ChatInputWithRay = () => {
   return (
     <Box position="relative" width="100%" maxWidth="720px" marginTop="spacing.11">
       <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-        <Ray entrance="dash" idle="timeOfDay" inputRef={inputRef} isHidden={isAnswering} />
+        <Ray entrance="dash" idle="timeOfDay" inputRef={inputRef} isVisible={!isAnswering} />
       </Box>
       <Box position="relative" zIndex={1}>
         <ChatInput
@@ -152,7 +155,7 @@ export default ChatInputWithRay;
 
 ### Answer Row States
 
-A second Ray in the answer's row plays the answer's states as it's worked on, rests when it's done, and drops out of the row with `isHidden`.
+A second Ray in the answer's row plays the answer's states as it's worked on, rests when it's done, and drops out of the row with `isVisible={false}`.
 
 ```jsx
 import React, { useEffect, useState } from 'react';
@@ -189,7 +192,7 @@ const AnswerRow = () => {
       <Ray
         state={state}
         idle="rest"
-        isHidden={isDone}
+        isVisible={!isDone}
         isInteractive={false}
         accessibilityLabel={LABELS[state]}
       />

@@ -101,9 +101,9 @@ TestRayLooksAtThePointer.play = async () => {
   await waitFor(() => expect(hover().v).toBeLessThan(-0.8), { timeout: 2000 });
 };
 
-// isHidden: he hops off the surface and comes back up onto it
+// isVisible: he hops off the surface and comes back up onto it
 export const TestRayHopsOffAndBack: StoryFn<typeof Ray> = () => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <Box
       padding="spacing.11"
@@ -112,8 +112,8 @@ export const TestRayHopsOffAndBack: StoryFn<typeof Ray> = () => {
       alignItems="flex-end"
       gap="spacing.8"
     >
-      <Ray idle="rest" isHidden={isHidden} />
-      <Button onClick={() => setIsHidden((h) => !h)}>{isHidden ? 'Show' : 'Hide'}</Button>
+      <Ray idle="rest" isVisible={isVisible} />
+      <Button onClick={() => setIsVisible((v) => !v)}>{isVisible ? 'Hide' : 'Show'}</Button>
     </Box>
   );
 };

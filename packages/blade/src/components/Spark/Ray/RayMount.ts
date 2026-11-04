@@ -24,6 +24,7 @@ const RC = RayCore as any;
 type ActiveState = Exclude<RayState, 'idle'>;
 type Idle = Exclude<RayIdle, 'rotate' | 'timeOfDay'>;
 
+const ANSWER_ORDER: ActiveState[] = ['searching', 'calling', 'writing', 'working']; // an answer's states, in the order they come
 const ANSWER_FILMS: Record<ActiveState, string> = {
   searching: 'search',
   calling: 'calling',
@@ -184,6 +185,7 @@ class RayMount {
   private listened: HTMLInputElement | HTMLTextAreaElement | null = null;
   private entrance: RayEntrance | null = null;
   private lastTypeAt = 0;
+  private caretCache: number | null = null; // the caret's gaze, till the text, the caret, a scroll or a resize moves it
   private options: RayMountOptions;
   private holder: Holder;
   private inputRef: { current: HTMLInputElement | HTMLTextAreaElement | null } | null = null;
@@ -234,6 +236,9 @@ class RayMount {
 
     root.addEventListener('click', this.onClick);
     window.addEventListener('pointermove', this.onPointerMove, { passive: true });
+    document.addEventListener('selectionchange', this.onCaretMove);
+    window.addEventListener('scroll', this.onCaretMove, { capture: true, passive: true });
+    window.addEventListener('resize', this.onCaretMove, { passive: true });
     document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
     if (typeof IntersectionObserver === 'function') {
       this.observer = new IntersectionObserver((entries) => {
@@ -264,6 +269,7 @@ class RayMount {
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
     this.options = { ...this.options, ...options };
     if (this.options.state !== 'idle') this.preloadAnswer();
+    this.releaseFilms();
     if (sizeChanged) this.layout();
     if (schemeChanged) {
       this.player.mode = this.options.colorScheme;
@@ -305,6 +311,9 @@ class RayMount {
     this.listened?.removeEventListener('input', this.onInput);
     this.entrance?.dispose();
     window.removeEventListener('pointermove', this.onPointerMove);
+    document.removeEventListener('selectionchange', this.onCaretMove);
+    window.removeEventListener('scroll', this.onCaretMove, { capture: true });
+    window.removeEventListener('resize', this.onCaretMove);
     document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     Object.values(this.films).forEach((f) => f.host.dispose());
     this.stage.remove();
@@ -415,6 +424,7 @@ class RayMount {
         if (h.act === 'gone') this.show(now);
         else if (h.act === 'rest' || h.act === 'idle' || h.act === 'back') {
           this.holder = { by: 'player', act: 'watch', since: now };
+          this.caretCache = null;
           this.player.watch();
         }
         return;
@@ -489,7 +499,12 @@ class RayMount {
   }
 
   // every keystroke (an input event) restarts the nudge's wait, and cancels one that's playing
+  private readonly onCaretMove = (): void => {
+    this.caretCache = null;
+  };
+
   private readonly onInput = (): void => {
+    this.caretCache = null;
     this.lastTypeAt = performance.now();
     this.player.cancelNudge();
   };
@@ -500,6 +515,7 @@ class RayMount {
     this.listened?.removeEventListener('input', this.onInput);
     el?.addEventListener('input', this.onInput);
     this.listened = el;
+    this.caretCache = null;
   }
 
   private toRest(now: number): void {
@@ -566,9 +582,33 @@ class RayMount {
     if (film?.ready) this.begin(film, from);
   }
 
-  /** The answer's films, loaded ahead (a Ray in an answer goes through them all; each handover should be instant). */
+  /**
+   * The answer's films: the one for its state now and the next one, loaded ahead so each handover is instant (each film's
+   * canvases are the stage's size, a few MB at 2x: not all four at once). The ones it's done with go (releaseFilms).
+   */
   private preloadAnswer(): void {
-    Object.values(ANSWER_FILMS).forEach((id) => this.film(id));
+    this.wantedAnswerFilms().forEach((id) => this.film(id));
+  }
+
+  private wantedAnswerFilms(): string[] {
+    const { state } = this.options;
+    if (state === 'idle') return [];
+    const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
+    return next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
+  }
+
+  /** An answer film that isn't playing, leaving, or the one now or next is let go (its canvases freed; loaded again if needed). */
+  private releaseFilms(): void {
+    const h = this.holder;
+    const keep = new Set(this.wantedAnswerFilms());
+    if (h.by === 'film') keep.add(h.id);
+    const answerFilms = new Set<string>(Object.values(ANSWER_FILMS));
+    Object.values(this.films).forEach((film) => {
+      if (!answerFilms.has(film.id) || keep.has(film.id) || film.going) return;
+      film.host.dispose();
+      Reflect.deleteProperty(this.films, film.id);
+      Reflect.deleteProperty(this.loading, film.id);
+    });
   }
 
   private begin(film: Film, from: unknown): void {
@@ -605,6 +645,7 @@ class RayMount {
       this.holder = { by: 'player', act: 'rest', since: performance.now() };
       this.player.rest(0);
     }
+    this.releaseFilms();
   }
 
   private onFilmMessage(film: Film, m: FilmMessage): void {
@@ -634,6 +675,7 @@ class RayMount {
           film.startTick = Infinity;
           film.host.layer.style.visibility = 'hidden';
           film.host.send({ ray: 'sleep' });
+          this.releaseFilms();
         }
         break;
       default:
@@ -764,8 +806,12 @@ class RayMount {
     );
   }
 
-  /** The caret along the input (0..1), and where it is from his middle as his gaze reads it (left of him looks left). */
+  /**
+   * The caret along the input (0..1), and where it is from his middle as his gaze reads it (left of him looks left). Measured
+   * (styles, boxes, a textarea's mirror) only once something can have moved it: the text, the caret, a scroll, a resize.
+   */
   private caretGaze(): number {
+    if (this.caretCache !== null) return this.caretCache;
     const el = this.input!;
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
@@ -776,7 +822,8 @@ class RayMount {
     const box = this.root.getBoundingClientRect();
     const middle = box.left + box.width / 2;
     const span = Math.max(40, middle - r.left);
-    return Math.max(-1, Math.min(0.15, ((x - middle) / span) * 1.15));
+    this.caretCache = Math.max(-1, Math.min(0.15, ((x - middle) / span) * 1.15));
+    return this.caretCache;
   }
 
   private layout(): void {

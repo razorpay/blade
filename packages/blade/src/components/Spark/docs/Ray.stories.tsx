@@ -20,12 +20,12 @@ function Chat({ isAnswering, step, isDone }) {
   return (
     <>
       {/* the answer's row: its states, at rest between them, dropping out when it's done */}
-      <Ray state={step} idle="rest" isHidden={isDone} isInteractive={false} />
+      <Ray state={step} idle="rest" isVisible={!isDone} isInteractive={false} />
 
       {/* on the chat input: he sits above it, watches what's typed, hops off while it's answering */}
       <Box position="relative">
         <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-          <Ray inputRef={inputRef} isHidden={isAnswering} />
+          <Ray idle="rotate" inputRef={inputRef} isVisible={!isAnswering} />
         </Box>
         <ChatInput ref={inputRef} placeholder="Ask Ray anything…" />
       </Box>
@@ -107,7 +107,7 @@ const odds = (hour: number): string =>
 const NOW = -1; // the `hour` control's "now": the real clock
 
 /**
- * The Ray on the chat input: his idle, the typing look, the hover look, the coin flip, and the hop off (`isHidden`, what
+ * The Ray on the chat input: his idle, the typing look, the hover look, the coin flip, and the hop off (`isVisible={false}`, what
  * he does when a question is sent). The answer states aren't here: on the dashboard the Ray on the input hides while a
  * separate Ray in the answer's row plays them (see Answer row).
  *
@@ -161,7 +161,7 @@ OnChatBox.storyName = 'On the chat box';
 OnChatBox.args = {
   idle: 'rotate',
   size: 'medium',
-  isHidden: false,
+  isVisible: true,
   isInteractive: true,
   hour: NOW,
 };
@@ -218,7 +218,7 @@ const LABELS: Record<RayState, string> = {
 
 /**
  * The Ray in an answer's row: `state` steps through the answer (each step handing over mid-move); `idle` back means the
- * answer's done (the last state plays its exit and he rests there, `idle="rest"`); `isHidden` drops him out of the row.
+ * answer's done (the last state plays its exit and he rests there, `idle="rest"`); `isVisible={false}` drops him out of the row.
  */
 const AnswerRowTemplate: StoryFn<typeof Ray> = (args) => (
   <Box padding="spacing.10" paddingTop="spacing.11">
@@ -233,8 +233,8 @@ const AnswerRowTemplate: StoryFn<typeof Ray> = (args) => (
 
 export const AnswerRow = AnswerRowTemplate.bind({});
 AnswerRow.storyName = 'Answer row';
-AnswerRow.args = { state: 'searching', idle: 'rest', isHidden: false, isInteractive: false };
-AnswerRow.parameters = { controls: { include: ['state', 'isHidden'] } };
+AnswerRow.args = { state: 'searching', idle: 'rest', isVisible: true, isInteractive: false };
+AnswerRow.parameters = { controls: { include: ['state', 'isVisible'] } };
 
 /**
  * The dashboard's answer, as flow 9 plays it: asked, he hops off the chat input; the answer's row plays Searching ->
@@ -312,14 +312,14 @@ const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
         ) : null}
         {rowOn ? (
           <Box display="flex" alignItems="flex-end" gap="spacing.4" marginTop="spacing.8">
-            <Ray state={rowState} idle="rest" isHidden={rowHidden} isInteractive={false} />
+            <Ray state={rowState} idle="rest" isVisible={!rowHidden} isInteractive={false} />
             <Text size="small" color="surface.text.gray.muted">
               {LABELS[rowState]}
             </Text>
           </Box>
         ) : null}
       </Box>
-      <OnChatInput rayProps={{ isHidden: asking }} onSubmit={ask} />
+      <OnChatInput rayProps={{ idle: 'rotate', isVisible: !asking }} onSubmit={ask} />
     </Box>
   );
 };

@@ -37,9 +37,11 @@ type RayProps = {
    */
   state?: RayState;
   /**
-   * Which idle he plays while `state` is `idle`.
+   * Which idle he plays while `state` is `idle`. A named idle renders the same every time; `rotate` and `timeOfDay` choose
+   * for him (per page load, or by the clock) and remember the last pick in `localStorage` (`blade-ray-idle`,
+   * `blade-ray-idle-time`), so they're opt-in.
    *
-   * @default 'rotate'
+   * @default 'look'
    */
   idle?: RayIdle;
   /**
@@ -49,12 +51,12 @@ type RayProps = {
    */
   size?: RaySize;
   /**
-   * Ray sits on a surface (a chat input, a card). When hidden he hops up and drops behind it; when shown again he comes
+   * Ray sits on a surface (a chat input, a card). Set to `false`, he hops up and drops behind it; `true` again, he comes
    * back up out of it and lands. His own box keeps its size either way, so the layout never moves.
    *
-   * @default false
+   * @default true
    */
-  isHidden?: boolean;
+  isVisible?: boolean;
   /**
    * The text field he watches. While it has text and focus he leans out towards the caret and follows it with his body
    * and eyes; when it's cleared or loses focus he goes back to his idle.
