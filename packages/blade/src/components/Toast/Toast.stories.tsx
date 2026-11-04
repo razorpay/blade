@@ -11,7 +11,8 @@ import type { ToastProps } from './';
 import { ToastContainer } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime, makeSpace } from '~utils';
+import { spacing } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -407,10 +408,13 @@ const PromotionalWithLinkActionTemplate: StoryFn<ToastProps> = () => {
 export const PromotionalWithLinkAction = PromotionalWithLinkActionTemplate.bind({});
 PromotionalWithLinkAction.storyName = 'Promotional With Link Action';
 
-const slideUp = keyframes`
+// Short rise for the frames, so a frame does not pass over the action row
+const riseDistance = makeSpace(spacing[4]);
+
+const riseIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(${riseDistance});
   }
 
   to {
@@ -419,15 +423,36 @@ const slideUp = keyframes`
   }
 `;
 
+const riseOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-${riseDistance});
+  }
+`;
+
 // Both frames sit in one grid cell, so the toast keeps one height for the intro and the main frame
-const Frame = styled.div<{ isActive: boolean }>(
-  ({ isActive, theme }) => css`
+const Frame = styled.div<{ phase: 'waiting' | 'entering' | 'exiting' }>(
+  ({ phase, theme }) => css`
     grid-area: 1 / 1;
-    visibility: ${isActive ? 'visible' : 'hidden'};
-    ${isActive &&
+    ${phase === 'waiting' &&
     css`
-      animation: ${slideUp} ${makeMotionTime(theme.motion.duration.gentle)}
+      visibility: hidden;
+    `}
+    ${phase === 'entering' &&
+    css`
+      animation: ${riseIn} ${makeMotionTime(theme.motion.duration.gentle)}
         ${castWebType(theme.motion.easing.entrance)} both;
+    `}
+    ${phase === 'exiting' &&
+    css`
+      animation: ${riseOut} ${makeMotionTime(theme.motion.duration.moderate)}
+        ${castWebType(theme.motion.easing.exit)} both;
     `}
   `,
 );
@@ -442,14 +467,14 @@ const IntroContent = ({ introDuration }: { introDuration: number }) => {
 
   return (
     <Box display="grid">
-      <Frame isActive={!isIntroDone}>
+      <Frame phase={isIntroDone ? 'exiting' : 'entering'}>
         <Heading size="large">
           Meet your new
           <br />
           reports page
         </Heading>
       </Frame>
-      <Frame isActive={isIntroDone}>
+      <Frame phase={isIntroDone ? 'entering' : 'waiting'}>
         <Box display="flex" gap="spacing.2" flexDirection="column">
           <Heading size="small">Reports are now faster</Heading>
           <Text size="small">Download any report in a few seconds.</Text>
