@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bksIuc"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jGzQiJ"><div data-blade-component="base-box" class="BaseBox-bksIuc AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  gYMLpr"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseButton__ButtonContent-zf1huq-0 jbTreI cdAugm"><div class="StyledBaseText-foUshD cNuvZJ" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bksIuc">Some other content inside</div><div data-blade-component="box" class="BaseBox-bksIuc"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bksIuc"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">Trigger 2</p></div></div></div>"`;
+exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bksIuc"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 zSoFY"><div data-blade-component="base-box" class="BaseBox-bksIuc AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  gYMLpr"><div data-blade-component="base-box" class="BaseBox-bksIuc BaseButton__ButtonContent-zf1huq-0 jbTreI cdAugm"><div class="StyledBaseText-foUshD cNuvZJ" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bksIuc">Some other content inside</div><div data-blade-component="box" class="BaseBox-bksIuc"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bksIuc"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text">Trigger 2</p></div></div></div>"`;
 
 exports[`<Tour /> should render Tour ssr 2`] = `
 .c2.c2.c2.c2.c2 {
@@ -69,7 +69,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -102,21 +102,23 @@ exports[`<Tour /> should render Tour ssr 2`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {

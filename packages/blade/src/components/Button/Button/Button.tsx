@@ -35,7 +35,10 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  /**
+   * `neutral` is only available with `variant="primary"`
+   */
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;

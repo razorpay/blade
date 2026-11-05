@@ -25,7 +25,7 @@ type ButtonGroupProps = {
    *
    * @default 'primary'
    */
-  color?: ButtonProps['color'];
+  color?: Exclude<ButtonProps['color'], 'neutral'>;
   /**
    * Specifies whether the ButtonGroup should take up the full width of its container.
    */

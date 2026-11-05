@@ -62,11 +62,13 @@ const StyledBaseButton = styled.button
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
-      outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
+      // Same ring geometry as `getFocusRingStyles`. Its color comes from `focusRingColor`
+      // and its transition is skipped so the button keeps its own background transition.
+      outline: `4px solid ${props.focusRingColor}`,
+      outlineOffset: '1px',
+      zIndex: 2,
       backgroundImage: 'none',
-      boxShadow: props.focusBoxShadow
-        ? `0px 0px 0px 4px ${props.focusRingColor}, ${props.focusBoxShadow}`
-        : `0px 0px 0px 4px ${props.focusRingColor}`,
+      boxShadow: props.focusBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {

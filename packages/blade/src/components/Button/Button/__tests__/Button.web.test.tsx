@@ -10,7 +10,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
-const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
+const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative', 'neutral'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -86,6 +86,8 @@ describe('<Button />', () => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
+      // Neutral is only available with the primary variant
+      if (color === 'neutral' && variant !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
         const buttonText = 'Pay Now';
@@ -107,6 +109,15 @@ describe('<Button />', () => {
         expect(container).toMatchSnapshot();
       });
     });
+  });
+
+  it('should render loading neutral color primary button', () => {
+    const { container } = renderWithTheme(
+      <Button color="neutral" isLoading>
+        Pay Now
+      </Button>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should call function on click', () => {

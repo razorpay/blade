@@ -1745,13 +1745,13 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(332, 100%, 26%)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 26%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 26%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsl(332, 100%, 23%)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(332, 100%, 26%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(332, 100%, 23%)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsl(0, 0%, 100%)"
     isFullWidth={false}
     isLoading={false}
@@ -1988,7 +1988,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -2012,7 +2012,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -3913,13 +3913,13 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(57, 100%, 52%)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 52%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 52%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsl(57, 100%, 47%)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(57, 100%, 52%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(57, 100%, 47%)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsl(0, 0%, 0%)"
     isFullWidth={false}
     isLoading={false}
@@ -4156,7 +4156,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -4180,7 +4180,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
