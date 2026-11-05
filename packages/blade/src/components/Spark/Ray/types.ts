@@ -80,6 +80,11 @@ type RayProps = {
    * eye. Button's `hasRay` lifts them, as flow 9's Investigate with Ray does.
    */
   _lookY?: number;
+  /**
+   * @private How much bigger than his box he's shown (a scale transform round him, as in Button's `hasRay`): his canvases are
+   * drawn that much finer, so he stays sharp.
+   */
+  _scale?: number;
 } & TestID &
   StyledPropsBlade;
 

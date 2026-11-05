@@ -135,6 +135,8 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
   const rayRef = useRef<HTMLSpanElement>(null);
   const [isOnScreen, setIsOnScreen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  // how much bigger than his box he's shown on this button: he draws that much finer (scaled up, he'd blur)
+  const [rayScale, setRayScale] = useState(1);
   const rayBox = rayBoxSize('medium');
 
   useEffect(() => {
@@ -143,13 +145,15 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
     if (!button || typeof IntersectionObserver === 'undefined') return undefined;
     const seen = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
+        // his width on this button (its height / 34 of flow 9's) over his box's
+        setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
         setIsOnScreen(true);
         seen.disconnect();
       }
     });
     seen.observe(button);
     return () => seen.disconnect();
-  }, []);
+  }, [INV, rayBox.width]);
 
   useEffect(() => {
     const strip = stripRef.current;
@@ -442,6 +446,7 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
               state={isSearching ? INV.state : 'idle'}
               isInteractive={false}
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
+              _scale={rayScale}
             />
           ) : null}
         </span>

@@ -82,6 +82,12 @@ export default {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
+    rayVariant: {
+      control: { type: 'select' },
+      options: ['investigate'],
+      // only once hasRay is on: it picks what Ray does
+      if: { arg: 'hasRay', truthy: true },
+    },
   },
   parameters: {
     docs: {

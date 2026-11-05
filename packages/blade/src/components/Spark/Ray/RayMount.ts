@@ -132,6 +132,8 @@ type RayMountOptions = {
   colorScheme: 'light' | 'dark';
   /** every look in his films this many px of his box lower (− = higher): set in a film's script as it starts (Ray's _lookY) */
   lookY?: number;
+  /** how much bigger than his box he's shown (Ray's _scale): his canvases drawn that much finer */
+  scale?: number;
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -267,7 +269,9 @@ class RayMount {
   }
 
   update(options: Partial<RayMountOptions>): void {
-    const sizeChanged = options.size !== undefined && options.size !== this.options.size;
+    const sizeChanged =
+      (options.size !== undefined && options.size !== this.options.size) ||
+      (options.scale !== undefined && options.scale !== this.options.scale);
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
@@ -746,8 +750,7 @@ class RayMount {
     if (this.isVisible && !this.reducedMotion) this.raf = requestAnimationFrame(this.frame); // booked first: a bad frame never stops him
     const dt = this.lastNow ? Math.min(50, Math.max(0, now - this.lastNow)) : 16;
     this.lastNow = now;
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    if (dpr !== this.dpr) this.layout();
+    if (this.pixelRatio() !== this.dpr) this.layout();
 
     if (this.reducedMotion) {
       this.player.rest(0);
@@ -877,9 +880,14 @@ class RayMount {
     return this.caretCache;
   }
 
+  /** his canvases' pixels per CSS px: the device's (at most 2), finer by how much bigger he's shown */
+  private pixelRatio(): number {
+    return Math.min(2, window.devicePixelRatio || 1) * Math.max(1, this.options.scale ?? 1);
+  }
+
   private layout(): void {
     const w = WIDTHS[this.options.size];
-    this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    this.dpr = this.pixelRatio();
     this.geo = geometry(w);
     const g = this.geo;
     this.floorCut = `inset(0 0 ${(g.height - g.floor).toFixed(2)}px 0)`;
