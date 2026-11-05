@@ -8,3 +8,5 @@ export { FreshChatBackground } from './FreshChatBackground';
 export type { FreshChatBackgroundProps } from './FreshChatBackground';
 export { FreshLLM } from './FreshLLM';
 export type { FreshLLMProps } from './FreshLLM';
+export { Ray } from './Ray';
+export type { RayProps, RayState, RayIdle, RaySize } from './Ray';

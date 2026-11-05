@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ray /> should render Ray on server 1`] = `"<div id="root"><div role="img" aria-label="Ray" data-blade-component="ray" class="BaseBox-bksIuc gPMfIl"></div></div>"`;
+
+exports[`<Ray /> should render Ray on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: relative;
+  height: 39.8px;
+  width: 48px;
+}
+
+<div
+  id="root"
+>
+  <div
+    aria-label="Ray"
+    class="c0"
+    data-blade-component="ray"
+    role="img"
+  />
+</div>
+`;
