@@ -12,7 +12,8 @@ import type { BladeElementRef } from '~utils/types';
  */
 const colorToSpinnerColor = {
   primary: 'white',
-  neutral: 'onNeutral',
+  // loading, the neutral surface fades (as Button's): the loader follows the theme, as the label does there
+  neutral: 'neutral',
   white: 'neutral',
 } as const;
 

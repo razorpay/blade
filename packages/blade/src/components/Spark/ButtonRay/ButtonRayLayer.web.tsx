@@ -206,8 +206,14 @@ const ButtonRayLayer = ({
       if (!label) return 0;
       const range = document.createRange();
       range.selectNodeContents(label);
+      // the content's own end: the text's, or a right-hand icon's past it (the button's content holds both)
+      let end = range.getBoundingClientRect().right;
+      const content = [...button.children].find((c) => c.contains(label));
+      content?.querySelectorAll('svg').forEach((icon) => {
+        end = Math.max(end, icon.getBoundingClientRect().right);
+      });
       const contentEnd = button.getBoundingClientRect().right - basePadding;
-      return Math.max(0, contentEnd - range.getBoundingClientRect().right);
+      return Math.max(0, contentEnd - end);
     };
     // the right padding opened e of the way: from Blade's own to flow 9's past the text (INV.padding) plus the widening,
     // whole even px

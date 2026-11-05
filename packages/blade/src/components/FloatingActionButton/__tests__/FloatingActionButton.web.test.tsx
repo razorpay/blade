@@ -170,7 +170,7 @@ describe('<FloatingActionButton />', () => {
     expect(getByTestId('fab')).toHaveAttribute('data-analytics-name', 'create-payment');
   });
 
-  it('should render a loading neutral button with an inverted spinner', () => {
+  it('should render a loading neutral button with a theme-following spinner', () => {
     const { container } = renderWithTheme(
       <FloatingActionButton icon={PlusIcon} color="neutral" isLoading>
         Create payment
