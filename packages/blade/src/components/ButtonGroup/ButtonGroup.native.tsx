@@ -14,6 +14,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { throwBladeError } from '~utils/logger';
 import type { BladeElementRef } from '~utils/types';
 
 // Mirrors the web implementation's getDividerColorToken for parity.
@@ -63,6 +64,13 @@ const _ButtonGroup = (
   }: ButtonGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
+  if (color === 'neutral' && variant !== 'primary') {
+    // as BaseButton: neutral is a primary button only (said once, by the group that sets it)
+    throwBladeError({
+      moduleName: 'ButtonGroup',
+      message: `Neutral color can only be used with primary variant but received "${variant}"`,
+    });
+  }
   const { theme } = useTheme();
   // While a secondary/tertiary button is pressed, lift it above siblings and
   // release the next sibling's -1px overlap so the highlighted right border shows.

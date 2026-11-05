@@ -104,7 +104,8 @@ type ButtonCommonProps = {
       /**
        * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
        * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"`, at any size (it all scales with the
-       * button's height), on a button that can widen: not full width, nor in a ButtonGroup.
+       * button's height), on a button that can widen: not full width, nor in a ButtonGroup, with room to its right (its own
+       * width, not stretched or held by its container).
        *
        * **Only available on web**
        *

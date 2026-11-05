@@ -170,6 +170,7 @@ const ButtonRayLayer = ({
 
   useEffect(() => {
     const strip = stripRef.current;
+    const edge = edgeRef.current;
     const host = hostRef.current;
     const button = strip?.parentElement;
     if (!isEnabled || !isOnScreen || !strip || !host || !button) return undefined;
@@ -409,6 +410,8 @@ const ButtonRayLayer = ({
           stripRegion(doc, setup, w, button.offsetHeight).forEach((v, i) => {
             region[i] = v;
           });
+          // his canvases' resolution for the button's height now
+          setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
           place();
         };
         stage = new FreshStage(host, createFreshEngine);
@@ -447,6 +450,8 @@ const ButtonRayLayer = ({
       button.removeEventListener('pointerleave', leave);
       button.style.paddingRight = '';
       strip.style.opacity = '0';
+      // the hover's insets off too (the effect can run again mid-hover: loading, a theme switch)
+      if (edge) edge.style.boxShadow = '';
       clearWash();
       stage?.destroy();
     };
