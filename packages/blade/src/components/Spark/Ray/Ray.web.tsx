@@ -40,6 +40,7 @@ const _Ray = (
     isInteractive = true,
     accessibilityLabel,
     testID,
+    _lookY = 0,
     ...styledProps
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
@@ -57,6 +58,7 @@ const _Ray = (
     isHidden: !isVisible,
     isInteractive,
     colorScheme: scheme,
+    lookY: _lookY,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
@@ -73,7 +75,7 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, isInteractive, scheme]);
+  }, [state, idle, size, isVisible, isInteractive, scheme, _lookY]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(inputRef ?? null);

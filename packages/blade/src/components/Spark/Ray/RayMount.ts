@@ -130,6 +130,8 @@ type RayMountOptions = {
   isHidden: boolean;
   isInteractive: boolean;
   colorScheme: 'light' | 'dark';
+  /** every look in his films this many px of his box lower (− = higher): set in a film's script as it starts (Ray's _lookY) */
+  lookY?: number;
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -627,6 +629,30 @@ class RayMount {
     });
   }
 
+  /**
+   * His looks moved by options.lookY (his box px, in his own px here): every pose of the film's script, once (its start
+   * simulates the script again). As flow 9's inv8.js moves his eyes and the glass in its film.
+   */
+  private shiftLooks(film: Film): void {
+    type Pose = { look?: [number, number] };
+    type Script = { keys?: { pose?: Pose }[]; lookY?: number };
+    const script = (film.host.env.window as { FILM?: { SCRIPT?: Script } }).FILM?.SCRIPT;
+    if (!script?.keys) return;
+    const want = ((this.options.lookY ?? 0) * RC.BASE[2][0]) / WIDTHS[this.options.size];
+    const d = want - (script.lookY ?? 0);
+    if (!d) return;
+    const seen = new Set<Pose>();
+    for (const key of script.keys) {
+      key.pose ??= {};
+      const { pose } = key;
+      if (seen.has(pose)) continue;
+      seen.add(pose);
+      const look = pose.look ?? [0, 0];
+      pose.look = [look[0], look[1] + d];
+    }
+    script.lookY = want;
+  }
+
   private begin(film: Film, from: unknown): void {
     const h = this.holder;
     if (h.by !== 'film' || h.id !== film.id) return;
@@ -634,6 +660,7 @@ class RayMount {
     film.host.send({ ray: 'mode', mode: this.options.colorScheme });
     film.host.send({ ray: 'zoom', z: this.geo.zoom });
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
+    this.shiftLooks(film);
     film.host.send(from ? { ray: 'start', from } : { ray: 'start' });
     film.startTick = film.host.ticks;
     film.shownAt = Infinity;

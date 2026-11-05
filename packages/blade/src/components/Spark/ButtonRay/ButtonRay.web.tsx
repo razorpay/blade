@@ -24,6 +24,8 @@ const INV = {
   rayY: -1.5,
   /** his width at that 34px button; like every size here he scales with the button's height, from where he's placed (his left edge, his feet) */
   rayW: 49.5,
+  /** his looks moved up by this (− = up): his eyes and the glass rise about twice it */
+  eyeY: -2,
   /** his search film starts this long into the widening */
   startAfter: 0.12,
 };
@@ -391,6 +393,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
               idle="rest"
               state={isSearching ? 'searching' : 'idle'}
               isInteractive={false}
+              _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
             />
           ) : null}
         </span>

@@ -75,6 +75,11 @@ type RayProps = {
    * (the surrounding UI already says what's happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
+  /**
+   * @private Every look in his films this many px of his box lower (− = higher): his eyes, and the glass that rides his open
+   * eye. Button's `hasRay` lifts them, as flow 9's Investigate with Ray does.
+   */
+  _lookY?: number;
 } & TestID &
   StyledPropsBlade;
 
