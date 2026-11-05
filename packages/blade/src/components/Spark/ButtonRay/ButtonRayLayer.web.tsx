@@ -373,6 +373,13 @@ const ButtonRayLayer = ({
     const enter = (): void => show(true);
     const leave = (): void => show(false);
 
+    let refit: (() => void) | null = null;
+    let refitTimer = 0;
+    const resize = new ResizeObserver(() => {
+      window.clearTimeout(refitTimer);
+      refitTimer = window.setTimeout(() => refit?.(), 200);
+    });
+
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         if (!isMounted) return;
@@ -384,6 +391,18 @@ const ButtonRayLayer = ({
         const opened = button.offsetWidth - basePadding + paddingAt(1);
         strip.style.width = `${opened}px`;
         const region = stripRegion(doc, setup, opened, button.offsetHeight);
+        // the button resized at rest (its label, its container, a font coming in): the strip and its spot of the card follow
+        // (the region in place: the engine's options hold it, and it lays out again as the strip resizes)
+        refit = (): void => {
+          if (S.isOn || S.e > 0) return;
+          S.slack = slackOf();
+          const w = button.offsetWidth - basePadding + paddingAt(1);
+          strip.style.width = `${w}px`;
+          stripRegion(doc, setup, w, button.offsetHeight).forEach((v, i) => {
+            region[i] = v;
+          });
+          place();
+        };
         stage = new FreshStage(host, createFreshEngine);
         if (stage.reducedMotion) return; // reduced motion: Blade's own hover
         engine = stage.mount({
@@ -400,6 +419,7 @@ const ButtonRayLayer = ({
         if (!engine) return; // no WebGL2: Blade's own hover
         stage.setPaused(true);
         place();
+        resize.observe(button);
         button.addEventListener('pointerenter', enter);
         button.addEventListener('pointerleave', leave);
         if (button.matches(':hover')) show(true);
@@ -413,6 +433,8 @@ const ButtonRayLayer = ({
       cancelAnimationFrame(frame);
       window.clearTimeout(pauseTimer);
       window.clearTimeout(searchTimer);
+      window.clearTimeout(refitTimer);
+      resize.disconnect();
       button.removeEventListener('pointerenter', enter);
       button.removeEventListener('pointerleave', leave);
       button.style.paddingRight = '';

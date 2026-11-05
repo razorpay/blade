@@ -16,6 +16,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { throwBladeError } from '~utils/logger';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 
 type ButtonCommonProps = {
   /**
@@ -182,6 +184,15 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   },
   ref,
 ) => {
+  const buttonGroupProps = useButtonGroupContext();
+  const resolvedVariant = buttonGroupProps.variant ?? variant;
+  if ((buttonGroupProps.color ?? color) === 'neutral' && resolvedVariant !== 'primary') {
+    // as BaseButton's tertiary colours: neutral is a primary button only
+    throwBladeError({
+      moduleName: 'Button',
+      message: `color "neutral" can only be used with variant "primary" but received "${resolvedVariant}"`,
+    });
+  }
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}

@@ -608,13 +608,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
   const isRayHover = hasRay && resolvedVariant === 'secondary';
   const resolvedSize = buttonGroupProps.size ?? size;
-  if (__DEV__ && resolvedColor === 'neutral' && resolvedVariant !== 'primary') {
-    logger({
-      type: 'warn',
-      moduleName: 'Button',
-      message: `color="neutral" is a primary button only (received variant="${resolvedVariant}").`,
-    });
-  }
+  // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
+  const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
+  const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
   if (__DEV__ && hasRay && !isRayHover) {
     logger({
       type: 'warn',
@@ -833,8 +829,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       // with RazorSense the hover is RazorSense over the button as it is (flow 9 keeps the black / white surface and its insets)
-      hoverBoxShadow={isRazorSenseHover ? defaultBoxShadow : hoverBoxShadow}
-      hoverBackgroundColor={isRazorSenseHover ? defaultBackgroundColor : hoverBackgroundColor}
+      hoverBoxShadow={isRazorSenseLiveHover ? defaultBoxShadow : hoverBoxShadow}
+      hoverBackgroundColor={isRazorSenseLiveHover ? defaultBackgroundColor : hoverBackgroundColor}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
@@ -893,7 +889,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      {isRazorSenseHover ? <ButtonRazorSense isEnabled={!disabled} /> : null}
+      {isRazorSenseHover ? (
+        <ButtonRazorSense isEnabled={!disabled} onLiveChange={setIsRazorSenseLive} />
+      ) : null}
       {isRayHover ? (
         <ButtonRay isEnabled={!disabled} variant={rayVariant} size={resolvedSize} />
       ) : null}

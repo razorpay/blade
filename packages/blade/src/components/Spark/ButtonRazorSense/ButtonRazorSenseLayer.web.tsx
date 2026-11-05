@@ -98,7 +98,10 @@ const forWidth = (doc: Comp, setup: ButtonSenseSetup, w: number): Comp => {
  * button first comes on screen (so the first hover doesn't wait for it). Rendered as the button's first child; the button's
  * content sits above it.
  */
-const ButtonRazorSenseLayer = ({ isEnabled }: ButtonRazorSenseProps): React.ReactElement | null => {
+const ButtonRazorSenseLayer = ({
+  isEnabled,
+  onLiveChange,
+}: ButtonRazorSenseProps): React.ReactElement | null => {
   const { colorScheme } = useTheme();
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
   const layerRef = useRef<HTMLSpanElement>(null);
@@ -106,6 +109,8 @@ const ButtonRazorSenseLayer = ({ isEnabled }: ButtonRazorSenseProps): React.Reac
   const edgeRef = useRef<HTMLElement>(null);
   const [square, setSquare] = useState<boolean | null>(null);
   const [isOnScreen, setIsOnScreen] = useState(false);
+  const onLiveRef = useRef(onLiveChange);
+  onLiveRef.current = onLiveChange;
 
   // the button's shape (square or wide) and whether it's on screen yet
   useEffect(() => {
@@ -173,6 +178,8 @@ const ButtonRazorSenseLayer = ({ isEnabled }: ButtonRazorSenseProps): React.Reac
             },
           });
       stage.setPaused(!isOn);
+      // live (the button's hover gives way to it) only with an engine drawing
+      onLiveRef.current?.(Boolean(engine));
     };
     // a longer button laid out again as it resizes (the label's font coming in), not on the next hover
     const relay = new ResizeObserver(() => {
@@ -255,6 +262,7 @@ const ButtonRazorSenseLayer = ({ isEnabled }: ButtonRazorSenseProps): React.Reac
       button.removeEventListener('pointerleave', leave);
       layer.style.opacity = '0';
       stage?.destroy();
+      onLiveRef.current?.(false);
     };
   }, [isEnabled, isOnScreen, square, mode]);
 

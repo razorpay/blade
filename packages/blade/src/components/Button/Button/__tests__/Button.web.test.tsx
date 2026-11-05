@@ -111,6 +111,16 @@ describe('<Button />', () => {
     });
   });
 
+  it('should not render neutral with a secondary or tertiary variant', () => {
+    expect(() =>
+      renderWithTheme(
+        <Button color="neutral" variant="secondary">
+          Pay Now
+        </Button>,
+      ),
+    ).toThrow('[Blade: Button]: color "neutral" can only be used with variant "primary"');
+  });
+
   it('should render the RazorSense hover layer only on the neutral primary button', async () => {
     const { container: neutral } = renderWithTheme(
       <Button color="neutral" hasRazorSense>
@@ -126,16 +136,20 @@ describe('<Button />', () => {
   });
 
   it('should render Ray on the secondary button at any size', async () => {
+    // Ray's layer (his runtime) is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
     const { container, getByRole } = renderWithTheme(
       <Button variant="secondary" size="large" hasRay>
         Investigate
       </Button>,
     );
-    await waitFor(() =>
-      expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+    await waitFor(
+      () =>
+        expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
     );
     expect(getByRole('button')).toHaveTextContent('Investigate');
-  });
+  }, 20000);
 
   it('should call function on click', () => {
     const buttonText = 'Pay Now';
