@@ -125,12 +125,14 @@ const ButtonRazorSenseLayer = ({
     const resize = new ResizeObserver(() => setSquare(isSquare(button)));
     resize.observe(button);
     setSquare(isSquare(button));
-    const seen = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        setIsOnScreen(true);
-        seen.disconnect();
-      }
-    });
+    // on screen (or about to be) it has a WebGL context; off it, the context is freed (browsers allow a page only a few)
+    const seen = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[entries.length - 1];
+        if (entry) setIsOnScreen(entry.isIntersecting);
+      },
+      { rootMargin: '100px' },
+    );
     seen.observe(button);
     return () => {
       resize.disconnect();
@@ -281,7 +283,17 @@ const ButtonRazorSenseLayer = ({
         pointerEvents: 'none',
       }}
     >
-      <span ref={hostRef} style={{ position: 'absolute', inset: 0, display: 'block' }} />
+      <span
+        ref={hostRef}
+        // the engine's own message (a lost GPU context) never paints text inside a button
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'block',
+          fontSize: 0,
+          color: 'transparent',
+        }}
+      />
       <i
         ref={edgeRef}
         style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none' }}

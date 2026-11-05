@@ -156,14 +156,17 @@ const ButtonRayLayer = ({
       typeof ResizeObserver === 'undefined'
     )
       return undefined;
-    const seen = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
+    // on screen (or about to be) it has its WebGL context and Ray; off it, both are freed (browsers allow a page only a few)
+    const seen = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[entries.length - 1];
+        if (!entry) return;
         // his width on this button (its height / 34 of flow 9's) over his box's
-        setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
-        setIsOnScreen(true);
-        seen.disconnect();
-      }
-    });
+        if (entry.isIntersecting) setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
+        setIsOnScreen(entry.isIntersecting);
+      },
+      { rootMargin: '100px' },
+    );
     seen.observe(button);
     return () => seen.disconnect();
   }, [INV, rayBox.width]);
@@ -481,7 +484,17 @@ const ButtonRayLayer = ({
           pointerEvents: 'none',
         }}
       >
-        <span ref={hostRef} style={{ position: 'absolute', inset: 0, display: 'block' }} />
+        <span
+          ref={hostRef}
+          // the engine's own message (a lost GPU context) never paints text inside a button
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'block',
+            fontSize: 0,
+            color: 'transparent',
+          }}
+        />
       </span>
       <span
         aria-hidden="true"
