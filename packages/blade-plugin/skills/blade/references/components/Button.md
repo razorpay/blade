@@ -9,6 +9,9 @@ The Button component is a versatile interactive element used for triggering acti
 ## Important Constraints
 
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
+- `color="neutral"` is a primary button only: use it with `variant="primary"`
+- `hasRazorSense` works only with `variant="primary"` and `color="neutral"`
+- `hasRay` works only with `variant="secondary"`
 
 ## TypeScript Types
 
@@ -34,10 +37,26 @@ type ButtonProps = {
   /**
    * Color theme of the button
    * Note: Not all color and variant combinations are valid
-   * `neutral` follows the color scheme: a black button in light mode, a white one in dark mode. `white` stays white in both.
+   * `neutral` is a primary button only; it follows the color scheme: a black button in light mode, a white one in dark mode.
+   * `white` stays white in both.
    * @default 'primary'
    */
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
+
+  /**
+   * RazorSense plays on the button while it's hovered (web; follows the color scheme)
+   * Only for `variant="primary"` with `color="neutral"`, at any size (an icon-only button plays its own square version)
+   * @default false
+   */
+  hasRazorSense?: boolean;
+
+  /**
+   * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
+   * whips out his magnifying glass and searches for as long as the pointer stays
+   * Only for `variant="secondary"`, at any size: it all scales with the button's height
+   * @default false
+   */
+  hasRay?: boolean;
 
   /**
    * Icon to display in the button
@@ -158,12 +177,16 @@ type BladeCommonEvents = {
 - Use `href` prop to render as an anchor element when the button navigates to a URL.
 - Use `isLoading` to show feedback during async operations.
 - Use `icon` with `iconPosition` for visual reinforcement of the action.
+- Use `color="neutral"` with `hasRazorSense` for an AI-led primary action (Ask Ray, send in an AI chat box).
+- Use `hasRay` on a secondary button whose action Ray carries out (Investigate).
 
 **Don't**
 
 - Don't use `Button` for icon-only actions in tight spaces — use `IconButton` instead.
 - Don't use `Button` for navigation text that looks like a link — use `Link` instead.
 - Don't use `variant="tertiary"` with `color="positive"` or `color="negative"` — tertiary only supports `"primary"` and `"white"`.
+- Don't use `color="neutral"` with `variant="secondary"` or `"tertiary"` — neutral is a primary button only.
+- Don't add `hasRazorSense` or `hasRay` to every button on a page — keep them for the AI actions.
 - Don't use `type="password"` on TextInput — but relevant here: don't pass `type="submit"` accidentally without a form context.
 - Don't use `Button` without text or `accessibilityLabel` when using icon-only mode.
 
@@ -335,4 +358,36 @@ const SimpleToggleExample = () => {
 };
 
 export default SimpleToggleExample;
+```
+
+### AI Actions: Neutral Button with RazorSense and Secondary Button with Ray
+
+The neutral primary button plays RazorSense on hover; the secondary button with `hasRay` widens for Ray, who searches while it's hovered.
+
+```tsx
+import React from 'react';
+import { Button, Box, ArrowRightIcon } from '@razorpay/blade/components';
+
+const AiActionsExample = () => {
+  return (
+    <Box display="flex" gap="spacing.4" alignItems="center">
+      <Button variant="primary" color="neutral" hasRazorSense onClick={() => console.log('Ask Ray')}>
+        Ask Ray
+      </Button>
+      <Button
+        variant="primary"
+        color="neutral"
+        hasRazorSense
+        icon={ArrowRightIcon}
+        accessibilityLabel="Send"
+        onClick={() => console.log('Send')}
+      />
+      <Button variant="secondary" size="small" hasRay onClick={() => console.log('Investigate')}>
+        Investigate
+      </Button>
+    </Box>
+  );
+};
+
+export default AiActionsExample;
 ```

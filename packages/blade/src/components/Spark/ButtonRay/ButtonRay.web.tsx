@@ -22,7 +22,7 @@ const INV = {
   /** Ray's body: his left edge this far past the button's resting end, his feet this far below its bottom edge */
   rayX: 7.5,
   rayY: -1.5,
-  /** his width at that 34px button: he scales with the button, as it does from Figma's (round his middle right) */
+  /** his width at that 34px button; like every size here he scales with the button's height, from where he's placed (his left edge, his feet) */
   rayW: 49.5,
   /** his search film starts this long into the widening */
   startAfter: 0.12,
@@ -111,7 +111,8 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
 
   useEffect(() => {
     const button = stripRef.current?.parentElement;
-    if (!button) return undefined;
+    // no observer (a test's DOM): Blade's own hover stays
+    if (!button || typeof IntersectionObserver === 'undefined') return undefined;
     const seen = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         setIsOnScreen(true);
@@ -225,7 +226,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
           webkitBackgroundClip: 'text',
           backgroundClip: 'text',
           color: 'transparent',
-          filter: `blur(${WASH.bloomBlur}px)`,
+          filter: `blur(${WASH.bloomBlur * scaleOf()}px)`,
           opacity: (Math.min(2, WASH.bloom) * k).toFixed(3),
         });
       }
@@ -382,7 +383,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       >
         <span
           ref={rayRef}
-          style={{ position: 'absolute', left: '100%', top: 0, transformOrigin: 'right center' }}
+          style={{ position: 'absolute', left: '100%', top: 0, transformOrigin: 'left bottom' }}
         >
           {isOnScreen && isEnabled ? (
             <Ray

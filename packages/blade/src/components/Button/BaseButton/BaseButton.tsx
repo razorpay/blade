@@ -115,7 +115,7 @@ type BaseButtonCommonProps = {
   hasRazorSense?: boolean;
   /**
    * Ray on hover (web): RazorSense, a text wash, and the button widens for Ray with his magnifying glass. Only for
-   * `variant="secondary"` at `size="small"`.
+   * `variant="secondary"`, at any size (it all scales with the button's height).
    */
   hasRay?: boolean;
 } & TestID &
@@ -594,18 +594,25 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
-  // RazorSense on hover: the neutral primary button's (Button's hasRazorSense)
+  // the color and variant as rendered (a ButtonGroup's win): neutral is a primary button only; RazorSense on hover is the neutral
+  // primary's (Button's hasRazorSense), Ray the secondary's (hasRay)
   const resolvedColor = buttonGroupProps.color ?? color;
   const resolvedVariant = buttonGroupProps.variant ?? variant;
   const isRazorSenseHover =
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
-  const resolvedSize = buttonGroupProps.size ?? size;
-  const isRayHover = hasRay && resolvedVariant === 'secondary' && resolvedSize === 'small';
+  const isRayHover = hasRay && resolvedVariant === 'secondary';
+  if (__DEV__ && resolvedColor === 'neutral' && resolvedVariant !== 'primary') {
+    logger({
+      type: 'warn',
+      moduleName: 'Button',
+      message: `color="neutral" is a primary button only (received variant="${resolvedVariant}").`,
+    });
+  }
   if (__DEV__ && hasRay && !isRayHover) {
     logger({
       type: 'warn',
       moduleName: 'Button',
-      message: `hasRay needs variant="secondary" and size="small" (received "${resolvedVariant}" and "${resolvedSize}"); the button keeps its own hover.`,
+      message: `hasRay needs variant="secondary" (received "${resolvedVariant}"); the button keeps its own hover.`,
     });
   }
   if (__DEV__ && hasRazorSense && !isRazorSenseHover) {

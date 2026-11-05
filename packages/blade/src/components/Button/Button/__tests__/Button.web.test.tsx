@@ -10,7 +10,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
-const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
+const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative', 'neutral'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -86,6 +86,8 @@ describe('<Button />', () => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
+      // neutral is a primary button only
+      if (color === 'neutral' && variant !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
         const buttonText = 'Pay Now';
@@ -107,6 +109,27 @@ describe('<Button />', () => {
         expect(container).toMatchSnapshot();
       });
     });
+  });
+
+  it('should render the RazorSense hover layer only on the neutral primary button', () => {
+    const { container: neutral } = renderWithTheme(
+      <Button color="neutral" hasRazorSense>
+        Ask Ray
+      </Button>,
+    );
+    expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument();
+    const { container: primary } = renderWithTheme(<Button hasRazorSense>Ask Ray</Button>);
+    expect(primary.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+  });
+
+  it('should render Ray on the secondary button at any size', () => {
+    const { container, getByRole } = renderWithTheme(
+      <Button variant="secondary" size="large" hasRay>
+        Investigate
+      </Button>,
+    );
+    expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument();
+    expect(getByRole('button')).toHaveTextContent('Investigate');
   });
 
   it('should call function on click', () => {

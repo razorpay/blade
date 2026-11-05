@@ -16,7 +16,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { logger } from '~utils/logger';
 
 type ButtonCommonProps = {
   /**
@@ -58,8 +57,8 @@ type ButtonCommonProps = {
   hasRazorSense?: boolean;
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
-   * whips out his magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"` at
-   * `size="small"`.
+   * whips out his magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"`, at any
+   * size: it all scales with the button's height.
    *
    * @default false
    */
@@ -160,13 +159,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   },
   ref,
 ) => {
-  if (__DEV__ && color === 'neutral' && variant !== 'primary') {
-    logger({
-      type: 'warn',
-      moduleName: 'Button',
-      message: `color="neutral" is a primary button only (received variant="${variant}").`,
-    });
-  }
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}

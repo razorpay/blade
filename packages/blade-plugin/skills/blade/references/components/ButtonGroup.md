@@ -38,9 +38,10 @@ type ButtonGroupProps = {
 
   /**
    * The color theme of the buttons
+   * `neutral` is for a group of primary buttons only (`variant="primary"`)
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
   /**
    * Whether the ButtonGroup takes the full width of its container

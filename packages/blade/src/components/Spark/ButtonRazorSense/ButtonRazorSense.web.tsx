@@ -109,7 +109,13 @@ const ButtonRazorSense = ({ isEnabled }: { isEnabled: boolean }): React.ReactEle
   // the button's shape (square or wide) and whether it's on screen yet
   useEffect(() => {
     const button = layerRef.current?.parentElement;
-    if (!button) return undefined;
+    // no observers (a test's DOM): Blade's own hover stays
+    if (
+      !button ||
+      typeof ResizeObserver === 'undefined' ||
+      typeof IntersectionObserver === 'undefined'
+    )
+      return undefined;
     const resize = new ResizeObserver(() => setSquare(isSquare(button)));
     resize.observe(button);
     setSquare(isSquare(button));

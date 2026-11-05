@@ -278,7 +278,7 @@ SecondaryButton.parameters = {
   docs: {
     description: {
       story:
-        'Secondary Button in different sizes. With `hasRay`, the small one widens on hover for Ray and his magnifying glass',
+        'Secondary Button in different sizes. With `hasRay`, it widens on hover for Ray and his magnifying glass, scaled to its height',
     },
   },
 };
@@ -503,12 +503,16 @@ ButtonRef.parameters = {
 export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
   const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
   const sizes: ButtonProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
-  // positive/negative colors only support primary and secondary variants
-  const colorVariants: ButtonProps['variant'][] = ['primary', 'secondary'];
-  const colors: Array<{ color: ButtonProps['color']; label: string }> = [
-    { color: 'white', label: 'White' },
-    { color: 'positive', label: 'Positive' },
-    { color: 'negative', label: 'Negative' },
+  // neutral is a primary button only; white, positive and negative support primary and secondary
+  const colors: Array<{
+    color: ButtonProps['color'];
+    label: string;
+    variants: ButtonProps['variant'][];
+  }> = [
+    { color: 'neutral', label: 'Neutral', variants: ['primary'] },
+    { color: 'white', label: 'White', variants: ['primary', 'secondary'] },
+    { color: 'positive', label: 'Positive', variants: ['primary', 'secondary'] },
+    { color: 'negative', label: 'Negative', variants: ['primary', 'secondary'] },
   ];
 
   return (
@@ -609,8 +613,8 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
         </BaseBox>
       ))}
 
-      {/* Positive and Negative color buttons */}
-      {colors.map(({ color, label }) => (
+      {/* Neutral, White, Positive and Negative color buttons */}
+      {colors.map(({ color, label, variants: colorVariants }) => (
         <BaseBox
           key={color}
           display="flex"
