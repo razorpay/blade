@@ -7,6 +7,8 @@ type ButtonRayVariant = 'investigate';
 type ButtonRayProps = {
   isEnabled: boolean;
   variant: ButtonRayVariant;
+  /** the button's size: the gap between its label and Ray is tuned per size */
+  size: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 export type { ButtonRayVariant, ButtonRayProps };

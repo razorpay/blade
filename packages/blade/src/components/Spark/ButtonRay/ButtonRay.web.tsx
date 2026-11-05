@@ -27,6 +27,7 @@ const RAY_VARIANTS: Record<
     rayW: number;
     eyeY: number;
     padding: number;
+    gapTrim: Record<ButtonRayProps['size'], number>;
     startAfter: number;
     state: RayState;
   }
@@ -48,6 +49,8 @@ const RAY_VARIANTS: Record<
     eyeY: -5,
     /** the button's right padding as it opens: Ray's spot and its width are measured from its label's end past this */
     padding: 8,
+    /** per size, Ray and the opened end this many px closer to the label (as tuned on Blade's sizes) */
+    gapTrim: { xsmall: 1, small: 2, medium: 4, large: 4 },
     /** his film starts this long into the widening */
     startAfter: 0.12,
     /** what he does while it's hovered */
@@ -125,8 +128,9 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
  * Light and dark (dark: the dark card's RazorSense, a soft blue bloom wash). Rendered as the button's first children; the
  * button's label sits above them.
  */
-const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement | null => {
+const ButtonRay = ({ isEnabled, variant, size }: ButtonRayProps): React.ReactElement | null => {
   const INV = RAY_VARIANTS[variant];
+  const gapTrim = INV.gapTrim[size];
   const { colorScheme } = useTheme();
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
   const stripRef = useRef<HTMLSpanElement>(null);
@@ -200,11 +204,12 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
     const paddingAt = (e: number): number => {
       const g = scaleOf();
       const ge = 2 * Math.round((INV.grow * g * e) / 2);
-      const open = INV.padding * g - S.slack;
+      const open = INV.padding * g - S.slack - gapTrim;
       return 2 * Math.round((basePadding + (open - basePadding) * e + ge) / 2);
     };
     const clearWash = (): void => {
       if (S.label) {
+        // its own colour back at once: Blade's colour transition would fade it in from transparent (a flash)
         Object.assign(S.label.style, {
           backgroundImage: '',
           backgroundSize: '',
@@ -213,7 +218,10 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
           webkitBackgroundClip: '',
           backgroundClip: '',
           color: '',
+          transition: 'none',
         });
+        void S.label.offsetWidth;
+        S.label.style.transition = '';
       }
       bloom?.remove();
       bloom = null;
@@ -251,6 +259,8 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
         webkitBackgroundClip: 'text',
         backgroundClip: 'text',
         color: 'transparent',
+        // painted at once (Blade's colour transition would show the letters under the paint as they fade)
+        transition: 'none',
       });
       if (mode === 'dark' && WASH.bloom > 0) {
         // the glow: the band alone, blurred, behind the letters
@@ -288,7 +298,7 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
       if (ray) {
         const g = scaleOf();
         const labelEnd = (S.w0 || button.offsetWidth) - basePadding - S.slack;
-        ray.style.left = `${labelEnd + (INV.padding + INV.rayX) * g}px`;
+        ray.style.left = `${labelEnd + (INV.padding + INV.rayX) * g - gapTrim}px`;
         ray.style.top = `${button.offsetHeight + INV.rayY * g - rayBox.height}px`;
         ray.style.transform = `scale(${(INV.rayW * g) / rayBox.width})`;
       }
@@ -402,7 +412,7 @@ const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement |
       clearWash();
       stage?.destroy();
     };
-  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width, INV]);
+  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width, INV, gapTrim]);
 
   return (
     <>

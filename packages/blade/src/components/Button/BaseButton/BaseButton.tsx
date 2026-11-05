@@ -607,6 +607,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isRazorSenseHover =
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
   const isRayHover = hasRay && resolvedVariant === 'secondary';
+  const resolvedSize = buttonGroupProps.size ?? size;
   if (__DEV__ && resolvedColor === 'neutral' && resolvedVariant !== 'primary') {
     logger({
       type: 'warn',
@@ -893,7 +894,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...makeAnalyticsAttribute(rest)}
     >
       {isRazorSenseHover ? <ButtonRazorSense isEnabled={!disabled} /> : null}
-      {isRayHover ? <ButtonRay isEnabled={!disabled} variant={rayVariant} /> : null}
+      {isRayHover ? (
+        <ButtonRay isEnabled={!disabled} variant={rayVariant} size={resolvedSize} />
+      ) : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}
