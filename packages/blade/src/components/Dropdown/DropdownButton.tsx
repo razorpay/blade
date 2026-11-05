@@ -9,8 +9,6 @@ import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { assertNeutralPrimary } from '~components/Button/Button/assertNeutralPrimary';
-import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 
 // (each member of ButtonProps' union, so it stays a union: with or without an icon)
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
@@ -51,12 +49,6 @@ const _DropdownButton = ({
     hasFooterAction,
     triggererRef,
   } = useDropdown();
-  const buttonGroupProps = useButtonGroupContext();
-  assertNeutralPrimary({
-    color: buttonGroupProps.color ?? color,
-    variant: buttonGroupProps.variant ?? variant,
-    moduleName: 'DropdownButton',
-  });
 
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button

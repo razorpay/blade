@@ -16,8 +16,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { assertNeutralPrimary } from './assertNeutralPrimary';
-import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 
 type ButtonCommonProps = {
   /**
@@ -184,12 +182,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   },
   ref,
 ) => {
-  const buttonGroupProps = useButtonGroupContext();
-  assertNeutralPrimary({
-    color: buttonGroupProps.color ?? color,
-    variant: buttonGroupProps.variant ?? variant,
-    moduleName: 'Button',
-  });
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}

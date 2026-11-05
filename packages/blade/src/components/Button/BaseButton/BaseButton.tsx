@@ -342,6 +342,12 @@ const getProps = ({
       message: `Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "${color}"`,
     });
   }
+  if (color === 'neutral' && variant !== 'primary') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `Neutral color can only be used with primary variant but received "${variant}"`,
+    });
+  }
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
   // The filled neutral surface turns white in dark mode, where it takes the white button's insets and ink (its background stays

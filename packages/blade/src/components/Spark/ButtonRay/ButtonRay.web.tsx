@@ -8,7 +8,10 @@ import type { ButtonRayProps } from './types';
 const ButtonRay = (props: ButtonRayProps): React.ReactElement | null => {
   const [Layer, setLayer] = useState<React.ComponentType<ButtonRayProps> | null>(null);
 
+  // loaded once the button is enabled (a disabled or loading one never draws it), then kept
+  const { isEnabled } = props;
   useEffect(() => {
+    if (!isEnabled || Layer) return undefined;
     let isMounted = true;
     import('./ButtonRayLayer')
       .then(({ ButtonRayLayer }) => {
@@ -20,7 +23,7 @@ const ButtonRay = (props: ButtonRayProps): React.ReactElement | null => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [isEnabled, Layer]);
 
   return Layer ? <Layer {...props} /> : null;
 };

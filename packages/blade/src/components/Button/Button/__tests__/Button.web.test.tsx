@@ -118,7 +118,7 @@ describe('<Button />', () => {
           Pay Now
         </Button>,
       ),
-    ).toThrow('[Blade: Button]: color "neutral" can only be used with variant "primary"');
+    ).toThrow('[Blade: BaseButton]: Neutral color can only be used with primary variant');
   });
 
   it('should render the RazorSense hover layer only on the neutral primary button', async () => {

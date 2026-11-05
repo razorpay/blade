@@ -8,7 +8,10 @@ import type { ButtonRazorSenseProps } from './types';
 const ButtonRazorSense = (props: ButtonRazorSenseProps): React.ReactElement | null => {
   const [Layer, setLayer] = useState<React.ComponentType<ButtonRazorSenseProps> | null>(null);
 
+  // loaded once the button is enabled (a disabled or loading one never draws it), then kept
+  const { isEnabled } = props;
   useEffect(() => {
+    if (!isEnabled || Layer) return undefined;
     let isMounted = true;
     import('./ButtonRazorSenseLayer')
       .then(({ ButtonRazorSenseLayer }) => {
@@ -20,7 +23,7 @@ const ButtonRazorSense = (props: ButtonRazorSenseProps): React.ReactElement | nu
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [isEnabled, Layer]);
 
   return Layer ? <Layer {...props} /> : null;
 };
