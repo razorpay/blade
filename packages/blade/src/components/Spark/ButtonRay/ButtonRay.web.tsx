@@ -297,8 +297,12 @@ const ButtonRay = ({ isEnabled, variant, size }: ButtonRayProps): React.ReactEle
       const ray = rayRef.current;
       if (ray) {
         const g = scaleOf();
-        const labelEnd = (S.w0 || button.offsetWidth) - basePadding - S.slack;
-        ray.style.left = `${labelEnd + (INV.padding + INV.rayX) * g - gapTrim}px`;
+        const w0 = S.w0 || button.offsetWidth;
+        const left = w0 - basePadding - S.slack + (INV.padding + INV.rayX) * g - gapTrim;
+        // closed, his spot (near the label) can reach into the resting button's padding: he waits just past its end and comes
+        // in with the widening (and goes back out as it closes)
+        const away = Math.max(0, w0 + 1 - left);
+        ray.style.left = `${left + away * (1 - S.e)}px`;
         ray.style.top = `${button.offsetHeight + INV.rayY * g - rayBox.height}px`;
         ray.style.transform = `scale(${(INV.rayW * g) / rayBox.width})`;
       }
@@ -447,7 +451,12 @@ const ButtonRay = ({ isEnabled, variant, size }: ButtonRayProps): React.ReactEle
       >
         <span
           ref={rayRef}
-          style={{ position: 'absolute', left: '100%', top: 0, transformOrigin: 'left bottom' }}
+          style={{
+            position: 'absolute',
+            left: '100%',
+            top: 0,
+            transformOrigin: 'left bottom',
+          }}
         >
           {isOnScreen && isEnabled ? (
             <Ray
