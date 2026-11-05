@@ -85,6 +85,11 @@ type RayProps = {
    * drawn that much finer, so he stays sharp.
    */
   _scale?: number;
+  /**
+   * @private A state whose film stays loaded while he's idle, so it starts at once when asked (Button's `hasRay`: his search
+   * the moment the button is hovered).
+   */
+  _preloadState?: RayState;
 } & TestID &
   StyledPropsBlade;
 

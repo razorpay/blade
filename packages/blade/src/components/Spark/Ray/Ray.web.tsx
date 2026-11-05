@@ -42,6 +42,7 @@ const _Ray = (
     testID,
     _lookY = 0,
     _scale = 1,
+    _preloadState,
     ...styledProps
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
@@ -61,6 +62,7 @@ const _Ray = (
     colorScheme: scheme,
     lookY: _lookY,
     scale: _scale,
+    preload: _preloadState,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
@@ -77,7 +79,7 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, isInteractive, scheme, _lookY, _scale]);
+  }, [state, idle, size, isVisible, isInteractive, scheme, _lookY, _scale, _preloadState]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(inputRef ?? null);

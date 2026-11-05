@@ -51,7 +51,7 @@ const RAY_VARIANTS: Record<
     padding: 8,
     /** per size, Ray and the opened end this many px closer to the label (as tuned on Blade's sizes) */
     gapTrim: { xsmall: 1, small: 2, medium: 4, large: 4 },
-    /** his film starts this long into the widening */
+    /** his film starts this long into the hover (flow 9's beat: he notices, then the glass comes out; it's loaded ahead) */
     startAfter: 0.12,
     /** what he does while it's hovered */
     state: 'searching',
@@ -466,6 +466,7 @@ const ButtonRay = ({ isEnabled, variant, size }: ButtonRayProps): React.ReactEle
               isInteractive={false}
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
               _scale={rayScale}
+              _preloadState={INV.state}
             />
           ) : null}
         </span>

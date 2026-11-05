@@ -134,6 +134,8 @@ type RayMountOptions = {
   lookY?: number;
   /** how much bigger than his box he's shown (Ray's _scale): his canvases drawn that much finer */
   scale?: number;
+  /** a state whose film stays loaded while he's idle (Ray's _preloadState): it starts at once when asked */
+  preload?: RayState;
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -277,7 +279,7 @@ class RayMount {
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
     this.options = { ...this.options, ...options };
     this.player.eyeY = this.lookYWorld();
-    if (this.options.state !== 'idle') this.preloadAnswer();
+    this.preloadAnswer();
     this.releaseFilms();
     if (sizeChanged) this.layout();
     if (schemeChanged) {
@@ -615,8 +617,8 @@ class RayMount {
   }
 
   private wantedAnswerFilms(): string[] {
-    const { state } = this.options;
-    if (state === 'idle') return [];
+    const { state, preload } = this.options;
+    if (state === 'idle') return preload && preload !== 'idle' ? [ANSWER_FILMS[preload]] : [];
     const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
     return next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
   }
