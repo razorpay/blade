@@ -372,6 +372,8 @@ const ButtonRayLayer = ({
         pauseTimer = window.setTimeout(() => {
           engine?.player.pause();
           stage?.setPaused(true);
+          // faded out: the button's own edge again (the hover's insets were laid over the strip)
+          if (edgeRef.current) edgeRef.current.style.boxShadow = '';
         }, 480);
       }
       run();
