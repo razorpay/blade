@@ -23,6 +23,9 @@ type ButtonGroupProps = {
   /**
    * Specifies the color of the ButtonGroup.
    *
+   * `neutral` is for a group of primary buttons only (`variant="primary"`; it throws with another variant), as on Button:
+   * black in light mode, white in dark.
+   *
    * @default 'primary'
    */
   color?: ButtonProps['color'];
