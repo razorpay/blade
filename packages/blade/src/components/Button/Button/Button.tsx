@@ -57,12 +57,19 @@ type ButtonCommonProps = {
   hasRazorSense?: boolean;
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
-   * whips out his magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"`, at any
-   * size: it all scales with the button's height.
+   * plays `rayVariant` for as long as the pointer stays. Only for `variant="secondary"`, at any size: it all scales with the
+   * button's height.
    *
    * @default false
    */
   hasRay?: boolean;
+  /**
+   * Which Ray `hasRay` plays. `investigate`: he whips out his magnifying glass and searches (an investigating action). More
+   * variants will follow.
+   *
+   * @default 'investigate'
+   */
+  rayVariant?: 'investigate';
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -135,6 +142,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isLoading = false,
     hasRazorSense = false,
     hasRay = false,
+    rayVariant = 'investigate',
     href,
     target,
     rel,
@@ -186,6 +194,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       isLoading={isLoading}
       hasRazorSense={hasRazorSense}
       hasRay={hasRay}
+      rayVariant={rayVariant}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

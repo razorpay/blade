@@ -210,6 +210,7 @@ class RayMount {
   constructor(root: HTMLElement, options: RayMountOptions) {
     this.root = root;
     this.options = options;
+    this.player.eyeY = this.lookYWorld();
     this.reducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -271,6 +272,7 @@ class RayMount {
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
     this.options = { ...this.options, ...options };
+    this.player.eyeY = this.lookYWorld();
     if (this.options.state !== 'idle') this.preloadAnswer();
     this.releaseFilms();
     if (sizeChanged) this.layout();
@@ -629,16 +631,22 @@ class RayMount {
     });
   }
 
+  /** options.lookY (his box px) in his world's units */
+  private lookYWorld(): number {
+    return ((this.options.lookY ?? 0) * RC.BASE[2][0]) / WIDTHS[this.options.size];
+  }
+
   /**
-   * His looks moved by options.lookY (his box px, in his own px here): every pose of the film's script, once (its start
-   * simulates the script again). As flow 9's inv8.js moves his eyes and the glass in its film.
+   * His looks moved by options.lookY: every pose of the film's script (looks are his Figma px), once (its start simulates
+   * the script again), as flow 9's inv8.js moves his eyes and the glass in its film; his own Ray's eyes move with them
+   * (RayPlayer's eyeY), so a film takes him from rest with his eyes where they were.
    */
   private shiftLooks(film: Film): void {
     type Pose = { look?: [number, number] };
     type Script = { keys?: { pose?: Pose }[]; lookY?: number };
     const script = (film.host.env.window as { FILM?: { SCRIPT?: Script } }).FILM?.SCRIPT;
     if (!script?.keys) return;
-    const want = ((this.options.lookY ?? 0) * RC.BASE[2][0]) / WIDTHS[this.options.size];
+    const want = this.lookYWorld() / RC.FIG;
     const d = want - (script.lookY ?? 0);
     if (!d) return;
     const seen = new Set<Pose>();

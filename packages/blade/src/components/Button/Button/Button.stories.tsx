@@ -273,12 +273,13 @@ SecondaryButton.storyName = 'Secondary';
 SecondaryButton.args = {
   variant: 'secondary',
   hasRay: false,
+  rayVariant: 'investigate',
 };
 SecondaryButton.parameters = {
   docs: {
     description: {
       story:
-        'Secondary Button in different sizes. With `hasRay`, it widens on hover for Ray and his magnifying glass, scaled to its height',
+        'Secondary Button in different sizes. With `hasRay`, it widens on hover for Ray, scaled to its height; `rayVariant` picks what he does (`investigate`: his magnifying glass)',
     },
   },
 };

@@ -11,7 +11,7 @@ The Button component is a versatile interactive element used for triggering acti
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
 - `color="neutral"` is a primary button only: use it with `variant="primary"`
 - `hasRazorSense` works only with `variant="primary"` and `color="neutral"`
-- `hasRay` works only with `variant="secondary"`
+- `hasRay` works only with `variant="secondary"`; `rayVariant` picks what Ray does (`"investigate"` for now)
 
 ## TypeScript Types
 
@@ -52,11 +52,18 @@ type ButtonProps = {
 
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
-   * whips out his magnifying glass and searches for as long as the pointer stays
+   * plays `rayVariant` for as long as the pointer stays
    * Only for `variant="secondary"`, at any size: it all scales with the button's height
    * @default false
    */
   hasRay?: boolean;
+
+  /**
+   * Which Ray `hasRay` plays. `investigate`: he whips out his magnifying glass and searches (an investigating action)
+   * More variants will follow
+   * @default 'investigate'
+   */
+  rayVariant?: 'investigate';
 
   /**
    * Icon to display in the button
@@ -371,7 +378,12 @@ import { Button, Box, ArrowRightIcon } from '@razorpay/blade/components';
 const AiActionsExample = () => {
   return (
     <Box display="flex" gap="spacing.4" alignItems="center">
-      <Button variant="primary" color="neutral" hasRazorSense onClick={() => console.log('Ask Ray')}>
+      <Button
+        variant="primary"
+        color="neutral"
+        hasRazorSense
+        onClick={() => console.log('Ask Ray')}
+      >
         Ask Ray
       </Button>
       <Button
@@ -382,7 +394,13 @@ const AiActionsExample = () => {
         accessibilityLabel="Send"
         onClick={() => console.log('Send')}
       />
-      <Button variant="secondary" size="small" hasRay onClick={() => console.log('Investigate')}>
+      <Button
+        variant="secondary"
+        size="small"
+        hasRay
+        rayVariant="investigate"
+        onClick={() => console.log('Investigate')}
+      >
         Investigate
       </Button>
     </Box>

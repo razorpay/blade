@@ -61,6 +61,7 @@ import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
 import { ButtonRay } from '~components/Spark/ButtonRay';
+import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -114,10 +115,14 @@ type BaseButtonCommonProps = {
    */
   hasRazorSense?: boolean;
   /**
-   * Ray on hover (web): RazorSense, a text wash, and the button widens for Ray with his magnifying glass. Only for
+   * Ray on hover (web): RazorSense, a text wash, and the button widens for Ray, who plays `rayVariant`. Only for
    * `variant="secondary"`, at any size (it all scales with the button's height).
    */
   hasRay?: boolean;
+  /**
+   * Which Ray `hasRay` plays: 'investigate', he whips out his magnifying glass and searches.
+   */
+  rayVariant?: ButtonRayVariant;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -579,6 +584,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _spinnerColor,
     hasRazorSense = false,
     hasRay = false,
+    rayVariant = 'investigate',
     ...rest
   },
   ref,
@@ -887,7 +893,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...makeAnalyticsAttribute(rest)}
     >
       {isRazorSenseHover ? <ButtonRazorSense isEnabled={!disabled} /> : null}
-      {isRayHover ? <ButtonRay isEnabled={!disabled} /> : null}
+      {isRayHover ? <ButtonRay isEnabled={!disabled} variant={rayVariant} /> : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}

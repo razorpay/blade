@@ -3,4 +3,4 @@
 '@razorpay/blade-mcp': patch
 ---
 
-docs(blade-plugin): document Button's `color="neutral"`, `hasRazorSense` and `hasRay`
+docs(blade-plugin): document Button's `color="neutral"`, `hasRazorSense`, `hasRay` and `rayVariant`

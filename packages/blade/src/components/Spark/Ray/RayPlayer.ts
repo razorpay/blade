@@ -194,6 +194,8 @@ class RayPlayer {
   mode: 'light' | 'dark' = 'light';
   /** The last frame drawn, everything laid over it. */
   last: Frame | null = null;
+  /** His eyes this much lower (world units; − = higher), as the films' looks are moved with them (RayMount's lookY) */
+  eyeY = 0;
 
   private readonly ctx: CanvasRenderingContext2D;
   private view = { scale: 1, ox: 0, oy: 0 };
@@ -404,6 +406,13 @@ class RayPlayer {
     }
     f = RC.withHover(f, H);
     if (this.flip.COINFLIP.on) f = this.flip.flipDraw(f, now).f;
+    if (this.eyeY) {
+      const off: [number, number][] = f.eyeOff ?? [
+        [0, 0],
+        [0, 0],
+      ];
+      f = { ...f, eyeOff: off.map((o) => [o[0], o[1] + this.eyeY]) };
+    }
 
     this.last = f;
     if (this.cap.CAP.on) {

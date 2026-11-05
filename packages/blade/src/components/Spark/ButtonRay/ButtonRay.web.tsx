@@ -3,6 +3,8 @@ import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
 import type { FreshDoc, FreshEngine } from '../RazorSenseEngine';
 import { Ray } from '../Ray';
 import { rayBoxSize } from '../Ray/RayMount';
+import type { RayState } from '../Ray/types';
+import type { ButtonRayProps, ButtonRayVariant } from './types';
 import { useTheme } from '~components/BladeProvider';
 
 type ButtonRaySetup = {
@@ -12,22 +14,45 @@ type ButtonRaySetup = {
 };
 
 /**
- * Flow 9's "Investigate with Ray" (ray tools/flow: inv8.js with its saved tune, settings/ray-flow9-inv8.json; the text wash,
- * wash9.js with settings/ray-secondarybutton.json). Sizes are Figma's at its 34px tall button, scaled to the button's height.
+ * Each variant's Ray: how the button opens for him, where he stands, and what he does. Sizes are Figma's at a 34px tall
+ * button, scaled to the button's height.
  */
-const INV = {
-  /** it widens to the right by this much, over this long (quartic ease-out) */
-  grow: 39,
-  growMs: 420,
-  /** Ray's body: his left edge this far past the button's resting end, his feet this far below its bottom edge */
-  rayX: 7.5,
-  rayY: -1.5,
-  /** his width at that 34px button; like every size here he scales with the button's height, from where he's placed (his left edge, his feet) */
-  rayW: 49.5,
-  /** his looks moved up by this (− = up): his eyes and the glass rise about twice it */
-  eyeY: -2,
-  /** his search film starts this long into the widening */
-  startAfter: 0.12,
+const RAY_VARIANTS: Record<
+  ButtonRayVariant,
+  {
+    grow: number;
+    growMs: number;
+    rayX: number;
+    rayY: number;
+    rayW: number;
+    eyeY: number;
+    padding: number;
+    startAfter: number;
+    state: RayState;
+  }
+> = {
+  /**
+   * Flow 9's "Investigate with Ray" (ray tools/flow: inv8.js with its saved tune, settings/ray-flow9-inv8.json; the text
+   * wash, wash9.js with settings/ray-secondarybutton.json): he whips out his magnifying glass and searches.
+   */
+  investigate: {
+    /** it widens to the right by this much, over this long (quartic ease-out) */
+    grow: 39,
+    growMs: 420,
+    /** Ray's body: his left edge this far past the button's resting end, his feet this far below its bottom edge */
+    rayX: 7.5,
+    rayY: 0.5,
+    /** his width at that 34px button; like every size here he scales with the button's height, from where he's placed (his left edge, his feet) */
+    rayW: 49.5,
+    /** his eyes, and the glass that rides his open eye, this much higher (− = up) */
+    eyeY: -5,
+    /** the button's right padding as it opens: Ray's spot and its width are measured from its label's end past this */
+    padding: 8,
+    /** his film starts this long into the widening */
+    startAfter: 0.12,
+    /** what he does while it's hovered */
+    state: 'searching',
+  },
 };
 const WASH = {
   light: ['#1f39ff', '#f5f8ff', '#1f39ff'],
@@ -100,7 +125,8 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
  * Light and dark (dark: the dark card's RazorSense, a soft blue bloom wash). Rendered as the button's first children; the
  * button's label sits above them.
  */
-const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | null => {
+const ButtonRay = ({ isEnabled, variant }: ButtonRayProps): React.ReactElement | null => {
+  const INV = RAY_VARIANTS[variant];
   const { colorScheme } = useTheme();
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
   const stripRef = useRef<HTMLSpanElement>(null);
@@ -150,11 +176,29 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       label: null as HTMLElement | null,
       // the label's own colour, read before the wash paints it (painted, its colour is transparent)
       ink: [0, 0, 0],
+      // how far the button's content runs on past its text (measured at rest)
+      slack: 0,
     };
     let bloom: HTMLSpanElement | null = null;
 
     const scaleOf = (): number => button.offsetHeight / 34;
-    const growPx = (): number => 2 * Math.round((INV.grow * scaleOf()) / 2);
+    // Blade's label runs on a little past its text: Ray and the opened end are measured from the text's own end, as in flow 9
+    const slackOf = (): number => {
+      const label = labelOf(button);
+      if (!label) return 0;
+      const range = document.createRange();
+      range.selectNodeContents(label);
+      const contentEnd = button.getBoundingClientRect().right - basePadding;
+      return Math.max(0, contentEnd - range.getBoundingClientRect().right);
+    };
+    // the right padding opened e of the way: from Blade's own to flow 9's past the text (INV.padding) plus the widening,
+    // whole even px
+    const paddingAt = (e: number): number => {
+      const g = scaleOf();
+      const ge = 2 * Math.round((INV.grow * g * e) / 2);
+      const open = INV.padding * g - S.slack;
+      return 2 * Math.round((basePadding + (open - basePadding) * e + ge) / 2);
+    };
     const clearWash = (): void => {
       if (S.label) {
         Object.assign(S.label.style, {
@@ -234,13 +278,13 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       }
     };
     const place = (): void => {
-      // the button's width (it grows to the right) and Ray's spot past its resting end
-      const ge = 2 * Math.round((INV.grow * scaleOf() * S.e) / 2);
-      button.style.paddingRight = S.e > 0 ? `${basePadding + ge}px` : '';
+      // the button's width (it grows to the right) and Ray's spot past its label's end
+      button.style.paddingRight = S.e > 0 ? `${paddingAt(S.e)}px` : '';
       const ray = rayRef.current;
       if (ray) {
         const g = scaleOf();
-        ray.style.left = `${(S.w0 || button.offsetWidth) + INV.rayX * g}px`;
+        const labelEnd = (S.w0 || button.offsetWidth) - basePadding - S.slack;
+        ray.style.left = `${labelEnd + (INV.padding + INV.rayX) * g}px`;
         ray.style.top = `${button.offsetHeight + INV.rayY * g - rayBox.height}px`;
         ray.style.transform = `scale(${(INV.rayW * g) / rayBox.width})`;
       }
@@ -280,7 +324,10 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       S.to = on ? 1 : 0;
       S.a0 = performance.now();
       if (on) {
-        S.w0 = S.w0 || button.offsetWidth;
+        if (!S.w0) {
+          S.w0 = button.offsetWidth;
+          S.slack = slackOf();
+        }
         if (edgeRef.current) edgeRef.current.style.boxShadow = getComputedStyle(button).boxShadow;
         if (!S.washT0) {
           S.label = labelOf(button);
@@ -311,7 +358,8 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
         const setup = doc.ui?.buttonRay as ButtonRaySetup | undefined;
         if (!setup) return;
         // the strip is as wide as the opened button all the time (a resize would clear its canvas: a flash), its left edge put
-        const opened = button.offsetWidth + growPx();
+        S.slack = slackOf();
+        const opened = button.offsetWidth - basePadding + paddingAt(1);
         strip.style.width = `${opened}px`;
         const region = stripRegion(doc, setup, opened, button.offsetHeight);
         stage = new FreshStage(host, createFreshEngine);
@@ -350,7 +398,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       clearWash();
       stage?.destroy();
     };
-  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width]);
+  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width, INV]);
 
   return (
     <>
@@ -391,7 +439,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
             <Ray
               size="medium"
               idle="rest"
-              state={isSearching ? 'searching' : 'idle'}
+              state={isSearching ? INV.state : 'idle'}
               isInteractive={false}
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
             />
