@@ -22,6 +22,8 @@ const INV = {
   /** Ray's body: his left edge this far past the button's resting end, his feet this far below its bottom edge */
   rayX: 7.5,
   rayY: -1.5,
+  /** his width at that 34px button: he scales with the button, as it does from Figma's (round his middle right) */
+  rayW: 49.5,
   /** his search film starts this long into the widening */
   startAfter: 0.12,
 };
@@ -237,6 +239,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
         const g = scaleOf();
         ray.style.left = `${(S.w0 || button.offsetWidth) + INV.rayX * g}px`;
         ray.style.top = `${button.offsetHeight + INV.rayY * g - rayBox.height}px`;
+        ray.style.transform = `scale(${(INV.rayW * g) / rayBox.width})`;
       }
     };
     const tick = (now: number): void => {
@@ -377,7 +380,10 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
           pointerEvents: 'none',
         }}
       >
-        <span ref={rayRef} style={{ position: 'absolute', left: '100%', top: 0 }}>
+        <span
+          ref={rayRef}
+          style={{ position: 'absolute', left: '100%', top: 0, transformOrigin: 'right center' }}
+        >
           {isOnScreen && isEnabled ? (
             <Ray
               size="medium"

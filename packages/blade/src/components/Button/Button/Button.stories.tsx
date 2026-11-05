@@ -269,11 +269,13 @@ export const SecondaryButton = ButtonWithSizeTemplate.bind({});
 SecondaryButton.storyName = 'Secondary';
 SecondaryButton.args = {
   variant: 'secondary',
+  hasRay: false,
 };
 SecondaryButton.parameters = {
   docs: {
     description: {
-      story: 'Secondary Button in different sizes',
+      story:
+        'Secondary Button in different sizes. With `hasRay`, the small one widens on hover for Ray and his magnifying glass',
     },
   },
 };
@@ -302,41 +304,10 @@ NeutralButton.parameters = {
   docs: {
     description: {
       story:
-        'Neutral Button in different sizes: black in light mode, white in dark. With `hasRazorSense`, RazorSense plays on hover',
+        'Neutral Button in different sizes: black in light mode, white in dark. With `hasRazorSense`, RazorSense plays on hover; an icon-only one plays its own square version',
     },
   },
 };
-
-export const NeutralIconOnlyButton = ButtonWithSizeTemplate.bind({});
-NeutralIconOnlyButton.storyName = 'Neutral Icon Only';
-NeutralIconOnlyButton.args = {
-  variant: 'primary',
-  color: 'neutral',
-  hasRazorSense: true,
-  icon: ArrowRightIcon,
-  accessibilityLabel: 'Send',
-  children: '',
-};
-NeutralIconOnlyButton.parameters = {
-  docs: {
-    description: {
-      story: 'Neutral icon-only Button in different sizes, with its own RazorSense hover',
-    },
-  },
-};
-
-/**
- * The small secondary button with `hasRay`: hover it for RazorSense and the text wash, as it widens for Ray and his
- * magnifying glass. Light and dark: Color Scheme in the toolbar.
- */
-export const SecondaryWithRay = ButtonTemplate.bind({});
-SecondaryWithRay.args = {
-  variant: 'secondary',
-  size: 'small',
-  hasRay: true,
-  children: 'Investigate',
-};
-SecondaryWithRay.storyName = 'Secondary with Ray';
 
 export const ButtonAsLink = ButtonTemplate.bind({});
 ButtonAsLink.args = {
