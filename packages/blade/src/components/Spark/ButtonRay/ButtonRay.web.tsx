@@ -347,7 +347,7 @@ const ButtonRay = ({ isEnabled }: { isEnabled: boolean }): React.ReactElement | 
       clearWash();
       stage?.destroy();
     };
-  }, [isEnabled, isOnScreen, mode, rayBox.height]);
+  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width]);
 
   return (
     <>
