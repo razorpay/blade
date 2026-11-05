@@ -453,6 +453,8 @@ const ButtonRayLayer = ({
       cancelAnimationFrame(frame);
       window.clearTimeout(pauseTimer);
       window.clearTimeout(searchTimer);
+      // a fresh start finds him at rest, not still searching behind a closed button
+      setIsSearching(false);
       window.clearTimeout(refitTimer);
       resize.disconnect();
       button.removeEventListener('pointerenter', enter);
