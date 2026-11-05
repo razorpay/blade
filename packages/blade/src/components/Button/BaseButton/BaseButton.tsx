@@ -298,6 +298,7 @@ const getProps = ({
   theme,
   variant,
   color,
+  colorScheme,
   hasIcon,
   _borderRadius,
   _iconSize,
@@ -310,6 +311,7 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
+  colorScheme?: 'light' | 'dark';
   _borderRadius?: BaseButtonCommonProps['_borderRadius'];
   _iconSize?: BaseButtonCommonProps['_iconSize'];
 }): BaseButtonStyleProps => {
@@ -326,6 +328,10 @@ const getProps = ({
   }
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
+  // The filled neutral surface turns white in dark mode, where it takes the white button's insets and ink (its background stays
+  // neutral's own, which is white there)
+  const inkColor: BaseButtonProps['color'] =
+    isFilledNeutral(color, variant) && colorScheme === 'dark' ? 'white' : color;
 
   // Resolve background value - either a gradient string or a token path
   const resolveBackgroundValue = (value: string): string => {
@@ -445,13 +451,13 @@ const getProps = ({
     iconColor: getTextColorToken({
       property: 'icon',
       variant,
-      color,
+      color: inkColor,
       state: 'default',
     }) as IconColor,
     textColor: getTextColorToken({
       property: 'text',
       variant,
-      color,
+      color: inkColor,
       state: 'default',
     }) as BaseTextProps['color'],
     buttonPaddingTop: isIconOnly ? makeSpace(0) : makeSpace(theme.spacing[buttonPadding[size].top]),
@@ -466,24 +472,24 @@ const getProps = ({
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: childrenString?.trim(),
     defaultBackgroundColor: getDefaultBackground(),
-    defaultBoxShadow: getBoxShadow('default', color),
+    defaultBoxShadow: getBoxShadow('default', inkColor),
     hoverBackgroundColor: resolveBackgroundValue(
       getBackgroundColorToken({ variant, color, state: 'hover' }),
     ),
-    hoverBoxShadow: getBoxShadow('hover', color),
+    hoverBoxShadow: getBoxShadow('hover', inkColor),
     hoverIconColor: getIn(
       theme.colors,
       getTextColorToken({
         property: 'icon',
         variant,
-        color,
+        color: inkColor,
         state: 'hover',
       }),
     ),
     focusBackgroundColor: resolveBackgroundValue(
       getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
-    focusBoxShadow: getBoxShadow('focus', color),
+    focusBoxShadow: getBoxShadow('focus', inkColor),
     // The system focus ring is a faded primary blue, which the design replaces
     // with a faded neutral ring on the filled neutral surface.
     focusRingColor: getIn(
@@ -493,7 +499,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
+    ...(isReactNative() && !isDisabled ? getNativeShadowColors(inkColor) : {}),
   };
 
   if (isDisabled) {
@@ -503,21 +509,21 @@ const getProps = ({
     props.iconColor = getTextColorToken({
       property: 'icon',
       variant,
-      color,
+      color: inkColor,
       state: 'disabled',
     }) as IconColor;
     props.textColor = getTextColorToken({
       property: 'text',
       variant,
-      color,
+      color: inkColor,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
-    props.defaultBoxShadow = getBoxShadow('disabled', color);
+    props.defaultBoxShadow = getBoxShadow('disabled', inkColor);
     props.hoverBackgroundColor = disabledBackgroundColor;
-    props.hoverBoxShadow = getBoxShadow('disabled', color);
+    props.hoverBoxShadow = getBoxShadow('disabled', inkColor);
     props.focusBackgroundColor = disabledBackgroundColor;
-    props.focusBoxShadow = getBoxShadow('disabled', color);
+    props.focusBoxShadow = getBoxShadow('disabled', inkColor);
   }
 
   return props;
@@ -564,7 +570,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const buttonGroupProps = useButtonGroupContext();
   const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
@@ -652,6 +658,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     variant: buttonGroupProps.variant ?? variant,
     theme,
     color: buttonGroupProps.color ?? color,
+    colorScheme,
     hasIcon: Boolean(Icon),
     _borderRadius,
     _iconSize,

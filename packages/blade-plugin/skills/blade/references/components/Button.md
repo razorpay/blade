@@ -34,9 +34,10 @@ type ButtonProps = {
   /**
    * Color theme of the button
    * Note: Not all color and variant combinations are valid
+   * `neutral` follows the color scheme: a black button in light mode, a white one in dark mode. `white` stays white in both.
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
   /**
    * Icon to display in the button

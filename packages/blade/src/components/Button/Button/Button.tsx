@@ -35,7 +35,13 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  /**
+   * `neutral` follows the color scheme: a black button in light mode, a white one in dark mode (the label and icons invert
+   * with it). `white` stays white in both, for use on colored or dark surfaces.
+   *
+   * @default 'primary'
+   */
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;

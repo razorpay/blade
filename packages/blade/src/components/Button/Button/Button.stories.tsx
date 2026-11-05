@@ -152,7 +152,7 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'neutral', 'white', 'positive', 'negative'];
 
   return (
     <>
