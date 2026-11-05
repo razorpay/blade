@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.33.1
+
+### Patch Changes
+
+- a62de405e: feat(icons): add ListTodoIcon, ListChecksIcon, TerminalIcon and 2 more
+
 ## 1.33.0
 
 ### Minor Changes

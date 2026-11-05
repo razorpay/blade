@@ -5,13 +5,15 @@ import { createControllable } from './controllable.svelte';
 export type OpenSource = 'trigger' | 'dismiss' | 'escape' | 'back' | 'programmatic';
 
 /**
- * A dismissal, as the owner hears it. `close` ends it — needed only when
- * the disclosure is not dismissible; a dismissible one closes on its own
- * once the handler returns.
+ * A dismissal, as the owner hears it. A dismissible disclosure closes on
+ * its own once the handler returns, unless `preventDefault` was called:
+ * then, as one that is not dismissible, it stays open until `close`.
  */
 export interface DismissEvent<S extends string = OpenSource> {
   source: S;
   close: () => void;
+  /** Keeps it open this time: the owner asks before it goes. */
+  preventDefault: () => void;
 }
 
 /**
@@ -42,7 +44,7 @@ export interface DisclosureModel<S extends string = OpenSource> {
   toggle(source?: S): void;
   /**
    * The user asks it to go: `onDismiss` runs, then a dismissible one
-   * closes. Returns whether it closed.
+   * closes unless the handler prevented it. Returns whether it closed.
    */
   dismiss(source: S): boolean;
   /**
@@ -88,8 +90,15 @@ export function createDisclosure<S extends string = OpenSource>(
       if (!openness.get()) {
         return false;
       }
-      options.onDismiss?.({ source: from, close: () => set(false, from) });
-      if (isDismissible() && openness.get()) {
+      let isPrevented = false;
+      options.onDismiss?.({
+        source: from,
+        close: () => set(false, from),
+        preventDefault: () => {
+          isPrevented = true;
+        },
+      });
+      if (!isPrevented && isDismissible() && openness.get()) {
         set(false, from);
       }
       return !openness.get();

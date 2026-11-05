@@ -59,14 +59,14 @@ npm install @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 
 ### Entry points
 
-| Import                                                    | What                                  |
-| --------------------------------------------------------- | ------------------------------------- |
-| `@razorpay/blade-svelte/components`                       | The components, the overlays included |
-| `@razorpay/blade-svelte/icons`                            | Blade's icons, as data (`IconSource`) |
-| `@razorpay/blade-svelte/configs/uno`                      | The UnoCSS preset (`bladeUnoConfig`)  |
-| `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                  |
+| Import                                                    | What                                   |
+| --------------------------------------------------------- | -------------------------------------- |
+| `@razorpay/blade-svelte/components`                       | The components, the overlays included  |
+| `@razorpay/blade-svelte/icons`                            | Blade's icons, as data (`IconSource`)  |
+| `@razorpay/blade-svelte/configs/uno`                      | The UnoCSS preset (`bladeUnoConfig`)   |
+| `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                   |
 | `@razorpay/blade-svelte/configs/lint`                     | Class lint rules, for oxlint or ESLint |
-| `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles             |
+| `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles              |
 
 ### cx: compile Blade's CSS in your app
 
@@ -127,6 +127,9 @@ export default {
     // addVariant's strings
     variants: { 'quick-buy': '[data-quick-buy="true"] &' },
     preflight: true, // the default with a theme
+    // Blade's tokens: lengths in px, type in rem (the defaults); a Tailwind
+    // app whose spacing was rem keeps it with `layout: 'rem'`.
+    units: { layout: 'px', font: 'rem', rootFontSize: 16 },
   }),
   content: { pipeline: { include: [/\.(svelte|[jt]s)($|\?)/] } },
 };
@@ -137,6 +140,10 @@ export default {
 - A class both define (`rounded-none`, `mx-auto`, `shadow-card`) is written
   once, as Blade defines it, at Tailwind's place in the stylesheet, so it
   wins and loses against your other classes as it did under Tailwind.
+- `units` decides how such a class is written: `p-4` is 16px by default
+  and 1rem with `units: { layout: 'rem' }`. Values from your `theme` and
+  bracketed values are written as given; border widths, shadows and outline
+  offsets stay px, as Tailwind keeps them.
 - The font classes are the exception: `font-normal`…`font-bold`, `font-sans`
   and `font-mono` are Blade's weights and faces (Inter, Menlo) until your
   theme sets the same key (`fontFamily.sans`, `fontWeight.medium`…); then
@@ -145,6 +152,12 @@ export default {
   `grayscale brightness-0` keeps both.
 - The preflight and Blade's resets are the `base` layer: `@unocss base;` puts
   them apart (in a cascade layer), `@unocss !base;` emits the rest.
+- A variant's utilities come after the plain ones, variant by variant in
+  Tailwind's order (`hover:` before `focus:` before `active:` before
+  `disabled:`, the screens last), each in its own `variant-*` layer:
+  `hover:bg-a active:bg-b` is the pressed colour, as under Tailwind. Within a
+  variant, and among the plain utilities, classes sort as Tailwind sorts them
+  (`h-4`, then `h-[13px]`, then `h-auto`).
 
 #### Theming with CSS variables
 
@@ -226,17 +239,17 @@ component reads them through getters, so an adapter the app swaps reaches
 what is already mounted. An adapter left out is the enclosing provider's; `null` unsets it for the
 subtree.
 
-| Adapter            | What it does                                                                                                  |
-| ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| `track`            | Analytics events; `field_change` sends `{ name }` only                                                        |
-| `navigate`         | The app's router: every `href` (Link, a link Button, Card, a link row or tab) offers it plain internal clicks |
-| `vibrate`          | Told what a press meant: `press`, `select` (Radio, Chip), `toggle` (Checkbox, Switch), `warning`              |
-| `announce`         | Says a message politely; defaults to the host's live region (a Button starting and stopping loading)          |
-| `locale`           | Amount's locale; i18nify's global state is the fallback                                                       |
-| `form`             | The app's form (`FormAdapter`), below                                                                         |
-| `presentDropdown`  | Shows a library dropdown (PhoneNumberInput's countries) the app's own way                                     |
-| `readOTP`          | Reads a one-time code for OTPInput (an SMS retriever, WebOTP); cancelled on unmount, disable or a user edit; asked again when the owner resets `value` to `''` |
-| `reportError`     | Errors the components catch                                                                                   |
+| Adapter           | What it does                                                                                                                                                   |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `track`           | Analytics events; `field_change` sends `{ name }` only                                                                                                         |
+| `navigate`        | The app's router: every `href` (Link, a link Button, Card, a link row or tab) offers it plain internal clicks                                                  |
+| `vibrate`         | Told what a press meant: `press`, `select` (Radio, Chip), `toggle` (Checkbox, Switch), `warning`                                                               |
+| `announce`        | Says a message politely; defaults to the host's live region (a Button starting and stopping loading)                                                           |
+| `locale`          | Amount's locale; i18nify's global state is the fallback                                                                                                        |
+| `form`            | The app's form (`FormAdapter`), below                                                                                                                          |
+| `presentDropdown` | Shows a library dropdown (PhoneNumberInput's countries) the app's own way                                                                                      |
+| `readOTP`         | Reads a one-time code for OTPInput (an SMS retriever, WebOTP); cancelled on unmount, disable or a user edit; asked again when the owner resets `value` to `''` |
+| `reportError`     | Errors the components catch                                                                                                                                    |
 
 Components pass `data-analytics-*` props to their element, as React's (a
 toast takes them in `showToast`'s options).
@@ -249,11 +262,11 @@ the small set of runes an app composes its own hosts on (the layer stack,
 `defineContext`, the presence timings, `phoneDigits`, `isPromise`), not
 the whole runes layer:
 
-| The app's                                                                                                      | What Blade gives it                                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host BladeProvider renders, `ToastContainer` (`showToast`), back (`back()`), and `presentDropdown` to show a library dropdown its own way      |
+| The app's                                                                                                      | What Blade gives it                                                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| An opener (overlays opened from code, rendered by the app)                                                     | The overlay host BladeProvider renders, `ToastContainer` (`showToast`), back (`back()`), and `presentDropdown` to show a library dropdown its own way                 |
 | A form                                                                                                         | `adapters.form` (`FormAdapter`): what fields register with (a `FieldRecord` with its `element()` and `reveal()`) and show errors from, and what submit buttons submit |
-| Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose; provider defaults extend to them (`ComponentStyleProps` is an interface)                                                                     |
+| Its own composed components (an overlay that switches by screen, a searchable list, navigation, async content) | The parts they compose; provider defaults extend to them (`ComponentStyleProps` is an interface)                                                                      |
 
 Blade is web only: a native renderer brings its own `.native.svelte` twins,
 over the same classes.
@@ -289,13 +302,13 @@ oxlint loads through `jsPlugins` and ESLint through its flat config:
 }
 ```
 
-| Rule                      | Flags                                                                                                     |
-| ------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Rule                      | Flags                                                                                                      |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `no-conflicting-classes`  | Two classes in one list that set one property (`px-2 px-4`): `cx` joins, it doesn't merge                  |
 | `no-interpolated-classes` | A class built from pieces (`bg-${tone}`, `class="bg-{tone}"`), which no generator sees                     |
 | `no-unknown-blade-class`  | A class in Blade's vocabulary that Blade doesn't define (`bg-surface-gray-mutd`); an app's own are left be |
-| `prefer-token`            | An arbitrary length that is a spacing token (`p-[16px]` → `p-blade-5`)                                    |
-| `no-restyle`              | A Blade component's `class` that restyles it rather than placing it                                       |
+| `prefer-token`            | An arbitrary length that is a spacing token (`p-[16px]` → `p-blade-5`)                                     |
+| `no-restyle`              | A Blade component's `class` that restyles it rather than placing it                                        |
 
 `no-restyle` is what `styleOverride` was: a Blade component's `class` places
 it — margin, size, its part in a flex or grid parent, position, `hidden` —
@@ -311,6 +324,43 @@ oxlint hands a plugin only a `.svelte` file's `<script>`, so the rules read
 the markup from disk; their reports sit on the script's first line with the
 real `[line:col]` in the message. A component with no `<script>` never
 reaches a plugin: `lintClasses(text, filename)` lints one directly.
+
+## 🔁 Migrating from 0.x
+
+1.0.0 is a new implementation (see the [changelog](./CHANGELOG.md)). Most of
+a 0.x app's breaks are renames and moves; this table maps them. A prop 1.0.0
+does not know is dropped silently at runtime, so run `svelte-check` after
+the bump, and lint the classes with [`configs/lint`](#lint-the-classes-you-write).
+
+| 0.x                                                                                                      | 1.0.0                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `import { … } from '@razorpay/blade-svelte'`, `/utils`                                                   | `/components`, `/runes`, `/icons`; `portal()` is gone — overlays mount in the outermost `BladeProvider`'s host                                                                           |
+| Shipped component CSS                                                                                    | None: [UnoCSS with `bladeUnoConfig`](#cx-compile-blades-css-in-your-app); `bladeUnoConfig({ desktop: '48rem' })` sets the `d:` switch (default 1000px)                                   |
+| `BladeProvider themeTokens colorScheme`                                                                  | [CSS variables](#theming-with-css-variables)                                                                                                                                             |
+| `<XIcon />`, `icon={XIcon}` (components from `/components`); `getIconProps`, `IconProps`                 | `XIcon` from `/icons` is a source: `<Icon source={XIcon} />`, `icon={XIcon}`; the vite/webpack plugin builds the glyph font                                                              |
+| `Accordion`, `AccordionItem`, `AccordionItemHeader`, `AccordionItemBody`                                 | `CardGroup` + `CardGroupItem` with a `content` snippet (`bind:isExpanded` per row), or `Collapsible` for your own markup                                                                 |
+| `Spinner`                                                                                                | `DotLoader`                                                                                                                                                                              |
+| `InputRow`                                                                                               | `span` on each field inside `InputGroup`                                                                                                                                                 |
+| `ActionList selectedValue onAction`; `ActionListItemAsset`, `ActionListItemText`                         | `bind:value`, `onChange({ name, value })`, item `onClick({ name, value, event })`; `leading` (an icon or snippet) and `title`/`description`                                              |
+| `TextInput type="telephone"`, `type="search"`, `defaultValue`, `getInput()`                              | `type="tel"`; `SearchInput` (or `role="searchbox"` + `enterKeyHint="search"`); `value` / `bind:value`; `attach`                                                                          |
+| `SearchInput marginBottom`                                                                               | `class="mb-…"`                                                                                                                                                                           |
+| `Button isFullWidth`                                                                                     | `class="w-full"`                                                                                                                                                                         |
+| `BottomSheet showDragHandle portalTarget backdropPortalTarget zIndex snapPoints maxHeight hasActionList` | `isDraggable`; the host places and stacks sheets; `classes={{ root, panel }}`; `BottomSheetBody padding="spacing.0"`                                                                     |
+| `BottomSheet`/`Modal` closing before `onDismiss`                                                         | `onDismiss` runs first, then a dismissible overlay closes; call the event's `preventDefault()` to ask first and its `close()` to end it                                                  |
+| `PhoneNumberInput defaultCountry defaultValue`; `onChange(text)`                                         | `country` (default `'IN'`), `value`; `onChange({ country, dialCode, nationalNumber, value })` — `nationalNumber` is the digits                                                           |
+| `OTPInput onChange(value)`                                                                               | `onChange({ name, value, method })`                                                                                                                                                      |
+| `Skeleton width height borderRadius`                                                                     | `class="w-… h-… rounded-…"`                                                                                                                                                              |
+| `Text`/`Heading`/`Amount` `color="surface.text.gray.muted"`, `Text variant`, `marginTop` and the like    | `color="muted"` (the short names each doc lists); a token not among them: repoint it, `class="[--surface-text-gray-normal:var(--surface-text-static-white-normal)]"`; margins as `class` |
+| `Divider marginY`, `Card borderRadius`                                                                   | `class="my-…"`; Card keeps Blade's radius                                                                                                                                                |
+| `Link icon={Component} iconPosition`; a link with no `href`                                              | `icon` / `trailingIcon` sources; `href` is required (`isDisabled` renders an inert link without one)                                                                                     |
+| `IconButton icon={Component}`                                                                            | `icon={XIcon}` source                                                                                                                                                                    |
+| `TrustBadge` with no `label`                                                                             | `label` is required                                                                                                                                                                      |
+
+A Blade component's `class` places it; to restyle one, prefer its props, then
+the lint's per-component `allow` globs
+(`["error", { "allow": { "ModalHeader": ["pb-*"] } }]`) and Tailwind's `!`
+for an intended override, as the [lint section](#lint-the-classes-you-write)
+describes.
 
 ## 📝 License
 

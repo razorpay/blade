@@ -4,7 +4,7 @@
 
 Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An icon is a source: pass it to a component's `icon`, `leading` or `trailing` prop, or draw it with `<Icon source={…} />` (`size`: `2xsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `2xlarge`; `color`: `default`, `subtle`, `muted`, `primary`, `negative`, `positive`, `white`, `inherit`). Never render an icon as a tag. If an icon you need is not listed, it does not exist in blade-svelte: pick the closest listed one.
 
-450 icons. `yarn tsc:knowledgebase --target svelte` fails when this list and the exports differ.
+455 icons. `yarn tsc:knowledgebase --target svelte` fails when this list and the exports differ.
 
 - AcceptPaymentsFilledIcon
 - AcceptPaymentsIcon
@@ -192,6 +192,7 @@ Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An i
 - FlagIcon
 - FlaskIcon
 - FolderIcon
+- FolderOpenIcon
 - ForexManagementFilledIcon
 - ForexManagementIcon
 - FreelanceFilledIcon
@@ -230,8 +231,10 @@ Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An i
 - LeftCircularCornerIcon
 - LifeBuoyIcon
 - LinkIcon
+- ListChecksIcon
 - ListIcon
 - ListSearchIcon
+- ListTodoIcon
 - LoaderIcon
 - LoansForBusinessesFilledIcon
 - LoansForBusinessesIcon
@@ -390,6 +393,7 @@ Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An i
 - TargetIcon
 - TaxPaymentsFilledIcon
 - TaxPaymentsIcon
+- TerminalIcon
 - TestIcon
 - ThermometerIcon
 - ThumbsDownIcon
@@ -450,6 +454,7 @@ Every icon `@razorpay/blade-svelte/icons` exports, named as in Blade React. An i
 - WifiOffIcon
 - WindIcon
 - WorldwideIcon
+- WrenchIcon
 - XCircleIcon
 - XSquareIcon
 - YoutubeIcon

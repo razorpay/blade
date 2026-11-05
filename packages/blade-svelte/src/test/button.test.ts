@@ -211,6 +211,17 @@ describe('Button standalone', () => {
     );
   });
 
+  it('takes its hover, press and focus looks only while enabled: busy and disabled keep theirs', () => {
+    const { getByTestId } = render(ButtonHarness, { props: { variant: 'primary' } });
+    const button = getByTestId('solo');
+    expectClass(button, 'hover:enabled:bg-interactive-primary-highlighted');
+    expectClass(button, 'active:enabled:shadow-button-primary-highlighted');
+    expectClass(button, 'focus-visible:enabled:shadow-button-primary-focus');
+    expectClass(button, 'disabled:bg-interactive-primary-disabled');
+    // No state look may tie with the disabled one on specificity.
+    expect(button.className).not.toMatch(/(^|\s)(hover|active|focus-visible):(bg|shadow|before)/);
+  });
+
   it('a neutral button is a filled surface: light loader dots', () => {
     const { getByTestId } = render(ButtonHarness, {
       props: { color: 'neutral', isLoading: true },

@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.130.2
+
+### Patch Changes
+
+- a6c5ce006: fix(icons): update PlayCircleIcon, StopCircleIcon
+- a62de405e: feat(icons): add ListTodoIcon, ListChecksIcon, TerminalIcon and 2 more
+
 ## 12.130.1
 
 ### Patch Changes

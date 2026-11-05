@@ -236,6 +236,74 @@ describe('without a theme', () => {
   });
 });
 
+describe('units', () => {
+  const classes = new Set([
+    'p-4',
+    '-mt-2',
+    'h-11',
+    'rounded-medium',
+    'translate-x-4',
+    'blur-medium',
+    'text-100',
+    'leading-100',
+    'border-thin',
+    'outline-offset-1',
+    'p-[13px]',
+  ]);
+
+  it('is px for lengths and rem for type by default', async () => {
+    const uno = await createGenerator(bladeUnoConfig());
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:16px;}');
+    expect(css).toContain('.h-11{height:44px;}');
+    expect(css).toContain('.text-100{font-size:0.875rem;}');
+  });
+
+  it('writes lengths in rem of the root font size with `layout: rem`', async () => {
+    const uno = await createGenerator(bladeUnoConfig({ units: { layout: 'rem' } }));
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:1rem;}');
+    expect(css).toContain('.-mt-2{margin-top:-0.5rem;}');
+    expect(css).toContain('.h-11{height:2.75rem;}');
+    expect(css).toContain('.rounded-medium{border-radius:0.75rem;}');
+    expect(css).toContain('--blade-translate-x:1rem');
+    expect(css).toContain('--blade-blur:blur(0.5rem)');
+    // Type keeps its own unit; hairlines, offsets and bracketed values stay as written.
+    expect(css).toContain('.text-100{font-size:0.875rem;}');
+    expect(css).toContain('.border-thin{border-width:1px;}');
+    expect(css).toContain('.outline-offset-1{outline-offset:1px;}');
+    expect(css).toContain('.p-\\[13px\\]{padding:13px;}');
+  });
+
+  it('writes type in px with `font: px`, lengths untouched', async () => {
+    const uno = await createGenerator(bladeUnoConfig({ units: { font: 'px' } }));
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.text-100{font-size:14px;}');
+    expect(css).toContain('.leading-100{line-height:20px;}');
+    expect(css).toContain('.p-4{padding:16px;}');
+  });
+
+  it('converts against `rootFontSize`', async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({ units: { layout: 'rem', font: 'rem', rootFontSize: 10 } }),
+    );
+    const { css } = await uno.generate(classes, { preflights: false });
+    expect(css).toContain('.p-4{padding:1.6rem;}');
+    expect(css).toContain('.text-100{font-size:1.4rem;}');
+  });
+
+  it("decides a class both define, at Tailwind's place: a Tailwind app keeps rem spacing", async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({ theme: fixture.theme, units: { layout: 'rem' } }),
+    );
+    const { css } = await uno.generate(new Set(['p-4', 'p-[13px]', 'mx-auto']), {
+      preflights: false,
+    });
+    expect(css).toContain('.p-4{padding:1rem;}');
+    expect(css.indexOf('.p-4{')).toBeLessThan(css.indexOf('.p-\\[13px\\]{'));
+  });
+});
+
 describe("Tailwind's place, Blade's definition", () => {
   it("writes a class both define at its place among Tailwind's, as Blade defines it", async () => {
     const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
@@ -251,6 +319,113 @@ describe("Tailwind's place, Blade's definition", () => {
     expect(css.indexOf('.mx-auto')).toBeLessThan(css.indexOf('.-ml-2'));
     // Blade's spelling: logical sides
     expect(css).toContain('.mx-auto{margin-inline:auto;}');
+  });
+
+  it("orders a rule's classes as Tailwind does: negatives, digits, `[…]`, words", async () => {
+    const uno = await createGenerator(bladeUnoConfig({ theme: fixture.theme }));
+    const classes = ['h-auto', 'h-[13px]', 'h-4', '-mt-[1px]', 'mt-1', 'mt-[2px]', 'mt-auto'];
+    const { css } = await uno.generate(new Set(classes), { preflights: false });
+    const at = (name: string): number => css.indexOf(`.${name.replace(/[[\]]/g, '\\$&')}{`);
+    // `h-4 h-[13px]` on one element is 13px, as under Tailwind; `h-[20px] h-full` is full.
+    expect(at('h-4')).toBeLessThan(at('h-[13px]'));
+    expect(at('h-[13px]')).toBeLessThan(at('h-auto'));
+    // Tailwind sorts the candidates with `<`: a negative sorts first.
+    expect(at('-mt-[1px]')).toBeLessThan(at('mt-1'));
+    expect(at('mt-1')).toBeLessThan(at('mt-[2px]'));
+    expect(at('mt-[2px]')).toBeLessThan(at('mt-auto'));
+    // Blade's body (`p-4` is Blade's) keeps Tailwind's place among them.
+    const padded = await uno.generate(new Set(['p-[13px]', 'p-4', 'd:p-[13px]', 'd:p-4']), {
+      preflights: false,
+    });
+    const padAt = (name: string): number =>
+      padded.css.indexOf(`.${name.replace(/[[\]:]/g, '\\$&')}{`);
+    expect(padAt('p-4')).toBeLessThan(padAt('p-[13px]'));
+    expect(padAt('d:p-4')).toBeLessThan(padAt('d:p-[13px]'));
+    // Under the identifier: a rule's identifiers keep their name order.
+    const corners = await uno.generate(new Set(['rounded-t', 'rounded-b-lg', 'rounded-tl-[3px]']), {
+      preflights: false,
+    });
+    const cornerAt = (name: string): number =>
+      corners.css.indexOf(`.${name.replace(/[[\]]/g, '\\$&')}{`);
+    expect(cornerAt('rounded-b-lg')).toBeLessThan(cornerAt('rounded-t'));
+    expect(cornerAt('rounded-t')).toBeLessThan(cornerAt('rounded-tl-[3px]'));
+  });
+
+  it("writes a variant's utilities after the plain ones, variant by variant, as Tailwind does", async () => {
+    const uno = await createGenerator(
+      bladeUnoConfig({
+        theme: fixture.theme,
+        variants: { 'quick-buy': '[data-quick-buy="true"] &' },
+      }),
+    );
+    const classes = [
+      'd:bg-primary-500',
+      '[&_svg]:bg-primary-500',
+      'motion-reduce:bg-primary-500',
+      'quick-buy:bg-primary-500',
+      'data-[state=open]:bg-primary-500',
+      'peer-checked:bg-primary-500',
+      'group-hover:bg-primary-500',
+      'disabled:bg-primary-500',
+      'active:bg-primary-500',
+      'focus:bg-primary-500',
+      'hover:bg-primary-500',
+      'first:bg-primary-500',
+      'after:bg-primary-500',
+      '*:bg-primary-500',
+      'bg-primary-500',
+      'enabled:hover:bg-primary-500',
+      'd:hover:bg-primary-500',
+      'hover:!bg-primary-500',
+      'p-4',
+    ];
+    const { css } = await uno.generate(new Set(classes), { preflights: false });
+    const at = (name: string): number => {
+      const index = css.indexOf(`.${name.replace(/[^\w-]/g, '\\$&')}`);
+      expect(index, name).toBeGreaterThanOrEqual(0);
+      return index;
+    };
+    // Every plain utility, whatever its rule, before every variant's.
+    expect(at('p-4')).toBeLessThan(at('*:bg-primary-500'));
+    // Tailwind's registration order: child, pseudo-elements, pseudo-classes
+    // (hover < focus < active < disabled), group, peer, data, the app's own,
+    // reduced motion, the screens, bracketed selectors.
+    const order = [
+      '*:bg-primary-500',
+      'after:bg-primary-500',
+      'first:bg-primary-500',
+      'hover:bg-primary-500',
+      'focus:bg-primary-500',
+      'active:bg-primary-500',
+      'disabled:bg-primary-500',
+      'group-hover:bg-primary-500',
+      'peer-checked:bg-primary-500',
+      'data-[state=open]:bg-primary-500',
+      'quick-buy:bg-primary-500',
+      'motion-reduce:bg-primary-500',
+      'd:bg-primary-500',
+      '[&_svg]:bg-primary-500',
+    ];
+    order.slice(1).forEach((name, index) => {
+      expect(at(order[index]), `${order[index]} before ${name}`).toBeLessThan(at(name));
+    });
+    // Stacked variants take the later one's place: `enabled:hover:` is among
+    // `enabled:`, `d:hover:` among `d:`. `!` moves nothing.
+    expect(at('enabled:hover:bg-primary-500')).toBeGreaterThan(at('focus:bg-primary-500'));
+    expect(at('enabled:hover:bg-primary-500')).toBeLessThan(at('disabled:bg-primary-500'));
+    expect(at('d:hover:bg-primary-500')).toBeGreaterThan(at('motion-reduce:bg-primary-500'));
+    expect(at('hover:!bg-primary-500')).toBeGreaterThan(at('first:bg-primary-500'));
+    expect(at('hover:!bg-primary-500')).toBeLessThan(at('focus:bg-primary-500'));
+    // Within a variant's layer, the plain order still holds.
+    const sized = await uno.generate(new Set(['hover:h-4', 'hover:h-[13px]', 'hover:h-auto']), {
+      preflights: false,
+    });
+    expect(sized.css.indexOf('.hover\\:h-4')).toBeLessThan(
+      sized.css.indexOf('.hover\\:h-\\[13px\\]'),
+    );
+    expect(sized.css.indexOf('.hover\\:h-\\[13px\\]')).toBeLessThan(
+      sized.css.indexOf('.hover\\:h-auto'),
+    );
   });
 
   it("composes Tailwind's filters with Blade's: `grayscale brightness-0` keep both", async () => {

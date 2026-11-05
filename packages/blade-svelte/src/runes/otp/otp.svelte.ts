@@ -489,6 +489,17 @@ export function createOTP(options: OTPOptions): OTP {
       if (options.isReadOnly()) {
         return;
       }
+      // A soft keyboard composing says nothing at keydown (Android reports
+      // `Unidentified`, keyCode 229; an IME, `Process` or `isComposing`): the
+      // character arrives at `input`. Prevented here, it never would.
+      if (
+        event.isComposing ||
+        event.keyCode === 229 ||
+        event.key === 'Unidentified' ||
+        event.key === 'Process'
+      ) {
+        return;
+      }
       const before = model.value();
       const action = model.keyAt(index, event.key, {
         shift: event.shiftKey,

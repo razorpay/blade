@@ -12,7 +12,7 @@ Drawer is a full-height dialog docked to the right edge (or the left, `side="lef
 - It renders into the overlay host of the app's BladeProvider (the examples assume the app has one)
 - Compose the content from `DrawerHeader`, `DrawerBody` and `DrawerFooter`; there is no `size` (its width is fixed) and no back button (that is BottomSheetHeader's)
 - `isDraggable` (default `false`) lets it be dragged toward its own edge by its header, reporting `onDismiss({ source: 'drag' })`; there is no handle
-- With `isDismissible={false}` the close button is hidden and it stays open until `close` is called
+- `onDismiss({ source, close, preventDefault })` fires on every user dismissal; `preventDefault()` keeps it open this time (ask first, then `close()`). With `isDismissible={false}` the close button is hidden and it stays open until `close` is called
 - Drawer reads only its own provider defaults (`defaults={{ Drawer: { side: 'left' } }}`), never Modal's
 
 ## Props

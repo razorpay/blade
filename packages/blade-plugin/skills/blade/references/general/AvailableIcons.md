@@ -219,6 +219,7 @@ import {
 | FlagIcon | Flag for marking, reporting, or milestones |
 | FlaskIcon | Laboratory flask for experiments or testing |
 | FolderIcon | Folder for file organization |
+| FolderOpenIcon | Folder open icon |
 | ForexManagementIcon | Razorpay product icon for forex/currency management |
 | ForexManagementFilledIcon | Filled variant of ForexManagementIcon |
 | FreelanceIcon | Razorpay product icon for freelance solutions |
@@ -257,8 +258,10 @@ import {
 | LeftCircularCornerIcon | Left circular corner shape |
 | LifeBuoyIcon | Life buoy ring for help or support |
 | LinkIcon | Chain link for URLs or connections |
+| ListChecksIcon | List checks icon |
 | ListIcon | Bulleted list for content organization |
 | ListSearchIcon | List with magnifying glass for searching within lists |
+| ListTodoIcon | List todo icon |
 | LoaderIcon | Spinning loader for loading states |
 | LoansForBusinessesIcon | Razorpay product icon for business loans |
 | LoansForBusinessesFilledIcon | Filled variant of LoansForBusinessesIcon |
@@ -418,6 +421,7 @@ import {
 | TargetIcon | Bullseye target for goals or objectives |
 | TaxPaymentsIcon | Razorpay product icon for tax payments |
 | TaxPaymentsFilledIcon | Filled variant of TaxPaymentsIcon |
+| TerminalIcon | Terminal icon |
 | TestIcon | Test tube or testing indicator |
 | ThermometerIcon | Thermometer for temperature |
 | ThumbsDownIcon | Thumbs down for dislike or rejection |
@@ -478,6 +482,7 @@ import {
 | WifiOffIcon | Disabled WiFi |
 | WindIcon | Wind/breeze lines |
 | WorldwideIcon | Globe with meridians for worldwide/global |
+| WrenchIcon | Wrench icon |
 | XCircleIcon | X mark in circle for error or cancel |
 | XSquareIcon | X mark in square for close or remove |
 | YoutubeIcon | YouTube video platform logo |

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, waitFor } from '@testing-library/svelte';
 import PhoneNumberInputHarness from './fixtures/PhoneNumberInputHarness.svelte';
+import PhoneNumberInput from '../components/phone-number-input/PhoneNumberInput.svelte';
 import InputGroupHarness from './fixtures/InputGroupHarness.svelte';
 import { glyphsIn } from './classes';
 import { ChevronUpDownIcon, InfoIcon } from '../icons';
@@ -38,6 +39,18 @@ describe('PhoneNumberInput', () => {
         value: '+919876543210',
       });
     });
+  });
+
+  it("starts on India and names the button 'Country' when told neither, as Blade React", async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(PhoneNumberInput, {
+      props: { label: 'Phone', onChange, testID: 'phone' },
+    });
+    expect(getByTestId('phone-country').getAttribute('aria-label')).toBe('Country: India +91');
+    await type(getByTestId('phone'), '9876543210');
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ country: 'IN', value: '+919876543210' }),
+    );
   });
 
   it('reads the country off a value that carries a dial code', () => {

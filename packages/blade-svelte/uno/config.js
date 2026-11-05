@@ -1672,23 +1672,50 @@ function createEngine(context) {
       byIdentifier.get(identifier)?.push(entry);
       entries.set(identifier, entry);
     }
+    const identifierOrder = new Map([...entries.keys()].sort().map((id, index) => [id, index]));
     const alternatives = [...entries.keys()].sort((a, b) => b.length - a.length).map((identifier) => identifier.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")).join("|");
     return [
       [
         new RegExp(`^(-)?(${alternatives})(?:-(.+))?$`),
-        ([, negative, identifier, rest]) => {
+        ([, negative2, identifier, rest]) => {
           const entry = entries.get(identifier);
           let modifier = rest ?? "DEFAULT";
-          if (negative) modifier = `-${modifier}`;
+          if (negative2) modifier = `-${modifier}`;
           if (isArbitraryValue(modifier) && arbitraryOwner(identifier, modifier) !== entry) {
             return void 0;
           }
-          return generate(entry, modifier);
+          const css = generate(entry, modifier);
+          if (!css) return void 0;
+          const place = [identifierOrder.get(identifier), entries.size];
+          return withCandidateOrder(css, candidateOrder(Boolean(negative2), place, rest));
         }
       ]
     ];
   }
   return { matchUtilities };
+}
+function candidateOrder(negative2, identifier, value) {
+  const first = value?.[0] ?? "";
+  const bucket = first === "[" ? 1 : /[0-9]/.test(first) || first === "" ? 0 : 2;
+  const [index, count] = identifier;
+  return (negative2 ? 0 : count * 3) + index * 3 + bucket;
+}
+var isEntries = (value) => Array.isArray(value) && value.every((pair) => Array.isArray(pair));
+var asList = (css) => Array.isArray(css) && css.length > 0 && isEntries(css) ? [css] : Array.isArray(css) ? css : [css];
+var sortKey = symbols.sort;
+function withCandidateOrder(css, sort) {
+  return asList(css).map((item) => {
+    if (isEntries(item)) return [...item.filter(([key]) => key !== sortKey), [sortKey, sort]];
+    if (item && typeof item === "object") return { ...item, [sortKey]: sort };
+    return item;
+  });
+}
+function candidateOrderOf(css) {
+  for (const item of asList(css)) {
+    const sort = isEntries(item) ? item.find(([key]) => key === sortKey)?.[1] : item && typeof item === "object" ? item[sortKey] : void 0;
+    if (typeof sort === "number") return sort;
+  }
+  return void 0;
 }
 function addUtilities(utilities) {
   return Object.entries(utilities).map(
@@ -1849,23 +1876,23 @@ function tailwindRules(theme) {
     { [identifier]: output },
     { values: dropDefault ? withoutDefault(colors(key)) : colors(key), type }
   );
-  const filter = (identifier, key, name = identifier, negative = false) => matchUtilities(
+  const filter = (identifier, key, name = identifier, negative2 = false) => matchUtilities(
     {
       [identifier]: (value) => ({
         [`--blade-${name}`]: `${name}(${value})`,
         filter: CSS_FILTER
       })
     },
-    { values: theme[key], supportsNegativeValues: negative }
+    { values: theme[key], supportsNegativeValues: negative2 }
   );
-  const backdrop = (identifier, key, name, negative = false) => matchUtilities(
+  const backdrop = (identifier, key, name, negative2 = false) => matchUtilities(
     {
       [`backdrop-${identifier}`]: (value) => ({
         [`--blade-backdrop-${identifier}`]: `${name}(${value})`,
         "backdrop-filter": CSS_BACKDROP_FILTER
       })
     },
-    { values: theme[key], supportsNegativeValues: negative }
+    { values: theme[key], supportsNegativeValues: negative2 }
   );
   const keyframes2 = Object.fromEntries(
     Object.entries(theme.keyframes ?? {}).map(([name, frames]) => [
@@ -3404,13 +3431,13 @@ ${body}
 }
 
 // uno/tailwind/variants.ts
-function customVariants(variants = {}) {
+function customVariants(variants = {}, layered2 = (_, handler) => handler) {
   return Object.entries(variants).map(
     ([name, template]) => {
       const prefix = `${name}:`;
       const handle = template.trim().startsWith("@") ? { parent: template.trim() } : { selector: (selector) => template.replace(/&/g, selector) };
       return {
-        match: (matcher) => matcher.startsWith(prefix) ? { matcher: matcher.slice(prefix.length), ...handle } : void 0,
+        match: (matcher) => matcher.startsWith(prefix) ? layered2(`custom:${name}`, { matcher: matcher.slice(prefix.length), ...handle }) : void 0,
         multiPass: true
       };
     }
@@ -3419,6 +3446,16 @@ function customVariants(variants = {}) {
 
 // uno/config.ts
 var px = (value) => typeof value === "number" ? `${value}px` : value;
+var round = (value) => Number(value.toFixed(4));
+var inUnit = (unit, rootFontSize) => unit === "rem" ? (value) => typeof value === "number" ? `${round(value / rootFontSize)}rem` : value : px;
+var lengths = (units = {}) => {
+  const rootFontSize = units.rootFontSize ?? 16;
+  return {
+    layout: inUnit(units.layout ?? "px", rootFontSize),
+    font: inUnit(units.font ?? "rem", rootFontSize)
+  };
+};
+var negative = (format) => (value) => `-${format(value)}`;
 var rules = (prefix, property, scale, format = px) => Object.entries(scale).map(([key, value]) => [`${prefix}-${key}`, { [property]: format(value) }]);
 var rulesFor = (prefixToProperty, scale, format) => Object.entries(prefixToProperty).flatMap(
   ([prefix, property]) => rules(prefix, property, scale, format)
@@ -3603,13 +3640,17 @@ var negativeInset = {
   "-left": "left"
 };
 var negativePx = (value) => `-${px(value)}`;
-var spacingRules = [
-  ...rulesFor({ ...paddingAndMargin, ...gap, ...inset }, { ...spacing, ...builtInSpacing }),
+var spacingRules = (length2) => [
+  ...rulesFor(
+    { ...paddingAndMargin, ...gap, ...inset },
+    { ...spacing, ...builtInSpacing },
+    length2.layout
+  ),
   // Negative margins and insets, e.g. `-mt-blade-1` → -2px, `-top-1` → -4px
   ...rulesFor(
     { ...negativeMargin, ...negativeInset },
     { ...spacing, ...builtInSpacing },
-    negativePx
+    negative(length2.layout)
   ),
   ...keywords("margin", { "m-auto": "auto" }),
   ...keywords("margin-inline", { "mx-auto": "auto" }),
@@ -3617,7 +3658,7 @@ var spacingRules = [
   // `-left-[9px]`, `top-[calc(50%+1px)]`.
   [
     /^(-?)(p[xytrbl]?|m[xytrbl]?|m[se]|gap(?:-[xy])?|inset(?:-[xy])?|top|right|bottom|left)-\[(.+)\]$/,
-    ([, negative, prefix, value]) => {
+    ([, negative2, prefix, value]) => {
       const property = {
         ...paddingAndMargin,
         ...gap,
@@ -3625,9 +3666,9 @@ var spacingRules = [
         ms: "margin-inline-start",
         me: "margin-inline-end"
       }[prefix];
-      if (!property || negative && prefix.startsWith("p")) return void 0;
+      if (!property || negative2 && prefix.startsWith("p")) return void 0;
       const css = arbitrary(value);
-      if (!negative) return { [property]: css };
+      if (!negative2) return { [property]: css };
       return { [property]: /^[\d.]+[a-z%]*$/.test(css) ? `-${css}` : `calc(${css} * -1)` };
     }
   ]
@@ -3640,8 +3681,12 @@ var sizeProperties = {
   "max-w": "max-width",
   "max-h": "max-height"
 };
-var sizeRules = [
-  ...rulesFor(sizeProperties, { ...spacing, ...builtInSpacing, full: "100%", auto: "auto" }),
+var sizeRules = (length2) => [
+  ...rulesFor(
+    sizeProperties,
+    { ...spacing, ...builtInSpacing, full: "100%", auto: "auto" },
+    length2.layout
+  ),
   [
     /^(w|h|min-w|min-h|max-w|max-h)-\[(.+)\]$/,
     ([, prefix, value]) => ({
@@ -3649,7 +3694,7 @@ var sizeRules = [
     })
   ]
 ];
-var borderRules = [
+var borderRules = (length2) => [
   // e.g. `rounded-medium` → 12px, `rounded-tl-small` → 8px
   ...rulesFor(
     {
@@ -3659,7 +3704,8 @@ var borderRules = [
       "rounded-br": "border-bottom-right-radius",
       "rounded-bl": "border-bottom-left-radius"
     },
-    border.radius
+    border.radius,
+    length2.layout
   ),
   // e.g. `border-thin` → 1px, `border-t-thicker` → 2px
   ...rulesFor(
@@ -3712,21 +3758,21 @@ var filterVariables = {
     ...BACKDROP_FILTER_FUNCTIONS.map((name) => `--blade-backdrop-${name}: ;`)
   ].join(" ")} }`
 };
-var effectRules = [
+var effectRules = (length2) => [
   // e.g. `shadow-midRaised`, light mode only
   ...rules("shadow", "box-shadow", elevation.onLight),
   // e.g. `backdrop-blur-medium` → blur(8px), composed (see `FILTER`)
   ...Object.entries(backdropBlur).map(
     ([key, value]) => [
       `backdrop-blur-${key}`,
-      { "--blade-backdrop-blur": `blur(${px(value)})`, "backdrop-filter": BACKDROP_FILTER }
+      {
+        "--blade-backdrop-blur": `blur(${length2.layout(value)})`,
+        "backdrop-filter": BACKDROP_FILTER
+      }
     ]
   )
 ];
 var { fonts, lineHeights, letterSpacings } = typography.onDesktop;
-var ROOT_FONT_SIZE = 16;
-var round = (value) => Number(value.toFixed(4));
-var rem = (value) => `${round(Number(value) / ROOT_FONT_SIZE)}rem`;
 var weightNames = {
   regular: "normal",
   medium: "medium",
@@ -3762,11 +3808,11 @@ var fontRules = [
     { "font-family": themed("font-family-heading", 'Tasa, "TASA Orbiter Fallback Arial", Arial') }
   ]
 ];
-var typographyRules = [
+var typographyRules = (length2) => [
   // e.g. `text-100` → 0.875rem (14px)
-  ...rules("text", "font-size", fonts.size, rem),
+  ...rules("text", "font-size", fonts.size, length2.font),
   // e.g. `leading-100` → 1.25rem (20px)
-  ...rules("leading", "line-height", lineHeights, rem),
+  ...rules("leading", "line-height", lineHeights, length2.font),
   // `font-normal`…`font-bold`, `font-sans`, `font-mono`, `font-heading`.
   ...fontRules,
   // The face of Icon: the consumer's build makes `blade-icons` from the glyphs
@@ -3888,7 +3934,7 @@ var fractions = {
   "5/6": "83.333333%",
   full: "100%"
 };
-var fractionRules = [
+var fractionRules = (length2) => [
   ...rulesFor(
     { ...inset, w: "width", h: "height", "max-w": "max-width", "max-h": "max-height" },
     fractions
@@ -3900,7 +3946,8 @@ var fractionRules = [
   // Logical margins, e.g. `ms-1` → 4px
   ...rulesFor(
     { ms: "margin-inline-start", me: "margin-inline-end" },
-    { ...spacing, ...builtInSpacing }
+    { ...spacing, ...builtInSpacing },
+    length2.layout
   )
 ];
 var opacityRules = [
@@ -3956,17 +4003,17 @@ var scaleAxes = (axes, value) => ({
 var translateScale = { ...builtInSpacing, ...fractions, "2/4": "50%" };
 var rotateScale = [0, 1, 2, 3, 6, 12, 45, 90, 180];
 var scaleScale = [0, 50, 75, 90, 95, 100, 105, 110, 125, 150];
-var transformRules = [
+var transformRules = (length2) => [
   // e.g. `-translate-x-1/2` → -50% on x, `translate-y-[calc(var(--offset)*1px)]`
   ...Object.entries(translateScale).flatMap(
     ([key, value]) => ["x", "y"].flatMap((axis) => [
-      [`translate-${axis}-${key}`, translateAxis(axis, px(value))],
-      [`-translate-${axis}-${key}`, translateAxis(axis, negate(px(value)))]
+      [`translate-${axis}-${key}`, translateAxis(axis, length2.layout(value))],
+      [`-translate-${axis}-${key}`, translateAxis(axis, negate(length2.layout(value)))]
     ])
   ),
   [
     /^(-?)translate-([xy])-\[(.+)\]$/,
-    ([, negative, axis, value]) => translateAxis(axis, negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, axis, value]) => translateAxis(axis, negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   // e.g. `rotate-45`, `-rotate-90`, `rotate-[270deg]`
   ...rotateScale.flatMap((degrees) => [
@@ -3975,7 +4022,7 @@ var transformRules = [
   ]),
   [
     /^(-?)rotate-\[(.+)\]$/,
-    ([, negative, value]) => rotateBy(negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, value]) => rotateBy(negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   // e.g. `scale-95`, `-scale-x-100` (a mirror), `scale-y-[var(--progress)]`
   ...scaleScale.flatMap(
@@ -3989,7 +4036,7 @@ var transformRules = [
   ),
   [
     /^(-?)scale-(?:([xy])-)?\[(.+)\]$/,
-    ([, negative, axes = "", value]) => scaleAxes(axes, negative ? negate(arbitrary(value)) : arbitrary(value))
+    ([, negative2, axes = "", value]) => scaleAxes(axes, negative2 ? negate(arbitrary(value)) : arbitrary(value))
   ],
   ...keywords("transform-origin", {
     "origin-center": "center",
@@ -4212,7 +4259,7 @@ var surfaceRaisedBorderless = [
 var dividerFillRules = keywords("background-color", {
   "bg-divider-gray-subtle": color2("surface-border-gray-subtle")
 });
-var visualRules = [
+var visualRules = (length2) => [
   surfaceRaised,
   surfaceRaisedBorderless,
   ...dividerFillRules,
@@ -4223,7 +4270,7 @@ var visualRules = [
   ...Object.entries(backdropBlur).map(
     ([key, value]) => [
       `blur-${key}`,
-      { "--blade-blur": `blur(${px(value)})`, filter: FILTER }
+      { "--blade-blur": `blur(${length2.layout(value)})`, filter: FILTER }
     ]
   ),
   ["grayscale", { "--blade-grayscale": "grayscale(1)", filter: FILTER }],
@@ -4391,6 +4438,57 @@ var shortcuts = {
   ...Object.fromEntries([1, 2, 3, 4].map((lines) => [`clamp-${lines}`, `line-clamp-${lines}`])),
   "sr-only": "absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-none [clip:rect(0,0,0,0)]"
 };
+var VARIANT_KINDS = [
+  "child",
+  "first-letter",
+  "placeholder",
+  "before",
+  "after",
+  "first",
+  "last",
+  "only",
+  "odd",
+  "even",
+  "first-of-type",
+  "last-of-type",
+  "checked",
+  "empty",
+  "focus-within",
+  "hover",
+  "focus",
+  "focus-visible",
+  "active",
+  "enabled",
+  "disabled",
+  "group",
+  "peer",
+  "data"
+];
+var LATER_VARIANT_KINDS = ["motion-reduce", "max-d", "d", "arbitrary"];
+var variantLayer = (kind) => `variant-${kind}`;
+var LAYER_POSITION = Object.fromEntries(
+  [...VARIANT_KINDS, ...LATER_VARIANT_KINDS].map((kind, index) => [
+    variantLayer(kind),
+    index < VARIANT_KINDS.length ? index + 1 : index + 2
+  ])
+);
+function variantLayers(customNames = []) {
+  const custom = customNames.map((name, index) => {
+    const layer = variantLayer(`custom:${name}`);
+    const position2 = VARIANT_KINDS.length + (index + 1) / (customNames.length + 1);
+    LAYER_POSITION[layer] = position2;
+    return [layer, position2];
+  });
+  return { ...LAYER_POSITION, ...Object.fromEntries(custom) };
+}
+var later = (a, b) => a === void 0 || (LAYER_POSITION[a] ?? Infinity) < (LAYER_POSITION[b] ?? Infinity) ? b : a;
+var layered = (kind, handler) => ({
+  ...handler,
+  handle: (input, next) => next({
+    ...input,
+    layer: later(input.layer, variantLayer(kind))
+  })
+});
 var pseudoClasses = {
   hover: ":hover",
   focus: ":focus",
@@ -4425,11 +4523,11 @@ var pseudoClassVariant = (matcher) => {
   const [name, ...rest] = matcher.split(":");
   const pseudoClass = pseudoClasses[name];
   if (!pseudoClass || rest.length === 0) return void 0;
-  return {
+  return layered(name, {
     matcher: rest.join(":"),
     selector: (selector) => withState(selector, pseudoClass),
     ...name === "hover" ? { parent: HOVER_MEDIA } : {}
-  };
+  });
 };
 var dataAttribute = (condition) => {
   const [key, value] = condition.split("=");
@@ -4443,10 +4541,10 @@ var stateSelector = (state) => {
 var dataVariant = (matcher) => {
   const match = /^data-\[([^\]]+)\]:(.+)$/.exec(matcher);
   if (!match) return void 0;
-  return {
+  return layered("data", {
     matcher: match[2],
     selector: (selector) => withState(selector, dataAttribute(match[1]))
-  };
+  });
 };
 var groupPeerVariant = (matcher) => {
   const match = /^(group|peer)-(data-\[[^\]]+\]|[a-z-]+)(?:\/([\w-]+))?:(.+)$/.exec(matcher);
@@ -4455,11 +4553,11 @@ var groupPeerVariant = (matcher) => {
   const pseudo = stateSelector(state);
   if (!pseudo) return void 0;
   const marker = `.${kind}${name ? `\\/${name}` : ""}${pseudo}`;
-  return {
+  return layered(kind, {
     matcher: rest,
     selector: (selector) => kind === "group" ? `${marker} ${selector}` : `${marker} ~ ${selector}`,
     ...state === "hover" ? { parent: HOVER_MEDIA } : {}
-  };
+  });
 };
 var leadingBracket = (matcher) => {
   if (!matcher.startsWith("[")) return void 0;
@@ -4474,27 +4572,37 @@ var leadingBracket = (matcher) => {
 };
 var selectorVariant = (matcher) => {
   if (matcher.startsWith("*:")) {
-    return { matcher: matcher.slice(2), selector: (selector) => `${selector} > *` };
+    return layered("child", {
+      matcher: matcher.slice(2),
+      selector: (selector) => `${selector} > *`
+    });
   }
   const bracket = leadingBracket(matcher);
   if (!bracket?.rest) return void 0;
   const template = bracket.inner.replace(/_/g, " ");
   if (template.includes("\\\\")) return void 0;
-  if (template.startsWith("@")) return { matcher: bracket.rest, parent: template };
+  if (template.startsWith("@"))
+    return layered("arbitrary", { matcher: bracket.rest, parent: template });
   if (!template.includes("&")) return void 0;
-  return { matcher: bracket.rest, selector: (selector) => template.replace(/&/g, selector) };
+  return layered("arbitrary", {
+    matcher: bracket.rest,
+    selector: (selector) => template.replace(/&/g, selector)
+  });
 };
 function desktopMedia(options = {}) {
   return `(min-width: ${options.desktop ?? "62.5rem"})`;
 }
-var desktopVariant = (media) => (matcher) => matcher.startsWith("d:") ? { matcher: matcher.slice(2), parent: `@media ${media}` } : void 0;
-var belowDesktopVariant = (media) => (matcher) => matcher.startsWith("max-d:") ? { matcher: matcher.slice("max-d:".length), parent: `@media not all and ${media}` } : void 0;
+var desktopVariant = (media) => (matcher) => matcher.startsWith("d:") ? layered("d", { matcher: matcher.slice(2), parent: `@media ${media}` }) : void 0;
+var belowDesktopVariant = (media) => (matcher) => matcher.startsWith("max-d:") ? layered("max-d", {
+  matcher: matcher.slice("max-d:".length),
+  parent: `@media not all and ${media}`
+}) : void 0;
 var motionReduceVariant = (matcher) => {
   if (!matcher.startsWith("motion-reduce:")) return void 0;
-  return {
+  return layered("motion-reduce", {
     matcher: matcher.slice("motion-reduce:".length),
     parent: "@media (prefers-reduced-motion: reduce)"
-  };
+  });
 };
 var hasVariant = (name) => {
   let depth = 0;
@@ -4596,7 +4704,10 @@ function mergeOwnership(tailwind, blade, bladeShortcuts, appFirst = /* @__PURE__
           (match, context) => {
             const css = handle(match, context);
             if (css == null) return void 0;
-            return bladeCSS(match[0], context) ?? css;
+            const blade2 = bladeCSS(match[0], context);
+            if (blade2 === void 0) return css;
+            const sort = candidateOrderOf(css);
+            return sort === void 0 ? blade2 : withCandidateOrder(blade2, sort);
           },
           meta
         ];
@@ -4625,22 +4736,23 @@ function bladeUnoConfig(options = {}) {
     ...(options.presets ?? []).map((preset) => preset.theme ?? {}),
     defaultTheme
   ]);
+  const length2 = lengths(options.units);
   const bladeRules = [
     ...getColorRules(),
     ...colorKeywordRules,
-    ...spacingRules,
-    ...sizeRules,
-    ...fractionRules,
-    ...borderRules,
-    ...effectRules,
+    ...spacingRules(length2),
+    ...sizeRules(length2),
+    ...fractionRules(length2),
+    ...borderRules(length2),
+    ...effectRules(length2),
     ...opacityRules,
     ...zIndexRules,
-    ...transformRules,
+    ...transformRules(length2),
     ...transitionRules,
-    ...visualRules,
+    ...visualRules(length2),
     ...animationRules,
     ...interactionRules,
-    ...typographyRules,
+    ...typographyRules(length2),
     ...textRules,
     ...layoutRules,
     ...moreLayoutRules,
@@ -4664,7 +4776,7 @@ function bladeUnoConfig(options = {}) {
     // selector list would move rules in the cascade (Tailwind never does),
     // and one selector a browser rejects would drop the whole list.
     mergeSelectors: false,
-    variants: [...customVariants(options.variants), ...bladeVariants(options)],
+    variants: [...customVariants(options.variants, layered), ...bladeVariants(options)],
     preflights: [
       ...theme ? [
         {
@@ -4674,7 +4786,7 @@ function bladeUnoConfig(options = {}) {
       ] : [],
       ...preflights
     ],
-    layers: { base: -200 },
+    layers: { base: -200, ...variantLayers(Object.keys(options.variants ?? {})) },
     ...theme ? {
       // Tailwind's `before:`/`after:` give the pseudo-element its
       // `content` (`var(--tw-content)`, set by `content-[…]`), unless the
@@ -4688,18 +4800,18 @@ function bladeUnoConfig(options = {}) {
   });
 }
 var ruleGroups = {
-  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` */
-  spacing: spacingRules,
-  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values */
-  size: sizeRules,
-  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` */
-  fraction: fractionRules,
+  /** `p-*`, `m-*`, `-m*-*`, `gap-*`, `inset-*`, `top-*`…, `m*-auto` (px: the default units) */
+  spacing: spacingRules(lengths()),
+  /** `w-*`, `h-*`, `min-*`, `max-*`, and their arbitrary values (px) */
+  size: sizeRules(lengths()),
+  /** `w-1/2`, `-top-1/2`…, `w-fit`, `ms-*`, `me-*` (px) */
+  fraction: fractionRules(lengths()),
   /** `opacity-*`: Tailwind's percentage scale */
   opacity: opacityRules,
   /** `font-sans`, `font-mono`, `font-heading` (each over its `--font-family-*`), weights */
   font: fontRules,
-  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*`: needs `transformVariables` among the preflights */
-  transform: transformRules,
+  /** `translate-*`, `rotate-*`, `scale-*`, `origin-*` (px): needs `transformVariables` among the preflights */
+  transform: transformRules(lengths()),
   /** `transition*`, `duration-*`, `ease-*`, `delay-*` */
   transition: transitionRules
 };
@@ -4711,6 +4823,9 @@ export {
   bladeUnoConfig as default,
   desktopMedia,
   filterVariables,
+  layered,
   ruleGroups,
-  transformVariables
+  transformVariables,
+  variantLayer,
+  variantLayers
 };

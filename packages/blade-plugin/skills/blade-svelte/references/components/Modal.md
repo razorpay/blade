@@ -11,7 +11,7 @@ Modal is the centred dialog for a focused task or a confirmation, opened from co
 - Modal has no trigger: open it by setting the bound `isOpen` (a Button's `onClick`); `children` is its content, not a trigger
 - It renders into the overlay host of the app's BladeProvider (the examples assume the app has one); without a provider it renders in place, unscrimmed
 - Compose the content from `ModalHeader`, `ModalBody` and `ModalFooter`; there is no `title`, `body` or `footer` prop on Modal, and no `variant` (a sheet is BottomSheet, a side panel Drawer)
-- `onDismiss({ source, close })` fires on every user dismissal (`cross`, `blur`, `escape`, `back`); with `isDismissible={false}` the modal stays open until `close` is called, and the close button is hidden
+- `onDismiss({ source, close, preventDefault })` fires on every user dismissal (`cross`, `blur`, `escape`, `back`); `preventDefault()` keeps it open this time (ask first, then `close()`); with `isDismissible={false}` the modal stays open until `close` is called, and the close button is hidden
 - `onOpenChange` reports only the closes the modal makes itself, never your own write to `isOpen`
 - A modal without a ModalHeader title needs `accessibilityLabel` to be named
 - `class` lands on the panel and only places it; `classes={{ root, panel }}` replaces where the panel sits in the host and its look

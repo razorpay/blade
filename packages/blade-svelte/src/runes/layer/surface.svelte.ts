@@ -54,13 +54,14 @@ export function createSurface(options: SurfaceOptions): Surface {
   // Where focus returns on close: what had it the moment the surface opened,
   // captured before the page beneath goes inert and the browser drops it.
   // It is handed back after the closing flush, once the page is no longer
-  // inert: a focus call on an inert element silently fails.
+  // inert: a focus call on an inert element silently fails. Without the
+  // browser's jump, as focus moved in: the page stays where the user left it.
   $effect(() => {
     if (!options.isOpen()) {
       return undefined;
     }
     return untrack(() => {
-      const restore = captureFocusReturn(() => panel.current);
+      const restore = captureFocusReturn(() => panel.current, { preventScroll: true });
       return () => {
         isInitialFocused = false;
         queueMicrotask(restore);
