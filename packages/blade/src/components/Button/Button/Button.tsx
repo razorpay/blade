@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
 type ButtonCommonProps = {
   /**
@@ -94,7 +95,7 @@ type ButtonCommonProps = {
     web: {
       /**
        * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
-       * `color="neutral"`, at any size.
+       * `color="neutral"` (it throws on any other), at any size.
        *
        * **Only available on web**
        *
@@ -103,9 +104,9 @@ type ButtonCommonProps = {
       hasRazorSense?: boolean;
       /**
        * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
-       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"`, at any size (it all scales with the
-       * button's height), on a button that can widen: not full width, nor in a ButtonGroup, with room to its right (its own
-       * width, not stretched or held by its container).
+       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"` (it throws on another variant), at any
+       * size (it all scales with the button's height), on a labelled button that can widen: not icon-only, full width or in
+       * a ButtonGroup, with room to its right (its own width, not stretched or held by its container).
        *
        * **Only available on web**
        *
@@ -120,7 +121,7 @@ type ButtonCommonProps = {
        *
        * @default 'investigate'
        */
-      rayVariant?: 'investigate';
+      rayVariant?: ButtonRayVariant;
     };
     native: {
       hasRazorSense?: undefined;

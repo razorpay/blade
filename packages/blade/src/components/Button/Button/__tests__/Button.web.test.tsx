@@ -131,8 +131,20 @@ describe('<Button />', () => {
     await waitFor(() =>
       expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
     );
-    const { container: primary } = renderWithTheme(<Button hasRazorSense>Ask Ray</Button>);
-    expect(primary.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+    // on another colour it's a mistake, loud in development
+    expect(() => renderWithTheme(<Button hasRazorSense>Ask Ray</Button>)).toThrow(
+      '[Blade: BaseButton]: hasRazorSense can only be used with variant "primary" and color "neutral"',
+    );
+  });
+
+  it('should throw for hasRay on a non-secondary variant, and skip it on an icon-only button', () => {
+    expect(() => renderWithTheme(<Button hasRay>Investigate</Button>)).toThrow(
+      '[Blade: BaseButton]: hasRay can only be used with variant "secondary"',
+    );
+    const { container } = renderWithTheme(
+      <Button variant="secondary" hasRay icon={CreditCardIcon} accessibilityLabel="Investigate" />,
+    );
+    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
   it('should render Ray on the secondary button at any size', async () => {

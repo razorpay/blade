@@ -610,43 +610,42 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // primary's (Button's hasRazorSense), Ray the secondary's (hasRay)
   const resolvedColor = buttonGroupProps.color ?? color;
   const resolvedVariant = buttonGroupProps.variant ?? variant;
+  // the props' own pairing, loud as the neutral and tertiary colours are: a hover prop on the wrong button is a mistake
+  if (hasRazorSense && (resolvedVariant !== 'primary' || resolvedColor !== 'neutral')) {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `hasRazorSense can only be used with variant "primary" and color "neutral" but received "${resolvedVariant}" and "${resolvedColor}"`,
+    });
+  }
+  if (hasRay && resolvedVariant !== 'secondary') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `hasRay can only be used with variant "secondary" but received "${resolvedVariant}"`,
+    });
+  }
   const isRazorSenseHover =
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
-  // Ray needs a button that can widen to the right: not a full-width one, nor one in a ButtonGroup
+  // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
   const canWidenForRay =
-    !buttonGroupProps.isInsideButtonGroup && !(buttonGroupProps.isFullWidth ?? isFullWidth);
+    !buttonGroupProps.isInsideButtonGroup &&
+    !(buttonGroupProps.isFullWidth ?? isFullWidth) &&
+    Boolean(childrenString?.trim());
   const isRayHover = hasRay && resolvedVariant === 'secondary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
   const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
-  // a misconfigured hover warns once per change, not every render
+  // where it sits rather than how it's set (full width, a ButtonGroup, icon-only), Ray gives way: warned once per change
   React.useEffect(() => {
-    if (__DEV__ && hasRay && !isRayHover) {
+    if (__DEV__ && hasRay && resolvedVariant === 'secondary' && !canWidenForRay) {
       logger({
         type: 'warn',
         moduleName: 'Button',
-        message: `hasRay needs a secondary button that can widen (received variant "${resolvedVariant}"${
-          canWidenForRay ? '' : ', full width or in a ButtonGroup'
-        }); the button keeps its own hover.`,
+        message:
+          'hasRay needs a labelled button that can widen (not full width, in a ButtonGroup or icon-only); the button keeps its own hover.',
       });
     }
-    if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
-      logger({
-        type: 'warn',
-        moduleName: 'Button',
-        message: `hasRazorSense needs variant="primary" and color="neutral" (received "${resolvedVariant}" and "${resolvedColor}"); the button keeps its own hover.`,
-      });
-    }
-  }, [
-    hasRay,
-    isRayHover,
-    canWidenForRay,
-    hasRazorSense,
-    isRazorSenseHover,
-    resolvedVariant,
-    resolvedColor,
-  ]);
+  }, [hasRay, resolvedVariant, canWidenForRay]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

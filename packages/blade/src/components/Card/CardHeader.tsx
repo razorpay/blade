@@ -97,8 +97,8 @@ type CardHeaderIconButtonProps = Omit<
   | 'rayVariant'
 > & {
   icon: IconComponent;
-  // always tertiary: neutral is a primary-only colour
-  color?: Exclude<ButtonProps['color'], 'neutral'>;
+  // always tertiary, which takes only these two colours
+  color?: Extract<NonNullable<ButtonProps['color']>, 'primary' | 'white'>;
 };
 
 const _CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {
