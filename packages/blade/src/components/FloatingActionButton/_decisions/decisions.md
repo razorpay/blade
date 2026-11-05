@@ -131,7 +131,7 @@ type FloatingActionButtonProps = {
 
 **No `variant` prop.** All three colours in the spec are the `primary` emphasis; `secondary`/`tertiary` FABs do not exist. `color` alone therefore covers the full matrix.
 
-**`color` uses `neutral`, which is a shared `BaseButton` colour rather than a FAB-only one.** The dark FAB is the same treatment as a filled `neutral` button: `interactive.background.neutral.*` for the surface and `interactive.*.onNeutral.*` for the content, both of which invert with the theme. Only the `primary` emphasis is specified, so `neutral` keeps its existing `secondary` behaviour and picks up the dedicated treatment only when `variant="primary"`. `neutral` is deliberately *not* added to `Button`'s public colour union, since design has not specified a neutral `Button`.
+**`color` uses `neutral`, which is a shared `BaseButton` colour rather than a FAB-only one.** The dark FAB is the same treatment as a filled `neutral` button: `interactive.background.neutral.*` for the surface and `interactive.*.onNeutral.*` for the content, both of which invert with the theme. Only the `primary` emphasis is specified, so `neutral` is only valid with `variant="primary"`, and `BaseButton` throws a development error for any other variant. `Button` has since added `neutral` to its public colour union with the same primary-only rule, since design now specifies a neutral `Button`.
 
 **`offset` is a single token rather than per-axis.** It covers the common case, and `StyledPropsBlade` is applied after the placement styles, so a caller needing asymmetric offsets (for example clearing a `BottomNav`) can pass `bottom="spacing.10"` directly without a second offset API.
 
