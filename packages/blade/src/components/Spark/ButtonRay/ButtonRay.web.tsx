@@ -10,9 +10,13 @@ const ButtonRay = (props: ButtonRayProps): React.ReactElement | null => {
 
   useEffect(() => {
     let isMounted = true;
-    void import('./ButtonRayLayer').then(({ ButtonRayLayer }) => {
-      if (isMounted) setLayer(() => ButtonRayLayer);
-    });
+    import('./ButtonRayLayer')
+      .then(({ ButtonRayLayer }) => {
+        if (isMounted) setLayer(() => ButtonRayLayer);
+      })
+      .catch(() => {
+        // it couldn't load (offline, a stale deploy): the button keeps its own hover
+      });
     return () => {
       isMounted = false;
     };

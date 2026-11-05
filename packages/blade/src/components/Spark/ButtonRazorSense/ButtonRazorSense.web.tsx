@@ -10,9 +10,13 @@ const ButtonRazorSense = (props: ButtonRazorSenseProps): React.ReactElement | nu
 
   useEffect(() => {
     let isMounted = true;
-    void import('./ButtonRazorSenseLayer').then(({ ButtonRazorSenseLayer }) => {
-      if (isMounted) setLayer(() => ButtonRazorSenseLayer);
-    });
+    import('./ButtonRazorSenseLayer')
+      .then(({ ButtonRazorSenseLayer }) => {
+        if (isMounted) setLayer(() => ButtonRazorSenseLayer);
+      })
+      .catch(() => {
+        // it couldn't load (offline, a stale deploy): the button keeps its own hover
+      });
     return () => {
       isMounted = false;
     };

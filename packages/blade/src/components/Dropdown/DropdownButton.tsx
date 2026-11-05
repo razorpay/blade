@@ -12,7 +12,14 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { assertNeutralPrimary } from '~components/Button/Button/assertNeutralPrimary';
 import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 
-type DropdownButtonProps = ButtonProps & {
+// (each member of ButtonProps' union, so it stays a union: with or without an icon)
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
+
+// Button's hover effects (hasRazorSense, hasRay, rayVariant) aren't a dropdown trigger's
+type DropdownButtonProps = DistributiveOmit<
+  ButtonProps,
+  'hasRazorSense' | 'hasRay' | 'rayVariant'
+> & {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
 };

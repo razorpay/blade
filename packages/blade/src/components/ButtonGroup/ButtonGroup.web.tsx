@@ -70,6 +70,7 @@ const _ButtonGroup = (
     color,
     variant,
     isFullWidth,
+    isInsideButtonGroup: true,
   };
 
   useVerifyAllowedChildren({

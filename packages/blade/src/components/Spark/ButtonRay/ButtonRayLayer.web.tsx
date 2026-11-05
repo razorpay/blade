@@ -149,8 +149,13 @@ const ButtonRayLayer = ({
 
   useEffect(() => {
     const button = stripRef.current?.parentElement;
-    // no observer (a test's DOM): Blade's own hover stays
-    if (!button || typeof IntersectionObserver === 'undefined') return undefined;
+    // no observers (a test's DOM): Blade's own hover stays
+    if (
+      !button ||
+      typeof IntersectionObserver === 'undefined' ||
+      typeof ResizeObserver === 'undefined'
+    )
+      return undefined;
     const seen = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         // his width on this button (its height / 34 of flow 9's) over his box's

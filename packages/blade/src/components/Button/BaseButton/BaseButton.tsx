@@ -606,7 +606,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const resolvedVariant = buttonGroupProps.variant ?? variant;
   const isRazorSenseHover =
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
-  const isRayHover = hasRay && resolvedVariant === 'secondary';
+  // Ray needs a button that can widen to the right: not a full-width one, nor one in a ButtonGroup
+  const canWidenForRay =
+    !buttonGroupProps.isInsideButtonGroup && !(buttonGroupProps.isFullWidth ?? isFullWidth);
+  const isRayHover = hasRay && resolvedVariant === 'secondary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
@@ -617,7 +620,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       logger({
         type: 'warn',
         moduleName: 'Button',
-        message: `hasRay needs variant="secondary" (received "${resolvedVariant}"); the button keeps its own hover.`,
+        message: `hasRay needs a secondary button that can widen (received variant "${resolvedVariant}"${
+          canWidenForRay ? '' : ', full width or in a ButtonGroup'
+        }); the button keeps its own hover.`,
       });
     }
     if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
@@ -627,7 +632,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         message: `hasRazorSense needs variant="primary" and color="neutral" (received "${resolvedVariant}" and "${resolvedColor}"); the button keeps its own hover.`,
       });
     }
-  }, [hasRay, isRayHover, hasRazorSense, isRazorSenseHover, resolvedVariant, resolvedColor]);
+  }, [
+    hasRay,
+    isRayHover,
+    canWidenForRay,
+    hasRazorSense,
+    isRazorSenseHover,
+    resolvedVariant,
+    resolvedColor,
+  ]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
