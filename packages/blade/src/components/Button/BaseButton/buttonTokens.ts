@@ -410,7 +410,7 @@ const loaderColor = {
   neutral: {
     // A loading button renders on the faded disabled surface, not the filled one,
     // so the inverted `onNeutral` color would not be visible. FloatingActionButton
-    // sets its own loader color.
+    // passes its own loader color, so this map does not apply to it.
     primary: 'neutral',
     secondary: 'neutral',
   },
