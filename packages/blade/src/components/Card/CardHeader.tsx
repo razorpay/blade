@@ -90,9 +90,9 @@ type CardHeaderIconButtonProps = Omit<
 > & {
   icon: IconComponent;
   /**
-   * The button is always `tertiary`, which does not support `neutral`.
+   * The button is always `tertiary`, which only supports `primary` and `white`.
    */
-  color?: Exclude<ButtonProps['color'], 'neutral'>;
+  color?: Extract<ButtonProps['color'], 'primary' | 'white'>;
 };
 
 const _CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {
