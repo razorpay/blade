@@ -48,28 +48,6 @@ type ButtonCommonProps = {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
-  /**
-   * RazorSense plays on the button while it's hovered (web; follows the color scheme). Only for `variant="primary"` with
-   * `color="neutral"`, at any size.
-   *
-   * @default false
-   */
-  hasRazorSense?: boolean;
-  /**
-   * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
-   * plays `rayVariant` for as long as the pointer stays. Only for `variant="secondary"`, at any size: it all scales with the
-   * button's height.
-   *
-   * @default false
-   */
-  hasRay?: boolean;
-  /**
-   * Which Ray `hasRay` plays. `investigate`: he whips out his magnifying glass and searches (an investigating action). More
-   * variants will follow.
-   *
-   * @default 'investigate'
-   */
-  rayVariant?: 'investigate';
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -111,7 +89,44 @@ type ButtonCommonProps = {
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute &
-  BladeCommonEvents;
+  BladeCommonEvents &
+  Platform.Select<{
+    web: {
+      /**
+       * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
+       * `color="neutral"`, at any size.
+       *
+       * **Only available on web**
+       *
+       * @default false
+       */
+      hasRazorSense?: boolean;
+      /**
+       * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
+       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"`, at any size: it all scales with the
+       * button's height.
+       *
+       * **Only available on web**
+       *
+       * @default false
+       */
+      hasRay?: boolean;
+      /**
+       * Which Ray `hasRay` plays. `investigate`: he whips out his magnifying glass and searches (an investigating action). More
+       * variants will follow.
+       *
+       * **Only available on web**
+       *
+       * @default 'investigate'
+       */
+      rayVariant?: 'investigate';
+    };
+    native: {
+      hasRazorSense?: undefined;
+      hasRay?: undefined;
+      rayVariant?: undefined;
+    };
+  }>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -142,7 +157,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isLoading = false,
     hasRazorSense = false,
     hasRay = false,
-    rayVariant = 'investigate',
+    rayVariant,
     href,
     target,
     rel,

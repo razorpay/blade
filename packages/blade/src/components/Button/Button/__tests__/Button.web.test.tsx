@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { useRef } from 'react';
 import type { ButtonProps } from '../Button';
 import Button from '../Button';
@@ -111,24 +111,29 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render the RazorSense hover layer only on the neutral primary button', () => {
+  it('should render the RazorSense hover layer only on the neutral primary button', async () => {
     const { container: neutral } = renderWithTheme(
       <Button color="neutral" hasRazorSense>
         Ask Ray
       </Button>,
     );
-    expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument();
+    // the layer is loaded once the button turns it on
+    await waitFor(() =>
+      expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+    );
     const { container: primary } = renderWithTheme(<Button hasRazorSense>Ask Ray</Button>);
     expect(primary.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
-  it('should render Ray on the secondary button at any size', () => {
+  it('should render Ray on the secondary button at any size', async () => {
     const { container, getByRole } = renderWithTheme(
       <Button variant="secondary" size="large" hasRay>
         Investigate
       </Button>,
     );
-    expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+    );
     expect(getByRole('button')).toHaveTextContent('Investigate');
   });
 
