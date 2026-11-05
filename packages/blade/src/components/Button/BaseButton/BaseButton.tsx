@@ -325,6 +325,13 @@ const getProps = ({
     });
   }
 
+  if (color === 'neutral' && variant !== 'primary') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `Neutral color can only be used with variant: "primary" but received "${variant}"`,
+    });
+  }
+
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
 
   // Resolve background value - either a gradient string or a token path

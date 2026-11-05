@@ -21,7 +21,7 @@ type ButtonGroupProps = {
    */
   size?: ButtonProps['size'];
   /**
-   * Specifies the color of the ButtonGroup.
+   * Specifies the color of the ButtonGroup. `neutral` is not supported on ButtonGroup.
    *
    * @default 'primary'
    */
