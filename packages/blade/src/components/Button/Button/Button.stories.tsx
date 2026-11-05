@@ -199,24 +199,27 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
               </ButtonComponent>
             </BaseBox>
 
-            <BaseBox margin="spacing.2">
-              <Text marginBottom="spacing.3" color={textColor}>
-                Secondary
-              </Text>
-              <ButtonComponent {...args} color={color} variant="secondary">
-                {children}
-              </ButtonComponent>
+            {/* neutral is a primary button only */}
+            {color !== 'neutral' && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Secondary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="secondary">
+                  {children}
+                </ButtonComponent>
 
-              <ButtonComponent
-                marginLeft="spacing.4"
-                {...args}
-                color={color}
-                variant="secondary"
-                isDisabled
-              >
-                {children}
-              </ButtonComponent>
-            </BaseBox>
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="secondary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
 
             {(color == 'primary' || color == 'white') && (
               <BaseBox margin="spacing.2">

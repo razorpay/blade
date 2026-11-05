@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { logger } from '~utils/logger';
 
 type ButtonCommonProps = {
   /**
@@ -36,8 +37,9 @@ type ButtonCommonProps = {
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
   /**
-   * `neutral` follows the color scheme: a black button in light mode, a white one in dark mode (the label and icons invert
-   * with it). `white` stays white in both, for use on colored or dark surfaces.
+   * `neutral` is a primary button only (`variant="primary"`). It follows the color scheme: a black button in light mode, a
+   * white one in dark mode (the label and icons invert with it). `white` stays white in both, for use on colored or dark
+   * surfaces.
    *
    * @default 'primary'
    */
@@ -158,6 +160,13 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   },
   ref,
 ) => {
+  if (__DEV__ && color === 'neutral' && variant !== 'primary') {
+    logger({
+      type: 'warn',
+      moduleName: 'Button',
+      message: `color="neutral" is a primary button only (received variant="${variant}").`,
+    });
+  }
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
