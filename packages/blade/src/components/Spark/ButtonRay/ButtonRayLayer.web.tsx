@@ -303,7 +303,8 @@ const ButtonRayLayer = ({
         const g = scaleOf();
         const w0 = S.w0 || button.offsetWidth;
         const left = w0 - basePadding - S.slack + (INV.padding + INV.rayX) * g - gapTrim;
-        // closed, his spot (near the label) can reach into the resting button's padding: he waits just past its end and comes
+        // as in flow 9, his right side runs past the opened end (rayX + rayW > grow) and is cut by its corner: what shows is his
+        // face and the glass, by design. Closed, his spot (near the label) can reach into the resting button's padding: he waits just past its end and comes
         // in with the widening (and goes back out as it closes)
         const away = Math.max(0, w0 + 1 - left);
         ray.style.left = `${left + away * (1 - S.e)}px`;
