@@ -347,7 +347,7 @@ const getProps = ({
   // The filled neutral surface turns white in dark mode, where it takes the white button's insets and ink (its background stays
   // neutral's own, which is white there)
   const inkColor: BaseButtonProps['color'] =
-    isFilledNeutral(color, variant) && colorScheme === 'dark' ? 'white' : color;
+    isFilledNeutral(color, variant) && colorScheme === 'dark' && !isDisabled ? 'white' : color;
 
   // Resolve background value - either a gradient string or a token path
   const resolveBackgroundValue = (value: string): string => {
@@ -611,20 +611,23 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
   const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
-  if (__DEV__ && hasRay && !isRayHover) {
-    logger({
-      type: 'warn',
-      moduleName: 'Button',
-      message: `hasRay needs variant="secondary" (received "${resolvedVariant}"); the button keeps its own hover.`,
-    });
-  }
-  if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
-    logger({
-      type: 'warn',
-      moduleName: 'Button',
-      message: `hasRazorSense needs variant="primary" and color="neutral" (received "${resolvedVariant}" and "${resolvedColor}"); the button keeps its own hover.`,
-    });
-  }
+  // a misconfigured hover warns once per change, not every render
+  React.useEffect(() => {
+    if (__DEV__ && hasRay && !isRayHover) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: `hasRay needs variant="secondary" (received "${resolvedVariant}"); the button keeps its own hover.`,
+      });
+    }
+    if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: `hasRazorSense needs variant="primary" and color="neutral" (received "${resolvedVariant}" and "${resolvedColor}"); the button keeps its own hover.`,
+      });
+    }
+  }, [hasRay, isRayHover, hasRazorSense, isRazorSenseHover, resolvedVariant, resolvedColor]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

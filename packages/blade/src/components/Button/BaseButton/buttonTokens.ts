@@ -246,7 +246,8 @@ const textColor = (property: 'icon' | 'text') => {
       primary: {
         default: `interactive.${property}.onNeutral.normal`,
         highlighted: `interactive.${property}.onNeutral.normal`,
-        disabled: `interactive.${property}.onNeutral.disabled`,
+        // disabled, the surface fades (neutral.disabled): the ink follows the theme as on the other faded surfaces
+        disabled: `interactive.${property}.gray.disabled`,
       },
     },
     transparent: {
@@ -408,9 +409,8 @@ const loaderColor = {
     secondary: 'information',
   },
   neutral: {
-    // The primary emphasis renders content on a filled neutral surface, so the
-    // loader follows the same inverted treatment as the label.
-    primary: 'onNeutral',
+    // Loading, the filled neutral surface fades (as when disabled): the loader follows the theme, as the label does there
+    primary: 'neutral',
     secondary: 'neutral',
   },
 } as const;
