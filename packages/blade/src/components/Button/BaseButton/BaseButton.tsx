@@ -60,6 +60,7 @@ import type { BladeCommonEvents } from '~components/types';
 import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
+import { ButtonRay } from '~components/Spark/ButtonRay';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -112,6 +113,11 @@ type BaseButtonCommonProps = {
    * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`.
    */
   hasRazorSense?: boolean;
+  /**
+   * Ray on hover (web): RazorSense, a text wash, and the button widens for Ray with his magnifying glass. Only for
+   * `variant="secondary"` at `size="small"`.
+   */
+  hasRay?: boolean;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -572,6 +578,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _iconSize,
     _spinnerColor,
     hasRazorSense = false,
+    hasRay = false,
     ...rest
   },
   ref,
@@ -592,6 +599,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const resolvedVariant = buttonGroupProps.variant ?? variant;
   const isRazorSenseHover =
     hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
+  const resolvedSize = buttonGroupProps.size ?? size;
+  const isRayHover = hasRay && resolvedVariant === 'secondary' && resolvedSize === 'small';
+  if (__DEV__ && hasRay && !isRayHover) {
+    logger({
+      type: 'warn',
+      moduleName: 'Button',
+      message: `hasRay needs variant="secondary" and size="small" (received "${resolvedVariant}" and "${resolvedSize}"); the button keeps its own hover.`,
+    });
+  }
   if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
     logger({
       type: 'warn',
@@ -864,11 +880,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...makeAnalyticsAttribute(rest)}
     >
       {isRazorSenseHover ? <ButtonRazorSense isEnabled={!disabled} /> : null}
+      {isRayHover ? <ButtonRay isEnabled={!disabled} /> : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}
         isPressed={isPressed}
-        {...(isRazorSenseHover ? { position: 'relative', zIndex: 1 } : {})}
+        {...(isRazorSenseHover || isRayHover ? { position: 'relative', zIndex: 1 } : {})}
       >
         {isLoading ? (
           <BaseBox

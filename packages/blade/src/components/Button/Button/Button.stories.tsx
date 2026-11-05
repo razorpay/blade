@@ -282,6 +282,19 @@ export const Neutral = NeutralButtonTemplate.bind({});
 Neutral.args = { color: 'neutral', variant: 'primary', hasRazorSense: true };
 Neutral.storyName = 'Neutral';
 
+/**
+ * The small secondary button with `hasRay`: hover it for RazorSense and the text wash, as it widens for Ray and his
+ * magnifying glass. Light and dark: Color Scheme in the toolbar.
+ */
+export const SecondaryWithRay = ButtonTemplate.bind({});
+SecondaryWithRay.args = {
+  variant: 'secondary',
+  size: 'small',
+  hasRay: true,
+  children: 'Investigate',
+};
+SecondaryWithRay.storyName = 'Secondary with Ray';
+
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';

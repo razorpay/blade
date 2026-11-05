@@ -54,6 +54,14 @@ type ButtonCommonProps = {
    * @default false
    */
   hasRazorSense?: boolean;
+  /**
+   * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
+   * whips out his magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"` at
+   * `size="small"`.
+   *
+   * @default false
+   */
+  hasRay?: boolean;
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -125,6 +133,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isFullWidth = false,
     isLoading = false,
     hasRazorSense = false,
+    hasRay = false,
     href,
     target,
     rel,
@@ -175,6 +184,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       hasRazorSense={hasRazorSense}
+      hasRay={hasRay}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

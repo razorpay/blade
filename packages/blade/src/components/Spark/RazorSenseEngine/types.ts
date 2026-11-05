@@ -43,6 +43,8 @@ export type FreshExport = {
     dpr?: number;
     /** only this part of the comp [x, y, w, h] (comp px from its top-left), cover-fitted to the box: a zoom */
     region?: [number, number, number, number];
+    /** 'once': play the timeline once and hold its last frame (default: as the timeline says) */
+    loop?: 'once' | 'timeline';
   };
 };
 
