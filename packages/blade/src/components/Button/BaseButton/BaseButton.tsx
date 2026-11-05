@@ -57,8 +57,9 @@ import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
-import { throwBladeError } from '~utils/logger';
+import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -107,6 +108,10 @@ type BaseButtonCommonProps = {
    * whose contrast requirements differ from `Button`'s.
    */
   _spinnerColor?: BaseSpinnerProps['color'];
+  /**
+   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`.
+   */
+  hasRazorSense?: boolean;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -566,6 +571,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _borderRadius,
     _iconSize,
     _spinnerColor,
+    hasRazorSense = false,
     ...rest
   },
   ref,
@@ -581,6 +587,18 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  // RazorSense on hover: the neutral primary button's (Button's hasRazorSense)
+  const resolvedColor = buttonGroupProps.color ?? color;
+  const resolvedVariant = buttonGroupProps.variant ?? variant;
+  const isRazorSenseHover =
+    hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
+  if (__DEV__ && hasRazorSense && !isRazorSenseHover) {
+    logger({
+      type: 'warn',
+      moduleName: 'Button',
+      message: `hasRazorSense needs variant="primary" and color="neutral" (received "${resolvedVariant}" and "${resolvedColor}"); the button keeps its own hover.`,
+    });
+  }
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -784,8 +802,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusBoxShadow={focusBoxShadow}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
-      hoverBoxShadow={hoverBoxShadow}
-      hoverBackgroundColor={hoverBackgroundColor}
+      // with RazorSense the hover is RazorSense over the button as it is (flow 9 keeps the black / white surface and its insets)
+      hoverBoxShadow={isRazorSenseHover ? defaultBoxShadow : hoverBoxShadow}
+      hoverBackgroundColor={isRazorSenseHover ? defaultBackgroundColor : hoverBackgroundColor}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
@@ -844,10 +863,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
+      {isRazorSenseHover ? <ButtonRazorSense isEnabled={!disabled} /> : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}
         isPressed={isPressed}
+        {...(isRazorSenseHover ? { position: 'relative', zIndex: 1 } : {})}
       >
         {isLoading ? (
           <BaseBox

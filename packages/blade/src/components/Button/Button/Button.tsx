@@ -47,6 +47,13 @@ type ButtonCommonProps = {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
+  /**
+   * RazorSense plays on the button while it's hovered (web; follows the color scheme). Only for `variant="primary"` with
+   * `color="neutral"`, at any size.
+   *
+   * @default false
+   */
+  hasRazorSense?: boolean;
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -117,6 +124,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    hasRazorSense = false,
     href,
     target,
     rel,
@@ -166,6 +174,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
+      hasRazorSense={hasRazorSense}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

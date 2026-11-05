@@ -245,6 +245,43 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   );
 };
 
+/**
+ * The neutral button follows the color scheme (switch it with Color Scheme in the toolbar): black in light mode, white in dark.
+ * With `hasRazorSense`, RazorSense plays on hover at any size: a square icon button, a label, a long label.
+ */
+const NeutralButtonTemplate: StoryFn<typeof ButtonComponent> = ({
+  children = 'Ask Ray',
+  ...args
+}) => {
+  const sizes: NonNullable<ButtonProps['size']>[] = ['xsmall', 'small', 'medium', 'large'];
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      {sizes.map((size) => (
+        <Box key={size} display="flex" gap="spacing.5" alignItems="center">
+          <Box width="56px">
+            <Text size="small" color="surface.text.gray.muted">
+              {size}
+            </Text>
+          </Box>
+          <ButtonComponent {...args} size={size} icon={ArrowRightIcon} accessibilityLabel="Send">
+            {undefined}
+          </ButtonComponent>
+          <ButtonComponent {...args} size={size}>
+            {children}
+          </ButtonComponent>
+          <ButtonComponent {...args} size={size}>
+            Investigate my recent payment failures
+          </ButtonComponent>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const Neutral = NeutralButtonTemplate.bind({});
+Neutral.args = { color: 'neutral', variant: 'primary', hasRazorSense: true };
+Neutral.storyName = 'Neutral';
+
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
