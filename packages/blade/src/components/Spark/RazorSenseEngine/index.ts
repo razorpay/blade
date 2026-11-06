@@ -5,5 +5,6 @@
 export { FreshStage, freshFailures } from './FreshStage';
 export type { CreateFreshEngine, FreshDriver, FreshFailure } from './FreshStage';
 export { loadFreshEngine } from './loadFreshEngine';
+export { runFreshStage } from './runFreshStage';
 export { withRoom } from './withRoom';
 export type { FreshDoc, FreshEngine, FreshExport, FreshPlayer, FreshSwitches } from './types';

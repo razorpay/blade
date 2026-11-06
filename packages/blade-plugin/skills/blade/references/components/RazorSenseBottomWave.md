@@ -19,6 +19,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - `scale` is held between 0.75 and 1.25.
 - It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs.
 - Its `ref`, `className` and `style` go to its root element (web).
+- It isn't RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. Use RazorSenseBottomWave for the animated wave under a chat input.
 
 ## TypeScript Types
 

@@ -2,8 +2,8 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RazorSenseLoaderProps } from './types';
 import { getSplashClock, splashRemaining, stepSplashClock } from './splashClock';
 import type { SplashClock, SplashClockState } from './splashClock';
-import { FreshStage, freshFailures, loadFreshEngine } from '../RazorSenseEngine';
-import type { FreshEngine } from '../RazorSenseEngine';
+import { runFreshStage } from '../RazorSenseEngine';
+import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
@@ -117,36 +117,16 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
       if (isDoneRef.current) return undefined;
       // (couldn't animate: it stays on its still, a new color scheme just changes the still)
       if (hasFailedRef.current) return undefined;
-      let isMounted = true;
-
-      let hasReported = false;
-      let stage: FreshStage | null = null;
-      const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
-        if (!isMounted) return;
-        hasFailedRef.current = true;
-        setHasFailed(true);
-        if (hasReported) return;
-        hasReported = true;
-        // its still instead; the stage freed after this frame (it may be the one telling us)
-        window.setTimeout(() => {
-          stage?.destroy();
-          if (stageRef.current === stage) stageRef.current = null;
-          engineRef.current = null;
-          clockRef.current = null;
-        }, 0);
-        onErrorRef.current?.(new Error(`RazorSenseLoader: ${reason}`));
-      };
-
-      void Promise.all([loadFreshEngine(), import('./comps')])
-        .then(([createFreshEngine, comps]) => {
-          // (done already, by the safety net: the page is in, nothing more to draw)
-          if (!isMounted || !boxRef.current || isDoneRef.current) return;
+      return runFreshStage({
+        moduleName: 'RazorSenseLoader',
+        getBox: () => boxRef.current,
+        stageRef,
+        loadComps: () => import('./comps'),
+        // (done already, by the safety net: the page is in, nothing more to draw)
+        shouldStart: () => !isDoneRef.current,
+        start: (stage, comps) => {
           const made = mode === 'dark' ? comps.loaderSplashDark : comps.loaderSplashLight;
           const doc = { ...made, p: { ...made.p, cBgCol: toHex(ground) ?? made.p.cBgCol } };
-          stage = new FreshStage(boxRef.current, createFreshEngine, {
-            onError: (reason) => fail(freshFailures[reason]),
-          });
-          stageRef.current = stage;
           // scale: a smaller (bigger) part of the comp round its middle, cover-fitted to the box (1: the whole comp, as made)
           const { w, h } = doc.comp;
           const region: [number, number, number, number] | undefined =
@@ -156,12 +136,7 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
             opts: { fit: 'cover', alpha: false, paused: true, srcBudget: 4.0e6, region },
           });
           const clock = getSplashClock(doc);
-          if (!engine || !clock) {
-            // no usable WebGL2: the plain background, and the page comes in as soon as it's ready
-            fail();
-            if (!isLoadingRef.current) complete();
-            return;
-          }
+          if (!engine || !clock) return false;
           engineRef.current = engine;
           clockRef.current = clock;
           onLoadRef.current?.();
@@ -170,7 +145,7 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
             const t = isLoadingRef.current ? clock.a : clock.end;
             stage.settle(() => engine.player.seek(t, t));
             if (!isLoadingRef.current) complete();
-            return;
+            return true;
           }
           const state: SplashClockState = { t: 0, alive: 0 };
           clockStateRef.current = state;
@@ -183,20 +158,22 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
             }
           });
           stage.setPaused(isPausedRef.current && isLoadingRef.current);
-        })
-        .catch(() => {
-          if (!isMounted) return;
-          fail('its engine failed to load');
-          if (!isLoadingRef.current) complete();
-        });
-
-      return () => {
-        isMounted = false;
-        stageRef.current?.destroy();
-        stageRef.current = null;
-        engineRef.current = null;
-        clockRef.current = null;
-      };
+          return true;
+        },
+        onFail: (error) => {
+          // its still instead
+          hasFailedRef.current = true;
+          setHasFailed(true);
+          onErrorRef.current?.(error);
+          // nothing drawn yet (no usable WebGL2, its engine failed to load): the plain background, and the page comes in as soon
+          // as it's ready
+          if (!engineRef.current && !isLoadingRef.current) complete();
+        },
+        onRelease: () => {
+          engineRef.current = null;
+          clockRef.current = null;
+        },
+      });
       // isLoading and isPaused are read live (refs / their own effects); a new color scheme or scale starts the splash again
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode, s]);

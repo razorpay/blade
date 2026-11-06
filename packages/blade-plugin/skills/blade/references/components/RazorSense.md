@@ -15,6 +15,7 @@ RazorSense is a WebGL-powered component that renders an animated glass refractio
 - `edgeFeather` values range from 0 (no feather) to higher values for more aggressive feathering: `[top, right, bottom, left]`.
 - `backgroundColor` uses RGB in the `[0-1, 0-1, 0-1]` range — not hex or CSS colors.
 - Props always take priority over preset values.
+- `preset="bottomWave"` is a static image of a bottom wave, a decorative strip. For the animated wave under an assistant chat's input (it drifts, pulses as you type, and takes the thinking's surge), use `RazorSenseBottomWave`.
 
 ## TypeScript Types
 
@@ -33,7 +34,7 @@ type RazorSenseProps = {
    * Any explicit props override the preset values.
    * - 'default'       — baseline, same as not passing a preset
    * - 'zoomed'        — tight closeup with high zoom and edge feathering
-   * - 'bottomWave'    — static image, bottom wave style
+   * - 'bottomWave'    — static image, bottom wave style (for the animated wave under a chat input, use RazorSenseBottomWave)
    * - 'rippleWave'    — ray pulse video, ripple effect
    * - 'circleSlideUp' — success circle animation
    */

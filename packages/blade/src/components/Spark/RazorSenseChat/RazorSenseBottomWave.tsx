@@ -28,6 +28,9 @@ const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
  * Inside a RazorSenseChat it marks where the wave settles and the chat draws it, so the thinking surges down into it when the
  * answer is in.
  *
+ * Not RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. This is the animated wave under a
+ * chat input.
+ *
  * @example
  * ```tsx
  * <RazorSenseBottomWave>

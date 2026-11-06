@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
-import { FreshStage, freshFailures, loadFreshEngine, withRoom } from '../RazorSenseEngine';
+import { runFreshStage, withRoom } from '../RazorSenseEngine';
+import type { FreshStage } from '../RazorSenseEngine';
 import { useTheme } from '~components/BladeProvider';
 
 /**
@@ -68,42 +69,21 @@ const useChatStage = ({
   useEffect(() => {
     // (gone to its still: it stays there, a new color scheme or scale just changes the still)
     if (!isEnabled || isStillRef.current) return undefined;
-    let isMounted = true;
-    let hasFailed = false;
-    let stage: FreshStage | null = null;
-    const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
-      if (hasFailed || !isMounted) return;
-      hasFailed = true;
-      isStillRef.current = true;
-      setIsStill(true);
-      // the stage freed after this frame (it may be the one telling us)
-      window.setTimeout(() => {
-        stage?.destroy();
-        if (freshStageRef.current === stage) freshStageRef.current = null;
-        driverRef.current = null;
-      }, 0);
-      onErrorRef.current?.(new Error(`${moduleName}: ${reason}`));
-    };
-    void Promise.all([loadFreshEngine(), import('./comps')])
-      .then(([createFreshEngine, comps]) => {
-        const box = stageRef.current;
-        if (!isMounted || !box) return;
+    return runFreshStage({
+      moduleName,
+      getBox: () => stageRef.current,
+      stageRef: freshStageRef,
+      loadComps: () => import('./comps'),
+      start: (stage, comps) => {
         const doc = withRoom(mode === 'dark' ? comps.chatDark : comps.chatLight, ROOM);
         const setup = getChatSetup(doc);
-        stage = new FreshStage(box, createFreshEngine, {
-          onError: (reason) => fail(freshFailures[reason]),
-        });
-        freshStageRef.current = stage;
         // flow 9's chat comp is drawn at its own size (2x comp px = CSS px) x scale, from the stage's top-left; the pages are
         // placed in it
         const engine = stage.mount({
           doc,
           opts: { fit: 'fixed', scale: 0.5 * scale, alpha: true, paused: true },
         });
-        if (!engine || !setup) {
-          fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
-          return;
-        }
+        if (!engine || !setup) return false;
         onLoadRef.current?.();
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
@@ -122,7 +102,6 @@ const useChatStage = ({
           // reduced motion: one still frame of where it is (thinking, or settled to the bottom wave), settled first (quiet steps:
           // thinking fades in, the answer surges down); when that changes, the new one, settled. The steps run on a clock of
           // their own that only goes forward.
-          const still = stage;
           let clock = now;
           stillRef.current = (nextIsThinking) => {
             clock = Math.max(clock, performance.now());
@@ -130,28 +109,28 @@ const useChatStage = ({
             else driver.answer(clock);
             for (let i = 0; i < 60; i++) driver.step(engine.player, 0.25, clock + i * 250, false);
             clock += 60 * 250;
-            still.settle(() => driver.step(engine.player, 0, clock));
+            stage.settle(() => driver.step(engine.player, 0, clock));
           };
           stillRef.current(isThinkingRef.current);
-          return;
+          return true;
         }
         stage.setDriver((eng, dt) => {
           driver.setAnchors(anchorsRef.current(), scale, ROOM); // (every frame, as flow 9: the chat moves, it follows)
           driver.step(eng.player, dt, performance.now());
         });
         stage.setPaused(isPausedRef.current);
-      })
-      .catch(() => {
-        // the engine couldn't load: nothing drawn
-        if (isMounted) fail('its engine failed to load');
-      });
-    return () => {
-      isMounted = false;
-      freshStageRef.current?.destroy();
-      freshStageRef.current = null;
-      driverRef.current = null;
-      stillRef.current = null;
-    };
+        return true;
+      },
+      onFail: (error) => {
+        isStillRef.current = true;
+        setIsStill(true);
+        onErrorRef.current?.(error);
+      },
+      onRelease: () => {
+        driverRef.current = null;
+        stillRef.current = null;
+      },
+    });
     // isThinking and isPaused have their own effects; a new color scheme or scale starts it again
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled, mode, scale]);

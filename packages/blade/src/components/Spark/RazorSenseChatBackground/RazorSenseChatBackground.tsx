@@ -1,8 +1,8 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RazorSenseChatBackgroundProps } from './types';
 import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
-import { FreshStage, freshFailures, loadFreshEngine, withRoom } from '../RazorSenseEngine';
-import type { FreshEngine } from '../RazorSenseEngine';
+import { runFreshStage, withRoom } from '../RazorSenseEngine';
+import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
@@ -143,45 +143,25 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     }, [s]);
 
     useEffect(() => {
-      let isMounted = true;
+      // (gone to its still: it stays there, a new color scheme or scale just changes the still)
       if (isStillRef.current) return undefined;
-      let hasFailed = false;
-      let stage: FreshStage | null = null;
-      const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
-        if (hasFailed || !isMounted) return;
-        hasFailed = true;
-        isStillRef.current = true;
-        setIsStill(true);
-        // the stage freed after this frame (it may be the one telling us)
-        window.setTimeout(() => {
-          stage?.destroy();
-          if (stageRef.current === stage) stageRef.current = null;
-          engineRef.current = null;
-          typingRef.current = null;
-        }, 0);
-        onErrorRef.current?.(new Error(`RazorSenseChatBackground: ${reason}`));
-      };
-      void Promise.all([loadFreshEngine(), import('./comps')])
-        .then(([createFreshEngine, comps]) => {
-          if (!isMounted || !hostRef.current) return;
+      return runFreshStage({
+        moduleName: 'RazorSenseChatBackground',
+        getBox: () => hostRef.current,
+        stageRef,
+        loadComps: () => import('./comps'),
+        start: (stage, comps) => {
           const doc = withRoom(
             mode === 'dark' ? comps.chatBackgroundDark : comps.chatBackgroundLight,
             ROOM,
           );
           const setup = getTypingSurgeSetup(doc);
-          stage = new FreshStage(hostRef.current, createFreshEngine, {
-            onError: (reason) => fail(freshFailures[reason]),
-          });
-          stageRef.current = stage;
           // the comp at its own size (2x comp px = CSS px) x scale, from the canvas's top-left (placed by fitRef)
           const engine = stage.mount({
             doc,
             opts: { fit: 'fixed', scale: 0.5 * s, alpha: true, paused: true },
           });
-          if (!engine || !setup) {
-            fail(); // no usable WebGL2: nothing drawn, the page shows as it is
-            return;
-          }
+          if (!engine || !setup) return false;
           onLoadRef.current?.();
           engineRef.current = engine;
           engine.player.comp('ty', { op: 0 }); // the typing surge's layer: held at 0 until typing lifts it
@@ -195,25 +175,25 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
               typing.pose(engine.player, 1);
               engine.player.seek(0, 0);
             });
-            return;
+            return true;
           }
           stage.setDriver((eng, dt) => {
             const now = performance.now() / 1000;
             typing.step(eng.player, dt, now, duration);
           });
           stage.setPaused(isPausedRef.current);
-        })
-        .catch(() => {
-          // the engine couldn't load: nothing drawn
-          if (isMounted) fail('its engine failed to load');
-        });
-      return () => {
-        isMounted = false;
-        stageRef.current?.destroy();
-        stageRef.current = null;
-        engineRef.current = null;
-        typingRef.current = null;
-      };
+          return true;
+        },
+        onFail: (error) => {
+          isStillRef.current = true;
+          setIsStill(true);
+          onErrorRef.current?.(error);
+        },
+        onRelease: () => {
+          engineRef.current = null;
+          typingRef.current = null;
+        },
+      });
       // isPaused has its own effect; a new color scheme or scale starts it again
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode, s]);
