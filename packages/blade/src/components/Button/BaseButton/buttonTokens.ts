@@ -246,8 +246,8 @@ const textColor = (property: 'icon' | 'text') => {
       primary: {
         default: `interactive.${property}.onNeutral.normal`,
         highlighted: `interactive.${property}.onNeutral.normal`,
-        // disabled, the surface fades (neutral.disabled): the ink follows the theme as on the other faded surfaces
-        disabled: `interactive.${property}.gray.disabled`,
+        // onNeutral.disabled reads on the faded surface (black in light, white in dark: the tokens from Figma, #4106)
+        disabled: `interactive.${property}.onNeutral.disabled`,
       },
     },
     transparent: {

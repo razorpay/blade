@@ -4056,7 +4056,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
     focusRingColor="hsla(206, 10%, 29%, 0.12)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-    hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    hoverIconColor="hsla(0, 0%, 0%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4149,7 +4149,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
       >
         <Text
           accessible={true}
-          color="interactive.text.gray.disabled"
+          color="interactive.text.onNeutral.disabled"
           data-blade-component="base-text"
           fontSize={100}
           fontWeight="medium"
@@ -4158,7 +4158,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
           style={
             [
               {
-                "color": "hsla(206, 10%, 29%, 0.32)",
+                "color": "hsla(0, 0%, 0%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",

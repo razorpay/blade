@@ -540,11 +540,6 @@ const getProps = ({
       color: inkColor,
       state: 'disabled',
     }) as BaseTextProps['color'];
-    if (isFilledNeutral(color, variant) && colorScheme === 'dark') {
-      // disabled in dark, the white surface fades to a dark grey: a faded white ink reads on it (the theme's gray doesn't)
-      props.iconColor = 'interactive.icon.staticWhite.disabled';
-      props.textColor = 'interactive.text.staticWhite.disabled';
-    }
     props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBoxShadow = getBoxShadow('disabled', inkColor);
     props.hoverBackgroundColor = disabledBackgroundColor;
