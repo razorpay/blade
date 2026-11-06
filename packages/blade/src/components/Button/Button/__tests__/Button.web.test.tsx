@@ -156,11 +156,14 @@ describe('<Button />', () => {
     expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
-  it('should let a ButtonGroup decide: hasRay never throws in one, and gives way (no widening in a group)', () => {
+  it('should keep hasRay and hasRazorSense buttons on their own hover in a ButtonGroup, without throwing', () => {
     for (const variant of ['primary', 'secondary'] as const) {
       const { container } = renderWithTheme(
         <ButtonGroup variant={variant}>
           <Button hasRay>Investigate</Button>
+          <Button color="neutral" hasRazorSense>
+            Ask Ray
+          </Button>
           <Button>Other</Button>
         </ButtonGroup>,
       );

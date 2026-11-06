@@ -112,7 +112,8 @@ type BaseButtonCommonProps = {
    */
   _spinnerColor?: BaseSpinnerProps['color'];
   /**
-   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`, not on a full-width button.
+   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`; not inside a ButtonGroup or on a
+   * full-width button.
    */
   hasRazorSense?: boolean;
   /**
@@ -592,12 +593,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
-  // the color and variant as rendered (a ButtonGroup's win)
-  const resolvedColor = buttonGroupProps.color ?? color;
-  const resolvedVariant = buttonGroupProps.variant ?? variant;
   const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
   // a hover prop on the wrong button is a mistake, loud as the neutral and tertiary colors are; checked against the Button's own
-  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, the group decides, below)
+  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, they give way, below)
   if (hasRazorSense && !isInsideButtonGroup && (variant !== 'primary' || color !== 'neutral')) {
     throwBladeError({
       moduleName: 'BaseButton',
@@ -611,17 +609,18 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     });
   }
   const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;
-  // RazorSense plays over the neutral primary as rendered (in a group too, where the group's variant and color decide), sized to
-  // its content: a full-width one keeps its own hover
+  // RazorSense plays over the neutral primary, sized to its content: not inside a ButtonGroup (it has no neutral color) or on a
+  // full-width button, which keep their own hover
   const isRazorSenseHover =
     hasRazorSense &&
-    resolvedVariant === 'primary' &&
-    resolvedColor === 'neutral' &&
+    variant === 'primary' &&
+    color === 'neutral' &&
+    !isInsideButtonGroup &&
     !isFullWidthButton;
   // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
   const canWidenForRay =
     !isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
-  const isRayHover = hasRay && resolvedVariant === 'secondary' && canWidenForRay;
+  const isRayHover = hasRay && variant === 'secondary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2, a failed load, a lost GPU: the button's own)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
@@ -636,9 +635,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       logger({
         type: 'warn',
         moduleName: 'Button',
-        message: isFullWidthButton
-          ? 'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.'
-          : `hasRazorSense plays on a neutral primary button; its ButtonGroup renders this one as "${resolvedVariant}" "${resolvedColor}", so it keeps its own hover.`,
+        message: isInsideButtonGroup
+          ? "hasRazorSense isn't supported inside a ButtonGroup (it has no neutral color); the button keeps its own hover."
+          : 'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.',
       });
     }
     if (isRayGivingWay) {
@@ -656,15 +655,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         message: `rayVariant only picks what hasRay plays: set hasRay as well (received rayVariant "${rayVariant}").`,
       });
     }
-  }, [
-    isRazorSenseGivingWay,
-    isRayGivingWay,
-    isFullWidthButton,
-    resolvedVariant,
-    resolvedColor,
-    rayVariant,
-    hasRay,
-  ]);
+  }, [isRazorSenseGivingWay, isRayGivingWay, isInsideButtonGroup, rayVariant, hasRay]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

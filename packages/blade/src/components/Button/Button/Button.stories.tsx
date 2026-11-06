@@ -114,6 +114,21 @@ const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', 
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
+type ButtonStoryArgs = Omit<ButtonProps, 'children'>;
+
+// a story that shows several buttons gives each one only what it can take: `color="neutral"` and `hasRazorSense` are the
+// primary button's, `hasRay` and `rayVariant` the secondary's (on any other button they throw in development)
+const argsFor = (
+  { hasRazorSense, hasRay, rayVariant, ...args }: ButtonStoryArgs,
+  variant: NonNullable<ButtonProps['variant']>,
+  color = args.color,
+): ButtonStoryArgs => ({
+  ...args,
+  color: color === 'neutral' && variant !== 'primary' ? undefined : color,
+  ...(variant === 'primary' && color === 'neutral' ? { hasRazorSense } : null),
+  ...(variant === 'secondary' ? { hasRay, rayVariant } : null),
+});
+
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
 const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
@@ -122,22 +137,22 @@ const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   return (
     <>
       <StyledBaseText fontWeight="bold">xsmall</StyledBaseText>
-      <ButtonComponent {...args} size="xsmall">
+      <ButtonComponent {...argsFor(args, args.variant ?? 'primary')} size="xsmall">
         {children}
       </ButtonComponent>
 
       <StyledBaseText fontWeight="bold">small</StyledBaseText>
-      <ButtonComponent {...args} size="small">
+      <ButtonComponent {...argsFor(args, args.variant ?? 'primary')} size="small">
         {children}
       </ButtonComponent>
 
       <StyledBaseText fontWeight="bold">medium</StyledBaseText>
-      <ButtonComponent {...args} size="medium">
+      <ButtonComponent {...argsFor(args, args.variant ?? 'primary')} size="medium">
         {children}
       </ButtonComponent>
 
       <StyledBaseText fontWeight="bold">large</StyledBaseText>
-      <ButtonComponent {...args} size="large">
+      <ButtonComponent {...argsFor(args, args.variant ?? 'primary')} size="large">
         {children}
       </ButtonComponent>
     </>
@@ -151,17 +166,17 @@ const ButtonWithVariantTemplate: StoryFn<typeof ButtonComponent> = ({
   return (
     <>
       <StyledBaseText fontWeight="bold">Primary</StyledBaseText>
-      <ButtonComponent {...args} variant="primary">
+      <ButtonComponent {...argsFor(args, 'primary')} variant="primary">
         {children}
       </ButtonComponent>
 
       <StyledBaseText fontWeight="bold">Secondary</StyledBaseText>
-      <ButtonComponent {...args} variant="secondary">
+      <ButtonComponent {...argsFor(args, 'secondary')} variant="secondary">
         {children}
       </ButtonComponent>
 
       <StyledBaseText fontWeight="bold">Tertiary</StyledBaseText>
-      <ButtonComponent {...args} variant="tertiary">
+      <ButtonComponent {...argsFor(args, 'tertiary')} variant="tertiary">
         {children}
       </ButtonComponent>
     </>
@@ -204,13 +219,13 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
               <Text marginBottom="spacing.3" color={textColor}>
                 Primary
               </Text>
-              <ButtonComponent {...args} color={color} variant="primary">
+              <ButtonComponent {...argsFor(args, 'primary', color)} color={color} variant="primary">
                 {children}
               </ButtonComponent>
 
               <ButtonComponent
                 marginLeft="spacing.4"
-                {...args}
+                {...argsFor(args, 'primary', color)}
                 color={color}
                 variant="primary"
                 isDisabled
@@ -224,13 +239,17 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
                 <Text marginBottom="spacing.3" color={textColor}>
                   Secondary
                 </Text>
-                <ButtonComponent {...args} color={color} variant="secondary">
+                <ButtonComponent
+                  {...argsFor(args, 'secondary', color)}
+                  color={color}
+                  variant="secondary"
+                >
                   {children}
                 </ButtonComponent>
 
                 <ButtonComponent
                   marginLeft="spacing.4"
-                  {...args}
+                  {...argsFor(args, 'secondary', color)}
                   color={color}
                   variant="secondary"
                   isDisabled
@@ -245,13 +264,17 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
                 <Text marginBottom="spacing.3" color={textColor}>
                   Tertiary
                 </Text>
-                <ButtonComponent {...args} color={color} variant="tertiary">
+                <ButtonComponent
+                  {...argsFor(args, 'tertiary', color)}
+                  color={color}
+                  variant="tertiary"
+                >
                   {children}
                 </ButtonComponent>
 
                 <ButtonComponent
                   marginLeft="spacing.4"
-                  {...args}
+                  {...argsFor(args, 'tertiary', color)}
                   color={color}
                   variant="tertiary"
                   isDisabled

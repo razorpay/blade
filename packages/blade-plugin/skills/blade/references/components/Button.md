@@ -10,7 +10,7 @@ The Button component is a versatile interactive element used for triggering acti
 
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
 - `color="neutral"` can only be used with `variant="primary"`
-- `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (on any other Button it throws in development); in a `ButtonGroup` the group's variant and color decide, and where they make it another button, or on an `isFullWidth` button, it keeps its own hover
+- `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (on any other Button it throws in development). It isn't supported inside a `ButtonGroup` (a ButtonGroup has no neutral color) or on an `isFullWidth` button: there the button keeps its own hover (with a development warning)
 - `hasRay` works only with `variant="secondary"` (on another Button it throws in development), on a labelled button that can widen: in a `ButtonGroup`, with `isFullWidth` or icon-only it gives way and the button keeps its own hover (with a development warning). Give it free space to its right (not stretched or held to a width by its container). `rayVariant` picks what Ray does (`"investigate"` for now) and only applies with `hasRay`
 
 ## TypeScript Types
@@ -44,7 +44,7 @@ type ButtonProps = {
   /**
    * RazorSense plays on the button while it's hovered (web; follows the color scheme)
    * Only for `variant="primary"` with `color="neutral"`, at any size (an icon-only button plays its own square version); not on
-   * a full-width button or one its ButtonGroup renders as another, which keep their own hover
+   * a full-width button or one inside a ButtonGroup (it has no neutral color), which keep their own hover
    * @default false
    */
   hasRazorSense?: boolean;

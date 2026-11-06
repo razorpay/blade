@@ -94,9 +94,8 @@ type ButtonCommonProps = {
     web: {
       /**
        * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
-       * `color="neutral"`, at any size: on any other Button it throws in development. In a ButtonGroup the group's variant and
-       * color decide, and where it renders the button as another one, or on a full-width button, the button keeps its own
-       * hover (with a development warning).
+       * `color="neutral"`, at any size: on any other Button it throws in development. Not supported inside a ButtonGroup (it
+       * has no neutral color) or on a full-width button: there the button keeps its own hover (with a development warning).
        *
        * **Only available on web**
        *
