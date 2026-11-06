@@ -180,6 +180,6 @@ describe('<ButtonGroup />', () => {
           <Button>Two</Button>
         </ButtonGroup>,
       ),
-    ).toThrowError('[Blade: ButtonGroup]: `neutral` color is not supported on ButtonGroup');
+    ).toThrowError('[Blade: ButtonGroup]: "neutral" color is not supported on ButtonGroup');
   });
 });

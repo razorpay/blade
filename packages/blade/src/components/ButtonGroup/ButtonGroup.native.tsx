@@ -8,7 +8,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
-import { throwBladeError } from '~utils/logger';
+import { verifyButtonGroupColor } from './verifyButtonGroupColor';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
@@ -64,13 +64,7 @@ const _ButtonGroup = (
   }: ButtonGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  // `neutral` is excluded from the type, but plain JavaScript or a cast can still pass it.
-  if ((color as string) === 'neutral') {
-    throwBladeError({
-      moduleName: 'ButtonGroup',
-      message: '`neutral` color is not supported on ButtonGroup',
-    });
-  }
+  verifyButtonGroupColor(color);
 
   const { theme } = useTheme();
   // While a secondary/tertiary button is pressed, lift it above siblings and

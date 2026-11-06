@@ -15,7 +15,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
-import { throwBladeError } from '~utils/logger';
+import { verifyButtonGroupColor } from './verifyButtonGroupColor';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 
 const getDividerColorToken = ({
@@ -65,13 +65,7 @@ const _ButtonGroup = (
   }: ButtonGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  // `neutral` is excluded from the type, but plain JavaScript or a cast can still pass it.
-  if ((color as string) === 'neutral') {
-    throwBladeError({
-      moduleName: 'ButtonGroup',
-      message: '`neutral` color is not supported on ButtonGroup',
-    });
-  }
+  verifyButtonGroupColor(color);
 
   const contextValue = {
     isDisabled,

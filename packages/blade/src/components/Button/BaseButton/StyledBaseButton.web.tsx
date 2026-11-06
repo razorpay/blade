@@ -6,6 +6,7 @@ import { useStyledProps } from '~components/Box/styledProps';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import { castWebType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBaseButton = styled.button
   .withConfig({
@@ -62,11 +63,13 @@ const StyledBaseButton = styled.button
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
-      // Same ring geometry as `getFocusRingStyles`. Its color comes from `focusRingColor`
-      // and its transition is skipped so the button keeps its own background transition.
-      outline: `4px solid ${props.focusRingColor}`,
-      outlineOffset: '1px',
-      zIndex: 2,
+      // The ring's own transition is skipped so the button keeps its background transition.
+      // A filled neutral button gets the neutral ring, matching `isFilledNeutral` in BaseButton.
+      ...getFocusRingStyles({
+        theme: props.theme,
+        variant: props.color === 'neutral' && props.variant === 'primary' ? 'neutral' : 'primary',
+        withTransition: false,
+      }),
       backgroundImage: 'none',
       boxShadow: props.focusBoxShadow,
       ...(props.variant === 'tertiary' &&
