@@ -32,6 +32,14 @@ afterAll(() => {
   jest.restoreAllMocks();
 });
 
+// ── Text measurement mock ──────────────────────────────────────────────────────
+// Label widths feed the chart's layout. Real canvas measurement depends on the fonts
+// installed on the machine, so the snapshot would differ wherever Inter is installed.
+// 7px per character regardless of weight keeps the geometry the same everywhere.
+jest.mock('../../CommonChartComponents/utils', () => ({
+  calculateTextWidth: (text: string) => ({ width: text.length * 7, displayText: text }),
+}));
+
 // ── Test data ──────────────────────────────────────────────────────────────────
 
 const nodes = [

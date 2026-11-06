@@ -8,7 +8,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -40,21 +40,23 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -114,9 +116,10 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 
 .c5.c5.c5.c5.c5:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c5.c5.c5.c5.c5 * {
@@ -382,7 +385,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -414,21 +417,23 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -531,7 +536,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -563,21 +568,23 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -680,7 +687,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -712,21 +719,23 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -876,7 +885,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -908,21 +917,23 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1072,7 +1083,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -1104,21 +1115,23 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1269,7 +1282,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1301,21 +1314,23 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1480,9 +1495,10 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1627,9 +1643,10 @@ exports[`<BaseButton /> should render disabled information color primary button 
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(200,100%,41%,0.09);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1777,9 +1794,11 @@ exports[`<BaseButton /> should render disabled information color secondary butto
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1924,9 +1943,10 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(4,85%,44%,0.09);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2074,9 +2094,11 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2221,9 +2243,10 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,0%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(206,10%,29%,0.12);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(206,10%,29%,0.12);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2268,157 +2291,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,100%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-right: 4px;
-  margin-left: 4px;
-}
-
-.c3.c3.c3.c3.c3 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class=" c1"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c2 c3"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c4"
-          data-blade-component="base-text"
-        >
-          Pay Now
-        </div>
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render disabled neutral color secondary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c1.c1.c1.c1.c1 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
-}
-
-.c4.c4.c4.c4.c4 {
-  color: hsla(206,10%,29%,0.32);
+  color: hsla(0,0%,0%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2518,9 +2391,10 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(25,100%,44%,0.09);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2668,9 +2542,11 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2815,9 +2691,10 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(150,100%,28%,0.09);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2965,9 +2842,11 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3112,9 +2991,10 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3262,9 +3142,11 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3412,9 +3294,11 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3559,9 +3443,10 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3662,7 +3547,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   border: none;
   border-radius: 8px;
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
@@ -3696,22 +3581,24 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(206,10%,29%,0.06);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3812,7 +3699,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   border: none;
   border-radius: 8px;
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
@@ -3846,22 +3733,24 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0.01);
   box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(206,10%,29%,0.06);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3965,7 +3854,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   background-color: hsla(200,100%,41%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,41%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,41%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -3997,21 +3886,23 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(200,100%,33%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(200,100%,33%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(200,100%,33%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(200,100%,33%,1),inset 0 0px 0px 0.5px hsla(200,100%,33%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4146,21 +4037,23 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4263,7 +4156,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 12px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 16px;
@@ -4295,21 +4188,23 @@ exports[`<BaseButton /> should render large size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4412,7 +4307,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -4444,21 +4339,23 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4561,7 +4458,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   background-color: hsla(4,85%,44%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,44%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,44%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -4593,21 +4490,23 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(4,85%,36%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(4,85%,36%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(4,85%,36%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4742,21 +4641,23 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4903,9 +4804,11 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,12%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(206,10%,29%,0.12);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(206,10%,29%,0.12),inset 0 -1.5px 0px 0px hsla(0,0%,0%,1),inset 0 0px 0px 0.5px hsla(0,0%,0%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,1),inset 0 0px 0px 0.5px hsla(0,0%,0%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5000,155 +4903,6 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
 </div>
 `;
 
-exports[`<BaseButton /> should render neutral color secondary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c1.c1.c1.c1.c1 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
-}
-
-.c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-right: 4px;
-  margin-left: 4px;
-}
-
-.c3.c3.c3.c3.c3 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class=" c1"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c2 c3"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c4"
-          data-blade-component="base-text"
-        >
-          Pay Now
-        </div>
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<BaseButton /> should render notice color primary button 1`] = `
 .c0.c0.c0.c0.c0 {
   min-height: 36px;
@@ -5157,7 +4911,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   background-color: hsla(25,100%,44%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,44%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,44%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -5189,21 +4943,23 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(25,100%,39%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(25,100%,39%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(25,100%,39%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(25,100%,39%,1),inset 0 0px 0px 0.5px hsla(25,100%,39%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5338,21 +5094,23 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5455,7 +5213,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   background-color: hsla(150,100%,28%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,28%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,28%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -5487,21 +5245,23 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(150,100%,23%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(150,100%,23%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(150,100%,23%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5636,21 +5396,23 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5753,7 +5515,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -5785,21 +5547,23 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5934,21 +5698,23 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6083,21 +5849,23 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6200,7 +5968,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 8px;
@@ -6232,21 +6000,23 @@ exports[`<BaseButton /> should render small size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6381,21 +6151,23 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.8);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6498,7 +6270,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   background-color: hsla(0,0%,100%,0.18);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -6530,21 +6302,23 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,0%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6647,7 +6421,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   background-color: hsla(0,0%,100%,0.18);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -6679,21 +6453,23 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,0%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -2px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -6796,7 +6572,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 8px;
@@ -6828,21 +6604,23 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {

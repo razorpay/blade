@@ -426,21 +426,23 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1433,21 +1435,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c36.c36.c36.c36.c36:hover {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c36.c36.c36.c36.c36:active {
   background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
   background-image: none;
 }
 
 .c36.c36.c36.c36.c36:focus-visible {
   background-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(205,8%,71%,1);
 }
 
 .c36.c36.c36.c36.c36 * {

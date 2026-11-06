@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
+import { isFilledNeutral } from './buttonTokens';
 import type { StyledBaseButtonProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import { castWebType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBaseButton = styled.button
   .withConfig({
@@ -62,11 +64,14 @@ const StyledBaseButton = styled.button
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
-      outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
+      // The ring's own transition is skipped so the button keeps its background transition.
+      ...getFocusRingStyles({
+        theme: props.theme,
+        variant: isFilledNeutral(props.color, props.variant) ? 'neutral' : 'primary',
+        withTransition: false,
+      }),
       backgroundImage: 'none',
-      boxShadow: props.focusBoxShadow
-        ? `0px 0px 0px 4px ${props.focusRingColor}, ${props.focusBoxShadow}`
-        : `0px 0px 0px 4px ${props.focusRingColor}`,
+      boxShadow: props.focusBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
