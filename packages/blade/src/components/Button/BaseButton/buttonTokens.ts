@@ -437,7 +437,18 @@ const getLoaderColorToken = (color: BaseSpinnerProps['color']): IconColors => {
   return 'interactive.icon.gray.muted';
 };
 
+/**
+ * The filled `neutral` surface needs inverted content, a heavier inner shadow and the
+ * neutral focus ring, so its `primary` emphasis is looked up under a dedicated key.
+ * The remaining emphases fall back to `base`. Shared by BaseButton and its web styles.
+ */
+const isFilledNeutral = (
+  color: BaseButtonProps['color'],
+  variant: BaseButtonProps['variant'],
+): boolean => color === 'neutral' && variant === 'primary';
+
 export {
+  isFilledNeutral,
   boxShadow,
   backgroundGradient,
   textColor,

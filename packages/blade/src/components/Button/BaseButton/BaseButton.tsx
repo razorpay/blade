@@ -19,6 +19,7 @@ import {
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
+  isFilledNeutral,
 } from './buttonTokens';
 import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
@@ -146,16 +147,6 @@ type BaseButtonColorTokenModifiers = {
 const isStaticOrTransparentColor = (
   color: BaseButtonProps['color'],
 ): color is 'white' | 'transparent' => color === 'white' || color === 'transparent';
-
-/**
- * The filled `neutral` surface needs inverted content and a heavier inner shadow
- * than the shared feedback treatment, so its `primary` emphasis is looked up
- * under a dedicated key. The remaining emphases fall back to `base`.
- */
-const isFilledNeutral = (
-  color: BaseButtonProps['color'],
-  variant: NonNullable<BaseButtonProps['variant']>,
-): boolean => color === 'neutral' && variant === 'primary';
 
 const getLoaderColor = ({
   variant,

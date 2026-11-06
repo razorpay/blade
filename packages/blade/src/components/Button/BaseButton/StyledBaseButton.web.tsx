@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
+import { isFilledNeutral } from './buttonTokens';
 import type { StyledBaseButtonProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
@@ -64,10 +65,9 @@ const StyledBaseButton = styled.button
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
       // The ring's own transition is skipped so the button keeps its background transition.
-      // A filled neutral button gets the neutral ring, matching `isFilledNeutral` in BaseButton.
       ...getFocusRingStyles({
         theme: props.theme,
-        variant: props.color === 'neutral' && props.variant === 'primary' ? 'neutral' : 'primary',
+        variant: isFilledNeutral(props.color, props.variant) ? 'neutral' : 'primary',
         withTransition: false,
       }),
       backgroundImage: 'none',
