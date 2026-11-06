@@ -361,7 +361,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                     d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                     fill={
                       {
-                        "payload": 1392508927,
+                        "payload": 1375731712,
                         "type": 0,
                       }
                     }
@@ -385,7 +385,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
               style={
                 [
                   {
-                    "color": "hsla(0, 0%, 100%, 0.32)",
+                    "color": "hsla(0, 0%, 0%, 0.32)",
                     "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
