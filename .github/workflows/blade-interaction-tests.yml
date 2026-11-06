@@ -21,7 +21,9 @@ env:
 jobs:
   interaction-tests:
     name: Run Interaction Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # Pinned to 24.04: ubuntu-latest now resolves to 26.04, which the Playwright
+    # version bundled with @storybook/test-runner (1.57.0) does not support.
+    runs-on: ubuntu-24.04 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run Interaction Tests' || github.event_name == 'push' }}
     steps:
       - name: Checkout Codebase
