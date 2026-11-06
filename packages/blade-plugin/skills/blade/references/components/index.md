@@ -67,6 +67,7 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **ProgressBar**: A ProgressBar is a visual indicator that displays the progress of a process or task.
 - **QuickFilter**: QuickFilter and QuickFilterGroup components provide a user-friendly interface for displaying and selecting filterable options.
 - **Radio**: The Radio and RadioGroup components are used in forms when a user needs to select a single value from multiple options.
+- **Ray**: Ray is Razorpay's AI mascot, an animated character for AI assistant surfaces: on a chat input he idles, watches what's typed, looks at the pointer and flips a coin when clicked; in an answer's row he plays its states (searching, calling, writing, working).
 - **RazorSense**: RazorSense is a WebGL-powered component that renders an animated glass refraction effect with video/image textures, colorama color grading, displacement, bloom, and light sweep effects.
 - **RazorSenseGradient**: RazorSenseGradient renders an animated WebGL fluid gradient clipped to an SVG mask shape.
 - **SankeyChart**: SankeyChart is a flow diagram that shows how a quantity moves across multiple stages.
