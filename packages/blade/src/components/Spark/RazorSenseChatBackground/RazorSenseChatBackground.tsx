@@ -4,6 +4,7 @@ import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
 import { FreshStage, freshFailures, loadFreshEngine, withRoom } from '../RazorSenseEngine';
 import type { FreshEngine } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -111,26 +112,34 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       const j = Math.max(1, ky);
       const cx = INPUT.x + INPUT.w / 2;
       const cy = INPUT.y + INPUT.h / 2;
-      Object.assign(host.style, {
-        left: `${bw / 2 - cx * k * s}px`,
-        top: `${bh / 2 - (cy * j + LIFT * ky) * s}px`,
-        width: `${COMP_SIZE.w * k * s}px`,
-        height: `${COMP_SIZE.h * j * s}px`,
+      // (cut where its spill would grow the page: Firefox; the comp moves back by the cut, so it stays where it was)
+      const [cutX, cutY] = placeSpill(host, {
+        left: bw / 2 - cx * k * s,
+        top: bh / 2 - (cy * j + LIFT * ky) * s,
+        width: COMP_SIZE.w * k * s,
+        height: COMP_SIZE.h * j * s,
       });
       engineRef.current?.player.group('main', {
-        dx: (cx * (k - 1) - ROOM.x) * s,
-        dy: (cy * (j - 1) - ROOM.y) * s,
+        dx: (cx * (k - 1) - ROOM.x) * s - cutX,
+        dy: (cy * (j - 1) - ROOM.y) * s - cutY,
       });
       typingRef.current?.setStretch(kx, ky, INPUT_MIDDLE[0], INPUT_MIDDLE[1]);
     };
 
     useEffect(() => {
       const box = boxRef.current;
-      if (!box) return undefined;
+      const host = hostRef.current;
+      if (!box || !host) return undefined;
       fitRef.current();
-      const observer = new ResizeObserver(() => fitRef.current());
-      observer.observe(box);
-      return () => observer.disconnect();
+      // (no ResizeObserver, as in some test environments: laid out once)
+      const observer =
+        typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => fitRef.current());
+      observer?.observe(box);
+      const stopSpill = watchSpill(host, () => fitRef.current());
+      return () => {
+        observer?.disconnect();
+        stopSpill();
+      };
     }, [s]);
 
     useEffect(() => {
@@ -232,7 +241,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           // its own layer, so the strip draws behind the chat input and over the page
           isolation: 'isolate',
           // its canvas spreads well past the chat input (the glow round it): layout containment keeps that from growing the page
-          // (scrollbars), drawn but not counted
+          // in Chrome and Safari (drawn, not counted for scrolling); Firefox counts it, so there the canvas is cut (placeSpill)
           contain: 'layout',
           ...style,
         }}

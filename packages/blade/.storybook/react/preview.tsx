@@ -159,8 +159,7 @@ const hasFullPageExampleStories = (context) =>
   context.kind.includes('/TopNav') ||
   context.kind.includes('/Examples') ||
   context.kind.includes('/SideNav') ||
-  context.kind.includes('/Recipes') ||
-  context.kind.includes('RazorSense/Fresh ');
+  context.kind.includes('/Recipes');
 
 const StoryCanvas = styled.div<{ context }>(
   ({ theme, context }) =>

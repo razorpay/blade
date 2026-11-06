@@ -6,6 +6,7 @@ import { RazorSenseChatContext } from './chatContext';
 import { SLOT_FROM_LABEL, THINKING_REACH, rectIn, thinkingSlot } from './placement';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
@@ -93,6 +94,20 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       if (!chat || !labelRef.current) return undefined;
       return chat.register('thinking', labelRef.current);
     }, [chat]);
+
+    // where its spill would grow the page (Firefox), its canvas is cut to what the page already holds
+    useEffect(() => {
+      const stage = stageRef.current;
+      if (chat || !stage) return undefined;
+      return watchSpill(stage, () => {
+        placeSpill(stage, {
+          left: SLOT_FROM_LABEL.x - THINKING_REACH.left * s,
+          top: SLOT_FROM_LABEL.y - THINKING_REACH.up * s,
+          width: (THINKING_REACH.left + THINKING_REACH.right) * s,
+          height: (THINKING_REACH.up + THINKING_REACH.down) * s,
+        });
+      });
+    }, [chat, s]);
 
     // on its own: its canvas reaches round the label, as far as thinking does
     const getAnchors = (): ChatAnchors => {

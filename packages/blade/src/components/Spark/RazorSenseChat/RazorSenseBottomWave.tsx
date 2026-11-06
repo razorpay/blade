@@ -5,6 +5,7 @@ import { RazorSenseChatContext } from './chatContext';
 import { BOTTOM_WAVE_REACH, inputAnchor, rectIn } from './placement';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -51,6 +52,21 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       if (!chat || !boxRef.current) return undefined;
       return chat.register('bottomWave', boxRef.current);
     }, [chat]);
+
+    // where its spill would grow the page (Firefox), its canvas is cut to what the page already holds
+    useEffect(() => {
+      const stage = stageRef.current;
+      const box = boxRef.current;
+      if (chat || !stage || !box) return undefined;
+      return watchSpill(stage, () => {
+        placeSpill(stage, {
+          left: box.clientWidth / 2 - BOTTOM_WAVE_REACH.side * s,
+          top: box.clientHeight - BOTTOM_WAVE_REACH.up * s,
+          width: BOTTOM_WAVE_REACH.side * 2 * s,
+          height: (BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s,
+        });
+      });
+    }, [chat, s]);
 
     // on its own: its canvas reaches round the input, as far as the wave does
     const getAnchors = (): ChatAnchors => {
