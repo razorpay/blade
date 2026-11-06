@@ -32,6 +32,8 @@ const ROOM = { x: 376, y: 301 };
 const LIFT = 52;
 /** how far the strip reaches above and below the chat input once lifted (CSS px at scale 1): kept as the input gets taller */
 const REACH_Y = 114;
+/** how long the chat input's width has to stay out of range before that's warned about (ms) */
+const WIDTH_SETTLE_MS = 1000;
 
 /** the input's middle in comp px from the comp's middle: what the strip stretches round */
 const INPUT_MIDDLE: [number, number] = [
@@ -87,6 +89,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
 
     // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
     const fitRef = useRef<() => void>(() => undefined);
+    const widthCheckRef = useRef(0);
     fitRef.current = (): void => {
       const box = boxRef.current;
       const host = hostRef.current;
@@ -94,14 +97,24 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       const bw = box.clientWidth;
       const bh = box.clientHeight;
       const px = (v: number): string => `${Math.round(v)}px`;
-      const kx =
-        holdInRange(
-          bw,
-          FRESH_RANGES.chatInputWidth,
-          'RazorSenseChatBackground',
-          "the chat input's width",
-          px,
-        ) / INPUT.w;
+      const { min: wMin, max: wMax } = FRESH_RANGES.chatInputWidth;
+      const kx = Math.min(wMax, Math.max(wMin, bw)) / INPUT.w;
+      // past its range the width is held there, and said so in development once the box has kept that size a moment (a box
+      // measured mid-layout, narrow for a frame, isn't the app's chat input)
+      window.clearTimeout(widthCheckRef.current);
+      if (bw < wMin || bw > wMax) {
+        widthCheckRef.current = window.setTimeout(() => {
+          const width = boxRef.current?.clientWidth ?? 0;
+          if (width < 1) return;
+          holdInRange(
+            width,
+            FRESH_RANGES.chatInputWidth,
+            'RazorSenseChatBackground',
+            "the chat input's width",
+            px,
+          );
+        }, WIDTH_SETTLE_MS);
+      }
       // (taller: the strip grows to keep its reach past the input, not in proportion). A chat input's height follows what's in
       // it (lines, attachments), so past its range it's held there quietly, with no warning.
       const { min: hMin, max: hMax } = FRESH_RANGES.chatInputHeight;
@@ -139,6 +152,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       return () => {
         observer?.disconnect();
         stopSpill();
+        window.clearTimeout(widthCheckRef.current);
       };
     }, [s]);
 

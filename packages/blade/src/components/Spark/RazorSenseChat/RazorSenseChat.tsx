@@ -184,8 +184,9 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
         };
       },
       keystroke,
+      isPaused,
     }),
-    [keystroke],
+    [keystroke, isPaused],
   );
 
   // without its parts it lines up with flow 9's own chat: say so, it's rarely what's meant (the parts register first: their

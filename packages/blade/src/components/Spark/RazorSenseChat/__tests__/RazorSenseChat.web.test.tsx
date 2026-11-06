@@ -61,6 +61,26 @@ describe('RazorSense 2.0 components', () => {
     expect(onError.mock.calls[0][0]).toBeInstanceOf(Error);
   });
 
+  it('pause the thinking label’s shimmer with isPaused (in a chat, the chat’s)', () => {
+    const { getByText, unmount } = renderWithTheme(
+      <>
+        <RazorSenseThinking isPaused>Paused</RazorSenseThinking>
+        <RazorSenseThinking>Running</RazorSenseThinking>
+      </>,
+    );
+    const playState = (element: HTMLElement): string =>
+      getComputedStyle(element).animationPlayState;
+    expect(playState(getByText('Paused'))).toBe('paused');
+    expect(playState(getByText('Running'))).toBe('running');
+    unmount();
+    const { getByText: getInChat } = renderWithTheme(
+      <RazorSenseChat isPaused>
+        <RazorSenseThinking>In a paused chat</RazorSenseThinking>
+      </RazorSenseChat>,
+    );
+    expect(playState(getInChat('In a paused chat'))).toBe('paused');
+  });
+
   it('warn when a part inside RazorSenseChat is given props the chat takes over', () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     renderWithTheme(

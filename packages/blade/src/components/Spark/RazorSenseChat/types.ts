@@ -3,7 +3,7 @@ import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
 
 type RazorSenseThinkingProps = {
   /**
-   * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion).
+   * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion, and paused with `isPaused`).
    * @default 'Thinking…'
    */
   children?: string;

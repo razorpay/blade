@@ -31,27 +31,30 @@ const shimmer = keyframes`
   18%, 100% { background-position: 0% 0; }
 `;
 
-const ThinkingLabel = styled.span<{ base: string; shine: string }>(({ theme, base, shine }) => {
-  return css`
-    display: inline-block;
-    white-space: nowrap;
-    font-family: ${theme.typography.fonts.family.text};
-    font-weight: ${theme.typography.fonts.weight.regular};
-    font-size: ${makeSize(theme.typography.fonts.size[200])};
-    line-height: ${makeSize(22)};
-    letter-spacing: -0.208px;
-    color: transparent;
-    background-image: linear-gradient(90deg, ${base} 38%, ${shine} 50%, ${base} 62%);
-    background-size: 250% 100%;
-    background-position: 0% 0;
-    background-clip: text;
-    animation: ${shimmer} 1.6s linear infinite;
+const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boolean }>(
+  ({ theme, base, shine, isPaused }) => {
+    return css`
+      display: inline-block;
+      white-space: nowrap;
+      font-family: ${theme.typography.fonts.family.text};
+      font-weight: ${theme.typography.fonts.weight.regular};
+      font-size: ${makeSize(theme.typography.fonts.size[200])};
+      line-height: ${makeSize(22)};
+      letter-spacing: -0.208px;
+      color: transparent;
+      background-image: linear-gradient(90deg, ${base} 38%, ${shine} 50%, ${base} 62%);
+      background-size: 250% 100%;
+      background-position: 0% 0;
+      background-clip: text;
+      animation: ${shimmer} 1.6s linear infinite;
+      animation-play-state: ${isPaused ? 'paused' : 'running'};
 
-    @media (prefers-reduced-motion: reduce) {
-      animation: none;
-    }
-  `;
-});
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    `;
+  },
+);
 
 /**
  * RazorSenseThinking
@@ -157,7 +160,13 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
             {still ? <img src={still} alt="" style={stillStyle} /> : null}
           </div>
         )}
-        <ThinkingLabel ref={labelRef} base={colors.base} shine={colors.shine}>
+        <ThinkingLabel
+          ref={labelRef}
+          base={colors.base}
+          shine={colors.shine}
+          // (in a chat, the chat's pause: its own doesn't apply there)
+          isPaused={chat ? chat.isPaused : isPaused}
+        >
           {children}
         </ThinkingLabel>
       </div>

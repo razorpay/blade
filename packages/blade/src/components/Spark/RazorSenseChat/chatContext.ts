@@ -7,6 +7,8 @@ type RazorSenseChatContextValue = {
   register: (part: ChatPart, element: HTMLElement) => () => void;
   /** a key typed in the chat input */
   keystroke: () => void;
+  /** the chat's own isPaused (its parts follow it: the thinking label's shimmer holds too) */
+  isPaused: boolean;
 };
 
 /** Set by RazorSenseChat: its parts register with it and it draws them, instead of drawing themselves. */
