@@ -42,9 +42,11 @@ const STILL_FADE = 400;
  *
  * @example
  * ```tsx
- * <Box position="fixed" inset="spacing.0">
- *   <RazorSenseLoader isLoading={!isReady} onComplete={() => setShowPage(true)} />
- * </Box>
+ * {isSplashDone ? null : (
+ *   <Box position="fixed" inset="spacing.0">
+ *     <RazorSenseLoader isLoading={!isReady} onComplete={() => setIsSplashDone(true)} />
+ *   </Box>
+ * )}
  * ```
  */
 const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
@@ -266,6 +268,8 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
           width: typeof width === 'number' ? `${width}px` : width,
           height: typeof height === 'number' ? `${height}px` : height,
           backgroundColor: ground,
+          // done: nothing left of it, even if it stays mounted (a new splash is a new mount, a new `key`)
+          ...(isDone ? { visibility: 'hidden' as const, pointerEvents: 'none' as const } : null),
           ...style,
         }}
       >

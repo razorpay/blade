@@ -29,6 +29,8 @@ const MAX_STEP = 0.1;
  */
 const SLOW_FPS = 20;
 const SLOW_SECONDS = 3;
+/** a stage's first frames don't count (its first draws, and a page still booting, stall) (ms) */
+const SLOW_WARMUP = 2000;
 let wasSlow = false;
 
 /** why a stage can't animate: no usable WebGL2, frames too slow, or a GPU context the browser took back and didn't return */
@@ -305,10 +307,11 @@ class FreshStage {
   /** the slow check, a second at a time: too many slow ones running and the component is told (it shows its still instead) */
   private countFrame(now: number): void {
     if (!this.second) {
-      this.second = now;
+      this.second = now + SLOW_WARMUP;
       this.frames = 0;
       return;
     }
+    if (now < this.second) return;
     this.frames += 1;
     if (now - this.second < 1000) return;
     const fps = (this.frames * 1000) / (now - this.second);

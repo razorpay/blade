@@ -50,7 +50,9 @@ type RazorSenseLoaderProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place.
+   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place. From then
+   * on it's invisible and lets clicks through, even if it stays mounted; unmount it here. To show the splash again, mount it
+   * again (a new `key`).
    */
   onComplete?: () => void;
   /**
@@ -69,7 +71,9 @@ type RazorSenseLoaderProps = {
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, or its frames are too slow on this device (under 20 a second for 3 seconds). It shows its still frame instead.
+   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2; once one RazorSense
+   * animation finds that, the others on the page go to their stills too), or the browser took its GPU context back. It shows
+   * its still frame instead.
    */
   onError?: (error: Error) => void;
   /**
@@ -88,7 +92,7 @@ type RazorSenseLoaderProps = {
 **Do**
 
 - Show `RazorSenseLoader` full screen while the app's first data loads, and set `isLoading` to `false` the moment it's ready.
-- Remove the splash in `onComplete`, after it has faded out, so the page never pops in under a half-faded splash.
+- Remove the splash in `onComplete`, after it has faded out, so the page never pops in under a half-faded splash. (Left mounted, it's invisible and lets clicks through; to show it again, mount it again.)
 - Let the theme decide light or dark by rendering it inside `BladeProvider`.
 
 **Don't**

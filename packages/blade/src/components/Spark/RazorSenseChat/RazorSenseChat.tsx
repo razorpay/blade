@@ -109,10 +109,16 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
   // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge)
   const getAnchorsRef = useRef(getAnchors);
   getAnchorsRef.current = getAnchors;
+  const isPausedRef = useRef(isPaused);
+  isPausedRef.current = isPaused;
   useEffect(() => {
     if (!isStill) return undefined;
     let rafId = 0;
+    // (only while it's on screen and not paused: off screen or paused, the stills stay where they were)
+    let isOnScreen = true;
     const place = (): void => {
+      rafId = 0;
+      if (!isOnScreen || isPausedRef.current) return;
       rafId = requestAnimationFrame(place);
       const anchors = getAnchorsRef.current();
       const [tx, ty] = thinkingFrame(anchors.thinking, s);
@@ -124,9 +130,20 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
         bottomWaveStillRef.current.style.transform = `translate(${bx}px, ${by}px)`;
       }
     };
+    const observer =
+      typeof IntersectionObserver === 'undefined' || !stageRef.current
+        ? null
+        : new IntersectionObserver(([entry]) => {
+            isOnScreen = entry ? entry.isIntersecting : true;
+            if (isOnScreen && !rafId) rafId = requestAnimationFrame(place);
+          });
+    if (stageRef.current) observer?.observe(stageRef.current);
     place();
-    return () => cancelAnimationFrame(rafId);
-  }, [isStill, s]);
+    return () => {
+      cancelAnimationFrame(rafId);
+      observer?.disconnect();
+    };
+  }, [isStill, s, isPaused]);
 
   const context = useMemo<RazorSenseChatContextValue>(
     () => ({
@@ -154,7 +171,8 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
     }
   }, []);
   useEffect(() => {
-    if (__DEV__ && isThinking && !partsRef.current.thinking) {
+    if (!__DEV__) return undefined;
+    if (isThinking && !partsRef.current.thinking) {
       logger({
         type: 'warn',
         moduleName: 'RazorSenseChat',
@@ -162,6 +180,19 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
           "isThinking is true but there's no RazorSenseThinking inside: thinking plays where flow 9's thinking row was, not where your reply goes. Put a RazorSenseThinking there.",
       });
     }
+    if (isThinking) return undefined;
+    // (a moment's grace: the answer may replace the thinking label a frame later)
+    const timer = window.setTimeout(() => {
+      if (partsRef.current.thinking) {
+        logger({
+          type: 'warn',
+          moduleName: 'RazorSenseChat',
+          message:
+            'isThinking is false but a RazorSenseThinking is still showing: its label shimmers with no glow. Show it only while isThinking is true.',
+        });
+      }
+    }, 1000);
+    return () => window.clearTimeout(timer);
   }, [isThinking]);
 
   return (
