@@ -22,6 +22,42 @@ const ALL_ON: FreshSwitches = {
 /** The longest step a frame may take on the component's clock: a stall or a hidden tab doesn't jump the animation. */
 const MAX_STEP = 0.1;
 
+/** Renderers that draw on the CPU (as RazorSense's PerformanceManager lists them): a few frames a second at best. */
+const SOFTWARE_RENDERERS = [
+  /swiftshader/,
+  /llvmpipe/,
+  /softpipe/,
+  /microsoft basic render/,
+  /virgl/,
+];
+let usableGpu: boolean | null = null;
+
+/**
+ * Whether this machine draws WebGL2 on a GPU (checked once): not where the browser flags a major performance caveat or names
+ * a software renderer (some remote desktops, VMs, graphics acceleration turned off). There the engine would hold the page up,
+ * so the components show as they do without WebGL2.
+ */
+const hasUsableGpu = (): boolean => {
+  if (usableGpu !== null) return usableGpu;
+  usableGpu = false;
+  try {
+    const gl = document
+      .createElement('canvas')
+      .getContext('webgl2', { failIfMajorPerformanceCaveat: true });
+    if (gl) {
+      const info = gl.getExtension('WEBGL_debug_renderer_info');
+      const renderer = info
+        ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) ?? '').toLowerCase()
+        : '';
+      usableGpu = !SOFTWARE_RENDERERS.some((pattern) => pattern.test(renderer));
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+    }
+  } catch {
+    usableGpu = false;
+  }
+  return usableGpu;
+};
+
 const prefersReducedMotion = (): boolean =>
   typeof window !== 'undefined' &&
   typeof window.matchMedia === 'function' &&
@@ -79,10 +115,14 @@ class FreshStage {
     document.addEventListener('visibilitychange', this.update);
   }
 
-  /** Plays this comp (the one before is freed first). Returns null when WebGL2 isn't there. */
+  /** Plays this comp (the one before is freed first). Returns null when WebGL2 isn't there, or draws only on the CPU. */
   public mount(exp: FreshExport, switches: FreshSwitches = ALL_ON): FreshEngine | null {
     this.unmountEngine();
     if (this.isDestroyed) return null;
+    if (!hasUsableGpu()) {
+      this.onError?.('webgl2');
+      return null;
+    }
     let failed = false;
     const engine = this.createEngine(
       {

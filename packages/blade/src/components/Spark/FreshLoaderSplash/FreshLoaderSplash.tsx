@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { FreshLoaderSplashProps } from './types';
-import { getSplashClock, stepSplashClock } from './splashClock';
+import { getSplashClock, splashRemaining, stepSplashClock } from './splashClock';
 import type { SplashClock, SplashClockState } from './splashClock';
 import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
 import type { FreshEngine } from '../RazorSenseEngine';
@@ -10,6 +10,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 
 /** The page colour under the splash: before its first frame, after it has faded, and when WebGL2 isn't there. */
+// (the comp's own ground, drawn by the engine in the same colours: a theme token here could differ from it by a shade and show
+// a seam as the splash fades)
 const GROUND = { light: '#ffffff', dark: '#131315' } as const;
 
 /**
@@ -34,6 +36,8 @@ const FreshLoaderSplash = ({
   accessibilityLabel = 'Loading',
   width = '100%',
   height = '100%',
+  onLoad,
+  onError,
   testID,
 }: FreshLoaderSplashProps): React.ReactElement => {
   const { colorScheme } = useTheme();
@@ -50,12 +54,22 @@ const FreshLoaderSplash = ({
   isPausedRef.current = isPaused;
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
+  const onLoadRef = useRef(onLoad);
+  onLoadRef.current = onLoad;
+  const onErrorRef = useRef(onError);
+  onErrorRef.current = onError;
   const isDoneRef = useRef(false);
+  const [isDone, setIsDone] = useState(false);
   const [hasFailed, setHasFailed] = useState(false);
+  // where its clock is (read by the safety net below)
+  const clockStateRef = useRef<SplashClockState>({ t: 0, alive: 0 });
 
   const complete = (): void => {
     if (isDoneRef.current) return;
     isDoneRef.current = true;
+    setIsDone(true);
+    stageRef.current?.setDriver(null);
+    stageRef.current?.setPaused(true);
     onCompleteRef.current?.();
   };
 
@@ -66,12 +80,21 @@ const FreshLoaderSplash = ({
     let isMounted = true;
     setHasFailed(false);
 
+    let hasReported = false;
+    const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
+      setHasFailed(true);
+      if (hasReported) return;
+      hasReported = true;
+      onErrorRef.current?.(new Error(`FreshLoaderSplash: ${reason}`));
+    };
+
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
-        if (!isMounted || !boxRef.current) return;
+        // (done already, by the safety net: the page is in, nothing more to draw)
+        if (!isMounted || !boxRef.current || isDoneRef.current) return;
         const doc = mode === 'dark' ? comps.loaderSplashDark : comps.loaderSplashLight;
         const stage = new FreshStage(boxRef.current, createFreshEngine, {
-          onError: () => setHasFailed(true),
+          onError: () => fail(),
         });
         stageRef.current = stage;
         // scale: a smaller (bigger) part of the comp round its middle, cover-fitted to the box (1: the whole comp, as made)
@@ -84,13 +107,14 @@ const FreshLoaderSplash = ({
         });
         const clock = getSplashClock(doc);
         if (!engine || !clock) {
-          // no WebGL2: the plain background, and the page comes in as soon as it's ready
-          setHasFailed(true);
+          // no usable WebGL2: the plain background, and the page comes in as soon as it's ready
+          fail();
           if (!isLoadingRef.current) complete();
           return;
         }
         engineRef.current = engine;
         clockRef.current = clock;
+        onLoadRef.current?.();
         if (stage.reducedMotion) {
           // reduced motion: the glyph, still, while loading; then straight to the plain background
           const t = isLoadingRef.current ? clock.a : clock.end;
@@ -99,6 +123,7 @@ const FreshLoaderSplash = ({
           return;
         }
         const state: SplashClockState = { t: 0, alive: 0 };
+        clockStateRef.current = state;
         stage.setDriver((eng, dt) => {
           const t = stepSplashClock(clock, state, dt, isLoadingRef.current);
           eng.player.seek(t, state.alive);
@@ -113,7 +138,7 @@ const FreshLoaderSplash = ({
       })
       .catch(() => {
         if (!isMounted) return;
-        setHasFailed(true);
+        fail('its engine failed to load');
         if (!isLoadingRef.current) complete();
       });
 
@@ -135,7 +160,7 @@ const FreshLoaderSplash = ({
   }, [isPaused, isLoading]);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || isDoneRef.current) return undefined;
     // with no animation running (reduced motion, no WebGL2), the page comes in as soon as it's ready
     const stage = stageRef.current;
     const engine = engineRef.current;
@@ -143,9 +168,34 @@ const FreshLoaderSplash = ({
     if (stage?.reducedMotion && engine && clock) {
       engine.player.seek(clock.end, clock.end);
       complete();
-    } else if (hasFailed) {
-      complete();
+      return undefined;
     }
+    if (hasFailed) {
+      complete();
+      return undefined;
+    }
+    // the safety net: the page is never held up longer than the splash has left to play (plus a second). When that's up, a
+    // splash still moving (its engine came in late) is given the rest; one that isn't (a hidden or display: none box, a hidden
+    // tab, an engine that never loaded) is done there and then
+    let timer = 0;
+    let lastT = clockStateRef.current.t;
+    const arm = (): void => {
+      const c = clockRef.current;
+      const left = c ? splashRemaining(c, clockStateRef.current) : 0;
+      timer = window.setTimeout(() => {
+        const cNow = clockRef.current;
+        const tNow = clockStateRef.current.t;
+        if (cNow && tNow > lastT && splashRemaining(cNow, clockStateRef.current) > 0) {
+          lastT = tNow;
+          arm();
+          return;
+        }
+        if (cNow) engineRef.current?.player.seek(cNow.end, cNow.end);
+        complete();
+      }, (left + 1) * 1000);
+    };
+    arm();
+    return () => window.clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, hasFailed]);
 
@@ -153,7 +203,9 @@ const FreshLoaderSplash = ({
     <div
       ref={boxRef}
       {...metaAttribute({ name: MetaConstants.FreshLoaderSplash, testID })}
-      {...makeAccessible({ role: 'progressbar', label: accessibilityLabel })}
+      {...(isDone
+        ? makeAccessible({ hidden: true })
+        : makeAccessible({ role: 'progressbar', label: accessibilityLabel }))}
       style={{
         position: 'relative',
         overflow: 'hidden',

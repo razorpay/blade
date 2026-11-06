@@ -37,6 +37,15 @@ type FreshLoaderSplashProps = {
    * @default '100%'
    */
   height?: string | number;
+  /**
+   * Called once the animation is drawing (its engine loaded and running on the GPU).
+   */
+  onLoad?: () => void;
+  /**
+   * Called when it can't draw: no WebGL2, a GPU that only draws on the CPU (a software renderer), or its engine failed to
+   * load. The component then shows as the page would without it.
+   */
+  onError?: (error: Error) => void;
 } & TestID;
 
 export type { FreshLoaderSplashProps };
