@@ -472,6 +472,14 @@ FullWidthButton.storyName = 'Full Width';
 FullWidthButton.args = {
   isFullWidth: true,
 };
+FullWidthButton.argTypes = {
+  // a full-width neutral button keeps its normal hover: no RazorSense to switch on
+  hasRazorSense: {
+    table: {
+      disable: true,
+    },
+  },
+};
 FullWidthButton.parameters = {
   docs: {
     description: {
