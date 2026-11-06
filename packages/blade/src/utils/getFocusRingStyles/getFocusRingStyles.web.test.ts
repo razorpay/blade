@@ -40,4 +40,19 @@ describe('getFocusRingStyles', () => {
     expect(neutralOutline).not.toBe(primaryOutline);
     expect(neutralOutline).toBe(`4px solid ${theme.colors.interactive.border.neutral.faded}`);
   });
+
+  it('should leave out the transition when withTransition is false', () => {
+    const theme = {
+      ...bladeTheme,
+      colors: bladeTheme.colors.onLight,
+      elevation: bladeTheme.elevation.onLight,
+      typography: bladeTheme.typography.onDesktop,
+    };
+
+    expect(getFocusRingStyles({ theme, withTransition: false })).toStrictEqual({
+      outline: '4px solid hsla(218, 89%, 51%, 0.18)',
+      outlineOffset: '1px',
+      zIndex: 2,
+    });
+  });
 });

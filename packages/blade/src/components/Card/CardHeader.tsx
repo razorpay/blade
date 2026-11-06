@@ -97,8 +97,10 @@ type CardHeaderIconButtonProps = Omit<
   | 'rayVariant'
 > & {
   icon: IconComponent;
-  // always tertiary, which takes only these two colours
-  color?: Extract<NonNullable<ButtonProps['color']>, 'primary' | 'white'>;
+  /**
+   * The button is always `tertiary`, which only supports `primary` and `white`.
+   */
+  color?: Extract<ButtonProps['color'], 'primary' | 'white'>;
 };
 
 const _CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {

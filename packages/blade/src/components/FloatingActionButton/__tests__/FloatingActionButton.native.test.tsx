@@ -119,7 +119,7 @@ describe('<FloatingActionButton /> (native)', () => {
     expect(getByLabelText('Create payment')).toBeTruthy();
   });
 
-  it('should render a loading neutral button with a theme-following spinner', () => {
+  it('should render a loading neutral button with gray loading dots', () => {
     const { toJSON } = renderWithTheme(
       <FloatingActionButton icon={PlusIcon} color="neutral" isLoading>
         Create payment

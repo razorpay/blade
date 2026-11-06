@@ -37,11 +37,10 @@ type ButtonCommonProps = {
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
   /**
-   * `neutral` is a primary button only (`variant="primary"`). It follows the color scheme: a black button in light mode, a
-   * white one in dark mode (the label and icons invert with it). `white` stays white in both, for use on colored or dark
-   * surfaces.
+   * Color of the button.
    *
-   * @default 'primary'
+   * `neutral` is a filled, high-contrast button: black on light themes and white on dark
+   * themes. It is only available with `variant="primary"`, and not on `ButtonGroup`.
    */
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -95,7 +94,7 @@ type ButtonCommonProps = {
     web: {
       /**
        * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
-       * `color="neutral"` (it throws on any other), at any size.
+       * `color="neutral"` (it throws on any other), at any size. Not on a full-width button, which keeps its own hover.
        *
        * **Only available on web**
        *

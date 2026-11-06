@@ -7,12 +7,13 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 
 /**
- * The shared spinner map would render a white spinner on the white button, where
- * it is invisible.
+ * A loading FAB renders on the faded disabled surface, like a loading `Button`, so
+ * `primary` and `neutral` use the same dot colors as `Button`. The shared map would
+ * render white dots on the white FAB, where they are invisible, so `white` uses
+ * `neutral` instead.
  */
 const colorToSpinnerColor = {
-  primary: 'white',
-  // loading, the neutral surface fades (as Button's): the loader follows the theme, as the label does there
+  primary: 'primary',
   neutral: 'neutral',
   white: 'neutral',
 } as const;

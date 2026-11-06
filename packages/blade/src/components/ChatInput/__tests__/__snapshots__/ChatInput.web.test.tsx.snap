@@ -228,9 +228,10 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 
 .c16.c16.c16.c16.c16:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c16.c16.c16.c16.c16 * {

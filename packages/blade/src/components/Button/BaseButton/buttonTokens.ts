@@ -55,12 +55,12 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
       secondary: {
         default: 'interactive.background.staticWhite.faded',
         highlighted: 'interactive.background.staticBlack.faded',
-        disabled: 'interactive.background.gray.disabled',
+        disabled: 'interactive.background.staticWhite.ghost',
       },
       tertiary: {
         default: 'interactive.background.staticWhite.faded',
         highlighted: 'interactive.background.staticBlack.faded',
-        disabled: 'interactive.background.gray.disabled',
+        disabled: 'interactive.background.staticWhite.ghost',
       },
     },
   } as const;
@@ -98,14 +98,14 @@ const boxShadow = (
         default: [
           { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
           { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.default` },
-          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
-          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
         ],
         highlighted: [
           { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
           { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.highlighted` },
-          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
-          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
         ],
         disabled: [],
       },
@@ -118,7 +118,7 @@ const boxShadow = (
         highlighted: [
           { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
       },
@@ -131,7 +131,7 @@ const boxShadow = (
         highlighted: [
           { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
       },
@@ -153,7 +153,7 @@ const boxShadow = (
           },
         ],
         highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.faded' },
           {
             y: 0,
             blur: 0,
@@ -165,22 +165,22 @@ const boxShadow = (
       },
       secondary: {
         default: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticBlack.faded' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
       },
       tertiary: {
         default: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticBlack.faded' },
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
@@ -246,7 +246,6 @@ const textColor = (property: 'icon' | 'text') => {
       primary: {
         default: `interactive.${property}.onNeutral.normal`,
         highlighted: `interactive.${property}.onNeutral.normal`,
-        // onNeutral.disabled reads on the faded surface (black in light, white in dark: the tokens from Figma, #4106)
         disabled: `interactive.${property}.onNeutral.disabled`,
       },
     },
@@ -409,7 +408,9 @@ const loaderColor = {
     secondary: 'information',
   },
   neutral: {
-    // Loading, the filled neutral surface fades (as when disabled): the loader follows the theme, as the label does there
+    // A loading button renders on the faded disabled surface, not the filled one,
+    // so the inverted `onNeutral` color would not be visible. FloatingActionButton
+    // passes its own loader color, so this map does not apply to it.
     primary: 'neutral',
     secondary: 'neutral',
   },
@@ -436,7 +437,18 @@ const getLoaderColorToken = (color: BaseSpinnerProps['color']): IconColors => {
   return 'interactive.icon.gray.muted';
 };
 
+/**
+ * The filled `neutral` surface needs inverted content, a heavier inner shadow and the
+ * neutral focus ring, so its `primary` emphasis is looked up under a dedicated key.
+ * The remaining emphases fall back to `base`. Shared by BaseButton and its web styles.
+ */
+const isFilledNeutral = (
+  color: BaseButtonProps['color'],
+  variant: BaseButtonProps['variant'],
+): boolean => color === 'neutral' && variant === 'primary';
+
 export {
+  isFilledNeutral,
   boxShadow,
   backgroundGradient,
   textColor,

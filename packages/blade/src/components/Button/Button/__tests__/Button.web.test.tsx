@@ -86,7 +86,7 @@ describe('<Button />', () => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
-      // neutral is a primary button only
+      // Neutral is only available with the primary variant
       if (color === 'neutral' && variant !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
@@ -111,14 +111,13 @@ describe('<Button />', () => {
     });
   });
 
-  it('should not render neutral with a secondary or tertiary variant', () => {
-    expect(() =>
-      renderWithTheme(
-        <Button color="neutral" variant="secondary">
-          Pay Now
-        </Button>,
-      ),
-    ).toThrow('[Blade: BaseButton]: Neutral color can only be used with primary variant');
+  it('should render loading neutral color primary button', () => {
+    const { container } = renderWithTheme(
+      <Button color="neutral" isLoading>
+        Pay Now
+      </Button>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render the RazorSense hover layer only on the neutral primary button', async () => {
@@ -135,6 +134,15 @@ describe('<Button />', () => {
     expect(() => renderWithTheme(<Button hasRazorSense>Ask Ray</Button>)).toThrow(
       '[Blade: BaseButton]: hasRazorSense can only be used with variant "primary" and color "neutral"',
     );
+  });
+
+  it('should keep the full-width neutral button on its own hover, without RazorSense', () => {
+    const { container } = renderWithTheme(
+      <Button color="neutral" hasRazorSense isFullWidth>
+        Ask Ray
+      </Button>,
+    );
+    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
   it('should throw for hasRay on a non-secondary variant, and skip it on an icon-only button', () => {

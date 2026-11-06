@@ -16,17 +16,6 @@ const colors: ButtonGroupProps['color'][] = ['primary', 'white', 'positive', 'ne
 const sizes: ButtonGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
 
 describe('<ButtonGroup />', () => {
-  it('should not allow neutral with a secondary or tertiary variant', () => {
-    expect(() =>
-      renderWithTheme(
-        <ButtonGroup color="neutral" variant="secondary">
-          <Button>One</Button>
-          <Button>Two</Button>
-        </ButtonGroup>,
-      ),
-    ).toThrow('[Blade: ButtonGroup]: Neutral color can only be used with primary variant');
-  });
-
   it('should render ButtonGroup with default properties', () => {
     const { container, getByRole, getAllByRole } = renderWithTheme(
       <ButtonGroup>
@@ -180,5 +169,17 @@ describe('<ButtonGroup />', () => {
     ).toThrowError(
       '[Blade: ButtonGroup]: Only `Button, Dropdown, Tooltip, Popover` components are accepted in `ButtonGroup` children',
     );
+  });
+
+  it('should throw error for the neutral color', () => {
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error neutral is not a ButtonGroup color
+        <ButtonGroup color="neutral">
+          <Button>One</Button>
+          <Button>Two</Button>
+        </ButtonGroup>,
+      ),
+    ).toThrowError('[Blade: ButtonGroup]: "neutral" color is not supported on ButtonGroup');
   });
 });

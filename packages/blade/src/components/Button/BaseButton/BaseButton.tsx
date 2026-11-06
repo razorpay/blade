@@ -19,6 +19,7 @@ import {
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
+  isFilledNeutral,
 } from './buttonTokens';
 import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
@@ -111,7 +112,7 @@ type BaseButtonCommonProps = {
    */
   _spinnerColor?: BaseSpinnerProps['color'];
   /**
-   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`.
+   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`, not on a full-width button.
    */
   hasRazorSense?: boolean;
   /**
@@ -162,16 +163,6 @@ type BaseButtonColorTokenModifiers = {
 const isStaticOrTransparentColor = (
   color: BaseButtonProps['color'],
 ): color is 'white' | 'transparent' => color === 'white' || color === 'transparent';
-
-/**
- * The filled `neutral` surface needs inverted content and a heavier inner shadow
- * than the shared feedback treatment, so its `primary` emphasis is looked up
- * under a dedicated key. The remaining emphases fall back to `base`.
- */
-const isFilledNeutral = (
-  color: BaseButtonProps['color'],
-  variant: NonNullable<BaseButtonProps['variant']>,
-): boolean => color === 'neutral' && variant === 'primary';
 
 const getLoaderColor = ({
   variant,
@@ -314,7 +305,6 @@ const getProps = ({
   theme,
   variant,
   color,
-  colorScheme,
   hasIcon,
   _borderRadius,
   _iconSize,
@@ -327,7 +317,6 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
-  colorScheme?: 'light' | 'dark';
   _borderRadius?: BaseButtonCommonProps['_borderRadius'];
   _iconSize?: BaseButtonCommonProps['_iconSize'];
 }): BaseButtonStyleProps => {
@@ -342,18 +331,15 @@ const getProps = ({
       message: `Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "${color}"`,
     });
   }
+
   if (color === 'neutral' && variant !== 'primary') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Neutral color can only be used with primary variant but received "${variant}"`,
+      message: `Neutral color can only be used with variant: "primary" but received "${variant}"`,
     });
   }
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
-  // The filled neutral surface turns white in dark mode, where it takes the white button's insets and ink (its background stays
-  // neutral's own, which is white there)
-  const inkColor: BaseButtonProps['color'] =
-    isFilledNeutral(color, variant) && colorScheme === 'dark' && !isDisabled ? 'white' : color;
 
   // Resolve background value - either a gradient string or a token path
   const resolveBackgroundValue = (value: string): string => {
@@ -473,13 +459,13 @@ const getProps = ({
     iconColor: getTextColorToken({
       property: 'icon',
       variant,
-      color: inkColor,
+      color,
       state: 'default',
     }) as IconColor,
     textColor: getTextColorToken({
       property: 'text',
       variant,
-      color: inkColor,
+      color,
       state: 'default',
     }) as BaseTextProps['color'],
     buttonPaddingTop: isIconOnly ? makeSpace(0) : makeSpace(theme.spacing[buttonPadding[size].top]),
@@ -494,24 +480,24 @@ const getProps = ({
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: childrenString?.trim(),
     defaultBackgroundColor: getDefaultBackground(),
-    defaultBoxShadow: getBoxShadow('default', inkColor),
+    defaultBoxShadow: getBoxShadow('default', color),
     hoverBackgroundColor: resolveBackgroundValue(
       getBackgroundColorToken({ variant, color, state: 'hover' }),
     ),
-    hoverBoxShadow: getBoxShadow('hover', inkColor),
+    hoverBoxShadow: getBoxShadow('hover', color),
     hoverIconColor: getIn(
       theme.colors,
       getTextColorToken({
         property: 'icon',
         variant,
-        color: inkColor,
+        color,
         state: 'hover',
       }),
     ),
     focusBackgroundColor: resolveBackgroundValue(
       getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
-    focusBoxShadow: getBoxShadow('focus', inkColor),
+    focusBoxShadow: getBoxShadow('focus', color),
     // The system focus ring is a faded primary blue, which the design replaces
     // with a faded neutral ring on the filled neutral surface.
     focusRingColor: getIn(
@@ -521,7 +507,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...(isReactNative() && !isDisabled ? getNativeShadowColors(inkColor) : {}),
+    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
   };
 
   if (isDisabled) {
@@ -531,21 +517,21 @@ const getProps = ({
     props.iconColor = getTextColorToken({
       property: 'icon',
       variant,
-      color: inkColor,
+      color,
       state: 'disabled',
     }) as IconColor;
     props.textColor = getTextColorToken({
       property: 'text',
       variant,
-      color: inkColor,
+      color,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
-    props.defaultBoxShadow = getBoxShadow('disabled', inkColor);
+    props.defaultBoxShadow = getBoxShadow('disabled', color);
     props.hoverBackgroundColor = disabledBackgroundColor;
-    props.hoverBoxShadow = getBoxShadow('disabled', inkColor);
+    props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
-    props.focusBoxShadow = getBoxShadow('disabled', inkColor);
+    props.focusBoxShadow = getBoxShadow('disabled', color);
   }
 
   return props;
@@ -595,7 +581,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
   const buttonGroupProps = useButtonGroupContext();
   const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
@@ -623,20 +609,32 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       message: `hasRay can only be used with variant "secondary" but received "${resolvedVariant}"`,
     });
   }
+  const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;
+  // RazorSense is for a button sized to its content: a full-width one keeps its own hover
   const isRazorSenseHover =
-    hasRazorSense && resolvedVariant === 'primary' && resolvedColor === 'neutral';
+    hasRazorSense &&
+    resolvedVariant === 'primary' &&
+    resolvedColor === 'neutral' &&
+    !isFullWidthButton;
   // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
   const canWidenForRay =
-    !buttonGroupProps.isInsideButtonGroup &&
-    !(buttonGroupProps.isFullWidth ?? isFullWidth) &&
-    Boolean(childrenString?.trim());
+    !buttonGroupProps.isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
   const isRayHover = hasRay && resolvedVariant === 'secondary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
   const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
-  // where it sits rather than how it's set (full width, a ButtonGroup, icon-only), Ray gives way: warned once per change
+  // where it sits rather than how it's set (full width, a ButtonGroup, icon-only), RazorSense and Ray give way: warned once per
+  // change
   React.useEffect(() => {
+    if (__DEV__ && hasRazorSense && isFullWidthButton) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message:
+          'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.',
+      });
+    }
     if (__DEV__ && hasRay && resolvedVariant === 'secondary' && !canWidenForRay) {
       logger({
         type: 'warn',
@@ -652,7 +650,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         message: `rayVariant only picks what hasRay plays: set hasRay as well (received rayVariant "${rayVariant}").`,
       });
     }
-  }, [hasRay, resolvedVariant, canWidenForRay, rayVariant]);
+  }, [hasRazorSense, isFullWidthButton, hasRay, resolvedVariant, canWidenForRay, rayVariant]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -730,7 +728,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     variant: buttonGroupProps.variant ?? variant,
     theme,
     color: buttonGroupProps.color ?? color,
-    colorScheme,
     hasIcon: Boolean(Icon),
     _borderRadius,
     _iconSize,

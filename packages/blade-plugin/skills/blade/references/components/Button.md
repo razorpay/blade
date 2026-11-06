@@ -9,8 +9,8 @@ The Button component is a versatile interactive element used for triggering acti
 ## Important Constraints
 
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
-- `color="neutral"` is a primary button only: use it with `variant="primary"`
-- `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (it throws otherwise)
+- `color="neutral"` can only be used with `variant="primary"`
+- `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (it throws otherwise), and not on an `isFullWidth` button (it keeps its own hover)
 - `hasRay` works only with `variant="secondary"` (it throws otherwise), on a labelled button that can widen: not icon-only, not `isFullWidth`, not inside a `ButtonGroup`, sized to its content with free space to its right (not stretched or held to a width by its container); `rayVariant` picks what Ray does (`"investigate"` for now) and only applies with `hasRay`
 
 ## TypeScript Types
@@ -37,15 +37,13 @@ type ButtonProps = {
   /**
    * Color theme of the button
    * Note: Not all color and variant combinations are valid
-   * `neutral` is a primary button only; it follows the color scheme: a black button in light mode, a white one in dark mode.
-   * `white` stays white in both.
    * @default 'primary'
    */
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
   /**
    * RazorSense plays on the button while it's hovered (web; follows the color scheme)
-   * Only for `variant="primary"` with `color="neutral"`, at any size (an icon-only button plays its own square version)
+   * Only for `variant="primary"` with `color="neutral"`, at any size (an icon-only button plays its own square version); not on a full-width button
    * @default false
    */
   hasRazorSense?: boolean;

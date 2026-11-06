@@ -459,6 +459,113 @@ export const TableWithStickyFirstColumnAndMultiSelect = (): React.ReactElement =
   );
 };
 
+const stickyColumnsTableData = createTableData(20);
+const stickyColumnsTotalAmount = Number(
+  stickyColumnsTableData.nodes.reduce((total, item) => total + item.amount, 0).toFixed(2),
+);
+
+export const TableWithStickyColumns = (): React.ReactElement => {
+  const [stickyColumns, setStickyColumns] = React.useState('3');
+  const [selectionType, setSelectionType] = React.useState<'none' | 'multiple'>('multiple');
+
+  return (
+    <ExampleWrapper
+      title="Table with Sticky Columns"
+      description="Use stickyColumns to keep the first few columns in view while scrolling right. Once you scroll, a divider and a shadow fade in to mark where the sticky columns end. On mobile only the first column stays sticky."
+    >
+      <Box display="flex" gap="spacing.8" paddingBottom="spacing.4" flexWrap="wrap">
+        <RadioGroup
+          label="stickyColumns"
+          labelPosition="left"
+          orientation="horizontal"
+          value={stickyColumns}
+          onChange={({ value }) => setStickyColumns(value)}
+        >
+          <Radio value="1">1</Radio>
+          <Radio value="2">2</Radio>
+          <Radio value="3">3</Radio>
+        </RadioGroup>
+        <RadioGroup
+          label="selectionType"
+          labelPosition="left"
+          orientation="horizontal"
+          value={selectionType}
+          onChange={({ value }) => setSelectionType(value as 'none' | 'multiple')}
+        >
+          <Radio value="none">none</Radio>
+          <Radio value="multiple">multiple</Radio>
+        </RadioGroup>
+      </Box>
+      <Table
+        data={stickyColumnsTableData}
+        stickyColumns={Number(stickyColumns)}
+        selectionType={selectionType}
+        isHeaderSticky
+        isFooterSticky
+        height="400px"
+        gridTemplateColumns={`${
+          selectionType === 'multiple' ? 'min-content ' : ''
+        }160px 180px 160px 200px 200px 200px 200px 200px`}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{formatDate(tableItem.date)}</TableCell>
+                  <TableCell>
+                    <Badge size="medium" color={getStatusColor(tableItem.status)}>
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                {/* the checkbox column needs its own footer cell */}
+                {selectionType === 'multiple' ? <TableFooterCell>{null}</TableFooterCell> : null}
+                <TableFooterCell>Total</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>
+                  <Amount value={stickyColumnsTotalAmount} />
+                </TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>
+    </ExampleWrapper>
+  );
+};
+
 const singleSelectableTableData = createTableData(5);
 
 export const SingleSelectableTable = (): React.ReactElement => {

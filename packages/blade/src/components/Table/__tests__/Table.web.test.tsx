@@ -8,7 +8,10 @@ import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import { TableEditableCell, TableEditableDropdownCell } from '../TableEditableCell';
+import type { TableProps } from '../types';
+import { firstColumnStickyZIndex } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import * as useIsMobileModule from '~utils/useIsMobile';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
@@ -1885,5 +1888,428 @@ describe('<Table />', () => {
 
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
+  });
+
+  describe('stickyColumns', () => {
+    const renderStickyColumnsTable = (
+      props: Omit<Partial<TableProps<Item>>, 'children' | 'data'> = {},
+    ): HTMLElement => {
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 5) }} height="300px" isFooterSticky {...props}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  {props.selectionType === 'multiple' ? <TableFooterCell>-</TableFooterCell> : null}
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>,
+      );
+      return container;
+    };
+
+    // Index of each cell of the row that is pinned. jsdom drops the `left: var(...)` offset, so a
+    // pinned cell is told apart by the sticky column z-index it gets along with it.
+    const getStickyCellIndexes = (row: Element): number[] =>
+      Array.from(row.children)
+        .map((cell, index) => ({ index, style: window.getComputedStyle(cell as HTMLElement) }))
+        .filter(
+          ({ style }) =>
+            style.position === 'sticky' && Number(style.zIndex) >= firstColumnStickyZIndex,
+        )
+        .map(({ index }) => index);
+
+    const getRows = (
+      container: HTMLElement,
+    ): { header: Element; body: Element; footer: Element } => {
+      const rows = container.querySelectorAll('tr');
+      return { header: rows[0], body: rows[1], footer: rows[rows.length - 1] };
+    };
+
+    // The `left` offset of each pinned cell, read from the CSS variables the table sets
+    const getStickyCellOffsets = (container: HTMLElement): string[] => {
+      const tableWrapper = container.querySelector<HTMLElement>(
+        '[style*="--blade-table-sticky-cell-left-0"]',
+      );
+      if (!tableWrapper) return [];
+      return Array.from(tableWrapper.style)
+        .filter((property) => property.startsWith('--blade-table-sticky-cell-left-'))
+        .map((property) => tableWrapper.style.getPropertyValue(property));
+    };
+
+    // jsdom has no layout, so the table grid is made to report the column widths a browser would
+    // resolve
+    const mockGridColumnWidths = (gridTemplateColumns: string): jest.SpyInstance => {
+      const getComputedStyle = window.getComputedStyle.bind(window);
+      return jest.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) => {
+        const style = getComputedStyle(element, pseudoElement);
+        if (element.getAttribute('role') !== 'table' || element.tagName !== 'TABLE') return style;
+        return new Proxy(style, {
+          get: (target, property) => {
+            if (property === 'display') return 'grid';
+            if (property === 'gridTemplateColumns') return gridTemplateColumns;
+            const value = Reflect.get(target, property);
+            return typeof value === 'function' ? value.bind(target) : value;
+          },
+        });
+      });
+    };
+
+    afterEach(() => {
+      jest.restoreAllMocks();
+    });
+
+    it('should pin the first N columns in the header, body and footer', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
+
+      // the rows render after the first measurement, so the columns are pinned once measured
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        [header, body, footer].forEach((row) => {
+          expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+        });
+      });
+    });
+
+    it('should pin the checkbox column without counting it towards stickyColumns', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 2, selectionType: 'multiple' });
+
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        [header, body, footer].forEach((row) => {
+          expect(getStickyCellIndexes(row)).toEqual([0, 1, 2]);
+        });
+      });
+    });
+
+    it('should offset each sticky column by the measured widths of the columns before it', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' });
+
+      await waitFor(() => {
+        expect(getStickyCellOffsets(container)).toEqual(['0px', '64px', '224px', '404px']);
+      });
+    });
+
+    it('should pin only the first column until the column widths are measured', () => {
+      // without a mocked grid, jsdom never resolves the column widths
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
+      expect(getStickyCellIndexes(getRows(container).body)).toEqual([0]);
+      expect(getStickyCellOffsets(container)).toEqual(['0px']);
+
+      const multiSelectContainer = renderStickyColumnsTable({
+        stickyColumns: 3,
+        selectionType: 'multiple',
+      });
+      expect(getStickyCellIndexes(getRows(multiSelectContainer).body)).toEqual([0, 1]);
+      expect(getStickyCellOffsets(multiSelectContainer)).toEqual(['0px', '44px']);
+    });
+
+    it('should pin every column when stickyColumns is more than the table has', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 8 });
+
+      await waitFor(() => {
+        expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1, 2, 3, 4]);
+      });
+    });
+
+    it('should keep the sticky header and footer cells above the sticky body cells', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 3 });
+      const getZIndex = (row: Element, index: number): number =>
+        Number(window.getComputedStyle(row.children[index] as HTMLElement).zIndex);
+
+      await waitFor(() => {
+        const { header, body, footer } = getRows(container);
+        expect(getStickyCellIndexes(body)).toEqual([0, 1, 2]);
+        [0, 1, 2].forEach((index) => {
+          expect(getZIndex(header, index)).toBeGreaterThan(getZIndex(body, index));
+          expect(getZIndex(footer, index)).toBeGreaterThan(getZIndex(body, index));
+        });
+      });
+    });
+
+    it('should give stickyColumns precedence over isFirstColumnSticky', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const container = renderStickyColumnsTable({ stickyColumns: 2, isFirstColumnSticky: true });
+      await waitFor(() => {
+        expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1]);
+      });
+
+      const firstColumnContainer = renderStickyColumnsTable({ isFirstColumnSticky: true });
+      expect(getStickyCellIndexes(getRows(firstColumnContainer).body)).toEqual([0]);
+    });
+
+    it('should draw the divider and scroll shadow for stickyColumns but not isFirstColumnSticky', () => {
+      // the divider and shadow are switched with CSS variables that are only set for stickyColumns,
+      // and both stay hidden until the table is scrolled
+      const getDividerVariables = (container: HTMLElement): string[] => {
+        const tableWrapper = container.querySelector<HTMLElement>(
+          '[style*="--blade-table-sticky-cell-left-0"]',
+        );
+        return [
+          tableWrapper?.style.getPropertyValue('--blade-table-sticky-column-shadow') ?? '',
+          tableWrapper?.style.getPropertyValue('--blade-table-sticky-column-divider-color') ?? '',
+        ];
+      };
+
+      expect(getDividerVariables(renderStickyColumnsTable({ stickyColumns: 1 }))).toEqual([
+        'none',
+        'transparent',
+      ]);
+      expect(getDividerVariables(renderStickyColumnsTable({ isFirstColumnSticky: true }))).toEqual([
+        '',
+        '',
+      ]);
+    });
+
+    it('should not pin any column by default', () => {
+      const { body } = getRows(renderStickyColumnsTable());
+      expect(getStickyCellIndexes(body)).toEqual([]);
+    });
+
+    it('should keep pinning the sticky columns in a row with a cell spanning columns', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 2) }} height="300px" stickyColumns={3}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    {index === 0 ? (
+                      <TableCell gridColumnStart={1} gridColumnEnd={3}>
+                        {tableItem.name}
+                      </TableCell>
+                    ) : (
+                      <>
+                        <TableCell>{tableItem.name}</TableCell>
+                        <TableCell>{tableItem.paymentId}</TableCell>
+                      </>
+                    )}
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const [, spanningRow, fullRow] = Array.from(container.querySelectorAll('tr'));
+        expect(getStickyCellIndexes(fullRow)).toEqual([0, 1, 2]);
+        // a cell spanning columns is followed by a hidden placeholder cell for each column it
+        // covers, so the row keeps a cell per column: the spanning cell is pinned at the first
+        // column's offset and the Method cell at the third column's, the placeholder stays hidden
+        expect(spanningRow.children).toHaveLength(5);
+        expect(spanningRow.children[1].classList.contains('colspan')).toBe(true);
+        expect(getStickyCellIndexes(spanningRow)).toEqual([0, 2]);
+      });
+    });
+
+    it('should pin the further sticky columns only in rows with a cell for every column', async () => {
+      mockGridColumnWidths('160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 3) }} height="300px" stickyColumns={3}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    {/* the first cell spans the first two body rows, so the second row has no
+                    cell for the first column */}
+                    {index === 0 ? (
+                      <TableCell gridRowStart={2} gridRowEnd={4}>
+                        {tableItem.name}
+                      </TableCell>
+                    ) : null}
+                    {index === 2 ? <TableCell>{tableItem.name}</TableCell> : null}
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const [, firstRow, rowBelowSpanningCell, fullRow] = Array.from(
+          container.querySelectorAll('tr'),
+        );
+        expect(getStickyCellIndexes(firstRow)).toEqual([0, 1, 2]);
+        expect(getStickyCellIndexes(fullRow)).toEqual([0, 1, 2]);
+        // the cells of this row are one column further right than their position in the row, so
+        // only the first one stays pinned as before
+        expect(getStickyCellIndexes(rowBelowSpanningCell)).toEqual([0]);
+      });
+    });
+
+    it('should pin every sticky column in rows with and without hover actions', async () => {
+      // the hover actions column is the last grid track
+      mockGridColumnWidths('160px 180px 200px 200px 200px 0px');
+      const { container } = renderWithTheme(
+        <Table data={{ nodes: nodes.slice(0, 2) }} height="300px" stickyColumns={3}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow
+                    item={tableItem}
+                    key={index}
+                    hoverActions={index === 0 ? <Box>Action</Box> : undefined}
+                  >
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const [, rowWithHoverActions, rowWithoutHoverActions] = Array.from(
+          container.querySelectorAll('tr'),
+        );
+        expect(getStickyCellIndexes(rowWithHoverActions)).toEqual([0, 1, 2]);
+        // a row without hover actions is one cell short, but it is told apart from a row below a
+        // row-spanning cell by not being marked as having hover actions
+        expect(getStickyCellIndexes(rowWithoutHoverActions)).toEqual([0, 1, 2]);
+      });
+    });
+
+    it('should pin the sticky columns in a multi-select footer without a checkbox cell', async () => {
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+      const { container } = renderWithTheme(
+        <Table
+          data={{ nodes: nodes.slice(0, 2) }}
+          height="300px"
+          selectionType="multiple"
+          stickyColumns={2}
+          isFooterSticky
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.name}</TableCell>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  {/* no cell for the checkbox column, so the row is one cell short at the end */}
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>,
+      );
+
+      await waitFor(() => {
+        const rows = Array.from(container.querySelectorAll('tr'));
+        const footer = rows[rows.length - 1];
+        expect(footer.children).toHaveLength(5);
+        expect(getStickyCellIndexes(footer)).toEqual([0, 1, 2]);
+      });
+    });
+
+    it('should pin only the first column on mobile', async () => {
+      jest.spyOn(useIsMobileModule, 'useIsMobile').mockReturnValue(true);
+      mockGridColumnWidths('64px 160px 180px 200px 200px 200px');
+
+      const container = renderStickyColumnsTable({ stickyColumns: 3, selectionType: 'multiple' });
+      await waitFor(() => {
+        expect(getStickyCellOffsets(container)).toEqual(['0px', '64px']);
+      });
+      expect(getStickyCellIndexes(getRows(container).body)).toEqual([0, 1]);
+    });
   });
 });

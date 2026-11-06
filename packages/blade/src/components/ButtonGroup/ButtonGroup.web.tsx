@@ -14,8 +14,8 @@ import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { verifyButtonGroupColor } from './verifyButtonGroupColor';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 
 const getDividerColorToken = ({
@@ -65,20 +65,14 @@ const _ButtonGroup = (
   }: ButtonGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  if (color === 'neutral' && variant !== 'primary') {
-    // as BaseButton: neutral is a primary button only (said once, by the group that sets it)
-    throwBladeError({
-      moduleName: 'ButtonGroup',
-      message: `Neutral color can only be used with primary variant but received "${variant}"`,
-    });
-  }
+  verifyButtonGroupColor(color);
+
   const contextValue = {
     isDisabled,
     size,
     color,
     variant,
     isFullWidth,
-    isInsideButtonGroup: true,
   };
 
   useVerifyAllowedChildren({

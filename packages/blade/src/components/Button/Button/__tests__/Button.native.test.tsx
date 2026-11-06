@@ -90,7 +90,7 @@ describe('<Button />', () => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
-      // neutral is a primary button only
+      // Neutral is only available with the primary variant
       if (color === 'neutral' && variant !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {

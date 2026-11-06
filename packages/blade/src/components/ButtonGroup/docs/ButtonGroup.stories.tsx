@@ -342,16 +342,6 @@ const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
                 <Button icon={DownloadIcon}>Download</Button>
               </ButtonGroupComponent>
             </Box>
-            <Box>
-              <Text size="small" marginBottom="spacing.2">
-                Neutral Color (primary only)
-              </Text>
-              <ButtonGroupComponent color="neutral" variant="primary">
-                <Button icon={RefreshIcon}>Sync</Button>
-                <Button icon={ShareIcon}>Share</Button>
-                <Button icon={DownloadIcon}>Download</Button>
-              </ButtonGroupComponent>
-            </Box>
             <Box
               padding="spacing.4"
               backgroundColor="surface.background.primary.intense"
