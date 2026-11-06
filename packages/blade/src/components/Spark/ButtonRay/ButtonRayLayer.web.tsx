@@ -199,6 +199,8 @@ const ButtonRayLayer = ({
       ink: [0, 0, 0],
       // how far the button's content runs on past its text (measured at rest)
       slack: 0,
+      // the label's own inline position (the dark bloom needs it relative)
+      labelPosition: '',
     };
     let bloom: HTMLSpanElement | null = null;
 
@@ -242,6 +244,7 @@ const ButtonRayLayer = ({
         void S.label.offsetWidth;
         S.label.style.transition = '';
       }
+      if (bloom && S.label) S.label.style.position = S.labelPosition;
       bloom?.remove();
       bloom = null;
     };
@@ -293,6 +296,8 @@ const ButtonRayLayer = ({
             pointerEvents: 'none',
             zIndex: '-1',
           });
+          // (its own position kept, given back in clearWash)
+          S.labelPosition = label.style.position;
           label.style.position = label.style.position || 'relative';
           label.append(bloom);
         }

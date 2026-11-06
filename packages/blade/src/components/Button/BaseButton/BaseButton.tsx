@@ -540,6 +540,11 @@ const getProps = ({
       color: inkColor,
       state: 'disabled',
     }) as BaseTextProps['color'];
+    if (isFilledNeutral(color, variant) && colorScheme === 'dark') {
+      // disabled in dark, the white surface fades to a dark grey: a faded white ink reads on it (the theme's gray doesn't)
+      props.iconColor = 'interactive.icon.staticWhite.disabled';
+      props.textColor = 'interactive.text.staticWhite.disabled';
+    }
     props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBoxShadow = getBoxShadow('disabled', inkColor);
     props.hoverBackgroundColor = disabledBackgroundColor;
@@ -590,7 +595,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _spinnerColor,
     hasRazorSense = false,
     hasRay = false,
-    rayVariant = 'investigate',
+    rayVariant,
     ...rest
   },
   ref,
@@ -645,7 +650,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           'hasRay needs a labelled button that can widen (not full width, in a ButtonGroup or icon-only); the button keeps its own hover.',
       });
     }
-  }, [hasRay, resolvedVariant, canWidenForRay]);
+    if (__DEV__ && rayVariant && !hasRay) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: `rayVariant only picks what hasRay plays: set hasRay as well (received rayVariant "${rayVariant}").`,
+      });
+    }
+  }, [hasRay, resolvedVariant, canWidenForRay, rayVariant]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -914,7 +926,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         <ButtonRazorSense isEnabled={!disabled} onLiveChange={setIsRazorSenseLive} />
       ) : null}
       {isRayHover ? (
-        <ButtonRay isEnabled={!disabled} variant={rayVariant} size={resolvedSize} />
+        <ButtonRay
+          isEnabled={!disabled}
+          variant={rayVariant ?? 'investigate'}
+          size={resolvedSize}
+        />
       ) : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}

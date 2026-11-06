@@ -114,7 +114,8 @@ type ButtonCommonProps = {
        */
       hasRay?: boolean;
       /**
-       * Which Ray `hasRay` plays. `investigate`: he whips out his magnifying glass and searches (an investigating action). More
+       * Which Ray `hasRay` plays (only with `hasRay`; alone it does nothing and warns in development). `investigate`: he whips
+       * out his magnifying glass and searches (an investigating action). More
        * variants will follow.
        *
        * **Only available on web**

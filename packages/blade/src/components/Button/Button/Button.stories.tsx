@@ -279,7 +279,6 @@ SecondaryButton.storyName = 'Secondary';
 SecondaryButton.args = {
   variant: 'secondary',
   hasRay: false,
-  rayVariant: 'investigate',
 };
 SecondaryButton.parameters = {
   docs: {

@@ -11,7 +11,7 @@ The Button component is a versatile interactive element used for triggering acti
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
 - `color="neutral"` is a primary button only: use it with `variant="primary"`
 - `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (it throws otherwise)
-- `hasRay` works only with `variant="secondary"` (it throws otherwise), on a labelled button that can widen: not icon-only, not `isFullWidth`, not inside a `ButtonGroup`, sized to its content with free space to its right (not stretched or held to a width by its container); `rayVariant` picks what Ray does (`"investigate"` for now)
+- `hasRay` works only with `variant="secondary"` (it throws otherwise), on a labelled button that can widen: not icon-only, not `isFullWidth`, not inside a `ButtonGroup`, sized to its content with free space to its right (not stretched or held to a width by its container); `rayVariant` picks what Ray does (`"investigate"` for now) and only applies with `hasRay`
 
 ## TypeScript Types
 
