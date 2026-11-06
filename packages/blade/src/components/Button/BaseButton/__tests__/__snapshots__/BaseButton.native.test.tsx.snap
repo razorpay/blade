@@ -37,13 +37,13 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -280,7 +280,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -304,7 +304,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -497,13 +497,13 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={true}
     isLoading={false}
@@ -740,7 +740,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -764,7 +764,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -957,13 +957,13 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -1200,7 +1200,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -1224,7 +1224,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -1521,13 +1521,13 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -1764,7 +1764,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -1788,7 +1788,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -2085,13 +2085,13 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -2328,7 +2328,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -2352,7 +2352,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -2649,14 +2649,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     height="36px"
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -2895,7 +2895,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -2919,7 +2919,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -4159,182 +4159,6 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
             [
               {
                 "color": "hsla(0, 0%, 0%, 0.32)",
-                "fontFamily": "Inter",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 4,
-                "marginRight": 4,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Pay Now
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled neutral color secondary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius={8}
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    color="neutral"
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
-    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
-    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
-    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
-    hoverIconColor="hsla(206, 10%, 29%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    isPressed={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    size="medium"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
-          "borderColor": "black",
-          "borderRadius": 8,
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      style={
-        {
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        }
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "zIndex": 1,
-            },
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        zIndex={1}
-      >
-        <Text
-          accessible={true}
-          color="interactive.text.neutral.disabled"
-          data-blade-component="base-text"
-          fontSize={100}
-          fontWeight="medium"
-          lineHeight={100}
-          marginX="spacing.2"
-          style={
-            [
-              {
-                "color": "hsla(206, 10%, 29%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -5796,13 +5620,13 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     collapsable={false}
     color="white"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     defaultBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     focusBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
@@ -5831,7 +5655,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
           "borderColor": "black",
           "borderRadius": 8,
           "borderStyle": "solid",
@@ -5852,7 +5676,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -5972,13 +5796,13 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     collapsable={false}
     color="white"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     defaultBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     focusBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
@@ -6007,7 +5831,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
           "borderColor": "black",
           "borderRadius": 8,
           "borderStyle": "solid",
@@ -6028,7 +5852,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -6149,13 +5973,13 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     color="information"
     data-blade-component="button"
     defaultBackgroundColor="hsla(200, 100%, 41%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 41%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 41%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(200, 100%, 33%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(200, 100%, 33%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6392,7 +6216,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -6416,7 +6240,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -6611,11 +6435,11 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(200, 100%, 33%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6983,13 +6807,13 @@ exports[`<BaseButton /> should render large size button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7226,7 +7050,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
             ry={12}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -7250,7 +7074,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
             ry={12}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -7732,13 +7556,13 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7975,7 +7799,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -7999,7 +7823,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -8192,13 +8016,13 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     color="negative"
     data-blade-component="button"
     defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(4, 85%, 36%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 85%, 36%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -8435,7 +8259,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -8459,7 +8283,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -8654,11 +8478,11 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(4, 85%, 44%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -9449,380 +9273,6 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render neutral color secondary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius={8}
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    color="neutral"
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-    hoverIconColor="hsla(0, 0%, 2%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    isPressed={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    size="medium"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "black",
-          "borderRadius": 8,
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "cursor": "pointer",
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      pointerEvents="none"
-      style={
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
-      <RNSVGSvgView
-        bbHeight="100%"
-        bbWidth="100%"
-        focusable={false}
-        pointerEvents="none"
-        style={
-          [
-            {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            },
-            {
-              "flex": 0,
-              "height": "100%",
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <RNSVGGroup
-          fill={
-            {
-              "payload": 4278190080,
-              "type": 0,
-            }
-          }
-        >
-          <RNSVGDefs>
-            <RNSVGLinearGradient
-              gradient={
-                [
-                  0,
-                  -1,
-                  1,
-                  16777215,
-                ]
-              }
-              gradientTransform={null}
-              gradientUnits={0}
-              name="topFade-rr"
-              x1="0"
-              x2="0"
-              y1="0"
-              y2="1"
-            />
-            <RNSVGLinearGradient
-              gradient={
-                [
-                  0,
-                  -1,
-                  1,
-                  16777215,
-                ]
-              }
-              gradientTransform={null}
-              gradientUnits={0}
-              name="bottomFade-rr"
-              x1="0"
-              x2="0"
-              y1="1"
-              y2="0"
-            />
-            <RNSVGMask
-              fill={
-                {
-                  "payload": 4278190080,
-                  "type": 0,
-                }
-              }
-              height="100%"
-              maskContentUnits={1}
-              maskUnits={0}
-              name="topMask-rr"
-              width="100%"
-              x="0%"
-              y="0%"
-            >
-              <RNSVGRect
-                fill={
-                  {
-                    "brushRef": "topFade-rr",
-                    "type": 1,
-                  }
-                }
-                height="20%"
-                propList={
-                  [
-                    "fill",
-                  ]
-                }
-                width="100%"
-                x="0"
-                y="0"
-              />
-            </RNSVGMask>
-            <RNSVGMask
-              fill={
-                {
-                  "payload": 4278190080,
-                  "type": 0,
-                }
-              }
-              height="100%"
-              maskContentUnits={1}
-              maskUnits={0}
-              name="bottomMask-rr"
-              width="100%"
-              x="0%"
-              y="0%"
-            >
-              <RNSVGRect
-                fill={
-                  {
-                    "brushRef": "bottomFade-rr",
-                    "type": 1,
-                  }
-                }
-                height="20%"
-                propList={
-                  [
-                    "fill",
-                  ]
-                }
-                width="100%"
-                x="0"
-                y="80%"
-              />
-            </RNSVGMask>
-          </RNSVGDefs>
-          <RNSVGRect
-            fill={null}
-            height="100%"
-            propList={
-              [
-                "fill",
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            rx={8}
-            ry={8}
-            stroke={
-              {
-                "payload": 4292796899,
-                "type": 0,
-              }
-            }
-            strokeWidth={2}
-            width="100%"
-            x={0}
-            y={0}
-          />
-          <RNSVGRect
-            fill={null}
-            height="100%"
-            mask="bottomMask-rr"
-            propList={
-              [
-                "fill",
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            rx={8}
-            ry={8}
-            stroke={
-              {
-                "payload": 771751936,
-                "type": 0,
-              }
-            }
-            strokeWidth={4}
-            width="100%"
-            x={0}
-            y={0}
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
-    </View>
-    <View
-      style={
-        {
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        }
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "zIndex": 1,
-            },
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        zIndex={1}
-      >
-        <Text
-          accessible={true}
-          color="interactive.text.neutral.normal"
-          data-blade-component="base-text"
-          fontSize={100}
-          fontWeight="medium"
-          lineHeight={100}
-          marginX="spacing.2"
-          style={
-            [
-              {
-                "color": "hsla(0, 0%, 2%, 1)",
-                "fontFamily": "Inter",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 4,
-                "marginRight": 4,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Pay Now
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
 exports[`<BaseButton /> should render notice color primary button 1`] = `
 <View
   style={
@@ -9860,13 +9310,13 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     color="notice"
     data-blade-component="button"
     defaultBackgroundColor="hsla(25, 100%, 44%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(25, 100%, 39%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(25, 100%, 39%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -10103,7 +9553,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -10127,7 +9577,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -10322,11 +9772,11 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(25, 100%, 39%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -10694,13 +10144,13 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     color="positive"
     data-blade-component="button"
     defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(150, 100%, 23%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 23%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -10937,7 +10387,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -10961,7 +10411,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -11156,11 +10606,11 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(150, 100%, 23%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -11528,13 +10978,13 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -11771,7 +11221,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -11795,7 +11245,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -11990,11 +11440,11 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -12364,11 +11814,11 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 1)"
-    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
-    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(205, 8%, 71%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -12736,13 +12186,13 @@ exports[`<BaseButton /> should render small size button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -12979,7 +12429,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -13003,7 +12453,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -13198,11 +12648,11 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
     defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
     hoverIconColor="hsla(0, 0%, 0%, 0.72)"
     isFullWidth={false}
     isLoading={false}
@@ -13608,13 +13058,13 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     color="white"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    defaultBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    focusBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    hoverBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -13859,7 +13309,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
                 "type": 0,
               }
             }
-            strokeWidth={5}
+            strokeWidth={6}
             width="100%"
             x={0}
             y={0}
@@ -13982,13 +13432,13 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     color="white"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    defaultBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    focusBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    hoverBoxShadow="inset 0 -2px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -14233,7 +13683,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
                 "type": 0,
               }
             }
-            strokeWidth={5}
+            strokeWidth={6}
             width="100%"
             x={0}
             y={0}
@@ -14356,13 +13806,13 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -14599,7 +14049,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -14623,7 +14073,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }

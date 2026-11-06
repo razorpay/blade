@@ -4132,13 +4132,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4375,7 +4375,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -4399,7 +4399,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -4788,13 +4788,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5031,7 +5031,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -5055,7 +5055,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -5444,13 +5444,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5687,7 +5687,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -5711,7 +5711,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -6157,13 +6157,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6400,7 +6400,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
@@ -6424,7 +6424,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             ry={8}
             stroke={
               {
-                "payload": 788529151,
+                "payload": 1392508927,
                 "type": 0,
               }
             }
