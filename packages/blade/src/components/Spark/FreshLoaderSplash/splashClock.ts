@@ -40,5 +40,14 @@ const stepSplashClock = (
   return Math.min(state.t, c.end);
 };
 
-export { getSplashClock, stepSplashClock };
+/**
+ * How long (s, real time) the clock still has to run once loading is over: the rest of the glyph's first pass, if it's still
+ * on it, then piece 2 to the end.
+ */
+const splashRemaining = (c: SplashClock, state: SplashClockState): number => {
+  const first = state.t < c.b ? (c.b - state.t) / c.r1 : 0;
+  return first + (c.end - Math.max(state.t, c.b)) / c.r2;
+};
+
+export { getSplashClock, stepSplashClock, splashRemaining };
 export type { SplashClock, SplashClockState };

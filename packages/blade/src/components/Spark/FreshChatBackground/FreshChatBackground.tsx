@@ -53,9 +53,15 @@ const FreshChatBackground = ({
   scale = 1,
   width = '100%',
   height = '100%',
+  onLoad,
+  onError,
   testID,
 }: FreshChatBackgroundProps): React.ReactElement => {
   const { colorScheme } = useTheme();
+  const onLoadRef = useRef(onLoad);
+  onLoadRef.current = onLoad;
+  const onErrorRef = useRef(onError);
+  onErrorRef.current = onError;
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
   const s = holdInRange(scale, FRESH_RANGES.scale, 'FreshChatBackground', 'scale');
   const boxRef = useRef<HTMLDivElement>(null);
@@ -114,6 +120,12 @@ const FreshChatBackground = ({
 
   useEffect(() => {
     let isMounted = true;
+    let hasFailed = false;
+    const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
+      if (hasFailed) return;
+      hasFailed = true;
+      onErrorRef.current?.(new Error(`FreshChatBackground: ${reason}`));
+    };
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         if (!isMounted || !hostRef.current) return;
@@ -122,14 +134,18 @@ const FreshChatBackground = ({
           ROOM,
         );
         const setup = getTypingSurgeSetup(doc);
-        const stage = new FreshStage(hostRef.current, createFreshEngine);
+        const stage = new FreshStage(hostRef.current, createFreshEngine, { onError: () => fail() });
         stageRef.current = stage;
         // the comp at its own size (2x comp px = CSS px) x scale, from the canvas's top-left (placed by fitRef)
         const engine = stage.mount({
           doc,
           opts: { fit: 'fixed', scale: 0.5 * s, alpha: true, paused: true },
         });
-        if (!engine || !setup) return; // no WebGL2: nothing drawn, the page shows as it is
+        if (!engine || !setup) {
+          fail(); // no usable WebGL2: nothing drawn, the page shows as it is
+          return;
+        }
+        onLoadRef.current?.();
         engineRef.current = engine;
         engine.player.comp('ty', { op: 0 }); // the typing surge's layer: held at 0 until typing lifts it
         const typing = new TypingSurge(setup);
@@ -157,6 +173,7 @@ const FreshChatBackground = ({
       })
       .catch(() => {
         // the engine couldn't load: nothing drawn
+        if (isMounted) fail('its engine failed to load');
       });
     return () => {
       isMounted = false;
@@ -193,6 +210,9 @@ const FreshChatBackground = ({
       {...makeAccessible({ hidden: true })}
       style={{
         position: 'relative',
+        // its canvas spreads well past the chat input (the glow round it): layout containment keeps that from growing the page
+        // (scrollbars), drawn but not counted
+        contain: 'layout',
         pointerEvents: 'none',
         width: typeof width === 'number' ? `${width}px` : width,
         height: typeof height === 'number' ? `${height}px` : height,

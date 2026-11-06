@@ -51,9 +51,15 @@ const FreshLLM = ({
   thinkingRef,
   width = '100%',
   height = '100%',
+  onLoad,
+  onError,
   testID,
 }: FreshLLMProps): React.ReactElement => {
   const { colorScheme } = useTheme();
+  const onLoadRef = useRef(onLoad);
+  onLoadRef.current = onLoad;
+  const onErrorRef = useRef(onError);
+  onErrorRef.current = onError;
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
   const boxRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<FreshStage | null>(null);
@@ -88,13 +94,19 @@ const FreshLLM = ({
 
   useEffect(() => {
     let isMounted = true;
+    let hasFailed = false;
+    const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
+      if (hasFailed) return;
+      hasFailed = true;
+      onErrorRef.current?.(new Error(`FreshLLM: ${reason}`));
+    };
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         const box = boxRef.current;
         if (!isMounted || !box) return;
         const doc = withRoom(mode === 'dark' ? comps.chatDark : comps.chatLight, ROOM);
         const setup = getChatSetup(doc);
-        const stage = new FreshStage(box, createFreshEngine);
+        const stage = new FreshStage(box, createFreshEngine, { onError: () => fail() });
         stageRef.current = stage;
         // flow 9's chat comp is drawn at its own size (2x comp px = CSS px) x scale, from the panel's top-left; the pages are
         // placed in it
@@ -102,19 +114,28 @@ const FreshLLM = ({
           doc,
           opts: { fit: 'fixed', scale: 0.5 * s, alpha: true, paused: true },
         });
-        if (!engine || !setup) return; // no WebGL2: nothing drawn, the chat shows as it is
+        if (!engine || !setup) {
+          fail(); // no usable WebGL2: nothing drawn, the chat shows as it is
+          return;
+        }
+        onLoadRef.current?.();
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
         driver.setAnchors(anchorsRef.current(), s, ROOM);
         const now = performance.now();
         driver.think();
-        if (variantRef.current === 'idle') driver.answer(now);
+        if (variantRef.current === 'idle') {
+          // mounted idle (or started again by a new color scheme or scale while idle): already settled, not a replay of the
+          // thinking and its surge. Run quietly up to now on the past's clock, so the timing after it carries on as usual.
+          const steps = 60;
+          const from = now - steps * 250;
+          driver.answer(from);
+          for (let i = 0; i < steps; i++) driver.step(engine.player, 0.25, from + i * 250, false);
+        }
         if (stage.reducedMotion) {
-          // reduced motion: one still frame of where it is (thinking, or the answer settled to idle); when the variant changes,
-          // the new one, settled. The steps run on a clock of their own that only goes forward.
-          const steps = variantRef.current === 'idle' ? 60 : 0;
-          for (let i = 0; i < steps; i++) driver.step(engine.player, 0.25, now + i * 250, false);
-          let clock = now + steps * 250;
+          // reduced motion: one still frame of where it is (thinking, or settled to idle); when the variant changes, the new
+          // one, settled. The steps run on a clock of their own that only goes forward.
+          let clock = now;
           driver.step(engine.player, 0, clock);
           stillRef.current = (next) => {
             clock = Math.max(clock, performance.now());
@@ -134,6 +155,7 @@ const FreshLLM = ({
       })
       .catch(() => {
         // the engine couldn't load: nothing drawn
+        if (isMounted) fail('its engine failed to load');
       });
     return () => {
       isMounted = false;

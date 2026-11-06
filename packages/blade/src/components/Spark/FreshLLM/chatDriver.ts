@@ -180,7 +180,11 @@ class ChatDriver {
 
   /** a new question: thinking starts on the page least seen (the other one, and idle, fade where they are) */
   public think(): void {
-    if (this.state === 'think') return;
+    if (this.state === 'think') {
+      // asked again before the answer's surge began (thinking, idle, thinking): it keeps thinking
+      this.pend = false;
+      return;
+    }
     const n = this.fresh();
     const g = this.P2[n];
     this.state = 'think';
