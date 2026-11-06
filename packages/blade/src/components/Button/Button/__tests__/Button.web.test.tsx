@@ -122,20 +122,23 @@ describe('<Button />', () => {
   });
 
   it('should render the RazorSense hover layer only on the neutral primary button', async () => {
+    // the layer is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
     const { container: neutral } = renderWithTheme(
       <Button color="neutral" hasRazorSense>
         Ask Ray
       </Button>,
     );
     // the layer is loaded once the button turns it on
-    await waitFor(() =>
-      expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+    await waitFor(
+      () => expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
     );
     // on another colour it's a mistake, loud in development
     expect(() => renderWithTheme(<Button hasRazorSense>Ask Ray</Button>)).toThrow(
       '[Blade: BaseButton]: hasRazorSense can only be used with variant "primary" and color "neutral"',
     );
-  });
+  }, 20000);
 
   it('should keep the full-width neutral button on its own hover, without RazorSense', () => {
     const { container } = renderWithTheme(
