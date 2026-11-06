@@ -571,6 +571,20 @@ describe('<ChatInput />', () => {
       expect(queryByRole('listbox')).not.toBeInTheDocument();
     });
 
+    it('opens again for a new slash after it was closed with Escape', async () => {
+      const user = userEvent.setup();
+      const { getByRole, queryByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} commands={commands} />,
+      );
+      const textarea = getByRole('textbox', { name: accessibilityLabel });
+      await user.type(textarea, '/');
+      await user.keyboard('{Escape}');
+      expect(queryByRole('listbox')).not.toBeInTheDocument();
+      await user.keyboard('{Backspace}');
+      await user.type(textarea, '/');
+      expect(getByRole('listbox')).toBeInTheDocument();
+    });
+
     it('only opens for a slash at the start', async () => {
       const user = userEvent.setup();
       const { getByRole, queryByRole } = renderWithTheme(

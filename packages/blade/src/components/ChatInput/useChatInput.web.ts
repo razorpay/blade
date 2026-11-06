@@ -333,6 +333,9 @@ const useChatInput = (
 
   React.useEffect(() => {
     setCommandActiveIndex(0);
+    // once the text is no longer a command, a later "/" opens the list again, even if it was
+    // closed with Escape or Tab for the same text earlier
+    if (commandQuery === null) setDismissedCommandText(null);
   }, [commandQuery]);
 
   const selectCommand = React.useCallback(
