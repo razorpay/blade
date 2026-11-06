@@ -10,20 +10,24 @@ import getIn from '~utils/lodashButBetter/get';
  * in table component where the outline will get cutoff by the table border
  * @param props.variant `neutral` swaps the primary blue ring for the neutral one, for
  * components that are themselves neutral
+ * @param props.withTransition set to `false` to leave out the `outline-width` transition
  */
 function getFocusRingStyles({
   theme,
   negativeOffset = false,
   isImportant = false,
   variant = 'primary',
+  withTransition = true,
 }: GetFocusRingArgs) {
   const important = `${isImportant ? ' !important' : ''}`;
   return {
     outline: `4px solid ${getIn(theme.colors, focusRingColorTokens[variant])}${important}`,
     outlineOffset: `${negativeOffset ? '-4px' : '1px'}${important}`,
-    transitionProperty: 'outline-width',
-    transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard),
+    ...(withTransition && {
+      transitionProperty: 'outline-width',
+      transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
+      transitionTimingFunction: castWebType(theme.motion.easing.standard),
+    }),
     zIndex: 2, // Prevent focus ring clipping by adjacent inputs in InputGroup
   } as const;
 }
