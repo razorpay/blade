@@ -78,6 +78,7 @@ const useChatInputHoverBorder = ({
     let frame = 0;
     let lastTime = 0;
     let isInside = false;
+    let pendingPointer: { x: number; y: number } | null = null;
 
     const paint = (): void => {
       ring.style.setProperty('--chat-input-pointer-x', `${current.x}px`);
@@ -85,7 +86,32 @@ const useChatInputHoverBorder = ({
       ring.style.opacity = String(current.strength);
     };
 
+    const setInside = (inside: boolean): void => {
+      if (inside === isInside) return;
+      isInside = inside;
+      setIsPointerInside(inside);
+    };
+
+    const measure = (pointer: { x: number; y: number }): void => {
+      const box = ring.getBoundingClientRect();
+      target.x = pointer.x - box.left;
+      target.y = pointer.y - box.top;
+      const distanceX = Math.max(box.left - pointer.x, 0, pointer.x - box.right);
+      const distanceY = Math.max(box.top - pointer.y, 0, pointer.y - box.bottom);
+      const distance = Math.hypot(distanceX, distanceY);
+      target.strength =
+        distance <= chatInputHoverGlowReach.full
+          ? 1
+          : 1 -
+            smoothStep((distance - chatInputHoverGlowReach.full) / chatInputHoverGlowReach.fade);
+      setInside(distance === 0);
+    };
+
     const step = (time: number): void => {
+      if (pendingPointer) {
+        measure(pendingPointer);
+        pendingPointer = null;
+      }
       const elapsed = lastTime ? Math.min(100, time - lastTime) : 16;
       lastTime = time;
       const wantedStrength = isShownRef.current ? target.strength : 0;
@@ -119,26 +145,10 @@ const useChatInputHoverBorder = ({
     };
     animateRef.current = animate;
 
-    const setInside = (inside: boolean): void => {
-      if (inside === isInside) return;
-      isInside = inside;
-      setIsPointerInside(inside);
-    };
-
     const handlePointerMove = (event: PointerEvent): void => {
       if (event.pointerType === 'touch') return;
-      const box = ring.getBoundingClientRect();
-      target.x = event.clientX - box.left;
-      target.y = event.clientY - box.top;
-      const distanceX = Math.max(box.left - event.clientX, 0, event.clientX - box.right);
-      const distanceY = Math.max(box.top - event.clientY, 0, event.clientY - box.bottom);
-      const distance = Math.hypot(distanceX, distanceY);
-      target.strength =
-        distance <= chatInputHoverGlowReach.full
-          ? 1
-          : 1 -
-            smoothStep((distance - chatInputHoverGlowReach.full) / chatInputHoverGlowReach.fade);
-      setInside(distance === 0);
+      // only note the pointer here; the box is measured at most once a frame, in step
+      pendingPointer = { x: event.clientX, y: event.clientY };
       animate();
     };
 

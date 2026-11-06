@@ -34,7 +34,8 @@ type ChatInputFileError = {
    */
   code: 'maxCount' | 'maxSize' | 'accept';
   /**
-   * A message that can be shown as is, such as "invoice.pdf is larger than 10 MB"
+   * A message that can be shown as is, such as "invoice.pdf is larger than 10 MB". It is in
+   * English; to show it in another language, build your own from `code` and `file`
    */
   message: string;
   /**

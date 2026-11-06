@@ -416,7 +416,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         ref={fileInputRef}
         type="file"
         accept={accept}
-        multiple={true}
+        // a picker for one file when only one may be attached, as in FileUpload
+        multiple={maxCount !== 1}
         onChange={handleFileInputChange}
         disabled={isDisabled}
         style={{ display: 'none' }}

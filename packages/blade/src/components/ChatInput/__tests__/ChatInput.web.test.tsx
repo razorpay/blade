@@ -818,6 +818,15 @@ describe('<ChatInput />', () => {
     });
   });
 
+  it('opens a single-file picker when only one file may be attached', () => {
+    const { container } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} maxCount={1} />,
+    );
+    expect(container.querySelector('input[type="file"]')).not.toHaveAttribute('multiple');
+    const { container: many } = renderWithTheme(<ChatInput accessibilityLabel="Many files" />);
+    expect(many.querySelector('input[type="file"]')).toHaveAttribute('multiple');
+  });
+
   describe('voice input', () => {
     it('shows a mic only when onVoiceInput is passed, and calls it on click', async () => {
       const user = userEvent.setup();
