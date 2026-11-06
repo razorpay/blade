@@ -428,7 +428,29 @@ const ButtonRayLayer = ({
           setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
           place();
         };
-        stage = new FreshStage(host, createFreshEngine);
+        // the stage gave up (no usable WebGL2, frames too slow, a GPU context the browser took back): Blade's own hover, for good
+        const giveUp = (): void => {
+          // (after this frame: the stage may be the one telling us)
+          window.setTimeout(() => {
+            if (!isMounted) return;
+            cancelAnimationFrame(frame);
+            window.clearTimeout(pauseTimer);
+            window.clearTimeout(searchTimer);
+            window.clearTimeout(refitTimer);
+            setIsSearching(false);
+            resize.disconnect();
+            button.removeEventListener('pointerenter', enter);
+            button.removeEventListener('pointerleave', leave);
+            button.style.paddingRight = '';
+            strip.style.opacity = '0';
+            if (edge) edge.style.boxShadow = '';
+            clearWash();
+            stage?.destroy();
+            stage = null;
+            engine = null;
+          }, 0);
+        };
+        stage = new FreshStage(host, createFreshEngine, { onError: giveUp });
         if (stage.reducedMotion) return; // reduced motion: Blade's own hover
         engine = stage.mount({
           doc,

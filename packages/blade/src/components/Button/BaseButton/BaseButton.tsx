@@ -592,25 +592,27 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
-  // the color and variant as rendered (a ButtonGroup's win): neutral is a primary button only; RazorSense on hover is the neutral
-  // primary's (Button's hasRazorSense), Ray the secondary's (hasRay)
+  // the color and variant as rendered (a ButtonGroup's win)
   const resolvedColor = buttonGroupProps.color ?? color;
   const resolvedVariant = buttonGroupProps.variant ?? variant;
-  // the props' own pairing, loud as the neutral and tertiary colours are: a hover prop on the wrong button is a mistake
-  if (hasRazorSense && (resolvedVariant !== 'primary' || resolvedColor !== 'neutral')) {
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
+  // a hover prop on the wrong button is a mistake, loud as the neutral and tertiary colors are; checked against the Button's own
+  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, the group decides, below)
+  if (hasRazorSense && !isInsideButtonGroup && (variant !== 'primary' || color !== 'neutral')) {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `hasRazorSense can only be used with variant "primary" and color "neutral" but received "${resolvedVariant}" and "${resolvedColor}"`,
+      message: `hasRazorSense can only be used with variant "primary" and color "neutral" but received "${variant}" and "${color}"`,
     });
   }
-  if (hasRay && resolvedVariant !== 'secondary') {
+  if (hasRay && !isInsideButtonGroup && variant !== 'secondary') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `hasRay can only be used with variant "secondary" but received "${resolvedVariant}"`,
+      message: `hasRay can only be used with variant "secondary" but received "${variant}"`,
     });
   }
   const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;
-  // RazorSense is for a button sized to its content: a full-width one keeps its own hover
+  // RazorSense plays over the neutral primary as rendered (in a group too, where the group's variant and color decide), sized to
+  // its content: a full-width one keeps its own hover
   const isRazorSenseHover =
     hasRazorSense &&
     resolvedVariant === 'primary' &&
@@ -618,39 +620,51 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     !isFullWidthButton;
   // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
   const canWidenForRay =
-    !buttonGroupProps.isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
+    !isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
   const isRayHover = hasRay && resolvedVariant === 'secondary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
-  // its hover is RazorSense only while that's running (reduced motion, no WebGL2 or a failed load: the button's own hover)
+  // its hover is RazorSense only while that's running (reduced motion, no WebGL2, a failed load, a lost GPU: the button's own)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
   const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
-  // where it sits rather than how it's set (full width, a ButtonGroup, icon-only), RazorSense and Ray give way: warned once per
-  // change
+  // where it sits rather than how it's set (a ButtonGroup, full width, icon-only), the effect gives way and the button keeps its
+  // own hover: said once per change, in development
+  const isRazorSenseGivingWay = hasRazorSense && !isRazorSenseHover;
+  const isRayGivingWay = hasRay && !isRayHover;
   React.useEffect(() => {
-    if (__DEV__ && hasRazorSense && isFullWidthButton) {
+    if (!__DEV__) return;
+    if (isRazorSenseGivingWay) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: isFullWidthButton
+          ? 'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.'
+          : `hasRazorSense plays on a neutral primary button; its ButtonGroup renders this one as "${resolvedVariant}" "${resolvedColor}", so it keeps its own hover.`,
+      });
+    }
+    if (isRayGivingWay) {
       logger({
         type: 'warn',
         moduleName: 'Button',
         message:
-          'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.',
+          'hasRay needs a labelled secondary button that can widen (not in a ButtonGroup, not full width, not icon-only); this one keeps its own hover.',
       });
     }
-    if (__DEV__ && hasRay && resolvedVariant === 'secondary' && !canWidenForRay) {
-      logger({
-        type: 'warn',
-        moduleName: 'Button',
-        message:
-          'hasRay needs a labelled button that can widen (not full width, in a ButtonGroup or icon-only); the button keeps its own hover.',
-      });
-    }
-    if (__DEV__ && rayVariant && !hasRay) {
+    if (rayVariant && !hasRay) {
       logger({
         type: 'warn',
         moduleName: 'Button',
         message: `rayVariant only picks what hasRay plays: set hasRay as well (received rayVariant "${rayVariant}").`,
       });
     }
-  }, [hasRazorSense, isFullWidthButton, hasRay, resolvedVariant, canWidenForRay, rayVariant]);
+  }, [
+    isRazorSenseGivingWay,
+    isRayGivingWay,
+    isFullWidthButton,
+    resolvedVariant,
+    resolvedColor,
+    rayVariant,
+    hasRay,
+  ]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

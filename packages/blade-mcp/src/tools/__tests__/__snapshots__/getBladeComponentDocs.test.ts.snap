@@ -19,8 +19,8 @@ The Button component is a versatile interactive element used for triggering acti
 
 - \`variant="tertiary"\` can only be used with \`color="primary"\` or \`color="white"\`
 - \`color="neutral"\` can only be used with \`variant="primary"\`
-- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (it throws otherwise), and not on an \`isFullWidth\` button (it keeps its own hover)
-- \`hasRay\` works only with \`variant="secondary"\` (it throws otherwise), on a labelled button that can widen: not icon-only, not \`isFullWidth\`, not inside a \`ButtonGroup\`, sized to its content with free space to its right (not stretched or held to a width by its container); \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
+- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (on any other Button it throws in development); in a \`ButtonGroup\` the group's variant and color decide, and where they make it another button, or on an \`isFullWidth\` button, it keeps its own hover
+- \`hasRay\` works only with \`variant="secondary"\` (on another Button it throws in development), on a labelled button that can widen: in a \`ButtonGroup\`, with \`isFullWidth\` or icon-only it gives way and the button keeps its own hover (with a development warning). Give it free space to its right (not stretched or held to a width by its container). \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
 
 ## TypeScript Types
 
@@ -52,7 +52,8 @@ type ButtonProps = {
 
   /**
    * RazorSense plays on the button while it's hovered (web; follows the color scheme)
-   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on a full-width button
+   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on
+   * a full-width button or one its ButtonGroup renders as another, which keep their own hover
    * @default false
    */
   hasRazorSense?: boolean;
@@ -60,7 +61,8 @@ type ButtonProps = {
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
    * plays \`rayVariant\` for as long as the pointer stays
-   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height
+   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height. In a ButtonGroup, full width or
+   * icon-only it gives way, and the button keeps its own hover
    * @default false
    */
   hasRay?: boolean;
@@ -970,8 +972,8 @@ The Button component is a versatile interactive element used for triggering acti
 
 - \`variant="tertiary"\` can only be used with \`color="primary"\` or \`color="white"\`
 - \`color="neutral"\` can only be used with \`variant="primary"\`
-- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (it throws otherwise), and not on an \`isFullWidth\` button (it keeps its own hover)
-- \`hasRay\` works only with \`variant="secondary"\` (it throws otherwise), on a labelled button that can widen: not icon-only, not \`isFullWidth\`, not inside a \`ButtonGroup\`, sized to its content with free space to its right (not stretched or held to a width by its container); \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
+- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (on any other Button it throws in development); in a \`ButtonGroup\` the group's variant and color decide, and where they make it another button, or on an \`isFullWidth\` button, it keeps its own hover
+- \`hasRay\` works only with \`variant="secondary"\` (on another Button it throws in development), on a labelled button that can widen: in a \`ButtonGroup\`, with \`isFullWidth\` or icon-only it gives way and the button keeps its own hover (with a development warning). Give it free space to its right (not stretched or held to a width by its container). \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
 
 ## TypeScript Types
 
@@ -1003,7 +1005,8 @@ type ButtonProps = {
 
   /**
    * RazorSense plays on the button while it's hovered (web; follows the color scheme)
-   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on a full-width button
+   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on
+   * a full-width button or one its ButtonGroup renders as another, which keep their own hover
    * @default false
    */
   hasRazorSense?: boolean;
@@ -1011,7 +1014,8 @@ type ButtonProps = {
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
    * plays \`rayVariant\` for as long as the pointer stays
-   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height
+   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height. In a ButtonGroup, full width or
+   * icon-only it gives way, and the button keeps its own hover
    * @default false
    */
   hasRay?: boolean;
@@ -1921,8 +1925,8 @@ The Button component is a versatile interactive element used for triggering acti
 
 - \`variant="tertiary"\` can only be used with \`color="primary"\` or \`color="white"\`
 - \`color="neutral"\` can only be used with \`variant="primary"\`
-- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (it throws otherwise), and not on an \`isFullWidth\` button (it keeps its own hover)
-- \`hasRay\` works only with \`variant="secondary"\` (it throws otherwise), on a labelled button that can widen: not icon-only, not \`isFullWidth\`, not inside a \`ButtonGroup\`, sized to its content with free space to its right (not stretched or held to a width by its container); \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
+- \`hasRazorSense\` works only with \`variant="primary"\` and \`color="neutral"\` (on any other Button it throws in development); in a \`ButtonGroup\` the group's variant and color decide, and where they make it another button, or on an \`isFullWidth\` button, it keeps its own hover
+- \`hasRay\` works only with \`variant="secondary"\` (on another Button it throws in development), on a labelled button that can widen: in a \`ButtonGroup\`, with \`isFullWidth\` or icon-only it gives way and the button keeps its own hover (with a development warning). Give it free space to its right (not stretched or held to a width by its container). \`rayVariant\` picks what Ray does (\`"investigate"\` for now) and only applies with \`hasRay\`
 
 ## TypeScript Types
 
@@ -1954,7 +1958,8 @@ type ButtonProps = {
 
   /**
    * RazorSense plays on the button while it's hovered (web; follows the color scheme)
-   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on a full-width button
+   * Only for \`variant="primary"\` with \`color="neutral"\`, at any size (an icon-only button plays its own square version); not on
+   * a full-width button or one its ButtonGroup renders as another, which keep their own hover
    * @default false
    */
   hasRazorSense?: boolean;
@@ -1962,7 +1967,8 @@ type ButtonProps = {
   /**
    * On hover (web; follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who
    * plays \`rayVariant\` for as long as the pointer stays
-   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height
+   * Only for \`variant="secondary"\`, at any size: it all scales with the button's height. In a ButtonGroup, full width or
+   * icon-only it gives way, and the button keeps its own hover
    * @default false
    */
   hasRay?: boolean;

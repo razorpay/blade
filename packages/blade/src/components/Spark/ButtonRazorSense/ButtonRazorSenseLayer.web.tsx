@@ -161,11 +161,15 @@ const ButtonRazorSenseLayer = ({
     const widthOf = (w: number): number =>
       square || !setup || w <= setup.mask.w / 2 ? 0 : Math.round(w);
     let createEngine: CreateFreshEngine | null = null;
+    // the stage gave up (no usable WebGL2, frames too slow, a GPU context the browser took back): the button's own hover, for good
+    let hasGivenUp = false;
+    // (set below, once what it undoes is in place)
+    let giveUp = (): void => undefined;
     // a new stage for each layout: a stage's canvas can't take another comp (its engine goes with the canvas's GL context)
     const mount = (w: number): void => {
-      if (!createEngine || !doc || !setup) return;
+      if (!createEngine || !doc || !setup || hasGivenUp) return;
       stage?.destroy();
-      stage = new FreshStage(host, createEngine);
+      stage = new FreshStage(host, createEngine, { onError: () => giveUp() });
       laidWidth = widthOf(w);
       engine = stage.reducedMotion
         ? null
@@ -230,6 +234,24 @@ const ButtonRazorSenseLayer = ({
     };
     const enter = (): void => show(true);
     const leave = (): void => show(false);
+    giveUp = (): void => {
+      if (hasGivenUp) return;
+      hasGivenUp = true;
+      // (after this frame: the stage may be the one telling us)
+      window.setTimeout(() => {
+        isOn = false;
+        window.clearTimeout(pauseTimer);
+        window.clearTimeout(relayTimer);
+        layer.style.opacity = '0';
+        relay.disconnect();
+        button.removeEventListener('pointerenter', enter);
+        button.removeEventListener('pointerleave', leave);
+        stage?.destroy();
+        stage = null;
+        engine = null;
+        onLiveRef.current?.(false);
+      }, 0);
+    };
 
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {

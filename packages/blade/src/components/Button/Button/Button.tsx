@@ -94,7 +94,9 @@ type ButtonCommonProps = {
     web: {
       /**
        * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
-       * `color="neutral"` (it throws on any other), at any size. Not on a full-width button, which keeps its own hover.
+       * `color="neutral"`, at any size: on any other Button it throws in development. In a ButtonGroup the group's variant and
+       * color decide, and where it renders the button as another one, or on a full-width button, the button keeps its own
+       * hover (with a development warning).
        *
        * **Only available on web**
        *
@@ -103,9 +105,10 @@ type ButtonCommonProps = {
       hasRazorSense?: boolean;
       /**
        * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
-       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"` (it throws on another variant), at any
-       * size (it all scales with the button's height), on a labelled button that can widen: not icon-only, full width or in
-       * a ButtonGroup, with room to its right (its own width, not stretched or held by its container).
+       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"` (on another Button it throws in
+       * development), at any size (it all scales with the button's height), on a labelled button that can widen: in a
+       * ButtonGroup, full width or icon-only it gives way and the button keeps its own hover (with a development warning).
+       * Give it room to its right (its own width, not stretched or held by its container).
        *
        * **Only available on web**
        *

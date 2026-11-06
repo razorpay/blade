@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import type { ButtonProps } from '../Button';
 import Button from '../Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { ButtonGroup } from '~components/ButtonGroup';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -153,6 +154,18 @@ describe('<Button />', () => {
       <Button variant="secondary" hasRay icon={CreditCardIcon} accessibilityLabel="Investigate" />,
     );
     expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+  });
+
+  it('should let a ButtonGroup decide: hasRay never throws in one, and gives way (no widening in a group)', () => {
+    for (const variant of ['primary', 'secondary'] as const) {
+      const { container } = renderWithTheme(
+        <ButtonGroup variant={variant}>
+          <Button hasRay>Investigate</Button>
+          <Button>Other</Button>
+        </ButtonGroup>,
+      );
+      expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+    }
   });
 
   it('should render Ray on the secondary button at any size', async () => {
