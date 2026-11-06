@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FloatingActionButton /> (native) should render a loading neutral button with an inverted spinner 1`] = `
+exports[`<FloatingActionButton /> (native) should render a loading neutral button with gray loading dots 1`] = `
 <View
   style={
     {
@@ -209,7 +209,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     null,
                     {
@@ -232,7 +232,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     {
                       "marginLeft": 3,
@@ -257,7 +257,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     {
                       "marginLeft": 3,

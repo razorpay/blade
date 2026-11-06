@@ -135,7 +135,7 @@ type FloatingActionButtonProps = {
 
 **`offset` is a single token rather than per-axis.** It covers the common case, and `StyledPropsBlade` is applied after the placement styles, so a caller needing asymmetric offsets (for example clearing a `BottomNav`) can pass `bottom="spacing.10"` directly without a second offset API.
 
-**Spinner colour is set explicitly per FAB colour.** `BaseButton`'s shared `spinnerColor` map would render a white spinner on the white FAB and a blue one on the primary FAB, both of which are invisible. The FAB passes `white` for `primary` and `neutral`, and `neutral` for `white`, matching the spec's loading state. This is scoped to the FAB rather than fixed in the shared map, which would change `Button`'s appearance.
+**Loading dot colour is set explicitly per FAB colour.** A loading FAB renders on the faded disabled surface, like a loading `Button`, so `primary` and `neutral` use the same dot colours as `Button`: `primary` for `primary` and `neutral` for `neutral`. Earlier versions passed `white` for both, which was hard to see on the faded surface. `BaseButton`'s shared map would render white dots on the white FAB, where they are invisible, so the FAB passes `neutral` for `white`.
 
 ## Accessibility
 

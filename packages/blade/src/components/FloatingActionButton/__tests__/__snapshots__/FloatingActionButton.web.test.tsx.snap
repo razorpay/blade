@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FloatingActionButton /> should render a loading neutral button with an inverted spinner 1`] = `
+exports[`<FloatingActionButton /> should render a loading neutral button with gray loading dots 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -188,7 +188,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 0ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 0ms infinite;
@@ -198,7 +198,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 150ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 150ms infinite;
@@ -208,7 +208,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 300ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 300ms infinite;
