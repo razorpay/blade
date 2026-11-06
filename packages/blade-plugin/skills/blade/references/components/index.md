@@ -67,8 +67,14 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **ProgressBar**: A ProgressBar is a visual indicator that displays the progress of a process or task.
 - **QuickFilter**: QuickFilter and QuickFilterGroup components provide a user-friendly interface for displaying and selecting filterable options.
 - **Radio**: The Radio and RadioGroup components are used in forms when a user needs to select a single value from multiple options.
+- **Ray**: Ray is Razorpay's AI mascot, an animated character for AI assistant surfaces: on a chat input he idles, watches what's typed, looks at the pointer and flips a coin when clicked; in an answer's row he plays its states (searching, calling, writing, working).
 - **RazorSense**: RazorSense is a WebGL-powered component that renders an animated glass refraction effect with video/image textures, colorama color grading, displacement, bloom, and light sweep effects.
+- **RazorSenseBottomWave**: RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the chat input and a faint wave settles under it, drifting, and pulses up into its typing surge as the next question is typed.
+- **RazorSenseChat**: RazorSenseChat is RazorSense through an assistant chat: thinking loops on the `RazorSenseThinking` label while the answer is worked out, surges down to the chat input when it's in, and settles there as the `RazorSenseBottomWave`, pulsing as the next question is typed.
+- **RazorSenseChatBackground**: RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap the chat input and a soft fluted strip sits behind it, drifting and breathing; as someone types it pulses into its typing surge and dies back down when they stop.
 - **RazorSenseGradient**: RazorSenseGradient renders an animated WebGL fluid gradient clipped to an SVG mask shape.
+- **RazorSenseLoader**: RazorSenseLoader is RazorSense's loading splash: the Razorpay glyph loops while the page loads; once it's ready, the glyph finishes its loop, grows, and everything fades to the plain background as designed, then `onComplete` is called.
+- **RazorSenseThinking**: RazorSenseThinking is RazorSense thinking in a chat: its blue thinking label, with a shimmer running through it, and the glow looping round it, behind it and past its edges.
 - **SankeyChart**: SankeyChart is a flow diagram that shows how a quantity moves across multiple stages.
 - **Scale**: The Scale component is a motion preset that animates elements by changing their size through CSS scale property.
 - **SearchInput**: SearchInput is a specialized input component designed for search functionality.

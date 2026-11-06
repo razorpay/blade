@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { useRef } from 'react';
 import type { ButtonProps } from '../Button';
 import Button from '../Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { ButtonGroup } from '~components/ButtonGroup';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -119,6 +120,75 @@ describe('<Button />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('should render the RazorSense hover layer only on the neutral primary button', async () => {
+    // the layer is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    const { container: neutral } = renderWithTheme(
+      <Button color="neutral" hasRazorSense>
+        Ask Ray
+      </Button>,
+    );
+    // the layer is loaded once the button turns it on
+    await waitFor(
+      () => expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
+    );
+    // on another colour it's a mistake, loud in development
+    expect(() => renderWithTheme(<Button hasRazorSense>Ask Ray</Button>)).toThrow(
+      '[Blade: BaseButton]: hasRazorSense can only be used with variant "primary" and color "neutral"',
+    );
+  }, 20000);
+
+  it('should keep the full-width neutral button on its own hover, without RazorSense', () => {
+    const { container } = renderWithTheme(
+      <Button color="neutral" hasRazorSense isFullWidth>
+        Ask Ray
+      </Button>,
+    );
+    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+  });
+
+  it('should throw for hasRay on a non-secondary variant, and skip it on an icon-only button', () => {
+    expect(() => renderWithTheme(<Button hasRay>Investigate</Button>)).toThrow(
+      '[Blade: BaseButton]: hasRay can only be used with variant "secondary"',
+    );
+    const { container } = renderWithTheme(
+      <Button variant="secondary" hasRay icon={CreditCardIcon} accessibilityLabel="Investigate" />,
+    );
+    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+  });
+
+  it('should keep hasRay and hasRazorSense buttons on their own hover in a ButtonGroup, without throwing', () => {
+    for (const variant of ['primary', 'secondary'] as const) {
+      const { container } = renderWithTheme(
+        <ButtonGroup variant={variant}>
+          <Button hasRay>Investigate</Button>
+          <Button color="neutral" hasRazorSense>
+            Ask Ray
+          </Button>
+          <Button>Other</Button>
+        </ButtonGroup>,
+      );
+      expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
+    }
+  });
+
+  it('should render Ray on the secondary button at any size', async () => {
+    // Ray's layer (his runtime) is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { container, getByRole } = renderWithTheme(
+      <Button variant="secondary" size="large" hasRay>
+        Investigate
+      </Button>,
+    );
+    await waitFor(
+      () =>
+        expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
+    );
+    expect(getByRole('button')).toHaveTextContent('Investigate');
+  }, 20000);
 
   it('should call function on click', () => {
     const buttonText = 'Pay Now';
