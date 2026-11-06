@@ -220,6 +220,8 @@ const extractDeclarationBody = (fileContent, declarationRegex) => {
 const COMMENT_LINE_REGEX = /^(\/\/|\/\*|\*)/;
 const GROUP_LINE_REGEX = /^([A-Za-z0-9_$]+|'[^']*'|"[^"]*"):\s*\{$/;
 const LEAF_LINE_REGEX = /^([A-Za-z0-9_$]+|'[^']*'|"[^"]*"):\s*(.+?),?$/;
+// prettier moves a value that does not fit onto the line after its key
+const WRAPPED_KEY_LINE_REGEX = /^([A-Za-z0-9_$]+|'[^']*'|"[^"]*"):$/;
 
 const unquoteKey = (key) => key.replace(/^['"]|['"]$/g, '');
 
@@ -241,6 +243,8 @@ const scanDeclaration = (fileContent, declarationRegex) => {
   const childOrder = {};
   const stack = [];
   let pending = [];
+  /** Path of a leaf whose value prettier wrapped onto the next line. */
+  let wrappedLeafPath = null;
 
   for (const rawLine of body.split('\n')) {
     const line = rawLine.trim();
@@ -251,15 +255,22 @@ const scanDeclaration = (fileContent, declarationRegex) => {
       continue;
     }
 
+    if (wrappedLeafPath) {
+      values[wrappedLeafPath] = line.replace(/,$/, '');
+      wrappedLeafPath = null;
+      continue;
+    }
+
     if (line === '}' || line === '},') {
       stack.pop();
       pending = [];
       continue;
     }
 
-    const group = GROUP_LINE_REGEX.exec(line);
-    const leaf = group ? null : LEAF_LINE_REGEX.exec(line);
-    const key = group ? unquoteKey(group[1]) : unquoteKey(leaf?.[1] ?? '');
+    const wrappedKey = WRAPPED_KEY_LINE_REGEX.exec(line);
+    const group = wrappedKey ? null : GROUP_LINE_REGEX.exec(line);
+    const leaf = wrappedKey || group ? null : LEAF_LINE_REGEX.exec(line);
+    const key = unquoteKey((wrappedKey ?? group ?? leaf)?.[1] ?? '');
     if (!key) {
       pending = [];
       continue;
@@ -275,6 +286,8 @@ const scanDeclaration = (fileContent, declarationRegex) => {
     }
     if (group) {
       stack.push(key);
+    } else if (wrappedKey) {
+      wrappedLeafPath = path;
     } else {
       values[path] = leaf[2];
     }
@@ -405,6 +418,69 @@ const diffTokenPaths = (before, after) => {
   };
 };
 
+/** Whitespace and a trailing comma are formatting, not part of the value. */
+const normalizeValueSource = (value) => String(value).replace(/\s+/g, '').replace(/,$/, '');
+
+/**
+ * Tokens whose value changed between two `scanDeclaration` reads of the same file.
+ *
+ * Path diffs only see additions and removals, so a push that recolours tokens used to report
+ * "0 added · 0 removed" — indistinguishable from a push that did nothing. Only paths present on
+ * both sides count; anything else is an addition or removal and is reported as one already.
+ */
+const diffTokenValues = (beforeValues, afterValues) =>
+  Object.keys(afterValues)
+    .filter(
+      (path) =>
+        path in beforeValues &&
+        normalizeValueSource(beforeValues[path]) !== normalizeValueSource(afterValues[path]),
+    )
+    .sort()
+    .map((path) => ({ path, before: beforeValues[path], after: afterValues[path] }));
+
+/** Leaf path -> the source text the serializer would write for it. */
+const collectTokenValues = (tree, expressionRoots = [], prefix = '', collected = {}) => {
+  for (const [key, value] of Object.entries(tree)) {
+    const path = prefix ? `${prefix}.${key}` : key;
+    if (isLeaf(value)) {
+      collected[path] = serializeValue(value, expressionRoots);
+    } else {
+      collectTokenValues(value, expressionRoots, path, collected);
+    }
+  }
+  return collected;
+};
+
+/**
+ * What a token tree would change in a source file, worked out from the file's text alone.
+ *
+ * The Figma plugin runs this against files it downloads, so it must never evaluate them — which
+ * rules out `parseObjectLiteralSource`. `scanDeclaration` only reads lines. Paths matching
+ * `preservedPaths` are code-owned and kept by every push, so they are not reported as removed.
+ */
+const diffTokenTreeAgainstSource = ({
+  tree,
+  fileContent,
+  declarationRegex,
+  expressionRoots = [],
+  preservedPaths = [],
+}) => {
+  const { values: before } = scanDeclaration(fileContent, declarationRegex);
+  const after = collectTokenValues(tree, expressionRoots);
+  const isPreserved = (path) =>
+    preservedPaths.some((pattern) => matchesSegmentPattern(path, pattern));
+
+  return {
+    added: Object.keys(after)
+      .filter((path) => !(path in before))
+      .sort(),
+    removed: Object.keys(before)
+      .filter((path) => !(path in after) && !isPreserved(path))
+      .sort(),
+    changed: diffTokenValues(before, after),
+  };
+};
+
 module.exports = {
   EXPRESSION,
   RAW,
@@ -417,7 +493,10 @@ module.exports = {
   collectFileBindings,
   collectTokenPaths,
   collectTokenPathsFromSource,
+  collectTokenValues,
   diffTokenPaths,
+  diffTokenTreeAgainstSource,
+  diffTokenValues,
   extractDeclarationBody,
   findUnresolvableValueRoots,
   isTaggedValue,
