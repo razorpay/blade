@@ -26,8 +26,8 @@ import { ChatInput } from '@razorpay/blade/components';
   onFileChange={({ fileList }) => setFiles(fileList)}
   onFileRemove={({ file }) => removeFile(file)}
   accept=".jpg,.png,.pdf,.xlsx"
-  maxFileSize={5242880}
-  maxFileCount={5}
+  maxSize={5242880}
+  maxCount={5}
   suggestions={[
     'How do I integrate payment gateway?',
     'Show me recent transactions',
@@ -188,12 +188,12 @@ type ChatInputProps = {
   /**
    * Maximum file size in bytes per file
    */
-  maxFileSize?: number;
+  maxSize?: number;
 
   /**
    * Maximum number of files that can be attached
    */
-  maxFileCount?: number;
+  maxCount?: number;
 
   /**
    * List of ghost suggestions displayed as faded text in the input.
@@ -261,8 +261,8 @@ const ChatWithFiles = () => {
       onFileChange={({ fileList }) => setFiles(fileList)}
       onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
+      maxSize={5 * 1024 * 1024}
+      maxCount={5}
     />
   );
 };
@@ -407,8 +407,8 @@ const FullFeaturedChat = () => {
       onFileChange={({ fileList }) => setFiles(fileList)}
       onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
+      maxSize={5 * 1024 * 1024}
+      maxCount={5}
       suggestions={suggestions}
       onSuggestionAccept={({ suggestion }) => {
         setText(suggestion);
@@ -439,6 +439,7 @@ Whenever files are added (or the list changes), the file preview row automatical
 ### Implicit Disable on Error or Uploading Files
 
 The submit button (and Enter key) is blocked whenever:
+
 - There is no text **and** no files, **or**
 - Any attached file has `status === 'error'`, **or**
 - Any attached file has `status === 'uploading'`
@@ -468,6 +469,53 @@ When submit is disabled because of an error or uploading file, no additional too
   - The `accessibilityLabel` prop is used as `aria-label` on the main input when no visible label is present
   - Ghost suggestion text is announced via `aria-describedby` so screen readers can read the suggestion
   - File attachment count is announced when files are added or removed
+
+## AI Elements Update (October 2026)
+
+ChatInput takes the AI Elements design (Figma: the Chat Input component, merged from the AI Elements page). Props stay compatible: every new prop is optional, and no prop is renamed, removed or retyped. The look changes for everyone.
+
+### Look
+
+- The "+" is an icon-only ghost button (an internal `ChatInputButton`, not exported) instead of the "Upload file" text link. Its accessible name stays "Upload file". With `actionMenu` it opens a Blade `Menu` instead of the file picker.
+- Send is a neutral (black) primary button, hidden until there is text or a file. It fades in, keeps its slot so the text box never moves, and is out of the tab order while hidden. The accessible names "Submit" and "Stop generation" stay.
+- At rest the border is `surface.border.gray.muted` (a see-through grey), through BaseInput's internal `restBorderColor`. Focus shows a 1.5 px (`border.width.thick`) primary border with no focus ring, through `focusIndicator="border"`. Every other input keeps its border and ring.
+- Hover lights the border only near the pointer: a 1.5 px, 200 x 94 px oval of primary blue fading through `interactive.border.primary.faded`. It trails the pointer by `duration.2xquick` and fades in as the pointer comes within about 114 px of the box. It is off while focused, off for touch, and does not trail with reduced motion.
+- The shadow is `elevation.lowRaised`, the text starts at one line with `spacing.4` above and below, and in the two-row layout it starts `spacing.6` (20 px) in, through BaseInput's internal `paddingX`. The corner radius stays `large`, and the caret is `interactive.border.primary.default`.
+- Send springs in from 0.3x with `easing.overshoot` over `duration.gentle` and shrinks away over `duration.quick` with `easing.exit`. Stop is a ghost `ChatInputButton` with `StopCircleIcon`, so a long reply doesn't keep a black button in view.
+- The buttons keep their sizes: 32 px (`small`) in the two-row toolbar and 28 px (`xsmall`) in the one-row bar, which keeps that bar at 44 px. We tried 36 px buttons and a 60 px bar to match the design team's flow 9 box, and went back.
+
+### Voice Input and Help Text
+
+`onVoiceInput` shows a mic (`MicIcon` in the same ghost button as "+") just before Send, 8 px apart, on web and native. While Send is hidden (an empty box with `status="ready"`), the mic moves into Send's place so there is no gap at the end of the row; once there is text it slides back over `duration.xmoderate` with `easing.entrance` as Send springs in, as in the design team's flow 9 box. Stop, the loader and Retry always show, so the mic stays put for them. There is no mic without it, so no product gets a button it can't handle. `helpText` shows a muted body-small line `spacing.4` under the box, centred. On web the text box is described by it; BaseInput only links its own form hint, so ChatInput sets `aria-describedby` itself.
+
+### Status
+
+`status` (`ready`, `submitted`, `streaming`, `error`) decides the button: Send, a disabled loader, Stop or Retry. `isGenerating` still works but is deprecated in favour of `status="streaming"`, and will be removed in a future major; `status` wins when both are set. Retry calls `onSubmit` again with the last message sent, since that is the one that failed, even if the box has been cleared (a controlled `value` usually is) or edited since. Before anything has been sent, it uses what is in the box. It is disabled only when there is no `onSubmit` or nothing to send. While `submitted`, Enter does not send again, matching the disabled loader. While `streaming`, Enter still calls `onSubmit` so the product can queue the next message or ignore it. The names `submitted` and `streaming` match the Vercel AI SDK's `useChat` status, so its value can be passed straight through; that is why it is `submitted`, not `submitting`. `status="error"` is about the request, while `validationState="error"` is about what was typed or attached. `onStop` stays optional rather than required with `streaming` (a discriminated union would make every consumer that spreads a `status` variable narrow it first). Instead, Stop is disabled when there is no `onStop`, so it never looks like it works when it doesn't, and Blade warns in development. On native, the web-only props (`actionMenu`, `commands`, `onCommandSelect`, `maxCount`, `maxSize`, `onFileError`, `dropTarget`, `showAmbientBorder`) log one development warning per mount, following `FileUpload`. Commands use `title` for their text, like `ActionListItem` and `MenuItem`. The title is the plain name (`refund`) and ChatInput adds the slash, so every product shows commands the same way. The list closes when the text box loses focus and opens again when focus comes back. `clearOnSubmit` warns in development, once per mount, when `onSubmit` returns no promise, and `commands` warns when there is no `onCommandSelect`, since a pick would only clear the text.
+
+### Compact Size
+
+`size="small"` is one 44 px row with the "+" and Send inline (BaseInput `visualsAlignment="bottom"` keeps them on the last line). Once the text needs a second line it opens into the `medium` layout and stays open until the text is cleared, so it never flips back and forth while typing. On React Native it stays one row and grows, as in the closed draft PR #4076 this builds on.
+
+### Clear On Submit
+
+Clearing is opt-in through `clearOnSubmit` (default `false`), so an existing `async` handler on an uncontrolled ChatInput keeps today's behaviour. We first inferred it from a promise return value, but that silently changed behaviour for the most common handler shape. With `clearOnSubmit`, ChatInput clears what was sent once the promise from `onSubmit` resolves and keeps it if it rejects. It only clears what it owns: the text without a `value` prop and the files without a `fileList` prop, so controlled values (react-hook-form, Formik) are never touched. `onSubmit` stays typed as returning `void`: an `async` handler already fits that type, and widening it to `void | Promise<unknown>` would break handlers that return some other value. The promise is detected at runtime. `maxCount` and `maxSize` match `FileUpload`. Only the sent text and files are cleared: anything typed or attached while the request was in flight stays. On web, clearing files also calls `onFileChange` with an empty list; on native it does not, because there `onFileChange` means "open your file picker". Without `clearOnSubmit`, or when `onSubmit` returns nothing, ChatInput never clears the box itself. Both platforms share `useChatInputSubmit`.
+
+### Slash Commands
+
+Typing `/` at the start of the text opens a list of `commands` above the input, filtered by what follows the slash. Arrow keys move, Enter picks, and Escape or Tab closes it (Tab then moves focus on). Focus stays in the text box. With `commands`, the text box carries `aria-haspopup="listbox"`, `aria-controls` (the list) and `aria-activedescendant` (the highlighted option), through BaseInput's `hasPopup` and `popupId`. It stays `role="textbox"`: axe rejects `role="combobox"` on a textarea (`aria-allowed-role`), and a textbox may not carry `aria-expanded`, so BaseInput leaves that out when the role is `textbox`.
+
+### Files
+
+The picker, paste and drop all go through one check (`validateChatInputFiles`): `accept`, then `maxSize`, then `maxCount`. Each file that is not added calls `onFileError` with a code and a message, after `onFileChange` for the files that were added, so a product that clears its error when files change still shows it. Before this, pasted files skipped `accept`. These checks only guide people in the browser; the server must still check every file. `dropTarget="page"` listens on `window` and only reacts to drags that carry files. `dropTarget="none"` turns dropping off for pages with their own drop zone. When `hideFileUpload` is set without an `actionMenu` there is no visible way to attach files, so drop is off too. Paste keeps working, as it always has, so products that hide the "+" but rely on pasting images are not affected.
+
+### Ambient Border
+
+`showAmbientBorder` draws a 1 px masked ring over BaseInput's border. It is `interactive.border.primary.faded` with a brighter `interactive.border.primary.default` streak. It stays opt-in, so existing ChatInputs don't start animating. While the box is hovered or focused the whole ring fades out, since those states show their own border; it keeps running underneath, so it picks up where it was. (An earlier version turned the streak into a white shine on focus instead.) The streak is a dash on an SVG copy of the rounded outline (`pathLength` 100, animated `stroke-dashoffset`), so it is the same share of the outline at any size and only ever lights the edge it is passing. An earlier version moved a glow square with CSS `offset-path`; on the 44 px compact box the square was taller than the box and lit the top and bottom borders at once. The streak goes counterclockwise, once every 15 seconds (a component constant: motion tokens stop at 960 ms). One streak element runs one animation. Reduced motion shows the plain ring; forced colours, `validationState="error"`, `status="error"` and disabled turn it off. It replaces the pulsing border in PR #4068, which will be closed. On React Native the prop shows the plain borders.
+
+### Not In This Change
+
+- `tools`: tool buttons and the model picker need a public button, and `ChatInputButton` stays internal for now.
+- Smooth height animation and Backspace removing the last attachment.
 
 ## Open Questions
 

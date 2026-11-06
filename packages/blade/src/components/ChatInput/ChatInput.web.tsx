@@ -2,9 +2,17 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { chatInputBorderRadius, chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputAmbientBorder } from './ChatInputAmbientBorder';
+import { ChatInputButton } from './ChatInputButton';
+import { ChatInputCommandMenu } from './ChatInputCommandMenu';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
+import { useChatInputHoverBorder } from './ChatInputHoverBorder';
+import { ChatInputSubmit } from './ChatInputSubmit';
+import { ChatInputVoiceSlot } from './ChatInputVoiceSlot';
+import { getChatInputVoiceShift } from './getChatInputVoiceShift';
+import { getChatInputCompactLayout } from './getChatInputCompactLayout';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
 import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
@@ -13,8 +21,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { CloseIcon, InfoIcon } from '~components/Icons';
+import { CloseIcon, InfoIcon, MicIcon, PlusIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
+import { Menu } from '~components/Menu';
 import { Text } from '~components/Typography';
 import { castWebType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -22,6 +31,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { useId } from '~utils/useId';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
@@ -29,6 +39,21 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   '&::-webkit-scrollbar': { display: 'none' },
   scrollbarWidth: 'none' as const,
 }));
+
+// size="small", one row: the placeholder stays on one line, so a long placeholder cannot make the
+// empty composer taller than one row. Overflow is cut off; Safari adds "...", Chrome ignores
+// text-overflow on a textarea placeholder.
+const ChatInputCardBox = styled(BaseBox)<{ $isCompactRow: boolean }>(({ $isCompactRow }) =>
+  $isCompactRow
+    ? {
+        '& textarea::placeholder': {
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        },
+      }
+    : {},
+);
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
@@ -38,7 +63,21 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onFocus,
     onBlur,
     onSubmit,
+    clearOnSubmit = false,
     placeholder = 'Ask a question...',
+    size = 'medium',
+    status,
+    header,
+    actionMenu,
+    commands,
+    onCommandSelect,
+    maxCount,
+    maxSize,
+    onFileError,
+    dropTarget,
+    showAmbientBorder = false,
+    onVoiceInput,
+    helpText,
     isDisabled = false,
     isGenerating = false,
     onStop,
@@ -62,6 +101,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const [isFocused, setIsFocused] = React.useState(false);
+  // while focused the border is already blue, so the hover glow steps aside
+  const { hoverBorder, isPointerInside } = useChatInputHoverBorder({
+    isEnabled: !isDisabled,
+    isShown: !isFocused,
+  });
+  const helpTextId = useId('chat-input-help-text');
 
   const {
     fileInputRef,
@@ -70,10 +116,17 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     files,
     setActiveSuggestionIndex,
     hasFiles,
+    hasContent,
     isSubmitDisabled,
     showGhostSuggestion,
+    resolvedStatus,
+    isExpanded,
+    isDraggingFiles,
+    commandMenu,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleKeyDown,
     handleUploadClick,
     handleFileInputChange,
@@ -81,22 +134,36 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     handleFileDismiss,
     handlePaste,
     handleInnerMouseDownCapture,
+    dropZoneProps,
   } = useChatInput(
     {
       value,
       defaultValue,
       onChange,
       onSubmit,
+      clearOnSubmit,
       isDisabled,
       isGenerating,
+      status,
       onStop,
       fileList,
       onFileChange,
       onFileRemove,
       onFileDismiss,
       accept,
+      maxCount,
+      maxSize,
+      onFileError,
+      dropTarget,
       suggestions,
       onSuggestionAccept,
+      commands,
+      onCommandSelect,
+      size,
+      // with the "+" hidden and no menu there is no visible way to attach files, so dropping is off
+      // too, unless the product asks for a drop target itself
+      canDropFiles: dropTarget !== undefined || !hideFileUpload || Boolean(actionMenu),
+      isFocused,
     },
     ref,
   );
@@ -145,6 +212,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const inputRef = useRef<BladeElementRef>(null);
   const combinedRef = useMergeRefs(mergedRef, inputRef);
 
+  // BaseInput only links its own help text, so point the text box at ours by hand
+  useEffect(() => {
+    const input = inputRef.current;
+    if (!helpText || !(input instanceof HTMLElement)) return undefined;
+    input.setAttribute('aria-describedby', helpTextId);
+    return () => input.removeAttribute('aria-describedby');
+  }, [helpText, helpTextId]);
+
   useEffect(() => {
     if (autoFocus && inputRef.current instanceof HTMLElement) {
       inputRef.current.focus();
@@ -166,6 +241,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     }
   }, [files]);
 
+  const isSmall = size === 'small';
+  // size="small" is one row until the text needs a second line; then it uses the full layout
+  const isCompactRow = isSmall && !isExpanded;
+  const hasVoiceInput = Boolean(onVoiceInput);
+  const compactLayout = getChatInputCompactLayout(theme, { hasVoiceInput });
+  // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
+  const textPaddingX = isCompactRow ? undefined : makeSpace(theme.spacing[6]);
+
   const filePreviewContent = (
     <AnimatePresence>
       {hasFiles ? (
@@ -175,8 +258,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             display="flex"
             flexDirection="row"
             gap="spacing.3"
-            paddingTop="spacing.5"
-            paddingX="spacing.5"
+            paddingTop="spacing.4"
+            paddingX="spacing.4"
             overflowX="auto"
             height="auto"
             overflowY="hidden"
@@ -203,19 +286,124 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </AnimatePresence>
   );
 
-  const actionBarContent = (
-    <ChatInputActionBar
-      isDisabled={isDisabled}
-      isGenerating={isGenerating}
+  const topContent = (
+    <>
+      {header ? (
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          alignItems="center"
+          gap="spacing.3"
+          paddingTop="spacing.4"
+          paddingX="spacing.4"
+        >
+          {header}
+        </BaseBox>
+      ) : null}
+      {filePreviewContent}
+    </>
+  );
+
+  // The "+": opens actionMenu when there is one, or the file picker
+  const getLeadingAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null => {
+    if (actionMenu) {
+      return (
+        <Menu>
+          <ChatInputButton
+            icon={PlusIcon}
+            size={buttonSize}
+            accessibilityLabel="Add files and more"
+            isDisabled={isDisabled}
+          />
+          {typeof actionMenu === 'function'
+            ? actionMenu({ openFilePicker: handleUploadClick })
+            : actionMenu}
+        </Menu>
+      );
+    }
+    if (hideFileUpload) return null;
+    return (
+      <ChatInputButton
+        icon={PlusIcon}
+        size={buttonSize}
+        accessibilityLabel="Upload file"
+        isDisabled={isDisabled}
+        onClick={handleUploadClick}
+      />
+    );
+  };
+
+  const getSubmitAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement => (
+    <ChatInputSubmit
+      status={resolvedStatus}
+      hasContent={hasContent}
       isSubmitDisabled={isSubmitDisabled}
-      hideFileUpload={hideFileUpload}
-      onUploadClick={handleUploadClick}
+      isDisabled={isDisabled}
+      size={buttonSize}
       onSubmit={handleSubmit}
+      onRetry={handleRetry}
+      canRetry={canRetry}
       onStop={onStop}
     />
   );
 
+  const getVoiceAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
+    onVoiceInput ? (
+      <ChatInputVoiceSlot
+        shift={getChatInputVoiceShift({
+          theme,
+          status: resolvedStatus,
+          hasContent,
+          isDisabled,
+          buttonSize,
+        })}
+      >
+        <ChatInputButton
+          icon={MicIcon}
+          size={buttonSize}
+          accessibilityLabel="Voice input"
+          isDisabled={isDisabled}
+          onClick={() => onVoiceInput()}
+        />
+      </ChatInputVoiceSlot>
+    ) : null;
+
+  const compactLeading = getLeadingAction('xsmall');
+  const compactLeadingAction = compactLeading ? (
+    <BaseBox
+      display="flex"
+      paddingLeft={makeSpace(compactLayout.leadingPaddingLeft)}
+      paddingBottom={makeSpace(compactLayout.leadingBottomInset)}
+      marginRight={makeSpace(compactLayout.leadingMarginRight)}
+    >
+      {compactLeading}
+    </BaseBox>
+  ) : undefined;
+
+  const compactTrailingAction = (
+    <BaseBox
+      display="flex"
+      paddingBottom={makeSpace(compactLayout.trailingBottomInset)}
+      marginLeft={makeSpace(compactLayout.trailingMarginLeft)}
+      marginRight={makeSpace(compactLayout.trailingMarginRight)}
+      gap="spacing.3"
+    >
+      {getVoiceAction('xsmall')}
+      {getSubmitAction('xsmall')}
+    </BaseBox>
+  );
+
+  const actionBarContent = (
+    <ChatInputActionBar
+      leadingAction={getLeadingAction('small')}
+      voiceAction={getVoiceAction('small')}
+      submitAction={getSubmitAction('small')}
+    />
+  );
+
   const isError = validationState === 'error';
+  const textAreaPadding = makeSpace(compactLayout.textAreaPadding);
 
   return (
     <BaseBox
@@ -228,19 +416,40 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         ref={fileInputRef}
         type="file"
         accept={accept}
-        multiple={true}
+        // a picker for one file when only one may be attached, as in FileUpload
+        multiple={maxCount !== 1}
         onChange={handleFileInputChange}
         disabled={isDisabled}
         style={{ display: 'none' }}
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
+      {commandMenu.isOpen ? (
+        <ChatInputCommandMenu
+          listboxId={commandMenu.listboxId}
+          commands={commandMenu.items}
+          activeIndex={commandMenu.activeIndex}
+          getOptionId={commandMenu.getOptionId}
+          onSelect={commandMenu.select}
+          onActiveIndexChange={commandMenu.setActiveIndex}
+        />
+      ) : null}
+
+      <ChatInputCardBox
+        $isCompactRow={isCompactRow}
+        position="relative"
+        zIndex={1}
+        onMouseDownCapture={handleInnerMouseDownCapture}
+        {...dropZoneProps}
+      >
         <BaseInput
           ref={combinedRef}
           as="textarea"
           id="chat-input"
-          elevation="highRaised"
+          elevation="lowRaised"
+          focusIndicator="border"
+          hoverIndicator="none"
+          restBorderColor="surface.border.gray.muted"
           label={undefined}
           accessibilityLabel={accessibilityLabel}
           hideLabelText
@@ -248,25 +457,54 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           placeholder={showGhostSuggestion ? '' : placeholder}
           value={textValue}
           onChange={handleTextChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={(event) => {
+            setIsFocused(true);
+            onFocus?.(event);
+          }}
+          onBlur={(event) => {
+            setIsFocused(false);
+            onBlur?.(event);
+          }}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           isDisabled={isDisabled}
-          numberOfLines={2}
+          numberOfLines={1}
           size="medium"
-          padding={makeSpace(theme.spacing[5])}
-          borderRadius="large"
-          caretColor="surface.icon.onSea.onSubtle"
-          topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          padding={textAreaPadding}
+          paddingX={textPaddingX}
+          borderRadius={chatInputBorderRadius}
+          caretColor="interactive.border.primary.default"
+          // with commands, the text box points at the slash command list: aria-haspopup,
+          // aria-controls and aria-activedescendant. It stays a textbox, because a combobox role
+          // (and aria-expanded) is not allowed on a textarea.
+          role={commands?.length ? 'textbox' : undefined}
+          hasPopup={commands?.length ? 'listbox' : undefined}
+          // aria-controls only while the list is on the page, so it never points at nothing
+          popupId={commandMenu.isOpen ? commandMenu.listboxId : undefined}
+          activeDescendant={
+            commandMenu.isOpen ? commandMenu.getOptionId(commandMenu.activeIndex) : undefined
+          }
+          topContent={topContent}
+          bottomContent={isCompactRow ? undefined : actionBarContent}
+          leadingInteractionElement={isCompactRow ? compactLeadingAction : undefined}
+          trailingInteractionElement={isCompactRow ? compactTrailingAction : undefined}
+          visualsAlignment={isCompactRow ? 'bottom' : undefined}
           inputRowOverlay={
             showGhostSuggestion && suggestions ? (
               <BaseBox
                 position="absolute"
-                top="spacing.5"
-                left="spacing.5"
-                right="spacing.5"
+                top={textAreaPadding}
+                // in the one-row compact size, start where the typed text starts and stop before Send
+                left={
+                  isCompactRow && compactLeadingAction
+                    ? makeSpace(compactLayout.textStartWithLeading)
+                    : textPaddingX ?? textAreaPadding
+                }
+                right={
+                  isCompactRow
+                    ? makeSpace(compactLayout.textEndBeforeTrailing)
+                    : textPaddingX ?? textAreaPadding
+                }
                 pointerEvents="none"
                 zIndex={3}
               >
@@ -280,7 +518,45 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           }
           {...makeAnalyticsAttribute(rest)}
         />
-      </BaseBox>
+
+        {showAmbientBorder && !isDisabled && !isError && resolvedStatus !== 'error' ? (
+          <ChatInputAmbientBorder isHidden={isFocused || isPointerInside} />
+        ) : null}
+
+        {isDisabled ? null : hoverBorder}
+
+        {isDraggingFiles ? (
+          <BaseBox
+            position="absolute"
+            top="spacing.0"
+            right="spacing.0"
+            bottom="spacing.0"
+            left="spacing.0"
+            zIndex={2}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            pointerEvents="none"
+            borderRadius={chatInputBorderRadius}
+            borderWidth="thin"
+            borderStyle="dashed"
+            borderColor="interactive.border.primary.default"
+            backgroundColor="surface.background.primary.subtle"
+          >
+            <Text size="medium" weight="medium" color="interactive.text.primary.normal">
+              Drop files to attach
+            </Text>
+          </BaseBox>
+        ) : null}
+      </ChatInputCardBox>
+
+      {helpText ? (
+        <BaseBox id={helpTextId} marginTop="spacing.4" display="flex" justifyContent="center">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            {helpText}
+          </Text>
+        </BaseBox>
+      ) : null}
 
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox

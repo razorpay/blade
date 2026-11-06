@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
+import { Text } from '~components/Typography';
 import { ChatInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
@@ -14,6 +15,18 @@ describe('<ChatInput /> (native)', () => {
       <ChatInput placeholder="Ask a question..." accessibilityLabel={accessibilityLabel} />,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('warns once that web-only props have no effect', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const { rerender } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} maxCount={3} showAmbientBorder />,
+    );
+    rerender(<ChatInput accessibilityLabel={accessibilityLabel} maxCount={3} showAmbientBorder />);
+    const messages = warn.mock.calls.map(([message]) => String(message));
+    expect(messages.filter((message) => message.includes('only work on web'))).toHaveLength(1);
+    expect(messages.join(' ')).toContain('`maxCount`, `showAmbientBorder`');
+    warn.mockRestore();
   });
 
   it('should call onSubmit with value when submit button is pressed', () => {
@@ -32,11 +45,118 @@ describe('<ChatInput /> (native)', () => {
     expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello world', fileList: [] });
   });
 
-  it('should keep submit button disabled when input is empty', () => {
-    const { getByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
+  it('should hide Send until there is something to send', () => {
+    const { queryByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
+    expect(queryByRole('button', { name: 'Submit', includeHiddenElements: false })).toBeNull();
 
-    const submitButton = getByRole('button', { name: 'Submit' });
-    expect(submitButton.props.accessibilityState?.disabled).toBe(true);
+    const { getAllByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} defaultValue="Hi" />,
+    );
+    expect(getAllByRole('button', { name: 'Submit', includeHiddenElements: false })).toHaveLength(
+      1,
+    );
+  });
+
+  it('should show Stop for status="streaming" and Retry for status="error"', () => {
+    const onStop = jest.fn();
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} status="streaming" onStop={onStop} />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Stop generation' }));
+    expect(onStop).toHaveBeenCalledTimes(1);
+
+    const { getByRole: getByRoleError } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        status="error"
+        defaultValue="Refund pay_123"
+        onSubmit={onSubmit}
+      />,
+    );
+    fireEvent.press(getByRoleError('button', { name: 'Retry' }));
+    expect(onSubmit).toHaveBeenCalledWith({ value: 'Refund pay_123', fileList: [] });
+  });
+
+  it('should not open the file picker when a promise submit resolves', async () => {
+    const onFileChange = jest.fn();
+    const file = { id: 'file-1', name: 'a.pdf', size: 1, status: 'success' };
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        defaultValue="Hi"
+        fileList={[file as never]}
+        onFileChange={onFileChange}
+        onSubmit={() => Promise.resolve()}
+        clearOnSubmit
+      />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Submit' }));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(onFileChange).not.toHaveBeenCalled();
+  });
+
+  it('gives one line its full height in both sizes', () => {
+    for (const size of ['medium', 'small'] as const) {
+      const { getByLabelText } = renderWithTheme(
+        <ChatInput accessibilityLabel={`Chat input ${size}`} size={size} />,
+      );
+      const style = [getByLabelText(`Chat input ${size}`).props.style].flat(Infinity);
+      const minHeight = style.reduce(
+        (found: number | undefined, part: { minHeight?: number; height?: number } | undefined) =>
+          part?.minHeight ?? part?.height ?? found,
+        undefined,
+      );
+      expect(minHeight).toBeGreaterThanOrEqual(44);
+    }
+  });
+
+  it('shows a mic before Send when onVoiceInput is passed', () => {
+    const onVoiceInput = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} onVoiceInput={onVoiceInput} />,
+    );
+    fireEvent.press(getByRole('button', { name: 'Voice input' }));
+    expect(onVoiceInput).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the error banner on the card when help text is shown', () => {
+    const { getByText, toJSON } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        helpText="Ray is AI and can make mistakes"
+        validationState="error"
+        errorText="Something went wrong"
+      />,
+    );
+    // the banner and the help text are not in the same positioned box
+    const tree = JSON.stringify(toJSON());
+    expect(getByText('Something went wrong')).toBeTruthy();
+    expect(tree.indexOf('Something went wrong')).toBeLessThan(
+      tree.indexOf('Ray is AI and can make mistakes'),
+    );
+  });
+
+  it('shows help text under the box', () => {
+    const { getByText } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        helpText="Ray is AI and can make mistakes"
+      />,
+    );
+    expect(getByText('Ray is AI and can make mistakes')).toBeTruthy();
+  });
+
+  it('should render the compact size and header', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        size="small"
+        header={<Text>pay_Qx81Lm2</Text>}
+      />,
+    );
+    expect(getByText('pay_Qx81Lm2')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should show stop button when isGenerating is true and call onStop', () => {
@@ -46,7 +166,7 @@ describe('<ChatInput /> (native)', () => {
       <ChatInput accessibilityLabel={accessibilityLabel} isGenerating onStop={onStop} />,
     );
 
-    expect(queryByRole('button', { name: 'Submit' })).toBeNull();
+    expect(queryByRole('button', { name: 'Submit', includeHiddenElements: false })).toBeNull();
     const stopButton = getByRole('button', { name: 'Stop generation' });
     fireEvent.press(stopButton);
     expect(onStop).toHaveBeenCalledTimes(1);

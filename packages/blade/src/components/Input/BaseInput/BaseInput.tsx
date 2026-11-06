@@ -257,6 +257,14 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     autoGrowMaxHeight?: number;
     /**
+     * @internal Minimum height (in px) of a React Native auto-growing textarea, used with
+     * `autoGrowMaxHeight`. Defaults to the input height times `numberOfLines`. ChatInput's
+     * `size="small"` sets it so a single row with its padding does not start short.
+     *
+     * **Note (Web):** No effect.
+     */
+    autoGrowMinHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -332,6 +340,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      *   element when there's neither
      */
     hasCompactLeadingSpacing?: boolean;
+    /**
+     * @internal Vertical alignment of the leading and trailing visuals in the input row.
+     * `bottom` keeps them on the last row while a textarea grows, used by ChatInput's
+     * `size="small"` for its inline upload and submit buttons.
+     * @default 'center'
+     */
+    visualsAlignment?: 'center' | 'bottom';
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -389,6 +404,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     padding?: string;
     /**
+     * @internal Overrides only the left and right padding, on top of `padding`. Accepts CSS
+     * values like `"20px"`. Used by ChatInput to start its text further in than its top padding.
+     */
+    paddingX?: string;
+    /**
      * Overrides the border radius of the input independently of the `size` prop.
      * Accepts border radius tokens like `"large"`.
      */
@@ -437,7 +457,31 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Overrides the caret (text cursor) color of the input.
      */
-    caretColor?: 'surface.icon.onSea.onSubtle';
+    caretColor?:
+      | 'surface.icon.onSea.onSubtle'
+      | 'interactive.text.primary.normal'
+      | 'interactive.border.primary.default';
+    /**
+     * @internal How the input shows focus.
+     * - `ring`: the thick focus border and the focus ring every input uses.
+     * - `border`: the thick primary focus border without the focus ring. Used by ChatInput.
+     * @default 'ring'
+     */
+    focusIndicator?: 'ring' | 'border';
+    /**
+     * @internal How the input shows hover on web.
+     * - `border`: the whole border darkens.
+     * - `none`: the border stays as it is, for inputs that draw their own hover. Used by
+     *   ChatInput, whose border lights up only near the pointer.
+     * @default 'border'
+     */
+    hoverIndicator?: 'border' | 'none';
+    /**
+     * @internal Border colour at rest, instead of `interactive.border.gray.default`. Hover, focus,
+     * disabled and error keep their own colours. Used by ChatInput for its lighter, see-through
+     * border.
+     */
+    restBorderColor?: 'surface.border.gray.muted';
     /**
      * Content rendered inside the input wrapper, above the input row.
      * Used by ChatInput for file previews.
@@ -855,7 +899,8 @@ const FocusRingWrapper = styled(BaseBox)<{
   className: string;
   $size: NonNullable<BaseInputProps['size']>;
   $borderRadius?: BaseInputProps['borderRadius'];
-}>(({ theme, currentInteraction, isTableInputCell, $size, $borderRadius }) => ({
+  $focusIndicator?: BaseInputProps['focusIndicator'];
+}>(({ theme, currentInteraction, isTableInputCell, $size, $borderRadius, $focusIndicator }) => ({
   borderRadius: makeBorderSize(
     isTableInputCell
       ? theme.border.radius.none
@@ -873,7 +918,7 @@ const FocusRingWrapper = styled(BaseBox)<{
         // (clear, show password, country selector, etc.) draw their own focus ring, so showing
         // this one too while they are focused would give two rings at once.
         '&:focus-within':
-          !isTableInputCell && currentInteraction === 'focus'
+          !isTableInputCell && $focusIndicator !== 'border' && currentInteraction === 'focus'
             ? {
                 ...getFocusRingStyles({
                   theme,
@@ -947,6 +992,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingFooterSlot,
     numberOfLines,
     autoGrowMaxHeight,
+    autoGrowMinHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -954,6 +1000,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
     hideLabelText,
     hasCompactLeadingSpacing,
+    visualsAlignment = 'center',
     hideFormHint,
     showHelpTextOnFocus = false,
     hasPopup,
@@ -970,6 +1017,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isLabelInsideInput,
     size = 'medium',
     padding,
+    paddingX,
     borderRadius,
     elevation,
     trailingButton,
@@ -989,6 +1037,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     bottomContent,
     inputRowOverlay,
     caretColor,
+    focusIndicator,
+    hoverIndicator,
+    restBorderColor,
     ...rest
   },
   ref,
@@ -1077,7 +1128,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     }),
     label: accessibilityLabel,
     hasPopup,
-    expanded: hasPopup ? isPopupExpanded : undefined,
+    // a text box may not carry aria-expanded, so a textbox with a popup only gets
+    // aria-haspopup, aria-controls and aria-activedescendant (ChatInput's slash commands)
+    expanded: hasPopup && role !== 'textbox' ? isPopupExpanded : undefined,
     controls: hasPopup ? popupId : undefined,
     role: role ?? defaultRole,
     activeDescendant,
@@ -1199,6 +1252,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           className="focus-ring-wrapper"
           $size={_size}
           $borderRadius={borderRadius}
+          $focusIndicator={focusIndicator}
           elevation={elevation}
         >
           <BaseInputWrapper
@@ -1233,6 +1287,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             isTableInputCell={isTableInputCell}
+            focusIndicator={focusIndicator}
+            hoverIndicator={hoverIndicator}
+            restBorderColor={restBorderColor}
             topContent={topContent}
             bottomContent={bottomContent}
             inputRowOverlay={inputRowOverlay}
@@ -1245,6 +1302,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
               hasCompactLeadingSpacing={hasCompactLeadingSpacing}
+              visualsAlignment={visualsAlignment}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1309,7 +1367,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
                 // Native-only: do not forward to web StyledBaseInput
-                {...(isReactNative && autoGrowMaxHeight ? { autoGrowMaxHeight } : null)}
+                {...(isReactNative && autoGrowMaxHeight
+                  ? { autoGrowMaxHeight, autoGrowMinHeight }
+                  : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}
@@ -1318,6 +1378,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isDropdownTrigger={isDropdownTrigger}
                 $size={_size}
                 $padding={padding}
+                $paddingX={paddingX}
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
@@ -1348,6 +1409,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingDropDown={trailingDropDown}
               errorTextId={errorTextId}
               successTextId={successTextId}
+              visualsAlignment={visualsAlignment}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
