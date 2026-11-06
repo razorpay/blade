@@ -21,465 +21,231 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
   >
     <View
       data-blade-component="base-box"
-      onLayout={[Function]}
       position="relative"
       style={
         [
           {
             "position": "relative",
-            "zIndex": 1,
           },
         ]
       }
-      zIndex={1}
     >
       <View
         data-blade-component="base-box"
+        onLayout={[Function]}
+        position="relative"
         style={
           [
-            {},
+            {
+              "position": "relative",
+              "zIndex": 1,
+            },
           ]
         }
+        zIndex={1}
       >
         <View
           data-blade-component="base-box"
-          display="flex"
-          flexDirection="column"
-          position="relative"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "position": "relative",
-                "width": "100%",
-              },
+              {},
             ]
           }
-          width="100%"
         >
           <View
-            className="focus-ring-wrapper"
-            currentInteraction="default"
             data-blade-component="base-box"
-            elevation="lowRaised"
-            isTableInputCell={false}
+            display="flex"
+            flexDirection="column"
+            position="relative"
             style={
               [
-                {},
                 {
-                  "elevation": 8,
-                  "shadowColor": "hsla(200, 10%, 18%, 1)",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.06,
-                  "shadowRadius": 2,
-                },
-                [
-                  {
-                    "borderRadius": 16,
-                    "width": "100%",
-                  },
-                ],
-              ]
-            }
-          >
-            <View
-              style={
-                {
+                  "display": "flex",
+                  "flexDirection": "column",
                   "position": "relative",
                   "width": "100%",
-                }
+                },
+              ]
+            }
+            width="100%"
+          >
+            <View
+              className="focus-ring-wrapper"
+              currentInteraction="default"
+              data-blade-component="base-box"
+              elevation="lowRaised"
+              isTableInputCell={false}
+              style={
+                [
+                  {},
+                  {
+                    "elevation": 8,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 2,
+                  },
+                  [
+                    {
+                      "borderRadius": 16,
+                      "width": "100%",
+                    },
+                  ],
+                ]
               }
             >
               <View
-                borderRadius="large"
-                currentInteraction="default"
-                focusIndicator="border"
-                isDisabled={true}
-                isTableInputCell={false}
-                numberOfLines={1}
-                onClick={[Function]}
-                restBorderColor="surface.border.gray.muted"
-                setShowAllTagsWithAnimation={[Function]}
-                size="medium"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(0, 0%, 97%, 1)",
-                      "borderColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "overflow": "hidden",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "hsla(0, 0%, 97%, 1)",
-                      "borderColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                    },
-                  ]
+                  {
+                    "position": "relative",
+                    "width": "100%",
+                  }
                 }
               >
                 <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="column"
+                  borderRadius="large"
+                  currentInteraction="default"
+                  focusIndicator="border"
+                  isDisabled={true}
+                  isTableInputCell={false}
+                  numberOfLines={1}
+                  onClick={[Function]}
+                  restBorderColor="surface.border.gray.muted"
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(0, 0%, 97%, 1)",
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                        "position": "relative",
                         "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 97%, 1)",
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
                       },
                     ]
                   }
-                  width="100%"
                 >
                   <View
-                    alignItems="flex-start"
                     data-blade-component="base-box"
                     display="flex"
-                    flexDirection="row"
+                    flexDirection="column"
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
                           "display": "flex",
-                          "flexDirection": "row",
+                          "flexDirection": "column",
                           "width": "100%",
                         },
                       ]
                     }
                     width="100%"
                   >
-                    <TextInput
-                      accessibilityDescribedBy=""
-                      accessibilityInvalid={false}
-                      accessibilityLabel="Chat input"
-                      accessibilityRequired={false}
-                      accessibilityState={
-                        {
-                          "disabled": true,
-                          "expanded": undefined,
-                        }
-                      }
-                      accessible={true}
-                      autoFocus={false}
-                      data-blade-component="styled-base-input"
-                      editable={false}
-                      hasLeadingDropdown={false}
-                      hasTags={false}
-                      id="chatinput-323-324-input-325"
-                      includeFontPadding={false}
-                      isFocused={false}
-                      isInsideCounterInput={false}
-                      isTableInputCell={false}
-                      isTextArea={true}
-                      keyboardType="default"
-                      multiline={true}
-                      numberOfLines={1}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onContentSizeChange={[Function]}
-                      onEndEditing={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholder="Ask a question..."
-                      placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
-                      scrollEnabled={false}
-                      secureTextEntry={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "color": "hsla(206, 10%, 29%, 0.32)",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "minHeight": 36,
-                            "paddingBottom": 12,
-                            "paddingLeft": 20,
-                            "paddingRight": 20,
-                            "paddingTop": 12,
-                            "textAlignVertical": "top",
-                            "textDecorationLine": "none",
-                            "width": "100%",
-                          },
-                          {
-                            "height": 44,
-                            "maxHeight": 200,
-                          },
-                        ]
-                      }
-                      value=""
-                      valueComponentType="text"
-                    />
-                  </View>
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    gap="spacing.3"
-                    justifyContent="space-between"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                          "gap": 8,
-                          "justifyContent": "space-between",
-                          "paddingBottom": 12,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 8,
-                        },
-                      ]
-                    }
-                  >
                     <View
-                      alignItems="center"
+                      alignItems="flex-start"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.2"
                       style={
                         [
                           {
-                            "alignItems": "center",
+                            "alignItems": "flex-start",
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 4,
+                            "width": "100%",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        accessibilityLabel="Upload file"
-                        accessibilityRole="button"
+                      <TextInput
+                        accessibilityDescribedBy=""
+                        accessibilityInvalid={false}
+                        accessibilityLabel="Chat input"
+                        accessibilityRequired={false}
                         accessibilityState={
                           {
-                            "busy": undefined,
-                            "checked": undefined,
                             "disabled": true,
                             "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
                           }
                         }
                         accessible={true}
-                        borderRadius={8}
-                        buttonPaddingBottom="0px"
-                        buttonPaddingLeft="0px"
-                        buttonPaddingRight="0px"
-                        buttonPaddingTop="0px"
-                        collapsable={false}
-                        color="transparent"
-                        data-blade-component="button"
-                        defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                        focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                        focusRingColor="hsla(218, 89%, 51%, 0.18)"
-                        focusable={true}
-                        height="32px"
-                        hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                        hoverIconColor="hsla(206, 10%, 29%, 0.32)"
-                        isFullWidth={false}
-                        isLoading={false}
-                        isPressed={false}
-                        minHeight="32px"
-                        motionDuration="duration.xquick"
-                        motionEasing="easing.standard"
+                        autoFocus={false}
+                        data-blade-component="styled-base-input"
+                        editable={false}
+                        hasLeadingDropdown={false}
+                        hasTags={false}
+                        id="chatinput-337-338-input-339"
+                        includeFontPadding={false}
+                        isFocused={false}
+                        isInsideCounterInput={false}
+                        isTableInputCell={false}
+                        isTextArea={true}
+                        keyboardType="default"
+                        multiline={true}
+                        numberOfLines={1}
                         onBlur={[Function]}
-                        onClick={[Function]}
+                        onChangeText={[Function]}
+                        onContentSizeChange={[Function]}
+                        onEndEditing={[Function]}
                         onFocus={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseUp={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchStart={[Function]}
-                        role="button"
-                        size="small"
+                        onKeyPress={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholder="Ask a question..."
+                        placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+                        scrollEnabled={false}
+                        secureTextEntry={false}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "alignSelf": "center",
-                              "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
-                              "borderColor": "black",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 0,
-                              "cursor": "not-allowed",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 32,
-                              "justifyContent": "center",
-                              "minHeight": 32,
-                              "overflow": "hidden",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationColor": "black",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "color": "hsla(206, 10%, 29%, 0.32)",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": -0.18200000000000002,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "minHeight": 36,
+                              "paddingBottom": 12,
+                              "paddingLeft": 20,
+                              "paddingRight": 20,
+                              "paddingTop": 12,
+                              "textAlignVertical": "top",
                               "textDecorationLine": "none",
-                              "textDecorationStyle": "solid",
-                              "width": 32,
+                              "width": "100%",
                             },
                             {
-                              "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+                              "height": 44,
+                              "maxHeight": 200,
                             },
                           ]
                         }
-                        type="button"
-                        width="32px"
-                      >
-                        <View
-                          style={
-                            {
-                              "transform": [
-                                {
-                                  "scale": 1,
-                                },
-                              ],
-                            }
-                          }
-                        >
-                          <View
-                            alignItems="center"
-                            data-blade-component="base-box"
-                            display="flex"
-                            flexDirection="row"
-                            isHidden={false}
-                            justifyContent="center"
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "display": "flex",
-                                  "flexBasis": 0,
-                                  "flexDirection": "row",
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "justifyContent": "center",
-                                  "zIndex": 1,
-                                },
-                                {
-                                  "opacity": 1,
-                                },
-                              ]
-                            }
-                            zIndex={1}
-                          >
-                            <View
-                              alignItems="center"
-                              data-blade-component="base-box"
-                              display="flex"
-                              justifyContent="center"
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "display": "flex",
-                                    "justifyContent": "center",
-                                  },
-                                ]
-                              }
-                            >
-                              <RNSVGSvgView
-                                accessibilityElementsHidden={true}
-                                align="xMidYMid"
-                                bbHeight="16px"
-                                bbWidth="16px"
-                                data-blade-component="icon"
-                                fill="none"
-                                focusable={false}
-                                height="16px"
-                                importantForAccessibility="no-hide-descendants"
-                                meetOrSlice={0}
-                                minX={0}
-                                minY={0}
-                                style={
-                                  [
-                                    {
-                                      "backgroundColor": "transparent",
-                                      "borderWidth": 0,
-                                    },
-                                    [
-                                      {},
-                                    ],
-                                    {
-                                      "flex": 0,
-                                      "height": 16,
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                                vbHeight={24}
-                                vbWidth={24}
-                                width="16px"
-                              >
-                                <RNSVGGroup
-                                  fill={null}
-                                  propList={
-                                    [
-                                      "fill",
-                                    ]
-                                  }
-                                >
-                                  <RNSVGPath
-                                    d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
-                                    fill={
-                                      {
-                                        "payload": 1380141905,
-                                        "type": 0,
-                                      }
-                                    }
-                                    propList={
-                                      [
-                                        "fill",
-                                      ]
-                                    }
-                                  />
-                                </RNSVGGroup>
-                              </RNSVGSvgView>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
+                        value=""
+                        valueComponentType="text"
+                      />
                     </View>
                     <View
                       alignItems="center"
@@ -487,6 +253,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                       display="flex"
                       flexDirection="row"
                       gap="spacing.3"
+                      justifyContent="space-between"
                       style={
                         [
                           {
@@ -494,22 +261,34 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                             "display": "flex",
                             "flexDirection": "row",
                             "gap": 8,
+                            "justifyContent": "space-between",
+                            "paddingBottom": 12,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
                           },
                         ]
                       }
                     >
                       <View
-                        accessibilityElementsHidden={true}
-                        importantForAccessibility="no-hide-descendants"
-                        pointerEvents="none"
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.2"
                         style={
-                          {
-                            "opacity": 0,
-                          }
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 4,
+                            },
+                          ]
                         }
                       >
                         <View
-                          accessibilityLabel="Submit"
+                          accessibilityLabel="Upload file"
                           accessibilityRole="button"
                           accessibilityState={
                             {
@@ -535,15 +314,15 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                           buttonPaddingRight="0px"
                           buttonPaddingTop="0px"
                           collapsable={false}
-                          color="neutral"
+                          color="transparent"
                           data-blade-component="button"
-                          defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          focusRingColor="hsla(206, 10%, 29%, 0.12)"
+                          defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                          focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                          focusRingColor="hsla(218, 89%, 51%, 0.18)"
                           focusable={true}
                           height="32px"
-                          hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          hoverIconColor="hsla(0, 0%, 0%, 0.32)"
+                          hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                          hoverIconColor="hsla(206, 10%, 29%, 0.32)"
                           isFullWidth={false}
                           isLoading={false}
                           isPressed={false}
@@ -570,7 +349,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                               {
                                 "alignItems": "center",
                                 "alignSelf": "center",
-                                "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
                                 "borderColor": "black",
                                 "borderRadius": 8,
                                 "borderStyle": "solid",
@@ -592,7 +371,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                                 "width": 32,
                               },
                               {
-                                "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
                               },
                             ]
                           }
@@ -693,10 +472,10 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                                     }
                                   >
                                     <RNSVGPath
-                                      d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                      d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                                       fill={
                                         {
-                                          "payload": 1375731712,
+                                          "payload": 1380141905,
                                           "type": 0,
                                         }
                                       }
@@ -713,297 +492,41 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                           </View>
                         </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ChatInput /> (native) should render the compact size and header 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="chat-input"
-    position="relative"
-    style={
-      [
-        {
-          "position": "relative",
-        },
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      onLayout={[Function]}
-      position="relative"
-      style={
-        [
-          {
-            "position": "relative",
-            "zIndex": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <View
-        data-blade-component="base-box"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          display="flex"
-          flexDirection="column"
-          position="relative"
-          style={
-            [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "position": "relative",
-                "width": "100%",
-              },
-            ]
-          }
-          width="100%"
-        >
-          <View
-            className="focus-ring-wrapper"
-            currentInteraction="default"
-            data-blade-component="base-box"
-            elevation="lowRaised"
-            isTableInputCell={false}
-            style={
-              [
-                {},
-                {
-                  "elevation": 8,
-                  "shadowColor": "hsla(200, 10%, 18%, 1)",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.06,
-                  "shadowRadius": 2,
-                },
-                [
-                  {
-                    "borderRadius": 16,
-                    "width": "100%",
-                  },
-                ],
-              ]
-            }
-          >
-            <View
-              style={
-                {
-                  "position": "relative",
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                borderRadius="large"
-                currentInteraction="default"
-                focusIndicator="border"
-                isDisabled={false}
-                isTableInputCell={false}
-                numberOfLines={1}
-                onClick={[Function]}
-                restBorderColor="surface.border.gray.muted"
-                setShowAllTagsWithAnimation={[Function]}
-                size="medium"
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(206, 10%, 29%, 0.12)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "overflow": "hidden",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(206, 10%, 29%, 0.12)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="column"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  width="100%"
-                >
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    flexWrap="wrap"
-                    gap="spacing.3"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                          "flexWrap": "wrap",
-                          "gap": 8,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 12,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="surface.text.gray.normal"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      letterSpacing={50}
-                      lineHeight={100}
-                      style={
-                        [
-                          {
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      pay_Qx81Lm2
-                    </Text>
-                  </View>
-                  <View
-                    alignItems="flex-start"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "row",
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                    width="100%"
-                  >
-                    <View
-                      alignItems="center"
-                      alignSelf="flex-end"
-                      data-blade-component="base-box"
-                      display="flex"
-                      flexDirection="row"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "flex-end",
-                            "display": "flex",
-                            "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
                       <View
-                        alignItems="stretch"
-                        alignSelf="stretch"
+                        alignItems="center"
                         data-blade-component="base-box"
                         display="flex"
+                        flexDirection="row"
+                        gap="spacing.3"
                         style={
                           [
                             {
-                              "alignItems": "stretch",
-                              "alignSelf": "stretch",
+                              "alignItems": "center",
                               "display": "flex",
-                              "paddingBottom": 4,
-                              "paddingLeft": 4,
-                              "paddingTop": 4,
+                              "flexDirection": "row",
+                              "gap": 8,
                             },
                           ]
                         }
                       >
                         <View
-                          data-blade-component="base-box"
-                          display="flex"
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
                           style={
-                            [
-                              {
-                                "display": "flex",
-                                "marginRight": -4,
-                                "paddingBottom": 4,
-                                "paddingLeft": 4,
-                              },
-                            ]
+                            {
+                              "opacity": 0,
+                            }
                           }
                         >
                           <View
-                            accessibilityLabel="Upload file"
+                            accessibilityLabel="Submit"
                             accessibilityRole="button"
                             accessibilityState={
                               {
                                 "busy": undefined,
                                 "checked": undefined,
-                                "disabled": false,
+                                "disabled": true,
                                 "expanded": undefined,
                                 "selected": undefined,
                               }
@@ -1023,19 +546,19 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                             buttonPaddingRight="0px"
                             buttonPaddingTop="0px"
                             collapsable={false}
-                            color="transparent"
+                            color="neutral"
                             data-blade-component="button"
-                            defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-                            focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                            focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                            defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            focusRingColor="hsla(206, 10%, 29%, 0.12)"
                             focusable={true}
-                            height="28px"
-                            hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                            hoverIconColor="hsla(200, 10%, 18%, 1)"
+                            height="32px"
+                            hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            hoverIconColor="hsla(0, 0%, 0%, 0.32)"
                             isFullWidth={false}
                             isLoading={false}
                             isPressed={false}
-                            minHeight="28px"
+                            minHeight="32px"
                             motionDuration="duration.xquick"
                             motionEasing="easing.standard"
                             onBlur={[Function]}
@@ -1052,23 +575,23 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                             onTouchEnd={[Function]}
                             onTouchStart={[Function]}
                             role="button"
-                            size="xsmall"
+                            size="small"
                             style={
                               [
                                 {
                                   "alignItems": "center",
                                   "alignSelf": "center",
-                                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                  "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
                                   "borderColor": "black",
                                   "borderRadius": 8,
                                   "borderStyle": "solid",
                                   "borderWidth": 0,
-                                  "cursor": "pointer",
+                                  "cursor": "not-allowed",
                                   "display": "flex",
                                   "flexDirection": "row",
-                                  "height": 28,
+                                  "height": 32,
                                   "justifyContent": "center",
-                                  "minHeight": 28,
+                                  "minHeight": 32,
                                   "overflow": "hidden",
                                   "paddingBottom": 0,
                                   "paddingLeft": 0,
@@ -1077,15 +600,15 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                                   "textDecorationColor": "black",
                                   "textDecorationLine": "none",
                                   "textDecorationStyle": "solid",
-                                  "width": 28,
+                                  "width": 32,
                                 },
                                 {
-                                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                  "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
                                 },
                               ]
                             }
                             type="button"
-                            width="28px"
+                            width="32px"
                           >
                             <View
                               style={
@@ -1181,10 +704,10 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                                       }
                                     >
                                       <RNSVGPath
-                                        d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                                        d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
                                         fill={
                                           {
-                                            "payload": 4284575093,
+                                            "payload": 1375731712,
                                             "type": 0,
                                           }
                                         }
@@ -1203,135 +726,253 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                         </View>
                       </View>
                     </View>
-                    <TextInput
-                      accessibilityDescribedBy=""
-                      accessibilityInvalid={false}
-                      accessibilityLabel="Chat input"
-                      accessibilityRequired={false}
-                      accessibilityState={
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ChatInput /> (native) should render the compact size and header 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="chat-input"
+    position="relative"
+    style={
+      [
+        {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      position="relative"
+      style={
+        [
+          {
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        onLayout={[Function]}
+        position="relative"
+        style={
+          [
+            {
+              "position": "relative",
+              "zIndex": 1,
+            },
+          ]
+        }
+        zIndex={1}
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            position="relative"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "position": "relative",
+                  "width": "100%",
+                },
+              ]
+            }
+            width="100%"
+          >
+            <View
+              className="focus-ring-wrapper"
+              currentInteraction="default"
+              data-blade-component="base-box"
+              elevation="lowRaised"
+              isTableInputCell={false}
+              style={
+                [
+                  {},
+                  {
+                    "elevation": 8,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 2,
+                  },
+                  [
+                    {
+                      "borderRadius": 16,
+                      "width": "100%",
+                    },
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "position": "relative",
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  borderRadius="large"
+                  currentInteraction="default"
+                  focusIndicator="border"
+                  isDisabled={false}
+                  isTableInputCell={false}
+                  numberOfLines={1}
+                  onClick={[Function]}
+                  restBorderColor="surface.border.gray.muted"
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(206, 10%, 29%, 0.12)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(206, 10%, 29%, 0.12)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="column"
+                    style={
+                      [
                         {
-                          "disabled": false,
-                          "expanded": undefined,
-                        }
-                      }
-                      accessible={true}
-                      autoFocus={false}
-                      data-blade-component="styled-base-input"
-                      editable={true}
-                      hasLeadingDropdown={false}
-                      hasTags={false}
-                      id="chatinput-211-212-input-213"
-                      includeFontPadding={false}
-                      isFocused={false}
-                      isInsideCounterInput={false}
-                      isTableInputCell={false}
-                      isTextArea={true}
-                      keyboardType="default"
-                      leadingInteractionElement={
-                        <BaseBox
-                          display="flex"
-                          marginRight="-4px"
-                          paddingBottom="4px"
-                          paddingLeft="4px"
-                        >
-                          <ForwardRef(_ChatInputButton)
-                            accessibilityLabel="Upload file"
-                            icon={[Function]}
-                            isDisabled={false}
-                            onClick={[Function]}
-                            size="xsmall"
-                          />
-                        </BaseBox>
-                      }
-                      multiline={true}
-                      numberOfLines={1}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onContentSizeChange={[Function]}
-                      onEndEditing={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholder="Ask a question..."
-                      placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
-                      scrollEnabled={false}
-                      secureTextEntry={false}
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  >
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
+                      gap="spacing.3"
                       style={
                         [
                           {
-                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "minHeight": 36,
-                            "paddingBottom": 12,
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
+                            "gap": 8,
                             "paddingLeft": 12,
                             "paddingRight": 12,
                             "paddingTop": 12,
-                            "textAlignVertical": "top",
-                            "textDecorationLine": "none",
-                            "width": "100%",
-                          },
-                          {
-                            "height": 44,
-                            "maxHeight": 200,
                           },
                         ]
                       }
-                      trailingInteractionElement={
-                        <BaseBox
-                          display="flex"
-                          flexDirection="row"
-                          gap="spacing.3"
-                          marginLeft="-4px"
-                          marginRight="-4px"
-                          paddingBottom="8px"
-                        >
-                          <ChatInputSubmit
-                            canRetry={false}
-                            hasContent={false}
-                            isDisabled={false}
-                            isSubmitDisabled={true}
-                            onRetry={[Function]}
-                            onSubmit={[Function]}
-                            size="xsmall"
-                            status="ready"
-                          />
-                        </BaseBox>
-                      }
-                      value=""
-                      valueComponentType="text"
-                    />
+                    >
+                      <Text
+                        accessible={true}
+                        color="surface.text.gray.normal"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        letterSpacing={50}
+                        lineHeight={100}
+                        style={
+                          [
+                            {
+                              "color": "hsla(0, 0%, 2%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": -0.18200000000000002,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                          ]
+                        }
+                      >
+                        pay_Qx81Lm2
+                      </Text>
+                    </View>
                     <View
-                      alignItems="center"
-                      alignSelf="flex-end"
+                      alignItems="flex-start"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "alignSelf": "flex-end",
+                            "alignItems": "flex-start",
                             "display": "flex",
                             "flexDirection": "row",
+                            "width": "100%",
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <View
                         alignItems="center"
-                        alignSelf="center"
+                        alignSelf="flex-end"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -1339,7 +980,7 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                           [
                             {
                               "alignItems": "center",
-                              "alignSelf": "center",
+                              "alignSelf": "flex-end",
                               "display": "flex",
                               "flexDirection": "row",
                             },
@@ -1357,7 +998,9 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                                 "alignItems": "stretch",
                                 "alignSelf": "stretch",
                                 "display": "flex",
-                                "paddingRight": 12,
+                                "paddingBottom": 4,
+                                "paddingLeft": 4,
+                                "paddingTop": 4,
                               },
                             ]
                           }
@@ -1365,231 +1008,612 @@ exports[`<ChatInput /> (native) should render the compact size and header 1`] = 
                           <View
                             data-blade-component="base-box"
                             display="flex"
-                            flexDirection="row"
-                            gap="spacing.3"
                             style={
                               [
                                 {
                                   "display": "flex",
-                                  "flexDirection": "row",
-                                  "gap": 8,
-                                  "marginLeft": -4,
                                   "marginRight": -4,
-                                  "paddingBottom": 8,
+                                  "paddingBottom": 4,
+                                  "paddingLeft": 4,
                                 },
                               ]
                             }
                           >
                             <View
-                              accessibilityElementsHidden={true}
-                              importantForAccessibility="no-hide-descendants"
-                              pointerEvents="none"
-                              style={
+                              accessibilityLabel="Upload file"
+                              accessibilityRole="button"
+                              accessibilityState={
                                 {
-                                  "opacity": 0,
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": false,
+                                  "expanded": undefined,
+                                  "selected": undefined,
                                 }
                               }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              borderRadius={8}
+                              buttonPaddingBottom="0px"
+                              buttonPaddingLeft="0px"
+                              buttonPaddingRight="0px"
+                              buttonPaddingTop="0px"
+                              collapsable={false}
+                              color="transparent"
+                              data-blade-component="button"
+                              defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+                              focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                              focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                              focusable={true}
+                              height="28px"
+                              hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                              hoverIconColor="hsla(200, 10%, 18%, 1)"
+                              isFullWidth={false}
+                              isLoading={false}
+                              isPressed={false}
+                              minHeight="28px"
+                              motionDuration="duration.xquick"
+                              motionEasing="easing.standard"
+                              onBlur={[Function]}
+                              onClick={[Function]}
+                              onFocus={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              onTouchEnd={[Function]}
+                              onTouchStart={[Function]}
+                              role="button"
+                              size="xsmall"
+                              style={
+                                [
+                                  {
+                                    "alignItems": "center",
+                                    "alignSelf": "center",
+                                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                    "borderColor": "black",
+                                    "borderRadius": 8,
+                                    "borderStyle": "solid",
+                                    "borderWidth": 0,
+                                    "cursor": "pointer",
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "height": 28,
+                                    "justifyContent": "center",
+                                    "minHeight": 28,
+                                    "overflow": "hidden",
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textDecorationColor": "black",
+                                    "textDecorationLine": "none",
+                                    "textDecorationStyle": "solid",
+                                    "width": 28,
+                                  },
+                                  {
+                                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                  },
+                                ]
+                              }
+                              type="button"
+                              width="28px"
                             >
                               <View
-                                accessibilityLabel="Submit"
-                                accessibilityRole="button"
-                                accessibilityState={
-                                  {
-                                    "busy": undefined,
-                                    "checked": undefined,
-                                    "disabled": true,
-                                    "expanded": undefined,
-                                    "selected": undefined,
-                                  }
-                                }
-                                accessibilityValue={
-                                  {
-                                    "max": undefined,
-                                    "min": undefined,
-                                    "now": undefined,
-                                    "text": undefined,
-                                  }
-                                }
-                                accessible={true}
-                                borderRadius={8}
-                                buttonPaddingBottom="0px"
-                                buttonPaddingLeft="0px"
-                                buttonPaddingRight="0px"
-                                buttonPaddingTop="0px"
-                                collapsable={false}
-                                color="neutral"
-                                data-blade-component="button"
-                                defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                                focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                                focusRingColor="hsla(206, 10%, 29%, 0.12)"
-                                focusable={true}
-                                height="28px"
-                                hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                                hoverIconColor="hsla(0, 0%, 0%, 0.32)"
-                                isFullWidth={false}
-                                isLoading={false}
-                                isPressed={false}
-                                minHeight="28px"
-                                motionDuration="duration.xquick"
-                                motionEasing="easing.standard"
-                                onBlur={[Function]}
-                                onClick={[Function]}
-                                onFocus={[Function]}
-                                onMouseDown={[Function]}
-                                onMouseUp={[Function]}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                onTouchEnd={[Function]}
-                                onTouchStart={[Function]}
-                                role="button"
-                                size="xsmall"
                                 style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "alignSelf": "center",
-                                      "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
-                                      "borderColor": "black",
-                                      "borderRadius": 8,
-                                      "borderStyle": "solid",
-                                      "borderWidth": 0,
-                                      "cursor": "not-allowed",
-                                      "display": "flex",
-                                      "flexDirection": "row",
-                                      "height": 28,
-                                      "justifyContent": "center",
-                                      "minHeight": 28,
-                                      "overflow": "hidden",
-                                      "paddingBottom": 0,
-                                      "paddingLeft": 0,
-                                      "paddingRight": 0,
-                                      "paddingTop": 0,
-                                      "textDecorationColor": "black",
-                                      "textDecorationLine": "none",
-                                      "textDecorationStyle": "solid",
-                                      "width": 28,
-                                    },
-                                    {
-                                      "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
-                                    },
-                                  ]
+                                  {
+                                    "transform": [
+                                      {
+                                        "scale": 1,
+                                      },
+                                    ],
+                                  }
                                 }
-                                type="button"
-                                width="28px"
                               >
                                 <View
+                                  alignItems="center"
+                                  data-blade-component="base-box"
+                                  display="flex"
+                                  flexDirection="row"
+                                  isHidden={false}
+                                  justifyContent="center"
                                   style={
-                                    {
-                                      "transform": [
-                                        {
-                                          "scale": 1,
-                                        },
-                                      ],
-                                    }
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "display": "flex",
+                                        "flexBasis": 0,
+                                        "flexDirection": "row",
+                                        "flexGrow": 1,
+                                        "flexShrink": 1,
+                                        "justifyContent": "center",
+                                        "zIndex": 1,
+                                      },
+                                      {
+                                        "opacity": 1,
+                                      },
+                                    ]
                                   }
+                                  zIndex={1}
                                 >
                                   <View
                                     alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
-                                    flexDirection="row"
-                                    isHidden={false}
                                     justifyContent="center"
                                     style={
                                       [
                                         {
                                           "alignItems": "center",
                                           "display": "flex",
-                                          "flexBasis": 0,
-                                          "flexDirection": "row",
-                                          "flexGrow": 1,
-                                          "flexShrink": 1,
                                           "justifyContent": "center",
-                                          "zIndex": 1,
-                                        },
-                                        {
-                                          "opacity": 1,
                                         },
                                       ]
                                     }
-                                    zIndex={1}
+                                  >
+                                    <RNSVGSvgView
+                                      accessibilityElementsHidden={true}
+                                      align="xMidYMid"
+                                      bbHeight="16px"
+                                      bbWidth="16px"
+                                      data-blade-component="icon"
+                                      fill="none"
+                                      focusable={false}
+                                      height="16px"
+                                      importantForAccessibility="no-hide-descendants"
+                                      meetOrSlice={0}
+                                      minX={0}
+                                      minY={0}
+                                      style={
+                                        [
+                                          {
+                                            "backgroundColor": "transparent",
+                                            "borderWidth": 0,
+                                          },
+                                          [
+                                            {},
+                                          ],
+                                          {
+                                            "flex": 0,
+                                            "height": 16,
+                                            "width": 16,
+                                          },
+                                        ]
+                                      }
+                                      vbHeight={24}
+                                      vbWidth={24}
+                                      width="16px"
+                                    >
+                                      <RNSVGGroup
+                                        fill={null}
+                                        propList={
+                                          [
+                                            "fill",
+                                          ]
+                                        }
+                                      >
+                                        <RNSVGPath
+                                          d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                                          fill={
+                                            {
+                                              "payload": 4284575093,
+                                              "type": 0,
+                                            }
+                                          }
+                                          propList={
+                                            [
+                                              "fill",
+                                            ]
+                                          }
+                                        />
+                                      </RNSVGGroup>
+                                    </RNSVGSvgView>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <TextInput
+                        accessibilityDescribedBy=""
+                        accessibilityInvalid={false}
+                        accessibilityLabel="Chat input"
+                        accessibilityRequired={false}
+                        accessibilityState={
+                          {
+                            "disabled": false,
+                            "expanded": undefined,
+                          }
+                        }
+                        accessible={true}
+                        autoFocus={false}
+                        data-blade-component="styled-base-input"
+                        editable={true}
+                        hasLeadingDropdown={false}
+                        hasTags={false}
+                        id="chatinput-225-226-input-227"
+                        includeFontPadding={false}
+                        isFocused={false}
+                        isInsideCounterInput={false}
+                        isTableInputCell={false}
+                        isTextArea={true}
+                        keyboardType="default"
+                        leadingInteractionElement={
+                          <BaseBox
+                            display="flex"
+                            marginRight="-4px"
+                            paddingBottom="4px"
+                            paddingLeft="4px"
+                          >
+                            <ForwardRef(_ChatInputButton)
+                              accessibilityLabel="Upload file"
+                              icon={[Function]}
+                              isDisabled={false}
+                              onClick={[Function]}
+                              size="xsmall"
+                            />
+                          </BaseBox>
+                        }
+                        multiline={true}
+                        numberOfLines={1}
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onContentSizeChange={[Function]}
+                        onEndEditing={[Function]}
+                        onFocus={[Function]}
+                        onKeyPress={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholder="Ask a question..."
+                        placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+                        scrollEnabled={false}
+                        secureTextEntry={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "color": "hsla(0, 0%, 2%, 1)",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": -0.18200000000000002,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "minHeight": 36,
+                              "paddingBottom": 12,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 12,
+                              "textAlignVertical": "top",
+                              "textDecorationLine": "none",
+                              "width": "100%",
+                            },
+                            {
+                              "height": 44,
+                              "maxHeight": 200,
+                            },
+                          ]
+                        }
+                        trailingInteractionElement={
+                          <BaseBox
+                            display="flex"
+                            flexDirection="row"
+                            gap="spacing.3"
+                            marginLeft="-4px"
+                            marginRight="-4px"
+                            paddingBottom="8px"
+                          >
+                            <ChatInputSubmit
+                              canRetry={false}
+                              hasContent={false}
+                              isDisabled={false}
+                              isSubmitDisabled={true}
+                              onRetry={[Function]}
+                              onSubmit={[Function]}
+                              size="xsmall"
+                              status="ready"
+                            />
+                          </BaseBox>
+                        }
+                        value=""
+                        valueComponentType="text"
+                      />
+                      <View
+                        alignItems="center"
+                        alignSelf="flex-end"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-end",
+                              "display": "flex",
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          alignSelf="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "alignSelf": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            alignItems="stretch"
+                            alignSelf="stretch"
+                            data-blade-component="base-box"
+                            display="flex"
+                            style={
+                              [
+                                {
+                                  "alignItems": "stretch",
+                                  "alignSelf": "stretch",
+                                  "display": "flex",
+                                  "paddingRight": 12,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              gap="spacing.3"
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "gap": 8,
+                                    "marginLeft": -4,
+                                    "marginRight": -4,
+                                    "paddingBottom": 8,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                accessibilityElementsHidden={true}
+                                importantForAccessibility="no-hide-descendants"
+                                pointerEvents="none"
+                                style={
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }
+                              >
+                                <View
+                                  accessibilityLabel="Submit"
+                                  accessibilityRole="button"
+                                  accessibilityState={
+                                    {
+                                      "busy": undefined,
+                                      "checked": undefined,
+                                      "disabled": true,
+                                      "expanded": undefined,
+                                      "selected": undefined,
+                                    }
+                                  }
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  borderRadius={8}
+                                  buttonPaddingBottom="0px"
+                                  buttonPaddingLeft="0px"
+                                  buttonPaddingRight="0px"
+                                  buttonPaddingTop="0px"
+                                  collapsable={false}
+                                  color="neutral"
+                                  data-blade-component="button"
+                                  defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                                  focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                                  focusRingColor="hsla(206, 10%, 29%, 0.12)"
+                                  focusable={true}
+                                  height="28px"
+                                  hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                                  hoverIconColor="hsla(0, 0%, 0%, 0.32)"
+                                  isFullWidth={false}
+                                  isLoading={false}
+                                  isPressed={false}
+                                  minHeight="28px"
+                                  motionDuration="duration.xquick"
+                                  motionEasing="easing.standard"
+                                  onBlur={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onMouseDown={[Function]}
+                                  onMouseUp={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchStart={[Function]}
+                                  role="button"
+                                  size="xsmall"
+                                  style={
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "alignSelf": "center",
+                                        "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                        "borderColor": "black",
+                                        "borderRadius": 8,
+                                        "borderStyle": "solid",
+                                        "borderWidth": 0,
+                                        "cursor": "not-allowed",
+                                        "display": "flex",
+                                        "flexDirection": "row",
+                                        "height": 28,
+                                        "justifyContent": "center",
+                                        "minHeight": 28,
+                                        "overflow": "hidden",
+                                        "paddingBottom": 0,
+                                        "paddingLeft": 0,
+                                        "paddingRight": 0,
+                                        "paddingTop": 0,
+                                        "textDecorationColor": "black",
+                                        "textDecorationLine": "none",
+                                        "textDecorationStyle": "solid",
+                                        "width": 28,
+                                      },
+                                      {
+                                        "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                      },
+                                    ]
+                                  }
+                                  type="button"
+                                  width="28px"
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "transform": [
+                                          {
+                                            "scale": 1,
+                                          },
+                                        ],
+                                      }
+                                    }
                                   >
                                     <View
                                       alignItems="center"
                                       data-blade-component="base-box"
                                       display="flex"
+                                      flexDirection="row"
+                                      isHidden={false}
                                       justifyContent="center"
                                       style={
                                         [
                                           {
                                             "alignItems": "center",
                                             "display": "flex",
+                                            "flexBasis": 0,
+                                            "flexDirection": "row",
+                                            "flexGrow": 1,
+                                            "flexShrink": 1,
                                             "justifyContent": "center",
+                                            "zIndex": 1,
+                                          },
+                                          {
+                                            "opacity": 1,
                                           },
                                         ]
                                       }
+                                      zIndex={1}
                                     >
-                                      <RNSVGSvgView
-                                        accessibilityElementsHidden={true}
-                                        align="xMidYMid"
-                                        bbHeight="16px"
-                                        bbWidth="16px"
-                                        data-blade-component="icon"
-                                        fill="none"
-                                        focusable={false}
-                                        height="16px"
-                                        importantForAccessibility="no-hide-descendants"
-                                        meetOrSlice={0}
-                                        minX={0}
-                                        minY={0}
+                                      <View
+                                        alignItems="center"
+                                        data-blade-component="base-box"
+                                        display="flex"
+                                        justifyContent="center"
                                         style={
                                           [
                                             {
-                                              "backgroundColor": "transparent",
-                                              "borderWidth": 0,
-                                            },
-                                            [
-                                              {},
-                                            ],
-                                            {
-                                              "flex": 0,
-                                              "height": 16,
-                                              "width": 16,
+                                              "alignItems": "center",
+                                              "display": "flex",
+                                              "justifyContent": "center",
                                             },
                                           ]
                                         }
-                                        vbHeight={24}
-                                        vbWidth={24}
-                                        width="16px"
                                       >
-                                        <RNSVGGroup
-                                          fill={null}
-                                          propList={
+                                        <RNSVGSvgView
+                                          accessibilityElementsHidden={true}
+                                          align="xMidYMid"
+                                          bbHeight="16px"
+                                          bbWidth="16px"
+                                          data-blade-component="icon"
+                                          fill="none"
+                                          focusable={false}
+                                          height="16px"
+                                          importantForAccessibility="no-hide-descendants"
+                                          meetOrSlice={0}
+                                          minX={0}
+                                          minY={0}
+                                          style={
                                             [
-                                              "fill",
+                                              {
+                                                "backgroundColor": "transparent",
+                                                "borderWidth": 0,
+                                              },
+                                              [
+                                                {},
+                                              ],
+                                              {
+                                                "flex": 0,
+                                                "height": 16,
+                                                "width": 16,
+                                              },
                                             ]
                                           }
+                                          vbHeight={24}
+                                          vbWidth={24}
+                                          width="16px"
                                         >
-                                          <RNSVGPath
-                                            d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
-                                            fill={
-                                              {
-                                                "payload": 1375731712,
-                                                "type": 0,
-                                              }
-                                            }
+                                          <RNSVGGroup
+                                            fill={null}
                                             propList={
                                               [
                                                 "fill",
                                               ]
                                             }
-                                          />
-                                        </RNSVGGroup>
-                                      </RNSVGSvgView>
+                                          >
+                                            <RNSVGPath
+                                              d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                              fill={
+                                                {
+                                                  "payload": 1375731712,
+                                                  "type": 0,
+                                                }
+                                              }
+                                              propList={
+                                                [
+                                                  "fill",
+                                                ]
+                                              }
+                                            />
+                                          </RNSVGGroup>
+                                        </RNSVGSvgView>
+                                      </View>
                                     </View>
                                   </View>
                                 </View>
@@ -1632,465 +1656,231 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
   >
     <View
       data-blade-component="base-box"
-      onLayout={[Function]}
       position="relative"
       style={
         [
           {
             "position": "relative",
-            "zIndex": 1,
           },
         ]
       }
-      zIndex={1}
     >
       <View
         data-blade-component="base-box"
+        onLayout={[Function]}
+        position="relative"
         style={
           [
-            {},
+            {
+              "position": "relative",
+              "zIndex": 1,
+            },
           ]
         }
+        zIndex={1}
       >
         <View
           data-blade-component="base-box"
-          display="flex"
-          flexDirection="column"
-          position="relative"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "position": "relative",
-                "width": "100%",
-              },
+              {},
             ]
           }
-          width="100%"
         >
           <View
-            className="focus-ring-wrapper"
-            currentInteraction="default"
             data-blade-component="base-box"
-            elevation="lowRaised"
-            isTableInputCell={false}
+            display="flex"
+            flexDirection="column"
+            position="relative"
             style={
               [
-                {},
                 {
-                  "elevation": 8,
-                  "shadowColor": "hsla(200, 10%, 18%, 1)",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.06,
-                  "shadowRadius": 2,
-                },
-                [
-                  {
-                    "borderRadius": 16,
-                    "width": "100%",
-                  },
-                ],
-              ]
-            }
-          >
-            <View
-              style={
-                {
+                  "display": "flex",
+                  "flexDirection": "column",
                   "position": "relative",
                   "width": "100%",
-                }
+                },
+              ]
+            }
+            width="100%"
+          >
+            <View
+              className="focus-ring-wrapper"
+              currentInteraction="default"
+              data-blade-component="base-box"
+              elevation="lowRaised"
+              isTableInputCell={false}
+              style={
+                [
+                  {},
+                  {
+                    "elevation": 8,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 2,
+                  },
+                  [
+                    {
+                      "borderRadius": 16,
+                      "width": "100%",
+                    },
+                  ],
+                ]
               }
             >
               <View
-                borderRadius="large"
-                currentInteraction="default"
-                focusIndicator="border"
-                isDisabled={false}
-                isTableInputCell={false}
-                numberOfLines={1}
-                onClick={[Function]}
-                restBorderColor="surface.border.gray.muted"
-                setShowAllTagsWithAnimation={[Function]}
-                size="medium"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(206, 10%, 29%, 0.12)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "overflow": "hidden",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(206, 10%, 29%, 0.12)",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                    },
-                  ]
+                  {
+                    "position": "relative",
+                    "width": "100%",
+                  }
                 }
               >
                 <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="column"
+                  borderRadius="large"
+                  currentInteraction="default"
+                  focusIndicator="border"
+                  isDisabled={false}
+                  isTableInputCell={false}
+                  numberOfLines={1}
+                  onClick={[Function]}
+                  restBorderColor="surface.border.gray.muted"
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(206, 10%, 29%, 0.12)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                        "position": "relative",
                         "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(206, 10%, 29%, 0.12)",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
                       },
                     ]
                   }
-                  width="100%"
                 >
                   <View
-                    alignItems="flex-start"
                     data-blade-component="base-box"
                     display="flex"
-                    flexDirection="row"
+                    flexDirection="column"
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
                           "display": "flex",
-                          "flexDirection": "row",
+                          "flexDirection": "column",
                           "width": "100%",
                         },
                       ]
                     }
                     width="100%"
                   >
-                    <TextInput
-                      accessibilityDescribedBy=""
-                      accessibilityInvalid={false}
-                      accessibilityLabel="Chat input"
-                      accessibilityRequired={false}
-                      accessibilityState={
-                        {
-                          "disabled": false,
-                          "expanded": undefined,
-                        }
-                      }
-                      accessible={true}
-                      autoFocus={false}
-                      data-blade-component="styled-base-input"
-                      editable={true}
-                      hasLeadingDropdown={false}
-                      hasTags={false}
-                      id="chatinput-7-1-input-2"
-                      includeFontPadding={false}
-                      isFocused={false}
-                      isInsideCounterInput={false}
-                      isTableInputCell={false}
-                      isTextArea={true}
-                      keyboardType="default"
-                      multiline={true}
-                      numberOfLines={1}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onContentSizeChange={[Function]}
-                      onEndEditing={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholder="Ask a question..."
-                      placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
-                      scrollEnabled={false}
-                      secureTextEntry={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "minHeight": 36,
-                            "paddingBottom": 12,
-                            "paddingLeft": 20,
-                            "paddingRight": 20,
-                            "paddingTop": 12,
-                            "textAlignVertical": "top",
-                            "textDecorationLine": "none",
-                            "width": "100%",
-                          },
-                          {
-                            "height": 44,
-                            "maxHeight": 200,
-                          },
-                        ]
-                      }
-                      value=""
-                      valueComponentType="text"
-                    />
-                  </View>
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    gap="spacing.3"
-                    justifyContent="space-between"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                          "gap": 8,
-                          "justifyContent": "space-between",
-                          "paddingBottom": 12,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 8,
-                        },
-                      ]
-                    }
-                  >
                     <View
-                      alignItems="center"
+                      alignItems="flex-start"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.2"
                       style={
                         [
                           {
-                            "alignItems": "center",
+                            "alignItems": "flex-start",
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 4,
+                            "width": "100%",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        accessibilityLabel="Upload file"
-                        accessibilityRole="button"
+                      <TextInput
+                        accessibilityDescribedBy=""
+                        accessibilityInvalid={false}
+                        accessibilityLabel="Chat input"
+                        accessibilityRequired={false}
                         accessibilityState={
                           {
-                            "busy": undefined,
-                            "checked": undefined,
                             "disabled": false,
                             "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
                           }
                         }
                         accessible={true}
-                        borderRadius={8}
-                        buttonPaddingBottom="0px"
-                        buttonPaddingLeft="0px"
-                        buttonPaddingRight="0px"
-                        buttonPaddingTop="0px"
-                        collapsable={false}
-                        color="transparent"
-                        data-blade-component="button"
-                        defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-                        focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                        focusRingColor="hsla(218, 89%, 51%, 0.18)"
-                        focusable={true}
-                        height="32px"
-                        hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-                        hoverIconColor="hsla(200, 10%, 18%, 1)"
-                        isFullWidth={false}
-                        isLoading={false}
-                        isPressed={false}
-                        minHeight="32px"
-                        motionDuration="duration.xquick"
-                        motionEasing="easing.standard"
+                        autoFocus={false}
+                        data-blade-component="styled-base-input"
+                        editable={true}
+                        hasLeadingDropdown={false}
+                        hasTags={false}
+                        id="chatinput-7-1-input-2"
+                        includeFontPadding={false}
+                        isFocused={false}
+                        isInsideCounterInput={false}
+                        isTableInputCell={false}
+                        isTextArea={true}
+                        keyboardType="default"
+                        multiline={true}
+                        numberOfLines={1}
                         onBlur={[Function]}
-                        onClick={[Function]}
+                        onChangeText={[Function]}
+                        onContentSizeChange={[Function]}
+                        onEndEditing={[Function]}
                         onFocus={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseUp={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchStart={[Function]}
-                        role="button"
-                        size="small"
+                        onKeyPress={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholder="Ask a question..."
+                        placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+                        scrollEnabled={false}
+                        secureTextEntry={false}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "alignSelf": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "black",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 0,
-                              "cursor": "pointer",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 32,
-                              "justifyContent": "center",
-                              "minHeight": 32,
-                              "overflow": "hidden",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationColor": "black",
+                              "color": "hsla(0, 0%, 2%, 1)",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": -0.18200000000000002,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "minHeight": 36,
+                              "paddingBottom": 12,
+                              "paddingLeft": 20,
+                              "paddingRight": 20,
+                              "paddingTop": 12,
+                              "textAlignVertical": "top",
                               "textDecorationLine": "none",
-                              "textDecorationStyle": "solid",
-                              "width": 32,
+                              "width": "100%",
                             },
                             {
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "height": 44,
+                              "maxHeight": 200,
                             },
                           ]
                         }
-                        type="button"
-                        width="32px"
-                      >
-                        <View
-                          style={
-                            {
-                              "transform": [
-                                {
-                                  "scale": 1,
-                                },
-                              ],
-                            }
-                          }
-                        >
-                          <View
-                            alignItems="center"
-                            data-blade-component="base-box"
-                            display="flex"
-                            flexDirection="row"
-                            isHidden={false}
-                            justifyContent="center"
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "display": "flex",
-                                  "flexBasis": 0,
-                                  "flexDirection": "row",
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "justifyContent": "center",
-                                  "zIndex": 1,
-                                },
-                                {
-                                  "opacity": 1,
-                                },
-                              ]
-                            }
-                            zIndex={1}
-                          >
-                            <View
-                              alignItems="center"
-                              data-blade-component="base-box"
-                              display="flex"
-                              justifyContent="center"
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "display": "flex",
-                                    "justifyContent": "center",
-                                  },
-                                ]
-                              }
-                            >
-                              <RNSVGSvgView
-                                accessibilityElementsHidden={true}
-                                align="xMidYMid"
-                                bbHeight="16px"
-                                bbWidth="16px"
-                                data-blade-component="icon"
-                                fill="none"
-                                focusable={false}
-                                height="16px"
-                                importantForAccessibility="no-hide-descendants"
-                                meetOrSlice={0}
-                                minX={0}
-                                minY={0}
-                                style={
-                                  [
-                                    {
-                                      "backgroundColor": "transparent",
-                                      "borderWidth": 0,
-                                    },
-                                    [
-                                      {},
-                                    ],
-                                    {
-                                      "flex": 0,
-                                      "height": 16,
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                                vbHeight={24}
-                                vbWidth={24}
-                                width="16px"
-                              >
-                                <RNSVGGroup
-                                  fill={null}
-                                  propList={
-                                    [
-                                      "fill",
-                                    ]
-                                  }
-                                >
-                                  <RNSVGPath
-                                    d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
-                                    fill={
-                                      {
-                                        "payload": 4284575093,
-                                        "type": 0,
-                                      }
-                                    }
-                                    propList={
-                                      [
-                                        "fill",
-                                      ]
-                                    }
-                                  />
-                                </RNSVGGroup>
-                              </RNSVGSvgView>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
+                        value=""
+                        valueComponentType="text"
+                      />
                     </View>
                     <View
                       alignItems="center"
@@ -2098,6 +1888,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                       display="flex"
                       flexDirection="row"
                       gap="spacing.3"
+                      justifyContent="space-between"
                       style={
                         [
                           {
@@ -2105,28 +1896,40 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                             "display": "flex",
                             "flexDirection": "row",
                             "gap": 8,
+                            "justifyContent": "space-between",
+                            "paddingBottom": 12,
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
                           },
                         ]
                       }
                     >
                       <View
-                        accessibilityElementsHidden={true}
-                        importantForAccessibility="no-hide-descendants"
-                        pointerEvents="none"
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.2"
                         style={
-                          {
-                            "opacity": 0,
-                          }
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 4,
+                            },
+                          ]
                         }
                       >
                         <View
-                          accessibilityLabel="Submit"
+                          accessibilityLabel="Upload file"
                           accessibilityRole="button"
                           accessibilityState={
                             {
                               "busy": undefined,
                               "checked": undefined,
-                              "disabled": true,
+                              "disabled": false,
                               "expanded": undefined,
                               "selected": undefined,
                             }
@@ -2146,15 +1949,15 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                           buttonPaddingRight="0px"
                           buttonPaddingTop="0px"
                           collapsable={false}
-                          color="neutral"
+                          color="transparent"
                           data-blade-component="button"
-                          defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          focusRingColor="hsla(206, 10%, 29%, 0.12)"
+                          defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+                          focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                          focusRingColor="hsla(218, 89%, 51%, 0.18)"
                           focusable={true}
                           height="32px"
-                          hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
-                          hoverIconColor="hsla(0, 0%, 0%, 0.32)"
+                          hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+                          hoverIconColor="hsla(200, 10%, 18%, 1)"
                           isFullWidth={false}
                           isLoading={false}
                           isPressed={false}
@@ -2181,12 +1984,12 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                               {
                                 "alignItems": "center",
                                 "alignSelf": "center",
-                                "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                "backgroundColor": "hsla(0, 0%, 100%, 0)",
                                 "borderColor": "black",
                                 "borderRadius": 8,
                                 "borderStyle": "solid",
                                 "borderWidth": 0,
-                                "cursor": "not-allowed",
+                                "cursor": "pointer",
                                 "display": "flex",
                                 "flexDirection": "row",
                                 "height": 32,
@@ -2203,7 +2006,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                                 "width": 32,
                               },
                               {
-                                "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                "backgroundColor": "hsla(0, 0%, 100%, 0)",
                               },
                             ]
                           }
@@ -2304,10 +2107,10 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                                     }
                                   >
                                     <RNSVGPath
-                                      d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                      d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                                       fill={
                                         {
-                                          "payload": 1375731712,
+                                          "payload": 4284575093,
                                           "type": 0,
                                         }
                                       }
@@ -2319,6 +2122,239 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                                     />
                                   </RNSVGGroup>
                                 </RNSVGSvgView>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.3"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
+                          style={
+                            {
+                              "opacity": 0,
+                            }
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Submit"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": true,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            borderRadius={8}
+                            buttonPaddingBottom="0px"
+                            buttonPaddingLeft="0px"
+                            buttonPaddingRight="0px"
+                            buttonPaddingTop="0px"
+                            collapsable={false}
+                            color="neutral"
+                            data-blade-component="button"
+                            defaultBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            focusRingColor="hsla(206, 10%, 29%, 0.12)"
+                            focusable={true}
+                            height="32px"
+                            hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+                            hoverIconColor="hsla(0, 0%, 0%, 0.32)"
+                            isFullWidth={false}
+                            isLoading={false}
+                            isPressed={false}
+                            minHeight="32px"
+                            motionDuration="duration.xquick"
+                            motionEasing="easing.standard"
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseUp={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchStart={[Function]}
+                            role="button"
+                            size="small"
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "alignSelf": "center",
+                                  "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                  "borderColor": "black",
+                                  "borderRadius": 8,
+                                  "borderStyle": "solid",
+                                  "borderWidth": 0,
+                                  "cursor": "not-allowed",
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "height": 32,
+                                  "justifyContent": "center",
+                                  "minHeight": 32,
+                                  "overflow": "hidden",
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationColor": "black",
+                                  "textDecorationLine": "none",
+                                  "textDecorationStyle": "solid",
+                                  "width": 32,
+                                },
+                                {
+                                  "backgroundColor": "hsla(0, 0%, 0%, 0.18)",
+                                },
+                              ]
+                            }
+                            type="button"
+                            width="32px"
+                          >
+                            <View
+                              style={
+                                {
+                                  "transform": [
+                                    {
+                                      "scale": 1,
+                                    },
+                                  ],
+                                }
+                              }
+                            >
+                              <View
+                                alignItems="center"
+                                data-blade-component="base-box"
+                                display="flex"
+                                flexDirection="row"
+                                isHidden={false}
+                                justifyContent="center"
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "display": "flex",
+                                      "flexBasis": 0,
+                                      "flexDirection": "row",
+                                      "flexGrow": 1,
+                                      "flexShrink": 1,
+                                      "justifyContent": "center",
+                                      "zIndex": 1,
+                                    },
+                                    {
+                                      "opacity": 1,
+                                    },
+                                  ]
+                                }
+                                zIndex={1}
+                              >
+                                <View
+                                  alignItems="center"
+                                  data-blade-component="base-box"
+                                  display="flex"
+                                  justifyContent="center"
+                                  style={
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "display": "flex",
+                                        "justifyContent": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <RNSVGSvgView
+                                    accessibilityElementsHidden={true}
+                                    align="xMidYMid"
+                                    bbHeight="16px"
+                                    bbWidth="16px"
+                                    data-blade-component="icon"
+                                    fill="none"
+                                    focusable={false}
+                                    height="16px"
+                                    importantForAccessibility="no-hide-descendants"
+                                    meetOrSlice={0}
+                                    minX={0}
+                                    minY={0}
+                                    style={
+                                      [
+                                        {
+                                          "backgroundColor": "transparent",
+                                          "borderWidth": 0,
+                                        },
+                                        [
+                                          {},
+                                        ],
+                                        {
+                                          "flex": 0,
+                                          "height": 16,
+                                          "width": 16,
+                                        },
+                                      ]
+                                    }
+                                    vbHeight={24}
+                                    vbWidth={24}
+                                    width="16px"
+                                  >
+                                    <RNSVGGroup
+                                      fill={null}
+                                      propList={
+                                        [
+                                          "fill",
+                                        ]
+                                      }
+                                    >
+                                      <RNSVGPath
+                                        d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
+                                        fill={
+                                          {
+                                            "payload": 1375731712,
+                                            "type": 0,
+                                          }
+                                        }
+                                        propList={
+                                          [
+                                            "fill",
+                                          ]
+                                        }
+                                      />
+                                    </RNSVGGroup>
+                                  </RNSVGSvgView>
+                                </View>
                               </View>
                             </View>
                           </View>

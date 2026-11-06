@@ -344,93 +344,97 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       {...metaAttribute({ name: MetaConstants.ChatInput, testID })}
       {...getStyledProps(rest)}
     >
-      {/* Error popup — animated above the input */}
-      {isErrorBannerVisible && errorText ? (
-        <Animated.View
-          style={[
-            {
-              position: 'absolute',
-              bottom: inputContainerHeight,
-              left: 0,
-              right: 0,
-              zIndex: 0,
-            },
-            errorAnimatedStyle,
-          ]}
-        >
-          <BaseBox
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-            gap="spacing.2"
-            backgroundColor="feedback.background.negative.subtle"
-            paddingX="spacing.4"
-            paddingTop="spacing.3"
-            paddingBottom="spacing.6"
-            borderTopLeftRadius="medium"
-            borderTopRightRadius="medium"
-            {...makeAccessible({ role: 'alert' })}
+      {/* the banner is placed from this box's bottom edge, so it holds only the banner and the
+          card; help text sits below it and never shifts the banner onto the input */}
+      <BaseBox position="relative">
+        {/* Error popup — animated above the input */}
+        {isErrorBannerVisible && errorText ? (
+          <Animated.View
+            style={[
+              {
+                position: 'absolute',
+                bottom: inputContainerHeight,
+                left: 0,
+                right: 0,
+                zIndex: 0,
+              },
+              errorAnimatedStyle,
+            ]}
           >
-            <InfoIcon size="small" color="feedback.icon.negative.intense" />
-            <BaseBox flexShrink={1} flexGrow={1}>
-              <Text size="small" truncateAfterLines={8} color="feedback.text.negative.intense">
-                {errorText}
-              </Text>
+            <BaseBox
+              display="flex"
+              flexDirection="row"
+              alignItems="center"
+              gap="spacing.2"
+              backgroundColor="feedback.background.negative.subtle"
+              paddingX="spacing.4"
+              paddingTop="spacing.3"
+              paddingBottom="spacing.6"
+              borderTopLeftRadius="medium"
+              borderTopRightRadius="medium"
+              {...makeAccessible({ role: 'alert' })}
+            >
+              <InfoIcon size="small" color="feedback.icon.negative.intense" />
+              <BaseBox flexShrink={1} flexGrow={1}>
+                <Text size="small" truncateAfterLines={8} color="feedback.text.negative.intense">
+                  {errorText}
+                </Text>
+              </BaseBox>
+              {onErrorDismiss ? (
+                <IconButton
+                  icon={CloseIcon}
+                  size="small"
+                  emphasis="intense"
+                  accessibilityLabel="Dismiss error"
+                  onClick={() => onErrorDismiss()}
+                />
+              ) : null}
             </BaseBox>
-            {onErrorDismiss ? (
-              <IconButton
-                icon={CloseIcon}
-                size="small"
-                emphasis="intense"
-                accessibilityLabel="Dismiss error"
-                onClick={() => onErrorDismiss()}
-              />
-            ) : null}
-          </BaseBox>
-        </Animated.View>
-      ) : null}
+          </Animated.View>
+        ) : null}
 
-      <BaseBox
-        position="relative"
-        zIndex={1}
-        onLayout={(e) => setInputContainerHeight(e.nativeEvent.layout.height)}
-      >
-        <BaseInput
-          ref={mergedRef}
-          as="textarea"
-          id={inputId}
-          elevation="lowRaised"
-          focusIndicator="border"
-          restBorderColor="surface.border.gray.muted"
-          label={undefined}
-          accessibilityLabel={accessibilityLabel}
-          hideLabelText
-          hideFormHint
-          placeholder={placeholder}
-          value={textValue}
-          onChange={handleTextChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          isDisabled={isDisabled}
-          numberOfLines={1}
-          autoGrowMaxHeight={chatInputMaxTextAreaHeight}
-          // one 20 px line with 12 px above and below, in both sizes; BaseInput's default is shorter
-          autoGrowMinHeight={compactLayout.singleRowHeight}
-          size="medium"
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
-          padding={makeSpace(compactLayout.textAreaPadding)}
-          // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
-          paddingX={isSmall ? undefined : makeSpace(theme.spacing[6])}
-          borderRadius={chatInputBorderRadius}
-          caretColor="interactive.border.primary.default"
-          topContent={topContent}
-          bottomContent={isSmall ? undefined : actionBarContent}
-          leadingInteractionElement={isSmall ? compactLeadingAction : undefined}
-          trailingInteractionElement={isSmall ? compactTrailingAction : undefined}
-          visualsAlignment={isSmall ? 'bottom' : undefined}
-          {...makeAnalyticsAttribute(rest)}
-        />
+        <BaseBox
+          position="relative"
+          zIndex={1}
+          onLayout={(e) => setInputContainerHeight(e.nativeEvent.layout.height)}
+        >
+          <BaseInput
+            ref={mergedRef}
+            as="textarea"
+            id={inputId}
+            elevation="lowRaised"
+            focusIndicator="border"
+            restBorderColor="surface.border.gray.muted"
+            label={undefined}
+            accessibilityLabel={accessibilityLabel}
+            hideLabelText
+            hideFormHint
+            placeholder={placeholder}
+            value={textValue}
+            onChange={handleTextChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            isDisabled={isDisabled}
+            numberOfLines={1}
+            autoGrowMaxHeight={chatInputMaxTextAreaHeight}
+            // one 20 px line with 12 px above and below, in both sizes; BaseInput's default is shorter
+            autoGrowMinHeight={compactLayout.singleRowHeight}
+            size="medium"
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            padding={makeSpace(compactLayout.textAreaPadding)}
+            // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
+            paddingX={isSmall ? undefined : makeSpace(theme.spacing[6])}
+            borderRadius={chatInputBorderRadius}
+            caretColor="interactive.border.primary.default"
+            topContent={topContent}
+            bottomContent={isSmall ? undefined : actionBarContent}
+            leadingInteractionElement={isSmall ? compactLeadingAction : undefined}
+            trailingInteractionElement={isSmall ? compactTrailingAction : undefined}
+            visualsAlignment={isSmall ? 'bottom' : undefined}
+            {...makeAnalyticsAttribute(rest)}
+          />
+        </BaseBox>
       </BaseBox>
 
       {helpText ? (

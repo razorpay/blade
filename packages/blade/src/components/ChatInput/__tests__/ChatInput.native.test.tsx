@@ -120,6 +120,23 @@ describe('<ChatInput /> (native)', () => {
     expect(onVoiceInput).toHaveBeenCalledTimes(1);
   });
 
+  it('keeps the error banner on the card when help text is shown', () => {
+    const { getByText, toJSON } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        helpText="Ray is AI and can make mistakes"
+        validationState="error"
+        errorText="Something went wrong"
+      />,
+    );
+    // the banner and the help text are not in the same positioned box
+    const tree = JSON.stringify(toJSON());
+    expect(getByText('Something went wrong')).toBeTruthy();
+    expect(tree.indexOf('Something went wrong')).toBeLessThan(
+      tree.indexOf('Ray is AI and can make mistakes'),
+    );
+  });
+
   it('shows help text under the box', () => {
     const { getByText } = renderWithTheme(
       <ChatInput
