@@ -12,6 +12,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - It wraps the chat input (`children`): the wave sits under the input's bottom and spreads past its sides and below it (without growing the page). Keep the chat input near the bottom of its panel.
 - Typing reaches it from the input itself: every edit typed in an input, textarea or editable element inside counts as a keystroke. What's typed is never read.
+- Inside `RazorSenseChat` its own `scale`, `isPaused`, `onLoad` and `onError` don't apply: set them on `RazorSenseChat`. In development it warns when they're set there.
 - On its own, the wave never draws over the input, but it can draw over things beside or under it that aren't positioned (give them `position: relative` to keep them above it). Inside `RazorSenseChat` it's behind everything in the chat.
 - When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Each still is its own small module, downloaded only then.
 - With reduced motion on it shows one still frame of the wave.

@@ -60,4 +60,30 @@ describe('RazorSense 2.0 components', () => {
     await waitFor(() => expect(onError).toHaveBeenCalledTimes(3));
     expect(onError.mock.calls[0][0]).toBeInstanceOf(Error);
   });
+
+  it('warn when a part inside RazorSenseChat is given props the chat takes over', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    renderWithTheme(
+      <RazorSenseChat>
+        <RazorSenseThinking scale={1.2}>Searching…</RazorSenseThinking>
+        <RazorSenseBottomWave isPaused onError={() => undefined}>
+          <textarea />
+        </RazorSenseBottomWave>
+      </RazorSenseChat>,
+    );
+    const messages = warn.mock.calls.map(([message]) => String(message));
+    expect(messages).toContain(
+      "[Blade: RazorSenseThinking]: Inside RazorSenseChat the chat draws it, so its own scale doesn't apply: set it on RazorSenseChat instead.",
+    );
+    expect(messages).toContain(
+      "[Blade: RazorSenseBottomWave]: Inside RazorSenseChat the chat draws it, so its own isPaused, onError don't apply: set them on RazorSenseChat instead.",
+    );
+    // on their own they're theirs: no warning
+    warn.mockClear();
+    renderWithTheme(<RazorSenseThinking scale={1.2}>Searching…</RazorSenseThinking>);
+    expect(warn.mock.calls.map(([message]) => String(message)).join()).not.toContain(
+      'Inside RazorSenseChat',
+    );
+    warn.mockRestore();
+  });
 });

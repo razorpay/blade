@@ -3,6 +3,7 @@ import type { RazorSenseBottomWaveProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
 import { BOTTOM_WAVE_REACH, inputAnchor, rectIn } from './placement';
+import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
@@ -26,7 +27,7 @@ const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
  * (BladeProvider). Paused off-screen.
  *
  * Inside a RazorSenseChat it marks where the wave settles and the chat draws it, so the thinking surges down into it when the
- * answer is in.
+ * answer is in. There its own `scale`, `isPaused`, `onLoad` and `onError` don't apply (the chat's do; it warns in development).
  *
  * Not RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. This is the animated wave under a
  * chat input.
@@ -39,11 +40,19 @@ const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
  * ```
  */
 const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProps>(
-  function RazorSenseBottomWave(
-    { children, isPaused = false, scale = 1, onLoad, onError, className, style, testID },
-    forwardedRef,
-  ) {
+  function RazorSenseBottomWave(props, forwardedRef) {
+    const {
+      children,
+      isPaused = false,
+      scale = 1,
+      onLoad,
+      onError,
+      className,
+      style,
+      testID,
+    } = props;
     const chat = useContext(RazorSenseChatContext);
+    useChatOwnedPropsWarning('RazorSenseBottomWave', Boolean(chat), props);
     const mode = useTheme().colorScheme === 'dark' ? 'dark' : 'light';
     const boxRef = useRef<HTMLDivElement>(null);
     const mergedRef = useMergeRefs(forwardedRef, boxRef);

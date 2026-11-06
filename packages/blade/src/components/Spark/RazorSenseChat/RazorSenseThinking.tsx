@@ -4,6 +4,7 @@ import type { RazorSenseThinkingProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
 import { SLOT_FROM_LABEL, THINKING_REACH, rectIn, thinkingSlot } from './placement';
+import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
@@ -60,7 +61,8 @@ const ThinkingLabel = styled.span<{ base: string; shine: string }>(({ theme, bas
  * color scheme (BladeProvider). Paused off-screen.
  *
  * Inside a RazorSenseChat the chat draws its glow, so that when the answer is in, it surges down into the RazorSenseBottomWave
- * under the chat input.
+ * under the chat input. There its own `scale`, `isPaused`, `onLoad` and `onError` don't apply (the chat's do; it warns in
+ * development).
  *
  * @example
  * ```tsx
@@ -68,8 +70,8 @@ const ThinkingLabel = styled.span<{ base: string; shine: string }>(({ theme, bas
  * ```
  */
 const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
-  function RazorSenseThinking(
-    {
+  function RazorSenseThinking(props, forwardedRef) {
+    const {
       children = 'Thinking…',
       isPaused = false,
       scale = 1,
@@ -78,10 +80,9 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       className,
       style,
       testID,
-    },
-    forwardedRef,
-  ) {
+    } = props;
     const chat = useContext(RazorSenseChatContext);
+    useChatOwnedPropsWarning('RazorSenseThinking', Boolean(chat), props);
     const { colorScheme } = useTheme();
     const mode = colorScheme === 'dark' ? 'dark' : 'light';
     const colors = LABEL_COLORS[mode];
