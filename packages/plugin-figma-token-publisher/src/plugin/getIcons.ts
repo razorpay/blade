@@ -1,4 +1,5 @@
 import showNotification from './showNotification';
+import { postToUI } from './uiBridge';
 
 const CONTAINER_TYPES: NodeType[] = ['FRAME', 'GROUP', 'SECTION'];
 const SHAPE_TYPES: NodeType[] = [
@@ -113,7 +114,7 @@ const getIcons = async (): Promise<void> => {
     type: 'information',
     text: `✅ ${svgStrings.length} icon${svgStrings.length === 1 ? '' : 's'} exported`,
   });
-  figma.ui.postMessage({
+  postToUI({
     type: 'export-svg-icons',
     data: svgStrings,
   });

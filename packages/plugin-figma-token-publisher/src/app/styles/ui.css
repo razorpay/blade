@@ -195,3 +195,22 @@ textarea.input__field:focus {
   border-color: var(--figma-color-border, #e5e5e5);
   background: var(--figma-color-bg-secondary, #f5f5f5);
 }
+
+/* ── Change list ────────────────────────────────────────────────────────────── */
+/* Token paths and values run long; let them wrap rather than push the window sideways. */
+
+.chip--wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.change__where {
+  display: block;
+  font-size: 10px;
+  color: var(--figma-color-text-tertiary, #8c8c8c);
+}
+
+.change__values {
+  display: block;
+  margin-top: 4px;
+}
