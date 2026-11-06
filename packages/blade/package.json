@@ -97,6 +97,8 @@
     "types:generate-types:native": "tsc -p ./tsconfig-generate-types.native.json && yarn tsc-alias -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
+    "build:razorsense-engine": "node scripts/razorsenseEngine/buildFreshEngine.js",
+    "check:razorsense-engine": "node scripts/razorsenseEngine/buildFreshEngine.js --check",
     "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
     "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
     "build:generate-root-imports": "node ./scripts/generateRootImports.js",

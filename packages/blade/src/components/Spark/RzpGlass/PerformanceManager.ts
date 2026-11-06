@@ -498,4 +498,4 @@ class WebGLPerformanceController {
   }
 }
 
-export { WebGLPerformanceController, RENDER_SETTINGS, LEVEL_RENDER_SETTINGS };
+export { WebGLPerformanceController, RENDER_SETTINGS, LEVEL_RENDER_SETTINGS, POTATO_TIER_PATTERNS };

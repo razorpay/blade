@@ -1,14 +1,16 @@
 /**
- * Types for the Fresh RazorSense engine (freshEngine.ts, generated from Razorsensation).
+ * Types for the RazorSense 2.0 engine (freshEngine.ts, built by scripts/razorsenseEngine from the RazorSense system's engine).
  * The engine itself is plain generated code; these are the parts the components touch.
  */
 
 /** A Razorsensation comp: shapes, keys, bands and Colorama, as the studio saves it. Read only by the engine. */
 export type FreshDoc = {
   comp: { w: number; h: number };
+  /** its look: bands, Colorama and the rest (cBgCol: the ground it's drawn on, #rrggbb) */
+  p: { cBgCol?: string; [key: string]: unknown };
   tl: { dur: number; range?: [number, number] | null; rangeN?: number; [key: string]: unknown };
   ui?: Record<string, unknown> & {
-    /** the loading splash's clock (FreshLoaderSplash) */
+    /** the loading splash's clock (RazorSenseLoader) */
     freshSplash?: {
       /** the glyph's loop starts here (s) */
       a: number;
