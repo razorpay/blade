@@ -106,20 +106,28 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
   const thinkingStill = useStill(isStill, mode, loadThinkingStill);
   const bottomWaveStill = useStill(isStill, mode, loadBottomWaveStill);
 
-  // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge)
+  // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge). They're
+  // placed again only when something may have moved them: the chat or its parts resizing, a scroll, the chat's content or
+  // styles changing, the window resizing. (Paused, they're placed once and stay there.)
   const getAnchorsRef = useRef(getAnchors);
   getAnchorsRef.current = getAnchors;
-  const isPausedRef = useRef(isPaused);
-  isPausedRef.current = isPaused;
   useEffect(() => {
-    if (!isStill) return undefined;
+    const stage = stageRef.current;
+    const root = stage?.parentElement;
+    if (!isStill || !stage || !root) return undefined;
     let rafId = 0;
-    // (only while it's on screen and not paused: off screen or paused, the stills stay where they were)
-    let isOnScreen = true;
+    let resize: ResizeObserver | null = null;
+    const watched = new Set<Element>();
+    const watch = (element: Element | null): void => {
+      if (!element || watched.has(element)) return;
+      watched.add(element);
+      resize?.observe(element);
+    };
     const place = (): void => {
       rafId = 0;
-      if (!isOnScreen || isPausedRef.current) return;
-      rafId = requestAnimationFrame(place);
+      // (parts come and go: the answer takes the thinking label's place)
+      watch(partsRef.current.thinking);
+      watch(partsRef.current.bottomWave);
       const anchors = getAnchorsRef.current();
       const [tx, ty] = thinkingFrame(anchors.thinking, s);
       const [bx, by] = bottomWaveFrame(anchors.input, s);
@@ -130,18 +138,40 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
         bottomWaveStillRef.current.style.transform = `translate(${bx}px, ${by}px)`;
       }
     };
-    const observer =
-      typeof IntersectionObserver === 'undefined' || !stageRef.current
+    const again = (): void => {
+      if (!rafId) rafId = requestAnimationFrame(place);
+    };
+    if (isPaused) {
+      place();
+      return undefined;
+    }
+    resize = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(again);
+    watch(stage);
+    // (its own stills moving don't count)
+    const content =
+      typeof MutationObserver === 'undefined'
         ? null
-        : new IntersectionObserver(([entry]) => {
-            isOnScreen = entry ? entry.isIntersecting : true;
-            if (isOnScreen && !rafId) rafId = requestAnimationFrame(place);
+        : new MutationObserver((records) => {
+            const isOwn = (target: Node): boolean =>
+              target === thinkingStillRef.current || target === bottomWaveStillRef.current;
+            if (records.some((record) => !isOwn(record.target))) again();
           });
-    if (stageRef.current) observer?.observe(stageRef.current);
+    content?.observe(root, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ['style', 'class'],
+    });
+    document.addEventListener('scroll', again, { capture: true, passive: true });
+    window.addEventListener('resize', again);
     place();
     return () => {
       cancelAnimationFrame(rafId);
-      observer?.disconnect();
+      resize?.disconnect();
+      content?.disconnect();
+      document.removeEventListener('scroll', again, { capture: true });
+      window.removeEventListener('resize', again);
     };
   }, [isStill, s, isPaused]);
 
