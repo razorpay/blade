@@ -226,6 +226,19 @@ const WRAPPED_KEY_LINE_REGEX = /^([A-Za-z0-9_$]+|'[^']*'|"[^"]*"):$/;
 const unquoteKey = (key) => key.replace(/^['"]|['"]$/g, '');
 
 /**
+ * Brackets a value has opened and not yet closed. Quoted strings are dropped first so a literal
+ * `'('` does not count. A positive result means prettier broke the value over several lines.
+ */
+const openBracketCount = (text) => {
+  let depth = 0;
+  for (const char of text.replace(/'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"/g, '')) {
+    if ('([{'.includes(char)) depth++;
+    else if (')]}'.includes(char)) depth--;
+  }
+  return depth;
+};
+
+/**
  * Reads a prettier-formatted declaration into two path-keyed maps: the comment lines sitting above
  * each entry, and the raw source text of each leaf value.
  *
@@ -243,21 +256,33 @@ const scanDeclaration = (fileContent, declarationRegex) => {
   const childOrder = {};
   const stack = [];
   let pending = [];
-  /** Path of a leaf whose value prettier wrapped onto the next line. */
-  let wrappedLeafPath = null;
+  /**
+   * A leaf whose value continues on the following lines: wrapped onto the next line after a bare
+   * `key:`, or broken across several. Lines are collected until its brackets balance, because a
+   * truncated value would show up as a bogus change and, for a preserved token, be written back.
+   */
+  let openValue = null;
+  const settleValue = (path, text) => {
+    if (openBracketCount(text) > 0) {
+      openValue = { path, text };
+    } else {
+      values[path] = text.replace(/,$/, '');
+    }
+  };
 
   for (const rawLine of body.split('\n')) {
     const line = rawLine.trim();
-    if (!line || line === '{') continue;
+    if (!line || (line === '{' && !openValue)) continue;
 
-    if (COMMENT_LINE_REGEX.test(line)) {
-      pending.push(line);
+    if (openValue) {
+      const { path, text } = openValue;
+      openValue = null;
+      settleValue(path, text ? `${text}\n${line}` : line);
       continue;
     }
 
-    if (wrappedLeafPath) {
-      values[wrappedLeafPath] = line.replace(/,$/, '');
-      wrappedLeafPath = null;
+    if (COMMENT_LINE_REGEX.test(line)) {
+      pending.push(line);
       continue;
     }
 
@@ -287,9 +312,9 @@ const scanDeclaration = (fileContent, declarationRegex) => {
     if (group) {
       stack.push(key);
     } else if (wrappedKey) {
-      wrappedLeafPath = path;
+      openValue = { path, text: '' };
     } else {
-      values[path] = leaf[2];
+      settleValue(path, leaf[2]);
     }
   }
 

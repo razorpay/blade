@@ -430,6 +430,43 @@ describe('scanDeclaration with wrapped values', () => {
       scanDeclaration(THEME_FILE, THEME_DECLARATION).values,
     );
   });
+
+  it.each([
+    [
+      'starts on the key line',
+      'intense: helpers.mix(\n          globalColors.chromatic.azure[500],\n          opacity[8],\n        ),',
+    ],
+    [
+      'starts on the line after its key',
+      'intense:\n          helpers.mix(\n            globalColors.chromatic.azure[500],\n            opacity[8],\n          ),',
+    ],
+  ])('reads the whole of a value prettier broke over several lines when it %s', (_, source) => {
+    const { values } = scanDeclaration(
+      THEME_FILE.replace('intense: globalColors.chromatic.azure[500],', source),
+      THEME_DECLARATION,
+    );
+
+    expect(values['onLight.surface.background.primary.intense'].replace(/\s+/g, '')).toBe(
+      'helpers.mix(globalColors.chromatic.azure[500],opacity[8],)',
+    );
+    // the lines inside the value must not be read as tokens, nor swallow the ones after it
+    expect(Object.keys(values).sort()).toEqual([
+      'onLight.overlay.background.subtle',
+      'onLight.surface.background.primary.faint',
+      'onLight.surface.background.primary.intense',
+    ]);
+  });
+
+  it('is not thrown by brackets inside a quoted string', () => {
+    const { values } = scanDeclaration(
+      THEME_FILE.replace("faint: 'transparent',", "faint: '(transparent',"),
+      THEME_DECLARATION,
+    );
+    expect(values['onLight.surface.background.primary.faint']).toBe("'(transparent'");
+    expect(values['onLight.surface.background.primary.intense']).toBe(
+      'globalColors.chromatic.azure[500]',
+    );
+  });
 });
 
 describe('diffTokenTreeAgainstSource', () => {
