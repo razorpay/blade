@@ -1,5 +1,24 @@
 # @razorpay/blade-mcp
 
+## 1.33.2
+
+### Patch Changes
+
+- 886f987c6: feat(Button): add `neutral` color
+
+  - `color="neutral"` is available with `variant="primary"` and renders a filled neutral button
+  - `ButtonGroup` colors are unchanged
+  - `CardHeaderIconButton` `color` now accepts only `primary` and `white`, the colors its tertiary button supports. `positive` and `negative` already threw an error at render, so code passing them now fails to type-check instead
+
+- 3aca1440d: feat(Table): add `stickyColumns` to pin more than one column
+
+  - New `stickyColumns={N}` prop on `Table` keeps the first N columns in view while the table scrolls horizontally. With `selectionType="multiple"` the checkbox column is pinned too and isn't counted.
+  - Each sticky column is offset by the measured widths of the columns before it, so it works with any `gridTemplateColumns`. This also fixes the sticky first data column in multi-select tables, which used a fixed 44px offset even when the checkbox column was wider.
+  - Once the table is scrolled horizontally, a divider and a `midRaised` shadow fade in after the last sticky column, and fade out again at the left edge. In rows below a cell that spans rows, only the first column stays pinned and there is no divider, rather than cells pinned at the wrong offset.
+  - On mobile, only the first column stays sticky so the pinned columns don't fill the screen.
+  - Works in virtualized tables: the rows and header now grow to the width of their columns so sticky cells don't slide out of view when scrolled far right.
+  - `isFirstColumnSticky` keeps working and is now deprecated in favour of `stickyColumns={1}`. `stickyColumns` takes precedence when both are set. The divider and scroll shadow only come with `stickyColumns`, so tables using `isFirstColumnSticky` look the same as before.
+
 ## 1.33.1
 
 ### Patch Changes
