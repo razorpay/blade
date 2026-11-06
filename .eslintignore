@@ -43,3 +43,6 @@ yarn-error.log*
 
 # don't ignore dot files
 !.*rc.js
+
+# RazorSense 2.0: the RazorSense system engine source its build patches (vendored, not Blade code; the build lints its output)
+packages/blade/scripts/razorsenseEngine/source/

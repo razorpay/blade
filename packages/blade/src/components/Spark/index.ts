@@ -2,9 +2,13 @@ export { RazorSense, preloadRazorSenseAssets } from './RzpGlass';
 export { RazorSenseGradient } from './RazorSenseGradient';
 export type { RazorSenseProps, RazorSensePreset } from './RzpGlass';
 export type { RazorSenseGradientProps } from './RazorSenseGradient';
-export { FreshLoaderSplash } from './FreshLoaderSplash';
-export type { FreshLoaderSplashProps } from './FreshLoaderSplash';
-export { FreshChatBackground } from './FreshChatBackground';
-export type { FreshChatBackgroundProps } from './FreshChatBackground';
-export { FreshLLM } from './FreshLLM';
-export type { FreshLLMProps } from './FreshLLM';
+export { RazorSenseLoader } from './RazorSenseLoader';
+export type { RazorSenseLoaderProps } from './RazorSenseLoader';
+export { RazorSenseChat, RazorSenseThinking, RazorSenseBottomWave } from './RazorSenseChat';
+export type {
+  RazorSenseChatProps,
+  RazorSenseThinkingProps,
+  RazorSenseBottomWaveProps,
+} from './RazorSenseChat';
+export { RazorSenseChatBackground } from './RazorSenseChatBackground';
+export type { RazorSenseChatBackgroundProps } from './RazorSenseChatBackground';

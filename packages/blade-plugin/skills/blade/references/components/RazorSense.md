@@ -324,7 +324,12 @@ const SuccessAnimation = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 0 : 1 }}
         transition={{ delay: isLoaded ? 0.5 : 0, duration: isLoaded ? 1.5 : 0.3 }}
-        style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -45%)' }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -45%)',
+        }}
       >
         <RazorSense
           width="500px"

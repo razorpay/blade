@@ -9,9 +9,12 @@ type FreshRange = { min: number; max: number };
 const FRESH_RANGES = {
   /** the whole effect bigger or smaller, bands included */
   scale: { min: 0.75, max: 1.25 },
-  /** the chat input the chat background stretches to (CSS px): 0.6-1.5x flow 9's 840 x 97 box (the bands keep their size) */
-  chatInputWidth: { min: 504, max: 1260 },
-  chatInputHeight: { min: 58, max: 146 },
+  /**
+   * the chat input the chat background stretches to (CSS px): down to a phone's (a 320 px screen's input, 0.33x flow 9's 840) and up
+   * to 1.5x it; 58 px tall (0.6x flow 9's 97) up to a chat input grown with several lines or attachments (the bands keep their size)
+   */
+  chatInputWidth: { min: 280, max: 1260 },
+  chatInputHeight: { min: 58, max: 320 },
 } as const;
 
 const warned = new Set<string>();
