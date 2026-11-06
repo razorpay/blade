@@ -15,6 +15,50 @@ import type React from 'react';
 
 type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
+type IconComponent = React.ComponentType<{
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
+type ToastActionCommon = {
+  text: string;
+  /**
+   * Icon of the action (web only)
+   */
+  icon?: IconComponent;
+  /**
+   * Position of the icon (web only)
+   * @default 'left'
+   */
+  iconPosition?: 'left' | 'right';
+};
+
+// Renders a Button (default)
+type ToastButtonAction = ToastActionCommon & {
+  variant?: 'button';
+  onClick?: ({ event, toastId }: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
+  isLoading?: boolean;
+};
+
+// Renders a Link (web only). Renders an anchor when `href` is given, else a button element.
+type ToastLinkAction = ToastActionCommon & {
+  variant: 'link';
+  // With `href`, the event comes from an anchor element
+  onClick?: ({
+    event,
+    toastId,
+  }: {
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
+    toastId: string;
+  }) => void;
+  href?: string;
+  target?: string;
+  /**
+   * When `target` is `_blank`, `Link` sets this to `noreferrer noopener`
+   */
+  rel?: string;
+};
+
 // Main Toast component props
 type ToastProps = {
   /**
@@ -67,13 +111,31 @@ type ToastProps = {
   }) => void;
 
   /**
-   * Primary action of toast
+   * Time in ms of the intro motion that `content` plays. Blade does not animate the content.
+   * Blade holds the action and the progress bar until the intro ends, then fades them in.
+   * With `autoDismiss`, the timer and the progress bar also start after the intro.
+   *
+   * Works only on promotional toasts (web only).
+   *
+   * @default 0
    */
-  action?: {
-    text: string;
-    onClick?: ({ event, toastId }: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
-    isLoading?: boolean;
-  };
+  introDuration?: number;
+
+  /**
+   * Shows a 2px progress bar on the bottom edge of the toast for the time left.
+   * The bar pauses with the timer.
+   *
+   * Works only on promotional toasts with `autoDismiss` (web only).
+   *
+   * @default false
+   */
+  showProgressBar?: boolean;
+
+  /**
+   * Primary action of toast. Renders a `Button` by default.
+   * Set `variant: 'link'` to render a `Link`.
+   */
+  action?: ToastButtonAction | ToastLinkAction;
 
   /**
    * Forwarded to react-hot-toast
@@ -104,6 +166,10 @@ type UseToastReturn = {
 - Use `type="informational"` (default) with auto-dismiss for transient confirmations.
 - Use `type="promotional"` for richer content that requires user acknowledgment.
 - Keep action labels short — a single verb like "Undo" or "Retry".
+- Use `showProgressBar` on a promotional toast with `autoDismiss` to show the time left. The timer and the bar pause while the pointer is over the toast or focus is inside it.
+- Use `introDuration` when the promotional `content` plays its own intro. Set it to the length of the intro. The action and the progress bar fade in when the intro ends, and the timer starts then.
+- Keep every frame of multi-frame `content` the same height, for example with one grid cell for all frames. The toast measures its height once, at show.
+- Use `action.variant: 'link'` with `href` for a call to action that opens a page.
 - Use semantic `color` values to match the feedback intent (`positive` for success, `negative` for errors).
 
 **Don't**
@@ -114,6 +180,7 @@ type UseToastReturn = {
 - Don't render `ToastContainer` inside `BladeProvider` children if you have nested providers — place it at the app root.
 - Don't rely on `onDismissButtonClick` for detecting auto-dismiss — it only fires on manual dismiss.
 - Don't use long sentences as toast content — keep messages concise and scannable.
+- Don't use `introDuration` or `showProgressBar` on informational toasts — they work only on promotional toasts. `showProgressBar` also needs `autoDismiss`.
 
 ## Example
 
@@ -308,6 +375,158 @@ function PromotionalToastExample() {
   return (
     <Box>
       <Button onClick={showPromotionalToast}>Show Promotional Toast</Button>
+    </Box>
+  );
+}
+```
+
+### Promotional Toast with Progress Bar
+
+This example shows a promotional toast that auto dismisses with a progress bar. Pointer over the toast or focus inside it pauses the timer and the bar.
+
+```tsx
+import { ToastContainer, useToast, Box, Button, Heading, Text } from '@razorpay/blade/components';
+
+function PromotionalProgressBarExample() {
+  const toast = useToast();
+
+  return (
+    <Box>
+      <ToastContainer />
+      <Button
+        onClick={() => {
+          toast.show({
+            type: 'promotional',
+            autoDismiss: true,
+            duration: 8000,
+            showProgressBar: true,
+            content: (
+              <Box display="flex" gap="spacing.2" flexDirection="column">
+                <Heading size="small">Your monthly report is ready</Heading>
+                <Text size="small">See payments, refunds and settlements of last month.</Text>
+              </Box>
+            ),
+            action: {
+              text: 'View report',
+              onClick: ({ toastId }) => toast.dismiss(toastId),
+            },
+          });
+        }}
+      >
+        Show Promotional Toast
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Promotional Toast with Link Action
+
+This example renders the action as a `Link` with an icon on the right. The link uses the `small` size.
+
+```tsx
+import {
+  ToastContainer,
+  useToast,
+  Box,
+  Button,
+  Heading,
+  Text,
+  ArrowRightIcon,
+} from '@razorpay/blade/components';
+
+function PromotionalLinkActionExample() {
+  const toast = useToast();
+
+  return (
+    <Box>
+      <ToastContainer />
+      <Button
+        onClick={() => {
+          toast.show({
+            type: 'promotional',
+            content: (
+              <Box display="flex" gap="spacing.2" flexDirection="column">
+                <Heading size="small">Reports are now faster</Heading>
+                <Text size="small">Download any report in a few seconds.</Text>
+              </Box>
+            ),
+            action: {
+              text: 'See what is new',
+              variant: 'link',
+              href: 'https://example.com/whats-new',
+              target: '_blank',
+              icon: ArrowRightIcon,
+              iconPosition: 'right',
+            },
+          });
+        }}
+      >
+        Show Promotional Toast
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Promotional Toast with Intro
+
+This example plays an intro frame inside `content`, then shows the main frame. `introDuration` matches the intro, so the timer and the bar start with the main frame. Both frames sit in one grid cell, so the toast height does not change.
+
+```tsx
+import React from 'react';
+import {
+  ToastContainer,
+  useToast,
+  useTheme,
+  Box,
+  Button,
+  Heading,
+  Text,
+} from '@razorpay/blade/components';
+
+const IntroContent = ({ introDuration }: { introDuration: number }) => {
+  const [isIntroDone, setIsIntroDone] = React.useState(false);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => setIsIntroDone(true), introDuration);
+    return () => clearTimeout(timeout);
+  }, [introDuration]);
+
+  return (
+    <Box display="grid">
+      <Box gridArea="1 / 1" visibility={isIntroDone ? 'hidden' : 'visible'}>
+        <Heading size="large">Meet your new reports page</Heading>
+      </Box>
+      <Box gridArea="1 / 1" visibility={isIntroDone ? 'visible' : 'hidden'}>
+        <Heading size="small">Reports are now faster</Heading>
+        <Text size="small">Download any report in a few seconds.</Text>
+      </Box>
+    </Box>
+  );
+};
+
+function PromotionalIntroExample() {
+  const toast = useToast();
+  const { theme } = useTheme();
+  const introDuration = theme.motion.delay.long;
+
+  return (
+    <Box>
+      <ToastContainer />
+      <Button
+        onClick={() => {
+          toast.show({
+            type: 'promotional',
+            autoDismiss: true,
+            showProgressBar: true,
+            introDuration,
+            content: <IntroContent introDuration={introDuration} />,
+          });
+        }}
+      >
+        Show Promotional Toast
+      </Button>
     </Box>
   );
 }
