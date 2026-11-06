@@ -1,5 +1,5 @@
 import React from 'react';
-import { waitFor } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { RazorSenseChat, RazorSenseThinking, RazorSenseBottomWave } from '../index';
 import { RazorSenseChatBackground } from '../../RazorSenseChatBackground';
 import { RazorSenseLoader } from '../../RazorSenseLoader';
@@ -28,13 +28,7 @@ describe('RazorSense 2.0 components', () => {
         <RazorSenseChatBackground ref={refs.background} className="background" onError={onError}>
           <input placeholder="landing" />
         </RazorSenseChatBackground>
-        <RazorSenseChat
-          ref={refs.chat}
-          className="chat"
-          style={{ zIndex: 2 }}
-          isThinking
-          onError={onError}
-        >
+        <RazorSenseChat ref={refs.chat} className="chat" style={{ zIndex: 2 }} onError={onError}>
           <RazorSenseThinking ref={refs.thinking} className="thinking">
             Searching your settlements…
           </RazorSenseThinking>
@@ -79,6 +73,34 @@ describe('RazorSense 2.0 components', () => {
       </RazorSenseChat>,
     );
     expect(playState(getInChat('In a paused chat'))).toBe('paused');
+  });
+
+  it('think while a RazorSenseThinking is shown, and surge to the bottom wave once it goes', async () => {
+    // (jsdom has no WebGL2: the chat shows its stills, the thinking one only while thinking)
+    const Chat = (): React.ReactElement => {
+      const [isWaiting, setIsWaiting] = React.useState(true);
+      return (
+        <>
+          <button onClick={() => setIsWaiting(!isWaiting)}>Toggle</button>
+          <RazorSenseChat>
+            {isWaiting ? <RazorSenseThinking>Searching…</RazorSenseThinking> : <p>The answer</p>}
+            <RazorSenseBottomWave>
+              <textarea />
+            </RazorSenseBottomWave>
+          </RazorSenseChat>
+        </>
+      );
+    };
+    const { container, getByRole } = renderWithTheme(<Chat />);
+    const stills = (): HTMLImageElement[] =>
+      Array.from(container.querySelectorAll('[data-blade-component="razorsense-chat"] img'));
+    await waitFor(() => expect(stills()).toHaveLength(2));
+    const opacities = (): string[] => stills().map((still) => still.style.opacity);
+    expect(opacities()).toEqual(['1', '0']);
+    fireEvent.click(getByRole('button', { name: 'Toggle' }));
+    expect(opacities()).toEqual(['0', '1']);
+    fireEvent.click(getByRole('button', { name: 'Toggle' }));
+    expect(opacities()).toEqual(['1', '0']);
   });
 
   it('warn when a part inside RazorSenseChat is given props the chat takes over', () => {

@@ -93,11 +93,13 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
     const stageRef = useRef<HTMLDivElement>(null);
     const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseThinking', 'scale');
 
-    // inside a RazorSenseChat: the chat draws thinking from this label
+    // inside a RazorSenseChat: the chat draws thinking from this label, and thinks while it's shown (registered once: the chat's
+    // register doesn't change)
+    const register = chat?.register;
     useEffect(() => {
-      if (!chat || !labelRef.current) return undefined;
-      return chat.register('thinking', labelRef.current);
-    }, [chat]);
+      if (!register || !labelRef.current) return undefined;
+      return register('thinking', labelRef.current);
+    }, [register]);
 
     // where its spill would grow the page (Firefox), its canvas is cut to what the page already holds
     useEffect(() => {

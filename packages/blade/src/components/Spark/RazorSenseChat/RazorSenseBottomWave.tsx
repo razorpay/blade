@@ -59,11 +59,12 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
     const stageRef = useRef<HTMLDivElement>(null);
     const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseBottomWave', 'scale');
 
-    // inside a RazorSenseChat: the chat draws the wave here
+    // inside a RazorSenseChat: the chat draws the wave here (registered once: the chat's register doesn't change)
+    const register = chat?.register;
     useEffect(() => {
-      if (!chat || !boxRef.current) return undefined;
-      return chat.register('bottomWave', boxRef.current);
-    }, [chat]);
+      if (!register || !boxRef.current) return undefined;
+      return register('bottomWave', boxRef.current);
+    }, [register]);
 
     // where its spill would grow the page (Firefox), its canvas is cut to what the page already holds
     useEffect(() => {

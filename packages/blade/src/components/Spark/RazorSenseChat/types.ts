@@ -19,14 +19,10 @@ type RazorSenseBottomWaveProps = {
 
 type RazorSenseChatProps = {
   /**
-   * True while the answer is being worked out: RazorSense loops on the `RazorSenseThinking` label. When it turns false the
-   * thinking surges down into the `RazorSenseBottomWave` under the chat input and settles there. True again for the next
-   * question: the wave rises back up to the label (the surge, backwards) and thinks on. Changed mid-way, it turns round.
-   * @default false
-   */
-  isThinking?: boolean;
-  /**
-   * The chat: its messages, a `RazorSenseThinking` where the thinking shows and a `RazorSenseBottomWave` round the chat input. RazorSenseChat draws both on one canvas over its whole box, behind everything in it (their own `scale`, `isPaused`,
+   * The chat: its messages, a `RazorSenseThinking` where the reply will go while the answer is worked out, and a
+   * `RazorSenseBottomWave` round the chat input. It thinks while the `RazorSenseThinking` is shown; when that goes (the answer
+   * takes its place), the thinking surges down into the bottom wave and settles there. A `RazorSenseThinking` shown again for the
+   * next question brings the wave back up to it (the surge, backwards); changed mid-way, it turns round. RazorSenseChat draws both on one canvas over its whole box, behind everything in it (their own `scale`, `isPaused`,
    * `onLoad` and `onError` are ignored inside it: the chat's apply).
    */
   children: React.ReactNode;

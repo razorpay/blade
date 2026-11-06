@@ -11,7 +11,7 @@ RazorSenseThinking is RazorSense thinking in a chat: its blue thinking label, wi
 - Web only: it draws with WebGL2. On React Native it throws.
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - Its `children` is the label text (default "Thinking…"). Put it where the assistant's reply will go; the glow plays from just before the label and out across the row, past its box (without growing the page).
-- On its own, it always thinks; there's no state prop. In a chat, `RazorSenseChat`'s `isThinking` says when, and the chat draws its glow.
+- On its own, it always thinks; there's no state prop. In a chat, the chat thinks while it's shown and draws its glow; when it goes, the thinking surges down to the chat input.
 - Inside `RazorSenseChat` its own `scale`, `isPaused`, `onLoad` and `onError` don't apply: set them on `RazorSenseChat`. In development it warns when they're set there.
 - When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Each still is its own small module, downloaded only then.
 - With reduced motion on, the label's shimmer stops and the glow shows one still frame.

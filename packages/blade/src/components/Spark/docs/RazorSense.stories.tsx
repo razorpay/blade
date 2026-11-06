@@ -349,9 +349,9 @@ BottomWaveV2.parameters = { controls: { include: ['width', 'height', 'scale', 'x
 BottomWaveV2.storyName = 'Bottom Wave 2.0';
 
 /**
- * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while `isThinking` is true.
- * "Finish thinking" sets it false: the thinking surges down into the `RazorSenseBottomWave` under the chat input and settles there.
- * "Think again" sets it true: the wave rises back up to the label (the surge, backwards) and thinks on.
+ * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
+ * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
+ * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on.
  */
 export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
   const [isThinking, setIsThinking] = useState(true);
@@ -393,7 +393,7 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
         </Text>
       </Box>
       <Box flex="1" minHeight="0px">
-        <RazorSenseChat isThinking={isThinking}>
+        <RazorSenseChat>
           <Box
             display="flex"
             flexDirection="column"

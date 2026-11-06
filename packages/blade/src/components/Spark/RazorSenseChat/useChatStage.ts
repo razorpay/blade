@@ -4,6 +4,7 @@ import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
 import type { FreshStage } from '../RazorSenseEngine';
+import { watchLayout } from '../RazorSenseEngine/watchLayout';
 import { useTheme } from '~components/BladeProvider';
 
 /**
@@ -63,6 +64,8 @@ const useChatStage = ({
   const driverRef = useRef<ChatDriver | null>(null);
   // reduced motion: moves to thinking or the bottom wave and draws its settled still frame (set once the engine is up)
   const stillRef = useRef<((nextIsThinking: boolean) => void) | null>(null);
+  // reduced motion: stops its frame following the layout
+  const stopFollowRef = useRef<(() => void) | null>(null);
   const [isStill, setIsStill] = useState(false);
   const isStillRef = useRef(false);
 
@@ -101,17 +104,33 @@ const useChatStage = ({
         if (stage.reducedMotion) {
           // reduced motion: one still frame of where it is (thinking, or settled to the bottom wave), settled first (quiet steps:
           // thinking fades in, the answer surges down); when that changes, the new one, settled. The steps run on a clock of
-          // their own that only goes forward.
+          // their own that only goes forward. It's drawn where the parts are now, and drawn again when they move.
           let clock = now;
+          const draw = (): void =>
+            stage.settle(() => {
+              driver.setAnchors(anchorsRef.current(), scale, ROOM);
+              driver.step(engine.player, 0, clock);
+            });
           stillRef.current = (nextIsThinking) => {
             clock = Math.max(clock, performance.now());
+            driver.setAnchors(anchorsRef.current(), scale, ROOM);
             if (nextIsThinking) driver.think();
             else driver.answer(clock);
             for (let i = 0; i < 60; i++) driver.step(engine.player, 0.25, clock + i * 250, false);
             clock += 60 * 250;
-            stage.settle(() => driver.step(engine.player, 0, clock));
+            draw();
           };
           stillRef.current(isThinkingRef.current);
+          const box = stageRef.current;
+          const root = box?.parentElement;
+          if (box && root) {
+            // (what it draws itself doesn't count)
+            stopFollowRef.current = watchLayout({
+              root,
+              ignore: (node) => box.contains(node),
+              onChange: draw,
+            });
+          }
           return true;
         }
         stage.setDriver((eng, dt) => {
@@ -129,6 +148,8 @@ const useChatStage = ({
       onRelease: () => {
         driverRef.current = null;
         stillRef.current = null;
+        stopFollowRef.current?.();
+        stopFollowRef.current = null;
       },
     });
     // isThinking and isPaused have their own effects; a new color scheme or scale starts it again
