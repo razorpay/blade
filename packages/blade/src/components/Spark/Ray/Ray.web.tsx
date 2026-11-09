@@ -88,7 +88,7 @@ const _Ray = (
       flexShrink={0}
       width={makeSize(box.width)}
       height={makeSize(box.height)}
-      {...(accessibilityLabel
+      {...(accessibilityLabel && isVisible
         ? makeAccessible({ role: 'img', label: accessibilityLabel })
         : makeAccessible({ hidden: true }))}
       {...metaAttribute({ name: MetaConstants.Ray, testID })}

@@ -347,6 +347,12 @@ class RayPlayer {
     });
   }
 
+  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, once the sleep cycle has put it on. */
+  get capAsk(): { ray: 'cap'; on: boolean; q?: Record<string, unknown> } {
+    const { CAP } = this.cap;
+    return CAP.on ? { ray: 'cap', on: true, q: { ...CAP.q } } : { ray: 'cap', on: false };
+  }
+
   /** What the sleep cycle is doing, or null when he isn't in it. */
   get napPhase(): NapPhase | null {
     return this.src.kind === 'nap' ? this.src.phase : null;

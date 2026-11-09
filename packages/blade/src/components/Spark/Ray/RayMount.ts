@@ -634,6 +634,7 @@ class RayMount {
     film.host.send({ ray: 'mode', mode: this.options.colorScheme });
     film.host.send({ ray: 'zoom', z: this.geo.zoom });
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
+    film.host.send(this.player.capAsk); // his nightcap, once the sleep cycle has put it on: the films wear it too (as flow 9's do)
     film.host.send(from ? { ray: 'start', from } : { ray: 'start' });
     film.startTick = film.host.ticks;
     film.shownAt = Infinity;
@@ -715,9 +716,13 @@ class RayMount {
     if (dpr !== this.dpr) this.layout();
 
     if (this.reducedMotion) {
+      // one still frame: at rest, or none while he's hidden (no hop: he's simply there or not; update() draws it again)
+      const shown = !this.options.isHidden;
+      this.player.canvas.style.visibility = shown ? '' : 'hidden';
       this.player.rest(0);
-      this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
-      return; // one still frame at rest
+      if (shown) this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
+      else this.player.clear();
+      return;
     }
 
     this.listenToInput();

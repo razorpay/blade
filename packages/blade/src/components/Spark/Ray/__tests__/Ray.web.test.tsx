@@ -28,6 +28,14 @@ describe('<Ray />', () => {
     expect(ray).not.toHaveAttribute('aria-hidden');
   });
 
+  it('should hide his label from assistive tech while he is not visible', () => {
+    const { getByTestId, queryByRole } = renderWithTheme(
+      <Ray testID="ray-test" accessibilityLabel="Ray is searching" isVisible={false} />,
+    );
+    expect(queryByRole('img')).not.toBeInTheDocument();
+    expect(getByTestId('ray-test')).toHaveAttribute('aria-hidden', 'true');
+  });
+
   it('should render without a canvas to draw on (jsdom) for every state', () => {
     const states = ['idle', 'searching', 'calling', 'writing', 'working'] as const;
     states.forEach((state) => {

@@ -87,8 +87,9 @@ type RayProps = {
    */
   isInteractive?: boolean;
   /**
-   * When provided, Ray is exposed to assistive tech as an image with this label. Leave it unset when he is decorative
-   * (the surrounding UI already says what's happening), so screen readers skip him.
+   * When provided, Ray is exposed to assistive tech as an image with this label while he's visible (with `isVisible={false}`
+   * he's hidden from it too). Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen
+   * readers skip him.
    */
   accessibilityLabel?: string;
 } & TestID &
