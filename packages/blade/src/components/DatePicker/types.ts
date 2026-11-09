@@ -230,8 +230,10 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     /**
      * Sets the date format to be displayed in the input field.
      * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
+     *
+     * Use 'MMM YYYY' or 'MMMM YYYY' to also show the selected year when using picker="month" (e.g. "Mar 2026")
      */
-    format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY';
+    format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY' | 'MMM YYYY' | 'MMMM YYYY';
     /**
      *  Placeholder text for the datepicker input , when no date is selected.
      * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
