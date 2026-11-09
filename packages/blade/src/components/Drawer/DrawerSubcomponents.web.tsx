@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerHeaderProps, DrawerFooterProps } from './types';
@@ -6,6 +7,7 @@ import { useDrawerStack } from './StackProvider';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~utils';
@@ -82,11 +84,36 @@ const DrawerHeader = assignWithoutSideEffects(_DrawerHeader, {
 
 const drawerPadding = 'spacing.6';
 
+const StyledDrawerBody = styled(BaseBox)(({ theme }) => {
+  return {
+    overflowY: 'auto',
+    // Reserve space for scrollbar gutter — prevents content from shifting when scrollbar appears
+    scrollbarGutter: 'stable',
+    // Firefox
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${theme.colors.surface.border.gray.muted} transparent`,
+    // WebKit (Chrome, Safari, Edge)
+    '&::-webkit-scrollbar': {
+      width: '6px',
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: theme.colors.surface.border.gray.muted,
+      borderRadius: `${theme.border.radius.max}px`,
+    },
+    '&::-webkit-scrollbar-thumb:hover': {
+      backgroundColor: theme.colors.surface.border.gray.subtle,
+    },
+  };
+});
+
 const _DrawerBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box padding={drawerPadding} overflow="auto" flex="1">
+    <StyledDrawerBody padding={drawerPadding} flex="1">
       {children}
-    </Box>
+    </StyledDrawerBody>
   );
 };
 const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
