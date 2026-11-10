@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
-import { RayMount, rayBoxSize } from './RayMount';
+import type { RayMount } from './RayMount';
+import { RAY_BOX } from './rayBox';
 import type { RayProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -62,13 +63,28 @@ const _Ray = (
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
+  const inputRefRef = useRef(inputRef);
+  inputRefRef.current = inputRef;
 
+  // his director and engine load with his first render, a chunk of their own as each film is, so an app that imports Blade's
+  // components without rendering him never downloads them (the PR review); his box is laid out meanwhile (RAY_BOX)
   useEffect(() => {
     if (!boxRef.current || !canDraw()) return undefined;
-    const mount = new RayMount(boxRef.current, optionsRef.current);
-    mountRef.current = mount;
+    let mount: RayMount | null = null;
+    let isUnmounted = false;
+    import('./RayMount')
+      .then((module) => {
+        if (isUnmounted || !boxRef.current) return;
+        mount = new module.RayMount(boxRef.current, optionsRef.current); // (the latest props, if they changed while it loaded)
+        mount.setInputRef(inputRefRef.current ?? null);
+        mountRef.current = mount;
+      })
+      .catch(() => {
+        // not loaded (offline, blocked): his box stays, empty
+      });
     return () => {
-      mount.dispose();
+      isUnmounted = true;
+      mount?.dispose();
       mountRef.current = null;
     };
   }, []);
@@ -81,7 +97,7 @@ const _Ray = (
     mountRef.current?.setInputRef(inputRef ?? null);
   }, [inputRef]);
 
-  const box = rayBoxSize(size);
+  const box = RAY_BOX[size];
 
   return (
     <BaseBox

@@ -623,14 +623,19 @@ class RayMount {
     return next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
   }
 
-  /** An answer film that isn't playing, leaving, or the one now or next is let go (its canvases freed; loaded again if needed). */
+  /**
+   * A film that isn't playing, leaving, the answer's now or next, or his idle's (he goes back to it after typing, a flip or an
+   * answer) is let go: its canvases freed, loaded again if it's needed (its chunk is cached). An idle he's moved on from goes
+   * too (time-of-day's clock, a new `idle`; the PR review).
+   */
   private releaseFilms(): void {
     const h = this.holder;
     const keep = new Set(this.wantedAnswerFilms());
     if (h.by === 'film') keep.add(h.id);
-    const answerFilms = new Set<string>(Object.values(ANSWER_FILMS));
+    const idleFilm = IDLE_FILMS[this.idleOf(this.options.idle, performance.now())];
+    if (idleFilm) keep.add(idleFilm);
     Object.values(this.films).forEach((film) => {
-      if (!answerFilms.has(film.id) || keep.has(film.id) || film.going) return;
+      if (keep.has(film.id) || film.going) return;
       film.host.dispose();
       Reflect.deleteProperty(this.films, film.id);
       Reflect.deleteProperty(this.loading, film.id);

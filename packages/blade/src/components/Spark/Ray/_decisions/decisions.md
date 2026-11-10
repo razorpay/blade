@@ -51,7 +51,7 @@ His box is his rest footprint and never changes size. Everything he does around 
 - `RayMount` directs. Answer films hand over mid-move, and while the next film hasn't drawn yet, his own Ray holds the pose the last one left him in. A film takes him from rest and gives him back at rest, where both draw the same frame. An idle film plays its exit first (1.6× quick for typing and the hop). The flip always plays out. One loop draws everything, and it pauses while he's off-screen.
 - His floor is the top of what he sits on. The stage is cut there only while something should go behind it: the hop down and a coin falling past. The rest of the time nothing's cut, so a prop he holds out over the box's edge (Coffee's cup) or below the answer's line (the magnifier's handle) stays whole.
 - The coin flip's physics are made once per page in idle time (`flipPrepare`), from his rest; the pose he's really in is carried in as a gap that dies away on a critically damped spring as he squashes, and the gap from the flick's pose dies away the same way as his idle takes him back. Simulating it on the click cost 11–26 ms, one to three dropped frames at 120 Hz.
-- Films load when first used (`import()`): about 57 KB gzipped up front (the director, his own Ray, the engine and canon), then 13 KB of shared film helpers with the first film and 5–15 KB per film.
+- Nothing heavy loads up front: the director, his own Ray, the engine and canon (about 57 KB gzipped) load with his first render (`import()`), so an app that imports Blade's components without rendering him never downloads them (the PR review, 2026-11-10); his box is laid out meanwhile from `rayBox.ts`, which a test keeps equal to the engine's sizes. Films load when first used: 13 KB of shared film helpers with the first film, then 5–15 KB per film. A film he's done with is freed (an answer's past states, an idle he's moved on from), so at most his idle's film and the answer's now and next are loaded.
 
 ## Accessibility
 
@@ -65,7 +65,7 @@ Web only. `Ray.native.tsx` throws "not yet implemented", like RazorSense.
 
 ## Open questions
 
-- **Bundle size.** Films are loaded on demand now (130 KB gzipped if every film is used, 57 KB up front). Stripping each film's Studio-only panel, undo and keyboard code during export would cut more.
+- **Bundle size.** Films are loaded on demand now (130 KB gzipped if every film is used, 57 KB with his first render, none before). Stripping each film's Studio-only panel, undo and keyboard code during export would cut more.
 - **A click mid-sip or mid-cash-run** costs one or two frames at the click: those films re-plan their bit then (a re-simulation). Moving the engine's physics to a worker would remove it.
 - **`size` tokens.** Two sizes match today's dashboard (48) and sidekick (38). Investigate's 49.5px button isn't covered.
 - **Not in v1:**

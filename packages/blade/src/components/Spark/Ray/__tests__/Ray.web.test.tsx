@@ -1,4 +1,6 @@
 import { Ray } from '../Ray';
+import { RAY_BOX } from '../rayBox';
+import { rayBoxSize } from '../RayMount';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Ray />', () => {
@@ -34,6 +36,10 @@ describe('<Ray />', () => {
     );
     expect(queryByRole('img')).not.toBeInTheDocument();
     expect(getByTestId('ray-test')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('should lay out his box at the size his engine works out (without loading it)', () => {
+    (['small', 'medium'] as const).forEach((size) => expect(RAY_BOX[size]).toEqual(rayBoxSize(size)));
   });
 
   it('should pass data-analytics attributes to his box', () => {
