@@ -74,6 +74,19 @@ const _Ray = (
   const shouldUnmountRef = useRef(shouldUnmountWhenHidden);
   shouldUnmountRef.current = shouldUnmountWhenHidden;
   const wasRemovedRef = useRef(isRemoved); // his box was removed (or never laid out): back, he comes up out of the surface
+  const hasMountedRef = useRef(false); // a director has started him: the landing dash is once, not again for a new one
+
+  // prefers-reduced-motion is read as his director starts, so when it changes while he's up a new director takes over, still or
+  // moving as it now says (the PR review: it was read once and kept for good)
+  const [motionChanges, setMotionChanges] = useState(0);
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return undefined;
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (typeof query.addEventListener !== 'function') return undefined;
+    const onChange = (): void => setMotionChanges((n) => n + 1);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
 
   // his director and engine load with his first render, a chunk of their own as each film is, so an app that imports Blade's
   // components without rendering him never downloads them (the PR review); his box is laid out meanwhile (RAY_BOX)
@@ -86,11 +99,14 @@ const _Ray = (
       .then((module) => {
         if (isUnmounted || !boxRef.current) return;
         const latest = optionsRef.current; // (the latest props, if they changed while it loaded)
-        // back after his box was removed: he starts hopped off and comes up out of the surface (the landing dash is once)
+        const entrance = hasMountedRef.current ? 'none' : latest.entrance;
+        // back after his box was removed: he starts hopped off and comes up out of the surface
         mount = new module.RayMount(
           boxRef.current,
-          isReturning ? { ...latest, entrance: 'none', isHidden: true } : latest,
+          isReturning ? { ...latest, entrance: 'none', isHidden: true } : { ...latest, entrance },
         );
+        hasMountedRef.current = true;
+        wasRemovedRef.current = false;
         mount.setInputRef(inputRefRef.current ?? null);
         mount.onAway = () => {
           if (!shouldUnmountRef.current || !optionsRef.current.isHidden) return;
@@ -108,7 +124,7 @@ const _Ray = (
       mount?.dispose();
       mountRef.current = null;
     };
-  }, [isRemoved]);
+  }, [isRemoved, motionChanges]);
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);

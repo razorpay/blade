@@ -22,8 +22,8 @@ const inputRef = useRef(null);
   <ChatInput ref={inputRef} … />
 </Box>
 
-// in the answer's row: its states, handing over mid-move; at rest between them; drops out when it's done
-<Ray state={step} idle="rest" isVisible={!isDone} isInteractive={false} />
+// in the answer's row: its states, handing over mid-move; at rest between them; drops out when it's done, and the row closes up
+<Ray state={step} idle="rest" isVisible={!isDone} shouldUnmountWhenHidden isInteractive={false} />
 ```
 
 ### Props
@@ -58,7 +58,7 @@ His box is his rest footprint and never changes size (unless `shouldUnmountWhenH
 
 - Decorative by default (`aria-hidden`). `accessibilityLabel` makes him `role="img"`.
 - The coin flip is a pointer delight with no keyboard equivalent, since it carries no information.
-- `prefers-reduced-motion`: one still frame of him at rest, no animation.
+- `prefers-reduced-motion`: one still frame of him at rest, no animation. Turned on or off while he's up, he follows it (a new director takes over, still or moving).
 
 ## Platform
 

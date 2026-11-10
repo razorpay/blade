@@ -19,8 +19,8 @@ function Chat({ isAnswering, step, isDone }) {
   const inputRef = React.useRef(null);
   return (
     <>
-      {/* the answer's row: its states, at rest between them, dropping out when it's done */}
-      <Ray state={step} idle="rest" isVisible={!isDone} isInteractive={false} />
+      {/* the answer's row: its states, at rest between them, dropping out when it's done (and the row closes up) */}
+      <Ray state={step} idle="rest" isVisible={!isDone} shouldUnmountWhenHidden isInteractive={false} />
 
       {/* on the chat input: he sits above it, watches what's typed, hops off while it's answering */}
       <Box position="relative">

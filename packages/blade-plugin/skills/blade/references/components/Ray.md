@@ -209,6 +209,7 @@ const AnswerRow = () => {
         state={state}
         idle="rest"
         isVisible={!isDone}
+        shouldUnmountWhenHidden
         isInteractive={false}
         accessibilityLabel={LABELS[state]}
       />
