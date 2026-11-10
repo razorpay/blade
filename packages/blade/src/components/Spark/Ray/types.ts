@@ -59,10 +59,10 @@ type RayProps = {
   isVisible?: boolean;
   /**
    * The text field he watches: an `<input>` or a `<textarea>` (the ref Blade's ChatInput, TextArea or TextInput forwards
-   * works as it is). While it has text and focus he leans out towards the caret and follows it with his body and eyes;
+   * works as it is, and so does a `useRef<HTMLTextAreaElement>(null)` under React 18's or 19's types). While it has text and focus he leans out towards the caret and follows it with his body and eyes;
    * when it's cleared or loses focus he goes back to his idle.
    */
-  inputRef?: React.RefObject<HTMLElement>;
+  inputRef?: React.RefObject<HTMLElement | null>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
    * again while it's up for another).

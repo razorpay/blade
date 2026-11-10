@@ -1,3 +1,4 @@
+import React from 'react';
 import { Ray } from '../Ray';
 import { RAY_BOX } from '../rayBox';
 import { rayBoxSize } from '../RayMount';
@@ -42,6 +43,24 @@ describe('<Ray />', () => {
     (['small', 'medium'] as const).forEach((size) =>
       expect(RAY_BOX[size]).toEqual(rayBoxSize(size)),
     );
+  });
+
+  it('should take the ref an app makes for its text field (React 18 and 19 types)', () => {
+    const ChatBox = (): React.ReactElement => {
+      const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+      const inputRef = React.useRef<HTMLInputElement | null>(null);
+      return (
+        <>
+          <Ray testID="ray-textarea" inputRef={textareaRef} />
+          <Ray testID="ray-input" inputRef={inputRef} />
+          <textarea ref={textareaRef} />
+          <input ref={inputRef} />
+        </>
+      );
+    };
+    const { getByTestId } = renderWithTheme(<ChatBox />);
+    expect(getByTestId('ray-textarea')).toBeInTheDocument();
+    expect(getByTestId('ray-input')).toBeInTheDocument();
   });
 
   it('should pass data-analytics attributes to his box', () => {
