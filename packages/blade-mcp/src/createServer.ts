@@ -135,6 +135,9 @@ export const createServer = ({
 }): McpServer => {
   // Clients put server instructions in the system prompt at session start, so agents see the
   // deprecation even if they never call a tool.
+  // GHSA-46jr-4wx8-v453 (sdk <1.32, unbounded tool-arg validation) is not exploitable here: every
+  // tool is registered with an empty `{}` schema below, so there are no arrays/records to validate.
+  // nosemgrep
   const server = new McpServer(
     {
       name: 'Blade MCP',
