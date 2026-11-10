@@ -738,7 +738,24 @@ class RayMount {
     this.listenToInput();
     this.reconcile(now);
     this.draw(now, dt);
+    if (this.isAway()) {
+      cancelAnimationFrame(this.raf); // hidden and done going: nothing moves till he's asked back (update() starts him again)
+      this.raf = 0;
+    }
   };
+
+  /** Hidden, hopped off, no film still leaving and nothing else to play: the loop can stop (the PR review: a hidden Ray drew on at 60fps). */
+  private isAway(): boolean {
+    const h = this.holder;
+    return (
+      h.by === 'player' &&
+      h.act === 'gone' &&
+      Boolean(this.options.isHidden) &&
+      !this.entrance &&
+      !this.player.isFlipping &&
+      !Object.values(this.films).some((f) => f.going)
+    );
+  }
 
   private draw(now: number, dt: number): void {
     if (this.holder.by === 'player' && this.holder.act === 'entrance') {
@@ -777,10 +794,9 @@ class RayMount {
       this.cutOn = cut;
       this.stage.style.clipPath = cut ? this.floorCut : '';
     }
-    const stage = this.stage.getBoundingClientRect();
-    const raw: [number, number] | null = this.pointer
-      ? [this.pointer[0] - stage.left, this.pointer[1] - stage.top]
-      : null;
+    const stage = this.pointer ? this.stage.getBoundingClientRect() : null; // (measured only when there's a pointer to bring in)
+    const raw: [number, number] | null =
+      this.pointer && stage ? [this.pointer[0] - stage.left, this.pointer[1] - stage.top] : null;
     const local = raw ? this.reach(raw[0], raw[1]) : null;
 
     if (playerOn) {

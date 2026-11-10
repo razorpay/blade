@@ -203,6 +203,8 @@ class RayPlayer {
   private base: Frame | null = null;
   private readonly sims: Record<string, any> = {};
   private readonly hover = RC.hoverInit();
+  // his own coin flip: create() makes its state (COINFLIP) fresh for each Ray, so clicking one Ray flips only him. All that's
+  // shared on the page is the flip's physics, made once from rest and only read after (FLIP_MADE: "one per page")
   private readonly flip: any = (SHARED as any).rayFlip(pageHost());
   private readonly cap: any = createCap(pageHost() as any);
   private readonly napHover = RC.hoverInit();
