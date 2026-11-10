@@ -68,6 +68,7 @@ Web only. `Ray.native.tsx` throws "not yet implemented", like RazorSense.
 
 - **Bundle size.** Films are loaded on demand now (130 KB gzipped if every film is used, 57 KB with his first render, none before). Stripping each film's Studio-only panel, undo and keyboard code during export would cut more.
 - **A click mid-sip or mid-cash-run** costs one or two frames at the click: those films re-plan their bit then (a re-simulation). Moving the engine's physics to a worker would remove it.
+- **`isInteractive`, against Blade's pattern.** Elsewhere a component becomes interactive from its handler (a StepItem with `onClick` or `href`, StepGroup's decisions). Ray's click is a delight with nothing for the app to do, and the flag only turns off his pointer look and the coin flip (for an answer-row Ray). The PR review (2026-11-10) suggested an optional `onClick` instead, or a name for what it does, such as `shouldReactToPointer`. It's kept as `isInteractive` for now.
 - **`size` tokens.** Two sizes match today's dashboard (48) and sidekick (38). Investigate's 49.5px button isn't covered.
 - **Not in v1:**
   - the wardrobe
