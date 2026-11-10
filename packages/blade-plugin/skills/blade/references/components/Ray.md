@@ -93,6 +93,7 @@ type RayProps = {
    */
   accessibilityLabel?: string;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 ```
 

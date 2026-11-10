@@ -36,6 +36,14 @@ describe('<Ray />', () => {
     expect(getByTestId('ray-test')).toHaveAttribute('aria-hidden', 'true');
   });
 
+  it('should pass data-analytics attributes to his box', () => {
+    const { getByTestId } = renderWithTheme(
+      <Ray testID="ray-test" data-analytics-section="chat" data-analytics-action="ray" />,
+    );
+    expect(getByTestId('ray-test')).toHaveAttribute('data-analytics-section', 'chat');
+    expect(getByTestId('ray-test')).toHaveAttribute('data-analytics-action', 'ray');
+  });
+
   it('should render without a canvas to draw on (jsdom) for every state', () => {
     const states = ['idle', 'searching', 'calling', 'writing', 'working'] as const;
     states.forEach((state) => {

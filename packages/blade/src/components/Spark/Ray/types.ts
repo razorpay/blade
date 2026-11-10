@@ -1,4 +1,4 @@
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 /**
@@ -77,6 +77,7 @@ type RayProps = {
    */
   accessibilityLabel?: string;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 export type { RayProps, RayState, RayIdle, RaySize };

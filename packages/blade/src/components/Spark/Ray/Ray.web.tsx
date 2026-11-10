@@ -8,6 +8,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeSize } from '~utils/makeSize';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 
 // he's drawn on a canvas: where there's no real one (a server render, jsdom in unit tests) his box renders and nothing animates
@@ -40,7 +42,7 @@ const _Ray = (
     isInteractive = true,
     accessibilityLabel,
     testID,
-    ...styledProps
+    ...rest
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -92,11 +94,15 @@ const _Ray = (
         ? makeAccessible({ role: 'img', label: accessibilityLabel })
         : makeAccessible({ hidden: true }))}
       {...metaAttribute({ name: MetaConstants.Ray, testID })}
-      {...getStyledProps(styledProps)}
+      {...makeAnalyticsAttribute(rest)}
+      {...getStyledProps(rest)}
     />
   );
 };
 
-const Ray = forwardRef(_Ray);
+const Ray = assignWithoutSideEffects(forwardRef(_Ray), {
+  displayName: 'Ray',
+  componentId: 'Ray',
+});
 
 export { Ray };
