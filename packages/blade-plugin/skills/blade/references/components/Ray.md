@@ -9,7 +9,7 @@ Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat 
 ## Important Constraints
 
 - `Ray` is **web only**; on React Native it throws "not yet implemented".
-- His box is his rest footprint (48px or 38px wide) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow.
+- His box is his rest footprint (48px or 38px wide) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
 - `inputRef` must point at the actual `<input>` or `<textarea>` he watches (Blade's `ChatInput` forwards its textarea).
 
 ## TypeScript Types

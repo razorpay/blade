@@ -50,6 +50,12 @@ const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: th
 const WATCH_SETTLED_MS = 970; // his move out to the caret is over
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
 const WIDTHS = { small: 38, medium: 48 };
+// How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
+// 0.27 below (Coffee's mug over the edge; the hop's 0.6 is under the floor cut), measured over every idle, flip, film, the hop
+// and the dash (2026-11-10). The rest of the stage's 16 x 8 widths is cut off, so a scrolling parent doesn't scroll on into
+// its empty right and bottom (the PR review). Its left and top run on: nothing scrolls there.
+const ROOM_RIGHT = 1;
+const ROOM_BELOW = 0.75;
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
 const geometry = (
@@ -179,6 +185,7 @@ const caretX = (
 class RayMount {
   private readonly root: HTMLElement;
   private readonly stage: HTMLDivElement;
+  private readonly room: HTMLDivElement; // the stage, cut to what he draws past his box (ROOM_RIGHT, ROOM_BELOW)
   private readonly player = new RayPlayer();
   private readonly films: Record<string, Film> = {};
   private readonly loading: Record<string, Promise<void>> = {};
@@ -213,9 +220,12 @@ class RayMount {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.stage = document.createElement('div');
-    this.stage.style.cssText = 'position:absolute;pointer-events:none;';
+    this.stage.style.cssText = 'position:absolute;left:0;top:0;pointer-events:none;';
     this.stage.append(this.player.canvas);
-    root.append(this.stage);
+    this.room = document.createElement('div');
+    this.room.style.cssText = 'position:absolute;overflow:hidden;pointer-events:none;';
+    this.room.append(this.stage);
+    root.append(this.room);
 
     const now = performance.now();
     this.holder = {
@@ -318,7 +328,7 @@ class RayMount {
     window.removeEventListener('resize', this.onCaretMove);
     document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     Object.values(this.films).forEach((f) => f.host.dispose());
-    this.stage.remove();
+    this.room.remove();
   }
 
   // ---- what he should be doing ----
@@ -857,6 +867,10 @@ class RayMount {
       width: `${g.width}px`,
       height: `${g.height}px`,
       clipPath: this.cutOn ? this.floorCut : '',
+    });
+    Object.assign(this.room.style, {
+      width: `${(g.left + w * (1 + ROOM_RIGHT)).toFixed(2)}px`,
+      height: `${(g.floor + w * ROOM_BELOW).toFixed(2)}px`,
       left: `${(-g.left).toFixed(2)}px`,
       top: `${(g.boxHeight - g.floor).toFixed(2)}px`,
     });

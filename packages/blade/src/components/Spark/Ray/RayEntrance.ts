@@ -59,10 +59,11 @@ class RayEntrance {
     const { script: s, end } = script(distance * k, k);
     this.sim = RC.simulate(s, { seed: 3 });
     this.end = end;
-    // the run from his start to his place, and the hop above it (intro9.js: from 1.4 widths before him to 2.6 after, the hop + 2.8 above)
+    // the run from his start to his place, and the hop above it (intro9.js: from 1.4 widths before him, the hop + 2.8 above; after
+    // him, 1 width past his box like the stage's room (RayMount ROOM_RIGHT): the dash draws 0.16 there)
     const left = distance + 1.4 * w;
     const above = HOP_PX + 2.8 * w;
-    const cw = left + 2.6 * w;
+    const cw = left + 2 * w;
     const ch = above + 0.6 * w;
     this.canvas = document.createElement('canvas');
     this.canvas.width = Math.round(cw * dpr);

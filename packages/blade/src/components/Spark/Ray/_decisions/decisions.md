@@ -40,7 +40,7 @@ const inputRef = useRef(null);
 | `accessibilityLabel` | `string` | – | Exposes him as an image with this label; leave unset when he's decorative. |
 | `testID`, styled props | | | As other Blade components. |
 
-His box is his rest footprint and never changes size. Everything he does around it (props, a coin in the air, the hop) draws outside it without affecting layout, so the parent must not clip it.
+His box is his rest footprint and never changes size. Everything he does around it (props, a coin in the air, the hop) draws outside it without affecting layout, so the parent must not clip it. To the right of his box and below it, his drawing stops 1 and 0.75 of his widths out (what he draws there reaches 0.38 and 0.27, measured over every idle, flip, film, the hop and the dash). So in a scrolling parent (a chat's message list) he adds at most that much scroll room, not his films' whole stage (the PR review, 2026-11-10). Above him and to his left it runs on, since nothing scrolls there.
 
 ## How it's built
 
