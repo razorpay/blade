@@ -119,8 +119,14 @@ const _Ray = (
   }, [watchedInputRef]);
 
   useEffect(() => {
+    if (!shouldUnmountWhenHidden || isVisible) return;
+    if (mountRef.current) {
+      // his director says when he's away (onAway); set while he was already away, it hasn't said since: it says again now (the
+      // PR review: turned on while he was hidden, his box stayed)
+      mountRef.current.update(optionsRef.current);
+      return;
+    }
     // nothing's drawing him (no canvas, not loaded yet, or it couldn't load): there's no hop to wait for
-    if (!shouldUnmountWhenHidden || isVisible || mountRef.current) return;
     wasRemovedRef.current = true;
     setIsRemoved(true);
   }, [isVisible, shouldUnmountWhenHidden]);
