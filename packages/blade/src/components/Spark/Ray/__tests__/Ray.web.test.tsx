@@ -39,7 +39,9 @@ describe('<Ray />', () => {
   });
 
   it('should lay out his box at the size his engine works out (without loading it)', () => {
-    (['small', 'medium'] as const).forEach((size) => expect(RAY_BOX[size]).toEqual(rayBoxSize(size)));
+    (['small', 'medium'] as const).forEach((size) =>
+      expect(RAY_BOX[size]).toEqual(rayBoxSize(size)),
+    );
   });
 
   it('should pass data-analytics attributes to his box', () => {
