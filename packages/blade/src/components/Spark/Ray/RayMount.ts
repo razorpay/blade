@@ -49,6 +49,7 @@ const REST_BLEND_MS = 320;
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const WATCH_SETTLED_MS = 970; // his move out to the caret is over
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
+const STAGE_FRESH_MS = 1000; // where his stage is on screen is measured again in a frame at most this often (see stageAt)
 const WIDTHS = { small: 38, medium: 48 };
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
 // 0.27 below (Coffee's mug over the edge; the hop's 0.6 is under the floor cut), measured over every idle, flip, film, the hop
@@ -209,6 +210,7 @@ class RayMount {
   private raf = 0;
   private lastNow = 0;
   private isVisible = true;
+  private stageAt: { left: number; top: number; at: number } | null = null; // see stageMoved
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
@@ -253,8 +255,8 @@ class RayMount {
     root.addEventListener('click', this.onClick);
     window.addEventListener('pointermove', this.onPointerMove, { passive: true });
     document.addEventListener('selectionchange', this.onCaretMove);
-    window.addEventListener('scroll', this.onCaretMove, { capture: true, passive: true });
-    window.addEventListener('resize', this.onCaretMove, { passive: true });
+    window.addEventListener('scroll', this.onViewMove, { capture: true, passive: true });
+    window.addEventListener('resize', this.onViewMove, { passive: true });
     document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
     if (typeof IntersectionObserver === 'function') {
       this.observer = new IntersectionObserver((entries) => {
@@ -335,8 +337,8 @@ class RayMount {
     this.entrance?.dispose();
     window.removeEventListener('pointermove', this.onPointerMove);
     document.removeEventListener('selectionchange', this.onCaretMove);
-    window.removeEventListener('scroll', this.onCaretMove, { capture: true });
-    window.removeEventListener('resize', this.onCaretMove);
+    window.removeEventListener('scroll', this.onViewMove, { capture: true });
+    window.removeEventListener('resize', this.onViewMove);
     document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     Object.values(this.films).forEach((f) => f.host.dispose());
     this.room.remove();
@@ -536,6 +538,12 @@ class RayMount {
   // every keystroke (an input event) restarts the nudge's wait, and cancels one that's playing
   private readonly onCaretMove = (): void => {
     this.caretCache = null;
+  };
+
+  // a scroll or a resize moves the caret and his stage on screen
+  private readonly onViewMove = (): void => {
+    this.caretCache = null;
+    this.stageMoved();
   };
 
   private readonly onInput = (): void => {
@@ -839,7 +847,9 @@ class RayMount {
       this.cutOn = cut;
       this.stage.style.clipPath = cut ? this.floorCut : '';
     }
-    const stage = this.pointer ? this.stage.getBoundingClientRect() : null; // (measured only when there's a pointer to bring in)
+    if (this.pointer && (!this.stageAt || now - this.stageAt.at > STAGE_FRESH_MS))
+      this.measureStage(now);
+    const stage = this.pointer ? this.stageAt : null;
     const raw: [number, number] | null =
       this.pointer && stage ? [this.pointer[0] - stage.left, this.pointer[1] - stage.top] : null;
     const local = raw ? this.reach(raw[0], raw[1]) : null;
@@ -936,6 +946,7 @@ class RayMount {
       top: `${(g.boxHeight - g.floor).toFixed(2)}px`,
     });
     this.player.place(g.width, g.height, g.left, g.floor, w, this.dpr);
+    this.stageAt = null;
     Object.values(this.films).forEach((f) => {
       f.host.resize(g.width, g.height, this.dpr);
       f.host.send({ ray: 'zoom', z: g.zoom });
@@ -946,7 +957,24 @@ class RayMount {
 
   private readonly onPointerMove = (e: PointerEvent): void => {
     this.pointer = [e.clientX, e.clientY];
+    this.stageMoved();
   };
+
+  /**
+   * Where his stage is on screen, to bring the pointer in. It's measured in the pointer, scroll and resize events, which come
+   * between frames before anything's been written, and in a frame only when it's missing or a second old (a layout shift with
+   * nothing else moving), not on every frame after the frame's style writes: that forced a layout a frame for each Ray (the PR
+   * review, 2026-11-10). While his loop is stopped it's dropped instead, and measured again on his first frame back.
+   */
+  private stageMoved(): void {
+    if (this.raf) this.measureStage(performance.now());
+    else this.stageAt = null;
+  }
+
+  private measureStage(now: number): void {
+    const r = this.stage.getBoundingClientRect();
+    this.stageAt = { left: r.left, top: r.top, at: now };
+  }
 
   private readonly onPointerLeave = (): void => {
     this.pointer = null;
