@@ -68,6 +68,39 @@ TestRayFlipsACoin.play = async () => {
   await expect(doing()).toBe('idle');
 };
 
+// A click on him while he watches what's typed (it takes the field's focus) flips a coin, and he settles back into his idle
+export const TestRayFlipsWhileWatching: StoryFn<typeof Ray> = () => {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [value, setValue] = useState('');
+  return (
+    <Box padding="spacing.11" maxWidth="600px">
+      <Box position="relative" marginTop="spacing.11">
+        <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
+          <Ray idle="look" watchedInputRef={inputRef} />
+        </Box>
+        <ChatInput
+          ref={inputRef}
+          value={value}
+          onChange={({ value: v }) => setValue(v ?? '')}
+          placeholder="Ask Ray anything…"
+        />
+      </Box>
+    </Box>
+  );
+};
+TestRayFlipsWhileWatching.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('idle'), { timeout: 4000 });
+  const input = getByRole('textbox');
+  await userEvent.click(input);
+  await userEvent.type(input, 'How is my business doing?');
+  await waitFor(() => expect(doing()).toBe('watch'), { timeout: 3000 });
+  await userEvent.click(rayEl());
+  await waitFor(() => expect(flip().on).toBe(true), { timeout: 1000 });
+  await waitFor(() => expect(flip().on).toBe(false), { timeout: 9000 });
+  await waitFor(() => expect(doing()).toBe('idle'), { timeout: 3000 });
+};
+
 // Another click while the coin's up: that coin flies on by itself and he throws another
 export const TestRaySpamThrowsAnother: StoryFn<typeof Ray> = () => (
   <Box padding="spacing.11" paddingTop="200px">

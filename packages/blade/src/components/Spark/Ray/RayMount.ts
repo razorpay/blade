@@ -321,6 +321,15 @@ class RayMount {
       return;
     const h = this.holder;
     if (h.by === 'player') {
+      if (h.act === 'watch' || h.act === 'back') {
+        // clicked while he watches what's typed (the click takes the field's focus, so he's leaving it or about to): the flip,
+        // from where he is, with his rest under it; his idle follows it, or the watch again if the field still has the focus
+        // (the PR review: that first click was dropped)
+        if (h.act === 'watch') this.player.unwatch();
+        this.holder = { by: 'player', act: 'rest', since: performance.now() };
+        this.player.click();
+        return;
+      }
       if (h.act === 'idle' || h.act === 'rest') this.player.click();
       return;
     }
