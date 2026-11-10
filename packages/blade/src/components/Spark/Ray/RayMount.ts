@@ -100,6 +100,7 @@ type Film = {
   startTick: number;
   shownAt: number;
   going: boolean;
+  goingSince: number; // when it started leaving under the next film (a handoff): it's let go if it never says it's done
   front: boolean;
   lastCursor: string;
 };
@@ -189,6 +190,7 @@ class RayMount {
   private readonly player = new RayPlayer();
   private readonly films: Record<string, Film> = {};
   private readonly loading: Record<string, Promise<void>> = {};
+  private readonly failed = new Set<string>(); // films that didn't start (giveUpOn): not tried again till state or idle changes
   private pendingFrom: unknown = null;
   private listened: HTMLInputElement | HTMLTextAreaElement | null = null;
   private entrance: RayEntrance | null = null;
@@ -278,6 +280,11 @@ class RayMount {
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
+    if (
+      (options.idle !== undefined && options.idle !== this.options.idle) ||
+      (options.state !== undefined && options.state !== this.options.state)
+    )
+      this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
     this.options = { ...this.options, ...options };
     if (this.options.state !== 'idle') this.preloadAnswer();
     this.releaseFilms();
@@ -336,10 +343,15 @@ class RayMount {
   private want(): Want {
     const o = this.options;
     if (o.isHidden) return { kind: 'hidden' };
-    if (o.state !== 'idle') return { kind: 'answer', film: ANSWER_FILMS[o.state] };
+    if (o.state !== 'idle') {
+      const film = ANSWER_FILMS[o.state];
+      if (!this.failed.has(film)) return { kind: 'answer', film };
+      return { kind: 'idle', idle: 'rest' }; // (its film couldn't start: at rest instead)
+    }
     if (this.isTyping()) return { kind: 'watch' };
     const idle = this.idleOf(o.idle, performance.now());
-    return { kind: 'idle', idle };
+    const film = IDLE_FILMS[idle];
+    return { kind: 'idle', idle: film && this.failed.has(film) ? 'rest' : idle };
   }
 
   /**
@@ -369,6 +381,10 @@ class RayMount {
   // ---- getting him there ----
 
   private reconcile(now: number): void {
+    // a film leaving under the next one that never says it's done is let go (else it's drawn, and kept, for good: the PR review)
+    Object.values(this.films).forEach((film) => {
+      if (film.going && now - film.goingSince > EXIT_WAIT_MS) this.goneUnder(film);
+    });
     const want = this.want();
     const h = this.holder;
 
@@ -565,9 +581,13 @@ class RayMount {
     return null;
   }
 
-  /** A film that never got going: let go (it's loaded again the next time it's wanted), his own Ray at rest meanwhile. */
+  /**
+   * A film that never got going: let go, his own Ray at rest instead, and not tried again till what's asked of him changes
+   * (`state`, `idle`), so a film that can't start isn't loaded again every few seconds (the PR review).
+   */
   private giveUpOn(id: string, now: number): void {
-    if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests and it's tried again`);
+    if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests instead`);
+    this.failed.add(id);
     this.films[id]?.host.dispose();
     Reflect.deleteProperty(this.films, id);
     Reflect.deleteProperty(this.loading, id);
@@ -583,6 +603,7 @@ class RayMount {
       startTick: Infinity,
       shownAt: Infinity,
       going: false,
+      goingSince: 0,
       front: false,
       lastCursor: '',
       host: new FilmHost({
@@ -600,8 +621,14 @@ class RayMount {
   }
 
   private startFilm(id: string, kind: 'idle' | 'answer', from: unknown): void {
-    const film = this.film(id);
     const now = performance.now();
+    if (this.failed.has(id)) {
+      // (a handoff to a film that couldn't start: at rest from where the last one left him)
+      this.holder = { by: 'player', act: 'rest', since: now };
+      this.player.rest(REST_BLEND_MS);
+      return;
+    }
+    const film = this.film(id);
     const underneath = (this.holder.by === 'player' && this.holder.act !== 'gone') || Boolean(from);
     this.holder = { by: 'film', id, kind, leaving: false, since: now, started: false, underneath };
     this.pendingFrom = from; // (his own Ray draws him meanwhile: at rest, or the pose the last film left him in)
@@ -620,7 +647,8 @@ class RayMount {
     const { state } = this.options;
     if (state === 'idle') return [];
     const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
-    return next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
+    const wanted = next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
+    return wanted.filter((id) => !this.failed.has(id));
   }
 
   /**
@@ -661,8 +689,19 @@ class RayMount {
     const h = this.holder;
     if (h.by !== 'film' || h.id !== old.id || h.leaving !== 'handoff') return;
     old.going = true;
+    old.goingSince = performance.now();
     if (from) this.player.hold(from); // the old film has stopped drawing him: his own Ray holds that pose till the next one draws
     this.startFilm(next, 'answer', from);
+  }
+
+  /** A film that played its exit under the next one is done: it sleeps, hidden (and is freed if it isn't wanted). */
+  private goneUnder(film: Film): void {
+    film.going = false;
+    film.shownAt = Infinity;
+    film.startTick = Infinity;
+    film.host.layer.style.visibility = 'hidden';
+    film.host.send({ ray: 'sleep' });
+    this.releaseFilms();
   }
 
   /** A film gave him back at rest: his own Ray takes over there (the same frame), the film sleeps. */
@@ -701,14 +740,7 @@ class RayMount {
         break;
       case 'done':
         if (mine && h.by === 'film' && h.leaving === 'exit') this.filmDone(film);
-        else if (film.going) {
-          film.going = false;
-          film.shownAt = Infinity;
-          film.startTick = Infinity;
-          film.host.layer.style.visibility = 'hidden';
-          film.host.send({ ray: 'sleep' });
-          this.releaseFilms();
-        }
+        else if (film.going) this.goneUnder(film);
         break;
       default:
     }
