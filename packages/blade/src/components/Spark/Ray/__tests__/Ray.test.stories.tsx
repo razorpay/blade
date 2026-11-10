@@ -31,7 +31,7 @@ export const TestRayWatchesWhatsTyped: StoryFn<typeof Ray> = () => {
     <Box padding="spacing.11" maxWidth="600px">
       <Box position="relative" marginTop="spacing.11">
         <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-          <Ray idle="look" inputRef={inputRef} />
+          <Ray idle="look" watchedInputRef={inputRef} />
         </Box>
         <ChatInput
           ref={inputRef}
@@ -184,7 +184,7 @@ export const TestRayNudges: StoryFn<typeof Ray> = () => {
     <Box padding="spacing.11" maxWidth="600px">
       <Box position="relative" marginTop="spacing.11">
         <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-          <Ray idle="look" inputRef={inputRef} />
+          <Ray idle="look" watchedInputRef={inputRef} />
         </Box>
         <ChatInput
           ref={inputRef}

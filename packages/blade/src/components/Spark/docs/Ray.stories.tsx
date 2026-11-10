@@ -25,7 +25,7 @@ function Chat({ isAnswering, step, isDone }) {
       {/* on the chat input: he sits above it, watches what's typed, hops off while it's answering */}
       <Box position="relative">
         <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-          <Ray idle="rotate" inputRef={inputRef} isVisible={!isAnswering} />
+          <Ray idle="rotate" watchedInputRef={inputRef} isVisible={!isAnswering} />
         </Box>
         <ChatInput ref={inputRef} placeholder="Ask Ray anything…" />
       </Box>
@@ -56,7 +56,7 @@ export default {
       options: ['rotate', 'rest', 'coffee', 'look', 'cash', 'reading', 'sleep', 'time-of-day'],
     },
     size: { control: 'radio', options: ['small', 'medium'] },
-    inputRef: { table: { disable: true } },
+    watchedInputRef: { table: { disable: true } },
     ...getStyledPropsArgTypes(),
   },
   parameters: { docs: { page: Page } },
@@ -75,7 +75,7 @@ const OnChatInput = ({
   return (
     <Box position="relative" width="100%" maxWidth="720px" marginTop="spacing.11">
       <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
-        <Ray {...rayProps} inputRef={inputRef} />
+        <Ray {...rayProps} watchedInputRef={inputRef} />
       </Box>
       <Box position="relative" zIndex={1}>
         <ChatInput
@@ -218,7 +218,8 @@ const LABELS: Record<RayState, string> = {
 
 /**
  * The Ray in an answer's row: `state` steps through the answer (each step handing over mid-move); `idle` back means the
- * answer's done (the last state plays its exit and he rests there, `idle="rest"`); `isVisible={false}` drops him out of the row.
+ * answer's done (the last state plays its exit and he rests there, `idle="rest"`); `isVisible={false}` drops him out of the row,
+ * and with `shouldUnmountWhenHidden` his box goes too once he's out, so the label moves up into his place.
  */
 const AnswerRowTemplate: StoryFn<typeof Ray> = (args) => (
   <Box padding="spacing.10" paddingTop="spacing.11">
@@ -233,8 +234,16 @@ const AnswerRowTemplate: StoryFn<typeof Ray> = (args) => (
 
 export const AnswerRow = AnswerRowTemplate.bind({});
 AnswerRow.storyName = 'Answer row';
-AnswerRow.args = { state: 'searching', idle: 'rest', isVisible: true, isInteractive: false };
-AnswerRow.parameters = { controls: { include: ['state', 'isVisible'] } };
+AnswerRow.args = {
+  state: 'searching',
+  idle: 'rest',
+  isVisible: true,
+  shouldUnmountWhenHidden: false,
+  isInteractive: false,
+};
+AnswerRow.parameters = {
+  controls: { include: ['state', 'isVisible', 'shouldUnmountWhenHidden'] },
+};
 
 /**
  * The dashboard's answer, as flow 9 plays it: asked, he hops off the chat input; the answer's row plays Searching ->

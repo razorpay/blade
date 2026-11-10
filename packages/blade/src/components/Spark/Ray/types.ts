@@ -23,7 +23,7 @@ type RaySize = 'small' | 'medium';
 type RayProps = {
   /**
    * How he arrives when he first appears. `dash`: the dashboard's landing: he dashes in along the surface from its left (from 200px
-   * inside the input's left edge when `inputRef` is given), loads up, brakes, hops into place and starts his idle. It plays once, on
+   * inside the input's left edge when `watchedInputRef` is given), loads up, brakes, hops into place and starts his idle. It plays once, on
    * mount; typing, the hop or an answer cuts it short. It's skipped when he starts hidden, with reduced motion, and when his idle is
    * Sleep (he's found asleep).
    *
@@ -52,17 +52,29 @@ type RayProps = {
   size?: RaySize;
   /**
    * Ray sits on a surface (a chat input, a card). Set to `false`, he hops up and drops behind it; `true` again, he comes
-   * back up out of it and lands. His own box keeps its size either way, so the layout never moves.
+   * back up out of it and lands. His own box keeps its size either way, so the layout never moves (unless
+   * `shouldUnmountWhenHidden` is set).
    *
    * @default true
    */
   isVisible?: boolean;
   /**
-   * The text field he watches: an `<input>` or a `<textarea>` (the ref Blade's ChatInput, TextArea or TextInput forwards
-   * works as it is, and so does a `useRef<HTMLTextAreaElement>(null)` under React 18's or 19's types). While it has text and focus he leans out towards the caret and follows it with his body and eyes;
-   * when it's cleared or loses focus he goes back to his idle.
+   * By default, with `isVisible={false}` his box stays (empty) so the layout never moves. When this is set, his box is removed
+   * as well once he has hopped off (whatever he was playing finishes first), so the row he sat in closes up. With
+   * `isVisible` back, his box comes back and he comes up out of the surface again.
+   *
+   * **Warn:** the layout shifts when his box is removed, so check the container it's in.
+   *
+   * @default false
    */
-  inputRef?: React.RefObject<HTMLElement | null>;
+  shouldUnmountWhenHidden?: boolean;
+  /**
+   * The text field he watches (not an input of his own): an `<input>` or a `<textarea>` (the ref Blade's ChatInput, TextArea
+   * or TextInput forwards works as it is, and so does a `useRef<HTMLTextAreaElement>(null)` under React 18's or 19's types).
+   * While it has text and focus he leans out towards the caret and follows it with his body and eyes; when it's cleared or
+   * loses focus he goes back to his idle.
+   */
+  watchedInputRef?: React.RefObject<HTMLElement | null>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
    * again while it's up for another).

@@ -212,6 +212,9 @@ class RayMount {
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
+  /** Called when he's hidden and out of sight: hopped off with nothing left to play (or hidden while off-screen). Ray's
+   * `shouldUnmountWhenHidden` removes his box then. */
+  onAway: (() => void) | null = null;
   private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
 
   constructor(root: HTMLElement, options: RayMountOptions) {
@@ -297,6 +300,7 @@ class RayMount {
       );
     }
     this.start();
+    if (this.options.isHidden && !this.isVisible) this.onAway?.(); // hidden while off-screen: nobody sees a hop, he's away now
   }
 
   /** The text field he watches (read live: it may mount after him). */
@@ -768,7 +772,10 @@ class RayMount {
       this.player.canvas.style.visibility = shown ? '' : 'hidden';
       this.player.rest(0);
       if (shown) this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
-      else this.player.clear();
+      else {
+        this.player.clear();
+        this.onAway?.();
+      }
       return;
     }
 
@@ -778,6 +785,7 @@ class RayMount {
     if (this.isAway()) {
       cancelAnimationFrame(this.raf); // hidden and done going: nothing moves till he's asked back (update() starts him again)
       this.raf = 0;
+      this.onAway?.();
     }
   };
 

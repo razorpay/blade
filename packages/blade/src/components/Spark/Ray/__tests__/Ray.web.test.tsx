@@ -1,4 +1,5 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import { Ray } from '../Ray';
 import { RAY_BOX } from '../rayBox';
 import { rayBoxSize } from '../RayMount';
@@ -39,6 +40,29 @@ describe('<Ray />', () => {
     expect(getByTestId('ray-test')).toHaveAttribute('aria-hidden', 'true');
   });
 
+  it('should remove his box while hidden with shouldUnmountWhenHidden, and lay it out again when shown', () => {
+    const Row = (): React.ReactElement => {
+      const [isVisible, setIsVisible] = React.useState(true);
+      return (
+        <>
+          <Ray testID="ray-test" shouldUnmountWhenHidden isVisible={isVisible} />
+          <button onClick={() => setIsVisible((v) => !v)}>toggle</button>
+        </>
+      );
+    };
+    const { queryByTestId, getByRole } = renderWithTheme(<Row />);
+    expect(queryByTestId('ray-test')).toBeInTheDocument();
+    fireEvent.click(getByRole('button'));
+    expect(queryByTestId('ray-test')).not.toBeInTheDocument();
+    fireEvent.click(getByRole('button'));
+    expect(queryByTestId('ray-test')).toBeInTheDocument();
+  });
+
+  it('should keep his box while hidden without shouldUnmountWhenHidden', () => {
+    const { getByTestId } = renderWithTheme(<Ray testID="ray-test" isVisible={false} />);
+    expect(getByTestId('ray-test')).toBeInTheDocument();
+  });
+
   it('should lay out his box at the size his engine works out (without loading it)', () => {
     (['small', 'medium'] as const).forEach((size) =>
       expect(RAY_BOX[size]).toEqual(rayBoxSize(size)),
@@ -51,8 +75,8 @@ describe('<Ray />', () => {
       const inputRef = React.useRef<HTMLInputElement | null>(null);
       return (
         <>
-          <Ray testID="ray-textarea" inputRef={textareaRef} />
-          <Ray testID="ray-input" inputRef={inputRef} />
+          <Ray testID="ray-textarea" watchedInputRef={textareaRef} />
+          <Ray testID="ray-input" watchedInputRef={inputRef} />
           <textarea ref={textareaRef} />
           <input ref={inputRef} />
         </>

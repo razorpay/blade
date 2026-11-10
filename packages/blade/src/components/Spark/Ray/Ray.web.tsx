@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RayMount } from './RayMount';
 import { RAY_BOX } from './rayBox';
 import type { RayProps } from './types';
@@ -39,14 +39,15 @@ const _Ray = (
     idle = 'look',
     size = 'medium',
     isVisible = true,
-    inputRef,
+    shouldUnmountWhenHidden = false,
+    watchedInputRef,
     isInteractive = true,
     accessibilityLabel,
     testID,
     ...rest
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
-): React.ReactElement => {
+): React.ReactElement | null => {
   const { colorScheme } = useTheme();
   const scheme = colorScheme === 'dark' ? 'dark' : 'light';
   const boxRef = useRef<HTMLDivElement>(null);
@@ -63,20 +64,40 @@ const _Ray = (
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
-  const inputRefRef = useRef(inputRef);
-  inputRefRef.current = inputRef;
+  const inputRefRef = useRef(watchedInputRef);
+  inputRefRef.current = watchedInputRef;
+
+  // shouldUnmountWhenHidden: his box is removed once he's hopped off (his director says when) and comes back, laid out at
+  // once, as soon as he's asked back
+  const [isRemoved, setIsRemoved] = useState(shouldUnmountWhenHidden && !isVisible);
+  if (isRemoved && (isVisible || !shouldUnmountWhenHidden)) setIsRemoved(false);
+  const shouldUnmountRef = useRef(shouldUnmountWhenHidden);
+  shouldUnmountRef.current = shouldUnmountWhenHidden;
+  const wasRemovedRef = useRef(isRemoved); // his box was removed (or never laid out): back, he comes up out of the surface
 
   // his director and engine load with his first render, a chunk of their own as each film is, so an app that imports Blade's
   // components without rendering him never downloads them (the PR review); his box is laid out meanwhile (RAY_BOX)
   useEffect(() => {
-    if (!boxRef.current || !canDraw()) return undefined;
+    if (isRemoved || !boxRef.current || !canDraw()) return undefined;
+    const isReturning = wasRemovedRef.current;
     let mount: RayMount | null = null;
     let isUnmounted = false;
     import('./RayMount')
       .then((module) => {
         if (isUnmounted || !boxRef.current) return;
-        mount = new module.RayMount(boxRef.current, optionsRef.current); // (the latest props, if they changed while it loaded)
+        const latest = optionsRef.current; // (the latest props, if they changed while it loaded)
+        // back after his box was removed: he starts hopped off and comes up out of the surface (the landing dash is once)
+        mount = new module.RayMount(
+          boxRef.current,
+          isReturning ? { ...latest, entrance: 'none', isHidden: true } : latest,
+        );
         mount.setInputRef(inputRefRef.current ?? null);
+        mount.onAway = () => {
+          if (!shouldUnmountRef.current || !optionsRef.current.isHidden) return;
+          wasRemovedRef.current = true;
+          setIsRemoved(true);
+        };
+        if (isReturning) mount.update(optionsRef.current);
         mountRef.current = mount;
       })
       .catch(() => {
@@ -87,15 +108,24 @@ const _Ray = (
       mount?.dispose();
       mountRef.current = null;
     };
-  }, []);
+  }, [isRemoved]);
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
   }, [state, idle, size, isVisible, isInteractive, scheme]);
 
   useEffect(() => {
-    mountRef.current?.setInputRef(inputRef ?? null);
-  }, [inputRef]);
+    mountRef.current?.setInputRef(watchedInputRef ?? null);
+  }, [watchedInputRef]);
+
+  useEffect(() => {
+    // nothing's drawing him (no canvas, not loaded yet, or it couldn't load): there's no hop to wait for
+    if (!shouldUnmountWhenHidden || isVisible || mountRef.current) return;
+    wasRemovedRef.current = true;
+    setIsRemoved(true);
+  }, [isVisible, shouldUnmountWhenHidden]);
+
+  if (isRemoved) return null;
 
   const box = RAY_BOX[size];
 
