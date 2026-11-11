@@ -151,13 +151,19 @@ const caretX = (
   if (el instanceof HTMLInputElement) {
     measure ??= document.createElement('canvas').getContext('2d');
     if (!measure) return left;
-    measure.font = cs.font;
+    // from the font's longhands, not the `font` shorthand some browsers (older Firefox) leave empty when it's computed (the PR review)
+    measure.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
     return left + measure.measureText(el.value.slice(0, at)).width - el.scrollLeft;
   }
   const mirror = document.createElement('div');
   const s = mirror.style;
   for (const k of [
-    'font',
+    'fontFamily',
+    'fontSize',
+    'fontWeight',
+    'fontStyle',
+    'fontVariant',
+    'fontStretch',
     'letterSpacing',
     'wordSpacing',
     'lineHeight',
@@ -681,7 +687,10 @@ class RayMount {
     const h = this.holder;
     const keep = new Set(this.wantedAnswerFilms());
     if (h.by === 'film') keep.add(h.id);
-    const idleFilm = IDLE_FILMS[this.idleOf(this.options.idle, performance.now())];
+    // his idle as already picked: tidying up doesn't pick for him (time-of-day) or touch storage (the PR review)
+    const { idle } = this.options;
+    const current = idle === 'time-of-day' ? this.clockIdle?.idle : idleOfThisLoad(idle);
+    const idleFilm = current ? IDLE_FILMS[current] : undefined;
     if (idleFilm) keep.add(idleFilm);
     Object.values(this.films).forEach((film) => {
       if (keep.has(film.id) || film.going) return;
