@@ -34,6 +34,16 @@ type HeadingProps = {
    */
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
+   * Renders the heading in PT Serif (regular weight only).
+   *
+   * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"`;
+   * TypeScript rejects any other size and any weight other than `regular`.
+   * Web only for now: on React Native the heading keeps the default heading font.
+   *
+   * @default false
+   */
+  isSerif?: boolean;
+  /**
    * Element timing value to track the render performance of the element
    */
   elementtiming?: string;
@@ -56,6 +66,7 @@ type HeadingProps = {
 - Don't use `Heading` for hero/landing page titles — use `Display` for maximum visual impact.
 - Don't override `as` without reason — the auto-mapping ensures proper semantic structure.
 - Don't use `weight="regular"` on headings unless specifically required — semibold (default) provides proper visual hierarchy.
+- Don't use `isSerif` unless you are building the agentic dashboard hero heading. It exists only for that surface: do not add it to other pages, cards, modals or marketing headings, even if a design looks similar. Never pass `theme.typography.fonts.family.serif` to custom components either. When it genuinely is the agentic dashboard hero heading, put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it so reviewers can see the use is intentional.
 
 ## Example
 

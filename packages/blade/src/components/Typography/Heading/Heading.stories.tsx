@@ -134,3 +134,27 @@ export const AsProp = AsPropTemplate.bind({});
 AsProp.args = {
   as: 'h1',
 };
+
+const SerifTemplate: StoryFn<typeof HeadingComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text>
+        <Text as="span" weight="semibold">
+          isSerif
+        </Text>{' '}
+        renders the heading in PT Serif. It is reserved for the agentic dashboard hero heading, so
+        it only works with <Code size="medium">size=&quot;2xlarge&quot;</Code> and regular weight.
+        Web only for now.
+      </Text>
+      <HeadingComponent size="2xlarge" isSerif>
+        Good morning, what would you like to do today?
+      </HeadingComponent>
+      <HeadingComponent size="2xlarge" weight="regular">
+        Good morning, what would you like to do today?
+      </HeadingComponent>
+    </Box>
+  );
+};
+
+export const Serif = SerifTemplate.bind({});
+Serif.storyName = 'Serif (Agentic Dashboard only)';

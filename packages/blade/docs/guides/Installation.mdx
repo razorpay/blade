@@ -172,6 +172,8 @@ Before you install the package, make sure that you have performed the following 
 
     We use 2 fonts. [TASA Orbiter](https://tasatype.localremote.co/) (for our headings), and [Inter](https://rsms.me/inter/) (for other text elements).
 
+    `fonts.css` also declares [PT Serif](https://fonts.google.com/specimen/PT+Serif), which is reserved for `<Heading size="2xlarge" isSerif />` on the agentic dashboard. Browsers only download it on pages that render that heading, so other apps pay no extra font cost.
+
     ### Web
 
     * To add these fonts to your project, import them from the blade package in your root entry file.
