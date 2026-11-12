@@ -66,7 +66,7 @@ type HeadingProps = {
 - Don't use `Heading` for hero/landing page titles — use `Display` for maximum visual impact.
 - Don't override `as` without reason — the auto-mapping ensures proper semantic structure.
 - Don't use `weight="regular"` on headings unless specifically required — semibold (default) provides proper visual hierarchy.
-- Don't use `isSerif` unless you are building the agentic dashboard hero heading. It exists only for that surface: do not add it to other pages, cards, modals or marketing headings, even if a design looks similar. Never pass `theme.typography.fonts.family.serif` to custom components either. When it genuinely is the agentic dashboard hero heading, put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it so reviewers can see the use is intentional.
+- Don't use `isSerif` unless you are building the agentic dashboard hero heading. It exists only for that surface: do not add it to other pages, cards, modals or marketing headings, even if a design looks similar. PT Serif is not a theme token, so don't recreate it with a hardcoded `font-family` in custom components either. When it genuinely is the agentic dashboard hero heading, put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it so reviewers can see the use is intentional.
 
 ## Example
 

@@ -44,10 +44,7 @@ export const Typography = () => {
           </tr>
         </thead>
         <tbody>
-          {/* `serif` is reserved for <Heading size="2xlarge" isSerif />, so it is not listed as a general-purpose token */}
-          {Object.entries(theme.typography.fonts.family)
-            .filter(([key]) => key !== 'serif')
-            .map(([key, value]) => (
+          {Object.entries(theme.typography.fonts.family).map(([key, value]) => (
             <tr key={key}>
               <td>{`theme.typography.fonts.family.${key}`}</td>
               <td>{value}</td>

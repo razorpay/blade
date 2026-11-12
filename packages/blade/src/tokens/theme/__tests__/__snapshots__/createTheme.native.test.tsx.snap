@@ -1582,7 +1582,6 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "family": {
           "code": "Menlo",
           "heading": "TASA Orbiter Display",
-          "serif": "TASA Orbiter Display",
           "text": "Inter",
         },
         "size": {
@@ -1636,7 +1635,6 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "family": {
           "code": "Menlo",
           "heading": "TASA Orbiter Display",
-          "serif": "TASA Orbiter Display",
           "text": "Inter",
         },
         "size": {
@@ -3752,7 +3750,6 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "family": {
           "code": "Menlo",
           "heading": "TASA Orbiter Display",
-          "serif": "TASA Orbiter Display",
           "text": "Inter",
         },
         "size": {
@@ -3806,7 +3803,6 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "family": {
           "code": "Menlo",
           "heading": "TASA Orbiter Display",
-          "serif": "TASA Orbiter Display",
           "text": "Inter",
         },
         "size": {

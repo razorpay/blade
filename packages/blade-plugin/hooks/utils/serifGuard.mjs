@@ -1,6 +1,6 @@
 // Guards PT Serif, which Blade reserves for the agentic dashboard hero heading
 // (`<Heading size="2xlarge" isSerif />`). After an agent edits a file, checks only
-// the text the edit added: if it uses `isSerif` or the raw `serif` font token,
+// the text the edit added: if it uses `isSerif` in a file that imports Blade,
 // the agent is asked to undo it or mark the use as intentional.
 import fs from 'fs';
 import path from 'path';
@@ -9,8 +9,6 @@ export const ALLOW_MARKER = 'blade-allow-serif';
 
 const CHECKED_EXTENSIONS = new Set(['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs', '.mdx']);
 const IS_SERIF = /\bisSerif\b/;
-// `fonts.family.serif`, `family['serif']`, `family?.serif`
-const SERIF_TOKEN = /\bfamily\s*(?:\??\.\s*serif\b|\[\s*['"`]serif['"`]\s*\])/;
 const BLADE_IMPORT = /['"]@razorpay\/blade(?:\/[\w-]+)*['"]/;
 
 // Lines a Codex `apply_patch` call adds, plus the files it touches.
@@ -73,19 +71,16 @@ export const isCheckedFile = (filePath) => {
   return !(packageName === '@razorpay/blade' || packageName?.startsWith('@razorpay/blade-'));
 };
 
-// Returns the serif uses found in `added`, judged against the file's full content
-// after the edit. Empty when there is nothing to flag.
-export const findSerifUses = (added, fileContent = added) => {
-  if (!added || fileContent.includes(ALLOW_MARKER)) return [];
-  const uses = [];
-  if (IS_SERIF.test(added) && BLADE_IMPORT.test(fileContent)) uses.push('`isSerif`');
-  if (SERIF_TOKEN.test(added)) uses.push('the `serif` font token');
-  return uses;
-};
+// Whether `added` uses `isSerif`, judged against the file's full content after the edit.
+export const hasSerifUse = (added, fileContent = added) =>
+  Boolean(added) &&
+  !fileContent.includes(ALLOW_MARKER) &&
+  IS_SERIF.test(added) &&
+  BLADE_IMPORT.test(fileContent);
 
-export const getReminder = (uses, files) =>
+export const getReminder = (files) =>
   [
-    `Blade: this edit uses ${uses.join(' and ')} in ${files.join(', ')}.`,
+    `Blade: this edit uses \`isSerif\` in ${files.join(', ')}.`,
     'PT Serif is reserved for the agentic dashboard hero heading (`<Heading size="2xlarge" isSerif />`). Do not use it for other headings, pages or custom components, even if a design looks similar.',
     `- If this is not the agentic dashboard hero heading, undo the serif change and use a regular \`Heading\`.`,
     `- If it is, add a \`// ${ALLOW_MARKER}: agentic dashboard hero\` comment (\`{/* ${ALLOW_MARKER}: agentic dashboard hero */}\` inside JSX) next to the usage, so reviewers can see it was intentional.`,
@@ -105,15 +100,11 @@ export const checkToolCall = ({ tool_input: toolInput, cwd } = {}) => {
   if (!added) return null;
   const base = cwd || process.cwd();
   const flaggedFiles = [];
-  const allUses = new Set();
   for (const file of files) {
     const absolute = path.resolve(base, file);
-    if (!isCheckedFile(absolute)) continue;
-    const uses = findSerifUses(added, readFile(absolute) ?? added);
-    if (uses.length === 0) continue;
+    if (!isCheckedFile(absolute) || !hasSerifUse(added, readFile(absolute) ?? added)) continue;
     const relative = path.relative(base, absolute);
     flaggedFiles.push(relative && !relative.startsWith('..') ? relative : absolute);
-    uses.forEach((use) => allUses.add(use));
   }
-  return flaggedFiles.length > 0 ? getReminder([...allUses], flaggedFiles) : null;
+  return flaggedFiles.length > 0 ? getReminder(flaggedFiles) : null;
 };

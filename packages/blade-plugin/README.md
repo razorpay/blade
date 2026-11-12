@@ -49,7 +49,7 @@ The user id is the username from the project path, as in the MCP. The Segment wr
 
 `SessionStart` detects which Blade packages the project uses (from `package.json` and the lockfile) and tells the agent to use `blade`, `blade-svelte` or both. It is a dependency-free Node script, prints nothing in projects that depend on neither `@razorpay/blade` nor `@razorpay/blade-svelte`, and sends no telemetry.
 
-`PostToolUse` (`serif-guard`) runs after the agent writes or edits a file. PT Serif (`<Heading size="2xlarge" isSerif />` and the `serif` font token) is reserved for the agentic dashboard hero heading, so when the text an edit adds uses `isSerif` in a file that imports Blade, or the raw `serif` token anywhere, it stops the agent and asks it to undo the change or confirm it with a `blade-allow-serif` comment next to the usage. It only looks at the newly added text, skips Blade's own packages and `node_modules`, prints nothing otherwise, and sends no telemetry.
+`PostToolUse` (`serif-guard`) runs after the agent writes or edits a file. PT Serif (`<Heading size="2xlarge" isSerif />`) is reserved for the agentic dashboard hero heading, so when the text an edit adds uses `isSerif` in a file that imports Blade, it stops the agent and asks it to undo the change or confirm it with a `blade-allow-serif` comment next to the usage. It only looks at the newly added text, skips Blade's own packages and `node_modules`, prints nothing otherwise, and sends no telemetry.
 
 ## Development
 

@@ -5,11 +5,4 @@ export type FontFamily = {
   code: string;
   /** Used for headings */
   heading: string;
-  /**
-   * Serif font (PT Serif, regular weight only).
-   *
-   * **Reserved for `<Heading size="2xlarge" isSerif />`** on the agentic dashboard.
-   * Do not use it anywhere else. Web only for now: on React Native it maps to the heading font.
-   */
-  serif: string;
 };

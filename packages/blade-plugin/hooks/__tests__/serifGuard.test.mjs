@@ -5,7 +5,7 @@ import os from 'os';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { ALLOW_MARKER, checkToolCall, findSerifUses, readEdit } from '../utils/serifGuard.mjs';
+import { ALLOW_MARKER, checkToolCall, hasSerifUse, readEdit } from '../utils/serifGuard.mjs';
 
 const hooksDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -71,17 +71,10 @@ test('ignores an unrelated isSerif in a file that does not use Blade', () => {
   assert.equal(checkToolCall(writeCall(dir, 'src/FontPicker.tsx', content)), null);
 });
 
-test('flags the raw serif token even without a Blade import', () => {
-  const content =
-    'const Title = styled.h1`font-family: ${(p) => p.theme.typography.fonts.family.serif};`;';
-  const dir = makeProject({ 'src/Title.ts': content });
-  assert.match(checkToolCall(writeCall(dir, 'src/Title.ts', content)), /the `serif` font token/);
-  assert.deepEqual(findSerifUses("theme.typography.fonts.family['serif']"), [
-    'the `serif` font token',
-  ]);
-  assert.deepEqual(findSerifUses('theme.typography.fonts.family?.serif'), [
-    'the `serif` font token',
-  ]);
+test('needs both isSerif in the added text and a Blade import in the file', () => {
+  assert.equal(hasSerifUse('<Heading size="2xlarge" isSerif>', SERIF_FILE), true);
+  assert.equal(hasSerifUse('<Heading size="2xlarge" isSerif>', 'const a = 1;'), false);
+  assert.equal(hasSerifUse('const a = 1;', SERIF_FILE), false);
 });
 
 test('only checks text the edit added, not code already in the file', () => {
