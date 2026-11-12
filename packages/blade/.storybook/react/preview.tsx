@@ -14,6 +14,29 @@ import { domMax, LazyMotion } from 'framer-motion';
 
 const theme = create(themeConfig);
 
+const darkColors = bladeTheme.colors.onDark;
+
+const darkDocsTheme = create({
+  ...themeConfig,
+  base: 'dark',
+  appBg: darkColors.surface.background.gray.subtle,
+  appContentBg: darkColors.surface.background.gray.intense,
+  appBorderColor: darkColors.surface.border.gray.muted,
+  textColor: darkColors.surface.text.gray.normal,
+  textInverseColor: darkColors.surface.background.gray.intense,
+  textMutedColor: darkColors.surface.text.gray.muted,
+  barTextColor: darkColors.surface.text.gray.normal,
+  barBg: darkColors.surface.background.gray.intense,
+  inputBg: darkColors.surface.background.gray.intense,
+  inputBorder: darkColors.surface.border.gray.normal,
+  inputTextColor: darkColors.surface.text.gray.normal,
+});
+
+const isDarkColorScheme = (colorScheme?: string): boolean =>
+  colorScheme === 'dark' ||
+  (colorScheme === 'system' &&
+    Boolean(window.matchMedia?.('(prefers-color-scheme: dark)').matches));
+
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
   chromatic: {
@@ -109,7 +132,11 @@ export const parameters = {
           window.top.location.search;
       }
       return (
-        <DocsContainer context={context} {...rest}>
+        <DocsContainer
+          context={context}
+          {...rest}
+          theme={isDarkColorScheme(globals.colorScheme) ? darkDocsTheme : theme}
+        >
           <LazyMotion strict features={domMax}>
             <BladeProvider
               key={`${globals.themeTokenName}-${globals.colorScheme}`}
@@ -126,7 +153,7 @@ export const parameters = {
     components: {
       summary: styled.summary`
         font-family: ${theme.fontBase};
-        color: ${theme.textColor};
+        color: ${({ theme: bladeThemeTokens }) => bladeThemeTokens.colors.surface.text.gray.normal};
         font-size: 14px;
         cursor: pointer;
       `,
