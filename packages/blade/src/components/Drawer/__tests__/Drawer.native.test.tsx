@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
 import type { DrawerProps } from '../';
 import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
@@ -148,11 +149,20 @@ describe('<Drawer /> (native)', () => {
       </Drawer>,
     );
 
-    fireEvent.press(getByRole('button', { name: 'Previous' }));
-    fireEvent.press(getByRole('button', { name: 'Next' }));
+    const previousButton = getByRole('button', { name: 'Previous' });
+    const nextButton = getByRole('button', { name: 'Next' });
+    fireEvent.press(previousButton);
+    fireEvent.press(nextButton);
     expect(onPrevious).toHaveBeenCalledTimes(1);
     expect(onNext).toHaveBeenCalledTimes(1);
     expect(getByRole('button', { name: 'Close' })).toBeTruthy();
+
+    // React Native defaults to column, so the shared container must lay the two actions out in a row
+    let container = previousButton.parent;
+    while (container && !container.findAll((node) => node === nextButton).length) {
+      container = container.parent;
+    }
+    expect(StyleSheet.flatten(container?.props.style)).toMatchObject({ flexDirection: 'row' });
   });
 
   it('should dismiss on overlay press', () => {

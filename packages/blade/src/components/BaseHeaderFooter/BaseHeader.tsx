@@ -305,6 +305,18 @@ const useTrailingRestriction = ({
             moduleName: 'Header',
           });
         }
+        // IconButton requires accessibilityLabel by type, but Button doesn't, so check it here
+        if (
+          hasMultipleElements &&
+          trailingComponentType === 'Button' &&
+          !element.props?.accessibilityLabel
+        ) {
+          throwBladeError({
+            message:
+              'When passing two elements as trailing, an icon-only Button must have an `accessibilityLabel`',
+            moduleName: 'Header',
+          });
+        }
       }
 
       for (const prop of Object.keys(restrictedProps ?? {})) {
@@ -431,11 +443,14 @@ const _BaseHeader = ({
     if (validatedTrailingComponents.length === 0) {
       return null;
     }
-    // Multiple trailing actions sit in a row, with the same gap as the one between trailing and close button
+    // Multiple trailing actions sit in a row, with the same gap as the one between trailing and close button.
+    // flexDirection is explicit because React Native defaults to column.
+    const hasMultipleTrailingElements = validatedTrailingComponents.length > 1;
     const trailingContent = (
       <Box
         {...centerBoxProps[size]}
-        gap={validatedTrailingComponents.length > 1 ? 'spacing.5' : undefined}
+        flexDirection={hasMultipleTrailingElements ? 'row' : undefined}
+        gap={hasMultipleTrailingElements ? 'spacing.5' : undefined}
       >
         {validatedTrailingComponents}
       </Box>

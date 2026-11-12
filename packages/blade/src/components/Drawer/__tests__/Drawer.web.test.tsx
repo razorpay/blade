@@ -285,6 +285,36 @@ describe('Drawer', () => {
     });
   });
 
+  describe('trailing actions accessibility', () => {
+    it('throws when an icon-only Button in a pair has no accessibilityLabel', () => {
+      const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+      expect(() =>
+        renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}}>
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="Previous"
+                  onClick={() => {}}
+                />,
+                <Button key="2" icon={ChevronRightIcon} onClick={() => {}} />,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        ),
+      ).toThrow(
+        '[Blade: Header]: When passing two elements as trailing, an icon-only Button must have an `accessibilityLabel`',
+      );
+      mockConsoleError.mockRestore();
+    });
+  });
+
   describe('stacked drawers', () => {
     it('should not show back button on L0 drawer after closing all drawers via close button', async () => {
       const user = userEvents.setup();
