@@ -96,6 +96,15 @@ type BaseHeaderProps = {
    * @default false
    */
   shouldAlignLeadingAndTrailingElementsToCenter?: boolean;
+  /**
+   * Maximum number of elements accepted in `trailing`.
+   *
+   * When more than one element is passed, every element must be an icon-only action
+   * (IconButton, or a Button with only an `icon`).
+   *
+   * @default 1
+   */
+  maxTrailingElements?: 1 | 2;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -111,7 +120,7 @@ type BaseHeaderProps = {
   ElementTiming &
   DataAnalyticsAttribute;
 
-type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
+type TrailingComponents = 'Button' | 'IconButton' | 'Badge' | 'Link' | 'Text' | 'Amount';
 
 const commonCenterBoxProps: BoxProps = {
   display: 'flex',
@@ -232,25 +241,54 @@ const propRestrictionMap = {
   },
 } as const;
 
+const isIconOnlyAction = (
+  element: React.ReactElement,
+  componentType: TrailingComponents,
+): boolean => {
+  if (componentType === 'IconButton') return true;
+  if (componentType === 'Button') {
+    return Boolean(element.props?.icon) && !element.props?.children;
+  }
+  return false;
+};
+
 const useTrailingRestriction = ({
   trailing,
   size,
+  maxTrailingElements,
 }: {
   size: NonNullable<BaseHeaderProps['size']>;
   trailing: BaseHeaderProps['trailing'];
-}): React.ReactNode => {
-  const [
-    validatedTrailingComponent,
-    setValidatedTrailingComponent,
-  ] = React.useState<React.ReactElement | null>(null);
+  maxTrailingElements: NonNullable<BaseHeaderProps['maxTrailingElements']>;
+}): React.ReactElement[] => {
+  const [validatedTrailingComponents, setValidatedTrailingComponents] = React.useState<
+    React.ReactElement[]
+  >([]);
 
   // validate and restrict sub component props in trailing prop
   React.useEffect(() => {
-    if (React.isValidElement(trailing)) {
-      const trailingComponentType = getComponentId(trailing) as TrailingComponents;
+    const trailingElements = React.Children.toArray(
+      trailing,
+    ).filter((child): child is React.ReactElement => React.isValidElement(child));
+    const allowedComponents = Object.keys(propRestrictionMap[size]);
+
+    if (__DEV__) {
+      if (trailingElements.length > maxTrailingElements) {
+        throwBladeError({
+          message:
+            maxTrailingElements === 1
+              ? `Only one of \`${allowedComponents.join(', ')}\` component is accepted as trailing`
+              : `Header accepts at most ${maxTrailingElements} elements as trailing, but received ${trailingElements.length}`,
+          moduleName: 'Header',
+        });
+      }
+    }
+
+    const hasMultipleElements = trailingElements.length > 1;
+    const validatedElements = trailingElements.slice(0, maxTrailingElements).map((element) => {
+      const trailingComponentType = getComponentId(element) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
 
-      const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
           throwBladeError({
@@ -260,11 +298,17 @@ const useTrailingRestriction = ({
             moduleName: 'Header',
           });
         }
+        if (hasMultipleElements && !isIconOnlyAction(element, trailingComponentType)) {
+          throwBladeError({
+            message:
+              'When passing two elements as trailing, both must be icon-only actions (IconButton, or Button with only an `icon`)',
+            moduleName: 'Header',
+          });
+        }
       }
 
-      const restrictedPropKeys = Object.keys(propRestrictionMap[size][trailingComponentType]);
-      for (const prop of restrictedPropKeys) {
-        if (trailing?.props?.hasOwnProperty(prop)) {
+      for (const prop of Object.keys(restrictedProps ?? {})) {
+        if (element.props?.hasOwnProperty(prop)) {
           logger({
             message: `Do not pass "${prop}" to "${trailingComponentType}" while inside Header trailing, because we override it.`,
             moduleName: 'Header',
@@ -272,13 +316,13 @@ const useTrailingRestriction = ({
           });
         }
       }
-      setValidatedTrailingComponent(
-        React.cloneElement(trailing as React.ReactElement, restrictedProps),
-      );
-    }
-  }, [trailing, size]);
+      return React.cloneElement(element, restrictedProps);
+    });
 
-  return validatedTrailingComponent;
+    setValidatedTrailingComponents(validatedElements);
+  }, [trailing, size, maxTrailingElements]);
+
+  return validatedTrailingComponents;
 };
 
 const _BaseHeader = ({
@@ -316,9 +360,14 @@ const _BaseHeader = ({
   alignItems = 'flex-start',
   dividerProps,
   shouldAlignLeadingAndTrailingElementsToCenter = false,
+  maxTrailingElements = 1,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
-  const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
+  const validatedTrailingComponents = useTrailingRestriction({
+    trailing,
+    size,
+    maxTrailingElements,
+  });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
   const hasOnlyChildren = children && !(title || subtitle || titleSuffix || leading);
 
@@ -379,21 +428,26 @@ const _BaseHeader = ({
   };
 
   const renderTrailingElement = (): React.ReactNode => {
-    if (shouldAlignLeadingAndTrailingElementsToCenter && validatedTrailingComponent) {
+    if (validatedTrailingComponents.length === 0) {
+      return null;
+    }
+    // Multiple trailing actions sit in a row, with the same gap as the one between trailing and close button
+    const trailingContent = (
+      <Box
+        {...centerBoxProps[size]}
+        gap={validatedTrailingComponents.length > 1 ? 'spacing.5' : undefined}
+      >
+        {validatedTrailingComponents}
+      </Box>
+    );
+    if (shouldAlignLeadingAndTrailingElementsToCenter) {
       return (
         <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
-          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+          {trailingContent}
         </BaseBox>
       );
     }
-    if (validatedTrailingComponent) {
-      return (
-        <BaseBox marginRight="spacing.5">
-          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
-        </BaseBox>
-      );
-    }
-    return null;
+    return <BaseBox marginRight="spacing.5">{trailingContent}</BaseBox>;
   };
 
   return (

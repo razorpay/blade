@@ -6,8 +6,14 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
 import { Text } from '~components/Typography';
-import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
+import {
+  AnnouncementIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  DownloadIcon,
+} from '~components/Icons';
 
 jest.mock('~utils/useId', () => ({
   useId: (prefix?: string) => (prefix ? `${prefix}-0` : '0'),
@@ -112,6 +118,41 @@ describe('<Drawer /> (native)', () => {
     // close via Close button in the header -> closeAllDrawers -> onDismiss
     fireEvent.press(getByRole('button', { name: 'Close' }));
     expect(onDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render and press two trailing actions', () => {
+    const onPrevious = jest.fn();
+    const onNext = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Records Drawer">
+        <DrawerHeader
+          title="Nisha Batra"
+          trailing={[
+            <IconButton
+              key="previous"
+              icon={ChevronLeftIcon}
+              accessibilityLabel="Previous"
+              onClick={onPrevious}
+            />,
+            <IconButton
+              key="next"
+              icon={ChevronRightIcon}
+              accessibilityLabel="Next"
+              onClick={onNext}
+            />,
+          ]}
+        />
+        <DrawerBody>
+          <Text>Test Content</Text>
+        </DrawerBody>
+      </Drawer>,
+    );
+
+    fireEvent.press(getByRole('button', { name: 'Previous' }));
+    fireEvent.press(getByRole('button', { name: 'Next' }));
+    expect(onPrevious).toHaveBeenCalledTimes(1);
+    expect(onNext).toHaveBeenCalledTimes(1);
+    expect(getByRole('button', { name: 'Close' })).toBeTruthy();
   });
 
   it('should dismiss on overlay press', () => {
