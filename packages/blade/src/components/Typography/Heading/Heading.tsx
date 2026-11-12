@@ -54,9 +54,11 @@ type HeadingSerifProps = {
    * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"`.
    * Web only for now: on React Native the heading keeps the default heading font.
    *
+   * Accepts a computed boolean (`isSerif={isHero}`), but only alongside `size="2xlarge"`.
+   *
    * @default false
    */
-  isSerif: true;
+  isSerif: boolean;
 };
 
 export type HeadingProps = HeadingCommonProps & (HeadingSansProps | HeadingSerifProps);

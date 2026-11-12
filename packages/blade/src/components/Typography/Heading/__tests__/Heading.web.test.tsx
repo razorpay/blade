@@ -123,6 +123,19 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should accept a computed boolean for isSerif at size "2xlarge"', () => {
+    const serifFontFamily = '"PT Serif","PT Serif Fallback Georgia",Georgia,serif';
+    const renderHero = (isHero: boolean): HTMLElement | null =>
+      renderWithTheme(
+        <Heading size="2xlarge" isSerif={isHero}>
+          Hero
+        </Heading>,
+      ).container.querySelector('h2');
+
+    expect(renderHero(true)).toHaveStyle({ fontFamily: serifFontFamily });
+    expect(renderHero(false)).not.toHaveStyle({ fontFamily: serifFontFamily });
+  });
+
   it('should ignore isSerif and warn when size is not "2xlarge"', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const { getByRole } = renderWithTheme(
