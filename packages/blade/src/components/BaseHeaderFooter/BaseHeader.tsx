@@ -285,7 +285,9 @@ const useTrailingRestriction = ({
     }
 
     const hasMultipleElements = trailingElements.length > 1;
-    const validatedElements = trailingElements.slice(0, maxTrailingElements).map((element) => {
+    // Over-limit elements throw in dev (above). In production we still render every element instead of
+    // dropping extras, so misuse stays visible rather than an action silently disappearing.
+    const validatedElements = trailingElements.map((element) => {
       const trailingComponentType = getComponentId(element) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
 

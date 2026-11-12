@@ -285,6 +285,51 @@ describe('Drawer', () => {
     });
   });
 
+  describe('trailing actions in production', () => {
+    it('renders every trailing element instead of silently dropping extras', async () => {
+      const globalWithDev = global as typeof global & { __DEV__: boolean };
+      const originalDev = globalWithDev.__DEV__;
+      globalWithDev.__DEV__ = false;
+      try {
+        const { findByRole, getByRole } = renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="One"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="2"
+                  icon={ChevronRightIcon}
+                  accessibilityLabel="Two"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="3"
+                  icon={DownloadIcon}
+                  accessibilityLabel="Three"
+                  onClick={() => {}}
+                />,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        );
+        expect(await findByRole('button', { name: 'Three' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'One' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Two' })).toBeInTheDocument();
+      } finally {
+        globalWithDev.__DEV__ = originalDev;
+      }
+    });
+  });
+
   describe('trailing actions accessibility', () => {
     it('throws when an icon-only Button in a pair has no accessibilityLabel', () => {
       const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
