@@ -14,7 +14,7 @@ RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap th
 - It fits chat inputs from 280 px wide (a phone's) to 1260 px, and from 58 px tall to 320 px (a chat input grows with lines and attachments, and the band grows with it); past those it stretches as for the nearest end, centred on the input.
 - Typing reaches it from the input itself: every edit typed in an input, textarea or editable element inside counts as a keystroke. What's typed is never read.
 - It's for a chat input on its own (a landing, a home screen). In an assistant chat, use `RazorSenseBottomWave` inside `RazorSenseChat` instead.
-- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Each still is its own small module, downloaded only then.
+- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then.
 - With reduced motion on it shows one still frame of its idle strip.
 - `scale` is held between 0.75 and 1.25 (the whole effect, bands included).
 - The effect is decorative: hidden from screen readers. The chat input inside stays as it is.
@@ -51,9 +51,9 @@ type RazorSenseChatBackgroundProps = {
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2; once one RazorSense
-   * animation finds that, the others on the page go to their stills too), or the browser took its GPU context back. It shows
-   * its still frame instead.
+   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2), or the browser
+   * took its GPU context back. It shows its still frame instead. Too slow counts for the whole page: once one RazorSense 2.0
+   * animation finds that, every one on the page shows its still, including ones mounted later, until the page reloads.
    */
   onError?: (error: Error) => void;
   /**

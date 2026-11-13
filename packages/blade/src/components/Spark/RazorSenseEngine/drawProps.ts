@@ -19,9 +19,9 @@ type RazorSenseDrawProps = {
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2; once one RazorSense
-   * animation finds that, the others on the page go to their stills too), or the browser took its GPU context back. It shows
-   * its still frame instead.
+   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2), or the browser
+   * took its GPU context back. It shows its still frame instead. Too slow counts for the whole page: once one RazorSense 2.0
+   * animation finds that, every one on the page shows its still, including ones mounted later, until the page reloads.
    */
   onError?: (error: Error) => void;
   /**

@@ -10,6 +10,7 @@ import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
+import { makeLetterSpacing } from '~utils/makeLetterSpacing';
 import { makeSize } from '~utils/makeSize';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -40,7 +41,10 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
       font-weight: ${theme.typography.fonts.weight.regular};
       font-size: ${makeSize(theme.typography.fonts.size[200])};
       line-height: ${makeSize(22)};
-      letter-spacing: -0.208px;
+      letter-spacing: ${makeLetterSpacing(
+        theme.typography.letterSpacings[50],
+        theme.typography.fonts.size[200],
+      )};
       color: transparent;
       background-image: linear-gradient(90deg, ${base} 38%, ${shine} 50%, ${base} 62%);
       background-size: 250% 100%;

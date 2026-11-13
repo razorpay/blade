@@ -25,7 +25,10 @@ const MAX_STEP = 0.1;
 
 /**
  * Too slow to animate: under this many frames a second for this many seconds running (as RazorSense drops to its static
- * fallback under 20 fps). The component shows its still instead, and so does every one after it on this page.
+ * fallback under 20 fps). The component shows its still instead, and so does every one on this page until it reloads: a
+ * device that's too slow once stays too slow, and checking again would mean 3 more janky seconds for each new one (the chat's
+ * thinking, a new page section). That's deliberate; the first 2 seconds of each stage aren't counted, so a single stall (a
+ * heavy render, a GC pause) doesn't trip it.
  */
 const SLOW_FPS = 20;
 const SLOW_SECONDS = 3;

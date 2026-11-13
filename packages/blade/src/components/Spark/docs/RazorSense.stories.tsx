@@ -66,6 +66,9 @@ export const Default = RazorSenseTemplate.bind({});
  * RazorSense 2.0's loading splash, `RazorSenseLoader`: the Razorpay glyph loops while `isLoading` is true. "Finish loading"
  * sets it to false: the glyph grows and everything fades to the plain background, then `onComplete` is called. Light or dark:
  * Color Scheme in the toolbar.
+ *
+ * Not a like-for-like swap for Default above: Default is a full-screen background that keeps playing; Default 2.0 is a
+ * splash that plays while the page loads and then gets out of the way.
  */
 export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
   const [run, setRun] = useState(0);
@@ -138,6 +141,44 @@ export const ColorSchemeAware: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 ColorSchemeAware.storyName = 'Color Scheme Aware';
+
+/**
+ * RazorSense 2.0 follows Blade's color scheme too, with no dark-mode prop: in `dark`, each of the five components draws its own
+ * dark comp (and its dark still, when it can't animate). Here `RazorSenseChatBackground` behind a chat input. The 2.0 twin of
+ * Color Scheme Aware above.
+ */
+export const ColorSchemeAwareV2: StoryFn<typeof RazorSenseChatBackground> = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+
+  return (
+    <Box display="flex" flexDirection="column" height="100vh" gap="spacing.4">
+      <Box display="flex" alignItems="center" gap="spacing.4">
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          Toggle color scheme
+        </Button>
+        <Text color="surface.text.gray.muted">
+          Current color scheme:{' '}
+          <Text as="span" weight="semibold">
+            {colorScheme}
+          </Text>
+        </Text>
+      </Box>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center">
+        <Box width="100%" maxWidth="840px">
+          <RazorSenseChatBackground>
+            <ChatInput placeholder="Ask anything..." />
+          </RazorSenseChatBackground>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+ColorSchemeAwareV2.storyName = 'Color Scheme Aware 2.0';
+ColorSchemeAwareV2.parameters = { controls: { disable: true } };
 
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
@@ -263,7 +304,7 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
 
 /**
  * RazorSense 2.0 thinking, `RazorSenseThinking`: flow 9's blue thinking label with its shimmer, and the glow looping round it,
- * behind it and past its edges.
+ * behind it and past its edges. The 2.0 twin of Zoomed above (Zoomed's glow behind a loading `ChatMessage`).
  */
 export const Thinking: StoryFn<typeof RazorSenseThinking> = () => {
   return (
