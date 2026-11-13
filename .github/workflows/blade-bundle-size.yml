@@ -7,8 +7,12 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write      # pushes base stats to the bundle-size-stats branch
+  pull-requests: write # danger comments on PRs
+
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   pr-bundle-size:
@@ -45,7 +49,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CI_BOT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
       - name: Use Node v20
         uses: actions/setup-node@v4
