@@ -15,14 +15,15 @@ const { NIGHTCAP, FIG, bodyPts } = RC;
 // cap hides it), then capDraw(): over him, under the film's own props. capCarry(f) puts its swing on the pose a handoff passes on ('left');
 // capSeed(from) takes it up in the next film.
 
-const CAP_Q0 = { elemV: 2, droop2: 1.3, flop2: 0.45, tip2: 10, c2Light: '#A4C4FF', c2Tip: '#8B87FF', c2Cuff: '#6B9FFF', c2LightD: '#A4C4FF', c2TipD: '#8B87FF', c2CuffD: '#6B9FFF',
+const CAP_Q0 = { elemV: 3, c3Cone: '#ADBEFF', c3Far: '#ADBEFF', c3Cuff: '#B3CDFF', c3Ball: '#ADBEFF', c3ConeD: '#8FA5FF', c3FarD: '#8FA5FF', c3CuffD: '#668CFF', c3BallD: '#8FA5FF',   // v3: Sleepy 2's (films/sleepy2.html's Q0)
+  droop2: 1.3, flop2: 0.45, tip2: 10, c2Light: '#A4C4FF', c2Tip: '#8B87FF', c2Cuff: '#6B9FFF', c2LightD: '#A4C4FF', c2TipD: '#8B87FF', c2CuffD: '#6B9FFF',
   hang: 1, droop: 3.2, flop: 0.3, tipW: 17, coneA: '#CCCEFF', coneB: '#94C2FF', cuff: '#CCCEFF', coneAD: '#CCCEFF', coneBD: '#94C2FF', cuffD: '#CCCEFF' };   // sleep2.html's Q0 (keep in step)
 const CAP_KEY = 'ray-film-sleep2';
 const CAP = { on: false, q: { ...CAP_Q0 }, savedAt: 0, n: [], pv: [], F: null, last: 0, seed: null, ver: null };   // ver: a page's own pick of the version (Nightcap 2's panel), else the primary
 try { const l = JSON.parse(localStorage.getItem(CAP_KEY) || 'null'); if (l && l.values) { Object.assign(CAP.q, l.values); CAP.savedAt = l.savedAt || 0; } } catch {}
 fetch('http://localhost:8737/api/settings/' + CAP_KEY, { cache: 'no-store' }).then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.values && (j.savedAt || 0) > CAP.savedAt) { Object.assign(CAP.q, j.values); CAP.savedAt = j.savedAt || 0; } }).catch(() => {});
-const capVer = () => CAP.ver ? CAP.ver() : (CAP.q.elemPrimary ?? CAP_Q0.elemV) === 1 ? 1 : 2;   // Nightcap 2's primary (v2, the sag, unless v1 is marked)
+const capVer = () => { const v = CAP.ver ? CAP.ver() : (CAP.q.elemPrimary ?? CAP_Q0.elemV); return v === 1 || v === 3 ? v : 2; };   // the primary: v3, the ball (2026-11-13), unless a page picks its own or marks v1 / v2
 
 // ---- its shapes (sleep2.html's): canon's spine, the hang (v1) and the sag (v2), in the cap's own frame; its half widths ----
 const CAP_HANG = [[338.25, 136.5], [385, 92], [428, 50], [470, 22], [512, 14], [544, 34], [562, 70], [568, 112]];
@@ -31,7 +32,7 @@ const CAP_HW = [105, 74, 52, 38, 29, 24, 20, 17];
 const CAP_SHAPE = (() => { const n = NIGHTCAP.base, TR = n[2], u0 = [n[3][0] - TR[0], n[3][1] - TR[1]], v0 = [n[1][0] - TR[0], n[1][1] - TR[1]], lu = Math.hypot(...u0), lv = Math.hypot(...v0);
   const u = [u0[0] / lu, u0[1] / lu], v = [v0[0] / lv, v0[1] / lv], det = u[0] * v[1] - u[1] * v[0];
   const ab = p => { const d = [p[0] - TR[0], p[1] - TR[1]]; return [(d[0] * v[1] - d[1] * v[0]) / det, (u[0] * d[1] - u[1] * d[0]) / det]; };
-  return { cuff: NIGHTCAP.cuff.map(ab), bl: ab(NIGHTCAP.baseL), br: ab(NIGHTCAP.baseR), sp: NIGHTCAP.sp.map(ab), hang: CAP_HANG.map(ab), sag: CAP_SAG.map(ab) }; })();
+  return { cuff: NIGHTCAP.cuff.map(ab), bl: ab(NIGHTCAP.baseL), br: ab(NIGHTCAP.baseR), sp: NIGHTCAP.sp.map(ab), ball: ab(NIGHTCAP.ball), hang: CAP_HANG.map(ab), sag: CAP_SAG.map(ab) }; })();
 const capAt = (F, a, off = 0) => [F.TR[0] + (F.u[0] * a[0] + F.v[0] * a[1]) * F.k, F.TR[1] + (F.u[1] * a[0] + F.v[1] * a[1]) * F.k + off];   // off: dropping on (canon's drop, Ray px up)
 const capOfs = (F, p) => { const d = [(p[0] - F.TR[0]) / F.k, (p[1] - F.TR[1]) / F.k], det = F.u[0] * F.v[1] - F.u[1] * F.v[0]; return [(d[0] * F.v[1] - d[1] * F.v[0]) / det, (F.u[0] * d[1] - F.u[1] * d[0]) / det]; };   // capAt()'s inverse
 function capPoseFrame(pose) {   // his top corner's frame (canon capFrameOf), from the pose as drawn (Ray px)
@@ -40,12 +41,54 @@ function capPoseFrame(pose) {   // his top corner's frame (canon capFrameOf), fr
 }
 
 // ---- the ask, the swing passed on and taken up ----
-function capMsg(m) { CAP.on = !!m.on; if (m.q && typeof m.q === 'object') Object.assign(CAP.q, m.q); if (!CAP.on) { CAP.n = []; CAP.pv = []; CAP.seed = null; } }
-function capCarry(f) { const F = CAP.lastF; if (!CAP.on || !f || !F || !CAP.n.length) return f; return { ...f, cap: { n: CAP.n.map(p => capOfs(F, p)), pv: CAP.pv.map(p => capOfs(F, p)) } }; }
+function capMsg(m) { CAP.on = !!m.on; if (m.q && typeof m.q === 'object') Object.assign(CAP.q, m.q); if (!CAP.on) { CAP.n = []; CAP.pv = []; CAP.b = null; CAP.seed = null; } }
+function capCarry(f) { const F = CAP.lastF; if (!CAP.on || !f || !F || !CAP.n.length) return f;
+  const ball = CAP.b && CAP.bp ? { b: capOfs(F, CAP.b), bp: capOfs(F, CAP.bp) } : {};   // (v3: its ball too)
+  return { ...f, cap: { n: CAP.n.map(p => capOfs(F, p)), pv: CAP.pv.map(p => capOfs(F, p)), ...ball } }; }
 function capSeed(from) { if (from && from.cap && Array.isArray(from.cap.n)) CAP.seed = from.cap; }
 
 // his head inside the cuff (the engine clips it for a seated cap; its own cap not drawn: a 0)
-function capFrame(f, o = {}) { if (!CAP.on) return f; const F = CAP.F = capPoseFrame(f.pose); return { ...f, props: { ...(f.props || {}), nightcap: { nightcap: true, vis: 1, a: 0, off: o.off || 0, n: [], b: [0, 0], F } } }; }   // o.off: dropping on (no clip till it's down)
+function capFrame(f, o = {}) { if (!CAP.on) return f; const F = CAP.F = capPoseFrame(f.pose);
+  if (capVer() === 3) return capBallFrame(f, F, o);
+  return { ...f, props: { ...(f.props || {}), nightcap: { nightcap: true, vis: 1, a: 0, off: o.off || 0, n: [], b: [0, 0], F } } }; }   // o.off: dropping on (no clip till it's down)
+
+// ---- v3, the ball (the user, 2026-11-13: "the updated nightcap with ball to replace the saggy nightcap"): films/sleepy2.html's cap, canon's
+// nightcap with its ball on its string, on canon's springs with the ball's weight (ray-core's capStep, here frame by frame), in Nightcap 2's
+// colours (Sleepy 2's: the cap #ADBEFF, its cuff #B3CDFF, the ball the cap's; dark #8FA5FF, #668CFF). The engine draws it with him (draw()'s
+// nightcap: his head inside the cuff, the headset over it), so capFrame steps it and puts it on the frame; capDraw has nothing more to draw.
+// o: { off, a } dropping on / lifting off (as capDraw's), mode: the page's light / dark (else the last capDraw's, or the ask's q.mode) ----
+function capBallFrame(f, F, o) {
+  const mode = o.mode || CAP.mode || CAP.q.mode || 'light', D = mode === 'dark' ? 'D' : '', Q = CAP.q;
+  NIGHTCAP.coneA = Q['c3Cone' + D]; NIGHTCAP.coneB = Q['c3Far' + D]; NIGHTCAP.cuffCol = Q['c3Cuff' + D]; NIGHTCAP.ballCol = Q['c3Ball' + D];   // (as Sleepy 2 colours canon's cap)
+  const now = performance.now(), gap = !CAP.last || now - CAP.last > 250, dt = gap ? 0 : Math.min(0.05, (now - CAP.last) / 1000); CAP.last = now;
+  if (gap) { CAP.n = []; CAP.pv = []; CAP.b = null; }   // not drawn for a while (asleep, a new start): afresh, or on from a handoff's
+  const off = o.off || 0, n = Math.max(1, Math.ceil(dt * 720)); if (!CAP.n.length || !CAP.b) capStepBall(F, 0, off); for (let i = 0; i < n && dt > 0; i++) capStepBall(F, dt / n, off);   // canon's 720 Hz
+  const a = o.a == null ? 1 : Math.max(0, Math.min(1, o.a));
+  return { ...f, props: { ...(f.props || {}), nightcap: { nightcap: true, vis: 1, a, off, n: CAP.n.map(q => q.slice()), b: CAP.b.slice(), F } } };
+}
+
+function capStepBall(F, h, off = 0) {   // canon capStep (ray-core.js), the ball and all, on the pose as drawn
+  const N = NIGHTCAP, tg = CAP_SHAPE.sp.map(a => capAt(F, a, off)), btg = capAt(F, CAP_SHAPE.ball, off);
+  if (CAP.n.length !== tg.length || !CAP.b) {
+    const S = CAP.seed;
+    if (S && S.n.length === tg.length && S.b && S.bp) { CAP.n = S.n.map(a => capAt(F, a)); CAP.pv = S.pv.map(a => capAt(F, a)); CAP.b = capAt(F, S.b); CAP.bp = capAt(F, S.bp); }   // a handoff: on from where it was
+    else { CAP.n = tg.map(p => p.slice()); CAP.pv = tg.map(p => p.slice()); CAP.b = btg.slice(); CAP.bp = btg.slice(); }   // from the start: on him, at rest
+    CAP.seed = null; }
+  const damp = Math.exp(-N.damp * h), bdamp = Math.exp(-N.damp * N.ballDamp * h);
+  for (let i = 0; i < tg.length; i++) {
+    if (i < N.pin) { CAP.n[i] = tg[i].slice(); CAP.pv[i] = tg[i].slice(); continue; }
+    const p = CAP.n[i], q = CAP.pv[i], k = N.k[i] * N.stiff;
+    CAP.pv[i] = p; CAP.n[i] = [p[0] + (p[0] - q[0]) * damp + k * (tg[i][0] - p[0]) * h * h, p[1] + (p[1] - q[1]) * damp + (k * (tg[i][1] - p[1]) + N.g * N.droop) * h * h];
+  }
+  { const p = CAP.b, q = CAP.bp; CAP.bp = p; CAP.b = [p[0] + (p[0] - q[0]) * bdamp, p[1] + (p[1] - q[1]) * bdamp + N.g * h * h]; }
+  const k = F.k, rest = N.sp.map((p, i) => i ? Math.hypot(p[0] - N.sp[i - 1][0], p[1] - N.sp[i - 1][1]) * k : 0), last = N.sp.length - 1, bl = Math.hypot(N.ball[0] - N.sp[last][0], N.ball[1] - N.sp[last][1]) * k;
+  for (let it = 0; it < 3; it++) {
+    for (let i = N.pin; i < CAP.n.length; i++) { const a = CAP.n[i - 1], c = CAP.n[i], dx = c[0] - a[0], dy = c[1] - a[1], d = Math.hypot(dx, dy) || 1e-6, df = (d - rest[i]) / d, wa = i - 1 < N.pin ? 0 : 0.5, wc = 1 - wa;
+      a[0] += dx * df * wa; a[1] += dy * df * wa; c[0] -= dx * df * wc; c[1] -= dy * df * wc; }
+    const a = CAP.n[CAP.n.length - 1], dx = CAP.b[0] - a[0], dy = CAP.b[1] - a[1], d = Math.hypot(dx, dy) || 1e-6, df = (d - bl) / d, wb = 1 / (1 + N.ballWeight);
+    a[0] += dx * df * (1 - wb); a[1] += dy * df * (1 - wb); CAP.b[0] -= dx * df * wb; CAP.b[1] -= dy * df * wb;
+  }
+}
 
 function capStepBy(F, h, off = 0) {   // canon capStep, without the ball (it weighs nothing in Nightcap 2): the tail on its springs, droop and stiffness as Nightcap 2's
   const N = NIGHTCAP, v2 = capVer() === 2, droop = v2 ? CAP.q.droop2 : CAP.q.droop, flop = v2 ? CAP.q.flop2 : CAP.q.flop, tg = CAP_SHAPE.sp.map(a => capAt(F, a, off));
@@ -66,7 +109,8 @@ function capStepBy(F, h, off = 0) {   // canon capStep, without the ball (it wei
 
 // ---- drawn (sleep2.html's drawSoftCap): over him, in his px; call it after draw(octx, capFrame(f), ...), before the film's props ----
 function capDraw(g, f, view, mode, o = {}) {   // o: { off, a } as the engine has it dropping on / lifting off (Nightcap 2's own entry and exit)
-  if (!CAP.on) return; const F = CAP.F || (CAP.F = capPoseFrame(f.pose)), now = performance.now(), gap = !CAP.last || now - CAP.last > 250, dt = gap ? 0 : Math.min(0.05, (now - CAP.last) / 1000); CAP.last = now;
+  if (!CAP.on) return;
+  if (capVer() === 3) { CAP.mode = mode; CAP.lastF = CAP.F; CAP.F = null; return; }   // v3: the engine drew it (capFrame); its colours follow this mode const F = CAP.F || (CAP.F = capPoseFrame(f.pose)), now = performance.now(), gap = !CAP.last || now - CAP.last > 250, dt = gap ? 0 : Math.min(0.05, (now - CAP.last) / 1000); CAP.last = now;
   if (gap) { CAP.n = []; CAP.pv = []; }   // not drawn for a while (asleep, a new start): afresh, or on from a handoff's
   const off = o.off || 0, n = Math.max(1, Math.ceil(dt * 720)); if (!CAP.n.length) capStepBy(F, 0, off); for (let i = 0; i < n && dt > 0; i++) capStepBy(F, dt / n, off);   // canon's 720 Hz
   const v2 = capVer() === 2, Q = CAP.q, D = mode === 'dark' ? 'D' : '', kk = F.k, REST = v2 ? CAP_SHAPE.sag : CAP_SHAPE.hang, amt = v2 ? 1 : Q.hang;

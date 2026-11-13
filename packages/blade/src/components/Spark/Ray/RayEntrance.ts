@@ -8,6 +8,7 @@
  * It's drawn on a canvas of its own, wide enough for the run, and his idle takes him on from rest when it's over.
  */
 import { RayCore } from './engine';
+import { freeCanvas } from './FilmHost';
 
 const RC = RayCore as any;
 
@@ -104,6 +105,7 @@ class RayEntrance {
 
   dispose(): void {
     this.canvas.remove();
+    freeCanvas(this.canvas);
   }
 }
 

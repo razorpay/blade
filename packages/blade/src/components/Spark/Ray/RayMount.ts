@@ -11,7 +11,7 @@
  * - back on the surface with nothing to do, his idle starts after a short wait
  */
 import { FILMS, TUNES, RayCore } from './engine';
-import { FilmHost } from './FilmHost';
+import { FilmHost, freeCanvas } from './FilmHost';
 import { RayPlayer } from './RayPlayer';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
@@ -49,7 +49,7 @@ const REST_BLEND_MS = 320;
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const WATCH_SETTLED_MS = 970; // his move out to the caret is over
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
-const STAGE_FRESH_MS = 1000; // where his stage is on screen is measured again in a frame at most this often (see stageAt)
+const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
 // 0.27 below (Coffee's mug over the edge; the hop's 0.6 is under the floor cut), measured over every idle, flip, film, the hop
@@ -57,6 +57,13 @@ const WIDTHS = { small: 38, medium: 48 };
 // its empty right and bottom (the PR review). Its left and top run on: nothing scrolls there.
 const ROOM_RIGHT = 1;
 const ROOM_BELOW = 0.75;
+// his own Ray's canvas (RayPlayer): the part of the stage he ever draws on, in his widths past his box. Measured over his idles,
+// typing (and the nudge), the hover look, the flips (spam too), the hop, the sleep cycle with its cap and the answer's handoffs:
+// 0.49 to the left (leaning to the caret), 1.03 above (a coin), 0.15 right, 0.16 below; this is about twice that.
+const PLAYER_LEFT = 1;
+const PLAYER_ABOVE = 2;
+const PLAYER_RIGHT = 1;
+const PLAYER_BELOW = 0.75;
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
 const geometry = (
@@ -142,6 +149,9 @@ type RayMountOptions = {
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
 let measure: CanvasRenderingContext2D | null = null;
+// a textarea's mirror: one for the page, kept while a Ray is up, laid out on its own (contain: strict) so measuring it doesn't lay
+// out the page (the PR review)
+let mirror: HTMLDivElement | null = null;
 const caretX = (
   el: HTMLInputElement | HTMLTextAreaElement,
   cs: CSSStyleDeclaration,
@@ -155,7 +165,11 @@ const caretX = (
     measure.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
     return left + measure.measureText(el.value.slice(0, at)).width - el.scrollLeft;
   }
-  const mirror = document.createElement('div');
+  if (!mirror) {
+    mirror = document.createElement('div');
+    mirror.setAttribute('aria-hidden', 'true');
+    document.body.append(mirror);
+  }
   const s = mirror.style;
   for (const k of [
     'fontFamily',
@@ -176,18 +190,23 @@ const caretX = (
   ] as const)
     (s as any)[k] = cs[k];
   s.position = 'absolute';
+  s.left = '0';
+  s.top = '0';
+  s.height = '1px';
+  s.overflow = 'hidden';
+  s.contain = 'strict';
+  s.pointerEvents = 'none';
   s.visibility = 'hidden';
   s.whiteSpace = 'pre-wrap';
   s.overflowWrap = 'break-word';
   s.width = `${el.clientWidth}px`;
-  mirror.textContent = el.value.slice(0, at);
+  // only the caret's own paragraph: a line break starts the wrapping again, so the text before it can't move the caret along its line
+  const before = el.value.slice(0, at);
+  mirror.textContent = before.slice(before.lastIndexOf('\n') + 1);
   const mark = document.createElement('span');
   mark.textContent = '​';
   mirror.append(mark);
-  document.body.append(mirror);
-  const x = mark.offsetLeft - parseFloat(cs.paddingLeft);
-  mirror.remove();
-  return left + x;
+  return left + mark.offsetLeft - parseFloat(cs.paddingLeft);
 };
 
 class RayMount {
@@ -206,17 +225,16 @@ class RayMount {
   private options: RayMountOptions;
   private holder: Holder;
   private inputRef: { current: HTMLElement | null } | null = null;
-  private pointer: [number, number] | null = null;
   private playerIdle: Idle | null = null; // which idle his own Ray is playing (Look around, or the sleep cycle)
   private napped = false; // the sleep cycle has had him once (found asleep then; in awake after)
   private geo = geometry(48);
   private dpr = 1;
   private floorCut = ''; // the stage cut at his floor (a clip-path), and whether it's on now
   private cutOn = false;
-  private raf = 0;
+  private raf = 0; // 1 while he's booked for the next frame
   private lastNow = 0;
   private isVisible = true;
-  private stageAt: { left: number; top: number; at: number } | null = null; // see stageMoved
+  private stageAt: { left: number; top: number; at: number } | null = null; // see measureStage
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
@@ -259,11 +277,7 @@ class RayMount {
       this.holder = { by: 'player', act: 'entrance', since: now };
 
     root.addEventListener('click', this.onClick);
-    window.addEventListener('pointermove', this.onPointerMove, { passive: true });
-    document.addEventListener('selectionchange', this.onCaretMove);
-    window.addEventListener('scroll', this.onViewMove, { capture: true, passive: true });
-    window.addEventListener('resize', this.onViewMove, { passive: true });
-    document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
+    RayMount.join(this);
     if (typeof IntersectionObserver === 'function') {
       this.observer = new IntersectionObserver((entries) => {
         this.isVisible = entries.some((e) => e.isIntersecting);
@@ -303,9 +317,10 @@ class RayMount {
     if (schemeChanged) {
       this.player.mode = this.options.colorScheme;
       if (this.entrance) this.entrance.mode = this.options.colorScheme;
-      Object.values(this.films).forEach((f) =>
-        f.host.send({ ray: 'mode', mode: this.options.colorScheme }),
-      );
+      Object.values(this.films).forEach((f) => {
+        f.host.send({ ray: 'mode', mode: this.options.colorScheme });
+        f.host.send(this.player.capAsk); // (his nightcap's colours follow too)
+      });
     }
     this.start();
     if (this.options.isHidden && !this.isVisible) this.onAway?.(); // hidden while off-screen: nobody sees a hop, he's away now
@@ -345,18 +360,14 @@ class RayMount {
 
   dispose(): void {
     this.disposed = true;
-    cancelAnimationFrame(this.raf);
+    RayMount.leave(this);
     this.observer?.disconnect();
     this.root.removeEventListener('click', this.onClick);
     this.listened?.removeEventListener('input', this.onInput);
     this.entrance?.dispose();
-    window.removeEventListener('pointermove', this.onPointerMove);
-    document.removeEventListener('selectionchange', this.onCaretMove);
-    window.removeEventListener('scroll', this.onViewMove, { capture: true });
-    window.removeEventListener('resize', this.onViewMove);
-    document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     Object.values(this.films).forEach((f) => f.host.dispose());
     this.room.remove();
+    freeCanvas(this.player.canvas); // his memory now, not at the next garbage collection (the PR review)
   }
 
   // ---- what he should be doing ----
@@ -551,16 +562,6 @@ class RayMount {
   }
 
   // every keystroke (an input event) restarts the nudge's wait, and cancels one that's playing
-  private readonly onCaretMove = (): void => {
-    this.caretCache = null;
-  };
-
-  // a scroll or a resize moves the caret and his stage on screen
-  private readonly onViewMove = (): void => {
-    this.caretCache = null;
-    this.stageMoved();
-  };
-
   private readonly onInput = (): void => {
     this.caretCache = null;
     this.lastTypeAt = performance.now();
@@ -780,13 +781,25 @@ class RayMount {
 
   private start(): void {
     if (this.disposed || this.raf || !this.isVisible) return;
-    this.raf = requestAnimationFrame(this.frame);
+    this.raf = 1;
+    RayMount.book(this);
+  }
+
+  /** The start of his frame, before any Ray on the page writes: what he needs measured (his stage, the caret) is read now. */
+  private readLayout(now: number): void {
+    if (this.disposed || this.reducedMotion) return;
+    if (RayMount.pointer && (!this.stageAt || now - this.stageAt.at > STAGE_FRESH_MS))
+      this.measureStage(now);
+    if (this.caretCache === null && this.isTyping()) this.caretGaze();
   }
 
   private readonly frame = (now: number): void => {
     this.raf = 0;
     if (this.disposed) return;
-    if (this.isVisible && !this.reducedMotion) this.raf = requestAnimationFrame(this.frame); // booked first: a bad frame never stops him
+    if (this.isVisible && !this.reducedMotion) {
+      this.raf = 1; // booked first: a bad frame never stops him
+      RayMount.book(this);
+    }
     const dt = this.lastNow ? Math.min(50, Math.max(0, now - this.lastNow)) : 16;
     this.lastNow = now;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -809,7 +822,7 @@ class RayMount {
     this.reconcile(now);
     this.draw(now, dt);
     if (this.isAway()) {
-      cancelAnimationFrame(this.raf); // hidden and done going: nothing moves till he's asked back (update() starts him again)
+      RayMount.unbook(this); // hidden and done going: nothing moves till he's asked back (update() starts him again)
       this.raf = 0;
       this.onAway?.();
     }
@@ -865,11 +878,10 @@ class RayMount {
       this.cutOn = cut;
       this.stage.style.clipPath = cut ? this.floorCut : '';
     }
-    if (this.pointer && (!this.stageAt || now - this.stageAt.at > STAGE_FRESH_MS))
-      this.measureStage(now);
-    const stage = this.pointer ? this.stageAt : null;
+    const { pointer } = RayMount;
+    const stage = pointer ? this.stageAt : null; // (measured at the start of the frame: readLayout)
     const raw: [number, number] | null =
-      this.pointer && stage ? [this.pointer[0] - stage.left, this.pointer[1] - stage.top] : null;
+      pointer && stage ? [pointer[0] - stage.left, pointer[1] - stage.top] : null;
     const local = raw ? this.reach(raw[0], raw[1]) : null;
 
     if (playerOn) {
@@ -963,7 +975,21 @@ class RayMount {
       left: `${(-g.left).toFixed(2)}px`,
       top: `${(g.boxHeight - g.floor).toFixed(2)}px`,
     });
-    this.player.place(g.width, g.height, g.left, g.floor, w, this.dpr);
+    const top = g.floor - g.boxHeight; // his box's top on the stage
+    const x0 = Math.max(0, g.left - w * PLAYER_LEFT);
+    const y0 = Math.max(0, top - w * PLAYER_ABOVE);
+    this.player.place(
+      {
+        x: x0,
+        y: y0,
+        width: Math.min(g.width, g.left + w * (1 + PLAYER_RIGHT)) - x0,
+        height: Math.min(g.height, g.floor + w * PLAYER_BELOW) - y0,
+      },
+      g.left,
+      g.floor,
+      w,
+      this.dpr,
+    );
     this.stageAt = null;
     Object.values(this.films).forEach((f) => {
       f.host.resize(g.width, g.height, this.dpr);
@@ -973,30 +999,99 @@ class RayMount {
 
   private readonly onClick = (): void => this.click();
 
-  private readonly onPointerMove = (e: PointerEvent): void => {
-    this.pointer = [e.clientX, e.clientY];
-    this.stageMoved();
-  };
-
   /**
-   * Where his stage is on screen, to bring the pointer in. It's measured in the pointer, scroll and resize events, which come
-   * between frames before anything's been written, and in a frame only when it's missing or a second old (a layout shift with
-   * nothing else moving), not on every frame after the frame's style writes: that forced a layout a frame for each Ray (the PR
-   * review, 2026-11-10). While his loop is stopped it's dropped instead, and measured again on his first frame back.
+   * Where his stage is on screen, to bring the pointer in. Measured at the start of a frame (readLayout), before any Ray writes,
+   * only when a scroll or a resize has dropped it or it's a second old (a layout shift with nothing else moving): not every frame
+   * after the frame's style writes, which forced a layout a frame for each Ray (the PR reviews, 2026-11-10 and -13).
    */
-  private stageMoved(): void {
-    if (this.raf) this.measureStage(performance.now());
-    else this.stageAt = null;
-  }
-
   private measureStage(now: number): void {
     const r = this.stage.getBoundingClientRect();
     this.stageAt = { left: r.left, top: r.top, at: now };
   }
 
-  private readonly onPointerLeave = (): void => {
-    this.pointer = null;
+  // ---- what every Ray on the page shares (the PR review): one set of page listeners, and one frame loop that first lets every
+  // Ray read what it needs measured, then lets every Ray draw, so no Ray's reading comes after another's writes ----
+
+  private static readonly up = new Set<RayMount>(); // every Ray mounted: the page listeners are on while there's one
+  private static readonly booked = new Set<RayMount>(); // the Rays that want the next frame
+  private static raf = 0;
+  private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
+
+  private static readonly onFrame = (now: number): void => {
+    RayMount.raf = 0;
+    const due = [...RayMount.booked];
+    RayMount.booked.clear();
+    due.forEach((m) => RayMount.guard(() => m.readLayout(now)));
+    due.forEach((m) => RayMount.guard(() => m.frame(now)));
   };
+
+  /** One Ray's fault never stops another: it's reported as an uncaught error would be, and the rest draw on. */
+  private static guard(run: () => void): void {
+    try {
+      run();
+    } catch (error: unknown) {
+      queueMicrotask(() => {
+        throw error;
+      });
+    }
+  }
+
+  private static book(m: RayMount): void {
+    RayMount.booked.add(m);
+    if (!RayMount.raf) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
+  }
+
+  private static unbook(m: RayMount): void {
+    RayMount.booked.delete(m);
+    if (RayMount.booked.size || !RayMount.raf) return;
+    cancelAnimationFrame(RayMount.raf);
+    RayMount.raf = 0;
+  }
+
+  private static readonly onPointerMove = (e: PointerEvent): void => {
+    RayMount.pointer = [e.clientX, e.clientY];
+  };
+
+  private static readonly onPointerLeave = (): void => {
+    RayMount.pointer = null;
+  };
+
+  // a scroll (any scroller: capture) or a resize moves his stage and the caret on screen, a selection change the caret: each only
+  // marks them to be measured again, at the start of his next frame
+  private static readonly onViewMove = (): void =>
+    RayMount.up.forEach((m) => {
+      m.caretCache = null;
+      m.stageAt = null;
+    });
+
+  private static readonly onCaretMove = (): void =>
+    RayMount.up.forEach((m) => {
+      m.caretCache = null;
+    });
+
+  private static join(m: RayMount): void {
+    if (!RayMount.up.size) {
+      window.addEventListener('pointermove', RayMount.onPointerMove, { passive: true });
+      document.addEventListener('selectionchange', RayMount.onCaretMove);
+      window.addEventListener('scroll', RayMount.onViewMove, { capture: true, passive: true });
+      window.addEventListener('resize', RayMount.onViewMove, { passive: true });
+      document.documentElement.addEventListener('pointerleave', RayMount.onPointerLeave);
+    }
+    RayMount.up.add(m);
+  }
+
+  private static leave(m: RayMount): void {
+    RayMount.unbook(m);
+    if (!RayMount.up.delete(m) || RayMount.up.size) return;
+    window.removeEventListener('pointermove', RayMount.onPointerMove);
+    document.removeEventListener('selectionchange', RayMount.onCaretMove);
+    window.removeEventListener('scroll', RayMount.onViewMove, { capture: true });
+    window.removeEventListener('resize', RayMount.onViewMove);
+    document.documentElement.removeEventListener('pointerleave', RayMount.onPointerLeave);
+    RayMount.pointer = null;
+    mirror?.remove();
+    mirror = null;
+  }
 }
 
 /** His box on the page (his rest footprint, CSS px): the layout never changes with what he does. */

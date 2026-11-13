@@ -22,6 +22,22 @@ type FilmHostOptions = {
   onMessage: (message: FilmMessage) => void;
 };
 
+/**
+ * Frees a canvas's memory now rather than at the next garbage collection (Safari caps the canvas memory a page may hold), with the
+ * layers the engine keeps on it (\`_rayDots\`, \`_rayLook\`, …: its offscreen canvases, as big as it).
+ */
+const freeCanvas = (canvas: HTMLCanvasElement): void => {
+  for (const key of Object.keys(canvas)) {
+    const layer = (canvas as any)[key];
+    if (key.startsWith('_ray') && layer instanceof HTMLCanvasElement) {
+      freeCanvas(layer);
+      Reflect.deleteProperty(canvas, key);
+    }
+  }
+  canvas.width = 0;
+  canvas.height = 0;
+};
+
 const NOT_FOUND = (): Promise<any> =>
   Promise.resolve({
     ok: false,
@@ -48,6 +64,8 @@ class FilmHost {
   private readonly store = new Map<string, string>();
   private readonly modules: Record<string, unknown> = {};
   private readonly canvases: Record<string, HTMLCanvasElement> = {};
+  private readonly made: HTMLCanvasElement[] = []; // every canvas the film draws on: its page's and the ones its script makes
+  private readonly gls: WebGLRenderingContext[] = []; // its WebGL contexts (Searching's lens), let go of on dispose
   private readonly stubs: Record<string, HTMLElement> = {};
   private readonly ui: DocumentFragment;
   private readonly channel = new MessageChannel();
@@ -64,7 +82,7 @@ class FilmHost {
     for (const id of film.canvases) {
       const canvas = document.createElement('canvas');
       canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;';
-      this.canvases[id] = canvas;
+      this.canvases[id] = this.track(canvas);
       this.layer.append(canvas);
     }
 
@@ -105,7 +123,10 @@ class FilmHost {
         this.canvases[id] ?? this.ui.getElementById(id) ?? stub(`#${id}`),
       querySelector: (selector: string) => this.ui.querySelector(selector),
       querySelectorAll: (selector: string) => this.ui.querySelectorAll(selector),
-      createElement: (tag: string) => document.createElement(tag),
+      createElement: (tag: string) => {
+        const el = document.createElement(tag);
+        return el instanceof HTMLCanvasElement ? this.track(el) : el;
+      },
       createElementNS: (ns: string, tag: string) => document.createElementNS(ns, tag),
       documentElement: root,
       body,
@@ -231,6 +252,27 @@ class FilmHost {
     this.channel.port1.close();
     this.channel.port2.close();
     this.layer.remove();
+    // its memory, now: a WebGL context is let go of (else contexts pile up till the browser drops its oldest, maybe the app's own
+    // chart or map), and every canvas it drew on is emptied (the PR review)
+    this.gls.forEach((gl) => gl.getExtension('WEBGL_lose_context')?.loseContext());
+    this.gls.length = 0;
+    this.made.forEach(freeCanvas);
+    this.made.length = 0;
+  }
+
+  /** A canvas of the film's: kept to be freed on dispose, and its WebGL context (if it takes one) noted. */
+  private track(canvas: HTMLCanvasElement): HTMLCanvasElement {
+    const getContext = canvas.getContext.bind(canvas) as (
+      type: string,
+      attributes?: unknown,
+    ) => any;
+    (canvas as any).getContext = (type: string, attributes?: unknown) => {
+      const context = getContext(type, attributes);
+      if (context && type.includes('webgl') && !this.gls.includes(context)) this.gls.push(context);
+      return context;
+    };
+    this.made.push(canvas);
+    return canvas;
   }
 
   private dispatch(type: string, event: Record<string, unknown>): void {
@@ -239,4 +281,4 @@ class FilmHost {
   }
 }
 
-export { FilmHost };
+export { FilmHost, freeCanvas };

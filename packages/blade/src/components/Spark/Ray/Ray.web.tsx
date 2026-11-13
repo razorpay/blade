@@ -13,15 +13,21 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 
-// he's drawn on a canvas: where there's no real one (a server render, jsdom in unit tests) his box renders and nothing animates
+// he's drawn on a canvas: where there's no real one (a server render, jsdom in unit tests) his box renders and nothing animates.
+// Found out once per page (the PR review: not a canvas made for each Ray)
+let isDrawable: boolean | null = null;
 const canDraw = (): boolean => {
   if (typeof window === 'undefined' || typeof document === 'undefined') return false;
-  if (/jsdom/i.test(window.navigator.userAgent)) return false;
-  try {
-    return Boolean(document.createElement('canvas').getContext('2d'));
-  } catch {
-    return false;
+  if (isDrawable === null) {
+    try {
+      isDrawable =
+        !/jsdom/i.test(window.navigator.userAgent) &&
+        Boolean(document.createElement('canvas').getContext('2d'));
+    } catch {
+      isDrawable = false;
+    }
   }
+  return isDrawable;
 };
 
 /**
