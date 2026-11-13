@@ -15,3 +15,5 @@ packages/blade-svelte/src/**/*.d.ts
 
 # misc
 .DS_Store
+
+packages/blade/scripts/razorsenseEngine/source/

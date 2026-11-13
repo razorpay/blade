@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
 type ButtonCommonProps = {
   /**
@@ -88,7 +89,48 @@ type ButtonCommonProps = {
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute &
-  BladeCommonEvents;
+  BladeCommonEvents &
+  Platform.Select<{
+    web: {
+      /**
+       * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
+       * `color="neutral"`, at any size: on any other Button it throws in development. Not supported inside a ButtonGroup (it
+       * has no neutral color) or on a full-width button: there the button keeps its own hover (with a development warning).
+       *
+       * **Only available on web**
+       *
+       * @default false
+       */
+      hasRazorSense?: boolean;
+      /**
+       * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
+       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"` (on another Button it throws in
+       * development), at any size (it all scales with the button's height), on a labelled button that can widen: in a
+       * ButtonGroup, full width or icon-only it gives way and the button keeps its own hover (with a development warning).
+       * Give it room to its right (its own width, not stretched or held by its container).
+       *
+       * **Only available on web**
+       *
+       * @default false
+       */
+      hasRay?: boolean;
+      /**
+       * Which Ray `hasRay` plays (only with `hasRay`; alone it does nothing and warns in development). `investigate`: he whips
+       * out his magnifying glass and searches (an investigating action). More
+       * variants will follow.
+       *
+       * **Only available on web**
+       *
+       * @default 'investigate'
+       */
+      rayVariant?: ButtonRayVariant;
+    };
+    native: {
+      hasRazorSense?: undefined;
+      hasRay?: undefined;
+      rayVariant?: undefined;
+    };
+  }>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -117,6 +159,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    hasRazorSense = false,
+    hasRay = false,
+    rayVariant,
     href,
     target,
     rel,
@@ -166,6 +211,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
+      hasRazorSense={hasRazorSense}
+      hasRay={hasRay}
+      rayVariant={rayVariant}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}
