@@ -84,6 +84,16 @@ const hasUsableGpu = (): boolean => {
   return usableGpu;
 };
 
+/**
+ * Why nothing could animate here, known before anything is loaded: no usable WebGL2 (or a GPU that draws only on the CPU), or an
+ * animation on this page was already too slow. Null when it can try.
+ */
+const whyCantAnimate = (): FreshFailure | null => {
+  if (!hasUsableGpu()) return 'webgl2';
+  if (wasSlow) return 'slow';
+  return null;
+};
+
 const prefersReducedMotion = (): boolean =>
   typeof window !== 'undefined' &&
   typeof window.matchMedia === 'function' &&
@@ -168,12 +178,9 @@ class FreshStage {
   public mount(exp: FreshExport, switches: FreshSwitches = ALL_ON): FreshEngine | null {
     this.unmountEngine();
     if (this.isDestroyed) return null;
-    if (!hasUsableGpu()) {
-      this.onError?.('webgl2');
-      return null;
-    }
-    if (wasSlow) {
-      this.onError?.('slow');
+    const cant = whyCantAnimate();
+    if (cant) {
+      this.onError?.(cant);
       return null;
     }
     let failed = false;
@@ -330,5 +337,5 @@ class FreshStage {
   }
 }
 
-export { FreshStage, freshFailures };
+export { FreshStage, freshFailures, whyCantAnimate };
 export type { CreateFreshEngine, FreshDriver, FreshFailure };

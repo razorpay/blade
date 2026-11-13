@@ -1,5 +1,5 @@
 import type React from 'react';
-import { FreshStage, freshFailures } from './FreshStage';
+import { FreshStage, freshFailures, whyCantAnimate } from './FreshStage';
 import { loadFreshEngine } from './loadFreshEngine';
 
 type FreshStageRun<Comps> = {
@@ -51,6 +51,14 @@ const runFreshStage = <Comps>({
     }, 0);
     onFail(new Error(`${moduleName}: ${reason}`));
   };
+  // (where it can't animate anyway, it goes to its still at once: no engine or comps downloaded for nothing)
+  const cant = whyCantAnimate();
+  if (cant) {
+    fail(freshFailures[cant]);
+    return () => {
+      isLive = false;
+    };
+  }
   void Promise.all([loadFreshEngine(), loadComps()])
     .then(([createFreshEngine, comps]) => {
       const box = getBox();
