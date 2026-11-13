@@ -106,6 +106,53 @@ describe('<Heading />', () => {
     await assertAccessible(container);
   });
 
+  it('should render serif Heading at size "2xlarge"', () => {
+    const displayText = 'Good morning, what would you like to do today?';
+    const { container, getByRole } = renderWithTheme(
+      <Heading size="2xlarge" isSerif>
+        {displayText}
+      </Heading>,
+    );
+    const heading = getByRole('heading', { level: 2 });
+    expect(heading).toHaveStyle({
+      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
+      fontWeight: '400',
+      fontSize: '2.5rem',
+      letterSpacing: '-1.32px',
+    });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should accept a computed boolean for isSerif at size "2xlarge"', () => {
+    const serifFontFamily = '"PT Serif","PT Serif Fallback Georgia",Georgia,serif';
+    const renderHero = (isHero: boolean): HTMLElement | null =>
+      renderWithTheme(
+        <Heading size="2xlarge" isSerif={isHero}>
+          Hero
+        </Heading>,
+      ).container.querySelector('h2');
+
+    expect(renderHero(true)).toHaveStyle({ fontFamily: serifFontFamily });
+    expect(renderHero(false)).not.toHaveStyle({ fontFamily: serifFontFamily });
+  });
+
+  it('should ignore isSerif and warn when size is not "2xlarge"', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const { getByRole } = renderWithTheme(
+      // @ts-expect-error testing failure case, isSerif is only allowed with size="2xlarge"
+      <Heading size="xlarge" isSerif>
+        Not serif
+      </Heading>,
+    );
+    expect(getByRole('heading', { level: 3 })).not.toHaveStyle({
+      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
+    });
+    expect(warnSpy).toHaveBeenCalledWith(
+      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="xlarge", so the default heading font is used.',
+    );
+    warnSpy.mockRestore();
+  });
+
   it('should accept testID', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { getByTestId } = renderWithTheme(<Heading testID="heading-test">{displayText}</Heading>);

@@ -227,3 +227,32 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   </h6>
 </div>
 `;
+
+exports[`<Heading /> should render serif Heading at size "2xlarge" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(0,0%,2%,1);
+  font-family: "PT Serif","PT Serif Fallback Georgia",Georgia,serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2.875rem;
+  -webkit-letter-spacing: -1.32px;
+  -moz-letter-spacing: -1.32px;
+  -ms-letter-spacing: -1.32px;
+  letter-spacing: -1.32px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h2
+    class="c0"
+    data-blade-component="heading"
+    letter-spacing="25"
+  >
+    Good morning, what would you like to do today?
+  </h2>
+</div>
+`;

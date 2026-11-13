@@ -9,9 +9,14 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
 import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { logger } from '~utils/logger';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-export type HeadingProps = {
+
+type HeadingSize = Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
+type HeadingWeight = Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
+
+type HeadingCommonProps = {
   as?: typeof validAsValues[number];
   /**
    * Overrides the color of the Heading component.
@@ -19,16 +24,50 @@ export type HeadingProps = {
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
-  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
-  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
   textTransform?: BaseTextProps['textTransform'];
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   ElementTiming &
   StyledPropsBlade;
+
+type HeadingSansProps = {
+  size?: HeadingSize;
+  weight?: HeadingWeight;
+  isSerif?: false;
+};
+
+type HeadingSerifProps = {
+  /**
+   * Serif headings are only available at `2xlarge`.
+   */
+  size: '2xlarge';
+  /**
+   * PT Serif ships in regular weight only.
+   */
+  weight?: 'regular';
+  /**
+   * Renders the heading in PT Serif.
+   *
+   * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"`.
+   * Web only for now: on React Native the heading keeps the default heading font.
+   *
+   * Accepts a computed boolean (`isSerif={isHero}`), but only alongside `size="2xlarge"`.
+   *
+   * @default false
+   */
+  isSerif: boolean;
+};
+
+export type HeadingProps = HeadingCommonProps & (HeadingSansProps | HeadingSerifProps);
+
+type GetHeadingPropsArgs = Pick<HeadingCommonProps, 'as' | 'color' | 'testID'> & {
+  size?: HeadingSize;
+  weight?: HeadingWeight;
+  isSerif?: boolean;
+};
 
 export const getHeadingProps = ({
   as,
@@ -36,10 +75,8 @@ export const getHeadingProps = ({
   weight,
   color,
   testID,
-}: Pick<HeadingProps, 'as' | 'size' | 'weight' | 'color' | 'testID'>): Omit<
-  BaseTextProps,
-  'children'
-> => {
+  isSerif,
+}: GetHeadingPropsArgs): Omit<BaseTextProps, 'children'> => {
   const props: Omit<BaseTextProps, 'children'> = {
     color,
     fontSize: 300,
@@ -74,6 +111,28 @@ export const getHeadingProps = ({
     props.as = 'h2';
   }
 
+  if (isSerif) {
+    if (size !== '2xlarge') {
+      logger({
+        message: `isSerif is only supported with size="2xlarge". Received size="${size}", so the default heading font is used.`,
+        moduleName: 'Heading',
+        type: 'warn',
+      });
+    } else if (isReactNative()) {
+      logger({
+        message:
+          'isSerif is not supported on React Native yet, so the default heading font is used.',
+        moduleName: 'Heading',
+        type: 'warn',
+      });
+    } else {
+      // PT Serif ships in regular weight only. Any other weight would make the browser fake bold.
+      props.fontFamily = 'serif';
+      props.fontWeight = 'regular';
+      props.letterSpacing = 25;
+    }
+  }
+
   // override the computed `as` prop if user passed an `as` prop
   props.as = as || props.as;
   return props;
@@ -91,13 +150,14 @@ const _Heading = (
     textDecorationLine,
     wordBreak,
     textTransform,
+    isSerif = false,
     ...styledProps
   }: HeadingProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
-  const props = getHeadingProps({ as, size, weight, color, testID });
+  const props = getHeadingProps({ as, size, weight, color, testID, isSerif });
 
   return (
     <BaseText
