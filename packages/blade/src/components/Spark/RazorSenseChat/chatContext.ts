@@ -14,7 +14,7 @@ type RazorSenseChatContextValue = {
    * RazorSenseThinking, handed down so a ChatMessage that's loading inside the chat can show its loading text as the thinking
    * label (and drive the chat's thinking) without importing RazorSense's code itself
    */
-  Thinking: React.ComponentType<Pick<RazorSenseThinkingProps, 'children'>>;
+  Thinking: React.ComponentType<Pick<RazorSenseThinkingProps, 'children' | 'texts'>>;
 };
 
 /** Set by RazorSenseChat: its parts register with it and it draws them, instead of drawing themselves. */

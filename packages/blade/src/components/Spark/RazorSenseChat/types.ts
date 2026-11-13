@@ -4,10 +4,15 @@ import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
 type RazorSenseThinkingProps = {
   /**
    * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion,
-   * and paused with `isPaused`). Several (as `ChatMessage`'s `loadingText`) roll from one to the next.
+   * and paused with `isPaused`).
    * @default 'Thinking…'
    */
-  children?: string | string[];
+  children?: React.ReactNode;
+  /**
+   * Several labels, rolling from one to the next (as `RollingText`'s `texts`, and `ChatMessage`'s `loadingText` as an array).
+   * Given, they're shown instead of `children`.
+   */
+  texts?: string[];
 } & RazorSenseDrawProps;
 
 type RazorSenseBottomWaveProps = {

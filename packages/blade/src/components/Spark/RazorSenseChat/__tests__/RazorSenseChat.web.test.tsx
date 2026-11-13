@@ -147,6 +147,19 @@ describe('RazorSense 2.0 components', () => {
     );
   });
 
+  it('show JSX children as one label, and roll only through texts', () => {
+    const count = 3;
+    const { getByText, unmount } = renderWithTheme(
+      <RazorSenseThinking>Searching {count} settlements…</RazorSenseThinking>,
+    );
+    expect(getByText('Searching 3 settlements…')).toBeInTheDocument();
+    unmount();
+    const { getByText: getRolling } = renderWithTheme(
+      <RazorSenseThinking texts={['Thinking...', 'Processing your request...']} />,
+    );
+    expect(getRolling('Thinking...')).toBeInTheDocument();
+  });
+
   it('keep thinking while any of several thinking labels is still shown', async () => {
     const Chat = (): React.ReactElement => {
       const [shown, setShown] = React.useState({ label: true, message: true });

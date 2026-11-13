@@ -73,7 +73,11 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
 
   const finalChildren =
     isLoading && RazorSenseThinking ? (
-      <RazorSenseThinking>{loadingText}</RazorSenseThinking>
+      Array.isArray(loadingText) ? (
+        <RazorSenseThinking texts={loadingText} />
+      ) : (
+        <RazorSenseThinking>{loadingText}</RazorSenseThinking>
+      )
     ) : shouldWrapInText ? (
       <Text
         color={

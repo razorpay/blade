@@ -83,6 +83,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
   function RazorSenseThinking(props, forwardedRef) {
     const {
       children = 'Thinking…',
+      texts,
       isPaused = false,
       scale = 1,
       onLoad,
@@ -144,7 +145,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       onError,
     });
     const still = useStill(!chat && isStill, mode, loadThinkingStill);
-    const label = (text: string): React.ReactElement => (
+    const label = (text: React.ReactNode): React.ReactElement => (
       <ThinkingLabel
         base={colors.base}
         shine={colors.shine}
@@ -181,10 +182,10 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
           </div>
         )}
         <span ref={labelRef} style={{ display: 'inline-block' }}>
-          {Array.isArray(children) && children.length > 1 ? (
-            <RollingText texts={children}>{label}</RollingText>
+          {texts && texts.length > 1 ? (
+            <RollingText texts={texts}>{label}</RollingText>
           ) : (
-            label(Array.isArray(children) ? children[0] ?? '' : children)
+            label(texts?.[0] ?? children)
           )}
         </span>
       </div>
