@@ -320,24 +320,7 @@ SecondaryButton.parameters = {
   docs: {
     description: {
       story:
-        'Secondary Button in different sizes. With `hasRay`, it widens on hover for Ray, scaled to its height; `rayVariant` picks what he does (`investigate`: his magnifying glass)',
-    },
-  },
-};
-
-export const SecondaryWithRayButton = ButtonWithSizeTemplate.bind({});
-SecondaryWithRayButton.storyName = 'Secondary with Ray';
-SecondaryWithRayButton.args = {
-  variant: 'secondary',
-  hasRay: true,
-  rayVariant: 'investigate',
-  children: 'Investigate with Ray',
-};
-SecondaryWithRayButton.parameters = {
-  docs: {
-    description: {
-      story:
-        'Hover a button: RazorSense and a text wash play, and it widens to the right for Ray, who pulls out his magnifying glass and searches for as long as the pointer stays (`rayVariant="investigate"`). It all scales with the button, at every size. Where it can’t widen (a ButtonGroup, full width, icon-only) the button keeps its own hover',
+        'Secondary Button in different sizes. Turn on `hasRay` in Controls and hover a button: RazorSense and a text wash play, and it widens to the right for Ray, scaled to its height. `rayVariant` picks what he does (`investigate`: he pulls out his magnifying glass and searches for as long as the pointer stays). Where it can’t widen (a ButtonGroup, full width, icon-only) the button keeps its own hover',
     },
   },
 };
