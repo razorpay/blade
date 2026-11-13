@@ -109,6 +109,15 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
       stageRef.current?.setDriver(null);
       stageRef.current?.setPaused(true);
       onCompleteRef.current?.();
+      // nothing more to draw: its GPU context and memory go now, even if it stays mounted (after this frame: the stage may be
+      // the one calling)
+      const stage = stageRef.current;
+      window.setTimeout(() => {
+        stage?.destroy();
+        if (stageRef.current === stage) stageRef.current = null;
+        engineRef.current = null;
+        clockRef.current = null;
+      }, 0);
     };
 
     useEffect(() => {

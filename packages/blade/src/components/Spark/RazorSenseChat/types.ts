@@ -12,7 +12,7 @@ type RazorSenseThinkingProps = {
   children?: StringChildrenType;
   /**
    * Several labels, rolling from one to the next (as `RollingText`'s `texts`, and `ChatMessage`'s `loadingText` as an array).
-   * Given, they're shown instead of `children`.
+   * Given, they're shown instead of `children` (pass one or the other: both, it warns in development).
    */
   texts?: string[];
 } & RazorSenseDrawProps;

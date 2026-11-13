@@ -16,8 +16,12 @@ import { getStringFromReactText } from '~utils/getStringChildren';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
+import { logger } from '~utils/logger';
 
-/** flow 9's thinking label: its blue, and the light running through it (the colours it was made in, light and dark) */
+/**
+ * flow 9's thinking label: its blue, and the light running through it (the colours it was made in, light and dark). No colour
+ * token has these: the nearest primary and information blues read visibly greener / darker against the glow.
+ */
 const LABEL_COLORS = {
   light: { base: '#2d52e6', shine: '#c9d4fb' },
   dark: { base: '#4f6ff0', shine: '#dce3ff' },
@@ -95,6 +99,17 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
     } = props;
     const chat = useContext(RazorSenseChatContext);
     useChatOwnedPropsWarning('RazorSenseThinking', Boolean(chat), props);
+    // texts roll in children's place: both given, say so (children isn't shown)
+    const hasBoth = Boolean(texts?.length) && props.children !== undefined;
+    useEffect(() => {
+      if (!__DEV__ || !hasBoth) return;
+      logger({
+        type: 'warn',
+        moduleName: 'RazorSenseThinking',
+        message:
+          "Both children and texts are set: texts roll in children's place, so children isn't shown. Pass one: children for one label, texts for several.",
+      });
+    }, [hasBoth]);
     const { colorScheme } = useTheme();
     const mode = colorScheme === 'dark' ? 'dark' : 'light';
     const colors = LABEL_COLORS[mode];
