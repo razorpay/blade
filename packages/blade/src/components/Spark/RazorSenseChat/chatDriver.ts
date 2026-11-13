@@ -1,4 +1,6 @@
 import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
+import { TypingStrength, smooth01 } from '../RazorSenseEngine/typingStrength';
+import type { TypingTune } from '../RazorSenseEngine/typingStrength';
 
 /**
  * The chat's RazorSense, as flow 9 plays it (rz62 oneTick, ported by the RazorSense system to one canvas: ray ds/make_chat.py).
@@ -13,24 +15,9 @@ import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
  * Pages sit where flow 9's chat has them (its origins()): thinking on its slot near the top, idle on the chat bar's middle
  * across and the window's bottom.
  */
-type Tune = {
-  level: number;
-  pulse: number;
-  rise: number;
-  fall: number;
-  hold: number;
-  simmer: number;
-  react: number;
-  rhythmAfter: number;
-  rhythm: number;
-  peak: number;
-  rhythmSpeed: number;
-  drift?: number;
-  pathBack?: number;
+type Tune = TypingTune & {
+  /** light's strip: how far it drifts up (flow 9's rtl) */
   up?: number;
-  liven?: number;
-  pathPause?: number;
-  grow?: number;
 };
 
 type ChatMotion = {
@@ -98,11 +85,6 @@ const flow9Anchors = (width: number, height: number): ChatAnchors => {
 const RISE_TAIL = 0.6;
 const RISE_XF = 0.3;
 
-const smooth01 = (u: number): number => {
-  const v = Math.min(1, Math.max(0, u));
-  return v * v * (3 - 2 * v);
-};
-
 const page = (g: string): Page => ({
   g,
   op: 0,
@@ -126,8 +108,6 @@ const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
 
 class ChatDriver {
   public state: '' | 'think' | 'surge' | 'rise' | 'idle' = '';
-  /** the typing surge's strength on idle (0-1) */
-  public a = 0;
 
   private readonly C: ChatTimes;
   private readonly M: ChatMotion;
@@ -158,13 +138,7 @@ class ChatDriver {
   private Vspd = 1;
   private ralive = 0;
   private path = 0;
-  private pspd = 1;
-  private v = 0;
-  private R = 0;
-  private ph = 0;
-  private last = -1e9;
-  private first = 0;
-  private rate = 0;
+  private readonly strength = new TypingStrength();
 
   constructor(setup: ChatSetup, isDark: boolean) {
     this.C = setup.times;
@@ -237,12 +211,15 @@ class ChatDriver {
     }
   }
 
+  /** the typing surge's strength on idle (0-1) */
+  public get a(): number {
+    return this.strength.a;
+  }
+
   /** a key typed in the chat input (s: now, in seconds); counts only while idle */
   public hit(s: number): void {
     if (this.state !== 'idle') return;
-    if (s - this.last > this.tune().hold) this.first = s;
-    this.last = s;
-    this.rate += 1;
+    this.strength.hit(s, this.tune());
   }
 
   /** moves everything on by dt (s) and draws that moment (unless shouldDraw is false) */
@@ -324,9 +301,7 @@ class ChatDriver {
         this.ralive = this.alive;
         // (its path carries on from where the page had it: no jump)
         this.path = this.self.pt ?? this.alive;
-        this.a = 0;
-        this.v = 0;
-        this.R = 0;
+        this.strength.reset();
         this.V = 1;
         this.Vto = 1;
       }
@@ -341,7 +316,7 @@ class ChatDriver {
       }
     }
     this.idle(dt, s, dur);
-    const gTo = this.state === 'idle' ? 1 + (this.tune().grow ?? 0) * this.a : 1;
+    const gTo = this.state === 'idle' ? this.strength.grow(this.tune()) : 1;
     this.gw = this.state === 'idle' ? gTo : this.gw + (gTo - this.gw) * (1 - Math.exp(-dt / 0.3));
     for (const g of [...this.P2, this.RT]) {
       if (g.op !== g.to) {
@@ -368,42 +343,12 @@ class ChatDriver {
     }
     if (!(this.V > 0 || (this.self && (this.self.op > 0 || this.RT.op > 0)))) return;
     const L = this.tune();
-    const isTyping = s - this.last < L.hold;
-    const rIn = isTyping ? smooth01((s - this.first - L.rhythmAfter) / 1.5) : 0;
-    this.R +=
-      (rIn - this.R) * (1 - Math.exp(-dt / (rIn > this.R ? 0.6 : Math.max(0.2, L.simmer / 3))));
-    this.ph += dt * 2 * Math.PI * L.rhythmSpeed * (0.35 + 0.65 * this.R);
-    this.rate *= Math.exp(-dt);
-    const swell = 0.5 - 0.5 * Math.cos(this.ph);
-    const pk = isTyping ? L.pulse * Math.exp(-Math.max(0, s - this.first) / 0.9) : 0;
-    const target =
-      isTyping && this.state === 'idle'
-        ? Math.min(
-            1,
-            L.level +
-              Math.max(0, L.peak - L.level) * Math.min(1, pk + this.R * L.rhythm * swell) +
-              L.react * Math.min(1.25, this.rate / 8),
-          )
-        : 0;
-    const tau = target >= this.a ? L.rise : isTyping ? Math.max(L.rise, L.fall) : L.simmer;
-    const w = 3.9 / Math.max(0.05, tau);
-    const n = Math.ceil(dt / 0.004);
-    const h = dt / Math.max(1, n);
-    for (let i = 0; i < n; i++) {
-      this.v += (w * w * (target - this.a) - 2 * w * this.v) * h;
-      this.a += this.v * h;
-    }
-    this.a = Math.max(0, Math.min(1, this.a));
-    if (this.a <= 0 && this.v < 0) this.v = 0;
+    this.strength.step(dt, s, L, this.state === 'idle');
     // the clocks: livelier with the strength; the path held while the pulse is up, back up to speed over `pathBack` s (flow 10,
     // as the landing). Its path drifts on otherwise (the comps' calm tune held it at one spot: Blade's wave keeps moving)
-    const drift = Math.max(0.05, L.drift ?? 1);
-    this.ralive += dt * drift * (1 + ((L.liven ?? 1) - 1) * this.a);
-    const pt = 1 - (L.pathPause ?? 0) * smooth01(this.a / Math.max(0.05, L.level));
-    this.pspd +=
-      (pt - this.pspd) *
-      (1 - Math.exp(-dt / (pt < this.pspd ? 0.25 : Math.max(0.05, L.pathBack ?? 2.2) / 3)));
-    this.path += dt * drift * this.pspd;
+    const go = this.strength.clocks(dt, L);
+    this.ralive += go.alive;
+    this.path += go.path;
     // the strip stays; the typing strip over it at the strength (flow 10: as the landing's two, no longer a cross-fade)
     const pairs: [Page | null, number][] = [
       [this.self, this.V],

@@ -147,6 +147,39 @@ describe('RazorSense 2.0 components', () => {
     );
   });
 
+  it('keep thinking while any of several thinking labels is still shown', async () => {
+    const Chat = (): React.ReactElement => {
+      const [shown, setShown] = React.useState({ label: true, message: true });
+      return (
+        <>
+          <button onClick={() => setShown({ ...shown, message: false })}>Answer</button>
+          <button onClick={() => setShown({ ...shown, label: false })}>Done</button>
+          <RazorSenseChat>
+            {shown.label ? <RazorSenseThinking>Searching…</RazorSenseThinking> : null}
+            <ChatMessage senderType="other" isLoading={shown.message} loadingText="Thinking...">
+              Answer
+            </ChatMessage>
+            <RazorSenseBottomWave>
+              <textarea />
+            </RazorSenseBottomWave>
+          </RazorSenseChat>
+        </>
+      );
+    };
+    const { container, getByRole } = renderWithTheme(<Chat />);
+    const stills = (): HTMLImageElement[] =>
+      Array.from(container.querySelectorAll('[data-blade-component="razorsense-chat"] img'));
+    await waitFor(() => expect(stills()).toHaveLength(2));
+    const opacities = (): string[] => stills().map((still) => still.style.opacity);
+    expect(opacities()).toEqual(['1', '0']);
+    // the later one goes: the other is still up, so it still thinks
+    fireEvent.click(getByRole('button', { name: 'Answer' }));
+    expect(opacities()).toEqual(['1', '0']);
+    // the last one goes: now it surges down
+    fireEvent.click(getByRole('button', { name: 'Done' }));
+    expect(opacities()).toEqual(['0', '1']);
+  });
+
   it('leave a loading ChatMessage outside a RazorSenseChat as it is', () => {
     const { container, getByText } = renderWithTheme(
       <ChatMessage senderType="other" isLoading loadingText="Thinking...">

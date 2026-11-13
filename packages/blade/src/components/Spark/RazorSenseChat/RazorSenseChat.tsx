@@ -143,13 +143,20 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
   }, [isStill, s, isPaused, thinkingStill, bottomWaveStill]);
 
   // (stable: a part registers once, not again on every change of the chat's props)
+  // every part registered, in order (two thinking labels can be up at once, a RazorSenseThinking and a loading ChatMessage say):
+  // it thinks while any is, and draws round the one shown last
+  const registeredRef = useRef<Record<ChatPart, HTMLElement[]>>({ thinking: [], bottomWave: [] });
   const register = useCallback<RazorSenseChatContextValue['register']>((part, element) => {
+    const list = registeredRef.current[part];
+    list.push(element);
     partsRef.current[part] = element;
     if (part === 'thinking') setIsThinking(true);
     return () => {
-      if (partsRef.current[part] !== element) return;
-      partsRef.current[part] = null;
-      if (part === 'thinking') setIsThinking(false);
+      const at = list.lastIndexOf(element);
+      if (at < 0) return;
+      list.splice(at, 1);
+      partsRef.current[part] = list[list.length - 1] ?? null;
+      if (part === 'thinking') setIsThinking(list.length > 0);
     };
   }, []);
   const context = useMemo<RazorSenseChatContextValue>(
