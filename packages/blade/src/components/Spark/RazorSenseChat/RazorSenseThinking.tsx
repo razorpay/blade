@@ -40,7 +40,7 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
       font-family: ${theme.typography.fonts.family.text};
       font-weight: ${theme.typography.fonts.weight.regular};
       font-size: ${makeTypographySize(theme.typography.fonts.size[200])};
-      // (flow 9's 22 px: no line-height token has it, so it's sized as the tokens are, in rem)
+      /* flow 9's 22 px: no line-height token has it, so it's sized as the tokens are, in rem */
       line-height: ${makeTypographySize(22)};
       letter-spacing: ${makeLetterSpacing(
         theme.typography.letterSpacings[50],
