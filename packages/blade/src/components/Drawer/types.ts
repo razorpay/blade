@@ -86,9 +86,19 @@ type DrawerHeaderProps = {
   titleSuffix?: React.ReactNode;
 
   /**
-   * Trailing element
+   * Trailing element(s), placed before the close button
    *
-   * Link, Button[]
+   * Accepts one `Link`, `Button`, `IconButton`, `Badge`, `Text` or `Amount`,
+   * or an array of up to two icon-only actions (`IconButton`, or `Button` with only an `icon`).
+   * Use two actions for things like moving between records (previous / next) without closing the drawer.
+   *
+   * @example
+   * ```jsx
+   * trailing={[
+   *   <IconButton key="prev" icon={ChevronLeftIcon} accessibilityLabel="Previous" onClick={goToPrevious} />,
+   *   <IconButton key="next" icon={ChevronRightIcon} accessibilityLabel="Next" onClick={goToNext} />,
+   * ]}
+   * ```
    */
   trailing?: React.ReactNode;
 

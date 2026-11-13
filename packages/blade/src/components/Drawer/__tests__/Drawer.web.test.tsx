@@ -7,8 +7,15 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
+import { Link } from '~components/Link';
 import { Text } from '~components/Typography';
-import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
+import {
+  AnnouncementIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  DownloadIcon,
+} from '~components/Icons';
 
 const BasicDrawer = (props: Partial<DrawerProps>): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -167,6 +174,190 @@ describe('Drawer', () => {
     expect(getByText('Custom Header')).toBeInTheDocument();
     expect(getByText('Custom Content')).toBeInTheDocument();
     expect(getByRole('dialog')).toMatchSnapshot();
+  });
+
+  describe('trailing actions', () => {
+    it('renders two icon-only trailing actions before the close button', async () => {
+      const user = userEvents.setup();
+      const onPrevious = jest.fn();
+      const onNext = jest.fn();
+      const { getByRole, getAllByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader
+            title="Nisha Batra"
+            trailing={[
+              <IconButton
+                key="previous"
+                icon={ChevronLeftIcon}
+                accessibilityLabel="Previous"
+                onClick={onPrevious}
+              />,
+              <Button
+                key="next"
+                icon={ChevronRightIcon}
+                accessibilityLabel="Next"
+                onClick={onNext}
+              />,
+            ]}
+          />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      await waitFor(() => expect(getByRole('button', { name: 'Previous' })).toBeInTheDocument());
+      const headerButtons = getAllByRole('button').map((button) =>
+        button.getAttribute('aria-label'),
+      );
+      expect(headerButtons.slice(-3)).toEqual(['Previous', 'Next', 'Close']);
+
+      await user.click(getByRole('button', { name: 'Previous' }));
+      await user.click(getByRole('button', { name: 'Next' }));
+      expect(onPrevious).toHaveBeenCalledTimes(1);
+      expect(onNext).toHaveBeenCalledTimes(1);
+    });
+
+    it('throws when more than two trailing elements are passed', () => {
+      const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+      expect(() =>
+        renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}}>
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="One"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="2"
+                  icon={ChevronRightIcon}
+                  accessibilityLabel="Two"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="3"
+                  icon={DownloadIcon}
+                  accessibilityLabel="Three"
+                  onClick={() => {}}
+                />,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        ),
+      ).toThrow('[Blade: Header]: Header accepts at most 2 elements as trailing, but received 3');
+      mockConsoleError.mockRestore();
+    });
+
+    it('throws when two trailing elements are not both icon-only', () => {
+      const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+      expect(() =>
+        renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}}>
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="One"
+                  onClick={() => {}}
+                />,
+                <Link key="2" href="#">
+                  View
+                </Link>,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        ),
+      ).toThrow(
+        '[Blade: Header]: When passing two elements as trailing, both must be icon-only actions',
+      );
+      mockConsoleError.mockRestore();
+    });
+  });
+
+  describe('trailing actions in production', () => {
+    it('renders every trailing element instead of silently dropping extras', async () => {
+      const globalWithDev = global as typeof global & { __DEV__: boolean };
+      const originalDev = globalWithDev.__DEV__;
+      globalWithDev.__DEV__ = false;
+      try {
+        const { findByRole, getByRole } = renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="One"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="2"
+                  icon={ChevronRightIcon}
+                  accessibilityLabel="Two"
+                  onClick={() => {}}
+                />,
+                <IconButton
+                  key="3"
+                  icon={DownloadIcon}
+                  accessibilityLabel="Three"
+                  onClick={() => {}}
+                />,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        );
+        expect(await findByRole('button', { name: 'Three' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'One' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Two' })).toBeInTheDocument();
+      } finally {
+        globalWithDev.__DEV__ = originalDev;
+      }
+    });
+  });
+
+  describe('trailing actions accessibility', () => {
+    it('throws when an icon-only Button in a pair has no accessibilityLabel', () => {
+      const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+      expect(() =>
+        renderWithTheme(
+          <Drawer isOpen={true} onDismiss={() => {}}>
+            <DrawerHeader
+              title="Drawer"
+              trailing={[
+                <IconButton
+                  key="1"
+                  icon={ChevronLeftIcon}
+                  accessibilityLabel="Previous"
+                  onClick={() => {}}
+                />,
+                <Button key="2" icon={ChevronRightIcon} onClick={() => {}} />,
+              ]}
+            />
+            <DrawerBody>
+              <Text>Test Content</Text>
+            </DrawerBody>
+          </Drawer>,
+        ),
+      ).toThrow(
+        '[Blade: Header]: When passing two elements as trailing, an icon-only Button must have an `accessibilityLabel`',
+      );
+      mockConsoleError.mockRestore();
+    });
   });
 
   describe('stacked drawers', () => {
