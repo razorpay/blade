@@ -689,11 +689,6 @@ class RayMount {
     return wanted.filter((id) => !this.failed.has(id));
   }
 
-  /**
-   * A film that isn't playing, leaving, the answer's now or next, or his idle's (he goes back to it after typing, a flip or an
-   * answer) is let go: its canvases freed, loaded again if it's needed (its chunk is cached). An idle he's moved on from goes
-   * too (time-of-day's clock, a new `idle`; the PR review).
-   */
   /** The films he needs now: the answer's now and next, the one that has him, and his idle's. */
   private wantedFilms(): Set<string> {
     const h = this.holder;
@@ -707,6 +702,11 @@ class RayMount {
     return keep;
   }
 
+  /**
+   * A film that isn't playing, leaving, the answer's now or next, or his idle's (he goes back to it after typing, a flip or an
+   * answer) is let go: its canvases freed, loaded again if it's needed (its chunk is cached). An idle he's moved on from goes
+   * too (time-of-day's clock, a new `idle`; the PR review).
+   */
   private releaseFilms(): void {
     const keep = this.wantedFilms();
     Object.values(this.films).forEach((film) => {

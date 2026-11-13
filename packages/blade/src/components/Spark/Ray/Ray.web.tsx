@@ -122,8 +122,11 @@ const _Ray = (
         if (isReturning) mount.update(optionsRef.current);
         mountRef.current = mount;
       })
-      .catch(() => {
-        // not loaded (offline, blocked): his box stays, empty
+      .catch((error: unknown) => {
+        // not loaded (offline, blocked, a chunk that failed) or it failed to start: said in development, and his box stays, empty.
+        // Not tried again: browsers keep a failed import() for the page's life (checked in Chromium, Firefox and WebKit: no second
+        // request), so only a reload loads it (the PR review asked for a retry)
+        if (!isUnmounted && __DEV__) console.error('[Ray] his engine failed to load', error);
       });
     return () => {
       isUnmounted = true;
