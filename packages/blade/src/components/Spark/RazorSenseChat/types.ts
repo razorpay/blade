@@ -1,13 +1,15 @@
 import type React from 'react';
 import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
+import type { StringChildrenType } from '~utils/types';
 
 type RazorSenseThinkingProps = {
   /**
    * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion,
-   * and paused with `isPaused`).
+   * and paused with `isPaused`). Text only (the shimmer paints the text itself), as Button's children: `Searching {count}
+   * settlements…` is fine.
    * @default 'Thinking…'
    */
-  children?: React.ReactNode;
+  children?: StringChildrenType;
   /**
    * Several labels, rolling from one to the next (as `RollingText`'s `texts`, and `ChatMessage`'s `loadingText` as an array).
    * Given, they're shown instead of `children`.

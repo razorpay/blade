@@ -12,6 +12,7 @@ import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { RollingText } from '~components/RollingText';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
+import { getStringFromReactText } from '~utils/getStringChildren';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -145,7 +146,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       onError,
     });
     const still = useStill(!chat && isStill, mode, loadThinkingStill);
-    const label = (text: React.ReactNode): React.ReactElement => (
+    const label = (text: string | undefined): React.ReactElement => (
       <ThinkingLabel
         base={colors.base}
         shine={colors.shine}
@@ -185,7 +186,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
           {texts && texts.length > 1 ? (
             <RollingText texts={texts}>{label}</RollingText>
           ) : (
-            label(texts?.[0] ?? children)
+            label(texts?.[0] ?? getStringFromReactText(children))
           )}
         </span>
       </div>
