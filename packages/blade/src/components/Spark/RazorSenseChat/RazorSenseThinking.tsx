@@ -37,7 +37,8 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
   ({ theme, base, shine, isPaused }) => {
     return css`
       display: inline-block;
-      white-space: nowrap;
+      /* a long loading text wraps in a narrow message, as ChatMessage's own did */
+      white-space: normal;
       font-family: ${theme.typography.fonts.family.text};
       font-weight: ${theme.typography.fonts.weight.regular};
       font-size: ${makeTypographySize(theme.typography.fonts.size[200])};

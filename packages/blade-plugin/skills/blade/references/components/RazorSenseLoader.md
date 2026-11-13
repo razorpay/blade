@@ -68,7 +68,8 @@ type RazorSenseLoaderProps = {
    */
   height?: string | number;
   /**
-   * Called once the animation is drawing (its engine loaded and running on the GPU).
+   * Called once the splash's animation starts drawing (its engine loaded and running on the GPU). Not the page being ready:
+   * that's `isLoading` turning false, and the splash being gone is `onComplete`.
    */
   onLoad?: () => void;
   /**
