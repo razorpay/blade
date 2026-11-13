@@ -1790,6 +1790,21 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'Ray',
+    description:
+      "Ray is Razorpay's AI mascot: he sits on the chat input, idles, watches what's typed, and plays an answer's states while it's being worked on.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/Ray',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };
