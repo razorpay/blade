@@ -286,8 +286,11 @@ class RayMount {
       this.observer.observe(root);
     }
     this.start();
-    // what he'll need first, loading now: the answer's films for a Ray that starts in one, else this load's idle film
-    if (options.state !== 'idle') this.preloadAnswer();
+    // what he'll need first, loading now: the answer's films for a Ray that starts in one, else this load's idle film. With reduced
+    // motion he never plays a film (one still frame), so none is loaded (the PR review)
+    if (this.reducedMotion) {
+      // (nothing to load)
+    } else if (options.state !== 'idle') this.preloadAnswer();
     else {
       const first = IDLE_FILMS[firstIdle];
       if (first) this.film(first);
@@ -311,7 +314,7 @@ class RayMount {
     )
       this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
     this.options = { ...this.options, ...options };
-    if (this.options.state !== 'idle') this.preloadAnswer();
+    if (this.options.state !== 'idle' && !this.reducedMotion) this.preloadAnswer();
     this.releaseFilms();
     if (sizeChanged) this.layout();
     if (schemeChanged) {
@@ -600,7 +603,13 @@ class RayMount {
       this.loading[id] = (FILMS as Record<string, () => Promise<FilmModule>>)
         [id]()
         .then((module) => {
-          if (!this.disposed) this.mountFilm(id, module);
+          // loaded after it stopped being wanted (the answer moved on, his idle changed, it was given up on): not mounted, and
+          // asked for again it loads again (from the cache) (the PR review: a late load mounted a film nothing would free)
+          if (this.disposed || this.failed.has(id) || !this.wantedFilms().has(id)) {
+            Reflect.deleteProperty(this.loading, id);
+            return;
+          }
+          this.mountFilm(id, module);
         })
         .catch((error: unknown) => {
           if (__DEV__) console.error(`[Ray] the ${id} film failed to load`, error);
@@ -684,7 +693,8 @@ class RayMount {
    * answer) is let go: its canvases freed, loaded again if it's needed (its chunk is cached). An idle he's moved on from goes
    * too (time-of-day's clock, a new `idle`; the PR review).
    */
-  private releaseFilms(): void {
+  /** The films he needs now: the answer's now and next, the one that has him, and his idle's. */
+  private wantedFilms(): Set<string> {
     const h = this.holder;
     const keep = new Set(this.wantedAnswerFilms());
     if (h.by === 'film') keep.add(h.id);
@@ -693,6 +703,11 @@ class RayMount {
     const current = idle === 'time-of-day' ? this.clockIdle?.idle : idleOfThisLoad(idle);
     const idleFilm = current ? IDLE_FILMS[current] : undefined;
     if (idleFilm) keep.add(idleFilm);
+    return keep;
+  }
+
+  private releaseFilms(): void {
+    const keep = this.wantedFilms();
     Object.values(this.films).forEach((film) => {
       if (keep.has(film.id) || film.going) return;
       film.host.dispose();
