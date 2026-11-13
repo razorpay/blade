@@ -35,6 +35,8 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
+    focusIndicator: props.focusIndicator,
+    restBorderColor: props.restBorderColor,
     size: props.size,
     borderRadius: props.borderRadius,
   }),
@@ -104,6 +106,9 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   });
 
   let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  if (rest.restBorderColor && !rest.isTableInputCell && baseInputState === 'default') {
+    borderColor = getIn(theme.colors, rest.restBorderColor);
+  }
   const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
 
   if (rest.validationState === 'error') {
@@ -162,7 +167,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     <FocusRingWrapper
       isFocused={isFocused}
       borderRadius={inputBorderRadius}
-      disabled={rest.isTableInputCell}
+      disabled={rest.isTableInputCell || rest.focusIndicator === 'border'}
     >
       <StyledBaseInputWrapper
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

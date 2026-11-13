@@ -1,15 +1,27 @@
 import React from 'react';
-import type { ChatInputProps } from './types';
+import type { ChatInputProps, ChatInputStatus } from './types';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import { generateFileId } from '~components/FileUpload/generateFileId';
 import { useControllableState } from '~utils/useControllable';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
+import { useChatInputSubmit, useChatInputRetry } from './useChatInputSubmit';
+import { useChatInputStatus } from './useChatInputStatus';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
-  'value' | 'defaultValue' | 'onChange' | 'onSubmit' | 'fileList' | 'onFileRemove' | 'onFileDismiss'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'onSubmit'
+  | 'clearOnSubmit'
+  | 'fileList'
+  | 'onFileRemove'
+  | 'onFileDismiss'
+  | 'status'
+  | 'isGenerating'
+  | 'onStop'
 >;
 
 const useChatInput = (
@@ -18,9 +30,13 @@ const useChatInput = (
     defaultValue,
     onChange,
     onSubmit,
+    clearOnSubmit = false,
     fileList: controlledFileList,
     onFileRemove,
     onFileDismiss,
+    status,
+    isGenerating = false,
+    onStop,
   }: UseChatInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): {
@@ -28,9 +44,13 @@ const useChatInput = (
   textValue: string;
   files: BladeFileList;
   hasFiles: boolean;
+  hasContent: boolean;
   isSubmitDisabled: boolean;
+  resolvedStatus: ChatInputStatus;
   handleTextChange: (args: { name?: string; value?: string }) => void;
   handleSubmit: () => void;
+  handleRetry: () => void;
+  canRetry: boolean;
   handleFileRemove: (file: BladeFile) => void;
   handleFileDismiss: (file: BladeFile) => void;
 } => {
@@ -57,7 +77,9 @@ const useChatInput = (
   );
 
   const hasFiles = files.length > 0;
+  const hasContent = textValue.trim().length > 0 || hasFiles;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
+  const resolvedStatus = useChatInputStatus({ status, isGenerating, onStop, onSubmit });
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
@@ -66,10 +88,31 @@ const useChatInput = (
     [setTextValue],
   );
 
+  // Native never calls onFileChange here: on native it means "open your file picker"
+  const { submit, lastSent } = useChatInputSubmit({
+    onSubmit,
+    clearOnSubmit,
+    textValue,
+    files,
+    setTextValue,
+    setFiles,
+    isTextControlled: controlledValue !== undefined,
+    isFilesControlled: controlledFileList !== undefined,
+  });
+
   const handleSubmit = React.useCallback(() => {
     if (isSubmitDisabled) return;
-    onSubmit?.({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, onSubmit, textValue, files]);
+    submit({ value: textValue, fileList: files });
+  }, [isSubmitDisabled, submit, textValue, files]);
+
+  const { handleRetry, canRetry } = useChatInputRetry({
+    submit,
+    lastSent,
+    onSubmit,
+    textValue,
+    files,
+    isSubmitDisabled,
+  });
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
@@ -94,9 +137,13 @@ const useChatInput = (
     textValue,
     files,
     hasFiles,
+    hasContent,
     isSubmitDisabled,
+    resolvedStatus,
     handleTextChange,
     handleSubmit,
+    handleRetry,
+    canRetry,
     handleFileRemove,
     handleFileDismiss,
   };
