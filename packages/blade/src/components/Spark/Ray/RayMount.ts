@@ -12,7 +12,7 @@
  */
 import { FILMS, TUNES, RayCore } from './engine';
 import { FilmHost, freeCanvas } from './FilmHost';
-import { RayPlayer } from './RayPlayer';
+import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
@@ -45,9 +45,8 @@ const FILM_SHOW_TICKS = 3; // a film shows once it has run this many frames sinc
 const UNDER_MS = 34; // his own canvas stays this long under a film that has just shown
 const EXIT_WAIT_MS = 5000; // a film that never says it's done is let go
 const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn't load, its script threw) is given up on: he rests, and it's tried again
-const REST_BLEND_MS = 320;
+const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
-const WATCH_SETTLED_MS = 970; // his move out to the caret is over
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
 const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
@@ -507,7 +506,7 @@ class RayMount {
           return;
         }
         if (h.act === 'back') {
-          if (sinceMs >= 240) this.holder = { by: 'player', act: 'rest', since: now };
+          if (sinceMs >= WATCH_BACK_MS) this.holder = { by: 'player', act: 'rest', since: now }; // his move back is over
           return;
         }
         const film = IDLE_FILMS[want.idle];

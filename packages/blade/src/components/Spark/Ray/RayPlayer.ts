@@ -648,5 +648,8 @@ class RayPlayer {
   }
 }
 
-export { RayPlayer };
+/** When his move out to the caret is over (back a bit, held, then out to it), from the moment he starts watching. */
+const WATCH_SETTLED_MS = LEAN_BACK_MS + LEAN_HOLD_MS + WATCH_OUT_MS;
+
+export { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS };
 export type { Look };
