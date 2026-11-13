@@ -5,8 +5,9 @@ import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
  * The comp has three groups: two pages of the thinking comp (main, B) and the typing strip (T); each page has its own clock.
  *   thinking   a page loops 0 -> A; each pass's last `loopXf` s dissolves (smoothstep, added) into the other page from 0
  *   answer     the page hurries to A (x `catchup`), then plays on at the surge's speed: the drop, the surge to the chat input
- *   idle       held at the comp's end as the strip behind the chat input (its path drifting on its own clock), and typing cross-fades it
- *              into the typing strip by the typing strength (light: its own snappier tune, dark: the landing's)
+ *   idle       held at the comp's end as the strip behind the chat input (its path drifting on its own clock); typing lays the typing
+ *              strip over it by the typing strength, as the landing does (flow 10): livelier, the path held while it's up, and every
+ *              shape grown round the bottom under the strip's middle (the size boost, `grow`)
  *   again      a new question plays the surge backwards: the bottom wave rises from the chat input back up to the thinking slot,
  *              then thinks on (mid-surge, the page just turns round; the answer mid-rise turns it back down)
  * Pages sit where flow 9's chat has them (its origins()): thinking on its slot near the top, idle on the chat bar's middle
@@ -27,9 +28,14 @@ type Tune = {
   drift?: number;
   pathBack?: number;
   up?: number;
+  liven?: number;
+  pathPause?: number;
+  grow?: number;
 };
 
 type ChatMotion = {
+  /** what typing's size boost grows round (comp px from the comp's middle): the comp's bottom edge, under the strip's middle */
+  growAt?: [number, number];
   think: { speed: number };
   surge: { speed: number; catchup: number };
   one: { loopXf: number };
@@ -110,7 +116,9 @@ const page = (g: string): Page => ({
   xy: null,
 });
 
-const getChatSetup = (doc: FreshDoc): { times: ChatTimes; motion: ChatMotion } | null => {
+type ChatSetup = { times: ChatTimes; motion: ChatMotion };
+
+const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
   const times = doc.ui?.dsChat as ChatTimes | undefined;
   const motion = doc.ui?.freshChat as ChatMotion | undefined;
   return times && motion ? { times, motion } : null;
@@ -124,6 +132,9 @@ class ChatDriver {
   private readonly C: ChatTimes;
   private readonly M: ChatMotion;
   private readonly isDark: boolean;
+  private readonly growAt: [number, number];
+  /** typing's size boost as drawn (1: none); eases back once the chat leaves idle */
+  private gw = 1;
   private readonly P2: [Page, Page] = [page('main'), page('B')];
   private readonly RT: Page = page('T');
   private O: { think: [number, number]; bottom: [number, number] } = {
@@ -155,9 +166,10 @@ class ChatDriver {
   private first = 0;
   private rate = 0;
 
-  constructor(setup: { times: ChatTimes; motion: ChatMotion }, isDark: boolean) {
+  constructor(setup: ChatSetup, isDark: boolean) {
     this.C = setup.times;
     this.M = setup.motion;
+    this.growAt = setup.motion.growAt ?? [0, 0];
     this.isDark = isDark;
     this.RT.t = this.C.tyDur;
   }
@@ -329,6 +341,8 @@ class ChatDriver {
       }
     }
     this.idle(dt, s, dur);
+    const gTo = this.state === 'idle' ? 1 + (this.tune().grow ?? 0) * this.a : 1;
+    this.gw = this.state === 'idle' ? gTo : this.gw + (gTo - this.gw) * (1 - Math.exp(-dt / 0.3));
     for (const g of [...this.P2, this.RT]) {
       if (g.op !== g.to) {
         const st = g.spd * dt;
@@ -338,7 +352,7 @@ class ChatDriver {
     if (shouldDraw) this.draw(player);
   }
 
-  /** idle: the strip held at the comp's end; typing cross-fades it into the typing surge */
+  /** idle: the strip held at the comp's end; typing lays the typing surge over it (flow 10: the landing's way) */
   private idle(dt: number, s: number, dur: number): void {
     const M = this.M;
     if (this.V !== this.Vto) {
@@ -381,15 +395,18 @@ class ChatDriver {
     }
     this.a = Math.max(0, Math.min(1, this.a));
     if (this.a <= 0 && this.v < 0) this.v = 0;
+    // the clocks: livelier with the strength; the path held while the pulse is up, back up to speed over `pathBack` s (flow 10,
+    // as the landing). Its path drifts on otherwise (the comps' calm tune held it at one spot: Blade's wave keeps moving)
     const drift = Math.max(0.05, L.drift ?? 1);
-    this.ralive += dt * drift;
+    this.ralive += dt * drift * (1 + ((L.liven ?? 1) - 1) * this.a);
+    const pt = 1 - (L.pathPause ?? 0) * smooth01(this.a / Math.max(0.05, L.level));
     this.pspd +=
-      (1 - this.pspd) *
-      (1 - Math.exp(-dt / (this.pspd > 1 ? 0.25 : Math.max(0.05, L.pathBack ?? 2.2) / 3)));
-    // its path drifts on, as the landing's band does (the comps' calm tune held it at one spot: Blade's wave keeps moving)
+      (pt - this.pspd) *
+      (1 - Math.exp(-dt / (pt < this.pspd ? 0.25 : Math.max(0.05, L.pathBack ?? 2.2) / 3)));
     this.path += dt * drift * this.pspd;
+    // the strip stays; the typing strip over it at the strength (flow 10: as the landing's two, no longer a cross-fade)
     const pairs: [Page | null, number][] = [
-      [this.self, this.V * (1 - this.a)],
+      [this.self, this.V],
       [this.RT, this.V * this.a],
     ];
     for (const [g, op] of pairs) {
@@ -419,7 +436,8 @@ class ChatDriver {
       }
       player.group(g.g, {
         op: g.op,
-        blend: 'add',
+        // (the typing strip lies over the idle one; the pages add up, as flow 9 lays its pages)
+        blend: g === this.RT ? 'normal' : 'add',
         dx: g.xy ? g.xy[0] : 0,
         dy: g.xy ? g.xy[1] : 0,
       });
@@ -432,6 +450,9 @@ class ChatDriver {
     player.comp('b_big', { t: B.t, al: B.al, op: sw(B), pt: B.pt, pu: B.pu });
     player.comp('b_c3', { t: B.t, al: B.al, pt: B.pt, pu: B.pu });
     player.comp(C.type, { t: this.RT.t, al: this.RT.al, pt: this.RT.pt, pu: this.RT.pu });
+    // typing's size boost (flow 10): every shape grown round the bottom under the strip's middle
+    const gw = Math.round(this.gw * 1e4) / 1e4;
+    player.shapes(gw, gw, this.growAt[0], this.growAt[1], 1);
     player.seek(A.t, A.al);
   }
 
@@ -467,8 +488,8 @@ class ChatDriver {
   }
 
   private tune(): Tune {
-    // light: its own, snappier strength (rtl); dark: the landing's (ltyp)
-    return this.isDark ? this.M.ltyp : { ...this.M.ltyp, ...this.M.rtl };
+    // the landing's strength in both modes (flow 10; light had its own snappier one, rtl, whose `up` it still keeps)
+    return this.M.ltyp;
   }
 
   /** the page least seen (the other, if showing, fades out where it is; so does idle) */
@@ -510,4 +531,4 @@ class ChatDriver {
 
 export { ChatDriver, getChatSetup, flow9Anchors };
 export type { ChatAnchors };
-export type { ChatMotion, ChatTimes };
+export type { ChatMotion, ChatSetup, ChatTimes };
