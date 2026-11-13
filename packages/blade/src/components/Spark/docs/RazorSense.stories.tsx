@@ -108,7 +108,7 @@ export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
     </Box>
   );
 };
-DefaultV2.storyName = 'Default 2.0';
+DefaultV2.storyName = 'Default 2.0 (Loader)';
 DefaultV2.parameters = { controls: { disable: true } };
 
 /**
@@ -303,21 +303,89 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
 };
 
 /**
- * RazorSense 2.0 thinking, `RazorSenseThinking`: flow 9's blue thinking label with its shimmer, and the glow looping round it,
- * behind it and past its edges. It takes Zoomed's place in 2.0 (Zoomed: the glow behind a loading `ChatMessage`); a loading
- * `ChatMessage` doesn't drive it yet, so here it's RazorSense 2.0's own label.
+ * Zoomed's 2.0 twin: the same loading `ChatMessage` (`isLoading` with its `loadingText`), inside a `RazorSenseChat`. Nothing
+ * else changes on the message: inside the chat its loading text shows as RazorSense 2.0's thinking label and the chat thinks
+ * behind it. "Finish loading" sets `isLoading` to false: the answer shows and the thinking surges down into the
+ * `RazorSenseBottomWave` under the chat input. "Load again" brings it back up.
  */
-export const Thinking: StoryFn<typeof RazorSenseThinking> = () => {
+export const ZoomedV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [isLoading, setIsLoading] = useState(true);
   return (
-    <Box position="relative" height="520px" width="100%" overflow="hidden">
-      <Box position="absolute" top="160px" left="240px">
-        <RazorSenseThinking>Searching your settlements…</RazorSenseThinking>
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish loading
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={isLoading}
+          onClick={() => setIsLoading(true)}
+        >
+          Load again
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isLoading ? 'isLoading: true' : 'isLoading: false'}
+        </Text>
+      </Box>
+      <Box flex="1" minHeight="0px">
+        <RazorSenseChat>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            maxWidth="800px"
+            marginX="auto"
+            paddingX="spacing.6"
+          >
+            <Box flex="1" paddingY="spacing.9">
+              <ChatMessage
+                senderType="other"
+                leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+                isLoading={isLoading}
+                loadingText={['Thinking...', 'Processing your request...']}
+              >
+                <Text color="surface.text.gray.normal" size="medium">
+                  Your KYC has been verified successfully. All documents are in order and your
+                  identity has been confirmed.
+                </Text>
+              </ChatMessage>
+            </Box>
+            <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+              <RazorSenseBottomWave>
+                <ChatInput placeholder="Ask anything..." />
+              </RazorSenseBottomWave>
+              <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                Ray is AI and can make mistakes. Please check important information.
+              </Text>
+            </Box>
+          </Box>
+        </RazorSenseChat>
       </Box>
     </Box>
   );
 };
-Thinking.storyName = 'Thinking';
-Thinking.parameters = { controls: { disable: true } };
+ZoomedV2.storyName = 'Zoomed 2.0';
+ZoomedV2.parameters = { controls: { disable: true } };
 
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (

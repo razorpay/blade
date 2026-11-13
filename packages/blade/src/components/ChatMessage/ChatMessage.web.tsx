@@ -4,6 +4,7 @@ import { DefaultMessageBubble } from './DefaultMessageBubble.web';
 import type { ChatMessageProps } from './types';
 import { ThumbnailPreview } from './ThumbnailPreview.web';
 import { RollingText } from '~components/RollingText';
+import { RazorSenseChatContext } from '~components/Spark/RazorSenseChat/chatContext';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -53,6 +54,13 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   // Keep deprecated prop "used" to avoid lint errors while preserving compatibility.
   void messageType;
 
+  // Inside a RazorSenseChat, an assistant message that's loading shows its loading text as RazorSense 2.0's thinking label,
+  // and the chat thinks behind it; once it's done loading, the thinking surges down to the chat input. (The chat hands the
+  // label down, so ChatMessage doesn't carry RazorSense's code.)
+  const razorSenseChat = React.useContext(RazorSenseChatContext);
+  const RazorSenseThinking =
+    razorSenseChat && senderType !== 'self' ? razorSenseChat.Thinking : null;
+
   // since we can pass both string and Card component as children, we need to check if children is string or Card component
   // if children is string or array of string, we need to wrap it in Text component otherwise we will pass children as it is
   const shouldWrapInText =
@@ -63,25 +71,28 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   const loadingContent =
     isLoading && Array.isArray(loadingText) ? <RollingText texts={loadingText} /> : loadingText;
 
-  const finalChildren = shouldWrapInText ? (
-    <Text
-      color={
-        isLoading
-          ? Array.isArray(loadingText)
-            ? 'feedback.text.positive.intense'
-            : 'surface.text.gray.muted'
-          : 'surface.text.gray.normal'
-      }
-      weight="regular"
-      variant="body"
-      size="medium"
-      wordBreak={wordBreak}
-    >
-      {isLoading ? loadingContent : getStringFromReactText(children as string | string[])}
-    </Text>
-  ) : (
-    (children as React.ReactElement)
-  );
+  const finalChildren =
+    isLoading && RazorSenseThinking ? (
+      <RazorSenseThinking>{loadingText}</RazorSenseThinking>
+    ) : shouldWrapInText ? (
+      <Text
+        color={
+          isLoading
+            ? Array.isArray(loadingText)
+              ? 'feedback.text.positive.intense'
+              : 'surface.text.gray.muted'
+            : 'surface.text.gray.normal'
+        }
+        weight="regular"
+        variant="body"
+        size="medium"
+        wordBreak={wordBreak}
+      >
+        {isLoading ? loadingContent : getStringFromReactText(children as string | string[])}
+      </Text>
+    ) : (
+      (children as React.ReactElement)
+    );
 
   const messageBubble =
     senderType === 'self' ? (

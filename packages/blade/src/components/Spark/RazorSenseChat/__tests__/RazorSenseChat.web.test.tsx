@@ -3,6 +3,7 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { RazorSenseChat, RazorSenseThinking, RazorSenseBottomWave } from '../index';
 import { RazorSenseChatBackground } from '../../RazorSenseChatBackground';
 import { RazorSenseLoader } from '../../RazorSenseLoader';
+import { ChatMessage } from '~components/ChatMessage';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 // jsdom has no WebGL2: every component goes to its still and says so through onError, which is what these check, with the root
@@ -101,6 +102,59 @@ describe('RazorSense 2.0 components', () => {
     expect(opacities()).toEqual(['0', '1']);
     fireEvent.click(getByRole('button', { name: 'Toggle' }));
     expect(opacities()).toEqual(['1', '0']);
+  });
+
+  it('think while a ChatMessage inside is loading, showing its loading text as the thinking label', async () => {
+    const Chat = (): React.ReactElement => {
+      const [isLoading, setIsLoading] = React.useState(true);
+      return (
+        <>
+          <button onClick={() => setIsLoading(!isLoading)}>Toggle</button>
+          <RazorSenseChat>
+            <ChatMessage senderType="self">How is my business doing?</ChatMessage>
+            <ChatMessage
+              senderType="other"
+              isLoading={isLoading}
+              loadingText={['Thinking...', 'Processing your request...']}
+            >
+              Your payments are up 12%.
+            </ChatMessage>
+            <RazorSenseBottomWave>
+              <textarea />
+            </RazorSenseBottomWave>
+          </RazorSenseChat>
+        </>
+      );
+    };
+    const { container, getByRole, getByText, queryByText } = renderWithTheme(<Chat />);
+    const stills = (): HTMLImageElement[] =>
+      Array.from(container.querySelectorAll('[data-blade-component="razorsense-chat"] img'));
+    await waitFor(() => expect(stills()).toHaveLength(2));
+    const opacities = (): string[] => stills().map((still) => still.style.opacity);
+    // loading: its loading text is the thinking label, and the chat thinks
+    expect(
+      getByText('Thinking...').closest('[data-blade-component="razorsense-thinking"]'),
+    ).toBeInTheDocument();
+    expect(opacities()).toEqual(['1', '0']);
+    // done: the answer shows and the thinking has gone down to the bottom wave
+    fireEvent.click(getByRole('button', { name: 'Toggle' }));
+    expect(getByText('Your payments are up 12%.')).toBeInTheDocument();
+    expect(queryByText('Thinking...')).not.toBeInTheDocument();
+    expect(opacities()).toEqual(['0', '1']);
+    // the user's own message never thinks, loading or not
+    expect(container.querySelectorAll('[data-blade-component="razorsense-thinking"]')).toHaveLength(
+      0,
+    );
+  });
+
+  it('leave a loading ChatMessage outside a RazorSenseChat as it is', () => {
+    const { container, getByText } = renderWithTheme(
+      <ChatMessage senderType="other" isLoading loadingText="Thinking...">
+        Done
+      </ChatMessage>,
+    );
+    expect(getByText('Thinking...')).toBeInTheDocument();
+    expect(container.querySelector('[data-blade-component="razorsense-thinking"]')).toBeNull();
   });
 
   it('warn when a part inside RazorSenseChat is given props the chat takes over', () => {

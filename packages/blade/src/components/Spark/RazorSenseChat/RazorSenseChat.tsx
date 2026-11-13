@@ -13,6 +13,7 @@ import {
   thinkingFrame,
   thinkingSlot,
 } from './placement';
+import { RazorSenseThinking } from './RazorSenseThinking';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { useStill } from '../RazorSenseEngine/useStill';
@@ -150,11 +151,10 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
       if (part === 'thinking') setIsThinking(false);
     };
   }, []);
-  const context = useMemo<RazorSenseChatContextValue>(() => ({ register, keystroke, isPaused }), [
-    register,
-    keystroke,
-    isPaused,
-  ]);
+  const context = useMemo<RazorSenseChatContextValue>(
+    () => ({ register, keystroke, isPaused, Thinking: RazorSenseThinking }),
+    [register, keystroke, isPaused],
+  );
 
   // without its parts it lines up with flow 9's own chat: say so, it's rarely what's meant (the parts register first: their
   // effects run before this one)

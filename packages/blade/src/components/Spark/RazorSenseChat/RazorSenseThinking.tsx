@@ -10,6 +10,7 @@ import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
+import { RollingText } from '~components/RollingText';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -94,6 +95,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
     const { colorScheme } = useTheme();
     const mode = colorScheme === 'dark' ? 'dark' : 'light';
     const colors = LABEL_COLORS[mode];
+    // the label's box: where thinking is drawn from (it holds the rolling labels, so it stays put as they change)
     const labelRef = useRef<HTMLSpanElement>(null);
     const stageRef = useRef<HTMLDivElement>(null);
     const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseThinking', 'scale');
@@ -141,6 +143,16 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       onError,
     });
     const still = useStill(!chat && isStill, mode, loadThinkingStill);
+    const label = (text: string): React.ReactElement => (
+      <ThinkingLabel
+        base={colors.base}
+        shine={colors.shine}
+        // (in a chat, the chat's pause: its own doesn't apply there)
+        isPaused={chat ? chat.isPaused : isPaused}
+      >
+        {text}
+      </ThinkingLabel>
+    );
 
     return (
       <div
@@ -167,15 +179,13 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
             {still ? <img src={still} alt="" style={stillStyle} /> : null}
           </div>
         )}
-        <ThinkingLabel
-          ref={labelRef}
-          base={colors.base}
-          shine={colors.shine}
-          // (in a chat, the chat's pause: its own doesn't apply there)
-          isPaused={chat ? chat.isPaused : isPaused}
-        >
-          {children}
-        </ThinkingLabel>
+        <span ref={labelRef} style={{ display: 'inline-block' }}>
+          {Array.isArray(children) && children.length > 1 ? (
+            <RollingText texts={children}>{label}</RollingText>
+          ) : (
+            label(Array.isArray(children) ? children[0] ?? '' : children)
+          )}
+        </span>
       </div>
     );
   },
