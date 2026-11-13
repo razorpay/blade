@@ -68,8 +68,26 @@ describe('idle="rotate"', () => {
     return mod!;
   };
 
-  beforeEach(() => window.localStorage.clear());
-  afterEach(() => jest.restoreAllMocks());
+  // the page's storage, in memory: the same on every Node and jsdom (CI's Node 22 had no window.localStorage)
+  const saved = new Map<string, string>();
+  const storage = {
+    getItem: (key: string): string | null => saved.get(key) ?? null,
+    setItem: (key: string, value: string): void => {
+      saved.set(key, String(value));
+    },
+    removeItem: (key: string): void => {
+      saved.delete(key);
+    },
+    clear: (): void => saved.clear(),
+  };
+  beforeEach(() => {
+    saved.clear();
+    Object.defineProperty(window, 'localStorage', { value: storage, configurable: true });
+  });
+  afterEach(() => {
+    jest.restoreAllMocks();
+    Reflect.deleteProperty(window, 'localStorage');
+  });
 
   it('should take the next idle of the cycle on each page load, and come round again', () => {
     const picks = Array.from({ length: 6 }, () => load().idleOfThisLoad('rotate'));
@@ -81,11 +99,11 @@ describe('idle="rotate"', () => {
     const first = page.idleOfThisLoad('rotate');
     expect(page.idleOfThisLoad('rotate')).toBe(first);
     expect(page.idleOfThisLoad('rotate')).toBe(first);
-    expect(window.localStorage.getItem('blade-ray-idle')).toBe('1');
+    expect(saved.get('blade-ray-idle')).toBe('1');
   });
 
   it('should start anywhere in the cycle when storage is refused', () => {
-    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+    jest.spyOn(storage, 'getItem').mockImplementation(() => {
       throw new Error('denied');
     });
     jest.spyOn(Math, 'random').mockReturnValue(0.5);
@@ -96,6 +114,6 @@ describe('idle="rotate"', () => {
     const page = load();
     expect(page.idleOfThisLoad('coffee')).toBe('coffee');
     expect(page.idleOfThisLoad('rest')).toBe('rest');
-    expect(window.localStorage.getItem('blade-ray-idle')).toBeNull();
+    expect(saved.has('blade-ray-idle')).toBe(false);
   });
 });
