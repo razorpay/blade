@@ -304,7 +304,8 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
 
 /**
  * RazorSense 2.0 thinking, `RazorSenseThinking`: flow 9's blue thinking label with its shimmer, and the glow looping round it,
- * behind it and past its edges. The 2.0 twin of Zoomed above (Zoomed's glow behind a loading `ChatMessage`).
+ * behind it and past its edges. It takes Zoomed's place in 2.0 (Zoomed: the glow behind a loading `ChatMessage`); a loading
+ * `ChatMessage` doesn't drive it yet, so here it's RazorSense 2.0's own label.
  */
 export const Thinking: StoryFn<typeof RazorSenseThinking> = () => {
   return (

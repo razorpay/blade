@@ -11,7 +11,7 @@ import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
-import { makeSize } from '~utils/makeSize';
+import { makeTypographySize } from '~utils/makeTypographySize';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 
@@ -39,8 +39,9 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
       white-space: nowrap;
       font-family: ${theme.typography.fonts.family.text};
       font-weight: ${theme.typography.fonts.weight.regular};
-      font-size: ${makeSize(theme.typography.fonts.size[200])};
-      line-height: ${makeSize(22)};
+      font-size: ${makeTypographySize(theme.typography.fonts.size[200])};
+      // (flow 9's 22 px: no line-height token has it, so it's sized as the tokens are, in rem)
+      line-height: ${makeTypographySize(22)};
       letter-spacing: ${makeLetterSpacing(
         theme.typography.letterSpacings[50],
         theme.typography.fonts.size[200],
