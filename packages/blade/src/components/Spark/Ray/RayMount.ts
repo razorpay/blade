@@ -235,6 +235,7 @@ class RayMount {
   private lastNow = 0;
   private isVisible = true;
   private stageAt: { left: number; top: number; at: number } | null = null; // see measureStage
+  private settling: Film[] = []; // films that gave him back since the last frame: hidden, put to sleep and freed once his own Ray has drawn
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
@@ -750,18 +751,28 @@ class RayMount {
     this.releaseFilms();
   }
 
-  /** A film gave him back at rest: his own Ray takes over there (the same frame), the film sleeps. */
+  /**
+   * A film gave him back at rest: his own Ray takes over there. The film stays up, as it last drew him, till his own Ray has drawn
+   * him in the next frame (draw() hides it then, and settle() puts it to sleep and frees it), so the swap is one frame: there's no
+   * moment, painted or not, with neither showing him (the PR review saw one between the 'done' message and the next frame).
+   */
   private filmDone(film: Film): void {
     film.going = false;
     film.shownAt = Infinity;
     film.startTick = Infinity;
-    film.host.layer.style.visibility = 'hidden';
-    film.host.send({ ray: 'sleep' });
     const h = this.holder;
     if (h.by === 'film' && h.id === film.id) {
       this.holder = { by: 'player', act: 'rest', since: performance.now() };
       this.player.rest(0);
     }
+    this.settling.push(film);
+  }
+
+  /** After a frame's draw: the films that gave him back sleep, and those not wanted are freed. */
+  private settle(): void {
+    if (!this.settling.length) return;
+    this.settling.forEach((film) => film.host.send({ ray: 'sleep' }));
+    this.settling = [];
     this.releaseFilms();
   }
 
@@ -836,6 +847,7 @@ class RayMount {
     this.listenToInput();
     this.reconcile(now);
     this.draw(now, dt);
+    this.settle();
     if (this.isAway()) {
       RayMount.unbook(this); // hidden and done going: nothing moves till he's asked back (update() starts him again)
       this.raf = 0;
