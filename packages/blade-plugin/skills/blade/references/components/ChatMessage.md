@@ -53,7 +53,8 @@ type ChatMessageProps = {
   leading?: React.ReactNode;
 
   /**
-   * Whether the message is in a loading state
+   * Whether the message is in a loading state. Inside a `RazorSenseChat` (web), a loading message shows its `loadingText` as
+   * RazorSense 2.0's thinking label, with the chat's glow behind it.
    * @default false
    */
   isLoading?: boolean;

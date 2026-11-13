@@ -139,7 +139,8 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
       ignore: (node) => node === thinkingStillRef.current || node === bottomWaveStillRef.current,
       onChange: place,
     });
-  }, [isStill, s, isPaused]);
+    // (the stills come in a tick later, their modules loaded on demand: placed again as they do, paused too)
+  }, [isStill, s, isPaused, thinkingStill, bottomWaveStill]);
 
   // (stable: a part registers once, not again on every change of the chat's props)
   const register = useCallback<RazorSenseChatContextValue['register']>((part, element) => {

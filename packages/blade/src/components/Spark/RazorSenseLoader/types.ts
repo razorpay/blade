@@ -5,6 +5,8 @@ type RazorSenseLoaderProps = {
    * While true, the Razorpay glyph keeps looping. Set it to false when the page is ready: the glyph finishes the pass it's on,
    * grows, and everything fades to the plain background, as designed (3.5 to 8 seconds); then `onComplete` is called. If it
    * turns false before the splash has started drawing (its engine still loading), `onComplete` is called straight away.
+   * It plays once per mount: once it's done, setting it back to true doesn't start it again (mount it again, with a new `key`,
+   * to show the splash again).
    * @default true
    */
   isLoading?: boolean;
