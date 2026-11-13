@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   validate:
@@ -247,5 +247,5 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body-file: coverage-comment.md
-          token: ${{ secrets.CI_BOT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           edit-mode: replace
