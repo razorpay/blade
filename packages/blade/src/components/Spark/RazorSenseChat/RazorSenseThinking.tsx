@@ -54,9 +54,12 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
         theme.typography.fonts.size[200],
       )};
       color: transparent;
+      /* (as RollingText's shimmer: older Safari fills the text with this, not color) */
+      -webkit-text-fill-color: transparent;
       background-image: linear-gradient(90deg, ${base} 38%, ${shine} 50%, ${base} 62%);
       background-size: 250% 100%;
       background-position: 0% 0;
+      /* (styled-components adds -webkit-background-clip, which older Safari needs to clip) */
       background-clip: text;
       animation: ${shimmer} 1.6s linear infinite;
       animation-play-state: ${isPaused ? 'paused' : 'running'};

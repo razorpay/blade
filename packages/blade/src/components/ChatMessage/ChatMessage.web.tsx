@@ -73,11 +73,14 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
 
   const finalChildren =
     isLoading && RazorSenseThinking ? (
-      Array.isArray(loadingText) ? (
-        <RazorSenseThinking texts={loadingText} />
-      ) : (
-        <RazorSenseThinking>{loadingText}</RazorSenseThinking>
-      )
+      // (its wordBreak still applies: word-break inherits into the label)
+      <div style={{ wordBreak }}>
+        {Array.isArray(loadingText) ? (
+          <RazorSenseThinking texts={loadingText} />
+        ) : (
+          <RazorSenseThinking>{loadingText}</RazorSenseThinking>
+        )}
+      </div>
     ) : shouldWrapInText ? (
       <Text
         color={
