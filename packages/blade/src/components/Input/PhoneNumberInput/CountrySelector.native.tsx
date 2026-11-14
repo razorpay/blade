@@ -13,8 +13,7 @@ import {
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { ChevronUpDownIcon } from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
-
-const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
+import { countryNameFormatter } from './countryNameFormatter';
 
 type CountryData = {
   code: CountryCodeType;
@@ -131,4 +130,4 @@ const CountrySelector = ({
   );
 };
 
-export { CountrySelector, countryNameFormatter };
+export { CountrySelector };
