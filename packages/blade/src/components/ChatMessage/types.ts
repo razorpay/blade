@@ -75,6 +75,9 @@ type CommonChatMessageProps = {
   /**
    * isLoading prop is used to show loading state in chat message. it will add loading styles and animation to chat message.
    * works only when senderType is other.
+   *
+   * Inside a `RazorSenseChat` (web), a loading message shows its `loadingText` as RazorSense 2.0's thinking label instead, with
+   * the chat's glow behind it; when `isLoading` turns false the glow surges down to the chat input.
    * */
   isLoading?: boolean;
   /**
@@ -122,6 +125,9 @@ type CommonChatMessageProps = {
    *
    * When an array of strings is provided, the texts will animate as a rolling marquee,
    * cycling through each string with a vertical slide transition.
+   *
+   * Inside a `RazorSenseChat` (web), it shows as RazorSense 2.0's blue thinking label (rolling the same way); with none,
+   * 'Thinking…'.
    * */
   loadingText?: string | string[];
   /**

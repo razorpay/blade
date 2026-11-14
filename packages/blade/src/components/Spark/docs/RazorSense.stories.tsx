@@ -9,6 +9,11 @@ import {
   RazorSense as RazorSenseComponent,
   RazorSenseGradient,
   preloadRazorSenseAssets,
+  RazorSenseLoader,
+  RazorSenseChat,
+  RazorSenseThinking,
+  RazorSenseBottomWave,
+  RazorSenseChatBackground,
 } from '../';
 import { GradientEditor } from './GradientEditor';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -58,6 +63,55 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
 export const Default = RazorSenseTemplate.bind({});
 
 /**
+ * RazorSense 2.0's loading splash, `RazorSenseLoader`: the Razorpay glyph loops while `isLoading` is true. "Finish loading"
+ * sets it to false: the glyph grows and everything fades to the plain background, then `onComplete` is called. Light or dark:
+ * Color Scheme in the toolbar.
+ *
+ * Not a like-for-like swap for Default above: Default is a full-screen background that keeps playing; Default 2.0 is a
+ * splash that plays while the page loads and then gets out of the way.
+ */
+export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
+  const [run, setRun] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const replay = (): void => {
+    setIsLoading(true);
+    setIsComplete(false);
+    setRun((n) => n + 1);
+  };
+  return (
+    <Box margin="-32px" position="relative" height="100vh">
+      <RazorSenseLoader key={run} isLoading={isLoading} onComplete={() => setIsComplete(true)} />
+      <Box
+        position="absolute"
+        bottom="spacing.5"
+        left="spacing.5"
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish loading
+        </Button>
+        <Button size="small" variant="tertiary" onClick={replay}>
+          Replay
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isComplete ? 'onComplete fired' : isLoading ? 'Loading' : 'Finishing'}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+DefaultV2.storyName = 'Default 2.0 (Loader)';
+DefaultV2.parameters = { controls: { disable: true } };
+
+/**
  * RazorSense follows Blade's color scheme — there is no dark-mode prop. When the
  * surrounding `BladeProvider` is in `dark`, every preset automatically picks up its
  * dark counterpart: the dark gradient maps, a black background, bloom off, a damped
@@ -88,6 +142,44 @@ export const ColorSchemeAware: StoryFn<typeof RazorSenseComponent> = () => {
 };
 ColorSchemeAware.storyName = 'Color Scheme Aware';
 
+/**
+ * RazorSense 2.0 follows Blade's color scheme too, with no dark-mode prop: in `dark`, each of the five components draws its own
+ * dark comp (and its dark still, when it can't animate). Here `RazorSenseChatBackground` behind a chat input. The 2.0 twin of
+ * Color Scheme Aware above.
+ */
+export const ColorSchemeAwareV2: StoryFn<typeof RazorSenseChatBackground> = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+
+  return (
+    <Box display="flex" flexDirection="column" height="100vh" gap="spacing.4">
+      <Box display="flex" alignItems="center" gap="spacing.4">
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          Toggle color scheme
+        </Button>
+        <Text color="surface.text.gray.muted">
+          Current color scheme:{' '}
+          <Text as="span" weight="semibold">
+            {colorScheme}
+          </Text>
+        </Text>
+      </Box>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center">
+        <Box width="100%" maxWidth="840px">
+          <RazorSenseChatBackground>
+            <ChatInput placeholder="Ask anything..." />
+          </RazorSenseChatBackground>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+ColorSchemeAwareV2.storyName = 'Color Scheme Aware 2.0';
+ColorSchemeAwareV2.parameters = { controls: { disable: true } };
+
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
@@ -95,6 +187,87 @@ DefaultPaused.args = {
   animateLightIndependently: true,
   lightStartFrame: 0,
 };
+
+/** the controls the 2.0 stories share: the box the effect fits (the chat input sits centred in it), the effect's scale, and where it sits */
+type EffectControls = { width: number; height: number; scale: number; x: number; y: number };
+const effectArgTypes = (width: { min: number; max: number }) => ({
+  width: {
+    control: { type: 'range', ...width, step: 4 },
+    description: "The chat input's width (px): the effect fits it",
+  },
+  height: {
+    control: { type: 'range', min: 0, max: 320, step: 2 },
+    description:
+      "The box the effect fits (px), the chat input centred in it; 0: the input's own height",
+  },
+  scale: {
+    control: { type: 'range', min: 0.75, max: 1.25, step: 0.05 },
+    description: 'The effect bigger or smaller',
+  },
+  x: {
+    control: { type: 'range', min: -400, max: 400, step: 4 },
+    description: 'Moves it across (px)',
+  },
+  y: { control: { type: 'range', min: -300, max: 300, step: 4 }, description: 'Moves it up (px)' },
+});
+/** the chat input, in the box the controls size and place */
+const ControlledInput = ({
+  height,
+  isUiHidden = false,
+}: {
+  height: number;
+  isUiHidden?: boolean;
+}) => (
+  <div
+    style={{
+      minHeight: height || undefined,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      opacity: isUiHidden ? 0 : 1,
+      transition: 'opacity 0.2s',
+    }}
+  >
+    <ChatInput placeholder="Ask anything..." />
+  </div>
+);
+
+/**
+ * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: wrap the chat input and a soft fluted strip
+ * sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
+ * The controls size the box it fits, scale it and move it. Hide UI makes the chat input see-through, so only RazorSense shows
+ * (it still takes typing while hidden).
+ */
+export const DefaultPausedV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  const [isUiHidden, setIsUiHidden] = useState(false);
+  return (
+    <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+      <Box
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        paddingX="spacing.6"
+      >
+        <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
+          <RazorSenseChatBackground scale={scale}>
+            <ControlledInput height={height} isUiHidden={isUiHidden} />
+          </RazorSenseChatBackground>
+        </div>
+      </Box>
+      <Box position="absolute" bottom="spacing.5" left="spacing.5">
+        <Button size="small" variant="secondary" onClick={() => setIsUiHidden((v) => !v)}>
+          {isUiHidden ? 'Show UI' : 'Hide UI'}
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+DefaultPausedV2.args = { width: 840, height: 0, scale: 1, x: 0, y: 0 };
+DefaultPausedV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
+DefaultPausedV2.parameters = { controls: { include: ['width', 'height', 'scale', 'x', 'y'] } };
+DefaultPausedV2.storyName = 'Default Paused 2.0';
 
 export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   return (
@@ -129,6 +302,91 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 
+/**
+ * Zoomed's 2.0 twin: the same loading `ChatMessage` (`isLoading` with its `loadingText`), inside a `RazorSenseChat`. Nothing
+ * else changes on the message: inside the chat its loading text shows as RazorSense 2.0's thinking label and the chat thinks
+ * behind it. "Finish loading" sets `isLoading` to false: the answer shows and the thinking surges down into the
+ * `RazorSenseBottomWave` under the chat input. "Load again" brings it back up.
+ */
+export const ZoomedV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish loading
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={isLoading}
+          onClick={() => setIsLoading(true)}
+        >
+          Load again
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isLoading ? 'isLoading: true' : 'isLoading: false'}
+        </Text>
+      </Box>
+      <Box flex="1" minHeight="0px">
+        <RazorSenseChat>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            maxWidth="800px"
+            marginX="auto"
+            paddingX="spacing.6"
+          >
+            <Box flex="1" paddingY="spacing.9">
+              <ChatMessage
+                senderType="other"
+                leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+                isLoading={isLoading}
+                loadingText={['Thinking...', 'Processing your request...']}
+              >
+                <Text color="surface.text.gray.normal" size="medium">
+                  Your KYC has been verified successfully. All documents are in order and your
+                  identity has been confirmed.
+                </Text>
+              </ChatMessage>
+            </Box>
+            <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+              <RazorSenseBottomWave>
+                <ChatInput placeholder="Ask anything..." />
+              </RazorSenseBottomWave>
+              <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                Ray is AI and can make mistakes. Please check important information.
+              </Text>
+            </Box>
+          </Box>
+        </RazorSenseChat>
+      </Box>
+    </Box>
+  );
+};
+ZoomedV2.storyName = 'Zoomed 2.0';
+ZoomedV2.parameters = { controls: { disable: true } };
+
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
     <Box margin="-32px" position="relative" height="100vh">
@@ -159,6 +417,137 @@ const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 export const BottomWave = BottomWaveTemplate.bind({});
+
+/**
+ * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input and a faint wave settles under it, its path drifting.
+ * Type in it to see the typing surge: it pulses with the typing and dies back down after. The controls size the box it settles
+ * under, scale it and move it.
+ */
+export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  return (
+    <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+      <Box
+        position="absolute"
+        bottom="spacing.4"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        gap="spacing.3"
+        paddingX="spacing.4"
+      >
+        <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
+          <RazorSenseBottomWave scale={scale}>
+            <ControlledInput height={height} />
+          </RazorSenseBottomWave>
+        </div>
+        {/* positioned, so it shows over the wave (on its own the wave draws over what's next to the input; inside a
+        RazorSenseChat it's behind everything) */}
+        <Box position="relative">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            Ray is AI and can make mistakes. Please check important information.
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+BottomWaveV2.args = { width: 760, height: 0, scale: 1, x: 0, y: 0 };
+BottomWaveV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
+BottomWaveV2.parameters = { controls: { include: ['width', 'height', 'scale', 'x', 'y'] } };
+BottomWaveV2.storyName = 'Bottom Wave 2.0';
+
+/**
+ * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
+ * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
+ * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on.
+ */
+export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [isThinking, setIsThinking] = useState(true);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isThinking}
+          onClick={() => setIsThinking(false)}
+        >
+          Finish thinking
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={isThinking}
+          onClick={() => setIsThinking(true)}
+        >
+          Think again
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isThinking ? 'Thinking' : 'Bottom wave'}
+        </Text>
+      </Box>
+      <Box flex="1" minHeight="0px">
+        <RazorSenseChat>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            maxWidth="800px"
+            marginX="auto"
+            paddingX="spacing.6"
+          >
+            <Box
+              flex="1"
+              display="flex"
+              flexDirection="column"
+              gap="spacing.8"
+              paddingY="spacing.9"
+            >
+              <Box alignSelf="flex-end" maxWidth="70%">
+                <ChatMessage senderType="self">How is my business doing today?</ChatMessage>
+              </Box>
+              {isThinking ? (
+                <RazorSenseThinking>Searching your settlements…</RazorSenseThinking>
+              ) : (
+                <Text color="surface.text.gray.normal" size="large">
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
+                </Text>
+              )}
+            </Box>
+            <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+              <RazorSenseBottomWave>
+                <ChatInput placeholder="Ask anything..." />
+              </RazorSenseBottomWave>
+              <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                Ray is AI and can make mistakes. Please check important information.
+              </Text>
+            </Box>
+          </Box>
+        </RazorSenseChat>
+      </Box>
+    </Box>
+  );
+};
+BottomSurgeV2.storyName = 'Bottom Surge 2.0';
+BottomSurgeV2.parameters = { controls: { disable: true } };
 
 const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
