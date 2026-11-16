@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.34.0
+
+### Minor Changes
+
+- 7f5ef7bd1: feat: deprecate Blade MCP. Every tool now returns an error telling the user to install the Blade plugin (`claude plugin install blade@razorpay-marketplace`) and delete the MCP server.
+
 ## 1.33.2
 
 ### Patch Changes
