@@ -4089,7 +4089,7 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       c = document.createElement('canvas');
     c.width = w;
     c.height = h;
-    const X = c.getContext('2d');
+    const X = c.getContext('2d', { willReadFrequently: true });
     X.drawImage(m.im, 0, 0);
     try {
       const d = X.getImageData(0, 0, w, h),
@@ -4167,7 +4167,7 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
         const t = document.createElement('canvas');
         t.width = iw;
         t.height = ih;
-        const X = t.getContext('2d');
+        const X = t.getContext('2d', { willReadFrequently: true });
         X.drawImage(base, 0, 0);
         let d;
         try {
