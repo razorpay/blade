@@ -70,6 +70,8 @@ const useChatStage = ({
   // reduced motion: stops its frame following the layout
   const stopFollowRef = useRef<(() => void) | null>(null);
   const [isStill, setIsStill] = useState(false);
+  // its stills stand in while it has no frame yet (its GPU getting ready), as when it can't animate
+  const [isWaiting, setIsWaiting] = useState(false);
   const isStillRef = useRef(false);
 
   useEffect(() => {
@@ -179,6 +181,7 @@ const useChatStage = ({
         stopFollowRef.current?.();
         stopFollowRef.current = null;
       },
+      onWaiting: setIsWaiting,
     });
     // isThinking and isPaused have their own effects; a new color scheme or scale starts it again
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -200,7 +203,7 @@ const useChatStage = ({
   }, [isThinking]);
 
   const keystroke = useCallback(() => driverRef.current?.hit(performance.now() / 1000), []);
-  return { keystroke, isStill };
+  return { keystroke, isStill: isStill || isWaiting };
 };
 
 export { useChatStage };

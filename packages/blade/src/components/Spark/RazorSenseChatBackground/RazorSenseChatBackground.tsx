@@ -85,7 +85,9 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     // gone to its still: it can't animate here (the stage is freed); it stays there, a new color scheme just changes the still
     const [isStill, setIsStill] = useState(false);
     const isStillRef = useRef(false);
-    const still = useStill(isStill, mode, loadChatBackgroundStill);
+    // (and while it has no frame yet: its GPU getting ready)
+    const [isWaiting, setIsWaiting] = useState(false);
+    const still = useStill(isStill || isWaiting, mode, loadChatBackgroundStill);
 
     // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
     const fitRef = useRef<() => void>(() => undefined);
@@ -207,6 +209,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           engineRef.current = null;
           typingRef.current = null;
         },
+        onWaiting: setIsWaiting,
       });
       // isPaused has its own effect; a new color scheme or scale starts it again
       // eslint-disable-next-line react-hooks/exhaustive-deps
