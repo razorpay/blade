@@ -160,7 +160,10 @@ describe('<Heading />', () => {
     // @ts-expect-error the ref type must be concrete, not any
     const notAny: HeadingRef = 5;
     expect(notAny).toBe(5);
-    expect(Heading.displayName).toBe('Heading');
+    // Type-only check (reading `.displayName` directly is lint-restricted): fails to compile if
+    // Heading's type loses its forwardRef statics.
+    const displayName: typeof Heading['displayName'] = 'Heading';
+    expect(displayName).toBe('Heading');
 
     const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
