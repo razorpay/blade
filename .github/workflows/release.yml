@@ -9,6 +9,7 @@ permissions:
   id-token: write      # For OIDC/npm provenance
   contents: write      # For pushing commits/branches
   pull-requests: write #
+  packages: write      # GITHUB_TOKEN publishes to GitHub Packages; classic PATs are blocked org-wide
 
 jobs:
   release:
@@ -43,8 +44,8 @@ jobs:
         uses: changesets/action@v1
         if: github.event_name != 'workflow_dispatch' # only run on master merges
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
         with:
@@ -56,7 +57,7 @@ jobs:
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn build
       - name: Publish to Chromatic
         uses: chromaui/action@v1
@@ -72,7 +73,7 @@ jobs:
           untraced: '**/package.json'
           traceChanged: 'expanded'
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
       - name: Publish Blade Svelte to Chromatic
@@ -89,7 +90,7 @@ jobs:
           untraced: '**/package.json'
           traceChanged: 'expanded'
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
 
