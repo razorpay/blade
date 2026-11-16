@@ -271,6 +271,13 @@ src = sub(src, `function restoreSnap(s) {
 }
 `, `function restoreSnap() {}\n`);
 
+// the two canvases an image is drawn on only to be read back (its grey copy, and its pixels for the shapes' levels): kept on the CPU
+// (willReadFrequently), so the read isn't a GPU readback (22 ms of a 103 ms start-up task on a GTX 1650 laptop); the same pixels
+src = sub(src, `c.width = w; c.height = h; const X = c.getContext('2d');
+  X.drawImage(m.im, 0, 0); try { const d = X.getImageData(`, `c.width = w; c.height = h; const X = c.getContext('2d', { willReadFrequently: true });
+  X.drawImage(m.im, 0, 0); try { const d = X.getImageData(`);
+src = sub(src, `t.width = iw; t.height = ih; const X = t.getContext('2d'); X.drawImage(base, 0, 0);`, `t.width = iw; t.height = ih; const X = t.getContext('2d', { willReadFrequently: true }); X.drawImage(base, 0, 0);`);
+
 // The shaders' text without their comments and indentation (3 KB gzipped off the engine, the PR review), as the GPU sees them all the
 // same. FS_COMP is left as it is: FS_COMP_AE is made from it at runtime by finding lines in it, comments included. Lines stay lines
 // (the preprocessor's, and grSpec's '^uniform int uX;' edits of FS_MAIN, need them); `${...}` parts are left alone.
