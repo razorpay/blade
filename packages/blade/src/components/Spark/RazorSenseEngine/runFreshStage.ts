@@ -112,7 +112,8 @@ const runFreshStage = <Comps>({
           return null;
         }
         const started = stage;
-        return () => started.hasDrawn();
+        // (drawn, given up, or not running: the next may start)
+        return () => started.hasDrawn() || !started.hasEngine() || !started.isRunning();
       });
     })
     .catch(() => fail('its engine failed to load'));

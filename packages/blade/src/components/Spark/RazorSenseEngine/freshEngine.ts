@@ -15,7 +15,8 @@ export function createFreshEngine(
   let __raf = 0,
     __run = true,
     __dead = false,
-    __ro = null;
+    __ro = null,
+    __d3d = false;
   const __search = '';
   // ============================================================================================
   // 01-core: constants, the document, keyframes, undo, saving, presets, colour
@@ -3687,7 +3688,10 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       f = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(v, vs);
     gl.compileShader(v);
-    gl.shaderSource(f, fs);
+    gl.shaderSource(
+      f,
+      __d3d ? fs.replace('#version 300 es\n', '#version 300 es\n#pragma optimize(off)\n') : fs,
+    );
     gl.compileShader(f);
     gl.attachShader(p, v);
     gl.attachShader(p, f);
@@ -3789,6 +3793,12 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       powerPreference: 'low-power',
     });
     if (!gl) return false;
+    {
+      const i = gl.getExtension('WEBGL_debug_renderer_info');
+      __d3d = /Direct3D|D3D1[01]/i.test(
+        i ? String(gl.getParameter(i.UNMASKED_RENDERER_WEBGL)) : '',
+      );
+    }
     GL = {
       par: gl.getExtension('KHR_parallel_shader_compile'),
       half: !!gl.getExtension('EXT_color_buffer_float'),
@@ -5247,7 +5257,7 @@ o = texelFetch(uE, ivec2(0), 0);
   }
   function grSpec(pr) {
     // -> the program to draw the main pass with (pr itself until the copy for these switches is ready)
-    if (!GPU_SPEC || !GL.par) return pr;
+    if (!GPU_SPEC || !GL.par || __d3d) return pr;
     GR_REC.on = false;
     const S =
       GL.spec ||
@@ -6917,7 +6927,7 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
       __run = !!on;
       if (__run) __start();
     },
-    destroy() {
+    destroy(soft) {
       __dead = true;
       if (__raf) cancelAnimationFrame(__raf);
       __raf = 0;
@@ -6926,8 +6936,12 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
         VID_USED.clear();
         vidCleanup();
       } catch (e) {}
-      const x = gl && gl.getExtension('WEBGL_lose_context');
-      if (x) x.loseContext();
+      // Blade: soft (an engine that never drew): its context isn't lost by hand, which waits for the GPU process: one stuck compiling
+      // its shaders (Direct3D) held the page 47 s on a GTX 1650 laptop. It goes with the canvas instead
+      if (!soft) {
+        const x = gl && gl.getExtension('WEBGL_lose_context');
+        if (x) x.loseContext();
+      }
     },
     stats: GR_STAT,
     // Blade: another comp on this canvas (a new colour scheme or scale): its GPU context and compiled programs kept, so nothing

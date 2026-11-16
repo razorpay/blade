@@ -112,8 +112,11 @@ export type FreshEngine = {
   ok: boolean;
   /** stops (false) or resumes (true) the engine's frame loop: off-screen, hidden, reduced motion */
   setRunning(on: boolean): void;
-  /** stops it for good and frees its GPU memory */
-  destroy(): void;
+  /**
+   * stops it for good and frees its GPU memory. soft: its context isn't lost by hand (that waits for the GPU process, which may
+   * be stuck compiling): it goes with its canvas
+   */
+  destroy(soft?: boolean): void;
   /**
    * plays another comp on the same canvas, its GPU context and compiled programs kept (a new colour scheme or scale): false when
    * it can't (a different clear-background setting), and a new engine is needed
