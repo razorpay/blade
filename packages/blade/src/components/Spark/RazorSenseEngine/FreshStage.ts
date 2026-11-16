@@ -52,15 +52,17 @@ const freshFailures: Record<FreshFailure, string> = {
   webgl2: 'WebGL2 is unavailable, or the GPU draws only on the CPU',
   slow: 'its frames are too slow on this device',
   lost: 'the browser took its GPU context back (too many on the page) and did not return it',
-  stalled: 'it drew nothing in its first seconds on screen (its GPU never got going)',
+  stalled: 'it drew nothing in its first 45 s on screen (its GPU never got going)',
 };
 
 /**
- * How long a new engine may run on screen without drawing a frame before the component goes to its still (ms): a context that
- * never draws (the PR review's blank first load on a Windows laptop) showed nothing at all, with no fallback. Its shaders compile
- * meanwhile: well under a second on a phone that can't compile them in the background.
+ * How long a new engine may run on screen without drawing a frame before the component gives up on it and keeps its still (ms).
+ * Meanwhile the component shows its still (runFreshStage's onWaiting), so nothing is blank while it waits. Patient: on Direct3D
+ * (Chrome on Windows) the first compile of the main pass takes tens of seconds with the page still responsive (the shaders compile
+ * in the background), and the browser caches it, so a later visit draws at once. A GPU that never draws (the review's blank first
+ * load) still ends on the still.
  */
-const FIRST_DRAW_MS = 5000;
+const FIRST_DRAW_MS = 45000;
 
 /** how long a lost GPU context may take to come back before the stage gives up on it (ms) */
 const LOST_MS = 2000;

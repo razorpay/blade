@@ -20,6 +20,20 @@ type FreshStageRun<Comps> = {
   onFail: (error: Error) => void;
   /** its stage is gone (failed, or unmounted): let go of what was drawn with it */
   onRelease: () => void;
+  /**
+   * true while it's on screen with nothing drawn yet, past a moment (its turn to start, or its GPU compiling: tens of seconds the
+   * first time on Direct3D): the component shows its still meanwhile, so it's never a blank box; false once it draws
+   */
+  onWaiting?: (isWaiting: boolean) => void;
+};
+
+/** how long an effect on screen may show nothing before its still stands in, till its first frame (ms) */
+const STILL_AFTER_MS = 800;
+
+const isInView = (box: Element | null): boolean => {
+  if (!box) return false;
+  const r = box.getBoundingClientRect();
+  return r.bottom > 0 && r.top < window.innerHeight && r.right > 0 && r.left < window.innerWidth;
 };
 
 /**
@@ -55,9 +69,26 @@ const runFreshStage = <Comps>({
   start,
   onFail,
   onRelease,
+  onWaiting,
 }: FreshStageRun<Comps>): (() => void) => {
   let isLive = true;
   let hasFailed = false;
+  // its first frame: the still stands in while it's on screen without one (from the last run's state: a new colour scheme on an
+  // engine that has drawn ends it at once, one that hasn't keeps it)
+  let isWaiting: boolean | null = null;
+  let waitTimer = 0;
+  let waitFrame = 0;
+  const setWaiting = (waiting: boolean): void => {
+    if (waiting === isWaiting) return;
+    isWaiting = waiting;
+    onWaiting?.(waiting);
+  };
+  const stopWaiting = (): void => {
+    window.clearTimeout(waitTimer);
+    cancelAnimationFrame(waitFrame);
+    waitTimer = 0;
+    waitFrame = 0;
+  };
   let stage: FreshStage | null = null;
   let leaveQueue: (() => void) | null = null;
   // (this component's last stage, if its effect just ran again)
@@ -67,6 +98,7 @@ const runFreshStage = <Comps>({
   const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
     if (hasFailed || !isLive) return;
     hasFailed = true;
+    stopWaiting();
     // the stage freed after this frame (it may be the one telling us)
     const failed = stage;
     window.setTimeout(() => {
@@ -85,6 +117,29 @@ const runFreshStage = <Comps>({
     return () => {
       isLive = false;
     };
+  }
+  // its first frame watched for: drawn, the still goes; on screen without one past STILL_AFTER_MS, the still stands in
+  if (onWaiting) {
+    const hasDrawnNow = (): boolean => Boolean(stage?.hasEngine() && stage.hasDrawn());
+    const watch = (): void => {
+      waitFrame = 0;
+      if (!isLive || hasFailed) return;
+      if (hasDrawnNow()) {
+        window.clearTimeout(waitTimer);
+        setWaiting(false);
+        return;
+      }
+      waitFrame = requestAnimationFrame(watch);
+    };
+    const standIn = (): void => {
+      waitTimer = 0;
+      if (!isLive || hasFailed || hasDrawnNow()) return;
+      // (off screen, nothing to stand in for: no still loaded for it; looked at again in a moment)
+      if (isInView(getBox())) setWaiting(true);
+      else waitTimer = window.setTimeout(standIn, STILL_AFTER_MS);
+    };
+    waitTimer = window.setTimeout(standIn, STILL_AFTER_MS);
+    waitFrame = requestAnimationFrame(watch);
   }
   void Promise.all([loadFreshEngine(), loadComps()])
     .then(([createFreshEngine, comps]) => {
@@ -119,6 +174,7 @@ const runFreshStage = <Comps>({
     .catch(() => fail('its engine failed to load'));
   return () => {
     isLive = false;
+    stopWaiting();
     leaveQueue?.();
     const current = stageRef.current;
     if (current && current === stage && !hasFailed && current.hasEngine()) {

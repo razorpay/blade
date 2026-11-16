@@ -9,7 +9,7 @@
  * once the page is idle (the browser's idle callback, or a moment later where there's none), so it doesn't land in the middle of
  * the page's own work. Off screen, nothing starts (it would only be paused there).
  */
-const MAX_WAIT_MS = 6500;
+const MAX_WAIT_MS = 46000;
 /** how close to the screen a box has to be to start (its first frame ready as it scrolls in) */
 const NEAR = '200px';
 /** how long a start may wait for the page to go idle (ms) */

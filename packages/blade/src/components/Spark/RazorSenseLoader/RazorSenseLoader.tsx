@@ -98,7 +98,9 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
     const hasFailedRef = useRef(false);
     // the still fading out: the page is ready and the splash couldn't animate
     const [isLeaving, setIsLeaving] = useState(false);
-    const still = useStill(hasFailed && !isDone, mode, loadLoaderStill);
+    // its still stands in while the splash has no frame yet (its GPU getting ready), and stays if it can't animate
+    const [isWaiting, setIsWaiting] = useState(false);
+    const still = useStill((hasFailed || isWaiting) && !isDone, mode, loadLoaderStill);
     // where its clock is (read by the safety net below)
     const clockStateRef = useRef<SplashClockState>({ t: 0, alive: 0 });
 
@@ -182,6 +184,7 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
           engineRef.current = null;
           clockRef.current = null;
         },
+        onWaiting: setIsWaiting,
       });
       // isLoading and isPaused are read live (refs / their own effects); a new color scheme or scale starts the splash again
       // eslint-disable-next-line react-hooks/exhaustive-deps
