@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
-import type { FreshDoc, FreshEngine } from '../RazorSenseEngine';
+import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
 import { Ray } from '../Ray';
-import { rayBoxSize } from '../Ray/RayMount';
+import { RAY_BOX } from '../Ray/rayBox';
 import type { RayState } from '../Ray/types';
+import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import type { HoverSlot } from '../useLazyLayer/hoverSlots';
+import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
 import { useTheme } from '~components/BladeProvider';
 
@@ -57,10 +60,13 @@ const RAY_VARIANTS: Record<
     state: 'searching',
   },
 };
+/**
+ * The text wash (wash9.js): a band of the primary colour with a light middle sweeping along the label. Its colour is the theme's
+ * primary text (so it follows the theme and its brand colour), its middle that lifted this far towards white; dark adds a soft
+ * bloom of the band behind the letters.
+ */
 const WASH = {
-  light: ['#1f39ff', '#f5f8ff', '#1f39ff'],
-  /** dark: the bloom wash (tint, middle, tint) and its glow */
-  dark: ['#6b93ff', '#d6e3ff', '#6b93ff'],
+  lift: { light: 0.96, dark: 0.7 },
   bloom: 0.26,
   bloomBlur: 4,
   band: 8 * 1.3,
@@ -99,9 +105,29 @@ const smooth01 = (u: number): number => {
   const v = Math.min(1, Math.max(0, u));
   return v * v * (3 - 2 * v);
 };
+/** a CSS colour as [r, g, b] (hex, rgb() or hsl(): what computed styles and Blade's tokens give) */
 const rgb = (c: string): number[] => {
   if (c.startsWith('#')) return [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
-  return (c.match(/[\d.]+/g) ?? ['0', '0', '0']).slice(0, 3).map(Number);
+  const n = (c.match(/[\d.]+/g) ?? ['0', '0', '0']).slice(0, 3).map(Number);
+  if (!c.startsWith('hsl')) return n;
+  const [h, sat, l] = [n[0], n[1] / 100, n[2] / 100];
+  const a = sat * Math.min(l, 1 - l);
+  const f = (k: number): number => {
+    const m = (k + h / 30) % 12;
+    return Math.round(255 * (l - a * Math.max(-1, Math.min(m - 3, 9 - m, 1))));
+  };
+  return [f(0), f(8), f(4)];
+};
+const css = ([r, g, b]: number[]): string => `rgb(${r},${g},${b})`;
+
+/** whether the button grows when it's given more padding: not where its parent sets its width (stretched, a grid cell) */
+const canWiden = (button: HTMLElement): boolean => {
+  const before = button.offsetWidth;
+  const own = button.style.paddingRight;
+  button.style.paddingRight = `${(parseFloat(getComputedStyle(button).paddingRight) || 0) + 8}px`;
+  const grows = button.offsetWidth > before;
+  button.style.paddingRight = own;
+  return grows;
 };
 
 /** the card's bottom strip, as wide as the opened button (comp px; the comp is made at 2x): sidekick.js's invMake */
@@ -125,8 +151,11 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
  * card's hover, the card's bottom strip at the button's size: once, held) and a text wash along the label; at once the
  * button widens to the right and Ray is revealed in the new end, standing on its bottom edge, and whips out his magnifying
  * glass (his search film), searching for as long as the pointer stays. Off: he puts it away as it narrows again, together.
- * Light and dark (dark: the dark card's RazorSense, a soft blue bloom wash). Rendered as the button's first children; the
- * button's label sits above them.
+ * Light and dark (dark: the dark card's RazorSense, a soft blue bloom wash). Its comp is loaded as the button comes on screen;
+ * the strip's canvas and Ray (his canvases and films) are made only while the pointer is on or near the button and let go once
+ * it has moved away and the hover is over (holdNearPointer), so a page of these holds a few at most. A button its parent sets
+ * the width of (stretched in a column, a grid cell) can't widen: it keeps its own hover. Rendered as the button's first
+ * children; the button's label sits above them.
  */
 const ButtonRayLayer = ({
   isEnabled,
@@ -135,17 +164,24 @@ const ButtonRayLayer = ({
 }: ButtonRayProps): React.ReactElement | null => {
   const INV = RAY_VARIANTS[variant];
   const gapTrim = INV.gapTrim[size];
-  const { colorScheme } = useTheme();
+  const { colorScheme, theme } = useTheme();
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
+  const tint = theme.colors.surface.text.primary.normal;
   const stripRef = useRef<HTMLSpanElement>(null);
   const hostRef = useRef<HTMLSpanElement>(null);
   const edgeRef = useRef<HTMLElement>(null);
   const rayRef = useRef<HTMLSpanElement>(null);
   const [isOnScreen, setIsOnScreen] = useState(false);
+  // Ray's there only while the hover holds its canvases (the pointer on or near the button)
+  const [isRayUp, setIsRayUp] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  // how much bigger than his box he's shown on this button: he draws that much finer (scaled up, he'd blur)
-  const [rayScale, setRayScale] = useState(1);
-  const rayBox = rayBoxSize('medium');
+  // his width on this button (its height / 34 of flow 9's): drawn at the size of his nearest to it, and as much finer as he's
+  // shown bigger than that (scaled up, he'd blur)
+  const [rayWidth, setRayWidth] = useState(INV.rayW);
+  const raySize = rayWidth < RAY_BOX.medium.width ? 'small' : 'medium';
+  const rayBox = RAY_BOX[raySize];
+  const rayBoxRef = useRef(rayBox);
+  rayBoxRef.current = rayBox;
 
   useEffect(() => {
     const button = stripRef.current?.parentElement;
@@ -156,20 +192,16 @@ const ButtonRayLayer = ({
       typeof ResizeObserver === 'undefined'
     )
       return undefined;
-    // on screen (or about to be) it has its WebGL context and Ray; off it, both are freed (browsers allow a page only a few)
     const seen = new IntersectionObserver(
       (entries) => {
         const entry = entries[entries.length - 1];
-        if (!entry) return;
-        // his width on this button (its height / 34 of flow 9's) over his box's
-        if (entry.isIntersecting) setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
-        setIsOnScreen(entry.isIntersecting);
+        if (entry) setIsOnScreen(entry.isIntersecting);
       },
       { rootMargin: '100px' },
     );
     seen.observe(button);
     return () => seen.disconnect();
-  }, [INV, rayBox.width]);
+  }, []);
 
   useEffect(() => {
     const strip = stripRef.current;
@@ -177,24 +209,36 @@ const ButtonRayLayer = ({
     const host = hostRef.current;
     const button = strip?.parentElement;
     if (!isEnabled || !isOnScreen || !strip || !host || !button) return undefined;
+    // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
+    if (!canPlayHover()) return undefined;
     let isMounted = true;
     let stage: FreshStage | null = null;
     let engine: FreshEngine | null = null;
+    let isHeld = false;
+    let slot: HoverSlot | null = null;
     let frame = 0;
     let pauseTimer = 0;
     let searchTimer = 0;
+    let hasWarned = false;
     const basePadding = parseFloat(getComputedStyle(button).paddingRight) || 0;
-    // the widening (e: 0..1) and the wash (its start and, once the pointer leaves, its fade)
+    // the widening (e: 0..1) and the wash (its start and, once the pointer leaves, its fade). What it lays out by is measured as
+    // the hover starts, never while it runs: each frame writes, and reads nothing back (a read after a write is a layout)
     const S = {
       isOn: false,
       e: 0,
       from: 0,
       to: 0,
       a0: 0,
+      // the button's width and height at rest, and its height over flow 9's 34 px
       w0: 0,
+      h0: 0,
+      g: 1,
+      // the right padding last written (not written again while it's the same)
+      padding: '',
       washT0: 0,
       washOff: 0,
       label: null as HTMLElement | null,
+      labelWidth: 1,
       // the label's own colour, read before the wash paints it (painted, its colour is transparent)
       ink: [0, 0, 0],
       // how far the button's content runs on past its text (measured at rest)
@@ -203,8 +247,10 @@ const ButtonRayLayer = ({
       labelPosition: '',
     };
     let bloom: HTMLSpanElement | null = null;
+    // the wash's band: the theme's primary colour, its middle lifted towards white
+    const washTint = rgb(tint);
+    const washMiddle = washTint.map((q) => Math.round(q + (255 - q) * WASH.lift[mode]));
 
-    const scaleOf = (): number => button.offsetHeight / 34;
     // Blade's label runs on a little past its text: Ray and the opened end are measured from the text's own end, as in flow 9
     const slackOf = (): number => {
       const label = labelOf(button);
@@ -220,13 +266,23 @@ const ButtonRayLayer = ({
       const contentEnd = button.getBoundingClientRect().right - basePadding;
       return Math.max(0, contentEnd - end);
     };
+    const measure = (): void => {
+      S.w0 = button.offsetWidth;
+      S.h0 = button.offsetHeight;
+      S.g = S.h0 / 34;
+      S.slack = slackOf();
+    };
     // the right padding opened e of the way: from Blade's own to flow 9's past the text (INV.padding) plus the widening,
     // whole even px
     const paddingAt = (e: number): number => {
-      const g = scaleOf();
-      const ge = 2 * Math.round((INV.grow * g * e) / 2);
-      const open = INV.padding * g - S.slack - gapTrim;
+      const ge = 2 * Math.round((INV.grow * S.g * e) / 2);
+      const open = INV.padding * S.g - S.slack - gapTrim;
       return 2 * Math.round((basePadding + (open - basePadding) * e + ge) / 2);
+    };
+    const setPadding = (value: string): void => {
+      if (value === S.padding) return;
+      S.padding = value;
+      button.style.paddingRight = value;
     };
     const clearWash = (): void => {
       if (S.label) {
@@ -252,30 +308,26 @@ const ButtonRayLayer = ({
       const label = S.label;
       if (!label) return;
       const { ink } = S;
-      const colors = mode === 'dark' ? WASH.dark : WASH.light;
-      const mix = (c: string): string => {
-        const to = rgb(c);
-        return `rgb(${ink.map((q, n) => Math.round(q + (to[n] - q) * k)).join(',')})`;
-      };
-      const I = `rgb(${ink.join(',')})`;
+      const mix = (to: number[]): string => css(ink.map((q, n) => Math.round(q + (to[n] - q) * k)));
+      const I = css(ink);
       const s1 = 50 - WASH.band / 2;
       const s3 = 50 + WASH.band / 2;
       const band = (c0: string, c1: string, c2: string, outside: string): string =>
         `linear-gradient(${WASH.angle}deg, ${outside} 0%, ${outside} ${
           s1 - WASH.fade
         }%, ${c0} ${s1}%, ${c1} 50%, ${c2} ${s3}%, ${outside} ${s3 + WASH.fade}%, ${outside} 100%)`;
-      const Wt = Math.max(1, label.offsetWidth);
-      const size = (Wt * WASH.size) / 100;
-      const at = (p: number): number => ((Wt - size) * p) / 100 + size / 2;
-      const off = at(WASH.from) + (at(WASH.to) - at(WASH.from)) * u - size / 2;
+      const Wt = S.labelWidth;
+      const width = (Wt * WASH.size) / 100;
+      const at = (p: number): number => ((Wt - width) * p) / 100 + width / 2;
+      const off = at(WASH.from) + (at(WASH.to) - at(WASH.from)) * u - width / 2;
       Object.assign(label.style, {
         backgroundImage: `${band(
-          mix(colors[0]),
-          mix(colors[1]),
-          mix(colors[2]),
+          mix(washTint),
+          mix(washMiddle),
+          mix(washTint),
           I,
         )}, linear-gradient(${I}, ${I})`,
-        backgroundSize: `${size.toFixed(1)}px 100%, 100% 100%`,
+        backgroundSize: `${width.toFixed(1)}px 100%, 100% 100%`,
         backgroundPosition: `${off.toFixed(1)}px 0, 0 0`,
         backgroundRepeat: 'no-repeat, no-repeat',
         webkitBackgroundClip: 'text',
@@ -295,6 +347,7 @@ const ButtonRayLayer = ({
             inset: '0',
             pointerEvents: 'none',
             zIndex: '-1',
+            filter: `blur(${WASH.bloomBlur * S.g}px)`,
           });
           // (its own position kept, given back in clearWash)
           S.labelPosition = label.style.position;
@@ -303,33 +356,32 @@ const ButtonRayLayer = ({
         }
         const clear = 'rgba(0,0,0,0)';
         Object.assign(bloom.style, {
-          backgroundImage: band(colors[0], colors[1], colors[2], clear),
-          backgroundSize: `${size.toFixed(1)}px 100%`,
+          backgroundImage: band(css(washTint), css(washMiddle), css(washTint), clear),
+          backgroundSize: `${width.toFixed(1)}px 100%`,
           backgroundPosition: `${off.toFixed(1)}px 0`,
           backgroundRepeat: 'no-repeat',
           webkitBackgroundClip: 'text',
           backgroundClip: 'text',
           color: 'transparent',
-          filter: `blur(${WASH.bloomBlur * scaleOf()}px)`,
           opacity: (Math.min(2, WASH.bloom) * k).toFixed(3),
         });
       }
     };
     const place = (): void => {
-      // the button's width (it grows to the right) and Ray's spot past its label's end
-      button.style.paddingRight = S.e > 0 ? `${paddingAt(S.e)}px` : '';
+      // the button's width (it grows to the right, in place: what's after it moves along, as in flow 9) and Ray's spot past its
+      // label's end
+      setPadding(S.e > 0 ? `${paddingAt(S.e)}px` : '');
       const ray = rayRef.current;
       if (ray) {
-        const g = scaleOf();
-        const w0 = S.w0 || button.offsetWidth;
-        const left = w0 - basePadding - S.slack + (INV.padding + INV.rayX) * g - gapTrim;
+        const box = rayBoxRef.current;
+        const left = S.w0 - basePadding - S.slack + (INV.padding + INV.rayX) * S.g - gapTrim;
         // as in flow 9, his right side runs past the opened end (rayX + rayW > grow) and is cut by its corner: what shows is his
-        // face and the glass, by design. Closed, his spot (near the label) can reach into the resting button's padding: he waits just past its end and comes
-        // in with the widening (and goes back out as it closes)
-        const away = Math.max(0, w0 + 1 - left);
-        ray.style.left = `${left + away * (1 - S.e)}px`;
-        ray.style.top = `${button.offsetHeight + INV.rayY * g - rayBox.height}px`;
-        ray.style.transform = `scale(${(INV.rayW * g) / rayBox.width})`;
+        // face and the glass, by design. Closed, his spot (near the label) can reach into the resting button's padding: he waits
+        // just past its end and comes in with the widening (and goes back out as it closes). Moved by transform: no layout
+        const away = Math.max(0, S.w0 + 1 - left);
+        const x = left + away * (1 - S.e);
+        const y = S.h0 + INV.rayY * S.g - box.height;
+        ray.style.transform = `translate(${x}px, ${y}px) scale(${(INV.rayW * S.g) / box.width})`;
       }
     };
     const tick = (now: number): void => {
@@ -347,34 +399,106 @@ const ButtonRayLayer = ({
       if (u < 1 || S.washT0) frame = requestAnimationFrame(tick);
       else {
         frame = 0;
-        if (!S.isOn) {
-          S.w0 = 0;
-          button.style.paddingRight = '';
-        }
+        if (!S.isOn) setPadding('');
+        slot?.update();
       }
     };
     const run = (): void => {
       if (!frame) frame = requestAnimationFrame(tick);
     };
+    // the strip's comp, loaded as the button comes on screen; the strip's spot of it, and how wide the strip is
+    let doc: FreshDoc | null = null;
+    let setup: ButtonRaySetup | null = null;
+    let createEngine: CreateFreshEngine | null = null;
+    const region = [0, 0, 1, 1];
+    const fitStrip = (): void => {
+      if (!doc || !setup) return;
+      // the strip is as wide as the opened button all the time (a resize would clear its canvas: a flash), its left edge put
+      const w = S.w0 - basePadding + paddingAt(1);
+      strip.style.width = `${w}px`;
+      // in place: the engine's options hold it, and it lays out again as the strip resizes
+      stripRegion(doc, setup, w, S.h0).forEach((v, i) => {
+        region[i] = v;
+      });
+      // his width on this button now
+      setRayWidth((INV.rayW * S.h0) / 34);
+    };
+    // (set below, once what they undo is in place)
+    let letGo = (): void => undefined;
+    let giveUp = (): void => undefined;
+    // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
+    const release = (): void => {
+      stage?.destroy();
+      stage = null;
+      engine = null;
+    };
+    // the strip's stage made (the pointer's near), and Ray put in
+    const make = (): void => {
+      if (!createEngine || !doc || !isHeld || engine) return;
+      measure();
+      fitStrip();
+      setIsRayUp(true);
+      // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
+      // means it can't draw here: Blade's own hover, for good
+      stage = new FreshStage(host, createEngine, {
+        onError: (reason) => (reason === 'lost' ? letGo() : giveUp()),
+      });
+      engine = stage.mount({
+        doc,
+        opts: {
+          fit: 'cover',
+          alpha: true,
+          paused: true,
+          loop: 'once',
+          region: region as [number, number, number, number],
+          dpr: 2,
+        },
+      });
+      stage.setPaused(true);
+      place();
+    };
     const show = (on: boolean): void => {
-      if (on === S.isOn || !stage || !engine) return;
+      if (on === S.isOn) return;
+      if (on) {
+        if (!isHeld) return; // (once it's held, it shows if the pointer's still on the button)
+        // its parent sets its width (stretched, a grid cell): it can't widen for him, so it keeps its own hover
+        if (!S.isOn && S.e === 0 && !canWiden(button)) {
+          if (__DEV__ && !hasWarned) {
+            hasWarned = true;
+            logger({
+              type: 'warn',
+              moduleName: 'Button',
+              message:
+                "hasRay: this button can't widen (its parent sets its width: a stretched column, a grid cell), so it keeps its own hover. Give it room to grow to the right.",
+            });
+          }
+          return;
+        }
+        if (!engine) make();
+        if (!engine || !stage) return;
+      }
       S.isOn = on;
       window.clearTimeout(pauseTimer);
+      pauseTimer = 0;
       window.clearTimeout(searchTimer);
       strip.style.transitionDuration = on ? '.15s' : '.45s';
       strip.style.opacity = on ? '1' : '0';
       S.from = S.e;
       S.to = on ? 1 : 0;
       S.a0 = performance.now();
-      if (on) {
-        if (!S.w0) {
-          S.w0 = button.offsetWidth;
-          S.slack = slackOf();
+      if (on && engine && stage) {
+        if (S.e === 0) {
+          // measured at rest, as it starts: nothing's read while it runs
+          measure();
+          fitStrip();
         }
         if (edgeRef.current) edgeRef.current.style.boxShadow = getComputedStyle(button).boxShadow;
         if (!S.washT0) {
           S.label = labelOf(button);
-          if (S.label) S.ink = rgb(getComputedStyle(S.label).color);
+          if (S.label) {
+            S.ink = rgb(getComputedStyle(S.label).color);
+            S.labelWidth = Math.max(1, S.label.offsetWidth);
+          }
         }
         S.washT0 = performance.now();
         S.washOff = 0;
@@ -385,91 +509,102 @@ const ButtonRayLayer = ({
         if (S.washT0) S.washOff = performance.now();
         setIsSearching(false);
         pauseTimer = window.setTimeout(() => {
+          pauseTimer = 0;
           engine?.player.pause();
           stage?.setPaused(true);
           // faded out: the button's own edge again (the hover's insets were laid over the strip)
           if (edgeRef.current) edgeRef.current.style.boxShadow = '';
+          slot?.update();
         }, 480);
       }
       run();
     };
-    const enter = (): void => show(true);
+    const enter = (): void => {
+      slot?.update();
+      show(true);
+    };
     const leave = (): void => show(false);
-
-    let refit: (() => void) | null = null;
+    // back at rest, at once (let go, given up, unmounted)
+    const rest = (): void => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      window.clearTimeout(pauseTimer);
+      pauseTimer = 0;
+      window.clearTimeout(searchTimer);
+      S.isOn = false;
+      S.e = 0;
+      S.washT0 = 0;
+      setIsSearching(false);
+      setPadding('');
+      strip.style.opacity = '0';
+      if (edge) edge.style.boxShadow = '';
+      clearWash();
+    };
+    const hold = (held: boolean): void => {
+      isHeld = held;
+      if (held) {
+        // made as the pointer nears (the strip's first frame and his films ready for the hover), shown if it's already on it
+        if (canWiden(button)) make();
+        if (button.matches(':hover')) show(true);
+        return;
+      }
+      rest();
+      release();
+      setIsRayUp(false);
+    };
+    letGo = (): void => {
+      // (after this frame: the stage may be the one telling us)
+      window.setTimeout(() => {
+        if (!isMounted) return;
+        rest();
+        release();
+        slot?.update();
+      }, 0);
+    };
+    // the button resized at rest (its label, its container, a font coming in): the strip and its spot of the card follow
     let refitTimer = 0;
     const resize = new ResizeObserver(() => {
       window.clearTimeout(refitTimer);
-      refitTimer = window.setTimeout(() => refit?.(), 200);
+      refitTimer = window.setTimeout(() => {
+        if (S.isOn || S.e > 0 || !engine) return;
+        measure();
+        fitStrip();
+        place();
+      }, 200);
     });
 
+    let hasGivenUp = false;
+    giveUp = (): void => {
+      if (hasGivenUp) return;
+      hasGivenUp = true;
+      window.setTimeout(() => {
+        if (!isMounted) return;
+        rest();
+        resize.disconnect();
+        button.removeEventListener('pointerenter', enter);
+        button.removeEventListener('pointerleave', leave);
+        slot?.remove();
+        slot = null;
+        release();
+        setIsRayUp(false);
+      }, 0);
+    };
+
+    // the strip's comp and the engine's code loaded now (no canvas yet): ready for the pointer
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         if (!isMounted) return;
-        const doc = mode === 'dark' ? comps.buttonRayDark : comps.buttonRayLight;
-        const setup = doc.ui?.buttonRay as ButtonRaySetup | undefined;
+        doc = mode === 'dark' ? comps.buttonRayDark : comps.buttonRayLight;
+        setup = (doc.ui?.buttonRay as ButtonRaySetup | undefined) ?? null;
         if (!setup) return;
-        // the strip is as wide as the opened button all the time (a resize would clear its canvas: a flash), its left edge put
-        S.slack = slackOf();
-        const opened = button.offsetWidth - basePadding + paddingAt(1);
-        strip.style.width = `${opened}px`;
-        const region = stripRegion(doc, setup, opened, button.offsetHeight);
-        // the button resized at rest (its label, its container, a font coming in): the strip and its spot of the card follow
-        // (the region in place: the engine's options hold it, and it lays out again as the strip resizes)
-        refit = (): void => {
-          if (S.isOn || S.e > 0) return;
-          S.slack = slackOf();
-          const w = button.offsetWidth - basePadding + paddingAt(1);
-          strip.style.width = `${w}px`;
-          stripRegion(doc, setup, w, button.offsetHeight).forEach((v, i) => {
-            region[i] = v;
-          });
-          // his canvases' resolution for the button's height now
-          setRayScale((INV.rayW * button.offsetHeight) / 34 / rayBox.width);
-          place();
-        };
-        // the stage gave up (no usable WebGL2, frames too slow, a GPU context the browser took back): Blade's own hover, for good
-        const giveUp = (): void => {
-          // (after this frame: the stage may be the one telling us)
-          window.setTimeout(() => {
-            if (!isMounted) return;
-            cancelAnimationFrame(frame);
-            window.clearTimeout(pauseTimer);
-            window.clearTimeout(searchTimer);
-            window.clearTimeout(refitTimer);
-            setIsSearching(false);
-            resize.disconnect();
-            button.removeEventListener('pointerenter', enter);
-            button.removeEventListener('pointerleave', leave);
-            button.style.paddingRight = '';
-            strip.style.opacity = '0';
-            if (edge) edge.style.boxShadow = '';
-            clearWash();
-            stage?.destroy();
-            stage = null;
-            engine = null;
-          }, 0);
-        };
-        stage = new FreshStage(host, createFreshEngine, { onError: giveUp });
-        if (stage.reducedMotion) return; // reduced motion: Blade's own hover
-        engine = stage.mount({
-          doc,
-          opts: {
-            fit: 'cover',
-            alpha: true,
-            paused: true,
-            loop: 'once',
-            region: region as [number, number, number, number],
-            dpr: 2,
-          },
-        });
-        if (!engine) return; // no WebGL2: Blade's own hover
-        stage.setPaused(true);
-        place();
+        createEngine = createFreshEngine;
         resize.observe(button);
         button.addEventListener('pointerenter', enter);
         button.addEventListener('pointerleave', leave);
-        if (button.matches(':hover')) show(true);
+        slot = holdNearPointer(button, {
+          isBusy: () => S.isOn || Boolean(frame) || Boolean(pauseTimer),
+          onHold: hold,
+        });
       })
       .catch(() => {
         // the engine couldn't load: Blade's own hover
@@ -477,23 +612,16 @@ const ButtonRayLayer = ({
 
     return () => {
       isMounted = false;
-      cancelAnimationFrame(frame);
-      window.clearTimeout(pauseTimer);
-      window.clearTimeout(searchTimer);
-      // a fresh start finds him at rest, not still searching behind a closed button
-      setIsSearching(false);
+      rest();
       window.clearTimeout(refitTimer);
       resize.disconnect();
       button.removeEventListener('pointerenter', enter);
       button.removeEventListener('pointerleave', leave);
-      button.style.paddingRight = '';
-      strip.style.opacity = '0';
-      // the hover's insets off too (the effect can run again mid-hover: loading, a theme switch)
-      if (edge) edge.style.boxShadow = '';
-      clearWash();
-      stage?.destroy();
+      slot?.remove();
+      release();
+      setIsRayUp(false);
     };
-  }, [isEnabled, isOnScreen, mode, rayBox.height, rayBox.width, INV, gapTrim]);
+  }, [isEnabled, isOnScreen, mode, tint, INV, gapTrim]);
 
   return (
     <>
@@ -540,19 +668,21 @@ const ButtonRayLayer = ({
           ref={rayRef}
           style={{
             position: 'absolute',
-            left: '100%',
+            left: 0,
             top: 0,
             transformOrigin: 'left bottom',
+            // (placed as the hover starts: till then, past the button's end)
+            transform: 'translateX(10000px)',
           }}
         >
-          {isOnScreen && isEnabled ? (
+          {isRayUp && isEnabled ? (
             <Ray
-              size="medium"
+              size={raySize}
               idle="rest"
               state={isSearching ? INV.state : 'idle'}
               isInteractive={false}
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
-              _scale={rayScale}
+              _scale={rayWidth / rayBox.width}
               _preloadState={INV.state}
             />
           ) : null}

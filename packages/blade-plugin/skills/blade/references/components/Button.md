@@ -11,7 +11,8 @@ The Button component is a versatile interactive element used for triggering acti
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
 - `color="neutral"` can only be used with `variant="primary"`
 - `hasRazorSense` works only with `variant="primary"` and `color="neutral"` (on any other Button it throws in development). It isn't supported inside a `ButtonGroup` (a ButtonGroup has no neutral color) or on an `isFullWidth` button: there the button keeps its own hover (with a development warning)
-- `hasRay` works only with `variant="secondary"` (on another Button it throws in development), on a labelled button that can widen: in a `ButtonGroup`, with `isFullWidth` or icon-only it gives way and the button keeps its own hover (with a development warning). Give it free space to its right (not stretched or held to a width by its container). `rayVariant` picks what Ray does (`"investigate"` for now) and only applies with `hasRay`
+- `hasRay` works only with `variant="secondary"` (on another Button it throws in development), on a labelled button that can widen: in a `ButtonGroup`, with `isFullWidth` or icon-only it gives way and the button keeps its own hover (with a development warning), and so it does where its container sets its width (stretched in a column, a grid cell), as it can't widen there. Give it free space to its right. `rayVariant` picks what Ray does (`"investigate"` for now) and only applies with `hasRay`
+- `hasRazorSense` and `hasRay` make their WebGL canvases only while the pointer is on or near the button, and let them go once it moves away, so a page can hold many of these buttons
 
 ## TypeScript Types
 

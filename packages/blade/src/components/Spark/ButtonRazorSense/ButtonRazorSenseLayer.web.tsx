@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
+import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import type { HoverSlot } from '../useLazyLayer/hoverSlots';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 
@@ -94,9 +96,10 @@ const forWidth = (doc: Comp, setup: ButtonSenseSetup, w: number): Comp => {
  * 'tab' version): on hover the mode's RazorSense comp plays over the button, under its label, looping while the pointer stays;
  * it fades in over .12s and out over .35s, then pauses. Any size: the button's own spot of the comp, the comp's moving shapes
  * squeezed or stretched round the button's middle to its width and height (the bands as they are); a button about as wide as
- * tall plays the square comp, a longer one keeps its growing ellipse at its bottom left (forWidth). Its canvas is made as the
- * button first comes on screen (so the first hover doesn't wait for it). Rendered as the button's first child; the button's
- * content sits above it.
+ * tall plays the square comp, a longer one keeps its growing ellipse at its bottom left (forWidth). Its comp is loaded as the
+ * button comes on screen; its canvas (a WebGL context) is made only while the pointer is on or near the button and let go once
+ * it has moved away and the hover has faded (holdNearPointer), so a page of these holds a few contexts at most. Rendered as the
+ * button's first child; the button's content sits above it.
  */
 const ButtonRazorSenseLayer = ({
   isEnabled,
@@ -112,7 +115,7 @@ const ButtonRazorSenseLayer = ({
   const onLiveRef = useRef(onLiveChange);
   onLiveRef.current = onLiveChange;
 
-  // the button's shape (square or wide) and whether it's on screen yet
+  // the button's shape (square or wide) and whether it's on screen
   useEffect(() => {
     const button = layerRef.current?.parentElement;
     // no observers (a test's DOM): Blade's own hover stays
@@ -125,7 +128,6 @@ const ButtonRazorSenseLayer = ({
     const resize = new ResizeObserver(() => setSquare(isSquare(button)));
     resize.observe(button);
     setSquare(isSquare(button));
-    // on screen (or about to be) it has a WebGL context; off it, the context is freed (browsers allow a page only a few)
     const seen = new IntersectionObserver(
       (entries) => {
         const entry = entries[entries.length - 1];
@@ -146,6 +148,8 @@ const ButtonRazorSenseLayer = ({
     const button = layer?.parentElement;
     if (!isEnabled || !isOnScreen || square === null || !layer || !host || !button)
       return undefined;
+    // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
+    if (!canPlayHover()) return undefined;
     let isMounted = true;
     let stage: FreshStage | null = null;
     let engine: FreshEngine | null = null;
@@ -154,38 +158,47 @@ const ButtonRazorSenseLayer = ({
     let region: number[] = [0, 0, 1, 1];
     let laidWidth = 0; // the width the comp is laid out for (0: as made)
     let isOn = false;
+    let isHeld = false;
     let pauseTimer = 0;
     let relayTimer = 0;
+    let slot: HoverSlot | null = null;
 
     // a longer button's comp is laid out for its width (forWidth); any other plays the comp as made
     const widthOf = (w: number): number =>
       square || !setup || w <= setup.mask.w / 2 ? 0 : Math.round(w);
     let createEngine: CreateFreshEngine | null = null;
-    // the stage gave up (no usable WebGL2, frames too slow, a GPU context the browser took back): the button's own hover, for good
+    // it can't draw here after all (no usable WebGL2, frames too slow): Blade's own hover, for good
     let hasGivenUp = false;
-    // (set below, once what it undoes is in place)
+    // (set below, once what they undo is in place)
     let giveUp = (): void => undefined;
+    let letGo = (): void => undefined;
     // a new stage for each layout: a stage's canvas can't take another comp (its engine goes with the canvas's GL context)
     const mount = (w: number): void => {
-      if (!createEngine || !doc || !setup || hasGivenUp) return;
+      if (!createEngine || !doc || !setup || hasGivenUp || !isHeld) return;
       stage?.destroy();
-      stage = new FreshStage(host, createEngine, { onError: () => giveUp() });
+      // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
+      // means it can't draw here
+      stage = new FreshStage(host, createEngine, {
+        onError: (reason) => (reason === 'lost' ? letGo() : giveUp()),
+      });
       laidWidth = widthOf(w);
-      engine = stage.reducedMotion
-        ? null
-        : stage.mount({
-            doc: laidWidth ? forWidth(doc, setup, laidWidth) : doc,
-            opts: {
-              fit: 'cover',
-              alpha: true,
-              paused: true,
-              region: region as [number, number, number, number],
-              dpr: 3,
-            },
-          });
+      engine = stage.mount({
+        doc: laidWidth ? forWidth(doc, setup, laidWidth) : doc,
+        opts: {
+          fit: 'cover',
+          alpha: true,
+          paused: true,
+          region: region as [number, number, number, number],
+          dpr: 3,
+        },
+      });
       stage.setPaused(!isOn);
-      // live (the button's hover gives way to it) only with an engine drawing
-      onLiveRef.current?.(Boolean(engine));
+    };
+    // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
+    const release = (): void => {
+      stage?.destroy();
+      stage = null;
+      engine = null;
     };
     // a longer button laid out again as it resizes (the label's font coming in), not on the next hover
     const relay = new ResizeObserver(() => {
@@ -202,7 +215,7 @@ const ButtonRazorSenseLayer = ({
       regionOf(doc, setup, w, h).forEach((v, i) => {
         region[i] = v;
       });
-      if (widthOf(w) !== laidWidth) mount(w);
+      if (!engine || widthOf(w) !== laidWidth) mount(w);
       engine?.player.shapes(
         (2 * w) / setup.mask.w,
         (2 * h) / setup.mask.h,
@@ -212,32 +225,69 @@ const ButtonRazorSenseLayer = ({
       );
     };
     const show = (on: boolean): void => {
-      if (on === isOn || !engine || !stage) return;
+      if (on === isOn) return;
+      if (on) {
+        // its canvas is made as the pointer nears: once it's held, it shows if the pointer is still on the button
+        if (!isHeld || hasGivenUp) return;
+        fit();
+        if (!engine || !stage) return;
+      }
       isOn = on;
       window.clearTimeout(pauseTimer);
+      pauseTimer = 0;
       layer.style.transitionDuration = on ? '.12s' : '.35s';
       layer.style.opacity = on ? '1' : '0';
-      if (on) {
+      if (on && engine && stage) {
         // the button's insets again, over the canvas (its hover ones)
         if (edgeRef.current) edgeRef.current.style.boxShadow = getComputedStyle(button).boxShadow;
-        fit();
         stage.setPaused(false);
-        engine?.player.restart();
-        engine?.player.holdLoop(true);
+        engine.player.restart();
+        engine.player.holdLoop(true);
       } else {
-        // faded out: nothing more to draw
+        // faded out: nothing more to draw, and its canvas may be let go
         pauseTimer = window.setTimeout(() => {
+          pauseTimer = 0;
           engine?.player.pause();
           stage?.setPaused(true);
+          slot?.update();
         }, 450);
       }
     };
-    const enter = (): void => show(true);
+    const enter = (): void => {
+      slot?.update();
+      show(true);
+    };
     const leave = (): void => show(false);
+    const hold = (held: boolean): void => {
+      isHeld = held;
+      if (!held) {
+        // (a running hover is let go only when more run than may be held)
+        isOn = false;
+        window.clearTimeout(pauseTimer);
+        pauseTimer = 0;
+        layer.style.opacity = '0';
+        release();
+        return;
+      }
+      // its canvas made as the pointer nears (its first frame ready for the hover), shown if the pointer's already on it
+      fit();
+      if (button.matches(':hover')) show(true);
+    };
+    letGo = (): void => {
+      // (after this frame: the stage may be the one telling us)
+      window.setTimeout(() => {
+        if (!isMounted) return;
+        isOn = false;
+        window.clearTimeout(pauseTimer);
+        pauseTimer = 0;
+        layer.style.opacity = '0';
+        release();
+        slot?.update();
+      }, 0);
+    };
     giveUp = (): void => {
       if (hasGivenUp) return;
       hasGivenUp = true;
-      // (after this frame: the stage may be the one telling us)
       window.setTimeout(() => {
         isOn = false;
         window.clearTimeout(pauseTimer);
@@ -246,13 +296,14 @@ const ButtonRazorSenseLayer = ({
         relay.disconnect();
         button.removeEventListener('pointerenter', enter);
         button.removeEventListener('pointerleave', leave);
-        stage?.destroy();
-        stage = null;
-        engine = null;
+        slot?.remove();
+        slot = null;
+        release();
         onLiveRef.current?.(false);
       }, 0);
     };
 
+    // its comp and the engine's code loaded now (no canvas yet): ready for the pointer
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         if (!isMounted) return;
@@ -265,13 +316,16 @@ const ButtonRazorSenseLayer = ({
         if (!setup) return;
         region = regionOf(doc, setup, button.offsetWidth, button.offsetHeight);
         createEngine = createFreshEngine;
-        mount(button.offsetWidth);
-        if (!engine) return; // reduced motion or no WebGL2: Blade's own hover stays
         host.style.opacity = String(setup.opacity);
+        // live: the button's hover gives way to it
+        onLiveRef.current?.(true);
         relay.observe(button);
         button.addEventListener('pointerenter', enter);
         button.addEventListener('pointerleave', leave);
-        if (button.matches(':hover')) show(true);
+        slot = holdNearPointer(button, {
+          isBusy: () => isOn || Boolean(pauseTimer),
+          onHold: hold,
+        });
       })
       .catch(() => {
         // the engine couldn't load: Blade's own hover
@@ -284,8 +338,9 @@ const ButtonRazorSenseLayer = ({
       relay.disconnect();
       button.removeEventListener('pointerenter', enter);
       button.removeEventListener('pointerleave', leave);
+      slot?.remove();
       layer.style.opacity = '0';
-      stage?.destroy();
+      release();
       onLiveRef.current?.(false);
     };
   }, [isEnabled, isOnScreen, square, mode]);
