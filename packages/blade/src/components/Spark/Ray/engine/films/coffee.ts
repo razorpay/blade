@@ -13,7 +13,7 @@ export const SHARED = { rayWear, rayCap, rayTour, rayFlip };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART, BREATH, hoverInit, hoverStep, withHover, toWorld, STEAM } = RC;
+const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART, BREATH, hoverInit, hoverStep, withHover, toWorld, STEAM, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -76,7 +76,7 @@ cv.addEventListener('pointermove', e => { cursorPx = [e.clientX, e.clientY]; });
 function hovered(f, now, busy) {
   const dt = hoverAt ? Math.min(50, now - hoverAt) : 16; hoverAt = now;
   hoverGate += ((busy ? 0 : 1) - hoverGate) * (1 - Math.exp(-dt / 220));
-  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * cv.width / Math.max(1, $h.innerWidth), cursorPx[1] * cv.height / Math.max(1, $h.innerHeight)]) : null;
+  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * STAGE.W / Math.max(1, $h.innerWidth) - STAGE.x, cursorPx[1] * STAGE.H / Math.max(1, $h.innerHeight) - STAGE.y]) : null;
   hoverStep(HV, dt, f, cur); return withHover(f, { ...HV, amt: HV.amt * hoverGate, lean: HV.lean * hoverGate });
 }   // canon Coffee's: he reaches; the cup's back by him; the buzz is over
 let awayAt = null, awayHeld = false, awayT0 = 0, lastDrawn = null, FF = 1, parkAt = null, parked = null, slowIn = null, heldAt = 0, HB = { a: 0, out: 0, ts: 0 }, cutBy = 0; const PARK_EASE = 500;
@@ -104,8 +104,9 @@ const holdBreath = (f, now) => {   // held: his breath goes on (eased in, and ou
   return { ...g, pose: { ...g.pose, squash: (g.pose.squash || 0) - BREATH.amt * a * Math.sin(2 * Math.PI * (now - heldAt) / BREATH.ms) } };
 };
 function rebuild() {}
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, 0, 404, 0.36, 0.66); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, 0, 404, 0.36, 0.66); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 function frame(now) {
   requestAnimationFrame(frame);

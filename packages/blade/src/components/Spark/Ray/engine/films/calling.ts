@@ -12,7 +12,7 @@ export const SHARED = { rayWear, rayCap, rayTour };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, FIG, HEADSET } = RC;
+const { simulate, draw, frameAt, fitTravel, FIG, HEADSET, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -79,8 +79,9 @@ if (EMBED) document.body.classList.add('embed');
 const cv = document.getElementById('stage'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
 let F = film(), sim = simulate(F.SCRIPT, { seed: 1 }), mode = 'light', t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, lastP = null, paused = false, pausedAt = 0, lastNow = performance.now();
 function rebuild() {}   // (nothing here remakes the script)
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -300, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -300, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 const phaseOf = t => t < F.E ? 'the headset goes on' : t < F.X ? 'on a call' + (leaving ? ' · hanging up' : '') : t < sim.total ? 'the headset comes off' : '';
 const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x ?? d)) * u, P = { ...b.pose }; for (const k of ['squash', 'lean', 'x', 'y', 'turn', 'tilt']) P[k] = L(a.pose[k], b.pose[k]); P.volume = L(a.pose.volume, b.pose.volume, 1);

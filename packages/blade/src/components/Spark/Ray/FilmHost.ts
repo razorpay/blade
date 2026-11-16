@@ -11,7 +11,13 @@
  * - animation frames driven by the component's one loop, and timers that stop when it is disposed
  * The film's own markup (panel, buttons) is parsed off-screen so its code finds the elements it expects.
  */
+import { RayCore } from './engine';
 import type { FilmMessage, FilmModule, SharedFactory } from './engineTypes';
+
+const RC = RayCore as any;
+
+/** The part of the stage a film draws on, in the stage's CSS px. */
+type Crop = { left: number; top: number; right: number; bottom: number };
 
 type Listener = (event: any) => void;
 
@@ -71,6 +77,7 @@ class FilmHost {
   private readonly channel = new MessageChannel();
   private disposed = false;
   private failed = false;
+  private crop: Crop | null = null; // the part of its stage it draws on (null: all of it)
   private parked = false; // asleep, its stage-sized canvases emptied (see the channel)
   private readonly options: FilmHostOptions;
 
@@ -82,7 +89,7 @@ class FilmHost {
     this.layer.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
     for (const id of film.canvases) {
       const canvas = document.createElement('canvas');
-      canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;';
+      canvas.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;display:block;'; // (placed at its crop: place())
       this.canvases[id] = this.track(canvas);
       this.layer.append(canvas);
     }
@@ -148,6 +155,7 @@ class FilmHost {
     const fakeWindow = live<Record<string, unknown>>(
       { addEventListener: on, removeEventListener: off },
       {
+        rayCrop: () => this.crop, // (ray-core's stageCrop reads it: the films' canvases cover only this)
         innerWidth: () => this.innerWidth,
         innerHeight: () => this.innerHeight,
         devicePixelRatio: () => this.devicePixelRatio,
@@ -231,14 +239,50 @@ class FilmHost {
     this.innerHeight = height;
     this.devicePixelRatio = dpr;
     if (!this.parked) this.dispatch('resize', {});
+    this.place();
   }
 
-  /** Its canvases the stage's size, emptied (a canvas of another size, like Searching's lens texture, is its own and kept). */
+  /**
+   * The part of its stage the film draws on (the stage's CSS px), so its canvases cover only that, not the whole stage (the
+   * performance review, razorpay/blade#4116): the film sizes them with ray-core's stageCrop and moves its view by the part's corner, and
+   * they're placed there. Set it before the film's first resize.
+   */
+  setCrop(crop: Crop | null): void {
+    this.crop = crop;
+    if (!this.parked) this.dispatch('resize', {});
+    this.place();
+  }
+
+  /** The device px part of the stage its canvases cover, as the film works it out. */
+  private part(): { x: number; y: number; w: number; h: number; W: number; H: number } {
+    const d = this.devicePixelRatio;
+    return RC.stageCrop(
+      Math.round(this.innerWidth * d),
+      Math.round(this.innerHeight * d),
+      d,
+      this.crop,
+    );
+  }
+
+  /** Its canvases placed over the part of the stage they cover (whole device px). */
+  private place(): void {
+    const d = this.devicePixelRatio || 1;
+    const K = this.part();
+    Object.values(this.canvases).forEach((canvas) =>
+      Object.assign(canvas.style, {
+        left: `${K.x / d}px`,
+        top: `${K.y / d}px`,
+        width: `${K.w / d}px`,
+        height: `${K.h / d}px`,
+      }),
+    );
+  }
+
+  /** Its canvases the size of its part of the stage, emptied (one of another size, like Searching's lens texture, is its own and kept). */
   private empty(): void {
-    const w = Math.round(this.innerWidth * this.devicePixelRatio);
-    const h = Math.round(this.innerHeight * this.devicePixelRatio);
+    const K = this.part();
     this.made.forEach((canvas) => {
-      if (canvas.width === w && canvas.height === h) freeCanvas(canvas);
+      if (canvas.width === K.w && canvas.height === K.h) freeCanvas(canvas);
     });
   }
 

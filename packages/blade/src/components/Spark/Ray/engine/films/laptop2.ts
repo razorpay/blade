@@ -11,7 +11,7 @@ export const SHARED = { rayWear, rayCap };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, toCanvas, withClick, FIG, LIGHT } = RC;
+const { simulate, draw, frameAt, fitTravel, toCanvas, withClick, FIG, LIGHT, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
 let FILM;
@@ -249,7 +249,8 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 let PACE = 1, cut = null, only = false, sentFront = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
 const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'working' }); } };
 if (EMBED) document.body.classList.add('embed');
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height; view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -540, 404, 0.3, 0.68); view.scale *= ZOOM; };   // embedded: every film on the same stage
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height; view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -540, 404, 0.3, 0.68); view.scale *= ZOOM; view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage
 addEventListener('resize', size); size();
 const phaseOf = t => t < F.L.out[0] ? '' : t < F.L.out[1] ? 'whips it out' : t < F.L.on ? 'in front of him' : t < F.E ? 'it comes on' : t < F.X ? (F.bursts.some(([a, b]) => t >= a && t < b) ? 'working · typing' : 'working · reading it back') + ((F.eyeSegs.find(([a, b]) => t >= a && t < b) || [])[2] ? ' · ' + F.eyeSegs.find(([a, b]) => t >= a && t < b)[2] : '') + (leaving ? ' · putting it away' : '') : t < sim.total ? 'putting it away' : '';
 const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x ?? d)) * u, P = { ...b.pose };

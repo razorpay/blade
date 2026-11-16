@@ -12,7 +12,7 @@ export const SHARED = { rayWear, rayCap, rayTour };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, eyesOfFrame, toCanvas, FIG } = RC;
+const { simulate, draw, frameAt, fitTravel, eyesOfFrame, toCanvas, FIG, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -213,8 +213,9 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 let PACE = 1, cut = null, only = false, sentFront = null, lastP = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
 const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'search' }); } };
 if (EMBED) document.body.classList.add('embed');
-const size = () => { const d = $h.devicePixelRatio || 1; for (const c of [rayCv, lensCv, glassCv]) { c.width = Math.round($h.innerWidth * d); c.height = Math.round($h.innerHeight * d); } off.width = rayCv.width; off.height = rayCv.height;
-  view = EMBED ? fitTravel(rayCv.width, rayCv.height, -740, 404, 0.3, 0.68) : fitTravel(rayCv.width, rayCv.height, -260, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, rayCv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); for (const c of [rayCv, lensCv, glassCv]) { c.width = STAGE.w; c.height = STAGE.h; } off.width = rayCv.width; off.height = rayCv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -260, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 const phaseOf = t => t < 100 ? '' : t < G.out[1] ? 'out it comes' : t < 900 / Q.entrySpeed ? 'to his eye' : t < F.E ? 'one eye shut, in close' : t < F.X ? 'searching' + (leaving ? ' · putting it away' : '') : t < sim.total ? 'putting it away' : '';
 const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x ?? d)) * u, P = { ...b.pose };

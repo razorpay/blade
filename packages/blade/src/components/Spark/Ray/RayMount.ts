@@ -65,6 +65,20 @@ const PLAYER_LEFT = 1;
 const PLAYER_ABOVE = 2;
 const PLAYER_RIGHT = 1;
 const PLAYER_BELOW = 0.75;
+// each film's canvases: the part of the stage it ever draws on, in his widths past his box to the left and above (razorpay/blade#4116).
+// Measured over each film's loop, coin flips (spam too), the hover look, typing, the hop, handoffs and the nightcap (2026-11-16): to the
+// left calling 0.04, writing 0.47, searching 0.60, laptop 1.26, coffee 0.72, cash 1.18, reading box 2.41; above 0.03 for the answer films
+// (0.13 with the nightcap) and 1.03 for the idle films (a coin). These are about 1.5 times that; to the right and below they go to the
+// room's edges (ROOM_RIGHT, ROOM_BELOW), past which nothing shows anyway
+const FILM_CROP: Record<string, [left: number, above: number]> = {
+  calling: [0.5, 0.5],
+  writing: [1, 0.5],
+  search: [1.2, 0.5],
+  laptop2: [2, 0.5],
+  coffee: [1.4, 1.8],
+  cash: [2, 1.8],
+  readbox: [3.8, 1.8],
+};
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
 const geometry = (
@@ -665,6 +679,7 @@ class RayMount {
     film.host.layer.style.visibility = 'hidden';
     this.films[id] = film;
     this.stage.append(film.host.layer);
+    film.host.setCrop(this.filmCrop(id)); // (before its first size: its canvases are only ever this big)
     film.host.resize(this.geo.width, this.geo.height, this.dpr);
     film.host.start();
   }
@@ -1032,9 +1047,27 @@ class RayMount {
     );
     this.stageAt = null;
     Object.values(this.films).forEach((f) => {
+      f.host.setCrop(this.filmCrop(f.id));
       f.host.resize(g.width, g.height, this.dpr);
       f.host.send({ ray: 'zoom', z: g.zoom });
     });
+  }
+
+  /** The part of the stage a film draws on (the stage's CSS px): FILM_CROP past his box, the room's edges right and below. */
+  private filmCrop(
+    id: string,
+  ): { left: number; top: number; right: number; bottom: number } | null {
+    const crop = FILM_CROP[id];
+    if (!crop) return null;
+    const g = this.geo;
+    const w = WIDTHS[this.options.size];
+    const top = g.floor - g.boxHeight; // his box's top on the stage
+    return {
+      left: Math.max(0, g.left - w * crop[0]),
+      top: Math.max(0, top - w * crop[1]),
+      right: Math.min(g.width, g.left + w * (1 + ROOM_RIGHT)),
+      bottom: Math.min(g.height, g.floor + w * ROOM_BELOW),
+    };
   }
 
   private readonly onClick = (): void => this.click();

@@ -13,7 +13,7 @@ export const SHARED = { rayWear, rayCap, rayTour, rayFlip };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, eyesOfFrame, FIG, BREATH, hoverInit, hoverStep, withHover, toWorld } = RC;
+const { simulate, draw, frameAt, fitTravel, eyesOfFrame, FIG, BREATH, hoverInit, hoverStep, withHover, toWorld, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -315,8 +315,9 @@ const PARK_EASE = 500;   // ms: his last moves slow to a stop as he comes to the
 let skipTo = null, lastDrawn = null, tossAt = null;   // tossAt: finishing mid-paper, the paper tossed now (when, from where)   // (lastDrawn: the frame as drawn, for tests)   // finishing cut a bit short: where the film goes on from after the hold
 let seed = 1, F = film(Q, seed), sim = bake(simulate(F.SCRIPT, { seed })), blend = null, clock = 0, pendingLeave = null, parkAt = null, parked = null, slowIn = null, FF = 1, forceNext = null, mode = 'light', t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, lastP = null, paused = false, pausedAt = 0, lastNow = performance.now();
 function rebuild() { const t = performance.now() - t0, was = F; F = film(Q, seed); sim = bake(simulate(F.SCRIPT, { seed })); const map = t < was.E ? t * F.E / Math.max(1, was.E) : t < was.X ? F.E + Math.min(t - was.E, F.X - F.E - 1) : F.X + (t - was.X); t0 = performance.now() - map; }
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -760, 404, 0.3, 0.6); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -760, 404, 0.3, 0.6); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 // ---- the pointer (the user, via flow 9: "the hover range and follow cursor should be there for these new idle states, only scanning the
 //      paper or scanning a note overrides the cursor look on hover"): within his hover range his gaze and lean follow it, Ray Studio's way
@@ -326,7 +327,7 @@ const HV = hoverInit(); let cursorPx = null, hoverGate = 1;
 cv.addEventListener('pointermove', e => { cursorPx = [e.clientX, e.clientY]; }); cv.addEventListener('pointerleave', () => { cursorPx = null; });
 function hovered(f, dt, busy) {   // dt in s; busy: his eyes are on the paper he reads
   hoverGate += ((busy ? 0 : 1) - hoverGate) * (1 - Math.exp(-dt * 1000 / 220));
-  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * cv.width / Math.max(1, $h.innerWidth), cursorPx[1] * cv.height / Math.max(1, $h.innerHeight)]) : null;
+  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * STAGE.W / Math.max(1, $h.innerWidth) - STAGE.x, cursorPx[1] * STAGE.H / Math.max(1, $h.innerHeight) - STAGE.y]) : null;
   hoverStep(HV, dt * 1000, f, cur); return withHover(f, { ...HV, amt: HV.amt * hoverGate, lean: HV.lean * hoverGate });
 }
 

@@ -1484,6 +1484,15 @@ export function idleFrame(t, seed = 3) {
 
 // fit Ray into a canvas: his floor root at the bottom-middle, his box about `frac` of the width
 // fit Ray and his whole travel: xmin / xmax in Ray px (from the script), so he has room to go left and right
+// a film drawn on part of its stage (Blade's Ray, razorpay/blade#4116): the page gives the part it draws on (window.rayCrop: its stage's CSS px,
+// { left, top, right, bottom }); its canvases cover that much and its view is the stage's, moved by that part's corner (whole device px, so he's
+// drawn on the same pixels). No crop: the whole stage, as before. W, H: the stage (device px); x, y, w, h: the part
+export function stageCrop(W, H, d, c) {
+  if (!c) return { x: 0, y: 0, w: W, h: H, W, H };
+  const x = Math.max(0, Math.min(W - 1, Math.floor(c.left * d))), y = Math.max(0, Math.min(H - 1, Math.floor(c.top * d)));
+  const x1 = Math.max(x + 1, Math.min(W, Math.ceil(c.right * d))), y1 = Math.max(y + 1, Math.min(H, Math.ceil(c.bottom * d)));
+  return { x, y, w: x1 - x, h: y1 - y, W, H };
+}
 export function fitTravel(cw, ch, xmin = 0, xmax = 0, frac = 0.42, floor = 0.72, rise = 0) {   // rise: Ray px he reaches above his top (a jump)
   const bw = BASE[2][0], travel = (xmax - xmin) * FIG, scale = Math.min(cw * frac / bw, cw * 0.9 / (bw + travel + 80), ch * 0.5 / hR, ch * floor * 0.94 / (hR + Math.max(0, rise) * FIG));
   return { scale, ox: cw / 2 - (C0[0] - ROOT[0] + (xmin + xmax) / 2 * FIG) * scale, oy: ch * floor };
