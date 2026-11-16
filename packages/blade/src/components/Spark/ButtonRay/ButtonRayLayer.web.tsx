@@ -153,6 +153,11 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
  * softer for it.
  */
 const MAX_RAY_SHARPNESS = 2;
+/**
+ * Ray's films' stage, in his widths: the button shows only his box and a little round it (cut by its corners), so his films lay
+ * out on 4 x 3 of his widths, not Ray's 16 x 8: he's drawn the same, with canvases about a tenth the size (the PR review)
+ */
+const RAY_STAGE: [number, number] = [4, 3];
 const screenDensity = (): number =>
   Math.min(2, (typeof window === 'undefined' ? 1 : window.devicePixelRatio) || 1);
 
@@ -230,7 +235,8 @@ const ButtonRayLayer = ({
     let pauseTimer = 0;
     let searchTimer = 0;
     let hasWarned = false;
-    const basePadding = parseFloat(getComputedStyle(button).paddingRight) || 0;
+    // Blade's own right padding: measured at rest with the rest (measure), so a resize or a new size since keeps it right
+    let basePadding = parseFloat(getComputedStyle(button).paddingRight) || 0;
     // the widening (e: 0..1) and the wash (its start and, once the pointer leaves, its fade). What it lays out by is measured as
     // the hover starts, never while it runs: each frame writes, and reads nothing back (a read after a write is a layout)
     const S = {
@@ -277,6 +283,8 @@ const ButtonRayLayer = ({
       return Math.max(0, contentEnd - end);
     };
     const measure = (): void => {
+      // (at rest the padding is Blade's own: only while it's open is it the widening's)
+      if (!S.padding) basePadding = parseFloat(getComputedStyle(button).paddingRight) || 0;
       S.w0 = button.offsetWidth;
       S.h0 = button.offsetHeight;
       S.g = S.h0 / 34;
@@ -695,6 +703,7 @@ const ButtonRayLayer = ({
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
               _scale={Math.min(rayWidth / rayBox.width, MAX_RAY_SHARPNESS / screenDensity())}
               _preloadState={INV.state}
+              _stage={RAY_STAGE}
             />
           ) : null}
         </span>

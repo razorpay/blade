@@ -62,6 +62,7 @@ import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
 import { ButtonRay } from '~components/Spark/ButtonRay';
+import { BUTTON_RAY_VARIANTS } from '~components/Spark/ButtonRay';
 import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
 /**
@@ -70,7 +71,11 @@ import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
  */
 export type ButtonAiHover = 'razorsense' | `ray-${ButtonRayVariant}`;
 
-const AI_HOVERS: readonly ButtonAiHover[] = ['razorsense', 'ray-investigate'];
+// (one list: a new Ray action in BUTTON_RAY_VARIANTS is a new value here and in the type at once)
+const AI_HOVERS: readonly ButtonAiHover[] = [
+  'razorsense',
+  ...BUTTON_RAY_VARIANTS.map((action) => `ray-${action}` as const),
+];
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];

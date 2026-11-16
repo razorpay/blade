@@ -162,6 +162,14 @@ const ButtonRazorSenseLayer = ({
     let pauseTimer = 0;
     let relayTimer = 0;
     let slot: HoverSlot | null = null;
+    // the button's own hover gives way only while RazorSense can draw over it: its canvas made (held near the pointer), not
+    // just its code loaded, so a hover that isn't held (more running than may be) keeps the button's own (the PR review)
+    let isLive = false;
+    const setLive = (live: boolean): void => {
+      if (live === isLive) return;
+      isLive = live;
+      onLiveRef.current?.(live);
+    };
 
     // a longer button's comp is laid out for its width (forWidth); any other plays the comp as made
     const widthOf = (w: number): number =>
@@ -193,12 +201,14 @@ const ButtonRazorSenseLayer = ({
         },
       });
       stage.setPaused(!isOn);
+      setLive(Boolean(engine));
     };
     // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
     const release = (): void => {
       stage?.destroy();
       stage = null;
       engine = null;
+      setLive(false);
     };
     // a longer button laid out again as it resizes (the label's font coming in), not on the next hover
     const relay = new ResizeObserver(() => {
@@ -300,7 +310,6 @@ const ButtonRazorSenseLayer = ({
         slot?.remove();
         slot = null;
         release();
-        onLiveRef.current?.(false);
       }, 0);
     };
 
@@ -318,8 +327,6 @@ const ButtonRazorSenseLayer = ({
         region = regionOf(doc, setup, button.offsetWidth, button.offsetHeight);
         createEngine = createFreshEngine;
         host.style.opacity = String(setup.opacity);
-        // live: the button's hover gives way to it
-        onLiveRef.current?.(true);
         relay.observe(button);
         button.addEventListener('pointerenter', enter);
         button.addEventListener('pointerleave', leave);
@@ -342,7 +349,6 @@ const ButtonRazorSenseLayer = ({
       slot?.remove();
       layer.style.opacity = '0';
       release();
-      onLiveRef.current?.(false);
     };
   }, [isEnabled, isOnScreen, square, mode]);
 

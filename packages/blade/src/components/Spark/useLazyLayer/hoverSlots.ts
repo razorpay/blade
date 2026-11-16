@@ -6,12 +6,16 @@ import { whyCantAnimate } from '../RazorSenseEngine';
  * near its button, and let go once it has moved away and the hover has faded out: a page of them holds a few at most, whatever
  * its size (the PR review: 24 buttons made 24 contexts at load, and 8 lost their hover for good).
  *
- * Near: within NEAR px of the button (its canvases made a moment before the pointer gets there, so the first frame isn't
- * late), kept till it's FAR px away. At most MAX_HELD are held at once, those the pointer is closest to (a hover still running
- * or fading first). Touch has no hover: only a mouse or a pen counts.
+ * Held: the button the pointer is on, at once; one it has stopped next to (within NEAR px, off any button, for DWELL ms), so its
+ * first frame is ready when the pointer gets there; and any already held while the pointer stays within FAR px of it (back and
+ * forth between neighbours makes nothing new). A pointer passing near buttons, or resting on one, doesn't make its neighbours'
+ * canvases: every canvas made and let go is GPU work, and Safari counts it against its limit till it's cleaned up. At most
+ * MAX_HELD are held at once, those the pointer is closest to (a hover still running or fading first). Touch has no hover: only a
+ * mouse or a pen counts.
  */
 const NEAR = 48;
 const FAR = 96;
+const DWELL = 120;
 const MAX_HELD = 3;
 
 type Slot = {
@@ -20,9 +24,10 @@ type Slot = {
   isBusy: () => boolean;
   /** told when it may make its canvases (true) and when it must let them go (false) */
   onHold: (isHeld: boolean) => void;
-  isNear: boolean;
   isHeld: boolean;
   distance: number;
+  /** since when the pointer has been within NEAR of it, off every button (0: it isn't) */
+  nearSince: number;
 };
 
 type HoverSlot = {
@@ -39,6 +44,7 @@ type HoverSlot = {
 const slots = new Set<Slot>();
 let pointer: [number, number] | null = null;
 let frame = 0;
+let dwellTimer = 0;
 
 const distanceTo = (element: HTMLElement, [x, y]: [number, number]): number => {
   const r = element.getBoundingClientRect();
@@ -47,13 +53,37 @@ const distanceTo = (element: HTMLElement, [x, y]: [number, number]): number => {
 
 const check = (): void => {
   frame = 0;
+  window.clearTimeout(dwellTimer);
+  dwellTimer = 0;
   const at = pointer;
-  const wanted: Slot[] = [];
+  const now = performance.now();
+  let isOnOne = false;
   slots.forEach((slot) => {
     slot.distance = at ? distanceTo(slot.element, at) : Infinity;
-    slot.isNear = slot.distance <= (slot.isNear ? FAR : NEAR);
-    if (slot.isNear || slot.isBusy()) wanted.push(slot);
+    if (slot.distance === 0) isOnOne = true;
   });
+  const wanted: Slot[] = [];
+  slots.forEach((slot) => {
+    // (near, and off every button: on one, its neighbours wait)
+    slot.nearSince = !isOnOne && slot.distance <= NEAR ? slot.nearSince || now : 0;
+    if (slot.isBusy() || slot.distance === 0 || (slot.isHeld && slot.distance <= FAR)) {
+      wanted.push(slot);
+    }
+  });
+  // the one the pointer has stopped next to, once it has stayed there a moment
+  const next = [...slots]
+    .filter((slot) => slot.nearSince && !wanted.includes(slot))
+    .sort((a, b) => a.distance - b.distance)[0];
+  if (next) {
+    const waited = now - next.nearSince;
+    if (waited >= DWELL) wanted.push(next);
+    else {
+      // (looked at again once it has: the pointer may not move meanwhile)
+      dwellTimer = window.setTimeout(() => {
+        if (!frame) frame = requestAnimationFrame(check);
+      }, DWELL - waited + 1);
+    }
+  }
   const held = new Set(
     wanted
       .sort((a, b) => Number(b.isBusy()) - Number(a.isBusy()) || a.distance - b.distance)
@@ -106,7 +136,7 @@ const holdNearPointer = (
   element: HTMLElement,
   { isBusy, onHold }: Pick<Slot, 'isBusy' | 'onHold'>,
 ): HoverSlot => {
-  const slot: Slot = { element, isBusy, onHold, isNear: false, isHeld: false, distance: Infinity };
+  const slot: Slot = { element, isBusy, onHold, isHeld: false, distance: Infinity, nearSince: 0 };
   if (!slots.size) listen(true);
   slots.add(slot);
   schedule();
@@ -125,6 +155,8 @@ const holdNearPointer = (
         listen(false);
         cancelAnimationFrame(frame);
         frame = 0;
+        window.clearTimeout(dwellTimer);
+        dwellTimer = 0;
         pointer = null;
       }
     },

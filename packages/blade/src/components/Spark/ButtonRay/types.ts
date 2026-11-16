@@ -2,7 +2,8 @@
  * What Ray does on a button with `aiHover="ray-<action>"`. 'investigate': flow 9's "Investigate with Ray", he whips out his magnifying glass
  * and searches. More to come.
  */
-type ButtonRayVariant = 'investigate';
+const BUTTON_RAY_VARIANTS = ['investigate'] as const;
+type ButtonRayVariant = typeof BUTTON_RAY_VARIANTS[number];
 
 type ButtonRayProps = {
   isEnabled: boolean;
@@ -11,4 +12,5 @@ type ButtonRayProps = {
   size: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
+export { BUTTON_RAY_VARIANTS };
 export type { ButtonRayVariant, ButtonRayProps };

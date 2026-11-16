@@ -64,9 +64,17 @@ const PLAYER_ABOVE = 2;
 const PLAYER_RIGHT = 1;
 const PLAYER_BELOW = 0.75;
 
-/** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
+/** The films' stage, in his widths: what every film is laid out on (Ray.web's _stage can make it smaller) */
+const STAGE: readonly [number, number] = [16, 8];
+
+/**
+ * His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide), on a stage `cols`
+ * by `rows` of his widths. A smaller stage draws him the same: fitTravel fits his travel to its width, and the zoom takes him back
+ * to `w` wide, so only the room round him shrinks (and the films' canvases with it).
+ */
 const geometry = (
   w: number,
+  [cols, rows]: readonly [number, number] = STAGE,
 ): {
   width: number;
   height: number;
@@ -80,8 +88,8 @@ const geometry = (
   const hR = -RC.BASE[2][1];
   const W = 404.5 * FIG;
   const travel = 1144 * FIG;
-  const width = Math.round(16 * w);
-  const height = Math.round(8 * w);
+  const width = Math.round(cols * w);
+  const height = Math.round(rows * w);
   const s0 = Math.min(
     (width * 0.3) / bw,
     (width * 0.9) / (bw + travel + 80),
@@ -148,8 +156,13 @@ type RayMountOptions = {
   lookY?: number;
   /** how much bigger than his box he's shown (Ray's _scale): his canvases drawn that much finer */
   scale?: number;
-  /** a state whose film stays loaded while he's idle (Ray's _preloadState): it starts at once when asked */
+  /**
+   * a state whose film stays loaded while he's idle (Ray's _preloadState): it starts at once when asked. He's only ever asked for
+   * that one, so the answer's next film isn't loaded ahead of it
+   */
   preload?: RayState;
+  /** the films' stage in his widths (Ray's _stage; 16 x 8 by default): smaller, where little of it is ever seen */
+  stage?: readonly [number, number];
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -313,7 +326,8 @@ class RayMount {
   update(options: Partial<RayMountOptions>): void {
     const sizeChanged =
       (options.size !== undefined && options.size !== this.options.size) ||
-      (options.scale !== undefined && options.scale !== this.options.scale);
+      (options.scale !== undefined && options.scale !== this.options.scale) ||
+      (options.stage !== undefined && String(options.stage) !== String(this.options.stage));
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
@@ -695,7 +709,8 @@ class RayMount {
   private wantedAnswerFilms(): string[] {
     const { state, preload } = this.options;
     if (state === 'idle') return preload && preload !== 'idle' ? [ANSWER_FILMS[preload]] : [];
-    const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
+    // (with a preload, he only ever plays that state: no next film)
+    const next = preload ? undefined : ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
     const wanted = next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
     return wanted.filter((id) => !this.failed.has(id));
   }
@@ -1034,7 +1049,7 @@ class RayMount {
   private layout(): void {
     const w = WIDTHS[this.options.size];
     this.dpr = this.pixelRatio();
-    this.geo = geometry(w);
+    this.geo = geometry(w, this.options.stage);
     const g = this.geo;
     this.floorCut = `inset(0 0 ${(g.height - g.floor).toFixed(2)}px 0)`;
     Object.assign(this.stage.style, {

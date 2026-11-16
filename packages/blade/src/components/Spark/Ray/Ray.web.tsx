@@ -53,6 +53,7 @@ const _Ray = (
     _lookY = 0,
     _scale = 1,
     _preloadState,
+    _stage,
     ...rest
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
@@ -73,6 +74,7 @@ const _Ray = (
     lookY: _lookY,
     scale: _scale,
     preload: _preloadState,
+    stage: _stage,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
@@ -143,7 +145,21 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, isInteractive, scheme, _lookY, _scale, _preloadState]);
+    // (its stage by value: a new array with the same size isn't a change)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    state,
+    idle,
+    size,
+    isVisible,
+    isInteractive,
+    scheme,
+    _lookY,
+    _scale,
+    _preloadState,
+    _stage?.[0],
+    _stage?.[1],
+  ]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(watchedInputRef ?? null);

@@ -17,49 +17,70 @@ const buttonAt = (top: number): HTMLElement => {
   document.body.append(button);
   return button;
 };
-const nextFrame = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 50));
+const wait = (ms = 50): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const moveTo = (x: number, y: number): void => {
   window.dispatchEvent(new MouseEvent('pointermove', { clientX: x, clientY: y }));
 };
 
 describe('holdNearPointer', () => {
-  it('holds the hovers the pointer is near, at most three, and lets them go as it moves away', async () => {
+  it('holds the button the pointer is on at once, and a neighbour only once the pointer stops next to it', async () => {
     const held: boolean[] = [];
-    let isBusy = false;
-    // five buttons 10 px apart: all within reach of a pointer on the middle one
-    const slots = [0, 10, 20, 30, 40].map((top, i) =>
+    // five rows 40 px apart (10 px between them)
+    const slots = [0, 40, 80, 120, 160].map((top, i) =>
       holdNearPointer(buttonAt(top), {
-        isBusy: () => i === 0 && isBusy,
+        isBusy: () => false,
         onHold: (isHeld) => {
           held[i] = isHeld;
         },
       }),
     );
-    await nextFrame();
+    await wait();
     // no pointer yet: nothing made
     expect(held.filter(Boolean)).toHaveLength(0);
 
+    // on row 1: only row 1 (resting on a button doesn't make its neighbours)
     moveTo(50, 55);
-    await nextFrame();
-    // the three nearest (the pointer's on 2, 3 and 4)
-    expect(held).toEqual([undefined, undefined, true, true, true]);
+    await wait(200);
+    expect(held).toEqual([undefined, true, undefined, undefined, undefined]);
 
-    moveTo(50, 500);
-    await nextFrame();
+    // into the gap below it: row 1 is kept (still within reach), row 2 waits for the pointer to stay
+    moveTo(50, 75);
+    await wait();
+    expect(held).toEqual([undefined, true, undefined, undefined, undefined]);
+    await wait(150);
+    expect(held).toEqual([undefined, true, true, undefined, undefined]);
+
+    // far away: all let go
+    moveTo(50, 900);
+    await wait();
     expect(held.filter(Boolean)).toHaveLength(0);
 
-    // a hover still running or fading isn't let go, however far the pointer is
+    slots.forEach((slot) => slot.remove());
+  });
+
+  it('keeps a hover that is still running or fading, and holds at most three', async () => {
+    const held: boolean[] = [];
+    let isBusy = false;
+    const slots = [0, 40, 80, 120].map((top, i) =>
+      holdNearPointer(buttonAt(top), {
+        isBusy: () => isBusy,
+        onHold: (isHeld) => {
+          held[i] = isHeld;
+        },
+      }),
+    );
     moveTo(50, 15);
-    await nextFrame();
+    await wait();
+    expect(held[0]).toBe(true);
+    // all four running (a quick pass over them): the three nearest the pointer kept
     isBusy = true;
     moveTo(50, 500);
-    await nextFrame();
-    expect(held[0]).toBe(true);
+    await wait();
+    expect(held.filter(Boolean)).toHaveLength(3);
     isBusy = false;
     slots[0].update();
-    await nextFrame();
-    expect(held[0]).toBe(false);
-
+    await wait();
+    expect(held.filter(Boolean)).toHaveLength(0);
     slots.forEach((slot) => slot.remove());
   });
 
@@ -72,10 +93,10 @@ describe('holdNearPointer', () => {
         isHeld = held;
       },
     });
-    await nextFrame();
+    await wait();
     expect(isHeld).toBe(false);
     slot.update([50, 1010]);
-    await nextFrame();
+    await wait();
     expect(isHeld).toBe(true);
     slot.remove();
   });
