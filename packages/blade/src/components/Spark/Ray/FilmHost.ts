@@ -71,6 +71,7 @@ class FilmHost {
   private readonly channel = new MessageChannel();
   private disposed = false;
   private failed = false;
+  private parked = false; // asleep, its stage-sized canvases emptied (see the channel)
   private readonly options: FilmHostOptions;
 
   constructor(options: FilmHostOptions) {
@@ -97,8 +98,19 @@ class FilmHost {
       if (!this.disposed && event.data && typeof event.data === 'object')
         options.onMessage(event.data);
     };
-    // the component's messages -> the film's 'message' listeners
-    this.channel.port2.onmessage = (event) => this.dispatch('message', { data: event.data });
+    // the component's messages -> the film's 'message' listeners. Asleep, a film doesn't draw: once it has its 'sleep' its
+    // stage-sized canvases are emptied (with the engine's layers on them), and sized again as its 'start' comes, before it draws.
+    // Its script stays loaded, so it starts as quickly (the performance re-review: a kept idle film held about 25 MB)
+    this.channel.port2.onmessage = (event) => {
+      const ray = event.data && typeof event.data === 'object' ? event.data.ray : null;
+      if (ray === 'start' && this.parked) {
+        this.parked = false;
+        this.dispatch('resize', {});
+      }
+      this.dispatch('message', { data: event.data });
+      if (ray === 'sleep') this.parked = true;
+      if (this.parked) this.empty(); // (and again after a message that sized them, its zoom)
+    };
 
     const stub = (id: string): HTMLElement => (this.stubs[id] ??= document.createElement('div'));
     const root = document.createElement('div');
@@ -211,14 +223,23 @@ class FilmHost {
     return this.modules[name];
   }
 
-  /** The film's window: its stage's size in CSS px, at the page's pixel density. */
+  /** The film's window: its stage's size in CSS px, at the page's pixel density. (Asleep, it's sized as it starts.) */
   resize(width: number, height: number, dpr: number): void {
     if (width === this.innerWidth && height === this.innerHeight && dpr === this.devicePixelRatio)
       return;
     this.innerWidth = width;
     this.innerHeight = height;
     this.devicePixelRatio = dpr;
-    this.dispatch('resize', {});
+    if (!this.parked) this.dispatch('resize', {});
+  }
+
+  /** Its canvases the stage's size, emptied (a canvas of another size, like Searching's lens texture, is its own and kept). */
+  private empty(): void {
+    const w = Math.round(this.innerWidth * this.devicePixelRatio);
+    const h = Math.round(this.innerHeight * this.devicePixelRatio);
+    this.made.forEach((canvas) => {
+      if (canvas.width === w && canvas.height === h) freeCanvas(canvas);
+    });
   }
 
   /** A message to the film, as `contentWindow.postMessage` was. */
