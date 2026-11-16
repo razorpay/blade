@@ -167,8 +167,13 @@ const runFreshStage = <Comps>({
           return null;
         }
         const started = stage;
-        // (drawn, given up, or not running: the next may start)
-        return () => started.hasDrawn() || !started.hasEngine() || !started.isRunning();
+        // (drawn, given up, or not running: the next may start; or straight away where its GPU compiles in the background: its
+        // first frame then needs nothing more of the page, so the next needn't wait for it)
+        return () =>
+          started.hasDrawn() ||
+          !started.hasEngine() ||
+          !started.isRunning() ||
+          started.compilesInBackground();
       });
     })
     .catch(() => fail('its engine failed to load'));

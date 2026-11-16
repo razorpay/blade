@@ -4,8 +4,10 @@
  * some Windows GPUs) that holds the page up. Started together (a page with several of them, a docs page with every story) they
  * stacked: 3.6 s of freezes on a mid-range Android phone's first load. One at a time, the next starts once the one before has
  * drawn its first frame, given up or stopped running (or MAX_WAIT_MS has passed): a GPU still compiling the one before isn't
- * given another to compile (on Direct3D that stacked into a frozen page), and the browser's shader cache makes each later one
- * quicker. Each starts
+ * given another to compile on the page's own thread, and the browser's shader cache makes each later one quicker. Where the GPU
+ * compiles in the background (KHR_parallel_shader_compile: Chrome on desktops, Safari), the one before only has to have started:
+ * its compile doesn't hold the page up (on a GTX 1650 laptop, a page's 9 main-pass copies compiled together in 0.74 s with the
+ * page at 138 fps), so the next needn't wait for its first frame. Each starts
  * once the page is idle (the browser's idle callback, or a moment later where there's none), so it doesn't land in the middle of
  * the page's own work. Off screen, nothing starts (it would only be paused there).
  */

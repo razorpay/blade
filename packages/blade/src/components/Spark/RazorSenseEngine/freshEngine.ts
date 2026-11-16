@@ -7036,5 +7036,9 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
     drawn() {
       return STATS.frames;
     },
+    // Blade: whether its GPU compiles its shaders in the background (KHR_parallel_shader_compile): its start doesn't hold the page up
+    compilesInBackground() {
+      return !!(gl && GL && GL.par);
+    },
   };
 }
