@@ -36,10 +36,10 @@ const b2At = () => [-167, 326 - PH()], FLOOR = 378, SLOT = [-277, 121];   // the
 
 // ---- the controls (saved to settings/ray-film-cash.json through serve.py, and this browser) ----
 const Q0 = {
-  pileMin: 2, pileMax: 5,                                                                                  // the pile builds over (s, shortest to longest; the user 2026-11-02: "the piling up of the cash can take much longer ... like 2 - 5 seconds")
-  notesMin: 8, notesMax: 13, streamMin: 3.5, streamMax: 6.5, stream: 170, restMin: 0.6, restMax: 1, tapsMin: 2, tapsMax: 2,           // how often: the cash keeps coming (s, shortest to longest), a note every (ms); the pause before the reload (s); taps
+  pileMin: 3, pileMax: 11,                                                                                  // the pile builds over (s, shortest to longest; the user 2026-11-02: "the piling up of the cash can take much longer ... like 2 - 5 seconds")
+  notesMin: 8, notesMax: 13, streamMin: 3.5, streamMax: 6.5, stream: 136, restMin: 0.6, restMax: 1, tapsMin: 2, tapsMax: 2,           // how often: the cash keeps coming (s, shortest to longest), a note every (ms); the pause before the reload (s); taps
   checkEvery: 4, looksMin: 1, looksMax: 2,                                                                  // a note checked about every so many reloads (0 never), brought in front of him (fewest, most times)
-  pileH: 120, sweep: 0.55,                                                                                  // the pile: its height (px, 100 to 165), where the notes come out (steady to all over)
+  pileH: 145, sweep: 0.55,                                                                                  // the pile: its height (px, 100 to 165), where the notes come out (steady to all over)
   whip: 1, tapMs: 260, liftMs: 900, feed: 1.6,                                                   // box out speed; the pause before the reload; the reload: each tap, up and into it (ms), it eats it (s)
   hum: 1.1, humHz: 24, spit: 1.6, tip: 0.8, shakeHz: 13, settle: 0.24,                                      // the machine: its hum (px, Hz), its jump on each note, tip, spring
   notes: 10, noteMs: 320, droop: 2.5,                                                                       // the cash: notes in the pile, each one's slide out, its droop
@@ -62,10 +62,10 @@ const colsV = () => { const v = regV(); return v === 1 ? COLS : [['The machine: 
 const ORD = n => n + (n % 100 > 10 && n % 100 < 14 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
 const EVERY = v => (v = Math.round(v)) <= 0 ? 'never' : v === 1 ? 'every' : ORD(v);
 const SPEC = [
-  ['How often', [['pileMin', 'The pile builds over, shortest (s)', 0.5, 10, 0.1], ['pileMax', 'Longest (s)', 0.5, 10, 0.1], ['notesMin', 'Notes in a pile, fewest', 3, 24, 1], ['notesMax', 'Most', 3, 24, 1], ['stream', 'A note comes out every (ms)', 80, 600, 10],
+  ['How often', [['pileMin', 'The pile builds over, shortest (s)', 0.5, 15, 0.1], ['pileMax', 'Longest (s)', 0.5, 15, 0.1], ['notesMin', 'Notes in a pile, fewest', 3, 24, 1], ['notesMax', 'Most', 3, 24, 1], ['stream', 'A note comes out every (ms)', 80, 600, 10],
     ['restMin', 'Then a pause before the reload, shortest (s)', 0, 5, 0.05], ['restMax', 'Pause, longest (s)', 0, 5, 0.05], ['tapsMin', 'Taps on the floor, fewest', 0, 6, 1], ['tapsMax', 'Taps, most', 0, 6, 1],
     ['checkEvery', 'He checks a note first: about every … reload', 0, 10, 1, EVERY], ['looksMin', 'Brings it in front of him, fewest times', 1, 6, 1], ['looksMax', 'Most times', 1, 6, 1]]],
-  ['The pile', [['pileH', 'Pile height (px)', 100, 165, 1]]],
+  ['The pile', [['pileH', 'Pile height (px)', 100, 200, 1], ['sweep', 'Where notes come out: steady to all over', 0, 1.5, 0.01]]],
   ['Timing', [['whip', 'Box out speed', 0.5, 2, 0.01], ['rest', 'Pause before the reload (ms)', 0, 4000, 10]]],
   ['The reload', [['tapMs', 'Each tap (ms)', 120, 600, 5], ['liftMs', 'Up and into it (ms)', 400, 2000, 10], ['feed', 'It eats it (s)', 0.6, 4, 0.05]]],
   ['The machine', [['hum', 'Vibrates while it eats (px)', 0, 4, 0.05], ['humHz', 'Vibration speed (Hz)', 8, 40, 0.5], ['spit', 'Jumps on each note (px)', 0, 8, 0.05], ['tip', 'Tips (°)', 0, 3, 0.05],
@@ -147,8 +147,17 @@ function film(Q, seed, opt = {}) {   // opt (the panel's buttons, a leave): cut 
   const B = A.reload = {}; B.out = [t, t + 520]; B.taps = []; let u = B.out[1] + 60; const nTaps = spanInt(Q.tapsMin, Q.tapsMax, r()); blinks.push(B.out[0] + 20); for (let i = 0; i < nTaps; i++) { B.taps.push(u); u += Q.tapMs; }
   B.lift = [u + 60, u + 60 + Q.liftMs]; B.feed = [B.lift[1] + 200, B.lift[1] + 200 + Math.round(Q.feed * 1000)];
   const nP = A.n = Math.max(2, spanInt(Q.notesMin ?? Q.notes, Q.notesMax ?? Q.notes, r()));   // this pile's notes: so many, somewhere in the range ("the pile forming can still have loop ranges and can be random")
-  const pT = Math.round(1000 * span(Q.pileMin ?? 2, Q.pileMax ?? 5, r())), C0 = B.feed[0] + 420; B.outs = []; for (let i = 0; i < nP; i++) B.outs.push(C0 + Math.round(i * pT / nP));   // the pile builds over this round's time (in the range), a note every so often
+  const pT = Math.round(1000 * span(Q.pileMin ?? 2, Q.pileMax ?? 5, r())), C0 = B.feed[0] + 420; B.outs = [];
+  const FS = []; for (let s = C0; s < C0 + pT; s += Q.stream) FS.push(s);   // the spitting: this round's time (3-7 s), a note every Q.stream
+  // the pile over the same time, done as the last note out lands (no growing after the spitting ends), quick at first and slowing as it's made (the user,
+  // 2026-11-10: "the part where the pile growing starts should be faster and then slows down as the pile growing finishes"): its height eases out
+  { const D = FS[FS.length - 1] - C0; for (let i = 0; i < nP; i++) B.outs.push(C0 + Math.round(D * (1 - Math.sqrt(1 - i / (nP - 1))))); }
   B.pile = B.outs[B.outs.length - 1] + Q.noteMs + 420;                                                                           // the last of it down: the pile's made
+  // while it piles, the cash comes out the way the run after the pile used to (the user, 2026-11-10: "let the spitting also go up and down, and let the
+  // pile rise on its own; when the pile is done rising, let the spitting stop ... the spitting speed can be 20% faster"): a note every Q.stream, out
+  // somewhere up the face of the pile it's making (sweeping up and down, never above it), onto the pile there, sinking in. The pile
+  // rises on its own meanwhile (its notes ease up onto it in turn, over this round's 2-5 s), and the spitting ends as it's made
+  const FL = A.fill = { outs: FS };   // (the spitting as long as the pile takes to build: the user, 2026-11-10, "the pile building up time and the spit cycle time should be the same, 3 - 7 seconds")
   const S = A.stream = { outs: [], ph: 0, end: B.outs[B.outs.length - 1] + Q.stream }; S.done = S.end;                         // and once it's made, it stops: no more cash into it
   const LOW = { squash: 0.015 * R, lean: -1.8 * R, turn: -0.15, look: [16, 3] }, TAP = { ...LOW, squash: 0.03 * R, lean: -2.2 * R, look: [16, 6] };   // the stack in front of him, low (Figma 521:920)
   const LIFT = { squash: -0.022 * R, lean: -2.4 * R, turn: -0.34, look: [-8, -24] }, IN = { squash: 0.024 * R, lean: -3 * R, turn: -0.42, look: [-18, -6] };
@@ -200,7 +209,7 @@ const SH = { x: 0, y: 0, a: 0, vx: 0, vy: 0, va: 0, last: -1, hum: 0 };
 function kick(i, size, up) { const w = 2 * Math.PI * Q.shakeHz, th = hash(i) * Math.PI * 2; SH.vx += size * w * 0.6 * Math.cos(th); SH.vy += size * w * (-up + (1 - up) * Math.sin(th)); SH.va += Q.tip * w * (hash(i + 9) - 0.5) * 2 * (size / Math.max(0.01, Q.spit || 1)); }
 function shakeStep(t, dt) {
   if (t < SH.last || dt <= 0) { SH.last = t; return; }
-  const B = F.A.reload; for (const [k, s] of [...B.outs.map((s, i) => [i, s]), ...[...(F.A.lead ? F.A.lead.outs : []), ...F.A.stream.outs].filter(s => s < streamCut).map((s, i) => [100 + i, s])]) if (s > SH.last && s <= t) kick(k, Q.spit, 0.7);   // a note out: it jumps
+  const B = F.A.reload; for (const [k, s] of [...(F.A.fill ? F.A.fill.outs.filter(s => s < streamCut).map((s, i) => [300 + i, s]) : []), ...[...(F.A.lead ? F.A.lead.outs : []), ...F.A.stream.outs].filter(s => s < streamCut).map((s, i) => [100 + i, s])]) if (s > SH.last && s <= t) kick(k, Q.spit, 0.7);   // a note out: it jumps
   if (t > B.feed[0] && t < B.feed[1] + 120) { SH.hum += dt * Q.humHz; while (SH.hum >= 1) { SH.hum -= 1; kick(Math.floor(t), Q.hum, 0.3); } }   // it eats them: it hums
   SH.last = t;
   const w = 2 * Math.PI * Q.shakeHz, z = Q.settle, h = Math.min(dt, 0.05), n = Math.max(1, Math.ceil(h / 0.002));
@@ -263,13 +272,13 @@ function arrive(tf, y0, land) {   // a note out of the mouth onto its place: a s
 function notesAt(t) {   // where each note is at t (all from t, so it seeks and pauses): sliding out, dropping or hopping on (a little bounce), lying in the pile; the stream sinking into it
   const B = F.A.reload, T = noteH(), out = [], wd = GIVE.w * Math.sqrt(1 - GIVE.z * GIVE.z), k = GIVE.z * GIVE.w, MOUTH = 6; let give = 0;
   const slide = (tau, y, i, salt) => { const x0 = mouthX(y + T / 2) - CASH.x + 4, dx = (hash(i + salt) - 0.5) * 5, e = 1 - (1 - Math.min(1, tau / Q.noteMs)) ** 3; return { x0, dx, x: x0 + (dx - x0) * e, rot: -Q.droop * e }; };
-  if (t < B.pile) B.outs.forEach((s, i) => { const tau = t - s; if (tau < 0) return;
-    const land = CASH.floor - T * (i + 1), y0 = Math.max(MOUTH, land - 6), S = slide(tau, y0, i, 13);
-    if (tau < Q.noteMs) { out.push({ x: S.x, y: y0, rot: S.rot, ph: 'out' }); return; }
-    const tf = (tau - Q.noteMs) / 1000, A = arrive(tf, y0, land);
-    if (A.tb == null) { out.push({ x: S.dx, y: A.y, rot: -Q.droop * Math.exp(-tf * 16), ph: 'fall' }); return; }
-    const vb = A.vl * 0.25, up = A.tb < 2 * vb / GRAV; give += A.vl * 0.05 / wd * Math.exp(-k * A.tb) * Math.sin(wd * A.tb);   // it lands: the pile gives
-    out.push({ x: S.dx * Math.exp(-A.tb / 0.12), y: up ? land - (vb * A.tb - 0.5 * GRAV * A.tb * A.tb) : land, rot: 0, ph: up ? 'fall' : 'rest', slot: i }); });   // down, squared up on the pile
+  // the pile, rising on its own, without a stop: each note rises over the time from the one before to its own (so it grows fast, then slower and slower,
+  // as its notes are spaced), the last one up as the last note spat lands; a touch of give as each settles
+  const rise = i => [(i ? B.outs[i - 1] : B.outs[0] - 180) + Q.noteMs, B.outs[i] + Q.noteMs], riseU = (i, at) => { const [a, b] = rise(i); return Math.max(0, Math.min(1, (at - a) / Math.max(1, b - a))); };
+  const top = at => B.outs.reduce((h, _, i) => h + riseU(i, at), 0);   // how high the pile is at a time (in notes)
+  if (t < B.pile) B.outs.forEach((s, i) => { const [a, b] = rise(i); if (t < a) return; const land = CASH.floor - T * (i + 1), u = riseU(i, t);
+    if (u >= 1) { const tb = (t - b) / 1000; give += 0.6 / wd * Math.exp(-k * tb) * Math.sin(wd * tb); }
+    out.push({ x: 0, y: land + T * (1 - u), rot: 0, ph: 'rest', slot: i }); });
   const N = (F.A && F.A.n) || Q.notes || 10;
   for (const n of out) if (n.ph === 'rest') n.y += give * (n.slot + 1) / N;
   [F.A.lead, F.A.stream].forEach((SM, si) => SM && SM.outs.forEach((s, i) => { const tau = t - s; if (tau < 0 || s >= streamCut) return;   // a run: out somewhere up the pile's face, onto it, then down into it
@@ -278,6 +287,15 @@ function notesAt(t) {   // where each note is at t (all from t, so it seeks and 
     const tf = (tau - Q.noteMs) / 1000, A = arrive(tf, y0, land);
     if (A.tb == null) { out.push({ x: S.dx, y: A.y, rot: -Q.droop * Math.exp(-tf * 16), ph: 'fall' }); return; }
     const u = A.tb * 1000 / 220; if (u < 1) out.push({ x: S.dx * (1 - u), y: land + T * sm(u), rot: 0, ph: 'sink' }); }));
+  // the cash while it piles: from the bottom, then up and down its face, never above it (the user, 2026-11-10: "make it start from the bottom; once
+  // the cash piles up, it can start going up and down, but the up will stop at the pile height at that point; as the pile keeps growing, the up can
+  // go higher"): onto the face as it is when it comes out, then down into it
+  if (F.A.fill && t < B.pile + 500) F.A.fill.outs.forEach((s, i) => { const tau = t - s; if (tau < 0 || s >= streamCut) return;
+    const h = Math.max(1, top(s)), lv = 1 + (h - 1) * (0.5 - 0.5 * Math.cos(i * Q.sweep)), land = CASH.floor - T * lv, y0 = Math.max(MOUTH, land - 3), S = slide(tau, y0, i + 900, 71);
+    if (tau < Q.noteMs) { out.push({ x: S.x, y: y0, rot: S.rot, ph: 'out' }); return; }
+    const tf = (tau - Q.noteMs) / 1000, A = arrive(tf, y0, land);
+    if (A.tb == null) { out.push({ x: S.dx, y: A.y, rot: -Q.droop * Math.exp(-tf * 16), ph: 'fall' }); return; }
+    const u = A.tb * 1000 / 220; if (u < 1) out.push({ x: S.dx * (1 - u), y: land + T * sm(u), rot: 0, ph: 'sink' }); });
   return out;
 }
 

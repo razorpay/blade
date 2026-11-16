@@ -11,8 +11,8 @@
  * - back on the surface with nothing to do, his idle starts after a short wait
  */
 import { FILMS, TUNES, RayCore } from './engine';
-import { FilmHost } from './FilmHost';
-import { RayPlayer } from './RayPlayer';
+import { FilmHost, freeCanvas } from './FilmHost';
+import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
@@ -45,11 +45,24 @@ const FILM_SHOW_TICKS = 3; // a film shows once it has run this many frames sinc
 const UNDER_MS = 34; // his own canvas stays this long under a film that has just shown
 const EXIT_WAIT_MS = 5000; // a film that never says it's done is let go
 const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn't load, its script threw) is given up on: he rests, and it's tried again
-const REST_BLEND_MS = 320;
+const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
-const WATCH_SETTLED_MS = 970; // his move out to the caret is over
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
+const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
+// How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
+// 0.27 below (Coffee's mug over the edge; the hop's 0.6 is under the floor cut), measured over every idle, flip, film, the hop
+// and the dash (2026-11-10). The rest of the stage's 16 x 8 widths is cut off, so a scrolling parent doesn't scroll on into
+// its empty right and bottom (the PR review). Its left and top run on: nothing scrolls there.
+const ROOM_RIGHT = 1;
+const ROOM_BELOW = 0.75;
+// his own Ray's canvas (RayPlayer): the part of the stage he ever draws on, in his widths past his box. Measured over his idles,
+// typing (and the nudge), the hover look, the flips (spam too), the hop, the sleep cycle with its cap and the answer's handoffs:
+// 0.49 to the left (leaning to the caret), 1.03 above (a coin), 0.15 right, 0.16 below; this is about twice that.
+const PLAYER_LEFT = 1;
+const PLAYER_ABOVE = 2;
+const PLAYER_RIGHT = 1;
+const PLAYER_BELOW = 0.75;
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
 const geometry = (
@@ -94,6 +107,7 @@ type Film = {
   startTick: number;
   shownAt: number;
   going: boolean;
+  goingSince: number; // when it started leaving under the next film (a handoff): it's let go if it never says it's done
   front: boolean;
   lastCursor: string;
 };
@@ -140,6 +154,9 @@ type RayMountOptions = {
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
 let measure: CanvasRenderingContext2D | null = null;
+// a textarea's mirror: one for the page, kept while a Ray is up, laid out on its own (contain: strict) so measuring it doesn't lay
+// out the page (the PR review)
+let mirror: HTMLDivElement | null = null;
 const caretX = (
   el: HTMLInputElement | HTMLTextAreaElement,
   cs: CSSStyleDeclaration,
@@ -149,13 +166,23 @@ const caretX = (
   if (el instanceof HTMLInputElement) {
     measure ??= document.createElement('canvas').getContext('2d');
     if (!measure) return left;
-    measure.font = cs.font;
+    // from the font's longhands, not the `font` shorthand some browsers (older Firefox) leave empty when it's computed (the PR review)
+    measure.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
     return left + measure.measureText(el.value.slice(0, at)).width - el.scrollLeft;
   }
-  const mirror = document.createElement('div');
+  if (!mirror) {
+    mirror = document.createElement('div');
+    mirror.setAttribute('aria-hidden', 'true');
+    document.body.append(mirror);
+  }
   const s = mirror.style;
   for (const k of [
-    'font',
+    'fontFamily',
+    'fontSize',
+    'fontWeight',
+    'fontStyle',
+    'fontVariant',
+    'fontStretch',
     'letterSpacing',
     'wordSpacing',
     'lineHeight',
@@ -168,26 +195,33 @@ const caretX = (
   ] as const)
     (s as any)[k] = cs[k];
   s.position = 'absolute';
+  s.left = '0';
+  s.top = '0';
+  s.height = '1px';
+  s.overflow = 'hidden';
+  s.contain = 'strict';
+  s.pointerEvents = 'none';
   s.visibility = 'hidden';
   s.whiteSpace = 'pre-wrap';
   s.overflowWrap = 'break-word';
   s.width = `${el.clientWidth}px`;
-  mirror.textContent = el.value.slice(0, at);
+  // only the caret's own paragraph: a line break starts the wrapping again, so the text before it can't move the caret along its line
+  const before = el.value.slice(0, at);
+  mirror.textContent = before.slice(before.lastIndexOf('\n') + 1);
   const mark = document.createElement('span');
   mark.textContent = '​';
   mirror.append(mark);
-  document.body.append(mirror);
-  const x = mark.offsetLeft - parseFloat(cs.paddingLeft);
-  mirror.remove();
-  return left + x;
+  return left + mark.offsetLeft - parseFloat(cs.paddingLeft);
 };
 
 class RayMount {
   private readonly root: HTMLElement;
   private readonly stage: HTMLDivElement;
+  private readonly room: HTMLDivElement; // the stage, cut to what he draws past his box (ROOM_RIGHT, ROOM_BELOW)
   private readonly player = new RayPlayer();
   private readonly films: Record<string, Film> = {};
   private readonly loading: Record<string, Promise<void>> = {};
+  private readonly failed = new Set<string>(); // films that didn't start (giveUpOn): not tried again till state or idle changes
   private pendingFrom: unknown = null;
   private listened: HTMLInputElement | HTMLTextAreaElement | null = null;
   private entrance: RayEntrance | null = null;
@@ -196,19 +230,23 @@ class RayMount {
   private options: RayMountOptions;
   private holder: Holder;
   private inputRef: { current: HTMLElement | null } | null = null;
-  private pointer: [number, number] | null = null;
   private playerIdle: Idle | null = null; // which idle his own Ray is playing (Look around, or the sleep cycle)
   private napped = false; // the sleep cycle has had him once (found asleep then; in awake after)
   private geo = geometry(48);
   private dpr = 1;
   private floorCut = ''; // the stage cut at his floor (a clip-path), and whether it's on now
   private cutOn = false;
-  private raf = 0;
+  private raf = 0; // 1 while he's booked for the next frame
   private lastNow = 0;
   private isVisible = true;
+  private stageAt: { left: number; top: number; at: number } | null = null; // see measureStage
+  private settling: Film[] = []; // films that gave him back since the last frame: hidden, put to sleep and freed once his own Ray has drawn
   private readonly observer: IntersectionObserver | null = null;
   private readonly reducedMotion: boolean;
   private disposed = false;
+  /** Called when he's hidden and out of sight: hopped off with nothing left to play (or hidden while off-screen). Ray's
+   * `shouldUnmountWhenHidden` removes his box then. */
+  onAway: (() => void) | null = null;
   private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
 
   constructor(root: HTMLElement, options: RayMountOptions) {
@@ -220,9 +258,12 @@ class RayMount {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.stage = document.createElement('div');
-    this.stage.style.cssText = 'position:absolute;pointer-events:none;';
+    this.stage.style.cssText = 'position:absolute;left:0;top:0;pointer-events:none;';
     this.stage.append(this.player.canvas);
-    root.append(this.stage);
+    this.room = document.createElement('div');
+    this.room.style.cssText = 'position:absolute;overflow:hidden;pointer-events:none;';
+    this.room.append(this.stage);
+    root.append(this.room);
 
     const now = performance.now();
     this.holder = {
@@ -243,11 +284,7 @@ class RayMount {
       this.holder = { by: 'player', act: 'entrance', since: now };
 
     root.addEventListener('click', this.onClick);
-    window.addEventListener('pointermove', this.onPointerMove, { passive: true });
-    document.addEventListener('selectionchange', this.onCaretMove);
-    window.addEventListener('scroll', this.onCaretMove, { capture: true, passive: true });
-    window.addEventListener('resize', this.onCaretMove, { passive: true });
-    document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
+    RayMount.join(this);
     if (typeof IntersectionObserver === 'function') {
       this.observer = new IntersectionObserver((entries) => {
         this.isVisible = entries.some((e) => e.isIntersecting);
@@ -256,8 +293,11 @@ class RayMount {
       this.observer.observe(root);
     }
     this.start();
-    // what he'll need first, loading now: the answer's films for a Ray that starts in one, else this load's idle film
-    if (options.state !== 'idle') this.preloadAnswer();
+    // what he'll need first, loading now: the answer's films for a Ray that starts in one, else this load's idle film. With reduced
+    // motion he never plays a film (one still frame), so none is loaded (the PR review)
+    if (this.reducedMotion) {
+      // (nothing to load)
+    } else if (options.state !== 'idle') this.preloadAnswer();
     else {
       const first = IDLE_FILMS[firstIdle];
       if (first) this.film(first);
@@ -277,19 +317,28 @@ class RayMount {
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
+    if (
+      (options.idle !== undefined && options.idle !== this.options.idle) ||
+      (options.state !== undefined && options.state !== this.options.state)
+    )
+      this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
     this.options = { ...this.options, ...options };
     this.player.eyeY = this.lookYWorld();
-    this.preloadAnswer();
+    // (idle, only a film kept loaded ahead: _preloadState)
+    if ((this.options.state !== 'idle' || this.options.preload) && !this.reducedMotion)
+      this.preloadAnswer();
     this.releaseFilms();
     if (sizeChanged) this.layout();
     if (schemeChanged) {
       this.player.mode = this.options.colorScheme;
       if (this.entrance) this.entrance.mode = this.options.colorScheme;
-      Object.values(this.films).forEach((f) =>
-        f.host.send({ ray: 'mode', mode: this.options.colorScheme }),
-      );
+      Object.values(this.films).forEach((f) => {
+        f.host.send({ ray: 'mode', mode: this.options.colorScheme });
+        f.host.send(this.player.capAsk); // (his nightcap's colours follow too)
+      });
     }
     this.start();
+    if (this.options.isHidden && !this.isVisible) this.onAway?.(); // hidden while off-screen: nobody sees a hop, he's away now
   }
 
   /** The text field he watches (read live: it may mount after him). */
@@ -308,6 +357,15 @@ class RayMount {
       return;
     const h = this.holder;
     if (h.by === 'player') {
+      if (h.act === 'watch' || h.act === 'back') {
+        // clicked while he watches what's typed (the click takes the field's focus, so he's leaving it or about to): the flip,
+        // from where he is, with his rest under it; his idle follows it, or the watch again if the field still has the focus
+        // (the PR review: that first click was dropped)
+        if (h.act === 'watch') this.player.unwatch();
+        this.holder = { by: 'player', act: 'rest', since: performance.now() };
+        this.player.click();
+        return;
+      }
       if (h.act === 'idle' || h.act === 'rest') this.player.click();
       return;
     }
@@ -317,18 +375,14 @@ class RayMount {
 
   dispose(): void {
     this.disposed = true;
-    cancelAnimationFrame(this.raf);
+    RayMount.leave(this);
     this.observer?.disconnect();
     this.root.removeEventListener('click', this.onClick);
     this.listened?.removeEventListener('input', this.onInput);
     this.entrance?.dispose();
-    window.removeEventListener('pointermove', this.onPointerMove);
-    document.removeEventListener('selectionchange', this.onCaretMove);
-    window.removeEventListener('scroll', this.onCaretMove, { capture: true });
-    window.removeEventListener('resize', this.onCaretMove);
-    document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     Object.values(this.films).forEach((f) => f.host.dispose());
-    this.stage.remove();
+    this.room.remove();
+    freeCanvas(this.player.canvas); // his memory now, not at the next garbage collection (the PR review)
   }
 
   // ---- what he should be doing ----
@@ -336,10 +390,15 @@ class RayMount {
   private want(): Want {
     const o = this.options;
     if (o.isHidden) return { kind: 'hidden' };
-    if (o.state !== 'idle') return { kind: 'answer', film: ANSWER_FILMS[o.state] };
+    if (o.state !== 'idle') {
+      const film = ANSWER_FILMS[o.state];
+      if (!this.failed.has(film)) return { kind: 'answer', film };
+      return { kind: 'idle', idle: 'rest' }; // (its film couldn't start: at rest instead)
+    }
     if (this.isTyping()) return { kind: 'watch' };
     const idle = this.idleOf(o.idle, performance.now());
-    return { kind: 'idle', idle };
+    const film = IDLE_FILMS[idle];
+    return { kind: 'idle', idle: film && this.failed.has(film) ? 'rest' : idle };
   }
 
   /**
@@ -369,6 +428,10 @@ class RayMount {
   // ---- getting him there ----
 
   private reconcile(now: number): void {
+    // a film leaving under the next one that never says it's done is let go (else it's drawn, and kept, for good: the PR review)
+    Object.values(this.films).forEach((film) => {
+      if (film.going && now - film.goingSince > EXIT_WAIT_MS) this.goneUnder(film);
+    });
     const want = this.want();
     const h = this.holder;
 
@@ -455,7 +518,7 @@ class RayMount {
           return;
         }
         if (h.act === 'back') {
-          if (sinceMs >= 240) this.holder = { by: 'player', act: 'rest', since: now };
+          if (sinceMs >= WATCH_BACK_MS) this.holder = { by: 'player', act: 'rest', since: now }; // his move back is over
           return;
         }
         const film = IDLE_FILMS[want.idle];
@@ -514,10 +577,6 @@ class RayMount {
   }
 
   // every keystroke (an input event) restarts the nudge's wait, and cancels one that's playing
-  private readonly onCaretMove = (): void => {
-    this.caretCache = null;
-  };
-
   private readonly onInput = (): void => {
     this.caretCache = null;
     this.lastTypeAt = performance.now();
@@ -556,7 +615,13 @@ class RayMount {
       this.loading[id] = (FILMS as Record<string, () => Promise<FilmModule>>)
         [id]()
         .then((module) => {
-          if (!this.disposed) this.mountFilm(id, module);
+          // loaded after it stopped being wanted (the answer moved on, his idle changed, it was given up on): not mounted, and
+          // asked for again it loads again (from the cache) (the PR review: a late load mounted a film nothing would free)
+          if (this.disposed || this.failed.has(id) || !this.wantedFilms().has(id)) {
+            Reflect.deleteProperty(this.loading, id);
+            return;
+          }
+          this.mountFilm(id, module);
         })
         .catch((error: unknown) => {
           if (__DEV__) console.error(`[Ray] the ${id} film failed to load`, error);
@@ -565,9 +630,13 @@ class RayMount {
     return null;
   }
 
-  /** A film that never got going: let go (it's loaded again the next time it's wanted), his own Ray at rest meanwhile. */
+  /**
+   * A film that never got going: let go, his own Ray at rest instead, and not tried again till what's asked of him changes
+   * (`state`, `idle`), so a film that can't start isn't loaded again every few seconds (the PR review).
+   */
   private giveUpOn(id: string, now: number): void {
-    if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests and it's tried again`);
+    if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests instead`);
+    this.failed.add(id);
     this.films[id]?.host.dispose();
     Reflect.deleteProperty(this.films, id);
     Reflect.deleteProperty(this.loading, id);
@@ -583,6 +652,7 @@ class RayMount {
       startTick: Infinity,
       shownAt: Infinity,
       going: false,
+      goingSince: 0,
       front: false,
       lastCursor: '',
       host: new FilmHost({
@@ -600,8 +670,14 @@ class RayMount {
   }
 
   private startFilm(id: string, kind: 'idle' | 'answer', from: unknown): void {
-    const film = this.film(id);
     const now = performance.now();
+    if (this.failed.has(id)) {
+      // (a handoff to a film that couldn't start: at rest from where the last one left him)
+      this.holder = { by: 'player', act: 'rest', since: now };
+      this.player.rest(REST_BLEND_MS);
+      return;
+    }
+    const film = this.film(id);
     const underneath = (this.holder.by === 'player' && this.holder.act !== 'gone') || Boolean(from);
     this.holder = { by: 'film', id, kind, leaving: false, since: now, started: false, underneath };
     this.pendingFrom = from; // (his own Ray draws him meanwhile: at rest, or the pose the last film left him in)
@@ -620,17 +696,32 @@ class RayMount {
     const { state, preload } = this.options;
     if (state === 'idle') return preload && preload !== 'idle' ? [ANSWER_FILMS[preload]] : [];
     const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
-    return next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
+    const wanted = next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
+    return wanted.filter((id) => !this.failed.has(id));
   }
 
-  /** An answer film that isn't playing, leaving, or the one now or next is let go (its canvases freed; loaded again if needed). */
-  private releaseFilms(): void {
+  /** The films he needs now: the answer's now and next, the one that has him, and his idle's. */
+  private wantedFilms(): Set<string> {
     const h = this.holder;
     const keep = new Set(this.wantedAnswerFilms());
     if (h.by === 'film') keep.add(h.id);
-    const answerFilms = new Set<string>(Object.values(ANSWER_FILMS));
+    // his idle as already picked: tidying up doesn't pick for him (time-of-day) or touch storage (the PR review)
+    const { idle } = this.options;
+    const current = idle === 'time-of-day' ? this.clockIdle?.idle : idleOfThisLoad(idle);
+    const idleFilm = current ? IDLE_FILMS[current] : undefined;
+    if (idleFilm) keep.add(idleFilm);
+    return keep;
+  }
+
+  /**
+   * A film that isn't playing, leaving, the answer's now or next, or his idle's (he goes back to it after typing, a flip or an
+   * answer) is let go: its canvases freed, loaded again if it's needed (its chunk is cached). An idle he's moved on from goes
+   * too (time-of-day's clock, a new `idle`; the PR review).
+   */
+  private releaseFilms(): void {
+    const keep = this.wantedFilms();
     Object.values(this.films).forEach((film) => {
-      if (!answerFilms.has(film.id) || keep.has(film.id) || film.going) return;
+      if (keep.has(film.id) || film.going) return;
       film.host.dispose();
       Reflect.deleteProperty(this.films, film.id);
       Reflect.deleteProperty(this.loading, film.id);
@@ -675,6 +766,7 @@ class RayMount {
     film.host.send({ ray: 'zoom', z: this.geo.zoom });
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
     this.shiftLooks(film);
+    film.host.send(this.player.capAsk); // his nightcap, once the sleep cycle has put it on: the films wear it too (as flow 9's do)
     film.host.send(from ? { ray: 'start', from } : { ray: 'start' });
     film.startTick = film.host.ticks;
     film.shownAt = Infinity;
@@ -686,22 +778,43 @@ class RayMount {
     const h = this.holder;
     if (h.by !== 'film' || h.id !== old.id || h.leaving !== 'handoff') return;
     old.going = true;
+    old.goingSince = performance.now();
     if (from) this.player.hold(from); // the old film has stopped drawing him: his own Ray holds that pose till the next one draws
     this.startFilm(next, 'answer', from);
   }
 
-  /** A film gave him back at rest: his own Ray takes over there (the same frame), the film sleeps. */
-  private filmDone(film: Film): void {
+  /** A film that played its exit under the next one is done: it sleeps, hidden (and is freed if it isn't wanted). */
+  private goneUnder(film: Film): void {
     film.going = false;
     film.shownAt = Infinity;
     film.startTick = Infinity;
     film.host.layer.style.visibility = 'hidden';
     film.host.send({ ray: 'sleep' });
+    this.releaseFilms();
+  }
+
+  /**
+   * A film gave him back at rest: his own Ray takes over there. The film stays up, as it last drew him, till his own Ray has drawn
+   * him in the next frame (draw() hides it then, and settle() puts it to sleep and frees it), so the swap is one frame: there's no
+   * moment, painted or not, with neither showing him (the PR review saw one between the 'done' message and the next frame).
+   */
+  private filmDone(film: Film): void {
+    film.going = false;
+    film.shownAt = Infinity;
+    film.startTick = Infinity;
     const h = this.holder;
     if (h.by === 'film' && h.id === film.id) {
       this.holder = { by: 'player', act: 'rest', since: performance.now() };
       this.player.rest(0);
     }
+    this.settling.push(film);
+  }
+
+  /** After a frame's draw: the films that gave him back sleep, and those not wanted are freed. */
+  private settle(): void {
+    if (!this.settling.length) return;
+    this.settling.forEach((film) => film.host.send({ ray: 'sleep' }));
+    this.settling = [];
     this.releaseFilms();
   }
 
@@ -726,14 +839,7 @@ class RayMount {
         break;
       case 'done':
         if (mine && h.by === 'film' && h.leaving === 'exit') this.filmDone(film);
-        else if (film.going) {
-          film.going = false;
-          film.shownAt = Infinity;
-          film.startTick = Infinity;
-          film.host.layer.style.visibility = 'hidden';
-          film.host.send({ ray: 'sleep' });
-          this.releaseFilms();
-        }
+        else if (film.going) this.goneUnder(film);
         break;
       default:
     }
@@ -743,27 +849,65 @@ class RayMount {
 
   private start(): void {
     if (this.disposed || this.raf || !this.isVisible) return;
-    this.raf = requestAnimationFrame(this.frame);
+    this.raf = 1;
+    RayMount.book(this);
+  }
+
+  /** The start of his frame, before any Ray on the page writes: what he needs measured (his stage, the caret) is read now. */
+  private readLayout(now: number): void {
+    if (this.disposed || this.reducedMotion) return;
+    if (RayMount.pointer && (!this.stageAt || now - this.stageAt.at > STAGE_FRESH_MS))
+      this.measureStage(now);
+    if (this.caretCache === null && this.isTyping()) this.caretGaze();
   }
 
   private readonly frame = (now: number): void => {
     this.raf = 0;
     if (this.disposed) return;
-    if (this.isVisible && !this.reducedMotion) this.raf = requestAnimationFrame(this.frame); // booked first: a bad frame never stops him
+    if (this.isVisible && !this.reducedMotion) {
+      this.raf = 1; // booked first: a bad frame never stops him
+      RayMount.book(this);
+    }
     const dt = this.lastNow ? Math.min(50, Math.max(0, now - this.lastNow)) : 16;
     this.lastNow = now;
     if (this.pixelRatio() !== this.dpr) this.layout();
 
     if (this.reducedMotion) {
+      // one still frame: at rest, or none while he's hidden (no hop: he's simply there or not; update() draws it again)
+      const shown = !this.options.isHidden;
+      this.player.canvas.style.visibility = shown ? '' : 'hidden';
       this.player.rest(0);
-      this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
-      return; // one still frame at rest
+      if (shown) this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
+      else {
+        this.player.clear();
+        this.onAway?.();
+      }
+      return;
     }
 
     this.listenToInput();
     this.reconcile(now);
     this.draw(now, dt);
+    this.settle();
+    if (this.isAway()) {
+      RayMount.unbook(this); // hidden and done going: nothing moves till he's asked back (update() starts him again)
+      this.raf = 0;
+      this.onAway?.();
+    }
   };
+
+  /** Hidden, hopped off, no film still leaving and nothing else to play: the loop can stop (the PR review: a hidden Ray drew on at 60fps). */
+  private isAway(): boolean {
+    const h = this.holder;
+    return (
+      h.by === 'player' &&
+      h.act === 'gone' &&
+      Boolean(this.options.isHidden) &&
+      !this.entrance &&
+      !this.player.isFlipping &&
+      !Object.values(this.films).some((f) => f.going)
+    );
+  }
 
   private draw(now: number, dt: number): void {
     if (this.holder.by === 'player' && this.holder.act === 'entrance') {
@@ -802,10 +946,10 @@ class RayMount {
       this.cutOn = cut;
       this.stage.style.clipPath = cut ? this.floorCut : '';
     }
-    const stage = this.stage.getBoundingClientRect();
-    const raw: [number, number] | null = this.pointer
-      ? [this.pointer[0] - stage.left, this.pointer[1] - stage.top]
-      : null;
+    const { pointer } = RayMount;
+    const stage = pointer ? this.stageAt : null; // (measured at the start of the frame: readLayout)
+    const raw: [number, number] | null =
+      pointer && stage ? [pointer[0] - stage.left, pointer[1] - stage.top] : null;
     const local = raw ? this.reach(raw[0], raw[1]) : null;
 
     if (playerOn) {
@@ -897,10 +1041,29 @@ class RayMount {
       width: `${g.width}px`,
       height: `${g.height}px`,
       clipPath: this.cutOn ? this.floorCut : '',
+    });
+    Object.assign(this.room.style, {
+      width: `${(g.left + w * (1 + ROOM_RIGHT)).toFixed(2)}px`,
+      height: `${(g.floor + w * ROOM_BELOW).toFixed(2)}px`,
       left: `${(-g.left).toFixed(2)}px`,
       top: `${(g.boxHeight - g.floor).toFixed(2)}px`,
     });
-    this.player.place(g.width, g.height, g.left, g.floor, w, this.dpr);
+    const top = g.floor - g.boxHeight; // his box's top on the stage
+    const x0 = Math.max(0, g.left - w * PLAYER_LEFT);
+    const y0 = Math.max(0, top - w * PLAYER_ABOVE);
+    this.player.place(
+      {
+        x: x0,
+        y: y0,
+        width: Math.min(g.width, g.left + w * (1 + PLAYER_RIGHT)) - x0,
+        height: Math.min(g.height, g.floor + w * PLAYER_BELOW) - y0,
+      },
+      g.left,
+      g.floor,
+      w,
+      this.dpr,
+    );
+    this.stageAt = null;
     Object.values(this.films).forEach((f) => {
       f.host.resize(g.width, g.height, this.dpr);
       f.host.send({ ray: 'zoom', z: g.zoom });
@@ -909,13 +1072,99 @@ class RayMount {
 
   private readonly onClick = (): void => this.click();
 
-  private readonly onPointerMove = (e: PointerEvent): void => {
-    this.pointer = [e.clientX, e.clientY];
+  /**
+   * Where his stage is on screen, to bring the pointer in. Measured at the start of a frame (readLayout), before any Ray writes,
+   * only when a scroll or a resize has dropped it or it's a second old (a layout shift with nothing else moving): not every frame
+   * after the frame's style writes, which forced a layout a frame for each Ray (the PR reviews, 2026-11-10 and -13).
+   */
+  private measureStage(now: number): void {
+    const r = this.stage.getBoundingClientRect();
+    this.stageAt = { left: r.left, top: r.top, at: now };
+  }
+
+  // ---- what every Ray on the page shares (the PR review): one set of page listeners, and one frame loop that first lets every
+  // Ray read what it needs measured, then lets every Ray draw, so no Ray's reading comes after another's writes ----
+
+  private static readonly up = new Set<RayMount>(); // every Ray mounted: the page listeners are on while there's one
+  private static readonly booked = new Set<RayMount>(); // the Rays that want the next frame
+  private static raf = 0;
+  private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
+
+  private static readonly onFrame = (now: number): void => {
+    RayMount.raf = 0;
+    const due = [...RayMount.booked];
+    RayMount.booked.clear();
+    due.forEach((m) => RayMount.guard(() => m.readLayout(now)));
+    due.forEach((m) => RayMount.guard(() => m.frame(now)));
   };
 
-  private readonly onPointerLeave = (): void => {
-    this.pointer = null;
+  /** One Ray's fault never stops another: it's reported as an uncaught error would be, and the rest draw on. */
+  private static guard(run: () => void): void {
+    try {
+      run();
+    } catch (error: unknown) {
+      queueMicrotask(() => {
+        throw error;
+      });
+    }
+  }
+
+  private static book(m: RayMount): void {
+    RayMount.booked.add(m);
+    if (!RayMount.raf) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
+  }
+
+  private static unbook(m: RayMount): void {
+    RayMount.booked.delete(m);
+    if (RayMount.booked.size || !RayMount.raf) return;
+    cancelAnimationFrame(RayMount.raf);
+    RayMount.raf = 0;
+  }
+
+  private static readonly onPointerMove = (e: PointerEvent): void => {
+    RayMount.pointer = [e.clientX, e.clientY];
   };
+
+  private static readonly onPointerLeave = (): void => {
+    RayMount.pointer = null;
+  };
+
+  // a scroll (any scroller: capture) or a resize moves his stage and the caret on screen, a selection change the caret: each only
+  // marks them to be measured again, at the start of his next frame
+  private static readonly onViewMove = (): void =>
+    RayMount.up.forEach((m) => {
+      m.caretCache = null;
+      m.stageAt = null;
+    });
+
+  private static readonly onCaretMove = (): void =>
+    RayMount.up.forEach((m) => {
+      m.caretCache = null;
+    });
+
+  private static join(m: RayMount): void {
+    if (!RayMount.up.size) {
+      window.addEventListener('pointermove', RayMount.onPointerMove, { passive: true });
+      document.addEventListener('selectionchange', RayMount.onCaretMove);
+      window.addEventListener('scroll', RayMount.onViewMove, { capture: true, passive: true });
+      window.addEventListener('resize', RayMount.onViewMove, { passive: true });
+      document.documentElement.addEventListener('pointerleave', RayMount.onPointerLeave);
+    }
+    RayMount.up.add(m);
+  }
+
+  private static leave(m: RayMount): void {
+    RayMount.unbook(m);
+    if (!RayMount.up.delete(m) || RayMount.up.size) return;
+    window.removeEventListener('pointermove', RayMount.onPointerMove);
+    document.removeEventListener('selectionchange', RayMount.onCaretMove);
+    window.removeEventListener('scroll', RayMount.onViewMove, { capture: true });
+    window.removeEventListener('resize', RayMount.onViewMove);
+    document.documentElement.removeEventListener('pointerleave', RayMount.onPointerLeave);
+    RayMount.pointer = null;
+    mirror?.remove();
+    mirror = null;
+  }
 }
 
 /** His box on the page (his rest footprint, CSS px): the layout never changes with what he does. */

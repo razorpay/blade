@@ -199,12 +199,15 @@ class RayPlayer {
 
   private readonly ctx: CanvasRenderingContext2D;
   private view = { scale: 1, ox: 0, oy: 0 };
+  private crop = { x: 0, y: 0 }; // where his canvas's corner is on the stage (CSS px)
   private src: Source;
   private from: Frame | null = null;
   private fromT = 0;
   private base: Frame | null = null;
   private readonly sims: Record<string, any> = {};
   private readonly hover = RC.hoverInit();
+  // his own coin flip: create() makes its state (COINFLIP) fresh for each Ray, so clicking one Ray flips only him. All that's
+  // shared on the page is the flip's physics, made once from rest and only read after (FLIP_MADE: "one per page")
   private readonly flip: any = (SHARED as any).rayFlip(pageHost());
   private readonly cap: any = createCap(pageHost() as any);
   private readonly napHover = RC.hoverInit();
@@ -224,34 +227,47 @@ class RayPlayer {
 
   constructor() {
     this.canvas = document.createElement('canvas');
-    this.canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;';
+    this.canvas.style.cssText = 'position:absolute;display:block;';
     this.ctx = this.canvas.getContext('2d')!;
     this.src = { kind: 'rest', t0: performance.now(), blend: 0 };
     this.flip.flipPrepare(); // the flip's physics made in the page's idle time, not on the click (one for every Ray on the page)
   }
 
-  /** The stage (CSS px) at the page's pixel density; his base-left corner at `left`, his floor at `floor`, `width` wide. */
+  /**
+   * On the stage (CSS px), at the page's pixel density: his base-left corner at `left`, his floor at `floor`, `width` wide. His
+   * canvas covers only `area` of the stage, the part he ever draws on (the PR review: a canvas the size of the films' whole stage,
+   * cleared and composited every frame, was 99% empty). Its corner is kept on whole device pixels, so he's drawn on the same
+   * pixels as on the whole stage.
+   */
   place(
-    stageWidth: number,
-    stageHeight: number,
+    area: { x: number; y: number; width: number; height: number },
     left: number,
     floor: number,
     width: number,
     dpr: number,
   ): void {
-    const cw = Math.round(stageWidth * dpr);
-    const ch = Math.round(stageHeight * dpr);
+    const px = Math.floor(area.x * dpr);
+    const py = Math.floor(area.y * dpr);
+    const cw = Math.ceil((area.x + area.width) * dpr) - px;
+    const ch = Math.ceil((area.y + area.height) * dpr) - py;
     if (this.canvas.width !== cw || this.canvas.height !== ch) {
       this.canvas.width = cw;
       this.canvas.height = ch;
     }
+    this.crop = { x: px / dpr, y: py / dpr };
+    Object.assign(this.canvas.style, {
+      left: `${this.crop.x}px`,
+      top: `${this.crop.y}px`,
+      width: `${cw / dpr}px`,
+      height: `${ch / dpr}px`,
+    });
     const scale = (width * dpr) / BODY_WIDTH;
-    this.view = { scale, ox: left * dpr + ROOT_X * scale, oy: floor * dpr };
+    this.view = { scale, ox: left * dpr - px + ROOT_X * scale, oy: floor * dpr - py };
   }
 
   /** A point on the page (CSS px from the stage's corner) in his world, for the hover look. */
   toWorld(x: number, y: number, dpr: number): [number, number] {
-    return RC.toWorld(this.view, [x * dpr, y * dpr]);
+    return RC.toWorld(this.view, [(x - this.crop.x) * dpr, (y - this.crop.y) * dpr]);
   }
 
   /** Development only: the flip module's state. */
@@ -349,6 +365,15 @@ class RayPlayer {
     });
   }
 
+  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, once the sleep cycle has put it on. */
+  get capAsk(): { ray: 'cap'; on: boolean; q?: Record<string, unknown> } {
+    const { CAP } = this.cap;
+    // (with his light / dark, so a film's cap is in its colours from its first frame)
+    return CAP.on
+      ? { ray: 'cap', on: true, q: { ...CAP.q, mode: this.mode } }
+      : { ray: 'cap', on: false };
+  }
+
   /** What the sleep cycle is doing, or null when he isn't in it. */
   get napPhase(): NapPhase | null {
     return this.src.kind === 'nap' ? this.src.phase : null;
@@ -416,8 +441,9 @@ class RayPlayer {
 
     this.last = f;
     if (this.cap.CAP.on) {
-      // Nightcap 2's soft cap: his head inside its cuff, the cap over him, its end swinging on its own springs
-      RC.draw(this.ctx, this.cap.capFrame(f, { off: NAP.cap.off }), this.view, {
+      // his nightcap (Ray Studio's primary: the ball cap, 2026-11-13): his head inside its cuff, the cap on him, its end and its ball
+      // swinging on their own springs. It's drawn with him (and its colours follow his light / dark), then capDraw finishes the frame
+      RC.draw(this.ctx, this.cap.capFrame(f, { ...NAP.cap, mode: this.mode }), this.view, {
         mode: this.mode,
         clear: true,
         shadow: false,
@@ -631,5 +657,8 @@ class RayPlayer {
   }
 }
 
-export { RayPlayer };
+/** When his move out to the caret is over (back a bit, held, then out to it), from the moment he starts watching. */
+const WATCH_SETTLED_MS = LEAN_BACK_MS + LEAN_HOLD_MS + WATCH_OUT_MS;
+
+export { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS };
 export type { Look };
