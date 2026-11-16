@@ -6298,8 +6298,10 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
     // Blade: a frame whose main-pass copy isn't compiled yet (Direct3D, grSpec) is dropped whole, and tried again next frame
     try {
       renderFrame();
+      if (GL) GL.gpuWait = false;
     } catch (e) {
       if (e !== GR_MISS) throw e;
+      GL.gpuWait = true;
       if (!GL.wait)
         GL.wait = requestAnimationFrame(() => {
           GL.wait = 0;
@@ -7036,9 +7038,10 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
     drawn() {
       return STATS.frames;
     },
-    // Blade: whether its GPU compiles its shaders in the background (KHR_parallel_shader_compile): its start doesn't hold the page up
-    compilesInBackground() {
-      return !!(gl && GL && GL.par);
+    // Blade: whether its last frame was dropped only for the GPU (Direct3D: the main pass's copy still compiling, in the background):
+    // its own work for its first frame is done, so another engine starting now doesn't land on top of it
+    waitsOnGpu() {
+      return !!(GL && GL.gpuWait);
     },
   };
 }
