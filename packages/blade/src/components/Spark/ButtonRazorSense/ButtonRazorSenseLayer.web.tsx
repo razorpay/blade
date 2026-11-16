@@ -162,9 +162,11 @@ const ButtonRazorSenseLayer = ({
     let pauseTimer = 0;
     let relayTimer = 0;
     let slot: HoverSlot | null = null;
-    // the button's own hover gives way only while RazorSense can draw over it: its canvas made (held near the pointer), not
-    // just its code loaded, so a hover that isn't held (more running than may be) keeps the button's own (the PR review)
+    // the button's own hover gives way only once RazorSense has drawn over it: its canvas made (held near the pointer) and its
+    // first frame in, not just its code loaded (a hover refused a slot kept no hover at all: the PR review) or its canvas made (a
+    // GPU still compiling, tens of seconds the first time on Direct3D, left it bare)
     let isLive = false;
+    let liveFrame = 0;
     const setLive = (live: boolean): void => {
       if (live === isLive) return;
       isLive = live;
@@ -201,10 +203,24 @@ const ButtonRazorSenseLayer = ({
         },
       });
       stage.setPaused(!isOn);
-      setLive(Boolean(engine));
+      setLive(false);
+      cancelAnimationFrame(liveFrame);
+      if (!engine) return;
+      // a first frame drawn at once (unseen: the layer is clear till the hover), so it's live before the pointer gets there
+      const mounted = stage;
+      const settled = engine;
+      mounted.settle(() => settled.player.seek(0), 0.3);
+      const waitForFrame = (): void => {
+        liveFrame = 0;
+        if (!isMounted || stage !== mounted) return;
+        if (mounted.hasDrawn()) setLive(true);
+        else liveFrame = requestAnimationFrame(waitForFrame);
+      };
+      liveFrame = requestAnimationFrame(waitForFrame);
     };
     // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
     const release = (): void => {
+      cancelAnimationFrame(liveFrame);
       stage?.destroy();
       stage = null;
       engine = null;
