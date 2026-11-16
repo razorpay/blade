@@ -34,7 +34,7 @@ const SHEET2_D = 'M120.318 0L18.738 42.1179C18.738 118.91 6.246 164.88 0 178.267
 const BX2 = { k: 206 / 193.421, side: 41.4473, flapR: [[193.421, 0], [240.789, 0], [266.447, 35.5263], [216.211, 35.5263]], flapL: [[1.974, 3.948], [-32.566, 36.514]], lw: 7.895, h: 75 };
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Box v1', 'Figma 408:1131'], [2, 'Box v2', 'Figma 545:1310'], [3, 'Box v3', 'Figma 545:1311']], boxV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
+const boxV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
 const VKEYS = { 2: { cTop: 'p2Top', cBot: 'p2Bot', cFold: 'p2Top', bFront: 'b2Front', bSide: 'b2Side', bFlap: 'b2Flap', bLflap: 'b2Lflap' }, 3: { cTop: 'p3Top', cBot: 'p3Bot', cFold: 'p3Top', bFront: 'b3Front', bSide: 'b3Side', bFlap: 'b3Flap', bLflap: 'b3Lflap' } };
 const colB = k => { const kk = (VKEYS[boxV()] || {})[k] || (k === 'bLflap' ? 'bSide' : k); return mode === 'dark' ? Q[kk + 'D'] : Q[kk]; };   // a colour of the box or its paper, as its version has it   // the sheet (Figma 408:1098) and its middle
 const KF1 = { x: -184, y: 353, rot: 18 }, KF2_ = { x: -149, rot: 0 }, kf2 = () => { const [x, y] = toBox([KF2_.x + F.hold.dx, Q.heldY + F.hold.dy]); return { ...KF2_, x, y }; }, DOWN = { x: -184, y: 448, rot: 18 };   // peeking out of the box; held up to read; all the way down in it (his px)
@@ -69,24 +69,7 @@ const Q0 = {
   elemV: 1, p2Top: '#D7E6FF', p2Bot: '#D7E6FF', b2Front: '#BAC8F7', b2Side: '#6F8CFF', b2Flap: '#BAC8F7', b2Lflap: '#BAC8F7', p2TopD: '#D7E6FF', p2BotD: '#D7E6FF', b2FrontD: '#BAC8F7', b2SideD: '#6F8CFF', b2FlapD: '#BAC8F7', b2LflapD: '#BAC8F7',   // which box (1 the first, 2 / 3 Figma 545:1310 / 545:1311), the new ones' colours
   p3Top: '#D7DDE6', p3Bot: '#C8CDD5', b3Front: '#F1C99E', b3Side: '#BD8B80', b3Flap: '#DFB298', b3Lflap: '#BD8B80', p3TopD: '#D7DDE6', p3BotD: '#C8CDD5', b3FrontD: '#F1C99E', b3SideD: '#BD8B80', b3FlapD: '#DFB298', b3LflapD: '#BD8B80',
 };
-const ORD = n => n + (n % 100 > 10 && n % 100 < 14 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
-const EVERY = v => (v = Math.round(v)) <= 0 ? 'never' : v === 1 ? 'every' : ORD(v), SAME = v => v <= 0 ? 'same' : Math.round(v * 100) + '%';
-const SPEC = [
-  ['How often', [['scansMin', 'Lines he reads on a paper, fewest', 1, 12, 1], ['scansMax', 'Most', 1, 12, 1], ['restMin', 'Pause before the next paper, shortest (s)', 0, 3, 0.05], ['restMax', 'Longest (s)', 0, 3, 0.05],
-    ['tiltEvery', 'Tilts the box, checks it: about every … paper', 0, 10, 1, EVERY], ['rumEvery', 'Pulls it in, rummages: about every … paper', 0, 10, 1, EVERY], ['shakesMin', 'Shakes as he rummages, fewest', 0, 8, 1], ['shakesMax', 'Most', 0, 8, 1]]],
-  ['How different each time', [['pathVary', 'Where he holds the paper (0: the same)', 0, 1, 0.01, SAME], ['throwVary', 'The throw\'s path (0: the same)', 0, 1, 0.01, SAME]]],
-  ['Timing', [['whip', 'Box out speed', 0.5, 2, 0.01], ['pull', 'Pulls it out (ms)', 300, 1600, 10], ['fly', 'Its flight (ms)', 400, 2000, 10]]],
-  ['His eyes', [['eyeR', 'Rest at, right (px)', -30, 40, 0.5], ['eyeL', 'Scan to, left (px)', -50, 20, 0.5], ['scanMs', 'Scan time (ms)', 150, 2000, 5], ['backMs', 'Back time (ms)', 40, 800, 5], ['gap', 'Space between them (px)', -40, 60, 0.5], ['follow', 'Follow the paper up and down', 0, 1, 0.01]]],
-  ['The paper', [['heldY', 'Held at (height, px; less is higher)', 40, 280, 1], ['curve', 'Straight (0) to curvy', 0, 1.6, 0.01], ['rise', 'Rises as he reads (px)', 0, 120, 1], ['thin', 'How thin it goes (px)', 2, 30, 0.5], ['flop', 'How flimsy', 0, 3, 0.01], ['flexHz', 'Its spring (Hz)', 0.8, 6, 0.05], ['flexDamp', 'Settles', 0.05, 1, 0.01], ['boxH', 'Box (stack) height (px)', 40, 200, 1]]],
-  ['Tilted and checked', [['tiltMs', 'He checks it (ms)', 800, 6000, 10], ['tiltDeg', 'Tilted (°)', 10, 80, 1], ['drift', 'Moves it about (px)', 0, 50, 1]]],
-  ['Rummaging', [['rumMs', 'He rummages (ms)', 800, 6000, 10], ['shakePx', 'Each shake (px)', 0, 16, 0.5]]],
-  ['The box', [['boxScale', 'Its size', 0.5, 1.8, 0.01], ['boxX', 'Where it sits (px; + nearer him)', -200, 200, 1]]],
-  ['The flaps', [['flapDrop', 'Drop as it tilts', 0, 1, 0.01], ['flapHz', 'Their spring (Hz)', 0.5, 8, 0.05], ['flapDamp', 'Settle', 0.05, 1, 0.01], ['flapReact', 'Swing with his moves', 0, 3, 0.01]]],
-  ['Him', [['react', 'How much he moves', 0, 2, 0.01]]],
-];
-const COLS = [['The box: its front', 'bFront', 'bFrontD'], ['Its side', 'bSide', 'bSideD'], ['Its flaps', 'bFlap', 'bFlapD']];
-const MOTION = new Set(['scansMin', 'scansMax', 'restMin', 'restMax', 'tiltEvery', 'rumEvery', 'shakesMin', 'shakesMax', 'pathVary', 'throwVary', 'whip', 'pull', 'fly', 'react', 'eyeR', 'eyeL', 'scanMs', 'backMs', 'gap', 'follow', 'heldY', 'rise', 'tiltMs', 'tiltDeg', 'drift', 'rumMs']);
-const KEY = 'ray-film-readbox', API = 'http://localhost:8737/api/settings/' + KEY;
+const KEY = 'ray-film-readbox';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 function migrate(v) {   // values saved before the ranges: a count and how much it varied, a chance a round
   if (v.scans != null && v.scansMin == null) { const d = v.scanVary ?? 1; v.scansMin = Math.max(1, v.scans - d); v.scansMax = v.scans + d; }
@@ -96,8 +79,6 @@ function migrate(v) {   // values saved before the ranges: a count and how much 
   for (const k of ['scans', 'scanVary', 'tiltOdds', 'rumOdds', 'shakes', 'restVary', 'lines']) delete v[k]; return v;
 }
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, migrate(l.values)); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 
 // ---- the film (an idle state; Figma 408:1131, 521:1113). Out comes the box (he follows it, sets it down by him). Round and round, the main
 //      loop: he pulls a paper up out of the box, his eyes riding it up; he reads it, a slow scan left along a line and a quick flick back right
@@ -401,95 +382,17 @@ function finish() {   // (the user: "when I click, for cash and reading, he just
 }
 function resume(fromBase) { FF = 1; sqResume(performance.now(), fromBase);   // (from: 'base': his rest look at once, then into the loop)
   if (parked != null || skipTo != null) t0 = performance.now() - (skipTo ?? parked); skipTo = null; parked = parkAt = slowIn = null; }   // on from where he held
-function trigger(kind) {   // the panel: this nuance now, if the box is home and nothing's in hand (between papers), else as the next round starts
-  const now = performance.now(), t = now - t0, N = F.nu, busy = N && t >= N.t0 && t < N.end;
-  if (leaving || pendingLeave || held || parked != null || parkAt != null) return;
-  if (t >= F.E && !busy && (t < F.pull[0] || t > F.fly[1] + 200)) { jump(now); seed++; F = film(Q, seed, kind); sim = bake(simulate(F.SCRIPT, { seed })); t0 = now - F.E; forceNext = null; }
-  else forceNext = kind;
-  showForce();
-}
 function showForce() { for (const [k, id] of [['tilt', 'go-tilt'], ['rummage', 'go-rummage']]) { const b = document.getElementById(id); if (b) b.textContent = (k === 'tilt' ? 'Tilt the box' : 'Rummage') + (forceNext === k ? ' · next' : ''); } }
 function replay() { sqReset(); skipTo = null; tossAt = null; held = false; forceNext = null; parked = parkAt = slowIn = null; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; blend = null; pendingLeave = null; FF = 1; seed = 1; F = film(Q, seed, TOUR.on ? ['tilt', 'rummage'][(TOUR.n = (TOUR.n || 0) + 1) % 2] : undefined); sim = bake(simulate(F.SCRIPT, { seed })); t0 = performance.now();
   Object.assign(BX, { x: S0[0], vx: 0, front: false, pos: S0, k: KH, b: 0, vb: 0, px: KF1.x, last: -1 }); }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-const rng = (a, b, d = 0, u = '') => { const lo = Math.min(a, b), hi = Math.max(a, b); return lo === hi ? lo.toFixed(d) + u : lo.toFixed(d) + '–' + hi.toFixed(d) + u; };
-const TLC = { entry: '#BDBDBD', tilt: '#E0A060', rummage: '#B58D82', read: '#7FA2E8', throw: '#9DA9CC' };
-const LEGEND = [['Comes out', TLC.entry], ['Tilts the box', TLC.tilt], ['Rummages', TLC.rummage], ['Reads', TLC.read], ['Throws', TLC.throw]];
-function sampleRun(until) {   // the run as it will play: round 1 after the entry, then each round after the last
-  const out = []; let base = 0;
-  for (let k = 1; base < until && k < 400; k++) { const G = film(Q, k);
-    if (k === 1) { out.push({ a: 0, b: G.E, c: TLC.entry, label: 'Out comes the box' }); base = G.E; }
-    const g = x => base + x - G.E;
-    if (G.nu) out.push({ a: g(G.nu.t0), b: g(G.nu.end), c: TLC[G.nu.kind], label: G.nu.kind === 'tilt' ? 'Tilts the box, checks it' : `Rummages, ${G.nu.shakes.length} shake${G.nu.shakes.length === 1 ? '' : 's'}` });
-    out.push({ a: g(G.pull[0]), b: g(G.read[1]), c: TLC.read, label: `Pulls a paper, reads ${G.lines} line${G.lines === 1 ? '' : 's'}` });
-    out.push({ a: g(G.read[1]), b: g(G.fly[1]), c: TLC.throw, label: 'Throws it' });
-    base += G.X - G.E; }
-  return out;
-}
-let tlPage = 0;
-function drawTimeline() {   // a sample run, 30 s of it (two rows of 15 s): each phase of each round as it will play with these settings
-  const svg = document.getElementById('tl'); if (!svg) return; const W = 252, ROW = 15000, R0 = tlPage * 30000, segs = sampleRun(R0 + 30000); let h = '';
-  for (let row = 0; row < 2; row++) { const y = row * 32, a = R0 + row * ROW, b = a + ROW, x = ms => (ms - a) / ROW * W;
-    h += `<rect x="0" y="${y}" width="${W}" height="14" rx="3" fill="var(--stroke)"/>`;
-    for (const s of segs) { if (s.b <= a || s.a >= b) continue; const x0 = x(Math.max(a, s.a)), x1 = x(Math.min(b, s.b)); if (x1 - x0 < 0.4) continue;
-      h += `<rect x="${x0.toFixed(1)}" y="${y}" width="${(x1 - x0 - 0.6).toFixed(1)}" height="14" fill="${s.c}"><title>${s.label} (${(s.a / 1000).toFixed(1)}–${(s.b / 1000).toFixed(1)} s)</title></rect>`; }
-    for (let k = 0; k <= 3; k++) h += `<text x="${k * W / 3}" y="${y + 25}" text-anchor="${k === 0 ? 'start' : k === 3 ? 'end' : 'middle'}" font-size="9" fill="currentColor" opacity=".54">${(a + k * 5000) / 1000} s</text>`; }
-  svg.innerHTML = h;
-  document.getElementById('tlLeg').innerHTML = LEGEND.map(([n, c]) => `<span><i style="background:${c}"></i>${n}</span>`).join('');
-  document.getElementById('tlPrev').disabled = tlPage === 0;
-}
-function summary() {   // what the controls add up to, in words; and a sample run
-  const el = document.getElementById('sum'); if (!el) return; drawTimeline(); const T = Math.round(Q.tiltEvery), U = Math.round(Q.rumEvery), lines = rng(Q.scansMin, Q.scansMax), often = n => n === 1 ? 'every paper' : 'about every ' + ORD(n) + ' paper';
-  el.textContent = `Each paper: he pulls it out, reads ${lines} line${lines === '1' ? '' : 's'}, throws it, then a ${rng(Q.restMin, Q.restMax, 1, ' s')} pause. `
-    + (T > 0 ? `Before ${often(T)} he tilts the box and checks it. ` : 'He never tilts the box. ')
-    + (U > 0 ? `Before ${often(U)} he pulls it in and rummages (${rng(Q.shakesMin, Q.shakesMax)} shakes).` : 'He never rummages.');
-}
-function renderPanel() {
-  const v = boxV(), PC = v === 1 ? null : [['The paper: its top', 'p' + v + 'Top'], ['Its bottom', 'p' + v + 'Bot']], BC = v === 1 ? COLS : [['The box: its front', 'b' + v + 'Front'], ['Its side', 'b' + v + 'Side'], ['Its right flap', 'b' + v + 'Flap'], ['Its left flap', 'b' + v + 'Lflap']].map(([n, k]) => [n, k, k + 'D']);
-  const colours = PC ? `<h3>The paper's colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>` + PC.map(([n, k]) => `<div class="crow"><label>${n}</label><input id="q-${k}" type="color" aria-label="${n}, light"><input id="q-${k}D" type="color" aria-label="${n}, dark"></div>`).join('') : `<h3>The paper's colours</h3><div class="crow"><label>Light</label><input id="q-cTop" type="color" aria-label="Light: its top"><input id="q-cBot" type="color" aria-label="Light: its bottom"></div>`
-    + `<div class="crow"><label>Light folds</label><input id="q-cFold" type="color" aria-label="Light: the folds"><span></span></div>`
-    + `<div class="crow"><label>Dark</label><input id="q-cTopD" type="color" aria-label="Dark: its top"><input id="q-cBotD" type="color" aria-label="Dark: its bottom"></div>`
-    + `<div class="crow"><label>Dark folds</label><input id="q-cFoldD" type="color" aria-label="Dark: the folds"><span></span></div>`;
-  panel.innerHTML = '<h3>What happens</h3><p class="sum" id="sum"></p><h3>A sample run</h3><svg id="tl" viewBox="0 0 252 60" role="img" aria-label="A sample run of these settings, 30 seconds"></svg><div class="leg" id="tlLeg"></div><div class="acts"><button id="tlPrev" type="button">Earlier</button><button id="tlNext" type="button">Next 30 s</button></div><h3>Play now</h3><div class="acts"><button id="go-tilt" type="button">Tilt the box</button><button id="go-rummage" type="button">Rummage</button></div>' + SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('') + (h === 'The paper' ? colours : '')).join('')
-    + '<h3>The box\'s colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>' + BC.map(([n, a, b]) => `<div class="crow"><label>${n}</label><input id="q-${a}" type="color" aria-label="${n}, light"><input id="q-${b}" type="color" aria-label="${n}, dark"></div>`).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([n, name, from]) => `<button type="button" data-v="${n}" aria-pressed="${v === n}"><b>${name}</b><small>${from}${n === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st, fmt] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = fmt ? fmt(+Q[k]) : (+Q[k]).toFixed(dp); summary(); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const k of PC ? PC.flatMap(([, k]) => [k, k + 'D']) : ['cTop', 'cBot', 'cFold', 'cTopD', 'cBotD', 'cFoldD']) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  for (const [, a, b] of BC) for (const k of [a, b]) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('go-tilt').onclick = () => trigger('tilt'); document.getElementById('go-rummage').onclick = () => trigger('rummage');
-  document.getElementById('tlPrev').onclick = () => { tlPage = Math.max(0, tlPage - 1); drawTimeline(); }; document.getElementById('tlNext').onclick = () => { tlPage++; drawTimeline(); };
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, migrate(j.values)); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'flip') { if (COINFLIP.on && (flipSpam() || !COINFLIP.backed)) return; if (COINFLIP.ask || leaving) return;   // (mid-flip: another coin, while this one's up; back from it, its coin still falling: another flip)
-    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; } if (m.ray === 'undo') return undoRedo(!!m.redo); if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; return; }   // the films page: start, leave, zoom, mode, the panel
+    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; }  if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; return; }   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; if (parked != null || parkAt != null) resume(m); else { replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff, !!m.finish);
   else if (m.ray === 'finish') finish(); else if (m.ray === 'resume') { asleep = false; resume(m); } else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'readbox', flip: true, fromPose: true });   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get drawn() { return lastDrawn; }, get sq() { return SQH; }, get flip() { return COINFLIP; }, get parked() { return parked; }, get parkAt() { return parkAt; }, get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get P() { return lastP; }, get f() { return lastF; }, get hover() { return { ...HV, gate: hoverGate }; }, get Q() { return Q; }, seek: ms => { t0 = performance.now() - ms; }, leave, replay, rebuild,
   round: n => { seed = n; F = film(Q, seed); sim = bake(simulate(F.SCRIPT, { seed })); } };
 

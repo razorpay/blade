@@ -39,7 +39,7 @@ const LAP2 = { at: [92, 29], h: 160.4, screen: [208, 109], back: new Path2D('M20
 const LAP3 = { at: [38, -6], h: 195, screen: [181, 91.5], back: new Path2D('M248.373 0C251.057 0 253.415 1.78215 254.146 4.36426L303.061 177H460.162C463.476 177 466.162 179.686 466.162 183V189C466.162 192.314 463.476 195 460.162 195H58.4149L3.16193 0H248.373Z'), front: new Path2D('M49.7817 190.569L0.212079 7.5687C-0.821159 3.75422 2.05145 0 6.00339 0H233.342L286.162 195H55.573C52.8635 195 50.4901 193.184 49.7817 190.569Z') };
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Laptop v1', 'Figma 361:712'], [2, 'Laptop v2', 'Figma 583:1563'], [3, 'Laptop v3', 'Figma 592:1834']], lapV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
+const lapV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
 
 // ---- the controls (saved to settings/ray-film-laptop2.json through serve.py, and this browser) ----
 const Q0 = {
@@ -55,26 +55,9 @@ const Q0 = {
   elemV: 1, l2Back: '#D7E6FF', l2Top: '#97C0FF', l2Bot: '#D7E6FF', l2Logo: '#78EBC4', l2BackD: '#D7E6FF', l2TopD: '#97C0FF', l2BotD: '#D7E6FF', l2LogoD: '#78EBC4',   // which laptop (1 the first, 2 / 3 Figma 583:1563 / 592:1834); v2's colours
   l3Back: '#BEBDBD', l3Lid: '#7F8591', l3BackD: '#BEBDBD', l3LidD: '#7F8591',   // v3's
 };
-const MOTION = new Set(['rate', 'burst', 'pause', 'jitter', 'leanIn', 'whip', 'eyeCycle', 'eyeNormal', 'eyeSkep', 'eyeFocus']);
-const SPEC = [
-  ['Typing', [['typing', 'Typing on', 0, 1, 1], ['rate', 'Keys a second', 2, 14, 0.5], ['burst', 'A burst of typing (s)', 0.6, 5, 0.1], ['pause', 'Pauses to read (s)', 0.3, 4, 0.1], ['jitter', 'Uneven', 0, 0.8, 0.01]]],
-  ['His body typing', [['tap', 'Left side taps (px)', 0, 10, 0.1], ['hands', 'Hands take turns', 0, 1, 0.01], ['squashTap', 'Squash on each key', 0, 0.03, 0.001], ['leanTap', 'Lean on each key (°)', 0, 2, 0.05], ['eyeTap', 'Eyes bob on each key (px)', 0, 4, 0.05],
-    ['leanIn', 'Leans in while he works', 0, 2, 0.01], ['tapMs', 'A tap rings (ms)', 30, 200, 5]]],
-  ['His eyes', [['eyeCycle', 'Eyes cycle', 0, 1, 1], ['eyeNormal', 'Normal (s)', 0.5, 6, 0.1], ['eyeSkep', 'Skeptical (s)', 0.5, 6, 0.1], ['eyeFocus', 'Focused slits (s)', 0.5, 6, 0.1],
-    ]],
-  ['The laptop shaking', [['shake', 'Shakes around (px)', 0, 5, 0.05], ['shakeHz', 'Shake speed (Hz)', 4, 30, 0.5], ['settle', 'Settles (damping)', 0.05, 1, 0.01], ['rock', 'Rocks (°)', 0, 2, 0.01],
-    ['wobble', 'Lid sways (px)', 0, 8, 0.05], ['lidHz', 'Lid sway speed (Hz)', 3, 20, 0.5]]],
-  ['The laptop bouncing', [['bounce', 'Bounces around (px)', 0, 14, 0.1], ['bounceUp', 'More up than down', 0, 1, 0.01], ['tip', 'Tips about its centre (°)', 0, 5, 0.05],
-    ['bounceHz', 'Bounce speed (Hz)', 2, 14, 0.1], ['bounceSettle', 'Bounce settles', 0.05, 1, 0.01], ['anchor', 'Turns about: its base ↔ its centre', 0, 1, 0.01]]],
-  ['The laptop sliding', [['slide', 'Shifts across (px)', 0, 16, 0.1], ['slideHz', 'Slide speed (Hz)', 1, 8, 0.1], ['slideSettle', 'Slide settles', 0.05, 1, 0.01]]],
-  ['The light on him', [['light', 'Strength', 0, 1, 0.01], ['flicker', 'Flicker', 0, 0.3, 0.01]]],   // white only
-  ['Timing', [['whip', 'Whip out speed', 0.5, 2, 0.01]]],
-];
-const KEY = 'ray-film-laptop2', API = 'http://localhost:8737/api/settings/' + KEY;
+const KEY = 'ray-film-laptop2';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, l.values); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 
 // ---- the film: entry (whips it out, sets it down in front of him, opens it, it comes on), working (typing bursts, reading pauses; every pass
 //      different), the exit (he sits up, shuts it, swoops it back behind him) ----
@@ -286,7 +269,6 @@ function leave(handoff) { if (leaving) return; const now = performance.now(), t 
   if (only) parent.postMessage({ ray: 'left', film: 'working', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, d: F.X - t, p0: LS.pos.slice(), k0: LS.k }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; SH.last = F.X; }   // the keys it skipped don't all land at once
 function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; clickT = null; seed = 1; F = film(Q, seed); sim = simulate(F.SCRIPT, { seed }); t0 = performance.now(); LS.x = S0[0]; LS.pos = S0; LS.k = K0; LS.front = false; Object.assign(SH, { x: 0, y: 0, a: 0, lid: 0, vx: 0, vy: 0, va: 0, vl: 0, bx: 0, by: 0, ba: 0, vbx: 0, vby: 0, vba: 0, sx: 0, vsx: 0, last: -1 }); }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 // a click on the laptop while it's on (its lid's box, roughly)
 const onLaptop = e => { const P = lastP; if (!P || !P.vis || !lastF || !lastF.light) return false; const d = $h.devicePixelRatio || 1, c = toCanvas(view, [P.x * FIG, (P.y - 377) * FIG]), s = FIG * view.scale * P.k;
@@ -295,43 +277,10 @@ cv.addEventListener('pointerdown', e => { if (onLaptop(e)) clickT = 0; });
 cv.addEventListener('pointermove', e => { cv.style.cursor = onLaptop(e) ? 'pointer' : ''; });
 
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-function renderPanel() {
-  const v = lapV(), CK = v === 2 ? [['Its back and base', 'l2Back'], ['Its lid, top', 'l2Top'], ['Its lid, bottom', 'l2Bot'], ['The mark on it', 'l2Logo']] : v === 3 ? [['Its back and base', 'l3Back'], ['Its lid', 'l3Lid']] : null;
-  const colours = CK ? `<h3>The laptop's colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>` + CK.map(([n, k]) => `<div class="crow"><label>${n}</label><input id="q-${k}" type="color" aria-label="${n}, light"><input id="q-${k}D" type="color" aria-label="${n}, dark"></div>`).join('')
-    : `<h3>The laptop's colours</h3><div class="crow"><label>Light</label><input id="q-cA" type="color" aria-label="Light: its grey"><input id="q-cB" type="color" aria-label="Light: its glow"></div>`
-    + `<div class="crow"><label>Dark</label><input id="q-cAD" type="color" aria-label="Dark: its grey"><input id="q-cBD" type="color" aria-label="Dark: its glow"></div>`;
-  panel.innerHTML = SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('') + (si === 2 ? colours : '')).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([n, name, from]) => `<button type="button" data-v="${n}" aria-pressed="${v === n}"><b>${name}</b><small>${from}${n === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = k === 'typing' ? (Q[k] ? 'on' : 'off') : (+Q[k]).toFixed(dp); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const k of CK ? CK.flatMap(([, k]) => [k, k + 'D']) : ['cA', 'cB', 'cAD', 'cBD']) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, j.values); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
-addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
+addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'working' });
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get P() { return lastP; }, get Q() { return Q; }, seek: ms => { t0 = performance.now() - ms; }, leave, replay, rebuild, tapsAt, clickNow: () => { clickT = 0; } };
 
 }

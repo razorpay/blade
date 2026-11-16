@@ -28,18 +28,13 @@ const Q0 = { elemV: 1,
   hEar: '#111111', hBoomA: '#0E0E0E', hBoomB: '#2F2F2F', hMic: '#2F2F2F', hLight: '#E85858', hEarD: '#111111', hBoomAD: '#0E0E0E', hBoomBD: '#2F2F2F', hMicD: '#2F2F2F', hLightD: '#E85858',   // v1: canon's
   h2Ear: '#C2C3FF', h2BoomA: '#C2C3FF', h2BoomB: '#D7E6FF', h2Mic: '#D7E6FF', h2Light: '#78EBC4', h2EarD: '#C2C3FF', h2BoomAD: '#C2C3FF', h2BoomBD: '#D7E6FF', h2MicD: '#D7E6FF', h2LightD: '#78EBC4',   // v2: Figma 583:1619
   h3Ear: '#94A9FC', h3BoomA: '#94B8FC', h3BoomB: '#AECCFF', h3Mic: '#AECCFF', h3Light: '#78EBC4', h3EarD: '#94A9FC', h3BoomAD: '#94B8FC', h3BoomBD: '#AECCFF', h3MicD: '#AECCFF', h3LightD: '#78EBC4' };   // v3: Figma 592:1839
-const SPEC = [], MOTION = new Set();
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Headset v1', 'canon'], [2, 'Headset v2', 'Figma 583:1619'], [3, 'Headset v3', 'Figma 592:1839']], hsV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
-const COLS_V = { 1: [['The headset: its ear piece', 'hEar', 'hEarD'], ['Its boom, at the ear', 'hBoomA', 'hBoomAD'], ['Its boom, at the mic', 'hBoomB', 'hBoomBD'], ['The mic', 'hMic', 'hMicD'], ['The light', 'hLight', 'hLightD']],
-  2: [['The headset: its ear piece', 'h2Ear', 'h2EarD'], ['Its boom, at the ear', 'h2BoomA', 'h2BoomAD'], ['Its boom, at the mic', 'h2BoomB', 'h2BoomBD'], ['The mic', 'h2Mic', 'h2MicD'], ['The light', 'h2Light', 'h2LightD']],
-  3: [['The headset: its ear piece', 'h3Ear', 'h3EarD'], ['Its boom, at the ear', 'h3BoomA', 'h3BoomAD'], ['Its boom, at the mic', 'h3BoomB', 'h3BoomBD'], ['The mic', 'h3Mic', 'h3MicD']] };   // (v3's light is under its ear, as Figma has it: no colour to pick)
-const KEY = 'ray-film-calling', API = 'http://localhost:8737/api/settings/' + KEY;
+const hsV = () => { const e = effV(); return e === 2 || e === 3 ? e : 1; };
+   // (v3's light is under its ear, as Figma has it: no colour to pick)
+const KEY = 'ray-film-calling';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, l.values); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 function film() { return { SCRIPT: SCRIPT0, E: SCRIPT0.entry, X: SCRIPT0.exit, back: SCRIPT0.exit + 760 }; }   // back: the headset's gone (canon: off at 8441, its boom and ear away)
 
 // ---- the headset, drawn here (canon's drawHeadset, its colours the version's): the ear piece pops on, the boom grows out of it, the mic pops at
@@ -112,44 +107,12 @@ function leave(handoff) { if (leaving) return; const now = performance.now(); le
   if (only) parent.postMessage({ ray: 'left', film: 'calling', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
 function replay() { held = false; only = false; sentFront = null; doneSent = false; leaving = false; settle = null; t0 = performance.now(); }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-function renderPanel() {
-  const COLS = COLS_V[hsV()];
-  panel.innerHTML = SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('')).join('')
-    + '<h3>Colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>' + COLS.map(([n, a, b]) => `<div class="crow"><label>${n}</label><input id="q-${a}" type="color" aria-label="${n}, light"><input id="q-${b}" type="color" aria-label="${n}, dark"></div>`).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([v, n, from]) => `<button type="button" data-v="${v}" aria-pressed="${hsV() === v}"><b>${n}</b><small>${from}${v === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = (+Q[k]).toFixed(dp); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const [, a, b] of COLS) for (const k of [a, b]) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, j.values); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
-addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
+addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'calling' });
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get P() { return lastP; }, get Q() { return Q; }, seek: ms => { t0 = performance.now() - ms; }, leave, replay, rebuild };
 
 }
