@@ -13,13 +13,14 @@
 import { FILMS, TUNES, RayCore } from './engine';
 import { FilmHost, freeCanvas } from './FilmHost';
 import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
+import { paceFor } from './rayPace';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
-import type { FilmMessage, FilmModule } from './engineTypes';
+import type { FilmMessage, FilmModule, RayCoreApi } from './engineTypes';
 import type { RayIdle, RayState } from './types';
 
-const RC = RayCore as any;
+const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
 type ActiveState = Exclude<RayState, 'idle'>;
 type Idle = Exclude<RayIdle, 'rotate' | 'time-of-day'>;
@@ -48,6 +49,7 @@ const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn
 const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
+const PACE_EVERY_MS = 2000; // how often the pace the Rays draw at is looked at again (rayPace)
 const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
@@ -63,6 +65,20 @@ const PLAYER_LEFT = 1;
 const PLAYER_ABOVE = 2;
 const PLAYER_RIGHT = 1;
 const PLAYER_BELOW = 0.75;
+// each film's canvases: the part of the stage it ever draws on, in his widths past his box to the left and above (razorpay/blade#4116).
+// Measured over each film's loop, coin flips (spam too), the hover look, typing, the hop, handoffs and the nightcap (2026-11-16): to the
+// left calling 0.04, writing 0.47, searching 0.60, laptop 1.26, coffee 0.72, cash 1.18, reading box 2.41; above 0.03 for the answer films
+// (0.13 with the nightcap) and 1.03 for the idle films (a coin). These are about 1.5 times that; to the right and below they go to the
+// room's edges (ROOM_RIGHT, ROOM_BELOW), past which nothing shows anyway
+const FILM_CROP: Record<string, [left: number, above: number]> = {
+  calling: [0.5, 0.5],
+  writing: [1, 0.5],
+  search: [1.2, 0.5],
+  laptop2: [2, 0.5],
+  coffee: [1.4, 1.8],
+  cash: [2, 1.8],
+  readbox: [3.8, 1.8],
+};
 
 /** The films' stage, in his widths: what every film is laid out on (Ray.web's _stage can make it smaller) */
 const STAGE: readonly [number, number] = [16, 8];
@@ -150,7 +166,7 @@ type RayMountOptions = {
   idle: RayIdle;
   size: keyof typeof WIDTHS;
   isHidden: boolean;
-  isInteractive: boolean;
+  shouldReactToPointer: boolean;
   colorScheme: 'light' | 'dark';
   /** every look in his films this many px of his box lower (− = higher): set in a film's script as it starts (Ray's _lookY) */
   lookY?: number;
@@ -320,7 +336,13 @@ class RayMount {
 
   /** Development only: what the director and his own Ray are doing. */
   get debug(): Record<string, unknown> {
-    return { holder: this.holder, want: this.want(), flip: this.player.flipState, geo: this.geo };
+    return {
+      holder: this.holder,
+      want: this.want(),
+      flip: this.player.flipState,
+      geo: this.geo,
+      pace: RayMount.pace,
+    };
   }
 
   update(options: Partial<RayMountOptions>): void {
@@ -367,7 +389,11 @@ class RayMount {
 
   /** A click on him: the coin flip where his idle allows it. */
   click(): void {
-    if (!this.options.isInteractive || this.options.state !== 'idle' || this.options.isHidden)
+    if (
+      !this.options.shouldReactToPointer ||
+      this.options.state !== 'idle' ||
+      this.options.isHidden
+    )
       return;
     const h = this.holder;
     if (h.by === 'player') {
@@ -679,6 +705,7 @@ class RayMount {
     film.host.layer.style.visibility = 'hidden';
     this.films[id] = film;
     this.stage.append(film.host.layer);
+    film.host.setCrop(this.filmCrop(id)); // (before its first size: its canvases are only ever this big)
     film.host.resize(this.geo.width, this.geo.height, this.dpr);
     film.host.start();
   }
@@ -941,7 +968,7 @@ class RayMount {
     );
     if (current && filmShown && current.shownAt === Infinity) current.shownAt = now;
     const clickable =
-      this.options.isInteractive && this.options.state === 'idle' && !this.options.isHidden;
+      this.options.shouldReactToPointer && this.options.state === 'idle' && !this.options.isHidden;
     const cursor = clickable ? 'pointer' : '';
     if (this.root.style.cursor !== cursor) this.root.style.cursor = cursor;
     // his own Ray draws until a film has taken him (and a frame after, so there's never a gap)
@@ -975,10 +1002,12 @@ class RayMount {
       this.player.tick(now, dt, {
         pointer: local && idleish ? this.player.toWorld(local[0], local[1], this.dpr) : null,
         gaze,
-        hover: this.options.isInteractive && idleish,
+        hover: this.options.shouldReactToPointer && idleish,
         // (asleep, a pointer near him wakes him: where it really is, not brought in)
         near:
-          raw && this.options.isInteractive ? this.player.toWorld(raw[0], raw[1], this.dpr) : null,
+          raw && this.options.shouldReactToPointer
+            ? this.player.toWorld(raw[0], raw[1], this.dpr)
+            : null,
       });
     } else {
       this.player.clear();
@@ -1012,7 +1041,7 @@ class RayMount {
   }
 
   private sendCursor(film: Film, local: number[] | null): void {
-    const near = this.options.isInteractive && local;
+    const near = this.options.shouldReactToPointer && local;
     const key = near ? `${Math.round(local[0])},${Math.round(local[1])}` : 'none';
     if (key === film.lastCursor) return;
     film.lastCursor = key;
@@ -1080,9 +1109,27 @@ class RayMount {
     );
     this.stageAt = null;
     Object.values(this.films).forEach((f) => {
+      f.host.setCrop(this.filmCrop(f.id));
       f.host.resize(g.width, g.height, this.dpr);
       f.host.send({ ray: 'zoom', z: g.zoom });
     });
+  }
+
+  /** The part of the stage a film draws on (the stage's CSS px): FILM_CROP past his box, the room's edges right and below. */
+  private filmCrop(
+    id: string,
+  ): { left: number; top: number; right: number; bottom: number } | null {
+    const crop = FILM_CROP[id];
+    if (!crop) return null;
+    const g = this.geo;
+    const w = WIDTHS[this.options.size];
+    const top = g.floor - g.boxHeight; // his box's top on the stage
+    return {
+      left: Math.max(0, g.left - w * crop[0]),
+      top: Math.max(0, top - w * crop[1]),
+      right: Math.min(g.width, g.left + w * (1 + ROOM_RIGHT)),
+      bottom: Math.min(g.height, g.floor + w * ROOM_BELOW),
+    };
   }
 
   private readonly onClick = (): void => this.click();
@@ -1105,12 +1152,35 @@ class RayMount {
   private static raf = 0;
   private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
 
+  // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
+  private static frames = 0;
+  private static pace = 1;
+  private static interval = 1000 / 60; // ms between animation frames, smoothed
+  private static cost = 0; // ms a drawn frame's work takes (every Ray's), smoothed
+  private static lastAt = 0;
+  private static pacedAt = 0;
+
   private static readonly onFrame = (now: number): void => {
     RayMount.raf = 0;
+    const gap = now - RayMount.lastAt;
+    RayMount.lastAt = now;
+    if (gap > 0 && gap < 100) RayMount.interval += (gap - RayMount.interval) * 0.05;
+    RayMount.frames += 1;
+    if (RayMount.frames % RayMount.pace !== 0) {
+      // a frame they sit out: still booked, for the next
+      if (RayMount.booked.size) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
+      return;
+    }
     const due = [...RayMount.booked];
     RayMount.booked.clear();
+    const started = performance.now();
     due.forEach((m) => RayMount.guard(() => m.readLayout(now)));
     due.forEach((m) => RayMount.guard(() => m.frame(now)));
+    RayMount.cost += (performance.now() - started - RayMount.cost) * 0.1;
+    if (now - RayMount.pacedAt >= PACE_EVERY_MS) {
+      RayMount.pacedAt = now;
+      RayMount.pace = paceFor(RayMount.cost, RayMount.interval, RayMount.pace);
+    }
   };
 
   /** One Ray's fault never stops another: it's reported as an uncaught error would be, and the rest draw on. */

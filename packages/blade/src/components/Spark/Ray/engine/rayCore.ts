@@ -245,7 +245,7 @@ export const BREATH = { amt: 0.014, ms: 3400, sway: 3.06, swayMs: 5200 };
 // the cup's steam (canon idle drawSteam, the user's coffee tune, page px x 2.548 = Ray px): its shape moves, its alpha is a fixed
 // mask (solid at the rim, gone at the top); it grows up from the rim coming in and lifts away a little going out
 export const STEAM = { inMs: 390, outMs: 450, rise: 58.6, h: 168, w: 76.4, tip: 0.35, amp: 71.1, wave: 152.9, drift: 0.12, lean: -0.01, puff: 0.21,
-  buoy: 71.3, drag: 1.99, spread: 0.07, turb: 8.4, turbHz: 0, fade: 1.16, outRise: 15.3, foot: 15.3, wisps: 1, alpha: 1, color: '#d9e3ed' };
+  buoy: 71.3, drag: 1.99, spread: 0.07, turb: 8.4, turbHz: 0, fade: 1.16, outRise: 15.3, foot: 15.3, wisps: 1, alpha: 1, alphaD: 0.6, color: '#d9e3ed' };   // alphaD: its opacity in dark mode (the user, 2026-11-13: 60 %)
 const sstep = u => { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u); };
 export function gulpAt(f, u) {                                  // one gulp curve over a gulps fx (u 0..1): -lean .. 1 (the swallow) .. rings out
   const n = Math.max(1, Math.round(f.n || 5)), P = Math.max(50, (f.ms || 1550) / n), x = Math.max(0, Math.min(1, u)) * n, i = Math.min(n - 1, Math.floor(x)), tg = (x - i) * P;
@@ -1247,7 +1247,7 @@ export function draw(ctx, frame, view, o = {}) {
       const yb = W([0, y0])[1], yt = W([0, y0 - Hs])[1], gr = g.createLinearGradient(0, yb, 0, yt);
       for (let i = 0; i <= 16; i++) { const u = i / 16; gr.addColorStop(u, `rgba(0,0,0,${Math.pow(1 - u, Math.max(0.1, Q.fade)).toFixed(4)})`); }
       g.fillStyle = gr; g.fillRect(-6000, -6000, 14000, 14000); g.globalCompositeOperation = 'source-over';
-      ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = e * Math.max(0, Math.min(1, Q.alpha)); ctx.drawImage(L, 0, 0); ctx.restore();
+      ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = e * Math.max(0, Math.min(1, o.mode === 'dark' ? Q.alphaD ?? Q.alpha : Q.alpha)); ctx.drawImage(L, 0, 0); ctx.restore();
     }
   };
   const paintLook = g => {                                    // his full V2.1 look, on any context clipped to his body
@@ -1484,6 +1484,15 @@ export function idleFrame(t, seed = 3) {
 
 // fit Ray into a canvas: his floor root at the bottom-middle, his box about `frac` of the width
 // fit Ray and his whole travel: xmin / xmax in Ray px (from the script), so he has room to go left and right
+// a film drawn on part of its stage (Blade's Ray, razorpay/blade#4116): the page gives the part it draws on (window.rayCrop: its stage's CSS px,
+// { left, top, right, bottom }); its canvases cover that much and its view is the stage's, moved by that part's corner (whole device px, so he's
+// drawn on the same pixels). No crop: the whole stage, as before. W, H: the stage (device px); x, y, w, h: the part
+export function stageCrop(W, H, d, c) {
+  if (!c) return { x: 0, y: 0, w: W, h: H, W, H };
+  const x = Math.max(0, Math.min(W - 1, Math.floor(c.left * d))), y = Math.max(0, Math.min(H - 1, Math.floor(c.top * d)));
+  const x1 = Math.max(x + 1, Math.min(W, Math.ceil(c.right * d))), y1 = Math.max(y + 1, Math.min(H, Math.ceil(c.bottom * d)));
+  return { x, y, w: x1 - x, h: y1 - y, W, H };
+}
 export function fitTravel(cw, ch, xmin = 0, xmax = 0, frac = 0.42, floor = 0.72, rise = 0) {   // rise: Ray px he reaches above his top (a jump)
   const bw = BASE[2][0], travel = (xmax - xmin) * FIG, scale = Math.min(cw * frac / bw, cw * 0.9 / (bw + travel + 80), ch * 0.5 / hR, ch * floor * 0.94 / (hR + Math.max(0, rise) * FIG));
   return { scale, ox: cw / 2 - (C0[0] - ROOT[0] + (xmin + xmax) / 2 * FIG) * scale, oy: ch * floor };

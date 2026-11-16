@@ -45,7 +45,8 @@ type RayProps = {
    */
   idle?: RayIdle;
   /**
-   * His width: `small` is 38px (a side panel), `medium` is 48px (the dashboard and chat).
+   * His box, the room he takes in your layout: `small` is 38 × 31.51px (a side panel), `medium` is 48 × 39.8px (the dashboard and
+   * chat). It's his rest footprint and stays that size whatever he does; what he does around it draws outside it.
    *
    * @default 'medium'
    */
@@ -77,15 +78,17 @@ type RayProps = {
   watchedInputRef?: React.RefObject<HTMLElement | null>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
-   * again while it's up for another).
+   * again while it's up for another). It's a delight with nothing for the app to do, so it has no handler and no keyboard
+   * equivalent; turn it off where he only shows what's happening (an answer's row).
    *
    * @default true
    */
-  isInteractive?: boolean;
+  shouldReactToPointer?: boolean;
   /**
-   * When provided, Ray is exposed to assistive tech as an image with this label while he's visible (with `isVisible={false}`
-   * he's hidden from it too). Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen
-   * readers skip him.
+   * When provided, Ray is exposed to assistive tech with this label while he's visible (with `isVisible={false}` he's hidden
+   * from it too): while `state` is an answer state, as a `status` region (as DotLoader is), so a label that changes with the
+   * state is announced; at rest, as an image. Leave it unset when he is decorative (the surrounding UI already says what's
+   * happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
   /**

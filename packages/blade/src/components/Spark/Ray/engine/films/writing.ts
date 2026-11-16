@@ -12,7 +12,7 @@ export const SHARED = { rayWear, rayCap, rayTour };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART } = RC;
+const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -37,16 +37,12 @@ const CORNERS = [[-6.2, 0], [6.2, 0], [6.9, -13.7], [-9.7, -8.3]];   // canon's 
 // ---- the controls (saved to settings/ray-film-writing.json through serve.py, and this browser) ----
 const Q0 = { size: 1.6, tipX: -78, tipY: 377, penA: '#EFA022', penB: '#F6CDBD', penAD: '#EFA022', penBD: '#F6CDBD',
   penV: 1, p2Body: '#E5EFFF', p2Wood: '#CFDAFF', p2Lead: '#6F8CFF', p2BodyD: '#E5EFFF', p2WoodD: '#CFDAFF', p2LeadD: '#6F8CFF' };   // which pencil (1 canon's, 2 Figma 534:1214) and the new one's colours: its body, its band and sharpened wood, its lead   // + its colours: its body, its tip (light, dark)   // the pencil: how much bigger than canon's, where its tip writes (Ray px; Figma 361:753)
-const SPEC = [['The pencil', [['size', 'Its size (× canon)', 0.8, 2.4, 0.01], ['tipX', 'Its tip, across (px)', -160, 0, 1], ['tipY', 'Its tip, down (px)', 300, 420, 1]]]];
-const MOTION = new Set(['size', 'tipX', 'tipY']), COLS_V = { 1: [['The pencil: its body', 'penA', 'penAD'], ['Its tip', 'penB', 'penBD']], 2: [['The pencil: its body', 'p2Body', 'p2BodyD'], ['Its band and wood', 'p2Wood', 'p2WoodD'], ['Its lead', 'p2Lead', 'p2LeadD']] };
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.penV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.penV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Pencil v1', 'canon'], [2, 'Pencil v2', 'Figma 534:1214']];   // the element's versions, to test new ones (the user, 2026-10-29)
-const KEY = 'ray-film-writing', API = 'http://localhost:8737/api/settings/' + KEY;
+   // the element's versions, to test new ones (the user, 2026-10-29)
+const KEY = 'ray-film-writing';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, l.values); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 function film(Q) {
   const C = CANON, keys = C.keys.map(([t, ease, pose]) => ({ t, ...(ease ? { ease } : {}), pose: Object.keys(pose).length ? { corners: CORNERS, ...pose } : {} }));
   const pencil = { keys: C.pencil.map(([t, k]) => ({ t, at: [Q.tipX, Q.tipY], rot: 0, scale: Q.size, ...k })) };
@@ -80,8 +76,9 @@ if (EMBED) document.body.classList.add('embed');
 const cv = document.getElementById('stage'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
 let F = film(Q), sim = simulate(F.SCRIPT, { seed: 1 }), mode = 'light', t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, lastP = null, paused = false, pausedAt = 0, lastNow = performance.now();
 function rebuild() { const t = performance.now() - t0; F = film(Q); sim = simulate(F.SCRIPT, { seed: 1 }); t0 = performance.now() - Math.min(t, sim.total); }
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -300, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -300, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 const phaseOf = t => t < 431 ? 'out comes the pencil' : t < F.X ? 'writing' + (leaving ? ' · putting it away' : '') : t < sim.total ? 'right, behind him' : '';
 const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x ?? d)) * u, P = { ...b.pose }; for (const k of ['squash', 'lean', 'x', 'y', 'turn', 'tilt']) P[k] = L(a.pose[k], b.pose[k]); P.volume = L(a.pose.volume, b.pose.volume, 1);
@@ -112,44 +109,12 @@ function leave(handoff) { if (leaving) return; const now = performance.now(); le
   if (only) parent.postMessage({ ray: 'left', film: 'writing', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
 function replay() { held = false; only = false; sentFront = null; doneSent = false; leaving = false; settle = null; t0 = performance.now(); }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-function renderPanel() {
-  const COLS = COLS_V[Q.penV === 2 ? 2 : 1];
-  panel.innerHTML = SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('')).join('')
-    + '<h3>Colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>' + COLS.map(([n, a, b]) => `<div class="crow"><label>${n}</label><input id="q-${a}" type="color" aria-label="${n}, light"><input id="q-${b}" type="color" aria-label="${n}, dark"></div>`).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([v, n, from]) => `<button type="button" data-v="${v}" aria-pressed="${(Q.penV === 2 ? 2 : 1) === v}"><b>${n}</b><small>${from}${v === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.penV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = (+Q[k]).toFixed(dp); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const [, a, b] of COLS) for (const k of [a, b]) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('reset').onclick = () => { const v = Q.penV; Q = { ...Q0, penV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, j.values); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
-addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
+addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'writing' });
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get P() { return lastP; }, get Q() { return Q; }, seek: ms => { t0 = performance.now() - ms; }, leave, replay, rebuild };
 
 }

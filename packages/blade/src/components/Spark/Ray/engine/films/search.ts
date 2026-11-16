@@ -12,7 +12,7 @@ export const SHARED = { rayWear, rayCap, rayTour };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, eyesOfFrame, toCanvas, FIG } = RC;
+const { simulate, draw, frameAt, fitTravel, eyesOfFrame, toCanvas, FIG, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -29,7 +29,7 @@ const RING_D = MAG.svg.match(/ d="([^"]+)"/)[1];
 const MAG2 = { w: 200, h: 152, c: [130.566, 69.6794], lensR: 56.568, d: 'M73.5776 28.3954C96.6039 -2.71683 140.492 -9.27136 171.605 13.7548C202.717 36.7811 209.271 80.6685 186.245 111.781C163.219 142.893 119.332 149.448 88.2192 126.422C82.9032 122.488 78.3049 117.944 74.4478 112.959L13.5407 149.897C9.33031 152.45 3.84692 151.106 1.29355 146.896C-1.2597 142.686 0.0831052 137.202 4.29324 134.649L65.4302 97.5723C56.0319 75.4648 58.2535 49.101 73.5776 28.3954ZM130.566 13.1115C99.3244 13.1115 73.9981 38.4378 73.9981 69.6794C73.9983 100.921 99.3245 126.247 130.566 126.247C161.807 126.247 187.134 100.921 187.134 69.6794C187.134 38.4378 161.808 13.1115 130.566 13.1115Z' };
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const magOf = () => effV() === 2 ? MAG2 : MAG, VERSIONS = [[1, 'Glass v1', 'Figma 360:672'], [2, 'Glass v2', 'Figma 564:1375']];
+const magOf = () => effV() === 2 ? MAG2 : MAG;
 // the duotone (the user, 2026-10-27: "give the dualtone color options for the glass element"): Figma's pair by default (#76A4EC -> #807E86, its
 // gradient from the ring's top right to the handle's end, 126.5 deg), one pair for light and one for dark, the angle shared
 function ringSvg(a, b, ang) { const r = ang * Math.PI / 180, L = 82.86, cx = 82.25, cy = 80.38, dx = Math.cos(r) * L, dy = Math.sin(r) * L;
@@ -50,22 +50,11 @@ const Q0 = {
   gA: '#76A4EC', gB: '#807E86', gAD: '#76A4EC', gBD: '#807E86', gAngle: 126.5,                             // the glass's duotone: light pair, dark pair, angle
   elemV: 1, g2: '#D7E6FF', g2D: '#D7E6FF',                                                                  // which glass (1 the first, 2 Figma 564:1375); v2's colour, light and dark
 };
-const MOTION = new Set(['leanIn', 'lookRange', 'micro', 'bodyFollow', 'shutY', 'entrySpeed', 'searchPace', 'exitSpeed']);   // these remake the script
-const SPEC = [
-  ['The glass', [['mag', 'Magnification', 1, 2.6, 0.01], ['barrel', 'Bends at the rim', 0, 0.8, 0.01], ['chroma', 'Colour fringe', 0, 0.12, 0.001], ['tint', 'Glass tint', 0, 0.5, 0.01],
-    ['rim', 'Rim shade', 0, 0.6, 0.01], ['fresnel', 'Edge light', 0, 0.5, 0.01], ['glint', 'Glint', 0, 1, 0.01], ['size', 'Size', 0.7, 1.8, 0.01]]],
-  ['Following his eye', [['follow', 'Spring (Hz)', 2, 14, 0.1], ['damp', 'Damping', 0.3, 1.2, 0.01], ['smooth', 'Ignores his tiny saccades (ms)', 0, 400, 5], ['lead', 'Leads his look', 0, 0.8, 0.01], ['tremor', 'Hand tremor (px)', 0, 3, 0.05],
-    ['tilt', 'Tilts with speed', 0, 3, 0.05], ['offX', 'Offset across (px)', -30, 30, 0.5], ['offY', 'Offset down (px)', -30, 30, 0.5]]],
-  ['Him', [['leanIn', 'Leans in', 0, 2, 0.01], ['lookRange', 'How far he looks', 0.3, 1.8, 0.01], ['micro', 'Eye micro-moves', 0, 2.5, 0.01],
-    ['bodyFollow', 'Body follows his eyes', 0, 2.5, 0.01], ['shutY', 'Shut eye sits lower (px)', 0, 20, 0.5]]],
-  ['Timing', [['entrySpeed', 'Entry speed', 0.5, 2, 0.01], ['searchPace', 'Search pace', 0.5, 2, 0.01], ['exitSpeed', 'Exit speed', 0.5, 2, 0.01]]],
-];
-const KEY = 'ray-film-search', API = 'http://localhost:8737/api/settings/' + KEY;
+   // these remake the script
+const KEY = 'ray-film-search';
 let Q = { ...Q0 }, savedAt = 0;
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, l.values); savedAt = l.savedAt || 0; } } catch {}
 let saveT = 0;
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }   // text/plain: no preflight from a file:// page
 
 // ---- the film: entry (out from behind him, up to his eye, the other eye shuts, he leans down into it), a search that never plays twice the
 //      same, the exit (he straightens, opens the other eye, the glass goes back behind him) ----
@@ -213,8 +202,9 @@ const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(ne
 let PACE = 1, cut = null, only = false, sentFront = null, lastP = null; const mixP = (a, b, u) => { const o = { ...b }; for (const k in b) if (typeof b[k] === 'number' && typeof a[k] === 'number') o[k] = a[k] + (b[k] - a[k]) * u; return o; };
 const done = () => { if (EMBED && !doneSent) { doneSent = true; parent.postMessage({ ray: 'done', film: 'search' }); } };
 if (EMBED) document.body.classList.add('embed');
-const size = () => { const d = $h.devicePixelRatio || 1; for (const c of [rayCv, lensCv, glassCv]) { c.width = Math.round($h.innerWidth * d); c.height = Math.round($h.innerHeight * d); } off.width = rayCv.width; off.height = rayCv.height;
-  view = EMBED ? fitTravel(rayCv.width, rayCv.height, -740, 404, 0.3, 0.68) : fitTravel(rayCv.width, rayCv.height, -260, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, rayCv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); for (const c of [rayCv, lensCv, glassCv]) { c.width = STAGE.w; c.height = STAGE.h; } off.width = rayCv.width; off.height = rayCv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -260, 404, 0.34, 0.68); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 const phaseOf = t => t < 100 ? '' : t < G.out[1] ? 'out it comes' : t < 900 / Q.entrySpeed ? 'to his eye' : t < F.E ? 'one eye shut, in close' : t < F.X ? 'searching' + (leaving ? ' · putting it away' : '') : t < sim.total ? 'putting it away' : '';
 const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x ?? d)) * u, P = { ...b.pose };
@@ -251,49 +241,13 @@ function leave(handoff) { if (leaving) return; const now = performance.now(), t 
   if (only) parent.postMessage({ ray: 'left', film: 'search', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, vis0: !!(lastP && lastP.vis) }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
 function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; panel.querySelectorAll('[data-duo]').forEach(b => b.title = DUO[+b.dataset.duo][0] + ' (for ' + mode + ')'); document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-function renderPanel() {
-  const v2 = Q.elemV === 2, colours = v2 ? `<h3>The glass's colour</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div><div class="crow"><label>Ring and handle</label><input id="q-g2" type="color" aria-label="Ring and handle, light"><input id="q-g2D" type="color" aria-label="Ring and handle, dark"></div>` : `<h3>The glass's colours</h3><div class="sw">${DUO.map(([n, a, b], i) => `<button type="button" data-duo="${i}" title="${n} (for ${mode === 'dark' ? 'dark' : 'light'})" aria-label="${n}" style="background:linear-gradient(135deg, ${a}, ${b})"></button>`).join('')}</div>`
-    + `<div class="crow"><label>Light</label><input id="q-gA" type="color" aria-label="Light: first colour"><input id="q-gB" type="color" aria-label="Light: second colour"></div>`
-    + `<div class="crow"><label>Dark</label><input id="q-gAD" type="color" aria-label="Dark: first colour"><input id="q-gBD" type="color" aria-label="Dark: second colour"></div>`
-    + `<div class="row"><label for="q-gAngle">Gradient angle (°)</label><output id="o-gAngle"></output><input id="q-gAngle" type="range" min="0" max="360" step="0.5"></div><p class="hint">A swatch sets the pair for the mode you're in.</p>`;
-  panel.innerHTML = SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('') + (si === 0 ? colours : '')).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([v, n, from]) => `<button type="button" data-v="${v}" aria-pressed="${(v2 ? 2 : 1) === v}"><b>${n}</b><small>${from}${v === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the controls shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0; if (!el) continue;
-    const show = () => { el.value = Q[k]; o.textContent = (+Q[k]).toFixed(dp); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; o.textContent = (+Q[k]).toFixed(dp); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const k of v2 ? ['g2', 'g2D'] : ['gA', 'gB', 'gAD', 'gBD']) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  if (!v2) { const el = document.getElementById('q-gAngle'), o = document.getElementById('o-gAngle'), show = () => { el.value = Q.gAngle; o.textContent = (+Q.gAngle).toFixed(1); }; show(); inputs.gAngle = show; el.oninput = () => { Q.gAngle = +el.value; show(); save(); }; }
-  panel.querySelectorAll('[data-duo]').forEach(b => b.onclick = () => { const [, a, c] = DUO[+b.dataset.duo], dk = mode === 'dark'; Q[dk ? 'gAD' : 'gA'] = a; Q[dk ? 'gBD' : 'gB'] = c; save(); inputs[dk ? 'gAD' : 'gA'](); inputs[dk ? 'gBD' : 'gB'](); });
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { const s = JSON.stringify(Q); try { await navigator.clipboard.writeText(s); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, j.values); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});   // your latest values (saved through serve.py)
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
-addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
+addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' });
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get sim() { return sim; }, get view() { return view; }, get t() { return performance.now() - t0; }, get SCRIPT() { return SCRIPT; }, get F() { return F; }, Q, seek: ms => { t0 = performance.now() - ms; }, leave, replay, P: null, rebuild };
 
 }

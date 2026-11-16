@@ -13,7 +13,7 @@ export const SHARED = { rayWear, rayCap, rayTour, rayFlip };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, FIG, BREATH, hoverInit, hoverStep, withHover, toWorld } = RC;
+const { simulate, draw, frameAt, fitTravel, FIG, BREATH, hoverInit, hoverStep, withHover, toWorld, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -50,32 +50,14 @@ const Q0 = {
   r4Top: '#D7E6FF', r4Body: '#6F8CFF', n4L: '#78EBC4', n4D: '#3EDA8A', r4TopD: '#D7E6FF', r4BodyD: '#6F8CFF', n4LD: '#78EBC4', n4DD: '#3EDA8A',   // v4: Figma 592:1785
   regTopD: '#565656', regAD: '#A7A7A7', regBD: '#5892FF', noteLD: '#B3DDB0', noteDD: '#94B088', billWD: '#E6E6E6',
 };
-const COLS = [['The machine: its top', 'regTop', 'regTopD'], ['Its body, left', 'regA', 'regAD'], ['Its body, right', 'regB', 'regBD'], ['The notes', 'noteL', 'noteLD'], ['The notes\' end', 'noteD', 'noteDD'], ['The bills\' band', 'billW', 'billWD']];
 // the register's versions (Figma 548:1336 / 548:1353 / 592:1785, the user 2026-10-30): its top one colour, its body one solid colour, the notes' own; the bills' band shared
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Register v1', 'Figma 371:904'], [2, 'Register v2', 'Figma 548:1336'], [3, 'Register v3', 'Figma 548:1353'], [4, 'Register v4', 'Figma 592:1785']], regV = () => { const e = effV(); return e >= 2 && e <= 4 ? e : 1; };
+const regV = () => { const e = effV(); return e >= 2 && e <= 4 ? e : 1; };
 const VKEYS = { 2: { regTop: 'r2Top', regA: 'r2Body', regB: 'r2Body', noteL: 'n2L', noteD: 'n2D' }, 3: { regTop: 'r3Top', regA: 'r3Body', regB: 'r3Body', noteL: 'n3L', noteD: 'n3D' },
   4: { regTop: 'r4Top', regA: 'r4Body', regB: 'r4Body', noteL: 'n4L', noteD: 'n4D' } };
 const col = k => { const kk = (VKEYS[regV()] || {})[k] || k; return mode === 'dark' ? Q[kk + 'D'] : Q[kk]; };
-const colsV = () => { const v = regV(); return v === 1 ? COLS : [['The machine: its top', 'r' + v + 'Top'], ['Its body', 'r' + v + 'Body'], ['The notes', 'n' + v + 'L'], ['The notes\' end', 'n' + v + 'D'], ['The bills\' band', 'billW']].map(([n, k]) => [n, k, k + 'D']); };
-const ORD = n => n + (n % 100 > 10 && n % 100 < 14 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
-const EVERY = v => (v = Math.round(v)) <= 0 ? 'never' : v === 1 ? 'every' : ORD(v);
-const SPEC = [
-  ['How often', [['pileMin', 'The pile builds over, shortest (s)', 0.5, 15, 0.1], ['pileMax', 'Longest (s)', 0.5, 15, 0.1], ['notesMin', 'Notes in a pile, fewest', 3, 24, 1], ['notesMax', 'Most', 3, 24, 1], ['stream', 'A note comes out every (ms)', 80, 600, 10],
-    ['restMin', 'Then a pause before the reload, shortest (s)', 0, 5, 0.05], ['restMax', 'Pause, longest (s)', 0, 5, 0.05], ['tapsMin', 'Taps on the floor, fewest', 0, 6, 1], ['tapsMax', 'Taps, most', 0, 6, 1],
-    ['checkEvery', 'He checks a note first: about every … reload', 0, 10, 1, EVERY], ['looksMin', 'Brings it in front of him, fewest times', 1, 6, 1], ['looksMax', 'Most times', 1, 6, 1]]],
-  ['The pile', [['pileH', 'Pile height (px)', 100, 200, 1], ['sweep', 'Where notes come out: steady to all over', 0, 1.5, 0.01]]],
-  ['Timing', [['whip', 'Box out speed', 0.5, 2, 0.01], ['rest', 'Pause before the reload (ms)', 0, 4000, 10]]],
-  ['The reload', [['tapMs', 'Each tap (ms)', 120, 600, 5], ['liftMs', 'Up and into it (ms)', 400, 2000, 10], ['feed', 'It eats it (s)', 0.6, 4, 0.05]]],
-  ['The machine', [['hum', 'Vibrates while it eats (px)', 0, 4, 0.05], ['humHz', 'Vibration speed (Hz)', 8, 40, 0.5], ['spit', 'Jumps on each note (px)', 0, 8, 0.05], ['tip', 'Tips (°)', 0, 3, 0.05],
-    ['shakeHz', 'Its spring (Hz)', 4, 30, 0.5], ['settle', 'Settles', 0.05, 1, 0.01]]],
-  ['The cash', [['noteMs', 'Each note comes out (ms)', 120, 800, 10], ['droop', 'Droops as it comes (°)', 0, 8, 0.1]]],
-  ['A note, checked', [['lineMs', 'Out of the stack (ms)', 150, 1200, 10], ['examineMs', 'He looks at it (ms)', 400, 4000, 10], ['follow', 'To and from in front of him (ms)', 200, 1500, 10], ['eyeLag', 'His eyes trail the note (ms)', 0, 300, 5], ['noteTilt', 'The note in his hold: flat (0) to tilted (1)', 0, 1, 0.01], ['lineLen', 'As it slides, how long (px)', 30, 220, 1]]],
-  ['Him', [['react', 'How much he moves', 0, 2, 0.01]]],
-];
-const MOTION = new Set(['pileMin', 'pileMax', 'notesMin', 'notesMax', 'streamMin', 'streamMax', 'stream', 'restMin', 'restMax', 'tapsMin', 'tapsMax', 'checkEvery', 'looksMin', 'looksMax', 'pileH', 'sweep', 'whip', 'tapMs', 'liftMs', 'feed', 'notes', 'noteMs', 'lineMs', 'examineMs', 'follow', 'eyeLag', 'react']);
-const KEY = 'ray-film-cash', API = 'http://localhost:8737/api/settings/' + KEY;
+const KEY = 'ray-film-cash';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 function migrate(v) {   // values saved before the ranges: a base and how much it varied, a chance a round
   if (v.streamFor != null && v.streamMin == null) { const d = v.streamVary ?? 0.35; v.streamMin = +(v.streamFor * (1 - d)).toFixed(1); v.streamMax = +(v.streamFor * (1 + d)).toFixed(1); }
@@ -86,8 +68,6 @@ function migrate(v) {   // values saved before the ranges: a base and how much i
   for (const k of ['streamFor', 'streamVary', 'rest', 'restVary', 'taps', 'tapVary', 'check', 'turnMs', 'showMs']) delete v[k]; return v;
 }
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, migrate(l.values)); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 
 // ---- the film. Out comes the register with its stack (he follows it, sets it down). Then round and round, the main loop (the user,
 //      2026-10-29): the pile's made and the cash keeps coming, note after note out of its mouth, up and down the pile's face, each sinking
@@ -290,7 +270,8 @@ function notesAt(t) {   // where each note is at t (all from t, so it seeks and 
   // the cash while it piles: from the bottom, then up and down its face, never above it (the user, 2026-11-10: "make it start from the bottom; once
   // the cash piles up, it can start going up and down, but the up will stop at the pile height at that point; as the pile keeps growing, the up can
   // go higher"): onto the face as it is when it comes out, then down into it
-  if (F.A.fill && t < B.pile + 500) F.A.fill.outs.forEach((s, i) => { const tau = t - s; if (tau < 0 || s >= streamCut) return;
+  const CUT = B.cut && B.cut.at != null ? B.cut : null;   // (stopped mid-pile: the ones out land on the clock while he's held; once it goes on, they're in)
+  if (F.A.fill && t < B.pile + 500) F.A.fill.outs.forEach((s, i) => { let tau = t - s; if (CUT && s < CUT.at) { if (CUT.done) return; tau = CUT.at + Math.min(4000, performance.now() - CUT.wall) - s; } if (tau < 0 || s >= streamCut) return;
     const h = Math.max(1, top(s)), lv = 1 + (h - 1) * (0.5 - 0.5 * Math.cos(i * Q.sweep)), land = CASH.floor - T * lv, y0 = Math.max(MOUTH, land - 3), S = slide(tau, y0, i + 900, 71);
     if (tau < Q.noteMs) { out.push({ x: S.x, y: y0, rot: S.rot, ph: 'out' }); return; }
     const tf = (tau - Q.noteMs) / 1000, A = arrive(tf, y0, land);
@@ -354,8 +335,9 @@ if (EMBED) document.body.classList.add('embed');
 const cv = document.getElementById('stage'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
 let seed = 1, F = film(Q, seed), sim = simulate(F.SCRIPT, { seed }), mode = 'light', t0 = performance.now(), leaving = false, view = null, lastP = null, lastF = null, blend = null, paused = false, pausedAt = 0, lastNow = performance.now(), clock = 0;
 function rebuild() { const t = performance.now() - t0; F = film(Q, seed); sim = simulate(F.SCRIPT, { seed }); if (!leaving) t0 = performance.now() - Math.min(t, F.X - 1); }
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, -560, 404, 0.3, 0.68); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, -560, 404, 0.3, 0.68); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 // ---- the pointer (the user, via flow 9: "the hover range and follow cursor should be there for these new idle states, only scanning the
 //      paper or scanning a note overrides the cursor look on hover"): within his hover range his gaze and lean follow it, Ray Studio's way
@@ -365,7 +347,7 @@ const HV = hoverInit(); let cursorPx = null, hoverGate = 1;
 cv.addEventListener('pointermove', e => { cursorPx = [e.clientX, e.clientY]; }); cv.addEventListener('pointerleave', () => { cursorPx = null; });
 function hovered(f, dt, busy) {   // dt in s; busy: his eyes are on the note he checks
   hoverGate += ((busy ? 0 : 1) - hoverGate) * (1 - Math.exp(-dt * 1000 / 220));
-  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * cv.width / Math.max(1, $h.innerWidth), cursorPx[1] * cv.height / Math.max(1, $h.innerHeight)]) : null;
+  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * STAGE.W / Math.max(1, $h.innerWidth) - STAGE.x, cursorPx[1] * STAGE.H / Math.max(1, $h.innerHeight) - STAGE.y]) : null;
   hoverStep(HV, dt * 1000, f, cur); return withHover(f, { ...HV, amt: HV.amt * hoverGate, lean: HV.lean * hoverGate });
 }
 
@@ -389,7 +371,7 @@ function frame(now) {
   let t = now - t0;
   if (parked != null) { t0 = now - parked; t = parked; }                                                                         // finished: held at rest, the register and its pile by him (his breath goes on)
   else if (parkAt != null && t >= parkAt - 1 / 2) { const pE = 1, e = slowIn ??= { b0: now, t: Math.min(t, parkAt) }, u = Math.min(1, (now - e.b0) / pE); t = e.t + (parkAt - e.t) * (1 - (1 - u) ** 2); t0 = now - t;   // the bit's at its end: eased into the hold
-    if (u >= 1) { parked = parkAt; parkAt = null; slowIn = null; FF = 1; finished(); } }
+    if (u >= 1) { parked = parkAt; parkAt = null; slowIn = null; FF = 1; const PB = F.A.reload; if (PB && PB.cut && PB.cut.pending) { PB.cut = { at: parked, wall: now }; streamCut = parked; } finished(); } }
   if (!leaving && parked == null && t >= F.X) { jump(now); t0 += F.X - F.E; t = now - t0; seed++; F = film(Q, seed, nextOpt || {}); sim = simulate(F.SCRIPT, { seed }); streamCut = Infinity; nextOpt = null; showForce(); tourLoop('cash'); }   // round again
   if (leaving && leaveAt && t >= leaveAt) { jump(now); t0 = now - F.X; t = F.X; leaveAt = 0; FF = 1; exiting(); }
   if (leaving && t >= Math.max(...F.SCRIPT.keys.map(k => k.t))) done();
@@ -440,97 +422,25 @@ function finish() {   // (the user: "when I click, for cash and reading, he just
     else if (t < N.close[0]) { const a = noteAcross(N, t), d = Math.max(140, Q.follow * a); N.cut = { t, a, d }; N.close = [t + d, t + d + 160]; N.in = [N.close[1], N.close[1] + Q.lineMs]; }
     rest(); return at(N.in[1]); }
   if (t < B.out[0]) { rest(); return at(t); }
-  if (t < B.pile) { refilm({ cut: 0 }); return at(F.X - 1); }                                                       // the reload (it blocks): to its pile, then the squash
+  // the reload's own motion blocks (out, taps, up, eaten); the pile doesn't (the user, via flow 10, 2026-11-12: click on him mid-pile and nothing for up to
+  // ~10 s): the spitting stops where it is (the ones out land), the pile holds at its height, and he's into the flip; after it, the round goes on from there
+  if (t < B.feed[1] + 120) { B.cut = { pending: true }; return at(B.feed[1] + 120); }                              // the reload: through it, then as below
+  if (t < B.pile) { rest(); B.cut = { at: t, wall: now }; streamCut = t; return at(t); }                             // the pile: stopped here, at once
   if (t < S.end) { rest(); refilm({ cut: t }); return at(F.X - 1); }                                                 // the run: it stops (the ones out land)
   rest(); return at(Math.max(t, F.X - 1));
 }
-function resume(fromBase) { FF = 1; sqResume(performance.now(), fromBase);   // (from: 'base': his rest look at once, then into the loop)
+function resume(fromBase) { FF = 1; sqResume(performance.now(), fromBase); { const RB = F.A.reload; if (RB && RB.cut) { if (RB.cut.at != null) { RB.cut.done = true; streamCut = Infinity; } else RB.cut = null; } }   // (from: 'base': his rest look at once, then into the loop)
   if (parked != null || skipTo != null) t0 = performance.now() - (skipTo ?? parked); skipTo = null; parked = parkAt = slowIn = null; }   // on from where he held (a run's cut stays cut; the next round's whole)
-function trigger(check) {   // the panel: a note checked, or the reload, now: the run stops (the ones out finish), then straight to it; mid-reload, the next round (after a moment of cash)
-  const now = performance.now(), t = now - t0, A = F.A, o = A.opt || {}; if (leaving || held || t < F.E || parked != null || parkAt != null) return;
-  const refilm = op => { jump(now); F = film(Q, seed, op); sim = simulate(F.SCRIPT, { seed }); };
-  if (A.lead && t < A.lead.done) refilm({ ...o, cutLead: Math.min(t, A.lead.end), check, now: true, at: Math.max(t, Math.min(t, A.lead.end) + Q.noteMs) });   // round 1's run cut, then to it
-  else if (t < A.t0) refilm({ ...o, check, now: true, at: t });                                                                // in the pause: straight on
-  else { const cutAt = Math.max(t, A.reload.pile); refilm({ ...o, cut: cutAt + (t < A.reload.pile ? 900 : 0) }); nextOpt = { check, now: true }; }   // its run cut (a moment of cash if the pile's still building), the next round straight to it
-  showForce();
-}
 function showForce() { const a = document.getElementById('go-check'), b = document.getElementById('go-reload'); if (!a) return; a.textContent = 'Check a note' + (nextOpt && nextOpt.check ? ' · next' : ''); b.textContent = 'Reload now' + (nextOpt && !nextOpt.check ? ' · next' : ''); }
 function replay() { sqReset(); skipTo = null; held = false; leaving = false; nextOpt = null; parked = parkAt = slowIn = null; leaveAt = 0; FF = 1; streamCut = Infinity; blend = null; doneSent = false; seed = 1; F = film(Q, seed, TOUR.on ? { check: true } : {}); sim = simulate(F.SCRIPT, { seed }); t0 = performance.now(); RS.x = S0[0]; RS.front = false; Object.assign(SH, { x: 0, y: 0, a: 0, vx: 0, vy: 0, va: 0, last: -1, hum: 0 }); LIFTED.v = false; }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const setMode = m => { mode = m; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
-const theme = () => setMode(mode === 'light' ? 'dark' : 'light');
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-const rng = (a, b, d = 0, u = '') => { const lo = Math.min(a, b), hi = Math.max(a, b); return lo === hi ? lo.toFixed(d) + u : lo.toFixed(d) + '–' + hi.toFixed(d) + u; };
-const TLC = { entry: '#BDBDBD', stream: '#94B088', check: '#B07CD8', reload: '#5892FF', pile: '#B3DDB0' };
-const LEGEND = [['Comes out', TLC.entry], ['Note check', TLC.check], ['Reload', TLC.reload], ['Pile builds', TLC.pile]];
-function sampleRun(until) {   // the run as it will play: round 1 after the entry, then each round after the last
-  const out = []; let base = 0;
-  for (let k = 1; base < until && k < 400; k++) { const G = film(Q, k), A = G.A, B = A.reload;
-    if (k === 1) { out.push({ a: 0, b: G.E, c: TLC.entry, label: 'Out comes the register' }); base = G.E; }
-    const g = x => base + x - G.E, S = A.stream, s0 = S.outs.length ? S.outs[0] : S.end;
-    if (A.lead) out.push({ a: g(A.lead.outs[0] ?? A.lead.end), b: g(A.lead.done), c: TLC.stream, label: `Cash keeps coming, ${((A.lead.end - (A.lead.outs[0] ?? A.lead.end)) / 1000).toFixed(1)} s` });
-    if (A.note) out.push({ a: g(A.note.out[0]), b: g(A.note.in[1]), c: TLC.check, label: `Checks a note, in front of him ${A.note.loops.length}×` });
-    out.push({ a: g(B.out[0]), b: g(B.feed[0]), c: TLC.reload, label: `Reload: out, ${B.taps.length} tap${B.taps.length === 1 ? '' : 's'}, back in the top` });
-    out.push({ a: g(B.feed[0]), b: g(B.pile), c: TLC.pile, label: `Eaten; the pile builds again, ${A.n} notes` });
-    if (S.outs.length) out.push({ a: g(B.pile), b: g(S.done), c: TLC.stream, label: `And keeps coming, ${((S.end - B.pile) / 1000).toFixed(1)} s` });
-    base += G.X - G.E; }
-  return out;
-}
-let tlPage = 0;
-function drawTimeline() {   // a sample run, 30 s of it (two rows of 15 s): each phase of each round as it will play with these settings
-  const svg = document.getElementById('tl'); if (!svg) return; const W = 252, ROW = 15000, R0 = tlPage * 30000, segs = sampleRun(R0 + 30000); let h = '';
-  for (let row = 0; row < 2; row++) { const y = row * 32, a = R0 + row * ROW, b = a + ROW, x = ms => (ms - a) / ROW * W;
-    h += `<rect x="0" y="${y}" width="${W}" height="14" rx="3" fill="var(--stroke)"/>`;
-    for (const s of segs) { if (s.b <= a || s.a >= b) continue; const x0 = x(Math.max(a, s.a)), x1 = x(Math.min(b, s.b)); if (x1 - x0 < 0.4) continue;
-      h += `<rect x="${x0.toFixed(1)}" y="${y}" width="${(x1 - x0 - 0.6).toFixed(1)}" height="14" fill="${s.c}"><title>${s.label} (${(s.a / 1000).toFixed(1)}–${(s.b / 1000).toFixed(1)} s)</title></rect>`; }
-    for (let k = 0; k <= 3; k++) h += `<text x="${k * W / 3}" y="${y + 25}" text-anchor="${k === 0 ? 'start' : k === 3 ? 'end' : 'middle'}" font-size="9" fill="currentColor" opacity=".54">${(a + k * 5000) / 1000} s</text>`; }
-  svg.innerHTML = h;
-  document.getElementById('tlLeg').innerHTML = LEGEND.map(([n, c]) => `<span><i style="background:${c}"></i>${n}</span>`).join('');
-  document.getElementById('tlPrev').disabled = tlPage === 0;
-}
-function summary() {   // what the controls add up to, in words; and a sample run
-  const el = document.getElementById('sum'); if (!el) return; drawTimeline(); const N = Math.round(Q.checkEvery), taps = rng(Q.tapsMin, Q.tapsMax), looks = rng(Q.looksMin, Q.looksMax);
-  el.textContent = `The pile builds, ${rng(Q.notesMin, Q.notesMax)} notes this time round (a note every ${(Q.stream / 1000).toFixed(2)} s) up to ${Q.pileH} px, and stops there. After a ${rng(Q.restMin, Q.restMax, 1, ' s')} pause he reloads: out, ${taps} tap${taps === '1' ? '' : 's'}, back in the top, and a new pile builds. `
-    + (N <= 0 ? 'He never checks a note.' : `${N === 1 ? 'Every reload' : 'About every ' + ORD(N) + ' reload'} he first checks a note, bringing it in front of him ${looks} time${looks === '1' ? '' : 's'}.`);
-}
-function renderPanel() {
-  panel.innerHTML = '<h3>What happens</h3><p class="sum" id="sum"></p><h3>A sample run</h3><svg id="tl" viewBox="0 0 252 60" role="img" aria-label="A sample run of these settings, 30 seconds"></svg><div class="leg" id="tlLeg"></div><div class="acts"><button id="tlPrev" type="button">Earlier</button><button id="tlNext" type="button">Next 30 s</button></div><h3>Play now</h3><div class="acts"><button id="go-check" type="button">Check a note</button><button id="go-reload" type="button">Reload now</button></div>' + SPEC.map(([h, rows]) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('')).join('')
-    + '<h3>Colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>' + colsV().map(([n, a, b]) => `<div class="crow"><label>${n}</label><input id="q-${a}" type="color" aria-label="${n}, light"><input id="q-${b}" type="color" aria-label="${n}, dark"></div>`).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([n, name, from]) => `<button type="button" data-v="${n}" aria-pressed="${regV() === n}"><b>${name}</b><small>${from}${n === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st, fmt] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = fmt ? fmt(+Q[k]) : (+Q[k]).toFixed(dp); summary(); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const [, a, b] of colsV()) for (const k of [a, b]) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('go-check').onclick = () => trigger(true); document.getElementById('go-reload').onclick = () => trigger(false);
-  document.getElementById('tlPrev').onclick = () => { tlPage = Math.max(0, tlPage - 1); drawTimeline(); }; document.getElementById('tlNext').onclick = () => { tlPage++; drawTimeline(); };
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, migrate(j.values)); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'flip') { if (COINFLIP.on && (flipSpam() || !COINFLIP.backed)) return; if (COINFLIP.ask || leaving) return;   // (mid-flip: another coin, while this one's up; back from it, its coin still falling: another flip)
-    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; } if (m.ray === 'undo') return undoRedo(!!m.redo); if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; return; }   // the films page: start, leave, zoom, mode, the panel
+    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; }  if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; return; }   // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; if (parked != null || parkAt != null) resume(m); else replay(); } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave();
   else if (m.ray === 'finish') finish(); else if (m.ray === 'resume') { asleep = false; resume(m); } else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') setMode(m.mode); else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; else if (m.ray === 'rest') { held = true; leaving = false; leaveAt = 0; } });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'cash', flip: true, fromPose: true });   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get drawn() { return lastDrawn; }, get sq() { return SQH; }, get flip() { return COINFLIP; }, get parked() { return parked; }, get parkAt() { return parkAt; }, get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get Q() { return Q; }, get P() { return lastP; }, get f() { return lastF; }, get hover() { return { ...HV, gate: hoverGate }; }, note: t => noteAt(t), seek: ms => { t0 = performance.now() - ms; }, leave, replay, rebuild, round: n => { seed = n; F = film(Q, seed); sim = simulate(F.SCRIPT, { seed }); streamCut = Infinity; } };
 
 }

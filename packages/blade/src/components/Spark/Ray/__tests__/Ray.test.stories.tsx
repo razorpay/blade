@@ -178,7 +178,7 @@ export const TestRayAnswerStates: StoryFn<typeof Ray> = () => {
         ))}
       </Box>
       <Box paddingLeft="spacing.11">
-        <Ray state={state} idle="rest" isInteractive={false} />
+        <Ray state={state} idle="rest" shouldReactToPointer={false} />
       </Box>
     </Box>
   );

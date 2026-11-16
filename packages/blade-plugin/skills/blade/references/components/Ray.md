@@ -9,7 +9,7 @@ Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat 
 ## Important Constraints
 
 - `Ray` is **web only**; on React Native it throws "not yet implemented".
-- His box is his rest footprint (48px or 38px wide) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
+- His box is his rest footprint (48 × 39.8px or 38 × 31.51px) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
 - `watchedInputRef` must point at the actual `<input>` or `<textarea>` he watches (Blade's `ChatInput` forwards its textarea).
 
 ## TypeScript Types
@@ -61,7 +61,8 @@ type RayProps = {
    */
   idle?: RayIdle;
   /**
-   * His width: `small` is 38px (a side panel), `medium` is 48px (the dashboard and chat).
+   * His box, the room he takes in your layout: `small` is 38 × 31.51px (a side panel), `medium` is 48 × 39.8px (the dashboard and
+   * chat). It's his rest footprint and stays that size whatever he does; what he does around it draws outside it.
    *
    * @default 'medium'
    */
@@ -93,15 +94,17 @@ type RayProps = {
   watchedInputRef?: React.RefObject<HTMLElement | null>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
-   * again while it's up for another).
+   * again while it's up for another). It's a delight with nothing for the app to do, so it has no handler and no keyboard
+   * equivalent; turn it off where he only shows what's happening (an answer's row).
    *
    * @default true
    */
-  isInteractive?: boolean;
+  shouldReactToPointer?: boolean;
   /**
-   * When provided, Ray is exposed to assistive tech as an image with this label while he's visible (with `isVisible={false}`
-   * he's hidden from it too). Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen
-   * readers skip him.
+   * When provided, Ray is exposed to assistive tech with this label while he's visible (with `isVisible={false}` he's hidden
+   * from it too): while `state` is an answer state, as a `status` region (as DotLoader is), so a label that changes with the
+   * state is announced; at rest, as an image. Leave it unset when he is decorative (the surrounding UI already says what's
+   * happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
 } & TestID &
@@ -115,7 +118,7 @@ type RayProps = {
 
 - Sit the Ray on the chat input's top edge, near its right end (absolutely positioned above it), and pass the input as `watchedInputRef` so he watches what's typed.
 - Set `isVisible={false}` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through `searching`, `calling`, `writing` and `working`.
-- Give the answer row's Ray `idle="rest"` and `isInteractive={false}`, so he rests between states and when the answer is done.
+- Give the answer row's Ray `idle="rest"` and `shouldReactToPointer={false}`, so he rests between states and when the answer is done.
 - Add `shouldUnmountWhenHidden` to the answer row's Ray when the row should close up after he drops out (his box is removed once he's hopped off).
 - Use `entrance="dash"` only on the Ray that's on screen as the page lands (the chat input's).
 - Use `idle="rotate"` or `idle="time-of-day"` on the dashboard's chat input to vary his idle across visits; leave a named idle where he should look the same every time (tests, docs, screenshots).
@@ -210,7 +213,7 @@ const AnswerRow = () => {
         idle="rest"
         isVisible={!isDone}
         shouldUnmountWhenHidden
-        isInteractive={false}
+        shouldReactToPointer={false}
         accessibilityLabel={LABELS[state]}
       />
       <Text size="small" color="surface.text.gray.muted">
@@ -234,7 +237,7 @@ import { Box, Ray, Text } from '@razorpay/blade/components';
 const SidePanelRay = () => {
   return (
     <Box display="flex" alignItems="flex-end" gap="spacing.3" paddingTop="spacing.8">
-      <Ray size="small" idle="look" isInteractive={false} testID="side-panel-ray" />
+      <Ray size="small" idle="look" shouldReactToPointer={false} testID="side-panel-ray" />
       <Text size="small">Ray is here to help</Text>
     </Box>
   );

@@ -7,11 +7,12 @@
  * instead; the director (RayMount) hands him over at rest, where both draw the same frame.
  */
 import { RayCore, CANON, SHARED, TUNES } from './engine';
+import type { RayCoreApi } from './engineTypes';
 import { create as createCap } from './engine/shared/rayCap';
 import type { WatchPose } from './rayPoses';
 import { LEAN_BACK, REST_POSE, mixWatch, watchPoseAt } from './rayPoses';
 
-const RC = RayCore as any;
+const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
 const BODY_WIDTH = RC.BASE[2][0]; // his full width at rest (world units)
 const ROOT_X = RC.LOOK.width / 2; // his spine's root: the middle of his floor edge
@@ -208,7 +209,7 @@ class RayPlayer {
   private readonly hover = RC.hoverInit();
   // his own coin flip: create() makes its state (COINFLIP) fresh for each Ray, so clicking one Ray flips only him. All that's
   // shared on the page is the flip's physics, made once from rest and only read after (FLIP_MADE: "one per page")
-  private readonly flip: any = (SHARED as any).rayFlip(pageHost());
+  private readonly flip: any = SHARED.rayFlip(pageHost());
   private readonly cap: any = createCap(pageHost() as any);
   private readonly napHover = RC.hoverInit();
   private caretU = 0.5;
@@ -267,7 +268,8 @@ class RayPlayer {
 
   /** A point on the page (CSS px from the stage's corner) in his world, for the hover look. */
   toWorld(x: number, y: number, dpr: number): [number, number] {
-    return RC.toWorld(this.view, [(x - this.crop.x) * dpr, (y - this.crop.y) * dpr]);
+    const [wx, wy] = RC.toWorld(this.view, [(x - this.crop.x) * dpr, (y - this.crop.y) * dpr]);
+    return [wx, wy];
   }
 
   /** Development only: the flip module's state. */
@@ -588,7 +590,7 @@ class RayPlayer {
   }
 
   private sim(name: string): any {
-    return (this.sims[name] ??= RC.simulate((CANON as any)[name], { seed: 1 }));
+    return (this.sims[name] ??= RC.simulate((CANON as Record<string, unknown>)[name], { seed: 1 }));
   }
 
   private frameOf(now: number, dt: number): Frame {

@@ -23,12 +23,19 @@ describe('<Ray />', () => {
     expect(getByTestId('ray-test')).toHaveAttribute('aria-hidden', 'true');
   });
 
-  it('should expose an image role when accessibilityLabel is passed', () => {
+  it('should be a status region while working on an answer, so its label is announced', () => {
     const { getByRole } = renderWithTheme(
       <Ray accessibilityLabel="Ray is searching" state="searching" />,
     );
-    const ray = getByRole('img');
+    const ray = getByRole('status');
     expect(ray).toHaveAttribute('aria-label', 'Ray is searching');
+    expect(ray).not.toHaveAttribute('aria-hidden');
+  });
+
+  it('should expose an image role at rest when accessibilityLabel is passed', () => {
+    const { getByRole } = renderWithTheme(<Ray accessibilityLabel="Ray, the assistant" />);
+    const ray = getByRole('img');
+    expect(ray).toHaveAttribute('aria-label', 'Ray, the assistant');
     expect(ray).not.toHaveAttribute('aria-hidden');
   });
 

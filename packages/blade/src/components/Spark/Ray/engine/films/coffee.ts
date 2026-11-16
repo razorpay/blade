@@ -13,7 +13,7 @@ export const SHARED = { rayWear, rayCap, rayTour, rayFlip };
 
 export default function mount($h) {
 const { document, window, location, parent, navigator, localStorage, fetch, addEventListener, removeEventListener, requestAnimationFrame, cancelAnimationFrame, setTimeout, clearTimeout, setInterval, clearInterval } = $h.env;
-const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART, BREATH, hoverInit, hoverStep, withHover, toWorld, STEAM } = RC;
+const { simulate, draw, frameAt, fitTravel, FIG, PROP_ART, BREATH, hoverInit, hoverStep, withHover, toWorld, STEAM, stageCrop } = RC;
 const { WEAR, wearMsg, wearDraw } = $h.mod('rayWear');
 const { TOUR, placeMsg, placed, tourLoop } = $h.mod('rayTour');
 const { CAP, capMsg, capFrame, capDraw, capCarry, capSeed } = $h.mod('rayCap');
@@ -30,17 +30,12 @@ const CANON = {"mood":"neutral","context":"idle","loop":true,"autoBlink":false,"
 const Q0 = { cupA: '#5768DC', cupB: '#80AAFF', cupC: '#9D9DFF', cupAD: '#5768DC', cupBD: '#2E6DEB', cupCD: '#717BFE',
   elemV: 1, c2Handle: '#6F8CFF', c2Body: '#B1CCF9', c2HandleD: '#6F8CFF', c2BodyD: '#B1CCF9',                                     // which cup (1 canon's, 2 and 3 Figma 545:1278 / 545:1277), and the new ones' colours
   c3Handle: '#E2973A', c3Top: '#F7DE86', c3Bot: '#DD8526', c3HandleD: '#E2973A', c3TopD: '#F7DE86', c3BotD: '#DD8526' };
-const SPEC = [], COLS_V = { 1: [['The cup: its dark side', 'cupA', 'cupAD'], ['Its body', 'cupB', 'cupBD'], ['Its light side', 'cupC', 'cupCD']],
-  2: [['The cup: its handle', 'c2Handle', 'c2HandleD'], ['Its body', 'c2Body', 'c2BodyD']], 3: [['The cup: its handle', 'c3Handle', 'c3HandleD'], ['Its body, top', 'c3Top', 'c3TopD'], ['Its body, bottom', 'c3Bot', 'c3BotD']] };
 const IN_FLOW = /[?&]embed\b/.test(location.search) && !/[?&]studio\b/.test(location.search);   // in a flow (flow 9), not the films page: it shows the version marked primary (the user, 2026-10-30)
 const SELV = () => Q.elemV ?? 1, PRIM = () => Q.elemPrimary ?? Q0.elemV ?? 1, effV = () => IN_FLOW ? PRIM() : SELV();   // the version picked here, the one flow 9 shows, the one drawn
-const VERSIONS = [[1, 'Cup v1', 'canon'], [2, 'Cup v2', 'Figma 545:1278'], [3, 'Cup v3', 'Figma 545:1277']];   // the element's versions, to test new ones (the user, 2026-10-30)
-const MOTION = new Set();
-const KEY = 'ray-film-coffee', API = 'http://localhost:8737/api/settings/' + KEY;
+   // the element's versions, to test new ones (the user, 2026-10-30)
+const KEY = 'ray-film-coffee';
 let Q = { ...Q0 }, savedAt = 0, saveT = 0;
 try { const l = JSON.parse(localStorage.getItem(KEY) || 'null'); if (l && l.values) { Object.assign(Q, l.values); savedAt = l.savedAt || 0; } } catch {}
-function save(quiet) { if (!quiet) trackUndo(); savedAt = Date.now(); const rec = { savedAt, values: { ...Q } }; try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch {}
-  clearTimeout(saveT); saveT = setTimeout(() => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(rec) }).catch(() => {}), 300); }
 const ART = PROP_ART.cup, SVG0 = ART.svg, GEO0 = { w: ART.w, h: ART.h, c: ART.c.slice(), rim: ART.rim.slice() }; let lastCols = '';
 // v2 / v3 (Figma 545:1278 / 545:1277): a tapered cup, its handle an open loop; its body's top middle where canon's rim is, so it sits and steams the same
 const CUP2 = { handle: 'M80 127C38.3827 127 9 121.938 9 81.5876C9 31.2826 47.4432 40.6986 80 40.6986', body: 'M40.5983 7.18307C40.2546 3.32343 43.2953 0 47.1702 0H220.788C224.663 0 227.704 3.32343 227.36 7.18307L214.29 153.987C213.987 157.391 211.135 160 207.718 160H60.2409C56.8237 160 53.972 157.391 53.6689 153.987L40.5983 7.18307Z', w: 228, h: 160, c: [124.98, 80], rim: [133.98, 1] };
@@ -76,7 +71,7 @@ cv.addEventListener('pointermove', e => { cursorPx = [e.clientX, e.clientY]; });
 function hovered(f, now, busy) {
   const dt = hoverAt ? Math.min(50, now - hoverAt) : 16; hoverAt = now;
   hoverGate += ((busy ? 0 : 1) - hoverGate) * (1 - Math.exp(-dt / 220));
-  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * cv.width / Math.max(1, $h.innerWidth), cursorPx[1] * cv.height / Math.max(1, $h.innerHeight)]) : null;
+  const cur = cursorPx && view ? toWorld(view, [cursorPx[0] * STAGE.W / Math.max(1, $h.innerWidth) - STAGE.x, cursorPx[1] * STAGE.H / Math.max(1, $h.innerHeight) - STAGE.y]) : null;
   hoverStep(HV, dt, f, cur); return withHover(f, { ...HV, amt: HV.amt * hoverGate, lean: HV.lean * hoverGate });
 }   // canon Coffee's: he reaches; the cup's back by him; the buzz is over
 let awayAt = null, awayHeld = false, awayT0 = 0, lastDrawn = null, FF = 1, parkAt = null, parked = null, slowIn = null, heldAt = 0, HB = { a: 0, out: 0, ts: 0 }, cutBy = 0; const PARK_EASE = 500;
@@ -103,9 +98,9 @@ const holdBreath = (f, now) => {   // held: his breath goes on (eased in, and ou
   const ts = HB.ts + (parked != null ? now - heldAt : 0), g = ts ? { ...f, t: (f.t || 0) + ts } : f; if (a <= 0) return g;
   return { ...g, pose: { ...g.pose, squash: (g.pose.squash || 0) - BREATH.amt * a * Math.sin(2 * Math.PI * (now - heldAt) / BREATH.ms) } };
 };
-function rebuild() {}
-const size = () => { const d = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * d); cv.height = Math.round($h.innerHeight * d); off.width = cv.width; off.height = cv.height;
-  view = EMBED ? fitTravel(cv.width, cv.height, -740, 404, 0.3, 0.68) : fitTravel(cv.width, cv.height, 0, 404, 0.36, 0.66); view.scale *= ZOOM; view = placed(view, cv.width); };   // embedded: every film on the same stage (or where the page puts him)
+let STAGE = { x: 0, y: 0, w: 1, h: 1, W: 1, H: 1 };   // the part of its stage this film draws on (stageCrop)
+const size = () => { const d = $h.devicePixelRatio || 1; STAGE = stageCrop(Math.round($h.innerWidth * d), Math.round($h.innerHeight * d), d, window.rayCrop); cv.width = STAGE.w; cv.height = STAGE.h; off.width = cv.width; off.height = cv.height;
+  view = EMBED ? fitTravel(STAGE.W, STAGE.H, -740, 404, 0.3, 0.68) : fitTravel(STAGE.W, STAGE.H, 0, 404, 0.36, 0.66); view.scale *= ZOOM; view = placed(view, STAGE.W); view = { ...view, ox: view.ox - STAGE.x, oy: view.oy - STAGE.y }; };   // embedded: every film on the same stage (or where the page puts him)
 addEventListener('resize', size); size();
 function frame(now) {
   requestAnimationFrame(frame);
@@ -138,46 +133,14 @@ function leave() { if (leaving) return; if (parked != null) { const now = perfor
   sqResume(performance.now(), false); awayAt = null; awayHeld = false;   // from the hold: he eases out of it into the exit as it starts; no jump
   const now = performance.now(), t = now - t0; leaving = true; if (t < F.X) t0 = now - Math.max(t, F.X); }   // its own exit, from canon's end of the loop
 function replay() { sqReset(); awayAt = null; awayHeld = false; held = false; doneSent = false; leaving = false; parked = parkAt = slowIn = null; HB.a = 0; HB.out = 0; HB.ts = 0; if (cutBy) { cutBy = 0; sim = simulate(SCRIPT0, { seed: 1 }); F.X = SCRIPT0.exit; } t0 = performance.now(); }
-function pause() { paused = !paused; pausedAt = performance.now(); document.getElementById('pause').textContent = paused ? 'Play' : 'Pause'; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 // ---- the panel ----
-const panel = document.getElementById('panel'), inputs = {}; if (EMBED) panel.hidden = true;
-function renderPanel() {
-  const COLS = COLS_V[Q.elemV === 2 || Q.elemV === 3 ? Q.elemV : 1];
-  panel.innerHTML = SPEC.map(([h, rows], si) => `<h3>${h}</h3>` + rows.map(([k, label, mn, mx, st]) => `<div class="row"><label for="q-${k}">${label}</label><output id="o-${k}"></output><input id="q-${k}" type="range" min="${mn}" max="${mx}" step="${st}"></div>`).join('')).join('')
-    + '<h3>Colours</h3><div class="crow"><label></label><label>Light</label><label>Dark</label></div>' + COLS.map(([n, a, b]) => `<div class="crow"><label>${n}</label><input id="q-${a}" type="color" aria-label="${n}, light"><input id="q-${b}" type="color" aria-label="${n}, dark"></div>`).join('')
-    + '<div class="acts"><button id="reset" type="button">Reset</button><button id="copy" type="button">Copy values</button></div>'
-    + '<h3>Element version</h3><div class="vers">' + VERSIONS.map(([v, n, from]) => `<button type="button" data-v="${v}" aria-pressed="${(Q.elemV || 1) === v}"><b>${n}</b><small>${from}${v === PRIM() ? ' · primary' : ''}</small></button>`).join('') + '</div>'
-    + `<div class="prim"><span>Flow 9 shows v${PRIM()}</span><button id="mkprim" type="button"${SELV() === PRIM() ? ' disabled' : ''}>Make v${SELV()} primary</button></div>`;
-  panel.querySelectorAll('.vers button').forEach(b => b.onclick = () => { Q.elemV = +b.dataset.v; save(); renderPanel(); });   // the colours shown are that version's
-  document.getElementById('mkprim').onclick = () => { Q.elemPrimary = SELV(); save(); renderPanel(); };   // this version, in flow 9
-  for (const [, rows] of SPEC) for (const [k, , , , st] of rows) { const el = document.getElementById('q-' + k), o = document.getElementById('o-' + k), dp = st < 0.01 ? 3 : st < 0.1 ? 2 : st < 1 ? 1 : 0;
-    const show = () => { el.value = Q[k]; o.textContent = (+Q[k]).toFixed(dp); }; show(); inputs[k] = show;
-    el.oninput = () => { Q[k] = +el.value; show(); save(); if (MOTION.has(k)) rebuild(); }; }
-  for (const [, a, b] of COLS) for (const k of [a, b]) { const el = document.getElementById('q-' + k), show = () => { el.value = String(Q[k]).toLowerCase(); }; show(); inputs[k] = show; el.oninput = () => { Q[k] = el.value.toUpperCase(); save(); }; }
-  document.getElementById('reset').onclick = () => { const v = Q.elemV; Q = { ...Q0, elemV: v }; save(); renderPanel(); rebuild(); };   // the version stays
-  document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(Q)); document.getElementById('copy').textContent = 'Copied'; } catch {} };
-}
-renderPanel();
-fetch(API, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(j => { if (!j || !j.values || (j.savedAt || 0) <= savedAt) return; Object.assign(Q, j.values); savedAt = j.savedAt; for (const k in inputs) inputs[k](); rebuild(); }).catch(() => {});
-document.getElementById('replay').onclick = replay; document.getElementById('leave').onclick = leave; document.getElementById('pause').onclick = pause; document.getElementById('theme').onclick = theme;
-document.getElementById('ctl').onclick = () => { panel.hidden = !panel.hidden; };
-addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undoRedo(e.shiftKey); return; }   // ⌘Z / ⇧⌘Z: the panel's last change
-  if (e.target.closest && e.target.closest('input')) return; const k = e.key.toLowerCase();
-  if (EMBED) { if (k === ' ') e.preventDefault(); parent.postMessage({ ray: 'key', key: k }); return; }   // inside the films page: its keys are the page's
-  if (k === 'r') replay(); else if (k === 'l') leave(); else if (k === 'd') theme(); else if (k === 'c') panel.hidden = !panel.hidden; else if (k === ' ') { e.preventDefault(); pause(); } });
+const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m); if (m.ray === 'flip') { if (COINFLIP.on && (flipSpam() || !COINFLIP.backed)) return; if (COINFLIP.ask || leaving) return;   // (mid-flip: another coin, while this one's up; back from it, its coin still falling: another flip)
-    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; } if (m.ray === 'undo') return undoRedo(!!m.redo);   // the films page: start, leave, zoom, mode, the panel
+    if (held) { flipped(); return; } COINFLIP.ask = { toss: !!m.toss }; finish(); return; }    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; if (parked != null || parkAt != null || awayHeld) resume(m); else replay(); } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave();
   else if (m.ray === 'finish') finish(); else if (m.ray === 'resume') { asleep = false; resume(m); } else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'cursor') { cursorPx = m.x == null ? null : [m.x, m.y]; } else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 if (EMBED) parent.postMessage({ ray: 'ready', film: 'coffee', flip: true, fromPose: true });   // fromPose: resume can start from flow 9's flick ({ray: 'resume', from: 'pose', pose})   // flip: it plays the coin flip itself ({ray: 'flip'})
-// ---- undo / redo (⌘Z, ⇧⌘Z; here or from the films page): each drag of a slider, pick of a colour or press of a button is one step ----
-const HIST = { undo: [], redo: [], snap: null };
-panel.addEventListener('pointerdown', () => { HIST.snap = { ...Q }; }, true);                                                     // a change starts: what it was
-panel.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !HIST.snap) HIST.snap = { ...Q }; }, true);              // (a slider nudged with the keys)
-function trackUndo() { const was = HIST.snap; HIST.snap = null; if (!was || JSON.stringify(was) === JSON.stringify(Q)) return; HIST.undo.push(was); if (HIST.undo.length > 200) HIST.undo.shift(); HIST.redo.length = 0; }
-function undoRedo(redo) { const from = redo ? HIST.redo : HIST.undo, to = redo ? HIST.undo : HIST.redo; if (!from.length) return; to.push({ ...Q }); Q = from.pop(); HIST.snap = null;
-  const st = panel.scrollTop; renderPanel(); panel.scrollTop = st; save(true); rebuild(); }
 window.FILM = FILM = { get drawn() { return lastDrawn; }, get sq() { return SQH; }, get flip() { return COINFLIP; }, get parked() { return parked; }, get f() { return lastF; }, get t() { return performance.now() - t0; }, get sim() { return sim; }, get F() { return F; }, get t() { return performance.now() - t0; }, get Q() { return Q; }, seek: ms => { t0 = performance.now() - ms; }, leave, replay };
 
 }

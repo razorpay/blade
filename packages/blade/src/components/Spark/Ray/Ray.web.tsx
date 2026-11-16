@@ -47,7 +47,7 @@ const _Ray = (
     isVisible = true,
     shouldUnmountWhenHidden = false,
     watchedInputRef,
-    isInteractive = true,
+    shouldReactToPointer = true,
     accessibilityLabel,
     testID,
     _lookY = 0,
@@ -69,7 +69,7 @@ const _Ray = (
     idle,
     size,
     isHidden: !isVisible,
-    isInteractive,
+    shouldReactToPointer,
     colorScheme: scheme,
     lookY: _lookY,
     scale: _scale,
@@ -152,7 +152,7 @@ const _Ray = (
     idle,
     size,
     isVisible,
-    isInteractive,
+    shouldReactToPointer,
     scheme,
     _lookY,
     _scale,
@@ -190,7 +190,9 @@ const _Ray = (
       width={makeSize(box.width)}
       height={makeSize(box.height)}
       {...(accessibilityLabel && isVisible
-        ? makeAccessible({ role: 'img', label: accessibilityLabel })
+        ? // working on an answer, a status region (as DotLoader is), so a label that changes with the state is announced; at rest, an
+          // image (the PR review, 2026-11-16)
+          makeAccessible({ role: state === 'idle' ? 'img' : 'status', label: accessibilityLabel })
         : makeAccessible({ hidden: true }))}
       {...metaAttribute({ name: MetaConstants.Ray, testID })}
       {...makeAnalyticsAttribute(rest)}
