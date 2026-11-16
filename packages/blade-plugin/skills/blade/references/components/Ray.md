@@ -9,7 +9,7 @@ Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat 
 ## Important Constraints
 
 - `Ray` is **web only**; on React Native it throws "not yet implemented".
-- His box is his rest footprint (48px or 38px wide) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
+- His box is his rest footprint (48 × 39.8px or 38 × 31.51px) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
 - `watchedInputRef` must point at the actual `<input>` or `<textarea>` he watches (Blade's `ChatInput` forwards its textarea).
 
 ## TypeScript Types
@@ -61,7 +61,8 @@ type RayProps = {
    */
   idle?: RayIdle;
   /**
-   * His width: `small` is 38px (a side panel), `medium` is 48px (the dashboard and chat).
+   * His box, the room he takes in your layout: `small` is 38 × 31.51px (a side panel), `medium` is 48 × 39.8px (the dashboard and
+   * chat). It's his rest footprint and stays that size whatever he does; what he does around it draws outside it.
    *
    * @default 'medium'
    */

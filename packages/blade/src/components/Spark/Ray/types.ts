@@ -45,7 +45,8 @@ type RayProps = {
    */
   idle?: RayIdle;
   /**
-   * His width: `small` is 38px (a side panel), `medium` is 48px (the dashboard and chat).
+   * His box, the room he takes in your layout: `small` is 38 × 31.51px (a side panel), `medium` is 48 × 39.8px (the dashboard and
+   * chat). It's his rest footprint and stays that size whatever he does; what he does around it draws outside it.
    *
    * @default 'medium'
    */
