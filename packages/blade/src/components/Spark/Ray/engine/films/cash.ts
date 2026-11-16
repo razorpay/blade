@@ -290,7 +290,8 @@ function notesAt(t) {   // where each note is at t (all from t, so it seeks and 
   // the cash while it piles: from the bottom, then up and down its face, never above it (the user, 2026-11-10: "make it start from the bottom; once
   // the cash piles up, it can start going up and down, but the up will stop at the pile height at that point; as the pile keeps growing, the up can
   // go higher"): onto the face as it is when it comes out, then down into it
-  if (F.A.fill && t < B.pile + 500) F.A.fill.outs.forEach((s, i) => { const tau = t - s; if (tau < 0 || s >= streamCut) return;
+  const CUT = B.cut && B.cut.at != null ? B.cut : null;   // (stopped mid-pile: the ones out land on the clock while he's held; once it goes on, they're in)
+  if (F.A.fill && t < B.pile + 500) F.A.fill.outs.forEach((s, i) => { let tau = t - s; if (CUT && s < CUT.at) { if (CUT.done) return; tau = CUT.at + Math.min(4000, performance.now() - CUT.wall) - s; } if (tau < 0 || s >= streamCut) return;
     const h = Math.max(1, top(s)), lv = 1 + (h - 1) * (0.5 - 0.5 * Math.cos(i * Q.sweep)), land = CASH.floor - T * lv, y0 = Math.max(MOUTH, land - 3), S = slide(tau, y0, i + 900, 71);
     if (tau < Q.noteMs) { out.push({ x: S.x, y: y0, rot: S.rot, ph: 'out' }); return; }
     const tf = (tau - Q.noteMs) / 1000, A = arrive(tf, y0, land);
@@ -389,7 +390,7 @@ function frame(now) {
   let t = now - t0;
   if (parked != null) { t0 = now - parked; t = parked; }                                                                         // finished: held at rest, the register and its pile by him (his breath goes on)
   else if (parkAt != null && t >= parkAt - 1 / 2) { const pE = 1, e = slowIn ??= { b0: now, t: Math.min(t, parkAt) }, u = Math.min(1, (now - e.b0) / pE); t = e.t + (parkAt - e.t) * (1 - (1 - u) ** 2); t0 = now - t;   // the bit's at its end: eased into the hold
-    if (u >= 1) { parked = parkAt; parkAt = null; slowIn = null; FF = 1; finished(); } }
+    if (u >= 1) { parked = parkAt; parkAt = null; slowIn = null; FF = 1; const PB = F.A.reload; if (PB && PB.cut && PB.cut.pending) { PB.cut = { at: parked, wall: now }; streamCut = parked; } finished(); } }
   if (!leaving && parked == null && t >= F.X) { jump(now); t0 += F.X - F.E; t = now - t0; seed++; F = film(Q, seed, nextOpt || {}); sim = simulate(F.SCRIPT, { seed }); streamCut = Infinity; nextOpt = null; showForce(); tourLoop('cash'); }   // round again
   if (leaving && leaveAt && t >= leaveAt) { jump(now); t0 = now - F.X; t = F.X; leaveAt = 0; FF = 1; exiting(); }
   if (leaving && t >= Math.max(...F.SCRIPT.keys.map(k => k.t))) done();
@@ -440,11 +441,14 @@ function finish() {   // (the user: "when I click, for cash and reading, he just
     else if (t < N.close[0]) { const a = noteAcross(N, t), d = Math.max(140, Q.follow * a); N.cut = { t, a, d }; N.close = [t + d, t + d + 160]; N.in = [N.close[1], N.close[1] + Q.lineMs]; }
     rest(); return at(N.in[1]); }
   if (t < B.out[0]) { rest(); return at(t); }
-  if (t < B.pile) { refilm({ cut: 0 }); return at(F.X - 1); }                                                       // the reload (it blocks): to its pile, then the squash
+  // the reload's own motion blocks (out, taps, up, eaten); the pile doesn't (the user, via flow 10, 2026-11-12: click on him mid-pile and nothing for up to
+  // ~10 s): the spitting stops where it is (the ones out land), the pile holds at its height, and he's into the flip; after it, the round goes on from there
+  if (t < B.feed[1] + 120) { B.cut = { pending: true }; return at(B.feed[1] + 120); }                              // the reload: through it, then as below
+  if (t < B.pile) { rest(); B.cut = { at: t, wall: now }; streamCut = t; return at(t); }                             // the pile: stopped here, at once
   if (t < S.end) { rest(); refilm({ cut: t }); return at(F.X - 1); }                                                 // the run: it stops (the ones out land)
   rest(); return at(Math.max(t, F.X - 1));
 }
-function resume(fromBase) { FF = 1; sqResume(performance.now(), fromBase);   // (from: 'base': his rest look at once, then into the loop)
+function resume(fromBase) { FF = 1; sqResume(performance.now(), fromBase); { const RB = F.A.reload; if (RB && RB.cut) { if (RB.cut.at != null) { RB.cut.done = true; streamCut = Infinity; } else RB.cut = null; } }   // (from: 'base': his rest look at once, then into the loop)
   if (parked != null || skipTo != null) t0 = performance.now() - (skipTo ?? parked); skipTo = null; parked = parkAt = slowIn = null; }   // on from where he held (a run's cut stays cut; the next round's whole)
 function trigger(check) {   // the panel: a note checked, or the reload, now: the run stops (the ones out finish), then straight to it; mid-reload, the next round (after a moment of cash)
   const now = performance.now(), t = now - t0, A = F.A, o = A.opt || {}; if (leaving || held || t < F.E || parked != null || parkAt != null) return;
