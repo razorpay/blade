@@ -153,11 +153,6 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
  * softer for it.
  */
 const MAX_RAY_SHARPNESS = 2;
-/**
- * Ray's films' stage, in his widths: the button shows only his box and a little round it (cut by its corners), so his films lay
- * out on 4 x 3 of his widths, not Ray's 16 x 8: he's drawn the same, with canvases about a tenth the size (the PR review)
- */
-const RAY_STAGE: [number, number] = [4, 3];
 const screenDensity = (): number =>
   Math.min(2, (typeof window === 'undefined' ? 1 : window.devicePixelRatio) || 1);
 
@@ -703,7 +698,6 @@ const ButtonRayLayer = ({
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
               _scale={Math.min(rayWidth / rayBox.width, MAX_RAY_SHARPNESS / screenDensity())}
               _preloadState={INV.state}
-              _stage={RAY_STAGE}
             />
           ) : null}
         </span>

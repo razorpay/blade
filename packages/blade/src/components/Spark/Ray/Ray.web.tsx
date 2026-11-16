@@ -53,7 +53,6 @@ const _Ray = (
     _lookY = 0,
     _scale = 1,
     _preloadState,
-    _stage,
     ...rest
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
@@ -74,7 +73,6 @@ const _Ray = (
     lookY: _lookY,
     scale: _scale,
     preload: _preloadState,
-    stage: _stage,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
@@ -145,21 +143,7 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-    // (its stage by value: a new array with the same size isn't a change)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    state,
-    idle,
-    size,
-    isVisible,
-    shouldReactToPointer,
-    scheme,
-    _lookY,
-    _scale,
-    _preloadState,
-    _stage?.[0],
-    _stage?.[1],
-  ]);
+  }, [state, idle, size, isVisible, shouldReactToPointer, scheme, _lookY, _scale, _preloadState]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(watchedInputRef ?? null);
@@ -190,8 +174,8 @@ const _Ray = (
       width={makeSize(box.width)}
       height={makeSize(box.height)}
       {...(accessibilityLabel && isVisible
-        ? // working on an answer, a status region (as DotLoader is), so a label that changes with the state is announced; at rest, an
-          // image (the PR review, 2026-11-16)
+        ? // working on an answer, a status region (as DotLoader is), so a label that changes with the state can be announced; at rest,
+          // an image (the PR review, 2026-11-16)
           makeAccessible({ role: state === 'idle' ? 'img' : 'status', label: accessibilityLabel })
         : makeAccessible({ hidden: true }))}
       {...metaAttribute({ name: MetaConstants.Ray, testID })}

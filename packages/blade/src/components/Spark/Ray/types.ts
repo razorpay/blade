@@ -106,11 +106,6 @@ type RayProps = {
    * the moment the button is hovered).
    */
   _preloadState?: RayState;
-  /**
-   * @private His films' stage, in his widths (16 x 8 by default): where little of it is ever seen (Button's Ray hover, cut to the
-   * button), a smaller one draws him the same with much smaller canvases.
-   */
-  _stage?: [number, number];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
