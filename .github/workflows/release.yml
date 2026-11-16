@@ -14,7 +14,14 @@ permissions:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # razorpay's k8s runner pool, not GitHub-hosted: the org IP allow list refuses GitHub API calls
+    # and pushes from GitHub-hosted runners (403 since 12 Nov 2026), which breaks changesets.
+    # Publishing to npmjs.com stays on GitHub-hosted runners in the `publish-npm` job below,
+    # because npm OIDC trusted publishing only works there.
+    runs-on: [k8s-runner, non-api, xlarge-size, linux-amd64]
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
@@ -46,15 +53,6 @@ jobs:
           publish: yarn release
           commit: 'build: update version'
           title: 'build: update version'
-      - name: Publish to public npm registry
-        if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
-          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
-        run: yarn publish-npm
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
@@ -95,3 +93,36 @@ jobs:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
+
+  publish-npm:
+    name: Publish to public npm registry
+    needs: release
+    # run when the package is published via changeset or if a release is triggered manually.
+    if: needs.release.outputs.published == 'true' || github.event_name == 'workflow_dispatch'
+    # GitHub-hosted on purpose: npm OIDC trusted publishing does not support self-hosted runners.
+    # This job makes no GitHub API calls, so the org IP allow list does not affect it.
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    permissions:
+      id-token: write # For OIDC/npm provenance
+      contents: read
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - name: Upgrade npm for OIDC trusted publishing
+        run: npm install -g npm@11.5.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade Core
+        working-directory: packages/blade-core
+        run: yarn build
+      - name: Publish to public npm registry
+        env:
+          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
+          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
+          PUBLISHED_PACKAGES: ${{ needs.release.outputs.publishedPackages }}
+        run: yarn publish-npm

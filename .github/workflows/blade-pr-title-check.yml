@@ -1,19 +1,32 @@
 name: Blade PR Title Check
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, edited, synchronize]
 
 concurrency: # cancel previously running workflows when a new workflow is re-run
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   pr-title-check:
     name: PR Title Check
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    env:
-      GITHUB_TOKEN: ${{ github.token }}
     steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        id: pr_title_check
+      # Reads the title from the event payload instead of the GitHub API: the org IP allow list
+      # refuses API calls from GitHub-hosted runners (403 since 12 Nov 2026).
+      # Same rule as amannn/action-semantic-pull-request's defaults: conventional commit type,
+      # optional scope, optional `!`, then a subject.
+      - name: Check PR title follows Conventional Commits
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([^()]+\))?!?: .+'
+          if printf '%s' "$PR_TITLE" | grep -Eq "$pattern"; then
+            echo "PR title is valid: $PR_TITLE"
+          else
+            echo "::error title=Invalid PR title::\"$PR_TITLE\" must follow Conventional Commits, e.g. 'feat(Button): add loading state'. Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert."
+            exit 1
+          fi
