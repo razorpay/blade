@@ -99,6 +99,7 @@ const _DrawerHeader = ({
         subtitle={subtitle}
         leading={leading}
         trailing={trailing}
+        maxTrailingElements={2}
         showDivider={showDivider}
         {...makeAnalyticsAttribute(rest)}
       >

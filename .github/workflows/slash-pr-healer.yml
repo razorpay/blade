@@ -23,27 +23,29 @@ jobs:
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
+      # PR details come from the event payload, not the GitHub API: the org IP allow list refuses
+      # API calls from GitHub-hosted runners (403 since 12 Nov 2026).
+      # workflow_run.pull_requests is empty for PRs from forks, so those are skipped.
       - name: Resolve PR metadata
         id: pr-meta
         env:
-          GH_TOKEN: ${{ github.token }}
           EVENT_NAME: ${{ github.event_name }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           PR_NUMBER_INPUT: ${{ github.event.inputs.pr_number }}
+          RUN_PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          RUN_PR_BRANCH: ${{ github.event.workflow_run.pull_requests[0].head.ref }}
+          SERVER_URL: ${{ github.server_url }}
           REPOSITORY: ${{ github.repository }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            PR_JSON=$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER_INPUT" --jq '{url: .html_url, number: .number, branch: .head.ref}')
-            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p['url'])")
+            # Public repo: an anonymous read, so no token reaches the allow list.
+            PR_JSON=$(curl -fsSL "https://api.github.com/repos/$REPOSITORY/pulls/$PR_NUMBER_INPUT")
             PR_NUMBER="$PR_NUMBER_INPUT"
-            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p['branch'])")
+            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['head']['ref'])")
           else
-            PR_JSON=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/pulls" \
-              --header "Accept: application/vnd.github+json")
-            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
-            PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
-            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
+            PR_NUMBER="$RUN_PR_NUMBER"
+            PR_BRANCH="$RUN_PR_BRANCH"
           fi
+          PR_URL="$SERVER_URL/$REPOSITORY/pull/$PR_NUMBER"
 
           if [ -z "$PR_NUMBER" ]; then
             echo "No PR found for this commit — skipping."
