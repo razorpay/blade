@@ -6,8 +6,8 @@ const loadLayer = (): Promise<React.ComponentType<ButtonRayProps>> =>
   import('./ButtonRayLayer').then(({ ButtonRayLayer }) => ButtonRayLayer);
 
 /**
- * ButtonRay: Button's `hasRay` hover (internal; web). Its layer (Ray, his films, the RazorSense strip and the text wash:
- * ButtonRayLayer) is loaded only once a button turns it on, so a Button without `hasRay` doesn't carry Ray's runtime.
+ * ButtonRay: Button's Ray hover (`aiHover="ray-…"`; internal; web). Its layer (Ray, his films, the RazorSense strip and the text wash:
+ * ButtonRayLayer) is loaded only once a button turns it on, so a Button without it doesn't carry Ray's runtime.
  */
 const ButtonRay = (props: ButtonRayProps): React.ReactElement | null => {
   const Layer = useLazyLayer(loadLayer, props.isEnabled);

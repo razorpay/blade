@@ -1,7 +1,7 @@
 import { whyCantAnimate } from '../RazorSenseEngine';
 
 /**
- * Which Spark button hovers (Button's hasRazorSense / hasRay) may hold their canvases now. A browser keeps only so many WebGL
+ * Which Spark button hovers (Button's aiHover) may hold their canvases now. A browser keeps only so many WebGL
  * contexts on a page (Chrome 16) and drops the oldest past that, so a hover's canvases are made only while the pointer is on or
  * near its button, and let go once it has moved away and the hover has faded out: a page of them holds a few at most, whatever
  * its size (the PR review: 24 buttons made 24 contexts at load, and 8 lost their hover for good).

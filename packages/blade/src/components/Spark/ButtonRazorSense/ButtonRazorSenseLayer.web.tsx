@@ -92,7 +92,7 @@ const forWidth = (doc: Comp, setup: ButtonSenseSetup, w: number): Comp => {
 };
 
 /**
- * ButtonRazorSenseLayer: Button's `hasRazorSense` hover (internal; web; loaded by ButtonRazorSense only when it's on). Flow 9's primary button hover (ray tools/flow/prim9.js, its
+ * ButtonRazorSenseLayer: Button's `aiHover="razorsense"` (internal; web; loaded by ButtonRazorSense only when it's on). Flow 9's primary button hover (ray tools/flow/prim9.js, its
  * 'tab' version): on hover the mode's RazorSense comp plays over the button, under its label, looping while the pointer stays;
  * it fades in over .12s and out over .35s, then pauses. Any size: the button's own spot of the comp, the comp's moving shapes
  * squeezed or stretched round the button's middle to its width and height (the bands as they are); a button about as wide as

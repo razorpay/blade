@@ -64,6 +64,14 @@ import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
 import { ButtonRay } from '~components/Spark/ButtonRay';
 import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
+/**
+ * Button's AI hovers (web): `razorsense` plays RazorSense on the neutral primary button; `ray-<action>` brings Ray to a secondary
+ * button, doing that action (`ray-investigate`: he searches with his magnifying glass). More Ray actions will come as new values.
+ */
+export type ButtonAiHover = 'razorsense' | `ray-${ButtonRayVariant}`;
+
+const AI_HOVERS: readonly ButtonAiHover[] = ['razorsense', 'ray-investigate'];
+
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
   target?: BaseLinkProps['target'];
@@ -112,19 +120,11 @@ type BaseButtonCommonProps = {
    */
   _spinnerColor?: BaseSpinnerProps['color'];
   /**
-   * RazorSense plays on hover (web). Only for `variant="primary"` with `color="neutral"`; not inside a ButtonGroup or on a
-   * full-width button.
+   * An AI hover (web). `razorsense`: RazorSense plays on hover; only for `variant="primary"` with `color="neutral"`, not inside
+   * a ButtonGroup or on a full-width button. `ray-<action>`: RazorSense, a text wash, and the button widens for Ray, who does
+   * that action; only for `variant="secondary"`, at any size (it all scales with the button's height).
    */
-  hasRazorSense?: boolean;
-  /**
-   * Ray on hover (web): RazorSense, a text wash, and the button widens for Ray, who plays `rayVariant`. Only for
-   * `variant="secondary"`, at any size (it all scales with the button's height).
-   */
-  hasRay?: boolean;
-  /**
-   * Which Ray `hasRay` plays: 'investigate', he whips out his magnifying glass and searches.
-   */
-  rayVariant?: ButtonRayVariant;
+  aiHover?: ButtonAiHover;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -575,9 +575,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _borderRadius,
     _iconSize,
     _spinnerColor,
-    hasRazorSense = false,
-    hasRay = false,
-    rayVariant,
+    aiHover,
     ...rest
   },
   ref,
@@ -594,18 +592,34 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
   const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
-  // a hover prop on the wrong button is a mistake, loud as the neutral and tertiary colors are; checked against the Button's own
-  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, they give way, below)
+  const isAiHoverKnown = aiHover !== undefined && AI_HOVERS.includes(aiHover);
+  const hasRazorSense = aiHover === 'razorsense';
+  // ('ray-investigate': Ray, investigating)
+  const rayVariant =
+    isAiHoverKnown && aiHover.startsWith('ray-')
+      ? (aiHover.slice('ray-'.length) as ButtonRayVariant)
+      : undefined;
+  const hasRay = Boolean(rayVariant);
+  if (__DEV__ && aiHover !== undefined && !isAiHoverKnown) {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `aiHover must be one of ${AI_HOVERS.map((value) => `"${value}"`).join(
+        ', ',
+      )} but received "${aiHover}"`,
+    });
+  }
+  // an AI hover on the wrong button is a mistake, loud as the neutral and tertiary colors are; checked against the Button's own
+  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, it gives way, below)
   if (hasRazorSense && !isInsideButtonGroup && (variant !== 'primary' || color !== 'neutral')) {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `hasRazorSense can only be used with variant "primary" and color "neutral" but received "${variant}" and "${color}"`,
+      message: `aiHover="razorsense" can only be used with variant "primary" and color "neutral" but received "${variant}" and "${color}"`,
     });
   }
   if (hasRay && !isInsideButtonGroup && variant !== 'secondary') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `hasRay can only be used with variant "secondary" but received "${variant}"`,
+      message: `aiHover="${aiHover}" can only be used with variant "secondary" but received "${variant}"`,
     });
   }
   const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;
@@ -636,26 +650,18 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         type: 'warn',
         moduleName: 'Button',
         message: isInsideButtonGroup
-          ? "hasRazorSense isn't supported inside a ButtonGroup (it has no neutral color); the button keeps its own hover."
-          : 'hasRazorSense is for a button sized to its content, not a full-width one; the button keeps its own hover.',
+          ? `aiHover="razorsense" isn't supported inside a ButtonGroup (it has no neutral color); the button keeps its own hover.`
+          : 'aiHover="razorsense" is for a button sized to its content, not a full-width one; the button keeps its own hover.',
       });
     }
     if (isRayGivingWay) {
       logger({
         type: 'warn',
         moduleName: 'Button',
-        message:
-          'hasRay needs a labelled secondary button that can widen (not in a ButtonGroup, not full width, not icon-only); this one keeps its own hover.',
+        message: `aiHover="${aiHover}" needs a labelled secondary button that can widen (not in a ButtonGroup, not full width, not icon-only); this one keeps its own hover.`,
       });
     }
-    if (rayVariant && !hasRay) {
-      logger({
-        type: 'warn',
-        moduleName: 'Button',
-        message: `rayVariant only picks what hasRay plays: set hasRay as well (received rayVariant "${rayVariant}").`,
-      });
-    }
-  }, [isRazorSenseGivingWay, isRayGivingWay, isInsideButtonGroup, rayVariant, hasRay]);
+  }, [isRazorSenseGivingWay, isRayGivingWay, isInsideButtonGroup, aiHover]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

@@ -2,7 +2,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 
 /**
- * A Spark hover's layer, loaded on demand (Button's hasRazorSense / hasRay): its module is imported once the button is
+ * A Spark hover's layer, loaded on demand (Button's aiHover): its module is imported once the button is
  * enabled (a disabled or loading one never draws it), then kept. A failed load (offline, a stale deploy) leaves it null:
  * the button keeps its own hover.
  */

@@ -14,4 +14,3 @@ export { RazorSenseChatBackground } from './RazorSenseChatBackground';
 export type { RazorSenseChatBackgroundProps } from './RazorSenseChatBackground';
 export { Ray } from './Ray';
 export type { RayProps, RayState, RayIdle, RaySize } from './Ray';
-export type { ButtonRayVariant } from './ButtonRay';

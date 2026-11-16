@@ -19,6 +19,7 @@ import {
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
 import { Box } from '~components/Box';
+import { ButtonGroup } from '~components/ButtonGroup';
 
 const Page = (): ReactElement => {
   return (
@@ -88,19 +89,12 @@ export default {
         disable: true,
       },
     },
-    hasRazorSense: {
-      // only on the neutral color: RazorSense is for the neutral primary button
-      if: { arg: 'color', eq: 'neutral' },
-    },
-    hasRay: {
-      // only on the secondary variant: Ray widens the secondary button
-      if: { arg: 'variant', eq: 'secondary' },
-    },
-    rayVariant: {
+    aiHover: {
+      // 'razorsense' plays on the neutral primary button, 'ray-investigate' on a secondary one: on any other button the
+      // stories leave it off (argsFor)
       control: { type: 'select' },
-      options: ['investigate'],
-      // only once hasRay is on: it picks what Ray does
-      if: { arg: 'hasRay', truthy: true },
+      options: ['none', 'razorsense', 'ray-investigate'],
+      mapping: { none: undefined },
     },
   },
   parameters: {
@@ -110,24 +104,28 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', ...args }) => {
-  return <ButtonComponent {...args}>{children}</ButtonComponent>;
-};
-
 type ButtonStoryArgs = Omit<ButtonProps, 'children'>;
 
-// a story that shows several buttons gives each one only what it can take: `color="neutral"` and `hasRazorSense` are the
-// primary button's, `hasRay` and `rayVariant` the secondary's (on any other button they throw in development)
+// a story gives each button only what it can take: `color="neutral"` and `aiHover="razorsense"` are the primary button's,
+// `aiHover="ray-investigate"` the secondary's (on any other button they throw in development)
 const argsFor = (
-  { hasRazorSense, hasRay, rayVariant, ...args }: ButtonStoryArgs,
+  { aiHover, ...args }: ButtonStoryArgs,
   variant: NonNullable<ButtonProps['variant']>,
   color = args.color,
 ): ButtonStoryArgs => ({
   ...args,
   color: color === 'neutral' && variant !== 'primary' ? undefined : color,
-  ...(variant === 'primary' && color === 'neutral' ? { hasRazorSense } : null),
-  ...(variant === 'secondary' ? { hasRay, rayVariant } : null),
+  ...(aiHover === 'razorsense' && variant === 'primary' && color === 'neutral'
+    ? { aiHover }
+    : null),
+  ...(aiHover?.startsWith('ray-') && variant === 'secondary' ? { aiHover } : null),
 });
+
+const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', ...args }) => {
+  return (
+    <ButtonComponent {...argsFor(args, args.variant ?? 'primary')}>{children}</ButtonComponent>
+  );
+};
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
 const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
@@ -314,13 +312,12 @@ export const SecondaryButton = ButtonWithSizeTemplate.bind({});
 SecondaryButton.storyName = 'Secondary';
 SecondaryButton.args = {
   variant: 'secondary',
-  hasRay: false,
 };
 SecondaryButton.parameters = {
   docs: {
     description: {
       story:
-        'Secondary Button in different sizes. Turn on `hasRay` in Controls and hover a button: RazorSense and a text wash play, and it widens to the right for Ray, scaled to its height. `rayVariant` picks what he does (`investigate`: he pulls out his magnifying glass and searches for as long as the pointer stays). Where it can’t widen (a ButtonGroup, full width, icon-only) the button keeps its own hover',
+        'Secondary Button in different sizes. Set `aiHover` to `ray-investigate` in Controls and hover a button: RazorSense and a text wash play, and it widens to the right for Ray, scaled to its height, who pulls out his magnifying glass and searches for as long as the pointer stays. Where it can’t widen (a ButtonGroup, full width, icon-only, stretched by its container) the button keeps its own hover',
     },
   },
 };
@@ -496,8 +493,8 @@ FullWidthButton.args = {
   isFullWidth: true,
 };
 FullWidthButton.argTypes = {
-  // a full-width neutral button keeps its normal hover: no RazorSense to switch on
-  hasRazorSense: {
+  // a full-width button keeps its normal hover: no AI hover to switch on
+  aiHover: {
     table: {
       disable: true,
     },
@@ -507,6 +504,130 @@ FullWidthButton.parameters = {
   docs: {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with full width',
+    },
+  },
+};
+
+const AI_HOVER_SIZES: NonNullable<ButtonProps['size']>[] = ['xsmall', 'small', 'medium', 'large'];
+
+const AiHoverRow = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}): React.ReactElement => (
+  <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+    <Text size="small" color="surface.text.gray.muted">
+      {label}
+    </Text>
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.5" alignItems="center">
+      {children}
+    </BaseBox>
+  </BaseBox>
+);
+
+export const AIHovers: StoryFn<typeof ButtonComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.7">
+      <AiHoverRow label='aiHover="razorsense" (variant="primary", color="neutral")'>
+        {AI_HOVER_SIZES.map((size) => (
+          <ButtonComponent key={size} color="neutral" size={size} aiHover="razorsense">
+            Ask Ray
+          </ButtonComponent>
+        ))}
+      </AiHoverRow>
+      <AiHoverRow label='aiHover="ray-investigate" (variant="secondary")'>
+        {AI_HOVER_SIZES.map((size) => (
+          <ButtonComponent key={size} variant="secondary" size={size} aiHover="ray-investigate">
+            Investigate
+          </ButtonComponent>
+        ))}
+      </AiHoverRow>
+      <HeadingComponent size="small">
+        Where they give way (the button keeps its own hover)
+      </HeadingComponent>
+      <AiHoverRow label="Full width">
+        <BaseBox display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <ButtonComponent color="neutral" isFullWidth aiHover="razorsense">
+            Ask Ray
+          </ButtonComponent>
+          <ButtonComponent variant="secondary" isFullWidth aiHover="ray-investigate">
+            Investigate
+          </ButtonComponent>
+        </BaseBox>
+      </AiHoverRow>
+      <AiHoverRow label="In a ButtonGroup">
+        <ButtonGroup variant="secondary">
+          <ButtonComponent aiHover="ray-investigate">Investigate</ButtonComponent>
+          <ButtonComponent>Dismiss</ButtonComponent>
+        </ButtonGroup>
+      </AiHoverRow>
+      <AiHoverRow label="Icon only (Ray needs a label to widen)">
+        <ButtonComponent
+          variant="secondary"
+          icon={CreditCardIcon}
+          accessibilityLabel="Investigate"
+          aiHover="ray-investigate"
+        />
+      </AiHoverRow>
+      <AiHoverRow label="Stretched by its container (a flex column): Ray can't widen it">
+        <BaseBox display="flex" flexDirection="column" width="240px">
+          <ButtonComponent variant="secondary" aiHover="ray-investigate">
+            Investigate
+          </ButtonComponent>
+        </BaseBox>
+      </AiHoverRow>
+    </BaseBox>
+  );
+};
+AIHovers.storyName = 'AI Hovers';
+AIHovers.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        '`aiHover` on web: `razorsense` plays RazorSense on the neutral primary button; `ray-investigate` widens a secondary button for Ray, who searches with his magnifying glass. Hover them. Below them, the places they give way, where the button keeps its own hover (with a development warning).',
+    },
+  },
+};
+
+/** 24 rows, each with both AI hovers: their canvases are made only near the pointer, at most 3 on the page at once */
+export const AIHoversOnManyButtons: StoryFn<typeof ButtonComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+      {Array.from({ length: 24 }, (_, i) => (
+        <BaseBox
+          key={i}
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          gap="spacing.5"
+          paddingY="spacing.2"
+          borderBottomWidth="thin"
+          borderBottomColor="surface.border.gray.muted"
+        >
+          <Box width="160px">
+            <Text size="small">Payment #{1001 + i}</Text>
+          </Box>
+          <ButtonComponent variant="secondary" size="small" aiHover="ray-investigate">
+            Investigate
+          </ButtonComponent>
+          <ButtonComponent color="neutral" size="small" aiHover="razorsense">
+            Ask Ray
+          </ButtonComponent>
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+AIHoversOnManyButtons.storyName = 'AI Hovers on Many Buttons';
+AIHoversOnManyButtons.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        'A table of 24 rows, each with both AI hovers. A browser keeps only so many WebGL canvases on a page, so a hover makes its canvases only while the pointer is on or near its button: at most 3 on the page at once, none at rest.',
     },
   },
 };

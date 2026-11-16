@@ -147,7 +147,17 @@ const labelOf = (button: HTMLElement): HTMLElement | null =>
   ) ?? null;
 
 /**
- * ButtonRayLayer: Button's `hasRay` hover (internal; web; loaded by ButtonRay only when it's on). Flow 9's "Investigate with Ray": on hover its RazorSense (the landing
+ * Ray's canvases are drawn at the screen's density (at most 2) times how much bigger than his box he's shown, so a big button's
+ * Ray made canvases at 2.9x on a Retina screen: about 10 MB each, three of them for a hover (the PR review). On a button they're
+ * held to 2 device px per CSS px in all, so a hover's canvases take about half that; a Ray shown bigger than his box is a touch
+ * softer for it.
+ */
+const MAX_RAY_SHARPNESS = 2;
+const screenDensity = (): number =>
+  Math.min(2, (typeof window === 'undefined' ? 1 : window.devicePixelRatio) || 1);
+
+/**
+ * ButtonRayLayer: Button's Ray hover (`aiHover="ray-…"`; internal; web; loaded by ButtonRay only when it's on). Flow 9's "Investigate with Ray": on hover its RazorSense (the landing
  * card's hover, the card's bottom strip at the button's size: once, held) and a text wash along the label; at once the
  * button widens to the right and Ray is revealed in the new end, standing on its bottom edge, and whips out his magnifying
  * glass (his search film), searching for as long as the pointer stays. Off: he puts it away as it narrows again, together.
@@ -469,7 +479,7 @@ const ButtonRayLayer = ({
               type: 'warn',
               moduleName: 'Button',
               message:
-                "hasRay: this button can't widen (its parent sets its width: a stretched column, a grid cell), so it keeps its own hover. Give it room to grow to the right.",
+                "aiHover: this button can't widen (its parent sets its width: a stretched column, a grid cell), so it keeps its own hover. Give it room to grow to the right.",
             });
           }
           return;
@@ -683,7 +693,7 @@ const ButtonRayLayer = ({
               state={isSearching ? INV.state : 'idle'}
               isInteractive={false}
               _lookY={(INV.eyeY * rayBox.width) / INV.rayW}
-              _scale={rayWidth / rayBox.width}
+              _scale={Math.min(rayWidth / rayBox.width, MAX_RAY_SHARPNESS / screenDensity())}
               _preloadState={INV.state}
             />
           ) : null}

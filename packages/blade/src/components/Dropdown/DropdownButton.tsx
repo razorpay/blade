@@ -13,11 +13,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 // (each member of ButtonProps' union, so it stays a union: with or without an icon)
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
 
-// Button's hover effects (hasRazorSense, hasRay, rayVariant) aren't a dropdown trigger's
-type DropdownButtonProps = DistributiveOmit<
-  ButtonProps,
-  'hasRazorSense' | 'hasRay' | 'rayVariant'
-> & {
+// Button's AI hovers (aiHover) aren't a dropdown trigger's
+type DropdownButtonProps = DistributiveOmit<ButtonProps, 'aiHover'> & {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
 };

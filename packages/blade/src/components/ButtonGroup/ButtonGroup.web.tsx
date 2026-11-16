@@ -73,7 +73,7 @@ const _ButtonGroup = (
     color,
     variant,
     isFullWidth,
-    // (read by a Button's hasRay: Ray can't widen a button inside a group)
+    // (read by a Button's aiHover: Ray can't widen a button inside a group)
     isInsideButtonGroup: true,
   };
 

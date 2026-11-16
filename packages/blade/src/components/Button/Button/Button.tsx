@@ -16,7 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
+import type { ButtonAiHover } from '~components/Button/BaseButton/BaseButton';
 
 type ButtonCommonProps = {
   /**
@@ -93,42 +93,25 @@ type ButtonCommonProps = {
   Platform.Select<{
     web: {
       /**
-       * RazorSense plays on the button while it's hovered (follows the color scheme). Only for `variant="primary"` with
-       * `color="neutral"`, at any size: on any other Button it throws in development. Not supported inside a ButtonGroup (it
-       * has no neutral color) or on a full-width button: there the button keeps its own hover (with a development warning).
+       * An AI hover: what plays while the button is hovered (it follows the color scheme). Each value is one whole behaviour.
+       *
+       * - `razorsense`: RazorSense plays on the button. Only for `variant="primary"` with `color="neutral"`, at any size. Not
+       *   supported inside a ButtonGroup (it has no neutral color) or on a full-width button: there the button keeps its own
+       *   hover (with a development warning).
+       * - `ray-investigate`: RazorSense and a text wash, and the button widens to the right for Ray, who whips out his
+       *   magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"`, at any size (it all
+       *   scales with the button's height), on a labelled button that can widen: in a ButtonGroup, full width, icon-only or
+       *   stretched by its container it gives way and the button keeps its own hover (with a development warning). Give it room
+       *   to its right. More Ray actions will come as new `ray-` values.
+       *
+       * On any other variant or color it throws in development.
        *
        * **Only available on web**
-       *
-       * @default false
        */
-      hasRazorSense?: boolean;
-      /**
-       * On hover (follows the color scheme): RazorSense and a text wash, and the button widens to the right for Ray, who plays
-       * `rayVariant` for as long as the pointer stays. Only for `variant="secondary"` (on another Button it throws in
-       * development), at any size (it all scales with the button's height), on a labelled button that can widen: in a
-       * ButtonGroup, full width or icon-only it gives way and the button keeps its own hover (with a development warning).
-       * Give it room to its right (its own width, not stretched or held by its container).
-       *
-       * **Only available on web**
-       *
-       * @default false
-       */
-      hasRay?: boolean;
-      /**
-       * Which Ray `hasRay` plays (only with `hasRay`; alone it does nothing and warns in development). `investigate`: he whips
-       * out his magnifying glass and searches (an investigating action). More
-       * variants will follow.
-       *
-       * **Only available on web**
-       *
-       * @default 'investigate'
-       */
-      rayVariant?: ButtonRayVariant;
+      aiHover?: ButtonAiHover;
     };
     native: {
-      hasRazorSense?: undefined;
-      hasRay?: undefined;
-      rayVariant?: undefined;
+      aiHover?: undefined;
     };
   }>;
 
@@ -149,6 +132,7 @@ type ButtonWithIconProps = ButtonCommonProps & {
 };
 
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
+export type { ButtonAiHover };
 
 const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   // While adding any prop here, make sure to handle it in DropdownButton as well
@@ -159,9 +143,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
-    hasRazorSense = false,
-    hasRay = false,
-    rayVariant,
+    aiHover,
     href,
     target,
     rel,
@@ -211,9 +193,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
-      hasRazorSense={hasRazorSense}
-      hasRay={hasRay}
-      rayVariant={rayVariant}
+      aiHover={aiHover}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

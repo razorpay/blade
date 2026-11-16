@@ -125,7 +125,7 @@ describe('<Button />', () => {
     // the layer is loaded on demand: loaded here first, a cold load can outlast waitFor's default
     await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
     const { container: neutral } = renderWithTheme(
-      <Button color="neutral" hasRazorSense>
+      <Button color="neutral" aiHover="razorsense">
         Ask Ray
       </Button>,
     );
@@ -135,36 +135,54 @@ describe('<Button />', () => {
       { timeout: 10000 },
     );
     // on another colour it's a mistake, loud in development
-    expect(() => renderWithTheme(<Button hasRazorSense>Ask Ray</Button>)).toThrow(
-      '[Blade: BaseButton]: hasRazorSense can only be used with variant "primary" and color "neutral"',
+    expect(() => renderWithTheme(<Button aiHover="razorsense">Ask Ray</Button>)).toThrow(
+      '[Blade: BaseButton]: aiHover="razorsense" can only be used with variant "primary" and color "neutral"',
     );
   }, 20000);
 
   it('should keep the full-width neutral button on its own hover, without RazorSense', () => {
     const { container } = renderWithTheme(
-      <Button color="neutral" hasRazorSense isFullWidth>
+      <Button color="neutral" aiHover="razorsense" isFullWidth>
         Ask Ray
       </Button>,
     );
     expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
-  it('should throw for hasRay on a non-secondary variant, and skip it on an icon-only button', () => {
-    expect(() => renderWithTheme(<Button hasRay>Investigate</Button>)).toThrow(
-      '[Blade: BaseButton]: hasRay can only be used with variant "secondary"',
+  it('should throw for a Ray aiHover on a non-secondary variant, and skip it on an icon-only button', () => {
+    expect(() => renderWithTheme(<Button aiHover="ray-investigate">Investigate</Button>)).toThrow(
+      '[Blade: BaseButton]: aiHover="ray-investigate" can only be used with variant "secondary"',
     );
     const { container } = renderWithTheme(
-      <Button variant="secondary" hasRay icon={CreditCardIcon} accessibilityLabel="Investigate" />,
+      <Button
+        variant="secondary"
+        aiHover="ray-investigate"
+        icon={CreditCardIcon}
+        accessibilityLabel="Investigate"
+      />,
     );
     expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
-  it('should keep hasRay and hasRazorSense buttons on their own hover in a ButtonGroup, without throwing', () => {
+  it('should throw for an aiHover it does not know', () => {
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error: not a value aiHover takes (a JavaScript app can still pass one)
+        <Button variant="secondary" aiHover="ray">
+          Investigate
+        </Button>,
+      ),
+    ).toThrow(
+      '[Blade: BaseButton]: aiHover must be one of "razorsense", "ray-investigate" but received "ray"',
+    );
+  });
+
+  it('should keep AI hover buttons on their own hover in a ButtonGroup, without throwing', () => {
     for (const variant of ['primary', 'secondary'] as const) {
       const { container } = renderWithTheme(
         <ButtonGroup variant={variant}>
-          <Button hasRay>Investigate</Button>
-          <Button color="neutral" hasRazorSense>
+          <Button aiHover="ray-investigate">Investigate</Button>
+          <Button color="neutral" aiHover="razorsense">
             Ask Ray
           </Button>
           <Button>Other</Button>
@@ -178,7 +196,7 @@ describe('<Button />', () => {
     // Ray's layer (his runtime) is loaded on demand: loaded here first, a cold load can outlast waitFor's default
     await import('~components/Spark/ButtonRay/ButtonRayLayer');
     const { container, getByRole } = renderWithTheme(
-      <Button variant="secondary" size="large" hasRay>
+      <Button variant="secondary" size="large" aiHover="ray-investigate">
         Investigate
       </Button>,
     );
