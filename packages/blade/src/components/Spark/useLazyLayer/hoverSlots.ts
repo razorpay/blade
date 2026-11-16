@@ -26,8 +26,12 @@ type Slot = {
 };
 
 type HoverSlot = {
-  /** its state changed (its hover faded out, the pointer came onto it): looked at again on the next frame */
-  update: () => void;
+  /**
+   * its state changed (its hover faded out, the pointer came onto it): looked at again on the next frame. `at`, the pointer's
+   * position (clientX, clientY) when it's known from the button's own event: the pointer can come onto a button without moving
+   * (the page scrolled under it), and a hover is held from where the pointer is
+   */
+  update: (at?: [number, number]) => void;
   /** let go, for good (its button is going, off screen, or its hover is off) */
   remove: () => void;
 };
@@ -107,7 +111,10 @@ const holdNearPointer = (
   slots.add(slot);
   schedule();
   return {
-    update: schedule,
+    update: (at) => {
+      if (at) pointer = at;
+      schedule();
+    },
     remove: () => {
       if (!slots.delete(slot)) return;
       if (slot.isHeld) {

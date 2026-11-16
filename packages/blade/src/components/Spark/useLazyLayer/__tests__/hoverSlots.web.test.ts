@@ -62,4 +62,21 @@ describe('holdNearPointer', () => {
 
     slots.forEach((slot) => slot.remove());
   });
+
+  it('holds a hover from where its own event says the pointer is, with no move before it', async () => {
+    let isHeld = false;
+    // (a pointer that never moved since: the page scrolled under it, say)
+    const slot = holdNearPointer(buttonAt(1000), {
+      isBusy: () => false,
+      onHold: (held) => {
+        isHeld = held;
+      },
+    });
+    await nextFrame();
+    expect(isHeld).toBe(false);
+    slot.update([50, 1010]);
+    await nextFrame();
+    expect(isHeld).toBe(true);
+    slot.remove();
+  });
 });

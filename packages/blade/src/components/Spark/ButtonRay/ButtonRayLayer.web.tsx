@@ -519,8 +519,9 @@ const ButtonRayLayer = ({
       }
       run();
     };
-    const enter = (): void => {
-      slot?.update();
+    const enter = (event: PointerEvent): void => {
+      // (where the pointer is, from the button's own event: it may have come on without moving)
+      slot?.update(event.pointerType === 'touch' ? undefined : [event.clientX, event.clientY]);
       show(true);
     };
     const leave = (): void => show(false);
