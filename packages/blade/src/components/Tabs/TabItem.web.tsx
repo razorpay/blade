@@ -13,6 +13,8 @@ import {
   textColor,
   iconColor,
   textSizeMap,
+  filledHorizontalTextSizeMap,
+  filledHorizontalItemHeight,
   borderWidth as borderWidthToken,
   borderRadius as borderRadiusToken,
   focusBorderRadius as focusBorderRadiusToken,
@@ -29,7 +31,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledTabButton = styled.button<{
-  size: TabsProps['size'];
+  size: NonNullable<TabsProps['size']>;
   isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
   variant: NonNullable<TabsProps['variant']>;
   isVertical: boolean;
@@ -43,8 +45,13 @@ const StyledTabButton = styled.button<{
   const background = backgroundColor[selectedState][_variant][orientation];
   const borderColor = borderColorToken[selectedState][_variant][orientation];
   const borderWidth = borderWidthToken[_variant][orientation];
-  const borderRadius = borderRadiusToken[_variant][orientation][size!];
-  const focusBorderRadius = focusBorderRadiusToken[_variant][orientation][size!];
+  const borderRadius = borderRadiusToken[_variant][orientation][size];
+  const focusBorderRadius = focusBorderRadiusToken[_variant][orientation][size];
+  // Only `filled` + `horizontal` + `small` needs a pinned height — its padding +
+  // line-height math falls short of the Figma spec (21px vs. the required 24px).
+  // Other size/variant/orientation combinations still hug their content correctly.
+  const pinnedHeight =
+    _variant === 'filled' && !isVertical ? filledHorizontalItemHeight[size] : undefined;
 
   return {
     appearance: 'none',
@@ -57,22 +64,17 @@ const StyledTabButton = styled.button<{
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
     width: isFullWidthTabItem ? '100%' : undefined,
+    ...(pinnedHeight ? { height: makeSpace(pinnedHeight), boxSizing: 'border-box' as const } : {}),
 
     // Padding
-    paddingTop: makeSpace(getIn(theme, paddingTop[_variant][orientation][size!])),
-    paddingBottom: makeSpace(getIn(theme, paddingBottom[_variant][orientation][size!])),
-    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
-    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
+    paddingTop: makeSpace(getIn(theme, paddingTop[_variant][orientation][size])),
+    paddingBottom: makeSpace(getIn(theme, paddingBottom[_variant][orientation][size])),
+    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation][size])),
+    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation][size])),
 
     // Colors & border
     backgroundColor: getIn(theme, background.default),
-    // 6px for small filled horizontal — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl item radius
-    borderRadius:
-      borderRadius === 'none'
-        ? 0
-        : variant === 'filled' && !isVertical && size === 'small'
-        ? 6
-        : theme.border.radius[borderRadius],
+    borderRadius: borderRadius === 'none' ? 0 : theme.border.radius[borderRadius],
     [`${border}Style`]: 'solid',
     [`${border}Width`]:
       borderWidth === 'none' ? 0 : makeBorderSize(theme.border.width[borderWidth]),
@@ -133,7 +135,7 @@ const TabItem = ({
   ...rest
 }: TabItemProps): React.ReactElement => {
   const {
-    size,
+    size = 'medium',
     isFullWidthTabItem,
     selectedValue,
     setSelectedValue,
@@ -142,12 +144,14 @@ const TabItem = ({
     isVertical,
   } = useTabsContext();
   const { currentInteraction, ...interactionProps } = useInteraction();
-  const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size!);
+  const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
   const isSelected = selectedValue === value;
   const selectedState = isSelected ? 'selected' : 'unselected';
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
   const isFilled = variant === 'filled';
+  const isFilledSmallHorizontal = isFilled && size === 'small' && !isVertical;
+  const textSize = isFilledSmallHorizontal ? filledHorizontalTextSizeMap[size] : textSizeMap[size];
 
   const interactionMap = {
     default: 'default',
@@ -185,15 +189,11 @@ const TabItem = ({
           {...makeAnalyticsAttribute(rest)}
         >
           {Leading ? (
-            <Leading size={iconSizeMap[size!]} color={iconColor[selectedState][interaction]} />
+            <Leading size={iconSizeMap[size]} color={iconColor[selectedState][interaction]} />
           ) : null}
 
           {children ? (
-            <Text
-              color={textColor[selectedState][interaction]}
-              size={textSizeMap[size!]}
-              weight="medium"
-            >
+            <Text color={textColor[selectedState][interaction]} size={textSize} weight="medium">
               {children}
             </Text>
           ) : null}
