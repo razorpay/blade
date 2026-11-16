@@ -10,6 +10,7 @@ import { isReactNative } from '~utils';
 import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { logger, throwBladeError } from '~utils/logger';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
@@ -185,15 +186,16 @@ const _Heading = (
   );
 };
 
-// Plain forwardRef component, exported only so Storybook's docgen can read Heading's props: docgen
-// can't read a generic signature. Not part of the public API (see ./index.ts).
-const HeadingBase = React.forwardRef(_Heading);
-HeadingBase.displayName = 'Heading';
+// Plain forwardRef component that Storybook's docgen reads (it can't read the generic signature
+// below). Exported only as HeadingBase, which ./index.ts keeps out of the public API.
+const Heading = assignWithoutSideEffects(React.forwardRef(_Heading), {
+  displayName: 'Heading',
+});
 
 // forwardRef drops generics, so the serif guard is added back on the public signature.
-// Same object as HeadingBase at runtime, so it shares the docgen info.
-const Heading = HeadingBase as <T extends HeadingProps>(
+// Same object as the component above at runtime, so it shares the docgen info.
+const GuardedHeading = Heading as <T extends HeadingProps>(
   props: T & HeadingSerifGuard<T> & React.RefAttributes<BladeElementRef>,
 ) => ReactElement;
 
-export { Heading, HeadingBase };
+export { GuardedHeading as Heading, Heading as HeadingBase };
