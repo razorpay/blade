@@ -155,6 +155,13 @@ describe('<Heading />', () => {
     ];
     expect(misuse).toHaveLength(2);
 
+    // Heading keeps its forwardRef component type for consumers.
+    type HeadingRef = React.ElementRef<typeof Heading>;
+    // @ts-expect-error the ref type must be concrete, not any
+    const notAny: HeadingRef = 5;
+    expect(notAny).toBe(5);
+    expect(Heading.displayName).toBe('Heading');
+
     const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
   });

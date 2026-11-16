@@ -195,8 +195,11 @@ const Heading = assignWithoutSideEffects(React.forwardRef(_Heading), {
 
 // forwardRef drops generics, so the serif guard is added back on the public signature.
 // Same object as the component above at runtime, so it shares the docgen info.
-const GuardedHeading = Heading as <T extends HeadingProps>(
+const GuardedHeading = Heading as (<T extends HeadingProps>(
   props: T & HeadingSerifGuard<T> & React.RefAttributes<BladeElementRef>,
-) => ReactElement;
+) => ReactElement) &
+  // Keep forwardRef's statics ($$typeof, displayName, ...) so React.ElementRef<typeof Heading>
+  // and friends keep working. Pick drops only the loose call signature.
+  Pick<typeof Heading, keyof typeof Heading>;
 
 export { GuardedHeading as Heading, Heading as HeadingBase };
