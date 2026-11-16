@@ -125,24 +125,36 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
         ref={mergedRef}
         className={className}
         {...metaAttribute({ name: MetaConstants.RazorSenseBottomWave, testID })}
-        style={{ position: 'relative', isolation: 'isolate', contain: 'layout', ...style }}
+        style={{ position: 'relative', isolation: 'isolate', ...style }}
       >
         {chat ? null : (
           <div
-            ref={stageRef}
             {...makeAccessible({ hidden: true })}
             style={{
               position: 'absolute',
+              inset: 0,
               zIndex: -1,
-              left: `calc(50% - ${BOTTOM_WAVE_REACH.side * s}px)`,
-              top: `calc(100% - ${BOTTOM_WAVE_REACH.up * s}px)`,
-              width: `${BOTTOM_WAVE_REACH.side * 2 * s}px`,
-              height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
-              overflow: 'hidden',
               pointerEvents: 'none',
+              // the wave reaches below what it wraps: layout containment on this layer keeps that from growing the page (drawn,
+              // not counted for scrolling). Not on the root, which wraps the chat input: containment would anchor the input's own
+              // fixed or absolute overlays (a mention list, a menu) to it
+              contain: 'layout',
             }}
           >
-            {still ? <img src={still} alt="" style={stillStyle} /> : null}
+            <div
+              ref={stageRef}
+              style={{
+                position: 'absolute',
+                left: `calc(50% - ${BOTTOM_WAVE_REACH.side * s}px)`,
+                top: `calc(100% - ${BOTTOM_WAVE_REACH.up * s}px)`,
+                width: `${BOTTOM_WAVE_REACH.side * 2 * s}px`,
+                height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
+                overflow: 'hidden',
+                pointerEvents: 'none',
+              }}
+            >
+              {still ? <img src={still} alt="" style={stillStyle} /> : null}
+            </div>
           </div>
         )}
         {children}

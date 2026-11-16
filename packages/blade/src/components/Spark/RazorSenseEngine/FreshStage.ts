@@ -36,15 +36,26 @@ const SLOW_SECONDS = 3;
 const SLOW_WARMUP = 2000;
 let wasSlow = false;
 
-/** why a stage can't animate: no usable WebGL2, frames too slow, or a GPU context the browser took back and didn't return */
-type FreshFailure = 'webgl2' | 'slow' | 'lost';
+/**
+ * why a stage can't animate: no usable WebGL2, frames too slow, a GPU context the browser took back and didn't return, or a first
+ * frame that never came
+ */
+type FreshFailure = 'webgl2' | 'slow' | 'lost' | 'stalled';
 
 /** each failure in words, for a component's onError */
 const freshFailures: Record<FreshFailure, string> = {
   webgl2: 'WebGL2 is unavailable, or the GPU draws only on the CPU',
   slow: 'its frames are too slow on this device',
   lost: 'the browser took its GPU context back (too many on the page) and did not return it',
+  stalled: 'it drew nothing in its first seconds on screen (its GPU never got going)',
 };
+
+/**
+ * How long a new engine may run on screen without drawing a frame before the component goes to its still (ms): a context that
+ * never draws (the PR review's blank first load on a Windows laptop) showed nothing at all, with no fallback. Its shaders compile
+ * meanwhile: well under a second on a phone that can't compile them in the background.
+ */
+const FIRST_DRAW_MS = 5000;
 
 /** how long a lost GPU context may take to come back before the stage gives up on it (ms) */
 const LOST_MS = 2000;
@@ -112,7 +123,9 @@ class FreshStage {
   private readonly canvas: HTMLCanvasElement;
   private readonly msg: HTMLElement;
   private readonly createEngine: CreateFreshEngine;
-  private readonly onError?: (reason: FreshFailure) => void;
+  private onError?: (reason: FreshFailure) => void;
+  private firstDrawTimer = 0;
+  private waitedForFirstDraw = 0;
 
   private engine: FreshEngine | null = null;
   private driver: FreshDriver | null = null;
@@ -154,7 +167,8 @@ class FreshStage {
     box.appendChild(this.msg);
     if (typeof MutationObserver !== 'undefined') {
       this.msgObserver = new MutationObserver(() => {
-        if (this.msg.textContent) this.onError?.('webgl2');
+        // (its only message: a lost GPU context it couldn't set up again, as the review found: a lost context, not no WebGL2)
+        if (this.msg.textContent) this.onError?.('lost');
       });
       this.msgObserver.observe(this.msg, { childList: true, characterData: true, subtree: true });
     }
@@ -172,10 +186,19 @@ class FreshStage {
   }
 
   /**
-   * Plays this comp (the one before is freed first). Returns null when WebGL2 isn't there, it draws only on the CPU, or an
-   * animation on this page was already too slow.
+   * Plays this comp. On a stage already playing one, the same engine takes it (its GPU context and compiled programs kept: a new
+   * colour scheme or scale makes nothing new); otherwise a new engine. Returns null when WebGL2 isn't there, it draws only on the
+   * CPU, or an animation on this page was already too slow.
    */
   public mount(exp: FreshExport, switches: FreshSwitches = ALL_ON): FreshEngine | null {
+    if (this.engine && !this.isDestroyed && this.engine.load?.(exp)) {
+      // (what the last comp's component set on it goes: its new one sets its own)
+      this.driver = null;
+      if (this.settleId) cancelAnimationFrame(this.settleId);
+      this.settleId = 0;
+      this.update();
+      return this.engine;
+    }
     this.unmountEngine();
     if (this.isDestroyed) return null;
     const cant = whyCantAnimate();
@@ -203,7 +226,23 @@ class FreshStage {
     }
     this.engine = engine;
     this.update();
+    this.watchFirstDraw();
     return engine;
+  }
+
+  /** whether it has an engine (made, not freed): one a component can hand its next comp to */
+  public hasEngine(): boolean {
+    return Boolean(this.engine) && !this.isDestroyed;
+  }
+
+  /** whether its engine has drawn a frame yet */
+  public hasDrawn(): boolean {
+    return (this.engine?.drawn?.() ?? 1) > 0;
+  }
+
+  /** who's told when it can't animate (a component taking over a stage it had before) */
+  public setOnError(onError?: (reason: FreshFailure) => void): void {
+    this.onError = onError;
   }
 
   /**
@@ -235,6 +274,7 @@ class FreshStage {
 
   public destroy(): void {
     this.isDestroyed = true;
+    window.clearInterval(this.firstDrawTimer);
     this.stopLoop();
     if (this.settleId) cancelAnimationFrame(this.settleId);
     this.settleId = 0;
@@ -264,6 +304,28 @@ class FreshStage {
     window.clearTimeout(this.lostTimer);
     this.lostTimer = 0;
   };
+
+  /**
+   * A new engine has FIRST_DRAW_MS of running on screen (not paused, the tab shown) to draw its first frame; after that the
+   * component is told ('stalled') and goes to its still, so a GPU that never draws can't leave a blank box.
+   */
+  private watchFirstDraw(): void {
+    window.clearInterval(this.firstDrawTimer);
+    this.waitedForFirstDraw = 0;
+    if (!this.engine?.drawn) return;
+    const STEP = 250;
+    this.firstDrawTimer = window.setInterval(() => {
+      if (this.isDestroyed || !this.engine || this.hasDrawn()) {
+        window.clearInterval(this.firstDrawTimer);
+        return;
+      }
+      if (!this.isPaused && this.isOnScreen && !document.hidden) this.waitedForFirstDraw += STEP;
+      if (this.waitedForFirstDraw >= FIRST_DRAW_MS) {
+        window.clearInterval(this.firstDrawTimer);
+        this.onError?.('stalled');
+      }
+    }, STEP);
+  }
 
   private unmountEngine(): void {
     if (this.engine) {

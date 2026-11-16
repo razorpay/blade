@@ -234,18 +234,26 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           position: 'relative',
           // its own layer, so the strip draws behind the chat input and over the page
           isolation: 'isolate',
-          // its canvas spreads well past the chat input (the glow round it): layout containment keeps that from growing the page
-          // in Chrome and Safari (drawn, not counted for scrolling); Firefox counts it, so there the canvas is cut (placeSpill)
-          contain: 'layout',
           ...style,
         }}
       >
         <div
-          ref={hostRef}
           {...makeAccessible({ hidden: true })}
-          style={{ position: 'absolute', zIndex: -1, pointerEvents: 'none' }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            pointerEvents: 'none',
+            // its canvas spreads well past the chat input (the glow round it): layout containment on this layer keeps that from
+            // growing the page in Chrome and Safari (drawn, not counted for scrolling); Firefox counts it, so there the canvas is
+            // cut (placeSpill). Not on the root, which wraps the chat input: containment would anchor the input's own fixed or
+            // absolute overlays (a mention list, a menu) to it
+            contain: 'layout',
+          }}
         >
-          {still ? <img src={still} alt="" style={stillStyle} /> : null}
+          <div ref={hostRef} style={{ position: 'absolute', pointerEvents: 'none' }}>
+            {still ? <img src={still} alt="" style={stillStyle} /> : null}
+          </div>
         </div>
         {children}
       </div>

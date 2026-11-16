@@ -36,6 +36,9 @@ type ChatStageOptions = {
  * RazorSenseBottomWave on their own. Returns the keystroke signal for the bottom wave's typing surge, and whether it has gone to
  * its still (it can't animate here: the stage is freed and the component shows its still instead).
  */
+/** frames between reads of where the chat's parts are when nothing has said they moved (a CSS transition moves them quietly) */
+const ANCHOR_REREAD = 12;
+
 const useChatStage = ({
   moduleName,
   isEnabled,
@@ -133,8 +136,33 @@ const useChatStage = ({
           }
           return true;
         }
+        // where its parts are, read again only when the layout may have moved them (a resize, a scroll, the chat's content or
+        // styles changing) and every ANCHOR_REREAD frames besides (a CSS transition moves them without telling anyone): read
+        // every frame, it measured the chat's boxes 60 times a second, most of that for nothing on a phone
+        let anchors = anchorsRef.current();
+        let isMoved = false;
+        let framesSinceRead = 0;
+        const box = stageRef.current;
+        const root = box?.parentElement;
+        stopFollowRef.current?.();
+        stopFollowRef.current =
+          box && root
+            ? watchLayout({
+                root,
+                ignore: (node) => box.contains(node),
+                onChange: () => {
+                  isMoved = true;
+                },
+              })
+            : null;
         stage.setDriver((eng, dt) => {
-          driver.setAnchors(anchorsRef.current(), scale, ROOM); // (every frame, as flow 9: the chat moves, it follows)
+          framesSinceRead += 1;
+          if (isMoved || framesSinceRead >= ANCHOR_REREAD) {
+            anchors = anchorsRef.current();
+            isMoved = false;
+            framesSinceRead = 0;
+          }
+          driver.setAnchors(anchors, scale, ROOM); // (the chat moves, it follows, as flow 9)
           driver.step(eng.player, dt, performance.now());
         });
         stage.setPaused(isPausedRef.current);
