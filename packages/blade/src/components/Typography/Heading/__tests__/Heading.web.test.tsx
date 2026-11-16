@@ -159,21 +159,30 @@ describe('<Heading />', () => {
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
   });
 
-  it('should ignore isSerif and warn when size is not "2xlarge"', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
-    const { getByRole } = renderWithTheme(
-      // @ts-expect-error testing failure case, isSerif is only allowed with size="2xlarge"
-      <Heading size="xlarge" isSerif>
-        Not serif
-      </Heading>,
+  it('should throw in dev when isSerif is used with a size other than "2xlarge"', () => {
+    const isHero = true as boolean;
+    expect(() =>
+      renderWithTheme(
+        <Heading size="xlarge" isSerif={isHero}>
+          Not serif
+        </Heading>,
+      ),
+    ).toThrow(
+      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="xlarge".',
     );
-    expect(getByRole('heading', { level: 3 })).not.toHaveStyle({
-      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
-    });
-    expect(warnSpy).toHaveBeenCalledWith(
-      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="xlarge", so the default heading font is used.',
+  });
+
+  it('should throw in dev when isSerif is used with a weight other than "regular"', () => {
+    const isHero = true as boolean;
+    expect(() =>
+      renderWithTheme(
+        <Heading size="2xlarge" weight="medium" isSerif={isHero}>
+          Not serif
+        </Heading>,
+      ),
+    ).toThrow(
+      '[Blade: Heading]: isSerif only supports weight="regular", because PT Serif ships in regular weight only. Received weight="medium".',
     );
-    warnSpy.mockRestore();
   });
 
   it('should accept testID', () => {

@@ -9,7 +9,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
 import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { logger } from '~utils/logger';
+import { logger, throwBladeError } from '~utils/logger';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
@@ -51,8 +51,8 @@ export type HeadingProps = HeadingCommonProps & {
 
 /**
  * When `isSerif` is written as `true`, TypeScript also requires `size="2xlarge"` and only allows
- * `weight="regular"`. A computed boolean (`isSerif={isHero}`) is checked at runtime instead: any
- * other size logs a dev warning and keeps the default heading font.
+ * `weight="regular"`. A computed boolean (`isSerif={isHero}`) is checked at runtime instead: in
+ * dev, any other size or weight throws; in production the heading keeps the default font.
  */
 type HeadingSerifGuard<T> = T extends { isSerif: true }
   ? { size: '2xlarge'; weight?: 'regular' }
@@ -107,12 +107,25 @@ export const getHeadingProps = ({
   }
 
   if (isSerif) {
+    // Invalid combinations are reachable through a computed `isSerif={...}`, which the types
+    // can't catch. Fail loudly in dev, and degrade gracefully in production.
+    if (__DEV__) {
+      if (size !== '2xlarge') {
+        throwBladeError({
+          moduleName: 'Heading',
+          message: `isSerif is only supported with size="2xlarge". Received size="${size}".`,
+        });
+      }
+      if (weight && weight !== 'regular') {
+        throwBladeError({
+          moduleName: 'Heading',
+          message: `isSerif only supports weight="regular", because PT Serif ships in regular weight only. Received weight="${weight}".`,
+        });
+      }
+    }
+
     if (size !== '2xlarge') {
-      logger({
-        message: `isSerif is only supported with size="2xlarge". Received size="${size}", so the default heading font is used.`,
-        moduleName: 'Heading',
-        type: 'warn',
-      });
+      // Production fallback: keep the default heading font.
     } else if (isReactNative()) {
       logger({
         message:
@@ -137,7 +150,9 @@ const _Heading = (
   {
     as,
     size = 'small',
-    weight = 'semibold',
+    // No default here: getHeadingProps falls back to semibold, and needs to know whether a
+    // weight was passed so it can reject non-regular weights with isSerif.
+    weight,
     color = 'surface.text.gray.normal',
     children,
     testID,
