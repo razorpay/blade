@@ -13,6 +13,7 @@
 import { FILMS, TUNES, RayCore } from './engine';
 import { FilmHost, freeCanvas } from './FilmHost';
 import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
+import { paceFor } from './rayPace';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
@@ -48,6 +49,7 @@ const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn
 const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
+const PACE_EVERY_MS = 2000; // how often the pace the Rays draw at is looked at again (rayPace)
 const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
@@ -300,7 +302,13 @@ class RayMount {
 
   /** Development only: what the director and his own Ray are doing. */
   get debug(): Record<string, unknown> {
-    return { holder: this.holder, want: this.want(), flip: this.player.flipState, geo: this.geo };
+    return {
+      holder: this.holder,
+      want: this.want(),
+      flip: this.player.flipState,
+      geo: this.geo,
+      pace: RayMount.pace,
+    };
   }
 
   update(options: Partial<RayMountOptions>): void {
@@ -341,7 +349,11 @@ class RayMount {
 
   /** A click on him: the coin flip where his idle allows it. */
   click(): void {
-    if (!this.options.isInteractive || this.options.state !== 'idle' || this.options.isHidden)
+    if (
+      !this.options.isInteractive ||
+      this.options.state !== 'idle' ||
+      this.options.isHidden
+    )
       return;
     const h = this.holder;
     if (h.by === 'player') {
@@ -921,7 +933,9 @@ class RayMount {
         hover: this.options.isInteractive && idleish,
         // (asleep, a pointer near him wakes him: where it really is, not brought in)
         near:
-          raw && this.options.isInteractive ? this.player.toWorld(raw[0], raw[1], this.dpr) : null,
+          raw && this.options.isInteractive
+            ? this.player.toWorld(raw[0], raw[1], this.dpr)
+            : null,
       });
     } else {
       this.player.clear();
@@ -1043,12 +1057,35 @@ class RayMount {
   private static raf = 0;
   private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
 
+  // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
+  private static frames = 0;
+  private static pace = 1;
+  private static interval = 1000 / 60; // ms between animation frames, smoothed
+  private static cost = 0; // ms a drawn frame's work takes (every Ray's), smoothed
+  private static lastAt = 0;
+  private static pacedAt = 0;
+
   private static readonly onFrame = (now: number): void => {
     RayMount.raf = 0;
+    const gap = now - RayMount.lastAt;
+    RayMount.lastAt = now;
+    if (gap > 0 && gap < 100) RayMount.interval += (gap - RayMount.interval) * 0.05;
+    RayMount.frames += 1;
+    if (RayMount.frames % RayMount.pace !== 0) {
+      // a frame they sit out: still booked, for the next
+      if (RayMount.booked.size) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
+      return;
+    }
     const due = [...RayMount.booked];
     RayMount.booked.clear();
+    const started = performance.now();
     due.forEach((m) => RayMount.guard(() => m.readLayout(now)));
     due.forEach((m) => RayMount.guard(() => m.frame(now)));
+    RayMount.cost += (performance.now() - started - RayMount.cost) * 0.1;
+    if (now - RayMount.pacedAt >= PACE_EVERY_MS) {
+      RayMount.pacedAt = now;
+      RayMount.pace = paceFor(RayMount.cost, RayMount.interval, RayMount.pace);
+    }
   };
 
   /** One Ray's fault never stops another: it's reported as an uncaught error would be, and the rest draw on. */
