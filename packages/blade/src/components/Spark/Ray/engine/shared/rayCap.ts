@@ -110,7 +110,8 @@ function capStepBy(F, h, off = 0) {   // canon capStep, without the ball (it wei
 // ---- drawn (sleep2.html's drawSoftCap): over him, in his px; call it after draw(octx, capFrame(f), ...), before the film's props ----
 function capDraw(g, f, view, mode, o = {}) {   // o: { off, a } as the engine has it dropping on / lifting off (Nightcap 2's own entry and exit)
   if (!CAP.on) return;
-  if (capVer() === 3) { CAP.mode = mode; CAP.lastF = CAP.F; CAP.F = null; return; }   // v3: the engine drew it (capFrame); its colours follow this mode const F = CAP.F || (CAP.F = capPoseFrame(f.pose)), now = performance.now(), gap = !CAP.last || now - CAP.last > 250, dt = gap ? 0 : Math.min(0.05, (now - CAP.last) / 1000); CAP.last = now;
+  if (capVer() === 3) { CAP.mode = mode; CAP.lastF = CAP.F; CAP.F = null; return; }   // v3: the engine drew it (capFrame); its colours follow this mode
+  const F = CAP.F || (CAP.F = capPoseFrame(f.pose)), now = performance.now(), gap = !CAP.last || now - CAP.last > 250, dt = gap ? 0 : Math.min(0.05, (now - CAP.last) / 1000); CAP.last = now;
   if (gap) { CAP.n = []; CAP.pv = []; }   // not drawn for a while (asleep, a new start): afresh, or on from a handoff's
   const off = o.off || 0, n = Math.max(1, Math.ceil(dt * 720)); if (!CAP.n.length) capStepBy(F, 0, off); for (let i = 0; i < n && dt > 0; i++) capStepBy(F, dt / n, off);   // canon's 720 Hz
   const v2 = capVer() === 2, Q = CAP.q, D = mode === 'dark' ? 'D' : '', kk = F.k, REST = v2 ? CAP_SHAPE.sag : CAP_SHAPE.hang, amt = v2 ? 1 : Q.hang;
