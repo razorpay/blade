@@ -138,7 +138,8 @@ export const getHeadingProps = ({
       // PT Serif ships in regular weight only. Any other weight would make the browser fake bold.
       props.fontFamily = 'serif';
       props.fontWeight = 'regular';
-      props.letterSpacing = 25;
+      // Design asked for -0.5px. Token 50 (-1.3%) gives -0.52px at 40px and -0.42px at 32px.
+      props.letterSpacing = 50;
     }
   }
 

@@ -238,10 +238,10 @@ exports[`<Heading /> should render serif Heading at size "2xlarge" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 2.875rem;
-  -webkit-letter-spacing: -1.32px;
-  -moz-letter-spacing: -1.32px;
-  -ms-letter-spacing: -1.32px;
-  letter-spacing: -1.32px;
+  -webkit-letter-spacing: -0.52px;
+  -moz-letter-spacing: -0.52px;
+  -ms-letter-spacing: -0.52px;
+  letter-spacing: -0.52px;
   margin: 0;
   padding: 0;
 }
@@ -250,7 +250,7 @@ exports[`<Heading /> should render serif Heading at size "2xlarge" 1`] = `
   <h2
     class="c0"
     data-blade-component="heading"
-    letter-spacing="25"
+    letter-spacing="50"
   >
     Good morning, what would you like to do today?
   </h2>

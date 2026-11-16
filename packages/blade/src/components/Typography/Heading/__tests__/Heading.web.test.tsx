@@ -119,7 +119,7 @@ describe('<Heading />', () => {
       fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
       fontWeight: '400',
       fontSize: '2.5rem',
-      letterSpacing: '-1.32px',
+      letterSpacing: '-0.52px',
     });
     expect(container).toMatchSnapshot();
   });
