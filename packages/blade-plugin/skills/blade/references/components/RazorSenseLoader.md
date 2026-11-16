@@ -12,7 +12,7 @@ RazorSenseLoader is RazorSense's loading splash: the Razorpay glyph loops while 
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - It fills its box, cropping the comp's edges to cover it: give it a sized container, such as a fixed full-screen `Box`.
 - Once `isLoading` turns false it plays out at its own pace: the rest of the glyph's pass, then about 4 seconds of growing and fading (3.5 to 8 seconds in all). If the page is ready before the splash has drawn anything, `onComplete` is called straight away. In a hidden tab or a `display: none` box it still completes, a second after the splash would have ended.
-- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Each still is its own small module, downloaded only then. The splash's still is the glyph, which fades out once `isLoading` turns false.
+- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then. The splash's still is the glyph, which fades out once `isLoading` turns false.
 - With reduced motion on it shows the glyph still while loading, then completes as soon as `isLoading` turns false.
 - `scale` is held between 0.75 and 1.25; a value outside that range is held at the nearest end, with a warning in development.
 - Screen readers see it as a progress bar labelled by `accessibilityLabel` (default "Loading"), as `Spinner` is; it's hidden from them once it completes.
@@ -30,6 +30,8 @@ type RazorSenseLoaderProps = {
    * While true, the Razorpay glyph keeps looping. Set it to false when the page is ready: the glyph finishes the pass it's on,
    * grows, and everything fades to the plain background, as designed (3.5 to 8 seconds); then `onComplete` is called. If it
    * turns false before the splash has started drawing (its engine still loading), `onComplete` is called straight away.
+   * It plays once per mount: once it's done, setting it back to true doesn't start it again (mount it again, with a new `key`,
+   * to show the splash again).
    * @default true
    */
   isLoading?: boolean;
@@ -50,7 +52,9 @@ type RazorSenseLoaderProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place.
+   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place. From then
+   * on it's invisible and lets clicks through, even if it stays mounted; unmount it here. To show the splash again, mount it
+   * again (a new `key`).
    */
   onComplete?: () => void;
   /**
@@ -64,12 +68,15 @@ type RazorSenseLoaderProps = {
    */
   height?: string | number;
   /**
-   * Called once the animation is drawing (its engine loaded and running on the GPU).
+   * Called once the splash's animation starts drawing (its engine loaded and running on the GPU). Not the page being ready:
+   * that's `isLoading` turning false, and the splash being gone is `onComplete`.
    */
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, or its frames are too slow on this device (under 20 a second for 3 seconds). It shows its still frame instead.
+   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2), or the browser
+   * took its GPU context back. It shows its still frame instead. Too slow counts for the whole page: once one RazorSense 2.0
+   * animation finds that, every one on the page shows its still, including ones mounted later, until the page reloads.
    */
   onError?: (error: Error) => void;
   /**
@@ -88,7 +95,7 @@ type RazorSenseLoaderProps = {
 **Do**
 
 - Show `RazorSenseLoader` full screen while the app's first data loads, and set `isLoading` to `false` the moment it's ready.
-- Remove the splash in `onComplete`, after it has faded out, so the page never pops in under a half-faded splash.
+- Remove the splash in `onComplete`, after it has faded out, so the page never pops in under a half-faded splash. (Left mounted, it's invisible and lets clicks through; to show it again, mount it again.)
 - Let the theme decide light or dark by rendering it inside `BladeProvider`.
 
 **Don't**

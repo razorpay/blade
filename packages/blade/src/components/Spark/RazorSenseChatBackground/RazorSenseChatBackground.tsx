@@ -1,9 +1,10 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RazorSenseChatBackgroundProps } from './types';
 import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
-import { FreshStage, freshFailures, loadFreshEngine, withRoom } from '../RazorSenseEngine';
-import type { FreshEngine } from '../RazorSenseEngine';
+import { runFreshStage, withRoom } from '../RazorSenseEngine';
+import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -31,6 +32,8 @@ const ROOM = { x: 376, y: 301 };
 const LIFT = 52;
 /** how far the strip reaches above and below the chat input once lifted (CSS px at scale 1): kept as the input gets taller */
 const REACH_Y = 114;
+/** how long the chat input's width has to stay out of range before that's warned about (ms) */
+const WIDTH_SETTLE_MS = 1000;
 
 /** the input's middle in comp px from the comp's middle: what the strip stretches round */
 const INPUT_MIDDLE: [number, number] = [
@@ -86,6 +89,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
 
     // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
     const fitRef = useRef<() => void>(() => undefined);
+    const widthCheckRef = useRef(0);
     fitRef.current = (): void => {
       const box = boxRef.current;
       const host = hostRef.current;
@@ -93,14 +97,24 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       const bw = box.clientWidth;
       const bh = box.clientHeight;
       const px = (v: number): string => `${Math.round(v)}px`;
-      const kx =
-        holdInRange(
-          bw,
-          FRESH_RANGES.chatInputWidth,
-          'RazorSenseChatBackground',
-          "the chat input's width",
-          px,
-        ) / INPUT.w;
+      const { min: wMin, max: wMax } = FRESH_RANGES.chatInputWidth;
+      const kx = Math.min(wMax, Math.max(wMin, bw)) / INPUT.w;
+      // past its range the width is held there, and said so in development once the box has kept that size a moment (a box
+      // measured mid-layout, narrow for a frame, isn't the app's chat input)
+      window.clearTimeout(widthCheckRef.current);
+      if (bw < wMin || bw > wMax) {
+        widthCheckRef.current = window.setTimeout(() => {
+          const width = boxRef.current?.clientWidth ?? 0;
+          if (width < 1) return;
+          holdInRange(
+            width,
+            FRESH_RANGES.chatInputWidth,
+            'RazorSenseChatBackground',
+            "the chat input's width",
+            px,
+          );
+        }, WIDTH_SETTLE_MS);
+      }
       // (taller: the strip grows to keep its reach past the input, not in proportion). A chat input's height follows what's in
       // it (lines, attachments), so past its range it's held there quietly, with no warning.
       const { min: hMin, max: hMax } = FRESH_RANGES.chatInputHeight;
@@ -111,68 +125,57 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       const j = Math.max(1, ky);
       const cx = INPUT.x + INPUT.w / 2;
       const cy = INPUT.y + INPUT.h / 2;
-      Object.assign(host.style, {
-        left: `${bw / 2 - cx * k * s}px`,
-        top: `${bh / 2 - (cy * j + LIFT * ky) * s}px`,
-        width: `${COMP_SIZE.w * k * s}px`,
-        height: `${COMP_SIZE.h * j * s}px`,
+      // (cut where its spill would grow the page: Firefox; the comp moves back by the cut, so it stays where it was)
+      const [cutX, cutY] = placeSpill(host, {
+        left: bw / 2 - cx * k * s,
+        top: bh / 2 - (cy * j + LIFT * ky) * s,
+        width: COMP_SIZE.w * k * s,
+        height: COMP_SIZE.h * j * s,
       });
       engineRef.current?.player.group('main', {
-        dx: (cx * (k - 1) - ROOM.x) * s,
-        dy: (cy * (j - 1) - ROOM.y) * s,
+        dx: (cx * (k - 1) - ROOM.x) * s - cutX,
+        dy: (cy * (j - 1) - ROOM.y) * s - cutY,
       });
       typingRef.current?.setStretch(kx, ky, INPUT_MIDDLE[0], INPUT_MIDDLE[1]);
     };
 
     useEffect(() => {
       const box = boxRef.current;
-      if (!box) return undefined;
+      const host = hostRef.current;
+      if (!box || !host) return undefined;
       fitRef.current();
-      const observer = new ResizeObserver(() => fitRef.current());
-      observer.observe(box);
-      return () => observer.disconnect();
+      // (no ResizeObserver, as in some test environments: laid out once)
+      const observer =
+        typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => fitRef.current());
+      observer?.observe(box);
+      const stopSpill = watchSpill(host, () => fitRef.current());
+      return () => {
+        observer?.disconnect();
+        stopSpill();
+        window.clearTimeout(widthCheckRef.current);
+      };
     }, [s]);
 
     useEffect(() => {
-      let isMounted = true;
+      // (gone to its still: it stays there, a new color scheme or scale just changes the still)
       if (isStillRef.current) return undefined;
-      let hasFailed = false;
-      let stage: FreshStage | null = null;
-      const fail = (reason = 'WebGL2 is unavailable, or the GPU draws only on the CPU'): void => {
-        if (hasFailed || !isMounted) return;
-        hasFailed = true;
-        isStillRef.current = true;
-        setIsStill(true);
-        // the stage freed after this frame (it may be the one telling us)
-        window.setTimeout(() => {
-          stage?.destroy();
-          if (stageRef.current === stage) stageRef.current = null;
-          engineRef.current = null;
-          typingRef.current = null;
-        }, 0);
-        onErrorRef.current?.(new Error(`RazorSenseChatBackground: ${reason}`));
-      };
-      void Promise.all([loadFreshEngine(), import('./comps')])
-        .then(([createFreshEngine, comps]) => {
-          if (!isMounted || !hostRef.current) return;
+      return runFreshStage({
+        moduleName: 'RazorSenseChatBackground',
+        getBox: () => hostRef.current,
+        stageRef,
+        loadComps: () => import('./comps'),
+        start: (stage, comps) => {
           const doc = withRoom(
             mode === 'dark' ? comps.chatBackgroundDark : comps.chatBackgroundLight,
             ROOM,
           );
           const setup = getTypingSurgeSetup(doc);
-          stage = new FreshStage(hostRef.current, createFreshEngine, {
-            onError: (reason) => fail(freshFailures[reason]),
-          });
-          stageRef.current = stage;
           // the comp at its own size (2x comp px = CSS px) x scale, from the canvas's top-left (placed by fitRef)
           const engine = stage.mount({
             doc,
             opts: { fit: 'fixed', scale: 0.5 * s, alpha: true, paused: true },
           });
-          if (!engine || !setup) {
-            fail(); // no usable WebGL2: nothing drawn, the page shows as it is
-            return;
-          }
+          if (!engine || !setup) return false;
           onLoadRef.current?.();
           engineRef.current = engine;
           engine.player.comp('ty', { op: 0 }); // the typing surge's layer: held at 0 until typing lifts it
@@ -186,25 +189,25 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
               typing.pose(engine.player, 1);
               engine.player.seek(0, 0);
             });
-            return;
+            return true;
           }
           stage.setDriver((eng, dt) => {
             const now = performance.now() / 1000;
             typing.step(eng.player, dt, now, duration);
           });
           stage.setPaused(isPausedRef.current);
-        })
-        .catch(() => {
-          // the engine couldn't load: nothing drawn
-          if (isMounted) fail('its engine failed to load');
-        });
-      return () => {
-        isMounted = false;
-        stageRef.current?.destroy();
-        stageRef.current = null;
-        engineRef.current = null;
-        typingRef.current = null;
-      };
+          return true;
+        },
+        onFail: (error) => {
+          isStillRef.current = true;
+          setIsStill(true);
+          onErrorRef.current?.(error);
+        },
+        onRelease: () => {
+          engineRef.current = null;
+          typingRef.current = null;
+        },
+      });
       // isPaused has its own effect; a new color scheme or scale starts it again
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode, s]);
@@ -232,7 +235,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           // its own layer, so the strip draws behind the chat input and over the page
           isolation: 'isolate',
           // its canvas spreads well past the chat input (the glow round it): layout containment keeps that from growing the page
-          // (scrollbars), drawn but not counted
+          // in Chrome and Safari (drawn, not counted for scrolling); Firefox counts it, so there the canvas is cut (placeSpill)
           contain: 'layout',
           ...style,
         }}

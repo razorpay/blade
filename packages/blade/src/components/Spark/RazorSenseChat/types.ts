@@ -1,42 +1,20 @@
 import type React from 'react';
-import type { TestID } from '~utils/types';
-
-type RazorSenseDrawProps = {
-  /**
-   * Holds the animation where it is.
-   * @default false
-   */
-  isPaused?: boolean;
-  /**
-   * The whole effect bigger or smaller, bands included. Held between 0.75 and 1.25.
-   * @default 1
-   */
-  scale?: number;
-  /**
-   * Called once the animation is drawing (its engine loaded and running on the GPU).
-   */
-  onLoad?: () => void;
-  /**
-   * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, or its frames are too slow on this device (under 20 a second for 3 seconds). It shows its still frame instead.
-   */
-  onError?: (error: Error) => void;
-  /**
-   * A class name for its root element (web).
-   */
-  className?: string;
-  /**
-   * Inline styles for its root element (web), merged over its own.
-   */
-  style?: React.CSSProperties;
-} & TestID;
+import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
+import type { StringChildrenType } from '~utils/types';
 
 type RazorSenseThinkingProps = {
   /**
-   * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion).
+   * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion,
+   * and paused with `isPaused`). Text only (the shimmer paints the text itself), as Button's children: `Searching {count}
+   * settlements…` is fine.
    * @default 'Thinking…'
    */
-  children?: string;
+  children?: StringChildrenType;
+  /**
+   * Several labels, rolling from one to the next (as `RollingText`'s `texts`, and `ChatMessage`'s `loadingText` as an array).
+   * Given, they're shown instead of `children` (pass one or the other: both, it warns in development).
+   */
+  texts?: string[];
 } & RazorSenseDrawProps;
 
 type RazorSenseBottomWaveProps = {
@@ -49,14 +27,10 @@ type RazorSenseBottomWaveProps = {
 
 type RazorSenseChatProps = {
   /**
-   * True while the answer is being worked out: RazorSense loops on the `RazorSenseThinking` label. When it turns false the
-   * thinking surges down into the `RazorSenseBottomWave` under the chat input and settles there. True again for the next
-   * question: the wave rises back up to the label (the surge, backwards) and thinks on. Changed mid-way, it turns round.
-   * @default false
-   */
-  isThinking?: boolean;
-  /**
-   * The chat: its messages, a `RazorSenseThinking` where the thinking shows and a `RazorSenseBottomWave` round the chat input. RazorSenseChat draws both on one canvas over its whole box, behind everything in it (their own `scale`, `isPaused`,
+   * The chat: its messages, a `RazorSenseThinking` where the reply will go while the answer is worked out, and a
+   * `RazorSenseBottomWave` round the chat input. It thinks while the `RazorSenseThinking` is shown; when that goes (the answer
+   * takes its place), the thinking surges down into the bottom wave and settles there. A `RazorSenseThinking` shown again for the
+   * next question brings the wave back up to it (the surge, backwards); changed mid-way, it turns round. RazorSenseChat draws both on one canvas over its whole box, behind everything in it (their own `scale`, `isPaused`,
    * `onLoad` and `onError` are ignored inside it: the chat's apply).
    */
   children: React.ReactNode;
@@ -72,9 +46,4 @@ type RazorSenseChatProps = {
   height?: string | number;
 } & RazorSenseDrawProps;
 
-export type {
-  RazorSenseDrawProps,
-  RazorSenseThinkingProps,
-  RazorSenseBottomWaveProps,
-  RazorSenseChatProps,
-};
+export type { RazorSenseThinkingProps, RazorSenseBottomWaveProps, RazorSenseChatProps };

@@ -1,11 +1,12 @@
-import type React from 'react';
-import type { TestID } from '~utils/types';
+import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
 
 type RazorSenseLoaderProps = {
   /**
    * While true, the Razorpay glyph keeps looping. Set it to false when the page is ready: the glyph finishes the pass it's on,
    * grows, and everything fades to the plain background, as designed (3.5 to 8 seconds); then `onComplete` is called. If it
    * turns false before the splash has started drawing (its engine still loading), `onComplete` is called straight away.
+   * It plays once per mount: once it's done, setting it back to true doesn't start it again (mount it again, with a new `key`,
+   * to show the splash again).
    * @default true
    */
   isLoading?: boolean;
@@ -26,7 +27,9 @@ type RazorSenseLoaderProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place.
+   * Called once the splash has faded out completely (after `isLoading` turns false), so the page can take its place. From then
+   * on it's invisible and lets clicks through, even if it stays mounted; unmount it here. To show the splash again, mount it
+   * again (a new `key`).
    */
   onComplete?: () => void;
   /**
@@ -40,22 +43,10 @@ type RazorSenseLoaderProps = {
    */
   height?: string | number;
   /**
-   * Called once the animation is drawing (its engine loaded and running on the GPU).
+   * Called once the splash's animation starts drawing (its engine loaded and running on the GPU). Not the page being ready:
+   * that's `isLoading` turning false, and the splash being gone is `onComplete`.
    */
   onLoad?: () => void;
-  /**
-   * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, or its frames are too slow on this device (under 20 a second for 3 seconds). It shows its still frame instead.
-   */
-  onError?: (error: Error) => void;
-  /**
-   * A class name for its root element (web).
-   */
-  className?: string;
-  /**
-   * Inline styles for its root element (web), merged over its own.
-   */
-  style?: React.CSSProperties;
-} & TestID;
+} & Omit<RazorSenseDrawProps, 'isPaused' | 'scale' | 'onLoad'>;
 
 export type { RazorSenseLoaderProps };

@@ -3,8 +3,10 @@ import type { RazorSenseBottomWaveProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
 import { BOTTOM_WAVE_REACH, inputAnchor, rectIn } from './placement';
+import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -25,7 +27,10 @@ const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
  * (BladeProvider). Paused off-screen.
  *
  * Inside a RazorSenseChat it marks where the wave settles and the chat draws it, so the thinking surges down into it when the
- * answer is in.
+ * answer is in. There its own `scale`, `isPaused`, `onLoad` and `onError` don't apply (the chat's do; it warns in development).
+ *
+ * Not RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. This is the animated wave under a
+ * chat input.
  *
  * @example
  * ```tsx
@@ -35,22 +40,46 @@ const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
  * ```
  */
 const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProps>(
-  function RazorSenseBottomWave(
-    { children, isPaused = false, scale = 1, onLoad, onError, className, style, testID },
-    forwardedRef,
-  ) {
+  function RazorSenseBottomWave(props, forwardedRef) {
+    const {
+      children,
+      isPaused = false,
+      scale = 1,
+      onLoad,
+      onError,
+      className,
+      style,
+      testID,
+    } = props;
     const chat = useContext(RazorSenseChatContext);
+    useChatOwnedPropsWarning('RazorSenseBottomWave', Boolean(chat), props);
     const mode = useTheme().colorScheme === 'dark' ? 'dark' : 'light';
     const boxRef = useRef<HTMLDivElement>(null);
     const mergedRef = useMergeRefs(forwardedRef, boxRef);
     const stageRef = useRef<HTMLDivElement>(null);
     const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseBottomWave', 'scale');
 
-    // inside a RazorSenseChat: the chat draws the wave here
+    // inside a RazorSenseChat: the chat draws the wave here (registered once: the chat's register doesn't change)
+    const register = chat?.register;
     useEffect(() => {
-      if (!chat || !boxRef.current) return undefined;
-      return chat.register('bottomWave', boxRef.current);
-    }, [chat]);
+      if (!register || !boxRef.current) return undefined;
+      return register('bottomWave', boxRef.current);
+    }, [register]);
+
+    // where its spill would grow the page (Firefox), its canvas is cut to what the page already holds
+    useEffect(() => {
+      const stage = stageRef.current;
+      const box = boxRef.current;
+      if (chat || !stage || !box) return undefined;
+      return watchSpill(stage, () => {
+        placeSpill(stage, {
+          left: box.clientWidth / 2 - BOTTOM_WAVE_REACH.side * s,
+          top: box.clientHeight - BOTTOM_WAVE_REACH.up * s,
+          width: BOTTOM_WAVE_REACH.side * 2 * s,
+          height: (BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s,
+        });
+      });
+    }, [chat, s]);
 
     // on its own: its canvas reaches round the input, as far as the wave does
     const getAnchors = (): ChatAnchors => {

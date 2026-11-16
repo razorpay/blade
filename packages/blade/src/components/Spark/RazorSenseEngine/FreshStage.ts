@@ -25,10 +25,15 @@ const MAX_STEP = 0.1;
 
 /**
  * Too slow to animate: under this many frames a second for this many seconds running (as RazorSense drops to its static
- * fallback under 20 fps). The component shows its still instead, and so does every one after it on this page.
+ * fallback under 20 fps). The component shows its still instead, and so does every one on this page until it reloads: a
+ * device that's too slow once stays too slow, and checking again would mean 3 more janky seconds for each new one (the chat's
+ * thinking, a new page section). That's deliberate; the first 2 seconds of each stage aren't counted, so a single stall (a
+ * heavy render, a GC pause) doesn't trip it.
  */
 const SLOW_FPS = 20;
 const SLOW_SECONDS = 3;
+/** a stage's first frames don't count (its first draws, and a page still booting, stall) (ms) */
+const SLOW_WARMUP = 2000;
 let wasSlow = false;
 
 /** why a stage can't animate: no usable WebGL2, frames too slow, or a GPU context the browser took back and didn't return */
@@ -77,6 +82,16 @@ const hasUsableGpu = (): boolean => {
     usableGpu = false;
   }
   return usableGpu;
+};
+
+/**
+ * Why nothing could animate here, known before anything is loaded: no usable WebGL2 (or a GPU that draws only on the CPU), or an
+ * animation on this page was already too slow. Null when it can try.
+ */
+const whyCantAnimate = (): FreshFailure | null => {
+  if (!hasUsableGpu()) return 'webgl2';
+  if (wasSlow) return 'slow';
+  return null;
 };
 
 const prefersReducedMotion = (): boolean =>
@@ -163,12 +178,9 @@ class FreshStage {
   public mount(exp: FreshExport, switches: FreshSwitches = ALL_ON): FreshEngine | null {
     this.unmountEngine();
     if (this.isDestroyed) return null;
-    if (!hasUsableGpu()) {
-      this.onError?.('webgl2');
-      return null;
-    }
-    if (wasSlow) {
-      this.onError?.('slow');
+    const cant = whyCantAnimate();
+    if (cant) {
+      this.onError?.(cant);
       return null;
     }
     let failed = false;
@@ -305,10 +317,11 @@ class FreshStage {
   /** the slow check, a second at a time: too many slow ones running and the component is told (it shows its still instead) */
   private countFrame(now: number): void {
     if (!this.second) {
-      this.second = now;
+      this.second = now + SLOW_WARMUP;
       this.frames = 0;
       return;
     }
+    if (now < this.second) return;
     this.frames += 1;
     if (now - this.second < 1000) return;
     const fps = (this.frames * 1000) / (now - this.second);
@@ -324,5 +337,5 @@ class FreshStage {
   }
 }
 
-export { FreshStage, freshFailures };
+export { FreshStage, freshFailures, whyCantAnimate };
 export type { CreateFreshEngine, FreshDriver, FreshFailure };
