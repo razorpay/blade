@@ -62,7 +62,7 @@ His box is his rest footprint and never changes size (unless `shouldUnmountWhenH
 
 ## Accessibility
 
-- Decorative by default (`aria-hidden`). `accessibilityLabel` makes him `role="img"`.
+- Decorative by default (`aria-hidden`). `accessibilityLabel` makes him `role="status"` while `state` is an answer state (as DotLoader is, so a label that changes with the state is announced) and `role="img"` at rest.
 - The coin flip is a pointer delight with no keyboard equivalent, since it carries no information.
 - `prefers-reduced-motion`: one still frame of him at rest, no animation. Turned on or off while he's up, he follows it (a new director takes over, still or moving).
 

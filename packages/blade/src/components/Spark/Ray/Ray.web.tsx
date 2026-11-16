@@ -168,7 +168,9 @@ const _Ray = (
       width={makeSize(box.width)}
       height={makeSize(box.height)}
       {...(accessibilityLabel && isVisible
-        ? makeAccessible({ role: 'img', label: accessibilityLabel })
+        ? // working on an answer, a status region (as DotLoader is), so a label that changes with the state is announced; at rest, an
+          // image (the PR review, 2026-11-16)
+          makeAccessible({ role: state === 'idle' ? 'img' : 'status', label: accessibilityLabel })
         : makeAccessible({ hidden: true }))}
       {...metaAttribute({ name: MetaConstants.Ray, testID })}
       {...makeAnalyticsAttribute(rest)}

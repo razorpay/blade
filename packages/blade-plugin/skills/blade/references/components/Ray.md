@@ -101,9 +101,10 @@ type RayProps = {
    */
   shouldReactToPointer?: boolean;
   /**
-   * When provided, Ray is exposed to assistive tech as an image with this label while he's visible (with `isVisible={false}`
-   * he's hidden from it too). Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen
-   * readers skip him.
+   * When provided, Ray is exposed to assistive tech with this label while he's visible (with `isVisible={false}` he's hidden
+   * from it too): while `state` is an answer state, as a `status` region (as DotLoader is), so a label that changes with the
+   * state is announced; at rest, as an image. Leave it unset when he is decorative (the surrounding UI already says what's
+   * happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
 } & TestID &
