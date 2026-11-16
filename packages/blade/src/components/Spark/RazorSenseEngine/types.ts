@@ -116,6 +116,13 @@ export type FreshEngine = {
   setRunning(on: boolean): void;
   /** stops it for good and frees its GPU memory */
   destroy(): void;
+  /**
+   * plays another comp on the same canvas, its GPU context and compiled programs kept (a new colour scheme or scale): false when
+   * it can't (a different clear-background setting), and a new engine is needed
+   */
+  load?(exp: FreshExport): boolean;
+  /** frames it has drawn: 0 till its first (its programs still compiling, or a GPU that isn't drawing) */
+  drawn?(): number;
   /** how often the speed-ups were used (for checks) */
   stats: Record<string, unknown>;
 };

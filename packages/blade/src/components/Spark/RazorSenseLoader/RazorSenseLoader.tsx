@@ -266,6 +266,8 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
             style={{
               ...stillStyle,
               objectFit: 'cover',
+              // zoomed round its middle by scale, as the splash is (its region)
+              ...(s === 1 ? null : { transform: `scale(${s})`, transformOrigin: 'center' }),
               opacity: isLeaving ? 0 : 1,
               transition: `opacity ${STILL_FADE}ms`,
             }}

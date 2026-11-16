@@ -1,5 +1,6 @@
 import React, { forwardRef, useContext, useEffect, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import tinycolor from 'tinycolor2';
 import type { RazorSenseThinkingProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
@@ -19,13 +20,11 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 
 /**
- * flow 9's thinking label: its blue, and the light running through it (the colours it was made in, light and dark). No colour
- * token has these: the nearest primary and information blues read visibly greener / darker against the glow.
+ * The thinking label's blue is the theme's primary text colour (surface.text.primary.normal), so it follows the theme and passes
+ * contrast in both color schemes (flow 9's own dark blue was 4.3:1 on the dark page, under 4.5: the PR review). The light running
+ * through it is that blue lifted toward white by this much (%), near flow 9's.
  */
-const LABEL_COLORS = {
-  light: { base: '#2d52e6', shine: '#c9d4fb' },
-  dark: { base: '#4f6ff0', shine: '#dce3ff' },
-} as const;
+const SHINE_LIFT = { light: 78, dark: 72 } as const;
 
 /** thinking's still, for when it can't animate (its own module per color scheme, loaded only then) */
 const loadThinkingStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
@@ -47,8 +46,7 @@ const ThinkingLabel = styled.span<{ base: string; shine: string; isPaused: boole
       font-family: ${theme.typography.fonts.family.text};
       font-weight: ${theme.typography.fonts.weight.regular};
       font-size: ${makeTypographySize(theme.typography.fonts.size[200])};
-      /* flow 9's 22 px: no line-height token has it, so it's sized as the tokens are, in rem */
-      line-height: ${makeTypographySize(22)};
+      line-height: ${makeTypographySize(theme.typography.lineHeights[200])};
       letter-spacing: ${makeLetterSpacing(
         theme.typography.letterSpacings[50],
         theme.typography.fonts.size[200],
@@ -113,9 +111,13 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
           "Both children and texts are set: texts roll in children's place, so children isn't shown. Pass one: children for one label, texts for several.",
       });
     }, [hasBoth]);
-    const { colorScheme } = useTheme();
+    const { theme, colorScheme } = useTheme();
     const mode = colorScheme === 'dark' ? 'dark' : 'light';
-    const colors = LABEL_COLORS[mode];
+    const base = theme.colors.surface.text.primary.normal;
+    const colors = {
+      base,
+      shine: tinycolor.mix(base, '#ffffff', SHINE_LIFT[mode]).toHexString(),
+    };
     // the label's box: where thinking is drawn from (it holds the rolling labels, so it stays put as they change)
     const labelRef = useRef<HTMLSpanElement>(null);
     const stageRef = useRef<HTMLDivElement>(null);
