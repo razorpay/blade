@@ -254,6 +254,8 @@ return {
   },
   // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
   drawn() { return STATS.frames; },
+  // Blade: whether its GPU compiles its shaders in the background (KHR_parallel_shader_compile): its start doesn't hold the page up
+  compilesInBackground() { return !!(gl && GL && GL.par); },
 };`);
 
 // the studio's undo and redo restore a snapshot through its editor (draw, afterDocChange), which a player doesn't have: never

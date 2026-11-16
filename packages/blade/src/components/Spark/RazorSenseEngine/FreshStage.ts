@@ -249,6 +249,11 @@ class FreshStage {
     return (this.engine?.drawn?.() ?? 1) > 0;
   }
 
+  /** whether its engine's GPU compiles in the background: its first frame then needs nothing more of the page */
+  public compilesInBackground(): boolean {
+    return !this.isDestroyed && Boolean(this.engine?.compilesInBackground?.());
+  }
+
   /** whether it's drawing now (on screen, not paused, the tab shown): a stage that isn't can't be waited on to draw */
   public isRunning(): boolean {
     return !this.isDestroyed && !this.isPaused && this.isOnScreen && !document.hidden;

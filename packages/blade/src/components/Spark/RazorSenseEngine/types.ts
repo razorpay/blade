@@ -126,6 +126,8 @@ export type FreshEngine = {
   load?(exp: FreshExport): boolean;
   /** frames it has drawn: 0 till its first (its programs still compiling, or a GPU that isn't drawing) */
   drawn?(): number;
+  /** whether its GPU compiles its shaders in the background (KHR_parallel_shader_compile), so its start doesn't hold the page up */
+  compilesInBackground?(): boolean;
   /** how often the speed-ups were used (for checks) */
   stats: Record<string, unknown>;
 };
