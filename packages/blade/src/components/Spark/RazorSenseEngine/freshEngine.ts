@@ -3706,6 +3706,9 @@ void main() {
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
     return s;
   }
+  // Blade: with no KHR_parallel_shader_compile (Firefox), asking whether a program is linked waits for its compile; asked this long
+  // (ms) after linking instead, the driver has compiled it meanwhile (a first hover held the page about 0.3 s in Firefox)
+  const LINK_WAIT_MS = 150;
   function linkLater(vs, fs, attribs) {
     // Blade: compiled and linked, not asked: progReady asks once the driver says it's done
     const p = gl.createProgram(),
@@ -3719,7 +3722,7 @@ void main() {
     gl.attachShader(p, f);
     if (attribs) attribs.forEach((a, i) => gl.bindAttribLocation(p, i, a));
     gl.linkProgram(p);
-    return { p, u: null, v, f };
+    return { p, u: null, v, f, t0: performance.now() };
   }
   function program(fs) {
     return linkLater(VS, fs);
@@ -3728,6 +3731,7 @@ void main() {
     // Blade: true once P can draw (its uniforms found); false while the driver is still on it
     if (P.u) return true;
     if (GL.par && !gl.getProgramParameter(P.p, GL.par.COMPLETION_STATUS_KHR)) return false;
+    if (!GL.par && performance.now() - P.t0 < LINK_WAIT_MS) return false; // Blade: no way to ask without waiting (Firefox): asked once the driver has had time, so the page isn't held up
     if (!gl.getProgramParameter(P.p, gl.LINK_STATUS))
       throw new Error(
         gl.getShaderInfoLog(P.f) || gl.getShaderInfoLog(P.v) || gl.getProgramInfoLog(P.p),
@@ -5295,7 +5299,7 @@ void main() {   // as FS_MAIN: the paste colour outside the comp, else the empty
       gl.attachShader(p, vs);
       gl.attachShader(p, fs);
       gl.linkProgram(p);
-      Q = { p, vs, fs, ready: false, bad: false };
+      Q = { p, vs, fs, ready: false, bad: false, t0: performance.now() };
       S.progs.set(sig, Q);
       GR_STAT.compiles = (GR_STAT.compiles || 0) + 1;
     }
@@ -5304,6 +5308,10 @@ void main() {   // as FS_MAIN: the paste colour outside the comp, else the empty
         GR_STAT.waits = (GR_STAT.waits || 0) + 1;
         return pr;
       }
+      if (!S.ext && performance.now() - Q.t0 < LINK_WAIT_MS) {
+        GR_STAT.waits = (GR_STAT.waits || 0) + 1;
+        return pr;
+      } // Blade: asked once the driver has had time
       if (!gl.getProgramParameter(Q.p, gl.LINK_STATUS)) {
         Q.bad = true;
         console.warn('spec main pass:', gl.getShaderInfoLog(Q.fs) || gl.getProgramInfoLog(Q.p));
