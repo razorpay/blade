@@ -3,11 +3,13 @@
  * and compiles its shaders, and where the browser can't compile them in the background (Firefox, Chrome on many Android phones,
  * some Windows GPUs) that holds the page up. Started together (a page with several of them, a docs page with every story) they
  * stacked: 3.6 s of freezes on a mid-range Android phone's first load. One at a time, the next starts once the one before has
- * drawn its first frame (or MAX_WAIT_MS has passed), and the browser's shader cache makes each later one quicker. Each starts
+ * drawn its first frame, given up or stopped running (or MAX_WAIT_MS has passed): a GPU still compiling the one before isn't
+ * given another to compile (on Direct3D that stacked into a frozen page), and the browser's shader cache makes each later one
+ * quicker. Each starts
  * once the page is idle (the browser's idle callback, or a moment later where there's none), so it doesn't land in the middle of
  * the page's own work. Off screen, nothing starts (it would only be paused there).
  */
-const MAX_WAIT_MS = 1500;
+const MAX_WAIT_MS = 6500;
 /** how close to the screen a box has to be to start (its first frame ready as it scrolls in) */
 const NEAR = '200px';
 /** how long a start may wait for the page to go idle (ms) */

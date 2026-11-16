@@ -35,6 +35,11 @@ const SLOW_SECONDS = 3;
 /** a stage's first frames don't count (its first draws, and a page still booting, stall) (ms) */
 const SLOW_WARMUP = 2000;
 let wasSlow = false;
+/**
+ * A stage on this page drew nothing in its first FIRST_DRAW_MS on screen: its GPU is stuck (compiling, on Direct3D). Every stage
+ * after it shows its still at once, rather than giving that GPU more to compile (and each a blank box while it waits).
+ */
+let wasStalled = false;
 
 /**
  * why a stage can't animate: no usable WebGL2, frames too slow, a GPU context the browser took back and didn't return, or a first
@@ -102,6 +107,7 @@ const hasUsableGpu = (): boolean => {
 const whyCantAnimate = (): FreshFailure | null => {
   if (!hasUsableGpu()) return 'webgl2';
   if (wasSlow) return 'slow';
+  if (wasStalled) return 'stalled';
   return null;
 };
 
@@ -126,6 +132,7 @@ class FreshStage {
   private onError?: (reason: FreshFailure) => void;
   private firstDrawTimer = 0;
   private waitedForFirstDraw = 0;
+  private hasStalled = false;
 
   private engine: FreshEngine | null = null;
   private driver: FreshDriver | null = null;
@@ -240,6 +247,11 @@ class FreshStage {
     return (this.engine?.drawn?.() ?? 1) > 0;
   }
 
+  /** whether it's drawing now (on screen, not paused, the tab shown): a stage that isn't can't be waited on to draw */
+  public isRunning(): boolean {
+    return !this.isDestroyed && !this.isPaused && this.isOnScreen && !document.hidden;
+  }
+
   /** who's told when it can't animate (a component taking over a stage it had before) */
   public setOnError(onError?: (reason: FreshFailure) => void): void {
     this.onError = onError;
@@ -322,6 +334,8 @@ class FreshStage {
       if (!this.isPaused && this.isOnScreen && !document.hidden) this.waitedForFirstDraw += STEP;
       if (this.waitedForFirstDraw >= FIRST_DRAW_MS) {
         window.clearInterval(this.firstDrawTimer);
+        this.hasStalled = true;
+        wasStalled = true;
         this.onError?.('stalled');
       }
     }, STEP);
@@ -329,7 +343,8 @@ class FreshStage {
 
   private unmountEngine(): void {
     if (this.engine) {
-      this.engine.destroy();
+      // (one that never drew is let go softly: losing its context by hand waits for a GPU that may be stuck compiling)
+      this.engine.destroy(this.hasStalled || !this.hasDrawn());
       this.engine = null;
     }
   }
