@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading } from '../';
+import type { HeadingProps } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -134,6 +135,28 @@ describe('<Heading />', () => {
 
     expect(renderHero(true)).toHaveStyle({ fontFamily: serifFontFamily });
     expect(renderHero(false)).not.toHaveStyle({ fontFamily: serifFontFamily });
+  });
+
+  it('should keep HeadingProps usable in wrappers while guarding literal isSerif', () => {
+    // Type-level checks: these fail `yarn typecheck` if the guard or HeadingProps shape regresses.
+    type SectionTitleProps = Omit<HeadingProps, 'size'>;
+    const SectionTitle = (props: SectionTitleProps): React.ReactElement => (
+      <Heading size="large" {...props} />
+    );
+    const misuse = [
+      // @ts-expect-error isSerif needs size="2xlarge"
+      <Heading key="size" size="xlarge" isSerif>
+        a
+      </Heading>,
+      // @ts-expect-error PT Serif ships in regular weight only
+      <Heading key="weight" size="2xlarge" weight="semibold" isSerif>
+        a
+      </Heading>,
+    ];
+    expect(misuse).toHaveLength(2);
+
+    const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
+    expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
   });
 
   it('should ignore isSerif and warn when size is not "2xlarge"', () => {

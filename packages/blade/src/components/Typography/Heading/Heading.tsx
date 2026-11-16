@@ -33,35 +33,30 @@ type HeadingCommonProps = {
   ElementTiming &
   StyledPropsBlade;
 
-type HeadingSansProps = {
+// A single object type (not a union), so consumers can still `interface X extends HeadingProps`
+// and build wrappers with `Omit` / `Pick` over it.
+export type HeadingProps = HeadingCommonProps & {
   size?: HeadingSize;
   weight?: HeadingWeight;
-  isSerif?: false;
-};
-
-type HeadingSerifProps = {
-  /**
-   * Serif headings are only available at `2xlarge`.
-   */
-  size: '2xlarge';
-  /**
-   * PT Serif ships in regular weight only.
-   */
-  weight?: 'regular';
   /**
    * Renders the heading in PT Serif.
    *
-   * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"`.
-   * Web only for now: on React Native the heading keeps the default heading font.
-   *
-   * Accepts a computed boolean (`isSerif={isHero}`), but only alongside `size="2xlarge"`.
+   * **Reserved for the agentic dashboard hero heading.** Only works with `size="2xlarge"`, in
+   * regular weight. Web only for now: on React Native the heading keeps the default heading font.
    *
    * @default false
    */
-  isSerif: boolean;
+  isSerif?: boolean;
 };
 
-export type HeadingProps = HeadingCommonProps & (HeadingSansProps | HeadingSerifProps);
+/**
+ * When `isSerif` is written as `true`, TypeScript also requires `size="2xlarge"` and only allows
+ * `weight="regular"`. A computed boolean (`isSerif={isHero}`) is checked at runtime instead: any
+ * other size logs a dev warning and keeps the default heading font.
+ */
+type HeadingSerifGuard<T> = T extends { isSerif: true }
+  ? { size: '2xlarge'; weight?: 'regular' }
+  : unknown;
 
 type GetHeadingPropsArgs = Pick<HeadingCommonProps, 'as' | 'color' | 'testID'> & {
   size?: HeadingSize;
@@ -175,6 +170,9 @@ const _Heading = (
   );
 };
 
-const Heading = React.forwardRef(_Heading);
+// forwardRef drops generics, so the serif guard is added back on the exported signature.
+const Heading = React.forwardRef(_Heading) as <T extends HeadingProps>(
+  props: T & HeadingSerifGuard<T> & React.RefAttributes<BladeElementRef>,
+) => ReactElement;
 
 export { Heading };
