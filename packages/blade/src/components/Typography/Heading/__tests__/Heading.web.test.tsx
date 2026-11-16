@@ -167,6 +167,12 @@ describe('<Heading />', () => {
 
     const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
+
+    // The type guard can't see isSerif inside a spread, so the wrapper still compiles with it.
+    // The runtime check catches it instead.
+    expect(() => renderWithTheme(<SectionTitle isSerif>Section</SectionTitle>)).toThrow(
+      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="large".',
+    );
   });
 
   it('should throw in dev when isSerif is used with a size other than "2xlarge"', () => {

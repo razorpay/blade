@@ -36,8 +36,9 @@ type HeadingProps = {
   /**
    * Renders the heading in PT Serif (regular weight only).
    *
-   * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"`;
-   * TypeScript rejects any other size and any weight other than `regular`.
+   * **Reserved for the agentic dashboard hero heading.** Only allowed with `size="2xlarge"` and
+   * regular weight. Written as `isSerif` directly, TypeScript rejects other combinations; a computed
+   * value or props spread from a wrapper are checked at runtime (dev error).
    * Web only for now: on React Native the heading keeps the default heading font.
    *
    * @default false

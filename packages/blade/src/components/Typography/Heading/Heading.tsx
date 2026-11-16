@@ -51,9 +51,12 @@ export type HeadingProps = HeadingCommonProps & {
 };
 
 /**
- * When `isSerif` is written as `true`, TypeScript also requires `size="2xlarge"` and only allows
- * `weight="regular"`. A computed boolean (`isSerif={isHero}`) is checked at runtime instead: in
- * dev, any other size or weight throws; in production the heading keeps the default font.
+ * Compile-time check for the common case: when `isSerif` is written as `true` directly on
+ * `<Heading>`, TypeScript also requires `size="2xlarge"` and only allows `weight="regular"`.
+ *
+ * It can't see through a computed value (`isSerif={isHero}`) or props spread in from a wrapper
+ * typed with `HeadingProps`. Those are checked at runtime instead, like Text's size/variant check:
+ * any other size or weight throws in dev, and the heading keeps the default font in production.
  */
 type HeadingSerifGuard<T> = T extends { isSerif: true }
   ? { size: '2xlarge'; weight?: 'regular' }
