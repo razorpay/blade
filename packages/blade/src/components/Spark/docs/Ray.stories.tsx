@@ -20,7 +20,7 @@ function Chat({ isAnswering, step, isDone }) {
   return (
     <>
       {/* the answer's row: its states, at rest between them, dropping out when it's done (and the row closes up) */}
-      <Ray state={step} idle="rest" isVisible={!isDone} shouldUnmountWhenHidden isInteractive={false} />
+      <Ray state={step} idle="rest" isVisible={!isDone} shouldUnmountWhenHidden shouldReactToPointer={false} />
 
       {/* on the chat input: he sits above it, watches what's typed, hops off while it's answering */}
       <Box position="relative">
@@ -162,7 +162,7 @@ OnChatBox.args = {
   idle: 'rotate',
   size: 'medium',
   isVisible: true,
-  isInteractive: true,
+  shouldReactToPointer: true,
   hour: NOW,
 };
 OnChatBox.argTypes = {
@@ -239,7 +239,7 @@ AnswerRow.args = {
   idle: 'rest',
   isVisible: true,
   shouldUnmountWhenHidden: false,
-  isInteractive: false,
+  shouldReactToPointer: false,
 };
 AnswerRow.parameters = {
   controls: { include: ['state', 'isVisible', 'shouldUnmountWhenHidden'] },
@@ -321,7 +321,7 @@ const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
         ) : null}
         {rowOn ? (
           <Box display="flex" alignItems="flex-end" gap="spacing.4" marginTop="spacing.8">
-            <Ray state={rowState} idle="rest" isVisible={!rowHidden} isInteractive={false} />
+            <Ray state={rowState} idle="rest" isVisible={!rowHidden} shouldReactToPointer={false} />
             <Text size="small" color="surface.text.gray.muted">
               {LABELS[rowState]}
             </Text>

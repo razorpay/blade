@@ -144,7 +144,7 @@ type RayMountOptions = {
   idle: RayIdle;
   size: keyof typeof WIDTHS;
   isHidden: boolean;
-  isInteractive: boolean;
+  shouldReactToPointer: boolean;
   colorScheme: 'light' | 'dark';
 };
 
@@ -350,7 +350,7 @@ class RayMount {
   /** A click on him: the coin flip where his idle allows it. */
   click(): void {
     if (
-      !this.options.isInteractive ||
+      !this.options.shouldReactToPointer ||
       this.options.state !== 'idle' ||
       this.options.isHidden
     )
@@ -896,7 +896,7 @@ class RayMount {
     );
     if (current && filmShown && current.shownAt === Infinity) current.shownAt = now;
     const clickable =
-      this.options.isInteractive && this.options.state === 'idle' && !this.options.isHidden;
+      this.options.shouldReactToPointer && this.options.state === 'idle' && !this.options.isHidden;
     const cursor = clickable ? 'pointer' : '';
     if (this.root.style.cursor !== cursor) this.root.style.cursor = cursor;
     // his own Ray draws until a film has taken him (and a frame after, so there's never a gap)
@@ -930,10 +930,10 @@ class RayMount {
       this.player.tick(now, dt, {
         pointer: local && idleish ? this.player.toWorld(local[0], local[1], this.dpr) : null,
         gaze,
-        hover: this.options.isInteractive && idleish,
+        hover: this.options.shouldReactToPointer && idleish,
         // (asleep, a pointer near him wakes him: where it really is, not brought in)
         near:
-          raw && this.options.isInteractive
+          raw && this.options.shouldReactToPointer
             ? this.player.toWorld(raw[0], raw[1], this.dpr)
             : null,
       });
@@ -969,7 +969,7 @@ class RayMount {
   }
 
   private sendCursor(film: Film, local: number[] | null): void {
-    const near = this.options.isInteractive && local;
+    const near = this.options.shouldReactToPointer && local;
     const key = near ? `${Math.round(local[0])},${Math.round(local[1])}` : 'none';
     if (key === film.lastCursor) return;
     film.lastCursor = key;

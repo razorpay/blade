@@ -47,7 +47,7 @@ const _Ray = (
     isVisible = true,
     shouldUnmountWhenHidden = false,
     watchedInputRef,
-    isInteractive = true,
+    shouldReactToPointer = true,
     accessibilityLabel,
     testID,
     ...rest
@@ -65,7 +65,7 @@ const _Ray = (
     idle,
     size,
     isHidden: !isVisible,
-    isInteractive,
+    shouldReactToPointer,
     colorScheme: scheme,
   } as const;
   const optionsRef = useRef(options);
@@ -137,7 +137,7 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, isInteractive, scheme]);
+  }, [state, idle, size, isVisible, shouldReactToPointer, scheme]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(watchedInputRef ?? null);

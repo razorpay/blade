@@ -77,11 +77,12 @@ type RayProps = {
   watchedInputRef?: React.RefObject<HTMLElement | null>;
   /**
    * Whether he reacts to the pointer: he looks at it wherever it is on the page, and a click on him flips a coin (click
-   * again while it's up for another).
+   * again while it's up for another). It's a delight with nothing for the app to do, so it has no handler and no keyboard
+   * equivalent; turn it off where he only shows what's happening (an answer's row).
    *
    * @default true
    */
-  isInteractive?: boolean;
+  shouldReactToPointer?: boolean;
   /**
    * When provided, Ray is exposed to assistive tech as an image with this label while he's visible (with `isVisible={false}`
    * he's hidden from it too). Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen
