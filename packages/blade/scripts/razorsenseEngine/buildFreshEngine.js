@@ -188,8 +188,9 @@ const GR_SW = /^u(`);
 src = sub(src, `function render() {
   if (!gl || glLost) return;
   if (!(progReady(GL.pMain)`, `function render() {   // Blade: a frame whose main-pass copy isn't compiled yet (Direct3D, grSpec) is dropped whole, and tried again next frame
-  try { renderFrame(); } catch (e) {
+  try { renderFrame(); if (GL) GL.gpuWait = false; } catch (e) {
     if (e !== GR_MISS) throw e;
+    GL.gpuWait = true;
     if (!GL.wait) GL.wait = requestAnimationFrame(() => { GL.wait = 0; if (!__dead) { try { render(); } catch (e) { console.error(e); } } });
   }
 }
@@ -254,8 +255,9 @@ return {
   },
   // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
   drawn() { return STATS.frames; },
-  // Blade: whether its GPU compiles its shaders in the background (KHR_parallel_shader_compile): its start doesn't hold the page up
-  compilesInBackground() { return !!(gl && GL && GL.par); },
+  // Blade: whether its last frame was dropped only for the GPU (Direct3D: the main pass's copy still compiling, in the background):
+  // its own work for its first frame is done, so another engine starting now doesn't land on top of it
+  waitsOnGpu() { return !!(GL && GL.gpuWait); },
 };`);
 
 // the studio's undo and redo restore a snapshot through its editor (draw, afterDocChange), which a player doesn't have: never
