@@ -1,7 +1,7 @@
 import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
-import type { BaseButtonProps } from '../BaseButton/BaseButton';
+import type { BaseButtonProps, ButtonAiHover } from '../BaseButton/BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -16,7 +16,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { ButtonAiHover } from '~components/Button/BaseButton/BaseButton';
 
 type ButtonCommonProps = {
   /**
