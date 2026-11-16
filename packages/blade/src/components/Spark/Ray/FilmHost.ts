@@ -12,9 +12,9 @@
  * The film's own markup (panel, buttons) is parsed off-screen so its code finds the elements it expects.
  */
 import { RayCore } from './engine';
-import type { FilmMessage, FilmModule, SharedFactory } from './engineTypes';
+import type { FilmMessage, FilmModule, RayCoreApi, SharedFactory } from './engineTypes';
 
-const RC = RayCore as any;
+const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
 /** The part of the stage a film draws on, in the stage's CSS px. */
 type Crop = { left: number; top: number; right: number; bottom: number };

@@ -17,10 +17,10 @@ import { paceFor } from './rayPace';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
-import type { FilmMessage, FilmModule } from './engineTypes';
+import type { FilmMessage, FilmModule, RayCoreApi } from './engineTypes';
 import type { RayIdle, RayState } from './types';
 
-const RC = RayCore as any;
+const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
 type ActiveState = Exclude<RayState, 'idle'>;
 type Idle = Exclude<RayIdle, 'rotate' | 'time-of-day'>;

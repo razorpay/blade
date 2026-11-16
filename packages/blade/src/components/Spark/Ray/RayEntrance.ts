@@ -8,9 +8,10 @@
  * It's drawn on a canvas of its own, wide enough for the run, and his idle takes him on from rest when it's over.
  */
 import { RayCore } from './engine';
+import type { RayCoreApi } from './engineTypes';
 import { freeCanvas } from './FilmHost';
 
-const RC = RayCore as any;
+const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
 const BODY_WIDTH = RC.BASE[2][0]; // his full width at rest (world units)
 const ROOT_X = RC.LOOK.width / 2;
