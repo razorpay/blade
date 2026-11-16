@@ -72,8 +72,8 @@ Web only. `Ray.native.tsx` throws "not yet implemented", like RazorSense.
 
 ## Open questions
 
-- **Bundle size.** Films are loaded on demand now (130 KB gzipped if every film is used, 57 KB with his first render, none before). Stripping each film's Studio-only panel, undo and keyboard code during export would cut more.
-- **Films' canvases.** Each film draws on canvases the size of the whole stage (16 × 8 of his widths). Cropping them needs the films to lay him out from the stage they're told about, not their canvas: an exporter change.
+- **Bundle size.** With Blade's components only his component loads (9.1 KB gzipped, mostly code every component shares); about 62.6 KB with his first render (director, engine, nightcap, flip); then 14.9 KB of shared film code with the first film and 5.7–15.6 KB per film (esbuild with code splitting, 2026-11-16). Leaving Ray Studio's editor code out of the films would cut more: the films' own scripts in Ray Studio have to change, so it's tracked in razorpay/blade#4117.
+- **Films' canvases.** Each film draws on canvases the size of the whole stage (16 × 8 of his widths). Cropping them needs each film to lay him out from the stage it's told about, not its canvas (12–15 places in each of the 7 films' own scripts in Ray Studio), then an export: tracked in razorpay/blade#4116. Meanwhile the adaptive frame rate bounds what they cost on a slow machine.
 - **A click mid-sip or mid-cash-run** costs one or two frames at the click: those films re-plan their bit then (a re-simulation). Moving the engine's physics to a worker would remove it.
 - **`size` tokens.** Two sizes match today's dashboard (48) and sidekick (38). Investigate's 49.5px button isn't covered.
 - **Not in v1:**
