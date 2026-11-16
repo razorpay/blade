@@ -185,9 +185,15 @@ const _Heading = (
   );
 };
 
-// forwardRef drops generics, so the serif guard is added back on the exported signature.
-const Heading = React.forwardRef(_Heading) as <T extends HeadingProps>(
+// Plain forwardRef component, exported only so Storybook's docgen can read Heading's props: docgen
+// can't read a generic signature. Not part of the public API (see ./index.ts).
+const HeadingBase = React.forwardRef(_Heading);
+HeadingBase.displayName = 'Heading';
+
+// forwardRef drops generics, so the serif guard is added back on the public signature.
+// Same object as HeadingBase at runtime, so it shares the docgen info.
+const Heading = HeadingBase as <T extends HeadingProps>(
   props: T & HeadingSerifGuard<T> & React.RefAttributes<BladeElementRef>,
 ) => ReactElement;
 
-export { Heading };
+export { Heading, HeadingBase };
