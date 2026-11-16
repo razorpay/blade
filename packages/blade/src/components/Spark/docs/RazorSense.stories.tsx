@@ -16,6 +16,7 @@ import {
   RazorSenseChatBackground,
 } from '../';
 import { GradientEditor } from './GradientEditor';
+import { RazorSenseCardShell } from './RazorSenseCardShell';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -548,6 +549,47 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
 };
 BottomSurgeV2.storyName = 'Bottom Surge 2.0';
 BottomSurgeV2.parameters = { controls: { disable: true } };
+
+type CardControls = { width: number; height: number; ctaLabel: string };
+/**
+ * The shell of the agentic dashboard's cards: what every card shares, whatever it shows. Hover it (or tab to its CTA): it lifts
+ * with a soft shadow under its stroke, RazorSense plays once along its bottom, and a wash runs through its CTA (at rest, the
+ * wash comes round every 3.8 s). Size it with the controls: RazorSense stays on the bottom at its own height, and its sweep,
+ * which starts before the card and ends past it, stretches with the card's width on the same timing. Toggle the color scheme
+ * from the toolbar for dark.
+ */
+export const RazorSenseCard: StoryFn<CardControls> = ({ width, height, ctaLabel }) => {
+  return (
+    <Box
+      minHeight="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      padding="spacing.8"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <RazorSenseCardShell width={width} height={height} ctaLabel={ctaLabel}>
+        <Text size="small" color="surface.text.gray.muted">
+          The card&apos;s content
+        </Text>
+      </RazorSenseCardShell>
+    </Box>
+  );
+};
+RazorSenseCard.args = { width: 265, height: 240, ctaLabel: 'See all payments' };
+RazorSenseCard.argTypes = {
+  width: {
+    control: { type: 'range', min: 200, max: 960, step: 4 },
+    description: "The card's width (px): RazorSense's sweep stretches with it",
+  },
+  height: {
+    control: { type: 'range', min: 140, max: 480, step: 2 },
+    description: "The card's height (px): RazorSense stays on its bottom",
+  },
+  ctaLabel: { control: { type: 'text' }, description: "The CTA's text" },
+};
+RazorSenseCard.parameters = { controls: { include: ['width', 'height', 'ctaLabel'] } };
+RazorSenseCard.storyName = 'RazorSense Card';
 
 const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
