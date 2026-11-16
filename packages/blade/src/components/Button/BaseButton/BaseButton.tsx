@@ -61,8 +61,7 @@ import type { BladeCommonEvents } from '~components/types';
 import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
-import { ButtonRay } from '~components/Spark/ButtonRay';
-import { BUTTON_RAY_VARIANTS } from '~components/Spark/ButtonRay';
+import { ButtonRay, BUTTON_RAY_VARIANTS } from '~components/Spark/ButtonRay';
 import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
 
 /**
