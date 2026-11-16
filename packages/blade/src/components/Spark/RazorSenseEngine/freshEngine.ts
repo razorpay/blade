@@ -3688,10 +3688,7 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       f = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(v, vs);
     gl.compileShader(v);
-    gl.shaderSource(
-      f,
-      __d3d ? fs.replace('#version 300 es\n', '#version 300 es\n#pragma optimize(off)\n') : fs,
-    );
+    gl.shaderSource(f, fs);
     gl.compileShader(f);
     gl.attachShader(p, v);
     gl.attachShader(p, f);
@@ -3803,7 +3800,10 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       par: gl.getExtension('KHR_parallel_shader_compile'),
       half: !!gl.getExtension('EXT_color_buffer_float'),
       vao: gl.createVertexArray(),
-      pMain: program(FS_MAIN),
+      pMain:
+        __d3d && GPU_SPEC && gl.getExtension('KHR_parallel_shader_compile')
+          ? grStandIn(FS_MAIN)
+          : program(FS_MAIN),
       pBlur: program(FS_BLUR),
       pComp: program(FS_COMP),
       pCompAE: program(FS_COMP_AE),
@@ -5248,7 +5248,7 @@ o = texelFetch(uE, ivec2(0), 0);
         const f = gl[n].bind(gl);
         gl[n] = (L, ...a) => {
           if (GR_REC.on) GR_REC.calls.push([n, L, a]);
-          return f(L, ...a);
+          return L && L.standIn ? undefined : f(L, ...a);
         };
       }
     }
@@ -5257,7 +5257,7 @@ o = texelFetch(uE, ivec2(0), 0);
   }
   function grSpec(pr) {
     // -> the program to draw the main pass with (pr itself until the copy for these switches is ready)
-    if (!GPU_SPEC || !GL.par || __d3d) return pr;
+    if (!pr.standIn && (!GPU_SPEC || !GL.par || __d3d)) return pr;
     GR_REC.on = false;
     const S =
       GL.spec ||
@@ -5304,7 +5304,7 @@ o = texelFetch(uE, ivec2(0), 0);
     if (!Q.ready && !Q.bad) {
       if (S.ext && !gl.getProgramParameter(Q.p, S.ext.COMPLETION_STATUS_KHR)) {
         GR_STAT.waits = (GR_STAT.waits || 0) + 1;
-        return pr;
+        return pr.standIn ? grRescue(pr, false) : pr;
       }
       if (!S.ext && performance.now() - Q.t0 < LINK_WAIT_MS) {
         GR_STAT.waits = (GR_STAT.waits || 0) + 1;
@@ -5313,7 +5313,7 @@ o = texelFetch(uE, ivec2(0), 0);
       if (!gl.getProgramParameter(Q.p, gl.LINK_STATUS)) {
         Q.bad = true;
         console.warn('spec main pass:', gl.getShaderInfoLog(Q.fs) || gl.getProgramInfoLog(Q.p));
-        return pr;
+        return pr.standIn ? grRescue(pr, true) : pr;
       }
       Q.u = {};
       const n = gl.getProgramParameter(Q.p, gl.ACTIVE_UNIFORMS);
@@ -5323,7 +5323,7 @@ o = texelFetch(uE, ivec2(0), 0);
       }
       Q.ready = true;
     }
-    if (Q.bad) return pr;
+    if (Q.bad) return pr.standIn ? grRescue(pr, true) : pr;
     gl.useProgram(Q.p); // the same values, by name (the switches are constants in it now)
     for (const [n, L, a] of GR_REC.calls) {
       const k = S.names.get(L),
@@ -5332,6 +5332,44 @@ o = texelFetch(uE, ivec2(0), 0);
     }
     GR_STAT.spec = (GR_STAT.spec || 0) + 1;
     return Q;
+  }
+  const GR_MISS = { miss: true }; // Blade: thrown by grSpec: this frame is dropped (render)
+  function grStandIn(fs) {
+    // Blade: the general main pass's uniforms by name, nothing compiled (Direct3D: its frames go to the copies)
+    const u = {};
+    for (const m of fs.matchAll(/^uniform\s+(?:(?:lowp|mediump|highp)\s+)?\w+\s+([^;]+);/gm))
+      for (const d of m[1].split(',')) {
+        const n = d.trim().replace(/\[.*$/, '');
+        if (n) u[n] = { standIn: n };
+      }
+    return { p: null, u, standIn: true };
+  }
+  const grLoops = (fs) =>
+    fs
+      .replace(/^(precision highp int;)$/m, '$1\nuniform int uLoop0;')
+      .replace(
+        /for \(int (\w+) = (\d+); \1 < (\d+); \1\+\+\)/g,
+        'for (int $1 = $2; $1 < $3 + uLoop0; $1++)',
+      )
+      .replace(
+        /for \(int (\w+) = (\d+); \1 >= 0; \1--\)/g,
+        'for (int $1 = $2 + uLoop0; $1 >= 0; $1--)',
+      ); // Blade: loop counts the compiler can't know (uLoop0 is 0), so Direct3D's keeps them as loops instead of unrolling them
+  function grRescue(pr, start) {
+    // Blade: no copy to draw with (compiling, or failed): the general one with its loops kept, once it's ready; till then the frame is dropped
+    if (start && !GL.pMainLoops) GL.pMainLoops = program(grLoops(FS_MAIN));
+    const R = GL.pMainLoops;
+    if (!R || !progReady(R)) {
+      GR_STAT.misses = (GR_STAT.misses || 0) + 1;
+      throw GR_MISS;
+    }
+    gl.useProgram(R.p);
+    for (const [n, L, a] of GR_REC.calls) {
+      const k = GL.spec.names.get(L),
+        M = k && R.u[k];
+      if (M) gl[n](M, ...a);
+    }
+    return R;
   }
   const GR_SW = /^u(ClipOn|NBOn|OVOn|SOOn|SOBlend|SOL|Cycle|CMOn|FreeOn|CMInv|Cubic|PN|BInv|FxN|Beh|MBox|DClip|Bands|ChH|ChV|Wrap|Space|ROn|RProf|RLightShape|After|Strokes|SSide|SBlend|SFollow|SInv|SMaskOn|SMFeather|Color|From|Out|Mode|Straight|AlphaOut)$/;
   function buildLayer(id, s, L, P, rs0) {
@@ -6257,6 +6295,25 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
   }
   const WARM = new Set(); // ds: comps drawn once (their first draw is the costly one)
   function render() {
+    // Blade: a frame whose main-pass copy isn't compiled yet (Direct3D, grSpec) is dropped whole, and tried again next frame
+    try {
+      renderFrame();
+    } catch (e) {
+      if (e !== GR_MISS) throw e;
+      if (!GL.wait)
+        GL.wait = requestAnimationFrame(() => {
+          GL.wait = 0;
+          if (!__dead) {
+            try {
+              render();
+            } catch (e) {
+              console.error(e);
+            }
+          }
+        });
+    }
+  }
+  function renderFrame() {
     if (!gl || glLost) return;
     if (
       !(

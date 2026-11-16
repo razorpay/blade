@@ -138,8 +138,8 @@ function flushStore() {}
 async function loadStore() { return null; }
 `);
 src = sub(src, `const API = n => (location.protocol === 'file:' ? 'http://localhost:8737' : '') + '/api/settings/' + n;`, ``);
-src = sub(src, "function program(fs) {\n  const p = gl.createProgram();\n  gl.attachShader(p, compile(gl.VERTEX_SHADER, VS)); gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p);\n  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));\n  const u = {}, n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS);\n  for (let i = 0; i < n; i++) { const info = gl.getActiveUniform(p, i); u[info.name.replace(/\\[0\\]$/, '')] = gl.getUniformLocation(p, info.name); }\n  return { p, u };\n}", "// Blade: with no KHR_parallel_shader_compile (Firefox, Chrome on many Android phones), asking whether a program is linked waits for\n// its compile (a first hover held the page about 0.3 s in Firefox; a first load over a second on a mid-range Android phone). A fence\n// put in after the link is asked instead, which never waits: once it has passed, the GPU has got through the link\nconst LINK_WAIT_MS = 150, LINK_WAIT_MAX_MS = 4000;\nfunction linkLater(vs, fs, attribs) {   // Blade: compiled and linked, not asked: progReady asks once the driver says it's done\n  const p = gl.createProgram(), v = gl.createShader(gl.VERTEX_SHADER), f = gl.createShader(gl.FRAGMENT_SHADER);\n  gl.shaderSource(v, vs); gl.compileShader(v); gl.shaderSource(f, __d3d ? fs.replace('#version 300 es\\n', '#version 300 es\\n#pragma optimize(off)\\n') : fs); gl.compileShader(f);\n  gl.attachShader(p, v); gl.attachShader(p, f);\n  if (attribs) attribs.forEach((a, i) => gl.bindAttribLocation(p, i, a));\n  gl.linkProgram(p);\n  const fence = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0); gl.flush();   // Blade: passed once the GPU has got through the link\n  return { p, u: null, v, f, t0: performance.now(), fence };\n}\nfunction program(fs) { return linkLater(VS, fs); }\nfunction progReady(P, names) {   // Blade: true once P can draw (its uniforms found); false while the driver is still on it\n  if (P.u) return true;\n  if (GL.par && !gl.getProgramParameter(P.p, GL.par.COMPLETION_STATUS_KHR)) return false;\n  if (!GL.par) {   // Blade: no way to ask without waiting (Firefox, many Android phones): asked once the fence after its link has passed (asked without waiting), at least LINK_WAIT_MS on, at most LINK_WAIT_MAX_MS\n    const waited = performance.now() - P.t0;\n    if (waited < LINK_WAIT_MS) return false;\n    if (P.fence && waited < LINK_WAIT_MAX_MS && gl.getSyncParameter(P.fence, gl.SYNC_STATUS) !== gl.SIGNALED) return false;\n  }\n  if (P.fence) { gl.deleteSync(P.fence); P.fence = null; }\n  if (!gl.getProgramParameter(P.p, gl.LINK_STATUS)) throw new Error(gl.getShaderInfoLog(P.f) || gl.getShaderInfoLog(P.v) || gl.getProgramInfoLog(P.p));\n  const u = {};\n  if (names) for (const n of names) u[n] = gl.getUniformLocation(P.p, n);\n  else { const n = gl.getProgramParameter(P.p, gl.ACTIVE_UNIFORMS); for (let i = 0; i < n; i++) { const info = gl.getActiveUniform(P.p, i); u[info.name.replace(/\\[0\\]$/, '')] = gl.getUniformLocation(P.p, info.name); } }\n  P.u = u; return true;\n}");
-src = sub(src, `GL = { half: !!gl.getExtension('EXT_color_buffer_float'), vao: gl.createVertexArray(), pMain: program(FS_MAIN), pBlur: program(FS_BLUR), pComp: program(FS_COMP), lut: newTex(), ACC: null, layers: new Map() };`, `GL = { par: gl.getExtension('KHR_parallel_shader_compile'), half: !!gl.getExtension('EXT_color_buffer_float'), vao: gl.createVertexArray(), pMain: program(FS_MAIN), pBlur: program(FS_BLUR), pComp: program(FS_COMP), pCompAE: program(FS_COMP_AE), pLayer: program(FS_LAYER), pFill: program(FS_FILL), lut: newTex(), ACC: null, layers: new Map() };`);
+src = sub(src, "function program(fs) {\n  const p = gl.createProgram();\n  gl.attachShader(p, compile(gl.VERTEX_SHADER, VS)); gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p);\n  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));\n  const u = {}, n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS);\n  for (let i = 0; i < n; i++) { const info = gl.getActiveUniform(p, i); u[info.name.replace(/\\[0\\]$/, '')] = gl.getUniformLocation(p, info.name); }\n  return { p, u };\n}", "// Blade: with no KHR_parallel_shader_compile (Firefox, Chrome on many Android phones), asking whether a program is linked waits for\n// its compile (a first hover held the page about 0.3 s in Firefox; a first load over a second on a mid-range Android phone). A fence\n// put in after the link is asked instead, which never waits: once it has passed, the GPU has got through the link\nconst LINK_WAIT_MS = 150, LINK_WAIT_MAX_MS = 4000;\nfunction linkLater(vs, fs, attribs) {   // Blade: compiled and linked, not asked: progReady asks once the driver says it's done\n  const p = gl.createProgram(), v = gl.createShader(gl.VERTEX_SHADER), f = gl.createShader(gl.FRAGMENT_SHADER);\n  gl.shaderSource(v, vs); gl.compileShader(v); gl.shaderSource(f, fs); gl.compileShader(f);\n  gl.attachShader(p, v); gl.attachShader(p, f);\n  if (attribs) attribs.forEach((a, i) => gl.bindAttribLocation(p, i, a));\n  gl.linkProgram(p);\n  const fence = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0); gl.flush();   // Blade: passed once the GPU has got through the link\n  return { p, u: null, v, f, t0: performance.now(), fence };\n}\nfunction program(fs) { return linkLater(VS, fs); }\nfunction progReady(P, names) {   // Blade: true once P can draw (its uniforms found); false while the driver is still on it\n  if (P.u) return true;\n  if (GL.par && !gl.getProgramParameter(P.p, GL.par.COMPLETION_STATUS_KHR)) return false;\n  if (!GL.par) {   // Blade: no way to ask without waiting (Firefox, many Android phones): asked once the fence after its link has passed (asked without waiting), at least LINK_WAIT_MS on, at most LINK_WAIT_MAX_MS\n    const waited = performance.now() - P.t0;\n    if (waited < LINK_WAIT_MS) return false;\n    if (P.fence && waited < LINK_WAIT_MAX_MS && gl.getSyncParameter(P.fence, gl.SYNC_STATUS) !== gl.SIGNALED) return false;\n  }\n  if (P.fence) { gl.deleteSync(P.fence); P.fence = null; }\n  if (!gl.getProgramParameter(P.p, gl.LINK_STATUS)) throw new Error(gl.getShaderInfoLog(P.f) || gl.getShaderInfoLog(P.v) || gl.getProgramInfoLog(P.p));\n  const u = {};\n  if (names) for (const n of names) u[n] = gl.getUniformLocation(P.p, n);\n  else { const n = gl.getProgramParameter(P.p, gl.ACTIVE_UNIFORMS); for (let i = 0; i < n; i++) { const info = gl.getActiveUniform(P.p, i); u[info.name.replace(/\\[0\\]$/, '')] = gl.getUniformLocation(P.p, info.name); } }\n  P.u = u; return true;\n}");
+src = sub(src, `GL = { half: !!gl.getExtension('EXT_color_buffer_float'), vao: gl.createVertexArray(), pMain: program(FS_MAIN), pBlur: program(FS_BLUR), pComp: program(FS_COMP), lut: newTex(), ACC: null, layers: new Map() };`, `GL = { par: gl.getExtension('KHR_parallel_shader_compile'), half: !!gl.getExtension('EXT_color_buffer_float'), vao: gl.createVertexArray(), pMain: __d3d && GPU_SPEC && gl.getExtension('KHR_parallel_shader_compile') ? grStandIn(FS_MAIN) : program(FS_MAIN), pBlur: program(FS_BLUR), pComp: program(FS_COMP), pCompAE: program(FS_COMP_AE), pLayer: program(FS_LAYER), pFill: program(FS_FILL), lut: newTex(), ACC: null, layers: new Map() };`);
 src = sub(src, `const pr = GL.pLayer || (GL.pLayer = program(FS_LAYER)),`, `const pr = GL.pLayer,`);
 src = sub(src, `const F = GL.pFill || (GL.pFill = program(FS_FILL));`, `const F = GL.pFill;`);
 src = sub(src, `use(ag ? (GL.pCompAE || (GL.pCompAE = program(FS_COMP_AE))) : GL.pComp);`, `use(ag && progReady(GL.pCompAE) ? GL.pCompAE : GL.pComp);`);
@@ -155,19 +155,54 @@ src = sub(src, `function render() {
 // over a second on a mid-range Android phone), so there the general program draws throughout
 src = sub(src, `function grSpec(pr) {   // -> the program to draw the main pass with (pr itself until the copy for these switches is ready)
   if (!GPU_SPEC) return pr;`, `function grSpec(pr) {   // -> the program to draw the main pass with (pr itself until the copy for these switches is ready)
-  if (!GPU_SPEC || !GL.par || __d3d) return pr;`);
+  if (!pr.standIn && (!GPU_SPEC || !GL.par || __d3d)) return pr;`);
 src = sub(src, `Q = { p, vs, fs, ready: false, bad: false };`, `Q = { p, vs, fs, ready: false, bad: false, t0: performance.now() };`);
-src = sub(src, `    if (S.ext && !gl.getProgramParameter(Q.p, S.ext.COMPLETION_STATUS_KHR)) { GR_STAT.waits = (GR_STAT.waits || 0) + 1; return pr; }`, `    if (S.ext && !gl.getProgramParameter(Q.p, S.ext.COMPLETION_STATUS_KHR)) { GR_STAT.waits = (GR_STAT.waits || 0) + 1; return pr; }
+src = sub(src, `    if (S.ext && !gl.getProgramParameter(Q.p, S.ext.COMPLETION_STATUS_KHR)) { GR_STAT.waits = (GR_STAT.waits || 0) + 1; return pr; }`, `    if (S.ext && !gl.getProgramParameter(Q.p, S.ext.COMPLETION_STATUS_KHR)) { GR_STAT.waits = (GR_STAT.waits || 0) + 1; return pr.standIn ? grRescue(pr, false) : pr; }
     if (!S.ext && performance.now() - Q.t0 < LINK_WAIT_MS) { GR_STAT.waits = (GR_STAT.waits || 0) + 1; return pr; }   // Blade: asked once the driver has had time`);
+// Direct3D (ANGLE on Windows): the general main pass takes ~50 s to compile on a GTX 1650 laptop, and a copy of it with its switches
+// written in (grSpec) 0.1-0.7 s (the device test's shader lab). There the general one is never compiled: a stand-in with its uniforms'
+// names takes its place (grStandIn), each frame's settings are recorded by name and drawn with the copy for its switches, and a frame
+// whose copy isn't compiled yet is dropped before anything reaches the canvas (GR_MISS: the last frame, or the still, stays on). A
+// copy that fails to compile falls back to the general one with its loops kept as loops (grLoops: ~11 s there), compiled only then
+src = sub(src, `    if (!gl.getProgramParameter(Q.p, gl.LINK_STATUS)) { Q.bad = true; console.warn('spec main pass:', gl.getShaderInfoLog(Q.fs) || gl.getProgramInfoLog(Q.p)); return pr; }`, `    if (!gl.getProgramParameter(Q.p, gl.LINK_STATUS)) { Q.bad = true; console.warn('spec main pass:', gl.getShaderInfoLog(Q.fs) || gl.getProgramInfoLog(Q.p)); return pr.standIn ? grRescue(pr, true) : pr; }`);
+src = sub(src, `  if (Q.bad) return pr;
+  gl.useProgram(Q.p);`, `  if (Q.bad) return pr.standIn ? grRescue(pr, true) : pr;
+  gl.useProgram(Q.p);`);
+src = sub(src, `gl[n] = (L, ...a) => { if (GR_REC.on) GR_REC.calls.push([n, L, a]); return f(L, ...a); };`, `gl[n] = (L, ...a) => { if (GR_REC.on) GR_REC.calls.push([n, L, a]); return L && L.standIn ? undefined : f(L, ...a); };`);
+src = sub(src, `const GR_SW = /^u(`, String.raw`const GR_MISS = { miss: true };   // Blade: thrown by grSpec: this frame is dropped (render)
+function grStandIn(fs) {   // Blade: the general main pass's uniforms by name, nothing compiled (Direct3D: its frames go to the copies)
+  const u = {};
+  for (const m of fs.matchAll(/^uniform\s+(?:(?:lowp|mediump|highp)\s+)?\w+\s+([^;]+);/gm)) for (const d of m[1].split(',')) { const n = d.trim().replace(/\[.*$/, ''); if (n) u[n] = { standIn: n }; }
+  return { p: null, u, standIn: true };
+}
+const grLoops = fs => fs.replace(/^(precision highp int;)$/m, '$1\nuniform int uLoop0;').replace(/for \(int (\w+) = (\d+); \1 < (\d+); \1\+\+\)/g, 'for (int $1 = $2; $1 < $3 + uLoop0; $1++)').replace(/for \(int (\w+) = (\d+); \1 >= 0; \1--\)/g, 'for (int $1 = $2 + uLoop0; $1 >= 0; $1--)');   // Blade: loop counts the compiler can't know (uLoop0 is 0), so Direct3D's keeps them as loops instead of unrolling them
+function grRescue(pr, start) {   // Blade: no copy to draw with (compiling, or failed): the general one with its loops kept, once it's ready; till then the frame is dropped
+  if (start && !GL.pMainLoops) GL.pMainLoops = program(grLoops(FS_MAIN));
+  const R = GL.pMainLoops;
+  if (!R || !progReady(R)) { GR_STAT.misses = (GR_STAT.misses || 0) + 1; throw GR_MISS; }
+  gl.useProgram(R.p);
+  for (const [n, L, a] of GR_REC.calls) { const k = GL.spec.names.get(L), M = k && R.u[k]; if (M) gl[n](M, ...a); }
+  return R;
+}
+const GR_SW = /^u(`);
+src = sub(src, `function render() {
+  if (!gl || glLost) return;
+  if (!(progReady(GL.pMain)`, `function render() {   // Blade: a frame whose main-pass copy isn't compiled yet (Direct3D, grSpec) is dropped whole, and tried again next frame
+  try { renderFrame(); } catch (e) {
+    if (e !== GR_MISS) throw e;
+    if (!GL.wait) GL.wait = requestAnimationFrame(() => { GL.wait = 0; if (!__dead) { try { render(); } catch (e) { console.error(e); } } });
+  }
+}
+function renderFrame() {
+  if (!gl || glLost) return;
+  if (!(progReady(GL.pMain)`);
 // the GPU raster's programs (grState) are made with the others as the context starts, not at its first shape: made then, a phone
 // that can't compile in the background waited for them a second time, rastering the shapes on the CPU meanwhile
 src = sub(src, `  gl.bindVertexArray(GL.vao);
   lutSig = '';`, `  gl.bindVertexArray(GL.vao);
   if (GPU_RASTER) grState();   // Blade: compiled with the rest, from the start
   lutSig = '';`);
-// Direct3D (ANGLE on Windows): its shader compiler optimises the main pass's ~1000 lines for tens of seconds, during which nothing
-// draws (the review's blank first load on a GTX 1650 Ti laptop). There, the fragment shaders ask it to skip that pass (the GPU's
-// driver still optimises what it gets): linkLater adds '#pragma optimize(off)'
+// Direct3D (ANGLE on Windows): told apart by the GPU's name (__d3d), for its main pass (grStandIn, above)
 src = sub(src, `  if (!gl) return false;
   GL = {`, `  if (!gl) return false;
   { const i = gl.getExtension('WEBGL_debug_renderer_info'); __d3d = /Direct3D|D3D1[01]/i.test(i ? String(gl.getParameter(i.UNMASKED_RENDERER_WEBGL)) : ''); }
