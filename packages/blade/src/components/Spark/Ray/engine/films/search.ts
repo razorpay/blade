@@ -148,12 +148,10 @@ const rayCv = document.getElementById('ray'), lensCv = document.getElementById('
 const ctx = rayCv.getContext('2d'), gctx = glassCv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d'), src = document.createElement('canvas'), sctx = src.getContext('2d');
 const gl = lensCv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
 // (Blade's PR review, 2026-11-04: with no WebGL, or a shader that won't compile, the lens is skipped; the ring and the 2D frame still draw)
-const LENS = (() => { try {
-  if (!gl) return null;
-  const sh = (type, s) => { const o = gl.createShader(type); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(o)); return o; };
-  const pr = gl.createProgram();
-  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'attribute vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }'));
-  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, `precision highp float;
+// Its program is built off the page's thread where the browser can (KHR_parallel_shader_compile): Blade's device test saw Windows'
+// Direct3D build it in one 63–111 ms task as the pointer neared a button. The rest of the lens is made once the browser says it's
+// built (asked every 16 ms, which never waits); a lens needed before then waits for it, as it always did. Without it, made at once.
+const LENS_FRAG = `precision highp float;
 uniform sampler2D uTex; uniform vec4 uSrc; uniform vec2 uC, uCanvas; uniform float uR, uMag, uBarrel, uCA, uTint, uRim, uFres, uGlint; uniform vec3 uTintC;
 vec3 at(vec2 p) { return texture2D(uTex, clamp((p - uSrc.xy) / uSrc.zw, 0.0, 1.0)).rgb; }
 void main() {
@@ -166,17 +164,35 @@ void main() {
   col += uFres * pow(r, 7.0);
   vec2 g = d - vec2(-0.36, -0.42); col += uGlint * exp(-dot(g, g * vec2(1.0, 2.2)) / 0.035) * (1.0 - smoothstep(0.85, 1.0, r));   // the window's glint, top left
   gl_FragColor = vec4(min(col, 1.0) * aa, aa);
-}`));
-  gl.linkProgram(pr); gl.useProgram(pr);
-  const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-  for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
-  const U = n => gl.getUniformLocation(pr, n);
-  return { U, uni: Object.fromEntries(['uTex', 'uSrc', 'uC', 'uCanvas', 'uR', 'uMag', 'uBarrel', 'uCA', 'uTint', 'uRim', 'uFres', 'uGlint', 'uTintC'].map(n => [n, U(n)])) };
-} catch (e) { return null; } })();
+}`;
+const PAR = gl && gl.getExtension('KHR_parallel_shader_compile');
+let LENS = null, lensJob = null;
+try {
+  if (gl) {
+    const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
+    const pr = gl.createProgram(), vs = sh(gl.VERTEX_SHADER, 'attribute vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }'), fs = sh(gl.FRAGMENT_SHADER, LENS_FRAG);
+    gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+    lensJob = { pr, vs, fs };
+  }
+} catch (e) { lensJob = null; }
+function lensMade() {   // its program's built: checked, and the rest of the lens made (none if it won't compile)
+  const { pr, vs, fs } = lensJob; lensJob = null;
+  try {
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) throw new Error(gl.getShaderInfoLog(vs) || gl.getShaderInfoLog(fs) || gl.getProgramInfoLog(pr));
+    gl.useProgram(pr);
+    const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+    for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+    const U = n => gl.getUniformLocation(pr, n);
+    LENS = { U, uni: Object.fromEntries(['uTex', 'uSrc', 'uC', 'uCanvas', 'uR', 'uMag', 'uBarrel', 'uCA', 'uTint', 'uRim', 'uFres', 'uGlint', 'uTintC'].map(n => [n, U(n)])) };
+  } catch (e) { LENS = null; }
+}
+(function lensPoll() { if (!lensJob) return; if (!PAR || gl.isContextLost() || gl.getProgramParameter(lensJob.pr, PAR.COMPLETION_STATUS_KHR)) lensMade(); else setTimeout(lensPoll, 16); })();
 function drawLens(cx, cy, R) {   // canvas px: the lens's middle and radius
-  if (!gl || !LENS) return;
+  if (!gl) return;
+  if (lensJob && R >= 2) lensMade();   // needed before the browser said it's built: waited for, as it always was
+  if (!LENS) return;
   gl.viewport(0, 0, lensCv.width, lensCv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); if (R < 2) return;
   const half = Math.ceil(R * 1.7), x0 = Math.round(cx - half), y0 = Math.round(cy - half), N = 2 * half;   // what's behind it (and round it, for the rim's bend)
   if (src.width !== N) { src.width = N; src.height = N; } if (EMBED) { sctx.fillStyle = mode === 'dark' ? '#131315' : '#FDFDFD'; sctx.fillRect(0, 0, N, N); } else sctx.clearRect(0, 0, N, N); sctx.drawImage(rayCv, x0, y0, N, N, 0, 0, N, N);   // embedded the page is see-through: the films page's colour under it
