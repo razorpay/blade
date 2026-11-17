@@ -74,6 +74,17 @@ describe('<ChartFunnelWrapper />', () => {
     ).toThrow('ChartFunnelWrapper needs one ChartFunnel child');
   });
 
+  it('should throw when dataKey or nameKey is not in the data', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    expect(() =>
+      renderWithTheme(
+        <ChartFunnelWrapper data={steps}>
+          <ChartFunnel dataKey="count" nameKey="stage" />
+        </ChartFunnelWrapper>,
+      ),
+    ).toThrow('nameKey "stage"');
+  });
+
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Funnel />);
     await assertAccessible(container);
