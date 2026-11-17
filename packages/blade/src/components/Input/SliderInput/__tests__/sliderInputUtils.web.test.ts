@@ -108,6 +108,24 @@ describe('SliderInput utils', () => {
       expect(spaced[spaced.length - 1]).toBe(100);
     });
 
+    it('should measure the end label itself rather than the widest label on the scale', () => {
+      // "0" is one character and "100" is three, so at 240px the narrow start still clears its
+      // neighbour while the wide end has to drop one.
+      const values = getMarkerValues({ min: 0, max: 100, step: 10 });
+      const spaced = getSpacedScaleValues({
+        values,
+        trackWidth: 240,
+        widestLabelWidth: 16.8,
+        endLabelWidths: { min: 5.6, max: 16.8 },
+        range: { min: 0, max: 100, step: 10 },
+      });
+
+      expect(spaced).toContain(10);
+      expect(spaced).not.toContain(90);
+      expect(spaced[0]).toBe(0);
+      expect(spaced[spaced.length - 1]).toBe(100);
+    });
+
     it('should show everything while the track is unmeasured', () => {
       expect(getVisibility({ trackWidth: 0, markerCount: 50, widestLabelWidth: 20 })).toEqual({
         canShowMarkers: true,

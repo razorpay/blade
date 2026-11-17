@@ -133,14 +133,13 @@ const getScaleLabelPosition = (
   return { insetInlineStart: getOffsetExpression(ratio), transform: getCenteringTransform(isRTL) };
 };
 
+/** Predicted width of one label, without measuring, so SSR and client agree. */
+const getLabelWidth = (value: number, formatValue?: (value: number) => string): number =>
+  (formatValue ? formatValue(value) : String(value)).length * SLIDER_SCALE_CHAR_WIDTH;
+
 /** Predicted width of the widest label, without measuring, so SSR and client agree. */
-const getWidestLabelWidth = (values: number[], formatValue?: (value: number) => string): number => {
-  const longest = values.reduce((widest, value) => {
-    const length = (formatValue ? formatValue(value) : String(value)).length;
-    return Math.max(widest, length);
-  }, 0);
-  return longest * SLIDER_SCALE_CHAR_WIDTH;
-};
+const getWidestLabelWidth = (values: number[], formatValue?: (value: number) => string): number =>
+  values.reduce((widest, value) => Math.max(widest, getLabelWidth(value, formatValue)), 0);
 
 /** Centre-to-centre distance between adjacent markers at a given track width. */
 const getPitch = (trackWidth: number, markerCount: number): number => {
@@ -181,16 +180,24 @@ const getVisibility = ({
  *
  * `min` and `max` are always kept, since they are the bounds the scale exists to communicate.
  * A label colliding with `max` is dropped in favour of `max` rather than the other way round.
+ *
+ * An end label grows inward by its own width, so the clear space its neighbour needs is that
+ * width plus half the neighbour's own, not the widest label on the scale. Measuring the end
+ * label keeps a narrow `0` from evicting its neighbour just because a long `100` sits at the
+ * other end of the same scale.
  */
 const getSpacedScaleValues = ({
   values,
   trackWidth,
   widestLabelWidth,
+  endLabelWidths,
   range,
 }: {
   values: number[];
   trackWidth: number;
   widestLabelWidth: number;
+  /** Widths of the `min` and `max` labels, which anchor inward instead of centring. */
+  endLabelWidths?: { min: number; max: number };
   range: ValueRange;
 }): number[] => {
   // Unmeasured, which is the SSR and first-paint case: show everything and let the first
@@ -201,18 +208,21 @@ const getSpacedScaleValues = ({
   if (usable <= 0) return values;
 
   const minGap = widestLabelWidth + SLIDER_SCALE_LABEL_GAP;
-  const endGap = widestLabelWidth * 1.5 + SLIDER_SCALE_LABEL_GAP;
+  const endGap = (endWidth: number): number =>
+    endWidth + widestLabelWidth / 2 + SLIDER_SCALE_LABEL_GAP;
+  const startGap = endGap(endLabelWidths?.min ?? widestLabelWidth);
+  const finishGap = endGap(endLabelWidths?.max ?? widestLabelWidth);
   const positionOf = (target: number): number => getValueRatio(target, range) * usable;
   const lastKept = (kept: number[]): number => positionOf(kept[kept.length - 1]);
 
   const kept = [values[0]];
   for (let index = 1; index < values.length - 1; index++) {
-    const gap = kept.length === 1 ? endGap : minGap;
+    const gap = kept.length === 1 ? startGap : minGap;
     if (positionOf(values[index]) - lastKept(kept) >= gap) kept.push(values[index]);
   }
 
   const last = values[values.length - 1];
-  while (kept.length > 1 && positionOf(last) - lastKept(kept) < endGap) kept.pop();
+  while (kept.length > 1 && positionOf(last) - lastKept(kept) < finishGap) kept.pop();
   kept.push(last);
 
   return kept;
@@ -272,6 +282,7 @@ export {
   getCenteringTransform,
   getScaleLabelPosition,
   getMarkerMaskImage,
+  getLabelWidth,
   getWidestLabelWidth,
   getPitch,
   getVisibility,

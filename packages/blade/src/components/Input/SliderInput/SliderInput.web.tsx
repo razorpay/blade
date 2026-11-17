@@ -21,6 +21,7 @@ import {
 import {
   getCenteringTransform,
   getScaleLabelPosition,
+  getLabelWidth,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
@@ -246,9 +247,18 @@ const _SliderInput = (
   const scaleValues = React.useMemo(
     () =>
       showScaleValues
-        ? getSpacedScaleValues({ values: markerValues, trackWidth, widestLabelWidth, range })
+        ? getSpacedScaleValues({
+            values: markerValues,
+            trackWidth,
+            widestLabelWidth,
+            endLabelWidths: {
+              min: getLabelWidth(min, formatValue),
+              max: getLabelWidth(max, formatValue),
+            },
+            range,
+          })
         : [min, max],
-    [showScaleValues, markerValues, trackWidth, widestLabelWidth, range, min, max],
+    [showScaleValues, markerValues, trackWidth, widestLabelWidth, formatValue, range, min, max],
   );
 
   const centeringTransform = getCenteringTransform(isRTL);
@@ -304,13 +314,14 @@ const _SliderInput = (
           flex="1"
           // Labels only widen the floor when they are actually on screen.
           minWidth={makeSize(
-            getMinTrackWidth(
-              // Only the two bounds get a label when `showScaleValues` is off, and both are
-              // anchored inward, so the floor has to fit them side by side. Markers still need
-              // their own pitch when the scale is off entirely.
-              showScale && !showScaleValues ? 2 : markerValues.length,
-              showScale ? widestLabelWidth : 0,
-            ),
+            showScale && !showScaleValues
+              ? // Only the two bounds get a label here and both anchor inward, so they need room
+                // side by side. Markers still need their own pitch, so take whichever is wider.
+                Math.max(
+                  getMinTrackWidth(markerValues.length, 0),
+                  getMinTrackWidth(2, widestLabelWidth),
+                )
+              : getMinTrackWidth(markerValues.length, showScale ? widestLabelWidth : 0),
           )}
         >
           <FieldBox $hasScale={shouldShowScale}>
