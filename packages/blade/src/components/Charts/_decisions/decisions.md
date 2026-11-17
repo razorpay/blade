@@ -791,12 +791,12 @@ The wrapper maps each row to the three keys Recharts needs (name, count and labe
 
 #### `ChartFunnelWrapper` Props
 
-| Prop          | Type                                    | Required | Default | Description                                                       |
-| ------------- | --------------------------------------- | -------- | ------- | ----------------------------------------------------------------- |
-| `data`        | `{ [key: string]: string \| number }[]` | ✅       | —       | One row per step, in funnel order                                 |
-| `children`    | `React.ReactNode`                       | ✅       | —       | One `<ChartFunnel>`, plus an optional `<ChartTooltip>`            |
-| `testID`      | `string`                                | ❌       | —       | `data-testid` for the wrapper element                             |
-| `...BoxProps` | `BoxProps`                              | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart |
+| Prop          | Type                                                         | Required | Default | Description                                                       |
+| ------------- | ------------------------------------------------------------ | -------- | ------- | ----------------------------------------------------------------- |
+| `data`        | `{ [key: string]: string \| number \| null \| undefined }[]` | ✅       | —       | One row per step, in funnel order                                 |
+| `children`    | `React.ReactNode`                                            | ✅       | —       | One `<ChartFunnel>`, plus an optional `<ChartTooltip>`            |
+| `testID`      | `string`                                                     | ❌       | —       | `data-testid` for the wrapper element                             |
+| `...BoxProps` | `BoxProps`                                                   | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart |
 
 #### `ChartFunnel` Props
 

@@ -16,7 +16,7 @@ FunnelChart shows how many reach each step of a sequence. It wraps Recharts' Fun
 - `color` accepts only categorical color tokens. Hover uses a darker step of the same color
 - The tooltip shows the raw count and works on hover only. Recharts' funnel has no keyboard tooltip
 - Each step is an `img` named with its label and count, so screen readers can read the steps
-- `ChartFunnelWrapper` throws if it has no `ChartFunnel` child, or if `dataKey` or `nameKey` is not a key of the data rows
+- `ChartFunnelWrapper` throws unless it has exactly one `ChartFunnel` child, or if `dataKey` or `nameKey` is not a key of the data rows
 - Web only. On React Native the wrapper throws an error
 
 ## TypeScript Types
@@ -24,7 +24,7 @@ FunnelChart shows how many reach each step of a sequence. It wraps Recharts' Fun
 ```typescript
 type ChartFunnelWrapperProps = {
   /** One row per step, in funnel order */
-  data: { [key: string]: string | number }[];
+  data: { [key: string]: string | number | null | undefined }[];
   /** One `<ChartFunnel>`, plus an optional `<ChartTooltip>` */
   children: React.ReactNode;
 } & BoxProps &
@@ -52,7 +52,7 @@ type ChartFunnelProps = {
 - Use FunnelChart for an ordered sequence where each step is a subset of the one before, like checkout, onboarding or a support flow
 - Use BarChart when the categories are not a sequence, and SankeyChart when the flow branches
 - Give the wrapper a parent with a fixed height
-- Leave room on the right for the step labels; the funnel takes the left 60% of the chart
+- Leave room on the right for the step labels; the funnel takes the left 60% of the chart. Below about 480px wide, long step names wrap
 
 ## Examples
 

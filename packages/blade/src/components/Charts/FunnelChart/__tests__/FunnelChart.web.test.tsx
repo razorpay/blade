@@ -71,7 +71,19 @@ describe('<ChartFunnelWrapper />', () => {
           <ChartTooltip />
         </ChartFunnelWrapper>,
       ),
-    ).toThrow('ChartFunnelWrapper needs one ChartFunnel child');
+    ).toThrow('ChartFunnelWrapper needs exactly one ChartFunnel child');
+  });
+
+  it('should throw with two ChartFunnel children', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    expect(() =>
+      renderWithTheme(
+        <ChartFunnelWrapper data={steps}>
+          <ChartFunnel dataKey="count" nameKey="step" />
+          <ChartFunnel dataKey="count" nameKey="step" />
+        </ChartFunnelWrapper>,
+      ),
+    ).toThrow('exactly one ChartFunnel');
   });
 
   it('should throw when dataKey or nameKey is not in the data', () => {

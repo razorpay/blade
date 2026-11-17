@@ -95,13 +95,14 @@ const ChartFunnelWrapper = ({
   testID,
   ...restProps
 }: ChartFunnelWrapperProps): JSX.Element => {
-  const funnel = React.Children.toArray(children).find(
+  const funnels = React.Children.toArray(children).filter(
     (child): child is React.ReactElement<ChartFunnelProps> =>
       React.isValidElement(child) && getComponentId(child) === componentIds.chartFunnel,
   );
-  if (!funnel) {
+  const [funnel] = funnels;
+  if (funnels.length !== 1) {
     throwBladeError({
-      message: 'ChartFunnelWrapper needs one ChartFunnel child',
+      message: 'ChartFunnelWrapper needs exactly one ChartFunnel child',
       moduleName: 'ChartFunnelWrapper',
     });
   }

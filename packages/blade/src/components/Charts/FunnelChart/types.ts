@@ -3,7 +3,7 @@ import type { BoxProps } from '~components/Box';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type data = {
-  [key: string]: string | number;
+  [key: string]: string | number | null | undefined;
 };
 
 type ChartFunnelProps = {

@@ -132,7 +132,7 @@ export const CustomColor: StoryFn<typeof ChartFunnel> = () => (
 );
 
 export const Compact: StoryFn<typeof ChartFunnel> = () => (
-  <Box width="360px" height="160px">
+  <Box width="480px" height="160px">
     <ChartFunnelWrapper data={abandonedCartSteps}>
       <ChartTooltip />
       <ChartFunnel dataKey="count" nameKey="step" />
