@@ -158,6 +158,57 @@ TestRayHopsOffAndBack.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
 };
 
+// A film loaded ahead (here the answer's next, Calling) draws one frame unseen, then sleeps: its first frame's one-off work (its
+// canvases' first draws, a WebGL shader built on Windows' Direct3D) is done while it waits, not in the frame it takes him in
+export const TestRayRehearsesAFilmLoadedAhead: StoryFn<typeof Ray> = () => (
+  <Box padding="spacing.11" paddingTop="200px">
+    <Ray state="searching" idle="rest" />
+  </Box>
+);
+TestRayRehearsesAFilmLoadedAhead.play = async () => {
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  const next = (): any => rayEl().__ray.films.calling;
+  await waitFor(() => expect(next()?.ready).toBe(true), { timeout: 5000 });
+  await waitFor(() => expect(next().host.rehearsed).toBe(true), { timeout: 3000 }); // its one frame
+  expect(next().host.parked).toBe(true); // asleep after it (its canvases emptied)
+  for (let i = 0; i < 10; i++) {
+    expect(next().host.layer.style.visibility).toBe('hidden'); // never seen
+    expect(doing()).toBe('film:search');
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(50);
+  }
+};
+
+// A film still loading doesn't hold him up: hidden while his idle's film loads (on a slow connection), he hops off at once, not
+// once it's loaded or given up on (the PR review)
+export const TestRayDoesntWaitForAFilm: StoryFn<typeof Ray> = () => {
+  const [idle, setIdle] = useState<'rest' | 'coffee'>('rest');
+  const [isVisible, setIsVisible] = useState(true);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle={idle} isVisible={isVisible} />
+      <Button onClick={() => setIdle('coffee')}>Coffee</Button>
+      <Button onClick={() => setIsVisible(false)}>Hide</Button>
+    </Box>
+  );
+};
+TestRayDoesntWaitForAFilm.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  rayEl().__ray.loading.coffee = new Promise(() => undefined); // (Coffee's chunk never comes)
+  await userEvent.click(getByRole('button', { name: 'Coffee' }));
+  await waitFor(() => expect(doing()).toBe('film:coffee'), { timeout: 3000 });
+  expect(rayEl().__ray.debug.holder.started).toBe(false);
+  await userEvent.click(getByRole('button', { name: 'Hide' }));
+  await waitFor(() => expect(['hiding', 'gone']).toContain(doing()), { timeout: 1000 });
+};
+
 // The answer's states, each handing over to the next, then done: the last one's exit, and he's back at rest
 export const TestRayAnswerStates: StoryFn<typeof Ray> = () => {
   const [state, setState] = useState<RayState>('idle');
@@ -249,6 +300,92 @@ export const TestRaySleepCycle: StoryFn<typeof Ray> = () => (
 TestRaySleepCycle.play = async () => {
   await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('asleep'), { timeout: 3000 });
   await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('awake'), { timeout: 14000 });
+};
+
+// Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,
+// is drawn once more on its whole stage at the same moment, where nothing may fall outside the part its canvases cover. A film retuned
+// in Ray Studio to reach further fails here rather than being cut off (the performance review, 2026-11-16)
+const CROP_FILMS: { id: string; state?: RayState; idle?: 'coffee' | 'cash' | 'reading' }[] = [
+  { id: 'search', state: 'searching' },
+  { id: 'calling', state: 'calling' },
+  { id: 'writing', state: 'writing' },
+  { id: 'laptop2', state: 'working' },
+  { id: 'coffee', idle: 'coffee' },
+  { id: 'cash', idle: 'cash' },
+  { id: 'readbox', idle: 'reading' },
+];
+export const TestRayFilmsStayInTheirCrop: StoryFn<typeof Ray> = () => (
+  <Box display="flex" flexWrap="wrap" gap="spacing.4" padding="spacing.11" paddingTop="200px">
+    {CROP_FILMS.map(({ id, state, idle }) =>
+      state ? (
+        <Box key={id} width="300px" height="160px" display="flex" alignItems="flex-end">
+          <Ray state={state} idle="rest" shouldReactToPointer={false} />
+        </Box>
+      ) : (
+        <Box key={id} width="300px" height="160px" display="flex" alignItems="flex-end">
+          <Ray idle={idle} />
+        </Box>
+      ),
+    )}
+  </Box>
+);
+// the ink one film draws outside its crop at one moment: drawn again on its whole stage, then put back
+const inkOutsideCrop = (r: any, id: string, now: number): number => {
+  const host = r.films[id].host;
+  const crop = r.filmCrop(id);
+  host.setCrop(crop);
+  const K = host.part();
+  host.setCrop(null);
+  host.tick(now);
+  host.tick(now);
+  let outside = 0;
+  host.layer.querySelectorAll('canvas').forEach((c: HTMLCanvasElement) => {
+    if (!c.getContext('2d') || !c.width || !c.height) return; // (Searching's lens is WebGL, inside its glass)
+    const copy = document.createElement('canvas');
+    copy.width = c.width;
+    copy.height = c.height;
+    const x = copy.getContext('2d', { willReadFrequently: true })!;
+    x.drawImage(c, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height).data;
+    for (let y = 0; y < c.height; y++)
+      for (let i = 0; i < c.width; i++) {
+        const inside = i >= K.x && y >= K.y && i < K.x + K.w && y < K.y + K.h;
+        if (!inside && d[(y * c.width + i) * 4 + 3] > 2) outside++;
+      }
+  });
+  host.setCrop(crop);
+  host.tick(now);
+  return outside;
+};
+TestRayFilmsStayInTheirCrop.play = async () => {
+  const rays = (): any[] => CROP_FILMS.map((_, i) => rayEl(i).__ray);
+  await waitFor(
+    () =>
+      CROP_FILMS.forEach(({ id }, i) => {
+        const h = rayEl(i)?.__ray?.debug.holder;
+        expect(h && h.by === 'film' && h.id === id && h.started).toBe(true);
+      }),
+    { timeout: 15000 },
+  );
+  for (let i = 4; i < CROP_FILMS.length; i++) {
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.click(rayEl(i)); // the idle films' coin flips
+  }
+  const worst: Record<string, number> = {};
+  for (let sample = 0; sample < 10; sample++) {
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(350); // (samples a few times a second, one after another)
+    const C = rays()[0].constructor;
+    const loop = C.onFrame;
+    C.onFrame = (): void => undefined; // (his loop held: each film is drawn at one moment, both ways)
+    const now = performance.now();
+    CROP_FILMS.forEach(({ id }, i) => {
+      worst[id] = Math.max(worst[id] ?? 0, inkOutsideCrop(rays()[i], id, now));
+    });
+    C.onFrame = loop;
+    rays().forEach((r) => C.book(r));
+  }
+  await expect(worst).toEqual(Object.fromEntries(CROP_FILMS.map(({ id }) => [id, 0])));
 };
 
 export default {
