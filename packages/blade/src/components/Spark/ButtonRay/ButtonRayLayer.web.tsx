@@ -3,6 +3,7 @@ import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
 import { Ray } from '../Ray';
 import { RAY_BOX } from '../Ray/rayBox';
+import { loadRay } from '../Ray/loadRay';
 import type { RayState } from '../Ray/types';
 import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot } from '../useLazyLayer/hoverSlots';
@@ -604,6 +605,8 @@ const ButtonRayLayer = ({
       }, 0);
     };
 
+    // Ray's code and his film's too, while the page is idle (nothing made): he starts at once as the pointer nears, not as it hovers
+    loadRay(INV.state).catch(() => undefined);
     // the strip's comp and the engine's code loaded now (no canvas yet): ready for the pointer
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
