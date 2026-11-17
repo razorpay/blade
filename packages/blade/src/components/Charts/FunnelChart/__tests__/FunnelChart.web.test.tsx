@@ -81,4 +81,39 @@ describe('<ChartFunnelWrapper />', () => {
     const { container } = renderWithTheme(<Funnel />);
     await assertAccessible(container);
   });
+
+  it('should grow the axis when a step is larger than the first', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <ChartFunnelWrapper
+        data={[
+          { step: 'A', count: 10 },
+          { step: 'B', count: 20 },
+        ]}
+      >
+        <ChartXAxis dataKey="step" />
+        <ChartYAxis />
+        <ChartFunnel dataKey="count" />
+      </ChartFunnelWrapper>,
+    );
+    expect(getByText('200%')).toBeInTheDocument();
+    expect(queryByText('25%')).not.toBeInTheDocument();
+  });
+
+  it('should use custom labels and value format in the tooltip', () => {
+    const { getByText } = renderWithTheme(
+      <ChartFunnelWrapper data={steps}>
+        <ChartXAxis dataKey="step" />
+        <ChartTooltip defaultIndex={1} />
+        <ChartFunnel
+          dataKey="count"
+          name="Converted"
+          droppedName="Lost"
+          formatValue={(value) => `${value} carts`}
+        />
+      </ChartFunnelWrapper>,
+    );
+    expect(getByText('Converted')).toBeInTheDocument();
+    expect(getByText('Lost')).toBeInTheDocument();
+    expect(getByText('19 carts')).toBeInTheDocument();
+  });
 });

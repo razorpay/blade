@@ -11,6 +11,7 @@ FunnelChart shows how many reach each step of a sequence and how many drop off b
 - `ChartFunnelWrapper` must contain exactly one `ChartFunnel`
 - `data` is one row per step, in funnel order. `ChartFunnel`'s `dataKey` names the count in each row and `ChartXAxis`'s `dataKey` names the step label
 - Counts that are missing, negative or not numbers are treated as 0
+- If the first step is 0, every column is drawn at 0%. The tooltip still shows the counts
 - The y-axis always runs from 0% to the first step. If a later step is larger than the first, the axis grows to fit it
 - `ChartYAxis` gets a percentage domain, ticks and formatter by default. Props passed to it override them
 - `ChartTooltip` gets the funnel tooltip by default. A `content` prop passed to it overrides it

@@ -69,4 +69,12 @@ describe('getFunnelSteps', () => {
     expect(formatPercent(9.94)).toBe('9.9%');
     expect(formatPercent(38.4)).toBe('38%');
   });
+
+  it('should not round a small share to 0% or a near-total share to 100%', () => {
+    const [, second] = stepsOf(10000, 9996);
+    expect(formatPercent(second.droppedPercentOfPrevious!)).toBe('<0.1%');
+    expect(formatPercent(second.reachedPercentOfPrevious!)).toBe('>99%');
+    expect(formatPercent(0)).toBe('0%');
+    expect(formatPercent(100)).toBe('100%');
+  });
 });

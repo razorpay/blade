@@ -34,8 +34,11 @@ const getFunnelSteps = (data: Record<string, unknown>[], dataKey: string): Funne
   });
 };
 
-const formatPercent = (percent: number): string =>
-  `${percent < 10 ? Number(percent.toFixed(1)) : Math.round(percent)}%`;
+const formatPercent = (percent: number): string => {
+  if (percent > 0 && percent < 0.1) return '<0.1%';
+  if (percent > 99.5 && percent < 100) return '>99%';
+  return `${percent < 10 ? Number(percent.toFixed(1)) : Math.round(percent)}%`;
+};
 
 const countFormat = new Intl.NumberFormat('en-IN');
 

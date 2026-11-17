@@ -295,7 +295,7 @@ const percentTick = (value: number): string => `${value}%`;
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-charts-funnelchart FunnelChart Documentation}
  */
 const ChartFunnelWrapper = ({
-  data = [],
+  data,
   children,
   testID,
   ...restProps
@@ -306,17 +306,24 @@ const ChartFunnelWrapper = ({
       React.isValidElement(child) && getComponentId(child) === componentIds.chartFunnel,
   );
   const funnelProps = funnel?.props;
-  const steps = getFunnelSteps(data, funnelProps?.dataKey ?? '');
-  const rows: FunnelRow[] = data.map((row, index) => ({
-    ...row,
-    [REACHED_KEY]: steps[index].reachedPercentOfFirst,
-    [DROPPED_KEY]: steps[index].droppedPercentOfFirst,
-    [STEP_KEY]: steps[index],
-  }));
-  const top = Math.max(
-    100,
-    ...steps.map((step) => step.reachedPercentOfFirst + step.droppedPercentOfFirst),
-  );
+  const dataKey = funnelProps?.dataKey ?? '';
+  const { rows, top } = React.useMemo(() => {
+    const steps = getFunnelSteps(data, dataKey);
+    return {
+      rows: data.map(
+        (row, index): FunnelRow => ({
+          ...row,
+          [REACHED_KEY]: steps[index].reachedPercentOfFirst,
+          [DROPPED_KEY]: steps[index].droppedPercentOfFirst,
+          [STEP_KEY]: steps[index],
+        }),
+      ),
+      top: Math.max(
+        100,
+        ...steps.map((step) => step.reachedPercentOfFirst + step.droppedPercentOfFirst),
+      ),
+    };
+  }, [data, dataKey]);
   const yAxis: Partial<ChartYAxisProps> = {
     domain: [0, top],
     ticks: top === 100 ? PERCENT_TICKS : undefined,
