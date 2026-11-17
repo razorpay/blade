@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import type { RazorSenseChatBackgroundProps } from './types';
 import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
@@ -6,7 +6,9 @@ import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
+import { RazorSenseChatContext } from '../RazorSenseChat/chatContext';
 import { useTheme } from '~components/BladeProvider';
+import { logger } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -67,6 +69,19 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     forwardedRef,
   ) {
     const { colorScheme } = useTheme();
+    // inside a RazorSenseChat it would draw a second animation over the chat's own: say so in development (a chat's input
+    // takes RazorSenseBottomWave)
+    const isInChat = Boolean(useContext(RazorSenseChatContext));
+    useEffect(() => {
+      if (__DEV__ && isInChat) {
+        logger({
+          type: 'warn',
+          moduleName: 'RazorSenseChatBackground',
+          message:
+            "Inside RazorSenseChat it draws a second animation over the chat's own: for the chat's input, use RazorSenseBottomWave instead.",
+        });
+      }
+    }, [isInChat]);
     const onLoadRef = useRef(onLoad);
     onLoadRef.current = onLoad;
     const onErrorRef = useRef(onError);
