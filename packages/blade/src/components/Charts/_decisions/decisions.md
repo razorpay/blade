@@ -761,16 +761,11 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 <img src="./images/funnel-chart.png" alt="Funnel Chart Design"  height="400" width="600"/>
 
-A funnel shows how many people (or payments, orders, sessions) reach each step of a sequence, and how many drop off between one step and the next. Each step is one column on a shared baseline:
-
-- the **solid** part is who reached the step;
-- the **hatched** part above it, up to the previous step's height, is who dropped since the previous step.
-
-Heights are a percentage of the first step, so the y-axis reads `0%`–`100%`. Hovering a column, or moving to it with the keyboard, darkens it and shows a tooltip with the step's reached and dropped counts and their shares of the previous step.
+A funnel shows how many people (or payments, orders, sessions) reach each step of a sequence. It is a thin Blade wrapper over Recharts' own `FunnelChart` and `Funnel`, the same way `ChartBarWrapper` wraps Recharts' `BarChart`. Each step is a Recharts trapezoid whose width is the step's count against the largest step, narrowing into the next step. Next to each step, a Recharts `LabelList` prints the step name and its share of the first step. Hovering a step darkens it and shows the step's count in `ChartTooltip`.
 
 #### Data shape
 
-One row per step, in funnel order — the same row type `ChartBarWrapper` takes. `ChartFunnel`'s `dataKey` names the count, `ChartXAxis`'s `dataKey` names the step label.
+One row per step, in funnel order, the same row type `ChartBarWrapper` takes. `ChartFunnel`'s `dataKey` names the count and `nameKey` names the step.
 
 ```ts
 type data = { [key: string]: string | number };
@@ -783,116 +778,81 @@ const steps = [
 ];
 ```
 
-How each step is drawn and described:
+The wrapper maps each row to the three keys Recharts needs (name, count and label) before passing them on. Recharts spreads every key of a row over its trapezoid, so a row with keys like `x` or `height` would otherwise move the shapes.
 
-| Case                               | Drawn as                                                           | Tooltip                                      |
-| ---------------------------------- | ------------------------------------------------------------------ | -------------------------------------------- |
-| First step                         | Solid column at 100%                                               | Reached only (there is no previous step)     |
-| Step smaller than the previous one | Solid up to its own share, hatched up to the previous step's share | Reached (share of previous), Dropped (share) |
-| Step equal to the previous one     | Solid column, no hatch                                             | Reached (100%); no Dropped row               |
-| Step larger than the previous one  | Solid column, no hatch                                             | Reached (share above 100%); no Dropped row   |
-| Step larger than the first one     | Solid column above 100%; the y-axis grows to fit                   | As above                                     |
-| 100% drop (count `0`)              | Hatched column only                                                | Reached 0 (0%), Dropped (100%)               |
-| Missing or non-numeric count       | Treated as `0`                                                     | As a `0` count                               |
-| First step is `0`                  | Every column is 0% — there is nothing to be a share of             | Counts only                                  |
-| A single step                      | One solid column at 100%                                           | Reached only                                 |
-| Empty `data`                       | Axes and grid with no columns                                      | —                                            |
-
-A count above zero is never drawn shorter than 2px, so a step that kept a handful out of thousands still shows up.
+| Case                            | Drawn as                                                 |
+| ------------------------------- | -------------------------------------------------------- |
+| Step smaller than the one above | Trapezoid narrowing to the next step                     |
+| Last step                       | Rectangle at its own width (`lastShapeType="rectangle"`) |
+| 100% drop (count `0`)           | No width; its label still shows `0%`                     |
+| Missing or non-numeric count    | Treated as `0`                                           |
+| First step is `0`               | Widths against the largest step; labels show names only  |
+| Every count `0`, or no data     | Nothing drawn                                            |
 
 #### `ChartFunnelWrapper` Props
 
-| Prop          | Type                                    | Required | Default | Description                                                                                       |
-| ------------- | --------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------- |
-| `data`        | `{ [key: string]: string \| number }[]` | ✅       | —       | One row per step, in funnel order                                                                 |
-| `children`    | `React.ReactNode`                       | ✅       | —       | One `<ChartFunnel>`, plus any of `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip` |
-| `testID`      | `string`                                | ❌       | —       | `data-testid` for the wrapper element                                                             |
-| `...BoxProps` | `BoxProps`                              | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart                                 |
+| Prop          | Type                                    | Required | Default | Description                                                       |
+| ------------- | --------------------------------------- | -------- | ------- | ----------------------------------------------------------------- |
+| `data`        | `{ [key: string]: string \| number }[]` | ✅       | —       | One row per step, in funnel order                                 |
+| `children`    | `React.ReactNode`                       | ✅       | —       | One `<ChartFunnel>`, plus an optional `<ChartTooltip>`            |
+| `testID`      | `string`                                | ❌       | —       | `data-testid` for the wrapper element                             |
+| `...BoxProps` | `BoxProps`                              | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart |
 
 #### `ChartFunnel` Props
 
-| Prop          | Type                          | Required | Default                                       | Description                                                                        |
-| ------------- | ----------------------------- | -------- | --------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `dataKey`     | `string`                      | ✅       | —                                             | Key of the count in each row                                                       |
-| `name`        | `string`                      | ❌       | `'Reached'`                                   | Tooltip label of the solid part                                                    |
-| `droppedName` | `string`                      | ❌       | `'Dropped'`                                   | Tooltip label of the hatched part                                                  |
-| `color`       | `ChartsCategoricalColorToken` | ❌       | `'data.background.categorical.blue.moderate'` | Colour of the solid part; the hatch and the hover state use the same colour family |
-| `formatValue` | `(value: number) => string`   | ❌       | Indian digit grouping (`12,34,567`)           | Formats the counts in the tooltip                                                  |
-
-The common components keep their usual props. Inside a funnel, `ChartYAxis` defaults to percentage ticks (`0%`, `25%`, `50%`, `75%`, `100%`) and `ChartTooltip` shows the funnel's own content; both still accept overrides.
+| Prop      | Type                          | Required | Default                                       | Description                                                       |
+| --------- | ----------------------------- | -------- | --------------------------------------------- | ----------------------------------------------------------------- |
+| `dataKey` | `string`                      | ✅       | —                                             | Key of the count in each row                                      |
+| `nameKey` | `string`                      | ❌       | `'name'`                                      | Key of the step name in each row                                  |
+| `color`   | `ChartsCategoricalColorToken` | ❌       | `'data.background.categorical.blue.moderate'` | Colour of the funnel; hover uses a darker step of the same colour |
 
 Example —
 
 ```tsx
-import {
-  ChartFunnelWrapper,
-  ChartFunnel,
-  ChartXAxis,
-  ChartYAxis,
-  ChartCartesianGrid,
-  ChartTooltip,
-} from '@razorpay/blade/components';
+import { ChartFunnelWrapper, ChartFunnel, ChartTooltip } from '@razorpay/blade/components';
 
 <Box height="300px">
   <ChartFunnelWrapper data={steps}>
-    <ChartCartesianGrid />
-    <ChartXAxis dataKey="step" />
-    <ChartYAxis />
     <ChartTooltip />
-    <ChartFunnel dataKey="count" name="Reached" droppedName="Dropped" />
-  </ChartFunnelWrapper>
-</Box>;
-
-// A compact funnel for a card: no axes or grid. The hidden x-axis still names each step in the tooltip.
-<Box height="96px">
-  <ChartFunnelWrapper data={steps}>
-    <ChartXAxis dataKey="step" hide />
-    <ChartTooltip />
-    <ChartFunnel dataKey="count" />
+    <ChartFunnel dataKey="count" nameKey="step" />
   </ChartFunnelWrapper>
 </Box>;
 ```
 
-#### Why not `ChartBar`?
+#### Why Recharts' `Funnel`
 
-A funnel looks like a stacked bar chart, and the first attempts in the value dashboard built it from `ChartBar`. Three things stopped that, so the funnel draws its own columns:
+Blade's charts wrap Recharts and add Blade tokens; they don't draw their own shapes. An earlier version drew a column funnel (solid reached part, hatched dropped part on a percentage axis) out of `Bar` with custom shape renderers and SVG hatch patterns. That was hand-built drawing Blade would have to maintain, so the funnel now uses Recharts' `FunnelChart`, `Funnel` and `LabelList` as they are, with Blade tokens for the fill, stroke, label type and tooltip.
 
-- `ChartBar` draws a darker cap line on every bar, with no way to turn it off; a funnel's hatched part needs a clean top.
-- `ChartBarWrapper` fixes `barSize`, `barGap` and `barCategoryGap`, so columns can't fill the width. Funnel columns grow with the chart, up to 192px each, with 16px between them.
-- There is no "dropped since the previous step" layer, and the tooltip can only print each series' raw value — here that would be a percentage, not the count.
+What that costs:
 
-`ChartXAxis` still reserves room for its label under the ticks. Pass `hide` to it (as in the compact example) where every pixel of height counts.
+- **No percentage axis or drop-off layer.** Recharts draws the funnel as trapezoids. The share of the first step moves into the step labels, and the drop-off reads as the narrowing between steps.
+- **No keyboard tooltip.** Recharts' `FunnelChart` only allows item tooltips, and its keyboard handling only drives axis tooltips. The chart takes focus, but arrow keys don't move a tooltip. This is a Recharts limit; Blade doesn't add a focus layer of its own.
+- **Raw counts in the tooltip.** `ChartTooltip` prints the value Recharts hands it, so there is no `formatValue`.
 
 #### Alternate APIs
 
 <details>
-<summary>A single data child, like `ChartSankey`</summary>
+<summary>A column funnel built from `Bar` (the first version)</summary>
 
 ```tsx
-<ChartFunnelWrapper showTooltip>
-  <ChartFunnel data={steps} labelKey="step" valueKey="count" showAxis />
+<ChartFunnelWrapper data={steps}>
+  <ChartXAxis dataKey="step" />
+  <ChartYAxis />
+  <ChartTooltip />
+  <ChartFunnel dataKey="count" name="Reached" droppedName="Dropped" />
 </ChartFunnelWrapper>
 ```
 
 - Pros
-  - Nothing to compose; the funnel always looks the same.
+  - Shares and drop-off read off an axis, like product analytics dashboards.
 - Cons
-  - Axis, grid and tooltip become boolean props, unlike every other cartesian chart in Blade.
-  - The compact and full versions differ by a set of flags instead of by which children are present.
-
-</details>
-
-<details>
-<summary>Recharts' own `FunnelChart` and `Funnel`</summary>
-
-Recharts ships a funnel drawn as stacked trapezoids, one per step, narrowing downwards. It shows the shape of a funnel but not the numbers: there is no axis to read a share from, and the drop-off between steps is the slope of a trapezoid edge rather than a measurable area. The column funnel above is what product dashboards (Mixpanel, Amplitude, PostHog) use for conversion, so Blade uses it too.
+  - Custom shape renderers and SVG hatching on top of Recharts: drawing Blade owns instead of Recharts.
 
 </details>
 
 #### Out of scope for now
 
-- **Rate labels between columns.** The tooltip carries each step's share of the previous one. Labels printed between the columns would need room the columns don't have at 6+ steps; they can come later as an opt-in.
-- **`ChartLegend`.** The tooltip names both parts of every column, so the funnel has no legend.
+- **`ChartLegend`.** A funnel has one series; the labels name every step.
 - **React Native.** `ChartFunnelWrapper` throws on native for now.
 
 ### 3.9\. Axis and Grid Components

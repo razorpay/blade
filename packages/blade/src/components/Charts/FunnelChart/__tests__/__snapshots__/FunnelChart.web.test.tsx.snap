@@ -1,6 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChartFunnelWrapper /> should render the columns on a percentage axis 1`] = `
+exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per step 1`] = `
+.c1.c1.c1.c1.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
 .c0.c0.c0.c0.c0 {
   height: 100%;
   width: 100%;
@@ -23,7 +41,20 @@ exports[`<ChartFunnelWrapper /> should render the columns on a percentage axis 1
         style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
         tabindex="-1"
         xmlns="http://www.w3.org/1999/xhtml"
-      />
+      >
+        <div
+          style="background-color: rgb(0, 0, 0); border-radius: 16px; border: 1px solid hsla(206, 10%, 29%, 0.12); padding: 12px;"
+        >
+          <h6
+            class="c1"
+            data-blade-component="heading"
+          />
+          <div
+            class=""
+            data-blade-component="box"
+          />
+        </div>
+      </div>
       <svg
         class="recharts-surface"
         height="400"
@@ -37,76 +68,7 @@ exports[`<ChartFunnelWrapper /> should render the columns on a percentage axis 1
         <desc />
         <g
           tabindex="-1"
-        >
-          <g
-            class="recharts-cartesian-grid"
-          >
-            <g
-              class="recharts-cartesian-grid-horizontal"
-            >
-              <line
-                fill="none"
-                height="356"
-                stroke="hsla(206, 10%, 29%, 0.12)"
-                width="730"
-                x="65"
-                x1="65"
-                x2="795"
-                y="5"
-                y1="361"
-                y2="361"
-              />
-              <line
-                fill="none"
-                height="356"
-                stroke="hsla(206, 10%, 29%, 0.12)"
-                width="730"
-                x="65"
-                x1="65"
-                x2="795"
-                y="5"
-                y1="272"
-                y2="272"
-              />
-              <line
-                fill="none"
-                height="356"
-                stroke="hsla(206, 10%, 29%, 0.12)"
-                width="730"
-                x="65"
-                x1="65"
-                x2="795"
-                y="5"
-                y1="183"
-                y2="183"
-              />
-              <line
-                fill="none"
-                height="356"
-                stroke="hsla(206, 10%, 29%, 0.12)"
-                width="730"
-                x="65"
-                x1="65"
-                x2="795"
-                y="5"
-                y1="94"
-                y2="94"
-              />
-              <line
-                fill="none"
-                height="356"
-                stroke="hsla(206, 10%, 29%, 0.12)"
-                width="730"
-                x="65"
-                x1="65"
-                x2="795"
-                y="5"
-                y1="5"
-                y2="5"
-              />
-            </g>
-          </g>
-        </g>
+        />
         <g
           tabindex="-1"
         />
@@ -115,173 +77,89 @@ exports[`<ChartFunnelWrapper /> should render the columns on a percentage axis 1
             id="recharts1-clip"
           >
             <rect
-              height="356"
-              width="730"
-              x="65"
+              height="390"
+              width="790"
+              x="5"
               y="5"
             />
           </clippath>
         </defs>
-        <defs>
-          <pattern
-            height="6"
-            id="blade-funnel-hatch-r0"
-            patternTransform="rotate(-45)"
-            patternUnits="userSpaceOnUse"
-            width="6"
-          >
-            <rect
-              fill="hsla(218, 100%, 92%, 1)"
-              height="6"
-              width="6"
-            />
-            <rect
-              fill="hsla(218, 100%, 83%, 1)"
-              height="6"
-              width="2"
-            />
-          </pattern>
-          <pattern
-            height="6"
-            id="blade-funnel-hatch-r0-active"
-            patternTransform="rotate(-45)"
-            patternUnits="userSpaceOnUse"
-            width="6"
-          >
-            <rect
-              fill="hsla(218, 100%, 92%, 1)"
-              height="6"
-              width="6"
-            />
-            <rect
-              fill="hsla(217, 100%, 73%, 1)"
-              height="6"
-              width="2"
-            />
-          </pattern>
-        </defs>
         <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
+          class="recharts-layer recharts-trapezoids"
         >
           <g
-            class="recharts-layer recharts-bar"
-            id="recharts-bar-:r1:"
+            class="recharts-layer"
           >
             <g
-              class="recharts-layer recharts-bar-rectangles"
+              class="recharts-layer recharts-funnel-trapezoid"
             >
-              <g
-                class="recharts-layer"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M73,13A 8,8,0,0,1,81,5L 231,5A 8,8,0,0,1,
-        239,13L 239,361L 73,361Z"
-                    fill="hsla(217, 100%, 73%, 1)"
-                    height="356"
-                    width="166"
-                    x="73"
-                    y="5"
-                  />
-                </g>
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M 255.5,162.0588 h 166 v 198.9412 h -166 Z"
-                    fill="hsla(217, 100%, 73%, 1)"
-                    height="198.9412"
-                    radius="0"
-                    width="166"
-                    x="255.5"
-                    y="162.0588"
-                  />
-                </g>
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M438,170.0588A 8,8,0,0,1,446,162.0588L 596,162.0588A 8,8,0,0,1,
-        604,170.0588L 604,361L 438,361Z"
-                    fill="hsla(217, 100%, 73%, 1)"
-                    height="198.9412"
-                    width="166"
-                    x="438"
-                    y="162.0588"
-                  />
-                </g>
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M 620.5,308.6471 h 166 v 52.3529 h -166 Z"
-                    fill="hsla(217, 100%, 73%, 1)"
-                    height="52.3529"
-                    radius="0"
-                    width="166"
-                    x="620.5"
-                    y="308.6471"
-                  />
-                </g>
+              <g>
+                <path
+                  class="recharts-trapezoid"
+                  d="M 5,5L 479,5L 374.4412,102.5L 109.5588,102.5L 5,5 Z"
+                  fill="hsla(217, 100%, 73%, 1)"
+                  height="97.5"
+                  name="Carts abandoned"
+                  stroke="hsla(0, 0%, 100%, 1)"
+                  stroke-width="2"
+                  width="474"
+                  x="5"
+                  y="5"
+                />
               </g>
             </g>
-          </g>
-          <g
-            class="recharts-layer recharts-bar"
-            id="recharts-bar-:r2:"
-          >
             <g
-              class="recharts-layer recharts-bar-rectangles"
+              class="recharts-layer recharts-funnel-trapezoid"
             >
-              <g
-                class="recharts-layer"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
+              <g>
+                <path
+                  class="recharts-trapezoid"
+                  d="M 109.5588,102.5L 374.4412,102.5L 374.4412,200L 109.5588,200L 109.5588,102.5 Z"
+                  fill="hsla(217, 100%, 73%, 1)"
+                  height="97.5"
+                  name="Calls made"
+                  stroke="hsla(0, 0%, 100%, 1)"
+                  stroke-width="2"
+                  width="264.88235294117646"
+                  x="109.55882352941177"
+                  y="102.5"
                 />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M255.5,13A 8,8,0,0,1,263.5,5L 413.5,5A 8,8,0,0,1,
-        421.5,13L 421.5,162.0588L 255.5,162.0588Z"
-                    fill="url(#blade-funnel-hatch-r0)"
-                    height="157.0588"
-                    width="166"
-                    x="255.5"
-                    y="5"
-                  />
-                </g>
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
+              </g>
+            </g>
+            <g
+              class="recharts-layer recharts-funnel-trapezoid"
+            >
+              <g>
+                <path
+                  class="recharts-trapezoid"
+                  d="M 109.5588,200L 374.4412,200L 276.8529,297.5L 207.1471,297.5L 109.5588,200 Z"
+                  fill="hsla(217, 100%, 73%, 1)"
+                  height="97.5"
+                  name="Calls connected"
+                  stroke="hsla(0, 0%, 100%, 1)"
+                  stroke-width="2"
+                  width="264.88235294117646"
+                  x="109.55882352941177"
+                  y="200"
                 />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                >
-                  <path
-                    class="recharts-rectangle"
-                    d="M620.5,170.0588A 8,8,0,0,1,628.5,162.0588L 778.5,162.0588A 8,8,0,0,1,
-        786.5,170.0588L 786.5,308.6471L 620.5,308.6471Z"
-                    fill="url(#blade-funnel-hatch-r0)"
-                    height="146.5882"
-                    width="166"
-                    x="620.5"
-                    y="162.0588"
-                  />
-                </g>
+              </g>
+            </g>
+            <g
+              class="recharts-layer recharts-funnel-trapezoid"
+            >
+              <g>
+                <path
+                  class="recharts-trapezoid"
+                  d="M 207.1471,297.5L 276.8529,297.5L 276.8529,395L 207.1471,395L 207.1471,297.5 Z"
+                  fill="hsla(217, 100%, 73%, 1)"
+                  height="97.5"
+                  name="Ordered within 24 hours"
+                  stroke="hsla(0, 0%, 100%, 1)"
+                  stroke-width="2"
+                  width="69.70588235294117"
+                  x="207.14705882352942"
+                  y="297.5"
+                />
               </g>
             </g>
           </g>
@@ -291,351 +169,114 @@ exports[`<ChartFunnelWrapper /> should render the columns on a percentage axis 1
         />
         <g
           tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
+        />
+        <g
+          tabindex="-1"
         >
           <g
-            class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+            class="recharts-layer recharts-label-list"
           >
-            <line
-              angle="0"
-              class="recharts-cartesian-axis-line"
-              fill="none"
-              height="46.5"
-              orientation="bottom"
-              stroke="hsla(206, 10%, 29%, 0.12)"
-              width="730"
-              x="65"
-              x1="65"
-              x2="795"
-              y="348.5"
-              y1="348.5"
-              y2="348.5"
-            />
-            <g
-              class="recharts-cartesian-axis-ticks recharts-xAxis-ticks"
-            >
-              <g
-                class="recharts-cartesian-axis-tick-lines recharts-xAxis-tick-lines"
-              >
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-              </g>
-            </g>
             <text
+              class="recharts-text recharts-label"
               fill="hsla(204, 9%, 42%, 1)"
               font-family=""Inter", "Inter Fallback Arial", Arial"
               font-size="12"
-              font-weight="400"
-              letter-spacing="0"
-              text-anchor="middle"
-              x="398"
-              y="387"
-            />
-          </g>
-          <g
-            class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
-          >
-            <line
-              angle="0"
-              class="recharts-cartesian-axis-line"
-              fill="none"
-              height="356"
-              orientation="left"
-              stroke="hsla(206, 10%, 29%, 0.12)"
-              width="60"
-              x="5"
-              x1="65"
-              x2="65"
-              y="5"
-              y1="5"
-              y2="361"
-            />
-            <g
-              class="recharts-cartesian-axis-ticks recharts-yAxis-ticks"
+              height="97.5"
+              offset="5"
+              stroke="none"
+              text-anchor="start"
+              width="363.27941176470586"
+              x="431.72058823529414"
+              y="53.75"
             >
-              <g
-                class="recharts-cartesian-axis-tick-lines recharts-yAxis-tick-lines"
+              <tspan
+                dy="0.355em"
+                x="431.72058823529414"
               >
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-                <g
-                  class="recharts-layer recharts-cartesian-axis-tick"
-                />
-              </g>
-            </g>
-          </g>
-        </g>
-        <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
-        />
-        <g
-          tabindex="-1"
-        >
-          <g
-            class="recharts-cartesian-axis-tick-labels recharts-xAxis-tick-labels"
-          >
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
+                Carts abandoned · 100%
+              </tspan>
+            </text>
+            <text
+              class="recharts-text recharts-label"
+              fill="hsla(204, 9%, 42%, 1)"
+              font-family=""Inter", "Inter Fallback Arial", Arial"
+              font-size="12"
+              height="97.5"
+              offset="5"
+              stroke="none"
+              text-anchor="start"
+              width="415.55882352941177"
+              x="379.44117647058823"
+              y="151.25"
             >
-              <g
-                transform="translate(156.25,356.5)"
+              <tspan
+                dy="0.355em"
+                x="379.44117647058823"
               >
-                <text
-                  fill="hsla(204, 9%, 42%, 1)"
-                  font-family=""Inter", "Inter Fallback Arial", Arial"
-                  font-size="12"
-                  font-weight="400"
-                  style="letter-spacing: 0;"
-                  text-anchor="middle"
-                  x="0"
-                  y="0"
-                >
-                  <tspan
-                    dy="8"
-                    x="0"
-                  >
-                    Carts abandoned
-                  </tspan>
-                </text>
-              </g>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
+                Calls made · 56%
+              </tspan>
+            </text>
+            <text
+              class="recharts-text recharts-label"
+              fill="hsla(204, 9%, 42%, 1)"
+              font-family=""Inter", "Inter Fallback Arial", Arial"
+              font-size="12"
+              height="97.5"
+              offset="5"
+              stroke="none"
+              text-anchor="start"
+              width="464.3529411764706"
+              x="330.6470588235294"
+              y="248.75"
             >
-              <g
-                transform="translate(338.75,356.5)"
+              <tspan
+                dy="0.355em"
+                x="330.6470588235294"
               >
-                <text
-                  fill="hsla(204, 9%, 42%, 1)"
-                  font-family=""Inter", "Inter Fallback Arial", Arial"
-                  font-size="12"
-                  font-weight="400"
-                  style="letter-spacing: 0;"
-                  text-anchor="middle"
-                  x="0"
-                  y="0"
-                >
-                  <tspan
-                    dy="8"
-                    x="0"
-                  >
-                    Calls made
-                  </tspan>
-                </text>
-              </g>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
+                Calls connected · 56%
+              </tspan>
+            </text>
+            <text
+              class="recharts-text recharts-label"
+              fill="hsla(204, 9%, 42%, 1)"
+              font-family=""Inter", "Inter Fallback Arial", Arial"
+              font-size="12"
+              height="97.5"
+              offset="5"
+              stroke="none"
+              text-anchor="start"
+              width="513.1470588235294"
+              x="281.8529411764706"
+              y="346.25"
             >
-              <g
-                transform="translate(521.25,356.5)"
+              <tspan
+                dy="0.355em"
+                x="281.8529411764706"
               >
-                <text
-                  fill="hsla(204, 9%, 42%, 1)"
-                  font-family=""Inter", "Inter Fallback Arial", Arial"
-                  font-size="12"
-                  font-weight="400"
-                  style="letter-spacing: 0;"
-                  text-anchor="middle"
-                  x="0"
-                  y="0"
-                >
-                  <tspan
-                    dy="8"
-                    x="0"
-                  >
-                    Calls connected
-                  </tspan>
-                </text>
-              </g>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <g
-                transform="translate(703.75,356.5)"
-              >
-                <text
-                  fill="hsla(204, 9%, 42%, 1)"
-                  font-family=""Inter", "Inter Fallback Arial", Arial"
-                  font-size="12"
-                  font-weight="400"
-                  style="letter-spacing: 0;"
-                  text-anchor="middle"
-                  x="0"
-                  y="0"
-                >
-                  <tspan
-                    dy="8"
-                    x="0"
-                  >
-                    Ordered within 24 hours
-                  </tspan>
-                </text>
-              </g>
-            </g>
-          </g>
-          <g
-            class="recharts-cartesian-axis-tick-labels recharts-yAxis-tick-labels"
-          >
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <text
-                class="recharts-text recharts-cartesian-axis-tick-value"
-                fill="hsla(204, 9%, 42%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="12"
-                font-weight="400"
-                height="356"
-                letter-spacing="0"
-                orientation="left"
-                stroke="none"
-                text-anchor="end"
-                width="60"
-                x="57"
-                y="361"
-              >
-                <tspan
-                  dy="0.355em"
-                  x="57"
-                >
-                  0%
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <text
-                class="recharts-text recharts-cartesian-axis-tick-value"
-                fill="hsla(204, 9%, 42%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="12"
-                font-weight="400"
-                height="356"
-                letter-spacing="0"
-                orientation="left"
-                stroke="none"
-                text-anchor="end"
-                width="60"
-                x="57"
-                y="272"
-              >
-                <tspan
-                  dy="0.355em"
-                  x="57"
-                >
-                  25%
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <text
-                class="recharts-text recharts-cartesian-axis-tick-value"
-                fill="hsla(204, 9%, 42%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="12"
-                font-weight="400"
-                height="356"
-                letter-spacing="0"
-                orientation="left"
-                stroke="none"
-                text-anchor="end"
-                width="60"
-                x="57"
-                y="183"
-              >
-                <tspan
-                  dy="0.355em"
-                  x="57"
-                >
-                  50%
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <text
-                class="recharts-text recharts-cartesian-axis-tick-value"
-                fill="hsla(204, 9%, 42%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="12"
-                font-weight="400"
-                height="356"
-                letter-spacing="0"
-                orientation="left"
-                stroke="none"
-                text-anchor="end"
-                width="60"
-                x="57"
-                y="94"
-              >
-                <tspan
-                  dy="0.355em"
-                  x="57"
-                >
-                  75%
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="recharts-layer recharts-cartesian-axis-tick-label"
-            >
-              <text
-                class="recharts-text recharts-cartesian-axis-tick-value"
-                fill="hsla(204, 9%, 42%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="12"
-                font-weight="400"
-                height="356"
-                letter-spacing="0"
-                orientation="left"
-                stroke="none"
-                text-anchor="end"
-                width="60"
-                x="57"
-                y="5"
-              >
-                <tspan
-                  dy="0.355em"
-                  x="57"
-                >
-                  100%
-                </tspan>
-              </text>
-            </g>
+                Ordered within 24 hours · 15%
+              </tspan>
+            </text>
           </g>
         </g>
       </svg>

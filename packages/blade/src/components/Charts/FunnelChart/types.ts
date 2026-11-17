@@ -12,25 +12,15 @@ type ChartFunnelProps = {
    */
   dataKey: string;
   /**
-   * Tooltip label of the solid part of a column: who reached the step.
-   * @default 'Reached'
+   * Key of the step name in each row of `ChartFunnelWrapper`'s `data`.
+   * @default 'name'
    */
-  name?: string;
+  nameKey?: string;
   /**
-   * Tooltip label of the hatched part of a column: who dropped since the previous step.
-   * @default 'Dropped'
-   */
-  droppedName?: string;
-  /**
-   * Colour of the solid part. The hatch and the hover state use lighter and darker steps of the same colour.
+   * Colour of the funnel. Hover uses a darker step of the same colour.
    * @default 'data.background.categorical.blue.moderate'
    */
   color?: ChartsCategoricalColorToken;
-  /**
-   * Formats the counts in the tooltip.
-   * @default Indian digit grouping, e.g. `12,34,567`
-   */
-  formatValue?: (value: number) => string;
 };
 
 type ChartFunnelWrapperProps = {
@@ -39,7 +29,7 @@ type ChartFunnelWrapperProps = {
    */
   data: data[];
   /**
-   * One `<ChartFunnel>`, plus any of `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid` and `ChartTooltip`.
+   * One `<ChartFunnel>`, plus an optional `<ChartTooltip>`.
    */
   children: React.ReactNode;
 } & BoxProps &

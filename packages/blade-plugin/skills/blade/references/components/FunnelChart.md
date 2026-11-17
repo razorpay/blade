@@ -4,21 +4,18 @@ FunnelChart
 
 ## Description
 
-FunnelChart shows how many reach each step of a sequence and how many drop off between steps. Each step is a column on a percentage axis, where 100% is the first step. The solid part of a column is who reached the step and the hatched part on top is who dropped since the previous step. The tooltip shows both counts and their share of the previous step, and it follows the mouse and the keyboard (focus the chart, then use the arrow keys). It is made of `ChartFunnelWrapper` (the container) and `ChartFunnel` (the columns), and it composes with `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid` and `ChartTooltip`.
+FunnelChart shows how many reach each step of a sequence. It wraps Recharts' FunnelChart and Funnel: each step is a trapezoid whose width is its count against the largest step, labelled with the step name and its share of the first step. Hovering a step darkens it and shows its count in the tooltip. It is made of `ChartFunnelWrapper` (the container) and `ChartFunnel` (the funnel), and it composes with `ChartTooltip`.
 
 ## Important Constraints
 
-- `ChartFunnelWrapper` must contain exactly one `ChartFunnel`
-- `data` is one row per step, in funnel order. `ChartFunnel`'s `dataKey` names the count in each row and `ChartXAxis`'s `dataKey` names the step label
+- `ChartFunnelWrapper` must contain exactly one `ChartFunnel`, plus an optional `ChartTooltip`. `ChartXAxis`, `ChartYAxis` and `ChartCartesianGrid` don't apply to a funnel
+- `data` is one row per step, in funnel order. `ChartFunnel`'s `dataKey` names the count and `nameKey` names the step
 - Counts that are missing, negative or not numbers are treated as 0
-- If the first step is 0, every column is drawn at 0%. The tooltip still shows the counts
-- The y-axis always runs from 0% to the first step. If a later step is larger than the first, the axis grows to fit it
-- `ChartYAxis` gets a percentage domain, ticks and formatter by default. Props passed to it override them
-- `ChartTooltip` gets the funnel tooltip by default. A `content` prop passed to it overrides it
-- The Dropped row is left out of the tooltip when nobody dropped at that step
-- `color` accepts only categorical color tokens. The hatch and hover state use other steps of the same color
+- If every count is 0, or `data` is empty, nothing is drawn
+- If the first step is 0, the labels show step names without a share
+- `color` accepts only categorical color tokens. Hover uses a darker step of the same color
+- The tooltip shows the raw count and works on hover only. Recharts' funnel has no keyboard tooltip
 - Web only. On React Native the wrapper throws an error
-- There is no legend and there are no rate labels between columns
 
 ## TypeScript Types
 
@@ -26,7 +23,7 @@ FunnelChart shows how many reach each step of a sequence and how many drop off b
 type ChartFunnelWrapperProps = {
   /** One row per step, in funnel order */
   data: { [key: string]: string | number }[];
-  /** One `<ChartFunnel>`, plus any of ChartXAxis, ChartYAxis, ChartCartesianGrid and ChartTooltip */
+  /** One `<ChartFunnel>`, plus an optional `<ChartTooltip>` */
   children: React.ReactNode;
 } & BoxProps &
   TestID &
@@ -36,25 +33,15 @@ type ChartFunnelProps = {
   /** Key of the count in each row of the wrapper's `data` */
   dataKey: string;
   /**
-   * Tooltip label of the solid part: who reached the step
-   * @default 'Reached'
+   * Key of the step name in each row of the wrapper's `data`
+   * @default 'name'
    */
-  name?: string;
+  nameKey?: string;
   /**
-   * Tooltip label of the hatched part: who dropped since the previous step
-   * @default 'Dropped'
-   */
-  droppedName?: string;
-  /**
-   * Colour of the solid part
+   * Colour of the funnel
    * @default 'data.background.categorical.blue.moderate'
    */
   color?: ChartsCategoricalColorToken;
-  /**
-   * Formats the counts in the tooltip
-   * @default Indian digit grouping, e.g. `12,34,567`
-   */
-  formatValue?: (value: number) => string;
 };
 ```
 
@@ -63,7 +50,7 @@ type ChartFunnelProps = {
 - Use FunnelChart for an ordered sequence where each step is a subset of the one before, like checkout, onboarding or a support flow
 - Use BarChart when the categories are not a sequence, and SankeyChart when the flow branches
 - Give the wrapper a parent with a fixed height
-- Hide the x-axis with `<ChartXAxis dataKey="step" hide />` for a compact chart, and keep `ChartTooltip` so the steps can still be read
+- Leave room on the right for the step labels; the funnel takes the left 60% of the chart
 
 ## Examples
 
@@ -71,15 +58,7 @@ type ChartFunnelProps = {
 
 ```tsx
 import React from 'react';
-import {
-  Box,
-  ChartFunnelWrapper,
-  ChartFunnel,
-  ChartXAxis,
-  ChartYAxis,
-  ChartCartesianGrid,
-  ChartTooltip,
-} from '@razorpay/blade/components';
+import { Box, ChartFunnelWrapper, ChartFunnel, ChartTooltip } from '@razorpay/blade/components';
 
 function AbandonedCartFunnel() {
   const steps = [
@@ -92,11 +71,8 @@ function AbandonedCartFunnel() {
   return (
     <Box width="100%" height="300px">
       <ChartFunnelWrapper data={steps}>
-        <ChartCartesianGrid />
-        <ChartXAxis dataKey="step" />
-        <ChartYAxis />
         <ChartTooltip />
-        <ChartFunnel dataKey="count" />
+        <ChartFunnel dataKey="count" nameKey="step" />
       </ChartFunnelWrapper>
     </Box>
   );
@@ -105,18 +81,11 @@ function AbandonedCartFunnel() {
 export default AbandonedCartFunnel;
 ```
 
-### Custom Color, Labels and Format
+### Custom Color
 
 ```tsx
 import React from 'react';
-import {
-  Box,
-  ChartFunnelWrapper,
-  ChartFunnel,
-  ChartXAxis,
-  ChartYAxis,
-  ChartTooltip,
-} from '@razorpay/blade/components';
+import { Box, ChartFunnelWrapper, ChartFunnel, ChartTooltip } from '@razorpay/blade/components';
 
 function ConversionFunnel() {
   const steps = [
@@ -126,17 +95,13 @@ function ConversionFunnel() {
   ];
 
   return (
-    <Box width="100%" height="300px">
+    <Box width="100%" height="240px">
       <ChartFunnelWrapper data={steps}>
-        <ChartXAxis dataKey="step" />
-        <ChartYAxis />
         <ChartTooltip />
         <ChartFunnel
           dataKey="count"
+          nameKey="step"
           color="data.background.categorical.green.moderate"
-          name="Converted"
-          droppedName="Lost"
-          formatValue={(value) => `${value} carts`}
         />
       </ChartFunnelWrapper>
     </Box>
@@ -144,37 +109,4 @@ function ConversionFunnel() {
 }
 
 export default ConversionFunnel;
-```
-
-### Compact Funnel
-
-```tsx
-import React from 'react';
-import {
-  Box,
-  ChartFunnelWrapper,
-  ChartFunnel,
-  ChartXAxis,
-  ChartTooltip,
-} from '@razorpay/blade/components';
-
-function CompactFunnel() {
-  const steps = [
-    { step: 'Carts abandoned', count: 34 },
-    { step: 'Calls made', count: 19 },
-    { step: 'Ordered', count: 5 },
-  ];
-
-  return (
-    <Box width="360px" height="96px">
-      <ChartFunnelWrapper data={steps}>
-        <ChartXAxis dataKey="step" hide />
-        <ChartTooltip />
-        <ChartFunnel dataKey="count" />
-      </ChartFunnelWrapper>
-    </Box>
-  );
-}
-
-export default CompactFunnel;
 ```

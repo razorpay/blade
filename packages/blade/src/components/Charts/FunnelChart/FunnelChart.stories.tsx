@@ -1,13 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import {
-  ChartFunnel,
-  ChartFunnelWrapper,
-  ChartXAxis,
-  ChartYAxis,
-  ChartCartesianGrid,
-  ChartTooltip,
-} from '~components/Charts';
+import { ChartFunnel, ChartFunnelWrapper, ChartTooltip } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -17,7 +10,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="FunnelChart"
-      componentDescription="A Funnel Chart shows how many reach each step of a sequence and how many drop off between steps, built on top of Recharts with Blade design system styling."
+      componentDescription="A Funnel Chart shows how many reach each step of a sequence, built on Recharts' Funnel with Blade design system styling."
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md#38-funnel-chart"
     >
       <Heading size="large">Usage</Heading>
@@ -26,9 +19,6 @@ const Page = (): React.ReactElement => {
           import {
             ChartFunnel,
             ChartFunnelWrapper,
-            ChartXAxis,
-            ChartYAxis,
-            ChartCartesianGrid,
             ChartTooltip,
             Box,
           } from '@razorpay/blade/components';
@@ -44,11 +34,8 @@ const Page = (): React.ReactElement => {
             return (
               <Box width="100%" height="300px">
                 <ChartFunnelWrapper data={steps}>
-                  <ChartCartesianGrid />
-                  <ChartXAxis dataKey="step" />
-                  <ChartYAxis />
                   <ChartTooltip />
-                  <ChartFunnel dataKey="count" />
+                  <ChartFunnel dataKey="count" nameKey="step" />
                 </ChartFunnelWrapper>
               </Box>
             );
@@ -71,11 +58,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     dataKey: { control: { type: 'text' }, table: { category: propsCategory.CHART_FUNNEL_PROPS } },
-    name: { control: { type: 'text' }, table: { category: propsCategory.CHART_FUNNEL_PROPS } },
-    droppedName: {
-      control: { type: 'text' },
-      table: { category: propsCategory.CHART_FUNNEL_PROPS },
-    },
+    nameKey: { control: { type: 'text' }, table: { category: propsCategory.CHART_FUNNEL_PROPS } },
     color: { control: { type: 'text' }, table: { category: propsCategory.CHART_FUNNEL_PROPS } },
   },
   parameters: {
@@ -114,11 +97,8 @@ const FunnelStory = ({
 } & Partial<React.ComponentProps<typeof ChartFunnel>>): React.ReactElement => (
   <Box width="100%" height={height}>
     <ChartFunnelWrapper data={data}>
-      <ChartCartesianGrid />
-      <ChartXAxis dataKey="step" />
-      <ChartYAxis />
       <ChartTooltip />
-      <ChartFunnel dataKey="count" {...funnelProps} />
+      <ChartFunnel dataKey="count" nameKey="step" {...funnelProps} />
     </ChartFunnelWrapper>
   </Box>
 );
@@ -147,26 +127,19 @@ export const SingleStep: StoryFn<typeof ChartFunnel> = () => (
 
 export const Empty: StoryFn<typeof ChartFunnel> = () => <FunnelStory data={[]} />;
 
-export const CustomColorAndLabels: StoryFn<typeof ChartFunnel> = () => (
-  <FunnelStory
-    data={abandonedCartSteps}
-    color="data.background.categorical.green.moderate"
-    name="Converted"
-    droppedName="Lost"
-    formatValue={(value) => `${value} carts`}
-  />
+export const CustomColor: StoryFn<typeof ChartFunnel> = () => (
+  <FunnelStory data={abandonedCartSteps} color="data.background.categorical.green.moderate" />
 );
 
 export const Compact: StoryFn<typeof ChartFunnel> = () => (
-  <Box width="360px" height="96px">
+  <Box width="360px" height="160px">
     <ChartFunnelWrapper data={abandonedCartSteps}>
-      <ChartXAxis dataKey="step" hide />
       <ChartTooltip />
-      <ChartFunnel dataKey="count" />
+      <ChartFunnel dataKey="count" nameKey="step" />
     </ChartFunnelWrapper>
   </Box>
 );
 
-[ManySteps, FullDrop, SingleStep, Empty, CustomColorAndLabels, Compact].forEach((story) => {
+[ManySteps, FullDrop, SingleStep, Empty, CustomColor, Compact].forEach((story) => {
   story.parameters = { controls: { disable: true } };
 });

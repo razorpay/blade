@@ -1347,7 +1347,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'FunnelChart',
     description:
-      'A Funnel Chart shows how many reach each step of a sequence and how many drop off between steps, built with Recharts and Blade design system styling.',
+      'A Funnel Chart shows how many reach each step of a sequence, built on Recharts\' Funnel with Blade design system styling.',
     platform: 'web',
     frameworks: {
       react: {

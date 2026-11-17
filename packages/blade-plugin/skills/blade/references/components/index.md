@@ -43,7 +43,7 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **Fade**: The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear.
 - **FileUpload**: The FileUpload component is used to handle file attachments, including drag-and-drop interactions.
 - **FloatingActionButton**: FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.
-- **FunnelChart**: FunnelChart shows how many reach each step of a sequence and how many drop off between steps.
+- **FunnelChart**: FunnelChart shows how many reach each step of a sequence. It wraps Recharts' FunnelChart and Funnel: each step is a trapezoid whose width is its count against the largest step, labelled with the step name and its share of the first step. Hovering a step darkens it and shows its count in the tooltip. It is made of `ChartFunnelWrapper` (the container) and `ChartFunnel` (the funnel), and it composes with `ChartTooltip`.
 - **Heading**: The Heading component is designed for creating section headings in a page's hierarchy.
 - **IconButton**: The IconButton component provides an accessible way to trigger actions using only icons.
 - **Icons**: Blade provides a collection of pre-designed icons that can be used throughout your application.
