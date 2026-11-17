@@ -226,7 +226,6 @@ const CtaArrow = styled.span`
   width: 16px;
   height: 16px;
   background-color: currentColor;
-  -webkit-mask: ${ARROW_MASK} center / contain no-repeat;
   mask: ${ARROW_MASK} center / contain no-repeat;
   transition: transform 0.35s ${EASE};
 `;
