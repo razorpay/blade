@@ -29,9 +29,10 @@ const setup = (): {
   const runFrames = (count: number, gapMs: number): void => {
     for (let i = 0; i < count; i++) {
       time += gapMs;
+      const at = time;
       const run = queue;
       queue = [];
-      run.forEach((cb) => cb(time));
+      run.forEach((cb) => cb(at));
     }
   };
   return { FreshStage, runFrames, now: () => time };
