@@ -4596,7 +4596,7 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
   const grQk = (k) => (GPU_STABLE && k > 0 ? 2 ** (Math.ceil(Math.log2(k) * 4 - 1e-9) / 4) : k);
   // and a target given up (its layer changed size) waits in a small pool, taken again when that size comes back (a blur that breathes
   // goes through the same few sizes). Every target is written whole or cleared before it is read, so what it held doesn't matter.
-  const GR_POOL_MAX = 96e6; // bytes
+  const GR_POOL_MAX = 24e6; // bytes
   function grPut(T) {
     if (!GPU_STABLE) {
       gl.deleteTexture(T.t);
@@ -5426,16 +5426,19 @@ o = texelFetch(uE, ivec2(0), 0);
     const bsx = L.sH * L.kx,
       bsy = L.sV * L.ky;
     if (bsx > 0 || bsy > 0) {
-      const A = layerTarget(R, 'A', L.rw, L.rh),
-        B = layerTarget(R, 'B', L.rw, L.rh),
+      const B = layerTarget(R, 'B', L.rw, L.rh),
         bs = rs + '|' + bsx.toFixed(4) + '|' + bsy.toFixed(4);
       if (bs !== R.bs) {
         R.bs = bs;
         R.ver++;
         INFO.blur++;
         if (bsx > 0 && bsy > 0) {
+          const A = GPU_STABLE
+            ? grTake(L.rw, L.rh) || makeTarget(L.rw, L.rh)
+            : layerTarget(R, 'A', L.rw, L.rh);
           blurPass(R.src || R.raw, A, [1, 0], bsx);
           blurPass(A.t, B, [0, 1], bsy);
+          if (GPU_STABLE) grPut(A);
         } else if (bsx > 0) blurPass(R.src || R.raw, B, [1, 0], bsx);
         else blurPass(R.src || R.raw, B, [0, 1], bsy);
       }
