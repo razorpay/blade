@@ -346,6 +346,8 @@ const ButtonRazorSenseLayer = ({
       if (hasGivenUp) return;
       hasGivenUp = true;
       window.setTimeout(() => {
+        // (gone since: its cleanup let everything go, and the layer may be a newer run's)
+        if (!isMounted) return;
         isOn = false;
         window.clearTimeout(pauseTimer);
         window.clearTimeout(relayTimer);
