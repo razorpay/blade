@@ -225,13 +225,24 @@ class RayPlayer {
   private watchVel: number[] = [];
   private pending: (() => void) | null = null;
   private drawn = false;
+  private isFlipPrepared = false;
 
   constructor() {
     this.canvas = document.createElement('canvas');
     this.canvas.style.cssText = 'position:absolute;display:block;';
     this.ctx = this.canvas.getContext('2d')!;
     this.src = { kind: 'rest', t0: performance.now(), blend: 0 };
-    this.flip.flipPrepare(); // the flip's physics made in the page's idle time, not on the click (one for every Ray on the page)
+  }
+
+  /**
+   * The flip's physics made in the page's idle time, not on the click (once for every Ray on the page). Only for a Ray that can be
+   * clicked: for one that can't (a button's), it would be 10–25 ms of work for nothing, a 56 ms task on a Windows laptop as the
+   * pointer neared the button (the device test).
+   */
+  prepareFlip(): void {
+    if (this.isFlipPrepared) return;
+    this.isFlipPrepared = true;
+    this.flip.flipPrepare();
   }
 
   /**

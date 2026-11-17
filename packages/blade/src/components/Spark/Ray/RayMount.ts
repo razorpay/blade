@@ -303,6 +303,7 @@ class RayMount {
       this.holder = { by: 'player', act: 'entrance', since: now };
 
     root.addEventListener('click', this.onClick);
+    if (options.shouldReactToPointer) this.player.prepareFlip(); // (a Ray that can't be clicked never flips)
     RayMount.join(this);
     if (typeof IntersectionObserver === 'function') {
       this.observer = new IntersectionObserver((entries) => {
@@ -351,6 +352,7 @@ class RayMount {
       this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
     this.options = { ...this.options, ...options };
     this.player.eyeY = this.lookYWorld();
+    if (this.options.shouldReactToPointer) this.player.prepareFlip();
     // (idle, only a film kept loaded ahead: _preloadState)
     if ((this.options.state !== 'idle' || this.options.preload) && !this.reducedMotion)
       this.preloadAnswer();

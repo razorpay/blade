@@ -146,7 +146,7 @@ function glassAt(f, t, dt) {
 // ---- the lens: real glass over whatever is behind it (his eye, his body, the page): magnified, bent at the rim, a colour fringe, a glint ----
 const rayCv = document.getElementById('ray'), lensCv = document.getElementById('lens'), glassCv = document.getElementById('glass');
 const ctx = rayCv.getContext('2d'), gctx = glassCv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d'), src = document.createElement('canvas'), sctx = src.getContext('2d');
-const gl = lensCv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+let gl = null;   // (made in a step of its own: lensStart)
 // (Blade's PR review, 2026-11-04: with no WebGL, or a shader that won't compile, the lens is skipped; the ring and the 2D frame still draw)
 // Its program is built off the page's thread where the browser can (KHR_parallel_shader_compile): Blade's device test saw Windows'
 // Direct3D build it in one 63–111 ms task as the pointer neared a button. The rest of the lens is made once the browser says it's
@@ -165,16 +165,20 @@ void main() {
   vec2 g = d - vec2(-0.36, -0.42); col += uGlint * exp(-dot(g, g * vec2(1.0, 2.2)) / 0.035) * (1.0 - smoothstep(0.85, 1.0, r));   // the window's glint, top left
   gl_FragColor = vec4(min(col, 1.0) * aa, aa);
 }`;
-const PAR = gl && gl.getExtension('KHR_parallel_shader_compile');
-let LENS = null, lensJob = null;
-try {
+let PAR = null, LENS = null, lensJob = null;
+function lensStart() {   // its WebGL context, and its program's build begun
+  gl = lensCv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+  PAR = gl && gl.getExtension('KHR_parallel_shader_compile');
+  try {
   if (gl) {
     const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
     const pr = gl.createProgram(), vs = sh(gl.VERTEX_SHADER, 'attribute vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }'), fs = sh(gl.FRAGMENT_SHADER, LENS_FRAG);
     gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
     lensJob = { pr, vs, fs };
   }
-} catch (e) { lensJob = null; }
+  } catch (e) { lensJob = null; }
+  lensPoll();
+}
 function lensMade() {   // its program's built: checked, and the rest of the lens made (none if it won't compile)
   const { pr, vs, fs } = lensJob; lensJob = null;
   try {
@@ -188,7 +192,7 @@ function lensMade() {   // its program's built: checked, and the rest of the len
     LENS = { U, uni: Object.fromEntries(['uTex', 'uSrc', 'uC', 'uCanvas', 'uR', 'uMag', 'uBarrel', 'uCA', 'uTint', 'uRim', 'uFres', 'uGlint', 'uTintC'].map(n => [n, U(n)])) };
   } catch (e) { LENS = null; }
 }
-(function lensPoll() { if (!lensJob) return; if (!PAR || gl.isContextLost() || gl.getProgramParameter(lensJob.pr, PAR.COMPLETION_STATUS_KHR)) lensMade(); else setTimeout(lensPoll, 16); })();
+function lensPoll() { if (!lensJob) return; if (!PAR || gl.isContextLost() || gl.getProgramParameter(lensJob.pr, PAR.COMPLETION_STATUS_KHR)) lensMade(); else setTimeout(lensPoll, 16); }
 function drawLens(cx, cy, R) {   // canvas px: the lens's middle and radius
   if (!gl) return;
   if (lensJob && R >= 2) lensMade();   // needed before the browser said it's built: waited for, as it always was
@@ -209,10 +213,10 @@ function drawRing(g, P) {   // the ring and handle (Figma), its lens centre on P
 }
 
 // ---- playback: entry once, the search with a new pass each time round, the exit when asked ----
-let F = film(Q), SCRIPT = F.SCRIPT, G = F.G, mode = 'light', seed = 1, sim = simulate(SCRIPT, { seed }), t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, paused = false, pausedAt = 0, lastNow = performance.now();
-// the first pass, as it loaded: each start (seed 1, its script unchanged) plays it again rather than working it out again (Blade's
-// device test: the start's simulate() was most of a first hover's slowest frame)
-const SIM1 = { script: SCRIPT, sim };
+let F = film(Q), SCRIPT = F.SCRIPT, G = F.G, mode = 'light', seed = 1, sim = null, t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, paused = false, pausedAt = 0, lastNow = performance.now();
+// the first pass, worked out as it loads (a step of its own, below): each start (seed 1, its script unchanged) plays it again rather than
+// working it out again (Blade's device test: the start's simulate() was most of a first hover's slowest frame)
+let SIM1 = null;
 function rebuild() { const t = performance.now() - t0, was = F; F = film(Q); SCRIPT = F.SCRIPT; G = F.G; sim = simulate(SCRIPT, { seed });   // keep his place in the film
   const map = t < was.E ? t * F.E / Math.max(1, was.E) : t < was.X ? F.E + (t - was.E) * (F.X - F.E) / Math.max(1, was.X - was.E) : F.X + (t - was.X); t0 = performance.now() - map; }
 const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(new URLSearchParams(location.search).get('zoom') || 1), asleep = false, held = EMBED, doneSent = false;   // inside the films page (films.html)
@@ -232,6 +236,7 @@ const mix = (a, b, u) => { const L = (x, y, d = 0) => (x ?? d) + ((y ?? d) - (x 
 function frame(now) {
   requestAnimationFrame(frame);
   if (asleep) { lastNow = now; return; }                                                   // embedded and not on show: no drawing
+  if (!sim) { lastNow = now; return; }                                                     // (its first pass isn't worked out yet)
   const dt = paused ? 0 : Math.min(0.05, (now - lastNow) / 1000); lastNow = now; if (paused) t0 += now - (pausedAt || now), pausedAt = now;
   if (held) t0 = now;                                                                       // embedded and not started: at rest
   if (leaving && PACE !== 1) t0 -= dt * 1000 * (PACE - 1);                         // the films page's exit speed
@@ -259,14 +264,19 @@ requestAnimationFrame(frame);
 function leave(handoff) { if (leaving) return; const now = performance.now(), t = now - t0; leaving = true; only = !!(EMBED && handoff);
   if (only) parent.postMessage({ ray: 'left', film: 'search', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, vis0: !!(lastP && lastP.vis) }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
-function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = seed === 1 && SCRIPT === SIM1.script ? SIM1.sim : simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
+function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = seed === 1 && SIM1 && SCRIPT === SIM1.script ? SIM1.sim : simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; panel.querySelectorAll('[data-duo]').forEach(b => b.title = DUO[+b.dataset.duo][0] + ' (for ' + mode + ')'); document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 
 // ---- the panel ----
 const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
-if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' });
+// its load in steps, a task each, so none is long (Blade's device test: as the pointer neared a button, the whole load was one 47–57 ms task
+// on a Windows laptop): this script; then its first pass; then its WebGL lens begun; it says it's ready after the last
+setTimeout(() => {
+  SIM1 = { script: SCRIPT, sim: simulate(SCRIPT, { seed: 1 }) }; if (!sim) sim = SIM1.sim;
+  setTimeout(() => { lensStart(); if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' }); }, 0);
+}, 0);
 window.FILM = FILM = { get sim() { return sim; }, get view() { return view; }, get t() { return performance.now() - t0; }, get SCRIPT() { return SCRIPT; }, get F() { return F; }, Q, seek: ms => { t0 = performance.now() - ms; }, leave, replay, P: null, rebuild };
 
 }
