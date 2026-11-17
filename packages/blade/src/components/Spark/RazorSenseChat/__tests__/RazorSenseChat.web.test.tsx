@@ -228,4 +228,27 @@ describe('RazorSense 2.0 components', () => {
     );
     warn.mockRestore();
   });
+
+  it('warn when a RazorSenseChatBackground is put inside a RazorSenseChat', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const message =
+      "[Blade: RazorSenseChatBackground]: Inside RazorSenseChat it draws a second animation over the chat's own: for the chat's input, use RazorSenseBottomWave instead.";
+    renderWithTheme(
+      <RazorSenseChat>
+        <RazorSenseChatBackground>
+          <textarea />
+        </RazorSenseChatBackground>
+      </RazorSenseChat>,
+    );
+    expect(warn.mock.calls.map(([text]) => String(text))).toContain(message);
+    // on its own: no warning
+    warn.mockClear();
+    renderWithTheme(
+      <RazorSenseChatBackground>
+        <textarea />
+      </RazorSenseChatBackground>,
+    );
+    expect(warn.mock.calls.map(([text]) => String(text))).not.toContain(message);
+    warn.mockRestore();
+  });
 });
