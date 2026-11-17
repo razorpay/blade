@@ -61,6 +61,8 @@ class FilmHost {
   devicePixelRatio = 1;
   /** How many of its frames have run: a film is shown once it has drawn a few since its start. */
   ticks = 0;
+  /** It's drawn its one frame unseen, loaded ahead (rehearse). */
+  rehearsed = false;
 
   private readonly listeners: Record<string, Set<Listener>> = {};
   private frames = new Map<number, FrameRequestCallback>();
@@ -110,6 +112,10 @@ class FilmHost {
     // Its script stays loaded, so it starts as quickly (the performance re-review: a kept idle film held about 25 MB)
     this.channel.port2.onmessage = (event) => {
       const ray = event.data && typeof event.data === 'object' ? event.data.ray : null;
+      if (ray === 'rehearse') {
+        this.rehearse(performance.now()); // (the host's own: after the messages sent before it, its mode and zoom)
+        return;
+      }
       if (ray === 'start' && this.parked) {
         this.parked = false;
         this.dispatch('resize', {});
@@ -284,6 +290,22 @@ class FilmHost {
     this.made.forEach((canvas) => {
       if (canvas.width === K.w && canvas.height === K.h) freeCanvas(canvas);
     });
+  }
+
+  /**
+   * A film loaded ahead draws one frame unseen, then sleeps: what a film's first frame does only once (its WebGL lens drawn the
+   * first time, when Direct3D builds its shader program; its canvases' first rasters) is done now, while it waits, not in the
+   * frame it takes him in (the device test: a first hover's 83–97 ms frame on Windows). Its layer stays hidden.
+   */
+  private rehearse(now: number): void {
+    if (this.disposed || this.parked) return;
+    this.dispatch('message', { data: { ray: 'start' } });
+    this.tick(now);
+    this.gls.forEach((gl) => gl.flush()); // (its draws reach the GPU now)
+    this.dispatch('message', { data: { ray: 'sleep' } });
+    this.parked = true;
+    this.empty();
+    this.rehearsed = true;
   }
 
   /** A message to the film, as `contentWindow.postMessage` was. */
