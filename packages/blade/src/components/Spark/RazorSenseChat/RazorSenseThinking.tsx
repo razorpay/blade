@@ -1,4 +1,13 @@
-import React, { forwardRef, useContext, useEffect, useRef } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { useReducedMotion } from 'framer-motion';
 import styled, { css, keyframes } from 'styled-components';
 import tinycolor from 'tinycolor2';
 import type { RazorSenseThinkingProps } from './types';
@@ -168,15 +177,43 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
       onError,
     });
     const still = useStill(!chat && isStill, mode, loadThinkingStill);
+    // (in a chat, the chat's pause: its own doesn't apply there)
+    const isLabelPaused = chat ? chat.isPaused : isPaused;
     const label = (text: string | undefined): React.ReactElement => (
-      <ThinkingLabel
-        base={colors.base}
-        shine={colors.shine}
-        // (in a chat, the chat's pause: its own doesn't apply there)
-        isPaused={chat ? chat.isPaused : isPaused}
-      >
+      <ThinkingLabel base={colors.base} shine={colors.shine} isPaused={isLabelPaused}>
         {text}
       </ThinkingLabel>
+    );
+
+    // texts roll (RollingText), held on the one shown while paused or with reduced motion, and rolling on from it after (the roll
+    // restarts from the held one, `start`). The one shown is kept with the texts it's of: new texts start from their first.
+    const prefersReducedMotion = useReducedMotion();
+    const isRolling = Boolean(texts && texts.length > 1);
+    const isHeld = isLabelPaused || Boolean(prefersReducedMotion);
+    const textsKey = texts?.join('\0') ?? '';
+    const shownRef = useRef({ key: textsKey, index: 0 });
+    const shownIndex = (): number =>
+      shownRef.current.key === textsKey ? shownRef.current.index : 0;
+    const [start, setStart] = useState({ key: textsKey, index: 0 });
+    const startIndex = start.key === textsKey ? start.index : 0;
+    useEffect(() => {
+      if (isHeld) setStart({ key: textsKey, index: shownIndex() });
+      // (on holding, and on new texts while held)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isHeld, textsKey]);
+    const rolled = useMemo(
+      () => (texts ? [...texts.slice(startIndex), ...texts.slice(0, startIndex)] : []),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [textsKey, startIndex],
+    );
+    const onRolled = useCallback(
+      (index: number): void => {
+        shownRef.current = {
+          key: textsKey,
+          index: (startIndex + index) % Math.max(1, rolled.length),
+        };
+      },
+      [textsKey, startIndex, rolled.length],
     );
 
     return (
@@ -205,8 +242,12 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
           </div>
         )}
         <span ref={labelRef} style={{ display: 'inline-block' }}>
-          {texts && texts.length > 1 ? (
-            <RollingText texts={texts}>{label}</RollingText>
+          {isRolling && isHeld ? (
+            label(texts?.[shownIndex()])
+          ) : isRolling ? (
+            <RollingText texts={rolled} onIndexChange={onRolled}>
+              {label}
+            </RollingText>
           ) : (
             label(texts?.[0] ?? getStringFromReactText(children))
           )}
