@@ -251,6 +251,8 @@ const ButtonRayLayer = ({
       washOff: 0,
       label: null as HTMLElement | null,
       labelWidth: 1,
+      // the label's own text when its width was read: a label changed during the wash is measured again
+      labelText: '',
       // the label's own colour, read before the wash paints it (painted, its colour is transparent)
       ink: [0, 0, 0],
       // how far the button's content runs on past its text (measured at rest)
@@ -259,6 +261,12 @@ const ButtonRayLayer = ({
       labelPosition: '',
     };
     let bloom: HTMLSpanElement | null = null;
+    // the label's own text, not the dark glow's copy of it
+    const ownText = (label: HTMLElement): string =>
+      Array.from(label.childNodes)
+        .filter((node) => node !== bloom)
+        .map((node) => node.textContent ?? '')
+        .join('');
     // the wash's band: the theme's primary colour, its middle lifted towards white
     const washTint = rgb(tint);
     const washMiddle = washTint.map((q) => Math.round(q + (255 - q) * WASH.lift[mode]));
@@ -321,6 +329,13 @@ const ButtonRayLayer = ({
     const paintWash = (u: number, k: number): void => {
       const label = S.label;
       if (!label) return;
+      // the label changed during the wash (its text updated in place): its width read again, and the glow's copy with it
+      const text = ownText(label);
+      if (text !== S.labelText) {
+        S.labelText = text;
+        S.labelWidth = Math.max(1, label.offsetWidth);
+        if (bloom) bloom.textContent = text;
+      }
       const { ink } = S;
       const mix = (to: number[]): string => css(ink.map((q, n) => Math.round(q + (to[n] - q) * k)));
       const I = css(ink);
@@ -355,7 +370,7 @@ const ButtonRayLayer = ({
         if (!bloom) {
           bloom = document.createElement('span');
           bloom.setAttribute('aria-hidden', 'true');
-          bloom.textContent = label.textContent;
+          bloom.textContent = text;
           Object.assign(bloom.style, {
             position: 'absolute',
             inset: '0',
@@ -512,6 +527,7 @@ const ButtonRayLayer = ({
           if (S.label) {
             S.ink = rgb(getComputedStyle(S.label).color);
             S.labelWidth = Math.max(1, S.label.offsetWidth);
+            S.labelText = ownText(S.label);
           }
         }
         S.washT0 = performance.now();
