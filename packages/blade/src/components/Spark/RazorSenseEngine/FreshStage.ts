@@ -49,15 +49,46 @@ const SLOW_WARMUP = 2000;
 
 /**
  * Between full quality and the still, for devices that can't keep up (page-wide, like the still): running under EASE_FPS (or under
- * three quarters of the best this page has done, on a slower screen) for EASE_SECONDS, every stage draws every other frame: the same
+ * three quarters of the screen's own rate, on a slower screen) for EASE_SECONDS, every stage draws every other frame: the same
  * picture, half the work. Still under it, at a lower sharpness too (its canvas at EASE_DPR). Only under SLOW_FPS does it go to its
- * still. A device that holds its frame rate never gets here, so everywhere else it's exactly as made.
+ * still. Under SLOW_FPS each step comes sooner (SLOW_STEP_SECONDS). A device that holds its frame rate never gets here, so
+ * everywhere else it's exactly as made. The screen's rate is measured before any engine draws (screenFps): a device slow from its
+ * first frame never shows its screen's rate once drawing (the review: compared with the best seen, it never stepped down).
  */
 const EASE_FPS = 45;
 const EASE_SECONDS = 3;
+const SLOW_STEP_SECONDS = 2;
 const EASE_DPR = 1.2;
 /** 0: full; 1: every other frame; 2: and at EASE_DPR */
 let easeLevel = 0;
+
+/**
+ * the screen's frame rate (0: not measured yet), from the page's own frames as this module loads, before any engine draws: the
+ * gap of its fastest tenth of 60 frames, so a page busy with its own start-up (long frames) still shows its screen's rate
+ */
+let screenFps = 0;
+let isProbing = false;
+const measureScreen = (): void => {
+  if (screenFps || isProbing || typeof requestAnimationFrame !== 'function') return;
+  isProbing = true;
+  const times: number[] = [];
+  const step = (time: number): void => {
+    times.push(time);
+    if (times.length < 60) {
+      requestAnimationFrame(step);
+      return;
+    }
+    const gaps = times
+      .slice(1)
+      .map((t, i) => t - times[i])
+      .sort((a, b) => a - b);
+    const fast = gaps[Math.floor(gaps.length / 10)];
+    screenFps = fast > 0 ? Math.min(240, 1000 / fast) : 60;
+  };
+  requestAnimationFrame(step);
+};
+if (typeof window !== 'undefined') measureScreen();
+
 let wasSlow = false;
 /**
  * A stage on this page drew nothing in its first FIRST_DRAW_MS on screen: its GPU is stuck (compiling, on Direct3D). Every stage
@@ -182,7 +213,6 @@ class FreshStage {
   private slowSeconds = 0;
   private hasReportedSlow = false;
   private easeSeconds = 0;
-  private bestFps = 0;
   private easedTo = 0;
   private settleId = 0;
   private showId = 0;
@@ -236,6 +266,8 @@ class FreshStage {
       this.nearObserver.observe(box);
     }
     document.addEventListener('visibilitychange', this.update);
+    // (the screen's rate, while nothing of this stage draws yet)
+    measureScreen();
   }
 
   /**
@@ -638,11 +670,12 @@ class FreshStage {
     this.slowSeconds = fps < SLOW_FPS ? this.slowSeconds + 1 : 0;
     this.second = now;
     this.frames = 0;
-    // the middle step first (a second under EASE_FPS, or under 3/4 of this page's best on a slower screen, counts towards it): each
-    // step down starts the still's count again, so the still comes only once the lowest step can't keep up either
-    this.bestFps = Math.max(this.bestFps, fps);
-    this.easeSeconds = fps < Math.min(EASE_FPS, 0.75 * this.bestFps) ? this.easeSeconds + 1 : 0;
-    if (this.easeSeconds >= EASE_SECONDS && easeLevel < 2) {
+    // the middle step first (a second under EASE_FPS, or under 3/4 of the screen's rate on a slower screen, counts towards it;
+    // under SLOW_FPS each step comes sooner): each step down starts the still's count again, so the still comes only once the
+    // lowest step can't keep up either
+    this.easeSeconds =
+      fps < Math.min(EASE_FPS, 0.75 * (screenFps || 60)) ? this.easeSeconds + 1 : 0;
+    if (this.easeSeconds >= (fps < SLOW_FPS ? SLOW_STEP_SECONDS : EASE_SECONDS) && easeLevel < 2) {
       easeLevel += 1;
       this.easeSeconds = 0;
       this.slowSeconds = 0;

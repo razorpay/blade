@@ -116,7 +116,9 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
     const base = theme.colors.surface.text.primary.normal;
     const colors = {
       base,
-      shine: tinycolor.mix(base, '#ffffff', SHINE_LIFT[mode]).toHexString(),
+      shine: tinycolor
+        .mix(base, theme.colors.surface.text.staticWhite.normal, SHINE_LIFT[mode])
+        .toHexString(),
     };
     // the label's box: where thinking is drawn from (it holds the rolling labels, so it stays put as they change)
     const labelRef = useRef<HTMLSpanElement>(null);
