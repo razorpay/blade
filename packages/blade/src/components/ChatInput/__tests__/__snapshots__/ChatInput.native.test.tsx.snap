@@ -229,16 +229,16 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                               "marginRight": 0,
                               "marginTop": 0,
                               "minHeight": 36,
-                              "paddingBottom": 12,
+                              "paddingBottom": 16,
                               "paddingLeft": 20,
                               "paddingRight": 20,
-                              "paddingTop": 12,
+                              "paddingTop": 16,
                               "textAlignVertical": "top",
                               "textDecorationLine": "none",
                               "width": "100%",
                             },
                             {
-                              "height": 44,
+                              "height": 52,
                               "maxHeight": 200,
                             },
                           ]
@@ -265,7 +265,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                             "paddingBottom": 12,
                             "paddingLeft": 12,
                             "paddingRight": 12,
-                            "paddingTop": 8,
+                            "paddingTop": 0,
                           },
                         ]
                       }
@@ -1864,16 +1864,16 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                               "marginRight": 0,
                               "marginTop": 0,
                               "minHeight": 36,
-                              "paddingBottom": 12,
+                              "paddingBottom": 16,
                               "paddingLeft": 20,
                               "paddingRight": 20,
-                              "paddingTop": 12,
+                              "paddingTop": 16,
                               "textAlignVertical": "top",
                               "textDecorationLine": "none",
                               "width": "100%",
                             },
                             {
-                              "height": 44,
+                              "height": 52,
                               "maxHeight": 200,
                             },
                           ]
@@ -1900,7 +1900,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                             "paddingBottom": 12,
                             "paddingLeft": 12,
                             "paddingRight": 12,
-                            "paddingTop": 8,
+                            "paddingTop": 0,
                           },
                         ]
                       }

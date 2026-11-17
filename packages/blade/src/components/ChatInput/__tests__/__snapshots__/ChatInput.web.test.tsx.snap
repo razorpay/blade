@@ -72,7 +72,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-top: 8px;
+  padding-top: 0px;
   padding-bottom: 12px;
   padding-right: 12px;
   padding-left: 12px;
@@ -428,8 +428,8 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   -ms-flex: 1;
   flex: 1;
   background-color: hsla(0,0%,100%,0);
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;

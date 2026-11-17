@@ -28,9 +28,9 @@ const ChatInputActionBar = ({
       justifyContent="space-between"
       alignItems="center"
       gap="spacing.3"
-      // Figma: 8 px above the toolbar (the text's bottom padding is 12 px) and 12 px on the
-      // other sides, so an empty medium box is 96 px
-      paddingTop="spacing.3"
+      // straight under the text, whose own 16 px bottom padding is the gap, and 12 px on the
+      // other sides, so an empty medium box is 96 px (16 + 20 + 16 + 32 + 12)
+      paddingTop="spacing.0"
       paddingBottom="spacing.4"
       paddingX="spacing.4"
     >

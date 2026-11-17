@@ -403,7 +403,11 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   );
 
   const isError = validationState === 'error';
-  const textAreaPadding = makeSpace(compactLayout.textAreaPadding);
+  // two-row: 16 px above and below the text, so the space above the text matches the space below
+  // the "+"; one-row keeps 12 px so the bar stays 44 px
+  const textAreaPadding = makeSpace(
+    isCompactRow ? compactLayout.textAreaPadding : theme.spacing[5],
+  );
 
   return (
     <BaseBox

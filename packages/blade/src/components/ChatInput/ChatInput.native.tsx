@@ -417,12 +417,18 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             isDisabled={isDisabled}
             numberOfLines={1}
             autoGrowMaxHeight={chatInputMaxTextAreaHeight}
-            // one 20 px line with 12 px above and below, in both sizes; BaseInput's default is shorter
-            autoGrowMinHeight={compactLayout.singleRowHeight}
+            // one 20 px line with its padding above and below; BaseInput's default is shorter
+            autoGrowMinHeight={
+              isSmall
+                ? compactLayout.singleRowHeight
+                : theme.spacing[5] * 2 + theme.typography.lineHeights[100]
+            }
             size="medium"
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
-            padding={makeSpace(compactLayout.textAreaPadding)}
+            // two-row: 16 px above and below the text, so the space above the text matches the space
+            // below the "+"; one-row keeps 12 px
+            padding={makeSpace(isSmall ? compactLayout.textAreaPadding : theme.spacing[5])}
             // the two-row layout starts its text 20 px in; the one-row layout lines it up after the "+"
             paddingX={isSmall ? undefined : makeSpace(theme.spacing[6])}
             borderRadius={chatInputBorderRadius}
