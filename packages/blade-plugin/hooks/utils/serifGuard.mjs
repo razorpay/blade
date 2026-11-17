@@ -11,42 +11,45 @@ const CHECKED_EXTENSIONS = new Set(['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs'
 const IS_SERIF = /\bisSerif\b/;
 const BLADE_IMPORT = /['"]@razorpay\/blade(?:\/[\w-]+)*['"]/;
 
-// Lines a Codex `apply_patch` call adds, plus the files it touches.
+// The lines a Codex `apply_patch` call adds, grouped by the file they belong to, so each
+// file is judged only on its own changes.
 const parsePatch = (patch) => {
-  const lines = patch.split('\n');
-  return {
-    added: lines
-      .filter((line) => line.startsWith('+') && !line.startsWith('+++'))
-      .map((line) => line.slice(1))
-      .join('\n'),
-    files: lines
-      .map((line) => line.match(/^\*\*\* (?:Add|Update) File: (.+)$/)?.[1]?.trim())
-      .filter(Boolean),
-  };
+  const edits = [];
+  let current = null;
+  for (const line of patch.split('\n')) {
+    const header = line.match(/^\*\*\* (Add|Update|Delete) File: (.+)$/);
+    if (header) {
+      current = header[1] === 'Delete' ? null : { file: header[2].trim(), lines: [] };
+      if (current) edits.push(current);
+    } else if (current && line.startsWith('+') && !line.startsWith('+++')) {
+      current.lines.push(line.slice(1));
+    }
+  }
+  return edits.map(({ file, lines }) => ({ file, added: lines.join('\n') }));
 };
 
-// The text an edit added and the files it touched, for Claude Code's Write, Edit and
-// MultiEdit tools and Codex's apply_patch.
+// The text each edited file gained, for Claude Code's Write, Edit and MultiEdit tools
+// (one file per call) and Codex's apply_patch (one or more files).
 export const readEdit = (toolInput = {}) => {
-  const parts = [];
-  const files = [];
-  if (typeof toolInput.file_path === 'string') files.push(toolInput.file_path);
-  if (typeof toolInput.content === 'string') parts.push(toolInput.content);
-  if (typeof toolInput.new_string === 'string') parts.push(toolInput.new_string);
-  if (Array.isArray(toolInput.edits)) {
-    for (const edit of toolInput.edits) {
-      if (typeof edit?.new_string === 'string') parts.push(edit.new_string);
+  const edits = [];
+  if (typeof toolInput.file_path === 'string') {
+    const parts = [];
+    if (typeof toolInput.content === 'string') parts.push(toolInput.content);
+    if (typeof toolInput.new_string === 'string') parts.push(toolInput.new_string);
+    if (Array.isArray(toolInput.edits)) {
+      for (const edit of toolInput.edits) {
+        if (typeof edit?.new_string === 'string') parts.push(edit.new_string);
+      }
     }
+    edits.push({ file: toolInput.file_path, added: parts.join('\n') });
   }
   for (const key of ['input', 'patch', 'command']) {
     const value = Array.isArray(toolInput[key]) ? toolInput[key].join('\n') : toolInput[key];
     if (typeof value === 'string' && value.includes('*** Begin Patch')) {
-      const patch = parsePatch(value);
-      parts.push(patch.added);
-      files.push(...patch.files);
+      edits.push(...parsePatch(value));
     }
   }
-  return { added: parts.join('\n'), files };
+  return edits;
 };
 
 const nearestPackageName = (filePath) => {
@@ -96,11 +99,10 @@ const readFile = (file) => {
 
 // Full check for one tool call. Returns the reminder text, or null.
 export const checkToolCall = ({ tool_input: toolInput, cwd } = {}) => {
-  const { added, files } = readEdit(toolInput);
-  if (!added) return null;
   const base = cwd || process.cwd();
   const flaggedFiles = [];
-  for (const file of files) {
+  for (const { file, added } of readEdit(toolInput)) {
+    if (!added) continue;
     const absolute = path.resolve(base, file);
     if (!isCheckedFile(absolute) || !hasSerifUse(added, readFile(absolute) ?? added)) continue;
     const relative = path.relative(base, absolute);

@@ -126,14 +126,33 @@ test('reads MultiEdit edits and Codex apply_patch calls', () => {
     '+  <Heading size="2xlarge" isSerif>',
     '*** End Patch',
   ].join('\n');
-  assert.deepEqual(readEdit({ input: patch }), {
-    added: '  <Heading size="2xlarge" isSerif>',
-    files: ['src/Hero.tsx'],
-  });
+  assert.deepEqual(readEdit({ input: patch }), [
+    { file: 'src/Hero.tsx', added: '  <Heading size="2xlarge" isSerif>' },
+  ]);
   assert.match(
     checkToolCall({ cwd: dir, tool_name: 'apply_patch', tool_input: { input: patch } }),
     /src\/Hero\.tsx/,
   );
+});
+
+test('in a multi-file apply_patch, flags only the file that adds isSerif', () => {
+  const note = "import { Text } from '@razorpay/blade/components';\nexport const Note = () => <Text>Note</Text>;";
+  const dir = makeProject({ 'src/Hero.tsx': SERIF_FILE, 'src/Note.tsx': note });
+  const patch = [
+    '*** Begin Patch',
+    '*** Update File: src/Hero.tsx',
+    '@@',
+    '-  <Heading size="2xlarge">',
+    '+  <Heading size="2xlarge" isSerif>',
+    '*** Update File: src/Note.tsx',
+    '@@',
+    '-export const Note = () => null;',
+    '+export const Note = () => <Text>Note</Text>;',
+    '*** End Patch',
+  ].join('\n');
+  const reminder = checkToolCall({ cwd: dir, tool_name: 'apply_patch', tool_input: { input: patch } });
+  assert.match(reminder, /src\/Hero\.tsx/);
+  assert.doesNotMatch(reminder, /Note\.tsx/);
 });
 
 const runHook = (payload) =>
