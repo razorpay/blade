@@ -222,6 +222,15 @@ src = sub(src, `const gpuOk = s => GPU_RASTER && !s.vsrc && !s.isrc && (s.fill |
 src = sub(src, `function frame(ts) {
   requestAnimationFrame(frame);`, `function frame(ts) {
   if (__dead || !__run) { __raf = 0; return; } __raf = requestAnimationFrame(frame);`);
+// A restored context (after sleep(), or the browser's own loss) draws the frame it had again, at once, retried each frame while its
+// programs compile: a paused engine, or one with reduced motion, runs no frames of its own to do it
+src = sub(src, `cv.addEventListener('webglcontextrestored', () => { try { initGL(); glLost = false; touch(false); } catch (e) {`, `cv.addEventListener('webglcontextrestored', () => { try { initGL(); glLost = false; touch(false); __redraw(); } catch (e) {`);
+src = sub(src, `function showMsg(t) {`, `function __redraw() {
+  const n = STATS.frames, until = performance.now() + 10000;
+  const go = () => { if (__dead || glLost || STATS.frames > n || performance.now() > until) return; try { render(); } catch (e) { } requestAnimationFrame(go); };
+  requestAnimationFrame(go);
+}
+function showMsg(t) {`);
 // Made a step at a time (freshEngineSteps, below): making an engine is one long task otherwise, 190-330 ms on a mid-range Android
 // phone (about 1 s on its first visit after the engine changes, the browser compiling the engine's code as it runs), which is the
 // page frozen. Each yield is a point the page may draw a frame between: the studio's tables, its blank document, the comp read in,
@@ -263,6 +272,10 @@ return {
     layout(); need = true; last = -1;
     return true;
   },
+  // Blade: its GPU memory given back while it's out of sight (its context lost on purpose; everything else kept), and made again
+  // (wake: the context restored, its programs compiled again, from the browser's shader cache). False when it can't
+  sleep() { if (__dead || !gl || glLost || __sleepX) return false; const x = gl.getExtension('WEBGL_lose_context'); if (!x) return false; __sleepX = x; x.loseContext(); return true; },
+  wake() { const x = __sleepX; __sleepX = null; if (x && !__dead) x.restoreContext(); },
   // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
   drawn() { return STATS.frames; },
   // Blade: whether its last frame was dropped only for the GPU (Direct3D: the main pass's copy still compiling, in the background):
@@ -346,7 +359,7 @@ import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from '.
  * its comp: made ahead, while the page is idle. Every engine is its own: its own document, WebGL2 context and frame loop.
  */
 export function* freshEngineSteps(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): Generator<void, FreshEngine, void> {
-let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false;
+let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false, __sleepX = null;
 const __search = '';
 ` + src + `
 }

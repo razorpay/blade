@@ -129,6 +129,10 @@ export type FreshEngine = {
    * it can't (a different clear-background setting), and a new engine is needed
    */
   load?(exp: FreshExport): boolean;
+  /** its GPU memory given back (its context let go on purpose, everything else kept): false when it can't */
+  sleep?(): boolean;
+  /** after sleep: its GPU context made again, and the frame it had drawn again */
+  wake?(): void;
   /** frames it has drawn: 0 till its first (its programs still compiling, or a GPU that isn't drawing) */
   drawn?(): number;
   /** whether its last frame was dropped only for the GPU (a shader still compiling in the background): its own work is done */
