@@ -133,6 +133,8 @@ export type FreshEngine = {
   sleep?(): boolean;
   /** after sleep: its GPU context made again, and the frame it had drawn again */
   wake?(): void;
+  /** its canvas's pixel ratio capped (0: as its comp and the device say): the weak-device tier's lower sharpness */
+  sharpness?(cap: number): void;
   /** frames it has drawn: 0 till its first (its programs still compiling, or a GPU that isn't drawing) */
   drawn?(): number;
   /** whether its last frame was dropped only for the GPU (a shader still compiling in the background): its own work is done */
