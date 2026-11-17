@@ -835,7 +835,7 @@ class RayMount {
         film.host.send({ ray: 'mode', mode: this.options.colorScheme });
         film.host.send({ ray: 'zoom', z: this.geo.zoom });
         if (mine && h.by === 'film' && !h.started) this.begin(film, this.pendingFrom);
-        else if (!mine) film.host.send({ ray: 'sleep' });
+        else if (!mine) film.host.send({ ray: 'rehearse' }); // loaded ahead: one frame unseen, then asleep (FilmHost)
         break;
       }
       case 'left':

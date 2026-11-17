@@ -158,6 +158,27 @@ TestRayHopsOffAndBack.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
 };
 
+// A film loaded ahead (here the answer's next, Calling) draws one frame unseen, then sleeps: its first frame's one-off work (its
+// canvases' first draws, a WebGL shader built on Windows' Direct3D) is done while it waits, not in the frame it takes him in
+export const TestRayRehearsesAFilmLoadedAhead: StoryFn<typeof Ray> = () => (
+  <Box padding="spacing.11" paddingTop="200px">
+    <Ray state="searching" idle="rest" />
+  </Box>
+);
+TestRayRehearsesAFilmLoadedAhead.play = async () => {
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  const next = (): any => rayEl().__ray.films.calling;
+  await waitFor(() => expect(next()?.ready).toBe(true), { timeout: 5000 });
+  await waitFor(() => expect(next().host.rehearsed).toBe(true), { timeout: 3000 }); // its one frame
+  expect(next().host.parked).toBe(true); // asleep after it (its canvases emptied)
+  for (let i = 0; i < 10; i++) {
+    expect(next().host.layer.style.visibility).toBe('hidden'); // never seen
+    expect(doing()).toBe('film:search');
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(50);
+  }
+};
+
 // A film still loading doesn't hold him up: hidden while his idle's film loads (on a slow connection), he hops off at once, not
 // once it's loaded or given up on (the PR review)
 export const TestRayDoesntWaitForAFilm: StoryFn<typeof Ray> = () => {

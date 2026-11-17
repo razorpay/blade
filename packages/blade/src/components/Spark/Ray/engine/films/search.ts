@@ -194,6 +194,9 @@ function drawRing(g, P) {   // the ring and handle (Figma), its lens centre on P
 
 // ---- playback: entry once, the search with a new pass each time round, the exit when asked ----
 let F = film(Q), SCRIPT = F.SCRIPT, G = F.G, mode = 'light', seed = 1, sim = simulate(SCRIPT, { seed }), t0 = performance.now(), leaving = false, settle = null, view = null, lastF = null, paused = false, pausedAt = 0, lastNow = performance.now();
+// the first pass, as it loaded: each start (seed 1, its script unchanged) plays it again rather than working it out again (Blade's
+// device test: the start's simulate() was most of a first hover's slowest frame)
+const SIM1 = { script: SCRIPT, sim };
 function rebuild() { const t = performance.now() - t0, was = F; F = film(Q); SCRIPT = F.SCRIPT; G = F.G; sim = simulate(SCRIPT, { seed });   // keep his place in the film
   const map = t < was.E ? t * F.E / Math.max(1, was.E) : t < was.X ? F.E + (t - was.E) * (F.X - F.E) / Math.max(1, was.X - was.E) : F.X + (t - was.X); t0 = performance.now() - map; }
 const EMBED = new URLSearchParams(location.search).has('embed'); let ZOOM = +(new URLSearchParams(location.search).get('zoom') || 1), asleep = false, held = EMBED, doneSent = false;   // inside the films page (films.html)
@@ -240,7 +243,7 @@ requestAnimationFrame(frame);
 function leave(handoff) { if (leaving) return; const now = performance.now(), t = now - t0; leaving = true; only = !!(EMBED && handoff);
   if (only) parent.postMessage({ ray: 'left', film: 'search', f: capCarry(lastF) });   // his pose (and the cap's swing): the next film's Ray starts from it
   cut = { tL: t, vis0: !!(lastP && lastP.vis) }; if (lastF) settle = { from: lastF, P: lastP, b0: now }; t0 = now - F.X; }
-function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
+function replay() { held = false; only = false; sentFront = null; cut = null; doneSent = false; leaving = false; settle = null; seed = TOUR.on ? 1 + Math.floor(Math.random() * 997) : 1; sim = seed === 1 && SCRIPT === SIM1.script ? SIM1.sim : simulate(SCRIPT, { seed }); t0 = performance.now(); GL.x = S0[0]; GL.y = S0[1]; GL.vx = GL.vy = 0; GL.front = false; GL.back = null; GL.tx = GL.ty = null; }
 const theme = () => { mode = mode === 'light' ? 'dark' : 'light'; panel.querySelectorAll('[data-duo]').forEach(b => b.title = DUO[+b.dataset.duo][0] + ' (for ' + mode + ')'); document.documentElement.classList.toggle('dark', mode === 'dark'); document.getElementById('theme').textContent = mode === 'dark' ? 'Light' : 'Dark'; };
 
 // ---- the panel ----
