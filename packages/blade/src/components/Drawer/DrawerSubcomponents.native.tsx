@@ -1,7 +1,11 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg';
+import Svg, { Defs, LinearGradient, Mask, RadialGradient, Stop, Rect } from 'react-native-svg';
 import { drawerComponentIds } from './drawerComponentIds';
+import {
+  DRAWER_HEADER_GRADIENT_FADE_START,
+  DRAWER_HEADER_GRADIENT_OPACITY,
+} from './drawerHeaderGradient';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { useDrawerStack } from './StackProvider';
@@ -37,17 +41,38 @@ const DrawerHeaderGradient = ({
   const subtleAlpha = alphaMatch ? Number(alphaMatch[1]) : 1;
   const opaqueColor = subtleColor.replace(/^hsla/, 'hsl').replace(/,\s*[\d.]+\s*\)$/, ')');
   const gradientId = `${uniqueId}-${color}`;
+  const fadeGradientId = `${uniqueId}-fade`;
+  const fadeMaskId = `${uniqueId}-fade-mask`;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+    <View
+      style={[StyleSheet.absoluteFill, { opacity: DRAWER_HEADER_GRADIENT_OPACITY }]}
+      pointerEvents="none"
+    >
       <Svg width="100%" height="100%">
         <Defs>
           <RadialGradient id={gradientId} cx="50%" cy="100%" rx="150%" ry="100%">
             <Stop offset="0" stopColor={opaqueColor} stopOpacity={0} />
             <Stop offset="1" stopColor={opaqueColor} stopOpacity={subtleAlpha} />
           </RadialGradient>
+          {/* Same fade as web's mask-image: fully visible at the top, transparent by the bottom edge,
+              so the header blends into the drawer body instead of ending in a hard edge. */}
+          <LinearGradient id={fadeGradientId} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset={DRAWER_HEADER_GRADIENT_FADE_START} stopColor="white" stopOpacity={1} />
+            <Stop offset="1" stopColor="white" stopOpacity={0} />
+          </LinearGradient>
+          <Mask id={fadeMaskId}>
+            <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${fadeGradientId})`} />
+          </Mask>
         </Defs>
-        <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${gradientId})`} />
+        <Rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          fill={`url(#${gradientId})`}
+          mask={`url(#${fadeMaskId})`}
+        />
       </Svg>
     </View>
   );

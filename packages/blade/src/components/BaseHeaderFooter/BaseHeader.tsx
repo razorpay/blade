@@ -82,12 +82,6 @@ type BaseHeaderProps = {
    */
   children?: React.ReactElement | React.ReactElement[];
   /**
-   * Background image of the header
-   *
-   * You can use this for adding gradients.
-   */
-  backgroundImage?: BoxProps['backgroundImage'];
-  /**
    * So we add a wrapper with custom styles in elements like leading, trailing interaction elements and trailing.
    * this props allows you to control that.
    *
@@ -370,7 +364,6 @@ const _BaseHeader = ({
   isDisabled,
   children,
   trailingInteractionElement,
-  backgroundImage,
   alignItems = 'flex-start',
   dividerProps,
   shouldAlignLeadingAndTrailingElementsToCenter = false,
@@ -471,7 +464,6 @@ const _BaseHeader = ({
     <BaseBox
       {...metaAttribute({ name: metaComponentName, testID })}
       {...makeAnalyticsAttribute(rest)}
-      backgroundImage={backgroundImage}
     >
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}

@@ -157,13 +157,18 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
           <View
             pointerEvents="none"
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                {
+                  "opacity": 0.64,
+                },
+              ]
             }
           >
             <RNSVGSvgView
@@ -214,6 +219,56 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                     rx="150%"
                     ry="100%"
                   />
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0.45,
+                        -1,
+                        1,
+                        16777215,
+                      ]
+                    }
+                    gradientTransform={null}
+                    gradientUnits={0}
+                    name="drawer-header-gradient-0-fade"
+                    x1="0"
+                    x2="0"
+                    y1="0"
+                    y2="1"
+                  />
+                  <RNSVGMask
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    height="100%"
+                    maskContentUnits={1}
+                    maskUnits={0}
+                    name="drawer-header-gradient-0-fade-mask"
+                    width="100%"
+                    x="0%"
+                    y="0%"
+                  >
+                    <RNSVGRect
+                      fill={
+                        {
+                          "brushRef": "drawer-header-gradient-0-fade",
+                          "type": 1,
+                        }
+                      }
+                      height="100%"
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                      width="100%"
+                      x="0"
+                      y="0"
+                    />
+                  </RNSVGMask>
                 </RNSVGDefs>
                 <RNSVGRect
                   fill={
@@ -223,6 +278,7 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                     }
                   }
                   height="100%"
+                  mask="drawer-header-gradient-0-fade-mask"
                   propList={
                     [
                       "fill",
@@ -1451,13 +1507,18 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
           <View
             pointerEvents="none"
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                {
+                  "opacity": 0.64,
+                },
+              ]
             }
           >
             <RNSVGSvgView
@@ -1508,6 +1569,56 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                     rx="150%"
                     ry="100%"
                   />
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0.45,
+                        -1,
+                        1,
+                        16777215,
+                      ]
+                    }
+                    gradientTransform={null}
+                    gradientUnits={0}
+                    name="drawer-header-gradient-0-fade"
+                    x1="0"
+                    x2="0"
+                    y1="0"
+                    y2="1"
+                  />
+                  <RNSVGMask
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    height="100%"
+                    maskContentUnits={1}
+                    maskUnits={0}
+                    name="drawer-header-gradient-0-fade-mask"
+                    width="100%"
+                    x="0%"
+                    y="0%"
+                  >
+                    <RNSVGRect
+                      fill={
+                        {
+                          "brushRef": "drawer-header-gradient-0-fade",
+                          "type": 1,
+                        }
+                      }
+                      height="100%"
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                      width="100%"
+                      x="0"
+                      y="0"
+                    />
+                  </RNSVGMask>
                 </RNSVGDefs>
                 <RNSVGRect
                   fill={
@@ -1517,6 +1628,7 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                     }
                   }
                   height="100%"
+                  mask="drawer-header-gradient-0-fade-mask"
                   propList={
                     [
                       "fill",
@@ -2502,13 +2614,18 @@ exports[`<Drawer /> (native) should render a Drawer with a custom header 1`] = `
           <View
             pointerEvents="none"
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                {
+                  "opacity": 0.64,
+                },
+              ]
             }
           >
             <RNSVGSvgView
@@ -2559,6 +2676,56 @@ exports[`<Drawer /> (native) should render a Drawer with a custom header 1`] = `
                     rx="150%"
                     ry="100%"
                   />
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0.45,
+                        -1,
+                        1,
+                        16777215,
+                      ]
+                    }
+                    gradientTransform={null}
+                    gradientUnits={0}
+                    name="drawer-header-gradient-0-fade"
+                    x1="0"
+                    x2="0"
+                    y1="0"
+                    y2="1"
+                  />
+                  <RNSVGMask
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    height="100%"
+                    maskContentUnits={1}
+                    maskUnits={0}
+                    name="drawer-header-gradient-0-fade-mask"
+                    width="100%"
+                    x="0%"
+                    y="0%"
+                  >
+                    <RNSVGRect
+                      fill={
+                        {
+                          "brushRef": "drawer-header-gradient-0-fade",
+                          "type": 1,
+                        }
+                      }
+                      height="100%"
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                      width="100%"
+                      x="0"
+                      y="0"
+                    />
+                  </RNSVGMask>
                 </RNSVGDefs>
                 <RNSVGRect
                   fill={
@@ -2568,6 +2735,7 @@ exports[`<Drawer /> (native) should render a Drawer with a custom header 1`] = `
                     }
                   }
                   height="100%"
+                  mask="drawer-header-gradient-0-fade-mask"
                   propList={
                     [
                       "fill",
