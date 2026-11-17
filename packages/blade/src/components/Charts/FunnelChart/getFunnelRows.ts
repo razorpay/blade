@@ -4,6 +4,8 @@ type FunnelRow = {
   [NAME_KEY]: string;
   [VALUE_KEY]: number;
   [LABEL_KEY]: string;
+  role: 'img';
+  'aria-label': string;
 };
 
 const toCount = (value: unknown): number => {
@@ -29,10 +31,13 @@ const getFunnelRows = (
   return data.map((row, index) => {
     const name = String(row[nameKey] ?? '');
     const percent = first > 0 ? formatPercent((counts[index] / first) * 100) : null;
+    const label = percent === null ? name : `${name} · ${percent}`;
     return {
       [NAME_KEY]: name,
       [VALUE_KEY]: counts[index],
-      [LABEL_KEY]: percent === null ? name : `${name} · ${percent}`,
+      [LABEL_KEY]: label,
+      role: 'img',
+      'aria-label': `${label}, ${counts[index]}`,
     };
   });
 };

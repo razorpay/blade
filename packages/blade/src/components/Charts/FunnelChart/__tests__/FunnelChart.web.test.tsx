@@ -58,6 +58,22 @@ describe('<ChartFunnelWrapper />', () => {
     expect(container.querySelectorAll('.recharts-funnel-trapezoid')).toHaveLength(0);
   });
 
+  it('should name each step for screen readers', () => {
+    const { getByRole } = renderWithTheme(<Funnel />);
+    expect(getByRole('img', { name: 'Calls made · 56%, 19' })).toBeInTheDocument();
+  });
+
+  it('should throw without a ChartFunnel', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    expect(() =>
+      renderWithTheme(
+        <ChartFunnelWrapper data={steps}>
+          <ChartTooltip />
+        </ChartFunnelWrapper>,
+      ),
+    ).toThrow('ChartFunnelWrapper needs one ChartFunnel child');
+  });
+
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Funnel />);
     await assertAccessible(container);

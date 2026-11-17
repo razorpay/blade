@@ -10,15 +10,15 @@ const rowsOf = (...counts: unknown[]): ReturnType<typeof getFunnelRows> =>
 describe('getFunnelRows', () => {
   it('should label each step with its share of the first step', () => {
     expect(rowsOf(34, 19, 19, 5)).toEqual([
-      { name: 'Step 1', value: 34, label: 'Step 1 · 100%' },
-      { name: 'Step 2', value: 19, label: 'Step 2 · 56%' },
-      { name: 'Step 3', value: 19, label: 'Step 3 · 56%' },
-      { name: 'Step 4', value: 5, label: 'Step 4 · 15%' },
+      expect.objectContaining({ name: 'Step 1', value: 34, label: 'Step 1 · 100%' }),
+      expect.objectContaining({ name: 'Step 2', value: 19, label: 'Step 2 · 56%' }),
+      expect.objectContaining({ name: 'Step 3', value: 19, label: 'Step 3 · 56%' }),
+      expect.objectContaining({ name: 'Step 4', value: 5, label: 'Step 4 · 15%' }),
     ]);
   });
 
   it('should keep a step that everyone dropped at 0%', () => {
-    expect(rowsOf(4200, 1800, 0)[2]).toEqual({ name: 'Step 3', value: 0, label: 'Step 3 · 0%' });
+    expect(rowsOf(4200, 1800, 0)[2]).toMatchObject({ value: 0, label: 'Step 3 · 0%' });
   });
 
   it('should treat missing, negative and non-numeric counts as 0', () => {
@@ -36,7 +36,8 @@ describe('getFunnelRows', () => {
 
   it('should drop only the keys it needs from each row', () => {
     const [row] = getFunnelRows([{ step: 'Visited', count: 3, x: 99, width: 1 }], 'count', 'step');
-    expect(Object.keys(row)).toEqual(['name', 'value', 'label']);
+    expect(Object.keys(row)).toEqual(['name', 'value', 'label', 'role', 'aria-label']);
+    expect(row['aria-label']).toBe('Visited · 100%, 3');
   });
 });
 

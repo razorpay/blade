@@ -17,6 +17,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 const _ChartFunnel = ({ color = DEFAULT_COLOR }: ChartFunnelProps): JSX.Element => {
   const { theme } = useTheme();
@@ -98,6 +99,12 @@ const ChartFunnelWrapper = ({
     (child): child is React.ReactElement<ChartFunnelProps> =>
       React.isValidElement(child) && getComponentId(child) === componentIds.chartFunnel,
   );
+  if (!funnel) {
+    throwBladeError({
+      message: 'ChartFunnelWrapper needs one ChartFunnel child',
+      moduleName: 'ChartFunnelWrapper',
+    });
+  }
   const dataKey = funnel?.props.dataKey ?? '';
   const nameKey = funnel?.props.nameKey ?? 'name';
   const color = funnel?.props.color ?? DEFAULT_COLOR;

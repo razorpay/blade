@@ -826,7 +826,7 @@ Blade's charts wrap Recharts and add Blade tokens; they don't draw their own sha
 What that costs:
 
 - **No percentage axis or drop-off layer.** Recharts draws the funnel as trapezoids. The share of the first step moves into the step labels, and the drop-off reads as the narrowing between steps.
-- **No keyboard tooltip.** Recharts' `FunnelChart` only allows item tooltips, and its keyboard handling only drives axis tooltips. The chart takes focus, but arrow keys don't move a tooltip. This is a Recharts limit; Blade doesn't add a focus layer of its own.
+- **No keyboard tooltip.** Recharts' `FunnelChart` only allows item tooltips, and its keyboard handling only drives axis tooltips. The chart takes focus, but arrow keys don't move a tooltip. This is a Recharts limit; Blade doesn't add a focus layer of its own. Each step still carries `role="img"` and an `aria-label` (step, share, count) through Recharts' own props, so screen readers can read the steps.
 - **Raw counts in the tooltip.** `ChartTooltip` prints the value Recharts hands it, so there is no `formatValue`.
 
 #### Alternate APIs

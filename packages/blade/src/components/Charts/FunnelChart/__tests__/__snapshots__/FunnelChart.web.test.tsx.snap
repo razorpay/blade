@@ -95,11 +95,13 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
+                  aria-label="Carts abandoned · 100%, 34"
                   class="recharts-trapezoid"
                   d="M 5,5L 479,5L 374.4412,102.5L 109.5588,102.5L 5,5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
                   height="97.5"
                   name="Carts abandoned"
+                  role="img"
                   stroke="hsla(0, 0%, 100%, 1)"
                   stroke-width="2"
                   width="474"
@@ -113,11 +115,13 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
+                  aria-label="Calls made · 56%, 19"
                   class="recharts-trapezoid"
                   d="M 109.5588,102.5L 374.4412,102.5L 374.4412,200L 109.5588,200L 109.5588,102.5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
                   height="97.5"
                   name="Calls made"
+                  role="img"
                   stroke="hsla(0, 0%, 100%, 1)"
                   stroke-width="2"
                   width="264.88235294117646"
@@ -131,11 +135,13 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
+                  aria-label="Calls connected · 56%, 19"
                   class="recharts-trapezoid"
                   d="M 109.5588,200L 374.4412,200L 276.8529,297.5L 207.1471,297.5L 109.5588,200 Z"
                   fill="hsla(217, 100%, 73%, 1)"
                   height="97.5"
                   name="Calls connected"
+                  role="img"
                   stroke="hsla(0, 0%, 100%, 1)"
                   stroke-width="2"
                   width="264.88235294117646"
@@ -149,11 +155,13 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
+                  aria-label="Ordered within 24 hours · 15%, 5"
                   class="recharts-trapezoid"
                   d="M 207.1471,297.5L 276.8529,297.5L 276.8529,395L 207.1471,395L 207.1471,297.5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
                   height="97.5"
                   name="Ordered within 24 hours"
+                  role="img"
                   stroke="hsla(0, 0%, 100%, 1)"
                   stroke-width="2"
                   width="69.70588235294117"
