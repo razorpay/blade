@@ -1,10 +1,15 @@
 import React from 'react';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { act, fireEvent, waitFor } from '@testing-library/react';
 import { RazorSenseChat, RazorSenseThinking, RazorSenseBottomWave } from '../index';
 import { RazorSenseChatBackground } from '../../RazorSenseChatBackground';
 import { RazorSenseLoader } from '../../RazorSenseLoader';
 import { ChatMessage } from '~components/ChatMessage';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { bladeTheme } from '~tokens/theme';
+import { BladeProvider } from '~components/BladeProvider';
+
+/** how often rolling texts change (RollingText's default) */
+const ROLL_MS = bladeTheme.motion.delay.xlong;
 
 // jsdom has no WebGL2: every component goes to its still and says so through onError, which is what these check, with the root
 // element's ref, className and style
@@ -201,6 +206,51 @@ describe('RazorSense 2.0 components', () => {
     );
     expect(getByText('Thinking...')).toBeInTheDocument();
     expect(container.querySelector('[data-blade-component="razorsense-thinking"]')).toBeNull();
+  });
+
+  it('hold rolling texts on the one shown while paused, and roll on from it after', () => {
+    jest.useFakeTimers();
+    const texts = ['Thinking...', 'Searching...', 'Writing...'];
+    const shown = (getText: (text: string) => HTMLElement | null): string[] =>
+      texts.filter((text) => getText(text));
+    const { queryByText, rerender: rerenderBare } = renderWithTheme(
+      <RazorSenseThinking texts={texts} />,
+    );
+    const rerender = (ui: React.ReactElement): void =>
+      rerenderBare(
+        <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+          {ui}
+        </BladeProvider>,
+      );
+    expect(shown(queryByText)).toEqual(['Thinking...']);
+    // rolled on to the second, then paused: it stays there
+    act(() => {
+      jest.advanceTimersByTime(ROLL_MS);
+    });
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(shown(queryByText)).toEqual(['Searching...']);
+    rerender(<RazorSenseThinking texts={texts} isPaused />);
+    // (two rolls: three would come round to the same one)
+    act(() => {
+      jest.advanceTimersByTime(ROLL_MS * 2);
+    });
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(shown(queryByText)).toEqual(['Searching...']);
+    // resumed: from the held one, on to the next
+    rerender(<RazorSenseThinking texts={texts} />);
+    expect(shown(queryByText)).toEqual(['Searching...']);
+    act(() => {
+      jest.advanceTimersByTime(ROLL_MS);
+    });
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(shown(queryByText)).toEqual(['Writing...']);
+    jest.useRealTimers();
   });
 
   it('warn when a part inside RazorSenseChat is given props the chat takes over', () => {
