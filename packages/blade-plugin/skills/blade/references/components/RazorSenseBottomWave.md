@@ -14,11 +14,11 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - Typing reaches it from the input itself: every edit typed in an input, textarea or editable element inside counts as a keystroke. What's typed is never read.
 - Inside `RazorSenseChat` its own `scale`, `isPaused`, `onLoad` and `onError` don't apply: set them on `RazorSenseChat`. In development it warns when they're set there.
 - On its own, the wave never draws over the input, but it can draw over things beside or under it that aren't positioned (give them `position: relative` to keep them above it). Inside `RazorSenseChat` it's behind everything in the chat.
-- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then.
+- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds even at its lowest step) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then.
 - With reduced motion on it shows one still frame of the wave.
 - The effect is decorative: hidden from screen readers. The chat input inside stays as it is.
 - `scale` is held between 0.75 and 1.25.
-- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs.
+- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
 - It isn't RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. Use RazorSenseBottomWave for the animated wave under a chat input.
 
@@ -49,9 +49,11 @@ type RazorSenseBottomWaveProps = {
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2), or the browser
-   * took its GPU context back. It shows its still frame instead. Too slow counts for the whole page: once one RazorSense 2.0
-   * animation finds that, every one on the page shows its still, including ones mounted later, until the page reloads.
+   * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
+   * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
+   * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
+   * the page reloads. Before that, a device that can't keep up (under 45 a second) steps down page-wide: every other frame, then
+   * a lower sharpness too.
    */
   onError?: (error: Error) => void;
   /**
