@@ -253,6 +253,8 @@ class FreshStage {
         hasFailed: false,
       };
       this.prepared = prepared;
+      // (making it is a step of its own: the first call compiles the engine's code)
+      return false;
     }
     const prepared = this.prepared;
     if (prepared.engine || prepared.hasFailed) return true;
