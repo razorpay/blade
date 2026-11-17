@@ -17,6 +17,7 @@ This document outlines the API of Charts component.
     - [`BarChart`](#35-bar-chart)
     - [`DonutChart`](#36-donut-chart)
     - [`SankeyChart`](#37-sankey-chart)
+    - [`FunnelChart`](#38-funnel-chart)
   - [Open questions](#4-open-questions)
 
 ---
@@ -434,13 +435,13 @@ band for that period. In a grouped chart every bar can carry its own range, so t
 revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
 mush, and only the hovered bar's range is being asked about.
 
-| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
-| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
-| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
-| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
-| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
-| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
-| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
+| Prop (on `ChartBar`) | Type      | Default            | Description                                             |
+| -------------------- | --------- | ------------------ | ------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                   |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range             |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour        |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only   |
 
 - Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
   against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
@@ -457,7 +458,7 @@ mush, and only the hovered bar's range is being asked about.
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
   y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
-  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
+  series' bar centres, read from the rendered bar rects — a bound series sits at the _category_
   centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
   (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
   _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
@@ -690,7 +691,7 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 | `expandedGroupDepths`        | `number[]`                                             | ❌       | —                        | Expanded groups (controlled); keyed by column depth like `defaultExpandedGroupDepths`                                    |
 | `onExpandChange`             | `(event: SankeyGroupExpandEvent) => void`              | ❌       | —                        | Called when a group is expanded or folded                                                                                |
 | `onNodeClick`                | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked (never for a group node)                                                               |
-| `onLinkClick`                | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked (never for a ribbon merged into a group)                                         |
+| `onLinkClick`                | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked (never for a ribbon merged into a group)                                            |
 
 Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
@@ -756,9 +757,147 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 </Box>
 ```
 
-### 3.8\. Axis and Grid Components
+### 3.8\. Funnel Chart
 
-#### 3.8.1\. ReferenceLine Component
+<img src="./images/funnel-chart.png" alt="Funnel Chart Design"  height="400" width="600"/>
+
+A funnel shows how many people (or payments, orders, sessions) reach each step of a sequence, and how many drop off between one step and the next. Each step is one column on a shared baseline:
+
+- the **solid** part is who reached the step;
+- the **hatched** part above it, up to the previous step's height, is who dropped since the previous step.
+
+Heights are a percentage of the first step, so the y-axis reads `0%`–`100%`. Hovering a column, or moving to it with the keyboard, darkens it and shows a tooltip with the step's reached and dropped counts and their shares of the previous step.
+
+#### Data shape
+
+One row per step, in funnel order — the same row type `ChartBarWrapper` takes. `ChartFunnel`'s `dataKey` names the count, `ChartXAxis`'s `dataKey` names the step label.
+
+```ts
+type data = { [key: string]: string | number };
+
+const steps = [
+  { step: 'Carts abandoned', count: 34 },
+  { step: 'Calls made', count: 19 },
+  { step: 'Calls connected', count: 19 },
+  { step: 'Ordered within 24 hours', count: 5 },
+];
+```
+
+How each step is drawn and described:
+
+| Case                               | Drawn as                                                           | Tooltip                                      |
+| ---------------------------------- | ------------------------------------------------------------------ | -------------------------------------------- |
+| First step                         | Solid column at 100%                                               | Reached only (there is no previous step)     |
+| Step smaller than the previous one | Solid up to its own share, hatched up to the previous step's share | Reached (share of previous), Dropped (share) |
+| Step equal to the previous one     | Solid column, no hatch                                             | Reached (100%); no Dropped row               |
+| Step larger than the previous one  | Solid column, no hatch                                             | Reached (share above 100%); no Dropped row   |
+| Step larger than the first one     | Solid column above 100%; the y-axis grows to fit                   | As above                                     |
+| 100% drop (count `0`)              | Hatched column only                                                | Reached 0 (0%), Dropped (100%)               |
+| Missing or non-numeric count       | Treated as `0`                                                     | As a `0` count                               |
+| First step is `0`                  | Every column is 0% — there is nothing to be a share of             | Counts only                                  |
+| A single step                      | One solid column at 100%                                           | Reached only                                 |
+| Empty `data`                       | Axes and grid with no columns                                      | —                                            |
+
+A count above zero is never drawn shorter than 2px, so a step that kept a handful out of thousands still shows up.
+
+#### `ChartFunnelWrapper` Props
+
+| Prop          | Type                                    | Required | Default | Description                                                                                       |
+| ------------- | --------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------- |
+| `data`        | `{ [key: string]: string \| number }[]` | ✅       | —       | One row per step, in funnel order                                                                 |
+| `children`    | `React.ReactNode`                       | ✅       | —       | One `<ChartFunnel>`, plus any of `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip` |
+| `testID`      | `string`                                | ❌       | —       | `data-testid` for the wrapper element                                                             |
+| `...BoxProps` | `BoxProps`                              | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart                                 |
+
+#### `ChartFunnel` Props
+
+| Prop          | Type                          | Required | Default                                       | Description                                                                        |
+| ------------- | ----------------------------- | -------- | --------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `dataKey`     | `string`                      | ✅       | —                                             | Key of the count in each row                                                       |
+| `name`        | `string`                      | ❌       | `'Reached'`                                   | Tooltip label of the solid part                                                    |
+| `droppedName` | `string`                      | ❌       | `'Dropped'`                                   | Tooltip label of the hatched part                                                  |
+| `color`       | `ChartsCategoricalColorToken` | ❌       | `'data.background.categorical.blue.moderate'` | Colour of the solid part; the hatch and the hover state use the same colour family |
+| `formatValue` | `(value: number) => string`   | ❌       | Indian digit grouping (`12,34,567`)           | Formats the counts in the tooltip                                                  |
+
+The common components keep their usual props. Inside a funnel, `ChartYAxis` defaults to percentage ticks (`0%`, `25%`, `50%`, `75%`, `100%`) and `ChartTooltip` shows the funnel's own content; both still accept overrides.
+
+Example —
+
+```tsx
+import {
+  ChartFunnelWrapper,
+  ChartFunnel,
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+} from '@razorpay/blade/components';
+
+<Box height="300px">
+  <ChartFunnelWrapper data={steps}>
+    <ChartCartesianGrid />
+    <ChartXAxis dataKey="step" />
+    <ChartYAxis />
+    <ChartTooltip />
+    <ChartFunnel dataKey="count" name="Reached" droppedName="Dropped" />
+  </ChartFunnelWrapper>
+</Box>;
+
+// A compact funnel for a card: no axes or grid. The hidden x-axis still names each step in the tooltip.
+<Box height="96px">
+  <ChartFunnelWrapper data={steps}>
+    <ChartXAxis dataKey="step" hide />
+    <ChartTooltip />
+    <ChartFunnel dataKey="count" />
+  </ChartFunnelWrapper>
+</Box>;
+```
+
+#### Why not `ChartBar`?
+
+A funnel looks like a stacked bar chart, and the first attempts in the value dashboard built it from `ChartBar`. Three things stopped that, so the funnel draws its own columns:
+
+- `ChartBar` draws a darker cap line on every bar, with no way to turn it off; a funnel's hatched part needs a clean top.
+- `ChartBarWrapper` fixes `barSize`, `barGap` and `barCategoryGap`, so columns can't fill the width. Funnel columns grow with the chart, up to 192px each, with 16px between them.
+- There is no "dropped since the previous step" layer, and the tooltip can only print each series' raw value — here that would be a percentage, not the count.
+
+`ChartXAxis` still reserves room for its label under the ticks. Pass `hide` to it (as in the compact example) where every pixel of height counts.
+
+#### Alternate APIs
+
+<details>
+<summary>A single data child, like `ChartSankey`</summary>
+
+```tsx
+<ChartFunnelWrapper showTooltip>
+  <ChartFunnel data={steps} labelKey="step" valueKey="count" showAxis />
+</ChartFunnelWrapper>
+```
+
+- Pros
+  - Nothing to compose; the funnel always looks the same.
+- Cons
+  - Axis, grid and tooltip become boolean props, unlike every other cartesian chart in Blade.
+  - The compact and full versions differ by a set of flags instead of by which children are present.
+
+</details>
+
+<details>
+<summary>Recharts' own `FunnelChart` and `Funnel`</summary>
+
+Recharts ships a funnel drawn as stacked trapezoids, one per step, narrowing downwards. It shows the shape of a funnel but not the numbers: there is no axis to read a share from, and the drop-off between steps is the slope of a trapezoid edge rather than a measurable area. The column funnel above is what product dashboards (Mixpanel, Amplitude, PostHog) use for conversion, so Blade uses it too.
+
+</details>
+
+#### Out of scope for now
+
+- **Rate labels between columns.** The tooltip carries each step's share of the previous one. Labels printed between the columns would need room the columns don't have at 6+ steps; they can come later as an opt-in.
+- **`ChartLegend`.** The tooltip names both parts of every column, so the funnel has no legend.
+- **React Native.** `ChartFunnelWrapper` throws on native for now.
+
+### 3.9\. Axis and Grid Components
+
+#### 3.9.1\. ReferenceLine Component
 
 | Prop    | Type              | Required | Default     | Description                                           |
 | ------- | ----------------- | -------- | ----------- | ----------------------------------------------------- |
@@ -768,7 +907,7 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 > **Component Re-exports:** Components like ResponsiveContainer, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
-#### 3.8.2\. ReferenceBand Component (LineChart, BarChart)
+#### 3.9.2\. ReferenceBand Component (LineChart, BarChart)
 
 `ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line or a bar can be compared against the range other series fall in.
 
@@ -784,7 +923,7 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 > **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): the invisible bound lines let Recharts compute geometry and fold it into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
 
-#### 3.8.3\. Per-line reference bands (range on `ChartLine`) — Industry SR
+#### 3.9.3\. Per-line reference bands (range on `ChartLine`) — Industry SR
 
 For the Industry SR use case (Optimizer), a chart can show **multiple trend lines, each with its own color-matched range band** (the industry min–max for that metric). Rather than N standalone `ChartReferenceBand`s, the range lives on `ChartLine` so the band auto-matches the line color and the tooltip pairs value+range:
 

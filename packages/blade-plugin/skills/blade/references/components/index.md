@@ -43,6 +43,7 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **Fade**: The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear.
 - **FileUpload**: The FileUpload component is used to handle file attachments, including drag-and-drop interactions.
 - **FloatingActionButton**: FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.
+- **FunnelChart**: FunnelChart shows how many reach each step of a sequence and how many drop off between steps.
 - **Heading**: The Heading component is designed for creating section headings in a page's hierarchy.
 - **IconButton**: The IconButton component provides an accessible way to trigger actions using only icons.
 - **Icons**: Blade provides a collection of pre-designed icons that can be used throughout your application.

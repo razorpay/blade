@@ -1345,6 +1345,22 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'FunnelChart',
+    description:
+      'A Funnel Chart shows how many reach each step of a sequence and how many drop off between steps, built with Recharts and Blade design system styling.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.132.0',
+        storybookLink: 'Components/Charts/FunnelChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'SankeyChart',
     description:
       'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with Recharts and Blade design system styling.',
