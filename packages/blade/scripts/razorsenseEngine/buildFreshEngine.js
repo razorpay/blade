@@ -278,6 +278,20 @@ src = sub(src, `c.width = w; c.height = h; const X = c.getContext('2d');
   X.drawImage(m.im, 0, 0); try { const d = X.getImageData(`);
 src = sub(src, `t.width = iw; t.height = ih; const X = t.getContext('2d'); X.drawImage(base, 0, 0);`, `t.width = iw; t.height = ih; const X = t.getContext('2d', { willReadFrequently: true }); X.drawImage(base, 0, 0);`);
 
+// GPU memory the picture doesn't need (the review), with every draw the same:
+// - a layer's blur ran its first pass into a target of its own (A) that it kept for good, though only the second pass reads it (and
+//   made one even for a one-way blur, which never does): now a working target of that size comes from the pool and goes back after
+//   (without stable sizes, where there's no pool, the layer keeps its own as before, and only for a two-way blur)
+// - the pool of given-up targets held up to 96 MB; the loader's zoom filled it with sizes that never come back: 24 MB
+// (measured at 2x: RazorSenseChat 153 -> 120 MB, RazorSenseLoader 51 -> 27 MB)
+src = sub(src, `const A = layerTarget(R, 'A', L.rw, L.rh), B = layerTarget(R, 'B', L.rw, L.rh),`, `const B = layerTarget(R, 'B', L.rw, L.rh),`);
+src = sub(
+  src,
+  `if (bsx > 0 && bsy > 0) { blurPass((R.src || R.raw), A, [1, 0], bsx); blurPass(A.t, B, [0, 1], bsy); }`,
+  `if (bsx > 0 && bsy > 0) { const A = GPU_STABLE ? grTake(L.rw, L.rh) || makeTarget(L.rw, L.rh) : layerTarget(R, 'A', L.rw, L.rh); blurPass((R.src || R.raw), A, [1, 0], bsx); blurPass(A.t, B, [0, 1], bsy); if (GPU_STABLE) grPut(A); }`,
+);
+src = sub(src, `const GR_POOL_MAX = 96e6;   // bytes`, `const GR_POOL_MAX = 24e6;   // bytes`);
+
 // The shaders' text without their comments and indentation (3 KB gzipped off the engine, the PR review), as the GPU sees them all the
 // same. FS_COMP is left as it is: FS_COMP_AE is made from it at runtime by finding lines in it, comments included. Lines stay lines
 // (the preprocessor's, and grSpec's '^uniform int uX;' edits of FS_MAIN, need them); `${...}` parts are left alone.
