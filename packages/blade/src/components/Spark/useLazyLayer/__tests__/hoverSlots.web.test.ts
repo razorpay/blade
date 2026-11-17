@@ -23,7 +23,7 @@ const moveTo = (x: number, y: number): void => {
 };
 
 describe('holdNearPointer', () => {
-  it('holds the button the pointer is on at once, and a neighbour only once the pointer stops next to it', async () => {
+  it('holds the button the pointer is on at once, the one it heads for as it comes, and one it stops next to', async () => {
     const held: boolean[] = [];
     // five rows 40 px apart (10 px between them)
     const slots = [0, 40, 80, 120, 160].map((top, i) =>
@@ -43,17 +43,25 @@ describe('holdNearPointer', () => {
     await wait(200);
     expect(held).toEqual([undefined, true, undefined, undefined, undefined]);
 
-    // into the gap below it: row 1 is kept (still within reach), row 2 waits for the pointer to stay
-    moveTo(50, 75);
+    // off it and heading down for row 2: row 2 is held as the pointer comes (row 1 kept, still within reach)
+    moveTo(50, 72);
+    await wait(20);
+    moveTo(50, 76);
     await wait();
-    expect(held).toEqual([undefined, true, undefined, undefined, undefined]);
-    await wait(150);
     expect(held).toEqual([undefined, true, true, undefined, undefined]);
 
     // far away: all let go
     moveTo(50, 900);
     await wait();
     expect(held.filter(Boolean)).toHaveLength(0);
+
+    // after a pause, next to row 4 without coming towards it: row 4 waits for the pointer to stay
+    await wait(250);
+    moveTo(90, 117);
+    await wait(20);
+    expect(held[3]).not.toBe(true);
+    await wait(150);
+    expect(held[3]).toBe(true);
 
     slots.forEach((slot) => slot.remove());
   });

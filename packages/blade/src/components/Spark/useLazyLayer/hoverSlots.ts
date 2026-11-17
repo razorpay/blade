@@ -86,7 +86,8 @@ const check = (): void => {
   const heading = isOnOne
     ? null
     : [...slots]
-        .filter((slot) => !wanted.includes(slot) && slot.distance > 0 && slot.distance <= APPROACH)
+        // (all of them: when the one it's heading for is already held, no other is)
+        .filter((slot) => slot.distance > 0 && slot.distance <= APPROACH)
         .map((slot) => ({
           slot,
           closing: sinceLast ? (slot.lastDistance - slot.distance) / sinceLast : 0,
@@ -95,7 +96,7 @@ const check = (): void => {
           ({ closing, slot }) => closing >= MIN_CLOSING && slot.distance / closing <= ARRIVE_MS,
         )
         .sort((a, b) => a.slot.distance / a.closing - b.slot.distance / b.closing)[0]?.slot;
-  if (heading) wanted.push(heading);
+  if (heading && !wanted.includes(heading)) wanted.push(heading);
   slots.forEach((slot) => {
     slot.lastDistance = slot.distance;
   });
