@@ -69,6 +69,11 @@ export type FreshEngineHost = {
   msg: HTMLElement;
   /** called when the engine can't start (no WebGL2) */
   onError?: (reason: 'webgl2') => void;
+  /**
+   * made ahead of its comp (FreshStage.prepareStep, while the page is idle): it draws nothing and runs no frames till `load` gives
+   * it its comp
+   */
+  isHeld?: boolean;
 };
 
 export type FreshPlayer = {

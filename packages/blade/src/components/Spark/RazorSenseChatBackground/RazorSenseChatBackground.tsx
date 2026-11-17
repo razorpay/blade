@@ -166,6 +166,8 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
         getBox: () => hostRef.current,
         stageRef,
         loadComps: () => import('./comps'),
+        // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
+        engineAlpha: true,
         start: (stage, comps) => {
           const doc = withRoom(
             mode === 'dark' ? comps.chatBackgroundDark : comps.chatBackgroundLight,

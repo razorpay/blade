@@ -16,6 +16,11 @@ type FreshStageRun<Comps> = {
   shouldStart?: () => boolean;
   /** mounts what it draws on the new stage; false when it can't (no usable WebGL2) */
   start: (stage: FreshStage, comps: Comps) => boolean;
+  /**
+   * the clear background its comps ask for (their `opts.alpha`): given, its engine is made ahead, a step at a time while the page
+   * is idle, and `start` hands it the comp (made in one go, it's one long task on a slow phone)
+   */
+  engineAlpha?: boolean;
   /** it can't animate here (called once, with why): it goes to its still */
   onFail: (error: Error) => void;
   /** its stage is gone (failed, or unmounted): let go of what was drawn with it */
@@ -67,6 +72,7 @@ const runFreshStage = <Comps>({
   loadComps,
   shouldStart,
   start,
+  engineAlpha,
   onFail,
   onRelease,
   onWaiting,
@@ -158,23 +164,32 @@ const runFreshStage = <Comps>({
         return;
       }
       previous?.destroy();
-      leaveQueue = waitForTurn(box, () => {
-        if (!isLive) return null;
-        stage = new FreshStage(box, createFreshEngine, { onError });
-        stageRef.current = stage;
-        if (!start(stage, comps)) {
-          fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
-          return null;
+      // its stage, made at its turn: for the engine's first step made ahead, or for its start
+      const stageNow = (): FreshStage => {
+        if (!stage) {
+          stage = new FreshStage(box, createFreshEngine, { onError });
+          stageRef.current = stage;
         }
-        const started = stage;
-        // (drawn, given up, or not running: the next may start; or once it only waits on its GPU, a shader compiling in the
-        // background: its own work for its first frame is done, so the next's doesn't land on top of it)
-        return () =>
-          started.hasDrawn() ||
-          !started.hasEngine() ||
-          !started.isRunning() ||
-          started.waitsOnGpu();
-      });
+        return stage;
+      };
+      leaveQueue = waitForTurn(
+        box,
+        () => {
+          if (!isLive) return null;
+          const made = stageNow();
+          if (!start(made, comps)) {
+            fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
+            return null;
+          }
+          // (drawn, given up, or not running: the next may start; or once it only waits on its GPU, a shader compiling in the
+          // background: its own work for its first frame is done, so the next's doesn't land on top of it)
+          return () =>
+            made.hasDrawn() || !made.hasEngine() || !made.isRunning() || made.waitsOnGpu();
+        },
+        engineAlpha === undefined
+          ? undefined
+          : () => !isLive || stageNow().prepareStep(engineAlpha),
+      );
     })
     .catch(() => fail('its engine failed to load'));
   return () => {

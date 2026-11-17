@@ -222,10 +222,19 @@ src = sub(src, `const gpuOk = s => GPU_RASTER && !s.vsrc && !s.isrc && (s.fill |
 src = sub(src, `function frame(ts) {
   requestAnimationFrame(frame);`, `function frame(ts) {
   if (__dead || !__run) { __raf = 0; return; } __raf = requestAnimationFrame(frame);`);
+// Made a step at a time (freshEngineSteps, below): making an engine is one long task otherwise, 190-330 ms on a mid-range Android
+// phone (about 1 s on its first visit after the engine changes, the browser compiling the engine's code as it runs), which is the
+// page frozen. Each yield is a point the page may draw a frame between: the studio's tables, its blank document, the comp read in,
+// then the GPU context with its programs (sent to the GPU to compile), then the canvas sized. Each part is one task of its own
+src = sub(src, `let D = defaults();`, `let D = defaults();\nyield;`);
+src = sub(src, `const BUILTIN = builtins();`, `const BUILTIN = builtins();\nyield;`);
+src = sub(src, `D = normalize(EXP.doc);`, `yield;\nD = normalize(EXP.doc);`);
 src = sub(src, `if (!initGL()) document.body.textContent = 'This browser has no WebGL2.';
 else { layout(); addEventListener('resize', layout); requestAnimationFrame(frame); }`, `const __start = () => { if (!__raf && !__dead && __run) { last = -1; __raf = requestAnimationFrame(frame); } };
+yield;
 if (!initGL()) { if (__host.onError) __host.onError('webgl2'); }
-else { layout(); __ro = new ResizeObserver(() => { layout(); if (!D.tl.play) { try { render(); } catch (e) { } } }); __ro.observe(vpc); __start(); }
+// (held: made ahead of its comp, it draws nothing, not even on a resize, till load gives it one)
+else { yield; layout(); __ro = new ResizeObserver(() => { layout(); if (!D.tl.play && !__held) { try { render(); } catch (e) { } } }); __ro.observe(vpc); __start(); }
 return {
   player: RZS_PLAYER,
   ok: !!gl,
@@ -243,6 +252,7 @@ return {
   // same clear-background setting, which is the context's: false otherwise, and the stage makes a new engine
   load(exp) {
     if (__dead || !gl || !!(exp && exp.opts && exp.opts.alpha) !== GL_ALPHA) return false;
+    __held = false;
     for (const k of Object.keys(OPT)) delete OPT[k];
     Object.assign(OPT, { loop: 'timeline', fit: 'cover' }, exp.opts || {});
     D = normalize(exp.doc); D.view.mode = 'final'; D.view.ref = false; D.view.fps = 0;
@@ -330,13 +340,26 @@ const engine = GEN + `/* eslint-disable */
 import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
 
 /**
- * Mounts Razorsensation's engine on one canvas (host.canvas, sized to host.box) and plays one exported comp (exp.doc, exp.opts).
- * Every call is its own engine: its own document, WebGL2 context and frame loop.
+ * Mounts Razorsensation's engine on one canvas (host.canvas, sized to host.box) and plays one exported comp (exp.doc, exp.opts),
+ * a step at a time: each next() is one part of making it (one task each, so a slow phone draws frames between them), and the
+ * engine is what the last one returns. A held host (host.isHeld) gets an engine that draws and runs nothing till load() gives it
+ * its comp: made ahead, while the page is idle. Every engine is its own: its own document, WebGL2 context and frame loop.
  */
-export function createFreshEngine(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): FreshEngine {
-let __raf = 0, __run = true, __dead = false, __ro = null, __d3d = false;
+export function* freshEngineSteps(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): Generator<void, FreshEngine, void> {
+let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false;
 const __search = '';
-` + src + '\n}\n';
+` + src + `
+}
+
+/** Makes the engine at once: every step of freshEngineSteps in one go. */
+export function createFreshEngine(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): FreshEngine {
+  const steps = freshEngineSteps(__host, __EXP, __GPU);
+  for (;;) {
+    const step = steps.next();
+    if (step.done) return step.value;
+  }
+}
+`;
 const pretty = execFileSync(path.join(BLADE, 'node_modules', '.bin', 'prettier'), ['--stdin-filepath', OUT], { input: engine, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 
 /**

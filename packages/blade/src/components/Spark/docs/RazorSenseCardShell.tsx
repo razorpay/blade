@@ -226,7 +226,6 @@ const CtaArrow = styled.span`
   width: 16px;
   height: 16px;
   background-color: currentColor;
-  -webkit-mask: ${ARROW_MASK} center / contain no-repeat;
   mask: ${ARROW_MASK} center / contain no-repeat;
   transition: transform 0.35s ${EASE};
 `;
@@ -323,6 +322,8 @@ const RazorSenseCardShell = ({
         getBox: () => host,
         stageRef,
         loadComps: () => import('./razorSenseCardComps'),
+        // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
+        engineAlpha: true,
         start: (stage, comps) => {
           doc = (mode === 'dark' ? comps.razorSenseCardDark : comps.razorSenseCardLight) as CardDoc;
           mask = maskOf(doc);
