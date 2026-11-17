@@ -97,16 +97,15 @@ export const TestRazorSenseKeepsItsInputsUsable: StoryFn<typeof RazorSenseChatBa
 
 TestRazorSenseKeepsItsInputsUsable.play = async ({ canvasElement }) => {
   const { getByPlaceholderText } = within(canvasElement);
-  for (const [placeholder, text] of [
-    ['Ask on the landing', 'Settlements for March'],
-    ['Ask in the chat', 'And for April?'],
-  ]) {
+  const typeInto = async (placeholder: string, text: string): Promise<void> => {
     const input = getByPlaceholderText(placeholder);
     await userEvent.click(input);
     await expect(input).toHaveFocus();
     await userEvent.type(input, text);
     await expect(input).toHaveValue(text);
-  }
+  };
+  await typeInto('Ask on the landing', 'Settlements for March');
+  await typeInto('Ask in the chat', 'And for April?');
 };
 
 export default {
