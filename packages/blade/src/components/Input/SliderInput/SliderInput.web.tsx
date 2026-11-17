@@ -305,8 +305,11 @@ const _SliderInput = (
           // Labels only widen the floor when they are actually on screen.
           minWidth={makeSize(
             getMinTrackWidth(
-              markerValues.length,
-              showScale && showScaleValues ? widestLabelWidth : 0,
+              // Only the two bounds get a label when `showScaleValues` is off, and both are
+              // anchored inward, so the floor has to fit them side by side. Markers still need
+              // their own pitch when the scale is off entirely.
+              showScale && !showScaleValues ? 2 : markerValues.length,
+              showScale ? widestLabelWidth : 0,
             ),
           )}
         >

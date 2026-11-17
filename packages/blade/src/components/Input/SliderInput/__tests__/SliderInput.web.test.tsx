@@ -325,6 +325,26 @@ describe('<SliderInput />', () => {
     expect(queryByText('50')).not.toBeInTheDocument();
   });
 
+  it('should size the field for both bound labels when showScaleValues is false', () => {
+    // Both bounds are anchored inward, so wordy labels need room side by side even though the
+    // stops between them are never rendered or spaced.
+    const retryPolicies = ['Always ask me', 'Retry once', 'Retry twice', 'Always retry'];
+    const { container } = renderWithTheme(
+      <SliderInput
+        label="When a call fails"
+        min={0}
+        max={retryPolicies.length - 1}
+        step={1}
+        showScale
+        showScaleValues={false}
+        showValueIndicator={false}
+        formatValue={(value) => retryPolicies[value]}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should focus the thumb on click so the keyboard works straight after a drag', async () => {
     const user = userEvents.setup();
     const { getByRole } = renderWithTheme(<SliderInput label="Volume" defaultValue={50} />);
