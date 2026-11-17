@@ -1,3 +1,4 @@
+import { formatSharePercentage } from '../SankeyChart/labelUtils';
 import { LABEL_KEY, NAME_KEY, VALUE_KEY } from './tokens';
 
 type FunnelRow = {
@@ -13,12 +14,6 @@ const toCount = (value: unknown): number => {
   return Number.isFinite(count) ? Math.max(count, 0) : 0;
 };
 
-const formatPercent = (percent: number): string => {
-  if (percent > 0 && percent < 0.1) return '<0.1%';
-  if (percent > 99.5 && percent < 100) return '>99%';
-  return `${percent < 10 ? Number(percent.toFixed(1)) : Math.round(percent)}%`;
-};
-
 const getFunnelRows = (
   data: Record<string, unknown>[],
   dataKey: string,
@@ -30,7 +25,7 @@ const getFunnelRows = (
 
   return data.map((row, index) => {
     const name = String(row[nameKey] ?? '');
-    const percent = first > 0 ? formatPercent((counts[index] / first) * 100) : null;
+    const percent = first > 0 ? `${formatSharePercentage((counts[index] / first) * 100)}%` : null;
     const label = percent === null ? name : `${name} · ${percent}`;
     return {
       [NAME_KEY]: name,
@@ -42,5 +37,5 @@ const getFunnelRows = (
   });
 };
 
-export { getFunnelRows, formatPercent };
+export { getFunnelRows };
 export type { FunnelRow };
