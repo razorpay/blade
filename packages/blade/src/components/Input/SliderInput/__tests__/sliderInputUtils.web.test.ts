@@ -142,7 +142,7 @@ describe('SliderInput utils', () => {
   describe('getScaleLabelPosition', () => {
     it('should start the first label at its tick, end the last at its tick and centre the rest', () => {
       expect(getScaleLabelPosition(0, false)).toEqual({ insetInlineStart: getOffsetExpression(0) });
-      expect(getScaleLabelPosition(1, false).insetInlineEnd).toBeDefined();
+      expect(getScaleLabelPosition(1, false).insetInlineEnd).toBe('1.5px');
       expect(getScaleLabelPosition(1, false).transform).toBeUndefined();
       expect(getScaleLabelPosition(0.5, false)).toEqual({
         insetInlineStart: getOffsetExpression(0.5),
@@ -205,6 +205,18 @@ describe('SliderInput utils', () => {
   describe('getMinTrackWidth', () => {
     it('should widen the floor when labels are wider than the marker ring', () => {
       expect(getMinTrackWidth(5, 0)).toBeLessThan(getMinTrackWidth(5, 30));
+    });
+
+    it('should keep every label at the floor width', () => {
+      const values = [0, 25, 50, 75, 100];
+      expect(
+        getSpacedScaleValues({
+          values,
+          trackWidth: getMinTrackWidth(values.length, 30),
+          widestLabelWidth: 30,
+          range: { min: 0, max: 100 },
+        }),
+      ).toEqual(values);
     });
 
     it('should leave room for both end labels when there are only two stops', () => {

@@ -221,9 +221,9 @@ const getSpacedScaleValues = ({
 /** Narrowest track that can show every marker and label without collision. */
 const getMinTrackWidth = (markerCount: number, widestLabelWidth: number): number => {
   if (markerCount <= 1) return SLIDER_MARKER_DOT;
-  const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, widestLabelWidth + SLIDER_SCALE_LABEL_GAP);
-  const bothEnds = widestLabelWidth * 2 + SLIDER_SCALE_LABEL_GAP;
-  return Math.ceil(Math.max(pitch * (markerCount - 1), bothEnds) + SLIDER_MARKER_DOT);
+  const reach = markerCount === 2 ? widestLabelWidth * 2 : widestLabelWidth * 1.5;
+  const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, reach + SLIDER_SCALE_LABEL_GAP);
+  return Math.ceil(pitch * (markerCount - 1) + SLIDER_MARKER_DOT);
 };
 
 /**

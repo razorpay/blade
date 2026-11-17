@@ -639,7 +639,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  min-width: 79px;
+  min-width: 107px;
 }
 
 .c5.c5.c5.c5.c5 {
