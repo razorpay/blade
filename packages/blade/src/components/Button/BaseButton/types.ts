@@ -90,6 +90,9 @@ export type StyledBaseButtonProps = Omit<
   hoverBackgroundColor: string;
   hoverBorderColor?: string;
   hoverIconColor: DotNotationToken<Theme['colors']>;
+  /** pressed (`:active`; web): the focus background and shadow when unset */
+  activeBackgroundColor?: string;
+  activeBoxShadow?: string;
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;

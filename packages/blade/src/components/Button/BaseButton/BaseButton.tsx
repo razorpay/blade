@@ -868,9 +868,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusBoxShadow={focusBoxShadow}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
-      // with RazorSense the hover is RazorSense over the button as it is (flow 9 keeps the black / white surface and its insets)
+      // with RazorSense the hover is RazorSense over the button as it is (flow 9 keeps the black / white surface and its insets),
+      // pressed too (the button's press scale is its feedback)
       hoverBoxShadow={isRazorSenseLiveHover ? defaultBoxShadow : hoverBoxShadow}
       hoverBackgroundColor={isRazorSenseLiveHover ? defaultBackgroundColor : hoverBackgroundColor}
+      activeBoxShadow={isRazorSenseLiveHover ? defaultBoxShadow : undefined}
+      activeBackgroundColor={isRazorSenseLiveHover ? defaultBackgroundColor : undefined}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
