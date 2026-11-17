@@ -76,6 +76,14 @@ const freshFailures: Record<FreshFailure, string> = {
  */
 const FIRST_DRAW_MS = 45000;
 
+/**
+ * Out of sight this long (its box off screen, past WAKE_MARGIN), a stage's engine gives its GPU memory back (sleep: its context
+ * let go, everything else kept), and makes it again once its box comes within WAKE_MARGIN of the screen, so its frame is back by
+ * the time it scrolls in (ms)
+ */
+const SLEEP_AFTER_MS = 30000;
+const WAKE_MARGIN = '400px';
+
 /** how long a lost GPU context may take to come back before the stage gives up on it (ms) */
 const LOST_MS = 2000;
 
@@ -163,6 +171,10 @@ class FreshStage {
   private hasReportedSlow = false;
   private settleId = 0;
   private showId = 0;
+  private sleepTimer = 0;
+  private isAsleep = false;
+  private isNear = true;
+  private nearObserver: IntersectionObserver | null = null;
   private lostTimer = 0;
   private intersectionObserver: IntersectionObserver | null = null;
   private msgObserver: MutationObserver | null = null;
@@ -199,6 +211,14 @@ class FreshStage {
         this.update();
       });
       this.intersectionObserver.observe(box);
+      this.nearObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.isNear = entry ? entry.isIntersecting : true;
+          this.update();
+        },
+        { rootMargin: WAKE_MARGIN },
+      );
+      this.nearObserver.observe(box);
     }
     document.addEventListener('visibilitychange', this.update);
   }
@@ -361,6 +381,10 @@ class FreshStage {
     this.settleId = 0;
     cancelAnimationFrame(this.showId);
     this.showId = 0;
+    window.clearTimeout(this.sleepTimer);
+    this.sleepTimer = 0;
+    this.nearObserver?.disconnect();
+    this.nearObserver = null;
     this.dropPrepared();
     this.unmountEngine();
     this.intersectionObserver?.disconnect();
@@ -377,7 +401,8 @@ class FreshStage {
 
   /** the browser took the GPU context back (too many on a page, a GPU reset): if it isn't back soon, the component goes to its still */
   private onContextLost = (): void => {
-    if (this.isDestroyed || this.lostTimer) return;
+    // (let go on purpose, out of sight: not a loss)
+    if (this.isDestroyed || this.lostTimer || this.isAsleep) return;
     this.lostTimer = window.setTimeout(() => {
       this.lostTimer = 0;
       if (!this.isDestroyed) this.onError?.('lost');
@@ -474,12 +499,12 @@ class FreshStage {
    * nothing is drawn yet, which on a slow GPU (compiling its shaders) or with an engine made ahead could be a second or more. The
    * box's own background (the splash's ground) or the component's still shows meanwhile.
    */
-  private showOnFirstFrame(): void {
+  private showOnFirstFrame(after = 0): void {
     cancelAnimationFrame(this.showId);
     const check = (): void => {
       this.showId = 0;
       if (this.isDestroyed || !this.engine) return;
-      if (this.hasDrawn()) {
+      if ((this.engine.drawn?.() ?? 1) > after) {
         this.canvas.style.visibility = '';
         return;
       }
@@ -488,7 +513,49 @@ class FreshStage {
     check();
   }
 
+  /** asleep, or a timer to sleep, or awake again: by whether its box is in sight, or near it */
+  private updateSleep(): void {
+    const { engine } = this;
+    if (!engine?.sleep || this.isDestroyed) return;
+    if (this.isAsleep) {
+      if (this.isNear) this.wake();
+      return;
+    }
+    if (this.isNear) {
+      window.clearTimeout(this.sleepTimer);
+      this.sleepTimer = 0;
+    } else if (!this.sleepTimer) {
+      this.sleepTimer = window.setTimeout(this.sleep, SLEEP_AFTER_MS);
+    }
+  }
+
+  private sleep = (): void => {
+    this.sleepTimer = 0;
+    const { engine } = this;
+    // (one that hasn't drawn yet is still compiling: let go now, it would compile it all again on waking)
+    if (!engine?.sleep || this.isDestroyed || this.isAsleep || this.isNear || !this.hasDrawn())
+      return;
+    this.isAsleep = true;
+    if (!engine.sleep()) {
+      this.isAsleep = false;
+      return;
+    }
+    // (its canvas is blank now: hidden till the frame it had is drawn again)
+    this.canvas.style.visibility = 'hidden';
+  };
+
+  private wake(): void {
+    const { engine } = this;
+    this.isAsleep = false;
+    if (!engine) return;
+    this.showOnFirstFrame(engine.drawn?.() ?? 0);
+    engine.wake?.();
+  }
+
   private unmountEngine(): void {
+    window.clearTimeout(this.sleepTimer);
+    this.sleepTimer = 0;
+    this.isAsleep = false;
     if (this.engine) {
       // (one that never drew is let go softly: losing its context by hand waits for a GPU that may be stuck compiling)
       this.engine.destroy(this.hasStalled || !this.hasDrawn());
@@ -512,6 +579,7 @@ class FreshStage {
     engine.setRunning(isRunning && !this.driver);
     if (isRunning && this.driver) this.startLoop();
     else this.stopLoop();
+    this.updateSleep();
   };
 
   private startLoop(): void {

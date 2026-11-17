@@ -19,7 +19,8 @@ export function* freshEngineSteps(
     __held = !!__host.isHeld,
     __dead = false,
     __ro = null,
-    __d3d = false;
+    __d3d = false,
+    __sleepX = null;
   const __search = '';
   // ============================================================================================
   // 01-core: constants, the document, keyframes, undo, saving, presets, colour
@@ -3841,10 +3842,23 @@ o = vec4(clamp(col, 0.0, 1.0) * oa, oa);
       initGL();
       glLost = false;
       touch(false);
+      __redraw();
     } catch (e) {
       showMsg('The GPU context could not be restored. Reload the page.');
     }
   });
+  function __redraw() {
+    const n = STATS.frames,
+      until = performance.now() + 10000;
+    const go = () => {
+      if (__dead || glLost || STATS.frames > n || performance.now() > until) return;
+      try {
+        render();
+      } catch (e) {}
+      requestAnimationFrame(go);
+    };
+    requestAnimationFrame(go);
+  }
   function showMsg(t) {
     const m = __host.msg;
     m.textContent = t;
@@ -7047,6 +7061,21 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
       need = true;
       last = -1;
       return true;
+    },
+    // Blade: its GPU memory given back while it's out of sight (its context lost on purpose; everything else kept), and made again
+    // (wake: the context restored, its programs compiled again, from the browser's shader cache). False when it can't
+    sleep() {
+      if (__dead || !gl || glLost || __sleepX) return false;
+      const x = gl.getExtension('WEBGL_lose_context');
+      if (!x) return false;
+      __sleepX = x;
+      x.loseContext();
+      return true;
+    },
+    wake() {
+      const x = __sleepX;
+      __sleepX = null;
+      if (x && !__dead) x.restoreContext();
     },
     // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
     drawn() {
