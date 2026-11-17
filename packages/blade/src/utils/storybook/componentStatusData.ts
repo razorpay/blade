@@ -1775,6 +1775,81 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'RazorSenseLoader',
+    description:
+      "RazorSense 2.0's loading splash: the Razorpay glyph loops while the page loads, then finishes its pass, grows and fades.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseChatBackground',
+    description:
+      "RazorSense 2.0's band behind a chat input on its own (a landing), pulsing as you type.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseThinking',
+    description:
+      "RazorSense 2.0's thinking label with its glow; inside a RazorSenseChat, a loading ChatMessage shows it.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseBottomWave',
+    description:
+      "RazorSense 2.0's faint wave under a chat's input, drifting and pulsing as you type.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseChat',
+    description:
+      'Wraps a chat: draws RazorSenseThinking and RazorSenseBottomWave on one canvas, with the surge from one to the other.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'RazorSense',
     description:
       'RazorSense is a Blade Spark surface that renders an animated, shader-driven glass effect for AI and branded moments.',
