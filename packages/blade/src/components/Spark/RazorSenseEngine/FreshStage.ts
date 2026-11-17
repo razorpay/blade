@@ -1,11 +1,23 @@
-import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
+import type { FreshDoc, FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
 import { POTATO_TIER_PATTERNS } from '../RzpGlass/PerformanceManager';
 
-type CreateFreshEngine = (
+type MakeFreshEngine<Made> = (
   host: FreshEngineHost,
   exp: FreshExport,
   switches: FreshSwitches,
-) => FreshEngine;
+) => Made;
+
+type CreateFreshEngine = MakeFreshEngine<FreshEngine> & {
+  /** the same engine made a step at a time: each next() is one part of it, and the engine is what the last one returns */
+  steps?: MakeFreshEngine<Generator<void, FreshEngine, void>>;
+};
+
+/** An engine being made ahead of its comp, a step at a time (FreshStage.prepareStep), with the clear background it's made with. */
+type PreparedEngine = {
+  steps: Generator<void, FreshEngine, void>;
+  engine: FreshEngine | null;
+  hasFailed: boolean;
+};
 
 /** Called every frame while the stage runs: the component moves its clock and seeks the engine here. */
 type FreshDriver = (engine: FreshEngine, dtSeconds: number) => void;
@@ -128,7 +140,7 @@ class FreshStage {
   public readonly reducedMotion = prefersReducedMotion();
 
   private readonly box: HTMLElement;
-  private readonly canvas: HTMLCanvasElement;
+  private canvas: HTMLCanvasElement;
   private readonly msg: HTMLElement;
   private readonly createEngine: CreateFreshEngine;
   private onError?: (reason: FreshFailure) => void;
@@ -137,6 +149,7 @@ class FreshStage {
   private hasStalled = false;
 
   private engine: FreshEngine | null = null;
+  private prepared: PreparedEngine | null = null;
   private driver: FreshDriver | null = null;
   private rafId = 0;
   private last = 0;
@@ -149,6 +162,7 @@ class FreshStage {
   private slowSeconds = 0;
   private hasReportedSlow = false;
   private settleId = 0;
+  private showId = 0;
   private lostTimer = 0;
   private intersectionObserver: IntersectionObserver | null = null;
   private msgObserver: MutationObserver | null = null;
@@ -162,10 +176,7 @@ class FreshStage {
     this.createEngine = createEngine;
     this.onError = options.onError;
 
-    this.canvas = document.createElement('canvas');
-    this.canvas.setAttribute('aria-hidden', 'true');
-    this.canvas.style.cssText =
-      'position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;';
+    this.canvas = this.makeCanvas();
     // the engine's own failure text (a GPU context it couldn't restore): never shown in a decorative box, told through
     // onError instead
     this.msg = document.createElement('div');
@@ -190,14 +201,55 @@ class FreshStage {
       this.intersectionObserver.observe(box);
     }
     document.addEventListener('visibilitychange', this.update);
-    this.canvas.addEventListener('webglcontextlost', this.onContextLost);
-    this.canvas.addEventListener('webglcontextrestored', this.onContextRestored);
+  }
+
+  /**
+   * One step of making this stage's engine ahead of its comp, while the page is idle: true once it's made, or when there's
+   * nothing to make here. `alpha` is the clear background its comp will ask for (its GPU context is made with it). Made in one
+   * go, an engine is one long task (190-330 ms on a mid-range Android phone, about 1 s there on the first visit after the engine
+   * changes); a step at a time, the page draws its frames between them. `mount` then hands it its comp.
+   */
+  public prepareStep(alpha: boolean): boolean {
+    if (this.isDestroyed || this.engine || !this.createEngine.steps || whyCantAnimate())
+      return true;
+    if (!this.prepared) {
+      const prepared: PreparedEngine = {
+        steps: this.createEngine.steps(
+          {
+            canvas: this.canvas,
+            box: this.box,
+            msg: this.msg,
+            // (no WebGL2 after all: mount makes its engine the usual way, and that says so)
+            onError: () => {
+              prepared.hasFailed = true;
+            },
+            isHeld: true,
+          },
+          // (no comp yet: the engine starts on its blank document, and load gives it the real one)
+          { doc: (undefined as unknown) as FreshDoc, opts: { alpha, paused: true } },
+          ALL_ON,
+        ),
+        engine: null,
+        hasFailed: false,
+      };
+      this.prepared = prepared;
+    }
+    const prepared = this.prepared;
+    if (prepared.engine || prepared.hasFailed) return true;
+    try {
+      const step = prepared.steps.next();
+      if (step.done) prepared.engine = step.value;
+      return Boolean(step.done) || prepared.hasFailed;
+    } catch {
+      prepared.hasFailed = true;
+      return true;
+    }
   }
 
   /**
    * Plays this comp. On a stage already playing one, the same engine takes it (its GPU context and compiled programs kept: a new
-   * colour scheme or scale makes nothing new); otherwise a new engine. Returns null when WebGL2 isn't there, it draws only on the
-   * CPU, or an animation on this page was already too slow.
+   * colour scheme or scale makes nothing new); one made ahead (prepareStep) takes it the same way; otherwise a new engine. Returns
+   * null when WebGL2 isn't there, it draws only on the CPU, or an animation on this page was already too slow.
    */
   public mount(exp: FreshExport, switches: FreshSwitches = ALL_ON): FreshEngine | null {
     if (this.engine && !this.isDestroyed && this.engine.load?.(exp)) {
@@ -212,8 +264,17 @@ class FreshStage {
     if (this.isDestroyed) return null;
     const cant = whyCantAnimate();
     if (cant) {
+      this.dropPrepared();
       this.onError?.(cant);
       return null;
+    }
+    const prepared = this.takePrepared(exp, switches);
+    if (prepared) {
+      this.engine = prepared;
+      this.update();
+      this.watchFirstDraw();
+      this.showOnFirstFrame();
+      return prepared;
     }
     let failed = false;
     const engine = this.createEngine(
@@ -236,6 +297,7 @@ class FreshStage {
     this.engine = engine;
     this.update();
     this.watchFirstDraw();
+    this.showOnFirstFrame();
     return engine;
   }
 
@@ -297,6 +359,9 @@ class FreshStage {
     this.stopLoop();
     if (this.settleId) cancelAnimationFrame(this.settleId);
     this.settleId = 0;
+    cancelAnimationFrame(this.showId);
+    this.showId = 0;
+    this.dropPrepared();
     this.unmountEngine();
     this.intersectionObserver?.disconnect();
     this.intersectionObserver = null;
@@ -346,6 +411,81 @@ class FreshStage {
         this.onError?.('stalled');
       }
     }, STEP);
+  }
+
+  /**
+   * a canvas for the box (the engine's GPU context is made on it), watched for that context being taken back: hidden till its
+   * engine's first frame (showOnFirstFrame)
+   */
+  private makeCanvas(): HTMLCanvasElement {
+    const canvas = document.createElement('canvas');
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.style.cssText =
+      'position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;visibility:hidden;';
+    canvas.addEventListener('webglcontextlost', this.onContextLost);
+    canvas.addEventListener('webglcontextrestored', this.onContextRestored);
+    return canvas;
+  }
+
+  /**
+   * The engine made ahead (prepareStep), finished if it isn't yet, given this comp: null when there's none, or it can't take
+   * this one (made with another clear background, or other switches). Then it goes with its canvas, since a canvas keeps the
+   * GPU context it was first given, and mount makes a new engine on a new canvas.
+   */
+  private takePrepared(exp: FreshExport, switches: FreshSwitches): FreshEngine | null {
+    const prepared = this.prepared;
+    this.prepared = null;
+    if (!prepared) return null;
+    try {
+      while (!prepared.engine && !prepared.hasFailed) {
+        const step = prepared.steps.next();
+        if (step.done) prepared.engine = step.value;
+      }
+    } catch {
+      prepared.hasFailed = true;
+    }
+    const { engine } = prepared;
+    const isAllOn = (Object.keys(ALL_ON) as (keyof FreshSwitches)[]).every(
+      (key) => (switches[key] ?? ALL_ON[key]) === ALL_ON[key],
+    );
+    if (engine && !prepared.hasFailed && engine.ok && isAllOn && engine.load?.(exp)) return engine;
+    this.prepared = prepared;
+    this.dropPrepared();
+    const old = this.canvas;
+    old.removeEventListener('webglcontextlost', this.onContextLost);
+    old.removeEventListener('webglcontextrestored', this.onContextRestored);
+    this.canvas = this.makeCanvas();
+    old.replaceWith(this.canvas);
+    return null;
+  }
+
+  /** the engine made ahead goes, unused (its stage going, or nothing to play here after all) */
+  private dropPrepared(): void {
+    const prepared = this.prepared;
+    this.prepared = null;
+    if (!prepared) return;
+    // (softly, as one that never drew: its context goes with its canvas)
+    if (prepared.engine) prepared.engine.destroy(true);
+    else prepared.steps.return((undefined as unknown) as FreshEngine);
+  }
+
+  /**
+   * Its canvas shows from its engine's first frame. Before that an opaque one (the Loader's) is black: its GPU context is made and
+   * nothing is drawn yet, which on a slow GPU (compiling its shaders) or with an engine made ahead could be a second or more. The
+   * box's own background (the splash's ground) or the component's still shows meanwhile.
+   */
+  private showOnFirstFrame(): void {
+    cancelAnimationFrame(this.showId);
+    const check = (): void => {
+      this.showId = 0;
+      if (this.isDestroyed || !this.engine) return;
+      if (this.hasDrawn()) {
+        this.canvas.style.visibility = '';
+        return;
+      }
+      this.showId = requestAnimationFrame(check);
+    };
+    check();
   }
 
   private unmountEngine(): void {

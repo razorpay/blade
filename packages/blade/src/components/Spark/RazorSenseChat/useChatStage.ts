@@ -82,6 +82,8 @@ const useChatStage = ({
       getBox: () => stageRef.current,
       stageRef: freshStageRef,
       loadComps: () => import('./comps'),
+      // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
+      engineAlpha: true,
       start: (stage, comps) => {
         const doc = withRoom(mode === 'dark' ? comps.chatDark : comps.chatLight, ROOM);
         const setup = getChatSetup(doc);

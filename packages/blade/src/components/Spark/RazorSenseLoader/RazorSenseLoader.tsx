@@ -135,6 +135,8 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
         loadComps: () => import('./comps'),
         // (done already, by the safety net: the page is in, nothing more to draw)
         shouldStart: () => !isDoneRef.current,
+        // (its comps ask for an opaque canvas: its engine is made ahead, a step at a time)
+        engineAlpha: false,
         start: (stage, comps) => {
           const made = mode === 'dark' ? comps.loaderSplashDark : comps.loaderSplashLight;
           const doc = { ...made, p: { ...made.p, cBgCol: toHex(ground) ?? made.p.cBgCol } };

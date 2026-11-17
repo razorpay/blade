@@ -323,6 +323,8 @@ const RazorSenseCardShell = ({
         getBox: () => host,
         stageRef,
         loadComps: () => import('./razorSenseCardComps'),
+        // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
+        engineAlpha: true,
         start: (stage, comps) => {
           doc = (mode === 'dark' ? comps.razorSenseCardDark : comps.razorSenseCardLight) as CardDoc;
           mask = maskOf(doc);

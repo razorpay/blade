@@ -4,16 +4,19 @@
 import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
 
 /**
- * Mounts Razorsensation's engine on one canvas (host.canvas, sized to host.box) and plays one exported comp (exp.doc, exp.opts).
- * Every call is its own engine: its own document, WebGL2 context and frame loop.
+ * Mounts Razorsensation's engine on one canvas (host.canvas, sized to host.box) and plays one exported comp (exp.doc, exp.opts),
+ * a step at a time: each next() is one part of making it (one task each, so a slow phone draws frames between them), and the
+ * engine is what the last one returns. A held host (host.isHeld) gets an engine that draws and runs nothing till load() gives it
+ * its comp: made ahead, while the page is idle. Every engine is its own: its own document, WebGL2 context and frame loop.
  */
-export function createFreshEngine(
+export function* freshEngineSteps(
   __host: FreshEngineHost,
   __EXP: FreshExport,
   __GPU: FreshSwitches,
-): FreshEngine {
+): Generator<void, FreshEngine, void> {
   let __raf = 0,
-    __run = true,
+    __run = !__host.isHeld,
+    __held = !!__host.isHeld,
     __dead = false,
     __ro = null,
     __d3d = false;
@@ -1822,6 +1825,7 @@ export function createFreshEngine(
     return o;
   }
   let D = defaults();
+  yield;
 
   // ---------- keyframes ----------
   const keySel = new Set();
@@ -2634,6 +2638,7 @@ export function createFreshEngine(
     };
   }
   const BUILTIN = builtins();
+  yield;
   const presetsOf = (st) => BUILTIN[st].concat(PR[st] || []);
   const presetById = (st, id) => presetsOf(st).find((p) => p.id === id);
   function applyStageData(st, data) {
@@ -6646,6 +6651,7 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
     if (q.get('fit')) OPT.fit = q.get('fit');
     if (q.has('t')) OPT.hold = +q.get('t');
   }
+  yield;
   D = normalize(EXP.doc);
   D.view.mode = 'final';
   D.view.ref = false;
@@ -6967,13 +6973,17 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
       __raf = requestAnimationFrame(frame);
     }
   };
+  yield;
   if (!initGL()) {
     if (__host.onError) __host.onError('webgl2');
-  } else {
+  }
+  // (held: made ahead of its comp, it draws nothing, not even on a resize, till load gives it one)
+  else {
+    yield;
     layout();
     __ro = new ResizeObserver(() => {
       layout();
-      if (!D.tl.play) {
+      if (!D.tl.play && !__held) {
         try {
           render();
         } catch (e) {}
@@ -7011,6 +7021,7 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
     // same clear-background setting, which is the context's: false otherwise, and the stage makes a new engine
     load(exp) {
       if (__dead || !gl || !!(exp && exp.opts && exp.opts.alpha) !== GL_ALPHA) return false;
+      __held = false;
       for (const k of Object.keys(OPT)) delete OPT[k];
       Object.assign(OPT, { loop: 'timeline', fit: 'cover' }, exp.opts || {});
       D = normalize(exp.doc);
@@ -7047,4 +7058,17 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
       return !!(GL && GL.gpuWait);
     },
   };
+}
+
+/** Makes the engine at once: every step of freshEngineSteps in one go. */
+export function createFreshEngine(
+  __host: FreshEngineHost,
+  __EXP: FreshExport,
+  __GPU: FreshSwitches,
+): FreshEngine {
+  const steps = freshEngineSteps(__host, __EXP, __GPU);
+  for (;;) {
+    const step = steps.next();
+    if (step.done) return step.value;
+  }
 }
