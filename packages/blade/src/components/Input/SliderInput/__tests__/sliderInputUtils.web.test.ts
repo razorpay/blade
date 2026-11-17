@@ -207,6 +207,10 @@ describe('SliderInput utils', () => {
       expect(getMinTrackWidth(5, 0)).toBeLessThan(getMinTrackWidth(5, 30));
     });
 
+    it('should leave room for both end labels when there are only two stops', () => {
+      expect(getMinTrackWidth(2, 70)).toBeGreaterThanOrEqual(70 * 2);
+    });
+
     it('should collapse to a single dot when there is nothing to space out', () => {
       expect(getMinTrackWidth(1, 50)).toBe(3);
     });

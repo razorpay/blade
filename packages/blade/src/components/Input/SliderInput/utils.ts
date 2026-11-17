@@ -222,7 +222,8 @@ const getSpacedScaleValues = ({
 const getMinTrackWidth = (markerCount: number, widestLabelWidth: number): number => {
   if (markerCount <= 1) return SLIDER_MARKER_DOT;
   const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, widestLabelWidth + SLIDER_SCALE_LABEL_GAP);
-  return Math.ceil(pitch * (markerCount - 1) + SLIDER_MARKER_DOT);
+  const bothEnds = widestLabelWidth * 2 + SLIDER_SCALE_LABEL_GAP;
+  return Math.ceil(Math.max(pitch * (markerCount - 1), bothEnds) + SLIDER_MARKER_DOT);
 };
 
 /**
