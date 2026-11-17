@@ -214,7 +214,7 @@ describe('SliderInput utils', () => {
           values,
           trackWidth: getMinTrackWidth(values.length, 30),
           widestLabelWidth: 30,
-          range: { min: 0, max: 100 },
+          range: { min: 0, max: 100, step: 25 },
         }),
       ).toEqual(values);
     });
