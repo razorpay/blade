@@ -69,13 +69,23 @@ const pump = (): void => {
     hasDrawn = next.go();
     frame = requestAnimationFrame(check);
   };
+  // another step in the same idle moment only when the last was quick (a laptop), with room for three more like it: on a slow
+  // phone each step is a moment of its own
+  const hasRoomAfter = (deadline: IdleDeadline | undefined, took: number): boolean =>
+    hasRoom(deadline) && Boolean(deadline) && deadline!.timeRemaining() > 3 * took;
   const step = (deadline?: IdleDeadline): void => {
     if (starting !== next) return;
-    let isMade = !next.prepare || next.prepare();
-    while (!isMade && hasRoom(deadline)) isMade = Boolean(next.prepare?.());
+    let isMade = false;
+    let took = 0;
+    for (;;) {
+      const t = performance.now();
+      isMade = !next.prepare || next.prepare();
+      took = performance.now() - t;
+      if (isMade || !hasRoomAfter(deadline, took)) break;
+    }
     if (!isMade) whenIdle(step, STEP_WAIT_MS);
     // (made: started in this idle moment if it has room left, else the next)
-    else if (hasRoom(deadline)) start();
+    else if (hasRoomAfter(deadline, took)) start();
     else whenIdle(start, STEP_WAIT_MS);
   };
   whenIdle(step);
