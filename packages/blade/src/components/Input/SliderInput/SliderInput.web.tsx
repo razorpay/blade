@@ -20,6 +20,7 @@ import {
 } from './sliderInputTokens';
 import {
   getCenteringTransform,
+  getScaleLabelPosition,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
@@ -378,10 +379,7 @@ const _SliderInput = (
                 {scaleValues.map((scaleValue) => (
                   <ScaleLabel
                     key={scaleValue}
-                    style={{
-                      insetInlineStart: getOffsetExpression(getValueRatio(scaleValue, range)),
-                      transform: centeringTransform,
-                    }}
+                    style={getScaleLabelPosition(getValueRatio(scaleValue, range), isRTL)}
                   >
                     <Text
                       size="xsmall"

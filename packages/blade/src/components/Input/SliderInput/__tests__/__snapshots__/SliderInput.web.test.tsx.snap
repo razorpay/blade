@@ -1059,7 +1059,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
           >
             <div
               class="c23"
-              style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%);"
+              style="inset-inline-start: calc(1.5px + 0 * (100% - 3px));"
             >
               <p
                 class="c24"
@@ -1119,7 +1119,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
             </div>
             <div
               class="c23"
-              style="inset-inline-start: calc(1.5px + 1 * (100% - 3px)); transform: translateX(-50%);"
+              style="inset-inline-end: 1.5px;"
             >
               <p
                 class="c24"

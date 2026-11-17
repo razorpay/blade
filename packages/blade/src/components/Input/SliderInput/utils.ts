@@ -120,6 +120,19 @@ const getMarkerMaskImage = (ratios: number[]): string =>
 const getCenteringTransform = (isRTL: boolean): string =>
   isRTL ? 'translateX(50%)' : 'translateX(-50%)';
 
+/**
+ * The scale's end labels grow inward from their tick, so a long `min` or `max` label stays
+ * inside the track instead of hanging half its width past it. Labels between stay centred.
+ */
+const getScaleLabelPosition = (
+  ratio: number,
+  isRTL: boolean,
+): { insetInlineStart?: string; insetInlineEnd?: string; transform?: string } => {
+  if (ratio <= 0) return { insetInlineStart: getOffsetExpression(0) };
+  if (ratio >= 1) return { insetInlineEnd: `${SLIDER_MARKER_RADIUS}px` };
+  return { insetInlineStart: getOffsetExpression(ratio), transform: getCenteringTransform(isRTL) };
+};
+
 /** Predicted width of the widest label, without measuring, so SSR and client agree. */
 const getWidestLabelWidth = (values: number[], formatValue?: (value: number) => string): number => {
   const longest = values.reduce((widest, value) => {
@@ -188,16 +201,18 @@ const getSpacedScaleValues = ({
   if (usable <= 0) return values;
 
   const minGap = widestLabelWidth + SLIDER_SCALE_LABEL_GAP;
+  const endGap = widestLabelWidth * 1.5 + SLIDER_SCALE_LABEL_GAP;
   const positionOf = (target: number): number => getValueRatio(target, range) * usable;
   const lastKept = (kept: number[]): number => positionOf(kept[kept.length - 1]);
 
   const kept = [values[0]];
   for (let index = 1; index < values.length - 1; index++) {
-    if (positionOf(values[index]) - lastKept(kept) >= minGap) kept.push(values[index]);
+    const gap = kept.length === 1 ? endGap : minGap;
+    if (positionOf(values[index]) - lastKept(kept) >= gap) kept.push(values[index]);
   }
 
   const last = values[values.length - 1];
-  while (kept.length > 1 && positionOf(last) - lastKept(kept) < minGap) kept.pop();
+  while (kept.length > 1 && positionOf(last) - lastKept(kept) < endGap) kept.pop();
   kept.push(last);
 
   return kept;
@@ -246,6 +261,7 @@ export {
   getOffsetExpression,
   getFillWidthExpression,
   getCenteringTransform,
+  getScaleLabelPosition,
   getMarkerMaskImage,
   getWidestLabelWidth,
   getPitch,

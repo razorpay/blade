@@ -3,6 +3,7 @@ import {
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
+  getScaleLabelPosition,
   getSpacedScaleValues,
   getValueRatio,
   getVisibility,
@@ -91,6 +92,22 @@ describe('SliderInput utils', () => {
   });
 
   describe('suppression', () => {
+    it('should leave room for an end label that grows inward from its tick', () => {
+      const tenths = { min: 0, max: 100, step: 10 };
+      const values = getMarkerValues(tenths);
+      const spaced = getSpacedScaleValues({
+        values,
+        trackWidth: 400,
+        widestLabelWidth: 30,
+        range: tenths,
+      });
+      expect(spaced).not.toContain(10);
+      expect(spaced).not.toContain(90);
+      expect(spaced).toContain(50);
+      expect(spaced[0]).toBe(0);
+      expect(spaced[spaced.length - 1]).toBe(100);
+    });
+
     it('should show everything while the track is unmeasured', () => {
       expect(getVisibility({ trackWidth: 0, markerCount: 50, widestLabelWidth: 20 })).toEqual({
         canShowMarkers: true,
@@ -119,6 +136,19 @@ describe('SliderInput utils', () => {
       });
       expect(canShowMarkers).toBe(true);
       expect(canShowScale).toBe(false);
+    });
+  });
+
+  describe('getScaleLabelPosition', () => {
+    it('should start the first label at its tick, end the last at its tick and centre the rest', () => {
+      expect(getScaleLabelPosition(0, false)).toEqual({ insetInlineStart: getOffsetExpression(0) });
+      expect(getScaleLabelPosition(1, false).insetInlineEnd).toBeDefined();
+      expect(getScaleLabelPosition(1, false).transform).toBeUndefined();
+      expect(getScaleLabelPosition(0.5, false)).toEqual({
+        insetInlineStart: getOffsetExpression(0.5),
+        transform: 'translateX(-50%)',
+      });
+      expect(getScaleLabelPosition(0.5, true).transform).toBe('translateX(50%)');
     });
   });
 
