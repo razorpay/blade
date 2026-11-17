@@ -21,7 +21,8 @@ env:
 jobs:
   interaction-tests:
     name: Run Interaction Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # Pinned: Playwright 1.57 cannot install browsers on ubuntu-latest (26.04)
+    runs-on: ubuntu-24.04 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run Interaction Tests' || github.event_name == 'push' }}
     steps:
       - name: Checkout Codebase
