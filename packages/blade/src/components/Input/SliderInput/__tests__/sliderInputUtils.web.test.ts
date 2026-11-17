@@ -207,7 +207,14 @@ describe('SliderInput utils', () => {
       expect(getMinTrackWidth(5, 0)).toBeLessThan(getMinTrackWidth(5, 30));
     });
 
-    it('should keep every label at the floor width', () => {
+    it('should stay on the interior pitch so the slider can still shrink into its container', () => {
+      // The end gap must not be priced into every pitch: an 11-stop scale with 3-character
+      // labels floors at 211px, so a 240px card still fits it. Pricing 1.5x per gap gave 295px
+      // and pushed the whole field out of the card.
+      expect(getMinTrackWidth(11, 16.8)).toBe(211);
+    });
+
+    it('should drop the label next to an end rather than widen the floor', () => {
       const values = [0, 25, 50, 75, 100];
       expect(
         getSpacedScaleValues({
@@ -216,7 +223,7 @@ describe('SliderInput utils', () => {
           widestLabelWidth: 30,
           range: { min: 0, max: 100, step: 25 },
         }),
-      ).toEqual(values);
+      ).toEqual([0, 50, 100]);
     });
 
     it('should leave room for both end labels when there are only two stops', () => {

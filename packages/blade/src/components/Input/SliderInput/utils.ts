@@ -218,10 +218,18 @@ const getSpacedScaleValues = ({
   return kept;
 };
 
-/** Narrowest track that can show every marker and label without collision. */
+/**
+ * Narrowest track that can show every marker and label without collision.
+ *
+ * Only a two-stop scale has to fit its end labels outright: there is no interior label to drop
+ * instead. From three stops on the floor stays at the interior requirement, because pricing the
+ * wider end gap into every pitch grows the whole field past containers it used to fit, which
+ * trades a clipped label for an overflowing slider. `getSpacedScaleValues` drops the labels next
+ * to the ends at those widths.
+ */
 const getMinTrackWidth = (markerCount: number, widestLabelWidth: number): number => {
   if (markerCount <= 1) return SLIDER_MARKER_DOT;
-  const reach = markerCount === 2 ? widestLabelWidth * 2 : widestLabelWidth * 1.5;
+  const reach = markerCount === 2 ? widestLabelWidth * 2 : widestLabelWidth;
   const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, reach + SLIDER_SCALE_LABEL_GAP);
   return Math.ceil(pitch * (markerCount - 1) + SLIDER_MARKER_DOT);
 };
