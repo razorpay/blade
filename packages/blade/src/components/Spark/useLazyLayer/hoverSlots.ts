@@ -6,9 +6,11 @@ import { whyCantAnimate } from '../RazorSenseEngine';
  * near its button, and let go once it has moved away and the hover has faded out: a page of them holds a few at most, whatever
  * its size (the PR review: 24 buttons made 24 contexts at load, and 8 lost their hover for good).
  *
- * Held: the button the pointer is on, at once; one it has stopped next to (within NEAR px, off any button, for DWELL ms), so its
- * first frame is ready when the pointer gets there; and any already held while the pointer stays within FAR px of it (back and
- * forth between neighbours makes nothing new). A pointer passing near buttons, or resting on one, doesn't make its neighbours'
+ * Held: the button the pointer is on, at once; the one it's heading for (within APPROACH px, off any button, closing in fast
+ * enough to get there within ARRIVE_MS), so its first frame is ready when it arrives (a pointer moving straight onto a button
+ * never stops next to it: held only on entry, its first frame came 44-127 ms after, the PR review); one it has stopped next to
+ * (within NEAR px, for DWELL ms); and any already held while the pointer stays within FAR px of it (back and forth between
+ * neighbours makes nothing new). A pointer passing near buttons, or resting on one, doesn't make its neighbours'
  * canvases: every canvas made and let go is GPU work, and Safari counts it against its limit till it's cleaned up. At most
  * MAX_HELD are held at once, those the pointer is closest to (a hover still running or fading first). Touch has no hover: only a
  * mouse or a pen counts.
@@ -16,6 +18,10 @@ import { whyCantAnimate } from '../RazorSenseEngine';
 const NEAR = 48;
 const FAR = 96;
 const DWELL = 120;
+const APPROACH = 96;
+const ARRIVE_MS = 250;
+/** the slowest closing speed that counts as heading for a button (px/ms): drifting past doesn't */
+const MIN_CLOSING = 0.08;
 const MAX_HELD = 3;
 
 type Slot = {
@@ -28,6 +34,8 @@ type Slot = {
   distance: number;
   /** since when the pointer has been within NEAR of it, off every button (0: it isn't) */
   nearSince: number;
+  /** its distance at the last check, for how fast the pointer is closing in (Infinity: not known) */
+  lastDistance: number;
 };
 
 type HoverSlot = {
@@ -45,6 +53,7 @@ const slots = new Set<Slot>();
 let pointer: [number, number] | null = null;
 let frame = 0;
 let dwellTimer = 0;
+let lastCheckAt = 0;
 
 const distanceTo = (element: HTMLElement, [x, y]: [number, number]): number => {
   const r = element.getBoundingClientRect();
@@ -57,6 +66,9 @@ const check = (): void => {
   dwellTimer = 0;
   const at = pointer;
   const now = performance.now();
+  // (a long gap since the last check: the closing speed isn't known)
+  const sinceLast = lastCheckAt && now - lastCheckAt < 200 ? now - lastCheckAt : 0;
+  lastCheckAt = now;
   let isOnOne = false;
   slots.forEach((slot) => {
     slot.distance = at ? distanceTo(slot.element, at) : Infinity;
@@ -69,6 +81,23 @@ const check = (): void => {
     if (slot.isBusy() || slot.distance === 0 || (slot.isHeld && slot.distance <= FAR)) {
       wanted.push(slot);
     }
+  });
+  // the one it's heading for: the soonest to be reached of those it's closing in on
+  const heading = isOnOne
+    ? null
+    : [...slots]
+        .filter((slot) => !wanted.includes(slot) && slot.distance > 0 && slot.distance <= APPROACH)
+        .map((slot) => ({
+          slot,
+          closing: sinceLast ? (slot.lastDistance - slot.distance) / sinceLast : 0,
+        }))
+        .filter(
+          ({ closing, slot }) => closing >= MIN_CLOSING && slot.distance / closing <= ARRIVE_MS,
+        )
+        .sort((a, b) => a.slot.distance / a.closing - b.slot.distance / b.closing)[0]?.slot;
+  if (heading) wanted.push(heading);
+  slots.forEach((slot) => {
+    slot.lastDistance = slot.distance;
   });
   // the one the pointer has stopped next to, once it has stayed there a moment
   const next = [...slots]
@@ -136,7 +165,15 @@ const holdNearPointer = (
   element: HTMLElement,
   { isBusy, onHold }: Pick<Slot, 'isBusy' | 'onHold'>,
 ): HoverSlot => {
-  const slot: Slot = { element, isBusy, onHold, isHeld: false, distance: Infinity, nearSince: 0 };
+  const slot: Slot = {
+    element,
+    isBusy,
+    onHold,
+    isHeld: false,
+    distance: Infinity,
+    nearSince: 0,
+    lastDistance: Infinity,
+  };
   if (!slots.size) listen(true);
   slots.add(slot);
   schedule();

@@ -5,6 +5,7 @@ import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot } from '../useLazyLayer/hoverSlots';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
+import { logger } from '~utils/logger';
 
 type ButtonSenseSetup = { mask: { x: number; y: number; w: number; h: number }; opacity: number };
 type CompShape = {
@@ -24,6 +25,13 @@ type Comp = FreshDoc & {
   K?: Record<string, CompKey[]>;
   stack?: { doc?: Comp }[];
 };
+
+/**
+ * The widest a button may be for its hover (CSS px): the comp's own width (made at 2x). Past it the button's spot would run off
+ * the comp's edges (hard edges), and the stretched sweep would show more of its bands than the comp has (a "barcode"): such a
+ * button keeps its own hover, as a full-width one does, however it got that wide (a stretched column, a grid cell)
+ */
+const widestFor = (doc: FreshDoc): number => doc.comp.w / 2;
 
 /** a button about as wide as tall plays the square comp (flow 9's prim9.js: within 1.25x) */
 const isSquare = (button: HTMLElement): boolean => button.offsetWidth <= button.offsetHeight * 1.25;
@@ -173,6 +181,24 @@ const ButtonRazorSenseLayer = ({
       onLiveRef.current?.(live);
     };
 
+    // wider than its comp: no canvas, and the button keeps its own hover (said once, in development)
+    let hasWarnedWide = false;
+    const isTooWide = (): boolean => {
+      const isWide = Boolean(doc) && button.offsetWidth > widestFor(doc as FreshDoc);
+      if (isWide && __DEV__ && !hasWarnedWide) {
+        hasWarnedWide = true;
+        logger({
+          type: 'warn',
+          moduleName: 'Button',
+          message: `aiHover="razorsense" plays on buttons up to ${widestFor(
+            doc as FreshDoc,
+          )}px wide (its comp's width); this one is ${
+            button.offsetWidth
+          }px wide (full width, or stretched by its parent), so it keeps its own hover.`,
+        });
+      }
+      return isWide;
+    };
     // a longer button's comp is laid out for its width (forWidth); any other plays the comp as made
     const widthOf = (w: number): number =>
       square || !setup || w <= setup.mask.w / 2 ? 0 : Math.round(w);
@@ -230,7 +256,10 @@ const ButtonRazorSenseLayer = ({
     const relay = new ResizeObserver(() => {
       window.clearTimeout(relayTimer);
       relayTimer = window.setTimeout(() => {
-        if (engine && !isOn && widthOf(button.offsetWidth) !== laidWidth) mount(button.offsetWidth);
+        // (grown past its comp: its canvas goes, and it keeps its own hover)
+        if (engine && !isOn && isTooWide()) release();
+        else if (engine && !isOn && widthOf(button.offsetWidth) !== laidWidth)
+          mount(button.offsetWidth);
       }, 200);
     });
     const fit = (): void => {
@@ -254,7 +283,7 @@ const ButtonRazorSenseLayer = ({
       if (on === isOn) return;
       if (on) {
         // its canvas is made as the pointer nears: once it's held, it shows if the pointer is still on the button
-        if (!isHeld || hasGivenUp) return;
+        if (!isHeld || hasGivenUp || isTooWide()) return;
         fit();
         if (!engine || !stage) return;
       }
@@ -297,6 +326,7 @@ const ButtonRazorSenseLayer = ({
         return;
       }
       // its canvas made as the pointer nears (its first frame ready for the hover), shown if the pointer's already on it
+      if (isTooWide()) return;
       fit();
       if (button.matches(':hover')) show(true);
     };
