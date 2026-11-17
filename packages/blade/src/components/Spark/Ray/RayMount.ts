@@ -451,17 +451,18 @@ class RayMount {
 
     if (h.by === 'film') {
       const film = this.films[h.id];
+      const stays =
+        (want.kind === 'answer' && want.film === h.id) ||
+        (want.kind === 'idle' && h.kind === 'idle' && IDLE_FILMS[want.idle] === h.id);
       if (!h.started) {
-        if (now - h.since > START_WAIT_MS) this.giveUpOn(h.id, now);
+        if (!stays) this.dropPending(h, want, now);
+        else if (now - h.since > START_WAIT_MS) this.giveUpOn(h.id, now);
         return;
       }
       if (h.leaving === 'handoff' && now - h.since > HANDOFF_WAIT_MS)
         this.handOn(film, h.next!, null);
       if (h.leaving === 'exit' && now - h.since > EXIT_WAIT_MS) this.filmDone(film);
       if (h.leaving) return;
-      const stays =
-        (want.kind === 'answer' && want.film === h.id) ||
-        (want.kind === 'idle' && h.kind === 'idle' && IDLE_FILMS[want.idle] === h.id);
       if (stays) return;
       if (h.kind === 'answer' && want.kind === 'answer') {
         // a handoff mid-move: the old film says where it left him and plays its exit over the next one
@@ -656,6 +657,28 @@ class RayMount {
     Reflect.deleteProperty(this.loading, id);
     this.holder = { by: 'player', act: 'rest', since: now };
     this.player.rest(REST_BLEND_MS);
+  }
+
+  /**
+   * A film still loading that's no longer what's asked of him (he's hidden, typing's begun, the answer or his idle moved on) isn't
+   * waited for: he's given back as he was before it was asked for (his own Ray at rest, or gone for a fresh answer row), so the hop
+   * off or the next film starts at once (the PR review: it waited up to START_WAIT_MS). The next answer film takes him from the same
+   * place. Not marked failed: it's loaded again if it's wanted again (from the cache), and it's freed if it isn't.
+   */
+  private dropPending(h: Extract<Holder, { by: 'film' }>, want: Want, now: number): void {
+    if (h.kind === 'answer' && want.kind === 'answer') {
+      const next = this.film(want.film);
+      this.holder = { ...h, id: want.film, since: now };
+      if (next?.ready) this.begin(next, this.pendingFrom);
+    } else if (h.underneath) {
+      this.holder = { by: 'player', act: 'rest', since: now };
+      if (this.pendingFrom) this.player.rest(REST_BLEND_MS); // (from the pose the last film left him in)
+      this.pendingFrom = null;
+    } else {
+      this.holder = { by: 'player', act: 'gone', since: now };
+      this.pendingFrom = null;
+    }
+    this.releaseFilms();
   }
 
   private mountFilm(id: string, module: FilmModule): void {

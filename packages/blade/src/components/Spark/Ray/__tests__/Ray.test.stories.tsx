@@ -158,6 +158,36 @@ TestRayHopsOffAndBack.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
 };
 
+// A film still loading doesn't hold him up: hidden while his idle's film loads (on a slow connection), he hops off at once, not
+// once it's loaded or given up on (the PR review)
+export const TestRayDoesntWaitForAFilm: StoryFn<typeof Ray> = () => {
+  const [idle, setIdle] = useState<'rest' | 'coffee'>('rest');
+  const [isVisible, setIsVisible] = useState(true);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle={idle} isVisible={isVisible} />
+      <Button onClick={() => setIdle('coffee')}>Coffee</Button>
+      <Button onClick={() => setIsVisible(false)}>Hide</Button>
+    </Box>
+  );
+};
+TestRayDoesntWaitForAFilm.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  rayEl().__ray.loading.coffee = new Promise(() => undefined); // (Coffee's chunk never comes)
+  await userEvent.click(getByRole('button', { name: 'Coffee' }));
+  await waitFor(() => expect(doing()).toBe('film:coffee'), { timeout: 3000 });
+  expect(rayEl().__ray.debug.holder.started).toBe(false);
+  await userEvent.click(getByRole('button', { name: 'Hide' }));
+  await waitFor(() => expect(['hiding', 'gone']).toContain(doing()), { timeout: 1000 });
+};
+
 // The answer's states, each handing over to the next, then done: the last one's exit, and he's back at rest
 export const TestRayAnswerStates: StoryFn<typeof Ray> = () => {
   const [state, setState] = useState<RayState>('idle');
