@@ -318,6 +318,8 @@ class RayMount {
       // (nothing to load)
     } else if (options.state !== 'idle') this.preloadAnswer();
     else {
+      // a state kept loaded ahead (_preloadState) too: as he mounts, not as it's first asked for (a button's first hover)
+      if (options.preload) this.preloadAnswer();
       const first = IDLE_FILMS[firstIdle];
       if (first) this.film(first);
     }
