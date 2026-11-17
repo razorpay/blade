@@ -20,7 +20,8 @@ export function* freshEngineSteps(
     __dead = false,
     __ro = null,
     __d3d = false,
-    __sleepX = null;
+    __sleepX = null,
+    __dprCap = 0;
   const __search = '';
   // ============================================================================================
   // 01-core: constants, the document, keyframes, undo, saving, presets, colour
@@ -6749,7 +6750,11 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
   function layout() {
     const w = Math.max(1, vpc.clientWidth),
       h = Math.max(1, vpc.clientHeight),
-      dpr = Math.min(window.devicePixelRatio || 1, Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6));
+      dpr = Math.min(
+        window.devicePixelRatio || 1,
+        Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6),
+        __dprCap || Infinity,
+      );
     cv.width = Math.round(w * dpr);
     cv.height = Math.round(h * dpr);
     VW.w = w;
@@ -7076,6 +7081,14 @@ void main() { o = texelFetch(uT, ivec2(gl_FragCoord.xy), 0) * uOp; }`;
       const x = __sleepX;
       __sleepX = null;
       if (x && !__dead) x.restoreContext();
+    },
+    // Blade: its canvas's pixel ratio capped (0: as the comp and the device say): the weak-device tier's lower sharpness
+    sharpness(cap) {
+      const n = +cap > 0 ? +cap : 0;
+      if (n === __dprCap || __dead) return;
+      __dprCap = n;
+      layout();
+      need = true;
     },
     // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
     drawn() {

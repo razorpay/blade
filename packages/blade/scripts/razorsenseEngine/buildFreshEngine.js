@@ -231,6 +231,8 @@ src = sub(src, `function showMsg(t) {`, `function __redraw() {
   requestAnimationFrame(go);
 }
 function showMsg(t) {`);
+// a cap on the canvas's pixel ratio the page can set (sharpness(): the weak-device tier), over the comp's own and the device's
+src = sub(src, `dpr = Math.min(window.devicePixelRatio || 1, Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6));`, `dpr = Math.min(window.devicePixelRatio || 1, Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6), __dprCap || Infinity);`);
 // Made a step at a time (freshEngineSteps, below): making an engine is one long task otherwise, 190-330 ms on a mid-range Android
 // phone (about 1 s on its first visit after the engine changes, the browser compiling the engine's code as it runs), which is the
 // page frozen. Each yield is a point the page may draw a frame between: the studio's tables, its blank document, the comp read in,
@@ -276,6 +278,8 @@ return {
   // (wake: the context restored, its programs compiled again, from the browser's shader cache). False when it can't
   sleep() { if (__dead || !gl || glLost || __sleepX) return false; const x = gl.getExtension('WEBGL_lose_context'); if (!x) return false; __sleepX = x; x.loseContext(); return true; },
   wake() { const x = __sleepX; __sleepX = null; if (x && !__dead) x.restoreContext(); },
+  // Blade: its canvas's pixel ratio capped (0: as the comp and the device say): the weak-device tier's lower sharpness
+  sharpness(cap) { const n = +cap > 0 ? +cap : 0; if (n === __dprCap || __dead) return; __dprCap = n; layout(); need = true; },
   // Blade: frames it has drawn (0: none yet, its programs still compiling, or its GPU not drawing)
   drawn() { return STATS.frames; },
   // Blade: whether its last frame was dropped only for the GPU (Direct3D: the main pass's copy still compiling, in the background):
@@ -359,7 +363,7 @@ import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from '.
  * its comp: made ahead, while the page is idle. Every engine is its own: its own document, WebGL2 context and frame loop.
  */
 export function* freshEngineSteps(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): Generator<void, FreshEngine, void> {
-let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false, __sleepX = null;
+let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false, __sleepX = null, __dprCap = 0;
 const __search = '';
 ` + src + `
 }
