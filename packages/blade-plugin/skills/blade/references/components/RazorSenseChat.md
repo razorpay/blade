@@ -15,11 +15,11 @@ RazorSenseChat is RazorSense through an assistant chat: thinking loops on the `R
 - Without a `RazorSenseBottomWave` inside, the wave settles where Razorpay's reference chat had its input instead, with a warning in development.
 - Inside it, `RazorSenseThinking` and `RazorSenseBottomWave` don't draw themselves; their own `scale`, `isPaused`, `onLoad` and `onError` are ignored and the chat's apply.
 - Mounted with no `RazorSenseThinking` shown it starts settled on the bottom wave (no thinking replayed), and a color scheme or scale change doesn't replay it either.
-- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then. The chat's stills follow the thinking label and the chat input, and cross-fade as the `RazorSenseThinking` comes and goes.
+- When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds even at its lowest step) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then. The chat's stills follow the thinking label and the chat input, and cross-fade as the `RazorSenseThinking` comes and goes.
 - With reduced motion on it shows one still frame of where it is, drawn again when the chat's layout changes, and the new one as the `RazorSenseThinking` comes and goes.
 - The effect is decorative: hidden from screen readers. The chat inside stays as it is.
 - `scale` is held between 0.75 and 1.25.
-- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs.
+- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
 
 ## TypeScript Types
@@ -62,9 +62,11 @@ type RazorSenseChatProps = {
   onLoad?: () => void;
   /**
    * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, its frames are too slow on this device (under 20 a second for 3 seconds, counted after its first 2), or the browser
-   * took its GPU context back. It shows its still frame instead. Too slow counts for the whole page: once one RazorSense 2.0
-   * animation finds that, every one on the page shows its still, including ones mounted later, until the page reloads.
+   * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
+   * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
+   * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
+   * the page reloads. Before that, a device that can't keep up (under 45 a second) steps down page-wide: every other frame, then
+   * a lower sharpness too.
    */
   onError?: (error: Error) => void;
   /**

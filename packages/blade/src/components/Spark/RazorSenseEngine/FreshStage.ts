@@ -46,6 +46,18 @@ const SLOW_FPS = 20;
 const SLOW_SECONDS = 3;
 /** a stage's first frames don't count (its first draws, and a page still booting, stall) (ms) */
 const SLOW_WARMUP = 2000;
+
+/**
+ * Between full quality and the still, for devices that can't keep up (page-wide, like the still): running under EASE_FPS (or under
+ * three quarters of the best this page has done, on a slower screen) for EASE_SECONDS, every stage draws every other frame: the same
+ * picture, half the work. Still under it, at a lower sharpness too (its canvas at EASE_DPR). Only under SLOW_FPS does it go to its
+ * still. A device that holds its frame rate never gets here, so everywhere else it's exactly as made.
+ */
+const EASE_FPS = 45;
+const EASE_SECONDS = 3;
+const EASE_DPR = 1.2;
+/** 0: full; 1: every other frame; 2: and at EASE_DPR */
+let easeLevel = 0;
 let wasSlow = false;
 /**
  * A stage on this page drew nothing in its first FIRST_DRAW_MS on screen: its GPU is stuck (compiling, on Direct3D). Every stage
@@ -169,6 +181,9 @@ class FreshStage {
   private frames = 0;
   private slowSeconds = 0;
   private hasReportedSlow = false;
+  private easeSeconds = 0;
+  private bestFps = 0;
+  private easedTo = 0;
   private settleId = 0;
   private showId = 0;
   private sleepTimer = 0;
@@ -602,7 +617,8 @@ class FreshStage {
     this.rafId = requestAnimationFrame(this.tick);
     // (every frame the browser gives counts for the slow check; only some are drawn)
     this.countFrame(now);
-    if (this.last && now - this.last < MIN_FRAME_MS) return;
+    if (this.last && now - this.last < (easeLevel >= 1 ? 2 * MIN_FRAME_MS + 2 : MIN_FRAME_MS))
+      return;
     const dt = this.last ? Math.min(MAX_STEP, (now - this.last) / 1000) : 0;
     this.last = now;
     if (this.engine && this.driver) this.driver(this.engine, dt);
@@ -622,7 +638,23 @@ class FreshStage {
     this.slowSeconds = fps < SLOW_FPS ? this.slowSeconds + 1 : 0;
     this.second = now;
     this.frames = 0;
-    if (this.slowSeconds >= SLOW_SECONDS) wasSlow = true;
+    // the middle step first (a second under EASE_FPS, or under 3/4 of this page's best on a slower screen, counts towards it): each
+    // step down starts the still's count again, so the still comes only once the lowest step can't keep up either
+    this.bestFps = Math.max(this.bestFps, fps);
+    this.easeSeconds = fps < Math.min(EASE_FPS, 0.75 * this.bestFps) ? this.easeSeconds + 1 : 0;
+    if (this.easeSeconds >= EASE_SECONDS && easeLevel < 2) {
+      easeLevel += 1;
+      this.easeSeconds = 0;
+      this.slowSeconds = 0;
+    } else if (this.easedTo !== easeLevel) {
+      // (another stage on the page stepped down: this one's count starts again too)
+      this.slowSeconds = 0;
+    }
+    if (this.slowSeconds >= SLOW_SECONDS && easeLevel >= 2) wasSlow = true;
+    if (this.easedTo !== easeLevel) {
+      this.easedTo = easeLevel;
+      this.engine?.sharpness?.(easeLevel >= 2 ? EASE_DPR : 0);
+    }
     // (another animation on the page found it too slow: this one stops too)
     if (wasSlow && !this.hasReportedSlow) {
       this.hasReportedSlow = true;
