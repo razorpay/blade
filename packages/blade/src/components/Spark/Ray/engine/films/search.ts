@@ -194,6 +194,7 @@ function lensMade() {   // its program's built: checked, and the rest of the len
 }
 function lensPoll() { if (!lensJob) return; if (!PAR || gl.isContextLost() || gl.getProgramParameter(lensJob.pr, PAR.COMPLETION_STATUS_KHR)) lensMade(); else setTimeout(lensPoll, 16); }
 function drawLens(cx, cy, R) {   // canvas px: the lens's middle and radius
+  if (!gl && R >= 2) lensStart();   // needed before its own step came: begun now (and waited for, below), as it always was
   if (!gl) return;
   if (lensJob && R >= 2) lensMade();   // needed before the browser said it's built: waited for, as it always was
   if (!LENS) return;
@@ -272,10 +273,12 @@ const panel = document.getElementById('panel'); if (EMBED) panel.hidden = true;
 addEventListener('message', e => { const m = e.data || {}; if (!m.ray) return; if (m.ray === 'wear') return wearMsg(m); if (m.ray === 'place') { placeMsg(m); size(); return; } if (m.ray === 'cap') return capMsg(m);    // the films page: start, leave, zoom, mode, the panel
   if (m.ray === 'start') { asleep = false; replay(); if (m.from) { settle = { from: m.from, b0: performance.now() }; capSeed(m.from); } } else if (m.ray === 'sleep') asleep = true; else if (m.ray === 'leave') leave(m.handoff); else if (m.ray === 'pace') PACE = m.v; else if (m.ray === 'zoom') { ZOOM = m.z; size(); } else if (m.ray === 'mode') { if (mode !== m.mode) theme(); } else if (m.ray === 'panel') panel.hidden = m.open === undefined ? !panel.hidden : !m.open; });
 // its load in steps, a task each, so none is long (Blade's device test: as the pointer neared a button, the whole load was one 47–57 ms task
-// on a Windows laptop): this script; then its first pass; then its WebGL lens begun; it says it's ready after the last
+// on a Windows laptop): this script; then its first pass, and it's ready; then, a moment later, its WebGL lens begun (made as the page's
+// other GPU work starts, a button's own hover's, its context waited 9–17 ms on a Mac; a quarter second after it, 2 ms)
 setTimeout(() => {
   SIM1 = { script: SCRIPT, sim: simulate(SCRIPT, { seed: 1 }) }; if (!sim) sim = SIM1.sim;
-  setTimeout(() => { lensStart(); if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' }); }, 0);
+  if (EMBED) parent.postMessage({ ray: 'ready', film: 'search' });
+  setTimeout(() => { if (!gl) lensStart(); }, 250);
 }, 0);
 window.FILM = FILM = { get sim() { return sim; }, get view() { return view; }, get t() { return performance.now() - t0; }, get SCRIPT() { return SCRIPT; }, get F() { return F; }, Q, seek: ms => { t0 = performance.now() - ms; }, leave, replay, P: null, rebuild };
 

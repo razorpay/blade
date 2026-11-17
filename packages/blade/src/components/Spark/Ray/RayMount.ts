@@ -1157,6 +1157,18 @@ class RayMount {
     }
   }
 
+  /**
+   * The film for `state` fetched ahead (its code only: nothing is made, no canvases, no GPU), so a Ray that appears later, a
+   * button's as the pointer nears it, gets going at once instead of downloading first (the device test, GTX 1650: on a page's
+   * first Investigate button the film was still loading as the hover began, and its first pass, 71 ms, landed in it). See loadRay.
+   */
+  static prefetch(state?: RayState): Promise<void> {
+    const id = state && state !== 'idle' ? ANSWER_FILMS[state] : undefined;
+    return id
+      ? (FILMS as Record<string, () => Promise<unknown>>)[id]().then(() => undefined)
+      : Promise.resolve();
+  }
+
   private static book(m: RayMount): void {
     RayMount.booked.add(m);
     if (!RayMount.raf) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
