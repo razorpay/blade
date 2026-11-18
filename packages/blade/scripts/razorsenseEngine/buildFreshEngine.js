@@ -32,6 +32,14 @@ const sub = (src, old, next, n = 1) => {
   }
   return src.split(old).join(next);
 };
+/** every `pattern` (a global RegExp, or text) made `next`: at least one must be there, as sub() checks its text is */
+const subAll = (src, pattern, next) => {
+  const found = typeof pattern === 'string' ? src.split(pattern).length - 1 : (src.match(pattern) || []).length;
+  if (found === 0) {
+    throw new Error(`expected ${String(pattern)} in the engine, found none: update the patch`);
+  }
+  return typeof pattern === 'string' ? src.split(pattern).join(next) : src.replace(pattern, next);
+};
 
 let src = ['01-core.js', '02-gl.js', 'player.js'].map(read).join('\n');
 src = sub(src, `function buildLayer(`, read("gpu_raster.js") + `function buildLayer(`);   // the GPU speed-ups, in before buildLayer
@@ -89,11 +97,11 @@ const WARM`, `  let lb = GR_LAY && GR_LAY.T === T ? GR_LAY.box : null; GR_LAY = 
   if (lb) gl.disable(gl.SCISSOR_TEST);
 }
 const WARM`);
-src = src.replace(new RegExp("(?:window\\.)?RZS_EXPORT\\b", "g"), `__EXP`);
-src = src.replace(new RegExp("window\\.RZS_GPU\\b", "g"), `__GPU`);
+src = subAll(src, new RegExp("(?:window\\.)?RZS_EXPORT\\b", "g"), `__EXP`);
+src = subAll(src, new RegExp("window\\.RZS_GPU\\b", "g"), `__GPU`);
 src = sub(src, `const GR_STAT = window.__GR_STAT = { box: 0 };`, `const GR_STAT = { box: 0 };`);
 src = sub(src, `window.RZS_PLAYER = {`, `const RZS_PLAYER = {`);
-src = src.split(`location.search`).join(`__search`);
+src = subAll(src, `location.search`, `__search`);
 src = sub(src, `$('#gl')`, `__host.canvas`);
 src = sub(src, `$('#vpc')`, `__host.box`);
 src = sub(src, `$('#msg')`, `__host.msg`);
@@ -377,6 +385,15 @@ export function createFreshEngine(__host: FreshEngineHost, __EXP: FreshExport, _
   }
 }
 `;
+// the engine reads only what the component gives it: nothing of the host page's (a hook the studio renamed would otherwise
+// still read the page's own, with no error). Its studio-only settings stay, unset in Blade.
+const STUDIO_ONLY = ['RZS_NS', 'RZS_STANDALONE'];
+const pageReads = (src.replace(/\/\/[^\n]*/g, '').match(/\bwindow\.RZS_\w+|\blocation\.\w+/g) || []).filter(
+  (read) => !STUDIO_ONLY.includes(read.replace('window.', '')),
+);
+if (pageReads.length) {
+  throw new Error(`the engine still reads the host page (${[...new Set(pageReads)].join(', ')}): patch it to read the component's`);
+}
 const pretty = execFileSync(path.join(BLADE, 'node_modules', '.bin', 'prettier'), ['--stdin-filepath', OUT], { input: engine, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 
 /**
