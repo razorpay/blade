@@ -1,4 +1,5 @@
 import React from 'react';
+import { Pressable, Text as RNText } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
 import { markerLineHorizontalLength } from '../tokens';
@@ -42,6 +43,38 @@ describe('<StepGroup /> (native)', () => {
       </StepGroup>,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should keep the last step closed when it re-renders with the same children', () => {
+    // Same children reference across renders, like a memoised list. StepGroup used to count its
+    // items inside a cached memo, so a re-render saw 0 items and the last step drew its end curve.
+    const steps = [
+      <StepItem key="intro" title="Run started" stepProgress="full" />,
+      <StepGroup key="tools">
+        <StepItem title="Read invoice" stepProgress="full" />
+        <StepItem title="Draft email" />
+      </StepGroup>,
+    ];
+    const Harness = (): React.ReactElement => {
+      const [, setRenderCount] = React.useState(0);
+      return (
+        <>
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => setRenderCount((count) => count + 1)}
+          >
+            <RNText>Re-render</RNText>
+          </Pressable>
+          <StepGroup>{steps}</StepGroup>
+        </>
+      );
+    };
+    const { toJSON, getByRole } = renderWithTheme(<Harness />);
+    const firstRender = JSON.stringify(toJSON());
+
+    fireEvent.press(getByRole('button'));
+
+    expect(JSON.stringify(toJSON())).toBe(firstRender);
   });
 
   it('should render with default props', () => {
