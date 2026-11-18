@@ -94,3 +94,6 @@ describe('runFreshStage: wanting to start at its turn', () => {
     box.remove();
   });
 });
+
+// (a module of its own: its helpers are its own, not shared with the other test files)
+export {};

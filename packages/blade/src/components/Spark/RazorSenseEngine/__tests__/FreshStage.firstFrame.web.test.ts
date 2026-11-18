@@ -104,3 +104,6 @@ describe('FreshStage: looking for its first frame', () => {
     stage.destroy();
   });
 });
+
+// (a module of its own: its helpers are its own, not shared with the other test files)
+export {};
