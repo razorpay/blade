@@ -109,8 +109,7 @@ const ChartFunnelWrapper = ({
   const dataKey = funnel?.props.dataKey ?? '';
   const nameKey = funnel?.props.nameKey ?? 'name';
   const color = funnel?.props.color ?? DEFAULT_COLOR;
-  const [firstRow] = data;
-  if (firstRow && (!(dataKey in firstRow) || !(nameKey in firstRow))) {
+  if (data.some((row) => !(dataKey in row) || !(nameKey in row))) {
     throwBladeError({
       message: `ChartFunnel's dataKey "${dataKey}" and nameKey "${nameKey}" must both be keys of each data row`,
       moduleName: 'ChartFunnelWrapper',

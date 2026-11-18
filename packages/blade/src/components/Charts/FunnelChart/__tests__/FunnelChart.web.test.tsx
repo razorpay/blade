@@ -97,6 +97,34 @@ describe('<ChartFunnelWrapper />', () => {
     ).toThrow('nameKey "stage"');
   });
 
+  it('should throw when a later row is missing the dataKey', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    expect(() =>
+      renderWithTheme(
+        <ChartFunnelWrapper data={[{ step: 'A', count: 5 }, { step: 'B' }]}>
+          <ChartFunnel dataKey="count" nameKey="step" />
+        </ChartFunnelWrapper>,
+      ),
+    ).toThrow('dataKey "count"');
+  });
+
+  it('should fill the steps with the given color', () => {
+    const getFill = (container: HTMLElement): string | null | undefined =>
+      container.querySelector('.recharts-funnel-trapezoid path')?.getAttribute('fill');
+    const { container: defaultContainer } = renderWithTheme(<Funnel />);
+    const { container } = renderWithTheme(
+      <ChartFunnelWrapper data={steps}>
+        <ChartFunnel
+          dataKey="count"
+          nameKey="step"
+          color="data.background.categorical.green.moderate"
+        />
+      </ChartFunnelWrapper>,
+    );
+    expect(getFill(container)).toBeTruthy();
+    expect(getFill(container)).not.toBe(getFill(defaultContainer));
+  });
+
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Funnel />);
     await assertAccessible(container);
