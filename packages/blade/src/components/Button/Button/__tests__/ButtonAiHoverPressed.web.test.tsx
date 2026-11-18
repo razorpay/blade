@@ -14,7 +14,7 @@ jest.mock('~components/Spark/ButtonRazorSense', () => {
 });
 
 describe('<Button aiHover="razorsense" />', () => {
-  it('keeps its resting surface when pressed while RazorSense is live', () => {
+  it('keeps its resting surface when pressed or keyboard-focused while RazorSense is live', () => {
     const { getByRole } = renderWithTheme(
       <Button color="neutral" aiHover="razorsense">
         Ask Ray
@@ -34,5 +34,7 @@ describe('<Button aiHover="razorsense" />', () => {
     expect(resting).toBeDefined();
     expect(background(':hover')).toBe(resting);
     expect(background(':active')).toBe(resting);
+    // keyboard-focused too (a button tabbed to, then hovered)
+    expect(background(':focus-visible')).toBe(resting);
   });
 });

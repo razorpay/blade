@@ -52,8 +52,8 @@ const StyledBaseButton = styled.button
         }),
     },
     '&:active': {
-      backgroundColor: props.activeBackgroundColor ?? props.focusBackgroundColor,
-      boxShadow: props.activeBoxShadow ?? props.focusBoxShadow,
+      backgroundColor: props.focusBackgroundColor,
+      boxShadow: props.focusBoxShadow,
       backgroundImage: 'none',
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
