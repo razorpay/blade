@@ -139,7 +139,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  min-width: 1003px;
+  min-width: 13px;
 }
 
 .c5.c5.c5.c5.c5 {

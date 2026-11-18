@@ -28,6 +28,36 @@ describe('<SliderInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  describe('track minimum width', () => {
+    // The nearest ancestor of the thumb that sets a min-width is the track's wrapper.
+    const getTrackMinWidth = (slider: HTMLElement): number => {
+      let node: HTMLElement | null = slider;
+      while (node) {
+        const minWidth = parseFloat(getComputedStyle(node).minWidth);
+        if (minWidth > 0) return minWidth;
+        node = node.parentElement;
+      }
+      return 0;
+    };
+
+    it('should not reserve room per step when nothing is drawn per step', () => {
+      // A 10 minute call seeked in 1 second steps. Markers and scale are off, so the track
+      // should not need 10px for each of the 600 steps.
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Seek" min={0} max={600} step={1} />,
+      );
+      expect(getTrackMinWidth(getByRole('slider'))).toBeLessThan(100);
+    });
+
+    it('should still reserve room per step when markers are shown', () => {
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Corner Radius" min={0} max={40} step={4} showMarkers />,
+      );
+      // 11 markers at the 10px pitch floor.
+      expect(getTrackMinWidth(getByRole('slider'))).toBeGreaterThanOrEqual(100);
+    });
+  });
+
   it('should expose the range and the current value to assistive technology', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Volume" min={10} max={50} defaultValue={20} />,

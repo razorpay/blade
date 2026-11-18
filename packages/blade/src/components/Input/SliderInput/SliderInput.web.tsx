@@ -240,6 +240,7 @@ const _SliderInput = (
   });
 
   const shouldShowMarkers = showMarkers && canShowMarkers;
+  const hasScaleValues = showScale && showScaleValues;
   // With only the endpoints there is nothing to collide with, so the pitch floor does not apply.
   const shouldShowScale = showScale && (!showScaleValues || canShowScale);
   const scaleValues = React.useMemo(
@@ -301,11 +302,13 @@ const _SliderInput = (
 
         <BaseBox
           flex="1"
-          // Labels only widen the floor when they are actually on screen.
+          // Steps and labels only widen the floor when they are actually on screen. Without
+          // markers or scale values, a long range (600 one-second steps) would otherwise demand
+          // a 6000px track for dots that are never drawn.
           minWidth={makeSize(
             getMinTrackWidth(
-              markerValues.length,
-              showScale && showScaleValues ? widestLabelWidth : 0,
+              showMarkers || hasScaleValues ? markerValues.length : 2,
+              hasScaleValues ? widestLabelWidth : 0,
             ),
           )}
         >
