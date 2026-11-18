@@ -200,9 +200,10 @@ describe('<Button />', () => {
 
   it('should keep a Ray button of another color on its own hover in production', async () => {
     await import('~components/Spark/ButtonRay/ButtonRayLayer');
-    const dev = (global as any).__DEV__;
+    const globals = (globalThis as unknown) as { __DEV__: boolean };
+    const dev = globals.__DEV__;
     // (production: no throw for the wrong color)
-    (global as any).__DEV__ = false;
+    globals.__DEV__ = false;
     try {
       const { getByTestId } = renderWithTheme(
         <>
@@ -216,7 +217,7 @@ describe('<Button />', () => {
       );
       await expectGivesWay([getByTestId('gated')], getByTestId('control'));
     } finally {
-      (global as any).__DEV__ = dev;
+      globals.__DEV__ = dev;
     }
   }, 20000);
 
