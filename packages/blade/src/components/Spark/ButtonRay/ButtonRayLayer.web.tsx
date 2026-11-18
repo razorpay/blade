@@ -591,6 +591,9 @@ const ButtonRayLayer = ({
         if (!isMounted) return;
         rest();
         release();
+        // Ray let go too (his canvases and films), as when the pointer moves away: both made again on the next hover (the PR
+        // review)
+        setIsRayUp(false);
         slot?.update();
       }, 0);
     };
