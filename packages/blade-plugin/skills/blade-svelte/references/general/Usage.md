@@ -68,6 +68,7 @@ Wrap the app in one `BladeProvider` whose parent is the app's shell (positioned,
 | `@razorpay/blade-svelte/runes` | The few runes an app composes its own hosts on (`createLayerStack`, `defineContext`, `phoneDigits`…) |
 | `@razorpay/blade-svelte/configs/uno`, `/configs/vite`, `/configs/webpack`, `/configs/lint` | Build and lint configuration |
 | `@razorpay/blade-svelte/blade.css` | Blade's stylesheet |
+| `@razorpay/blade-svelte/fonts/*` | The font files `blade.css` loads (`inter-regular.woff2`, `inter-medium.woff2`, `inter-semibold.woff2`, `tasa.woff2`), for a page that registers the faces itself |
 
 There is no root import (`@razorpay/blade-svelte`), and never import from React's `@razorpay/blade`.
 

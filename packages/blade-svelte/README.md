@@ -67,6 +67,7 @@ npm install @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 | `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                   |
 | `@razorpay/blade-svelte/configs/lint`                     | Class lint rules, for oxlint or ESLint |
 | `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles              |
+| `@razorpay/blade-svelte/fonts/*`                          | The font files `blade.css` loads       |
 
 ### cx: compile Blade's CSS in your app
 

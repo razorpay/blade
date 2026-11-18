@@ -26,6 +26,7 @@
   ],
   "exports": {
     "./blade.css": "./src/blade.css",
+    "./fonts/*": "./src/fonts/*",
     "./icons": {
       "types": "./src/icons/index.d.ts",
       "default": "./src/icons/index.js"
