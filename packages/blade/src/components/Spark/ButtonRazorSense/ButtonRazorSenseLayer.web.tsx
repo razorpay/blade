@@ -210,13 +210,13 @@ const ButtonRazorSenseLayer = ({
     // (set below, once what they undo is in place)
     let giveUp = (): void => undefined;
     let letGo = (): void => undefined;
-    // a new stage for each layout: a stage's canvas can't take another comp (its engine goes with the canvas's GL context)
+    // one stage while it's held: a new layout (a font coming in, a new label) goes to the engine it has, its GPU context and
+    // compiled programs kept (FreshStage.mount; the PR review); a new stage only once that one has been let go
     const mount = (w: number): void => {
       if (!createEngine || !doc || !setup || hasGivenUp || !isHeld) return;
-      stage?.destroy();
       // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
       // means it can't draw here
-      stage = new FreshStage(host, createEngine, {
+      stage ??= new FreshStage(host, createEngine, {
         onError: (reason) => (reason === 'lost' ? letGo() : giveUp()),
       });
       laidWidth = widthOf(w);
