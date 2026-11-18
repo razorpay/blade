@@ -620,10 +620,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       message: `aiHover="razorsense" can only be used with variant "primary" and color "neutral" but received "${variant}" and "${color}"`,
     });
   }
-  if (hasRay && !isInsideButtonGroup && variant !== 'secondary') {
+  // (Ray's text wash is made for the default secondary's ink: on another color it would tint the label wrongly; the PR review)
+  if (hasRay && !isInsideButtonGroup && (variant !== 'secondary' || color !== 'primary')) {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `aiHover="${aiHover}" can only be used with variant "secondary" but received "${variant}"`,
+      message: `aiHover="${aiHover}" can only be used with variant "secondary" and color "primary" but received "${variant}" and "${color}"`,
     });
   }
   const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;

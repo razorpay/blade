@@ -170,8 +170,16 @@ describe('<Button />', () => {
 
   it('should throw for a Ray aiHover on a non-secondary variant, and skip it on an icon-only button', async () => {
     expect(() => renderWithTheme(<Button aiHover="ray-investigate">Investigate</Button>)).toThrow(
-      '[Blade: BaseButton]: aiHover="ray-investigate" can only be used with variant "secondary"',
+      '[Blade: BaseButton]: aiHover="ray-investigate" can only be used with variant "secondary" and color "primary"',
     );
+    // (and only on the default secondary: its text wash is made for that ink)
+    expect(() =>
+      renderWithTheme(
+        <Button variant="secondary" color="positive" aiHover="ray-investigate">
+          Investigate
+        </Button>,
+      ),
+    ).toThrow('but received "secondary" and "positive"');
     await import('~components/Spark/ButtonRay/ButtonRayLayer');
     const { getByTestId } = renderWithTheme(
       <>

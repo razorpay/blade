@@ -98,10 +98,10 @@ type ButtonCommonProps = {
        *   300px wide. Not supported inside a ButtonGroup (it has no neutral color), on a full-width button or on one wider than
        *   300px: there the button keeps its own hover (with a development warning).
        * - `ray-investigate`: RazorSense and a text wash, and the button widens to the right for Ray, who whips out his
-       *   magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"`, at any size (it all
-       *   scales with the button's height), on a labelled button that can widen: in a ButtonGroup, full width, icon-only or
-       *   stretched by its container it gives way and the button keeps its own hover (with a development warning). Give it room
-       *   to its right. More Ray actions will come as new `ray-` values.
+       *   magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"` with the default
+       *   `color="primary"`, at any size (it all scales with the button's height), on a labelled button that can widen: in a
+       *   ButtonGroup, full width, icon-only or stretched by its container it gives way and the button keeps its own hover
+       *   (with a development warning). Give it room to its right. More Ray actions will come as new `ray-` values.
        *
        * On any other variant or color it throws in development.
        *
