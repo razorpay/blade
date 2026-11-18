@@ -167,10 +167,23 @@ const runFreshStage = <Comps>({
         }
         return stage;
       };
+      // (by its turn it may no longer want to start, say a splash finished while it waited: nothing starts, and what was made
+      // ahead for it is freed, so no engine runs on for a component that's done; the PR review)
+      const isUnwanted = (): boolean => shouldStart?.() === false;
+      const dropMadeAhead = (): void => {
+        if (!stage) return;
+        stage.destroy();
+        if (stageRef.current === stage) stageRef.current = null;
+        stage = null;
+      };
       leaveQueue = waitForTurn(
         box,
         () => {
           if (!isLive) return null;
+          if (isUnwanted()) {
+            dropMadeAhead();
+            return null;
+          }
           const made = stageNow();
           if (!start(made, comps)) {
             fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
@@ -183,7 +196,14 @@ const runFreshStage = <Comps>({
         },
         engineAlpha === undefined
           ? undefined
-          : () => !isLive || stageNow().prepareStep(engineAlpha),
+          : () => {
+              if (!isLive) return true;
+              if (isUnwanted()) {
+                dropMadeAhead();
+                return true;
+              }
+              return stageNow().prepareStep(engineAlpha);
+            },
       );
     })
     .catch(() => fail('its engine failed to load'));
