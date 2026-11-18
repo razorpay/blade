@@ -360,7 +360,7 @@ class RayPlayer {
     this.caretU = clamp01(u);
   }
 
-  /** The sleep cycle: found asleep (with the first sleep's alarm), or coming in awake. His cap stays on from here. */
+  /** The sleep cycle: found asleep (with the first sleep's alarm), or coming in awake. His nightcap goes on, for as long as it's his idle. */
   nap(asleep: boolean): void {
     this.cap.capMsg({ ray: 'cap', on: true });
     const now = performance.now();
@@ -376,7 +376,12 @@ class RayPlayer {
     });
   }
 
-  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, once the sleep cycle has put it on. */
+  /** His nightcap off: another idle than the sleep cycle starts (RayMount). */
+  capOff(): void {
+    if (this.cap.CAP.on) this.cap.capMsg({ ray: 'cap', on: false });
+  }
+
+  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, while the sleep cycle is his idle. */
   get capAsk(): { ray: 'cap'; on: boolean; q?: Record<string, unknown> } {
     const { CAP } = this.cap;
     // (with his light / dark, so a film's cap is in its colours from its first frame)

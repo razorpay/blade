@@ -14,7 +14,8 @@ type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
  * `time-of-day` picks one by the viewer's clock as each Ray appears: the nightcap (Sleep) only at night, 9pm–6am, and likeliest
  * then (half the time), never Coffee then; Coffee likeliest 7–10am (half the time); evenly otherwise, and not the last Ray's
  * idle again unless it's the hour's favourite. While he's up the clock's checked again every half minute: an idle the hour has
- * since ruled out (Coffee at 9pm, the nightcap at 6am) gives way to another.
+ * since ruled out (Coffee at 9pm, the nightcap at 6am) gives way to another. He wears the nightcap only while Sleep is his idle
+ * (asleep or dozing, and through an answer meanwhile): the idle after it starts without it.
  */
 type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'time-of-day';
 

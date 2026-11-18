@@ -544,7 +544,11 @@ class RayMount {
           if (film || want.idle !== this.playerIdle) this.toRest(now);
           return;
         }
-        if (want.idle === 'rest' || sinceMs < IDLE_WAIT_MS) return; // 'rest': he stays at rest (an answer's row between its states)
+        if (sinceMs < IDLE_WAIT_MS) return;
+        // the nightcap is the sleep idle's: he wears it in it (asleep, dozing, through an answer's films), and any other idle
+        // starts without it (Coffee at 6am, an app's new `idle`; the user, 2026-11-18)
+        if (want.idle !== 'sleep') this.player.capOff();
+        if (want.idle === 'rest') return; // 'rest': he stays at rest (an answer's row between its states)
         if (film) this.startFilm(film, 'idle', null);
         else {
           this.holder = { by: 'player', act: 'idle', since: now };
@@ -775,7 +779,7 @@ class RayMount {
     film.host.send({ ray: 'mode', mode: this.options.colorScheme });
     film.host.send({ ray: 'zoom', z: this.geo.zoom });
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
-    film.host.send(this.player.capAsk); // his nightcap, once the sleep cycle has put it on: the films wear it too (as flow 9's do)
+    film.host.send(this.player.capAsk); // his nightcap, while his idle is the sleep cycle: the films wear it too (as flow 9's do)
     film.host.send(from ? { ray: 'start', from } : { ray: 'start' });
     film.startTick = film.host.ticks;
     film.shownAt = Infinity;

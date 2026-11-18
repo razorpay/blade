@@ -302,6 +302,45 @@ TestRaySleepCycle.play = async () => {
   await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('awake'), { timeout: 14000 });
 };
 
+// The nightcap is the sleep idle's: on while he sleeps or dozes, and in an answer's film meanwhile; off as another idle starts
+// (Coffee at 6am with time-of-day, or an app's new `idle`), on him and in that idle's film (the user, 2026-11-18)
+export const TestRayNightcapIsTheSleepIdles: StoryFn<typeof Ray> = () => {
+  const [idle, setIdle] = useState<'sleep' | 'coffee'>('sleep');
+  const [state, setState] = useState<RayState>('idle');
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle={idle} state={state} shouldReactToPointer={false} />
+      <Button onClick={() => setState('searching')}>Answer</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+      <Button onClick={() => setIdle('coffee')}>Coffee</Button>
+    </Box>
+  );
+};
+TestRayNightcapIsTheSleepIdles.play = async () => {
+  const { getByRole } = within(document.body);
+  const cap = (): boolean => rayEl().__ray.player.cap.CAP.on;
+  const filmCap = (id: string): boolean =>
+    Boolean(rayEl().__ray.films[id]?.host.peek('rayCap')?.CAP.on);
+  await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('asleep'), { timeout: 3000 });
+  expect(cap()).toBe(true);
+  await userEvent.click(getByRole('button', { name: 'Answer' }));
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  await waitFor(() => expect(filmCap('search')).toBe(true), { timeout: 3000 }); // (his idle is still Sleep)
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(rayEl().__ray.player.napPhase).not.toBe(null), { timeout: 8000 });
+  expect(cap()).toBe(true);
+  await userEvent.click(getByRole('button', { name: 'Coffee' }));
+  await waitFor(() => expect(doing()).toBe('film:coffee'), { timeout: 6000 });
+  expect(cap()).toBe(false);
+  await waitFor(() => expect(filmCap('coffee')).toBe(false), { timeout: 1000 });
+};
+
 // Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,
 // is drawn once more on its whole stage at the same moment, where nothing may fall outside the part its canvases cover. A film retuned
 // in Ray Studio to reach further fails here rather than being cut off (the performance review, 2026-11-16)
