@@ -69,8 +69,8 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     forwardedRef,
   ) {
     const { colorScheme } = useTheme();
-    // inside a RazorSenseChat it would draw a second animation over the chat's own: say so in development (a chat's input
-    // takes RazorSenseBottomWave)
+    // inside a RazorSenseChat it would draw a second animation over the chat's own: it draws nothing there (no engine, no GPU
+    // memory), only its children, and says so in development (a chat's input takes RazorSenseBottomWave)
     const isInChat = Boolean(useContext(RazorSenseChatContext));
     useEffect(() => {
       if (__DEV__ && isInChat) {
@@ -78,7 +78,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           type: 'warn',
           moduleName: 'RazorSenseChatBackground',
           message:
-            "Inside RazorSenseChat it draws a second animation over the chat's own: for the chat's input, use RazorSenseBottomWave instead.",
+            "Inside RazorSenseChat it doesn't draw (the chat draws its own): for the chat's input, use RazorSenseBottomWave instead.",
         });
       }
     }, [isInChat]);
@@ -174,8 +174,8 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     }, [s]);
 
     useEffect(() => {
-      // (gone to its still: it stays there, a new color scheme or scale just changes the still)
-      if (isStillRef.current) return undefined;
+      // (gone to its still: it stays there, a new color scheme or scale just changes the still; in a chat: nothing drawn)
+      if (isStillRef.current || isInChat) return undefined;
       return runFreshStage({
         moduleName: 'RazorSenseChatBackground',
         getBox: () => hostRef.current,
@@ -230,7 +230,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
       });
       // isPaused has its own effect; a new color scheme or scale starts it again
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [mode, s]);
+    }, [mode, s, isInChat]);
 
     useEffect(() => {
       stageRef.current?.setPaused(isPaused);

@@ -83,7 +83,6 @@ const runFreshStage = <Comps>({
   // engine that has drawn ends it at once, one that hasn't keeps it)
   let isWaiting: boolean | null = null;
   let waitTimer = 0;
-  let waitFrame = 0;
   const setWaiting = (waiting: boolean): void => {
     if (waiting === isWaiting) return;
     isWaiting = waiting;
@@ -91,9 +90,13 @@ const runFreshStage = <Comps>({
   };
   const stopWaiting = (): void => {
     window.clearTimeout(waitTimer);
-    cancelAnimationFrame(waitFrame);
     waitTimer = 0;
-    waitFrame = 0;
+  };
+  // its canvas showing a frame (the stage says so: nothing polled), the still goes
+  const onShown = (): void => {
+    if (!isLive || hasFailed) return;
+    stopWaiting();
+    setWaiting(false);
   };
   let stage: FreshStage | null = null;
   let leaveQueue: (() => void) | null = null;
@@ -124,19 +127,9 @@ const runFreshStage = <Comps>({
       isLive = false;
     };
   }
-  // its first frame watched for: drawn, the still goes; on screen without one past STILL_AFTER_MS, the still stands in
+  // on screen without a first frame past STILL_AFTER_MS, the still stands in (its first frame ends it: onShown)
   if (onWaiting) {
     const hasDrawnNow = (): boolean => Boolean(stage?.hasEngine() && stage.hasDrawn());
-    const watch = (): void => {
-      waitFrame = 0;
-      if (!isLive || hasFailed) return;
-      if (hasDrawnNow()) {
-        window.clearTimeout(waitTimer);
-        setWaiting(false);
-        return;
-      }
-      waitFrame = requestAnimationFrame(watch);
-    };
     const standIn = (): void => {
       waitTimer = 0;
       if (!isLive || hasFailed || hasDrawnNow()) return;
@@ -145,7 +138,6 @@ const runFreshStage = <Comps>({
       else waitTimer = window.setTimeout(standIn, STILL_AFTER_MS);
     };
     waitTimer = window.setTimeout(standIn, STILL_AFTER_MS);
-    waitFrame = requestAnimationFrame(watch);
   }
   void Promise.all([loadFreshEngine(), loadComps()])
     .then(([createFreshEngine, comps]) => {
@@ -159,15 +151,18 @@ const runFreshStage = <Comps>({
         // the same component again: its stage and engine take the new comp
         stage = previous;
         stage.setOnError(onError);
+        stage.setOnShown(onShown);
         stageRef.current = stage;
         if (!start(stage, comps)) fail();
+        // (one that has drawn: the still goes at once)
+        else if (stage.hasDrawn()) onShown();
         return;
       }
       previous?.destroy();
       // its stage, made at its turn: for the engine's first step made ahead, or for its start
       const stageNow = (): FreshStage => {
         if (!stage) {
-          stage = new FreshStage(box, createFreshEngine, { onError });
+          stage = new FreshStage(box, createFreshEngine, { onError, onShown });
           stageRef.current = stage;
         }
         return stage;
