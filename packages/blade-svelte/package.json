@@ -92,7 +92,7 @@
     "svgicons2svgfont": "^15.0.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "^1.65.1",
     "@razorpay/i18nify-js": "1.12.10",
     "@storybook/addon-docs": "10.6.5",
     "@storybook/addon-links": "10.6.5",
