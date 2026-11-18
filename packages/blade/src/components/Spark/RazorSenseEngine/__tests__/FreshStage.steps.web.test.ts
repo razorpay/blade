@@ -7,6 +7,7 @@ type Frame = (time: number) => void;
 
 const setup = (): {
   FreshStage: any;
+  measureScreen: () => void;
   runFrames: (count: number, gapMs: number) => void;
   now: () => number;
 } => {
@@ -22,9 +23,9 @@ const setup = (): {
     .spyOn(HTMLCanvasElement.prototype, 'getContext')
     .mockImplementation(((type: string) =>
       type === 'webgl2' ? { getExtension: () => null, getParameter: () => '' } : null) as any);
-  let FreshStage: any;
+  let FreshStage: any, measureScreen: any;
   jest.isolateModules(() => {
-    ({ FreshStage } = require('../FreshStage'));
+    ({ FreshStage, measureScreen } = require('../FreshStage'));
   });
   const runFrames = (count: number, gapMs: number): void => {
     for (let i = 0; i < count; i++) {
@@ -35,7 +36,7 @@ const setup = (): {
       run.forEach((cb) => cb(at));
     }
   };
-  return { FreshStage, runFrames, now: () => time };
+  return { FreshStage, measureScreen, runFrames, now: () => time };
 };
 
 const engineMock = (): any => ({
@@ -52,8 +53,9 @@ describe('FreshStage: the weak-device steps', () => {
   afterEach(() => jest.restoreAllMocks());
 
   it('steps down and then goes to its still on a device slow from the start', () => {
-    const { FreshStage, runFrames, now } = setup();
-    // the page loading: its screen at 60 fps
+    const { FreshStage, measureScreen, runFrames, now } = setup();
+    // a component mounting (its screen's rate measured from then), its engine loading: the screen at 60 fps
+    measureScreen();
     runFrames(70, 1000 / 60);
     const onError = jest.fn();
     const engine = engineMock();
@@ -80,7 +82,8 @@ describe('FreshStage: the weak-device steps', () => {
   });
 
   it('never steps down on a device that keeps up', () => {
-    const { FreshStage, runFrames } = setup();
+    const { FreshStage, measureScreen, runFrames } = setup();
+    measureScreen();
     runFrames(70, 1000 / 60);
     const onError = jest.fn();
     const engine = engineMock();

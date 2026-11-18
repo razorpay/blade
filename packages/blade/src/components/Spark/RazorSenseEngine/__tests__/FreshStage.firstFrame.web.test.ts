@@ -52,6 +52,20 @@ const engineMock = (): any => {
   };
 };
 
+describe('FreshStage: importing it', () => {
+  afterEach(() => jest.restoreAllMocks());
+
+  it('runs nothing: the screen is measured once a RazorSense component mounts, not on import', () => {
+    const requestFrame = jest.fn();
+    (window as any).requestAnimationFrame = requestFrame;
+    jest.isolateModules(() => {
+      require('../FreshStage');
+      require('../index');
+    });
+    expect(requestFrame).not.toHaveBeenCalled();
+  });
+});
+
 describe('FreshStage: looking for its first frame', () => {
   afterEach(() => {
     jest.useRealTimers();
@@ -61,7 +75,7 @@ describe('FreshStage: looking for its first frame', () => {
   it('polls nothing while paused before its first frame, and shows it once it runs and draws', () => {
     jest.useFakeTimers();
     const { FreshStage, runFrames, pendingFrames } = setup();
-    // (the screen's rate measured while the page loads)
+    // (the screen's rate, measured from the stage's making)
     runFrames(70, 1000 / 60);
     const onShown = jest.fn();
     const engine = engineMock();
