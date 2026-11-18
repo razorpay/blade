@@ -63,8 +63,10 @@ const EASE_DPR = 1.2;
 let easeLevel = 0;
 
 /**
- * the screen's frame rate (0: not measured yet), from the page's own frames as this module loads, before any engine draws: the
- * gap of its fastest tenth of 60 frames, so a page busy with its own start-up (long frames) still shows its screen's rate
+ * the screen's frame rate (0: not measured yet), from the page's own frames from the moment a RazorSense component mounts, before
+ * its engine has even loaded (measureScreen; not as this module loads: every app importing a Blade component would run it, the
+ * PR review): the gap of its fastest tenth of 60 frames, so a page busy with its own start-up (long frames) still shows its
+ * screen's rate
  */
 let screenFps = 0;
 let isProbing = false;
@@ -87,7 +89,6 @@ const measureScreen = (): void => {
   };
   requestAnimationFrame(step);
 };
-if (typeof window !== 'undefined') measureScreen();
 
 let wasSlow = false;
 /**
@@ -739,5 +740,5 @@ class FreshStage {
   }
 }
 
-export { FreshStage, freshFailures, whyCantAnimate };
+export { FreshStage, freshFailures, measureScreen, whyCantAnimate };
 export type { CreateFreshEngine, FreshDriver, FreshFailure };

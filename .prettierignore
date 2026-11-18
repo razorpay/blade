@@ -27,3 +27,6 @@ yarn-error.log*
 packages/blade-svelte/src/lint/index.json
 # generated: blade-svelte's bundled UnoCSS config (scripts/build-uno-config.mjs)
 packages/blade-svelte/uno/config.js
+
+# vendored: Razorsensation's engine source, in its own style; buildFreshEngine.js patches it by exact text, so a reformat would break the build
+packages/blade/scripts/razorsenseEngine/source/

@@ -1,5 +1,5 @@
 import type React from 'react';
-import { FreshStage, freshFailures, whyCantAnimate } from './FreshStage';
+import { FreshStage, freshFailures, measureScreen, whyCantAnimate } from './FreshStage';
 import { loadFreshEngine } from './loadFreshEngine';
 import { waitForTurn } from './startQueue';
 
@@ -77,6 +77,8 @@ const runFreshStage = <Comps>({
   onRelease,
   onWaiting,
 }: FreshStageRun<Comps>): (() => void) => {
+  // the screen's rate, from now: its engine draws nothing till it has loaded and had its turn (once a page)
+  measureScreen();
   let isLive = true;
   let hasFailed = false;
   // its first frame: the still stands in while it's on screen without one (from the last run's state: a new colour scheme on an
