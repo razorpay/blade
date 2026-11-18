@@ -315,7 +315,7 @@ const _SliderInput = (
           flex="1"
           // Labels only widen the floor when they are actually on screen.
           minWidth={makeSize(
-            showScale && !showScaleValues
+            showScale && (!showScaleValues || markerValues.length === 2)
               ? // Only the two bounds get a label here and both anchor inward, so they need room
                 // side by side. Markers still need their own pitch, so take whichever is wider.
                 Math.max(
