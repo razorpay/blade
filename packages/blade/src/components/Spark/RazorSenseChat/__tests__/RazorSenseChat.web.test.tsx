@@ -208,6 +208,17 @@ describe('RazorSense 2.0 components', () => {
     expect(container.querySelector('[data-blade-component="razorsense-thinking"]')).toBeNull();
   });
 
+  it('give the thinking label to screen readers as a polite status', () => {
+    const { getByRole } = renderWithTheme(
+      <RazorSenseThinking texts={['Thinking...', 'Searching...']} />,
+    );
+    const status = getByRole('status');
+    expect(status).toHaveTextContent('Thinking...');
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    // (only what's new is read as it rolls)
+    expect(status).toHaveAttribute('aria-atomic', 'false');
+  });
+
   it('hold rolling texts on the one shown while paused, and roll on from it after', () => {
     jest.useFakeTimers();
     const texts = ['Thinking...', 'Searching...', 'Writing...'];
