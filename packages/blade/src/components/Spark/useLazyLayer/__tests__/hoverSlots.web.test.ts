@@ -66,6 +66,26 @@ describe('holdNearPointer', () => {
     slots.forEach((slot) => slot.remove());
   });
 
+  it("doesn't take a button added near the pointer as the one it's heading for", async () => {
+    let isHeld = false;
+    // a button far off, so the pointer is followed, and the pointer resting (a check just run)
+    const far = holdNearPointer(buttonAt(5000), { isBusy: () => false, onHold: () => undefined });
+    await wait();
+    moveTo(50, 2060);
+    await wait(20);
+    // then a button comes in 60 px below it: past dwelling reach, within approach, and the pointer isn't coming
+    const slot = holdNearPointer(buttonAt(2060 + 60), {
+      isBusy: () => false,
+      onHold: (held) => {
+        isHeld = held;
+      },
+    });
+    await wait(30);
+    expect(isHeld).toBe(false);
+    slot.remove();
+    far.remove();
+  });
+
   it('keeps a hover that is still running or fading, and holds at most three', async () => {
     const held: boolean[] = [];
     let isBusy = false;

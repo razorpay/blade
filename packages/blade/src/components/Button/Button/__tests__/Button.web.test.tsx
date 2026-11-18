@@ -10,6 +10,19 @@ import { CreditCardIcon } from '~components/Icons';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+/** whether a button has an AI hover layer in it */
+const hasLayer = (button: HTMLElement): boolean =>
+  Boolean(button.querySelector(':scope > span[aria-hidden="true"]'));
+
+/**
+ * A button that gives way keeps its own hover: checked once a button beside it, rendered with it, has its layer in (the layers
+ * load on demand, so a layer that would show is in by then too)
+ */
+const expectGivesWay = async (gated: HTMLElement[], control: HTMLElement): Promise<void> => {
+  await waitFor(() => expect(hasLayer(control)).toBe(true), { timeout: 10000 });
+  gated.forEach((button) => expect(hasLayer(button)).toBe(false));
+};
+
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative', 'neutral'];
 
@@ -140,29 +153,42 @@ describe('<Button />', () => {
     );
   }, 20000);
 
-  it('should keep the full-width neutral button on its own hover, without RazorSense', () => {
-    const { container } = renderWithTheme(
-      <Button color="neutral" aiHover="razorsense" isFullWidth>
-        Ask Ray
-      </Button>,
+  it('should keep the full-width neutral button on its own hover, without RazorSense', async () => {
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button color="neutral" aiHover="razorsense" isFullWidth testID="gated">
+          Ask Ray
+        </Button>
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
     );
-    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
-  });
+    await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+  }, 20000);
 
-  it('should throw for a Ray aiHover on a non-secondary variant, and skip it on an icon-only button', () => {
+  it('should throw for a Ray aiHover on a non-secondary variant, and skip it on an icon-only button', async () => {
     expect(() => renderWithTheme(<Button aiHover="ray-investigate">Investigate</Button>)).toThrow(
       '[Blade: BaseButton]: aiHover="ray-investigate" can only be used with variant "secondary"',
     );
-    const { container } = renderWithTheme(
-      <Button
-        variant="secondary"
-        aiHover="ray-investigate"
-        icon={CreditCardIcon}
-        accessibilityLabel="Investigate"
-      />,
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button
+          variant="secondary"
+          aiHover="ray-investigate"
+          icon={CreditCardIcon}
+          accessibilityLabel="Investigate"
+          testID="gated"
+        />
+        <Button variant="secondary" aiHover="ray-investigate" testID="control">
+          Investigate
+        </Button>
+      </>,
     );
-    expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
-  });
+    await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+  }, 20000);
 
   it('should throw for an aiHover it does not know', () => {
     expect(() =>
@@ -177,20 +203,29 @@ describe('<Button />', () => {
     );
   });
 
-  it('should keep AI hover buttons on their own hover in a ButtonGroup, without throwing', () => {
-    for (const variant of ['primary', 'secondary'] as const) {
-      const { container } = renderWithTheme(
-        <ButtonGroup variant={variant}>
-          <Button aiHover="ray-investigate">Investigate</Button>
-          <Button color="neutral" aiHover="razorsense">
-            Ask Ray
-          </Button>
-          <Button>Other</Button>
-        </ButtonGroup>,
-      );
-      expect(container.querySelector('button > span[aria-hidden="true"]')).not.toBeInTheDocument();
-    }
-  });
+  it('should keep AI hover buttons on their own hover in a ButtonGroup, without throwing', async () => {
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { getAllByTestId, getByTestId } = renderWithTheme(
+      <>
+        {(['primary', 'secondary'] as const).map((variant) => (
+          <ButtonGroup key={variant} variant={variant}>
+            <Button aiHover="ray-investigate" testID="gated">
+              Investigate
+            </Button>
+            <Button color="neutral" aiHover="razorsense" testID="gated">
+              Ask Ray
+            </Button>
+            <Button>Other</Button>
+          </ButtonGroup>
+        ))}
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    await expectGivesWay(getAllByTestId('gated'), getByTestId('control'));
+  }, 20000);
 
   it('should render Ray on the secondary button at any size', async () => {
     // Ray's layer (his runtime) is loaded on demand: loaded here first, a cold load can outlast waitFor's default

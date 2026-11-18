@@ -90,7 +90,11 @@ const check = (): void => {
         .filter((slot) => slot.distance > 0 && slot.distance <= APPROACH)
         .map((slot) => ({
           slot,
-          closing: sinceLast ? (slot.lastDistance - slot.distance) / sinceLast : 0,
+          // (a slot new since the last check, or a pointer that had no place: no distance to close from yet)
+          closing:
+            sinceLast && Number.isFinite(slot.lastDistance)
+              ? (slot.lastDistance - slot.distance) / sinceLast
+              : 0,
         }))
         .filter(
           ({ closing, slot }) => closing >= MIN_CLOSING && slot.distance / closing <= ARRIVE_MS,
