@@ -133,7 +133,9 @@ const ChartFunnelWrapper = ({
         {...restProps}
       >
         <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsFunnelChart data={rows} accessibilityLayer={false}>{children}</RechartsFunnelChart>
+          <RechartsFunnelChart data={rows} accessibilityLayer={false}>
+            {children}
+          </RechartsFunnelChart>
         </RechartsResponsiveContainer>
       </BaseBox>
     </CommonChartComponentsContext.Provider>
