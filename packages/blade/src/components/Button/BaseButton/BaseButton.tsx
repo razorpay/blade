@@ -639,7 +639,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
   const canWidenForRay =
     !isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
-  const isRayHover = hasRay && variant === 'secondary' && canWidenForRay;
+  // (on the default secondary only, as RazorSense's checks its own: in production, where a wrong color doesn't throw, the
+  // button keeps its own hover rather than a wash made for another ink)
+  const isRayHover = hasRay && variant === 'secondary' && color === 'primary' && canWidenForRay;
   const resolvedSize = buttonGroupProps.size ?? size;
   // its hover is RazorSense only while that's running (reduced motion, no WebGL2, a failed load, a lost GPU: the button's own)
   const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);

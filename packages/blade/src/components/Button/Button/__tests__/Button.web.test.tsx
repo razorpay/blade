@@ -198,6 +198,28 @@ describe('<Button />', () => {
     await expectGivesWay([getByTestId('gated')], getByTestId('control'));
   }, 20000);
 
+  it('should keep a Ray button of another color on its own hover in production', async () => {
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const dev = (global as any).__DEV__;
+    // (production: no throw for the wrong color)
+    (global as any).__DEV__ = false;
+    try {
+      const { getByTestId } = renderWithTheme(
+        <>
+          <Button variant="secondary" color="white" aiHover="ray-investigate" testID="gated">
+            Investigate
+          </Button>
+          <Button variant="secondary" aiHover="ray-investigate" testID="control">
+            Investigate
+          </Button>
+        </>,
+      );
+      await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+    } finally {
+      (global as any).__DEV__ = dev;
+    }
+  }, 20000);
+
   it('should throw for an aiHover it does not know', () => {
     expect(() =>
       renderWithTheme(
