@@ -112,6 +112,26 @@ describe('holdNearPointer', () => {
     slots.forEach((slot) => slot.remove());
   });
 
+  it('holds the button the pointer is on even when three others are still fading', async () => {
+    const held: boolean[] = [];
+    // three just passed over (still fading), and the pointer on the fourth
+    const slots = [3000, 3040, 3080, 3120].map((top, i) =>
+      holdNearPointer(buttonAt(top), {
+        isBusy: () => i < 3,
+        onHold: (isHeld) => {
+          held[i] = isHeld;
+        },
+      }),
+    );
+    moveTo(50, 3015);
+    await wait();
+    moveTo(50, 3135);
+    await wait();
+    expect(held[3]).toBe(true);
+    expect(held.filter(Boolean)).toHaveLength(3);
+    slots.forEach((slot) => slot.remove());
+  });
+
   it('holds a hover from where its own event says the pointer is, with no move before it', async () => {
     let isHeld = false;
     // (a pointer that never moved since: the page scrolled under it, say)

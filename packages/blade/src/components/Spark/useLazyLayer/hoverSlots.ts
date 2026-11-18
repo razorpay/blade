@@ -118,9 +118,15 @@ const check = (): void => {
       }, DWELL - waited + 1);
     }
   }
+  // past MAX_HELD: the one the pointer is on first (a quick pass over three left them fading, and the fourth, hovered, got none;
+  // the PR review), then those still running or fading, then the nearest
+  const isOn = (slot: Slot): number => Number(slot.distance === 0);
   const held = new Set(
     wanted
-      .sort((a, b) => Number(b.isBusy()) - Number(a.isBusy()) || a.distance - b.distance)
+      .sort(
+        (a, b) =>
+          isOn(b) - isOn(a) || Number(b.isBusy()) - Number(a.isBusy()) || a.distance - b.distance,
+      )
       .slice(0, MAX_HELD),
   );
   // let go first, then hold: a context freed before the next is made
