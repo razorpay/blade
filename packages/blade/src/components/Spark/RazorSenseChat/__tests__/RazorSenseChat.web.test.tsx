@@ -290,25 +290,32 @@ describe('RazorSense 2.0 components', () => {
     warn.mockRestore();
   });
 
-  it('warn when a RazorSenseChatBackground is put inside a RazorSenseChat', () => {
+  it('draw nothing for a RazorSenseChatBackground put inside a RazorSenseChat, and say so', async () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     const message =
-      "[Blade: RazorSenseChatBackground]: Inside RazorSenseChat it draws a second animation over the chat's own: for the chat's input, use RazorSenseBottomWave instead.";
-    renderWithTheme(
+      "[Blade: RazorSenseChatBackground]: Inside RazorSenseChat it doesn't draw (the chat draws its own): for the chat's input, use RazorSenseBottomWave instead.";
+    // (jsdom has no WebGL2: a background that tries to draw says so through onError)
+    const onErrorInChat = jest.fn();
+    const { container } = renderWithTheme(
       <RazorSenseChat>
-        <RazorSenseChatBackground>
-          <textarea />
+        <RazorSenseChatBackground onError={onErrorInChat}>
+          <textarea placeholder="in a chat" />
         </RazorSenseChatBackground>
       </RazorSenseChat>,
     );
     expect(warn.mock.calls.map(([text]) => String(text))).toContain(message);
-    // on its own: no warning
+    // (its children still shown)
+    expect(container.querySelector('textarea[placeholder="in a chat"]')).toBeInTheDocument();
+    // on its own it draws (here: tries, and falls back), and says nothing
     warn.mockClear();
+    const onError = jest.fn();
     renderWithTheme(
-      <RazorSenseChatBackground>
+      <RazorSenseChatBackground onError={onError}>
         <textarea />
       </RazorSenseChatBackground>,
     );
+    await waitFor(() => expect(onError).toHaveBeenCalled());
+    expect(onErrorInChat).not.toHaveBeenCalled();
     expect(warn.mock.calls.map(([text]) => String(text))).not.toContain(message);
     warn.mockRestore();
   });

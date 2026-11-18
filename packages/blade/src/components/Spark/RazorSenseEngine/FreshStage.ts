@@ -120,6 +120,14 @@ const freshFailures: Record<FreshFailure, string> = {
 const FIRST_DRAW_MS = 45000;
 
 /**
+ * Its canvas is looked at each frame for a frame to show only while one can come: the stage running or settling, or this long
+ * after it's armed (a frame a component draws by seeking; an engine waking, which redraws by itself: WAKE_SHOW_MS). Paused, off
+ * screen or hidden it isn't polled (the PR review: a stage paused from the start polled forever): update() looks again (ms)
+ */
+const SHOW_GRACE_MS = 1000;
+const WAKE_SHOW_MS = 10000;
+
+/**
  * Out of sight this long (its box off screen, past WAKE_MARGIN), a stage's engine gives its GPU memory back (sleep: its context
  * let go, everything else kept), and makes it again once its box comes within WAKE_MARGIN of the screen, so its frame is back by
  * the time it scrolls in (ms)
@@ -195,6 +203,7 @@ class FreshStage {
   private readonly msg: HTMLElement;
   private readonly createEngine: CreateFreshEngine;
   private onError?: (reason: FreshFailure) => void;
+  private onShown?: () => void;
   private firstDrawTimer = 0;
   private waitedForFirstDraw = 0;
   private hasStalled = false;
@@ -216,6 +225,12 @@ class FreshStage {
   private easedTo = 0;
   private settleId = 0;
   private showId = 0;
+  // its canvas waiting to show a frame past this one (showOnFirstFrame), looked at each frame till showUntil when not running
+  private isShowPending = false;
+  private showAfter = 0;
+  private showUntil = 0;
+  // its first frame's clock is wanted (watchFirstDraw): it ticks only while the stage runs
+  private isFirstDrawWatched = false;
   private sleepTimer = 0;
   private isAsleep = false;
   private isNear = true;
@@ -227,11 +242,12 @@ class FreshStage {
   constructor(
     box: HTMLElement,
     createEngine: CreateFreshEngine,
-    options: { onError?: (reason: FreshFailure) => void } = {},
+    options: { onError?: (reason: FreshFailure) => void; onShown?: () => void } = {},
   ) {
     this.box = box;
     this.createEngine = createEngine;
     this.onError = options.onError;
+    this.onShown = options.onShown;
 
     this.canvas = this.makeCanvas();
     // the engine's own failure text (a GPU context it couldn't restore): never shown in a decorative box, told through
@@ -390,6 +406,11 @@ class FreshStage {
     return !this.isDestroyed && !this.isPaused && this.isOnScreen && !document.hidden;
   }
 
+  /** who's told when its canvas shows a frame: its first, or its first since waking (a component taking over a stage it had before) */
+  public setOnShown(onShown?: () => void): void {
+    this.onShown = onShown;
+  }
+
   /** who's told when it can't animate (a component taking over a stage it had before) */
   public setOnError(onError?: (reason: FreshFailure) => void): void {
     this.onError = onError;
@@ -407,6 +428,8 @@ class FreshStage {
       if (this.isDestroyed || !this.engine) return;
       draw();
       if (performance.now() < until) this.settleId = requestAnimationFrame(step);
+      // (a frame drawn while it isn't running: shown now)
+      this.checkShown();
     };
     step();
   }
@@ -469,21 +492,29 @@ class FreshStage {
    */
   private watchFirstDraw(): void {
     window.clearInterval(this.firstDrawTimer);
+    this.firstDrawTimer = 0;
     this.waitedForFirstDraw = 0;
-    if (!this.engine?.drawn) return;
+    this.isFirstDrawWatched = Boolean(this.engine?.drawn);
+    this.armFirstDrawWatch();
+  }
+
+  /** (its clock ticks only while the stage runs: paused, off screen or hidden, nothing polls, and update() starts it again) */
+  private armFirstDrawWatch(): void {
+    if (!this.isFirstDrawWatched || this.firstDrawTimer || !this.isRunning()) return;
     const STEP = 250;
     this.firstDrawTimer = window.setInterval(() => {
       if (this.isDestroyed || !this.engine || this.hasDrawn()) {
-        window.clearInterval(this.firstDrawTimer);
-        return;
-      }
-      if (!this.isPaused && this.isOnScreen && !document.hidden) this.waitedForFirstDraw += STEP;
-      if (this.waitedForFirstDraw >= FIRST_DRAW_MS) {
-        window.clearInterval(this.firstDrawTimer);
+        this.isFirstDrawWatched = false;
+      } else if (this.isRunning()) {
+        this.waitedForFirstDraw += STEP;
+        if (this.waitedForFirstDraw < FIRST_DRAW_MS) return;
+        this.isFirstDrawWatched = false;
         this.hasStalled = true;
         wasStalled = true;
         this.onError?.('stalled');
       }
+      window.clearInterval(this.firstDrawTimer);
+      this.firstDrawTimer = 0;
     }, STEP);
   }
 
@@ -548,19 +579,27 @@ class FreshStage {
    * nothing is drawn yet, which on a slow GPU (compiling its shaders) or with an engine made ahead could be a second or more. The
    * box's own background (the splash's ground) or the component's still shows meanwhile.
    */
-  private showOnFirstFrame(after = 0): void {
-    cancelAnimationFrame(this.showId);
-    const check = (): void => {
-      this.showId = 0;
-      if (this.isDestroyed || !this.engine) return;
-      if ((this.engine.drawn?.() ?? 1) > after) {
-        this.canvas.style.visibility = '';
-        return;
-      }
-      this.showId = requestAnimationFrame(check);
-    };
-    check();
+  private showOnFirstFrame(after = 0, graceMs = SHOW_GRACE_MS): void {
+    this.isShowPending = true;
+    this.showAfter = after;
+    this.showUntil = performance.now() + graceMs;
+    this.checkShown();
   }
+
+  private checkShown = (): void => {
+    cancelAnimationFrame(this.showId);
+    this.showId = 0;
+    if (!this.isShowPending || this.isDestroyed || !this.engine) return;
+    if ((this.engine.drawn?.() ?? 1) > this.showAfter) {
+      this.isShowPending = false;
+      this.canvas.style.visibility = '';
+      this.onShown?.();
+      return;
+    }
+    if (this.isRunning() || this.settleId || performance.now() < this.showUntil) {
+      this.showId = requestAnimationFrame(this.checkShown);
+    }
+  };
 
   /** asleep, or a timer to sleep, or awake again: by whether its box is in sight, or near it */
   private updateSleep(): void {
@@ -597,7 +636,8 @@ class FreshStage {
     const { engine } = this;
     this.isAsleep = false;
     if (!engine) return;
-    this.showOnFirstFrame(engine.drawn?.() ?? 0);
+    // (it redraws by itself as its context comes back, running or not)
+    this.showOnFirstFrame(engine.drawn?.() ?? 0, WAKE_SHOW_MS);
     engine.wake?.();
   }
 
@@ -629,6 +669,9 @@ class FreshStage {
     if (isRunning && this.driver) this.startLoop();
     else this.stopLoop();
     this.updateSleep();
+    // (its first frame looked for again, now that one may come)
+    this.checkShown();
+    this.armFirstDrawWatch();
   };
 
   private startLoop(): void {
