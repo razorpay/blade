@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FreshStage, loadFreshEngine } from '../RazorSenseEngine';
+import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
 import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot } from '../useLazyLayer/hoverSlots';
@@ -160,6 +160,8 @@ const ButtonRazorSenseLayer = ({
       return undefined;
     // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
     if (!canPlayHover()) return undefined;
+    // the screen's rate, from now: before its canvas is made, as the pointer nears (once a page)
+    measureScreen();
     let isMounted = true;
     let stage: FreshStage | null = null;
     let engine: FreshEngine | null = null;
