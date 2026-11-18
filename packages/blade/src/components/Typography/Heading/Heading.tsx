@@ -10,7 +10,6 @@ import { isReactNative } from '~utils';
 import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { logger, throwBladeError } from '~utils/logger';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
@@ -34,48 +33,64 @@ type HeadingCommonProps = {
   ElementTiming &
   StyledPropsBlade;
 
-// A single object type (not a union), so consumers can still `interface X extends HeadingProps`
-// and build wrappers with `Omit` / `Pick` over it.
 export type HeadingProps = HeadingCommonProps & {
+  /**
+   * Leave unset with `variant="serif"`, which always renders at the 2xlarge size. Any other size
+   * throws in dev.
+   */
   size?: HeadingSize;
+  /**
+   * Leave unset with `variant="serif"`, which always renders in regular weight. Any other weight
+   * throws in dev.
+   */
   weight?: HeadingWeight;
   /**
-   * Renders the heading in PT Serif.
+   * Visual variant of the heading.
    *
-   * **Reserved for the agentic dashboard hero heading.** Only works with `size="2xlarge"`, in
-   * regular weight. Web only for now: on React Native the heading keeps the default heading font.
+   * - `default`: the heading font (TASA Orbiter) at the given `size` and `weight`.
+   * - `serif`: PT Serif at the 2xlarge size, regular weight. **Reserved for the agentic dashboard
+   *   hero heading.** Its size and weight are fixed, so don't pass `size` or `weight` with it.
+   *   Web only for now: on React Native it keeps the same size and weight in the default heading
+   *   font.
    *
-   * @default false
+   * @default 'default'
    */
-  isSerif?: boolean;
+  variant?: 'default' | 'serif';
 };
-
-/**
- * Compile-time check for the common case: when `isSerif` is written as `true` directly on
- * `<Heading>`, TypeScript also requires `size="2xlarge"` and only allows `weight="regular"`.
- *
- * It can't see through a computed value (`isSerif={isHero}`) or props spread in from a wrapper
- * typed with `HeadingProps`. Those are checked at runtime instead, like Text's size/variant check:
- * any other size or weight throws in dev, and the heading keeps the default font in production.
- */
-type HeadingSerifGuard<T> = T extends { isSerif: true }
-  ? { size: '2xlarge'; weight?: 'regular' }
-  : unknown;
 
 type GetHeadingPropsArgs = Pick<HeadingCommonProps, 'as' | 'color' | 'testID'> & {
   size?: HeadingSize;
   weight?: HeadingWeight;
-  isSerif?: boolean;
+  variant?: HeadingProps['variant'];
 };
 
 export const getHeadingProps = ({
   as,
-  size,
+  size: sizeProp,
   weight,
   color,
   testID,
-  isSerif,
+  variant = 'default',
 }: GetHeadingPropsArgs): Omit<BaseTextProps, 'children'> => {
+  const isSerif = variant === 'serif';
+  if (isSerif && __DEV__) {
+    // The serif variant fixes its own size and weight. Passing different ones is a mistake.
+    if (sizeProp && sizeProp !== '2xlarge') {
+      throwBladeError({
+        moduleName: 'Heading',
+        message: `variant="serif" always renders at size="2xlarge". Remove size="${sizeProp}".`,
+      });
+    }
+    if (weight && weight !== 'regular') {
+      throwBladeError({
+        moduleName: 'Heading',
+        message: `variant="serif" always renders in regular weight, because PT Serif ships in regular weight only. Remove weight="${weight}".`,
+      });
+    }
+  }
+
+  // The serif variant fixes its own size; everything else defaults to small.
+  const size: HeadingSize = isSerif ? '2xlarge' : sizeProp ?? 'small';
   const props: Omit<BaseTextProps, 'children'> = {
     color,
     fontSize: 300,
@@ -111,36 +126,19 @@ export const getHeadingProps = ({
   }
 
   if (isSerif) {
-    // Invalid combinations are reachable through a computed `isSerif={...}`, which the types
-    // can't catch. Fail loudly in dev, and degrade gracefully in production.
-    if (__DEV__) {
-      if (size !== '2xlarge') {
-        throwBladeError({
-          moduleName: 'Heading',
-          message: `isSerif is only supported with size="2xlarge". Received size="${size}".`,
-        });
-      }
-      if (weight && weight !== 'regular') {
-        throwBladeError({
-          moduleName: 'Heading',
-          message: `isSerif only supports weight="regular", because PT Serif ships in regular weight only. Received weight="${weight}".`,
-        });
-      }
-    }
-
-    if (size !== '2xlarge') {
-      // Production fallback: keep the default heading font.
-    } else if (isReactNative()) {
+    // The serif variant always uses regular weight, on every platform: PT Serif ships in regular
+    // weight only, and any other weight would make the browser fake bold.
+    props.fontWeight = 'regular';
+    if (isReactNative()) {
+      // PT Serif isn't bundled for React Native yet, so only the font falls back.
       logger({
         message:
-          'isSerif is not supported on React Native yet, so the default heading font is used.',
+          'variant="serif" is web only for now. On React Native it renders in the default heading font at the same size and weight.',
         moduleName: 'Heading',
         type: 'warn',
       });
     } else {
-      // PT Serif ships in regular weight only. Any other weight would make the browser fake bold.
       props.fontFamily = 'serif';
-      props.fontWeight = 'regular';
       // Design asked for -0.5px. Token 50 (-1.3%) gives -0.52px at 40px and -0.42px at 32px.
       props.letterSpacing = 50;
     }
@@ -154,9 +152,9 @@ export const getHeadingProps = ({
 const _Heading = (
   {
     as,
-    size = 'small',
-    // No default here: getHeadingProps falls back to semibold, and needs to know whether a
-    // weight was passed so it can reject non-regular weights with isSerif.
+    // No defaults here: getHeadingProps falls back to small / semibold, and needs to know whether
+    // a size or weight was passed so it can reject them with variant="serif".
+    size,
     weight,
     color = 'surface.text.gray.normal',
     children,
@@ -165,14 +163,14 @@ const _Heading = (
     textDecorationLine,
     wordBreak,
     textTransform,
-    isSerif = false,
+    variant,
     ...styledProps
   }: HeadingProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
-  const props = getHeadingProps({ as, size, weight, color, testID, isSerif });
+  const props = getHeadingProps({ as, size, weight, color, testID, variant });
 
   return (
     <BaseText
@@ -190,19 +188,6 @@ const _Heading = (
   );
 };
 
-// Plain forwardRef component that Storybook's docgen reads (it can't read the generic signature
-// below). Exported only as HeadingBase, which ./index.ts keeps out of the public API.
-const Heading = assignWithoutSideEffects(React.forwardRef(_Heading), {
-  displayName: 'Heading',
-});
+const Heading = React.forwardRef(_Heading);
 
-// forwardRef drops generics, so the serif guard is added back on the public signature.
-// Same object as the component above at runtime, so it shares the docgen info.
-const GuardedHeading = Heading as (<T extends HeadingProps>(
-  props: T & HeadingSerifGuard<T> & React.RefAttributes<BladeElementRef>,
-) => ReactElement) &
-  // Keep forwardRef's statics ($$typeof, displayName, ...) so React.ElementRef<typeof Heading>
-  // and friends keep working. Pick drops only the loose call signature.
-  Pick<typeof Heading, keyof typeof Heading>;
-
-export { GuardedHeading as Heading, Heading as HeadingBase };
+export { Heading };

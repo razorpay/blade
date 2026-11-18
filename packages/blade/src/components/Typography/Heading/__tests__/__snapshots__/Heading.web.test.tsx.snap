@@ -228,7 +228,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
 </div>
 `;
 
-exports[`<Heading /> should render serif Heading at size "2xlarge" 1`] = `
+exports[`<Heading /> should render the serif variant at the 2xlarge size 1`] = `
 .c0.c0.c0.c0.c0 {
   color: hsla(0,0%,2%,1);
   font-family: "PT Serif","PT Serif Fallback Georgia",Georgia,serif;

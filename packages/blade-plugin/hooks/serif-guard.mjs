@@ -1,4 +1,4 @@
-// PostToolUse: when an agent's edit adds `isSerif` (PT Serif) to a file that imports Blade,
+// PostToolUse: when an agent's edit adds `variant="serif"` (PT Serif) to a file that imports Blade,
 // ask it to undo the change or mark it as the agentic dashboard hero heading.
 // Prints nothing otherwise. Must never break the session, so errors are swallowed.
 import { checkToolCall } from './utils/serifGuard.mjs';

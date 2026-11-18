@@ -107,12 +107,10 @@ describe('<Heading />', () => {
     await assertAccessible(container);
   });
 
-  it('should render serif Heading at size "2xlarge"', () => {
+  it('should render the serif variant at the 2xlarge size', () => {
     const displayText = 'Good morning, what would you like to do today?';
     const { container, getByRole } = renderWithTheme(
-      <Heading size="2xlarge" isSerif>
-        {displayText}
-      </Heading>,
+      <Heading variant="serif">{displayText}</Heading>,
     );
     const heading = getByRole('heading', { level: 2 });
     expect(heading).toHaveStyle({
@@ -124,80 +122,47 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should accept a computed boolean for isSerif at size "2xlarge"', () => {
-    const serifFontFamily = '"PT Serif","PT Serif Fallback Georgia",Georgia,serif';
-    const renderHero = (isHero: boolean): HTMLElement | null =>
-      renderWithTheme(
-        <Heading size="2xlarge" isSerif={isHero}>
-          Hero
-        </Heading>,
-      ).container.querySelector('h2');
-
-    expect(renderHero(true)).toHaveStyle({ fontFamily: serifFontFamily });
-    expect(renderHero(false)).not.toHaveStyle({ fontFamily: serifFontFamily });
+  it('should accept size="2xlarge" and weight="regular" alongside the serif variant', () => {
+    const { getByRole } = renderWithTheme(
+      <Heading variant="serif" size="2xlarge" weight="regular">
+        Hero
+      </Heading>,
+    );
+    expect(getByRole('heading', { level: 2 })).toHaveStyle({
+      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
+    });
   });
 
-  it('should keep HeadingProps usable in wrappers while guarding literal isSerif', () => {
-    // Type-level checks: these fail `yarn typecheck` if the guard or HeadingProps shape regresses.
+  it('should keep HeadingProps usable in wrappers', () => {
     type SectionTitleProps = Omit<HeadingProps, 'size'>;
     const SectionTitle = (props: SectionTitleProps): React.ReactElement => (
       <Heading size="large" {...props} />
     );
-    const misuse = [
-      // @ts-expect-error isSerif needs size="2xlarge"
-      <Heading key="size" size="xlarge" isSerif>
-        a
-      </Heading>,
-      // @ts-expect-error PT Serif ships in regular weight only
-      <Heading key="weight" size="2xlarge" weight="semibold" isSerif>
-        a
-      </Heading>,
-    ];
-    expect(misuse).toHaveLength(2);
-
-    // Heading keeps its forwardRef component type for consumers.
-    type HeadingRef = React.ElementRef<typeof Heading>;
-    // @ts-expect-error the ref type must be concrete, not any
-    const notAny: HeadingRef = 5;
-    expect(notAny).toBe(5);
-    // Type-only check (reading `.displayName` directly is lint-restricted): fails to compile if
-    // Heading's type loses its forwardRef statics.
-    const displayName: typeof Heading['displayName'] = 'Heading';
-    expect(displayName).toBe('Heading');
-
     const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
-
-    // The type guard can't see isSerif inside a spread, so the wrapper still compiles with it.
-    // The runtime check catches it instead.
-    expect(() => renderWithTheme(<SectionTitle isSerif>Section</SectionTitle>)).toThrow(
-      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="large".',
-    );
   });
 
-  it('should throw in dev when isSerif is used with a size other than "2xlarge"', () => {
-    const isHero = true as boolean;
+  it('should throw in dev when the serif variant gets another size', () => {
     expect(() =>
       renderWithTheme(
-        <Heading size="xlarge" isSerif={isHero}>
+        <Heading variant="serif" size="xlarge">
           Not serif
         </Heading>,
       ),
     ).toThrow(
-      '[Blade: Heading]: isSerif is only supported with size="2xlarge". Received size="xlarge".',
+      '[Blade: Heading]: variant="serif" always renders at size="2xlarge". Remove size="xlarge".',
     );
   });
 
-  it('should throw in dev when isSerif is used with a weight other than "regular"', () => {
-    const isHero = true as boolean;
+  it('should throw in dev when the serif variant gets a non-regular weight', () => {
     expect(() =>
       renderWithTheme(
-        <Heading size="2xlarge" weight="medium" isSerif={isHero}>
+        <Heading variant="serif" weight="medium">
           Not serif
         </Heading>,
       ),
     ).toThrow(
-      '[Blade: Heading]: isSerif only supports weight="regular", because PT Serif ships in regular weight only. Received weight="medium".',
+      '[Blade: Heading]: variant="serif" always renders in regular weight, because PT Serif ships in regular weight only. Remove weight="medium".',
     );
   });
 

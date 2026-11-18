@@ -13,7 +13,7 @@ const SERIF_FILE = [
   "import { Heading } from '@razorpay/blade/components';",
   '',
   'export const Hero = () => (',
-  '  <Heading size="2xlarge" isSerif>',
+  '  <Heading variant="serif">',
   '    Good morning',
   '  </Heading>',
   ');',
@@ -36,10 +36,10 @@ const writeCall = (dir, name, content) => ({
   tool_input: { file_path: path.join(dir, name), content },
 });
 
-test('flags isSerif written into a file that imports Blade', () => {
+test('flags the serif variant written into a file that imports Blade', () => {
   const dir = makeProject({ 'src/Hero.tsx': SERIF_FILE });
   const reminder = checkToolCall(writeCall(dir, 'src/Hero.tsx', SERIF_FILE));
-  assert.match(reminder, /`isSerif`/);
+  assert.match(reminder, /`variant="serif"`/);
   assert.match(reminder, /agentic dashboard hero heading/);
   assert.match(reminder, new RegExp(ALLOW_MARKER));
 });
@@ -65,15 +65,15 @@ test('stays quiet when an edit only adds the allow marker', () => {
   assert.equal(checkToolCall(call), null);
 });
 
-test('ignores an unrelated isSerif in a file that does not use Blade', () => {
-  const content = 'export const FontPicker = ({ isSerif }) => (isSerif ? "serif" : "sans");';
+test('ignores an unrelated serif variant in a file that does not use Blade', () => {
+  const content = 'export const Preview = () => <FontPreview variant="serif" />;';
   const dir = makeProject({ 'src/FontPicker.tsx': content });
   assert.equal(checkToolCall(writeCall(dir, 'src/FontPicker.tsx', content)), null);
 });
 
-test('needs both isSerif in the added text and a Blade import in the file', () => {
-  assert.equal(hasSerifUse('<Heading size="2xlarge" isSerif>', SERIF_FILE), true);
-  assert.equal(hasSerifUse('<Heading size="2xlarge" isSerif>', 'const a = 1;'), false);
+test('needs both the serif variant in the added text and a Blade import in the file', () => {
+  assert.equal(hasSerifUse('<Heading variant="serif">', SERIF_FILE), true);
+  assert.equal(hasSerifUse('<Heading variant="serif">', 'const a = 1;'), false);
   assert.equal(hasSerifUse('const a = 1;', SERIF_FILE), false);
 });
 
@@ -113,21 +113,21 @@ test('reads MultiEdit edits and Codex apply_patch calls', () => {
     tool_name: 'MultiEdit',
     tool_input: {
       file_path: path.join(dir, 'src/Hero.tsx'),
-      edits: [{ old_string: 'x', new_string: '<Heading size="2xlarge" isSerif>' }],
+      edits: [{ old_string: 'x', new_string: '<Heading variant="serif">' }],
     },
   };
-  assert.match(checkToolCall(multiEdit), /`isSerif`/);
+  assert.match(checkToolCall(multiEdit), /`variant="serif"`/);
 
   const patch = [
     '*** Begin Patch',
     '*** Update File: src/Hero.tsx',
     '@@',
-    '-  <Heading size="2xlarge">',
-    '+  <Heading size="2xlarge" isSerif>',
+    '-  <Heading>',
+    '+  <Heading variant="serif">',
     '*** End Patch',
   ].join('\n');
   assert.deepEqual(readEdit({ input: patch }), [
-    { file: 'src/Hero.tsx', added: '  <Heading size="2xlarge" isSerif>' },
+    { file: 'src/Hero.tsx', added: '  <Heading variant="serif">' },
   ]);
   assert.match(
     checkToolCall({ cwd: dir, tool_name: 'apply_patch', tool_input: { input: patch } }),
@@ -135,15 +135,15 @@ test('reads MultiEdit edits and Codex apply_patch calls', () => {
   );
 });
 
-test('in a multi-file apply_patch, flags only the file that adds isSerif', () => {
+test('in a multi-file apply_patch, flags only the file that adds the serif variant', () => {
   const note = "import { Text } from '@razorpay/blade/components';\nexport const Note = () => <Text>Note</Text>;";
   const dir = makeProject({ 'src/Hero.tsx': SERIF_FILE, 'src/Note.tsx': note });
   const patch = [
     '*** Begin Patch',
     '*** Update File: src/Hero.tsx',
     '@@',
-    '-  <Heading size="2xlarge">',
-    '+  <Heading size="2xlarge" isSerif>',
+    '-  <Heading>',
+    '+  <Heading variant="serif">',
     '*** Update File: src/Note.tsx',
     '@@',
     '-export const Note = () => null;',

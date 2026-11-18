@@ -52,7 +52,8 @@ const HeadingStoryMeta: Meta<HeadingProps> = {
   component: HeadingComponent,
   args: {
     children: 'Get Started With Payment Gateway',
-    weight: 'semibold',
+    // No `weight` default here (Heading already defaults to semibold), so choosing
+    // variant="serif" in the controls doesn't trip its regular-weight-only check.
     as: undefined,
   },
   tags: ['autodocs'],
@@ -140,13 +141,12 @@ const SerifTemplate: StoryFn<typeof HeadingComponent> = () => {
     <Box display="flex" flexDirection="column" gap="spacing.5">
       <Text>
         <Text as="span" weight="semibold">
-          isSerif
+          variant=&quot;serif&quot;
         </Text>{' '}
-        renders the heading in PT Serif. It is reserved for the agentic dashboard hero heading, so
-        it only works with <Code size="medium">size=&quot;2xlarge&quot;</Code> and regular weight.
-        Web only for now.
+        renders the heading in PT Serif at the 2xlarge size and regular weight. It is reserved for
+        the agentic dashboard hero heading. Web only for now.
       </Text>
-      <HeadingComponent size="2xlarge" isSerif>
+      <HeadingComponent variant="serif">
         Good morning, what would you like to do today?
       </HeadingComponent>
       <HeadingComponent size="2xlarge" weight="regular">

@@ -101,7 +101,7 @@
 }
 
 /*
-  pt-serif-latin-400: reserved for <Heading size="2xlarge" isSerif />.
+  pt-serif-latin-400: reserved for <Heading variant="serif" />.
   Regular weight only, Latin subset (same range as inter-latin-blade), hinting removed.
   Browsers only download this file when a PT Serif heading is actually rendered.
 */
