@@ -1,14 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import { drawerComponentIds } from './drawerComponentIds';
+import {
+  DRAWER_HEADER_GRADIENT_FADE_START,
+  DRAWER_HEADER_GRADIENT_OPACITY,
+} from './drawerHeaderGradient';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { useDrawerStack } from './StackProvider';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~utils';
+
+// Fades the header gradient to transparent towards the bottom, so it blends into the drawer body
+// instead of ending in a hard edge.
+const gradientFadeMask = `linear-gradient(to bottom, black ${
+  DRAWER_HEADER_GRADIENT_FADE_START * 100
+}%, transparent 100%)`;
+
+const DrawerHeaderGradient = styled.div<{ backgroundGradient: string }>(
+  ({ backgroundGradient }) => ({
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    pointerEvents: 'none',
+    opacity: DRAWER_HEADER_GRADIENT_OPACITY,
+    backgroundImage: backgroundGradient,
+    WebkitMaskImage: gradientFadeMask,
+    maskImage: gradientFadeMask,
+  }),
+);
 
 const _DrawerHeader = ({
   title,
@@ -40,26 +67,31 @@ const _DrawerHeader = ({
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
   return (
-    <BaseHeader
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-      showBackButton={isStackedDrawer || isDrawerExiting}
-      showCloseButton={true}
-      closeButtonRef={closeButtonRef}
-      onCloseButtonClick={() => closeAllDrawers()}
-      onBackButtonClick={() => close()}
-      title={title}
-      size="xlarge"
-      titleSuffix={titleSuffix}
-      subtitle={subtitle}
-      leading={leading}
-      trailing={trailing}
-      maxTrailingElements={2}
-      backgroundImage={backgroundGradient}
-      showDivider={showDivider}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {children}
-    </BaseHeader>
+    <BaseBox position="relative">
+      <DrawerHeaderGradient aria-hidden={true} backgroundGradient={backgroundGradient} />
+      {/* Positioned so the header content paints above the absolutely positioned gradient layer */}
+      <BaseBox position="relative">
+        <BaseHeader
+          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+          showBackButton={isStackedDrawer || isDrawerExiting}
+          showCloseButton={true}
+          closeButtonRef={closeButtonRef}
+          onCloseButtonClick={() => closeAllDrawers()}
+          onBackButtonClick={() => close()}
+          title={title}
+          size="xlarge"
+          titleSuffix={titleSuffix}
+          subtitle={subtitle}
+          leading={leading}
+          trailing={trailing}
+          maxTrailingElements={2}
+          showDivider={showDivider}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          {children}
+        </BaseHeader>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
