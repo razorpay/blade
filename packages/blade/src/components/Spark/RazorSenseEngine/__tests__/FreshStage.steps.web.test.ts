@@ -23,8 +23,7 @@ const setup = (): {
     .spyOn(HTMLCanvasElement.prototype, 'getContext')
     .mockImplementation(((type: string) =>
       type === 'webgl2' ? { getExtension: () => null, getParameter: () => '' } : null) as any);
-  let FreshStage: any;
-  let measureScreen: any;
+  let FreshStage: any, measureScreen: any;
   jest.isolateModules(() => {
     ({ FreshStage, measureScreen } = require('../FreshStage'));
   });
