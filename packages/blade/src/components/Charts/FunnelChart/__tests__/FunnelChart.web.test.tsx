@@ -103,15 +103,29 @@ describe('<ChartFunnelWrapper />', () => {
     ).toThrow('nameKey "stage"');
   });
 
-  it('should throw when a later row is missing the dataKey', () => {
+  it('should throw when no row has the dataKey', () => {
     jest.spyOn(console, 'error').mockImplementation(() => undefined);
     expect(() =>
       renderWithTheme(
-        <ChartFunnelWrapper data={[{ step: 'A', count: 5 }, { step: 'B' }]}>
-          <ChartFunnel dataKey="count" nameKey="step" />
+        <ChartFunnelWrapper
+          data={[
+            { step: 'A', count: 5 },
+            { step: 'B', count: 3 },
+          ]}
+        >
+          <ChartFunnel dataKey="cnt" nameKey="step" />
         </ChartFunnelWrapper>,
       ),
-    ).toThrow('dataKey "count"');
+    ).toThrow('dataKey "cnt"');
+  });
+
+  it('should count a row without the dataKey as 0', () => {
+    const { getByText } = renderWithTheme(
+      <ChartFunnelWrapper data={[{ step: 'A', count: 5 }, { step: 'B' }]}>
+        <ChartFunnel dataKey="count" nameKey="step" />
+      </ChartFunnelWrapper>,
+    );
+    expect(getByText('B · 0 · 0%')).toBeInTheDocument();
   });
 
   it('should fill the steps with the given color', () => {

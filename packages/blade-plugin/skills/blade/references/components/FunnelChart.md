@@ -16,7 +16,7 @@ FunnelChart shows how many reach each step of a sequence. It wraps Recharts' Fun
 - `color` accepts only categorical color tokens. Hover uses a darker step of the same color
 - The tooltip works on hover only. Recharts' funnel has no keyboard tooltip
 - Each step is an `img` named with its label, so screen readers can read the steps
-- `ChartFunnelWrapper` throws unless it has exactly one `ChartFunnel` child, or if `dataKey` or `nameKey` is not a key of the data rows
+- `ChartFunnelWrapper` throws unless it has exactly one `ChartFunnel` child, or if no data row has the `dataKey` or the `nameKey`
 - Web only. On React Native the wrapper throws an error
 
 ## TypeScript Types
