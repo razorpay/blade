@@ -92,3 +92,5 @@ describe('FreshStage: the weak-device steps', () => {
     expect(onError).not.toHaveBeenCalled();
   });
 });
+
+export {};

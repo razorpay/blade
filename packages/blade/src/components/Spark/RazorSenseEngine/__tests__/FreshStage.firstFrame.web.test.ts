@@ -104,3 +104,5 @@ describe('FreshStage: looking for its first frame', () => {
     stage.destroy();
   });
 });
+
+export {};
