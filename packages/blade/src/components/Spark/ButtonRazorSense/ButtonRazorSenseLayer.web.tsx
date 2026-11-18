@@ -239,7 +239,10 @@ const ButtonRazorSenseLayer = ({
       // a first frame drawn at once (unseen: the layer is clear till the hover), so it's live before the pointer gets there
       const mounted = stage;
       const settled = engine;
-      mounted.settle(() => settled.player.seek(0), 0.3);
+      // (only till the hover starts: a hover beginning within it plays from there, not held at frame 0; the PR review)
+      mounted.settle(() => {
+        if (!isOn) settled.player.seek(0);
+      }, 0.3);
       const waitForFrame = (): void => {
         liveFrame = 0;
         if (!isMounted || stage !== mounted) return;
