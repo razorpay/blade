@@ -394,7 +394,11 @@ const pageReads = (src.replace(/\/\/[^\n]*/g, '').match(/\bwindow\.RZS_\w+|\bloc
 if (pageReads.length) {
   throw new Error(`the engine still reads the host page (${[...new Set(pageReads)].join(', ')}): patch it to read the component's`);
 }
-const pretty = execFileSync(path.join(BLADE, 'node_modules', '.bin', 'prettier'), ['--stdin-filepath', OUT], { input: engine, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+// prettier and eslint are the repo root's devDependencies: found there, or in this package where an install put them (the PR review)
+const bin = (name) =>
+  [path.join(BLADE, '..', '..', 'node_modules', '.bin', name), path.join(BLADE, 'node_modules', '.bin', name)].find((p) => fs.existsSync(p)) ||
+  name;
+const pretty = execFileSync(bin('prettier'), ['--stdin-filepath', OUT], { input: engine, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 
 /**
  * The engine is the studio's code, so its style isn't Blade's (no style lint); it's linted for the mistakes that break it instead.
@@ -402,7 +406,7 @@ const pretty = execFileSync(path.join(BLADE, 'node_modules', '.bin', 'prettier')
  */
 const lint = () =>
   execFileSync(
-    path.join(BLADE, '..', '..', 'node_modules', '.bin', 'eslint'),
+    bin('eslint'),
     [
       '--no-eslintrc', '--no-ignore', '--no-inline-config',
       '--parser', '@typescript-eslint/parser',
