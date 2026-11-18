@@ -78,8 +78,9 @@ const placeSpill = (box: HTMLElement, want: Rect): [number, number] => {
 
 /**
  * Calls `place` again whenever what it depends on may have moved: the component's box or its scroll container resizing, the
- * window resizing, or the container's content changing. Only where the spill scrolls (Firefox); elsewhere it's placed once, by
- * its own CSS. Returns a function that stops it.
+ * window resizing, or the container's content resizing (its children, and children coming or going; not every change inside
+ * them: text streaming into a chat changes the page every frame, and only a change in size moves what it holds; the PR
+ * review). Only where the spill scrolls (Firefox); elsewhere it's placed once, by its own CSS. Returns a function that stops it.
  */
 const watchSpill = (box: HTMLElement, place: () => void): (() => void) => {
   if (!doesSpillScroll() || typeof ResizeObserver === 'undefined') return () => undefined;
@@ -92,11 +93,25 @@ const watchSpill = (box: HTMLElement, place: () => void): (() => void) => {
     });
   };
   const scroller = scrollerOf(box);
+  const isPage = scroller === document.scrollingElement || scroller === document.documentElement;
+  // (what holds its content: the page's body, or the scroll container itself)
+  const holder = isPage ? document.body : scroller;
   const resize = new ResizeObserver(again);
   if (box.offsetParent) resize.observe(box.offsetParent);
   resize.observe(scroller);
-  const content = typeof MutationObserver === 'undefined' ? null : new MutationObserver(again);
-  content?.observe(scroller, { childList: true, subtree: true });
+  if (isPage) resize.observe(holder);
+  const observeChildren = (): void => {
+    Array.from(holder.children).forEach((child) => resize.observe(child));
+  };
+  observeChildren();
+  const content =
+    typeof MutationObserver === 'undefined'
+      ? null
+      : new MutationObserver(() => {
+          observeChildren();
+          again();
+        });
+  content?.observe(holder, { childList: true });
   window.addEventListener('resize', again);
   again();
   return () => {
