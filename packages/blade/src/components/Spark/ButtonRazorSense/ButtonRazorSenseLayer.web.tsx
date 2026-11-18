@@ -27,11 +27,13 @@ type Comp = FreshDoc & {
 };
 
 /**
- * The widest a button may be for its hover (CSS px): the comp's own width (made at 2x). Past it the button's spot would run off
- * the comp's edges (hard edges), and the stretched sweep would show more of its bands than the comp has (a "barcode"): such a
- * button keeps its own hover, as a full-width one does, however it got that wide (a stretched column, a grid cell)
+ * The widest a button may be for its hover (CSS px): 300. Past it the stretched sweep crowds its bands into the button (about 8
+ * across a 470px one: busier than the comp; the PR review), and past the comp's own width (made at 2x) its spot would run off
+ * the comp's edges. Such a button keeps its own hover, as a full-width one does, however it got that wide (a stretched column,
+ * a grid cell).
  */
-const widestFor = (doc: FreshDoc): number => doc.comp.w / 2;
+const WIDEST = 300;
+const widestFor = (doc: FreshDoc): number => Math.min(WIDEST, doc.comp.w / 2);
 
 /** a button about as wide as tall plays the square comp (flow 9's prim9.js: within 1.25x) */
 const isSquare = (button: HTMLElement): boolean => button.offsetWidth <= button.offsetHeight * 1.25;
@@ -192,7 +194,7 @@ const ButtonRazorSenseLayer = ({
           moduleName: 'Button',
           message: `aiHover="razorsense" plays on buttons up to ${widestFor(
             doc as FreshDoc,
-          )}px wide (its comp's width); this one is ${
+          )}px wide; this one is ${
             button.offsetWidth
           }px wide (full width, or stretched by its parent), so it keeps its own hover.`,
         });
@@ -252,14 +254,26 @@ const ButtonRazorSenseLayer = ({
       engine = null;
       setLive(false);
     };
+    // wider than it plays on: hidden and its canvas let go (were it kept, the button would hold RazorSense's surface with nothing
+    // over it), so it keeps its own hover
+    const dropIfTooWide = (): boolean => {
+      if (!isTooWide()) return false;
+      if (engine || isOn) {
+        isOn = false;
+        window.clearTimeout(pauseTimer);
+        pauseTimer = 0;
+        layer.style.opacity = '0';
+        release();
+      }
+      return true;
+    };
     // a longer button laid out again as it resizes (the label's font coming in), not on the next hover
     const relay = new ResizeObserver(() => {
       window.clearTimeout(relayTimer);
       relayTimer = window.setTimeout(() => {
-        // (grown past its comp: its canvas goes, and it keeps its own hover)
-        if (engine && !isOn && isTooWide()) release();
-        else if (engine && !isOn && widthOf(button.offsetWidth) !== laidWidth)
-          mount(button.offsetWidth);
+        // (grown past its widest, even mid-hover: its canvas goes, and it keeps its own hover)
+        if (dropIfTooWide()) return;
+        if (engine && !isOn && widthOf(button.offsetWidth) !== laidWidth) mount(button.offsetWidth);
       }, 200);
     });
     const fit = (): void => {
@@ -283,7 +297,7 @@ const ButtonRazorSenseLayer = ({
       if (on === isOn) return;
       if (on) {
         // its canvas is made as the pointer nears: once it's held, it shows if the pointer is still on the button
-        if (!isHeld || hasGivenUp || isTooWide()) return;
+        if (!isHeld || hasGivenUp || dropIfTooWide()) return;
         fit();
         if (!engine || !stage) return;
       }
@@ -326,7 +340,7 @@ const ButtonRazorSenseLayer = ({
         return;
       }
       // its canvas made as the pointer nears (its first frame ready for the hover), shown if the pointer's already on it
-      if (isTooWide()) return;
+      if (dropIfTooWide()) return;
       fit();
       if (button.matches(':hover')) show(true);
     };
@@ -434,4 +448,4 @@ const ButtonRazorSenseLayer = ({
   );
 };
 
-export { ButtonRazorSenseLayer };
+export { ButtonRazorSenseLayer, widestFor };

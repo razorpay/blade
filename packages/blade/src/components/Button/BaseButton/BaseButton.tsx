@@ -124,9 +124,9 @@ type BaseButtonCommonProps = {
    */
   _spinnerColor?: BaseSpinnerProps['color'];
   /**
-   * An AI hover (web). `razorsense`: RazorSense plays on hover; only for `variant="primary"` with `color="neutral"`, not inside
-   * a ButtonGroup or on a full-width button. `ray-<action>`: RazorSense, a text wash, and the button widens for Ray, who does
-   * that action; only for `variant="secondary"`, at any size (it all scales with the button's height).
+   * An AI hover (web). `razorsense`: RazorSense plays on hover; only for `variant="primary"` with `color="neutral"`, up to 300px
+   * wide, not inside a ButtonGroup or on a full-width button. `ray-<action>`: RazorSense, a text wash, and the button widens for
+   * Ray, who does that action; only for `variant="secondary"`, at any size (it all scales with the button's height).
    */
   aiHover?: ButtonAiHover;
 } & TestID &

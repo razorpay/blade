@@ -557,6 +557,13 @@ export const AIHovers: StoryFn<typeof ButtonComponent> = () => {
           </ButtonComponent>
         </BaseBox>
       </AiHoverRow>
+      <AiHoverRow label="Wider than 300px (stretched by its container): RazorSense's bands would crowd it">
+        <BaseBox display="flex" flexDirection="column" width="400px">
+          <ButtonComponent color="neutral" aiHover="razorsense">
+            Ask Ray
+          </ButtonComponent>
+        </BaseBox>
+      </AiHoverRow>
       <AiHoverRow label="In a ButtonGroup">
         <ButtonGroup variant="secondary">
           <ButtonComponent aiHover="ray-investigate">Investigate</ButtonComponent>
