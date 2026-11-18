@@ -225,8 +225,17 @@ describe('SliderInput utils', () => {
 
   describe('getBoundLabelsMinWidth', () => {
     it('should size from the two bound labels only, not from the widest marker label', () => {
-      const formatValue = (value: number): string =>
-        ({ 0: 'Off', 50: 'Retry with exponential backoff', 100: 'On' }[value] as string);
+      const formatValue = (value: number): string => {
+        if (value === 0) {
+          return 'Off';
+        }
+
+        if (value === 50) {
+          return 'Retry with exponential backoff';
+        }
+
+        return 'On';
+      };
       const minWidth = getBoundLabelsMinWidth(
         getLabelWidth(0, formatValue),
         getLabelWidth(100, formatValue),
