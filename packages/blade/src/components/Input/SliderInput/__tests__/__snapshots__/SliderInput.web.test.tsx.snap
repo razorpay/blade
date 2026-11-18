@@ -1276,7 +1276,7 @@ exports[`<SliderInput /> should size the field for both bound labels when showSc
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  min-width: 153px;
+  min-width: 147px;
 }
 
 .c5.c5.c5.c5.c5 {

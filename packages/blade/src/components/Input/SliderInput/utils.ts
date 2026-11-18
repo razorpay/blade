@@ -244,6 +244,9 @@ const getMinTrackWidth = (markerCount: number, widestLabelWidth: number): number
   return Math.ceil(pitch * (markerCount - 1) + SLIDER_MARKER_DOT);
 };
 
+const getBoundLabelsMinWidth = (minLabelWidth: number, maxLabelWidth: number): number =>
+  Math.ceil(minLabelWidth + maxLabelWidth + SLIDER_SCALE_LABEL_GAP + SLIDER_MARKER_DOT);
+
 /**
  * Value under a pointer.
  *
@@ -288,6 +291,7 @@ export {
   getVisibility,
   getSpacedScaleValues,
   getMinTrackWidth,
+  getBoundLabelsMinWidth,
   getValueFromPointer,
 };
 export type { ValueRange };

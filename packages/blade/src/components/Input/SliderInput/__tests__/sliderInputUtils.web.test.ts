@@ -1,5 +1,7 @@
 import {
+  getBoundLabelsMinWidth,
   getFillWidthExpression,
+  getLabelWidth,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
@@ -7,6 +9,7 @@ import {
   getSpacedScaleValues,
   getValueRatio,
   getVisibility,
+  getWidestLabelWidth,
   snapValue,
 } from '../utils';
 
@@ -217,6 +220,21 @@ describe('SliderInput utils', () => {
       expect(
         getSpacedScaleValues({ values, trackWidth: 60, widestLabelWidth: 40, range }),
       ).toEqual([0, 100]);
+    });
+  });
+
+  describe('getBoundLabelsMinWidth', () => {
+    it('should size from the two bound labels only, not from the widest marker label', () => {
+      const formatValue = (value: number): string =>
+        ({ 0: 'Off', 50: 'Retry with exponential backoff', 100: 'On' }[value] as string);
+      const minWidth = getBoundLabelsMinWidth(
+        getLabelWidth(0, formatValue),
+        getLabelWidth(100, formatValue),
+      );
+      expect(minWidth).toBeLessThan(
+        getMinTrackWidth(2, getWidestLabelWidth([0, 50, 100], formatValue)),
+      );
+      expect(minWidth).toBeLessThanOrEqual(60);
     });
   });
 

@@ -19,6 +19,7 @@ import {
   SLIDER_TRACK_TOP,
 } from './sliderInputTokens';
 import {
+  getBoundLabelsMinWidth,
   getCenteringTransform,
   getScaleLabelPosition,
   getLabelWidth,
@@ -319,7 +320,10 @@ const _SliderInput = (
                 // side by side. Markers still need their own pitch, so take whichever is wider.
                 Math.max(
                   getMinTrackWidth(markerValues.length, 0),
-                  getMinTrackWidth(2, widestLabelWidth),
+                  getBoundLabelsMinWidth(
+                    getLabelWidth(min, formatValue),
+                    getLabelWidth(max, formatValue),
+                  ),
                 )
               : getMinTrackWidth(markerValues.length, showScale ? widestLabelWidth : 0),
           )}
