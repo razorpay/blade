@@ -92,3 +92,6 @@ describe('FreshStage: the weak-device steps', () => {
     expect(onError).not.toHaveBeenCalled();
   });
 });
+
+// (a module of its own: its helpers are its own, not shared with the other test files)
+export {};
