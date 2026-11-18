@@ -26,13 +26,14 @@ const getFunnelRows = (
   return data.map((row, index) => {
     const name = String(row[nameKey] ?? '');
     const percent = first > 0 ? `${formatSharePercentage((counts[index] / first) * 100)}%` : null;
-    const label = percent === null ? name : `${name} · ${percent}`;
+    const label =
+      percent === null ? `${name} · ${counts[index]}` : `${name} · ${counts[index]} · ${percent}`;
     return {
       [NAME_KEY]: name,
       [VALUE_KEY]: counts[index],
       [LABEL_KEY]: label,
       role: 'img',
-      'aria-label': `${label}, ${counts[index]}`,
+      'aria-label': label,
     };
   });
 };

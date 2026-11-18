@@ -38,8 +38,8 @@ describe('<ChartFunnelWrapper />', () => {
   it('should draw one recharts trapezoid and label per step', () => {
     const { container, getByText } = renderWithTheme(<Funnel />);
     expect(container.querySelectorAll('.recharts-funnel-trapezoid')).toHaveLength(4);
-    expect(getByText('Calls made · 56%')).toBeInTheDocument();
-    expect(getByText('Ordered within 24 hours · 15%')).toBeInTheDocument();
+    expect(getByText('Calls made · 19 · 56%')).toBeInTheDocument();
+    expect(getByText('Ordered within 24 hours · 5 · 15%')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
@@ -60,7 +60,13 @@ describe('<ChartFunnelWrapper />', () => {
 
   it('should name each step for screen readers', () => {
     const { getByRole } = renderWithTheme(<Funnel />);
-    expect(getByRole('img', { name: 'Calls made · 56%, 19' })).toBeInTheDocument();
+    expect(getByRole('img', { name: 'Calls made · 19 · 56%' })).toBeInTheDocument();
+  });
+
+  it('should not add a keyboard stop with no keyboard behaviour', () => {
+    const { container } = renderWithTheme(<Funnel />);
+    expect(container.querySelector('[role="application"]')).toBeNull();
+    expect(container.querySelector('svg[tabindex]')).toBeNull();
   });
 
   it('should throw without a ChartFunnel', () => {

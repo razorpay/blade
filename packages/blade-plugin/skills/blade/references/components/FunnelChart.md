@@ -4,7 +4,7 @@ FunnelChart
 
 ## Description
 
-FunnelChart shows how many reach each step of a sequence. It wraps Recharts' FunnelChart and Funnel: each step is a trapezoid whose width is its count against the largest step, labelled with the step name and its share of the first step. Hovering a step darkens it and shows its count in the tooltip. It is made of `ChartFunnelWrapper` (the container) and `ChartFunnel` (the funnel), and it composes with `ChartTooltip`.
+FunnelChart shows how many reach each step of a sequence. It wraps Recharts' FunnelChart and Funnel: each step is a trapezoid whose width is its count against the largest step, labelled with the step name, its count and its share of the first step. Hovering a step darkens it and shows its count in the tooltip. It is made of `ChartFunnelWrapper` (the container) and `ChartFunnel` (the funnel), and it composes with `ChartTooltip`.
 
 ## Important Constraints
 
@@ -12,10 +12,10 @@ FunnelChart shows how many reach each step of a sequence. It wraps Recharts' Fun
 - `data` is one row per step, in funnel order. `ChartFunnel`'s `dataKey` names the count and `nameKey` names the step
 - Counts that are missing, negative or not numbers are treated as 0
 - If every count is 0, or `data` is empty, nothing is drawn
-- If the first step is 0, the labels show step names without a share
+- If the first step is 0, the labels show step names and counts without a share
 - `color` accepts only categorical color tokens. Hover uses a darker step of the same color
-- The tooltip shows the raw count and works on hover only. Recharts' funnel has no keyboard tooltip
-- Each step is an `img` named with its label and count, so screen readers can read the steps
+- The tooltip works on hover only. Recharts' funnel has no keyboard tooltip
+- Each step is an `img` named with its label, so screen readers can read the steps
 - `ChartFunnelWrapper` throws unless it has exactly one `ChartFunnel` child, or if `dataKey` or `nameKey` is not a key of the data rows
 - Web only. On React Native the wrapper throws an error
 

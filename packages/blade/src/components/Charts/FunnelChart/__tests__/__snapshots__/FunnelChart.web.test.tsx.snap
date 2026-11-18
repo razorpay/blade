@@ -58,9 +58,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
       <svg
         class="recharts-surface"
         height="400"
-        role="application"
         style="width: 100%; height: 100%; display: block;"
-        tabindex="0"
         viewBox="0 0 800 400"
         width="800"
       >
@@ -95,7 +93,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
-                  aria-label="Carts abandoned · 100%, 34"
+                  aria-label="Carts abandoned · 34 · 100%"
                   class="recharts-trapezoid"
                   d="M 5,5L 479,5L 374.4412,102.5L 109.5588,102.5L 5,5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
@@ -115,7 +113,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
-                  aria-label="Calls made · 56%, 19"
+                  aria-label="Calls made · 19 · 56%"
                   class="recharts-trapezoid"
                   d="M 109.5588,102.5L 374.4412,102.5L 374.4412,200L 109.5588,200L 109.5588,102.5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
@@ -135,7 +133,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
-                  aria-label="Calls connected · 56%, 19"
+                  aria-label="Calls connected · 19 · 56%"
                   class="recharts-trapezoid"
                   d="M 109.5588,200L 374.4412,200L 276.8529,297.5L 207.1471,297.5L 109.5588,200 Z"
                   fill="hsla(217, 100%, 73%, 1)"
@@ -155,7 +153,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
             >
               <g>
                 <path
-                  aria-label="Ordered within 24 hours · 15%, 5"
+                  aria-label="Ordered within 24 hours · 5 · 15%"
                   class="recharts-trapezoid"
                   d="M 207.1471,297.5L 276.8529,297.5L 276.8529,395L 207.1471,395L 207.1471,297.5 Z"
                   fill="hsla(217, 100%, 73%, 1)"
@@ -222,7 +220,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
                 dy="0.355em"
                 x="431.72058823529414"
               >
-                Carts abandoned · 100%
+                Carts abandoned · 34 · 100%
               </tspan>
             </text>
             <text
@@ -242,7 +240,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
                 dy="0.355em"
                 x="379.44117647058823"
               >
-                Calls made · 56%
+                Calls made · 19 · 56%
               </tspan>
             </text>
             <text
@@ -262,7 +260,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
                 dy="0.355em"
                 x="330.6470588235294"
               >
-                Calls connected · 56%
+                Calls connected · 19 · 56%
               </tspan>
             </text>
             <text
@@ -282,7 +280,7 @@ exports[`<ChartFunnelWrapper /> should draw one recharts trapezoid and label per
                 dy="0.355em"
                 x="281.8529411764706"
               >
-                Ordered within 24 hours · 15%
+                Ordered within 24 hours · 5 · 15%
               </tspan>
             </text>
           </g>

@@ -8,17 +8,17 @@ const rowsOf = (...counts: unknown[]): ReturnType<typeof getFunnelRows> =>
   );
 
 describe('getFunnelRows', () => {
-  it('should label each step with its share of the first step', () => {
+  it('should label each step with its count and its share of the first step', () => {
     expect(rowsOf(34, 19, 19, 5)).toEqual([
-      expect.objectContaining({ name: 'Step 1', value: 34, label: 'Step 1 · 100%' }),
-      expect.objectContaining({ name: 'Step 2', value: 19, label: 'Step 2 · 56%' }),
-      expect.objectContaining({ name: 'Step 3', value: 19, label: 'Step 3 · 56%' }),
-      expect.objectContaining({ name: 'Step 4', value: 5, label: 'Step 4 · 15%' }),
+      expect.objectContaining({ name: 'Step 1', value: 34, label: 'Step 1 · 34 · 100%' }),
+      expect.objectContaining({ name: 'Step 2', value: 19, label: 'Step 2 · 19 · 56%' }),
+      expect.objectContaining({ name: 'Step 3', value: 19, label: 'Step 3 · 19 · 56%' }),
+      expect.objectContaining({ name: 'Step 4', value: 5, label: 'Step 4 · 5 · 15%' }),
     ]);
   });
 
   it('should keep a step that everyone dropped at 0%', () => {
-    expect(rowsOf(4200, 1800, 0)[2]).toMatchObject({ value: 0, label: 'Step 3 · 0%' });
+    expect(rowsOf(4200, 1800, 0)[2]).toMatchObject({ value: 0, label: 'Step 3 · 0 · 0%' });
   });
 
   it('should treat missing, negative and non-numeric counts as 0', () => {
@@ -26,11 +26,11 @@ describe('getFunnelRows', () => {
   });
 
   it('should show a tiny share as <1%', () => {
-    expect(rowsOf(10000, 4)[1].label).toBe('Step 2 · <1%');
+    expect(rowsOf(10000, 4)[1].label).toBe('Step 2 · 4 · <1%');
   });
 
   it('should leave out the share when the first step is 0', () => {
-    expect(rowsOf(0, 5)[1].label).toBe('Step 2');
+    expect(rowsOf(0, 5)[1].label).toBe('Step 2 · 5');
   });
 
   it('should draw nothing when every count is 0 or there is no data', () => {
@@ -41,6 +41,6 @@ describe('getFunnelRows', () => {
   it('should drop only the keys it needs from each row', () => {
     const [row] = getFunnelRows([{ step: 'Visited', count: 3, x: 99, width: 1 }], 'count', 'step');
     expect(Object.keys(row)).toEqual(['name', 'value', 'label', 'role', 'aria-label']);
-    expect(row['aria-label']).toBe('Visited · 100%, 3');
+    expect(row['aria-label']).toBe('Visited · 3 · 100%');
   });
 });
