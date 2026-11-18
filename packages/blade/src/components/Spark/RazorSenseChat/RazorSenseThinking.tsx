@@ -241,7 +241,13 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
             {still ? <img src={still} alt="" style={stillStyle} /> : null}
           </div>
         )}
-        <span ref={labelRef} style={{ display: 'inline-block' }}>
+        {/* a status: a screen reader hears the label as it shows, and each phrase as it rolls in (every few seconds; held with
+        reduced motion or paused), only what's new (a rolling phrase going out isn't read again) */}
+        <span
+          ref={labelRef}
+          {...makeAccessible({ role: 'status', liveRegion: 'polite', atomic: false })}
+          style={{ display: 'inline-block' }}
+        >
           {isRolling && isHeld ? (
             label(texts?.[shownIndex()])
           ) : isRolling ? (
