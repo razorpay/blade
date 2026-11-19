@@ -2,6 +2,7 @@ import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
 import { SliderInput } from '../index';
+import { getMinTrackWidth, getWidestLabelWidth } from '../utils';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { motion } from '~tokens/global';
@@ -55,6 +56,16 @@ describe('<SliderInput />', () => {
       );
       // 11 markers at the 10px pitch floor.
       expect(getTrackMinWidth(getByRole('slider'))).toBeGreaterThanOrEqual(100);
+    });
+
+    it('should reserve room for the min and max labels of an endpoints-only scale', () => {
+      // showScaleValues={false} still draws the two bound labels, so they need room not to overlap.
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Amount" min={0} max={100000} showScale showScaleValues={false} />,
+      );
+      expect(getTrackMinWidth(getByRole('slider'))).toBe(
+        getMinTrackWidth(2, getWidestLabelWidth([0, 100000])),
+      );
     });
   });
 

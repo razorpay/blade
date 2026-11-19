@@ -241,6 +241,12 @@ const _SliderInput = (
 
   const shouldShowMarkers = showMarkers && canShowMarkers;
   const hasScaleValues = showScale && showScaleValues;
+  // An endpoints-only scale (showScaleValues={false}) still draws the min and max labels.
+  const scaleLabelWidth = hasScaleValues
+    ? widestLabelWidth
+    : showScale
+    ? getWidestLabelWidth([min, max], formatValue)
+    : 0;
   // With only the endpoints there is nothing to collide with, so the pitch floor does not apply.
   const shouldShowScale = showScale && (!showScaleValues || canShowScale);
   const scaleValues = React.useMemo(
@@ -308,7 +314,7 @@ const _SliderInput = (
           minWidth={makeSize(
             getMinTrackWidth(
               showMarkers || hasScaleValues ? markerValues.length : 2,
-              hasScaleValues ? widestLabelWidth : 0,
+              scaleLabelWidth,
             ),
           )}
         >
