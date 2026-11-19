@@ -36,15 +36,20 @@ describe('<PreviewWindow/>', () => {
       return body;
     };
 
-    it('should not size the body by default, so existing content keeps its shape', () => {
+    it('should not size the body by default, so a full-size image keeps its shape', () => {
       renderWithTheme(
         <Preview>
           <PreviewBody>
-            <Text>This is a demo message</Text>
+            <img width="100%" height="100%" src="image.png" alt="Invoice" />
           </PreviewBody>
         </Preview>,
       );
-      expect(getBodyBox()).not.toHaveStyle({ width: '100%', height: '100%' });
+      // jsdom has no layout, so assert the cause instead of the rendered size: an unsized body
+      // leaves the image's `height="100%"` unresolved, so it keeps its own aspect ratio
+      // instead of stretching to the frame's shape
+      const body = screen.getByRole('img', { name: 'Invoice' }).parentElement;
+      expect(body).not.toHaveStyle({ height: '100%' });
+      expect(body).not.toHaveStyle({ width: '100%' });
     });
 
     it('should fill the frame and centre its child when isFullSize is set', () => {
