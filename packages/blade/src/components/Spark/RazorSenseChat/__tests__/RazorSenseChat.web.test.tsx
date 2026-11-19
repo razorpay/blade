@@ -232,8 +232,8 @@ describe('RazorSense 2.0 components', () => {
       );
       const img = await waitFor(() => {
         const found = container.querySelector('img');
-        expect(found).not.toBeNull();
-        return found!;
+        if (!found) throw new Error('its still has not loaded yet');
+        return found;
       });
       const { transform } = img.style;
       unmount();
