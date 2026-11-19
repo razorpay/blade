@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { RazorSenseChatBackgroundProps } from './types';
 import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
@@ -106,6 +106,12 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
 
     // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
     const fitRef = useRef<() => void>(() => undefined);
+    const stillImgRef = useRef<HTMLImageElement | null>(null);
+    // (laid out as it comes in: the still loads after the box has been fitted)
+    const placeStill = useCallback((img: HTMLImageElement | null): void => {
+      stillImgRef.current = img;
+      if (img) fitRef.current();
+    }, []);
     const widthCheckRef = useRef(0);
     fitRef.current = (): void => {
       const box = boxRef.current;
@@ -154,6 +160,14 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
         dy: (cy * (j - 1) - ROOM.y) * s - cutY,
       });
       typingRef.current?.setStretch(kx, ky, INPUT_MIDDLE[0], INPUT_MIDDLE[1]);
+      // its still, as the animation: past the comp's own size it's stretched with the canvas; narrower or shorter, drawn in
+      // round the chat input's middle, so its band stays on the input (the PR review: a 280px input had the comp's 840px band)
+      const img = stillImgRef.current;
+      if (img) {
+        img.style.transformOrigin = `${cx * k * s - cutX}px ${(cy * j + LIFT * ky) * s - cutY}px`;
+        img.style.transform =
+          kx < 1 || ky < 1 ? `scale(${Math.min(1, kx)}, ${Math.min(1, ky)})` : '';
+      }
     };
 
     useEffect(() => {
@@ -272,7 +286,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           }}
         >
           <div ref={hostRef} style={{ position: 'absolute', pointerEvents: 'none' }}>
-            {still ? <img src={still} alt="" style={stillStyle} /> : null}
+            {still ? <img ref={placeStill} src={still} alt="" style={stillStyle} /> : null}
           </div>
         </div>
         {children}
