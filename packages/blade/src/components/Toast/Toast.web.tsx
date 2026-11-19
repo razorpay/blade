@@ -5,7 +5,8 @@ import toast from 'react-hot-toast';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import type { ToastProps } from './types';
-import { castWebType, makeMotionTime, useTheme } from '~utils';
+import { TOAST_PROGRESS_BAR_HEIGHT } from './constants';
+import { castWebType, makeMotionTime, makeSize, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
@@ -13,6 +14,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
+import { Link } from '~components/Link';
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
@@ -63,6 +65,205 @@ const slideOut = keyframes`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+// Keeps the space of the action during the intro, so the toast height does not change
+// Shows the action when the intro ends
+const IntroAction = styled(BaseBox)<{ isIntroDone: boolean }>(({ isIntroDone, theme }) =>
+  isIntroDone
+    ? css`
+        animation: ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
+          ${castWebType(theme.motion.easing.entrance)} both;
+      `
+    : css`
+        visibility: hidden;
+      `,
+);
+
+const shrink = keyframes`
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+`;
+
+// A negative delay starts the progress bar part way, for example after a remount
+const ToastProgressBar = styled(BaseBox)<{
+  duration: number;
+  elapsedTime: number;
+  isRunning: boolean;
+  hasIntro: boolean;
+  isIntroDone: boolean;
+}>(({ duration, elapsedTime, isRunning, hasIntro, isIntroDone, theme }) => {
+  const playState = isRunning ? 'running' : 'paused';
+
+  return css`
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: ${makeSize(TOAST_PROGRESS_BAR_HEIGHT)};
+    background-color: ${theme.colors.interactive.background.neutral.default};
+    transform-origin: left;
+    ${!isIntroDone
+      ? css`
+          visibility: hidden;
+        `
+      : hasIntro
+      ? css`
+          animation: ${shrink} ${makeMotionTime(duration)}
+              ${castWebType(theme.motion.easing.linear)} ${makeMotionTime(-elapsedTime)} forwards,
+            ${fadeIn} ${makeMotionTime(theme.motion.duration.moderate)}
+              ${castWebType(theme.motion.easing.entrance)} both;
+          animation-play-state: ${playState}, running;
+        `
+      : css`
+          animation: ${shrink} ${makeMotionTime(duration)}
+            ${castWebType(theme.motion.easing.linear)} ${makeMotionTime(-elapsedTime)} forwards;
+          animation-play-state: ${playState};
+        `}
+  `;
+});
+
+type SavedTimer = { configKey: string; remainingTime: number; isIntroDone: boolean };
+
+// Time left and intro state per toast id.
+// A remounted toast reads them, so its intro, timer and progress bar do not start again.
+const savedTimers = new Map<string, SavedTimer>();
+
+const getSavedTimer = (id: string, configKey: string): SavedTimer | undefined => {
+  const savedTimer = savedTimers.get(id);
+  return savedTimer?.configKey === configKey ? savedTimer : undefined;
+};
+
+// Focus from a click, or from a return to the browser tab, must not keep the timer paused
+const isKeyboardFocus = (element: Element): boolean => {
+  try {
+    return element.matches(':focus-visible');
+  } catch {
+    // Browsers without `:focus-visible` throw. Pause on any focus there.
+    return true;
+  }
+};
+
+/**
+ * Runs the intro and the auto dismiss timer of a promotional toast.
+ *
+ * react-hot-toast pauses all toasts together and starts the timer at show.
+ * This timer starts after the intro and pauses for this toast only.
+ */
+const usePromotionalTimer = ({
+  id,
+  configKey,
+  duration,
+  introDuration,
+  hasIntro,
+  hasAutoDismissTimer,
+  isVisible,
+}: {
+  id: string;
+  configKey: string;
+  duration: number;
+  introDuration: number;
+  hasIntro: boolean;
+  hasAutoDismissTimer: boolean;
+  isVisible: boolean;
+}): {
+  isIntroDone: boolean;
+  isRunning: boolean;
+  elapsedTime: number;
+  pauseHandlers: Pick<
+    React.DOMAttributes<HTMLDivElement>,
+    'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur'
+  >;
+} => {
+  const [timerState, setTimerState] = React.useState(() => {
+    const savedTimer = getSavedTimer(id, configKey);
+    return {
+      configKey,
+      isIntroDone: savedTimer?.isIntroDone ?? !hasIntro,
+      elapsedTime: savedTimer ? duration - savedTimer.remainingTime : 0,
+    };
+  });
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [isFocused, setIsFocused] = React.useState(false);
+  const isPaused = isHovered || isFocused;
+  const { isIntroDone } = timerState;
+  const isEnabled = hasAutoDismissTimer && isVisible && isIntroDone;
+
+  // An update by id can change type, duration or introDuration. Then the intro and the timer start again.
+  if (timerState.configKey !== configKey) {
+    setTimerState({ configKey, isIntroDone: !hasIntro, elapsedTime: 0 });
+  }
+
+  React.useEffect(() => {
+    // A toast dismissed during its intro must not save its state again
+    if (isIntroDone || !isVisible) return undefined;
+    const introTimeout = setTimeout(() => {
+      savedTimers.set(id, { configKey, remainingTime: duration, isIntroDone: true });
+      setTimerState({ configKey, isIntroDone: true, elapsedTime: 0 });
+    }, introDuration);
+    return () => clearTimeout(introTimeout);
+  }, [id, configKey, duration, introDuration, isIntroDone, isVisible]);
+
+  React.useEffect(() => {
+    if (!isEnabled || isPaused) return undefined;
+    const remainingTime = getSavedTimer(id, configKey)?.remainingTime ?? duration;
+    const resumedAt = Date.now();
+    let hasEnded = false;
+    const dismissTimeout = setTimeout(() => {
+      hasEnded = true;
+      savedTimers.delete(id);
+      toast.dismiss(id);
+    }, remainingTime);
+    return () => {
+      clearTimeout(dismissTimeout);
+      if (!hasEnded) {
+        savedTimers.set(id, {
+          configKey,
+          remainingTime: remainingTime - (Date.now() - resumedAt),
+          isIntroDone: true,
+        });
+      }
+    };
+  }, [id, configKey, duration, isEnabled, isPaused]);
+
+  React.useEffect(() => {
+    if (!isVisible) savedTimers.delete(id);
+  }, [id, isVisible]);
+
+  return {
+    isIntroDone,
+    isRunning: isEnabled && !isPaused,
+    elapsedTime: timerState.elapsedTime,
+    pauseHandlers: {
+      // A tap on a touch screen sends pointer events too. Only a mouse pauses on hover.
+      onPointerEnter: (event) => setIsHovered(event.pointerType === 'mouse'),
+      onPointerLeave: () => setIsHovered(false),
+      onFocus: (event) => {
+        if (isKeyboardFocus(event.target)) setIsFocused(true);
+      },
+      onBlur: (event) => {
+        // Stay paused while focus moves to another element inside the toast
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsFocused(false);
+        }
+      },
+    },
+  };
+};
+
 const AnimatedFade = styled(BaseBox)<{
   animationType: FlattenSimpleInterpolation | null;
   toastBorderColor: string;
@@ -86,6 +287,10 @@ const Toast = ({
   action,
   content,
   onDismissButtonClick,
+  autoDismiss,
+  duration = Infinity,
+  introDuration = 0,
+  showProgressBar = false,
   isVisible,
   id,
 }: ToastProps & {
@@ -94,24 +299,77 @@ const Toast = ({
   const { theme } = useTheme();
   const isPromotional = type === 'promotional';
   const Icon = isPromotional ? leading : leading || iconMap[color];
+  const hasAutoDismissTimer = isPromotional && Boolean(autoDismiss) && Number.isFinite(duration);
+  const hasProgressBar = hasAutoDismissTimer && showProgressBar;
+  const hasIntro = isPromotional && introDuration > 0;
+  const configKey = `${type}-${autoDismiss}-${duration}-${introDuration}`;
+  const { isIntroDone, isRunning, elapsedTime, pauseHandlers } = usePromotionalTimer({
+    id: id!,
+    configKey,
+    duration,
+    introDuration,
+    hasIntro,
+    hasAutoDismissTimer,
+    isVisible: Boolean(isVisible),
+  });
 
-  const actionButton = action ? (
-    <Box>
+  const actionIconProps = action?.icon
+    ? { icon: action.icon, iconPosition: action.iconPosition }
+    : {};
+
+  let actionElement: React.ReactElement | null = null;
+  if (action?.variant === 'link') {
+    actionElement = (
+      <Link
+        size="small"
+        color={isPromotional ? 'primary' : 'white'}
+        {...(action.href
+          ? ({
+              variant: 'anchor',
+              href: action.href,
+              target: action.target,
+              rel: action.rel,
+            } as const)
+          : ({ variant: 'button' } as const))}
+        {...actionIconProps}
+        onClick={(event) => {
+          event.stopPropagation();
+          // Link types its click event as a SyntheticEvent. It is a mouse event on an anchor or a button.
+          action.onClick?.({
+            event: event as React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+            toastId: id!,
+          });
+        }}
+        data-analytics-name={MAKE_ANALYTICS_CONSTANTS.TOAST.ACTION_BUTTON}
+      >
+        {action.text}
+      </Link>
+    );
+  } else if (action) {
+    actionElement = (
       <Button
         size="xsmall"
         variant={isPromotional ? 'secondary' : 'tertiary'}
         color={isPromotional ? 'primary' : 'white'}
-        onClick={(event) => {
+        {...actionIconProps}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           event.stopPropagation();
-          action?.onClick?.({ event: event as never, toastId: id! });
+          action.onClick?.({ event, toastId: id! });
         }}
-        isLoading={action?.isLoading}
+        isLoading={action.isLoading}
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.TOAST.ACTION_BUTTON}
       >
-        {action?.text}
+        {action.text}
       </Button>
-    </Box>
-  ) : null;
+    );
+  }
+
+  let actionButton: React.ReactElement | null = null;
+  if (actionElement && hasIntro) {
+    actionButton = <IntroAction isIntroDone={isIntroDone}>{actionElement}</IntroAction>;
+  } else if (actionElement) {
+    actionButton = <Box>{actionElement}</Box>;
+  }
 
   const enter = css`
     opacity: 0;
@@ -129,11 +387,13 @@ const Toast = ({
     <AnimatedFade
       {...makeAccessible({ role: 'status', liveRegion: 'polite' })}
       {...metaAttribute({ name: MetaConstants.Toast })}
+      {...(hasAutoDismissTimer ? pauseHandlers : {})}
       toastBorderColor={getIn(
         theme.colors,
         isPromotional ? 'popup.border.gray.moderate' : borderColorMap[color],
       )}
       animationType={isVisible ? enter : exit}
+      position={hasProgressBar ? 'relative' : undefined}
       width="100%"
       display="flex"
       gap="spacing.3"
@@ -191,6 +451,18 @@ const Toast = ({
           icon={CloseIcon}
         />
       </Box>
+      {hasProgressBar ? (
+        <ToastProgressBar
+          key={configKey}
+          {...makeAccessible({ hidden: true })}
+          duration={duration}
+          elapsedTime={elapsedTime}
+          isRunning={isRunning}
+          hasIntro={hasIntro}
+          isIntroDone={isIntroDone}
+          testID="toast-progress-bar"
+        />
+      ) : null}
     </AnimatedFade>
   );
 };
