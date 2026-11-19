@@ -4,18 +4,19 @@ import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
 import { getHeadingProps } from '~components/Typography/Heading/Heading';
+import { getTextProps } from '~components/Typography/Text/Text';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-// Renders the same element and styles as `Heading`, plus balanced line breaks so a centred
-// title doesn't leave a single word on its last line. Browsers without `text-wrap: balance`
-// wrap as before. Heading doesn't forward `className`, so this wraps BaseText directly.
-const BalancedTitle = styled(BaseText)`
+// Renders the same elements and styles as `Heading` / `Text`, plus balanced line breaks so
+// centred copy doesn't leave a single word on its last line. Browsers without
+// `text-wrap: balance` wrap as before. Heading and Text don't forward `className`, so this
+// wraps BaseText directly.
+const BalancedText = styled(BaseText)`
   text-wrap: balance;
 `;
 
@@ -29,6 +30,13 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
     size: tokens.titleSize,
     weight: 'semibold',
     color: 'surface.text.gray.subtle',
+  });
+  const descriptionProps = getTextProps({
+    variant: 'body',
+    size: tokens.descriptionSize,
+    weight: 'regular',
+    color: 'surface.text.gray.muted',
+    textAlign: 'center',
   });
 
   return (
@@ -50,21 +58,15 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
       ) : null}
       <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
         {title ? (
-          <BalancedTitle {...titleProps} forwardedAs={titleAs} textAlign="center">
+          <BalancedText {...titleProps} forwardedAs={titleAs} textAlign="center">
             {title}
-          </BalancedTitle>
+          </BalancedText>
         ) : null}
 
         {description ? (
-          <Text
-            textAlign="center"
-            size={tokens.descriptionSize}
-            color="surface.text.gray.muted"
-            weight="regular"
-            variant="body"
-          >
+          <BalancedText {...descriptionProps} forwardedAs="p">
             {description}
-          </Text>
+          </BalancedText>
         ) : null}
       </BaseBox>
 

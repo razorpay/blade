@@ -232,7 +232,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
         No data found
       </h6>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -446,7 +446,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
         No data found
       </h6>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -586,7 +586,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
         No data found
       </h6>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -715,6 +715,10 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
   padding: 0;
 }
 
+.c3.c3.c3.c3.c3 {
+  text-wrap: balance;
+}
+
 <div>
   <div
     class="c0"
@@ -725,7 +729,7 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
       data-blade-component="base-box"
     >
       <p
-        class="c2"
+        class="c2 c3"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -923,7 +927,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
         No data found
       </h5>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -1043,7 +1047,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
         No data found
       </h6>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -1163,7 +1167,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
         No data found
       </h6>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -1283,7 +1287,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
         No data found
       </h3>
       <p
-        class="c5"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="25"
       >
