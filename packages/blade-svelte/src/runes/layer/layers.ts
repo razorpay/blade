@@ -166,3 +166,13 @@ export function getLayers(): Layers {
 export function back(): boolean {
   return globalLayers.back();
 }
+
+/**
+ * Whether a modal surface (Modal, BottomSheet, Drawer) is open, anywhere on
+ * the page. Tracked by whatever reads it. Blade makes nothing of the app's
+ * inert: the app puts `inert={isModalOpen()}` on what an open modal must
+ * block, inside the provider or beside it.
+ */
+export function isModalOpen(): boolean {
+  return globalLayers.top !== undefined;
+}

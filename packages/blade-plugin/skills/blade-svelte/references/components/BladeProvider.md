@@ -10,7 +10,7 @@ BladeProvider wraps the app once and gives every Blade component under it an ove
 
 - Put it inside the element overlays must stay within, and make that element positioned (`relative`): the overlay host fills it
 - The outermost provider hosts every overlay on the page; a nested provider renders no host and only layers its own `size`, `defaults` and `adapters` over the enclosing ones
-- The outermost provider wraps its content in a `display: contents` element that goes inert while a modal, sheet or drawer is open; everything outside the provider (a partner SDK's popup in `<body>`) stays usable. Put everything the modal must block inside the provider. The wrapper does not change layout, but CSS child combinators across the provider (`.shell > main`) no longer match
+- Blade makes nothing of the app's inert while a modal, sheet or drawer is open: put `inert={isModalOpen()}` on everything the modal must block, inside the provider or beside it. A partner SDK's popup in `<body>` stays usable
 - `size` snaps every sized control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup, ChipGroup, Switch, SegmentedControl, Tabs) to its nearest size; display components and the overlays keep their own
 - `defaults` takes style props only (`variant`, `color`, `size`, `placement`…), keyed by component name; behaviour props cannot be defaulted. A component's own prop wins, then the nearest provider's entry for it, then its `size`, then Blade's default
 - `adapters` merge over the enclosing provider's and stay live (a swapped adapter reaches mounted components); `null` unsets one for the subtree
@@ -71,7 +71,7 @@ interface BladeProviderProps {
 
 ```svelte
 <script lang="ts">
-  import { BladeProvider, ToastContainer, back } from '@razorpay/blade-svelte/components';
+  import { BladeProvider, ToastContainer, back, isModalOpen } from '@razorpay/blade-svelte/components';
   import type { Snippet } from 'svelte';
 
   // `onBackPress` registers a handler with the app's back source (a native bridge, the router's guard).
@@ -96,7 +96,7 @@ interface BladeProviderProps {
 
 <div class="relative flex h-full max-h-[100dvh] flex-col overflow-hidden"> <!-- the app's shell -->
   <BladeProvider {adapters}>
-    <main class="min-h-0 flex-1 overflow-auto">{@render children()}</main> <!-- scrolls -->
+    <main class="min-h-0 flex-1 overflow-auto" inert={isModalOpen()}>{@render children()}</main> <!-- scrolls; inert under a modal -->
     <ToastContainer />
   </BladeProvider>
 </div>

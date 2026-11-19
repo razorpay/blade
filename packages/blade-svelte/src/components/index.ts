@@ -150,6 +150,9 @@ export type { BladeAdapters, BladeAdaptersOverride } from '../adapters';
 export type { AxisValue, StyleAxes } from '../axes';
 // Back: an app's back handler asks the open overlays first (`back()`).
 export { back } from '../runes/layer/layers';
+// Inert: the app makes its own page inert while a modal is open
+// (`inert={isModalOpen()}`).
+export { isModalOpen } from '../runes/layer/layers';
 // The seams an app drives Blade through, all BladeProvider adapters
 // (BladeProvider renders the overlay host):
 // - `adapters.form` is the app's form around the fields (`FormAdapter`);

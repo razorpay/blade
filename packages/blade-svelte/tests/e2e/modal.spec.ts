@@ -121,6 +121,34 @@ test.describe('Modal', () => {
     await expect(dialog).toBeVisible();
   });
 
+  test('a modal open on the first render takes focus, and the page behind it is inert', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--open-on-first-render');
+    const dialog = page.getByTestId('modal');
+    await expect(dialog).toBeVisible();
+    // It rendered in place, beside the page the story makes inert
+    // (`isModalOpen()`), and moved into the host: focus is in it.
+    await expect(page.getByTestId('host-surfaces').getByTestId('modal')).toBeVisible();
+    await expect
+      .poll(() =>
+        page.evaluate(() =>
+          Boolean(
+            document.querySelector('[data-testid="modal"]')?.contains(document.activeElement),
+          ),
+        ),
+      )
+      .toBe(true);
+    await expect(page.getByTestId('page')).toHaveAttribute('inert', '');
+    expect(
+      await page.evaluate(() => {
+        const trigger = document.querySelector<HTMLElement>('[data-testid="open"]');
+        trigger?.focus();
+        return document.activeElement === trigger;
+      }),
+    ).toBe(false);
+  });
+
   test('the close button and the scrim dismiss it, each reporting its source', async ({ page }) => {
     await gotoStory(page, 'components-modal--basic');
     let dialog = await open(page, 'modal');
@@ -178,9 +206,7 @@ async function reshape(page: Page, shell: Shell): Promise<void> {
   await page.evaluate((kind) => {
     const box = document.querySelector<HTMLElement>('#storybook-root > div')!;
     const scrim = document.querySelector<HTMLElement>('[aria-hidden="true"][data-state]')!;
-    // The app's root: the first element in the provider's content wrapper
-    // (`display: contents`, the host's previous sibling), laid out by the shell.
-    const content = scrim.parentElement!.previousElementSibling!.firstElementChild as HTMLElement;
+    const content = scrim.parentElement!.previousElementSibling as HTMLElement;
     Object.assign(box.style, {
       height: 'auto',
       overflow: 'visible',

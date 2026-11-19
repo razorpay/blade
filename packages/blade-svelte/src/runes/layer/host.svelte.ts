@@ -4,10 +4,7 @@ import { createNodeRef } from '../dom/node.svelte';
 import { getLayers } from './layers';
 
 export interface OverlayHost {
-  /**
-   * Whether a modal surface is open: the provider's content goes inert, so
-   * focus, clicks and the screen reader's cursor stay in the surface.
-   */
+  /** Whether a modal surface is open: the scrim shows. */
   readonly occupied: boolean;
   /** On the host element. */
   readonly host: Attachment<HTMLElement>;
@@ -21,8 +18,8 @@ export interface OverlayHost {
 
 /**
  * BladeProvider's overlay host: registers the host element and its parts
- * with the layers for as long as they are mounted. `occupied` is what makes
- * the provider's content inert. Call during component initialisation.
+ * with the layers for as long as they are mounted. It makes nothing inert:
+ * the app does (`isModalOpen`). Call during component initialisation.
  */
 export function createOverlayHost(): OverlayHost {
   const layers = getLayers();

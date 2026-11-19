@@ -134,6 +134,12 @@ const meta: StoryMeta = {
         'Escape and back reach only the top layer; the modal beneath goes inert until it is on top again.',
       argTypes: {},
     },
+    OpenOnFirstRender: {
+      name: 'Open on first render',
+      description:
+        'A modal that is open as the page loads, rendered inside the provider: it moves into the overlay host and takes focus, and the page the app made inert (`isModalOpen()`) stays behind it.',
+      argTypes: {},
+    },
   },
 };
 

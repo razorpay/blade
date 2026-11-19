@@ -1,7 +1,7 @@
 import { tick } from 'svelte';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
-import { back } from '../runes/layer/layers';
+import { back, isModalOpen } from '../runes/layer/layers';
 import ModalHarness from './fixtures/ModalHarness.svelte';
 import { expectClass } from './classes';
 import type { RenderResult } from '@testing-library/svelte';
@@ -547,31 +547,26 @@ describe('Modal layers', () => {
     expect(back()).toBe(false);
   });
 
-  it('renders into the overlay host and makes the provider’s content inert', async () => {
+  it('renders into the overlay host and reports a modal is open', async () => {
     const { getByTestId } = render(ModalHarness, {
       props: { withHost: true },
     });
     const host = getByTestId('host');
-    const page = getByTestId('page');
-    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
-    expect(content.inert).toBe(false);
+    expect(isModalOpen()).toBe(false);
 
     await fireEvent.click(getByTestId('trigger'));
     expect(host.contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-backdrop').dataset.state).toBe('open');
-    expect(content.contains(page)).toBe(true);
-    expect(content.inert).toBe(true);
-    // The host (the modal, the live region) is beside the content, never in it.
-    expect(content.contains(host)).toBe(false);
+    expect(isModalOpen()).toBe(true);
 
     await escape();
     expect(getByTestId('host-surfaces').children).toHaveLength(0);
     expect(getByTestId('host-backdrop').dataset.state).toBe('closed');
-    expect(content.inert).toBe(false);
+    expect(isModalOpen()).toBe(false);
   });
 
-  it('leaves live what others add beside the provider (a partner SDK’s popup)', async () => {
+  it('makes nothing inert: not the page, not what others add beside the provider', async () => {
     const { getByTestId } = render(ModalHarness, {
       props: { withHost: true },
     });
@@ -584,13 +579,10 @@ describe('Modal layers', () => {
     parent.prepend(prepended);
 
     await fireEvent.click(getByTestId('trigger'));
-    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
-    expect(content.inert).toBe(true);
-    // Only the content goes inert; nothing beside it is touched.
-    for (const element of [appended, prepended]) {
-      expect(content.contains(element)).toBe(false);
-      expect((element as HTMLElement & { inert?: boolean }).inert).toBeFalsy();
-      expect(element.hasAttribute('inert')).toBe(false);
+    expect(getByTestId('host-backdrop').dataset.state).toBe('open');
+    // The page is the app's to make inert (`isModalOpen`).
+    for (const element of [appended, prepended, getByTestId('page')]) {
+      expect(element.closest('[inert]')).toBeNull();
     }
 
     await escape();

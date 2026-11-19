@@ -3,6 +3,7 @@ import { render } from '@testing-library/svelte';
 import { tick } from 'svelte';
 import NestedHostHarness from './fixtures/NestedHostHarness.svelte';
 import FirstRenderHarness from './fixtures/FirstRenderHarness.svelte';
+import { isModalOpen } from '../runes/layer/layers';
 import type { Layers } from '../runes/layer/layers';
 
 describe('BladeProvider overlay host', () => {
@@ -13,23 +14,21 @@ describe('BladeProvider overlay host', () => {
     expect(getByTestId('outer-surfaces')).toBeTruthy();
     expect(queryByTestId('outer-toasts')).toBeNull();
     expect(queryByTestId('inner')).toBeNull();
-    // Only the outermost provider wraps its content.
-    expect(queryByTestId('outer-content')).toBeTruthy();
-    expect(queryByTestId('inner-content')).toBeNull();
   });
 });
 
 describe('an overlay open on the first render', () => {
-  it('moves into the host once it mounts, and only the page goes inert', async () => {
+  it('moves into the host once it mounts, and Blade makes nothing inert', async () => {
     const { getByTestId } = render(FirstRenderHarness);
     await tick();
     const modal = getByTestId('modal');
     expect(getByTestId('host-surfaces').contains(modal)).toBe(true);
-    const content = getByTestId('host-content') as HTMLElement & { inert: boolean };
-    expect(content.contains(modal)).toBe(false);
-    expect(content.contains(getByTestId('page'))).toBe(true);
-    expect(content.inert).toBe(true);
-    // Focus moved in, though the modal rendered inside the content first.
+    expect(modal.closest('[inert]')).toBeNull();
+    // The page is the app's to make inert (`isModalOpen`).
+    expect(getByTestId('page').hasAttribute('inert')).toBe(false);
+    expect(isModalOpen()).toBe(true);
+    // Focus is in the modal. jsdom has no `inert`: tests/e2e/modal.spec.ts
+    // shows it beside a page the app made inert, in a real browser.
     expect(modal.contains(document.activeElement)).toBe(true);
   });
 

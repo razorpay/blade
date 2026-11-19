@@ -145,7 +145,7 @@ Runes and snippets: `$state`, `$derived`, `$props`, `$effect`, `{#snippet}`, `{@
 
 **Defaults and services come from BladeProvider.** `size` snaps every sized control; `defaults` sets any style prop per component (`{ Button: { color: 'neutral' } }`); `adapters` are the app's services (`Adapters.md`). A component's own prop always wins.
 
-**Overlays open from state.** Modal, BottomSheet and Drawer bind `isOpen` and report `onDismiss({ source })` (`cross`, `blur`, `escape`, `back`, `drag`); Popover and Menu also open from their trigger. Call `back()` from the app's back handler first: it returns whether an open overlay handled it.
+**Overlays open from state.** Modal, BottomSheet and Drawer bind `isOpen` and report `onDismiss({ source })` (`cross`, `blur`, `escape`, `back`, `drag`); Popover and Menu also open from their trigger. Call `back()` from the app's back handler first: it returns whether an open overlay handled it. Put `inert={isModalOpen()}` on the page behind them: Blade makes nothing of the app's inert.
 
 **Toasts are data.** `showToast(toast, { cancelled })` returns a promise of why the toast left (`timeout`, `dismiss`, `evicted`, `cleared`); resolving `cancelled` (from `createCancel()`) dismisses it. The app renders one `ToastContainer`.
 
