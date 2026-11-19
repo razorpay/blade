@@ -113,7 +113,8 @@ jobs:
 
   svelte-e2e:
     name: Run Svelte E2E Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # Pinned: Playwright cannot install browsers on ubuntu-latest (26.04)
+    runs-on: ubuntu-24.04 # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
