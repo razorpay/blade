@@ -1,7 +1,7 @@
 import { tick } from 'svelte';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
-import { back } from '../runes/layer/layers';
+import { back, isModalOpen } from '../runes/layer/layers';
 import ModalHarness from './fixtures/ModalHarness.svelte';
 import { expectClass } from './classes';
 import type { RenderResult } from '@testing-library/svelte';
@@ -321,10 +321,12 @@ describe('Modal presence', () => {
     // jsdom computes no transitions and has no WAAPI: report the styles'
     // 300ms and hand Svelte a controllable animation clock.
     const real = window.getComputedStyle.bind(window);
+    // Own value properties: jsdom's style setters reject anything but a real
+    // CSSStyleProperties, so the overrides can't be assigned through them.
     vi.spyOn(window, 'getComputedStyle').mockImplementation((element) =>
-      Object.assign(Object.create(real(element)), {
-        transitionDuration: '0.3s',
-        transitionDelay: '0s',
+      Object.defineProperties(Object.create(real(element)), {
+        transitionDuration: { value: '0.3s' },
+        transitionDelay: { value: '0s' },
       }),
     );
     const running: Array<{ onfinish: () => void }> = [];
@@ -545,24 +547,47 @@ describe('Modal layers', () => {
     expect(back()).toBe(false);
   });
 
-  it('renders into the overlay host and makes the rest of the frame inert', async () => {
+  it('renders into the overlay host and reports a modal is open', async () => {
     const { getByTestId } = render(ModalHarness, {
       props: { withHost: true },
     });
     const host = getByTestId('host');
-    const page = getByTestId('page');
-    expect(page.hasAttribute('inert')).toBe(false);
+    expect(isModalOpen()).toBe(false);
 
     await fireEvent.click(getByTestId('trigger'));
     expect(host.contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-surfaces').contains(getByTestId('modal'))).toBe(true);
     expect(getByTestId('host-backdrop').dataset.state).toBe('open');
-    expect(page.hasAttribute('inert')).toBe(true);
+    expect(isModalOpen()).toBe(true);
 
     await escape();
     expect(getByTestId('host-surfaces').children).toHaveLength(0);
     expect(getByTestId('host-backdrop').dataset.state).toBe('closed');
-    expect(page.hasAttribute('inert')).toBe(false);
+    expect(isModalOpen()).toBe(false);
+  });
+
+  it('makes nothing inert: not the page, not what others add beside the provider', async () => {
+    const { getByTestId } = render(ModalHarness, {
+      props: { withHost: true },
+    });
+    const parent = getByTestId('host').parentElement!;
+    // As Apple Pay's QR sheet: added to the provider's parent (<body>) after
+    // the app mounted, at either end.
+    const appended = document.createElement('div');
+    const prepended = document.createElement('div');
+    parent.append(appended);
+    parent.prepend(prepended);
+
+    await fireEvent.click(getByTestId('trigger'));
+    expect(getByTestId('host-backdrop').dataset.state).toBe('open');
+    // The page is the app's to make inert (`isModalOpen`).
+    for (const element of [appended, prepended, getByTestId('page')]) {
+      expect(element.closest('[inert]')).toBeNull();
+    }
+
+    await escape();
+    appended.remove();
+    prepended.remove();
   });
 
   it('stacked modals share the host scrim, and a tap on it closes the top one only', async () => {

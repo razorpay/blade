@@ -43,7 +43,7 @@ describe('@razorpay/blade-svelte/components', () => {
       // The form is an adapter (`adapters.form`), not a context of its own.
       'provideForm',
       'getForm',
-      // Layers are internal: an app asks back (`back`).
+      // Layers are internal: an app asks back (`back`) and whether a modal is open (`isModalOpen`).
       'getBack',
       'getLayers',
       'createLayers',
@@ -58,7 +58,7 @@ describe('@razorpay/blade-svelte/components', () => {
       expect(name in components, name).toBe(false);
     }
     // The seams those hosts plug into stay.
-    for (const name of ['back', 'showToast']) {
+    for (const name of ['back', 'isModalOpen', 'showToast']) {
       expect(name in components, name).toBe(true);
     }
   });

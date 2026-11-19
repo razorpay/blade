@@ -68,6 +68,7 @@ Wrap the app in one `BladeProvider` whose parent is the app's shell (positioned,
 | `@razorpay/blade-svelte/runes` | The few runes an app composes its own hosts on (`createLayerStack`, `defineContext`, `phoneDigits`…) |
 | `@razorpay/blade-svelte/configs/uno`, `/configs/vite`, `/configs/webpack`, `/configs/lint` | Build and lint configuration |
 | `@razorpay/blade-svelte/blade.css` | Blade's stylesheet |
+| `@razorpay/blade-svelte/fonts/*` | The font files `blade.css` loads (`inter-regular.woff2`, `inter-medium.woff2`, `inter-semibold.woff2`, `tasa.woff2`), for a page that registers the faces itself |
 
 There is no root import (`@razorpay/blade-svelte`), and never import from React's `@razorpay/blade`.
 
@@ -144,7 +145,7 @@ Runes and snippets: `$state`, `$derived`, `$props`, `$effect`, `{#snippet}`, `{@
 
 **Defaults and services come from BladeProvider.** `size` snaps every sized control; `defaults` sets any style prop per component (`{ Button: { color: 'neutral' } }`); `adapters` are the app's services (`Adapters.md`). A component's own prop always wins.
 
-**Overlays open from state.** Modal, BottomSheet and Drawer bind `isOpen` and report `onDismiss({ source })` (`cross`, `blur`, `escape`, `back`, `drag`); Popover and Menu also open from their trigger. Call `back()` from the app's back handler first: it returns whether an open overlay handled it.
+**Overlays open from state.** Modal, BottomSheet and Drawer bind `isOpen` and report `onDismiss({ source })` (`cross`, `blur`, `escape`, `back`, `drag`); Popover and Menu also open from their trigger. Call `back()` from the app's back handler first: it returns whether an open overlay handled it. Put `inert={isModalOpen()}` on the page behind them: Blade makes nothing of the app's inert.
 
 **Toasts are data.** `showToast(toast, { cancelled })` returns a promise of why the toast left (`timeout`, `dismiss`, `evicted`, `cleared`); resolving `cancelled` (from `createCancel()`) dismisses it. The app renders one `ToastContainer`.
 

@@ -67,6 +67,7 @@ npm install @razorpay/blade-svelte svelte unocss @razorpay/i18nify-js
 | `@razorpay/blade-svelte/configs/vite`, `/configs/webpack` | The icon-font plugin                   |
 | `@razorpay/blade-svelte/configs/lint`                     | Class lint rules, for oxlint or ESLint |
 | `@razorpay/blade-svelte/blade.css`                        | The fonts and base styles              |
+| `@razorpay/blade-svelte/fonts/*`                          | The font files `blade.css` loads       |
 
 ### cx: compile Blade's CSS in your app
 
@@ -217,7 +218,10 @@ that switches by screen, say) composes these.
 BladeProvider renders the overlay host (the one scrim, the box modals
 mount in, and a polite live region) after its content, in the nearest
 positioned ancestor: put it inside the frame overlays must stay within. The
-outermost provider hosts every overlay on the page. Toasts are the app's to
+outermost provider hosts every overlay on the page. Blade makes
+nothing of the app's inert while a modal is open: the app puts
+`inert={isModalOpen()}` (from `/components`) on what the modal must block, so
+a partner SDK's popup added to `<body>` (Apple Pay's) stays usable. Toasts are the app's to
 render, as in React: a `<ToastContainer />` inside the provider shows the
 page's queue (what `showToast` adds to) and moves its toasts into the host; without one, no toast code ships. An app's back handler asks the open overlays first: `back()` returns
 whether one handled it. Toasts are data: `showToast(toast, { cancelled })` returns a promise of

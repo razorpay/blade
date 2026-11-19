@@ -4,7 +4,7 @@ PhoneNumberInput
 
 ## Description
 
-PhoneNumberInput is the phone number field: a country button (flag and chevron) and the dial code before a `tel` control for the national number, with a clear button while there is a number. Its value is the whole number with its dial code (`+919876543210`), and picking a country opens Blade's country dropdown under the field, or the app's own presenter through `adapters.presentDropdown`, which can render the exported PhoneCountryList, the same virtualized country list, in a sheet or a modal.
+PhoneNumberInput is the phone number field: a country button (flag and chevron) and the dial code before a `tel` control for the national number, with no clear button (a number is not a search term). Its value is the whole number with its dial code (`+919876543210`), and picking a country opens Blade's country dropdown under the field, or the app's own presenter through `adapters.presentDropdown`, which can render the exported PhoneCountryList, the same virtualized country list, in a sheet or a modal.
 
 ## Important Constraints
 
@@ -65,8 +65,6 @@ interface PhoneNumberInputProps {
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
   onClick?: (event: MouseEvent) => void;
-  /** The clear button (shown while there is a number) was pressed. */
-  onClearButtonClick?: () => void;
   /** The return key's label on a virtual keyboard. */
   enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
   /** An HTML autofill token. @default 'tel' */

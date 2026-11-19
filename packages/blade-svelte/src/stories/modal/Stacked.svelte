@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BladeProvider, Button } from '../../index';
+  import { BladeProvider, Button, isModalOpen } from '../../index';
     import { Modal } from '../../components/modal';
   import { BottomSheet } from '../../components/bottom-sheet';
   import {
@@ -17,7 +17,7 @@
   class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
 <BladeProvider>
-  <div class="p-6">
+  <div class="p-6" inert={isModalOpen()}>
     <Button class="w-40" onClick={() => (isOpen = true)}>Open modal</Button>
   </div>
 </BladeProvider>

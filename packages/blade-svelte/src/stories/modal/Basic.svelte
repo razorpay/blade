@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BladeProvider, Button, Icon } from '../../index';
+  import { BladeProvider, Button, Icon, isModalOpen } from '../../index';
     import { Modal, type ModalStyleProps } from '../../components/modal';
   import { ModalBody, ModalFooter, ModalHeader } from '../../components/modal-children';
   import { CreditCardIcon } from '../../icons';
@@ -25,7 +25,7 @@
   class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
 <BladeProvider>
-  <div class="grid gap-4 p-6">
+  <div class="grid gap-4 p-6" inert={isModalOpen()}>
     <Button class="w-40" testID="open" onClick={() => (isOpen = true)}>Open modal</Button>
     <p class="text-75 leading-50 text-surface-gray-subtle">Last closed by: <span data-testid="last-source">{lastSource}</span></p>
   </div>

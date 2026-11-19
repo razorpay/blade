@@ -93,6 +93,62 @@ test.describe('Modal', () => {
     await expect(page.getByTestId('open')).toBeFocused();
   });
 
+  test('a partner popup added beside the provider takes clicks while the modal is open', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--basic');
+    // As Apple Pay's QR sheet in Chrome: the SDK's own popup, added after the
+    // app mounted, beside it and above everything, with its own close button.
+    await page.evaluate(() => {
+      // The host's parent (the host holds the live region): where the
+      // provider's content sits, so the popup is its sibling.
+      const host = document.querySelector('[role="log"][aria-live="polite"]')?.parentElement;
+      const parent = host?.parentElement ?? document.body;
+      const popup = document.createElement('div');
+      popup.style.cssText = 'position:fixed;top:8px;right:8px;z-index:2147483647';
+      popup.innerHTML = '<button type="button" data-testid="partner-close">Close</button>';
+      popup.querySelector('button')?.addEventListener('click', () => {
+        popup.dataset.clicked = 'true';
+      });
+      parent.append(popup);
+    });
+    const dialog = await open(page, 'modal');
+
+    const partnerClose = page.getByTestId('partner-close');
+    await partnerClose.click();
+    await expect(partnerClose.locator('..')).toHaveAttribute('data-clicked', 'true');
+    // The click was the popup's: the modal is still open.
+    await expect(dialog).toBeVisible();
+  });
+
+  test('a modal open on the first render takes focus, and the page behind it is inert', async ({
+    page,
+  }) => {
+    await gotoStory(page, 'components-modal--open-on-first-render');
+    const dialog = page.getByTestId('modal');
+    await expect(dialog).toBeVisible();
+    // It rendered in place, beside the page the story makes inert
+    // (`isModalOpen()`), and moved into the host: focus is in it.
+    await expect(page.getByTestId('host-surfaces').getByTestId('modal')).toBeVisible();
+    await expect
+      .poll(() =>
+        page.evaluate(() =>
+          Boolean(
+            document.querySelector('[data-testid="modal"]')?.contains(document.activeElement),
+          ),
+        ),
+      )
+      .toBe(true);
+    await expect(page.getByTestId('page')).toHaveAttribute('inert', '');
+    expect(
+      await page.evaluate(() => {
+        const trigger = document.querySelector<HTMLElement>('[data-testid="open"]');
+        trigger?.focus();
+        return document.activeElement === trigger;
+      }),
+    ).toBe(false);
+  });
+
   test('the close button and the scrim dismiss it, each reporting its source', async ({ page }) => {
     await gotoStory(page, 'components-modal--basic');
     let dialog = await open(page, 'modal');

@@ -7,6 +7,8 @@ import type { Mock } from 'vitest';
 import type { Stats } from 'webpack';
 import { prepareSvg } from '../svg.js';
 import { buildFont } from '../font.js';
+import { toWoff2 } from '../woff2.js';
+import { readTrueType, readWoff2 } from './font-reader';
 import { createIconCore, ICON_SVGS, PACKAGE_ICONS } from '../core.js';
 import vitePlugin from '../vite.js';
 import webpackPlugin from '../webpack.js';
@@ -36,18 +38,11 @@ function tempRoot(): string {
 }
 
 /** The private-use codepoints a woff2 maps, read from its cmap. */
-async function glyphCodes(woff2: Buffer): Promise<number[]> {
-  const { default: wawoff2 } = await import('wawoff2');
-  const ttf = Buffer.from(await wawoff2.decompress(woff2));
-  for (let i = 0; i < ttf.readUInt16BE(4); i += 1) {
-    const record = 12 + i * 16;
-    if (ttf.toString('latin1', record, record + 4) !== 'cmap') continue;
-    const cmap = ttf.readUInt32BE(record + 8);
-    for (let j = 0; j < ttf.readUInt16BE(cmap + 2); j += 1) {
-      const offset = cmap + ttf.readUInt32BE(cmap + 8 + j * 8);
-      if (ttf.readUInt16BE(offset) !== 4) continue;
-      return privateUseCodes(ttf, offset);
-    }
+function glyphCodes(woff2: Buffer): number[] {
+  const cmap = readWoff2(woff2).tables.get('cmap')!;
+  for (let j = 0; j < cmap.readUInt16BE(2); j += 1) {
+    const offset = cmap.readUInt32BE(8 + j * 8);
+    if (cmap.readUInt16BE(offset) === 4) return privateUseCodes(cmap, offset);
   }
   return [];
 }
@@ -117,6 +112,61 @@ describe('buildFont', () => {
     const [a, b] = await Promise.all([buildFont(glyphs), buildFont([...glyphs].reverse())]);
     expect(a.woff2.equals(b.woff2)).toBe(true);
     expect(a.woff2.subarray(0, 4).toString('latin1')).toBe('wOF2');
+  });
+
+  it('writes a WOFF2 that decodes to the TrueType font: glyf transformed, other tables as they are', async () => {
+    // Every package icon, for every shape of point delta the outlines have.
+    const codepoints: { glyphs: Record<string, number> } = JSON.parse(
+      fs.readFileSync(path.join(ICONS, 'codepoints.json'), 'utf8'),
+    );
+    const glyphs = Object.entries(codepoints.glyphs).map(([name, code]) => ({
+      name,
+      code,
+      svg: svgOf(name),
+    }));
+    const { ttf, woff2 } = await buildFont(glyphs);
+    const sfnt = readTrueType(ttf);
+    expect({
+      flavor: woff2.readUInt32BE(4),
+      length: woff2.readUInt32BE(8),
+      totalSfntSize: woff2.readUInt32BE(16),
+    }).toEqual({
+      flavor: ttf.readUInt32BE(0),
+      length: woff2.length,
+      totalSfntSize: [...sfnt.tables.values()].reduce(
+        (size, table) => size + Math.ceil(table.length / 4) * 4,
+        12 + 16 * sfnt.tables.size,
+      ),
+    });
+    expect(woff2.length % 4).toBe(0);
+
+    const font = readWoff2(woff2);
+    expect(font.transforms.get('glyf')).toBe(0);
+    expect(font.transforms.get('loca')).toBe(0);
+    expect(font.glyphs).toEqual(sfnt.glyphs);
+    expect([...font.tables.keys()]).toEqual(
+      [...sfnt.tables.keys()].filter((tag) => tag !== 'glyf' && tag !== 'loca').sort(),
+    );
+    for (const [tag, table] of font.tables) expect(table.equals(sfnt.tables.get(tag)!)).toBe(true);
+    expect(woff2.length).toBeLessThan(0.45 * ttf.length);
+  });
+
+  it('keeps glyf and loca as they are (the null transform) when a glyph is composite', async () => {
+    const { ttf } = await buildFont([{ name: 'info', code: 0xe0d0, svg: svgOf('info') }]);
+    // Mark the last glyph composite (numberOfContours -1): the transform here
+    // covers simple glyphs only.
+    const patched = Buffer.from(ttf);
+    const { tables } = readTrueType(patched);
+    const loca = tables.get('loca')!;
+    const long = tables.get('head')!.readInt16BE(50) === 1;
+    const last = loca.length / (long ? 4 : 2) - 2;
+    const start = long ? loca.readUInt32BE(last * 4) : loca.readUInt16BE(last * 2) * 2;
+    tables.get('glyf')!.writeInt16BE(-1, start);
+
+    const font = readWoff2(toWoff2(patched));
+    expect(font.transforms.get('glyf')).toBe(3);
+    expect(font.transforms.get('loca')).toBe(3);
+    for (const [tag, table] of tables) expect(font.tables.get(tag)!.equals(table)).toBe(true);
   });
 });
 
@@ -286,7 +336,7 @@ describe('bladePlugin (Vite)', () => {
     expect(out['nested/lazy.js']).toBe('new URL("../assets/blade-icons.woff2",import.meta.url)');
     expect(out['assets/other.js']).toBe('console.log(1)');
     // gift-card sits in the folder but nothing imported it.
-    expect(await glyphCodes(vite.sources.get('assets/blade-icons.woff2')!)).toEqual([
+    expect(glyphCodes(vite.sources.get('assets/blade-icons.woff2')!)).toEqual([
       0xe0d0,
       0xe1b4,
       0xf001,
@@ -350,10 +400,7 @@ export const icons = [InfoIcon, RocketIcon];`,
     const files = fs.readdirSync(path.join(root, 'dist'));
     const font = files.find((file) => file.endsWith('.woff2'))!;
     expect(font).toMatch(/^blade-icons\.\w+\.woff2$/);
-    expect(await glyphCodes(fs.readFileSync(path.join(root, 'dist', font)))).toEqual([
-      0xe0d0,
-      0xf001,
-    ]);
+    expect(glyphCodes(fs.readFileSync(path.join(root, 'dist', font)))).toEqual([0xe0d0, 0xf001]);
     const js = fs.readFileSync(
       path.join(root, 'dist', files.find((file) => /\.m?js$/.test(file))!),
       'utf8',

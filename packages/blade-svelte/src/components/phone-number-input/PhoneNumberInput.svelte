@@ -56,8 +56,6 @@
     onFocus?: (event: FocusEvent) => void;
     onBlur?: (event: FocusEvent) => void;
     onClick?: (event: MouseEvent) => void;
-    /** The clear button (shown while there is a number) was pressed. */
-    onClearButtonClick?: () => void;
     /** The return key's label on a virtual keyboard. */
     enterKeyHint?: HTMLInputAttributes['enterkeyhint'];
     /** An HTML autofill token. @default 'tel' */
@@ -112,7 +110,6 @@
     onFocus,
     onBlur,
     onClick,
-    onClearButtonClick,
     enterKeyHint,
     autoComplete = 'tel',
     showCountrySelector = true,
@@ -277,11 +274,9 @@
   {onFocus}
   {onBlur}
   {onClick}
-  {onClearButtonClick}
   {enterKeyHint}
   {autoComplete}
   {trailing}
-  showClearButton
   size={style.current.size}
   {isDisabled}
   {isRequired}

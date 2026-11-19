@@ -15,11 +15,12 @@
   // under every open modal and the box modal surfaces mount in, stacked in
   // the nearest positioned ancestor; non-modal overlays (tooltips,
   // popovers) and a ToastContainer's toasts append to the host after the
-  // box, so they paint above it. While a modal is open everything beside
-  // the host goes inert. Not exported: the app places it by where it puts
-  // the provider.
+  // box, so they paint above it. It makes nothing inert: the app does, on
+  // its own page, with `isModalOpen()` — so a partner SDK's popup in <body>
+  // (Apple Pay's QR sheet) stays live. Not exported: the app places it by
+  // where it puts the provider.
   const classes = resolveOverlayHost();
-  const host = createOverlayHost({ isolates: true });
+  const host = createOverlayHost();
 </script>
 
 <div data-testid={testID} {@attach host.host}>
@@ -38,8 +39,8 @@
   ></div>
   <!--
     The one polite live region, as Blade React's LiveAnnouncer: each message
-    a node of its own, so a repeated one is said again. In the host, so a
-    modal's inert page never silences it.
+    a node of its own, so a repeated one is said again. In the host, so the
+    app's inert page never silences it.
   -->
   <div
     class={classes.live}
