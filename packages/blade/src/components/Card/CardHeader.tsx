@@ -86,9 +86,13 @@ const CardHeaderLink = assignWithoutSideEffects(_CardHeaderLink, {
 
 type CardHeaderIconButtonProps = Omit<
   ButtonProps,
-  'variant' | 'size' | 'iconPosition' | 'isFullWidth' | 'children'
+  'variant' | 'size' | 'iconPosition' | 'isFullWidth' | 'children' | 'color'
 > & {
   icon: IconComponent;
+  /**
+   * The button is always `tertiary`, which only supports `primary` and `white`.
+   */
+  color?: Extract<ButtonProps['color'], 'primary' | 'white'>;
 };
 
 const _CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {

@@ -170,4 +170,16 @@ describe('<ButtonGroup />', () => {
       '[Blade: ButtonGroup]: Only `Button, Dropdown, Tooltip, Popover` components are accepted in `ButtonGroup` children',
     );
   });
+
+  it('should throw error for the neutral color', () => {
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error neutral is not a ButtonGroup color
+        <ButtonGroup color="neutral">
+          <Button>One</Button>
+          <Button>Two</Button>
+        </ButtonGroup>,
+      ),
+    ).toThrowError('[Blade: ButtonGroup]: "neutral" color is not supported on ButtonGroup');
+  });
 });

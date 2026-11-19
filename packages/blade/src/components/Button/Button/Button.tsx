@@ -35,7 +35,13 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  /**
+   * Color of the button.
+   *
+   * `neutral` is a filled, high-contrast button: black on light themes and white on dark
+   * themes. It is only available with `variant="primary"`, and not on `ButtonGroup`.
+   */
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;

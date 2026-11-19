@@ -19,7 +19,10 @@ import {
   SLIDER_TRACK_TOP,
 } from './sliderInputTokens';
 import {
+  getBoundLabelsMinWidth,
   getCenteringTransform,
+  getScaleLabelPosition,
+  getLabelWidth,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
@@ -245,9 +248,18 @@ const _SliderInput = (
   const scaleValues = React.useMemo(
     () =>
       showScaleValues
-        ? getSpacedScaleValues({ values: markerValues, trackWidth, widestLabelWidth, range })
+        ? getSpacedScaleValues({
+            values: markerValues,
+            trackWidth,
+            widestLabelWidth,
+            endLabelWidths: {
+              min: getLabelWidth(min, formatValue),
+              max: getLabelWidth(max, formatValue),
+            },
+            range,
+          })
         : [min, max],
-    [showScaleValues, markerValues, trackWidth, widestLabelWidth, range, min, max],
+    [showScaleValues, markerValues, trackWidth, widestLabelWidth, formatValue, range, min, max],
   );
 
   const centeringTransform = getCenteringTransform(isRTL);
@@ -303,10 +315,17 @@ const _SliderInput = (
           flex="1"
           // Labels only widen the floor when they are actually on screen.
           minWidth={makeSize(
-            getMinTrackWidth(
-              markerValues.length,
-              showScale && showScaleValues ? widestLabelWidth : 0,
-            ),
+            showScale && (!showScaleValues || markerValues.length === 2)
+              ? // Only the two bounds get a label here and both anchor inward, so they need room
+                // side by side. Markers still need their own pitch, so take whichever is wider.
+                Math.max(
+                  getMinTrackWidth(markerValues.length, 0),
+                  getBoundLabelsMinWidth(
+                    getLabelWidth(min, formatValue),
+                    getLabelWidth(max, formatValue),
+                  ),
+                )
+              : getMinTrackWidth(markerValues.length, showScale ? widestLabelWidth : 0),
           )}
         >
           <FieldBox $hasScale={shouldShowScale}>
@@ -378,10 +397,7 @@ const _SliderInput = (
                 {scaleValues.map((scaleValue) => (
                   <ScaleLabel
                     key={scaleValue}
-                    style={{
-                      insetInlineStart: getOffsetExpression(getValueRatio(scaleValue, range)),
-                      transform: centeringTransform,
-                    }}
+                    style={getScaleLabelPosition(getValueRatio(scaleValue, range), isRTL)}
                   >
                     <Text
                       size="xsmall"

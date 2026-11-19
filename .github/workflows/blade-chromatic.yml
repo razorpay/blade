@@ -6,7 +6,7 @@ on:
     types: [labeled]
 
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   chromatic-deployment:
@@ -81,6 +81,21 @@ jobs:
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
+
+  # The org IP allow list 403s API calls from GitHub-hosted runners, so neither we nor
+  # Chromatic can post a status. Environment URLs are set by GitHub itself, no API call.
+  storybook-link:
+    name: Storybook Link
+    needs: chromatic-deployment
+    if: ${{ needs.chromatic-deployment.outputs.storybookUrl != '' }}
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    environment:
+      name: storybook
+      url: ${{ needs.chromatic-deployment.outputs.storybookUrl }}
+    steps:
+      - run: echo "Storybook $STORYBOOK_URL" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          STORYBOOK_URL: ${{ needs.chromatic-deployment.outputs.storybookUrl }}
 
   browserstack-tests:
     name: BrowserStack Tests

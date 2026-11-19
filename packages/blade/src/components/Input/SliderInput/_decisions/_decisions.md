@@ -29,6 +29,12 @@ whatever the scale does, so toggling the scale never moves the track and a Slide
 sharing a field centre line with a `TextInput` next to it. The box reserves bottom margin for
 the overflow rather than growing.
 
+## Scale end labels anchor inward
+
+With `showScale`, the first label starts at its tick and the last ends at its tick. A centred end label would hang half its width past the track and clip in a card. Labels in between stay centred. Labels next to the ends are dropped when they would touch an end label, and the field's minimum width makes room for both end labels on two-stop scales and when `showScaleValues={false}`.
+
+![Long end labels stay inside the track](images/scale-end-labels.png)
+
 ## Markers are cut out, never painted
 
 Markers are transparent holes punched through the track with `mask-image`, one

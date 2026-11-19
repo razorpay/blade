@@ -1,5 +1,13 @@
 # @razorpay/blade-core
 
+## 0.21.1
+
+### Patch Changes
+
+- 039d77b79: update design tokens from Figma
+
+  Added 0 tokens and removed 0 tokens.
+
 ## 0.21.0
 
 ### Minor Changes

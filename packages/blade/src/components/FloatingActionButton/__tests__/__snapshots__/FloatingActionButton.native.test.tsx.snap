@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FloatingActionButton /> (native) should render a loading neutral button with an inverted spinner 1`] = `
+exports[`<FloatingActionButton /> (native) should render a loading neutral button with gray loading dots 1`] = `
 <View
   style={
     {
@@ -209,7 +209,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     null,
                     {
@@ -232,7 +232,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     {
                       "marginLeft": 3,
@@ -257,7 +257,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                       "width": 6,
                     },
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "hsla(204, 9%, 42%, 1)",
                     },
                     {
                       "marginLeft": 3,
@@ -361,7 +361,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
                     d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                     fill={
                       {
-                        "payload": 1392508927,
+                        "payload": 1375731712,
                         "type": 0,
                       }
                     }
@@ -385,7 +385,7 @@ exports[`<FloatingActionButton /> (native) should render a loading neutral butto
               style={
                 [
                   {
-                    "color": "hsla(0, 0%, 100%, 0.32)",
+                    "color": "hsla(0, 0%, 0%, 0.32)",
                     "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
@@ -508,14 +508,14 @@ exports[`<FloatingActionButton /> (native) should render as an icon-only button 
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         height="48px"
         hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
         isLoading={false}
@@ -754,7 +754,7 @@ exports[`<FloatingActionButton /> (native) should render as an icon-only button 
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }
@@ -778,7 +778,7 @@ exports[`<FloatingActionButton /> (native) should render as an icon-only button 
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }
@@ -1652,13 +1652,13 @@ exports[`<FloatingActionButton /> (native) should render primary color 1`] = `
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
         isLoading={false}
@@ -1895,7 +1895,7 @@ exports[`<FloatingActionButton /> (native) should render primary color 1`] = `
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }
@@ -1919,7 +1919,7 @@ exports[`<FloatingActionButton /> (native) should render primary color 1`] = `
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }
@@ -2242,11 +2242,11 @@ exports[`<FloatingActionButton /> (native) should render white color 1`] = `
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.32), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         hoverIconColor="hsla(0, 0%, 0%, 0.72)"
         isFullWidth={false}
         isLoading={false}
@@ -2780,13 +2780,13 @@ exports[`<FloatingActionButton /> (native) should render with a label 1`] = `
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
         isLoading={false}
@@ -3023,7 +3023,7 @@ exports[`<FloatingActionButton /> (native) should render with a label 1`] = `
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }
@@ -3047,7 +3047,7 @@ exports[`<FloatingActionButton /> (native) should render with a label 1`] = `
                 ry={9999}
                 stroke={
                   {
-                    "payload": 788529151,
+                    "payload": 1392508927,
                     "type": 0,
                   }
                 }

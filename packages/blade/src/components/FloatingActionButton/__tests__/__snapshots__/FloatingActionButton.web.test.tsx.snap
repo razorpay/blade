@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FloatingActionButton /> should render a loading neutral button with an inverted spinner 1`] = `
+exports[`<FloatingActionButton /> should render a loading neutral button with gray loading dots 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -120,9 +120,10 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,0%,0.18);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(206,10%,29%,0.12);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(206,10%,29%,0.12);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -145,7 +146,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(0,0%,100%,0.32);
+  color: hsla(0,0%,0%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 500;
@@ -187,7 +188,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 0ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 0ms infinite;
@@ -197,7 +198,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 150ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 150ms infinite;
@@ -207,7 +208,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(204,9%,42%,1);
   opacity: 0.42;
   -webkit-animation: fMCYFL-450290765 1200ms ease-in-out 300ms infinite;
   animation: fMCYFL-450290765 1200ms ease-in-out 300ms infinite;
@@ -299,7 +300,7 @@ exports[`<FloatingActionButton /> should render a loading neutral button with an
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(0, 0%, 100%, 0.32)"
+                fill="hsla(0, 0%, 0%, 0.32)"
               />
             </svg>
           </div>
@@ -375,7 +376,7 @@ exports[`<FloatingActionButton /> should render as an icon-only button when chil
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 9999px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -407,21 +408,23 @@ exports[`<FloatingActionButton /> should render as an icon-only button when chil
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -597,9 +600,11 @@ exports[`<FloatingActionButton /> should render neutral color 1`] = `
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,12%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(206,10%,29%,0.12);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(206,10%,29%,0.12),inset 0 -1.5px 0px 0px hsla(0,0%,0%,1),inset 0 0px 0px 0.5px hsla(0,0%,0%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,1),inset 0 0px 0px 0.5px hsla(0,0%,0%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -756,7 +761,7 @@ exports[`<FloatingActionButton /> should render primary color 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 9999px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 16px;
@@ -788,21 +793,23 @@ exports[`<FloatingActionButton /> should render primary color 1`] = `
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -991,21 +998,23 @@ exports[`<FloatingActionButton /> should render white color 1`] = `
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,100%,0.8);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.32),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1162,7 +1171,7 @@ exports[`<FloatingActionButton /> should render with a label 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 9999px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 16px;
@@ -1194,21 +1203,23 @@ exports[`<FloatingActionButton /> should render with a label 1`] = `
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  outline: 1px solid hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c1.c1.c1.c1.c1 * {

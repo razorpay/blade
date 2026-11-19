@@ -1,11 +1,15 @@
 import {
+  getBoundLabelsMinWidth,
   getFillWidthExpression,
+  getLabelWidth,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
+  getScaleLabelPosition,
   getSpacedScaleValues,
   getValueRatio,
   getVisibility,
+  getWidestLabelWidth,
   snapValue,
 } from '../utils';
 
@@ -91,6 +95,40 @@ describe('SliderInput utils', () => {
   });
 
   describe('suppression', () => {
+    it('should leave room for an end label that grows inward from its tick', () => {
+      const tenths = { min: 0, max: 100, step: 10 };
+      const values = getMarkerValues(tenths);
+      const spaced = getSpacedScaleValues({
+        values,
+        trackWidth: 400,
+        widestLabelWidth: 30,
+        range: tenths,
+      });
+      expect(spaced).not.toContain(10);
+      expect(spaced).not.toContain(90);
+      expect(spaced).toContain(50);
+      expect(spaced[0]).toBe(0);
+      expect(spaced[spaced.length - 1]).toBe(100);
+    });
+
+    it('should measure the end label itself rather than the widest label on the scale', () => {
+      // "0" is one character and "100" is three, so at 240px the narrow start still clears its
+      // neighbour while the wide end has to drop one.
+      const values = getMarkerValues({ min: 0, max: 100, step: 10 });
+      const spaced = getSpacedScaleValues({
+        values,
+        trackWidth: 240,
+        widestLabelWidth: 16.8,
+        endLabelWidths: { min: 5.6, max: 16.8 },
+        range: { min: 0, max: 100, step: 10 },
+      });
+
+      expect(spaced).toContain(10);
+      expect(spaced).not.toContain(90);
+      expect(spaced[0]).toBe(0);
+      expect(spaced[spaced.length - 1]).toBe(100);
+    });
+
     it('should show everything while the track is unmeasured', () => {
       expect(getVisibility({ trackWidth: 0, markerCount: 50, widestLabelWidth: 20 })).toEqual({
         canShowMarkers: true,
@@ -119,6 +157,19 @@ describe('SliderInput utils', () => {
       });
       expect(canShowMarkers).toBe(true);
       expect(canShowScale).toBe(false);
+    });
+  });
+
+  describe('getScaleLabelPosition', () => {
+    it('should start the first label at its tick, end the last at its tick and centre the rest', () => {
+      expect(getScaleLabelPosition(0, false)).toEqual({ insetInlineStart: getOffsetExpression(0) });
+      expect(getScaleLabelPosition(1, false).insetInlineEnd).toBe('1.5px');
+      expect(getScaleLabelPosition(1, false).transform).toBeUndefined();
+      expect(getScaleLabelPosition(0.5, false)).toEqual({
+        insetInlineStart: getOffsetExpression(0.5),
+        transform: 'translateX(-50%)',
+      });
+      expect(getScaleLabelPosition(0.5, true).transform).toBe('translateX(50%)');
     });
   });
 
@@ -172,9 +223,56 @@ describe('SliderInput utils', () => {
     });
   });
 
+  describe('getBoundLabelsMinWidth', () => {
+    it('should size from the two bound labels only, not from the widest marker label', () => {
+      const formatValue = (value: number): string => {
+        if (value === 0) {
+          return 'Off';
+        }
+
+        if (value === 50) {
+          return 'Retry with exponential backoff';
+        }
+
+        return 'On';
+      };
+      const minWidth = getBoundLabelsMinWidth(
+        getLabelWidth(0, formatValue),
+        getLabelWidth(100, formatValue),
+      );
+      expect(minWidth).toBeLessThan(
+        getMinTrackWidth(2, getWidestLabelWidth([0, 50, 100], formatValue)),
+      );
+      expect(minWidth).toBeLessThanOrEqual(60);
+    });
+  });
+
   describe('getMinTrackWidth', () => {
     it('should widen the floor when labels are wider than the marker ring', () => {
       expect(getMinTrackWidth(5, 0)).toBeLessThan(getMinTrackWidth(5, 30));
+    });
+
+    it('should stay on the interior pitch so the slider can still shrink into its container', () => {
+      // The end gap must not be priced into every pitch: an 11-stop scale with 3-character
+      // labels floors at 211px, so a 240px card still fits it. Pricing 1.5x per gap gave 295px
+      // and pushed the whole field out of the card.
+      expect(getMinTrackWidth(11, 16.8)).toBe(211);
+    });
+
+    it('should drop the label next to an end rather than widen the floor', () => {
+      const values = [0, 25, 50, 75, 100];
+      expect(
+        getSpacedScaleValues({
+          values,
+          trackWidth: getMinTrackWidth(values.length, 30),
+          widestLabelWidth: 30,
+          range: { min: 0, max: 100, step: 25 },
+        }),
+      ).toEqual([0, 50, 100]);
+    });
+
+    it('should leave room for both end labels when there are only two stops', () => {
+      expect(getMinTrackWidth(2, 70)).toBeGreaterThanOrEqual(70 * 2);
     });
 
     it('should collapse to a single dot when there is nothing to space out', () => {

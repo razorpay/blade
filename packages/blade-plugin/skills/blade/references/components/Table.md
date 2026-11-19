@@ -81,8 +81,22 @@ type TableProps<Item> = {
   /**
    * The isFirstColumnSticky prop determines whether the first column is sticky or not.
    * @default false
+   * @deprecated Use `stickyColumns={1}` instead, which also shows a divider and a shadow
+   * after the first column once the table is scrolled.
    **/
   isFirstColumnSticky?: boolean;
+
+  /**
+   * The number of columns, counted from the left, that stay in view while the table scrolls
+   * horizontally. Once the table is scrolled, a divider and a shadow fade in after the last
+   * sticky column.
+   * When `selectionType="multiple"`, the checkbox column is also sticky and does not count
+   * towards this number. On mobile, only the first column is kept sticky.
+   * Sticky columns also make the header sticky, even when `isHeaderSticky` is `false`.
+   * Takes precedence over `isFirstColumnSticky`.
+   * @default 0
+   **/
+  stickyColumns?: number;
 
   /**
    * The rowDensity prop determines the density of the table.
@@ -417,7 +431,7 @@ type TablePaginationProps = {
 - Use the function-as-children pattern: `<Table>{(tableData) => (<>...</>)}</Table>`.
 - Ensure every row object in `data.nodes` has a unique `id` field.
 - Use `sortFunctions` with matching `headerKey` props on `TableHeaderCell` for sortable columns.
-- Use `isHeaderSticky` and `isFirstColumnSticky` for large datasets that need scroll anchoring.
+- Use `isHeaderSticky` and `stickyColumns` for large datasets that need scroll anchoring. Pin as many leading columns as users need to identify a row (for example name, email and phone) while they scroll sideways.
 - Wrap in `ListView` when you need search and filter capabilities alongside the table.
 
 **Don't**
@@ -528,7 +542,7 @@ const PaymentTable = () => {
         data={tableData}
         defaultSelectedIds={['1', '3']}
         onSelectionChange={handleSelectionChange}
-        isFirstColumnSticky
+        stickyColumns={1}
         isHeaderSticky
         selectionType="multiple"
         rowDensity="normal"

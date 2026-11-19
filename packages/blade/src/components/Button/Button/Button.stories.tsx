@@ -152,7 +152,7 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative', 'neutral'];
 
   return (
     <>
@@ -199,24 +199,26 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
               </ButtonComponent>
             </BaseBox>
 
-            <BaseBox margin="spacing.2">
-              <Text marginBottom="spacing.3" color={textColor}>
-                Secondary
-              </Text>
-              <ButtonComponent {...args} color={color} variant="secondary">
-                {children}
-              </ButtonComponent>
+            {color !== 'neutral' && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Secondary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="secondary">
+                  {children}
+                </ButtonComponent>
 
-              <ButtonComponent
-                marginLeft="spacing.4"
-                {...args}
-                color={color}
-                variant="secondary"
-                isDisabled
-              >
-                {children}
-              </ButtonComponent>
-            </BaseBox>
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="secondary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
 
             {(color == 'primary' || color == 'white') && (
               <BaseBox margin="spacing.2">
@@ -482,12 +484,15 @@ ButtonRef.parameters = {
 export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
   const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
   const sizes: ButtonProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
-  // positive/negative colors only support primary and secondary variants
-  const colorVariants: ButtonProps['variant'][] = ['primary', 'secondary'];
-  const colors: Array<{ color: ButtonProps['color']; label: string }> = [
-    { color: 'white', label: 'White' },
-    { color: 'positive', label: 'Positive' },
-    { color: 'negative', label: 'Negative' },
+  const colors: Array<{
+    color: ButtonProps['color'];
+    label: string;
+    variants: ButtonProps['variant'][];
+  }> = [
+    { color: 'white', label: 'White', variants: ['primary', 'secondary', 'tertiary'] },
+    { color: 'positive', label: 'Positive', variants: ['primary', 'secondary'] },
+    { color: 'negative', label: 'Negative', variants: ['primary', 'secondary'] },
+    { color: 'neutral', label: 'Neutral', variants: ['primary'] },
   ];
 
   return (
@@ -585,11 +590,37 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
               <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} />
             ))}
           </BaseBox>
+          {/* Icon only loading */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Only Loading
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} isLoading />
+            ))}
+          </BaseBox>
+          {/* Full width */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Full Width
+              </Text>
+            </Box>
+            <BaseBox display="flex" flexDirection="column" gap="spacing.3" flex="1">
+              {sizes.map((size) => (
+                <ButtonComponent key={size} variant={variant} size={size} isFullWidth>
+                  Pay Now
+                </ButtonComponent>
+              ))}
+            </BaseBox>
+          </BaseBox>
         </BaseBox>
       ))}
 
-      {/* Positive and Negative color buttons */}
-      {colors.map(({ color, label }) => (
+      {/* White, positive, negative and neutral color buttons */}
+      {colors.map(({ color, label, variants: colorVariants }) => (
         <BaseBox
           key={color}
           display="flex"
@@ -759,6 +790,59 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
                     icon={UserIcon}
                   />
                 ))}
+              </BaseBox>
+              {/* Icon only loading */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Only Loading
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={UserIcon}
+                    isLoading
+                  />
+                ))}
+              </BaseBox>
+              {/* Full width */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Full Width
+                  </Text>
+                </Box>
+                <BaseBox display="flex" flexDirection="column" gap="spacing.3" flex="1">
+                  {sizes.map((size) => (
+                    <ButtonComponent
+                      key={size}
+                      variant={variant}
+                      color={color}
+                      size={size}
+                      isFullWidth
+                    >
+                      Pay Now
+                    </ButtonComponent>
+                  ))}
+                </BaseBox>
               </BaseBox>
             </BaseBox>
           ))}

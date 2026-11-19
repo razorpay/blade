@@ -384,7 +384,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
           muted: globalColors.neutral.white[300],
-          disabled: globalColors.neutral.white[100],
+          disabled: globalColors.neutral.black[100],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],
@@ -452,7 +452,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
           muted: globalColors.neutral.white[300],
-          disabled: globalColors.neutral.white[100],
+          disabled: globalColors.neutral.black[100],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],
@@ -1097,7 +1097,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.neutral.black[500],
           subtle: globalColors.neutral.black[400],
           muted: globalColors.neutral.black[300],
-          disabled: globalColors.neutral.black[100],
+          disabled: globalColors.neutral.white[100],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],
@@ -1165,7 +1165,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.neutral.black[500],
           subtle: globalColors.neutral.black[400],
           muted: globalColors.neutral.black[300],
-          disabled: globalColors.neutral.black[100],
+          disabled: globalColors.neutral.white[100],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],

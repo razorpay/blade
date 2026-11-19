@@ -359,7 +359,7 @@
   --interactive-text-on-neutral-normal: hsla(0, 0%, 100%, 1);
   --interactive-text-on-neutral-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-on-neutral-muted: hsla(0, 0%, 100%, 0.64);
-  --interactive-text-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
   --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -403,7 +403,7 @@
   --interactive-icon-on-neutral-normal: hsla(0, 0%, 100%, 1);
   --interactive-icon-on-neutral-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-on-neutral-muted: hsla(0, 0%, 100%, 0.64);
-  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
   --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -818,7 +818,7 @@
   --interactive-text-on-neutral-normal: hsla(0, 0%, 0%, 1);
   --interactive-text-on-neutral-subtle: hsla(0, 0%, 0%, 0.8);
   --interactive-text-on-neutral-muted: hsla(0, 0%, 0%, 0.72);
-  --interactive-text-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
+  --interactive-text-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
   --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -862,7 +862,7 @@
   --interactive-icon-on-neutral-normal: hsla(0, 0%, 0%, 1);
   --interactive-icon-on-neutral-subtle: hsla(0, 0%, 0%, 0.8);
   --interactive-icon-on-neutral-muted: hsla(0, 0%, 0%, 0.72);
-  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
+  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
   --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.64);

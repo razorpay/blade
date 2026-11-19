@@ -477,7 +477,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(23, 92%, 53%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 0%, 0.32)",
+            "disabled": "hsla(0, 0%, 100%, 0.32)",
             "muted": "hsla(0, 0%, 0%, 0.72)",
             "normal": "hsla(0, 0%, 0%, 1)",
             "subtle": "hsla(0, 0%, 0%, 0.8)",
@@ -545,7 +545,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(23, 92%, 53%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 0%, 0.32)",
+            "disabled": "hsla(0, 0%, 100%, 0.32)",
             "muted": "hsla(0, 0%, 0%, 0.72)",
             "normal": "hsla(0, 0%, 0%, 1)",
             "subtle": "hsla(0, 0%, 0%, 0.8)",
@@ -1180,7 +1180,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(25, 100%, 44%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 100%, 0.32)",
+            "disabled": "hsla(0, 0%, 0%, 0.32)",
             "muted": "hsla(0, 0%, 100%, 0.64)",
             "normal": "hsla(0, 0%, 100%, 1)",
             "subtle": "hsla(0, 0%, 100%, 0.8)",
@@ -1248,7 +1248,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(25, 100%, 44%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 100%, 0.32)",
+            "disabled": "hsla(0, 0%, 0%, 0.32)",
             "muted": "hsla(0, 0%, 100%, 0.64)",
             "normal": "hsla(0, 0%, 100%, 1)",
             "subtle": "hsla(0, 0%, 100%, 0.8)",
@@ -1644,7 +1644,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
   background-color: hsl(332,100%,26%);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,26%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,26%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -1676,21 +1676,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsl(332,100%,23%);
-  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsl(332,100%,23%);
-  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(332,100%,23%);
-  outline: 1px solid hsla(332,100%,26%,0.09);
+  outline: 4px solid hsla(332,100%,26%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(332,100%,26%,0.18),inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(332,100%,23%),inset 0 0px 0px 0.5px hsl(332,100%,23%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2260,7 +2262,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(23, 92%, 53%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 0%, 0.32)",
+            "disabled": "hsla(0, 0%, 100%, 0.32)",
             "muted": "hsla(0, 0%, 0%, 0.72)",
             "normal": "hsla(0, 0%, 0%, 1)",
             "subtle": "hsla(0, 0%, 0%, 0.8)",
@@ -2328,7 +2330,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(23, 92%, 53%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 0%, 0.32)",
+            "disabled": "hsla(0, 0%, 100%, 0.32)",
             "muted": "hsla(0, 0%, 0%, 0.72)",
             "normal": "hsla(0, 0%, 0%, 1)",
             "subtle": "hsla(0, 0%, 0%, 0.8)",
@@ -2963,7 +2965,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(25, 100%, 44%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 100%, 0.32)",
+            "disabled": "hsla(0, 0%, 0%, 0.32)",
             "muted": "hsla(0, 0%, 100%, 0.64)",
             "normal": "hsla(0, 0%, 100%, 1)",
             "subtle": "hsla(0, 0%, 100%, 0.8)",
@@ -3031,7 +3033,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(25, 100%, 44%, 1)",
           },
           "onNeutral": {
-            "disabled": "hsla(0, 0%, 100%, 0.32)",
+            "disabled": "hsla(0, 0%, 0%, 0.32)",
             "muted": "hsla(0, 0%, 100%, 0.64)",
             "normal": "hsla(0, 0%, 100%, 1)",
             "subtle": "hsla(0, 0%, 100%, 0.8)",
@@ -3427,7 +3429,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
   background-color: hsl(57,100%,52%);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,52%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,52%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -3459,21 +3461,23 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsl(57,100%,47%);
-  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsl(57,100%,47%);
-  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(57,100%,47%);
-  outline: 1px solid hsla(57,100%,52%,0.09);
+  outline: 4px solid hsla(57,100%,52%,0.18);
+  outline-offset: 1px;
+  z-index: 2;
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(57,100%,52%,0.18),inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsl(57,100%,47%),inset 0 0px 0px 0.5px hsl(57,100%,47%),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {

@@ -12,6 +12,13 @@ type GetFocusRingArgs = {
   negativeOffset?: boolean;
   isImportant?: boolean;
   variant?: FocusRingVariant;
+  /**
+   * Set to `false` to leave out the `outline-width` transition, for components that already
+   * declare their own `transition` and would lose it when the ring styles are spread in.
+   *
+   * @default true
+   */
+  withTransition?: boolean;
 };
 
 type FocusRingWrapperProps = {

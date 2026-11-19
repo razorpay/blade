@@ -162,6 +162,8 @@ describe('<BaseButton />', () => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
+      // Neutral is only available with the primary variant
+      if (color === 'neutral' && variant !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
         const buttonText = 'Pay Now';
@@ -195,6 +197,19 @@ describe('<BaseButton />', () => {
       ),
     ).toThrowErrorMatchingInlineSnapshot(
       `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "positive""`,
+    );
+  });
+
+  it('should throw error if neutral color is passed with secondary variant', () => {
+    const buttonText = 'Pay Now';
+    expect(() =>
+      renderWithTheme(
+        <BaseButton variant="secondary" color="neutral">
+          {buttonText}
+        </BaseButton>,
+      ),
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"[Blade: BaseButton]: Neutral color can only be used with variant: "primary" but received "secondary""`,
     );
   });
 

@@ -9,6 +9,7 @@ The Button component is a versatile interactive element used for triggering acti
 ## Important Constraints
 
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
+- `color="neutral"` can only be used with `variant="primary"`
 
 ## TypeScript Types
 
@@ -36,7 +37,7 @@ type ButtonProps = {
    * Note: Not all color and variant combinations are valid
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
   /**
    * Icon to display in the button
