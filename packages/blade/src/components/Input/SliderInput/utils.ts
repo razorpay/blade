@@ -120,14 +120,26 @@ const getMarkerMaskImage = (ratios: number[]): string =>
 const getCenteringTransform = (isRTL: boolean): string =>
   isRTL ? 'translateX(50%)' : 'translateX(-50%)';
 
-/** Predicted width of the widest label, without measuring, so SSR and client agree. */
-const getWidestLabelWidth = (values: number[], formatValue?: (value: number) => string): number => {
-  const longest = values.reduce((widest, value) => {
-    const length = (formatValue ? formatValue(value) : String(value)).length;
-    return Math.max(widest, length);
-  }, 0);
-  return longest * SLIDER_SCALE_CHAR_WIDTH;
+/**
+ * The scale's end labels grow inward from their tick, so a long `min` or `max` label stays
+ * inside the track instead of hanging half its width past it. Labels between stay centred.
+ */
+const getScaleLabelPosition = (
+  ratio: number,
+  isRTL: boolean,
+): { insetInlineStart?: string; insetInlineEnd?: string; transform?: string } => {
+  if (ratio <= 0) return { insetInlineStart: getOffsetExpression(0) };
+  if (ratio >= 1) return { insetInlineEnd: `${SLIDER_MARKER_RADIUS}px` };
+  return { insetInlineStart: getOffsetExpression(ratio), transform: getCenteringTransform(isRTL) };
 };
+
+/** Predicted width of one label, without measuring, so SSR and client agree. */
+const getLabelWidth = (value: number, formatValue?: (value: number) => string): number =>
+  (formatValue ? formatValue(value) : String(value)).length * SLIDER_SCALE_CHAR_WIDTH;
+
+/** Predicted width of the widest label, without measuring, so SSR and client agree. */
+const getWidestLabelWidth = (values: number[], formatValue?: (value: number) => string): number =>
+  values.reduce((widest, value) => Math.max(widest, getLabelWidth(value, formatValue)), 0);
 
 /** Centre-to-centre distance between adjacent markers at a given track width. */
 const getPitch = (trackWidth: number, markerCount: number): number => {
@@ -168,16 +180,24 @@ const getVisibility = ({
  *
  * `min` and `max` are always kept, since they are the bounds the scale exists to communicate.
  * A label colliding with `max` is dropped in favour of `max` rather than the other way round.
+ *
+ * An end label grows inward by its own width, so the clear space its neighbour needs is that
+ * width plus half the neighbour's own, not the widest label on the scale. Measuring the end
+ * label keeps a narrow `0` from evicting its neighbour just because a long `100` sits at the
+ * other end of the same scale.
  */
 const getSpacedScaleValues = ({
   values,
   trackWidth,
   widestLabelWidth,
+  endLabelWidths,
   range,
 }: {
   values: number[];
   trackWidth: number;
   widestLabelWidth: number;
+  /** Widths of the `min` and `max` labels, which anchor inward instead of centring. */
+  endLabelWidths?: { min: number; max: number };
   range: ValueRange;
 }): number[] => {
   // Unmeasured, which is the SSR and first-paint case: show everything and let the first
@@ -188,27 +208,44 @@ const getSpacedScaleValues = ({
   if (usable <= 0) return values;
 
   const minGap = widestLabelWidth + SLIDER_SCALE_LABEL_GAP;
+  const endGap = (endWidth: number): number =>
+    endWidth + widestLabelWidth / 2 + SLIDER_SCALE_LABEL_GAP;
+  const startGap = endGap(endLabelWidths?.min ?? widestLabelWidth);
+  const finishGap = endGap(endLabelWidths?.max ?? widestLabelWidth);
   const positionOf = (target: number): number => getValueRatio(target, range) * usable;
   const lastKept = (kept: number[]): number => positionOf(kept[kept.length - 1]);
 
   const kept = [values[0]];
   for (let index = 1; index < values.length - 1; index++) {
-    if (positionOf(values[index]) - lastKept(kept) >= minGap) kept.push(values[index]);
+    const gap = kept.length === 1 ? startGap : minGap;
+    if (positionOf(values[index]) - lastKept(kept) >= gap) kept.push(values[index]);
   }
 
   const last = values[values.length - 1];
-  while (kept.length > 1 && positionOf(last) - lastKept(kept) < minGap) kept.pop();
+  while (kept.length > 1 && positionOf(last) - lastKept(kept) < finishGap) kept.pop();
   kept.push(last);
 
   return kept;
 };
 
-/** Narrowest track that can show every marker and label without collision. */
+/**
+ * Narrowest track that can show every marker and label without collision.
+ *
+ * Only a two-stop scale has to fit its end labels outright: there is no interior label to drop
+ * instead. From three stops on the floor stays at the interior requirement, because pricing the
+ * wider end gap into every pitch grows the whole field past containers it used to fit, which
+ * trades a clipped label for an overflowing slider. `getSpacedScaleValues` drops the labels next
+ * to the ends at those widths.
+ */
 const getMinTrackWidth = (markerCount: number, widestLabelWidth: number): number => {
   if (markerCount <= 1) return SLIDER_MARKER_DOT;
-  const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, widestLabelWidth + SLIDER_SCALE_LABEL_GAP);
+  const reach = markerCount === 2 ? widestLabelWidth * 2 : widestLabelWidth;
+  const pitch = Math.max(SLIDER_MIN_MARKER_PITCH, reach + SLIDER_SCALE_LABEL_GAP);
   return Math.ceil(pitch * (markerCount - 1) + SLIDER_MARKER_DOT);
 };
+
+const getBoundLabelsMinWidth = (minLabelWidth: number, maxLabelWidth: number): number =>
+  Math.ceil(minLabelWidth + maxLabelWidth + SLIDER_SCALE_LABEL_GAP + SLIDER_MARKER_DOT);
 
 /**
  * Value under a pointer.
@@ -246,12 +283,15 @@ export {
   getOffsetExpression,
   getFillWidthExpression,
   getCenteringTransform,
+  getScaleLabelPosition,
   getMarkerMaskImage,
+  getLabelWidth,
   getWidestLabelWidth,
   getPitch,
   getVisibility,
   getSpacedScaleValues,
   getMinTrackWidth,
+  getBoundLabelsMinWidth,
   getValueFromPointer,
 };
 export type { ValueRange };
