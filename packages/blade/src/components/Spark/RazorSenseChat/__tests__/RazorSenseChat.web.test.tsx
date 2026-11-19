@@ -219,6 +219,33 @@ describe('RazorSense 2.0 components', () => {
     expect(status).toHaveAttribute('aria-atomic', 'false');
   });
 
+  it("draw RazorSenseChatBackground's still in round a chat input narrower than its comp, as the animation is", async () => {
+    // (jsdom has no WebGL2: the background shows its still; its box measured at the input's size)
+    const stillTransform = async (width: number): Promise<string> => {
+      jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(width);
+      // (the comp's own input height: only its width differs)
+      jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(97);
+      const { container, unmount } = renderWithTheme(
+        <RazorSenseChatBackground>
+          <textarea />
+        </RazorSenseChatBackground>,
+      );
+      const img = await waitFor(() => {
+        const found = container.querySelector('img');
+        expect(found).not.toBeNull();
+        return found!;
+      });
+      const { transform } = img.style;
+      unmount();
+      jest.restoreAllMocks();
+      return transform;
+    };
+    // a 280px input: drawn in to a third of the comp's 840px width, round the input's middle
+    expect(await stillTransform(280)).toMatch(/^scale\(0\.33\d*, 1\)$/);
+    // wider than the comp: stretched with its box, as before
+    expect(await stillTransform(1000)).toBe('');
+  });
+
   it('hold rolling texts on the one shown while paused, and roll on from it after', () => {
     jest.useFakeTimers();
     const texts = ['Thinking...', 'Searching...', 'Writing...'];
