@@ -140,10 +140,13 @@ const WAKE_MARGIN = '400px';
 const LOST_MS = 2000;
 
 /**
- * Frames drawn a second at most: 60, so a 120 Hz screen doesn't draw twice as often. A frame is drawn once this long (ms, less a
- * little slack for the browser's timing) has passed since the last.
+ * Frames drawn a second at most: 60, so a 120 Hz screen doesn't draw twice as often. Each frame the browser gives adds its time to
+ * a budget, a frame is drawn once a frame's worth (FRAME_MS, less FRAME_SLACK_MS for the browser's timing) has built up, and
+ * what's over carries on: 60 a second on any screen of 60 Hz or more, a 75 Hz or 144 Hz one too (measured from the last frame
+ * drawn, those drew at 37.5 and 48; the PR review). After a long gap (a hidden tab, a stall) it starts afresh.
  */
-const MIN_FRAME_MS = 1000 / 60 - 2;
+const FRAME_MS = 1000 / 60;
+const FRAME_SLACK_MS = 2;
 
 let usableGpu: boolean | null = null;
 
@@ -214,6 +217,9 @@ class FreshStage {
   private driver: FreshDriver | null = null;
   private rafId = 0;
   private last = 0;
+  // the frame budget (ms built up towards the next frame drawn) and the browser's last frame, drawn or not
+  private budget = 0;
+  private lastTick = 0;
   private isPaused = false;
   private isOnScreen = true;
   private isDestroyed = false;
@@ -678,6 +684,8 @@ class FreshStage {
   private startLoop(): void {
     if (this.rafId) return;
     this.last = 0;
+    this.lastTick = 0;
+    this.budget = 0;
     // (a fresh count: a hidden tab's or a paused stretch's frames don't count as slow)
     this.second = 0;
     this.slowSeconds = 0;
@@ -693,8 +701,13 @@ class FreshStage {
     this.rafId = requestAnimationFrame(this.tick);
     // (every frame the browser gives counts for the slow check; only some are drawn)
     this.countFrame(now);
-    if (this.last && now - this.last < (easeLevel >= 1 ? 2 * MIN_FRAME_MS + 2 : MIN_FRAME_MS))
-      return;
+    // (every other frame on a device that can't keep up: half the frames, the same picture)
+    const frameMs = easeLevel >= 1 ? 2 * FRAME_MS : FRAME_MS;
+    const gap = this.lastTick ? now - this.lastTick : 0;
+    this.lastTick = now;
+    this.budget = gap > 4 * frameMs ? frameMs : this.budget + gap;
+    if (this.last && this.budget < frameMs - FRAME_SLACK_MS) return;
+    this.budget = this.last ? Math.min(frameMs, this.budget - frameMs) : 0;
     const dt = this.last ? Math.min(MAX_STEP, (now - this.last) / 1000) : 0;
     this.last = now;
     if (this.engine && this.driver) this.driver(this.engine, dt);
