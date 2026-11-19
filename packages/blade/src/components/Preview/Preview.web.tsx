@@ -266,9 +266,12 @@ const Preview = ({
   minZoom = PREVIEW_DEFAULT_MIN_ZOOM,
   maxZoom = PREVIEW_DEFAULT_MAX_ZOOM,
 }: PreviewProps): React.ReactElement => {
+  // react-zoom-pan-pinch doesn't clamp `initialScale` or `centerView` to min/max,
+  // so keep the starting and reset zoom inside the allowed range ourselves
+  const clampedDefaultZoom = Math.min(Math.max(defaultZoom ?? 1, minZoom), maxZoom);
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
-    defaultValue: defaultZoom ?? 1,
+    defaultValue: clampedDefaultZoom,
   });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -351,7 +354,7 @@ const Preview = ({
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
-        defaultZoom: defaultZoom ?? 1,
+        defaultZoom: clampedDefaultZoom,
         minZoom,
         maxZoom,
       }}
@@ -362,7 +365,7 @@ const Preview = ({
           minScale={minZoom}
           maxScale={maxZoom}
           disabled={isDragAndZoomDisabled}
-          initialScale={defaultZoom ?? controlledZoom}
+          initialScale={clampedDefaultZoom}
           doubleClick={{ disabled: false }}
           onPanningStart={() => setIsDragging(true)}
           onPanningStop={() => setIsDragging(false)}

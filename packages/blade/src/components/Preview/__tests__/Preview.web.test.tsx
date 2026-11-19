@@ -88,6 +88,18 @@ describe('<PreviewWindow/>', () => {
     const zoomInButton = (): HTMLElement => screen.getByRole('button', { name: 'Zoom In' });
     const zoomOutButton = (): HTMLElement => screen.getByRole('button', { name: 'Zoom Out' });
 
+    it('should start at maxZoom when defaultZoom is above it', () => {
+      renderPreview({ defaultZoom: 4, maxZoom: 3 }, true);
+      expect(screen.getByText('300%')).toBeInTheDocument();
+      expect(zoomInButton()).toBeDisabled();
+    });
+
+    it('should start at minZoom when the default zoom of 1 is below it', () => {
+      renderPreview({ minZoom: 2 }, true);
+      expect(screen.getByText('200%')).toBeInTheDocument();
+      expect(zoomOutButton()).toBeDisabled();
+    });
+
     describe.each([
       ['with zoom percentage', true],
       ['with button group', false],
