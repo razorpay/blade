@@ -19,7 +19,10 @@ import {
   SLIDER_TRACK_TOP,
 } from './sliderInputTokens';
 import {
+  getBoundLabelsMinWidth,
   getCenteringTransform,
+  getScaleLabelPosition,
+  getLabelWidth,
   getMarkerValues,
   getMinTrackWidth,
   getOffsetExpression,
@@ -240,21 +243,27 @@ const _SliderInput = (
   });
 
   const shouldShowMarkers = showMarkers && canShowMarkers;
-  const hasScaleValues = showScale && showScaleValues;
-  // An endpoints-only scale (showScaleValues={false}) still draws the min and max labels.
-  const scaleLabelWidth = hasScaleValues
-    ? widestLabelWidth
-    : showScale
-    ? getWidestLabelWidth([min, max], formatValue)
-    : 0;
+  // Steps only widen the track floor when something is drawn per step. Without markers or scale
+  // values, a long range (600 one-second steps) would otherwise demand a 6000px track for dots
+  // that are never drawn, so only the two endpoints count.
+  const flooredStepCount = showMarkers || (showScale && showScaleValues) ? markerValues.length : 2;
   // With only the endpoints there is nothing to collide with, so the pitch floor does not apply.
   const shouldShowScale = showScale && (!showScaleValues || canShowScale);
   const scaleValues = React.useMemo(
     () =>
       showScaleValues
-        ? getSpacedScaleValues({ values: markerValues, trackWidth, widestLabelWidth, range })
+        ? getSpacedScaleValues({
+            values: markerValues,
+            trackWidth,
+            widestLabelWidth,
+            endLabelWidths: {
+              min: getLabelWidth(min, formatValue),
+              max: getLabelWidth(max, formatValue),
+            },
+            range,
+          })
         : [min, max],
-    [showScaleValues, markerValues, trackWidth, widestLabelWidth, range, min, max],
+    [showScaleValues, markerValues, trackWidth, widestLabelWidth, formatValue, range, min, max],
   );
 
   const centeringTransform = getCenteringTransform(isRTL);
@@ -308,14 +317,19 @@ const _SliderInput = (
 
         <BaseBox
           flex="1"
-          // Steps and labels only widen the floor when they are actually on screen. Without
-          // markers or scale values, a long range (600 one-second steps) would otherwise demand
-          // a 6000px track for dots that are never drawn.
+          // Labels only widen the floor when they are actually on screen.
           minWidth={makeSize(
-            getMinTrackWidth(
-              showMarkers || hasScaleValues ? markerValues.length : 2,
-              scaleLabelWidth,
-            ),
+            showScale && (!showScaleValues || markerValues.length === 2)
+              ? // Only the two bounds get a label here and both anchor inward, so they need room
+                // side by side. Shown markers still need their own pitch, so take whichever is wider.
+                Math.max(
+                  getMinTrackWidth(flooredStepCount, 0),
+                  getBoundLabelsMinWidth(
+                    getLabelWidth(min, formatValue),
+                    getLabelWidth(max, formatValue),
+                  ),
+                )
+              : getMinTrackWidth(flooredStepCount, showScale ? widestLabelWidth : 0),
           )}
         >
           <FieldBox $hasScale={shouldShowScale}>
@@ -387,10 +401,7 @@ const _SliderInput = (
                 {scaleValues.map((scaleValue) => (
                   <ScaleLabel
                     key={scaleValue}
-                    style={{
-                      insetInlineStart: getOffsetExpression(getValueRatio(scaleValue, range)),
-                      transform: centeringTransform,
-                    }}
+                    style={getScaleLabelPosition(getValueRatio(scaleValue, range), isRTL)}
                   >
                     <Text
                       size="xsmall"

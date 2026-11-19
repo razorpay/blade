@@ -2,7 +2,7 @@ import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
 import { SliderInput } from '../index';
-import { getMinTrackWidth, getWidestLabelWidth } from '../utils';
+import { getBoundLabelsMinWidth, getLabelWidth, getMinTrackWidth } from '../utils';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { motion } from '~tokens/global';
@@ -58,13 +58,17 @@ describe('<SliderInput />', () => {
       expect(getTrackMinWidth(getByRole('slider'))).toBeGreaterThanOrEqual(100);
     });
 
-    it('should reserve room for the min and max labels of an endpoints-only scale', () => {
-      // showScaleValues={false} still draws the two bound labels, so they need room not to overlap.
+    it('should reserve room for only the two bound labels of an endpoints-only scale', () => {
+      // showScaleValues={false} still draws the two bound labels, so they need room not to
+      // overlap, but none of the 100,001 steps is drawn, so no per-step room is reserved.
       const { getByRole } = renderWithTheme(
         <SliderInput label="Amount" min={0} max={100000} showScale showScaleValues={false} />,
       );
       expect(getTrackMinWidth(getByRole('slider'))).toBe(
-        getMinTrackWidth(2, getWidestLabelWidth([0, 100000])),
+        Math.max(
+          getMinTrackWidth(2, 0),
+          getBoundLabelsMinWidth(getLabelWidth(0), getLabelWidth(100000)),
+        ),
       );
     });
   });
@@ -364,6 +368,26 @@ describe('<SliderInput />', () => {
     expect(getByText('0')).toBeInTheDocument();
     expect(getByText('100')).toBeInTheDocument();
     expect(queryByText('50')).not.toBeInTheDocument();
+  });
+
+  it('should size the field for both bound labels when showScaleValues is false', () => {
+    // Both bounds are anchored inward, so wordy labels need room side by side even though the
+    // stops between them are never rendered or spaced.
+    const retryPolicies = ['Always ask me', 'Retry once', 'Retry twice', 'Always retry'];
+    const { container } = renderWithTheme(
+      <SliderInput
+        label="When a call fails"
+        min={0}
+        max={retryPolicies.length - 1}
+        step={1}
+        showScale
+        showScaleValues={false}
+        showValueIndicator={false}
+        formatValue={(value) => retryPolicies[value]}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should focus the thumb on click so the keyboard works straight after a drag', async () => {
