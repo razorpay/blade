@@ -47,6 +47,24 @@ describe('<EmptyState />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should balance line breaks in the title', () => {
+    const { getByRole } = renderWithTheme(
+      <EmptyState title="No data found for the selected date range" />,
+    );
+    const title = getByRole('heading', { name: 'No data found for the selected date range' });
+    // styled-components repeats classes for specificity (`.c0.c0.c0`), which toHaveStyleRule
+    // can't resolve, so match the injected stylesheet against the title's own classes
+    const css = Array.from(document.querySelectorAll('style'))
+      .map((styleTag) => styleTag.textContent ?? '')
+      .join('');
+    const hasBalancedTextWrap = title.className
+      .split(' ')
+      .filter(Boolean)
+      .some((className) => new RegExp(`\\.${className}[^{]*{[^}]*text-wrap:\\s*balance`).test(css));
+
+    expect(hasBalancedTextWrap).toBe(true);
+  });
+
   it('should render EmptyState with description only', () => {
     const { container } = renderWithTheme(<EmptyState description="No data to display" />);
     expect(container).toMatchSnapshot();
