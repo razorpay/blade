@@ -235,6 +235,8 @@ type RzpGlassProps = RzpGlassConfig & {
    * Any explicit props you pass will override the preset values.
    * - `default`  — baseline, same as not passing a preset
    * - `zoomed`   — tight closeup with high zoom and edge feathering
+   * - `bottomWave` — a static image of a bottom wave, a decorative strip. For the animated wave under an assistant chat's input
+   *   (it drifts, pulses as you type, and takes the thinking's surge), use `RazorSenseBottomWave` instead
    */
   preset?: RzpGlassPreset;
   /**
