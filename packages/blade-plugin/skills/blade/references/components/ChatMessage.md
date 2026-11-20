@@ -53,7 +53,8 @@ type ChatMessageProps = {
   leading?: React.ReactNode;
 
   /**
-   * Whether the message is in a loading state
+   * Whether the message is in a loading state. Inside a `RazorSenseChat` (web), a loading message shows its `loadingText` as
+   * RazorSense 2.0's thinking label, with the chat's glow behind it.
    * @default false
    */
   isLoading?: boolean;
@@ -145,6 +146,7 @@ type ChatMessageProps = {
 - Use `senderType="self"` for user messages (right-aligned) and `senderType="other"` for agent/system messages (left-aligned).
 - Use `leading` prop with an icon or avatar for agent messages to provide visual sender identification.
 - Use `isLoading` with `loadingText` (string array for rolling animation) during async AI responses.
+- Inside a `RazorSenseChat` (web), an assistant message's loading state drives RazorSense 2.0 with no other change: its `loadingText` shows as RazorSense's blue thinking label with the glow behind it, and when `isLoading` turns false the glow surges down to the chat input wrapped in `RazorSenseBottomWave`.
 - Use `footerActions` for feedback controls (thumbs up/down, copy, share) on agent messages.
 - Pass complex JSX (Card, Table, RadioGroup) directly as children for rich message content.
 

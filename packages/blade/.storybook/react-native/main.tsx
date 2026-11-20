@@ -14,6 +14,7 @@ const WEB_ONLY_STORIES = [
   'Settings',
   'SideNav',
   'RazorSense',
+  'Ray', // web only (Ray.native.tsx throws), as RazorSense
   'TableEditableCellAPI',
   'TableFigmaExample',
   'TableStripedRows',

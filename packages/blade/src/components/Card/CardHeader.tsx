@@ -86,7 +86,7 @@ const CardHeaderLink = assignWithoutSideEffects(_CardHeaderLink, {
 
 type CardHeaderIconButtonProps = Omit<
   ButtonProps,
-  'variant' | 'size' | 'iconPosition' | 'isFullWidth' | 'children' | 'color'
+  'variant' | 'size' | 'iconPosition' | 'isFullWidth' | 'children' | 'color' | 'aiHover'
 > & {
   icon: IconComponent;
   /**
