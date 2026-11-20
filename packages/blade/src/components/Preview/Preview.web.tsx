@@ -7,7 +7,12 @@ import type {
   PreviewFooterProps,
   PreviewBodyProps,
 } from './types';
-import { usePreviewContext, PreviewProvider } from './PreviewContext';
+import {
+  usePreviewContext,
+  PreviewProvider,
+  PREVIEW_DEFAULT_MIN_ZOOM,
+  PREVIEW_DEFAULT_MAX_ZOOM,
+} from './PreviewContext';
 import { MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
@@ -99,8 +104,17 @@ const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
 });
 
 const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
-  const { children } = PreviewBodyProps;
-  return <BaseBox>{children}</BaseBox>;
+  const { children, isFullSize = false } = PreviewBodyProps;
+  if (!isFullSize) {
+    return <BaseBox>{children}</BaseBox>;
+  }
+  // Opt-in because a definite height makes children's percentage heights resolve,
+  // which would stretch existing `<img height="100%" />` content to the frame's shape
+  return (
+    <BaseBox width="100%" height="100%" display="flex" alignItems="center" justifyContent="center">
+      {children}
+    </BaseBox>
+  );
 };
 
 const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
@@ -110,7 +124,9 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { zoomIn, zoomOut, centerView } = useControls();
-  const { zoom, zoomScaleStep, defaultZoom } = usePreviewContext();
+  const { zoom, zoomScaleStep, defaultZoom, minZoom, maxZoom } = usePreviewContext();
+  const isZoomInDisabled = zoom >= maxZoom;
+  const isZoomOutDisabled = zoom <= minZoom;
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -141,7 +157,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               onClick={handleZoomIn}
               variant="tertiary"
               accessibilityLabel="Zoom In"
-              isDisabled={zoom >= 8}
+              isDisabled={isZoomInDisabled}
             />
             <BaseBox width={makeSize(size[40])} textAlign={'center' as never}>
               <Text size="medium"> {Math.round(zoom * 100)}%</Text>
@@ -151,7 +167,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               onClick={handleZoomOut}
               variant="tertiary"
               accessibilityLabel="Zoom Out"
-              isDisabled={zoom <= 0.1}
+              isDisabled={isZoomOutDisabled}
             />
             <Button
               icon={RefreshIcon}
@@ -163,8 +179,18 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
         ) : (
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <ButtonGroup variant="tertiary">
-              <Button icon={ZoomInIcon} onClick={handleZoomIn} accessibilityLabel="Zoom In" />
-              <Button icon={ZoomOutIcon} onClick={handleZoomOut} accessibilityLabel="Zoom Out" />
+              <Button
+                icon={ZoomInIcon}
+                onClick={handleZoomIn}
+                accessibilityLabel="Zoom In"
+                isDisabled={isZoomInDisabled}
+              />
+              <Button
+                icon={ZoomOutIcon}
+                onClick={handleZoomOut}
+                accessibilityLabel="Zoom Out"
+                isDisabled={isZoomOutDisabled}
+              />
             </ButtonGroup>
             <Button
               icon={RefreshIcon}
@@ -237,10 +263,15 @@ const Preview = ({
   isDragAndZoomDisabled = false,
   defaultZoom,
   onDragChange,
+  minZoom = PREVIEW_DEFAULT_MIN_ZOOM,
+  maxZoom = PREVIEW_DEFAULT_MAX_ZOOM,
 }: PreviewProps): React.ReactElement => {
+  // react-zoom-pan-pinch doesn't clamp `initialScale` or `centerView` to min/max,
+  // so keep the starting and reset zoom inside the allowed range ourselves
+  const clampedDefaultZoom = Math.min(Math.max(defaultZoom ?? 1, minZoom), maxZoom);
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
-    defaultValue: defaultZoom ?? 1,
+    defaultValue: clampedDefaultZoom,
   });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -323,16 +354,18 @@ const Preview = ({
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
-        defaultZoom: defaultZoom ?? 1,
+        defaultZoom: clampedDefaultZoom,
+        minZoom,
+        maxZoom,
       }}
     >
       <TransFormWrapperContainer ref={containerRef} isFullScreen={isFullScreen}>
         <TransformWrapper
           onTransformed={handleTransformed}
-          minScale={0.1}
-          maxScale={8}
+          minScale={minZoom}
+          maxScale={maxZoom}
           disabled={isDragAndZoomDisabled}
-          initialScale={defaultZoom ?? controlledZoom}
+          initialScale={clampedDefaultZoom}
           doubleClick={{ disabled: false }}
           onPanningStart={() => setIsDragging(true)}
           onPanningStop={() => setIsDragging(false)}
