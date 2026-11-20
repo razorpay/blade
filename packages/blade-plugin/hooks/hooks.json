@@ -1,5 +1,5 @@
 {
-  "_comment": "Plain Node scripts with no dependencies. SessionStart detects which Blade packages the project uses and points the agent at the matching skill; it prints nothing in non-Blade projects.",
+  "_comment": "Plain Node scripts with no dependencies. SessionStart detects which Blade packages the project uses and points the agent at the matching skill; it prints nothing in non-Blade projects. PostToolUse (serif-guard) asks the agent to undo or confirm any new use of PT Serif, which is reserved for the agentic dashboard hero heading.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,6 +7,18 @@
           {
             "type": "command",
             "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.mjs\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/serif-guard.mjs\"",
             "timeout": 5
           }
         ]

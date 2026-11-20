@@ -88,6 +88,21 @@ describe('<Heading />', () => {
     expect(getByText(displayText)).toBeTruthy();
   });
 
+  it('should render the serif variant in the heading font on React Native, with a warning', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const { getByText, toJSON } = renderWithTheme(<Heading variant="serif">Hero</Heading>);
+    const style = [getByText('Hero').props.style]
+      .flat(Infinity)
+      .reduce((all, s) => ({ ...all, ...s }), {});
+    expect(style.fontFamily).toBe('TASA Orbiter Display');
+    expect(style.fontWeight).toBe('400');
+    expect(warnSpy).toHaveBeenCalledWith(
+      '[Blade: Heading]: variant="serif" is web only for now. On React Native it renders in the default heading font at the same size and weight.',
+    );
+    expect(toJSON()).toMatchSnapshot();
+    warnSpy.mockRestore();
+  });
+
   it('should accept testID', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { getByTestId } = renderWithTheme(<Heading testID="heading-test">{displayText}</Heading>);

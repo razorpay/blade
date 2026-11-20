@@ -2,6 +2,7 @@ import type { CSSObject } from 'styled-components';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import type { StyledBaseTextProps } from './types';
 import { DOTTED_UNDERLINE_STYLES } from './tokens';
+import { SERIF_FONT_FAMILY } from './serifFontFamily';
 import getIn from '~utils/lodashButBetter/get';
 import { isReactNative } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
@@ -24,7 +25,12 @@ const getBaseTextStyles = ({
   textTransform,
 }: StyledBaseTextProps): CSSObject => {
   const textColor = color === 'currentColor' ? 'currentColor' : getIn(theme.colors, color);
-  const themeFontFamily = theme.typography.fonts.family[fontFamily];
+  // PT Serif is web only for now, so React Native keeps the heading font.
+  const serifFontFamily = isReactNative()
+    ? theme.typography.fonts.family.heading
+    : SERIF_FONT_FAMILY;
+  const themeFontFamily =
+    fontFamily === 'serif' ? serifFontFamily : theme.typography.fonts.family[fontFamily];
   const themeFontSize = makeTypographySize(theme.typography.fonts.size[fontSize]);
   const themeFontWeight = theme.typography.fonts.weight[fontWeight];
   const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
