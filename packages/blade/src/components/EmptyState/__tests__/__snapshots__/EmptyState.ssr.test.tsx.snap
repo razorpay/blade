@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<EmptyState /> SSR should render EmptyState on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bksIuc ennTKD"><div data-blade-component="base-box" class="BaseBox-bksIuc hhljxv"><img src="https://cdn.razorpay.com/card-networks/visa.svg" alt="List view asset" width="90px" height="90px" style="object-fit:contain"/></div><div data-blade-component="base-box" class="BaseBox-bksIuc EsFmn"><h6 class="StyledBaseText-foUshD dGqmwD" data-blade-component="heading">No data found</h6><p letter-spacing="50" class="StyledBaseText-foUshD ekUPWX" data-blade-component="text">There&#x27;s no data to display right now</p></div></div></div>"`;
+exports[`<EmptyState /> SSR should render EmptyState on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bksIuc ennTKD"><div data-blade-component="base-box" class="BaseBox-bksIuc hhljxv"><img src="https://cdn.razorpay.com/card-networks/visa.svg" alt="List view asset" width="90px" height="90px" style="object-fit:contain"/></div><div data-blade-component="base-box" class="BaseBox-bksIuc EsFmn"><h6 class="StyledBaseText-foUshD dGqmwD EmptyStateweb__BalancedText-sc-1sogdkh-0 ggYYNc" data-blade-component="heading">No data found</h6><p letter-spacing="50" class="StyledBaseText-foUshD ekUPWX EmptyStateweb__BalancedText-sc-1sogdkh-0 ggYYNc" data-blade-component="text">There&#x27;s no data to display right now</p></div></div></div>"`;
 
 exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -61,7 +61,7 @@ exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -77,6 +77,10 @@ exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div
@@ -103,13 +107,13 @@ exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -120,7 +124,7 @@ exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
 </div>
 `;
 
-exports[`<EmptyState /> SSR should render EmptyState with minimal props on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bksIuc ennTKD"><div data-blade-component="base-box" class="BaseBox-bksIuc EsFmn"><h6 class="StyledBaseText-foUshD dGqmwD" data-blade-component="heading">No data found</h6></div></div></div>"`;
+exports[`<EmptyState /> SSR should render EmptyState with minimal props on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bksIuc ennTKD"><div data-blade-component="base-box" class="BaseBox-bksIuc EsFmn"><h6 class="StyledBaseText-foUshD dGqmwD EmptyStateweb__BalancedText-sc-1sogdkh-0 ggYYNc" data-blade-component="heading">No data found</h6></div></div></div>"`;
 
 exports[`<EmptyState /> SSR should render EmptyState with minimal props on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -176,6 +180,10 @@ exports[`<EmptyState /> SSR should render EmptyState with minimal props on serve
   padding: 0;
 }
 
+.c3.c3.c3.c3.c3 {
+  text-wrap: balance;
+}
+
 <div
   id="root"
 >
@@ -188,7 +196,7 @@ exports[`<EmptyState /> SSR should render EmptyState with minimal props on serve
       data-blade-component="base-box"
     >
       <h6
-        class="c2"
+        class="c2 c3"
         data-blade-component="heading"
       >
         No data found

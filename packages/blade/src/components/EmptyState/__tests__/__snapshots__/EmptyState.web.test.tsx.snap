@@ -40,7 +40,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   gap: 2px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,7 +81,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -99,7 +99,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -119,7 +119,11 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   margin-left: 4px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
+}
+
+.c6.c6.c6.c6.c6 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -156,19 +160,19 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   position: relative;
 }
 
-.c5.c5.c5.c5.c5:hover {
+.c6.c6.c6.c6.c6:hover {
   background-color: hsla(218,87%,43%,1);
   box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
-.c5.c5.c5.c5.c5:active {
+.c6.c6.c6.c6.c6:active {
   background-color: hsla(218,87%,43%,1);
   box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
-.c5.c5.c5.c5.c5:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   background-color: hsla(218,87%,43%,1);
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
@@ -177,7 +181,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
-.c5.c5.c5.c5.c5 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -186,7 +190,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -196,7 +200,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   transition-timing-function: 160px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   opacity: 1;
 }
 
@@ -222,13 +226,13 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -236,21 +240,21 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
       </p>
     </div>
     <button
-      class="c5"
+      class="c6"
       data-blade-component="button"
       role="button"
       type="button"
     >
       <div
-        class=" c6"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class="c7 c8"
+          class="c8 c9"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c10"
             data-blade-component="base-text"
           >
             Add Data
@@ -302,7 +306,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   gap: 2px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -335,7 +339,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -353,7 +357,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -371,7 +375,11 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
+}
+
+.c6.c6.c6.c6.c6 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -389,19 +397,19 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   transition-duration: 80ms;
 }
 
-.c5.c5.c5.c5.c5 .content-container {
+.c6.c6.c6.c6.c6 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 4px;
 }
 
-.c5.c5.c5.c5.c5:focus-visible .content-container {
+.c6.c6.c6.c6.c6:focus-visible .content-container {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
 }
 
-.c5.c5.c5.c5.c5 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -432,13 +440,13 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -447,17 +455,17 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
     </div>
     <a
       aria-disabled="false"
-      class="c5"
+      class="c6"
       data-blade-component="link"
       href="/add-data"
       role="link"
     >
       <span
-        class="c6 content-container"
+        class="c7 content-container"
         data-blade-component="base-box"
       >
         <span
-          class="c7"
+          class="c8"
           data-blade-component="base-text"
         >
           Add Data
@@ -527,7 +535,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -543,6 +551,10 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div>
@@ -568,13 +580,13 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -703,6 +715,10 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
   padding: 0;
 }
 
+.c3.c3.c3.c3.c3 {
+  text-wrap: balance;
+}
+
 <div>
   <div
     class="c0"
@@ -713,7 +729,7 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
       data-blade-component="base-box"
     >
       <p
-        class="c2"
+        class="c2 c3"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -778,6 +794,10 @@ exports[`<EmptyState /> should render EmptyState with title only 1`] = `
   padding: 0;
 }
 
+.c3.c3.c3.c3.c3 {
+  text-wrap: balance;
+}
+
 <div>
   <div
     class="c0"
@@ -788,7 +808,7 @@ exports[`<EmptyState /> should render EmptyState with title only 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c2"
+        class="c2 c3"
         data-blade-component="heading"
       >
         No data found
@@ -857,7 +877,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -873,6 +893,10 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div>
@@ -897,13 +921,13 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
       data-blade-component="base-box"
     >
       <h5
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h5>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -973,7 +997,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -989,6 +1013,10 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div>
@@ -1013,13 +1041,13 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -1089,7 +1117,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -1105,6 +1133,10 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div>
@@ -1129,13 +1161,13 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
       data-blade-component="base-box"
     >
       <h6
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="50"
       >
@@ -1205,7 +1237,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1221,6 +1253,10 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  text-wrap: balance;
 }
 
 <div>
@@ -1245,13 +1281,13 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
       data-blade-component="base-box"
     >
       <h3
-        class="c3"
+        class="c3 c4"
         data-blade-component="heading"
       >
         No data found
       </h3>
       <p
-        class="c4"
+        class="c5 c4"
         data-blade-component="text"
         letter-spacing="25"
       >
