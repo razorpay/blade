@@ -2,24 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _LockIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M6 10V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V10H19C20.6569 10 22 11.3431 22 13V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V13C2 11.3431 3.34315 10 5 10H6ZM8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7V10H8V7ZM5 12C4.44772 12 4 12.4477 4 13V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V13C20 12.4477 19.5523 12 19 12H5Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 19.5 7.5 H 16.5 V 5.25 a 4.5 4.5 0 0 0 -9 0 V 7.5 H 4.5 A 1.5 1.5 0 0 0 3 9 V 19.5 a 1.5 1.5 0 0 0 1.5 1.5 H 19.5 a 1.5 1.5 0 0 0 1.5 -1.5 V 9 A 1.5 1.5 0 0 0 19.5 7.5 Z M 9 5.25 a 3 3 0 0 1 6 0 V 7.5 H 9 Z M 19.5 19.5 H 4.5 V 9 H 19.5 V 19.5 Z m -6.37 -5.25 a 1.13 1.13 0 1 1 -1.12 -1.12 A 1.13 1.13 0 0 1 13.13 14.25 Z" />
     </Svg>
   );
 };
-
 const LockIcon = assignWithoutSideEffects(_LockIcon, {
   componentId: 'LockIcon',
 });
-
 export default LockIcon;

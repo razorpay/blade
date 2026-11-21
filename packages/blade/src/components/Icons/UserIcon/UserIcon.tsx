@@ -2,28 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _UserIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z"
-        fill={iconColor}
-      />
-      <Path
-        d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 21.65 19.88 c -1.43 -2.47 -3.63 -4.24 -6.2 -5.08 a 6.75 6.75 0 1 0 -6.91 0 C 5.98 15.64 3.78 17.41 2.35 19.88 a 0.75 0.75 0 1 0 1.3 0.75 c 1.77 -3.05 4.89 -4.87 8.35 -4.87 s 6.58 1.82 8.35 4.88 a 0.75 0.75 0 1 0 1.3 -0.75 Z M 6.75 9 a 5.25 5.25 0 1 1 5.25 5.25 A 5.26 5.26 0 0 1 6.75 9 Z" />
     </Svg>
   );
 };
-
 const UserIcon = assignWithoutSideEffects(_UserIcon, {
   componentId: 'UserIcon',
 });
-
 export default UserIcon;

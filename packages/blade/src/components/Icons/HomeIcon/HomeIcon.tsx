@@ -2,24 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _HomeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12.6139 1.21065C12.2528 0.929784 11.7472 0.929784 11.3861 1.21065L2.38606 8.21065C2.14247 8.4001 2 8.69141 2 9V20C2 21.6569 3.34315 23 5 23H19C20.6569 23 22 21.6569 22 20V9C22 8.69141 21.8575 8.4001 21.6139 8.21065L12.6139 1.21065ZM16 21H19C19.5523 21 20 20.5523 20 20V9.48908L12 3.26686L4 9.48908V20C4 20.5523 4.44772 21 5 21H8V12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12V21ZM10 21V13H14V21H10Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 20.56 10.19 l -7.5 -7.5 a 1.5 1.5 0 0 0 -2.12 0 l -7.5 7.5 A 1.49 1.49 0 0 0 3 11.25 v 9 a 0.75 0.75 0 0 0 0.75 0.75 h 6 a 0.75 0.75 0 0 0 0.75 -0.75 V 15 h 3 v 5.25 a 0.75 0.75 0 0 0 0.75 0.75 h 6 a 0.75 0.75 0 0 0 0.75 -0.75 V 11.25 A 1.49 1.49 0 0 0 20.56 10.19 Z M 19.5 19.5 H 15 V 14.25 a 0.75 0.75 0 0 0 -0.75 -0.75 H 9.75 a 0.75 0.75 0 0 0 -0.75 0.75 v 5.25 H 4.5 V 11.25 l 7.5 -7.5 7.5 7.5 Z" />
     </Svg>
   );
 };
-
 const HomeIcon = assignWithoutSideEffects(_HomeIcon, {
   componentId: 'HomeIcon',
 });
-
 export default HomeIcon;

@@ -1,8 +1,7 @@
 @font-face {
-  font-family: 'TASA Orbiter';
-  src: url('./fonts/tasa-orbiter.woff2') format('woff2-variations');
-  font-weight: 125 950;
-  font-stretch: 75% 125%;
+  font-family: 'Fraunces';
+  src: url('./fonts/fraunces.woff2') format('woff2-variations');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -92,7 +91,7 @@
 }
 
 @font-face {
-  font-family: 'TASA Orbiter Fallback Arial';
+  font-family: 'Fraunces Fallback Arial';
   src: local(Arial);
   size-adjust: 98%;
   ascent-override: normal;

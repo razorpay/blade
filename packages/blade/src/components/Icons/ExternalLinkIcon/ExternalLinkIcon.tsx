@@ -2,26 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _ExternalLinkIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M14 3C14 2.44772 14.4477 2 15 2H21C21.5523 2 22 2.44772 22 3V9C22 9.55228 21.5523 10 21 10C20.4477 10 20 9.55228 20 9V5.41421L10.7071 14.7071C10.3166 15.0976 9.68342 15.0976 9.29289 14.7071C8.90237 14.3166 8.90237 13.6834 9.29289 13.2929L18.5858 4H15C14.4477 4 14 3.55228 14 3Z"
-        fill={iconColor}
-      />
-      <Path
-        d="M5 7C4.44772 7 4 7.44772 4 8V19C4 19.5523 4.44772 20 5 20H16C16.5523 20 17 19.5523 17 19V13C17 12.4477 17.4477 12 18 12C18.5523 12 19 12.4477 19 13V19C19 20.6569 17.6569 22 16 22H5C3.34315 22 2 20.6569 2 19V8C2 6.34315 3.34315 5 5 5H11C11.5523 5 12 5.44772 12 6C12 6.55228 11.5523 7 11 7H5Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 21 9.75 a 0.75 0.75 0 0 1 -1.5 0 V 5.56 l -6.22 6.22 a 0.75 0.75 0 0 1 -1.06 -1.06 L 18.44 4.5 H 14.25 a 0.75 0.75 0 0 1 0 -1.5 h 6 a 0.75 0.75 0 0 1 0.75 0.75 Z m -3.75 2.25 a 0.75 0.75 0 0 0 -0.75 0.75 v 6.75 H 4.5 V 7.5 h 6.75 a 0.75 0.75 0 0 0 0 -1.5 H 4.5 A 1.5 1.5 0 0 0 3 7.5 V 19.5 a 1.5 1.5 0 0 0 1.5 1.5 H 16.5 a 1.5 1.5 0 0 0 1.5 -1.5 V 12.75 A 0.75 0.75 0 0 0 17.25 12 Z" />
     </Svg>
   );
 };
-
 const ExternalLinkIcon = assignWithoutSideEffects(_ExternalLinkIcon, {
   componentId: 'ExternalLinkIcon',
 });
-
 export default ExternalLinkIcon;

@@ -2,24 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _CheckIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L9.70711 17.7071C9.31658 18.0976 8.68342 18.0976 8.29289 17.7071L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 21.53 7.28 l -12 12 a 0.75 0.75 0 0 1 -1.06 0 l -5.25 -5.25 a 0.75 0.75 0 0 1 1.06 -1.06 L 9 17.69 20.47 6.22 a 0.75 0.75 0 0 1 1.06 1.06 Z" />
     </Svg>
   );
 };
-
 const CheckIcon = assignWithoutSideEffects(_CheckIcon, {
   componentId: 'CheckIcon',
 });
-
 export default CheckIcon;

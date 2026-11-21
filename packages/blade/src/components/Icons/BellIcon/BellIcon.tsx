@@ -2,24 +2,15 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
 const _BellIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
-
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 3C8.68629 3 6 5.68629 6 9V14C6 14.7286 5.80521 15.4117 5.46487 16H18.5351C18.1948 15.4117 18 14.7286 18 14V9C18 5.68629 15.3137 3 12 3ZM22 16C20.8954 16 20 15.1046 20 14V9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9V14C4 15.1046 3.10457 16 2 16C1.44772 16 1 16.4477 1 17C1 17.5523 1.44772 18 2 18H22C22.5523 18 23 17.5523 23 17C23 16.4477 22.5523 16 22 16ZM9.76823 20.135C10.246 19.8579 10.8579 20.0205 11.135 20.4982C11.3139 20.8066 11.6435 20.9965 12 20.9965C12.3565 20.9965 12.6861 20.8066 12.865 20.4982C13.1421 20.0205 13.754 19.8579 14.2318 20.135C14.7095 20.4121 14.8721 21.024 14.595 21.5018C14.0583 22.427 13.0696 22.9965 12 22.9965C10.9304 22.9965 9.9417 22.427 9.405 21.5018C9.12788 21.024 9.2905 20.4121 9.76823 20.135Z"
-        fill={iconColor}
-      />
+      <Path fill={iconColor} d="M 20.79 16.49 C 20.27 15.6 19.5 13.06 19.5 9.75 a 7.5 7.5 0 1 0 -15 0 c 0 3.31 -0.77 5.85 -1.29 6.74 A 1.5 1.5 0 0 0 4.5 18.75 H 8.33 a 3.75 3.75 0 0 0 7.35 0 H 19.5 a 1.5 1.5 0 0 0 1.29 -2.26 Z M 12 20.25 a 2.25 2.25 0 0 1 -2.12 -1.5 h 4.24 A 2.25 2.25 0 0 1 12 20.25 Z M 4.5 17.25 c 0.72 -1.24 1.5 -4.12 1.5 -7.5 a 6 6 0 1 1 12 0 c 0 3.38 0.78 6.26 1.5 7.5 Z" />
     </Svg>
   );
 };
-
 const BellIcon = assignWithoutSideEffects(_BellIcon, {
   componentId: 'BellIcon',
 });
-
 export default BellIcon;
