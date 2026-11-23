@@ -49,19 +49,27 @@ const SLOW_WARMUP = 2000;
 
 /**
  * Between full quality and the still, for devices that can't keep up (page-wide, like the still): running under EASE_FPS (or under
- * three quarters of the screen's own rate, on a slower screen) for EASE_SECONDS, every stage draws every other frame: the same
- * picture, half the work. Still under it, at a lower sharpness too (its canvas at EASE_DPR). Only under SLOW_FPS does it go to its
- * still. Under SLOW_FPS each step comes sooner (SLOW_STEP_SECONDS). A device that holds its frame rate never gets here, so
- * everywhere else it's exactly as made. The screen's rate is measured before any engine draws (screenFps): a device slow from its
- * first frame never shows its screen's rate once drawing (the review: compared with the best seen, it never stepped down).
+ * three quarters of the screen's own rate, on a slower screen) for EASE_SECONDS, the page steps down. First every stage draws every
+ * other frame: the same picture, half the work. Then at a lower render scale too (EASE_SCALES: its canvas at 0.75 of a CSS px, then
+ * 0.5, whatever the screen's own pixel ratio, scaled up by the browser): a step that cuts pixels on a 1x screen as well (the device
+ * test: a DPR cap did nothing on the 1x laptops that needed it). Every 2.0 piece is soft all over (its shapes blurred, its bands wide):
+ * at 0.75 each component is within 0.5 / 255 of full on average, light and dark, 1x and 2x, and at 0.5 within 0.8 / 255, its sharpest
+ * edges (the loader's flutes) a little softer. Only under SLOW_FPS at the lowest step does it go to its still. A sharp drop (typing on
+ * a page that was only just keeping up, everything on one page on an integrated GPU) is met within a second: under SLOW_FPS one
+ * second is enough (SLOW_STEP_SECONDS), and under half of EASE_FPS it steps two at once, as one step can at most double the rate. A
+ * device that holds its frame rate never gets here, so everywhere else it's exactly as made. The screen's rate is measured before any
+ * engine draws (screenFps): a device slow from its first frame never shows its screen's rate once drawing (the review: compared with
+ * the best seen, it never stepped down).
  */
 const EASE_FPS = 45;
-const EASE_SECONDS = 3;
-const SLOW_STEP_SECONDS = 2;
-const EASE_DPR = 1.2;
+const EASE_SECONDS = 2;
+const SLOW_STEP_SECONDS = 1;
+/** each step's render scale: canvas px per CSS px (0: as the comp and the device say) */
+const EASE_SCALES = [0, 0, 0.75, 0.5];
+const LOWEST_STEP = EASE_SCALES.length - 1;
 /**
- * 0: full; 1: every other frame; 2: and at EASE_DPR. Page-wide. It starts at the device's level (deviceLevel.ts: today's RazorSense's
- * GPU class), steps down while frames can't keep up and back up once they hold again (RECOVER_*)
+ * 0: full; 1: every other frame; 2: and at 0.75 of a CSS px; 3: and at 0.5. Page-wide. It starts at the device's level (deviceLevel.ts:
+ * today's RazorSense's GPU class), steps down while frames can't keep up and back up once they hold again (RECOVER_*)
  */
 let easeLevel = 0;
 
@@ -91,7 +99,7 @@ let isStartSet = false;
 const setStartLevel = (level: number): void => {
   if (isStartSet) return;
   isStartSet = true;
-  if (!easedAt) easeLevel = Math.max(0, Math.min(2, level));
+  if (!easedAt) easeLevel = Math.max(0, Math.min(LOWEST_STEP, level));
 };
 
 /** the page's steps now (for checks) */
@@ -441,7 +449,7 @@ class FreshStage {
   /** its engine at the page's level from its first frame (a page that started a step down, or stepped down already) */
   private easeEngine(): void {
     this.easedTo = easeLevel;
-    if (easeLevel >= 2) this.engine?.sharpness?.(EASE_DPR);
+    if (EASE_SCALES[easeLevel]) this.engine?.sharpness?.(EASE_SCALES[easeLevel]);
   }
 
   /** whether it has an engine (made, not freed): one a component can hand its next comp to */
@@ -787,12 +795,13 @@ class FreshStage {
       fps >= Math.min(RECOVER_FPS, 0.9 * (screenFps || 60)) ? this.fastSeconds + 1 : 0;
     if (
       this.easeSeconds >= (fps < SLOW_FPS ? SLOW_STEP_SECONDS : EASE_SECONDS) &&
-      easeLevel < 2 &&
+      easeLevel < LOWEST_STEP &&
       now - easedAt >= 1000
     ) {
       // (a step up that didn't hold: the next waits longer)
       if (raisedAt && now - raisedAt < RECOVER_PROBE_MS) failedRaises += 1;
-      easeLevel += 1;
+      // (under half the rate wanted, one step can't make it up: two at once)
+      easeLevel = Math.min(LOWEST_STEP, easeLevel + (fps < EASE_FPS / 2 ? 2 : 1));
       easedAt = now;
       this.easeSeconds = 0;
       this.slowSeconds = 0;
@@ -810,10 +819,10 @@ class FreshStage {
       // (another stage on the page stepped: this one's count starts again too)
       this.slowSeconds = 0;
     }
-    if (this.slowSeconds >= SLOW_SECONDS && easeLevel >= 2) wasSlow = true;
+    if (this.slowSeconds >= SLOW_SECONDS && easeLevel >= LOWEST_STEP) wasSlow = true;
     if (this.easedTo !== easeLevel) {
       this.easedTo = easeLevel;
-      this.engine?.sharpness?.(easeLevel >= 2 ? EASE_DPR : 0);
+      this.engine?.sharpness?.(EASE_SCALES[easeLevel]);
     }
     // (another animation on the page found it too slow: this one stops too)
     if (wasSlow && !this.hasReportedSlow) {

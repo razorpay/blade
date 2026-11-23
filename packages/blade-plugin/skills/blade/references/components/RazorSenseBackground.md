@@ -56,8 +56,8 @@ type RazorSenseBackgroundProps = {
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
    * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
-   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
-   * it steps back up.
+   * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
+   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up.
    */
   onError?: (error: Error) => void;
   /**

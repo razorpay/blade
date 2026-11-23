@@ -27,7 +27,7 @@ The login page's big RazorSense as its own piece: the RazorSense system's 'login
 
 - Its still is the whole piece at its loop's first frame, made by the engine itself (`make_blade_stills.py`, a page of its own: the box shows only part of the piece, so Storybook can't capture it all), at half its CSS size, as WebP: 7 KB light, 5 KB dark. It's laid where the piece goes, turned and scaled with it: within 1/255 of the live first frame (mean).
 - Reduced motion: the engine draws that first frame and holds it.
-- Everything else every 2.0 component has covers it as it is: the start queue, the engine made a step at a time, the canvas hidden till its first frame, off-screen sleep and wake, the weak-device tier (its lower sharpness is 1.2, so on this one only the every-other-frame step changes anything), the 60 fps cap and the shared target pool. No new shader: nothing new for Direct3D's specialised copies.
+- Everything else every 2.0 component has covers it as it is: the start queue, the engine made a step at a time, the canvas hidden till its first frame, off-screen sleep and wake, the weak-device steps (every other frame, then its canvas at 0.75 and 0.5 of a CSS px, under its own pixel budget), the 60 fps cap and the shared target pool. No new shader: nothing new for Direct3D's specialised copies.
 
 ## Its pixel budget (2026-11-24)
 
