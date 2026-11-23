@@ -388,17 +388,38 @@ TestRayNightcapIsTheSleepIdles.play = async () => {
 };
 
 // a made-up voice, as a page's own mic would hand it over (a quiet buzz, never played out loud): for the mic's level
-const fakeVoice = (): { stream: MediaStream; stop: () => void } => {
+type FakeVoice = { stream: MediaStream; stop: () => void; level: () => number; wake: () => void };
+const fakeVoice = (): FakeVoice => {
   const ctx = new AudioContext();
   const out = ctx.createMediaStreamDestination();
   const buzz = ctx.createOscillator();
   const gain = ctx.createGain();
+  const own = ctx.createAnalyser(); // (its own level, measured as Ray measures it: the loudness x 4)
+  own.fftSize = 1024;
+  const buf = new Float32Array(own.fftSize);
   gain.gain.value = 0.15;
   buzz.type = 'sawtooth';
   buzz.connect(gain).connect(out);
+  gain.connect(own);
   buzz.start();
-  return { stream: out.stream, stop: () => ctx.close() };
+  const voice: FakeVoice = {
+    stream: out.stream,
+    stop: () => ctx.close(),
+    level: () => {
+      own.getFloatTimeDomainData(buf);
+      let sum = 0;
+      for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+      return Math.min(1, Math.sqrt(sum / buf.length) * 4);
+    },
+    // (a browser that starts audio only after a user gesture holds it suspended: asked again)
+    wake: () => {
+      if (ctx.state === 'suspended') ctx.resume().catch(() => undefined);
+    },
+  };
+  (window as any).__rayTestVoice = voice; // (for the play function: the stream's own level)
+  return voice;
 };
+const testVoice = (): FakeVoice => (window as any).__rayTestVoice;
 
 // isOffline: the droop film's malfunction takes him (it wins over everything else), and back online he jumps back to rest. Asked back
 // mid-way (offline again as he jumps back), the film turns back from where he is
@@ -588,7 +609,7 @@ TestRayClearedOutcomeStaysCleared.play = async () => {
 export const TestRayListens: StoryFn<typeof Ray> = () => {
   const [isListening, setIsListening] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
-  const [voice, setVoice] = useState<{ stream: MediaStream; stop: () => void } | null>(null);
+  const [voice, setVoice] = useState<FakeVoice | null>(null);
   return (
     <Box
       padding="spacing.11"
@@ -622,7 +643,19 @@ TestRayListens.play = async () => {
   await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', state: 'mic', started: true }), {
     timeout: 5000,
   });
-  await waitFor(() => expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05), { timeout: 3000 }); // (its level, sent to the film)
+  // the made-up voice's audio flowing (its own level, read from its own analyser), then Ray's level following that stream's: no
+  // fixed waits, and a browser that holds audio till a gesture is asked again each try (the test fails here, clearly, if it never runs)
+  await waitFor(
+    () => {
+      testVoice().wake();
+      expect(testVoice().level()).toBeGreaterThan(0.05);
+    },
+    { timeout: 5000 },
+  );
+  await waitFor(
+    () => expect(Math.abs(rayEl().__ray.voice?.sent - testVoice().level())).toBeLessThan(0.1),
+    { timeout: 5000 },
+  ); // (its level, sent to the film: the stream's)
   await userEvent.click(getByRole('button', { name: 'Stop' }));
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 5000 });
   expect(rayEl().__ray.voice).toBe(null); // (stopped listening: his analyser's let go)
@@ -630,7 +663,7 @@ TestRayListens.play = async () => {
   await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
     timeout: 5000,
   });
-  await sleep(800);
+  await waitFor(() => expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05), { timeout: 5000 }); // (listening again)
   await userEvent.click(getByRole('button', { name: 'Offline' }));
   await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', state: 'offline' }), {
     timeout: 1500,

@@ -960,6 +960,7 @@ class RayMount {
   private feedVoice(film: Film): void {
     const v = this.listen();
     if (!v) return;
+    RayMount.wakeAudio(); // (suspended, its analyser reads silence: the level would stay 0)
     v.analyser.getFloatTimeDomainData(v.buf);
     let sum = 0;
     for (let i = 0; i < v.buf.length; i++) sum += v.buf[i] * v.buf[i];
@@ -1587,8 +1588,23 @@ class RayMount {
     } catch {
       return null;
     }
+    // a browser that starts audio only after a user gesture (its autoplay policy) makes it suspended: it's resumed on the next one
+    document.addEventListener('pointerdown', RayMount.wakeAudio, { capture: true, passive: true });
+    document.addEventListener('keydown', RayMount.wakeAudio, { capture: true, passive: true });
     return RayMount.audio;
   }
+
+  private static audioWokenAt = 0;
+
+  /** The shared audio running again while a Ray listens (it rests, suspended, while none does): tried at most once a second. */
+  private static readonly wakeAudio = (): void => {
+    const ctx = RayMount.audio;
+    if (!ctx || ctx.state !== 'suspended' || ![...RayMount.up].some((m) => m.voice)) return;
+    const now = performance.now();
+    if (now - RayMount.audioWokenAt < 1000) return;
+    RayMount.audioWokenAt = now;
+    ctx.resume().catch(() => undefined);
+  };
 
   // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
   private static frames = 0;
@@ -1701,6 +1717,8 @@ class RayMount {
     mirror = null;
     RayMount.audio?.close().catch(() => undefined);
     RayMount.audio = null;
+    document.removeEventListener('pointerdown', RayMount.wakeAudio, { capture: true });
+    document.removeEventListener('keydown', RayMount.wakeAudio, { capture: true });
   }
 }
 
