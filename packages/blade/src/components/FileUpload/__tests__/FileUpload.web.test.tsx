@@ -417,6 +417,8 @@ describe('<FileUploadItem />', () => {
       );
 
       expect(queryByText(/45%/)).toBeNull();
+      // the loader is named, since the chip shows no "Uploading" text
+      expect(getByRole('progressbar', { name: 'Uploading video.mp4' })).toBeTruthy();
       await userEvent.click(getByRole('button', { name: 'Remove video.mp4' }));
       expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
     });

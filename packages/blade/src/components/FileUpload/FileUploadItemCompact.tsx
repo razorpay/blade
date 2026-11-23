@@ -108,6 +108,8 @@ const FileUploadItemCompact = ({
       {isUploading ? (
         <BaseBox position="absolute" bottom="spacing.0" left="spacing.0" width="100%">
           <ProgressBar
+            // the chip has no "Uploading" text, so the loader carries it for screen readers
+            accessibilityLabel={`Uploading ${name}`}
             showPercentage={false}
             value={uploadPercent ?? 0}
             isIndeterminate={isUndefined(uploadPercent)}
