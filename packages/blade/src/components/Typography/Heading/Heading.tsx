@@ -37,11 +37,15 @@ export type HeadingProps = HeadingCommonProps & {
   /**
    * Leave unset with `variant="serif"`, which always renders at the 2xlarge size. Any other size
    * throws in dev.
+   *
+   * @default 'small'
    */
   size?: HeadingSize;
   /**
    * Leave unset with `variant="serif"`, which always renders in regular weight. Any other weight
    * throws in dev.
+   *
+   * @default 'semibold'
    */
   weight?: HeadingWeight;
   /**
