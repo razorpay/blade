@@ -27,6 +27,8 @@ class BackgroundStates {
   private readonly fade = new OfflineFade();
   private voice: VoiceDashboard | null = null;
   private isLoadingVoice = false;
+  /** a chunk that failed to load isn't asked for again (asked each frame, a deploy that removed the old chunks made a 404 a frame) */
+  private hasFailedVoice = false;
   private isVoiceDoc = false;
   private tap: VoiceTap | null = null;
   private tapStream: MediaStream | null = null;
@@ -106,7 +108,7 @@ class BackgroundStates {
   }
 
   private importVoice(redraw?: () => void): void {
-    if (this.isLoadingVoice) return;
+    if (this.isLoadingVoice || this.hasFailedVoice) return;
     this.isLoadingVoice = true;
     import('./voiceDashboard')
       .then((m) => {
@@ -119,7 +121,9 @@ class BackgroundStates {
         );
         redraw?.();
       })
-      .catch(() => undefined)
+      .catch(() => {
+        this.hasFailedVoice = true;
+      })
       .finally(() => {
         this.isLoadingVoice = false;
       });

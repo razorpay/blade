@@ -52,6 +52,12 @@ class ChatStates {
   private outcomeModule: { spliceOutcome: typeof spliceOutcome } | null = null;
   private isLoadingOutcome = false;
   private isLoadingVoice = false;
+  /**
+   * a chunk that failed to load isn't asked for again (the PR review: asked each frame, a deploy that removed the old chunks made a
+   * 404 every frame): the strip stays as it is
+   */
+  private hasFailedOutcome = false;
+  private hasFailedVoice = false;
   /** the outcome spliced into the loaded document (and where its piece is on the strip's clock) */
   private splice: { outcome: Outcome; doc: FreshDoc; t0: number; t1: number } | null = null;
   /** the voice look, made the first time the page listens, and the Comp 3 its row is in while it's loaded */
@@ -92,7 +98,7 @@ class ChatStates {
 
   /** the chat started thinking: its outcomes' chunk is fetched while the page is idle, so one is ready by the answer */
   public prefetchOutcome(): void {
-    if (this.outcomeModule || this.isLoadingOutcome) return;
+    if (this.outcomeModule || this.isLoadingOutcome || this.hasFailedOutcome) return;
     this.isLoadingOutcome = true;
     whenIdle(() => {
       import('./outcome')
@@ -101,7 +107,9 @@ class ChatStates {
           // (reduced motion: drawn as it is now that it's here)
           if (!this.isDead) this.redraw?.();
         })
-        .catch(() => undefined)
+        .catch(() => {
+          this.hasFailedOutcome = true;
+        })
         .finally(() => {
           this.isLoadingOutcome = false;
         });
@@ -223,7 +231,7 @@ class ChatStates {
   }
 
   private importVoice(): void {
-    if (this.voice || this.isLoadingVoice) return;
+    if (this.voice || this.isLoadingVoice || this.hasFailedVoice) return;
     this.isLoadingVoice = true;
     import('./voiceBottom')
       .then((m) => {
@@ -232,7 +240,9 @@ class ChatStates {
         // (reduced motion: drawn as it is now that it's here)
         this.redraw?.();
       })
-      .catch(() => undefined)
+      .catch(() => {
+        this.hasFailedVoice = true;
+      })
       .finally(() => {
         this.isLoadingVoice = false;
       });
