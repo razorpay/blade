@@ -227,11 +227,11 @@ type FileUploadItemProps = Pick<
    * @private
    *
    * A 32px one-line chip for tight places such as ChatInput attachments. It is as wide as the
-   * file name (up to 120px, then an ellipsis) and shows a single ×: it cancels an upload
-   * (`onDismiss`), otherwise removes the file (`onRemove`). A failed file has no retry; people remove
-   * it and attach it again, and `errorText` shows in a Tooltip. There is no file size or percentage;
-   * a thin loader runs along the bottom while uploading. `size`, `onPreview` and `onReupload` have
-   * no effect.
+   * file name (up to 120px, then an ellipsis) and shows ×: it cancels an upload (`onDismiss`),
+   * otherwise removes the file (`onRemove`). A failed file also gets retry before × when
+   * `onReupload` is set, and its `errorText` shows in a Tooltip. There is no file size or
+   * percentage; a thin loader runs along the bottom while uploading. `size` and `onPreview` have no
+   * effect.
    *
    * @default false
    */

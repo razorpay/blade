@@ -631,10 +631,10 @@ describe('<FileUploadItem /> (native)', () => {
       expect(onRemove).toHaveBeenCalledWith({ file: compactSuccessFile });
     });
 
-    it('should offer only × for a failed file, even when onReupload is set', () => {
+    it('should offer retry and keep × for a failed file when onReupload is set', () => {
       const onReupload = jest.fn();
       const onRemove = jest.fn();
-      const { getByLabelText, queryByLabelText } = renderWithTheme(
+      const { getByLabelText } = renderWithTheme(
         <FileUploadItem
           _isCompact
           file={compactErrorFile}
@@ -643,10 +643,19 @@ describe('<FileUploadItem /> (native)', () => {
         />,
       );
 
-      expect(queryByLabelText('Reupload statement.csv')).toBeNull();
+      fireEvent.press(getByLabelText('Reupload statement.csv'));
+      expect(onReupload).toHaveBeenCalledWith({ file: compactErrorFile });
       fireEvent.press(getByLabelText('Remove statement.csv'));
       expect(onRemove).toHaveBeenCalledWith({ file: compactErrorFile });
-      expect(onReupload).not.toHaveBeenCalled();
+    });
+
+    it('should offer only × for a failed file without onReupload', () => {
+      const { getByLabelText, queryByLabelText } = renderWithTheme(
+        <FileUploadItem _isCompact file={compactErrorFile} onRemove={jest.fn()} />,
+      );
+
+      expect(queryByLabelText('Reupload statement.csv')).toBeNull();
+      expect(getByLabelText('Remove statement.csv')).toBeTruthy();
     });
 
     it('should show why the upload failed when the chip is tapped', () => {

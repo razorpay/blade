@@ -423,18 +423,27 @@ describe('<FileUploadItem />', () => {
       expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
     });
 
-    it('should offer only × for a failed file, even when onReupload is set', async () => {
+    it('should offer retry and keep × for a failed file when onReupload is set', async () => {
       const onReupload = jest.fn();
       const onRemove = jest.fn();
-      const { getByRole, queryByRole, getAllByRole } = renderWithTheme(
+      const { getByRole } = renderWithTheme(
         <FileUploadItem _isCompact file={errorFile} onReupload={onReupload} onRemove={onRemove} />,
       );
 
-      expect(queryByRole('button', { name: 'Reupload statement.csv' })).toBeNull();
-      expect(getAllByRole('button')).toHaveLength(1);
+      await userEvent.click(getByRole('button', { name: 'Reupload statement.csv' }));
+      expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
+      // a file that keeps failing must stay removable
       await userEvent.click(getByRole('button', { name: 'Remove statement.csv' }));
       expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
-      expect(onReupload).not.toHaveBeenCalled();
+    });
+
+    it('should offer only × for a failed file without onReupload', () => {
+      const { getAllByRole, getByRole } = renderWithTheme(
+        <FileUploadItem _isCompact file={errorFile} onRemove={jest.fn()} />,
+      );
+
+      expect(getAllByRole('button')).toHaveLength(1);
+      expect(getByRole('button', { name: 'Remove statement.csv' })).toBeTruthy();
     });
 
     it('should show why the upload failed in a tooltip on keyboard focus', async () => {
