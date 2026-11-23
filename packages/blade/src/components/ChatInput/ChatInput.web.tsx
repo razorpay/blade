@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
@@ -183,11 +182,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <BaseBox
-                key={file.id ?? file.name}
-                flexShrink={0}
-                width={chatInputFilePreviewItemWidth}
-              >
+              <BaseBox key={file.id ?? file.name} flexShrink={0}>
                 <FileUploadItem
                   _isCompact
                   file={file}

@@ -423,12 +423,13 @@ const FullFeaturedChat = () => {
 
 ## File Preview Behaviour
 
-### Fixed Width per File Item
+### File Items Size to Their Content
 
-Each `FileUploadItem` inside the ChatInput file preview row has a fixed width of `200px` (defined as `chatInputFilePreviewItemWidth` in `chatInputTokens.ts`). This gives the row a consistent, predictable layout regardless of file name length or count.
+Each file in the ChatInput preview row is a `FileUploadItem` with the private `_isCompact` option: a 32px one-line chip that is as wide as its file name. Names longer than 120px end in an ellipsis, so one long name can't push the others out of view, and short names don't leave empty space.
 
-- `minWidth` and `maxWidth` are not used here — a single fixed `width` token is applied to every item.
-- The row scrolls horizontally when the total width of all items exceeds the container width.
+- The row does not set a width on each item. Earlier the row gave every item a fixed `200px` width, which no longer fits a chip that sizes itself.
+- The row scrolls horizontally when the chips don't fit the container width.
+- A failed file shows its `errorText` in a Tooltip (on hover or keyboard focus on web, on tap on native) and offers retry when `onFileReupload` is set. It keeps × as well: the input can't be sent while a file has failed, so a file that keeps failing must always be removable.
 
 ### Autoscroll to Latest File
 

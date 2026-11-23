@@ -109,6 +109,30 @@ const fileUploadItemIconTokens = {
   },
 } as const;
 
+// The 32px one-line chip FileUploadItem renders with `_isCompact`, for tight places such as ChatInput attachments
+const fileUploadItemCompactTokens = {
+  height: size['32'],
+  // Long names end in an ellipsis here, so one file can't push the others out of a row of chips
+  nameMaxWidth: size['120'],
+  iconTileSize: size['24'],
+  background: {
+    default: 'surface.background.gray.intense',
+    hover: 'interactive.background.gray.faded',
+  },
+  border: {
+    default: 'surface.border.gray.muted',
+    error: 'interactive.border.negative.faded',
+  },
+  iconTileBackground: {
+    default: 'surface.background.gray.moderate',
+    error: 'feedback.background.negative.subtle',
+  },
+  name: {
+    default: 'surface.text.gray.normal',
+    uploading: 'surface.text.gray.muted',
+  },
+} as const;
+
 // File icon above the drop area text when size="variable"
 const fileUploadDropAreaIconTokens = {
   size: size['56'],
@@ -129,6 +153,7 @@ export {
   fileUploadColorTokens,
   fileUploadItemColorTokens,
   fileUploadItemIconTokens,
+  fileUploadItemCompactTokens,
   fileUploadDropAreaIconTokens,
   fileUploadHeightTokens,
   fileUploadItemHeightTokens,

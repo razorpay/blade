@@ -226,7 +226,11 @@ type FileUploadItemProps = Pick<
   /**
    * @private
    *
-   * Compact layout for narrow containers such as ChatInput attachments. Hides the "Uploading" prefix while a file uploads.
+   * A 32px one-line chip for tight places such as ChatInput attachments. It is as wide as the
+   * file name (up to 120px, then an ellipsis) and shows × to remove (or cancel an upload). A failed
+   * file also gets retry when `onReupload` is set. There is no file size or percentage; a thin
+   * loader runs along the bottom while uploading, and `errorText` shows in a Tooltip. `size` and
+   * `onPreview` have no effect.
    *
    * @default false
    */
@@ -249,6 +253,10 @@ type StyledFileUploadWrapperProps = {
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
   size: NonNullable<FileUploadProps['size']>;
+  /**
+   * The 32px chip: as wide as its content, no shadow, and a hover fill on web
+   */
+  isCompact?: boolean;
   theme: Theme;
   children: React.ReactNode;
 };

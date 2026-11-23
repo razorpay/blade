@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
-import { fireEvent } from '@testing-library/react';
+import { act, fireEvent } from '@testing-library/react';
 import { FileUpload } from '../FileUpload';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../FileUpload.web';
@@ -359,6 +359,119 @@ describe('<FileUploadItem />', () => {
 
     expect(getByText('video.mp4')).toBeVisible();
     expect(queryByText(/Uploading/)).toBeNull();
+  });
+
+  describe('compact chip', () => {
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    const successFile = {
+      id: 'c-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success',
+    } as BladeFile;
+    const errorFile = {
+      id: 'c-2',
+      name: 'statement.csv',
+      size: 2048,
+      status: 'error',
+      errorText: 'This file is larger than 5 MB',
+    } as BladeFile;
+
+    it('should render a compact chip', () => {
+      const { container } = renderWithTheme(
+        <FileUploadItem _isCompact file={successFile} onRemove={jest.fn()} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should show only the name and one remove action', async () => {
+      const onRemove = jest.fn();
+      const onPreview = jest.fn();
+      const { getByText, queryByText, getByRole, queryByRole } = renderWithTheme(
+        <FileUploadItem _isCompact file={successFile} onRemove={onRemove} onPreview={onPreview} />,
+      );
+
+      expect(getByText('report.pdf')).toBeVisible();
+      // no file size, and no preview action
+      expect(queryByText(/KB/)).toBeNull();
+      expect(queryByRole('button', { name: 'Preview report.pdf' })).toBeNull();
+
+      await userEvent.click(getByRole('button', { name: 'Remove report.pdf' }));
+      expect(onRemove).toHaveBeenCalledWith({ file: successFile });
+    });
+
+    it('should cancel an upload with ×, without showing a percentage', async () => {
+      const uploadingFile = {
+        id: 'c-3',
+        name: 'video.mp4',
+        size: 10240,
+        status: 'uploading',
+        uploadPercent: 45,
+      } as BladeFile;
+      const onDismiss = jest.fn();
+      const { getByRole, queryByText } = renderWithTheme(
+        <FileUploadItem _isCompact file={uploadingFile} onDismiss={onDismiss} />,
+      );
+
+      expect(queryByText(/45%/)).toBeNull();
+      await userEvent.click(getByRole('button', { name: 'Remove video.mp4' }));
+      expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
+    });
+
+    it('should offer reupload and keep remove for a failed file', async () => {
+      const onReupload = jest.fn();
+      const onRemove = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <FileUploadItem _isCompact file={errorFile} onReupload={onReupload} onRemove={onRemove} />,
+      );
+
+      await userEvent.click(getByRole('button', { name: 'Reupload statement.csv' }));
+      expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
+      // a file that keeps failing must stay removable
+      await userEvent.click(getByRole('button', { name: 'Remove statement.csv' }));
+      expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
+    });
+
+    it('should offer remove for a failed file that cannot be reuploaded', () => {
+      const { getByRole } = renderWithTheme(
+        <FileUploadItem _isCompact file={errorFile} onRemove={jest.fn()} />,
+      );
+
+      expect(getByRole('button', { name: 'Remove statement.csv' })).toBeTruthy();
+    });
+
+    it('should show why the upload failed in a tooltip on keyboard focus', async () => {
+      jest.useFakeTimers();
+      const { getByText, queryByRole } = renderWithTheme(
+        <FileUploadItem _isCompact file={errorFile} onRemove={jest.fn()} />,
+      );
+      // let the tooltip work out its position (same pattern as the Tooltip tests)
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      await act(async () => {});
+
+      // the reason is not on the chip itself
+      expect(queryByRole('tooltip')).toBeNull();
+
+      const trigger = getByText('statement.csv').closest('[tabindex="0"]') as HTMLElement;
+      expect(trigger).toBeTruthy();
+      trigger.focus();
+      // eslint-disable-next-line @typescript-eslint/require-await
+      await act(async () => {
+        jest.advanceTimersByTime(1);
+      });
+
+      expect(queryByRole('tooltip')).toHaveTextContent('This file is larger than 5 MB');
+    });
+
+    it('should not have accessibility violations', async () => {
+      const { container } = renderWithTheme(
+        <FileUploadItem _isCompact file={errorFile} onReupload={jest.fn()} />,
+      );
+      await assertAccessible(container);
+    });
   });
 
   it('should not show a remove button for a successful file when onRemove is not provided', () => {

@@ -772,7 +772,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         fileList={files}
         onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => {
-          console.log('onFileRemove (trash icon):', file.name);
+          console.log('onFileRemove (✕ on an uploaded file):', file.name);
           setFiles((prev) => prev.filter((f) => f.id !== file.id));
         }}
         onFileDismiss={({ file }) => {
@@ -790,7 +790,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         <Text as="span" size="small" weight="semibold">
           onFileDismiss
         </Text>
-        . Trash on the success file fires{' '}
+        . ✕ on the uploaded file fires{' '}
         <Text as="span" size="small" weight="semibold">
           onFileRemove
         </Text>
@@ -807,7 +807,8 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
       name: 'screenshot.png',
       size: 76160,
       status: 'error',
-      errorText: 'Upload failed',
+      // shown in a Tooltip when you hover, focus or tap the file
+      errorText: 'This file is larger than 5 MB',
       id: 'file-1',
     } as BladeFileList[0],
   ]);
