@@ -176,6 +176,8 @@ type SideNavLinkProps = {
    * On an item that opens the next level (L2 trigger), the chevron moves next to the title
    * and trailing takes the end of the item.
    *
+   * It is not supported on an item that opens a third level (L3 trigger). `trailing` is ignored there.
+   *
    * Used for <Button />, <IconButton />
    */
   trailing?: React.ReactElement;

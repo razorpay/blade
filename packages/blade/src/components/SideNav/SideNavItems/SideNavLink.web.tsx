@@ -338,8 +338,8 @@ const SideNavLink = ({
 
   // Width of the trailing slot, so the link can keep that much room free for it.
   // Items without a trailing slot render no element for the ref, so they measure and observe nothing.
-  // No room is kept while SideNav is collapsed to icons: the slot is only faded out there and still has
-  // its width, which would make the item wider than the collapsed SideNav
+  // No room is kept while SideNav is collapsed to icons: the slot is taken out with display none there,
+  // and room kept for it would make the item wider than the collapsed SideNav
   const trailingRef = React.useRef<HTMLDivElement>(null);
   const [trailingWidth, setTrailingWidth] = React.useState(0);
   const updateTrailingWidth = React.useCallback(() => {
