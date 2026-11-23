@@ -171,6 +171,8 @@ type SideNavLinkProps = {
    * The item keeps room for it, so a long title truncates 12px before the trailing slot
    * instead of running under it.
    *
+   * It is not rendered visually or reachable by keyboard while SideNav is collapsed to icons.
+   *
    * On an item that opens the next level (L2 trigger), the chevron moves next to the title
    * and trailing takes the end of the item.
    *

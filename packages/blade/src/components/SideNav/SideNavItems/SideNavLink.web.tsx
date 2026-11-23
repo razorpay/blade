@@ -446,7 +446,9 @@ const SideNavLink = ({
                 top="spacing.0"
                 right={NAV_LINK_TRAILING_INSET}
                 height="100%"
-                display="flex"
+                // Taken out while SideNav is collapsed to icons. Fading it out is not enough there:
+                // the action in it would stay in the tab order while nobody can see it
+                display={isSideNavCollapsed ? 'none' : 'flex'}
                 alignItems="center"
                 className={
                   isTrailingAlwaysVisible

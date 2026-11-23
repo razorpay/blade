@@ -105,6 +105,23 @@ describe('SideNav', () => {
     offsetWidth.mockRestore();
   });
 
+  test('should take trailing out of the tab order while SideNav is collapsed', () => {
+    const { getByRole, unmount } = renderWithTheme(
+      <SideNavTrailingExample display="block" isExpanded={true} />,
+    );
+    expect(getByRole('button', { name: 'Unpin Links' })).toBeVisible();
+    unmount();
+
+    const collapsed = renderWithTheme(
+      <SideNavTrailingExample display="block" isExpanded={false} />,
+    );
+    // not in the accessibility tree, so it cannot be focused either
+    expect(collapsed.queryByRole('button', { name: 'Unpin Links' })).toBeNull();
+    expect(
+      collapsed.getByRole('button', { name: 'Unpin Links', hidden: true }).parentElement,
+    ).toHaveStyle('display: none');
+  });
+
   test('should take SideNavVisibility content of the other state out of layout and tab order', () => {
     const getContent = (
       isExpanded: boolean,
