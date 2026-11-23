@@ -340,8 +340,9 @@ src = sub(
   `  get alive() { return aliveT(); }, set alive(v) {`,
   `  look(h) { LOOK.h = h || null; need = true; },
   // Default Paused 2.0 (2026-11-24): the part of the comp its canvas shows now ([x, y, w, h] comp px, null: as opts.fit says), for a box that
-  // shows only what's on screen of a piece bigger than the page: its box resized, the canvas follows at once
-  region(r) { if (Array.isArray(r) && r[2] > 0 && r[3] > 0) OPT.region = [+r[0], +r[1], +r[2], +r[3]]; else delete OPT.region; layout(); need = true; },
+  // shows only what's on screen of a piece bigger than the page: its box resized, the canvas follows at once; dpr: its sharpness for that
+  // size (its pixel budget), as opts.dpr
+  region(r, dpr) { if (Array.isArray(r) && r[2] > 0 && r[3] > 0) OPT.region = [+r[0], +r[1], +r[2], +r[3]]; else delete OPT.region; if (+dpr > 0) OPT.dpr = +dpr; layout(); need = true; },
   fade(k) { const n = Math.max(0, Math.min(1, +k)); if (isFinite(n) && n !== LOOK.k) { LOOK.k = n; need = true; } },
   get faded() { return LOOK.k; },
   tools: { evalTrack, lerpStops },

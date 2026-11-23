@@ -193,8 +193,11 @@ export type FreshPlayer = {
   look(hook: FreshLook | null): void;
   /** every shape's opacity x k (0-1), the bands and the Colorama untouched: it fades away under the Colorama. Carries over a load() */
   fade(k: number): void;
-  /** the part of the comp the canvas shows ([x, y, w, h] comp px from its top-left; null: as its fit says), its box just resized */
-  region(r: [number, number, number, number] | null): void;
+  /**
+   * the part of the comp the canvas shows ([x, y, w, h] comp px from its top-left; null: as its fit says), its box just resized; dpr:
+   * its sharpness for that size (as opts.dpr)
+   */
+  region(r: [number, number, number, number] | null, dpr?: number): void;
   /** the fade's k now */
   readonly faded: number;
   /** the engine's own key evaluation and Colorama blend, for a look */

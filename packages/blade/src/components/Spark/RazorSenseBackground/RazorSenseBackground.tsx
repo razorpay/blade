@@ -28,9 +28,17 @@ const loadBackgroundStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
 
 /**
  * its canvas's sharpness (device px per CSS px): the piece is soft all over (its shapes blurred 220-840 px, its bands wide), so past 1
- * the GPU draws pixels nobody can see (see _decisions: measured against the device's own 2)
+ * the GPU draws pixels nobody can see; and its pixels at most BACKGROUND_PIXELS, so a big screen's box draws at a lower sharpness, not
+ * a bigger canvas: its GPU memory stays about a 1512 x 862 box's (down to 0.5, the engine's floor, about 0.3/255 from the device's own
+ * 2x; see _decisions)
  */
 const BACKGROUND_DPR = 1;
+const BACKGROUND_PIXELS = 2.2e6;
+const sharpnessFor = (place: PiecePlace): number =>
+  Math.max(
+    0.5,
+    Math.min(BACKGROUND_DPR, Math.sqrt(BACKGROUND_PIXELS / (place.part.width * place.part.height))),
+  );
 
 /** the comps on the crossfade's page are its own comps again, with these ids */
 const fadeId = (id: string): string => `f_${id}`;
@@ -136,7 +144,7 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
       putPiece(next, partRef.current, stillRef.current);
       const r = next.region;
       if (engineRef.current && (!last || last.region.some((v, i) => Math.abs(v - r[i]) > 0.25))) {
-        engineRef.current.player.region(r);
+        engineRef.current.player.region(r, sharpnessFor(next));
       }
     };
     const placeFnRef = useRef(place);
@@ -170,10 +178,16 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
           if (!play) return false;
           placeRef.current = null;
           placeFnRef.current();
-          const region = placeRef.current ? (placeRef.current as PiecePlace).region : undefined;
+          const place = placeRef.current as PiecePlace | null;
           const engine = stage.mount({
             doc,
-            opts: { fit: 'cover', alpha: false, paused: true, region, dpr: BACKGROUND_DPR },
+            opts: {
+              fit: 'cover',
+              alpha: false,
+              paused: true,
+              region: place?.region,
+              dpr: place ? sharpnessFor(place) : BACKGROUND_DPR,
+            },
           });
           if (!engine) return false;
           engineRef.current = engine;

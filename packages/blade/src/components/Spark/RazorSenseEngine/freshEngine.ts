@@ -5067,10 +5067,11 @@ export function* freshEngineSteps(
       look(e) {
         ($n.h = e || null), (Vn = !0);
       },
-      region(e) {
+      region(e, t) {
         Array.isArray(e) && e[2] > 0 && e[3] > 0
           ? (Xn.region = [+e[0], +e[1], +e[2], +e[3]])
           : delete Xn.region,
+          +t > 0 && (Xn.dpr = +t),
           eo(),
           (Vn = !0);
       },
