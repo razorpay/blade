@@ -14,6 +14,12 @@ import { makeAccessible } from '~utils/makeAccessible';
 
 /** its canvas's sharpness (device px per CSS px): the orb is soft all over (blurred ~100 CSS px); the tick and badge are HTML */
 const SUCCESS_DPR = 1;
+/**
+ * how long it may go from its mount without its first frame on screen before the badge pops in alone (ms): a success never waits
+ * on a GPU, whatever state its engine is in (a Direct3D copy of its shader still compiling: a light Success on Intel UHD drew
+ * nothing for 8.8 s)
+ */
+const FIRST_FRAME_MS = 800;
 
 /** where it is: playing (the orb drawn), the badge alone (it couldn't animate, or reduced motion), done (the badge with its check) */
 type Phase = 'playing' | 'badge' | 'done';
@@ -151,7 +157,15 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
         toPhase('badge');
         return undefined;
       }
-      return runFreshStage({
+      let hasDrawn = false;
+      const noFrame = window.setTimeout(() => {
+        if (hasDrawn || phaseRef.current !== 'playing') return;
+        onErrorRef.current?.(
+          new Error(`RazorSenseSuccess: no first frame within ${FIRST_FRAME_MS} ms`),
+        );
+        toBadge();
+      }, FIRST_FRAME_MS);
+      const stop = runFreshStage({
         moduleName: 'RazorSenseSuccess',
         getBox: () => orbRef.current,
         stageRef,
@@ -166,7 +180,6 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
             opts: { fit: 'fixed', scale: z, alpha: true, paused: true, dpr: SUCCESS_DPR },
           });
           if (!engine) return false;
-          onLoadRef.current?.();
           let t = 0;
           stage.setDriver((eng, dt) => {
             t += dt;
@@ -192,14 +205,23 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           return true;
         },
         onFail: (error) => {
+          window.clearTimeout(noFrame);
           onErrorRef.current?.(error);
           toBadge();
         },
         onRelease: () => undefined,
+        onDrawn: () => {
+          hasDrawn = true;
+          onLoadRef.current?.();
+        },
         onWaiting: (isWaiting) => {
           if (isWaiting) toBadge();
         },
       });
+      return () => {
+        window.clearTimeout(noFrame);
+        stop();
+      };
       // isPaused is read live (its own effect); ink and the piece are read when it starts
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode]);

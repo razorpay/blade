@@ -248,7 +248,6 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           };
           const engine = stage.mount({ doc, opts });
           if (!engine || !setup) return false;
-          onLoadRef.current?.();
           engineRef.current = engine;
           engine.player.comp('ty', { op: 0 }); // the typing surge's layer: held at 0 until typing lifts it
           const typing = new TypingSurge(setup);
@@ -299,6 +298,7 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           redrawRef.current = null;
           isAwayRef.current = false;
         },
+        onDrawn: () => onLoadRef.current?.(),
         onWaiting: setIsWaiting,
       });
       // isPaused has its own effect; a new color scheme or scale starts it again
