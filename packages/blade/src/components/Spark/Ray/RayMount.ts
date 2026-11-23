@@ -59,7 +59,7 @@ const STATE_FILMS: Record<StateName, { film: string; cue?: FilmMessage }> = {
 };
 const IDLE_WAIT_MS = 400; // back with nothing to do: his idle starts after this
 const TYPING_EXIT = 4; // an idle film's exit when he's needed to watch what's typed (the user: the typing look must start fast)
-const HOP_EXIT = 1.6; // ... and when he hops off the surface (flow 9's P.f5LapQuick)
+const HOP_EXIT = 1.6; // ... and when he hops off the surface, goes offline, takes the mic out or plays an outcome (flow 9's P.f5LapQuick)
 // the hops, as each Ray's own entry and exit, timed as flow 10.5 has them (measured there, 2026-11-23: its hide 465 ms to out of sight,
 // its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The chat box's Ray drops off at 1x as the question goes, and comes
 // back up at 1.2x (HOP_BACK; 493 ms to landed), ending as he lands when an outcome is waiting, which starts there (flow 10.5's Success
@@ -632,7 +632,10 @@ class RayMount {
       }
       this.holder = { ...h, leaving: 'exit', since: now };
       if (h.kind === 'idle') {
-        const pace = want.kind === 'watch' ? TYPING_EXIT : want.kind === 'hidden' ? HOP_EXIT : 1;
+        // typing: quickest; the hop off, offline, the mic and an outcome: a send's quick hand-over (flow 10.5's mal9 / mic9 / end9:
+        // "his idle eases to rest (a send's quick hand-over)"); another idle: at its own pace
+        const quick = want.kind === 'hidden' || want.kind === 'state' || want.kind === 'success';
+        const pace = want.kind === 'watch' ? TYPING_EXIT : quick ? HOP_EXIT : 1;
         film.host.send({ ray: 'pace', v: pace });
         film.host.send({ ray: 'leave' });
       } else if (h.kind === 'state') {

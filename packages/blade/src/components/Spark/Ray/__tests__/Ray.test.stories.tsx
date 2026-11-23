@@ -436,6 +436,45 @@ TestRayGoesOffline.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 6000 });
 };
 
+// From an idle film, offline (as the mic and an outcome) takes him with a send's quick hand-over, as flow 10.5 does: the film's exit at
+// the hop's pace (1.6x), then the malfunction from his rest
+export const TestRayIdleFilmHandsOverQuickly: StoryFn<typeof Ray> = () => {
+  const [isOffline, setIsOffline] = useState(false);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="coffee" isOffline={isOffline} shouldReactToPointer={false} />
+      <Button onClick={() => setIsOffline(true)}>Offline</Button>
+    </Box>
+  );
+};
+TestRayIdleFilmHandsOverQuickly.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'coffee', started: true }), {
+    timeout: 6000,
+  });
+  const host = rayEl().__ray.films.coffee.host;
+  const sent: any[] = [];
+  const send = host.send.bind(host);
+  host.send = (m: any) => {
+    sent.push(m);
+    send(m);
+  };
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(() => expect(sent).toContainEqual({ ray: 'pace', v: 1.6 }), { timeout: 2000 });
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'offline', started: true }),
+    {
+      timeout: 8000,
+    },
+  );
+};
+
 // outcome="error": the droop film's sad one-shot on his seat, once, then his rest; set again, it plays again
 export const TestRayPlaysAnError: StoryFn<typeof Ray> = () => {
   const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
