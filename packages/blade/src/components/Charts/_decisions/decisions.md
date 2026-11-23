@@ -17,6 +17,7 @@ This document outlines the API of Charts component.
     - [`BarChart`](#35-bar-chart)
     - [`DonutChart`](#36-donut-chart)
     - [`SankeyChart`](#37-sankey-chart)
+    - [`FunnelChart`](#38-funnel-chart)
   - [Open questions](#4-open-questions)
 
 ---
@@ -434,13 +435,13 @@ band for that period. In a grouped chart every bar can carry its own range, so t
 revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
 mush, and only the hovered bar's range is being asked about.
 
-| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
-| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
-| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
-| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
-| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
-| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
-| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
+| Prop (on `ChartBar`) | Type      | Default            | Description                                             |
+| -------------------- | --------- | ------------------ | ------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                   |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range             |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour        |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only   |
 
 - Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
   against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
@@ -457,7 +458,7 @@ mush, and only the hovered bar's range is being asked about.
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
   y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
-  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
+  series' bar centres, read from the rendered bar rects — a bound series sits at the _category_
   centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
   (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
   _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
@@ -690,7 +691,7 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 | `expandedGroupDepths`        | `number[]`                                             | ❌       | —                        | Expanded groups (controlled); keyed by column depth like `defaultExpandedGroupDepths`                                    |
 | `onExpandChange`             | `(event: SankeyGroupExpandEvent) => void`              | ❌       | —                        | Called when a group is expanded or folded                                                                                |
 | `onNodeClick`                | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked (never for a group node)                                                               |
-| `onLinkClick`                | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked (never for a ribbon merged into a group)                                         |
+| `onLinkClick`                | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked (never for a ribbon merged into a group)                                            |
 
 Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
@@ -756,9 +757,107 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 </Box>
 ```
 
-### 3.8\. Axis and Grid Components
+### 3.8\. Funnel Chart
 
-#### 3.8.1\. ReferenceLine Component
+<img src="./images/funnel-chart.png" alt="Funnel Chart Design"  height="400" width="600"/>
+
+A funnel shows how many people (or payments, orders, sessions) reach each step of a sequence. It is a thin Blade wrapper over Recharts' own `FunnelChart` and `Funnel`, the same way `ChartBarWrapper` wraps Recharts' `BarChart`. Each step is a Recharts trapezoid whose width is the step's count against the largest step, narrowing into the next step. Next to each step, a Recharts `LabelList` prints the step name and its share of the first step. Hovering a step darkens it and shows the step's count in `ChartTooltip`.
+
+#### Data shape
+
+One row per step, in funnel order, the same row type `ChartBarWrapper` takes. `ChartFunnel`'s `dataKey` names the count and `nameKey` names the step.
+
+```ts
+type data = { [key: string]: string | number };
+
+const steps = [
+  { step: 'Carts abandoned', count: 34 },
+  { step: 'Calls made', count: 19 },
+  { step: 'Calls connected', count: 19 },
+  { step: 'Ordered within 24 hours', count: 5 },
+];
+```
+
+The wrapper maps each row to the three keys Recharts needs (name, count and label) before passing them on. Recharts spreads every key of a row over its trapezoid, so a row with keys like `x` or `height` would otherwise move the shapes.
+
+| Case                            | Drawn as                                                 |
+| ------------------------------- | -------------------------------------------------------- |
+| Step smaller than the one above | Trapezoid narrowing to the next step                     |
+| Last step                       | Rectangle at its own width (`lastShapeType="rectangle"`) |
+| 100% drop (count `0`)           | No width; its label still shows `0%`                     |
+| Missing or non-numeric count    | Treated as `0`                                           |
+| First step is `0`               | Widths against the largest step; labels show names only  |
+| Every count `0`, or no data     | Nothing drawn                                            |
+
+#### `ChartFunnelWrapper` Props
+
+| Prop          | Type                                                         | Required | Default | Description                                                       |
+| ------------- | ------------------------------------------------------------ | -------- | ------- | ----------------------------------------------------------------- |
+| `data`        | `{ [key: string]: string \| number \| null \| undefined }[]` | ✅       | —       | One row per step, in funnel order                                 |
+| `children`    | `React.ReactNode`                                            | ✅       | —       | One `<ChartFunnel>`, plus an optional `<ChartTooltip>`            |
+| `testID`      | `string`                                                     | ❌       | —       | `data-testid` for the wrapper element                             |
+| `...BoxProps` | `BoxProps`                                                   | ❌       | —       | Blade Box layout props — use `height` / `width` to size the chart |
+
+#### `ChartFunnel` Props
+
+| Prop      | Type                          | Required | Default                                       | Description                                                       |
+| --------- | ----------------------------- | -------- | --------------------------------------------- | ----------------------------------------------------------------- |
+| `dataKey` | `string`                      | ✅       | —                                             | Key of the count in each row                                      |
+| `nameKey` | `string`                      | ❌       | `'name'`                                      | Key of the step name in each row                                  |
+| `color`   | `ChartsCategoricalColorToken` | ❌       | `'data.background.categorical.blue.moderate'` | Colour of the funnel; hover uses a darker step of the same colour |
+
+Example —
+
+```tsx
+import { ChartFunnelWrapper, ChartFunnel, ChartTooltip } from '@razorpay/blade/components';
+
+<Box height="300px">
+  <ChartFunnelWrapper data={steps}>
+    <ChartTooltip />
+    <ChartFunnel dataKey="count" nameKey="step" />
+  </ChartFunnelWrapper>
+</Box>;
+```
+
+#### Why Recharts' `Funnel`
+
+Blade's charts wrap Recharts and add Blade tokens; they don't draw their own shapes. An earlier version drew a column funnel (solid reached part, hatched dropped part on a percentage axis) out of `Bar` with custom shape renderers and SVG hatch patterns. That was hand-built drawing Blade would have to maintain, so the funnel now uses Recharts' `FunnelChart`, `Funnel` and `LabelList` as they are, with Blade tokens for the fill, stroke, label type and tooltip.
+
+What that costs:
+
+- **No percentage axis or drop-off layer.** Recharts draws the funnel as trapezoids. The share of the first step moves into the step labels, and the drop-off reads as the narrowing between steps.
+- **No keyboard tooltip.** Recharts' `FunnelChart` only allows item tooltips, and its keyboard handling only drives axis tooltips. The chart takes focus, but arrow keys don't move a tooltip. This is a Recharts limit; Blade doesn't add a focus layer of its own. Each step still carries `role="img"` and an `aria-label` (step, share, count) through Recharts' own props, so screen readers can read the steps.
+- **Raw counts in the tooltip.** `ChartTooltip` prints the value Recharts hands it, so there is no `formatValue`.
+
+#### Alternate APIs
+
+<details>
+<summary>A column funnel built from `Bar` (the first version)</summary>
+
+```tsx
+<ChartFunnelWrapper data={steps}>
+  <ChartXAxis dataKey="step" />
+  <ChartYAxis />
+  <ChartTooltip />
+  <ChartFunnel dataKey="count" name="Reached" droppedName="Dropped" />
+</ChartFunnelWrapper>
+```
+
+- Pros
+  - Shares and drop-off read off an axis, like product analytics dashboards.
+- Cons
+  - Custom shape renderers and SVG hatching on top of Recharts: drawing Blade owns instead of Recharts.
+
+</details>
+
+#### Out of scope for now
+
+- **`ChartLegend`.** A funnel has one series; the labels name every step.
+- **React Native.** `ChartFunnelWrapper` throws on native for now.
+
+### 3.9\. Axis and Grid Components
+
+#### 3.9.1\. ReferenceLine Component
 
 | Prop    | Type              | Required | Default     | Description                                           |
 | ------- | ----------------- | -------- | ----------- | ----------------------------------------------------- |
@@ -768,7 +867,7 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 > **Component Re-exports:** Components like ResponsiveContainer, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
-#### 3.8.2\. ReferenceBand Component (LineChart, BarChart)
+#### 3.9.2\. ReferenceBand Component (LineChart, BarChart)
 
 `ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line or a bar can be compared against the range other series fall in.
 
@@ -784,7 +883,7 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
 
 > **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): the invisible bound lines let Recharts compute geometry and fold it into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
 
-#### 3.8.3\. Per-line reference bands (range on `ChartLine`) — Industry SR
+#### 3.9.3\. Per-line reference bands (range on `ChartLine`) — Industry SR
 
 For the Industry SR use case (Optimizer), a chart can show **multiple trend lines, each with its own color-matched range band** (the industry min–max for that metric). Rather than N standalone `ChartReferenceBand`s, the range lives on `ChartLine` so the band auto-matches the line color and the tooltip pairs value+range:
 

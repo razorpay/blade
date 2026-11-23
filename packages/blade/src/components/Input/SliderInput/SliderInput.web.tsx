@@ -243,6 +243,10 @@ const _SliderInput = (
   });
 
   const shouldShowMarkers = showMarkers && canShowMarkers;
+  // Steps only widen the track floor when something is drawn per step. Without markers or scale
+  // values, a long range (600 one-second steps) would otherwise demand a 6000px track for dots
+  // that are never drawn, so only the two endpoints count.
+  const flooredStepCount = showMarkers || (showScale && showScaleValues) ? markerValues.length : 2;
   // With only the endpoints there is nothing to collide with, so the pitch floor does not apply.
   const shouldShowScale = showScale && (!showScaleValues || canShowScale);
   const scaleValues = React.useMemo(
@@ -317,15 +321,15 @@ const _SliderInput = (
           minWidth={makeSize(
             showScale && (!showScaleValues || markerValues.length === 2)
               ? // Only the two bounds get a label here and both anchor inward, so they need room
-                // side by side. Markers still need their own pitch, so take whichever is wider.
+                // side by side. Shown markers still need their own pitch, so take whichever is wider.
                 Math.max(
-                  getMinTrackWidth(markerValues.length, 0),
+                  getMinTrackWidth(flooredStepCount, 0),
                   getBoundLabelsMinWidth(
                     getLabelWidth(min, formatValue),
                     getLabelWidth(max, formatValue),
                   ),
                 )
-              : getMinTrackWidth(markerValues.length, showScale ? widestLabelWidth : 0),
+              : getMinTrackWidth(flooredStepCount, showScale ? widestLabelWidth : 0),
           )}
         >
           <FieldBox $hasScale={shouldShowScale}>
