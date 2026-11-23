@@ -20,7 +20,7 @@ const WIDTHS = { small: 38, medium: 48 } as const;
 /**
  * The Ray loader (secondary): Ray charges up and dashes across his box while the page loads, and when it's ready (`isLoading`
  * false) he slides on, turns round, jumps and drops through the floor, then `onComplete` is called. Drawn by Ray Studio's Dash
- * film, on Ray's engine. Its props mirror RazorSenseLoader's (`isLoading`, `onComplete`), so the two loaders read the same.
+ * film, on Ray's engine.
  */
 const _RayLoader = (
   {
@@ -56,8 +56,15 @@ const _RayLoader = (
     setIsDone(true);
     onCompleteRef.current?.();
   };
-  const completeRef = useRef(complete);
-  completeRef.current = complete;
+  // he's gone, or there's nothing to show (his film gave up or didn't load): onComplete once the page is ready too, never while it's
+  // still loading (the fresh-eyes review: a slow or failed chunk called it early)
+  const isGoneRef = useRef(false);
+  const gone = (): void => {
+    isGoneRef.current = true;
+    if (!isLoadingRef.current) complete();
+  };
+  const goneRef = useRef(gone);
+  goneRef.current = gone;
 
   // his director, engine and film load with his first render, chunks of their own, so an app that doesn't show the loader never
   // downloads them
@@ -69,15 +76,15 @@ const _RayLoader = (
       .then((module) => {
         if (isUnmounted || !boxRef.current || isDoneRef.current) return;
         mount = new module.RayLoaderMount(boxRef.current, optionsRef.current, () =>
-          completeRef.current(),
+          goneRef.current(),
         );
         mountRef.current = mount;
         if (!isLoadingRef.current) mount.finish(); // (ready while he was loading: done at once)
       })
       .catch((error: unknown) => {
-        if (!isUnmounted && __DEV__)
-          console.error('[RayLoader] its director failed to load', error);
-        if (!isUnmounted) completeRef.current();
+        if (isUnmounted) return;
+        if (__DEV__) console.error('[RayLoader] its director failed to load', error);
+        goneRef.current();
       });
     return () => {
       isUnmounted = true;
@@ -92,8 +99,9 @@ const _RayLoader = (
 
   useEffect(() => {
     if (isLoading) return;
-    if (mountRef.current) mountRef.current.finish();
-    else if (!canDraw()) completeRef.current(); // (nothing to draw him on: there's no finish to wait for)
+    // (gone already, or nothing to draw him on: there's no finish to wait for; his director still loading finishes as it starts)
+    if (isGoneRef.current || !canDraw()) complete();
+    else mountRef.current?.finish();
   }, [isLoading]);
 
   const boxHeight = height ?? WIDTHS[size] * HEIGHT_IN_WIDTHS;

@@ -18,9 +18,9 @@ import type { BladeElementRef } from '~utils/types';
  * Ray, Razorpay's AI mascot, drawn by Ray Studio's engine.
  *
  * He sits on a surface (usually the chat input), idles, watches what's typed, looks at the pointer and flips a coin when
- * clicked; while an answer is being worked on he plays its states (searching, calling, writing, working), handing over
- * from one to the next mid-move. He also shows how an answer ended (`outcome`), when the app is offline (`isOffline`) and
- * when it's listening (`isListening`). His box is his rest footprint and never changes size; what he does around it (props,
+ * clicked; while an answer is being worked on he plays its states (reading, thinking, searching, calling, writing,
+ * working), handing over from one to the next mid-move. He also shows how an answer ended (`outcome`), when the app is
+ * offline (`isOffline`) and when it's listening (`isListening`). His box is his rest footprint and never changes size; what he does around it (props,
  * a coin in the air, the hop) draws outside it without affecting layout.
  */
 const _Ray = (
@@ -75,6 +75,12 @@ const _Ray = (
   shouldUnmountRef.current = shouldUnmountWhenHidden;
   const wasRemovedRef = useRef(isRemoved); // his box was removed (or never laid out): back, he comes up out of the surface
   const hasMountedRef = useRef(false); // a director has started him: the landing dash is once, not again for a new one
+  // `outcome` has had its turn (played, or cut short): a new director (his box back, reduced motion changed) doesn't play it again;
+  // set again, it plays (the fresh-eyes review)
+  const isOutcomeOverRef = useRef(false);
+  useEffect(() => {
+    if (outcome) isOutcomeOverRef.current = false;
+  }, [outcome]);
 
   // prefers-reduced-motion is read as his director starts, so when it changes while he's up a new director takes over, still or
   // moving as it now says (the PR review: it was read once and kept for good)
@@ -107,6 +113,10 @@ const _Ray = (
         );
         hasMountedRef.current = true;
         wasRemovedRef.current = false;
+        if (isOutcomeOverRef.current) mount.skipOutcome();
+        mount.onOutcomeOver = () => {
+          isOutcomeOverRef.current = true;
+        };
         mount.setInputRef(inputRefRef.current ?? null);
         mount.setVoiceStream(voiceStreamRef.current ?? null);
         mount.onAway = () => {
