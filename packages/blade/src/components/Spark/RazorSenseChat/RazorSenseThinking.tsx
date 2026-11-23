@@ -9,13 +9,13 @@ import React, {
 } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import styled, { css, keyframes } from 'styled-components';
-import tinycolor from 'tinycolor2';
 import type { RazorSenseThinkingProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
 import { SLOT_FROM_LABEL, THINKING_REACH, rectIn, thinkingSlot } from './placement';
 import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
+import { mixColors } from './mixColors';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
@@ -125,9 +125,7 @@ const RazorSenseThinking = forwardRef<HTMLDivElement, RazorSenseThinkingProps>(
     const base = theme.colors.surface.text.primary.normal;
     const colors = {
       base,
-      shine: tinycolor
-        .mix(base, theme.colors.surface.text.staticWhite.normal, SHINE_LIFT[mode])
-        .toHexString(),
+      shine: mixColors(base, theme.colors.surface.text.staticWhite.normal, SHINE_LIFT[mode]),
     };
     // the label's box: where thinking is drawn from (it holds the rolling labels, so it stays put as they change)
     const labelRef = useRef<HTMLSpanElement>(null);
