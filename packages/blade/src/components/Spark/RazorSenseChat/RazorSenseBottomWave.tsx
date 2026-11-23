@@ -2,7 +2,7 @@ import React, { forwardRef, useContext, useEffect, useRef, useState } from 'reac
 import type { RazorSenseBottomWaveProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
-import { BOTTOM_WAVE_REACH, OUTCOME_REACH_UP, inputAnchor, rectIn } from './placement';
+import { BOTTOM_WAVE_REACH, OUTCOME_REACH_UP, WAVE_PIXELS, inputAnchor, rectIn } from './placement';
 import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { useStateStill } from './useStateStill';
@@ -140,6 +140,7 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       outcome,
       onOutcome,
       layoutKey: `${up} ${side}`,
+      maxPixels: WAVE_PIXELS,
     });
     const still = useStill(!chat && isStill, mode, loadBottomWaveStill);
     // (listening, or an outcome: its own still in its place)

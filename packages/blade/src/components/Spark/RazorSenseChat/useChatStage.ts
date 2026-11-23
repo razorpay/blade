@@ -35,6 +35,8 @@ type ChatStageOptions = {
   onOutcome?: (isPlaying: boolean) => void;
   /** changed when the component moves its stage itself (its reach): where its parts are is read again at once */
   layoutKey?: unknown;
+  /** its canvas's pixels at most (a bigger box draws at a lower sharpness): the lone bottom wave's, which grows to its splash */
+  maxPixels?: number;
 } & Partial<ChatStateInputs>;
 
 /**
@@ -53,6 +55,7 @@ const useChatStage = ({
   getAnchors,
   onOutcome,
   layoutKey,
+  maxPixels,
   scale,
   isPaused,
   onLoad,
@@ -123,7 +126,13 @@ const useChatStage = ({
         const setup = getChatSetup(doc);
         // flow 9's chat comp is drawn at its own size (2x comp px = CSS px) x scale, from the stage's top-left; the pages are
         // placed in it
-        const opts = { fit: 'fixed' as const, scale: 0.5 * scale, alpha: true, paused: true };
+        const opts = {
+          fit: 'fixed' as const,
+          scale: 0.5 * scale,
+          alpha: true,
+          paused: true,
+          maxPx: maxPixels,
+        };
         const engine = stage.mount({ doc, opts });
         if (!engine || !setup) return false;
         const driver = new ChatDriver(setup, mode === 'dark');
