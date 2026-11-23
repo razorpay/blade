@@ -554,7 +554,7 @@ TestRayListens.play = async () => {
 };
 
 // The answer row's Ray comes up out of his row (canon hide's second half) and his first film takes him from there; as the answer's done
-// and he's hidden, his film's exit is cut once its prop is put away and he goes down from there, at the way back's 1.2x (flow 10.5)
+// and he's hidden, his film's exit is cut once its prop is put away and he goes down from there (flow 10.5). Both his jumps at 1.7x
 export const TestRayRowHops: StoryFn<typeof Ray> = () => {
   const [state, setState] = useState<RayState>('working');
   const [isVisible, setIsVisible] = useState(false);
@@ -582,11 +582,14 @@ export const TestRayRowHops: StoryFn<typeof Ray> = () => {
 TestRayRowHops.play = async () => {
   const { getByRole } = within(document.body);
   await waitFor(() => expect(doing()).toBe('gone'), { timeout: 3000 });
+  await waitFor(() => expect(rayEl().__ray.films.laptop2?.ready).toBe(true), { timeout: 5000 }); // (loaded ahead)
   await userEvent.click(getByRole('button', { name: 'Rise' }));
+  const rise = performance.now();
   await waitFor(() => expect(doing()).toBe('showing'), { timeout: 1000 });
   await waitFor(() => expect(holder()).toMatchObject({ id: 'laptop2', started: true }), {
     timeout: 5000,
   });
+  expect(performance.now() - rise).toBeLessThan(550); // (up at 1.7x: about 380 ms; 650 at 1x)
   expect(rayEl().__ray.pendingFrom).not.toBe(null); // (from his pose as he came up)
   await sleep(2500);
   expect(rayEl().__ray.films.laptop2.host.handle.F.L.back).toBeTruthy(); // (where its laptop's put away: the cut's read off it)
@@ -594,7 +597,9 @@ TestRayRowHops.play = async () => {
   const done = performance.now();
   await waitFor(() => expect(doing()).toBe('hiding'), { timeout: 3000 });
   expect(performance.now() - done).toBeLessThan(1000); // (cut once the laptop's away, about 0.6 s, not after its whole exit: 1.1 s)
+  const down = performance.now();
   await waitFor(() => expect(doing()).toBe('gone'), { timeout: 2000 });
+  expect(performance.now() - down).toBeLessThan(450); // (down at 1.7x: about 350 ms; 500 at 1.2x)
 };
 
 // The way back is quicker: a Ray hopping back up onto his surface lands at 1.2x canon's pace

@@ -262,7 +262,7 @@ const STEPS: [RayState, number][] = [
 
 // flow 10.5's timing (measured there): the answer's Ray comes up out of his row about half a second after the chat box's is out of
 // sight (out at 467 ms); and as the answer's done he's out of sight about a second later (his laptop put away 600 ms into its exit,
-// his exit cut there, then 389 ms down at the way back's 1.2x), when the chat box's comes back up at once
+// his exit cut there, then about 350 ms down at the answer row's 1.7x), when the chat box's comes back up at once
 const ROW_IN_MS = 950;
 const BACK_MS = 1000;
 

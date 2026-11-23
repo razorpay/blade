@@ -50,13 +50,15 @@ const IDLE_WAIT_MS = 400; // back with nothing to do: his idle starts after this
 const TYPING_EXIT = 4; // an idle film's exit when he's needed to watch what's typed (the user: the typing look must start fast)
 const HOP_EXIT = 1.6; // ... and when he hops off the surface (flow 9's P.f5LapQuick)
 // the hops, as each Ray's own entry and exit, timed as flow 10.5 has them (measured there, 2026-11-23: its hide 465 ms to out of sight,
-// its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The way back from an answer is 1.2x: the answer row's Ray goes down as
-// soon as his film has put its prop away (its exit cut EXIT_CUT_MS after it; flow 10.5: 600 ms into the laptop's exit, then 391 ms
-// down), and the chat box's comes back up (493 ms to landed), ending as he lands when an outcome is waiting, which starts there (flow
-// 10.5's Success on his seat). The answer row's Ray comes up out of the row with canon hide's second half (flow 10.3's rowHop window,
-// at flow 10.5's 1x) and his first film settles from that pose over 320 ms (its 'start' from)
+// its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The chat box's Ray drops off at 1x as the question goes, and comes
+// back up at 1.2x (HOP_BACK; 493 ms to landed), ending as he lands when an outcome is waiting, which starts there (flow 10.5's Success
+// on his seat). The answer row's Ray jumps quicker both ways (ROW_HOP, the user, 2026-11-24: "the answer jumps should be faster, go
+// with 1.7x if 10.5 is using 2x"; flow 10.5's rowHop plays at HS.spd 2): up out of his row with canon hide's second half (rowHop's
+// window), his first film settling from that pose over 320 ms (its 'start' from); and down as soon as his film has put its prop away
+// (its exit cut EXIT_CUT_MS after it; flow 10.5: 600 ms into the laptop's exit)
 const HOP_BACK = 1.2;
-const ROW_RISE = { window: [1600, 2250] as [number, number] };
+const ROW_HOP = 1.7;
+const ROW_RISE = { window: [1600, 2250] as [number, number], speed: ROW_HOP };
 const TO_LANDED: [number, number] = [1600, 2190]; // canon hide: up out of the surface, landed at 2183
 const EXIT_CUT_MS = 20;
 const STILL_TICKS = 4; // reduced motion: a state's film is ticked this many frames for its still (its messages come a task later)
@@ -317,7 +319,7 @@ class RayMount {
   private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
   // `outcome`: from when it's set till it has played once (or been cut short by something that wins over it)
   private outcome: RayOutcome | null = null;
-  private afterAnswer = false; // an answer's film has had him since he came up: his hop down is the way back's (HOP_BACK)
+  private afterAnswer = false; // an answer's film has had him since he came up: he's the answer row's, his hop down at ROW_HOP
   private restReadyAt = 0; // his blend to rest (toRest) is over at this time
   private voiceStream: MediaStream | null = null;
   private stillTimer: ReturnType<typeof setTimeout> | null = null; // reduced motion: when the outcome's still has had its time
@@ -650,7 +652,7 @@ class RayMount {
       case 'hidden':
         if (h.act !== 'hiding' && h.act !== 'gone') {
           this.holder = { by: 'player', act: 'hiding', since: now };
-          this.player.hop('out', () => this.gone(), { speed: this.afterAnswer ? HOP_BACK : 1 });
+          this.player.hop('out', () => this.gone(), { speed: this.afterAnswer ? ROW_HOP : 1 });
         }
         return;
       case 'answer':
@@ -819,7 +821,7 @@ class RayMount {
   }
 
   /**
-   * An answer row's Ray comes up out of the row (canon hide's second half, flow 10.3's rowHop) and the answer's film takes him from
+   * An answer row's Ray comes up out of the row (canon hide's second half, flow 10.3's rowHop, at ROW_HOP) and the answer's film takes him from
    * that pose (its start settles from it). Its film loads meanwhile; he holds the pose till it's ready (START_WAIT_MS at most).
    */
   private rise(now: number): void {
@@ -847,7 +849,7 @@ class RayMount {
 
   /**
    * His answer film's exit, cut once its prop is put away (its L.back), or else once he's at rest (its exit's last key), EXIT_CUT_MS
-   * after, and his hop down from the pose he's in then, at the way back's pace: flow 10.5, where the gap between putting the laptop
+   * after, and his hop down from the pose he's in then, at the answer row's pace (ROW_HOP): flow 10.5, where the gap between putting the laptop
    * away and the jump down had been 0.5 s. Read off the film's own handle, as flow 10.5 reads it; a film without one plays its whole
    * exit, and he hops off at rest (its 'done').
    */
@@ -859,7 +861,7 @@ class RayMount {
     const from = RC.frameAt(F.sim, F.t);
     this.filmDone(film); // (it stays up as it last drew him till his own Ray has drawn: one frame, no gap)
     this.holder = { by: 'player', act: 'hiding', since: now };
-    this.player.hop('out', () => this.gone(), { speed: HOP_BACK, from });
+    this.player.hop('out', () => this.gone(), { speed: ROW_HOP, from });
   }
 
   /** What a state's film needs to know before its start (droop: malfunction or sad). */
