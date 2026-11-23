@@ -119,6 +119,21 @@ describe('FreshStage: quality to the device, both ways', () => {
     expect(deviceStartLevel(readGpuNames())).toBe(level);
   });
 
+  it('its device level makes no probe context of its own (its WebGL2 check asked about a caveat already)', () => {
+    const { whyCantAnimate, readGpuNames } = setup({
+      renderer: 'ANGLE (Intel, Intel(R) UHD Graphics (0x00009BC4) Direct3D11 vs_5_0 ps_5_0, D3D11)',
+    });
+    expect(whyCantAnimate()).toBeNull();
+    const getContext = HTMLCanvasElement.prototype.getContext as jest.Mock;
+    getContext.mockClear();
+    let deviceStartLevel: any;
+    jest.isolateModules(() => {
+      ({ deviceStartLevel } = require('../deviceLevel'));
+    });
+    deviceStartLevel(readGpuNames());
+    expect(getContext).not.toHaveBeenCalled();
+  });
+
   it('a page started two steps down draws at 0.75 of a CSS px from its first frame', () => {
     const {
       FreshStage,

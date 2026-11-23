@@ -28,7 +28,14 @@ const deviceStartLevel = (names: { renderer: string | null; vendor: string | nul
     getParameter: (p: number) =>
       p === DEBUG_INFO.UNMASKED_RENDERER_WEBGL ? names.renderer : names.vendor,
   };
-  const { tier, isMobile } = PerformanceManager.detect((named as unknown) as WebGLRenderingContext);
+  // (no caveat: a page gets here only past FreshStage's WebGL2 check, made with failIfMajorPerformanceCaveat; detect() would otherwise
+  // make a WebGL1 probe context of its own, on Direct3D right before the first engine)
+  const { tier, isMobile } = PerformanceManager.detect(
+    (named as unknown) as WebGLRenderingContext,
+    {
+      hasMajorPerformanceCaveat: false,
+    },
+  );
   return startLevelOf(tier, isMobile);
 };
 
