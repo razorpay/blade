@@ -188,6 +188,44 @@ describe('<Button />', () => {
     );
   }, 20000);
 
+  it('should never load an AI hover on a link Button with isDisabled, though Blade keeps a link enabled', async () => {
+    await Promise.all([
+      import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer'),
+      import('~components/Spark/ButtonRay/ButtonRayLayer'),
+    ]);
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button
+          href="/ask"
+          color="neutral"
+          aiHover="razorsense"
+          isDisabled
+          testID="razorsense-link"
+        >
+          Ask Ray
+        </Button>
+        <Button
+          href="/investigate"
+          variant="secondary"
+          aiHover="ray-investigate"
+          isDisabled
+          testID="ray-link"
+        >
+          Investigate
+        </Button>
+        <Button href="/ask" color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    // (still a link, as Blade keeps it: only its AI hover is off)
+    expect(getByTestId('razorsense-link').tagName).toBe('A');
+    await expectGivesWay(
+      [getByTestId('razorsense-link'), getByTestId('ray-link')],
+      getByTestId('control'),
+    );
+  }, 20000);
+
   it('should keep the full-width neutral button on its own hover, without RazorSense', async () => {
     await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
     const { getByTestId } = renderWithTheme(

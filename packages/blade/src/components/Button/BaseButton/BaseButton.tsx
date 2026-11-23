@@ -595,6 +595,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  // an AI hover never plays on a disabled button, a link's included: Blade keeps a link enabled (and its look), but an app that
+  // disables an AI action (Ray down, the merchant offline) means it to stop inviting a hover
+  const isAiHoverEnabled = !disabled && !isDisabled;
   const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
   const isAiHoverKnown = aiHover !== undefined && AI_HOVERS.includes(aiHover);
   const hasRazorSense = aiHover === 'razorsense';
@@ -935,11 +938,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...makeAnalyticsAttribute(rest)}
     >
       {isRazorSenseHover ? (
-        <ButtonRazorSense isEnabled={!disabled} onLiveChange={setIsRazorSenseLive} />
+        <ButtonRazorSense isEnabled={isAiHoverEnabled} onLiveChange={setIsRazorSenseLive} />
       ) : null}
       {isRayHover ? (
         <ButtonRay
-          isEnabled={!disabled}
+          isEnabled={isAiHoverEnabled}
           variant={rayVariant ?? 'investigate'}
           size={resolvedSize}
         />
