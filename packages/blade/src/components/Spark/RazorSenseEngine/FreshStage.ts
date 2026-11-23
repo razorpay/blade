@@ -1,5 +1,6 @@
 import type { FreshDoc, FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
-import { POTATO_TIER_PATTERNS } from '../RzpGlass/PerformanceManager';
+import { PerformanceManager, POTATO_TIER_PATTERNS } from '../RzpGlass/PerformanceManager';
+import type { GpuTier } from '../RzpGlass/PerformanceManager';
 
 type MakeFreshEngine<Made> = (
   host: FreshEngineHost,
@@ -59,8 +60,42 @@ const EASE_FPS = 45;
 const EASE_SECONDS = 3;
 const SLOW_STEP_SECONDS = 2;
 const EASE_DPR = 1.2;
-/** 0: full; 1: every other frame; 2: and at EASE_DPR */
+/**
+ * 0: full; 1: every other frame; 2: and at EASE_DPR. Page-wide. It starts at the device's level (startLevelOf: today's RazorSense's
+ * GPU class), steps down while frames can't keep up and back up once they hold again (RECOVER_*)
+ */
 let easeLevel = 0;
+
+/**
+ * Where a page starts (the PR review: a known weak GPU drew 3-6 s of janky full-quality frames before stepping down): from
+ * PerformanceManager.detect's class, as today's RazorSense seeds its quality. A low GPU (old Intel HD, Mali-400, Adreno 3xx/4xx...)
+ * two steps down, a mid one on a phone one step down, a high or unknown one (or any where the browser hides the GPU's name and
+ * memory, cores and mobile say so) at full. A software renderer never gets here: it shows the still (hasUsableGpu). The steps keep
+ * the picture (every other frame, a lower sharpness under the blurs); only frames under SLOW_FPS go to the still, as before.
+ */
+const startLevelOf = (tier: GpuTier, isMobile: boolean): number => {
+  if (tier === 'low') return 2;
+  if (tier === 'mid' && isMobile) return 1;
+  return 0;
+};
+
+/**
+ * Back up a step once frames hold again (the PR review: a short stall, a video call or another WebGL tab, cut quality for the rest of
+ * the page): RECOVER_SECONDS running at RECOVER_FPS or more (or 9/10 of the screen's own rate, on a slower screen), RECOVER_COOLDOWN
+ * ms on from the last step. A step up that doesn't hold (a step down within RECOVER_PROBE_MS) doubles the wait before the next one
+ * (up to 16x), so a device on its edge doesn't go up and down. Any step comes at most once a second, page-wide.
+ */
+const RECOVER_FPS = 55;
+const RECOVER_SECONDS = 3;
+const RECOVER_COOLDOWN = 4000;
+const RECOVER_PROBE_MS = 8000;
+/** when the steps last changed, the last step up, and how many step ups didn't hold (page-wide; performance.now ms) */
+let easedAt = 0;
+let raisedAt = 0;
+let failedRaises = 0;
+
+/** the page's steps now (for checks) */
+const freshEaseLevel = (): number => easeLevel;
 
 /**
  * the screen's frame rate (0: not measured yet), from the page's own frames from the moment a RazorSense component mounts, before
@@ -169,6 +204,18 @@ const hasUsableGpu = (): boolean => {
         : '';
       // the renderers that draw on the CPU, as RazorSense's PerformanceManager lists them (one list for both)
       usableGpu = !POTATO_TIER_PATTERNS.some((pattern) => pattern.test(renderer));
+      // the page starts at its device's level (this same context: PerformanceManager reads its GPU's name, or the device's memory,
+      // cores and mobile where the browser hides it)
+      if (usableGpu) {
+        try {
+          const { tier, isMobile } = PerformanceManager.detect(
+            (gl as unknown) as WebGLRenderingContext,
+          );
+          easeLevel = startLevelOf(tier, isMobile);
+        } catch {
+          // (no class: full, stepping down if it can't keep up)
+        }
+      }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     }
   } catch {
@@ -229,6 +276,7 @@ class FreshStage {
   private slowSeconds = 0;
   private hasReportedSlow = false;
   private easeSeconds = 0;
+  private fastSeconds = 0;
   private easedTo = 0;
   private settleId = 0;
   private showId = 0;
@@ -363,6 +411,7 @@ class FreshStage {
     const prepared = this.takePrepared(exp, switches);
     if (prepared) {
       this.engine = prepared;
+      this.easeEngine();
       this.update();
       this.watchFirstDraw();
       this.showOnFirstFrame();
@@ -387,10 +436,17 @@ class FreshStage {
       return null;
     }
     this.engine = engine;
+    this.easeEngine();
     this.update();
     this.watchFirstDraw();
     this.showOnFirstFrame();
     return engine;
+  }
+
+  /** its engine at the page's level from its first frame (a page that started a step down, or stepped down already) */
+  private easeEngine(): void {
+    this.easedTo = easeLevel;
+    if (easeLevel >= 2) this.engine?.sharpness?.(EASE_DPR);
   }
 
   /** whether it has an engine (made, not freed): one a component can hand its next comp to */
@@ -729,15 +785,34 @@ class FreshStage {
     this.frames = 0;
     // the middle step first (a second under EASE_FPS, or under 3/4 of the screen's rate on a slower screen, counts towards it;
     // under SLOW_FPS each step comes sooner): each step down starts the still's count again, so the still comes only once the
-    // lowest step can't keep up either
+    // lowest step can't keep up either. Back up a step once frames hold again (RECOVER_*)
     this.easeSeconds =
       fps < Math.min(EASE_FPS, 0.75 * (screenFps || 60)) ? this.easeSeconds + 1 : 0;
-    if (this.easeSeconds >= (fps < SLOW_FPS ? SLOW_STEP_SECONDS : EASE_SECONDS) && easeLevel < 2) {
+    this.fastSeconds =
+      fps >= Math.min(RECOVER_FPS, 0.9 * (screenFps || 60)) ? this.fastSeconds + 1 : 0;
+    if (
+      this.easeSeconds >= (fps < SLOW_FPS ? SLOW_STEP_SECONDS : EASE_SECONDS) &&
+      easeLevel < 2 &&
+      now - easedAt >= 1000
+    ) {
+      // (a step up that didn't hold: the next waits longer)
+      if (raisedAt && now - raisedAt < RECOVER_PROBE_MS) failedRaises += 1;
       easeLevel += 1;
+      easedAt = now;
       this.easeSeconds = 0;
       this.slowSeconds = 0;
+    } else if (
+      easeLevel > 0 &&
+      this.fastSeconds >= RECOVER_SECONDS &&
+      now - easedAt >= RECOVER_COOLDOWN * 2 ** Math.min(failedRaises, 4)
+    ) {
+      easeLevel -= 1;
+      easedAt = now;
+      raisedAt = now;
+      this.fastSeconds = 0;
+      this.easeSeconds = 0;
     } else if (this.easedTo !== easeLevel) {
-      // (another stage on the page stepped down: this one's count starts again too)
+      // (another stage on the page stepped: this one's count starts again too)
       this.slowSeconds = 0;
     }
     if (this.slowSeconds >= SLOW_SECONDS && easeLevel >= 2) wasSlow = true;
@@ -753,5 +828,5 @@ class FreshStage {
   }
 }
 
-export { FreshStage, freshFailures, measureScreen, whyCantAnimate };
+export { FreshStage, freshEaseLevel, freshFailures, measureScreen, whyCantAnimate };
 export type { CreateFreshEngine, FreshDriver, FreshFailure };
