@@ -4,7 +4,7 @@ Ray
 
 ## Description
 
-Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat input he idles, watches the caret while the user types (and nudges when typing stops), looks at the pointer and flips a coin when clicked; he hops off the input while an answer is being worked on. A second Ray in the answer's row plays the answer's states (`searching`, `calling`, `writing`, `working`) and hands over between them mid-move. He also shows how an answer ended (`outcome`: `success` or `error`, played once), when the app is offline (`isOffline`) and when it's listening to the user's voice (`isListening`, with the page's own `voiceStream`). Use it for AI assistant surfaces such as chat inputs and answer rows.
+Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat input he idles, watches the caret while the user types (and nudges when typing stops), looks at the pointer and flips a coin when clicked; he hops off the input while an answer is being worked on. A second Ray in the answer's row plays the answer's states (`reading`, `thinking`, `searching`, `calling`, `writing`, `working`) and hands over between them mid-move. He also shows how an answer ended (`outcome`: `success` or `error`, played once), when the app is offline (`isOffline`) and when it's listening to the user's voice (`isListening`, with the page's own `voiceStream`). Use it for AI assistant surfaces such as chat inputs and answer rows.
 
 ## Important Constraints
 
@@ -118,7 +118,7 @@ type RayProps = {
   /**
    * While `true`, he's offline: he goes grey, his eyes twitch and every few seconds he glitches. Back to `false`, he jumps back
    * online (his colour floods back) and goes on with his idle. It wins over everything else he's doing: an answer's states, the
-   * mic, typing. The same prop as on RazorSense, so a page passes one value to both.
+   * mic, typing.
    *
    * @default false
    */
@@ -126,21 +126,21 @@ type RayProps = {
   /**
    * While `true`, he's listening: a mic whips out round his side and he holds it out, nodding along while you talk. Back to
    * `false`, the mic whips back in. Its level comes from `voiceStream`; without one he still holds the mic out, he just doesn't
-   * react to talking. The same prop as on RazorSense.
+   * react to talking.
    *
    * @default false
    */
   isListening?: boolean;
   /**
    * The voice he listens to while `isListening`: the `MediaStream` your page got from `getUserMedia` for its own voice input.
-   * He only reads its level, once a frame; he never opens the mic himself and never records. The same prop as on RazorSense.
+   * He only reads its level, once a frame; he never opens the mic himself and never records.
    */
   voiceStream?: MediaStream;
   /**
    * How the answer ended, played once when it's set: `success`, a jump with confetti and a little dance; `error`, a sigh and a
    * slow shake of his eyes. It waits for an answer's states to end, and for him to be back on his surface (`isVisible`), so set
-   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again.
-   * The same prop as on RazorSense.
+   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again
+   * (set while one is playing, it plays next).
    */
   outcome?: RayOutcome;
 } & TestID &
@@ -153,7 +153,7 @@ type RayProps = {
 **Do**
 
 - Sit the Ray on the chat input's top edge, near its right end (absolutely positioned above it), and pass the input as `watchedInputRef` so he watches what's typed.
-- Set `isVisible={false}` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through `searching`, `calling`, `writing` and `working`.
+- Set `isVisible={false}` on the input's Ray while an answer is being worked on, and show a second Ray in the answer's row with `state` stepping through the answer's steps (`reading`, `thinking`, `searching`, `calling`, `writing`, `working`).
 - Give the answer row's Ray `idle="rest"` and `shouldReactToPointer={false}`, so he rests between states and when the answer is done.
 - Add `shouldUnmountWhenHidden` to the answer row's Ray when the row should close up after he drops out (his box is removed once he's hopped off).
 - Use `entrance="dash"` only on the Ray that's on screen as the page lands (the chat input's).
@@ -161,7 +161,7 @@ type RayProps = {
 - Use `size="small"` in side panels and `size="medium"` on the dashboard and full-page chat.
 - Leave `accessibilityLabel` unset when the surrounding UI already says what's happening; set it only when Ray carries meaning on his own.
 - Set `outcome` on the chat input's Ray as the answer finishes (with `isVisible` back to `true`): he comes back up and plays it on his seat. Clear it (`undefined`) when the next question is sent.
-- Pass the same `isOffline`, `isListening` and `voiceStream` to Ray and to RazorSense, so both show the same thing.
+- Drive `isOffline`, `isListening` and `voiceStream` from the page's own state (its online status, its voice input), the same values any other AI surface on the page shows.
 
 **Don't**
 
@@ -225,7 +225,8 @@ const ChatInputWithRayStates = () => {
   const [value, setValue] = useState('');
   const [isAnswering, setIsAnswering] = useState(false);
   const [outcome, setOutcome] = useState<'success' | 'error' | undefined>(undefined);
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  // (read in the browser only: there's no navigator in a server render)
+  const [isOffline, setIsOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine);
   const [voiceStream, setVoiceStream] = useState<MediaStream | undefined>(undefined);
 
   useEffect(() => {

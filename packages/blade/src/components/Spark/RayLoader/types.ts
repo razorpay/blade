@@ -6,14 +6,15 @@ type RayLoaderProps = {
    * While `true` Ray charges up and dashes, and holds the dash while the page loads. Set it to `false` when the page is ready: he
    * slides on, turns round, jumps and drops through the floor, then `onComplete` is called. It plays once per mount: once he's
    * gone, setting it back to `true` doesn't bring him back (mount it again, with a new `key`). If it turns `false` before he has
-   * started (his film still loading), `onComplete` is called straight away. The same prop as RazorSenseLoader's.
+   * started (his film still loading), `onComplete` is called straight away.
    *
    * @default true
    */
   isLoading?: boolean;
   /**
-   * Called once he has dropped through the floor (after `isLoading` turns `false`), so the page can take the loader's place. The
-   * same prop as RazorSenseLoader's.
+   * Called once he has dropped through the floor (after `isLoading` turns `false`), so the page can take the loader's place. Never
+   * while `isLoading` is `true`: if he can't be shown (his film didn't load) it waits for `isLoading` to turn `false`, and then it's
+   * called at once, as it is when the loader is out of sight (nothing would see his finish).
    */
   onComplete?: () => void;
   /**

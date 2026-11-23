@@ -26,6 +26,102 @@ const pointerAt = (x: number, y: number): void => {
   window.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y }));
 };
 
+/** `check` on every animation frame for `ms`: something that must hold all along, not only when waitFor looks */
+const everyFrameFor = (ms: number, check: () => void): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const end = performance.now() + ms;
+    const step = (): void => {
+      try {
+        check();
+      } catch (error: unknown) {
+        reject(error);
+        return;
+      }
+      if (performance.now() >= end) resolve();
+      else requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+
+/** What he does, frame by frame (each change once), till stopped */
+const recordDoing = (i = 0): { seen: string[]; stop: () => void } => {
+  const seen: string[] = [];
+  let isOn = true;
+  const step = (): void => {
+    const now = doing(i);
+    if (seen[seen.length - 1] !== now) seen.push(now);
+    if (isOn) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+  return {
+    seen,
+    stop: () => {
+      isOn = false;
+    },
+  };
+};
+
+/** Someone shows him: his own Ray's canvas, or a film's layer that's shown and awake (a film put to sleep has emptied its canvases) */
+const isSeen = (i = 0): boolean => {
+  const r = rayEl(i)?.__ray;
+  if (!r) return false;
+  if (r.player.canvas.style.visibility !== 'hidden') return true;
+  return Object.values(r.films).some(
+    (f: any) => f.host.layer.style.visibility !== 'hidden' && !f.host.parked,
+  );
+};
+
+/** The ink on a canvas: its pixels that aren't see-through */
+const inkOf = (c: HTMLCanvasElement): number => {
+  if (!c.width || !c.height || !c.getContext('2d')) return 0; // (a WebGL canvas: not counted)
+  const copy = document.createElement('canvas');
+  copy.width = c.width;
+  copy.height = c.height;
+  const x = copy.getContext('2d', { willReadFrequently: true })!;
+  x.drawImage(c, 0, 0);
+  const d = x.getImageData(0, 0, c.width, c.height).data;
+  let ink = 0;
+  for (let i = 3; i < d.length; i += 4) if (d[i] > 2) ink++;
+  return ink;
+};
+const inkIn = (el: Element): number =>
+  [...el.querySelectorAll('canvas')].reduce((sum, c) => sum + inkOf(c), 0);
+
+/**
+ * prefers-reduced-motion: reduce, for the Rays and loaders inside it: set as it renders (before they read it), put back as it goes.
+ * Its `change` listeners are kept, so a Ray that listens for it is fine.
+ */
+const ReducedMotion = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+  useState(() => {
+    const w = window as any;
+    if (w.__realMatchMedia) return null;
+    w.__realMatchMedia = window.matchMedia;
+    window.matchMedia = ((query: string) =>
+      query.includes('prefers-reduced-motion')
+        ? {
+            matches: true,
+            media: query,
+            onchange: null,
+            addEventListener: () => undefined,
+            removeEventListener: () => undefined,
+            addListener: () => undefined,
+            removeListener: () => undefined,
+            dispatchEvent: () => false,
+          }
+        : w.__realMatchMedia.call(window, query)) as typeof window.matchMedia;
+    return null;
+  });
+  React.useEffect(
+    () => () => {
+      const w = window as any;
+      if (w.__realMatchMedia) window.matchMedia = w.__realMatchMedia;
+      w.__realMatchMedia = undefined;
+    },
+    [],
+  );
+  return children;
+};
+
 // He watches what's typed in the input he's given, and goes back to his idle when it's cleared
 export const TestRayWatchesWhatsTyped: StoryFn<typeof Ray> = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -604,6 +700,253 @@ TestRayClearedOutcomeStaysCleared.play = async () => {
   expect(doing()).toBe('rest');
 };
 
+// Offline and the error are the same film (droop): offline as the error ends, and the error as he's back online, start it again as it
+// settles. He stays seen all through, the film awake (the fresh-eyes review: it was put to sleep under him, and he was unseen)
+export const TestRayOfflineAndErrorShareTheirFilm: StoryFn<typeof Ray> = () => {
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  const [isOffline, setIsOffline] = useState(false);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" outcome={outcome} isOffline={isOffline} shouldReactToPointer={false} />
+      <Button onClick={() => setOutcome('error')}>Error</Button>
+      <Button onClick={() => setOutcome(undefined)}>Clear</Button>
+      <Button onClick={() => setIsOffline((v) => !v)}>{isOffline ? 'Online' : 'Offline'}</Button>
+    </Box>
+  );
+};
+TestRayOfflineAndErrorShareTheirFilm.play = async () => {
+  const { getByRole } = within(document.body);
+  const awakeAndSeen = (): void => {
+    expect(rayEl().__ray.films.droop.host.parked).toBe(false);
+    expect(isSeen()).toBe(true);
+  };
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  // the error playing, then offline
+  await userEvent.click(getByRole('button', { name: 'Error' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'error', started: true }),
+    { timeout: 5000 },
+  );
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'offline', started: true }),
+    { timeout: 5000 },
+  );
+  await everyFrameFor(1500, awakeAndSeen);
+  await userEvent.click(getByRole('button', { name: 'Online' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 6000 });
+  // offline, the error set meanwhile (offline wins), then back online: the error
+  await userEvent.click(getByRole('button', { name: 'Clear' }));
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'offline', started: true }),
+    { timeout: 5000 },
+  );
+  await userEvent.click(getByRole('button', { name: 'Error' }));
+  await sleep(300);
+  expect(holder()).toMatchObject({ id: 'droop', state: 'offline' }); // (offline wins)
+  await userEvent.click(getByRole('button', { name: 'Online' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'error', started: true }),
+    { timeout: 6000 },
+  );
+  await everyFrameFor(1500, awakeAndSeen);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 10000 });
+};
+
+// `outcome` set again while one plays: the next one plays after it (or cuts it short, if it's the other one). "Play again" mid-Success
+// plays Success again; the error set mid-Success plays the error (the fresh-eyes review: both were dropped)
+export const TestRayOutcomeSetAgainMidPlay: StoryFn<typeof Ray> = () => {
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  const playAgain = (next: RayOutcome): void => {
+    setOutcome(undefined);
+    window.setTimeout(() => setOutcome(next), 50); // (as the States story's "Play again")
+  };
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" outcome={outcome} shouldReactToPointer={false} />
+      <Button onClick={() => playAgain('success')}>Success</Button>
+      <Button onClick={() => setOutcome('error')}>Error</Button>
+    </Box>
+  );
+};
+TestRayOutcomeSetAgainMidPlay.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Success' }));
+  await waitFor(() => expect(doing()).toBe('outcome'), { timeout: 3000 });
+  const record = recordDoing();
+  await sleep(1000);
+  await userEvent.click(getByRole('button', { name: 'Success' })); // ("Play again", mid-Success)
+  // over, then again
+  await waitFor(() => expect(record.seen.join(' ')).toContain('outcome rest outcome'), {
+    timeout: 6000,
+  });
+  record.stop();
+  await sleep(800);
+  await userEvent.click(getByRole('button', { name: 'Error' })); // (the other one, mid-Success)
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'error', started: true }),
+    { timeout: 5000 },
+  );
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 10000 });
+  await sleep(600);
+  expect(doing()).toBe('rest'); // (each once)
+};
+
+// An outcome that's had its turn isn't played again by a new director: his box removed and back (shouldUnmountWhenHidden). Set again,
+// it plays (the fresh-eyes review)
+export const TestRayDoesntReplayAPlayedOutcome: StoryFn<typeof Ray> = () => {
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  const [isVisible, setIsVisible] = useState(true);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray
+        idle="rest"
+        outcome={outcome}
+        isVisible={isVisible}
+        shouldUnmountWhenHidden
+        shouldReactToPointer={false}
+      />
+      <Button
+        onClick={() => {
+          setOutcome(undefined);
+          window.setTimeout(() => setOutcome('success'), 50);
+        }}
+      >
+        Success
+      </Button>
+      <Button onClick={() => setIsVisible((v) => !v)}>{isVisible ? 'Hide' : 'Show'}</Button>
+    </Box>
+  );
+};
+TestRayDoesntReplayAPlayedOutcome.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Success' }));
+  await waitFor(() => expect(doing()).toBe('outcome'), { timeout: 3000 });
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 6000 });
+  await userEvent.click(getByRole('button', { name: 'Hide' }));
+  await waitFor(() => expect(rayEl()).toBeFalsy(), { timeout: 3000 }); // (his box removed)
+  await userEvent.click(getByRole('button', { name: 'Show' }));
+  await waitFor(() => expect(rayEl()?.__ray).toBeTruthy(), { timeout: 3000 }); // (a new director)
+  expect(rayEl().__ray.outcome).toBe(null);
+  const record = recordDoing();
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await sleep(1000);
+  record.stop();
+  expect(record.seen).not.toContain('outcome');
+  await userEvent.click(getByRole('button', { name: 'Success' })); // (set again: it plays)
+  await waitFor(() => expect(doing()).toBe('outcome'), { timeout: 3000 });
+};
+
+// The page's audio is made ahead as a voiceStream is handed over, but rests (suspended) till he listens, and again once he stops
+// (the fresh-eyes review: it ran for nothing)
+export const TestRayAudioRestsTillHeListens: StoryFn<typeof Ray> = () => {
+  const [isListening, setIsListening] = useState(false);
+  const [voice] = useState<FakeVoice>(() => fakeVoice());
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" isListening={isListening} voiceStream={voice.stream} />
+      <Button onClick={() => setIsListening((v) => !v)}>{isListening ? 'Stop' : 'Listen'}</Button>
+    </Box>
+  );
+};
+TestRayAudioRestsTillHeListens.play = async () => {
+  const { getByRole } = within(document.body);
+  const audio = (): AudioContext | null => rayEl()?.__ray?.constructor.audio ?? null;
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await waitFor(() => expect(audio()?.state).toBe('suspended'), { timeout: 3000 }); // (made, resting)
+  await userEvent.click(getByRole('button', { name: 'Listen' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
+    timeout: 5000,
+  });
+  await waitFor(
+    () => {
+      testVoice().wake();
+      expect(audio()?.state).toBe('running');
+    },
+    { timeout: 5000 },
+  );
+  await userEvent.click(getByRole('button', { name: 'Stop' }));
+  await waitFor(() => expect(audio()?.state).toBe('suspended'), { timeout: 5000 });
+};
+
+// Reduced motion: one still frame, no loop running; offline's still is its film's, the outcome's still has its time, then his rest
+export const TestRayReducedMotion: StoryFn<typeof Ray> = () => {
+  const [isOffline, setIsOffline] = useState(false);
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  return (
+    <ReducedMotion>
+      <Box
+        padding="spacing.11"
+        paddingTop="200px"
+        display="flex"
+        alignItems="flex-end"
+        gap="spacing.8"
+      >
+        <Ray idle="coffee" isOffline={isOffline} outcome={outcome} />
+        <Button onClick={() => setIsOffline((v) => !v)}>{isOffline ? 'Online' : 'Offline'}</Button>
+        <Button onClick={() => setOutcome('success')}>Success</Button>
+      </Box>
+    </ReducedMotion>
+  );
+};
+TestRayReducedMotion.play = async () => {
+  const { getByRole } = within(document.body);
+  const ray = (): any => rayEl()?.__ray;
+  await waitFor(() => expect(ray()?.reducedMotion).toBe(true), { timeout: 3000 });
+  await waitFor(() => expect(inkOf(ray().player.canvas)).toBeGreaterThan(100), { timeout: 3000 });
+  await waitFor(() => expect(ray().raf).toBe(0), { timeout: 2000 }); // (drawn once: no loop)
+  expect(Object.keys(ray().films)).not.toContain('coffee'); // (no idle film: with reduced motion he plays none)
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(
+    () => {
+      const droop = ray().films.droop;
+      expect(droop?.still).toMatch(/^offline\|/);
+      expect(droop.host.layer.style.visibility).toBe('');
+      expect(ray().player.canvas.style.visibility).toBe('hidden');
+    },
+    { timeout: 5000 },
+  );
+  await userEvent.click(getByRole('button', { name: 'Online' }));
+  await waitFor(
+    () => {
+      expect(ray().player.canvas.style.visibility).toBe('');
+      expect(ray().films.droop?.host.layer.style.visibility ?? 'hidden').toBe('hidden'); // (hidden, or let go)
+    },
+    { timeout: 3000 },
+  );
+  await userEvent.click(getByRole('button', { name: 'Success' }));
+  await waitFor(() => expect(ray().stillTimer).not.toBe(null), { timeout: 2000 }); // (Success's still, for its time)
+  await waitFor(() => expect(ray().outcome).toBe(null), { timeout: 6000 });
+  expect(inkOf(ray().player.canvas)).toBeGreaterThan(100);
+};
+
 // isListening with a voiceStream: the mic film, fed the voice's level (he never opens a mic himself), and back in at rest. Offline wins
 // over the mic: it goes at once
 export const TestRayListens: StoryFn<typeof Ray> = () => {
@@ -671,7 +1014,9 @@ TestRayListens.play = async () => {
 };
 
 // The answer row's Ray comes up out of his row (canon hide's second half) and his first film takes him from there; as the answer's done
-// and he's hidden, his film's exit is cut once its prop is put away and he goes down from there (flow 10.5). Both his jumps at 1.7x
+// and he's hidden, his film's exit is cut once its prop is put away and he goes down from there (flow 10.5). Both his jumps at 1.7x.
+// Their pace is read off his own Ray (the hop's speed and part of canon hide); the clock checks only that nothing stalls, with room
+// for a slow CI machine and waitFor's polling (the fresh-eyes review)
 export const TestRayRowHops: StoryFn<typeof Ray> = () => {
   const [state, setState] = useState<RayState>('working');
   const [isVisible, setIsVisible] = useState(false);
@@ -703,23 +1048,42 @@ TestRayRowHops.play = async () => {
   await userEvent.click(getByRole('button', { name: 'Rise' }));
   const rise = performance.now();
   await waitFor(() => expect(doing()).toBe('showing'), { timeout: 1000 });
+  expect(rayEl().__ray.player.src).toMatchObject({
+    name: 'hide',
+    speed: 1.7,
+    off: 1600,
+    end: 2250,
+  }); // (up at 1.7x)
   await waitFor(() => expect(holder()).toMatchObject({ id: 'laptop2', started: true }), {
     timeout: 5000,
   });
-  expect(performance.now() - rise).toBeLessThan(550); // (up at 1.7x: about 380 ms; 650 at 1x)
+  expect(performance.now() - rise).toBeLessThan(1500); // (about 380 ms)
   expect(rayEl().__ray.pendingFrom).not.toBe(null); // (from his pose as he came up)
   await sleep(2500);
-  expect(rayEl().__ray.films.laptop2.host.handle.F.L.back).toBeTruthy(); // (where its laptop's put away: the cut's read off it)
+  const film = rayEl().__ray.films.laptop2.host.handle;
+  expect(film.F.L.back).toBeTruthy(); // (where its laptop's put away: the cut's read off it)
+  // where its exit is as he hops down (his hop down starts in the frame the film's cut)
+  const player = rayEl().__ray.player;
+  const hop = player.hop.bind(player);
+  let cut: { t: number; back: number; end: number } | null = null;
+  player.hop = (...args: any[]) => {
+    cut ??= { t: film.t, back: film.F.L.back[1], end: film.sim.dur };
+    return hop(...args);
+  };
   await userEvent.click(getByRole('button', { name: 'Done' }));
   const done = performance.now();
   await waitFor(() => expect(doing()).toBe('hiding'), { timeout: 3000 });
-  expect(performance.now() - done).toBeLessThan(1000); // (cut once the laptop's away, about 0.6 s, not after its whole exit: 1.1 s)
+  // cut once the laptop's away (its L.back), well before the end of its exit
+  expect(cut!.t).toBeGreaterThanOrEqual(cut!.back);
+  expect(cut!.t).toBeLessThan(cut!.end - 200);
+  expect(rayEl().__ray.player.src).toMatchObject({ name: 'hide', speed: 1.7 }); // (down at 1.7x)
+  expect(performance.now() - done).toBeLessThan(2500); // (about 0.6 s)
   const down = performance.now();
   await waitFor(() => expect(doing()).toBe('gone'), { timeout: 2000 });
-  expect(performance.now() - down).toBeLessThan(450); // (down at 1.7x: about 350 ms; 500 at 1.2x)
+  expect(performance.now() - down).toBeLessThan(1500); // (about 350 ms)
 };
 
-// The way back is quicker: a Ray hopping back up onto his surface lands at 1.2x canon's pace
+// The way back is quicker: a Ray hopping back up onto his surface lands at 1.2x canon's pace (read off his own Ray, as above)
 export const TestRayComesBackQuicker: StoryFn<typeof Ray> = TestRayHopsOffAndBack.bind({});
 TestRayComesBackQuicker.play = async () => {
   const { getByRole } = within(document.body);
@@ -728,8 +1092,15 @@ TestRayComesBackQuicker.play = async () => {
   await waitFor(() => expect(doing()).toBe('gone'), { timeout: 3000 });
   await userEvent.click(getByRole('button', { name: 'Show' }));
   const shown = performance.now();
+  await waitFor(() => expect(doing()).toBe('showing'), { timeout: 1000 });
+  expect(rayEl().__ray.player.src).toMatchObject({
+    name: 'hide',
+    speed: 1.2,
+    off: 1600,
+    end: 2500,
+  });
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
-  expect(performance.now() - shown).toBeLessThan(850); // (canon's 900 ms at 1x; 750 at 1.2x)
+  expect(performance.now() - shown).toBeLessThan(2000); // (about 750 ms)
 };
 
 // The Ray loader: started, he charges and dashes and holds while loading; `isLoading` false, he finishes (slides, turns, jumps, drops
@@ -792,6 +1163,74 @@ TestRayLoaderLoadsAndFinishes.play = async () => {
   expect(
     loaderEl().getAttribute('aria-hidden') ?? loaderEl().parentElement.getAttribute('aria-hidden'),
   ).toBe('true');
+};
+
+// A loader that finishes out of sight (its box hidden, or scrolled away), where nothing draws his finish: onComplete at once, so the page
+// never waits on it (the fresh-eyes review: it never came)
+export const TestRayLoaderFinishesOutOfSight: StoryFn<typeof RayLoader> = () => {
+  const [isBoxShown, setIsBoxShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+      <Box display="flex" gap="spacing.3">
+        <Button onClick={() => setIsBoxShown(false)}>Hide box</Button>
+        <Button onClick={() => setIsLoading(false)}>Finish</Button>
+        <Text>{`completed ${completions}`}</Text>
+      </Box>
+      <Box width="720px" display={isBoxShown ? 'block' : 'none'}>
+        <RayLoader isLoading={isLoading} onComplete={() => setCompletions((c) => c + 1)} />
+      </Box>
+    </Box>
+  );
+};
+TestRayLoaderFinishesOutOfSight.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await userEvent.click(getByRole('button', { name: 'Hide box' }));
+  await sleep(300); // (its IntersectionObserver says so: a task or two)
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 1500 });
+};
+
+// The Ray loader with reduced motion: his still while loading, drawn again when the box changes size; ready, done at once
+export const TestRayLoaderReducedMotion: StoryFn<typeof RayLoader> = () => {
+  const [width, setWidth] = useState(720);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <ReducedMotion>
+      <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+        <Box display="flex" gap="spacing.3">
+          <Button onClick={() => setWidth(480)}>Narrower</Button>
+          <Button onClick={() => setIsLoading(false)}>Finish</Button>
+          <Text>{`completed ${completions}`}</Text>
+        </Box>
+        <Box width={`${width}px`}>
+          <RayLoader isLoading={isLoading} onComplete={() => setCompletions((c) => c + 1)} />
+        </Box>
+      </Box>
+    </ReducedMotion>
+  );
+};
+TestRayLoaderReducedMotion.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  const widest = (): number =>
+    Math.max(0, ...[...loaderEl().querySelectorAll('canvas')].map((c: any) => c.width));
+  await waitFor(() => expect(debug()).toMatchObject({ ready: true, started: false, shown: true }), {
+    timeout: 8000,
+  });
+  await waitFor(() => expect(inkIn(loaderEl())).toBeGreaterThan(100), { timeout: 3000 }); // (his still)
+  const before = widest();
+  await userEvent.click(getByRole('button', { name: 'Narrower' }));
+  await waitFor(() => expect(widest()).toBeLessThan(before), { timeout: 3000 }); // (its stage resized: emptied)
+  await waitFor(() => expect(inkIn(loaderEl())).toBeGreaterThan(100), { timeout: 3000 }); // (and drawn again)
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 1000 }); // (at once)
 };
 
 // Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,

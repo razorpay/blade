@@ -84,7 +84,7 @@ const LOADER_PROPS: [name: string, type: string, byDefault: string, description:
 const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="Ray"
-    componentDescription="Ray, Razorpay's AI mascot. On the chat input he idles, watches what's typed, looks at the pointer and flips a coin when clicked; when a question is sent he hops off, and a second Ray in the answer's row plays its states (searching, calling, writing, working) until the answer is done."
+    componentDescription="Ray, Razorpay's AI mascot. On the chat input he idles, watches what's typed, looks at the pointer and flips a coin when clicked; when a question is sent he hops off, and a second Ray in the answer's row plays its states (reading, thinking, searching, calling, writing, working) until the answer is done."
     apiDecisionComponentName="Spark/Ray"
   >
     <Heading size="large">Usage</Heading>
@@ -95,8 +95,8 @@ const Page = (): React.ReactElement => (
     <Text marginTop="spacing.4">
       Ray charges up and dashes across while a page loads; when it&apos;s ready (isLoading turns
       false) he slides on, turns round, jumps and drops through the floor, then onComplete is
-      called. A component of its own (RayLoader), with RazorSenseLoader&apos;s props, so the two
-      loaders read the same. It plays once per mount. See the Ray Loader (Secondary) story.
+      called. A component of its own (RayLoader), with a loader&apos;s props (isLoading,
+      onComplete). It plays once per mount. See the Ray Loader (Secondary) story.
     </Text>
     <Source code={LOADER_USAGE} language="tsx" dark />
     <Box display="flex" flexDirection="column" gap="spacing.3" marginTop="spacing.4">
@@ -713,7 +713,7 @@ const LoaderDemo = ({ size }: { size: RayLoaderProps['size'] }): React.ReactElem
 };
 
 /**
- * The Ray loader, `RayLoader` (a component of its own, with RazorSenseLoader's props). Start: he charges and dashes, and holds the
+ * The Ray loader, `RayLoader` (a component of its own, with a loader's props: `isLoading`, `onComplete`). Start: he charges and dashes, and holds the
  * dash while loading. Finish (`isLoading={false}`): he slides on, turns round, jumps and drops through the floor, then `onComplete`.
  * Stop: the loader goes (unmounted mid-way); the next Start brings him back at his start. The light / dark switch is here, not in the
  * toolbar, so switching doesn't start him over.

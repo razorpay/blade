@@ -9,14 +9,17 @@
  *   before he starts, so that frame's one-off work isn't in a frame anyone sees.
  * - Started, he charges and dashes, and holds the dash while loading; `finish()` plays the slide, the turn, the jump and the drop
  *   through the floor, and calls `onDone` once he's gone.
- * - Reduced motion: one still frame of the dash while loading, and done as soon as the page is ready.
- * - Off-screen, it doesn't draw; its stage follows the box's size.
+ * - Reduced motion: one still frame of the dash while loading (drawn again when the box changes size), and done as soon as the page
+ *   is ready.
+ * - Off-screen, it doesn't draw; its stage follows the box's size. Finished off-screen (or a film that never says it's done), it's done
+ *   at once (or after FINISH_WAIT_MS), so a page never waits on a finish nobody sees.
  */
 import { FilmHost } from '../Ray/FilmHost';
 import type { FilmMessage, FilmModule } from '../Ray/engineTypes';
 
 const WIDTHS = { small: 38, medium: 48 } as const;
 const START_WAIT_MS = 8000; // a film that never says it's ready is given up on: the loader is done when the page is
+const FINISH_WAIT_MS = 5000; // a finish that never says it's done (its frames stopped, a film error) is let go: about 3 s at most otherwise
 const STILL_TICKS = 4; // reduced motion: frames ticked for the still (its messages come a task later, then it draws)
 const SHOW_TICKS = 3; // it shows once it has run this many frames since its start (never the canvas it was asleep on)
 
@@ -38,6 +41,7 @@ class RayLoaderMount {
   private isDisposed = false;
   private isVisible = true;
   private raf = 0;
+  private finishTimer: ReturnType<typeof setTimeout> | null = null;
   private stillTicks = 0;
   private startTick = 0;
   private readonly startedAt = performance.now();
@@ -55,6 +59,7 @@ class RayLoaderMount {
       this.observer = new IntersectionObserver((entries) => {
         this.isVisible = entries.some((e) => e.isIntersecting);
         if (this.isVisible) this.book();
+        else if (this.isFinishing) this.finishNow(); // (out of sight mid-finish: nothing draws it, so nothing would end it)
       });
       this.observer.observe(root);
     }
@@ -66,7 +71,7 @@ class RayLoaderMount {
     import('../Ray/engine')
       .then(({ FILMS, TUNES }) =>
         (FILMS as Record<string, () => Promise<FilmModule>>).dash().then((film) => {
-          if (this.isDisposed) return;
+          if (this.isDisposed || this.isDone) return; // (gone, or given up on: START_WAIT_MS)
           this.host = new FilmHost({
             film,
             tunes: TUNES as Record<string, unknown>,
@@ -81,6 +86,7 @@ class RayLoaderMount {
         }),
       )
       .catch((error: unknown) => {
+        if (this.isDisposed) return;
         if (__DEV__) console.error('[RayLoader] his Dash film failed to load', error);
         this.finishNow();
       });
@@ -108,15 +114,19 @@ class RayLoaderMount {
     if (this.reducedMotion && (schemeChanged || sizeChanged)) this.still();
   }
 
-  /** The page is ready: the finish, then onDone (at once if he hasn't started, or with reduced motion). */
+  /**
+   * The page is ready: the finish, then onDone (at once if he hasn't started, with reduced motion, or out of sight, where nothing
+   * draws it; at the latest FINISH_WAIT_MS on).
+   */
   finish(): void {
-    if (this.isDone || this.isFinishing) return;
-    if (!this.hasStarted || this.reducedMotion || !this.host) {
+    if (this.isDone || this.isFinishing || this.isDisposed) return;
+    if (!this.hasStarted || this.reducedMotion || !this.host || !this.isVisible) {
       this.finishNow();
       return;
     }
     this.isFinishing = true;
     this.host.send({ ray: 'leave' });
+    this.finishTimer = setTimeout(() => this.finishNow(), FINISH_WAIT_MS);
     this.book();
   }
 
@@ -124,6 +134,8 @@ class RayLoaderMount {
     this.isDisposed = true;
     if (this.raf) cancelAnimationFrame(this.raf);
     this.raf = 0;
+    if (this.finishTimer) clearTimeout(this.finishTimer);
+    this.finishTimer = null;
     this.observer?.disconnect();
     this.resizeObserver?.disconnect();
     this.host?.dispose();
@@ -131,8 +143,10 @@ class RayLoaderMount {
   }
 
   private finishNow(): void {
-    if (this.isDone) return;
+    if (this.isDone || this.isDisposed) return;
     this.isDone = true;
+    if (this.finishTimer) clearTimeout(this.finishTimer);
+    this.finishTimer = null;
     if (this.host) {
       this.host.layer.style.visibility = 'hidden';
       this.host.send({ ray: 'sleep' });
@@ -166,6 +180,8 @@ class RayLoaderMount {
     const r = this.root.getBoundingClientRect();
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     this.host.resize(Math.max(1, Math.round(r.width)), Math.max(1, Math.round(r.height)), dpr);
+    // reduced motion: a new size empties his canvases, so his still is drawn again (it had stayed blank; the fresh-eyes review)
+    if (this.reducedMotion && this.isReady && !this.isDone) this.still();
   }
 
   private book(): void {

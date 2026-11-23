@@ -100,7 +100,7 @@ type RayProps = {
   /**
    * While `true`, he's offline: he goes grey, his eyes twitch and every few seconds he glitches. Back to `false`, he jumps back
    * online (his colour floods back) and goes on with his idle. It wins over everything else he's doing: an answer's states, the
-   * mic, typing. The same prop as on RazorSense, so a page passes one value to both.
+   * mic, typing.
    *
    * @default false
    */
@@ -108,21 +108,21 @@ type RayProps = {
   /**
    * While `true`, he's listening: a mic whips out round his side and he holds it out, nodding along while you talk. Back to
    * `false`, the mic whips back in. Its level comes from `voiceStream`; without one he still holds the mic out, he just doesn't
-   * react to talking. The same prop as on RazorSense.
+   * react to talking.
    *
    * @default false
    */
   isListening?: boolean;
   /**
    * The voice he listens to while `isListening`: the `MediaStream` your page got from `getUserMedia` for its own voice input.
-   * He only reads its level, once a frame; he never opens the mic himself and never records. The same prop as on RazorSense.
+   * He only reads its level, once a frame; he never opens the mic himself and never records.
    */
   voiceStream?: MediaStream;
   /**
    * How the answer ended, played once when it's set: `success`, a jump with confetti and a little dance; `error`, a sigh and a
    * slow shake of his eyes. It waits for an answer's states to end, and for him to be back on his surface (`isVisible`), so set
-   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again.
-   * The same prop as on RazorSense.
+   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again
+   * (set while one is playing, it plays next).
    */
   outcome?: RayOutcome;
   /**

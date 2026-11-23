@@ -339,6 +339,12 @@ class RayMount {
   private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
   // `outcome`: from when it's set till it has played once (or been cut short by something that wins over it)
   private outcome: RayOutcome | null = null;
+  // each time `outcome` is set (again, or to the other one), counted: one that ends is over only if it wasn't set again while it
+  // played, so "Play again" or success -> error mid-play plays the next one after it (the fresh-eyes review)
+  private outcomeSets = 0;
+  private outcomeSetPlaying = -1; // the set that's playing
+  /** Called when the outcome has had its turn (played, or cut short): Ray's next director doesn't play it again. */
+  onOutcomeOver: (() => void) | null = null;
   private afterAnswer = false; // an answer's film has had him since he came up: he's the answer row's, his hop down at ROW_HOP
   private restReadyAt = 0; // his blend to rest (toRest) is over at this time
   private voiceStream: MediaStream | null = null;
@@ -445,9 +451,11 @@ class RayMount {
     )
       this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
     if (outcomeChanged) {
-      // set: it plays once, when he can; cleared before it has started: it doesn't (once it's playing it plays out)
+      // set: it plays once, when he can (set while one plays: after it); cleared before it has started: it doesn't (once it's
+      // playing it plays out)
       if (options.outcome) {
         this.outcome = options.outcome;
+        this.outcomeSets += 1;
         if (options.outcome === 'success') this.prepareSuccess();
       } else if (!this.outcomePlaying) this.outcome = null;
     }
@@ -490,7 +498,11 @@ class RayMount {
     this.voiceFailed = false;
     if (!stream || this.reducedMotion) return;
     whenIdle(() => {
-      if (!this.disposed) RayMount.audioContext();
+      if (this.disposed) return;
+      // made ahead, but resting (suspended) till a Ray listens: a running context keeps the page's audio going for nothing (the
+      // fresh-eyes review); listen() resumes it
+      const ctx = RayMount.audioContext();
+      if (ctx && ![...RayMount.up].some((m) => m.voice)) ctx.suspend().catch(() => undefined);
     }, 500);
   }
 
@@ -526,6 +538,26 @@ class RayMount {
     return (
       o.shouldReactToPointer && o.state === 'idle' && !o.isHidden && !o.isOffline && !o.isListening
     );
+  }
+
+  /** A new director for a Ray whose `outcome` has already had its turn (his box back, reduced motion changed): it isn't played again. */
+  skipOutcome(): void {
+    this.outcome = null;
+  }
+
+  /** The outcome starts playing (his Success, the error's film, or a still for either). */
+  private outcomeStarted(): void {
+    this.outcomeSetPlaying = this.outcomeSets;
+  }
+
+  /**
+   * The outcome that was playing has had its turn (played, or cut short by what wins over it): over, unless `outcome` was set again
+   * meanwhile, which then plays next.
+   */
+  private outcomeOver(): void {
+    if (this.outcomeSets !== this.outcomeSetPlaying) return;
+    this.outcome = null;
+    this.onOutcomeOver?.();
   }
 
   /** The outcome is under way (so clearing `outcome` doesn't stop it): his Success, the error's film started, or a still for it. */
@@ -625,7 +657,7 @@ class RayMount {
         this.handOn(film, h.next!, null);
       if (h.leaving === 'exit' && now - h.since > EXIT_WAIT_MS) this.filmDone(film);
       if (h.state === 'error' && !h.leaving && now - h.since > ONE_SHOT_WAIT_MS) {
-        this.outcome = null;
+        this.outcomeOver();
         this.filmDone(film);
         return;
       }
@@ -658,7 +690,7 @@ class RayMount {
         film.host.send({ ray: 'pace', v: pace });
         film.host.send({ ray: 'leave' });
       } else if (h.kind === 'state') {
-        if (h.state === 'error') this.outcome = null; // (played, or cut short by what wins over it: either way it's had its turn)
+        if (h.state === 'error') this.outcomeOver(); // (played, or cut short by what wins over it: either way it's had its turn)
         // offline wins over the mic: it goes at once (flow 10.5), his own Ray at rest and offline starting from there
         if (h.state === 'mic' && want.kind === 'state' && want.state === 'offline')
           this.filmDone(film);
@@ -675,8 +707,8 @@ class RayMount {
       return;
     }
     if (h.act === 'outcome' && want.kind !== 'success') {
-      // his Success cut short by what wins over it (offline, the hop, a new answer): it's had its turn
-      this.outcome = null;
+      // his Success cut short by what wins over it (offline, the hop, a new answer, the error set meanwhile): it's had its turn
+      this.outcomeOver();
       this.toRest(now);
       return;
     }
@@ -874,8 +906,9 @@ class RayMount {
   /** `outcome="success"`: canon Success on his seat, once, then his rest. */
   private playSuccess(now: number): void {
     this.holder = { by: 'player', act: 'outcome', since: now };
+    this.outcomeStarted();
     this.player.success(() => {
-      this.outcome = null;
+      this.outcomeOver(); // (set again while it played: it plays again, from his rest)
       this.holder = { by: 'player', act: 'rest', since: performance.now() };
     });
   }
@@ -1175,6 +1208,10 @@ class RayMount {
     const h = this.holder;
     if (h.by !== 'film' || h.id !== film.id) return;
     film.going = false;
+    // (a film started again before the frame that settles it, as droop is when he goes offline as its error ends, or plays the error
+    // as he's back online: it isn't put to sleep under him, which left him unseen; the fresh-eyes review)
+    this.settling = this.settling.filter((f) => f !== film);
+    if (h.kind === 'state' && h.state === 'error') this.outcomeStarted();
     this.dress(film);
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
     this.shiftLooks(film);
@@ -1259,7 +1296,7 @@ class RayMount {
           h.by === 'film' &&
           (h.leaving === 'exit' || (h.kind === 'state' && !h.leaving))
         ) {
-          if (h.state === 'error') this.outcome = null;
+          if (h.state === 'error') this.outcomeOver();
           this.filmDone(film);
         } else if (film.going) this.goneUnder(film);
         break;
@@ -1322,9 +1359,10 @@ class RayMount {
       want?.kind === 'success' || (want?.kind === 'state' && want.state === 'error');
     if (isOutcome && this.outcome && !this.stillTimer) {
       const ms = want?.kind === 'success' ? this.player.successMs : ERROR_STILL_MS;
+      this.outcomeStarted();
       this.stillTimer = setTimeout(() => {
         this.stillTimer = null;
-        this.outcome = null;
+        this.outcomeOver();
         this.start();
       }, ms);
     }
