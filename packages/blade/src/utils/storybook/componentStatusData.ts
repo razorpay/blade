@@ -1829,7 +1829,7 @@ const componentData: ComponentStatusDataType = [
     frameworks: {
       react: {
         status: 'in-development',
-        storybookLink: 'Components/RayLoader',
+        storybookLink: 'Components/Ray',
       },
       svelte: {
         status: 'to-be-decided',
