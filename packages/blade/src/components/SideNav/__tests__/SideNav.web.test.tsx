@@ -69,6 +69,25 @@ describe('SideNav', () => {
     expect(getByRole('button', { name: 'Create' }).parentElement).toHaveStyle('right: 12px');
   });
 
+  test('should keep room for trailing so the title truncates 12px before it', () => {
+    const TRAILING_WIDTH = 20;
+    const offsetWidth = jest
+      .spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockReturnValue(TRAILING_WIDTH);
+    const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
+
+    // 12px padding of the item + width of trailing + 12px gap between the title and trailing
+    const expectedPadding = `padding-right: ${12 + TRAILING_WIDTH + 12}px`;
+    // trailing visible on hover
+    expect(getByRole('link', { name: 'Home' })).toHaveStyle(expectedPadding);
+    // trailing always visible
+    expect(getByRole('link', { name: 'Links' })).toHaveStyle(expectedPadding);
+    // trailing on item that opens next level
+    expect(getByRole('link', { name: 'L2 Trigger' })).toHaveStyle(expectedPadding);
+
+    offsetWidth.mockRestore();
+  });
+
   test('should mark SideNavVisibility content for expanded and collapsed states', () => {
     const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
     const expandedOnly = getByRole('link', { name: '+3 More' }).parentElement;

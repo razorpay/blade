@@ -106,6 +106,9 @@ type SideNavLinkProps = {
    * By default it is visible on hover of the item and while the item has keyboard focus.
    * Use `trailingVisibility` to keep it visible.
    *
+   * The item keeps room for it, so a long title truncates 12px before the trailing slot
+   * instead of running under it.
+   *
    * On an item that opens the next level (L2 trigger), the chevron moves next to the title
    * and trailing takes the end of the item.
    *
@@ -117,7 +120,7 @@ type SideNavLinkProps = {
    * Controls when the trailing slot is visible
    *
    * - `hover`: visible on hover of the item and while the item has keyboard focus
-   * - `always`: always visible. The title truncates before the trailing slot.
+   * - `always`: always visible.
    *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
    *
    * @default 'hover'

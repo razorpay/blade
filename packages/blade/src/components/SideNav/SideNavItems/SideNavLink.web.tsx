@@ -75,8 +75,9 @@ const StyledNavLinkContainer = styled(BaseBox)<{
       padding: `${makeSpace(props.theme.spacing[props.$hasDescription ? 3 : 0])} ${makeSpace(
         horizontalPadding,
       )}`,
-      // An always visible trailing slot sits on top of the link, so the link keeps that much room free
-      // for its title to truncate before it instead of running under it
+      // The trailing slot sits on top of the link, so the link keeps that much room free for its title
+      // to truncate before it instead of running under it. Kept even while the slot is only shown on
+      // hover, so the title does not shift when it appears
       paddingRight: props.$trailingReservedWidth
         ? makeSpace(horizontalPadding + props.$trailingReservedWidth)
         : undefined,
@@ -126,7 +127,14 @@ const NavLinkIconTitle = ({
       textAlign="left"
     >
       <Box display="flex" justifyContent="space-between" width="100%">
-        <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+        {/* minWidth lets a title that is one long word shrink and truncate instead of overflowing the item */}
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="spacing.3"
+          alignItems="center"
+          minWidth="spacing.0"
+        >
           {Icon ? (
             <BaseBox display="flex" flexDirection="row" alignItems="center">
               <Icon size="medium" color="currentColor" />
@@ -325,13 +333,13 @@ const SideNavLink = ({
   // When L2 trigger has trailing, trailing takes the end of the item and chevron moves next to the title
   const isChevronNextToTitle = isL2Trigger && hasTrailing;
 
-  // Width of an always visible trailing slot, so the link can keep that much room free for it.
-  // The ref is only attached in that case, so other items neither measure nor observe anything
+  // Width of the trailing slot, so the link can keep that much room free for it.
+  // Items without a trailing slot render no element for the ref, so they measure and observe nothing
   const trailingRef = React.useRef<HTMLDivElement>(null);
   const [trailingWidth, setTrailingWidth] = React.useState(0);
   const updateTrailingWidth = React.useCallback(() => {
-    setTrailingWidth(isTrailingAlwaysVisible ? trailingRef.current?.offsetWidth ?? 0 : 0);
-  }, [isTrailingAlwaysVisible]);
+    setTrailingWidth(hasTrailing ? trailingRef.current?.offsetWidth ?? 0 : 0);
+  }, [hasTrailing]);
   // Measured before the first paint so the title never shows under the slot. The observer then keeps
   // it in step when the slot's content changes size or the slot is hidden in collapsed SideNav
   useIsomorphicLayoutEffect(updateTrailingWidth, [updateTrailingWidth]);
@@ -429,7 +437,7 @@ const SideNavLink = ({
             </TooltipifyComponent>
             {trailing ? (
               <BaseBox
-                ref={isTrailingAlwaysVisible ? (trailingRef as never) : undefined}
+                ref={trailingRef as never}
                 position="absolute"
                 top="spacing.0"
                 right={NAV_LINK_TRAILING_INSET}

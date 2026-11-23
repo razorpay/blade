@@ -21,8 +21,8 @@ const NAV_ITEM_HEIGHT = size['40'];
 
 // Trailing slot of SideNavLink sits this far from the end of the item. Same as the horizontal padding of the item, so it mirrors the leading icon
 const NAV_LINK_TRAILING_INSET = 'spacing.4';
-// Space kept between the title and an always visible trailing slot
-const NAV_LINK_TRAILING_GAP = size['8'];
+// Space kept between the title and the trailing slot, so a long title truncates before it
+const NAV_LINK_TRAILING_GAP = size['12'];
 
 // This is the delay after which transition cleanup happens for rare cases where transitionEnd is not triggered
 const TRANSITION_CLEANUP_DELAY = 300; // A little more than the duration of transition end

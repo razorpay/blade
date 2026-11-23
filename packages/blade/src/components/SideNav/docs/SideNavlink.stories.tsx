@@ -91,24 +91,26 @@ SideNavLinkPlayground.args = {
 SideNavLinkPlayground.storyName = 'SideNavLink Playground';
 
 // Stories render outside a router, so a plain anchor stands in for the router's Link
-const StoryLink = ({
-  to,
-  children,
-  onClick,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement> & { to?: string }): React.ReactElement => (
-  <a
-    {...props}
-    href={to}
-    onClick={(e) => {
-      // keep the story in place instead of navigating to the href
-      e.preventDefault();
-      onClick?.(e);
-    }}
-  >
-    {children}
-  </a>
-);
+// SideNavLink passes a ref to the link, so this forwards it to the anchor like a router's Link does
+const StoryLink = React.forwardRef<
+  HTMLAnchorElement,
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & { to?: string }
+>(function StoryLink({ to, children, onClick, ...props }, ref) {
+  return (
+    <a
+      {...props}
+      ref={ref}
+      href={to}
+      onClick={(e) => {
+        // keep the story in place instead of navigating to the href
+        e.preventDefault();
+        onClick?.(e);
+      }}
+    >
+      {children}
+    </a>
+  );
+});
 
 // The "current page" of a story, kept in state. Clicking an item makes it active,
 // and an item with a next level opens it, like it would with a router
@@ -242,13 +244,15 @@ const PinnableNav = ({
                   title={item.title}
                   trailingVisibility={isPinned ? 'always' : 'hover'}
                   trailing={
-                    quietId === item.id ? undefined : (
+                    // Hidden instead of removed while quiet, so the item keeps the same room for it
+                    // and a long title does not change where it truncates
+                    <Box visibility={quietId === item.id ? 'hidden' : undefined}>
                       <PinAction
                         title={item.title}
                         isPinned={isPinned}
                         onClick={(event) => togglePin(item.id, event)}
                       />
-                    )
+                    </Box>
                   }
                 >
                   {nextLevelItems ? (
