@@ -19,7 +19,7 @@ RazorSenseChat is RazorSense through an assistant chat: thinking loops on the `R
 - With reduced motion on it shows one still frame of where it is, drawn again when the chat's layout changes, and the new one as the `RazorSenseThinking` comes and goes.
 - The effect is decorative: hidden from screen readers. The chat inside stays as it is.
 - `scale` is held between 0.75 and 1.25.
-- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
+- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then fewer pixels too (its canvas at 0.75, then 0.5 of a CSS px, scaled up by the browser).
 - Its `ref`, `className` and `style` go to its root element (web).
 - Its states, with the same names as Ray's so a page passes one set to both: `isOffline` (the bottom strip drops below the chat's bottom edge, 1.2 s, and rises back), `isListening` with `voiceStream` (the voice bottom: a row of blobs on the strip's top edge, each a pitch band of the page's voice; it never opens the microphone itself, the page hands it its own stream) and `outcome` (`'success'` or `'error'`: the strip plays its green or red wave once and ends at its rest). One at a time: offline wins (listening goes at once), and listening and an outcome wait for the answer to settle. Each has its own way in and out and turns back mid-way. Each state's chunk loads when it's first wanted (listening's the first time it listens; an outcome's while the page is idle once the chat starts thinking), and every state draws on the chat's one canvas.
 - With reduced motion each state is a still frame: offline gone, listening its voice look (silent), an outcome its colour for the wave's length. Where it can't animate, listening and an outcome show stills of their own in the bottom wave's place.
@@ -68,8 +68,8 @@ type RazorSenseChatProps = {
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
    * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
-   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
-   * it steps back up.
+   * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
+   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up.
    */
   onError?: (error: Error) => void;
   /**

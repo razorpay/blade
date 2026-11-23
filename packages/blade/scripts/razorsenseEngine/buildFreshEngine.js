@@ -260,6 +260,9 @@ src = sub(src, `function showMsg(t) {`, `function __redraw() {
 function showMsg(t) {`);
 // a cap on the canvas's pixel ratio the page can set (sharpness(): the weak-device tier), over the comp's own and the device's
 src = sub(src, `dpr = Math.min(window.devicePixelRatio || 1, Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6));`, `dpr = Math.min(window.devicePixelRatio || 1, Math.max(0.5, +OPT.dpr || +D.view.dpr || 1.6), __dprCap || Infinity);`);
+// the canvas sized only when its size changes: setting it, even to the same size, resets its drawing buffer (the page's box placed
+// again without a new size; the engine's own resize observer straight after the page's, which had sized it already)
+src = sub(src, `cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);`, `const cw = Math.round(w * dpr), ch = Math.round(h * dpr); if (cv.width !== cw) cv.width = cw; if (cv.height !== ch) cv.height = ch;`);
 // Made a step at a time (freshEngineSteps, below): making an engine is one long task otherwise, 190-330 ms on a mid-range Android
 // phone (about 1 s on its first visit after the engine changes, the browser compiling the engine's code as it runs), which is the
 // page frozen. Each yield is a point the page may draw a frame between: the studio's tables, its blank document, the comp read in,

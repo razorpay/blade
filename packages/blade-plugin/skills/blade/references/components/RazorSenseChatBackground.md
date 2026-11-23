@@ -18,7 +18,7 @@ RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap th
 - With reduced motion on it shows one still frame of its idle strip.
 - `scale` is held between 0.75 and 1.25 (the whole effect, bands included).
 - The effect is decorative: hidden from screen readers. The chat input inside stays as it is.
-- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
+- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then fewer pixels too (its canvas at 0.75, then 0.5 of a CSS px, scaled up by the browser).
 - Its `ref`, `className` and `style` go to its root element (web).
 - Its states, with the same names as Ray's: `isOffline` (it fades away under its colours, 1 s, and back) and `isListening` with `voiceStream` (the voice dashboard: its strip morphs into a row of blobs along its line, each a pitch band of the page's voice; it never opens the microphone itself, the page hands it its own stream). Offline wins: listening goes at once. Each turns back mid-way. The voice dashboard's chunk loads the first time it listens, and draws on its one canvas. With reduced motion each is a still frame; where it can't animate, listening shows a still of its own.
 
@@ -56,8 +56,8 @@ type RazorSenseChatBackgroundProps = {
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
    * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
-   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
-   * it steps back up.
+   * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
+   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up.
    */
   onError?: (error: Error) => void;
   /**

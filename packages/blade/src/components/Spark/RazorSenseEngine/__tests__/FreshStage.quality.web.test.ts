@@ -119,7 +119,7 @@ describe('FreshStage: quality to the device, both ways', () => {
     expect(deviceStartLevel(readGpuNames())).toBe(level);
   });
 
-  it('a page started two steps down draws at the lower sharpness from its first frame', () => {
+  it('a page started two steps down draws at 0.75 of a CSS px from its first frame', () => {
     const {
       FreshStage,
       whyCantAnimate,
@@ -138,7 +138,7 @@ describe('FreshStage: quality to the device, both ways', () => {
     const engine = engineMock();
     const stage = new FreshStage(document.createElement('div'), () => engine, {});
     stage.mount({ doc: {}, opts: {} });
-    expect(engine.sharpness).toHaveBeenCalledWith(1.2);
+    expect(engine.sharpness).toHaveBeenCalledWith(0.75);
     stage.destroy();
   });
 
@@ -157,20 +157,48 @@ describe('FreshStage: quality to the device, both ways', () => {
     // full, keeping up
     runFrames(5 * 60, 1000 / 60);
     expect(freshEaseLevel()).toBe(0);
-    // a stall (a video call): 35 fps for 8 s, both steps down
+    // a stall (a video call): 35 fps for 8 s, every step down (2 s each), the last at 0.5 of a CSS px
     runFrames(8 * 35, 1000 / 35);
-    expect(freshEaseLevel()).toBe(2);
-    expect(engine.sharpness).toHaveBeenLastCalledWith(1.2);
+    expect(freshEaseLevel()).toBe(3);
+    expect(engine.sharpness).toHaveBeenCalledWith(0.75);
+    expect(engine.sharpness).toHaveBeenLastCalledWith(0.5);
     // the machine free again: back up a step, then to full
     const levels: number[] = [];
     for (let s = 0; s < 20; s++) {
       runFrames(60, 1000 / 60);
       levels.push(freshEaseLevel());
     }
-    expect(levels).toContain(1);
+    expect(levels).toEqual(expect.arrayContaining([2, 1]));
     expect(freshEaseLevel()).toBe(0);
     expect(engine.sharpness).toHaveBeenLastCalledWith(0);
     // (never the still: it never went under 20 fps)
+    expect(onError).not.toHaveBeenCalled();
+    stage.destroy();
+  });
+
+  it('a sharp drop (a typing surge on a page only just keeping up) steps two at once, within about a second', () => {
+    const { FreshStage, whyCantAnimate, freshEaseLevel, measureScreen, runFrames } = setup({
+      renderer: 'ANGLE (Intel, Intel(R) UHD Graphics (0x00009BC4) Direct3D11 vs_5_0 ps_5_0, D3D11)',
+    });
+    expect(whyCantAnimate()).toBeNull();
+    measureScreen();
+    runFrames(70, 1000 / 60);
+    const onError = jest.fn();
+    const engine = engineMock();
+    const stage = new FreshStage(document.createElement('div'), () => engine, { onError });
+    stage.mount({ doc: {}, opts: {} });
+    stage.setDriver(() => undefined);
+    runFrames(5 * 60, 1000 / 60);
+    expect(freshEaseLevel()).toBe(0);
+    // typing with everything on the page: 12 fps
+    let at = 0;
+    for (let i = 0; i < 40 && freshEaseLevel() < 2; i++) {
+      runFrames(1, 1000 / 12);
+      at += 1000 / 12;
+    }
+    expect(freshEaseLevel()).toBe(2);
+    expect(at).toBeLessThan(2200);
+    expect(engine.sharpness).toHaveBeenLastCalledWith(0.75);
     expect(onError).not.toHaveBeenCalled();
     stage.destroy();
   });

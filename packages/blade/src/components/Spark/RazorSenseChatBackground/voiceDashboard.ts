@@ -80,29 +80,36 @@ class VoiceDashboard {
   };
 
   private readonly blobAt: Map<string, number>;
-  // each blob, this frame (in place: nothing allocated per frame)
-  private readonly bx: Float32Array;
-  private readonly by: Float32Array;
-  private readonly bsy: Float32Array;
-  private readonly bsx: Float32Array;
-  private readonly bop: Float32Array;
+  // each blob, this frame (in place: nothing allocated per frame; doubles, as the page's numbers)
+  private readonly bx: Float64Array;
+  private readonly by: Float64Array;
+  private readonly bsy: Float64Array;
+  private readonly bsx: Float64Array;
+  private readonly bop: Float64Array;
   private thick = 0;
   private rich = 0;
+  /**
+   * how far down the voice look goes as it comes in (comp px, by m): the component lifts its strip above where flow 9 has it (no
+   * suggestion tray under its input); the voice look sits where speechtest and flow 10.5 have it on the chat box, its line just
+   * under the box's top edge, the blobs rising from behind it
+   */
+  private readonly drop: number;
 
   private readonly tools: FreshTools;
 
-  constructor(mode: 'light' | 'dark', restDoc: FreshDoc, tools: FreshTools) {
+  constructor(mode: 'light' | 'dark', restDoc: FreshDoc, tools: FreshTools, drop = 0) {
     this.tools = tools;
+    this.drop = drop;
     this.data = mode === 'dark' ? voiceDashboardDark : voiceDashboardLight;
     this.doc = restDoc.stack ? { ...this.data.doc, stack: restDoc.stack } : this.data.doc;
     const n = this.data.blobs;
     this.motion = new VoiceMotion(n);
     this.blobAt = new Map(Array.from({ length: n }, (_, i) => [`vx${i}`, i]));
-    this.bx = new Float32Array(n);
-    this.by = new Float32Array(n);
-    this.bsy = new Float32Array(n);
-    this.bsx = new Float32Array(n);
-    this.bop = new Float32Array(n);
+    this.bx = new Float64Array(n);
+    this.by = new Float64Array(n);
+    this.bsy = new Float64Array(n);
+    this.bsx = new Float64Array(n);
+    this.bop = new Float64Array(n);
     const shapes = (restDoc.shapes as Shape[] | undefined) ?? [];
     this.rest = {
       by: Object.fromEntries(shapes.map((s) => [s.id as string, s])),
@@ -129,7 +136,7 @@ class VoiceDashboard {
     M.morph(dt, want, V);
     M.react(dt, s, lvl, bands, V);
     const span = line.hl * L.spread * L.len;
-    const y = line.y + L.dy * M.m;
+    const y = line.y + (L.dy + this.drop) * M.m;
     for (let i = 0; i < M.blobs; i++) {
       const u = M.rowU(i);
       const e = Math.max(0, M.env[i]);
@@ -195,7 +202,7 @@ class VoiceDashboard {
       }
       // (the edge fade: the line's visible fill, its soft ends brought in)
       if (o.id === line.fill && L.efade) o.sx *= 1 - 0.3 * L.efade * m;
-      o.y += L.dy * m;
+      o.y += (L.dy + this.drop) * m;
       return;
     }
     const i = this.blobAt.get(o.id);
@@ -211,8 +218,9 @@ class VoiceDashboard {
       if (a < 0.002) o.op = 0;
       return;
     }
-    // (the voice tab's own blobs: the row stands in for them; dark's Colorama mask and its holder draw as made)
+    // (the voice tab's own blobs: the row stands in for them; dark's Colorama mask and its holder draw as made, where the look is)
     if (!o.id.startsWith('cm')) o.op = 0;
+    else o.y += this.drop * m;
   };
 
   /** the Colorama: the remnant's line into the voice look's by m, richer with the voice, its colour strength */

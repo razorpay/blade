@@ -18,7 +18,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - With reduced motion on it shows one still frame of the wave.
 - The effect is decorative: hidden from screen readers. The chat input inside stays as it is.
 - `scale` is held between 0.75 and 1.25.
-- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
+- It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then fewer pixels too (its canvas at 0.75, then 0.5 of a CSS px, scaled up by the browser).
 - Its `ref`, `className` and `style` go to its root element (web).
 - It isn't RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. Use RazorSenseBottomWave for the animated wave under a chat input.
 - On its own it takes the same states as `RazorSenseChat` (`isOffline`, `isListening` with `voiceStream`, `outcome`); inside a `RazorSenseChat` they're the chat's (its own are ignored, with a warning in development). `outcome` is set once an answer that ran a task has filled in, after the bottom surge has settled into the wave. On its own its canvas reaches a little above the input; while an outcome plays it reaches the window's sides and top, so the splash is never cut, and gives that back after (its GPU memory at rest is unchanged).
@@ -54,8 +54,8 @@ type RazorSenseBottomWaveProps = {
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
    * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
-   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
-   * it steps back up.
+   * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
+   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up.
    */
   onError?: (error: Error) => void;
   /**

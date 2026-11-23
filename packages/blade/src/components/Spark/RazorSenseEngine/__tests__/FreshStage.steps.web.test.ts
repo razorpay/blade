@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-var-requires */
-// The weak-device steps (FreshStage): a stage on a device slow from its first frame steps down (every other frame, then a lower
-// sharpness) and then goes to its still, while one that keeps up never does. Frames are driven by hand: the screen runs at
+// The weak-device steps (FreshStage): a stage on a device slow from its first frame steps down (every other frame, then fewer
+// pixels) and then goes to its still, while one that keeps up never does. Frames are driven by hand: the screen runs at
 // 60 fps while nothing draws (as the page loads), then at the device's rate once the engine draws.
 
 type Frame = (time: number) => void;
@@ -74,7 +74,7 @@ describe('FreshStage: the weak-device steps', () => {
       if (onError.mock.calls.some(([reason]: [string]) => reason === 'slow'))
         stillAt = now() - start;
     }
-    // every other frame, then a lower sharpness, then the still: all within about 10 s
+    // every other frame, then fewer pixels (0.75, then 0.5 of a CSS px), then the still: all within about 10 s
     expect(steppedAt).toBeGreaterThan(0);
     expect(steppedAt).toBeLessThan(8000);
     expect(stillAt).toBeGreaterThan(steppedAt);

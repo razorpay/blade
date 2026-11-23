@@ -4874,21 +4874,23 @@ export function* freshEngineSteps(
         window.devicePixelRatio || 1,
         Math.max(0.5, +Xn.dpr || +K.view.dpr || 1.6),
         s || 1 / 0,
-      );
+      ),
+      o = Math.round(e * n),
+      a = Math.round(t * n);
     if (
-      ((Ce.width = Math.round(e * n)),
-      (Ce.height = Math.round(t * n)),
+      (Ce.width !== o && (Ce.width = o),
+      Ce.height !== a && (Ce.height = a),
       (Hn.w = e),
       (Hn.h = t),
       'fixed' === Xn.fit)
     )
       return (Hn.z = +Xn.scale || 1), (Hn.ox = 0), (Hn.oy = 0), void (Vn = !0);
-    const o = Array.isArray(Xn.region) && Xn.region[2] > 0 && Xn.region[3] > 0 ? Xn.region : null;
-    if (o)
+    const r = Array.isArray(Xn.region) && Xn.region[2] > 0 && Xn.region[3] > 0 ? Xn.region : null;
+    if (r)
       return (
-        (Hn.z = Math.max(e / o[2], t / o[3])),
-        (Hn.ox = e / 2 - (o[0] + o[2] / 2) * Hn.z),
-        (Hn.oy = t / 2 - (o[1] + o[3] / 2) * Hn.z),
+        (Hn.z = Math.max(e / r[2], t / r[3])),
+        (Hn.ox = e / 2 - (r[0] + r[2] / 2) * Hn.z),
+        (Hn.oy = t / 2 - (r[1] + r[3] / 2) * Hn.z),
         void (Vn = !0)
       );
     (Hn.z = ('contain' === Xn.fit ? Math.min : Math.max)(e / K.comp.w, t / K.comp.h)),

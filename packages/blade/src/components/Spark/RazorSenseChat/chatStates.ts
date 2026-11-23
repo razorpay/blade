@@ -206,7 +206,8 @@ class ChatStates {
     }
     if (want && !this.voiceComp) this.loadVoice(driver, anchors);
     if (!this.voiceComp) return;
-    const level = this.readVoice(now);
+    // (the voice is read only while listening: on the way out the row falls in silence, as speechtest 2 and flow 10.5 have it)
+    const level = want ? this.readVoice(now) : null;
     voice.frame(dt, now / 1000, want, level ? level.lvl : 0, level ? level.bands : null);
     // back at rest: the strip's own document again (the same picture)
     if (!want && voice.motion.u <= 0) this.unloadVoice();
