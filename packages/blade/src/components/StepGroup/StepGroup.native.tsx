@@ -95,14 +95,22 @@ const useChildrenWithIndexes = ({
     });
   };
 
-  const childrenWithIndex: React.ReactNode = React.useMemo(
-    () => (_nestingLevel === 0 ? traverseGroupAndAddIndex(children) : children),
+  // Return the count from the memo alongside the children. Reading `totalIndex` outside the memo
+  // gives 0 on any render that reuses the cached children, and then no step knows it is last.
+  const { childrenWithIndex, totalItemsInGroup } = React.useMemo(
+    () => {
+      if (_nestingLevel !== 0) {
+        return { childrenWithIndex: children as React.ReactNode, totalItemsInGroup: 0 };
+      }
+      const indexedChildren = traverseGroupAndAddIndex(children);
+      return { childrenWithIndex: indexedChildren, totalItemsInGroup: totalIndex };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [children, _nestingLevel],
   );
 
   const totalItemsInParentGroupCount =
-    _nestingLevel === 0 ? totalIndex : totalItemsFromPreviousParent;
+    _nestingLevel === 0 ? totalItemsInGroup : totalItemsFromPreviousParent;
 
   return { childrenWithIndex, totalItemsInParentGroupCount };
 };

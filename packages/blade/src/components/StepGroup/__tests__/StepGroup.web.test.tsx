@@ -39,6 +39,36 @@ describe('<StepGroup />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should keep the last step closed when it re-renders with the same children', async () => {
+    const user = userEvents.setup();
+    // Same children reference across renders, like a memoised list. StepGroup used to count its
+    // items inside a cached memo, so a re-render saw 0 items and the last step drew its end curve.
+    const steps = [
+      <StepItem key="intro" title="Run started" stepProgress="full" />,
+      <StepGroup key="tools">
+        <StepItem title="Read invoice" stepProgress="full" />
+        <StepItem title="Draft email" />
+      </StepGroup>,
+    ];
+    const Harness = (): React.ReactElement => {
+      const [renderCount, setRenderCount] = React.useState(0);
+      return (
+        <>
+          <button onClick={() => setRenderCount(renderCount + 1)}>Re-render</button>
+          <StepGroup testID={`step-group-${renderCount}`}>{steps}</StepGroup>
+        </>
+      );
+    };
+    const { container, getByRole } = renderWithTheme(<Harness />);
+    const getStepGroupMarkup = (): string | undefined =>
+      container.querySelector('[data-blade-component="step-group"]')?.innerHTML;
+    const firstRender = getStepGroupMarkup();
+
+    await user.click(getByRole('button', { name: 'Re-render' }));
+
+    expect(getStepGroupMarkup()).toBe(firstRender);
+  });
+
   it('should render as anchor tag when href is passed', () => {
     const { getByRole } = renderWithTheme(
       <StepGroup>
