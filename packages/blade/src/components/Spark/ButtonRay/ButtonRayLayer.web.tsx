@@ -9,6 +9,7 @@ import { canPlayHover, followKeyboardFocus, holdNearPointer } from '../useLazyLa
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
+import { rgb } from './rgb';
 import { useTheme } from '~components/BladeProvider';
 
 type ButtonRaySetup = {
@@ -105,19 +106,6 @@ const easeOutQuart = (u: number): number => 1 - (1 - Math.min(1, Math.max(0, u))
 const smooth01 = (u: number): number => {
   const v = Math.min(1, Math.max(0, u));
   return v * v * (3 - 2 * v);
-};
-/** a CSS colour as [r, g, b] (hex, rgb() or hsl(): what computed styles and Blade's tokens give) */
-const rgb = (c: string): number[] => {
-  if (c.startsWith('#')) return [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
-  const n = (c.match(/[\d.]+/g) ?? ['0', '0', '0']).slice(0, 3).map(Number);
-  if (!c.startsWith('hsl')) return n;
-  const [h, sat, l] = [n[0], n[1] / 100, n[2] / 100];
-  const a = sat * Math.min(l, 1 - l);
-  const f = (k: number): number => {
-    const m = (k + h / 30) % 12;
-    return Math.round(255 * (l - a * Math.max(-1, Math.min(m - 3, 9 - m, 1))));
-  };
-  return [f(0), f(8), f(4)];
 };
 const css = ([r, g, b]: number[]): string => `rgb(${r},${g},${b})`;
 
