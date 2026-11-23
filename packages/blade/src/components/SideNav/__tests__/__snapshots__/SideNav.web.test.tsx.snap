@@ -309,6 +309,7 @@ exports[`SideNav should render 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -332,6 +333,7 @@ exports[`SideNav should render 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .c24.c24.c24.c24.c24 {

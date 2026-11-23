@@ -144,6 +144,9 @@ const NavLinkIconTitle = ({
             <BaseText
               ref={textRef as never}
               truncateAfterLines={1}
+              // A long title is cut at the letter that no longer fits, not at the last whole word,
+              // so it uses the room up to whatever follows it (titleSuffix, chevron, trailing)
+              wordBreak="break-all"
               color="currentColor"
               fontWeight={isActive ? 'semibold' : 'regular'}
               fontSize={100}

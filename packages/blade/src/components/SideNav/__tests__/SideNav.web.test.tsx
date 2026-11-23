@@ -89,6 +89,12 @@ describe('SideNav', () => {
     offsetWidth.mockRestore();
   });
 
+  test('should cut a long title at the letter so it uses the room before what follows it', () => {
+    const { getByText } = renderWithTheme(<SideNavTrailingExample display="block" />);
+
+    expect(getByText('Links')).toHaveStyle('word-break: break-all');
+  });
+
   test('should not keep room for trailing while SideNav is collapsed', () => {
     const TRAILING_WIDTH = 20;
     const offsetWidth = jest

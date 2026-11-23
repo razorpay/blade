@@ -185,6 +185,10 @@ type PinnableItem = {
   title: string;
   icon: IconComponent;
   /**
+   * Shown after the title, e.g. a Badge
+   */
+  titleSuffix?: React.ReactElement;
+  /**
    * Titles of the items in the next level. The item opens the next level when this is set
    */
   nextLevelItems?: string[];
@@ -252,6 +256,7 @@ const PinnableNav = ({
                   activeOnPrefix={nextLevelItems ? toPath(item.id) : undefined}
                   icon={item.icon}
                   title={item.title}
+                  titleSuffix={item.titleSuffix}
                   trailingVisibility={isPinned ? 'always' : 'on-hover'}
                   trailing={
                     // Hidden instead of removed while quiet, so the item keeps the same room for it
@@ -284,7 +289,8 @@ const PinnableNav = ({
 };
 
 // Starts with three pinned items: a plain one, one that opens the next level, and one with a long title
-// that truncates before its pin. The other two show their pin on hover or keyboard focus, which is the default.
+// and a badge. The long title is cut at the letter, right before the badge, and the badge stays before the pin.
+// The other two show their pin on hover or keyboard focus, which is the default.
 export const TrailingVisibility: StoryFn<typeof SideNavLink> = () => {
   return (
     <PinnableNav
@@ -301,6 +307,11 @@ export const TrailingVisibility: StoryFn<typeof SideNavLink> = () => {
           id: 'international-payments',
           title: 'International Payments and Settlements',
           icon: HomeIcon,
+          titleSuffix: (
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          ),
         },
         { id: 'invoices', title: 'Invoices', icon: InvoicesIcon },
         {
