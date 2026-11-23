@@ -122,7 +122,8 @@ type SideNavLinkProps = {
    * Controls when the trailing slot is visible
    *
    * - `on-hover`: visible on hover of the item and while the item has keyboard focus
-   * - `always`: always visible.
+   * - `always`: visible without hover, whenever the SideNav is expanded. Like every trailing slot,
+   *   it is hidden while the SideNav is collapsed to icons.
    *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
    *
    * @default 'on-hover'
@@ -315,7 +316,7 @@ type SideNavVisibilityProps = {
   /**
    * Content to show or hide with the collapsed state of SideNav
    */
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactNode;
 } & DataAnalyticsAttribute;
 
 export type {

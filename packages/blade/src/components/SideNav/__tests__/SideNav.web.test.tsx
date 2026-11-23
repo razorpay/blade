@@ -3,7 +3,7 @@ import {
   SideNavL4NestingErrorExample,
   SideNavTrailingExample,
 } from './SideNavExample';
-import { SideNavVisibility } from '../index';
+import { SideNav, SideNavBody, SideNavVisibility } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
@@ -144,6 +144,22 @@ describe('SideNav', () => {
     const collapsed = getContent(false);
     expect(collapsed.expandedOnly).toHaveStyle('display: none');
     expect(collapsed.collapsedOnly).not.toHaveStyle('display: none');
+  });
+
+  test('should accept conditional and text content in SideNavVisibility', () => {
+    const hasMore = false;
+    const { getByText } = renderWithTheme(
+      <SideNav display="block">
+        <SideNavBody>
+          <SideNavVisibility visibleWhen="expanded">
+            {hasMore ? <p>+3 More</p> : null}
+            All items shown
+          </SideNavVisibility>
+        </SideNavBody>
+      </SideNav>,
+    );
+
+    expect(getByText('All items shown')).toHaveClass('hide-when-collapsed');
   });
 
   test('should throw error when SideNavVisibility is used outside SideNav', () => {
