@@ -97,9 +97,12 @@ describe('SideNav', () => {
 
   test('should not keep room for trailing while SideNav is collapsed', () => {
     const TRAILING_WIDTH = 20;
+    // like a browser, an element taken out with display none has no width
     const offsetWidth = jest
       .spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
-      .mockReturnValue(TRAILING_WIDTH);
+      .mockImplementation(function getOffsetWidth(this: HTMLElement) {
+        return window.getComputedStyle(this).display === 'none' ? 0 : TRAILING_WIDTH;
+      });
     const { getByRole } = renderWithTheme(
       <SideNavTrailingExample display="block" isExpanded={false} />,
     );

@@ -492,6 +492,16 @@ Shows its children only while the SideNav is expanded, or only while it is colla
 </SideNavVisibility>
 ```
 
+#### Why a wrapper instead of rendering on `isExpanded`
+
+A consumer that passes `isExpanded` could render `{isExpanded ? <Link>+3 More</Link> : <Link>+3</Link>}` itself. That only covers one of the ways SideNav collapses to icons:
+
+- **`isExpanded={false}`**: the consumer owns this state.
+- **A next level (L2) is open in a SideNav without `isExpanded`**: L1 collapses to icons on its own. The consumer does not hold this state.
+- **Hover on that collapsed L1**: it expands again while hovered. The consumer cannot observe this at all.
+
+`SideNavVisibility` follows all three, with the same timing as the titles of the items Blade renders (content is swapped once the collapse transition ends). In the mobile SideNav, which is a Drawer that always shows full items, the `expanded` content is the one shown.
+
 ### SideNavFooter
 
 | **Props** | **Description** | **Type** | **Default Value** |

@@ -28,7 +28,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
+const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK, NAV_LINK_TRAILING } = classes;
 
 const StyledNavLinkContainer = styled(BaseBox)<{
   $hasDescription: boolean;
@@ -338,14 +338,14 @@ const SideNavLink = ({
 
   // Width of the trailing slot, so the link can keep that much room free for it.
   // Items without a trailing slot render no element for the ref, so they measure and observe nothing.
-  // No room is kept while SideNav is collapsed to icons: the slot is taken out with display none there,
-  // and room kept for it would make the item wider than the collapsed SideNav
+  // While SideNav is collapsed to icons on desktop the slot is taken out with display none, so it
+  // measures 0 and no room is kept, which would make the item wider than the collapsed SideNav.
+  // `isSideNavCollapsed` is a dependency only so the slot is measured again when that state changes
   const trailingRef = React.useRef<HTMLDivElement>(null);
   const [trailingWidth, setTrailingWidth] = React.useState(0);
   const updateTrailingWidth = React.useCallback(() => {
-    setTrailingWidth(
-      hasTrailing && !isSideNavCollapsed ? trailingRef.current?.offsetWidth ?? 0 : 0,
-    );
+    setTrailingWidth(hasTrailing ? trailingRef.current?.offsetWidth ?? 0 : 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasTrailing, isSideNavCollapsed]);
   // Measured before the first paint so the title never shows under the slot. The observer then keeps
   // it in step when the slot's content changes size
@@ -449,15 +449,11 @@ const SideNavLink = ({
                 top="spacing.0"
                 right={NAV_LINK_TRAILING_INSET}
                 height="100%"
-                // Taken out while SideNav is collapsed to icons. Fading it out is not enough there:
-                // the action in it would stay in the tab order while nobody can see it
-                display={isSideNavCollapsed ? 'none' : 'flex'}
+                display="flex"
                 alignItems="center"
-                className={
-                  isTrailingAlwaysVisible
-                    ? HIDE_WHEN_COLLAPSED
-                    : `${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`
-                }
+                className={`${NAV_LINK_TRAILING} ${HIDE_WHEN_COLLAPSED} ${
+                  isTrailingAlwaysVisible ? '' : SHOW_ON_LINK_HOVER
+                }`}
               >
                 {trailing}
               </BaseBox>

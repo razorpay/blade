@@ -30,6 +30,7 @@ const {
   TRANSITIONING,
   L1_ITEM_WRAPPER,
   SIDE_NAV_VISIBILITY,
+  NAV_LINK_TRAILING,
 } = classes;
 
 const MobileL1Container = styled(BaseBox)(() => {
@@ -117,6 +118,13 @@ const StyledSideNavContainer = styled(BaseBox)<{ $isSideNavExpandable: boolean }
       opacity: '1',
       pointerEvents: 'auto',
       transition: `opacity ${quick} ${easing.entrance}`,
+    },
+    // Trailing slot of SideNavLink holds an action. Fading it out is not enough while SideNav is collapsed to icons:
+    // the action would stay in the tab order while nobody can see it.
+    // The rule lives on this container since it is only rendered on desktop. SideNav on mobile is a Drawer
+    // that always shows full items, so the trailing slot stays there even when `isExpanded` is false
+    [`&.${COLLAPSED} .${NAV_LINK_TRAILING}`]: {
+      display: 'none',
     },
     // SideNavVisibility holds content of consumers, which can be interactive and is usually rendered once
     // for each state. Fading it out is not enough: it would keep its space and stay in the tab order

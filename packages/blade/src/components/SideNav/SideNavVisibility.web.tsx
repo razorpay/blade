@@ -12,6 +12,10 @@ import { throwBladeError } from '~utils/logger';
  * Use it for your own content inside SideNav (e.g. a custom "+3 More" link) so that it follows
  * the same collapse behaviour and transitions as the items that Blade renders.
  *
+ * It follows every way SideNav collapses to icons: `isExpanded={false}`, a next level (L2) opening in a
+ * SideNav without `isExpanded`, and that collapsed L1 expanding again on hover. The last two are states
+ * that a consumer does not hold, which is why rendering on `isExpanded` alone is not enough.
+ *
  * It works in the children of SideNav (SideNavBody, SideNavFooter). It is not meant for the `banner` slot,
  * which sits outside the part of SideNav that collapses.
  */

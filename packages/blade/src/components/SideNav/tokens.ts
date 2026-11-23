@@ -11,6 +11,7 @@ const classes = {
   SHOW_ON_LINK_HOVER: 'show-on-link-hover',
   STYLED_NAV_LINK: 'styled-nav-link',
   SIDE_NAV_VISIBILITY: 'side-nav-visibility',
+  NAV_LINK_TRAILING: 'nav-link-trailing',
 } as const;
 
 const SKIP_NAV_ID = 'blade-side-nav-skip';
