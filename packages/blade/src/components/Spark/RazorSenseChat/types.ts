@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
+import type { RazorSenseDrawProps, RazorSenseStateProps } from '../RazorSenseEngine/drawProps';
 import type { StringChildrenType } from '~utils/types';
 
 type RazorSenseThinkingProps = {
@@ -17,13 +17,25 @@ type RazorSenseThinkingProps = {
   texts?: string[];
 } & RazorSenseDrawProps;
 
+/** What the chat's bottom strip shows once an answer is done */
+type RazorSenseOutcomeProps = {
+  /**
+   * How the task the answer did ended: set it as the answer shows it (the ✓, or the failing step) and the bottom strip plays its
+   * success (green) or error (red) wave once, ending back at its rest. Set while it's still thinking, it waits for the answer to
+   * settle. Cleared mid-way, it plays back; the next question plays it out quickly before the thinking comes back up.
+   */
+  outcome?: 'success' | 'error';
+};
+
 type RazorSenseBottomWaveProps = {
   /**
    * The chat input it settles under. Typing in it (any input, textarea or editable element inside) pulses the wave up into its
    * typing surge; it dies back down when the typing stops. What's typed is never read.
    */
   children: React.ReactNode;
-} & RazorSenseDrawProps;
+} & RazorSenseDrawProps &
+  RazorSenseStateProps &
+  RazorSenseOutcomeProps;
 
 type RazorSenseChatProps = {
   /**
@@ -44,6 +56,13 @@ type RazorSenseChatProps = {
    * @default '100%'
    */
   height?: string | number;
-} & RazorSenseDrawProps;
+} & RazorSenseDrawProps &
+  RazorSenseStateProps &
+  RazorSenseOutcomeProps;
 
-export type { RazorSenseThinkingProps, RazorSenseBottomWaveProps, RazorSenseChatProps };
+export type {
+  RazorSenseThinkingProps,
+  RazorSenseBottomWaveProps,
+  RazorSenseChatProps,
+  RazorSenseOutcomeProps,
+};

@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { RazorSenseDrawProps } from '../RazorSenseEngine/drawProps';
+import type { RazorSenseDrawProps, RazorSenseStateProps } from '../RazorSenseEngine/drawProps';
 
 type RazorSenseChatBackgroundProps = {
   /**
@@ -10,6 +10,7 @@ type RazorSenseChatBackgroundProps = {
    * the typing stops. What's typed is never read.
    */
   children: React.ReactNode;
-} & RazorSenseDrawProps;
+} & RazorSenseDrawProps &
+  RazorSenseStateProps;
 
 export type { RazorSenseChatBackgroundProps };

@@ -2,7 +2,11 @@ import React, { forwardRef, useCallback, useContext, useEffect, useRef, useState
 import type { RazorSenseChatBackgroundProps } from './types';
 import { TypingSurge, getTypingSurgeSetup } from './typingSurge';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
-import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
+import type { FreshDoc, FreshEngine, FreshExport, FreshStage } from '../RazorSenseEngine';
+import { OfflineFade } from '../RazorSenseEngine/offline';
+import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
+import type { VoiceTap } from '../RazorSenseEngine/voice';
+import type { VoiceDashboard } from './voiceDashboard';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
@@ -18,6 +22,11 @@ const loadChatBackgroundStill = (colorScheme: 'light' | 'dark'): Promise<string>
   colorScheme === 'dark'
     ? import('./stills/chatBackgroundDark').then((m) => m.chatBackgroundDark)
     : import('./stills/chatBackgroundLight').then((m) => m.chatBackgroundLight);
+/** its still while it listens (the voice dashboard): its own module per color scheme, loaded only then */
+const loadVoiceStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
+  colorScheme === 'dark'
+    ? import('./stills/voiceDashboardDark').then((m) => m.voiceDashboardDark)
+    : import('./stills/voiceDashboardLight').then((m) => m.voiceDashboardLight);
 
 /** flow 9's landing chat input in the comp (CSS px; the comp is 1440 x 856 CSS, made at 2x): what the comp is laid against */
 const INPUT = { x: 332, y: 206, w: 840, h: 97 };
@@ -43,6 +52,144 @@ const INPUT_MIDDLE: [number, number] = [
   (INPUT.y + INPUT.h / 2 - COMP_SIZE.h / 2) * 2,
 ];
 
+type BackgroundInputs = { isOffline: boolean; isListening: boolean; voiceStream?: MediaStream };
+
+/**
+ * The PR's states on the chat background, on its one engine: offline fades every shape away under the Colorama (the engine's fade();
+ * flow 10.5's mal9.js: 1 s each way, easing in going and out coming back, turned round from where it is); listening swaps in the voice
+ * dashboard (its own chunk, loaded the first time it listens) at m 0, where it's the same picture, and morphs into it, and back out
+ * and swapped back at m 0. Offline wins: the voice look goes at once.
+ */
+class BackgroundStates {
+  private readonly fade = new OfflineFade();
+  private voice: VoiceDashboard | null = null;
+  private isLoadingVoice = false;
+  private isVoiceDoc = false;
+  private tap: VoiceTap | null = null;
+  private tapStream: MediaStream | null = null;
+  private isDead = false;
+
+  private readonly engine: FreshEngine;
+  private readonly base: FreshDoc;
+  private readonly opts: FreshExport['opts'];
+  private readonly mode: 'light' | 'dark';
+  /** another document is on the engine: lay it out again */
+  private readonly onLoad: () => void;
+
+  constructor(
+    engine: FreshEngine,
+    base: FreshDoc,
+    opts: FreshExport['opts'],
+    mode: 'light' | 'dark',
+    onLoad: () => void,
+  ) {
+    this.engine = engine;
+    this.base = base;
+    this.opts = opts;
+    this.mode = mode;
+    this.onLoad = onLoad;
+  }
+
+  public frame(dt: number, nowMs: number, inputs: BackgroundInputs): void {
+    if (this.isDead) return;
+    this.engine.player.fade(this.fade.step(dt, inputs.isOffline));
+    const want = inputs.isListening && !inputs.isOffline;
+    if (want && !this.voice) this.importVoice();
+    const { voice } = this;
+    if (!voice) return;
+    if (inputs.isOffline && this.isVoiceDoc) {
+      // (offline: the voice look goes at once)
+      voice.motion.reset();
+      this.toBase();
+      return;
+    }
+    if (want && !this.isVoiceDoc) this.toVoice();
+    if (!this.isVoiceDoc) return;
+    const level = this.readVoice(nowMs, inputs.voiceStream);
+    voice.frame(dt, nowMs / 1000, want, level ? level.lvl : 0, level ? level.bands : null);
+    if (!want && voice.motion.u <= 0) this.toBase();
+  }
+
+  /** reduced motion: offline gone, listening the voice look (silent), at once */
+  public settle(inputs: BackgroundInputs, redraw: () => void): void {
+    if (this.isDead) return;
+    this.fade.set(inputs.isOffline ? 0 : 1);
+    this.engine.player.fade(this.fade.k);
+    const want = inputs.isListening && !inputs.isOffline;
+    if (want && !this.voice) this.importVoice(redraw);
+    if (!this.voice) return;
+    if (want) {
+      if (!this.isVoiceDoc) this.toVoice();
+      this.voice.motion.u = 1;
+      this.voice.frame(0, performance.now() / 1000, true, 0, null);
+    } else if (this.isVoiceDoc) {
+      this.toBase();
+    }
+  }
+
+  /** offline, faded all the way */
+  public isAway(): boolean {
+    return this.fade.isGone();
+  }
+
+  public destroy(): void {
+    this.isDead = true;
+    this.releaseTap();
+  }
+
+  private importVoice(redraw?: () => void): void {
+    if (this.isLoadingVoice) return;
+    this.isLoadingVoice = true;
+    import('./voiceDashboard')
+      .then((m) => {
+        if (this.isDead) return;
+        this.voice = new m.VoiceDashboard(this.mode, this.base, this.engine.player.tools);
+        redraw?.();
+      })
+      .catch(() => undefined)
+      .finally(() => {
+        this.isLoadingVoice = false;
+      });
+  }
+
+  private toVoice(): void {
+    const { voice } = this;
+    if (!voice) return;
+    voice.motion.reset();
+    this.isVoiceDoc = true;
+    this.engine.load?.({ doc: withRoom(voice.doc, ROOM), opts: this.opts });
+    this.engine.player.look(voice.look);
+    this.onLoad();
+  }
+
+  private toBase(): void {
+    this.isVoiceDoc = false;
+    this.engine.player.look(null);
+    this.engine.load?.({ doc: this.base, opts: this.opts });
+    this.engine.player.comp('ty', { op: 0 });
+    this.onLoad();
+    this.releaseTap();
+  }
+
+  /** the page's voice this frame (one analyser read, shared): null with no stream */
+  private readVoice(nowMs: number, stream?: MediaStream): VoiceTap['level'] | null {
+    if ((stream ?? null) !== this.tapStream) {
+      this.releaseTap();
+      if (stream) {
+        this.tap = tapVoice(stream);
+        this.tapStream = stream;
+      }
+    }
+    return this.tap ? this.tap.read(nowMs) : null;
+  }
+
+  private releaseTap(): void {
+    if (this.tap && this.tapStream) releaseVoice(this.tapStream, this.tap);
+    this.tap = null;
+    this.tapStream = null;
+  }
+}
+
 /**
  * RazorSenseChatBackground
  *
@@ -65,7 +212,19 @@ const INPUT_MIDDLE: [number, number] = [
  */
 const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgroundProps>(
   function RazorSenseChatBackground(
-    { children, isPaused = false, scale = 1, onLoad, onError, className, style, testID },
+    {
+      children,
+      isPaused = false,
+      scale = 1,
+      onLoad,
+      onError,
+      className,
+      style,
+      testID,
+      isOffline = false,
+      isListening = false,
+      voiceStream,
+    },
     forwardedRef,
   ) {
     const { colorScheme } = useTheme();
@@ -94,15 +253,28 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     const stageRef = useRef<FreshStage | null>(null);
     const engineRef = useRef<FreshEngine | null>(null);
     const typingRef = useRef<TypingSurge | null>(null);
+    const statesRef = useRef<BackgroundStates | null>(null);
     // read when the engine is up (it loads asynchronously, so a pause set before then still counts)
     const isPausedRef = useRef(isPaused);
     isPausedRef.current = isPaused;
+    // the PR's states (offline, the voice look): read every frame
+    const inputsRef = useRef({ isOffline, isListening, voiceStream });
+    inputsRef.current = { isOffline, isListening, voiceStream };
+    // offline, faded all the way: it stops drawing till it's back online
+    const isAwayRef = useRef(false);
+    // reduced motion: draws where it is now, settled (a state changing)
+    const redrawRef = useRef<(() => void) | null>(null);
     // gone to its still: it can't animate here (the stage is freed); it stays there, a new color scheme just changes the still
     const [isStill, setIsStill] = useState(false);
     const isStillRef = useRef(false);
     // (and while it has no frame yet: its GPU getting ready)
     const [isWaiting, setIsWaiting] = useState(false);
     const still = useStill(isStill || isWaiting, mode, loadChatBackgroundStill);
+    const voiceStill = useStill(
+      (isStill || isWaiting) && isListening && !isOffline,
+      mode,
+      loadVoiceStill,
+    );
 
     // the strip stretched to the box (held in range), and the canvas laid round the box so the comp's chat input sits on it
     const fitRef = useRef<() => void>(() => undefined);
@@ -204,10 +376,13 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           );
           const setup = getTypingSurgeSetup(doc);
           // the comp at its own size (2x comp px = CSS px) x scale, from the canvas's top-left (placed by fitRef)
-          const engine = stage.mount({
-            doc,
-            opts: { fit: 'fixed', scale: 0.5 * s, alpha: true, paused: true },
-          });
+          const opts: FreshExport['opts'] = {
+            fit: 'fixed',
+            scale: 0.5 * s,
+            alpha: true,
+            paused: true,
+          };
+          const engine = stage.mount({ doc, opts });
           if (!engine || !setup) return false;
           onLoadRef.current?.();
           engineRef.current = engine;
@@ -216,17 +391,33 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           typingRef.current = typing;
           fitRef.current();
           const duration = doc.tl.dur;
+          const states = new BackgroundStates(engine, doc, opts, mode, () => {
+            // (another document on the engine: laid out round the chat input again)
+            fitRef.current();
+          });
+          statesRef.current = states;
           if (stage.reducedMotion) {
-            // reduced motion: held still, idle
-            stage.settle(() => {
-              typing.pose(engine.player, 1);
-              engine.player.seek(0, 0);
-            });
+            // reduced motion: held still, idle (offline: gone; listening: the voice look, silent)
+            const draw = (): void => {
+              states.settle(inputsRef.current, () => redrawRef.current?.());
+              stage.settle(() => {
+                typing.pose(engine.player, 1);
+                engine.player.seek(0, 0);
+              });
+            };
+            redrawRef.current = draw;
+            draw();
             return true;
           }
           stage.setDriver((eng, dt) => {
-            const now = performance.now() / 1000;
-            typing.step(eng.player, dt, now, duration);
+            const nowMs = performance.now();
+            states.frame(dt, nowMs, inputsRef.current);
+            typing.step(eng.player, dt, nowMs / 1000, duration);
+            // offline, faded all the way: nothing of it shows, so it stops drawing till it's back online
+            if (states.isAway() && !isAwayRef.current) {
+              isAwayRef.current = true;
+              stage.setPaused(true);
+            }
           });
           stage.setPaused(isPausedRef.current);
           return true;
@@ -239,6 +430,10 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
         onRelease: () => {
           engineRef.current = null;
           typingRef.current = null;
+          statesRef.current?.destroy();
+          statesRef.current = null;
+          redrawRef.current = null;
+          isAwayRef.current = false;
         },
         onWaiting: setIsWaiting,
       });
@@ -247,8 +442,17 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
     }, [mode, s, isInChat]);
 
     useEffect(() => {
-      stageRef.current?.setPaused(isPaused);
+      stageRef.current?.setPaused(isPaused || isAwayRef.current);
     }, [isPaused]);
+
+    // a state changed: read by the next frame; with reduced motion, drawn now; back online, drawing again
+    useEffect(() => {
+      if (!isOffline && isAwayRef.current) {
+        isAwayRef.current = false;
+        stageRef.current?.setPaused(isPausedRef.current);
+      }
+      redrawRef.current?.();
+    }, [isOffline, isListening, voiceStream]);
 
     // each edit typed in the chat input inside (any input, textarea or editable element) is a keystroke
     useEffect(() => {
@@ -286,7 +490,15 @@ const RazorSenseChatBackground = forwardRef<HTMLDivElement, RazorSenseChatBackgr
           }}
         >
           <div ref={hostRef} style={{ position: 'absolute', pointerEvents: 'none' }}>
-            {still ? <img ref={placeStill} src={still} alt="" style={stillStyle} /> : null}
+            {still ? (
+              <img
+                ref={placeStill}
+                src={voiceStill ?? still}
+                alt=""
+                // (offline: it fades away, as the animation does)
+                style={{ ...stillStyle, opacity: isOffline ? 0 : 1, transition: 'opacity 1s' }}
+              />
+            ) : null}
           </div>
         </div>
         {children}

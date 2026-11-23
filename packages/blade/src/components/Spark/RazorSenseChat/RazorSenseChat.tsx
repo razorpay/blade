@@ -15,6 +15,7 @@ import {
 } from './placement';
 import { RazorSenseThinking } from './RazorSenseThinking';
 import { useChatStage } from './useChatStage';
+import { useStateStill } from './useStateStill';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { useStill } from '../RazorSenseEngine/useStill';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
@@ -67,6 +68,10 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
     className,
     style,
     testID,
+    isOffline = false,
+    isListening = false,
+    voiceStream,
+    outcome,
   },
   forwardedRef,
 ) {
@@ -93,6 +98,11 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
     const anchors: ChatAnchors = {
       thinking: thinking ? thinkingSlot(thinking) : fallback.thinking,
       input: bottomWave ? inputAnchor(bottomWave, s) : fallback.input,
+      // (offline, the strip drops below the chat's bottom edge; the voice look's row is as wide as the chat input)
+      bar: bottomWave
+        ? { top: bottomWave.top, width: bottomWave.width, height: bottomWave.height }
+        : fallback.bar,
+      leaveAt: stage.clientHeight,
     };
     lastRef.current = anchors;
     return anchors;
@@ -107,9 +117,15 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
     isPaused,
     onLoad,
     onError,
+    isOffline,
+    isListening,
+    voiceStream,
+    outcome,
   });
   const thinkingStill = useStill(isStill, mode, loadThinkingStill);
   const bottomWaveStill = useStill(isStill, mode, loadBottomWaveStill);
+  // (listening, or an outcome: its own still in the bottom wave's place)
+  const stateStill = useStateStill(isStill, mode, isListening && !isOffline, outcome);
 
   // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge). They're
   // placed again only when something may have moved them (paused, they're placed once and stay there)
@@ -140,7 +156,7 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
       onChange: place,
     });
     // (the stills come in a tick later, their modules loaded on demand: placed again as they do, paused too)
-  }, [isStill, s, isPaused, thinkingStill, bottomWaveStill]);
+  }, [isStill, s, isPaused, thinkingStill, bottomWaveStill, stateStill]);
 
   // (stable: a part registers once, not again on every change of the chat's props)
   // every part registered, in order (two thinking labels can be up at once, a RazorSenseThinking and a loading ChatMessage say):
@@ -221,7 +237,7 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
           {bottomWaveStill ? (
             <img
               ref={bottomWaveStillRef}
-              src={bottomWaveStill}
+              src={stateStill ?? bottomWaveStill}
               alt=""
               style={{
                 position: 'absolute',
@@ -229,8 +245,9 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
                 top: 0,
                 width: `${BOTTOM_WAVE_REACH.side * 2 * s}px`,
                 height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
-                opacity: isThinking ? 0 : 1,
-                transition: 'opacity 0.6s',
+                // (offline: it goes, as the strip drops)
+                opacity: isThinking || isOffline ? 0 : 1,
+                transition: isOffline ? 'opacity 1.2s' : 'opacity 0.6s',
               }}
             />
           ) : null}

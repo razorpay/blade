@@ -5,6 +5,7 @@ import { RazorSenseChatContext } from './chatContext';
 import { BOTTOM_WAVE_REACH, inputAnchor, rectIn } from './placement';
 import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
+import { useStateStill } from './useStateStill';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
@@ -50,6 +51,10 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       className,
       style,
       testID,
+      isOffline = false,
+      isListening = false,
+      voiceStream,
+      outcome,
     } = props;
     const chat = useContext(RazorSenseChatContext);
     useChatOwnedPropsWarning('RazorSenseBottomWave', Boolean(chat), props);
@@ -85,6 +90,9 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
     const getAnchors = (): ChatAnchors => {
       const stage = stageRef.current;
       const r = stage && rectIn(boxRef.current, stage);
+      // (offline, the strip drops below the window's bottom edge; the voice look's row is as wide as the chat input)
+      const bar = r ? { top: r.top, width: r.width, height: r.height } : undefined;
+      const leaveAt = stage ? window.innerHeight - stage.getBoundingClientRect().top : undefined;
       const input = r
         ? inputAnchor(r, s)
         : inputAnchor(
@@ -96,7 +104,7 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
             },
             s,
           );
-      return { thinking: input, input };
+      return { thinking: input, input, bar, leaveAt };
     };
     const { keystroke, isStill } = useChatStage({
       moduleName: 'RazorSenseBottomWave',
@@ -108,8 +116,14 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       isPaused,
       onLoad,
       onError,
+      isOffline,
+      isListening,
+      voiceStream,
+      outcome,
     });
     const still = useStill(!chat && isStill, mode, loadBottomWaveStill);
+    // (listening, or an outcome: its own still in its place)
+    const stateStill = useStateStill(!chat && isStill, mode, isListening && !isOffline, outcome);
 
     // each edit typed in the chat input inside (any input, textarea or editable element) is a keystroke
     useEffect(() => {
@@ -153,7 +167,14 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
                 pointerEvents: 'none',
               }}
             >
-              {still ? <img src={still} alt="" style={stillStyle} /> : null}
+              {still ? (
+                <img
+                  src={stateStill ?? still}
+                  alt=""
+                  // (offline: it goes, as the strip drops)
+                  style={{ ...stillStyle, opacity: isOffline ? 0 : 1, transition: 'opacity 1.2s' }}
+                />
+              ) : null}
             </div>
           </div>
         )}
