@@ -31,8 +31,6 @@ const OUTCOME_STILL_AT = 1.6;
 const STRIP_COMPS = ['c3', 'b_c3'] as const;
 /** the chat comp's chat bar middle across, comp px from the comp's middle (chatDriver's COMP.box: 787 of 1512, at 2x) */
 const BAR_X = (787 - 1512 / 2) * 2;
-/** flow 9's chat bar, 60 px tall: the strip's top edge is its top; the chat input's bottom takes its bottom (placement's BAR_HEIGHT) */
-const BAR_HEIGHT = 60;
 
 const whenIdle = (go: () => void): void => {
   const w = window as Window & {
@@ -234,13 +232,11 @@ class ChatStates {
     const comp = driver.restComp();
     const { voice } = this;
     if (!voice || !comp) return;
-    // the row as wide as the chat input (comp px: the chat comp is drawn at 0.5 x scale), and on its top edge: flow's bar is 60 px
-    // tall, its top the strip's; a taller chat input (lines, attachments) lifts the row by the rest, so it shows above it as there
+    // the row as wide as the chat input (comp px: the chat comp is drawn at 0.5 x scale), on the strip's top edge where flow has it:
+    // anchored to the strip at the bottom, coming out from under the chat input; a taller chat input doesn't move it
     const k = 0.5 * this.scale;
-    const bar = anchors.bar;
-    const width = (bar?.width ?? 840) / k;
-    const lift = bar ? Math.max(0, bar.height - BAR_HEIGHT * this.scale) / k : 0;
-    const doc = voice.compose(this.splice?.doc ?? this.base, comp, BAR_X, width, lift);
+    const width = (anchors.bar?.width ?? 840) / k;
+    const doc = voice.compose(this.splice?.doc ?? this.base, comp, BAR_X, width);
     voice.motion.reset();
     this.voiceComp = comp;
     this.load(doc);

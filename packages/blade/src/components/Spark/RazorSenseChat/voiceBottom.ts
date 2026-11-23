@@ -107,7 +107,6 @@ class VoiceBottom {
   /** the chat input's middle across and half width, and how far its top is above flow's bar's (comp px) */
   private rowX = 0;
   private rowHL = 840;
-  private rowLift = 0;
   private readonly blobAt: Map<string, number>;
   private readonly bx: Float32Array;
   private readonly by: Float32Array;
@@ -139,23 +138,16 @@ class VoiceBottom {
 
   /**
    * The chat's comp with the row in its strip page's Comp 3 (`comp`), each blob as wide as a chat input `inputWidth` comp px wide makes
-   * it, the input's middle `inputX` comp px from the comp's middle, lifted `lift` comp px onto a taller input's top edge (made once a
-   * listen starts, as flow 10.5 makes its page)
+   * it, the input's middle `inputX` comp px from the comp's middle, on the strip's top edge (made once a listen starts, as flow 10.5
+   * makes its page)
    */
-  public compose(
-    doc: FreshDoc,
-    comp: string,
-    inputX: number,
-    inputWidth: number,
-    lift = 0,
-  ): FreshDoc {
+  public compose(doc: FreshDoc, comp: string, inputX: number, inputWidth: number): FreshDoc {
     const stack = (doc.stack as StackEntry[] | undefined) ?? [];
     const entry = stack.find((e) => e.id === comp);
     if (!entry) return doc;
     this.comp = comp;
     this.rowX = inputX;
     this.rowHL = inputWidth / 2;
-    this.rowLift = lift;
     const shapes = (entry.doc.shapes as Shape[] | undefined) ?? [];
     const strip = shapes.find((s) => s.id === STRIP);
     this.edge = strip ? edgeOf(strip) : new Float32Array(0);
@@ -211,7 +203,7 @@ class VoiceBottom {
       const eu = Math.min(1, Math.abs(x - X0) / Math.max(1, this.rowHL * L.len));
       this.bop[i] = 1 - L.efade * eu * eu * (3 - 2 * eu);
       this.bx[i] = x;
-      this.by[i] = edgeY(this.edge, x) + L.dy - this.rowLift;
+      this.by[i] = edgeY(this.edge, x) + L.dy;
       this.bsy[i] = L.rest * (1 - L.bias * Math.abs(u) ** 1.6) + L.height * e;
       this.bsx[i] = 1 + L.widen * e;
     }
