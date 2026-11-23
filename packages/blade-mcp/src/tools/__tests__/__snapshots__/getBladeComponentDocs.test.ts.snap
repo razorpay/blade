@@ -185,6 +185,7 @@ type BladeCommonEvents = {
 - Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
 - Use \`color="neutral"\` with \`aiHover="razorsense"\` for an AI-led primary action (Ask Ray, send in an AI chat box).
 - Use \`aiHover="ray-investigate"\` on a secondary button whose action Ray carries out (Investigate).
+- When Ray is unavailable or the merchant is offline, disable the button (\`isDisabled\`); the AI hover doesn't play on a disabled button.
 
 **Don't**
 
@@ -1127,6 +1128,7 @@ type BladeCommonEvents = {
 - Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
 - Use \`color="neutral"\` with \`aiHover="razorsense"\` for an AI-led primary action (Ask Ray, send in an AI chat box).
 - Use \`aiHover="ray-investigate"\` on a secondary button whose action Ray carries out (Investigate).
+- When Ray is unavailable or the merchant is offline, disable the button (\`isDisabled\`); the AI hover doesn't play on a disabled button.
 
 **Don't**
 
@@ -2069,6 +2071,7 @@ type BladeCommonEvents = {
 - Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
 - Use \`color="neutral"\` with \`aiHover="razorsense"\` for an AI-led primary action (Ask Ray, send in an AI chat box).
 - Use \`aiHover="ray-investigate"\` on a secondary button whose action Ray carries out (Investigate).
+- When Ray is unavailable or the merchant is offline, disable the button (\`isDisabled\`); the AI hover doesn't play on a disabled button.
 
 **Don't**
 

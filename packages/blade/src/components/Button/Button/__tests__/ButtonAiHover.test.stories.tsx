@@ -1,9 +1,10 @@
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent, expect } from 'storybook/test';
+import { within, userEvent, expect, fireEvent } from 'storybook/test';
 import React, { useState } from 'react';
 import ButtonComponent from '../Button';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import { Checkbox } from '~components/Checkbox';
 
 // Buttons with an AI hover stay plain buttons to use: hovering them (RazorSense, or Ray widening the button) doesn't get in the
 // way of clicking or the keyboard, and their label stays their accessible name. This holds with or without a GPU: where the
@@ -56,6 +57,42 @@ TestAiHoverButtonsStayButtons.play = async ({ canvasElement }) => {
   await userEvent.unhover(investigate);
 };
 
+// an AI hover is playing when its layer (the button's first hidden child) is shown
+const isPlaying = (button: HTMLElement): boolean =>
+  button.querySelector<HTMLElement>(':scope > span[aria-hidden="true"]')?.style.opacity === '1';
+// true once `isDone` says so (asked every `step` ms, up to `ms`)
+const settles = async (isDone: () => Promise<boolean>, ms: number, step = 50): Promise<boolean> => {
+  if (await isDone()) return true;
+  if (ms <= 0) return false;
+  await new Promise((resolve) => setTimeout(resolve, step));
+  return settles(isDone, ms - step, step);
+};
+const becomes = (button: HTMLElement, isOn: boolean): Promise<boolean> =>
+  settles(() => Promise.resolve(isPlaying(button) === isOn), 4000);
+// the pointer onto a button's middle, or off to the story's corner (with where it is: a hover is held from the pointer's place)
+const pointTo = async (story: HTMLElement, button: HTMLElement | null): Promise<void> => {
+  const r = button?.getBoundingClientRect();
+  await userEvent.pointer({
+    target: button ?? story,
+    coords: r
+      ? { clientX: r.left + r.width / 2, clientY: r.top + r.height / 2 }
+      : { clientX: 1, clientY: 1 },
+  });
+};
+// whether the button's canvas is made as the pointer comes onto it: it is wherever its hover can play (a GPU drawing WebGL2). A
+// test's pointer doesn't set :hover, so it doesn't start the hover itself (the keyboard does). The pointer's moved again till
+// then: the hover's code loads on its own time, and a move before it's in isn't seen
+const isCanvasMade = (story: HTMLElement, button: HTMLElement, ms = 6000): Promise<boolean> =>
+  settles(
+    async () => {
+      if (button.querySelector('canvas')) return true;
+      await pointTo(story, button);
+      return false;
+    },
+    ms,
+    100,
+  );
+
 // Keyboard focus plays an AI hover as hovering does, and blur ends it; hovered and focused at once is one effect (one canvas),
 // not two. Where the hover can't play (CI's browsers often have no WebGL2) the button keeps its own hover and Blade's focus ring,
 // and only that is checked.
@@ -78,45 +115,9 @@ TestAiHoverKeyboardFocus.play = async ({ canvasElement }) => {
   const before = getByRole('button', { name: 'Before' });
   const askRay = getByRole('button', { name: 'Ask Ray' });
   const investigate = getByRole('button', { name: 'Investigate' });
-  // an AI hover is playing when its layer (the button's first hidden child) is shown
-  const isPlaying = (button: HTMLElement): boolean =>
-    button.querySelector<HTMLElement>(':scope > span[aria-hidden="true"]')?.style.opacity === '1';
-  // true once `isDone` says so (asked every `step` ms, up to `ms`)
-  const settles = async (
-    isDone: () => Promise<boolean>,
-    ms: number,
-    step = 50,
-  ): Promise<boolean> => {
-    if (await isDone()) return true;
-    if (ms <= 0) return false;
-    await new Promise((resolve) => setTimeout(resolve, step));
-    return settles(isDone, ms - step, step);
-  };
-  const becomes = (button: HTMLElement, isOn: boolean): Promise<boolean> =>
-    settles(() => Promise.resolve(isPlaying(button) === isOn), 4000);
-  // the pointer onto a button's middle, or off to the page's corner (with where it is: a hover is held from the pointer's place)
-  const pointTo = async (button: HTMLElement | null): Promise<void> => {
-    const r = button?.getBoundingClientRect();
-    await userEvent.pointer({
-      target: button ?? canvasElement,
-      coords: r
-        ? { clientX: r.left + r.width / 2, clientY: r.top + r.height / 2 }
-        : { clientX: 1, clientY: 1 },
-    });
-  };
-  // can it play here at all (a GPU drawing WebGL2)? Its canvas is made as the pointer comes onto it: that says. (A test's pointer
-  // doesn't set :hover, so it doesn't start the hover itself; the keyboard does, below. The pointer's moved again till then: the
-  // hover's code loads on its own time, and a move before it's in isn't seen)
-  const canPlay = await settles(
-    async () => {
-      if (askRay.querySelector('canvas')) return true;
-      await pointTo(askRay);
-      return false;
-    },
-    6000,
-    100,
-  );
-  await pointTo(null);
+  // can it play here at all?
+  const canPlay = await isCanvasMade(canvasElement, askRay);
+  await pointTo(canvasElement, null);
   await expect(await becomes(askRay, false)).toBe(true);
   // the keyboard: tabbing onto each plays it, tabbing off ends it
   before.focus();
@@ -130,10 +131,10 @@ TestAiHoverKeyboardFocus.play = async ({ canvasElement }) => {
   await userEvent.tab({ shift: true });
   await expect(await becomes(investigate, false)).toBe(true);
   // hovered while focused: still one effect, one canvas; the pointer leaving doesn't end it while it's focused
-  await pointTo(askRay);
+  await pointTo(canvasElement, askRay);
   if (canPlay) await expect(await becomes(askRay, true)).toBe(true);
   await expect(askRay.querySelectorAll('canvas').length).toBeLessThanOrEqual(1);
-  await pointTo(null);
+  await pointTo(canvasElement, null);
   if (canPlay) await expect(await becomes(askRay, true)).toBe(true);
   askRay.blur();
   await expect(await becomes(askRay, false)).toBe(true);
@@ -141,6 +142,88 @@ TestAiHoverKeyboardFocus.play = async ({ canvasElement }) => {
   if (!canPlay)
     console.info(
       'TestAiHoverKeyboardFocus: no AI hover can play here (no WebGL2), so only focus was checked',
+    );
+};
+
+// When Ray is unavailable or the merchant is offline, the app disables the button (isDisabled). A disabled button never plays its
+// AI hover, on the pointer or the keyboard (no canvas is made, and it shows Blade's own disabled look), and a button disabled
+// mid-hover ends it at once. The checkbox stands in for the app.
+export const TestAiHoverDisabled: StoryFn<typeof ButtonComponent> = () => {
+  const [isUnavailable, setIsUnavailable] = useState(false);
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.10">
+      <Checkbox isChecked={isUnavailable} onChange={({ isChecked }) => setIsUnavailable(isChecked)}>
+        Ray unavailable (the app disables his buttons)
+      </Checkbox>
+      <Box display="flex" gap="spacing.5" alignItems="center">
+        <ButtonComponent variant="tertiary">Before</ButtonComponent>
+        <ButtonComponent
+          variant="primary"
+          color="neutral"
+          aiHover="razorsense"
+          isDisabled={isUnavailable}
+        >
+          Ask Ray
+        </ButtonComponent>
+        <ButtonComponent variant="secondary" aiHover="ray-investigate" isDisabled={isUnavailable}>
+          Investigate
+        </ButtonComponent>
+        <ButtonComponent variant="primary" color="neutral" isDisabled>
+          Disabled
+        </ButtonComponent>
+      </Box>
+    </Box>
+  );
+};
+
+TestAiHoverDisabled.play = async ({ canvasElement }) => {
+  const { getByRole } = within(canvasElement);
+  const unavailable = getByRole('checkbox');
+  const before = getByRole('button', { name: 'Before' });
+  const askRay = getByRole('button', { name: 'Ask Ray' });
+  const investigate = getByRole('button', { name: 'Investigate' });
+  const disabledNeutral = getByRole('button', { name: 'Disabled' });
+  const canPlay = await isCanvasMade(canvasElement, askRay);
+  await pointTo(canvasElement, null);
+  // playing (from the keyboard: a test's pointer doesn't set :hover), then disabled mid-hover: it ends at once. (A click on the
+  // checkbox without focusing it, so the button keeps focus till it's disabled)
+  before.focus();
+  await userEvent.tab();
+  if (canPlay) await expect(await becomes(askRay, true)).toBe(true);
+  fireEvent.click(unavailable);
+  await expect(askRay).toBeDisabled();
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  await expect(askRay.querySelectorAll('canvas')).toHaveLength(0);
+  await expect(isPlaying(askRay)).toBe(false);
+  // Ray's too: on again, Investigate playing, then disabled
+  fireEvent.click(unavailable);
+  if (canPlay) await expect(await isCanvasMade(canvasElement, askRay)).toBe(true);
+  await pointTo(canvasElement, null);
+  const restingWidth = investigate.getBoundingClientRect().width;
+  investigate.focus();
+  if (canPlay) await expect(await becomes(investigate, true)).toBe(true);
+  fireEvent.click(unavailable);
+  await expect(investigate).toBeDisabled();
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  await expect(investigate.querySelectorAll('canvas')).toHaveLength(0);
+  await expect(isPlaying(investigate)).toBe(false);
+  // (narrow again at once: Ray's widening let go)
+  await expect(Math.abs(investigate.getBoundingClientRect().width - restingWidth)).toBeLessThan(1);
+  // disabled, they never play: no canvas as the pointer comes, and the keyboard passes them by
+  await expect(await isCanvasMade(canvasElement, askRay, 1500)).toBe(false);
+  await expect(await isCanvasMade(canvasElement, investigate, 1500)).toBe(false);
+  before.focus();
+  await userEvent.tab();
+  await expect(askRay).not.toHaveFocus();
+  await expect(investigate).not.toHaveFocus();
+  // Blade's own disabled look, as a disabled neutral button with no AI hover (once its colour has eased there)
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  await expect(getComputedStyle(askRay).backgroundColor).toBe(
+    getComputedStyle(disabledNeutral).backgroundColor,
+  );
+  if (!canPlay)
+    console.info(
+      'TestAiHoverDisabled: no AI hover can play here (no WebGL2), so only the disabled buttons were checked',
     );
 };
 

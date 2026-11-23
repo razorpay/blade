@@ -153,6 +153,37 @@ describe('<Button />', () => {
     );
   }, 20000);
 
+  it('should never load an AI hover on a disabled or loading button (Ray down or the merchant offline: the app disables it)', async () => {
+    await Promise.all([
+      import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer'),
+      import('~components/Spark/ButtonRay/ButtonRayLayer'),
+    ]);
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button color="neutral" aiHover="razorsense" isDisabled testID="razorsense-disabled">
+          Ask Ray
+        </Button>
+        <Button variant="secondary" aiHover="ray-investigate" isDisabled testID="ray-disabled">
+          Investigate
+        </Button>
+        <Button color="neutral" aiHover="razorsense" isLoading testID="razorsense-loading">
+          Ask Ray
+        </Button>
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    await expectGivesWay(
+      [
+        getByTestId('razorsense-disabled'),
+        getByTestId('ray-disabled'),
+        getByTestId('razorsense-loading'),
+      ],
+      getByTestId('control'),
+    );
+  }, 20000);
+
   it('should keep the full-width neutral button on its own hover, without RazorSense', async () => {
     await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
     const { getByTestId } = renderWithTheme(
