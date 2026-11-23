@@ -124,7 +124,6 @@ const useChatStage = ({
         const opts = { fit: 'fixed' as const, scale: 0.5 * scale, alpha: true, paused: true };
         const engine = stage.mount({ doc, opts });
         if (!engine || !setup) return false;
-        onLoadRef.current?.();
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
         const states = new comps.ChatStates(engine, doc, opts, mode, scale, () =>
@@ -241,6 +240,7 @@ const useChatStage = ({
         stopFollowRef.current?.();
         stopFollowRef.current = null;
       },
+      onDrawn: () => onLoadRef.current?.(),
       onWaiting: setIsWaiting,
     });
     // isThinking and isPaused have their own effects; a new color scheme or scale starts it again

@@ -37,6 +37,11 @@ type FreshStageRun<Comps> = {
    * first time on Direct3D): the component shows its still meanwhile, so it's never a blank box; false once it draws
    */
   onWaiting?: (isWaiting: boolean) => void;
+  /**
+   * its first frame is on its canvas (once a run; a run that takes over a stage that has drawn: at once): the component's `onLoad`,
+   * which means drawn, not only made
+   */
+  onDrawn?: () => void;
 };
 
 /** the page's starting step from its GPU's class (deviceLevel.ts: once a page, with the first engine; never in the always-loaded code) */
@@ -94,6 +99,7 @@ const runFreshStage = <Comps>({
   onFail,
   onRelease,
   onWaiting,
+  onDrawn,
 }: FreshStageRun<Comps>): (() => void) => {
   // the screen's rate, from now: its engine draws nothing till it has loaded and had its turn (once a page)
   measureScreen();
@@ -112,11 +118,16 @@ const runFreshStage = <Comps>({
     window.clearTimeout(waitTimer);
     waitTimer = 0;
   };
-  // its canvas showing a frame (the stage says so: nothing polled), the still goes
+  // its canvas showing a frame (the stage says so: nothing polled), the still goes, and the component hears it has drawn (once)
+  let hasDrawn = false;
   const onShown = (): void => {
     if (!isLive || hasFailed) return;
     stopWaiting();
     setWaiting(false);
+    if (!hasDrawn) {
+      hasDrawn = true;
+      onDrawn?.();
+    }
   };
   let stage: FreshStage | null = null;
   let leaveQueue: (() => void) | null = null;

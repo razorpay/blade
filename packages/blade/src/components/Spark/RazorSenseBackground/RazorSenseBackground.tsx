@@ -191,7 +191,6 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
           });
           if (!engine) return false;
           engineRef.current = engine;
-          onLoadRef.current?.();
           const clock = new BackgroundClock(play);
           const { player } = engine;
           const { tools } = player;
@@ -261,6 +260,7 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
         onRelease: () => {
           engineRef.current = null;
         },
+        onDrawn: () => onLoadRef.current?.(),
         onWaiting: setIsWaiting,
       });
       // isPaused is read live (its own effect); a new color scheme or scale plays the new comp on the same engine

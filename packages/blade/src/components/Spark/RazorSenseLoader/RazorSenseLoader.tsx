@@ -139,7 +139,6 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
           if (!engine || !clock) return false;
           engineRef.current = engine;
           clockRef.current = clock;
-          onLoadRef.current?.();
           if (stage.reducedMotion) {
             // reduced motion: the glyph, still, while loading; then straight to the plain background
             const t = isLoadingRef.current ? clock.a : clock.end;
@@ -173,6 +172,7 @@ const RazorSenseLoader = forwardRef<HTMLDivElement, RazorSenseLoaderProps>(
           engineRef.current = null;
           clockRef.current = null;
         },
+        onDrawn: () => onLoadRef.current?.(),
         onWaiting: setIsWaiting,
       });
       // isLoading and isPaused are read live (refs / their own effects); a new color scheme or scale starts the splash again
