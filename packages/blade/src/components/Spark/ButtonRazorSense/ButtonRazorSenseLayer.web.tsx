@@ -9,7 +9,7 @@ import {
   whenHoverOrKeyboardFocus,
 } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
-import { letGoOfStage, takeStage } from '../useLazyLayer/stagePool';
+import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -243,16 +243,20 @@ const ButtonRazorSenseLayer = ({
         stage = pooled.stage;
       }
       laidWidth = widthOf(w);
-      engine = stage.mount({
-        doc: laidWidth ? forWidth(doc, setup, laidWidth) : doc,
-        opts: {
-          fit: 'cover',
-          alpha: true,
-          paused: true,
-          region: region as [number, number, number, number],
-          dpr: 3,
+      engine = stage.mount(
+        {
+          doc: laidWidth ? forWidth(doc, setup, laidWidth) : doc,
+          opts: {
+            fit: 'cover',
+            alpha: true,
+            paused: true,
+            region: region as [number, number, number, number],
+            dpr: 3,
+          },
         },
-      });
+        // (its layers made only over the button's spot of the comp: ~74 MB a hover otherwise; the same picture)
+        VIEW_ONLY,
+      );
       stage.setPaused(!isOn);
       setLive(false);
       cancelAnimationFrame(liveFrame);

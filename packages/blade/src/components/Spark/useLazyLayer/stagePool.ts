@@ -16,6 +16,8 @@ import type { CreateFreshEngine, FreshFailure } from '../RazorSenseEngine';
  * made only when none parked fits; one parked for another comp is freed first).
  */
 const LINGER_MS = 1500;
+/** the switches every hover's stage is mounted with: its layers made only over what the button shows (FreshSwitches.view) */
+const VIEW_ONLY = { view: true } as const;
 const MAX_STAGES = 3;
 
 type PooledStage = {
@@ -103,5 +105,5 @@ const letGoOfStage = (pooled: PooledStage, isReusable = true): void => {
 /** (tests) the stages parked now, and those in use */
 const stagePoolSize = (): { parked: number; inUse: number } => ({ parked: parked.length, inUse });
 
-export { takeStage, letGoOfStage, stagePoolSize, LINGER_MS };
+export { takeStage, letGoOfStage, stagePoolSize, LINGER_MS, VIEW_ONLY };
 export type { PooledStage };

@@ -14,7 +14,7 @@ import {
   whenHoverOrKeyboardFocus,
 } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
-import { letGoOfStage, takeStage } from '../useLazyLayer/stagePool';
+import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
@@ -495,17 +495,21 @@ const ButtonRayLayer = ({
       stage = pooled.stage;
       // (a stage another button let go still shows its last frame: drawn afresh from the start, unseen, before it's shown here)
       const isWarm = stage.hasDrawn();
-      engine = stage.mount({
-        doc,
-        opts: {
-          fit: 'cover',
-          alpha: true,
-          paused: true,
-          loop: 'once',
-          region: region as [number, number, number, number],
-          dpr: 2,
+      engine = stage.mount(
+        {
+          doc,
+          opts: {
+            fit: 'cover',
+            alpha: true,
+            paused: true,
+            loop: 'once',
+            region: region as [number, number, number, number],
+            dpr: 2,
+          },
         },
-      });
+        // (its layers made only over the strip's spot of the card: the same picture, in a fraction of the memory)
+        VIEW_ONLY,
+      );
       stage.setPaused(true);
       if (isWarm && engine) {
         const warm = engine;

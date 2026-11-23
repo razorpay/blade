@@ -16,10 +16,12 @@ jest.mock('../../Ray', () => {
   };
 });
 jest.mock('../../Ray/loadRay', () => ({ loadRay: () => Promise.resolve() }));
-// the strip's engine: a stage that plays nothing
+// the strip's engine: a stage that plays nothing (what it's mounted with, noted)
+const mockMountedWith: unknown[] = [];
 jest.mock('../../RazorSenseEngine', () => ({
   FreshStage: class {
-    mount(): unknown {
+    mount(_: unknown, switches: unknown): unknown {
+      mockMountedWith.push(switches);
       return {
         player: { restart: jest.fn(), pause: jest.fn(), seek: jest.fn(), shapes: jest.fn() },
       };
@@ -100,6 +102,8 @@ describe('ButtonRayLayer', () => {
     await waitFor(() => expect(mockOnHold.current).not.toBeNull());
     act(() => mockOnHold.current?.(true));
     await waitFor(() => expect(queryByTestId('ray')).not.toBeNull());
+    // (its layers made only over the strip's spot of the card: FreshSwitches.view)
+    expect(mockMountedWith).toEqual([{ view: true }]);
 
     act(() => {
       mockOnHold.current?.(false);
