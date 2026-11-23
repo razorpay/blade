@@ -146,7 +146,8 @@ describe('holdNearPointer', () => {
     await wait();
     expect(isHeld).toBe(false);
     slot.focus(true);
-    await wait();
+    // (held once it has kept focus a moment)
+    await wait(100);
     expect(isHeld).toBe(true);
     slot.focus(false);
     await wait();
@@ -168,9 +169,39 @@ describe('holdNearPointer', () => {
     moveTo(50, 7015);
     await wait();
     slots[3].focus(true);
-    await wait();
+    await wait(100);
     expect(held[3]).toBe(true);
     expect(held.filter(Boolean)).toHaveLength(3);
+    slots.forEach((slot) => slot.remove());
+  });
+
+  it('holds nothing for a focus passing through (Tab held down a table), only the one that stays focused', async () => {
+    const held: boolean[] = [];
+    const made: number[] = [];
+    const slots = [0, 40, 80, 120, 160, 200].map((top, i) =>
+      holdNearPointer(buttonAt(10000 + top), {
+        isBusy: () => false,
+        onHold: (isHeld) => {
+          held[i] = isHeld;
+          if (isHeld) made.push(i);
+        },
+      }),
+    );
+    moveTo(50, 10);
+    await wait();
+    // a row every 30 ms (key repeat), stopping on the last
+    const tabDown = async (i: number): Promise<void> => {
+      if (i === slots.length) return;
+      if (i) slots[i - 1].focus(false);
+      slots[i].focus(true);
+      await wait(30);
+      await tabDown(i + 1);
+    };
+    await tabDown(0);
+    expect(made).toEqual([]);
+    await wait(100);
+    expect(made).toEqual([5]);
+    expect(held[5]).toBe(true);
     slots.forEach((slot) => slot.remove());
   });
 

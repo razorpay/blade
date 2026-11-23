@@ -14,7 +14,8 @@ import { whyCantAnimate } from '../RazorSenseEngine';
  * canvases: every canvas made and let go is GPU work, and Safari counts it against its limit till it's cleaned up. At most
  * MAX_HELD are held at once, those the pointer is closest to (a hover still running or fading first). Touch has no hover: only a
  * mouse or a pen counts. A button focused from the keyboard plays its hover as a hovered one does, so it's held as the one the
- * pointer is on, wherever the pointer is.
+ * pointer is on, wherever the pointer is, once it has kept focus FOCUS_DWELL ms (Tab held down a long table passes a row every
+ * ~30 ms: it made and freed a canvas per row; the PR review).
  */
 const NEAR = 48;
 const FAR = 96;
@@ -24,6 +25,8 @@ const ARRIVE_MS = 250;
 /** the slowest closing speed that counts as heading for a button (px/ms): drifting past doesn't */
 const MIN_CLOSING = 0.08;
 const MAX_HELD = 3;
+/** how long a button keeps keyboard focus before it's held (ms) */
+const FOCUS_DWELL = 60;
 
 type Slot = {
   element: HTMLElement;
@@ -32,8 +35,10 @@ type Slot = {
   /** told when it may make its canvases (true) and when it must let them go (false) */
   onHold: (isHeld: boolean) => void;
   isHeld: boolean;
-  /** focused from the keyboard: held as the button the pointer is on */
+  /** focused from the keyboard: held as the button the pointer is on, once it has kept focus FOCUS_DWELL ms */
   isFocused: boolean;
+  /** since when (0: it isn't focused) */
+  focusedSince: number;
   distance: number;
   /** since when the pointer has been within NEAR of it, off every button (0: it isn't) */
   nearSince: number;
@@ -58,6 +63,7 @@ const slots = new Set<Slot>();
 let pointer: [number, number] | null = null;
 let frame = 0;
 let dwellTimer = 0;
+let focusTimer = 0;
 let lastCheckAt = 0;
 
 const distanceTo = (element: HTMLElement, [x, y]: [number, number]): number => {
@@ -69,8 +75,24 @@ const check = (): void => {
   frame = 0;
   window.clearTimeout(dwellTimer);
   dwellTimer = 0;
+  window.clearTimeout(focusTimer);
+  focusTimer = 0;
   const at = pointer;
   const now = performance.now();
+  // focused from the keyboard for long enough (a focus passing through, Tab held down, holds nothing)
+  const isFocusHeld = (slot: Slot): boolean =>
+    slot.isFocused && now - slot.focusedSince >= FOCUS_DWELL;
+  const focusWait = Math.min(
+    Infinity,
+    ...[...slots]
+      .filter((slot) => slot.isFocused && !isFocusHeld(slot))
+      .map((slot) => FOCUS_DWELL - (now - slot.focusedSince)),
+  );
+  // (looked at again once a focus has lasted)
+  if (Number.isFinite(focusWait))
+    focusTimer = window.setTimeout(() => {
+      if (!frame) frame = requestAnimationFrame(check);
+    }, focusWait + 1);
   // (a long gap since the last check: the closing speed isn't known)
   const sinceLast = lastCheckAt && now - lastCheckAt < 200 ? now - lastCheckAt : 0;
   lastCheckAt = now;
@@ -85,7 +107,7 @@ const check = (): void => {
     slot.nearSince = !isOnOne && slot.distance <= NEAR ? slot.nearSince || now : 0;
     if (
       slot.isBusy() ||
-      slot.isFocused ||
+      isFocusHeld(slot) ||
       slot.distance === 0 ||
       (slot.isHeld && slot.distance <= FAR)
     ) {
@@ -130,7 +152,7 @@ const check = (): void => {
   }
   // past MAX_HELD: the one the pointer is on (or focused from the keyboard) first (a quick pass over three left them fading, and
   // the fourth, hovered, got none; the PR review), then those still running or fading, then the nearest
-  const isOn = (slot: Slot): number => Number(slot.distance === 0 || slot.isFocused);
+  const isOn = (slot: Slot): number => Number(slot.distance === 0 || isFocusHeld(slot));
   const held = new Set(
     wanted
       .sort(
@@ -192,6 +214,7 @@ const holdNearPointer = (
     onHold,
     isHeld: false,
     isFocused: false,
+    focusedSince: 0,
     distance: Infinity,
     nearSince: 0,
     lastDistance: Infinity,
@@ -207,6 +230,7 @@ const holdNearPointer = (
     focus: (isFocused) => {
       if (isFocused === slot.isFocused) return;
       slot.isFocused = isFocused;
+      slot.focusedSince = isFocused ? performance.now() : 0;
       schedule();
     },
     remove: () => {
@@ -221,6 +245,8 @@ const holdNearPointer = (
         frame = 0;
         window.clearTimeout(dwellTimer);
         dwellTimer = 0;
+        window.clearTimeout(focusTimer);
+        focusTimer = 0;
         pointer = null;
       }
     },
