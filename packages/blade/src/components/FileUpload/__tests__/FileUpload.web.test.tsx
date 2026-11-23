@@ -387,6 +387,19 @@ describe('<FileUploadItem />', () => {
       expect(container).toMatchSnapshot();
     });
 
+    it('should honour maxWidth, and default to the container width', () => {
+      const chipOf = (el: HTMLElement): HTMLElement | null =>
+        el.closest('[class*="StyledFileUploadItemWrapper"]');
+      const limited = renderWithTheme(
+        <FileUploadItem _isCompact maxWidth="80px" file={successFile} />,
+      );
+      expect(chipOf(limited.getByText('report.pdf'))).toHaveStyle({ maxWidth: '80px' });
+      limited.unmount();
+
+      const { getByText } = renderWithTheme(<FileUploadItem _isCompact file={successFile} />);
+      expect(chipOf(getByText('report.pdf'))).toHaveStyle({ maxWidth: '100%' });
+    });
+
     it('should show only the name and one remove action', async () => {
       const onRemove = jest.fn();
       const onPreview = jest.fn();

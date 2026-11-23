@@ -3202,6 +3202,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 
 exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
 .c0.c0.c0.c0.c0 {
+  max-width: 100%;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
@@ -3283,7 +3284,6 @@ exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  max-width: 100%;
   border-style: solid;
   min-height: 32px;
   background-color: hsla(0,0%,100%,1);

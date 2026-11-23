@@ -68,7 +68,8 @@ const FileUploadItemCompact = ({
       borderWidth="thin"
       width={width}
       minWidth={minWidth}
-      maxWidth={maxWidth}
+      // never wider than its container, unless the caller sets its own limit
+      maxWidth={maxWidth ?? '100%'}
       flexShrink={flexShrink}
       flexGrow={flexGrow}
       flexBasis={flexBasis}

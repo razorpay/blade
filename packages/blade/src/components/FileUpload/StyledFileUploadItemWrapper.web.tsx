@@ -27,7 +27,6 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
         display: 'inline-flex',
         alignItems: 'center',
         boxSizing: 'border-box',
-        maxWidth: '100%',
         borderStyle: 'solid',
         minHeight: makeSize(fileUploadItemCompactTokens.height),
         backgroundColor: getIn(theme.colors, fileUploadItemCompactTokens.background.default),
