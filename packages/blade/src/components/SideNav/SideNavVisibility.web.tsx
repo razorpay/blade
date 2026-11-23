@@ -11,6 +11,9 @@ import { throwBladeError } from '~utils/logger';
  *
  * Use it for your own content inside SideNav (e.g. a custom "+3 More" link) so that it follows
  * the same collapse behaviour and transitions as the items that Blade renders.
+ *
+ * It works in the children of SideNav (SideNavBody, SideNavFooter). It is not meant for the `banner` slot,
+ * which sits outside the part of SideNav that collapses.
  */
 const SideNavVisibility = ({
   visibleWhen,

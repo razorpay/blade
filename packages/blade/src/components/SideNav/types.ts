@@ -314,7 +314,9 @@ type SideNavVisibilityProps = {
   visibleWhen: 'expanded' | 'collapsed';
 
   /**
-   * Content to show or hide with the collapsed state of SideNav
+   * Content to show or hide with the collapsed state of SideNav.
+   *
+   * Use `SideNavVisibility` in the children of SideNav (`SideNavBody`, `SideNavFooter`). It is not meant for the `banner` slot
    */
   children: React.ReactNode;
 } & DataAnalyticsAttribute;

@@ -366,13 +366,15 @@ type SideNavVisibilityProps = {
    */
   visibleWhen: 'expanded' | 'collapsed';
   /**
-   * Content to show or hide with the collapsed state of SideNav
+   * Content to show or hide with the collapsed state of SideNav.
+   *
+   * Use `SideNavVisibility` in the children of SideNav (`SideNavBody`, `SideNavFooter`). It is not meant for the `banner` slot
    */
   children: React.ReactNode;
 } & DataAnalyticsAttribute;
 ```
 
-Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3 More" link) so it hides or shows with the collapsed state like Blade's own items. Do not hard-code Blade's class names for this.
+Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3 More" link) so it hides or shows with the collapsed state like Blade's own items. Do not hard-code Blade's class names for this. It works in the children of `SideNav` (`SideNavBody`, `SideNavFooter`); it is not meant for the `banner` slot.
 
 ## Usage Guidelines
 
@@ -397,6 +399,7 @@ Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3
 - Don't use `SideNavItem` for navigable links — it's for static items with trailing interactions like switches.
 - Don't hard-code Blade's class names (`hide-when-collapsed`, `show-when-collapsed`) to follow the collapsed state — use `SideNavVisibility`.
 - Don't use `SideNavVisibility` outside `SideNav` — it throws an error.
+- Don't use `SideNavVisibility` in the `banner` slot — the banner sits outside the part of `SideNav` that collapses, so both states can show there.
 
 ## Example
 
