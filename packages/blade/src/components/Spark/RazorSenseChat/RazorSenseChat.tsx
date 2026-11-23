@@ -125,7 +125,23 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
   const thinkingStill = useStill(isStill, mode, loadThinkingStill);
   const bottomWaveStill = useStill(isStill, mode, loadBottomWaveStill);
   // (listening, or an outcome: its own still in the bottom wave's place)
-  const stateStill = useStateStill(isStill, mode, isListening && !isOffline, outcome);
+  const stateStill = useStateStill(
+    isStill,
+    mode,
+    isListening && !isOffline,
+    outcome,
+    !isThinking && !isOffline && !isListening,
+  );
+  // the strip's still fades as its cause says: offline's 1.2 s both ways (going and coming back), thinking's 0.6 s
+  const stripFadeRef = useRef<{ isOffline: boolean; isThinking: boolean; seconds: number }>({
+    isOffline,
+    isThinking,
+    seconds: 0.6,
+  });
+  if (stripFadeRef.current.isOffline !== isOffline) stripFadeRef.current.seconds = 1.2;
+  else if (stripFadeRef.current.isThinking !== isThinking) stripFadeRef.current.seconds = 0.6;
+  stripFadeRef.current.isOffline = isOffline;
+  stripFadeRef.current.isThinking = isThinking;
 
   // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge). They're
   // placed again only when something may have moved them (paused, they're placed once and stay there)
@@ -247,7 +263,7 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
                 height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
                 // (offline: it goes, as the strip drops)
                 opacity: isThinking || isOffline ? 0 : 1,
-                transition: isOffline ? 'opacity 1.2s' : 'opacity 0.6s',
+                transition: `opacity ${stripFadeRef.current.seconds}s`,
               }}
             />
           ) : null}

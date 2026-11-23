@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Outcome } from './outcome';
 import { useStill } from '../RazorSenseEngine/useStill';
 
@@ -20,25 +20,36 @@ const loadErrorStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
 const OUTCOME_STILL_MS = 3710;
 
 /**
- * The bottom wave's still for the PR's states, where it can't animate: an outcome's for its piece's length once it's set, else the
- * voice bottom's while it listens; null otherwise (the bottom wave's own still shows)
+ * The bottom wave's still for the PR's states, where it can't animate: an outcome's for its piece's length, else the voice bottom's
+ * while it listens; null otherwise (the bottom wave's own still shows). As the animated strip does, an outcome waits till the strip
+ * can show it (`canShowOutcome`: thinking done, online, the voice look down), plays once each time it's set (a new one plays for its
+ * own full length), and cleared, the strip is back at rest at once.
  */
 const useStateStill = (
   isStill: boolean,
   colorScheme: 'light' | 'dark',
   isListening: boolean,
   outcome?: Outcome,
+  canShowOutcome = true,
 ): string | null => {
   const [shown, setShown] = useState<Outcome | null>(null);
+  // the outcome last shown (one shows once each time it's set)
+  const shownRef = useRef<Outcome | undefined>(undefined);
   useEffect(() => {
-    if (!isStill || !outcome) {
-      setShown(null);
-      return undefined;
-    }
+    if (isStill && outcome) return;
+    shownRef.current = undefined;
+    setShown(null);
+  }, [isStill, outcome]);
+  useEffect(() => {
+    if (!isStill || !outcome || !canShowOutcome || shownRef.current === outcome) return;
+    shownRef.current = outcome;
     setShown(outcome);
+  }, [isStill, outcome, canShowOutcome]);
+  useEffect(() => {
+    if (!shown) return undefined;
     const timer = window.setTimeout(() => setShown(null), OUTCOME_STILL_MS);
     return () => window.clearTimeout(timer);
-  }, [isStill, outcome]);
+  }, [shown]);
   const success = useStill(shown === 'success', colorScheme, loadSuccessStill);
   const error = useStill(shown === 'error', colorScheme, loadErrorStill);
   const voice = useStill(isStill && isListening, colorScheme, loadVoiceBottomStill);

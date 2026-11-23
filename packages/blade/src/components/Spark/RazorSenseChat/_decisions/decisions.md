@@ -52,3 +52,7 @@ RazorSense 2.0 (`RazorSenseChatBackground`, `RazorSenseChat`, `RazorSenseBottomW
 ## Not yet
 
 - The device test (Windows GTX 1650, Android) for the new states: their documents are swapped on the running engine (no new programs), and the voice look's shapes are the comp's own kind, so the Direct3D specialised copies cover them, but first-frame times weren't measured on the GTX 1650 here (its local test source was lost on 18 Nov).
+
+## Their stills (2026-11-24)
+
+Where it can't animate, the states follow the animated strip's rules: an outcome waits till the strip can show it (thinking done, online, the voice look down), then shows for its piece's full length; the chat's strip comes back online over offline's 1.2 s, not thinking's 0.6 s. (Found by the states' interaction tests.)

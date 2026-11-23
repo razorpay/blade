@@ -123,7 +123,13 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
     });
     const still = useStill(!chat && isStill, mode, loadBottomWaveStill);
     // (listening, or an outcome: its own still in its place)
-    const stateStill = useStateStill(!chat && isStill, mode, isListening && !isOffline, outcome);
+    const stateStill = useStateStill(
+      !chat && isStill,
+      mode,
+      isListening && !isOffline,
+      outcome,
+      !isOffline && !isListening,
+    );
 
     // each edit typed in the chat input inside (any input, textarea or editable element) is a keystroke
     useEffect(() => {
