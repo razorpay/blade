@@ -9,6 +9,12 @@ written by hand.
 - `buildFreshEngine.js` patches that source, as text, into a factory (`createFreshEngine`) that mounts one comp on one canvas,
   with no studio page, saving or globals, and with its shaders compiled off the page's thread. Each patch names the text it
   expects; if the source moves on and a patch no longer fits, the build stops and says which.
+- It also cuts what no comp uses out of the main shader (`FS_MAIN`): the effects stack, refraction and the studio's debug views.
+  The build stops if a comp under `src/components/Spark` turns an effect or refraction on, and so does a test
+  (`RazorSenseEngine/__tests__/compsDrawable.web.test.ts`), since comps are exported again without a build. To use one again,
+  remove its cut from `buildFreshEngine.js` and build.
+- The engine ships minified with terser (laid out again by prettier), so it's as small in an app whose bundler minifies with
+  esbuild (Vite) as in one using terser (webpack).
 
 ```sh
 yarn build:razorsense-engine   # writes freshEngine.ts from source/ (and lints it)

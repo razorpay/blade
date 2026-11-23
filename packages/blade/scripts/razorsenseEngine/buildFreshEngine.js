@@ -13,7 +13,8 @@
  * Its patches, in order: the GPU speed-ups (raster, scissor, trim, box; gpu_raster.js); the factory (the export and the switches as
  * its arguments, the canvas, box and message from its host, no window globals or page listeners); no studio saving; shaders
  * compiled and linked without holding the page up (KHR_parallel_shader_compile, drawing once they're ready); then the factory's
- * start and its returned player.
+ * start and its returned player. Then the main shader without the features no comp uses (and a check that none does), the shaders
+ * without comments, and the whole engine minified with terser.
  */
 const fs = require('fs');
 const path = require('path');
@@ -331,6 +332,87 @@ src = sub(src, `const GR_POOL_MAX = 96e6;   // bytes`, `const GR_POOL_MAX = 24e6
 // same. FS_COMP is left as it is: FS_COMP_AE is made from it at runtime by finding lines in it, comments included. Lines stay lines
 // (the preprocessor's, and grSpec's '^uniform int uX;' edits of FS_MAIN, need them); `${...}` parts are left alone.
 const SHADERS = ['VS', 'FS_BLUR', 'FS_MAIN', 'FS_LAYER', 'GR_CLIP', 'VS_GR', 'FS_GR', 'FS_GC', 'FS_FILL'];
+/** where shader `name`'s text starts and ends in src (inside its backticks; `${...}` parts skipped) */
+const shaderSpan = (name) => {
+  const start = src.indexOf(`const ${name} = \``);
+  if (start < 0) throw new Error(`shader ${name} not found: update SHADERS`);
+  const open = src.indexOf('`', start) + 1;
+  let i = open, depth = 0;
+  for (; i < src.length; i++) {
+    if (src[i] === '\\') { i++; continue; }
+    if (src.startsWith('${', i)) { depth++; i++; continue; }
+    if (src[i] === '}' && depth) { depth--; continue; }
+    if (src[i] === '`' && !depth) break;
+  }
+  return [open, i];
+};
+
+// The main pass without the features no comp uses (the bundle review, #7: FS_MAIN 22.5 -> 13 KB): the effects stack (FX: fractal
+// noise, warps, looks; every comp's fx list is empty), refraction (the glass flutes; no comp turns rOn on) and the studio's debug
+// views (uMode 1-6: the player always draws 'final', view 0). Drawing is no faster (the switches' copies, grSpec, already dropped
+// them on the GPU): this is download, and less for Direct3D to translate. The uniforms go with them, so the engine's setters skip
+// them (UI and the rest set a uniform only where the program has it), and the switches' copies never write them in.
+{
+  const [open, close] = shaderSpan('FS_MAIN');
+  let fs = src.slice(open, close);
+  /** the text from `from` up to (not including) `to`, once in the shader */
+  const span = (from, to) => {
+    const a = fs.indexOf(from), b = fs.indexOf(to, a);
+    if (a < 0 || b < 0 || fs.indexOf(from, a + 1) >= 0) throw new Error(`FS_MAIN: ${JSON.stringify(from.slice(0, 60))} .. ${JSON.stringify(to.slice(0, 60))} not found once: update the cut`);
+    return fs.slice(a, b);
+  };
+  // the effects stack
+  fs = sub(fs, span(`// ---------- the effects (Bands page) ----------\n`, `// integral of band i from its start to f;`), ``);
+  fs = sub(fs, `uniform int uFxN;\nuniform vec4 uFx[48];   // the effects stack: 6 vec4 each (see FX in 01-core)\n`, ``);
+  fs = sub(fs, span(`  // the effects, as AE stacks them:`, `  float u0 = dot(q, uAcross)`), ``);
+  fs = sub(fs, `  for (int k = 0; k < 8; k++) { if (k >= uFxN) break; if (!fxWarp(int(uFx[k * 6].x + 0.5))) v = lookFx(v, qs[k], k * 6); }\n`, ``);
+  // refraction
+  fs = sub(fs, `uniform int uROn;\nuniform int uRProf;\nuniform int uRLightShape;\n`, ``);
+  fs = sub(fs, `uniform float uRDepth, uRIor, uRBulge, uRFlat, uRValley, uRShear, uRDisp, uRFrost, uREFrost, uRHi, uRHiPos, uRHiW, uREdge, uRShade, uRShW;\n`, ``);
+  fs = sub(fs, span(`// ---- razorsensation2 r2: refraction (a glass flute per band)`, `// the layer under the glass at p:`), ``);
+  fs = sub(fs, span(`// what the glass shows at c:`, `void main() {`), ``);
+  fs = sub(fs, `  bool refr = uBands == 1 && inMap > 0.5 && uROn == 1;\n  float rx = 0.0, rtl = 0.0;\n  if (uBands == 1 && inMap > 0.5 && uROn == 0) {`, `  if (uBands == 1 && inMap > 0.5) {`);
+  fs = sub(fs, `  if (refr) d = refrD(uu, uRIor, rx, rtl);\n`, ``);
+  fs = sub(fs, `  if (refr) glassRead(c, uu, st, RGB, AL, rx, rtl);\n  else { vec4 r1 = readAt(s, st); RGB = r1.rgb; AL = vec3(r1.a); }`, `  { vec4 r1 = readAt(s, st); RGB = r1.rgb; AL = vec3(r1.a); }`);
+  fs = sub(fs, span(`  // the glass's own light:`, `  vec3 col; float oa = 1.0;`), `  bool after = uAfter == 1 && uColor == 1;\n`);
+  fs = sub(fs, `    if (refr) { col = 1.0 - (1.0 - col) * (1.0 - Lt * lm); col *= 1.0 - Sd * lm; if (uRLightShape == 0 && uOut == 0 && uAlphaOut == 1) oa = max(oa, Lt); }\n`, ``);
+  // the debug views (and the player always draws 'final': if it stops pinning it, this cut must go)
+  sub(read('player.js'), `D.view.mode = 'final'; D.view.ref = false;`, ``);
+  fs = sub(fs, `uniform int uMode;\n`, ``);
+  fs = sub(fs, `  bool needStroke = uStrokes == 1 || uMode == 4 || uMode == 5 || uSOOn == 1;`, `  bool needStroke = uStrokes == 1 || uSOOn == 1;`);
+  fs = sub(fs, span(`  if (uMode == 1) {`, `  else if (after) {`) + `  else if (after) {`, `  if (after) {`);
+  fs = sub(fs, `if (uAlphaOut == 1 && uMode == 0) oa = clamp(A, 0.0, 1.0); else if (uStraight == 1 && uMode == 0)`, `if (uAlphaOut == 1) oa = clamp(A, 0.0, 1.0); else if (uStraight == 1)`);
+  fs = sub(fs, `  if (uMode == 0 && (uOVOn == 1 || uSOOn == 1)) {`, `  if (uOVOn == 1 || uSOOn == 1) {`);
+  fs = sub(fs, `  if (uClipOn == 1 && uMode == 0) {`, `  if (uClipOn == 1) {`);
+  fs = sub(fs, `  if (uCMOn == 1 && uMode == 0) {`, `  if (uCMOn == 1) {`);
+  const left = fs.match(/\b(uFxN|uFx|uROn|uRProf|uRLightShape|uRIor|uMode|refr|refrD|fluteX|glassRead|lookFx|warpFx|fractalAt|Lt|lm|Sd)\b/g);
+  if (left) throw new Error(`FS_MAIN still names what was cut (${[...new Set(left)].join(', ')}): update the cut`);
+  src = src.slice(0, open) + fs + src.slice(close);
+}
+// ...and no comp may use them: one that does would draw without them, with no error (fx and rOn are read where the engine reads
+// them: a layer's list of effects, only those switched on; its refraction switch)
+{
+  const esbuild = require('esbuild');
+  const vm = require('vm');
+  const SPARK = path.join(BLADE, 'src', 'components', 'Spark');
+  const files = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? (e.name === '__tests__' ? [] : files(path.join(dir, e.name))) : /comps\.ts$/i.test(e.name) ? [path.join(dir, e.name)] : []));
+  const uses = [];
+  const walk = (v, where) => {
+    if (!v || typeof v !== 'object') return;
+    if (Array.isArray(v.fx) && v.fx.some((f) => f && f.on)) uses.push(`${where}: an effect (fx)`);
+    if (v.rOn) uses.push(`${where}: refraction (rOn)`);
+    Object.values(v).forEach((x) => walk(x, where));
+  };
+  const comps = files(SPARK);
+  if (!comps.length) throw new Error('no comps found under src/components/Spark: update the comps check');
+  for (const file of comps) {
+    const { code } = esbuild.transformSync(fs.readFileSync(file, 'utf8'), { loader: 'ts', format: 'cjs' });
+    const mod = { exports: {} };
+    vm.runInNewContext(code, { module: mod, exports: mod.exports, require: (name) => { throw new Error(`${file} requires ${name}`); }, JSON });
+    for (const [name, v] of Object.entries(mod.exports)) walk(v, `${path.relative(BLADE, file)} ${name}`);
+  }
+  if (uses.length) throw new Error(`a comp uses what the engine no longer draws:\n  ${[...new Set(uses)].join('\n  ')}\nput the cut in FS_MAIN back (above) for it`);
+}
 const minifyShader = (text) => {
   const parts = text.split(/(\$\{[^}]*\})/);   // (the engine's interpolations hold no braces)
   const code = parts.map((p, i) => (i % 2 ? `\u0000${i}\u0000` : p)).join('');
@@ -343,20 +425,29 @@ const minifyShader = (text) => {
   return out.replace(/\u0000(\d+)\u0000/g, (_, i) => parts[+i]);
 };
 for (const name of SHADERS) {
-  const start = src.indexOf(`const ${name} = \``);
-  if (start < 0) throw new Error(`shader ${name} not found: update SHADERS`);
-  const open = src.indexOf('`', start) + 1;
-  let i = open, depth = 0;
-  for (; i < src.length; i++) {
-    if (src[i] === '\\') { i++; continue; }
-    if (src.startsWith('${', i)) { depth++; i++; continue; }
-    if (src[i] === '}' && depth) { depth--; continue; }
-    if (src[i] === '`' && !depth) break;
-  }
+  const [open, i] = shaderSpan(name);
   const body = src.slice(open, i);
   const keepLead = body.startsWith('\n') ? '\n' : '';   // (GR_CLIP is spliced in after a line)
   src = src.slice(0, open) + keepLead + minifyShader(body) + (body.endsWith('\n') ? '\n' : '') + src.slice(i);
 }
+
+// The engine ships minified with terser (the bundle review, #9): Blade's build doesn't minify, the app's bundler does, and esbuild
+// (Vite's) leaves it 5.6 KB gzipped bigger than terser does. Its factory's three arguments keep their names (the wrapper's types
+// name them); everything inside is the engine's own, so it's free to rename. Prettier lays it out again after, so the file stays
+// diffable a line at a time and prettier-clean; bundlers drop the whitespace.
+const { minify_sync: minifySync } = require('terser');
+const ENGINE_ARGS = ['__host', '__EXP', '__GPU'];
+const minifyEngine = (body) => {
+  const head = `function*__steps(${ENGINE_ARGS.join(',')}){`;
+  const { code } = minifySync(`function* __steps(${ENGINE_ARGS.join(', ')}) {\n${body}\n}`, {
+    ecma: 2020,
+    compress: { passes: 2 },
+    mangle: { reserved: ENGINE_ARGS },
+    format: { comments: false },
+  });
+  if (!code.startsWith(head) || !code.endsWith('}')) throw new Error(`terser gave the engine back in a shape this build doesn't know: ${code.slice(0, 80)}`);
+  return code.slice(head.length, -1);
+};
 
 const GEN =
   '// Generated by scripts/razorsenseEngine/buildFreshEngine.js from the RazorSense system\'s engine (scripts/razorsenseEngine/source). Do not edit: change the source or its patches and build again.\n';
@@ -371,9 +462,9 @@ import type { FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from '.
  * its comp: made ahead, while the page is idle. Every engine is its own: its own document, WebGL2 context and frame loop.
  */
 export function* freshEngineSteps(__host: FreshEngineHost, __EXP: FreshExport, __GPU: FreshSwitches): Generator<void, FreshEngine, void> {
-let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false, __sleepX = null, __dprCap = 0;
+` + minifyEngine(`let __raf = 0, __run = !__host.isHeld, __held = !!__host.isHeld, __dead = false, __ro = null, __d3d = false, __sleepX = null, __dprCap = 0;
 const __search = '';
-` + src + `
+` + src) + `
 }
 
 /** Makes the engine at once: every step of freshEngineSteps in one go. */
