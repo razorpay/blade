@@ -100,7 +100,9 @@ type RazorSenseChatProps = {
   /**
    * How the task the answer did ended: set it as the answer shows it (the ✓, or the failing step) and the bottom strip plays its
    * success (green) or error (red) wave once, ending back at its rest. Set while it's still thinking, it waits for the answer to
-   * settle. Cleared mid-way, it plays back; the next question plays it out quickly before the thinking comes back up.
+   * settle. Cleared mid-way, it plays back; the next question plays it out quickly before the thinking comes back up. It plays once
+   * each time it's set, and once each answer: clear it as the page sends the next question (a new color scheme or scale doesn't play
+   * it again).
    */
   outcome?: 'success' | 'error';
 } & TestID;

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
-import type { ChatStateInputs, ChatStates } from './chatStates';
+import type { ChatStateInputs, ChatStates, OutcomeMemory } from './chatStates';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
 import type { FreshStage } from '../RazorSenseEngine';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
@@ -35,6 +35,14 @@ type ChatStageOptions = {
   onOutcome?: (isPlaying: boolean) => void;
   /** changed when the component moves its stage itself (its reach): where its parts are is read again at once */
   layoutKey?: unknown;
+  /** its canvas's pixels at most (a bigger box draws at a lower sharpness): the lone bottom wave's, which grows to its splash */
+  maxPixels?: number;
+  /**
+   * while the strip is at rest (not thinking, no surge, no outcome), how far down its parent the stage may start (CSS px; null: not
+   * at all), so its canvas covers the strip and not the whole chat: RazorSenseChat's at rest drew ~5 % of a canvas the size of the
+   * chat, and the page composited all of it every frame
+   */
+  restTop?: () => number | null;
 } & Partial<ChatStateInputs>;
 
 /**
@@ -53,6 +61,8 @@ const useChatStage = ({
   getAnchors,
   onOutcome,
   layoutKey,
+  maxPixels,
+  restTop,
   scale,
   isPaused,
   onLoad,
@@ -72,6 +82,8 @@ const useChatStage = ({
   anchorsRef.current = getAnchors;
   const onOutcomeRef = useRef(onOutcome);
   onOutcomeRef.current = onOutcome;
+  const restTopRef = useRef(restTop);
+  restTopRef.current = restTop;
   // (the stage moved by its own component: its parts are read again on the next frame)
   const isRelaidRef = useRef(false);
   useEffect(() => {
@@ -88,6 +100,8 @@ const useChatStage = ({
   const inputsRef = useRef<ChatStateInputs>({ isOffline, isListening, voiceStream, outcome });
   inputsRef.current = { isOffline, isListening, voiceStream, outcome };
   const statesRef = useRef<ChatStates | null>(null);
+  // (the outcome last played, kept across its states: a new color scheme or scale doesn't play it again)
+  const outcomeMemoryRef = useRef<OutcomeMemory>({});
   // offline, dropped all the way: it stops drawing till it's back online
   const isAwayRef = useRef(false);
   // reduced motion: draws where it is now, settled (a state changing)
@@ -121,13 +135,25 @@ const useChatStage = ({
         const setup = getChatSetup(doc);
         // flow 9's chat comp is drawn at its own size (2x comp px = CSS px) x scale, from the stage's top-left; the pages are
         // placed in it
-        const opts = { fit: 'fixed' as const, scale: 0.5 * scale, alpha: true, paused: true };
+        const opts = {
+          fit: 'fixed' as const,
+          scale: 0.5 * scale,
+          alpha: true,
+          paused: true,
+          maxPx: maxPixels,
+        };
         const engine = stage.mount({ doc, opts });
         if (!engine || !setup) return false;
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
-        const states = new comps.ChatStates(engine, doc, opts, mode, scale, () =>
-          redrawRef.current?.(),
+        const states = new comps.ChatStates(
+          engine,
+          doc,
+          opts,
+          mode,
+          scale,
+          () => redrawRef.current?.(),
+          outcomeMemoryRef.current,
         );
         states.inputs = inputsRef.current;
         statesRef.current = states;
@@ -199,14 +225,29 @@ const useChatStage = ({
               })
             : null;
         let isOutcomePlaying = false;
+        // the stage at rest starts lower down (restTop): moved here, in the frame, and its parts read again at once, so what's drawn
+        // stays where it is (the engine draws again as its canvas is resized, before the page paints)
+        let top = 0;
+        let wasAtRest = false;
+        const fitToRest = (atRest: boolean): boolean => {
+          const want = atRest && box ? restTopRef.current?.() ?? 0 : 0;
+          if (want === top || !box) return false;
+          top = want;
+          box.style.top = want ? `${want}px` : '';
+          return true;
+        };
         stage.setDriver((eng, dt) => {
           framesSinceRead += 1;
-          if (isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD) {
+          const atRest = !isThinkingRef.current && driver.isAtRest();
+          const isRead = isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD;
+          const isFitted = (isRead || atRest !== wasAtRest) && fitToRest(atRest);
+          if (isFitted || isRead) {
             anchors = anchorsRef.current();
             isMoved = false;
             isRelaidRef.current = false;
             framesSinceRead = 0;
           }
+          wasAtRest = atRest;
           const frameAt = performance.now();
           states.inputs = inputsRef.current;
           states.frame(dt, frameAt, driver, anchors);
@@ -239,6 +280,8 @@ const useChatStage = ({
         stillRef.current = null;
         stopFollowRef.current?.();
         stopFollowRef.current = null;
+        // (its still, if it goes to one, is placed on the whole stage)
+        if (stageRef.current) stageRef.current.style.top = '';
       },
       onDrawn: () => onLoadRef.current?.(),
       onWaiting: setIsWaiting,
@@ -261,8 +304,12 @@ const useChatStage = ({
   }, [isOffline, isListening, voiceStream, outcome]);
 
   useEffect(() => {
-    // (an outcome comes with the answer: its chunk fetched while the page is idle, so it's ready)
-    if (isThinking) statesRef.current?.prefetchOutcome();
+    // (an outcome comes with the answer: its chunk fetched while the page is idle, so it's ready; the last one played is forgotten, so
+    // the same outcome set for this answer plays again)
+    if (isThinking) {
+      statesRef.current?.prefetchOutcome();
+      outcomeMemoryRef.current.played = undefined;
+    }
     if (stillRef.current) {
       stillRef.current(isThinking);
       return;

@@ -42,6 +42,10 @@ type FreshStageRun<Comps> = {
    * which means drawn, not only made
    */
   onDrawn?: () => void;
+  /** it starts as soon as it's on screen, past the others in line (startQueue): a one-shot moment, played as it happens */
+  isUrgent?: boolean;
+  /** it has started (its turn came, on screen): its `start` has run and its engine is drawing, or about to */
+  onStarted?: () => void;
 };
 
 /** the page's starting step from its GPU's class (deviceLevel.ts: once a page, with the first engine; never in the always-loaded code) */
@@ -57,6 +61,8 @@ const loadStartLevel = (): Promise<void> => {
 
 /** how long an effect on screen may show nothing before its still stands in, till its first frame (ms) */
 const STILL_AFTER_MS = 800;
+/** how often a stage that has drawn is checked for its GPU holding its frames back (ms) */
+const HELD_STEP_MS = 250;
 
 const isInView = (box: Element | null): boolean => {
   if (!box) return false;
@@ -100,6 +106,8 @@ const runFreshStage = <Comps>({
   onRelease,
   onWaiting,
   onDrawn,
+  isUrgent,
+  onStarted,
 }: FreshStageRun<Comps>): (() => void) => {
   // the screen's rate, from now: its engine draws nothing till it has loaded and had its turn (once a page)
   measureScreen();
@@ -118,6 +126,28 @@ const runFreshStage = <Comps>({
     window.clearTimeout(waitTimer);
     waitTimer = 0;
   };
+  let stage: FreshStage | null = null;
+  // after its first frame: its GPU holding its frames back past STILL_AFTER_MS (a Direct3D copy of its shader compiling for a look it
+  // hasn't drawn yet), the still stands in again till frames come (the PR review: a first frame that needed nothing still compiling
+  // counted as drawn, and the canvas stayed on it)
+  let heldTimer = 0;
+  const stopHeldWatch = (): void => {
+    window.clearInterval(heldTimer);
+    heldTimer = 0;
+  };
+  const watchHeld = (): void => {
+    if (heldTimer || !onWaiting) return;
+    let heldMs = 0;
+    heldTimer = window.setInterval(() => {
+      if (!isLive || hasFailed || !stage) {
+        stopHeldWatch();
+        return;
+      }
+      heldMs = stage.waitsOnGpu() ? heldMs + HELD_STEP_MS : 0;
+      if (heldMs >= STILL_AFTER_MS && isInView(getBox())) setWaiting(true);
+      else if (!heldMs) setWaiting(false);
+    }, HELD_STEP_MS);
+  };
   // its canvas showing a frame (the stage says so: nothing polled), the still goes, and the component hears it has drawn (once)
   let hasDrawn = false;
   const onShown = (): void => {
@@ -126,10 +156,10 @@ const runFreshStage = <Comps>({
     setWaiting(false);
     if (!hasDrawn) {
       hasDrawn = true;
+      watchHeld();
       onDrawn?.();
     }
   };
-  let stage: FreshStage | null = null;
   let leaveQueue: (() => void) | null = null;
   // (this component's last stage, if its effect just ran again)
   const previous = parked.get(stageRef) ?? null;
@@ -139,6 +169,7 @@ const runFreshStage = <Comps>({
     if (hasFailed || !isLive) return;
     hasFailed = true;
     stopWaiting();
+    stopHeldWatch();
     // the stage freed after this frame (it may be the one telling us)
     const failed = stage;
     window.setTimeout(() => {
@@ -185,8 +216,11 @@ const runFreshStage = <Comps>({
         stage.setOnShown(onShown);
         stageRef.current = stage;
         if (!start(stage, comps)) fail();
-        // (one that has drawn: the still goes at once)
-        else if (stage.hasDrawn()) onShown();
+        else {
+          onStarted?.();
+          // (one that has drawn: the still goes at once)
+          if (stage.hasDrawn()) onShown();
+        }
         return;
       }
       previous?.destroy();
@@ -220,6 +254,7 @@ const runFreshStage = <Comps>({
             fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
             return null;
           }
+          onStarted?.();
           // (drawn, given up, or not running: the next may start; or once it only waits on its GPU, a shader compiling in the
           // background: its own work for its first frame is done, so the next's doesn't land on top of it)
           return () =>
@@ -235,12 +270,14 @@ const runFreshStage = <Comps>({
               }
               return stageNow().prepareStep(engineAlpha);
             },
+        isUrgent,
       );
     })
     .catch(() => fail('its engine failed to load'));
   return () => {
     isLive = false;
     stopWaiting();
+    stopHeldWatch();
     leaveQueue?.();
     const current = stageRef.current;
     if (current && current === stage && !hasFailed && current.hasEngine()) {

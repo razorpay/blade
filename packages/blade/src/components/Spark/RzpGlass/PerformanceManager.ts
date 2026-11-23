@@ -252,8 +252,12 @@ class PerformanceManager {
    *
    * @param gl - An existing WebGLRenderingContext (e.g. from RzpGlassMount).
    *             If not provided, a temporary offscreen context is created.
+   * @param known - What the caller has checked already: `hasMajorPerformanceCaveat` given, no probe context is made for it.
    */
-  static detect(gl?: WebGLRenderingContext): PerformanceProfile {
+  static detect(
+    gl?: WebGLRenderingContext,
+    known: { hasMajorPerformanceCaveat?: boolean } = {},
+  ): PerformanceProfile {
     let ownedCanvas = false;
     let ctx = gl ?? null;
 
@@ -268,7 +272,9 @@ class PerformanceManager {
     const mobile = isMobileDevice();
     const memoryGB = getDeviceMemoryGB();
     const cores = getCpuCores();
-    const hasMajorPerformanceCaveat = checkMajorPerformanceCaveat();
+    // (a caller that has asked already, RazorSense 2.0's WebGL2 check, says so: no second probe context)
+    const hasMajorPerformanceCaveat =
+      known.hasMajorPerformanceCaveat ?? checkMajorPerformanceCaveat();
 
     let gpuRenderer: string | null = null;
     let gpuVendor: string | null = null;

@@ -15,11 +15,17 @@ import { makeAccessible } from '~utils/makeAccessible';
 /** its canvas's sharpness (device px per CSS px): the orb is soft all over (blurred ~100 CSS px); the tick and badge are HTML */
 const SUCCESS_DPR = 1;
 /**
- * how long it may go from its mount without its first frame on screen before the badge pops in alone (ms): a success never waits
- * on a GPU, whatever state its engine is in (a Direct3D copy of its shader still compiling: a light Success on Intel UHD drew
- * nothing for 8.8 s)
+ * how long it may go from its start without its first frame on screen, or have its frames held by its GPU once it draws, before the
+ * badge pops in alone (ms, counted while it runs): a success never waits on a GPU, whatever state its engine is in (a Direct3D copy
+ * of its shader still compiling: a light Success on Intel UHD drew nothing for 8.8 s)
  */
 const FIRST_FRAME_MS = 800;
+/**
+ * how long it may be on screen without starting (its engine or comps still downloading) before the badge pops in alone (ms). It
+ * starts past any other RazorSense in line (an urgent turn: in line behind six others it started ~2.3 s late), and its waits count
+ * from its start, not its mount: below the fold, it plays once it's scrolled to
+ */
+const START_MS = 2000;
 
 /** where it is: playing (the orb drawn), the badge alone (it couldn't animate, or reduced motion), done (the badge with its check) */
 type Phase = 'playing' | 'badge' | 'done';
@@ -119,12 +125,19 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
     const [phase, setPhase] = useState<Phase>('playing');
     const phaseRef = useRef<Phase>('playing');
     const isCompleteRef = useRef(false);
+    const completeTimerRef = useRef(0);
 
     const complete = (): void => {
       if (isCompleteRef.current) return;
       isCompleteRef.current = true;
       onCompleteRef.current?.();
     };
+    // onComplete once its end comes (not after it's gone: unmounted first, it's never called)
+    const completeIn = (ms: number): void => {
+      window.clearTimeout(completeTimerRef.current);
+      completeTimerRef.current = window.setTimeout(complete, ms);
+    };
+    useEffect(() => () => window.clearTimeout(completeTimerRef.current), []);
     // the orb gone: its GPU context and memory go now (after this frame: the stage may be the one calling)
     const freeStage = (): void => {
       const stage = stageRef.current;
@@ -158,13 +171,43 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
         return undefined;
       }
       let hasDrawn = false;
-      const noFrame = window.setTimeout(() => {
-        if (hasDrawn || phaseRef.current !== 'playing') return;
-        onErrorRef.current?.(
-          new Error(`RazorSenseSuccess: no first frame within ${FIRST_FRAME_MS} ms`),
-        );
+      let isStarted = false;
+      let startWait = 0;
+      let frameWait = 0;
+      // (never started, or started and never drew, or its GPU held its frames: the badge pops in alone, and onError says why)
+      const giveUp = (why: string): void => {
+        if (phaseRef.current !== 'playing') return;
+        onErrorRef.current?.(new Error(`RazorSenseSuccess: ${why}`));
         toBadge();
-      }, FIRST_FRAME_MS);
+      };
+      // its first frame within FIRST_FRAME_MS of its start, counted while it runs (paused, in a hidden tab or scrolled away, it waits)
+      const waitForFrame = (): void => {
+        frameWait = window.setTimeout(() => {
+          frameWait = 0;
+          if (hasDrawn || phaseRef.current !== 'playing') return;
+          if (stageRef.current?.hasEngine() && !stageRef.current.isRunning()) waitForFrame();
+          else giveUp(`no first frame within ${FIRST_FRAME_MS} ms of its start`);
+        }, FIRST_FRAME_MS);
+      };
+      // on screen and not started within START_MS: the badge
+      const armStart = (): void => {
+        if (startWait || isStarted) return;
+        startWait = window.setTimeout(() => {
+          if (!isStarted) giveUp(`not started within ${START_MS} ms on screen`);
+        }, START_MS);
+      };
+      const orb = orbRef.current;
+      let seen: IntersectionObserver | null = null;
+      if (typeof IntersectionObserver === 'undefined' || !orb) armStart();
+      else {
+        seen = new IntersectionObserver((entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          seen?.disconnect();
+          seen = null;
+          armStart();
+        });
+        seen.observe(orb);
+      }
       const stop = runFreshStage({
         moduleName: 'RazorSenseSuccess',
         getBox: () => orbRef.current,
@@ -181,14 +224,26 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           });
           if (!engine) return false;
           let t = 0;
+          let heldMs = 0;
           stage.setDriver((eng, dt) => {
+            // its clock holds till its first frame is on screen, and while its GPU holds its frames back (a Direct3D copy of its shader
+            // compiling): the orb plays whole from its start. Held past FIRST_FRAME_MS once it has drawn, the badge
+            if (!hasDrawn || eng.waitsOnGpu?.()) {
+              if (hasDrawn) heldMs += dt * 1000;
+              if (heldMs > FIRST_FRAME_MS) {
+                giveUp(`its GPU held its frames for ${FIRST_FRAME_MS} ms`);
+                return;
+              }
+              eng.player.seek(t, t);
+              return;
+            }
             t += dt;
             // the orb gone: its canvas goes, and what's left is the badge with Blade's own check
             if (t >= m.gone) {
               freeStage();
               phaseRef.current = 'done';
               setPhase('done');
-              window.setTimeout(complete, Math.max(0, m.end - t) * 1000);
+              completeIn(Math.max(0, m.end - t) * 1000);
               return;
             }
             eng.player.seek(t, t);
@@ -205,21 +260,28 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           return true;
         },
         onFail: (error) => {
-          window.clearTimeout(noFrame);
+          window.clearTimeout(startWait);
+          window.clearTimeout(frameWait);
           onErrorRef.current?.(error);
           toBadge();
         },
         onRelease: () => undefined,
+        // (past any other RazorSense in line; its waits count from here)
+        isUrgent: true,
+        onStarted: () => {
+          isStarted = true;
+          window.clearTimeout(startWait);
+          if (!hasDrawn && !frameWait) waitForFrame();
+        },
         onDrawn: () => {
           hasDrawn = true;
           onLoadRef.current?.();
         },
-        onWaiting: (isWaiting) => {
-          if (isWaiting) toBadge();
-        },
       });
       return () => {
-        window.clearTimeout(noFrame);
+        window.clearTimeout(startWait);
+        window.clearTimeout(frameWait);
+        seen?.disconnect();
         stop();
       };
       // isPaused is read live (its own effect); ink and the piece are read when it starts
@@ -250,7 +312,7 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
         if (t >= until) {
           phaseRef.current = 'done';
           setPhase('done');
-          window.setTimeout(complete, Math.max(0, piece.moments.end - until) * 1000);
+          completeIn(Math.max(0, piece.moments.end - until) * 1000);
           return;
         }
         putOverlay(

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RazorSenseChat /> should render RazorSenseChat on server 1`] = `"<div id="root"><div data-blade-component="razorsense-chat" style="position:relative;isolation:isolate;width:100%;height:100%"><div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none"></div><div data-blade-component="razorsense-bottom-wave" style="position:relative;isolation:isolate"><textarea aria-label="Ask"></textarea></div></div></div>"`;

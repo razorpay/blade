@@ -6,6 +6,8 @@ import { RazorSenseChatContext } from './chatContext';
 import type { ChatPart, RazorSenseChatContextValue } from './chatContext';
 import {
   BOTTOM_WAVE_REACH,
+  REST_REACH_UP,
+  REST_STEP,
   THINKING_REACH,
   bottomWaveFrame,
   inputAnchor,
@@ -107,12 +109,22 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
     lastRef.current = anchors;
     return anchors;
   };
+  // at rest its canvas covers only the strip: from as far above the chat input's bottom as the strip reaches, typing included, in
+  // steps of REST_STEP (a whole number of device px at every sharpness it draws at, so what's drawn doesn't shift)
+  const restTop = (): number | null => {
+    const root = stageRef.current?.parentElement;
+    const input = root ? rectIn(partsRef.current.bottomWave, root) : null;
+    if (!input) return null;
+    const top = input.top + input.height - REST_REACH_UP * s;
+    return Math.max(0, Math.floor(top / REST_STEP) * REST_STEP);
+  };
   const { keystroke, isStill } = useChatStage({
     moduleName: 'RazorSenseChat',
     isEnabled: true,
     stageRef,
     isThinking,
     getAnchors,
+    restTop,
     scale: s,
     isPaused,
     onLoad,

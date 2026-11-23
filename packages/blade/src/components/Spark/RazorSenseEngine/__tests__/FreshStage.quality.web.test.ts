@@ -10,7 +10,7 @@ const DEBUG_INFO = { UNMASKED_RENDERER_WEBGL: 0x9246, UNMASKED_VENDOR_WEBGL: 0x9
 /** a page whose GPU is `gpu` (its name, or none where the browser hides it), with frames driven by hand */
 const setup = (
   gpu: Gpu,
-  device: { cores?: number; memory?: number; mobile?: boolean } = {},
+  device: { cores?: number; memory?: number; mobile?: boolean; ua?: string } = {},
 ): {
   FreshStage: any;
   freshEaseLevel: () => number;
@@ -49,7 +49,8 @@ const setup = (
   jest
     .spyOn(window.navigator, 'userAgent', 'get')
     .mockReturnValue(
-      device.mobile ? 'Mozilla/5.0 (Linux; Android 14) Mobile' : 'Mozilla/5.0 (Macintosh)',
+      device.ua ??
+        (device.mobile ? 'Mozilla/5.0 (Linux; Android 14) Mobile' : 'Mozilla/5.0 (Macintosh)'),
     );
   let mod: any;
   jest.isolateModules(() => {
@@ -80,43 +81,87 @@ const engineMock = (): any => ({
 describe('FreshStage: quality to the device, both ways', () => {
   afterEach(() => jest.restoreAllMocks());
 
-  it.each([
-    [
-      'a low GPU (old Intel HD)',
-      { renderer: 'ANGLE (Intel, Intel(R) HD Graphics 520 Direct3D11 vs_5_0 ps_5_0)' },
-      {},
-      2,
-    ],
-    ['a low phone GPU (Mali-G52)', { renderer: 'Mali-G52 MC2' }, { mobile: true }, 2],
-    [
-      'a mid GPU on a phone',
-      { renderer: 'Adreno (TM) 610' },
-      { mobile: true, cores: 8, memory: 4 },
-      1,
-    ],
-    ['a mid GPU on a laptop', { renderer: 'Adreno (TM) 610' }, { cores: 4, memory: 4 }, 0],
-    [
-      'a high GPU (GTX 1650)',
-      { renderer: 'ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 Direct3D11 vs_5_0 ps_5_0)' },
-      {},
-      0,
-    ],
-    [
-      'an M1',
-      { renderer: 'ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)' },
-      {},
-      0,
-    ],
-    ['a hidden name, 2 cores', {}, { cores: 2 }, 2],
-    ['a hidden name, 8 cores, 8 GB', {}, { cores: 8, memory: 8 }, 0],
-  ])('%s: its page starts at level %#', (_name, gpu, device, level) => {
-    const { whyCantAnimate, readGpuNames } = setup(gpu as Gpu, device);
+  it.each(
+    ([
+      [
+        'a low GPU (old Intel HD)',
+        { renderer: 'ANGLE (Intel, Intel(R) HD Graphics 520 Direct3D11 vs_5_0 ps_5_0)' },
+        {},
+        2,
+      ],
+      ['a low phone GPU (Mali-G52)', { renderer: 'Mali-G52 MC2' }, { mobile: true }, 2],
+      [
+        'a mid GPU on a phone',
+        { renderer: 'Adreno (TM) 610' },
+        { mobile: true, cores: 8, memory: 4 },
+        1,
+      ],
+      ['a mid GPU on a laptop', { renderer: 'Adreno (TM) 610' }, { cores: 4, memory: 4 }, 0],
+      [
+        'a high GPU (GTX 1650)',
+        { renderer: 'ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 Direct3D11 vs_5_0 ps_5_0)' },
+        {},
+        0,
+      ],
+      [
+        'an M1',
+        { renderer: 'ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)' },
+        {},
+        0,
+      ],
+      ['a hidden name, 2 cores', {}, { cores: 2 }, 2],
+      [
+        'an iPhone (Safari hides its GPU: mid by its signals)',
+        {},
+        { cores: 6, ua: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Mobile/15E148' },
+        0,
+      ],
+      ['an Android phone with a hidden name', {}, { cores: 8, mobile: true }, 1],
+      [
+        'Intel UHD on a laptop (no pattern: by its signals)',
+        {
+          renderer:
+            'ANGLE (Intel, Intel(R) UHD Graphics (0x00009BC4) Direct3D11 vs_5_0 ps_5_0, D3D11)',
+        },
+        { cores: 12, memory: 8 },
+        0,
+      ],
+      [
+        'Iris Xe on a laptop',
+        { renderer: 'ANGLE (Intel, Intel(R) Iris(R) Xe Graphics Direct3D11 vs_5_0 ps_5_0, D3D11)' },
+        { cores: 8, memory: 8 },
+        0,
+      ],
+      ['a hidden name, 8 cores, 8 GB', {}, { cores: 8, memory: 8 }, 0],
+    ] as [string, Gpu, Record<string, unknown>, number][]).map(([name, gpu, device, level]) => ({
+      name,
+      gpu,
+      device,
+      level,
+    })),
+  )('$name: its page starts at level $level', ({ gpu, device, level }) => {
+    const { whyCantAnimate, readGpuNames } = setup(gpu, device);
     expect(whyCantAnimate()).toBeNull();
     let deviceStartLevel: any;
     jest.isolateModules(() => {
       ({ deviceStartLevel } = require('../deviceLevel'));
     });
     expect(deviceStartLevel(readGpuNames())).toBe(level);
+  });
+
+  it('its device level makes no probe context of its own (its WebGL2 check asked about a caveat already)', () => {
+    const { whyCantAnimate, readGpuNames } = setup({
+      renderer: 'ANGLE (Intel, Intel(R) UHD Graphics (0x00009BC4) Direct3D11 vs_5_0 ps_5_0, D3D11)',
+    });
+    expect(whyCantAnimate()).toBeNull();
+    const getContext = HTMLCanvasElement.prototype.getContext as jest.Mock;
+    getContext.mockClear();
+    let deviceStartLevel: any;
+    jest.isolateModules(() => {
+      ({ deviceStartLevel } = require('../deviceLevel'));
+    });
+    deviceStartLevel(readGpuNames());
+    expect(getContext).not.toHaveBeenCalled();
   });
 
   it('a page started two steps down draws at 0.75 of a CSS px from its first frame', () => {
@@ -229,6 +274,31 @@ describe('FreshStage: quality to the device, both ways', () => {
     for (let i = 2; i < upAt.length; i++) {
       expect(upAt[i] - upAt[i - 1]).toBeGreaterThan(upAt[i - 1] - upAt[i - 2]);
     }
+    stage.destroy();
+  });
+
+  it('a device on its edge stops trying after three step ups that don’t hold', () => {
+    const { FreshStage, whyCantAnimate, freshEaseLevel, measureScreen, runFrames } = setup({
+      renderer: 'ANGLE (Apple, ANGLE Metal Renderer: Apple M1)',
+    });
+    expect(whyCantAnimate()).toBeNull();
+    measureScreen();
+    runFrames(70, 1000 / 60);
+    const engine = engineMock();
+    const stage = new FreshStage(document.createElement('div'), () => engine, {});
+    stage.mount({ doc: {}, opts: {} });
+    stage.setDriver(() => undefined);
+    runFrames(3 * 60, 1000 / 60);
+    // 60 fps while it draws every other frame, 35 at full: ten minutes of it
+    let raises = 0;
+    for (let s = 0; s < 600; s++) {
+      const level = freshEaseLevel();
+      runFrames(level === 0 ? 35 : 60, level === 0 ? 1000 / 35 : 1000 / 60);
+      if (level > 0 && freshEaseLevel() < level) raises += 1;
+    }
+    // (each try that doesn't hold is ~2 s of jank: three, then it stays down)
+    expect(raises).toBe(3);
+    expect(freshEaseLevel()).toBeGreaterThan(0);
     stage.destroy();
   });
 });

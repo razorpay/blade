@@ -54,6 +54,32 @@ describe('<RazorSenseBackground /> (jsdom has no WebGL2: its still)', () => {
     expect(still.style.transform).toBe('translate(0px, 0px) rotate(3.5deg) scale(0.89)');
   });
 
+  it('reduced motion: its still, no GPU context made and no error; onLoad once it shows', async () => {
+    const ownMatchMedia = window.matchMedia;
+    window.matchMedia = (((query: string) => ({
+      matches: query.includes('reduce'),
+      media: query,
+      addEventListener: () => undefined,
+      removeEventListener: () => undefined,
+      addListener: () => undefined,
+      removeListener: () => undefined,
+    })) as unknown) as typeof window.matchMedia;
+    const getContext = jest.spyOn(HTMLCanvasElement.prototype, 'getContext');
+    const onError = jest.fn();
+    const onLoad = jest.fn();
+    const { container } = renderWithTheme(
+      <RazorSenseBackground onError={onError} onLoad={onLoad} />,
+    );
+    const still = await waitFor(() => stillOf(container));
+    expect(still.getAttribute('src')).toBe('still:backgroundLight');
+    await waitFor(() => expect(onLoad).toHaveBeenCalledTimes(1));
+    expect(onError).not.toHaveBeenCalled();
+    expect(getContext).not.toHaveBeenCalled();
+    expect(container.querySelector('canvas')).toBeNull();
+    getContext.mockRestore();
+    window.matchMedia = ownMatchMedia;
+  });
+
   it('dark: its own still', async () => {
     const { container } = renderWithTheme(
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">

@@ -4934,6 +4934,7 @@ export function* freshEngineSteps(
         window.devicePixelRatio || 1,
         Math.max(0.5, +jn.dpr || +K.view.dpr || 1.6),
         s || 1 / 0,
+        +jn.maxPx > 0 ? Math.max(0.5, Math.sqrt(+jn.maxPx / (e * t))) : 1 / 0,
       ),
       o = Math.round(e * n),
       a = Math.round(t * n);

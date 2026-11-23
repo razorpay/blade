@@ -113,6 +113,8 @@ export type FreshExport = {
     srcBudget?: number;
     /** the canvas's sharpness, at most the device's (default 1.6) */
     dpr?: number;
+    /** at most this many canvas pixels: a bigger box draws at a lower sharpness (never under half a CSS px), not more pixels */
+    maxPx?: number;
     /** only this part of the comp [x, y, w, h] (comp px from its top-left), cover-fitted to the box: a zoom */
     region?: [number, number, number, number];
     /** 'once': play the timeline once and hold its last frame (default: as the timeline says) */
