@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
 import type { BladeElementRef } from '~utils/types';
@@ -12,21 +11,14 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-// Renders the same elements and styles as `Heading` / `Text`, plus balanced line breaks so
-// centred copy doesn't leave a single word on its last line. Browsers without
-// `text-wrap: balance` wrap as before. Heading and Text don't forward `className`, so this
-// wraps BaseText directly.
-const BalancedText = styled(BaseText)`
-  text-wrap: balance;
-`;
-
 const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStateProps> = (
   { asset, title, description, children, size = 'medium', testID, ...props },
   ref,
 ) => {
   const tokens = emptyStateSizeTokens[size];
-  // `as` must reach BaseText via `forwardedAs`; on a styled() wrapper it would replace BaseText
-  const { as: titleAs, ...titleProps } = getHeadingProps({
+  // Title and description render BaseText with Heading / Text props so they can use the web-only
+  // `textWrap="balance"`: centred copy then doesn't leave a single word on its last line.
+  const titleProps = getHeadingProps({
     size: tokens.titleSize,
     weight: 'semibold',
     color: 'surface.text.gray.subtle',
@@ -58,15 +50,15 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
       ) : null}
       <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
         {title ? (
-          <BalancedText {...titleProps} forwardedAs={titleAs} textAlign="center">
+          <BaseText {...titleProps} textAlign="center" textWrap="balance">
             {title}
-          </BalancedText>
+          </BaseText>
         ) : null}
 
         {description ? (
-          <BalancedText {...descriptionProps} forwardedAs="p">
+          <BaseText {...descriptionProps} as="p" textWrap="balance">
             {description}
-          </BalancedText>
+          </BaseText>
         ) : null}
       </BaseBox>
 

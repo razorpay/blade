@@ -28,10 +28,12 @@ const StyledBaseText = styled.div.withConfig({
     wordBreak,
     opacity,
     textTransform,
+    textWrap,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
     return {
+      ...(textWrap ? { textWrap } : {}),
       ...getBaseTextStyles({
         color,
         fontFamily,
@@ -66,6 +68,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
     letterSpacing,
     as,
     textAlign,
+    textWrap,
     children,
     truncateAfterLines,
     wordBreak,
@@ -94,6 +97,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
       letterSpacing={letterSpacing}
       as={as}
       textAlign={textAlign}
+      textWrap={textWrap}
       numberOfLines={truncateAfterLines}
       wordBreak={wordBreak}
       opacity={opacity}
