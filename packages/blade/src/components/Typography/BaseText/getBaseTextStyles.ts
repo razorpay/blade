@@ -37,6 +37,19 @@ const getBaseTextStyles = ({
   if (numberOfLines !== undefined) {
     if (isReactNative()) {
       truncateStyles = {};
+    } else if (numberOfLines === 1 && textAlign === 'right') {
+      // Chrome drops the line clamp's ellipsis on right-aligned text, so a right-aligned single
+      // line is cut with text-overflow instead. Other alignments keep the clamp below: nowrap
+      // makes min-content the full text width, which stops shrinkable parents (like TreeView rows)
+      // from narrowing the text, and would change how Tag and Counter size themselves. min-width
+      // lets it shrink as a flex item.
+      truncateStyles = {
+        display: 'block',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        minWidth: 0,
+      };
     } else {
       truncateStyles = {
         overflow: 'hidden',
