@@ -13,7 +13,8 @@ import { whyCantAnimate } from '../RazorSenseEngine';
  * neighbours makes nothing new). A pointer passing near buttons, or resting on one, doesn't make its neighbours'
  * canvases: every canvas made and let go is GPU work, and Safari counts it against its limit till it's cleaned up. At most
  * MAX_HELD are held at once, those the pointer is closest to (a hover still running or fading first). Touch has no hover: only a
- * mouse or a pen counts.
+ * mouse or a pen counts. A button focused from the keyboard plays its hover as a hovered one does, so it's held as the one the
+ * pointer is on, wherever the pointer is.
  */
 const NEAR = 48;
 const FAR = 96;
@@ -31,6 +32,8 @@ type Slot = {
   /** told when it may make its canvases (true) and when it must let them go (false) */
   onHold: (isHeld: boolean) => void;
   isHeld: boolean;
+  /** focused from the keyboard: held as the button the pointer is on */
+  isFocused: boolean;
   distance: number;
   /** since when the pointer has been within NEAR of it, off every button (0: it isn't) */
   nearSince: number;
@@ -45,6 +48,8 @@ type HoverSlot = {
    * (the page scrolled under it), and a hover is held from where the pointer is
    */
   update: (at?: [number, number]) => void;
+  /** focused from the keyboard (true) or not any more (false): held meanwhile, as the button the pointer is on */
+  focus: (isFocused: boolean) => void;
   /** let go, for good (its button is going, off screen, or its hover is off) */
   remove: () => void;
 };
@@ -78,7 +83,12 @@ const check = (): void => {
   slots.forEach((slot) => {
     // (near, and off every button: on one, its neighbours wait)
     slot.nearSince = !isOnOne && slot.distance <= NEAR ? slot.nearSince || now : 0;
-    if (slot.isBusy() || slot.distance === 0 || (slot.isHeld && slot.distance <= FAR)) {
+    if (
+      slot.isBusy() ||
+      slot.isFocused ||
+      slot.distance === 0 ||
+      (slot.isHeld && slot.distance <= FAR)
+    ) {
       wanted.push(slot);
     }
   });
@@ -118,9 +128,9 @@ const check = (): void => {
       }, DWELL - waited + 1);
     }
   }
-  // past MAX_HELD: the one the pointer is on first (a quick pass over three left them fading, and the fourth, hovered, got none;
-  // the PR review), then those still running or fading, then the nearest
-  const isOn = (slot: Slot): number => Number(slot.distance === 0);
+  // past MAX_HELD: the one the pointer is on (or focused from the keyboard) first (a quick pass over three left them fading, and
+  // the fourth, hovered, got none; the PR review), then those still running or fading, then the nearest
+  const isOn = (slot: Slot): number => Number(slot.distance === 0 || slot.isFocused);
   const held = new Set(
     wanted
       .sort(
@@ -181,6 +191,7 @@ const holdNearPointer = (
     isBusy,
     onHold,
     isHeld: false,
+    isFocused: false,
     distance: Infinity,
     nearSince: 0,
     lastDistance: Infinity,
@@ -191,6 +202,11 @@ const holdNearPointer = (
   return {
     update: (at) => {
       if (at) pointer = at;
+      schedule();
+    },
+    focus: (isFocused) => {
+      if (isFocused === slot.isFocused) return;
+      slot.isFocused = isFocused;
       schedule();
     },
     remove: () => {
@@ -221,5 +237,53 @@ const canPlayHover = (): boolean =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ) && !whyCantAnimate();
 
-export { holdNearPointer, canPlayHover };
-export type { HoverSlot };
+type KeyboardFocus = {
+  /** focused from the keyboard now */
+  isFocused: () => boolean;
+  /** stops following it */
+  stop: () => void;
+};
+
+/**
+ * Keyboard focus on a button with a Spark hover: it plays the hover as hovering does. `onChange(true)` as the button is focused
+ * from the keyboard (`:focus-visible`: a click's focus isn't, that hover is the pointer's), `onChange(false)` as that focus goes;
+ * its slot is held meanwhile. A button already focused from the keyboard (before its hover's code was in) is told at once.
+ */
+const followKeyboardFocus = (
+  button: HTMLElement,
+  slot: HoverSlot,
+  onChange: (isFocused: boolean) => void,
+): KeyboardFocus => {
+  let isFocused = false;
+  const isKeyboardFocus = (): boolean => {
+    try {
+      return button.matches(':focus-visible');
+    } catch {
+      return false;
+    }
+  };
+  const set = (next: boolean): void => {
+    isFocused = next;
+    slot.focus(next);
+    onChange(next);
+  };
+  const onFocus = (): void => {
+    if (isKeyboardFocus()) set(true);
+  };
+  const onBlur = (): void => {
+    if (isFocused) set(false);
+  };
+  button.addEventListener('focus', onFocus);
+  button.addEventListener('blur', onBlur);
+  if (document.activeElement === button) onFocus();
+  return {
+    isFocused: () => isFocused,
+    stop: () => {
+      button.removeEventListener('focus', onFocus);
+      button.removeEventListener('blur', onBlur);
+    },
+  };
+};
+
+export { holdNearPointer, canPlayHover, followKeyboardFocus };
+export type { HoverSlot, KeyboardFocus };

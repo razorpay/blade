@@ -132,6 +132,47 @@ describe('holdNearPointer', () => {
     slots.forEach((slot) => slot.remove());
   });
 
+  it('holds a keyboard-focused button wherever the pointer is, and lets it go once focus leaves', async () => {
+    let isHeld = false;
+    const slot = holdNearPointer(buttonAt(6000), {
+      isBusy: () => false,
+      onHold: (held) => {
+        isHeld = held;
+      },
+    });
+    // the pointer far from it
+    moveTo(50, 10);
+    await wait();
+    expect(isHeld).toBe(false);
+    slot.focus(true);
+    await wait();
+    expect(isHeld).toBe(true);
+    slot.focus(false);
+    await wait();
+    expect(isHeld).toBe(false);
+    slot.remove();
+  });
+
+  it('holds the keyboard-focused button even when three others are still fading', async () => {
+    const held: boolean[] = [];
+    // three just passed over (still fading), and the fourth, far from the pointer, focused from the keyboard
+    const slots = [7000, 7040, 7080, 9000].map((top, i) =>
+      holdNearPointer(buttonAt(top), {
+        isBusy: () => i < 3,
+        onHold: (isHeld) => {
+          held[i] = isHeld;
+        },
+      }),
+    );
+    moveTo(50, 7015);
+    await wait();
+    slots[3].focus(true);
+    await wait();
+    expect(held[3]).toBe(true);
+    expect(held.filter(Boolean)).toHaveLength(3);
+    slots.forEach((slot) => slot.remove());
+  });
+
   it('holds a hover from where its own event says the pointer is, with no move before it', async () => {
     let isHeld = false;
     // (a pointer that never moved since: the page scrolled under it, say)

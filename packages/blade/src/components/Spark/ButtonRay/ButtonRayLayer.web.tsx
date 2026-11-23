@@ -5,8 +5,8 @@ import { Ray } from '../Ray';
 import { RAY_BOX } from '../Ray/rayBox';
 import { loadRay } from '../Ray/loadRay';
 import type { RayState } from '../Ray/types';
-import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
-import type { HoverSlot } from '../useLazyLayer/hoverSlots';
+import { canPlayHover, followKeyboardFocus, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -556,7 +556,10 @@ const ButtonRayLayer = ({
       slot?.update(event.pointerType === 'touch' ? undefined : [event.clientX, event.clientY]);
       show(true);
     };
-    const leave = (): void => show(false);
+    // keyboard focus plays it as hovering does (followKeyboardFocus); hovered and focused at once is the one hover
+    let keyboardFocus: KeyboardFocus | null = null;
+    const isWanted = (): boolean => button.matches(':hover') || Boolean(keyboardFocus?.isFocused());
+    const leave = (): void => show(Boolean(keyboardFocus?.isFocused()));
     // back at rest, at once (let go, given up, unmounted)
     const rest = (): void => {
       cancelAnimationFrame(frame);
@@ -578,7 +581,7 @@ const ButtonRayLayer = ({
       if (held) {
         // made as the pointer nears (the strip's first frame and his films ready for the hover), shown if it's already on it
         if (canWiden(button)) make();
-        if (button.matches(':hover')) show(true);
+        if (isWanted()) show(true);
         return;
       }
       rest();
@@ -619,6 +622,7 @@ const ButtonRayLayer = ({
         resize.disconnect();
         button.removeEventListener('pointerenter', enter);
         button.removeEventListener('pointerleave', leave);
+        keyboardFocus?.stop();
         slot?.remove();
         slot = null;
         release();
@@ -643,6 +647,9 @@ const ButtonRayLayer = ({
           isBusy: () => S.isOn || Boolean(frame) || Boolean(pauseTimer),
           onHold: hold,
         });
+        keyboardFocus = followKeyboardFocus(button, slot, (isFocused) =>
+          show(isFocused || button.matches(':hover')),
+        );
       })
       .catch(() => {
         // the engine couldn't load: Blade's own hover
@@ -655,6 +662,7 @@ const ButtonRayLayer = ({
       resize.disconnect();
       button.removeEventListener('pointerenter', enter);
       button.removeEventListener('pointerleave', leave);
+      keyboardFocus?.stop();
       slot?.remove();
       release();
       setIsRayUp(false);

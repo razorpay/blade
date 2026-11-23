@@ -43,12 +43,13 @@ type ButtonProps = {
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
   /**
-   * An AI hover: what plays while the button is hovered (web; follows the color scheme). Each value is one whole behaviour
+   * An AI hover: what plays while the button is hovered or focused from the keyboard (web; follows the color scheme; a click's
+   * focus doesn't count). Each value is one whole behaviour
    * `razorsense`: RazorSense plays on the button. Only for `variant="primary"` with `color="neutral"`, at any size (an
    * icon-only button plays its own square version), up to 300px wide; not on a full-width button, one wider than 300px or one
    * inside a ButtonGroup (it has no neutral color), which keep their own hover
    * `ray-investigate`: RazorSense and a text wash, and the button widens to the right for Ray, who whips out his magnifying
-   * glass and searches for as long as the pointer stays. Only for `variant="secondary"` with the default `color="primary"`, at
+   * glass and searches for as long as it's hovered or focused. Only for `variant="secondary"` with the default `color="primary"`, at
    * any size: it all scales with the button's height. In a ButtonGroup, full width, icon-only or stretched by its container it gives way, and the button keeps
    * its own hover. More Ray actions will come as new `ray-` values
    */
@@ -358,7 +359,7 @@ export default SimpleToggleExample;
 
 ### AI Actions: Neutral Button with RazorSense and Secondary Button with Ray
 
-The neutral primary button with `aiHover="razorsense"` plays RazorSense on hover; the secondary button with `aiHover="ray-investigate"` widens for Ray, who searches while it's hovered.
+The neutral primary button with `aiHover="razorsense"` plays RazorSense on hover or keyboard focus; the secondary button with `aiHover="ray-investigate"` widens for Ray, who searches while it's hovered or focused.
 
 ```tsx
 import React from 'react';

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
-import { canPlayHover, holdNearPointer } from '../useLazyLayer/hoverSlots';
-import type { HoverSlot } from '../useLazyLayer/hoverSlots';
+import { canPlayHover, followKeyboardFocus, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
@@ -332,7 +332,10 @@ const ButtonRazorSenseLayer = ({
       slot?.update(event.pointerType === 'touch' ? undefined : [event.clientX, event.clientY]);
       show(true);
     };
-    const leave = (): void => show(false);
+    // keyboard focus plays it as hovering does (followKeyboardFocus); hovered and focused at once is the one hover
+    let keyboardFocus: KeyboardFocus | null = null;
+    const isWanted = (): boolean => button.matches(':hover') || Boolean(keyboardFocus?.isFocused());
+    const leave = (): void => show(Boolean(keyboardFocus?.isFocused()));
     const hold = (held: boolean): void => {
       isHeld = held;
       if (!held) {
@@ -347,7 +350,7 @@ const ButtonRazorSenseLayer = ({
       // its canvas made as the pointer nears (its first frame ready for the hover), shown if the pointer's already on it
       if (dropIfTooWide()) return;
       fit();
-      if (button.matches(':hover')) show(true);
+      if (isWanted()) show(true);
     };
     letGo = (): void => {
       // (after this frame: the stage may be the one telling us)
@@ -374,6 +377,7 @@ const ButtonRazorSenseLayer = ({
         relay.disconnect();
         button.removeEventListener('pointerenter', enter);
         button.removeEventListener('pointerleave', leave);
+        keyboardFocus?.stop();
         slot?.remove();
         slot = null;
         release();
@@ -401,6 +405,9 @@ const ButtonRazorSenseLayer = ({
           isBusy: () => isOn || Boolean(pauseTimer),
           onHold: hold,
         });
+        keyboardFocus = followKeyboardFocus(button, slot, (isFocused) =>
+          show(isFocused || button.matches(':hover')),
+        );
       })
       .catch(() => {
         // the engine couldn't load: Blade's own hover
@@ -413,6 +420,7 @@ const ButtonRazorSenseLayer = ({
       relay.disconnect();
       button.removeEventListener('pointerenter', enter);
       button.removeEventListener('pointerleave', leave);
+      keyboardFocus?.stop();
       slot?.remove();
       layer.style.opacity = '0';
       release();

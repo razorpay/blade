@@ -594,7 +594,7 @@ AIHovers.parameters = {
   docs: {
     description: {
       story:
-        '`aiHover` on web: `razorsense` plays RazorSense on the neutral primary button; `ray-investigate` widens a secondary button for Ray, who searches with his magnifying glass. Hover them. Below them, the places they give way, where the button keeps its own hover (with a development warning).',
+        '`aiHover` on web: `razorsense` plays RazorSense on the neutral primary button; `ray-investigate` widens a secondary button for Ray, who searches with his magnifying glass. Hover them, or tab through them: keyboard focus plays them too. Below them, the places they give way, where the button keeps its own hover (with a development warning).',
     },
   },
 };

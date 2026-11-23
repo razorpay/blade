@@ -92,13 +92,14 @@ type ButtonCommonProps = {
   Platform.Select<{
     web: {
       /**
-       * An AI hover: what plays while the button is hovered (it follows the color scheme). Each value is one whole behaviour.
+       * An AI hover: what plays while the button is hovered or focused from the keyboard (it follows the color scheme; a click's
+       * focus doesn't count, and hovered and focused at once is the one hover). Each value is one whole behaviour.
        *
        * - `razorsense`: RazorSense plays on the button. Only for `variant="primary"` with `color="neutral"`, at any size, up to
        *   300px wide. Not supported inside a ButtonGroup (it has no neutral color), on a full-width button or on one wider than
        *   300px: there the button keeps its own hover (with a development warning).
        * - `ray-investigate`: RazorSense and a text wash, and the button widens to the right for Ray, who whips out his
-       *   magnifying glass and searches for as long as the pointer stays. Only for `variant="secondary"` with the default
+       *   magnifying glass and searches for as long as it's hovered or focused. Only for `variant="secondary"` with the default
        *   `color="primary"`, at any size (it all scales with the button's height), on a labelled button that can widen: in a
        *   ButtonGroup, full width, icon-only or stretched by its container it gives way and the button keeps its own hover
        *   (with a development warning). Give it room to its right. More Ray actions will come as new `ray-` values.
