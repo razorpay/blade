@@ -25,6 +25,13 @@ const OUTCOME_REACH_UP = 620;
  * px per CSS px, it was ~6 Mpx on a 1080p screen at 2x, against 1.4 at rest): as the big piece's budget. At rest it's under it
  */
 const WAVE_PIXELS = 2.2e6;
+/**
+ * how far above its chat input's bottom RazorSenseChat's strip draws at rest, its typing surge at its strongest included (CSS px at
+ * scale 1): dark's surge reached 169 px at 2 / 255, the faintest change (1 / 255) ~260. Its canvas at rest starts there
+ */
+const REST_REACH_UP = 300;
+/** the steps RazorSenseChat's stage moves in at rest (CSS px): a whole number of device px at 0.5, 0.75, 1, 1.25, 1.5, 1.6 and 2 */
+const REST_STEP = 20;
 
 /** thinking's slot for a thinking label at `r` */
 const thinkingSlot = (r: Rect): [number, number] => [
@@ -76,5 +83,7 @@ export {
   thinkingSlot,
   OUTCOME_REACH_UP,
   WAVE_PIXELS,
+  REST_STEP,
+  REST_REACH_UP,
 };
 export type { Rect };

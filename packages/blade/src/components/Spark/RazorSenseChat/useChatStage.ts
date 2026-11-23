@@ -37,6 +37,12 @@ type ChatStageOptions = {
   layoutKey?: unknown;
   /** its canvas's pixels at most (a bigger box draws at a lower sharpness): the lone bottom wave's, which grows to its splash */
   maxPixels?: number;
+  /**
+   * while the strip is at rest (not thinking, no surge, no outcome), how far down its parent the stage may start (CSS px; null: not
+   * at all), so its canvas covers the strip and not the whole chat: RazorSenseChat's at rest drew ~5 % of a canvas the size of the
+   * chat, and the page composited all of it every frame
+   */
+  restTop?: () => number | null;
 } & Partial<ChatStateInputs>;
 
 /**
@@ -56,6 +62,7 @@ const useChatStage = ({
   onOutcome,
   layoutKey,
   maxPixels,
+  restTop,
   scale,
   isPaused,
   onLoad,
@@ -75,6 +82,8 @@ const useChatStage = ({
   anchorsRef.current = getAnchors;
   const onOutcomeRef = useRef(onOutcome);
   onOutcomeRef.current = onOutcome;
+  const restTopRef = useRef(restTop);
+  restTopRef.current = restTop;
   // (the stage moved by its own component: its parts are read again on the next frame)
   const isRelaidRef = useRef(false);
   useEffect(() => {
@@ -216,14 +225,29 @@ const useChatStage = ({
               })
             : null;
         let isOutcomePlaying = false;
+        // the stage at rest starts lower down (restTop): moved here, in the frame, and its parts read again at once, so what's drawn
+        // stays where it is (the engine draws again as its canvas is resized, before the page paints)
+        let top = 0;
+        let wasAtRest = false;
+        const fitToRest = (atRest: boolean): boolean => {
+          const want = atRest && box ? restTopRef.current?.() ?? 0 : 0;
+          if (want === top || !box) return false;
+          top = want;
+          box.style.top = want ? `${want}px` : '';
+          return true;
+        };
         stage.setDriver((eng, dt) => {
           framesSinceRead += 1;
-          if (isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD) {
+          const atRest = !isThinkingRef.current && driver.isAtRest();
+          const isRead = isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD;
+          const isFitted = (isRead || atRest !== wasAtRest) && fitToRest(atRest);
+          if (isFitted || isRead) {
             anchors = anchorsRef.current();
             isMoved = false;
             isRelaidRef.current = false;
             framesSinceRead = 0;
           }
+          wasAtRest = atRest;
           const frameAt = performance.now();
           states.inputs = inputsRef.current;
           states.frame(dt, frameAt, driver, anchors);
@@ -256,6 +280,8 @@ const useChatStage = ({
         stillRef.current = null;
         stopFollowRef.current?.();
         stopFollowRef.current = null;
+        // (its still, if it goes to one, is placed on the whole stage)
+        if (stageRef.current) stageRef.current.style.top = '';
       },
       onDrawn: () => onLoadRef.current?.(),
       onWaiting: setIsWaiting,
