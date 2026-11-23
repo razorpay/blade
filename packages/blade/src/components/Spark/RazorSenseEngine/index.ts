@@ -7,4 +7,17 @@ export type { CreateFreshEngine, FreshDriver, FreshFailure } from './FreshStage'
 export { loadFreshEngine } from './loadFreshEngine';
 export { runFreshStage } from './runFreshStage';
 export { withRoom } from './withRoom';
-export type { FreshDoc, FreshEngine, FreshExport, FreshPlayer, FreshSwitches } from './types';
+export type {
+  FreshBackgroundPlace,
+  FreshBackgroundPlay,
+  FreshDoc,
+  FreshEngine,
+  FreshExport,
+  FreshKey,
+  FreshLook,
+  FreshPlayer,
+  FreshStops,
+  FreshSuccessPiece,
+  FreshSwitches,
+} from './types';
+export { toHex } from './toHex';

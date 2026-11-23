@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RazorSenseLoaderProps } from './types';
 import { getSplashClock, splashRemaining, stepSplashClock } from './splashClock';
 import type { SplashClock, SplashClockState } from './splashClock';
-import { runFreshStage } from '../RazorSenseEngine';
+import { runFreshStage, toHex } from '../RazorSenseEngine';
 import type { FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
@@ -10,19 +10,6 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
-
-/**
- * A CSS colour as #rrggbb, as the engine takes its ground (the browser reads it: a token can be any CSS colour); null where there's
- * no canvas to ask (tests).
- */
-const toHex = (color: string): string | null => {
-  const g =
-    typeof document === 'undefined' ? null : document.createElement('canvas').getContext('2d');
-  if (!g) return null;
-  g.fillStyle = '#000000';
-  g.fillStyle = color;
-  return typeof g.fillStyle === 'string' && g.fillStyle.startsWith('#') ? g.fillStyle : null;
-};
 
 /** its still, the glyph mid-loop, for when it can't animate (its own module per color scheme, loaded only then) */
 const loadLoaderStill = (colorScheme: 'light' | 'dark'): Promise<string> =>

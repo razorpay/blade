@@ -11,6 +11,8 @@ export type FreshDoc = {
   tl: { dur: number; range?: [number, number] | null; rangeN?: number; [key: string]: unknown };
   ui?: Record<string, unknown> & {
     /** the loading splash's clock (RazorSenseLoader) */
+    /** Default Paused 2.0's play (RazorSenseBackground): the login mirror's values for what only the page runs */
+    freshBackground?: FreshBackgroundPlay;
     freshSplash?: {
       /** the glyph's loop starts here (s) */
       a: number;
@@ -25,6 +27,74 @@ export type FreshDoc = {
     };
   };
   [key: string]: unknown;
+};
+
+/**
+ * Default Paused 2.0's play (RazorSenseBackground, generated: comps.ts ui.freshBackground): the login mirror's values for what only
+ * the page runs. Its alive adds, drift and band size are on the comps already.
+ */
+export type FreshBackgroundPlay = {
+  /** the timeline loops a -> b (s) at speed, its last `fade` s crossfading into a (the comps again on the 'fade' page, ids f_<id>) */
+  loop: { a: number; b: number; fade: number; speed: number };
+  /** the alive clock (breath, drift) x this */
+  alive: number;
+  /** the Colorama keys (each comp's own `stops`, by comp id) read on a clock of their own: a -> b looped at speed, `fade` s blended over the wrap */
+  colour: {
+    on: boolean;
+    a: number;
+    b: number;
+    speed: number;
+    fade: number;
+    stops: Record<string, FreshKey[]>;
+  };
+  /** Base's and the 'SUb Bands' comps' opacity drifting by up to `depth`, two slow waves (`period` s), each comp its own phase */
+  opacity: { depth: number; period: number; ids: string[] };
+};
+
+/** Default Paused 2.0's place in its box (RazorSenseBackground, generated: place.ts), as the login page has it */
+export type FreshBackgroundPlace = {
+  /** its comp (comp px) */
+  comp: { w: number; h: number };
+  /** the tab the login page cover-fits (comp px), and this comp's middle in it (comp px from the tab's middle) */
+  ref: { w: number; h: number };
+  centre: [number, number];
+  /** the whole piece moved (CSS px), scaled and turned (deg) round the box's middle */
+  piece: { x: number; y: number; scale: number; rotate: number };
+};
+
+/**
+ * Rzp Glass Success Animation 2.0's badge and tick (RazorSenseSuccess, generated: piece.ts), success-blob's overlay.js values: the orb is
+ * the comp; these are what the component draws over it. Sizes in comp px unless they say CSS px; times in the timeline's seconds.
+ */
+export type FreshSuccessPiece = {
+  comp: { w: number; h: number };
+  /** where the badge goes: the orb's middle as step 2 starts (comp px from the comp's top-left) */
+  anchor: { x: number; y: number };
+  /** comp px -> CSS px (the badge is its true CSS size at this) */
+  cssPerComp: number;
+  /** the beats: the tick drawn (tick -> land), step 2 (B), the orb gone, the badge's pop, the tick into the check (hand), the end */
+  moments: Record<
+    'tick' | 'land' | 'B' | 'gone' | 'badge' | 'badgeEnd' | 'hand' | 'handEnd' | 'end',
+    number
+  > &
+    Record<string, number>;
+  /** the orb's rise: Comp 3's sDrop y keys (comp px from the comp's middle) */
+  y: FreshKey[];
+  /** the orb's white tick (comp px): drawn in over `dur` s from `from` of its size */
+  tick: {
+    on: boolean;
+    size: number;
+    stroke: number;
+    color: string;
+    caps: string;
+    dur: number;
+    from: number;
+    ease: number[];
+  };
+  /** the badge (CSS px): popping in from `from` over `dur` s */
+  badge: { size: number; dur: number; from: number; ease: number[] };
+  /** the tick turning into the badge's check (CSS px) */
+  hand: { dur: number; size: number; stroke: number; ease: number[] };
 };
 
 /** What the engine plays and how it fits the box. */
@@ -98,8 +168,14 @@ export type FreshPlayer = {
       pu?: number | null;
     },
   ): void;
-  /** a comp group's opacity and blend ('add' = plus-lighter) */
-  group(name: string, o: { op?: number | null; blend?: string; dx?: number; dy?: number }): void;
+  /**
+   * a comp group's opacity and blend ('add' = plus-lighter); ground: put together on the page's ground (opaque), so laid over at
+   * opacity w it's a crossfade into it
+   */
+  group(
+    name: string,
+    o: { op?: number | null; blend?: string; dx?: number; dy?: number; ground?: boolean },
+  ): void;
   /** page values nudged live: { key: added } or { 'key*': multiplied } */
   adjust(o: Record<string, number>): void;
   /** every shape scaled round (px, py) (comp px from the comp's middle), its blur with it (x kb); the bands stay as they are */
@@ -117,6 +193,8 @@ export type FreshPlayer = {
   look(hook: FreshLook | null): void;
   /** every shape's opacity x k (0-1), the bands and the Colorama untouched: it fades away under the Colorama. Carries over a load() */
   fade(k: number): void;
+  /** the part of the comp the canvas shows ([x, y, w, h] comp px from its top-left; null: as its fit says), its box just resized */
+  region(r: [number, number, number, number] | null): void;
   /** the fade's k now */
   readonly faded: number;
   /** the engine's own key evaluation and Colorama blend, for a look */

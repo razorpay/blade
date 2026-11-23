@@ -104,6 +104,8 @@ export const MetaConstants = {
   SkipNav: 'skipnav',
   Spinner: 'spinner',
   RazorSenseLoader: 'razorsense-loader',
+  RazorSenseBackground: 'razorsense-background',
+  RazorSenseSuccess: 'razorsense-success',
   RazorSenseChat: 'razorsense-chat',
   RazorSenseChatBackground: 'razorsense-chat-background',
   RazorSenseThinking: 'razorsense-thinking',
