@@ -110,7 +110,116 @@ export type FreshPlayer = {
   pathTime(seconds: number | null): void;
   /** the path shift's upward part x k (0-1) */
   pathUp(k: number): void;
+  /**
+   * a component's own look on every shape and the page values of the comp being drawn (null: none): its voice look. Runs before
+   * shapes() and offset(); carries over a load()
+   */
+  look(hook: FreshLook | null): void;
+  /** every shape's opacity x k (0-1), the bands and the Colorama untouched: it fades away under the Colorama. Carries over a load() */
+  fade(k: number): void;
+  /** the fade's k now */
+  readonly faded: number;
+  /** the engine's own key evaluation and Colorama blend, for a look */
+  readonly tools: FreshTools;
   alive: number;
+};
+
+/** A Colorama line: its stops (place 0-1, colour #rrggbb, alpha) */
+export type FreshStops = { p: number; c: string; a?: number }[];
+
+/** A key on a track: its time (s), its value, its ease to the next ('hold', or a cubic-bezier) */
+export type FreshKey = { t: number; v: unknown; e?: 'hold' | number[] };
+
+export type FreshTools = {
+  /** a track's value at time t */
+  evalTrack(keys: FreshKey[], t: number): unknown;
+  /** Colorama line a blended into b by w (0-1) */
+  lerpStops(a: FreshStops, b: FreshStops, w: number): FreshStops;
+};
+
+/** A shape as the engine evaluates it for one frame: its numbers can be changed in place by a look */
+export type FreshShapeFrame = {
+  id: string;
+  x: number;
+  y: number;
+  sx: number;
+  sy: number;
+  s: number;
+  op: number;
+  bh: number;
+  bv: number;
+  prm?: { w: number; h: number; [key: string]: unknown };
+  pts?: { x: number; y: number; ix?: number; iy?: number; ox?: number; oy?: number }[];
+  [key: string]: unknown;
+};
+
+/** A component's look (FreshPlayer.look): `comp` is the comp being drawn ('root' or a stack id), `t` its time (s) */
+export type FreshLook = {
+  shape?(o: FreshShapeFrame, comp: string, t: number): void;
+  params?(
+    p: { stops?: FreshStops; cInGam?: number; [key: string]: unknown },
+    comp: string,
+    t: number,
+  ): { stops?: FreshStops; cInGam?: number; [key: string]: unknown };
+};
+
+/** How the voice look takes the page's voice (speechtest's Voice group): each light and dark's own */
+export type FreshVoiceTune = {
+  /** the input: x sens, under gate counts as nothing; a spring per blob (attack / release s, bounce); the level / bands split; a new share each syllable (live) */
+  voice: {
+    sens: number;
+    gate: number;
+    attack: number;
+    release: number;
+    bounce: number;
+    split: number;
+    live: number;
+    [key: string]: unknown;
+  };
+  /** the row of blobs and the strip (speechtest's Look group) */
+  look: Record<string, number>;
+  /** rest <-> voice: its seconds in and out, and its ease (a cubic-bezier) */
+  morph: { in: number; out: number; ease: [number, number, number, number] };
+};
+
+/**
+ * The voice dashboard (RazorSenseChatBackground, generated: voiceComps.ts): the voice tab, its tuned Colorama and its row of blobs
+ * in it, drawn in the chat background's place while the page listens, morphed from the background's own comp by m
+ */
+export type FreshVoiceDashboard = {
+  values: FreshVoiceTune;
+  /** colour strength: the voice look's levels further along its line */
+  cstr: number;
+  doc: FreshDoc;
+  /** the line the row sits on: its id, the shape it masks, its points' middle, its middle (comp px from the comp's middle), its half length */
+  line: { id: string; fill: string | null; c: number; x: number; y: number; hl: number };
+  /** blobs in the row (vx0, vx1, ...) */
+  blobs: number;
+};
+
+/**
+ * The voice bottom (RazorSenseChat and RazorSenseBottomWave, generated: voiceComps.ts): the strip page itself with a row of the
+ * voice tab's blob on its strip's top edge and the voice look's Colorama on its Comp 3, made on the chat's own comp
+ */
+export type FreshVoiceBottom = {
+  values: FreshVoiceTune;
+  cstr: number;
+  /** the voice look's Colorama keys */
+  colours: FreshKey[];
+  /** the voice tab's blob: each blob in the row is a copy */
+  tpl: Record<string, unknown> & { prm?: { w: number; h: number } };
+};
+
+/**
+ * Success or error on the chat's bottom strip (generated: outcomeComps.ts): Comp 3's effect shapes (behind the strip, and over it)
+ * and their keys from the piece's 0, spliced onto the strip after its own end; its Colorama keys (`rest`: the strip's own colour)
+ */
+export type FreshOutcome = {
+  dur: number;
+  before: Record<string, unknown>[];
+  after: Record<string, unknown>[];
+  K: Record<string, FreshKey[]>;
+  stops: (FreshKey & { rest?: boolean })[];
 };
 
 export type FreshEngine = {

@@ -296,6 +296,37 @@ return {
   waitsOnGpu() { return !!(GL && GL.gpuWait); },
 };`);
 
+// A component's own states on the shapes it draws (the PR's states, 2026-11-23), as the RazorSense system's pages add them:
+// - look(h): a hook on every shape and the page values, for the comp being drawn (its id: 'root' or a stack id) at its time. The voice
+//   look morphs the remnant into the voice look by it (speechtest / speechtest2's player hooks). It runs before shapes() and offset(),
+//   so what it lays out stretches and moves with the rest. tools: the engine's own evalTrack and lerpStops, for it
+// - fade(k): every shape's opacity x k, the bands and the Colorama untouched, so it fades away under the Colorama (offline on the
+//   landing: flow 10.5's fade(), mal9.js)
+// Both carry over a load(): they're the component's, not the comp's
+src = sub(
+  src,
+  `{ const ev0 = evShape; evShape = s => { const o = ev0(s);`,
+  `const LOOK = { h: null, k: 1 };
+{ const evL = evShape; evShape = s => { const o = evL(s); if (LOOK.h && LOOK.h.shape) LOOK.h.shape(o, rcCur ? rcCur.id : 'root', D.tl.t); return o; }; }
+{ const ev0 = evShape; evShape = s => { const o = ev0(s);`,
+);
+src = sub(
+  src,
+  `{ const ep0 = evalParams; evalParams = () => {`,
+  `{ const evF = evShape; evShape = s => { const o = evF(s); if (LOOK.k !== 1 && typeof o.op === 'number') o.op *= LOOK.k; return o; }; }
+{ const epL = evalParams; evalParams = () => { const P = epL(); return LOOK.h && LOOK.h.params ? LOOK.h.params(P, rcCur ? rcCur.id : 'root', D.tl.t) : P; }; }
+{ const ep0 = evalParams; evalParams = () => {`,
+);
+src = sub(
+  src,
+  `  get alive() { return aliveT(); }, set alive(v) {`,
+  `  look(h) { LOOK.h = h || null; need = true; },
+  fade(k) { const n = Math.max(0, Math.min(1, +k)); if (isFinite(n) && n !== LOOK.k) { LOOK.k = n; need = true; } },
+  get faded() { return LOOK.k; },
+  tools: { evalTrack, lerpStops },
+  get alive() { return aliveT(); }, set alive(v) {`,
+);
+
 // the studio's undo and redo restore a snapshot through its editor (draw, afterDocChange), which a player doesn't have: never
 // called here, so it's left out
 src = sub(src, `function restoreSnap(s) {
