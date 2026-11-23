@@ -369,10 +369,12 @@ class RayMount {
     root.append(this.room);
 
     const now = performance.now();
-    // out of sight while hidden; and a Ray that appears in an answer's state (its row's) comes up out of the row first: his entry
+    // out of sight while hidden; and a Ray that appears in an answer's state (its row's) comes up out of the row first: his entry.
+    // Not a Ray with a film kept loaded ahead (a button's, _preloadState): he's already in place, and his state can be asked for
+    // before his code is in (a quick hover, or Tab, on a cold page), so he'd rise out of the button's edge before the glass
     this.holder = {
       by: 'player',
-      act: options.isHidden || options.state !== 'idle' ? 'gone' : 'rest',
+      act: options.isHidden || (options.state !== 'idle' && !options.preload) ? 'gone' : 'rest',
       since: now - IDLE_WAIT_MS,
     };
     this.player.mode = options.colorScheme;
