@@ -1,16 +1,20 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Source } from '@storybook/addon-docs/blocks';
 import React, { useEffect, useRef, useState } from 'react';
-import type { RayProps, RayState, RayIdle } from '../Ray';
+import type { RayProps, RayState, RayIdle, RayOutcome } from '../Ray';
 import { Ray } from '../Ray';
+import type { RayLoaderProps } from '../RayLoader';
+import { RayLoader } from '../RayLoader';
 import type { Cycle } from '../Ray/rayIdles';
 import { idleAt, idleChances, IDLE_CYCLE } from '../Ray/rayIdles';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
-import { Heading, Text } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 
 // (not a live Sandbox: those run the published package, and Ray isn't in it yet)
 const USAGE = `import { Box, ChatInput, Ray } from '@razorpay/blade/components';
@@ -33,6 +37,50 @@ function Chat({ isAnswering, step, isDone }) {
   );
 }`;
 
+const LOADER_USAGE = `import { RayLoader } from '@razorpay/blade/components';
+
+function Page() {
+  const [isReady, setIsReady] = React.useState(false);
+  const [isLoaderDone, setIsLoaderDone] = React.useState(false);
+  // ...setIsReady(true) once the page's data is in
+  return isLoaderDone ? (
+    <PageContent />
+  ) : (
+    <RayLoader isLoading={!isReady} onComplete={() => setIsLoaderDone(true)} />
+  );
+}`;
+
+// RayLoader's props (its types.ts), on Ray's Docs page: its story is one of Ray's
+const LOADER_PROPS: [name: string, type: string, byDefault: string, description: string][] = [
+  [
+    'isLoading',
+    'boolean',
+    'true',
+    'While true he charges, dashes and holds the dash; false: he slides on, turns round, jumps and drops through the floor, then onComplete. Once per mount (a new key shows it again); false before he has started, onComplete at once.',
+  ],
+  ['onComplete', '() => void', '', 'Called once, after he has dropped through the floor.'],
+  [
+    'size',
+    "'small' | 'medium'",
+    "'medium'",
+    "His width, 38 or 48px, as Ray's. His path scales with the box's width.",
+  ],
+  ['width', 'string | number', "'100%'", 'The box his path runs across.'],
+  [
+    'height',
+    'string | number',
+    'four of his widths',
+    'Room for his charge, his jump and the floor he drops through.',
+  ],
+  [
+    'accessibilityLabel',
+    'string',
+    "'Loading'",
+    'He is a progress bar to assistive tech, as Spinner is.',
+  ],
+  ['testID, styled props', '', '', 'As other Blade components.'],
+];
+
 const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="Ray"
@@ -41,6 +89,29 @@ const Page = (): React.ReactElement => (
   >
     <Heading size="large">Usage</Heading>
     <Source code={USAGE} language="tsx" dark />
+    <Heading size="large" marginTop="spacing.8">
+      RayLoader: the Ray loader (secondary)
+    </Heading>
+    <Text marginTop="spacing.4">
+      Ray charges up and dashes across while a page loads; when it&apos;s ready (isLoading turns
+      false) he slides on, turns round, jumps and drops through the floor, then onComplete is
+      called. A component of its own (RayLoader), with RazorSenseLoader&apos;s props, so the two
+      loaders read the same. It plays once per mount. See the Ray Loader (Secondary) story.
+    </Text>
+    <Source code={LOADER_USAGE} language="tsx" dark />
+    <Box display="flex" flexDirection="column" gap="spacing.3" marginTop="spacing.4">
+      {LOADER_PROPS.map(([name, type, byDefault, description]) => (
+        <Box key={name} display="flex" flexDirection="column" gap="spacing.1">
+          <Text>
+            <Code size="medium">{name}</Code> {type}
+            {byDefault ? `, default ${byDefault}` : ''}
+          </Text>
+          <Text size="small" color="surface.text.gray.muted">
+            {description}
+          </Text>
+        </Box>
+      ))}
+    </Box>
   </StoryPageWrapper>
 );
 
@@ -50,7 +121,10 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     entrance: { control: 'radio', options: ['none', 'dash'] },
-    state: { control: 'select', options: ['idle', 'searching', 'calling', 'writing', 'working'] },
+    state: {
+      control: 'select',
+      options: ['idle', 'searching', 'thinking', 'reading', 'calling', 'writing', 'working'],
+    },
     idle: {
       control: 'select',
       options: ['rotate', 'rest', 'coffee', 'look', 'cash', 'reading', 'sleep', 'time-of-day'],
@@ -211,6 +285,8 @@ LandingDash.parameters = { controls: { include: ['idle', 'size'] } };
 const LABELS: Record<RayState, string> = {
   idle: 'Done',
   searching: 'Searching your settlements…',
+  thinking: 'Thinking…',
+  reading: 'Reading your settlement reports…',
   calling: 'Fetching your settlements…',
   writing: 'Writing a plan…',
   working: 'Putting things together',
@@ -246,9 +322,10 @@ AnswerRow.parameters = {
 };
 
 /**
- * The dashboard's answer, as flow 9 plays it: asked, he hops off the chat input; the answer's row plays Searching ->
- * Calling -> Writing -> Working (each handing over mid-move), then its exit; he drops out of the row and comes back up
- * onto the chat input. Type a question and press Enter.
+ * The dashboard's answer, as flow 10.5 plays it: asked, he hops off the chat input; the answer's Ray comes up out of its row and
+ * plays Searching -> Calling -> Writing -> Working (each handing over mid-move). As it's done he drops out of the row as soon as
+ * his laptop is put away, and the moment he's out of sight he comes back up onto the chat input and plays Success
+ * (`outcome="success"`, cleared by the next question). Type a question and press Enter.
  */
 const STEPS: [RayState, number][] = [
   ['searching', 3800],
@@ -257,8 +334,15 @@ const STEPS: [RayState, number][] = [
   ['working', 3600],
 ];
 
+// flow 10.5's timing (measured there): the answer's Ray comes up out of his row about half a second after the chat box's is out of
+// sight (out at 467 ms); and as the answer's done he's out of sight about a second later (his laptop put away 600 ms into its exit,
+// his exit cut there, then about 350 ms down at the answer row's 1.7x), when the chat box's comes back up at once
+const ROW_IN_MS = 950;
+const BACK_MS = 1000;
+
 const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
   const [asking, setAsking] = useState(false);
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
   const [rowState, setRowState] = useState<RayState>('idle');
   const [rowHidden, setRowHidden] = useState(true);
   const [rowOn, setRowOn] = useState(false);
@@ -271,11 +355,12 @@ const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
     if (asking || !q.trim()) return;
     timers.current.forEach(clearTimeout);
     setQuestion(q);
+    setOutcome(undefined); // (the next question clears the last one's)
     setAsking(true); // he hops off the input
     const later = (ms: number, fn: () => void): void => {
       timers.current.push(setTimeout(fn, ms));
     };
-    let at = 450; // the answer's row comes in after the hop, its first film bringing him in
+    let at = ROW_IN_MS; // the answer's row comes in after the hop, and he comes up out of it
     later(at, () => {
       setRowState('searching');
       setRowHidden(false);
@@ -285,11 +370,14 @@ const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
       if (i > 0) later(at, () => setRowState(s));
       at += hold + 250;
     });
-    later(at, () => setRowState('idle')); // the last film plays its whole exit, he rests ("Done")
-    later(at + 2000, () => setRowHidden(true)); // he drops out of the row
-    later(at + 2700, () => {
+    later(at, () => {
+      setRowState('idle'); // done: his film's exit, cut once its prop is away,
+      setRowHidden(true); // and he drops out of the row from there
+    });
+    later(at + BACK_MS, () => {
       setRowOn(false);
-      setAsking(false); // and comes back up onto the input
+      setAsking(false); // the moment he's out of sight he comes back up onto the input,
+      setOutcome('success'); // and plays Success on his seat
     });
   };
 
@@ -328,7 +416,7 @@ const DashboardFlowTemplate: StoryFn<typeof Ray> = () => {
           </Box>
         ) : null}
       </Box>
-      <OnChatInput rayProps={{ idle: 'rotate', isVisible: !asking }} onSubmit={ask} />
+      <OnChatInput rayProps={{ idle: 'rotate', isVisible: !asking, outcome }} onSubmit={ask} />
     </Box>
   );
 };
@@ -373,3 +461,272 @@ const AllIdlesTemplate: StoryFn<typeof Ray> = () => (
 export const AllIdles = AllIdlesTemplate.bind({});
 AllIdles.storyName = 'All idles';
 AllIdles.parameters = { controls: { disable: true } };
+
+/**
+ * A made-up voice for the mic: a quiet buzz shaped into syllables, phrases and pauses, as a MediaStream (what a page's own mic
+ * would hand him). Nothing is played out loud, and no real mic is opened.
+ */
+const makeVoice = (): { stream: MediaStream; stop: () => void } | null => {
+  const Context: typeof AudioContext | undefined =
+    window.AudioContext ??
+    ((window as unknown) as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!Context) return null;
+  const ctx = new Context();
+  const out = ctx.createMediaStreamDestination();
+  const buzz = ctx.createOscillator();
+  const gain = ctx.createGain();
+  buzz.type = 'sawtooth';
+  buzz.frequency.value = 140;
+  gain.gain.value = 0;
+  buzz.connect(gain).connect(out);
+  buzz.start();
+  let at = ctx.currentTime + 0.4;
+  const plan = (): void => {
+    // phrases of 4–9 syllables (120–260 ms each, 60–140 ms apart), a pause of 0.6–1.4 s between them, planned a few seconds ahead
+    while (at < ctx.currentTime + 4) {
+      const syllables = 4 + Math.floor(Math.random() * 6);
+      for (let i = 0; i < syllables; i++) {
+        const on = 0.12 + Math.random() * 0.14;
+        gain.gain.setTargetAtTime(0.1 + Math.random() * 0.1, at, 0.02);
+        buzz.frequency.setTargetAtTime(120 + Math.random() * 60, at, 0.05);
+        gain.gain.setTargetAtTime(0, at + on, 0.03);
+        at += on + 0.06 + Math.random() * 0.08;
+      }
+      at += 0.6 + Math.random() * 0.8;
+    }
+  };
+  plan();
+  const timer = window.setInterval(plan, 1000);
+  return {
+    stream: out.stream,
+    stop: () => {
+      window.clearInterval(timer);
+      buzz.stop();
+      ctx.close().catch(() => undefined);
+    },
+  };
+};
+
+/** An outcome that can be played again: cleared, then set again a moment later (Ray plays it each time it's set). */
+const useReplay = (outcome: RayOutcome): [RayOutcome | undefined, () => void] => {
+  const [value, setValue] = useState<RayOutcome | undefined>(outcome);
+  const play = (): void => {
+    setValue(undefined);
+    window.setTimeout(() => setValue(outcome), 50);
+  };
+  return [value, play];
+};
+
+const StateColumn = ({
+  name,
+  children,
+  control,
+}: {
+  name: string;
+  children: React.ReactElement;
+  control?: React.ReactElement;
+}): React.ReactElement => (
+  <Box
+    width="200px"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    gap="spacing.4"
+    paddingTop="spacing.11"
+  >
+    {children}
+    <Text size="small" color="surface.text.gray.muted">
+      {name}
+    </Text>
+    <Box minHeight="32px">{control}</Box>
+  </Box>
+);
+
+const StatesRow = (): React.ReactElement => {
+  const { colorScheme } = useTheme();
+  const [success, playSuccess] = useReplay('success');
+  const [error, playError] = useReplay('error');
+  const [isOffline, setIsOffline] = useState(false);
+  const [voice, setVoice] = useState<{ stream: MediaStream; stop: () => void } | null>(null);
+  const [isListening, setIsListening] = useState(false);
+  const voiceRef = useRef(voice);
+  voiceRef.current = voice;
+  useEffect(() => () => voiceRef.current?.stop(), []);
+  const toggleMic = (): void => {
+    if (isListening) {
+      setIsListening(false);
+      return;
+    }
+    if (!voice) setVoice(makeVoice()); // (made on the click: a page's audio starts with a gesture)
+    setIsListening(true);
+  };
+  return (
+    <Box
+      padding="spacing.10"
+      display="flex"
+      flexWrap="wrap"
+      gap="spacing.9"
+      alignItems="flex-end"
+      backgroundColor="surface.background.gray.intense"
+      borderRadius="medium"
+    >
+      <StateColumn name="Base (rest)">
+        <Ray idle="rest" />
+      </StateColumn>
+      <StateColumn
+        name="Success"
+        control={
+          <Button size="small" variant="secondary" onClick={playSuccess}>
+            Play again
+          </Button>
+        }
+      >
+        <Ray idle="rest" outcome={success} />
+      </StateColumn>
+      <StateColumn
+        name="Error"
+        control={
+          <Button size="small" variant="secondary" onClick={playError}>
+            Play again
+          </Button>
+        }
+      >
+        <Ray idle="rest" outcome={error} />
+      </StateColumn>
+      <StateColumn
+        name="Offline"
+        control={
+          <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+            {isOffline ? 'Back online' : 'Go offline'}
+          </Button>
+        }
+      >
+        <Ray idle="rest" isOffline={isOffline} />
+      </StateColumn>
+      <StateColumn
+        name={colorScheme === 'dark' ? 'Mic (dark colours)' : 'Mic'}
+        control={
+          <Button size="small" variant="secondary" onClick={toggleMic}>
+            {isListening ? 'Stop' : 'Start'}
+          </Button>
+        }
+      >
+        <Ray idle="rest" isListening={isListening} voiceStream={voice?.stream} />
+      </StateColumn>
+    </Box>
+  );
+};
+
+/**
+ * Every state that isn't an answer's, side by side: his base (rest); `outcome="success"` and `outcome="error"`, played once each time
+ * they're set (Play again clears and sets them); `isOffline` (Go offline / Back online); and `isListening` with a `voiceStream`,
+ * here a made-up voice (Start / Stop). The light / dark switch is here, not in the toolbar, so switching doesn't start them over.
+ */
+// the story's own light / dark: its provider's setColorScheme, which themes it again in place (a new `colorScheme` prop wouldn't:
+// it's the provider's first scheme, and the toolbar's switch mounts every story again)
+const SchemeSwitch = (): React.ReactElement => {
+  const { colorScheme, setColorScheme } = useTheme();
+  return (
+    <Button
+      size="small"
+      variant="tertiary"
+      onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+    >
+      {colorScheme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+    </Button>
+  );
+};
+
+const StatesTemplate: StoryFn<typeof Ray> = () => (
+  <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.6">
+      <Box>
+        <SchemeSwitch />
+      </Box>
+      <StatesRow />
+    </Box>
+  </BladeProvider>
+);
+
+export const States = StatesTemplate.bind({});
+States.storyName = 'States';
+States.parameters = { controls: { disable: true } };
+
+const LoaderDemo = ({ size }: { size: RayLoaderProps['size'] }): React.ReactElement => {
+  const [run, setRun] = useState(0); // a new loader for each Start (it plays once per mount)
+  const [isShown, setIsShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const start = (): void => {
+    setRun((r) => r + 1);
+    setIsShown(true);
+    setIsLoading(true);
+    setIsComplete(false);
+  };
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Box display="flex" gap="spacing.3" alignItems="center" flexWrap="wrap">
+        <Button size="small" variant="secondary" onClick={start}>
+          Start
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isShown || !isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isShown || isComplete}
+          onClick={() => setIsShown(false)}
+        >
+          Stop
+        </Button>
+        <SchemeSwitch />
+        <Text size="small" color="surface.text.gray.muted">
+          {!isShown
+            ? 'Stopped: Start brings him back at his start'
+            : isComplete
+            ? 'onComplete: the page takes its place'
+            : isLoading
+            ? 'Loading…'
+            : 'Loaded: he finishes'}
+        </Text>
+      </Box>
+      <Box backgroundColor="surface.background.gray.intense" borderRadius="medium">
+        {isShown ? (
+          <RayLoader
+            key={run}
+            size={size}
+            isLoading={isLoading}
+            onComplete={() => setIsComplete(true)}
+          />
+        ) : (
+          <Box height={size === 'small' ? '152px' : '192px'} />
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+/**
+ * The Ray loader, `RayLoader` (a component of its own, with RazorSenseLoader's props). Start: he charges and dashes, and holds the
+ * dash while loading. Finish (`isLoading={false}`): he slides on, turns round, jumps and drops through the floor, then `onComplete`.
+ * Stop: the loader goes (unmounted mid-way); the next Start brings him back at his start. The light / dark switch is here, not in the
+ * toolbar, so switching doesn't start him over.
+ */
+const RayLoaderTemplate: StoryFn<RayProps> = ({ size }) => (
+  <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+    <Box padding="spacing.8">
+      <LoaderDemo size={size} />
+    </Box>
+  </BladeProvider>
+);
+
+export const RayLoaderSecondary = RayLoaderTemplate.bind({});
+RayLoaderSecondary.storyName = 'Ray Loader (Secondary)';
+RayLoaderSecondary.args = { size: 'medium' };
+RayLoaderSecondary.parameters = { controls: { include: ['size'] } };

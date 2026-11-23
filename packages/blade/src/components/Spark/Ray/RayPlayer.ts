@@ -44,6 +44,19 @@ const NUDGE = {
 // canon's hide.json: from rest he springs up and drops behind the surface (400 -> 1000 ms), then comes back up and lands (1600 -> 2500)
 const HOP_OUT: [number, number] = [400, 1000];
 const HOP_IN: [number, number] = [1600, 2500];
+// canon Success (Figma 81:1479, the user's tune): a squash, the jump with confetti, down, a little dance with happy eyes, home. Its
+// still (reduced motion): the dance, his happy arc eyes up
+const SUCCESS_STILL_MS = 1500;
+
+/** A hop: which part of canon hide, and how fast (flow 10.5's way back is 1.2x). */
+type HopOptions = {
+  /** canon hide's ms, from and to (default: the whole way out, or in). */
+  window?: [number, number];
+  /** How fast (1: canon's own pace). */
+  speed?: number;
+  /** The pose he's in as it starts (a film's, as it gives him over), when his own Ray hasn't been drawing him. */
+  from?: Record<string, any> | null;
+};
 
 type Frame = Record<string, any>;
 type Source =
@@ -68,6 +81,7 @@ type Source =
       loop?: boolean;
       off?: number;
       end?: number;
+      speed?: number;
       done?: () => void;
       fired?: boolean;
     };
@@ -305,7 +319,10 @@ class RayPlayer {
   }
 
   /** A canon script (Look around loops). */
-  script(name: string, options: { loop?: boolean; blend?: number; done?: () => void } = {}): void {
+  script(
+    name: string,
+    options: { loop?: boolean; blend?: number; end?: number; done?: () => void } = {},
+  ): void {
     this.play({
       kind: 'script',
       name,
@@ -316,8 +333,9 @@ class RayPlayer {
   }
 
   /** The hop: up and down behind the surface ('out'), or up out of it and landing ('in'). */
-  hop(way: 'out' | 'in', done: () => void): void {
-    const [off, end] = way === 'out' ? HOP_OUT : HOP_IN;
+  hop(way: 'out' | 'in', done: () => void, options: HopOptions = {}): void {
+    const [off, end] = options.window ?? (way === 'out' ? HOP_OUT : HOP_IN);
+    if (options.from) this.base = options.from; // (a film had him: the hop blends from its pose, not his own Ray's last one)
     this.play({
       kind: 'script',
       name: 'hide',
@@ -325,8 +343,41 @@ class RayPlayer {
       blend: way === 'out' ? 140 : 0,
       off,
       end,
+      speed: options.speed,
       done,
     });
+  }
+
+  /**
+   * canon Success, once, then his rest (`outcome="success"`). It ends at its last key (3.96 s), where he's at rest to within a
+   * hundredth of a unit: its springs' last second of settling is left to his blend to rest (flow 10.5's plays about 3.8 s).
+   */
+  success(done: () => void): void {
+    this.script('success', {
+      end: this.successMs,
+      done: () => {
+        this.rest();
+        done();
+      },
+    });
+  }
+
+  /**
+   * canon Success worked out ahead (its simulation: about 9 ms here, several times that on a Windows laptop), so it isn't done in
+   * the frame he starts it in (the device test's rule: nothing new in a frame he's seen in).
+   */
+  prepareSuccess(): void {
+    this.sim('success');
+  }
+
+  /** Reduced motion: Success's still (the dance, his happy eyes), held. */
+  successStill(): void {
+    this.hold(RC.frameAt(this.sim('success'), SUCCESS_STILL_MS));
+  }
+
+  /** How long Success plays (ms): to its last key. */
+  get successMs(): number {
+    return this.sim('success').dur;
   }
 
   /** The typing watch: back a bit, then out to the caret, his body following it along the watch frames. */
@@ -362,7 +413,7 @@ class RayPlayer {
     this.caretU = clamp01(u);
   }
 
-  /** The sleep cycle: found asleep (with the first sleep's alarm), or coming in awake. His cap stays on from here. */
+  /** The sleep cycle: found asleep (with the first sleep's alarm), or coming in awake. His nightcap goes on, for as long as it's his idle. */
   nap(asleep: boolean): void {
     this.cap.capMsg({ ray: 'cap', on: true });
     const now = performance.now();
@@ -378,7 +429,12 @@ class RayPlayer {
     });
   }
 
-  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, once the sleep cycle has put it on. */
+  /** His nightcap off: another idle than the sleep cycle starts (RayMount). */
+  capOff(): void {
+    if (this.cap.CAP.on) this.cap.capMsg({ ray: 'cap', on: false });
+  }
+
+  /** His cap, as a film is asked to wear it ({ ray: 'cap' }): on, with its look, while the sleep cycle is his idle. */
   get capAsk(): { ray: 'cap'; on: boolean; q?: Record<string, unknown> } {
     const { CAP } = this.cap;
     // (with his light / dark, so a film's cap is in its colours from its first frame)
@@ -614,7 +670,7 @@ class RayPlayer {
     const m = this.sim(S.name);
     const off = S.off ?? 0;
     const end = S.end != null ? Math.min(m.total, S.end) : m.total;
-    let t = u + off;
+    let t = u * (S.speed ?? 1) + off;
     if (t >= end) {
       if (S.loop) t = off + ((t - off) % Math.max(1, end - off));
       else {

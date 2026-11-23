@@ -2,11 +2,13 @@
 import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, waitFor } from 'storybook/test';
 import React, { useRef, useState } from 'react';
-import type { RayState } from '..';
+import type { RayOutcome, RayState } from '..';
 import { Ray } from '..';
+import { RayLoader } from '../../RayLoader';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
+import { Text } from '~components/Typography';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -18,6 +20,7 @@ const doing = (i = 0): string => {
   return h.by === 'player' ? h.act : `film:${h.id}`;
 };
 const flip = (i = 0): any => rayEl(i)?.__ray?.debug.flip;
+const holder = (i = 0): any => rayEl(i)?.__ray?.debug.holder;
 const hover = (i = 0): any => rayEl(i)?.__ray?.player.hover;
 const pointerAt = (x: number, y: number): void => {
   window.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y }));
@@ -249,6 +252,49 @@ TestRayAnswerStates.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 8000 });
 };
 
+// `thinking` plays the magnifying glass (Searching's film); `reading`, the box with the papers coming out (Reading box's film, as an
+// answer state), taking him over mid-move from where the last one left him; done, he's back at rest
+export const TestRayThinksAndReads: StoryFn<typeof Ray> = () => {
+  const [state, setState] = useState<RayState>('idle');
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray state={state} idle="rest" shouldReactToPointer={false} />
+      <Button onClick={() => setState('thinking')}>Thinking</Button>
+      <Button onClick={() => setState('reading')}>Reading</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+    </Box>
+  );
+};
+TestRayThinksAndReads.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Thinking' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'search', kind: 'answer', started: true }),
+    {
+      timeout: 5000,
+    },
+  );
+  await sleep(1500);
+  await userEvent.click(getByRole('button', { name: 'Reading' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'readbox', kind: 'answer', started: true }),
+    {
+      timeout: 5000,
+    },
+  );
+  expect(rayEl().__ray.pendingFrom).not.toBe(null); // (handed over mid-move: from where Thinking left him)
+  await sleep(2000);
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 10000 });
+};
+
 // entrance="dash": he dashes in as he first appears, then his idle takes him on
 export const TestRayDashesIn: StoryFn<typeof Ray> = () => (
   <Box padding="spacing.11" paddingTop="200px" paddingLeft="500px">
@@ -302,10 +348,390 @@ TestRaySleepCycle.play = async () => {
   await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('awake'), { timeout: 14000 });
 };
 
+// The nightcap is the sleep idle's: on while he sleeps or dozes, and in an answer's film meanwhile; off as another idle starts
+// (Coffee at 6am with time-of-day, or an app's new `idle`), on him and in that idle's film (the user, 2026-11-18)
+export const TestRayNightcapIsTheSleepIdles: StoryFn<typeof Ray> = () => {
+  const [idle, setIdle] = useState<'sleep' | 'coffee'>('sleep');
+  const [state, setState] = useState<RayState>('idle');
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle={idle} state={state} shouldReactToPointer={false} />
+      <Button onClick={() => setState('searching')}>Answer</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+      <Button onClick={() => setIdle('coffee')}>Coffee</Button>
+    </Box>
+  );
+};
+TestRayNightcapIsTheSleepIdles.play = async () => {
+  const { getByRole } = within(document.body);
+  const cap = (): boolean => rayEl().__ray.player.cap.CAP.on;
+  const filmCap = (id: string): boolean =>
+    Boolean(rayEl().__ray.films[id]?.host.peek('rayCap')?.CAP.on);
+  await waitFor(() => expect(rayEl().__ray.player.napPhase).toBe('asleep'), { timeout: 3000 });
+  expect(cap()).toBe(true);
+  await userEvent.click(getByRole('button', { name: 'Answer' }));
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  await waitFor(() => expect(filmCap('search')).toBe(true), { timeout: 3000 }); // (his idle is still Sleep)
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(rayEl().__ray.player.napPhase).not.toBe(null), { timeout: 8000 });
+  expect(cap()).toBe(true);
+  await userEvent.click(getByRole('button', { name: 'Coffee' }));
+  await waitFor(() => expect(doing()).toBe('film:coffee'), { timeout: 6000 });
+  expect(cap()).toBe(false);
+  await waitFor(() => expect(filmCap('coffee')).toBe(false), { timeout: 1000 });
+};
+
+// a made-up voice, as a page's own mic would hand it over (a quiet buzz, never played out loud): for the mic's level
+const fakeVoice = (): { stream: MediaStream; stop: () => void } => {
+  const ctx = new AudioContext();
+  const out = ctx.createMediaStreamDestination();
+  const buzz = ctx.createOscillator();
+  const gain = ctx.createGain();
+  gain.gain.value = 0.15;
+  buzz.type = 'sawtooth';
+  buzz.connect(gain).connect(out);
+  buzz.start();
+  return { stream: out.stream, stop: () => ctx.close() };
+};
+
+// isOffline: the droop film's malfunction takes him (it wins over everything else), and back online he jumps back to rest. Asked back
+// mid-way (offline again as he jumps back), the film turns back from where he is
+export const TestRayGoesOffline: StoryFn<typeof Ray> = () => {
+  const [isOffline, setIsOffline] = useState(false);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" isOffline={isOffline} />
+      <Button onClick={() => setIsOffline((v) => !v)}>{isOffline ? 'Online' : 'Offline'}</Button>
+    </Box>
+  );
+};
+TestRayGoesOffline.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'droop', state: 'offline', started: true }),
+    { timeout: 5000 },
+  );
+  await sleep(1500);
+  await userEvent.click(getByRole('button', { name: 'Online' })); // back online: the jump
+  await waitFor(() => expect(holder().leaving).toBe('exit'), { timeout: 1000 });
+  await userEvent.click(getByRole('button', { name: 'Offline' })); // offline again mid-jump: back from where he is
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', leaving: false }), {
+    timeout: 1000,
+  });
+  await userEvent.click(getByRole('button', { name: 'Online' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 6000 });
+};
+
+// outcome="error": the droop film's sad one-shot on his seat, once, then his rest; set again, it plays again
+export const TestRayPlaysAnError: StoryFn<typeof Ray> = () => {
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" outcome={outcome} />
+      <Button onClick={() => setOutcome('error')}>Error</Button>
+      <Button onClick={() => setOutcome(undefined)}>Clear</Button>
+    </Box>
+  );
+};
+TestRayPlaysAnError.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  for (let round = 0; round < 2; round++) {
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.click(getByRole('button', { name: 'Error' }));
+    // eslint-disable-next-line no-await-in-loop
+    await waitFor(
+      () => expect(holder()).toMatchObject({ id: 'droop', state: 'error', started: true }),
+      { timeout: 5000 },
+    );
+    // eslint-disable-next-line no-await-in-loop
+    await waitFor(() => expect(doing()).toBe('rest'), { timeout: 10000 }); // (once: it's over, and stays over)
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(600);
+    expect(doing()).toBe('rest');
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.click(getByRole('button', { name: 'Clear' }));
+  }
+};
+
+// outcome="success": canon Success, once, then his rest. It waits for an answer's states to end
+export const TestRayPlaysSuccessAfterTheAnswer: StoryFn<typeof Ray> = () => {
+  const [state, setState] = useState<RayState>('searching');
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" state={state} outcome={outcome} shouldReactToPointer={false} />
+      <Button onClick={() => setOutcome('success')}>Success</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+    </Box>
+  );
+};
+TestRayPlaysSuccessAfterTheAnswer.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  await userEvent.click(getByRole('button', { name: 'Success' }));
+  await sleep(800);
+  expect(doing()).toBe('film:search'); // (the answer's still going: it waits)
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(doing()).toBe('outcome'), { timeout: 8000 });
+  const started = performance.now();
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 6000 });
+  expect(performance.now() - started).toBeGreaterThan(3000); // (all of it: about 3.8 s)
+};
+
+// An outcome cleared before it ever played stays cleared: an error asked for while its film is still loading, a new answer, then
+// `outcome` cleared with the next question: once that answer's done he rests, with no stale error (the simplify review)
+export const TestRayClearedOutcomeStaysCleared: StoryFn<typeof Ray> = () => {
+  const [state, setState] = useState<RayState>('idle');
+  const [outcome, setOutcome] = useState<RayOutcome | undefined>(undefined);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" state={state} outcome={outcome} shouldReactToPointer={false} />
+      <Button onClick={() => setOutcome('error')}>Error</Button>
+      <Button onClick={() => setState('searching')}>Answer</Button>
+      <Button onClick={() => setOutcome(undefined)}>Clear</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+    </Box>
+  );
+};
+TestRayClearedOutcomeStaysCleared.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  rayEl().__ray.loading.droop = new Promise(() => undefined); // (the error's film never comes)
+  await userEvent.click(getByRole('button', { name: 'Error' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', started: false }), {
+    timeout: 3000,
+  });
+  await userEvent.click(getByRole('button', { name: 'Answer' }));
+  await waitFor(() => expect(doing()).toBe('film:search'), { timeout: 5000 });
+  await userEvent.click(getByRole('button', { name: 'Clear' }));
+  expect(rayEl().__ray.outcome).toBe(null);
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 8000 });
+  await sleep(1000);
+  expect(doing()).toBe('rest');
+};
+
+// isListening with a voiceStream: the mic film, fed the voice's level (he never opens a mic himself), and back in at rest. Offline wins
+// over the mic: it goes at once
+export const TestRayListens: StoryFn<typeof Ray> = () => {
+  const [isListening, setIsListening] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
+  const [voice, setVoice] = useState<{ stream: MediaStream; stop: () => void } | null>(null);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray
+        idle="rest"
+        isListening={isListening}
+        isOffline={isOffline}
+        voiceStream={voice?.stream}
+      />
+      <Button
+        onClick={() => {
+          if (!voice) setVoice(fakeVoice());
+          setIsListening((v) => !v);
+        }}
+      >
+        {isListening ? 'Stop' : 'Listen'}
+      </Button>
+      <Button onClick={() => setIsOffline((v) => !v)}>{isOffline ? 'Online' : 'Offline'}</Button>
+    </Box>
+  );
+};
+TestRayListens.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Listen' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', state: 'mic', started: true }), {
+    timeout: 5000,
+  });
+  await waitFor(() => expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05), { timeout: 3000 }); // (its level, sent to the film)
+  await userEvent.click(getByRole('button', { name: 'Stop' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 5000 });
+  expect(rayEl().__ray.voice).toBe(null); // (stopped listening: his analyser's let go)
+  await userEvent.click(getByRole('button', { name: 'Listen' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
+    timeout: 5000,
+  });
+  await sleep(800);
+  await userEvent.click(getByRole('button', { name: 'Offline' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', state: 'offline' }), {
+    timeout: 1500,
+  }); // (at once)
+};
+
+// The answer row's Ray comes up out of his row (canon hide's second half) and his first film takes him from there; as the answer's done
+// and he's hidden, his film's exit is cut once its prop is put away and he goes down from there (flow 10.5). Both his jumps at 1.7x
+export const TestRayRowHops: StoryFn<typeof Ray> = () => {
+  const [state, setState] = useState<RayState>('working');
+  const [isVisible, setIsVisible] = useState(false);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray idle="rest" state={state} isVisible={isVisible} shouldReactToPointer={false} />
+      <Button onClick={() => setIsVisible(true)}>Rise</Button>
+      <Button
+        onClick={() => {
+          setState('idle');
+          setIsVisible(false);
+        }}
+      >
+        Done
+      </Button>
+    </Box>
+  );
+};
+TestRayRowHops.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('gone'), { timeout: 3000 });
+  await waitFor(() => expect(rayEl().__ray.films.laptop2?.ready).toBe(true), { timeout: 5000 }); // (loaded ahead)
+  await userEvent.click(getByRole('button', { name: 'Rise' }));
+  const rise = performance.now();
+  await waitFor(() => expect(doing()).toBe('showing'), { timeout: 1000 });
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'laptop2', started: true }), {
+    timeout: 5000,
+  });
+  expect(performance.now() - rise).toBeLessThan(550); // (up at 1.7x: about 380 ms; 650 at 1x)
+  expect(rayEl().__ray.pendingFrom).not.toBe(null); // (from his pose as he came up)
+  await sleep(2500);
+  expect(rayEl().__ray.films.laptop2.host.handle.F.L.back).toBeTruthy(); // (where its laptop's put away: the cut's read off it)
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  const done = performance.now();
+  await waitFor(() => expect(doing()).toBe('hiding'), { timeout: 3000 });
+  expect(performance.now() - done).toBeLessThan(1000); // (cut once the laptop's away, about 0.6 s, not after its whole exit: 1.1 s)
+  const down = performance.now();
+  await waitFor(() => expect(doing()).toBe('gone'), { timeout: 2000 });
+  expect(performance.now() - down).toBeLessThan(450); // (down at 1.7x: about 350 ms; 500 at 1.2x)
+};
+
+// The way back is quicker: a Ray hopping back up onto his surface lands at 1.2x canon's pace
+export const TestRayComesBackQuicker: StoryFn<typeof Ray> = TestRayHopsOffAndBack.bind({});
+TestRayComesBackQuicker.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Hide' }));
+  await waitFor(() => expect(doing()).toBe('gone'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Show' }));
+  const shown = performance.now();
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  expect(performance.now() - shown).toBeLessThan(850); // (canon's 900 ms at 1x; 750 at 1.2x)
+};
+
+// The Ray loader: started, he charges and dashes and holds while loading; `isLoading` false, he finishes (slides, turns, jumps, drops
+// through the floor) and onComplete is called, once. Stopped mid-way (unmounted), a new one starts from his start
+const loaderEl = (): any =>
+  document.querySelector('[data-blade-component="ray-loader"]')?.firstElementChild;
+export const TestRayLoaderLoadsAndFinishes: StoryFn<typeof RayLoader> = () => {
+  const [run, setRun] = useState(0);
+  const [isShown, setIsShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+      <Box display="flex" gap="spacing.3">
+        <Button
+          onClick={() => {
+            setRun((r) => r + 1);
+            setIsShown(true);
+            setIsLoading(true);
+          }}
+        >
+          Start
+        </Button>
+        <Button onClick={() => setIsLoading(false)}>Finish</Button>
+        <Button onClick={() => setIsShown(false)}>Stop</Button>
+        <Text>{`completed ${completions}`}</Text>
+      </Box>
+      <Box width="720px">
+        {isShown ? (
+          <RayLoader
+            key={run}
+            isLoading={isLoading}
+            onComplete={() => setCompletions((c) => c + 1)}
+          />
+        ) : null}
+      </Box>
+    </Box>
+  );
+};
+TestRayLoaderLoadsAndFinishes.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1500);
+  expect(debug()).toMatchObject({ finishing: false, done: false }); // (holding the dash while loading)
+  await userEvent.click(getByRole('button', { name: 'Stop' })); // stopped mid-way: the loader goes
+  expect(loaderEl()).toBeFalsy();
+  await userEvent.click(getByRole('button', { name: 'Start' })); // a new one, from his start
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1200);
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(debug()?.finishing).toBe(true), { timeout: 1000 });
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 8000 });
+  await sleep(500);
+  expect(getByText('completed 1')).toBeTruthy(); // (once)
+  expect(
+    loaderEl().getAttribute('aria-hidden') ?? loaderEl().parentElement.getAttribute('aria-hidden'),
+  ).toBe('true');
+};
+
 // Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,
 // is drawn once more on its whole stage at the same moment, where nothing may fall outside the part its canvases cover. A film retuned
 // in Ray Studio to reach further fails here rather than being cut off (the performance review, 2026-11-16)
-const CROP_FILMS: { id: string; state?: RayState; idle?: 'coffee' | 'cash' | 'reading' }[] = [
+const CROP_FILMS: {
+  id: string;
+  state?: RayState;
+  idle?: 'coffee' | 'cash' | 'reading';
+  isOffline?: boolean;
+  isListening?: boolean;
+}[] = [
   { id: 'search', state: 'searching' },
   { id: 'calling', state: 'calling' },
   { id: 'writing', state: 'writing' },
@@ -313,13 +739,21 @@ const CROP_FILMS: { id: string; state?: RayState; idle?: 'coffee' | 'cash' | 're
   { id: 'coffee', idle: 'coffee' },
   { id: 'cash', idle: 'cash' },
   { id: 'readbox', idle: 'reading' },
+  { id: 'droop', isOffline: true },
+  { id: 'mic', isListening: true },
 ];
 export const TestRayFilmsStayInTheirCrop: StoryFn<typeof Ray> = () => (
   <Box display="flex" flexWrap="wrap" gap="spacing.4" padding="spacing.11" paddingTop="200px">
-    {CROP_FILMS.map(({ id, state, idle }) =>
-      state ? (
+    {CROP_FILMS.map(({ id, state, idle, isOffline, isListening }) =>
+      state || isOffline || isListening ? (
         <Box key={id} width="300px" height="160px" display="flex" alignItems="flex-end">
-          <Ray state={state} idle="rest" shouldReactToPointer={false} />
+          <Ray
+            state={state}
+            idle="rest"
+            isOffline={isOffline}
+            isListening={isListening}
+            shouldReactToPointer={false}
+          />
         </Box>
       ) : (
         <Box key={id} width="300px" height="160px" display="flex" alignItems="flex-end">
@@ -369,7 +803,7 @@ TestRayFilmsStayInTheirCrop.play = async () => {
   );
   for (let i = 4; i < CROP_FILMS.length; i++) {
     // eslint-disable-next-line no-await-in-loop
-    await userEvent.click(rayEl(i)); // the idle films' coin flips
+    if (CROP_FILMS[i].idle) await userEvent.click(rayEl(i)); // the idle films' coin flips
   }
   const worst: Record<string, number> = {};
   for (let sample = 0; sample < 10; sample++) {
