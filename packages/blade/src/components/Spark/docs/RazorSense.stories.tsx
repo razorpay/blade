@@ -14,8 +14,12 @@ import {
   RazorSenseThinking,
   RazorSenseBottomWave,
   RazorSenseChatBackground,
+  RazorSenseBackground,
+  RazorSenseSuccess,
 } from '../';
 import { GradientEditor } from './GradientEditor';
+import { makeMicVoice, makeSentenceVoice } from './storyVoice';
+import type { StoryVoice } from './storyVoice';
 import { RazorSenseCardShell } from './RazorSenseCardShell';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -189,6 +193,38 @@ DefaultPaused.args = {
   lightStartFrame: 0,
 };
 
+/**
+ * RazorSense 2.0's big piece for a page's background, `RazorSenseBackground`, as the login page has it: soft fluted bands drifting
+ * and breathing, its colours on a slow loop of their own. It fills its box; the piece is placed as designed and the box cuts off
+ * what falls outside it (only that part is drawn). Light and dark are their own tunings: switch them in the bar. The 2.0 twin of
+ * Default Paused above, a full-page piece.
+ */
+export const DefaultPausedV2: StoryFn<typeof RazorSenseBackground> = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+  const [isPaused, setIsPaused] = useState(false);
+  return (
+    <Box margin="-32px" height="100vh" display="flex" flexDirection="column">
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsPaused((v) => !v)}>
+          {isPaused ? 'Play' : 'Pause'}
+        </Button>
+      </Box>
+      <Box flex="1" position="relative">
+        <RazorSenseBackground isPaused={isPaused} />
+      </Box>
+    </Box>
+  );
+};
+DefaultPausedV2.storyName = 'Default Paused 2.0';
+DefaultPausedV2.parameters = { controls: { disable: true } };
+
 /** the controls the 2.0 stories share: the box the effect fits (the chat input sits centred in it), the effect's scale, and where it sits */
 type EffectControls = { width: number; height: number; scale: number; x: number; y: number };
 const effectArgTypes = (width: { min: number; max: number }) => ({
@@ -237,10 +273,18 @@ const ControlledInput = ({
  * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: wrap the chat input and a soft fluted strip
  * sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
  * The controls size the box it fits, scale it and move it. Hide UI makes the chat input see-through, so only RazorSense shows
- * (it still takes typing while hidden).
+ * (it still takes typing while hidden). Go offline: it fades away under its colours (`isOffline`); back online, it fades back in,
+ * and turned round mid-way, it goes back from where it is.
  */
-export const DefaultPausedV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+export const DefaultPausedChatBackgroundV2: StoryFn<EffectControls> = ({
+  width,
+  height,
+  scale,
+  x,
+  y,
+}) => {
   const [isUiHidden, setIsUiHidden] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
   return (
     <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
       <Box
@@ -252,23 +296,28 @@ export const DefaultPausedV2: StoryFn<EffectControls> = ({ width, height, scale,
         paddingX="spacing.6"
       >
         <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
-          <RazorSenseChatBackground scale={scale}>
+          <RazorSenseChatBackground scale={scale} isOffline={isOffline}>
             <ControlledInput height={height} isUiHidden={isUiHidden} />
           </RazorSenseChatBackground>
         </div>
       </Box>
-      <Box position="absolute" bottom="spacing.5" left="spacing.5">
+      <Box position="absolute" bottom="spacing.5" left="spacing.5" display="flex" gap="spacing.3">
         <Button size="small" variant="secondary" onClick={() => setIsUiHidden((v) => !v)}>
           {isUiHidden ? 'Show UI' : 'Hide UI'}
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
         </Button>
       </Box>
     </Box>
   );
 };
-DefaultPausedV2.args = { width: 840, height: 0, scale: 1, x: 0, y: 0 };
-DefaultPausedV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
-DefaultPausedV2.parameters = { controls: { include: ['width', 'height', 'scale', 'x', 'y'] } };
-DefaultPausedV2.storyName = 'Default Paused 2.0';
+DefaultPausedChatBackgroundV2.args = { width: 840, height: 0, scale: 1, x: 0, y: 0 };
+DefaultPausedChatBackgroundV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
+DefaultPausedChatBackgroundV2.parameters = {
+  controls: { include: ['width', 'height', 'scale', 'x', 'y'] },
+};
+DefaultPausedChatBackgroundV2.storyName = 'Default Paused 2.0 (Chat Background)';
 
 export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   return (
@@ -421,12 +470,42 @@ export const BottomWave = BottomWaveTemplate.bind({});
 
 /**
  * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input and a faint wave settles under it, its path drifting.
- * Type in it to see the typing surge: it pulses with the typing and dies back down after. The controls size the box it settles
- * under, scale it and move it.
+ * Type in it to see the typing surge: it pulses with the typing and dies back down after. "Finish with success" and "Finish with
+ * error" set its `outcome`, as an app does once an answer that ran a task has filled in (the surge has long settled into the wave
+ * by then): its green or red splash plays once and ends at its rest. "Go offline" drops it below the page (`isOffline`). The
+ * buttons only set those props. The controls size the box it settles under, scale it and move it.
  */
 export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
+  const [isOffline, setIsOffline] = useState(false);
+  // (an outcome plays once each time it's set: cleared first, so the same one plays again)
+  const finish = (next: 'success' | 'error') => {
+    setOutcome(undefined);
+    window.setTimeout(() => setOutcome(next), 50);
+  };
   return (
     <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+      <Box
+        position="absolute"
+        top="spacing.0"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        gap="spacing.3"
+        alignItems="center"
+        padding="spacing.4"
+        zIndex={1}
+      >
+        <Button size="small" variant="secondary" onClick={() => finish('success')}>
+          Finish with success
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => finish('error')}>
+          Finish with error
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
+      </Box>
       <Box
         position="absolute"
         bottom="spacing.4"
@@ -439,7 +518,7 @@ export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x,
         paddingX="spacing.4"
       >
         <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
-          <RazorSenseBottomWave scale={scale}>
+          <RazorSenseBottomWave scale={scale} outcome={outcome} isOffline={isOffline}>
             <ControlledInput height={height} />
           </RazorSenseBottomWave>
         </div>
@@ -462,10 +541,13 @@ BottomWaveV2.storyName = 'Bottom Wave 2.0';
 /**
  * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
  * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
- * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on.
+ * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on. "Go
+ * offline" drops the wave below the chat (`isOffline`); back online, it rises back. (An answer's success or error plays on the
+ * wave after it has settled: `outcome`, in Bottom Wave 2.0.)
  */
 export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
   const [isThinking, setIsThinking] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
   return (
     <Box
       margin="-32px"
@@ -499,12 +581,15 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
         >
           Think again
         </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
         <Text size="small" color="surface.text.gray.muted">
-          {isThinking ? 'Thinking' : 'Bottom wave'}
+          {isOffline ? 'Offline' : isThinking ? 'Thinking' : 'Bottom wave'}
         </Text>
       </Box>
       <Box flex="1" minHeight="0px">
-        <RazorSenseChat>
+        <RazorSenseChat isOffline={isOffline}>
           <Box
             display="flex"
             flexDirection="column"
@@ -549,6 +634,148 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
 };
 BottomSurgeV2.storyName = 'Bottom Surge 2.0';
 BottomSurgeV2.parameters = { controls: { disable: true } };
+
+/**
+ * RazorSense 2.0 listening (`isListening`, with the page's own microphone stream as `voiceStream`): on a landing
+ * (`RazorSenseChatBackground`, the voice dashboard: Default Paused 2.0 (Chat Background) listening) its strip morphs into a row of blobs along its line; under a chat's input
+ * (`RazorSenseChat`'s bottom wave, the voice bottom) a row of blobs grows on the wave's top edge, breathing while it's silent. Each
+ * blob is a pitch band of the voice. "Listen" starts it with a made-up sentence (or your microphone, with "Use my mic": the story
+ * opens it, as an app's dictation would; RazorSense only reads it). "Stop" morphs it back.
+ */
+export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [place, setPlace] = useState<'landing' | 'chat'>('landing');
+  const [isMic, setIsMic] = useState(false);
+  const [voice, setVoice] = useState<StoryVoice | null>(null);
+  const [note, setNote] = useState('');
+  const voiceRef = useRef<StoryVoice | null>(null);
+  voiceRef.current = voice;
+  const stop = () => {
+    voiceRef.current?.stop();
+    setVoice(null);
+  };
+  const listen = async (useMic: boolean) => {
+    voiceRef.current?.stop();
+    const next = useMic ? await makeMicVoice() : makeSentenceVoice();
+    setVoice(next);
+    setNote(
+      next
+        ? ''
+        : useMic
+        ? 'The microphone was blocked: allow it in the address bar, then listen again.'
+        : 'This browser has no Web Audio.',
+    );
+  };
+  // (its voice stopped when the story goes)
+  useEffect(() => () => voiceRef.current?.stop(), []);
+  const isListening = Boolean(voice);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={place === 'chat' ? 'surface.background.gray.moderate' : undefined}
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => (isListening ? stop() : void listen(isMic))}
+        >
+          {isListening ? 'Stop' : 'Listen'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => {
+            setIsMic(!isMic);
+            if (isListening) void listen(!isMic);
+          }}
+        >
+          {isMic ? 'Use a made-up sentence' : 'Use my mic'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setPlace((v) => (v === 'landing' ? 'chat' : 'landing'))}
+        >
+          {place === 'landing' ? 'Show bottom' : 'Show default'}
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {note ||
+            (isListening
+              ? `Listening: ${isMic ? 'your microphone' : 'a made-up sentence'}`
+              : 'Not listening')}
+        </Text>
+      </Box>
+      {place === 'landing' ? (
+        <Box
+          flex="1"
+          minHeight="0px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingX="spacing.6"
+          overflow="hidden"
+        >
+          <div style={{ width: '100%', maxWidth: 840 }}>
+            <RazorSenseChatBackground isListening={isListening} voiceStream={voice?.stream}>
+              <ChatInput placeholder="Ask anything..." />
+            </RazorSenseChatBackground>
+          </div>
+        </Box>
+      ) : (
+        <Box flex="1" minHeight="0px">
+          <RazorSenseChat isListening={isListening} voiceStream={voice?.stream}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              height="100%"
+              maxWidth="800px"
+              marginX="auto"
+              paddingX="spacing.6"
+            >
+              <Box
+                flex="1"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.8"
+                paddingY="spacing.9"
+              >
+                <Box alignSelf="flex-end" maxWidth="70%">
+                  <ChatMessage senderType="self">How is my business doing today?</ChatMessage>
+                </Box>
+                <Text color="surface.text.gray.normal" size="large">
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
+                </Text>
+              </Box>
+              <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+                <RazorSenseBottomWave>
+                  <ChatInput placeholder="Ask anything..." />
+                </RazorSenseBottomWave>
+                <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                  Ray is AI and can make mistakes. Please check important information.
+                </Text>
+              </Box>
+            </Box>
+          </RazorSenseChat>
+        </Box>
+      )}
+    </Box>
+  );
+};
+VoiceV2.storyName = 'Voice 2.0';
+VoiceV2.parameters = { controls: { disable: true } };
 
 type CardControls = { width: number; height: number; ctaLabel: string };
 /**
@@ -1119,6 +1346,68 @@ const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = ()
 };
 
 export const RzpGlassSuccessAnimation = RzpGlassSuccessAnimationTemplate.bind({});
+
+/**
+ * RazorSense 2.0's success moment, `RazorSenseSuccess`, as the RazorSense system made it: a glass orb rises into place with a white
+ * tick on it, then shrinks and fades as Blade's success badge pops in where it was, and the tick turns into the badge's check. Its
+ * `label` (the controls: its text, and on or off) comes in under the badge as it pops in. It plays once when it mounts (Replay mounts
+ * it again); `onComplete` when it has played out. Light and dark are their own tunings: switch them in the bar. The 2.0 twin of Rzp
+ * Glass Success Animation above.
+ */
+export const RzpGlassSuccessAnimationV2: StoryFn<{ label: string; hasLabel: boolean }> = ({
+  label,
+  hasLabel,
+}) => {
+  const { colorScheme, setColorScheme } = useTheme();
+  const [run, setRun] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => {
+            setIsComplete(false);
+            setRun((n) => n + 1);
+          }}
+        >
+          Replay
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isComplete ? 'onComplete fired' : 'Playing'}
+        </Text>
+      </Box>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center" overflow="hidden">
+        <RazorSenseSuccess
+          key={run}
+          label={hasLabel ? label : undefined}
+          onComplete={() => setIsComplete(true)}
+        />
+      </Box>
+    </Box>
+  );
+};
+RzpGlassSuccessAnimationV2.storyName = 'Rzp Glass Success Animation 2.0';
+RzpGlassSuccessAnimationV2.args = { label: 'Payment received', hasLabel: true };
+RzpGlassSuccessAnimationV2.argTypes = {
+  label: { control: 'text', description: 'The text under the badge (`label`)' },
+  hasLabel: { control: 'boolean', description: 'With a label, or the badge alone' },
+};
+RzpGlassSuccessAnimationV2.parameters = { controls: { include: ['label', 'hasLabel'] } };
 
 const motionGStyle = {
   originX: '12px',

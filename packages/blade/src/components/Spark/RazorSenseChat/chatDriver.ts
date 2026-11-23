@@ -1,5 +1,6 @@
 import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
 import { TypingStrength, smooth01 } from '../RazorSenseEngine/typingStrength';
+import { cubicBezier } from '../RazorSenseEngine/ease';
 import type { TypingTune } from '../RazorSenseEngine/typingStrength';
 
 /**
@@ -14,6 +15,12 @@ import type { TypingTune } from '../RazorSenseEngine/typingStrength';
  *              then thinks on (mid-surge, the page just turns round; the answer mid-rise turns it back down)
  * Pages sit where flow 9's chat has them (its origins()): thinking on its slot near the top, idle on the chat bar's middle
  * across and the window's bottom.
+ * The PR's states on the strip at rest (flow 10.5):
+ *   outcome    success or error: the strip's clock plays on past its end through the piece spliced there (outcome.ts) and is back at
+ *              its end, the strip at rest, as it ends. It waits for the strip to be at rest (thinking, the surge); cleared mid-way it
+ *              plays back to its start (x 3); a new question mid-way plays it out (x 4), then the strip rises
+ *   offline    the strip (and its typing strip) drops below the chat's bottom edge, 1.2 s on flow 10.5's ease; back online it rises
+ *              back the same way; turned round mid-way, from where it is
  */
 type Tune = TypingTune & {
   /** light's strip: how far it drifts up (flow 9's rtl) */
@@ -65,8 +72,17 @@ const SLOT = [-352, 176.95];
 /** the chat panel's offset in flow 9's window */
 const CLIP = [6, 48];
 
-/** where the chat's parts are, in the chat panel's CSS px: the thinking slot's middle, the chat input's middle across and top */
-type ChatAnchors = { thinking: [number, number]; input: [number, number] };
+/**
+ * where the chat's parts are, in the chat panel's CSS px: the thinking slot's middle, the chat input's middle across and top; and for
+ * the strip's drop (offline) and the voice look's row, the chat input's box (its top, its width) and the edge the strip leaves at
+ * going offline (the panel's bottom, or the window's)
+ */
+type ChatAnchors = {
+  thinking: [number, number];
+  input: [number, number];
+  bar?: { top: number; width: number; height: number };
+  leaveAt?: number;
+};
 
 /** flow 9's own chat, for a panel this big: its chat bar centred across the window 111 px above the bottom, its thinking slot */
 const flow9Anchors = (width: number, height: number): ChatAnchors => {
@@ -99,6 +115,16 @@ const page = (g: string): Page => ({
 });
 
 type ChatSetup = { times: ChatTimes; motion: ChatMotion };
+
+/** an outcome playing on the strip's clock: its start and length (s) there, how far in, and which way at what speed */
+type OutcomePlay = { t0: number; dur: number; u: number; dir: 1 | -1; speed: number };
+
+/** offline: the strip's drop (CSS px down): from, to, since (ms) */
+const DROP_MS = 1200;
+const DROP_EASE = [0.33, 1, 0.68, 1];
+/** a new question mid-outcome plays it out this much faster; cleared mid-way, it plays back this much faster */
+const OUTCOME_RUSH = 4;
+const OUTCOME_BACK = 3;
 
 const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
   const times = doc.ui?.dsChat as ChatTimes | undefined;
@@ -139,6 +165,10 @@ class ChatDriver {
   private ralive = 0;
   private path = 0;
   private readonly strength = new TypingStrength();
+  private oc: OutcomePlay | null = null;
+  /** a new question came mid-outcome: it rises once the outcome is out */
+  private isThinkPending = false;
+  private drop = { y: 0, from: 0, to: 0, at: 0 };
 
   constructor(setup: ChatSetup, isDark: boolean) {
     this.C = setup.times;
@@ -173,6 +203,13 @@ class ChatDriver {
    * down, or settled to the bottom wave), it rises back up first: the surge, backwards.
    */
   public think(): void {
+    if (this.oc) {
+      // mid-outcome: it plays out quickly, then the strip rises
+      this.oc.dir = 1;
+      this.oc.speed = OUTCOME_RUSH;
+      this.isThinkPending = true;
+      return;
+    }
     if (this.state === 'think') {
       // asked again before the answer's surge began (thinking, idle, thinking): it keeps thinking
       this.pend = false;
@@ -209,6 +246,70 @@ class ChatDriver {
       this.pend = true;
       this.pendT = nowMs;
     }
+  }
+
+  /** the strip at rest, nothing playing on it: an outcome or the voice look can start */
+  public isAtRest(): boolean {
+    return this.state === 'idle' && Boolean(this.self) && !this.oc && !this.isThinkPending;
+  }
+
+  /** the strip page's Comp 3 (c3 or b_c3), while there's one at rest */
+  public restComp(): string | null {
+    if (this.state !== 'idle' || !this.self) return null;
+    return this.self === this.P2[0] ? 'c3' : 'b_c3';
+  }
+
+  /** an outcome on the strip, from now: its piece spliced onto the strip's clock from t0 for dur s (call it while isAtRest()) */
+  public playOutcome(t0: number, dur: number): void {
+    this.oc = { t0, dur, u: 0, dir: 1, speed: 1 };
+  }
+
+  /** the outcome cleared: one playing plays back to its start (the strip at rest) */
+  public clearOutcome(): void {
+    if (this.oc && !this.isThinkPending) {
+      this.oc.dir = -1;
+      this.oc.speed = OUTCOME_BACK;
+    }
+  }
+
+  /** reduced motion: the outcome held at this moment of its piece (s), till endOutcome */
+  public holdOutcome(u: number): void {
+    if (!this.oc) return;
+    this.oc.u = Math.min(this.oc.dur, Math.max(0, u));
+    this.oc.speed = 0;
+  }
+
+  /** the outcome gone at once: the strip at rest */
+  public endOutcome(): void {
+    this.oc = null;
+    if (this.isThinkPending) {
+      this.isThinkPending = false;
+      this.think();
+    }
+  }
+
+  /** whether an outcome is on the strip */
+  public get isPlayingOutcome(): boolean {
+    return Boolean(this.oc);
+  }
+
+  /**
+   * Offline: the strip drops by `to` CSS px (0: back up), on flow 10.5's curve from where it is now (nowMs: performance.now()); `at
+   * once` (reduced motion): there now
+   */
+  public setDrop(to: number, nowMs: number, isAtOnce = false): void {
+    const d = this.drop;
+    if (to === d.to && !isAtOnce) return;
+    d.from = isAtOnce ? to : d.y;
+    d.to = to;
+    d.at = nowMs;
+    if (isAtOnce) d.y = to;
+  }
+
+  /** dropped all the way and resting there: nothing of the chat's shows (it can stop drawing) */
+  public isAway(nowMs: number): boolean {
+    const d = this.drop;
+    return d.to > 0 && d.y === d.to && nowMs - d.at >= DROP_MS && this.state === 'idle' && !this.oc;
   }
 
   /** the typing surge's strength on idle (0-1) */
@@ -315,6 +416,8 @@ class ChatDriver {
         m.al = this.alive;
       }
     }
+    this.stepOutcome(dt);
+    this.stepDrop(nowMs);
     this.idle(dt, s, dur);
     const gTo = this.state === 'idle' ? this.strength.grow(this.tune()) : 1;
     this.gw = this.state === 'idle' ? gTo : this.gw + (gTo - this.gw) * (1 - Math.exp(-dt / 0.3));
@@ -361,7 +464,9 @@ class ChatDriver {
       // light's strip: no upward drift; dark's as made
       g.pu = !this.isDark && M.rtl ? +(M.rtl.up ?? 1) : 1;
       g.pt = this.path;
-      g.t = g === this.self ? Math.min(dur, this.t) : this.C.tyDur;
+      // (the strip held at its end, or on through its outcome)
+      g.t =
+        g !== this.self ? this.C.tyDur : this.oc ? this.oc.t0 + this.oc.u : Math.min(dur, this.t);
       g.al = this.ralive;
     }
   }
@@ -384,7 +489,8 @@ class ChatDriver {
         // (the typing strip lies over the idle one; the pages add up, as flow 9 lays its pages)
         blend: g === this.RT ? 'normal' : 'add',
         dx: g.xy ? g.xy[0] : 0,
-        dy: g.xy ? g.xy[1] : 0,
+        // (offline: the strip dropped)
+        dy: (g.xy ? g.xy[1] : 0) + (g.pos === 'bottom' ? this.drop.y : 0),
       });
     }
     const [A, B] = this.P2;
@@ -430,6 +536,31 @@ class ChatDriver {
     this.opTo(this.RT, 0, RISE_XF);
     this.V = 0;
     this.Vto = 0;
+  }
+
+  /** the outcome's clock: on (or back), and done at its end (or start), the strip at rest the same frame */
+  private stepOutcome(dt: number): void {
+    const oc = this.oc;
+    if (!oc) return;
+    if (this.state !== 'idle' || !this.self) {
+      this.oc = null;
+      return;
+    }
+    oc.u += dt * oc.speed * oc.dir;
+    if (oc.dir > 0 ? oc.u < oc.dur : oc.u > 0) return;
+    this.oc = null;
+    if (this.isThinkPending) {
+      this.isThinkPending = false;
+      this.think();
+    }
+  }
+
+  /** the strip's drop, on its curve */
+  private stepDrop(nowMs: number): void {
+    const d = this.drop;
+    if (d.y === d.to) return;
+    const k = Math.min(1, Math.max(0, (nowMs - d.at) / DROP_MS));
+    d.y = k >= 1 ? d.to : d.from + (d.to - d.from) * cubicBezier(DROP_EASE, k);
   }
 
   private tune(): Tune {

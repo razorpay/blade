@@ -90,4 +90,79 @@ describe('ChatDriver', () => {
     run(driver, 5, now);
     expect(driver.state).toBe('think');
   });
+
+  it('plays an outcome on the strip at rest, and is back at rest as it ends', () => {
+    const driver = makeDriver();
+    driver.think();
+    let now = run(driver, 0.5, 0);
+    driver.answer(now);
+    now = run(driver, 15, now);
+    expect(driver.isAtRest()).toBe(true);
+    driver.playOutcome(15.02, 3.71);
+    expect(driver.isPlayingOutcome).toBe(true);
+    expect(driver.isAtRest()).toBe(false);
+    now = run(driver, 2, now);
+    expect(driver.isPlayingOutcome).toBe(true);
+    run(driver, 2, now);
+    expect(driver.isPlayingOutcome).toBe(false);
+    expect(driver.isAtRest()).toBe(true);
+    expect(driver.state).toBe('idle');
+  });
+
+  it('plays an outcome cleared mid-way back to its start, quicker', () => {
+    const driver = makeDriver();
+    driver.think();
+    let now = run(driver, 0.5, 0);
+    driver.answer(now);
+    now = run(driver, 15, now);
+    driver.playOutcome(15.02, 3.71);
+    now = run(driver, 1.5, now);
+    driver.clearOutcome();
+    // (1.5 s in, back at x 3: half a second)
+    now = run(driver, 0.3, now);
+    expect(driver.isPlayingOutcome).toBe(true);
+    run(driver, 0.4, now);
+    expect(driver.isPlayingOutcome).toBe(false);
+    expect(driver.isAtRest()).toBe(true);
+  });
+
+  it('a new question mid-outcome plays it out quickly, then rises', () => {
+    const driver = makeDriver();
+    driver.think();
+    let now = run(driver, 0.5, 0);
+    driver.answer(now);
+    now = run(driver, 15, now);
+    driver.playOutcome(15.02, 3.71);
+    now = run(driver, 1, now);
+    driver.think();
+    // (it plays out first, at x 4: under a second)
+    expect(driver.state).toBe('idle');
+    now = run(driver, 0.8, now);
+    expect(driver.isPlayingOutcome).toBe(false);
+    expect(driver.state).toBe('rise');
+    run(driver, 5, now);
+    expect(driver.state).toBe('think');
+  });
+
+  it('drops the strip offline on its curve, rests there, and comes back up from where it is', () => {
+    const driver = makeDriver();
+    driver.think();
+    let now = run(driver, 0.5, 0);
+    driver.answer(now);
+    now = run(driver, 15, now);
+    driver.setDrop(400, now);
+    now = run(driver, 0.6, now);
+    expect(driver.isAway(now)).toBe(false);
+    now = run(driver, 0.7, now);
+    expect(driver.isAway(now)).toBe(true);
+    // back up, turned round mid-way: it starts from where it is, and is up after its 1.2 s
+    driver.setDrop(0, now);
+    now = run(driver, 0.3, now);
+    driver.setDrop(400, now);
+    now = run(driver, 0.3, now);
+    expect(driver.isAway(now)).toBe(false);
+    driver.setDrop(0, now);
+    run(driver, 1.3, now);
+    expect(driver.isAway(now + 1300)).toBe(false);
+  });
 });

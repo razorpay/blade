@@ -21,6 +21,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
 - It isn't RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. Use RazorSenseBottomWave for the animated wave under a chat input.
+- On its own it takes the same states as `RazorSenseChat` (`isOffline`, `isListening` with `voiceStream`, `outcome`); inside a `RazorSenseChat` they're the chat's (its own are ignored, with a warning in development). `outcome` is set once an answer that ran a task has filled in, after the bottom surge has settled into the wave. On its own its canvas reaches a little above the input; while an outcome plays it reaches the window's sides and top, so the splash is never cut, and gives that back after (its GPU memory at rest is unchanged).
 
 ## TypeScript Types
 
@@ -52,8 +53,9 @@ type RazorSenseBottomWaveProps = {
    * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
-   * the page reloads. Before that, a device that can't keep up (under 45 a second) steps down page-wide: every other frame, then
-   * a lower sharpness too.
+   * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
+   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
+   * it steps back up.
    */
   onError?: (error: Error) => void;
   /**
@@ -64,6 +66,29 @@ type RazorSenseBottomWaveProps = {
    * Inline styles for its root element (web), merged over its own.
    */
   style?: React.CSSProperties;
+  /**
+   * While true, RazorSense goes away (the app is offline): on a landing it fades away under its colours, under a chat input it
+   * drops below the page's edge. Back to false, it comes back the same way.
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While true, RazorSense listens: it morphs into its voice look, a row of blobs moving with `voiceStream`'s voice (each a pitch
+   * band of it), breathing while it's silent. Back to false, it morphs back.
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The page's own microphone stream while it listens (the one it already has for its dictation). RazorSense only reads its levels,
+   * once a frame, and never opens the microphone itself. Without it, the voice look shows as it does in silence.
+   */
+  voiceStream?: MediaStream;
+  /**
+   * How the task the answer did ended: set it as the answer shows it (the ✓, or the failing step) and the bottom strip plays its
+   * success (green) or error (red) wave once, ending back at its rest. Set while it's still thinking, it waits for the answer to
+   * settle. Cleared mid-way, it plays back; the next question plays it out quickly before the thinking comes back up.
+   */
+  outcome?: 'success' | 'error';
 } & TestID;
 ```
 
@@ -103,4 +128,20 @@ const ChatFooter = ({ onAsk }) => {
 };
 
 export default ChatFooter;
+```
+
+### Listening on its own
+
+```jsx
+import React from 'react';
+import { ChatInput, RazorSenseBottomWave } from '@razorpay/blade/components';
+
+// `micStream` is the MediaStream the page's dictation already opened
+const Composer = ({ isDictating, micStream }) => (
+  <RazorSenseBottomWave isListening={isDictating} voiceStream={micStream}>
+    <ChatInput placeholder="Ask anything..." />
+  </RazorSenseBottomWave>
+);
+
+export default Composer;
 ```

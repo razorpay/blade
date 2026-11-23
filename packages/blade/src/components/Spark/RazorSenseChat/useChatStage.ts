@@ -2,16 +2,18 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
+import type { ChatStateInputs, ChatStates } from './chatStates';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
 import type { FreshStage } from '../RazorSenseEngine';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
 import { useTheme } from '~components/BladeProvider';
 
 /**
- * Room round the chat comp (CSS px at scale 1, each side: half the comp again). It was made for flow 9's 1512 x 982 window: on a
- * taller or wider one, or scaled down, its edges came inside the panel and cut the thinking's bands and the bottom wave in a line.
+ * Room round the chat comp (CSS px at scale 1, each side: half the comp again down, a quarter across). It was made for flow 9's
+ * 1512 x 982 window: on a taller or wider one, or scaled down, its edges came inside the panel and cut the thinking's bands and the
+ * bottom wave in a line. Across, an outcome's splash reaches the window's sides (the room changes the rest by under 3 levels in 255).
  */
-const ROOM = { x: 0, y: 491 };
+const ROOM = { x: 378, y: 491 };
 
 type ChatStageOptions = {
   /** for its errors */
@@ -29,7 +31,11 @@ type ChatStageOptions = {
   isPaused: boolean;
   onLoad?: () => void;
   onError?: (error: Error) => void;
-};
+  /** told when an outcome starts and stops playing on the strip (the lone bottom wave reaches up to its splash only meanwhile) */
+  onOutcome?: (isPlaying: boolean) => void;
+  /** changed when the component moves its stage itself (its reach): where its parts are is read again at once */
+  layoutKey?: unknown;
+} & Partial<ChatStateInputs>;
 
 /**
  * The chat's RazorSense on one canvas (flow 9's chat comp and its ChatDriver), for RazorSenseChat and for RazorSenseThinking and
@@ -45,10 +51,16 @@ const useChatStage = ({
   stageRef,
   isThinking,
   getAnchors,
+  onOutcome,
+  layoutKey,
   scale,
   isPaused,
   onLoad,
   onError,
+  isOffline = false,
+  isListening = false,
+  voiceStream,
+  outcome,
 }: ChatStageOptions): { keystroke: () => void; isStill: boolean } => {
   const { colorScheme } = useTheme();
   const mode = colorScheme === 'dark' ? 'dark' : 'light';
@@ -58,6 +70,13 @@ const useChatStage = ({
   onErrorRef.current = onError;
   const anchorsRef = useRef(getAnchors);
   anchorsRef.current = getAnchors;
+  const onOutcomeRef = useRef(onOutcome);
+  onOutcomeRef.current = onOutcome;
+  // (the stage moved by its own component: its parts are read again on the next frame)
+  const isRelaidRef = useRef(false);
+  useEffect(() => {
+    isRelaidRef.current = true;
+  }, [layoutKey]);
   // read when the engine is up (it loads asynchronously, so a change before then still counts)
   const isThinkingRef = useRef(isThinking);
   isThinkingRef.current = isThinking;
@@ -65,6 +84,14 @@ const useChatStage = ({
   isPausedRef.current = isPaused;
   const freshStageRef = useRef<FreshStage | null>(null);
   const driverRef = useRef<ChatDriver | null>(null);
+  // the PR's states on the strip (offline, the voice look, an outcome): read every frame
+  const inputsRef = useRef<ChatStateInputs>({ isOffline, isListening, voiceStream, outcome });
+  inputsRef.current = { isOffline, isListening, voiceStream, outcome };
+  const statesRef = useRef<ChatStates | null>(null);
+  // offline, dropped all the way: it stops drawing till it's back online
+  const isAwayRef = useRef(false);
+  // reduced motion: draws where it is now, settled (a state changing)
+  const redrawRef = useRef<(() => void) | null>(null);
   // reduced motion: moves to thinking or the bottom wave and draws its settled still frame (set once the engine is up)
   const stillRef = useRef<((nextIsThinking: boolean) => void) | null>(null);
   // reduced motion: stops its frame following the layout
@@ -81,7 +108,12 @@ const useChatStage = ({
       moduleName,
       getBox: () => stageRef.current,
       stageRef: freshStageRef,
-      loadComps: () => import('./comps'),
+      // (its comps and its states' code, a chunk of their own with them: not in the page's always-loaded code)
+      loadComps: () =>
+        Promise.all([import('./comps'), import('./chatStates')]).then(([c, st]) => ({
+          ...c,
+          ChatStates: st.ChatStates,
+        })),
       // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
       engineAlpha: true,
       start: (stage, comps) => {
@@ -89,14 +121,17 @@ const useChatStage = ({
         const setup = getChatSetup(doc);
         // flow 9's chat comp is drawn at its own size (2x comp px = CSS px) x scale, from the stage's top-left; the pages are
         // placed in it
-        const engine = stage.mount({
-          doc,
-          opts: { fit: 'fixed', scale: 0.5 * scale, alpha: true, paused: true },
-        });
+        const opts = { fit: 'fixed' as const, scale: 0.5 * scale, alpha: true, paused: true };
+        const engine = stage.mount({ doc, opts });
         if (!engine || !setup) return false;
         onLoadRef.current?.();
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
+        const states = new comps.ChatStates(engine, doc, opts, mode, scale, () =>
+          redrawRef.current?.(),
+        );
+        states.inputs = inputsRef.current;
+        statesRef.current = states;
         driver.setAnchors(anchorsRef.current(), scale, ROOM);
         const now = performance.now();
         driver.think();
@@ -113,11 +148,16 @@ const useChatStage = ({
           // thinking fades in, the answer surges down); when that changes, the new one, settled. The steps run on a clock of
           // their own that only goes forward. It's drawn where the parts are now, and drawn again when they move.
           let clock = now;
-          const draw = (): void =>
+          const draw = (): void => {
+            // (offline dropped, the voice look up, an outcome's moment: settled, then drawn)
+            states.inputs = inputsRef.current;
+            states.settle(driver, anchorsRef.current());
             stage.settle(() => {
               driver.setAnchors(anchorsRef.current(), scale, ROOM);
               driver.step(engine.player, 0, clock);
             });
+          };
+          redrawRef.current = draw;
           stillRef.current = (nextIsThinking) => {
             clock = Math.max(clock, performance.now());
             driver.setAnchors(anchorsRef.current(), scale, ROOM);
@@ -159,15 +199,29 @@ const useChatStage = ({
                 },
               })
             : null;
+        let isOutcomePlaying = false;
         stage.setDriver((eng, dt) => {
           framesSinceRead += 1;
-          if (isMoved || framesSinceRead >= ANCHOR_REREAD) {
+          if (isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD) {
             anchors = anchorsRef.current();
             isMoved = false;
+            isRelaidRef.current = false;
             framesSinceRead = 0;
           }
+          const frameAt = performance.now();
+          states.inputs = inputsRef.current;
+          states.frame(dt, frameAt, driver, anchors);
           driver.setAnchors(anchors, scale, ROOM); // (the chat moves, it follows, as flow 9)
-          driver.step(eng.player, dt, performance.now());
+          driver.step(eng.player, dt, frameAt);
+          if (driver.isPlayingOutcome !== isOutcomePlaying) {
+            isOutcomePlaying = driver.isPlayingOutcome;
+            onOutcomeRef.current?.(isOutcomePlaying);
+          }
+          // offline, dropped all the way: nothing of it shows, so it stops drawing till it's back online
+          if (driver.isAway(frameAt) && !isAwayRef.current) {
+            isAwayRef.current = true;
+            stage.setPaused(true);
+          }
         });
         stage.setPaused(isPausedRef.current);
         return true;
@@ -179,6 +233,10 @@ const useChatStage = ({
       },
       onRelease: () => {
         driverRef.current = null;
+        statesRef.current?.destroy();
+        statesRef.current = null;
+        redrawRef.current = null;
+        isAwayRef.current = false;
         stillRef.current = null;
         stopFollowRef.current?.();
         stopFollowRef.current = null;
@@ -190,10 +248,21 @@ const useChatStage = ({
   }, [isEnabled, mode, scale]);
 
   useEffect(() => {
-    freshStageRef.current?.setPaused(isPaused);
+    freshStageRef.current?.setPaused(isPaused || isAwayRef.current);
   }, [isPaused]);
 
+  // a state changed: read by the next frame; with reduced motion, drawn now; back online, drawing again
   useEffect(() => {
+    if (!isOffline && isAwayRef.current) {
+      isAwayRef.current = false;
+      freshStageRef.current?.setPaused(isPausedRef.current);
+    }
+    redrawRef.current?.();
+  }, [isOffline, isListening, voiceStream, outcome]);
+
+  useEffect(() => {
+    // (an outcome comes with the answer: its chunk fetched while the page is idle, so it's ready)
+    if (isThinking) statesRef.current?.prefetchOutcome();
     if (stillRef.current) {
       stillRef.current(isThinking);
       return;

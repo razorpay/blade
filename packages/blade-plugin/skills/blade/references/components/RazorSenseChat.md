@@ -21,6 +21,8 @@ RazorSenseChat is RazorSense through an assistant chat: thinking loops on the `R
 - `scale` is held between 0.75 and 1.25.
 - It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
+- Its states, with the same names as Ray's so a page passes one set to both: `isOffline` (the bottom strip drops below the chat's bottom edge, 1.2 s, and rises back), `isListening` with `voiceStream` (the voice bottom: a row of blobs on the strip's top edge, each a pitch band of the page's voice; it never opens the microphone itself, the page hands it its own stream) and `outcome` (`'success'` or `'error'`: the strip plays its green or red wave once and ends at its rest). One at a time: offline wins (listening goes at once), and listening and an outcome wait for the answer to settle. Each has its own way in and out and turns back mid-way. Each state's chunk loads when it's first wanted (listening's the first time it listens; an outcome's while the page is idle once the chat starts thinking), and every state draws on the chat's one canvas.
+- With reduced motion each state is a still frame: offline gone, listening its voice look (silent), an outcome its colour for the wave's length. Where it can't animate, listening and an outcome show stills of their own in the bottom wave's place.
 
 ## TypeScript Types
 
@@ -65,8 +67,9 @@ type RazorSenseChatProps = {
    * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
-   * the page reloads. Before that, a device that can't keep up (under 45 a second) steps down page-wide: every other frame, then
-   * a lower sharpness too.
+   * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
+   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
+   * it steps back up.
    */
   onError?: (error: Error) => void;
   /**
@@ -77,6 +80,29 @@ type RazorSenseChatProps = {
    * Inline styles for its root element (web), merged over its own.
    */
   style?: React.CSSProperties;
+  /**
+   * While true, RazorSense goes away (the app is offline): on a landing it fades away under its colours, under a chat input it
+   * drops below the page's edge. Back to false, it comes back the same way.
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While true, RazorSense listens: it morphs into its voice look, a row of blobs moving with `voiceStream`'s voice (each a pitch
+   * band of it), breathing while it's silent. Back to false, it morphs back.
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The page's own microphone stream while it listens (the one it already has for its dictation). RazorSense only reads its levels,
+   * once a frame, and never opens the microphone itself. Without it, the voice look shows as it does in silence.
+   */
+  voiceStream?: MediaStream;
+  /**
+   * How the task the answer did ended: set it as the answer shows it (the ✓, or the failing step) and the bottom strip plays its
+   * success (green) or error (red) wave once, ending back at its rest. Set while it's still thinking, it waits for the answer to
+   * settle. Cleared mid-way, it plays back; the next question plays it out quickly before the thinking comes back up.
+   */
+  outcome?: 'success' | 'error';
 } & TestID;
 ```
 
@@ -143,4 +169,28 @@ const AssistantChat = ({ messages, isWaitingForAnswer, onAsk }) => {
 };
 
 export default AssistantChat;
+```
+
+### Listening, an outcome, offline
+
+```jsx
+import React from 'react';
+import { ChatInput, RazorSenseBottomWave, RazorSenseChat, RazorSenseThinking } from '@razorpay/blade/components';
+
+// `micStream` is the MediaStream the page's dictation already opened; `result` is how the task ended
+const Chat = ({ isWaitingForAnswer, isDictating, micStream, result, isOnline }) => (
+  <RazorSenseChat
+    isListening={isDictating}
+    voiceStream={micStream}
+    outcome={result}
+    isOffline={!isOnline}
+  >
+    {isWaitingForAnswer ? <RazorSenseThinking>Submitting your evidence…</RazorSenseThinking> : null}
+    <RazorSenseBottomWave>
+      <ChatInput placeholder="Ask anything..." />
+    </RazorSenseBottomWave>
+  </RazorSenseChat>
+);
+
+export default Chat;
 ```

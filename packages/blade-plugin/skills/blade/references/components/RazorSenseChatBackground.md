@@ -20,6 +20,7 @@ RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap th
 - The effect is decorative: hidden from screen readers. The chat input inside stays as it is.
 - It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
+- Its states, with the same names as Ray's: `isOffline` (it fades away under its colours, 1 s, and back) and `isListening` with `voiceStream` (the voice dashboard: its strip morphs into a row of blobs along its line, each a pitch band of the page's voice; it never opens the microphone itself, the page hands it its own stream). Offline wins: listening goes at once. Each turns back mid-way. The voice dashboard's chunk loads the first time it listens, and draws on its one canvas. With reduced motion each is a still frame; where it can't animate, listening shows a still of its own.
 
 ## TypeScript Types
 
@@ -54,8 +55,9 @@ type RazorSenseChatBackgroundProps = {
    * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
    * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
-   * the page reloads. Before that, a device that can't keep up (under 45 a second) steps down page-wide: every other frame, then
-   * a lower sharpness too.
+   * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
+   * page-wide while it can't keep up (under 45 a second): every other frame, then a lower sharpness too; once frames hold again,
+   * it steps back up.
    */
   onError?: (error: Error) => void;
   /**
@@ -66,6 +68,23 @@ type RazorSenseChatBackgroundProps = {
    * Inline styles for its root element (web), merged over its own.
    */
   style?: React.CSSProperties;
+  /**
+   * While true, RazorSense goes away (the app is offline): on a landing it fades away under its colours, under a chat input it
+   * drops below the page's edge. Back to false, it comes back the same way.
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While true, RazorSense listens: it morphs into its voice look, a row of blobs moving with `voiceStream`'s voice (each a pitch
+   * band of it), breathing while it's silent. Back to false, it morphs back.
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The page's own microphone stream while it listens (the one it already has for its dictation). RazorSense only reads its levels,
+   * once a frame, and never opens the microphone itself. Without it, the voice look shows as it does in silence.
+   */
+  voiceStream?: MediaStream;
 } & TestID;
 ```
 
@@ -113,6 +132,22 @@ const Landing = ({ onAsk }) => {
     </Box>
   );
 };
+
+export default Landing;
+```
+
+### Listening, and offline
+
+```jsx
+import React from 'react';
+import { ChatInput, RazorSenseChatBackground } from '@razorpay/blade/components';
+
+// `micStream` is the MediaStream the page's dictation already opened
+const Landing = ({ isDictating, micStream, isOnline }) => (
+  <RazorSenseChatBackground isListening={isDictating} voiceStream={micStream} isOffline={!isOnline}>
+    <ChatInput placeholder="Ask anything..." />
+  </RazorSenseChatBackground>
+);
 
 export default Landing;
 ```
