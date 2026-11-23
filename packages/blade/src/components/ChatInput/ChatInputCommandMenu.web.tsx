@@ -2,10 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import type { ChatInputCommand } from './types';
 import { chatInputCommandMenuWidth } from './chatInputTokens';
+import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
-import { makeSize, makeSpace } from '~utils';
+import { getPopupBoxShadowString, makeSize, makeSpace } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
+
+// the same surface as Blade's Menu and Dropdown overlays: a popup shadow that also draws a faint
+// edge all round, so the top of the list doesn't melt into a white page, plus the backdrop blur
+const StyledCommandList = styled(BaseBox)<{ $colorScheme: ColorSchemeNames }>(
+  ({ theme, $colorScheme }) => ({
+    backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
+    boxShadow: getPopupBoxShadowString(theme, $colorScheme),
+  }),
+);
 
 const StyledCommandOption = styled.div<{ $isActive: boolean }>(({ theme, $isActive }) => ({
   display: 'flex',
@@ -42,6 +53,7 @@ const ChatInputCommandMenu = ({
   onActiveIndexChange,
 }: ChatInputCommandMenuProps): React.ReactElement => {
   const listRef = React.useRef<HTMLDivElement>(null);
+  const { colorScheme } = useTheme();
 
   // keep the highlighted command in view while arrow keys move through a long list
   React.useEffect(() => {
@@ -52,8 +64,9 @@ const ChatInputCommandMenu = ({
   }, [activeIndex, getOptionId]);
 
   return (
-    <BaseBox
+    <StyledCommandList
       ref={listRef}
+      $colorScheme={colorScheme}
       id={listboxId}
       position="absolute"
       bottom="100%"
@@ -67,7 +80,6 @@ const ChatInputCommandMenu = ({
       padding="spacing.2"
       backgroundColor="popup.background.gray.moderate"
       borderRadius="medium"
-      elevation="midRaised"
       {...makeAccessible({ role: 'listbox', label: 'Commands' })}
     >
       {commands.map((command, index) => (
@@ -92,7 +104,7 @@ const ChatInputCommandMenu = ({
           ) : null}
         </StyledCommandOption>
       ))}
-    </BaseBox>
+    </StyledCommandList>
   );
 };
 

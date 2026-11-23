@@ -2,7 +2,7 @@
 
 ## Description
 
-`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, a loader, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page, or not at all (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. `onVoiceInput` adds a mic before Send, and `helpText` adds a muted line under the box. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
+`ChatInput` is the message box for AI chat interfaces. It combines a growing textarea, a "+" button for files (or a `MenuOverlay` of actions via `actionMenu`), attachment previews, context chips above the text (`header`), slash commands (`commands`), ghost suggestion autocomplete (cycling suggestions accepted with Tab) and a Send button that appears once there is something to send. `status` decides what that button shows: Send, Stop or Retry. It comes in two sizes: `medium`, with the text above a toolbar, and a compact `small` that starts as one row and opens into the full layout once the text wraps. File limits (`accept`, `maxCount`, `maxSize`, `onFileError`) apply to picked, pasted and dropped files, and files can be dropped on the input or anywhere on the page, or not at all (`dropTarget`). `showAmbientBorder` adds a slow, decorative blue border. `onVoiceInput` adds a mic before Send, and `helpText` adds a muted line under the box. It supports controlled and uncontrolled text, a validation error popup, and `clearOnSubmit`, which clears the box once the promise returned by `onSubmit` resolves.
 
 ## Important Constraints
 
@@ -164,7 +164,8 @@ type ChatInputProps = {
   /**
    * State of the current request, which decides what the submit button shows:
    * - `ready`: Send, once there is text or a file to send
-   * - `submitted`: a loader, while the request is on its way
+   * - `submitted`: Stop, while the request is on its way (calls `onStop`), so it can be cancelled
+   *   before the reply starts, as in chat apps and the AI SDK examples
    * - `streaming`: Stop, while the reply streams (calls `onStop`)
    * - `error`: Retry, after the request failed. It calls `onSubmit` with the last message sent,
    *   even if the box has been cleared or edited since; before any send, with what is in the box.
@@ -287,7 +288,7 @@ type ChatInputProps = {
   isGenerating?: boolean;
 
   /**
-   * Callback fired when the user clicks the stop button (visible when `status="streaming"`).
+   * Callback fired when the user clicks the stop button (visible when `status` is `submitted` or `streaming`).
    * Use this to cancel an in-flight AI generation. Without it the Stop button is disabled, and
    * Blade warns in development.
    */
@@ -426,7 +427,7 @@ type ChatInputProps = {
 - Use `ChatInput` for AI chat interfaces and conversational UIs.
 - Pass `onVoiceInput` only when your product can take voice input; the mic shows only then.
 - Use `helpText` for a short, steady note such as an AI disclaimer, not for errors (use `validationState` and `errorText`).
-- Use `status` (`ready`, `submitted`, `streaming`, `error`) to follow the request: Send, a loader, Stop or Retry. `isGenerating` is deprecated: use `status="streaming"`, and pass `onStop` so Stop works.
+- Use `status` (`ready`, `submitted`, `streaming`, `error`) to follow the request: Send, Stop or Retry. `isGenerating` is deprecated: use `status="streaming"`, and pass `onStop` so Stop works.
 - Set `clearOnSubmit` and return a promise from `onSubmit` to let ChatInput clear the box when the send succeeds and keep it when it fails. With a controlled `value` or `fileList`, clear them yourself.
 - Use `size="small"` where height is tight, such as a chat panel on a phone. Keep its placeholder to about 25 characters.
 - Use `header` for removable context `Tag`s, such as the payment or report the message is about.

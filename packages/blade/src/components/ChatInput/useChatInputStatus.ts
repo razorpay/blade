@@ -14,7 +14,7 @@ const useChatInputStatus = ({
   onSubmit,
 }: Pick<ChatInputProps, 'status' | 'isGenerating' | 'onStop' | 'onSubmit'>): ChatInputStatus => {
   const resolvedStatus: ChatInputStatus = status ?? (isGenerating ? 'streaming' : 'ready');
-  const isStopInert = resolvedStatus === 'streaming' && !onStop;
+  const isStopInert = (resolvedStatus === 'streaming' || resolvedStatus === 'submitted') && !onStop;
 
   React.useEffect(() => {
     if (isStopInert) {

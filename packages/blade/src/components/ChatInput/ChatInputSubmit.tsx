@@ -44,7 +44,9 @@ const ChatInputSubmit = ({
   canRetry,
   onStop,
 }: ChatInputSubmitProps): React.ReactElement => {
-  if (status === 'streaming') {
+  // Stop from the moment the message is sent, as chat apps and the AI SDK examples do, so a
+  // request that hasn't started streaming yet can be cancelled too
+  if (status === 'streaming' || status === 'submitted') {
     return (
       // a quiet ghost button, like the "+", so a long reply doesn't keep a black button in view
       <ChatInputButton
@@ -54,19 +56,6 @@ const ChatInputSubmit = ({
         // without onStop there is nothing to stop, so don't offer a button that does nothing
         isDisabled={isDisabled || !onStop}
         onClick={() => onStop?.()}
-      />
-    );
-  }
-
-  if (status === 'submitted') {
-    return (
-      <BaseButton
-        variant="primary"
-        color="neutral"
-        size={size}
-        icon={ArrowUpIcon}
-        accessibilityProps={{ label: 'Sending' }}
-        isLoading
       />
     );
   }

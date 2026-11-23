@@ -119,7 +119,8 @@ type ChatInputProps = {
   /**
    * State of the current request, which decides what the submit button shows:
    * - `ready`: Send, once there is text or a file to send
-   * - `submitted`: a loader, while the request is on its way
+   * - `submitted`: Stop, while the request is on its way (calls `onStop`), so it can be cancelled
+   *   before the reply starts, as in chat apps and the AI SDK examples
    * - `streaming`: Stop, while the reply streams (calls `onStop`)
    * - `error`: Retry, after the request failed. It calls `onSubmit` with the last message sent,
    *   even if the box has been cleared or edited since; before any send, with what is in the box.
@@ -242,7 +243,7 @@ type ChatInputProps = {
   isGenerating?: boolean;
 
   /**
-   * Callback fired when the user clicks the stop button (visible when `status="streaming"`).
+   * Callback fired when the user clicks the stop button (visible when `status` is `submitted` or `streaming`).
    * Use this to cancel an in-flight AI generation. Without it the Stop button is disabled, and
    * Blade warns in development.
    */

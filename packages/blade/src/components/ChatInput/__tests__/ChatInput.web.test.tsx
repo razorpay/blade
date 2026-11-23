@@ -197,11 +197,15 @@ describe('<ChatInput />', () => {
       expect(queryByRole('button', { name: 'Submit' })).toBeInTheDocument();
     });
 
-    it('shows a disabled loader while submitted', () => {
-      const { getByRole } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} status="submitted" />,
+    it('shows Stop while submitted, so the request can be cancelled before it streams', async () => {
+      const user = userEvent.setup();
+      const onStop = jest.fn();
+      const { getByRole, queryByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} status="submitted" onStop={onStop} />,
       );
-      expect(getByRole('button', { name: 'Sending' })).toBeDisabled();
+      expect(queryByRole('button', { name: 'Sending' })).not.toBeInTheDocument();
+      await user.click(getByRole('button', { name: 'Stop generation' }));
+      expect(onStop).toHaveBeenCalledTimes(1);
     });
 
     it('disables Retry and warns in development when there is no onSubmit', () => {
