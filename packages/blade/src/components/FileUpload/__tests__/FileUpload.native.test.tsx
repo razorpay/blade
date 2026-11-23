@@ -658,6 +658,27 @@ describe('<FileUploadItem /> (native)', () => {
       expect(getByLabelText('Remove statement.csv')).toBeTruthy();
     });
 
+    it('should let a long name shrink so retry and × stay reachable', () => {
+      const longNameFile = {
+        ...compactErrorFile,
+        name: 'settlement-report-october-2026-final-reconciled.xlsx',
+      } as BladeFile;
+      const { getByTestId, getByLabelText } = renderWithTheme(
+        <FileUploadItem
+          _isCompact
+          file={longNameFile}
+          onReupload={jest.fn()}
+          onRemove={jest.fn()}
+        />,
+      );
+
+      // React Native doesn't shrink flex items unless told to
+      const trigger = getByTestId('tooltip-interactive-wrapper');
+      expect(trigger).toHaveStyle({ flexShrink: 1, minWidth: 0 });
+      expect(getByLabelText(`Reupload ${longNameFile.name}`)).toBeTruthy();
+      expect(getByLabelText(`Remove ${longNameFile.name}`)).toBeTruthy();
+    });
+
     it('should show why the upload failed when the chip is tapped', () => {
       const { getByTestId, queryByText, getByText } = renderWithTheme(
         <FileUploadItem _isCompact file={compactErrorFile} onRemove={jest.fn()} />,

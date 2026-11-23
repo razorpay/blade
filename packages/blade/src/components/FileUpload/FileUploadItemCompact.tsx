@@ -40,7 +40,15 @@ const FileUploadItemCompact = ({
   const isError = status === 'error';
 
   const fileLabel = (
-    <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3" minWidth="0px">
+    <BaseBox
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      gap="spacing.3"
+      minWidth="0px"
+      // React Native doesn't shrink flex items by default; the name must give way before the actions
+      flexShrink={1}
+    >
       <FileUploadItemIcon uploadStatus={status} isCompact />
       <BaseBox
         flexShrink={1}
@@ -83,6 +91,7 @@ const FileUploadItemCompact = ({
         paddingLeft="spacing.2"
         paddingRight="spacing.3"
         minWidth="0px"
+        flexShrink={1}
       >
         {isError && errorText ? (
           <Tooltip content={errorText} placement="top">

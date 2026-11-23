@@ -16,7 +16,13 @@ type FileUploadItemCompactTriggerProps = PressableProps & {
  */
 const FileUploadItemCompactTrigger = React.forwardRef<View, FileUploadItemCompactTriggerProps>(
   ({ children, accessibilityLabel, ...tooltipProps }, ref) => (
-    <TooltipInteractiveWrapper ref={ref} {...tooltipProps} accessibilityLabel={accessibilityLabel}>
+    <TooltipInteractiveWrapper
+      ref={ref}
+      {...tooltipProps}
+      accessibilityLabel={accessibilityLabel}
+      // let a long name shrink so retry and × stay inside the chip
+      style={{ flexShrink: 1, minWidth: 0 }}
+    >
       {children}
     </TooltipInteractiveWrapper>
   ),

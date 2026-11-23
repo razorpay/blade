@@ -3216,6 +3216,9 @@ exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3234,6 +3237,9 @@ exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

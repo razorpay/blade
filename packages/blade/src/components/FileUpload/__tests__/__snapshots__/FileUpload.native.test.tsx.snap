@@ -3351,6 +3351,7 @@ exports[`<FileUploadItem /> (native) compact chip should render a compact chip 1
                 "data-blade-component": "base-box",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": "spacing.3",
                 "minWidth": "0px",
                 "style": [
@@ -3358,6 +3359,7 @@ exports[`<FileUploadItem /> (native) compact chip should render a compact chip 1
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 8,
                     "minWidth": 0,
                   },
@@ -3452,6 +3454,7 @@ exports[`<FileUploadItem /> (native) compact chip should render a compact chip 1
             "data-blade-component": "base-box",
             "display": "flex",
             "flexDirection": "row",
+            "flexShrink": 1,
             "gap": "spacing.3",
             "minWidth": "0px",
             "style": [
@@ -3459,6 +3462,7 @@ exports[`<FileUploadItem /> (native) compact chip should render a compact chip 1
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 8,
                 "minWidth": 0,
                 "paddingLeft": 4,
