@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RazorSenseThinking /> should render RazorSenseThinking on server 1`] = `"<div id="root"><div data-blade-component="razorsense-thinking" style="position:relative;isolation:isolate;contain:layout"><div aria-hidden="true" style="position:absolute;z-index:-1;left:-196px;top:-112px;width:910px;height:460px;overflow:hidden;pointer-events:none"></div><span role="status" aria-live="polite" aria-atomic="false" style="display:inline-block"><span class="RazorSenseThinking__ThinkingLabel-sc-11myn0o-0 iuIcbi">Searching your settlements…</span></span></div></div>"`;
