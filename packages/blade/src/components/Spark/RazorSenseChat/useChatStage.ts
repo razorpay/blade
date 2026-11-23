@@ -2,8 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
-import { ChatStates } from './chatStates';
-import type { ChatStateInputs } from './chatStates';
+import type { ChatStateInputs, ChatStates } from './chatStates';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
 import type { FreshStage } from '../RazorSenseEngine';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
@@ -96,7 +95,12 @@ const useChatStage = ({
       moduleName,
       getBox: () => stageRef.current,
       stageRef: freshStageRef,
-      loadComps: () => import('./comps'),
+      // (its comps and its states' code, a chunk of their own with them: not in the page's always-loaded code)
+      loadComps: () =>
+        Promise.all([import('./comps'), import('./chatStates')]).then(([c, st]) => ({
+          ...c,
+          ChatStates: st.ChatStates,
+        })),
       // (its comps ask for a clear canvas: its engine is made ahead, a step at a time)
       engineAlpha: true,
       start: (stage, comps) => {
@@ -110,7 +114,9 @@ const useChatStage = ({
         onLoadRef.current?.();
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
-        const states = new ChatStates(engine, doc, opts, mode, scale, () => redrawRef.current?.());
+        const states = new comps.ChatStates(engine, doc, opts, mode, scale, () =>
+          redrawRef.current?.(),
+        );
         states.inputs = inputsRef.current;
         statesRef.current = states;
         driver.setAnchors(anchorsRef.current(), scale, ROOM);

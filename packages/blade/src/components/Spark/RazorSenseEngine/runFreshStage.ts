@@ -1,5 +1,12 @@
 import type React from 'react';
-import { FreshStage, freshFailures, measureScreen, whyCantAnimate } from './FreshStage';
+import {
+  FreshStage,
+  freshFailures,
+  measureScreen,
+  readGpuNames,
+  setStartLevel,
+  whyCantAnimate,
+} from './FreshStage';
 import { loadFreshEngine } from './loadFreshEngine';
 import { waitForTurn } from './startQueue';
 
@@ -30,6 +37,17 @@ type FreshStageRun<Comps> = {
    * first time on Direct3D): the component shows its still meanwhile, so it's never a blank box; false once it draws
    */
   onWaiting?: (isWaiting: boolean) => void;
+};
+
+/** the page's starting step from its GPU's class (deviceLevel.ts: once a page, with the first engine; never in the always-loaded code) */
+let startLevelLoad: Promise<void> | null = null;
+const loadStartLevel = (): Promise<void> => {
+  if (!startLevelLoad) {
+    startLevelLoad = import('./deviceLevel')
+      .then((m) => setStartLevel(m.deviceStartLevel(readGpuNames())))
+      .catch(() => undefined);
+  }
+  return startLevelLoad;
 };
 
 /** how long an effect on screen may show nothing before its still stands in, till its first frame (ms) */
@@ -141,7 +159,7 @@ const runFreshStage = <Comps>({
     };
     waitTimer = window.setTimeout(standIn, STILL_AFTER_MS);
   }
-  void Promise.all([loadFreshEngine(), loadComps()])
+  void Promise.all([loadFreshEngine(), loadComps(), loadStartLevel()])
     .then(([createFreshEngine, comps]) => {
       const box = getBox();
       if (!isLive || !box || shouldStart?.() === false) {

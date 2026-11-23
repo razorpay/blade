@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-var-requires */
-// Quality to the device, both ways (the PR review): a page starts at its device's level (today's RazorSense's GPU class), and its
+// Quality to the device, both ways (the PR review): a page starts at its device's level (deviceLevel.ts: today's RazorSense's GPU class), and its
 // steps go back up once frames hold again, not only down. Frames are driven by hand.
 
 type Frame = (time: number) => void;
@@ -14,6 +14,8 @@ const setup = (
 ): {
   FreshStage: any;
   freshEaseLevel: () => number;
+  setStartLevel: (level: number) => void;
+  readGpuNames: () => { renderer: string | null; vendor: string | null };
   whyCantAnimate: () => string | null;
   measureScreen: () => void;
   runFrames: (count: number, gapMs: number) => void;
@@ -107,17 +109,30 @@ describe('FreshStage: quality to the device, both ways', () => {
     ],
     ['a hidden name, 2 cores', {}, { cores: 2 }, 2],
     ['a hidden name, 8 cores, 8 GB', {}, { cores: 8, memory: 8 }, 0],
-  ])('%s starts at level %#', (_name, gpu, device, level) => {
-    const { whyCantAnimate, freshEaseLevel } = setup(gpu as Gpu, device);
+  ])('%s: its page starts at level %#', (_name, gpu, device, level) => {
+    const { whyCantAnimate, readGpuNames } = setup(gpu as Gpu, device);
     expect(whyCantAnimate()).toBeNull();
-    expect(freshEaseLevel()).toBe(level);
+    let deviceStartLevel: any;
+    jest.isolateModules(() => {
+      ({ deviceStartLevel } = require('../deviceLevel'));
+    });
+    expect(deviceStartLevel(readGpuNames())).toBe(level);
   });
 
-  it('a weak GPU draws at the lower sharpness from its first frame', () => {
-    const { FreshStage, whyCantAnimate, measureScreen, runFrames } = setup({
+  it('a page started two steps down draws at the lower sharpness from its first frame', () => {
+    const {
+      FreshStage,
+      whyCantAnimate,
+      setStartLevel,
+      freshEaseLevel,
+      measureScreen,
+      runFrames,
+    } = setup({
       renderer: 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11)',
     });
     expect(whyCantAnimate()).toBeNull();
+    setStartLevel(2);
+    expect(freshEaseLevel()).toBe(2);
     measureScreen();
     runFrames(70, 1000 / 60);
     const engine = engineMock();

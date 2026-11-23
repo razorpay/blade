@@ -1,6 +1,5 @@
 import type { FreshDoc, FreshEngine, FreshEngineHost, FreshExport, FreshSwitches } from './types';
-import { PerformanceManager, POTATO_TIER_PATTERNS } from '../RzpGlass/PerformanceManager';
-import type { GpuTier } from '../RzpGlass/PerformanceManager';
+import { POTATO_TIER_PATTERNS } from '../RzpGlass/gpuPatterns';
 
 type MakeFreshEngine<Made> = (
   host: FreshEngineHost,
@@ -61,23 +60,10 @@ const EASE_SECONDS = 3;
 const SLOW_STEP_SECONDS = 2;
 const EASE_DPR = 1.2;
 /**
- * 0: full; 1: every other frame; 2: and at EASE_DPR. Page-wide. It starts at the device's level (startLevelOf: today's RazorSense's
+ * 0: full; 1: every other frame; 2: and at EASE_DPR. Page-wide. It starts at the device's level (deviceLevel.ts: today's RazorSense's
  * GPU class), steps down while frames can't keep up and back up once they hold again (RECOVER_*)
  */
 let easeLevel = 0;
-
-/**
- * Where a page starts (the PR review: a known weak GPU drew 3-6 s of janky full-quality frames before stepping down): from
- * PerformanceManager.detect's class, as today's RazorSense seeds its quality. A low GPU (old Intel HD, Mali-400, Adreno 3xx/4xx...)
- * two steps down, a mid one on a phone one step down, a high or unknown one (or any where the browser hides the GPU's name and
- * memory, cores and mobile say so) at full. A software renderer never gets here: it shows the still (hasUsableGpu). The steps keep
- * the picture (every other frame, a lower sharpness under the blurs); only frames under SLOW_FPS go to the still, as before.
- */
-const startLevelOf = (tier: GpuTier, isMobile: boolean): number => {
-  if (tier === 'low') return 2;
-  if (tier === 'mid' && isMobile) return 1;
-  return 0;
-};
 
 /**
  * Back up a step once frames hold again (the PR review: a short stall, a video call or another WebGL tab, cut quality for the rest of
@@ -94,8 +80,24 @@ let easedAt = 0;
 let raisedAt = 0;
 let failedRaises = 0;
 
+/** the GPU's names, as the WebGL2 check read them (null where the browser hides them), and whether the page's start was set */
+let gpuNames: { renderer: string | null; vendor: string | null } = { renderer: null, vendor: null };
+let isStartSet = false;
+
+/**
+ * The page's starting step (deviceLevel.ts, loaded with the engine: today's RazorSense's GPU class), once a page, before its first
+ * stage draws; not once the steps have moved (a page that already stepped keeps what it measured)
+ */
+const setStartLevel = (level: number): void => {
+  if (isStartSet) return;
+  isStartSet = true;
+  if (!easedAt) easeLevel = Math.max(0, Math.min(2, level));
+};
+
 /** the page's steps now (for checks) */
 const freshEaseLevel = (): number => easeLevel;
+/** the GPU's names the WebGL2 check read */
+const readGpuNames = (): { renderer: string | null; vendor: string | null } => gpuNames;
 
 /**
  * the screen's frame rate (0: not measured yet), from the page's own frames from the moment a RazorSense component mounts, before
@@ -204,18 +206,11 @@ const hasUsableGpu = (): boolean => {
         : '';
       // the renderers that draw on the CPU, as RazorSense's PerformanceManager lists them (one list for both)
       usableGpu = !POTATO_TIER_PATTERNS.some((pattern) => pattern.test(renderer));
-      // the page starts at its device's level (this same context: PerformanceManager reads its GPU's name, or the device's memory,
-      // cores and mobile where the browser hides it)
-      if (usableGpu) {
-        try {
-          const { tier, isMobile } = PerformanceManager.detect(
-            (gl as unknown) as WebGLRenderingContext,
-          );
-          easeLevel = startLevelOf(tier, isMobile);
-        } catch {
-          // (no class: full, stepping down if it can't keep up)
-        }
-      }
+      // (its names, for the page's starting step: deviceLevel.ts, with the engine)
+      gpuNames = {
+        renderer: info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) ?? '') || null : null,
+        vendor: info ? String(gl.getParameter(info.UNMASKED_VENDOR_WEBGL) ?? '') || null : null,
+      };
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     }
   } catch {
@@ -828,5 +823,13 @@ class FreshStage {
   }
 }
 
-export { FreshStage, freshEaseLevel, freshFailures, measureScreen, whyCantAnimate };
+export {
+  FreshStage,
+  freshEaseLevel,
+  freshFailures,
+  measureScreen,
+  readGpuNames,
+  setStartLevel,
+  whyCantAnimate,
+};
 export type { CreateFreshEngine, FreshDriver, FreshFailure };
