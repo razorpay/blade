@@ -5,10 +5,14 @@
  */
 
 const HEX = /^#([\da-f]{3,4}|[\da-f]{6}|[\da-f]{8})$/i;
-const RGB = /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*[,/)]/i;
-const HSL = /^hsla?\(\s*([\d.]+)(?:deg)?[\s,]+([\d.]+)%[\s,]+([\d.]+)%\s*[,/)]/i;
+// a number (12, 12.5, .5, 12.), not a lone or doubled dot ("." or "1.2.3"): those aren't read here, but painted
+const NUM = '(\\d+(?:\\.\\d*)?|\\.\\d+)';
+const RGB = new RegExp(`^rgba?\\(\\s*${NUM}[\\s,]+${NUM}[\\s,]+${NUM}\\s*[,/)]`, 'i');
+const HSL = new RegExp(`^hsla?\\(\\s*${NUM}(?:deg)?[\\s,]+${NUM}%[\\s,]+${NUM}%\\s*[,/)]`, 'i');
 
-const channel = (v: number): number => Math.min(255, Math.max(0, Math.round(v)));
+/** 0-255, and 0 for anything that isn't a number (never NaN into the wash) */
+const channel = (v: number): number =>
+  Number.isFinite(v) ? Math.min(255, Math.max(0, Math.round(v))) : 0;
 
 const fromHsl = (h: number, s: number, l: number): number[] => {
   const a = s * Math.min(l, 1 - l);

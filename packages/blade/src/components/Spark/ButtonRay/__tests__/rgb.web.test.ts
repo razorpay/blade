@@ -53,6 +53,8 @@ describe('ButtonRay rgb()', () => {
     expect(rgb('rgb(12 34 56 / 50%)')).toEqual([12, 34, 56]);
     expect(rgb('hsl(0, 100%, 50%)')).toEqual([255, 0, 0]);
     expect(rgb('hsl(240deg 100% 50% / 0.4)')).toEqual([0, 0, 255]);
+    // (numbers written with a leading or trailing dot)
+    expect(rgb('rgb(.5, 12., 56)')).toEqual([1, 12, 56]);
   });
 
   it('reads any other colour from what the browser paints for it', () => {
@@ -65,12 +67,25 @@ describe('ButtonRay rgb()', () => {
   it('never gives NaN: anything that is not a colour is black', () => {
     fakeCanvas({});
     const rgb = loadRgb();
-    ['#ggg', '#12345', 'rgb(100%, 0%, 0%)', 'var(--x)', ''].forEach((c) => {
+    [
+      '#ggg',
+      '#12345',
+      'rgb(100%, 0%, 0%)',
+      'var(--x)',
+      '',
+      // (a stray dot or a doubled one: not numbers, so not read here)
+      'rgb(., 0, 0)',
+      'rgb(1.2.3, 0, 0)',
+      'rgba(0, ., 0, 1)',
+      'hsl(., 50%, 50%)',
+      'hsl(0, .%, 50%)',
+    ].forEach((c) => {
       const out = rgb(c);
       expect(out).toHaveLength(3);
       out.forEach((v) => expect(Number.isFinite(v)).toBe(true));
     });
     expect(rgb('not a colour')).toEqual([0, 0, 0]);
+    expect(rgb('rgb(., 0, 0)')).toEqual([0, 0, 0]);
   });
 
   it('is black where there is no 2D canvas', () => {
