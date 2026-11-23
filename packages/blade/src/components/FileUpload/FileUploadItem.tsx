@@ -48,7 +48,6 @@ const FileUploadItem = memo(
         <FileUploadItemCompact
           file={file}
           onRemove={onRemove}
-          onReupload={onReupload}
           onDismiss={onDismiss}
           width={width}
           minWidth={minWidth}

@@ -2,8 +2,8 @@
 '@razorpay/blade': patch
 ---
 
-feat(ChatInput): show attachments as compact 32px file chips
+feat(FileUploadItem): compact 32px file chip for ChatInput attachments
 
-Files in ChatInput now show as one-line chips that are as wide as their name, instead of 200px cards with the file size. Each chip shows the file name and × to remove it (or cancel its upload). A failed file also gets a retry button when `onFileReupload` is set, and keeps × so it can always be removed. While a file uploads, a thin loader runs along the bottom. Why an upload failed now shows in a Tooltip on hover or keyboard focus on web, and on tap on React Native. Names longer than 120px end in an ellipsis.
+The private `_isCompact` option of `FileUploadItem` now renders a one-line chip that is as wide as its file name. Names longer than 120px end in an ellipsis. The chip shows the file name and a single ×, which cancels an upload or removes the file. A failed file has no retry button: people remove it and attach it again. While a file uploads, a thin loader runs along the bottom, with no size or percentage. Why an upload failed shows in a Tooltip on hover or keyboard focus on web, and on tap on React Native.
 
-This comes from the private `_isCompact` option of `FileUploadItem`, which only ChatInput uses. `FileUpload` and `FileUploadItem` without it look the same as before, and no props changed.
+Only ChatInput uses `_isCompact`, so ChatInput's attachments change too. Files there no longer show a size or a Reupload button, so ChatInput's `onFileReupload` has no button for now. `FileUpload`, and `FileUploadItem` without `_isCompact`, look the same as before, and no props changed.

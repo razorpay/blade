@@ -421,26 +421,18 @@ describe('<FileUploadItem />', () => {
       expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
     });
 
-    it('should offer reupload and keep remove for a failed file', async () => {
+    it('should offer only × for a failed file, even when onReupload is set', async () => {
       const onReupload = jest.fn();
       const onRemove = jest.fn();
-      const { getByRole } = renderWithTheme(
+      const { getByRole, queryByRole, getAllByRole } = renderWithTheme(
         <FileUploadItem _isCompact file={errorFile} onReupload={onReupload} onRemove={onRemove} />,
       );
 
-      await userEvent.click(getByRole('button', { name: 'Reupload statement.csv' }));
-      expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
-      // a file that keeps failing must stay removable
+      expect(queryByRole('button', { name: 'Reupload statement.csv' })).toBeNull();
+      expect(getAllByRole('button')).toHaveLength(1);
       await userEvent.click(getByRole('button', { name: 'Remove statement.csv' }));
       expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
-    });
-
-    it('should offer remove for a failed file that cannot be reuploaded', () => {
-      const { getByRole } = renderWithTheme(
-        <FileUploadItem _isCompact file={errorFile} onRemove={jest.fn()} />,
-      );
-
-      expect(getByRole('button', { name: 'Remove statement.csv' })).toBeTruthy();
+      expect(onReupload).not.toHaveBeenCalled();
     });
 
     it('should show why the upload failed in a tooltip on keyboard focus', async () => {
@@ -468,7 +460,7 @@ describe('<FileUploadItem />', () => {
 
     it('should not have accessibility violations', async () => {
       const { container } = renderWithTheme(
-        <FileUploadItem _isCompact file={errorFile} onReupload={jest.fn()} />,
+        <FileUploadItem _isCompact file={errorFile} onRemove={jest.fn()} />,
       );
       await assertAccessible(container);
     });

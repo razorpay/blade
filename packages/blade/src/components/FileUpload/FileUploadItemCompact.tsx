@@ -3,10 +3,9 @@ import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
 import { fileUploadItemCompactTokens } from './fileUploadTokens';
 import { FileUploadItemCompactTrigger } from './FileUploadItemCompactTrigger';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { makeSize } from '~utils';
-import { CloseIcon, RotateClockWiseIcon } from '~components/Icons';
+import { CloseIcon } from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
@@ -14,17 +13,20 @@ import { ProgressBar } from '~components/ProgressBar';
 import { Tooltip } from '~components/Tooltip';
 import { getStyledProps } from '~components/Box/styledProps';
 
-type FileUploadItemCompactProps = Omit<FileUploadItemProps, '_isCompact' | 'size' | 'onPreview'>;
+type FileUploadItemCompactProps = Omit<
+  FileUploadItemProps,
+  '_isCompact' | 'size' | 'onPreview' | 'onReupload'
+>;
 
 /**
  * The 32px one-line chip FileUploadItem renders with `_isCompact`, for tight places such as
- * ChatInput attachments. It shows the file name and ×, plus retry on a failed file. Why an upload
- * failed shows in a Tooltip on hover or keyboard focus on web, and on tap on native.
+ * ChatInput attachments. It shows the file name and a single ×. A failed file has no retry: people
+ * remove it and attach it again. Why an upload failed shows in a Tooltip on hover or keyboard focus
+ * on web, and on tap on native.
  */
 const FileUploadItemCompact = ({
   file,
   onRemove,
-  onReupload,
   onDismiss,
   width,
   minWidth,
@@ -89,32 +91,13 @@ const FileUploadItemCompact = ({
         ) : (
           fileLabel
         )}
-        {/* While uploading, × cancels the upload */}
-        {isUploading ? (
+        {isUploading || onRemove ? (
           <IconButton
             size="small"
             accessibilityLabel={`Remove ${name}`}
             icon={CloseIcon}
-            onClick={() => onDismiss?.({ file })}
-          />
-        ) : null}
-        {isError && onReupload ? (
-          <IconButton
-            size="small"
-            accessibilityLabel={`Reupload ${name}`}
-            icon={RotateClockWiseIcon}
-            onClick={() => onReupload({ file })}
-            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-          />
-        ) : null}
-        {/* A failed file keeps × next to retry: ChatInput can't send while a file has failed, so a
-            file that keeps failing must stay removable */}
-        {!isUploading && onRemove ? (
-          <IconButton
-            size="small"
-            accessibilityLabel={`Remove ${name}`}
-            icon={CloseIcon}
-            onClick={() => onRemove({ file })}
+            // while uploading, × cancels the upload
+            onClick={() => (isUploading ? onDismiss?.({ file }) : onRemove?.({ file }))}
           />
         ) : null}
       </BaseBox>
