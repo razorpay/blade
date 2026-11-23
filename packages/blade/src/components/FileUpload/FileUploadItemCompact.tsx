@@ -86,7 +86,11 @@ const FileUploadItemCompact = ({
       >
         {isError && errorText ? (
           <Tooltip content={errorText} placement="top">
-            <FileUploadItemCompactTrigger>{fileLabel}</FileUploadItemCompactTrigger>
+            <FileUploadItemCompactTrigger
+              accessibilityLabel={`${name}, upload failed: ${errorText}`}
+            >
+              {fileLabel}
+            </FileUploadItemCompactTrigger>
           </Tooltip>
         ) : (
           fileLabel

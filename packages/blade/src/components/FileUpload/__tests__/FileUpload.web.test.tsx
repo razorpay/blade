@@ -449,6 +449,11 @@ describe('<FileUploadItem />', () => {
 
       const trigger = getByText('statement.csv').closest('[tabindex="0"]') as HTMLElement;
       expect(trigger).toBeTruthy();
+      // screen readers hear the file name first, then why it failed
+      expect(trigger).toHaveAttribute(
+        'aria-label',
+        'statement.csv, upload failed: This file is larger than 5 MB',
+      );
       trigger.focus();
       // eslint-disable-next-line @typescript-eslint/require-await
       await act(async () => {

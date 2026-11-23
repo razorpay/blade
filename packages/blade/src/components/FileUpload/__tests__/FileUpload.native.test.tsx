@@ -655,6 +655,10 @@ describe('<FileUploadItem /> (native)', () => {
       );
 
       expect(queryByText('This file is larger than 5 MB')).toBeNull();
+      // screen readers hear the name and the reason without a tap
+      expect(getByTestId('tooltip-interactive-wrapper').props.accessibilityLabel).toBe(
+        'statement.csv, upload failed: This file is larger than 5 MB',
+      );
       fireEvent(getByTestId('tooltip-interactive-wrapper'), 'touchEnd');
       expect(getByText('This file is larger than 5 MB')).toBeTruthy();
     });
