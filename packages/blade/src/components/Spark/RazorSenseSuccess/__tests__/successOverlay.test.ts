@@ -37,6 +37,23 @@ describe('successOverlay (Rzp Glass Success Animation 2.0’s badge and tick)', 
     },
   );
 
+  it('brings the label in after the badge starts popping, fading and rising into place', () => {
+    const piece = successPieceLight;
+    const o = makeOverlay();
+    overlayAt(piece, piece.moments.badge + 0.29, INK, o);
+    expect(o.label.opacity).toBe(0);
+    expect(o.label.y).toBe(20);
+    overlayAt(piece, piece.moments.badge + 0.55, INK, o);
+    expect(o.label.opacity).toBeGreaterThan(0.3);
+    expect(o.label.opacity).toBeLessThan(1);
+    overlayAt(piece, piece.moments.badge + 0.8, INK, o);
+    expect(o.label.opacity).toBe(1);
+    expect(o.label.y).toBe(0);
+    // (before the badge: nowhere)
+    overlayAt(piece, piece.moments.top, INK, o);
+    expect(o.label.opacity).toBe(0);
+  });
+
   it('pops the badge on Blade’s ease: past 1 and back', () => {
     const piece = successPieceLight;
     const o = makeOverlay();

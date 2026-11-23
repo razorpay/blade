@@ -1,12 +1,13 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RazorSenseSuccessProps } from './types';
-import { hexRgb, makeOverlay, overlayAt } from './successOverlay';
+import { LABEL_AFTER, LABEL_DUR, hexRgb, makeOverlay, overlayAt } from './successOverlay';
 import type { SuccessOverlay } from './successOverlay';
 import { successPieceDark, successPieceLight } from './piece';
 import { runFreshStage, toHex } from '../RazorSenseEngine';
 import type { FreshStage, FreshSuccessPiece } from '../RazorSenseEngine';
 import { useTheme } from '~components/BladeProvider';
 import { CheckIcon } from '~components/Icons';
+import { Heading } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -28,7 +29,12 @@ const putOverlay = (
   badge: HTMLElement | null,
   tick: SVGSVGElement | null,
   path: SVGPathElement | null,
+  label: HTMLElement | null,
 ): void => {
+  if (label) {
+    label.style.opacity = String(o.label.opacity);
+    label.style.transform = `translateY(${o.label.y}px)`;
+  }
   if (badge) {
     badge.style.visibility = o.badge.isShown ? 'visible' : 'hidden';
     badge.style.opacity = String(o.badge.opacity);
@@ -55,23 +61,22 @@ const putOverlay = (
  * RazorSenseSuccess
  *
  * RazorSense's success moment: a glass orb rises into place with a white tick on it, then shrinks and fades as Blade's success
- * badge pops in where it was, and the tick turns into the badge's check. It's the badge's size in the layout (80 px); the orb rises
- * from below it, over what's there, and goes. Plays once when it mounts, then the badge stays. Like RazorSense, it follows Blade's
+ * badge pops in where it was, and the tick turns into the badge's check; its `label`, if it has one, comes in under the badge as it
+ * pops in. It's the badge's size in the layout (80 px, and its label under it); the orb rises from below it, over what's there, and
+ * goes. Plays once when it mounts, then the badge (and label) stay. Like RazorSense, it follows Blade's
  * color scheme (BladeProvider): light and dark are the same component, each its own tuning. The orb is drawn by the Fresh RazorSense
  * engine on one canvas, freed as soon as the orb is gone; the badge and check are Blade's own.
  *
  * @example
  * ```tsx
- * <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.5">
- *   <RazorSenseSuccess onComplete={() => setIsDone(true)} />
- *   <Heading>Payment received</Heading>
- * </Box>
+ * <RazorSenseSuccess label="Payment received" onComplete={() => setIsDone(true)} />
  * ```
  */
 const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
   function RazorSenseSuccess(
     {
       isPaused = false,
+      label,
       accessibilityLabel = 'Success',
       onComplete,
       onLoad,
@@ -95,6 +100,7 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
     const badgeRef = useRef<HTMLDivElement>(null);
     const tickRef = useRef<SVGSVGElement>(null);
     const pathRef = useRef<SVGPathElement>(null);
+    const labelRef = useRef<HTMLDivElement>(null);
     const stageRef = useRef<FreshStage | null>(null);
     const isPausedRef = useRef(isPaused);
     isPausedRef.current = isPaused;
@@ -179,6 +185,7 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
               badgeRef.current,
               tickRef.current,
               pathRef.current,
+              labelRef.current,
             );
           });
           stage.setPaused(isPausedRef.current);
@@ -214,15 +221,24 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
       const alone = { ...piece, tick: { ...piece.tick, on: false } };
       const t0 = performance.now();
       let raf = 0;
+      // (till its label is in too)
+      const until = Math.max(piece.moments.badgeEnd, piece.moments.badge + LABEL_AFTER + LABEL_DUR);
       const step = (now: number): void => {
         const t = piece.moments.badge + (now - t0) / 1000;
-        if (t >= piece.moments.badgeEnd) {
+        if (t >= until) {
           phaseRef.current = 'done';
           setPhase('done');
-          window.setTimeout(complete, (piece.moments.end - piece.moments.badgeEnd) * 1000);
+          window.setTimeout(complete, Math.max(0, piece.moments.end - until) * 1000);
           return;
         }
-        putOverlay(overlayAt(alone, t, [0, 0, 0], overlay), size / 2, badgeRef.current, null, null);
+        putOverlay(
+          overlayAt(alone, t, [0, 0, 0], overlay),
+          size / 2,
+          badgeRef.current,
+          null,
+          null,
+          labelRef.current,
+        );
         raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -236,64 +252,83 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
         ref={mergedRef}
         className={className}
         {...metaAttribute({ name: MetaConstants.RazorSenseSuccess, testID })}
-        {...makeAccessible({ role: 'img', label: accessibilityLabel })}
         style={{
-          position: 'relative',
-          width: `${size}px`,
-          height: `${size}px`,
-          flexShrink: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: `${theme.spacing[6]}px`,
           ...style,
         }}
       >
-        {/* the orb's canvas, laid so the orb's place is the badge's middle; it rises from below, over what's there */}
-        {phase === 'playing' ? (
-          <div
-            ref={orbRef}
-            style={{
-              position: 'absolute',
-              left: `${size / 2 - piece.anchor.x * z}px`,
-              top: `${size / 2 - piece.anchor.y * z}px`,
-              width: `${piece.comp.w * z}px`,
-              height: `${piece.comp.h * z}px`,
-              pointerEvents: 'none',
-            }}
-          />
-        ) : null}
         <div
-          ref={badgeRef}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            borderRadius: '50%',
-            backgroundColor: circle,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            visibility: isDone ? 'visible' : 'hidden',
-            ...(isDone ? { opacity: 1, transform: 'none' } : null),
-          }}
+          {...makeAccessible({ role: 'img', label: accessibilityLabel })}
+          style={{ position: 'relative', width: `${size}px`, height: `${size}px`, flexShrink: 0 }}
         >
-          {isDone || phase === 'badge' ? (
-            <CheckIcon size="xlarge" color="feedback.icon.positive.intense" />
+          {/* the orb's canvas, laid so the orb's place is the badge's middle; it rises from below, over what's there */}
+          {phase === 'playing' ? (
+            <div
+              ref={orbRef}
+              style={{
+                position: 'absolute',
+                left: `${size / 2 - piece.anchor.x * z}px`,
+                top: `${size / 2 - piece.anchor.y * z}px`,
+                width: `${piece.comp.w * z}px`,
+                height: `${piece.comp.h * z}px`,
+                pointerEvents: 'none',
+              }}
+            />
           ) : null}
-        </div>
-        {phase === 'playing' ? (
-          <svg
-            ref={tickRef}
-            viewBox="0 0 100 100"
-            aria-hidden="true"
+          <div
+            ref={badgeRef}
             style={{
               position: 'absolute',
-              left: 0,
-              top: 0,
-              overflow: 'visible',
-              pointerEvents: 'none',
-              opacity: 0,
-              transformOrigin: 'center',
+              inset: 0,
+              borderRadius: '50%',
+              backgroundColor: circle,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              visibility: isDone ? 'visible' : 'hidden',
+              ...(isDone ? { opacity: 1, transform: 'none' } : null),
             }}
           >
-            <path ref={pathRef} fill="none" pathLength={1} strokeDasharray="1 1" />
-          </svg>
+            {isDone || phase === 'badge' ? (
+              <CheckIcon size="xlarge" color="feedback.icon.positive.intense" />
+            ) : null}
+          </div>
+          {phase === 'playing' ? (
+            <svg
+              ref={tickRef}
+              viewBox="0 0 100 100"
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                overflow: 'visible',
+                pointerEvents: 'none',
+                opacity: 0,
+                transformOrigin: 'center',
+              }}
+            >
+              <path ref={pathRef} fill="none" pathLength={1} strokeDasharray="1 1" />
+            </svg>
+          ) : null}
+        </div>
+        {/* its label: in its place from the start (nothing moves when it comes in), shown as the badge pops in */}
+        {label ? (
+          <div
+            ref={labelRef}
+            style={{
+              textAlign: 'center',
+              opacity: isDone ? 1 : 0,
+              transform: isDone ? 'none' : 'translateY(20px)',
+            }}
+          >
+            <Heading as="span" size="large" textAlign="center">
+              {label}
+            </Heading>
+          </div>
         ) : null}
       </div>
     );

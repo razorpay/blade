@@ -19,3 +19,10 @@ Success-blob's 'Success piece' as its own component: success 1's orb rises into 
 - **Its still is the badge with its check: its end, in HTML.** An image of the orb would stop on a moment that never resolves; the piece's point is the badge.
 - No WebGL2, a software GPU, its engine failing, or no first frame within 0.8 s (a success doesn't wait on a GPU compiling): `onError`, and the badge pops in alone with its check (the overlay with the tick off), then `onComplete`.
 - Reduced motion: the badge with its check at once, and `onComplete`.
+
+## Its label (2026-11-24)
+
+- The user: the piece is exactly as the RazorSense system made it, and "the text there under it that comes later will be toggleable and can also be editable to whatever text. That is the component piece." So the text is the component's: `label` (any text; without it, the badge alone), Blade's large heading, 24 px (`spacing.6`) under the badge, as today's success card has it.
+- Its beat: success-blob's piece has no text of its own (its page hides the chat's text while the piece plays), so the label takes its beat from the badge's, as today's success card brings its heading in after its badge: 0.3 s after the badge starts popping (2.86 s light, the same in dark), fading in and rising 20 px over 0.5 s on an ease-out. It's never shown before the orb has become the badge, and it's in its place from the start, so nothing moves when it comes in.
+- Reduced motion and no WebGL2: the badge, its check and its label (at once with reduced motion; with the badge's pop where it can't animate).
+- The story only sets it: its controls are the label's text and on / off.

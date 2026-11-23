@@ -13,10 +13,22 @@ const CHECK = [
   [83.333, 25],
 ];
 
+/**
+ * The label under the badge (`label`): success-blob's piece has no text of its own (its page hides the chat's text while the piece
+ * plays), so it takes its beat from the badge's, as today's success card brings its heading in after its badge: LABEL_AFTER s after
+ * the badge starts popping, fading in and rising LABEL_RISE px over LABEL_DUR s on an ease-out
+ */
+const LABEL_AFTER = 0.3;
+const LABEL_DUR = 0.5;
+const LABEL_RISE = 20;
+const LABEL_EASE = [0, 0, 0.58, 1];
+
 /** One frame of what's drawn over the orb (CSS px from the badge's middle), changed in place: nothing is made per frame but its path. */
 type SuccessOverlay = {
   /** the badge: shown (it has started), its scale (its ease goes past 1 and back) and opacity */
   badge: { isShown: boolean; scale: number; opacity: number };
+  /** the label: its opacity and how far below its place it still is (CSS px) */
+  label: { opacity: number; y: number };
   /** the tick turning into the check: its box's middle and size, its scale and opacity, its path and stroke (in its 100 x 100 box), colour, round caps, how much of it is drawn in (dash offset: 1 none, 0 all) */
   tick: {
     x: number;
@@ -34,6 +46,7 @@ type SuccessOverlay = {
 
 const makeOverlay = (): SuccessOverlay => ({
   badge: { isShown: false, scale: 0, opacity: 0 },
+  label: { opacity: 0, y: LABEL_RISE },
   tick: {
     x: 0,
     y: 0,
@@ -90,6 +103,9 @@ const overlayAt = (
   out.badge.isShown = bu > 0;
   out.badge.scale = badgeScale;
   out.badge.opacity = clamp01(be);
+  const le = cubicBezier(LABEL_EASE, (t - m.badge - LABEL_AFTER) / LABEL_DUR);
+  out.label.opacity = le;
+  out.label.y = LABEL_RISE * (1 - le);
   const u = (t - m.tick) / Math.max(0.01, T.dur);
   const e = cubicBezier(T.ease, u);
   const hu = (t - m.hand) / Math.max(0.01, H.dur);
@@ -116,5 +132,5 @@ const overlayAt = (
   return out;
 };
 
-export { hexRgb, makeOverlay, overlayAt, valueAt };
+export { LABEL_AFTER, LABEL_DUR, hexRgb, makeOverlay, overlayAt, valueAt };
 export type { SuccessOverlay };
