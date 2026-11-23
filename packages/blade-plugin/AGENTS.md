@@ -7,8 +7,7 @@ Claude Code plugin and cross-agent skills for the Blade Design System. Source of
 ```
 .claude-plugin/plugin.json   # Claude Code manifest (name "blade"); version mirrors package.json
 .codex-plugin/plugin.json    # Codex manifest, byte-identical to the Claude one
-hooks/                       # Plain Node, no deps. SessionStart: framework detection + skill nudge.
-                             # PostToolUse (serif-guard): flags new PT Serif use outside the agentic dashboard hero
+hooks/                       # SessionStart framework detection + skill nudge (plain Node, no deps)
 skills/
   blade/                     # React knowledgebase (@razorpay/blade). SKILL.md stays small; docs live in references/
     references/components/   # One <Component>.md per component + index.md

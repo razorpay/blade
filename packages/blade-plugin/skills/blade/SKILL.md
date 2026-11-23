@@ -43,6 +43,15 @@ Full type definitions: `references/styled-props-types.md` (`StyledPropsBlade`, `
 
 Common utility types (`TestID`, `DataAnalyticsAttribute`, `FeedbackColors`, `Breakpoints`): `references/common-utility-types.md`.
 
+## Guardrails
+
+Run these checks once you are done with your edits, before reporting usage. They look at what your changes added, so they also cover edits made with `sed` or other shell commands.
+
+- **Serif heading.** `<Heading variant="serif">` (PT Serif) is reserved for the agentic dashboard hero heading. Look for `variant="serif"` (or `variant: 'serif'`) in the lines your changes added, for example in `git diff`. For each one:
+  - If it is not the agentic dashboard hero heading, replace it with a regular `Heading`. Do this even if the design looks similar.
+  - If it is, keep it and put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it, so reviewers can see the use is intentional.
+  - Never recreate PT Serif with a custom `font-family`.
+
 ## Report usage
 
 After completing all code edits, and **just before** writing your final summary to the user, report the diff size of your edits **exactly once** (the same metric as Blade MCP's `publish_lines_of_code_metric` tool). Count lines the way `git diff --numstat` does: a new line is 1 added, a deleted line is 1 removed, a modified line is 1 removed and 1 added. Keep the numbers exactly as your diff reports them.
