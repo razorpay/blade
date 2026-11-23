@@ -5,8 +5,10 @@ import {
   fileUploadItemCompactTokens,
   fileUploadItemHeightTokens,
   fileUploadMotionTokens,
+  fileUploadItemCompactTriggerAttribute,
 } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import { colors as globalColors } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
@@ -36,6 +38,19 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
         transitionTimingFunction: getIn(theme.motion, fileUploadMotionTokens.easing),
         '&:hover': {
           backgroundColor: getIn(theme.colors, fileUploadItemCompactTokens.background.hover),
+        },
+        // Keyboard focus on a failed chip's tooltip trigger. Blade's 4px ring would be clipped by
+        // this chip (overflow: hidden), so the ring goes around the whole chip instead. Browsers
+        // without :has() draw it inside the trigger.
+        [`& [${fileUploadItemCompactTriggerAttribute}]:focus-visible`]: getFocusRingStyles({
+          theme,
+          negativeOffset: true,
+        }),
+        '@supports selector(:has(*))': {
+          [`& [${fileUploadItemCompactTriggerAttribute}]:focus-visible`]: { outline: 'none' },
+          [`&:has([${fileUploadItemCompactTriggerAttribute}]:focus-visible)`]: getFocusRingStyles({
+            theme,
+          }),
         },
       };
     }

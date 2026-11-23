@@ -3300,6 +3300,18 @@ exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
   background-color: hsla(206,10%,29%,0.06);
 }
 
+.c1.c1.c1.c1.c1 [data-file-upload-item-trigger]:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 .c6.c6.c6.c6.c6 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -3400,6 +3412,24 @@ exports[`<FileUploadItem /> compact chip should render a compact chip 1`] = `
 @media screen and (min-width:1200px) {
   .c0.c0.c0.c0.c0 {
     border-style: solid;
+  }
+}
+
+@supports selector(:has(*)) {
+  .c1.c1.c1.c1.c1 [data-file-upload-item-trigger]:focus-visible {
+    outline: none;
+  }
+
+  .c1.c1.c1.c1.c1:has([data-file-upload-item-trigger]:focus-visible) {
+    outline: 4px solid hsla(218,89%,51%,0.18);
+    outline-offset: 1px;
+    -webkit-transition-property: outline-width;
+    transition-property: outline-width;
+    -webkit-transition-duration: 80ms;
+    transition-duration: 80ms;
+    -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+    transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+    z-index: 2;
   }
 }
 

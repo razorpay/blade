@@ -1,5 +1,6 @@
 import React from 'react';
 import { TooltipInteractiveWrapper } from '~components/Tooltip';
+import { fileUploadItemCompactTriggerAttribute } from './fileUploadTokens';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type FileUploadItemCompactTriggerProps = {
@@ -27,6 +28,8 @@ const FileUploadItemCompactTrigger = React.forwardRef<
     minWidth="0px"
     {...tooltipProps}
     {...makeAccessible({ label: accessibilityLabel })}
+    // the chip uses this to draw Blade's focus ring around itself
+    {...{ [fileUploadItemCompactTriggerAttribute]: true }}
   >
     {children}
   </TooltipInteractiveWrapper>

@@ -133,6 +133,9 @@ const fileUploadItemCompactTokens = {
   },
 } as const;
 
+// Marks a failed compact chip's tooltip trigger, so the chip can draw the focus ring around itself
+const fileUploadItemCompactTriggerAttribute = 'data-file-upload-item-trigger';
+
 // File icon above the drop area text when size="variable"
 const fileUploadDropAreaIconTokens = {
   size: size['56'],
@@ -154,6 +157,7 @@ export {
   fileUploadItemColorTokens,
   fileUploadItemIconTokens,
   fileUploadItemCompactTokens,
+  fileUploadItemCompactTriggerAttribute,
   fileUploadDropAreaIconTokens,
   fileUploadHeightTokens,
   fileUploadItemHeightTokens,
