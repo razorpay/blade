@@ -14,6 +14,7 @@ import type {
 } from '../RazorSenseEngine';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
+import { prefersReducedMotion } from '../RazorSenseEngine/FreshStage';
 import { backgroundPlaceDark, backgroundPlaceLight } from './place';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -125,9 +126,15 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
     onErrorRef.current = onError;
     const [hasFailed, setHasFailed] = useState(false);
     const hasFailedRef = useRef(false);
-    // its still stands in while it has no frame yet (its GPU getting ready), and stays if it can't animate
+    // its still stands in while it has no frame yet (its GPU getting ready), and stays if it can't animate. With reduced motion it's
+    // all that shows: the piece at its loop's start, as the engine would draw it (within 1 / 255) without a GPU context (~51-68 MB)
+    // for one frame (the PR review)
     const [isWaiting, setIsWaiting] = useState(false);
-    const still = useStill(hasFailed || isWaiting, mode, loadBackgroundStill);
+    const [isStillOnly] = useState(prefersReducedMotion);
+    const still = useStill(hasFailed || isWaiting || isStillOnly, mode, loadBackgroundStill);
+    useEffect(() => {
+      if (isStillOnly && still) onLoadRef.current?.();
+    }, [isStillOnly, still]);
 
     // the piece placed in the box (and only its part in the box drawn): again whenever the box changes size
     const place = (): void => {
@@ -159,8 +166,8 @@ const RazorSenseBackground = forwardRef<HTMLDivElement, RazorSenseBackgroundProp
     }, []);
 
     useEffect(() => {
-      // (couldn't animate: it stays on its still, a new color scheme just changes the still)
-      if (hasFailedRef.current) return undefined;
+      // (couldn't animate: it stays on its still, a new color scheme just changes the still; reduced motion: its still)
+      if (hasFailedRef.current || isStillOnly) return undefined;
       return runFreshStage({
         moduleName: 'RazorSenseBackground',
         getBox: () => partRef.current,

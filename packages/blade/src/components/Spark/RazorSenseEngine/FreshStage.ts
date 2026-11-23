@@ -244,6 +244,7 @@ const whyCantAnimate = (): FreshFailure | null => {
   return null;
 };
 
+/** reduced motion asked for (a component that shows its still for it reads it as it renders) */
 const prefersReducedMotion = (): boolean =>
   typeof window !== 'undefined' &&
   typeof window.matchMedia === 'function' &&
@@ -842,6 +843,7 @@ class FreshStage {
 export {
   FreshStage,
   freshEaseLevel,
+  prefersReducedMotion,
   freshFailures,
   measureScreen,
   readGpuNames,
