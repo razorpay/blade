@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
-import { canPlayHover, followKeyboardFocus, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import {
+  canHover,
+  canPlayHover,
+  followKeyboardFocus,
+  holdNearPointer,
+  whenHoverOrKeyboardFocus,
+} from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -122,6 +128,8 @@ const ButtonRazorSenseLayer = ({
   const edgeRef = useRef<HTMLElement>(null);
   const [square, setSquare] = useState<boolean | null>(null);
   const [isOnScreen, setIsOnScreen] = useState(false);
+  // a device that can't hover (a phone): nothing probed or loaded till the button is focused from a keyboard
+  const [canStart, setCanStart] = useState(canHover);
   const onLiveRef = useRef(onLiveChange);
   onLiveRef.current = onLiveChange;
 
@@ -153,10 +161,16 @@ const ButtonRazorSenseLayer = ({
   }, []);
 
   useEffect(() => {
+    const button = layerRef.current?.parentElement;
+    if (canStart || !isEnabled || !button) return undefined;
+    return whenHoverOrKeyboardFocus(button, () => setCanStart(true));
+  }, [canStart, isEnabled]);
+
+  useEffect(() => {
     const layer = layerRef.current;
     const host = hostRef.current;
     const button = layer?.parentElement;
-    if (!isEnabled || !isOnScreen || square === null || !layer || !host || !button)
+    if (!isEnabled || !canStart || !isOnScreen || square === null || !layer || !host || !button)
       return undefined;
     // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
     if (!canPlayHover()) return undefined;
@@ -425,7 +439,7 @@ const ButtonRazorSenseLayer = ({
       layer.style.opacity = '0';
       release();
     };
-  }, [isEnabled, isOnScreen, square, mode]);
+  }, [isEnabled, canStart, isOnScreen, square, mode]);
 
   return (
     <span

@@ -237,6 +237,55 @@ const canPlayHover = (): boolean =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ) && !whyCantAnimate();
 
+/** focused from the keyboard (`:focus-visible`): a click's or a tap's focus isn't */
+const isKeyboardFocused = (button: HTMLElement): boolean => {
+  try {
+    return button.matches(':focus-visible');
+  } catch {
+    return false;
+  }
+};
+
+const hoverQuery = (): MediaQueryList | null =>
+  typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+    ? window.matchMedia('(any-hover: hover)')
+    : null;
+
+/**
+ * Whether anything on this device can hover (a mouse, a trackpad, a pen). A phone, or a tablet on touch alone, can't: no Spark
+ * hover can play there, so nothing of it is probed (WebGL2) or downloaded (its engine and comps, Ray and his film) until the button
+ * is focused from a keyboard (a tablet's; the PR review: every AI button on a phone downloaded it all for nothing). Not known (no
+ * matchMedia): it can.
+ */
+const canHover = (): boolean => hoverQuery()?.matches ?? true;
+
+/**
+ * `onReady()` once a Spark hover can start on a device that couldn't hover: it gains a pointer that can (a mouse plugged into a
+ * tablet), or the button is focused from a keyboard (now or later; a tap's focus isn't). Returns a stop.
+ */
+const whenHoverOrKeyboardFocus = (button: HTMLElement, onReady: () => void): (() => void) => {
+  const query = hoverQuery();
+  let isWaiting = true;
+  const check = (): void => {
+    const isReady =
+      Boolean(query?.matches) || (document.activeElement === button && isKeyboardFocused(button));
+    if (!isWaiting || !isReady) return;
+    isWaiting = false;
+    query?.removeEventListener?.('change', check);
+    button.removeEventListener('focus', check);
+    onReady();
+  };
+  // (older Safari's MediaQueryList has no addEventListener: there, only the keyboard starts it)
+  query?.addEventListener?.('change', check);
+  button.addEventListener('focus', check);
+  check();
+  return () => {
+    isWaiting = false;
+    query?.removeEventListener?.('change', check);
+    button.removeEventListener('focus', check);
+  };
+};
+
 type KeyboardFocus = {
   /** focused from the keyboard now */
   isFocused: () => boolean;
@@ -255,20 +304,13 @@ const followKeyboardFocus = (
   onChange: (isFocused: boolean) => void,
 ): KeyboardFocus => {
   let isFocused = false;
-  const isKeyboardFocus = (): boolean => {
-    try {
-      return button.matches(':focus-visible');
-    } catch {
-      return false;
-    }
-  };
   const set = (next: boolean): void => {
     isFocused = next;
     slot.focus(next);
     onChange(next);
   };
   const onFocus = (): void => {
-    if (isKeyboardFocus()) set(true);
+    if (isKeyboardFocused(button)) set(true);
   };
   const onBlur = (): void => {
     if (isFocused) set(false);
@@ -285,5 +327,5 @@ const followKeyboardFocus = (
   };
 };
 
-export { holdNearPointer, canPlayHover, followKeyboardFocus };
+export { holdNearPointer, canPlayHover, canHover, whenHoverOrKeyboardFocus, followKeyboardFocus };
 export type { HoverSlot, KeyboardFocus };

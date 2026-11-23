@@ -5,7 +5,13 @@ import { Ray } from '../Ray';
 import { RAY_BOX } from '../Ray/rayBox';
 import { loadRay } from '../Ray/loadRay';
 import type { RayState } from '../Ray/types';
-import { canPlayHover, followKeyboardFocus, holdNearPointer } from '../useLazyLayer/hoverSlots';
+import {
+  canHover,
+  canPlayHover,
+  followKeyboardFocus,
+  holdNearPointer,
+  whenHoverOrKeyboardFocus,
+} from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
@@ -171,6 +177,9 @@ const ButtonRayLayer = ({
   const edgeRef = useRef<HTMLElement>(null);
   const rayRef = useRef<HTMLSpanElement>(null);
   const [isOnScreen, setIsOnScreen] = useState(false);
+  // a device that can't hover (a phone): nothing probed or loaded (the engine, the strip's comp, Ray and his film) till the button
+  // is focused from a keyboard
+  const [canStart, setCanStart] = useState(canHover);
   // Ray's there only while the hover holds its canvases (the pointer on or near the button)
   const [isRayUp, setIsRayUp] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -203,11 +212,17 @@ const ButtonRayLayer = ({
   }, []);
 
   useEffect(() => {
+    const button = stripRef.current?.parentElement;
+    if (canStart || !isEnabled || !button) return undefined;
+    return whenHoverOrKeyboardFocus(button, () => setCanStart(true));
+  }, [canStart, isEnabled]);
+
+  useEffect(() => {
     const strip = stripRef.current;
     const edge = edgeRef.current;
     const host = hostRef.current;
     const button = strip?.parentElement;
-    if (!isEnabled || !isOnScreen || !strip || !host || !button) return undefined;
+    if (!isEnabled || !canStart || !isOnScreen || !strip || !host || !button) return undefined;
     // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
     if (!canPlayHover()) return undefined;
     // the screen's rate, from now: before its canvas is made, as the pointer nears (once a page)
@@ -655,7 +670,7 @@ const ButtonRayLayer = ({
       release();
       setIsRayUp(false);
     };
-  }, [isEnabled, isOnScreen, mode, tint, INV, gapTrim]);
+  }, [isEnabled, canStart, isOnScreen, mode, tint, INV, gapTrim]);
 
   return (
     <>
