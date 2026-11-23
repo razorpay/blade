@@ -7,7 +7,8 @@ This plugin is used to sync the tokens from Figma to Code.
 ## Quickstart
 
 - Run `yarn` to install dependencies.
-- Run `yarn build:watch` to start webpack in watch mode.
+- Run `yarn build:watch` to start webpack in watch mode. Every save rewrites both `dist/plugin.js`
+  and `dist/ui.html`; close and rerun the plugin in Figma to pick the change up.
 - Open `Figma` -> `Plugins` -> `Development` -> `Import plugin from manifest...` and choose `manifest.json` file from this repo.
 
 ## How a token push works
@@ -20,6 +21,35 @@ The plugin is only the first half of the pipeline. The second half lives in
 | Read Figma variables, validate, tag values | `src/plugin/makeColorTokens.ts`, `validateColorTokens.ts` |
 | gzip + base64, dispatch the workflow       | `src/app/api/api.ts`                                      |
 | Write source files, verify, open the PR    | `packages/blade/scripts/uploadTokens.js`                  |
+
+### The window has to be listening before the tokens are sent
+
+The plugin thread and the UI iframe start together, and the UI only listens once React has
+mounted. A message posted before then is dropped, not queued. When that happened, the window still
+opened looking normal, and **Export tokens** published the empty `{}` it started with, which
+produced a PR holding only a changeset.
+
+So the UI posts `ui-ready` once its listener is in place, and `src/plugin/uiBridge.ts` holds every
+message for the UI until it does. Use `postToUI` rather than `figma.ui.postMessage` for anything
+the UI needs. Export also stays disabled until the tokens have arrived.
+
+### Seeing what will change before publishing
+
+Once the tokens arrive, the window downloads the current token files from `master` on GitHub and
+lists what publishing would change: each changed token with its value before and after, plus any
+added or removed tokens. **Export tokens** waits for this list, and stays disabled when the tokens
+already match `master`, because that push would open a PR with nothing in it.
+
+- The comparison uses `diffTokenTreeAgainstSource` from `packages/blade/scripts/tokenSerializer.js`
+  and the targets in `tokenTargets.json`, the same ones `uploadTokens.js` uses, so the preview and
+  the PR agree. Code-owned `preservedTokenPaths` are not listed as removed.
+- The downloaded files are only read line by line, never evaluated.
+- `razorpay/blade` is public, so the download needs no token. Your personal access token is not sent
+  with it.
+- The baseline is `master`, not your last push. Changes from a token PR that has not merged yet are
+  listed again until it does.
+- If GitHub cannot be reached, the window says so and Export still works. The PR body lists the
+  same changes.
 
 ### The payload is sent in two shapes
 
@@ -88,6 +118,12 @@ decision belongs on the code side.
 
 ### What blocks a push
 
+Validation errors keep the plugin window open with the report, and **Export tokens** stays disabled
+until they are fixed in Figma.
+
+The workflow fails without opening a PR when the payload writes no token file at all, for example
+an empty `{}`.
+
 The plugin refuses to publish, and the workflow opens the PR as a **draft** with the reasons in the
 body, when any of these hold:
 
@@ -99,6 +135,13 @@ body, when any of these hold:
 
 Removals, hardcoded colours, and emphasis groups where every level shares one value are reported
 as warnings rather than blocked.
+
+The PR body counts tokens added, removed **and changed**, and lists each changed value as
+`before → after`. Recolouring a token changes no path, so a summary of added and removed tokens
+alone reads "0 added · 0 removed" for a push that did change things.
+
+The verify steps in `tokenTargets.json` run with the package's `node_modules/.bin` on the PATH, so
+they can name local binaries like `cross-env` the way `package.json` scripts do.
 
 ## How an icon push works
 

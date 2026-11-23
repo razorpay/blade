@@ -42,6 +42,9 @@ module.exports = (env, argv) => ({
       filename: 'ui.html',
       chunks: ['ui'],
       inject: 'body',
+      // With the script inlined, a cached template is never re-emitted on rebuild, so watch mode
+      // kept serving the first build's UI no matter what changed.
+      cache: false,
     }),
     new HtmlInlineScriptPlugin(),
   ],

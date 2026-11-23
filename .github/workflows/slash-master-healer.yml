@@ -90,34 +90,13 @@ jobs:
           fi
 
       # ----------------------------------------------------------------
-      # Step 2 — Post a commit comment with the Slash execution link
+      # Step 2 — Put the Slash execution link in the job summary.
+      # Not a commit comment: the org IP allow list refuses GitHub API
+      # calls from GitHub-hosted runners (403 since 12 Nov 2026).
       # ----------------------------------------------------------------
-      - name: Post commit comment with execution link
+      - name: Write execution link to job summary
         if: steps.trigger-slash.outputs.execution_url != ''
         env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
           EXECUTION_URL: ${{ steps.trigger-slash.outputs.execution_url }}
-          TASK_ID: ${{ steps.trigger-slash.outputs.task_id }}
         run: |
-          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
-            --method POST \
-            --field body="🤖 **Slash Master Healer** has been triggered to investigate and fix failing master checks.
-
-          [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
-
-      # ----------------------------------------------------------------
-      # Step 3 — Post failure comment if Slash trigger failed
-      # ----------------------------------------------------------------
-      - name: Post failure comment
-        if: failure()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
-            --method POST \
-            --field body="⚠️ **Slash Master Healer** failed to trigger. [View workflow run](${RUN_URL})"
+          echo "🤖 **Slash Master Healer** has been triggered to investigate and fix failing master checks. [View execution logs](${EXECUTION_URL})" >> "$GITHUB_STEP_SUMMARY"

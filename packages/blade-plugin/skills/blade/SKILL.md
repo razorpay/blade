@@ -3,7 +3,7 @@ name: blade
 description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging code that uses @razorpay/blade, choosing a component, pattern or token, upgrading Blade, or turning a figma.com frame into Blade code.
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *) Bash(node *changelog.mjs*) Bash(node *figma-to-code.mjs*) Read
 metadata:
-  version: '1.33.2'
+  version: '1.33.3'
 ---
 
 You are Razorpay's Frontend Engineer who knows the Blade design system. Do not rely on memorised Blade APIs: read the reference docs in this skill before answering questions or writing UI code. Prefer Blade components over custom components so the UI stays consistent.
@@ -59,7 +59,7 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 
 ## Available components
 
-Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, AppBar, AreaChart, AutoComplete, Avatar, Badge, BarChart, BottomBar, BottomNav, BottomSheet, Box, Breadcrumb, Button, ButtonGroup, Card, Carousel, ChatInput, ChatMessage, Checkbox, Chip, Code, Collapsible, ColorInput, Counter, CounterInput, DatePicker, Display, Divider, DonutChart, Drawer, Dropdown, Elevate, EmptyState, Fade, FileUpload, FloatingActionButton, Heading, IconButton, Icons, Indicator, InfoGroup, InputGroup, LightBox, LineChart, Link, List, ListView, Menu, Modal, Morph, Move, OTPInput, Pagination, PasswordInput, PhoneNumberInput, Popover, Preview, ProgressBar, QuickFilter, Radio, RazorSense, RazorSenseBottomWave, RazorSenseChat, RazorSenseChatBackground, RazorSenseGradient, RazorSenseLoader, RazorSenseThinking, SankeyChart, Scale, SearchInput, SegmentedControl, SelectInput, SideNav, Skeleton, SkipNav, Slide, SliderInput, Spinner, SpotlightPopoverTour, Stagger, StepGroup, Switch, Table, Tabs, Tag, Text, TextArea, TextInput, TimePicker, Toast, Tooltip, TopNav, TreeView, TrustBadge, VisuallyHidden
+Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, AppBar, AreaChart, AutoComplete, Avatar, Badge, BarChart, BottomBar, BottomNav, BottomSheet, Box, Breadcrumb, Button, ButtonGroup, Card, Carousel, ChatInput, ChatMessage, Checkbox, Chip, Code, Collapsible, ColorInput, Counter, CounterInput, DatePicker, Display, Divider, DonutChart, Drawer, Dropdown, Elevate, EmptyState, Fade, FileUpload, FloatingActionButton, FunnelChart, Heading, IconButton, Icons, Indicator, InfoGroup, InputGroup, LightBox, LineChart, Link, List, ListView, Menu, Modal, Morph, Move, OTPInput, Pagination, PasswordInput, PhoneNumberInput, Popover, Preview, ProgressBar, QuickFilter, Radio, RazorSense, RazorSenseBottomWave, RazorSenseChat, RazorSenseChatBackground, RazorSenseGradient, RazorSenseLoader, RazorSenseThinking, SankeyChart, Scale, SearchInput, SegmentedControl, SelectInput, SideNav, Skeleton, SkipNav, Slide, SliderInput, Spinner, SpotlightPopoverTour, Stagger, StepGroup, Switch, Table, Tabs, Tag, Text, TextArea, TextInput, TimePicker, Toast, Tooltip, TopNav, TreeView, TrustBadge, VisuallyHidden
 
 ## Available patterns
 

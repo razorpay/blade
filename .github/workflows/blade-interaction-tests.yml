@@ -16,12 +16,13 @@ on:
     branches:
       - 'master'
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   interaction-tests:
     name: Run Interaction Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # Pinned: Playwright 1.57 cannot install browsers on ubuntu-latest (26.04)
+    runs-on: ubuntu-24.04 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run Interaction Tests' || github.event_name == 'push' }}
     steps:
       - name: Checkout Codebase
@@ -36,6 +37,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2t64 libffi8 libx264-dev
+      # The Storybook build also builds the Svelte Storybook, which reads blade-core's dist output.
+      - name: Build blade-core
+        run: yarn build:blade-core
       - name: Run Interaction Tests
         run: |
           node node_modules/@storybook/test-runner/node_modules/.bin/playwright install chromium chromium-headless-shell firefox --with-deps

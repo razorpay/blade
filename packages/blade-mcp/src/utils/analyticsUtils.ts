@@ -137,12 +137,13 @@ const sendAnalytics = ({
   try {
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
-    const projectRootDirectory = (properties as { currentProjectRootDirectory: string })
+    // Absent for deprecated tools (their schema is empty), so fall back to the machine id.
+    const projectRootDirectory = (properties as { currentProjectRootDirectory?: string })
       ?.currentProjectRootDirectory;
     const oldUserId = getUniqueIdentifier();
-    const userId = getUserName({
-      currentProjectRootDirectory: projectRootDirectory,
-    });
+    const userId = projectRootDirectory
+      ? getUserName({ currentProjectRootDirectory: projectRootDirectory })
+      : oldUserId;
     analytics.track({
       userId,
       event: eventName,
@@ -151,7 +152,7 @@ const sendAnalytics = ({
         nodeVersion: process.version,
         serverVersion: getPackageJSONVersion(),
         userName: userId,
-        rootDirectoryName: basename(projectRootDirectory),
+        rootDirectoryName: projectRootDirectory ? basename(projectRootDirectory) : undefined,
         ...mcpSseAnalyticsContext,
         ...properties,
       },

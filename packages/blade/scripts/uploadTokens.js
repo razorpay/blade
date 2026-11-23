@@ -20,6 +20,7 @@ const {
   collectTokenPaths,
   collectTokenPathsFromSource,
   diffTokenPaths,
+  diffTokenValues,
   findUnresolvableValueRoots,
   mergePreservedTokens,
   replaceDeclaration,
@@ -48,6 +49,11 @@ const blockers = [];
 const warnings = [];
 
 const touchedFiles = new Set();
+/**
+ * One written file per token tree, with the values it held before the write. Read back once
+ * prettier has run, so both sides are compared in the same formatting.
+ */
+const valueSnapshots = [];
 /** Code-owned tokens carried over because the payload has never heard of them. */
 const preservedTokens = new Set();
 
@@ -147,7 +153,12 @@ const writeDeclaration = ({ relativePath, declarationRegex, replacementTemplate,
 
   fs.writeFileSync(absolutePath, content);
   touchedFiles.add(absolutePath);
-  return { previousPaths, mergedPaths: collectTokenPaths(mergedTree) };
+  return {
+    absolutePath,
+    previousPaths,
+    previousValues: values,
+    mergedPaths: collectTokenPaths(mergedTree),
+  };
 };
 
 /**
@@ -173,6 +184,15 @@ const writeTokenTree = ({ label, tree, config }) => {
       warnings.push(
         `The mirrored copies of \`${label}\` were out of sync before this push — \`${relativePath}\` held a different set of token paths than the file before it. Both have been overwritten with the Figma payload.`,
       );
+    }
+    // the mirrors receive identical content, so one of them is enough to diff values against
+    if (!previousPaths) {
+      valueSnapshots.push({
+        label,
+        absolutePath: written.absolutePath,
+        declarationRegex,
+        previousValues: written.previousValues,
+      });
     }
     previousPaths = written.previousPaths;
     // preserved tokens are part of what landed, so the diff must not call them removed
@@ -247,7 +267,16 @@ const findConsumersOfRemovedTokens = (removedPaths) => {
 const runStep = ({ name, cwd, command }) => {
   console.log(`\n▶ ${name}: ${command}`);
   try {
-    execa.commandSync(command, { cwd: toRepoPath(cwd), stdio: 'inherit', shell: true });
+    // Steps are written the way package.json scripts are, naming local binaries like `cross-env`
+    // directly. A bare shell does not have `node_modules/.bin` on its PATH, so without
+    // `preferLocal` the snapshot steps died with `cross-env: not found` on every push.
+    execa.commandSync(command, {
+      cwd: toRepoPath(cwd),
+      stdio: 'inherit',
+      shell: true,
+      preferLocal: true,
+      localDir: toRepoPath(cwd),
+    });
     return true;
   } catch (error) {
     blockers.push(`\`${name}\` failed (\`${command}\`). See the workflow logs for the output.`);
@@ -275,7 +304,24 @@ const collapsibleList = (title, items) => {
   ].join('\n');
 };
 
-const buildPullRequestBody = ({ added, removed, consumers, report }) => {
+const changedValuesList = (changed) => {
+  if (!changed.length) return null;
+  return [
+    '<details>',
+    `<summary>Changed token values (${changed.length})</summary>`,
+    '',
+    changed
+      .map(
+        ({ path: tokenPath, before, after }) => `- \`${tokenPath}\`: \`${before}\` → \`${after}\``,
+      )
+      .join('\n'),
+    '',
+    '</details>',
+    '',
+  ].join('\n');
+};
+
+const buildPullRequestBody = ({ added, removed, changed, consumers, report }) => {
   const sections = [
     'This PR was opened by the Token Upload GitHub action. It updates source token files based on the payload from the Figma plugin.',
     '',
@@ -295,10 +341,11 @@ const buildPullRequestBody = ({ added, removed, consumers, report }) => {
   sections.push(
     '## Token changes',
     '',
-    `**${added.length}** added · **${removed.length}** removed`,
+    `**${added.length}** added · **${removed.length}** removed · **${changed.length}** changed`,
     '',
     collapsibleList('Added token paths', added),
     collapsibleList('Removed token paths', removed),
+    changedValuesList(changed),
   );
 
   if (removed.length) {
@@ -355,15 +402,15 @@ const determineBump = ({ added, removed }) => {
   return 'patch';
 };
 
-const writeChangeset = ({ branchName, added, removed }) => {
+const writeChangeset = ({ branchName, added, removed, changed }) => {
   const bump = determineBump({ added, removed });
   const plural = (count) => (count === 1 ? '' : 's');
   const summary = [
     'update design tokens from Figma',
     '',
-    `Added ${added.length} token${plural(added.length)} and removed ${removed.length} token${plural(
+    `Added ${added.length} token${plural(added.length)}, removed ${removed.length} token${plural(
       removed.length,
-    )}.`,
+    )} and changed the value of ${changed.length} token${plural(changed.length)}.`,
   ];
 
   if (removed.length) {
@@ -445,23 +492,36 @@ const uploadColorTokens = async () => {
     warnings.push('The payload contained no global color tokens, so `colors.ts` was not touched.');
   }
 
-  // Derived files (e.g. theme.css from the token TS files) regenerate before the touchedFiles
-  // guard below, so a generator failure blocks the same way a write failure does, and a
-  // successful run lands its output in the same PR as the tokens it was derived from.
+  // Checked before the generated steps: they always add their outputs to `touchedFiles`, so a
+  // check placed after them never fires — which is how an empty `{}` payload opened a PR holding
+  // nothing but a changeset.
+  if (!touchedFiles.size) {
+    console.error('Nothing was written: the payload produced no token files.');
+    blockers.forEach((blocker) => console.error(`- ${blocker}`));
+    process.exit(1);
+  }
+
+  // Derived files (e.g. theme.css from the token TS files) regenerate after the token writes, so
+  // a generator failure blocks the same way a write failure does, and a successful run lands its
+  // output in the same PR as the tokens it was derived from.
   (targets.verify.generated ?? []).forEach((step) => {
     if (runStep(step)) {
       step.outputs.forEach((output) => touchedFiles.add(toRepoPath(output)));
     }
   });
 
-  if (!touchedFiles.size) {
-    console.error('Nothing was written.');
-    blockers.forEach((blocker) => console.error(`- ${blocker}`));
-    process.exit(1);
-  }
-
   // formatting first: everything after this reads the files back
   execa.sync('yarn', ['prettier', '--write', ...touchedFiles], { cwd: BLADE_ROOT });
+
+  const changed = valueSnapshots.flatMap(
+    ({ label, absolutePath, declarationRegex, previousValues }) => {
+      const { values } = scanDeclaration(fs.readFileSync(absolutePath, 'utf8'), declarationRegex);
+      return diffTokenValues(previousValues, values).map((change) => ({
+        ...change,
+        path: `${label}.${change.path}`,
+      }));
+    },
+  );
 
   const consumers = findConsumersOfRemovedTokens(toSearchablePath(removed));
   if (consumers.length) {
@@ -481,12 +541,15 @@ const uploadColorTokens = async () => {
   }
 
   console.log(
-    `\n${added.length} token(s) added, ${removed.length} token(s) removed, ${preservedTokens.size} preserved.`,
+    `\n${added.length} token(s) added, ${removed.length} token(s) removed, ${changed.length} value(s) changed, ${preservedTokens.size} preserved.`,
+  );
+  changed.forEach(({ path: tokenPath, before, after }) =>
+    console.log(`  ~ ${tokenPath}: ${before} → ${after}`),
   );
   warnings.forEach((warning) => console.warn(`⚠️  ${warning}`));
   blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
 
-  const body = buildPullRequestBody({ added, removed, consumers, report });
+  const body = buildPullRequestBody({ added, removed, changed, consumers, report });
 
   if (isDryRun) {
     console.log(`\n--dry-run: files written, git and GitHub untouched.\n\n${body}`);
@@ -497,7 +560,7 @@ const uploadColorTokens = async () => {
     .generator([randomNameGenerator.verb, randomNameGenerator.noun])
     .choose();
 
-  writeChangeset({ branchName, added, removed });
+  writeChangeset({ branchName, added, removed, changed });
 
   execa.commandSync(`git checkout -b ${branchName}`, { cwd: REPO_ROOT });
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`, { cwd: REPO_ROOT });

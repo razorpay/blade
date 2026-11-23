@@ -7,17 +7,25 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write      # pushes base stats to the bundle-size-stats branch
+
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   pr-bundle-size:
     name: Generate PR Report
+    # GitHub-hosted on purpose: this runs PR code (including from forks), which must not run on
+    # razorpay's self-hosted runners. It makes no GitHub API calls, so the org IP allow list
+    # (403 since 12 Nov 2026) does not affect it: the report goes to the job summary, not a PR comment.
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'pull_request' && github.event.head_commit.author.name != 'rzpcibot' }}
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # PR merge commit + its first parent (base branch tip)
       - name: Use Node v20
         uses: actions/setup-node@v4
         with:
@@ -27,16 +35,16 @@ jobs:
       - name: Update Bundle Size Data
         run: yarn generate-bundle-size-info
         working-directory: packages/blade
-      - name: Danger
-        run: yarn danger ci
+      # HEAD is the PR merge commit, so diffing against its first parent gives the PR's changed files.
+      - name: Write Bundle Size Report to Job Summary
+        run: node scripts/writeBundleSizeSummary.js $(git diff --name-only HEAD^1 HEAD)
         working-directory: packages/blade
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
-          DANGER_DISABLE_TRANSPILATION: 'true'
 
   master-bundle-size:
     name: Update Base Stats
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # razorpay's k8s runner pool, not GitHub-hosted: the org IP allow list refuses pushes from
+    # GitHub-hosted runners (403 since 12 Nov 2026).
+    runs-on: [k8s-runner, non-api, xlarge-size, linux-amd64]
     if: ${{ github.event_name == 'push' }}
     concurrency:
       group: bundle-size-stats-update
@@ -45,7 +53,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CI_BOT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
       - name: Use Node v20
         uses: actions/setup-node@v4

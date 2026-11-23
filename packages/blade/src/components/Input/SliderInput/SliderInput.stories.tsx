@@ -72,6 +72,29 @@ Disabled.args = {
 export const UnevenSteps = SliderInputTemplate.bind({});
 UnevenSteps.args = { step: 30, showMarkers: true, showScale: true, defaultValue: 60 };
 
+const retryPolicies = ['Always ask me', 'Retry once', 'Retry twice', 'Always retry'];
+
+/**
+ * The first and last scale labels grow inward from their tick, so long end labels stay inside
+ * the track.
+ */
+export const LongEndLabels: StoryFn<typeof SliderInput> = () => {
+  return (
+    <Box maxWidth="400px">
+      <SliderInput
+        label="When a call fails"
+        min={0}
+        max={retryPolicies.length - 1}
+        step={1}
+        defaultValue={1}
+        showMarkers
+        showScale
+        formatValue={(value) => retryPolicies[value]}
+      />
+    </Box>
+  );
+};
+
 export const Steps: StoryFn<typeof SliderInput> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.7" maxWidth="400px">

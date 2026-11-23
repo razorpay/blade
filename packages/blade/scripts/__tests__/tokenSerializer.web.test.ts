@@ -13,6 +13,8 @@ const {
   collectTokenPaths,
   collectTokenPathsFromSource,
   diffTokenPaths,
+  diffTokenTreeAgainstSource,
+  diffTokenValues,
   findUnresolvableValueRoots,
   replaceDeclaration,
   serializeTokens,
@@ -382,5 +384,157 @@ describe('diffTokenPaths', () => {
       added: ['a.d'],
       removed: ['a.b'],
     });
+  });
+});
+
+describe('diffTokenValues', () => {
+  it('reports a recoloured token that a path diff sees as unchanged', () => {
+    const before = scanDeclaration(THEME_FILE, THEME_DECLARATION).values;
+    const after = scanDeclaration(THEME_FILE.replace('azure[500]', 'azure[600]'), THEME_DECLARATION)
+      .values;
+
+    expect(diffTokenPaths(Object.keys(before), Object.keys(after))).toEqual({
+      added: [],
+      removed: [],
+    });
+    expect(diffTokenValues(before, after)).toEqual([
+      {
+        path: 'onLight.surface.background.primary.intense',
+        before: 'globalColors.chromatic.azure[500]',
+        after: 'globalColors.chromatic.azure[600]',
+      },
+    ]);
+  });
+
+  it('ignores whitespace and trailing commas that only formatting moved', () => {
+    expect(
+      diffTokenValues(
+        { 'a.b': '`hsla(0, 0%, 0%, ${opacity[8]})`' },
+        { 'a.b': '`hsla(0,0%,0%,${opacity[8]})`,' },
+      ),
+    ).toEqual([]);
+  });
+
+  it('leaves added and removed paths to the path diff', () => {
+    expect(diffTokenValues({ 'a.removed': "'x'" }, { 'a.added': "'y'" })).toEqual([]);
+  });
+});
+
+describe('scanDeclaration with wrapped values', () => {
+  it('reads a value prettier moved onto the line after its key', () => {
+    const wrapped = THEME_FILE.replace(
+      'intense: globalColors.chromatic.azure[500],',
+      'intense:\n          globalColors.chromatic.azure[500],',
+    );
+    expect(scanDeclaration(wrapped, THEME_DECLARATION).values).toEqual(
+      scanDeclaration(THEME_FILE, THEME_DECLARATION).values,
+    );
+  });
+
+  it.each([
+    [
+      'starts on the key line',
+      'intense: helpers.mix(\n          globalColors.chromatic.azure[500],\n          opacity[8],\n        ),',
+    ],
+    [
+      'starts on the line after its key',
+      'intense:\n          helpers.mix(\n            globalColors.chromatic.azure[500],\n            opacity[8],\n          ),',
+    ],
+  ])('reads the whole of a value prettier broke over several lines when it %s', (_, source) => {
+    const { values } = scanDeclaration(
+      THEME_FILE.replace('intense: globalColors.chromatic.azure[500],', source),
+      THEME_DECLARATION,
+    );
+
+    expect(values['onLight.surface.background.primary.intense'].replace(/\s+/g, '')).toBe(
+      'helpers.mix(globalColors.chromatic.azure[500],opacity[8],)',
+    );
+    // the lines inside the value must not be read as tokens, nor swallow the ones after it
+    expect(Object.keys(values).sort()).toEqual([
+      'onLight.overlay.background.subtle',
+      'onLight.surface.background.primary.faint',
+      'onLight.surface.background.primary.intense',
+    ]);
+  });
+
+  it('is not thrown by brackets inside a quoted string', () => {
+    const { values } = scanDeclaration(
+      THEME_FILE.replace("faint: 'transparent',", "faint: '(transparent',"),
+      THEME_DECLARATION,
+    );
+    expect(values['onLight.surface.background.primary.faint']).toBe("'(transparent'");
+    expect(values['onLight.surface.background.primary.intense']).toBe(
+      'globalColors.chromatic.azure[500]',
+    );
+  });
+});
+
+describe('diffTokenTreeAgainstSource', () => {
+  const tree = {
+    onLight: {
+      surface: {
+        background: {
+          primary: {
+            faint: { k: 's', v: 'transparent' },
+            intense: { k: 'e', v: 'globalColors.chromatic.azure[600]' },
+          },
+        },
+      },
+      overlay: { background: { subtle: { k: 't', v: 'hsla(0, 0%, 0%, ${opacity[8]})' } } },
+    },
+  };
+
+  it('reports nothing when the tree matches the file', () => {
+    expect(
+      diffTokenTreeAgainstSource({
+        tree: JSON.parse(JSON.stringify(tree).replace('azure[600]', 'azure[500]')),
+        fileContent: THEME_FILE,
+        declarationRegex: THEME_DECLARATION,
+        expressionRoots: EXPRESSION_ROOTS,
+      }),
+    ).toEqual({ added: [], removed: [], changed: [] });
+  });
+
+  it('reports changed, added and removed tokens in the file’s own terms', () => {
+    const withChanges = JSON.parse(JSON.stringify(tree));
+    delete withChanges.onLight.overlay;
+    withChanges.onLight.surface.background.primary.subtle = {
+      k: 'e',
+      v: 'globalColors.chromatic.azure[100]',
+    };
+
+    expect(
+      diffTokenTreeAgainstSource({
+        tree: withChanges,
+        fileContent: THEME_FILE,
+        declarationRegex: THEME_DECLARATION,
+        expressionRoots: EXPRESSION_ROOTS,
+      }),
+    ).toEqual({
+      added: ['onLight.surface.background.primary.subtle'],
+      removed: ['onLight.overlay.background.subtle'],
+      changed: [
+        {
+          path: 'onLight.surface.background.primary.intense',
+          before: 'globalColors.chromatic.azure[500]',
+          after: 'globalColors.chromatic.azure[600]',
+        },
+      ],
+    });
+  });
+
+  it('does not report code-owned preserved tokens as removed', () => {
+    const withoutOverlay = JSON.parse(JSON.stringify(tree));
+    delete withoutOverlay.onLight.overlay;
+
+    expect(
+      diffTokenTreeAgainstSource({
+        tree: withoutOverlay,
+        fileContent: THEME_FILE,
+        declarationRegex: THEME_DECLARATION,
+        expressionRoots: EXPRESSION_ROOTS,
+        preservedPaths: ['*.overlay.background.subtle'],
+      }).removed,
+    ).toEqual([]);
   });
 });

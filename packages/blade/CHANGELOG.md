@@ -1,5 +1,38 @@
 # @razorpay/blade
 
+## 12.131.0
+
+### Minor Changes
+
+- 886f987c6: feat(Button): add `neutral` color
+
+  - `color="neutral"` is available with `variant="primary"` and renders a filled neutral button
+  - `ButtonGroup` colors are unchanged
+  - `CardHeaderIconButton` `color` now accepts only `primary` and `white`, the colors its tertiary button supports. `positive` and `negative` already threw an error at render, so code passing them now fails to type-check instead
+
+- 3aca1440d: feat(Table): add `stickyColumns` to pin more than one column
+
+  - New `stickyColumns={N}` prop on `Table` keeps the first N columns in view while the table scrolls horizontally. With `selectionType="multiple"` the checkbox column is pinned too and isn't counted.
+  - Each sticky column is offset by the measured widths of the columns before it, so it works with any `gridTemplateColumns`. This also fixes the sticky first data column in multi-select tables, which used a fixed 44px offset even when the checkbox column was wider.
+  - Once the table is scrolled horizontally, a divider and a `midRaised` shadow fade in after the last sticky column, and fade out again at the left edge. In rows below a cell that spans rows, only the first column stays pinned and there is no divider, rather than cells pinned at the wrong offset.
+  - On mobile, only the first column stays sticky so the pinned columns don't fill the screen.
+  - Works in virtualized tables: the rows and header now grow to the width of their columns so sticky cells don't slide out of view when scrolled far right.
+  - `isFirstColumnSticky` keeps working and is now deprecated in favour of `stickyColumns={1}`. `stickyColumns` takes precedence when both are set. The divider and scroll shadow only come with `stickyColumns`, so tables using `isFirstColumnSticky` look the same as before.
+
+### Patch Changes
+
+- 886f987c6: fix(Button): align shadow, disabled and focus styles with Figma
+
+  - Filled `primary`, `positive` and `negative` buttons use a stronger inner highlight
+  - `secondary` and `tertiary` buttons use a darker bottom edge on hover
+  - `white` buttons use the updated bottom edge, and `white` `secondary` and `tertiary` buttons use a lighter disabled fill
+  - The focus ring is now a 4px outline with a 1px gap
+  - `FloatingActionButton` loading dots use the same colors as `Button`: `primary` and `neutral` FABs no longer show white dots on the faded loading surface
+
+- 039d77b79: update design tokens from Figma
+
+  Added 0 tokens and removed 0 tokens.
+
 ## 12.130.2
 
 ### Patch Changes
