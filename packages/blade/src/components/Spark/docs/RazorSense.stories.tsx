@@ -470,12 +470,42 @@ export const BottomWave = BottomWaveTemplate.bind({});
 
 /**
  * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input and a faint wave settles under it, its path drifting.
- * Type in it to see the typing surge: it pulses with the typing and dies back down after. The controls size the box it settles
- * under, scale it and move it.
+ * Type in it to see the typing surge: it pulses with the typing and dies back down after. "Finish with success" and "Finish with
+ * error" set its `outcome`, as an app does once an answer that ran a task has filled in (the surge has long settled into the wave
+ * by then): its green or red splash plays once and ends at its rest. "Go offline" drops it below the page (`isOffline`). The
+ * buttons only set those props. The controls size the box it settles under, scale it and move it.
  */
 export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
+  const [isOffline, setIsOffline] = useState(false);
+  // (an outcome plays once each time it's set: cleared first, so the same one plays again)
+  const finish = (next: 'success' | 'error') => {
+    setOutcome(undefined);
+    window.setTimeout(() => setOutcome(next), 50);
+  };
   return (
     <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+      <Box
+        position="absolute"
+        top="spacing.0"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        gap="spacing.3"
+        alignItems="center"
+        padding="spacing.4"
+        zIndex={1}
+      >
+        <Button size="small" variant="secondary" onClick={() => finish('success')}>
+          Finish with success
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => finish('error')}>
+          Finish with error
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
+      </Box>
       <Box
         position="absolute"
         bottom="spacing.4"
@@ -488,7 +518,7 @@ export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x,
         paddingX="spacing.4"
       >
         <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
-          <RazorSenseBottomWave scale={scale}>
+          <RazorSenseBottomWave scale={scale} outcome={outcome} isOffline={isOffline}>
             <ControlledInput height={height} />
           </RazorSenseBottomWave>
         </div>
@@ -511,18 +541,13 @@ BottomWaveV2.storyName = 'Bottom Wave 2.0';
 /**
  * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
  * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
- * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on.
- * "Finish with success" and "Finish with error" answer with how the task ended (`outcome`): once the wave settles, it plays its
- * green or red wave once, back to its rest. "Go offline" drops the wave below the chat (`isOffline`); back online, it rises back.
+ * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on. "Go
+ * offline" drops the wave below the chat (`isOffline`); back online, it rises back. (An answer's success or error plays on the
+ * wave after it has settled: `outcome`, in Bottom Wave 2.0.)
  */
 export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
   const [isThinking, setIsThinking] = useState(true);
-  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
   const [isOffline, setIsOffline] = useState(false);
-  const finish = (next?: 'success' | 'error') => {
-    setIsThinking(false);
-    setOutcome(next);
-  };
   return (
     <Box
       margin="-32px"
@@ -540,33 +565,19 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
         borderBottomWidth="thin"
         borderBottomColor="surface.border.gray.muted"
       >
-        <Button size="small" variant="secondary" isDisabled={!isThinking} onClick={() => finish()}>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isThinking}
+          onClick={() => setIsThinking(false)}
+        >
           Finish thinking
         </Button>
         <Button
           size="small"
           variant="secondary"
-          isDisabled={!isThinking}
-          onClick={() => finish('success')}
-        >
-          Finish with success
-        </Button>
-        <Button
-          size="small"
-          variant="secondary"
-          isDisabled={!isThinking}
-          onClick={() => finish('error')}
-        >
-          Finish with error
-        </Button>
-        <Button
-          size="small"
-          variant="secondary"
           isDisabled={isThinking}
-          onClick={() => {
-            setOutcome(undefined);
-            setIsThinking(true);
-          }}
+          onClick={() => setIsThinking(true)}
         >
           Think again
         </Button>
@@ -574,19 +585,11 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
           {isOffline ? 'Back online' : 'Go offline'}
         </Button>
         <Text size="small" color="surface.text.gray.muted">
-          {isOffline
-            ? 'Offline'
-            : isThinking
-            ? 'Thinking'
-            : outcome === 'success'
-            ? 'Done: success'
-            : outcome === 'error'
-            ? 'Done: error'
-            : 'Bottom wave'}
+          {isOffline ? 'Offline' : isThinking ? 'Thinking' : 'Bottom wave'}
         </Text>
       </Box>
       <Box flex="1" minHeight="0px">
-        <RazorSenseChat outcome={outcome} isOffline={isOffline}>
+        <RazorSenseChat isOffline={isOffline}>
           <Box
             display="flex"
             flexDirection="column"
@@ -609,11 +612,9 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
                 <RazorSenseThinking>Searching your settlements…</RazorSenseThinking>
               ) : (
                 <Text color="surface.text.gray.normal" size="large">
-                  {outcome === 'success'
-                    ? 'Your dispute evidence was sent to the card network. You’ll hear back within 7 days; the ₹26,000 stays on hold till then.'
-                    : outcome === 'error'
-                    ? 'Couldn’t submit the evidence: the card network didn’t respond in time. Nothing was sent, and your evidence is saved as a draft.'
-                    : 'Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions, with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands tomorrow morning.'}
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
                 </Text>
               )}
             </Box>
@@ -706,7 +707,7 @@ export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
           variant="secondary"
           onClick={() => setPlace((v) => (v === 'landing' ? 'chat' : 'landing'))}
         >
-          {place === 'landing' ? 'Show the chat' : 'Show the landing'}
+          {place === 'landing' ? 'Show bottom' : 'Show default'}
         </Button>
         <Text size="small" color="surface.text.gray.muted">
           {note ||
@@ -1347,12 +1348,16 @@ const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = ()
 export const RzpGlassSuccessAnimation = RzpGlassSuccessAnimationTemplate.bind({});
 
 /**
- * RazorSense 2.0's success moment, `RazorSenseSuccess`: a glass orb rises into place with a white tick on it, then shrinks and fades
- * as Blade's success badge pops in where it was, and the tick turns into the badge's check. It's the badge's size in the layout; the
- * orb rises from below it and goes. It plays once when it mounts (Replay mounts it again); `onComplete` when it has played out.
- * Light and dark are their own tunings: switch them in the bar. The 2.0 twin of Rzp Glass Success Animation above.
+ * RazorSense 2.0's success moment, `RazorSenseSuccess`, as the RazorSense system made it: a glass orb rises into place with a white
+ * tick on it, then shrinks and fades as Blade's success badge pops in where it was, and the tick turns into the badge's check. Its
+ * `label` (the controls: its text, and on or off) comes in under the badge as it pops in. It plays once when it mounts (Replay mounts
+ * it again); `onComplete` when it has played out. Light and dark are their own tunings: switch them in the bar. The 2.0 twin of Rzp
+ * Glass Success Animation above.
  */
-export const RzpGlassSuccessAnimationV2: StoryFn<typeof RazorSenseSuccess> = () => {
+export const RzpGlassSuccessAnimationV2: StoryFn<{ label: string; hasLabel: boolean }> = ({
+  label,
+  hasLabel,
+}) => {
   const { colorScheme, setColorScheme } = useTheme();
   const [run, setRun] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -1386,23 +1391,23 @@ export const RzpGlassSuccessAnimationV2: StoryFn<typeof RazorSenseSuccess> = () 
           {isComplete ? 'onComplete fired' : 'Playing'}
         </Text>
       </Box>
-      <Box
-        flex="1"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        gap="spacing.5"
-        overflow="hidden"
-      >
-        <RazorSenseSuccess key={run} onComplete={() => setIsComplete(true)} />
-        <Heading size="medium">Payment received</Heading>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center" overflow="hidden">
+        <RazorSenseSuccess
+          key={run}
+          label={hasLabel ? label : undefined}
+          onComplete={() => setIsComplete(true)}
+        />
       </Box>
     </Box>
   );
 };
 RzpGlassSuccessAnimationV2.storyName = 'Rzp Glass Success Animation 2.0';
-RzpGlassSuccessAnimationV2.parameters = { controls: { disable: true } };
+RzpGlassSuccessAnimationV2.args = { label: 'Payment received', hasLabel: true };
+RzpGlassSuccessAnimationV2.argTypes = {
+  label: { control: 'text', description: 'The text under the badge (`label`)' },
+  hasLabel: { control: 'boolean', description: 'With a label, or the badge alone' },
+};
+RzpGlassSuccessAnimationV2.parameters = { controls: { include: ['label', 'hasLabel'] } };
 
 const motionGStyle = {
   originX: '12px',

@@ -31,6 +31,10 @@ type ChatStageOptions = {
   isPaused: boolean;
   onLoad?: () => void;
   onError?: (error: Error) => void;
+  /** told when an outcome starts and stops playing on the strip (the lone bottom wave reaches up to its splash only meanwhile) */
+  onOutcome?: (isPlaying: boolean) => void;
+  /** changed when the component moves its stage itself (its reach): where its parts are is read again at once */
+  layoutKey?: unknown;
 } & Partial<ChatStateInputs>;
 
 /**
@@ -47,6 +51,8 @@ const useChatStage = ({
   stageRef,
   isThinking,
   getAnchors,
+  onOutcome,
+  layoutKey,
   scale,
   isPaused,
   onLoad,
@@ -64,6 +70,13 @@ const useChatStage = ({
   onErrorRef.current = onError;
   const anchorsRef = useRef(getAnchors);
   anchorsRef.current = getAnchors;
+  const onOutcomeRef = useRef(onOutcome);
+  onOutcomeRef.current = onOutcome;
+  // (the stage moved by its own component: its parts are read again on the next frame)
+  const isRelaidRef = useRef(false);
+  useEffect(() => {
+    isRelaidRef.current = true;
+  }, [layoutKey]);
   // read when the engine is up (it loads asynchronously, so a change before then still counts)
   const isThinkingRef = useRef(isThinking);
   isThinkingRef.current = isThinking;
@@ -186,11 +199,13 @@ const useChatStage = ({
                 },
               })
             : null;
+        let isOutcomePlaying = false;
         stage.setDriver((eng, dt) => {
           framesSinceRead += 1;
-          if (isMoved || framesSinceRead >= ANCHOR_REREAD) {
+          if (isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD) {
             anchors = anchorsRef.current();
             isMoved = false;
+            isRelaidRef.current = false;
             framesSinceRead = 0;
           }
           const frameAt = performance.now();
@@ -198,6 +213,10 @@ const useChatStage = ({
           states.frame(dt, frameAt, driver, anchors);
           driver.setAnchors(anchors, scale, ROOM); // (the chat moves, it follows, as flow 9)
           driver.step(eng.player, dt, frameAt);
+          if (driver.isPlayingOutcome !== isOutcomePlaying) {
+            isOutcomePlaying = driver.isPlayingOutcome;
+            onOutcomeRef.current?.(isOutcomePlaying);
+          }
           // offline, dropped all the way: nothing of it shows, so it stops drawing till it's back online
           if (driver.isAway(frameAt) && !isAwayRef.current) {
             isAwayRef.current = true;

@@ -56,3 +56,17 @@ RazorSense 2.0 (`RazorSenseChatBackground`, `RazorSenseChat`, `RazorSenseBottomW
 ## Their stills (2026-11-24)
 
 Where it can't animate, the states follow the animated strip's rules: an outcome waits till the strip can show it (thinking done, online, the voice look down), then shows for its piece's full length; the chat's strip comes back online over offline's 1.2 s, not thinking's 0.6 s. (Found by the states' interaction tests.)
+
+## Which component takes which state (2026-11-24)
+
+The states are props an app sets; the stories' buttons only flip them.
+
+| State                         | On                                                                            | What it does                                                                                                                                                                                                              |
+| ----------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isOffline`                   | `RazorSenseChatBackground`, `RazorSenseChat`, `RazorSenseBottomWave`          | the landing fades away; the chat's strip drops                                                                                                                                                                            |
+| `isListening` + `voiceStream` | the same three                                                                | the RazorSense that's there goes and the voice look comes (the chat background's strip on the default, the bottom remnant on the bottom); off, it comes back. Each component owns its own hand-over: an app sets one prop |
+| `outcome`                     | `RazorSenseBottomWave` (on its own), and `RazorSenseChat` for its bottom wave | the strip's success or error splash, once                                                                                                                                                                                 |
+
+- **Success and error are the bottom wave's** (the user: the bottom surge happens before the answer starts to fill in; by the time it has, the surge is long over, and the outcome plays on the wave). They moved from Bottom Surge 2.0's bar to Bottom Wave 2.0's. Inside `RazorSenseChat` an outcome still waits for the surge to settle into the wave.
+- **The lone bottom wave reaches its splash.** On its own its canvas reaches 150 px above the input and 700 to each side, as far as the wave does; while an outcome plays it reaches the window's sides and top (the splash reaches them, as in flow 10.5), then gives that back. Measured at 1512 x 982 at 2x: at rest 112 MB light / 157 MB dark, during the splash 149 / 194, after it 111 / 154. Its canvas, 2240 x 640 at rest and 2419 x 1912 while the splash plays, is back to 2240 x 640 after.
+- **Voice 2.0's toggle** is "Show bottom" / "Show default" (the default is the landing's chat input; the bottom, a chat's).

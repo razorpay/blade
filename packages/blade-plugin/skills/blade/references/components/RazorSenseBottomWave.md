@@ -21,7 +21,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 - It draws at most 60 frames a second (a 120 Hz screen doesn't double its work); it pauses off-screen and in hidden tabs, and gives its GPU memory back once it has been out of sight for 30 seconds (it takes it again just before it scrolls back in). On a device that can't hold 45 frames a second it steps down, page-wide, before its still: every other frame, then a lower sharpness too.
 - Its `ref`, `className` and `style` go to its root element (web).
 - It isn't RazorSense's `preset="bottomWave"`: that one is a static image, a decorative strip. Use RazorSenseBottomWave for the animated wave under a chat input.
-- On its own it takes the same states as `RazorSenseChat` (`isOffline`, `isListening` with `voiceStream`, `outcome`); inside a `RazorSenseChat` they're the chat's (its own are ignored, with a warning in development). On its own its canvas reaches only a little above the input, so an outcome's splash shows there and no higher.
+- On its own it takes the same states as `RazorSenseChat` (`isOffline`, `isListening` with `voiceStream`, `outcome`); inside a `RazorSenseChat` they're the chat's (its own are ignored, with a warning in development). `outcome` is set once an answer that ran a task has filled in, after the bottom surge has settled into the wave. On its own its canvas reaches a little above the input; while an outcome plays it reaches the window's sides and top, so the splash is never cut, and gives that back after (its GPU memory at rest is unchanged).
 
 ## TypeScript Types
 

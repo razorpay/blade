@@ -18,6 +18,8 @@ const THINKING_REACH = { left: 160, right: 750, up: 120, down: 340 };
  * carried on below flow 9's window): the canvas a RazorSenseBottomWave draws on by itself.
  */
 const BOTTOM_WAVE_REACH = { side: 700, up: 150, down: 250 };
+/** how far above the input a lone bottom wave's canvas reaches while an outcome plays: as far as its splash goes (CSS px at scale 1) */
+const OUTCOME_REACH_UP = 620;
 
 /** thinking's slot for a thinking label at `r` */
 const thinkingSlot = (r: Rect): [number, number] => [
@@ -67,5 +69,6 @@ export {
   rectIn,
   thinkingFrame,
   thinkingSlot,
+  OUTCOME_REACH_UP,
 };
 export type { Rect };

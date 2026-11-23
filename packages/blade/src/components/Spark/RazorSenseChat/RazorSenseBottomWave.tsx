@@ -1,8 +1,8 @@
-import React, { forwardRef, useContext, useEffect, useRef } from 'react';
+import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import type { RazorSenseBottomWaveProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
-import { BOTTOM_WAVE_REACH, inputAnchor, rectIn } from './placement';
+import { BOTTOM_WAVE_REACH, OUTCOME_REACH_UP, inputAnchor, rectIn } from './placement';
 import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { useStateStill } from './useStateStill';
@@ -63,6 +63,24 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
     const mergedRef = useMergeRefs(forwardedRef, boxRef);
     const stageRef = useRef<HTMLDivElement>(null);
     const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseBottomWave', 'scale');
+    // on its own its canvas reaches 150 px above the input and 700 to each side, as far as the wave does; while an outcome plays, as
+    // far as its splash: the window's sides and top, as in flow 10.5 (and back after, so its GPU memory at rest is as it was)
+    const [reach, setReach] = useState<{ up: number; side: number } | null>(null);
+    const up = reach ? reach.up : BOTTOM_WAVE_REACH.up * s;
+    const side = reach ? reach.side : BOTTOM_WAVE_REACH.side * s;
+    const onOutcome = (isPlaying: boolean): void => {
+      const box = boxRef.current;
+      if (!isPlaying || !box) {
+        setReach(null);
+        return;
+      }
+      const r = box.getBoundingClientRect();
+      const middle = r.left + r.width / 2;
+      setReach({
+        up: Math.max(OUTCOME_REACH_UP * s, r.bottom),
+        side: Math.max(BOTTOM_WAVE_REACH.side * s, middle, window.innerWidth - middle),
+      });
+    };
 
     // inside a RazorSenseChat: the chat draws the wave here (registered once: the chat's register doesn't change)
     const register = chat?.register;
@@ -78,13 +96,13 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       if (chat || !stage || !box) return undefined;
       return watchSpill(stage, () => {
         placeSpill(stage, {
-          left: box.clientWidth / 2 - BOTTOM_WAVE_REACH.side * s,
-          top: box.clientHeight - BOTTOM_WAVE_REACH.up * s,
-          width: BOTTOM_WAVE_REACH.side * 2 * s,
-          height: (BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s,
+          left: box.clientWidth / 2 - side,
+          top: box.clientHeight - up,
+          width: side * 2,
+          height: up + BOTTOM_WAVE_REACH.down * s,
         });
       });
-    }, [chat, s]);
+    }, [chat, s, up, side]);
 
     // on its own: its canvas reaches round the input, as far as the wave does
     const getAnchors = (): ChatAnchors => {
@@ -99,8 +117,8 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
             {
               left: 0,
               top: 0,
-              width: BOTTOM_WAVE_REACH.side * 2 * s,
-              height: BOTTOM_WAVE_REACH.up * s,
+              width: side * 2,
+              height: up,
             },
             s,
           );
@@ -120,6 +138,8 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
       isListening,
       voiceStream,
       outcome,
+      onOutcome,
+      layoutKey: `${up} ${side}`,
     });
     const still = useStill(!chat && isStill, mode, loadBottomWaveStill);
     // (listening, or an outcome: its own still in its place)
@@ -165,10 +185,10 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
               ref={stageRef}
               style={{
                 position: 'absolute',
-                left: `calc(50% - ${BOTTOM_WAVE_REACH.side * s}px)`,
-                top: `calc(100% - ${BOTTOM_WAVE_REACH.up * s}px)`,
-                width: `${BOTTOM_WAVE_REACH.side * 2 * s}px`,
-                height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
+                left: `calc(50% - ${side}px)`,
+                top: `calc(100% - ${up}px)`,
+                width: `${side * 2}px`,
+                height: `${up + BOTTOM_WAVE_REACH.down * s}px`,
                 overflow: 'hidden',
                 pointerEvents: 'none',
               }}
