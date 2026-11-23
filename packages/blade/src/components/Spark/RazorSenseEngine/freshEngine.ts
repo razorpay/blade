@@ -1335,6 +1335,7 @@ export function* freshEngineSteps(
             op: B(null == e.op ? 1 : +e.op, 0, 1),
             blend: m.includes(e.blend) ? e.blend : 'normal',
             grp: e.grp ? String(e.grp).slice(0, 24) : void 0,
+            rc: e.rc ? String(e.rc).slice(0, 40) : void 0,
             doc: V(Object.assign({}, e.doc, { stack: void 0, comp: n.comp })),
           }))),
         delete n.p.bCurve,
@@ -4543,6 +4544,7 @@ export function* freshEngineSteps(
                   t: t(o).t,
                   al: t(o).al,
                   g: o.grp || 'main',
+                  rc: o.rc,
                   pt: t(o).pt,
                   pu: t(o).pu,
                 });
@@ -4589,7 +4591,7 @@ export function* freshEngineSteps(
                   (K.view.mode = 'final')),
                   (ne.t = K.tl.t),
                   (ne.ofs = (u ? +e.al : h) - K.tl.t),
-                  Ln(e.id),
+                  Ln(e.rc || e.id),
                   Qn(e);
                 const n = c[e.g || 'main'];
                 return (Hn.ox = x + ((n && n.dx) || 0)), (Hn.oy = v + ((n && n.dy) || 0)), a();
@@ -4626,20 +4628,21 @@ export function* freshEngineSteps(
             try {
               for (const e of u) {
                 const t = e.m.filter(([e, t]) => (0 === t ? m : e.op) > 1e-4),
-                  o = !p && t.length > 1 ? ze('GRP_ACC', Ce.width, Ce.height) : null;
-                o && (g(o, !1), (un = { T: o, box: [0, 0, 0, 0] }));
-                for (const [a, r] of t)
-                  i(a, r, () => {
-                    const t = 0 === r ? m : a.op * n(K);
+                  o = !Be && !(!c[e.n] || !c[e.n].ground),
+                  a = (!p && t.length > 1) || o ? ze('GRP_ACC', Ce.width, Ce.height) : null;
+                a && (g(a, o), (un = { T: a, box: o ? null : [0, 0, 0, 0] }));
+                for (const [o, r] of t)
+                  i(o, r, () => {
+                    const t = 0 === r ? m : o.op * n(K);
                     if (!(t > 1e-4)) return;
                     if (p && 0 === r && t >= 0.9995 && !b)
-                      return Fn(null, Be), (b = !0), void Nn.add(a.id);
+                      return Fn(null, Be), (b = !0), void Nn.add(o.id);
                     const i = d();
                     Fn(i, !0),
-                      Nn.add(a.id),
-                      o ? Un(i, t, a.blend, o) : (y(), Un(i, p ? t : t * e.go, p ? a.blend : e.gb));
+                      Nn.add(o.id),
+                      a ? Un(i, t, o.blend, a) : (y(), Un(i, p ? t : t * e.go, p ? o.blend : e.gb));
                   });
-                o && (y(), Un(o, e.go, e.gb));
+                a && (y(), Un(a, e.go, e.gb));
               }
               y(),
                 e.forEach((e, t) => {
@@ -4664,7 +4667,7 @@ export function* freshEngineSteps(
                   (K.tl.play = r),
                   (K.view.mode = 'final')),
                   (g || b) && ((ne.t = K.tl.t), (ne.ofs = (b ? +e.al : h) - K.tl.t)),
-                  Ln(e.id),
+                  Ln(e.rc || e.id),
                   Qn(e);
                 const y = f(e.g || 'main'),
                   M = c[e.g || 'main'];
@@ -5056,12 +5059,20 @@ export function* freshEngineSteps(
         t &&
           ('op' in t && (a.op = null == t.op ? null : B(+t.op, 0, 1)),
           'blend' in t && (a.blend = t.blend),
+          'ground' in t && (a.ground = !!t.ground),
           'dx' in t && (a.dx = +t.dx || 0),
           'dy' in t && (a.dy = +t.dy || 0),
           (Vn = !0));
       },
       look(e) {
         ($n.h = e || null), (Vn = !0);
+      },
+      region(e) {
+        Array.isArray(e) && e[2] > 0 && e[3] > 0
+          ? (Xn.region = [+e[0], +e[1], +e[2], +e[3]])
+          : delete Xn.region,
+          eo(),
+          (Vn = !0);
       },
       fade(e) {
         const t = Math.max(0, Math.min(1, +e));

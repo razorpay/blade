@@ -87,6 +87,24 @@ src = sub(src, `  const pr = GL.pMain;
 `, `  const pr = GL.pMain; grRecStart();
 `);
 src = sub(src, `if (GT) clearTo(GT, false);`, `if (GT) { clearTo(GT, false); GR_ACC = { T: GT, box: [0, 0, 0, 0] }; }`);
+// Default Paused 2.0 (2026-11-24): a group put together on the page's own ground (group(name, { ground: true })), opaque, so laid over at
+// weight w it's an exact crossfade into it: (1 - w) x the picture under it + w x its own, as the login mirror's second player over the
+// first (its loop's start faded in over its end). Laid over whole (its ground is everywhere): no box. At weight 0 it isn't drawn at all
+src = sub(
+  src,
+  `const vis = q.m.filter(([c, i]) => (i === 0 ? rootOp : c.op) > 1e-4), GT = !single && vis.length > 1 ? target('GRP_ACC', cv.width, cv.height) : null;
+          if (GT) { clearTo(GT, false); GR_ACC = { T: GT, box: [0, 0, 0, 0] }; }`,
+  `const vis = q.m.filter(([c, i]) => (i === 0 ? rootOp : c.op) > 1e-4), gnd = !GL_ALPHA && !!(GR[q.n] && GR[q.n].ground), GT = (!single && vis.length > 1) || gnd ? target('GRP_ACC', cv.width, cv.height) : null;
+          if (GT) { clearTo(GT, gnd); GR_ACC = { T: GT, box: gnd ? null : [0, 0, 0, 0] }; }`,
+);
+src = sub(src, `if ('blend' in o) g.blend = o.blend;`, `if ('blend' in o) g.blend = o.blend; if ('ground' in o) g.ground = !!o.ground;`);
+// Default Paused 2.0 (2026-11-24): a stack comp drawn with another's GPU state (its stack entry's rc: that comp's id). The crossfade's
+// page is every comp again at another moment; each copy draws with its twin's layers, one after the other, so its layer textures aren't
+// made twice (the piece's GPU memory 57.7 -> see _decisions). Every layer is drawn again each frame anyway (the alive clock moves
+// every shape), and each cache keeps its own signature, so a copy never reads its twin's pixels as its own
+src = sub(src, `grp: e.grp ? String(e.grp).slice(0, 24) : undefined, doc:`, `grp: e.grp ? String(e.grp).slice(0, 24) : undefined, rc: e.rc ? String(e.rc).slice(0, 40) : undefined, doc:`);
+src = sub(src, `g: e.grp || 'main', pt: lv(e).pt`, `g: e.grp || 'main', rc: e.rc, pt: lv(e).pt`);
+src = sub(src, `useRC(c.id); if (typeof compPath === 'function') compPath(c);`, `useRC(c.rc || c.id); if (typeof compPath === 'function') compPath(c);`, 2);
 src = sub(src, `cmask = { tex: L.tex, rect: L.rect, op: clamp(cmsh.op, 0, 1) };`, `cmask = { tex: L.tex, rect: L.rect, op: clamp(cmsh.op, 0, 1), cb: L.cb };`);
 src = sub(src, `  gl.enable(gl.BLEND); gl.blendFunc(gl[b[0]], gl[b[1]]); gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 }
@@ -321,6 +339,9 @@ src = sub(
   src,
   `  get alive() { return aliveT(); }, set alive(v) {`,
   `  look(h) { LOOK.h = h || null; need = true; },
+  // Default Paused 2.0 (2026-11-24): the part of the comp its canvas shows now ([x, y, w, h] comp px, null: as opts.fit says), for a box that
+  // shows only what's on screen of a piece bigger than the page: its box resized, the canvas follows at once
+  region(r) { if (Array.isArray(r) && r[2] > 0 && r[3] > 0) OPT.region = [+r[0], +r[1], +r[2], +r[3]]; else delete OPT.region; layout(); need = true; },
   fade(k) { const n = Math.max(0, Math.min(1, +k)); if (isFinite(n) && n !== LOOK.k) { LOOK.k = n; need = true; } },
   get faded() { return LOOK.k; },
   tools: { evalTrack, lerpStops },
