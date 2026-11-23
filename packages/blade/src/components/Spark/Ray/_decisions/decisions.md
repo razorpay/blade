@@ -24,6 +24,10 @@ const inputRef = useRef(null);
 
 // in the answer's row: its states, handing over mid-move; at rest between them; drops out when it's done, and the row closes up
 <Ray state={step} idle="rest" isVisible={!isDone} shouldUnmountWhenHidden shouldReactToPointer={false} />
+
+// back on the chat input: how the answer ended (once), offline with the app, a mic while the page listens (its own stream)
+<Ray idle="rotate" watchedInputRef={inputRef} isVisible={!isAnswering} outcome={outcome} isOffline={isOffline}
+  isListening={isListening} voiceStream={voiceStream} />
 ```
 
 ### Props
@@ -39,12 +43,18 @@ const inputRef = useRef(null);
 | `watchedInputRef` | `RefObject<HTMLElement>` | – | The field he watches (named for that, not `inputRef`, which in Blade is a component's own input, as TimePicker's; the PR review): with text and focus he leans out to the caret and follows it (body along the four watch frames, eyes on the caret). After 10 s with no typing he nudges (canon Nudge: a look straight out, then back to the caret); typing during it takes him straight back to watching. There's no prop for the nudge: it comes with `watchedInputRef`. |
 | `shouldReactToPointer` | `boolean` | `true` | The hover look (he looks at the pointer anywhere on the page) and the coin flip on click (click again while a coin is up for another). It works on every idle, and while he watches what's typed (the click takes the field's focus: he flips from where he is and settles back into his idle). Look around and Cash flip at once. Reading box and Coffee first finish what they're doing; Coffee's sip and Cash's reload always play out first. Sleep wakes him first. |
 | `accessibilityLabel` | `string` | – | Exposes him as an image with this label; leave unset when he's decorative. |
+| `isOffline` | `boolean` | `false` | Offline: grey, his eyes twitching, a glitch every few seconds (Ray Studio's droop, malfunction). Back to `false`, he jumps back online. Wins over everything else. |
+| `isListening` | `boolean` | `false` | A mic whips out and he listens (Ray Studio's mic); back to `false`, it whips back in. |
+| `voiceStream` | `MediaStream` | – | The page's own voice input, for the mic's level. He reads its level once a frame and never opens a mic himself. |
+| `outcome` | `'success' \| 'error'` | – | How the answer ended, played once when set: canon Success (a jump with confetti, a little dance) or droop's sad one-shot. Waits for an answer's states to end and for him to be back on his surface. Set again after clearing it to play again. |
 | `testID`, styled props | | | As other Blade components. |
 
 ### Naming
 
 - **`shouldReactToPointer`, not `isInteractive` or `onClick`.** Blade makes a component interactive from its handler (a StepItem with `onClick` or `href`, StepGroup's decisions), and no Blade component has a public `isInteractive`. Ray's pointer look and coin flip are a delight with nothing for the app to do: no handler to derive them from, and an `onClick` would ask for keyboard access to a click that does nothing. So the prop is named for what it does, on by default as the dashboard has him, and off where he only shows what's happening (an answer's row). It has no keyboard equivalent, as it carries no information. (The PR reviews, 2026-11-10 to -16.)
 - **`state` and `idle`, kept as they are.** The reviews asked to rename `state="idle"` or merge it with `idle`, and to move `rotate` and `time-of-day` out of `idle` into a prop of their own. Kept, deliberately: `state` is what the answer is doing and `idle` is what he does when nothing is, so a chat-input Ray needs only `idle` and an answer row only `state` (with `idle="rest"`), and one `idle` prop covers both a named idle and a chooser without a second prop that only matters for two of its values. The choosers' `localStorage` use is opt-in and documented. (Decided 2026-11-10, recorded 2026-11-16.)
+
+- **`isOffline`, `isListening`, `voiceStream`, `outcome`: RazorSense's names** (decided 2026-11-23, the user: "makes sense"), so a page passes one set to both and they show the same thing. `outcome`, not more `state` values: it's how the answer ended, played once on his seat, not something he stays in; `state` stays what the answer is doing. `voiceStream`, not a mic of his own: Blade's ChatInput has no voice input, so the page owns the mic (and its permission prompt) and hands its stream in; each component only reads levels from it, inside its own frame loop, with no React update per frame.
 
 His box is his rest footprint and never changes size (unless `shouldUnmountWhenHidden` removes it once he's hidden). Everything he does around it (props, a coin in the air, the hop) draws outside it without affecting layout, so the parent must not clip it. To the right of his box and below it, his drawing stops 1 and 0.75 of his widths out (what he draws there reaches 0.38 and 0.27, measured over every idle, flip, film, the hop and the dash). So in a scrolling parent (a chat's message list) he adds at most that much scroll room, not his films' whole stage (the PR review, 2026-11-10). Above him and to his left it runs on, since nothing scrolls there.
 
@@ -59,13 +69,17 @@ His box is his rest footprint and never changes size (unless `shouldUnmountWhenH
 - His floor is the top of what he sits on. The stage is cut there only while something should go behind it: the hop down and a coin falling past. The rest of the time nothing's cut, so a prop he holds out over the box's edge (Coffee's cup) or below the answer's line (the magnifier's handle) stays whole.
 - The coin flip's physics are made once per page in idle time (`flipPrepare`), from his rest; the pose he's really in is carried in as a gap that dies away on a critically damped spring as he squashes, and the gap from the flick's pose dies away the same way as his idle takes him back. Simulating it on the click cost 11–26 ms, one to three dropped frames at 120 Hz.
 - The nightcap is the sleep idle's (the user, 2026-11-18): it goes on as the sleep cycle starts and he wears it while Sleep is his idle, asleep or dozing, and in an answer's films meanwhile (as flow 9's do). As another idle starts (Coffee when `time-of-day` rules Sleep out at 6am, an app's new `idle`, or `rest`), it comes off, on him and in that idle's film. It goes on and off at once, as an idle starts, as it always went on.
+- **One thing at a time** (the PR update plan, 2026-11-23): hidden; offline, which wins over everything else (the mic goes at once, as in flow 10.5; an answer's film plays its exit first); an answer's state; the outcome, once the answer's states are over and he's back on his seat; the mic; watching what's typed; his idle. Each new state has its own entry and exit, the film's own, and turns back mid-way from where he is (offline again as he jumps back online; the mic again as it goes in).
+- **The new states' films** are Ray Studio's: `droop` (offline is its malfunction, `outcome="error"` its sad one-shot) and `mic`, exported like the others and loaded only when first needed. The mic film's own microphone path is left out of the export: the director feeds it the level from `voiceStream` (one analyser read into one buffer a frame, sent only when it changes). **Success** has no film: it's canon Success (Figma 81:1479, with the user's tune) on his own Ray, so the same engine draws it (one engine, as decided on 3 Nov). Nothing new happens in a frame he's seen in (the device test's rule): each film loads in steps and says it's ready after the last (as Searching does: their first mount was a 47–80 ms task with a CPU 4x slower, now 2–6 ms); Success is worked out in idle time once `outcome` asks for it; and the audio for the voice's level is set up in idle time as `voiceStream` is handed over, one audio context for every Ray on the page (a page's first one took 124 ms with a CPU 4x slower).
+- **The hops are each Ray's own entry and exit, timed as flow 10.5 has them** (measured there on 2026-11-23: its hide 465 ms to out of sight, its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The chat input's Ray drops off as the question goes, and comes back up at 1.2x; with an outcome waiting, his hop ends as he lands and the outcome starts there. The answer row's Ray comes up out of his row (canon hide's second half, the window of flow 10.3's rowHop, at flow 10.5's 1x) and his first film settles from that pose over 320 ms. As the answer's done and he's hidden, his film's exit is cut 20 ms after its prop is put away (or once he's at rest), read off the film's own handle as flow 10.5 reads it, and he goes down from there at 1.2x: in flow 10.5 that's 600 ms into the laptop's exit, then 391 ms down.
 - Nothing heavy loads up front: the director, his own Ray, the engine and canon (about 57 KB gzipped) load with his first render (`import()`), so an app that imports Blade's components without rendering him never downloads them (the PR review, 2026-11-10); his box is laid out meanwhile from `rayBox.ts`, which a test keeps equal to the engine's sizes. Films load when first used: 13 KB of shared film helpers with the first film, then 5–15 KB per film. A film he's done with is freed (an answer's past states, an idle he's moved on from), so at most his idle's film and the answer's now and next are loaded.
 
 ## Accessibility
 
 - Decorative by default (`aria-hidden`). `accessibilityLabel` makes him `role="status"` while `state` is an answer state (as DotLoader is, so a label that changes with the state can be announced; screen readers announce a live region's text more reliably than its label, as with DotLoader) and `role="img"` at rest.
 - The coin flip is a pointer delight with no keyboard equivalent, since it carries no information.
-- `prefers-reduced-motion`: one still frame of him at rest, no animation. Turned on or off while he's up, he follows it (a new director takes over, still or moving).
+- `prefers-reduced-motion`: one still frame, no animation: at rest, or the state's own still (offline, error, the mic: drawn by its film, loaded for it; Success: his dance, happy eyes). An outcome's still stays about as long as it would play. Turned on or off while he's up, he follows it (a new director takes over, still or moving).
+- `isOffline` and `outcome` aren't announced by Ray (he's decorative unless labelled): the page says what happened in text too.
 
 ## Platform
 
@@ -79,5 +93,6 @@ Web only. `Ray.native.tsx` throws "not yet implemented", like RazorSense.
 - **Not in v1:**
   - the wardrobe
   - the "Thinking (drop)" film
-  - the Success state (the dashboard currently skips it)
+  - droop's other looks (offline asleep, the red error shake): offline is the malfunction only, as the user asked
+- **Success in dark** hasn't been designed: flow 10.5 plays it in light only. Here it's the same motion on the dark ground, for the user's review.
 - **`idle="rotate"` stores a counter** in `localStorage` (`blade-ray-idle`) to step the cycle per page load. Without storage, it starts at a random idle.

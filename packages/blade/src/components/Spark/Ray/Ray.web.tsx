@@ -35,7 +35,8 @@ const canDraw = (): boolean => {
  *
  * He sits on a surface (usually the chat input), idles, watches what's typed, looks at the pointer and flips a coin when
  * clicked; while an answer is being worked on he plays its states (searching, calling, writing, working), handing over
- * from one to the next mid-move. His box is his rest footprint and never changes size; what he does around it (props,
+ * from one to the next mid-move. He also shows how an answer ended (`outcome`), when the app is offline (`isOffline`) and
+ * when it's listening (`isListening`). His box is his rest footprint and never changes size; what he does around it (props,
  * a coin in the air, the hop) draws outside it without affecting layout.
  */
 const _Ray = (
@@ -49,6 +50,10 @@ const _Ray = (
     watchedInputRef,
     shouldReactToPointer = true,
     accessibilityLabel,
+    isOffline = false,
+    isListening = false,
+    voiceStream,
+    outcome,
     testID,
     ...rest
   }: RayProps,
@@ -67,11 +72,16 @@ const _Ray = (
     isHidden: !isVisible,
     shouldReactToPointer,
     colorScheme: scheme,
+    isOffline,
+    isListening,
+    outcome,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
   const inputRefRef = useRef(watchedInputRef);
   inputRefRef.current = watchedInputRef;
+  const voiceStreamRef = useRef(voiceStream);
+  voiceStreamRef.current = voiceStream;
 
   // shouldUnmountWhenHidden: his box is removed once he's hopped off (his director says when) and comes back, laid out at
   // once, as soon as he's asked back
@@ -114,6 +124,7 @@ const _Ray = (
         hasMountedRef.current = true;
         wasRemovedRef.current = false;
         mount.setInputRef(inputRefRef.current ?? null);
+        mount.setVoiceStream(voiceStreamRef.current ?? null);
         mount.onAway = () => {
           if (!shouldUnmountRef.current || !optionsRef.current.isHidden) return;
           wasRemovedRef.current = true;
@@ -137,11 +148,15 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, shouldReactToPointer, scheme]);
+  }, [state, idle, size, isVisible, shouldReactToPointer, scheme, isOffline, isListening, outcome]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(watchedInputRef ?? null);
   }, [watchedInputRef]);
+
+  useEffect(() => {
+    mountRef.current?.setVoiceStream(voiceStream ?? null);
+  }, [voiceStream]);
 
   useEffect(() => {
     if (!shouldUnmountWhenHidden || isVisible) return;

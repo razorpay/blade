@@ -30,7 +30,7 @@ const C0 = [(0 + BASE[2][0]) / 2, -hR / 2];                         // the box c
 export const FIG = W / 404.5;                                       // 1 Ray px (Figma frame px) in world units
 const ROOT = [W / 2, 0];                                            // the spine's root: the middle of his floor edge
 const TIP = [(BASE[2][0] + BASE[3][0]) / 2, (BASE[2][1] + BASE[3][1]) / 2];   // the middle of his top cut
-const EYE_A = LOOK.eyeSize / 2 / LOOK.oval, EYE_B = LOOK.eyeSize / 2;        // the open eye's half width / height
+export const EYE_A = LOOK.eyeSize / 2 / LOOK.oval, EYE_B = LOOK.eyeSize / 2;        // the open eye's half width / height (exported, with SHAPES: droop.html draws its own eyes into SHAPES)
 const EYE_PAIR = [C0[0] + LOOK.eyeX, C0[1] + LOOK.eyeY], HALF_GAP = LOOK.eyeGap / 2;
 const C0_R = [2 * (W / 2) - C0[0], C0[1]], PAIR_R = [2 * (W / 2) - EYE_PAIR[0], EYE_PAIR[1]];   // the same, facing right
 const CELL = 2 * EYE_A / LOOK.dotsAcross;                           // the dot lattice: square, never deforms
@@ -367,7 +367,7 @@ const OPEN = { kind: 's', a: EYE_A, b: EYE_B, n: 2 };
 export const HAPPY = { bz: [[-36.25, 8.17], [-24.39, -4.19], [6.76, -21.5], [36.43, 8.17]], hw: 10.025 };
 const HAPPY_PTS = (() => { const P = [], b = HAPPY.bz; for (let i = 0; i <= 28; i++) { const t = i / 28, u = 1 - t;
   P.push([0, 1].map(c => (u * u * u * b[0][c] + 3 * u * u * t * b[1][c] + 3 * u * t * t * b[2][c] + t * t * t * b[3][c]) * FIG)); } return P; })();
-const SHAPES = {
+export const SHAPES = {
   open: OPEN,
   wide: { kind: 's', a: EYE_A * 1.18, b: EYE_B * 1.18, n: 2 },
   shutL: closing(OPEN, 1, 0), shutR: closing(OPEN, 1, 1),          // a held shut eye = the canon closed strip
@@ -387,6 +387,13 @@ function shapeR(s, x, y) {
   if (s.dx) x -= s.dx * FIG;
   if (s.dy) y -= s.dy * FIG;
   if (s.rot) { const c = Math.cos(-s.rot * DEG), n = Math.sin(-s.rot * DEG); [x, y] = [x * c - y * n, x * n + y * c]; }
+  // 'u': several shapes as one eye (each its own dx / dy, Ray px), the nearest edge wins; 'rr': a rounded rectangle (a, b half sizes, r its corner),
+  // its field the scale it would need to reach the point (1 on its edge), as the oval's is (droop.html's malfunction eyes, Figma 973:2165)
+  if (s.kind === 'u') { let m = Infinity; for (const q of s.parts) m = Math.min(m, shapeR(q, x, y)); return m; }
+  if (s.kind === 'rr') { const ax = Math.abs(x), ay = Math.abs(y), a1 = s.a - s.r, b1 = s.b - s.r, ls = Math.max(ax / s.a, ay / s.b);
+    if (s.r <= 0 || ax <= ls * a1 || ay <= ls * b1) return ls;
+    const c2 = a1 * a1 + b1 * b1 - s.r * s.r, c1 = ax * a1 + ay * b1, c0 = ax * ax + ay * ay;
+    return Math.abs(c2) < 1e-9 ? c0 / (2 * c1) : (c1 - Math.sqrt(Math.max(0, c1 * c1 - c2 * c0))) / c2; }
   if (s.kind === 'bz') {
     if (s.mirror) x = -x;
     let best = Infinity; const P = s.pts;
@@ -407,6 +414,7 @@ function shapeR(s, x, y) {
 function shapeBox(s) {
   if (s.kind === 'bz') return s.box;
   if (s.kind === 'arc') return [s.w / 2 + s.th / 2, s.h / 2 + s.th / 2];
+  if (s.kind === 'u') return s.parts.map(shapeBox).reduce((a, b) => [Math.max(a[0], b[0]), Math.max(a[1], b[1])]);
   const a = (s.rot ? Math.hypot(s.a, s.b * 0.3) : s.a) + Math.abs((s.dx || 0) * FIG);
   return [a, s.b + Math.abs((s.dy || 0) * FIG)];
 }
@@ -1170,7 +1178,7 @@ function containEyes(frame, pts, centres, shapes, ky) {
   const N = [0, 1, 2, 3].map(e => { const P1 = pts[e], P2 = pts[(e + 1) % 4]; let nx = P2[1] - P1[1], ny = P1[0] - P2[0]; const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
     if (((P1[0] + P2[0]) / 2 - cx) * nx + ((P1[1] + P2[1]) / 2 - cy) * ny < 0) { nx = -nx; ny = -ny; } return { P1, nx, ny }; });
   centres.forEach((c, j) => {
-    const e = shapes[j], R = frame.eyes && frame.eyes[j] && frame.eyes[j].roll; if (e.gone || (R && R.ph !== 'home')) return;
+    const e = shapes[j], R = frame.eyes && frame.eyes[j] && frame.eyes[j].roll; if (e.gone || (R && R.ph !== 'home') || (frame.eyes && frame.eyes[j] && frame.eyes[j].free)) return;   // free: placed exactly, never pushed in
     const box = [shapeBox(e.from), shapeBox(e.to)].reduce((a, b) => [Math.max(a[0], b[0]), Math.max(a[1], b[1])]);
     const half = () => [box[0] * (e.xs || 1), box[1] * ky * (e.ky || 1)], over = () => { const [a, b] = half(); let w = 0;
       for (const n of N) w = Math.max(w, n.nx * (c[0] - n.P1[0]) + n.ny * (c[1] - n.P1[1]) + Math.hypot(a * n.nx, b * n.ny) + m); return w; };
@@ -1183,6 +1191,7 @@ function containEyes(frame, pts, centres, shapes, ky) {
 // frame = one entry of simulate().frames (or idlePose()); view = {scale, ox, oy} maps world -> canvas px (floor root at ox, oy)
 export function draw(ctx, frame, view, o = {}) {
   const mode = MODES[o.mode || 'light'], S = LOOK, k = view.scale, cw = ctx.canvas.width, ch = ctx.canvas.height;
+  const tint = frame.tint, COL = tint ? tint.color : S.color, FADE = tint ? (o.mode === 'dark' ? tint.fadeD : tint.fade) : mode.fade;   // his colour (frame.tint: ray-wear's body colours, Figma 733:1794); none: his own blue
   const face = frame.pose.face || 0, A = rig(frame.pose), base = bodyAt(face), pts = base.map(A), cen = A(lerp2(C0, C0_R, face)), attach = eyeAnchor(frame.pose, A);
   ctx.setTransform(1, 0, 0, 1, 0, 0); if (o.clear) ctx.clearRect(0, 0, cw, ch); else { ctx.fillStyle = o.bg || mode.bg; ctx.fillRect(0, 0, cw, ch); }   // o.bg: the page's own ground, so the stage never shows as a box; o.clear: no ground (over a page)
   ctx.setTransform(k, 0, 0, k, view.ox - ROOT[0] * k, view.oy);
@@ -1251,7 +1260,7 @@ export function draw(ctx, frame, view, o = {}) {
     }
   };
   const paintLook = g => {                                    // his full V2.1 look, on any context clipped to his body
-    g.fillStyle = S.color; g.fillRect(-4000, -4000, 9000, 9000);
+    g.fillStyle = COL; g.fillRect(-4000, -4000, 9000, 9000);
     if (S.coreGlow > 0) {
       const R = Math.max(S.width, S.height) * S.coreSize, gr = g.createRadialGradient(cen[0], cen[1], 0, cen[0], cen[1], R);
       gr.addColorStop(0, hexA('#ffffff', S.coreGlow * 0.5)); gr.addColorStop(1, hexA('#ffffff', 0)); g.fillStyle = gr; g.fillRect(-4000, -4000, 9000, 9000);
@@ -1272,13 +1281,19 @@ export function draw(ctx, frame, view, o = {}) {
     const lerp = (a, b) => a + (b - a) * t, OFF = 20000, full = Math.floor(S.glowStrength), frac = S.glowStrength - full;
     g.shadowBlur = lerp(S.glowSize, S.rectBlur) * k; g.shadowOffsetX = (lerp(S.glowX * (1 - 2 * face), 0) - OFF) * k; g.shadowOffsetY = lerp(S.glowY, 0) * k;
     g.save(); g.translate(OFF, 0);
-    const fk = Math.max(0, Math.min(1, o.see || 0));   // o.see (a flow page's dark mode, its F5FADE): the pale edge see-through instead, by this much
+    const fk = Math.max(0, Math.min(1, o.see || 0));
+    // a colour of his own (frame.tint), on a light page: no 20 % wash of the centre over his edge (it dirtied a picked edge colour), and between the centre
+    // and the edge a vivid colour half way round the hue wheel (tint.mid, OKLCH) first, wider, so opposite colours don't blend through grey (the user,
+    // 2026-11-10: "why is the light green getting muddy, that's not how it is for the OG blue Ray"). His own blue: as it's always been
+    const tl = tint && tint.mid && o.mode !== 'dark' && fk < 1;
+    if (tl) { g.restore(); g.save(); g.shadowColor = 'transparent'; g.globalAlpha = S.solidFill; g.fillStyle = COL; g.fillRect(-4000, -4000, 9000, 9000); g.globalAlpha = 1; g.restore(); g.save(); g.translate(OFF, 0);
+      const sb = g.shadowBlur; g.shadowBlur = sb * 1.7; g.shadowColor = hexA(tint.mid, 0.92); g.fillStyle = tint.mid; g.fill(outside, 'evenodd'); g.shadowBlur = sb; }   // o.see (a flow page's dark mode, its F5FADE): the pale edge see-through instead, by this much
     for (let i = 0; i <= full; i++) { const a = i < full ? 1 : frac; if (a <= 0) continue;
-      if (fk < 1) { g.shadowColor = hexA(mode.fade, a * (1 - fk)); g.fillStyle = mode.fade; g.fill(outside, 'evenodd'); }
+      if (fk < 1) { g.shadowColor = hexA(FADE, a * (1 - fk)); g.fillStyle = FADE; g.fill(outside, 'evenodd'); }
       if (fk > 0) { g.globalCompositeOperation = 'destination-out'; g.shadowColor = hexA('#000000', a * fk); g.fillStyle = '#000'; g.fill(outside, 'evenodd'); g.globalCompositeOperation = 'source-over'; } }
     g.restore();
     g.shadowColor = 'transparent'; g.shadowBlur = 0;
-    g.globalAlpha = S.solidFill; g.fillStyle = S.color; g.fillRect(-4000, -4000, 9000, 9000); g.globalAlpha = 1;
+    if (!tl) { g.globalAlpha = S.solidFill; g.fillStyle = COL; g.fillRect(-4000, -4000, 9000, 9000); g.globalAlpha = 1; }
   };
   // the glow (pose.glow / pose.glowFill, canon Coffee chug): his full look laid on his pale body, faded by glow, plus all of it
   // below a soft level rising from the floor (glowFill); at full glow it's the plain V2.1 look, untouched
@@ -1317,7 +1332,7 @@ export function draw(ctx, frame, view, o = {}) {
     const L = ctx.canvas._rayLook || (ctx.canvas._rayLook = document.createElement('canvas')); if (L.width !== cw || L.height !== ch) { L.width = cw; L.height = ch; }
     const lg = L.getContext('2d'); lg.setTransform(1, 0, 0, 1, 0, 0); lg.clearRect(0, 0, cw, ch); lg.setTransform(ctx.getTransform()); lg.save(); lg.clip(body); paintLook(lg); lg.restore();
     ctx.save(); ctx.clip(body);
-    ctx.globalAlpha = Math.min(1, S.glowStrength); ctx.fillStyle = mode.fade; ctx.fillRect(-4000, -4000, 9000, 9000); ctx.globalAlpha = 1;   // his pale body
+    ctx.globalAlpha = Math.min(1, S.glowStrength); ctx.fillStyle = FADE; ctx.fillRect(-4000, -4000, 9000, 9000); ctx.globalAlpha = 1;   // his pale body
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     if (gl > 0.004) { ctx.globalAlpha = gl; ctx.drawImage(L, 0, 0); ctx.globalAlpha = 1; }
     if (gf > 0.001) {

@@ -18,7 +18,7 @@ import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
 import type { FilmMessage, FilmModule, RayCoreApi } from './engineTypes';
-import type { RayIdle, RayState } from './types';
+import type { RayIdle, RayOutcome, RayState } from './types';
 
 const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
@@ -38,14 +38,42 @@ const IDLE_FILMS: Partial<Record<Idle, string>> = {
   reading: 'readbox',
 };
 const FLIPPING_FILMS = new Set(['coffee', 'cash', 'readbox']); // the idle films that play the coin flip themselves
+// the states a film of their own plays on his seat (Ray Studio's droop.html and mic.html): offline (droop's malfunction), error (droop's
+// sad, `outcome="error"`) and the mic (`isListening`). The cue tells the film which, before its start
+type StateName = 'offline' | 'error' | 'mic';
+const STATE_FILMS: Record<StateName, { film: string; cue?: FilmMessage }> = {
+  offline: { film: 'droop', cue: { ray: 'droop', mode: 'mal' } },
+  error: { film: 'droop', cue: { ray: 'droop', mode: 'sad' } },
+  mic: { film: 'mic' },
+};
 const IDLE_WAIT_MS = 400; // back with nothing to do: his idle starts after this
 const TYPING_EXIT = 4; // an idle film's exit when he's needed to watch what's typed (the user: the typing look must start fast)
 const HOP_EXIT = 1.6; // ... and when he hops off the surface (flow 9's P.f5LapQuick)
+// the hops, as each Ray's own entry and exit, timed as flow 10.5 has them (measured there, 2026-11-23: its hide 465 ms to out of sight,
+// its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The way back from an answer is 1.2x: the answer row's Ray goes down as
+// soon as his film has put its prop away (its exit cut EXIT_CUT_MS after it; flow 10.5: 600 ms into the laptop's exit, then 391 ms
+// down), and the chat box's comes back up (493 ms to landed), ending as he lands when an outcome is waiting, which starts there (flow
+// 10.5's Success on his seat). The answer row's Ray comes up out of the row with canon hide's second half (flow 10.3's rowHop window,
+// at flow 10.5's 1x) and his first film settles from that pose over 320 ms (its 'start' from)
+const HOP_BACK = 1.2;
+const ROW_RISE = { window: [1600, 2250] as [number, number] };
+const TO_LANDED: [number, number] = [1600, 2190]; // canon hide: up out of the surface, landed at 2183
+const EXIT_CUT_MS = 20;
+const STILL_TICKS = 4; // reduced motion: a state's film is ticked this many frames for its still (its messages come a task later)
+const STILL_SHOWN_TICK = 2; // ... and shown from this one, once it has drawn it
+
+/** Run `fn` in the page's idle time (or soon, where there's no idle callback). */
+const whenIdle = (fn: () => void, timeout: number): void => {
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(fn, { timeout });
+  else setTimeout(fn, 0);
+};
 const HANDOFF_WAIT_MS = 160; // the next answer film starts anyway if the old one hasn't said where it left him
 const FILM_SHOW_TICKS = 3; // a film shows once it has run this many frames since its start (fresh, never a stale canvas)
 const UNDER_MS = 34; // his own canvas stays this long under a film that has just shown
 const EXIT_WAIT_MS = 5000; // a film that never says it's done is let go
 const START_WAIT_MS = 8000; // a film that never says it's ready (its chunk didn't load, its script threw) is given up on: he rests, and it's tried again
+const ONE_SHOT_WAIT_MS = 12000; // a one-shot state's film (error) that never says it's done is let go
+const ERROR_STILL_MS = 3000; // reduced motion: how long the error's still stays (about as long as it plays)
 const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
@@ -60,8 +88,9 @@ const ROOM_RIGHT = 1;
 const ROOM_BELOW = 0.75;
 // his own Ray's canvas (RayPlayer): the part of the stage he ever draws on, in his widths past his box. Measured over his idles,
 // typing (and the nudge), the hover look, the flips (spam too), the hop, the sleep cycle with its cap and the answer's handoffs:
-// 0.49 to the left (leaning to the caret), 1.03 above (a coin), 0.15 right, 0.16 below; this is about twice that.
-const PLAYER_LEFT = 1;
+// 0.49 to the left (leaning to the caret), 1.03 above (a coin), 0.15 right, 0.16 below; this is about twice that. Success (canon, with
+// its confetti; 2026-11-23) reaches 0.88 to the left, 1.13 above and 0.75 right (inside the room's ROOM_RIGHT)
+const PLAYER_LEFT = 1.5;
 const PLAYER_ABOVE = 2;
 const PLAYER_RIGHT = 1;
 const PLAYER_BELOW = 0.75;
@@ -70,6 +99,8 @@ const PLAYER_BELOW = 0.75;
 // left calling 0.04, writing 0.47, searching 0.60, laptop 1.26, coffee 0.72, cash 1.18, reading box 2.41; above 0.03 for the answer films
 // (0.13 with the nightcap) and 1.03 for the idle films (a coin). These are about 1.5 times that; to the right and below they go to the
 // room's edges (ROOM_RIGHT, ROOM_BELOW), past which nothing shows anyway
+// (droop and mic, 2026-11-23, over every state, each glitch effect and eye frame, the jump back, the error and the mic out and in, with
+// the nightcap: to the left droop 0.17, mic 0.46; above droop 0.27, mic 0.11; to the right 0.28 and below 0.05 at most)
 const FILM_CROP: Record<string, [left: number, above: number]> = {
   calling: [0.5, 0.5],
   writing: [1, 0.5],
@@ -78,6 +109,8 @@ const FILM_CROP: Record<string, [left: number, above: number]> = {
   coffee: [1.4, 1.8],
   cash: [2, 1.8],
   readbox: [3.8, 1.8],
+  droop: [0.3, 0.4],
+  mic: [0.7, 0.2],
 };
 
 /** His rest spot on the films' stage (Ray Studio's fitTravel for the embedded stage, zoomed so he is `w` wide). */
@@ -126,18 +159,32 @@ type Film = {
   goingSince: number; // when it started leaving under the next film (a handoff): it's let go if it never says it's done
   front: boolean;
   lastCursor: string;
+  /** Reduced motion: the still it was last asked for (its state, light / dark, zoom), and the frames since. */
+  still: string;
+  stillTicks: number;
 };
 
 type Holder =
   | {
       by: 'player';
-      act: 'entrance' | 'rest' | 'idle' | 'watch' | 'back' | 'hiding' | 'gone' | 'showing';
+      act:
+        | 'entrance'
+        | 'rest'
+        | 'idle'
+        | 'watch'
+        | 'back'
+        | 'hiding'
+        | 'gone'
+        | 'showing'
+        | 'outcome';
       since: number;
     }
   | {
       by: 'film';
       id: string;
-      kind: 'idle' | 'answer';
+      kind: 'idle' | 'answer' | 'state';
+      /** A state's film: which state it plays (droop plays two). */
+      state?: StateName;
       leaving: false | 'exit' | 'handoff';
       next?: string;
       since: number;
@@ -149,8 +196,15 @@ type Holder =
 type Want =
   | { kind: 'hidden' }
   | { kind: 'answer'; film: string }
+  | { kind: 'state'; state: StateName }
+  | { kind: 'success' }
   | { kind: 'watch' }
   | { kind: 'idle'; idle: Idle };
+// (the new states' wants, made once: want() runs every frame, for as long as he's offline or listening)
+const WANT_OFFLINE: Want = { kind: 'state', state: 'offline' };
+const WANT_ERROR: Want = { kind: 'state', state: 'error' };
+const WANT_MIC: Want = { kind: 'state', state: 'mic' };
+const WANT_SUCCESS: Want = { kind: 'success' };
 
 type RayMountOptions = {
   entrance: 'none' | 'dash';
@@ -160,6 +214,9 @@ type RayMountOptions = {
   isHidden: boolean;
   shouldReactToPointer: boolean;
   colorScheme: 'light' | 'dark';
+  isOffline: boolean;
+  isListening: boolean;
+  outcome?: RayOutcome;
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -258,6 +315,20 @@ class RayMount {
    * `shouldUnmountWhenHidden` removes his box then. */
   onAway: (() => void) | null = null;
   private clockIdle: { idle: Cycle; checkedAt: number } | null = null; // idle="time-of-day": this Ray's own pick
+  // `outcome`: from when it's set till it has played once (or been cut short by something that wins over it)
+  private outcome: RayOutcome | null = null;
+  private afterAnswer = false; // an answer's film has had him since he came up: his hop down is the way back's (HOP_BACK)
+  private restReadyAt = 0; // his blend to rest (toRest) is over at this time
+  private voiceStream: MediaStream | null = null;
+  private stillTimer: ReturnType<typeof setTimeout> | null = null; // reduced motion: when the outcome's still has had its time
+  // the voice's level, read once a frame while the mic film has him: one analyser, one buffer, no allocations
+  private voice: {
+    source: MediaStreamAudioSourceNode;
+    analyser: AnalyserNode;
+    buf: Float32Array;
+    sent: number;
+  } | null = null;
+  private voiceFailed = false; // its stream couldn't be read (no audio track, no Web Audio): not tried again till a new stream
 
   constructor(root: HTMLElement, options: RayMountOptions) {
     this.root = root;
@@ -275,12 +346,14 @@ class RayMount {
     root.append(this.room);
 
     const now = performance.now();
+    // out of sight while hidden; and a Ray that appears in an answer's state (its row's) comes up out of the row first: his entry
     this.holder = {
       by: 'player',
-      act: options.isHidden ? 'gone' : 'rest',
+      act: options.isHidden || options.state !== 'idle' ? 'gone' : 'rest',
       since: now - IDLE_WAIT_MS,
     };
     this.player.mode = options.colorScheme;
+    this.outcome = options.outcome ?? null;
     this.layout();
     // the landing dash, once, as he first appears (not hidden, not with reduced motion, and not on a Sleep load: he's found asleep there)
     const firstIdle = this.idleOf(options.idle, now);
@@ -305,8 +378,10 @@ class RayMount {
     this.start();
     // what he'll need first, loading now: the answer's films for a Ray that starts in one, else this load's idle film. With reduced
     // motion he never plays a film (one still frame), so none is loaded (the PR review)
+    this.loadStateFilms(); // (offline, the mic, an error: also for reduced motion, where their film draws their still)
+    if (this.outcome === 'success') this.prepareSuccess();
     if (this.reducedMotion) {
-      // (nothing to load)
+      // (no answer or idle film: with reduced motion he plays none)
     } else if (options.state !== 'idle') this.preloadAnswer();
     else {
       const first = IDLE_FILMS[firstIdle];
@@ -328,15 +403,28 @@ class RayMount {
 
   update(options: Partial<RayMountOptions>): void {
     const sizeChanged = options.size !== undefined && options.size !== this.options.size;
+    const outcomeChanged = 'outcome' in options && options.outcome !== this.options.outcome;
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     if (options.idle !== undefined && options.idle !== this.options.idle) this.clockIdle = null; // (asked for again: picked again)
     if (
       (options.idle !== undefined && options.idle !== this.options.idle) ||
-      (options.state !== undefined && options.state !== this.options.state)
+      (options.state !== undefined && options.state !== this.options.state) ||
+      (options.isOffline !== undefined && options.isOffline !== this.options.isOffline) ||
+      (options.isListening !== undefined && options.isListening !== this.options.isListening) ||
+      outcomeChanged
     )
       this.failed.clear(); // asked for something else: a film that couldn't start may be tried again
+    if (outcomeChanged) {
+      // set: it plays once, when he can; cleared before it has started: it doesn't (once it's playing it plays out)
+      if (options.outcome) {
+        this.outcome = options.outcome;
+        if (options.outcome === 'success') this.prepareSuccess();
+      } else if (!this.outcomePlaying) this.outcome = null;
+    }
     this.options = { ...this.options, ...options };
+    if (!this.options.isListening) this.unlisten();
+    this.loadStateFilms();
     if (this.options.shouldReactToPointer) this.player.prepareFlip();
     if (this.options.state !== 'idle' && !this.reducedMotion) this.preloadAnswer();
     this.releaseFilms();
@@ -358,6 +446,22 @@ class RayMount {
     this.inputRef = ref;
   }
 
+  /**
+   * The page's voice (its own mic's stream), for the mic film's level while he listens. He never opens a mic himself. The audio is
+   * set up in the page's idle time as it's handed over, so the page's first audio context (124 ms with a CPU 4x slower) isn't made
+   * in the frame the mic comes out in.
+   */
+  setVoiceStream(stream: MediaStream | null): void {
+    if (stream === this.voiceStream) return;
+    this.unlisten();
+    this.voiceStream = stream;
+    this.voiceFailed = false;
+    if (!stream || this.reducedMotion) return;
+    whenIdle(() => {
+      if (!this.disposed) RayMount.audioContext();
+    }, 500);
+  }
+
   private get input(): HTMLInputElement | HTMLTextAreaElement | null {
     const el = this.inputRef?.current;
     return el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el : null; // (only a text field has a caret)
@@ -365,12 +469,7 @@ class RayMount {
 
   /** A click on him: the coin flip where his idle allows it. */
   click(): void {
-    if (
-      !this.options.shouldReactToPointer ||
-      this.options.state !== 'idle' ||
-      this.options.isHidden
-    )
-      return;
+    if (!this.clickable) return;
     const h = this.holder;
     if (h.by === 'player') {
       if (h.act === 'watch' || h.act === 'back') {
@@ -389,6 +488,24 @@ class RayMount {
     if (FLIPPING_FILMS.has(h.id)) this.films[h.id].host.send({ ray: 'flip' });
   }
 
+  /** Whether a click flips a coin now: he reacts to the pointer, on his surface, with nothing else to show (an answer, offline, the mic). */
+  private get clickable(): boolean {
+    const o = this.options;
+    return (
+      o.shouldReactToPointer && o.state === 'idle' && !o.isHidden && !o.isOffline && !o.isListening
+    );
+  }
+
+  /** The outcome is under way (so clearing `outcome` doesn't stop it): his Success, the error's film started, or a still for it. */
+  private get outcomePlaying(): boolean {
+    const h = this.holder;
+    return (
+      (h.by === 'player' && h.act === 'outcome') ||
+      (h.by === 'film' && h.state === 'error' && h.started) ||
+      this.stillTimer !== null
+    );
+  }
+
   dispose(): void {
     this.disposed = true;
     RayMount.leave(this);
@@ -396,6 +513,8 @@ class RayMount {
     this.root.removeEventListener('click', this.onClick);
     this.listened?.removeEventListener('input', this.onInput);
     this.entrance?.dispose();
+    this.unlisten();
+    if (this.stillTimer) clearTimeout(this.stillTimer);
     Object.values(this.films).forEach((f) => f.host.dispose());
     this.room.remove();
     freeCanvas(this.player.canvas); // his memory now, not at the next garbage collection (the PR review)
@@ -403,14 +522,22 @@ class RayMount {
 
   // ---- what he should be doing ----
 
+  /**
+   * One thing at a time: hidden; offline (it wins over everything else); an answer's state; the outcome once the answer's states
+   * are over; the mic; watching what's typed; his idle. A state whose film couldn't start is skipped (he's at rest instead).
+   */
   private want(): Want {
     const o = this.options;
     if (o.isHidden) return { kind: 'hidden' };
+    if (o.isOffline && !this.failed.has(STATE_FILMS.offline.film)) return WANT_OFFLINE;
     if (o.state !== 'idle') {
       const film = ANSWER_FILMS[o.state];
       if (!this.failed.has(film)) return { kind: 'answer', film };
       return { kind: 'idle', idle: 'rest' }; // (its film couldn't start: at rest instead)
     }
+    if (this.outcome === 'success') return WANT_SUCCESS;
+    if (this.outcome === 'error' && !this.failed.has(STATE_FILMS.error.film)) return WANT_ERROR;
+    if (o.isListening && !this.failed.has(STATE_FILMS.mic.film)) return WANT_MIC;
     if (this.isTyping()) return { kind: 'watch' };
     const idle = this.idleOf(o.idle, performance.now());
     const film = IDLE_FILMS[idle];
@@ -455,7 +582,8 @@ class RayMount {
       const film = this.films[h.id];
       const stays =
         (want.kind === 'answer' && want.film === h.id) ||
-        (want.kind === 'idle' && h.kind === 'idle' && IDLE_FILMS[want.idle] === h.id);
+        (want.kind === 'idle' && h.kind === 'idle' && IDLE_FILMS[want.idle] === h.id) ||
+        (want.kind === 'state' && h.kind === 'state' && want.state === h.state);
       if (!h.started) {
         if (!stays) this.dropPending(h, want, now);
         else if (now - h.since > START_WAIT_MS) this.giveUpOn(h.id, now);
@@ -464,6 +592,23 @@ class RayMount {
       if (h.leaving === 'handoff' && now - h.since > HANDOFF_WAIT_MS)
         this.handOn(film, h.next!, null);
       if (h.leaving === 'exit' && now - h.since > EXIT_WAIT_MS) this.filmDone(film);
+      if (h.state === 'error' && !h.leaving && now - h.since > ONE_SHOT_WAIT_MS) {
+        this.outcome = null;
+        this.filmDone(film);
+        return;
+      }
+      if (h.leaving === 'exit' && h.kind === 'state' && stays) {
+        // asked back mid-way (offline again as he jumps back online, the mic again as it goes in): the film goes back from where he is
+        this.holder = { ...h, leaving: false, since: now };
+        this.cue(film, h.state);
+        film.host.send({ ray: 'start' });
+        return;
+      }
+      // the answer row's Ray hopping off after his answer: his film's exit is cut once its prop is put away, and he goes down from there
+      if (h.kind === 'answer' && h.leaving === 'exit' && want.kind === 'hidden') {
+        this.cutExit(film, now);
+        return;
+      }
       if (h.leaving) return;
       if (stays) return;
       if (h.kind === 'answer' && want.kind === 'answer') {
@@ -477,6 +622,12 @@ class RayMount {
         const pace = want.kind === 'watch' ? TYPING_EXIT : want.kind === 'hidden' ? HOP_EXIT : 1;
         film.host.send({ ray: 'pace', v: pace });
         film.host.send({ ray: 'leave' });
+      } else if (h.kind === 'state') {
+        if (h.state === 'error') this.outcome = null; // (played, or cut short by what wins over it: either way it's had its turn)
+        // offline wins over the mic: it goes at once (flow 10.5), his own Ray at rest and offline starting from there
+        if (h.state === 'mic' && want.kind === 'state' && want.state === 'offline')
+          this.filmDone(film);
+        else film.host.send({ ray: 'leave' });
       } else film.host.send({ ray: 'leave', handoff: false });
       return;
     }
@@ -488,21 +639,25 @@ class RayMount {
       if (want.kind !== 'idle') this.endEntrance(now);
       return;
     }
+    if (h.act === 'outcome' && want.kind !== 'success') {
+      // his Success cut short by what wins over it (offline, the hop, a new answer): it's had its turn
+      this.outcome = null;
+      this.toRest(now);
+      return;
+    }
     const sinceMs = now - h.since;
     switch (want.kind) {
       case 'hidden':
         if (h.act !== 'hiding' && h.act !== 'gone') {
           this.holder = { by: 'player', act: 'hiding', since: now };
-          this.player.hop('out', () => {
-            this.holder = { by: 'player', act: 'gone', since: performance.now() };
-          });
+          this.player.hop('out', () => this.gone(), { speed: this.afterAnswer ? HOP_BACK : 1 });
         }
         return;
       case 'answer':
         if (h.act === 'hiding' || h.act === 'showing') return;
         if (h.act === 'gone') {
-          // a fresh answer row: the film's own entry brings him in
-          this.startFilm(want.film, 'answer', null);
+          // a fresh answer row: he comes up out of it, and the first film takes him from there
+          this.rise(now);
           return;
         }
         if (h.act !== 'rest') {
@@ -510,6 +665,31 @@ class RayMount {
           return;
         }
         if (sinceMs >= REST_BLEND_MS) this.startFilm(want.film, 'answer', null);
+        return;
+      case 'success':
+      case 'state':
+        // on his seat first (up out of the surface, back from watching, at rest), then the outcome or the state's film
+        if (h.act === 'gone') {
+          this.show(now);
+          return;
+        }
+        if (h.act === 'hiding' || h.act === 'showing' || h.act === 'outcome') return;
+        if (h.act === 'watch') {
+          this.holder = { by: 'player', act: 'back', since: now };
+          this.player.unwatch();
+          return;
+        }
+        if (h.act === 'back' && sinceMs < WATCH_BACK_MS) return;
+        if (h.act !== 'rest') {
+          this.toRest(now);
+          return;
+        }
+        if (now < this.restReadyAt) return;
+        if (want.kind === 'success') {
+          this.playSuccess(now);
+          return;
+        }
+        this.startFilm(STATE_FILMS[want.state].film, 'state', null, want.state);
         return;
       case 'watch':
         if (h.act === 'watch') {
@@ -616,14 +796,142 @@ class RayMount {
   private toRest(now: number): void {
     this.playerIdle = null;
     this.holder = { by: 'player', act: 'rest', since: now };
+    this.restReadyAt = now + REST_BLEND_MS;
     this.player.rest(REST_BLEND_MS);
   }
 
+  /** Back up out of the surface and landing at rest: the way back, at its pace (HOP_BACK); with an outcome waiting, to his landing. */
   private show(now: number): void {
     this.holder = { by: 'player', act: 'showing', since: now };
-    this.player.hop('in', () => {
+    this.player.hop(
+      'in',
+      () => {
+        this.holder = { by: 'player', act: 'rest', since: performance.now() };
+      },
+      { speed: HOP_BACK, window: this.outcome ? TO_LANDED : undefined },
+    );
+  }
+
+  /** Hopped off: out of sight. */
+  private gone(): void {
+    this.holder = { by: 'player', act: 'gone', since: performance.now() };
+    this.afterAnswer = false;
+  }
+
+  /**
+   * An answer row's Ray comes up out of the row (canon hide's second half, flow 10.3's rowHop) and the answer's film takes him from
+   * that pose (its start settles from it). Its film loads meanwhile; he holds the pose till it's ready (START_WAIT_MS at most).
+   */
+  private rise(now: number): void {
+    this.holder = { by: 'player', act: 'showing', since: now };
+    this.preloadAnswer();
+    this.player.hop(
+      'in',
+      () => {
+        const want = this.want();
+        if (want.kind === 'answer') this.startFilm(want.film, 'answer', this.player.last);
+        else this.holder = { by: 'player', act: 'rest', since: performance.now() };
+      },
+      ROW_RISE,
+    );
+  }
+
+  /** `outcome="success"`: canon Success on his seat, once, then his rest. */
+  private playSuccess(now: number): void {
+    this.holder = { by: 'player', act: 'outcome', since: now };
+    this.player.success(() => {
+      this.outcome = null;
       this.holder = { by: 'player', act: 'rest', since: performance.now() };
     });
+  }
+
+  /**
+   * His answer film's exit, cut once its prop is put away (its L.back), or else once he's at rest (its exit's last key), EXIT_CUT_MS
+   * after, and his hop down from the pose he's in then, at the way back's pace: flow 10.5, where the gap between putting the laptop
+   * away and the jump down had been 0.5 s. Read off the film's own handle, as flow 10.5 reads it; a film without one plays its whole
+   * exit, and he hops off at rest (its 'done').
+   */
+  private cutExit(film: Film, now: number): void {
+    const F = film.host.handle;
+    if (!F?.sim) return;
+    const at = F.F?.L?.back ? F.F.L.back[1] : F.sim.dur; // (its prop put away; else its exit's last key)
+    if (!(at > 0) || F.t < at + EXIT_CUT_MS) return;
+    const from = RC.frameAt(F.sim, F.t);
+    this.filmDone(film); // (it stays up as it last drew him till his own Ray has drawn: one frame, no gap)
+    this.holder = { by: 'player', act: 'hiding', since: now };
+    this.player.hop('out', () => this.gone(), { speed: HOP_BACK, from });
+  }
+
+  /** What a state's film needs to know before its start (droop: malfunction or sad). */
+  private cue(film: Film, state: StateName | undefined): void {
+    const cue = state ? STATE_FILMS[state].cue : undefined;
+    if (cue) film.host.send(cue);
+  }
+
+  /** The states' films, loading as soon as they're asked for (each only when it's first needed). */
+  private loadStateFilms(): void {
+    this.wantedStateFilms().forEach((id) => this.film(id));
+  }
+
+  private wantedStateFilms(): string[] {
+    const o = this.options;
+    const wanted: string[] = [];
+    if (o.isOffline) wanted.push(STATE_FILMS.offline.film);
+    if (this.outcome === 'error') wanted.push(STATE_FILMS.error.film);
+    if (o.isListening) wanted.push(STATE_FILMS.mic.film);
+    return wanted;
+  }
+
+  /** Success, worked out in the page's idle time as it's asked for (usually while he's still away or coming back up). */
+  private prepareSuccess(): void {
+    whenIdle(() => {
+      if (!this.disposed) this.player.prepareSuccess();
+    }, 300);
+  }
+
+  // ---- the voice (isListening, voiceStream): its level for the mic film, as the film's own mic would read it ----
+
+  private listen(): NonNullable<RayMount['voice']> | null {
+    if (this.voice || this.voiceFailed) return this.voice;
+    const stream = this.voiceStream;
+    const ctx = stream?.getAudioTracks().length ? RayMount.audioContext() : null;
+    if (!stream || !ctx) {
+      this.voiceFailed = Boolean(stream);
+      return null;
+    }
+    try {
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 1024;
+      const source = ctx.createMediaStreamSource(stream);
+      source.connect(analyser); // (to the analyser only: nothing is played or recorded)
+      ctx.resume().catch(() => undefined);
+      this.voice = { source, analyser, buf: new Float32Array(analyser.fftSize), sent: -1 };
+    } catch {
+      this.voiceFailed = true;
+      return null;
+    }
+    return this.voice;
+  }
+
+  private unlisten(): void {
+    if (!this.voice) return;
+    this.voice.source.disconnect();
+    this.voice = null;
+    // (no Ray listening: the audio rests till one is again; listen() resumes it)
+    if (![...RayMount.up].some((m) => m.voice)) RayMount.audio?.suspend().catch(() => undefined);
+  }
+
+  /** The voice's level (0..1: its loudness x 4, as the film's own mic has it), sent to the mic film when it changes. */
+  private feedVoice(film: Film): void {
+    const v = this.listen();
+    if (!v) return;
+    v.analyser.getFloatTimeDomainData(v.buf);
+    let sum = 0;
+    for (let i = 0; i < v.buf.length; i++) sum += v.buf[i] * v.buf[i];
+    const level = Math.round(Math.min(1, Math.sqrt(sum / v.buf.length) * 4) * 100) / 100;
+    if (level === v.sent) return;
+    v.sent = level;
+    film.host.send({ ray: 'mic', level });
   }
 
   // ---- films ----
@@ -658,6 +966,7 @@ class RayMount {
   private giveUpOn(id: string, now: number): void {
     if (__DEV__) console.warn(`[Ray] the ${id} film didn't start; he rests instead`);
     this.failed.add(id);
+    if (id === STATE_FILMS.error.film && this.outcome === 'error') this.outcome = null;
     this.films[id]?.host.dispose();
     Reflect.deleteProperty(this.films, id);
     Reflect.deleteProperty(this.loading, id);
@@ -698,6 +1007,8 @@ class RayMount {
       goingSince: 0,
       front: false,
       lastCursor: '',
+      still: '',
+      stillTicks: 0,
       host: new FilmHost({
         film: module,
         tunes: TUNES as Record<string, unknown>,
@@ -713,7 +1024,12 @@ class RayMount {
     film.host.start();
   }
 
-  private startFilm(id: string, kind: 'idle' | 'answer', from: unknown): void {
+  private startFilm(
+    id: string,
+    kind: 'idle' | 'answer' | 'state',
+    from: unknown,
+    state?: StateName,
+  ): void {
     const now = performance.now();
     if (this.failed.has(id)) {
       // (a handoff to a film that couldn't start: at rest from where the last one left him)
@@ -723,7 +1039,16 @@ class RayMount {
     }
     const film = this.film(id);
     const underneath = (this.holder.by === 'player' && this.holder.act !== 'gone') || Boolean(from);
-    this.holder = { by: 'film', id, kind, leaving: false, since: now, started: false, underneath };
+    this.holder = {
+      by: 'film',
+      id,
+      kind,
+      state,
+      leaving: false,
+      since: now,
+      started: false,
+      underneath,
+    };
     this.pendingFrom = from; // (his own Ray draws him meanwhile: at rest, or the pose the last film left him in)
     if (film?.ready) this.begin(film, from);
   }
@@ -754,6 +1079,7 @@ class RayMount {
     const current = idle === 'time-of-day' ? this.clockIdle?.idle : idleOfThisLoad(idle);
     const idleFilm = current ? IDLE_FILMS[current] : undefined;
     if (idleFilm) keep.add(idleFilm);
+    this.wantedStateFilms().forEach((id) => keep.add(id));
     return keep;
   }
 
@@ -772,13 +1098,20 @@ class RayMount {
     });
   }
 
+  /** A film told his light / dark and his size. */
+  private dress(film: Film): void {
+    film.host.send({ ray: 'mode', mode: this.options.colorScheme });
+    film.host.send({ ray: 'zoom', z: this.geo.zoom });
+  }
+
   private begin(film: Film, from: unknown): void {
     const h = this.holder;
     if (h.by !== 'film' || h.id !== film.id) return;
     film.going = false;
-    film.host.send({ ray: 'mode', mode: this.options.colorScheme });
-    film.host.send({ ray: 'zoom', z: this.geo.zoom });
+    this.dress(film);
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
+    if (h.kind === 'answer') this.afterAnswer = true;
+    this.cue(film, h.state);
     film.host.send(this.player.capAsk); // his nightcap, while his idle is the sleep cycle: the films wear it too (as flow 9's do)
     film.host.send(from ? { ray: 'start', from } : { ray: 'start' });
     film.startTick = film.host.ticks;
@@ -838,9 +1171,10 @@ class RayMount {
     switch (m.ray) {
       case 'ready': {
         film.ready = true;
-        film.host.send({ ray: 'mode', mode: this.options.colorScheme });
-        film.host.send({ ray: 'zoom', z: this.geo.zoom });
-        if (mine && h.by === 'film' && !h.started) this.begin(film, this.pendingFrom);
+        this.dress(film);
+        if (this.reducedMotion) this.start();
+        // (its still, next frame)
+        else if (mine && h.by === 'film' && !h.started) this.begin(film, this.pendingFrom);
         else if (!mine) film.host.send({ ray: 'rehearse' }); // loaded ahead: one frame unseen, then asleep (FilmHost)
         break;
       }
@@ -851,8 +1185,15 @@ class RayMount {
         film.front = Boolean(m.v);
         break;
       case 'done':
-        if (mine && h.by === 'film' && h.leaving === 'exit') this.filmDone(film);
-        else if (film.going) this.goneUnder(film);
+        // (a one-shot state's film, error, says it's done of its own accord, back at rest)
+        if (
+          mine &&
+          h.by === 'film' &&
+          (h.leaving === 'exit' || (h.kind === 'state' && !h.leaving))
+        ) {
+          if (h.state === 'error') this.outcome = null;
+          this.filmDone(film);
+        } else if (film.going) this.goneUnder(film);
         break;
       default:
     }
@@ -887,15 +1228,7 @@ class RayMount {
     if (dpr !== this.dpr) this.layout();
 
     if (this.reducedMotion) {
-      // one still frame: at rest, or none while he's hidden (no hop: he's simply there or not; update() draws it again)
-      const shown = !this.options.isHidden;
-      this.player.canvas.style.visibility = shown ? '' : 'hidden';
-      this.player.rest(0);
-      if (shown) this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
-      else {
-        this.player.clear();
-        this.onAway?.();
-      }
+      this.stillFrame(now);
       return;
     }
 
@@ -909,6 +1242,57 @@ class RayMount {
       this.onAway?.();
     }
   };
+
+  /**
+   * Reduced motion: one still frame, none while he's hidden (no hop: he's simply there or not; update() draws it again). At rest; a
+   * state's own still (offline, error, the mic: its film draws it, loaded for it); Success's. The outcome's still stays about as long
+   * as it would play, then it's had its turn.
+   */
+  private stillFrame(now: number): void {
+    const shown = !this.options.isHidden;
+    const want = shown ? this.want() : null;
+    const isOutcome =
+      want?.kind === 'success' || (want?.kind === 'state' && want.state === 'error');
+    if (isOutcome && this.outcome && !this.stillTimer) {
+      const ms = want?.kind === 'success' ? this.player.successMs : ERROR_STILL_MS;
+      this.stillTimer = setTimeout(() => {
+        this.stillTimer = null;
+        this.outcome = null;
+        this.start();
+      }, ms);
+    }
+    const state = want?.kind === 'state' ? want.state : null;
+    const film = state ? this.film(STATE_FILMS[state].film) : null;
+    let filmDrawn = false;
+    if (film?.ready && state) {
+      const key = `${state}|${this.options.colorScheme}|${this.geo.zoom}`;
+      if (film.still !== key) {
+        film.still = key;
+        film.stillTicks = 0;
+        this.dress(film);
+        this.cue(film, state);
+        film.host.send({ ray: 'still' });
+      }
+      film.host.tick(now);
+      film.stillTicks += 1;
+      if (film.stillTicks < STILL_TICKS) this.start();
+      filmDrawn = film.stillTicks >= STILL_SHOWN_TICK;
+    }
+    Object.values(this.films).forEach((f) => {
+      f.host.layer.style.visibility = f === film && filmDrawn ? '' : 'hidden';
+    });
+    const playerShown = shown && !filmDrawn;
+    this.player.canvas.style.visibility = playerShown ? '' : 'hidden';
+    if (!shown) {
+      this.player.clear();
+      this.onAway?.();
+      return;
+    }
+    if (!playerShown) return;
+    if (want?.kind === 'success') this.player.successStill();
+    else this.player.rest(0);
+    this.player.tick(now, 0, { pointer: null, gaze: null, hover: false });
+  }
 
   /** Hidden, hopped off, no film still leaving and nothing else to play: the loop can stop (the PR review: a hidden Ray drew on at 60fps). */
   private isAway(): boolean {
@@ -939,9 +1323,7 @@ class RayMount {
         current.host.ticks >= current.startTick + FILM_SHOW_TICKS,
     );
     if (current && filmShown && current.shownAt === Infinity) current.shownAt = now;
-    const clickable =
-      this.options.shouldReactToPointer && this.options.state === 'idle' && !this.options.isHidden;
-    const cursor = clickable ? 'pointer' : '';
+    const cursor = this.clickable ? 'pointer' : '';
     if (this.root.style.cursor !== cursor) this.root.style.cursor = cursor;
     // his own Ray draws until a film has taken him (and a frame after, so there's never a gap)
     const playerOn =
@@ -992,6 +1374,8 @@ class RayMount {
       film.host.layer.style.zIndex = film.going ? (film.front ? '4' : '2') : '3';
       if (shown && film === current && h.by === 'film' && h.kind === 'idle')
         this.sendCursor(film, local);
+      if (film === current && h.by === 'film' && h.state === 'mic' && h.started && !h.leaving)
+        this.feedVoice(film);
       film.host.tick(now);
     });
   }
@@ -1118,6 +1502,22 @@ class RayMount {
   private static readonly booked = new Set<RayMount>(); // the Rays that want the next frame
   private static raf = 0;
   private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
+  private static audio: AudioContext | null = null; // one for every Ray on the page, while one has a voice; closed as the last one goes
+
+  private static audioContext(): AudioContext | null {
+    if (RayMount.audio) return RayMount.audio;
+    const Context: typeof AudioContext | undefined =
+      typeof window === 'undefined'
+        ? undefined
+        : window.AudioContext ?? (window as any).webkitAudioContext;
+    if (!Context) return null;
+    try {
+      RayMount.audio = new Context();
+    } catch {
+      return null;
+    }
+    return RayMount.audio;
+  }
 
   // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
   private static frames = 0;
@@ -1228,6 +1628,8 @@ class RayMount {
     RayMount.pointer = null;
     mirror?.remove();
     mirror = null;
+    RayMount.audio?.close().catch(() => undefined);
+    RayMount.audio = null;
   }
 }
 

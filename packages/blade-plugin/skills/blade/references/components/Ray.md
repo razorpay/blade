@@ -4,13 +4,15 @@ Ray
 
 ## Description
 
-Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat input he idles, watches the caret while the user types (and nudges when typing stops), looks at the pointer and flips a coin when clicked; he hops off the input while an answer is being worked on. A second Ray in the answer's row plays the answer's states (`searching`, `calling`, `writing`, `working`) and hands over between them mid-move. Use it for AI assistant surfaces such as chat inputs and answer rows.
+Ray is Razorpay's AI mascot, an animated character drawn on a canvas. On a chat input he idles, watches the caret while the user types (and nudges when typing stops), looks at the pointer and flips a coin when clicked; he hops off the input while an answer is being worked on. A second Ray in the answer's row plays the answer's states (`searching`, `calling`, `writing`, `working`) and hands over between them mid-move. He also shows how an answer ended (`outcome`: `success` or `error`, played once), when the app is offline (`isOffline`) and when it's listening to the user's voice (`isListening`, with the page's own `voiceStream`). Use it for AI assistant surfaces such as chat inputs and answer rows.
 
 ## Important Constraints
 
 - `Ray` is **web only**; on React Native it throws "not yet implemented".
 - His box is his rest footprint (48 × 39.8px or 38 × 31.51px) and never changes size, but what he does draws outside it (props, a coin in the air, the hop). Don't put him inside a parent that clips its overflow. In a scrolling parent he adds at most one of his widths of scroll room to the right of his box and three quarters of one below it.
 - `watchedInputRef` must point at the actual `<input>` or `<textarea>` he watches (Blade's `ChatInput` forwards its textarea).
+- He never opens the microphone. For `isListening`, the page gets the stream from `getUserMedia` for its own voice input and passes it as `voiceStream`; he only reads its level.
+- One thing at a time: `isOffline` wins over everything else (the mic goes at once); `outcome` waits for an answer's `state` to go back to `idle` and for him to be back on his surface.
 
 ## TypeScript Types
 
@@ -20,7 +22,8 @@ The following types represent the props that the Ray component accepts.
 /**
  * What Ray is doing. `idle` is his own idle (see `idle`); the rest are the states he plays while an answer is being
  * worked on, each one his Ray Studio film: `searching` (the magnifying glass), `calling` (a tool or MCP call: the headset),
- * `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over mid-move.
+ * `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over mid-move. A Ray
+ * that appears in one of them (an answer's row) comes up out of his surface first.
  */
 type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 
@@ -36,6 +39,9 @@ type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'time-of-day';
 
 type RaySize = 'small' | 'medium';
+
+/** How an answer ended (`outcome`): his success, or his error (sad). */
+type RayOutcome = 'success' | 'error';
 
 type RayProps = {
   /**
@@ -108,6 +114,34 @@ type RayProps = {
    * Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
+  /**
+   * While `true`, he's offline: he goes grey, his eyes twitch and every few seconds he glitches. Back to `false`, he jumps back
+   * online (his colour floods back) and goes on with his idle. It wins over everything else he's doing: an answer's states, the
+   * mic, typing. The same prop as on RazorSense, so a page passes one value to both.
+   *
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While `true`, he's listening: a mic whips out round his side and he holds it out, nodding along while you talk. Back to
+   * `false`, the mic whips back in. Its level comes from `voiceStream`; without one he still holds the mic out, he just doesn't
+   * react to talking. The same prop as on RazorSense.
+   *
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The voice he listens to while `isListening`: the `MediaStream` your page got from `getUserMedia` for its own voice input.
+   * He only reads its level, once a frame; he never opens the mic himself and never records. The same prop as on RazorSense.
+   */
+  voiceStream?: MediaStream;
+  /**
+   * How the answer ended, played once when it's set: `success`, a jump with confetti and a little dance; `error`, a sigh and a
+   * slow shake of his eyes. It waits for an answer's states to end, and for him to be back on his surface (`isVisible`), so set
+   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again.
+   * The same prop as on RazorSense.
+   */
+  outcome?: RayOutcome;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -125,6 +159,8 @@ type RayProps = {
 - Use `idle="rotate"` or `idle="time-of-day"` on the dashboard's chat input to vary his idle across visits; leave a named idle where he should look the same every time (tests, docs, screenshots).
 - Use `size="small"` in side panels and `size="medium"` on the dashboard and full-page chat.
 - Leave `accessibilityLabel` unset when the surrounding UI already says what's happening; set it only when Ray carries meaning on his own.
+- Set `outcome` on the chat input's Ray as the answer finishes (with `isVisible` back to `true`): he comes back up and plays it on his seat. Clear it (`undefined`) when the next question is sent.
+- Pass the same `isOffline`, `isListening` and `voiceStream` to Ray and to RazorSense, so both show the same thing.
 
 **Don't**
 
@@ -132,6 +168,8 @@ type RayProps = {
 - Don't set `entrance="dash"` on an answer row's Ray; it's for the landing only.
 - Don't drive `state` on the chat input's Ray; hide it with `isVisible={false}` and use a separate Ray in the answer's row.
 - Don't use Ray as a loading spinner for non-AI work; use `Spinner` or `ProgressBar`.
+- Don't use `outcome` for progress or for errors unrelated to the answer (a form's validation); it's how an AI answer ended.
+- Don't rely on `isOffline` or `outcome` alone to tell the user what happened; say it in text too (Ray is decorative unless `accessibilityLabel` is set).
 
 ## Example
 
@@ -171,6 +209,82 @@ const ChatInputWithRay = () => {
 };
 
 export default ChatInputWithRay;
+```
+
+### Outcome, Offline and Listening
+
+The chat input's Ray shows how the answer ended once he's back on the input, goes offline with the app, and holds a mic while the page listens to the user's voice. The page owns the microphone and hands its stream to Ray.
+
+```jsx
+import React, { useEffect, useRef, useState } from 'react';
+import { Box, Button, ChatInput, Ray } from '@razorpay/blade/components';
+
+const ChatInputWithRayStates = () => {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [value, setValue] = useState('');
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>(undefined);
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [voiceStream, setVoiceStream] = useState<MediaStream | undefined>(undefined);
+
+  useEffect(() => {
+    const update = () => setIsOffline(!navigator.onLine);
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    return () => {
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
+    };
+  }, []);
+
+  const toggleVoice = async () => {
+    if (voiceStream) {
+      voiceStream.getTracks().forEach((track) => track.stop());
+      setVoiceStream(undefined);
+      return;
+    }
+    // the page's own voice input: Ray only reads its level
+    setVoiceStream(await navigator.mediaDevices.getUserMedia({ audio: true }));
+  };
+
+  return (
+    <Box position="relative" width="100%" maxWidth="720px" marginTop="spacing.11">
+      <Box position="absolute" bottom="100%" right="spacing.10" zIndex={2}>
+        <Ray
+          idle="rotate"
+          watchedInputRef={inputRef}
+          isVisible={!isAnswering}
+          outcome={outcome}
+          isOffline={isOffline}
+          isListening={Boolean(voiceStream)}
+          voiceStream={voiceStream}
+        />
+      </Box>
+      <Box position="relative" zIndex={1} display="flex" gap="spacing.3" alignItems="flex-end">
+        <ChatInput
+          ref={inputRef}
+          value={value}
+          onChange={({ value: next }) => setValue(next ?? '')}
+          onSubmit={() => {
+            setValue('');
+            setOutcome(undefined); // the next question clears the last one's
+            setIsAnswering(true);
+            setTimeout(() => {
+              setIsAnswering(false); // he comes back up onto the input
+              setOutcome('success'); // and plays it on his seat
+            }, 8000);
+          }}
+          placeholder="Ask Ray anything…"
+        />
+        <Button variant="tertiary" onClick={toggleVoice}>
+          {voiceStream ? 'Stop voice' : 'Voice'}
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default ChatInputWithRayStates;
 ```
 
 ### Answer Row States

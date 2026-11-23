@@ -4,7 +4,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 /**
  * What Ray is doing. `idle` is his own idle (see `idle`); the rest are the states he plays while an answer is being
  * worked on, each one his Ray Studio film: `searching` (the magnifying glass), `calling` (a tool or MCP call: the headset),
- * `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over mid-move.
+ * `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over mid-move. A Ray
+ * that appears in one of them (an answer's row) comes up out of his surface first.
  */
 type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 
@@ -20,6 +21,9 @@ type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
 type RayIdle = 'rotate' | 'rest' | 'coffee' | 'look' | 'cash' | 'reading' | 'sleep' | 'time-of-day';
 
 type RaySize = 'small' | 'medium';
+
+/** How an answer ended (`outcome`): his success, or his error (sad). */
+type RayOutcome = 'success' | 'error';
 
 type RayProps = {
   /**
@@ -92,8 +96,36 @@ type RayProps = {
    * Leave it unset when he is decorative (the surrounding UI already says what's happening), so screen readers skip him.
    */
   accessibilityLabel?: string;
+  /**
+   * While `true`, he's offline: he goes grey, his eyes twitch and every few seconds he glitches. Back to `false`, he jumps back
+   * online (his colour floods back) and goes on with his idle. It wins over everything else he's doing: an answer's states, the
+   * mic, typing. The same prop as on RazorSense, so a page passes one value to both.
+   *
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While `true`, he's listening: a mic whips out round his side and he holds it out, nodding along while you talk. Back to
+   * `false`, the mic whips back in. Its level comes from `voiceStream`; without one he still holds the mic out, he just doesn't
+   * react to talking. The same prop as on RazorSense.
+   *
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The voice he listens to while `isListening`: the `MediaStream` your page got from `getUserMedia` for its own voice input.
+   * He only reads its level, once a frame; he never opens the mic himself and never records. The same prop as on RazorSense.
+   */
+  voiceStream?: MediaStream;
+  /**
+   * How the answer ended, played once when it's set: `success`, a jump with confetti and a little dance; `error`, a sigh and a
+   * slow shake of his eyes. It waits for an answer's states to end, and for him to be back on his surface (`isVisible`), so set
+   * it as the answer finishes; clear it (`undefined`) with the next question. Set it again after clearing it to play it again.
+   * The same prop as on RazorSense.
+   */
+  outcome?: RayOutcome;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
-export type { RayProps, RayState, RayIdle, RaySize };
+export type { RayProps, RayState, RayIdle, RaySize, RayOutcome };

@@ -116,7 +116,8 @@ class FilmHost {
         this.rehearse(performance.now()); // (the host's own: after the messages sent before it, its mode and zoom)
         return;
       }
-      if (ray === 'start' && this.parked) {
+      // (a start, or a still for reduced motion: it draws again, on canvases sized for it)
+      if ((ray === 'start' || ray === 'still') && this.parked) {
         this.parked = false;
         this.dispatch('resize', {});
       }
@@ -230,6 +231,11 @@ class FilmHost {
     const factory = this.options.shared[name];
     if (!factory) throw new Error(`[Ray] no shared module ${name}`);
     return (this.modules[name] ??= factory(this));
+  }
+
+  /** The film's own handle (its page's `window.FILM`): its clock, its script and its prop's timings, read as flow 10.5 reads them. */
+  get handle(): any {
+    return (this.env.window as Record<string, unknown>).FILM;
   }
 
   /** A shared module the film has made already, else nothing (it isn't made just to be looked at). */
