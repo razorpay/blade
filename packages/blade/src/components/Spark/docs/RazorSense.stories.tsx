@@ -16,6 +16,8 @@ import {
   RazorSenseChatBackground,
 } from '../';
 import { GradientEditor } from './GradientEditor';
+import { makeMicVoice, makeSentenceVoice } from './storyVoice';
+import type { StoryVoice } from './storyVoice';
 import { RazorSenseCardShell } from './RazorSenseCardShell';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -237,10 +239,12 @@ const ControlledInput = ({
  * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: wrap the chat input and a soft fluted strip
  * sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
  * The controls size the box it fits, scale it and move it. Hide UI makes the chat input see-through, so only RazorSense shows
- * (it still takes typing while hidden).
+ * (it still takes typing while hidden). Go offline: it fades away under its colours (`isOffline`); back online, it fades back in,
+ * and turned round mid-way, it goes back from where it is.
  */
 export const DefaultPausedV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
   const [isUiHidden, setIsUiHidden] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
   return (
     <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
       <Box
@@ -252,14 +256,17 @@ export const DefaultPausedV2: StoryFn<EffectControls> = ({ width, height, scale,
         paddingX="spacing.6"
       >
         <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
-          <RazorSenseChatBackground scale={scale}>
+          <RazorSenseChatBackground scale={scale} isOffline={isOffline}>
             <ControlledInput height={height} isUiHidden={isUiHidden} />
           </RazorSenseChatBackground>
         </div>
       </Box>
-      <Box position="absolute" bottom="spacing.5" left="spacing.5">
+      <Box position="absolute" bottom="spacing.5" left="spacing.5" display="flex" gap="spacing.3">
         <Button size="small" variant="secondary" onClick={() => setIsUiHidden((v) => !v)}>
           {isUiHidden ? 'Show UI' : 'Hide UI'}
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
         </Button>
       </Box>
     </Box>
@@ -463,9 +470,17 @@ BottomWaveV2.storyName = 'Bottom Wave 2.0';
  * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
  * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
  * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on.
+ * "Finish with success" and "Finish with error" answer with how the task ended (`outcome`): once the wave settles, it plays its
+ * green or red wave once, back to its rest. "Go offline" drops the wave below the chat (`isOffline`); back online, it rises back.
  */
 export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
   const [isThinking, setIsThinking] = useState(true);
+  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
+  const [isOffline, setIsOffline] = useState(false);
+  const finish = (next?: 'success' | 'error') => {
+    setIsThinking(false);
+    setOutcome(next);
+  };
   return (
     <Box
       margin="-32px"
@@ -483,28 +498,53 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
         borderBottomWidth="thin"
         borderBottomColor="surface.border.gray.muted"
       >
-        <Button
-          size="small"
-          variant="secondary"
-          isDisabled={!isThinking}
-          onClick={() => setIsThinking(false)}
-        >
+        <Button size="small" variant="secondary" isDisabled={!isThinking} onClick={() => finish()}>
           Finish thinking
         </Button>
         <Button
           size="small"
           variant="secondary"
+          isDisabled={!isThinking}
+          onClick={() => finish('success')}
+        >
+          Finish with success
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isThinking}
+          onClick={() => finish('error')}
+        >
+          Finish with error
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
           isDisabled={isThinking}
-          onClick={() => setIsThinking(true)}
+          onClick={() => {
+            setOutcome(undefined);
+            setIsThinking(true);
+          }}
         >
           Think again
         </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
         <Text size="small" color="surface.text.gray.muted">
-          {isThinking ? 'Thinking' : 'Bottom wave'}
+          {isOffline
+            ? 'Offline'
+            : isThinking
+            ? 'Thinking'
+            : outcome === 'success'
+            ? 'Done: success'
+            : outcome === 'error'
+            ? 'Done: error'
+            : 'Bottom wave'}
         </Text>
       </Box>
       <Box flex="1" minHeight="0px">
-        <RazorSenseChat>
+        <RazorSenseChat outcome={outcome} isOffline={isOffline}>
           <Box
             display="flex"
             flexDirection="column"
@@ -527,9 +567,11 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
                 <RazorSenseThinking>Searching your settlements…</RazorSenseThinking>
               ) : (
                 <Text color="surface.text.gray.normal" size="large">
-                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
-                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
-                  tomorrow morning.
+                  {outcome === 'success'
+                    ? 'Your dispute evidence was sent to the card network. You’ll hear back within 7 days; the ₹26,000 stays on hold till then.'
+                    : outcome === 'error'
+                    ? 'Couldn’t submit the evidence: the card network didn’t respond in time. Nothing was sent, and your evidence is saved as a draft.'
+                    : 'Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions, with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands tomorrow morning.'}
                 </Text>
               )}
             </Box>
@@ -549,6 +591,148 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
 };
 BottomSurgeV2.storyName = 'Bottom Surge 2.0';
 BottomSurgeV2.parameters = { controls: { disable: true } };
+
+/**
+ * RazorSense 2.0 listening (`isListening`, with the page's own microphone stream as `voiceStream`): on a landing
+ * (`RazorSenseChatBackground`, the voice dashboard) its strip morphs into a row of blobs along its line; under a chat's input
+ * (`RazorSenseChat`'s bottom wave, the voice bottom) a row of blobs grows on the wave's top edge, breathing while it's silent. Each
+ * blob is a pitch band of the voice. "Listen" starts it with a made-up sentence (or your microphone, with "Use my mic": the story
+ * opens it, as an app's dictation would; RazorSense only reads it). "Stop" morphs it back.
+ */
+export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [place, setPlace] = useState<'landing' | 'chat'>('landing');
+  const [isMic, setIsMic] = useState(false);
+  const [voice, setVoice] = useState<StoryVoice | null>(null);
+  const [note, setNote] = useState('');
+  const voiceRef = useRef<StoryVoice | null>(null);
+  voiceRef.current = voice;
+  const stop = () => {
+    voiceRef.current?.stop();
+    setVoice(null);
+  };
+  const listen = async (useMic: boolean) => {
+    voiceRef.current?.stop();
+    const next = useMic ? await makeMicVoice() : makeSentenceVoice();
+    setVoice(next);
+    setNote(
+      next
+        ? ''
+        : useMic
+        ? 'The microphone was blocked: allow it in the address bar, then listen again.'
+        : 'This browser has no Web Audio.',
+    );
+  };
+  // (its voice stopped when the story goes)
+  useEffect(() => () => voiceRef.current?.stop(), []);
+  const isListening = Boolean(voice);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={place === 'chat' ? 'surface.background.gray.moderate' : undefined}
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => (isListening ? stop() : void listen(isMic))}
+        >
+          {isListening ? 'Stop' : 'Listen'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => {
+            setIsMic(!isMic);
+            if (isListening) void listen(!isMic);
+          }}
+        >
+          {isMic ? 'Use a made-up sentence' : 'Use my mic'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setPlace((v) => (v === 'landing' ? 'chat' : 'landing'))}
+        >
+          {place === 'landing' ? 'Show the chat' : 'Show the landing'}
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {note ||
+            (isListening
+              ? `Listening: ${isMic ? 'your microphone' : 'a made-up sentence'}`
+              : 'Not listening')}
+        </Text>
+      </Box>
+      {place === 'landing' ? (
+        <Box
+          flex="1"
+          minHeight="0px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingX="spacing.6"
+          overflow="hidden"
+        >
+          <div style={{ width: '100%', maxWidth: 840 }}>
+            <RazorSenseChatBackground isListening={isListening} voiceStream={voice?.stream}>
+              <ChatInput placeholder="Ask anything..." />
+            </RazorSenseChatBackground>
+          </div>
+        </Box>
+      ) : (
+        <Box flex="1" minHeight="0px">
+          <RazorSenseChat isListening={isListening} voiceStream={voice?.stream}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              height="100%"
+              maxWidth="800px"
+              marginX="auto"
+              paddingX="spacing.6"
+            >
+              <Box
+                flex="1"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.8"
+                paddingY="spacing.9"
+              >
+                <Box alignSelf="flex-end" maxWidth="70%">
+                  <ChatMessage senderType="self">How is my business doing today?</ChatMessage>
+                </Box>
+                <Text color="surface.text.gray.normal" size="large">
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
+                </Text>
+              </Box>
+              <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+                <RazorSenseBottomWave>
+                  <ChatInput placeholder="Ask anything..." />
+                </RazorSenseBottomWave>
+                <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                  Ray is AI and can make mistakes. Please check important information.
+                </Text>
+              </Box>
+            </Box>
+          </RazorSenseChat>
+        </Box>
+      )}
+    </Box>
+  );
+};
+VoiceV2.storyName = 'Voice 2.0';
+VoiceV2.parameters = { controls: { disable: true } };
 
 type CardControls = { width: number; height: number; ctaLabel: string };
 /**
