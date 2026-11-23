@@ -814,47 +814,52 @@ const PinnableSideNav = ({ isExpanded }: { isExpanded: boolean }) => {
   return (
     <SideNav isExpanded={isExpanded}>
       <SideNavBody>
-        {orderedItems.map((item) => {
-          const isPinned = pinnedIds.includes(item.id);
+        {/* SideNavBody takes elements, so the list of items goes inside a fragment */}
+        <>
+          {orderedItems.map((item) => {
+            const isPinned = pinnedIds.includes(item.id);
 
-          return (
-            <SideNavLink
-              key={item.id}
-              as={RouterLink}
-              icon={item.icon}
-              title={item.title}
-              href={item.href}
-              isActive={
-                item.nextLevel
-                  ? item.nextLevel.some(({ href }) => isActive(href))
-                  : isActive(item.href)
-              }
-              // Pinned: the pin is always visible. Not pinned: it shows on hover and keyboard focus
-              trailingVisibility={isPinned ? 'always' : 'on-hover'}
-              trailing={
-                <IconButton
-                  icon={PinIcon}
-                  accessibilityLabel={isPinned ? `Unpin ${item.title}` : `Pin ${item.title} to top`}
-                  onClick={() => togglePin(item.id)}
-                />
-              }
-            >
-              {item.nextLevel ? (
-                <SideNavLevel>
-                  {item.nextLevel.map((l2Item) => (
-                    <SideNavLink
-                      key={l2Item.href}
-                      as={RouterLink}
-                      title={l2Item.title}
-                      href={l2Item.href}
-                      isActive={isActive(l2Item.href)}
-                    />
-                  ))}
-                </SideNavLevel>
-              ) : undefined}
-            </SideNavLink>
-          );
-        })}
+            return (
+              <SideNavLink
+                key={item.id}
+                as={RouterLink}
+                icon={item.icon}
+                title={item.title}
+                href={item.href}
+                isActive={
+                  item.nextLevel
+                    ? item.nextLevel.some(({ href }) => isActive(href))
+                    : isActive(item.href)
+                }
+                // Pinned: the pin is always visible. Not pinned: it shows on hover and keyboard focus
+                trailingVisibility={isPinned ? 'always' : 'on-hover'}
+                trailing={
+                  <IconButton
+                    icon={PinIcon}
+                    accessibilityLabel={
+                      isPinned ? `Unpin ${item.title}` : `Pin ${item.title} to top`
+                    }
+                    onClick={() => togglePin(item.id)}
+                  />
+                }
+              >
+                {item.nextLevel ? (
+                  <SideNavLevel>
+                    {item.nextLevel.map((l2Item) => (
+                      <SideNavLink
+                        key={l2Item.href}
+                        as={RouterLink}
+                        title={l2Item.title}
+                        href={l2Item.href}
+                        isActive={isActive(l2Item.href)}
+                      />
+                    ))}
+                  </SideNavLevel>
+                ) : undefined}
+              </SideNavLink>
+            );
+          })}
+        </>
 
         {/* Your own content that follows the collapsed state of SideNav */}
         <SideNavVisibility visibleWhen="expanded">
