@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
-import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
+import { loadFreshEngine, measureScreen } from '../RazorSenseEngine';
+import type { CreateFreshEngine, FreshDoc, FreshEngine, FreshStage } from '../RazorSenseEngine';
 import {
   canHover,
   canPlayHover,
@@ -9,6 +9,8 @@ import {
   whenHoverOrKeyboardFocus,
 } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
+import { letGoOfStage, takeStage } from '../useLazyLayer/stagePool';
+import type { PooledStage } from '../useLazyLayer/stagePool';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
@@ -178,6 +180,8 @@ const ButtonRazorSenseLayer = ({
     measureScreen();
     let isMounted = true;
     let stage: FreshStage | null = null;
+    // (its stage from the page's pool: one a button near it just let go, its GPU context and programs kept, or a new one)
+    let pooled: PooledStage | null = null;
     let engine: FreshEngine | null = null;
     let doc: Comp | null = null;
     let setup: ButtonSenseSetup | null = null;
@@ -232,9 +236,12 @@ const ButtonRazorSenseLayer = ({
       if (!createEngine || !doc || !setup || hasGivenUp || !isHeld) return;
       // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
       // means it can't draw here
-      stage ??= new FreshStage(host, createEngine, {
-        onError: (reason) => (reason === 'lost' ? letGo() : giveUp()),
-      });
+      if (!stage) {
+        pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) =>
+          reason === 'lost' ? letGo() : giveUp(),
+        );
+        stage = pooled.stage;
+      }
       laidWidth = widthOf(w);
       engine = stage.mount({
         doc: laidWidth ? forWidth(doc, setup, laidWidth) : doc,
@@ -265,10 +272,13 @@ const ButtonRazorSenseLayer = ({
       };
       liveFrame = requestAnimationFrame(waitForFrame);
     };
-    // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
-    const release = (): void => {
+    // its canvas let go (the pointer moved away): parked for the next button for a moment (stagePool), or freed at once when its
+    // GPU context was lost or it can't draw here (`isReusable` false); made again when it's held and hovered
+    const release = (isReusable = true): void => {
       cancelAnimationFrame(liveFrame);
-      stage?.destroy();
+      // (not one that can't draw here: given up, it goes)
+      if (pooled) letGoOfStage(pooled, isReusable && !hasGivenUp);
+      pooled = null;
       stage = null;
       engine = null;
       setLive(false);
@@ -374,7 +384,7 @@ const ButtonRazorSenseLayer = ({
         window.clearTimeout(pauseTimer);
         pauseTimer = 0;
         layer.style.opacity = '0';
-        release();
+        release(false);
         slot?.update();
       }, 0);
     };

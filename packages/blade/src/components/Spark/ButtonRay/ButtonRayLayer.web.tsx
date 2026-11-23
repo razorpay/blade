@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
-import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
+import { loadFreshEngine, measureScreen } from '../RazorSenseEngine';
+import type { CreateFreshEngine, FreshDoc, FreshEngine, FreshStage } from '../RazorSenseEngine';
 import { Ray } from '../Ray';
 import { RAY_BOX } from '../Ray/rayBox';
 import { loadRay } from '../Ray/loadRay';
@@ -14,6 +14,8 @@ import {
   whenHoverOrKeyboardFocus,
 } from '../useLazyLayer/hoverSlots';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
+import { letGoOfStage, takeStage } from '../useLazyLayer/stagePool';
+import type { PooledStage } from '../useLazyLayer/stagePool';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
 import { rgb } from './rgb';
@@ -237,6 +239,8 @@ const ButtonRayLayer = ({
       else setIsRayUp(false);
     };
     let stage: FreshStage | null = null;
+    // (its stage from the page's pool: one a button near it just let go, its GPU context and programs kept, or a new one)
+    let pooled: PooledStage | null = null;
     let engine: FreshEngine | null = null;
     let isHeld = false;
     let slot: HoverSlot | null = null;
@@ -468,9 +472,12 @@ const ButtonRayLayer = ({
     // (set below, once what they undo is in place)
     let letGo = (): void => undefined;
     let giveUp = (): void => undefined;
-    // its canvas freed (the pointer moved away, or its GPU context was lost): made again when it's held and hovered
-    const release = (): void => {
-      stage?.destroy();
+    let hasGivenUp = false;
+    // its canvas let go (the pointer moved away): parked for the next button for a moment (stagePool), or freed at once when its
+    // GPU context was lost or it can't draw here (`isReusable` false); made again when it's held and hovered
+    const release = (isReusable = true): void => {
+      if (pooled) letGoOfStage(pooled, isReusable && !hasGivenUp);
+      pooled = null;
       stage = null;
       engine = null;
     };
@@ -482,9 +489,12 @@ const ButtonRayLayer = ({
       setIsRayUp(true);
       // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
       // means it can't draw here: Blade's own hover, for good
-      stage = new FreshStage(host, createEngine, {
-        onError: (reason) => (reason === 'lost' ? letGo() : giveUp()),
-      });
+      pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) =>
+        reason === 'lost' ? letGo() : giveUp(),
+      );
+      stage = pooled.stage;
+      // (a stage another button let go still shows its last frame: drawn afresh from the start, unseen, before it's shown here)
+      const isWarm = stage.hasDrawn();
       engine = stage.mount({
         doc,
         opts: {
@@ -497,6 +507,10 @@ const ButtonRayLayer = ({
         },
       });
       stage.setPaused(true);
+      if (isWarm && engine) {
+        const warm = engine;
+        stage.settle(() => warm.player.seek(0), 0);
+      }
       place();
     };
     const show = (on: boolean): void => {
@@ -604,7 +618,7 @@ const ButtonRayLayer = ({
       window.setTimeout(() => {
         if (!isMounted) return;
         rest();
-        release();
+        release(false);
         // Ray let go too (his canvases and films), as when the pointer moves away: both made again on the next hover (the PR
         // review)
         rayDown();
@@ -623,7 +637,6 @@ const ButtonRayLayer = ({
       }, 200);
     });
 
-    let hasGivenUp = false;
     giveUp = (): void => {
       if (hasGivenUp) return;
       hasGivenUp = true;

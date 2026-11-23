@@ -30,6 +30,15 @@ jest.mock('../../RazorSenseEngine', () => ({
     destroy(): void {
       // (nothing made)
     }
+    hasDrawn(): boolean {
+      return false;
+    }
+    hasEngine(): boolean {
+      return true;
+    }
+    setOnError(): void {
+      // (nothing fails)
+    }
   },
   loadFreshEngine: () => Promise.resolve(jest.fn()),
   measureScreen: jest.fn(),
