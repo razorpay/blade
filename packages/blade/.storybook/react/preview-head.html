@@ -5,14 +5,18 @@
   content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 /><style>
   /* 
+    Blade headings (and anything nested in them, like <Heading as="span">) are excluded from both
+    the Inter and the TASA Orbiter overrides, so they keep the font the component sets: TASA Orbiter,
+    or PT Serif for <Heading variant="serif">.
+
     Fix these overrides when there is better resolution to this issue-
     https://github.com/storybookjs/storybook/discussions/21109
   */
-  * :where(p:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled p)),
+  * :where(p:not([data-blade-component='base-text'], [data-blade-component='heading'], [data-blade-component='heading'] p, .sb-anchor, .sb-unstyled, .sb-unstyled p)),
   * :where(a:not(.sb-anchor, .sb-unstyled, .sb-unstyled a)),
-  * :where(div:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled div)),
+  * :where(div:not([data-blade-component='base-text'], [data-blade-component='heading'], [data-blade-component='heading'] div, .sb-anchor, .sb-unstyled, .sb-unstyled div)),
   *
-    :where(span:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled
+    :where(span:not([data-blade-component='base-text'], [data-blade-component='heading'], [data-blade-component='heading'] span, .sb-anchor, .sb-unstyled, .sb-unstyled
         span)),
   * :where(ul:not(.sb-anchor, .sb-unstyled, .sb-unstyled ul)),
   * :where(ol:not(.sb-anchor, .sb-unstyled, .sb-unstyled ol)),
