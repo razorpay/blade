@@ -634,7 +634,7 @@ AIHoversOnManyButtons.parameters = {
   docs: {
     description: {
       story:
-        'A table of 24 rows, each with both AI hovers. A browser keeps only so many WebGL canvases on a page, so a hover makes its canvases only while the pointer is on or near its button: at most 3 on the page at once, none at rest.',
+        'A table of 24 rows, each with both AI hovers. A browser keeps only so many WebGL canvases on a page, so a hover makes its canvases only while the pointer is on or near its button, or it has keyboard focus: at most 3 on the page at once, none at rest.',
     },
   },
 };

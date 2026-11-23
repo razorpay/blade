@@ -12,7 +12,7 @@ The Button component is a versatile interactive element used for triggering acti
 - `color="neutral"` can only be used with `variant="primary"`
 - `aiHover="razorsense"` works only with `variant="primary"` and `color="neutral"` (on any other Button it throws in development). It isn't supported inside a `ButtonGroup` (a ButtonGroup has no neutral color), on an `isFullWidth` button or on one wider than 300px (stretched by its container): there the button keeps its own hover (with a development warning)
 - `aiHover="ray-investigate"` works only with `variant="secondary"` and the default `color="primary"` (on another Button it throws in development), on a labelled button that can widen: in a `ButtonGroup`, with `isFullWidth` or icon-only it gives way and the button keeps its own hover (with a development warning), and so it does where its container sets its width (stretched in a column, a grid cell), as it can't widen there. Give it free space to its right. More Ray actions will come as new `ray-` values
-- An `aiHover` makes its WebGL canvases only while the pointer is on or near the button, and lets them go once it moves away, so a page can hold many of these buttons
+- An `aiHover` plays on hover and on keyboard focus. It makes its WebGL canvases only while the pointer is on or near the button, or while the button has keyboard focus, and lets them go once the pointer moves away or focus leaves, so a page can hold many of these buttons. On a device that can't hover (a phone), nothing of it loads until a keyboard focuses the button
 
 ## TypeScript Types
 
