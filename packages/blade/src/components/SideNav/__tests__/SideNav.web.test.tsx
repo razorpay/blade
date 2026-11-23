@@ -1,4 +1,8 @@
-import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
+import {
+  SideNavExample,
+  SideNavL4NestingErrorExample,
+  SideNavTrailingExample,
+} from './SideNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
@@ -39,6 +43,42 @@ describe('SideNav', () => {
     const { container } = renderWithTheme(<SideNavExample display="block" />);
 
     await assertAccessible(container);
+  });
+
+  test('should show trailing on hover by default and always with trailingVisibility', () => {
+    const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
+
+    expect(getByRole('button', { name: 'Create' }).closest('.show-on-link-hover')).not.toBeNull();
+    expect(getByRole('button', { name: 'Unpin Links' }).closest('.show-on-link-hover')).toBeNull();
+  });
+
+  test('should render trailing on item that opens next level', () => {
+    const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
+    const l2Trigger = getByRole('link', { name: 'L2 Trigger' });
+    const trailing = getByRole('button', { name: 'Unpin L2 Trigger' });
+
+    expect(l2Trigger).toHaveAttribute('data-l2trigger', 'true');
+    // trailing is not nested inside the link since interactive elements cannot be nested
+    expect(l2Trigger).not.toContainElement(trailing);
+    expect(l2Trigger.parentElement).toContainElement(trailing);
+  });
+
+  test('should place trailing 12px from the end of the item', () => {
+    const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
+
+    expect(getByRole('button', { name: 'Create' }).parentElement).toHaveStyle('right: 12px');
+  });
+
+  test('should mark SideNavVisibility content for expanded and collapsed states', () => {
+    const { getByRole } = renderWithTheme(<SideNavTrailingExample display="block" />);
+    const expandedOnly = getByRole('link', { name: '+3 More' }).parentElement;
+
+    expect(expandedOnly).toHaveClass('hide-when-collapsed');
+    expect(expandedOnly).toHaveAttribute('data-analytics-name', 'expanded-only');
+    // content for collapsed state is hidden while SideNav is expanded
+    expect(getByRole('link', { name: '+3', hidden: true }).parentElement).toHaveClass(
+      'show-when-collapsed',
+    );
   });
 
   test('it should support passing data-analytics attribute', () => {

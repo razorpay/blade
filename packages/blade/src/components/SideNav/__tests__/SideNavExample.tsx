@@ -7,10 +7,12 @@ import {
   SideNavLink,
   SideNavItem,
   SideNavLevel,
+  SideNavVisibility,
 } from '../index';
 import type { SideNavLinkProps, SideNavProps } from '../index';
 import { Indicator } from '~components/Indicator';
 import { Switch } from '~components/Switch';
+import { IconButton } from '~components/Button/IconButton';
 import {
   HomeIcon,
   LayoutIcon,
@@ -18,6 +20,8 @@ import {
   PaymentGatewayIcon,
   PaymentLinkIcon,
   PaymentPagesIcon,
+  PinIcon,
+  PlusIcon,
 } from '~components/Icons';
 
 const isItemActive = (
@@ -135,4 +139,50 @@ const SideNavL4NestingErrorExample = (): React.ReactElement => {
   );
 };
 
-export { SideNavExample, SideNavL4NestingErrorExample };
+const noop = (): void => undefined;
+
+const SideNavTrailingExample = (args: Omit<SideNavProps, 'children'>): React.ReactElement => {
+  return (
+    <MemoryRouter initialEntries={['/home']}>
+      <SideNav {...args}>
+        <SideNavBody>
+          <NavLink
+            icon={HomeIcon}
+            title="Home"
+            href="/home"
+            trailing={<IconButton icon={PlusIcon} accessibilityLabel="Create" onClick={noop} />}
+          />
+          <NavLink
+            icon={PaymentLinkIcon}
+            title="Links"
+            href="/links"
+            trailingVisibility="always"
+            trailing={<IconButton icon={PinIcon} accessibilityLabel="Unpin Links" onClick={noop} />}
+          />
+          <NavLink
+            icon={LayoutIcon}
+            title="L2 Trigger"
+            href="/l2-item"
+            activeOnLinks={['/l2-item']}
+            trailingVisibility="always"
+            trailing={
+              <IconButton icon={PinIcon} accessibilityLabel="Unpin L2 Trigger" onClick={noop} />
+            }
+          >
+            <SideNavLevel>
+              <NavLink title="L2 Item" href="/l2-item" />
+            </SideNavLevel>
+          </NavLink>
+          <SideNavVisibility visibleWhen="expanded" data-analytics-name="expanded-only">
+            <Link to="/more">+3 More</Link>
+          </SideNavVisibility>
+          <SideNavVisibility visibleWhen="collapsed">
+            <Link to="/more">+3</Link>
+          </SideNavVisibility>
+        </SideNavBody>
+      </SideNav>
+    </MemoryRouter>
+  );
+};
+
+export { SideNavExample, SideNavTrailingExample, SideNavL4NestingErrorExample };

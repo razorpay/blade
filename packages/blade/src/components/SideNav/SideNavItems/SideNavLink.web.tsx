@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+import {
+  classes,
+  getNavItemTransition,
+  NAV_ITEM_HEIGHT,
+  NAV_LINK_TRAILING_GAP,
+  NAV_LINK_TRAILING_INSET,
+} from '../tokens';
 import type { SideNavLinkProps } from '../types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -12,6 +18,7 @@ import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 import { useFirstRender } from '~utils/useFirstRender';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
+import { useResize } from '~utils/useResize';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
@@ -23,12 +30,24 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
-const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((props) => {
+const StyledNavLinkContainer = styled(BaseBox)<{
+  $hasDescription: boolean;
+  $trailingReservedWidth?: number;
+}>((props) => {
+  const horizontalPadding = props.theme.spacing[4];
+
   return {
     width: '100%',
     [`.${SHOW_ON_LINK_HOVER}`]: {
       opacity: 0,
       '&:focus-within, &:focus-visible': {
+        opacity: 1,
+      },
+    },
+    // Keyboard focus anywhere in the item (e.g. on the link itself) reveals the trailing slot,
+    // so the action in it is discoverable before the user tabs into it
+    '&:has(:focus-visible)': {
+      [`.${SHOW_ON_LINK_HOVER}`]: {
         opacity: 1,
       },
     },
@@ -54,8 +73,13 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       flexWrap: 'nowrap',
       cursor: 'pointer',
       padding: `${makeSpace(props.theme.spacing[props.$hasDescription ? 3 : 0])} ${makeSpace(
-        props.theme.spacing[4],
+        horizontalPadding,
       )}`,
+      // An always visible trailing slot sits on top of the link, so the link keeps that much room free
+      // for its title to truncate before it instead of running under it
+      paddingRight: props.$trailingReservedWidth
+        ? makeSpace(horizontalPadding + props.$trailingReservedWidth)
+        : undefined,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
       borderRadius: props.theme.border.radius.small,
@@ -81,16 +105,26 @@ const NavLinkIconTitle = ({
   isActive,
   trailing,
   isL1Item,
+  shouldFitContent,
 }: Pick<
   SideNavLinkProps,
   'title' | 'isActive' | 'trailing' | 'description' | 'icon' | 'titleSuffix'
 > & {
   isL1Item: boolean;
+  /**
+   * Takes only the width of its content instead of the full width of the link,
+   * so that whatever follows it (L2 trigger's chevron) sits right after the title
+   */
+  shouldFitContent?: boolean;
 }): React.ReactElement => {
   const { containerRef, textRef } = useTruncationTitle({ content: title });
 
   return (
-    <Box width="100%" textAlign="left">
+    <Box
+      width={shouldFitContent ? undefined : '100%'}
+      minWidth={shouldFitContent ? 'spacing.0' : undefined}
+      textAlign="left"
+    >
       <Box display="flex" justifyContent="space-between" width="100%">
         <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
           {Icon ? (
@@ -227,6 +261,7 @@ const SideNavLink = ({
   children,
   titleSuffix,
   trailing,
+  trailingVisibility = 'hover',
   isActive,
   icon,
   tooltip,
@@ -285,6 +320,23 @@ const SideNavLink = ({
 
   const shouldHideL1Item = currentLevel === 1 && !icon && isSideNavCollapsed;
 
+  const hasTrailing = Boolean(trailing);
+  const isTrailingAlwaysVisible = hasTrailing && trailingVisibility === 'always';
+  // When L2 trigger has trailing, trailing takes the end of the item and chevron moves next to the title
+  const isChevronNextToTitle = isL2Trigger && hasTrailing;
+
+  // Width of an always visible trailing slot, so the link can keep that much room free for it.
+  // The ref is only attached in that case, so other items neither measure nor observe anything
+  const trailingRef = React.useRef<HTMLDivElement>(null);
+  const [trailingWidth, setTrailingWidth] = React.useState(0);
+  const updateTrailingWidth = React.useCallback(() => {
+    setTrailingWidth(isTrailingAlwaysVisible ? trailingRef.current?.offsetWidth ?? 0 : 0);
+  }, [isTrailingAlwaysVisible]);
+  // Measured before the first paint so the title never shows under the slot. The observer then keeps
+  // it in step when the slot's content changes size or the slot is hidden in collapsed SideNav
+  useIsomorphicLayoutEffect(updateTrailingWidth, [updateTrailingWidth]);
+  useResize(trailingRef, updateTrailingWidth);
+
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, title }}>
       {isL3Trigger ? (
@@ -310,6 +362,7 @@ const SideNavLink = ({
         <>
           <StyledNavLinkContainer
             $hasDescription={currentLevel !== 1 && Boolean(description)}
+            $trailingReservedWidth={trailingWidth ? trailingWidth + NAV_LINK_TRAILING_GAP : 0}
             position="relative"
           >
             <TooltipifyComponent tooltip={tooltip}>
@@ -359,23 +412,35 @@ const SideNavLink = ({
                   isActive={isActive}
                   isL1Item={currentLevel === 1}
                   titleSuffix={titleSuffix}
+                  shouldFitContent={isChevronNextToTitle}
                 />
                 {isL2Trigger ? (
-                  <BaseBox className={HIDE_WHEN_COLLAPSED} display="flex" alignItems="center">
+                  <BaseBox
+                    className={HIDE_WHEN_COLLAPSED}
+                    display="flex"
+                    alignItems="center"
+                    flexShrink={0}
+                    marginLeft={isChevronNextToTitle ? 'spacing.1' : undefined}
+                  >
                     <ChevronRightIcon size="medium" color="currentColor" />
                   </BaseBox>
                 ) : null}
               </BaseBox>
             </TooltipifyComponent>
-            {trailing && !isL2Trigger ? (
+            {trailing ? (
               <BaseBox
+                ref={isTrailingAlwaysVisible ? (trailingRef as never) : undefined}
                 position="absolute"
                 top="spacing.0"
-                right="spacing.2"
+                right={NAV_LINK_TRAILING_INSET}
                 height="100%"
                 display="flex"
                 alignItems="center"
-                className={`${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`}
+                className={
+                  isTrailingAlwaysVisible
+                    ? HIDE_WHEN_COLLAPSED
+                    : `${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`
+                }
               >
                 {trailing}
               </BaseBox>

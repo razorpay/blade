@@ -163,11 +163,27 @@ type SideNavLinkProps = {
    */
   titleSuffix?: React.ReactElement;
   /**
-   * Trailing slot for item. Only visible on hover of the item
+   * Trailing slot for item. Sits at the end of the item, on top of the link.
    *
-   * Used for <Button />
+   * By default it is visible on hover of the item and while the item has keyboard focus.
+   * Use `trailingVisibility` to keep it visible.
+   *
+   * On an item that opens the next level (L2 trigger), the chevron moves next to the title
+   * and trailing takes the end of the item.
+   *
+   * Used for <Button />, <IconButton />
    */
   trailing?: React.ReactElement;
+  /**
+   * Controls when the trailing slot is visible
+   *
+   * - `hover`: visible on hover of the item and while the item has keyboard focus
+   * - `always`: always visible. The title truncates before the trailing slot.
+   *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
+   *
+   * @default 'hover'
+   */
+  trailingVisibility?: 'hover' | 'always';
   /**
    * href of the link
    */
@@ -331,6 +347,26 @@ type SideNavLevelProps = {
   titleSuffix?: React.ReactElement;
 };
 ```
+
+### SideNavVisibility
+
+```typescript
+type SideNavVisibilityProps = {
+  /**
+   * State of the SideNav in which the children are visible
+   *
+   * - `expanded`: visible while SideNav shows titles of items. Hidden when it collapses to icons
+   * - `collapsed`: visible only while SideNav is collapsed to icons
+   */
+  visibleWhen: 'expanded' | 'collapsed';
+  /**
+   * Content to show or hide with the collapsed state of SideNav
+   */
+  children: React.ReactElement | React.ReactElement[];
+} & DataAnalyticsAttribute;
+```
+
+Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3 More" link) so it hides or shows with the collapsed state like Blade's own items. Do not hard-code Blade's class names for this.
 
 ## Usage Guidelines
 
