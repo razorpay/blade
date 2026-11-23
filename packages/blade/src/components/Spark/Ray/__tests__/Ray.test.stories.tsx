@@ -4,9 +4,11 @@ import { within, userEvent, expect, waitFor } from 'storybook/test';
 import React, { useRef, useState } from 'react';
 import type { RayOutcome, RayState } from '..';
 import { Ray } from '..';
+import { RayLoader } from '../../RayLoader';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
+import { Text } from '~components/Typography';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -18,6 +20,7 @@ const doing = (i = 0): string => {
   return h.by === 'player' ? h.act : `film:${h.id}`;
 };
 const flip = (i = 0): any => rayEl(i)?.__ray?.debug.flip;
+const holder = (i = 0): any => rayEl(i)?.__ray?.debug.holder;
 const hover = (i = 0): any => rayEl(i)?.__ray?.player.hover;
 const pointerAt = (x: number, y: number): void => {
   window.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y }));
@@ -249,6 +252,49 @@ TestRayAnswerStates.play = async () => {
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 8000 });
 };
 
+// `thinking` plays the magnifying glass (Searching's film); `reading`, the box with the papers coming out (Reading box's film, as an
+// answer state), taking him over mid-move from where the last one left him; done, he's back at rest
+export const TestRayThinksAndReads: StoryFn<typeof Ray> = () => {
+  const [state, setState] = useState<RayState>('idle');
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray state={state} idle="rest" shouldReactToPointer={false} />
+      <Button onClick={() => setState('thinking')}>Thinking</Button>
+      <Button onClick={() => setState('reading')}>Reading</Button>
+      <Button onClick={() => setState('idle')}>Done</Button>
+    </Box>
+  );
+};
+TestRayThinksAndReads.play = async () => {
+  const { getByRole } = within(document.body);
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
+  await userEvent.click(getByRole('button', { name: 'Thinking' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'search', kind: 'answer', started: true }),
+    {
+      timeout: 5000,
+    },
+  );
+  await sleep(1500);
+  await userEvent.click(getByRole('button', { name: 'Reading' }));
+  await waitFor(
+    () => expect(holder()).toMatchObject({ id: 'readbox', kind: 'answer', started: true }),
+    {
+      timeout: 5000,
+    },
+  );
+  expect(rayEl().__ray.pendingFrom).not.toBe(null); // (handed over mid-move: from where Thinking left him)
+  await sleep(2000);
+  await userEvent.click(getByRole('button', { name: 'Done' }));
+  await waitFor(() => expect(doing()).toBe('rest'), { timeout: 10000 });
+};
+
 // entrance="dash": he dashes in as he first appears, then his idle takes him on
 export const TestRayDashesIn: StoryFn<typeof Ray> = () => (
   <Box padding="spacing.11" paddingTop="200px" paddingLeft="500px">
@@ -353,7 +399,6 @@ const fakeVoice = (): { stream: MediaStream; stop: () => void } => {
   buzz.start();
   return { stream: out.stream, stop: () => ctx.close() };
 };
-const holder = (i = 0): any => rayEl(i)?.__ray?.debug.holder;
 
 // isOffline: the droop film's malfunction takes him (it wins over everything else), and back online he jumps back to rest. Asked back
 // mid-way (offline again as he jumps back), the film turns back from where he is
@@ -613,6 +658,68 @@ TestRayComesBackQuicker.play = async () => {
   const shown = performance.now();
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
   expect(performance.now() - shown).toBeLessThan(850); // (canon's 900 ms at 1x; 750 at 1.2x)
+};
+
+// The Ray loader: started, he charges and dashes and holds while loading; `isLoading` false, he finishes (slides, turns, jumps, drops
+// through the floor) and onComplete is called, once. Stopped mid-way (unmounted), a new one starts from his start
+const loaderEl = (): any =>
+  document.querySelector('[data-blade-component="ray-loader"]')?.firstElementChild;
+export const TestRayLoaderLoadsAndFinishes: StoryFn<typeof RayLoader> = () => {
+  const [run, setRun] = useState(0);
+  const [isShown, setIsShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+      <Box display="flex" gap="spacing.3">
+        <Button
+          onClick={() => {
+            setRun((r) => r + 1);
+            setIsShown(true);
+            setIsLoading(true);
+          }}
+        >
+          Start
+        </Button>
+        <Button onClick={() => setIsLoading(false)}>Finish</Button>
+        <Button onClick={() => setIsShown(false)}>Stop</Button>
+        <Text>{`completed ${completions}`}</Text>
+      </Box>
+      <Box width="720px">
+        {isShown ? (
+          <RayLoader
+            key={run}
+            isLoading={isLoading}
+            onComplete={() => setCompletions((c) => c + 1)}
+          />
+        ) : null}
+      </Box>
+    </Box>
+  );
+};
+TestRayLoaderLoadsAndFinishes.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1500);
+  expect(debug()).toMatchObject({ finishing: false, done: false }); // (holding the dash while loading)
+  await userEvent.click(getByRole('button', { name: 'Stop' })); // stopped mid-way: the loader goes
+  expect(loaderEl()).toBeFalsy();
+  await userEvent.click(getByRole('button', { name: 'Start' })); // a new one, from his start
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1200);
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(debug()?.finishing).toBe(true), { timeout: 1000 });
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 8000 });
+  await sleep(500);
+  expect(getByText('completed 1')).toBeTruthy(); // (once)
+  expect(
+    loaderEl().getAttribute('aria-hidden') ?? loaderEl().parentElement.getAttribute('aria-hidden'),
+  ).toBe('true');
 };
 
 // Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,

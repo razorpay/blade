@@ -1,6 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RayMount } from './RayMount';
 import { RAY_BOX } from './rayBox';
+import { canDraw } from './canDraw';
 import type { RayProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -12,23 +13,6 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
-
-// he's drawn on a canvas: where there's no real one (a server render, jsdom in unit tests) his box renders and nothing animates.
-// Found out once per page (the PR review: not a canvas made for each Ray)
-let isDrawable: boolean | null = null;
-const canDraw = (): boolean => {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return false;
-  if (isDrawable === null) {
-    try {
-      isDrawable =
-        !/jsdom/i.test(window.navigator.userAgent) &&
-        Boolean(document.createElement('canvas').getContext('2d'));
-    } catch {
-      isDrawable = false;
-    }
-  }
-  return isDrawable;
-};
 
 /**
  * Ray, Razorpay's AI mascot, drawn by Ray Studio's engine.

@@ -21,11 +21,12 @@ The following types represent the props that the Ray component accepts.
 ```typescript
 /**
  * What Ray is doing. `idle` is his own idle (see `idle`); the rest are the states he plays while an answer is being
- * worked on, each one his Ray Studio film: `searching` (the magnifying glass), `calling` (a tool or MCP call: the headset),
- * `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over mid-move. A Ray
- * that appears in one of them (an answer's row) comes up out of his surface first.
+ * worked on, each one his Ray Studio film: `searching` (the magnifying glass), `thinking` (the same magnifying glass, for
+ * an answer whose steps are named thinking), `reading` (the box with the papers coming out), `calling` (a tool or MCP call:
+ * the headset), `writing` (writing a plan) and `working` (the laptop). Moving from one of these to the next hands him over
+ * mid-move. A Ray that appears in one of them (an answer's row) comes up out of his surface first.
  */
-type RayState = 'idle' | 'searching' | 'calling' | 'writing' | 'working';
+type RayState = 'idle' | 'searching' | 'thinking' | 'reading' | 'calling' | 'writing' | 'working';
 
 /**
  * His idle. `rotate` takes the next one of the cycle (coffee, look, cash, reading, sleep) on each page load, as the dashboard does.

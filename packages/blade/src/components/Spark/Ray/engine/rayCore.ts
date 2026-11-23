@@ -529,6 +529,11 @@ export const MATERIALS = { success: { f: 9, z: 0.615, track: true }, typing: { f
 // just inside his top edge, tumble and fall behind him, and drop behind the floor line
 export const CONFETTI = { count: 26, seed: 7, speed: 1835, spread: 70, lean: 0, grav: 3822, drag: 1.1, size: 22.9, life: 1.5, spin: 540,
   cols: ['#2d52e6', '#EFA022', '#F6CDBD', '#2bf08a', '#E85858', '#FFD24A', '#9db2ff'] };
+// dark: each confetti colour a tad lighter, mixed CONFETTI_DARK of the way to white, so it reads on the dark ground (the user, 2026-11-24, on canon
+// Success in dark: "make the confetti a tad bit lighter too"); light draws it as it is. Worked out once a colour
+const CONFETTI_DARK = 0.3, confettiDark = new Map();
+const confettiCol = (c, dark) => { if (!dark) return c; let d = confettiDark.get(c); if (d === undefined) { const m = /^#([0-9a-f]{6})$/i.exec(c || '');
+  d = m ? '#' + [16, 8, 0].map(sh => Math.round(((parseInt(m[1], 16) >> sh) & 255) * (1 - CONFETTI_DARK) + 255 * CONFETTI_DARK).toString(16).padStart(2, '0')).join('') : c; confettiDark.set(c, d); } return d; };
 function confettiBurst(f, TL, TR, t0) {                        // TL / TR: his top edge (Ray px, y down) when it goes off
   const C = { ...CONFETTI, ...f }; let st = (C.seed | 0) * 2654435761 | 0;
   const r = () => { st |= 0; st = st + 0x6D2B79F5 | 0; let t = Math.imul(st ^ st >>> 15, 1 | st); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
@@ -1200,7 +1205,8 @@ export function draw(ctx, frame, view, o = {}) {
   const rotA = rotAngle(frame.pose), rotC = rotA ? rotPivot(frame.pose, pts) : null;   // his whole-body turn (rot) and its pivot, world units
   const lightSrc = Lt => [(Lt.x + (Lt.own ? 0 : (frame.pose.x || 0))) * FIG, (Lt.y - 377 - (Lt.own ? 0 : (frame.pose.y || 0))) * FIG];   // a screen light's source, world units
   const sampled = q => bentNow ? sideSamples(q).map(A) : q.map(A);
-  const outline = sampled(base), body = pathOf(outline, S.radius);
+  const ofx = typeof frame.outlineFx === 'function' ? frame.outlineFx : null;   // a page's own outline (dash.html: the tail flapping like a flag), world units in and out; the glow's outline gets it too
+  const outline = ofx ? ofx(sampled(base)) : sampled(base), body = pathOf(outline, S.radius);
   const drawProps = layer => {                                 // behind him (before his body) or in front (after his eyes); they crossfade where they overlap him
     for (const id in (frame.props || {})) { const P = frame.props[id], art = PROP_ART[id]; if (!art || !P.vis || P.headset) continue;
       const a = (layer === 'front' ? P.front : (P.front >= 0.999 ? 0 : 1)) * (P.alpha ?? 1); if (a <= 0.002) continue;
@@ -1222,7 +1228,7 @@ export function draw(ctx, frame, view, o = {}) {
       const e = Math.exp(-c.d * tau), x = c.x + c.vx * (1 - e) / c.d, y = c.y + (c.g / c.d) * tau + (c.vy - c.g / c.d) * (1 - e) / c.d;   // gravity with drag, solved
       if (y > 377 + 102) continue;
       ctx.globalAlpha = Math.min(1, tau / 0.05) * Math.max(0, Math.min(1, (c.life - tau) / (0.3 * c.life)));
-      ctx.save(); ctx.translate(x * FIG, (y - 377) * FIG); ctx.rotate(c.a + c.va * tau); ctx.scale(1, Math.cos(c.ph + c.vph * tau)); ctx.fillStyle = c.col;
+      ctx.save(); ctx.translate(x * FIG, (y - 377) * FIG); ctx.rotate(c.a + c.va * tau); ctx.scale(1, Math.cos(c.ph + c.vph * tau)); ctx.fillStyle = confettiCol(c.col, o.mode === 'dark');
       ctx.fillRect(-c.w * FIG / 2, -c.h * FIG / 2, c.w * FIG, c.h * FIG); ctx.restore();
     }
     ctx.restore();
@@ -1277,6 +1283,7 @@ export function draw(ctx, frame, view, o = {}) {
         for (let j = 0; j < n; j++) { const u = j / n, P = [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u], d = A(P)[0] - A0(P)[0];
           mix.push([sa[0] + (sb[0] - sa[0]) * u + d, sa[1] + (sb[1] - sa[1]) * u]); } }
     }
+    if (ofx) mix = ofx(mix);
     const outside = new Path2D(); outside.rect(-6000, -6000, 14000, 14000); outside.addPath(pathOf(mix, S.radius * (1 - t)));
     const lerp = (a, b) => a + (b - a) * t, OFF = 20000, full = Math.floor(S.glowStrength), frac = S.glowStrength - full;
     g.shadowBlur = lerp(S.glowSize, S.rectBlur) * k; g.shadowOffsetX = (lerp(S.glowX * (1 - 2 * face), 0) - OFF) * k; g.shadowOffsetY = lerp(S.glowY, 0) * k;

@@ -25,9 +25,20 @@ const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fail
 type ActiveState = Exclude<RayState, 'idle'>;
 type Idle = Exclude<RayIdle, 'rotate' | 'time-of-day'>;
 
-const ANSWER_ORDER: ActiveState[] = ['searching', 'calling', 'writing', 'working']; // an answer's states, in the order they come
+// an answer's states, in the order they usually come (the next one's film is loaded ahead). The new ones (2026-11-24) go first, so
+// the shipped states' preloads are as they were (searching -> calling -> writing -> working)
+const ANSWER_ORDER: ActiveState[] = [
+  'reading',
+  'thinking',
+  'searching',
+  'calling',
+  'writing',
+  'working',
+];
 const ANSWER_FILMS: Record<ActiveState, string> = {
   searching: 'search',
+  thinking: 'search', // (the magnifying glass too: an app can pass its steps' names as they are)
+  reading: 'readbox', // (the box with the papers coming out: Reading box, also an idle)
   calling: 'calling',
   writing: 'writing',
   working: 'laptop2',

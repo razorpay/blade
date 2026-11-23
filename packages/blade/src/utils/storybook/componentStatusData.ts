@@ -1821,6 +1821,21 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'RayLoader',
+    description:
+      "The Ray loader (secondary): Ray dashes across while the page loads, then slides, turns, jumps and drops through the floor. Its props mirror RazorSenseLoader's.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RayLoader',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };

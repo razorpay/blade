@@ -52,7 +52,10 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     entrance: { control: 'radio', options: ['none', 'dash'] },
-    state: { control: 'select', options: ['idle', 'searching', 'calling', 'writing', 'working'] },
+    state: {
+      control: 'select',
+      options: ['idle', 'searching', 'thinking', 'reading', 'calling', 'writing', 'working'],
+    },
     idle: {
       control: 'select',
       options: ['rotate', 'rest', 'coffee', 'look', 'cash', 'reading', 'sleep', 'time-of-day'],
@@ -213,6 +216,8 @@ LandingDash.parameters = { controls: { include: ['idle', 'size'] } };
 const LABELS: Record<RayState, string> = {
   idle: 'Done',
   searching: 'Searching your settlements…',
+  thinking: 'Thinking…',
+  reading: 'Reading your settlement reports…',
   calling: 'Fetching your settlements…',
   writing: 'Writing a plan…',
   working: 'Putting things together',
