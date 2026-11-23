@@ -53,7 +53,8 @@ describe('<RazorSenseSuccess /> (jsdom has no WebGL2)', () => {
     expect(labelOf(container)).toBeNull();
   });
 
-  it('its label is in its place from the start, hidden till the badge pops in, then shown under it', async () => {
+  it('its label is in its place from the start, hidden till the badge pops in, then shown under it', () => {
+    jest.useFakeTimers();
     const onComplete = jest.fn();
     const { container } = renderWithTheme(
       <RazorSenseSuccess label="Payment received" onComplete={onComplete} />,
@@ -62,28 +63,37 @@ describe('<RazorSenseSuccess /> (jsdom has no WebGL2)', () => {
     if (!label) throw new Error('no label');
     expect(label.textContent).toBe('Payment received');
     expect(label.style.opacity).toBe('0');
-    // (no WebGL2 here: the badge pops in alone, and its label comes in with it)
-    await waitFor(() => expect(onComplete).toHaveBeenCalledTimes(1), { timeout: 4000 });
+    // (no WebGL2 here: the badge pops in alone, and its label comes in with it; its frames and its end on the test's clock)
+    act(() => {
+      jest.advanceTimersByTime(4000);
+    });
+    expect(onComplete).toHaveBeenCalledTimes(1);
     expect(label.style.opacity).toBe('1');
     expect(label.style.transform).toBe('none');
+    jest.useRealTimers();
   });
 
-  it('can’t animate here: says why, pops Blade’s badge in with its check, then calls onComplete once', async () => {
+  it('can’t animate here: says why, pops Blade’s badge in with its check, then calls onComplete once', () => {
+    jest.useFakeTimers();
     const onError = jest.fn();
     const onComplete = jest.fn();
     const { container } = renderWithTheme(
       <RazorSenseSuccess onError={onError} onComplete={onComplete} accessibilityLabel="Paid" />,
     );
-    await waitFor(() => expect(onError).toHaveBeenCalledTimes(1));
+    expect(onError).toHaveBeenCalledTimes(1);
     expect(badgeOf(container).getAttribute('aria-label')).toBe('Paid');
-    await waitFor(() => expect(hasCheck(container)).toBe(true));
-    await waitFor(() => expect(onComplete).toHaveBeenCalledTimes(1), { timeout: 4000 });
+    act(() => {
+      jest.advanceTimersByTime(4000);
+    });
+    expect(hasCheck(container)).toBe(true);
+    expect(onComplete).toHaveBeenCalledTimes(1);
     // (no orb, nothing drawn by the GPU)
     expect(container.querySelector('canvas')).toBeNull();
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 50));
+    act(() => {
+      jest.advanceTimersByTime(2000);
     });
     expect(onComplete).toHaveBeenCalledTimes(1);
+    jest.useRealTimers();
   });
 
   it('reduced motion: the badge as it ends, with its check and label, at once; onComplete, no error', async () => {
