@@ -42,6 +42,10 @@ type FreshStageRun<Comps> = {
    * which means drawn, not only made
    */
   onDrawn?: () => void;
+  /** it starts as soon as it's on screen, past the others in line (startQueue): a one-shot moment, played as it happens */
+  isUrgent?: boolean;
+  /** it has started (its turn came, on screen): its `start` has run and its engine is drawing, or about to */
+  onStarted?: () => void;
 };
 
 /** the page's starting step from its GPU's class (deviceLevel.ts: once a page, with the first engine; never in the always-loaded code) */
@@ -100,6 +104,8 @@ const runFreshStage = <Comps>({
   onRelease,
   onWaiting,
   onDrawn,
+  isUrgent,
+  onStarted,
 }: FreshStageRun<Comps>): (() => void) => {
   // the screen's rate, from now: its engine draws nothing till it has loaded and had its turn (once a page)
   measureScreen();
@@ -185,8 +191,11 @@ const runFreshStage = <Comps>({
         stage.setOnShown(onShown);
         stageRef.current = stage;
         if (!start(stage, comps)) fail();
-        // (one that has drawn: the still goes at once)
-        else if (stage.hasDrawn()) onShown();
+        else {
+          onStarted?.();
+          // (one that has drawn: the still goes at once)
+          if (stage.hasDrawn()) onShown();
+        }
         return;
       }
       previous?.destroy();
@@ -220,6 +229,7 @@ const runFreshStage = <Comps>({
             fail(); // no usable WebGL2: nothing drawn, what it wraps shows as it is
             return null;
           }
+          onStarted?.();
           // (drawn, given up, or not running: the next may start; or once it only waits on its GPU, a shader compiling in the
           // background: its own work for its first frame is done, so the next's doesn't land on top of it)
           return () =>
@@ -235,6 +245,7 @@ const runFreshStage = <Comps>({
               }
               return stageNow().prepareStep(engineAlpha);
             },
+        isUrgent,
       );
     })
     .catch(() => fail('its engine failed to load'));

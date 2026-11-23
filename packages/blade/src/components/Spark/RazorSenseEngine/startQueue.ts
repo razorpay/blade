@@ -13,6 +13,9 @@
  * the page's own work. Its engine is made first, a step at a time (`prepare`), each step in an idle moment of its own: made in
  * one go it was one task of 190-330 ms on a mid-range Android phone (about 1 s on the first visit after the engine changed);
  * where steps are quick (a laptop) several run in the same idle moment. Off screen, nothing starts (it would only be paused there).
+ * An urgent turn (RazorSenseSuccess: a one-shot moment, played as it happens) doesn't wait in line: it starts as soon as it's on
+ * screen, its engine made a step at a time all the same. In line behind six others it started ~2.3 s late on an Intel UHD laptop, past
+ * its 0.8 s wait for a first frame: only the badge played.
  */
 const MAX_WAIT_MS = 46000;
 /** how close to the screen a box has to be to start (its first frame ready as it scrolls in) */
@@ -44,9 +47,12 @@ type Turn = {
   /** starts it: a check of whether it has drawn yet, or null when it didn't start */
   go: () => (() => boolean) | null;
   isOnScreen: boolean;
+  /** taken out of the queue (its component went, or it started) */
+  isDone?: boolean;
 };
 
 const waiting: Turn[] = [];
+const urgent: Turn[] = [];
 const byBox = new Map<Element, Turn>();
 let starting: Turn | null = null;
 let startedAt = 0;
@@ -54,32 +60,30 @@ let frame = 0;
 let hasDrawn: (() => boolean) | null = null;
 let observer: IntersectionObserver | null = null;
 
-const pump = (): void => {
-  if (starting) return;
-  const next = waiting.find((turn) => turn.isOnScreen);
-  if (!next) return;
-  waiting.splice(waiting.indexOf(next), 1);
-  observer?.unobserve(next.box);
-  byBox.delete(next.box);
-  starting = next;
+/**
+ * makes a turn's engine a step at a time, each in an idle moment (several in one where they're quick), then starts it: `isWanted`
+ * says it still is, `onStart` takes its first frame's check
+ */
+const makeAndStart = (
+  turn: Turn,
+  isWanted: () => boolean,
+  onStart: (drawn: (() => boolean) | null) => void,
+): void => {
   const start = (): void => {
     // (taken out of the queue meanwhile: its component went)
-    if (starting !== next) return;
-    startedAt = performance.now();
-    hasDrawn = next.go();
-    frame = requestAnimationFrame(check);
+    if (isWanted()) onStart(turn.go());
   };
   // another step in the same idle moment only when the last was quick (a laptop), with room for three more like it: on a slow
   // phone each step is a moment of its own
   const hasRoomAfter = (deadline: IdleDeadline | undefined, took: number): boolean =>
     hasRoom(deadline) && Boolean(deadline) && deadline!.timeRemaining() > 3 * took;
   const step = (deadline?: IdleDeadline): void => {
-    if (starting !== next) return;
+    if (!isWanted()) return;
     let isMade = false;
     let took = 0;
     for (;;) {
       const t = performance.now();
-      isMade = !next.prepare || next.prepare();
+      isMade = !turn.prepare || turn.prepare();
       took = performance.now() - t;
       if (isMade || !hasRoomAfter(deadline, took)) break;
     }
@@ -89,6 +93,41 @@ const pump = (): void => {
     else whenIdle(start, STEP_WAIT_MS);
   };
   whenIdle(step);
+};
+
+const leaveObserver = (turn: Turn): void => {
+  observer?.unobserve(turn.box);
+  if (byBox.get(turn.box) === turn) byBox.delete(turn.box);
+};
+
+const pump = (): void => {
+  // urgent turns on screen start now, whatever is in line
+  for (const turn of urgent.filter((t) => t.isOnScreen)) {
+    urgent.splice(urgent.indexOf(turn), 1);
+    leaveObserver(turn);
+    makeAndStart(
+      turn,
+      () => !turn.isDone,
+      () => {
+        turn.isDone = true;
+      },
+    );
+  }
+  if (starting) return;
+  const next = waiting.find((turn) => turn.isOnScreen);
+  if (!next) return;
+  waiting.splice(waiting.indexOf(next), 1);
+  leaveObserver(next);
+  starting = next;
+  makeAndStart(
+    next,
+    () => starting === next,
+    (drawn) => {
+      startedAt = performance.now();
+      hasDrawn = drawn;
+      frame = requestAnimationFrame(check);
+    },
+  );
 };
 
 // the one starting has drawn (or taken long enough, or gone): the next may start
@@ -114,12 +153,17 @@ const onIntersect = (entries: IntersectionObserverEntry[]): void => {
 
 /**
  * Starts `go` for this box once it's on screen and it's its turn, after `prepare` (if given) has made its engine a step at a time.
- * Returns a function that takes it out of the queue (its component going before it started, or its effect running again);
- * called after it started, it lets the next one go if this one hadn't drawn yet.
+ * `isUrgent`: as soon as it's on screen, past any in line. Returns a function that takes it out of the queue (its component going
+ * before it started, or its effect running again); called after it started, it lets the next one go if this one hadn't drawn yet.
  */
-const waitForTurn = (box: Element, go: Turn['go'], prepare?: Turn['prepare']): (() => void) => {
+const waitForTurn = (
+  box: Element,
+  go: Turn['go'],
+  prepare?: Turn['prepare'],
+  isUrgent = false,
+): (() => void) => {
   const turn: Turn = { box, go, prepare, isOnScreen: typeof IntersectionObserver === 'undefined' };
-  waiting.push(turn);
+  (isUrgent ? urgent : waiting).push(turn);
   if (!turn.isOnScreen) {
     observer ??= new IntersectionObserver(onIntersect, { rootMargin: NEAR });
     byBox.set(box, turn);
@@ -127,12 +171,11 @@ const waitForTurn = (box: Element, go: Turn['go'], prepare?: Turn['prepare']): (
   }
   pump();
   return () => {
-    const i = waiting.indexOf(turn);
-    if (i >= 0) waiting.splice(i, 1);
-    if (byBox.get(box) === turn) {
-      byBox.delete(box);
-      observer?.unobserve(box);
-    }
+    turn.isDone = true;
+    const list = isUrgent ? urgent : waiting;
+    const i = list.indexOf(turn);
+    if (i >= 0) list.splice(i, 1);
+    leaveObserver(turn);
     if (starting === turn) {
       cancelAnimationFrame(frame);
       frame = 0;

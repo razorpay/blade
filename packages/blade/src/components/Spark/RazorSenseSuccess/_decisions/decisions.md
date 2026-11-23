@@ -17,7 +17,8 @@ Success-blob's 'Success piece' as its own component: success 1's orb rises into 
 ## Still and reduced motion
 
 - **Its still is the badge with its check: its end, in HTML.** An image of the orb would stop on a moment that never resolves; the piece's point is the badge.
-- No WebGL2, a software GPU, its engine failing, or no first frame within 0.8 s (a success doesn't wait on a GPU compiling): `onError`, and the badge pops in alone with its check (the overlay with the tick off), then `onComplete`.
+- No WebGL2, a software GPU, its engine failing, no first frame within 0.8 s of its start, its frames held by its GPU for 0.8 s once it draws, or on screen 2 s without starting (a success doesn't wait on a GPU compiling or on a line): `onError`, and the badge pops in alone with its check (the overlay with the tick off), then `onComplete`.
+- **It doesn't wait in line, and its waits count from its start** (24 Nov, the device test's "all together": its 0.8 s counted from its mount ran out while it waited behind six other pieces, ~2.3 s on an Intel UHD laptop, or below the fold till it was scrolled to: only the badge played, on both laptops). It starts as soon as it's on screen, past every other RazorSense in line (startQueue's urgent turn: its engine made a step at a time all the same), and its clock holds till its first frame and while its GPU holds frames back, so the orb plays whole from its start. Measured after: all seven together, 7 of 7 live, the orb drawn 0.96 s after mount on Metal.
 - Reduced motion: the badge with its check at once, and `onComplete`.
 
 ## Its label (2026-11-24)
