@@ -1,4 +1,5 @@
-import { holdNearPointer } from '../hoverSlots';
+import { followKeyboardFocus, holdNearPointer } from '../hoverSlots';
+import type { HoverSlot } from '../hoverSlots';
 
 /** a 100 x 30 button with its top `top` px down the page */
 const buttonAt = (top: number): HTMLElement => {
@@ -188,5 +189,96 @@ describe('holdNearPointer', () => {
     await wait();
     expect(isHeld).toBe(true);
     slot.remove();
+  });
+});
+
+describe('followKeyboardFocus', () => {
+  /** a slot that only records what it's told */
+  const fakeSlot = (): HoverSlot & { focus: jest.Mock } => ({
+    update: jest.fn(),
+    focus: jest.fn(),
+    remove: jest.fn(),
+  });
+  /** a button whose focus is from the keyboard (`:focus-visible`) or not (a click's) */
+  const buttonWith = (isKeyboard: () => boolean): HTMLButtonElement => {
+    const button = document.createElement('button');
+    const matches = button.matches.bind(button);
+    button.matches = (selector: string) =>
+      selector === ':focus-visible' ? isKeyboard() : matches(selector);
+    document.body.append(button);
+    return button;
+  };
+
+  it('plays on a keyboard focus and ends on blur, holding its slot meanwhile', () => {
+    const button = buttonWith(() => true);
+    const slot = fakeSlot();
+    const onChange = jest.fn();
+    const keyboard = followKeyboardFocus(button, slot, onChange);
+    expect(onChange).not.toHaveBeenCalled();
+
+    button.focus();
+    expect(keyboard.isFocused()).toBe(true);
+    expect(slot.focus).toHaveBeenLastCalledWith(true);
+    expect(onChange).toHaveBeenLastCalledWith(true);
+
+    button.blur();
+    expect(keyboard.isFocused()).toBe(false);
+    expect(slot.focus).toHaveBeenLastCalledWith(false);
+    expect(onChange).toHaveBeenLastCalledWith(false);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    keyboard.stop();
+    button.remove();
+  });
+
+  it("doesn't play on a click's focus (not :focus-visible), nor end anything on its blur", () => {
+    const button = buttonWith(() => false);
+    const slot = fakeSlot();
+    const onChange = jest.fn();
+    const keyboard = followKeyboardFocus(button, slot, onChange);
+    button.focus();
+    button.blur();
+    expect(keyboard.isFocused()).toBe(false);
+    expect(slot.focus).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
+    keyboard.stop();
+    button.remove();
+  });
+
+  it('plays at once for a button already focused from the keyboard before its hover was in', () => {
+    const button = buttonWith(() => true);
+    button.focus();
+    const slot = fakeSlot();
+    const onChange = jest.fn();
+    const keyboard = followKeyboardFocus(button, slot, onChange);
+    expect(keyboard.isFocused()).toBe(true);
+    expect(onChange).toHaveBeenCalledWith(true);
+    keyboard.stop();
+    button.blur();
+    button.remove();
+  });
+
+  it('follows nothing once stopped', () => {
+    const button = buttonWith(() => true);
+    const slot = fakeSlot();
+    const onChange = jest.fn();
+    followKeyboardFocus(button, slot, onChange).stop();
+    button.focus();
+    button.blur();
+    expect(slot.focus).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
+    button.remove();
+  });
+
+  it('treats a browser without :focus-visible as no keyboard focus', () => {
+    const button = buttonWith(() => {
+      throw new SyntaxError("':focus-visible' is not a valid selector");
+    });
+    const onChange = jest.fn();
+    const keyboard = followKeyboardFocus(button, fakeSlot(), onChange);
+    button.focus();
+    expect(onChange).not.toHaveBeenCalled();
+    keyboard.stop();
+    button.blur();
+    button.remove();
   });
 });
