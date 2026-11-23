@@ -21,6 +21,13 @@ type ChatStateInputs = {
   outcome?: Outcome;
 };
 
+/**
+ * the outcome last played, kept by the component across its ChatStates (a new color scheme or scale makes new ones: the PR review, an
+ * error set minutes before replayed its red wave on a theme switch), and forgotten when the chat thinks again, so the same outcome set
+ * for the next answer plays again (a page clears it as it sends)
+ */
+type OutcomeMemory = { played?: Outcome };
+
 /** the strip's blur reaches this far above the chat bar (CSS px at scale 1): it drops till that's below the edge */
 const STRIP_REACH = 170;
 /** it drops at least this far (CSS px) */
@@ -50,8 +57,6 @@ class ChatStates {
   /** the voice look, made the first time the page listens, and the Comp 3 its row is in while it's loaded */
   private voice: VoiceBottom | null = null;
   private voiceComp: string | null = null;
-  /** the outcome last played (one plays once each time it's set) */
-  private played: Outcome | undefined;
   private tap: VoiceTap | null = null;
   private tapStream: MediaStream | null = null;
   private isDead = false;
@@ -64,6 +69,8 @@ class ChatStates {
   private readonly scale: number;
   /** reduced motion: draws a settled frame of where it is now */
   private readonly redraw?: () => void;
+  /** the outcome last played (one plays once each time it's set, and once each answer) */
+  private readonly memory: OutcomeMemory;
 
   constructor(
     engine: FreshEngine,
@@ -72,8 +79,10 @@ class ChatStates {
     mode: 'light' | 'dark',
     scale: number,
     redraw?: () => void,
+    memory: OutcomeMemory = {},
   ) {
     this.engine = engine;
+    this.memory = memory;
     this.base = base;
     this.opts = opts;
     this.mode = mode;
@@ -108,14 +117,14 @@ class ChatStates {
     const { isOffline, isListening, outcome } = this.inputs;
     driver.setDrop(isOffline ? this.dropBy(anchors) : 0, now);
     // an outcome: once each time it's set, once the strip is at rest (and the voice look down); cleared mid-way, it plays back
-    if (outcome !== this.played) {
+    if (outcome !== this.memory.played) {
       if (!outcome) {
         driver.clearOutcome();
-        this.played = undefined;
+        this.memory.played = undefined;
       } else if (!this.outcomeModule) {
         this.prefetchOutcome();
       } else if (driver.isAtRest() && !isOffline && !this.voiceComp) {
-        this.played = outcome;
+        this.memory.played = outcome;
         this.startOutcome(driver, outcome);
       }
     }
@@ -128,8 +137,8 @@ class ChatStates {
     const now = performance.now();
     const { isOffline, isListening, outcome } = this.inputs;
     driver.setDrop(isOffline ? this.dropBy(anchors) : 0, now, true);
-    if (outcome !== this.played) {
-      this.played = outcome;
+    if (outcome !== this.memory.played) {
+      this.memory.played = outcome;
       window.clearTimeout(this.stillTimer);
       if (outcome && this.outcomeModule && driver.isAtRest() && !isOffline) {
         this.startOutcome(driver, outcome);
@@ -140,7 +149,7 @@ class ChatStates {
           this.redraw?.();
         }, (this.splice ? this.splice.t1 - this.splice.t0 : 3.7) * 1000);
       } else if (outcome && !this.outcomeModule) {
-        this.played = undefined;
+        this.memory.played = undefined;
         this.prefetchOutcome();
       } else {
         driver.endOutcome();
@@ -277,4 +286,4 @@ class ChatStates {
 }
 
 export { ChatStates };
-export type { ChatStateInputs };
+export type { ChatStateInputs, OutcomeMemory };

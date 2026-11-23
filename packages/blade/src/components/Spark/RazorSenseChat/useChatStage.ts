@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
 import type { ChatAnchors } from './chatDriver';
-import type { ChatStateInputs, ChatStates } from './chatStates';
+import type { ChatStateInputs, ChatStates, OutcomeMemory } from './chatStates';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
 import type { FreshStage } from '../RazorSenseEngine';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
@@ -88,6 +88,8 @@ const useChatStage = ({
   const inputsRef = useRef<ChatStateInputs>({ isOffline, isListening, voiceStream, outcome });
   inputsRef.current = { isOffline, isListening, voiceStream, outcome };
   const statesRef = useRef<ChatStates | null>(null);
+  // (the outcome last played, kept across its states: a new color scheme or scale doesn't play it again)
+  const outcomeMemoryRef = useRef<OutcomeMemory>({});
   // offline, dropped all the way: it stops drawing till it's back online
   const isAwayRef = useRef(false);
   // reduced motion: draws where it is now, settled (a state changing)
@@ -126,8 +128,14 @@ const useChatStage = ({
         if (!engine || !setup) return false;
         const driver = new ChatDriver(setup, mode === 'dark');
         driverRef.current = driver;
-        const states = new comps.ChatStates(engine, doc, opts, mode, scale, () =>
-          redrawRef.current?.(),
+        const states = new comps.ChatStates(
+          engine,
+          doc,
+          opts,
+          mode,
+          scale,
+          () => redrawRef.current?.(),
+          outcomeMemoryRef.current,
         );
         states.inputs = inputsRef.current;
         statesRef.current = states;
@@ -261,8 +269,12 @@ const useChatStage = ({
   }, [isOffline, isListening, voiceStream, outcome]);
 
   useEffect(() => {
-    // (an outcome comes with the answer: its chunk fetched while the page is idle, so it's ready)
-    if (isThinking) statesRef.current?.prefetchOutcome();
+    // (an outcome comes with the answer: its chunk fetched while the page is idle, so it's ready; the last one played is forgotten, so
+    // the same outcome set for this answer plays again)
+    if (isThinking) {
+      statesRef.current?.prefetchOutcome();
+      outcomeMemoryRef.current.played = undefined;
+    }
     if (stillRef.current) {
       stillRef.current(isThinking);
       return;
