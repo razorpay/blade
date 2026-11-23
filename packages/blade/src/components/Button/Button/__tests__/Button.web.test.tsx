@@ -169,6 +169,9 @@ describe('<Button />', () => {
         <Button color="neutral" aiHover="razorsense" isLoading testID="razorsense-loading">
           Ask Ray
         </Button>
+        <Button variant="secondary" aiHover="ray-investigate" isLoading testID="ray-loading">
+          Investigate
+        </Button>
         <Button color="neutral" aiHover="razorsense" testID="control">
           Ask Ray
         </Button>
@@ -179,6 +182,7 @@ describe('<Button />', () => {
         getByTestId('razorsense-disabled'),
         getByTestId('ray-disabled'),
         getByTestId('razorsense-loading'),
+        getByTestId('ray-loading'),
       ],
       getByTestId('control'),
     );

@@ -145,15 +145,19 @@ TestAiHoverKeyboardFocus.play = async ({ canvasElement }) => {
     );
 };
 
-// When Ray is unavailable or the merchant is offline, the app disables the button (isDisabled). A disabled button never plays its
-// AI hover, on the pointer or the keyboard (no canvas is made, and it shows Blade's own disabled look), and a button disabled
-// mid-hover ends it at once. The checkbox stands in for the app.
-export const TestAiHoverDisabled: StoryFn<typeof ButtonComponent> = () => {
+// When Ray is unavailable or the merchant is offline, the app disables the button (isDisabled); while Ray works on it, the app shows
+// it loading (isLoading). Neither plays its AI hover, on the pointer or the keyboard (no canvas is made, and it shows Blade's own
+// disabled or loading look), and a button disabled or set loading mid-hover ends it at once. The checkboxes stand in for the app.
+export const TestAiHoverDisabledOrLoading: StoryFn<typeof ButtonComponent> = () => {
   const [isUnavailable, setIsUnavailable] = useState(false);
+  const [isWorking, setIsWorking] = useState(false);
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.10">
       <Checkbox isChecked={isUnavailable} onChange={({ isChecked }) => setIsUnavailable(isChecked)}>
         Ray unavailable (the app disables his buttons)
+      </Checkbox>
+      <Checkbox isChecked={isWorking} onChange={({ isChecked }) => setIsWorking(isChecked)}>
+        Ray working on it (the app shows his buttons loading)
       </Checkbox>
       <Box display="flex" gap="spacing.5" alignItems="center">
         <ButtonComponent variant="tertiary">Before</ButtonComponent>
@@ -162,68 +166,87 @@ export const TestAiHoverDisabled: StoryFn<typeof ButtonComponent> = () => {
           color="neutral"
           aiHover="razorsense"
           isDisabled={isUnavailable}
+          isLoading={isWorking}
         >
           Ask Ray
         </ButtonComponent>
-        <ButtonComponent variant="secondary" aiHover="ray-investigate" isDisabled={isUnavailable}>
+        <ButtonComponent
+          variant="secondary"
+          aiHover="ray-investigate"
+          isDisabled={isUnavailable}
+          isLoading={isWorking}
+        >
           Investigate
         </ButtonComponent>
         <ButtonComponent variant="primary" color="neutral" isDisabled>
           Disabled
+        </ButtonComponent>
+        <ButtonComponent variant="primary" color="neutral" isLoading>
+          Loading
         </ButtonComponent>
       </Box>
     </Box>
   );
 };
 
-TestAiHoverDisabled.play = async ({ canvasElement }) => {
+TestAiHoverDisabledOrLoading.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
-  const unavailable = getByRole('checkbox');
+  const unavailable = getByRole('checkbox', { name: /unavailable/ });
+  const working = getByRole('checkbox', { name: /working/ });
   const before = getByRole('button', { name: 'Before' });
   const askRay = getByRole('button', { name: 'Ask Ray' });
   const investigate = getByRole('button', { name: 'Investigate' });
   const disabledNeutral = getByRole('button', { name: 'Disabled' });
+  const loadingNeutral = getByRole('button', { name: /Loading/ });
   const canPlay = await isCanvasMade(canvasElement, askRay);
   await pointTo(canvasElement, null);
-  // playing (from the keyboard: a test's pointer doesn't set :hover), then disabled mid-hover: it ends at once. (A click on the
-  // checkbox without focusing it, so the button keeps focus till it's disabled)
-  before.focus();
-  await userEvent.tab();
-  if (canPlay) await expect(await becomes(askRay, true)).toBe(true);
-  fireEvent.click(unavailable);
-  await expect(askRay).toBeDisabled();
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  await expect(askRay.querySelectorAll('canvas')).toHaveLength(0);
-  await expect(isPlaying(askRay)).toBe(false);
-  // Ray's too: on again, Investigate playing, then disabled
-  fireEvent.click(unavailable);
-  if (canPlay) await expect(await isCanvasMade(canvasElement, askRay)).toBe(true);
-  await pointTo(canvasElement, null);
   const restingWidth = investigate.getBoundingClientRect().width;
-  investigate.focus();
-  if (canPlay) await expect(await becomes(investigate, true)).toBe(true);
+  // each button playing (from the keyboard: a test's pointer doesn't set :hover), then the app turns `toggle` on mid-hover: it
+  // ends at once (no canvas, the layer hidden, Ray's widening let go), and stays off (no canvas as the pointer comes, and the
+  // keyboard passes it by), then `toggle` goes off again. (A click on the checkbox without focusing it, so the button keeps focus
+  // till then)
+  const endsAndStaysOff = async (toggle: HTMLElement, button: HTMLElement): Promise<void> => {
+    if (canPlay) await expect(await isCanvasMade(canvasElement, button)).toBe(true);
+    await pointTo(canvasElement, null);
+    button.focus();
+    if (canPlay) await expect(await becomes(button, true)).toBe(true);
+    fireEvent.click(toggle);
+    await expect(button).toBeDisabled();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await expect(button.querySelectorAll('canvas')).toHaveLength(0);
+    await expect(isPlaying(button)).toBe(false);
+    await expect(Math.abs(investigate.getBoundingClientRect().width - restingWidth)).toBeLessThan(
+      1,
+    );
+    await expect(await isCanvasMade(canvasElement, button, 1500)).toBe(false);
+    before.focus();
+    await userEvent.tab();
+    await expect(askRay).not.toHaveFocus();
+    await expect(investigate).not.toHaveFocus();
+    fireEvent.click(toggle);
+  };
+  // disabled: Ray unavailable, or the merchant offline
+  await endsAndStaysOff(unavailable, askRay);
+  await endsAndStaysOff(unavailable, investigate);
+  // loading: Ray working on it
+  await endsAndStaysOff(working, askRay);
+  await endsAndStaysOff(working, investigate);
+  // Blade's own disabled and loading looks, as neutral buttons with no AI hover (once their colour has eased there)
   fireEvent.click(unavailable);
-  await expect(investigate).toBeDisabled();
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  await expect(investigate.querySelectorAll('canvas')).toHaveLength(0);
-  await expect(isPlaying(investigate)).toBe(false);
-  // (narrow again at once: Ray's widening let go)
-  await expect(Math.abs(investigate.getBoundingClientRect().width - restingWidth)).toBeLessThan(1);
-  // disabled, they never play: no canvas as the pointer comes, and the keyboard passes them by
-  await expect(await isCanvasMade(canvasElement, askRay, 1500)).toBe(false);
-  await expect(await isCanvasMade(canvasElement, investigate, 1500)).toBe(false);
-  before.focus();
-  await userEvent.tab();
-  await expect(askRay).not.toHaveFocus();
-  await expect(investigate).not.toHaveFocus();
-  // Blade's own disabled look, as a disabled neutral button with no AI hover (once its colour has eased there)
   await new Promise((resolve) => setTimeout(resolve, 600));
   await expect(getComputedStyle(askRay).backgroundColor).toBe(
     getComputedStyle(disabledNeutral).backgroundColor,
   );
+  fireEvent.click(unavailable);
+  fireEvent.click(working);
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  await expect(getComputedStyle(askRay).backgroundColor).toBe(
+    getComputedStyle(loadingNeutral).backgroundColor,
+  );
+  fireEvent.click(working);
   if (!canPlay)
     console.info(
-      'TestAiHoverDisabled: no AI hover can play here (no WebGL2), so only the disabled buttons were checked',
+      'TestAiHoverDisabledOrLoading: no AI hover can play here (no WebGL2), so only the disabled and loading buttons were checked',
     );
 };
 
