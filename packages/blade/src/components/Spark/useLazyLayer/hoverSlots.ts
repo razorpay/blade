@@ -35,6 +35,8 @@ type Slot = {
   /** told when it may make its canvases (true) and when it must let them go (false) */
   onHold: (isHeld: boolean) => void;
   isHeld: boolean;
+  /** held, but its button not told yet: told in a task of its own (handOver) */
+  isHandingOver: boolean;
   /** focused from the keyboard: held as the button the pointer is on, once it has kept focus FOCUS_DWELL ms */
   isFocused: boolean;
   /** since when (0: it isn't focused) */
@@ -62,6 +64,9 @@ type HoverSlot = {
 const slots = new Set<Slot>();
 let pointer: [number, number] | null = null;
 let frame = 0;
+/** the slots held but not told yet, told one a task (handOver) */
+const handing: Slot[] = [];
+let handTimer = 0;
 let dwellTimer = 0;
 let focusTimer = 0;
 let lastCheckAt = 0;
@@ -69,6 +74,28 @@ let lastCheckAt = 0;
 const distanceTo = (element: HTMLElement, [x, y]: [number, number]): number => {
   const r = element.getBoundingClientRect();
   return Math.hypot(Math.max(r.left - x, 0, x - r.right), Math.max(r.top - y, 0, y - r.bottom));
+};
+
+/** its button told it may make its canvases: the next held one, a task each (a frame can be drawn between two) */
+const handOver = (): void => {
+  handTimer = 0;
+  const slot = handing.shift();
+  if (slot?.isHandingOver) {
+    slot.isHandingOver = false;
+    slot.onHold(true);
+  }
+  if (handing.length) handTimer = window.setTimeout(handOver, 0);
+};
+
+/** let go: told at once (one not told it was held yet is just taken off the list) */
+const letGo = (slot: Slot): void => {
+  slot.isHeld = false;
+  if (slot.isHandingOver) {
+    slot.isHandingOver = false;
+    handing.splice(handing.indexOf(slot), 1);
+    return;
+  }
+  slot.onHold(false);
 };
 
 const check = (): void => {
@@ -161,19 +188,20 @@ const check = (): void => {
       )
       .slice(0, MAX_HELD),
   );
-  // let go first, then hold: a context freed before the next is made
+  // let go first, here, then hold: a context freed before the next is made. A hold is told in a task of its own, not in this frame's
+  // callback: making a stage is the costly part of a hover's start (100-160 ms frames on a Windows laptop's Direct3D, the device
+  // test), and the frame that saw the pointer move is drawn first
   slots.forEach((slot) => {
-    if (slot.isHeld && !held.has(slot)) {
-      slot.isHeld = false;
-      slot.onHold(false);
-    }
+    if (slot.isHeld && !held.has(slot)) letGo(slot);
   });
   held.forEach((slot) => {
     if (!slot.isHeld) {
       slot.isHeld = true;
-      slot.onHold(true);
+      slot.isHandingOver = true;
+      handing.push(slot);
     }
   });
+  if (handing.length && !handTimer) handTimer = window.setTimeout(handOver, 0);
 };
 
 const schedule = (): void => {
@@ -213,6 +241,7 @@ const holdNearPointer = (
     isBusy,
     onHold,
     isHeld: false,
+    isHandingOver: false,
     isFocused: false,
     focusedSince: 0,
     distance: Infinity,
@@ -235,10 +264,7 @@ const holdNearPointer = (
     },
     remove: () => {
       if (!slots.delete(slot)) return;
-      if (slot.isHeld) {
-        slot.isHeld = false;
-        slot.onHold(false);
-      }
+      if (slot.isHeld) letGo(slot);
       if (!slots.size) {
         listen(false);
         cancelAnimationFrame(frame);
@@ -247,6 +273,8 @@ const holdNearPointer = (
         dwellTimer = 0;
         window.clearTimeout(focusTimer);
         focusTimer = 0;
+        window.clearTimeout(handTimer);
+        handTimer = 0;
         pointer = null;
       }
     },

@@ -205,6 +205,32 @@ describe('holdNearPointer', () => {
     slots.forEach((slot) => slot.remove());
   });
 
+  it("tells a button it's held in a task of its own, not in the frame's callback (its stage is made there)", async () => {
+    const raf = window.requestAnimationFrame;
+    let isInFrame = false;
+    window.requestAnimationFrame = (callback) =>
+      raf((t) => {
+        isInFrame = true;
+        try {
+          callback(t);
+        } finally {
+          isInFrame = false;
+        }
+      });
+    const told: boolean[] = [];
+    const slot = holdNearPointer(buttonAt(12000), {
+      isBusy: () => false,
+      onHold: (isHeld) => {
+        if (isHeld) told.push(isInFrame);
+      },
+    });
+    moveTo(50, 12015);
+    await wait();
+    expect(told).toEqual([false]);
+    window.requestAnimationFrame = raf;
+    slot.remove();
+  });
+
   it('holds a hover from where its own event says the pointer is, with no move before it', async () => {
     let isHeld = false;
     // (a pointer that never moved since: the page scrolled under it, say)
