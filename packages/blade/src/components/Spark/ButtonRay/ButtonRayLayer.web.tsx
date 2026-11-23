@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { FreshStage, loadFreshEngine, measureScreen } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine } from '../RazorSenseEngine';
 import { Ray } from '../Ray';
@@ -228,6 +229,13 @@ const ButtonRayLayer = ({
     // the screen's rate, from now: before its canvas is made, as the pointer nears (once a page)
     measureScreen();
     let isMounted = true;
+    // Ray (his canvases, and his film's GPU context) let go in this task, not on React's next turn: the slot that let him go may
+    // hold another button in the same check, and the page must never hold more than its 3 (on a commit of its own he stayed up to
+    // 98 ms longer on a Windows laptop, the device test). Not while React is unmounting the layer: it takes him down itself
+    const rayDown = (): void => {
+      if (isMounted) flushSync(() => setIsRayUp(false));
+      else setIsRayUp(false);
+    };
     let stage: FreshStage | null = null;
     let engine: FreshEngine | null = null;
     let isHeld = false;
@@ -589,7 +597,7 @@ const ButtonRayLayer = ({
       }
       rest();
       release();
-      setIsRayUp(false);
+      rayDown();
     };
     letGo = (): void => {
       // (after this frame: the stage may be the one telling us)
@@ -599,7 +607,7 @@ const ButtonRayLayer = ({
         release();
         // Ray let go too (his canvases and films), as when the pointer moves away: both made again on the next hover (the PR
         // review)
-        setIsRayUp(false);
+        rayDown();
         slot?.update();
       }, 0);
     };
