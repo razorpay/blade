@@ -29,7 +29,13 @@ class VoiceTap {
       window.AudioContext ??
       ((window as unknown) as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     this.ctx = new Ctx();
-    this.source = this.ctx.createMediaStreamSource(stream);
+    try {
+      this.source = this.ctx.createMediaStreamSource(stream);
+    } catch (error: unknown) {
+      // (a stream with no audio: its context closed, not left open; the PR review)
+      void this.ctx.close().catch(() => undefined);
+      throw error;
+    }
     this.analyser = this.ctx.createAnalyser();
     this.analyser.fftSize = 2048;
     this.analyser.smoothingTimeConstant = 0.2;
@@ -78,14 +84,18 @@ class VoiceTap {
 }
 
 const taps = new WeakMap<MediaStream, VoiceTap>();
+/** streams that couldn't be read (no audio, or no Web Audio): not tried again each frame */
+const untappable = new WeakSet<MediaStream>();
 
 /** the stream's analyser (made on first use, shared after): null where the page has no Web Audio, or the stream no audio */
 const tapVoice = (stream: MediaStream): VoiceTap | null => {
+  if (untappable.has(stream)) return null;
   let tap = taps.get(stream) ?? null;
   if (!tap) {
     try {
       tap = new VoiceTap(stream);
     } catch {
+      untappable.add(stream);
       return null;
     }
     taps.set(stream, tap);
