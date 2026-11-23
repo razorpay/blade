@@ -110,14 +110,64 @@ const StoryLink = ({
   </a>
 );
 
+// The "current page" of a story, kept in state. Clicking an item makes it active,
+// and an item with a next level opens it, like it would with a router
+const ActivePathContext = React.createContext<{
+  activePath: string;
+  setActivePath: (path: string) => void;
+}>({ activePath: '', setActivePath: () => undefined });
+
+const StoryNav = ({
+  initialPath,
+  children,
+}: {
+  initialPath: string;
+  children: React.ReactNode;
+}): React.ReactElement => {
+  const [activePath, setActivePath] = React.useState(initialPath);
+
+  return (
+    <ActivePathContext.Provider value={{ activePath, setActivePath }}>
+      {children}
+    </ActivePathContext.Provider>
+  );
+};
+
+const StoryNavLink = ({
+  activeOnPrefix,
+  ...props
+}: Omit<SideNavLinkProps, 'as' | 'isActive'> & {
+  /**
+   * Item is also active on every path that starts with this. Used on items that open the next level
+   */
+  activeOnPrefix?: string;
+}): React.ReactElement => {
+  const { activePath, setActivePath } = React.useContext(ActivePathContext);
+  const href = props.href ?? '';
+  const isActive =
+    activePath === href || Boolean(activeOnPrefix && activePath.startsWith(activeOnPrefix));
+
+  return (
+    <SideNavLink
+      {...props}
+      as={StoryLink}
+      isActive={isActive}
+      onClick={(event) => {
+        setActivePath(href);
+        props.onClick?.(event);
+      }}
+    />
+  );
+};
+
 const PinAction = ({
   title,
   isPinned,
-  onClick = () => console.log(isPinned ? 'unpin' : 'pin', title),
+  onClick,
 }: {
   title: string;
-  isPinned?: boolean;
-  onClick?: (event: React.SyntheticEvent) => void;
+  isPinned: boolean;
+  onClick: (event: React.SyntheticEvent) => void;
 }) => (
   <Tooltip content={isPinned ? 'Unpin' : 'Pin to top'} placement="right">
     <IconButton
@@ -128,84 +178,34 @@ const PinAction = ({
   </Tooltip>
 );
 
-// First three items keep trailing always visible (e.g. pinned items that can be unpinned).
-// Last two show it on hover or keyboard focus of the item, which is the default.
-export const TrailingVisibility: StoryFn<typeof SideNavLink> = () => {
-  return (
-    <Box>
-      <SideNav position="absolute" top="spacing.0">
-        <SideNavBody>
-          <SideNavLink
-            as={StoryLink}
-            href="/payment-links"
-            icon={PaymentLinkIcon}
-            title="Payment Links"
-            trailingVisibility="always"
-            trailing={<PinAction title="Payment Links" isPinned />}
-          />
-          <SideNavLink
-            as={StoryLink}
-            href="/magic-checkout"
-            icon={MagicCheckoutIcon}
-            title="Magic Checkout"
-            trailingVisibility="always"
-            trailing={<PinAction title="Magic Checkout" isPinned />}
-          >
-            <SideNavLevel>
-              <SideNavLink as={StoryLink} href="/magic-checkout/home" title="Home" />
-            </SideNavLevel>
-          </SideNavLink>
-          <SideNavLink
-            as={StoryLink}
-            href="/international"
-            icon={HomeIcon}
-            title="International Payments and Settlements"
-            trailingVisibility="always"
-            trailing={<PinAction title="the long item" isPinned />}
-          />
-          <SideNavLink
-            as={StoryLink}
-            href="/invoices"
-            icon={InvoicesIcon}
-            title="Invoices"
-            trailing={<PinAction title="Invoices" />}
-          />
-          <SideNavLink
-            as={StoryLink}
-            href="/route"
-            icon={RoutesIcon}
-            title="Route"
-            trailing={<PinAction title="Route" />}
-          >
-            <SideNavLevel>
-              <SideNavLink as={StoryLink} href="/route/transfers" title="Transfers" />
-            </SideNavLevel>
-          </SideNavLink>
-        </SideNavBody>
-      </SideNav>
-    </Box>
-  );
-};
-TrailingVisibility.storyName = 'Trailing Visibility';
-
-const pinnableItems: {
+type PinnableItem = {
   id: string;
   title: string;
   icon: IconComponent;
-  hasNextLevel?: boolean;
-}[] = [
-  { id: 'payment-links', title: 'Payment Links', icon: PaymentLinkIcon },
-  { id: 'payment-pages', title: 'Payment Pages', icon: PaymentPagesIcon },
-  { id: 'qr-codes', title: 'QR Codes', icon: QRCodeIcon },
-  { id: 'magic-checkout', title: 'Magic Checkout', icon: MagicCheckoutIcon, hasNextLevel: true },
-  { id: 'invoices', title: 'Invoices', icon: InvoicesIcon },
-  { id: 'subscriptions', title: 'Subscriptions', icon: SubscriptionsIcon },
-];
+  /**
+   * Titles of the items in the next level. The item opens the next level when this is set
+   */
+  nextLevelItems?: string[];
+};
 
-// Pin an item and it moves to the top with its pin always visible.
-// Unpin it and it goes back to its original place, with its pin back to showing on hover.
-export const PinnableItems: StoryFn<typeof SideNavLink> = () => {
-  const [pinnedIds, setPinnedIds] = React.useState<string[]>([]);
+const toPath = (...parts: string[]): string =>
+  `/${parts.map((part) => part.toLowerCase().replace(/\s+/g, '-')).join('/')}`;
+
+/**
+ * A SideNav whose items can be pinned.
+ *
+ * - Pin an item and it moves to the top, with its pin always visible (`trailingVisibility="always"`).
+ * - Unpin it and it goes back to its original place, with its pin back to showing on hover.
+ * - Clicking an item makes it active. An item with a next level opens it.
+ */
+const PinnableNav = ({
+  items,
+  initialPinnedIds = [],
+}: {
+  items: PinnableItem[];
+  initialPinnedIds?: string[];
+}): React.ReactElement => {
+  const [pinnedIds, setPinnedIds] = React.useState<string[]>(initialPinnedIds);
   // After unpinning with the pointer, the pin stays away until the pointer leaves that item.
   // Without this, an item that does not move on unpin would show the pin again at once since it is still hovered
   const [quietId, setQuietId] = React.useState<string>();
@@ -217,26 +217,27 @@ export const PinnableItems: StoryFn<typeof SideNavLink> = () => {
     setQuietId(isPinned && isPointerClick ? id : undefined);
   };
 
-  const items = [
-    ...pinnedIds.flatMap((id) => pinnableItems.filter((item) => item.id === id)),
-    ...pinnableItems.filter((item) => !pinnedIds.includes(item.id)),
+  const orderedItems = [
+    ...pinnedIds.flatMap((id) => items.filter((item) => item.id === id)),
+    ...items.filter((item) => !pinnedIds.includes(item.id)),
   ];
 
   return (
-    <Box>
+    <StoryNav initialPath={toPath(items[0].id)}>
       <SideNav position="absolute" top="spacing.0">
         <SideNavBody>
-          {items.map((item) => {
+          {orderedItems.map((item) => {
             const isPinned = pinnedIds.includes(item.id);
+            const { nextLevelItems } = item;
 
             return (
               <Box
                 key={item.id}
                 onMouseLeave={() => setQuietId((prev) => (prev === item.id ? undefined : prev))}
               >
-                <SideNavLink
-                  as={StoryLink}
-                  href={`/${item.id}`}
+                <StoryNavLink
+                  href={nextLevelItems ? toPath(item.id, nextLevelItems[0]) : toPath(item.id)}
+                  activeOnPrefix={nextLevelItems ? toPath(item.id) : undefined}
                   icon={item.icon}
                   title={item.title}
                   trailingVisibility={isPinned ? 'always' : 'hover'}
@@ -250,18 +251,73 @@ export const PinnableItems: StoryFn<typeof SideNavLink> = () => {
                     )
                   }
                 >
-                  {item.hasNextLevel ? (
+                  {nextLevelItems ? (
                     <SideNavLevel>
-                      <SideNavLink as={StoryLink} href={`/${item.id}/home`} title="Home" />
+                      {nextLevelItems.map((title) => (
+                        <StoryNavLink key={title} href={toPath(item.id, title)} title={title} />
+                      ))}
                     </SideNavLevel>
                   ) : undefined}
-                </SideNavLink>
+                </StoryNavLink>
               </Box>
             );
           })}
         </SideNavBody>
       </SideNav>
-    </Box>
+    </StoryNav>
+  );
+};
+
+// Starts with three pinned items: a plain one, one that opens the next level, and one with a long title
+// that truncates before its pin. The other two show their pin on hover or keyboard focus, which is the default.
+export const TrailingVisibility: StoryFn<typeof SideNavLink> = () => {
+  return (
+    <PinnableNav
+      initialPinnedIds={['payment-links', 'magic-checkout', 'international-payments']}
+      items={[
+        { id: 'payment-links', title: 'Payment Links', icon: PaymentLinkIcon },
+        {
+          id: 'magic-checkout',
+          title: 'Magic Checkout',
+          icon: MagicCheckoutIcon,
+          nextLevelItems: ['Home', 'Orders', 'Settings'],
+        },
+        {
+          id: 'international-payments',
+          title: 'International Payments and Settlements',
+          icon: HomeIcon,
+        },
+        { id: 'invoices', title: 'Invoices', icon: InvoicesIcon },
+        {
+          id: 'route',
+          title: 'Route',
+          icon: RoutesIcon,
+          nextLevelItems: ['Transfers', 'Accounts'],
+        },
+      ]}
+    />
+  );
+};
+TrailingVisibility.storyName = 'Trailing Visibility';
+
+// Starts with nothing pinned
+export const PinnableItems: StoryFn<typeof SideNavLink> = () => {
+  return (
+    <PinnableNav
+      items={[
+        { id: 'payment-links', title: 'Payment Links', icon: PaymentLinkIcon },
+        { id: 'payment-pages', title: 'Payment Pages', icon: PaymentPagesIcon },
+        { id: 'qr-codes', title: 'QR Codes', icon: QRCodeIcon },
+        {
+          id: 'magic-checkout',
+          title: 'Magic Checkout',
+          icon: MagicCheckoutIcon,
+          nextLevelItems: ['Home', 'Orders', 'Settings'],
+        },
+        { id: 'invoices', title: 'Invoices', icon: InvoicesIcon },
+        { id: 'subscriptions', title: 'Subscriptions', icon: SubscriptionsIcon },
+      ]}
+    />
   );
 };
 PinnableItems.storyName = 'Pinnable Items';
@@ -270,11 +326,11 @@ export const CollapsedVisibility: StoryFn<typeof SideNav> = () => {
   const [isExpanded, setIsExpanded] = React.useState(true);
 
   return (
-    <Box>
+    <StoryNav initialPath="/home">
       <SideNav position="absolute" top="spacing.0" isExpanded={isExpanded}>
         <SideNavBody>
-          <SideNavLink as={StoryLink} href="/home" icon={HomeIcon} title="Home" />
-          <SideNavLink as={StoryLink} href="/invoices" icon={InvoicesIcon} title="Invoices" />
+          <StoryNavLink href="/home" icon={HomeIcon} title="Home" />
+          <StoryNavLink href="/invoices" icon={InvoicesIcon} title="Invoices" />
           <SideNavVisibility visibleWhen="expanded">
             <Box paddingX="spacing.4" paddingY="spacing.2">
               <Link variant="button" size="small" color="neutral">
@@ -296,7 +352,7 @@ export const CollapsedVisibility: StoryFn<typeof SideNav> = () => {
           {isExpanded ? 'Collapse SideNav' : 'Expand SideNav'}
         </Button>
       </Box>
-    </Box>
+    </StoryNav>
   );
 };
 CollapsedVisibility.storyName = 'SideNavVisibility';
