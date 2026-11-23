@@ -13,7 +13,7 @@ The PR review (review 6, must fix): 2.0 only knew software renderers (`POTATO_TI
 ## Step back up
 
 - Once a page holds 55 fps (or 9/10 of the screen's own rate, on a slower screen) for 3 seconds, 4 s on from its last step, it steps back up, as `WebGLPerformanceController` does.
-- A step up that doesn't hold (a step down within 8 s of it) doubles the wait before the next (up to 16x), so a device on its edge doesn't go up and down. Steps come at most once a second, page-wide.
+- A step up that doesn't hold (a step down within 8 s of it) doubles the wait before the next, so a device on its edge doesn't go up and down. After three of those it stays down (the PR review: the page's frame rate holds near the screen's at every other frame even on a GPU that can't draw every frame, so it kept trying, ~3 s of jank about once a minute). Steps come at most once a second, page-wide.
 - Measured (Chrome, M-series Mac, the chat background at 2x, with the old 1.2 step): a 9 s CPU overload (the page at 38 fps) stepped down to every other frame, then to the lower sharpness (canvas 2304 -> 1728 px wide); 2 s after it ended, full sharpness again, then every frame. Before, it stayed at 1728 for the rest of the page. With nothing in its way it stays at full (32 s at 120 fps, its canvas unchanged).
 
 ## Render scale (the device test: the steps did nothing at 1x)

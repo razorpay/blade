@@ -231,6 +231,31 @@ describe('FreshStage: quality to the device, both ways', () => {
     }
     stage.destroy();
   });
+
+  it('a device on its edge stops trying after three step ups that don’t hold', () => {
+    const { FreshStage, whyCantAnimate, freshEaseLevel, measureScreen, runFrames } = setup({
+      renderer: 'ANGLE (Apple, ANGLE Metal Renderer: Apple M1)',
+    });
+    expect(whyCantAnimate()).toBeNull();
+    measureScreen();
+    runFrames(70, 1000 / 60);
+    const engine = engineMock();
+    const stage = new FreshStage(document.createElement('div'), () => engine, {});
+    stage.mount({ doc: {}, opts: {} });
+    stage.setDriver(() => undefined);
+    runFrames(3 * 60, 1000 / 60);
+    // 60 fps while it draws every other frame, 35 at full: ten minutes of it
+    let raises = 0;
+    for (let s = 0; s < 600; s++) {
+      const level = freshEaseLevel();
+      runFrames(level === 0 ? 35 : 60, level === 0 ? 1000 / 35 : 1000 / 60);
+      if (level > 0 && freshEaseLevel() < level) raises += 1;
+    }
+    // (each try that doesn't hold is ~2 s of jank: three, then it stays down)
+    expect(raises).toBe(3);
+    expect(freshEaseLevel()).toBeGreaterThan(0);
+    stage.destroy();
+  });
 });
 
 // (a module of its own: its helpers are its own, not shared with the other test files)

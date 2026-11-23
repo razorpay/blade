@@ -76,13 +76,19 @@ let easeLevel = 0;
 /**
  * Back up a step once frames hold again (the PR review: a short stall, a video call or another WebGL tab, cut quality for the rest of
  * the page): RECOVER_SECONDS running at RECOVER_FPS or more (or 9/10 of the screen's own rate, on a slower screen), RECOVER_COOLDOWN
- * ms on from the last step. A step up that doesn't hold (a step down within RECOVER_PROBE_MS) doubles the wait before the next one
- * (up to 16x), so a device on its edge doesn't go up and down. Any step comes at most once a second, page-wide.
+ * ms on from the last step. A step up that doesn't hold (a step down within RECOVER_PROBE_MS) doubles the wait before the next one,
+ * so a device on its edge doesn't go up and down; after RECOVER_MAX_FAILS of those it stays down. Any step comes at most once a
+ * second, page-wide.
  */
 const RECOVER_FPS = 55;
 const RECOVER_SECONDS = 3;
 const RECOVER_COOLDOWN = 4000;
 const RECOVER_PROBE_MS = 8000;
+/**
+ * after this many step ups that didn't hold, it stops trying (the PR review: the page's frame rate holds near the screen's at every
+ * other frame even on a GPU that can't draw every frame, so it kept trying, ~3 s of jank each time, about once a minute)
+ */
+const RECOVER_MAX_FAILS = 3;
 /** when the steps last changed, the last step up, and how many step ups didn't hold (page-wide; performance.now ms) */
 let easedAt = 0;
 let raisedAt = 0;
@@ -807,6 +813,7 @@ class FreshStage {
       this.slowSeconds = 0;
     } else if (
       easeLevel > 0 &&
+      failedRaises < RECOVER_MAX_FAILS &&
       this.fastSeconds >= RECOVER_SECONDS &&
       now - easedAt >= RECOVER_COOLDOWN * 2 ** Math.min(failedRaises, 4)
     ) {
