@@ -13,13 +13,13 @@ const EDGES = [90, 250, 600, 1500, 4000];
 
 /** A stream's analyser, shared by every component listening to it, and read at most once a frame (one analyser read, page-wide). */
 class VoiceTap {
-  public readonly level = { lvl: 0, bands: new Float32Array(4) };
+  public readonly level = { lvl: 0, bands: new Float64Array(4) };
   private readonly ctx: AudioContext;
   private readonly source: MediaStreamAudioSourceNode;
   private readonly analyser: AnalyserNode;
   private readonly time: Float32Array;
   private readonly freq: Uint8Array;
-  private readonly norm = new Float32Array([0.2, 0.2, 0.2, 0.2]);
+  private readonly norm = new Float64Array([0.2, 0.2, 0.2, 0.2]);
   private readAt = -1;
   private lastAt = 0;
   public users = 0;
@@ -64,7 +64,8 @@ class VoiceTap {
       }
       const v = n ? a / n : 0;
       norm[k] = Math.max(norm[k] * Math.exp(-dt / 3), v, 0.08);
-      level.bands[k] = Math.min(1, Math.max(0, v / norm[k])) * Math.sqrt(lvl);
+      // (lvl ** 0.5, as the page has it: Math.sqrt can differ in the last bit)
+      level.bands[k] = Math.min(1, Math.max(0, v / norm[k])) * lvl ** 0.5;
     }
     level.lvl = lvl;
     return level;
@@ -106,7 +107,8 @@ const HISTORY = 512;
 
 /**
  * The voice look's motion: the morph (u -> m by its ease), the voice's follow (a), a spring per blob (env), and the history the row
- * reads late by each blob's distance out. Everything per frame is in place: nothing is allocated once it's made.
+ * reads late by each blob's distance out. Everything per frame is in place: nothing is allocated once it's made. Its numbers are
+ * doubles, as speechtest's are, so it's speechtest's frame for frame (in Float32 the springs drifted off it by up to 3e-6).
  */
 class VoiceMotion {
   /** the morph's time (0 rest, 1 voice) and its eased value */
@@ -115,27 +117,29 @@ class VoiceMotion {
   /** the voice's level, followed */
   public a = 0;
   /** each blob's spring (its height share) */
-  public readonly env: Float32Array;
-  private readonly vel: Float32Array;
-  private readonly rnd: Float32Array;
-  private readonly rs: Float32Array;
+  public readonly env: Float64Array;
+  private readonly vel: Float64Array;
+  private readonly rnd: Float64Array;
+  private readonly rs: Float64Array;
   private slow = 0;
   private last = 0;
   private readonly hT = new Float64Array(HISTORY);
-  private readonly hL = new Float32Array(HISTORY);
-  private readonly hB = new Float32Array(HISTORY * 4);
+  private readonly hL = new Float64Array(HISTORY);
+  private readonly hB = new Float64Array(HISTORY * 4);
   private hAt = 0;
   private hN = 0;
+  /** listening last frame (a listen starting clears the history, as flow 10.5's start() does) */
+  private isWanted = false;
 
   /** blobs in the row */
   public readonly blobs: number;
 
   constructor(blobs: number) {
     this.blobs = blobs;
-    this.env = new Float32Array(blobs);
-    this.vel = new Float32Array(blobs);
-    this.rnd = new Float32Array(blobs).fill(1);
-    this.rs = new Float32Array(blobs).fill(1);
+    this.env = new Float64Array(blobs);
+    this.vel = new Float64Array(blobs);
+    this.rnd = new Float64Array(blobs).fill(1);
+    this.rs = new Float64Array(blobs).fill(1);
   }
 
   /** where blob i sits in the row: -1 (left end) to 1 (right end) */
@@ -146,6 +150,9 @@ class VoiceMotion {
   /** the morph only (towards voice while `want`): true once it's back at rest */
   public morph(dt: number, want: boolean, tune: FreshVoiceTune): boolean {
     const M = tune.morph;
+    // (a listen starting, even one turned back mid-way out: the voice's history from now, as flow 10.5's start() clears it)
+    if (want && !this.isWanted) this.hN = 0;
+    this.isWanted = want;
     this.u = Math.min(
       1,
       Math.max(0, this.u + (want ? dt / Math.max(0.05, M.in) : -dt / Math.max(0.05, M.out))),

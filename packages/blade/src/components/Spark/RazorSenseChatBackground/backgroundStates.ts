@@ -5,6 +5,15 @@ import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
 import type { VoiceTap } from '../RazorSenseEngine/voice';
 import type { VoiceDashboard } from './voiceDashboard';
 
+/**
+ * How far the voice look comes down as it comes in (comp px): the chat background's LIFT (52 CSS px at scale 1, RazorSenseChatBackground:
+ * its strip lifted that far above flow 9's, there being no suggestion tray under its input), at the comp's 0.5 comp px to the CSS px.
+ * At full voice the look then sits on the input where speechtest and flow 10.5 have it on their chat box: the line just under its top
+ * edge (the input over it, as the box is there), the blobs rising from behind it. Lifted with the strip, the line showed whole above the
+ * input: a still band of flutes (the voice tab's own remnant path: sharp, no path drift) the tuned pages never show.
+ */
+const VOICE_DROP = 52 * 2;
+
 /** the states the page sets on the chat background */
 type BackgroundInputs = { isOffline: boolean; isListening: boolean; voiceStream?: MediaStream };
 
@@ -63,7 +72,8 @@ class BackgroundStates {
     }
     if (want && !this.isVoiceDoc) this.toVoice();
     if (!this.isVoiceDoc) return;
-    const level = this.readVoice(nowMs, inputs.voiceStream);
+    // (the voice is read only while listening: on the way out the row falls in silence, as speechtest and flow 10.5 have it)
+    const level = want ? this.readVoice(nowMs, inputs.voiceStream) : null;
     voice.frame(dt, nowMs / 1000, want, level ? level.lvl : 0, level ? level.bands : null);
     if (!want && voice.motion.u <= 0) this.toBase();
   }
@@ -101,7 +111,12 @@ class BackgroundStates {
     import('./voiceDashboard')
       .then((m) => {
         if (this.isDead) return;
-        this.voice = new m.VoiceDashboard(this.mode, this.base, this.engine.player.tools);
+        this.voice = new m.VoiceDashboard(
+          this.mode,
+          this.base,
+          this.engine.player.tools,
+          VOICE_DROP,
+        );
         redraw?.();
       })
       .catch(() => undefined)
@@ -117,6 +132,9 @@ class BackgroundStates {
     this.isVoiceDoc = true;
     this.engine.load?.({ doc: withRoom(voice.doc, this.room), opts: this.opts });
     this.engine.player.look(voice.look);
+    // the base's typing layer (stacked on the voice tab for its place round the input): held at 0 until typing lifts it, as on the
+    // base. A load draws it at its own opacity, the rest strip over the voice look, until something sets it (reduced motion: nothing)
+    this.engine.player.comp('ty', { op: 0 });
     this.onLoad();
   }
 

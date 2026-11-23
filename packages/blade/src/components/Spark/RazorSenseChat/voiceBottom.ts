@@ -52,9 +52,9 @@ const ellipse = (rx: number, ry: number, k = 0.5523): NonNullable<Shape['pts']> 
 };
 
 /** the strip's top edge (its first three points, their curves), without its drift: [x, y] pairs, comp px from the comp's middle, by x */
-const edgeOf = (s: Shape): Float32Array => {
+const edgeOf = (s: Shape): Float64Array => {
   const pts = s.pts ?? [];
-  if (pts.length < 3) return new Float32Array(0);
+  if (pts.length < 3) return new Float64Array(0);
   const k = s.s ?? 1;
   const sx = (s.sx ?? 1) * k;
   const sy = (s.sy ?? 1) * k;
@@ -79,10 +79,10 @@ const edgeOf = (s: Shape): Float32Array => {
     }
   }
   out.sort((p, q) => p[0] - q[0]);
-  return Float32Array.from(out.flat());
+  return Float64Array.from(out.flat());
 };
 
-const edgeY = (E: Float32Array, x: number): number => {
+const edgeY = (E: Float64Array, x: number): number => {
   const n = E.length / 2;
   if (!n) return 0;
   if (x <= E[0]) return E[1];
@@ -103,16 +103,17 @@ class VoiceBottom {
   public readonly look: FreshLook;
   /** the Comp 3 the row is in (the strip page's: c3 or b_c3) */
   private comp = '';
-  private edge = new Float32Array(0);
+  private edge = new Float64Array(0);
   /** the chat input's middle across and half width, and how far its top is above flow's bar's (comp px) */
   private rowX = 0;
   private rowHL = 840;
   private readonly blobAt: Map<string, number>;
-  private readonly bx: Float32Array;
-  private readonly by: Float32Array;
-  private readonly bsy: Float32Array;
-  private readonly bsx: Float32Array;
-  private readonly bop: Float32Array;
+  // each blob, this frame (doubles, as the page's numbers)
+  private readonly bx: Float64Array;
+  private readonly by: Float64Array;
+  private readonly bsy: Float64Array;
+  private readonly bsx: Float64Array;
+  private readonly bop: Float64Array;
   // the strip this frame: its colour's share, breath, sway, swell, richness
   private cm = 0;
   private sbr = 0;
@@ -128,11 +129,11 @@ class VoiceBottom {
     const n = Math.max(1, Math.round(this.data.values.look.count));
     this.motion = new VoiceMotion(n);
     this.blobAt = new Map(Array.from({ length: n }, (_, i) => [`vx${i}`, i]));
-    this.bx = new Float32Array(n);
-    this.by = new Float32Array(n);
-    this.bsy = new Float32Array(n);
-    this.bsx = new Float32Array(n);
-    this.bop = new Float32Array(n);
+    this.bx = new Float64Array(n);
+    this.by = new Float64Array(n);
+    this.bsy = new Float64Array(n);
+    this.bsx = new Float64Array(n);
+    this.bop = new Float64Array(n);
     this.look = { shape: this.shape, params: this.params };
   }
 
@@ -150,7 +151,7 @@ class VoiceBottom {
     this.rowHL = inputWidth / 2;
     const shapes = (entry.doc.shapes as Shape[] | undefined) ?? [];
     const strip = shapes.find((s) => s.id === STRIP);
-    this.edge = strip ? edgeOf(strip) : new Float32Array(0);
+    this.edge = strip ? edgeOf(strip) : new Float64Array(0);
     const L = this.data.values.look;
     const n = this.motion.blobs;
     const span = 2 * this.rowHL * L.spread * L.len;
