@@ -2468,8 +2468,132 @@ TweakpanePlayground.storyName = 'Tweakpane Playground';
 // Login Page Story
 // ---------------------------------------------------------------------------
 
-const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+/** today's login page's form (its right panel), shared by Login Page and Login Page 2.0 */
+const LoginForm = (): ReactElement => {
   const [email, setEmail] = useState('');
+  return (
+    <Box
+      width={{ base: '100%', m: '480px' }}
+      minWidth={{ m: '480px' }}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
+      <Box width="100%" maxWidth="360px">
+        {/* Logo */}
+        <Box marginBottom="spacing.8">
+          <RazorpayIcon size="xlarge" color="interactive.icon.primary.normal" />
+        </Box>
+
+        {/* Heading */}
+        <Heading size="large" marginBottom="spacing.3">
+          Get started with your email or phone number
+        </Heading>
+
+        {/* Email/Phone Input */}
+        <Box marginTop="spacing.8" marginBottom="spacing.6">
+          <TextInput
+            label=""
+            placeholder="Enter email or mobile"
+            value={email}
+            onChange={({ value }) => setEmail(value ?? '')}
+          />
+        </Box>
+
+        {/* Continue Button */}
+        <Button variant="primary" size="large" isFullWidth>
+          Continue
+        </Button>
+
+        {/* Divider */}
+        <Box display="flex" alignItems="center" gap="spacing.4" marginY="spacing.6">
+          <Divider />
+          <Text size="small" color="surface.text.gray.muted">
+            or continue with email
+          </Text>
+          <Divider />
+        </Box>
+
+        {/* Google Sign In */}
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="spacing.4"
+          borderRadius="medium"
+          borderWidth="thin"
+          borderColor="surface.border.gray.muted"
+        >
+          <Box display="flex" alignItems="center" gap="spacing.3">
+            <Box
+              width="24px"
+              height="24px"
+              borderRadius="max"
+              backgroundColor="feedback.background.information.subtle"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text size="small" weight="semibold">
+                N
+              </Text>
+            </Box>
+            <Box>
+              <Text size="medium" weight="medium">
+                Continue as Niharika
+              </Text>
+              <Text size="small" color="surface.text.gray.muted">
+                niha.s@gmail.com
+              </Text>
+            </Box>
+          </Box>
+          <Text size="large" color="feedback.text.information.intense">
+            G
+          </Text>
+        </Box>
+
+        {/* Terms */}
+        <Box marginTop="spacing.8">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            By continuing you agree to our <Link href="#">privacy policy</Link> and{' '}
+            <Link href="#">terms of use</Link>
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+/** today's login page's pitch, over its left panel */
+const LoginPitch = (): ReactElement => (
+  <Box position="relative" zIndex={1} maxWidth="500px" opacity={0.6}>
+    <Heading size="xlarge" color="surface.text.gray.normal" marginBottom="spacing.4">
+      Join 8 Million businesses that trust Razorpay to supercharge their business
+    </Heading>
+    <Box display="flex" gap="spacing.8" marginTop="spacing.6">
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ 100+ Payment Methods
+        </Text>
+      </Box>
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ Easy Integration
+        </Text>
+      </Box>
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ Powerful Dashboard
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+);
+
+const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   const [assetsPreloaded, setAssetsPreloaded] = useState(false);
 
   useEffect(() => {
@@ -2527,127 +2651,56 @@ const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           />
         </Box>
 
-        {/* Content overlay */}
-        <Box position="relative" zIndex={1} maxWidth="500px" opacity={0.6}>
-          <Heading size="xlarge" color="surface.text.gray.normal" marginBottom="spacing.4">
-            Join 8 Million businesses that trust Razorpay to supercharge their business
-          </Heading>
-          <Box display="flex" gap="spacing.8" marginTop="spacing.6">
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ 100+ Payment Methods
-              </Text>
-            </Box>
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ Easy Integration
-              </Text>
-            </Box>
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ Powerful Dashboard
-              </Text>
-            </Box>
-          </Box>
-        </Box>
+        <LoginPitch />
       </Box>
 
-      {/* Right Panel - Login Form */}
-      <Box
-        width={{ base: '100%', m: '480px' }}
-        minWidth={{ m: '480px' }}
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        padding="spacing.10"
-        backgroundColor="surface.background.gray.intense"
-      >
-        <Box width="100%" maxWidth="360px">
-          {/* Logo */}
-          <Box marginBottom="spacing.8">
-            <RazorpayIcon size="xlarge" color="interactive.icon.primary.normal" />
-          </Box>
-
-          {/* Heading */}
-          <Heading size="large" marginBottom="spacing.3">
-            Get started with your email or phone number
-          </Heading>
-
-          {/* Email/Phone Input */}
-          <Box marginTop="spacing.8" marginBottom="spacing.6">
-            <TextInput
-              label=""
-              placeholder="Enter email or mobile"
-              value={email}
-              onChange={({ value }) => setEmail(value ?? '')}
-            />
-          </Box>
-
-          {/* Continue Button */}
-          <Button variant="primary" size="large" isFullWidth>
-            Continue
-          </Button>
-
-          {/* Divider */}
-          <Box display="flex" alignItems="center" gap="spacing.4" marginY="spacing.6">
-            <Divider />
-            <Text size="small" color="surface.text.gray.muted">
-              or continue with email
-            </Text>
-            <Divider />
-          </Box>
-
-          {/* Google Sign In */}
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            padding="spacing.4"
-            borderRadius="medium"
-            borderWidth="thin"
-            borderColor="surface.border.gray.muted"
-          >
-            <Box display="flex" alignItems="center" gap="spacing.3">
-              <Box
-                width="24px"
-                height="24px"
-                borderRadius="max"
-                backgroundColor="feedback.background.information.subtle"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Text size="small" weight="semibold">
-                  N
-                </Text>
-              </Box>
-              <Box>
-                <Text size="medium" weight="medium">
-                  Continue as Niharika
-                </Text>
-                <Text size="small" color="surface.text.gray.muted">
-                  niha.s@gmail.com
-                </Text>
-              </Box>
-            </Box>
-            <Text size="large" color="feedback.text.information.intense">
-              G
-            </Text>
-          </Box>
-
-          {/* Terms */}
-          <Box marginTop="spacing.8">
-            <Text size="small" color="surface.text.gray.muted" textAlign="center">
-              By continuing you agree to our <Link href="#">privacy policy</Link> and{' '}
-              <Link href="#">terms of use</Link>
-            </Text>
-          </Box>
-        </Box>
-      </Box>
+      <LoginForm />
     </Box>
   );
 };
 
 export const LoginPage = LoginPageTemplate.bind({});
 LoginPage.storyName = 'Login Page';
+
+/**
+ * Today's login page with RazorSense 2.0's big piece behind it (`RazorSenseBackground`), as the login mirror has it: the piece laid
+ * on the whole page (its box), placed and scaled as the login page places it for that size, and the form's panel over it. The
+ * form and the pitch are the Login Page story's own. Light and dark are their own tunings: switch them in the bar.
+ */
+export const LoginPageV2: StoryFn<typeof RazorSenseBackground> = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+  return (
+    <Box margin="-32px" height="100vh" display="flex" flexDirection="column">
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+      </Box>
+      <Box flex="1" minHeight="0px" position="relative" display="flex" overflow="hidden">
+        {/* the piece on the whole page, as the login mirror lays it: the form's panel goes over it */}
+        <Box position="absolute" top="0px" left="0px" right="0px" bottom="0px">
+          <RazorSenseBackground />
+        </Box>
+        <Box
+          flex="1"
+          position="relative"
+          display={{ base: 'none', m: 'flex' }}
+          flexDirection="column"
+          justifyContent="flex-end"
+          padding="spacing.10"
+        >
+          <LoginPitch />
+        </Box>
+        <Box position="relative" display="flex">
+          <LoginForm />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+LoginPageV2.storyName = 'Login Page 2.0';
+LoginPageV2.parameters = { controls: { disable: true } };
