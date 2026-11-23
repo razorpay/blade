@@ -1,8 +1,10 @@
 import React from 'react';
 import { classes } from './tokens';
 import type { SideNavVisibilityProps } from './types';
+import { useSideNav } from './SideNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { throwBladeError } from '~utils/logger';
 
 /**
  * Shows its children only while the SideNav is expanded, or only while it is collapsed.
@@ -15,11 +17,23 @@ const SideNavVisibility = ({
   children,
   ...rest
 }: SideNavVisibilityProps): React.ReactElement => {
+  const { isSideNavCollapsed } = useSideNav();
+
+  if (__DEV__) {
+    // SideNav always sets this. Outside SideNav nothing styles the classes below, so both states would stay visible
+    if (isSideNavCollapsed === undefined) {
+      throwBladeError({
+        moduleName: 'SideNavVisibility',
+        message: 'SideNavVisibility cannot be used outside of SideNav component',
+      });
+    }
+  }
+
   return (
     <BaseBox
-      className={
+      className={`${classes.SIDE_NAV_VISIBILITY} ${
         visibleWhen === 'collapsed' ? classes.SHOW_WHEN_COLLAPSED : classes.HIDE_WHEN_COLLAPSED
-      }
+      }`}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

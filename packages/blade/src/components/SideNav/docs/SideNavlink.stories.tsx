@@ -65,7 +65,7 @@ export default {
     trailingVisibility: {
       name: 'trailingVisibility',
       type: 'select',
-      options: ['hover', 'always'],
+      options: ['on-hover', 'always'],
     } as unknown,
   },
 } as Meta<SideNavLinkProps>;
@@ -203,9 +203,19 @@ const toPath = (...parts: string[]): string =>
 const PinnableNav = ({
   items,
   initialPinnedIds = [],
+  isExpanded,
+  children,
 }: {
   items: PinnableItem[];
   initialPinnedIds?: string[];
+  /**
+   * Pass it to control whether the SideNav is expanded or collapsed to icons
+   */
+  isExpanded?: boolean;
+  /**
+   * Rendered after the items
+   */
+  children?: React.ReactNode;
 }): React.ReactElement => {
   const [pinnedIds, setPinnedIds] = React.useState<string[]>(initialPinnedIds);
   // After unpinning with the pointer, the pin stays away until the pointer leaves that item.
@@ -226,7 +236,7 @@ const PinnableNav = ({
 
   return (
     <StoryNav initialPath={toPath(items[0].id)}>
-      <SideNav position="absolute" top="spacing.0">
+      <SideNav position="absolute" top="spacing.0" isExpanded={isExpanded}>
         <SideNavBody>
           {orderedItems.map((item) => {
             const isPinned = pinnedIds.includes(item.id);
@@ -242,7 +252,7 @@ const PinnableNav = ({
                   activeOnPrefix={nextLevelItems ? toPath(item.id) : undefined}
                   icon={item.icon}
                   title={item.title}
-                  trailingVisibility={isPinned ? 'always' : 'hover'}
+                  trailingVisibility={isPinned ? 'always' : 'on-hover'}
                   trailing={
                     // Hidden instead of removed while quiet, so the item keeps the same room for it
                     // and a long title does not change where it truncates
@@ -266,6 +276,7 @@ const PinnableNav = ({
               </Box>
             );
           })}
+          {children}
         </SideNavBody>
       </SideNav>
     </StoryNav>
@@ -326,37 +337,43 @@ export const PinnableItems: StoryFn<typeof SideNavLink> = () => {
 };
 PinnableItems.storyName = 'Pinnable Items';
 
+// A pinned item and items whose pin shows on hover, in a SideNav that collapses to icons.
+// While collapsed the pins are hidden, the items are as wide as items without a pin, and "+3" replaces "+3 More"
 export const CollapsedVisibility: StoryFn<typeof SideNav> = () => {
   const [isExpanded, setIsExpanded] = React.useState(true);
 
   return (
-    <StoryNav initialPath="/home">
-      <SideNav position="absolute" top="spacing.0" isExpanded={isExpanded}>
-        <SideNavBody>
-          <StoryNavLink href="/home" icon={HomeIcon} title="Home" />
-          <StoryNavLink href="/invoices" icon={InvoicesIcon} title="Invoices" />
-          <SideNavVisibility visibleWhen="expanded">
-            <Box paddingX="spacing.4" paddingY="spacing.2">
-              <Link variant="button" size="small" color="neutral">
-                +3 More
-              </Link>
-            </Box>
-          </SideNavVisibility>
-          <SideNavVisibility visibleWhen="collapsed">
-            <Box paddingX="spacing.4" paddingY="spacing.2">
-              <Link variant="button" size="small" color="neutral">
-                +3
-              </Link>
-            </Box>
-          </SideNavVisibility>
-        </SideNavBody>
-      </SideNav>
+    <>
+      <PinnableNav
+        isExpanded={isExpanded}
+        initialPinnedIds={['payment-links']}
+        items={[
+          { id: 'payment-links', title: 'Payment Links', icon: PaymentLinkIcon },
+          { id: 'home', title: 'Home', icon: HomeIcon },
+          { id: 'invoices', title: 'Invoices', icon: InvoicesIcon },
+        ]}
+      >
+        <SideNavVisibility visibleWhen="expanded">
+          <Box paddingX="spacing.4" paddingY="spacing.2">
+            <Link variant="button" size="small" color="neutral">
+              +3 More
+            </Link>
+          </Box>
+        </SideNavVisibility>
+        <SideNavVisibility visibleWhen="collapsed">
+          <Box paddingX="spacing.4" paddingY="spacing.2">
+            <Link variant="button" size="small" color="neutral">
+              +3
+            </Link>
+          </Box>
+        </SideNavVisibility>
+      </PinnableNav>
       <Box marginLeft="300px" padding="spacing.6">
         <Button size="small" variant="secondary" onClick={() => setIsExpanded((prev) => !prev)}>
           {isExpanded ? 'Collapse SideNav' : 'Expand SideNav'}
         </Button>
       </Box>
-    </StoryNav>
+    </>
   );
 };
 CollapsedVisibility.storyName = 'SideNavVisibility';

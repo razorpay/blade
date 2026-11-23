@@ -29,6 +29,7 @@ const {
   HIDE_WHEN_COLLAPSED,
   TRANSITIONING,
   L1_ITEM_WRAPPER,
+  SIDE_NAV_VISIBILITY,
 } = classes;
 
 const MobileL1Container = styled(BaseBox)(() => {
@@ -116,6 +117,11 @@ const StyledSideNavContainer = styled(BaseBox)<{ $isSideNavExpandable: boolean }
       opacity: '1',
       pointerEvents: 'auto',
       transition: `opacity ${quick} ${easing.entrance}`,
+    },
+    // SideNavVisibility holds content of consumers, which can be interactive and is usually rendered once
+    // for each state. Fading it out is not enough: it would keep its space and stay in the tab order
+    [`&.${COLLAPSED} .${SIDE_NAV_VISIBILITY}.${HIDE_WHEN_COLLAPSED}, &:not(.${COLLAPSED}) .${SIDE_NAV_VISIBILITY}.${SHOW_WHEN_COLLAPSED}`]: {
+      display: 'none',
     },
   };
 });

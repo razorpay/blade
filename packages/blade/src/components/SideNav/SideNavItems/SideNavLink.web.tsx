@@ -269,7 +269,7 @@ const SideNavLink = ({
   children,
   titleSuffix,
   trailing,
-  trailingVisibility = 'hover',
+  trailingVisibility = 'on-hover',
   isActive,
   icon,
   tooltip,
@@ -334,14 +334,18 @@ const SideNavLink = ({
   const isChevronNextToTitle = isL2Trigger && hasTrailing;
 
   // Width of the trailing slot, so the link can keep that much room free for it.
-  // Items without a trailing slot render no element for the ref, so they measure and observe nothing
+  // Items without a trailing slot render no element for the ref, so they measure and observe nothing.
+  // No room is kept while SideNav is collapsed to icons: the slot is only faded out there and still has
+  // its width, which would make the item wider than the collapsed SideNav
   const trailingRef = React.useRef<HTMLDivElement>(null);
   const [trailingWidth, setTrailingWidth] = React.useState(0);
   const updateTrailingWidth = React.useCallback(() => {
-    setTrailingWidth(hasTrailing ? trailingRef.current?.offsetWidth ?? 0 : 0);
-  }, [hasTrailing]);
+    setTrailingWidth(
+      hasTrailing && !isSideNavCollapsed ? trailingRef.current?.offsetWidth ?? 0 : 0,
+    );
+  }, [hasTrailing, isSideNavCollapsed]);
   // Measured before the first paint so the title never shows under the slot. The observer then keeps
-  // it in step when the slot's content changes size or the slot is hidden in collapsed SideNav
+  // it in step when the slot's content changes size
   useIsomorphicLayoutEffect(updateTrailingWidth, [updateTrailingWidth]);
   useResize(trailingRef, updateTrailingWidth);
 

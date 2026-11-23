@@ -119,13 +119,13 @@ type SideNavLinkProps = {
   /**
    * Controls when the trailing slot is visible
    *
-   * - `hover`: visible on hover of the item and while the item has keyboard focus
+   * - `on-hover`: visible on hover of the item and while the item has keyboard focus
    * - `always`: always visible.
    *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
    *
-   * @default 'hover'
+   * @default 'on-hover'
    */
-  trailingVisibility?: 'hover' | 'always';
+  trailingVisibility?: 'on-hover' | 'always';
 
   /**
    * href of the link

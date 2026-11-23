@@ -3,6 +3,7 @@ import {
   SideNavL4NestingErrorExample,
   SideNavTrailingExample,
 } from './SideNavExample';
+import { SideNavVisibility } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
@@ -86,6 +87,58 @@ describe('SideNav', () => {
     expect(getByRole('link', { name: 'L2 Trigger' })).toHaveStyle(expectedPadding);
 
     offsetWidth.mockRestore();
+  });
+
+  test('should not keep room for trailing while SideNav is collapsed', () => {
+    const TRAILING_WIDTH = 20;
+    const offsetWidth = jest
+      .spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockReturnValue(TRAILING_WIDTH);
+    const { getByRole } = renderWithTheme(
+      <SideNavTrailingExample display="block" isExpanded={false} />,
+    );
+
+    // only the 12px padding of the item, so the item fits the collapsed SideNav
+    expect(getByRole('link', { name: 'Home' })).toHaveStyle('padding-right: 12px');
+    expect(getByRole('link', { name: 'Links' })).toHaveStyle('padding-right: 12px');
+
+    offsetWidth.mockRestore();
+  });
+
+  test('should take SideNavVisibility content of the other state out of layout and tab order', () => {
+    const getContent = (
+      isExpanded: boolean,
+    ): { expandedOnly: HTMLElement; collapsedOnly: HTMLElement; unmount: () => void } => {
+      const { getByRole, unmount } = renderWithTheme(
+        <SideNavTrailingExample display="block" isExpanded={isExpanded} />,
+      );
+      return {
+        expandedOnly: getByRole('link', { name: '+3 More', hidden: true }).parentElement!,
+        collapsedOnly: getByRole('link', { name: '+3', hidden: true }).parentElement!,
+        unmount,
+      };
+    };
+
+    const expanded = getContent(true);
+    expect(expanded.expandedOnly).not.toHaveStyle('display: none');
+    expect(expanded.collapsedOnly).toHaveStyle('display: none');
+    expanded.unmount();
+
+    const collapsed = getContent(false);
+    expect(collapsed.expandedOnly).toHaveStyle('display: none');
+    expect(collapsed.collapsedOnly).not.toHaveStyle('display: none');
+  });
+
+  test('should throw error when SideNavVisibility is used outside SideNav', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() =>
+      renderWithTheme(
+        <SideNavVisibility visibleWhen="expanded">
+          <p>+3 More</p>
+        </SideNavVisibility>,
+      ),
+    ).toThrow('[Blade: SideNavVisibility]: SideNavVisibility cannot be used outside of SideNav');
+    mockConsoleError.mockRestore();
   });
 
   test('should mark SideNavVisibility content for expanded and collapsed states', () => {

@@ -180,13 +180,13 @@ type SideNavLinkProps = {
   /**
    * Controls when the trailing slot is visible
    *
-   * - `hover`: visible on hover of the item and while the item has keyboard focus
+   * - `on-hover`: visible on hover of the item and while the item has keyboard focus
    * - `always`: always visible.
    *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
    *
-   * @default 'hover'
+   * @default 'on-hover'
    */
-  trailingVisibility?: 'hover' | 'always';
+  trailingVisibility?: 'on-hover' | 'always';
   /**
    * href of the link
    */
@@ -382,6 +382,8 @@ Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3
 - Use `SideNavFooter` for utility items like Settings or Test Mode toggles.
 - Use the `banner` slot only for critical activation or onboarding UI, not promotions.
 - Pair with `SkipNav` for keyboard accessibility to let users skip past the navigation.
+- Use `trailingVisibility="always"` on a `SideNavLink` when its `trailing` shows the state of the item (e.g. a pin on a pinned item). Leave the default (`on-hover`) for a shortcut action.
+- Use `SideNavVisibility` for your own content inside `SideNav` that should show only in the expanded state or only in the collapsed (icons) state, e.g. a "+3 More" link.
 
 **Don't**
 
@@ -390,6 +392,8 @@ Use `SideNavVisibility` for your own content inside `SideNav` (e.g. a custom "+3
 - Don't put promotional content in the `banner` slot — it's reserved for critical UI like activation cards.
 - Don't expect automatic active state detection — Blade is routing-library agnostic, so consumers manage it.
 - Don't use `SideNavItem` for navigable links — it's for static items with trailing interactions like switches.
+- Don't hard-code Blade's class names (`hide-when-collapsed`, `show-when-collapsed`) to follow the collapsed state — use `SideNavVisibility`.
+- Don't use `SideNavVisibility` outside `SideNav` — it throws an error.
 
 ## Example
 
@@ -742,4 +746,132 @@ const App = () => (
 );
 
 export default App;
+```
+
+### Pinned Items with `trailingVisibility` and `SideNavVisibility`
+
+This example shows items that can be pinned. A pinned item moves to the top and keeps its pin visible with `trailingVisibility="always"`; other items show their pin on hover or keyboard focus. The title truncates 12px before the pin, and on an item that opens the next level the chevron sits next to the title. `SideNavVisibility` swaps a "+3 More" link for "+3" when the SideNav collapses to icons.
+
+```tsx
+import React, { useState } from 'react';
+import { Link as RouterLink, useLocation, matchPath } from 'react-router-dom';
+import {
+  SideNav,
+  SideNavBody,
+  SideNavLink,
+  SideNavLevel,
+  SideNavVisibility,
+  IconButton,
+  Link,
+  Box,
+  PinIcon,
+  PaymentLinkIcon,
+  MagicCheckoutIcon,
+  InvoicesIcon,
+} from '@razorpay/blade/components';
+import type { IconComponent } from '@razorpay/blade/components';
+
+type NavItem = {
+  id: string;
+  title: string;
+  href: string;
+  icon: IconComponent;
+  nextLevel?: { title: string; href: string }[];
+};
+
+const navItems: NavItem[] = [
+  { id: 'payment-links', title: 'Payment Links', href: '/payment-links', icon: PaymentLinkIcon },
+  {
+    id: 'magic-checkout',
+    title: 'Magic Checkout',
+    href: '/magic-checkout/orders',
+    icon: MagicCheckoutIcon,
+    nextLevel: [
+      { title: 'Orders', href: '/magic-checkout/orders' },
+      { title: 'Settings', href: '/magic-checkout/settings' },
+    ],
+  },
+  { id: 'invoices', title: 'Invoices', href: '/invoices', icon: InvoicesIcon },
+];
+
+const PinnableSideNav = ({ isExpanded }: { isExpanded: boolean }) => {
+  const location = useLocation();
+  const [pinnedIds, setPinnedIds] = useState<string[]>(['payment-links']);
+
+  const isActive = (href: string) => Boolean(matchPath(location.pathname, { path: href }));
+  const togglePin = (id: string) =>
+    setPinnedIds((prev) => (prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]));
+
+  // Pinned items first, in the order they were pinned. The rest keep their original order
+  const orderedItems = [
+    ...pinnedIds.flatMap((id) => navItems.filter((item) => item.id === id)),
+    ...navItems.filter((item) => !pinnedIds.includes(item.id)),
+  ];
+
+  return (
+    <SideNav isExpanded={isExpanded}>
+      <SideNavBody>
+        {orderedItems.map((item) => {
+          const isPinned = pinnedIds.includes(item.id);
+
+          return (
+            <SideNavLink
+              key={item.id}
+              as={RouterLink}
+              icon={item.icon}
+              title={item.title}
+              href={item.href}
+              isActive={
+                item.nextLevel
+                  ? item.nextLevel.some(({ href }) => isActive(href))
+                  : isActive(item.href)
+              }
+              // Pinned: the pin is always visible. Not pinned: it shows on hover and keyboard focus
+              trailingVisibility={isPinned ? 'always' : 'on-hover'}
+              trailing={
+                <IconButton
+                  icon={PinIcon}
+                  accessibilityLabel={isPinned ? `Unpin ${item.title}` : `Pin ${item.title} to top`}
+                  onClick={() => togglePin(item.id)}
+                />
+              }
+            >
+              {item.nextLevel ? (
+                <SideNavLevel>
+                  {item.nextLevel.map((l2Item) => (
+                    <SideNavLink
+                      key={l2Item.href}
+                      as={RouterLink}
+                      title={l2Item.title}
+                      href={l2Item.href}
+                      isActive={isActive(l2Item.href)}
+                    />
+                  ))}
+                </SideNavLevel>
+              ) : undefined}
+            </SideNavLink>
+          );
+        })}
+
+        {/* Your own content that follows the collapsed state of SideNav */}
+        <SideNavVisibility visibleWhen="expanded">
+          <Box paddingX="spacing.4" paddingY="spacing.2">
+            <Link variant="button" size="small" color="neutral">
+              +3 More
+            </Link>
+          </Box>
+        </SideNavVisibility>
+        <SideNavVisibility visibleWhen="collapsed">
+          <Box paddingX="spacing.4" paddingY="spacing.2">
+            <Link variant="button" size="small" color="neutral">
+              +3
+            </Link>
+          </Box>
+        </SideNavVisibility>
+      </SideNavBody>
+    </SideNav>
+  );
+};
+
+export default PinnableSideNav;
 ```
