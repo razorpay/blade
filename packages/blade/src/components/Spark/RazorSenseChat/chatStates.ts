@@ -1,5 +1,6 @@
 import type { ChatAnchors, ChatDriver } from './chatDriver';
 import type * as OutcomeModule from './outcome';
+import { outcomeBox } from './placement';
 import type { VoiceBottom } from './voiceBottom';
 import type { FreshDoc, FreshEngine, FreshExport } from '../RazorSenseEngine';
 import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
@@ -203,10 +204,9 @@ class ChatStates {
   private startOutcome(driver: ChatDriver, outcome: Outcome, anchors: ChatAnchors): void {
     const M = this.outcomeModule;
     if (!M) return;
-    // (laid as success-blob shows it for the chat's box: the strip stays at its rest, the splash goes where success-blob has it, the
-    // halves' swell as high as success-blob's)
-    const box = anchors.box?.();
-    const map = box ? M.outcomeMap(box, anchors.input, this.scale) : undefined;
+    // (laid as success-blob shows it, round the chat input, the same in any view: the strip stays at its rest, the splash goes where
+    // success-blob has it, the halves' swell as high as success-blob's)
+    const map = M.outcomeMap(outcomeBox(anchors.input, this.scale), anchors.input, this.scale);
     const key = map
       ? `${outcome} ${map.k.toFixed(4)} ${map.dx.toFixed(1)} ${map.dy.toFixed(1)}`
       : outcome;

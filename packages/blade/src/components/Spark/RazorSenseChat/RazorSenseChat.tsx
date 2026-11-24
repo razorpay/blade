@@ -105,7 +105,6 @@ const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function 
         ? { top: bottomWave.top, width: bottomWave.width, height: bottomWave.height }
         : fallback.bar,
       leaveAt: stage.clientHeight,
-      box: () => rectIn(stage.parentElement, stage),
     };
     lastRef.current = anchors;
     return anchors;

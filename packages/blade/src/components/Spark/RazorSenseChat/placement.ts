@@ -39,21 +39,22 @@ const placeStage = (box: HTMLElement, top: number): void => {
   box.style.top = `${top}px`;
 };
 /**
- * success-blob.html's chat area in its window (CSS px, measured; flow 10.5's chat panel is the same): under its 48 px top bar, 6 px above
- * the window's bottom, 60 px narrower (its sidebar and margins)
+ * The box an outcome is laid in, the same wherever the chat sits and however big the view is (the user: "the short view exactly how
+ * it looks in the full screen view"): success-blob's chat area (flow 10.5's chat panel: under a 48 px top bar, 6 px from the bottom,
+ * 60 px narrower) in a 1512 x 860 window (a laptop's full screen), its chat input centred across it and its bottom 51 px above the
+ * window's, as flow 10.5 has it; laid round the chat input `input` (its middle across, its bar's top), at the component's `scale`
  */
-const BLOB_CHAT = { top: 48, bottom: 6, across: 60 };
-/**
- * success-blob's chat area for a window `win` (in the stage's CSS px), centred across it: a lone RazorSenseBottomWave plays an
- * outcome as success-blob shows it in this, so where its chat input is put, and how it's sized and scaled, don't move it
- */
-const blobChatIn = (win: Rect): Rect => {
-  const width = Math.max(1, win.width - BLOB_CHAT.across);
+const OUTCOME_WINDOW = { w: 1512, h: 860, top: 48, bottom: 6, across: 60, inputBottom: 51 };
+const outcomeBox = (input: [number, number], scale: number): Rect => {
+  const W = OUTCOME_WINDOW;
+  const inputBottom = input[1] + BAR_HEIGHT * scale;
+  const windowTop = inputBottom + (W.inputBottom - W.h) * scale;
+  const width = (W.w - W.across) * scale;
   return {
-    left: win.left + (win.width - width) / 2,
-    top: win.top + BLOB_CHAT.top,
+    left: input[0] - width / 2,
+    top: windowTop + W.top * scale,
     width,
-    height: Math.max(1, win.height - BLOB_CHAT.top - BLOB_CHAT.bottom),
+    height: (W.h - W.top - W.bottom) * scale,
   };
 };
 /** a box on screen in `stage`'s own CSS px */
@@ -67,9 +68,6 @@ const toStage = (r: Rect, stage: HTMLElement): Rect => {
     height: r.height / k,
   };
 };
-/** the window in `stage`'s own CSS px */
-const windowIn = (stage: HTMLElement): Rect =>
-  toStage({ left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }, stage);
 /** the steps RazorSenseChat's stage moves in at rest (CSS px): a whole number of device px at 0.5, 0.75, 1, 1.25, 1.5, 1.6 and 2 */
 const REST_STEP = 20;
 
@@ -119,7 +117,6 @@ export {
   REST_STEP,
   placeStage,
   REST_REACH_UP,
-  blobChatIn,
-  windowIn,
+  outcomeBox,
 };
 export type { Rect };
