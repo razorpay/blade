@@ -18,10 +18,23 @@ jest.mock('../../Ray', () => {
 jest.mock('../../Ray/loadRay', () => ({ loadRay: () => Promise.resolve() }));
 // the strip's engine: a stage that plays nothing (what it's mounted with, noted)
 const mockMountedWith: unknown[] = [];
+// (how many stages were made, and whether mounting fails as on a page already too slow: no engine, and onError told so)
+const mockStages = { made: 0, failMount: false, settled: 0 };
 jest.mock('../../RazorSenseEngine', () => ({
   FreshStage: class {
+    private onError?: (reason: string) => void;
+    private isMounted = false;
+    constructor(_: unknown, __: unknown, options: { onError?: (reason: string) => void } = {}) {
+      mockStages.made += 1;
+      this.onError = options.onError;
+    }
     mount(_: unknown, switches: unknown): unknown {
       mockMountedWith.push(switches);
+      this.isMounted = true;
+      if (mockStages.failMount) {
+        this.onError?.('slow');
+        return null;
+      }
       return {
         player: { restart: jest.fn(), pause: jest.fn(), seek: jest.fn(), shapes: jest.fn() },
       };
@@ -32,11 +45,15 @@ jest.mock('../../RazorSenseEngine', () => ({
     destroy(): void {
       // (nothing made)
     }
+    // (as FreshStage's: true with no engine yet)
     hasDrawn(): boolean {
-      return false;
+      return true;
     }
     hasEngine(): boolean {
-      return true;
+      return this.isMounted;
+    }
+    settle(): void {
+      mockStages.settled += 1;
     }
     setOnError(): void {
       // (nothing fails)
@@ -102,6 +119,8 @@ describe('ButtonRayLayer', () => {
     await waitFor(() => expect(mockOnHold.current).not.toBeNull());
     act(() => mockOnHold.current?.(true));
     await waitFor(() => expect(queryByTestId('ray')).not.toBeNull());
+    // (a new stage, not one another button let go: no warm redraw)
+    expect(mockStages.settled).toBe(0);
     // (its layers made only over the strip's spot of the card, their blurs over their boxes: FreshSwitches.view, blurBox)
     expect(mockMountedWith).toEqual([{ view: true, blurBox: true }]);
 
@@ -111,5 +130,31 @@ describe('ButtonRayLayer', () => {
       expect(mockRayGone).toHaveBeenCalledTimes(1);
     });
     expect(queryByTestId('ray')).toBeNull();
+  });
+
+  it("makes no second stage when its engine can't start here (the first isn't leaked)", async () => {
+    mockStages.made = 0;
+    mockStages.failMount = true;
+    mockOnHold.current = null;
+    const { getAllByRole } = renderWithTheme(
+      <button type="button">
+        <ButtonRayLayer isEnabled variant="investigate" size="medium" />
+        Investigate
+      </button>,
+    );
+    const button = getAllByRole('button').pop() as HTMLElement;
+    Object.defineProperty(button, 'offsetWidth', {
+      get: () => 100 + (parseFloat(button.style.paddingRight) || 0),
+    });
+    await waitFor(() => expect(mockOnHold.current).not.toBeNull());
+    // held: a stage made, its mount refused (no engine), and the hover gives up
+    act(() => mockOnHold.current?.(true));
+    expect(mockStages.made).toBe(1);
+    // the pointer comes on before the give-up has let it go: no second stage over the first
+    act(() => {
+      button.dispatchEvent(new MouseEvent('pointerenter', { clientX: 10, clientY: 10 }));
+    });
+    expect(mockStages.made).toBe(1);
+    mockStages.failMount = false;
   });
 });

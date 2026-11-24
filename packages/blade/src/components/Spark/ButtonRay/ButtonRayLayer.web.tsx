@@ -489,7 +489,8 @@ const ButtonRayLayer = ({
     };
     // the strip's stage made (the pointer's near), and Ray put in
     const make = (): void => {
-      if (!createEngine || !doc || !isHeld || engine) return;
+      // (not again over a stage it has, its engine refused: a second takeStage would leak the first; nor once it has given up)
+      if (!createEngine || !doc || !isHeld || hasGivenUp || pooled || engine) return;
       measure();
       fitStrip();
       setIsRayUp(true);
@@ -501,7 +502,7 @@ const ButtonRayLayer = ({
       });
       stage = pooled.stage;
       // (a stage another button let go still shows its last frame: drawn afresh from the start, unseen, before it's shown here)
-      const isWarm = stage.hasDrawn();
+      const isWarm = stage.hasEngine() && stage.hasDrawn();
       engine = stage.mount(
         {
           doc,
@@ -528,7 +529,7 @@ const ButtonRayLayer = ({
     const show = (on: boolean): void => {
       if (on === S.isOn) return;
       if (on) {
-        if (!isHeld) return; // (once it's held, it shows if the pointer's still on the button)
+        if (!isHeld || hasGivenUp) return; // (once it's held, it shows if the pointer's still on the button)
         // its parent sets its width (stretched, a grid cell): it can't widen for him, so it keeps its own hover
         if (!S.isOn && S.e === 0 && !canWiden(button)) {
           if (!hasWarned) {
