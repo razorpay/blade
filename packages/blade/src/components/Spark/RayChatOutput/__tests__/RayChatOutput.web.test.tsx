@@ -46,6 +46,11 @@ describe('<RayChatOutput />', () => {
     expect(markdownProps().rehypePlugins).toBeUndefined();
   });
 
+  it('holds its opening paragraph back while it streams', () => {
+    renderWithTheme(<RayChatOutput isStreaming>Your payouts are</RayChatOutput>);
+    expect(markdownProps().remarkPlugins).toEqual([[remarkRayChat, { isStreaming: true }]]);
+  });
+
   it('draws nothing for a missing reply, as when a stream has not started', () => {
     renderWithTheme(<RayChatOutput />);
     expect(markdownProps().children).toBe('');

@@ -24,10 +24,12 @@ const Unstyled = ({ children }: { children: React.ReactNode }) => (
   <div className="sb-unstyled">{children}</div>
 );
 
-const Answer = ({ children }: { children: string }) => (
+const Answer = ({ children, isStreaming }: { children: string; isStreaming?: boolean }) => (
   <Unstyled>
     <Box width="752px">
-      <RayChatOutput testID="answer">{children}</RayChatOutput>
+      <RayChatOutput testID="answer" isStreaming={isStreaming}>
+        {children}
+      </RayChatOutput>
     </Box>
   </Unstyled>
 );
@@ -111,13 +113,10 @@ export const NoSections: StoryFn = () => (
   <Answer>{'No paid orders were found on 21 Sep 2026.\n\nTry another date.'}</Answer>
 );
 NoSections.play = async ({ canvasElement }) => {
-  // The opening paragraph is the main title with or without sections (decided on its own).
+  // A short reply stays body text: only an opening paragraph followed by a title is the main title.
   const blocks = blocksOf(canvasElement);
-  await expect(blocks.map((block) => block.hasAttribute('data-ray-chat-lead'))).toEqual([
-    true,
-    false,
-  ]);
-  await expect([style(blocks[0]).fontSize, style(blocks[1]).fontSize]).toEqual(['20px', '14px']);
+  await expect(blocks.some((block) => block.hasAttribute('data-ray-chat-lead'))).toBe(false);
+  await expect([style(blocks[0]).fontSize, style(blocks[1]).fontSize]).toEqual(['14px', '14px']);
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
 };
 
@@ -185,23 +184,26 @@ const STREAMED_REPLY = [
 ].join('\n');
 
 // Word by word, as a model streams: each chunk is a word with the whitespace before it.
-const STREAM_CHUNKS = STREAMED_REPLY.match(/\s*\S+/g) ?? [];
+const chunksOf = (reply: string): string[] => reply.match(/\s*\S+/g) ?? [];
 
-const StreamingAnswer = () => {
-  const [chunks, setChunks] = React.useState(0);
+const StreamingAnswer = ({ reply }: { reply: string }) => {
+  const chunks = chunksOf(reply);
+  const [shown, setShown] = React.useState(0);
   return (
     <>
-      <button type="button" data-testid="next-chunk" onClick={() => setChunks((n) => n + 1)}>
+      <button type="button" data-testid="next-chunk" onClick={() => setShown((n) => n + 1)}>
         Next chunk
       </button>
-      <Answer>{STREAM_CHUNKS.slice(0, chunks).join('')}</Answer>
+      <Answer isStreaming={shown < chunks.length}>{chunks.slice(0, shown).join('')}</Answer>
     </>
   );
 };
 
-export const StreamsWithoutJumps: StoryFn = () => <StreamingAnswer />;
-StreamsWithoutJumps.play = async ({ canvasElement }) => {
-  // How a block looks: type, colour and its gap. A block that has appeared must keep it.
+/**
+ * Streams the story's reply chunk by chunk. Returns every change to a drawn block's look (type,
+ * colour, gap), and how many blocks were drawn after each chunk.
+ */
+const streamReply = async (canvasElement: HTMLElement, reply: string) => {
   const look = (block: Element) => {
     const s = style(block);
     return [
@@ -216,12 +218,15 @@ StreamsWithoutJumps.play = async ({ canvasElement }) => {
   const nextChunk = within(canvasElement).getByTestId('next-chunk');
   const firstLooks: string[] = [];
   const changes: string[] = [];
+  const drawnBlocks: number[] = [];
   // Chunks arrive one after another, so each waits for the last one to be drawn.
-  for (let chunk = 1; chunk <= STREAM_CHUNKS.length; chunk++) {
+  for (let chunk = 1; chunk <= chunksOf(reply).length; chunk++) {
     nextChunk.click();
     // eslint-disable-next-line no-await-in-loop
     await new Promise((resolve) => requestAnimationFrame(resolve));
-    blocksOf(canvasElement).forEach((block, index) => {
+    const blocks = blocksOf(canvasElement);
+    drawnBlocks.push(blocks.length);
+    blocks.forEach((block, index) => {
       const now = look(block);
       firstLooks[index] = firstLooks[index] ?? now;
       if (now !== firstLooks[index]) {
@@ -230,7 +235,29 @@ StreamsWithoutJumps.play = async ({ canvasElement }) => {
       }
     });
   }
+  return { changes, drawnBlocks };
+};
+
+export const StreamsWithoutJumps: StoryFn = () => <StreamingAnswer reply={STREAMED_REPLY} />;
+StreamsWithoutJumps.play = async ({ canvasElement }) => {
+  const { changes } = await streamReply(canvasElement, STREAMED_REPLY);
   await expect(changes.join('\n')).toBe('');
+  // the opening paragraph waited for the title after it, then was drawn once as the main title
+  await expect(blocksOf(canvasElement)[0]).toHaveAttribute('data-ray-chat-lead');
+};
+
+const SHORT_REPLY = 'No paid orders were found on 21 Sep 2026.';
+
+export const ShortReplyEndsAsBody: StoryFn = () => <StreamingAnswer reply={SHORT_REPLY} />;
+ShortReplyEndsAsBody.play = async ({ canvasElement }) => {
+  const { changes, drawnBlocks } = await streamReply(canvasElement, SHORT_REPLY);
+  await expect(changes.join('\n')).toBe('');
+  // held while it streamed, drawn once the stream ended, as body text
+  await expect(drawnBlocks.slice(0, -1).every((count) => count === 0)).toBe(true);
+  const blocks = blocksOf(canvasElement);
+  await expect(blocks).toHaveLength(1);
+  await expect(blocks[0]).not.toHaveAttribute('data-ray-chat-lead');
+  await expect(style(blocks[0]).fontSize).toBe('14px');
 };
 
 const GENUI_REPLY = [

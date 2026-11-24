@@ -52,22 +52,52 @@ describe('remarkRayChat', () => {
     expect(gaps(blocks)).toEqual([undefined, '24', '12', '16', '16', '24', '12']);
   });
 
-  it('makes the opening paragraph the main title', () => {
+  it('makes the opening paragraph the main title when a title follows it', () => {
     const blocks = run(paragraph(text('The answer.')), heading(3, text('First')));
     expect(leads(blocks)).toEqual([true, false]);
   });
 
-  it('decides the main title on the first block alone, so streaming never changes it', () => {
-    // the same opening paragraph, alone (mid-stream), then with more after it
-    expect(leads(run(paragraph(text('No paid orders.'))))).toEqual([true]);
-    const finished = run(paragraph(text('No paid orders.')), paragraph(text('Try another date.')));
-    expect(leads(finished)).toEqual([true, false]);
-    expect(gaps(finished)).toEqual([undefined, '16']);
+  it('keeps a short reply as body text', () => {
+    expect(leads(run(paragraph(text('No paid orders.'))))).toEqual([false]);
+    const twoParagraphs = run(
+      paragraph(text('No paid orders.')),
+      paragraph(text('Try another date.')),
+    );
+    expect(leads(twoParagraphs)).toEqual([false, false]);
+    expect(gaps(twoParagraphs)).toEqual([undefined, '16']);
   });
 
-  it('has no main title when told so (a later TEXT in a GenUI reply)', () => {
-    const blocks = runWith({ hasMainTitle: false }, paragraph(text('More below.')), list());
-    expect(leads(blocks)).toEqual([false, false]);
+  it('decides when the second block starts, so a title further down does not count', () => {
+    const blocks = run(paragraph(text('One.')), paragraph(text('Two.')), heading(3, text('Later')));
+    expect(leads(blocks)).toEqual([false, false, false]);
+    expect(leads(run(paragraph(text('One.')), divider(), heading(3, text('Later'))))).toEqual([
+      false,
+      false,
+    ]);
+  });
+
+  it('holds the opening paragraph back while streaming until the next block starts', () => {
+    const streaming = { isStreaming: true };
+    expect(runWith(streaming, paragraph(text('Your payouts are')))).toEqual([]);
+    expect(leads(runWith(streaming, paragraph(text('On time.')), heading(3, text('F'))))).toEqual([
+      true,
+      false,
+    ]);
+    expect(leads(runWith(streaming, paragraph(text('On time.')), paragraph(text('T'))))).toEqual([
+      false,
+      false,
+    ]);
+    // nothing to hold when the reply opens with something else
+    expect(types(runWith(streaming, list()))).toEqual(['list']);
+  });
+
+  it('has no main title, and holds nothing, when told so (a later TEXT in a GenUI reply)', () => {
+    const options = { hasMainTitle: false, isStreaming: true };
+    expect(leads(runWith(options, paragraph(text('More')), heading(3, text('F'))))).toEqual([
+      false,
+      false,
+    ]);
+    expect(types(runWith(options, paragraph(text('More below'))))).toEqual(['paragraph']);
   });
 
   it('has no main title when the reply opens with a title', () => {
@@ -75,7 +105,6 @@ describe('remarkRayChat', () => {
   });
 
   it('keeps a bold line on its own as bold body text, as Figma draws it', () => {
-    // A title it became only once its ** closed, so it changed while streaming.
     const blocks = run(
       paragraph(text('Intro.')),
       paragraph(strong(text('Important nuance:'))),

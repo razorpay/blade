@@ -4,7 +4,7 @@ RayChatOutput
 
 ## Description
 
-RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. Its opening paragraph, the answer, is the main title; then come titles, body text, lists, inline IDs and code. Every rule looks only at a block and the blocks before it, so a reply streaming in never restyles what it has already drawn. `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
+RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. When a title follows its opening paragraph (a reply with sections), that paragraph, the answer, is the main title; a short reply stays body text. Then come titles, body text, lists, inline IDs and code. With `isStreaming`, the opening paragraph waits until the next block starts, so a streaming reply never restyles what it has drawn. `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
 
 ## Important Constraints
 
@@ -12,7 +12,7 @@ RayChatOutput draws RAY's chat text: the words an AI assistant writes outside th
 - RAY's text is tidied before it's drawn. Its `{"assistant_reply": "…"}` JSON wrapper is unwrapped (also while it streams), a literal `\n` becomes a line break, and emoji are left out. Code is left as written.
 - How each part is drawn:
   - Every heading level is drawn as the one title style. A **bold** line on its own stays bold body text.
-  - In GenUI, only the reply's first component opens with the main title.
+  - In GenUI, only the reply's first component can open with the main title, and only the last component counts as streaming.
   - Italic is drawn as plain text.
   - A `---` divider draws no line; the block after it starts 24px lower.
   - Raw HTML is left out, and an image is drawn as its alt text.
@@ -26,11 +26,17 @@ RayChatOutput draws RAY's chat text: the words an AI assistant writes outside th
 ```typescript
 type RayChatOutputProps = {
   /**
-   * RAY's reply: one chat message, in Markdown.
+   * RAY's reply: one chat message, in Markdown. Empty or left out while a stream hasn't started.
    * It's tidied before it's drawn: RAY's JSON wrapper is unwrapped (also while it streams),
    * a literal `\n` becomes a line break, and emoji are left out.
    */
-  children: string;
+  children?: string;
+  /**
+   * Whether the reply is still streaming in. The opening paragraph then waits until the next
+   * block starts, so it is drawn once, as the main title or as body text.
+   * @default false
+   */
+  isStreaming?: boolean;
   testID?: string;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;

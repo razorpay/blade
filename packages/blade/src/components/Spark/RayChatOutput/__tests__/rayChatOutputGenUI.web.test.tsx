@@ -58,6 +58,25 @@ describe('rayChatOutputGenUI', () => {
     expect(second.remarkPlugins).toEqual([[remarkRayChat, { hasMainTitle: false }]]);
   });
 
+  it('streams only the reply’s last component, so a finished lead-in is drawn at once', () => {
+    drawWithRayText(
+      [
+        { component: 'TEXT', content: 'Here is your settlement:' },
+        { component: 'CARD', title: 'Settlement', children: [] },
+      ] as GenUIComponent[],
+      true,
+    );
+    expect((markdownCalls()[0] as { remarkPlugins?: unknown[] }).remarkPlugins).toEqual([
+      remarkRayChat,
+    ]);
+
+    ((ReactMarkdown as unknown) as jest.Mock).mockClear();
+    drawWithRayText([{ component: 'TEXT', content: 'Your payouts are' }], true);
+    expect((markdownCalls()[0] as { remarkPlugins?: unknown[] }).remarkPlugins).toEqual([
+      [remarkRayChat, { isStreaming: true }],
+    ]);
+  });
+
   it('draws nothing for an empty TEXT', () => {
     const { container } = drawWithRayText([{ component: 'TEXT', content: '' }]);
     expect(container.querySelector('[data-blade-component="ray-chat-output"]')).toBeNull();

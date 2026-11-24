@@ -2,7 +2,8 @@
  * A remark plugin that applies RAY's chat rules to the Markdown tree's top-level blocks:
  *
  *   paragraph with line breaks       ─▶  one paragraph per line
- *   the opening paragraph            ─▶  the main title  (data-ray-chat-lead)
+ *   the opening paragraph            ─▶  the main title  (data-ray-chat-lead) when the block right
+ *                                        after it is a title; a short reply stays body text
  *   ---                              ─▶  removed; the block after it opens a section
  *   every block after the first      ─▶  data-ray-chat-gap:
  *                                          24  a title, or the block after a divider  (before a section)
@@ -10,10 +11,11 @@
  *                                              (Figma: 11, its paragraph spacing; 12 is Blade's nearest)
  *                                          16  any other block
  *
- * Every rule looks only at a block and the blocks before it, never after, so a reply streaming
- * in never restyles a block it has drawn: the main title is decided by the first block alone.
- * A bold line on its own stays bold body text, as in Figma (a title rule would only apply once
- * its `**` closed).
+ * No rule restyles a block a streaming reply has drawn. The main title is the one rule that looks
+ * ahead, at the second block, so while the reply streams (`isStreaming`) the opening paragraph is
+ * held back until the second block starts, then drawn once in its final style. Every other rule
+ * looks only at a block and the blocks before it. A bold line on its own stays bold body text, as
+ * in Figma (a title rule could only apply once its `**` closed).
  *
  * Gaps live on the blocks as attributes so the styles map them to spacing tokens, and so they
  * can be tested without a layout engine.
@@ -28,8 +30,10 @@ type MarkdownNode = {
 };
 
 type RemarkRayChatOptions = {
-  /** Whether the opening paragraph is the main title. Off for a later part of one reply. */
+  /** Whether the opening paragraph can be the main title. Off for a later part of one reply. */
   hasMainTitle?: boolean;
+  /** The reply is still streaming in: hold the opening paragraph until the next block starts. */
+  isStreaming?: boolean;
 };
 
 type RayChatGap = '12' | '16' | '24';
@@ -63,7 +67,7 @@ const setProperties = (node: MarkdownNode, properties: Record<string, unknown>):
   node.data = { ...node.data, hProperties: { ...node.data?.hProperties, ...properties } };
 };
 
-const remarkRayChat = ({ hasMainTitle = true }: RemarkRayChatOptions = {}) => (
+const remarkRayChat = ({ hasMainTitle = true, isStreaming = false }: RemarkRayChatOptions = {}) => (
   tree: MarkdownNode,
 ): void => {
   // Blocks that are the second or later line of one paragraph in the source.
@@ -74,6 +78,16 @@ const remarkRayChat = ({ hasMainTitle = true }: RemarkRayChatOptions = {}) => (
     lines.slice(1).forEach((line) => nextLines.add(line));
     return lines;
   });
+
+  // The opening paragraph is the main title when the block right after it is a title.
+  const drawn = blocks.filter((node) => !DRAWS_NOTHING.has(node.type));
+  const opening = hasMainTitle && drawn[0]?.type === 'paragraph' ? drawn[0] : undefined;
+  if (opening && !drawn[1] && isStreaming) {
+    // Not decided yet: draw nothing until the next block starts or the stream ends.
+    tree.children = blocks.filter((node) => node !== opening);
+    return;
+  }
+  const mainTitle = drawn[1]?.type === 'heading' ? opening : undefined;
 
   const kept: MarkdownNode[] = [];
   let previous: MarkdownNode | undefined;
@@ -87,7 +101,7 @@ const remarkRayChat = ({ hasMainTitle = true }: RemarkRayChatOptions = {}) => (
     if (DRAWS_NOTHING.has(node.type)) continue;
 
     if (previous === undefined) {
-      if (hasMainTitle && node.type === 'paragraph') setProperties(node, { dataRayChatLead: true });
+      if (node === mainTitle) setProperties(node, { dataRayChatLead: true });
     } else {
       let gap: RayChatGap = '16';
       if (node.type === 'heading' || opensSection) gap = '24';

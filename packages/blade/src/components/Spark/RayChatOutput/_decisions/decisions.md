@@ -38,7 +38,7 @@ The owner picked these values on 24 Nov 2026. They are all Blade tokens; the Fig
 
 ```
 markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRayChat ─▶ hast ─▶ [word fade]) ─▶ elements
-            wrapper · \n · emoji      line breaks · main title (first block) · divider → gap · data-ray-chat-gap
+            wrapper · \n · emoji      line breaks · main title (if a title follows) · divider → gap · data-ray-chat-gap
 ```
 
 - **`cleanRayText`** tidies what RAY writes. It unwraps the `{"assistant_reply": …}` wrapper (even mid-stream), turns a literal `\n` into a line break, and drops emoji. Code is left as written.
@@ -59,11 +59,12 @@ markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRa
   - keep only the first of two messages that say the same thing;
   - 16 between messages.
 - **Tables** are drawn as cards (the owner: tables and cards are handled separately), so there's no `remark-gfm`. `cleanRayText` turns a Markdown table in RAY's text into an aligned plain-text block instead of rows of pipes. Strikethrough and task lists aren't parsed either.
-- **Nothing restyles while streaming (the owner, 24 Nov).** Every rule looks only at a block and the blocks before it.
-  - **Main title:** the opening paragraph is the main title, decided by the first block alone. Before, it was the main title only when the reply had sections, so it jumped from body to title when the first `###` arrived. A reply without sections now opens with the main title too.
+- **Nothing restyles while streaming (the owner, 24 Nov).**
+  - **Main title:** the opening paragraph is the main title when the block right after it is a title; a short reply stays body text (the owner: "short replies can be chill"). That's decided when the second block starts. While `isStreaming` (default false), the opening paragraph is held back until then, or until the stream ends, and drawn once in its final style. Before, the paragraph drew as body and jumped to the title style when the first `###` arrived. A reply whose first title comes later than the second block keeps the paragraph as body.
+  - **Other rules** look only at a block and the blocks before it.
   - **Bold lines:** a bold line on its own stays bold body text, as Figma draws "Important nuance:". A title rule could only apply once its `**` closed.
   - **Tables:** a table is a block from its first `|` row.
-  - **GenUI:** only the reply's first component opens with the main title.
-  - **The check:** `StreamsWithoutJumps` streams a reply word by word and checks that no drawn block changes its look. Markdown still changes inline text as it closes (`**bold**` turns bold), and the last block can change while its own syntax is half typed (a lone `-` is a list until it becomes `---`).
+  - **GenUI:** only the reply's first component can open with the main title. GenUI now passes its renderers `isStreaming`, true only for the last component while the reply animates, so a finished lead-in before a card isn't held.
+  - **The check:** `StreamsWithoutJumps` streams a reply word by word and checks that no drawn block changes its look. `ShortReplyEndsAsBody` checks that a short reply is held while it streams, then drawn as body text. Markdown still changes inline text as it closes (`**bold**` turns bold), and the last block can change while its own syntax is half typed (a lone `-` is a list until it becomes `---`).
 - **Line breaks inside bold or links** stay as spaces. Only line breaks directly in a paragraph start a new one.
 - **React Native:** not yet. It throws, like the other Spark components.

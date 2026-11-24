@@ -98,9 +98,20 @@ const gapOfFirstChild = (node?: Element): string | undefined => {
 
 // Kept at module level so a streaming reply re-renders without remounting its elements.
 const remarkPlugins = [remarkRayChat] as Options['remarkPlugins'];
+const remarkPluginsWhileStreaming = [
+  [remarkRayChat, { isStreaming: true }],
+] as Options['remarkPlugins'];
 const remarkPluginsWithoutMainTitle = [
   [remarkRayChat, { hasMainTitle: false }],
 ] as Options['remarkPlugins'];
+
+const remarkPluginsFor = (
+  hasMainTitle: boolean,
+  isStreaming: boolean,
+): Options['remarkPlugins'] => {
+  if (!hasMainTitle) return remarkPluginsWithoutMainTitle;
+  return isStreaming ? remarkPluginsWhileStreaming : remarkPlugins;
+};
 const markdownComponents: Components = {
   // Italic is drawn as plain text.
   em: ({ children }) => <span>{children}</span>,
@@ -135,7 +146,14 @@ type BaseRayChatOutputProps = RayChatOutputProps & {
 };
 
 const _BaseRayChatOutput = (
-  { children, testID, rehypePlugins, hasMainTitle = true, ...rest }: BaseRayChatOutputProps,
+  {
+    children,
+    isStreaming = false,
+    testID,
+    rehypePlugins,
+    hasMainTitle = true,
+    ...rest
+  }: BaseRayChatOutputProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { colorScheme } = useTheme();
@@ -153,7 +171,7 @@ const _BaseRayChatOutput = (
     >
       <ReactMarkdown
         skipHtml
-        remarkPlugins={hasMainTitle ? remarkPlugins : remarkPluginsWithoutMainTitle}
+        remarkPlugins={remarkPluginsFor(hasMainTitle, isStreaming)}
         rehypePlugins={rehypePlugins}
         components={markdownComponents}
       >
@@ -167,8 +185,9 @@ const BaseRayChatOutput = React.forwardRef(_BaseRayChatOutput);
 
 /**
  * Draws one RAY chat message, its Markdown, the way RAY's chat looks: the opening paragraph (the
- * answer) as the main title, then titles, body, lists and code by the chat rules. Every rule looks
- * only backwards, so a streaming reply never restyles what it has already drawn.
+ * answer) as the main title when a title follows it, short replies as body text, then titles, body,
+ * lists and code by the chat rules. Pass `isStreaming` while the reply streams in, so nothing it
+ * has drawn is restyled.
  *
  * @example
  * <RayChatOutput>{reply}</RayChatOutput>
