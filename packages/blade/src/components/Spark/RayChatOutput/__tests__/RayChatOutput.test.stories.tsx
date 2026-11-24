@@ -130,7 +130,9 @@ export const LinksHtmlImagesAndCode: StoryFn = () => (
 );
 LinksHtmlImagesAndCode.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
+  // Links are Blade's Link; code blocks are GenUI's, with a copy button
   const link = canvas.getByRole('link', { name: 'the docs' });
+  await expect(link).toHaveAttribute('data-blade-component', 'link');
   await expect(link).toHaveAttribute('target', '_blank');
   await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   await expect(canvasElement.querySelector('em, i, b, img')).toBeNull();
@@ -139,7 +141,9 @@ LinksHtmlImagesAndCode.play = async ({ canvasElement }) => {
   );
 
   const blocks = blocksOf(canvasElement);
-  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'PRE']);
+  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'DIV']);
+  await expect(blocks[1].querySelector('pre code')).toHaveTextContent('npm i');
+  await expect(canvas.getByRole('button', { name: 'Copy code block' })).toBeInTheDocument();
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
 };
 
@@ -151,9 +155,9 @@ export const TableInText: StoryFn = () => (
 TableInText.play = async ({ canvasElement }) => {
   // Tables are drawn as cards; in the chat text one becomes an aligned block, not rows of pipes.
   const blocks = blocksOf(canvasElement);
-  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'PRE']);
+  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'DIV']);
   // (a code block's text ends with its newline)
-  await expect(blocks[1].textContent?.trimEnd()).toBe(
+  await expect(blocks[1].querySelector('pre code')?.textContent?.trimEnd()).toBe(
     'Date     Amount\n21 Sep     ₹500\n22 Sep   ₹1,200',
   );
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);

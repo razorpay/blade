@@ -16,6 +16,7 @@ RayChatOutput draws RAY's chat text: the words an AI assistant writes outside th
   - Italic is drawn as plain text.
   - A `---` divider draws no line; the block after it starts 24px lower.
   - Raw HTML is left out, and an image is drawn as its alt text.
+  - Links are Blade's `Link`, and code blocks are GenUI's (language and copy button), as in GenUI's `TEXT`. Long code lines wrap.
 - Tables are drawn as cards, so the chat doesn't parse them. A Markdown table in the text becomes an aligned plain-text block. Strikethrough and task lists (GFM) aren't parsed either.
 - Its width is the container's: put it in the chat column.
 - Web only. On React Native it throws.

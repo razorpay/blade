@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import type { Components } from 'react-markdown';
-import { render } from '@testing-library/react';
 import { RayChatOutput } from '../RayChatOutput';
 import { remarkRayChat } from '../remarkRayChat';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -33,7 +32,7 @@ const markdownProps = (): MarkdownProps => {
 const drawOverride = (tag: keyof Components, props: Record<string, unknown>): HTMLElement => {
   renderWithTheme(<RayChatOutput>x</RayChatOutput>);
   const Override = markdownProps().components[tag] as React.ComponentType<Record<string, unknown>>;
-  return render(<Override {...props} />).container;
+  return renderWithTheme(<Override {...props} />).container;
 };
 
 describe('<RayChatOutput />', () => {
@@ -47,8 +46,8 @@ describe('<RayChatOutput />', () => {
     expect(markdownProps().rehypePlugins).toBeUndefined();
   });
 
-  it('draws nothing for a missing reply', () => {
-    renderWithTheme(<RayChatOutput>{(undefined as unknown) as string}</RayChatOutput>);
+  it('draws nothing for a missing reply, as when a stream has not started', () => {
+    renderWithTheme(<RayChatOutput />);
     expect(markdownProps().children).toBe('');
   });
 
@@ -58,9 +57,10 @@ describe('<RayChatOutput />', () => {
     expect(drawn).toHaveTextContent('usually');
   });
 
-  it('opens links in a new tab', () => {
+  it('draws links with Blade’s Link, opening in a new tab', () => {
     const drawn = drawOverride('a', { href: 'https://razorpay.com/docs', children: 'the docs' });
     const link = drawn.querySelector('a');
+    expect(link).toHaveAttribute('data-blade-component', 'link');
     expect(link).toHaveAttribute('href', 'https://razorpay.com/docs');
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
@@ -73,17 +73,29 @@ describe('<RayChatOutput />', () => {
     expect(drawn).toHaveTextContent('a chart');
   });
 
+  const codeBlock = {
+    type: 'element',
+    tagName: 'pre',
+    properties: {},
+    children: [
+      { type: 'element', tagName: 'code', properties: { dataRayChatGap: '16' }, children: [] },
+    ],
+  };
+
   it('gives a code block the gap set on its code', () => {
-    const node = {
-      type: 'element',
-      tagName: 'pre',
-      properties: {},
-      children: [
-        { type: 'element', tagName: 'code', properties: { dataRayChatGap: '16' }, children: [] },
-      ],
-    };
-    const drawn = drawOverride('pre', { node, children: <code>npm i</code> });
-    expect(drawn.querySelector('pre')).toHaveAttribute('data-ray-chat-gap', '16');
+    const drawn = drawOverride('pre', { node: codeBlock, children: <code>npm i</code> });
+    const block = drawn.firstElementChild;
+    expect(block).toHaveAttribute('data-ray-chat-gap', '16');
+    expect(block?.querySelector('pre')).toHaveTextContent('npm i');
+  });
+
+  it('keeps GenUI’s code block: its language and copy button', () => {
+    const drawn = drawOverride('pre', {
+      node: codeBlock,
+      children: <code className="language-bash">npm i</code>,
+    });
+    expect(drawn.querySelector('button[aria-label="Copy code block"]')).not.toBeNull();
+    expect(drawn).toHaveTextContent('bash');
   });
 
   it('marks itself as a Blade component', () => {

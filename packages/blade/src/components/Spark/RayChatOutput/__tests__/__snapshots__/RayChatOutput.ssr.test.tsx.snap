@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  feILpH">Your payouts are on time.</div></div>"`;
+exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  jZHdxr">Your payouts are on time.</div></div>"`;
 
 exports[`<RayChatOutput /> renders on the server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -69,17 +69,7 @@ exports[`<RayChatOutput /> renders on the server 2`] = `
   line-height: 1.625rem;
 }
 
-.c0.c0.c0.c0.c0 a {
-  color: hsla(218,87%,43%,1);
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c0.c0.c0.c0.c0 a:hover {
-  color: hsla(218,89%,51%,1);
-}
-
-.c0.c0.c0.c0.c0 code {
+.c0.c0.c0.c0.c0 :not(pre) > code {
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: inherit;
   background: hsla(206,10%,29%,0.06);
@@ -89,17 +79,11 @@ exports[`<RayChatOutput /> renders on the server 2`] = `
 
 .c0.c0.c0.c0.c0 pre {
   margin: 0;
-  padding: 12px;
-  background: hsla(206,10%,29%,0.06);
-  border-radius: 12px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
 }
 
 .c0.c0.c0.c0.c0 pre code {
-  padding: 0;
-  background: none;
-  font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .c0.c0.c0.c0.c0 blockquote {

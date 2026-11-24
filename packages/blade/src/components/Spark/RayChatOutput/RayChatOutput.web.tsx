@@ -7,6 +7,8 @@ import { cleanRayText } from './cleanRayText';
 import { remarkRayChat } from './remarkRayChat';
 import type { RayChatOutputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
+import { MarkdownCodeBlockRenderer } from '~components/GenUI/MarkdownCodeBlock';
+import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize, makeSpace, makeTypographySize } from '~utils';
@@ -70,29 +72,17 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
         line-height: ${makeTypographySize(lineHeights[400])};
       }
 
-      & a { color: ${colors.interactive.text.primary.normal}; text-decoration: underline; }
-      & a:hover { color: ${colors.interactive.text.primary.subtle}; }
-
-      & code {
+      /* IDs and inline code: Inter on a light tint. Code blocks are GenUI's (language, copy). */
+      & :not(pre) > code {
         font-family: ${fonts.family.text};
         font-size: inherit;
         background: ${tint};
         border-radius: ${makeBorderSize(border.radius.xsmall)};
         padding: 0 ${makeSpace(spacing[2])};
       }
-      & pre {
-        margin: 0;
-        padding: ${makeSpace(spacing[4])};
-        background: ${tint};
-        border-radius: ${makeBorderSize(border.radius.medium)};
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-      }
-      & pre code {
-        padding: 0;
-        background: none;
-        font-family: ${fonts.family.code};
-      }
+      /* The block's own top margin would add to the gap; long lines wrap, as the chat rule says. */
+      & pre { margin: 0; }
+      & pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 
       & blockquote { margin: 0; padding: 0; }
       & blockquote > * + * { margin-top: ${makeSpace(spacing[5])}; }
@@ -100,7 +90,7 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
   }}
 `;
 
-/** A code block's gap is set on its `code`; the block needs it. */
+/** A code block's gap is set on its `code`; the block around it needs it. */
 const gapOfFirstChild = (node?: Element): string | undefined => {
   const first = node?.children[0];
   return first?.type === 'element' ? (first.properties.dataRayChatGap as string) : undefined;
@@ -114,14 +104,27 @@ const remarkPluginsWithoutMainTitle = [
 const markdownComponents: Components = {
   // Italic is drawn as plain text.
   em: ({ children }) => <span>{children}</span>,
+  // Blade's Link, as GenUI's TEXT draws links.
   a: ({ href, children }) => (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
+    <Link
+      href={href}
+      size="medium"
+      variant="anchor"
+      color="primary"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {(children as unknown) as string}
+    </Link>
   ),
   // An image is drawn as its alt text.
   img: ({ alt }) => <span>{alt}</span>,
-  pre: ({ node, children }) => <pre data-ray-chat-gap={gapOfFirstChild(node)}>{children}</pre>,
+  // GenUI's code block (language and copy button), in a block that carries the chat's gap.
+  pre: ({ node, children }) => (
+    <div data-ray-chat-gap={gapOfFirstChild(node)}>
+      <MarkdownCodeBlockRenderer>{children}</MarkdownCodeBlockRenderer>
+    </div>
+  ),
 };
 
 type BaseRayChatOutputProps = RayChatOutputProps & {

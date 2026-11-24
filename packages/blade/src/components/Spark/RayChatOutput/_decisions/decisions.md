@@ -43,6 +43,12 @@ markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRa
 
 - **`cleanRayText`** tidies what RAY writes. It unwraps the `{"assistant_reply": …}` wrapper (even mid-stream), turns a literal `\n` into a line break, and drops emoji. Code is left as written.
 - **`remarkRayChat`** applies the chat rules to the top-level blocks. Each gap lives on its block as `data-ray-chat-gap`, so one styled container maps it to a spacing token, and tests can read it without a layout engine.
+- **Shared with GenUI's TEXT:** links are Blade's `Link`, and code blocks are GenUI's (language and copy button), from `GenUI/MarkdownCodeBlock.web.tsx`. That module was moved out of GenUIComponents unchanged, so RayChatOutput doesn't import all of GenUI. The chat keeps its own rules for the rest:
+  - headings and body: the picked typography;
+  - lists: Figma's 14/26 and 20 indent (GenUI's are 14/20 with 12 between items);
+  - inline code: Inter on a tint (GenUI's is 11px code font);
+  - italic plain, quotes plain, and no divider line (the 24 gap does it).
+    A Blade link is underlined on hover only, where the chat rule says underlined; Blade's behaviour wins, as with the other picked values.
 - **Why not `Text` / `Heading`:** `Text` medium is 14/20 and has no line-height prop; the body is 14/24. One container styling plain Markdown elements keeps all three text styles in one place.
 - **Tests:** Jest mocks react-markdown (it's ESM-only), so Jest covers `cleanRayText`, `remarkRayChat` on hand-built trees, and the wiring. `__tests__/RayChatOutput.test.stories.tsx` runs the full Markdown path in a browser and checks the computed sizes and gaps.
 
