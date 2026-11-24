@@ -15,7 +15,11 @@ type Node = {
 const text = (value: string): Node => ({ type: 'text', value });
 const strong = (...children: Node[]): Node => ({ type: 'strong', children });
 const paragraph = (...children: Node[]): Node => ({ type: 'paragraph', children });
-const heading = (depth: number, ...children: Node[]): Node => ({ type: 'heading', depth, children });
+const heading = (depth: number, ...children: Node[]): Node => ({
+  type: 'heading',
+  depth,
+  children,
+});
 const list = (): Node => ({ type: 'list', children: [] });
 const code = (value: string): Node => ({ type: 'code', value });
 const divider = (): Node => ({ type: 'thematicBreak' });
@@ -63,7 +67,10 @@ describe('remarkRayChat', () => {
   });
 
   it('turns a bold line on its own into a title', () => {
-    const blocks = run(paragraph(strong(text('Important nuance:'))), paragraph(text('You can remit.')));
+    const blocks = run(
+      paragraph(strong(text('Important nuance:'))),
+      paragraph(text('You can remit.')),
+    );
     expect(types(blocks)).toEqual(['heading', 'paragraph']);
     expect(blocks[0].depth).toBe(3);
     expect(blocks[0].children).toEqual([text('Important nuance:')]);
@@ -77,7 +84,13 @@ describe('remarkRayChat', () => {
 
   it('starts a new paragraph at each line break', () => {
     const blocks = run(
-      paragraph(text('For a '), strong(text('resident')), text('\nbuy directly.'), lineBreak(), text('Then')),
+      paragraph(
+        text('For a '),
+        strong(text('resident')),
+        text('\nbuy directly.'),
+        lineBreak(),
+        text('Then'),
+      ),
     );
     expect(types(blocks)).toEqual(['paragraph', 'paragraph', 'paragraph']);
     expect(blocks[0].children).toEqual([text('For a '), strong(text('resident'))]);

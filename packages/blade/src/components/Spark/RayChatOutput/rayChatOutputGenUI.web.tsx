@@ -8,10 +8,10 @@ import { createRehypeAnimate } from '~components/GenUI/rehypeAnimate';
 /** GenUI's TEXT, drawn by RAY's chat rules. Keeps GenUI's word fade while the reply streams. */
 const RayChatOutputText = memo(({ content }: { content?: string }) => {
   const { isAnimating, animateOptions } = useGenUIAnimation();
-  const rehypePlugins = useMemo(
-    () => (isAnimating ? [createRehypeAnimate(animateOptions)] : []),
-    [isAnimating, animateOptions],
-  );
+  const rehypePlugins = useMemo(() => (isAnimating ? [createRehypeAnimate(animateOptions)] : []), [
+    isAnimating,
+    animateOptions,
+  ]);
 
   if (!content) return null;
 

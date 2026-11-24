@@ -68,6 +68,7 @@ One line per component. Read `<Name>.md` in this directory for full props, const
 - **ProgressBar**: A ProgressBar is a visual indicator that displays the progress of a process or task.
 - **QuickFilter**: QuickFilter and QuickFilterGroup components provide a user-friendly interface for displaying and selecting filterable options.
 - **Radio**: The Radio and RadioGroup components are used in forms when a user needs to select a single value from multiple options.
+- **RayChatOutput**: RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card).
 - **RazorSense**: RazorSense is a WebGL-powered component that renders an animated glass refraction effect with video/image textures, colorama color grading, displacement, bloom, and light sweep effects.
 - **RazorSenseGradient**: RazorSenseGradient renders an animated WebGL fluid gradient clipped to an SVG mask shape.
 - **SankeyChart**: SankeyChart is a flow diagram that shows how a quantity moves across multiple stages.

@@ -25,7 +25,7 @@ type MarkdownProps = {
 };
 
 const markdownProps = (): MarkdownProps => {
-  const { calls } = (ReactMarkdown as unknown as jest.Mock).mock;
+  const { calls } = ((ReactMarkdown as unknown) as jest.Mock).mock;
   return calls[calls.length - 1][0] as MarkdownProps;
 };
 
@@ -78,7 +78,9 @@ describe('<RayChatOutput />', () => {
       type: 'element',
       tagName: 'pre',
       properties: {},
-      children: [{ type: 'element', tagName: 'code', properties: { dataRayChatGap: '16' }, children: [] }],
+      children: [
+        { type: 'element', tagName: 'code', properties: { dataRayChatGap: '16' }, children: [] },
+      ],
     };
     const drawn = drawOverride('pre', { node, children: <code>npm i</code> });
     expect(drawn.querySelector('pre')).toHaveAttribute('data-ray-chat-gap', '16');

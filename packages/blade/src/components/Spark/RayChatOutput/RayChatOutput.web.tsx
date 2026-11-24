@@ -110,14 +110,14 @@ const gapOfFirstChild = (node?: Element): string | undefined => {
 const remarkPlugins = [remarkRayChat] as Options['remarkPlugins'];
 const markdownComponents: Components = {
   // Italic is drawn as plain text.
-  em: ({ children }) => <>{children}</>,
+  em: ({ children }) => <span>{children}</span>,
   a: ({ href, children }) => (
     <a href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   ),
   // An image is drawn as its alt text.
-  img: ({ alt }) => <>{alt}</>,
+  img: ({ alt }) => <span>{alt}</span>,
   pre: ({ node, children }) => <pre data-ray-chat-gap={gapOfFirstChild(node)}>{children}</pre>,
 };
 

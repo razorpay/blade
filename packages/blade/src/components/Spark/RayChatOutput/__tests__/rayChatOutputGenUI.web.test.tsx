@@ -12,7 +12,7 @@ jest.mock('react-markdown', () => ({
 }));
 
 const markdownCalls = (): { children: string; rehypePlugins?: unknown[] }[] =>
-  (ReactMarkdown as unknown as jest.Mock).mock.calls.map(([props]) => props);
+  ((ReactMarkdown as unknown) as jest.Mock).mock.calls.map(([props]) => props);
 
 const drawWithRayText = (
   components: GenUIComponent[],
@@ -25,10 +25,12 @@ const drawWithRayText = (
   );
 
 describe('rayChatOutputGenUI', () => {
-  beforeEach(() => (ReactMarkdown as unknown as jest.Mock).mockClear());
+  beforeEach(() => ((ReactMarkdown as unknown) as jest.Mock).mockClear());
 
   it('draws GenUI’s TEXT with RayChatOutput', () => {
-    const { container } = drawWithRayText([{ component: 'TEXT', content: '### Fees\n\nTwo kinds.' }]);
+    const { container } = drawWithRayText([
+      { component: 'TEXT', content: '### Fees\n\nTwo kinds.' },
+    ]);
     expect(container.querySelector('[data-blade-component="ray-chat-output"]')).toHaveTextContent(
       '### Fees',
     );

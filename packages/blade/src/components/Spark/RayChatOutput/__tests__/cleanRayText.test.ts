@@ -18,9 +18,7 @@ describe('cleanRayText', () => {
       expect(cleanRayText('```json\n{"assistant_reply": "Your payout of ₹5')).toBe(
         'Your payout of ₹5',
       );
-      expect(cleanRayText('{"assistant_reply": "Half an escape \\u20')).toBe(
-        'Half an escape',
-      );
+      expect(cleanRayText('{"assistant_reply": "Half an escape \\u20')).toBe('Half an escape');
     });
 
     it('leaves any other JSON alone', () => {
