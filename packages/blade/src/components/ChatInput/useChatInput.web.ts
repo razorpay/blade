@@ -477,16 +477,21 @@ const useChatInput = (
   // Stable across re-renders, so a parent re-rendering mid-drag (for example while a reply
   // streams in) doesn't remove and re-add the page listeners and lose the drag
   const addDroppedFiles = useCallbackRef(addFiles);
+  // Chrome marks a drag of an image on the page as carrying files, but the drop has none.
+  // Only drags from outside the page can bring files, so ignore the ones that start here.
+  const isPageDragRef = React.useRef(false);
   const dragHandlers = React.useMemo(() => {
     type DragLikeEvent = Pick<DragEvent, 'dataTransfer' | 'preventDefault'>;
+    const isFileDrag = (event: DragLikeEvent): boolean =>
+      !isPageDragRef.current && hasFilesInDrag(event);
     return {
       onDragEnter: (event: DragLikeEvent): void => {
-        if (!hasFilesInDrag(event)) return;
+        if (!isFileDrag(event)) return;
         dragDepthRef.current += 1;
         setIsDraggingFiles(true);
       },
       onDragOver: (event: DragLikeEvent): void => {
-        if (!hasFilesInDrag(event)) return;
+        if (!isFileDrag(event)) return;
         event.preventDefault();
       },
       onDragLeave: (): void => {
@@ -498,7 +503,7 @@ const useChatInput = (
         if (dragDepthRef.current === 0) setIsDraggingFiles(false);
       },
       onDrop: (event: DragLikeEvent): void => {
-        if (!hasFilesInDrag(event)) return;
+        if (!isFileDrag(event)) return;
         event.preventDefault();
         dragDepthRef.current = 0;
         setIsDraggingFiles(false);
@@ -524,6 +529,41 @@ const useChatInput = (
       setIsDraggingFiles(false);
     };
   }, [dropTarget, canDrop, dragHandlers]);
+
+  React.useEffect(() => {
+    if (!canDrop || typeof window === 'undefined') return undefined;
+    const onDragStart = (): void => {
+      isPageDragRef.current = true;
+    };
+    // dragend can be lost if the dragged element is removed, and mouse events can't fire during
+    // a drag, so either one means the page drag is over
+    const onDragEnd = (): void => {
+      isPageDragRef.current = false;
+    };
+    window.addEventListener('dragstart', onDragStart, true);
+    window.addEventListener('dragend', onDragEnd, true);
+    window.addEventListener('mousemove', onDragEnd, true);
+    return () => {
+      window.removeEventListener('dragstart', onDragStart, true);
+      window.removeEventListener('dragend', onDragEnd, true);
+      window.removeEventListener('mousemove', onDragEnd, true);
+      isPageDragRef.current = false;
+    };
+  }, [canDrop]);
+
+  // A drag can end without a dragleave reaching ChatInput, for example when it's cancelled with
+  // Escape, which left the overlay stuck. Clear it whenever a drag ends anywhere; mouse events
+  // don't fire during a drag, so the first one afterwards also means it's over.
+  React.useEffect(() => {
+    if (!isDraggingFiles || typeof window === 'undefined') return undefined;
+    const endDrag = (): void => {
+      dragDepthRef.current = 0;
+      setIsDraggingFiles(false);
+    };
+    const endEvents = ['drop', 'dragend', 'mousemove'] as const;
+    endEvents.forEach((type) => window.addEventListener(type, endDrag, true));
+    return () => endEvents.forEach((type) => window.removeEventListener(type, endDrag, true));
+  }, [isDraggingFiles]);
 
   // If dropping is turned off mid-drag, the leave and drop events stop coming, so clear the
   // overlay here

@@ -703,6 +703,44 @@ describe('<ChatInput />', () => {
       expect(queryByText('Drop files to attach')).not.toBeInTheDocument();
     });
 
+    it.each([
+      ['the drag is cancelled (dragend)', 'dragEnd'],
+      ['the mouse moves after the drag', 'mouseMove'],
+    ] as const)('hides the drop overlay when %s, with no dragleave', (_, endEvent) => {
+      const { getByRole, queryByText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} />,
+      );
+      const card = getByRole('textbox', { name: accessibilityLabel }).closest(
+        '[data-blade-component="base-box"]',
+      ) as HTMLElement;
+      fireEvent.dragEnter(card, { dataTransfer: { types: ['Files'], files: [] } });
+      expect(queryByText('Drop files to attach')).toBeInTheDocument();
+      fireEvent[endEvent](window);
+      expect(queryByText('Drop files to attach')).not.toBeInTheDocument();
+    });
+
+    it('ignores drags that start on the page, such as an image in the page', () => {
+      const onFileChange = jest.fn();
+      const { getByRole, queryByText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} onFileChange={onFileChange} />,
+      );
+      const card = getByRole('textbox', { name: accessibilityLabel }).closest(
+        '[data-blade-component="base-box"]',
+      ) as HTMLElement;
+      // Chrome marks an image dragged from the page as carrying files, but the drop has none
+      const dataTransfer = { types: ['text/uri-list', 'Files'], files: [] };
+      fireEvent.dragStart(window);
+      fireEvent.dragEnter(card, { dataTransfer });
+      expect(queryByText('Drop files to attach')).not.toBeInTheDocument();
+      fireEvent.drop(card, { dataTransfer });
+      fireEvent.dragEnd(window);
+      expect(onFileChange).not.toHaveBeenCalled();
+
+      // a file dragged in from outside the page afterwards still shows the overlay
+      fireEvent.dragEnter(card, { dataTransfer: { types: ['Files'], files: [] } });
+      expect(queryByText('Drop files to attach')).toBeInTheDocument();
+    });
+
     it('keeps the drop overlay when the parent re-renders mid-drag', () => {
       const Parent = (): React.ReactElement => {
         const [renders, setRenders] = React.useState(0);
