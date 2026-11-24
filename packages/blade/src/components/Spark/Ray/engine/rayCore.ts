@@ -527,7 +527,8 @@ function spring(s, target, f, z, dt, track) {   // s = {v, x}; f in Hz, z dampin
 export const MATERIALS = { success: { f: 9, z: 0.615, track: true }, typing: { f: 12.2, z: 0.953, track: true } };
 // confetti (canon Success, send/ray-loading-states.html cfBurst, the user's tune; page px x 2.548 = Ray px): strips pop out from
 // just inside his top edge, tumble and fall behind him, and drop behind the floor line
-export const CONFETTI = { count: 26, seed: 7, speed: 1835, spread: 70, lean: 0, grav: 3822, drag: 1.1, size: 22.9, life: 1.5, spin: 540,
+// (size 9 -> 17 page px = 43.3 Ray px, 2026-11-24, the user's confetti sizing on the loading states page; main's becbe4f)
+export const CONFETTI = { count: 26, seed: 7, speed: 1835, spread: 70, lean: 0, grav: 3822, drag: 1.1, size: 43.3, life: 1.5, spin: 540,
   cols: ['#2d52e6', '#EFA022', '#F6CDBD', '#2bf08a', '#E85858', '#FFD24A', '#9db2ff'] };
 // dark: each confetti colour a tad lighter, mixed CONFETTI_DARK of the way to white, so it reads on the dark ground (the user, 2026-11-24, on canon
 // Success in dark: "make the confetti a tad bit lighter too"); light draws it as it is. Worked out once a colour
