@@ -1750,6 +1750,8 @@ export {
   createBuiltInRegistry,
   // Markdown renderer overrides
   markdownComponents,
+  // Streaming word fade (used by RayChatOutput's TEXT renderer)
+  TextAnimationStyles,
   // Spacing contract
   genUISpacingContract,
   getGenUIComponentTopSpacing,
