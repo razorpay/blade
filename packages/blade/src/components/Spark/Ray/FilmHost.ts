@@ -57,6 +57,23 @@ const isSoftwareRenderer = (name: string): boolean =>
  */
 let drawsOnCpu: boolean | null = null;
 
+/**
+ * A WebGL context's renderer name: WebGL's own RENDERER where it's a real name (Firefox gives one there, and warns about the debug
+ * extension: the second review), else the debug extension's (Chromium and WebKit answer "WebKit WebGL" to RENDERER).
+ */
+const rendererOf = (gl: WebGLRenderingContext): string => {
+  const own = String(gl.getParameter(gl.RENDERER) ?? '');
+  if (own && !/^(webkit webgl|mozilla)$/i.test(own)) return own;
+  const info = gl.getExtension('WEBGL_debug_renderer_info');
+  return info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) ?? '') : own;
+};
+
+/** Tests only: what the page's check found (null: not made yet), and forgetting it, as a new page would. */
+const rendererCheck = (): boolean | null => drawsOnCpu;
+const resetRendererCheck = (): void => {
+  drawsOnCpu = null;
+};
+
 const NOT_FOUND = (): Promise<any> =>
   Promise.resolve({
     ok: false,
@@ -97,6 +114,7 @@ class FilmHost {
   private failed = false;
   private crop: Crop | null = null; // the part of its stage it draws on (null: all of it)
   private parked = false; // asleep, its stage-sized canvases emptied (see the channel)
+  private pooled = false; // in filmPool, waiting for the next Ray: it makes no WebGL context meanwhile
   private readonly options: FilmHostOptions;
   // who its messages go to: the Ray that has it (a film parked in the pool goes to the next Ray: filmPool), and which of its turns
   // they're from, so a message it posted for the last Ray never reaches the next one
@@ -346,9 +364,12 @@ class FilmHost {
     this.rehearsed = true;
   }
 
-  /** Whether it can be handed to another Ray (filmPool): it isn't disposed, and none of its frames has failed. */
+  /**
+   * Whether it can be handed to another Ray (filmPool): it isn't disposed, none of its frames has failed, and its lens (if it has
+   * one) hasn't been lost (the browser took it back: the next Ray would get no lens).
+   */
   get canPark(): boolean {
-    return !this.disposed && !this.failed;
+    return !this.disposed && !this.failed && this.gls.every((gl) => !gl.isContextLost());
   }
 
   /** Whether it holds a WebGL context of its own (Searching's lens). */
@@ -365,6 +386,7 @@ class FilmHost {
     this.send({ ray: 'sleep' });
     this.turn += 1;
     this.onMessage = () => undefined;
+    this.pooled = true;
     this.layer.remove();
   }
 
@@ -372,6 +394,7 @@ class FilmHost {
   adopt(onMessage: (message: FilmMessage) => void): void {
     this.turn += 1;
     this.onMessage = onMessage;
+    this.pooled = false;
   }
 
   /** A message to the film, as `contentWindow.postMessage` was. */
@@ -426,21 +449,16 @@ class FilmHost {
     ) => any;
     (canvas as any).getContext = (type: string, attributes?: unknown) => {
       if (!type.includes('webgl')) return getContext(type, attributes);
-      if (drawsOnCpu) return null;
+      // (parked, it makes none: Searching makes its lens 250 ms after it's ready, so one parked sooner would make it in the pool,
+      // past its cap. It asks again as a Ray draws it: the second review)
+      if (drawsOnCpu || this.pooled) return null;
       // (none with the caveat: a software renderer, or no WebGL at all; either way no lens. Not a page out of contexts: the browser
       // makes one then and lets go of its oldest. Not asked again without it: a context made on SwiftShader took 841 ms)
       const context = getContext(type, {
         ...(attributes as Record<string, unknown>),
         failIfMajorPerformanceCaveat: true,
       });
-      if (drawsOnCpu === null) {
-        const info = context?.getExtension('WEBGL_debug_renderer_info');
-        drawsOnCpu =
-          !context ||
-          isSoftwareRenderer(
-            info ? String(context.getParameter(info.UNMASKED_RENDERER_WEBGL) ?? '') : '',
-          );
-      }
+      if (drawsOnCpu === null) drawsOnCpu = !context || isSoftwareRenderer(rendererOf(context));
       if (drawsOnCpu) {
         context?.getExtension('WEBGL_lose_context')?.loseContext();
         return null;
@@ -461,4 +479,4 @@ class FilmHost {
   }
 }
 
-export { FilmHost, freeCanvas, isSoftwareRenderer };
+export { FilmHost, freeCanvas, isSoftwareRenderer, rendererCheck, resetRendererCheck };

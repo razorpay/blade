@@ -5,6 +5,8 @@ import React, { useRef, useState } from 'react';
 import type { RayOutcome, RayState } from '..';
 import { Ray } from '..';
 import { RayLoader } from '../../RayLoader';
+import { rendererCheck, resetRendererCheck } from '../FilmHost';
+import { emptyFilmPool } from '../filmPool';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
@@ -892,6 +894,21 @@ TestRayAudioRestsTillHeListens.play = async () => {
     },
     { timeout: 5000 },
   );
+  // suspended while he listens (a browser that resumes audio only in a gesture): his frames try (at most once a second), and a
+  // gesture tries at once, even right after them (the second review: it was held back by their throttle)
+  const ctx = audio()!;
+  const resume = ctx.resume.bind(ctx);
+  let resumes = 0;
+  ctx.resume = () => {
+    resumes += 1;
+    return resume();
+  };
+  await ctx.suspend();
+  await waitFor(() => expect(resumes).toBeGreaterThan(0), { timeout: 3000 }); // (his frames' try)
+  const tried = resumes;
+  await ctx.suspend();
+  document.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+  expect(resumes).toBe(tried + 1); // (the gesture's, at once)
   await userEvent.click(getByRole('button', { name: 'Stop' }));
   await waitFor(() => expect(audio()?.state).toBe('suspended'), { timeout: 5000 });
 };
@@ -970,25 +987,48 @@ export const TestRayHandsHisFilmToTheNext: StoryFn<typeof Ray> = () => {
 };
 TestRayHandsHisFilmToTheNext.play = async () => {
   const { getByRole } = within(document.body);
-  await userEvent.click(getByRole('button', { name: 'Next' }));
-  await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
-    timeout: 6000,
-  });
-  const host = rayEl().__ray.films.search.host;
-  await waitFor(() => expect(host.gls.length).toBe(1), { timeout: 3000 }); // (its lens made)
-  const lens = host.gls[0];
-  await userEvent.click(getByRole('button', { name: 'Next' })); // (that Ray goes, a new one comes)
-  await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
-    timeout: 3000,
-  });
-  expect(rayEl().__ray.films.search.host).toBe(host); // (his film handed over)
-  expect(host.gls).toEqual([lens]); // (its lens kept: no new WebGL context)
-  expect(lens.isContextLost()).toBe(false);
-  await waitFor(() => expect(host.layer.style.visibility).toBe(''), { timeout: 3000 }); // (it plays for him)
-  await userEvent.click(getByRole('button', { name: 'Stop' })); // (nobody next)
-  await sleep(500);
-  expect(lens.isContextLost()).toBe(false); // (parked a moment)
-  await waitFor(() => expect(lens.isContextLost()).toBe(true), { timeout: 2500 }); // (then let go)
+  // every WebGL context made on the page from here (its lens, if this browser has a GPU: CI's headless ones may not)
+  const real = HTMLCanvasElement.prototype.getContext;
+  let contexts = 0;
+  HTMLCanvasElement.prototype.getContext = function getContext(
+    this: HTMLCanvasElement,
+    ...args: any[]
+  ) {
+    const made = (real as any).apply(this, args);
+    if (made && String(args[0]).includes('webgl')) contexts += 1;
+    return made;
+  } as typeof real;
+  try {
+    await userEvent.click(getByRole('button', { name: 'Next' }));
+    await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
+      timeout: 6000,
+    });
+    const host = rayEl().__ray.films.search.host;
+    await waitFor(() => expect(rendererCheck()).not.toBe(null), { timeout: 3000 }); // (its lens asked for)
+    const hasGpu = rendererCheck() === false;
+    if (hasGpu) await waitFor(() => expect(host.gls.length).toBe(1), { timeout: 3000 }); // (its lens made)
+    const lens = host.gls[0];
+    const made = contexts;
+    await userEvent.click(getByRole('button', { name: 'Next' })); // (that Ray goes, a new one comes)
+    await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
+      timeout: 3000,
+    });
+    expect(rayEl().__ray.films.search.host).toBe(host); // (his film handed over)
+    await waitFor(() => expect(host.layer.style.visibility).toBe(''), { timeout: 3000 }); // (it plays for him)
+    await sleep(400); // (past when a new film would make its lens)
+    expect(contexts).toBe(made); // (no new WebGL context)
+    if (hasGpu) {
+      expect(host.gls).toEqual([lens]); // (its lens kept)
+      expect(lens.isContextLost()).toBe(false);
+    }
+    await userEvent.click(getByRole('button', { name: 'Stop' })); // (nobody next)
+    await sleep(500);
+    expect(host.disposed).toBe(false); // (parked a moment)
+    await waitFor(() => expect(host.disposed).toBe(true), { timeout: 2500 }); // (then let go)
+    if (hasGpu) expect(lens.isContextLost()).toBe(true); // (its lens with it)
+  } finally {
+    HTMLCanvasElement.prototype.getContext = real;
+  }
 };
 
 /**
@@ -999,14 +1039,14 @@ const SoftwareRenderer = ({ children }: { children: React.ReactElement }): React
   useState(() => {
     const w = window as any;
     if (w.__realGetParameter) return null;
-    const RENDERER = 0x9246; // (WEBGL_debug_renderer_info's UNMASKED_RENDERER_WEBGL)
+    const NAMES = [0x1f01, 0x9246]; // (WebGL's RENDERER, and WEBGL_debug_renderer_info's UNMASKED_RENDERER_WEBGL)
     w.__realGetParameter = [
       WebGLRenderingContext.prototype.getParameter,
       WebGL2RenderingContext.prototype.getParameter,
     ];
     [WebGLRenderingContext, WebGL2RenderingContext].forEach((C, i) => {
       C.prototype.getParameter = function getParameter(this: any, p: number) {
-        return p === RENDERER ? 'Google SwiftShader' : w.__realGetParameter[i].call(this, p);
+        return NAMES.includes(p) ? 'Google SwiftShader' : w.__realGetParameter[i].call(this, p);
       } as any;
     });
     return null;
@@ -1438,9 +1478,29 @@ TestRayFilmsStayInTheirCrop.play = async () => {
   await expect(worst).toEqual(Object.fromEntries(CROP_FILMS.map(({ id }) => [id, 0])));
 };
 
+/**
+ * Each story as on a page of its own: CI's test runner plays every story in this file on one page, so a story could take a film
+ * another one parked (filmPool) or inherit its renderer check. Done after the last story's Ray has gone (its films parked as it
+ * unmounts) and before the next one's director is made (it loads first): the second review.
+ */
+const FreshPage = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+  React.useEffect(() => {
+    emptyFilmPool();
+    resetRendererCheck();
+  }, []);
+  return children;
+};
+
 export default {
   title: 'Components/Interaction Tests/Ray',
   component: Ray,
+  decorators: [
+    (Story: StoryFn): React.ReactElement => (
+      <FreshPage>
+        <Story />
+      </FreshPage>
+    ),
+  ],
   parameters: {
     controls: {
       disable: true,

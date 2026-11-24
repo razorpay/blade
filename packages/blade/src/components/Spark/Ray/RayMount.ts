@@ -1659,22 +1659,27 @@ class RayMount {
       return null;
     }
     // a browser that starts audio only after a user gesture (its autoplay policy) makes it suspended: it's resumed on the next one
-    document.addEventListener('pointerdown', RayMount.wakeAudio, { capture: true, passive: true });
-    document.addEventListener('keydown', RayMount.wakeAudio, { capture: true, passive: true });
+    document.addEventListener('pointerdown', RayMount.onGesture, { capture: true, passive: true });
+    document.addEventListener('keydown', RayMount.onGesture, { capture: true, passive: true });
     return RayMount.audio;
   }
 
   private static audioWokenAt = 0;
 
   /** The shared audio running again while a Ray listens (it rests, suspended, while none does): tried at most once a second. */
-  private static readonly wakeAudio = (): void => {
+  private static readonly wakeAudio = (isGesture = false): void => {
     const ctx = RayMount.audio;
     if (!ctx || ctx.state !== 'suspended' || ![...RayMount.up].some((m) => m.voice)) return;
     const now = performance.now();
-    if (now - RayMount.audioWokenAt < 1000) return;
+    // (a gesture always tries: a browser that resumes audio only inside one would never get it if the frames' try held it back;
+    // the second review)
+    if (!isGesture && now - RayMount.audioWokenAt < 1000) return;
     RayMount.audioWokenAt = now;
     ctx.resume().catch(() => undefined);
   };
+
+  /** A pointerdown or a key: the audio woken in the gesture itself. */
+  private static readonly onGesture = (): void => RayMount.wakeAudio(true);
 
   // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
   private static frames = 0;
@@ -1787,8 +1792,8 @@ class RayMount {
     mirror = null;
     RayMount.audio?.close().catch(() => undefined);
     RayMount.audio = null;
-    document.removeEventListener('pointerdown', RayMount.wakeAudio, { capture: true });
-    document.removeEventListener('keydown', RayMount.wakeAudio, { capture: true });
+    document.removeEventListener('pointerdown', RayMount.onGesture, { capture: true });
+    document.removeEventListener('keydown', RayMount.onGesture, { capture: true });
   }
 }
 

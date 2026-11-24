@@ -34,6 +34,18 @@ const freeLingering = (): void => {
   }
 };
 
+/** Every parked film let go of (a hidden tab throttles timers, so LINGER_MS would stretch; the page going away), and the tests. */
+const emptyFilmPool = (): void => {
+  if (timer) clearTimeout(timer);
+  timer = null;
+  parked.splice(0).forEach((p) => p.host.dispose());
+};
+
+let isListening = false;
+const onHidden = (): void => {
+  if (document.visibilityState === 'hidden') emptyFilmPool();
+};
+
 /** A film its Ray has let go of: parked for the next Ray, or disposed (one that failed a frame, or one already parked). */
 const parkFilm = (id: string, host: FilmHost): void => {
   if (
@@ -48,6 +60,12 @@ const parkFilm = (id: string, host: FilmHost): void => {
   host.park();
   parked.push({ id, host, parkedAt: performance.now() });
   if (!timer) timer = setTimeout(freeLingering, LINGER_MS + 1);
+  if (!isListening && typeof document !== 'undefined') {
+    // (a parked film never outlives a hidden tab or the page: the second review)
+    isListening = true;
+    document.addEventListener('visibilitychange', onHidden);
+    window.addEventListener('pagehide', emptyFilmPool);
+  }
 };
 
 /** The film `id` parked by another Ray, taken out of the pool (the taker adopts it), or null. */
@@ -59,4 +77,4 @@ const takeFilm = (id: string): FilmHost | null => {
 /** How many films are parked (the tests). */
 const parkedFilms = (): number => parked.length;
 
-export { parkFilm, takeFilm, parkedFilms, LINGER_MS as FILM_LINGER_MS };
+export { parkFilm, takeFilm, parkedFilms, emptyFilmPool, LINGER_MS as FILM_LINGER_MS };
