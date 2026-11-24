@@ -175,34 +175,37 @@ describe('holdNearPointer', () => {
     slots.forEach((slot) => slot.remove());
   });
 
-  it('holds nothing for a focus passing through (Tab held down a table), only the one that stays focused', async () => {
-    const held: boolean[] = [];
-    const made: number[] = [];
-    const slots = [0, 40, 80, 120, 160, 200].map((top, i) =>
-      holdNearPointer(buttonAt(10000 + top), {
-        isBusy: () => false,
-        onHold: (isHeld) => {
-          held[i] = isHeld;
-          if (isHeld) made.push(i);
-        },
-      }),
-    );
-    moveTo(50, 10);
-    await wait();
-    // a row every 30 ms (key repeat), stopping on the last
-    const tabDown = async (i: number): Promise<void> => {
-      if (i === slots.length) return;
-      if (i) slots[i - 1].focus(false);
-      slots[i].focus(true);
-      await wait(30);
-      await tabDown(i + 1);
-    };
-    await tabDown(0);
-    expect(made).toEqual([]);
-    await wait(100);
-    expect(made).toEqual([5]);
-    expect(held[5]).toBe(true);
-    slots.forEach((slot) => slot.remove());
+  it('holds nothing for a focus passing through (Tab held down a table), only the one that stays focused', () => {
+    // (on fake timers, frames and the clock: a slow machine can't stretch a 30 ms step past the 60 ms dwell)
+    jest.useFakeTimers();
+    try {
+      const held: boolean[] = [];
+      const made: number[] = [];
+      const slots = [0, 40, 80, 120, 160, 200].map((top, i) =>
+        holdNearPointer(buttonAt(10000 + top), {
+          isBusy: () => false,
+          onHold: (isHeld) => {
+            held[i] = isHeld;
+            if (isHeld) made.push(i);
+          },
+        }),
+      );
+      moveTo(50, 10);
+      jest.advanceTimersByTime(50);
+      // a row every 30 ms (key repeat), stopping on the last
+      slots.forEach((slot, i) => {
+        if (i) slots[i - 1].focus(false);
+        slot.focus(true);
+        jest.advanceTimersByTime(30);
+      });
+      expect(made).toEqual([]);
+      jest.advanceTimersByTime(100);
+      expect(made).toEqual([5]);
+      expect(held[5]).toBe(true);
+      slots.forEach((slot) => slot.remove());
+    } finally {
+      jest.useRealTimers();
+    }
   });
 
   it("tells a button it's held in a task of its own, not in the frame's callback (its stage is made there)", async () => {
