@@ -227,7 +227,7 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           let heldMs = 0;
           stage.setDriver((eng, dt) => {
             // its clock holds till its first frame is on screen, and while its GPU holds its frames back (a Direct3D copy of its shader
-            // compiling): the orb plays whole from its start. Held past FIRST_FRAME_MS once it has drawn, the badge
+            // compiling): the orb plays whole from its start. Held past FIRST_FRAME_MS in one go once it has drawn, the badge
             if (!hasDrawn || eng.waitsOnGpu?.()) {
               if (hasDrawn) heldMs += dt * 1000;
               if (heldMs > FIRST_FRAME_MS) {
@@ -237,6 +237,8 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
               eng.player.seek(t, t);
               return;
             }
+            // (frames flowing again: a later hold counts from nothing, so short holds don't add up to the badge)
+            heldMs = 0;
             t += dt;
             // the orb gone: its canvas goes, and what's left is the badge with Blade's own check
             if (t >= m.gone) {
