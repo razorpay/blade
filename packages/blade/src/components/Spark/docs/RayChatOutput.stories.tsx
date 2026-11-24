@@ -165,9 +165,12 @@ const GENUI_REPLY: GenUIComponent[] = [
 
 export const InGenUI: StoryFn<typeof RayChatOutput> = () => (
   <ChatColumn>
-    <GenUIProvider config={{ components: { TEXT: rayChatOutputGenUI } }}>
-      <GenUISchemaRenderer components={GENUI_REPLY} />
-    </GenUIProvider>
+    {/* One child of the column, so GenUI's own spacing sets the gaps between its items */}
+    <Box>
+      <GenUIProvider config={{ components: { TEXT: rayChatOutputGenUI } }}>
+        <GenUISchemaRenderer components={GENUI_REPLY} />
+      </GenUIProvider>
+    </Box>
   </ChatColumn>
 );
 InGenUI.storyName = 'In GenUI';
