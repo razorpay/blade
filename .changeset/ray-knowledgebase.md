@@ -3,4 +3,4 @@
 '@razorpay/blade-mcp': patch
 ---
 
-docs(knowledgebase): add the Ray component docs
+docs(knowledgebase): add the Ray and RayLoader component docs

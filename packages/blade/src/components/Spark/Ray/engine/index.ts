@@ -18,6 +18,7 @@ export const FILMS = {
   "readbox": () => import('./films/readbox').then(film),
   "droop": () => import('./films/droop').then(film),
   "mic": () => import('./films/mic').then(film),
+  "dash": () => import('./films/dash').then(film),
 };
 
 // his own Ray's coin flip (each film brings its own helpers)

@@ -102,6 +102,7 @@ export const MetaConstants = {
   RadioGroup: 'radio-group',
   RadioLabel: 'radio-label',
   Ray: 'ray',
+  RayLoader: 'ray-loader',
   SkipNav: 'skipnav',
   Spinner: 'spinner',
   SideNav: 'sidenav',

@@ -4,11 +4,13 @@ import { within, userEvent, expect, waitFor } from 'storybook/test';
 import React, { useRef, useState } from 'react';
 import type { RayOutcome, RayState } from '..';
 import { Ray } from '..';
+import { RayLoader } from '../../RayLoader';
 import { rendererCheck, resetRendererCheck } from '../FilmHost';
 import { emptyFilmPool } from '../filmPool';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
+import { Text } from '~components/Typography';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -84,9 +86,11 @@ const inkOf = (c: HTMLCanvasElement): number => {
   for (let i = 3; i < d.length; i += 4) if (d[i] > 2) ink++;
   return ink;
 };
+const inkIn = (el: Element): number =>
+  [...el.querySelectorAll('canvas')].reduce((sum, c) => sum + inkOf(c), 0);
 
 /**
- * prefers-reduced-motion: reduce, for the Rays inside it: set as it renders (before they read it), put back as it goes.
+ * prefers-reduced-motion: reduce, for the Rays and loaders inside it: set as it renders (before they read it), put back as it goes.
  * Its `change` listeners are kept, so a Ray that listens for it is fine.
  */
 const ReducedMotion = ({ children }: { children: React.ReactElement }): React.ReactElement => {
@@ -1242,6 +1246,136 @@ TestRayComesBackQuicker.play = async () => {
   });
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 3000 });
   expect(performance.now() - shown).toBeLessThan(2000); // (about 750 ms)
+};
+
+// The Ray loader: started, he charges and dashes and holds while loading; `isLoading` false, he finishes (slides, turns, jumps, drops
+// through the floor) and onComplete is called, once. Stopped mid-way (unmounted), a new one starts from his start
+const loaderEl = (): any =>
+  document.querySelector('[data-blade-component="ray-loader"]')?.firstElementChild;
+export const TestRayLoaderLoadsAndFinishes: StoryFn<typeof RayLoader> = () => {
+  const [run, setRun] = useState(0);
+  const [isShown, setIsShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+      <Box display="flex" gap="spacing.3">
+        <Button
+          onClick={() => {
+            setRun((r) => r + 1);
+            setIsShown(true);
+            setIsLoading(true);
+          }}
+        >
+          Start
+        </Button>
+        <Button onClick={() => setIsLoading(false)}>Finish</Button>
+        <Button onClick={() => setIsShown(false)}>Stop</Button>
+        <Text>{`completed ${completions}`}</Text>
+      </Box>
+      <Box width="720px">
+        {isShown ? (
+          <RayLoader
+            key={run}
+            isLoading={isLoading}
+            onComplete={() => setCompletions((c) => c + 1)}
+          />
+        ) : null}
+      </Box>
+    </Box>
+  );
+};
+TestRayLoaderLoadsAndFinishes.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1500);
+  expect(debug()).toMatchObject({ finishing: false, done: false }); // (holding the dash while loading)
+  await userEvent.click(getByRole('button', { name: 'Stop' })); // stopped mid-way: the loader goes
+  expect(loaderEl()).toBeFalsy();
+  await userEvent.click(getByRole('button', { name: 'Start' })); // a new one, from his start
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await sleep(1200);
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(debug()?.finishing).toBe(true), { timeout: 1000 });
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 8000 });
+  await sleep(500);
+  expect(getByText('completed 1')).toBeTruthy(); // (once)
+  expect(
+    loaderEl().getAttribute('aria-hidden') ?? loaderEl().parentElement.getAttribute('aria-hidden'),
+  ).toBe('true');
+};
+
+// A loader that finishes out of sight (its box hidden, or scrolled away), where nothing draws his finish: onComplete at once, so the page
+// never waits on it (the fresh-eyes review: it never came)
+export const TestRayLoaderFinishesOutOfSight: StoryFn<typeof RayLoader> = () => {
+  const [isBoxShown, setIsBoxShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+      <Box display="flex" gap="spacing.3">
+        <Button onClick={() => setIsBoxShown(false)}>Hide box</Button>
+        <Button onClick={() => setIsLoading(false)}>Finish</Button>
+        <Text>{`completed ${completions}`}</Text>
+      </Box>
+      <Box width="720px" display={isBoxShown ? 'block' : 'none'}>
+        <RayLoader isLoading={isLoading} onComplete={() => setCompletions((c) => c + 1)} />
+      </Box>
+    </Box>
+  );
+};
+TestRayLoaderFinishesOutOfSight.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  await waitFor(() => expect(debug()).toMatchObject({ started: true, shown: true }), {
+    timeout: 8000,
+  });
+  await userEvent.click(getByRole('button', { name: 'Hide box' }));
+  await sleep(300); // (its IntersectionObserver says so: a task or two)
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 1500 });
+};
+
+// The Ray loader with reduced motion: his still while loading, drawn again when the box changes size; ready, done at once
+export const TestRayLoaderReducedMotion: StoryFn<typeof RayLoader> = () => {
+  const [width, setWidth] = useState(720);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completions, setCompletions] = useState(0);
+  return (
+    <ReducedMotion>
+      <Box padding="spacing.8" display="flex" flexDirection="column" gap="spacing.4">
+        <Box display="flex" gap="spacing.3">
+          <Button onClick={() => setWidth(480)}>Narrower</Button>
+          <Button onClick={() => setIsLoading(false)}>Finish</Button>
+          <Text>{`completed ${completions}`}</Text>
+        </Box>
+        <Box width={`${width}px`}>
+          <RayLoader isLoading={isLoading} onComplete={() => setCompletions((c) => c + 1)} />
+        </Box>
+      </Box>
+    </ReducedMotion>
+  );
+};
+TestRayLoaderReducedMotion.play = async () => {
+  const { getByRole, getByText } = within(document.body);
+  const debug = (): any => loaderEl()?.__rayLoader?.debug;
+  const widest = (): number =>
+    Math.max(0, ...[...loaderEl().querySelectorAll('canvas')].map((c: any) => c.width));
+  await waitFor(() => expect(debug()).toMatchObject({ ready: true, started: false, shown: true }), {
+    timeout: 8000,
+  });
+  await waitFor(() => expect(inkIn(loaderEl())).toBeGreaterThan(100), { timeout: 3000 }); // (his still)
+  const before = widest();
+  await userEvent.click(getByRole('button', { name: 'Narrower' }));
+  await waitFor(() => expect(widest()).toBeLessThan(before), { timeout: 3000 }); // (its stage resized: emptied)
+  await waitFor(() => expect(inkIn(loaderEl())).toBeGreaterThan(100), { timeout: 3000 }); // (and drawn again)
+  await userEvent.click(getByRole('button', { name: 'Finish' }));
+  await waitFor(() => expect(getByText('completed 1')).toBeTruthy(), { timeout: 1000 }); // (at once)
 };
 
 // Each film draws inside its crop (FILM_CROP in RayMount): every film plays (the idle ones flip a coin too) and, a few times a second,
