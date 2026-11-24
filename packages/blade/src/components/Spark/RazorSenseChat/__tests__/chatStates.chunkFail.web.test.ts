@@ -11,7 +11,10 @@ let mockIsOnline = false;
 jest.mock('../outcome', () => {
   mockOutcomeTries += 1;
   if (!mockIsOnline) throw new Error('404');
-  return { spliceOutcome: (doc: unknown) => ({ doc, t0: 10, t1: 13.7 }) };
+  return {
+    outcomeMap: () => ({ k: 1, dx: 0, dy: 0 }),
+    spliceOutcome: (doc: unknown) => ({ doc, t0: 10, t1: 13.7 }),
+  };
 });
 jest.mock('../voiceBottom', () => {
   mockVoiceTries += 1;
@@ -38,6 +41,7 @@ describe('ChatStates: a chunk that fails to load', () => {
     } as unknown) as ChatDriver;
     const anchors = ({
       bar: { top: 600, width: 840, height: 60 },
+      input: [756, 885],
       leaveAt: 800,
     } as unknown) as ChatAnchors;
     const states = new ChatStates(

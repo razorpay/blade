@@ -38,6 +38,8 @@ const PLACED: Partial<Record<string, 'xy' | 'y'>> = { eSplash: 'xy', eRing: 'xy'
  * user: "the strip never goes anywhere, just the keyframed height of the bottom wave ... the wave is just shorter")
  */
 const HALVES = ['eHalfL', 'eHalfR'];
+/** error's swell shorter still than success's, x this (the user: "error's height adjustment can be more, like shorter") */
+const ERROR_SWELL = 0.75;
 
 /**
  * success-blob's map for an outcome on a chat whose box is `box` and whose chat input anchor is `input` (its middle across, its
@@ -59,8 +61,8 @@ const outcomeMap = (box: Rect, input: [number, number], scale: number): OutcomeM
   };
 };
 
-/** an outcome's data laid again from REF_MAP for `map` */
-const placeOutcome = (data: FreshOutcome, map: OutcomeMap): FreshOutcome => {
+/** an outcome's data laid again from REF_MAP for `map`, its halves' swell x `swell` besides */
+const placeOutcome = (data: FreshOutcome, map: OutcomeMap, swell: number): FreshOutcome => {
   const r = map.k / REF_MAP.k;
   const y = (v: number): number => r * (v - REF_MAP.dy) + map.dy;
   // what each kind of placing moves: a shape's value, or its keys'
@@ -77,7 +79,8 @@ const placeOutcome = (data: FreshOutcome, map: OutcomeMap): FreshOutcome => {
     const pts = (sh.pts as { y: number }[] | undefined) ?? [];
     const up = Math.max(1, -Math.min(0, ...pts.map((p) => p.y)));
     const raw = (y0 - REF_MAP.dy) / REF_MAP.k;
-    halves[sh.id as string] = (sy) => Math.max(0, (y0 - (map.k * raw + map.dy)) / up + map.k * sy);
+    halves[sh.id as string] = (sy) =>
+      Math.max(0, (y0 - (map.k * raw + map.dy)) / up + map.k * sy) * swell;
   }
   const shape = (sh: Record<string, unknown>): Record<string, unknown> => {
     const half = halves[sh.id as string];
@@ -132,7 +135,9 @@ const spliceOutcome = (
   comps: readonly string[],
   map?: OutcomeMap,
 ): { doc: FreshDoc; t0: number; t1: number } => {
-  const data = map ? placeOutcome(outcomeData(outcome, mode), map) : outcomeData(outcome, mode);
+  const data = map
+    ? placeOutcome(outcomeData(outcome, mode), map, outcome === 'error' ? ERROR_SWELL : 1)
+    : outcomeData(outcome, mode);
   const end0 = doc.tl.dur;
   const t0 = end0 + LEAD;
   const t1 = t0 + data.dur;

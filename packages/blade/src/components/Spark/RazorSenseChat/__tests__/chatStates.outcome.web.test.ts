@@ -9,6 +9,7 @@ import type { FreshDoc, FreshEngine } from '../../RazorSenseEngine';
 
 // (each outcome's piece at its own place on the strip's clock: success from 10, error from 20)
 jest.mock('../outcome', () => ({
+  outcomeMap: () => ({ k: 1, dx: 0, dy: 0 }),
   spliceOutcome: (doc: unknown, outcome: string) =>
     outcome === 'error' ? { doc, t0: 20, t1: 23.7 } : { doc, t0: 10, t1: 13.7 },
 }));
@@ -32,6 +33,7 @@ const setup = (
   } as unknown) as ChatDriver & { playOutcome: jest.Mock };
   const anchors = ({
     bar: { top: 600, width: 840, height: 60 },
+    input: [756, 885],
     leaveAt: 800,
   } as unknown) as ChatAnchors;
   const states = new ChatStates(
@@ -117,6 +119,7 @@ describe('ChatStates: another outcome set while one plays', () => {
     } as unknown) as ChatDriver & Record<string, jest.Mock>;
     const anchors = ({
       bar: { top: 600, width: 840, height: 60 },
+      input: [756, 885],
       leaveAt: 800,
     } as unknown) as ChatAnchors;
     const states = new ChatStates(

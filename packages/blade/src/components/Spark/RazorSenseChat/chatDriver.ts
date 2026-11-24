@@ -1,4 +1,3 @@
-import type { Rect } from './placement';
 import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
 import { TypingStrength, smooth01 } from '../RazorSenseEngine/typingStrength';
 import { cubicBezier } from '../RazorSenseEngine/ease';
@@ -89,11 +88,6 @@ type ChatAnchors = {
   input: [number, number];
   bar?: { top: number; width: number; height: number };
   leaveAt?: number;
-  /**
-   * the box an outcome's splash is laid in (flow 10.5's chat panel, as its s1Map has it): RazorSenseChat's own box; for a lone
-   * RazorSenseBottomWave, the window less flow 10.5's top bar and sidebar. Measured only as an outcome starts
-   */
-  box?: () => Rect | null;
 };
 
 /** flow 9's own chat, for a panel this big: its chat bar centred across the window 111 px above the bottom, its thinking slot */
