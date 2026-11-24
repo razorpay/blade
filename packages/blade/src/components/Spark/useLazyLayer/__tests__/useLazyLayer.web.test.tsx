@@ -124,4 +124,26 @@ describe('useLazyLayer', () => {
       }),
     );
   });
+
+  it('notes a layer whose code never arrives (the button keeps its own hover meanwhile)', () => {
+    jest.useFakeTimers();
+    motionSetting(false);
+    const Hanging = (): React.ReactElement | null => {
+      const Loaded = useLazyLayer(
+        () => new Promise<React.ComponentType>(() => undefined),
+        true,
+        'razorsense',
+      );
+      return Loaded ? <Loaded /> : null;
+    };
+    render(<Hanging />);
+    act(() => {
+      jest.advanceTimersByTime(8100);
+    });
+    expect(hoverNotes[hoverNotes.length - 1]).toMatchObject({
+      hover: 'razorsense',
+      what: "loading: its layer's code hasn't arrived after 8 s",
+    });
+    jest.useRealTimers();
+  });
 });

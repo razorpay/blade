@@ -19,9 +19,12 @@ const noteHover = (hover: string, what: string): void => {
   if (hoverNotes.length > 60) hoverNotes.shift();
 };
 
+/** how long a hover's code may take to arrive before it's noted as still loading (it's never given up on: it plays once in) */
+const SLOW_LOAD_MS = 8000;
+
 /** an error's message, short */
 const errorText = (error: unknown): string =>
   String((error as Error)?.message ?? error).slice(0, 160);
 
-export { hoverNotes, noteHover, errorText };
+export { hoverNotes, noteHover, errorText, SLOW_LOAD_MS };
 export type { HoverNote };

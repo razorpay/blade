@@ -13,7 +13,7 @@ import {
   whenHoverOrKeyboardFocus,
   whyCantPlayHover,
 } from '../useLazyLayer/hoverSlots';
-import { errorText, noteHover } from '../useLazyLayer/hoverLog';
+import { errorText, noteHover, SLOW_LOAD_MS } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
@@ -674,8 +674,17 @@ const ButtonRayLayer = ({
       noteHover('ray', `Ray's code failed to load (${errorText(error)})`),
     );
     // the strip's comp and the engine's code loaded now (no canvas yet): ready for the pointer
+    const slowLoad = window.setTimeout(
+      () =>
+        noteHover(
+          'ray',
+          `loading: the engine or its comp hasn't arrived after ${SLOW_LOAD_MS / 1000} s`,
+        ),
+      SLOW_LOAD_MS,
+    );
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
+        window.clearTimeout(slowLoad);
         if (!isMounted) return;
         doc = mode === 'dark' ? comps.buttonRayDark : comps.buttonRayLight;
         setup = (doc.ui?.buttonRay as ButtonRaySetup | undefined) ?? null;
@@ -697,12 +706,14 @@ const ButtonRayLayer = ({
         noteHover('ray', 'ready');
       })
       .catch((error: unknown) => {
+        window.clearTimeout(slowLoad);
         // the engine couldn't load: Blade's own hover
         noteHover('ray', `off: the engine or its comp failed to load (${errorText(error)})`);
       });
 
     return () => {
       isMounted = false;
+      window.clearTimeout(slowLoad);
       rest();
       window.clearTimeout(refitTimer);
       resize.disconnect();

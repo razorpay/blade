@@ -8,7 +8,7 @@ import {
   whenHoverOrKeyboardFocus,
   whyCantPlayHover,
 } from '../useLazyLayer/hoverSlots';
-import { errorText, noteHover } from '../useLazyLayer/hoverLog';
+import { errorText, noteHover, SLOW_LOAD_MS } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
@@ -425,8 +425,17 @@ const ButtonRazorSenseLayer = ({
     };
 
     // its comp and the engine's code loaded now (no canvas yet): ready for the pointer
+    const slowLoad = window.setTimeout(
+      () =>
+        noteHover(
+          'razorsense',
+          `loading: the engine or its comp hasn't arrived after ${SLOW_LOAD_MS / 1000} s`,
+        ),
+      SLOW_LOAD_MS,
+    );
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
+        window.clearTimeout(slowLoad);
         if (!isMounted) return;
         const docs = {
           light: square ? comps.buttonSenseSquareLight : comps.buttonSenseLight,
@@ -454,12 +463,14 @@ const ButtonRazorSenseLayer = ({
         noteHover('razorsense', 'ready');
       })
       .catch((error: unknown) => {
+        window.clearTimeout(slowLoad);
         // the engine couldn't load: Blade's own hover
         noteHover('razorsense', `off: the engine or its comp failed to load (${errorText(error)})`);
       });
 
     return () => {
       isMounted = false;
+      window.clearTimeout(slowLoad);
       window.clearTimeout(pauseTimer);
       window.clearTimeout(relayTimer);
       relay.disconnect();

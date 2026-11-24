@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { canHover, whenHoverOrKeyboardFocus } from './hoverDevice';
-import { errorText, noteHover } from './hoverLog';
+import { errorText, noteHover, SLOW_LOAD_MS } from './hoverLog';
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
@@ -55,16 +55,25 @@ const useLazyLayer = <P>(
     if (isEnabled && canLoad && !Layer && isReduced) noteHover(name, 'off: reduced motion');
     if (!isEnabled || !canLoad || Layer || isReduced) return undefined;
     let isMounted = true;
+    // (a load that hangs: the button keeps its own hover meanwhile, and it's noted)
+    const slow = window.setTimeout(
+      () =>
+        noteHover(name, `loading: its layer's code hasn't arrived after ${SLOW_LOAD_MS / 1000} s`),
+      SLOW_LOAD_MS,
+    );
     load()
       .then((loaded) => {
+        window.clearTimeout(slow);
         if (isMounted) setLayer(() => loaded);
       })
       .catch((error: unknown) => {
+        window.clearTimeout(slow);
         // the button keeps its own hover (and the browser keeps a failed import for the page's life: no retry)
         noteHover(name, `off: its layer's code failed to load (${errorText(error)})`);
       });
     return () => {
       isMounted = false;
+      window.clearTimeout(slow);
     };
     // `load` is a module-level import: it never changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
