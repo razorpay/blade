@@ -13,6 +13,7 @@
  */
 import { RayCore } from './engine';
 import type { FilmMessage, FilmModule, RayCoreApi, SharedFactory } from './engineTypes';
+import { POTATO_TIER_PATTERNS } from '../RzpGlass/gpuPatterns';
 
 const RC: RayCoreApi = RayCore; // (typed: an export that no longer matches fails the type check)
 
@@ -44,6 +45,18 @@ const freeCanvas = (canvas: HTMLCanvasElement): void => {
   canvas.height = 0;
 };
 
+/** Whether a WebGL renderer's name is one that draws on the CPU (SwiftShader, llvmpipe, Microsoft Basic Render…): RazorSense's list. */
+const isSoftwareRenderer = (name: string): boolean =>
+  POTATO_TIER_PATTERNS.some((pattern) => pattern.test(name.toLowerCase()));
+
+/**
+ * Whether the page's WebGL draws on the CPU, found out once, on the first WebGL context a film asks for (no context of its own):
+ * null till then. Where it does, a film gets no WebGL (the user's rule, 2026-11-17: stills, or less, only where the GPU really
+ * can't keep up; RazorSense shows its stills there): Searching's lens is skipped, its ring and 2D frame drawn as without WebGL,
+ * and the lens's program isn't built on the CPU (SwiftShader: 276-426 ms long tasks as an answer's Ray started searching).
+ */
+let drawsOnCpu: boolean | null = null;
+
 const NOT_FOUND = (): Promise<any> =>
   Promise.resolve({
     ok: false,
@@ -64,6 +77,9 @@ class FilmHost {
   /** It's drawn its one frame unseen, loaded ahead (rehearse). */
   rehearsed = false;
 
+  /** How many films on the page hold a WebGL context of their own (Searching's lens), parked ones too (filmPool's cap). */
+  static lenses = 0;
+
   private readonly listeners: Record<string, Set<Listener>> = {};
   private frames = new Map<number, FrameRequestCallback>();
   private nextFrame = 1;
@@ -82,9 +98,15 @@ class FilmHost {
   private crop: Crop | null = null; // the part of its stage it draws on (null: all of it)
   private parked = false; // asleep, its stage-sized canvases emptied (see the channel)
   private readonly options: FilmHostOptions;
+  // who its messages go to: the Ray that has it (a film parked in the pool goes to the next Ray: filmPool), and which of its turns
+  // they're from, so a message it posted for the last Ray never reaches the next one
+  private onMessage: (message: FilmMessage) => void;
+  private turn = 0;
+  private answering: number | null = null; // the turn of the message it's handling now: what it says meanwhile is for that turn
 
   constructor(options: FilmHostOptions) {
     this.options = options;
+    this.onMessage = options.onMessage;
     const { film, tunes } = options;
 
     this.layer = document.createElement('div');
@@ -102,16 +124,18 @@ class FilmHost {
 
     for (const [key, record] of Object.entries(tunes)) this.store.set(key, JSON.stringify(record));
 
-    // the film's parent.postMessage -> the component (a task later, as a real postMessage is)
+    // the film's parent.postMessage -> the component (a task later, as a real postMessage is), if it's from this turn
     this.channel.port1.onmessage = (event) => {
-      if (!this.disposed && event.data && typeof event.data === 'object')
-        options.onMessage(event.data);
+      const { turn, message } = (event.data ?? {}) as { turn?: number; message?: unknown };
+      if (!this.disposed && turn === this.turn && message && typeof message === 'object')
+        this.onMessage(message as FilmMessage);
     };
     // the component's messages -> the film's 'message' listeners. Asleep, a film doesn't draw: once it has its 'sleep' its
     // stage-sized canvases are emptied (with the engine's layers on them), and sized again as its 'start' comes, before it draws.
     // Its script stays loaded, so it starts as quickly (the performance re-review: a kept idle film held about 25 MB)
     this.channel.port2.onmessage = (event) => {
-      const ray = event.data && typeof event.data === 'object' ? event.data.ray : null;
+      const { turn, message } = (event.data ?? {}) as { turn?: number; message?: FilmMessage };
+      const ray = message && typeof message === 'object' ? message.ray : null;
       if (ray === 'rehearse') {
         this.rehearse(performance.now()); // (the host's own: after the messages sent before it, its mode and zoom)
         return;
@@ -121,7 +145,12 @@ class FilmHost {
         this.parked = false;
         this.dispatch('resize', {});
       }
-      this.dispatch('message', { data: event.data });
+      this.answering = turn ?? this.turn; // (its answer to a message the last Ray sent goes to that Ray: nowhere, once it's parked)
+      try {
+        this.dispatch('message', { data: message });
+      } finally {
+        this.answering = null;
+      }
       if (ray === 'sleep') this.parked = true;
       if (this.parked) this.empty(); // (and again after a message that sized them, its zoom)
     };
@@ -173,7 +202,10 @@ class FilmHost {
       document: fakeDocument,
       window: fakeWindow,
       location: { search: '?embed', protocol: 'https:', hostname: '', href: 'ray-film:?embed' },
-      parent: { postMessage: (message: unknown) => this.channel.port2.postMessage(message) },
+      parent: {
+        postMessage: (message: unknown) =>
+          this.channel.port2.postMessage({ turn: this.answering ?? this.turn, message }),
+      },
       navigator: {
         clipboard: { writeText: () => Promise.resolve() },
         userAgent: navigator.userAgent,
@@ -314,9 +346,37 @@ class FilmHost {
     this.rehearsed = true;
   }
 
+  /** Whether it can be handed to another Ray (filmPool): it isn't disposed, and none of its frames has failed. */
+  get canPark(): boolean {
+    return !this.disposed && !this.failed;
+  }
+
+  /** Whether it holds a WebGL context of its own (Searching's lens). */
+  get hasLens(): boolean {
+    return this.gls.length > 0;
+  }
+
+  /**
+   * Let go of by its Ray and kept for the next (filmPool): asleep (its canvases emptied, its script and its WebGL lens kept), out of
+   * the page, and deaf to what it said for the last Ray.
+   */
+  park(): void {
+    if (this.disposed) return;
+    this.send({ ray: 'sleep' });
+    this.turn += 1;
+    this.onMessage = () => undefined;
+    this.layer.remove();
+  }
+
+  /** Taken by a Ray from the pool: its messages go to it now (it's ready: it was before it was parked). */
+  adopt(onMessage: (message: FilmMessage) => void): void {
+    this.turn += 1;
+    this.onMessage = onMessage;
+  }
+
   /** A message to the film, as `contentWindow.postMessage` was. */
   send(message: FilmMessage): void {
-    if (!this.disposed) this.channel.port1.postMessage(message);
+    if (!this.disposed) this.channel.port1.postMessage({ turn: this.turn, message });
   }
 
   /** One animation frame: runs what the film asked for since the last one. */
@@ -348,20 +408,47 @@ class FilmHost {
     // its memory, now: a WebGL context is let go of (else contexts pile up till the browser drops its oldest, maybe the app's own
     // chart or map), and every canvas it drew on is emptied (the PR review)
     this.gls.forEach((gl) => gl.getExtension('WEBGL_lose_context')?.loseContext());
+    if (this.gls.length) FilmHost.lenses -= 1;
     this.gls.length = 0;
     this.made.forEach(freeCanvas);
     this.made.length = 0;
   }
 
-  /** A canvas of the film's: kept to be freed on dispose, and its WebGL context (if it takes one) noted. */
+  /**
+   * A canvas of the film's: kept to be freed on dispose, and its WebGL context (if it takes one) noted. On a page whose WebGL draws
+   * on the CPU it gets none (drawsOnCpu): asked with failIfMajorPerformanceCaveat, so a software renderer makes no context at all
+   * (or, one that doesn't say so, is named on the list and let go of at once).
+   */
   private track(canvas: HTMLCanvasElement): HTMLCanvasElement {
     const getContext = canvas.getContext.bind(canvas) as (
       type: string,
       attributes?: unknown,
     ) => any;
     (canvas as any).getContext = (type: string, attributes?: unknown) => {
-      const context = getContext(type, attributes);
-      if (context && type.includes('webgl') && !this.gls.includes(context)) this.gls.push(context);
+      if (!type.includes('webgl')) return getContext(type, attributes);
+      if (drawsOnCpu) return null;
+      // (none with the caveat: a software renderer, or no WebGL at all; either way no lens. Not a page out of contexts: the browser
+      // makes one then and lets go of its oldest. Not asked again without it: a context made on SwiftShader took 841 ms)
+      const context = getContext(type, {
+        ...(attributes as Record<string, unknown>),
+        failIfMajorPerformanceCaveat: true,
+      });
+      if (drawsOnCpu === null) {
+        const info = context?.getExtension('WEBGL_debug_renderer_info');
+        drawsOnCpu =
+          !context ||
+          isSoftwareRenderer(
+            info ? String(context.getParameter(info.UNMASKED_RENDERER_WEBGL) ?? '') : '',
+          );
+      }
+      if (drawsOnCpu) {
+        context?.getExtension('WEBGL_lose_context')?.loseContext();
+        return null;
+      }
+      if (!this.gls.includes(context)) {
+        this.gls.push(context);
+        if (this.gls.length === 1) FilmHost.lenses += 1;
+      }
       return context;
     };
     this.made.push(canvas);
@@ -374,4 +461,4 @@ class FilmHost {
   }
 }
 
-export { FilmHost, freeCanvas };
+export { FilmHost, freeCanvas, isSoftwareRenderer };

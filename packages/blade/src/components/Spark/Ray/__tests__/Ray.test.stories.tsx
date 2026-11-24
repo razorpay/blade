@@ -947,6 +947,111 @@ TestRayReducedMotion.play = async () => {
   expect(inkOf(ray().player.canvas)).toBeGreaterThan(100);
 };
 
+// A Ray that goes hands his film to the next one (filmPool): a new Ray searching a moment later takes the same Searching film, its
+// script, first pass and WebGL lens kept (no new context: a hover table's Investigate buttons made one a hover). Nobody taking it,
+// it's let go about 1.5 s later, its lens's context with it (the Button sweep work, #4101)
+export const TestRayHandsHisFilmToTheNext: StoryFn<typeof Ray> = () => {
+  const [ray, setRay] = useState(0);
+  return (
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      {ray > 0 ? (
+        <Ray key={ray} state="searching" idle="rest" shouldReactToPointer={false} />
+      ) : null}
+      <Button onClick={() => setRay((n) => n + 1)}>Next</Button>
+      <Button onClick={() => setRay(0)}>Stop</Button>
+    </Box>
+  );
+};
+TestRayHandsHisFilmToTheNext.play = async () => {
+  const { getByRole } = within(document.body);
+  await userEvent.click(getByRole('button', { name: 'Next' }));
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
+    timeout: 6000,
+  });
+  const host = rayEl().__ray.films.search.host;
+  await waitFor(() => expect(host.gls.length).toBe(1), { timeout: 3000 }); // (its lens made)
+  const lens = host.gls[0];
+  await userEvent.click(getByRole('button', { name: 'Next' })); // (that Ray goes, a new one comes)
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
+    timeout: 3000,
+  });
+  expect(rayEl().__ray.films.search.host).toBe(host); // (his film handed over)
+  expect(host.gls).toEqual([lens]); // (its lens kept: no new WebGL context)
+  expect(lens.isContextLost()).toBe(false);
+  await waitFor(() => expect(host.layer.style.visibility).toBe(''), { timeout: 3000 }); // (it plays for him)
+  await userEvent.click(getByRole('button', { name: 'Stop' })); // (nobody next)
+  await sleep(500);
+  expect(lens.isContextLost()).toBe(false); // (parked a moment)
+  await waitFor(() => expect(lens.isContextLost()).toBe(true), { timeout: 2500 }); // (then let go)
+};
+
+/**
+ * A GPU that draws on the CPU, by its name (SwiftShader's): WebGL's renderer name answered as SwiftShader's for the Rays inside it,
+ * set as it renders (before any film asks for WebGL), put back as it goes.
+ */
+const SoftwareRenderer = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+  useState(() => {
+    const w = window as any;
+    if (w.__realGetParameter) return null;
+    const RENDERER = 0x9246; // (WEBGL_debug_renderer_info's UNMASKED_RENDERER_WEBGL)
+    w.__realGetParameter = [
+      WebGLRenderingContext.prototype.getParameter,
+      WebGL2RenderingContext.prototype.getParameter,
+    ];
+    [WebGLRenderingContext, WebGL2RenderingContext].forEach((C, i) => {
+      C.prototype.getParameter = function getParameter(this: any, p: number) {
+        return p === RENDERER ? 'Google SwiftShader' : w.__realGetParameter[i].call(this, p);
+      } as any;
+    });
+    return null;
+  });
+  React.useEffect(
+    () => () => {
+      const w = window as any;
+      if (!w.__realGetParameter) return;
+      WebGLRenderingContext.prototype.getParameter = w.__realGetParameter[0];
+      WebGL2RenderingContext.prototype.getParameter = w.__realGetParameter[1];
+      w.__realGetParameter = undefined;
+    },
+    [],
+  );
+  return children;
+};
+
+// On a GPU that draws on the CPU (a software renderer: the user's rule, stills or less only where the GPU really can't keep up), his
+// films get no WebGL: Searching plays with its ring and 2D frame and no lens, and the lens's program is never built on the CPU (on
+// SwiftShader, 276-426 ms long tasks as an answer's Ray started searching)
+export const TestRaySkipsTheLensOnASoftwareRenderer: StoryFn<typeof Ray> = () => (
+  <SoftwareRenderer>
+    <Box
+      padding="spacing.11"
+      paddingTop="200px"
+      display="flex"
+      alignItems="flex-end"
+      gap="spacing.8"
+    >
+      <Ray state="searching" idle="rest" shouldReactToPointer={false} />
+    </Box>
+  </SoftwareRenderer>
+);
+TestRaySkipsTheLensOnASoftwareRenderer.play = async () => {
+  await waitFor(() => expect(holder()).toMatchObject({ id: 'search', started: true }), {
+    timeout: 6000,
+  });
+  const host = rayEl().__ray.films.search.host;
+  await waitFor(() => expect(host.layer.style.visibility).toBe(''), { timeout: 3000 }); // (it plays)
+  await sleep(1200); // (past the moment its lens would be made: 250 ms after it's ready)
+  expect(host.gls).toEqual([]); // (no WebGL context of its own)
+  const ray = host.layer.querySelector('canvas'); // (its 2D frame: him, the ring)
+  expect(inkOf(ray)).toBeGreaterThan(100);
+};
+
 // isListening with a voiceStream: the mic film, fed the voice's level (he never opens a mic himself), and back in at rest. Offline wins
 // over the mic: it goes at once
 export const TestRayListens: StoryFn<typeof Ray> = () => {

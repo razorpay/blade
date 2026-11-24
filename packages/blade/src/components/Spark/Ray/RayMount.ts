@@ -12,6 +12,7 @@
  */
 import { FILMS, TUNES, RayCore } from './engine';
 import { FilmHost, freeCanvas } from './FilmHost';
+import { parkFilm, takeFilm } from './filmPool';
 import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
 import { paceFor } from './rayPace';
 import { RayEntrance } from './RayEntrance';
@@ -579,7 +580,8 @@ class RayMount {
     this.entrance?.dispose();
     this.unlisten();
     if (this.stillTimer) clearTimeout(this.stillTimer);
-    Object.values(this.films).forEach((f) => f.host.dispose());
+    // (parked for the next Ray a moment, rather than disposed: filmPool)
+    Object.values(this.films).forEach((f) => this.letGo(f));
     this.room.remove();
     freeCanvas(this.player.canvas); // his memory now, not at the next garbage collection (the PR review)
   }
@@ -1009,6 +1011,9 @@ class RayMount {
   private film(id: string): Film | null {
     const existing = this.films[id];
     if (existing) return existing;
+    // (one another Ray let go of a moment ago: his at once, ready, with no download, no first pass and no new WebGL context)
+    const pooled = takeFilm(id);
+    if (pooled) return this.adoptFilm(id, pooled);
     if (!(id in this.loading)) {
       this.loading[id] = (FILMS as Record<string, () => Promise<FilmModule>>)
         [id]()
@@ -1067,6 +1072,32 @@ class RayMount {
 
   private mountFilm(id: string, module: FilmModule): void {
     if (this.films[id]) return; // (a load that was given up on and asked for again: the first one in stays)
+    const film: Film = this.placeFilm(
+      id,
+      new FilmHost({
+        film: module,
+        tunes: TUNES as Record<string, unknown>,
+        shared: module.shared,
+        onMessage: (m) => this.onFilmMessage(film, m),
+      }),
+    );
+    film.host.start();
+  }
+
+  /**
+   * A film another Ray let go of a moment ago (filmPool): his now, and ready at once (its script, its first pass and its WebGL lens
+   * kept), sized for him. It starts as any of his films does: begin() tells it his light or dark, zoom, cue and nightcap.
+   */
+  private adoptFilm(id: string, host: FilmHost): Film {
+    const film = this.placeFilm(id, host);
+    host.adopt((m) => this.onFilmMessage(film, m));
+    host.send({ ray: 'pace', v: 1 }); // (the last Ray's quick hand-over pace isn't carried over)
+    this.onFilmMessage(film, { ray: 'ready' } as FilmMessage);
+    return film;
+  }
+
+  /** A film's record, its layer hidden on his stage, cut to its crop and sized. */
+  private placeFilm(id: string, host: FilmHost): Film {
     const film: Film = {
       id,
       ready: false,
@@ -1078,19 +1109,20 @@ class RayMount {
       lastCursor: '',
       still: '',
       stillTicks: 0,
-      host: new FilmHost({
-        film: module,
-        tunes: TUNES as Record<string, unknown>,
-        shared: module.shared,
-        onMessage: (m) => this.onFilmMessage(film, m),
-      }),
+      host,
     };
-    film.host.layer.style.visibility = 'hidden';
+    host.layer.style.visibility = 'hidden';
     this.films[id] = film;
-    this.stage.append(film.host.layer);
-    film.host.setCrop(this.filmCrop(id)); // (before its first size: its canvases are only ever this big)
-    film.host.resize(this.geo.width, this.geo.height, this.dpr);
-    film.host.start();
+    this.stage.append(host.layer);
+    host.setCrop(this.filmCrop(id)); // (before its first size: its canvases are only ever this big)
+    host.resize(this.geo.width, this.geo.height, this.dpr);
+    return film;
+  }
+
+  /** A film he's done with: parked for the next Ray a moment if it's ready (filmPool), else disposed. */
+  private letGo(film: Film): void {
+    if (film.ready) parkFilm(film.id, film.host);
+    else film.host.dispose();
   }
 
   private startFilm(
@@ -1162,7 +1194,7 @@ class RayMount {
     const keep = this.wantedFilms();
     Object.values(this.films).forEach((film) => {
       if (keep.has(film.id) || film.going) return;
-      film.host.dispose();
+      this.letGo(film);
       Reflect.deleteProperty(this.films, film.id);
       Reflect.deleteProperty(this.loading, film.id);
     });
