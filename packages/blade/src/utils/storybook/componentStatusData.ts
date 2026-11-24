@@ -1806,6 +1806,22 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'RayChatOutput',
+    description:
+      "RayChatOutput draws RAY's chat text, an AI assistant's Markdown reply, by RAY's chat rules. rayChatOutputGenUI makes GenUI draw its TEXT the same way.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.132.0',
+        storybookLink: 'Components/RayChatOutput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };
