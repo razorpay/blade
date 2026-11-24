@@ -1053,7 +1053,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         fileList={files}
         onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => {
-          console.log('onFileRemove (trash icon):', file.name);
+          console.log('onFileRemove (✕ on an uploaded file):', file.name);
           setFiles((prev) => prev.filter((f) => f.id !== file.id));
         }}
         onFileDismiss={({ file }) => {
@@ -1071,7 +1071,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         <Text as="span" size="small" weight="semibold">
           onFileDismiss
         </Text>
-        . Trash on the success file fires{' '}
+        . ✕ on the uploaded file fires{' '}
         <Text as="span" size="small" weight="semibold">
           onFileRemove
         </Text>
@@ -1088,7 +1088,8 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
       name: 'screenshot.png',
       size: 76160,
       status: 'error',
-      errorText: 'Upload failed',
+      // shown in a Tooltip on hover, keyboard focus or tap
+      errorText: 'This file is larger than 5 MB',
       id: 'file-1',
     } as BladeFileList[0],
   ]);
@@ -1149,8 +1150,8 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
         }}
       />
       <Text size="small" color="surface.text.gray.muted">
-        Each file item is exactly 200px wide. The list autoscrolls to the latest file when a new
-        file is added.
+        Each file is as wide as its name, with up to 120px of name before an ellipsis. The list
+        autoscrolls to the latest file when a new file is added.
       </Text>
     </Box>
   );

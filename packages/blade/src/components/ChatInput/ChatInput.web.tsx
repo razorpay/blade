@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
-import { chatInputBorderRadius, chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { chatInputBorderRadius } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputAmbientBorder } from './ChatInputAmbientBorder';
 import { ChatInputButton } from './ChatInputButton';
@@ -35,9 +35,11 @@ import { useId } from '~utils/useId';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
-const HiddenScrollbarBox = styled(BaseBox)(() => ({
+const HiddenScrollbarBox = styled(BaseBox)(({ theme }) => ({
   '&::-webkit-scrollbar': { display: 'none' },
   scrollbarWidth: 'none' as const,
+  // scrolling sideways also clips vertically, so leave room below for a file's focus ring
+  paddingBottom: makeSpace(theme.spacing[3]),
 }));
 
 // size="small", one row: the placeholder stays on one line, so a long placeholder cannot make the
@@ -189,10 +191,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  // the file row pads its bottom for focus rings; this margin takes that space back out of the layout
+  const filePreviewBottomOffset = -theme.spacing[3];
   const filePreviewMotionVariants: MotionVariantsType = {
-    initial: { height: '0px', overflow: 'hidden' },
+    initial: { height: '0px', marginBottom: '0px', overflow: 'hidden' },
     animate: {
       height: 'auto',
+      marginBottom: makeSpace(filePreviewBottomOffset),
       overflow: 'hidden',
       transition: {
         duration: msToSeconds(theme.motion.duration.quick),
@@ -201,6 +206,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
     exit: {
       height: '0px',
+      marginBottom: '0px',
       overflow: 'hidden',
       transition: {
         duration: msToSeconds(theme.motion.duration.quick),
@@ -266,11 +272,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <BaseBox
-                key={file.id ?? file.name}
-                flexShrink={0}
-                width={chatInputFilePreviewItemWidth}
-              >
+              <BaseBox key={file.id ?? file.name} flexShrink={0}>
                 <FileUploadItem
                   _isCompact
                   file={file}

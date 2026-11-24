@@ -4,10 +4,6 @@ const chatInputMaxTextAreaHeight = 200;
 
 const chatInputSuggestionCycleInterval = 4000;
 
-const chatInputFilePreviewItemWidth = '200px';
-
-const chatInputFilePreviewItemWidthNative = 200;
-
 /**
  * How long the ambient border's streak takes to go once around the box. This is a slow, steady
  * loop rather than a transition, so it is a component constant instead of a motion token (Blade's
@@ -35,8 +31,6 @@ export {
   chatInputBorderRadius,
   chatInputMaxTextAreaHeight,
   chatInputSuggestionCycleInterval,
-  chatInputFilePreviewItemWidth,
-  chatInputFilePreviewItemWidthNative,
   chatInputAmbientBorderLoopDuration,
   chatInputCommandMenuWidth,
   chatInputHoverGlowSize,

@@ -7,11 +7,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
-import {
-  chatInputBorderRadius,
-  chatInputFilePreviewItemWidthNative,
-  chatInputMaxTextAreaHeight,
-} from './chatInputTokens';
+import { chatInputBorderRadius, chatInputMaxTextAreaHeight } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputButton } from './ChatInputButton';
 import { ChatInputSubmit } from './ChatInputSubmit';
@@ -219,10 +215,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       }}
     >
       {files.map((file, index) => (
-        <View
-          key={file.id ?? `${file.name}-${index}`}
-          style={{ width: chatInputFilePreviewItemWidthNative }}
-        >
+        <View key={file.id ?? `${file.name}-${index}`}>
           <FileUploadItem
             _isCompact
             file={file}
