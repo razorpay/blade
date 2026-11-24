@@ -84,7 +84,9 @@ SectionedReply.play = async ({ canvasElement }) => {
 
 export const BoldLineAndHeadings: StoryFn = () => (
   <>
-    <Answer>{'**Important nuance:**\n\nYou can remit up to $250,000.'}</Answer>
+    <Answer>
+      {'Two things matter.\n\n**Important nuance:**\n\nYou can remit up to $250,000.'}
+    </Answer>
     <Unstyled>
       <Box width="752px">
         <RayChatOutput testID="headings">{'# Big\n\nText'}</RayChatOutput>
@@ -93,10 +95,12 @@ export const BoldLineAndHeadings: StoryFn = () => (
   </>
 );
 BoldLineAndHeadings.play = async ({ canvasElement }) => {
+  // A bold line on its own stays bold body text, as Figma draws it.
   const blocks = blocksOf(canvasElement);
-  await expect(blocks.map((block) => block.tagName)).toEqual(['H3', 'P']);
-  await expect(blocks[0]).toHaveTextContent('Important nuance:');
-  await expect(marginsTop(blocks)).toEqual(['0px', '12px']);
+  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'P', 'P']);
+  await expect(blocks[1]).toHaveTextContent('Important nuance:');
+  await expect(style(blocks[1]).fontSize).toBe('14px');
+  await expect(marginsTop(blocks)).toEqual(['0px', '16px', '16px']);
 
   const headings = blocksOf(canvasElement, 'headings');
   await expect(headings.map((block) => block.tagName)).toEqual(['H1', 'P']);
@@ -107,9 +111,13 @@ export const NoSections: StoryFn = () => (
   <Answer>{'No paid orders were found on 21 Sep 2026.\n\nTry another date.'}</Answer>
 );
 NoSections.play = async ({ canvasElement }) => {
+  // The opening paragraph is the main title with or without sections (decided on its own).
   const blocks = blocksOf(canvasElement);
-  await expect(blocks.some((block) => block.hasAttribute('data-ray-chat-lead'))).toBe(false);
-  await expect(style(blocks[0]).fontSize).toBe('14px');
+  await expect(blocks.map((block) => block.hasAttribute('data-ray-chat-lead'))).toEqual([
+    true,
+    false,
+  ]);
+  await expect([style(blocks[0]).fontSize, style(blocks[1]).fontSize]).toEqual(['20px', '14px']);
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
 };
 
@@ -149,6 +157,76 @@ TableInText.play = async ({ canvasElement }) => {
     'Date     Amount\n21 Sep     ₹500\n22 Sep   ₹1,200',
   );
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
+};
+
+const STREAMED_REPLY = [
+  'For an Indian investing in US stocks, the real costs are FX spread and tax.',
+  '',
+  '### First: what really costs you money',
+  'For a **resident Indian** buying US stocks directly, think of four buckets.',
+  '',
+  '1. Getting money out',
+  '2. Trading costs',
+  '',
+  '**Important nuance:**',
+  'You can remit up to **$250,000** a year.',
+  '',
+  '| Route | Fee |',
+  '|---|---:|',
+  '| Direct | ₹500 |',
+  '',
+  '---',
+  '',
+  'Anything else?',
+].join('\n');
+
+// Word by word, as a model streams: each chunk is a word with the whitespace before it.
+const STREAM_CHUNKS = STREAMED_REPLY.match(/\s*\S+/g) ?? [];
+
+const StreamingAnswer = () => {
+  const [chunks, setChunks] = React.useState(0);
+  return (
+    <>
+      <button type="button" data-testid="next-chunk" onClick={() => setChunks((n) => n + 1)}>
+        Next chunk
+      </button>
+      <Answer>{STREAM_CHUNKS.slice(0, chunks).join('')}</Answer>
+    </>
+  );
+};
+
+export const StreamsWithoutJumps: StoryFn = () => <StreamingAnswer />;
+StreamsWithoutJumps.play = async ({ canvasElement }) => {
+  // How a block looks: type, colour and its gap. A block that has appeared must keep it.
+  const look = (block: Element) => {
+    const s = style(block);
+    return [
+      s.fontFamily.split(',')[0],
+      s.fontSize,
+      s.lineHeight,
+      s.fontWeight,
+      s.color,
+      s.marginTop,
+    ].join(' ');
+  };
+  const nextChunk = within(canvasElement).getByTestId('next-chunk');
+  const firstLooks: string[] = [];
+  const changes: string[] = [];
+  // Chunks arrive one after another, so each waits for the last one to be drawn.
+  for (let chunk = 1; chunk <= STREAM_CHUNKS.length; chunk++) {
+    nextChunk.click();
+    // eslint-disable-next-line no-await-in-loop
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    blocksOf(canvasElement).forEach((block, index) => {
+      const now = look(block);
+      firstLooks[index] = firstLooks[index] ?? now;
+      if (now !== firstLooks[index]) {
+        changes.push(`chunk ${chunk}, block ${index}: ${firstLooks[index]} → ${now}`);
+        firstLooks[index] = now;
+      }
+    });
+  }
+  await expect(changes.join('\n')).toBe('');
 };
 
 const GENUI_REPLY = [

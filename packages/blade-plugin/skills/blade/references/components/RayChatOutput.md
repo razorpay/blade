@@ -4,14 +4,15 @@ RayChatOutput
 
 ## Description
 
-RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. When the reply has sections, its first paragraph is the main title; then come titles, body text, lists, inline IDs and code. `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
+RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. Its opening paragraph, the answer, is the main title; then come titles, body text, lists, inline IDs and code. Every rule looks only at a block and the blocks before it, so a reply streaming in never restyles what it has already drawn. `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
 
 ## Important Constraints
 
 - The children must be a Markdown **string**: one chat message.
 - RAY's text is tidied before it's drawn. Its `{"assistant_reply": "…"}` JSON wrapper is unwrapped (also while it streams), a literal `\n` becomes a line break, and emoji are left out. Code is left as written.
 - How each part is drawn:
-  - Every heading level, and a **bold** line on its own, is drawn as the one title style.
+  - Every heading level is drawn as the one title style. A **bold** line on its own stays bold body text.
+  - In GenUI, only the reply's first component opens with the main title.
   - Italic is drawn as plain text.
   - A `---` divider draws no line; the block after it starts 24px lower.
   - Raw HTML is left out, and an image is drawn as its alt text.

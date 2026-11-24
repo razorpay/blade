@@ -2,14 +2,18 @@
  * A remark plugin that applies RAY's chat rules to the Markdown tree's top-level blocks:
  *
  *   paragraph with line breaks       ─▶  one paragraph per line
- *   paragraph that is only **bold**   ─▶  a title (heading, depth 3)
- *   a reply with any title           ─▶  its first paragraph is the main title  (data-ray-chat-lead)
+ *   the opening paragraph            ─▶  the main title  (data-ray-chat-lead)
  *   ---                              ─▶  removed; the block after it opens a section
  *   every block after the first      ─▶  data-ray-chat-gap:
  *                                          24  a title, or the block after a divider  (before a section)
  *                                          12  the block under a title, or the next line of a paragraph
  *                                              (Figma: 11, its paragraph spacing; 12 is Blade's nearest)
  *                                          16  any other block
+ *
+ * Every rule looks only at a block and the blocks before it, never after, so a reply streaming
+ * in never restyles a block it has drawn: the main title is decided by the first block alone.
+ * A bold line on its own stays bold body text, as in Figma (a title rule would only apply once
+ * its `**` closed).
  *
  * Gaps live on the blocks as attributes so the styles map them to spacing tokens, and so they
  * can be tested without a layout engine.
@@ -21,6 +25,11 @@ type MarkdownNode = {
   depth?: number;
   children?: MarkdownNode[];
   data?: { hProperties?: Record<string, unknown> } & Record<string, unknown>;
+};
+
+type RemarkRayChatOptions = {
+  /** Whether the opening paragraph is the main title. Off for a later part of one reply. */
+  hasMainTitle?: boolean;
 };
 
 type RayChatGap = '12' | '16' | '24';
@@ -50,29 +59,21 @@ const splitAtLineBreaks = (paragraph: MarkdownNode): MarkdownNode[] => {
     .map((children) => ({ ...paragraph, children }));
 };
 
-/** "A bold line on its own becomes the smaller title." */
-const asTitleIfBoldLine = (paragraph: MarkdownNode): MarkdownNode => {
-  const parts = (paragraph.children ?? []).filter((node) => !isBlank(node));
-  if (parts.length !== 1 || parts[0].type !== 'strong') return paragraph;
-  return { type: 'heading', depth: 3, children: parts[0].children, data: paragraph.data };
-};
-
 const setProperties = (node: MarkdownNode, properties: Record<string, unknown>): void => {
   node.data = { ...node.data, hProperties: { ...node.data?.hProperties, ...properties } };
 };
 
-const remarkRayChat = () => (tree: MarkdownNode): void => {
+const remarkRayChat = ({ hasMainTitle = true }: RemarkRayChatOptions = {}) => (
+  tree: MarkdownNode,
+): void => {
   // Blocks that are the second or later line of one paragraph in the source.
   const nextLines = new WeakSet<MarkdownNode>();
   const blocks = (tree.children ?? []).flatMap((node) => {
     if (node.type !== 'paragraph') return [node];
-    return splitAtLineBreaks(node).map((line, index) => {
-      const block = asTitleIfBoldLine(line);
-      if (index > 0) nextLines.add(block);
-      return block;
-    });
+    const lines = splitAtLineBreaks(node);
+    lines.slice(1).forEach((line) => nextLines.add(line));
+    return lines;
   });
-  const hasSections = blocks.some((node) => node.type === 'heading');
 
   const kept: MarkdownNode[] = [];
   let previous: MarkdownNode | undefined;
@@ -86,7 +87,7 @@ const remarkRayChat = () => (tree: MarkdownNode): void => {
     if (DRAWS_NOTHING.has(node.type)) continue;
 
     if (previous === undefined) {
-      if (hasSections && node.type === 'paragraph') setProperties(node, { dataRayChatLead: true });
+      if (hasMainTitle && node.type === 'paragraph') setProperties(node, { dataRayChatLead: true });
     } else {
       let gap: RayChatGap = '16';
       if (node.type === 'heading' || opensSection) gap = '24';
@@ -100,3 +101,4 @@ const remarkRayChat = () => (tree: MarkdownNode): void => {
 };
 
 export { remarkRayChat };
+export type { RemarkRayChatOptions };

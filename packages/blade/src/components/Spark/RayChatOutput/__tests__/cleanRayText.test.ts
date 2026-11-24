@@ -94,6 +94,15 @@ describe('cleanRayText', () => {
       ).toBe('```\nID             Note\norder_id_123   docs a | b\n```');
     });
 
+    it('are a block from their first row, so a streaming table never changes block', () => {
+      expect(cleanRayText('Fees:\n\n|')).toBe('Fees:\n\n```\n\n```');
+      expect(cleanRayText('Fees:\n\n| Route | Fee |')).toBe('Fees:\n\n```\nRoute   Fee\n```');
+      expect(cleanRayText('| Route | Fee |\n|---')).toBe('```\nRoute   Fee\n```');
+      expect(cleanRayText('| Route | Fee |\n|---|---:|\n| Direct | ₹5')).toBe(
+        '```\nRoute    Fee\nDirect    ₹5\n```',
+      );
+    });
+
     it('leave a table inside a code block, and a heading underlined with ---, alone', () => {
       expect(cleanRayText('```\n| a | b |\n|---|---|\n```')).toBe('```\n| a | b |\n|---|---|\n```');
       expect(cleanRayText('Fees\n---\nTwo kinds.')).toBe('Fees\n---\nTwo kinds.');

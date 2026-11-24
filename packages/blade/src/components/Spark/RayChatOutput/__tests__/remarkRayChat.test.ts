@@ -25,11 +25,12 @@ const code = (value: string): Node => ({ type: 'code', value });
 const divider = (): Node => ({ type: 'thematicBreak' });
 const lineBreak = (): Node => ({ type: 'break' });
 
-const run = (...children: Node[]): Node[] => {
+const runWith = (options: Parameters<typeof remarkRayChat>[0], ...children: Node[]): Node[] => {
   const tree: Node = { type: 'root', children };
-  remarkRayChat()(tree);
+  remarkRayChat(options)(tree);
   return tree.children ?? [];
 };
+const run = (...children: Node[]): Node[] => runWith(undefined, ...children);
 
 const gaps = (blocks: Node[]): unknown[] =>
   blocks.map((block) => block.data?.hProperties?.dataRayChatGap);
@@ -51,30 +52,38 @@ describe('remarkRayChat', () => {
     expect(gaps(blocks)).toEqual([undefined, '24', '12', '16', '16', '24', '12']);
   });
 
-  it('makes the first paragraph the main title when the reply has sections', () => {
+  it('makes the opening paragraph the main title', () => {
     const blocks = run(paragraph(text('The answer.')), heading(3, text('First')));
     expect(leads(blocks)).toEqual([true, false]);
   });
 
-  it('has no main title when the reply has no sections', () => {
-    const blocks = run(paragraph(text('No paid orders.')), paragraph(text('Try another date.')));
+  it('decides the main title on the first block alone, so streaming never changes it', () => {
+    // the same opening paragraph, alone (mid-stream), then with more after it
+    expect(leads(run(paragraph(text('No paid orders.'))))).toEqual([true]);
+    const finished = run(paragraph(text('No paid orders.')), paragraph(text('Try another date.')));
+    expect(leads(finished)).toEqual([true, false]);
+    expect(gaps(finished)).toEqual([undefined, '16']);
+  });
+
+  it('has no main title when told so (a later TEXT in a GenUI reply)', () => {
+    const blocks = runWith({ hasMainTitle: false }, paragraph(text('More below.')), list());
     expect(leads(blocks)).toEqual([false, false]);
-    expect(gaps(blocks)).toEqual([undefined, '16']);
   });
 
   it('has no main title when the reply opens with a title', () => {
     expect(leads(run(heading(3, text('First')), paragraph(text('Body'))))).toEqual([false, false]);
   });
 
-  it('turns a bold line on its own into a title', () => {
+  it('keeps a bold line on its own as bold body text, as Figma draws it', () => {
+    // A title it became only once its ** closed, so it changed while streaming.
     const blocks = run(
+      paragraph(text('Intro.')),
       paragraph(strong(text('Important nuance:'))),
       paragraph(text('You can remit.')),
     );
-    expect(types(blocks)).toEqual(['heading', 'paragraph']);
-    expect(blocks[0].depth).toBe(3);
-    expect(blocks[0].children).toEqual([text('Important nuance:')]);
-    expect(gaps(blocks)).toEqual([undefined, '12']);
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph', 'paragraph']);
+    expect(blocks[1].children).toEqual([strong(text('Important nuance:'))]);
+    expect(gaps(blocks)).toEqual([undefined, '16', '16']);
   });
 
   it('keeps bold inside a sentence as bold', () => {
@@ -104,9 +113,9 @@ describe('remarkRayChat', () => {
     expect(gaps(blocks)).toEqual([undefined, '12', '16']);
   });
 
-  it('turns a bold line split off by a line break into a title', () => {
+  it('keeps a bold line split off by a line break as a paragraph', () => {
     const blocks = run(paragraph(strong(text('Fees')), text('\nTwo kinds.')));
-    expect(types(blocks)).toEqual(['heading', 'paragraph']);
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph']);
     expect(gaps(blocks)).toEqual([undefined, '12']);
   });
 

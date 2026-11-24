@@ -84,14 +84,16 @@ const EMOJI_RUN = new RegExp(`( ?)(?:${EMOJI_SOURCE} ?)*${EMOJI_SOURCE}( ?)`, 'g
 const dropEmoji = (prose: string): string =>
   prose.replace(EMOJI_RUN, (_run, before: string, after: string) => (before && after ? ' ' : ''));
 
-// A table: a row with pipes, then a delimiter row such as |---|---:|.
+// A table starts at a line that opens with a pipe, so a streaming table is a block from its first
+// row; or at a row with pipes followed by a delimiter row such as --- | ---:.
 const TABLE_DELIMITER = /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)*\|?\s*$/;
 const COLUMN_GAP = '   ';
 
 const isTableStart = (lines: string[], index: number): boolean =>
-  lines[index].includes('|') &&
-  (lines[index + 1] ?? '').includes('|') &&
-  TABLE_DELIMITER.test(lines[index + 1]);
+  /^\s*\|/.test(lines[index]) ||
+  (lines[index].includes('|') &&
+    (lines[index + 1] ?? '').includes('|') &&
+    TABLE_DELIMITER.test(lines[index + 1]));
 
 /** A row's cells; `\|` is a pipe inside a cell. */
 const splitCells = (row: string): string[] =>
@@ -137,14 +139,22 @@ const tablesAsText = (prose: string): string => {
       out.push(lines[index]);
       continue;
     }
-    const isRightAligned = splitCells(lines[index + 1]).map((cell) => cell.endsWith(':'));
-    const rows = [splitCells(lines[index]).map(plainCell)];
-    let next = index + 2;
+    const rows: string[][] = [];
+    let isRightAligned: boolean[] = [];
+    let next = index;
     while (next < lines.length && lines[next].includes('|')) {
-      rows.push(splitCells(lines[next]).map(plainCell));
+      if (TABLE_DELIMITER.test(lines[next])) {
+        isRightAligned = splitCells(lines[next]).map((cell) => cell.endsWith(':'));
+      } else {
+        rows.push(splitCells(lines[next]).map(plainCell));
+      }
       next += 1;
     }
-    out.push('```', ...alignRows(rows, isRightAligned), '```');
+    out.push(
+      ...(rows.length
+        ? ['```', ...alignRows(rows, isRightAligned), '```']
+        : lines.slice(index, next)),
+    );
     index = next - 1;
   }
   return out.join('\n');

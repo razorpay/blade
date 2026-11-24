@@ -6,7 +6,7 @@ import { TextAnimationStyles } from '~components/GenUI/GenUIComponents';
 import { createRehypeAnimate } from '~components/GenUI/rehypeAnimate';
 
 /** GenUI's TEXT, drawn by RAY's chat rules. Keeps GenUI's word fade while the reply streams. */
-const RayChatOutputText = memo(({ content }: { content?: string }) => {
+const RayChatOutputText = memo(({ content, index }: { content?: string; index?: number }) => {
   const { isAnimating, animateOptions } = useGenUIAnimation();
   const rehypePlugins = useMemo(() => (isAnimating ? [createRehypeAnimate(animateOptions)] : []), [
     isAnimating,
@@ -18,7 +18,10 @@ const RayChatOutputText = memo(({ content }: { content?: string }) => {
   return (
     <>
       {isAnimating ? <TextAnimationStyles /> : null}
-      <BaseRayChatOutput rehypePlugins={rehypePlugins}>{content}</BaseRayChatOutput>
+      {/* Only the reply's first component opens with the main title. */}
+      <BaseRayChatOutput rehypePlugins={rehypePlugins} hasMainTitle={!index}>
+        {content}
+      </BaseRayChatOutput>
     </>
   );
 });

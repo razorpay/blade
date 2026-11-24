@@ -38,7 +38,7 @@ The owner picked these values on 24 Nov 2026. They are all Blade tokens; the Fig
 
 ```
 markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRayChat ─▶ hast ─▶ [word fade]) ─▶ elements
-            wrapper · \n · emoji      line breaks · bold line → title · main title · divider → gap · data-ray-chat-gap
+            wrapper · \n · emoji      line breaks · main title (first block) · divider → gap · data-ray-chat-gap
 ```
 
 - **`cleanRayText`** tidies what RAY writes. It unwraps the `{"assistant_reply": …}` wrapper (even mid-stream), turns a literal `\n` into a line break, and drops emoji. Code is left as written.
@@ -53,6 +53,11 @@ markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRa
   - keep only the first of two messages that say the same thing;
   - 16 between messages.
 - **Tables** are drawn as cards (the owner: tables and cards are handled separately), so there's no `remark-gfm`. `cleanRayText` turns a Markdown table in RAY's text into an aligned plain-text block instead of rows of pipes. Strikethrough and task lists aren't parsed either.
-- **Streaming flips:** while a reply streams, its first paragraph draws as body until the first title arrives, then becomes the main title. A bold line becomes a title once its `**` closes. The finished message is right.
+- **Nothing restyles while streaming (the owner, 24 Nov).** Every rule looks only at a block and the blocks before it.
+  - **Main title:** the opening paragraph is the main title, decided by the first block alone. Before, it was the main title only when the reply had sections, so it jumped from body to title when the first `###` arrived. A reply without sections now opens with the main title too.
+  - **Bold lines:** a bold line on its own stays bold body text, as Figma draws "Important nuance:". A title rule could only apply once its `**` closed.
+  - **Tables:** a table is a block from its first `|` row.
+  - **GenUI:** only the reply's first component opens with the main title.
+  - **The check:** `StreamsWithoutJumps` streams a reply word by word and checks that no drawn block changes its look. Markdown still changes inline text as it closes (`**bold**` turns bold), and the last block can change while its own syntax is half typed (a lone `-` is a list until it becomes `---`).
 - **Line breaks inside bold or links** stay as spaces. Only line breaks directly in a paragraph start a new one.
 - **React Native:** not yet. It throws, like the other Spark components.

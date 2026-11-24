@@ -108,6 +108,9 @@ const gapOfFirstChild = (node?: Element): string | undefined => {
 
 // Kept at module level so a streaming reply re-renders without remounting its elements.
 const remarkPlugins = [remarkRayChat] as Options['remarkPlugins'];
+const remarkPluginsWithoutMainTitle = [
+  [remarkRayChat, { hasMainTitle: false }],
+] as Options['remarkPlugins'];
 const markdownComponents: Components = {
   // Italic is drawn as plain text.
   em: ({ children }) => <span>{children}</span>,
@@ -124,10 +127,12 @@ const markdownComponents: Components = {
 type BaseRayChatOutputProps = RayChatOutputProps & {
   /** Internal: rehype plugins run on the drawn tree, e.g. GenUI's streaming word fade. */
   rehypePlugins?: Options['rehypePlugins'];
+  /** Internal: false for a later part of one reply (GenUI's second TEXT on), so it has no main title. */
+  hasMainTitle?: boolean;
 };
 
 const _BaseRayChatOutput = (
-  { children, testID, rehypePlugins, ...rest }: BaseRayChatOutputProps,
+  { children, testID, rehypePlugins, hasMainTitle = true, ...rest }: BaseRayChatOutputProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { colorScheme } = useTheme();
@@ -145,7 +150,7 @@ const _BaseRayChatOutput = (
     >
       <ReactMarkdown
         skipHtml
-        remarkPlugins={remarkPlugins}
+        remarkPlugins={hasMainTitle ? remarkPlugins : remarkPluginsWithoutMainTitle}
         rehypePlugins={rehypePlugins}
         components={markdownComponents}
       >
@@ -158,8 +163,9 @@ const _BaseRayChatOutput = (
 const BaseRayChatOutput = React.forwardRef(_BaseRayChatOutput);
 
 /**
- * Draws one RAY chat message, its Markdown, the way RAY's chat looks: the answer first as the
- * main title when the reply has sections, then titles, body, lists and code by the chat rules.
+ * Draws one RAY chat message, its Markdown, the way RAY's chat looks: the opening paragraph (the
+ * answer) as the main title, then titles, body, lists and code by the chat rules. Every rule looks
+ * only backwards, so a streaming reply never restyles what it has already drawn.
  *
  * @example
  * <RayChatOutput>{reply}</RayChatOutput>

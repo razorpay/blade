@@ -16,7 +16,7 @@ const FIGMA_URL =
 const Page = (): ReactElement => (
   <StoryPageWrapper
     componentName="RayChatOutput"
-    componentDescription="RayChatOutput draws RAY's chat text (the words outside the cards) the way RAY's chat looks: the answer first as the main title when the reply has sections, then titles, body, lists and code. It tidies RAY's text before drawing it: its JSON wrapper, literal \n and emoji. Use rayChatOutputGenUI to make GenUI draw its TEXT this way."
+    componentDescription="RayChatOutput draws RAY's chat text (the words outside the cards) the way RAY's chat looks: its opening paragraph (the answer) as the main title, then titles, body, lists and code; a streaming reply never restyles what it has drawn. It tidies RAY's text before drawing it: its JSON wrapper, literal \n and emoji. Use rayChatOutputGenUI to make GenUI draw its TEXT this way."
     figmaURL={FIGMA_URL}
     apiDecisionLink={null}
     imports={`import { RayChatOutput, rayChatOutputGenUI } from '@razorpay/blade/components';`}
@@ -90,7 +90,7 @@ EveryMarkdownPart.args = {
 # A # heading
 ## A ## heading
 ### A ### heading
-**A bold line on its own is a title too**
+**A bold line on its own stays bold body text, as in Figma**
 A paragraph with **bold**, *italic (drawn plain)*, [a link](https://razorpay.com/docs) and an ID: \`pay_29QQoUBi66xm2f\`.
 A line break inside a paragraph starts a new one.
 

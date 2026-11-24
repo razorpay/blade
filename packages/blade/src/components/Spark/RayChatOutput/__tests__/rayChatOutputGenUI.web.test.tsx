@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { rayChatOutputGenUI } from '../rayChatOutputGenUI';
+import { remarkRayChat } from '../remarkRayChat';
 import { GenUIProvider, GenUISchemaRenderer } from '~components/GenUI';
 import type { GenUIComponent } from '~components/GenUI';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -11,8 +12,11 @@ jest.mock('react-markdown', () => ({
   default: jest.fn(({ children }: { children: string }) => children),
 }));
 
-const markdownCalls = (): { children: string; rehypePlugins?: unknown[] }[] =>
-  ((ReactMarkdown as unknown) as jest.Mock).mock.calls.map(([props]) => props);
+const markdownCalls = (): {
+  children: string;
+  rehypePlugins?: unknown[];
+  remarkPlugins?: unknown[];
+}[] => ((ReactMarkdown as unknown) as jest.Mock).mock.calls.map(([props]) => props);
 
 const drawWithRayText = (
   components: GenUIComponent[],
@@ -42,6 +46,16 @@ describe('rayChatOutputGenUI', () => {
     const { rehypePlugins } = markdownCalls()[markdownCalls().length - 1];
     expect(rehypePlugins).toHaveLength(1);
     expect(typeof rehypePlugins?.[0]).toBe('function');
+  });
+
+  it('gives only the reply’s first TEXT a main title', () => {
+    drawWithRayText([
+      { component: 'TEXT', content: 'Your payouts are on time.' },
+      { component: 'TEXT', content: 'Want me to check another date?' },
+    ]);
+    const [first, second] = markdownCalls() as { remarkPlugins?: unknown[] }[];
+    expect(first.remarkPlugins).toEqual([remarkRayChat]);
+    expect(second.remarkPlugins).toEqual([[remarkRayChat, { hasMainTitle: false }]]);
   });
 
   it('draws nothing for an empty TEXT', () => {
