@@ -203,9 +203,12 @@ class ChatStates {
   private startOutcome(driver: ChatDriver, outcome: Outcome, anchors: ChatAnchors): void {
     const M = this.outcomeModule;
     if (!M) return;
-    // (its splash laid as flow 10.5 lays it for the chat's box: lower in a shorter window)
+    // (played as success-blob shows it for the chat's box: the wave moves there as it starts and back to its rest as it ends)
     const box = anchors.box?.();
-    const map = box ? M.outcomeMap(box, anchors.input, this.scale) : undefined;
+    const place = box
+      ? M.outcomePlace(box, anchors.input, this.scale, M.stripRestY(this.base, STRIP_COMPS[0]))
+      : undefined;
+    const map = place?.map;
     const key = map
       ? `${outcome} ${map.k.toFixed(4)} ${map.dx.toFixed(1)} ${map.dy.toFixed(1)}`
       : outcome;
@@ -214,7 +217,7 @@ class ChatStates {
       this.splice = { key, doc, t0, t1 };
     }
     this.load(this.splice.doc);
-    driver.playOutcome(this.splice.t0, this.splice.t1 - this.splice.t0);
+    driver.playOutcome(this.splice.t0, this.splice.t1 - this.splice.t0, place?.shift ?? 0);
   }
 
   private frameVoice(

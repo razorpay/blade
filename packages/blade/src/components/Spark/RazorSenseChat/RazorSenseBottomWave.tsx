@@ -7,7 +7,7 @@ import {
   OUTCOME_REACH_UP,
   WAVE_PIXELS,
   inputAnchor,
-  panelIn,
+  blobChatIn,
   rectIn,
   windowIn,
 } from './placement';
@@ -130,7 +130,7 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
             },
             s,
           );
-      const box = stage ? () => panelIn(windowIn(stage), input[0]) : undefined;
+      const box = stage ? () => blobChatIn(windowIn(stage)) : undefined;
       return { thinking: input, input, bar, leaveAt, box };
     };
     const { keystroke, isStill } = useChatStage({

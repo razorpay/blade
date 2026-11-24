@@ -25,8 +25,9 @@ const LEAD = 0.02;
 type OutcomeMap = { k: number; dx: number; dy: number };
 /**
  * the map outcomeComps.ts is laid with: flow 10.5's at its reference size (its chat panel in a 1512 x 982 window). flow 10.5 works
- * its map out for the window it's in, so on a shorter one its splash and the halves' rise sit lower; laid again from this for the
- * box it plays in, Blade's do too (the user: on a laptop, success and error rose higher than flow 10.5's)
+ * its map out for the window it's in, so in a shorter one its splash and the halves' rise sit lower (in a short one, mostly below
+ * its bottom edge); laid again from this for the box it plays in, Blade's do too (the user: on a laptop, success and error rose
+ * higher than flow 10.5's; in Storybook's short canvas, "super inflated")
  */
 const REF_MAP: OutcomeMap = { k: 0.9603174603174603, dx: 62, dy: 42 };
 /** the effects success-blob places: the splash and its ring moved and sized, the halves only up or down (flow 10.5's FX9) */
@@ -39,15 +40,16 @@ const PLACED: Partial<Record<string, 'xy' | 'y'>> = {
 
 /**
  * success-blob's map for an outcome on a chat whose box is `box` and whose chat input anchor is `input` (its middle across, its
- * bar's top), the strip's comp drawn at `scale` (CSS px, one frame for all): flow 10.5's s1Map, its strip comp placed from the chat
- * input as Blade's is
+ * bar's top), the strip's comp drawn at `scale` (CSS px, one frame for all), its page moved down `shift` px: flow 10.5's s1Map, its
+ * strip comp placed from the chat input as Blade's is
  */
-const outcomeMap = (box: Rect, input: [number, number], scale: number): OutcomeMap => {
+const outcomeMap = (box: Rect, input: [number, number], scale: number, shift = 0): OutcomeMap => {
   const cover = Math.max(box.width / COMP.w, box.height / COMP.h);
   const k = cover / scale;
   // (CSS px a comp px, as the strip draws: comps are made at 2x)
   const px = 0.5 * scale;
-  const [stripLeft, stripTop] = stripOrigin(input, scale);
+  const [stripLeft, restTop] = stripOrigin(input, scale);
+  const stripTop = restTop + shift;
   const pieceLeft = box.left + box.width / 2 - (COMP.w * cover) / 2;
   const pieceTop = box.top + box.height / 2 - (COMP.h * cover) / 2;
   return {
@@ -55,6 +57,38 @@ const outcomeMap = (box: Rect, input: [number, number], scale: number): OutcomeM
     dx: (k - 1) * COMP.w + (pieceLeft - stripLeft) / px,
     dy: (k - 1) * COMP.h + (pieceTop - stripTop) / px,
   };
+};
+
+/** the strip's height on its comp at rest (comp px from the middle): its Comp 3's s2, held at its last key */
+const stripRestY = (doc: FreshDoc, comp: string): number => {
+  const c3 = ((doc.stack as StackEntry[] | undefined) ?? []).find((e) => e.id === comp)?.doc;
+  const keys = (c3?.K as Record<string, FreshKey[]> | undefined)?.['s:s2:y'];
+  if (keys?.length) return keys[keys.length - 1].v as number;
+  const s2 = ((c3?.shapes as { id: string; y?: number }[] | undefined) ?? []).find(
+    (s) => s.id === 's2',
+  );
+  return s2?.y ?? 0;
+};
+
+/**
+ * Where an outcome plays (the user: "the bottom remnant is the base, but when success or error starts it does it like it looks in
+ * success-blob ... and comes back to the remnant base"): the strip page moves `shift` CSS px down as it starts (up, if negative), so the
+ * strip sits where success-blob shows it, and back as it ends; `map` lays its effects where success-blob shows them, on the moved page.
+ * At rest the strip is flow 10.5's remnant, on the chat input. success-blob lays its whole piece cover-fitted and centred in its chat
+ * area, so in a window shorter than the comp's it sits lower than flow 10.5's remnant
+ */
+const outcomePlace = (
+  box: Rect,
+  input: [number, number],
+  scale: number,
+  stripY: number,
+): { map: OutcomeMap; shift: number } => {
+  const cover = Math.max(box.width / COMP.w, box.height / COMP.h);
+  const restTop = stripOrigin(input, scale)[1];
+  const pieceTop = box.top + box.height / 2 - (COMP.h * cover) / 2;
+  // (the strip's y on screen, comp px from its comp's top: as success-blob draws it, less as the page draws it at rest)
+  const shift = pieceTop - restTop + (stripY + COMP.h) * 0.5 * (cover - scale);
+  return { map: outcomeMap(box, input, scale, shift), shift };
 };
 
 /** an outcome's data laid again from REF_MAP for `map` */
@@ -161,5 +195,5 @@ const spliceOutcome = (
   return { doc: { ...withDur(doc), stack }, t0, t1 };
 };
 
-export { outcomeMap, spliceOutcome };
+export { outcomeMap, outcomePlace, spliceOutcome, stripRestY };
 export type { Outcome, OutcomeMap };
