@@ -15,6 +15,8 @@ written by hand.
   remove its cut from `buildFreshEngine.js` and build.
 - The engine ships minified with terser (laid out again by prettier), so it's as small in an app whose bundler minifies with
   esbuild (Vite) as in one using terser (webpack).
+- The build needs `esbuild` and `terser`: both are in `packages/blade`'s devDependencies, so it doesn't rely on another package
+  hoisting them.
 
 ```sh
 yarn build:razorsense-engine   # writes freshEngine.ts from source/ (and lints it)
