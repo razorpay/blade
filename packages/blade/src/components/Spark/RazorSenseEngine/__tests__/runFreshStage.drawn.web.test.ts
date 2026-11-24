@@ -2,7 +2,7 @@
 // onLoad means drawn: a component hears its first frame is on its canvas (onDrawn), not that its engine was made or started. And
 // after that first frame, its stage saying its GPU holds its frames back (onHeld) brings its still back till its next frame.
 
-type Turn = { go: () => unknown; prepare?: () => boolean };
+type Turn = { go: () => unknown; prepare?: () => boolean; isUrgent?: boolean };
 
 const setup = (): { runFreshStage: any; turns: Turn[] } => {
   const turns: Turn[] = [];
@@ -13,8 +13,13 @@ const setup = (): { runFreshStage: any; turns: Turn[] } => {
   let runFreshStage: any;
   jest.isolateModules(() => {
     jest.doMock('../startQueue', () => ({
-      waitForTurn: (_box: Element, go: Turn['go'], prepare?: Turn['prepare']) => {
-        turns.push({ go, prepare });
+      waitForTurn: (
+        _box: Element,
+        go: Turn['go'],
+        prepare?: Turn['prepare'],
+        isUrgent?: boolean,
+      ) => {
+        turns.push({ go, prepare, isUrgent });
         return () => undefined;
       },
     }));
@@ -40,7 +45,9 @@ describe('runFreshStage: drawn, and its GPU holding frames back', () => {
     jest.resetModules();
   });
 
-  const run = async (): Promise<{
+  const run = async (
+    extra: Record<string, unknown> = {},
+  ): Promise<{
     turns: Turn[];
     stageRef: { current: any };
     onDrawn: jest.Mock;
@@ -66,10 +73,22 @@ describe('runFreshStage: drawn, and its GPU holding frames back', () => {
       onRelease: jest.fn(),
       onDrawn,
       onWaiting,
+      ...extra,
     });
     await flush();
     return { turns, stageRef, onDrawn, onWaiting, stop, box };
   };
+
+  it('asks the start queue for an urgent turn when it’s urgent (RazorSenseSuccess), and an ordinary one otherwise', async () => {
+    const urgent = await run({ isUrgent: true });
+    expect(urgent.turns[0].isUrgent).toBe(true);
+    urgent.stop();
+    urgent.box.remove();
+    const ordinary = await run();
+    expect(ordinary.turns[0].isUrgent).toBeFalsy();
+    ordinary.stop();
+    ordinary.box.remove();
+  });
 
   it('calls onDrawn once its first frame is shown, not when it starts', async () => {
     const { turns, stageRef, onDrawn, stop, box } = await run();

@@ -79,7 +79,8 @@ type RazorSenseLoaderProps = {
    * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
    * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
    * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
-   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up.
+   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up (after three step ups that
+   * don't hold, it stays down).
    */
   onError?: (error: Error) => void;
   /**
