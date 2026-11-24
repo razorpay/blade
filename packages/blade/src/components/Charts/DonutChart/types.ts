@@ -8,6 +8,7 @@ import type {
   ChartTooltipProps,
 } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
+import type { ChartValueFormat } from '../utils/chartValueFormat';
 import type { BoxProps } from '~components/Box';
 
 type data = {
@@ -64,6 +65,11 @@ type ChartDonutWrapperProps = {
    */
   content?: Content | React.ReactNode;
   children?: React.ReactNode;
+  /**
+   * The value format of the chart, in en-IN. ChartTooltip writes values in full: ₹1,23,450.00,
+   * 1,23,450, 12.5%, unless it gets its own `formatter`.
+   */
+  valueFormat?: ChartValueFormat;
 } & BoxProps;
 
 type ChartDonutCellProps = CellProps & {

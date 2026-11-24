@@ -81,7 +81,13 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
  */
 type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
 
+/**
+ * How a GenUI CHART sizes and draws itself. `fixed` is the chart as released before this option.
+ */
+type GenUIChartLayout = 'fixed' | 'responsive';
+
 export type {
+  GenUIChartLayout,
   // Main types
   GenUIBaseComponent,
   // Utility types

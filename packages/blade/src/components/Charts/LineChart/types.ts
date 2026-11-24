@@ -1,5 +1,6 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type {
+  ChartWrapperDisplayProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
@@ -145,6 +146,7 @@ type ChartLineWrapperProps = {
    */
   data: data[];
   children: React.ReactNode;
-} & BoxProps;
+} & BoxProps &
+  ChartWrapperDisplayProps;
 
 export type { ChartLineProps, ChartLineWrapperProps };

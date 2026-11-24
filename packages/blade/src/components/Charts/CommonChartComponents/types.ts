@@ -8,6 +8,7 @@ import type {
 } from 'recharts';
 import type { Props as RechartsLabelProps } from 'recharts/types/component/Label';
 import type { ComponentProps } from 'react';
+import type { ChartValueFormat } from '../utils/chartValueFormat';
 import type {
   DataColorCategories,
   DataCategoricalEmphasis,
@@ -129,6 +130,54 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 };
 
 type Layout = 'horizontal' | 'vertical';
+/**
+ * How the axes of a bar, line or area chart look.
+ * - `lines`: an X and a Y axis line. The Y ticks sit left of the plot.
+ * - `minimal`: no axis lines, and thin gridlines. The Y ticks sit as `yLabelPlacement` sets.
+ */
+type ChartAxisStyle = 'lines' | 'minimal';
+
+/**
+ * Where the Y labels of a `minimal` chart sit.
+ * - `overlap`: inside the plot, from its left edge, just below their gridline, with a halo.
+ * - `outside`: in a column right of the plot, each centred on its gridline.
+ */
+type ChartYLabelPlacement = 'overlap' | 'outside';
+
+/**
+ * Opt-in display options of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper. Each one is
+ * off by default, so a chart looks as it did before. Web only: the native charts ignore them.
+ */
+type ChartWrapperDisplayProps = {
+  /**
+   * How the axes look.
+   * - `lines`: an X and a Y axis line. The Y ticks sit left of the plot.
+   * - `minimal`: no axis lines. The plot and its 0.5px horizontal gridlines run the full width of
+   *   the chart. The Y ticks sit as `yLabelPlacement` sets. With no X axis `label`, no space is
+   *   kept under the X labels. Use it in a narrow box.
+   *
+   * Has no effect on a bar chart with `layout="vertical"`.
+   * @default 'lines'
+   */
+  axisStyle?: ChartAxisStyle;
+  /**
+   * Where the Y labels sit when `axisStyle` is `minimal`. No effect with `lines`.
+   * - `overlap`: inside the plot, from the chart's left edge, so the labels and a title above
+   *   the chart share one left edge. Each label sits just below its gridline, with a thin halo
+   *   in the surface colour. The bottom label is not drawn.
+   * - `outside`: in a column right of the plot. Each label is centred on its gridline, with no
+   *   halo. The gridlines end 8px before the column. The bottom label shows, but hides when it
+   *   meets an X label.
+   * @default 'overlap'
+   */
+  yLabelPlacement?: ChartYLabelPlacement;
+  /**
+   * The value format of the chart, in en-IN. ChartYAxis writes its ticks compact (₹1.5L, 1.5K,
+   * 12.5%) and ChartTooltip writes values in full (₹1,23,450.00, 1,23,450, 12.5%), unless they
+   * get their own `tickFormatter` or `formatter`.
+   */
+  valueFormat?: ChartValueFormat;
+};
 type Align = 'left' | 'right';
 type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey' | 'funnel';
 type DataColorMapping = Record<
@@ -231,6 +280,18 @@ type CommonChartComponentsStateType = {
    * Map of line dataKey -> range keys, so the tooltip can show each series' industry range.
    */
   rangeMap?: RangeMap;
+  /**
+   * The axis style of the chart wrapper. ChartXAxis, ChartYAxis and the wrapper read it.
+   */
+  axisStyle?: ChartAxisStyle;
+  /**
+   * The Y label placement of a `minimal` chart wrapper. ChartYAxis reads it.
+   */
+  yLabelPlacement?: ChartYLabelPlacement;
+  /**
+   * The value format of the chart wrapper. ChartYAxis and ChartTooltip read it.
+   */
+  valueFormat?: ChartValueFormat;
 };
 
 // Dispatch type - contains only the updater functions
@@ -285,6 +346,10 @@ export type {
   ChartLabelContentProps,
   Layout,
   Align,
+  ChartAxisStyle,
+  ChartYLabelPlacement,
+  ChartWrapperDisplayProps,
+  ChartValueFormat,
   DataColorMapping,
   ChartColorToken,
   SecondaryLabelMap,

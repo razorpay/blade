@@ -105,6 +105,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   children,
   content,
   testID,
+  valueFormat,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -250,7 +251,13 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 
   return (
     <CommonChartComponentsContext.Provider
-      value={{ chartName: 'donut', dataColorMapping, selectedDataKeys, setSelectedDataKeys }}
+      value={{
+        chartName: 'donut',
+        dataColorMapping,
+        selectedDataKeys,
+        setSelectedDataKeys,
+        valueFormat,
+      }}
     >
       <DonutContainerContext.Provider
         value={{

@@ -7,6 +7,10 @@ export type {
   ChartReferenceLineProps,
   ChartReferenceBandProps,
   ChartLabelContentProps,
+  ChartAxisStyle,
+  ChartYLabelPlacement,
+  ChartWrapperDisplayProps,
+  ChartValueFormat,
   DataColorMapping,
   SecondaryLabelMap,
 } from './types';

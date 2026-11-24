@@ -5,3 +5,9 @@ export { getHighestColorInRange } from './getHighestColorInRange';
 export { sanitizeString } from './sanitizeString';
 export { colorSequence, totalChartColors } from './tokens';
 export { assignDataColorMapping } from './assignDataColorMapping';
+export {
+  formatChartValueCompact,
+  formatChartValueFull,
+  formatPercentFull,
+} from './chartValueFormat';
+export type { ChartValueFormat } from './chartValueFormat';

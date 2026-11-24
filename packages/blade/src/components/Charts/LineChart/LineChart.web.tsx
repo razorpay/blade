@@ -23,7 +23,11 @@ import type {
   ChartXAxisProps,
   RangeMap,
 } from '../CommonChartComponents/types';
-import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+import {
+  componentId as commonComponentIds,
+  MINIMAL_AXIS_CHART_MARGIN,
+} from '../CommonChartComponents/tokens';
+import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import {
@@ -239,6 +243,9 @@ const ChartLine = assignWithoutSideEffects(Line, {
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'categorical',
+  axisStyle = 'lines',
+  yLabelPlacement = 'overlap',
+  valueFormat,
   testID,
   data,
   ...restProps
@@ -519,6 +526,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       dataLength: data?.length,
       referenceBands: referenceBandLegendInfos,
       rangeMap,
+      axisStyle,
+      yLabelPlacement,
+      valueFormat,
     }),
     [
       dataColorMapping,
@@ -527,6 +537,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       data?.length,
       referenceBandLegendInfos,
       rangeMap,
+      axisStyle,
+      yLabelPlacement,
+      valueFormat,
     ],
   );
 
@@ -540,16 +553,20 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           height="100%"
           {...restProps}
         >
-          <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+          <ChartSurface ref={containerRef} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
             <RechartsResponsiveContainer width="100%" height="100%">
-              <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
+              <RechartsLineChart
+                data={data}
+                onMouseLeave={() => setHoveredDataKey(null)}
+                margin={axisStyle === 'minimal' ? MINIMAL_AXIS_CHART_MARGIN : undefined}
+              >
                 {/* Painted first so the shaded bands sit behind the trend lines. */}
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>
-          </div>
+          </ChartSurface>
         </BaseBox>
       </CommonChartComponentsContext.Provider>
     </LineChartContext.Provider>

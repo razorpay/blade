@@ -1080,3 +1080,123 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
 };
 
 export const WithComponentActions = WithComponentActionsTemplate.bind({});
+
+const narrowChartDay = (i: number): string =>
+  new Date(Date.UTC(2026, 9, 1 + i)).toISOString().slice(0, 10);
+
+const narrowChartSchema = ([
+  {
+    component: 'CHART',
+    chartType: 'line',
+    title: 'Collected per day, last 30 days',
+    xAxis: 'date',
+    data: Array.from({ length: 30 }, (_, i) => ({
+      date: narrowChartDay(i),
+      Collected: 120000 + ((i * 37) % 11) * 15000,
+    })),
+    valueFormatter: { type: 'currency', currency: 'INR' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'bar',
+    title: 'Failed payments per day',
+    xAxis: 'date',
+    data: Array.from({ length: 7 }, (_, i) => ({ date: narrowChartDay(i), Failed: i % 4 })),
+    valueFormatter: { type: 'number' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'pie',
+    title: 'Payments by method',
+    xAxis: 'method',
+    data: [
+      { method: 'UPI', value: 62 },
+      { method: 'Card', value: 21 },
+      { method: 'Netbanking', value: 11 },
+      { method: 'Wallet', value: 6 },
+    ],
+    valueFormatter: { type: 'percentage' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'pie',
+    title: 'Collected by method',
+    xAxis: 'method',
+    data: [
+      { method: 'UPI', value: 520000 },
+      { method: 'Card', value: 250000 },
+      { method: 'Netbanking', value: 80000 },
+      { method: 'Wallet', value: 40000 },
+      { method: 'EMI', value: 15000 },
+    ],
+    valueFormatter: { type: 'currency', currency: 'INR' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'bar',
+    title: 'Failed payments per day, axis lines',
+    xAxis: 'date',
+    axisStyle: 'lines',
+    data: Array.from({ length: 7 }, (_, i) => ({ date: narrowChartDay(i), Failed: i % 4 })),
+    valueFormatter: { type: 'number' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'line',
+    title: 'Collected per day, labels outside',
+    xAxis: 'date',
+    yLabelPlacement: 'outside',
+    data: Array.from({ length: 14 }, (_, i) => ({
+      date: narrowChartDay(i),
+      Collected: 120000 + ((i * 37) % 11) * 15000,
+    })),
+    valueFormatter: { type: 'currency', currency: 'INR' },
+  },
+  {
+    component: 'CHART',
+    chartType: 'area',
+    title: 'Refunds per day',
+    xAxis: 'date',
+    data: [],
+    valueFormatter: { type: 'currency', currency: 'INR' },
+  },
+] as unknown) as GenUIComponent[];
+
+/**
+ * With `chartLayout: 'responsive'` on the GenUIProvider config, a GenUI CHART sizes itself from
+ * the box it renders in: height from width, date labels thinned to fit, lakh and crore ticks for
+ * INR, full values in the tooltip (₹1,23,450.00), no legend for one series, and one line for a
+ * finished chart with no rows. In a box of 640px or less its axes are `minimal`, unless the node
+ * sets `axisStyle`. A node can set `yLabelPlacement: 'outside'`. A pie of more than 4 slices, or
+ * in a box under 300px, is a list of bars. Each column below is a box of a different width.
+ */
+const ChartInNarrowBoxesTemplate = ({
+  chartLayout = 'responsive',
+}: {
+  chartLayout?: 'fixed' | 'responsive';
+}): JSX.Element => {
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap" alignItems="flex-start">
+      {(['256px', '360px', '520px', '800px'] as const).map((width) => (
+        <Box key={width} width={width} display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" color="surface.text.gray.muted">
+            Box {width}
+          </Text>
+          <GenUIProvider config={{ chartLayout }}>
+            <GenUISchemaRenderer isAnimating={false} components={narrowChartSchema} />
+          </GenUIProvider>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+/** `chartLayout: 'responsive'` on the GenUIProvider config. */
+export const ChartInNarrowBoxes: StoryFn<typeof ChartInNarrowBoxesTemplate> = () => (
+  <ChartInNarrowBoxesTemplate chartLayout="responsive" />
+);
+
+/** No `chartLayout`: the CHART as released before, for comparison. */
+export const ChartInNarrowBoxesFixedDefault: StoryFn<typeof ChartInNarrowBoxesTemplate> = () => (
+  <ChartInNarrowBoxesTemplate chartLayout="fixed" />
+);

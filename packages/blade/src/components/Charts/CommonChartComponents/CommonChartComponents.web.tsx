@@ -10,6 +10,8 @@ import {
   Line as RechartsLine,
 } from 'recharts';
 import {
+  formatChartValueCompact,
+  formatChartValueFull,
   getHighestColorInRange,
   isSequentialColor,
   sanitizeString,
@@ -40,6 +42,9 @@ import {
   X_AXIS_LABEL_HEIGHT,
   LEGEND_MARGIN_TOP,
   X_OFFSET,
+  MINIMAL_Y_AXIS_WIDTH,
+  MINIMAL_GRIDLINE_STROKE_WIDTH,
+  Y_LABEL_HALF_CAP_EM,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
   componentId,
@@ -306,7 +311,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
+  const { secondaryLabelMap, chartName, dataLength, axisStyle } = useCommonChartComponentsContext();
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
 
@@ -334,7 +339,9 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   // - X-axis label height + offset, always reserved so the gap between the
   //   axis and elements below it (e.g. legend) stays constant whether or not
   //   the `label` prop is present
-  const axisLabelSpace = X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
+  // `minimal` with no label: no space is kept for a label that is not there.
+  const axisLabelSpace =
+    axisStyle === 'minimal' && !label ? 0 : X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
   // Position for X-axis label: below tick labels with offset
@@ -342,6 +349,8 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
 
   return (
     <RechartsXAxis
+      // `minimal`: no axis line. The gridline at the base of the plot takes its place.
+      {...(axisStyle === 'minimal' ? { axisLine: false } : {})}
       {...restProps}
       height={baseHeight || height}
       interval={interval}
@@ -395,16 +404,65 @@ const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
+  const { axisStyle, yLabelPlacement, valueFormat } = useCommonChartComponentsContext();
+  const isMinimal = axisStyle === 'minimal';
+  const isOutside = isMinimal && yLabelPlacement === 'outside';
+  const isOverlap = isMinimal && !isOutside;
+  const tickFontSize = theme.typography.fonts.size[75];
 
   return (
     <RechartsYAxis
+      // `minimal`, `overlap`: no axis line and almost no width. The ticks are mirrored into the
+      // plot, so the gridlines run the full width of the chart. Not 0: recharts draws no axis of
+      // width 0. tickSize and tickMargin 0: the ticks start at the left edge of the plot, as the
+      // X axis.
+      {...(isOverlap
+        ? {
+            width: MINIMAL_Y_AXIS_WIDTH,
+            mirror: true,
+            axisLine: false,
+            tickSize: 0,
+            tickMargin: 0,
+          }
+        : {})}
+      // `minimal`, `outside`: a column right of the plot, as wide as its widest label plus the
+      // tick margin, so the gridlines end that margin before the labels. interval 0: each label
+      // on its own tick. recharts' default moves the top label off its gridline.
+      {...(isOutside
+        ? {
+            orientation: 'right' as const,
+            width: 'auto' as const,
+            axisLine: false,
+            interval: 0,
+            tickSize: 0,
+            tickMargin: theme.spacing[3],
+          }
+        : {})}
+      // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
+      {...(valueFormat
+        ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
+        : {})}
       {...props}
       tick={{
         fill: theme.colors.surface.text.gray.muted,
-        fontSize: theme.typography.fonts.size[75],
+        fontSize: tickFontSize,
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: theme.typography.fonts.weight.regular,
         letterSpacing: theme.typography.letterSpacings[100],
+        ...(isOverlap
+          ? {
+              // Each tick sits just below its gridline, not across it. recharts centres a tick
+              // label on its gridline. Half the cap height moves its top to the gridline, then
+              // spacing.3 below it.
+              dy: theme.spacing[3] + Y_LABEL_HALF_CAP_EM * tickFontSize,
+              // A thin halo in the surface colour, so a line or an area under a tick cannot hide
+              // it: 1px outside the glyphs.
+              stroke: theme.colors.surface.background.gray.intense,
+              strokeWidth: theme.border.width.thicker,
+              strokeLinejoin: 'round',
+              paintOrder: 'stroke',
+            }
+          : {}),
       }}
       tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
@@ -430,11 +488,14 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
 
 const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   const { theme } = useTheme();
+  const { axisStyle } = useCommonChartComponentsContext();
 
   return (
     <RechartsCartesianGrid
       stroke={theme.colors.surface.border.gray.muted}
       vertical={false}
+      // `minimal`: thin gridlines, in the same colour.
+      {...(axisStyle === 'minimal' ? { strokeWidth: MINIMAL_GRIDLINE_STROKE_WIDTH } : {})}
       {...props}
     />
   );
@@ -442,6 +503,9 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
 
 const CustomTooltip = ({
   item,
+  index,
+  payload,
+  formatter,
 }: {
   item: {
     name: string;
@@ -450,11 +514,23 @@ const CustomTooltip = ({
     dataKey: string;
     payload: Record<string, unknown>;
   };
+  index: number;
+  payload: ReadonlyArray<unknown>;
+  formatter?: ChartTooltipProps['formatter'];
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName, rangeMap } = useCommonChartComponentsContext();
 
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
+
+  // recharts' `formatter`: it returns the value, or a [value, name] pair.
+  const formatted = formatter
+    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      formatter(item.value, item.name, item as any, index, payload as any)
+    : item.value;
+  const [displayValue, displayName] = Array.isArray(formatted)
+    ? [formatted[0], formatted[1] ?? item.name]
+    : [formatted, item.name];
 
   // If this series has a reference band, show its industry range (low–high) beneath the value.
   const range = rangeMap?.[item.dataKey];
@@ -480,11 +556,11 @@ const CustomTooltip = ({
             }}
           />
           <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-            {item.name}
+            {displayName}
           </Text>
         </Box>
         <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-          {item.value}
+          {displayValue}
         </Text>
       </Box>
       {hasRange ? (
@@ -512,6 +588,11 @@ const CustomTooltip = ({
 
 const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
+  const { valueFormat } = useCommonChartComponentsContext();
+  // `valueFormat` on the wrapper: full values, unless the tooltip has its own formatter.
+  const formatter: ChartTooltipProps['formatter'] =
+    props.formatter ??
+    (valueFormat ? (value: unknown) => formatChartValueFull(value, valueFormat) : undefined);
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
@@ -526,11 +607,18 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
             }}
           >
             <Heading size="small" weight="semibold" color="surface.text.staticWhite.normal">
-              {label}
+              {/* recharts' `labelFormatter`, as the X axis has `tickFormatter`. */}
+              {props.labelFormatter ? props.labelFormatter(label, payload) : label}
             </Heading>
             <Box paddingTop={label ? 'spacing.4' : undefined}>
-              {filteredPayLoad.map((item) => (
-                <CustomTooltip item={item} key={item.name} />
+              {filteredPayLoad.map((item, index) => (
+                <CustomTooltip
+                  item={item}
+                  key={item.name}
+                  index={index}
+                  payload={filteredPayLoad}
+                  formatter={formatter}
+                />
               ))}
             </Box>
           </div>

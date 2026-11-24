@@ -1437,6 +1437,96 @@ LineChartWithSequentialColors.parameters = {
   controls: { disable: true },
 };
 
+/**
+ * `axisStyle` on the wrapper. `lines` draws an X and a Y axis line, with the Y ticks left of the
+ * plot. `minimal` draws no axis lines and 0.5px gridlines that run the full width. Its Y labels
+ * sit as `yLabelPlacement` sets: `overlap`, inside the plot just below each gridline, or
+ * `outside`, in a column right of the plot. It suits a narrow box. The same props are on
+ * ChartBarWrapper and ChartAreaWrapper.
+ */
+export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
+  const variants = [
+    { axisStyle: 'lines', yLabelPlacement: 'overlap' },
+    { axisStyle: 'minimal', yLabelPlacement: 'overlap' },
+    { axisStyle: 'minimal', yLabelPlacement: 'outside' },
+  ] as const;
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexWrap="wrap" gap="spacing.8">
+        {variants.map(({ axisStyle, yLabelPlacement }) => (
+          <Box
+            key={`${axisStyle}-${yLabelPlacement}`}
+            width="320px"
+            display="flex"
+            flexDirection="column"
+            gap="spacing.3"
+          >
+            <Heading size="small">
+              {axisStyle === 'lines'
+                ? 'axisStyle="lines"'
+                : `axisStyle="minimal" yLabelPlacement="${yLabelPlacement}"`}
+            </Heading>
+            <Box width="100%" height="220px">
+              <ChartLineWrapper
+                data={chartData}
+                axisStyle={axisStyle}
+                yLabelPlacement={yLabelPlacement}
+              >
+                <ChartCartesianGrid />
+                <ChartXAxis dataKey="month" />
+                <ChartYAxis />
+                <ChartTooltip />
+                <ChartLine dataKey="teamA" name="Team A" />
+              </ChartLineWrapper>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithAxisStyles.parameters = {
+  controls: { disable: true },
+};
+
+const collectedPerMonth = [
+  { month: 'Jan', collected: 40000 },
+  { month: 'Feb', collected: 95000 },
+  { month: 'Mar', collected: 123450 },
+  { month: 'Apr', collected: 150000 },
+  { month: 'May', collected: 218000 },
+  { month: 'Jun', collected: 280000 },
+];
+
+/**
+ * `valueFormat` on the wrapper: en-IN values, compact on the Y ticks (₹1.5L) and full in the
+ * tooltip (₹1,23,450.00). Off by default.
+ */
+export const LineChartWithValueFormat: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="360px" height="240px">
+        <ChartLineWrapper
+          data={collectedPerMonth}
+          axisStyle="minimal"
+          valueFormat={{ type: 'currency', currency: 'INR' }}
+        >
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLine dataKey="collected" name="Collected" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithValueFormat.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
 LineChartIndustrySRKitchenSink.storyName = 'Line Chart with Multiple Reference Bands';
@@ -1459,3 +1549,5 @@ LineChartWithControlledSelection.storyName = 'Legend with Controlled Selection';
 LineChartWithLegendClickCallback.storyName = 'Legend with Selection Change Callback';
 LineChartWithBenchmarkAndSinglePoint.storyName = 'Line Chart with Benchmark Line and Single Point';
 LineChartWithSequentialColors.storyName = 'Line Chart with Sequential Colors';
+LineChartWithAxisStyles.storyName = 'Line Chart with Axis Styles';
+LineChartWithValueFormat.storyName = 'Line Chart with Value Format';
