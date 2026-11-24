@@ -27,3 +27,11 @@ The PR review (review 6, must fix): 2.0 only knew software renderers (`POTATO_TI
 ## Typing's own cost
 
 - Measured (timer queries, Metal, 1x): typing adds 2.4-3.8 ms a frame to the chat and the bottom wave, 1-1.5 ms to the chat background. It's the typing strip drawn over the strip at rest, animating (its shapes rasterised again each frame), and the size boost (every shape grown round the strip's middle, so rasterised again too). With only one of the two the frame costs about the same as with both, so neither can go without the other being redrawn: the look itself costs it. Fewer pixels is the cut that keeps it, and the steps now reach it within a second.
+
+## Only what it draws (24 Nov, the device test's fixed-cost lab)
+
+- On the Intel UHD laptop, compositing canvases, their number and per-frame uploads cost nothing; passes and fill do. And a blurred layer's size comes from its blur (its sigma at 5 texels), not the canvas, so the steps' lower render scale didn't shrink it.
+- **`blurBox`** (an engine switch, on for every 2.0 component): a layer's two blur passes run only over its box (its shape out by its 3-sigma blur and the margin the stack's scissor keeps), its targets cleared first. Outside the box the blur only ever read empty texels: every comp byte-identical to the engine before. And a small layer's non-convex outline is drawn in a tile its box's size (the path a big layer already took), not a 1024 px tile for its whole layer: 97 of 98 compared frames byte-identical, one dark voice frame 1 / 255 off in 508 pixels.
+- GPU time a frame (timer queries, Metal, 1920x1080 @1x): the voice look listening 10.6 -> 4.1 ms (light), 11.4 -> 6.0 ms (dark); thinking 10.9 -> 7.5 ms; the chat at rest 3.7 -> 3.0 ms.
+- **`view`** (from #4101, off here): layers and the accumulation only over what the canvas shows, for a Button hover's small window onto a card-sized comp. In this engine so both PRs build one; 2.0's components don't ask for it (byte-identical).
+
