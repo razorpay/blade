@@ -59,7 +59,13 @@ type GenUIComponentActionsRegistry = Partial<
  */
 type GenUIComponentRenderer<
   T extends GenUIBaseComponent = GenUIBaseComponent
-> = React.ComponentType<T & { index: number }>;
+> = React.ComponentType<
+  T & {
+    index: number;
+    /** True for the reply's last component while the reply streams in (`isAnimating`) */
+    isStreaming?: boolean;
+  }
+>;
 
 /**
  * Component definition for registration
