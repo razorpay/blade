@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RayLoaderMount } from './RayLoaderMount';
 import type { RayLoaderProps } from './types';
 import { canDraw } from '../Ray/canDraw';
+import { DASH_STILL } from '../Ray/engine/dashStill';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -16,6 +17,40 @@ import type { BladeElementRef } from '~utils/types';
 // floor he drops through (Ray Studio's Dash film, measured over its whole run)
 const HEIGHT_IN_WIDTHS = 4;
 const WIDTHS = { small: 38, medium: 48 } as const;
+
+/**
+ * His film's first frame as a still (Ray Studio's dash_still.py: what the film draws as he starts, 2x WebP, 1.1–1.7 KB each), shown from
+ * the first render (a server's too) until his film has drawn him, so the box isn't empty while his director, the engine and his film
+ * download (Saurav's round-6 review: about 70 KB, the first seconds of a slow connection). It sits where the film starts him: his path is
+ * in % of the box's width and his floor at 0.76 of its height, so `box` is a share of each plus a few px. (A box under about two of his
+ * widths tall draws him smaller in the film; the still stays his size.)
+ */
+const RayStill = ({
+  size,
+  colorScheme,
+}: {
+  size: keyof typeof WIDTHS;
+  colorScheme: 'light' | 'dark';
+}): React.ReactElement => {
+  const still = DASH_STILL[size];
+  const [leftShare, leftPx, topShare, topPx, width, height] = still.box;
+  return (
+    <img
+      src={still[colorScheme]}
+      alt=""
+      aria-hidden
+      style={{
+        position: 'absolute',
+        left: `calc(${leftShare * 100}% + ${leftPx}px)`,
+        top: `calc(${topShare * 100}% + ${topPx}px)`,
+        width: `${width}px`,
+        height: `${height}px`,
+        maxWidth: 'none',
+        userSelect: 'none', // (no pointer: the stage has none)
+      }}
+    />
+  );
+};
 
 /**
  * The Ray loader (secondary): Ray charges up and dashes across his box while the page loads, and when it's ready (`isLoading`
@@ -49,6 +84,8 @@ const _RayLoader = (
   onCompleteRef.current = onComplete;
   // once he's gone (or there was nothing to show), it's done for this mount: onComplete once, and the box is left to the page
   const [isDone, setIsDone] = useState(false);
+  // his film has drawn him: his still goes (it stays if his film never comes, as a still loader, till the page is ready)
+  const [isFilmShown, setIsFilmShown] = useState(false);
   const isDoneRef = useRef(false);
   const complete = (): void => {
     if (isDoneRef.current) return;
@@ -75,8 +112,11 @@ const _RayLoader = (
     import('./RayLoaderMount')
       .then((module) => {
         if (isUnmounted || !boxRef.current || isDoneRef.current) return;
-        mount = new module.RayLoaderMount(boxRef.current, optionsRef.current, () =>
-          goneRef.current(),
+        mount = new module.RayLoaderMount(
+          boxRef.current,
+          optionsRef.current,
+          () => goneRef.current(),
+          () => setIsFilmShown(true),
         );
         mountRef.current = mount;
         if (!isLoadingRef.current) mount.finish(); // (ready while he was loading: done at once)
@@ -125,7 +165,9 @@ const _RayLoader = (
           width: typeof width === 'number' ? `${width}px` : width,
           height: typeof boxHeight === 'number' ? `${boxHeight}px` : boxHeight,
         }}
-      />
+      >
+        {isDone || isFilmShown ? null : <RayStill size={size} colorScheme={scheme} />}
+      </div>
     </BaseBox>
   );
 };

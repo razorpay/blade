@@ -4,7 +4,7 @@
 import * as RC from '../rayCore';
 
 
-export const CANVASES = ["stage"];
+export const CANVASES = ["stage","ray"];
 export const UI = "<div id=\"phase\"></div>\n<div id=\"marks\" hidden></div>\n<aside id=\"panel\" aria-label=\"Controls\" hidden></aside>\n<div id=\"ezed\" role=\"dialog\" aria-label=\"Edit the ease\" hidden><div class=\"hd\"><span id=\"ez-t\"></span><button id=\"ez-x\" type=\"button\" aria-label=\"Close\">✕</button></div>\n  <svg id=\"ez-svg\" viewBox=\"0 0 208 300\" aria-hidden=\"true\"><rect x=\"24\" y=\"70\" width=\"160\" height=\"160\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\".14\"/><path d=\"M24 230 L184 70\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\".14\" stroke-dasharray=\"3 3\"/>\n    <line id=\"ez-l1\" class=\"hl\"/><line id=\"ez-l2\" class=\"hl\"/><path id=\"ez-c\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><circle cx=\"24\" cy=\"230\" r=\"3\" fill=\"currentColor\"/><circle cx=\"184\" cy=\"70\" r=\"3\" fill=\"currentColor\"/>\n    <circle id=\"ez-h1\" class=\"h\" r=\"6\"/><circle id=\"ez-h2\" class=\"h\" r=\"6\"/></svg>\n  <div class=\"pv\" aria-hidden=\"true\"><i id=\"ez-dot\"></i></div><input id=\"ez-in\" type=\"text\" spellcheck=\"false\" autocomplete=\"off\" aria-label=\"x1, y1, x2, y2\">\n  <div class=\"pre\" id=\"ez-pre\"></div></div>\n<div id=\"bar\"><b>Dash</b><button id=\"go\" class=\"go\" type=\"button\" title=\"Start / stop loading (Space)\">Start loading</button><button id=\"fin\" type=\"button\" title=\"Finish: turns round, jumps, falls through the floor (E)\">Finish</button><button id=\"flip\" type=\"button\" title=\"Dash the other way (F)\">Flip</button><button id=\"theme\" type=\"button\" title=\"Light / dark (D)\">Dark</button><button id=\"ctl\" type=\"button\" title=\"Controls (C)\">Controls</button><label title=\"His width on screen (48 px = flow 10.5's dashboard and chat bar)\">Size <input id=\"zoom\" type=\"range\" min=\"24\" max=\"400\" step=\"1\"><output id=\"zoomV\"></output></label></div>";
 export const SHARED = {  };
 
@@ -207,14 +207,17 @@ const blinkK = now => { const u = (now - blinkAt) / 260; return u >= 0 && u < 1 
 //      some in front (white or his light blue); left to right across the whole stage; when it stops none start, the ones flying finish ----
 const rn = (i, k) => { const v = Math.sin((i + seed * 7919) * 12.9898 + k * 78.233) * 43758.5453; return v - Math.floor(v); };   // (stateless, per streak, new each run)
 const hexA = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${cl(a)})`; };
-function streaks(g, now, layer, view) {
+// (on the stage, or on his own canvas: `at` its corner on the stage, device px, its streaks drawn where they are on the stage; the stage leaves out
+//  `hole`, his canvas's part, where his canvas draws the ones in front of him over him)
+function streaks(g, now, layer, view, at = null, hole = null) {
   if (!Q.streaks || now < sStart) return;
-  const dpr = $h.devicePixelRatio || 1, Wc = g.canvas.width, rw = 453.5 * FIG * view.scale, rh = 377 * FIG * view.scale, cy = toCanvas(view, WP([0, 188.5]))[1];   // (his width / height on the stage, device px; his middle)
+  const dpr = $h.devicePixelRatio || 1, Wc = stageW(), Hc = stageH(), rw = 453.5 * FIG * view.scale, rh = 377 * FIG * view.scale, cy = toCanvas(view, WP([0, 188.5]))[1];   // (his width / height on the stage, device px; his middle)
   // (where they fly: windSpan of the width around him at the dash's place (1 = the full width), fading in and out at its ends)
   const sp = cl(+Q.windSpan || 1, 0.02, 1), full = sp >= 0.999, cx = toCanvas(view, WP([262 + EX(Q.pDash), 377]))[0], bL = full ? 0 : Math.max(0, cx - sp * Wc / 2), bR = full ? Wc : Math.min(Wc, cx + sp * Wc / 2), bW = Math.max(1, bR - bL), fw = full ? 0 : 0.22 * bW;
   const vLo = Math.min(Q.vMin, Q.vMax) * rw, vHi = Math.max(Q.vMin, Q.vMax) * rw, lHi = Math.max(Q.lenMin, Q.lenMax) * rw, life = (bW + lHi) / Math.max(1, vLo) * 1000 + Q.gap;
   const iHi = Math.floor((Math.min(now, sEnd) - sStart) / Q.gap), iLo = Math.max(0, Math.floor((now - sStart - life) / Q.gap));
-  g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.lineCap = 'round'; if (!full) { g.beginPath(); g.rect(bL, 0, bW, g.canvas.height); g.clip(); }
+  g.save(); g.setTransform(1, 0, 0, 1, at ? -at[0] : 0, at ? -at[1] : 0); g.lineCap = 'round'; if (!full) { g.beginPath(); g.rect(bL, 0, bW, Hc); g.clip(); }
+  if (hole) { g.beginPath(); g.rect(0, 0, Wc, Hc); g.rect(hole[0], hole[1], hole[2], hole[3]); g.clip('evenodd'); }
   for (let i = iLo; i <= iHi; i++) {
     const front = rn(i, 7) < Q.front; if (front !== (layer === 'front')) continue;
     const ts = sStart + i * Q.gap + rn(i, 1) * Q.gap; if (ts > sEnd) continue;
@@ -227,26 +230,62 @@ function streaks(g, now, layer, view) {
   g.restore(); }
 
 // ---- the stage: the dash's whole reach in view (from his front in the dash to the charge's top right), streaks across it ----
-const cv = document.getElementById('stage'), ctx = cv.getContext('2d'); let mode = 'light';
-function size() { const dpr = $h.devicePixelRatio || 1; cv.width = Math.round($h.innerWidth * dpr); cv.height = Math.round($h.innerHeight * dpr); stillDirty = true; }
+const cv = document.getElementById('stage'), ctx = cv.getContext('2d'); let mode = 'light'; cv.dataset.own = '';   // (data-own: placed by the film: windAt)
+// the stage: the page (Blade: the loader's box), device px. Its canvases cover only where something's drawn: the wind's (windAt), his (rayAt)
+const stageW = () => Math.round($h.innerWidth * ($h.devicePixelRatio || 1)), stageH = () => Math.round($h.innerHeight * ($h.devicePixelRatio || 1));
+function size() { stillDirty = true; }
 addEventListener('resize', size); size();
-const flipped = () => { cv.style.transform = Q.flip ? 'scaleX(-1)' : ''; };   // (the whole stage mirrored: him, his glow, his tail, the streaks)
-function viewFor() { const v = fitView(cv.width, cv.height, cl(+Q.rayPx || 48, 8, 4000) * ($h.devicePixelRatio || 1) / Math.max(1, cv.width), 0.76), x = toCanvas(v, WP([(-70 + 594) / 2, 377]))[0]; return { ...v, ox: v.ox + cv.width / 2 - x }; }   // (centred on the reach, -70 .. 594 Ray px; his floor at 0.76 of the height (was 0.68): room above for the finish's jump)
+// ---- the wind's canvas (Blade's RayLoader, its round-6 review: the box's whole width and height held 4 MB for a few thin streaks): only the part
+//      of the stage they fly through, windSpan of its width round the dash's place and the band they fly in round his middle, placed on whole device
+//      px and mirrored with the stage, like his own (below) ----
+let windTf = '';
+function windAt(view) {   // its part of the stage [x, y, w, h] (device px), sized and placed
+  const d = $h.devicePixelRatio || 1, W = stageW(), H = stageH(), rw = 453.5 * FIG * view.scale, rh = 377 * FIG * view.scale, cy = toCanvas(view, WP([0, 188.5]))[1];
+  const sp = cl(+Q.windSpan || 1, 0.02, 1), full = sp >= 0.999, cx = toCanvas(view, WP([262 + EX(Q.pDash), 377]))[0];   // (as streaks() works them out)
+  const bL = full ? 0 : Math.max(0, cx - sp * W / 2), bR = full ? W : Math.min(W, cx + sp * W / 2);
+  const half = rh * Math.abs(Q.spread) / 2 + 3.2 * Math.abs(Q.thick) * Math.max(0.6, rw / (274.5 * d)) * d + 2;   // (the band, and the widest streak's half and some)
+  const x = Math.max(0, Math.floor(bL)), y = Math.max(0, Math.floor(cy - half)), w = Math.max(1, Math.min(W, Math.ceil(bR)) - x), h = Math.max(1, Math.min(H, Math.ceil(cy + half)) - y);
+  if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; cv.style.width = w / d + 'px'; cv.style.height = h / d + 'px'; }
+  const tf = `translate(${(Q.flip ? W - x - w : x) / d}px, ${y / d}px)${Q.flip ? ' scaleX(-1)' : ''}`;
+  if (tf !== windTf) { windTf = tf; cv.style.transform = tf; }
+  return [x, y, w, h]; }
+// ---- his own canvas (Blade's RayLoader, its performance review, razorpay/blade#4099 round 6): the stage is the loader's whole box, any width, and the
+//      engine's layers (his look, his eyes' glow and dots) are as big as the canvas he's drawn on, so on the stage a full-width box had his glow blurred and
+//      his layers redrawn across all of it every frame. He's drawn on a canvas RAY_BOX of his widths around him instead, his floor point (under his middle)
+//      at RAY_AT of it, moved with him (a CSS transform, mirrored with the stage) on whole device px, so he's drawn on the same pixels as on the stage.
+//      The wind's canvas (above) has the streaks behind him, and the ones in front everywhere but his canvas, which draws those over him ----
+const rc = document.getElementById('ray'), rctx = rc.getContext('2d'); rc.dataset.own = '';   // (data-own: its place and size are the film's; Blade's host leaves them)
+const RAY_BOX = [2.6, 2], RAY_AT = [0.45, 0.75];   // (he draws at most 0.72 of his widths left of it, 0.86 right, 0.9 above and none below over a whole run: room to spare)
+let rayTf = '';
+function rayAt(view, rv, f) {   // his canvas's part of the stage [x, y, w, h] (device px), sized and placed
+  const d = $h.devicePixelRatio || 1, w = 453.5 * FIG * view.scale, W = Math.ceil(w * RAY_BOX[0]), H = Math.ceil(w * RAY_BOX[1]);
+  if (rc.width !== W || rc.height !== H) { rc.width = W; rc.height = H; rc.style.width = W / d + 'px'; rc.style.height = H / d + 'px'; }
+  const X = Math.round(rv.ox - W * RAY_AT[0]), Y = Math.round(rv.oy - (f.pose.y || 0) * FIG * view.scale - H * RAY_AT[1]);
+  const tf = `translate(${(Q.flip ? stageW() - X - W : X) / d}px, ${Y / d}px)${Q.flip ? ' scaleX(-1)' : ''}`;   // (mirrored with the stage)
+  if (tf !== rayTf) { rayTf = tf; rc.style.transform = tf; }
+  return [X, Y, W, H]; }
+const rayClear = () => { rctx.setTransform(1, 0, 0, 1, 0, 0); rctx.clearRect(0, 0, rc.width, rc.height); };
+function viewFor() { const W = stageW(), v = fitView(W, stageH(), cl(+Q.rayPx || 48, 8, 4000) * ($h.devicePixelRatio || 1) / Math.max(1, W), 0.76), x = toCanvas(v, WP([(-70 + 594) / 2, 377]))[0]; return { ...v, ox: v.ox + W / 2 - x }; }   // (centred on the reach, -70 .. 594 Ray px; his floor at 0.76 of the height (was 0.68): room above for the finish's jump)
 function tick(now) {
   requestAnimationFrame(tick);
   if (dormant) return;                                                                      // (Blade: not shown yet, or asleep: not drawn)
   if (STILL) { if (!stillDirty) return; stillDirty = false; now = T3() + STILL_DASH; }       // its still: its one frame, drawn again only as the stage or the look changes
   if (restartQ && state === 'gone') { restartQ = false; fresh(now); start(now); }           // (asked to start as he finished: from his start again)
-  const view = viewFor(); SW = cv.width / (view.scale * FIG); const r = last = frameOf(now); flipped();  // (his path's x shifts the view he's drawn in, his pose stays at the engine's origin: far from it (over ~2000 Ray px, i.e. a small Ray far along the
+  const view = viewFor(); SW = stageW() / (view.scale * FIG); const r = last = frameOf(now);  // (his path's x shifts the view he's drawn in, his pose stays at the engine's origin: far from it (over ~2000 Ray px, i.e. a small Ray far along the
   //  stage) the engine leaves his body unfilled, a white ghost; streaks and marks keep the stage's own view)
   const rv = r.x != null ? { ...view, ox: view.ox + EX(r.x) * FIG * view.scale } : view;
-  if (r.gone) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); }
-  else if (r.clip) {   // (in the finish's air: an invisible floor, nothing of him below his floor line)
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); const fy = toCanvas(view, WP([0, 377]))[1];
-    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, cv.width, fy); ctx.clip(); draw(ctx, r.f, rv, { mode, shadow: false, clear: true }); ctx.restore(); }   // (clear, not the engine's ground: that filled the stage above the floor and hid the streaks)
-  else draw(ctx, r.f, rv, { mode, shadow: false, clear: true });
-  ctx.save(); ctx.globalCompositeOperation = 'destination-over'; streaks(ctx, now, 'behind', view); ctx.restore();
-  streaks(ctx, now, 'front', view);
+  const hole = r.gone ? null : rayAt(view, rv, r.f);   // (him on his own canvas, its part of the stage)
+  if (r.gone) rayClear();
+  else {
+    const sv = { ...rv, ox: rv.ox - hole[0], oy: rv.oy - hole[1] };                         // (his view on his canvas: the stage's, moved by its corner)
+    if (r.clip) {   // (in the finish's air: an invisible floor, nothing of him below his floor line)
+      rayClear(); const fy = toCanvas(view, WP([0, 377]))[1] - hole[1];
+      rctx.save(); rctx.beginPath(); rctx.rect(0, 0, rc.width, fy); rctx.clip(); draw(rctx, r.f, sv, { mode, shadow: false, clear: true }); rctx.restore(); }   // (clear, not the engine's ground: that filled the stage above the floor and hid the streaks)
+    else draw(rctx, r.f, sv, { mode, shadow: false, clear: true });
+    streaks(rctx, now, 'front', view, hole); }                                               // (the wind in front of him, over him)
+  const wind = windAt(view); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);   // (the wind's canvas, its part of the stage)
+  ctx.save(); ctx.globalCompositeOperation = 'destination-over'; streaks(ctx, now, 'behind', view, wind); ctx.restore();   // (as they went under him on one canvas)
+  streaks(ctx, now, 'front', view, wind, hole);
   }
 
 // ---- the panel ----
@@ -260,7 +299,7 @@ addEventListener('message', e => { const m = e.data || {}; if (m.ray !== 'dash')
   if (m.theme && (m.theme === 'dark') !== (mode === 'dark')) theme();
   if (m.act === 'start') start(); else if (m.act === 'stop') stop(); else if (m.act === 'toggle') toggle(); else if (m.act === 'finish') finish(); });
 // ---- in Blade's RayLoader (a component of its own, as RazorSenseLoader: isLoading, onComplete): a FilmHost runs this film alone on the loader's whole
-//      box (any width and height, no crop); there's no rest to hand back to the component's own Ray. Its messages:
+//      box (any width and height, no crop: its canvases are the wind's where it flies and his own round him, windAt and rayAt); there's no rest to hand back to the component's own Ray. Its messages:
 //   { ray: 'dash', px }   his width in CSS px (else the tune's rayPx, 48); his path stays in % of the stage width (above)
 //   { ray: 'mode', mode } 'light' | 'dark': Ray's dark colours (the stage stays clear: the page paints its ground)
 //   { ray: 'start' }      the charge, then the dash, held while it loads; from his start the first time, after done, after sleep or its still.
@@ -280,7 +319,7 @@ function blStart() {
 function blLeave() {
   if (state === 'gone' && !restartQ) return;                                                // (gone already: its done was said)
   restartQ = false; leaving = true;
-  if (STILL || state === 'idle' || state === 'gone') { STILL = false; state = 'gone'; stillDirty = true; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); bladeGone(); return; }   // (nothing to finish)
+  if (STILL || state === 'idle' || state === 'gone') { STILL = false; state = 'gone'; stillDirty = true; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); rayClear(); bladeGone(); return; }   // (nothing to finish)
   finish(); }
 function blStill() {   // one frame mid-dash: his start's charge and dash run to STILL_DASH into it on a clock of its own, his eyes on the dash's own places, the wind seeded
   dormant = false; slept = false; leaving = false; restartQ = false; STILL = true; stillDirty = true;

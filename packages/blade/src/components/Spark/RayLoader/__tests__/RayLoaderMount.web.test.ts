@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // The Ray loader's director, on a made-up film (its engine and film host stand-ins): when it's done, and what it never does after
-// it's gone. Each of these failed before the fresh-eyes review's fixes.
+// it's gone (each of these failed before the fresh-eyes review's fixes); and from Saurav's round-6 review, that it draws in the page's
+// one frame loop and takes its box's size from the resize observer's entry.
 import { RayLoaderMount } from '../RayLoaderMount';
+import { bookFrame, unbookFrame } from '../../Ray/rayFrames';
 
 type Deferred = { promise: Promise<any>; resolve: (v: any) => void; reject: (e: any) => void };
 const deferred = (): Deferred => {
@@ -44,7 +46,10 @@ const flush = async (): Promise<void> => {
   for (let i = 0; i < 5; i++) await Promise.resolve(); // eslint-disable-line no-await-in-loop
 };
 
-const observers: { intersection: ((e: any[]) => void) | null; resize: (() => void) | null } = {
+const observers: {
+  intersection: ((e: any[]) => void) | null;
+  resize: ((e: any[]) => void) | null;
+} = {
   intersection: null,
   resize: null,
 };
@@ -64,7 +69,7 @@ beforeEach(() => {
     disconnect = jest.fn();
   };
   (window as any).ResizeObserver = class {
-    constructor(cb: () => void) {
+    constructor(cb: (e: any[]) => void) {
       observers.resize = cb;
     }
 
@@ -85,8 +90,11 @@ afterEach(() => {
 const OPTIONS = { size: 'medium', colorScheme: 'light' } as const;
 
 /** A director whose film has loaded, said it's ready, drawn its unseen frame and started. */
-const started = async (onDone: () => void): Promise<{ mount: RayLoaderMount; host: any }> => {
-  const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone);
+const started = async (
+  onDone: () => void,
+  onShown: () => void = jest.fn(),
+): Promise<{ mount: RayLoaderMount; host: any }> => {
+  const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone, onShown);
   mockFilm.current.resolve({});
   await flush();
   const host = mockHosts[0];
@@ -100,7 +108,7 @@ const started = async (onDone: () => void): Promise<{ mount: RayLoaderMount; hos
 describe('RayLoaderMount', () => {
   it("doesn't mount a film that arrives after it gave up on it", async () => {
     const onDone = jest.fn();
-    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone);
+    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone, jest.fn());
     (mount as any).finishNow(); // (as START_WAIT_MS gives up on a film that's slow to load)
     expect(onDone).toHaveBeenCalledTimes(1);
     mockFilm.current.resolve({});
@@ -111,7 +119,7 @@ describe('RayLoaderMount', () => {
 
   it('says nothing once it has gone, even if its film then fails to load', async () => {
     const onDone = jest.fn();
-    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone);
+    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone, jest.fn());
     mount.dispose();
     mockFilm.current.reject(new Error('chunk failed'));
     await flush();
@@ -145,6 +153,8 @@ describe('RayLoaderMount', () => {
     expect(scrolledAway).not.toHaveBeenCalled();
     observers.intersection!([{ isIntersecting: false }]);
     expect(scrolledAway).toHaveBeenCalledTimes(1);
+    first.mount.dispose();
+    second.mount.dispose();
   });
 
   it('draws its reduced-motion still again when its box changes size', async () => {
@@ -152,15 +162,73 @@ describe('RayLoaderMount', () => {
       matches: query.includes('prefers-reduced-motion'),
       media: query,
     })) as any;
-    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, jest.fn());
+    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, jest.fn(), jest.fn());
     mockFilm.current.resolve({});
     await flush();
     const host = mockHosts[0];
     host.onMessage({ ray: 'ready' });
     expect(host.send).toHaveBeenCalledWith({ ray: 'still' });
     host.send.mockClear();
-    observers.resize!(); // (a new size empties his canvases)
+    observers.resize!([{ contentRect: { width: 300, height: 192 } }]); // (a new size empties his canvases)
     expect(host.send).toHaveBeenCalledWith({ ray: 'still' });
+    mount.dispose();
+  });
+
+  it("takes its box's size from the resize observer's entry, with no layout read", async () => {
+    const root = document.createElement('div');
+    const read = jest.spyOn(root, 'getBoundingClientRect');
+    const mount = new RayLoaderMount(root, OPTIONS, jest.fn(), jest.fn());
+    observers.resize!([{ contentRect: { width: 640, height: 192 } }]); // (its first entry, as the box is observed)
+    mockFilm.current.resolve({});
+    await flush();
+    const host = mockHosts[0];
+    expect(host.resize).toHaveBeenLastCalledWith(640, 192, expect.any(Number));
+    observers.resize!([{ contentRect: { width: 320.4, height: 150 } }]);
+    expect(host.resize).toHaveBeenLastCalledWith(320, 150, expect.any(Number));
+    expect(read).not.toHaveBeenCalled();
+    mount.dispose();
+  });
+
+  it("draws in the page's one frame loop, with the Rays, and none of its own", async () => {
+    const { mount, host } = await started(jest.fn());
+    const ray: { frame: jest.Mock } = { frame: jest.fn(() => bookFrame(ray)) }; // (a Ray on the page: booked again each frame)
+    bookFrame(ray);
+    jest.advanceTimersByTime(17); // (into the loop's rhythm)
+    const raf = jest.spyOn(window, 'requestAnimationFrame');
+    const ticks = host.tick.mock.calls.length;
+    const rayFrames = ray.frame.mock.calls.length;
+    jest.advanceTimersByTime(17 * 4); // (four animation frames)
+    expect(host.tick.mock.calls.length - ticks).toBe(ray.frame.mock.calls.length - rayFrames); // (drawn as often as he is)
+    expect(host.tick.mock.calls[ticks][0]).toBe(ray.frame.mock.calls[rayFrames][0]); // (in the same frames)
+    expect(raf.mock.calls.length).toBe(ray.frame.mock.calls.length - rayFrames); // (one request a frame: the page's one loop)
+    unbookFrame(ray);
+    mount.dispose();
+    const after = host.tick.mock.calls.length;
+    jest.advanceTimersByTime(50);
+    expect(host.tick.mock.calls.length).toBe(after); // (gone: out of the loop)
+  });
+
+  it("gives up on a film that never says it's ready after 8 s, with no frames spent waiting for it", () => {
+    const onDone = jest.fn();
+    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone, jest.fn());
+    const raf = jest.spyOn(window, 'requestAnimationFrame');
+    observers.intersection!([{ isIntersecting: true }]); // (in sight, his film still downloading: his still covers the box)
+    jest.advanceTimersByTime(1000);
+    expect(raf.mock.calls.length).toBeLessThanOrEqual(1); // (not a frame a frame)
+    jest.advanceTimersByTime(6900);
+    expect(onDone).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(200);
+    expect(onDone).toHaveBeenCalledTimes(1);
+    mount.dispose();
+  });
+
+  it('says once when his film has first drawn him (the still goes then)', async () => {
+    const onShown = jest.fn();
+    const { mount } = await started(jest.fn(), onShown);
+    jest.advanceTimersByTime(100); // (a few frames since his start)
+    expect(onShown).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(200);
+    expect(onShown).toHaveBeenCalledTimes(1);
     mount.dispose();
   });
 });

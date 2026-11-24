@@ -14,7 +14,8 @@ import { FILMS, TUNES, RayCore } from './engine';
 import { FilmHost, freeCanvas } from './FilmHost';
 import { parkFilm, takeFilm } from './filmPool';
 import { RayPlayer, SWAP_MS, WATCH_BACK_MS, WATCH_SETTLED_MS } from './RayPlayer';
-import { paceFor } from './rayPace';
+import { bookFrame, framePace, unbookFrame } from './rayFrames';
+import type { FrameClient } from './rayFrames';
 import { RayEntrance } from './RayEntrance';
 import type { Cycle } from './rayIdles';
 import { idleAllowed, idleByClock, idleOfThisLoad } from './rayIdles';
@@ -91,7 +92,6 @@ const ERROR_STILL_MS = 3000; // reduced motion: how long the error's still stays
 const REST_BLEND_MS = SWAP_MS; // his blend to rest, as his own Ray blends between moves (one number, in RayPlayer: the PR review)
 const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: the nudge (again this long after each one)
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
-const PACE_EVERY_MS = 2000; // how often the pace the Rays draw at is looked at again (rayPace)
 const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
@@ -417,7 +417,7 @@ class RayMount {
       want: this.want(),
       flip: this.player.flipState,
       geo: this.geo,
-      pace: RayMount.pace,
+      pace: framePace(),
     };
   }
 
@@ -1285,12 +1285,18 @@ class RayMount {
     }
   }
 
-  // ---- the loop ----
+  // ---- the loop (the page's one: rayFrames) ----
+
+  /** He in the page's frame loop: his reads, then his frame. */
+  private readonly client: FrameClient = {
+    readLayout: (now) => this.readLayout(now),
+    frame: (now) => this.frame(now),
+  };
 
   private start(): void {
     if (this.disposed || this.raf || !this.isVisible) return;
     this.raf = 1;
-    RayMount.book(this);
+    bookFrame(this.client);
   }
 
   /** The start of his frame, before any Ray on the page writes: what he needs measured (his stage, the caret) is read now. */
@@ -1306,7 +1312,7 @@ class RayMount {
     if (this.disposed) return;
     if (this.isVisible && !this.reducedMotion) {
       this.raf = 1; // booked first: a bad frame never stops him
-      RayMount.book(this);
+      bookFrame(this.client);
     }
     const dt = this.lastNow ? Math.min(50, Math.max(0, now - this.lastNow)) : 16;
     this.lastNow = now;
@@ -1323,7 +1329,7 @@ class RayMount {
     this.draw(now, dt);
     this.settle();
     if (this.isAway()) {
-      RayMount.unbook(this); // hidden and done going: nothing moves till he's asked back (update() starts him again)
+      unbookFrame(this.client); // hidden and done going: nothing moves till he's asked back (update() starts him again)
       this.raf = 0;
       this.onAway?.();
     }
@@ -1582,12 +1588,11 @@ class RayMount {
     this.stageAt = { left: r.left, top: r.top, at: now };
   }
 
-  // ---- what every Ray on the page shares (the PR review): one set of page listeners, and one frame loop that first lets every
-  // Ray read what it needs measured, then lets every Ray draw, so no Ray's reading comes after another's writes ----
+  // ---- what every Ray on the page shares (the PR review): one set of page listeners, and one frame loop (rayFrames, with the Ray
+  // loaders) that first lets every Ray read what it needs measured, then lets every Ray draw, so no Ray's reading comes after another's
+  // writes ----
 
   private static readonly up = new Set<RayMount>(); // every Ray mounted: the page listeners are on while there's one
-  private static readonly booked = new Set<RayMount>(); // the Rays that want the next frame
-  private static raf = 0;
   private static pointer: [number, number] | null = null; // the pointer on the page (CSS px), or null once it's left it
   private static audio: AudioContext | null = null; // one for every Ray on the page, while one has a voice; closed as the last one goes
 
@@ -1626,48 +1631,6 @@ class RayMount {
   /** A pointerdown or a key: the audio woken in the gesture itself. */
   private static readonly onGesture = (): void => RayMount.wakeAudio(true);
 
-  // the pace they draw at (rayPace): every `pace`-th animation frame, from how long a drawn frame's work takes
-  private static frames = 0;
-  private static pace = 1;
-  private static interval = 1000 / 60; // ms between animation frames, smoothed
-  private static cost = 0; // ms a drawn frame's work takes (every Ray's), smoothed
-  private static lastAt = 0;
-  private static pacedAt = 0;
-
-  private static readonly onFrame = (now: number): void => {
-    RayMount.raf = 0;
-    const gap = now - RayMount.lastAt;
-    RayMount.lastAt = now;
-    if (gap > 0 && gap < 100) RayMount.interval += (gap - RayMount.interval) * 0.05;
-    RayMount.frames += 1;
-    if (RayMount.frames % RayMount.pace !== 0) {
-      // a frame they sit out: still booked, for the next
-      if (RayMount.booked.size) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
-      return;
-    }
-    const due = [...RayMount.booked];
-    RayMount.booked.clear();
-    const started = performance.now();
-    due.forEach((m) => RayMount.guard(() => m.readLayout(now)));
-    due.forEach((m) => RayMount.guard(() => m.frame(now)));
-    RayMount.cost += (performance.now() - started - RayMount.cost) * 0.1;
-    if (now - RayMount.pacedAt >= PACE_EVERY_MS) {
-      RayMount.pacedAt = now;
-      RayMount.pace = paceFor(RayMount.cost, RayMount.interval, RayMount.pace);
-    }
-  };
-
-  /** One Ray's fault never stops another: it's reported as an uncaught error would be, and the rest draw on. */
-  private static guard(run: () => void): void {
-    try {
-      run();
-    } catch (error: unknown) {
-      queueMicrotask(() => {
-        throw error;
-      });
-    }
-  }
-
   /**
    * The film for `state` fetched ahead (its code only: nothing is made, no canvases, no GPU), so a Ray that appears later, a
    * button's as the pointer nears it, gets going at once instead of downloading first (the device test, GTX 1650: on a page's
@@ -1678,18 +1641,6 @@ class RayMount {
     return id
       ? (FILMS as Record<string, () => Promise<unknown>>)[id]().then(() => undefined)
       : Promise.resolve();
-  }
-
-  private static book(m: RayMount): void {
-    RayMount.booked.add(m);
-    if (!RayMount.raf) RayMount.raf = requestAnimationFrame(RayMount.onFrame);
-  }
-
-  private static unbook(m: RayMount): void {
-    RayMount.booked.delete(m);
-    if (RayMount.booked.size || !RayMount.raf) return;
-    cancelAnimationFrame(RayMount.raf);
-    RayMount.raf = 0;
   }
 
   private static readonly onPointerMove = (e: PointerEvent): void => {
@@ -1725,7 +1676,7 @@ class RayMount {
   }
 
   private static leave(m: RayMount): void {
-    RayMount.unbook(m);
+    unbookFrame(m.client);
     if (!RayMount.up.delete(m) || RayMount.up.size) return;
     window.removeEventListener('pointermove', RayMount.onPointerMove);
     document.removeEventListener('selectionchange', RayMount.onCaretMove);

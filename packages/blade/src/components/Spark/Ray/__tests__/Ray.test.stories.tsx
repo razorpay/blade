@@ -1310,6 +1310,40 @@ TestRayLoaderLoadsAndFinishes.play = async () => {
   ).toBe('true');
 };
 
+// The Ray loader's still (Saurav's round-6 review: the box was empty while his film loaded): up from the first render, where his film
+// starts him (inside his own canvas as it first shows him), and gone once his film has drawn him
+export const TestRayLoaderShowsHisStillFirst: StoryFn<typeof RayLoader> = () => (
+  <Box padding="spacing.8">
+    <Box width="720px">
+      <RayLoader isLoading />
+    </Box>
+  </Box>
+);
+TestRayLoaderShowsHisStillFirst.play = async () => {
+  const still = (): HTMLImageElement | null => loaderEl()?.querySelector('img') ?? null;
+  expect(still()).toBeTruthy(); // (from the first render)
+  await waitFor(() => expect(loaderEl()?.__rayLoader).toBeTruthy(), { timeout: 8000 });
+  const mount = loaderEl().__rayLoader;
+  let at: { still: DOMRect | undefined; his: DOMRect } | null = null;
+  const onShown = mount.onShown;
+  mount.onShown = (): void => {
+    // (as his film first shows him: his still, not yet gone, and his own canvas, round him)
+    at = {
+      still: still()?.getBoundingClientRect(),
+      his: loaderEl().querySelectorAll('canvas')[1].getBoundingClientRect(),
+    };
+    onShown();
+  };
+  await waitFor(() => expect(at).toBeTruthy(), { timeout: 8000 });
+  const { still: s, his } = at!;
+  expect(s).toBeTruthy();
+  expect(s!.left).toBeGreaterThanOrEqual(his.left - 1);
+  expect(s!.right).toBeLessThanOrEqual(his.right + 1);
+  expect(s!.top).toBeGreaterThanOrEqual(his.top - 1);
+  expect(s!.bottom).toBeLessThanOrEqual(his.bottom + 1);
+  await waitFor(() => expect(still()).toBeNull(), { timeout: 1000 }); // (his film has him now)
+};
+
 // A loader that finishes out of sight (its box hidden, or scrolled away), where nothing draws his finish: onComplete at once, so the page
 // never waits on it (the fresh-eyes review: it never came)
 export const TestRayLoaderFinishesOutOfSight: StoryFn<typeof RayLoader> = () => {
@@ -1465,15 +1499,10 @@ TestRayFilmsStayInTheirCrop.play = async () => {
   for (let sample = 0; sample < 10; sample++) {
     // eslint-disable-next-line no-await-in-loop
     await sleep(350); // (samples a few times a second, one after another)
-    const C = rays()[0].constructor;
-    const loop = C.onFrame;
-    C.onFrame = (): void => undefined; // (his loop held: each film is drawn at one moment, both ways)
-    const now = performance.now();
+    const now = performance.now(); // (one moment for every film, both ways: nothing else runs till they're all drawn)
     CROP_FILMS.forEach(({ id }, i) => {
       worst[id] = Math.max(worst[id] ?? 0, inkOutsideCrop(rays()[i], id, now));
     });
-    C.onFrame = loop;
-    rays().forEach((r) => C.book(r));
   }
   await expect(worst).toEqual(Object.fromEntries(CROP_FILMS.map(({ id }) => [id, 0])));
 };

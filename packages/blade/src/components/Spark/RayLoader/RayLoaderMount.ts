@@ -5,6 +5,10 @@
  * The Ray loader's director: Ray Studio's Dash film (films/dash.html, "Blast") on a stage that is the loader's whole box, run by the
  * same film host and engine as Ray's own films (FilmHost). It isn't Ray on his seat: there's no rest to hand him over at and no Ray of
  * the component's own, only the film's path across the box.
+ * - The box only has the wind on it: Ray is drawn on a canvas of his own around him (2.6 x 2 of his widths), moved with him, so his
+ *   look's layers are his size, not the box's (Saurav's round-6 review: 11.5 MB of canvases for a full-width box, 1.4 MB now).
+ * - It draws in the page's one frame loop with Ray's (rayFrames), at its pace (rayPace), and its box's size comes from the resize
+ *   observer's entry (no layout read).
  * - It loads only when a loader mounts (its film is a chunk of its own), and its first frame is drawn unseen (FilmHost's rehearse)
  *   before he starts, so that frame's one-off work isn't in a frame anyone sees.
  * - Started, he charges and dashes, and holds the dash while loading; `finish()` plays the slide, the turn, the jump and the drop
@@ -15,6 +19,8 @@
  *   at once (or after FINISH_WAIT_MS), so a page never waits on a finish nobody sees.
  */
 import { FilmHost } from '../Ray/FilmHost';
+import { bookFrame, unbookFrame } from '../Ray/rayFrames';
+import type { FrameClient } from '../Ray/rayFrames';
 import type { FilmMessage, FilmModule } from '../Ray/engineTypes';
 
 const WIDTHS = { small: 38, medium: 48 } as const;
@@ -32,6 +38,7 @@ class RayLoaderMount {
   private readonly root: HTMLElement;
   private options: RayLoaderMountOptions;
   private readonly onDone: () => void;
+  private readonly onShown: () => void;
   private readonly reducedMotion: boolean;
   private host: FilmHost | null = null;
   private isReady = false;
@@ -40,18 +47,28 @@ class RayLoaderMount {
   private isDone = false;
   private isDisposed = false;
   private isVisible = true;
-  private raf = 0;
+  private isShown = false;
+  private size: [width: number, height: number] | null = null; // the box's (CSS px), from the resize observer
   private finishTimer: ReturnType<typeof setTimeout> | null = null;
   private stillTicks = 0;
   private startTick = 0;
-  private readonly startedAt = performance.now();
+  private startTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly observer: IntersectionObserver | null = null;
   private readonly resizeObserver: ResizeObserver | null = null;
 
-  constructor(root: HTMLElement, options: RayLoaderMountOptions, onDone: () => void) {
+  /** In the page's one frame loop (rayFrames). */
+  private readonly client: FrameClient = { frame: (now) => this.frame(now) };
+
+  constructor(
+    root: HTMLElement,
+    options: RayLoaderMountOptions,
+    onDone: () => void,
+    onShown: () => void, // (his film's first frame is up: the component's still can go)
+  ) {
     this.root = root;
     this.options = options;
     this.onDone = onDone;
+    this.onShown = onShown;
     this.reducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -64,9 +81,18 @@ class RayLoaderMount {
       this.observer.observe(root);
     }
     if (typeof ResizeObserver === 'function') {
-      this.resizeObserver = new ResizeObserver(() => this.layout());
+      // (the entry has the box's size: no layout read here; the box has no padding or border, so it's the stage's)
+      this.resizeObserver = new ResizeObserver((entries) => {
+        const box = entries[entries.length - 1].contentRect;
+        this.size = [box.width, box.height];
+        this.layout();
+      });
       this.resizeObserver.observe(root);
     }
+    // a film that never says it's ready is given up on (a timer, not a frame loop spinning while it downloads: his still covers the box)
+    this.startTimer = setTimeout(() => {
+      if (!this.isReady) this.finishNow();
+    }, START_WAIT_MS);
     if (__DEV__) (root as any).__rayLoader = this; // for checking it in a browser: el.__rayLoader.debug
     import('../Ray/engine')
       .then(({ FILMS, TUNES }) =>
@@ -99,7 +125,7 @@ class RayLoaderMount {
       started: this.hasStarted,
       finishing: this.isFinishing,
       done: this.isDone,
-      shown: this.host?.layer.style.visibility === '',
+      shown: this.isShown,
     };
   }
 
@@ -132,21 +158,25 @@ class RayLoaderMount {
 
   dispose(): void {
     this.isDisposed = true;
-    if (this.raf) cancelAnimationFrame(this.raf);
-    this.raf = 0;
-    if (this.finishTimer) clearTimeout(this.finishTimer);
-    this.finishTimer = null;
+    unbookFrame(this.client);
+    this.clearTimers();
     this.observer?.disconnect();
     this.resizeObserver?.disconnect();
     this.host?.dispose();
     this.host = null;
   }
 
+  private clearTimers(): void {
+    if (this.startTimer) clearTimeout(this.startTimer);
+    if (this.finishTimer) clearTimeout(this.finishTimer);
+    this.startTimer = null;
+    this.finishTimer = null;
+  }
+
   private finishNow(): void {
     if (this.isDone || this.isDisposed) return;
     this.isDone = true;
-    if (this.finishTimer) clearTimeout(this.finishTimer);
-    this.finishTimer = null;
+    this.clearTimers();
     if (this.host) {
       this.host.layer.style.visibility = 'hidden';
       this.host.send({ ray: 'sleep' });
@@ -177,31 +207,35 @@ class RayLoaderMount {
 
   private layout(): void {
     if (!this.host) return;
-    const r = this.root.getBoundingClientRect();
+    // (its film can come in before the observer's first entry: then the box is read once, here)
+    const [width, height] = this.size ?? [this.root.clientWidth, this.root.clientHeight];
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    this.host.resize(Math.max(1, Math.round(r.width)), Math.max(1, Math.round(r.height)), dpr);
+    this.host.resize(Math.max(1, Math.round(width)), Math.max(1, Math.round(height)), dpr);
     // reduced motion: a new size empties his canvases, so his still is drawn again (it had stayed blank; the fresh-eyes review)
     if (this.reducedMotion && this.isReady && !this.isDone) this.still();
   }
 
   private book(): void {
-    if (this.raf || this.isDisposed || this.isDone || !this.isVisible) return;
-    this.raf = requestAnimationFrame(this.frame);
+    if (this.isDisposed || this.isDone || !this.isVisible) return;
+    bookFrame(this.client); // (booked once however often it's asked)
   }
 
-  private readonly frame = (now: number): void => {
-    this.raf = 0;
+  /** His film's layer shown, once it has drawn him (and the component told, for its still). */
+  private show(host: FilmHost): void {
+    if (this.isShown) return;
+    this.isShown = true;
+    host.layer.style.visibility = '';
+    this.onShown();
+  }
+
+  private frame(now: number): void {
     const host = this.host;
     if (this.isDisposed || this.isDone) return;
-    if (!host || !this.isReady) {
-      if (now - this.startedAt > START_WAIT_MS) this.finishNow();
-      else this.book();
-      return;
-    }
+    if (!host || !this.isReady) return; // (booked again as its film comes in and says it's ready)
     if (this.reducedMotion) {
       host.tick(now);
       this.stillTicks += 1;
-      if (this.stillTicks >= 2) host.layer.style.visibility = '';
+      if (this.stillTicks >= 2) this.show(host);
       if (this.stillTicks < STILL_TICKS) this.book();
       return;
     }
@@ -212,10 +246,10 @@ class RayLoaderMount {
         this.startTick = host.ticks;
         host.send({ ray: 'start' });
       }
-    } else if (host.ticks >= this.startTick + SHOW_TICKS) host.layer.style.visibility = '';
+    } else if (host.ticks >= this.startTick + SHOW_TICKS) this.show(host);
     host.tick(now);
     this.book();
-  };
+  }
 }
 
 export { RayLoaderMount, WIDTHS as RAY_LOADER_WIDTHS };

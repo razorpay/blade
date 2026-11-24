@@ -2,7 +2,7 @@
 // onComplete is for the page being ready: never while it's still loading, whatever happens to his film or his director's chunk (the
 // fresh-eyes review). On a stand-in director, as if he could be drawn.
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import { RayLoader } from '../RayLoader';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
@@ -20,13 +20,15 @@ jest.mock('../RayLoaderMount', () => ({
   },
   RayLoaderMount: class {
     onDone: () => void;
+    onShown: () => void;
     finish = jest.fn();
     update = jest.fn();
     dispose = jest.fn();
 
-    constructor(_root: HTMLElement, _options: unknown, onDone: () => void) {
+    constructor(_root: HTMLElement, _options: unknown, onDone: () => void, onShown: () => void) {
       if (mockState.failToStart) throw new Error('its chunk failed');
       this.onDone = onDone;
+      this.onShown = onShown;
       mockMounts.push(this);
     }
   },
@@ -78,6 +80,31 @@ describe('<RayLoader /> onComplete', () => {
     expect(onComplete).not.toHaveBeenCalled();
     mockMounts[0].onDone();
     expect(onComplete).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows his still from the first render till his film has drawn him (Saurav: the box was empty while it loaded)', async () => {
+    const { rerender, container } = render(ui(true, jest.fn()));
+    const still = (): HTMLImageElement | null => container.querySelector('img');
+    expect(still()?.getAttribute('src')).toMatch(/^data:image\/webp;base64,/); // (at once, before anything has loaded)
+    await waitFor(() => expect(mockMounts).toHaveLength(1));
+    expect(still()).not.toBeNull(); // (his film still loading)
+    act(() => {
+      mockMounts[0].onShown();
+    });
+    expect(still()).toBeNull();
+    rerender(ui(false, jest.fn()));
+    expect(still()).toBeNull();
+  });
+
+  it('keeps his still while loading when his film gives up, and lets it go once the page is ready', async () => {
+    const { rerender, container } = render(ui(true, jest.fn()));
+    await waitFor(() => expect(mockMounts).toHaveLength(1));
+    act(() => {
+      mockMounts[0].onDone(); // (his film never came: the still is the loader)
+    });
+    expect(container.querySelector('img')).not.toBeNull();
+    rerender(ui(false, jest.fn()));
+    expect(container.querySelector('img')).toBeNull();
   });
 
   it('is never called once unmounted, even if his director then fails', async () => {
