@@ -200,7 +200,15 @@ TestAiHoverDisabledOrLoading.play = async ({ canvasElement }) => {
   const loadingNeutral = getByRole('button', { name: /Loading/ });
   const canPlay = await isCanvasMade(canvasElement, askRay);
   await pointTo(canvasElement, null);
-  const restingWidth = investigate.getBoundingClientRect().width;
+  // at rest: its font in, and the same width twice 100 ms apart (the probe's hover may still be letting go)
+  await document.fonts?.ready;
+  const settledWidth = async (el: HTMLElement, last = -1, tries = 20): Promise<number> => {
+    const width = el.getBoundingClientRect().width;
+    if (Math.abs(width - last) < 0.01 || tries <= 0) return width;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    return settledWidth(el, width, tries - 1);
+  };
+  const restingWidth = await settledWidth(investigate);
   // each button playing (from the keyboard: a test's pointer doesn't set :hover), then the app turns `toggle` on mid-hover: it
   // ends at once (no canvas, the layer hidden, Ray's widening let go), and stays off (no canvas as the pointer comes, and the
   // keyboard passes it by), then `toggle` goes off again. (A click on the checkbox without focusing it, so the button keeps focus
