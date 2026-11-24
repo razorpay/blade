@@ -77,7 +77,7 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
         font-family: ${fonts.family.text};
         font-size: inherit;
         background: ${tint};
-        border-radius: ${makeBorderSize(border.radius.small)};
+        border-radius: ${makeBorderSize(border.radius.xsmall)};
         padding: 0 ${makeSpace(spacing[2])};
       }
       & pre {

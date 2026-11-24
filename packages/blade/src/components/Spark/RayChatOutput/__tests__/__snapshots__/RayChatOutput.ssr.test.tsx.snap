@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  feILpH">Your payouts are on time.</div></div>"`;
+
+exports[`<RayChatOutput /> renders on the server 2`] = `
+.c0.c0.c0.c0.c0 {
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  color: hsla(200,10%,18%,1);
+  overflow-wrap: break-word;
+}
+
+.c0.c0.c0.c0.c0 > * {
+  margin: 0;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='12'] {
+  margin-top: 12px;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='16'] {
+  margin-top: 16px;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='24'] {
+  margin-top: 24px;
+}
+
+.c0.c0.c0.c0.c0 p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.c0.c0.c0.c0.c0 h1,
+.c0.c0.c0.c0.c0 h2,
+.c0.c0.c0.c0.c0 h3,
+.c0.c0.c0.c0.c0 h4,
+.c0.c0.c0.c0.c0 h5,
+.c0.c0.c0.c0.c0 h6,
+.c0.c0.c0.c0.c0 [data-ray-chat-lead] {
+  margin: 0;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  color: hsla(0,0%,2%,1);
+  text-wrap: balance;
+}
+
+.c0.c0.c0.c0.c0 strong {
+  font-weight: 600;
+  color: hsla(0,0%,2%,1);
+}
+
+.c0.c0.c0.c0.c0 ul,
+.c0.c0.c0.c0.c0 ol {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.625rem;
+}
+
+.c0.c0.c0.c0.c0 a {
+  color: hsla(218,87%,43%,1);
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0.c0.c0.c0.c0 a:hover {
+  color: hsla(218,89%,51%,1);
+}
+
+.c0.c0.c0.c0.c0 code {
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: inherit;
+  background: hsla(206,10%,29%,0.06);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.c0.c0.c0.c0.c0 pre {
+  margin: 0;
+  padding: 12px;
+  background: hsla(206,10%,29%,0.06);
+  border-radius: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.c0.c0.c0.c0.c0 pre code {
+  padding: 0;
+  background: none;
+  font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
+}
+
+.c0.c0.c0.c0.c0 blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 blockquote > * + * {
+  margin-top: 16px;
+}
+
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bksIuc  c0"
+    data-blade-component="ray-chat-output"
+    data-testid="answer"
+  >
+    Your payouts are on time.
+  </div>
+</div>
+`;
