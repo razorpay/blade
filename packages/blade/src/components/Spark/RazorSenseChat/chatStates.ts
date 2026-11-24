@@ -203,12 +203,10 @@ class ChatStates {
   private startOutcome(driver: ChatDriver, outcome: Outcome, anchors: ChatAnchors): void {
     const M = this.outcomeModule;
     if (!M) return;
-    // (played as success-blob shows it for the chat's box: the wave moves there as it starts and back to its rest as it ends)
+    // (laid as success-blob shows it for the chat's box: the strip stays at its rest, the splash goes where success-blob has it, the
+    // halves' swell as high as success-blob's)
     const box = anchors.box?.();
-    const place = box
-      ? M.outcomePlace(box, anchors.input, this.scale, M.stripRestY(this.base, STRIP_COMPS[0]))
-      : undefined;
-    const map = place?.map;
+    const map = box ? M.outcomeMap(box, anchors.input, this.scale) : undefined;
     const key = map
       ? `${outcome} ${map.k.toFixed(4)} ${map.dx.toFixed(1)} ${map.dy.toFixed(1)}`
       : outcome;
@@ -217,7 +215,7 @@ class ChatStates {
       this.splice = { key, doc, t0, t1 };
     }
     this.load(this.splice.doc);
-    driver.playOutcome(this.splice.t0, this.splice.t1 - this.splice.t0, place?.shift ?? 0);
+    driver.playOutcome(this.splice.t0, this.splice.t1 - this.splice.t0);
   }
 
   private frameVoice(

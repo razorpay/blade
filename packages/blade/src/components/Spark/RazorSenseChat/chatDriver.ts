@@ -129,19 +129,13 @@ const page = (g: string): Page => ({
 type ChatSetup = { times: ChatTimes; motion: ChatMotion };
 
 /** an outcome playing on the strip's clock: its start and length (s) there, how far in, and which way at what speed */
-type OutcomePlay = { t0: number; dur: number; u: number; speed: number; shift: number };
+type OutcomePlay = { t0: number; dur: number; u: number; speed: number };
 
 /** offline: the strip's drop (CSS px down): from, to, since (ms) */
 const DROP_MS = 1200;
 const DROP_EASE = [0.33, 1, 0.68, 1];
 /** an outcome ended early (cleared, another set, a new question) plays out this much faster */
 const OUTCOME_RUSH = 4;
-/**
- * an outcome's wave goes down to where success-blob shows it over its first OUTCOME_DOWN s (before the halves rise, 0.5 s in) and back
- * up to its rest over its last OUTCOME_UP s (the halves done, its colour at rest)
- */
-const OUTCOME_DOWN = 0.45;
-const OUTCOME_UP = 0.7;
 
 const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
   const times = doc.ui?.dsChat as ChatTimes | undefined;
@@ -273,12 +267,9 @@ class ChatDriver {
     return this.self === this.P2[0] ? 'c3' : 'b_c3';
   }
 
-  /**
-   * an outcome on the strip, from now: its piece spliced onto the strip's clock from t0 for dur s, its wave moved `shift` CSS px down
-   * while it plays (call it while isAtRest())
-   */
-  public playOutcome(t0: number, dur: number, shift = 0): void {
-    this.oc = { t0, dur, u: 0, speed: 1, shift };
+  /** an outcome on the strip, from now: its piece spliced onto the strip's clock from t0 for dur s (call it while isAtRest()) */
+  public playOutcome(t0: number, dur: number): void {
+    this.oc = { t0, dur, u: 0, speed: 1 };
   }
 
   /**
@@ -508,7 +499,7 @@ class ChatDriver {
         blend: g === this.RT ? 'normal' : 'add',
         dx: g.xy ? g.xy[0] : 0,
         // (offline: the strip dropped)
-        dy: (g.xy ? g.xy[1] : 0) + (g.pos === 'bottom' ? this.drop.y + this.outcomeShift() : 0),
+        dy: (g.xy ? g.xy[1] : 0) + (g.pos === 'bottom' ? this.drop.y : 0),
       });
     }
     const [A, B] = this.P2;
@@ -571,15 +562,6 @@ class ChatDriver {
       this.isThinkPending = false;
       this.think();
     }
-  }
-
-  /** how far an outcome has the wave down now (CSS px): eased there as it starts, back as it ends */
-  private outcomeShift(): number {
-    const oc = this.oc;
-    if (!oc?.shift) return 0;
-    const into = smooth01(oc.u / OUTCOME_DOWN);
-    const out = smooth01((oc.dur - oc.u) / OUTCOME_UP);
-    return oc.shift * Math.min(into, out);
   }
 
   /** the strip's drop, on its curve */

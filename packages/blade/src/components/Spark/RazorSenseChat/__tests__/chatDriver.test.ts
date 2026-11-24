@@ -149,42 +149,6 @@ describe('ChatDriver', () => {
     for (let i = 1; i < piece.length; i++) expect(piece[i]).toBeGreaterThanOrEqual(piece[i - 1]);
   });
 
-  it('an outcome takes the wave down to where success-blob shows it, and back to its rest as it ends', () => {
-    // (the strip page's group: how far down it's drawn, each frame)
-    let dy = 0;
-    const recorder = (new Proxy(
-      {},
-      {
-        get: (_, key) => (...args: unknown[]): void => {
-          if (key === 'group' && args[0] === 'main') dy = (args[1] as { dy: number }).dy;
-        },
-      },
-    ) as unknown) as FreshPlayer;
-    const step = (driver: ChatDriver, seconds: number, fromMs: number): number => {
-      let now = fromMs;
-      for (let i = 0; i < seconds * 20; i++) {
-        driver.step(recorder, 0.05, now);
-        now += 50;
-      }
-      return now;
-    };
-    const driver = makeDriver();
-    driver.think();
-    let now = step(driver, 0.5, 0);
-    driver.answer(now);
-    now = step(driver, 15, now);
-    const rest = dy;
-    driver.playOutcome(15.02, 3.71, 90);
-    now = step(driver, 0.05, now);
-    expect(dy - rest).toBeLessThan(5);
-    now = step(driver, 1.5, now);
-    expect(dy - rest).toBeCloseTo(90, 5);
-    now = step(driver, 3, now);
-    expect(driver.isPlayingOutcome).toBe(false);
-    step(driver, 0.05, now);
-    expect(dy).toBeCloseTo(rest, 5);
-  });
-
   it('draws light’s strip at rest with half its upward drift: halfway between flow 9’s (none) and flow 10.5’s (as made)', () => {
     const pu: Record<string, number> = {};
     const recorder = (new Proxy(

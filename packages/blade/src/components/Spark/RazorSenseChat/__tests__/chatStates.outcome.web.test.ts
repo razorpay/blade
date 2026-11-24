@@ -140,7 +140,7 @@ describe('ChatStates: another outcome set while one plays', () => {
       for (let i = 0; i < 3; i++) states.frame(1 / 60, (now += 1000 / 60), driver, anchors);
     };
     run({ isOffline: false, isListening: false, outcome: 'success' });
-    expect(driver.playOutcome).toHaveBeenLastCalledWith(10, expect.closeTo(3.7, 5), 0);
+    expect(driver.playOutcome).toHaveBeenLastCalledWith(10, expect.closeTo(3.7, 5));
     // (as the story sets it: cleared, then the next one)
     run({ isOffline: false, isListening: false, outcome: undefined });
     run({ isOffline: false, isListening: false, outcome: 'error' });
@@ -150,7 +150,7 @@ describe('ChatStates: another outcome set while one plays', () => {
     playing.on = false;
     run({ isOffline: false, isListening: false, outcome: 'error' });
     expect(driver.playOutcome).toHaveBeenCalledTimes(2);
-    expect(driver.playOutcome).toHaveBeenLastCalledWith(20, expect.closeTo(3.7, 5), 0);
+    expect(driver.playOutcome).toHaveBeenLastCalledWith(20, expect.closeTo(3.7, 5));
     states.destroy();
   });
 
@@ -159,11 +159,11 @@ describe('ChatStates: another outcome set while one plays', () => {
     await withOutcomes(states);
     states.inputs = { isOffline: false, isListening: false, outcome: 'success' };
     states.settle(driver, anchors);
-    expect(driver.playOutcome).toHaveBeenLastCalledWith(10, expect.closeTo(3.7, 5), 0);
+    expect(driver.playOutcome).toHaveBeenLastCalledWith(10, expect.closeTo(3.7, 5));
     states.inputs = { isOffline: false, isListening: false, outcome: 'error' };
     states.settle(driver, anchors);
     expect(driver.endOutcome).toHaveBeenCalled();
-    expect(driver.playOutcome).toHaveBeenLastCalledWith(20, expect.closeTo(3.7, 5), 0);
+    expect(driver.playOutcome).toHaveBeenLastCalledWith(20, expect.closeTo(3.7, 5));
     expect(driver.holdOutcome).toHaveBeenCalledTimes(2);
     states.destroy();
   });
