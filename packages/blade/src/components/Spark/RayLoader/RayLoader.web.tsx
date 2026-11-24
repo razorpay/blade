@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { RayLoaderMount } from './RayLoaderMount';
 import type { RayLoaderProps } from './types';
 import { canDraw } from '../Ray/canDraw';
+import { RAY_BOX } from '../Ray/rayBox';
 import { DASH_STILL } from '../Ray/engine/dashStill';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -16,7 +17,6 @@ import type { BladeElementRef } from '~utils/types';
 // his box's height by default, in his widths: room for his charge (he pulls back tall), the dash, his jump at the finish and the
 // floor he drops through (Ray Studio's Dash film, measured over its whole run)
 const HEIGHT_IN_WIDTHS = 4;
-const WIDTHS = { small: 38, medium: 48 } as const;
 
 /**
  * His film's first frame as a still (Ray Studio's dash_still.py: what the film draws as he starts, 2x WebP, 1.1–1.7 KB each), shown from
@@ -29,7 +29,7 @@ const RayStill = ({
   size,
   colorScheme,
 }: {
-  size: keyof typeof WIDTHS;
+  size: keyof typeof RAY_BOX;
   colorScheme: 'light' | 'dark';
 }): React.ReactElement => {
   const still = DASH_STILL[size];
@@ -144,7 +144,7 @@ const _RayLoader = (
     else mountRef.current?.finish();
   }, [isLoading]);
 
-  const boxHeight = height ?? WIDTHS[size] * HEIGHT_IN_WIDTHS;
+  const boxHeight = height ?? RAY_BOX[size].width * HEIGHT_IN_WIDTHS; // (his width: Ray's own sizes)
   return (
     <BaseBox
       ref={mergedRef as never}

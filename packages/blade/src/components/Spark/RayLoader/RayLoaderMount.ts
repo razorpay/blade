@@ -19,18 +19,18 @@
  *   at once (or after FINISH_WAIT_MS), so a page never waits on a finish nobody sees.
  */
 import { FilmHost } from '../Ray/FilmHost';
+import { RAY_BOX } from '../Ray/rayBox';
 import { bookFrame, unbookFrame } from '../Ray/rayFrames';
 import type { FrameClient } from '../Ray/rayFrames';
 import type { FilmMessage, FilmModule } from '../Ray/engineTypes';
 
-const WIDTHS = { small: 38, medium: 48 } as const;
 const START_WAIT_MS = 8000; // a film that never says it's ready is given up on: the loader is done when the page is
 const FINISH_WAIT_MS = 5000; // a finish that never says it's done (its frames stopped, a film error) is let go: about 3 s at most otherwise
 const STILL_TICKS = 4; // reduced motion: frames ticked for the still (its messages come a task later, then it draws)
 const SHOW_TICKS = 3; // it shows once it has run this many frames since its start (never the canvas it was asleep on)
 
 type RayLoaderMountOptions = {
-  size: keyof typeof WIDTHS;
+  size: keyof typeof RAY_BOX; // (his width: Ray's own sizes)
   colorScheme: 'light' | 'dark';
 };
 
@@ -136,7 +136,7 @@ class RayLoaderMount {
     this.options = { ...this.options, ...options };
     if (!this.host || !this.isReady) return;
     if (schemeChanged) this.host.send({ ray: 'mode', mode: this.options.colorScheme });
-    if (sizeChanged) this.host.send({ ray: 'dash', px: WIDTHS[this.options.size] });
+    if (sizeChanged) this.host.send({ ray: 'dash', px: RAY_BOX[this.options.size].width });
     if (this.reducedMotion && (schemeChanged || sizeChanged)) this.still();
   }
 
@@ -189,7 +189,7 @@ class RayLoaderMount {
     if (m.ray === 'ready') {
       this.isReady = true;
       this.host.send({ ray: 'mode', mode: this.options.colorScheme });
-      this.host.send({ ray: 'dash', px: WIDTHS[this.options.size] });
+      this.host.send({ ray: 'dash', px: RAY_BOX[this.options.size].width });
       if (this.reducedMotion) this.still();
       else this.host.send({ ray: 'rehearse' }); // one frame unseen (its first draw's one-off work), then asleep: the start wakes it
       this.book();
@@ -252,5 +252,5 @@ class RayLoaderMount {
   }
 }
 
-export { RayLoaderMount, WIDTHS as RAY_LOADER_WIDTHS };
+export { RayLoaderMount };
 export type { RayLoaderMountOptions };
