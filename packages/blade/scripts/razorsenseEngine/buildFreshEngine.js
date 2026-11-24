@@ -53,6 +53,49 @@ src = sub(src, `function dropLayer(id) { const R = GL.layers.get(id); if (!R) re
 src = sub(src, `for (const R of rc.layers.values()) { gl.deleteTexture(R.raw);`, `for (const R of rc.layers.values()) { gl.deleteTexture(R.raw); if (R.g) gl.deleteTexture(R.g.t);`);
 src = sub(src, `if (aeG || P.accTrim) {`, `if (aeG || P.accTrim || GPU_TRIM) {`);
 src = sub(src, `  return { s, sH, sV, kx, ky, rw, rh, padX, padY, rect: [-padX, -padY, rw / kx, rh / ky] };`, `  return { s, sH, sV, kx, ky, rw, rh, padX, padY, rect: [-padX, -padY, rw / kx, rh / ky], cb: grBox(s, sH, sV, kx, ky, xp) };`);
+// RZS_GPU.view (Blade, 2026-11-24): each layer, and the accumulation, made only over what the view can read (a window of the comp),
+// on the texel grid it has whole: the pixels kept are the ones it had, so the picture is the same. A Button's AI hover shows a
+// 70 x 32 px spot of a card-sized comp, and every layer was the whole comp (four 1216 x 736 targets) with 1024 px multisampled
+// tiles: ~74 MB a hover. Off unless a component asks (FreshSwitches.view); ?view=0 turns it off. The window: the canvas in comp
+// px, out by the bands' (or the glass's) reach, a cubic read's margin and 32 px; a layer's, out by its blur's (3 sigma, as far as
+// blurPass reads) and its reads' texels too. A layer's padX/padY is its raster's origin (rasterShape, grPath and the frame's
+// clip all read it so), and `full` its whole rect, which the accumulation's box still comes from (its grid unchanged).
+src = sub(src, `const grQk = k => GPU_STABLE && k > 0 ? 2 ** (Math.ceil(Math.log2(k) * 4 - 1e-9) / 4) : k;`, `const grQk = k => GPU_STABLE && k > 0 ? 2 ** (Math.ceil(Math.log2(k) * 4 - 1e-9) / 4) : k;
+const GPU_VIEW = !!GR_OPT.view && !/[?&]view=0/.test(location.search);
+let GR_VIEW = null;   // [x0, y0, x1, y1] comp px, while a frame's layers are made (prepareSource)
+function grView(P, maxD, k0) {
+  const zP = +P.pZoom > 0 ? +P.pZoom : 1, z = VW.z * zP; if (!(z > 0) || !(VW.w > 0) || !(VW.h > 0)) return null;
+  const ox = VW.ox + D.comp.w * VW.z * (1 - zP) / 2, oy = VW.oy + D.comp.h * VW.z * (1 - zP) / 2;
+  const reach = !D.en.bands ? 0 : P.rOn ? maxD : Math.max(maxD, Math.hypot(+P.dMaxH || 0, +P.dMaxV || 0)), m = reach + 8 / Math.max(k0, 1e-4) + 32;
+  return [-ox / z - m, -oy / z - m, (VW.w - ox) / z + m, (VW.h - oy) / z + m];
+}
+// a span [a0, a1) of a grid of n texels from \`o\` at k texels a comp px, out by m comp px: its first texel and its count (8 at least)
+function grSpan(a0, a1, o, k, n, m) {
+  let i0 = Math.max(0, Math.floor((a0 - m - o) * k)), i1 = Math.min(n, Math.ceil((a1 + m - o) * k));
+  if (i1 - i0 < 8) { i1 = Math.min(n, Math.max(i1, i0 + 8)); i0 = Math.max(0, i1 - 8); }
+  return [i0, i1 - i0];
+}
+function grWindow(full, kx, ky, rw, rh, bx, by) {
+  const V = GR_VIEW, X = grSpan(V[0], V[2], full[0], kx, rw, bx + 8 / kx + 4), Y = grSpan(V[1], V[3], full[1], ky, rh, by + 8 / ky + 4);
+  if (X[0] === 0 && X[1] === rw && Y[0] === 0 && Y[1] === rh) return null;   // (it reads all of it)
+  return { x0: full[0] + X[0] / kx, y0: full[1] + Y[0] / ky, rw: X[1], rh: Y[1] };
+}`);
+src = sub(src, `  return { s, sH, sV, kx, ky, rw, rh, padX, padY, rect: [-padX, -padY, rw / kx, rh / ky], cb: grBox(s, sH, sV, kx, ky, xp) };`, `  const full = [-padX, -padY, rw / kx, rh / ky], cb = grBox(s, sH, sV, kx, ky, xp), W = GR_VIEW ? grWindow(full, kx, ky, rw, rh, 3 * sH, 3 * sV) : null;
+  if (W) return { s, sH, sV, kx, ky, rw: W.rw, rh: W.rh, padX: -W.x0, padY: -W.y0, rect: [W.x0, W.y0, W.rw / kx, W.rh / ky], full, cb };
+  return { s, sH, sV, kx, ky, rw, rh, padX, padY, rect: full, full, cb };`);
+src = sub(src, `  for (const L of lays.values()) { ax = Math.max(ax, L.kx); ay = Math.max(ay, L.ky); x0 = Math.min(x0, L.rect[0]); y0 = Math.min(y0, L.rect[1]); x1 = Math.max(x1, L.rect[0] + L.rect[2]); y1 = Math.max(y1, L.rect[1] + L.rect[3]); }`, `  for (const L of lays.values()) { const r = L.full || L.rect; ax = Math.max(ax, L.kx); ay = Math.max(ay, L.ky); x0 = Math.min(x0, r[0]); y0 = Math.min(y0, r[1]); x1 = Math.max(x1, r[0] + r[2]); y1 = Math.max(y1, r[1] + r[3]); }`);
+src = sub(src, `  if (ah > 4096) { ay *= 4096 / ah; ah = 4096; }
+  const rect = [x0, y0, aw / ax, ah / ay], ACC = target('ACC', aw, ah);`, `  if (ah > 4096) { ay *= 4096 / ah; ah = 4096; }
+  if (GR_VIEW) {   // (RZS_GPU.view: the accumulation over what the view reads, on its own grid, at the scale it has whole)
+    const X = grSpan(GR_VIEW[0], GR_VIEW[2], x0, ax, aw, 3 / ax + 2), Y = grSpan(GR_VIEW[1], GR_VIEW[3], y0, ay, ah, 3 / ay + 2);
+    x0 += X[0] / ax; y0 += Y[0] / ay; aw = X[1]; ah = Y[1];
+  }
+  GR_VIEW = null;
+  const rect = [x0, y0, aw / ax, ah / ay], ACC = target('ACC', aw, ah);`);
+src = sub(src, `function prepareSource(P, shapes, k0) {
+  const cw = D.comp.w, ch = D.comp.h, maxD = !D.en.bands ? 0 : P.rOn ? refrReach(P) : Math.max(Math.abs(P.dMaxH), Math.abs(P.dMaxV));`, `function prepareSource(P, shapes, k0) {
+  const cw = D.comp.w, ch = D.comp.h, maxD = !D.en.bands ? 0 : P.rOn ? refrReach(P) : Math.max(Math.abs(P.dMaxH), Math.abs(P.dMaxV));
+  GR_VIEW = GPU_VIEW ? grView(P, maxD, k0) : null;`);
 src = sub(src, `      gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     gl.disable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);

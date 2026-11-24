@@ -130,6 +130,11 @@ export type FreshSwitches = {
   stableSizes?: boolean;
   box?: boolean;
   spec?: boolean;
+  /**
+   * each layer and the accumulation made only over what the view can read, on the texel grid they have whole (the same picture):
+   * for a small window onto a big comp (a Button's AI hover). Off unless asked (scripts/razorsenseEngine/buildFreshEngine.js)
+   */
+  view?: boolean;
 };
 
 export type FreshEngineHost = {
