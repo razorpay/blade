@@ -74,20 +74,26 @@ describe('useLazyLayer', () => {
     expect(load).toHaveBeenCalledTimes(1);
   });
 
-  it("loads nothing on a device that can't hover (a phone) until a keyboard focus anywhere on the page", async () => {
+  it("loads nothing on a device that can't hover (a phone) until a keyboard focus on a button or link (not a text field's tap)", async () => {
     motionSetting(false, false);
     const load = jest.fn(() => Promise.resolve(Layer));
     const { queryByText } = render(<Host load={load} />);
-    const field = document.createElement('input');
-    document.body.append(field);
-    const isKeyboard = { now: false };
-    const matches = field.matches.bind(field);
-    field.matches = (selector: string) =>
-      selector === ':focus-visible' ? isKeyboard.now : matches(selector);
+    /** an element whose focus is from the keyboard (`:focus-visible`) or not */
+    const make = (tag: string): HTMLElement & { isKeyboard: boolean } => {
+      const el = Object.assign(document.createElement(tag), { isKeyboard: false });
+      const matches = el.matches.bind(el);
+      el.matches = (selector: string) =>
+        selector === ':focus-visible' ? el.isKeyboard : matches(selector);
+      document.body.append(el);
+      return el;
+    };
+    const field = make('input');
+    const other = make('button');
     await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
     expect(load).not.toHaveBeenCalled();
 
-    // a tap's focus: still nothing
+    // a tap on a text field: :focus-visible too (Chrome, Safari), and still nothing
+    field.isKeyboard = true;
     act(() => {
       field.focus();
     });
@@ -97,14 +103,44 @@ describe('useLazyLayer', () => {
       field.blur();
     });
 
-    // a keyboard's (a tablet's), on anything: loaded
-    isKeyboard.now = true;
+    // a tap's focus on a button: nothing
     act(() => {
-      field.focus();
+      other.focus();
+    });
+    await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
+    expect(load).not.toHaveBeenCalled();
+    act(() => {
+      other.blur();
+    });
+
+    // a keyboard's (a tablet's), on a button: loaded
+    other.isKeyboard = true;
+    act(() => {
+      other.focus();
     });
     await waitFor(() => expect(queryByText('layer')).not.toBeNull());
     expect(load).toHaveBeenCalledTimes(1);
     field.remove();
+    other.remove();
+  });
+
+  it("loads on a device that says it can't hover once a mouse moves (a desktop that misreports it)", async () => {
+    motionSetting(false, false);
+    const load = jest.fn(() => Promise.resolve(Layer));
+    const { queryByText } = render(<Host load={load} />);
+    await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
+    // (a touch moving: nothing)
+    const touch = new MouseEvent('pointermove');
+    Object.defineProperty(touch, 'pointerType', { value: 'touch' });
+    window.dispatchEvent(touch);
+    await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
+    expect(load).not.toHaveBeenCalled();
+    const mouse = new MouseEvent('pointermove');
+    Object.defineProperty(mouse, 'pointerType', { value: 'mouse' });
+    act(() => {
+      window.dispatchEvent(mouse);
+    });
+    await waitFor(() => expect(queryByText('layer')).not.toBeNull());
   });
 
   it("notes why a layer didn't load (no button says so otherwise: it keeps its own hover)", async () => {
