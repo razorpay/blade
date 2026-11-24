@@ -8,6 +8,7 @@ RazorSenseThinking is RazorSense thinking in a chat: its blue thinking label, wi
 
 ## Important Constraints
 
+- Inside a `RazorSenseChat`, its `scale`, `isPaused`, `onLoad` and `onError` are ignored (the chat's apply, and it warns in development); each says so in its own doc.
 - Web only: it draws with WebGL2. On React Native it throws.
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - Its `children` is the label text (default "Thinking…"). Put it where the assistant's reply will go; the glow plays from just before the label and out across the row, past its box (without growing the page).

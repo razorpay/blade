@@ -2,6 +2,33 @@ import type React from 'react';
 import type { RazorSenseDrawProps, RazorSenseStateProps } from '../RazorSenseEngine/drawProps';
 import type { StringChildrenType } from '~utils/types';
 
+/**
+ * The props a RazorSenseChat draws for the RazorSenseThinking and RazorSenseBottomWave inside it: theirs are ignored there (the
+ * chat's apply; it warns in development). Each one's own doc says so, so an editor shows it where it's set.
+ */
+type NestedDrawProps = {
+  /**
+   * Holds the animation where it is. Ignored inside a RazorSenseChat: set it on the chat.
+   * @default false
+   */
+  isPaused?: boolean;
+  /**
+   * The whole effect bigger or smaller, bands included. Held between 0.75 and 1.25. Ignored inside a RazorSenseChat: set it on
+   * the chat.
+   * @default 1
+   */
+  scale?: number;
+  /**
+   * Called once it's showing: its first frame drawn on the GPU. Ignored inside a RazorSenseChat: the chat's `onLoad` is called.
+   */
+  onLoad?: () => void;
+  /**
+   * Called when it can't animate (see RazorSenseChat's `onError` for when): it shows its still frame instead. Ignored inside a
+   * RazorSenseChat: the chat's `onError` is called.
+   */
+  onError?: (error: Error) => void;
+};
+
 type RazorSenseThinkingProps = {
   /**
    * What it's doing, shown as flow 9's thinking label: blue, with a shimmer running through it (held still with reduced motion,
@@ -15,7 +42,8 @@ type RazorSenseThinkingProps = {
    * Given, they're shown instead of `children` (pass one or the other: both, it warns in development).
    */
   texts?: string[];
-} & RazorSenseDrawProps;
+} & NestedDrawProps &
+  Omit<RazorSenseDrawProps, keyof NestedDrawProps>;
 
 /** How the task an answer did ended: the chat's bottom strip plays its success (green) or error (red) wave */
 type RazorSenseOutcome = 'success' | 'error';
@@ -32,15 +60,41 @@ type RazorSenseOutcomeProps = {
   outcome?: RazorSenseOutcome;
 };
 
+/** The states a lone RazorSenseBottomWave takes; inside a RazorSenseChat the chat's apply */
+type NestedStateProps = {
+  /**
+   * While true, the wave drops below the page's edge (the app is offline); back to false, it comes back. Ignored inside a
+   * RazorSenseChat: set it on the chat.
+   * @default false
+   */
+  isOffline?: boolean;
+  /**
+   * While true, the wave listens: a row of blobs grows on its top edge, moving with `voiceStream`'s voice. Ignored inside a
+   * RazorSenseChat: set it on the chat.
+   * @default false
+   */
+  isListening?: boolean;
+  /**
+   * The page's own microphone stream while it listens (RazorSense only reads its levels and never opens the microphone). Ignored
+   * inside a RazorSenseChat: set it on the chat.
+   */
+  voiceStream?: MediaStream;
+  /**
+   * How the task the answer did ended: the wave plays its success (green) or error (red) wave once, ending back at its rest (see
+   * RazorSenseChat's `outcome`). Ignored inside a RazorSenseChat: set it on the chat.
+   */
+  outcome?: RazorSenseOutcome;
+};
+
 type RazorSenseBottomWaveProps = {
   /**
    * The chat input it settles under. Typing in it (any input, textarea or editable element inside) pulses the wave up into its
    * typing surge; it dies back down when the typing stops. What's typed is never read.
    */
   children: React.ReactNode;
-} & RazorSenseDrawProps &
-  RazorSenseStateProps &
-  RazorSenseOutcomeProps;
+} & NestedDrawProps &
+  Omit<RazorSenseDrawProps, keyof NestedDrawProps> &
+  NestedStateProps;
 
 type RazorSenseChatProps = {
   /**

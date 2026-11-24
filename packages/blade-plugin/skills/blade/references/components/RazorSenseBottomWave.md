@@ -8,6 +8,7 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 
 ## Important Constraints
 
+- Inside a `RazorSenseChat`, its `scale`, `isPaused`, `onLoad`, `onError`, `isOffline`, `isListening`, `voiceStream` and `outcome` are ignored (the chat's apply, and it warns in development); each says so in its own doc.
 - Web only: it draws with WebGL2. On React Native it throws.
 - Light and dark follow `BladeProvider`'s color scheme; there is no color scheme prop.
 - It wraps the chat input (`children`): the wave sits under the input's bottom and spreads past its sides and below it (without growing the page). Keep the chat input near the bottom of its panel.
