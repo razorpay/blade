@@ -174,6 +174,27 @@ describe('RayLoaderMount', () => {
     mount.dispose();
   });
 
+  it("doesn't message his film once it's done: a theme or size change leaves it asleep (the bot's review of #4137)", async () => {
+    window.matchMedia = ((query: string) => ({
+      matches: query.includes('prefers-reduced-motion'),
+      media: query,
+    })) as any;
+    const onDone = jest.fn();
+    const mount = new RayLoaderMount(document.createElement('div'), OPTIONS, onDone, jest.fn());
+    mockFilm.current.resolve({});
+    await flush();
+    const host = mockHosts[0];
+    host.onMessage({ ray: 'ready' });
+    mount.finish(); // (reduced motion: done at once, his film asleep)
+    expect(onDone).toHaveBeenCalledTimes(1);
+    expect(host.send).toHaveBeenLastCalledWith({ ray: 'sleep' });
+    host.send.mockClear();
+    mount.update({ colorScheme: 'dark' });
+    mount.update({ size: 'small' });
+    expect(host.send).not.toHaveBeenCalled(); // (no 'mode', 'dash', nor a 'still' that would wake it)
+    mount.dispose();
+  });
+
   it("takes its box's size from the resize observer's entry, with no layout read", async () => {
     const root = document.createElement('div');
     const read = jest.spyOn(root, 'getBoundingClientRect');

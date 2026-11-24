@@ -134,7 +134,8 @@ class RayLoaderMount {
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
     this.options = { ...this.options, ...options };
-    if (!this.host || !this.isReady) return;
+    // (done: his film is asleep and stays so; a theme or size change mustn't message it, nor, with reduced motion, wake it for its still)
+    if (!this.host || !this.isReady || this.isDone || this.isDisposed) return;
     if (schemeChanged) this.host.send({ ray: 'mode', mode: this.options.colorScheme });
     if (sizeChanged) this.host.send({ ray: 'dash', px: RAY_BOX[this.options.size].width });
     if (this.reducedMotion && (schemeChanged || sizeChanged)) this.still();

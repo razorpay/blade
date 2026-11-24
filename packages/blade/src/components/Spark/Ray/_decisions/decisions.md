@@ -79,6 +79,29 @@ His box is his rest footprint and never changes size (unless `shouldUnmountWhenH
 - **The hops are each Ray's own entry and exit, timed as flow 10.5 has them** (measured there on 2026-11-23: its hide 465 ms to out of sight, its show 581 ms to landed; canon hide's are 467 and 583 at 1x). The chat input's Ray drops off as the question goes, and comes back up at 1.2x; with an outcome waiting, his hop ends as he lands and the outcome starts there. The answer row's Ray jumps quicker both ways, at 1.7x (the user, 2026-11-24: "the answer jumps should be faster, go with 1.7x if 10.5 is using 2x"; flow 10.5's rowHop plays at 2x): up out of his row (canon hide's second half, rowHop's window), his first film settling from that pose over 320 ms; and, as the answer's done and he's hidden, down from the moment his film's exit is cut, 20 ms after its prop is put away (or once he's at rest), read off the film's own handle as flow 10.5 reads it (600 ms into the laptop's exit there).
 - Nothing heavy loads up front: the director, his own Ray, the engine and canon (about 57 KB gzipped) load with his first render (`import()`), so an app that imports Blade's components without rendering him never downloads them (the PR review, 2026-11-10); his box is laid out meanwhile from `rayBox.ts`, which a test keeps equal to the engine's sizes. Films load when first used: 13 KB of shared film helpers with the first film, then 5–15 KB per film. A film he's done with is freed (an answer's past states, an idle he's moved on from), so at most his idle's film and the answer's now and next are loaded.
 
+## Accessibility
+
+- Decorative by default (`aria-hidden`). `accessibilityLabel` makes him `role="status"` while `state` is an answer state (as DotLoader is, so a label that changes with the state can be announced; screen readers announce a live region's text more reliably than its label, as with DotLoader) and `role="img"` at rest.
+- The coin flip is a pointer delight with no keyboard equivalent, since it carries no information.
+- `prefers-reduced-motion`: one still frame, no animation: at rest, or the state's own still (offline, error, the mic: drawn by its film, loaded for it; Success: his dance, happy eyes). An outcome's still stays about as long as it would play. Turned on or off while he's up, he follows it (a new director takes over, still or moving).
+- `isOffline` and `outcome` aren't announced by Ray (he's decorative unless labelled): the page says what happened in text too.
+
+## Platform
+
+Web only. `Ray.native.tsx` throws "not yet implemented": his engine and films draw on web canvases.
+
+## Open questions
+
+- **Bundle size** (gzipped, esbuild with code splitting, 2026-11-24). With Blade's components only his component loads (8.9 KB, mostly code every component shares). With his first render, 60.3 KB (director, player, engine, canon, tunes; 55.8 before the new states). Each film loads only when first needed: 4.0–16.0 KB (droop 16.0, mic 8.6), plus shared film code (wardrobe 14.0, flip 5.7, nightcap 3.4) with the first film that uses it. `thinking` and `reading` add no chunk. The new films' tunes (3.2 KB minified) load with the engine, as every film's do: the export writes them as one file.
+- **A click mid-sip or mid-cash-run** costs one or two frames at the click: those films re-plan their bit then (a re-simulation). Moving the engine's physics to a worker would remove it.
+- **`size` tokens.** Two sizes match today's dashboard (48) and sidekick (38). Investigate's 49.5px button isn't covered.
+- **Not in v1:**
+  - the wardrobe
+  - the "Thinking (drop)" film
+  - droop's other looks (offline asleep, the red error shake): offline is the malfunction only, as the user asked
+- **Success in dark** is the same motion on the dark ground, in his own dark look (approved by the user on 2026-11-24, from flow 10.5's V17 Success played on the dark ground).
+- **`idle="rotate"` stores a counter** in `localStorage` (`blade-ray-idle`) to step the cycle per page load. Without storage, it starts at a random idle.
+
 ## RayLoader
 
 The Ray loader (secondary), Ray Studio's Dash film ("Blast"; the user, 2026-11-24: "dash loader is its own story, named Ray Loader (Secondary)"), in place of the ripple loader on two screens.
@@ -91,3 +114,4 @@ The Ray loader (secondary), Ray Studio's Dash film ("Blast"; the user, 2026-11-2
 - **His still while his film loads** (Saurav's round-6 review, 2026-11-24: the box was empty until about 70 KB had come in, the first seconds of a slow connection; the user chose a static first frame over a preload function). Ray Studio's `dash_still.py` renders what the film draws as he starts, light and dark at 48 and 38 px (2x WebP, 1.1–1.7 KB each, 5.6 KB in all), into `engine/dashStill.ts`. It's in RayLoader's own import, so it's there from the first render, a server render's too. It sits where the film's first frame lands: a share of the box's width and height plus a few px, measured by the same script. It goes as his film first shows him; if his film never comes, it stays as a still loader till the page is ready. A box under about two of his widths tall draws him smaller in the film; the still stays his size.
 - **His canvases are his size, not the box's** (Saurav's round-6 review: the stage was the whole box, and the engine's layers are as big as the canvas he's drawn on, so a full-width box blurred his glow and redrew his layers across all of it every frame). The Dash film draws him on a canvas of his own, 2.6 x 2 of his widths round his floor point (over a whole run he draws at most 0.9 of them above it, 0.86 to a side), and the wind on one covering only where it flies (`windSpan` of the width round the dash's place, the band round his middle). Both are moved with him by a CSS transform on whole device px, so frame for frame it's the same picture (within 1 level nearly everywhere; an edge pixel up to 29 in a few frames). A full-width loader (1312 x 192, 2x): canvases 11.5 MB → 1.0 MB. On a software renderer (SwiftShader) the dash goes from 25 to 34 fps. The main thread's work is the engine drawing him, which is unchanged: 1.4–2.6 ms a frame at 4x CPU, 120 fps on a Mac.
 - **One frame loop with Ray's** (round 6): the loader draws in the page's one loop (`rayFrames`, with every Ray), at its pace (`rayPace`: every other frame or less when the work is heavy), not a `requestAnimationFrame` loop of its own, and it draws nothing till its film is ready (its 8 s give-up is a timer: no frames spent while the film downloads). Its box's size comes from the resize observer's entry, with no layout read.
+- **Bundle size** (gzipped, esbuild with code splitting, 2026-11-24): with the import, 14.5 KB (8.6 before the still; its four images are 5.9 of it); with its first render, its director 4.1 KB, the engine (36.0) and the dash film (8.0), nothing of Ray's own director.
