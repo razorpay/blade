@@ -20,7 +20,8 @@ class VoiceTap {
   private readonly time: Float32Array;
   private readonly freq: Uint8Array;
   private readonly norm = new Float64Array([0.2, 0.2, 0.2, 0.2]);
-  private readAt = -1;
+  /** the frame last read in (the document timeline's time: the same for every component drawing in one frame) */
+  private readFrame = -1;
   private lastAt = 0;
   public users = 0;
   private isClosed = false;
@@ -68,9 +69,12 @@ class VoiceTap {
       this.level.bands.fill(0);
       return this.level;
     }
-    if (now === this.readAt) return this.level;
+    // (once a frame, page-wide: each component passes its own performance.now(), so the frame is the document timeline's time,
+    // shared by everything drawn in it; without one, the time passed)
+    const frame = Number(document.timeline?.currentTime ?? now);
+    if (frame === this.readFrame) return this.level;
     const dt = this.lastAt ? Math.min(0.05, (now - this.lastAt) / 1000) : 0;
-    this.readAt = now;
+    this.readFrame = frame;
     this.lastAt = now;
     const { analyser, time, freq, norm, level } = this;
     analyser.getFloatTimeDomainData(time);

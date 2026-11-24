@@ -18,6 +18,7 @@ RazorSense is a WebGL-powered component that renders an animated glass refractio
 - `preset="bottomWave"` is a static image of a bottom wave, a decorative strip. For the animated wave under an assistant chat's input (it drifts, pulses as you type, and takes the thinking's surge), use `RazorSenseBottomWave`.
 - `preset="circleSlideUp"` is a success circle animation. For a success moment, use RazorSense 2.0's `RazorSenseSuccess` (the orb rising into Blade's success badge and its check).
 - For a full-page or full-box background (`preset="default"` or `"zoomed"`), use RazorSense 2.0's `RazorSenseBackground`.
+- Moving to a 2.0 component: RazorSense's `paused` is `isPaused` there (Blade's `is` prefix), on all seven.
 
 ## TypeScript Types
 

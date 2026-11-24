@@ -4,6 +4,7 @@ import { releaseVoice, tapVoice } from '../voice';
 // tried again each frame (the PR review: an AudioContext made before createMediaStreamSource threw was never closed).
 
 const contexts: { closed: boolean }[] = [];
+const analyserReads = jest.fn();
 class FakeAudioContext {
   public state = 'running';
   public sampleRate = 48000;
@@ -19,7 +20,13 @@ class FakeAudioContext {
   }
 
   public createAnalyser(): unknown {
-    return { fftSize: 0, smoothingTimeConstant: 0, frequencyBinCount: 1024 };
+    return {
+      fftSize: 0,
+      smoothingTimeConstant: 0,
+      frequencyBinCount: 1024,
+      getFloatTimeDomainData: analyserReads,
+      getByteFrequencyData: () => undefined,
+    };
   }
 
   public close(): Promise<void> {
@@ -79,5 +86,31 @@ describe('tapVoice', () => {
     expect(tap!.read(1000).lvl).toBe(0);
     // (listening ends later: let go of it as usual, nothing closed twice)
     expect(() => releaseVoice(stream, tap!)).not.toThrow();
+  });
+
+  it('two components on one stream read its analyser once a frame (their own performance.now() differs; the frame doesn’t)', () => {
+    const stream = streamOf(true);
+    const a = tapVoice(stream)!;
+    const b = tapVoice(stream)!;
+    const timeline = Object.getOwnPropertyDescriptor(document, 'timeline');
+    Object.defineProperty(document, 'timeline', {
+      value: { currentTime: 1000 },
+      configurable: true,
+    });
+    analyserReads.mockClear();
+    a.read(1000.4);
+    b.read(1001.3);
+    expect(analyserReads).toHaveBeenCalledTimes(1);
+    Object.defineProperty(document, 'timeline', {
+      value: { currentTime: 1016.7 },
+      configurable: true,
+    });
+    a.read(1016.9);
+    b.read(1017.6);
+    expect(analyserReads).toHaveBeenCalledTimes(2);
+    if (timeline) Object.defineProperty(document, 'timeline', timeline);
+    else delete (document as { timeline?: unknown }).timeline;
+    releaseVoice(stream, a);
+    releaseVoice(stream, b);
   });
 });
