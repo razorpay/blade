@@ -37,6 +37,7 @@ const prefersReducedMotion = (): boolean =>
 /** what's drawn over the orb, put on its elements (CSS px from the badge's middle) */
 const putOverlay = (
   o: SuccessOverlay,
+  ink: string,
   half: number,
   badge: HTMLElement | null,
   tick: SVGSVGElement | null,
@@ -53,7 +54,7 @@ const putOverlay = (
     badge.style.transform = `scale(${o.badge.scale})`;
   }
   if (tick && path) {
-    const { x, y, size, scale, opacity, d, stroke, color, isRound, dashOffset } = o.tick;
+    const { x, y, size, scale, opacity, d, stroke, color, isInk, isRound, dashOffset } = o.tick;
     tick.style.width = `${size}px`;
     tick.style.height = `${size}px`;
     tick.style.opacity = String(opacity);
@@ -61,7 +62,7 @@ const putOverlay = (
       half + y - size / 2
     }px) scale(${scale})`;
     path.setAttribute('d', d);
-    path.setAttribute('stroke', `rgb(${color[0]},${color[1]},${color[2]})`);
+    path.setAttribute('stroke', isInk ? ink : `rgb(${color[0]},${color[1]},${color[2]})`);
     path.setAttribute('stroke-width', String(stroke));
     path.setAttribute('stroke-linecap', isRound ? 'round' : 'square');
     path.setAttribute('stroke-linejoin', isRound ? 'round' : 'miter');
@@ -157,8 +158,9 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
       // (played, or showing the badge alone: a new color scheme only recolours it)
       if (phaseRef.current !== 'playing') return undefined;
       const overlay = makeOverlay();
-      // (the check's colour, for the tick's turn into it: Blade's emerald where there's no canvas to read the token)
-      const inkRgb = hexRgb(toHex(ink) ?? '#00753b');
+      // (the check's colour, for the tick's turn into it; unread, no blend: the token itself at the hand-off, no colour of our own)
+      const inkHex = toHex(ink);
+      const inkRgb = inkHex ? hexRgb(inkHex) : null;
       const m = piece.moments;
       // (couldn't animate, or still had nothing drawn after a moment: a success doesn't wait on a GPU; the badge pops in alone)
       const toBadge = (): void => {
@@ -251,6 +253,7 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
             eng.player.seek(t, t);
             putOverlay(
               overlayAt(piece, t, inkRgb, overlay),
+              ink,
               size / 2,
               badgeRef.current,
               tickRef.current,
@@ -318,7 +321,8 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           return;
         }
         putOverlay(
-          overlayAt(alone, t, [0, 0, 0], overlay),
+          overlayAt(alone, t, null, overlay),
+          ink,
           size / 2,
           badgeRef.current,
           null,

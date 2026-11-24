@@ -39,6 +39,8 @@ type SuccessOverlay = {
     d: string;
     stroke: number;
     color: [number, number, number];
+    /** past the hand-off with no colour to blend to (the token couldn't be read): drawn in the check's token itself, not `color` */
+    isInk: boolean;
     isRound: boolean;
     dashOffset: number;
   };
@@ -56,6 +58,7 @@ const makeOverlay = (): SuccessOverlay => ({
     d: '',
     stroke: 0,
     color: [255, 255, 255],
+    isInk: false,
     isRound: true,
     dashOffset: 1,
   },
@@ -88,12 +91,14 @@ const hexRgb = (hex: string): [number, number, number] => [
 /**
  * What's drawn over the orb at time t (success-blob's overlay.js piece(t)): Blade's badge popping in where the orb is as step 2
  * starts, and the orb's white tick, drawn in on it as it arrives, then turning into the badge's check (its size, stroke, shape,
- * colour and place). `ink` is the check's colour (Blade's positive icon colour). With the tick off, the check comes in with the badge.
+ * colour and place). `ink` is the check's colour (Blade's positive icon colour) as RGB; null when it couldn't be read, then there's no
+ * blend: the tick stays white and is drawn in the token itself from halfway through the hand-off. With the tick off, the check comes in
+ * with the badge.
  */
 const overlayAt = (
   piece: FreshSuccessPiece,
   t: number,
-  ink: [number, number, number],
+  ink: [number, number, number] | null,
   out: SuccessOverlay,
 ): SuccessOverlay => {
   const { moments: m, tick: T, hand: H, badge: Bd, cssPerComp: z } = piece;
@@ -126,7 +131,8 @@ const overlayAt = (
   ).join(' L')}`;
   const white = hexRgb(T.color);
   for (let i = 0; i < 3; i += 1)
-    out.tick.color[i] = Math.round(white[i] + (ink[i] - white[i]) * hc);
+    out.tick.color[i] = ink ? Math.round(white[i] + (ink[i] - white[i]) * hc) : white[i];
+  out.tick.isInk = !ink && hc >= 0.5;
   out.tick.isRound = T.caps === 'round' || hc >= 0.5;
   out.tick.dashOffset = T.on ? 1 - clamp01(e) : 0;
   return out;
