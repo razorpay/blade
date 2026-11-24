@@ -1,5 +1,58 @@
 # @razorpay/blade
 
+## 12.132.0
+
+### Minor Changes
+
+- 4eb408183: feat(Drawer): support up to two trailing actions in `DrawerHeader`
+
+  `DrawerHeader`'s `trailing` now accepts an array of up to two icon-only actions (`IconButton`, or `Button` with only an `icon`), shown before the close button. Use it for actions like moving between records (previous / next) without closing the drawer. A single trailing element works as before.
+
+- 0f8c91afc: feat(FunnelChart): add `ChartFunnelWrapper` and `ChartFunnel`
+
+  A new chart that shows how many reach each step of a sequence. It wraps Recharts' `FunnelChart` and `Funnel` with Blade tokens: each step is a trapezoid labelled with its name and share of the first step, and hovering a step shows its count in `ChartTooltip`. Web only.
+
+- 0dc38d46d: feat(Heading): add `variant="serif"` for the agentic dashboard hero heading
+
+  - `<Heading variant="serif" />` renders in PT Serif at the 2xlarge size and regular weight (Latin subset, ~14.5 KB WOFF2). The variant fixes its own size and weight; passing a different `size` or `weight` throws in dev.
+  - `fonts.css` declares PT Serif plus a size-adjusted Georgia fallback to keep layout shift minimal. Browsers only download the font on pages that render a serif heading.
+  - PT Serif is not added to the theme's font family tokens, so it can't be used outside this heading. Web only for now; on React Native the serif variant is ignored with a dev warning.
+  - Blade agent plugin: the `blade` skill gets a guardrail step. Once an agent finishes its edits, it checks the lines it added for `variant="serif"` and either reverts them or marks the agentic dashboard hero heading with a `blade-allow-serif` comment.
+
+### Patch Changes
+
+- 2001d1083: fix(Drawer): fade the `DrawerHeader` gradient into the drawer body and tone it down
+
+  The header gradient used to stop with a visible edge where the header meets the drawer body, most noticeable in dark mode. It now fades to transparent towards the bottom of the header, and the whole gradient is softened to 64% opacity (`opacity[800]`) so the tint stays subtle. Applies to web and React Native, matching the updated Figma component.
+
+- 3695e2cb9: feat(FileUploadItem): compact 32px file chip for ChatInput attachments
+
+  The private `_isCompact` option of `FileUploadItem` now renders a one-line chip that is as wide as its file name. Names longer than 120px end in an ellipsis. The chip shows the file name and ×, which cancels an upload or removes the file. A failed file also gets a retry button before × when `onReupload` is set, so ChatInput's `onFileReupload` keeps working, and × stays so a failed file can always be removed. While a file uploads, a thin loader runs along the bottom, with no size or percentage. Why an upload failed shows in a Tooltip on hover or keyboard focus on web, and on tap on React Native.
+
+  Only ChatInput uses `_isCompact`, so ChatInput's attachments change look too. `FileUpload`, and `FileUploadItem` without `_isCompact`, look the same as before, and no props changed.
+
+- a2a34a44b: fix(fonts): keep tabular digits in the Inter Latin font file
+
+  `fonts/inter-variable/inter-latin-blade.woff2` was subset without Inter's `tnum` feature, so `font-variant-numeric: tabular-nums` had no effect. CounterInput, animated numbers and any timer or amount column shifted as digits changed. The file is rebuilt from the same Inter 3.19 source with `tnum` added. Every existing glyph, advance width, kerning pair, weight and slant variation, and vertical metric is unchanged; the file grows by 376 bytes. `@razorpay/blade-core` ships the same file and gets the same rebuild.
+
+- ec08bc4c3: fix(SliderInput): keep scale end labels inside the track
+
+  With `showScale`, the first scale label now starts at its tick and the last one ends at its tick, so long end labels no longer hang past the track. Labels in between stay centred, and the spacing that drops crowded labels accounts for the wider end labels.
+
+  The field's minimum width now makes room for both end labels side by side on two-stop scales and when `showScaleValues={false}`, so a slider can get wider in a tight layout.
+
+- 438afbc7f: fix(SliderInput): stop reserving 10px per step when markers and scale values are hidden
+
+  The track's minimum width counted every step even when nothing was drawn per step, so the default 0–100 slider needed 1003px and a 600-step range needed 6000px, overflowing narrow containers. Steps now widen the minimum only when `showMarkers` or scale values are on screen. Sliders with markers or scale values keep their current minimum width, and an endpoints-only scale (`showScale` with `showScaleValues={false}`) still reserves room for its two bound labels, without the per-step floor.
+
+- 7ef6fddbb: fix(StepGroup): keep the last step closed after a re-render
+
+  StepGroup counted its items inside a cached memo, so any re-render that reused the same children saw a count of 0 and no step knew it was last. The last step, often inside a nested StepGroup, then drew its closing curve or line pointing at nothing. The count is now returned from the same memo. Applies to web and React Native.
+
+- a195df3b9: fix(Text): end right-aligned `truncateAfterLines={1}` text with an ellipsis
+
+  One-line truncation uses a line clamp, which in Chrome drops its "…" on right-aligned text and just cuts the line. A right-aligned single line now uses `white-space: nowrap` with `text-overflow: ellipsis`, plus `min-width: 0` so it can shrink inside flex rows. Left and centre aligned text, and two or more lines, keep the line clamp, so their sizing does not change. Applies to Text, Heading and Display on web; React Native is unchanged.
+
 ## 12.131.0
 
 ### Minor Changes
