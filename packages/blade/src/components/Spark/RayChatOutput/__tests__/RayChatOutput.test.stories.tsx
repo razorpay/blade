@@ -56,8 +56,9 @@ SectionedReply.play = async ({ canvasElement }) => {
   await expect(blocks[0]).toHaveAttribute('data-ray-chat-lead');
   await expect(canvasElement.querySelector('hr')).toBeNull();
   await expect(blocks[5]).toHaveTextContent(/^After$/);
-  // none for the first, 24 before a section, 12 under a title, 16 between blocks, 24 after a divider
-  await expect(marginsTop(blocks)).toEqual(['0px', '24px', '12px', '16px', '16px', '24px']);
+  // none for the first, 24 before a section, 12 under a title, 12 for a paragraph's next line,
+  // 16 between blocks, 24 after a divider
+  await expect(marginsTop(blocks)).toEqual(['0px', '24px', '12px', '12px', '16px', '24px']);
 
   // the main title and titles: TASA Orbiter 500, 20/26
   const titleType = (title: Element) => {

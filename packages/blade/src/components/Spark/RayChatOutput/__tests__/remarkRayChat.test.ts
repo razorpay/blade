@@ -95,7 +95,13 @@ describe('remarkRayChat', () => {
     expect(types(blocks)).toEqual(['paragraph', 'paragraph', 'paragraph']);
     expect(blocks[0].children).toEqual([text('For a '), strong(text('resident'))]);
     expect(blocks[1].children).toEqual([text('buy directly.')]);
-    expect(gaps(blocks)).toEqual([undefined, '16', '16']);
+    // Figma sets lines of one paragraph 11 apart; 12 is Blade's nearest (separate blocks are 16)
+    expect(gaps(blocks)).toEqual([undefined, '12', '12']);
+  });
+
+  it('keeps 16 between paragraphs that were apart to begin with', () => {
+    const blocks = run(paragraph(text('One\nTwo')), paragraph(text('Three')));
+    expect(gaps(blocks)).toEqual([undefined, '12', '16']);
   });
 
   it('turns a bold line split off by a line break into a title', () => {

@@ -7,7 +7,8 @@
  *   ---                              ─▶  removed; the block after it opens a section
  *   every block after the first      ─▶  data-ray-chat-gap:
  *                                          24  a title, or the block after a divider  (before a section)
- *                                          12  the block under a title
+ *                                          12  the block under a title, or the next line of a paragraph
+ *                                              (Figma: 11, its paragraph spacing; 12 is Blade's nearest)
  *                                          16  any other block
  *
  * Gaps live on the blocks as attributes so the styles map them to spacing tokens, and so they
@@ -61,9 +62,16 @@ const setProperties = (node: MarkdownNode, properties: Record<string, unknown>):
 };
 
 const remarkRayChat = () => (tree: MarkdownNode): void => {
-  const blocks = (tree.children ?? []).flatMap((node) =>
-    node.type === 'paragraph' ? splitAtLineBreaks(node).map(asTitleIfBoldLine) : [node],
-  );
+  // Blocks that are the second or later line of one paragraph in the source.
+  const nextLines = new WeakSet<MarkdownNode>();
+  const blocks = (tree.children ?? []).flatMap((node) => {
+    if (node.type !== 'paragraph') return [node];
+    return splitAtLineBreaks(node).map((line, index) => {
+      const block = asTitleIfBoldLine(line);
+      if (index > 0) nextLines.add(block);
+      return block;
+    });
+  });
   const hasSections = blocks.some((node) => node.type === 'heading');
 
   const kept: MarkdownNode[] = [];
@@ -82,7 +90,7 @@ const remarkRayChat = () => (tree: MarkdownNode): void => {
     } else {
       let gap: RayChatGap = '16';
       if (node.type === 'heading' || opensSection) gap = '24';
-      else if (previous.type === 'heading') gap = '12';
+      else if (previous.type === 'heading' || nextLines.has(node)) gap = '12';
       setProperties(node, { dataRayChatGap: gap });
     }
     previous = node;
