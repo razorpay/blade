@@ -8,9 +8,16 @@ import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 
 const mockMounts: any[] = [];
-const mockState = { failToStart: false };
+const mockState = { failToStart: false, failImport: false };
 jest.mock('../../Ray/canDraw', () => ({ canDraw: () => true }));
 jest.mock('../RayLoaderMount', () => ({
+  __esModule: true,
+  // (its chunk failing to load: `import()` adopts a module that's a thenable, so this one rejects it while failImport is set)
+  get then() {
+    return mockState.failImport
+      ? (_resolve: unknown, reject: (error: Error) => void) => reject(new Error('its chunk failed'))
+      : undefined;
+  },
   RayLoaderMount: class {
     onDone: () => void;
     finish = jest.fn();
@@ -34,6 +41,7 @@ const ui = (isLoading: boolean, onComplete: () => void): React.ReactElement => (
 beforeEach(() => {
   mockMounts.length = 0;
   mockState.failToStart = false;
+  mockState.failImport = false;
   jest.spyOn(console, 'error').mockImplementation(() => undefined);
 });
 afterEach(() => jest.restoreAllMocks());
@@ -72,12 +80,13 @@ describe('<RayLoader /> onComplete', () => {
     expect(onComplete).toHaveBeenCalledTimes(1);
   });
 
-  it('is never called once unmounted, even if his director loads after', async () => {
+  it('is never called once unmounted, even if his director then fails', async () => {
+    // the page ready while his director still loads, the loader gone, then the director's chunk fails to load: nothing's called
+    mockState.failImport = true;
     const onComplete = jest.fn();
-    const { unmount } = render(ui(true, onComplete));
+    const { unmount } = render(ui(false, onComplete));
     unmount();
-    await Promise.resolve();
-    await Promise.resolve();
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(mockMounts).toHaveLength(0);
     expect(onComplete).not.toHaveBeenCalled();
   });

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Ray's films handed from Ray to Ray (filmPool), and a film's messages going only to the Ray that has it (FilmHost's turns)
-import { parkFilm, takeFilm, parkedFilms, FILM_LINGER_MS } from '../filmPool';
-import { FilmHost, isSoftwareRenderer } from '../FilmHost';
+import { parkFilm, takeFilm, parkedFilms, emptyFilmPool, FILM_LINGER_MS } from '../filmPool';
+import { FilmHost, isSoftwareRenderer, rendererCheck, resetRendererCheck } from '../FilmHost';
 import type { FilmModule } from '../engineTypes';
 
 const fakeHost = (canPark = true): any => ({
@@ -153,5 +153,164 @@ describe('isSoftwareRenderer', () => {
       'ANGLE (Intel, Intel(R) UHD Graphics (0x00009A49) Direct3D11 vs_5_0 ps_5_0, D3D11)',
       'ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 Direct3D11 vs_5_0 ps_5_0, D3D11)',
     ].forEach((name) => expect(isSoftwareRenderer(name)).toBe(false));
+  });
+});
+
+describe('the pool when the page hides', () => {
+  it('lets go of every parked film as the tab is hidden (its timers would be throttled)', () => {
+    const host = fakeHost();
+    parkFilm('search', host);
+    const was = Object.getOwnPropertyDescriptor(document, 'visibilityState');
+    Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true });
+    document.dispatchEvent(new Event('visibilitychange'));
+    expect(host.dispose).toHaveBeenCalledTimes(1);
+    expect(parkedFilms()).toBe(0);
+    if (was) Object.defineProperty(document, 'visibilityState', was);
+    else Reflect.deleteProperty(document, 'visibilityState');
+  });
+});
+
+describe('FilmHost lenses', () => {
+  // (jsdom has neither a MessageChannel nor WebGL: a channel that delivers a task later, and a WebGL context named as asked)
+  class Port {
+    other: Port | null = null;
+    onmessage: ((event: { data: unknown }) => void) | null = null;
+    postMessage(data: unknown): void {
+      const to = this.other;
+      setTimeout(() => to?.onmessage?.({ data }), 0);
+    }
+
+    close(): void {
+      this.onmessage = null;
+    }
+  }
+  class Channel {
+    port1 = new Port();
+    port2 = new Port();
+    constructor() {
+      this.port1.other = this.port2;
+      this.port2.other = this.port1;
+    }
+  }
+  let renderer = 'ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)';
+  const made: any[] = [];
+  const realChannel = (global as any).MessageChannel;
+  const realGetContext = HTMLCanvasElement.prototype.getContext;
+  beforeAll(() => {
+    (global as any).MessageChannel = Channel;
+    (HTMLCanvasElement.prototype as any).getContext = function getContext(type: string) {
+      if (!type.includes('webgl')) return null;
+      let lost = false;
+      const gl = {
+        RENDERER: 0x1f01,
+        getParameter: (p: number) => (p === 0x1f01 ? renderer : null),
+        getExtension: (name: string) =>
+          name === 'WEBGL_lose_context' ? { loseContext: () => (lost = true) } : null,
+        isContextLost: () => lost,
+        flush: () => undefined,
+      };
+      made.push(gl);
+      return gl;
+    };
+  });
+  afterAll(() => {
+    (global as any).MessageChannel = realChannel;
+    HTMLCanvasElement.prototype.getContext = realGetContext;
+  });
+  beforeEach(() => {
+    resetRendererCheck();
+    made.length = 0;
+    emptyFilmPool();
+  });
+
+  // a film with a lens canvas that asks for WebGL as it mounts (as Searching does a moment after it's ready), and again on 'lens'
+  const lensFilm: FilmModule = ({
+    canvases: ['lens'],
+    ui: '',
+    shared: {},
+    mount: ($h: any) => {
+      const lens = $h.env.document.getElementById('lens');
+      (window as any).__lensGl = lens.getContext('webgl');
+      $h.env.addEventListener('message', (e: any) => {
+        if (e.data?.ray === 'lens') (window as any).__lensGl = lens.getContext('webgl');
+      });
+    },
+  } as unknown) as FilmModule;
+  const tick = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 0));
+
+  it('counts a film whose lens is made, and stops counting it as it goes', () => {
+    const before = FilmHost.lenses;
+    const host = new FilmHost({
+      film: lensFilm,
+      tunes: {},
+      shared: {},
+      onMessage: () => undefined,
+    });
+    host.start();
+    expect(rendererCheck()).toBe(false);
+    expect(host.hasLens).toBe(true);
+    expect(FilmHost.lenses).toBe(before + 1);
+    host.dispose();
+    expect(FilmHost.lenses).toBe(before);
+    expect(made[0].isContextLost()).toBe(true);
+  });
+
+  it('gives no lens where the renderer draws on the CPU, and counts none', () => {
+    renderer = 'Google SwiftShader';
+    const before = FilmHost.lenses;
+    const host = new FilmHost({
+      film: lensFilm,
+      tunes: {},
+      shared: {},
+      onMessage: () => undefined,
+    });
+    host.start();
+    expect(rendererCheck()).toBe(true);
+    expect((window as any).__lensGl).toBe(null);
+    expect(made[0].isContextLost()).toBe(true); // (the one the check was asked for, let go of)
+    expect(host.hasLens).toBe(false);
+    expect(FilmHost.lenses).toBe(before);
+    host.dispose();
+    renderer = 'ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)';
+  });
+
+  it("makes no lens while it's parked, and makes it once a Ray has it again", async () => {
+    // (parked before its lens came: Searching's comes 250 ms after it's ready)
+    const parkedHost = new FilmHost({
+      film: ({
+        canvases: ['lens'],
+        ui: '',
+        shared: {},
+        mount: () => undefined,
+      } as unknown) as FilmModule,
+      tunes: {},
+      shared: {},
+      onMessage: () => undefined,
+    });
+    parkedHost.start();
+    parkFilm('lensless', parkedHost);
+    const lens = (parkedHost as any).canvases.lens as HTMLCanvasElement;
+    expect(lens.getContext('webgl')).toBe(null); // (parked: none)
+    expect(parkedHost.hasLens).toBe(false);
+    expect(takeFilm('lensless')).toBe(parkedHost);
+    parkedHost.adopt(() => undefined);
+    expect(lens.getContext('webgl')).not.toBe(null); // (a Ray has it: made now)
+    expect(parkedHost.hasLens).toBe(true);
+    parkedHost.dispose();
+    await tick();
+  });
+
+  it("isn't handed on once its lens is lost", () => {
+    const host = new FilmHost({
+      film: lensFilm,
+      tunes: {},
+      shared: {},
+      onMessage: () => undefined,
+    });
+    host.start();
+    expect(host.canPark).toBe(true);
+    made[0].getExtension('WEBGL_lose_context').loseContext(); // (the browser took it back)
+    expect(host.canPark).toBe(false);
+    host.dispose();
   });
 });
