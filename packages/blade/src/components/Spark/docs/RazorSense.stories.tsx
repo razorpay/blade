@@ -25,13 +25,14 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
+import { ArrowUpIcon, CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
 import { ChatMessage } from '~components/ChatMessage';
 import { ChatInput } from '~components/ChatInput';
 import { Divider } from '~components/Divider';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
+import { Tabs, TabList, TabItem } from '~components/Tabs';
 import { useTheme } from '~components/BladeProvider';
 
 const Page = (): ReactElement => {
@@ -199,7 +200,7 @@ DefaultPaused.args = {
  * what falls outside it (only that part is drawn). Light and dark are their own tunings: switch them in the bar. The 2.0 twin of
  * Default Paused above, a full-page piece.
  */
-export const DefaultPausedV2: StoryFn<typeof RazorSenseBackground> = () => {
+export const DefaultPausedV2: StoryFn<{ scale: number }> = ({ scale }) => {
   const { colorScheme, setColorScheme } = useTheme();
   const [isPaused, setIsPaused] = useState(false);
   return (
@@ -217,13 +218,22 @@ export const DefaultPausedV2: StoryFn<typeof RazorSenseBackground> = () => {
         </Button>
       </Box>
       <Box flex="1" position="relative">
-        <RazorSenseBackground isPaused={isPaused} />
+        <RazorSenseBackground isPaused={isPaused} scale={scale} />
       </Box>
     </Box>
   );
 };
 DefaultPausedV2.storyName = 'Default Paused 2.0';
-DefaultPausedV2.parameters = { controls: { disable: true } };
+// (shown smaller than the login page has it: at 1, on Storybook's canvas, it reads too big; Scale takes it back up to 1 and past)
+DefaultPausedV2.args = { scale: 0.8 };
+DefaultPausedV2.argTypes = {
+  scale: {
+    control: { type: 'range', min: 0.75, max: 1.25, step: 0.05 },
+    description:
+      'The piece bigger or smaller, round the middle of its box (1: as the login page has it)',
+  },
+};
+DefaultPausedV2.parameters = { controls: { include: ['scale'] } };
 
 /** the controls the 2.0 stories share: the box the effect fits (the chat input sits centred in it), the effect's scale, and where it sits */
 type EffectControls = { width: number; height: number; scale: number; x: number; y: number };
@@ -247,13 +257,42 @@ const effectArgTypes = (width: { min: number; max: number }) => ({
   },
   y: { control: { type: 'range', min: -300, max: 300, step: 4 }, description: 'Moves it up (px)' },
 });
+/**
+ * the one-line chat input a chat has under its answers, as flow 10.5's (its pill one line tall; ChatInput is two rows and its
+ * action bar): a TextInput with its send button
+ */
+const OneLineChatInput = () => {
+  const [text, setText] = useState('');
+  return (
+    <TextInput
+      accessibilityLabel="Ask anything"
+      placeholder="Ask anything..."
+      size="large"
+      value={text}
+      onChange={({ value }) => setText(value ?? '')}
+      onSubmit={() => setText('')}
+      trailing={
+        <Button
+          icon={ArrowUpIcon}
+          size="xsmall"
+          accessibilityLabel="Send"
+          isDisabled={!text}
+          onClick={() => setText('')}
+        />
+      }
+    />
+  );
+};
+
 /** the chat input, in the box the controls size and place */
 const ControlledInput = ({
   height,
   isUiHidden = false,
+  isOneLine = false,
 }: {
   height: number;
   isUiHidden?: boolean;
+  isOneLine?: boolean;
 }) => (
   <div
     style={{
@@ -265,7 +304,7 @@ const ControlledInput = ({
       transition: 'opacity 0.2s',
     }}
   >
-    <ChatInput placeholder="Ask anything..." />
+    {isOneLine ? <OneLineChatInput /> : <ChatInput placeholder="Ask anything..." />}
   </div>
 );
 
@@ -469,7 +508,8 @@ const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 export const BottomWave = BottomWaveTemplate.bind({});
 
 /**
- * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input and a faint wave settles under it, its path drifting.
+ * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input (here a one-line one, as a chat has under its answers)
+ * and a faint wave settles under it, its path drifting.
  * Type in it to see the typing surge: it pulses with the typing and dies back down after. "Finish with success" and "Finish with
  * error" set its `outcome`, as an app does once an answer that ran a task has filled in (the surge has long settled into the wave
  * by then): its green or red splash plays once and ends at its rest. "Go offline" drops it below the page (`isOffline`). The
@@ -519,7 +559,7 @@ export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x,
       >
         <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
           <RazorSenseBottomWave scale={scale} outcome={outcome} isOffline={isOffline}>
-            <ControlledInput height={height} />
+            <ControlledInput height={height} isOneLine />
           </RazorSenseBottomWave>
         </div>
         {/* positioned, so it shows over the wave (on its own the wave draws over what's next to the input; inside a
@@ -635,11 +675,83 @@ export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
 BottomSurgeV2.storyName = 'Bottom Surge 2.0';
 BottomSurgeV2.parameters = { controls: { disable: true } };
 
+/** a landing's suggested questions, by category (flow 10.5's) */
+const SUGGESTIONS: Record<string, string[]> = {
+  Recommended: [
+    'How is my business doing today?',
+    'Show me a summary of my payments',
+    'What needs my attention today?',
+  ],
+  Transactions: [
+    'Show me today’s transactions',
+    'Why did my recent payments fail?',
+    'Help me find a payment',
+  ],
+  Settlements: [
+    'When will my recent settlements reach my account?',
+    'Show me the deductions from the last settlement',
+    'Am I eligible to get my money today?',
+  ],
+  'Growing my business': [
+    'How can I improve my payment success rate?',
+    'How can I accept international payments?',
+    'Help me grow my business',
+  ],
+  Account: [
+    'Show me my account details',
+    'How do I update my business information?',
+    'Help me manage my team',
+  ],
+};
+
+/**
+ * the tray of suggested questions under a landing's chat input, as flow 10.5's: tucked under the input's bottom edge (the input over
+ * its top), its tabs and their questions. Opaque, so RazorSense behind the input shows round the input but not under the tray. Laid
+ * inside RazorSenseChatBackground over its canvas and under the input (out of the flow, so the background still fits the input)
+ */
+const SuggestionTray = ({ onPick }: { onPick: (question: string) => void }) => {
+  const [category, setCategory] = useState('Settlements');
+  return (
+    <div style={{ position: 'absolute', left: 0, right: 0, top: 'calc(100% - 20px)', zIndex: 0 }}>
+      <Box
+        backgroundColor="surface.background.gray.subtle"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        borderBottomLeftRadius="xlarge"
+        borderBottomRightRadius="xlarge"
+        paddingTop="spacing.8"
+        paddingX="spacing.3"
+        paddingBottom="spacing.3"
+      >
+        <Tabs value={category} onChange={setCategory} variant="borderless" size="small">
+          <TabList>
+            {Object.keys(SUGGESTIONS).map((name) => (
+              <TabItem key={name} value={name}>
+                {name}
+              </TabItem>
+            ))}
+          </TabList>
+        </Tabs>
+        <Box display="flex" flexDirection="column" gap="spacing.2" paddingTop="spacing.3">
+          {SUGGESTIONS[category].map((question) => (
+            <Box key={question} paddingX="spacing.4" paddingY="spacing.2">
+              <Link variant="button" color="neutral" size="small" onClick={() => onPick(question)}>
+                {question}
+              </Link>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </div>
+  );
+};
+
 /**
  * RazorSense 2.0 listening (`isListening`, with the page's own microphone stream as `voiceStream`): on a landing
  * (`RazorSenseChatBackground`, the voice dashboard: Default Paused 2.0 (Chat Background) listening) its strip morphs into a row of blobs along its line; under a chat's input
  * (`RazorSenseChat`'s bottom wave, the voice bottom) a row of blobs grows on the wave's top edge, breathing while it's silent. Each
- * blob is a pitch band of the voice. "Listen" starts it with a made-up sentence (or your microphone, with "Use my mic": the story
+ * blob is a pitch band of the voice. On the landing the suggested questions' tray sits under the input, as on flow 10.5's: the voice look
+ * shows round the input, the tray over what's below it. "Listen" starts it with a made-up sentence (or your microphone, with "Use my mic": the story
  * opens it, as an app's dictation would; RazorSense only reads it). "Stop" morphs it back.
  */
 export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
@@ -647,6 +759,7 @@ export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
   const [isMic, setIsMic] = useState(false);
   const [voice, setVoice] = useState<StoryVoice | null>(null);
   const [note, setNote] = useState('');
+  const [question, setQuestion] = useState('');
   const voiceRef = useRef<StoryVoice | null>(null);
   voiceRef.current = voice;
   const stop = () => {
@@ -728,7 +841,14 @@ export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
         >
           <div style={{ width: '100%', maxWidth: 840 }}>
             <RazorSenseChatBackground isListening={isListening} voiceStream={voice?.stream}>
-              <ChatInput placeholder="Ask anything..." />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <ChatInput
+                  placeholder="Ask anything..."
+                  value={question}
+                  onChange={({ value }) => setQuestion(value ?? '')}
+                />
+              </div>
+              <SuggestionTray onPick={setQuestion} />
             </RazorSenseChatBackground>
           </div>
         </Box>
