@@ -49,7 +49,7 @@ const useLazyLayer = <P>(
     if (canLoad || !isEnabled) return undefined;
     noteHover(name, 'waiting: nothing here can hover (a keyboard focus or a mouse loads it)');
     return whenHoverOrKeyboardFocus(null, () => setCanLoad(true));
-  }, [canLoad, isEnabled]);
+  }, [canLoad, isEnabled, name]);
 
   useEffect(() => {
     if (isEnabled && canLoad && !Layer && isReduced) noteHover(name, 'off: reduced motion');
