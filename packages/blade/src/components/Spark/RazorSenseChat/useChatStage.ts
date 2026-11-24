@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { ChatDriver, getChatSetup } from './chatDriver';
+import { placeStage } from './placement';
 import type { ChatAnchors } from './chatDriver';
 import type { ChatStateInputs, ChatStates, OutcomeMemory } from './chatStates';
 import { runFreshStage, withRoom } from '../RazorSenseEngine';
@@ -233,12 +234,14 @@ const useChatStage = ({
           const want = atRest && box ? restTopRef.current?.() ?? 0 : 0;
           if (want === top || !box) return false;
           top = want;
-          box.style.top = want ? `${want}px` : '';
+          placeStage(box, want);
           return true;
         };
         stage.setDriver((eng, dt) => {
           framesSinceRead += 1;
-          const atRest = !isThinkingRef.current && driver.isAtRest();
+          states.inputs = inputsRef.current;
+          // (listening, or the voice look still going down: not at rest, its row reaches higher than the crop)
+          const atRest = !isThinkingRef.current && driver.isAtRest() && states.isStripOnly();
           const isRead = isMoved || isRelaidRef.current || framesSinceRead >= ANCHOR_REREAD;
           const isFitted = (isRead || atRest !== wasAtRest) && fitToRest(atRest);
           if (isFitted || isRead) {
@@ -281,7 +284,7 @@ const useChatStage = ({
         stopFollowRef.current?.();
         stopFollowRef.current = null;
         // (its still, if it goes to one, is placed on the whole stage)
-        if (stageRef.current) stageRef.current.style.top = '';
+        if (stageRef.current) placeStage(stageRef.current, 0);
       },
       onDrawn: () => onLoadRef.current?.(),
       onWaiting: setIsWaiting,

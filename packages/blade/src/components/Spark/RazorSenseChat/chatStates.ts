@@ -176,6 +176,14 @@ class ChatStates {
     }
   }
 
+  /**
+   * whether only the strip at rest is drawn: not the voice look (wanted, or still on, morphing out), whose row reaches higher than the
+   * strip's typing surge (at full bands, dark's faintest glow ~305 px above the chat input's bottom): RazorSenseChat's rest crop
+   */
+  public isStripOnly(): boolean {
+    return !this.voiceComp && !this.inputs.isListening;
+  }
+
   public destroy(): void {
     this.isDead = true;
     window.clearTimeout(this.stillTimer);
