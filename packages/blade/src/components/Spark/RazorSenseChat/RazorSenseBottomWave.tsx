@@ -2,7 +2,15 @@ import React, { forwardRef, useContext, useEffect, useRef, useState } from 'reac
 import type { RazorSenseBottomWaveProps } from './types';
 import type { ChatAnchors } from './chatDriver';
 import { RazorSenseChatContext } from './chatContext';
-import { BOTTOM_WAVE_REACH, OUTCOME_REACH_UP, WAVE_PIXELS, inputAnchor, rectIn } from './placement';
+import {
+  BOTTOM_WAVE_REACH,
+  OUTCOME_REACH_UP,
+  WAVE_PIXELS,
+  inputAnchor,
+  panelIn,
+  rectIn,
+  windowIn,
+} from './placement';
 import { useChatOwnedPropsWarning } from './useChatOwnedPropsWarning';
 import { useChatStage } from './useChatStage';
 import { useStateStill } from './useStateStill';
@@ -122,7 +130,8 @@ const RazorSenseBottomWave = forwardRef<HTMLDivElement, RazorSenseBottomWaveProp
             },
             s,
           );
-      return { thinking: input, input, bar, leaveAt };
+      const box = stage ? () => panelIn(windowIn(stage), input[0]) : undefined;
+      return { thinking: input, input, bar, leaveAt, box };
     };
     const { keystroke, isStill } = useChatStage({
       moduleName: 'RazorSenseBottomWave',

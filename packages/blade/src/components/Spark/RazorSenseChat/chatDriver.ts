@@ -1,3 +1,4 @@
+import type { Rect } from './placement';
 import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
 import { TypingStrength, smooth01 } from '../RazorSenseEngine/typingStrength';
 import { cubicBezier } from '../RazorSenseEngine/ease';
@@ -17,8 +18,9 @@ import type { TypingTune } from '../RazorSenseEngine/typingStrength';
  * across and the window's bottom.
  * The PR's states on the strip at rest (flow 10.5):
  *   outcome    success or error: the strip's clock plays on past its end through the piece spliced there (outcome.ts) and is back at
- *              its end, the strip at rest, as it ends. It waits for the strip to be at rest (thinking, the surge); cleared mid-way it
- *              plays back to its start (x 3); a new question mid-way plays it out (x 4), then the strip rises
+ *              its end, the strip at rest, as it ends. It waits for the strip to be at rest (thinking, the surge). Ended early (cleared,
+ *              another outcome set, a new question) it plays out quickly (x 4), never backwards: then the next one plays from the
+ *              strip's rest, or the strip rises
  *   offline    the strip (and its typing strip) drops below the chat's bottom edge, 1.2 s on flow 10.5's ease; back online it rises
  *              back the same way; turned round mid-way, from where it is
  */
@@ -67,6 +69,11 @@ type Page = {
  * sits 111 px above the window's bottom, the comp's bottom edge).
  */
 const COMP = { w: 1512, h: 982, slot: [380, 173.65], box: 787, barTop: 982 - 111 };
+/** the strip page's top-left (CSS px, before its room) for a chat input anchor, the comp drawn at `scale`: its chat bar on the input */
+const stripOrigin = (input: [number, number], scale: number): [number, number] => [
+  input[0] - COMP.box * scale,
+  input[1] - COMP.barTop * scale,
+];
 /** flow 9's chat (measured, CSS px): its thinking slot's middle (from the window's middle across, from its top down) */
 const SLOT = [-352, 176.95];
 /** the chat panel's offset in flow 9's window */
@@ -82,6 +89,11 @@ type ChatAnchors = {
   input: [number, number];
   bar?: { top: number; width: number; height: number };
   leaveAt?: number;
+  /**
+   * the box an outcome's splash is laid in (flow 10.5's chat panel, as its s1Map has it): RazorSenseChat's own box; for a lone
+   * RazorSenseBottomWave, the window less flow 10.5's top bar and sidebar. Measured only as an outcome starts
+   */
+  box?: () => Rect | null;
 };
 
 /** flow 9's own chat, for a panel this big: its chat bar centred across the window 111 px above the bottom, its thinking slot */
@@ -117,14 +129,13 @@ const page = (g: string): Page => ({
 type ChatSetup = { times: ChatTimes; motion: ChatMotion };
 
 /** an outcome playing on the strip's clock: its start and length (s) there, how far in, and which way at what speed */
-type OutcomePlay = { t0: number; dur: number; u: number; dir: 1 | -1; speed: number };
+type OutcomePlay = { t0: number; dur: number; u: number; speed: number };
 
 /** offline: the strip's drop (CSS px down): from, to, since (ms) */
 const DROP_MS = 1200;
 const DROP_EASE = [0.33, 1, 0.68, 1];
-/** a new question mid-outcome plays it out this much faster; cleared mid-way, it plays back this much faster */
+/** an outcome ended early (cleared, another set, a new question) plays out this much faster */
 const OUTCOME_RUSH = 4;
-const OUTCOME_BACK = 3;
 
 const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
   const times = doc.ui?.dsChat as ChatTimes | undefined;
@@ -186,15 +197,13 @@ class ChatDriver {
   public setAnchors(anchors: ChatAnchors, scale: number, room = { x: 0, y: 0 }): void {
     const rx = room.x * scale;
     const ry = room.y * scale;
+    const [bx, by] = stripOrigin(anchors.input, scale);
     this.O = {
       think: [
         anchors.thinking[0] - COMP.slot[0] * scale - rx,
         anchors.thinking[1] - COMP.slot[1] * scale - ry,
       ],
-      bottom: [
-        anchors.input[0] - COMP.box * scale - rx,
-        anchors.input[1] - COMP.barTop * scale - ry,
-      ],
+      bottom: [bx - rx, by - ry],
     };
   }
 
@@ -205,8 +214,7 @@ class ChatDriver {
   public think(): void {
     if (this.oc) {
       // mid-outcome: it plays out quickly, then the strip rises
-      this.oc.dir = 1;
-      this.oc.speed = OUTCOME_RUSH;
+      this.hurryOutcome();
       this.isThinkPending = true;
       return;
     }
@@ -261,15 +269,15 @@ class ChatDriver {
 
   /** an outcome on the strip, from now: its piece spliced onto the strip's clock from t0 for dur s (call it while isAtRest()) */
   public playOutcome(t0: number, dur: number): void {
-    this.oc = { t0, dur, u: 0, dir: 1, speed: 1 };
+    this.oc = { t0, dur, u: 0, speed: 1 };
   }
 
-  /** the outcome cleared: one playing plays back to its start (the strip at rest) */
-  public clearOutcome(): void {
-    if (this.oc && !this.isThinkPending) {
-      this.oc.dir = -1;
-      this.oc.speed = OUTCOME_BACK;
-    }
+  /**
+   * the outcome ended early (cleared, or another one set): one playing plays out quickly to its end, the strip at rest, never
+   * backwards (the user: success near its end ran backwards before an error set then played)
+   */
+  public hurryOutcome(): void {
+    if (this.oc && this.oc.speed > 0) this.oc.speed = OUTCOME_RUSH;
   }
 
   /** reduced motion: the outcome held at this moment of its piece (s), till endOutcome */
@@ -546,8 +554,8 @@ class ChatDriver {
       this.oc = null;
       return;
     }
-    oc.u += dt * oc.speed * oc.dir;
-    if (oc.dir > 0 ? oc.u < oc.dur : oc.u > 0) return;
+    oc.u += dt * oc.speed;
+    if (oc.u < oc.dur) return;
     this.oc = null;
     if (this.isThinkPending) {
       this.isThinkPending = false;
@@ -605,6 +613,6 @@ class ChatDriver {
   }
 }
 
-export { ChatDriver, getChatSetup, flow9Anchors };
+export { ChatDriver, COMP, getChatSetup, flow9Anchors, stripOrigin };
 export type { ChatAnchors };
 export type { ChatMotion, ChatSetup, ChatTimes };

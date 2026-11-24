@@ -1,10 +1,12 @@
 import type { ChatAnchors, ChatDriver } from './chatDriver';
-import type { Outcome, spliceOutcome } from './outcome';
+import type * as OutcomeModule from './outcome';
 import type { VoiceBottom } from './voiceBottom';
 import type { FreshDoc, FreshEngine, FreshExport } from '../RazorSenseEngine';
 import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
 import { isRetryLater } from '../RazorSenseEngine/chunkRetry';
 import type { VoiceTap } from '../RazorSenseEngine/voice';
+
+type Outcome = OutcomeModule.Outcome;
 
 /**
  * The PR's states on the chat's strip (RazorSenseChat, and RazorSenseBottomWave on its own), on the chat's one engine: each is a
@@ -50,7 +52,7 @@ const whenIdle = (go: () => void): void => {
 
 class ChatStates {
   public inputs: ChatStateInputs = { isOffline: false, isListening: false };
-  private outcomeModule: { spliceOutcome: typeof spliceOutcome } | null = null;
+  private outcomeModule: typeof OutcomeModule | null = null;
   private isLoadingOutcome = false;
   private isLoadingVoice = false;
   /**
@@ -58,8 +60,8 @@ class ChatStates {
    */
   private outcomeFailedAt = 0;
   private voiceFailedAt = 0;
-  /** the outcome spliced into the loaded document (and where its piece is on the strip's clock) */
-  private splice: { outcome: Outcome; doc: FreshDoc; t0: number; t1: number } | null = null;
+  /** the outcome spliced into the loaded document (laid for the box it was last played in; where its piece is on the strip's clock) */
+  private splice: { key: string; doc: FreshDoc; t0: number; t1: number } | null = null;
   /** the voice look, made the first time the page listens, and the Comp 3 its row is in while it's loaded */
   private voice: VoiceBottom | null = null;
   private voiceComp: string | null = null;
@@ -124,16 +126,17 @@ class ChatStates {
     if (this.isDead) return;
     const { isOffline, isListening, outcome } = this.inputs;
     driver.setDrop(isOffline ? this.dropBy(anchors) : 0, now);
-    // an outcome: once each time it's set, once the strip is at rest (and the voice look down); cleared mid-way, it plays back
+    // an outcome: once each time it's set, once the strip is at rest (and the voice look down). Cleared or another set mid-way, the
+    // one playing plays out quickly, never backwards; then the new one plays from the strip's rest
     if (outcome !== this.memory.played) {
+      driver.hurryOutcome();
       if (!outcome) {
-        driver.clearOutcome();
         this.memory.played = undefined;
       } else if (!this.outcomeModule) {
         this.prefetchOutcome();
       } else if (driver.isAtRest() && !isOffline && !this.voiceComp) {
         this.memory.played = outcome;
-        this.startOutcome(driver, outcome);
+        this.startOutcome(driver, outcome, anchors);
       }
     }
     this.frameVoice(dt, now, driver, anchors, isListening && !isOffline);
@@ -148,8 +151,10 @@ class ChatStates {
     if (outcome !== this.memory.played) {
       this.memory.played = outcome;
       window.clearTimeout(this.stillTimer);
+      // (the one shown goes at once, so another set in its place shows its own moment)
+      driver.endOutcome();
       if (outcome && this.outcomeModule && driver.isAtRest() && !isOffline) {
-        this.startOutcome(driver, outcome);
+        this.startOutcome(driver, outcome, anchors);
         driver.holdOutcome(OUTCOME_STILL_AT);
         // (its moment for the piece's length, then the strip at rest)
         this.stillTimer = window.setTimeout(() => {
@@ -159,8 +164,6 @@ class ChatStates {
       } else if (outcome && !this.outcomeModule) {
         this.memory.played = undefined;
         this.prefetchOutcome();
-      } else {
-        driver.endOutcome();
       }
     }
     const want = isListening && !isOffline && driver.isAtRest();
@@ -197,12 +200,18 @@ class ChatStates {
     return Math.max(DROP_MIN, anchors.leaveAt - (bar.top - STRIP_REACH * this.scale));
   }
 
-  private startOutcome(driver: ChatDriver, outcome: Outcome): void {
+  private startOutcome(driver: ChatDriver, outcome: Outcome, anchors: ChatAnchors): void {
     const M = this.outcomeModule;
     if (!M) return;
-    if (this.splice?.outcome !== outcome) {
-      const { doc, t0, t1 } = M.spliceOutcome(this.base, outcome, this.mode, STRIP_COMPS);
-      this.splice = { outcome, doc, t0, t1 };
+    // (its splash laid as flow 10.5 lays it for the chat's box: lower in a shorter window)
+    const box = anchors.box?.();
+    const map = box ? M.outcomeMap(box, anchors.input, this.scale) : undefined;
+    const key = map
+      ? `${outcome} ${map.k.toFixed(4)} ${map.dx.toFixed(1)} ${map.dy.toFixed(1)}`
+      : outcome;
+    if (this.splice?.key !== key) {
+      const { doc, t0, t1 } = M.spliceOutcome(this.base, outcome, this.mode, STRIP_COMPS, map);
+      this.splice = { key, doc, t0, t1 };
     }
     this.load(this.splice.doc);
     driver.playOutcome(this.splice.t0, this.splice.t1 - this.splice.t0);
