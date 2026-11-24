@@ -2,7 +2,8 @@
  * The Spark button hovers' own note of what happened to each on the page (the last 60): why one didn't start (its layer's code
  * failed to load, no hover here, reduced motion, no usable GPU, its engine failed to load, a stage error) or that it did. Nothing
  * else stops a hover silently: each of those leaves the button its own hover and says nothing, so this is how a test page (the
- * device test bundles Blade's source) or a browser's console finds out why. Internal; engine-free (useLazyLayer reads it).
+ * device test bundles Blade's source) or, in development, a browser's console (window.__bladeAiHoverNotes) finds out why.
+ * Internal; engine-free (useLazyLayer reads it).
  */
 type HoverNote = {
   /** ms since the page started */
@@ -13,6 +14,10 @@ type HoverNote = {
 };
 
 const hoverNotes: HoverNote[] = [];
+// (Blade's development build only: its production build leaves this out)
+if (__DEV__ && typeof window !== 'undefined') {
+  ((window as unknown) as { __bladeAiHoverNotes?: HoverNote[] }).__bladeAiHoverNotes = hoverNotes;
+}
 
 const noteHover = (hover: string, what: string): void => {
   hoverNotes.push({ at: Math.round(performance.now()), hover, what });

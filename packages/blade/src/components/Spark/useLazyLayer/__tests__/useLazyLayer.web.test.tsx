@@ -182,4 +182,10 @@ describe('useLazyLayer', () => {
     });
     jest.useRealTimers();
   });
+
+  it("puts the hovers' notes on window in development, for a browser's console", () => {
+    expect(((window as unknown) as { __bladeAiHoverNotes?: unknown }).__bladeAiHoverNotes).toBe(
+      hoverNotes,
+    );
+  });
 });
