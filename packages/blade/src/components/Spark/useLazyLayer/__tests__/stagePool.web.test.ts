@@ -6,12 +6,22 @@ const mockMade: {
   destroyed: boolean;
   onError?: unknown;
   paused?: boolean;
+  /** its GPU context lost (the browser took it back) */
+  lost?: boolean;
+  canvas: HTMLCanvasElement;
 }[] = [];
 jest.mock('../../RazorSenseEngine', () => ({
   FreshStage: class {
     private rec: typeof mockMade[number];
     constructor(box: HTMLElement, _: unknown, { onError }: { onError?: unknown }) {
-      this.rec = { box, destroyed: false, onError };
+      // (its canvas in its box, with a WebGL2 context that can say it's lost, as FreshStage's has)
+      const canvas = globalThis.document.createElement('canvas');
+      const rec: typeof mockMade[number] = { box, destroyed: false, onError, canvas };
+      ((canvas as unknown) as { getContext: () => unknown }).getContext = () => ({
+        isContextLost: () => Boolean(rec.lost),
+      });
+      box.append(canvas);
+      this.rec = rec;
       mockMade.push(this.rec);
     }
     hasEngine(): boolean {
@@ -51,7 +61,10 @@ beforeEach(() => {
   mockMade.length = 0;
   jest.useFakeTimers();
 });
-afterEach(() => jest.useRealTimers());
+afterEach(() => {
+  jest.useRealTimers();
+  jest.restoreAllMocks();
+});
 
 describe('stagePool', () => {
   it('hands a stage let go to the next button of the same comp, moved into its spot, its handler swapped', () => {
@@ -107,5 +120,43 @@ describe('stagePool', () => {
     letGoOfStage(failed);
     expect(stagePoolSize()).toEqual({ parked: 0, inUse: 0 });
     expect(mockMade).toHaveLength(2);
+  });
+
+  it('frees a parked stage whose GPU context the browser takes back, and never hands it on', () => {
+    const { takeStage, letGoOfStage, stagePoolSize } = loadPool();
+    letGoOfStage(takeStage(spot(), 'spark:light', create, jest.fn()));
+    mockMade[0].lost = true;
+    mockMade[0].canvas.dispatchEvent(new Event('webglcontextlost'));
+    expect(mockMade[0].destroyed).toBe(true);
+    expect(stagePoolSize()).toEqual({ parked: 0, inUse: 0 });
+    takeStage(spot(), 'spark:light', create, jest.fn());
+    expect(mockMade).toHaveLength(2);
+  });
+
+  it('makes a new stage rather than adopt one whose context is lost, or one parked past its linger (a hidden tab)', () => {
+    const { takeStage, letGoOfStage, LINGER_MS } = loadPool();
+    // lost while parked, with no event seen
+    letGoOfStage(takeStage(spot(), 'spark:light', create, jest.fn()));
+    mockMade[0].lost = true;
+    takeStage(spot(), 'spark:light', create, jest.fn());
+    expect(mockMade).toHaveLength(2);
+    expect(mockMade[0].destroyed).toBe(true);
+
+    // parked longer than its linger, its timer late (a hidden tab's are)
+    const now = performance.now();
+    letGoOfStage(takeStage(spot(), 'spark:dark', create, jest.fn()));
+    jest.spyOn(performance, 'now').mockReturnValue(now + LINGER_MS + 500);
+    takeStage(spot(), 'spark:dark', create, jest.fn());
+    expect(mockMade).toHaveLength(4);
+    expect(mockMade[2].destroyed).toBe(true);
+  });
+
+  it('frees, rather than parks, a stage let go of once its context is lost', () => {
+    const { takeStage, letGoOfStage, stagePoolSize } = loadPool();
+    const pooled = takeStage(spot(), 'spark:light', create, jest.fn());
+    mockMade[0].lost = true;
+    letGoOfStage(pooled);
+    expect(mockMade[0].destroyed).toBe(true);
+    expect(stagePoolSize()).toEqual({ parked: 0, inUse: 0 });
   });
 });

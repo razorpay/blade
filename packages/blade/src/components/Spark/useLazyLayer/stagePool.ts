@@ -32,6 +32,8 @@ type PooledStage = {
   stage: FreshStage;
   /** parked since (0: in use) */
   parkedAt: number;
+  /** while parked: stops watching its GPU context */
+  unwatch?: () => void;
 };
 
 const parked: PooledStage[] = [];
@@ -39,8 +41,32 @@ let inUse = 0;
 let freeTimer = 0;
 
 const free = (pooled: PooledStage): void => {
+  pooled.unwatch?.();
+  pooled.unwatch = undefined;
   pooled.stage.destroy();
   pooled.box.remove();
+};
+
+/**
+ * Its GPU context is gone (the browser took it back, too many on the page or a GPU reset, or it was put to sleep): read from the
+ * canvas in its own box, whose WebGL2 context getContext hands back. A lost stage is never handed on: its old frames would count
+ * as drawn over a blank canvas, hiding the button's own hover (the PR review)
+ */
+const isLost = (pooled: PooledStage): boolean => {
+  const canvas = pooled.box.querySelector('canvas');
+  try {
+    const gl = canvas?.getContext('webgl2');
+    return !gl || gl.isContextLost();
+  } catch {
+    return true;
+  }
+};
+
+/** a parked stage taken off the pool and freed (it lost its context, it failed, or it's past its linger) */
+const drop = (pooled: PooledStage): void => {
+  const i = parked.indexOf(pooled);
+  if (i >= 0) parked.splice(i, 1);
+  free(pooled);
 };
 
 /** frees the stages parked longer than LINGER_MS, and looks again while any are left */
@@ -66,9 +92,16 @@ const takeStage = (
   createEngine: CreateFreshEngine,
   onError: (reason: FreshFailure) => void,
 ): PooledStage => {
+  // (one lost while parked, or parked past its linger, its timer late as a hidden tab's are: freed, not adopted)
+  const now = performance.now();
+  parked
+    .filter((p) => p.kind === kind && (now - p.parkedAt > LINGER_MS || isLost(p)))
+    .forEach(drop);
   const i = parked.findIndex((p) => p.kind === kind);
   if (i >= 0) {
     const pooled = parked.splice(i, 1)[0];
+    pooled.unwatch?.();
+    pooled.unwatch = undefined;
     pooled.parkedAt = 0;
     pooled.stage.setOnError(onError);
     host.appendChild(pooled.box);
@@ -89,17 +122,23 @@ const takeStage = (
 };
 
 /**
- * Done with it. A stage with a working engine is parked for the next button (paused, out of the page, told nothing) and freed
- * after LINGER_MS; one whose engine failed or whose GPU context was lost (`isReusable` false) is freed at once.
+ * Done with it. A stage with a working engine is parked for the next button (paused, out of the page) and freed after LINGER_MS,
+ * or as soon as its GPU context is lost or it fails while parked; one whose engine failed or whose context was lost (`isReusable`
+ * false, or found lost) is freed at once.
  */
 const letGoOfStage = (pooled: PooledStage, isReusable = true): void => {
   inUse = Math.max(0, inUse - 1);
-  if (!isReusable || !pooled.stage.hasEngine()) {
+  if (!isReusable || !pooled.stage.hasEngine() || isLost(pooled)) {
     free(pooled);
     return;
   }
   pooled.stage.setPaused(true);
-  pooled.stage.setOnError(undefined);
+  // (a parked stage that loses its context or fails is freed then and there)
+  pooled.stage.setOnError(() => drop(pooled));
+  const canvas = pooled.box.querySelector('canvas');
+  const onLost = (): void => drop(pooled);
+  canvas?.addEventListener('webglcontextlost', onLost);
+  pooled.unwatch = () => canvas?.removeEventListener('webglcontextlost', onLost);
   pooled.box.remove();
   pooled.parkedAt = performance.now();
   parked.push(pooled);
