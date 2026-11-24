@@ -267,7 +267,7 @@ type ChatInputProps = {
    * agent is working. With reduced motion nothing moves; `validationState="error"`,
    * `status="error"` and `isDisabled` turn it off.
    *
-   * **Note (React Native):** Shows the plain borders.
+   * **Note (React Native):** No effect.
    * @default false
    */
   showAmbientBorder?: boolean;
