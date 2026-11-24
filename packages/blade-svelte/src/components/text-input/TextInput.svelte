@@ -328,8 +328,9 @@
     class={cx(
       classes.box,
       classes.frame[frame],
-      classes.focus[frame][control.isFocused ? 'focused' : 'blurred'],
-      hint.validationState !== 'none' &&
+      classes.focus[frame][control.isFocused && !disabled ? 'focused' : 'blurred'],
+      !disabled &&
+        hint.validationState !== 'none' &&
         classes.validation[frame][hint.validationState],
       disabled && classes.disabled.box,
       group?.cornerClass(field.record)

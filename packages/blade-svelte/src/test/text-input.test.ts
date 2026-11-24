@@ -181,6 +181,20 @@ describe('TextInput standalone', () => {
     expectClass(box, 'shadow-input-error!');
   });
 
+  it('draws neither ring on a disabled field, which has the disabled border alone', async () => {
+    const { getByTestId, rerender } = render(TextInputHarness, {
+      props: { validationState: 'error', errorText: 'Bad' },
+    });
+    const control = getByTestId('solo');
+    const box = control.parentElement;
+
+    await fireEvent.focus(control);
+    await rerender({ validationState: 'error', errorText: 'Bad', isDisabled: true });
+    expectClass(box, 'border-interactive-gray-disabled!');
+    expectNoClass(box, 'shadow-input-error');
+    expectNoClass(box, 'shadow-input-active');
+  });
+
   it('draws no state of the input family as a wider border', async () => {
     const { framedControl, FRAMED_VALIDATION } = await import('../components/text-input/styles');
     const { resolveOTPInput } = await import('../components/otp-input/styles');
