@@ -3192,7 +3192,17 @@ export function* freshEngineSteps(
                   (e[6 * t + 1] = f[2 * t + 1]),
                   (e[6 * t + 2] = e[6 * t + 3] = e[6 * t + 4] = e[6 * t + 5] = 0);
               tn(a, c.n);
-              const n = t.rw <= Vt && t.rh <= Vt;
+              const n =
+                t.rw <= Vt &&
+                t.rh <= Vt &&
+                !(
+                  sn &&
+                  (Math.min(t.rw, Math.ceil(c.box[2]) + 1) -
+                    Math.max(0, Math.floor(c.box[0]) - 1)) *
+                    (Math.min(t.rh, Math.ceil(c.box[3]) + 1) -
+                      Math.max(0, Math.floor(c.box[1]) - 1)) <
+                    0.5 * t.rw * t.rh
+                );
               let o = 0,
                 s = 0,
                 l = t.rw,

@@ -441,6 +441,11 @@ function grBlurBox(L) {   // Blade: the layer's box in its texels [x, y, w, h], 
   if (x1 <= x0 || y1 <= y0 || (x1 - x0) * (y1 - y0) > 0.8 * L.rw * L.rh) return null;
   return [x0, y0, x1 - x0, y1 - y0];
 }`);
+// and its raster: a non-convex outline on a layer no bigger than a tile was drawn in a multisampled tile the size of its whole layer
+// (cleared and resolved whole: 1024 px square for a 75 x 62 voice blob's 515 x 303 layer). Where its box is under half its layer,
+// it takes the path a big layer takes: the layer cleared, the tiles over its box only, each resolved and copied in (the same
+// samples at the same pixel centres: the same layer)
+src = sub(src, `    const small = L.rw <= GR_TILE && L.rh <= GR_TILE;`, `    const small = L.rw <= GR_TILE && L.rh <= GR_TILE && !(GPU_BLURBOX && (Math.min(L.rw, Math.ceil(P.box[2]) + 1) - Math.max(0, Math.floor(P.box[0]) - 1)) * (Math.min(L.rh, Math.ceil(P.box[3]) + 1) - Math.max(0, Math.floor(P.box[1]) - 1)) < 0.5 * L.rw * L.rh);`);
 src = sub(src, `function blurPass(srcTex, dst, dir, sigma) {
   const pr = GL.pBlur, W = gaussWeights(sigma);
   gl.bindFramebuffer(gl.FRAMEBUFFER, dst.f); gl.viewport(0, 0, dst.w, dst.h); gl.useProgram(pr.p);`, `function blurPass(srcTex, dst, dir, sigma, box) {
