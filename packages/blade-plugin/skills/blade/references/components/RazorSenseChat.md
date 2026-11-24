@@ -29,6 +29,9 @@ RazorSenseChat is RazorSense through an assistant chat: thinking loops on the `R
 The following types represent the props that the RazorSenseChat component accepts.
 
 ```ts
+/** How the task an answer did ended (exported as RazorSenseOutcome) */
+type RazorSenseOutcome = 'success' | 'error';
+
 type RazorSenseChatProps = {
   /**
    * The chat: its messages, a `RazorSenseThinking` where the reply will go while the answer is worked out, and a
@@ -105,7 +108,7 @@ type RazorSenseChatProps = {
    * next question plays it out quickly before the thinking comes back up. It plays once each time it's set, and once each answer:
    * clear it as the page sends the next question (a new color scheme or scale doesn't play it again).
    */
-  outcome?: 'success' | 'error';
+  outcome?: RazorSenseOutcome;
 } & TestID;
 ```
 

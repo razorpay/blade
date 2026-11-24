@@ -111,5 +111,7 @@ describe('<RazorSenseSuccess /> (jsdom has no WebGL2)', () => {
     expect(hasCheck(container)).toBe(true);
     expect(labelOf(container)?.style.opacity).toBe('1');
     expect(onError).not.toHaveBeenCalled();
+    // (its label said politely as the badge shows: the badge is an image, which nothing announces)
+    expect(container.querySelector('[aria-live="polite"]')?.textContent).toBe('Paid');
   });
 });

@@ -28,6 +28,9 @@ RazorSenseBottomWave is RazorSense under an assistant chat's input: wrap the cha
 The following types represent the props that the RazorSenseBottomWave component accepts.
 
 ```ts
+/** How the task an answer did ended (exported as RazorSenseOutcome) */
+type RazorSenseOutcome = 'success' | 'error';
+
 type RazorSenseBottomWaveProps = {
   /**
    * The chat input it settles under. Typing in it (any input, textarea or editable element inside) pulses the wave up into its
@@ -91,7 +94,7 @@ type RazorSenseBottomWaveProps = {
    * next question plays it out quickly before the thinking comes back up. It plays once each time it's set, and once each answer:
    * clear it as the page sends the next question (a new color scheme or scale doesn't play it again).
    */
-  outcome?: 'success' | 'error';
+  outcome?: RazorSenseOutcome;
 } & TestID;
 ```
 

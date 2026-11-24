@@ -64,4 +64,20 @@ describe('tapVoice', () => {
     releaseVoice(stream, b!);
     expect(contexts[0].closed).toBe(true);
   });
+
+  it('the page stops its stream’s tracks but leaves listening on: its context closed then, read as silence, closed once', () => {
+    const track = Object.assign(new EventTarget(), { readyState: 'live' as MediaStreamTrackState });
+    const stream = (Object.assign(new EventTarget(), {
+      getAudioTracks: () => [track],
+    }) as unknown) as MediaStream;
+    const tap = tapVoice(stream);
+    expect(tap).not.toBeNull();
+    expect(contexts[0].closed).toBe(false);
+    track.readyState = 'ended';
+    track.dispatchEvent(new Event('ended'));
+    expect(contexts[0].closed).toBe(true);
+    expect(tap!.read(1000).lvl).toBe(0);
+    // (listening ends later: let go of it as usual, nothing closed twice)
+    expect(() => releaseVoice(stream, tap!)).not.toThrow();
+  });
 });

@@ -9,6 +9,7 @@ export type {
   RazorSenseChatProps,
   RazorSenseThinkingProps,
   RazorSenseBottomWaveProps,
+  RazorSenseOutcome,
 } from './RazorSenseChat';
 export { RazorSenseBackground } from './RazorSenseBackground';
 export type { RazorSenseBackgroundProps } from './RazorSenseBackground';

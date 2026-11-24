@@ -17,7 +17,7 @@ RazorSenseSuccess is RazorSense's success moment, as the RazorSense system made 
 - The orb's GPU context and memory go as soon as the orb is gone (about 3.4 seconds in); the badge stays as plain HTML.
 - When it can't animate (no WebGL2, a GPU that only draws on the CPU, its engine failing to load, or no first frame within a moment) it calls `onError` and the badge pops in with its check (and its label after it), with no orb: a success never waits on a GPU.
 - With reduced motion on it shows the badge with its check, and its label, at once and calls `onComplete`.
-- Screen readers see the badge as an image labelled by `accessibilityLabel` (default "Success"); the label is read as text.
+- Screen readers see the badge as an image labelled by `accessibilityLabel` (default "Success"); the label is read as text. As the badge pops in, the label (or `accessibilityLabel`, without one) is announced politely.
 - The engine and the orb's data load on demand (a dynamic import) the first time it renders.
 - Its `ref`, `className` and `style` go to its root element (web).
 
@@ -32,7 +32,8 @@ type RazorSenseSuccessProps = {
    */
   label?: string;
   /**
-   * What screen readers announce: the badge is exposed as an image with this name.
+   * What screen readers announce: the badge is exposed as an image with this name. As the badge pops in, its `label` (or this,
+   * without one) is announced politely.
    * @default 'Success'
    */
   accessibilityLabel?: string;
@@ -47,18 +48,13 @@ type RazorSenseSuccessProps = {
    */
   isPaused?: boolean;
   /**
-   * Called once it's showing: its first frame drawn on the GPU, or, with reduced motion where that's a still (RazorSenseBackground), its still.
+   * Called once its orb is showing: its first frame drawn on the GPU. Not called when it can't animate or with reduced motion:
+   * then the badge shows alone.
    */
   onLoad?: () => void;
   /**
-   * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to
-   * load, its frames are too slow on this device even at its lowest step (under 20 a second for 3 seconds, counted after its
-   * first 2), or the browser took its GPU context back. It shows its still frame instead. Too slow counts for the whole page:
-   * once one RazorSense 2.0 animation finds that, every one on the page shows its still, including ones mounted later, until
-   * the page reloads. Before that, the page starts at its device's level (a known weak GPU a step or two down) and steps down
-   * page-wide while it can't keep up (under 45 a second): every other frame, then fewer pixels too (its canvas at 0.75, then 0.5
-   * of a CSS px, scaled up by the browser); once frames hold again, it steps back up (after three step ups that
-   * don't hold, it stays down).
+   * Called when it can't animate: no WebGL2, a GPU that only draws on the CPU (a software renderer), its engine failed to load, its
+   * first frame didn't come, or the browser took its GPU context back. Blade's success badge and its check pop in alone instead.
    */
   onError?: (error: Error) => void;
   /**

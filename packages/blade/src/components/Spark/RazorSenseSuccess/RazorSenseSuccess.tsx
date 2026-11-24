@@ -8,6 +8,7 @@ import type { FreshStage, FreshSuccessPiece } from '../RazorSenseEngine';
 import { useTheme } from '~components/BladeProvider';
 import { CheckIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
+import { screenReaderStyles } from '~components/VisuallyHidden';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -124,6 +125,14 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
     const onErrorRef = useRef(onError);
     onErrorRef.current = onError;
     const [phase, setPhase] = useState<Phase>('playing');
+    // (announced to screen readers as the badge pops in: its label, or its name)
+    const [isAnnounced, setIsAnnounced] = useState(false);
+    const isAnnouncedRef = useRef(false);
+    const announce = (o: SuccessOverlay): void => {
+      if (!o.badge.isShown || isAnnouncedRef.current) return;
+      isAnnouncedRef.current = true;
+      setIsAnnounced(true);
+    };
     const phaseRef = useRef<Phase>('playing');
     const isCompleteRef = useRef(false);
     const completeTimerRef = useRef(0);
@@ -251,8 +260,9 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
               return;
             }
             eng.player.seek(t, t);
+            announce(overlayAt(piece, t, inkRgb, overlay));
             putOverlay(
-              overlayAt(piece, t, inkRgb, overlay),
+              overlay,
               ink,
               size / 2,
               badgeRef.current,
@@ -320,15 +330,8 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
           completeIn(Math.max(0, piece.moments.end - until) * 1000);
           return;
         }
-        putOverlay(
-          overlayAt(alone, t, null, overlay),
-          ink,
-          size / 2,
-          badgeRef.current,
-          null,
-          null,
-          labelRef.current,
-        );
+        announce(overlayAt(alone, t, null, overlay));
+        putOverlay(overlay, ink, size / 2, badgeRef.current, null, null, labelRef.current);
         raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -420,6 +423,13 @@ const RazorSenseSuccess = forwardRef<HTMLDivElement, RazorSenseSuccessProps>(
             </Heading>
           </div>
         ) : null}
+        {/* (said once as the badge pops in, politely: the badge itself is an image with a name, which nothing announces) */}
+        <span
+          {...makeAccessible({ liveRegion: 'polite' })}
+          style={screenReaderStyles as React.CSSProperties}
+        >
+          {isAnnounced || isDone ? label ?? accessibilityLabel : ''}
+        </span>
       </div>
     );
   },

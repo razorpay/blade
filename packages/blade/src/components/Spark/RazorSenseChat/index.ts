@@ -5,4 +5,5 @@ export type {
   RazorSenseChatProps,
   RazorSenseThinkingProps,
   RazorSenseBottomWaveProps,
+  RazorSenseOutcome,
 } from './types';

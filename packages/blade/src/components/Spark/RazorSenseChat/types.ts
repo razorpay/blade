@@ -17,6 +17,9 @@ type RazorSenseThinkingProps = {
   texts?: string[];
 } & RazorSenseDrawProps;
 
+/** How the task an answer did ended: the chat's bottom strip plays its success (green) or error (red) wave */
+type RazorSenseOutcome = 'success' | 'error';
+
 /** What the chat's bottom strip shows once an answer is done */
 type RazorSenseOutcomeProps = {
   /**
@@ -26,7 +29,7 @@ type RazorSenseOutcomeProps = {
    * next question plays it out quickly before the thinking comes back up. It plays once each time it's set, and once each answer:
    * clear it as the page sends the next question (a new color scheme or scale doesn't play it again).
    */
-  outcome?: 'success' | 'error';
+  outcome?: RazorSenseOutcome;
 };
 
 type RazorSenseBottomWaveProps = {
@@ -67,4 +70,5 @@ export type {
   RazorSenseBottomWaveProps,
   RazorSenseChatProps,
   RazorSenseOutcomeProps,
+  RazorSenseOutcome,
 };
