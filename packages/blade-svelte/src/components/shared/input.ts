@@ -18,12 +18,14 @@ export const INPUT_INACTIVE =
 
 /**
  * Active: a thicker primary border and Blade's focus ring — a 4px
- * `surface.border.primary.muted` outline, 1px off the box.
+ * `surface.border.primary.muted` outline, 1px off the box. The border keeps
+ * the host's width in every state: `shadow-input-active` draws the rest of
+ * the thick one around it, so focus moves nothing inside the frame.
  */
 export const INPUT_ACTIVE =
-  'border-thick border-interactive-primary-default outline-solid outline-4 outline-offset-1 outline-surface-primary-muted';
+  'border-interactive-primary-default shadow-input-active outline-solid outline-4 outline-offset-1 outline-surface-primary-muted';
 export const INPUT_ACTIVE_ON_FOCUS =
-  'focus:border-thick focus:border-interactive-primary-default focus:outline-solid focus:outline-4 focus:outline-offset-1 focus:outline-surface-primary-muted';
+  'focus:border-interactive-primary-default focus:shadow-input-active focus:outline-solid focus:outline-4 focus:outline-offset-1 focus:outline-surface-primary-muted';
 
 /**
  * Disabled: a grey fill, the disabled grey border, and the content in the

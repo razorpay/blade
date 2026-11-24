@@ -1004,6 +1004,11 @@ const namedShadows: Scale = {
   )}, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
   'card-group-picked': `inset 0 0 0 1.5px ${color('surface-border-primary-normal')}`,
   'card-group-focus': `inset 0 0 0 4px ${color('interactive-border-primary-faded')}`,
+  // An input's active and error frames: the 0.5px that makes its thin border
+  // Blade's thick one, as a ring around it. A wider border would shrink the
+  // frame's content box and move what it holds.
+  'input-active': `0 0 0 0.5px ${color('interactive-border-primary-default')}`,
+  'input-error': `0 0 0 0.5px ${color('interactive-border-negative-default')}`,
   'focus-negative': focusRing(FOCUS_NEGATIVE),
   'focus-neutral': focusRing(FOCUS_NEUTRAL),
   ...Object.fromEntries(

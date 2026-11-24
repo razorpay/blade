@@ -166,6 +166,36 @@ describe('TextInput standalone', () => {
     expectNoClass(box, 'outline-surface-primary-muted');
   });
 
+  it('keeps the frame one border width focused or invalid, so nothing inside it moves', async () => {
+    const { getByTestId, rerender } = render(TextInputHarness);
+    const control = getByTestId('solo');
+    const box = control.parentElement;
+
+    await fireEvent.focus(control);
+    expectClass(box, 'border-thin');
+    expectNoClass(box, 'border-thick');
+    expectClass(box, 'shadow-input-active');
+
+    await rerender({ validationState: 'error', errorText: 'Bad' });
+    expectNoClass(box, 'border-thick');
+    expectClass(box, 'shadow-input-error!');
+  });
+
+  it('draws no state of the input family as a wider border', async () => {
+    const { framedControl, FRAMED_VALIDATION } = await import('../components/text-input/styles');
+    const { resolveOTPInput } = await import('../components/otp-input/styles');
+    const otp = resolveOTPInput({});
+
+    for (const frame of [
+      framedControl(),
+      FRAMED_VALIDATION.error,
+      otp.cell,
+      otp.validation.error,
+    ]) {
+      expect(frame).not.toContain('border-thick');
+    }
+  });
+
   it('describes the control with the line for its validation state', async () => {
     const texts = { helpText: 'Help', errorText: 'Bad', successText: 'Good' };
     const { getByTestId, getByText, queryByText, rerender } = render(TextInputHarness, {

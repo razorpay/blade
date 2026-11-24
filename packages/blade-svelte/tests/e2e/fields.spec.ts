@@ -122,6 +122,22 @@ test.describe('TextInput with format', () => {
   });
 });
 
+test.describe('TextInput focus', () => {
+  test('focusing the field moves nothing inside it', async ({ page }) => {
+    await gotoStory(page, 'components-input-textinput--formatted');
+    const input = page.getByTestId('card-number');
+    const before = await input.boundingBox();
+    await input.focus();
+    // The frame's states transition: measure once they have finished.
+    await input.evaluate((node) =>
+      Promise.all(
+        (node.closest('label')?.getAnimations() ?? []).map((animation) => animation.finished),
+      ).then(() => undefined),
+    );
+    expect(await input.boundingBox()).toEqual(before);
+  });
+});
+
 test.describe('PhoneNumberInput', () => {
   test('the countries drop down under the field, as wide as it; picking one keeps the number', async ({
     page,
