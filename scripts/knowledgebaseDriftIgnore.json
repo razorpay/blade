@@ -51,6 +51,7 @@
     "AreaChart": "Composed from ChartArea* parts; no AreaChart export",
     "BarChart": "Composed from ChartBar* parts; no BarChart export",
     "DonutChart": "Composed from ChartDonut* parts; no DonutChart export",
+    "FunnelChart": "Composed from ChartFunnel* parts; no FunnelChart export",
     "LineChart": "Composed from ChartLine* parts; no LineChart export",
     "SankeyChart": "Composed from ChartSankey* parts; no SankeyChart export",
     "Icons": "Documents the icon set, not a single component",

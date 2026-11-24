@@ -2,7 +2,11 @@ import React from 'react';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { fileUploadItemColorTokens, fileUploadItemHeightTokens } from './fileUploadTokens';
+import {
+  fileUploadItemColorTokens,
+  fileUploadItemCompactTokens,
+  fileUploadItemHeightTokens,
+} from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -29,10 +33,11 @@ type NativeProps = Omit<StyledFileUploadItemWrapperProps, 'theme'> &
 const StyledFileUploadItemWrapper = ({
   status,
   size,
+  isCompact = false,
   children,
   borderRadius = 'medium',
   borderWidth = 'thin',
-  width = '100%',
+  width,
   minWidth,
   maxWidth,
   flexShrink,
@@ -41,6 +46,35 @@ const StyledFileUploadItemWrapper = ({
   ...rest
 }: NativeProps): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
+  const errorOrDefault = status === 'error' ? 'error' : 'default';
+
+  if (isCompact) {
+    return (
+      <BaseBox
+        position="relative"
+        overflow="hidden"
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        alignSelf="flex-start"
+        borderStyle="solid"
+        borderWidth={borderWidth}
+        borderRadius={borderRadius}
+        minHeight={makeSize(fileUploadItemCompactTokens.height)}
+        width={width}
+        minWidth={minWidth}
+        maxWidth={maxWidth}
+        flexShrink={flexShrink}
+        flexGrow={flexGrow}
+        flexBasis={flexBasis}
+        backgroundColor={getIn(theme.colors, fileUploadItemCompactTokens.background.default)}
+        borderColor={getIn(theme.colors, fileUploadItemCompactTokens.border[errorOrDefault])}
+        {...getStyledProps(rest)}
+      >
+        {children}
+      </BaseBox>
+    );
+  }
 
   const shadowColor =
     colorScheme === 'light'
@@ -57,17 +91,14 @@ const StyledFileUploadItemWrapper = ({
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       minHeight={makeSize(fileUploadItemHeightTokens[size])}
-      width={width}
+      width={width ?? '100%'}
       minWidth={minWidth}
       maxWidth={maxWidth}
       flexShrink={flexShrink}
       flexGrow={flexGrow}
       flexBasis={flexBasis}
       backgroundColor={getIn(theme.colors, fileUploadItemColorTokens.background)}
-      borderColor={getIn(
-        theme.colors,
-        fileUploadItemColorTokens.border[status === 'error' ? 'error' : 'default'],
-      )}
+      borderColor={getIn(theme.colors, fileUploadItemColorTokens.border[errorOrDefault])}
       style={{
         shadowColor,
         shadowOffset: { width: 0, height: 0.5 },

@@ -9,6 +9,8 @@ import { Button } from '~components/Button';
 import {
   AnnouncementIcon,
   CheckIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   ClockIcon,
   DownloadIcon,
   MoreHorizontalIcon,
@@ -107,6 +109,55 @@ export const SimpleDrawer = DrawerTemplate.bind({});
 export const NoOverlay = DrawerTemplate.bind({});
 NoOverlay.args = {
   showOverlay: false,
+};
+
+const employees = [
+  { name: 'Nisha Batra', id: 'EMP-0212', location: 'Bengaluru' },
+  { name: 'Gaurav Sinha', id: 'EMP-0220', location: 'Pune' },
+  { name: 'Kiran Desai', id: 'EMP-0228', location: 'Bengaluru' },
+];
+
+export const WithTwoTrailingActions = (args: DrawerProps): React.ReactElement => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [index, setIndex] = React.useState(0);
+  const employee = employees[index];
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
+      <Drawer
+        {...args}
+        isOpen={args.isOpen ?? isDrawerOpen}
+        onDismiss={() => setIsDrawerOpen(false)}
+      >
+        <DrawerHeader
+          title={employee.name}
+          subtitle={`${employee.id} · ${employee.location}`}
+          trailing={[
+            <IconButton
+              key="previous"
+              icon={ChevronLeftIcon}
+              accessibilityLabel="Previous employee"
+              isDisabled={index === 0}
+              onClick={() => setIndex(index - 1)}
+            />,
+            <IconButton
+              key="next"
+              icon={ChevronRightIcon}
+              accessibilityLabel="Next employee"
+              isDisabled={index === employees.length - 1}
+              onClick={() => setIndex(index + 1)}
+            />,
+          ]}
+        />
+        <DrawerBody>
+          <Text>
+            Showing {index + 1} of {employees.length} employees. Use the arrows in the header to
+            move between records without closing the drawer.
+          </Text>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
 };
 
 export const DrawerStacking = (args: DrawerProps): React.ReactElement => {

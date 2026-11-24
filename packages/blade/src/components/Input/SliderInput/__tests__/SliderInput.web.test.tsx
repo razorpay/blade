@@ -2,6 +2,7 @@ import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
 import { SliderInput } from '../index';
+import { getBoundLabelsMinWidth, getLabelWidth, getMinTrackWidth } from '../utils';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { motion } from '~tokens/global';
@@ -26,6 +27,50 @@ describe('<SliderInput />', () => {
       />,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  describe('track minimum width', () => {
+    // The nearest ancestor of the thumb that sets a min-width is the track's wrapper.
+    const getTrackMinWidth = (slider: HTMLElement): number => {
+      let node: HTMLElement | null = slider;
+      while (node) {
+        const minWidth = parseFloat(getComputedStyle(node).minWidth);
+        if (minWidth > 0) return minWidth;
+        node = node.parentElement;
+      }
+      return 0;
+    };
+
+    it('should not reserve room per step when nothing is drawn per step', () => {
+      // A 10 minute call seeked in 1 second steps. Markers and scale are off, so the track
+      // should not need 10px for each of the 600 steps.
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Seek" min={0} max={600} step={1} />,
+      );
+      expect(getTrackMinWidth(getByRole('slider'))).toBeLessThan(100);
+    });
+
+    it('should still reserve room per step when markers are shown', () => {
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Corner Radius" min={0} max={40} step={4} showMarkers />,
+      );
+      // 11 markers at the 10px pitch floor.
+      expect(getTrackMinWidth(getByRole('slider'))).toBeGreaterThanOrEqual(100);
+    });
+
+    it('should reserve room for only the two bound labels of an endpoints-only scale', () => {
+      // showScaleValues={false} still draws the two bound labels, so they need room not to
+      // overlap, but none of the 100,001 steps is drawn, so no per-step room is reserved.
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Amount" min={0} max={100000} showScale showScaleValues={false} />,
+      );
+      expect(getTrackMinWidth(getByRole('slider'))).toBe(
+        Math.max(
+          getMinTrackWidth(2, 0),
+          getBoundLabelsMinWidth(getLabelWidth(0), getLabelWidth(100000)),
+        ),
+      );
+    });
   });
 
   it('should expose the range and the current value to assistive technology', () => {
@@ -323,6 +368,26 @@ describe('<SliderInput />', () => {
     expect(getByText('0')).toBeInTheDocument();
     expect(getByText('100')).toBeInTheDocument();
     expect(queryByText('50')).not.toBeInTheDocument();
+  });
+
+  it('should size the field for both bound labels when showScaleValues is false', () => {
+    // Both bounds are anchored inward, so wordy labels need room side by side even though the
+    // stops between them are never rendered or spaced.
+    const retryPolicies = ['Always ask me', 'Retry once', 'Retry twice', 'Always retry'];
+    const { container } = renderWithTheme(
+      <SliderInput
+        label="When a call fails"
+        min={0}
+        max={retryPolicies.length - 1}
+        step={1}
+        showScale
+        showScaleValues={false}
+        showValueIndicator={false}
+        formatValue={(value) => retryPolicies[value]}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should focus the thumb on click so the keyboard works straight after a drag', async () => {

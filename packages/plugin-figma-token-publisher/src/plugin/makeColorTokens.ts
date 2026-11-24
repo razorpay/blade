@@ -4,6 +4,7 @@
 import setValue from '../utils/setValue';
 import { opacity as opacityTokens } from '../../../blade/src/tokens/global/opacity';
 import showNotification from './showNotification';
+import { postToUI } from './uiBridge';
 import validateColorTokens from './validateColorTokens';
 import type {
   LegacyThemeModes,
@@ -330,9 +331,11 @@ export const makeColorTokens = async (): Promise<void> => {
 
   const hasErrors = report.errors.length > 0;
 
+  // `information` either way: an `error` notification closes the plugin, which would take the
+  // report this message points at down with it. Export is blocked in the UI instead.
   showNotification({
     figma,
-    type: hasErrors ? 'error' : 'information',
+    type: 'information',
     text: hasErrors
       ? `⛔️ ${report.errors.length} problem(s) found — see the plugin window.`
       : '✅ Color tokens created!',
@@ -358,7 +361,7 @@ export const makeColorTokens = async (): Promise<void> => {
     report,
   };
 
-  figma.ui.postMessage({ type: 'export-color-tokens', data });
+  postToUI({ type: 'export-color-tokens', data });
   console.log(data);
 
   // The default window only fits the token field. A report needs room to be read rather than

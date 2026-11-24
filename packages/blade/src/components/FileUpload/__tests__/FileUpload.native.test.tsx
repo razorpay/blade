@@ -590,6 +590,110 @@ describe('<FileUploadItem /> (native)', () => {
     expect(queryByText(/Uploading/)).toBeNull();
   });
 
+  describe('compact chip', () => {
+    const compactSuccessFile = {
+      id: 'c-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success',
+    } as BladeFile;
+    const compactErrorFile = {
+      id: 'c-2',
+      name: 'statement.csv',
+      size: 2048,
+      status: 'error',
+      errorText: 'This file is larger than 5 MB',
+    } as BladeFile;
+
+    it('should render a compact chip', () => {
+      const { toJSON } = renderWithTheme(
+        <FileUploadItem _isCompact file={compactSuccessFile} onRemove={jest.fn()} />,
+      );
+      expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
+    });
+
+    it('should show only the name and one remove action', () => {
+      const onRemove = jest.fn();
+      const { getByText, queryByText, getByLabelText, queryByLabelText } = renderWithTheme(
+        <FileUploadItem
+          _isCompact
+          file={compactSuccessFile}
+          onRemove={onRemove}
+          onPreview={jest.fn()}
+        />,
+      );
+
+      expect(getByText('report.pdf')).toBeTruthy();
+      expect(queryByText(/KB/)).toBeNull();
+      expect(queryByLabelText('Preview report.pdf')).toBeNull();
+
+      fireEvent.press(getByLabelText('Remove report.pdf'));
+      expect(onRemove).toHaveBeenCalledWith({ file: compactSuccessFile });
+    });
+
+    it('should offer retry and keep × for a failed file when onReupload is set', () => {
+      const onReupload = jest.fn();
+      const onRemove = jest.fn();
+      const { getByLabelText } = renderWithTheme(
+        <FileUploadItem
+          _isCompact
+          file={compactErrorFile}
+          onReupload={onReupload}
+          onRemove={onRemove}
+        />,
+      );
+
+      fireEvent.press(getByLabelText('Reupload statement.csv'));
+      expect(onReupload).toHaveBeenCalledWith({ file: compactErrorFile });
+      fireEvent.press(getByLabelText('Remove statement.csv'));
+      expect(onRemove).toHaveBeenCalledWith({ file: compactErrorFile });
+    });
+
+    it('should offer only × for a failed file without onReupload', () => {
+      const { getByLabelText, queryByLabelText } = renderWithTheme(
+        <FileUploadItem _isCompact file={compactErrorFile} onRemove={jest.fn()} />,
+      );
+
+      expect(queryByLabelText('Reupload statement.csv')).toBeNull();
+      expect(getByLabelText('Remove statement.csv')).toBeTruthy();
+    });
+
+    it('should let a long name shrink so retry and × stay reachable', () => {
+      const longNameFile = {
+        ...compactErrorFile,
+        name: 'settlement-report-october-2026-final-reconciled.xlsx',
+      } as BladeFile;
+      const { getByTestId, getByLabelText } = renderWithTheme(
+        <FileUploadItem
+          _isCompact
+          file={longNameFile}
+          onReupload={jest.fn()}
+          onRemove={jest.fn()}
+        />,
+      );
+
+      // React Native doesn't shrink flex items unless told to
+      const trigger = getByTestId('tooltip-interactive-wrapper');
+      expect(trigger).toHaveStyle({ flexShrink: 1, minWidth: 0 });
+      expect(getByLabelText(`Reupload ${longNameFile.name}`)).toBeTruthy();
+      expect(getByLabelText(`Remove ${longNameFile.name}`)).toBeTruthy();
+    });
+
+    it('should show why the upload failed when the chip is tapped', () => {
+      const { getByTestId, queryByText, getByText } = renderWithTheme(
+        <FileUploadItem _isCompact file={compactErrorFile} onRemove={jest.fn()} />,
+      );
+
+      expect(queryByText('This file is larger than 5 MB')).toBeNull();
+      // screen readers hear the name and the reason without a tap
+      expect(getByTestId('tooltip-interactive-wrapper').props.accessibilityLabel).toBe(
+        'statement.csv, upload failed: This file is larger than 5 MB',
+      );
+      fireEvent(getByTestId('tooltip-interactive-wrapper'), 'touchEnd');
+      expect(getByText('This file is larger than 5 MB')).toBeTruthy();
+    });
+  });
+
   it('should offer Reupload and no trash button for a failed file inside FileUpload', () => {
     const { getByLabelText, queryByLabelText } = renderWithTheme(
       <FileUpload

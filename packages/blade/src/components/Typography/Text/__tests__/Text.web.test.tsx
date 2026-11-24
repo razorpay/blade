@@ -40,6 +40,46 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should end a single right-aligned truncated line with an ellipsis', () => {
+    const displayText = 'Summarises every failed payout and drafts the retry plan for finance';
+    const { getByText } = renderWithTheme(
+      <Text truncateAfterLines={1} textAlign="right">
+        {displayText}
+      </Text>,
+    );
+    // Chrome drops a line clamp's ellipsis on right-aligned text.
+    expect(getByText(displayText)).toHaveStyle({
+      display: 'block',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      minWidth: '0',
+    });
+    expect(getByText(displayText)).not.toHaveStyle({ display: '-webkit-box' });
+  });
+
+  it.each([
+    ['a left-aligned single line', 1, undefined],
+    ['a centred single line', 1, 'center'],
+    ['more than one line', 2, 'right'],
+  ] as const)(
+    'should keep the line clamp when truncating %s',
+    (_, truncateAfterLines, textAlign) => {
+      const displayText = 'Summarises every failed payout and drafts the retry plan for finance';
+      const { getByText } = renderWithTheme(
+        <Text truncateAfterLines={truncateAfterLines} textAlign={textAlign}>
+          {displayText}
+        </Text>,
+      );
+      // The clamp keeps min-content at the longest word, so shrinkable parents can still narrow it.
+      expect(getByText(displayText)).toHaveStyle({
+        display: '-webkit-box',
+        overflow: 'hidden',
+      });
+      expect(getByText(displayText)).not.toHaveStyle({ whiteSpace: 'nowrap' });
+    },
+  );
+
   it('should render Text with color', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(

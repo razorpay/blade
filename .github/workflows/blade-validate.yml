@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   validate:
@@ -113,7 +113,8 @@ jobs:
 
   svelte-e2e:
     name: Run Svelte E2E Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    # Pinned: Playwright cannot install browsers on ubuntu-latest (26.04)
+    runs-on: ubuntu-24.04 # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -156,11 +157,9 @@ jobs:
 
   coverage-report:
     name: Generate Coverage Report
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     needs: test
     permissions:
-      checks: write
-      pull-requests: write
       contents: read
       actions: read
     steps:
@@ -216,10 +215,11 @@ jobs:
             echo "Error: coverage/coverage-final.json not found"
             exit 1
           fi
-      - name: Prepare Coverage Comment
+      # Written to the job summary, not a PR comment: the org IP allow list refuses GitHub API
+      # calls from GitHub-hosted runners (403 since 12 Nov 2026).
+      - name: Write Coverage Report to Job Summary
         run: |
-          echo '<!-- coverage-report-comment -->' > coverage-comment.md
-          echo '## 🛡️ Coverage Report' >> coverage-comment.md
+          echo '## 🛡️ Coverage Report' > coverage-comment.md
           echo '' >> coverage-comment.md
           echo '### Summary' >> coverage-comment.md
           echo '```' >> coverage-comment.md
@@ -234,18 +234,4 @@ jobs:
           echo '```' >> coverage-comment.md
           echo '' >> coverage-comment.md
           echo '</details>' >> coverage-comment.md
-      - name: Find existing coverage comment
-        uses: peter-evans/find-comment@v3
-        id: fc
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'rzpcibot'
-          body-includes: '<!-- coverage-report-comment -->'
-      - name: Create or update coverage comment
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body-file: coverage-comment.md
-          token: ${{ secrets.CI_BOT_TOKEN }}
-          edit-mode: replace
+          cat coverage-comment.md >> "$GITHUB_STEP_SUMMARY"
