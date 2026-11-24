@@ -25,17 +25,19 @@ const LEAD = 0.02;
 type OutcomeMap = { k: number; dx: number; dy: number };
 /**
  * the map outcomeComps.ts is laid with: flow 10.5's at its reference size (its chat panel in a 1512 x 982 window). flow 10.5 works
- * its map out for the window it's in, so on a shorter one its splash and the halves' rise sit lower; laid again from this for the
- * box it plays in, Blade's do too (the user: on a laptop, success and error rose higher than flow 10.5's)
+ * its map out for the window it's in, so in a shorter one its splash and the halves' rise sit lower (in a short one, mostly below
+ * its bottom edge); laid again from this for the box it plays in, Blade's do too (the user: on a laptop, success and error rose
+ * higher than flow 10.5's; in Storybook's short canvas, "super inflated")
  */
 const REF_MAP: OutcomeMap = { k: 0.9603174603174603, dx: 62, dy: 42 };
-/** the effects success-blob places: the splash and its ring moved and sized, the halves only up or down (flow 10.5's FX9) */
-const PLACED: Partial<Record<string, 'xy' | 'y'>> = {
-  eSplash: 'xy',
-  eRing: 'xy',
-  eHalfL: 'y',
-  eHalfR: 'y',
-};
+/** the effects laid where success-blob shows them, moved and sized: the splash and its ring */
+const PLACED: Partial<Record<string, 'xy' | 'y'>> = { eSplash: 'xy', eRing: 'xy' };
+/**
+ * the halves (the strip's swell): they stay on the strip, and their height (their sy, round their own y) is keyed so their top comes
+ * as high as success-blob's: in a window shorter than the comp's, success-blob lays its whole piece lower, so the swell is shorter (the
+ * user: "the strip never goes anywhere, just the keyframed height of the bottom wave ... the wave is just shorter")
+ */
+const HALVES = ['eHalfL', 'eHalfR'];
 
 /**
  * success-blob's map for an outcome on a chat whose box is `box` and whose chat input anchor is `input` (its middle across, its
@@ -66,7 +68,20 @@ const placeOutcome = (data: FreshOutcome, map: OutcomeMap): FreshOutcome => {
     xy: { x: (v) => r * (v - REF_MAP.dx) + map.dx, y, s: (v) => v * r },
     y: { y },
   };
+  // a half's top, at its height sy: its y less its points' reach above it x sy (comp px from the middle). Its top as success-blob lays
+  // it (its whole piece at map.k round the chat's box) gives the height that brings it there from where it is (its y kept)
+  const halves: Record<string, (v: number) => number> = {};
+  for (const sh of data.after) {
+    if (!HALVES.includes(sh.id as string)) continue;
+    const y0 = sh.y as number;
+    const pts = (sh.pts as { y: number }[] | undefined) ?? [];
+    const up = Math.max(1, -Math.min(0, ...pts.map((p) => p.y)));
+    const raw = (y0 - REF_MAP.dy) / REF_MAP.k;
+    halves[sh.id as string] = (sy) => Math.max(0, (y0 - (map.k * raw + map.dy)) / up + map.k * sy);
+  }
   const shape = (sh: Record<string, unknown>): Record<string, unknown> => {
+    const half = halves[sh.id as string];
+    if (half) return { ...sh, sy: half(typeof sh.sy === 'number' ? sh.sy : 1) };
     const how = PLACED[sh.id as string];
     if (!how) return sh;
     // (a shape's size is 1 unless it says)
@@ -81,7 +96,8 @@ const placeOutcome = (data: FreshOutcome, map: OutcomeMap): FreshOutcome => {
   for (const [key, keys] of Object.entries(data.K)) {
     const m = /^s:([^:]+):(.+)$/.exec(key);
     const how = m && PLACED[m[1]];
-    const f = how && m ? by[how][m[2]] : undefined;
+    const f =
+      m && m[2] === 'sy' && halves[m[1]] ? halves[m[1]] : how && m ? by[how][m[2]] : undefined;
     K[key] = f ? keys.map((k) => ({ ...k, v: f(k.v as number) })) : keys;
   }
   return { ...data, before: data.before.map(shape), after: data.after.map(shape), K };

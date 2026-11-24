@@ -114,14 +114,26 @@ describe('outcomeMap: the splash laid as flow 10.5 lays it, for the window it pl
     // (comp px from the middle, down: further down, and a little smaller)
     expect(splash(short).y).toBeGreaterThan(splash(made).y + 100);
     expect(splash(short).s).toBeLessThan(splash(made).s);
-    // the splash's growth keyed smaller by the same map, the halves lower; the strip itself untouched
+    // the splash's growth keyed smaller by the same map; the strip itself untouched
     const grows = (doc: FreshDoc): number[] =>
       keys(comp(doc, 'c3'))['s:eSplash:s'].map((k) => k.v as number);
     grows(short).forEach((v, i) => expect(v).toBeLessThan(grows(made)[i]));
+    expect(keys(comp(short, 'c3'))['s:s2:y']).toEqual(keys(comp(made, 'c3'))['s:s2:y']);
+    // the halves (the strip's swell) stay on the strip, their swell shorter: at the reference size as success-blob draws it (its piece
+    // at 0.96), and shorter still in a shorter window, its top where success-blob's is
     const half = (doc: FreshDoc): number =>
       ((comp(doc, 'c3').shapes as { id: string; y: number }[]) ?? []).find((x) => x.id === 'eHalfL')
         ?.y ?? NaN;
-    expect(half(short)).toBeGreaterThan(half(made) + 100);
-    expect(keys(comp(short, 'c3'))['s:s2:y']).toEqual(keys(comp(made, 'c3'))['s:s2:y']);
+    expect(half(short)).toBe(half(made));
+    const swell = (doc: FreshDoc): number[] =>
+      keys(comp(doc, 'c3'))['s:eHalfL:sy'].map((k) => k.v as number);
+    swell(ref).forEach((v, i) => expect(v).toBeCloseTo(swell(made)[i] * 0.9603, 3));
+    swell(short).forEach((v, i) => expect(v).toBeLessThan(swell(ref)[i] - 1));
+    // (the swell's top, comp px from the middle: success-blob's at 1440 x 800, its whole piece at k round the chat's box)
+    const k = 0.9126984126984127;
+    const raw = (half(made) - 42) / 0.9603174603174603;
+    swell(short).forEach((v, i) =>
+      expect(half(short) - 100 * v).toBeCloseTo(k * (raw - 100 * swell(made)[i]) + 224, 1),
+    );
   });
 });

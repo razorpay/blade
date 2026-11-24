@@ -203,7 +203,8 @@ class ChatStates {
   private startOutcome(driver: ChatDriver, outcome: Outcome, anchors: ChatAnchors): void {
     const M = this.outcomeModule;
     if (!M) return;
-    // (its splash laid as flow 10.5 lays it for the chat's box: lower in a shorter window)
+    // (laid as success-blob shows it for the chat's box: the strip stays at its rest, the splash goes where success-blob has it, the
+    // halves' swell as high as success-blob's)
     const box = anchors.box?.();
     const map = box ? M.outcomeMap(box, anchors.input, this.scale) : undefined;
     const key = map

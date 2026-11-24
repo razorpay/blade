@@ -39,19 +39,21 @@ const placeStage = (box: HTMLElement, top: number): void => {
   box.style.top = `${top}px`;
 };
 /**
- * flow 10.5's chat panel in its window (CSS px): under its 48 px top bar, 6 px above the window's bottom, 60 px narrower (its sidebar
- * and margins), its chat input centred across it. A lone RazorSenseBottomWave lays an outcome's splash in this, as flow 10.5 lays it
- * in its chat panel
+ * success-blob.html's chat area in its window (CSS px, measured; flow 10.5's chat panel is the same): under its 48 px top bar, 6 px above
+ * the window's bottom, 60 px narrower (its sidebar and margins)
  */
-const CHAT_PANEL = { top: 48, bottom: 6, across: 60 };
-/** flow 10.5's chat panel for a window `win` (in the stage's CSS px) round a chat input whose middle is `middle` across */
-const panelIn = (win: Rect, middle: number): Rect => {
-  const width = Math.max(1, win.width - CHAT_PANEL.across);
+const BLOB_CHAT = { top: 48, bottom: 6, across: 60 };
+/**
+ * success-blob's chat area for a window `win` (in the stage's CSS px), centred across it: a lone RazorSenseBottomWave plays an
+ * outcome as success-blob shows it in this, so where its chat input is put, and how it's sized and scaled, don't move it
+ */
+const blobChatIn = (win: Rect): Rect => {
+  const width = Math.max(1, win.width - BLOB_CHAT.across);
   return {
-    left: middle - width / 2,
-    top: win.top + CHAT_PANEL.top,
+    left: win.left + (win.width - width) / 2,
+    top: win.top + BLOB_CHAT.top,
     width,
-    height: Math.max(1, win.height - CHAT_PANEL.top - CHAT_PANEL.bottom),
+    height: Math.max(1, win.height - BLOB_CHAT.top - BLOB_CHAT.bottom),
   };
 };
 /** a box on screen in `stage`'s own CSS px */
@@ -117,7 +119,7 @@ export {
   REST_STEP,
   placeStage,
   REST_REACH_UP,
-  panelIn,
+  blobChatIn,
   windowIn,
 };
 export type { Rect };

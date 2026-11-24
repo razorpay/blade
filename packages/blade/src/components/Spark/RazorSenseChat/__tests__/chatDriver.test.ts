@@ -149,6 +149,26 @@ describe('ChatDriver', () => {
     for (let i = 1; i < piece.length; i++) expect(piece[i]).toBeGreaterThanOrEqual(piece[i - 1]);
   });
 
+  it('draws light’s strip at rest with half its upward drift: halfway between flow 9’s (none) and flow 10.5’s (as made)', () => {
+    const pu: Record<string, number> = {};
+    const recorder = (new Proxy(
+      {},
+      {
+        get: (_, key) => (...args: unknown[]): void => {
+          if (key === 'comp') pu[args[0] as string] = (args[1] as { pu: number }).pu;
+        },
+      },
+    ) as unknown) as FreshPlayer;
+    const driver = makeDriver();
+    driver.think();
+    let now = run(driver, 0.5, 0);
+    driver.answer(now);
+    now = run(driver, 15, now);
+    driver.step(recorder, 0.05, now);
+    // (the strip page at rest: c3 or b_c3)
+    expect(pu[driver.restComp() ?? '']).toBe(0.5);
+  });
+
   it('a new question mid-outcome plays it out quickly, then rises', () => {
     const driver = makeDriver();
     driver.think();

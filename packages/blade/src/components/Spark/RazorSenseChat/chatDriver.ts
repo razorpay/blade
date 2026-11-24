@@ -469,8 +469,9 @@ class ChatDriver {
       if (!g) continue;
       this.opSet(g, op);
       if (!(op > 5e-4)) continue;
-      // light's strip: no upward drift; dark's as made
-      g.pu = !this.isDark && M.rtl ? +(M.rtl.up ?? 1) : 1;
+      // the strip's path drift upward: halfway between flow 9's and flow 10.5's (the user's pick). Light: flow 9 held it flat (its
+      // rtl.up, 0), flow 10.5 draws it as made (1), so half; dark: as made in both
+      g.pu = this.isDark ? 1 : (+(M.rtl?.up ?? 0) + 1) / 2;
       g.pt = this.path;
       // (the strip held at its end, or on through its outcome)
       g.t =

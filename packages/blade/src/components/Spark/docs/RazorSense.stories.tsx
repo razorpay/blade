@@ -66,6 +66,14 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   );
 };
 
+/**
+ * the 2.0 stories' ground in dark: flow 10.5's dark page (#131315), the ground the pieces' dark looks are made on. Blade's dark
+ * surface.background.gray.moderate is #131415, a level off it; the canvas's own (gray.intense, #1F2123) is lighter, and the pieces'
+ * near-black ground showed on it as a darker patch. Light keeps the canvas's own
+ */
+const useDarkGround = (): 'surface.background.gray.moderate' | undefined =>
+  useTheme().colorScheme === 'dark' ? 'surface.background.gray.moderate' : undefined;
+
 export const Default = RazorSenseTemplate.bind({});
 
 /**
@@ -77,6 +85,7 @@ export const Default = RazorSenseTemplate.bind({});
  * splash that plays while the page loads and then gets out of the way.
  */
 export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
+  const ground = useDarkGround();
   const [run, setRun] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
@@ -86,7 +95,7 @@ export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
     setRun((n) => n + 1);
   };
   return (
-    <Box margin="-32px" position="relative" height="100vh">
+    <Box margin="-32px" position="relative" height="100vh" backgroundColor={ground}>
       <RazorSenseLoader key={run} isLoading={isLoading} onComplete={() => setIsComplete(true)} />
       <Box
         position="absolute"
@@ -154,10 +163,17 @@ ColorSchemeAware.storyName = 'Color Scheme Aware';
  * Color Scheme Aware above.
  */
 export const ColorSchemeAwareV2: StoryFn<typeof RazorSenseChatBackground> = () => {
+  const ground = useDarkGround();
   const { colorScheme, setColorScheme } = useTheme();
 
   return (
-    <Box display="flex" flexDirection="column" height="100vh" gap="spacing.4">
+    <Box
+      display="flex"
+      flexDirection="column"
+      height="100vh"
+      gap="spacing.4"
+      backgroundColor={ground}
+    >
       <Box display="flex" alignItems="center" gap="spacing.4">
         <Button
           variant="secondary"
@@ -201,10 +217,17 @@ DefaultPaused.args = {
  * Default Paused above, a full-page piece.
  */
 export const DefaultPausedV2: StoryFn<{ scale: number }> = ({ scale }) => {
+  const ground = useDarkGround();
   const { colorScheme, setColorScheme } = useTheme();
   const [isPaused, setIsPaused] = useState(false);
   return (
-    <Box margin="-32px" height="100vh" display="flex" flexDirection="column">
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={ground}
+    >
       <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
         <Button
           size="small"
@@ -322,10 +345,17 @@ export const DefaultPausedChatBackgroundV2: StoryFn<EffectControls> = ({
   x,
   y,
 }) => {
+  const ground = useDarkGround();
   const [isUiHidden, setIsUiHidden] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   return (
-    <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+    <Box
+      margin="-32px"
+      position="relative"
+      height="100vh"
+      overflow="hidden"
+      backgroundColor={ground}
+    >
       <Box
         height="100%"
         display="flex"
@@ -516,6 +546,7 @@ export const BottomWave = BottomWaveTemplate.bind({});
  * buttons only set those props. The controls size the box it settles under, scale it and move it.
  */
 export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  const ground = useDarkGround();
   const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
   const [isOffline, setIsOffline] = useState(false);
   // (an outcome plays once each time it's set: cleared first, so the same one plays again)
@@ -524,7 +555,13 @@ export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x,
     window.setTimeout(() => setOutcome(next), 50);
   };
   return (
-    <Box margin="-32px" position="relative" height="100vh" overflow="hidden">
+    <Box
+      margin="-32px"
+      position="relative"
+      height="100vh"
+      overflow="hidden"
+      backgroundColor={ground}
+    >
       <Box
         position="absolute"
         top="spacing.0"
@@ -755,6 +792,7 @@ const SuggestionTray = ({ onPick }: { onPick: (question: string) => void }) => {
  * opens it, as an app's dictation would; RazorSense only reads it). "Stop" morphs it back.
  */
 export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
+  const ground = useDarkGround();
   const [place, setPlace] = useState<'landing' | 'chat'>('landing');
   const [isMic, setIsMic] = useState(false);
   const [voice, setVoice] = useState<StoryVoice | null>(null);
@@ -787,7 +825,7 @@ export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
       height="100vh"
       display="flex"
       flexDirection="column"
-      backgroundColor={place === 'chat' ? 'surface.background.gray.moderate' : undefined}
+      backgroundColor={place === 'chat' ? 'surface.background.gray.moderate' : ground}
     >
       <Box
         display="flex"
@@ -2788,9 +2826,16 @@ LoginPage.storyName = 'Login Page';
  * form and the pitch are the Login Page story's own. Light and dark are their own tunings: switch them in the bar.
  */
 export const LoginPageV2: StoryFn<typeof RazorSenseBackground> = () => {
+  const ground = useDarkGround();
   const { colorScheme, setColorScheme } = useTheme();
   return (
-    <Box margin="-32px" height="100vh" display="flex" flexDirection="column">
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={ground}
+    >
       <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
         <Button
           size="small"
