@@ -330,6 +330,8 @@ const useChatInput = (
   // closes when focus leaves the box, and opens again when it comes back
   const isCommandMenuOpen =
     commandItems.length > 0 && dismissedCommandText !== textValue && !isDisabled && isFocused;
+  // the reset to 0 below runs after render, so keep the index inside a list that just got shorter
+  const activeCommandIndex = Math.min(commandActiveIndex, Math.max(commandItems.length - 1, 0));
 
   React.useEffect(() => {
     setCommandActiveIndex(0);
@@ -368,18 +370,20 @@ const useChatInput = (
       if (isCommandMenuOpen && !isComposing) {
         if (event.key === 'ArrowDown') {
           event.preventDefault();
-          setCommandActiveIndex((index) => (index + 1) % commandItems.length);
+          setCommandActiveIndex((activeCommandIndex + 1) % commandItems.length);
           return;
         }
         if (event.key === 'ArrowUp') {
           event.preventDefault();
-          setCommandActiveIndex((index) => (index - 1 + commandItems.length) % commandItems.length);
+          setCommandActiveIndex(
+            (activeCommandIndex - 1 + commandItems.length) % commandItems.length,
+          );
           return;
         }
         // Shift+Enter still adds a new line, as it does everywhere else in the box
         if (event.key === 'Enter' && !event.shiftKey) {
           event.preventDefault();
-          selectCommand(commandItems[commandActiveIndex] ?? commandItems[0]);
+          selectCommand(commandItems[activeCommandIndex]);
           return;
         }
         if (event.key === 'Tab') {
@@ -411,7 +415,7 @@ const useChatInput = (
     [
       isCommandMenuOpen,
       commandItems,
-      commandActiveIndex,
+      activeCommandIndex,
       selectCommand,
       textValue,
       handleSubmit,
@@ -605,7 +609,7 @@ const useChatInput = (
       isOpen: isCommandMenuOpen,
       listboxId,
       items: commandItems,
-      activeIndex: commandActiveIndex,
+      activeIndex: activeCommandIndex,
       setActiveIndex: setCommandActiveIndex,
       getOptionId,
       select: selectCommand,
