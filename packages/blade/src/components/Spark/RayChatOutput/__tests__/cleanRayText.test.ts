@@ -56,6 +56,50 @@ describe('cleanRayText', () => {
     });
   });
 
+  describe('Markdown tables', () => {
+    // Tables are drawn as cards, so the chat doesn't parse them (no remark-gfm). A table RAY
+    // writes in its text becomes an aligned plain-text block instead of rows of pipes.
+    it('become an aligned plain-text block', () => {
+      expect(
+        cleanRayText(
+          [
+            'Here are your payments:',
+            '',
+            '| Date | Amount | Status |',
+            '|---|---:|---|',
+            '| 21 Sep 2026 | **₹500** | Paid ✅ |',
+            '| 22 Sep | ₹1,200 | `captured` |',
+            '',
+            'Anything else?',
+          ].join('\n'),
+        ),
+      ).toBe(
+        [
+          'Here are your payments:',
+          '',
+          '```',
+          'Date          Amount   Status',
+          '21 Sep 2026     ₹500   Paid',
+          '22 Sep        ₹1,200   captured',
+          '```',
+          '',
+          'Anything else?',
+        ].join('\n'),
+      );
+    });
+
+    it('keep IDs, links’ text and escaped pipes', () => {
+      expect(
+        cleanRayText('ID | Note\n--- | ---\norder_id_123 | [docs](https://x.test) a \\| b'),
+      ).toBe('```\nID             Note\norder_id_123   docs a | b\n```');
+    });
+
+    it('leave a table inside a code block, and a heading underlined with ---, alone', () => {
+      expect(cleanRayText('```\n| a | b |\n|---|---|\n```')).toBe('```\n| a | b |\n|---|---|\n```');
+      expect(cleanRayText('Fees\n---\nTwo kinds.')).toBe('Fees\n---\nTwo kinds.');
+    });
+  });
+
   it('returns an empty string for an empty reply', () => {
     expect(cleanRayText('')).toBe('');
     expect(cleanRayText('  🎉  ')).toBe('');

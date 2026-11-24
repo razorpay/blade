@@ -135,6 +135,22 @@ LinksHtmlImagesAndCode.play = async ({ canvasElement }) => {
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
 };
 
+export const TableInText: StoryFn = () => (
+  <Answer>
+    {'Your payments:\n\n| Date | Amount |\n|---|---:|\n| 21 Sep | **₹500** |\n| 22 Sep | ₹1,200 |'}
+  </Answer>
+);
+TableInText.play = async ({ canvasElement }) => {
+  // Tables are drawn as cards; in the chat text one becomes an aligned block, not rows of pipes.
+  const blocks = blocksOf(canvasElement);
+  await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'PRE']);
+  // (a code block's text ends with its newline)
+  await expect(blocks[1].textContent?.trimEnd()).toBe(
+    'Date     Amount\n21 Sep     ₹500\n22 Sep   ₹1,200',
+  );
+  await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
+};
+
 const GENUI_REPLY = [
   {
     component: 'TEXT',

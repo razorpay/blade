@@ -113,6 +113,13 @@ After a divider the next block opens a section, 24 below.
 
 > A quote is drawn as plain text.
 
+Tables are drawn as cards, so a table in the text becomes an aligned block:
+
+| Payment | Amount | Status |
+|---|---:|---|
+| pay_29QQoUBi66xm2f | ₹48,200 | **Captured** |
+| pay_29QQoUBi66xm2g | ₹900 | Refunded |
+
 Emoji are left out 🎉, and so is <b>HTML</b>. An image is drawn as its alt text: ![settlement chart](https://x.test/chart.png)`,
 };
 

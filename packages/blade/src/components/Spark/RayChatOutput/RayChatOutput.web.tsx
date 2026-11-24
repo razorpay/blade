@@ -23,8 +23,8 @@ import type { BladeElementRef } from '~utils/types';
  *   body                 Inter 400, 14/24, -1.3%, gray.subtle   (lists 14/26)
  *   bold                 gray.normal, 600 in light, 700 in dark
  *
- * Gaps come from remarkRayChat as data-ray-chat-gap: 12 under a title, 16 between blocks,
- * 24 before a section.
+ * Gaps come from remarkRayChat as data-ray-chat-gap: 12 under a title and between a paragraph's
+ * lines, 16 between blocks, 24 before a section.
  */
 const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
   ${({ theme, $isDark }) => {

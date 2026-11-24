@@ -6,6 +6,8 @@
  *  - the JSON wrapper  ```json {"assistant_reply": "…"} ```  → the reply inside it, even while it streams
  *  - literal `\n` (a backslash and an n)                    → a real line break, outside code
  *  - emoji                                                   → dropped ("NO EMOJIS EVER"), outside code
+ *  - a Markdown table                                        → an aligned plain-text block. Tables are
+ *    drawn as cards, so the chat doesn't parse them (no remark-gfm); left alone they'd be rows of pipes.
  */
 
 // The wrapper's start: an optional ```json fence, then {"assistant_reply": "
@@ -56,7 +58,18 @@ const unwrapReply = (text: string): string => {
 };
 
 // Code is left as written: fenced blocks (including one still streaming) and inline code.
+const FENCED_CODE = /(```[\s\S]*?(?:```|$))/;
+const INLINE_CODE = /(`[^`\n]*`)/;
 const CODE = /(```[\s\S]*?(?:```|$)|`[^`\n]*`)/;
+
+/** Applies `tidy` to the text outside `code` (a pattern with one capturing group). */
+const mapOutside = (code: RegExp, text: string, tidy: (prose: string) => string): string =>
+  text
+    .split(code)
+    .map((part, index) => (index % 2 === 1 ? part : tidy(part)))
+    .join('');
+
+const realLineBreaks = (prose: string): string => prose.replace(/\\r\\n|\\n/g, '\n');
 
 // One emoji: a flag, a keycap, or a pictograph in emoji style with its skin tone and
 // zero-width-joined parts. Text symbols such as ©, ™ and ✔ are only emoji with U+FE0F after them.
@@ -67,17 +80,81 @@ const EMOJI_SOURCE =
 // Built with the constructor: the ES2019 target won't take \p{…} in a regex literal.
 const EMOJI_RUN = new RegExp(`( ?)(?:${EMOJI_SOURCE} ?)*${EMOJI_SOURCE}( ?)`, 'gu');
 
-const tidyProse = (prose: string): string =>
-  prose
-    .replace(/\\r\\n|\\n/g, '\n')
-    // An emoji between two spaces leaves one; at either end of a line it leaves none.
-    .replace(EMOJI_RUN, (_run, before: string, after: string) => (before && after ? ' ' : ''));
+// An emoji between two spaces leaves one; at either end of a line it leaves none.
+const dropEmoji = (prose: string): string =>
+  prose.replace(EMOJI_RUN, (_run, before: string, after: string) => (before && after ? ' ' : ''));
 
-const cleanRayText = (text: string): string =>
-  unwrapReply(text)
-    .split(CODE)
-    .map((part, index) => (index % 2 === 1 ? part : tidyProse(part)))
-    .join('')
+// A table: a row with pipes, then a delimiter row such as |---|---:|.
+const TABLE_DELIMITER = /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)*\|?\s*$/;
+const COLUMN_GAP = '   ';
+
+const isTableStart = (lines: string[], index: number): boolean =>
+  lines[index].includes('|') &&
+  (lines[index + 1] ?? '').includes('|') &&
+  TABLE_DELIMITER.test(lines[index + 1]);
+
+/** A row's cells; `\|` is a pipe inside a cell. */
+const splitCells = (row: string): string[] =>
+  row
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/(?<!\\)\|$/, '')
+    .split(/(?<!\\)\|/)
+    .map((cell) => cell.trim());
+
+/** A cell as plain text: no emoji, bold, italic, code ticks or link targets. Underscores stay (IDs). */
+const plainCell = (cell: string): string =>
+  dropEmoji(cell)
+    .replace(/\\\|/g, '|')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/`([^`]*)`/g, '$1')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     .trim();
+
+/** Rows padded into columns; a `---:` column is aligned right. */
+const alignRows = (rows: string[][], isRightAligned: boolean[]): string[] => {
+  const columns = Math.max(...rows.map((row) => row.length));
+  const widths = Array.from({ length: columns }, (_, column) =>
+    Math.max(...rows.map((row) => (row[column] ?? '').length)),
+  );
+  return rows.map((row) =>
+    widths
+      .map((width, column) => {
+        const cell = row[column] ?? '';
+        return isRightAligned[column] ? cell.padStart(width) : cell.padEnd(width);
+      })
+      .join(COLUMN_GAP)
+      .trimEnd(),
+  );
+};
+
+const tablesAsText = (prose: string): string => {
+  const lines = prose.split('\n');
+  const out: string[] = [];
+  for (let index = 0; index < lines.length; index++) {
+    if (!isTableStart(lines, index)) {
+      out.push(lines[index]);
+      continue;
+    }
+    const isRightAligned = splitCells(lines[index + 1]).map((cell) => cell.endsWith(':'));
+    const rows = [splitCells(lines[index]).map(plainCell)];
+    let next = index + 2;
+    while (next < lines.length && lines[next].includes('|')) {
+      rows.push(splitCells(lines[next]).map(plainCell));
+      next += 1;
+    }
+    out.push('```', ...alignRows(rows, isRightAligned), '```');
+    index = next - 1;
+  }
+  return out.join('\n');
+};
+
+const cleanRayText = (text: string): string => {
+  const tidied = mapOutside(FENCED_CODE, unwrapReply(text), (prose) =>
+    tablesAsText(mapOutside(INLINE_CODE, prose, realLineBreaks)),
+  );
+  return mapOutside(CODE, tidied, dropEmoji).trim();
+};
 
 export { cleanRayText };

@@ -13,13 +13,13 @@ RayChatOutput draws RAY's chat text: the words outside the cards. The cards foll
 
 The owner picked these values on 24 Nov 2026. They are all Blade tokens; the Figma frame's off-scale 22px title and 22px body line height were moved onto the scale.
 
-| Part               | Style                                                                                                         |
-| ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| Main title, titles | TASA Orbiter 500, 20/26 (`size[400]` / `lineHeights[400]`), `surface.text.gray.normal`                        |
-| Body               | Inter 400, 14/24 (`size[100]` / `lineHeights[200]`), −1.3% (`letterSpacings[50]`), `surface.text.gray.subtle` |
-| Lists              | 14/26 (`lineHeights[400]`)                                                                                    |
-| Bold               | `surface.text.gray.normal`, 600 in light and 700 in dark (as in Figma)                                        |
-| Gaps               | 12 under a title (`spacing.4`), 16 between blocks (`spacing.5`), 24 before a section (`spacing.7`)            |
+| Part               | Style                                                                                                                                        |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Main title, titles | TASA Orbiter 500, 20/26 (`size[400]` / `lineHeights[400]`), `surface.text.gray.normal`                                                       |
+| Body               | Inter 400, 14/24 (`size[100]` / `lineHeights[200]`), −1.3% (`letterSpacings[50]`), `surface.text.gray.subtle`                                |
+| Lists              | 14/26 (`lineHeights[400]`)                                                                                                                   |
+| Bold               | `surface.text.gray.normal`, 600 in light and 700 in dark (as in Figma)                                                                       |
+| Gaps               | 12 under a title and between a paragraph's lines (`spacing.4`; Figma 11), 16 between blocks (`spacing.5`), 24 before a section (`spacing.7`) |
 
 ## API
 
@@ -52,7 +52,7 @@ markdown ─▶ cleanRayText ─▶ react-markdown (remark-parse ─▶ remarkRa
   - drop RAY's "Fetching your … details" lines once the card is in;
   - keep only the first of two messages that say the same thing;
   - 16 between messages.
-- **Tables, strikethrough, task lists:** these are GFM syntax, and Blade has no `remark-gfm`. They show as plain text until that dependency is agreed.
+- **Tables** are drawn as cards (the owner: tables and cards are handled separately), so there's no `remark-gfm`. `cleanRayText` turns a Markdown table in RAY's text into an aligned plain-text block instead of rows of pipes. Strikethrough and task lists aren't parsed either.
 - **Streaming flips:** while a reply streams, its first paragraph draws as body until the first title arrives, then becomes the main title. A bold line becomes a title once its `**` closes. The finished message is right.
 - **Line breaks inside bold or links** stay as spaces. Only line breaks directly in a paragraph start a new one.
 - **React Native:** not yet. It throws, like the other Spark components.

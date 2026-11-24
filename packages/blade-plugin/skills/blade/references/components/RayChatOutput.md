@@ -15,7 +15,7 @@ RayChatOutput draws RAY's chat text: the words an AI assistant writes outside th
   - Italic is drawn as plain text.
   - A `---` divider draws no line; the block after it starts 24px lower.
   - Raw HTML is left out, and an image is drawn as its alt text.
-- Tables, strikethrough and task lists (GFM) are not parsed. They show as plain text.
+- Tables are drawn as cards, so the chat doesn't parse them. A Markdown table in the text becomes an aligned plain-text block. Strikethrough and task lists (GFM) aren't parsed either.
 - Its width is the container's: put it in the chat column.
 - Web only. On React Native it throws.
 
@@ -44,7 +44,7 @@ type RayChatOutputProps = {
   - Body: Inter 400, 14/24, −1.3%, `surface.text.gray.subtle`.
   - Lists: 14/26.
   - Bold: `gray.normal`, 600 in light and 700 in dark.
-- **Gaps:** 12px under a title, 16px between blocks, 24px before a section.
+- **Gaps:** 12px under a title and between a paragraph's lines, 16px between blocks, 24px before a section.
 - **With GenUI:** pass `rayChatOutputGenUI` as the `TEXT` component. GenUI already puts 24px between text and a card, and keeps its word fade while `isAnimating` is on.
 
 ## Example
