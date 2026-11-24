@@ -30,6 +30,7 @@ const ALL_ON: FreshSwitches = {
   stableSizes: true,
   box: true,
   spec: true,
+  blurBox: true,
 };
 
 /** The longest step a frame may take on the component's clock: a stall or a hidden tab doesn't jump the animation. */
