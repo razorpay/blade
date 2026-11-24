@@ -94,7 +94,7 @@ describe('ChatStates: the page’s voiceStream', () => {
       setDrop: jest.fn(),
       isAtRest: () => true,
       restComp: () => 'c3',
-      clearOutcome: jest.fn(),
+      hurryOutcome: jest.fn(),
       playOutcome: jest.fn(),
     } as unknown) as ChatDriver;
     const anchors = ({

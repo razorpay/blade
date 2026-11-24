@@ -17,8 +17,9 @@ import type { TypingTune } from '../RazorSenseEngine/typingStrength';
  * across and the window's bottom.
  * The PR's states on the strip at rest (flow 10.5):
  *   outcome    success or error: the strip's clock plays on past its end through the piece spliced there (outcome.ts) and is back at
- *              its end, the strip at rest, as it ends. It waits for the strip to be at rest (thinking, the surge); cleared mid-way it
- *              plays back to its start (x 3); a new question mid-way plays it out (x 4), then the strip rises
+ *              its end, the strip at rest, as it ends. It waits for the strip to be at rest (thinking, the surge). Ended early (cleared,
+ *              another outcome set, a new question) it plays out quickly (x 4), never backwards: then the next one plays from the
+ *              strip's rest, or the strip rises
  *   offline    the strip (and its typing strip) drops below the chat's bottom edge, 1.2 s on flow 10.5's ease; back online it rises
  *              back the same way; turned round mid-way, from where it is
  */
@@ -117,14 +118,13 @@ const page = (g: string): Page => ({
 type ChatSetup = { times: ChatTimes; motion: ChatMotion };
 
 /** an outcome playing on the strip's clock: its start and length (s) there, how far in, and which way at what speed */
-type OutcomePlay = { t0: number; dur: number; u: number; dir: 1 | -1; speed: number };
+type OutcomePlay = { t0: number; dur: number; u: number; speed: number };
 
 /** offline: the strip's drop (CSS px down): from, to, since (ms) */
 const DROP_MS = 1200;
 const DROP_EASE = [0.33, 1, 0.68, 1];
-/** a new question mid-outcome plays it out this much faster; cleared mid-way, it plays back this much faster */
+/** an outcome ended early (cleared, another set, a new question) plays out this much faster */
 const OUTCOME_RUSH = 4;
-const OUTCOME_BACK = 3;
 
 const getChatSetup = (doc: FreshDoc): ChatSetup | null => {
   const times = doc.ui?.dsChat as ChatTimes | undefined;
@@ -205,8 +205,7 @@ class ChatDriver {
   public think(): void {
     if (this.oc) {
       // mid-outcome: it plays out quickly, then the strip rises
-      this.oc.dir = 1;
-      this.oc.speed = OUTCOME_RUSH;
+      this.hurryOutcome();
       this.isThinkPending = true;
       return;
     }
@@ -261,15 +260,15 @@ class ChatDriver {
 
   /** an outcome on the strip, from now: its piece spliced onto the strip's clock from t0 for dur s (call it while isAtRest()) */
   public playOutcome(t0: number, dur: number): void {
-    this.oc = { t0, dur, u: 0, dir: 1, speed: 1 };
+    this.oc = { t0, dur, u: 0, speed: 1 };
   }
 
-  /** the outcome cleared: one playing plays back to its start (the strip at rest) */
-  public clearOutcome(): void {
-    if (this.oc && !this.isThinkPending) {
-      this.oc.dir = -1;
-      this.oc.speed = OUTCOME_BACK;
-    }
+  /**
+   * the outcome ended early (cleared, or another one set): one playing plays out quickly to its end, the strip at rest, never
+   * backwards (the user: success near its end ran backwards before an error set then played)
+   */
+  public hurryOutcome(): void {
+    if (this.oc && this.oc.speed > 0) this.oc.speed = OUTCOME_RUSH;
   }
 
   /** reduced motion: the outcome held at this moment of its piece (s), till endOutcome */
@@ -546,8 +545,8 @@ class ChatDriver {
       this.oc = null;
       return;
     }
-    oc.u += dt * oc.speed * oc.dir;
-    if (oc.dir > 0 ? oc.u < oc.dur : oc.u > 0) return;
+    oc.u += dt * oc.speed;
+    if (oc.u < oc.dur) return;
     this.oc = null;
     if (this.isThinkPending) {
       this.isThinkPending = false;

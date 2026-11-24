@@ -109,21 +109,44 @@ describe('ChatDriver', () => {
     expect(driver.state).toBe('idle');
   });
 
-  it('plays an outcome cleared mid-way back to its start, quicker', () => {
+  it('an outcome ended early (cleared, or another set) plays out quickly, never backwards', () => {
+    // (the strip page's clock: page A's through seek, page B's through its comps; past the strip's end only while an outcome plays)
+    const clock: number[] = [];
+    const recorder = (new Proxy(
+      {},
+      {
+        get: (_, key) => (...args: unknown[]): void => {
+          if (key === 'seek') clock.push(args[0] as number);
+          if (key === 'comp' && args[0] === 'b_c3') clock.push((args[1] as { t: number }).t);
+        },
+      },
+    ) as unknown) as FreshPlayer;
+    const step = (driver: ChatDriver, seconds: number, fromMs: number): number => {
+      let now = fromMs;
+      for (let i = 0; i < seconds * 20; i++) {
+        driver.step(recorder, 0.05, now);
+        now += 50;
+      }
+      return now;
+    };
     const driver = makeDriver();
     driver.think();
-    let now = run(driver, 0.5, 0);
+    let now = step(driver, 0.5, 0);
     driver.answer(now);
-    now = run(driver, 15, now);
+    now = step(driver, 15, now);
+    clock.length = 0;
     driver.playOutcome(15.02, 3.71);
-    now = run(driver, 1.5, now);
-    driver.clearOutcome();
-    // (1.5 s in, back at x 3: half a second)
-    now = run(driver, 0.3, now);
+    // (near its end, as the user had it: success nearly over, then Finish with error)
+    now = step(driver, 3, now);
+    driver.hurryOutcome();
+    now = step(driver, 0.15, now);
     expect(driver.isPlayingOutcome).toBe(true);
-    run(driver, 0.4, now);
+    step(driver, 0.15, now);
     expect(driver.isPlayingOutcome).toBe(false);
     expect(driver.isAtRest()).toBe(true);
+    const piece = clock.filter((t) => t > 15.01);
+    expect(piece.length).toBeGreaterThan(10);
+    for (let i = 1; i < piece.length; i++) expect(piece[i]).toBeGreaterThanOrEqual(piece[i - 1]);
   });
 
   it('a new question mid-outcome plays it out quickly, then rises', () => {

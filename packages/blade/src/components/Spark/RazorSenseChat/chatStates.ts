@@ -124,10 +124,11 @@ class ChatStates {
     if (this.isDead) return;
     const { isOffline, isListening, outcome } = this.inputs;
     driver.setDrop(isOffline ? this.dropBy(anchors) : 0, now);
-    // an outcome: once each time it's set, once the strip is at rest (and the voice look down); cleared mid-way, it plays back
+    // an outcome: once each time it's set, once the strip is at rest (and the voice look down). Cleared or another set mid-way, the
+    // one playing plays out quickly, never backwards; then the new one plays from the strip's rest
     if (outcome !== this.memory.played) {
+      driver.hurryOutcome();
       if (!outcome) {
-        driver.clearOutcome();
         this.memory.played = undefined;
       } else if (!this.outcomeModule) {
         this.prefetchOutcome();
@@ -148,6 +149,8 @@ class ChatStates {
     if (outcome !== this.memory.played) {
       this.memory.played = outcome;
       window.clearTimeout(this.stillTimer);
+      // (the one shown goes at once, so another set in its place shows its own moment)
+      driver.endOutcome();
       if (outcome && this.outcomeModule && driver.isAtRest() && !isOffline) {
         this.startOutcome(driver, outcome);
         driver.holdOutcome(OUTCOME_STILL_AT);
@@ -159,8 +162,6 @@ class ChatStates {
       } else if (outcome && !this.outcomeModule) {
         this.memory.played = undefined;
         this.prefetchOutcome();
-      } else {
-        driver.endOutcome();
       }
     }
     const want = isListening && !isOffline && driver.isAtRest();
