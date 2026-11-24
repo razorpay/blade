@@ -2,6 +2,7 @@ import { withRoom } from '../RazorSenseEngine';
 import type { FreshDoc, FreshEngine, FreshExport } from '../RazorSenseEngine';
 import { OfflineFade } from '../RazorSenseEngine/offline';
 import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
+import { isRetryLater } from '../RazorSenseEngine/chunkRetry';
 import type { VoiceTap } from '../RazorSenseEngine/voice';
 import type { VoiceDashboard } from './voiceDashboard';
 
@@ -27,8 +28,8 @@ class BackgroundStates {
   private readonly fade = new OfflineFade();
   private voice: VoiceDashboard | null = null;
   private isLoadingVoice = false;
-  /** a chunk that failed to load isn't asked for again (asked each frame, a deploy that removed the old chunks made a 404 a frame) */
-  private hasFailedVoice = false;
+  /** when the voice look's chunk last failed to load: asked again only a while later (chunkRetry.ts) */
+  private voiceFailedAt = 0;
   private isVoiceDoc = false;
   private tap: VoiceTap | null = null;
   private tapStream: MediaStream | null = null;
@@ -108,7 +109,7 @@ class BackgroundStates {
   }
 
   private importVoice(redraw?: () => void): void {
-    if (this.isLoadingVoice || this.hasFailedVoice) return;
+    if (this.isLoadingVoice || isRetryLater(this.voiceFailedAt)) return;
     this.isLoadingVoice = true;
     import('./voiceDashboard')
       .then((m) => {
@@ -122,7 +123,7 @@ class BackgroundStates {
         redraw?.();
       })
       .catch(() => {
-        this.hasFailedVoice = true;
+        this.voiceFailedAt = performance.now();
       })
       .finally(() => {
         this.isLoadingVoice = false;
