@@ -518,7 +518,10 @@ const testVoice = (): FakeVoice => (window as any).__rayTestVoice;
 /**
  * Whether this browser can run audio here at all, found once: an audio context of the test's own, asked to start, either runs within 2 s
  * or it can't. CI's headless Firefox on Linux can't (no audio output: every context stays suspended, Ray's and the made-up voice's alike),
- * so there the tests check what doesn't need audio to flow and leave out the levels it would carry.
+ * so there the tests check what doesn't need audio to flow and leave out the levels it would carry (and his analyser, which he may not
+ * be able to make there), and say so (a console warning).
+ * Chromium always runs audio (headless too), so there it's never left out: audio that stopped working everywhere fails there, not
+ * silently (Saurav's round 7).
  */
 let audioRuns: Promise<boolean> | null = null;
 const canRunAudio = (): Promise<boolean> => {
@@ -532,6 +535,12 @@ const canRunAudio = (): Promise<boolean> => {
     }
     const runs = (probe.state as string) === 'running';
     probe.close().catch(() => undefined);
+    if (!runs) {
+      expect(navigator.userAgent.includes('Chrome/')).toBe(false); // (Chromium runs audio: never left out there)
+      console.warn(
+        "[Ray tests] audio can't run in this browser here: the audio level checks are left out",
+      );
+    }
     return runs;
   })();
   return audioRuns;
@@ -1166,7 +1175,7 @@ TestRayListens.play = async () => {
       () => expect(Math.abs(rayEl().__ray.voice?.sent - testVoice().level())).toBeLessThan(0.1),
       { timeout: 5000 },
     ); // (its level, sent to the film: the stream's)
-  } else expect(rayEl().__ray.voice).not.toBe(null); // (his analyser on the stream)
+  } // (where audio can't run, he may not even make his analyser on the stream: CI's Firefox gives him none. The mic film still plays)
   await userEvent.click(getByRole('button', { name: 'Stop' }));
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 5000 });
   expect(rayEl().__ray.voice).toBe(null); // (stopped listening: his analyser's let go)
@@ -1174,13 +1183,8 @@ TestRayListens.play = async () => {
   await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
     timeout: 5000,
   });
-  await waitFor(
-    () =>
-      hasAudio
-        ? expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05)
-        : expect(rayEl().__ray.voice).not.toBe(null),
-    { timeout: 5000 },
-  ); // (listening again)
+  if (hasAudio)
+    await waitFor(() => expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05), { timeout: 5000 }); // (listening again)
   await userEvent.click(getByRole('button', { name: 'Offline' }));
   await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', state: 'offline' }), {
     timeout: 1500,
