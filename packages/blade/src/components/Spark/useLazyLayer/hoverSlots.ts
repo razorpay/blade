@@ -286,11 +286,12 @@ const holdNearPointer = (
  * Whether a Spark hover can play here at all: not with reduced motion, without a GPU drawing WebGL2, or once an animation on this
  * page was too slow. Where it can't, nothing of it is loaded or made: the button keeps its own hover.
  */
-const canPlayHover = (): boolean =>
-  !(
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) && !whyCantAnimate();
+const whyCantPlayHover = (): string | null =>
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? 'reduced motion'
+    : whyCantAnimate() ?? null;
+const canPlayHover = (): boolean => !whyCantPlayHover();
 
 type KeyboardFocus = {
   /** focused from the keyboard now */
@@ -333,5 +334,12 @@ const followKeyboardFocus = (
   };
 };
 
-export { holdNearPointer, canPlayHover, canHover, whenHoverOrKeyboardFocus, followKeyboardFocus };
+export {
+  holdNearPointer,
+  canPlayHover,
+  whyCantPlayHover,
+  canHover,
+  whenHoverOrKeyboardFocus,
+  followKeyboardFocus,
+};
 export type { HoverSlot, KeyboardFocus };

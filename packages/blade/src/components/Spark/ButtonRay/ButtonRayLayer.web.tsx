@@ -8,11 +8,12 @@ import { loadRay } from '../Ray/loadRay';
 import type { RayState } from '../Ray/types';
 import {
   canHover,
-  canPlayHover,
   followKeyboardFocus,
   holdNearPointer,
   whenHoverOrKeyboardFocus,
+  whyCantPlayHover,
 } from '../useLazyLayer/hoverSlots';
+import { errorText, noteHover } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
@@ -217,6 +218,7 @@ const ButtonRayLayer = ({
   useEffect(() => {
     const button = stripRef.current?.parentElement;
     if (canStart || !isEnabled || !button) return undefined;
+    noteHover('ray', "waiting: its button's keyboard focus (nothing here can hover)");
     return whenHoverOrKeyboardFocus(button, () => setCanStart(true));
   }, [canStart, isEnabled]);
 
@@ -227,7 +229,11 @@ const ButtonRayLayer = ({
     const button = strip?.parentElement;
     if (!isEnabled || !canStart || !isOnScreen || !strip || !host || !button) return undefined;
     // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
-    if (!canPlayHover()) return undefined;
+    const cantPlay = whyCantPlayHover();
+    if (cantPlay) {
+      noteHover('ray', `off: ${cantPlay}`);
+      return undefined;
+    }
     // the screen's rate, from now: before its canvas is made, as the pointer nears (once a page)
     measureScreen();
     let isMounted = true;
@@ -489,9 +495,10 @@ const ButtonRayLayer = ({
       setIsRayUp(true);
       // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
       // means it can't draw here: Blade's own hover, for good
-      pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) =>
-        reason === 'lost' ? letGo() : giveUp(),
-      );
+      pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) => {
+        noteHover('ray', `stage: ${reason}`);
+        return reason === 'lost' ? letGo() : giveUp();
+      });
       stage = pooled.stage;
       // (a stage another button let go still shows its last frame: drawn afresh from the start, unseen, before it's shown here)
       const isWarm = stage.hasDrawn();
@@ -511,6 +518,7 @@ const ButtonRayLayer = ({
         VIEW_ONLY,
       );
       stage.setPaused(true);
+      if (!engine) noteHover('ray', 'stage: made no engine');
       if (isWarm && engine) {
         const warm = engine;
         stage.settle(() => warm.player.seek(0), 0);
@@ -523,14 +531,17 @@ const ButtonRayLayer = ({
         if (!isHeld) return; // (once it's held, it shows if the pointer's still on the button)
         // its parent sets its width (stretched, a grid cell): it can't widen for him, so it keeps its own hover
         if (!S.isOn && S.e === 0 && !canWiden(button)) {
-          if (__DEV__ && !hasWarned) {
+          if (!hasWarned) {
             hasWarned = true;
-            logger({
-              type: 'warn',
-              moduleName: 'Button',
-              message:
-                "aiHover: this button can't widen (its parent sets its width: a stretched column, a grid cell), so it keeps its own hover. Give it room to grow to the right.",
-            });
+            noteHover('ray', "off: it can't widen (its parent sets its width)");
+            if (__DEV__) {
+              logger({
+                type: 'warn',
+                moduleName: 'Button',
+                message:
+                  "aiHover: this button can't widen (its parent sets its width: a stretched column, a grid cell), so it keeps its own hover. Give it room to grow to the right.",
+              });
+            }
           }
           return;
         }
@@ -659,14 +670,19 @@ const ButtonRayLayer = ({
     };
 
     // Ray's code and his film's too, while the page is idle (nothing made): he starts at once as the pointer nears, not as it hovers
-    loadRay(INV.state).catch(() => undefined);
+    loadRay(INV.state).catch((error: unknown) =>
+      noteHover('ray', `Ray's code failed to load (${errorText(error)})`),
+    );
     // the strip's comp and the engine's code loaded now (no canvas yet): ready for the pointer
     void Promise.all([loadFreshEngine(), import('./comps')])
       .then(([createFreshEngine, comps]) => {
         if (!isMounted) return;
         doc = mode === 'dark' ? comps.buttonRayDark : comps.buttonRayLight;
         setup = (doc.ui?.buttonRay as ButtonRaySetup | undefined) ?? null;
-        if (!setup) return;
+        if (!setup) {
+          noteHover('ray', 'off: its comp has no button setup');
+          return;
+        }
         createEngine = createFreshEngine;
         resize.observe(button);
         button.addEventListener('pointerenter', enter);
@@ -678,9 +694,11 @@ const ButtonRayLayer = ({
         keyboardFocus = followKeyboardFocus(button, slot, (isFocused) =>
           show(isFocused || button.matches(':hover')),
         );
+        noteHover('ray', 'ready');
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         // the engine couldn't load: Blade's own hover
+        noteHover('ray', `off: the engine or its comp failed to load (${errorText(error)})`);
       });
 
     return () => {

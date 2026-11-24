@@ -1,6 +1,7 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { canHover, whenHoverOrKeyboardFocus } from './hoverDevice';
+import { errorText, noteHover } from './hoverLog';
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
@@ -37,6 +38,8 @@ const useReducedMotion = (): boolean => {
 const useLazyLayer = <P>(
   load: () => Promise<React.ComponentType<P>>,
   isEnabled: boolean,
+  /** which hover, for hoverLog */
+  name = 'hover',
 ): React.ComponentType<P> | null => {
   const [Layer, setLayer] = useState<React.ComponentType<P> | null>(null);
   const isReduced = useReducedMotion();
@@ -44,18 +47,21 @@ const useLazyLayer = <P>(
 
   useEffect(() => {
     if (canLoad || !isEnabled) return undefined;
+    noteHover(name, 'waiting: nothing here can hover (a keyboard focus or a mouse loads it)');
     return whenHoverOrKeyboardFocus(null, () => setCanLoad(true));
   }, [canLoad, isEnabled]);
 
   useEffect(() => {
+    if (isEnabled && canLoad && !Layer && isReduced) noteHover(name, 'off: reduced motion');
     if (!isEnabled || !canLoad || Layer || isReduced) return undefined;
     let isMounted = true;
     load()
       .then((loaded) => {
         if (isMounted) setLayer(() => loaded);
       })
-      .catch(() => {
-        // the button keeps its own hover
+      .catch((error: unknown) => {
+        // the button keeps its own hover (and the browser keeps a failed import for the page's life: no retry)
+        noteHover(name, `off: its layer's code failed to load (${errorText(error)})`);
       });
     return () => {
       isMounted = false;

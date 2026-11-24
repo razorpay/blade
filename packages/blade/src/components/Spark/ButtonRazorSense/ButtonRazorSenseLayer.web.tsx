@@ -3,11 +3,12 @@ import { loadFreshEngine, measureScreen } from '../RazorSenseEngine';
 import type { CreateFreshEngine, FreshDoc, FreshEngine, FreshStage } from '../RazorSenseEngine';
 import {
   canHover,
-  canPlayHover,
   followKeyboardFocus,
   holdNearPointer,
   whenHoverOrKeyboardFocus,
+  whyCantPlayHover,
 } from '../useLazyLayer/hoverSlots';
+import { errorText, noteHover } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
 import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
@@ -165,6 +166,7 @@ const ButtonRazorSenseLayer = ({
   useEffect(() => {
     const button = layerRef.current?.parentElement;
     if (canStart || !isEnabled || !button) return undefined;
+    noteHover('razorsense', "waiting: its button's keyboard focus (nothing here can hover)");
     return whenHoverOrKeyboardFocus(button, () => setCanStart(true));
   }, [canStart, isEnabled]);
 
@@ -175,7 +177,11 @@ const ButtonRazorSenseLayer = ({
     if (!isEnabled || !canStart || !isOnScreen || square === null || !layer || !host || !button)
       return undefined;
     // reduced motion, no GPU drawing WebGL2, a page already too slow: Blade's own hover, nothing loaded
-    if (!canPlayHover()) return undefined;
+    const cantPlay = whyCantPlayHover();
+    if (cantPlay) {
+      noteHover('razorsense', `off: ${cantPlay}`);
+      return undefined;
+    }
     // the screen's rate, from now: before its canvas is made, as the pointer nears (once a page)
     measureScreen();
     let isMounted = true;
@@ -207,6 +213,8 @@ const ButtonRazorSenseLayer = ({
     let hasWarnedWide = false;
     const isTooWide = (): boolean => {
       const isWide = Boolean(doc) && button.offsetWidth > widestFor(doc as FreshDoc);
+      if (isWide && !hasWarnedWide) noteHover('razorsense', `off: ${button.offsetWidth}px wide`);
+      if (isWide && !hasWarnedWide && !__DEV__) hasWarnedWide = true;
       if (isWide && __DEV__ && !hasWarnedWide) {
         hasWarnedWide = true;
         logger({
@@ -237,9 +245,10 @@ const ButtonRazorSenseLayer = ({
       // a GPU context the browser took back (too many on the page) is let go, and tried again on the next hover; anything else
       // means it can't draw here
       if (!stage) {
-        pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) =>
-          reason === 'lost' ? letGo() : giveUp(),
-        );
+        pooled = takeStage(host, `spark:${mode}`, createEngine, (reason) => {
+          noteHover('razorsense', `stage: ${reason}`);
+          return reason === 'lost' ? letGo() : giveUp();
+        });
         stage = pooled.stage;
       }
       laidWidth = widthOf(w);
@@ -260,7 +269,10 @@ const ButtonRazorSenseLayer = ({
       stage.setPaused(!isOn);
       setLive(false);
       cancelAnimationFrame(liveFrame);
-      if (!engine) return;
+      if (!engine) {
+        noteHover('razorsense', 'stage: made no engine');
+        return;
+      }
       // a first frame drawn at once (unseen: the layer is clear till the hover), so it's live before the pointer gets there
       const mounted = stage;
       const settled = engine;
@@ -422,7 +434,10 @@ const ButtonRazorSenseLayer = ({
         };
         doc = docs[mode] as Comp;
         setup = (doc.ui?.buttonSense as ButtonSenseSetup | undefined) ?? null;
-        if (!setup) return;
+        if (!setup) {
+          noteHover('razorsense', 'off: its comp has no button setup');
+          return;
+        }
         region = regionOf(doc, setup, button.offsetWidth, button.offsetHeight);
         createEngine = createFreshEngine;
         host.style.opacity = String(setup.opacity);
@@ -436,9 +451,11 @@ const ButtonRazorSenseLayer = ({
         keyboardFocus = followKeyboardFocus(button, slot, (isFocused) =>
           show(isFocused || button.matches(':hover')),
         );
+        noteHover('razorsense', 'ready');
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         // the engine couldn't load: Blade's own hover
+        noteHover('razorsense', `off: the engine or its comp failed to load (${errorText(error)})`);
       });
 
     return () => {

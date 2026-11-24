@@ -1,6 +1,7 @@
 import React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
 import { useLazyLayer } from '../useLazyLayer';
+import { hoverNotes } from '../hoverLog';
 
 const Layer = (): React.ReactElement => <span>layer</span>;
 
@@ -104,5 +105,23 @@ describe('useLazyLayer', () => {
     await waitFor(() => expect(queryByText('layer')).not.toBeNull());
     expect(load).toHaveBeenCalledTimes(1);
     field.remove();
+  });
+
+  it("notes why a layer didn't load (no button says so otherwise: it keeps its own hover)", async () => {
+    motionSetting(false);
+    const load = jest.fn(() =>
+      Promise.reject(new Error('Failed to fetch dynamically imported module')),
+    );
+    const Named = (): React.ReactElement | null => {
+      const Loaded = useLazyLayer(load, true, 'ray');
+      return Loaded ? <Loaded /> : null;
+    };
+    render(<Named />);
+    await waitFor(() =>
+      expect(hoverNotes[hoverNotes.length - 1]).toMatchObject({
+        hover: 'ray',
+        what: "off: its layer's code failed to load (Failed to fetch dynamically imported module)",
+      }),
+    );
   });
 });

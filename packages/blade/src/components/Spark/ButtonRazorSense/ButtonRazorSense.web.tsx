@@ -10,7 +10,7 @@ const loadLayer = (): Promise<React.ComponentType<ButtonRazorSenseProps>> =>
  * button turns it on, so a Button without it doesn't carry it.
  */
 const ButtonRazorSense = (props: ButtonRazorSenseProps): React.ReactElement | null => {
-  const Layer = useLazyLayer(loadLayer, props.isEnabled);
+  const Layer = useLazyLayer(loadLayer, props.isEnabled, 'razorsense');
   return Layer ? <Layer {...props} /> : null;
 };
 

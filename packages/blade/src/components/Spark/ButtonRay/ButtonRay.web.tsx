@@ -10,7 +10,7 @@ const loadLayer = (): Promise<React.ComponentType<ButtonRayProps>> =>
  * ButtonRayLayer) is loaded only once a button turns it on, so a Button without it doesn't carry Ray's runtime.
  */
 const ButtonRay = (props: ButtonRayProps): React.ReactElement | null => {
-  const Layer = useLazyLayer(loadLayer, props.isEnabled);
+  const Layer = useLazyLayer(loadLayer, props.isEnabled, 'ray');
   return Layer ? <Layer {...props} /> : null;
 };
 
