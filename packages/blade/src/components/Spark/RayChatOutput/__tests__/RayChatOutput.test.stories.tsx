@@ -157,6 +157,7 @@ const GENUI_REPLY = [
     content: 'Your payouts are on time.\n\n### Settled this week\nTwo reached your bank.',
   },
   { component: 'CARD', title: 'Settlement', children: [{ component: 'AMOUNT', value: 48200 }] },
+  { component: 'TEXT', content: '### What next\nAsk me about any payment ID.' },
 ] as GenUIComponent[];
 
 export const InGenUI: StoryFn = () => (
@@ -169,11 +170,21 @@ export const InGenUI: StoryFn = () => (
   </Unstyled>
 );
 InGenUI.play = async ({ canvasElement }) => {
-  const output = canvasElement.querySelector('[data-blade-component="ray-chat-output"]');
-  await expect(output).not.toBeNull();
-  const blocks = Array.from((output as Element).children);
+  const [before, after] = Array.from(
+    canvasElement.querySelectorAll('[data-blade-component="ray-chat-output"]'),
+  );
+  const blocks = Array.from(before.children);
   await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'H3', 'P']);
   await expect(blocks[0]).toHaveAttribute('data-ray-chat-lead');
+
+  // The chat's 24 between text and its card, on both sides (GenUI's ring margin included).
+  const card = (canvasElement.querySelector(
+    '[data-blade-component="card"]',
+  ) as Element).getBoundingClientRect();
+  await expect([
+    Math.round(card.top - before.getBoundingClientRect().bottom),
+    Math.round(after.getBoundingClientRect().top - card.bottom),
+  ]).toEqual([24, 24]);
 };
 
 export default {
