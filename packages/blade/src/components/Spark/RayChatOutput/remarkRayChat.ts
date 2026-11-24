@@ -25,7 +25,7 @@ type MarkdownNode = {
 type RayChatGap = '12' | '16' | '24';
 
 // Top-level nodes that draw nothing: link definitions, and raw HTML (left out by skipHtml).
-const DRAWS_NOTHING = new Set(['definition', 'footnoteDefinition', 'html']);
+const DRAWS_NOTHING = new Set(['definition', 'html']);
 
 const isBlank = (node: MarkdownNode): boolean => node.type === 'text' && !node.value?.trim();
 
@@ -92,4 +92,3 @@ const remarkRayChat = () => (tree: MarkdownNode): void => {
 };
 
 export { remarkRayChat };
-export type { RayChatGap };
