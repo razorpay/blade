@@ -16,4 +16,5 @@ export type {
   GenUIActionSlotRenderer,
   GenUIComponentActionsRegistry,
   GenUIBlockLevelComponentType,
+  GenUICardLayout,
 } from './types';

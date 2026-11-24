@@ -77,6 +77,16 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
 };
 
 /**
+ * How GenUI lays out the blocks inside a CARD.
+ *
+ * - `default`: the layout GenUI has always had.
+ * - `compact`: one spacing step between blocks, a 16px card edge on every side, details as
+ *   label and value on one row, long values cut in the middle, metric tiles that wrap under
+ *   120px, no header divider in a chart card, and a TABLE flush to the card's sides.
+ */
+type GenUICardLayout = 'default' | 'compact';
+
+/**
  * Registry of all component renderers
  */
 type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
@@ -94,4 +104,5 @@ export type {
   GenUIActionSlotRenderer,
   GenUIComponentActionsRegistry,
   GenUIBlockLevelComponentType,
+  GenUICardLayout,
 };

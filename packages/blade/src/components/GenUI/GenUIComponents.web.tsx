@@ -10,10 +10,34 @@ import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
 import styled, { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
+import {
+  useGenUIAction,
+  useGenUIAnimation,
+  useGenUICardLayout,
+  useGenUIComponentActions,
+} from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
+import {
+  GenUICardBlockContext,
+  getCardRowLayouts,
+  getCompactGridTemplate,
+  getStackChildBlocks,
+  isChartCard,
+  isTable,
+  outsideCard,
+  useGenUICardBlock,
+} from './GenUICardLayout';
+import type { CardRowLayout } from './GenUICardLayout';
+import { getLongValueKind } from './longValueText';
+import {
+  InfoGroupLongValue,
+  TableCellLongValue,
+  getLongValueTitle,
+  getTextNodeValue,
+  getValuesWithCopy,
+} from './GenUILongValue';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -71,6 +95,7 @@ import { Amount } from '~components/Amount';
 import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { useTheme } from '~components/BladeProvider';
 
 /**
  * Global styles for text streaming animations
@@ -855,8 +880,20 @@ const markdownComponents = {
   ),
 };
 
+/**
+ * Compact card layout: TEXT inside a card ends with no paragraph gap, so the space under it is
+ * the card's (a row gap, a divider or the card edge) and nothing stacks on it.
+ */
+const CompactCardText = styled.div`
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 const RenderTextComponent = memo(({ content }: TextComponent) => {
   const { isAnimating, animateOptions } = useGenUIAnimation();
+  const isCompact = useGenUICardLayout() === 'compact';
+  const { isInsideCard } = useGenUICardBlock();
 
   const rehypePlugins = useMemo(() => {
     if (!isAnimating) return [];
@@ -865,12 +902,16 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
 
   if (!content) return null;
 
+  const markdown = (
+    <ReactMarkdown skipHtml rehypePlugins={rehypePlugins} components={markdownComponents}>
+      {content}
+    </ReactMarkdown>
+  );
+
   return (
     <>
       {isAnimating ? <TextAnimationStyles /> : null}
-      <ReactMarkdown skipHtml rehypePlugins={rehypePlugins} components={markdownComponents}>
-        {content}
-      </ReactMarkdown>
+      {isCompact && isInsideCard ? <CompactCardText>{markdown}</CompactCardText> : markdown}
     </>
   );
 });
@@ -1166,7 +1207,13 @@ const TableCellLinkRenderer = ({ cell }: { cell?: Partial<TableCellLink> }) => {
 };
 
 // Helper to render a single table cell based on its component type
-const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => {
+const RenderTableCellContent = ({
+  cell,
+  isCompact,
+}: {
+  cell?: Partial<TableCellType>;
+  isCompact?: boolean;
+}) => {
   if (!cell) {
     return <Text size="medium">-</Text>;
   }
@@ -1179,6 +1226,11 @@ const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => 
   // Handle component-based cell types
   switch (cell.component) {
     case 'TEXT': {
+      // Compact card layout: a long value stays on one line, cut in the middle. It copies.
+      const longValueKind = isCompact ? getLongValueKind(cell.value) : null;
+      if (longValueKind && cell.value) {
+        return <TableCellLongValue value={cell.value} kind={longValueKind} />;
+      }
       if (cell.copyable && cell.value) {
         return <CopyableText value={cell.value} />;
       }
@@ -1342,7 +1394,25 @@ const calculateColumnWidths = (headers: string[], _rows: Partial<TableCellType>[
   return headers.map(() => 'minmax(max-content, 1fr)');
 };
 
+/**
+ * Compact card layout: a TABLE flush to the card's sides drops its own frame. The card is the
+ * frame. The first child is Table's surface.
+ */
+const FlushTableFrame = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing[3]}px;
+
+  & > *:first-child {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+`;
+
 const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {
+  const isCompact = useGenUICardLayout() === 'compact';
+  const { isFlushTable } = useGenUICardBlock();
   const columnWidths = useMemo(
     () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
     [headers, rows],
@@ -1360,56 +1430,158 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
     })),
   };
 
+  const table = (
+    <Table
+      data={tableData}
+      backgroundColor="transparent"
+      rowDensity="compact"
+      gridTemplateColumns={columnWidths.join(' ')}
+    >
+      {(data) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              {headers.map((header, index) => (
+                <TableHeaderCell key={index}>{header}</TableHeaderCell>
+              ))}
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {data.map((item, rowIndex) => (
+              <TableRow
+                key={rowIndex}
+                item={item}
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
+                onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
+                hoverActions={
+                  rowActions && rowActions.length > 0 ? (
+                    <TableRowHoverActions
+                      rowActions={rowActions}
+                      rowIndex={rowIndex}
+                      rowData={item.cells}
+                    />
+                  ) : undefined
+                }
+              >
+                {item.cells.map((cell, cellIndex) => (
+                  <TableCell key={cellIndex}>
+                    <RenderTableCellContent cell={cell} isCompact={isCompact} />
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+
+  if (isCompact && isFlushTable) {
+    return <FlushTableFrame>{table}</FlushTableFrame>;
+  }
+
   return (
     <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
-      <Table
-        data={tableData}
-        backgroundColor="transparent"
-        rowDensity="compact"
-        gridTemplateColumns={columnWidths.join(' ')}
-      >
-        {(data) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                {headers.map((header, index) => (
-                  <TableHeaderCell key={index}>{header}</TableHeaderCell>
-                ))}
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((item, rowIndex) => (
-                <TableRow
-                  key={rowIndex}
-                  item={item}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
-                  hoverActions={
-                    rowActions && rowActions.length > 0 ? (
-                      <TableRowHoverActions
-                        rowActions={rowActions}
-                        rowIndex={rowIndex}
-                        rowData={item.cells}
-                      />
-                    ) : undefined
-                  }
-                >
-                  {item.cells.map((cell, cellIndex) => (
-                    <TableCell key={cellIndex}>
-                      <RenderTableCellContent cell={cell} />
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </Table>
+      {table}
     </Box>
   );
 });
 
-const RenderCardComponent = memo(({ title, description, footer, children }: CardComponent) => {
+/** Compact card layout: one child of a card, with the space the card gives it. */
+const CompactCardRow = styled.div<{ $layout: CardRowLayout; $flushSidesPx: number }>`
+  margin-top: ${({ $layout }) => $layout.marginTop}px;
+  margin-bottom: ${({ $layout }) => $layout.marginBottom}px;
+  ${({ $layout, $flushSidesPx }) =>
+    $layout.isFlushSides
+      ? `margin-left: -${$flushSidesPx}px; margin-right: -${$flushSidesPx}px;`
+      : ''}
+`;
+
+const CompactCardComponent = ({ title, description, footer, children }: CardComponent) => {
+  const { theme } = useTheme();
+  const componentActions = useGenUIComponentActions();
+  const hasHeader = Boolean(title || description);
+  const childList = children ?? [];
+  const cardPaddingPx = theme.spacing[5];
+  const cardEdgePx = theme.border.width.thin;
+  const rowLayouts = getCardRowLayouts(childList, {
+    hasHeader,
+    hasFooter: Boolean(footer),
+    hasTableActionSlot: Boolean(componentActions?.TABLE),
+    cardPaddingPx,
+    cardEdgePx,
+  });
+  const valuesWithCopy = useMemo(() => getValuesWithCopy(children), [children]);
+  const hasFlushTable = childList.some(isTable);
+  const isChart = isChartCard(childList);
+
+  return (
+    <Box
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      gap={genUISpacingContract.compactCardRowGap}
+    >
+      <Card
+        width="100%"
+        height="100%"
+        padding={genUISpacingContract.compactCardPadding}
+        // Clips a flush TABLE to the card's rounded corners.
+        overflow={hasFlushTable ? 'hidden' : undefined}
+      >
+        {hasHeader ? (
+          // A chart card has no divider under its header, and no space for one.
+          <CardHeader showDivider={!isChart} paddingBottom={isChart ? 'spacing.0' : undefined}>
+            <CardHeaderLeading
+              // A long value in a title is cut in the middle. CardHeaderLeading draws it in Text.
+              title={(getLongValueTitle(title, valuesWithCopy) ?? '') as string}
+              subtitle={(getLongValueTitle(description, valuesWithCopy) ?? '') as string}
+            />
+          </CardHeader>
+        ) : null}
+
+        {childList.length > 0 ? (
+          <CardBody height="100%">
+            <Box display="flex" flexDirection="column">
+              {childList.map((child, index) => {
+                const layout = rowLayouts[index];
+                return (
+                  <CompactCardRow
+                    key={index}
+                    $layout={layout}
+                    $flushSidesPx={cardPaddingPx - cardEdgePx}
+                  >
+                    <GenUICardBlockContext.Provider value={layout.block}>
+                      <GenUIComponentRenderer component={child} index={index} />
+                    </GenUICardBlockContext.Provider>
+                  </CompactCardRow>
+                );
+              })}
+            </Box>
+          </CardBody>
+        ) : null}
+
+        {footer ? (
+          <CardFooter
+            showDivider={true}
+            marginTop={genUISpacingContract.cardTableToFooterAction}
+            paddingTop={genUISpacingContract.cardTableToFooterAction}
+          >
+            <CardFooterLeading subtitle={footer} />
+          </CardFooter>
+        ) : null}
+      </Card>
+    </Box>
+  );
+};
+
+const RenderCardComponent = memo((props: CardComponent) => {
+  const cardLayout = useGenUICardLayout();
+  if (cardLayout === 'compact') return <CompactCardComponent {...props} />;
+  return <DefaultCardComponent {...props} />;
+});
+
+const DefaultCardComponent = ({ title, description, footer, children }: CardComponent) => {
   const hasHeader = title || description;
 
   return (
@@ -1448,7 +1620,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
       </Card>
     </Box>
   );
-});
+};
 
 const RenderBadgeComponent = memo(({ text, color }: BadgeComponent) => {
   if (!text) return null;
@@ -1473,8 +1645,11 @@ const RenderSpacerComponent = memo(({ size }: SpacerComponent) => {
 });
 
 const RenderDividerComponent = memo(({ orientation = 'horizontal' }: DividerComponent) => {
+  const isCompact = useGenUICardLayout() === 'compact';
+  const { isInsideCard } = useGenUICardBlock();
+  // Compact card layout: 12px a side inside a card, the same as the card header's divider.
   return (
-    <Box display="flex" paddingY="spacing.7">
+    <Box display="flex" paddingY={isCompact && isInsideCard ? 'spacing.4' : 'spacing.7'}>
       <Divider
         orientation={orientation}
         {...(orientation === 'vertical' ? { height: '24px' } : {})}
@@ -1484,6 +1659,9 @@ const RenderDividerComponent = memo(({ orientation = 'horizontal' }: DividerComp
 });
 
 const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: StackComponent) => {
+  const isCompact = useGenUICardLayout() === 'compact';
+  const block = useGenUICardBlock();
+
   if (!children || children.length === 0) {
     return null;
   }
@@ -1493,6 +1671,28 @@ const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: St
     medium: 'spacing.4',
     large: 'spacing.5',
   } as const;
+
+  if (isCompact) {
+    // Compact card layout: no padding on a trimmed side, or around a GRID tile (the GRID owns
+    // that space). The stack's trimmed sides pass to the blocks at those sides.
+    const childBlocks = getStackChildBlocks(block, children.length, direction);
+    return (
+      <Box
+        display="flex"
+        width="100%"
+        paddingTop={block.isGridTile || block.isTrimmedTop ? 'spacing.0' : 'spacing.3'}
+        paddingBottom={block.isGridTile || block.isTrimmedBottom ? 'spacing.0' : 'spacing.3'}
+        flexDirection={direction === 'vertical' ? 'column' : 'row'}
+        gap={sizeMap[gap ?? 'small']}
+      >
+        {children.map((child, index) => (
+          <GenUICardBlockContext.Provider key={index} value={childBlocks[index]}>
+            <GenUIComponentRenderer component={child} index={index} />
+          </GenUICardBlockContext.Provider>
+        ))}
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -1510,6 +1710,10 @@ const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: St
 });
 
 const RenderGridComponent = memo(({ columns, gap, children }: GridComponent) => {
+  const isCompact = useGenUICardLayout() === 'compact';
+  const block = useGenUICardBlock();
+  const { theme } = useTheme();
+
   if (!columns || !children || children.length === 0) {
     return null;
   }
@@ -1519,6 +1723,40 @@ const RenderGridComponent = memo(({ columns, gap, children }: GridComponent) => 
     medium: 'spacing.4',
     large: 'spacing.5',
   } as const;
+
+  if (isCompact) {
+    // Compact card layout. A STACK tile drops its 8px padding and the GRID takes it on: in its
+    // margin, and in its row gap so wrapped rows keep their space. On a trimmed side the GRID
+    // has no margin, so nothing stacks on a divider or on the card's edge.
+    // The gap in px, for the column template: the same steps as `sizeMap`.
+    const gapPx = theme.spacing[({ small: 2, medium: 4, large: 5 } as const)[gap ?? 'small']];
+    const columnCount = Math.max(1, Math.floor(Number(columns)) || 1);
+    const isStackTiles = children.every((child) => child?.component === 'STACK');
+    const tilePaddingPx = isStackTiles ? theme.spacing[3] : 0;
+    const edgePx = theme.spacing[3] + tilePaddingPx;
+    const tileBlock = {
+      ...outsideCard,
+      isInsideCard: block.isInsideCard,
+      isGridTile: isStackTiles,
+    };
+    return (
+      <Box
+        display="grid"
+        width="100%"
+        marginTop={block.isTrimmedTop ? 'spacing.0' : `${edgePx}px`}
+        marginBottom={block.isTrimmedBottom ? 'spacing.0' : `${edgePx}px`}
+        gridTemplateColumns={getCompactGridTemplate(columnCount, gapPx)}
+        columnGap={sizeMap[gap ?? 'small']}
+        rowGap={`${gapPx + 2 * tilePaddingPx}px`}
+      >
+        <GenUICardBlockContext.Provider value={tileBlock}>
+          {children.map((child, index) => (
+            <GenUIComponentRenderer key={index} component={child} index={index} />
+          ))}
+        </GenUICardBlockContext.Provider>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -1536,6 +1774,9 @@ const RenderGridComponent = memo(({ columns, gap, children }: GridComponent) => 
 });
 
 const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
+  const isCompact = useGenUICardLayout() === 'compact';
+  const block = useGenUICardBlock();
+
   if (!items || items.length === 0) {
     return null;
   }
@@ -1550,6 +1791,45 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
 
   if (validItems.length === 0) {
     return null;
+  }
+
+  if (isCompact) {
+    // Compact card layout: label and value on one row, small text, values right-aligned. No
+    // margin on a trimmed side. A long value stays on one line, cut in the middle.
+    return (
+      <InfoGroup
+        marginTop={block.isTrimmedTop ? 'spacing.0' : 'spacing.3'}
+        marginBottom={block.isTrimmedBottom ? 'spacing.0' : 'spacing.3'}
+        itemOrientation="horizontal"
+        size="small"
+        valueAlign="right"
+      >
+        {validItems.map((item, index) => {
+          const value = item.value!;
+          const valueNode = value.children;
+          const text = typeof valueNode === 'string' ? valueNode : getTextNodeValue(valueNode);
+          const longValueKind = getLongValueKind(text);
+          let content: React.ReactNode;
+          if (text && longValueKind) {
+            content = <InfoGroupLongValue value={text} kind={longValueKind} />;
+          } else if (typeof valueNode === 'string') {
+            content = valueNode;
+          } else {
+            content = (
+              <GenUICardBlockContext.Provider value={outsideCard}>
+                <GenUIComponentRenderer component={valueNode} index={index} />
+              </GenUICardBlockContext.Provider>
+            );
+          }
+          return (
+            <InfoItem key={index}>
+              <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
+              <InfoItemValue helpText={value.helpText}>{content}</InfoItemValue>
+            </InfoItem>
+          );
+        })}
+      </InfoGroup>
+    );
   }
 
   return (
@@ -1630,6 +1910,8 @@ const RenderLinkComponent = memo(({ text, action }: LinkComponent) => {
 const RenderAlertComponent = memo(
   ({ title, description, color = 'neutral', actions }: AlertComponent) => {
     const onActionClick = useGenUIAction();
+    const isCompact = useGenUICardLayout() === 'compact';
+    const block = useGenUICardBlock();
     if (!title && !description) return null;
 
     // Validate color during streaming - show placeholder for invalid colors
@@ -1656,7 +1938,13 @@ const RenderAlertComponent = memo(
         description={description!}
         color={validColor}
         isDismissible={false}
-        marginY="spacing.4"
+        // Compact card layout: no margin on a trimmed side.
+        {...(isCompact
+          ? {
+              marginTop: block.isTrimmedTop ? 'spacing.0' : 'spacing.4',
+              marginBottom: block.isTrimmedBottom ? 'spacing.0' : 'spacing.4',
+            }
+          : { marginY: 'spacing.4' })}
         actions={{
           primary: actions?.primary?.text
             ? {
