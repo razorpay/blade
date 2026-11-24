@@ -33,7 +33,11 @@ type As =
 export type BaseTextProps = {
   id?: string;
   color?: TextColors | 'currentColor'; // currentColor is useful for letting text inherit color property from its container
-  fontFamily?: keyof Theme['typography']['fonts']['family'];
+  /**
+   * A theme font family, or `serif` (PT Serif). `serif` is internal and not a theme token,
+   * see `serifFontFamily.ts`.
+   */
+  fontFamily?: keyof Theme['typography']['fonts']['family'] | 'serif';
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
