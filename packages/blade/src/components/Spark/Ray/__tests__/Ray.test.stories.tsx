@@ -515,6 +515,28 @@ const fakeVoice = (): FakeVoice => {
 };
 const testVoice = (): FakeVoice => (window as any).__rayTestVoice;
 
+/**
+ * Whether this browser can run audio here at all, found once: an audio context of the test's own, asked to start, either runs within 2 s
+ * or it can't. CI's headless Firefox on Linux can't (no audio output: every context stays suspended, Ray's and the made-up voice's alike),
+ * so there the tests check what doesn't need audio to flow and leave out the levels it would carry.
+ */
+let audioRuns: Promise<boolean> | null = null;
+const canRunAudio = (): Promise<boolean> => {
+  audioRuns ??= (async () => {
+    const probe = new AudioContext();
+    const start = performance.now();
+    // (resume() isn't awaited: where audio can't start, its promise may never settle)
+    while ((probe.state as string) !== 'running' && performance.now() - start < 2000) {
+      probe.resume().catch(() => undefined);
+      await sleep(100); // eslint-disable-line no-await-in-loop
+    }
+    const runs = (probe.state as string) === 'running';
+    probe.close().catch(() => undefined);
+    return runs;
+  })();
+  return audioRuns;
+};
+
 // isOffline: the droop film's malfunction takes him (it wins over everything else), and back online he jumps back to rest. Asked back
 // mid-way (offline again as he jumps back), the film turns back from where he is
 export const TestRayGoesOffline: StoryFn<typeof Ray> = () => {
@@ -883,13 +905,15 @@ TestRayAudioRestsTillHeListens.play = async () => {
   await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
     timeout: 5000,
   });
-  await waitFor(
-    () => {
-      testVoice().wake();
-      expect(audio()?.state).toBe('running');
-    },
-    { timeout: 5000 },
-  );
+  if (await canRunAudio()) {
+    await waitFor(
+      () => {
+        testVoice().wake();
+        expect(audio()?.state).toBe('running');
+      },
+      { timeout: 5000 },
+    );
+  }
   // suspended while he listens (a browser that resumes audio only in a gesture): his frames try (at most once a second), and a
   // gesture tries at once, even right after them (the second review: it was held back by their throttle)
   const ctx = audio()!;
@@ -1129,17 +1153,20 @@ TestRayListens.play = async () => {
   });
   // the made-up voice's audio flowing (its own level, read from its own analyser), then Ray's level following that stream's: no
   // fixed waits, and a browser that holds audio till a gesture is asked again each try (the test fails here, clearly, if it never runs)
-  await waitFor(
-    () => {
-      testVoice().wake();
-      expect(testVoice().level()).toBeGreaterThan(0.05);
-    },
-    { timeout: 5000 },
-  );
-  await waitFor(
-    () => expect(Math.abs(rayEl().__ray.voice?.sent - testVoice().level())).toBeLessThan(0.1),
-    { timeout: 5000 },
-  ); // (its level, sent to the film: the stream's)
+  const hasAudio = await canRunAudio(); // (else no level can flow: the rest is checked without it)
+  if (hasAudio) {
+    await waitFor(
+      () => {
+        testVoice().wake();
+        expect(testVoice().level()).toBeGreaterThan(0.05);
+      },
+      { timeout: 5000 },
+    );
+    await waitFor(
+      () => expect(Math.abs(rayEl().__ray.voice?.sent - testVoice().level())).toBeLessThan(0.1),
+      { timeout: 5000 },
+    ); // (its level, sent to the film: the stream's)
+  } else expect(rayEl().__ray.voice).not.toBe(null); // (his analyser on the stream)
   await userEvent.click(getByRole('button', { name: 'Stop' }));
   await waitFor(() => expect(doing()).toBe('rest'), { timeout: 5000 });
   expect(rayEl().__ray.voice).toBe(null); // (stopped listening: his analyser's let go)
@@ -1147,7 +1174,13 @@ TestRayListens.play = async () => {
   await waitFor(() => expect(holder()).toMatchObject({ id: 'mic', started: true }), {
     timeout: 5000,
   });
-  await waitFor(() => expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05), { timeout: 5000 }); // (listening again)
+  await waitFor(
+    () =>
+      hasAudio
+        ? expect(rayEl().__ray.voice?.sent).toBeGreaterThan(0.05)
+        : expect(rayEl().__ray.voice).not.toBe(null),
+    { timeout: 5000 },
+  ); // (listening again)
   await userEvent.click(getByRole('button', { name: 'Offline' }));
   await waitFor(() => expect(holder()).toMatchObject({ id: 'droop', state: 'offline' }), {
     timeout: 1500,
