@@ -179,6 +179,12 @@ const FIRST_DRAW_MS = 45000;
  */
 const SHOW_GRACE_MS = 1000;
 const WAKE_SHOW_MS = 10000;
+/**
+ * after its first frame, how long its GPU may hold its frames back (a look whose Direct3D copy is still compiling: an outcome, the
+ * voice look) before its canvas is hidden and its still stands in, till its next frame (ms, counted in its own frames: only while it
+ * runs)
+ */
+const HELD_MS = 800;
 
 /**
  * Out of sight this long (its box off screen, past WAKE_MARGIN), a stage's engine gives its GPU memory back (sleep: its context
@@ -266,6 +272,9 @@ class FreshStage {
   private readonly createEngine: CreateFreshEngine;
   private onError?: (reason: FreshFailure) => void;
   private onShown?: () => void;
+  private onHeld?: () => void;
+  /** how long its GPU has held its frames back, running (ms) */
+  private heldMs = 0;
   private firstDrawTimer = 0;
   private waitedForFirstDraw = 0;
   private hasStalled = false;
@@ -308,12 +317,17 @@ class FreshStage {
   constructor(
     box: HTMLElement,
     createEngine: CreateFreshEngine,
-    options: { onError?: (reason: FreshFailure) => void; onShown?: () => void } = {},
+    options: {
+      onError?: (reason: FreshFailure) => void;
+      onShown?: () => void;
+      onHeld?: () => void;
+    } = {},
   ) {
     this.box = box;
     this.createEngine = createEngine;
     this.onError = options.onError;
     this.onShown = options.onShown;
+    this.onHeld = options.onHeld;
 
     this.canvas = this.makeCanvas();
     // the engine's own failure text (a GPU context it couldn't restore): never shown in a decorative box, told through
@@ -481,6 +495,11 @@ class FreshStage {
   }
 
   /** who's told when its canvas shows a frame: its first, or its first since waking (a component taking over a stage it had before) */
+  /** told when its GPU has held its frames back past HELD_MS (its canvas hidden meanwhile: the component's still shows) */
+  public setOnHeld(onHeld?: () => void): void {
+    this.onHeld = onHeld;
+  }
+
   public setOnShown(onShown?: () => void): void {
     this.onShown = onShown;
   }
@@ -772,6 +791,7 @@ class FreshStage {
     const frameMs = easeLevel >= 1 ? 2 * FRAME_MS : FRAME_MS;
     const gap = this.lastTick ? now - this.lastTick : 0;
     this.lastTick = now;
+    this.watchHeld(gap);
     this.budget = gap > 4 * frameMs ? frameMs : this.budget + gap;
     if (this.last && this.budget < frameMs - FRAME_SLACK_MS) return;
     this.budget = this.last ? Math.min(frameMs, this.budget - frameMs) : 0;
@@ -779,6 +799,25 @@ class FreshStage {
     this.last = now;
     if (this.engine && this.driver) this.driver(this.engine, dt);
   };
+
+  /**
+   * after its first frame, its GPU holding its frames back (a look whose Direct3D copy is still compiling) past HELD_MS: its canvas
+   * hidden, as when it wakes, till its next frame shows it again (onShown). Shown, a still over it would double the frozen strip (the
+   * chat's stills are clear, laid over the canvas: the PR review). Counted in its frames, so nothing runs while it doesn't
+   */
+  private watchHeld(gap: number): void {
+    const { engine } = this;
+    if (!engine || this.isShowPending || !this.hasDrawn()) {
+      this.heldMs = 0;
+      return;
+    }
+    this.heldMs = engine.waitsOnGpu?.() ? this.heldMs + gap : 0;
+    if (this.heldMs < HELD_MS) return;
+    this.heldMs = 0;
+    this.canvas.style.visibility = 'hidden';
+    this.showOnFirstFrame(engine.drawn?.() ?? 0, WAKE_SHOW_MS);
+    this.onHeld?.();
+  }
 
   /** the slow check, a second at a time: too many slow ones running and the component is told (it shows its still instead) */
   private countFrame(now: number): void {

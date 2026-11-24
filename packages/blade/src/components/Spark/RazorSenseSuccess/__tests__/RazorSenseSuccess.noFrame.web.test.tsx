@@ -162,6 +162,24 @@ describe('<RazorSenseSuccess />: its waits count from its start', () => {
     expect(String(onError.mock.calls[0][0])).toMatch(/its GPU held its frames/);
   });
 
+  it('short holds with frames between them don’t add up to the badge', () => {
+    const onError = jest.fn();
+    renderWithTheme(<RazorSenseSuccess onError={onError} />);
+    const { stage, engine, driver } = stageMock();
+    start(stage);
+    act(() => {
+      run.onDrawn();
+    });
+    // three holds of 0.3 s (0.9 s in all), each with frames after it
+    for (let k = 0; k < 3; k++) {
+      engine.waitsOnGpu.mockReturnValue(true);
+      for (let i = 0; i < 3; i++) act(() => driver()(engine, 0.1));
+      engine.waitsOnGpu.mockReturnValue(false);
+      act(() => driver()(engine, 0.016));
+    }
+    expect(onError).not.toHaveBeenCalled();
+  });
+
   it('unmounted before its end: onComplete is never called', () => {
     const onComplete = jest.fn();
     const { unmount } = renderWithTheme(<RazorSenseSuccess onComplete={onComplete} />);

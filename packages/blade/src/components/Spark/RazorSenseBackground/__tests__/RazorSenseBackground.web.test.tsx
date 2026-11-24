@@ -65,19 +65,23 @@ describe('<RazorSenseBackground /> (jsdom has no WebGL2: its still)', () => {
       removeListener: () => undefined,
     })) as unknown) as typeof window.matchMedia;
     const getContext = jest.spyOn(HTMLCanvasElement.prototype, 'getContext');
-    const onError = jest.fn();
-    const onLoad = jest.fn();
-    const { container } = renderWithTheme(
-      <RazorSenseBackground onError={onError} onLoad={onLoad} />,
-    );
-    const still = await waitFor(() => stillOf(container));
-    expect(still.getAttribute('src')).toBe('still:backgroundLight');
-    await waitFor(() => expect(onLoad).toHaveBeenCalledTimes(1));
-    expect(onError).not.toHaveBeenCalled();
-    expect(getContext).not.toHaveBeenCalled();
-    expect(container.querySelector('canvas')).toBeNull();
-    getContext.mockRestore();
-    window.matchMedia = ownMatchMedia;
+    try {
+      const onError = jest.fn();
+      const onLoad = jest.fn();
+      const { container } = renderWithTheme(
+        <RazorSenseBackground onError={onError} onLoad={onLoad} />,
+      );
+      const still = await waitFor(() => stillOf(container));
+      expect(still.getAttribute('src')).toBe('still:backgroundLight');
+      await waitFor(() => expect(onLoad).toHaveBeenCalledTimes(1));
+      expect(onError).not.toHaveBeenCalled();
+      expect(getContext).not.toHaveBeenCalled();
+      expect(container.querySelector('canvas')).toBeNull();
+    } finally {
+      // (put back even if a check above fails, so no later test runs with them)
+      getContext.mockRestore();
+      window.matchMedia = ownMatchMedia;
+    }
   });
 
   it('dark: its own still', async () => {

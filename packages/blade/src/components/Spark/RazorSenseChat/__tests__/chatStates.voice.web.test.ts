@@ -164,6 +164,24 @@ describe('ChatStates: the page’s voiceStream', () => {
     states.destroy();
   });
 
+  it('says only the strip is drawn at rest, not while listening or while the voice look goes down (the chat’s rest crop)', async () => {
+    const { run, states } = setup();
+    const { stream } = makeStream();
+    run({ isOffline: false, isListening: false });
+    expect(states.isStripOnly()).toBe(true);
+    run({ isOffline: false, isListening: true, voiceStream: stream });
+    expect(states.isStripOnly()).toBe(false);
+    await flush();
+    run({ isOffline: false, isListening: true, voiceStream: stream }, 10);
+    expect(states.isStripOnly()).toBe(false);
+    // (listening stopped: the voice look is still loaded until it's back at rest)
+    states.inputs = { isOffline: false, isListening: false, voiceStream: stream };
+    expect(states.isStripOnly()).toBe(false);
+    run({ isOffline: false, isListening: false, voiceStream: stream }, 30);
+    expect(states.isStripOnly()).toBe(true);
+    states.destroy();
+  });
+
   it('is let go of at once when it goes offline while listening', async () => {
     const { run, states } = setup();
     const { stream, stop } = makeStream();

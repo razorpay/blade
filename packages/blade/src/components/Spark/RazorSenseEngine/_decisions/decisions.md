@@ -8,7 +8,7 @@ The PR review (review 6, must fix): 2.0 only knew software renderers (`POTATO_TI
 - The page's first step (`startLevelOf`): a **low** GPU (old Intel HD, Mali-400 / G5x, Adreno 3xx / 4xx...) two steps down (every other frame, at 0.75 of a CSS px), a **mid** GPU on a phone one step down (every other frame; not an iPhone or iPad, which Safari's hidden GPU name leaves 'mid' by its signals alone, and which held its frames at full on the device test), a **high** or **unknown** one, or a mid one on a laptop, at full. A software renderer still shows the still (the WebGL2 check, as before). A stage whose page starts two steps down draws at 0.75 of a CSS px from its first frame.
 - The steps keep the picture: every other frame, then fewer pixels (see Render scale). Only frames under 20 a second for 3 seconds at the lowest step go to the still, as before.
 - **Intel UHD and Iris Xe start at full** (they classify as high or mid on a laptop: 0). The device test's UHD laptop (1920x1080 @1x, a 950 px wide window) held 60 drawn frames a second with each component alone, its page at 88-144 fps and its 95th-percentile frame 7-14 ms (an earlier run, the laptop busier: 50-60 drawn, 21-28 ms). Starting it lower would cost every page on it fewer frames or pixels where it doesn't need them. What it can't hold is every component on one page at once while typing (12-20 fps): that's what the steps are for, and they now meet it within a second (below). Iris Xe is faster than UHD.
-- `detect()` makes one more probe context, once a page (its own `failIfMajorPerformanceCaveat` check), let go at once.
+- `detect()` makes no probe context of its own here: it's told there's no major performance caveat (FreshStage's WebGL2 check asked already, with `failIfMajorPerformanceCaveat`). Today's RazorSense, which doesn't tell it, still probes.
 
 ## Step back up
 
@@ -27,3 +27,11 @@ The PR review (review 6, must fix): 2.0 only knew software renderers (`POTATO_TI
 ## Typing's own cost
 
 - Measured (timer queries, Metal, 1x): typing adds 2.4-3.8 ms a frame to the chat and the bottom wave, 1-1.5 ms to the chat background. It's the typing strip drawn over the strip at rest, animating (its shapes rasterised again each frame), and the size boost (every shape grown round the strip's middle, so rasterised again too). With only one of the two the frame costs about the same as with both, so neither can go without the other being redrawn: the look itself costs it. Fewer pixels is the cut that keeps it, and the steps now reach it within a second.
+
+## Only what it draws (24 Nov, the device test's fixed-cost lab)
+
+- On the Intel UHD laptop, compositing canvases, their number and per-frame uploads cost nothing; passes and fill do. And a blurred layer's size comes from its blur (its sigma at 5 texels), not the canvas, so the steps' lower render scale didn't shrink it.
+- **`blurBox`** (an engine switch, on for every 2.0 component): a layer's two blur passes run only over its box (its shape out by its 3-sigma blur and the margin the stack's scissor keeps), its targets cleared first. Outside the box the blur only ever read empty texels: every comp byte-identical to the engine before. And a small layer's non-convex outline is drawn in a tile its box's size (the path a big layer already took), not a 1024 px tile for its whole layer: 97 of 98 compared frames byte-identical, one dark voice frame 1 / 255 off in 508 pixels.
+- GPU time a frame (timer queries, Metal, 1920x1080 @1x): the voice look listening 10.6 -> 4.1 ms (light), 11.4 -> 6.0 ms (dark); thinking 10.9 -> 7.5 ms; the chat at rest 3.7 -> 3.0 ms.
+- **`view`** (from #4101, off here): layers and the accumulation only over what the canvas shows, for a Button hover's small window onto a card-sized comp. In this engine so both PRs build one; 2.0's components don't ask for it (byte-identical).
+

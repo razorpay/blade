@@ -137,7 +137,8 @@ export type FreshSwitches = {
   view?: boolean;
   /**
    * a layer's two blur passes only over its box (its shape out by its 3-sigma blur), not the whole layer: the same layer, bit for
-   * bit (outside the box the blur only ever read empty texels). For small blurred shapes on a big comp (the voice look's row)
+   * bit (outside the box the blur only ever read empty texels); and a small layer's outline drawn in a tile its box's size, not its
+   * layer's (within one 8-bit step). For small blurred shapes on a big comp (the voice look's row)
    */
   blurBox?: boolean;
 };

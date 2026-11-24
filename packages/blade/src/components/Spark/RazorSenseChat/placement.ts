@@ -30,6 +30,14 @@ const WAVE_PIXELS = 2.2e6;
  * scale 1): dark's surge reached 169 px at 2 / 255, the faintest change (1 / 255) ~260. Its canvas at rest starts there
  */
 const REST_REACH_UP = 300;
+/**
+ * RazorSenseChat's stage starting `top` px down its chat (0: the whole chat). Its box is laid with `inset: 0`, so going back to the
+ * whole chat sets top to 0px, never clears it: cleared, the shorthand's top went with it and the stage was 0 px tall (the voice look
+ * and a new question after a crop drew on nothing)
+ */
+const placeStage = (box: HTMLElement, top: number): void => {
+  box.style.top = `${top}px`;
+};
 /** the steps RazorSenseChat's stage moves in at rest (CSS px): a whole number of device px at 0.5, 0.75, 1, 1.25, 1.5, 1.6 and 2 */
 const REST_STEP = 20;
 
@@ -84,6 +92,7 @@ export {
   OUTCOME_REACH_UP,
   WAVE_PIXELS,
   REST_STEP,
+  placeStage,
   REST_REACH_UP,
 };
 export type { Rect };

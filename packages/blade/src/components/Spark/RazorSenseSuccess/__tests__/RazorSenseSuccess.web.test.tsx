@@ -33,7 +33,11 @@ const reduceMotion = (on: boolean): void => {
 };
 
 describe('<RazorSenseSuccess /> (jsdom has no WebGL2)', () => {
-  afterEach(() => reduceMotion(false));
+  afterEach(() => {
+    // (put back even if a test fails midway, so no later test runs on fake timers)
+    jest.useRealTimers();
+    reduceMotion(false);
+  });
 
   it('is the badge’s size in the layout (an image named Success), and forwards ref, className, style and testID', () => {
     const ref = React.createRef<HTMLDivElement>();

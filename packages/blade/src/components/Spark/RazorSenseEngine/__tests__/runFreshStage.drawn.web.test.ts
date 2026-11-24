@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-var-requires */
 // onLoad means drawn: a component hears its first frame is on its canvas (onDrawn), not that its engine was made or started. And
-// after that first frame, its GPU holding its frames back (a Direct3D copy of its shader compiling for a look it hasn't drawn yet)
-// brings its still back till frames come (the PR review: a first frame that needed nothing still compiling counted as drawn, and
-// the canvas stayed on it).
+// after that first frame, its stage saying its GPU holds its frames back (onHeld) brings its still back till its next frame.
 
-type Turn = { go: () => unknown; prepare?: () => boolean };
+type Turn = { go: () => unknown; prepare?: () => boolean; isUrgent?: boolean };
 
 const setup = (): { runFreshStage: any; turns: Turn[] } => {
   const turns: Turn[] = [];
@@ -15,8 +13,13 @@ const setup = (): { runFreshStage: any; turns: Turn[] } => {
   let runFreshStage: any;
   jest.isolateModules(() => {
     jest.doMock('../startQueue', () => ({
-      waitForTurn: (_box: Element, go: Turn['go'], prepare?: Turn['prepare']) => {
-        turns.push({ go, prepare });
+      waitForTurn: (
+        _box: Element,
+        go: Turn['go'],
+        prepare?: Turn['prepare'],
+        isUrgent?: boolean,
+      ) => {
+        turns.push({ go, prepare, isUrgent });
         return () => undefined;
       },
     }));
@@ -42,7 +45,9 @@ describe('runFreshStage: drawn, and its GPU holding frames back', () => {
     jest.resetModules();
   });
 
-  const run = async (): Promise<{
+  const run = async (
+    extra: Record<string, unknown> = {},
+  ): Promise<{
     turns: Turn[];
     stageRef: { current: any };
     onDrawn: jest.Mock;
@@ -68,10 +73,22 @@ describe('runFreshStage: drawn, and its GPU holding frames back', () => {
       onRelease: jest.fn(),
       onDrawn,
       onWaiting,
+      ...extra,
     });
     await flush();
     return { turns, stageRef, onDrawn, onWaiting, stop, box };
   };
+
+  it('asks the start queue for an urgent turn when it’s urgent (RazorSenseSuccess), and an ordinary one otherwise', async () => {
+    const urgent = await run({ isUrgent: true });
+    expect(urgent.turns[0].isUrgent).toBe(true);
+    urgent.stop();
+    urgent.box.remove();
+    const ordinary = await run();
+    expect(ordinary.turns[0].isUrgent).toBeFalsy();
+    ordinary.stop();
+    ordinary.box.remove();
+  });
 
   it('calls onDrawn once its first frame is shown, not when it starts', async () => {
     const { turns, stageRef, onDrawn, stop, box } = await run();
@@ -86,28 +103,18 @@ describe('runFreshStage: drawn, and its GPU holding frames back', () => {
     box.remove();
   });
 
-  it('brings its still back while its GPU holds its frames back after the first, and takes it away once frames come', async () => {
+  it('brings its still back when its stage says its GPU holds its frames back, and takes it away at its next frame', async () => {
     const { turns, stageRef, onWaiting, stop, box } = await run();
     turns[0].go();
     const stage = stageRef.current;
-    let held = false;
-    stage.waitsOnGpu = () => held;
     stage.onShown();
     expect(onWaiting).toHaveBeenLastCalledWith(false);
-    held = true;
-    jest.advanceTimersByTime(500);
-    expect(onWaiting).toHaveBeenLastCalledWith(false);
-    jest.advanceTimersByTime(500);
+    // (the stage, its GPU holding frames back past 0.8 s: its canvas hidden, FreshStage.held.web.test.ts)
+    stage.onHeld();
     expect(onWaiting).toHaveBeenLastCalledWith(true);
-    held = false;
-    jest.advanceTimersByTime(250);
+    stage.onShown();
     expect(onWaiting).toHaveBeenLastCalledWith(false);
-    // (gone: nothing watched any more)
     stop();
-    onWaiting.mockClear();
-    held = true;
-    jest.advanceTimersByTime(2000);
-    expect(onWaiting).not.toHaveBeenCalled();
     box.remove();
   });
 });

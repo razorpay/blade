@@ -3,6 +3,7 @@ import type { Outcome, spliceOutcome } from './outcome';
 import type { VoiceBottom } from './voiceBottom';
 import type { FreshDoc, FreshEngine, FreshExport } from '../RazorSenseEngine';
 import { releaseVoice, tapVoice } from '../RazorSenseEngine/voice';
+import { isRetryLater } from '../RazorSenseEngine/chunkRetry';
 import type { VoiceTap } from '../RazorSenseEngine/voice';
 
 /**
@@ -53,11 +54,10 @@ class ChatStates {
   private isLoadingOutcome = false;
   private isLoadingVoice = false;
   /**
-   * a chunk that failed to load isn't asked for again (the PR review: asked each frame, a deploy that removed the old chunks made a
-   * 404 every frame): the strip stays as it is
+   * when a chunk last failed to load (performance.now ms; 0: it hasn't): asked again only a while later (chunkRetry.ts)
    */
-  private hasFailedOutcome = false;
-  private hasFailedVoice = false;
+  private outcomeFailedAt = 0;
+  private voiceFailedAt = 0;
   /** the outcome spliced into the loaded document (and where its piece is on the strip's clock) */
   private splice: { outcome: Outcome; doc: FreshDoc; t0: number; t1: number } | null = null;
   /** the voice look, made the first time the page listens, and the Comp 3 its row is in while it's loaded */
@@ -98,7 +98,7 @@ class ChatStates {
 
   /** the chat started thinking: its outcomes' chunk is fetched while the page is idle, so one is ready by the answer */
   public prefetchOutcome(): void {
-    if (this.outcomeModule || this.isLoadingOutcome || this.hasFailedOutcome) return;
+    if (this.outcomeModule || this.isLoadingOutcome || isRetryLater(this.outcomeFailedAt)) return;
     this.isLoadingOutcome = true;
     whenIdle(() => {
       import('./outcome')
@@ -108,7 +108,7 @@ class ChatStates {
           if (!this.isDead) this.redraw?.();
         })
         .catch(() => {
-          this.hasFailedOutcome = true;
+          this.outcomeFailedAt = performance.now();
         })
         .finally(() => {
           this.isLoadingOutcome = false;
@@ -176,6 +176,14 @@ class ChatStates {
     }
   }
 
+  /**
+   * whether only the strip at rest is drawn: not the voice look (wanted, or still on, morphing out), whose row reaches higher than the
+   * strip's typing surge (at full bands, dark's faintest glow ~305 px above the chat input's bottom): RazorSenseChat's rest crop
+   */
+  public isStripOnly(): boolean {
+    return !this.voiceComp && !this.inputs.isListening;
+  }
+
   public destroy(): void {
     this.isDead = true;
     window.clearTimeout(this.stillTimer);
@@ -231,7 +239,7 @@ class ChatStates {
   }
 
   private importVoice(): void {
-    if (this.voice || this.isLoadingVoice || this.hasFailedVoice) return;
+    if (this.voice || this.isLoadingVoice || isRetryLater(this.voiceFailedAt)) return;
     this.isLoadingVoice = true;
     import('./voiceBottom')
       .then((m) => {
@@ -241,7 +249,7 @@ class ChatStates {
         this.redraw?.();
       })
       .catch(() => {
-        this.hasFailedVoice = true;
+        this.voiceFailedAt = performance.now();
       })
       .finally(() => {
         this.isLoadingVoice = false;
