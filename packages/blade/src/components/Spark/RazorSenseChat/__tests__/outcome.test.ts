@@ -1,4 +1,4 @@
-import { spliceOutcome } from '../outcome';
+import { outcomeMap, spliceOutcome } from '../outcome';
 import { chatDark, chatLight } from '../comps';
 import { errorLight, successDark, successLight } from '../outcomeComps';
 import type { FreshDoc, FreshKey } from '../../RazorSenseEngine/types';
@@ -64,5 +64,64 @@ describe('spliceOutcome', () => {
   it('keeps light and dark their own tunings', () => {
     expect(successLight).not.toEqual(successDark);
     expect(JSON.stringify(successLight.K)).not.toEqual(JSON.stringify(errorLight.K));
+  });
+});
+
+describe('outcomeMap: the splash laid as flow 10.5 lays it, for the window it plays in', () => {
+  // flow 10.5's own s1Map, read off its page after "success 2" (its chat panel #chat, its chat input #cfield), at two window sizes
+  const flow = [
+    {
+      window: '1512 x 982',
+      box: { left: 54, top: 48, width: 1452, height: 928 },
+      input: { left: 360, width: 840, bottom: 931 },
+      map: { k: 0.9603174603174603, dx: 62, dy: 42 },
+    },
+    {
+      window: '1440 x 800',
+      box: { left: 54, top: 48, width: 1380, height: 746 },
+      input: { left: 324, width: 840, bottom: 749 },
+      map: { k: 0.9126984126984127, dx: 62, dy: 224 },
+    },
+  ];
+
+  it.each(flow)('is flow 10.5’s own at $window', ({ box, input, map }) => {
+    // (the anchor: the chat input's middle across, its 60 px bar's top)
+    const m = outcomeMap(box, [input.left + input.width / 2, input.bottom - 60], 1);
+    expect(m.k).toBeCloseTo(map.k, 6);
+    expect(m.dx).toBeCloseTo(map.dx, 3);
+    expect(m.dy).toBeCloseTo(map.dy, 3);
+  });
+
+  const splash = (doc: FreshDoc): { y: number; s: number } => {
+    const c3 = comp(doc, 'c3');
+    const s = ((c3.shapes as { id: string; y: number; s: number }[]) ?? []).find(
+      (x) => x.id === 'eSplash',
+    );
+    if (!s) throw new Error('no splash');
+    return s;
+  };
+
+  it('leaves the piece as made at flow 10.5’s reference size, and lays it lower in a shorter window, as flow 10.5 does', () => {
+    const made = spliceOutcome(chatLight, 'success', 'light', ['c3', 'b_c3']).doc;
+    const [ref, short] = flow.map(
+      ({ box, input }) =>
+        spliceOutcome(chatLight, 'success', 'light', ['c3', 'b_c3'], {
+          ...outcomeMap(box, [input.left + input.width / 2, input.bottom - 60], 1),
+        }).doc,
+    );
+    expect(splash(ref).y).toBeCloseTo(splash(made).y, 6);
+    expect(splash(ref).s).toBeCloseTo(splash(made).s, 6);
+    // (comp px from the middle, down: further down, and a little smaller)
+    expect(splash(short).y).toBeGreaterThan(splash(made).y + 100);
+    expect(splash(short).s).toBeLessThan(splash(made).s);
+    // the splash's growth keyed smaller by the same map, the halves lower; the strip itself untouched
+    const grows = (doc: FreshDoc): number[] =>
+      keys(comp(doc, 'c3'))['s:eSplash:s'].map((k) => k.v as number);
+    grows(short).forEach((v, i) => expect(v).toBeLessThan(grows(made)[i]));
+    const half = (doc: FreshDoc): number =>
+      ((comp(doc, 'c3').shapes as { id: string; y: number }[]) ?? []).find((x) => x.id === 'eHalfL')
+        ?.y ?? NaN;
+    expect(half(short)).toBeGreaterThan(half(made) + 100);
+    expect(keys(comp(short, 'c3'))['s:s2:y']).toEqual(keys(comp(made, 'c3'))['s:s2:y']);
   });
 });

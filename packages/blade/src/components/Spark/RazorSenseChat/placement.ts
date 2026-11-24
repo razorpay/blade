@@ -38,6 +38,36 @@ const REST_REACH_UP = 300;
 const placeStage = (box: HTMLElement, top: number): void => {
   box.style.top = `${top}px`;
 };
+/**
+ * flow 10.5's chat panel in its window (CSS px): under its 48 px top bar, 6 px above the window's bottom, 60 px narrower (its sidebar
+ * and margins), its chat input centred across it. A lone RazorSenseBottomWave lays an outcome's splash in this, as flow 10.5 lays it
+ * in its chat panel
+ */
+const CHAT_PANEL = { top: 48, bottom: 6, across: 60 };
+/** flow 10.5's chat panel for a window `win` (in the stage's CSS px) round a chat input whose middle is `middle` across */
+const panelIn = (win: Rect, middle: number): Rect => {
+  const width = Math.max(1, win.width - CHAT_PANEL.across);
+  return {
+    left: middle - width / 2,
+    top: win.top + CHAT_PANEL.top,
+    width,
+    height: Math.max(1, win.height - CHAT_PANEL.top - CHAT_PANEL.bottom),
+  };
+};
+/** a box on screen in `stage`'s own CSS px */
+const toStage = (r: Rect, stage: HTMLElement): Rect => {
+  const b = stage.getBoundingClientRect();
+  const k = b.width / Math.max(1, stage.clientWidth) || 1; // (a scaled container: screen px -> the stage's own)
+  return {
+    left: (r.left - b.left) / k,
+    top: (r.top - b.top) / k,
+    width: r.width / k,
+    height: r.height / k,
+  };
+};
+/** the window in `stage`'s own CSS px */
+const windowIn = (stage: HTMLElement): Rect =>
+  toStage({ left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }, stage);
 /** the steps RazorSenseChat's stage moves in at rest (CSS px): a whole number of device px at 0.5, 0.75, 1, 1.25, 1.5, 1.6 and 2 */
 const REST_STEP = 20;
 
@@ -70,14 +100,7 @@ const rectIn = (el: HTMLElement | null, stage: HTMLElement): Rect | null => {
   if (!el?.isConnected) return null;
   const r = el.getBoundingClientRect();
   if (!r.width && !r.height) return null;
-  const b = stage.getBoundingClientRect();
-  const k = b.width / Math.max(1, stage.clientWidth) || 1; // (a scaled container: screen px -> the stage's own)
-  return {
-    left: (r.left - b.left) / k,
-    top: (r.top - b.top) / k,
-    width: r.width / k,
-    height: r.height / k,
-  };
+  return toStage(r, stage);
 };
 
 export {
@@ -94,5 +117,7 @@ export {
   REST_STEP,
   placeStage,
   REST_REACH_UP,
+  panelIn,
+  windowIn,
 };
 export type { Rect };

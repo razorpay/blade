@@ -1,3 +1,4 @@
+import type { Rect } from './placement';
 import type { FreshDoc, FreshPlayer } from '../RazorSenseEngine';
 import { TypingStrength, smooth01 } from '../RazorSenseEngine/typingStrength';
 import { cubicBezier } from '../RazorSenseEngine/ease';
@@ -68,6 +69,11 @@ type Page = {
  * sits 111 px above the window's bottom, the comp's bottom edge).
  */
 const COMP = { w: 1512, h: 982, slot: [380, 173.65], box: 787, barTop: 982 - 111 };
+/** the strip page's top-left (CSS px, before its room) for a chat input anchor, the comp drawn at `scale`: its chat bar on the input */
+const stripOrigin = (input: [number, number], scale: number): [number, number] => [
+  input[0] - COMP.box * scale,
+  input[1] - COMP.barTop * scale,
+];
 /** flow 9's chat (measured, CSS px): its thinking slot's middle (from the window's middle across, from its top down) */
 const SLOT = [-352, 176.95];
 /** the chat panel's offset in flow 9's window */
@@ -83,6 +89,11 @@ type ChatAnchors = {
   input: [number, number];
   bar?: { top: number; width: number; height: number };
   leaveAt?: number;
+  /**
+   * the box an outcome's splash is laid in (flow 10.5's chat panel, as its s1Map has it): RazorSenseChat's own box; for a lone
+   * RazorSenseBottomWave, the window less flow 10.5's top bar and sidebar. Measured only as an outcome starts
+   */
+  box?: () => Rect | null;
 };
 
 /** flow 9's own chat, for a panel this big: its chat bar centred across the window 111 px above the bottom, its thinking slot */
@@ -186,15 +197,13 @@ class ChatDriver {
   public setAnchors(anchors: ChatAnchors, scale: number, room = { x: 0, y: 0 }): void {
     const rx = room.x * scale;
     const ry = room.y * scale;
+    const [bx, by] = stripOrigin(anchors.input, scale);
     this.O = {
       think: [
         anchors.thinking[0] - COMP.slot[0] * scale - rx,
         anchors.thinking[1] - COMP.slot[1] * scale - ry,
       ],
-      bottom: [
-        anchors.input[0] - COMP.box * scale - rx,
-        anchors.input[1] - COMP.barTop * scale - ry,
-      ],
+      bottom: [bx - rx, by - ry],
     };
   }
 
@@ -604,6 +613,6 @@ class ChatDriver {
   }
 }
 
-export { ChatDriver, getChatSetup, flow9Anchors };
+export { ChatDriver, COMP, getChatSetup, flow9Anchors, stripOrigin };
 export type { ChatAnchors };
 export type { ChatMotion, ChatSetup, ChatTimes };
