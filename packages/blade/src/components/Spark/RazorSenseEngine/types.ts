@@ -135,6 +135,11 @@ export type FreshSwitches = {
    * for a small window onto a big comp (a Button's AI hover). Off unless asked (scripts/razorsenseEngine/buildFreshEngine.js)
    */
   view?: boolean;
+  /**
+   * a layer's two blur passes only over its box (its shape out by its 3-sigma blur), not the whole layer: the same layer, bit for
+   * bit (outside the box the blur only ever read empty texels). For small blurred shapes on a big comp (the voice look's row)
+   */
+  blurBox?: boolean;
 };
 
 export type FreshEngineHost = {

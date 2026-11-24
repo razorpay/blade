@@ -46,8 +46,8 @@ let src = ['01-core.js', '02-gl.js', 'player.js'].map(read).join('\n');
 src = sub(src, `function buildLayer(`, read("gpu_raster.js") + `function buildLayer(`);   // the GPU speed-ups, in before buildLayer
 src = sub(src, `rasterShape(s, L, R.raw, xp);`, `if (gpuOk(s)) R.src = gpuRaster(s, L, R, xp); else { rasterShape(s, L, R.raw, xp); R.src = R.raw; }`);
 src = sub(src, `blurPass(R.raw, A, [1, 0], bsx)`, `blurPass((R.src || R.raw), A, [1, 0], bsx)`);
-src = sub(src, `blurPass(R.raw, B, [1, 0], bsx)`, `blurPass((R.src || R.raw), B, [1, 0], bsx)`);
-src = sub(src, `blurPass(R.raw, B, [0, 1], bsy)`, `blurPass((R.src || R.raw), B, [0, 1], bsy)`);
+src = sub(src, `blurPass(R.raw, B, [1, 0], bsx)`, `blurPass((R.src || R.raw), B, [1, 0], bsx, grBlurBox(L))`);
+src = sub(src, `blurPass(R.raw, B, [0, 1], bsy)`, `blurPass((R.src || R.raw), B, [0, 1], bsy, grBlurBox(L))`);
 src = sub(src, `L.tex = R.raw;`, `L.tex = R.src || R.raw;`);
 src = sub(src, `function dropLayer(id) { const R = GL.layers.get(id); if (!R) return; gl.deleteTexture(R.raw);`, `function dropLayer(id) { const R = GL.layers.get(id); if (!R) return; gl.deleteTexture(R.raw); if (R.g) gl.deleteTexture(R.g.t);`);
 src = sub(src, `for (const R of rc.layers.values()) { gl.deleteTexture(R.raw);`, `for (const R of rc.layers.values()) { gl.deleteTexture(R.raw); if (R.g) gl.deleteTexture(R.g.t);`);
@@ -425,9 +425,36 @@ src = sub(src, `const A = layerTarget(R, 'A', L.rw, L.rh), B = layerTarget(R, 'B
 src = sub(
   src,
   `if (bsx > 0 && bsy > 0) { blurPass((R.src || R.raw), A, [1, 0], bsx); blurPass(A.t, B, [0, 1], bsy); }`,
-  `if (bsx > 0 && bsy > 0) { const A = GPU_STABLE ? grTake(L.rw, L.rh) || makeTarget(L.rw, L.rh) : layerTarget(R, 'A', L.rw, L.rh); blurPass((R.src || R.raw), A, [1, 0], bsx); blurPass(A.t, B, [0, 1], bsy); if (GPU_STABLE) grPut(A); }`,
+  `if (bsx > 0 && bsy > 0) { const A = GPU_STABLE ? grTake(L.rw, L.rh) || makeTarget(L.rw, L.rh) : layerTarget(R, 'A', L.rw, L.rh), bb = grBlurBox(L); blurPass((R.src || R.raw), A, [1, 0], bsx, bb); blurPass(A.t, B, [0, 1], bsy, bb); if (GPU_STABLE) grPut(A); }`,
 );
 src = sub(src, `const GR_POOL_MAX = 96e6;   // bytes`, `const GR_POOL_MAX = 24e6;   // bytes`);
+// Blade (switch blurBox): a layer's two blur passes run only over its box (the shape's own, out by its 3-sigma blur and the margin the
+// stack's scissor keeps: L.cb), its targets cleared first, not over the whole layer: a small blurred shape (the voice look's row,
+// eleven blobs) had each of its passes run over a layer the comp's size. Outside that box the blur reads only empty texels (its reach
+// is 3 sigma), so it was zeros there anyway: the same layer, bit for bit
+src = sub(src, `const GPU_BOX = !!GR_OPT.box && !/[?&]box=0/.test(__search);`, `const GPU_BOX = !!GR_OPT.box && !/[?&]box=0/.test(__search);
+const GPU_BLURBOX = !!GR_OPT.blurBox && !/[?&]blurbox=0/.test(__search);
+function grBlurBox(L) {   // Blade: the layer's box in its texels [x, y, w, h], or null (none, or most of the layer anyway)
+  const b = L.cb; if (!GPU_BLURBOX || !b) return null;
+  const x0 = Math.max(0, Math.floor((b[0] - L.rect[0]) * L.kx)), x1 = Math.min(L.rw, Math.ceil((b[2] - L.rect[0]) * L.kx));
+  const y0 = Math.max(0, Math.floor((b[1] - L.rect[1]) * L.ky)), y1 = Math.min(L.rh, Math.ceil((b[3] - L.rect[1]) * L.ky));
+  if (x1 <= x0 || y1 <= y0 || (x1 - x0) * (y1 - y0) > 0.8 * L.rw * L.rh) return null;
+  return [x0, y0, x1 - x0, y1 - y0];
+}`);
+src = sub(src, `function blurPass(srcTex, dst, dir, sigma) {
+  const pr = GL.pBlur, W = gaussWeights(sigma);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, dst.f); gl.viewport(0, 0, dst.w, dst.h); gl.useProgram(pr.p);`, `function blurPass(srcTex, dst, dir, sigma, box) {
+  const pr = GL.pBlur, W = gaussWeights(sigma);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, dst.f); gl.viewport(0, 0, dst.w, dst.h);
+  if (box) { gl.disable(gl.SCISSOR_TEST); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.enable(gl.SCISSOR_TEST); gl.scissor(box[0], box[1], box[2], box[3]); }   // Blade: blurBox
+  gl.useProgram(pr.p);`);
+src = sub(src, `  if (pr.u.uOff) gl.uniform1fv(pr.u.uOff, W.off); if (pr.u.uW) gl.uniform1fv(pr.u.uW, W.wt);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+}`, `  if (pr.u.uOff) gl.uniform1fv(pr.u.uOff, W.off); if (pr.u.uW) gl.uniform1fv(pr.u.uW, W.wt);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  if (box) gl.disable(gl.SCISSOR_TEST);
+}`);
+
 
 // The shaders' text without their comments and indentation (3 KB gzipped off the engine, the PR review), as the GPU sees them all the
 // same. FS_COMP is left as it is: FS_COMP_AE is made from it at runtime by finding lines in it, comments included. Lines stay lines
