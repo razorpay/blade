@@ -15,7 +15,7 @@ import {
 } from '../useLazyLayer/hoverSlots';
 import { errorText, noteHover, SLOW_LOAD_MS } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
-import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
+import { letGoOfStage, takeStage, HOVER_SWITCHES } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
 import { logger } from '~utils/logger';
 import type { ButtonRayProps, ButtonRayVariant } from './types';
@@ -514,8 +514,8 @@ const ButtonRayLayer = ({
             dpr: 2,
           },
         },
-        // (its layers made only over the strip's spot of the card: the same picture, in a fraction of the memory)
-        VIEW_ONLY,
+        // (its layers made only over the strip's spot of the card, their blurs over their boxes: the same picture, in a fraction of the memory)
+        HOVER_SWITCHES,
       );
       stage.setPaused(true);
       if (!engine) noteHover('ray', 'stage: made no engine');

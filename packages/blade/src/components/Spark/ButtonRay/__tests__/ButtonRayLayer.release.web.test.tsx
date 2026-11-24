@@ -102,8 +102,8 @@ describe('ButtonRayLayer', () => {
     await waitFor(() => expect(mockOnHold.current).not.toBeNull());
     act(() => mockOnHold.current?.(true));
     await waitFor(() => expect(queryByTestId('ray')).not.toBeNull());
-    // (its layers made only over the strip's spot of the card: FreshSwitches.view)
-    expect(mockMountedWith).toEqual([{ view: true }]);
+    // (its layers made only over the strip's spot of the card, their blurs over their boxes: FreshSwitches.view, blurBox)
+    expect(mockMountedWith).toEqual([{ view: true, blurBox: true }]);
 
     act(() => {
       mockOnHold.current?.(false);

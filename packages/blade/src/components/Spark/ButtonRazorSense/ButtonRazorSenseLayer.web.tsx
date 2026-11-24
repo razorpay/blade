@@ -10,7 +10,7 @@ import {
 } from '../useLazyLayer/hoverSlots';
 import { errorText, noteHover, SLOW_LOAD_MS } from '../useLazyLayer/hoverLog';
 import type { HoverSlot, KeyboardFocus } from '../useLazyLayer/hoverSlots';
-import { letGoOfStage, takeStage, VIEW_ONLY } from '../useLazyLayer/stagePool';
+import { letGoOfStage, takeStage, HOVER_SWITCHES } from '../useLazyLayer/stagePool';
 import type { PooledStage } from '../useLazyLayer/stagePool';
 import type { ButtonRazorSenseProps } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -263,8 +263,8 @@ const ButtonRazorSenseLayer = ({
             dpr: 3,
           },
         },
-        // (its layers made only over the button's spot of the comp: ~74 MB a hover otherwise; the same picture)
-        VIEW_ONLY,
+        // (its layers made only over the button's spot of the comp, ~74 MB a hover otherwise, and their blurs over their boxes: the same picture)
+        HOVER_SWITCHES,
       );
       stage.setPaused(!isOn);
       setLive(false);
