@@ -13,13 +13,16 @@ const Host = ({
   return Loaded ? <Loaded /> : null;
 };
 
-/** a reduced-motion setting the test can turn on and off, as the system's would */
-const motionSetting = (isReduced: boolean): { set: (isReducedNow: boolean) => void } => {
+/** a reduced-motion setting the test can turn on and off, as the system's would (on a device that can hover, unless told) */
+const motionSetting = (
+  isReduced: boolean,
+  canHoverHere = true,
+): { set: (isReducedNow: boolean) => void } => {
   let matches = isReduced;
   const listeners = new Set<() => void>();
   window.matchMedia = (((query: string) => ({
     get matches() {
-      return matches && query.includes('reduce');
+      return query.includes('any-hover') ? canHoverHere : matches && query.includes('reduce');
     },
     media: query,
     addEventListener: (_: string, listener: () => void) => listeners.add(listener),
@@ -68,5 +71,38 @@ describe('useLazyLayer', () => {
     expect(queryByText('layer')).toBeInTheDocument();
     // (kept, not loaded again)
     expect(load).toHaveBeenCalledTimes(1);
+  });
+
+  it("loads nothing on a device that can't hover (a phone) until a keyboard focus anywhere on the page", async () => {
+    motionSetting(false, false);
+    const load = jest.fn(() => Promise.resolve(Layer));
+    const { queryByText } = render(<Host load={load} />);
+    const field = document.createElement('input');
+    document.body.append(field);
+    const isKeyboard = { now: false };
+    const matches = field.matches.bind(field);
+    field.matches = (selector: string) =>
+      selector === ':focus-visible' ? isKeyboard.now : matches(selector);
+    await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
+    expect(load).not.toHaveBeenCalled();
+
+    // a tap's focus: still nothing
+    act(() => {
+      field.focus();
+    });
+    await act(() => new Promise((resolve) => setTimeout(resolve, 30)));
+    expect(load).not.toHaveBeenCalled();
+    act(() => {
+      field.blur();
+    });
+
+    // a keyboard's (a tablet's), on anything: loaded
+    isKeyboard.now = true;
+    act(() => {
+      field.focus();
+    });
+    await waitFor(() => expect(queryByText('layer')).not.toBeNull());
+    expect(load).toHaveBeenCalledTimes(1);
+    field.remove();
   });
 });

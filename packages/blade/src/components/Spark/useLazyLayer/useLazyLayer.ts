@@ -1,5 +1,6 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
+import { canHover, whenHoverOrKeyboardFocus } from './hoverDevice';
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
@@ -27,7 +28,9 @@ const useReducedMotion = (): boolean => {
 
 /**
  * A Spark hover's layer, loaded on demand (Button's aiHover): its module is imported once the button is
- * enabled (a disabled or loading one never draws it), then kept. With reduced motion it's not loaded, and a loaded one is
+ * enabled (a disabled or loading one never draws it), then kept. On a device that can't hover (a phone) it waits for a keyboard
+ * focus anywhere on the page (a tablet's keyboard) or a pointer that can hover: a phone downloads none of it (the layers and their
+ * code were 12 KB gzipped a page, for nothing to play). With reduced motion it's not loaded, and a loaded one is
  * taken off (its canvases freed, the button's own hover back) until reduced motion is turned off again. A failed load
  * (offline, a stale deploy) leaves it null: the button keeps its own hover.
  */
@@ -37,9 +40,15 @@ const useLazyLayer = <P>(
 ): React.ComponentType<P> | null => {
   const [Layer, setLayer] = useState<React.ComponentType<P> | null>(null);
   const isReduced = useReducedMotion();
+  const [canLoad, setCanLoad] = useState(canHover);
 
   useEffect(() => {
-    if (!isEnabled || Layer || isReduced) return undefined;
+    if (canLoad || !isEnabled) return undefined;
+    return whenHoverOrKeyboardFocus(null, () => setCanLoad(true));
+  }, [canLoad, isEnabled]);
+
+  useEffect(() => {
+    if (!isEnabled || !canLoad || Layer || isReduced) return undefined;
     let isMounted = true;
     load()
       .then((loaded) => {
@@ -53,7 +62,7 @@ const useLazyLayer = <P>(
     };
     // `load` is a module-level import: it never changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isEnabled, Layer, isReduced]);
+  }, [isEnabled, canLoad, Layer, isReduced]);
 
   return isReduced ? null : Layer;
 };
