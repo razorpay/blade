@@ -4,7 +4,7 @@ RayLoader
 
 ## Description
 
-RayLoader is the Ray loader (secondary): Ray, Razorpay's AI mascot, charges up and dashes across the loader's box while a page loads, and when it's ready he slides on, turns round, jumps and drops through the floor, then `onComplete` is called. It takes a loader's props (`isLoading`, `onComplete`). Use it where a page loads an AI surface, in place of a ripple loader.
+RayLoader is the Ray loader (secondary): Ray, Razorpay's AI mascot, charges up and dashes across the loader's box while a page loads, and when it's ready he slides on, turns round, jumps and drops through the floor, then `onComplete` is called. It takes a loader's props (`isLoading`, `onComplete`). Use it where a page loads an AI surface, in place of a ripple loader. While his animation loads, a still of his first frame holds his place in the box, from the first render (a server render's too).
 
 ## Important Constraints
 
