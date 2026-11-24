@@ -16,12 +16,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 
 type FileUploadItemCompactProps = Omit<FileUploadItemProps, '_isCompact' | 'size' | 'onPreview'>;
 
-/**
- * The 32px one-line chip FileUploadItem renders with `_isCompact`, for tight places such as
- * ChatInput attachments. It shows the file name and ×; a failed file also gets retry when
- * `onReupload` is set. Why an upload failed shows in a Tooltip on hover or keyboard focus on web,
- * and on tap on native.
- */
+/** The 32px chip `FileUploadItem` renders with `_isCompact` */
 const FileUploadItemCompact = ({
   file,
   onRemove,
@@ -46,7 +41,7 @@ const FileUploadItemCompact = ({
       alignItems="center"
       gap="spacing.3"
       minWidth="0px"
-      // React Native doesn't shrink flex items by default; the name must give way before the actions
+      // React Native doesn't shrink flex items by default
       flexShrink={1}
     >
       <FileUploadItemIcon uploadStatus={status} isCompact />
@@ -76,7 +71,6 @@ const FileUploadItemCompact = ({
       borderWidth="thin"
       width={width}
       minWidth={minWidth}
-      // never wider than its container, unless the caller sets its own limit
       maxWidth={maxWidth ?? '100%'}
       flexShrink={flexShrink}
       flexGrow={flexGrow}
@@ -104,7 +98,6 @@ const FileUploadItemCompact = ({
         ) : (
           fileLabel
         )}
-        {/* retry keeps onReupload working for products that already offer it */}
         {isError && onReupload ? (
           <IconButton
             size="small"
@@ -114,13 +107,12 @@ const FileUploadItemCompact = ({
             data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
           />
         ) : null}
-        {/* × stays on a failed file next to retry, so a file that keeps failing can still be removed */}
+        {/* × stays next to retry so a failed file can always be removed */}
         {isUploading || onRemove ? (
           <IconButton
             size="small"
             accessibilityLabel={`Remove ${name}`}
             icon={CloseIcon}
-            // while uploading, × cancels the upload
             onClick={() => (isUploading ? onDismiss?.({ file }) : onRemove?.({ file }))}
           />
         ) : null}
@@ -128,7 +120,7 @@ const FileUploadItemCompact = ({
       {isUploading ? (
         <BaseBox position="absolute" bottom="spacing.0" left="spacing.0" width="100%">
           <ProgressBar
-            // the chip has no "Uploading" text, so the loader carries it for screen readers
+            // the chip shows no "Uploading" text
             accessibilityLabel={`Uploading ${name}`}
             showPercentage={false}
             value={uploadPercent ?? 0}

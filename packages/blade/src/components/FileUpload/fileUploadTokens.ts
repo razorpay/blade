@@ -109,10 +109,8 @@ const fileUploadItemIconTokens = {
   },
 } as const;
 
-// The 32px one-line chip FileUploadItem renders with `_isCompact`, for tight places such as ChatInput attachments
 const fileUploadItemCompactTokens = {
   height: size['32'],
-  // Long names end in an ellipsis here, so one file can't push the others out of a row of chips
   nameMaxWidth: size['120'],
   iconTileSize: size['24'],
   background: {
@@ -133,7 +131,6 @@ const fileUploadItemCompactTokens = {
   },
 } as const;
 
-// Marks a failed compact chip's tooltip trigger, so the chip can draw the focus ring around itself
 const fileUploadItemCompactTriggerAttribute = 'data-file-upload-item-trigger';
 
 // File icon above the drop area text when size="variable"

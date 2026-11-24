@@ -39,9 +39,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
         '&:hover': {
           backgroundColor: getIn(theme.colors, fileUploadItemCompactTokens.background.hover),
         },
-        // Keyboard focus on a failed chip's tooltip trigger. Blade's 4px ring would be clipped by
-        // this chip (overflow: hidden), so the ring goes around the whole chip instead. Browsers
-        // without :has() draw it inside the trigger.
+        // the chip's overflow: hidden would clip a ring on the trigger, so the chip draws it
         [`& [${fileUploadItemCompactTriggerAttribute}]:focus-visible`]: getFocusRingStyles({
           theme,
           negativeOffset: true,

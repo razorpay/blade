@@ -49,7 +49,6 @@ const StyledFileUploadItemWrapper = ({
   const errorOrDefault = status === 'error' ? 'error' : 'default';
 
   if (isCompact) {
-    // As wide as its content, so a row of chips stays compact. No shadow and no hover on touch.
     return (
       <BaseBox
         position="relative"

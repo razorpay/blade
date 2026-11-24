@@ -10,9 +10,6 @@ import { makeSize } from '~utils';
 
 type FileUploadItemIconProps = {
   uploadStatus?: BladeFile['status'];
-  /**
-   * The smaller 24px tile used by the compact chip
-   */
   isCompact?: boolean;
 };
 

@@ -224,16 +224,7 @@ type FileUploadItemProps = Pick<
   flexGrow?: BoxProps['flexGrow'];
   flexBasis?: BoxProps['flexBasis'];
   /**
-   * @private
-   *
-   * A 32px one-line chip for tight places such as ChatInput attachments. It is as wide as the
-   * file name (up to 120px, then an ellipsis) and shows ×: it cancels an upload (`onDismiss`),
-   * otherwise removes the file (`onRemove`). A failed file also gets retry before × when
-   * `onReupload` is set, and its `errorText` shows in a Tooltip. There is no file size or
-   * percentage; a thin loader runs along the bottom while uploading. `size` and `onPreview` have no
-   * effect.
-   *
-   * @default false
+   * @private 32px chip used by ChatInput attachments
    */
   _isCompact?: boolean;
 } & StyledPropsBlade &
@@ -254,9 +245,6 @@ type StyledFileUploadWrapperProps = {
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
   size: NonNullable<FileUploadProps['size']>;
-  /**
-   * The 32px chip: as wide as its content, no shadow, and a hover fill on web
-   */
   isCompact?: boolean;
   theme: Theme;
   children: React.ReactNode;
