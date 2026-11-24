@@ -1084,91 +1084,140 @@ export const WithComponentActions = WithComponentActionsTemplate.bind({});
 const narrowChartDay = (i: number): string =>
   new Date(Date.UTC(2026, 9, 1 + i)).toISOString().slice(0, 10);
 
-const narrowChartSchema = ([
+const dailyCollected = (days: number): Array<Record<string, string | number>> =>
+  Array.from({ length: days }, (_, i) => ({
+    date: narrowChartDay(i),
+    Collected: 120000 + ((i * 37) % 11) * 15000,
+  }));
+
+/** One CHART node a case. Synthetic data only. */
+const narrowChartCases = [
   {
-    component: 'CHART',
-    chartType: 'line',
-    title: 'Collected per day, last 30 days',
-    xAxis: 'date',
-    data: Array.from({ length: 30 }, (_, i) => ({
-      date: narrowChartDay(i),
-      Collected: 120000 + ((i * 37) % 11) * 15000,
-    })),
-    valueFormatter: { type: 'currency', currency: 'INR' },
+    id: 'line-30-day',
+    component: {
+      component: 'CHART',
+      chartType: 'line',
+      title: 'Collected per day, last 30 days',
+      xAxis: 'date',
+      data: dailyCollected(30),
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'bar',
-    title: 'Failed payments per day',
-    xAxis: 'date',
-    data: Array.from({ length: 7 }, (_, i) => ({ date: narrowChartDay(i), Failed: i % 4 })),
-    valueFormatter: { type: 'number' },
+    id: 'area-14-day',
+    component: {
+      component: 'CHART',
+      chartType: 'area',
+      title: 'Refunds per day, last 14 days',
+      xAxis: 'date',
+      data: Array.from({ length: 14 }, (_, i) => ({
+        date: narrowChartDay(i),
+        Refunds: 18000 + ((i * 29) % 7) * 4500,
+      })),
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'pie',
-    title: 'Payments by method',
-    xAxis: 'method',
-    data: [
-      { method: 'UPI', value: 62 },
-      { method: 'Card', value: 21 },
-      { method: 'Netbanking', value: 11 },
-      { method: 'Wallet', value: 6 },
-    ],
-    valueFormatter: { type: 'percentage' },
+    id: 'bar-3-series',
+    component: {
+      component: 'CHART',
+      chartType: 'bar',
+      title: 'Payments per day, by status',
+      xAxis: 'date',
+      data: Array.from({ length: 7 }, (_, i) => ({
+        date: narrowChartDay(i),
+        Captured: 40 + ((i * 13) % 9) * 5,
+        Failed: 4 + (i % 4),
+        Refunded: 2 + (i % 3),
+      })),
+      valueFormatter: { type: 'number' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'pie',
-    title: 'Collected by method',
-    xAxis: 'method',
-    data: [
-      { method: 'UPI', value: 520000 },
-      { method: 'Card', value: 250000 },
-      { method: 'Netbanking', value: 80000 },
-      { method: 'Wallet', value: 40000 },
-      { method: 'EMI', value: 15000 },
-    ],
-    valueFormatter: { type: 'currency', currency: 'INR' },
+    id: 'pie-7-slices',
+    component: {
+      component: 'CHART',
+      chartType: 'pie',
+      title: 'Collected by method',
+      xAxis: 'method',
+      data: [
+        { method: 'UPI', value: 520000 },
+        { method: 'Card', value: 250000 },
+        { method: 'Netbanking', value: 80000 },
+        { method: 'Wallet', value: 40000 },
+        { method: 'EMI', value: 15000 },
+        { method: 'Pay Later', value: 9000 },
+        { method: 'Bank transfer', value: 6000 },
+      ],
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'bar',
-    title: 'Failed payments per day, axis lines',
-    xAxis: 'date',
-    axisStyle: 'lines',
-    data: Array.from({ length: 7 }, (_, i) => ({ date: narrowChartDay(i), Failed: i % 4 })),
-    valueFormatter: { type: 'number' },
+    id: 'lakh-y-ticks',
+    component: {
+      component: 'CHART',
+      chartType: 'bar',
+      title: 'Collected per month',
+      xAxis: 'month',
+      data: [
+        { month: 'May', Collected: 1850000 },
+        { month: 'Jun', Collected: 2420000 },
+        { month: 'Jul', Collected: 3150000 },
+        { month: 'Aug', Collected: 2780000 },
+        { month: 'Sep', Collected: 4600000 },
+        { month: 'Oct', Collected: 5240000 },
+      ],
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'line',
-    title: 'Collected per day, labels outside',
-    xAxis: 'date',
-    yLabelPlacement: 'outside',
-    data: Array.from({ length: 14 }, (_, i) => ({
-      date: narrowChartDay(i),
-      Collected: 120000 + ((i * 37) % 11) * 15000,
-    })),
-    valueFormatter: { type: 'currency', currency: 'INR' },
+    id: 'empty',
+    component: {
+      component: 'CHART',
+      chartType: 'line',
+      title: 'Disputes per day',
+      xAxis: 'date',
+      data: [],
+      valueFormatter: { type: 'number' },
+    },
   },
   {
-    component: 'CHART',
-    chartType: 'area',
-    title: 'Refunds per day',
-    xAxis: 'date',
-    data: [],
-    valueFormatter: { type: 'currency', currency: 'INR' },
+    id: 'labels-overlap',
+    component: {
+      component: 'CHART',
+      chartType: 'line',
+      title: 'Minimal axes, labels overlap',
+      xAxis: 'date',
+      axisStyle: 'minimal',
+      yLabelPlacement: 'overlap',
+      data: dailyCollected(14),
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
   },
-] as unknown) as GenUIComponent[];
+  {
+    id: 'labels-outside',
+    component: {
+      component: 'CHART',
+      chartType: 'line',
+      title: 'Minimal axes, labels outside',
+      xAxis: 'date',
+      axisStyle: 'minimal',
+      yLabelPlacement: 'outside',
+      data: dailyCollected(14),
+      valueFormatter: { type: 'currency', currency: 'INR' },
+    },
+  },
+];
+
+const narrowChartWidths = ['360px', '800px'] as const;
 
 /**
  * With `chartLayout: 'responsive'` on the GenUIProvider config, a GenUI CHART sizes itself from
  * the box it renders in: height from width, date labels thinned to fit, lakh and crore ticks for
  * INR, full values in the tooltip (₹1,23,450.00), no legend for one series, and one line for a
  * finished chart with no rows. In a box of 640px or less its axes are `minimal`, unless the node
- * sets `axisStyle`. A node can set `yLabelPlacement: 'outside'`. A pie of more than 4 slices, or
- * in a box under 300px, is a list of bars. Each column below is a box of a different width.
+ * sets `axisStyle`. A node can set `yLabelPlacement`. A pie of more than 4 slices, or in a box
+ * under 300px, is a list of bars. Each column is a box of a different width.
  */
 const ChartInNarrowBoxesTemplate = ({
   chartLayout = 'responsive',
@@ -1177,14 +1226,28 @@ const ChartInNarrowBoxesTemplate = ({
 }): JSX.Element => {
   return (
     <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap" alignItems="flex-start">
-      {(['256px', '360px', '520px', '800px'] as const).map((width) => (
-        <Box key={width} width={width} display="flex" flexDirection="column" gap="spacing.3">
-          <Text size="small" color="surface.text.gray.muted">
-            Box {width}
-          </Text>
-          <GenUIProvider config={{ chartLayout }}>
-            <GenUISchemaRenderer isAnimating={false} components={narrowChartSchema} />
-          </GenUIProvider>
+      {narrowChartWidths.map((width) => (
+        <Box key={width} width={width} display="flex" flexDirection="column" gap="spacing.7">
+          {narrowChartCases.map(({ id, component }) => (
+            <Box
+              key={id}
+              testID={`genui-chart-case-${id}-${width}`}
+              display="flex"
+              flexDirection="column"
+              gap="spacing.3"
+              backgroundColor="surface.background.gray.intense"
+            >
+              <Text size="small" color="surface.text.gray.muted">
+                Box {width}
+              </Text>
+              <GenUIProvider config={{ chartLayout }}>
+                <GenUISchemaRenderer
+                  isAnimating={false}
+                  components={([component] as unknown) as GenUIComponent[]}
+                />
+              </GenUIProvider>
+            </Box>
+          ))}
         </Box>
       ))}
     </Box>
