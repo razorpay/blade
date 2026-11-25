@@ -1,0 +1,88 @@
+generated_by: slash-reviewer-self-learning
+learnings:
+- id: lrn_55fbe9249ade
+  rule: Flag XSS vulnerabilities (e.g. dangerouslySetInnerHTML, unsanitized user input
+    rendered as HTML) and auth bypass risks in blade components. These are valid security
+    findings that developers confirm and fix.
+  scope:
+    path_glob: null
+    language: null
+    category: null
+  category: security
+  polarity: enforce
+  confidence: 0.85
+  support: 3
+  surface: reviewer
+  status: proposed
+  source_prs:
+  - 3702
+  source_feedback_ids:
+  - 28
+  origin_repos:
+  - razorpay/blade
+  code_anchor_ok: true
+  fire_count: 0
+  accept_count: 0
+  reject_count: 0
+  display_name: ''
+  notes: ''
+  version: 1
+  created_at: '2026-07-06T02:33:45.923831Z'
+  updated_at: '2026-07-06T02:33:45.923831Z'
+- id: lrn_caeaa64434d9
+  rule: Suggest guard clauses and early returns for improved readability, add necessary
+    null checks, and recommend clearer naming in blade components. These quality suggestions
+    are consistently accepted and applied by authors.
+  scope:
+    path_glob: null
+    language: null
+    category: null
+  category: quality
+  polarity: enforce
+  confidence: 0.9
+  support: 7
+  surface: reviewer
+  status: active
+  source_prs:
+  - 3706
+  source_feedback_ids:
+  - 32
+  origin_repos:
+  - razorpay/blade
+  code_anchor_ok: true
+  fire_count: 0
+  accept_count: 0
+  reject_count: 0
+  display_name: ''
+  notes: ''
+  version: 1
+  created_at: '2026-07-06T02:33:45.923831Z'
+  updated_at: '2026-07-06T02:33:45.923831Z'
+- id: lrn_3d5f484bca2f
+  rule: Flag N+1 query patterns where data fetching occurs inside a loop without batching.
+    These are confirmed real performance issues.
+  scope:
+    path_glob: null
+    language: null
+    category: null
+  category: perf
+  polarity: enforce
+  confidence: 0.75
+  support: 2
+  surface: reviewer
+  status: proposed
+  source_prs:
+  - 3709
+  source_feedback_ids:
+  - 35
+  origin_repos:
+  - razorpay/blade
+  code_anchor_ok: true
+  fire_count: 0
+  accept_count: 0
+  reject_count: 0
+  display_name: ''
+  notes: ''
+  version: 1
+  created_at: '2026-07-06T02:33:45.923831Z'
+  updated_at: '2026-07-06T02:33:45.923831Z'
