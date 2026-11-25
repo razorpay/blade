@@ -56,10 +56,14 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
 
       const newDate = new Date(prevDate);
       if (changeValue === 'month') {
-        newDate.setMonth(date.getMonth());
-        newDate.setFullYear(date.getFullYear());
+        const clampedDay = Math.min(newDate.getDate(), dayjs(date).daysInMonth());
+        newDate.setFullYear(date.getFullYear(), date.getMonth(), clampedDay);
       } else if (changeValue === 'year') {
-        newDate.setFullYear(date.getFullYear());
+        const clampedDay = Math.min(
+          newDate.getDate(),
+          dayjs(new Date(date.getFullYear(), newDate.getMonth(), 1)).daysInMonth(),
+        );
+        newDate.setFullYear(date.getFullYear(), newDate.getMonth(), clampedDay);
       }
 
       date = newDate;
