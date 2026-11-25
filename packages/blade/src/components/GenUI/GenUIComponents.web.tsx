@@ -480,6 +480,11 @@ type ChartComponent = GenUIBaseComponent & {
    */
   showBorder?: boolean;
   /**
+   * Shows or hides the legend. When it is not set: a legend for 2 or more series (or pie
+   * slices), none for one.
+   */
+  showLegend?: boolean;
+  /**
    * Where the Y labels sit with no border. `overlap`: inside the plot, just below each gridline.
    * `outside`: in a column right of the plot, centred on each gridline.
    *
@@ -1047,6 +1052,7 @@ const RenderResponsiveChart = memo(
     variant = 'full',
     valueFormatter,
     showBorder: showBorderProp,
+    showLegend: showLegendProp,
     yLabelPlacement: yLabelPlacementProp,
   }: ChartComponent) => {
     const { isAnimating } = useGenUIAnimation();
@@ -1250,8 +1256,11 @@ const RenderResponsiveChart = memo(
         tickFormatter={tickFormatter}
       />
     ) : null;
-    // One series needs no legend: the title names it.
-    const legendNode = !isTiny && keysToPlot.length > 1 ? <ChartLegend /> : null;
+    // The node's showLegend, else one series (or one pie slice) needs no legend: the title names
+    // it. The wrapper gets the same value, so its own auto rule agrees.
+    const seriesCount = chartType === 'pie' ? validData.length : keysToPlot.length;
+    const showLegend = typeof showLegendProp === 'boolean' ? showLegendProp : seriesCount > 1;
+    const legendNode = !isTiny && showLegend ? <ChartLegend /> : null;
     // Tooltips show the full value, ₹1,23,450.00. The ticks stay compact, ₹1.2L. A date heading
     // reads as the X labels do, "4 Oct", not "2026-10-04".
     const tooltipNode = !isTiny ? (
@@ -1294,6 +1303,7 @@ const RenderResponsiveChart = memo(
                 width="100%"
                 height={chartHeight}
                 showBorder={showBorder}
+                showLegend={showLegend}
                 yLabelPlacement={yLabelPlacement}
                 data={validData}
                 colorTheme="categorical"
@@ -1313,6 +1323,7 @@ const RenderResponsiveChart = memo(
                 width="100%"
                 height={chartHeight}
                 showBorder={showBorder}
+                showLegend={showLegend}
                 yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
@@ -1333,6 +1344,7 @@ const RenderResponsiveChart = memo(
                 width="100%"
                 height={chartHeight}
                 showBorder={showBorder}
+                showLegend={showLegend}
                 yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
@@ -1350,6 +1362,7 @@ const RenderResponsiveChart = memo(
             ) : chartType === 'pie' ? (
               <ChartDonutWrapper
                 version="v2"
+                showLegend={showLegend}
                 width="100%"
                 height={plotHeight as '350px'}
                 minHeight={plotHeight as '350px'}
@@ -1361,7 +1374,7 @@ const RenderResponsiveChart = memo(
                   radius={getDonutRadius(boxWidth)}
                   type="circle"
                 />
-                {!isTiny ? <ChartLegend /> : null}
+                {legendNode}
                 {tooltipNode}
               </ChartDonutWrapper>
             ) : null}
@@ -1378,6 +1391,7 @@ const RenderResponsiveChart = memo(
       prevProps.xAxis === nextProps.xAxis &&
       prevProps.variant === nextProps.variant &&
       prevProps.showBorder === nextProps.showBorder &&
+      prevProps.showLegend === nextProps.showLegend &&
       prevProps.yLabelPlacement === nextProps.yLabelPlacement &&
       prevProps.data?.length === nextProps.data?.length &&
       JSON.stringify(prevProps.data?.[prevProps.data.length - 1]) ===

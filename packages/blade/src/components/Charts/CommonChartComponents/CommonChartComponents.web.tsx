@@ -10,6 +10,7 @@ import {
   Line as RechartsLine,
   usePlotArea,
   useChartWidth,
+  useChartHeight,
 } from 'recharts';
 import {
   formatChartValueCompact,
@@ -55,6 +56,7 @@ import {
 } from './tokens';
 import { calculateTextWidth, measureTextWidth } from './utils';
 import { getVisibleXLabelIndexes } from './xAxisLabels';
+import { getDonutV2LegendPosition } from '../DonutChart/donutLayout';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import getIn from '~utils/lodashButBetter/get';
 import { Heading, Text } from '~components/Typography';
@@ -1127,11 +1129,13 @@ const CustomSquareLegend = (props: {
   // On top, the legend is left-aligned. A `v2` item has no side padding, so the first swatch
   // starts at the left edge of the chart.
   const isTop = legendPlacement === 'top' && !isVerticalLayout;
+  // A `v2` donut keeps its legend centred on top, so the ring and the legend are one group.
+  const isLeftAligned = isTop && chartName !== 'donut';
   const renderLegend = (items: React.ReactNode): JSX.Element => {
     const legend = (
       <Box
         display="flex"
-        justifyContent={isTop ? 'flex-start' : 'center'}
+        justifyContent={isLeftAligned ? 'flex-start' : 'center'}
         // `v2`: spacing.4 between two items in a row. No row gap: the 4px padding above and below
         // each item leaves spacing.3 between two rows of text. `v1`: as on master.
         {...(isV2 ? { columnGap: 'spacing.4', rowGap: 'spacing.0' } : { gap: 'spacing.5' })}
@@ -1199,10 +1203,17 @@ const CustomSquareLegend = (props: {
   );
 };
 
-const _ChartLegend: React.FC<ChartLegendProps> = ({
+/** `v2` donut: where the legend box starts, so the ring and the legend are one group. */
+type LegendGroupPosition = { top?: number; bottom?: number; left?: number; right?: number };
+
+const ChartLegendBody: React.FC<ChartLegendProps & LegendGroupPosition> = ({
   selectedDataKeys: selectedDataKeysProp,
   defaultSelectedDataKeys,
   onSelectedDataKeysChange,
+  top: groupTop,
+  bottom: groupBottom,
+  left: groupLeft,
+  right: groupRight,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -1210,21 +1221,29 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     dataColorMapping,
     setSelectedDataKeys,
     legendPlacement,
+    legendGap: legendGapToken = 'spacing.5',
     chartVersion,
     chartName,
     yLabelPlacement,
     yGridlines = true,
     isVerticalBar = false,
   } = useCommonChartComponentsContext();
+  const isV2 = chartVersion === 'v2';
+  // `v2` donut: `left` and `right` put the legend in a column beside the ring.
+  const sidePlacement =
+    isV2 && (legendPlacement === 'left' || legendPlacement === 'right')
+      ? legendPlacement
+      : undefined;
   const isTop = legendPlacement === 'top' && props.layout !== 'vertical';
+  const isDonut = chartName === 'donut';
   // The gap between the legend and the chart. `v1`: LEGEND_MARGIN_TOP, as on master. `v2`:
-  // spacing.5 from the legend items to the nearest chart element.
+  // `legendGap` (spacing.5 by default) from the legend items to the nearest chart element.
   const getLegendGap = (): number => {
     if (chartVersion !== 'v2') return LEGEND_MARGIN_TOP;
-    const gap = theme.spacing[5];
+    const gap = getIn(theme, legendGapToken) as number;
     // At the bottom, the X labels are the nearest element: the X axis ends at their bottom.
     // A donut has no axes.
-    if (!isTop || chartName === 'donut') return gap;
+    if (!isTop || isDonut) return gap;
     const fontSize = theme.typography.fonts.size[75];
     // On top, the top gridline is the nearest element, unless a Y label is nearer.
     if ((yLabelPlacement === 'left' || yLabelPlacement === 'right') && !isVerticalBar) {
@@ -1301,30 +1320,93 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
   );
 
+  const getGapStyle = (): React.CSSProperties => {
+    if (sidePlacement === 'right') return { paddingLeft: legendGap };
+    if (sidePlacement === 'left') return { paddingRight: legendGap };
+    // On top: the gap sits under the legend. A chart with axes starts it at the left edge.
+    if (isTop)
+      return isDonut ? { paddingBottom: legendGap } : { paddingBottom: legendGap, left: 0 };
+    return { paddingTop: legendGap };
+  };
+  const groupPosition = Object.fromEntries(
+    Object.entries({
+      top: groupTop,
+      bottom: groupBottom,
+      left: groupLeft,
+      right: groupRight,
+    }).filter(([, value]) => value !== undefined),
+  );
+  const layout = sidePlacement ? 'vertical' : props.layout;
+  const getAlign = (): 'left' | 'center' | 'right' => {
+    if (sidePlacement) return sidePlacement;
+    return isTop && !isDonut ? 'left' : 'center';
+  };
+
   return (
     <RechartsLegend
-      // recharts measures the legend only when its items change. A new gap remounts it, so the
-      // plot moves to the new gap.
-      key={`legend-gap-${legendGap}`}
+      // recharts measures the legend only when its items change. A new gap or side remounts it,
+      // so the plot moves to the new gap.
+      key={`legend-gap-${legendGap}-${sidePlacement ?? ''}`}
       wrapperStyle={{
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        // On top: the gap sits under the legend, and the legend starts at the left edge.
-        ...(isTop ? { paddingBottom: legendGap, left: 0 } : { paddingTop: legendGap }),
+        ...getGapStyle(),
+        ...groupPosition,
       }}
-      align={isTop ? 'left' : 'center'}
-      verticalAlign={props.layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom'}
       content={
         <CustomSquareLegend
-          layout={props.layout ?? 'horizontal'}
+          layout={layout ?? 'horizontal'}
           selectedDataKeys={selectedKeysArray}
           onClick={handleClick}
         />
       }
       {...props}
+      // A prop on ChartLegend wins, as before, unless a `v2` donut puts the legend at a side.
+      {...(layout !== undefined ? { layout } : {})}
+      align={sidePlacement ?? props.align ?? getAlign()}
+      verticalAlign={
+        props.verticalAlign ?? (layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom')
+      }
     />
   );
+};
+
+// usePlotArea gives a new object on each store change. The memo renders the legend again only
+// when a position or a prop changes.
+const ChartLegendBodyMemo = React.memo(ChartLegendBody);
+
+/**
+ * `v2` donut: the legend box starts at the edge of the ring, so the ring and the legend are one
+ * group, centred in the box, with `legendGap` between them.
+ */
+const DonutGroupLegend: React.FC<ChartLegendProps> = (props) => {
+  const { legendPlacement = 'bottom', donutRadius } = useCommonChartComponentsContext();
+  const plotArea = usePlotArea();
+  const chartWidth = useChartWidth();
+  const chartHeight = useChartHeight();
+  const isGrouped =
+    props.layout !== 'vertical' || legendPlacement === 'left' || legendPlacement === 'right';
+  const position =
+    isGrouped && plotArea && chartWidth && chartHeight
+      ? getDonutV2LegendPosition({
+          plotArea,
+          radius: donutRadius,
+          chartWidth,
+          chartHeight,
+          placement: legendPlacement,
+        })
+      : {};
+  return <ChartLegendBodyMemo {...props} {...position} />;
+};
+
+const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
+  const { chartVersion, chartName, isLegendVisible } = useCommonChartComponentsContext();
+  // `v1` renders as on master. `v2`: `showLegend` (or auto, one series) can hide it.
+  if (chartVersion !== 'v2') return <ChartLegendBody {...props} />;
+  if (isLegendVisible === false) return null;
+  if (chartName === 'donut') return <DonutGroupLegend {...props} />;
+  return <ChartLegendBody {...props} />;
 };
 
 const ChartLegend = assignWithoutSideEffects(_ChartLegend, {

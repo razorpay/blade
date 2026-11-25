@@ -16,7 +16,7 @@ import {
 } from 'recharts';
 import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
-import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
   DataColorMapping,
   SecondaryLabelMap,
@@ -26,8 +26,11 @@ import type {
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import {
+  countChildrenOf,
   getChartMargin,
   resolveChartDisplayOptions,
+  resolveLegendVisibility,
+  shouldAddLegend,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
@@ -256,6 +259,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   yGridlines,
   gridlineWidth,
   legendPlacement,
+  showLegend,
+  legendGap,
   valueFormat,
   testID,
   data,
@@ -270,17 +275,31 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         yGridlines,
         gridlineWidth,
         legendPlacement,
+        legendGap,
       }),
-    [version, showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
+    [version, showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement, legendGap],
   );
   useWarnDisplayPropsOnV1(
     version,
-    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    {
+      showBorder,
+      yLabelPlacement,
+      yGridlines,
+      gridlineWidth,
+      legendPlacement,
+      showLegend,
+      legendGap,
+    },
     'ChartLineWrapper',
   );
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
+  });
+  const isLegendVisible = resolveLegendVisibility({
+    version,
+    showLegend,
+    seriesCount: countChildrenOf(children, componentIds.ChartLine),
   });
 
   // State to track which line is currently hovered
@@ -569,6 +588,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       rangeMap,
       lineStrokeStyles,
       ...display,
+      isLegendVisible,
       valueFormat,
     }),
     [
@@ -580,6 +600,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       rangeMap,
       lineStrokeStyles,
       display,
+      isLegendVisible,
       valueFormat,
     ],
   );
@@ -609,6 +630,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 {/* Painted first so the shaded bands sit behind the trend lines. */}
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
+                {shouldAddLegend({ version, showLegend, children }) ? (
+                  <ChartLegend key="blade-added-legend" />
+                ) : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>

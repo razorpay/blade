@@ -17,11 +17,14 @@ import type {
   SecondaryLabelMap,
   ChartXAxisProps,
 } from '../CommonChartComponents';
-import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import {
+  countChildrenOf,
   getChartMargin,
   resolveChartDisplayOptions,
+  resolveLegendVisibility,
+  shouldAddLegend,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
@@ -146,6 +149,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   yGridlines,
   gridlineWidth,
   legendPlacement,
+  showLegend,
+  legendGap,
   valueFormat,
   ...restProps
 }) => {
@@ -156,15 +161,29 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     yGridlines,
     gridlineWidth,
     legendPlacement,
+    legendGap,
   });
   useWarnDisplayPropsOnV1(
     version,
-    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    {
+      showBorder,
+      yLabelPlacement,
+      yGridlines,
+      gridlineWidth,
+      legendPlacement,
+      showLegend,
+      legendGap,
+    },
     'ChartAreaWrapper',
   );
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
+  });
+  const isLegendVisible = resolveLegendVisibility({
+    version,
+    showLegend,
+    seriesCount: countChildrenOf(children, componentIds.ChartArea),
   });
 
   // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
@@ -424,6 +443,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         selectedDataKeys,
         setSelectedDataKeys,
         ...display,
+        isLegendVisible,
         valueFormat,
       }}
     >
@@ -455,6 +475,9 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               </defs>
 
               {modifiedChildren}
+              {shouldAddLegend({ version, showLegend, children }) ? (
+                <ChartLegend key="blade-added-legend" />
+              ) : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
             </RechartsAreaChart>
           </ResponsiveContainer>

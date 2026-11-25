@@ -1,13 +1,15 @@
 import React from 'react';
 import type {
   ChartGridlineWidth,
+  ChartLegendGap,
   ChartLegendPlacement,
   ChartResolvedYLabelPlacement,
   ChartVersion,
   ChartWrapperDisplayProps,
 } from './types';
-import { V2_CHART_MARGIN } from './tokens';
+import { V2_CHART_MARGIN, componentId } from './tokens';
 import { logger } from '~utils/logger';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 type ChartDisplayOptions = {
   chartVersion: ChartVersion;
@@ -19,6 +21,8 @@ type ChartDisplayOptions = {
   /** Undefined keeps recharts' 1px stroke, as before. */
   gridlineWidth?: ChartGridlineWidth;
   legendPlacement?: ChartLegendPlacement;
+  /** `v2`: the legend gap token. Undefined with `v1`. */
+  legendGap?: ChartLegendGap;
 };
 
 type DisplayOptionProps = Omit<ChartWrapperDisplayProps, 'valueFormat' | 'version'>;
@@ -30,6 +34,8 @@ const DISPLAY_OPTION_NAMES: ReadonlyArray<keyof DisplayOptionProps> = [
   'yGridlines',
   'gridlineWidth',
   'legendPlacement',
+  'showLegend',
+  'legendGap',
 ];
 
 /**
@@ -49,6 +55,7 @@ const resolveChartDisplayOptions = (
     yGridlines,
     gridlineWidth,
     legendPlacement,
+    legendGap,
   }: DisplayOptionProps & { version?: ChartVersion },
   { isVerticalBar = false }: { isVerticalBar?: boolean } = {},
 ): ChartDisplayOptions => {
@@ -77,8 +84,50 @@ const resolveChartDisplayOptions = (
     yGridlines: yGridlines ?? true,
     gridlineWidth: gridlineWidth ?? 'thinner',
     legendPlacement,
+    legendGap: legendGap ?? 'spacing.5',
   };
 };
+
+/** The number of direct children, arrays flattened, with this Blade component id. */
+const countChildrenOf = (children: React.ReactNode, id: string): number =>
+  React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && getComponentId(child) === id,
+  ).length;
+
+/** True when a direct child, arrays flattened, is a ChartLegend. */
+const hasLegendChild = (children: React.ReactNode): boolean =>
+  countChildrenOf(children, componentId.chartLegend) > 0;
+
+/**
+ * `v2`: whether the legend shows. `showLegend` wins. Undefined is auto: on for 2 or more series
+ * (or donut slices), off for one. `v1`: undefined, so ChartLegend renders as on master.
+ */
+const resolveLegendVisibility = ({
+  version = 'v1',
+  showLegend,
+  seriesCount,
+}: {
+  version?: ChartVersion;
+  showLegend?: boolean;
+  seriesCount: number;
+}): boolean | undefined => {
+  if (version !== 'v2') return undefined;
+  return showLegend ?? seriesCount > 1;
+};
+
+/**
+ * `v2` with `showLegend` true and no ChartLegend child: the wrapper adds one. The rule lives on
+ * the wrapper, because only the wrapper knows the series and the children.
+ */
+const shouldAddLegend = ({
+  version = 'v1',
+  showLegend,
+  children,
+}: {
+  version?: ChartVersion;
+  showLegend?: boolean;
+  children: React.ReactNode;
+}): boolean => version === 'v2' && showLegend === true && !hasLegendChild(children);
 
 /**
  * Development only: warns when a display prop is set on a `v1` chart, where it has no effect.
@@ -109,5 +158,12 @@ const getChartMargin = ({
 }: Pick<ChartDisplayOptions, 'chartVersion'>): typeof V2_CHART_MARGIN | undefined =>
   chartVersion === 'v2' ? V2_CHART_MARGIN : undefined;
 
-export { resolveChartDisplayOptions, getChartMargin, useWarnDisplayPropsOnV1 };
+export {
+  resolveChartDisplayOptions,
+  getChartMargin,
+  useWarnDisplayPropsOnV1,
+  countChildrenOf,
+  resolveLegendVisibility,
+  shouldAddLegend,
+};
 export type { ChartDisplayOptions };

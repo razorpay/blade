@@ -7,7 +7,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
-import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
   DataColorMapping,
   SecondaryLabelMap,
@@ -19,8 +19,11 @@ import {
   REFERENCE_BAND_DEFAULT_NAME,
 } from '../CommonChartComponents/tokens';
 import {
+  countChildrenOf,
   getChartMargin,
   resolveChartDisplayOptions,
+  resolveLegendVisibility,
+  shouldAddLegend,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
@@ -299,6 +302,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   yGridlines,
   gridlineWidth,
   legendPlacement,
+  showLegend,
+  legendGap,
   valueFormat,
   testID,
   data = [],
@@ -314,12 +319,21 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       yGridlines,
       gridlineWidth,
       legendPlacement,
+      legendGap,
     },
     { isVerticalBar: layout === 'vertical' },
   );
   useWarnDisplayPropsOnV1(
     version,
-    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    {
+      showBorder,
+      yLabelPlacement,
+      yGridlines,
+      gridlineWidth,
+      legendPlacement,
+      showLegend,
+      legendGap,
+    },
     'ChartBarWrapper',
   );
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
@@ -517,6 +531,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {/* Painted first so the shaded band sits behind the bars. */}
         {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
         {barChartModifiedChildrens}
+        {shouldAddLegend({ version, showLegend, children }) ? (
+          <ChartLegend key="blade-added-legend" />
+        ) : null}
       </RechartsBarChart>
     </RechartsResponsiveContainer>
   );
@@ -534,6 +551,11 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         referenceBands: referenceBandLegendInfos,
         rangeMap,
         ...display,
+        isLegendVisible: resolveLegendVisibility({
+          version,
+          showLegend,
+          seriesCount: countChildrenOf(children, componentIds.chartBar),
+        }),
         valueFormat,
       }}
     >

@@ -206,6 +206,32 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(wasDrawn('ChartLegend')).toBe(true);
     });
 
+    it('takes showLegend from the node over the series count', () => {
+      renderAtWidth(
+        360,
+        chart({ chartType: 'line', showLegend: true, data: daily(7, ['Collected']) }),
+      );
+      expect(wasDrawn('ChartLegend')).toBe(true);
+      expect(lastProps('ChartLineWrapper').showLegend).toBe(true);
+    });
+
+    it('draws no legend with showLegend false', () => {
+      renderAtWidth(
+        360,
+        chart({ chartType: 'bar', showLegend: false, data: daily(7, ['Collected', 'Refunded']) }),
+      );
+      expect(wasDrawn('ChartLegend')).toBe(false);
+      expect(lastProps('ChartBarWrapper').showLegend).toBe(false);
+    });
+
+    it('draws no legend for a pie of one slice', () => {
+      renderAtWidth(
+        800,
+        chart({ chartType: 'pie', xAxis: 'method', data: [{ method: 'UPI', value: 60 }] }),
+      );
+      expect(wasDrawn('ChartLegend')).toBe(false);
+    });
+
     it('takes the small donut radius in a 300px box, and a box of at least 260px', () => {
       renderAtWidth(
         300,

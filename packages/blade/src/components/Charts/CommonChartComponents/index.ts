@@ -10,6 +10,8 @@ export type {
   ChartYLabelPlacement,
   ChartGridlineWidth,
   ChartLegendPlacement,
+  ChartDonutLegendPlacement,
+  ChartLegendGap,
   ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartVersion,

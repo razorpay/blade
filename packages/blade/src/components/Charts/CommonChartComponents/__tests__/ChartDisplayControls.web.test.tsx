@@ -155,6 +155,7 @@ describe('resolveChartDisplayOptions', () => {
       yGridlines: true,
       gridlineWidth: 'thinner',
       legendPlacement: undefined,
+      legendGap: 'spacing.5',
     });
     expect(getChartMargin(v2({}))).toEqual({ top: 0, right: 0, bottom: 0, left: 0 });
     expect(getChartMargin(v2({ showBorder: true }))).toEqual(getChartMargin(v2({})));
@@ -405,6 +406,86 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
   );
 });
 
+describe('showLegend', () => {
+  const legendItems = (container: HTMLElement): Element[] =>
+    Array.from(container.querySelectorAll('.recharts-legend-wrapper button'));
+  const renderLine = (
+    lines: string[],
+    {
+      showLegend,
+      withLegend = true,
+      version = 'v2',
+    }: {
+      showLegend?: boolean;
+      withLegend?: boolean;
+      version?: 'v1' | 'v2';
+    } = {},
+  ): HTMLElement =>
+    renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version={version} showLegend={showLegend}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          {withLegend ? <ChartLegend /> : null}
+          {lines.map((key) => (
+            <ChartLine key={key} dataKey={key} name={key} />
+          ))}
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+  const axesReady = async (container: HTMLElement): Promise<void> => {
+    await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
+  };
+
+  it('hides the legend of one series in auto, and shows it for two', async () => {
+    const one = renderLine(['online']);
+    await axesReady(one);
+    expect(legendItems(one)).toHaveLength(0);
+    const two = renderLine(['online', 'offline']);
+    await waitFor(() => expect(legendItems(two)).toHaveLength(2));
+  });
+
+  it('shows the legend of one series with showLegend, and hides two with false', async () => {
+    const one = renderLine(['online'], { showLegend: true });
+    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
+    const two = renderLine(['online', 'offline'], { showLegend: false });
+    await axesReady(two);
+    expect(legendItems(two)).toHaveLength(0);
+  });
+
+  it('adds a legend with showLegend when the chart has no ChartLegend', async () => {
+    const added = renderLine(['online', 'offline'], { showLegend: true, withLegend: false });
+    await waitFor(() => expect(legendItems(added)).toHaveLength(2));
+    // Auto keeps the composition: no ChartLegend child, no legend.
+    const auto = renderLine(['online', 'offline'], { withLegend: false });
+    await axesReady(auto);
+    expect(legendItems(auto)).toHaveLength(0);
+  });
+
+  it('ignores showLegend with v1, as master', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const one = renderLine(['online'], { showLegend: false, version: 'v1' });
+    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
+    warn.mockRestore();
+  });
+
+  it('takes legendGap', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2" legendGap="spacing.7">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLegend />
+          <ChartLine dataKey="online" />
+          <ChartLine dataKey="offline" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(legendItems(container)).toHaveLength(2));
+    expect(legendWrapper(container)?.style.paddingTop).toBe('24px');
+  });
+});
+
 describe('horizontal bar chart (layout vertical)', () => {
   const categoryData = [
     { method: 'UPI', amount: 98000 },
@@ -413,7 +494,14 @@ describe('horizontal bar chart (layout vertical)', () => {
   const renderHorizontalBar = (display: ChartWrapperDisplayProps = {}): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartBarWrapper data={categoryData} layout="vertical" version="v2" {...display}>
+        <ChartBarWrapper
+          data={categoryData}
+          layout="vertical"
+          version="v2"
+          // One series: auto would hide the legend that `ready` waits for.
+          showLegend
+          {...display}
+        >
           <ChartXAxis type="number" />
           <ChartYAxis type="category" dataKey="method" />
           <ChartLegend />
@@ -508,7 +596,12 @@ describe('legend controls on a donut chart', () => {
     { name: 'UPI', value: 52000 },
     { name: 'Cards', value: 24000 },
   ];
-  const renderDonut = (props: { legendPlacement?: 'top' | 'bottom' } = {}): HTMLElement =>
+  const renderDonut = (
+    props: {
+      legendPlacement?: 'top' | 'bottom' | 'left' | 'right';
+      legendGap?: 'spacing.8';
+    } = {},
+  ): HTMLElement =>
     renderWithTheme(
       <Box width="400px" height="400px">
         <ChartDonutWrapper version="v2" {...props}>
@@ -523,17 +616,60 @@ describe('legend controls on a donut chart', () => {
   it('keeps the legend at the bottom, centred, with no props', async () => {
     const container = renderDonut();
     await waitFor(() => expect(legendText(container)).not.toBeNull());
-    expect(legendWrapper(container)?.style.bottom).not.toBe('');
+    // The legend box starts at the bottom of the ring: one group with the ring.
+    await waitFor(() => expect(legendWrapper(container)?.style.top).not.toBe(''));
+    expect(legendWrapper(container)?.style.paddingTop).toBe('16px');
     expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
     expect(window.getComputedStyle(legendText(container)!).fontSize).toBe('0.875rem');
   });
 
-  it('puts the legend on top, left-aligned, with legendPlacement top', async () => {
+  it('puts the legend on top, centred over the ring, with legendPlacement top', async () => {
     const container = renderDonut({ legendPlacement: 'top' });
     await waitFor(() => expect(legendText(container)).not.toBeNull());
-    expect(legendWrapper(container)?.style.top).not.toBe('');
-    expect(legendWrapper(container)?.style.left).toBe('0px');
+    // The legend box ends at the top of the ring.
+    await waitFor(() => expect(legendWrapper(container)?.style.bottom).not.toBe(''));
+    expect(legendWrapper(container)?.style.paddingBottom).toBe('16px');
     expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
+  });
+
+  it.each([
+    ['right', 'paddingLeft'],
+    ['left', 'paddingRight'],
+  ] as const)('puts the legend in a column %s of the ring', async (placement, padding) => {
+    const container = renderDonut({ legendPlacement: placement });
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    await waitFor(() =>
+      expect(legendWrapper(container)?.style[placement === 'right' ? 'left' : 'right']).not.toBe(
+        '',
+      ),
+    );
+    expect(legendWrapper(container)?.style[padding]).toBe('16px');
+    const row = legendWrapper(container)!.querySelector('button')!.parentElement!;
+    expect(window.getComputedStyle(row).flexDirection).toBe('column');
+  });
+
+  it('takes legendGap', async () => {
+    const container = renderDonut({ legendGap: 'spacing.8' });
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    expect(legendWrapper(container)?.style.paddingTop).toBe('32px');
+  });
+
+  it('hides the legend of one slice in auto, and shows it with showLegend', async () => {
+    const one = [{ name: 'UPI', value: 52000 }];
+    const render = (showLegend?: boolean): HTMLElement =>
+      renderWithTheme(
+        <Box width="400px" height="400px">
+          <ChartDonutWrapper version="v2" showLegend={showLegend}>
+            <ChartDonut dataKey="value" nameKey="name" data={one} />
+            <ChartLegend />
+          </ChartDonutWrapper>
+        </Box>,
+      ).container;
+    const auto = render();
+    await waitFor(() => expect(auto.querySelector('.recharts-pie')).not.toBeNull());
+    expect(legendText(auto)).toBeNull();
+    const shown = render(true);
+    await waitFor(() => expect(legendText(shown)).not.toBeNull());
   });
 
   it('spaces the v2 legend items spacing.4 apart, with no side padding', async () => {

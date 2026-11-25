@@ -53,6 +53,16 @@ type ChartDisplayControlsArgs = {
   yGridlines: OnOff;
   gridlineWidth: Unset | 'thin' | 'thinner';
   legendPlacement: Unset | 'top' | 'bottom';
+  donutLegendPlacement: Unset | 'top' | 'bottom' | 'left' | 'right';
+  showLegend: OnOff;
+  legendGap:
+    | Unset
+    | 'spacing.3'
+    | 'spacing.4'
+    | 'spacing.5'
+    | 'spacing.6'
+    | 'spacing.7'
+    | 'spacing.8';
   lineStyle: 'solid' | 'dashed';
   valueFormat: 'none' | 'currency';
   chartWidth: number;
@@ -71,6 +81,8 @@ const toDisplayProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProp
   yGridlines: onOff(args.yGridlines),
   gridlineWidth: unset(args.gridlineWidth),
   legendPlacement: unset(args.legendPlacement),
+  showLegend: onOff(args.showLegend),
+  legendGap: unset(args.legendGap),
   valueFormat: args.valueFormat === 'currency' ? { type: 'currency', currency: 'INR' } : undefined,
 });
 
@@ -148,11 +160,13 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
           <ChartBar dataKey="offline" name="Offline" stackId="method" />
         </ChartBarWrapper>
       </ChartCard>
-      {/* The donut has a legend and no axes: only legendPlacement applies. */}
+      {/* The donut has a legend and no axes: only the legend props apply. */}
       <ChartCard title="Donut" width={width} showEdgeGuides={showEdgeGuides}>
         <ChartDonutWrapper
           version={display.version}
-          legendPlacement={display.legendPlacement}
+          legendPlacement={unset(args.donutLegendPlacement)}
+          showLegend={display.showLegend}
+          legendGap={display.legendGap}
           valueFormat={display.valueFormat}
         >
           <ChartDonut dataKey="value" nameKey="name" data={donutData} />
@@ -184,6 +198,9 @@ ChartDisplayControls.args = {
   yGridlines: 'default',
   gridlineWidth: 'default',
   legendPlacement: 'default',
+  donutLegendPlacement: 'default',
+  showLegend: 'default',
+  legendGap: 'default',
   lineStyle: 'dashed',
   valueFormat: 'none',
   chartWidth: 360,
@@ -226,7 +243,31 @@ export default {
     legendPlacement: {
       control: 'inline-radio',
       options: ['default', 'top', 'bottom'],
-      description: '`legendPlacement`. Default: bottom.',
+      description: '`legendPlacement` of the line, area and bar charts. Default: bottom.',
+    },
+    donutLegendPlacement: {
+      control: 'inline-radio',
+      options: ['default', 'top', 'bottom', 'left', 'right'],
+      description:
+        '`legendPlacement` of the donut. Default: bottom. The ring and the legend are one centred group.',
+    },
+    showLegend: {
+      control: 'inline-radio',
+      options: ['default', 'on', 'off'],
+      description: '`showLegend`. Default: auto, on for 2 or more series or slices.',
+    },
+    legendGap: {
+      control: 'select',
+      options: [
+        'default',
+        'spacing.3',
+        'spacing.4',
+        'spacing.5',
+        'spacing.6',
+        'spacing.7',
+        'spacing.8',
+      ],
+      description: '`legendGap`. Default: spacing.5 (16px).',
     },
     lineStyle: {
       control: 'inline-radio',

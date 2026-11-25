@@ -1,10 +1,8 @@
-
-
-##  Config-Driven API (Not Recommended)
+## Config-Driven API (Not Recommended)
 
 This approach consolidates all chart settings into a single `config` object.
 
-### For Line Chart -  
+### For Line Chart -
 
 ```ts
 const chartConfig = {
@@ -38,8 +36,7 @@ const chartConfig = {
 <LineChart config={chartConfig} />;
 ```
 
-### For Area Chart -  
-
+### For Area Chart -
 
 ```ts
 const chartConfig = {
@@ -73,7 +70,7 @@ const chartConfig = {
 <AreaChart config={chartConfig} />;
 ```
 
-### For Bar Chart -  
+### For Bar Chart -
 
 ```tsx
 import { BarChart } from '@razorpay/blade/charts';
@@ -110,12 +107,10 @@ const chartConfig = {
   showGrid: true,
 };
 
-<BarChart config={chartConfig}/>
+<BarChart config={chartConfig} />;
 ```
 
-
-### For Donut Chart -  
-
+### For Donut Chart -
 
 ```ts
 const chartConfig = {
@@ -132,22 +127,19 @@ const chartConfig = {
   options: {
     showTooltip: true,
     showLegend: true,
-    centerText: 'Total: ₹1.05L'
+    centerText: 'Total: ₹1.05L',
   },
 };
 
 <PieChart config={chartConfig} />;
 ```
 
-
-
-  * **Pros**
-      * Provides a single source of truth for chart configuration.
-      * Easy to serialize/deserialize for storage or dynamic generation.
-      * Keeps the JSX clean with minimal props.
-  * **Cons**
-      * Less discoverable API. Developers need to inspect the config object to know what options are available.
-      * Nested objects can become complex and hard to manage.
-      * Passing custom React components (like a tooltip) is more difficult.
-      * TypeScript autocompletion is less effective within a deeply nested object.
-
+- **Pros**
+  - Provides a single source of truth for chart configuration.
+  - Easy to serialize/deserialize for storage or dynamic generation.
+  - Keeps the JSX clean with minimal props.
+- **Cons**
+  - Less discoverable API. Developers need to inspect the config object to know what options are available.
+  - Nested objects can become complex and hard to manage.
+  - Passing custom React components (like a tooltip) is more difficult.
+  - TypeScript autocompletion is less effective within a deeply nested object.

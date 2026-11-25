@@ -153,6 +153,18 @@ type ChartGridlineWidth = 'thin' | 'thinner';
 /** Where the legend sits. */
 type ChartLegendPlacement = 'top' | 'bottom';
 
+/** Where the donut legend sits. `left` and `right` put it beside the ring, in a column. */
+type ChartDonutLegendPlacement = ChartLegendPlacement | 'left' | 'right';
+
+/** The gap between the legend and the chart: a Blade spacing token from `spacing.3` to `spacing.8`. */
+type ChartLegendGap =
+  | 'spacing.3'
+  | 'spacing.4'
+  | 'spacing.5'
+  | 'spacing.6'
+  | 'spacing.7'
+  | 'spacing.8';
+
 /**
  * The look of a chart.
  * - `v1`: the chart as on Blade master. The display options have no effect.
@@ -185,6 +197,19 @@ type ChartLegendDisplayProps = {
    * @default 'bottom'
    */
   legendPlacement?: ChartLegendPlacement;
+  /**
+   * Shows or hides the legend. Undefined is auto: the legend shows for 2 or more series (or donut
+   * slices) and hides for one. `true` shows it, and adds a `ChartLegend` when the chart has none.
+   * `false` hides a `ChartLegend` child.
+   * @default undefined (auto)
+   */
+  showLegend?: boolean;
+  /**
+   * The gap between the legend and the nearest chart element. On a donut, the gap between the
+   * ring and the legend.
+   * @default 'spacing.5'
+   */
+  legendGap?: ChartLegendGap;
 };
 
 /**
@@ -372,7 +397,19 @@ type CommonChartComponentsStateType = {
   /**
    * The legend placement. ChartLegend reads it.
    */
-  legendPlacement?: ChartLegendPlacement;
+  legendPlacement?: ChartDonutLegendPlacement;
+  /**
+   * The resolved legend visibility. `false` hides ChartLegend. Undefined with `v1`.
+   */
+  isLegendVisible?: boolean;
+  /**
+   * The resolved legend gap token. ChartLegend reads it.
+   */
+  legendGap?: ChartLegendGap;
+  /**
+   * The `radius` size of the ChartDonut. The `v2` donut legend reads it to sit next to the ring.
+   */
+  donutRadius?: 'small' | 'medium' | 'large';
   /**
    * The stroke style of each ChartLine, by dataKey. The legend of a line chart reads it.
    */
@@ -439,6 +476,8 @@ export type {
   ChartResolvedYLabelPlacement,
   ChartGridlineWidth,
   ChartLegendPlacement,
+  ChartDonutLegendPlacement,
+  ChartLegendGap,
   ChartLineStrokeStyle,
   ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
