@@ -4,7 +4,7 @@ import { ChartXAxis, ChartYAxis, ChartCartesianGrid, ChartTooltip } from '..';
 import { ChartLineWrapper, ChartLine } from '../../LineChart';
 import { ChartAreaWrapper, ChartArea } from '../../AreaChart';
 import { ChartBarWrapper, ChartBar } from '../../BarChart';
-import type { ChartAxisStyle } from '../types';
+import type { ChartAxisStyle, ChartYLabelPlacement } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
 
@@ -37,11 +37,12 @@ const axes = [
 const renderChart = (
   kind: 'line' | 'area' | 'bar' | 'vertical-bar',
   axisStyle?: ChartAxisStyle,
+  yLabelPlacement?: ChartYLabelPlacement,
 ): ReturnType<typeof renderWithTheme> => {
   if (kind === 'line') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} axisStyle={axisStyle}>
+        <ChartLineWrapper data={data} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
           {axes}
           <ChartLine dataKey="sales" />
         </ChartLineWrapper>
@@ -51,7 +52,7 @@ const renderChart = (
   if (kind === 'area') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartAreaWrapper data={data} axisStyle={axisStyle}>
+        <ChartAreaWrapper data={data} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
           {axes}
           <ChartArea dataKey="sales" name="Sales" />
         </ChartAreaWrapper>
@@ -63,6 +64,7 @@ const renderChart = (
       <ChartBarWrapper
         data={data}
         axisStyle={axisStyle}
+        yLabelPlacement={yLabelPlacement}
         layout={kind === 'vertical-bar' ? 'vertical' : 'horizontal'}
       >
         {kind === 'vertical-bar'
@@ -106,9 +108,28 @@ describe('axisStyle on the chart wrappers', () => {
   );
 
   it.each(['line', 'area', 'bar'] as const)(
-    'draws no axis line and puts the Y ticks inside the plot on a minimal %s chart',
+    'draws no axis line and puts the Y ticks in a left column on a minimal %s chart',
     async (kind) => {
       const { container } = renderChart(kind, 'minimal');
+      await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
+
+      expect(axisLine(container, 'xAxis')).toBeNull();
+      expect(axisLine(container, 'yAxis')).toBeNull();
+      // The default `left` column: the labels align towards the plot, spacing.3 before it.
+      const gridStart = firstGridLineX(container);
+      yTicks(container).forEach((tick) => {
+        expect(tick.getAttribute('text-anchor')).toBe('end');
+        expect(Number(tick.getAttribute('x'))).toBe(gridStart - 8);
+      });
+      expect(container.querySelector('[data-blade-chart-y-labels="left"]')).not.toBeNull();
+      expect(container.querySelector('[data-blade-chart-axis-style="minimal"]')).not.toBeNull();
+    },
+  );
+
+  it.each(['line', 'area', 'bar'] as const)(
+    'draws no axis line and puts the Y ticks inside the plot on a minimal %s chart with overlap',
+    async (kind) => {
+      const { container } = renderChart(kind, 'minimal', 'overlap');
       await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
 
       expect(axisLine(container, 'xAxis')).toBeNull();
@@ -122,13 +143,13 @@ describe('axisStyle on the chart wrappers', () => {
   );
 
   // recharts draws no axis of width 0. A minimal Y axis of width 0 lost every tick label.
-  it('draws every Y tick label of a minimal chart, each on its own gridline', async () => {
+  it('draws every Y tick label of a minimal overlap chart, each on its own gridline', async () => {
     const lines = renderChart('line', 'lines');
     await waitFor(() => expect(yTicks(lines.container).length).toBeGreaterThan(0));
     const linesLabels = yTicks(lines.container).map((tick) => tick.textContent);
     lines.unmount();
 
-    const minimal = renderChart('line', 'minimal');
+    const minimal = renderChart('line', 'minimal', 'overlap');
     await waitFor(() => expect(yTicks(minimal.container).length).toBeGreaterThan(0));
     const labels = yTicks(minimal.container).map((tick) => tick.textContent);
 
@@ -145,16 +166,16 @@ describe('axisStyle on the chart wrappers', () => {
     });
   });
 
-  it('runs the gridlines the full width of a minimal chart', async () => {
+  it('runs the gridlines the full width of a minimal overlap chart', async () => {
     const lines = renderChart('line', 'lines');
     await waitFor(() => expect(yTicks(lines.container).length).toBeGreaterThan(0));
     const linesStart = firstGridLineX(lines.container);
     lines.unmount();
 
-    const minimal = renderChart('line', 'minimal');
+    const minimal = renderChart('line', 'minimal', 'overlap');
     await waitFor(() => expect(yTicks(minimal.container).length).toBeGreaterThan(0));
 
-    // `lines` starts the grid after the Y axis. `minimal` gives the Y axis no width.
+    // `lines` starts the grid after the Y axis. `overlap` gives the Y axis no width.
     expect(firstGridLineX(minimal.container)).toBeLessThan(linesStart);
     expect(firstGridLineX(minimal.container)).toBe(0);
   });

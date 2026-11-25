@@ -26,6 +26,13 @@ const donutData = [
   { name: 'Wallets', value: 6000 },
 ];
 
+const categoryData = [
+  { method: 'UPI', online: 98000, offline: 36500 },
+  { method: 'Cards', online: 51000, offline: 21500 },
+  { method: 'Netbanking', online: 24000, offline: 6000 },
+  { method: 'Payment links', online: 18000, offline: 4000 },
+];
+
 const data = [
   { month: 'Jan', online: 42000, offline: 18000 },
   { month: 'Feb', online: 51000, offline: 21500 },
@@ -46,7 +53,6 @@ type ChartDisplayControlsArgs = {
   yGridlines: OnOff;
   gridlineWidth: Unset | 'thin' | 'thinner';
   legendPlacement: Unset | 'top' | 'bottom';
-  labelSize: Unset | 's' | 'm' | 'l';
   lineStyle: 'solid' | 'dashed';
   valueFormat: 'none' | 'currency';
   chartWidth: number;
@@ -65,7 +71,6 @@ const toDisplayProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProp
   yGridlines: onOff(args.yGridlines),
   gridlineWidth: unset(args.gridlineWidth),
   legendPlacement: unset(args.legendPlacement),
-  labelSize: unset(args.labelSize),
   valueFormat: args.valueFormat === 'currency' ? { type: 'currency', currency: 'INR' } : undefined,
 });
 
@@ -131,11 +136,22 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
           <ChartBar dataKey="offline" name="Offline" />
         </ChartBarWrapper>
       </ChartCard>
-      {/* The donut has a legend and no axes: only legendPlacement and labelSize apply. */}
+      {/* Categories on the Y axis: always lines and a left column. See the story description. */}
+      <ChartCard title="Horizontal bar" width={width} showEdgeGuides={showEdgeGuides}>
+        <ChartBarWrapper data={categoryData} layout="vertical" {...display}>
+          <ChartCartesianGrid />
+          <ChartXAxis type="number" />
+          <ChartYAxis type="category" dataKey="method" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="online" name="Online" stackId="method" />
+          <ChartBar dataKey="offline" name="Offline" stackId="method" />
+        </ChartBarWrapper>
+      </ChartCard>
+      {/* The donut has a legend and no axes: only legendPlacement applies. */}
       <ChartCard title="Donut" width={width} showEdgeGuides={showEdgeGuides}>
         <ChartDonutWrapper
           legendPlacement={display.legendPlacement}
-          labelSize={display.labelSize}
           valueFormat={display.valueFormat}
         >
           <ChartDonut dataKey="value" nameKey="name" data={donutData} />
@@ -148,9 +164,13 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
 };
 
 /**
- * Every display control of the line, area and bar chart wrappers, as a live control. The donut
- * takes the legend controls only. `default`
+ * Every display control of the line, area and bar chart wrappers, as a live control. `default`
  * leaves a prop unset, so `axisStyle` sets it. `lineStyle` sets `strokeStyle` on the second line.
+ *
+ * - The horizontal bar chart (`layout="vertical"`) keeps `lines` and a `left` column for its
+ *   category names. `axisStyle` and `yLabelPlacement` do not apply to it. `yAxisLine`,
+ *   `yGridlines`, `gridlineWidth` and `legendPlacement` do.
+ * - The donut takes `legendPlacement` only.
  */
 export const ChartDisplayControls = ChartDisplayControlsTemplate.bind({});
 ChartDisplayControls.storyName = 'Chart Display Controls';
@@ -161,7 +181,6 @@ ChartDisplayControls.args = {
   yGridlines: 'default',
   gridlineWidth: 'default',
   legendPlacement: 'default',
-  labelSize: 'default',
   lineStyle: 'dashed',
   valueFormat: 'none',
   chartWidth: 360,
@@ -186,7 +205,7 @@ export default {
       control: 'inline-radio',
       options: ['default', 'left', 'right', 'overlap'],
       description:
-        '`yLabelPlacement`. Default: the classic 60px gutter with lines, overlap with minimal. `outside` is an alias of `right`.',
+        '`yLabelPlacement`. Default: left, in every axisStyle. `outside` is an alias of `right`.',
     },
     yGridlines: {
       control: 'inline-radio',
@@ -204,16 +223,11 @@ export default {
       options: ['default', 'top', 'bottom'],
       description: '`legendPlacement`. Default: bottom.',
     },
-    labelSize: {
-      control: 'inline-radio',
-      options: ['default', 's', 'm', 'l'],
-      description:
-        '`labelSize`: fonts.size 75, 100, 200 for the axis labels and the legend. Default: axis 75, legend 100.',
-    },
     lineStyle: {
       control: 'inline-radio',
       options: ['solid', 'dashed'],
-      description: '`strokeStyle` on the second ChartLine. Line chart only.',
+      description:
+        '`strokeStyle` on the second ChartLine. Line chart only. The legend swatch follows it.',
     },
     valueFormat: {
       control: 'inline-radio',

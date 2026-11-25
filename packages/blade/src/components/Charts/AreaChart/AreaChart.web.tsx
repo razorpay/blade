@@ -145,7 +145,6 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   yGridlines,
   gridlineWidth,
   legendPlacement,
-  labelSize,
   valueFormat,
   ...restProps
 }) => {
@@ -156,7 +155,6 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     yGridlines,
     gridlineWidth,
     legendPlacement,
-    labelSize,
   });
   const themeColors = useChartsColorTheme({
     colorTheme,
@@ -416,6 +414,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         dataColorMapping,
         secondaryLabelMap,
         dataLength: data?.length,
+        chartData: data,
         selectedDataKeys,
         setSelectedDataKeys,
         ...display,

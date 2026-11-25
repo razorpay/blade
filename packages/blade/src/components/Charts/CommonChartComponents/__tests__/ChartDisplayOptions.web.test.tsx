@@ -142,10 +142,14 @@ describe('minimal axis polish', () => {
   const plotHeight = (container: HTMLElement): number =>
     Number(container.querySelector('clipPath rect')?.getAttribute('height'));
 
-  const render = (axisStyle: 'lines' | 'minimal', label?: string): HTMLElement =>
+  const render = (
+    axisStyle: 'lines' | 'minimal',
+    label?: string,
+    yLabelPlacement?: 'overlap',
+  ): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} axisStyle={axisStyle}>
+        <ChartLineWrapper data={monthly} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
           <ChartCartesianGrid />
           <ChartXAxis dataKey="month" label={label} />
           <ChartYAxis />
@@ -173,8 +177,8 @@ describe('minimal axis polish', () => {
     expect(plotHeight(minimal) - plotHeight(lines)).toBe(5);
   });
 
-  it('starts the Y labels at the left edge of the chart, under their gridlines, with a halo', async () => {
-    const container = render('minimal');
+  it('starts overlap Y labels at the left edge of the chart, under their gridlines, with a halo', async () => {
+    const container = render('minimal', undefined, 'overlap');
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     const surface = container.querySelector<HTMLElement>('[data-blade-chart-axis-style]');
     const ticks = Array.from(

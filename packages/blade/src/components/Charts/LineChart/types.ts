@@ -108,7 +108,8 @@ interface ChartLineProps {
    */
   showRangeLegend?: boolean;
   /**
-   * Style of the line in line chart.
+   * Style of the line in line chart. The legend shows the series as a line in the same style.
+   * The dash of `dashed` and `dotted` comes from the `border.dash` token.
    * @default: solid
    */
   strokeStyle?: 'dotted' | 'dashed' | 'solid';

@@ -132,8 +132,9 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 type Layout = 'horizontal' | 'vertical';
 /**
  * How the axes of a bar, line or area chart look. It sets the defaults of the other display props.
- * - `lines`: an X and a Y axis line. The Y labels sit in the classic left gutter.
- * - `minimal`: no axis lines, `overlap` Y labels and `thinner` gridlines.
+ * - `lines`: an X and a Y axis line.
+ * - `minimal`: no axis lines and `thinner` gridlines.
+ * Both put the Y labels in a `left` column by default.
  */
 type ChartAxisStyle = 'lines' | 'minimal';
 
@@ -147,25 +148,17 @@ type ChartAxisStyle = 'lines' | 'minimal';
  */
 type ChartYLabelPlacement = 'left' | 'right' | 'overlap' | 'outside';
 
-/**
- * The Y label placement after the wrapper resolves it. `legacy` is the classic gutter of a
- * `lines` chart with no `yLabelPlacement`: recharts' fixed 60px width. It does not change.
- */
-type ChartResolvedYLabelPlacement = 'legacy' | 'left' | 'right' | 'overlap';
+/** The Y label placement after the wrapper resolves it. `outside` resolves to `right`. */
+type ChartResolvedYLabelPlacement = 'left' | 'right' | 'overlap';
+
+/** The stroke style of a ChartLine. The legend draws the line swatch in it. */
+type ChartLineStrokeStyle = 'solid' | 'dashed' | 'dotted';
 
 /** The stroke width of the gridlines. `thin` is `border.width.thin`, `thinner` is `border.width.thinner`. */
 type ChartGridlineWidth = 'thin' | 'thinner';
 
 /** Where the legend sits. */
 type ChartLegendPlacement = 'top' | 'bottom';
-
-/**
- * The size of the axis labels and the legend text, together.
- * - `s`: `typography.fonts.size.75` (Text `small`).
- * - `m`: `typography.fonts.size.100` (Text `medium`).
- * - `l`: `typography.fonts.size.200` (Text `large`).
- */
-type ChartLabelSize = 's' | 'm' | 'l';
 
 /**
  * Opt-in legend options of every chart wrapper with a legend: line, area, bar and donut. With
@@ -178,13 +171,6 @@ type ChartLegendDisplayProps = {
    * @default 'bottom'
    */
   legendPlacement?: ChartLegendPlacement;
-  /**
-   * The size of the axis tick labels and the legend text, together: `s`, `m` or `l`, as the Text
-   * sizes `small`, `medium` and `large`. With no value, the axis labels are `fonts.size.75` and
-   * the legend text is `fonts.size.100`, as before. A donut chart has no axis, so it sizes the
-   * legend text only.
-   */
-  labelSize?: ChartLabelSize;
 };
 
 /**
@@ -195,10 +181,12 @@ type ChartLegendDisplayProps = {
 type ChartWrapperDisplayProps = {
   /**
    * How the axes look. It sets the defaults of the other display props.
-   * - `lines`: an X and a Y axis line. The Y labels sit in the classic left gutter.
-   * - `minimal`: no X axis line. `yAxisLine` false, `yLabelPlacement` `overlap`, `gridlineWidth`
-   *   `thinner`. The plot runs the full width of the chart. With no X axis `label`, no space is
-   *   kept under the X labels. Use it in a narrow box.
+   * - `lines`: an X and a Y axis line.
+   * - `minimal`: no X axis line. `yAxisLine` false, `gridlineWidth` `thinner`. No chart margin on
+   *   the left, right and bottom. With no X axis `label`, no space is kept under the X labels.
+   *   Use it in a narrow box.
+   *
+   * Both put the Y labels in a `left` column.
    *
    * Has no effect on a bar chart with `layout="vertical"`.
    * @default 'lines'
@@ -212,8 +200,8 @@ type ChartWrapperDisplayProps = {
   /**
    * Where the Y labels sit.
    * - `left`: a column left of the plot. The column is as wide as the widest label plus
-   *   `spacing.3`. The widest label starts at the left edge of the chart. Labels align towards the
-   *   axis, with tabular digits.
+   *   `spacing.3`, with no fixed gutter. The widest label starts at the left edge of the chart.
+   *   Labels align towards the axis, with tabular digits.
    * - `right`: a column right of the plot, as `left` but mirrored. Each label is centred on its
    *   gridline. The gridlines end `spacing.3` before the column. The bottom label hides when it
    *   meets an X label.
@@ -221,9 +209,9 @@ type ChartWrapperDisplayProps = {
    *   surface colour. The bottom label is not drawn.
    * - `outside`: an alias of `right`.
    *
-   * With `lines` and no value, the Y labels sit in recharts' fixed 60px gutter, as before.
-   * Has no effect on a bar chart with `layout="vertical"`.
-   * @default the classic gutter with `lines`, `overlap` with `minimal`
+   * A bar chart with `layout="vertical"` always takes `left`: its category names sit in a column
+   * as wide as the widest name plus `spacing.3`.
+   * @default 'left'
    */
   yLabelPlacement?: ChartYLabelPlacement;
   /**
@@ -338,6 +326,10 @@ type CommonChartComponentsStateType = {
    */
   dataLength?: number;
   /**
+   * The data rows of the chart. ChartXAxis measures its labels from them.
+   */
+  chartData?: ReadonlyArray<Record<string, unknown>>;
+  /**
    * Legend info for each reference band present in the chart (one per line with a range, plus any
    * standalone band), so the legend can render a swatch per band.
    */
@@ -371,9 +363,9 @@ type CommonChartComponentsStateType = {
    */
   legendPlacement?: ChartLegendPlacement;
   /**
-   * The label size. The axes and the legend read it.
+   * The stroke style of each ChartLine, by dataKey. The legend of a line chart reads it.
    */
-  labelSize?: ChartLabelSize;
+  lineStrokeStyles?: Record<string, ChartLineStrokeStyle>;
   /**
    * The value format of the chart wrapper. ChartYAxis and ChartTooltip read it.
    */
@@ -437,7 +429,7 @@ export type {
   ChartResolvedYLabelPlacement,
   ChartGridlineWidth,
   ChartLegendPlacement,
-  ChartLabelSize,
+  ChartLineStrokeStyle,
   ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartValueFormat,

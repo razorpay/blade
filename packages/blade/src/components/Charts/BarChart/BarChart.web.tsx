@@ -20,7 +20,6 @@ import {
 } from '../CommonChartComponents/tokens';
 import {
   getChartMargin,
-  needsChartSurface,
   resolveChartDisplayOptions,
 } from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
@@ -296,14 +295,13 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   yGridlines,
   gridlineWidth,
   legendPlacement,
-  labelSize,
   valueFormat,
   testID,
   data = [],
   ...restProps
 }) => {
-  // A vertical bar chart has its categories on the Y axis, so it keeps its axis lines and the
-  // classic Y gutter.
+  // A vertical bar chart has its categories on the Y axis, so it keeps its axis lines and a
+  // `left` column for its category names.
   const display = resolveChartDisplayOptions(
     {
       axisStyle,
@@ -312,7 +310,6 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       yGridlines,
       gridlineWidth,
       legendPlacement,
-      labelSize,
     },
     { isVerticalBar: layout === 'vertical' },
   );
@@ -512,6 +509,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         dataColorMapping,
         secondaryLabelMap,
         dataLength: data?.length,
+        chartData: data,
         selectedDataKeys,
         setSelectedDataKeys,
         referenceBands: referenceBandLegendInfos,
@@ -529,13 +527,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {...restProps}
       >
         <BarChartContext.Provider value={barChartContextValue}>
-          {needsChartSurface(display) ? (
-            <ChartSurface axisStyle={display.axisStyle} yLabelPlacement={display.yLabelPlacement}>
-              {responsiveContainer}
-            </ChartSurface>
-          ) : (
-            responsiveContainer
-          )}
+          <ChartSurface axisStyle={display.axisStyle} yLabelPlacement={display.yLabelPlacement}>
+            {responsiveContainer}
+          </ChartSurface>
         </BarChartContext.Provider>
       </BaseBox>
     </CommonChartComponentsContext.Provider>

@@ -82,4 +82,23 @@ const calculateTextWidth = (
   return { width: finalWidth, displayText: truncatedText };
 };
 
-export { calculateTextWidth };
+let measureContext: CanvasRenderingContext2D | null | undefined;
+
+/**
+ * The width of a text in px, in the given CSS font. It uses one shared canvas. With no canvas, it
+ * estimates 0.55 of the font size for each character.
+ */
+const measureTextWidth = (
+  text: string,
+  font: { size: number; weight: number | string; family: string },
+): number => {
+  if (measureContext === undefined) {
+    measureContext =
+      typeof document === 'undefined' ? null : document.createElement('canvas').getContext('2d');
+  }
+  if (!measureContext) return text.length * font.size * 0.55;
+  measureContext.font = `${font.weight} ${font.size}px ${font.family}`;
+  return measureContext.measureText(text).width;
+};
+
+export { calculateTextWidth, measureTextWidth };

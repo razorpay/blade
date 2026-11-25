@@ -8,6 +8,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
   Line as RechartsLine,
+  usePlotArea,
 } from 'recharts';
 import {
   formatChartValueCompact,
@@ -27,7 +28,6 @@ import type {
   ChartCartesianGridProps,
   Layout,
   ChartColorToken,
-  ChartLabelSize,
   DataColorMapping,
   SecondaryLabelMap,
 } from './types';
@@ -44,14 +44,13 @@ import {
   LEGEND_MARGIN_TOP,
   X_OFFSET,
   MINIMAL_Y_AXIS_WIDTH,
-  LABEL_SIZE_FONT_SIZE,
-  LABEL_SIZE_TEXT_SIZE,
   Y_LABEL_HALF_CAP_EM,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
   componentId,
 } from './tokens';
-import { calculateTextWidth } from './utils';
+import { calculateTextWidth, measureTextWidth } from './utils';
+import { getVisibleXLabelIndexes } from './xAxisLabels';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import getIn from '~utils/lodashButBetter/get';
 import { Heading, Text } from '~components/Typography';
@@ -109,15 +108,6 @@ const getChartColor = (
       (isCustomColor || Object.keys(dataColorMapping).length > totalChartColors),
   });
 };
-
-/**
- * The font size of the axis tick labels. `labelSize` maps to `theme.typography.fonts.size`. With
- * no `labelSize`, `fonts.size.75`, as before.
- */
-const getAxisLabelFontSize = (
-  theme: ReturnType<typeof useTheme>['theme'],
-  labelSize: ChartLabelSize | undefined,
-): number => theme.typography.fonts.size[labelSize ? LABEL_SIZE_FONT_SIZE[labelSize] : 75];
 
 /**
  * Wraps text to fit within a given pixel width, breaking at word boundaries.
@@ -228,7 +218,7 @@ const CustomXAxisTick = ({
   onHeightCalculated,
   lastTick,
   tickFormatter,
-  fontSize,
+  isSingleLine = false,
 }: {
   x: number;
   y: number;
@@ -240,9 +230,11 @@ const CustomXAxisTick = ({
   onHeightCalculated?: (height: number) => void;
   lastTick: number;
   tickFormatter?: (value: string, index: number) => string;
-  fontSize: number;
+  /** One line: the label does not wrap. */
+  isSingleLine?: boolean;
 }): JSX.Element => {
-  const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
+  const fontSize = theme.typography.fonts.size[75];
+  const maxWidth = tickWidth && !isSingleLine ? tickWidth * 0.9 : Infinity;
 
   // For bar charts, always center align labels since bars are centered on ticks
   // For line/area charts, align first tick left and last tick right to prevent clipping
@@ -261,8 +253,7 @@ const CustomXAxisTick = ({
   const textStyleProps = {
     maxWidth,
     fontSize,
-    // The line height grows with the font: 14.5px at fonts.size.75, as before.
-    lineHeight: (X_AXIS_TICK_LINE_HEIGHT * fontSize) / theme.typography.fonts.size[75],
+    lineHeight: X_AXIS_TICK_LINE_HEIGHT,
     startDy: X_AXIS_TICK_START_DY,
     textAnchor,
     fill: theme.colors.surface.text.gray.muted,
@@ -314,8 +305,35 @@ const CustomXAxisTick = ({
   );
 };
 
+/**
+ * Renders again each time the page loads a font, while `isActive`. recharts measures an `auto`
+ * width Y axis on each render. A measure before the web font loads takes the fallback font, so
+ * the label column comes out too narrow.
+ */
+const useRenderOnFontLoad = (isActive: boolean): number => {
+  const [fontLoads, setFontLoads] = React.useState(0);
+  React.useEffect(() => {
+    if (!isActive || typeof document === 'undefined' || !document.fonts) return undefined;
+    let isMounted = true;
+    const onLoad = (): void => {
+      if (isMounted) setFontLoads((count) => count + 1);
+    };
+    void document.fonts.ready.then(onLoad);
+    document.fonts.addEventListener('loadingdone', onLoad);
+    return () => {
+      isMounted = false;
+      document.fonts.removeEventListener('loadingdone', onLoad);
+    };
+  }, [isActive]);
+  return fontLoads;
+};
+
+/**
+ * The second Y axis line, on the side of the plot away from the Y axis. With the axis line, it
+ * frames the plot on the left and the right. The same colour and width as the axis line.
+ */
 const _ChartXAxis: React.FC<ChartXAxisProps> = ({
-  interval = 0,
+  interval: intervalProp,
   tickLine = false,
   label,
   dataKey,
@@ -329,11 +347,59 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
     chartName,
     dataLength,
     axisStyle,
-    labelSize,
+    chartData,
   } = useCommonChartComponentsContext();
-  const tickFontSize = getAxisLabelFontSize(theme, labelSize);
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
+  const plotArea = usePlotArea();
+  const fontLoads = useRenderOnFontLoad(true);
+
+  // With no `interval`, a category axis shows as many labels as fit, each on one line, with at
+  // least spacing.3 between two labels. The widths are measured in the tick font.
+  const shouldThinLabels =
+    intervalProp === undefined && restProps.type !== 'number' && Boolean(dataKey && chartData);
+  const plotWidth = plotArea?.width;
+  const { padding } = restProps;
+  const visibleLabelIndexes = React.useMemo(() => {
+    if (!shouldThinLabels || !plotWidth || !chartData || !dataKey) return undefined;
+    const font = {
+      size: theme.typography.fonts.size[75],
+      weight: theme.typography.fonts.weight.regular,
+      family: theme.typography.fonts.family.text,
+    };
+    const widths = chartData.map((row, index) => {
+      const value = row[dataKey] as string;
+      return measureTextWidth(
+        tickFormatter ? tickFormatter(value, index) : String(value ?? ''),
+        font,
+      );
+    });
+    const paddingSides = typeof padding === 'object' ? padding : undefined;
+    return new Set(
+      getVisibleXLabelIndexes({
+        widths,
+        plotWidth,
+        minGap: theme.spacing[3],
+        isBand: chartName === 'bar',
+        isEdgeAnchored: chartName === 'line' || chartName === 'area',
+        paddingLeft: paddingSides?.left,
+        paddingRight: paddingSides?.right,
+      }),
+    );
+    // fontLoads: measure again once the web font is in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    shouldThinLabels,
+    plotWidth,
+    chartData,
+    dataKey,
+    tickFormatter,
+    padding,
+    chartName,
+    theme,
+    fontLoads,
+  ]);
+  const interval = shouldThinLabels ? 0 : intervalProp ?? 0;
 
   // Calculate tick count from dataLength
   const totalTickCount = dataLength ?? 1;
@@ -380,6 +446,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
         payload: { value: string; index: number };
         width?: string | number;
       }) => {
+        // A thinned label is not drawn. Until the plot is measured, no label is drawn.
+        if (shouldThinLabels && !visibleLabelIndexes?.has(tickProps.payload.index)) {
+          return <g />;
+        }
         // Calculate available width per tick from the total chart width
         const tickWidth = Number(tickProps.width ?? 0) / visibleTickCount;
         return (
@@ -394,7 +464,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
             tickFormatter={tickFormatter}
-            fontSize={tickFontSize}
+            isSingleLine
           />
         );
       }}
@@ -423,113 +493,117 @@ const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
   componentId: componentId.chartXAxis,
 });
 
-/**
- * Renders again each time the page loads a font, while `isActive`. recharts measures an `auto`
- * width Y axis on each render. A measure before the web font loads takes the fallback font, so
- * the label column comes out too narrow.
- */
-const useRenderOnFontLoad = (isActive: boolean): void => {
-  const [, setFontLoads] = React.useState(0);
-  React.useEffect(() => {
-    if (!isActive || typeof document === 'undefined' || !document.fonts) return undefined;
-    let isMounted = true;
-    const onLoad = (): void => {
-      if (isMounted) setFontLoads((count) => count + 1);
-    };
-    void document.fonts.ready.then(onLoad);
-    document.fonts.addEventListener('loadingdone', onLoad);
-    return () => {
-      isMounted = false;
-      document.fonts.removeEventListener('loadingdone', onLoad);
-    };
-  }, [isActive]);
+const ChartYAxisFrameLine = ({ side }: { side: 'left' | 'right' }): JSX.Element | null => {
+  const { theme } = useTheme();
+  const plotArea = usePlotArea();
+  if (!plotArea) return null;
+  const x = side === 'left' ? plotArea.x : plotArea.x + plotArea.width;
+  return (
+    <line
+      data-blade-y-axis-frame-line={side}
+      x1={x}
+      x2={x}
+      y1={plotArea.y}
+      y2={plotArea.y + plotArea.height}
+      stroke={theme.colors.surface.border.gray.muted}
+      strokeWidth={theme.border.width.thin}
+      fill="none"
+    />
+  );
 };
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
   const {
-    yLabelPlacement = 'legacy',
+    yLabelPlacement = 'left',
     yAxisLine = true,
     valueFormat,
-    labelSize,
   } = useCommonChartComponentsContext();
   const isOverlap = yLabelPlacement === 'overlap';
-  const isLabelColumn = yLabelPlacement === 'left' || yLabelPlacement === 'right';
-  const tickFontSize = getAxisLabelFontSize(theme, labelSize);
+  const isLabelColumn = !isOverlap;
+  const tickFontSize = theme.typography.fonts.size[75];
   useRenderOnFontLoad(isLabelColumn);
+  // `yAxisLine`: a line on both sides of the plot. recharts draws the one on the axis side.
+  const frameSide = yLabelPlacement === 'right' ? 'left' : 'right';
 
   return (
-    <RechartsYAxis
-      // `overlap`: almost no width. The ticks are mirrored into the plot, so the gridlines run the
-      // full width of the chart. Not 0: recharts draws no axis of width 0. tickSize and tickMargin
-      // 0: the ticks start at the left edge of the plot, as the X axis.
-      {...(isOverlap
-        ? {
-            width: MINIMAL_Y_AXIS_WIDTH,
-            mirror: true,
-            tickSize: 0,
-            tickMargin: 0,
-          }
-        : {})}
-      // `left` and `right`: a column as wide as its widest label plus the tick margin. The chart
-      // margin on that side is 0, so the widest label meets the edge of the chart. recharts aligns
-      // the labels towards the axis. interval 0: each label on its own tick. recharts' default
-      // moves the top label off its gridline.
-      {...(isLabelColumn
-        ? {
-            orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
-            width: 'auto' as const,
-            interval: 0,
-            tickSize: 0,
-            tickMargin: theme.spacing[3],
-          }
-        : {})}
-      {...(yAxisLine ? {} : { axisLine: false })}
-      // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
-      {...(valueFormat
-        ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
-        : {})}
-      {...props}
-      tick={{
-        fill: theme.colors.surface.text.gray.muted,
-        fontSize: tickFontSize,
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: theme.typography.fonts.weight.regular,
-        letterSpacing: theme.typography.letterSpacings[100],
-        ...(isOverlap
+    <>
+      <RechartsYAxis
+        // `overlap`: almost no width. The ticks are mirrored into the plot, so the gridlines run the
+        // full width of the chart. Not 0: recharts draws no axis of width 0. tickSize and tickMargin
+        // 0: the ticks start at the left edge of the plot, as the X axis.
+        {...(isOverlap
           ? {
-              // Each tick sits just below its gridline, not across it. recharts centres a tick
-              // label on its gridline. Half the cap height moves its top to the gridline, then
-              // spacing.3 below it.
-              dy: theme.spacing[3] + Y_LABEL_HALF_CAP_EM * tickFontSize,
-              // A thin halo in the surface colour, so a line or an area under a tick cannot hide
-              // it: 1px outside the glyphs.
-              stroke: theme.colors.surface.background.gray.intense,
-              strokeWidth: theme.border.width.thicker,
-              strokeLinejoin: 'round',
-              paintOrder: 'stroke',
+              width: MINIMAL_Y_AXIS_WIDTH,
+              mirror: true,
+              tickSize: 0,
+              tickMargin: 0,
             }
-          : {}),
-      }}
-      tickLine={false}
-      stroke={theme.colors.surface.border.gray.muted}
-      label={{
-        value: props?.label,
-        position: 'insideLeft',
-        style: {
-          textAnchor: 'middle',
+          : {})}
+        // `left` (the default) and `right`: a column as wide as its widest label plus the tick
+        // margin, with no fixed gutter. The chart margin on that side is 0, so the widest label
+        // meets the edge of the chart. recharts aligns the labels towards the axis. interval 0: each
+        // label on its own tick. recharts' default moves the top label off its gridline. A bar chart
+        // with `layout="vertical"` gets the same column for its category names.
+        {...(isLabelColumn
+          ? {
+              orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
+              width: 'auto' as const,
+              interval: 0,
+              tickSize: 0,
+              tickMargin: theme.spacing[3],
+            }
+          : {})}
+        {...(yAxisLine ? {} : { axisLine: false })}
+        // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
+        {...(valueFormat
+          ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
+          : {})}
+        {...props}
+        tick={{
           fill: theme.colors.surface.text.gray.muted,
-          fontSize: theme.typography.fonts.size[75],
-          fontWeight: theme.typography.fonts.weight.regular,
+          fontSize: tickFontSize,
           fontFamily: theme.typography.fonts.family.text,
+          fontWeight: theme.typography.fonts.weight.regular,
           letterSpacing: theme.typography.letterSpacings[100],
-          lineHeight: theme.typography.lineHeights[500],
-        },
-        angle: -90,
-        fill: theme.colors.surface.text.gray.subtle,
-      }}
-      dataKey={props?.dataKey}
-    />
+          ...(isOverlap
+            ? {
+                // Each tick sits just below its gridline, not across it. recharts centres a tick
+                // label on its gridline. Half the cap height moves its top to the gridline, then
+                // spacing.3 below it.
+                dy: theme.spacing[3] + Y_LABEL_HALF_CAP_EM * tickFontSize,
+                // A thin halo in the surface colour, so a line or an area under a tick cannot hide
+                // it: 1px outside the glyphs.
+                stroke: theme.colors.surface.background.gray.intense,
+                strokeWidth: theme.border.width.thicker,
+                strokeLinejoin: 'round',
+                paintOrder: 'stroke',
+              }
+            : {}),
+        }}
+        tickLine={false}
+        stroke={theme.colors.surface.border.gray.muted}
+        label={{
+          value: props?.label,
+          position: 'insideLeft',
+          style: {
+            textAnchor: 'middle',
+            fill: theme.colors.surface.text.gray.muted,
+            fontSize: theme.typography.fonts.size[75],
+            fontWeight: theme.typography.fonts.weight.regular,
+            fontFamily: theme.typography.fonts.family.text,
+            letterSpacing: theme.typography.letterSpacings[100],
+            lineHeight: theme.typography.lineHeights[500],
+          },
+          angle: -90,
+          fill: theme.colors.surface.text.gray.subtle,
+        }}
+        dataKey={props?.dataKey}
+      />
+      {yAxisLine && props.axisLine !== false && !props.hide ? (
+        <ChartYAxisFrameLine side={frameSide} />
+      ) : null}
+    </>
   );
 };
 
@@ -713,7 +787,6 @@ const LegendItem = ({
     color: string;
     value: string;
     dataKey: string;
-    payload?: { strokeDasharray?: string | number };
   };
   index: number;
   isSelected: boolean;
@@ -721,11 +794,15 @@ const LegendItem = ({
   isClickable: boolean;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName, labelSize } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, lineStrokeStyles } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
-  // A dashed or dotted line shows its own dash in the legend, not a square.
-  const lineDash = chartName === 'line' ? entry.payload?.strokeDasharray : undefined;
+  // A line chart shows each series as a line in its own stroke style, with the dash of the
+  // `border.dash` token. Area, bar and donut keep the square.
+  const isLineSwatch = chartName === 'line';
+  const lineStrokeStyle = lineStrokeStyles?.[entry.dataKey] ?? 'solid';
+  const lineDash =
+    lineStrokeStyle === 'solid' ? undefined : theme.border.dash[lineStrokeStyle].join(' ');
 
   // For donut charts, use sanitized value (name) as the key, for other charts use dataKey
   const legendKey = chartName === 'donut' ? sanitizeString(entry.value ?? '') : entry.dataKey;
@@ -745,12 +822,12 @@ const LegendItem = ({
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-        {lineDash ? (
+        {isLineSwatch ? (
           <svg
             width={theme.spacing[5]}
             height={theme.spacing[4]}
             aria-hidden="true"
-            data-blade-legend-swatch="dashed"
+            data-blade-legend-swatch={lineStrokeStyle}
             style={{ display: 'block' }}
           >
             <line
@@ -774,10 +851,7 @@ const LegendItem = ({
             }}
           />
         )}
-        <Text
-          size={labelSize ? LABEL_SIZE_TEXT_SIZE[labelSize] : 'medium'}
-          color="surface.text.gray.muted"
-        >
+        <Text size="medium" color="surface.text.gray.muted">
           {entry.value}
         </Text>
       </Box>
@@ -792,7 +866,7 @@ const LegendItem = ({
  */
 const ReferenceBandLegendSwatch = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { referenceBands, labelSize } = useCommonChartComponentsContext();
+  const { referenceBands } = useCommonChartComponentsContext();
   if (!referenceBands || referenceBands.length === 0) return null;
   return (
     <>
@@ -809,10 +883,7 @@ const ReferenceBandLegendSwatch = (): JSX.Element | null => {
                 borderRadius: theme.border.radius['2xsmall'],
               }}
             />
-            <Text
-              size={labelSize ? LABEL_SIZE_TEXT_SIZE[labelSize] : 'medium'}
-              color="surface.text.gray.muted"
-            >
+            <Text size="medium" color="surface.text.gray.muted">
               {band.name}
             </Text>
           </Box>
@@ -827,7 +898,6 @@ const CustomSquareLegend = (props: {
     payload: {
       legendType: 'none' | 'line';
       type: 'none' | 'line';
-      strokeDasharray?: string | number;
     };
     value: string;
     color: string;

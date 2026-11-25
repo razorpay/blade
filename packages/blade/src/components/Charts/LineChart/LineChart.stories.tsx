@@ -1438,40 +1438,43 @@ LineChartWithSequentialColors.parameters = {
 };
 
 /**
- * `axisStyle` on the wrapper. `lines` draws an X and a Y axis line, with the Y ticks left of the
- * plot. `minimal` draws no axis lines and 0.5px gridlines that run the full width. Its Y labels
- * sit as `yLabelPlacement` sets: `overlap`, inside the plot just below each gridline, or
- * `outside`, in a column right of the plot. It suits a narrow box. The same props are on
- * ChartBarWrapper and ChartAreaWrapper.
+ * `axisStyle` on the wrapper. `lines` draws an X and a Y axis line. `minimal` draws no axis lines
+ * and 0.5px gridlines. Both put the Y labels in a `left` column, as wide as the widest label plus
+ * spacing.3. `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline,
+ * or `outside`, in a column right of the plot. `minimal` suits a narrow box. The same props are
+ * on ChartBarWrapper and ChartAreaWrapper.
  */
 export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
-  const variants = [
-    { axisStyle: 'lines', yLabelPlacement: 'overlap' },
+  const variants: ReadonlyArray<{
+    axisStyle: 'lines' | 'minimal';
+    yLabelPlacement?: 'overlap' | 'outside';
+  }> = [
+    { axisStyle: 'lines' },
+    { axisStyle: 'minimal' },
     { axisStyle: 'minimal', yLabelPlacement: 'overlap' },
     { axisStyle: 'minimal', yLabelPlacement: 'outside' },
-  ] as const;
+  ];
   return (
     <ChartsWrapper>
       <Box display="flex" flexWrap="wrap" gap="spacing.8">
         {variants.map(({ axisStyle, yLabelPlacement }) => (
           <Box
-            key={`${axisStyle}-${yLabelPlacement}`}
+            key={`${axisStyle}-${yLabelPlacement ?? 'left'}`}
             width="320px"
             display="flex"
             flexDirection="column"
             gap="spacing.3"
           >
             <Heading size="small">
-              {axisStyle === 'lines'
-                ? 'axisStyle="lines"'
-                : `axisStyle="minimal" yLabelPlacement="${yLabelPlacement}"`}
+              {yLabelPlacement
+                ? `axisStyle="${axisStyle}" yLabelPlacement="${yLabelPlacement}"`
+                : `axisStyle="${axisStyle}"`}
             </Heading>
             <Box width="100%" height="220px">
               <ChartLineWrapper
                 data={chartData}
                 axisStyle={axisStyle}
-                // An explicit `yLabelPlacement` wins over `axisStyle`, so `lines` gets none.
-                yLabelPlacement={axisStyle === 'minimal' ? yLabelPlacement : undefined}
+                yLabelPlacement={yLabelPlacement}
               >
                 <ChartCartesianGrid />
                 <ChartXAxis dataKey="month" />

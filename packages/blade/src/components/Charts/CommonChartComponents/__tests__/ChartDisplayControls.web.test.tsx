@@ -36,7 +36,7 @@ type Kind = 'line' | 'area' | 'bar';
 const renderChart = (
   kind: Kind,
   display: ChartWrapperDisplayProps = {},
-  { dashed = false }: { dashed?: boolean } = {},
+  { strokeStyle = 'solid' }: { strokeStyle?: 'solid' | 'dashed' | 'dotted' } = {},
 ): HTMLElement => {
   // An array, not a fragment: the wrappers read their direct children.
   const common = [
@@ -51,7 +51,7 @@ const renderChart = (
         <ChartLineWrapper data={data} {...display}>
           {common}
           <ChartLine dataKey="online" name="Online" />
-          <ChartLine dataKey="offline" name="Offline" strokeStyle={dashed ? 'dashed' : 'solid'} />
+          <ChartLine dataKey="offline" name="Offline" strokeStyle={strokeStyle} />
         </ChartLineWrapper>
       </Box>,
     ).container;
@@ -82,14 +82,18 @@ const yTicks = (container: HTMLElement): Element[] =>
   Array.from(
     container.querySelectorAll('.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value'),
   );
-const xTicks = (container: HTMLElement): Element[] =>
-  Array.from(container.querySelectorAll('.recharts-xAxis-tick-labels text'));
 const gridLines = (container: HTMLElement): Element[] =>
   Array.from(container.querySelectorAll('.recharts-cartesian-grid-horizontal line'));
 const yAxisLine = (container: HTMLElement): Element | null =>
   container.querySelector('.recharts-yAxis .recharts-cartesian-axis-line');
+const frameLine = (container: HTMLElement): Element | null =>
+  container.querySelector('[data-blade-y-axis-frame-line]');
 const legendWrapper = (container: HTMLElement): HTMLElement | null =>
   container.querySelector<HTMLElement>('.recharts-legend-wrapper');
+const legendSwatches = (container: HTMLElement, style: string): Element[] =>
+  Array.from(
+    legendWrapper(container)?.querySelectorAll(`[data-blade-legend-swatch="${style}"]`) ?? [],
+  );
 const surface = (container: HTMLElement): HTMLElement | null =>
   container.querySelector<HTMLElement>('[data-blade-chart-y-labels]');
 
@@ -114,25 +118,47 @@ const hasRule = (element: Element | null, declaration: string, selector: string)
 };
 
 describe('resolveChartDisplayOptions', () => {
-  it('keeps the classic look with no props', () => {
+  it('puts the Y labels in a left column with no props', () => {
     expect(resolveChartDisplayOptions({})).toEqual({
       axisStyle: 'lines',
       yAxisLine: true,
-      yLabelPlacement: 'legacy',
+      yLabelPlacement: 'left',
       yGridlines: true,
       gridlineWidth: undefined,
       legendPlacement: undefined,
-      labelSize: undefined,
     });
-    expect(getChartMargin(resolveChartDisplayOptions({}))).toBeUndefined();
+    // No fixed gutter: the label column starts at the content edge.
+    expect(getChartMargin(resolveChartDisplayOptions({}))).toEqual({
+      top: 5,
+      right: 5,
+      bottom: 5,
+      left: 0,
+    });
   });
 
-  it('sets the defaults of minimal: no Y axis line, overlap labels, thinner gridlines', () => {
+  it('sets the defaults of minimal: no Y axis line, left labels, thinner gridlines', () => {
     expect(resolveChartDisplayOptions({ axisStyle: 'minimal' })).toMatchObject({
       yAxisLine: false,
-      yLabelPlacement: 'overlap',
+      yLabelPlacement: 'left',
       gridlineWidth: 'thinner',
     });
+    expect(getChartMargin(resolveChartDisplayOptions({ axisStyle: 'minimal' }))).toEqual({
+      top: 5,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    });
+  });
+
+  it('keeps overlap as an explicit option', () => {
+    expect(
+      resolveChartDisplayOptions({ axisStyle: 'minimal', yLabelPlacement: 'overlap' })
+        .yLabelPlacement,
+    ).toBe('overlap');
+    expect(
+      resolveChartDisplayOptions({ axisStyle: 'lines', yLabelPlacement: 'overlap' })
+        .yLabelPlacement,
+    ).toBe('overlap');
   });
 
   it('lets an explicit prop win over axisStyle', () => {
@@ -159,13 +185,17 @@ describe('resolveChartDisplayOptions', () => {
     );
   });
 
-  it('keeps lines and the classic gutter on a vertical bar chart', () => {
+  it('keeps lines and a left column on a vertical bar chart', () => {
     expect(
       resolveChartDisplayOptions(
         { axisStyle: 'minimal', yLabelPlacement: 'right' },
         { isVerticalBar: true },
       ),
-    ).toMatchObject({ axisStyle: 'lines', yLabelPlacement: 'legacy' });
+    ).toMatchObject({ axisStyle: 'lines', yLabelPlacement: 'left' });
+    expect(
+      resolveChartDisplayOptions({ yLabelPlacement: 'overlap' }, { isVerticalBar: true })
+        .yLabelPlacement,
+    ).toBe('left');
   });
 
   it('sets the margin on the side of a label column to 0', () => {
@@ -185,32 +215,69 @@ describe('resolveChartDisplayOptions', () => {
 });
 
 describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart', (kind) => {
-  it('looks as before with no display props', async () => {
+  it('puts the Y labels in a left column with no display props, and no fixed gutter', async () => {
     const container = renderChart(kind);
     await ready(container);
 
-    expect(surface(container)).toBeNull();
+    expect(surface(container)?.getAttribute('data-blade-chart-y-labels')).toBe('left');
     expect(yAxisLine(container)).not.toBeNull();
-    // recharts' fixed 60px gutter after its 5px margin, labels aligned towards the axis.
-    yTicks(container).forEach((tick) => expect(tick.getAttribute('text-anchor')).toBe('end'));
-    expect(Number(gridLines(container)[0].getAttribute('x1'))).toBe(65);
+    // The column starts at the content edge. Labels align towards the axis, spacing.3 before it.
+    const gridStart = Math.min(...gridLines(container).map((l) => Number(l.getAttribute('x1'))));
+    yTicks(container).forEach((tick) => {
+      expect(tick.getAttribute('text-anchor')).toBe('end');
+      expect(Number(tick.getAttribute('x'))).toBe(gridStart - 8);
+    });
+    // jsdom measures no text, so the column is the 8px gap only. Not the old 5px + 60px.
+    expect(gridStart).toBe(8);
     gridLines(container).forEach((line) =>
       expect(line.getAttribute('stroke-width') ?? '1').toBe('1'),
     );
     expect(yTicks(container)[0].getAttribute('font-size')).toBe('12');
     expect(legendWrapper(container)?.style.bottom).not.toBe('');
     expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
-    expect(container.querySelector('[data-blade-legend-swatch]')).toBeNull();
   });
 
-  it('hides the Y axis line with yAxisLine false, and shows it on minimal with true', async () => {
+  it('frames the plot with a Y axis line on both sides when yAxisLine is on', async () => {
+    const container = renderChart(kind);
+    await ready(container);
+
+    const axis = yAxisLine(container);
+    const frame = frameLine(container);
+    expect(axis).not.toBeNull();
+    expect(frame?.getAttribute('data-blade-y-axis-frame-line')).toBe('right');
+    const gridEnd = Math.max(...gridLines(container).map((l) => Number(l.getAttribute('x2'))));
+    expect(Number(frame?.getAttribute('x1'))).toBe(gridEnd);
+    expect(Number(frame?.getAttribute('x2'))).toBe(gridEnd);
+    // The same colour, width and height as the axis line.
+    expect(frame?.getAttribute('stroke')).toBe(axis?.getAttribute('stroke'));
+    expect(frame?.getAttribute('stroke-width')).toBe('1');
+    expect(frame?.getAttribute('y1')).toBe(axis?.getAttribute('y1'));
+    expect(frame?.getAttribute('y2')).toBe(axis?.getAttribute('y2'));
+  });
+
+  it('puts the second Y axis line on the left with yLabelPlacement right', async () => {
+    const container = renderChart(kind, { yLabelPlacement: 'right' });
+    await ready(container);
+    const gridStart = Math.min(...gridLines(container).map((l) => Number(l.getAttribute('x1'))));
+    expect(frameLine(container)?.getAttribute('data-blade-y-axis-frame-line')).toBe('left');
+    expect(Number(frameLine(container)?.getAttribute('x1'))).toBe(gridStart);
+  });
+
+  it('draws neither Y axis line with yAxisLine false, and both on minimal with true', async () => {
     const hidden = renderChart(kind, { yAxisLine: false });
     await ready(hidden);
     expect(yAxisLine(hidden)).toBeNull();
+    expect(frameLine(hidden)).toBeNull();
+
+    const minimal = renderChart(kind, { axisStyle: 'minimal' });
+    await ready(minimal);
+    expect(yAxisLine(minimal)).toBeNull();
+    expect(frameLine(minimal)).toBeNull();
 
     const shown = renderChart(kind, { axisStyle: 'minimal', yAxisLine: true });
     await ready(shown);
     expect(yAxisLine(shown)).not.toBeNull();
+    expect(frameLine(shown)).not.toBeNull();
   });
 
   it('puts the Y labels in a column left of the plot with yLabelPlacement left', async () => {
@@ -284,44 +351,87 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
     expect(wrapper?.style.left).toBe('0px');
     expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
   });
+});
+
+describe('horizontal bar chart (layout vertical)', () => {
+  const categoryData = [
+    { method: 'UPI', amount: 98000 },
+    { method: 'Payment links', amount: 18000 },
+  ];
+  const renderHorizontalBar = (display: ChartWrapperDisplayProps = {}): HTMLElement =>
+    renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartBarWrapper data={categoryData} layout="vertical" {...display}>
+          <ChartXAxis type="number" />
+          <ChartYAxis type="category" dataKey="method" />
+          <ChartLegend />
+          <ChartBar dataKey="amount" name="Online" />
+        </ChartBarWrapper>
+      </Box>,
+    ).container;
+  const axisLineX = (container: HTMLElement): number =>
+    Number(yAxisLine(container)?.getAttribute('x1'));
 
   it.each([
-    ['s' as const, '12'],
-    ['m' as const, '14'],
-    ['l' as const, '16'],
-  ])('sizes the axis labels with labelSize %s', async (labelSize, fontSize) => {
-    const container = renderChart(kind, { labelSize });
+    {},
+    { axisStyle: 'minimal' as const },
+    { yLabelPlacement: 'right' as const },
+    { yLabelPlacement: 'overlap' as const },
+  ])('puts the category names in a tight left column with %p', async (display) => {
+    const container = renderHorizontalBar(display);
     await ready(container);
-    yTicks(container).forEach((tick) => expect(tick.getAttribute('font-size')).toBe(fontSize));
-    xTicks(container).forEach((tick) => expect(tick.getAttribute('font-size')).toBe(fontSize));
+
+    expect(surface(container)?.getAttribute('data-blade-chart-y-labels')).toBe('left');
+    expect(yTicks(container).map((tick) => tick.textContent)).toEqual(['UPI', 'Payment links']);
+    yTicks(container).forEach((tick) => {
+      expect(tick.getAttribute('text-anchor')).toBe('end');
+      expect(Number(tick.getAttribute('x'))).toBe(axisLineX(container) - 8);
+    });
+    // No fixed gutter: jsdom measures no text, so the column is the 8px gap only.
+    expect(axisLineX(container)).toBe(8);
+  });
+
+  it('frames the bars with a Y axis line on both sides', async () => {
+    const container = renderHorizontalBar();
+    await ready(container);
+    expect(yAxisLine(container)).not.toBeNull();
+    expect(frameLine(container)?.getAttribute('data-blade-y-axis-frame-line')).toBe('right');
   });
 });
 
-describe('labelSize on the legend', () => {
-  it('sizes the legend text with the axis labels', async () => {
-    const medium = renderChart('line');
-    await ready(medium);
-    const large = renderChart('line', { labelSize: 'l' });
-    await ready(large);
+describe('legend swatch follows the mark', () => {
+  it.each(['dashed', 'dotted'] as const)(
+    'shows a line swatch for each series of a line chart, %s for the %s series',
+    async (strokeStyle) => {
+      const container = renderChart('line', {}, { strokeStyle });
+      await ready(container);
 
-    const legendText = (container: HTMLElement): Element | null =>
-      container.querySelector('.recharts-legend-wrapper p');
-    // A different Text size gives the legend text a different class.
-    expect(legendText(large)?.className).not.toBe(legendText(medium)?.className);
-    expect(window.getComputedStyle(legendText(large)!).fontSize).toBe('1rem');
-  });
-});
+      const solid = legendSwatches(container, 'solid');
+      const styled = legendSwatches(container, strokeStyle);
+      expect(solid).toHaveLength(1);
+      expect(styled).toHaveLength(1);
+      expect(solid[0].querySelector('line')?.getAttribute('stroke-dasharray')).toBeNull();
+      expect(styled[0].querySelector('line')?.getAttribute('stroke-dasharray')).toBe(
+        border.dash[strokeStyle].join(' '),
+      );
+      // No square swatch in a line chart.
+      expect(legendWrapper(container)?.querySelectorAll('span')).toHaveLength(0);
+    },
+  );
 
-describe('strokeStyle dashed on ChartLine', () => {
-  it('shows a dashed line in the legend for the dashed series', async () => {
-    const container = renderChart('line', {}, { dashed: true });
+  it('shows two solid line swatches when both lines are solid', async () => {
+    const container = renderChart('line');
     await ready(container);
+    expect(legendSwatches(container, 'solid')).toHaveLength(2);
+  });
 
-    const swatches = container.querySelectorAll('[data-blade-legend-swatch="dashed"]');
-    expect(swatches).toHaveLength(1);
-    expect(swatches[0].querySelector('line')?.getAttribute('stroke-dasharray')).toBe('5 5');
-    // The solid series keeps its square swatch.
-    expect(legendWrapper(container)?.querySelectorAll('span')).toHaveLength(1);
+  it.each(['area', 'bar'] as const)('keeps square swatches on a %s chart', async (kind) => {
+    const container = renderChart(kind);
+    await ready(container);
+    expect(legendWrapper(container)?.querySelectorAll('[data-blade-legend-swatch]')).toHaveLength(
+      0,
+    );
+    expect(legendWrapper(container)?.querySelectorAll('span')).toHaveLength(2);
   });
 });
 
@@ -330,9 +440,7 @@ describe('legend controls on a donut chart', () => {
     { name: 'UPI', value: 52000 },
     { name: 'Cards', value: 24000 },
   ];
-  const renderDonut = (
-    props: { legendPlacement?: 'top' | 'bottom'; labelSize?: 's' | 'm' | 'l' } = {},
-  ): HTMLElement =>
+  const renderDonut = (props: { legendPlacement?: 'top' | 'bottom' } = {}): HTMLElement =>
     renderWithTheme(
       <Box width="400px" height="400px">
         <ChartDonutWrapper {...props}>
@@ -360,14 +468,13 @@ describe('legend controls on a donut chart', () => {
     expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
   });
 
-  it.each([
-    ['s' as const, '0.75rem'],
-    ['m' as const, '0.875rem'],
-    ['l' as const, '1rem'],
-  ])('sizes the legend text with labelSize %s', async (labelSize, fontSize) => {
-    const container = renderDonut({ labelSize });
+  it('keeps square swatches', async () => {
+    const container = renderDonut();
     await waitFor(() => expect(legendText(container)).not.toBeNull());
-    expect(window.getComputedStyle(legendText(container)!).fontSize).toBe(fontSize);
+    expect(legendWrapper(container)?.querySelectorAll('[data-blade-legend-swatch]')).toHaveLength(
+      0,
+    );
+    expect(legendWrapper(container)?.querySelectorAll('span')).toHaveLength(2);
   });
 });
 
@@ -380,7 +487,7 @@ describe('border.dash token', () => {
   });
 
   it('sets the dash of a dashed ChartLine and its legend swatch', async () => {
-    const container = renderChart('line', {}, { dashed: true });
+    const container = renderChart('line', {}, { strokeStyle: 'dashed' });
     await ready(container);
     const swatch = container.querySelector('[data-blade-legend-swatch="dashed"] line');
     expect(swatch?.getAttribute('stroke-dasharray')).toBe(border.dash.dashed.join(' '));

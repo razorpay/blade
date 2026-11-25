@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { ChartAxisStyle, ChartResolvedYLabelPlacement } from './types';
-import { needsChartSurface } from './chartDisplayOptions';
 
 /** Set on the lowest Y label of a `right` chart when it meets an X label. It then hides. */
 const Y_LABEL_COLLIDES_ATTR = 'data-blade-y-label-collides';
@@ -87,11 +86,7 @@ type ChartSurfaceProps = {
   children: React.ReactNode;
 };
 
-/**
- * The element around a chart's recharts container. It holds the CSS that the display props need.
- * For a `lines` chart with the classic Y gutter, it renders as the wrappers did before, so the
- * chart does not change.
- */
+/** The element around a chart's recharts container. It holds the CSS that the display props need. */
 const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
   ({ axisStyle, yLabelPlacement, children }, ref) => {
     const innerRef = React.useRef<HTMLDivElement>(null);
@@ -104,13 +99,6 @@ const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
       },
       [ref],
     );
-    if (!needsChartSurface({ axisStyle, yLabelPlacement })) {
-      return (
-        <div ref={setRefs} style={{ width: '100%', height: '100%' }}>
-          {children}
-        </div>
-      );
-    }
     return (
       <StyledChartSurface
         ref={setRefs}

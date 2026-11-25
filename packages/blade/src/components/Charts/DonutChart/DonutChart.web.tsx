@@ -112,7 +112,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   testID,
   valueFormat,
   legendPlacement,
-  labelSize,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -265,7 +264,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
         setSelectedDataKeys,
         valueFormat,
         legendPlacement,
-        labelSize,
       }}
     >
       <DonutContainerContext.Provider

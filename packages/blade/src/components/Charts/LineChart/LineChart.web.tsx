@@ -255,7 +255,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   yGridlines,
   gridlineWidth,
   legendPlacement,
-  labelSize,
   valueFormat,
   testID,
   data,
@@ -270,9 +269,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         yGridlines,
         gridlineWidth,
         legendPlacement,
-        labelSize,
       }),
-    [axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement, labelSize],
+    [axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
   );
   const themeColors = useChartsColorTheme({
     colorTheme,
@@ -375,6 +373,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     containerRef,
     dataColorMapping,
   );
+
+  // Map of line dataKey -> its stroke style, so the legend draws each line swatch in its style.
+  const lineStrokeStyles = useMemo(() => {
+    const map: Record<string, NonNullable<ChartLineProps['strokeStyle']>> = {};
+    React.Children.forEach(children, (child) => {
+      if (isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+        const props = child.props as ChartLineProps;
+        if (props.dataKey) map[props.dataKey as string] = props.strokeStyle ?? 'solid';
+      }
+    });
+    return map;
+  }, [children]);
 
   // Map of line dataKey -> its range keys, so the tooltip can show the industry range per series.
   const rangeMap = useMemo<RangeMap>(() => {
@@ -548,8 +558,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       setSelectedDataKeys,
       secondaryLabelMap,
       dataLength: data?.length,
+      chartData: data,
       referenceBands: referenceBandLegendInfos,
       rangeMap,
+      lineStrokeStyles,
       ...display,
       valueFormat,
     }),
@@ -557,9 +569,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       dataColorMapping,
       selectedDataKeys,
       secondaryLabelMap,
-      data?.length,
+      data,
       referenceBandLegendInfos,
       rangeMap,
+      lineStrokeStyles,
       display,
       valueFormat,
     ],
