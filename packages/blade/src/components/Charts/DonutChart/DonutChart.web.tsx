@@ -5,6 +5,7 @@ import {
   Cell as RechartsCell,
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
+  usePlotArea,
 } from 'recharts';
 import {
   useChartsColorTheme,
@@ -27,6 +28,7 @@ import type {
 } from './types';
 import {
   RADIUS_MAPPING,
+  DONUT_V2_EDGE,
   BASE_CONTAINER_SIZE,
   START_AND_END_ANGLES,
   componentId,
@@ -361,7 +363,12 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   );
 };
 
-const _ChartDonut: React.FC<ChartDonutProps> = ({
+/**
+ * The body of ChartDonut. `fittedOuterRadius`: the `v2` outer radius that fits the plot area. The
+ * inner radius keeps the ratio of the `radius` size.
+ */
+const ChartDonutBody: React.FC<ChartDonutProps & { fittedOuterRadius?: number }> = ({
+  fittedOuterRadius,
   cx = '50%',
   cy = '50%',
   radius = 'medium',
@@ -404,18 +411,17 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     return { filteredData, filteredToOriginalIndexMap };
   }, [data, nameKey, selectedDataKeys]);
 
-  // Calculate responsive radius based on container size
+  // Calculate responsive radius based on container size. `v2`: the radius that fits the plot area.
   const containerSize = Math.min(containerWidth, containerHeight);
-  const scaledOuterRadius = getScaledRadius(
-    baseRadiusConfig.outerRadius,
-    containerSize,
-    baseContainerSize,
-  );
-  const scaledInnerRadius = getScaledRadius(
-    baseRadiusConfig.innerRadius,
-    containerSize,
-    baseContainerSize,
-  );
+  const scaledOuterRadius =
+    fittedOuterRadius ??
+    getScaledRadius(baseRadiusConfig.outerRadius, containerSize, baseContainerSize);
+  const scaledInnerRadius =
+    fittedOuterRadius !== undefined
+      ? Math.round(
+          (fittedOuterRadius * baseRadiusConfig.innerRadius) / baseRadiusConfig.outerRadius,
+        )
+      : getScaledRadius(baseRadiusConfig.innerRadius, containerSize, baseContainerSize);
   // Stroke inner radius is slightly smaller than outer for the border effect
   const scaledStrokeInnerRadius = scaledOuterRadius - 0.75;
 
@@ -616,6 +622,36 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       </RechartsPie>
     </>
   );
+};
+
+// usePlotArea gives a new object on each store change. The memo renders the body again only when
+// the radius or a prop changes. Else each render updates the store again, with no end.
+const ChartDonutBodyMemo = React.memo(ChartDonutBody);
+
+/**
+ * `v2`: the ring fits the plot area, the box less the legend. The outer radius is half the shorter
+ * side of the plot, less `DONUT_V2_EDGE`, and at most the `radius` size. The ring sits in the
+ * centre of the plot, so no part is cut at any box size.
+ */
+const ChartDonutFitted: React.FC<ChartDonutProps> = (props) => {
+  const plotArea = usePlotArea();
+  const baseOuterRadius = RADIUS_MAPPING[props.radius ?? 'medium'].outerRadius;
+  const fittedOuterRadius = plotArea
+    ? Math.max(
+        0,
+        Math.min(
+          baseOuterRadius,
+          Math.floor(Math.min(plotArea.width, plotArea.height) / 2 - DONUT_V2_EDGE),
+        ),
+      )
+    : undefined;
+  return <ChartDonutBodyMemo {...props} fittedOuterRadius={fittedOuterRadius} />;
+};
+
+const _ChartDonut: React.FC<ChartDonutProps> = (props) => {
+  const { chartVersion } = useCommonChartComponentsContext();
+  // `v1` renders as on master, with no extra hook.
+  return chartVersion === 'v2' ? <ChartDonutFitted {...props} /> : <ChartDonutBody {...props} />;
 };
 
 const ChartDonut = assignWithoutSideEffects(_ChartDonut, {

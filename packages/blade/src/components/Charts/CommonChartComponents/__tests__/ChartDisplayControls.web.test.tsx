@@ -122,7 +122,10 @@ const hasRule = (element: Element | null, declaration: string, selector: string)
 };
 
 describe('resolveChartDisplayOptions', () => {
-  const v2 = (props: ChartWrapperDisplayProps, options?: { isVerticalBar?: boolean }) =>
+  const v2 = (
+    props: ChartWrapperDisplayProps,
+    options?: { isVerticalBar?: boolean },
+  ): ReturnType<typeof resolveChartDisplayOptions> =>
     resolveChartDisplayOptions({ version: 'v2', ...props }, options);
 
   it('ignores every display prop with v1, the default, and keeps the recharts margin', () => {
@@ -531,6 +534,32 @@ describe('legend controls on a donut chart', () => {
     expect(legendWrapper(container)?.style.top).not.toBe('');
     expect(legendWrapper(container)?.style.left).toBe('0px');
     expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
+  });
+
+  it('spaces the v2 legend items spacing.4 apart, with no side padding', async () => {
+    const container = renderDonut();
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    const item = legendWrapper(container)!.querySelector('button')!;
+    const row = item.parentElement!;
+    expect(window.getComputedStyle(row).columnGap).toBe('12px');
+    expect(window.getComputedStyle(row).rowGap).toBe('0px');
+    expect(window.getComputedStyle(item).paddingLeft).toBe('0px');
+    expect(window.getComputedStyle(item).paddingTop).toBe('4px');
+  });
+
+  it('keeps master legend spacing in v1', async () => {
+    const container = renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper>
+          <ChartDonut dataKey="value" nameKey="name" data={donutData} />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    const item = legendWrapper(container)!.querySelector('button')!;
+    expect(window.getComputedStyle(item.parentElement!).gap).toBe('16px');
+    expect(window.getComputedStyle(item).paddingLeft).toBe('4px');
   });
 
   it('keeps square swatches', async () => {

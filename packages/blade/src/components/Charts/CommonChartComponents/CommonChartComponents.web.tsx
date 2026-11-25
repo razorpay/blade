@@ -928,29 +928,33 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
-const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
-  ({ theme, $isHidden, $isClickable }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    cursor: $isClickable ? 'pointer' : 'default',
-    opacity: $isHidden ? 0.4 : 1,
-    background: 'none',
-    border: 'none',
-    padding: theme.spacing[2],
-    '& p': {
-      color: theme.colors.surface.text.gray.muted,
-      textDecoration: $isHidden ? 'line-through' : 'none',
-      transition: $isClickable
-        ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
-        : 'none',
-    },
-    '&:hover p': {
-      color: $isClickable
-        ? theme.colors.surface.text.gray.normal
-        : theme.colors.surface.text.gray.muted,
-    },
-  }),
-);
+const StyledLegendWrapper = styled.button<{
+  $isHidden: boolean;
+  $isClickable: boolean;
+  $isV2: boolean;
+}>(({ theme, $isHidden, $isClickable, $isV2 }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  cursor: $isClickable ? 'pointer' : 'default',
+  opacity: $isHidden ? 0.4 : 1,
+  background: 'none',
+  border: 'none',
+  // `v2`: no side padding, so the gap between two items is the legend's column gap only. The
+  // item stays 28px tall.
+  padding: $isV2 ? `${theme.spacing[2]}px 0` : theme.spacing[2],
+  '& p': {
+    color: theme.colors.surface.text.gray.muted,
+    textDecoration: $isHidden ? 'line-through' : 'none',
+    transition: $isClickable
+      ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
+      : 'none',
+  },
+  '&:hover p': {
+    color: $isClickable
+      ? theme.colors.surface.text.gray.normal
+      : theme.colors.surface.text.gray.muted,
+  },
+}));
 
 const LegendItem = ({
   entry,
@@ -993,6 +997,7 @@ const LegendItem = ({
       key={`item-${index}`}
       $isHidden={!isSelected}
       $isClickable={isClickable}
+      $isV2={chartVersion === 'v2'}
       onClick={
         isClickable
           ? () => {
@@ -1047,12 +1052,18 @@ const LegendItem = ({
  */
 const ReferenceBandLegendSwatch = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { referenceBands } = useCommonChartComponentsContext();
+  const { referenceBands, chartVersion } = useCommonChartComponentsContext();
   if (!referenceBands || referenceBands.length === 0) return null;
   return (
     <>
       {referenceBands.map((band, index) => (
-        <Box display="flex" alignItems="center" padding="spacing.2" key={`reference-band-${index}`}>
+        <Box
+          display="flex"
+          alignItems="center"
+          // `v2`: no side padding, as a series item.
+          padding={chartVersion === 'v2' ? ['spacing.2', 'spacing.0'] : 'spacing.2'}
+          key={`reference-band-${index}`}
+        >
           <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
             <span
               style={{
@@ -1090,13 +1101,14 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { theme } = useTheme();
   const {
     chartName,
     dataColorMapping,
     referenceBands,
     legendPlacement,
+    chartVersion,
   } = useCommonChartComponentsContext();
+  const isV2 = chartVersion === 'v2';
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -1112,15 +1124,17 @@ const CustomSquareLegend = (props: {
   const isVerticalLayout = layout === 'vertical';
   const isClickable =
     chartName === 'line' || chartName === 'area' || chartName === 'bar' || chartName === 'donut';
-  // On top, the legend is left-aligned. The negative margin takes off the item padding, so the
-  // first swatch starts at the left edge of the chart.
+  // On top, the legend is left-aligned. A `v2` item has no side padding, so the first swatch
+  // starts at the left edge of the chart.
   const isTop = legendPlacement === 'top' && !isVerticalLayout;
   const renderLegend = (items: React.ReactNode): JSX.Element => {
     const legend = (
       <Box
         display="flex"
         justifyContent={isTop ? 'flex-start' : 'center'}
-        gap="spacing.5"
+        // `v2`: spacing.4 between two items in a row. No row gap: the 4px padding above and below
+        // each item leaves spacing.3 between two rows of text. `v1`: as on master.
+        {...(isV2 ? { columnGap: 'spacing.4', rowGap: 'spacing.0' } : { gap: 'spacing.5' })}
         flexDirection={isVerticalLayout ? 'column' : 'row'}
         width={isVerticalLayout ? '100%' : 'auto'}
         flexWrap="wrap"
@@ -1128,13 +1142,7 @@ const CustomSquareLegend = (props: {
         {items}
       </Box>
     );
-    return isTop ? (
-      <div data-blade-legend-placement="top" style={{ marginLeft: -theme.spacing[2] }}>
-        {legend}
-      </div>
-    ) : (
-      legend
-    );
+    return isTop ? <div data-blade-legend-placement="top">{legend}</div> : legend;
   };
 
   // For donut charts, generate legend entries from dataColorMapping (which has all keys)
