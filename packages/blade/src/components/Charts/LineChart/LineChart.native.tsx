@@ -1328,8 +1328,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           dataKey: line.dataKey,
           name: line.name ?? line.dataKey,
           color: resolveColor(line.dataKey, line.color),
-          colorToken: (dataColorMapping[line.dataKey]?.colorToken ??
-            line.color) as ChartsCategoricalColorToken,
+          colorToken: dataColorMapping[line.dataKey]?.colorToken ?? line.color,
         })),
       })(index),
     onActivePointChange,

@@ -437,8 +437,7 @@ const ChartDonutWrapper = ({
     activeSlice?.originalIndex,
     (index) => {
       const name = String(getItemName(donutData[index], nameKey) ?? index);
-      const colorToken = (dataColorMapping[sanitizeString(name)]?.colorToken ??
-        themeColors[index]) as ChartsCategoricalColorToken;
+      const colorToken = dataColorMapping[sanitizeString(name)]?.colorToken ?? themeColors[index];
       // The slice name is the raw label. ChartTooltip `labelFormatter` writes `formattedLabel`.
       return createActivePointBuilder({
         data: donutData,

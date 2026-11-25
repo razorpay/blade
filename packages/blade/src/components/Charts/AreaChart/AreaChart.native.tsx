@@ -763,7 +763,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             dataKey: area.dataKey,
             name: area.name ?? area.dataKey,
             color: token ? (getIn(theme.colors, token) as string) : '',
-            colorToken: token as ChartColorToken,
+            colorToken: token,
           };
         }),
       })(index),
