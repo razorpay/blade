@@ -30,6 +30,8 @@ type AnimatedDonutSliceProps = {
   /** When true the slice fades to a muted opacity (another slice is active). */
   isDimmed: boolean;
   onPress?: () => void;
+  /** Test ID for the slice, used for testing press interactions. */
+  testID?: string;
   /** Stroke rings are non-interactive (mirrors the web pointer-events:none Pie). */
   isInteractive?: boolean;
   motionDuration: number;
@@ -109,6 +111,7 @@ const AnimatedDonutSlice = ({
   sweepProgress,
   isDimmed,
   onPress,
+  testID,
   isInteractive = true,
   motionDuration,
   motionEasing,
@@ -144,6 +147,7 @@ const AnimatedDonutSlice = ({
       opacity={isDimmed ? DIMMED_OPACITY : FULL_OPACITY}
       animatedProps={animatedProps}
       onPress={isInteractive ? onPress : undefined}
+      testID={testID}
     />
   );
 };
