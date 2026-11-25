@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ChartAxisStyle, ChartResolvedYLabelPlacement, ChartVersion } from './types';
+import type { ChartResolvedYLabelPlacement, ChartVersion } from './types';
 
 /** Set on the lowest Y label of a `right` chart when it meets an X label. It then hides. */
 const Y_LABEL_COLLIDES_ATTR = 'data-blade-y-label-collides';
@@ -12,8 +12,8 @@ const StyledChartSurface = styled.div<{
 }>(({ $yLabelPlacement }) => ({
   width: '100%',
   height: '100%',
-  // The plot runs to the edges of the chart: no margin. A point, an active dot, the axis lines or
-  // the top Y label on the edge is not cut.
+  // The plot runs to the edges of the chart: no margin. A point, an active dot, the border or the
+  // top Y label on the edge is not cut.
   '.recharts-surface': { overflow: 'visible' },
   // A label column: tabular digits, so the numbers line up towards the axis.
   ...($yLabelPlacement === 'left' || $yLabelPlacement === 'right'
@@ -81,7 +81,7 @@ const useLowestYLabelCollision = (
 
 type ChartSurfaceProps = {
   chartVersion: ChartVersion;
-  axisStyle: ChartAxisStyle;
+  showBorder: boolean;
   yLabelPlacement: ChartResolvedYLabelPlacement;
   children: React.ReactNode;
 };
@@ -91,7 +91,7 @@ type ChartSurfaceProps = {
  * need. `v1`: a plain box, as on master.
  */
 const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
-  ({ chartVersion, axisStyle, yLabelPlacement, children }, ref) => {
+  ({ chartVersion, showBorder, yLabelPlacement, children }, ref) => {
     const innerRef = React.useRef<HTMLDivElement>(null);
     const isV2 = chartVersion === 'v2';
     useLowestYLabelCollision(innerRef, isV2 && yLabelPlacement === 'right');
@@ -114,7 +114,7 @@ const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
       <StyledChartSurface
         ref={setRefs}
         $yLabelPlacement={yLabelPlacement}
-        data-blade-chart-axis-style={axisStyle === 'minimal' ? 'minimal' : undefined}
+        data-blade-chart-border={showBorder ? 'true' : undefined}
         data-blade-chart-y-labels={yLabelPlacement}
       >
         {children}

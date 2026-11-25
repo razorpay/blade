@@ -42,14 +42,13 @@ const data = [
   { month: 'Jun', online: 98000, offline: 36500 },
 ];
 
-/** `default` leaves the prop unset, so `axisStyle` sets it. */
+/** `default` leaves the prop unset, so the v2 default applies. */
 type Unset = 'default';
 type OnOff = Unset | 'on' | 'off';
 
 type ChartDisplayControlsArgs = {
   version: 'v1' | 'v2';
-  axisStyle: 'lines' | 'minimal';
-  yAxisLine: OnOff;
+  showBorder: 'on' | 'off';
   yLabelPlacement: Unset | 'left' | 'right' | 'overlap';
   yGridlines: OnOff;
   gridlineWidth: Unset | 'thin' | 'thinner';
@@ -67,8 +66,7 @@ const onOff = (value: OnOff): boolean | undefined =>
 
 const toDisplayProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProps => ({
   version: args.version,
-  axisStyle: args.axisStyle,
-  yAxisLine: onOff(args.yAxisLine),
+  showBorder: args.showBorder === 'on',
   yLabelPlacement: unset(args.yLabelPlacement),
   yGridlines: onOff(args.yGridlines),
   gridlineWidth: unset(args.gridlineWidth),
@@ -169,20 +167,19 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
 /**
  * Every display control of the line, area and bar chart wrappers, as a live control. `version`
  * picks the look: `v1` renders as Blade master and ignores the other controls. `v2` takes them.
- * `default` leaves a prop unset, so `axisStyle` sets it. `lineStyle` sets `strokeStyle` on the
+ * `default` leaves a prop unset, so the v2 default applies. `lineStyle` sets `strokeStyle` on the
  * second line.
  *
- * - The horizontal bar chart (`layout="vertical"`) keeps `lines` and a `left` column for its
- *   category names. `axisStyle` and `yLabelPlacement` do not apply to it. `yAxisLine`,
- *   `yGridlines`, `gridlineWidth` and `legendPlacement` do.
+ * - The horizontal bar chart (`layout="vertical"`) keeps a `left` column for its category names.
+ *   `yLabelPlacement` does not apply to it. `showBorder`, `yGridlines`, `gridlineWidth` and
+ *   `legendPlacement` do.
  * - The donut takes `legendPlacement` only.
  */
 export const ChartDisplayControls = ChartDisplayControlsTemplate.bind({});
 ChartDisplayControls.storyName = 'Chart Display Controls';
 ChartDisplayControls.args = {
   version: 'v2',
-  axisStyle: 'lines',
-  yAxisLine: 'default',
+  showBorder: 'off',
   yLabelPlacement: 'default',
   yGridlines: 'default',
   gridlineWidth: 'default',
@@ -203,21 +200,17 @@ export default {
       description:
         '`version`. v1 renders as Blade master: the other controls have no effect. v2 is the new look. Default of the prop: v1.',
     },
-    axisStyle: {
+    showBorder: {
       control: 'inline-radio',
-      options: ['lines', 'minimal'],
-      description: 'Sets the defaults of the other props. An explicit prop wins.',
-    },
-    yAxisLine: {
-      control: 'inline-radio',
-      options: ['default', 'on', 'off'],
-      description: '`yAxisLine`. Default: on with lines, off with minimal.',
+      options: ['on', 'off'],
+      description:
+        '`showBorder`: a line on the left, the right and the bottom of the plot, in the gridline colour and width. Default: off. With overlap, the Y labels show as left.',
     },
     yLabelPlacement: {
       control: 'inline-radio',
       options: ['default', 'left', 'right', 'overlap'],
       description:
-        '`yLabelPlacement`. Default: left, in every axisStyle. `outside` is an alias of `right`.',
+        '`yLabelPlacement`. Default: left. `outside` is an alias of `right`. overlap with showBorder shows as left.',
     },
     yGridlines: {
       control: 'inline-radio',
@@ -228,7 +221,7 @@ export default {
       control: 'inline-radio',
       options: ['default', 'thin', 'thinner'],
       description:
-        '`gridlineWidth`: thin is border.width.thin (1px), thinner is border.width.thinner (0.5px). Default: thin with lines, thinner with minimal.',
+        '`gridlineWidth`: thin is border.width.thin (1px), thinner is border.width.thinner (0.5px). Default: thinner.',
     },
     legendPlacement: {
       control: 'inline-radio',

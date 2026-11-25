@@ -1438,28 +1438,29 @@ LineChartWithSequentialColors.parameters = {
 };
 
 /**
- * `axisStyle` on a `version="v2"` wrapper. `lines` draws an X and a Y axis line. `minimal` draws no axis lines
- * and 0.5px gridlines. Both put the Y labels in a `left` column, as wide as the widest label plus
- * spacing.3. `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline,
- * or `outside`, in a column right of the plot. `minimal` suits a narrow box. The same props are
- * on ChartBarWrapper and ChartAreaWrapper.
+ * `showBorder` on a `version="v2"` wrapper. With it, a line on the left, the right and the bottom
+ * of the plot, in the colour and the width of the gridlines. With none, only the gridlines show.
+ * The Y labels sit in a `left` column by default, as wide as the widest label plus spacing.3.
+ * `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline, or
+ * `outside`, in a column right of the plot. The same props are on ChartBarWrapper and
+ * ChartAreaWrapper.
  */
 export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
   const variants: ReadonlyArray<{
-    axisStyle: 'lines' | 'minimal';
+    showBorder: boolean;
     yLabelPlacement?: 'overlap' | 'outside';
   }> = [
-    { axisStyle: 'lines' },
-    { axisStyle: 'minimal' },
-    { axisStyle: 'minimal', yLabelPlacement: 'overlap' },
-    { axisStyle: 'minimal', yLabelPlacement: 'outside' },
+    { showBorder: true },
+    { showBorder: false },
+    { showBorder: false, yLabelPlacement: 'overlap' },
+    { showBorder: false, yLabelPlacement: 'outside' },
   ];
   return (
     <ChartsWrapper>
       <Box display="flex" flexWrap="wrap" gap="spacing.8">
-        {variants.map(({ axisStyle, yLabelPlacement }) => (
+        {variants.map(({ showBorder, yLabelPlacement }) => (
           <Box
-            key={`${axisStyle}-${yLabelPlacement ?? 'left'}`}
+            key={`${showBorder}-${yLabelPlacement ?? 'left'}`}
             width="320px"
             display="flex"
             flexDirection="column"
@@ -1467,14 +1468,14 @@ export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
           >
             <Heading size="small">
               {yLabelPlacement
-                ? `axisStyle="${axisStyle}" yLabelPlacement="${yLabelPlacement}"`
-                : `axisStyle="${axisStyle}"`}
+                ? `showBorder={${showBorder}} yLabelPlacement="${yLabelPlacement}"`
+                : `showBorder={${showBorder}}`}
             </Heading>
             <Box width="100%" height="220px">
               <ChartLineWrapper
                 data={chartData}
                 version="v2"
-                axisStyle={axisStyle}
+                showBorder={showBorder}
                 yLabelPlacement={yLabelPlacement}
               >
                 <ChartCartesianGrid />
@@ -1515,7 +1516,6 @@ export const LineChartWithValueFormat: StoryFn<typeof ChartLine> = () => {
         <ChartLineWrapper
           data={collectedPerMonth}
           version="v2"
-          axisStyle="minimal"
           valueFormat={{ type: 'currency', currency: 'INR' }}
         >
           <ChartCartesianGrid />

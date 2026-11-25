@@ -5,8 +5,8 @@ import {
   formatINRCompact,
   formatShare,
   getBarListRows,
-  getDefaultAxisStyle,
-  resolveAxisStyle,
+  getDefaultShowBorder,
+  resolveShowBorder,
   shouldShowBarList,
   getChartHeight,
   getDateStep,
@@ -145,22 +145,22 @@ describe('genUIChartUtils', () => {
       expect(isWholeNumberChart(counts, ['count'], 'currency')).toBe(false);
     });
   });
-  describe('axisStyle', () => {
+  describe('showBorder', () => {
     it.each([
-      [0, 'lines'],
-      [256, 'minimal'],
-      [640, 'minimal'],
-      [641, 'lines'],
-      [1100, 'lines'],
-    ] as const)('a %ipx box defaults to %s', (width, style) => {
-      expect(getDefaultAxisStyle(width)).toBe(style);
+      [0, true],
+      [256, false],
+      [640, false],
+      [641, true],
+      [1100, true],
+    ] as const)('a %ipx box defaults to %s', (width, showBorder) => {
+      expect(getDefaultShowBorder(width)).toBe(showBorder);
     });
 
-    it('takes the node value over the width, and ignores an unknown value', () => {
-      expect(resolveAxisStyle('lines', 360)).toBe('lines');
-      expect(resolveAxisStyle('minimal', 1100)).toBe('minimal');
-      expect(resolveAxisStyle('bold', 360)).toBe('minimal');
-      expect(resolveAxisStyle(undefined, 1100)).toBe('lines');
+    it('takes the node value over the width, and ignores a value that is not a boolean', () => {
+      expect(resolveShowBorder(true, 360)).toBe(true);
+      expect(resolveShowBorder(false, 1100)).toBe(false);
+      expect(resolveShowBorder('lines', 360)).toBe(false);
+      expect(resolveShowBorder(undefined, 1100)).toBe(true);
     });
 
     it('gives the last bar label less room when the Y axis takes no width', () => {

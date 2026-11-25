@@ -9,6 +9,7 @@ import {
   ReferenceLine as RechartsReferenceLine,
   Line as RechartsLine,
   usePlotArea,
+  useChartWidth,
 } from 'recharts';
 import {
   formatChartValueCompact,
@@ -43,8 +44,10 @@ import {
   X_AXIS_LABEL_HEIGHT,
   LEGEND_MARGIN_TOP,
   X_OFFSET,
-  MINIMAL_Y_AXIS_WIDTH,
+  OVERLAP_Y_AXIS_WIDTH,
   Y_LABEL_HALF_CAP_EM,
+  CAP_HEIGHT_EM,
+  V2_Y_NAME_MAX_WIDTH_SHARE,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
   X_LABEL_ASCENT_EM,
@@ -220,6 +223,7 @@ const CustomXAxisTick = ({
   lastTick,
   tickFormatter,
   isV2 = false,
+  plotRight,
 }: {
   x: number;
   y: number;
@@ -236,6 +240,11 @@ const CustomXAxisTick = ({
    * spacing.3 under it.
    */
   isV2?: boolean;
+  /**
+   * `v2` number axis: the right edge of the plot. A centred label that would cross it ends at its
+   * tick, so it stays inside the chart.
+   */
+  plotRight?: number;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth && !isV2 ? tickWidth * 0.9 : Infinity;
@@ -248,9 +257,24 @@ const CustomXAxisTick = ({
   const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
   const isLastTick = shouldUseEdgeAlignment && payload.index === lastTick;
 
+  // Apply tickFormatter if provided, otherwise use raw value
+  const displayValue = tickFormatter
+    ? tickFormatter(payload.value, payload.index)
+    : String(payload.value);
+
+  const crossesPlotRight = (): boolean => {
+    if (plotRight === undefined) return false;
+    const width = measureTextWidth(displayValue, {
+      size: fontSize,
+      weight: theme.typography.fonts.weight.regular,
+      family: theme.typography.fonts.family.text,
+    });
+    return x + width / 2 > plotRight;
+  };
+
   const getTextAnchor = (): 'start' | 'middle' | 'end' => {
     if (isFirstTick) return 'start';
-    if (isLastTick) return 'end';
+    if (isLastTick || crossesPlotRight()) return 'end';
     return 'middle';
   };
   const textAnchor = getTextAnchor();
@@ -268,11 +292,6 @@ const CustomXAxisTick = ({
     fontWeight: theme.typography.fonts.weight.regular,
     letterSpacing: theme.typography.letterSpacings[100],
   } as const;
-
-  // Apply tickFormatter if provided, otherwise use raw value
-  const displayValue = tickFormatter
-    ? tickFormatter(payload.value, payload.index)
-    : String(payload.value);
 
   // Primary label
   const primaryLabel = wrappedTextLabel({
@@ -333,18 +352,17 @@ const useRenderOnFontLoad = (isActive: boolean): number => {
   return fontLoads;
 };
 
-/**
- * The second Y axis line, on the side of the plot away from the Y axis. With the axis line, it
- * frames the plot on the left and the right. The same colour and width as the axis line.
- */
-const ChartXAxisBody: React.FC<ChartXAxisProps & { thinning?: XLabelThinning }> = ({
+const ChartXAxisBody: React.FC<
+  ChartXAxisProps & { thinning?: XLabelThinning; plotRight?: number }
+> = ({
   interval: intervalProp,
   tickLine = false,
   label,
   dataKey,
   height,
-  tickFormatter,
+  tickFormatter: tickFormatterProp,
   thinning,
+  plotRight,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -352,10 +370,17 @@ const ChartXAxisBody: React.FC<ChartXAxisProps & { thinning?: XLabelThinning }> 
     secondaryLabelMap,
     chartName,
     dataLength,
-    axisStyle,
     chartVersion,
+    valueFormat,
   } = useCommonChartComponentsContext();
   const isV2 = chartVersion === 'v2';
+  // `v2` number axis, as on a horizontal bar chart: `valueFormat` on the wrapper writes the ticks
+  // compact, as the Y axis of the other charts, unless the axis has its own formatter.
+  const tickFormatter =
+    tickFormatterProp ??
+    (isV2 && props.type === 'number' && valueFormat
+      ? (value: string) => formatChartValueCompact(value, valueFormat)
+      : undefined);
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
   const shouldThinLabels = Boolean(thinning);
@@ -404,8 +429,8 @@ const ChartXAxisBody: React.FC<ChartXAxisProps & { thinning?: XLabelThinning }> 
     <RechartsXAxis
       // `v2`: the ticks sit on the base of the plot. CustomXAxisTick sets the gap under it.
       {...(isV2 ? { tickSize: 0, tickMargin: 0 } : {})}
-      // `minimal`: no axis line. The gridline at the base of the plot takes its place.
-      {...(isV2 && axisStyle === 'minimal' ? { axisLine: false } : {})}
+      // `v2`: no axis line. The bottom gridline is the baseline, or `showBorder` draws the base.
+      {...(isV2 ? { axisLine: false } : {})}
       {...restProps}
       height={baseHeight || height}
       interval={interval}
@@ -434,6 +459,7 @@ const ChartXAxisBody: React.FC<ChartXAxisProps & { thinning?: XLabelThinning }> 
             onHeightCalculated={handleHeightCalculated}
             tickFormatter={tickFormatter}
             isV2={isV2}
+            plotRight={plotRight}
           />
         );
       }}
@@ -512,45 +538,102 @@ const ChartXAxisWithThinning: React.FC<ChartXAxisProps> = (props) => {
   return <ChartXAxisBody {...props} thinning={thinning} />;
 };
 
+/** The number X axis of a `v2` chart. Its last label ends inside the plot. */
+const ChartXAxisNumber: React.FC<ChartXAxisProps> = (props) => {
+  const plotArea = usePlotArea();
+  const plotRight = plotArea ? plotArea.x + plotArea.width : undefined;
+  return <ChartXAxisBody {...props} plotRight={plotRight} />;
+};
+
 const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { chartVersion, chartData } = useCommonChartComponentsContext();
+  const isV2 = chartVersion === 'v2';
   // Only `v2` thins its labels. `v1` renders as on master, with no extra hook.
   const shouldThinLabels =
-    chartVersion === 'v2' &&
+    isV2 &&
     props.interval === undefined &&
     props.type !== 'number' &&
     Boolean(props.dataKey && chartData);
-  return shouldThinLabels ? <ChartXAxisWithThinning {...props} /> : <ChartXAxisBody {...props} />;
+  if (shouldThinLabels) return <ChartXAxisWithThinning {...props} />;
+  if (isV2 && props.type === 'number') return <ChartXAxisNumber {...props} />;
+  return <ChartXAxisBody {...props} />;
 };
 
 const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
   componentId: componentId.chartXAxis,
 });
 
-const ChartYAxisFrameLine = ({ side }: { side: 'left' | 'right' }): JSX.Element | null => {
+/**
+ * `v2` `showBorder`: the border of the plot. One line on the left, the right and the bottom, each
+ * drawn once, in the colour and the width of the gridlines. ChartCartesianGrid leaves out its
+ * gridline at the base of the plot, so the bottom line is not drawn twice.
+ */
+const ChartPlotBorder = (): JSX.Element | null => {
   const { theme } = useTheme();
+  const { gridlineWidth = 'thinner' } = useCommonChartComponentsContext();
   const plotArea = usePlotArea();
   if (!plotArea) return null;
-  const x = side === 'left' ? plotArea.x : plotArea.x + plotArea.width;
+  const left = plotArea.x;
+  const right = plotArea.x + plotArea.width;
+  const top = plotArea.y;
+  const bottom = plotArea.y + plotArea.height;
+  const lineProps = {
+    stroke: theme.colors.surface.border.gray.muted,
+    strokeWidth: theme.border.width[gridlineWidth],
+    fill: 'none',
+  };
   return (
-    <line
-      data-blade-y-axis-frame-line={side}
-      x1={x}
-      x2={x}
-      y1={plotArea.y}
-      y2={plotArea.y + plotArea.height}
-      stroke={theme.colors.surface.border.gray.muted}
-      strokeWidth={theme.border.width.thin}
-      fill="none"
-    />
+    <g data-blade-chart-plot-border="">
+      <line
+        data-blade-chart-plot-border-side="left"
+        x1={left}
+        x2={left}
+        y1={top}
+        y2={bottom}
+        {...lineProps}
+      />
+      <line
+        data-blade-chart-plot-border-side="right"
+        x1={right}
+        x2={right}
+        y1={top}
+        y2={bottom}
+        {...lineProps}
+      />
+      <line
+        data-blade-chart-plot-border-side="bottom"
+        x1={left}
+        x2={right}
+        y1={bottom}
+        y2={bottom}
+        {...lineProps}
+      />
+    </g>
   );
+};
+
+/**
+ * Cuts a name to `maxWidth`, with an ellipsis. The width is measured in `font`.
+ */
+const truncateToWidth = (
+  text: string,
+  maxWidth: number,
+  font: { size: number; weight: number | string; family: string },
+): string => {
+  if (measureTextWidth(text, font) <= maxWidth) return text;
+  let end = text.length;
+  while (end > 1 && measureTextWidth(`${text.slice(0, end).trimEnd()}…`, font) > maxWidth) {
+    end -= 1;
+  }
+  return `${text.slice(0, end).trimEnd()}…`;
 };
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
   const {
     yLabelPlacement = 'left',
-    yAxisLine = true,
+    showBorder = false,
+    isVerticalBar = false,
     valueFormat,
     chartVersion,
   } = useCommonChartComponentsContext();
@@ -560,8 +643,25 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const isLabelColumn = isV2 && !isOverlap;
   const tickFontSize = theme.typography.fonts.size[75];
   useRenderOnFontLoad(isLabelColumn);
-  // `yAxisLine`: a line on both sides of the plot. recharts draws the one on the axis side.
-  const frameSide = yLabelPlacement === 'right' ? 'left' : 'right';
+  const chartWidth = useChartWidth();
+  // `v2` horizontal bar: a name longer than its share of the chart width is cut, with an ellipsis.
+  // The tooltip shows the full name.
+  const nameMaxWidth =
+    isV2 && isVerticalBar && chartWidth ? chartWidth * V2_Y_NAME_MAX_WIDTH_SHARE : undefined;
+  const getDefaultTickFormatter = (): ((value: unknown) => string) | undefined => {
+    if (isV2 && isVerticalBar) {
+      if (nameMaxWidth === undefined) return undefined;
+      return (value) =>
+        truncateToWidth(String(value ?? ''), nameMaxWidth, {
+          size: tickFontSize,
+          weight: theme.typography.fonts.weight.regular,
+          family: theme.typography.fonts.family.text,
+        });
+    }
+    if (valueFormat) return (value) => formatChartValueCompact(value, valueFormat);
+    return undefined;
+  };
+  const defaultTickFormatter = getDefaultTickFormatter();
 
   return (
     <>
@@ -571,7 +671,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         // 0: the ticks start at the left edge of the plot, as the X axis.
         {...(isOverlap
           ? {
-              width: MINIMAL_Y_AXIS_WIDTH,
+              width: OVERLAP_Y_AXIS_WIDTH,
               mirror: true,
               tickSize: 0,
               tickMargin: 0,
@@ -591,11 +691,11 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
               tickMargin: theme.spacing[3],
             }
           : {})}
-        {...(isV2 && !yAxisLine ? { axisLine: false } : {})}
-        // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
-        {...(valueFormat
-          ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
-          : {})}
+        // `v2`: no axis line. `showBorder` draws the left and the right of the plot.
+        {...(isV2 ? { axisLine: false } : {})}
+        // The default ticks, unless the axis has its own formatter: `valueFormat` on the wrapper
+        // writes them compact. The names of a `v2` horizontal bar chart are cut to a width instead.
+        {...(defaultTickFormatter ? { tickFormatter: defaultTickFormatter } : {})}
         {...props}
         tick={{
           fill: theme.colors.surface.text.gray.muted,
@@ -637,18 +737,55 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         }}
         dataKey={props?.dataKey}
       />
-      {isV2 && yAxisLine && props.axisLine !== false && !props.hide ? (
-        <ChartYAxisFrameLine side={frameSide} />
-      ) : null}
+      {isV2 && showBorder && !props.hide ? <ChartPlotBorder /> : null}
     </>
+  );
+};
+
+/** The props recharts gives each horizontal gridline. */
+type GridLineProps = {
+  x1?: number;
+  x2?: number;
+  y1?: number;
+  y2?: number;
+  y?: number;
+  height?: number;
+  stroke?: string;
+  strokeWidth?: number | string;
+};
+
+/**
+ * `showBorder`: each horizontal gridline but the one at the base of the plot. The border draws the
+ * base, so it is drawn once.
+ */
+const renderGridLineAboveBase = (lineProps: GridLineProps): JSX.Element => {
+  const { x1, x2, y1, y2, y = 0, height = 0, stroke, strokeWidth } = lineProps;
+  if (y1 !== undefined && Math.abs(y1 - (y + height)) < 0.5) {
+    return <g />;
+  }
+  return (
+    <line x1={x1} x2={x2} y1={y1} y2={y2} stroke={stroke} strokeWidth={strokeWidth} fill="none" />
   );
 };
 
 const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   const { theme } = useTheme();
-  const { yGridlines = true, gridlineWidth, chartVersion } = useCommonChartComponentsContext();
+  const {
+    yGridlines = true,
+    gridlineWidth,
+    showBorder = false,
+    chartVersion,
+  } = useCommonChartComponentsContext();
   // `v1`: as on master. The gridline props apply to `v2` only.
   const isV2 = chartVersion === 'v2';
+
+  const getHorizontal = (): ChartCartesianGridProps['horizontal'] | undefined => {
+    if (!isV2) return undefined;
+    if (!yGridlines) return false;
+    if (showBorder) return renderGridLineAboveBase as ChartCartesianGridProps['horizontal'];
+    return undefined;
+  };
+  const horizontal = getHorizontal();
 
   return (
     <RechartsCartesianGrid
@@ -656,7 +793,7 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
       vertical={false}
       // `gridlineWidth`: a Blade border width. With none, recharts' 1px, as before.
       {...(isV2 && gridlineWidth ? { strokeWidth: theme.border.width[gridlineWidth] } : {})}
-      {...(isV2 && !yGridlines ? { horizontal: false } : {})}
+      {...(horizontal !== undefined ? { horizontal } : {})}
       {...props}
     />
   );
@@ -1066,11 +1203,38 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     setSelectedDataKeys,
     legendPlacement,
     chartVersion,
+    chartName,
+    yLabelPlacement,
+    yGridlines = true,
+    isVerticalBar = false,
   } = useCommonChartComponentsContext();
   const isTop = legendPlacement === 'top' && props.layout !== 'vertical';
-  // The gap between the legend and the chart. `v2`: spacing.4 from the legend items. `v1`:
-  // LEGEND_MARGIN_TOP, as on master.
-  const legendGap = chartVersion === 'v2' ? theme.spacing[4] : LEGEND_MARGIN_TOP;
+  // The gap between the legend and the chart. `v1`: LEGEND_MARGIN_TOP, as on master. `v2`:
+  // spacing.5 from the legend items to the nearest chart element.
+  const getLegendGap = (): number => {
+    if (chartVersion !== 'v2') return LEGEND_MARGIN_TOP;
+    const gap = theme.spacing[5];
+    // At the bottom, the X labels are the nearest element: the X axis ends at their bottom.
+    // A donut has no axes.
+    if (!isTop || chartName === 'donut') return gap;
+    const fontSize = theme.typography.fonts.size[75];
+    // On top, the top gridline is the nearest element, unless a Y label is nearer.
+    if ((yLabelPlacement === 'left' || yLabelPlacement === 'right') && !isVerticalBar) {
+      // A label in a column is centred on the top gridline. Its box starts one ascent above its
+      // baseline, which sits half a cap height under the gridline.
+      return gap + Math.ceil((X_LABEL_ASCENT_EM - Y_LABEL_HALF_CAP_EM) * fontSize);
+    }
+    if (yLabelPlacement === 'overlap' && !yGridlines) {
+      // No gridline: the top label is the nearest element. Its cap top sits spacing.3 under the
+      // top of the plot, and its box starts one ascent less the cap height above that.
+      return Math.max(
+        0,
+        gap - Math.floor(theme.spacing[3] - (X_LABEL_ASCENT_EM - CAP_HEIGHT_EM) * fontSize),
+      );
+    }
+    return gap;
+  };
+  const legendGap = getLegendGap();
   const hasUserInteractedRef = React.useRef(false);
   const isControlled = selectedDataKeysProp !== undefined;
   const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
@@ -1131,6 +1295,9 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
 
   return (
     <RechartsLegend
+      // recharts measures the legend only when its items change. A new gap remounts it, so the
+      // plot moves to the new gap.
+      key={`legend-gap-${legendGap}`}
       wrapperStyle={{
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],

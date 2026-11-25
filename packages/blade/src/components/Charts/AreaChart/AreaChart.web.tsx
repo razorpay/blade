@@ -141,8 +141,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   testID,
   colorTheme = 'categorical',
   version,
-  axisStyle,
-  yAxisLine,
+  showBorder,
   yLabelPlacement,
   yGridlines,
   gridlineWidth,
@@ -152,8 +151,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
 }) => {
   const display = resolveChartDisplayOptions({
     version,
-    axisStyle,
-    yAxisLine,
+    showBorder,
     yLabelPlacement,
     yGridlines,
     gridlineWidth,
@@ -161,7 +159,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   });
   useWarnDisplayPropsOnV1(
     version,
-    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
     'ChartAreaWrapper',
   );
   const themeColors = useChartsColorTheme({
@@ -439,7 +437,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         <ChartSurface
           ref={containerRef}
           chartVersion={display.chartVersion}
-          axisStyle={display.axisStyle}
+          showBorder={display.showBorder}
           yLabelPlacement={display.yLabelPlacement}
         >
           <ResponsiveContainer>

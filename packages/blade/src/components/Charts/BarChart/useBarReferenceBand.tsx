@@ -147,12 +147,33 @@ const buildBarBandPath = (
   return `${toCommands(topEdge, 'M')} ${toCommands(bottomEdge, 'L')} Z`;
 };
 
+/**
+ * The plot area from recharts' clip rect. A `v2` chart draws no X axis line, so the bounds and the
+ * baseline come from here.
+ */
+const getPlotClipRect = (
+  surface: Element,
+): { left: number; right: number; bottom: number } | null => {
+  const rect = surface.querySelector('defs clipPath rect');
+  const x = Number(rect?.getAttribute('x'));
+  const y = Number(rect?.getAttribute('y'));
+  const width = Number(rect?.getAttribute('width'));
+  const height = Number(rect?.getAttribute('height'));
+  if (![x, y, width, height].every(Number.isFinite)) return null;
+  return { left: x, right: x + width, bottom: y + height };
+};
+
 /** Horizontal extent of the plot area, read from the axis line Recharts renders. */
 const getPlotBounds = (surface: Element): { left: number; right: number } | null => {
   const axisLine = surface.querySelector('.recharts-xAxis .recharts-cartesian-axis-line');
-  const left = Number(axisLine?.getAttribute('x1'));
-  const right = Number(axisLine?.getAttribute('x2'));
-  return Number.isFinite(left) && Number.isFinite(right) ? { left, right } : null;
+  // `v1`: the X axis line, as on master.
+  if (axisLine) {
+    const left = Number(axisLine.getAttribute('x1'));
+    const right = Number(axisLine.getAttribute('x2'));
+    return Number.isFinite(left) && Number.isFinite(right) ? { left, right } : null;
+  }
+  const clip = getPlotClipRect(surface);
+  return clip ? { left: clip.left, right: clip.right } : null;
 };
 
 /**
@@ -171,7 +192,10 @@ const getCategoryColumn = (
     surface.querySelectorAll<SVGLineElement>('.recharts-cartesian-grid-horizontal line'),
   ).map((line) => Number(line.getAttribute('y1')));
   const axisLine = surface.querySelector('.recharts-xAxis .recharts-cartesian-axis-line');
-  const baseline = Number(axisLine?.getAttribute('y1'));
+  // `v1`: the X axis line, as on master. `v2` draws none: the base of the plot.
+  const baseline = axisLine
+    ? Number(axisLine.getAttribute('y1'))
+    : getPlotClipRect(surface)?.bottom ?? NaN;
   if (!bounds || !Number.isFinite(baseline)) return null;
 
   // Plot top, in descending order of reliability: the topmost grid line, else the y-axis line's own

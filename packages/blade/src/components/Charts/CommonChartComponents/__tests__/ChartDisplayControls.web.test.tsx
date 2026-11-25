@@ -87,8 +87,11 @@ const gridLines = (container: HTMLElement): Element[] =>
   Array.from(container.querySelectorAll('.recharts-cartesian-grid-horizontal line'));
 const yAxisLine = (container: HTMLElement): Element | null =>
   container.querySelector('.recharts-yAxis .recharts-cartesian-axis-line');
-const frameLine = (container: HTMLElement): Element | null =>
-  container.querySelector('[data-blade-y-axis-frame-line]');
+const xAxisLine = (container: HTMLElement): Element | null =>
+  container.querySelector('.recharts-xAxis .recharts-cartesian-axis-line');
+const borderLine = (container: HTMLElement, side: 'left' | 'right' | 'bottom'): Element | null =>
+  container.querySelector(`[data-blade-chart-plot-border-side="${side}"]`);
+
 const legendWrapper = (container: HTMLElement): HTMLElement | null =>
   container.querySelector<HTMLElement>('.recharts-legend-wrapper');
 const legendSwatches = (container: HTMLElement, style: string): Element[] =>
@@ -124,73 +127,63 @@ describe('resolveChartDisplayOptions', () => {
 
   it('ignores every display prop with v1, the default, and keeps the recharts margin', () => {
     const v1 = resolveChartDisplayOptions({
-      axisStyle: 'minimal',
-      yAxisLine: false,
+      showBorder: true,
       yLabelPlacement: 'overlap',
       yGridlines: false,
-      gridlineWidth: 'thinner',
+      gridlineWidth: 'thin',
       legendPlacement: 'top',
     });
     expect(v1).toEqual({
       chartVersion: 'v1',
-      axisStyle: 'lines',
-      yAxisLine: true,
+      showBorder: false,
+      isVerticalBar: false,
       yLabelPlacement: 'left',
       yGridlines: true,
     });
     expect(getChartMargin(v1)).toBeUndefined();
   });
 
-  it('puts the Y labels in a left column with v2 and no other props, with no margin', () => {
+  it('has no border, left labels and thinner gridlines with v2 and no other props', () => {
     expect(v2({})).toEqual({
       chartVersion: 'v2',
-      axisStyle: 'lines',
-      yAxisLine: true,
+      showBorder: false,
+      isVerticalBar: false,
       yLabelPlacement: 'left',
       yGridlines: true,
-      gridlineWidth: undefined,
+      gridlineWidth: 'thinner',
       legendPlacement: undefined,
     });
     expect(getChartMargin(v2({}))).toEqual({ top: 0, right: 0, bottom: 0, left: 0 });
-    expect(getChartMargin(v2({ axisStyle: 'minimal' }))).toEqual(getChartMargin(v2({})));
+    expect(getChartMargin(v2({ showBorder: true }))).toEqual(getChartMargin(v2({})));
   });
 
-  it('sets the defaults of minimal: no Y axis line, left labels, thinner gridlines', () => {
-    expect(v2({ axisStyle: 'minimal' })).toMatchObject({
-      yAxisLine: false,
-      yLabelPlacement: 'left',
-      gridlineWidth: 'thinner',
-    });
-  });
-
-  it('keeps overlap as an explicit option', () => {
-    expect(v2({ axisStyle: 'minimal', yLabelPlacement: 'overlap' }).yLabelPlacement).toBe(
-      'overlap',
-    );
-    expect(v2({ axisStyle: 'lines', yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('overlap');
-  });
-
-  it('lets an explicit prop win over axisStyle', () => {
+  it('keeps an explicit prop', () => {
     expect(
-      v2({ axisStyle: 'minimal', yAxisLine: true, yLabelPlacement: 'left', gridlineWidth: 'thin' }),
-    ).toMatchObject({ yAxisLine: true, yLabelPlacement: 'left', gridlineWidth: 'thin' });
-    expect(v2({ axisStyle: 'lines', yAxisLine: false, gridlineWidth: 'thinner' })).toMatchObject({
-      yAxisLine: false,
-      gridlineWidth: 'thinner',
-    });
+      v2({ showBorder: true, gridlineWidth: 'thin', yLabelPlacement: 'right' }),
+    ).toMatchObject({ showBorder: true, gridlineWidth: 'thin', yLabelPlacement: 'right' });
+    expect(v2({ yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('overlap');
+  });
+
+  it('shows overlap as left with a border', () => {
+    expect(v2({ showBorder: true, yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('left');
+    expect(v2({ showBorder: false, yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('overlap');
   });
 
   it('reads outside as right', () => {
     expect(v2({ yLabelPlacement: 'outside' }).yLabelPlacement).toBe('right');
+    expect(v2({ showBorder: true, yLabelPlacement: 'outside' }).yLabelPlacement).toBe('right');
   });
 
-  it('keeps lines and a left column on a vertical bar chart', () => {
-    expect(
-      v2({ axisStyle: 'minimal', yLabelPlacement: 'right' }, { isVerticalBar: true }),
-    ).toMatchObject({ axisStyle: 'lines', yLabelPlacement: 'left' });
+  it('keeps a left column on a vertical bar chart, and takes its border', () => {
+    expect(v2({ yLabelPlacement: 'right' }, { isVerticalBar: true })).toMatchObject({
+      yLabelPlacement: 'left',
+      isVerticalBar: true,
+      showBorder: false,
+    });
     expect(v2({ yLabelPlacement: 'overlap' }, { isVerticalBar: true }).yLabelPlacement).toBe(
       'left',
     );
+    expect(v2({ showBorder: true }, { isVerticalBar: true }).showBorder).toBe(true);
   });
 });
 
@@ -199,7 +192,7 @@ describe('a display prop on a v1 chart', () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     const container = renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} axisStyle="minimal" legendPlacement="top">
+        <ChartLineWrapper data={data} showBorder legendPlacement="top">
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
           <ChartLegend />
@@ -209,7 +202,7 @@ describe('a display prop on a v1 chart', () => {
     ).container;
     await ready(container);
     expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('axisStyle, legendPlacement has no effect with version="v1"'),
+      expect.stringContaining('showBorder, legendPlacement has no effect with version="v1"'),
     );
     expect(surface(container)).toBeNull();
     expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
@@ -233,7 +226,6 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
     await ready(container);
 
     expect(surface(container)?.getAttribute('data-blade-chart-y-labels')).toBe('left');
-    expect(yAxisLine(container)).not.toBeNull();
     // The column starts at the content edge. Labels align towards the axis, spacing.3 before it.
     const gridStart = Math.min(...gridLines(container).map((l) => Number(l.getAttribute('x1'))));
     yTicks(container).forEach((tick) => {
@@ -242,55 +234,68 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
     });
     // jsdom measures no text, so the column is the 8px gap only. Not the old 5px + 60px.
     expect(gridStart).toBe(8);
-    gridLines(container).forEach((line) =>
-      expect(line.getAttribute('stroke-width') ?? '1').toBe('1'),
-    );
+    // thinner gridlines by default.
+    gridLines(container).forEach((line) => expect(line.getAttribute('stroke-width')).toBe('0.5'));
     expect(yTicks(container)[0].getAttribute('font-size')).toBe('12');
     expect(legendWrapper(container)?.style.bottom).not.toBe('');
     expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
   });
 
-  it('frames the plot with a Y axis line on both sides when yAxisLine is on', async () => {
+  it('has no border and no axis line by default: the bottom gridline is the baseline', async () => {
     const container = renderChart(kind);
     await ready(container);
 
-    const axis = yAxisLine(container);
-    const frame = frameLine(container);
-    expect(axis).not.toBeNull();
-    expect(frame?.getAttribute('data-blade-y-axis-frame-line')).toBe('right');
-    const gridEnd = Math.max(...gridLines(container).map((l) => Number(l.getAttribute('x2'))));
-    expect(Number(frame?.getAttribute('x1'))).toBe(gridEnd);
-    expect(Number(frame?.getAttribute('x2'))).toBe(gridEnd);
-    // The same colour, width and height as the axis line.
-    expect(frame?.getAttribute('stroke')).toBe(axis?.getAttribute('stroke'));
-    expect(frame?.getAttribute('stroke-width')).toBe('1');
-    expect(frame?.getAttribute('y1')).toBe(axis?.getAttribute('y1'));
-    expect(frame?.getAttribute('y2')).toBe(axis?.getAttribute('y2'));
+    expect(yAxisLine(container)).toBeNull();
+    expect(xAxisLine(container)).toBeNull();
+    expect(container.querySelector('[data-blade-chart-plot-border]')).toBeNull();
+    expect(surface(container)?.hasAttribute('data-blade-chart-border')).toBe(false);
+    const gridYs = gridLines(container).map((l) => Number(l.getAttribute('y1')));
+    const plotBottom = Math.max(...gridYs);
+    expect(gridYs.filter((y) => y === plotBottom)).toHaveLength(1);
   });
 
-  it('puts the second Y axis line on the left with yLabelPlacement right', async () => {
-    const container = renderChart(kind, { yLabelPlacement: 'right' });
+  it('draws the border on the left, the right and the bottom, each once, with showBorder', async () => {
+    const container = renderChart(kind, { showBorder: true });
     await ready(container);
-    const gridStart = Math.min(...gridLines(container).map((l) => Number(l.getAttribute('x1'))));
-    expect(frameLine(container)?.getAttribute('data-blade-y-axis-frame-line')).toBe('left');
-    expect(Number(frameLine(container)?.getAttribute('x1'))).toBe(gridStart);
+
+    expect(yAxisLine(container)).toBeNull();
+    expect(xAxisLine(container)).toBeNull();
+    expect(surface(container)?.getAttribute('data-blade-chart-border')).toBe('true');
+    const left = borderLine(container, 'left');
+    const right = borderLine(container, 'right');
+    const bottom = borderLine(container, 'bottom');
+    const lines = gridLines(container);
+    const gridStart = Math.min(...lines.map((l) => Number(l.getAttribute('x1'))));
+    const gridEnd = Math.max(...lines.map((l) => Number(l.getAttribute('x2'))));
+    expect(Number(left?.getAttribute('x1'))).toBe(gridStart);
+    expect(Number(right?.getAttribute('x1'))).toBe(gridEnd);
+    expect(Number(bottom?.getAttribute('x1'))).toBe(gridStart);
+    expect(Number(bottom?.getAttribute('x2'))).toBe(gridEnd);
+    // The gridline at the base is left out, so the bottom line is drawn once.
+    const baseY = Number(bottom?.getAttribute('y1'));
+    lines.forEach((line) => expect(Number(line.getAttribute('y1'))).toBeLessThan(baseY));
+    // The colour and the width of the gridlines.
+    [left, right, bottom].forEach((line) => {
+      expect(line?.getAttribute('stroke')).toBe(lines[0].getAttribute('stroke'));
+      expect(line?.getAttribute('stroke-width')).toBe('0.5');
+    });
   });
 
-  it('draws neither Y axis line with yAxisLine false, and both on minimal with true', async () => {
-    const hidden = renderChart(kind, { yAxisLine: false });
-    await ready(hidden);
-    expect(yAxisLine(hidden)).toBeNull();
-    expect(frameLine(hidden)).toBeNull();
+  it('draws the border at the gridline width, and with no gridlines', async () => {
+    const thin = renderChart(kind, { showBorder: true, gridlineWidth: 'thin' });
+    await ready(thin);
+    expect(borderLine(thin, 'bottom')?.getAttribute('stroke-width')).toBe('1');
 
-    const minimal = renderChart(kind, { axisStyle: 'minimal' });
-    await ready(minimal);
-    expect(yAxisLine(minimal)).toBeNull();
-    expect(frameLine(minimal)).toBeNull();
+    const noGrid = renderChart(kind, { showBorder: true, yGridlines: false });
+    await ready(noGrid);
+    expect(gridLines(noGrid)).toHaveLength(0);
+    expect(borderLine(noGrid, 'bottom')).not.toBeNull();
+  });
 
-    const shown = renderChart(kind, { axisStyle: 'minimal', yAxisLine: true });
-    await ready(shown);
-    expect(yAxisLine(shown)).not.toBeNull();
-    expect(frameLine(shown)).not.toBeNull();
+  it('puts the Y labels in a left column with overlap and a border', async () => {
+    const container = renderChart(kind, { showBorder: true, yLabelPlacement: 'overlap' });
+    await ready(container);
+    expect(surface(container)?.getAttribute('data-blade-chart-y-labels')).toBe('left');
   });
 
   it('puts the Y labels in a column left of the plot with yLabelPlacement left', async () => {
@@ -346,8 +351,8 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
   it.each([
     [{ gridlineWidth: 'thinner' as const }, '0.5'],
     [{ gridlineWidth: 'thin' as const }, '1'],
-    [{ axisStyle: 'minimal' as const }, '0.5'],
-    [{ axisStyle: 'minimal' as const, gridlineWidth: 'thin' as const }, '1'],
+    [{}, '0.5'],
+    [{ showBorder: true, gridlineWidth: 'thin' as const }, '1'],
   ])('draws the gridlines of %p at %spx', async (display, width) => {
     const container = renderChart(kind, display);
     await ready(container);
@@ -364,6 +369,37 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
     expect(wrapper?.style.left).toBe('0px');
     expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
   });
+
+  it.each([
+    // spacing.5, plus the part of the top Y label above the top gridline: ceil(0.615 x 12px).
+    [{ legendPlacement: 'top' as const }, 'paddingBottom', '24px'],
+    [
+      { legendPlacement: 'top' as const, yLabelPlacement: 'right' as const },
+      'paddingBottom',
+      '24px',
+    ],
+    // overlap: the top gridline is nearest.
+    [
+      { legendPlacement: 'top' as const, yLabelPlacement: 'overlap' as const },
+      'paddingBottom',
+      '16px',
+    ],
+    // overlap with no gridlines: the top label is nearest, about 5px under the top of the plot.
+    [
+      { legendPlacement: 'top' as const, yLabelPlacement: 'overlap' as const, yGridlines: false },
+      'paddingBottom',
+      '12px',
+    ],
+    // At the bottom: spacing.5 from the X labels.
+    [{}, 'paddingTop', '16px'],
+  ])(
+    'keeps spacing.5 from the legend to the nearest chart element with %p',
+    async (display, side, gap) => {
+      const container = renderChart(kind, display);
+      await ready(container);
+      expect(legendWrapper(container)?.style[side as 'paddingTop' | 'paddingBottom']).toBe(gap);
+    },
+  );
 });
 
 describe('horizontal bar chart (layout vertical)', () => {
@@ -382,12 +418,12 @@ describe('horizontal bar chart (layout vertical)', () => {
         </ChartBarWrapper>
       </Box>,
     ).container;
-  const axisLineX = (container: HTMLElement): number =>
-    Number(yAxisLine(container)?.getAttribute('x1'));
+  const plotLeft = (container: HTMLElement): number =>
+    Number(container.querySelector('defs clipPath rect')?.getAttribute('x'));
 
   it.each([
     {},
-    { axisStyle: 'minimal' as const },
+    { showBorder: true },
     { yLabelPlacement: 'right' as const },
     { yLabelPlacement: 'overlap' as const },
   ])('puts the category names in a tight left column with %p', async (display) => {
@@ -398,17 +434,33 @@ describe('horizontal bar chart (layout vertical)', () => {
     expect(yTicks(container).map((tick) => tick.textContent)).toEqual(['UPI', 'Payment links']);
     yTicks(container).forEach((tick) => {
       expect(tick.getAttribute('text-anchor')).toBe('end');
-      expect(Number(tick.getAttribute('x'))).toBe(axisLineX(container) - 8);
+      expect(Number(tick.getAttribute('x'))).toBe(plotLeft(container) - 8);
     });
     // No fixed gutter: jsdom measures no text, so the column is the 8px gap only.
-    expect(axisLineX(container)).toBe(8);
+    expect(plotLeft(container)).toBe(8);
   });
 
-  it('frames the bars with a Y axis line on both sides', async () => {
-    const container = renderHorizontalBar();
+  it('takes showBorder', async () => {
+    const plain = renderHorizontalBar();
+    await ready(plain);
+    expect(yAxisLine(plain)).toBeNull();
+    expect(plain.querySelector('[data-blade-chart-plot-border]')).toBeNull();
+
+    const framed = renderHorizontalBar({ showBorder: true });
+    await ready(framed);
+    expect(borderLine(framed, 'left')).not.toBeNull();
+    expect(borderLine(framed, 'right')).not.toBeNull();
+    expect(borderLine(framed, 'bottom')).not.toBeNull();
+  });
+
+  it('writes the X values with valueFormat', async () => {
+    const container = renderHorizontalBar({ valueFormat: { type: 'currency', currency: 'INR' } });
     await ready(container);
-    expect(yAxisLine(container)).not.toBeNull();
-    expect(frameLine(container)?.getAttribute('data-blade-y-axis-frame-line')).toBe('right');
+    const xLabels = Array.from(container.querySelectorAll('.recharts-xAxis-tick-labels text')).map(
+      (text) => text.textContent,
+    );
+    expect(xLabels).toContain('₹0');
+    expect(xLabels.some((label) => label?.includes('K') || label?.includes('L'))).toBe(true);
   });
 });
 

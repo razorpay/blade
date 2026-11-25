@@ -89,6 +89,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
       hoveredDataKey,
       setHoveredBar,
       hasReferenceBand,
+      isV2,
     } = useBarChartContext();
     const defaultColorArray = useChartsColorTheme({
       colorTheme: _colorTheme,
@@ -239,7 +240,9 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
                     fill={fill}
                     x={x + gap / 1.5}
                     y={y}
-                    width={width - gap}
+                    // `v2`: never a negative width. A bar narrower than the gap, as at the start
+                    // of its animation, draws nothing. `v1` keeps master's value.
+                    width={isV2 ? Math.max(0, width - gap) : width - gap}
                     height={height}
                     fillOpacity={fillOpacity}
                   />
@@ -291,8 +294,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   colorTheme = 'categorical',
   layout = 'horizontal',
   version,
-  axisStyle,
-  yAxisLine,
+  showBorder,
   yLabelPlacement,
   yGridlines,
   gridlineWidth,
@@ -302,13 +304,12 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   data = [],
   ...restProps
 }) => {
-  // A vertical bar chart has its categories on the Y axis, so it keeps its axis lines and a
-  // `left` column for its category names.
+  // A vertical bar chart has its categories on the Y axis, so it keeps a `left` column for its
+  // category names.
   const display = resolveChartDisplayOptions(
     {
       version,
-      axisStyle,
-      yAxisLine,
+      showBorder,
       yLabelPlacement,
       yGridlines,
       gridlineWidth,
@@ -318,7 +319,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   );
   useWarnDisplayPropsOnV1(
     version,
-    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
     'ChartBarWrapper',
   );
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
@@ -482,8 +483,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       hoveredBarIndex,
       setHoveredBar,
       hasReferenceBand,
+      isV2: display.chartVersion === 'v2',
     }),
-    [layout, activeIndex, colorTheme, totalBars, hoveredDataKey, hoveredBarIndex, hasReferenceBand],
+    [
+      layout,
+      activeIndex,
+      colorTheme,
+      totalBars,
+      hoveredDataKey,
+      hoveredBarIndex,
+      hasReferenceBand,
+      display.chartVersion,
+    ],
   );
 
   const responsiveContainer = (
@@ -539,7 +550,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
           {display.chartVersion === 'v2' ? (
             <ChartSurface
               chartVersion={display.chartVersion}
-              axisStyle={display.axisStyle}
+              showBorder={display.showBorder}
               yLabelPlacement={display.yLabelPlacement}
             >
               {responsiveContainer}

@@ -29,7 +29,7 @@ import {
   getXLabelStep,
   isDateAxis,
   isWholeNumberChart,
-  resolveAxisStyle,
+  resolveShowBorder,
   resolveYLabelPlacement,
   shouldShowBarList,
 } from './genUIChartUtils';
@@ -473,15 +473,15 @@ type ChartComponent = GenUIBaseComponent & {
     suffix?: string;
   };
   /**
-   * How the axes of a bar, line or area chart look. `lines`: axis lines, with the Y ticks left
-   * of the plot. `minimal`: no axis lines, and each Y tick sits on its gridline inside the plot.
+   * Shows a border around the plot of a bar, line or area chart: a line on the left, the right
+   * and the bottom. With a border, the Y labels sit in a column left of the plot.
    *
-   * When it is not set: `minimal` in a box of 640px or less, `lines` above.
+   * When it is not set: no border in a box of 640px or less, a border above.
    */
-  axisStyle?: 'lines' | 'minimal';
+  showBorder?: boolean;
   /**
-   * Where the Y labels sit with `minimal` axes. `overlap`: inside the plot, just below each
-   * gridline. `outside`: in a column right of the plot, centred on each gridline.
+   * Where the Y labels sit with no border. `overlap`: inside the plot, just below each gridline.
+   * `outside`: in a column right of the plot, centred on each gridline.
    *
    * When it is not set: `overlap`.
    */
@@ -1046,16 +1046,16 @@ const RenderResponsiveChart = memo(
     unit = '',
     variant = 'full',
     valueFormatter,
-    axisStyle,
+    showBorder: showBorderProp,
     yLabelPlacement: yLabelPlacementProp,
   }: ChartComponent) => {
     const { isAnimating } = useGenUIAnimation();
     const [boxRef, boxWidth] = useChartBoxWidth();
     const isTiny = variant === 'tiny';
-    // A tiny chart has no axes, so it keeps the default chart margins.
-    const chartAxisStyle = isTiny ? 'lines' : resolveAxisStyle(axisStyle, boxWidth);
-    const isMinimalAxis = chartAxisStyle === 'minimal';
-    const yLabelPlacement = resolveYLabelPlacement(yLabelPlacementProp);
+    // A tiny chart has no grid and no axes, so no border.
+    const showBorder = isTiny ? false : resolveShowBorder(showBorderProp, boxWidth);
+    // With a border, the Y labels sit in a left column, as before.
+    const yLabelPlacement = showBorder ? undefined : resolveYLabelPlacement(yLabelPlacementProp);
     const heightPx = isTiny ? TINY_CHART_HEIGHT : getChartHeight(boxWidth);
     const chartHeight = `${heightPx}px` as '350px';
     const minHeight = chartHeight;
@@ -1230,8 +1230,8 @@ const RenderResponsiveChart = memo(
             lastLabel: formatDateTick(xValues[lastLabelIndex], dateStep),
             width: boxWidth,
             chartType,
-            // `minimal`, `overlap` gives the Y axis no width, so the plot is as wide as the box.
-            yAxisWidth: isMinimalAxis && yLabelPlacement === 'overlap' ? 0 : undefined,
+            // `overlap` gives the Y axis no width, so the plot is as wide as the box.
+            yAxisWidth: yLabelPlacement === 'overlap' ? 0 : undefined,
           })
         : 0;
     const xAxisNode = !isTiny ? (
@@ -1293,8 +1293,8 @@ const RenderResponsiveChart = memo(
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                axisStyle={chartAxisStyle}
-                yLabelPlacement={isMinimalAxis ? yLabelPlacement : undefined}
+                showBorder={showBorder}
+                yLabelPlacement={yLabelPlacement}
                 data={validData}
                 colorTheme="categorical"
               >
@@ -1312,8 +1312,8 @@ const RenderResponsiveChart = memo(
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                axisStyle={chartAxisStyle}
-                yLabelPlacement={isMinimalAxis ? yLabelPlacement : undefined}
+                showBorder={showBorder}
+                yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
                 colorTheme="categorical"
@@ -1332,8 +1332,8 @@ const RenderResponsiveChart = memo(
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                axisStyle={chartAxisStyle}
-                yLabelPlacement={isMinimalAxis ? yLabelPlacement : undefined}
+                showBorder={showBorder}
+                yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
                 colorTheme="categorical"
@@ -1377,7 +1377,7 @@ const RenderResponsiveChart = memo(
       prevProps.title === nextProps.title &&
       prevProps.xAxis === nextProps.xAxis &&
       prevProps.variant === nextProps.variant &&
-      prevProps.axisStyle === nextProps.axisStyle &&
+      prevProps.showBorder === nextProps.showBorder &&
       prevProps.yLabelPlacement === nextProps.yLabelPlacement &&
       prevProps.data?.length === nextProps.data?.length &&
       JSON.stringify(prevProps.data?.[prevProps.data.length - 1]) ===

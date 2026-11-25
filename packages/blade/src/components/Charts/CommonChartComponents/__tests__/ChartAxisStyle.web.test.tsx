@@ -4,7 +4,7 @@ import { ChartXAxis, ChartYAxis, ChartCartesianGrid, ChartTooltip } from '..';
 import { ChartLineWrapper, ChartLine } from '../../LineChart';
 import { ChartAreaWrapper, ChartArea } from '../../AreaChart';
 import { ChartBarWrapper, ChartBar } from '../../BarChart';
-import type { ChartAxisStyle, ChartYLabelPlacement } from '../types';
+import type { ChartYLabelPlacement } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
 
@@ -36,7 +36,7 @@ const axes = [
 
 const renderChart = (
   kind: 'line' | 'area' | 'bar' | 'vertical-bar',
-  axisStyle?: ChartAxisStyle,
+  showBorder?: boolean,
   yLabelPlacement?: ChartYLabelPlacement,
 ): ReturnType<typeof renderWithTheme> => {
   if (kind === 'line') {
@@ -45,7 +45,7 @@ const renderChart = (
         <ChartLineWrapper
           data={data}
           version="v2"
-          axisStyle={axisStyle}
+          showBorder={showBorder}
           yLabelPlacement={yLabelPlacement}
         >
           {axes}
@@ -60,7 +60,7 @@ const renderChart = (
         <ChartAreaWrapper
           data={data}
           version="v2"
-          axisStyle={axisStyle}
+          showBorder={showBorder}
           yLabelPlacement={yLabelPlacement}
         >
           {axes}
@@ -74,7 +74,7 @@ const renderChart = (
       <ChartBarWrapper
         data={data}
         version="v2"
-        axisStyle={axisStyle}
+        showBorder={showBorder}
         yLabelPlacement={yLabelPlacement}
         layout={kind === 'vertical-bar' ? 'vertical' : 'horizontal'}
       >
@@ -105,27 +105,16 @@ const firstGridLineX = (container: HTMLElement): number =>
       container.querySelector('.recharts-cartesian-grid-horizontal line')?.getAttribute('x1'),
   );
 
-describe('axisStyle on the chart wrappers', () => {
+describe('showBorder on the chart wrappers', () => {
   it.each(['line', 'area', 'bar'] as const)(
-    'draws both axis lines on a %s chart by default (lines)',
+    'draws no axis line and no border on a %s chart by default',
     async (kind) => {
       const { container } = renderChart(kind);
       await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
 
-      expect(axisLine(container, 'xAxis')).not.toBeNull();
-      expect(axisLine(container, 'yAxis')).not.toBeNull();
-      expect(container.querySelector('[data-blade-chart-axis-style]')).toBeNull();
-    },
-  );
-
-  it.each(['line', 'area', 'bar'] as const)(
-    'draws no axis line and puts the Y ticks in a left column on a minimal %s chart',
-    async (kind) => {
-      const { container } = renderChart(kind, 'minimal');
-      await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
-
       expect(axisLine(container, 'xAxis')).toBeNull();
       expect(axisLine(container, 'yAxis')).toBeNull();
+      expect(container.querySelector('[data-blade-chart-plot-border]')).toBeNull();
       // The default `left` column: the labels align towards the plot, spacing.3 before it.
       const gridStart = firstGridLineX(container);
       yTicks(container).forEach((tick) => {
@@ -133,70 +122,80 @@ describe('axisStyle on the chart wrappers', () => {
         expect(Number(tick.getAttribute('x'))).toBe(gridStart - 8);
       });
       expect(container.querySelector('[data-blade-chart-y-labels="left"]')).not.toBeNull();
-      expect(container.querySelector('[data-blade-chart-axis-style="minimal"]')).not.toBeNull();
     },
   );
 
   it.each(['line', 'area', 'bar'] as const)(
-    'draws no axis line and puts the Y ticks inside the plot on a minimal %s chart with overlap',
+    'draws the border and no axis line on a %s chart with showBorder',
     async (kind) => {
-      const { container } = renderChart(kind, 'minimal', 'overlap');
+      const { container } = renderChart(kind, true);
       await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
 
       expect(axisLine(container, 'xAxis')).toBeNull();
       expect(axisLine(container, 'yAxis')).toBeNull();
+      expect(container.querySelectorAll('[data-blade-chart-plot-border] line')).toHaveLength(3);
+      expect(container.querySelector('[data-blade-chart-border="true"]')).not.toBeNull();
+    },
+  );
+
+  it.each(['line', 'area', 'bar'] as const)(
+    'puts the Y ticks inside the plot on a %s chart with overlap and no border',
+    async (kind) => {
+      const { container } = renderChart(kind, false, 'overlap');
+      await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
+
       const tick = yTicks(container)[0];
       // Mirrored into the plot, from its left edge, with a halo.
       expect(tick.getAttribute('text-anchor')).toBe('start');
       expect(tick.getAttribute('paint-order')).toBe('stroke');
-      expect(container.querySelector('[data-blade-chart-axis-style="minimal"]')).not.toBeNull();
     },
   );
 
-  // recharts draws no axis of width 0. A minimal Y axis of width 0 lost every tick label.
-  it('draws every Y tick label of a minimal overlap chart, each on its own gridline', async () => {
-    const lines = renderChart('line', 'lines');
-    await waitFor(() => expect(yTicks(lines.container).length).toBeGreaterThan(0));
-    const linesLabels = yTicks(lines.container).map((tick) => tick.textContent);
-    lines.unmount();
+  // recharts draws no axis of width 0. A Y axis of width 0 lost every tick label.
+  it('draws every Y tick label of an overlap chart, each on its own gridline', async () => {
+    const column = renderChart('line');
+    await waitFor(() => expect(yTicks(column.container).length).toBeGreaterThan(0));
+    const columnLabels = yTicks(column.container).map((tick) => tick.textContent);
+    column.unmount();
 
-    const minimal = renderChart('line', 'minimal', 'overlap');
-    await waitFor(() => expect(yTicks(minimal.container).length).toBeGreaterThan(0));
-    const labels = yTicks(minimal.container).map((tick) => tick.textContent);
+    const overlap = renderChart('line', false, 'overlap');
+    await waitFor(() => expect(yTicks(overlap.container).length).toBeGreaterThan(0));
+    const labels = yTicks(overlap.container).map((tick) => tick.textContent);
 
-    expect(labels).toEqual(linesLabels);
+    expect(labels).toEqual(columnLabels);
     expect(labels.every((label) => Boolean(label))).toBe(true);
     const gridYs = Array.from(
-      minimal.container.querySelectorAll('.recharts-cartesian-grid-horizontal line'),
+      overlap.container.querySelectorAll('.recharts-cartesian-grid-horizontal line'),
     ).map((line) => Number(line.getAttribute('y1')));
     // The top of each label sits 8px (spacing.3) below its gridline. The y of the text is its
     // middle: half the 0.71em cap height of the 12px text lower.
-    yTicks(minimal.container).forEach((tick) => {
+    yTicks(overlap.container).forEach((tick) => {
       const gridY = Number(tick.getAttribute('y')) - (8 + 0.355 * 12);
       expect(gridYs.some((y) => Math.abs(y - gridY) < 0.01)).toBe(true);
     });
   });
 
-  it('runs the gridlines the full width of a minimal overlap chart', async () => {
-    const lines = renderChart('line', 'lines');
-    await waitFor(() => expect(yTicks(lines.container).length).toBeGreaterThan(0));
-    const linesStart = firstGridLineX(lines.container);
-    lines.unmount();
+  it('runs the gridlines the full width of an overlap chart', async () => {
+    const column = renderChart('line');
+    await waitFor(() => expect(yTicks(column.container).length).toBeGreaterThan(0));
+    const columnStart = firstGridLineX(column.container);
+    column.unmount();
 
-    const minimal = renderChart('line', 'minimal', 'overlap');
-    await waitFor(() => expect(yTicks(minimal.container).length).toBeGreaterThan(0));
+    const overlap = renderChart('line', false, 'overlap');
+    await waitFor(() => expect(yTicks(overlap.container).length).toBeGreaterThan(0));
 
-    // `lines` starts the grid after the Y axis. `overlap` gives the Y axis no width.
-    expect(firstGridLineX(minimal.container)).toBeLessThan(linesStart);
-    expect(firstGridLineX(minimal.container)).toBe(0);
+    // A label column starts the grid after the Y axis. `overlap` gives the Y axis no width.
+    expect(firstGridLineX(overlap.container)).toBeLessThan(columnStart);
+    expect(firstGridLineX(overlap.container)).toBe(0);
   });
 
-  it('keeps the axis lines on a vertical bar chart', async () => {
-    const { container } = renderChart('vertical-bar', 'minimal');
+  it('draws the border on a vertical bar chart with showBorder', async () => {
+    const { container } = renderChart('vertical-bar', true);
     await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
 
-    expect(axisLine(container, 'xAxis')).not.toBeNull();
-    expect(axisLine(container, 'yAxis')).not.toBeNull();
+    expect(axisLine(container, 'xAxis')).toBeNull();
+    expect(axisLine(container, 'yAxis')).toBeNull();
+    expect(container.querySelectorAll('[data-blade-chart-plot-border] line')).toHaveLength(3);
   });
 });
 

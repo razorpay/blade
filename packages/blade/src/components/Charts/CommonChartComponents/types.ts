@@ -130,13 +130,6 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 };
 
 type Layout = 'horizontal' | 'vertical';
-/**
- * How the axes of a bar, line or area chart look. It sets the defaults of the other display props.
- * - `lines`: an X and a Y axis line.
- * - `minimal`: no axis lines and `thinner` gridlines.
- * Both put the Y labels in a `left` column by default.
- */
-type ChartAxisStyle = 'lines' | 'minimal';
 
 /**
  * Where the Y labels sit.
@@ -163,11 +156,11 @@ type ChartLegendPlacement = 'top' | 'bottom';
 /**
  * The look of a chart.
  * - `v1`: the chart as on Blade master. The display options have no effect.
- * - `v2`: the new look. The Y labels sit in a tight `left` column. Fixed spacing: `spacing.4`
- *   from the legend to the plot, `spacing.3` from the plot to the X labels, and no space under
- *   the X labels unless the X axis has a `label`. The plot height is the same in every
- *   `axisStyle`. The X labels never wrap and thin out to fit. A line series shows a line swatch.
- *   `yAxisLine` draws a line on both sides of the plot. The display options apply.
+ * - `v2`: the new look. The Y labels sit in a tight `left` column. Fixed spacing: `spacing.5`
+ *   from the legend to the nearest chart element, `spacing.3` from the plot to the X labels, and
+ *   no space under the X labels unless the X axis has a `label`. The plot height is the same with
+ *   and without `showBorder`. The X labels never wrap and thin out to fit. A line series shows a
+ *   line swatch. The display options apply.
  */
 type ChartVersion = 'v1' | 'v2';
 
@@ -196,29 +189,19 @@ type ChartLegendDisplayProps = {
 
 /**
  * Opt-in display options of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper. They apply
- * with `version="v2"` only. With `v1`, they have no effect and a development warning shows.
- * `axisStyle` sets the defaults of the others, and an explicit prop wins over `axisStyle`. Web
+ * with `version="v2"` only. With `v1`, they have no effect and a development warning shows. Web
  * only: the native charts ignore them. `valueFormat` applies in both versions.
  */
 type ChartWrapperDisplayProps = {
   /**
-   * How the axes look. It sets the defaults of the other display props.
-   * - `lines`: an X and a Y axis line.
-   * - `minimal`: no X axis line. `yAxisLine` false, `gridlineWidth` `thinner`. No chart margin on
-   *   the left, right and bottom. With no X axis `label`, no space is kept under the X labels.
-   *   Use it in a narrow box.
+   * Shows or hides a border around the plot: one line on the left, the right and the bottom.
+   * Each line is drawn once, in the colour and the width of the gridlines (`gridlineWidth`).
+   * With no border, only the horizontal gridlines show, and the bottom gridline is the baseline.
    *
-   * Both put the Y labels in a `left` column.
-   *
-   * Has no effect on a bar chart with `layout="vertical"`.
-   * @default 'lines'
+   * With `yLabelPlacement="overlap"`, the border puts the Y labels in a `left` column.
+   * @default false
    */
-  axisStyle?: ChartAxisStyle;
-  /**
-   * Shows or hides the Y axis line.
-   * @default true with `lines`, false with `minimal`
-   */
-  yAxisLine?: boolean;
+  showBorder?: boolean;
   /**
    * Where the Y labels sit.
    * - `left`: a column left of the plot. The column is as wide as the widest label plus
@@ -228,7 +211,7 @@ type ChartWrapperDisplayProps = {
    *   gridline. The gridlines end `spacing.3` before the column. The bottom label hides when it
    *   meets an X label.
    * - `overlap`: inside the plot, from its left edge, just below each gridline, with a halo in the
-   *   surface colour. The bottom label is not drawn.
+   *   surface colour. The bottom label is not drawn. With `showBorder`, it shows as `left`.
    * - `outside`: an alias of `right`.
    *
    * A bar chart with `layout="vertical"` always takes `left`: its category names sit in a column
@@ -242,9 +225,9 @@ type ChartWrapperDisplayProps = {
    */
   yGridlines?: boolean;
   /**
-   * The stroke width of the gridlines: `thin` (`border.width.thin`, 1px) or `thinner`
-   * (`border.width.thinner`, 0.5px).
-   * @default 'thin' with `lines`, 'thinner' with `minimal`
+   * The stroke width of the gridlines and the border: `thin` (`border.width.thin`, 1px) or
+   * `thinner` (`border.width.thinner`, 0.5px).
+   * @default 'thinner'
    */
   gridlineWidth?: ChartGridlineWidth;
   /**
@@ -366,23 +349,24 @@ type CommonChartComponentsStateType = {
    */
   chartVersion?: ChartVersion;
   /**
-   * The axis style of the chart wrapper. ChartXAxis, ChartYAxis and the wrapper read it.
+   * The resolved border. ChartYAxis draws it and ChartCartesianGrid leaves out its base gridline.
    */
-  axisStyle?: ChartAxisStyle;
+  showBorder?: boolean;
+  /**
+   * True for a bar chart with `layout="vertical"`: its Y axis holds category names.
+   */
+  isVerticalBar?: boolean;
   /**
    * The resolved Y label placement. ChartYAxis reads it.
    */
   yLabelPlacement?: ChartResolvedYLabelPlacement;
   /**
-   * The resolved Y axis line. ChartYAxis reads it.
-   */
-  yAxisLine?: boolean;
-  /**
    * The resolved horizontal gridlines. ChartCartesianGrid reads it.
    */
   yGridlines?: boolean;
   /**
-   * The resolved gridline width. Undefined keeps recharts' 1px. ChartCartesianGrid reads it.
+   * The resolved gridline width. Undefined keeps recharts' 1px. ChartCartesianGrid and the border
+   * read it.
    */
   gridlineWidth?: ChartGridlineWidth;
   /**
@@ -451,7 +435,6 @@ export type {
   ChartLabelContentProps,
   Layout,
   Align,
-  ChartAxisStyle,
   ChartYLabelPlacement,
   ChartResolvedYLabelPlacement,
   ChartGridlineWidth,

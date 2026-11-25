@@ -1,6 +1,5 @@
 import React from 'react';
 import type {
-  ChartAxisStyle,
   ChartGridlineWidth,
   ChartLegendPlacement,
   ChartResolvedYLabelPlacement,
@@ -12,8 +11,9 @@ import { logger } from '~utils/logger';
 
 type ChartDisplayOptions = {
   chartVersion: ChartVersion;
-  axisStyle: ChartAxisStyle;
-  yAxisLine: boolean;
+  showBorder: boolean;
+  /** True for a bar chart with `layout="vertical"`: its Y axis holds category names. */
+  isVerticalBar: boolean;
   yLabelPlacement: ChartResolvedYLabelPlacement;
   yGridlines: boolean;
   /** Undefined keeps recharts' 1px stroke, as before. */
@@ -25,8 +25,7 @@ type DisplayOptionProps = Omit<ChartWrapperDisplayProps, 'valueFormat' | 'versio
 
 /** The display options. They apply with `version="v2"` only. */
 const DISPLAY_OPTION_NAMES: ReadonlyArray<keyof DisplayOptionProps> = [
-  'axisStyle',
-  'yAxisLine',
+  'showBorder',
   'yLabelPlacement',
   'yGridlines',
   'gridlineWidth',
@@ -36,17 +35,16 @@ const DISPLAY_OPTION_NAMES: ReadonlyArray<keyof DisplayOptionProps> = [
 /**
  * Resolves the display props of a chart wrapper.
  * - `v1`: the chart as on Blade master. The display props have no effect.
- * - `v2`: `axisStyle` sets the defaults, and an explicit prop wins. The Y labels sit in a `left`
- *   column by default, in every `axisStyle`.
+ * - `v2`: no border, `left` Y labels and `thinner` gridlines by default. An explicit prop wins.
+ *   `overlap` with `showBorder` resolves to `left`: the border would run under the labels.
  *
- * `isVerticalBar`: a bar chart with its categories on the Y axis keeps `lines` and always takes
- * `left`, so its category names sit in a column next to their bars.
+ * `isVerticalBar`: a bar chart with its categories on the Y axis always takes `left`, so its
+ * category names sit in a column next to their bars.
  */
 const resolveChartDisplayOptions = (
   {
     version = 'v1',
-    axisStyle: axisStyleProp = 'lines',
-    yAxisLine,
+    showBorder = false,
     yLabelPlacement,
     yGridlines,
     gridlineWidth,
@@ -57,28 +55,27 @@ const resolveChartDisplayOptions = (
   if (version === 'v1') {
     return {
       chartVersion: 'v1',
-      axisStyle: 'lines',
-      yAxisLine: true,
+      showBorder: false,
+      isVerticalBar,
       yLabelPlacement: 'left',
       yGridlines: true,
     };
   }
-  const axisStyle = isVerticalBar ? 'lines' : axisStyleProp;
-  const isMinimal = axisStyle === 'minimal';
 
   const resolvePlacement = (): ChartResolvedYLabelPlacement => {
     if (isVerticalBar) return 'left';
     if (yLabelPlacement === 'outside') return 'right';
+    if (yLabelPlacement === 'overlap' && showBorder) return 'left';
     return yLabelPlacement ?? 'left';
   };
 
   return {
     chartVersion: 'v2',
-    axisStyle,
-    yAxisLine: yAxisLine ?? !isMinimal,
+    showBorder,
+    isVerticalBar,
     yLabelPlacement: resolvePlacement(),
     yGridlines: yGridlines ?? true,
-    gridlineWidth: gridlineWidth ?? (isMinimal ? 'thinner' : undefined),
+    gridlineWidth: gridlineWidth ?? 'thinner',
     legendPlacement,
   };
 };
@@ -104,8 +101,8 @@ const useWarnDisplayPropsOnV1 = (
 
 /**
  * The recharts margin of a chart. Undefined for `v1`: recharts' default, as on master. `v2`: no
- * margin, so the plot height is the same in every `axisStyle`. The legend, the label column and
- * the X labels sit inside the chart box.
+ * margin, so the plot height is the same with and without a border. The legend, the label column
+ * and the X labels sit inside the chart box.
  */
 const getChartMargin = ({
   chartVersion,

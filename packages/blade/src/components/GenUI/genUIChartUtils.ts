@@ -10,7 +10,7 @@
  */
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
-import type { ChartAxisStyle, ChartYLabelPlacement } from '~components/Charts';
+import type { ChartYLabelPlacement } from '~components/Charts';
 import {
   formatChartValueCompact,
   formatChartValueFull,
@@ -33,8 +33,8 @@ const DONUT_MIN_HEIGHT = 260;
 /** Under this box width the donut takes the small radius. */
 const DONUT_SMALL_RADIUS_WIDTH = 440;
 
-/** At this box width and under, a chart with no `axisStyle` takes `minimal`. */
-const MINIMAL_AXIS_MAX_WIDTH = 640;
+/** At this box width and under, a chart with no `showBorder` has no border. */
+const NO_BORDER_MAX_WIDTH = 640;
 
 /** A pie with more slices than this is a bar list. */
 const BAR_LIST_MIN_SLICES = 5;
@@ -139,7 +139,7 @@ const getLastLabelOverhang = ({
   lastLabel: string;
   width: number;
   chartType: 'bar' | 'line' | 'area';
-  /** The width the Y axis takes from the plot. 0 for the `minimal` axis style. */
+  /** The width the Y axis takes from the plot. 0 for `overlap` Y labels with no border. */
   yAxisWidth?: number;
 }): number => {
   if (count <= 1 || width <= 0) return 0;
@@ -171,15 +171,15 @@ const formatINRCompact = (value: number): string =>
   formatChartValueCompact(value, { type: 'currency', currency: 'INR' });
 
 /**
- * The axis style when the node sets none: `minimal` in a box of 640px or less, where a Y axis
- * takes too much of the width. `lines` above, and until the box is measured (0), as before.
+ * The border when the node sets none: no border in a box of 640px or less, where a Y axis takes
+ * too much of the width. A border above, and until the box is measured (0), as before.
  */
-const getDefaultAxisStyle = (width: number): ChartAxisStyle =>
-  width > 0 && width <= MINIMAL_AXIS_MAX_WIDTH ? 'minimal' : 'lines';
+const getDefaultShowBorder = (width: number): boolean =>
+  !(width > 0 && width <= NO_BORDER_MAX_WIDTH);
 
-/** The node's `axisStyle` when it is a known value, else the default for the width. */
-const resolveAxisStyle = (axisStyle: unknown, width: number): ChartAxisStyle =>
-  axisStyle === 'lines' || axisStyle === 'minimal' ? axisStyle : getDefaultAxisStyle(width);
+/** The node's `showBorder` when it is a boolean, else the default for the width. */
+const resolveShowBorder = (showBorder: unknown, width: number): boolean =>
+  typeof showBorder === 'boolean' ? showBorder : getDefaultShowBorder(width);
 
 /** The node's `yLabelPlacement` when it is a known value, else `overlap`. */
 const resolveYLabelPlacement = (yLabelPlacement: unknown): ChartYLabelPlacement =>
@@ -269,12 +269,12 @@ const getBarListRows = (
 export {
   BAR_LIST_MAX_WIDTH,
   BAR_LIST_MIN_SLICES,
-  MINIMAL_AXIS_MAX_WIDTH,
+  NO_BORDER_MAX_WIDTH,
   formatChartValue,
   formatShare,
   getBarListRows,
-  getDefaultAxisStyle,
-  resolveAxisStyle,
+  getDefaultShowBorder,
+  resolveShowBorder,
   resolveYLabelPlacement,
   shouldShowBarList,
   CHART_ASPECT_RATIO,

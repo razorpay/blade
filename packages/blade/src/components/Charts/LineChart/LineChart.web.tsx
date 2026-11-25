@@ -251,8 +251,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   children,
   colorTheme = 'categorical',
   version,
-  axisStyle,
-  yAxisLine,
+  showBorder,
   yLabelPlacement,
   yGridlines,
   gridlineWidth,
@@ -266,18 +265,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     () =>
       resolveChartDisplayOptions({
         version,
-        axisStyle,
-        yAxisLine,
+        showBorder,
         yLabelPlacement,
         yGridlines,
         gridlineWidth,
         legendPlacement,
       }),
-    [version, axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
+    [version, showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
   );
   useWarnDisplayPropsOnV1(
     version,
-    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    { showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
     'ChartLineWrapper',
   );
   const themeColors = useChartsColorTheme({
@@ -599,7 +597,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           <ChartSurface
             ref={containerRef}
             chartVersion={display.chartVersion}
-            axisStyle={display.axisStyle}
+            showBorder={display.showBorder}
             yLabelPlacement={display.yLabelPlacement}
           >
             <RechartsResponsiveContainer width="100%" height="100%">

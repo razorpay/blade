@@ -48,15 +48,20 @@ const REFERENCE_BAND_UPPER_CLASS = 'blade-reference-band-upper';
 const REFERENCE_BAND_LAYER_CLASS = 'blade-reference-band-layer';
 
 // `v2`: no chart margin. The legend, the Y label column and the X labels end the chart, so the
-// plot height is the same in every `axisStyle`.
+// plot height is the same with and without a border.
 const V2_CHART_MARGIN = { top: 0, right: 0, bottom: 0, left: 0 };
 // `v2`: the X label's top sits spacing.3 under the plot. Its baseline sits one ascent lower. The
 // ascent of Inter is 0.97em.
 const X_LABEL_ASCENT_EM = 0.97;
-// `minimal` axis style: the Y axis width. recharts draws no axis of width 0, so it is 1px.
-const MINIMAL_Y_AXIS_WIDTH = 1;
+// `overlap` Y labels: the Y axis width. recharts draws no axis of width 0, so it is 1px.
+const OVERLAP_Y_AXIS_WIDTH = 1;
 // recharts sets a Y tick label's baseline 0.355em under its tick: half of its 0.71em cap height.
 const Y_LABEL_HALF_CAP_EM = 0.355;
+// The cap height of Inter.
+const CAP_HEIGHT_EM = 0.71;
+// `v2` horizontal bar: the Y name column is at most this share of the chart width. A longer name
+// is cut with an ellipsis.
+const V2_Y_NAME_MAX_WIDTH_SHARE = 0.4;
 
 const componentId = {
   chartLegend: 'chart-legend',
@@ -97,6 +102,8 @@ export {
   X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
   V2_CHART_MARGIN,
   X_LABEL_ASCENT_EM,
-  MINIMAL_Y_AXIS_WIDTH,
+  OVERLAP_Y_AXIS_WIDTH,
   Y_LABEL_HALF_CAP_EM,
+  CAP_HEIGHT_EM,
+  V2_Y_NAME_MAX_WIDTH_SHARE,
 };

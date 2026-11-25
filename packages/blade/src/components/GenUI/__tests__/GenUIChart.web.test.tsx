@@ -140,13 +140,13 @@ describe('<GenUI /> CHART in a narrow box', () => {
     it('gives a centred last bar label room inside the plot', () => {
       renderAtWidth(
         360,
-        chart({ chartType: 'bar', axisStyle: 'lines', data: daily(30, ['Collected']) }),
+        chart({ chartType: 'bar', showBorder: true, data: daily(30, ['Collected']) }),
       );
 
       expect(lastProps('ChartXAxis').padding).toEqual({ left: 0, right: 8 });
     });
 
-    it('gives the last bar label less room when the Y axis is inside the plot (minimal)', () => {
+    it('gives the last bar label less room when the Y axis is inside the plot (no border)', () => {
       renderAtWidth(360, chart({ chartType: 'bar', data: daily(30, ['Collected']) }));
 
       expect(lastProps('ChartXAxis').padding).toEqual({ left: 0, right: 5 });
@@ -157,7 +157,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
     it('writes INR in lakh, with at most 1 decimal, on an auto-width axis', () => {
       renderAtWidth(
         360,
-        chart({ chartType: 'bar', axisStyle: 'lines', data: daily(7, ['Collected']) }),
+        chart({ chartType: 'bar', showBorder: true, data: daily(7, ['Collected']) }),
       );
       const yAxis = lastProps('ChartYAxis');
       const format = yAxis.tickFormatter as (value: number) => string;
@@ -265,24 +265,30 @@ describe('<GenUI /> CHART in a narrow box', () => {
     });
   });
 
-  describe('axisStyle', () => {
+  describe('showBorder', () => {
     it.each([
-      [360, 'minimal'],
-      [640, 'minimal'],
-      [800, 'lines'],
-    ])('a %ipx box with no axisStyle gives the wrapper %s', (width, style) => {
+      [360, false],
+      [640, false],
+      [800, true],
+    ])('a %ipx box with no showBorder gives the wrapper %s', (width, showBorder) => {
       renderAtWidth(width, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').axisStyle).toBe(style);
+      expect(lastProps('ChartLineWrapper').showBorder).toBe(showBorder);
     });
 
-    it('keeps lines until the box is measured', () => {
+    it('keeps a border until the box is measured', () => {
       renderAtWidth(0, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').axisStyle).toBe('lines');
+      expect(lastProps('ChartLineWrapper').showBorder).toBe(true);
     });
 
-    it('leaves the Y axis width to the v2 chart, with lines and with minimal', () => {
+    it('gives a chart with a border a left Y label column', () => {
+      renderAtWidth(800, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
+
+      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBeUndefined();
+    });
+
+    it('leaves the Y axis width to the v2 chart, with and without a border', () => {
       renderAtWidth(800, chart({ chartType: 'bar', data: daily(7, ['Collected']) }));
       expect(lastProps('ChartYAxis')).not.toHaveProperty('width');
 
@@ -290,27 +296,27 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(lastProps('ChartYAxis')).not.toHaveProperty('width');
     });
 
-    it('takes the axisStyle of the node over the width', () => {
+    it('takes the showBorder of the node over the width', () => {
       renderAtWidth(
         360,
-        chart({ chartType: 'bar', axisStyle: 'lines', data: daily(7, ['Collected']) }),
+        chart({ chartType: 'bar', showBorder: true, data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').axisStyle).toBe('lines');
+      expect(lastProps('ChartBarWrapper').showBorder).toBe(true);
 
       renderAtWidth(
         800,
-        chart({ chartType: 'bar', axisStyle: 'minimal', data: daily(7, ['Collected']) }),
+        chart({ chartType: 'bar', showBorder: false, data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').axisStyle).toBe('minimal');
+      expect(lastProps('ChartBarWrapper').showBorder).toBe(false);
     });
 
-    it('ignores an unknown axisStyle', () => {
+    it('ignores a showBorder that is not a boolean', () => {
       renderAtWidth(
         800,
-        chart({ chartType: 'line', axisStyle: 'bold', data: daily(7, ['Collected']) }),
+        chart({ chartType: 'line', showBorder: 'yes', data: daily(7, ['Collected']) }),
       );
 
-      expect(lastProps('ChartLineWrapper').axisStyle).toBe('lines');
+      expect(lastProps('ChartLineWrapper').showBorder).toBe(true);
     });
 
     it('gives the wrapper yLabelPlacement overlap by default, and the node value', () => {
@@ -330,13 +336,13 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('overlap');
     });
 
-    it('keeps lines on a tiny chart, which has no axes', () => {
+    it('draws no border on a tiny chart, which has no axes', () => {
       renderAtWidth(
-        360,
+        800,
         chart({ chartType: 'line', variant: 'tiny', data: daily(7, ['Collected']) }),
       );
 
-      expect(lastProps('ChartLineWrapper').axisStyle).toBe('lines');
+      expect(lastProps('ChartLineWrapper').showBorder).toBe(false);
     });
   });
 
@@ -533,7 +539,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
       fixedAt(360, { chartType: 'line', data: daily(30, ['Collected']) });
 
       expect(lastProps('ChartLineWrapper').height).toBe('350px');
-      expect(lastProps('ChartLineWrapper')).not.toHaveProperty('axisStyle');
+      expect(lastProps('ChartLineWrapper')).not.toHaveProperty('showBorder');
       expect(lastProps('ChartXAxis')).not.toHaveProperty('interval');
       expect(lastProps('ChartXAxis')).not.toHaveProperty('tickFormatter');
       expect(lastProps('ChartYAxis')).not.toHaveProperty('width');
@@ -570,10 +576,10 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(lastProps('ChartDonutWrapper').height).toBe('350px');
     });
 
-    it('ignores the axisStyle field', () => {
-      fixedAt(360, { chartType: 'bar', axisStyle: 'minimal', data: daily(7, ['Collected']) });
+    it('ignores the showBorder field', () => {
+      fixedAt(360, { chartType: 'bar', showBorder: true, data: daily(7, ['Collected']) });
 
-      expect(lastProps('ChartBarWrapper')).not.toHaveProperty('axisStyle');
+      expect(lastProps('ChartBarWrapper')).not.toHaveProperty('showBorder');
     });
   });
 });

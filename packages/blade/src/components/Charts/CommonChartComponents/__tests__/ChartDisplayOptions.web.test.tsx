@@ -138,21 +138,17 @@ describe('valueFormat', () => {
   });
 });
 
-describe('minimal axis polish', () => {
+describe('v2 axis polish', () => {
   const plotHeight = (container: HTMLElement): number =>
     Number(container.querySelector('clipPath rect')?.getAttribute('height'));
 
-  const render = (
-    axisStyle: 'lines' | 'minimal',
-    label?: string,
-    yLabelPlacement?: 'overlap',
-  ): HTMLElement =>
+  const render = (showBorder: boolean, label?: string, yLabelPlacement?: 'overlap'): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
         <ChartLineWrapper
           data={monthly}
           version="v2"
-          axisStyle={axisStyle}
+          showBorder={showBorder}
           yLabelPlacement={yLabelPlacement}
         >
           <ChartCartesianGrid />
@@ -163,31 +159,31 @@ describe('minimal axis polish', () => {
       </Box>,
     ).container;
 
-  it('keeps the plot height the same in lines and minimal', async () => {
-    const lines = render('lines');
-    await waitFor(() => expect(yLabels(lines).length).toBeGreaterThan(0));
-    const minimal = render('minimal');
-    await waitFor(() => expect(yLabels(minimal).length).toBeGreaterThan(0));
-    expect(plotHeight(minimal)).toBe(plotHeight(lines));
+  it('keeps the plot height the same with and without a border', async () => {
+    const framed = render(true);
+    await waitFor(() => expect(yLabels(framed).length).toBeGreaterThan(0));
+    const plain = render(false);
+    await waitFor(() => expect(yLabels(plain).length).toBeGreaterThan(0));
+    expect(plotHeight(plain)).toBe(plotHeight(framed));
   });
 
   it('keeps no space under the X labels when there is no X label', async () => {
-    const container = render('lines');
+    const container = render(true);
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     // No margin. The X axis is spacing.3 and one 14.5px label line.
     expect(plotHeight(container)).toBe(400 - (8 + 14.5));
   });
 
   it('keeps the space for an X label that is there', async () => {
-    const container = render('minimal', 'Month');
+    const container = render(false, 'Month');
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     expect(plotHeight(container)).toBe(400 - (8 + 14.5) - (8 + 16));
   });
 
   it('starts overlap Y labels at the left edge of the chart, under their gridlines, with a halo', async () => {
-    const container = render('minimal', undefined, 'overlap');
+    const container = render(false, undefined, 'overlap');
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
-    const surface = container.querySelector<HTMLElement>('[data-blade-chart-axis-style]');
+    const surface = container.querySelector<HTMLElement>('[data-blade-chart-y-labels]');
     const ticks = Array.from(
       container.querySelectorAll('.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value'),
     );
@@ -220,11 +216,11 @@ describe('minimal axis polish', () => {
   });
 });
 
-describe('minimal gridlines', () => {
-  const render = (axisStyle: 'lines' | 'minimal'): HTMLElement =>
+describe('v2 gridlines', () => {
+  const render = (gridlineWidth?: 'thin' | 'thinner'): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} version="v2" axisStyle={axisStyle}>
+        <ChartLineWrapper data={monthly} version="v2" gridlineWidth={gridlineWidth}>
           <ChartCartesianGrid />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
@@ -237,25 +233,25 @@ describe('minimal gridlines', () => {
       line.getAttribute('stroke-width'),
     );
 
-  it('draws 0.5px gridlines with minimal', async () => {
-    const container = render('minimal');
+  it('draws 0.5px gridlines by default', async () => {
+    const container = render();
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     expect(strokeWidths(container).length).toBeGreaterThan(0);
     strokeWidths(container).forEach((width) => expect(width).toBe('0.5'));
   });
 
-  it('keeps the gridlines as before with lines', async () => {
-    const container = render('lines');
+  it('draws 1px gridlines with thin', async () => {
+    const container = render('thin');
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
-    strokeWidths(container).forEach((width) => expect(width).not.toBe('0.5'));
+    strokeWidths(container).forEach((width) => expect(width).toBe('1'));
   });
 });
 
-describe('minimal yLabelPlacement="outside"', () => {
+describe('yLabelPlacement="outside"', () => {
   const render = (): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} version="v2" axisStyle="minimal" yLabelPlacement="outside">
+        <ChartLineWrapper data={monthly} version="v2" yLabelPlacement="outside">
           <ChartCartesianGrid />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
@@ -293,7 +289,7 @@ describe('minimal yLabelPlacement="outside"', () => {
   it('shows the bottom label, and hides it only when it meets an X label', async () => {
     const container = render();
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
-    const surface = container.querySelector<HTMLElement>('[data-blade-chart-axis-style]');
+    const surface = container.querySelector<HTMLElement>('[data-blade-chart-y-labels]');
     expect(yLabels(container)).toContain('0');
     expect(hasRule(surface, 'display: none', '.recharts-yAxis-tick-labels > g:first-of-type')).toBe(
       false,

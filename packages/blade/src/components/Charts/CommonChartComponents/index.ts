@@ -7,7 +7,6 @@ export type {
   ChartReferenceLineProps,
   ChartReferenceBandProps,
   ChartLabelContentProps,
-  ChartAxisStyle,
   ChartYLabelPlacement,
   ChartGridlineWidth,
   ChartLegendPlacement,

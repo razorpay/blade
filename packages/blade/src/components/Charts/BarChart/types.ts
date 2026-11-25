@@ -151,6 +151,10 @@ interface BarChartContextType {
    * that has already shipped. Plain bar charts keep the category-wide highlight they always had.
    */
   hasReferenceBand?: boolean;
+  /**
+   * True with `version="v2"`. A `v2` bar never takes a negative width.
+   */
+  isV2?: boolean;
 }
 
 export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType };

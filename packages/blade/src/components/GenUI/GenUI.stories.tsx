@@ -1186,9 +1186,9 @@ const narrowChartCases = [
     component: {
       component: 'CHART',
       chartType: 'line',
-      title: 'Minimal axes, labels overlap',
+      title: 'No border, labels overlap',
       xAxis: 'date',
-      axisStyle: 'minimal',
+      showBorder: false,
       yLabelPlacement: 'overlap',
       data: dailyCollected(14),
       valueFormatter: { type: 'currency', currency: 'INR' },
@@ -1199,9 +1199,9 @@ const narrowChartCases = [
     component: {
       component: 'CHART',
       chartType: 'line',
-      title: 'Minimal axes, labels outside',
+      title: 'No border, labels outside',
       xAxis: 'date',
-      axisStyle: 'minimal',
+      showBorder: false,
       yLabelPlacement: 'outside',
       data: dailyCollected(14),
       valueFormatter: { type: 'currency', currency: 'INR' },
@@ -1215,8 +1215,8 @@ const narrowChartWidths = ['360px', '800px'] as const;
  * With `chartVersion: 'v2'` on the GenUIProvider config, the default, a GenUI CHART sizes itself from
  * the box it renders in: height from width, date labels thinned to fit, lakh and crore ticks for
  * INR, full values in the tooltip (₹1,23,450.00), no legend for one series, and one line for a
- * finished chart with no rows. In a box of 640px or less its axes are `minimal`, unless the node
- * sets `axisStyle`. A node can set `yLabelPlacement`. A pie of more than 4 slices, or in a box
+ * finished chart with no rows. In a box of 640px or less it has no border, unless the node sets
+ * `showBorder`. A node can set `yLabelPlacement`. A pie of more than 4 slices, or in a box
  * under 300px, is a list of bars. Each column is a box of a different width.
  */
 const ChartInNarrowBoxesTemplate = ({
