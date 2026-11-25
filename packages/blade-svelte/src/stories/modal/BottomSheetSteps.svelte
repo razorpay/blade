@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BladeProvider, Button, Text } from '../../index';
+  import { BladeProvider, Button, Text, isModalOpen } from '../../index';
     import { BottomSheet } from '../../components/bottom-sheet';
   import {
     BottomSheetBody,
@@ -16,7 +16,7 @@
   class="relative h-[32rem] max-w-96 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
 <BladeProvider>
-  <div class="grid gap-4 p-6">
+  <div class="grid gap-4 p-6" inert={isModalOpen()}>
     <Button
       class="w-40"
       testID="open"

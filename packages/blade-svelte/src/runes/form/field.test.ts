@@ -102,12 +102,11 @@ describe('createField constraints', () => {
     expect(document.activeElement).toBe(control);
     expect(scrollIntoView).toHaveBeenCalledWith({ block: 'center', behavior: 'smooth' });
 
-    const matchMedia = vi
-      .spyOn(window, 'matchMedia')
-      .mockImplementation((query) => ({ matches: query.includes('reduce') } as MediaQueryList));
+    // jsdom has no matchMedia: stub the global the motion check reads.
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
     field.record.reveal();
     expect(scrollIntoView).toHaveBeenLastCalledWith({ block: 'center', behavior: 'auto' });
-    matchMedia.mockRestore();
+    vi.unstubAllGlobals();
     row.remove();
   });
 });

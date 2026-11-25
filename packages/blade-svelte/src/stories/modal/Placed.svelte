@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BladeProvider, Button, Modal, ModalBody, ModalHeader, Text } from '../../index';
+  import { BladeProvider, Button, Modal, ModalBody, ModalHeader, Text, isModalOpen } from '../../index';
 
   interface Props {
     args: { placement?: 'top-end' | 'bottom-start' | 'top-start' };
@@ -22,7 +22,7 @@
   class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <BladeProvider>
-    <div class="p-6">
+    <div class="p-6" inert={isModalOpen()}>
       <Button onClick={() => (isOpen = true)}>Open a placed modal</Button>
     </div>
   </BladeProvider>

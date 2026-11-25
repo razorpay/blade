@@ -21,6 +21,13 @@ describe('PhoneNumberInput', () => {
     expect(glyphsIn(container, InfoIcon)).toHaveLength(1);
   });
 
+  it('draws no clear button, even while it holds a number', async () => {
+    const { getByTestId, queryByLabelText } = render(PhoneNumberInputHarness);
+    await type(getByTestId('phone'), '9876543210');
+    expect((getByTestId('phone') as HTMLInputElement).value).toBe('9876543210');
+    expect(queryByLabelText('Clear Input Content')).toBeNull();
+  });
+
   it('shows the national number and stores the whole one', () => {
     const onChange = vi.fn();
     const { getByTestId } = render(PhoneNumberInputHarness, {

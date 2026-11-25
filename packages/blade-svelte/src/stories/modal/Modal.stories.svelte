@@ -9,6 +9,8 @@
   import PlacedSource from './Placed.svelte?raw';
   import StackedStory from './Stacked.svelte';
   import StackedSource from './Stacked.svelte?raw';
+  import OpenOnFirstRenderStory from './OpenOnFirstRender.svelte';
+  import OpenOnFirstRenderSource from './OpenOnFirstRender.svelte?raw';
 
   const { Story } = defineMeta({
     title: "Components/Modal",
@@ -49,5 +51,16 @@
 >
   {#snippet template(args)}
     <PlacedStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Open on first render"
+  args={meta.stories.OpenOnFirstRender.args}
+  argTypes={storyArgTypes(meta, 'OpenOnFirstRender') as never}
+  parameters={{ docs: { description: { story: meta.stories.OpenOnFirstRender.description }, source: exampleSource(OpenOnFirstRenderSource) }, controls: { disable: hasNoControls(meta, 'OpenOnFirstRender') } }}
+>
+  {#snippet template()}
+    <OpenOnFirstRenderStory />
   {/snippet}
 </Story>
