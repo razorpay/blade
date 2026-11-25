@@ -758,11 +758,16 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         children,
         valueFormat,
         series: visibleAreas.map((area) => {
-          const token = dataColorMapping[area.dataKey]?.colorToken;
+          const mappingEntry = dataColorMapping[area.dataKey];
+          // The same shade as the area's stroke: a custom colour reports its highest shade.
+          const token =
+            mappingEntry?.isCustomColor && mappingEntry.colorToken
+              ? getHighestColorInRange({ colorToken: mappingEntry.colorToken })
+              : mappingEntry?.colorToken;
           return {
             dataKey: area.dataKey,
             name: area.name ?? area.dataKey,
-            color: token ? (getIn(theme.colors, token) as string) : '',
+            color: getIn(theme.colors, token ?? 'surface.text.gray.muted') as string,
             colorToken: token,
           };
         }),
