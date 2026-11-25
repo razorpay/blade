@@ -53,10 +53,21 @@ const REFERENCE_BAND_LAYER_CLASS = 'blade-reference-band-layer';
 const MINIMAL_AXIS_CHART_MARGIN = { top: 5, right: 0, bottom: 0, left: 0 };
 // `minimal` axis style: the Y axis width. recharts draws no axis of width 0, so it is 1px.
 const MINIMAL_Y_AXIS_WIDTH = 1;
-// `minimal` axis style: the stroke width of the horizontal gridlines.
-const MINIMAL_GRIDLINE_STROKE_WIDTH = 0.5;
+// recharts' chart margin when a wrapper passes none. A `left` or `right` Y label column sets its
+// side to 0, so the widest label meets the edge of the chart.
+const DEFAULT_CHART_MARGIN = { top: 5, right: 5, bottom: 5, left: 5 };
 // recharts sets a Y tick label's baseline 0.355em under its tick: half of its 0.71em cap height.
 const Y_LABEL_HALF_CAP_EM = 0.355;
+
+// The dash of a `dashed` and a `dotted` line in a line chart. Blade's theme has no dash token, so
+// the chart defines it here. The legend swatch of a dashed line uses the same dash.
+const LINE_STROKE_DASHARRAY = { dashed: '5 5', dotted: '2 2' } as const;
+
+// `labelSize` to the key of `theme.typography.fonts.size`. The same keys as the Text sizes
+// `small`, `medium` and `large`.
+const LABEL_SIZE_FONT_SIZE = { s: 75, m: 100, l: 200 } as const;
+// `labelSize` to the Text size of the legend.
+const LABEL_SIZE_TEXT_SIZE = { s: 'small', m: 'medium', l: 'large' } as const;
 
 const componentId = {
   chartLegend: 'chart-legend',
@@ -97,6 +108,9 @@ export {
   X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
   MINIMAL_AXIS_CHART_MARGIN,
   MINIMAL_Y_AXIS_WIDTH,
-  MINIMAL_GRIDLINE_STROKE_WIDTH,
+  DEFAULT_CHART_MARGIN,
+  LINE_STROKE_DASHARRAY,
+  LABEL_SIZE_FONT_SIZE,
+  LABEL_SIZE_TEXT_SIZE,
   Y_LABEL_HALF_CAP_EM,
 };

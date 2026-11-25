@@ -16,9 +16,13 @@ import type {
 import type { RangeMap, ChartReferenceBandProps } from '../CommonChartComponents/types';
 import {
   componentId as commonComponentIds,
-  MINIMAL_AXIS_CHART_MARGIN,
   REFERENCE_BAND_DEFAULT_NAME,
 } from '../CommonChartComponents/tokens';
+import {
+  getChartMargin,
+  needsChartSurface,
+  resolveChartDisplayOptions,
+} from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import { useBarReferenceBand } from './useBarReferenceBand';
@@ -286,15 +290,32 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   children,
   colorTheme = 'categorical',
   layout = 'horizontal',
-  axisStyle: axisStyleProp = 'lines',
-  yLabelPlacement = 'overlap',
+  axisStyle,
+  yAxisLine,
+  yLabelPlacement,
+  yGridlines,
+  gridlineWidth,
+  legendPlacement,
+  labelSize,
   valueFormat,
   testID,
   data = [],
   ...restProps
 }) => {
-  // A vertical bar chart has its categories on the Y axis, so it keeps its axis lines.
-  const axisStyle = layout === 'vertical' ? 'lines' : axisStyleProp;
+  // A vertical bar chart has its categories on the Y axis, so it keeps its axis lines and the
+  // classic Y gutter.
+  const display = resolveChartDisplayOptions(
+    {
+      axisStyle,
+      yAxisLine,
+      yLabelPlacement,
+      yGridlines,
+      gridlineWidth,
+      legendPlacement,
+      labelSize,
+    },
+    { isVerticalBar: layout === 'vertical' },
+  );
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   // The hovered bar: its series (fades the others, decides which reference band is revealed) and
@@ -475,7 +496,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         }}
         layout={layout}
         data={data}
-        margin={axisStyle === 'minimal' ? MINIMAL_AXIS_CHART_MARGIN : undefined}
+        margin={getChartMargin(display)}
       >
         {/* Painted first so the shaded band sits behind the bars. */}
         {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
@@ -495,8 +516,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         setSelectedDataKeys,
         referenceBands: referenceBandLegendInfos,
         rangeMap,
-        axisStyle,
-        yLabelPlacement,
+        ...display,
         valueFormat,
       }}
     >
@@ -509,8 +529,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {...restProps}
       >
         <BarChartContext.Provider value={barChartContextValue}>
-          {axisStyle === 'minimal' ? (
-            <ChartSurface axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
+          {needsChartSurface(display) ? (
+            <ChartSurface axisStyle={display.axisStyle} yLabelPlacement={display.yLabelPlacement}>
               {responsiveContainer}
             </ChartSurface>
           ) : (

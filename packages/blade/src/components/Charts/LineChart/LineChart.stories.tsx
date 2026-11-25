@@ -1470,7 +1470,8 @@ export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
               <ChartLineWrapper
                 data={chartData}
                 axisStyle={axisStyle}
-                yLabelPlacement={yLabelPlacement}
+                // An explicit `yLabelPlacement` wins over `axisStyle`, so `lines` gets none.
+                yLabelPlacement={axisStyle === 'minimal' ? yLabelPlacement : undefined}
               >
                 <ChartCartesianGrid />
                 <ChartXAxis dataKey="month" />

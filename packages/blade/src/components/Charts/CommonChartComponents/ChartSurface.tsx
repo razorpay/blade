@@ -1,27 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ChartAxisStyle, ChartYLabelPlacement } from './types';
+import type { ChartAxisStyle, ChartResolvedYLabelPlacement } from './types';
+import { needsChartSurface } from './chartDisplayOptions';
 
-/** Set on the lowest Y label of an `outside` chart when it meets an X label. It then hides. */
+/** Set on the lowest Y label of a `right` chart when it meets an X label. It then hides. */
 const Y_LABEL_COLLIDES_ATTR = 'data-blade-y-label-collides';
 
-const MinimalChartSurface = styled.div<{ $yLabelPlacement: ChartYLabelPlacement }>(
-  ({ $yLabelPlacement }) => ({
-    width: '100%',
-    height: '100%',
-    // The plot runs to the edges of the chart. A point or an active dot on the edge is not cut.
-    '.recharts-surface': { overflow: 'visible' },
-    ...($yLabelPlacement === 'outside'
-      ? {
-          // The lowest label sits on the base gridline. It hides only when it meets an X label.
-          [`.recharts-yAxis-tick-labels > g[${Y_LABEL_COLLIDES_ATTR}]`]: { visibility: 'hidden' },
-        }
-      : {
-          // The bottom Y label would sit under the base of the plot, on the X labels. Not drawn.
-          '.recharts-yAxis-tick-labels > g:first-of-type': { display: 'none' },
-        }),
-  }),
-);
+const Y_TICK_LABEL = '.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value';
+
+const StyledChartSurface = styled.div<{
+  $axisStyle: ChartAxisStyle;
+  $yLabelPlacement: ChartResolvedYLabelPlacement;
+}>(({ $axisStyle, $yLabelPlacement }) => ({
+  width: '100%',
+  height: '100%',
+  // `minimal`: the plot runs to the edges of the chart. A point or an active dot on the edge is
+  // not cut.
+  ...($axisStyle === 'minimal' ? { '.recharts-surface': { overflow: 'visible' } } : {}),
+  // A label column: tabular digits, so the numbers line up towards the axis.
+  ...($yLabelPlacement === 'left' || $yLabelPlacement === 'right'
+    ? { [Y_TICK_LABEL]: { fontVariantNumeric: 'tabular-nums' } }
+    : {}),
+  // `right`: the lowest label sits on the base gridline. It hides only when it meets an X label.
+  ...($yLabelPlacement === 'right'
+    ? { [`.recharts-yAxis-tick-labels > g[${Y_LABEL_COLLIDES_ATTR}]`]: { visibility: 'hidden' } }
+    : {}),
+  // `overlap`: the bottom Y label would sit under the base of the plot, on the X labels. Not drawn.
+  ...($yLabelPlacement === 'overlap'
+    ? { '.recharts-yAxis-tick-labels > g:first-of-type': { display: 'none' } }
+    : {}),
+}));
 
 type Box2D = Pick<DOMRect, 'left' | 'right' | 'top' | 'bottom'>;
 
@@ -30,7 +38,7 @@ const boxesOverlap = (a: Box2D, b: Box2D): boolean =>
   a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
 
 /**
- * `outside` only. Marks the lowest Y label when its box meets an X label's box, so it hides.
+ * `right` only. Marks the lowest Y label when its box meets an X label's box, so it hides.
  * recharts draws its ticks after it measures, so this checks again on each change to the SVG.
  * The mark sets `visibility`, not `display`: a hidden label keeps its box for the next check.
  */
@@ -75,20 +83,19 @@ const useLowestYLabelCollision = (
 
 type ChartSurfaceProps = {
   axisStyle: ChartAxisStyle;
-  yLabelPlacement?: ChartYLabelPlacement;
+  yLabelPlacement: ChartResolvedYLabelPlacement;
   children: React.ReactNode;
 };
 
 /**
- * The element around a chart's recharts container. With `minimal`, it holds the CSS that axis
- * style needs. With `lines`, it renders as the wrappers did before `axisStyle`, so the chart does
- * not change.
+ * The element around a chart's recharts container. It holds the CSS that the display props need.
+ * For a `lines` chart with the classic Y gutter, it renders as the wrappers did before, so the
+ * chart does not change.
  */
 const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
-  ({ axisStyle, yLabelPlacement = 'overlap', children }, ref) => {
+  ({ axisStyle, yLabelPlacement, children }, ref) => {
     const innerRef = React.useRef<HTMLDivElement>(null);
-    const isMinimal = axisStyle === 'minimal';
-    useLowestYLabelCollision(innerRef, isMinimal && yLabelPlacement === 'outside');
+    useLowestYLabelCollision(innerRef, yLabelPlacement === 'right');
     const setRefs = React.useCallback(
       (node: HTMLDivElement | null) => {
         (innerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
@@ -97,22 +104,23 @@ const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
       },
       [ref],
     );
-    if (isMinimal) {
+    if (!needsChartSurface({ axisStyle, yLabelPlacement })) {
       return (
-        <MinimalChartSurface
-          ref={setRefs}
-          $yLabelPlacement={yLabelPlacement}
-          data-blade-chart-axis-style="minimal"
-          data-blade-chart-y-labels={yLabelPlacement}
-        >
+        <div ref={setRefs} style={{ width: '100%', height: '100%' }}>
           {children}
-        </MinimalChartSurface>
+        </div>
       );
     }
     return (
-      <div ref={setRefs} style={{ width: '100%', height: '100%' }}>
+      <StyledChartSurface
+        ref={setRefs}
+        $axisStyle={axisStyle}
+        $yLabelPlacement={yLabelPlacement}
+        data-blade-chart-axis-style={axisStyle === 'minimal' ? 'minimal' : undefined}
+        data-blade-chart-y-labels={yLabelPlacement}
+      >
         {children}
-      </div>
+      </StyledChartSurface>
     );
   },
 );

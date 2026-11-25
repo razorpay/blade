@@ -18,10 +18,11 @@ import type {
   ChartXAxisProps,
 } from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import {
-  componentId as commonComponentIds,
-  MINIMAL_AXIS_CHART_MARGIN,
-} from '../CommonChartComponents/tokens';
+  getChartMargin,
+  resolveChartDisplayOptions,
+} from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -138,11 +139,25 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   children,
   testID,
   colorTheme = 'categorical',
-  axisStyle = 'lines',
-  yLabelPlacement = 'overlap',
+  axisStyle,
+  yAxisLine,
+  yLabelPlacement,
+  yGridlines,
+  gridlineWidth,
+  legendPlacement,
+  labelSize,
   valueFormat,
   ...restProps
 }) => {
+  const display = resolveChartDisplayOptions({
+    axisStyle,
+    yAxisLine,
+    yLabelPlacement,
+    yGridlines,
+    gridlineWidth,
+    legendPlacement,
+    labelSize,
+  });
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
@@ -403,8 +418,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         dataLength: data?.length,
         selectedDataKeys,
         setSelectedDataKeys,
-        axisStyle,
-        yLabelPlacement,
+        ...display,
         valueFormat,
       }}
     >
@@ -415,12 +429,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         width="100%"
         height="100%"
       >
-        <ChartSurface ref={containerRef} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
+        <ChartSurface
+          ref={containerRef}
+          axisStyle={display.axisStyle}
+          yLabelPlacement={display.yLabelPlacement}
+        >
           <ResponsiveContainer>
-            <RechartsAreaChart
-              data={data}
-              margin={axisStyle === 'minimal' ? MINIMAL_AXIS_CHART_MARGIN : undefined}
-            >
+            <RechartsAreaChart data={data} margin={getChartMargin(display)}>
               <defs>
                 {Object.keys(dataColorMapping).map((dataKey, index) => (
                   <ChartColorGradient

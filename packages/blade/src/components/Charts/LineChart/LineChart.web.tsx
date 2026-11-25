@@ -25,9 +25,13 @@ import type {
 } from '../CommonChartComponents/types';
 import {
   componentId as commonComponentIds,
-  MINIMAL_AXIS_CHART_MARGIN,
+  LINE_STROKE_DASHARRAY,
 } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import {
+  getChartMargin,
+  resolveChartDisplayOptions,
+} from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import {
@@ -49,7 +53,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const getStrokeDasharray = (style?: ChartLineProps['strokeStyle']): string | undefined =>
-  style === 'dashed' ? '5 5' : style === 'dotted' ? '2 2' : undefined;
+  style === 'dashed' || style === 'dotted' ? LINE_STROKE_DASHARRAY[style] : undefined;
 
 // Dash pattern used for the bridge drawn across null points when `connectNulls` is enabled.
 const NULL_BRIDGE_DASHARRAY = '5 5';
@@ -243,13 +247,31 @@ const ChartLine = assignWithoutSideEffects(Line, {
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'categorical',
-  axisStyle = 'lines',
-  yLabelPlacement = 'overlap',
+  axisStyle,
+  yAxisLine,
+  yLabelPlacement,
+  yGridlines,
+  gridlineWidth,
+  legendPlacement,
+  labelSize,
   valueFormat,
   testID,
   data,
   ...restProps
 }) => {
+  const display = useMemo(
+    () =>
+      resolveChartDisplayOptions({
+        axisStyle,
+        yAxisLine,
+        yLabelPlacement,
+        yGridlines,
+        gridlineWidth,
+        legendPlacement,
+        labelSize,
+      }),
+    [axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement, labelSize],
+  );
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
@@ -526,8 +548,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       dataLength: data?.length,
       referenceBands: referenceBandLegendInfos,
       rangeMap,
-      axisStyle,
-      yLabelPlacement,
+      ...display,
       valueFormat,
     }),
     [
@@ -537,8 +558,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       data?.length,
       referenceBandLegendInfos,
       rangeMap,
-      axisStyle,
-      yLabelPlacement,
+      display,
       valueFormat,
     ],
   );
@@ -553,12 +573,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           height="100%"
           {...restProps}
         >
-          <ChartSurface ref={containerRef} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
+          <ChartSurface
+            ref={containerRef}
+            axisStyle={display.axisStyle}
+            yLabelPlacement={display.yLabelPlacement}
+          >
             <RechartsResponsiveContainer width="100%" height="100%">
               <RechartsLineChart
                 data={data}
                 onMouseLeave={() => setHoveredDataKey(null)}
-                margin={axisStyle === 'minimal' ? MINIMAL_AXIS_CHART_MARGIN : undefined}
+                margin={getChartMargin(display)}
               >
                 {/* Painted first so the shaded bands sit behind the trend lines. */}
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}

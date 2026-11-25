@@ -257,7 +257,8 @@ describe('minimal yLabelPlacement="outside"', () => {
     const container = render();
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     const surface = container.querySelector<HTMLElement>('[data-blade-chart-y-labels]');
-    expect(surface?.getAttribute('data-blade-chart-y-labels')).toBe('outside');
+    // `outside` is an alias of `right`.
+    expect(surface?.getAttribute('data-blade-chart-y-labels')).toBe('right');
     const ticks = Array.from(
       container.querySelectorAll('.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value'),
     );

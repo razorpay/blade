@@ -27,6 +27,7 @@ import type {
   ChartCartesianGridProps,
   Layout,
   ChartColorToken,
+  ChartLabelSize,
   DataColorMapping,
   SecondaryLabelMap,
 } from './types';
@@ -43,7 +44,8 @@ import {
   LEGEND_MARGIN_TOP,
   X_OFFSET,
   MINIMAL_Y_AXIS_WIDTH,
-  MINIMAL_GRIDLINE_STROKE_WIDTH,
+  LABEL_SIZE_FONT_SIZE,
+  LABEL_SIZE_TEXT_SIZE,
   Y_LABEL_HALF_CAP_EM,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
@@ -107,6 +109,15 @@ const getChartColor = (
       (isCustomColor || Object.keys(dataColorMapping).length > totalChartColors),
   });
 };
+
+/**
+ * The font size of the axis tick labels. `labelSize` maps to `theme.typography.fonts.size`. With
+ * no `labelSize`, `fonts.size.75`, as before.
+ */
+const getAxisLabelFontSize = (
+  theme: ReturnType<typeof useTheme>['theme'],
+  labelSize: ChartLabelSize | undefined,
+): number => theme.typography.fonts.size[labelSize ? LABEL_SIZE_FONT_SIZE[labelSize] : 75];
 
 /**
  * Wraps text to fit within a given pixel width, breaking at word boundaries.
@@ -217,6 +228,7 @@ const CustomXAxisTick = ({
   onHeightCalculated,
   lastTick,
   tickFormatter,
+  fontSize,
 }: {
   x: number;
   y: number;
@@ -228,8 +240,8 @@ const CustomXAxisTick = ({
   onHeightCalculated?: (height: number) => void;
   lastTick: number;
   tickFormatter?: (value: string, index: number) => string;
+  fontSize: number;
 }): JSX.Element => {
-  const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
 
   // For bar charts, always center align labels since bars are centered on ticks
@@ -249,7 +261,8 @@ const CustomXAxisTick = ({
   const textStyleProps = {
     maxWidth,
     fontSize,
-    lineHeight: X_AXIS_TICK_LINE_HEIGHT,
+    // The line height grows with the font: 14.5px at fonts.size.75, as before.
+    lineHeight: (X_AXIS_TICK_LINE_HEIGHT * fontSize) / theme.typography.fonts.size[75],
     startDy: X_AXIS_TICK_START_DY,
     textAnchor,
     fill: theme.colors.surface.text.gray.muted,
@@ -311,7 +324,14 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const { secondaryLabelMap, chartName, dataLength, axisStyle } = useCommonChartComponentsContext();
+  const {
+    secondaryLabelMap,
+    chartName,
+    dataLength,
+    axisStyle,
+    labelSize,
+  } = useCommonChartComponentsContext();
+  const tickFontSize = getAxisLabelFontSize(theme, labelSize);
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
 
@@ -374,6 +394,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
             tickFormatter={tickFormatter}
+            fontSize={tickFontSize}
           />
         );
       }}
@@ -402,42 +423,68 @@ const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
   componentId: componentId.chartXAxis,
 });
 
+/**
+ * Renders again each time the page loads a font, while `isActive`. recharts measures an `auto`
+ * width Y axis on each render. A measure before the web font loads takes the fallback font, so
+ * the label column comes out too narrow.
+ */
+const useRenderOnFontLoad = (isActive: boolean): void => {
+  const [, setFontLoads] = React.useState(0);
+  React.useEffect(() => {
+    if (!isActive || typeof document === 'undefined' || !document.fonts) return undefined;
+    let isMounted = true;
+    const onLoad = (): void => {
+      if (isMounted) setFontLoads((count) => count + 1);
+    };
+    void document.fonts.ready.then(onLoad);
+    document.fonts.addEventListener('loadingdone', onLoad);
+    return () => {
+      isMounted = false;
+      document.fonts.removeEventListener('loadingdone', onLoad);
+    };
+  }, [isActive]);
+};
+
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
-  const { axisStyle, yLabelPlacement, valueFormat } = useCommonChartComponentsContext();
-  const isMinimal = axisStyle === 'minimal';
-  const isOutside = isMinimal && yLabelPlacement === 'outside';
-  const isOverlap = isMinimal && !isOutside;
-  const tickFontSize = theme.typography.fonts.size[75];
+  const {
+    yLabelPlacement = 'legacy',
+    yAxisLine = true,
+    valueFormat,
+    labelSize,
+  } = useCommonChartComponentsContext();
+  const isOverlap = yLabelPlacement === 'overlap';
+  const isLabelColumn = yLabelPlacement === 'left' || yLabelPlacement === 'right';
+  const tickFontSize = getAxisLabelFontSize(theme, labelSize);
+  useRenderOnFontLoad(isLabelColumn);
 
   return (
     <RechartsYAxis
-      // `minimal`, `overlap`: no axis line and almost no width. The ticks are mirrored into the
-      // plot, so the gridlines run the full width of the chart. Not 0: recharts draws no axis of
-      // width 0. tickSize and tickMargin 0: the ticks start at the left edge of the plot, as the
-      // X axis.
+      // `overlap`: almost no width. The ticks are mirrored into the plot, so the gridlines run the
+      // full width of the chart. Not 0: recharts draws no axis of width 0. tickSize and tickMargin
+      // 0: the ticks start at the left edge of the plot, as the X axis.
       {...(isOverlap
         ? {
             width: MINIMAL_Y_AXIS_WIDTH,
             mirror: true,
-            axisLine: false,
             tickSize: 0,
             tickMargin: 0,
           }
         : {})}
-      // `minimal`, `outside`: a column right of the plot, as wide as its widest label plus the
-      // tick margin, so the gridlines end that margin before the labels. interval 0: each label
-      // on its own tick. recharts' default moves the top label off its gridline.
-      {...(isOutside
+      // `left` and `right`: a column as wide as its widest label plus the tick margin. The chart
+      // margin on that side is 0, so the widest label meets the edge of the chart. recharts aligns
+      // the labels towards the axis. interval 0: each label on its own tick. recharts' default
+      // moves the top label off its gridline.
+      {...(isLabelColumn
         ? {
-            orientation: 'right' as const,
+            orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
             width: 'auto' as const,
-            axisLine: false,
             interval: 0,
             tickSize: 0,
             tickMargin: theme.spacing[3],
           }
         : {})}
+      {...(yAxisLine ? {} : { axisLine: false })}
       // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
       {...(valueFormat
         ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
@@ -488,14 +535,15 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
 
 const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   const { theme } = useTheme();
-  const { axisStyle } = useCommonChartComponentsContext();
+  const { yGridlines = true, gridlineWidth } = useCommonChartComponentsContext();
 
   return (
     <RechartsCartesianGrid
       stroke={theme.colors.surface.border.gray.muted}
       vertical={false}
-      // `minimal`: thin gridlines, in the same colour.
-      {...(axisStyle === 'minimal' ? { strokeWidth: MINIMAL_GRIDLINE_STROKE_WIDTH } : {})}
+      // `gridlineWidth`: a Blade border width. With none, recharts' 1px, as before.
+      {...(gridlineWidth ? { strokeWidth: theme.border.width[gridlineWidth] } : {})}
+      {...(yGridlines ? {} : { horizontal: false })}
       {...props}
     />
   );
@@ -661,16 +709,23 @@ const LegendItem = ({
   onClick,
   isClickable,
 }: {
-  entry: { color: string; value: string; dataKey: string };
+  entry: {
+    color: string;
+    value: string;
+    dataKey: string;
+    payload?: { strokeDasharray?: string | number };
+  };
   index: number;
   isSelected: boolean;
   onClick: (dataKey: string) => void;
   isClickable: boolean;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, labelSize } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
+  // A dashed or dotted line shows its own dash in the legend, not a square.
+  const lineDash = chartName === 'line' ? entry.payload?.strokeDasharray : undefined;
 
   // For donut charts, use sanitized value (name) as the key, for other charts use dataKey
   const legendKey = chartName === 'donut' ? sanitizeString(entry.value ?? '') : entry.dataKey;
@@ -690,16 +745,39 @@ const LegendItem = ({
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-        <span
-          style={{
-            backgroundColor: getIn(theme.colors, legendColor),
-            width: theme.spacing[4],
-            height: theme.spacing[4],
-            display: 'inline-block',
-            borderRadius: theme.border.radius['2xsmall'],
-          }}
-        />
-        <Text size="medium" color="surface.text.gray.muted">
+        {lineDash ? (
+          <svg
+            width={theme.spacing[5]}
+            height={theme.spacing[4]}
+            aria-hidden="true"
+            data-blade-legend-swatch="dashed"
+            style={{ display: 'block' }}
+          >
+            <line
+              x1={0}
+              x2={theme.spacing[5]}
+              y1={theme.spacing[4] / 2}
+              y2={theme.spacing[4] / 2}
+              stroke={getIn(theme.colors, legendColor)}
+              strokeWidth={theme.border.width.thicker}
+              strokeDasharray={lineDash}
+            />
+          </svg>
+        ) : (
+          <span
+            style={{
+              backgroundColor: getIn(theme.colors, legendColor),
+              width: theme.spacing[4],
+              height: theme.spacing[4],
+              display: 'inline-block',
+              borderRadius: theme.border.radius['2xsmall'],
+            }}
+          />
+        )}
+        <Text
+          size={labelSize ? LABEL_SIZE_TEXT_SIZE[labelSize] : 'medium'}
+          color="surface.text.gray.muted"
+        >
           {entry.value}
         </Text>
       </Box>
@@ -714,7 +792,7 @@ const LegendItem = ({
  */
 const ReferenceBandLegendSwatch = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { referenceBands } = useCommonChartComponentsContext();
+  const { referenceBands, labelSize } = useCommonChartComponentsContext();
   if (!referenceBands || referenceBands.length === 0) return null;
   return (
     <>
@@ -731,7 +809,10 @@ const ReferenceBandLegendSwatch = (): JSX.Element | null => {
                 borderRadius: theme.border.radius['2xsmall'],
               }}
             />
-            <Text size="medium" color="surface.text.gray.muted">
+            <Text
+              size={labelSize ? LABEL_SIZE_TEXT_SIZE[labelSize] : 'medium'}
+              color="surface.text.gray.muted"
+            >
               {band.name}
             </Text>
           </Box>
@@ -746,6 +827,7 @@ const CustomSquareLegend = (props: {
     payload: {
       legendType: 'none' | 'line';
       type: 'none' | 'line';
+      strokeDasharray?: string | number;
     };
     value: string;
     color: string;
@@ -757,7 +839,13 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName, dataColorMapping, referenceBands } = useCommonChartComponentsContext();
+  const { theme } = useTheme();
+  const {
+    chartName,
+    dataColorMapping,
+    referenceBands,
+    legendPlacement,
+  } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -819,10 +907,14 @@ const CustomSquareLegend = (props: {
     return null;
   }
 
-  return (
+  // On top, the legend is left-aligned. The negative margin takes off the item padding, so the
+  // first swatch starts at the left edge of the chart.
+  const isTop = legendPlacement === 'top' && !isVerticalLayout;
+
+  const legend = (
     <Box
       display="flex"
-      justifyContent="center"
+      justifyContent={isTop ? 'flex-start' : 'center'}
       gap="spacing.5"
       flexDirection={isVerticalLayout ? 'column' : 'row'}
       width={isVerticalLayout ? '100%' : 'auto'}
@@ -842,6 +934,14 @@ const CustomSquareLegend = (props: {
       <ReferenceBandLegendSwatch />
     </Box>
   );
+
+  return isTop ? (
+    <div data-blade-legend-placement="top" style={{ marginLeft: -theme.spacing[2] }}>
+      {legend}
+    </div>
+  ) : (
+    legend
+  );
 };
 
 const _ChartLegend: React.FC<ChartLegendProps> = ({
@@ -851,7 +951,12 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+  const {
+    dataColorMapping,
+    setSelectedDataKeys,
+    legendPlacement,
+  } = useCommonChartComponentsContext();
+  const isTop = legendPlacement === 'top' && props.layout !== 'vertical';
   const hasUserInteractedRef = React.useRef(false);
   const isControlled = selectedDataKeysProp !== undefined;
   const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
@@ -916,10 +1021,13 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: LEGEND_MARGIN_TOP,
+        // On top: the gap sits under the legend, and the legend starts at the left edge.
+        ...(isTop
+          ? { paddingBottom: LEGEND_MARGIN_TOP, left: 0 }
+          : { paddingTop: LEGEND_MARGIN_TOP }),
       }}
-      align="center"
-      verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
+      align={isTop ? 'left' : 'center'}
+      verticalAlign={props.layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom'}
       content={
         <CustomSquareLegend
           layout={props.layout ?? 'horizontal'}
