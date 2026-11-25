@@ -5,40 +5,30 @@ import { useGenUIAnimation } from '~components/GenUI/GenUIContext';
 import { TextAnimationStyles } from '~components/GenUI/GenUIComponents';
 import { createRehypeAnimate } from '~components/GenUI/rehypeAnimate';
 
-/** GenUI's TEXT, drawn by RAY's chat rules. Keeps GenUI's word fade while the reply streams. */
-const RayChatOutputText = memo(
-  ({
-    content,
-    index,
-    isStreaming,
-  }: {
-    content?: string;
-    index?: number;
-    isStreaming?: boolean;
-  }) => {
-    const { isAnimating, animateOptions } = useGenUIAnimation();
-    const rehypePlugins = useMemo(
-      () => (isAnimating ? [createRehypeAnimate(animateOptions)] : []),
-      [isAnimating, animateOptions],
-    );
+/**
+ * GenUI's TEXT, drawn by RAY's chat rules. Keeps GenUI's word fade while the reply streams: the
+ * opening paragraph shows as body text straight away and grows into the main title if a title
+ * follows it.
+ */
+const RayChatOutputText = memo(({ content, index }: { content?: string; index?: number }) => {
+  const { isAnimating, animateOptions } = useGenUIAnimation();
+  const rehypePlugins = useMemo(() => (isAnimating ? [createRehypeAnimate(animateOptions)] : []), [
+    isAnimating,
+    animateOptions,
+  ]);
 
-    if (!content) return null;
+  if (!content) return null;
 
-    return (
-      <>
-        {isAnimating ? <TextAnimationStyles /> : null}
-        {/* Only the reply's first component opens with the main title. */}
-        <BaseRayChatOutput
-          rehypePlugins={rehypePlugins}
-          hasMainTitle={!index}
-          isStreaming={Boolean(isStreaming)}
-        >
-          {content}
-        </BaseRayChatOutput>
-      </>
-    );
-  },
-);
+  return (
+    <>
+      {isAnimating ? <TextAnimationStyles /> : null}
+      {/* Only the reply's first component opens with the main title. */}
+      <BaseRayChatOutput rehypePlugins={rehypePlugins} hasMainTitle={!index}>
+        {content}
+      </BaseRayChatOutput>
+    </>
+  );
+});
 
 /**
  * Makes GenUI draw its TEXT the way RAY's chat looks. GenUI's cards and tables stay its own.

@@ -11,11 +11,11 @@
  *                                              (Figma: 11, its paragraph spacing; 12 is Blade's nearest)
  *                                          16  any other block
  *
- * No rule restyles a block a streaming reply has drawn. The main title is the one rule that looks
- * ahead, at the second block, so while the reply streams (`isStreaming`) the opening paragraph is
- * held back until the second block starts, then drawn once in its final style. Every other rule
- * looks only at a block and the blocks before it. A bold line on its own stays bold body text, as
- * in Figma (a title rule could only apply once its `**` closed).
+ * The main title is the one rule that looks ahead, at the second block. While a reply streams,
+ * its opening paragraph is drawn straight away as body text (marked data-ray-chat-opening), and
+ * if a title follows it the component grows it into the main title. Every other rule looks only
+ * at a block and the blocks before it, so nothing else a streaming reply has drawn changes. A bold
+ * line on its own stays bold body text, as in Figma.
  *
  * Gaps live on the blocks as attributes so the styles map them to spacing tokens, and so they
  * can be tested without a layout engine.
@@ -32,8 +32,6 @@ type MarkdownNode = {
 type RemarkRayChatOptions = {
   /** Whether the opening paragraph can be the main title. Off for a later part of one reply. */
   hasMainTitle?: boolean;
-  /** The reply is still streaming in: hold the opening paragraph until the next block starts. */
-  isStreaming?: boolean;
 };
 
 type RayChatGap = '12' | '16' | '24';
@@ -67,7 +65,7 @@ const setProperties = (node: MarkdownNode, properties: Record<string, unknown>):
   node.data = { ...node.data, hProperties: { ...node.data?.hProperties, ...properties } };
 };
 
-const remarkRayChat = ({ hasMainTitle = true, isStreaming = false }: RemarkRayChatOptions = {}) => (
+const remarkRayChat = ({ hasMainTitle = true }: RemarkRayChatOptions = {}) => (
   tree: MarkdownNode,
 ): void => {
   // Blocks that are the second or later line of one paragraph in the source.
@@ -82,11 +80,7 @@ const remarkRayChat = ({ hasMainTitle = true, isStreaming = false }: RemarkRayCh
   // The opening paragraph is the main title when the block right after it is a title.
   const drawn = blocks.filter((node) => !DRAWS_NOTHING.has(node.type));
   const opening = hasMainTitle && drawn[0]?.type === 'paragraph' ? drawn[0] : undefined;
-  if (opening && !drawn[1] && isStreaming) {
-    // Not decided yet: draw nothing until the next block starts or the stream ends.
-    tree.children = blocks.filter((node) => node !== opening);
-    return;
-  }
+  if (opening) setProperties(opening, { dataRayChatOpening: true });
   const mainTitle = drawn[1]?.type === 'heading' ? opening : undefined;
 
   const kept: MarkdownNode[] = [];

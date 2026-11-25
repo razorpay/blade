@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import type { Components, Options } from 'react-markdown';
+import type { Components, ExtraProps, Options } from 'react-markdown';
 import type { Element } from 'hast';
 import styled from 'styled-components';
 import { cleanRayText } from './cleanRayText';
@@ -28,12 +28,21 @@ import type { BladeElementRef } from '~utils/types';
  *
  * Gaps come from remarkRayChat as data-ray-chat-gap: 12 under a title and between a paragraph's
  * lines, 16 between blocks, 24 before a section.
+ *
+ * While a reply streams, its opening paragraph shows as body text; when a title arrives after it,
+ * it grows into the main title with the owner's soft ease-out (GROW). Size, line height, letter
+ * spacing, colour and the height all move together; the fonts can't, so a body-text copy fades out
+ * over it (data-ray-chat-was) while the text fades in. Reduced motion switches at once.
  */
+/** The owner's ease for the grow ("a nice ease"): a soft ease-out. Not a Blade motion token. */
+const GROW = { durationMs: 320, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' };
+
 const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
   ${({ theme, $isDark }) => {
     const { fonts, lineHeights, letterSpacings } = theme.typography;
     const { colors, spacing, border } = theme;
     const tint = colors.interactive.background.gray.faded;
+    const grow = `${GROW.durationMs}ms ${GROW.easing}`;
 
     return `
       font-family: ${fonts.family.text};
@@ -87,6 +96,39 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
 
       & blockquote { margin: 0; padding: 0; }
       & blockquote > * + * { margin-top: ${makeSpace(spacing[5])}; }
+
+      & [data-ray-chat-opening] {
+        position: relative;
+        transition: font-size ${grow}, line-height ${grow}, letter-spacing ${grow}, color ${grow};
+      }
+      & [data-ray-chat-was] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-family: ${fonts.family.text};
+        font-size: ${makeTypographySize(fonts.size[100])};
+        font-weight: ${fonts.weight.regular};
+        line-height: ${makeTypographySize(lineHeights[200])};
+        letter-spacing: ${makeLetterSpacing(letterSpacings[50], fonts.size[100])};
+        color: ${colors.surface.text.gray.subtle};
+        text-wrap: pretty;
+        pointer-events: none;
+        user-select: none;
+        animation: ray-chat-output-fade-out ${grow} both;
+      }
+      /* GenUI's word fade has played already; it shouldn't replay in the copy. */
+      & [data-ray-chat-was] [data-animate-word] { animation: none; }
+      & [data-ray-chat-growing] > [data-ray-chat-now] {
+        animation: ray-chat-output-fade-in ${grow} both;
+      }
+      @keyframes ray-chat-output-fade-in { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes ray-chat-output-fade-out { from { opacity: 1; } to { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        & [data-ray-chat-opening] { transition: none; }
+        & [data-ray-chat-was] { display: none; }
+        & [data-ray-chat-growing] > [data-ray-chat-now] { animation: none; }
+      }
     `;
   }}
 `;
@@ -97,23 +139,55 @@ const gapOfFirstChild = (node?: Element): string | undefined => {
   return first?.type === 'element' ? (first.properties.dataRayChatGap as string) : undefined;
 };
 
+const hasDataAttribute = (props: object, name: string): boolean => {
+  const value = (props as Record<string, unknown>)[name];
+  return value !== undefined && value !== false;
+};
+
+/**
+ * A paragraph. The opening one (data-ray-chat-opening) shows as body text and, if a title arrives
+ * after it while the reply streams, grows into the main title: for GROW.durationMs its body-text
+ * copy fades out over the growing text.
+ */
+const ChatParagraph = ({
+  node: _node,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'p'> & ExtraProps): React.ReactElement => {
+  const isMainTitle = hasDataAttribute(props, 'data-ray-chat-lead');
+  const [wasMainTitle, setWasMainTitle] = React.useState(isMainTitle);
+  const [isGrowing, setIsGrowing] = React.useState(false);
+  if (isMainTitle !== wasMainTitle) {
+    // Adjusting state on a prop change: it grows only when it becomes the main title once drawn.
+    setWasMainTitle(isMainTitle);
+    setIsGrowing(isMainTitle);
+  }
+  React.useEffect(() => {
+    if (!isGrowing) return undefined;
+    const timer = setTimeout(() => setIsGrowing(false), GROW.durationMs);
+    return () => clearTimeout(timer);
+  }, [isGrowing]);
+
+  if (!hasDataAttribute(props, 'data-ray-chat-opening')) return <p {...props}>{children}</p>;
+  return (
+    <p {...props} data-ray-chat-growing={isGrowing ? '' : undefined}>
+      {isGrowing ? (
+        <span aria-hidden="true" data-ray-chat-was="">
+          {children}
+        </span>
+      ) : null}
+      <span data-ray-chat-now="">{children}</span>
+    </p>
+  );
+};
+
 // Kept at module level so a streaming reply re-renders without remounting its elements.
 const remarkPlugins = [remarkRayChat] as Options['remarkPlugins'];
-const remarkPluginsWhileStreaming = [
-  [remarkRayChat, { isStreaming: true }],
-] as Options['remarkPlugins'];
 const remarkPluginsWithoutMainTitle = [
   [remarkRayChat, { hasMainTitle: false }],
 ] as Options['remarkPlugins'];
-
-const remarkPluginsFor = (
-  hasMainTitle: boolean,
-  isStreaming: boolean,
-): Options['remarkPlugins'] => {
-  if (!hasMainTitle) return remarkPluginsWithoutMainTitle;
-  return isStreaming ? remarkPluginsWhileStreaming : remarkPlugins;
-};
 const markdownComponents: Components = {
+  p: ChatParagraph,
   // Italic is drawn as plain text.
   em: ({ children }) => <span>{children}</span>,
   // Blade's Link, as GenUI's TEXT draws links.
@@ -147,14 +221,7 @@ type BaseRayChatOutputProps = RayChatOutputProps & {
 };
 
 const _BaseRayChatOutput = (
-  {
-    children,
-    isStreaming = false,
-    testID,
-    rehypePlugins,
-    hasMainTitle = true,
-    ...rest
-  }: BaseRayChatOutputProps,
+  { children, testID, rehypePlugins, hasMainTitle = true, ...rest }: BaseRayChatOutputProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { colorScheme } = useTheme();
@@ -172,7 +239,7 @@ const _BaseRayChatOutput = (
     >
       <ReactMarkdown
         skipHtml
-        remarkPlugins={remarkPluginsFor(hasMainTitle, isStreaming)}
+        remarkPlugins={hasMainTitle ? remarkPlugins : remarkPluginsWithoutMainTitle}
         rehypePlugins={rehypePlugins}
         components={markdownComponents}
       >
@@ -187,8 +254,8 @@ const BaseRayChatOutput = React.forwardRef(_BaseRayChatOutput);
 /**
  * Draws one RAY chat message, its Markdown, the way RAY's chat looks: the opening paragraph (the
  * answer) as the main title when a title follows it, short replies as body text, then titles, body,
- * lists and code by the chat rules. Pass `isStreaming` while the reply streams in, so nothing it
- * has drawn is restyled.
+ * lists and code by the chat rules. While a reply streams, its opening paragraph shows as body text
+ * and grows smoothly into the main title if a title arrives after it.
  *
  * @example
  * <RayChatOutput>{reply}</RayChatOutput>

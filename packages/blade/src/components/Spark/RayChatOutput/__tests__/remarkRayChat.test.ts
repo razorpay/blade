@@ -76,28 +76,22 @@ describe('remarkRayChat', () => {
     ]);
   });
 
-  it('holds the opening paragraph back while streaming until the next block starts', () => {
-    const streaming = { isStreaming: true };
-    expect(runWith(streaming, paragraph(text('Your payouts are')))).toEqual([]);
-    expect(leads(runWith(streaming, paragraph(text('On time.')), heading(3, text('F'))))).toEqual([
-      true,
-      false,
-    ]);
-    expect(leads(runWith(streaming, paragraph(text('On time.')), paragraph(text('T'))))).toEqual([
-      false,
-      false,
-    ]);
-    // nothing to hold when the reply opens with something else
-    expect(types(runWith(streaming, list()))).toEqual(['list']);
+  it('draws the opening paragraph straight away, marked so it can grow into the main title', () => {
+    // mid-stream: the paragraph alone is body text, marked as the opening paragraph
+    const alone = run(paragraph(text('Your payouts are')));
+    expect(types(alone)).toEqual(['paragraph']);
+    expect(alone[0].data?.hProperties?.dataRayChatOpening).toBe(true);
+    expect(leads(alone)).toEqual([false]);
+    // once a title follows, the same paragraph becomes the main title
+    expect(leads(run(paragraph(text('On time.')), heading(3, text('F'))))).toEqual([true, false]);
+    // nothing to mark when the reply opens with something else
+    expect(run(list())[0].data?.hProperties?.dataRayChatOpening).toBeUndefined();
   });
 
-  it('has no main title, and holds nothing, when told so (a later TEXT in a GenUI reply)', () => {
-    const options = { hasMainTitle: false, isStreaming: true };
-    expect(leads(runWith(options, paragraph(text('More')), heading(3, text('F'))))).toEqual([
-      false,
-      false,
-    ]);
-    expect(types(runWith(options, paragraph(text('More below'))))).toEqual(['paragraph']);
+  it('has no main title, and marks nothing, when told so (a later TEXT in a GenUI reply)', () => {
+    const blocks = runWith({ hasMainTitle: false }, paragraph(text('More')), heading(3, text('F')));
+    expect(leads(blocks)).toEqual([false, false]);
+    expect(blocks[0].data?.hProperties?.dataRayChatOpening).toBeUndefined();
   });
 
   it('has no main title when the reply opens with a title', () => {

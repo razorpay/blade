@@ -24,12 +24,10 @@ const Unstyled = ({ children }: { children: React.ReactNode }) => (
   <div className="sb-unstyled">{children}</div>
 );
 
-const Answer = ({ children, isStreaming }: { children: string; isStreaming?: boolean }) => (
+const Answer = ({ children }: { children: string }) => (
   <Unstyled>
     <Box width="752px">
-      <RayChatOutput testID="answer" isStreaming={isStreaming}>
-        {children}
-      </RayChatOutput>
+      <RayChatOutput testID="answer">{children}</RayChatOutput>
     </Box>
   </Unstyled>
 );
@@ -194,14 +192,17 @@ const StreamingAnswer = ({ reply }: { reply: string }) => {
       <button type="button" data-testid="next-chunk" onClick={() => setShown((n) => n + 1)}>
         Next chunk
       </button>
-      <Answer isStreaming={shown < chunks.length}>{chunks.slice(0, shown).join('')}</Answer>
+      <Answer>{chunks.slice(0, shown).join('')}</Answer>
     </>
   );
 };
 
+const isMainTitle = (block?: Element) => Boolean(block?.hasAttribute('data-ray-chat-lead'));
+
 /**
- * Streams the story's reply chunk by chunk. Returns every change to a drawn block's look (type,
- * colour, gap), and how many blocks were drawn after each chunk.
+ * Streams the story's reply chunk by chunk and watches every drawn block. A block's look (type,
+ * colour, gap) must never change, except the opening paragraph growing into the main title: that
+ * may happen once, with a crossfade copy over it while it grows.
  */
 const streamReply = async (canvasElement: HTMLElement, reply: string) => {
   const look = (block: Element) => {
@@ -218,15 +219,24 @@ const streamReply = async (canvasElement: HTMLElement, reply: string) => {
   const nextChunk = within(canvasElement).getByTestId('next-chunk');
   const firstLooks: string[] = [];
   const changes: string[] = [];
-  const drawnBlocks: number[] = [];
+  const grewAt: number[] = [];
+  let wasCrossfaded = false;
+  let drawnWhileStreaming = 0;
   // Chunks arrive one after another, so each waits for the last one to be drawn.
   for (let chunk = 1; chunk <= chunksOf(reply).length; chunk++) {
+    const openingWasMainTitle = isMainTitle(blocksOf(canvasElement)[0]);
     nextChunk.click();
     // eslint-disable-next-line no-await-in-loop
     await new Promise((resolve) => requestAnimationFrame(resolve));
     const blocks = blocksOf(canvasElement);
-    drawnBlocks.push(blocks.length);
+    if (chunk === 1) drawnWhileStreaming = blocks.length;
+    if (isMainTitle(blocks[0]) !== openingWasMainTitle) {
+      grewAt.push(chunk);
+      wasCrossfaded = Boolean(blocks[0].querySelector('[data-ray-chat-was]'));
+    }
     blocks.forEach((block, index) => {
+      // the opening paragraph is judged by its growing, not its look, once it's the main title
+      if (index === 0 && isMainTitle(block)) return;
       const now = look(block);
       firstLooks[index] = firstLooks[index] ?? now;
       if (now !== firstLooks[index]) {
@@ -235,28 +245,43 @@ const streamReply = async (canvasElement: HTMLElement, reply: string) => {
       }
     });
   }
-  return { changes, drawnBlocks };
+  // let a grow finish
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  return { changes, grewAt, wasCrossfaded, drawnWhileStreaming };
 };
 
 export const StreamsWithoutJumps: StoryFn = () => <StreamingAnswer reply={STREAMED_REPLY} />;
 StreamsWithoutJumps.play = async ({ canvasElement }) => {
-  const { changes } = await streamReply(canvasElement, STREAMED_REPLY);
+  const { changes, grewAt, wasCrossfaded, drawnWhileStreaming } = await streamReply(
+    canvasElement,
+    STREAMED_REPLY,
+  );
   await expect(changes.join('\n')).toBe('');
-  // the opening paragraph waited for the title after it, then was drawn once as the main title
-  await expect(blocksOf(canvasElement)[0]).toHaveAttribute('data-ray-chat-lead');
+  // drawn straight away, then grown once into the main title, crossfading
+  await expect(drawnWhileStreaming).toBe(1);
+  await expect(grewAt).toHaveLength(1);
+  await expect(wasCrossfaded).toBe(true);
+  const opening = blocksOf(canvasElement)[0];
+  await expect(isMainTitle(opening)).toBe(true);
+  await expect([style(opening).fontFamily.split(',')[0], style(opening).fontSize]).toEqual([
+    '"TASA Orbiter"',
+    '20px',
+  ]);
+  await expect(opening.querySelector('[data-ray-chat-was]')).toBeNull();
 };
 
 const SHORT_REPLY = 'No paid orders were found on 21 Sep 2026.';
 
 export const ShortReplyEndsAsBody: StoryFn = () => <StreamingAnswer reply={SHORT_REPLY} />;
 ShortReplyEndsAsBody.play = async ({ canvasElement }) => {
-  const { changes, drawnBlocks } = await streamReply(canvasElement, SHORT_REPLY);
+  const { changes, grewAt, drawnWhileStreaming } = await streamReply(canvasElement, SHORT_REPLY);
   await expect(changes.join('\n')).toBe('');
-  // held while it streamed, drawn once the stream ended, as body text
-  await expect(drawnBlocks.slice(0, -1).every((count) => count === 0)).toBe(true);
+  // shown while it streamed, never grown, ends as body text
+  await expect(drawnWhileStreaming).toBe(1);
+  await expect(grewAt).toEqual([]);
   const blocks = blocksOf(canvasElement);
   await expect(blocks).toHaveLength(1);
-  await expect(blocks[0]).not.toHaveAttribute('data-ray-chat-lead');
+  await expect(isMainTitle(blocks[0])).toBe(false);
   await expect(style(blocks[0]).fontSize).toBe('14px');
 };
 

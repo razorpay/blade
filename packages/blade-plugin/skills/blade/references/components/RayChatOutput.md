@@ -4,7 +4,7 @@ RayChatOutput
 
 ## Description
 
-RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. When a title follows its opening paragraph (a reply with sections), that paragraph, the answer, is the main title; a short reply stays body text. Then come titles, body text, lists, inline IDs and code. With `isStreaming`, the opening paragraph waits until the next block starts, so a streaming reply never restyles what it has drawn. `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
+RayChatOutput draws RAY's chat text: the words an AI assistant writes outside the cards (answers, questions back, "nothing found", lead-ins to a card). It takes one message as Markdown and draws it the way RAY's chat looks. When a title follows its opening paragraph (a reply with sections), that paragraph, the answer, is the main title; a short reply stays body text. Then come titles, body text, lists, inline IDs and code. While a reply streams, its opening paragraph shows as body text straight away and, if a title arrives after it, grows into the main title with a soft ease-out over 320 ms (instantly with reduced motion). `rayChatOutputGenUI` makes GenUI draw its `TEXT` this way, while GenUI's cards and tables stay its own.
 
 ## Important Constraints
 
@@ -12,7 +12,7 @@ RayChatOutput draws RAY's chat text: the words an AI assistant writes outside th
 - RAY's text is tidied before it's drawn. Its `{"assistant_reply": "…"}` JSON wrapper is unwrapped (also while it streams), a literal `\n` becomes a line break, and emoji are left out. Code is left as written.
 - How each part is drawn:
   - Every heading level is drawn as the one title style. A **bold** line on its own stays bold body text.
-  - In GenUI, only the reply's first component can open with the main title, and only the last component counts as streaming.
+  - In GenUI, only the reply's first component can open with the main title.
   - Italic is drawn as plain text.
   - A `---` divider draws no line; the block after it starts 24px lower.
   - Raw HTML is left out, and an image is drawn as its alt text.
@@ -31,12 +31,6 @@ type RayChatOutputProps = {
    * a literal `\n` becomes a line break, and emoji are left out.
    */
   children?: string;
-  /**
-   * Whether the reply is still streaming in. The opening paragraph then waits until the next
-   * block starts, so it is drawn once, as the main title or as body text.
-   * @default false
-   */
-  isStreaming?: boolean;
   testID?: string;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;

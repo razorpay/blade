@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { act } from '@testing-library/react';
 import type { Components } from 'react-markdown';
 import { RayChatOutput } from '../RayChatOutput';
 import { remarkRayChat } from '../remarkRayChat';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 /**
  * Jest can't load the ESM-only react-markdown (jest-setup.web.js mocks it), so these tests check
@@ -45,11 +48,6 @@ describe('<RayChatOutput />', () => {
     expect(markdownProps().skipHtml).toBe(true);
     expect(markdownProps().remarkPlugins).toEqual([remarkRayChat]);
     expect(markdownProps().rehypePlugins).toBeUndefined();
-  });
-
-  it('holds its opening paragraph back while it streams', () => {
-    renderWithTheme(<RayChatOutput isStreaming>Your payouts are</RayChatOutput>);
-    expect(markdownProps().remarkPlugins).toEqual([[remarkRayChat, { isStreaming: true }]]);
   });
 
   it('draws nothing for a missing reply, as when a stream has not started', () => {
@@ -107,6 +105,64 @@ describe('<RayChatOutput />', () => {
   it('names itself, so DevTools shows RayChatOutput rather than ForwardRef', () => {
     expect(Reflect.get(RayChatOutput, 'displayName')).toBe('RayChatOutput');
     expect(getComponentId(<RayChatOutput />)).toBe('ray-chat-output');
+  });
+
+  describe('the opening paragraph growing into the main title', () => {
+    beforeEach(() => jest.useFakeTimers());
+    afterEach(() => jest.useRealTimers());
+
+    const drawParagraph = (): React.ComponentType<Record<string, unknown>> => {
+      renderWithTheme(<RayChatOutput>x</RayChatOutput>);
+      const Paragraph = markdownProps().components.p as React.ComponentType<
+        Record<string, unknown>
+      >;
+      return Paragraph;
+    };
+
+    it('crossfades from body text when a title arrives after it, for 320 ms', () => {
+      const Paragraph = drawParagraph();
+      const body = { 'data-ray-chat-opening': true, children: 'Your payouts are on time.' };
+      const { container, rerender } = renderWithTheme(<Paragraph {...body} />);
+      expect(container.querySelector('[data-ray-chat-was]')).toBeNull();
+
+      rerender(
+        <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+          <Paragraph {...body} data-ray-chat-lead />
+        </BladeProvider>,
+      );
+      const was = container.querySelector('[data-ray-chat-was]');
+      expect(was).toHaveAttribute('aria-hidden', 'true');
+      expect(was).toHaveTextContent('Your payouts are on time.');
+      expect(container.querySelector('p')).toHaveAttribute('data-ray-chat-growing');
+
+      act(() => {
+        jest.advanceTimersByTime(319);
+      });
+      expect(container.querySelector('[data-ray-chat-was]')).not.toBeNull();
+      act(() => {
+        jest.advanceTimersByTime(1);
+      });
+      expect(container.querySelector('[data-ray-chat-was]')).toBeNull();
+      expect(container.querySelector('p')).not.toHaveAttribute('data-ray-chat-growing');
+    });
+
+    it('does not grow a paragraph that is the main title from the start', () => {
+      const Paragraph = drawParagraph();
+      const { container } = renderWithTheme(
+        <Paragraph data-ray-chat-opening data-ray-chat-lead>
+          Done.
+        </Paragraph>,
+      );
+      expect(container.querySelector('[data-ray-chat-was]')).toBeNull();
+      expect(container.querySelector('p')).toHaveAttribute('data-ray-chat-lead');
+    });
+
+    it('leaves other paragraphs as plain paragraphs', () => {
+      const Paragraph = drawParagraph();
+      const { container } = renderWithTheme(<Paragraph data-ray-chat-gap="16">Two.</Paragraph>);
+      expect(container.querySelector('p')?.innerHTML).toBe('Two.');
+      expect(container.querySelector('p')).toHaveAttribute('data-ray-chat-gap', '16');
+    });
   });
 
   it('marks itself as a Blade component', () => {

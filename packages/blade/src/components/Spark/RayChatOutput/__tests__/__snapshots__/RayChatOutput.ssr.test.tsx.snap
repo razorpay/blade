@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  jZHdxr">Your payouts are on time.</div></div>"`;
+exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  gWiAEs">Your payouts are on time.</div></div>"`;
 
 exports[`<RayChatOutput /> renders on the server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -93,6 +93,62 @@ exports[`<RayChatOutput /> renders on the server 2`] = `
 
 .c0.c0.c0.c0.c0 blockquote > * + * {
   margin-top: 16px;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-opening] {
+  position: relative;
+  -webkit-transition: font-size 320ms cubic-bezier(0.22,1,0.36,1),line-height 320ms cubic-bezier(0.22,1,0.36,1),letter-spacing 320ms cubic-bezier(0.22,1,0.36,1),color 320ms cubic-bezier(0.22,1,0.36,1);
+  transition: font-size 320ms cubic-bezier(0.22,1,0.36,1),line-height 320ms cubic-bezier(0.22,1,0.36,1),letter-spacing 320ms cubic-bezier(0.22,1,0.36,1),color 320ms cubic-bezier(0.22,1,0.36,1);
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-was] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  color: hsla(200,10%,18%,1);
+  text-wrap: pretty;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-animation: ray-chat-output-fade-out 320ms cubic-bezier(0.22,1,0.36,1) both;
+  animation: ray-chat-output-fade-out 320ms cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-was] [data-animate-word] {
+  -webkit-animation: none;
+  animation: none;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-growing] > [data-ray-chat-now] {
+  -webkit-animation: ray-chat-output-fade-in 320ms cubic-bezier(0.22,1,0.36,1) both;
+  animation: ray-chat-output-fade-in 320ms cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c0.c0.c0.c0.c0 [data-ray-chat-opening] {
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  .c0.c0.c0.c0.c0 [data-ray-chat-was] {
+    display: none;
+  }
+
+  .c0.c0.c0.c0.c0 [data-ray-chat-growing] > [data-ray-chat-now] {
+    -webkit-animation: none;
+    animation: none;
+  }
 }
 
 <div

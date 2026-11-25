@@ -16,7 +16,7 @@ const FIGMA_URL =
 const Page = (): ReactElement => (
   <StoryPageWrapper
     componentName="RayChatOutput"
-    componentDescription="RayChatOutput draws RAY's chat text (the words outside the cards) the way RAY's chat looks: its opening paragraph (the answer) as the main title when a title follows it, short replies as body text, then titles, body, lists and code. With isStreaming, a streaming reply never restyles what it has drawn. It tidies RAY's text before drawing it: its JSON wrapper, literal \n and emoji. Use rayChatOutputGenUI to make GenUI draw its TEXT this way."
+    componentDescription="RayChatOutput draws RAY's chat text (the words outside the cards) the way RAY's chat looks: its opening paragraph (the answer) as the main title when a title follows it, short replies as body text, then titles, body, lists and code. While a reply streams, the opening paragraph shows as body text and grows into the main title if a title follows it. It tidies RAY's text before drawing it: its JSON wrapper, literal \n and emoji. Use rayChatOutputGenUI to make GenUI draw its TEXT this way."
     figmaURL={FIGMA_URL}
     apiDecisionLink={null}
     imports={`import { RayChatOutput, rayChatOutputGenUI } from '@razorpay/blade/components';`}
