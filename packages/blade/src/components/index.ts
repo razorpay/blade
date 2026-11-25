@@ -17,6 +17,7 @@ export * from './Button';
 export * from './Button/IconButton';
 export * from './ButtonGroup';
 export * from './Card';
+export * from './CardGroup';
 export * from './Carousel';
 export * from './Checkbox';
 export * from './ChatInput';
