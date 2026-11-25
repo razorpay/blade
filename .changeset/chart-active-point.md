@@ -1,5 +1,6 @@
 ---
 '@razorpay/blade': minor
+'@razorpay/blade-plugin': patch
 ---
 
 feat(Charts): `onActivePointChange` on the line, area, bar and donut wrappers
