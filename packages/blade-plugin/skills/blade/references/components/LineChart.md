@@ -117,7 +117,7 @@ type ChartActivePointItem = {
   /** The CSS colour of the series. */
   color: string;
   /** The series colour as a chart colour token, as ChartLine, ChartBar and ChartDonutCell take it. */
-  colorToken: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
 /** The point a pointer, a tap or the arrow keys make active. */

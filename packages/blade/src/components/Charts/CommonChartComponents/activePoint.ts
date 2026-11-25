@@ -165,8 +165,11 @@ const isSamePoint = (a: ChartActivePoint | null, b: ChartActivePoint | null): bo
       const other = b.items[i];
       return (
         item.dataKey === other.dataKey &&
+        item.name === other.name &&
         item.value === other.value &&
-        item.formattedValue === other.formattedValue
+        item.formattedValue === other.formattedValue &&
+        item.color === other.color &&
+        item.colorToken === other.colorToken
       );
     })
   );

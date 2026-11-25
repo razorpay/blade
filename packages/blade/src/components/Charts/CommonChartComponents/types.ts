@@ -354,10 +354,13 @@ type ChartActivePointItem = {
    * series with no value, kept with ChartTooltip `filterNull={false}`.
    */
   formattedValue: string;
-  /** The series colour, as a CSS colour. */
+  /** The series colour, as a resolved CSS colour. `''` when the chart cannot resolve it. */
   color: string;
-  /** The series colour, as the chart colour token that ChartLine, ChartBar and ChartDonutCell take. */
-  colorToken: ChartColorToken;
+  /**
+   * The series colour, as the chart colour token that ChartLine, ChartBar and ChartDonutCell take.
+   * Undefined when the series has no token.
+   */
+  colorToken?: ChartColorToken;
 };
 
 /** The point a pointer, a tap or the arrow keys make active. */
@@ -382,7 +385,9 @@ type ChartActivePointProps = {
    * Works in `v1` and `v2`. Use it to show the value in your own UI, for example a headline.
    *
    * The text follows the ChartTooltip `formatter` and `labelFormatter`, with the arguments the
-   * tooltip gives them. A custom ChartTooltip `content` is not mirrored. A series with no value at
+   * web (recharts) tooltip gives them: `formatter(value, name, entry, index, payload)` and
+   * `labelFormatter(label, payload)`. Native uses the same arguments, which can differ from what
+   * the native tooltip passes. A custom ChartTooltip `content` is not mirrored. A series with no value at
    * the point is left out, unless ChartTooltip has `filterNull={false}`. The chart sends the point
    * again when the same point reads differently, and null on unmount.
    */
