@@ -135,6 +135,76 @@ type data = {
   [key: string]: string | number;
 };
 
+/**
+ * The look of a chart. `v1` renders as before, and the display options have no effect.
+ * `v2` is the new look: a tight Y label column, fixed spacing, X labels that thin out to fit.
+ * The display options apply with `v2` only. Web only: the native charts ignore them.
+ */
+type ChartVersion = 'v1' | 'v2';
+
+type ChartVersionProps = {
+  /** @default 'v1' */
+  version?: ChartVersion;
+};
+
+/** A Blade spacing token from `spacing.3` to `spacing.8`. */
+type ChartLegendGap = 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.6' | 'spacing.7' | 'spacing.8';
+
+type ChartValueFormat = {
+  /** `currency`: an amount. `count`: whole numbers. `percent`: a value already in percent. */
+  type: 'currency' | 'count' | 'percent';
+  /** For `currency`. @default 'INR' */
+  currency?: string;
+};
+
+type ChartLegendDisplayProps = {
+  /**
+   * Where the legend sits. On a donut, `left` and `right` put it beside the ring.
+   * @default 'bottom'
+   */
+  legendPlacement?: 'top' | 'bottom';
+  /**
+   * Undefined is auto: the legend shows for 2 or more series (or donut slices) and hides for one.
+   * `true` shows it and adds a `ChartLegend` when there is none. `false` hides it.
+   */
+  showLegend?: boolean;
+  /**
+   * The gap between the legend and the nearest chart element.
+   * @default 'spacing.5'
+   */
+  legendGap?: ChartLegendGap;
+};
+
+/** Display options. They apply with `version="v2"` only, except `valueFormat`. */
+type ChartWrapperDisplayProps = {
+  /**
+   * A line on the left, the right and the bottom of the plot, in the gridline colour and width.
+   * With no border, the bottom gridline is the baseline.
+   * @default false
+   */
+  showBorder?: boolean;
+  /**
+   * Where the Y labels sit: a column `left` or `right` of the plot, or `overlap` inside the plot.
+   * `overlap` with `showBorder` shows as `left`. `outside` is an alias of `right`.
+   * A bar chart with `layout="vertical"` always takes `left`.
+   * @default 'left'
+   */
+  yLabelPlacement?: 'left' | 'right' | 'overlap' | 'outside';
+  /** @default true */
+  yGridlines?: boolean;
+  /**
+   * Gridline and border width: `thin` (1px) or `thinner` (0.5px).
+   * @default 'thinner'
+   */
+  gridlineWidth?: 'thin' | 'thinner';
+  /**
+   * en-IN value format: compact Y ticks (₹1.5L) and full tooltip values (₹1,23,450.00),
+   * unless the axis or tooltip has its own formatter. Works in `v1` too.
+   */
+  valueFormat?: ChartValueFormat;
+} & ChartLegendDisplayProps &
+  ChartVersionProps;
+
 type ChartBarWrapperProps = {
   children?: React.ReactNode;
   /**
@@ -149,7 +219,7 @@ type ChartBarWrapperProps = {
    * Chart data to be rendered
    */
   data: data[];
-} & BoxProps;
+} & ChartWrapperDisplayProps & BoxProps;
 
 
 type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;

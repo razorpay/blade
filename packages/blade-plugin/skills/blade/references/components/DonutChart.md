@@ -62,13 +62,56 @@ type Content = {
   label?: string;
 };
 
+/**
+ * The look of a chart. `v1` renders as before, and the display options have no effect.
+ * `v2` is the new look: a tight Y label column, fixed spacing, X labels that thin out to fit.
+ * The display options apply with `v2` only. Web only: the native charts ignore them.
+ */
+type ChartVersion = 'v1' | 'v2';
+
+type ChartVersionProps = {
+  /** @default 'v1' */
+  version?: ChartVersion;
+};
+
+/** A Blade spacing token from `spacing.3` to `spacing.8`. */
+type ChartLegendGap = 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.6' | 'spacing.7' | 'spacing.8';
+
+type ChartValueFormat = {
+  /** `currency`: an amount. `count`: whole numbers. `percent`: a value already in percent. */
+  type: 'currency' | 'count' | 'percent';
+  /** For `currency`. @default 'INR' */
+  currency?: string;
+};
+
+type ChartLegendDisplayProps = {
+  /**
+   * Where the legend sits. On a donut, `left` and `right` put it beside the ring.
+   * @default 'bottom'
+   */
+  legendPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  /**
+   * Undefined is auto: the legend shows for 2 or more series (or donut slices) and hides for one.
+   * `true` shows it and adds a `ChartLegend` when there is none. `false` hides it.
+   */
+  showLegend?: boolean;
+  /**
+   * The gap between the legend and the nearest chart element.
+   * @default 'spacing.5'
+   */
+  legendGap?: ChartLegendGap;
+};
+
+/** Display options. They apply with `version="v2"` only. */
+type ChartDonutDisplayProps = ChartLegendDisplayProps & ChartVersionProps;
+
 type ChartDonutWrapperProps = {
   /**
    * Content to be displayed at center of donut chart
    */
   content?: Content | React.ReactNode;
   children?: React.ReactNode;
-} & BoxProps;
+} & ChartDonutDisplayProps & BoxProps;
 
 
 type ChartDonutCellProps = CellProps & {
