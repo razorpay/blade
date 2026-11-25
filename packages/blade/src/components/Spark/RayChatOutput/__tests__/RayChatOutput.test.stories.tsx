@@ -150,14 +150,27 @@ export const TableInText: StoryFn = () => (
   </Answer>
 );
 TableInText.play = async ({ canvasElement }) => {
-  // Tables are drawn as cards; in the chat text one becomes an aligned block, not rows of pipes.
+  // Tables are drawn as cards; in the chat text one is aligned plain text, not a code block.
   const blocks = blocksOf(canvasElement);
   await expect(blocks.map((block) => block.tagName)).toEqual(['P', 'DIV']);
-  // (a code block's text ends with its newline)
-  await expect(blocks[1].querySelector('pre code')?.textContent?.trimEnd()).toBe(
-    'Date     Amount\n21 Sep     ₹500\n22 Sep   ₹1,200',
-  );
   await expect(marginsTop(blocks)).toEqual(['0px', '16px']);
+  await expect(canvasElement.querySelector('pre')).toBeNull();
+  await expect(within(canvasElement).queryByRole('button', { name: 'Copy code block' })).toBeNull();
+
+  const table = blocks[1].querySelector('table') as HTMLElement;
+  const rows = Array.from(table.querySelectorAll('tr')).map((row) =>
+    Array.from(row.children).map((cell) => cell.textContent),
+  );
+  await expect(rows).toEqual([
+    ['Date', 'Amount'],
+    ['21 Sep', '₹500'],
+    ['22 Sep', '₹1,200'],
+  ]);
+  // the body font (which has ₹), tabular figures, the amount column aligned right
+  await expect(style(table).fontFamily.replace(/"/g, '')).toMatch(/^Inter,/);
+  await expect(style(table).fontVariantNumeric).toBe('tabular-nums');
+  const amount = table.querySelectorAll('td')[1];
+  await expect(style(amount).textAlign).toBe('right');
 };
 
 const STREAMED_REPLY = [

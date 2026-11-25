@@ -93,6 +93,44 @@ describe('<RayChatOutput />', () => {
     expect(block?.querySelector('pre')).toHaveTextContent('npm i');
   });
 
+  it('draws a table as aligned plain text, never as a code block', () => {
+    const tableBlock = {
+      type: 'element',
+      tagName: 'pre',
+      properties: {},
+      children: [
+        {
+          type: 'element',
+          tagName: 'code',
+          properties: { className: ['language-ray-table'], dataRayChatGap: '16' },
+          data: { meta: 'l r' },
+          children: [{ type: 'text', value: 'Route\tFee\nDirect\t₹500\n' }],
+        },
+      ],
+    };
+    const drawn = drawOverride('pre', { node: tableBlock, children: <code>ignored</code> });
+    const block = drawn.firstElementChild;
+    expect(block).toHaveAttribute('data-ray-chat-gap', '16');
+    expect(drawn.querySelector('pre, button')).toBeNull();
+    const rows = Array.from(drawn.querySelectorAll('tr')).map((row) =>
+      Array.from(row.children).map((cell) => [
+        cell.tagName,
+        cell.textContent,
+        cell.getAttribute('data-align'),
+      ]),
+    );
+    expect(rows).toEqual([
+      [
+        ['TH', 'Route', 'left'],
+        ['TH', 'Fee', 'right'],
+      ],
+      [
+        ['TD', 'Direct', 'left'],
+        ['TD', '₹500', 'right'],
+      ],
+    ]);
+  });
+
   it('keeps GenUI’s code block: its language and copy button', () => {
     const drawn = drawOverride('pre', {
       node: codeBlock,

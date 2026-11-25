@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import type { Components, ExtraProps, Options } from 'react-markdown';
 import type { Element } from 'hast';
 import styled from 'styled-components';
-import { cleanRayText } from './cleanRayText';
+import { cleanRayText, TABLE_BLOCK } from './cleanRayText';
 import { remarkRayChat } from './remarkRayChat';
 import type { RayChatOutputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
@@ -95,6 +95,25 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
       & pre { margin: 0; }
       & pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 
+      /* A table RAY wrote: aligned plain text in the body font, no lines; it scrolls only if wide. */
+      & [data-ray-chat-table-scroll] { overflow-x: auto; }
+      & [data-ray-chat-table] {
+        border-collapse: collapse;
+        font-variant-numeric: tabular-nums;
+      }
+      & [data-ray-chat-table] th, & [data-ray-chat-table] td {
+        padding: 0 ${makeSpace(spacing[6])} 0 0;
+        text-align: left;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+      & [data-ray-chat-table] th {
+        font-weight: ${$isDark ? fonts.weight.bold : fonts.weight.semibold};
+        color: ${colors.surface.text.gray.normal};
+      }
+      & [data-ray-chat-table] [data-align='right'] { text-align: right; }
+      & [data-ray-chat-table] th:last-child, & [data-ray-chat-table] td:last-child { padding-right: 0; }
+
       & blockquote { margin: 0; padding: 0; }
       & blockquote > * + * { margin-top: ${makeSpace(spacing[5])}; }
 
@@ -133,6 +152,60 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
     `;
   }}
 `;
+
+/** The text of a hast element. */
+const textOf = (element: Element): string =>
+  element.children.map((child) => (child.type === 'text' ? child.value : '')).join('');
+
+/**
+ * A table RAY wrote (cleanRayText's ray-table block: one row per line, cells split by tabs, the
+ * columns' alignment after the block's name) as aligned plain text. Not a code block: the body
+ * font, tabular figures, no copy button.
+ */
+const RayChatTable = ({ code }: { code: Element }): React.ReactElement => {
+  const alignments = String((code.data as { meta?: string } | undefined)?.meta ?? '').split(' ');
+  const alignOf = (column: number): 'left' | 'right' =>
+    alignments[column] === 'r' ? 'right' : 'left';
+  const [header = [], ...rows] = textOf(code)
+    .replace(/\n$/, '')
+    .split('\n')
+    .map((line) => line.split('\t'));
+  return (
+    <div data-ray-chat-table-scroll="">
+      <table data-ray-chat-table="">
+        <thead>
+          <tr>
+            {header.map((cell, column) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <th key={column} data-align={alignOf(column)}>
+                {cell}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <tr key={index}>
+              {row.map((cell, column) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <td key={column} data-align={alignOf(column)}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const isTableBlock = (element?: Element['children'][number]): element is Element =>
+  element?.type === 'element' &&
+  ((element.properties.className as string[] | undefined) ?? []).includes(
+    `language-${TABLE_BLOCK}`,
+  );
 
 /** A code block's gap is set on its `code`; the block around it needs it. */
 const gapOfFirstChild = (node?: Element): string | undefined => {
@@ -206,12 +279,20 @@ const markdownComponents: Components = {
   ),
   // An image is drawn as its alt text.
   img: ({ alt }) => <span>{alt}</span>,
-  // GenUI's code block (language and copy button), in a block that carries the chat's gap.
-  pre: ({ node, children }) => (
-    <div data-ray-chat-gap={gapOfFirstChild(node)}>
-      <MarkdownCodeBlockRenderer>{children}</MarkdownCodeBlockRenderer>
-    </div>
-  ),
+  // GenUI's code block (language and copy button), or a table RAY wrote as aligned plain text,
+  // in a block that carries the chat's gap.
+  pre: ({ node, children }) => {
+    const code = node?.children[0];
+    return (
+      <div data-ray-chat-gap={gapOfFirstChild(node)}>
+        {isTableBlock(code) ? (
+          <RayChatTable code={code} />
+        ) : (
+          <MarkdownCodeBlockRenderer>{children}</MarkdownCodeBlockRenderer>
+        )}
+      </div>
+    );
+  },
 };
 
 type BaseRayChatOutputProps = RayChatOutputProps & {
@@ -257,6 +338,11 @@ const BaseRayChatOutput = React.forwardRef(_BaseRayChatOutput);
  * answer) as the main title when a title follows it, short replies as body text, then titles, body,
  * lists and code by the chat rules. While a reply streams, its opening paragraph shows as body text
  * and grows smoothly into the main title if a title arrives after it.
+ *
+ * RAY's text is always tidied first, by design: this is RAY's component. Its JSON wrapper is
+ * unwrapped, a literal `\n` becomes a line break, emoji are dropped, and a Markdown table becomes
+ * aligned plain text. Code is left as written. It draws the chat's own typography, not GenUI's
+ * TEXT; only apps that pass `rayChatOutputGenUI` to GenUI get it there.
  *
  * @example
  * <RayChatOutput>{reply}</RayChatOutput>

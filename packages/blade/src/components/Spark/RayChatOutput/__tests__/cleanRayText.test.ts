@@ -58,8 +58,9 @@ describe('cleanRayText', () => {
 
   describe('Markdown tables', () => {
     // Tables are drawn as cards, so the chat doesn't parse them (no remark-gfm). A table RAY
-    // writes in its text becomes an aligned plain-text block instead of rows of pipes.
-    it('become an aligned plain-text block', () => {
+    // writes in its text becomes a ray-table block: one row per line, cells split by tabs, and the
+    // columns' alignment after the block's name. RayChatOutput draws it as aligned plain text.
+    it('become a ray-table block', () => {
       expect(
         cleanRayText(
           [
@@ -77,10 +78,10 @@ describe('cleanRayText', () => {
         [
           'Here are your payments:',
           '',
-          '```',
-          'Date          Amount   Status',
-          '21 Sep 2026     ₹500   Paid',
-          '22 Sep        ₹1,200   captured',
+          '```ray-table l r l',
+          'Date\tAmount\tStatus',
+          '21 Sep 2026\t₹500\tPaid',
+          '22 Sep\t₹1,200\tcaptured',
           '```',
           '',
           'Anything else?',
@@ -91,21 +92,23 @@ describe('cleanRayText', () => {
     it('keep IDs, links’ text and escaped pipes', () => {
       expect(
         cleanRayText('ID | Note\n--- | ---\norder_id_123 | [docs](https://x.test) a \\| b'),
-      ).toBe('```\nID             Note\norder_id_123   docs a | b\n```');
+      ).toBe('```ray-table l l\nID\tNote\norder_id_123\tdocs a | b\n```');
     });
 
     it('are a block from their first row, so a streaming table never changes block', () => {
-      expect(cleanRayText('Fees:\n\n|')).toBe('Fees:\n\n```\n\n```');
-      expect(cleanRayText('Fees:\n\n| Route | Fee |')).toBe('Fees:\n\n```\nRoute   Fee\n```');
-      expect(cleanRayText('| Route | Fee |\n|---')).toBe('```\nRoute   Fee\n```');
+      expect(cleanRayText('Fees:\n\n|')).toBe('Fees:\n\n```ray-table\n\n```');
+      expect(cleanRayText('Fees:\n\n| Route | Fee |')).toBe(
+        'Fees:\n\n```ray-table l l\nRoute\tFee\n```',
+      );
+      expect(cleanRayText('| Route | Fee |\n|---')).toBe('```ray-table l l\nRoute\tFee\n```');
       expect(cleanRayText('| Route | Fee |\n|---|---:|\n| Direct | ₹5')).toBe(
-        '```\nRoute    Fee\nDirect    ₹5\n```',
+        '```ray-table l r\nRoute\tFee\nDirect\t₹5\n```',
       );
     });
 
     it('keep an escaped pipe inside a cell, also in a row that opens and closes with pipes', () => {
       expect(cleanRayText('| a \\| b | c |\n|---|---|\n| x | y \\| |')).toBe(
-        '```\na | b   c\nx       y |\n```',
+        '```ray-table l l\na | b\tc\nx\ty |\n```',
       );
     });
 

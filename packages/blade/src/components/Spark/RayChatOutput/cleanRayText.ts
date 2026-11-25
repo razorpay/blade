@@ -6,8 +6,9 @@
  *  - the JSON wrapper  ```json {"assistant_reply": "…"} ```  → the reply inside it, even while it streams
  *  - literal `\n` (a backslash and an n)                    → a real line break, outside code
  *  - emoji                                                   → dropped ("NO EMOJIS EVER"), outside code
- *  - a Markdown table                                        → an aligned plain-text block. Tables are
- *    drawn as cards, so the chat doesn't parse them (no remark-gfm); left alone they'd be rows of pipes.
+ *  - a Markdown table                                        → a `ray-table` block that RayChatOutput
+ *    draws as aligned plain text. Tables are drawn as cards, so the chat doesn't parse them (no
+ *    remark-gfm); left alone they'd be rows of pipes.
  */
 
 // The wrapper's start: an optional ```json fence, then {"assistant_reply": "
@@ -87,7 +88,8 @@ const dropEmoji = (prose: string): string =>
 // A table starts at a line that opens with a pipe, so a streaming table is a block from its first
 // row; or at a row with pipes followed by a delimiter row such as --- | ---:.
 const TABLE_DELIMITER = /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)*\|?\s*$/;
-const COLUMN_GAP = '   ';
+/** The block a table becomes: ```ray-table l r, one row per line, cells split by tabs. */
+const TABLE_BLOCK = 'ray-table';
 
 const isTableStart = (lines: string[], index: number): boolean =>
   /^\s*\|/.test(lines[index]) ||
@@ -131,21 +133,14 @@ const plainCell = (cell: string): string =>
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     .trim();
 
-/** Rows padded into columns; a `---:` column is aligned right. */
-const alignRows = (rows: string[][], isRightAligned: boolean[]): string[] => {
+/** A table as a ray-table block; a `---:` column is aligned right (r), the rest left (l). */
+const tableBlock = (rows: string[][], isRightAligned: boolean[]): string[] => {
   const columns = Math.max(...rows.map((row) => row.length));
-  const widths = Array.from({ length: columns }, (_, column) =>
-    Math.max(...rows.map((row) => (row[column] ?? '').length)),
+  const alignments = Array.from({ length: columns }, (_, column) =>
+    isRightAligned[column] ? 'r' : 'l',
   );
-  return rows.map((row) =>
-    widths
-      .map((width, column) => {
-        const cell = row[column] ?? '';
-        return isRightAligned[column] ? cell.padStart(width) : cell.padEnd(width);
-      })
-      .join(COLUMN_GAP)
-      .trimEnd(),
-  );
+  const opening = [`\`\`\`${TABLE_BLOCK}`, ...alignments].join(' ');
+  return [opening, ...rows.map((row) => row.join('\t')), '```'];
 };
 
 const tablesAsText = (prose: string): string => {
@@ -167,11 +162,7 @@ const tablesAsText = (prose: string): string => {
       }
       next += 1;
     }
-    out.push(
-      ...(rows.length
-        ? ['```', ...alignRows(rows, isRightAligned), '```']
-        : lines.slice(index, next)),
-    );
+    out.push(...(rows.length ? tableBlock(rows, isRightAligned) : lines.slice(index, next)));
     index = next - 1;
   }
   return out.join('\n');
@@ -184,4 +175,4 @@ const cleanRayText = (text: string): string => {
   return mapOutside(CODE, tidied, dropEmoji).trim();
 };
 
-export { cleanRayText };
+export { cleanRayText, TABLE_BLOCK };
