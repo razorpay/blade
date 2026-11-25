@@ -34,6 +34,7 @@ type AnimatedDonutSliceProps = {
   isInteractive?: boolean;
   motionDuration: number;
   motionEasing: EasingFactoryFn;
+  testID?: string;
 };
 
 /**
@@ -112,6 +113,7 @@ const AnimatedDonutSlice = ({
   isInteractive = true,
   motionDuration,
   motionEasing,
+  testID,
 }: AnimatedDonutSliceProps): React.ReactElement => {
   const opacity = useSharedValue(FULL_OPACITY);
 
@@ -144,6 +146,7 @@ const AnimatedDonutSlice = ({
       opacity={isDimmed ? DIMMED_OPACITY : FULL_OPACITY}
       animatedProps={animatedProps}
       onPress={isInteractive ? onPress : undefined}
+      testID={testID}
     />
   );
 };
