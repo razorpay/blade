@@ -901,7 +901,7 @@ const CustomTooltip = ({
   formatter?: ChartTooltipProps['formatter'];
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName, rangeMap } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, rangeMap, valueFormat } = useCommonChartComponentsContext();
 
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
 
@@ -960,7 +960,13 @@ const CustomTooltip = ({
             {range?.rangeName ?? 'Industry'}
           </Text>
           <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
-            {`${String(lowerValue)}–${String(upperValue)}`}
+            {/* `valueFormat`: the band bounds in full, as the series value above. */}
+            {valueFormat
+              ? `${formatChartValueFull(lowerValue, valueFormat)}–${formatChartValueFull(
+                  upperValue,
+                  valueFormat,
+                )}`
+              : `${String(lowerValue)}–${String(upperValue)}`}
           </Text>
         </Box>
       ) : null}
