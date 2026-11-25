@@ -67,6 +67,28 @@ describe('valueFormat', () => {
     expect(yLabels(container)).toEqual(['₹0', '₹40K', '₹80K', '₹1.2L', '₹1.6L']);
   });
 
+  it('writes the reference band bounds in full in the tooltip', async () => {
+    const banded = monthly.map((row) => ({ ...row, low: 100000, high: 160000 }));
+    const { getByText } = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={banded} valueFormat={{ type: 'currency', currency: 'INR' }}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip defaultIndex={2} />
+          <ChartLine
+            dataKey="amount"
+            name="Collected"
+            rangeLowerDataKey="low"
+            rangeUpperDataKey="high"
+          />
+        </ChartLineWrapper>
+      </Box>,
+    );
+
+    await waitFor(() => expect(getByText('₹1,23,450.00')).toBeInTheDocument());
+    expect(getByText('₹1,00,000.00–₹1,60,000.00')).toBeInTheDocument();
+  });
+
   it.each([
     [{ type: 'count' as const }, '1,23,450', '1.2L'],
     [{ type: 'percent' as const }, '1,23,450.0%', '1,20,000%'],
