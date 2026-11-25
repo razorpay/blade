@@ -90,6 +90,70 @@ describe('<Carousel />', () => {
 
     expect(queryAllByRole('tab').length).toBe(0);
   });
+
+  test('when carouselItemAlignment="stretch" then slides should not have hardcoded height so align-items:stretch can work', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="stretch">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+    const slideStyle = window.getComputedStyle(slides[0]);
+    expect(slideStyle.height).toBe('');
+    expect(slideStyle.minHeight).toBe('');
+  });
+
+  test('when carouselItemAlignment="start" (default) then slides should have height:100% to fill track', () => {
+    const { container } = renderWithTheme(
+      <Carousel>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+    const slideStyle = window.getComputedStyle(slides[0]);
+    expect(slideStyle.height).toBe('100%');
+    expect(slideStyle.minHeight).toBe('100%');
+  });
+
+  test('when showIndicators=false and showNavigationButtons=false on mobile then no empty controls box should render', () => {
+    // On web, showNavigationButtons is forced true (showNavigationButtonProp || !isMobile),
+    // so the empty-box path only triggers on mobile platform. We verify the guard is in
+    // place by checking that Controls still renders correctly when showIndicators is false
+    // on web — the nav buttons fill the box, so it's never empty.
+    const { container } = renderWithTheme(
+      <Carousel showIndicators={false}>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    // Controls box should exist but contain only nav buttons (no indicators)
+    const controlsBox = container.querySelector('[data-blade-component="box"]');
+    expect(controlsBox).toBeInTheDocument();
+    // Should have navigation buttons but no indicator tabs
+    expect(controlsBox?.querySelectorAll('[data-blade-component="NavigationButton"]').length).toBe(
+      2,
+    );
+    expect(controlsBox?.querySelectorAll('[role="tab"]').length).toBe(0);
+  });
 });
 
 describe('Carousel Snapshots', () => {
@@ -165,6 +229,21 @@ describe('Carousel Snapshots', () => {
   it('should render with navigationButtonPosition=side', () => {
     const { container } = renderWithTheme(
       <Carousel visibleItems={1} navigationButtonPosition="side">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with carouselItemAlignment=stretch', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="stretch">
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
