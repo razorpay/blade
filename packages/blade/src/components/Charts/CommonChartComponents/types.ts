@@ -343,6 +343,38 @@ type RangeMap = Record<
   }
 >;
 
+/** One series at the active point of a chart. */
+type ChartActivePointItem = {
+  dataKey: string;
+  name: string;
+  value: number | string | undefined;
+  /** The value as the chart writes it: the tooltip `formatter`, else `valueFormat`. */
+  formattedValue: string;
+  /** The series colour, as a CSS colour. */
+  color: string;
+};
+
+/** The point a pointer, a tap or the arrow keys make active. */
+type ChartActivePoint = {
+  /** The index of the data row. On a donut, the index of the slice. */
+  index: number;
+  /** The raw label: the X value (Y on a horizontal bar chart), or the slice name. */
+  label: string;
+  /** The label as the chart writes it: the tooltip `labelFormatter`, else the axis `tickFormatter`. */
+  formattedLabel: string;
+  items: ChartActivePointItem[];
+};
+
+/** The hover readout prop of every chart wrapper: line, area, bar and donut. */
+type ChartActivePointProps = {
+  /**
+   * Called when the active point changes: a pointer moves to another point, a tap sets one, or
+   * the arrow keys move to one. Called with null when the pointer leaves. Not on every move.
+   * Works in `v1` and `v2`. Use it to show the value in your own UI, for example a headline.
+   */
+  onActivePointChange?: (point: ChartActivePoint | null) => void;
+};
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
@@ -455,6 +487,9 @@ type CommonChartComponentsContextType = CommonChartComponentsStateType &
 type ChartLabelContentProps = RechartsLabelProps;
 
 export type {
+  ChartActivePoint,
+  ChartActivePointItem,
+  ChartActivePointProps,
   CommonChartComponentsContextType,
   CommonChartComponentsStateType,
   CommonChartComponentsDispatchType,

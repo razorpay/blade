@@ -25,6 +25,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import {
   countChildrenOf,
   getChartMargin,
@@ -262,6 +263,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   showLegend,
   legendGap,
   valueFormat,
+  onActivePointChange,
   testID,
   data,
   ...restProps
@@ -634,6 +636,15 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   <ChartLegend key="blade-added-legend" />
                 ) : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+                {onActivePointChange ? (
+                  <ChartActivePointReporter
+                    data={data ?? []}
+                    children={children}
+                    seriesComponentId={componentIds.ChartLine}
+                    chartName="line"
+                    onActivePointChange={onActivePointChange}
+                  />
+                ) : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>
           </ChartSurface>

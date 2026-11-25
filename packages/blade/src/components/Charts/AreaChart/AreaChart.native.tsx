@@ -22,6 +22,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
+import {
+  createActivePointBuilder,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
 import { monotoneInterpolate } from '../utils/nullBridgeUtils';
 import {
   CommonChartComponentsContext,
@@ -651,6 +655,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   data = [],
   testID,
+  valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   const { theme, colorScheme } = useTheme();
@@ -741,6 +747,26 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const visibleAreas = useMemo(
     () => allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey)),
     [allAreas, selectedKeys],
+  );
+
+  // `onActivePointChange`: the tapped or scrubbed point, with the tooltip's text.
+  useActivePointChange(
+    activeIndex,
+    (index) =>
+      createActivePointBuilder({
+        data,
+        children,
+        valueFormat,
+        series: visibleAreas.map((area) => {
+          const token = dataColorMapping[area.dataKey]?.colorToken;
+          return {
+            dataKey: area.dataKey,
+            name: area.name ?? area.dataKey,
+            color: token ? (getIn(theme.colors, token) as string) : '',
+          };
+        }),
+      })(index),
+    onActivePointChange,
   );
 
   const secondaryLabelMap = useMemo(() => {

@@ -1,6 +1,7 @@
 import type { BarProps as RechartsBarProps } from 'recharts';
 import type {
   ChartWrapperDisplayProps,
+  ChartActivePointProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
@@ -123,7 +124,8 @@ type ChartBarWrapperProps = {
    */
   data: data[];
 } & BoxProps &
-  ChartWrapperDisplayProps;
+  ChartWrapperDisplayProps &
+  ChartActivePointProps;
 
 interface BarChartContextType {
   layout?: 'horizontal' | 'vertical';

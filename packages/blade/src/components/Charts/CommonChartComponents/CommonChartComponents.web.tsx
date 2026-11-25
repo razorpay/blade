@@ -630,7 +630,7 @@ const truncateToWidth = (
   return `${text.slice(0, end).trimEnd()}…`;
 };
 
-const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
+const _ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
   const {
     yLabelPlacement = 'left',
@@ -743,6 +743,12 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
     </>
   );
 };
+
+// The component id lets a bar chart with `layout="vertical"` read its labels for
+// `onActivePointChange`.
+const ChartYAxis = assignWithoutSideEffects(_ChartYAxis, {
+  componentId: componentId.chartYAxis,
+});
 
 /** The props recharts gives each horizontal gridline. */
 type GridLineProps = {
@@ -886,7 +892,7 @@ const CustomTooltip = ({
   );
 };
 
-const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
+const _ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
   const { valueFormat } = useCommonChartComponentsContext();
   // `valueFormat` on the wrapper: full values, unless the tooltip has its own formatter.
@@ -929,6 +935,11 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
     />
   );
 };
+
+// The component id lets a wrapper read the tooltip formatters for `onActivePointChange`.
+const ChartTooltip = assignWithoutSideEffects(_ChartTooltip, {
+  componentId: componentId.chartTooltip,
+});
 
 const StyledLegendWrapper = styled.button<{
   $isHidden: boolean;
@@ -1534,4 +1545,5 @@ export {
   ChartTooltip,
   ChartReferenceLine,
   ChartReferenceBand,
+  getChartColor,
 };

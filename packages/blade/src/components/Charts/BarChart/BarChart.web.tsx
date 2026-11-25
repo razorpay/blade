@@ -47,6 +47,7 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -305,6 +306,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   showLegend,
   legendGap,
   valueFormat,
+  onActivePointChange,
   testID,
   data = [],
   ...restProps
@@ -533,6 +535,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {barChartModifiedChildrens}
         {shouldAddLegend({ version, showLegend, children }) ? (
           <ChartLegend key="blade-added-legend" />
+        ) : null}
+        {onActivePointChange ? (
+          <ChartActivePointReporter
+            data={data}
+            children={children}
+            seriesComponentId={componentIds.chartBar}
+            chartName="bar"
+            labelAxisId={
+              layout === 'vertical' ? commonComponentIds.chartYAxis : commonComponentIds.chartXAxis
+            }
+            onActivePointChange={onActivePointChange}
+          />
         ) : null}
       </RechartsBarChart>
     </RechartsResponsiveContainer>

@@ -9,6 +9,7 @@ import type {
   ChartLegendDisplayProps,
   ChartDonutLegendPlacement,
   ChartVersionProps,
+  ChartActivePointProps,
 } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
 import type { ChartValueFormat } from '../utils/chartValueFormat';
@@ -81,7 +82,8 @@ type ChartDonutWrapperProps = {
      * @default 'bottom'
      */
     legendPlacement?: ChartDonutLegendPlacement;
-  } & ChartVersionProps;
+  } & ChartVersionProps &
+  ChartActivePointProps;
 
 type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;

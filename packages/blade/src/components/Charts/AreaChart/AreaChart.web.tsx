@@ -36,6 +36,7 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -152,6 +153,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   showLegend,
   legendGap,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   const display = resolveChartDisplayOptions({
@@ -479,6 +481,15 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 <ChartLegend key="blade-added-legend" />
               ) : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+              {onActivePointChange ? (
+                <ChartActivePointReporter
+                  data={data ?? []}
+                  children={children}
+                  seriesComponentId={componentIds.ChartArea}
+                  chartName="area"
+                  onActivePointChange={onActivePointChange}
+                />
+              ) : null}
             </RechartsAreaChart>
           </ResponsiveContainer>
         </ChartSurface>
