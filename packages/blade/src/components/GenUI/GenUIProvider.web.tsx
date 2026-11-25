@@ -2,7 +2,6 @@
 import React, { useMemo } from 'react';
 import type {
   GenUIAction,
-  GenUIChartLayout,
   GenUIChartVersion,
   GenUIComponentActionsRegistry,
   GenUIComponentRegistry,
@@ -37,12 +36,6 @@ type GenUIConfig = {
    * @default 'v2'
    */
   chartVersion?: GenUIChartVersion;
-  /**
-   * @deprecated Use `chartVersion`. `responsive` is `v2` and `fixed` is `v1`. `chartVersion`
-   * wins when both are set. `chartLayout` is not released yet, so the alias can go before the
-   * release.
-   */
-  chartLayout?: GenUIChartLayout;
 };
 
 // ============================================================================
@@ -108,7 +101,7 @@ const GenUIProvider = ({ children, config = {} }: GenUIProviderProps) => {
       registry,
       onActionClick: config.onActionClick,
       componentActions: config.componentActions,
-      chartVersion: config.chartVersion ?? (config.chartLayout === 'fixed' ? 'v1' : 'v2'),
+      chartVersion: config.chartVersion ?? 'v2',
       validComponentTypes: Object.keys(registry),
     };
   }, [config]);

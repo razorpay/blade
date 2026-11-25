@@ -273,6 +273,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     version,
     showLegend,
     seriesCount: donutSliceCount,
+    children,
   });
 
   const legendLayout = useMemo(() => {
@@ -378,7 +379,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           <RechartsResponsiveContainer width="100%" height="100%">
             <RechartsPieChart>
               {children}
-              {shouldAddLegend({ version, showLegend, children }) ? (
+              {shouldAddLegend({ version, showLegend, children, seriesCount: donutSliceCount }) ? (
                 <ChartLegend key="blade-added-legend" />
               ) : null}
               {onActivePointChange ? (

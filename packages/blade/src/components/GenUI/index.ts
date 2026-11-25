@@ -6,7 +6,6 @@ export type { GenUISchemaRendererProps } from './GenUISchemaRenderer';
 export type { GenUIComponent, TableComponent } from './GenUIComponents';
 
 export type {
-  GenUIChartLayout,
   GenUIChartVersion,
   GenUIAction,
   GenUIBaseComponent,

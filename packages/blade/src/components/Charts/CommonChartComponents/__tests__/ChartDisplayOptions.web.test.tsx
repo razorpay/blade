@@ -247,11 +247,11 @@ describe('v2 gridlines', () => {
   });
 });
 
-describe('yLabelPlacement="outside"', () => {
+describe('yLabelPlacement="right"', () => {
   const render = (): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} version="v2" yLabelPlacement="outside">
+        <ChartLineWrapper data={monthly} version="v2" yLabelPlacement="right">
           <ChartCartesianGrid />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
@@ -264,7 +264,6 @@ describe('yLabelPlacement="outside"', () => {
     const container = render();
     await waitFor(() => expect(yLabels(container).length).toBeGreaterThan(0));
     const surface = container.querySelector<HTMLElement>('[data-blade-chart-y-labels]');
-    // `outside` is an alias of `right`.
     expect(surface?.getAttribute('data-blade-chart-y-labels')).toBe('right');
     const ticks = Array.from(
       container.querySelectorAll('.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value'),

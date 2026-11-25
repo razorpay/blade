@@ -137,12 +137,11 @@ type Layout = 'horizontal' | 'vertical';
  * - `right`: in a column right of the plot, as wide as the widest label plus a gap. Each label is
  *   centred on its gridline.
  * - `overlap`: inside the plot, from its left edge, just below their gridline, with a halo.
- * - `outside`: an alias of `right`. It stays for the stories and GenUI nodes that use it.
  */
-type ChartYLabelPlacement = 'left' | 'right' | 'overlap' | 'outside';
+type ChartYLabelPlacement = 'left' | 'right' | 'overlap';
 
-/** The Y label placement after the wrapper resolves it. `outside` resolves to `right`. */
-type ChartResolvedYLabelPlacement = 'left' | 'right' | 'overlap';
+/** The Y label placement after the wrapper resolves it: `overlap` with a border is `left`. */
+type ChartResolvedYLabelPlacement = ChartYLabelPlacement;
 
 /** The stroke style of a ChartLine. The legend draws the line swatch in it. */
 type ChartLineStrokeStyle = 'solid' | 'dashed' | 'dotted';
@@ -198,9 +197,11 @@ type ChartLegendDisplayProps = {
    */
   legendPlacement?: ChartLegendPlacement;
   /**
-   * Shows or hides the legend. Undefined is auto: the legend shows for 2 or more series (or donut
-   * slices) and hides for one. `true` shows it, and adds a `ChartLegend` when the chart has none.
-   * `false` hides a `ChartLegend` child.
+   * Shows or hides the legend.
+   * - Unset (auto): a `ChartLegend` child shows, even for one series. With no `ChartLegend`
+   *   child, the chart adds a legend for 2 or more series (or donut slices), and none for one.
+   * - `true`: always a legend. The chart adds a `ChartLegend` when it has none.
+   * - `false`: never a legend, even with a `ChartLegend` child.
    * @default undefined (auto)
    */
   showLegend?: boolean;
@@ -237,7 +238,6 @@ type ChartWrapperDisplayProps = {
    *   meets an X label.
    * - `overlap`: inside the plot, from its left edge, just below each gridline, with a halo in the
    *   surface colour. The bottom label is not drawn. With `showBorder`, it shows as `left`.
-   * - `outside`: an alias of `right`.
    *
    * A bar chart with `layout="vertical"` always takes `left`: its category names sit in a column
    * as wide as the widest name plus `spacing.3`.
@@ -256,9 +256,10 @@ type ChartWrapperDisplayProps = {
    */
   gridlineWidth?: ChartGridlineWidth;
   /**
-   * The value format of the chart, in en-IN. ChartYAxis writes its ticks compact (₹1.5L, 1.5K,
-   * 12.5%) and ChartTooltip writes values in full (₹1,23,450.00, 1,23,450, 12.5%), unless they
-   * get their own `tickFormatter` or `formatter`.
+   * The value format of the chart, in en-IN. ChartYAxis, and ChartXAxis with `type="number"`,
+   * write their ticks compact (₹1.5L, 1.5K, 12.5%) and ChartTooltip writes values in full
+   * (₹1,23,450.00, 1,23,450, 12.5%), unless they get their own `tickFormatter` or `formatter`.
+   * Works in `v1` too.
    */
   valueFormat?: ChartValueFormat;
 } & ChartLegendDisplayProps &

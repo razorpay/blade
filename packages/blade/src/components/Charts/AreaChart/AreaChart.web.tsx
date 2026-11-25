@@ -37,6 +37,7 @@ import { metaAttribute } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -186,6 +187,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     version,
     showLegend,
     seriesCount: countChildrenOf(children, componentIds.ChartArea),
+    children,
   });
 
   // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
@@ -477,7 +479,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               </defs>
 
               {modifiedChildren}
-              {shouldAddLegend({ version, showLegend, children }) ? (
+              {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
+              {shouldAddLegend({
+                version,
+                showLegend,
+                children,
+                seriesCount: countChildrenOf(children, componentIds.ChartArea),
+              }) ? (
                 <ChartLegend key="blade-added-legend" />
               ) : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}

@@ -132,8 +132,9 @@ type ChartLegendDisplayProps = {
    */
   legendPlacement?: 'top' | 'bottom' | 'left' | 'right';
   /**
-   * Undefined is auto: the legend shows for 2 or more series (or donut slices) and hides for one.
-   * `true` shows it and adds a `ChartLegend` when there is none. `false` hides it.
+   * Undefined is auto: a `ChartLegend` child shows, even for one series. With no `ChartLegend`
+   * child, the chart adds a legend for 2 or more series (or donut slices) and none for one.
+   * `true` always shows a legend, and adds a `ChartLegend` when there is none. `false` never does.
    */
   showLegend?: boolean;
   /**

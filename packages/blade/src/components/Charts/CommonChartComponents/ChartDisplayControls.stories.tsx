@@ -226,8 +226,7 @@ export default {
     yLabelPlacement: {
       control: 'inline-radio',
       options: ['default', 'left', 'right', 'overlap'],
-      description:
-        '`yLabelPlacement`. Default: left. `outside` is an alias of `right`. overlap with showBorder shows as left.',
+      description: '`yLabelPlacement`. Default: left. overlap with showBorder shows as left.',
     },
     yGridlines: {
       control: 'inline-radio',

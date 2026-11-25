@@ -376,11 +376,12 @@ const ChartXAxisBody: React.FC<
     valueFormat,
   } = useCommonChartComponentsContext();
   const isV2 = chartVersion === 'v2';
-  // `v2` number axis, as on a horizontal bar chart: `valueFormat` on the wrapper writes the ticks
-  // compact, as the Y axis of the other charts, unless the axis has its own formatter.
+  // A number axis, as on a horizontal bar chart: `valueFormat` on the wrapper writes the ticks
+  // compact, as the Y axis of the other charts, unless the axis has its own formatter. `v1` too:
+  // with no `valueFormat`, it renders as master.
   const tickFormatter =
     tickFormatterProp ??
-    (isV2 && props.type === 'number' && valueFormat
+    (props.type === 'number' && valueFormat
       ? (value: string) => formatChartValueCompact(value, valueFormat)
       : undefined);
   // We don't want to pass secondaryDataKey to recharts
@@ -569,12 +570,19 @@ const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
  * `v2` `showBorder`: the border of the plot. One line on the left, the right and the bottom, each
  * drawn once, in the colour and the width of the gridlines. ChartCartesianGrid leaves out its
  * gridline at the base of the plot, so the bottom line is not drawn twice.
+ *
+ * The line, area and bar wrappers draw it once per chart, inside the recharts chart. It needs no
+ * ChartYAxis, and two Y axes draw it once.
  */
 const ChartPlotBorder = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { gridlineWidth = 'thinner' } = useCommonChartComponentsContext();
+  const {
+    gridlineWidth = 'thinner',
+    showBorder = false,
+    chartVersion,
+  } = useCommonChartComponentsContext();
   const plotArea = usePlotArea();
-  if (!plotArea) return null;
+  if (chartVersion !== 'v2' || !showBorder || !plotArea) return null;
   const left = plotArea.x;
   const right = plotArea.x + plotArea.width;
   const top = plotArea.y;
@@ -634,7 +642,6 @@ const _ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
   const {
     yLabelPlacement = 'left',
-    showBorder = false,
     isVerticalBar = false,
     valueFormat,
     chartVersion,
@@ -739,7 +746,6 @@ const _ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         }}
         dataKey={props?.dataKey}
       />
-      {isV2 && showBorder && !props.hide ? <ChartPlotBorder /> : null}
     </>
   );
 };
@@ -1546,4 +1552,5 @@ export {
   ChartReferenceLine,
   ChartReferenceBand,
   getChartColor,
+  ChartPlotBorder,
 };

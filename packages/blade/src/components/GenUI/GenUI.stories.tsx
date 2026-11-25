@@ -1195,14 +1195,14 @@ const narrowChartCases = [
     },
   },
   {
-    id: 'labels-outside',
+    id: 'labels-right',
     component: {
       component: 'CHART',
       chartType: 'line',
-      title: 'No border, labels outside',
+      title: 'No border, labels right',
       xAxis: 'date',
       showBorder: false,
-      yLabelPlacement: 'outside',
+      yLabelPlacement: 'right',
       data: dailyCollected(14),
       valueFormatter: { type: 'currency', currency: 'INR' },
     },
