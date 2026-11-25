@@ -23,10 +23,7 @@ import type {
   ChartXAxisProps,
   RangeMap,
 } from '../CommonChartComponents/types';
-import {
-  componentId as commonComponentIds,
-  LINE_STROKE_DASHARRAY,
-} from '../CommonChartComponents/tokens';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import {
   getChartMargin,
@@ -52,8 +49,13 @@ import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const getStrokeDasharray = (style?: ChartLineProps['strokeStyle']): string | undefined =>
-  style === 'dashed' || style === 'dotted' ? LINE_STROKE_DASHARRAY[style] : undefined;
+// The dash of a `dashed` or `dotted` line: the theme's `border.dash` token, as an SVG
+// stroke-dasharray. The legend swatch of the line reads the same value.
+const getStrokeDasharray = (
+  theme: ReturnType<typeof useTheme>['theme'],
+  style?: ChartLineProps['strokeStyle'],
+): string | undefined =>
+  style === 'dashed' || style === 'dotted' ? theme.border.dash[style].join(' ') : undefined;
 
 // Dash pattern used for the bridge drawn across null points when `connectNulls` is enabled.
 const NULL_BRIDGE_DASHARRAY = '5 5';
@@ -96,7 +98,7 @@ const Line: React.FC<ChartLineProps> = ({
   const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
-  const strokeDasharray = getStrokeDasharray(strokeStyle);
+  const strokeDasharray = getStrokeDasharray(theme, strokeStyle);
 
   // A solid bridge just uses Recharts' native connectNulls on the main line. A dashed bridge keeps
   // the main line gapped (connectNulls off) and is drawn separately by NullBridgeLayer.

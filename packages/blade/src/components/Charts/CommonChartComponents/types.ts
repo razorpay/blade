@@ -168,6 +168,26 @@ type ChartLegendPlacement = 'top' | 'bottom';
 type ChartLabelSize = 's' | 'm' | 'l';
 
 /**
+ * Opt-in legend options of every chart wrapper with a legend: line, area, bar and donut. With
+ * none set, the legend looks as it did before. Web only: the native charts ignore them.
+ */
+type ChartLegendDisplayProps = {
+  /**
+   * Where the legend sits: above or below the chart. On top, it is left-aligned. A legend with
+   * `layout="vertical"` stays at the side.
+   * @default 'bottom'
+   */
+  legendPlacement?: ChartLegendPlacement;
+  /**
+   * The size of the axis tick labels and the legend text, together: `s`, `m` or `l`, as the Text
+   * sizes `small`, `medium` and `large`. With no value, the axis labels are `fonts.size.75` and
+   * the legend text is `fonts.size.100`, as before. A donut chart has no axis, so it sizes the
+   * legend text only.
+   */
+  labelSize?: ChartLabelSize;
+};
+
+/**
  * Opt-in display options of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper. With none set,
  * a chart looks as it did before. `axisStyle` sets the defaults of the others, and an explicit prop
  * wins over `axisStyle`. Web only: the native charts ignore them.
@@ -218,23 +238,12 @@ type ChartWrapperDisplayProps = {
    */
   gridlineWidth?: ChartGridlineWidth;
   /**
-   * Where the legend sits: above or below the plot. On top, it is left-aligned.
-   * @default 'bottom'
-   */
-  legendPlacement?: ChartLegendPlacement;
-  /**
-   * The size of the axis tick labels and the legend text, together: `s`, `m` or `l`, as the Text
-   * sizes `small`, `medium` and `large`. With no value, the axis labels are `fonts.size.75` and
-   * the legend text is `fonts.size.100`, as before.
-   */
-  labelSize?: ChartLabelSize;
-  /**
    * The value format of the chart, in en-IN. ChartYAxis writes its ticks compact (₹1.5L, 1.5K,
    * 12.5%) and ChartTooltip writes values in full (₹1,23,450.00, 1,23,450, 12.5%), unless they
    * get their own `tickFormatter` or `formatter`.
    */
   valueFormat?: ChartValueFormat;
-};
+} & ChartLegendDisplayProps;
 type Align = 'left' | 'right';
 type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey' | 'funnel';
 type DataColorMapping = Record<
@@ -429,6 +438,7 @@ export type {
   ChartGridlineWidth,
   ChartLegendPlacement,
   ChartLabelSize,
+  ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartValueFormat,
   DataColorMapping,

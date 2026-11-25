@@ -90,6 +90,36 @@ export const Border = () => {
           ))}
         </tbody>
       </table>
+      <br />
+      <h3>Border Dash</h3>
+      <p>
+        Dash patterns as [dash, gap] lengths. Use them where a CSS <code>border-style</code> keyword
+        cannot set the pattern, for example an SVG <code>stroke-dasharray</code>:{' '}
+        <code>{"theme.border.dash.dashed.join(' ')"}</code>.
+      </p>
+      <table>
+        <tbody>
+          {Object.entries(theme.border.dash).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.border.dash.${key}`}</td>
+              <td>{`[${value.join(', ')}]`}</td>
+              <td>
+                <svg width="96" height="8" aria-hidden="true">
+                  <line
+                    x1="0"
+                    x2="96"
+                    y1="4"
+                    y2="4"
+                    stroke="hsla(216, 15%, 54%, 1)"
+                    strokeWidth={theme.border.width.thicker}
+                    strokeDasharray={value.join(' ')}
+                  />
+                </svg>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };

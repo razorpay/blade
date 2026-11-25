@@ -59,10 +59,6 @@ const DEFAULT_CHART_MARGIN = { top: 5, right: 5, bottom: 5, left: 5 };
 // recharts sets a Y tick label's baseline 0.355em under its tick: half of its 0.71em cap height.
 const Y_LABEL_HALF_CAP_EM = 0.355;
 
-// The dash of a `dashed` and a `dotted` line in a line chart. Blade's theme has no dash token, so
-// the chart defines it here. The legend swatch of a dashed line uses the same dash.
-const LINE_STROKE_DASHARRAY = { dashed: '5 5', dotted: '2 2' } as const;
-
 // `labelSize` to the key of `theme.typography.fonts.size`. The same keys as the Text sizes
 // `small`, `medium` and `large`.
 const LABEL_SIZE_FONT_SIZE = { s: 75, m: 100, l: 200 } as const;
@@ -109,7 +105,6 @@ export {
   MINIMAL_AXIS_CHART_MARGIN,
   MINIMAL_Y_AXIS_WIDTH,
   DEFAULT_CHART_MARGIN,
-  LINE_STROKE_DASHARRAY,
   LABEL_SIZE_FONT_SIZE,
   LABEL_SIZE_TEXT_SIZE,
   Y_LABEL_HALF_CAP_EM,

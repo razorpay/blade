@@ -12,6 +12,7 @@ export type {
   ChartGridlineWidth,
   ChartLegendPlacement,
   ChartLabelSize,
+  ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartValueFormat,
   DataColorMapping,

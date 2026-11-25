@@ -34,9 +34,21 @@ type BorderWidth = Readonly<{
   thicker: 2;
 }>;
 
+type BorderDash = Readonly<{
+  /** dashed: 5(px/rem/pt) dash, 5(px/rem/pt) gap */
+  dashed: readonly [5, 5];
+  /** dotted: 2(px/rem/pt) dash, 2(px/rem/pt) gap */
+  dotted: readonly [2, 2];
+}>;
+
 export type Border = Readonly<{
   radius: BorderRadius;
   width: BorderWidth;
+  /**
+   * Dash patterns for a stroke, as [dash, gap] lengths. Use them where a CSS `border-style` keyword
+   * cannot set the pattern, for example an SVG `stroke-dasharray`.
+   */
+  dash: BorderDash;
 }>;
 
 export const border: Border = {
@@ -58,5 +70,9 @@ export const border: Border = {
     thin: 1,
     thick: 1.5,
     thicker: 2,
+  },
+  dash: {
+    dashed: [5, 5],
+    dotted: [2, 2],
   },
 };

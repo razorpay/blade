@@ -4,6 +4,9 @@ import { ChartXAxis, ChartYAxis, ChartCartesianGrid, ChartLegend } from '..';
 import { ChartLineWrapper, ChartLine } from '../../LineChart';
 import { ChartAreaWrapper, ChartArea } from '../../AreaChart';
 import { ChartBarWrapper, ChartBar } from '../../BarChart';
+import { ChartDonutWrapper, ChartDonut } from '../../DonutChart';
+import { border } from '~tokens/global';
+import { bladeTheme, bladeNeutralTheme, createTheme } from '~tokens/theme';
 import type { ChartWrapperDisplayProps } from '../types';
 import { getChartMargin, resolveChartDisplayOptions } from '../chartDisplayOptions';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -319,5 +322,67 @@ describe('strokeStyle dashed on ChartLine', () => {
     expect(swatches[0].querySelector('line')?.getAttribute('stroke-dasharray')).toBe('5 5');
     // The solid series keeps its square swatch.
     expect(legendWrapper(container)?.querySelectorAll('span')).toHaveLength(1);
+  });
+});
+
+describe('legend controls on a donut chart', () => {
+  const donutData = [
+    { name: 'UPI', value: 52000 },
+    { name: 'Cards', value: 24000 },
+  ];
+  const renderDonut = (
+    props: { legendPlacement?: 'top' | 'bottom'; labelSize?: 's' | 'm' | 'l' } = {},
+  ): HTMLElement =>
+    renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper {...props}>
+          <ChartDonut dataKey="value" nameKey="name" data={donutData} />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>,
+    ).container;
+  const legendText = (container: HTMLElement): Element | null =>
+    container.querySelector('.recharts-legend-wrapper p');
+
+  it('keeps the legend at the bottom, centred, with no props', async () => {
+    const container = renderDonut();
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    expect(legendWrapper(container)?.style.bottom).not.toBe('');
+    expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
+    expect(window.getComputedStyle(legendText(container)!).fontSize).toBe('0.875rem');
+  });
+
+  it('puts the legend on top, left-aligned, with legendPlacement top', async () => {
+    const container = renderDonut({ legendPlacement: 'top' });
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    expect(legendWrapper(container)?.style.top).not.toBe('');
+    expect(legendWrapper(container)?.style.left).toBe('0px');
+    expect(container.querySelector('[data-blade-legend-placement="top"]')).not.toBeNull();
+  });
+
+  it.each([
+    ['s' as const, '0.75rem'],
+    ['m' as const, '0.875rem'],
+    ['l' as const, '1rem'],
+  ])('sizes the legend text with labelSize %s', async (labelSize, fontSize) => {
+    const container = renderDonut({ labelSize });
+    await waitFor(() => expect(legendText(container)).not.toBeNull());
+    expect(window.getComputedStyle(legendText(container)!).fontSize).toBe(fontSize);
+  });
+});
+
+describe('border.dash token', () => {
+  it('holds the dashed and dotted patterns, in every theme', () => {
+    expect(border.dash).toEqual({ dashed: [5, 5], dotted: [2, 2] });
+    expect(bladeTheme.border.dash).toEqual(border.dash);
+    expect(bladeNeutralTheme.border.dash).toEqual(border.dash);
+    expect(createTheme({ brandColor: '#83003D' }).theme.border.dash).toEqual(border.dash);
+  });
+
+  it('sets the dash of a dashed ChartLine and its legend swatch', async () => {
+    const container = renderChart('line', {}, { dashed: true });
+    await ready(container);
+    const swatch = container.querySelector('[data-blade-legend-swatch="dashed"] line');
+    expect(swatch?.getAttribute('stroke-dasharray')).toBe(border.dash.dashed.join(' '));
   });
 });

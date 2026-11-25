@@ -861,6 +861,30 @@ const CustomSquareLegend = (props: {
   const isVerticalLayout = layout === 'vertical';
   const isClickable =
     chartName === 'line' || chartName === 'area' || chartName === 'bar' || chartName === 'donut';
+  // On top, the legend is left-aligned. The negative margin takes off the item padding, so the
+  // first swatch starts at the left edge of the chart.
+  const isTop = legendPlacement === 'top' && !isVerticalLayout;
+  const renderLegend = (items: React.ReactNode): JSX.Element => {
+    const legend = (
+      <Box
+        display="flex"
+        justifyContent={isTop ? 'flex-start' : 'center'}
+        gap="spacing.5"
+        flexDirection={isVerticalLayout ? 'column' : 'row'}
+        width={isVerticalLayout ? '100%' : 'auto'}
+        flexWrap="wrap"
+      >
+        {items}
+      </Box>
+    );
+    return isTop ? (
+      <div data-blade-legend-placement="top" style={{ marginLeft: -theme.spacing[2] }}>
+        {legend}
+      </div>
+    ) : (
+      legend
+    );
+  };
 
   // For donut charts, generate legend entries from dataColorMapping (which has all keys)
   if (chartName === 'donut' && dataColorMapping) {
@@ -874,26 +898,17 @@ const CustomSquareLegend = (props: {
       return null;
     }
 
-    return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        gap="spacing.5"
-        flexDirection={isVerticalLayout ? 'column' : 'row'}
-        width={isVerticalLayout ? '100%' : 'auto'}
-        flexWrap="wrap"
-      >
-        {donutLegendEntries.map((entry, index) => (
-          <LegendItem
-            entry={entry}
-            index={index}
-            key={`item-${index}`}
-            isSelected={selectedDataKeys.includes(entry.dataKey)}
-            onClick={onClick}
-            isClickable={isClickable}
-          />
-        ))}
-      </Box>
+    return renderLegend(
+      donutLegendEntries.map((entry, index) => (
+        <LegendItem
+          entry={entry}
+          index={index}
+          key={`item-${index}`}
+          isSelected={selectedDataKeys.includes(entry.dataKey)}
+          onClick={onClick}
+          isClickable={isClickable}
+        />
+      )),
     );
   }
 
@@ -907,19 +922,8 @@ const CustomSquareLegend = (props: {
     return null;
   }
 
-  // On top, the legend is left-aligned. The negative margin takes off the item padding, so the
-  // first swatch starts at the left edge of the chart.
-  const isTop = legendPlacement === 'top' && !isVerticalLayout;
-
-  const legend = (
-    <Box
-      display="flex"
-      justifyContent={isTop ? 'flex-start' : 'center'}
-      gap="spacing.5"
-      flexDirection={isVerticalLayout ? 'column' : 'row'}
-      width={isVerticalLayout ? '100%' : 'auto'}
-      flexWrap="wrap"
-    >
+  return renderLegend(
+    <>
       {filteredPayload.map((entry, index) => (
         <LegendItem
           entry={entry}
@@ -932,15 +936,7 @@ const CustomSquareLegend = (props: {
       ))}
       {/* Static swatch for the reference band (not a toggleable series). */}
       <ReferenceBandLegendSwatch />
-    </Box>
-  );
-
-  return isTop ? (
-    <div data-blade-legend-placement="top" style={{ marginLeft: -theme.spacing[2] }}>
-      {legend}
-    </div>
-  ) : (
-    legend
+    </>,
   );
 };
 

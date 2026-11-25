@@ -6,6 +6,7 @@ import type {
   Align,
   ChartLegendProps,
   ChartTooltipProps,
+  ChartLegendDisplayProps,
 } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
 import type { ChartValueFormat } from '../utils/chartValueFormat';
@@ -70,7 +71,8 @@ type ChartDonutWrapperProps = {
    * 1,23,450, 12.5%, unless it gets its own `formatter`.
    */
   valueFormat?: ChartValueFormat;
-} & BoxProps;
+} & BoxProps &
+  ChartLegendDisplayProps;
 
 type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;

@@ -17,7 +17,7 @@ import {
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
-import type { DataColorMapping } from '../CommonChartComponents/types';
+import type { ChartLegendPlacement, DataColorMapping } from '../CommonChartComponents/types';
 import type {
   ChartDonutWrapperProps,
   ChartDonutCellProps,
@@ -78,11 +78,16 @@ const getTranslate = (
   legendAlignment: 'left' | 'right',
   legendWidth: number,
   legendHeight: number,
+  legendPlacement: ChartLegendPlacement = 'bottom',
 ): string => {
   if (legendLayout === 'vertical') {
     return `translate(calc(-50% + ${
       legendAlignment === 'right' ? -legendWidth / 2 : legendWidth / 2
     }px) ,  calc(-50%))`;
+  }
+  // The centre content moves away from the legend, by half its height.
+  if (legendPlacement === 'top') {
+    return `translate(-50%, calc(-50% + ${legendHeight / 2}px))`;
   }
   return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
 };
@@ -106,6 +111,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   content,
   testID,
   valueFormat,
+  legendPlacement,
+  labelSize,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -257,6 +264,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
         selectedDataKeys,
         setSelectedDataKeys,
         valueFormat,
+        legendPlacement,
+        labelSize,
       }}
     >
       <DonutContainerContext.Provider
@@ -329,7 +338,13 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               position="absolute"
               top="50%"
               left="50%"
-              transform={getTranslate(legendLayout, legendAlignment, legendWidth, legendHeight)}
+              transform={getTranslate(
+                legendLayout,
+                legendAlignment,
+                legendWidth,
+                legendHeight,
+                legendPlacement,
+              )}
               zIndex={10}
               textAlign="center"
             >

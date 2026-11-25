@@ -8,6 +8,8 @@ import {
   ChartArea,
   ChartBarWrapper,
   ChartBar,
+  ChartDonutWrapper,
+  ChartDonut,
   ChartXAxis,
   ChartYAxis,
   ChartCartesianGrid,
@@ -16,6 +18,13 @@ import {
 } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography/Text';
+
+const donutData = [
+  { name: 'UPI', value: 52000 },
+  { name: 'Cards', value: 24000 },
+  { name: 'Netbanking', value: 14000 },
+  { name: 'Wallets', value: 6000 },
+];
 
 const data = [
   { month: 'Jan', online: 42000, offline: 18000 },
@@ -122,12 +131,25 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
           <ChartBar dataKey="offline" name="Offline" />
         </ChartBarWrapper>
       </ChartCard>
+      {/* The donut has a legend and no axes: only legendPlacement and labelSize apply. */}
+      <ChartCard title="Donut" width={width} showEdgeGuides={showEdgeGuides}>
+        <ChartDonutWrapper
+          legendPlacement={display.legendPlacement}
+          labelSize={display.labelSize}
+          valueFormat={display.valueFormat}
+        >
+          <ChartDonut dataKey="value" nameKey="name" data={donutData} />
+          <ChartTooltip />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </ChartCard>
     </Box>
   );
 };
 
 /**
- * Every display control of the line, area and bar chart wrappers, as a live control. `default`
+ * Every display control of the line, area and bar chart wrappers, as a live control. The donut
+ * takes the legend controls only. `default`
  * leaves a prop unset, so `axisStyle` sets it. `lineStyle` sets `strokeStyle` on the second line.
  */
 export const ChartDisplayControls = ChartDisplayControlsTemplate.bind({});
