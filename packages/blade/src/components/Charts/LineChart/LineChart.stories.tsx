@@ -1442,18 +1442,18 @@ LineChartWithSequentialColors.parameters = {
  * of the plot, in the colour and the width of the gridlines. With none, only the gridlines show.
  * The Y labels sit in a `left` column by default, as wide as the widest label plus spacing.3.
  * `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline, or
- * `outside`, in a column right of the plot. The same props are on ChartBarWrapper and
+ * `right`, in a column right of the plot. The same props are on ChartBarWrapper and
  * ChartAreaWrapper.
  */
 export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
   const variants: ReadonlyArray<{
     showBorder: boolean;
-    yLabelPlacement?: 'overlap' | 'outside';
+    yLabelPlacement?: 'overlap' | 'right';
   }> = [
     { showBorder: true },
     { showBorder: false },
     { showBorder: false, yLabelPlacement: 'overlap' },
-    { showBorder: false, yLabelPlacement: 'outside' },
+    { showBorder: false, yLabelPlacement: 'right' },
   ];
   return (
     <ChartsWrapper>

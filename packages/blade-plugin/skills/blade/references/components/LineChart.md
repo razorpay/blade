@@ -134,8 +134,9 @@ type ChartLegendDisplayProps = {
    */
   legendPlacement?: 'top' | 'bottom';
   /**
-   * Undefined is auto: the legend shows for 2 or more series (or donut slices) and hides for one.
-   * `true` shows it and adds a `ChartLegend` when there is none. `false` hides it.
+   * Undefined is auto: a `ChartLegend` child shows, even for one series. With no `ChartLegend`
+   * child, the chart adds a legend for 2 or more series (or donut slices) and none for one.
+   * `true` always shows a legend, and adds a `ChartLegend` when there is none. `false` never does.
    */
   showLegend?: boolean;
   /**
@@ -155,11 +156,11 @@ type ChartWrapperDisplayProps = {
   showBorder?: boolean;
   /**
    * Where the Y labels sit: a column `left` or `right` of the plot, or `overlap` inside the plot.
-   * `overlap` with `showBorder` shows as `left`. `outside` is an alias of `right`.
+   * `overlap` with `showBorder` shows as `left`.
    * A bar chart with `layout="vertical"` always takes `left`.
    * @default 'left'
    */
-  yLabelPlacement?: 'left' | 'right' | 'overlap' | 'outside';
+  yLabelPlacement?: 'left' | 'right' | 'overlap';
   /** @default true */
   yGridlines?: boolean;
   /**
@@ -168,8 +169,9 @@ type ChartWrapperDisplayProps = {
    */
   gridlineWidth?: 'thin' | 'thinner';
   /**
-   * en-IN value format: compact Y ticks (₹1.5L) and full tooltip values (₹1,23,450.00),
-   * unless the axis or tooltip has its own formatter. Works in `v1` too.
+   * en-IN value format: compact Y ticks (₹1.5L), compact X ticks on a number X axis, and full
+   * tooltip values (₹1,23,450.00), unless the axis or tooltip has its own formatter. Works in
+   * `v1` too.
    */
   valueFormat?: ChartValueFormat;
 } & ChartLegendDisplayProps &

@@ -71,7 +71,6 @@ const resolveChartDisplayOptions = (
 
   const resolvePlacement = (): ChartResolvedYLabelPlacement => {
     if (isVerticalBar) return 'left';
-    if (yLabelPlacement === 'outside') return 'right';
     if (yLabelPlacement === 'overlap' && showBorder) return 'left';
     return yLabelPlacement ?? 'left';
   };
@@ -98,36 +97,42 @@ const countChildrenOf = (children: React.ReactNode, id: string): number =>
 const hasLegendChild = (children: React.ReactNode): boolean =>
   countChildrenOf(children, componentId.chartLegend) > 0;
 
+type LegendRuleInput = {
+  version?: ChartVersion;
+  showLegend?: boolean;
+  /** The series of the chart, or the slices of a donut. */
+  seriesCount: number;
+  children: React.ReactNode;
+};
+
 /**
- * `v2`: whether the legend shows. `showLegend` wins. Undefined is auto: on for 2 or more series
- * (or donut slices), off for one. `v1`: undefined, so ChartLegend renders as on master.
+ * `v2`: whether the legend shows. The rule lives on the wrapper, because only the wrapper knows
+ * the series and the children.
+ * - `showLegend` true or false wins.
+ * - Unset (auto): a ChartLegend child shows, even for one series. With no ChartLegend child, the
+ *   legend shows for 2 or more series (or donut slices) and hides for one.
+ *
+ * `v1`: undefined, so ChartLegend renders as on master.
  */
 const resolveLegendVisibility = ({
   version = 'v1',
   showLegend,
   seriesCount,
-}: {
-  version?: ChartVersion;
-  showLegend?: boolean;
-  seriesCount: number;
-}): boolean | undefined => {
+  children,
+}: LegendRuleInput): boolean | undefined => {
   if (version !== 'v2') return undefined;
-  return showLegend ?? seriesCount > 1;
+  if (showLegend !== undefined) return showLegend;
+  return hasLegendChild(children) || seriesCount > 1;
 };
 
 /**
- * `v2` with `showLegend` true and no ChartLegend child: the wrapper adds one. The rule lives on
- * the wrapper, because only the wrapper knows the series and the children.
+ * `v2` with no ChartLegend child: the wrapper adds one when the legend shows. That is
+ * `showLegend` true, or auto with 2 or more series.
  */
-const shouldAddLegend = ({
-  version = 'v1',
-  showLegend,
-  children,
-}: {
-  version?: ChartVersion;
-  showLegend?: boolean;
-  children: React.ReactNode;
-}): boolean => version === 'v2' && showLegend === true && !hasLegendChild(children);
+const shouldAddLegend = (input: LegendRuleInput): boolean =>
+  input.version === 'v2' &&
+  !hasLegendChild(input.children) &&
+  resolveLegendVisibility(input) === true;
 
 /**
  * Development only: warns when a display prop is set on a `v1` chart, where it has no effect.

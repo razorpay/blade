@@ -88,15 +88,8 @@ type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
  */
 type GenUIChartVersion = 'v1' | 'v2';
 
-/**
- * @deprecated Use `GenUIChartVersion`. `responsive` is `v2` and `fixed` is `v1`. Not released
- * yet, so it can go before the release.
- */
-type GenUIChartLayout = 'fixed' | 'responsive';
-
 export type {
   GenUIChartVersion,
-  GenUIChartLayout,
   // Main types
   GenUIBaseComponent,
   // Utility types

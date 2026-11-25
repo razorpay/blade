@@ -47,6 +47,7 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -531,7 +532,13 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {/* Painted first so the shaded band sits behind the bars. */}
         {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
         {barChartModifiedChildrens}
-        {shouldAddLegend({ version, showLegend, children }) ? (
+        {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
+        {shouldAddLegend({
+          version,
+          showLegend,
+          children,
+          seriesCount: countChildrenOf(children, componentIds.chartBar),
+        }) ? (
           <ChartLegend key="blade-added-legend" />
         ) : null}
       </RechartsBarChart>
@@ -555,6 +562,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
           version,
           showLegend,
           seriesCount: countChildrenOf(children, componentIds.chartBar),
+          children,
         }),
         valueFormat,
       }}

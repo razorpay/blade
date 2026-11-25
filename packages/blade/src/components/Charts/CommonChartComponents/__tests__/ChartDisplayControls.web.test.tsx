@@ -173,9 +173,9 @@ describe('resolveChartDisplayOptions', () => {
     expect(v2({ showBorder: false, yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('overlap');
   });
 
-  it('reads outside as right', () => {
-    expect(v2({ yLabelPlacement: 'outside' }).yLabelPlacement).toBe('right');
-    expect(v2({ showBorder: true, yLabelPlacement: 'outside' }).yLabelPlacement).toBe('right');
+  it('keeps right with or without a border', () => {
+    expect(v2({ yLabelPlacement: 'right' }).yLabelPlacement).toBe('right');
+    expect(v2({ showBorder: true, yLabelPlacement: 'right' }).yLabelPlacement).toBe('right');
   });
 
   it('keeps a left column on a vertical bar chart, and takes its border', () => {
@@ -437,12 +437,19 @@ describe('showLegend', () => {
     await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
   };
 
-  it('hides the legend of one series in auto, and shows it for two', async () => {
+  it('auto: a ChartLegend child shows, even for one series', async () => {
     const one = renderLine(['online']);
-    await axesReady(one);
-    expect(legendItems(one)).toHaveLength(0);
+    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
     const two = renderLine(['online', 'offline']);
     await waitFor(() => expect(legendItems(two)).toHaveLength(2));
+  });
+
+  it('auto with no ChartLegend: a legend for two series, none for one', async () => {
+    const two = renderLine(['online', 'offline'], { withLegend: false });
+    await waitFor(() => expect(legendItems(two)).toHaveLength(2));
+    const one = renderLine(['online'], { withLegend: false });
+    await axesReady(one);
+    expect(legendItems(one)).toHaveLength(0);
   });
 
   it('shows the legend of one series with showLegend, and hides two with false', async () => {
@@ -453,13 +460,12 @@ describe('showLegend', () => {
     expect(legendItems(two)).toHaveLength(0);
   });
 
-  it('adds a legend with showLegend when the chart has no ChartLegend', async () => {
-    const added = renderLine(['online', 'offline'], { showLegend: true, withLegend: false });
-    await waitFor(() => expect(legendItems(added)).toHaveLength(2));
-    // Auto keeps the composition: no ChartLegend child, no legend.
-    const auto = renderLine(['online', 'offline'], { withLegend: false });
-    await axesReady(auto);
-    expect(legendItems(auto)).toHaveLength(0);
+  it('adds a legend with showLegend true when the chart has no ChartLegend, even for one', async () => {
+    const added = renderLine(['online'], { showLegend: true, withLegend: false });
+    await waitFor(() => expect(legendItems(added)).toHaveLength(1));
+    const hidden = renderLine(['online', 'offline'], { showLegend: false, withLegend: false });
+    await axesReady(hidden);
+    expect(legendItems(hidden)).toHaveLength(0);
   });
 
   it('ignores showLegend with v1, as master', async () => {
@@ -483,6 +489,49 @@ describe('showLegend', () => {
     ).container;
     await waitFor(() => expect(legendItems(container)).toHaveLength(2));
     expect(legendWrapper(container)?.style.paddingTop).toBe('24px');
+  });
+});
+
+describe('showBorder is drawn once per chart', () => {
+  const borders = (container: HTMLElement): Element[] =>
+    Array.from(container.querySelectorAll('[data-blade-chart-plot-border]'));
+
+  it('draws the border with no ChartYAxis', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2" showBorder>
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="month" />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(borders(container)).toHaveLength(1));
+    expect(borders(container)[0].querySelectorAll('line')).toHaveLength(3);
+  });
+
+  it('draws the border once with two Y axes', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartBarWrapper data={data} version="v2" showBorder>
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartYAxis yAxisId="second" orientation="right" />
+          <ChartBar dataKey="online" />
+        </ChartBarWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
+    expect(borders(container)).toHaveLength(1);
+  });
+
+  it('draws no border in v1, even with showBorder', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderChart('line', { showBorder: true }, {}, 'v1');
+    await ready(container);
+    expect(borders(container)).toHaveLength(0);
+    warn.mockRestore();
   });
 });
 
@@ -542,6 +591,31 @@ describe('horizontal bar chart (layout vertical)', () => {
     expect(borderLine(framed, 'left')).not.toBeNull();
     expect(borderLine(framed, 'right')).not.toBeNull();
     expect(borderLine(framed, 'bottom')).not.toBeNull();
+  });
+
+  it('writes the X values with valueFormat in v1 too', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartBarWrapper
+          data={categoryData}
+          layout="vertical"
+          valueFormat={{ type: 'currency', currency: 'INR' }}
+        >
+          <ChartXAxis type="number" />
+          <ChartYAxis type="category" dataKey="method" />
+          <ChartBar dataKey="amount" name="Online" />
+        </ChartBarWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() =>
+      expect(container.querySelectorAll('.recharts-xAxis-tick-labels text').length).toBeGreaterThan(
+        0,
+      ),
+    );
+    const xLabels = Array.from(container.querySelectorAll('.recharts-xAxis-tick-labels text')).map(
+      (text) => text.textContent,
+    );
+    expect(xLabels).toContain('₹0');
   });
 
   it('writes the X values with valueFormat', async () => {
@@ -654,22 +728,32 @@ describe('legend controls on a donut chart', () => {
     expect(legendWrapper(container)?.style.paddingTop).toBe('32px');
   });
 
-  it('hides the legend of one slice in auto, and shows it with showLegend', async () => {
+  it('auto: no legend for one slice with no ChartLegend, a legend for two', async () => {
     const one = [{ name: 'UPI', value: 52000 }];
-    const render = (showLegend?: boolean): HTMLElement =>
+    const render = (
+      slices: typeof donutData,
+      { showLegend, withLegend = false }: { showLegend?: boolean; withLegend?: boolean } = {},
+    ): HTMLElement =>
       renderWithTheme(
         <Box width="400px" height="400px">
           <ChartDonutWrapper version="v2" showLegend={showLegend}>
-            <ChartDonut dataKey="value" nameKey="name" data={one} />
-            <ChartLegend />
+            <ChartDonut dataKey="value" nameKey="name" data={slices} />
+            {withLegend ? <ChartLegend /> : null}
           </ChartDonutWrapper>
         </Box>,
       ).container;
-    const auto = render();
+    const auto = render(one);
     await waitFor(() => expect(auto.querySelector('.recharts-pie')).not.toBeNull());
     expect(legendText(auto)).toBeNull();
-    const shown = render(true);
-    await waitFor(() => expect(legendText(shown)).not.toBeNull());
+    // Two slices: the wrapper adds the legend.
+    const two = render(donutData);
+    await waitFor(() => expect(legendText(two)).not.toBeNull());
+    // An explicit ChartLegend shows for one slice; false hides it.
+    const explicit = render(one, { withLegend: true });
+    await waitFor(() => expect(legendText(explicit)).not.toBeNull());
+    const off = render(donutData, { withLegend: true, showLegend: false });
+    await waitFor(() => expect(off.querySelector('.recharts-pie')).not.toBeNull());
+    expect(legendText(off)).toBeNull();
   });
 
   it('spaces the v2 legend items spacing.4 apart, with no side padding', async () => {

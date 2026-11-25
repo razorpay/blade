@@ -181,9 +181,16 @@ const getDefaultShowBorder = (width: number): boolean =>
 const resolveShowBorder = (showBorder: unknown, width: number): boolean =>
   typeof showBorder === 'boolean' ? showBorder : getDefaultShowBorder(width);
 
-/** The node's `yLabelPlacement` when it is a known value, else `overlap`. */
-const resolveYLabelPlacement = (yLabelPlacement: unknown): ChartYLabelPlacement =>
-  yLabelPlacement === 'outside' ? 'outside' : 'overlap';
+/**
+ * The node's `yLabelPlacement` when it is a known value, else `left`. A model can still send the
+ * old `outside`: it is `right`.
+ */
+const resolveYLabelPlacement = (yLabelPlacement: unknown): ChartYLabelPlacement => {
+  if (yLabelPlacement === 'left' || yLabelPlacement === 'right' || yLabelPlacement === 'overlap') {
+    return yLabelPlacement;
+  }
+  return yLabelPlacement === 'outside' ? 'right' : 'left';
+};
 
 /** A pie is a bar list above 4 slices, or in a box under 300px. Unmeasured (0) counts as wide. */
 const shouldShowBarList = (slices: number, width: number): boolean =>

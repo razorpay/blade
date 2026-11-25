@@ -77,7 +77,7 @@ const daily = (
 const renderAtWidth = (
   width: number,
   components: GenUIComponent[],
-  config: { chartVersion?: GenUIChartVersion; chartLayout?: 'fixed' | 'responsive' } = {},
+  config: { chartVersion?: GenUIChartVersion } = {},
 ): ReturnType<typeof renderWithTheme> => {
   jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
     width,
@@ -147,7 +147,10 @@ describe('<GenUI /> CHART in a narrow box', () => {
     });
 
     it('gives the last bar label less room when the Y axis is inside the plot (no border)', () => {
-      renderAtWidth(360, chart({ chartType: 'bar', data: daily(30, ['Collected']) }));
+      renderAtWidth(
+        360,
+        chart({ chartType: 'bar', yLabelPlacement: 'overlap', data: daily(30, ['Collected']) }),
+      );
 
       expect(lastProps('ChartXAxis').padding).toEqual({ left: 0, right: 5 });
     });
@@ -194,42 +197,47 @@ describe('<GenUI /> CHART in a narrow box', () => {
   });
 
   describe('legend and donut (B6)', () => {
-    it('draws no legend for one series', () => {
+    // v2 composes no ChartLegend: the wrapper's auto rule adds one for 2 or more series (or
+    // slices) and none for one. The node's showLegend goes to the wrapper.
+    it('leaves the legend to the wrapper: no ChartLegend child, showLegend unset', () => {
       renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected']) }));
-
       expect(wasDrawn('ChartLegend')).toBe(false);
-    });
+      expect(lastProps('ChartBarWrapper').showLegend).toBeUndefined();
 
-    it('draws a legend for two series', () => {
       renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected', 'Refunded']) }));
-
-      expect(wasDrawn('ChartLegend')).toBe(true);
+      expect(wasDrawn('ChartLegend')).toBe(false);
+      expect(lastProps('ChartBarWrapper').showLegend).toBeUndefined();
     });
 
-    it('takes showLegend from the node over the series count', () => {
+    it('passes the node showLegend to the wrapper', () => {
       renderAtWidth(
         360,
         chart({ chartType: 'line', showLegend: true, data: daily(7, ['Collected']) }),
       );
-      expect(wasDrawn('ChartLegend')).toBe(true);
       expect(lastProps('ChartLineWrapper').showLegend).toBe(true);
-    });
 
-    it('draws no legend with showLegend false', () => {
       renderAtWidth(
         360,
         chart({ chartType: 'bar', showLegend: false, data: daily(7, ['Collected', 'Refunded']) }),
       );
-      expect(wasDrawn('ChartLegend')).toBe(false);
       expect(lastProps('ChartBarWrapper').showLegend).toBe(false);
     });
 
-    it('draws no legend for a pie of one slice', () => {
+    it('turns the legend off on a tiny chart', () => {
+      renderAtWidth(
+        360,
+        chart({ chartType: 'line', variant: 'tiny', data: daily(7, ['Collected', 'Refunded']) }),
+      );
+      expect(lastProps('ChartLineWrapper').showLegend).toBe(false);
+    });
+
+    it('leaves the legend of a pie to the wrapper', () => {
       renderAtWidth(
         800,
         chart({ chartType: 'pie', xAxis: 'method', data: [{ method: 'UPI', value: 60 }] }),
       );
       expect(wasDrawn('ChartLegend')).toBe(false);
+      expect(lastProps('ChartDonutWrapper').showLegend).toBeUndefined();
     });
 
     it('takes the small donut radius in a 300px box, and a box of at least 260px', () => {
@@ -248,7 +256,6 @@ describe('<GenUI /> CHART in a narrow box', () => {
 
       expect(lastProps('ChartDonut').radius).toBe('small');
       expect(lastProps('ChartDonutWrapper').height).toBe('260px');
-      expect(wasDrawn('ChartLegend')).toBe(true);
     });
 
     it('keeps the medium radius in a wide box', () => {
@@ -311,7 +318,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
     it('gives a chart with a border a left Y label column', () => {
       renderAtWidth(800, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBeUndefined();
+      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
     });
 
     it('leaves the Y axis width to the v2 chart, with and without a border', () => {
@@ -345,21 +352,29 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(lastProps('ChartLineWrapper').showBorder).toBe(true);
     });
 
-    it('gives the wrapper yLabelPlacement overlap by default, and the node value', () => {
+    it('gives the wrapper yLabelPlacement left by default, and the node value', () => {
       renderAtWidth(360, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('overlap');
+      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
 
+      (['left', 'right', 'overlap'] as const).forEach((placement) => {
+        renderAtWidth(
+          360,
+          chart({ chartType: 'bar', yLabelPlacement: placement, data: daily(7, ['Collected']) }),
+        );
+        expect(lastProps('ChartBarWrapper').yLabelPlacement).toBe(placement);
+      });
+
+      // An old `outside` from a model is `right`. An unknown value is `left`.
       renderAtWidth(
         360,
         chart({ chartType: 'bar', yLabelPlacement: 'outside', data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').yLabelPlacement).toBe('outside');
-
+      expect(lastProps('ChartBarWrapper').yLabelPlacement).toBe('right');
       renderAtWidth(
         360,
-        chart({ chartType: 'line', yLabelPlacement: 'left', data: daily(7, ['Collected']) }),
+        chart({ chartType: 'line', yLabelPlacement: 'middle', data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('overlap');
+      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
     });
 
     it('draws no border on a tiny chart, which has no axes', () => {
@@ -535,9 +550,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
 
     it.each([
       [{ chartVersion: 'v1' as const }, undefined],
-      [{ chartLayout: 'fixed' as const }, undefined],
-      [{ chartLayout: 'responsive' as const }, 'v2'],
-      [{ chartVersion: 'v2' as const, chartLayout: 'fixed' as const }, 'v2'],
+      [{ chartVersion: 'v2' as const }, 'v2'],
     ])('reads %p as version %p', (config, version) => {
       renderAtWidth(360, chart({ chartType: 'line', data: daily(7, ['Collected']) }), config);
       expect(lastProps('ChartLineWrapper').version).toBe(version);

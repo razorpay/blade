@@ -485,12 +485,13 @@ type ChartComponent = GenUIBaseComponent & {
    */
   showLegend?: boolean;
   /**
-   * Where the Y labels sit with no border. `overlap`: inside the plot, just below each gridline.
-   * `outside`: in a column right of the plot, centred on each gridline.
+   * Where the Y labels sit, as on the Blade chart. `left`: a column left of the plot. `right`: a
+   * column right of the plot. `overlap`: inside the plot, just below each gridline. With a
+   * border, `overlap` shows as `left`. An old `outside` from a model is `right`.
    *
-   * When it is not set: `overlap`.
+   * When it is not set: `left`.
    */
-  yLabelPlacement?: 'overlap' | 'outside';
+  yLabelPlacement?: 'left' | 'right' | 'overlap';
 };
 
 // Table cell component types (using component pattern)
@@ -1061,7 +1062,8 @@ const RenderResponsiveChart = memo(
     // A tiny chart has no grid and no axes, so no border.
     const showBorder = isTiny ? false : resolveShowBorder(showBorderProp, boxWidth);
     // With a border, the Y labels sit in a left column, as before.
-    const yLabelPlacement = showBorder ? undefined : resolveYLabelPlacement(yLabelPlacementProp);
+    // `overlap` with a border shows as `left`: the wrapper resolves it.
+    const yLabelPlacement = resolveYLabelPlacement(yLabelPlacementProp);
     const heightPx = isTiny ? TINY_CHART_HEIGHT : getChartHeight(boxWidth);
     const chartHeight = `${heightPx}px` as '350px';
     const minHeight = chartHeight;
@@ -1237,7 +1239,7 @@ const RenderResponsiveChart = memo(
             width: boxWidth,
             chartType,
             // `overlap` gives the Y axis no width, so the plot is as wide as the box.
-            yAxisWidth: yLabelPlacement === 'overlap' ? 0 : undefined,
+            yAxisWidth: yLabelPlacement === 'overlap' && !showBorder ? 0 : undefined,
           })
         : 0;
     const xAxisNode = !isTiny ? (
@@ -1256,11 +1258,13 @@ const RenderResponsiveChart = memo(
         tickFormatter={tickFormatter}
       />
     ) : null;
-    // The node's showLegend, else one series (or one pie slice) needs no legend: the title names
-    // it. The wrapper gets the same value, so its own auto rule agrees.
-    const seriesCount = chartType === 'pie' ? validData.length : keysToPlot.length;
-    const showLegend = typeof showLegendProp === 'boolean' ? showLegendProp : seriesCount > 1;
-    const legendNode = !isTiny && showLegend ? <ChartLegend /> : null;
+    // The v2 wrapper adds the legend: auto shows it for 2 or more series (or pie slices) and hides
+    // it for one. The node's showLegend wins. A tiny chart has none.
+    const showLegend = isTiny
+      ? false
+      : typeof showLegendProp === 'boolean'
+      ? showLegendProp
+      : undefined;
     // Tooltips show the full value, ₹1,23,450.00. The ticks stay compact, ₹1.2L. A date heading
     // reads as the X labels do, "4 Oct", not "2026-10-04".
     const tooltipNode = !isTiny ? (
@@ -1314,7 +1318,6 @@ const RenderResponsiveChart = memo(
                 {keysToPlot.map((key) => (
                   <ChartBar key={key} dataKey={key} name={key} />
                 ))}
-                {legendNode}
                 {tooltipNode}
               </ChartBarWrapper>
             ) : chartType === 'line' ? (
@@ -1335,7 +1338,6 @@ const RenderResponsiveChart = memo(
                 {keysToPlot.map((key) => (
                   <ChartLine key={key} dataKey={key} name={key} />
                 ))}
-                {legendNode}
                 {tooltipNode}
               </ChartLineWrapper>
             ) : chartType === 'area' ? (
@@ -1356,7 +1358,6 @@ const RenderResponsiveChart = memo(
                 {keysToPlot.map((key) => (
                   <ChartArea key={key} dataKey={key} name={key} type="monotone" />
                 ))}
-                {legendNode}
                 {tooltipNode}
               </ChartAreaWrapper>
             ) : chartType === 'pie' ? (
@@ -1374,7 +1375,6 @@ const RenderResponsiveChart = memo(
                   radius={getDonutRadius(boxWidth)}
                   type="circle"
                 />
-                {legendNode}
                 {tooltipNode}
               </ChartDonutWrapper>
             ) : null}

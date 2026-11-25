@@ -25,6 +25,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import {
   countChildrenOf,
   getChartMargin,
@@ -300,6 +301,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     version,
     showLegend,
     seriesCount: countChildrenOf(children, componentIds.ChartLine),
+    children,
   });
 
   // State to track which line is currently hovered
@@ -630,7 +632,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 {/* Painted first so the shaded bands sit behind the trend lines. */}
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
-                {shouldAddLegend({ version, showLegend, children }) ? (
+                {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
+                {shouldAddLegend({
+                  version,
+                  showLegend,
+                  children,
+                  seriesCount: countChildrenOf(children, componentIds.ChartLine),
+                }) ? (
                   <ChartLegend key="blade-added-legend" />
                 ) : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
