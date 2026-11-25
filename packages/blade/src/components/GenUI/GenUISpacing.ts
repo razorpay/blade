@@ -6,13 +6,14 @@ type GenUISpacingComponent = {
 
 /**
  * CARD and TABLE sit in the animated ring's container, whose 12px vertical margin adds to the
- * gaps around them. Text to a card and a card to the next section are therefore 12px
- * (`spacing.4`), so that with the ring's margin the text sits 24px from the card, as in RAY's chat.
+ * gaps around them. Text (or a title) to a card and a card to the next section are therefore
+ * 12px (`spacing.4`), so that with the ring's margin the text sits 24px from the card, as in RAY's
+ * chat.
  */
 const genUISpacingContract = {
   headingToText: 'spacing.3',
   textToH3: 'spacing.7',
-  h3ToCardTable: 'spacing.3',
+  h3ToCardTable: 'spacing.4',
   textToCardTable: 'spacing.4',
   cardTableToNextH3: 'spacing.4',
   cardTableToFooterAction: 'spacing.7',

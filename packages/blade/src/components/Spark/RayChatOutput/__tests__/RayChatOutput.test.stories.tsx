@@ -285,6 +285,22 @@ ShortReplyEndsAsBody.play = async ({ canvasElement }) => {
   await expect(style(blocks[0]).fontSize).toBe('14px');
 };
 
+export const TitleKeepsRupee: StoryFn = () => (
+  <Answer>{'Your settlement of ₹48,200 reached your bank.\n\n### Fees of ₹12'}</Answer>
+);
+TitleKeepsRupee.play = async ({ canvasElement }) => {
+  // TASA Orbiter has no ₹: titles fall back to Blade's text font (Inter), which has it. Checked
+  // on the main title; the ### title shares its CSS rule, but Storybook's preview-head forces its
+  // own font stack on h3 even inside .sb-unstyled (its rule excludes `.sb-unstyled h4` there).
+  const [mainTitle] = blocksOf(canvasElement);
+  const families = style(mainTitle)
+    .fontFamily.split(',')
+    .map((family) => family.trim().replace(/"/g, ''));
+  await expect(families.indexOf('Inter')).toBeGreaterThan(families.indexOf('TASA Orbiter'));
+  await document.fonts.load('20px "Inter"', '₹');
+  await expect(document.fonts.check('20px "Inter"', '₹')).toBe(true);
+};
+
 const GENUI_REPLY = [
   {
     component: 'TEXT',
@@ -319,6 +335,29 @@ InGenUI.play = async ({ canvasElement }) => {
     Math.round(card.top - before.getBoundingClientRect().bottom),
     Math.round(after.getBoundingClientRect().top - card.bottom),
   ]).toEqual([24, 24]);
+};
+
+const TITLE_THEN_CARD = [
+  { component: 'TEXT', content: 'Your payouts are on time.\n\n### Settled this week' },
+  { component: 'CARD', title: 'Settlement', children: [{ component: 'AMOUNT', value: 48200 }] },
+] as GenUIComponent[];
+
+export const TitleThenCardInGenUI: StoryFn = () => (
+  <Unstyled>
+    <Box width="752px">
+      <GenUIProvider config={{ components: { TEXT: rayChatOutputGenUI } }}>
+        <GenUISchemaRenderer components={TITLE_THEN_CARD} />
+      </GenUIProvider>
+    </Box>
+  </Unstyled>
+);
+TitleThenCardInGenUI.play = async ({ canvasElement }) => {
+  // A TEXT that ends in a title sits 24 from its card too.
+  const output = canvasElement.querySelector('[data-blade-component="ray-chat-output"]') as Element;
+  const card = canvasElement.querySelector('[data-blade-component="card"]') as Element;
+  await expect(
+    Math.round(card.getBoundingClientRect().top - output.getBoundingClientRect().bottom),
+  ).toBe(24);
 };
 
 export default {

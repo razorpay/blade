@@ -62,7 +62,8 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
 
       & h1, & h2, & h3, & h4, & h5, & h6, & [data-ray-chat-lead] {
         margin: 0;
-        font-family: ${fonts.family.heading};
+        /* TASA Orbiter has no ₹ (or other glyphs RAY writes); Blade's text font fills them in. */
+        font-family: ${fonts.family.heading}, ${fonts.family.text};
         font-size: ${makeTypographySize(fonts.size[400])};
         font-weight: ${fonts.weight.medium};
         line-height: ${makeTypographySize(lineHeights[400])};

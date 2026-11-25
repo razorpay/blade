@@ -95,14 +95,31 @@ const isTableStart = (lines: string[], index: number): boolean =>
     (lines[index + 1] ?? '').includes('|') &&
     TABLE_DELIMITER.test(lines[index + 1]));
 
-/** A row's cells; `\|` is a pipe inside a cell. */
-const splitCells = (row: string): string[] =>
-  row
-    .trim()
-    .replace(/^\|/, '')
-    .replace(/(?<!\\)\|$/, '')
-    .split(/(?<!\\)\|/)
-    .map((cell) => cell.trim());
+/**
+ * A row's cells; `\|` is a pipe inside a cell. A plain scan rather than a regex lookbehind, which
+ * Safari before 16.4 can't parse.
+ */
+const splitCells = (row: string): string[] => {
+  const text = row.trim();
+  const cells: string[] = [];
+  let cell = '';
+  for (let index = 0; index < text.length; index++) {
+    if (text[index] === '\\' && text[index + 1] === '|') {
+      cell += '\\|';
+      index += 1;
+    } else if (text[index] === '|') {
+      cells.push(cell);
+      cell = '';
+    } else {
+      cell += text[index];
+    }
+  }
+  cells.push(cell);
+  // A pipe at either end opens or closes the row, rather than making an empty cell.
+  if (text.startsWith('|')) cells.shift();
+  if (text.endsWith('|') && !text.endsWith('\\|')) cells.pop();
+  return cells.map((part) => part.trim());
+};
 
 /** A cell as plain text: no emoji, bold, italic, code ticks or link targets. Underscores stay (IDs). */
 const plainCell = (cell: string): string =>

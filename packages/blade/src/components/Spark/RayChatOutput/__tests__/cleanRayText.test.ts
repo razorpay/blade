@@ -103,6 +103,18 @@ describe('cleanRayText', () => {
       );
     });
 
+    it('keep an escaped pipe inside a cell, also in a row that opens and closes with pipes', () => {
+      expect(cleanRayText('| a \\| b | c |\n|---|---|\n| x | y \\| |')).toBe(
+        '```\na | b   c\nx       y |\n```',
+      );
+    });
+
+    it('parse in every browser: no regex lookbehind, which Safari before 16.4 cannot load', () => {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires, import/no-extraneous-dependencies
+      const source: string = require('fs').readFileSync(require.resolve('../cleanRayText'), 'utf8');
+      expect(source).not.toMatch(/\(\?<[!=]/);
+    });
+
     it('leave a table inside a code block, and a heading underlined with ---, alone', () => {
       expect(cleanRayText('```\n| a | b |\n|---|---|\n```')).toBe('```\n| a | b |\n|---|---|\n```');
       expect(cleanRayText('Fees\n---\nTwo kinds.')).toBe('Fees\n---\nTwo kinds.');

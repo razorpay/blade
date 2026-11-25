@@ -1,7 +1,7 @@
 ---
-'@razorpay/blade': patch
+'@razorpay/blade': minor
 ---
 
 fix(GenUI): text sits 24px from a CARD or TABLE
 
-The ring container's 12px margin was added on top of the spacing contract's 24px gaps, so text sat 36px from a card. `textToCardTable` and `cardTableToNextH3` are now `spacing.4`, which makes the visible gap 24px.
+Every GenUI consumer's gap between text and a CARD or TABLE changes from 36px to 24px. The ring container's 12px margin was added on top of the spacing contract's 24px. `textToCardTable`, `cardTableToNextH3` and `h3ToCardTable` are now `spacing.4`, so text, or a title, sits 24px from a card.

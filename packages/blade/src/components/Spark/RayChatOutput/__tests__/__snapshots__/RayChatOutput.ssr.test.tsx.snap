@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  gWiAEs">Your payouts are on time.</div></div>"`;
+exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  fawMXN">Your payouts are on time.</div></div>"`;
 
 exports[`<RayChatOutput /> renders on the server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -45,7 +45,7 @@ exports[`<RayChatOutput /> renders on the server 2`] = `
 .c0.c0.c0.c0.c0 h6,
 .c0.c0.c0.c0.c0 [data-ray-chat-lead] {
   margin: 0;
-  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial,"Inter","Inter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.625rem;
