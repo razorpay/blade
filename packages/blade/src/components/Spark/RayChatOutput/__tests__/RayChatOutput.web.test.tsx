@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import type { Components } from 'react-markdown';
 import { RayChatOutput } from '../RayChatOutput';
 import { remarkRayChat } from '../remarkRayChat';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 /**
@@ -101,6 +102,11 @@ describe('<RayChatOutput />', () => {
     });
     expect(drawn.querySelector('button[aria-label="Copy code block"]')).not.toBeNull();
     expect(drawn).toHaveTextContent('bash');
+  });
+
+  it('names itself, so DevTools shows RayChatOutput rather than ForwardRef', () => {
+    expect(Reflect.get(RayChatOutput, 'displayName')).toBe('RayChatOutput');
+    expect(getComponentId(<RayChatOutput />)).toBe('ray-chat-output');
   });
 
   it('marks itself as a Blade component', () => {

@@ -10,6 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { MarkdownCodeBlockRenderer } from '~components/GenUI/MarkdownCodeBlock';
 import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize, makeSpace, makeTypographySize } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
@@ -192,8 +193,11 @@ const BaseRayChatOutput = React.forwardRef(_BaseRayChatOutput);
  * @example
  * <RayChatOutput>{reply}</RayChatOutput>
  */
-const RayChatOutput = React.forwardRef<BladeElementRef, RayChatOutputProps>((props, ref) => (
-  <BaseRayChatOutput {...props} ref={ref} />
-));
+const RayChatOutput = assignWithoutSideEffects(
+  React.forwardRef<BladeElementRef, RayChatOutputProps>((props, ref) => (
+    <BaseRayChatOutput {...props} ref={ref} />
+  )),
+  { displayName: 'RayChatOutput', componentId: MetaConstants.RayChatOutput },
+);
 
 export { RayChatOutput, BaseRayChatOutput };
