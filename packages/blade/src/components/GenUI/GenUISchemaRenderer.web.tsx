@@ -272,15 +272,13 @@ type ComponentRendererProps = {
   component?: GenUIComponent;
   /** Index of the component in the list */
   index: number;
-  /** Whether this is the reply's last component while the reply streams in */
-  isStreaming?: boolean;
 };
 
 /**
  * Internal component that renders a single GenUI component based on its schema
  * Must be used within a GenUIProvider
  */
-const ComponentRendererInner = memo(({ component, index, isStreaming }: ComponentRendererProps) => {
+const ComponentRendererInner = memo(({ component, index }: ComponentRendererProps) => {
   const { registry, validComponentTypes } = useGenUI();
   const componentActions = useGenUIComponentActions();
   // Ref to the DOM node of the rendered component's content (excludes the gradient
@@ -319,7 +317,7 @@ const ComponentRendererInner = memo(({ component, index, isStreaming }: Componen
         <Box key={key} display="flex" flexDirection="column" width="100%">
           <Box width="100%">
             <AnimatedGradientBorder contentRef={componentRef}>
-              <Renderer {...component} index={index} isStreaming={isStreaming} />
+              <Renderer {...component} index={index} />
             </AnimatedGradientBorder>
           </Box>
           {renderActionSlot
@@ -333,7 +331,7 @@ const ComponentRendererInner = memo(({ component, index, isStreaming }: Componen
       );
     }
 
-    return <Renderer key={key} {...component} index={index} isStreaming={isStreaming} />;
+    return <Renderer key={key} {...component} index={index} />;
   }
 
   // During streaming, we might get partial component names, ie DIV for DIVIDER or ST for STACK
@@ -350,10 +348,10 @@ const ComponentRendererInner = memo(({ component, index, isStreaming }: Componen
   return null;
 });
 
-const ComponentRenderer = memo(({ component, index, isStreaming }: ComponentRendererProps) => {
+const ComponentRenderer = memo(({ component, index }: ComponentRendererProps) => {
   return (
     <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
-      <ComponentRendererInner component={component} index={index} isStreaming={isStreaming} />
+      <ComponentRendererInner component={component} index={index} />
     </ErrorBoundary>
   );
 });
@@ -401,12 +399,7 @@ const GenUISchemaRenderer = memo(
 
             return (
               <Box key={getComponentKey(component, index)} marginTop={marginTop}>
-                <ComponentRenderer
-                  component={component}
-                  index={index}
-                  // Only the last component is still streaming in; the ones before it are done.
-                  isStreaming={Boolean(contextValue.isAnimating) && index === components.length - 1}
-                />
+                <ComponentRenderer component={component} index={index} />
               </Box>
             );
           })}
