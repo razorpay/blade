@@ -145,7 +145,11 @@ const DonutActivePointReporter = ({
     if (!row || !donut) return null;
     const name = String(getItemName(row, donut.nameKey) ?? index);
     const dataKey = String(donut.dataKey);
-    const colorToken = getChartColor(dataKey, name, dataColorMapping ?? {}, 'donut');
+    // The token the slice is filled with: its ChartDonutCell colour or its theme colour. Not the
+    // intensity-mapped tooltip token.
+    const colorToken =
+      dataColorMapping?.[sanitizeString(name)]?.colorToken ??
+      getChartColor(dataKey, name, dataColorMapping ?? {}, 'donut');
     const color = getIn(theme.colors, colorToken) as string;
     // The slice name is the raw label. ChartTooltip `labelFormatter` writes `formattedLabel`.
     return createActivePointBuilder({

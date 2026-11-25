@@ -190,7 +190,8 @@ const useActivePointChange = (
   const lastPointRef = React.useRef<ChartActivePoint | null>(null);
   const onChangeRef = React.useRef(onChange);
   onChangeRef.current = onChange;
-  const point = index === undefined ? null : buildPoint(index);
+  // No callback: build nothing, so the chart and its formatters run as before.
+  const point = index === undefined || !onChange ? null : buildPoint(index);
   React.useEffect(() => {
     if (isSamePoint(lastPointRef.current, point)) return;
     lastPointRef.current = point;
