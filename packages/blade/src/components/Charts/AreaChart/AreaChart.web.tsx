@@ -22,6 +22,7 @@ import { componentId as commonComponentIds } from '../CommonChartComponents/toke
 import {
   getChartMargin,
   resolveChartDisplayOptions,
+  useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
@@ -139,6 +140,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   children,
   testID,
   colorTheme = 'categorical',
+  version,
   axisStyle,
   yAxisLine,
   yLabelPlacement,
@@ -149,6 +151,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   ...restProps
 }) => {
   const display = resolveChartDisplayOptions({
+    version,
     axisStyle,
     yAxisLine,
     yLabelPlacement,
@@ -156,6 +159,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     gridlineWidth,
     legendPlacement,
   });
+  useWarnDisplayPropsOnV1(
+    version,
+    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    'ChartAreaWrapper',
+  );
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
@@ -430,6 +438,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       >
         <ChartSurface
           ref={containerRef}
+          chartVersion={display.chartVersion}
           axisStyle={display.axisStyle}
           yLabelPlacement={display.yLabelPlacement}
         >

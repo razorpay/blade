@@ -10,7 +10,7 @@ import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
 import styled, { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction, useGenUIAnimation, useGenUIChartLayout } from './GenUIContext';
+import { useGenUIAction, useGenUIAnimation, useGenUIChartVersion } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
@@ -1034,7 +1034,8 @@ const ChartBarList = ({
 };
 
 /**
- * The GenUI CHART with `chartLayout: 'responsive'`: it fits the box it renders in.
+ * The GenUI CHART with `chartVersion: 'v2'`, the default: it fits the box it renders in, with the
+ * `v2` Blade charts.
  */
 const RenderResponsiveChart = memo(
   ({
@@ -1214,7 +1215,8 @@ const RenderResponsiveChart = memo(
     };
 
     // X labels: a date axis is labelled on a calendar step that fits the width, as "1 Oct", and
-    // thinned once. A category axis keeps every label, which ChartXAxis wraps to fit.
+    // thinned once. A category axis gets no interval: the v2 ChartXAxis shows the labels that fit,
+    // on one line each.
     const xValues = validData.map((row) => String(row[xAxis]));
     const isDate = isDateAxis(xValues);
     const dateStep = getDateStep(xValues);
@@ -1235,16 +1237,15 @@ const RenderResponsiveChart = memo(
     const xAxisNode = !isTiny ? (
       <ChartXAxis
         dataKey={xAxis}
-        interval={labelStep - 1}
+        interval={isDate ? labelStep - 1 : undefined}
         tickFormatter={isDate ? (value: string) => formatDateTick(value, dateStep) : undefined}
         padding={xOverhang > 0 ? { left: 0, right: xOverhang } : undefined}
       />
     ) : null;
-    // Y ticks: whole numbers for counts. With `lines`, the axis is as wide as its ticks. With
-    // `minimal`, the ticks sit inside the plot and the axis takes no width.
+    // Y ticks: whole numbers for counts. The v2 chart sets the width of the axis: a column as
+    // wide as its ticks, or no width for `overlap` ticks inside the plot.
     const yAxisNode = !isTiny ? (
       <ChartYAxis
-        {...(isMinimalAxis ? {} : { width: 'auto' as const })}
         allowDecimals={!isWholeNumberChart(validData, keysToPlot, valueFormatter.type)}
         tickFormatter={tickFormatter}
       />
@@ -1289,6 +1290,7 @@ const RenderResponsiveChart = memo(
           <Box width="100%" height={plotHeight as '350px'} minHeight={plotHeight as '350px'}>
             {chartType === 'bar' ? (
               <ChartBarWrapper
+                version="v2"
                 width="100%"
                 height={chartHeight}
                 axisStyle={chartAxisStyle}
@@ -1307,6 +1309,7 @@ const RenderResponsiveChart = memo(
               </ChartBarWrapper>
             ) : chartType === 'line' ? (
               <ChartLineWrapper
+                version="v2"
                 width="100%"
                 height={chartHeight}
                 axisStyle={chartAxisStyle}
@@ -1326,6 +1329,7 @@ const RenderResponsiveChart = memo(
               </ChartLineWrapper>
             ) : chartType === 'area' ? (
               <ChartAreaWrapper
+                version="v2"
                 width="100%"
                 height={chartHeight}
                 axisStyle={chartAxisStyle}
@@ -1345,6 +1349,7 @@ const RenderResponsiveChart = memo(
               </ChartAreaWrapper>
             ) : chartType === 'pie' ? (
               <ChartDonutWrapper
+                version="v2"
                 width="100%"
                 height={plotHeight as '350px'}
                 minHeight={plotHeight as '350px'}
@@ -1383,8 +1388,9 @@ const RenderResponsiveChart = memo(
 );
 
 /**
- * The GenUI CHART as released before `chartLayout`. Kept as it is, so the default output does not
- * change for any host. Do not edit: changes go in `RenderResponsiveChart`.
+ * The GenUI CHART with `chartVersion: 'v1'`: as released before chart versions, with the `v1`
+ * Blade charts. Kept as it is for hosts that opt out of `v2`. Do not edit: changes go in
+ * `RenderResponsiveChart`.
  */
 const RenderFixedChart = memo(
   ({
@@ -1612,12 +1618,12 @@ const RenderFixedChart = memo(
 );
 
 /**
- * The GenUI CHART. `chartLayout` on the GenUIProvider config picks the renderer. Default `fixed`:
- * the chart as released before. `responsive`: the chart fits its box (RenderResponsiveChart).
+ * The GenUI CHART. `chartVersion` on the GenUIProvider config picks the renderer. Default `v2`:
+ * the chart fits its box (RenderResponsiveChart). `v1`: the chart as released before.
  */
 const RenderChartComponent = (props: ChartComponent) => {
-  const { chartLayout } = useGenUIChartLayout();
-  return chartLayout === 'responsive' ? (
+  const { chartVersion } = useGenUIChartVersion();
+  return chartVersion === 'v2' ? (
     <RenderResponsiveChart {...props} />
   ) : (
     <RenderFixedChart {...props} />

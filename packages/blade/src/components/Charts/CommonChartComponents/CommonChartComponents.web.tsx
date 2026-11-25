@@ -47,6 +47,7 @@ import {
   Y_LABEL_HALF_CAP_EM,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
+  X_LABEL_ASCENT_EM,
   componentId,
 } from './tokens';
 import { calculateTextWidth, measureTextWidth } from './utils';
@@ -218,7 +219,7 @@ const CustomXAxisTick = ({
   onHeightCalculated,
   lastTick,
   tickFormatter,
-  isSingleLine = false,
+  isV2 = false,
 }: {
   x: number;
   y: number;
@@ -230,11 +231,16 @@ const CustomXAxisTick = ({
   onHeightCalculated?: (height: number) => void;
   lastTick: number;
   tickFormatter?: (value: string, index: number) => string;
-  /** One line: the label does not wrap. */
-  isSingleLine?: boolean;
+  /**
+   * `v2`: one line, no wrap. The tick sits on the base of the plot, and the label's top sits
+   * spacing.3 under it.
+   */
+  isV2?: boolean;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
-  const maxWidth = tickWidth && !isSingleLine ? tickWidth * 0.9 : Infinity;
+  const maxWidth = tickWidth && !isV2 ? tickWidth * 0.9 : Infinity;
+  // The gap above the label. v1: recharts' tick offset sits above it as well, as on master.
+  const topGap = isV2 ? theme.spacing[3] : X_AXIS_TICK_START_DY;
 
   // For bar charts, always center align labels since bars are centered on ticks
   // For line/area charts, align first tick left and last tick right to prevent clipping
@@ -254,7 +260,8 @@ const CustomXAxisTick = ({
     maxWidth,
     fontSize,
     lineHeight: X_AXIS_TICK_LINE_HEIGHT,
-    startDy: X_AXIS_TICK_START_DY,
+    // `v2`: the baseline sits one ascent under the top of the label.
+    startDy: isV2 ? topGap + X_LABEL_ASCENT_EM * fontSize : X_AXIS_TICK_START_DY,
     textAnchor,
     fill: theme.colors.surface.text.gray.muted,
     fontFamily: theme.typography.fonts.family.text,
@@ -289,9 +296,7 @@ const CustomXAxisTick = ({
 
   // Calculate total tick height and report it
   const totalTickHeight =
-    X_AXIS_TICK_START_DY +
-    primaryLabel.height +
-    (secondaryLabel ? X_AXIS_LABEL_GAP + secondaryLabel.height : 0);
+    topGap + primaryLabel.height + (secondaryLabel ? X_AXIS_LABEL_GAP + secondaryLabel.height : 0);
 
   React.useEffect(() => {
     onHeightCalculated?.(totalTickHeight);
@@ -332,13 +337,14 @@ const useRenderOnFontLoad = (isActive: boolean): number => {
  * The second Y axis line, on the side of the plot away from the Y axis. With the axis line, it
  * frames the plot on the left and the right. The same colour and width as the axis line.
  */
-const _ChartXAxis: React.FC<ChartXAxisProps> = ({
+const ChartXAxisBody: React.FC<ChartXAxisProps & { thinning?: XLabelThinning }> = ({
   interval: intervalProp,
   tickLine = false,
   label,
   dataKey,
   height,
   tickFormatter,
+  thinning,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -347,58 +353,13 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
     chartName,
     dataLength,
     axisStyle,
-    chartData,
+    chartVersion,
   } = useCommonChartComponentsContext();
+  const isV2 = chartVersion === 'v2';
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
-  const plotArea = usePlotArea();
-  const fontLoads = useRenderOnFontLoad(true);
-
-  // With no `interval`, a category axis shows as many labels as fit, each on one line, with at
-  // least spacing.3 between two labels. The widths are measured in the tick font.
-  const shouldThinLabels =
-    intervalProp === undefined && restProps.type !== 'number' && Boolean(dataKey && chartData);
-  const plotWidth = plotArea?.width;
-  const { padding } = restProps;
-  const visibleLabelIndexes = React.useMemo(() => {
-    if (!shouldThinLabels || !plotWidth || !chartData || !dataKey) return undefined;
-    const font = {
-      size: theme.typography.fonts.size[75],
-      weight: theme.typography.fonts.weight.regular,
-      family: theme.typography.fonts.family.text,
-    };
-    const widths = chartData.map((row, index) => {
-      const value = row[dataKey] as string;
-      return measureTextWidth(
-        tickFormatter ? tickFormatter(value, index) : String(value ?? ''),
-        font,
-      );
-    });
-    const paddingSides = typeof padding === 'object' ? padding : undefined;
-    return new Set(
-      getVisibleXLabelIndexes({
-        widths,
-        plotWidth,
-        minGap: theme.spacing[3],
-        isBand: chartName === 'bar',
-        isEdgeAnchored: chartName === 'line' || chartName === 'area',
-        paddingLeft: paddingSides?.left,
-        paddingRight: paddingSides?.right,
-      }),
-    );
-    // fontLoads: measure again once the web font is in.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    shouldThinLabels,
-    plotWidth,
-    chartData,
-    dataKey,
-    tickFormatter,
-    padding,
-    chartName,
-    theme,
-    fontLoads,
-  ]);
+  const shouldThinLabels = Boolean(thinning);
+  const visibleLabelIndexes = thinning?.visibleLabelIndexes;
   const interval = shouldThinLabels ? 0 : intervalProp ?? 0;
 
   // Calculate tick count from dataLength
@@ -425,18 +386,26 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   // - X-axis label height + offset, always reserved so the gap between the
   //   axis and elements below it (e.g. legend) stays constant whether or not
   //   the `label` prop is present
-  // `minimal` with no label: no space is kept for a label that is not there.
-  const axisLabelSpace =
-    axisStyle === 'minimal' && !label ? 0 : X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
-  const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
+  // `v2` with no label: no space is kept for a label that is not there.
+  const axisLabelSpace = isV2 && !label ? 0 : X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
+  // `v2`: the labels never wrap, so the height is known: spacing.3 and one line, or two lines
+  // with a secondary label.
+  const tickHeight = isV2
+    ? theme.spacing[3] +
+      X_AXIS_TICK_LINE_HEIGHT +
+      (secondaryLabelMap ? X_AXIS_LABEL_GAP + X_AXIS_TICK_LINE_HEIGHT : 0)
+    : maxTickHeight;
+  const baseHeight = Math.max(tickHeight) + axisLabelSpace;
 
   // Position for X-axis label: below tick labels with offset
-  const axisLabelY = maxTickHeight + X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT / 2;
+  const axisLabelY = tickHeight + X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT / 2;
 
   return (
     <RechartsXAxis
+      // `v2`: the ticks sit on the base of the plot. CustomXAxisTick sets the gap under it.
+      {...(isV2 ? { tickSize: 0, tickMargin: 0 } : {})}
       // `minimal`: no axis line. The gridline at the base of the plot takes its place.
-      {...(axisStyle === 'minimal' ? { axisLine: false } : {})}
+      {...(isV2 && axisStyle === 'minimal' ? { axisLine: false } : {})}
       {...restProps}
       height={baseHeight || height}
       interval={interval}
@@ -464,7 +433,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
             tickFormatter={tickFormatter}
-            isSingleLine
+            isV2={isV2}
           />
         );
       }}
@@ -487,6 +456,71 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
       dataKey={dataKey}
     />
   );
+};
+
+/** `v2` X label thinning. `undefined` while the plot is not measured: no label is drawn. */
+type XLabelThinning = { visibleLabelIndexes?: Set<number> };
+
+/**
+ * `v2` with no `interval`: which labels of a category axis fit, each on one line, with at least
+ * spacing.3 between two labels. The widths are measured in the tick font.
+ */
+const useXLabelThinning = ({
+  dataKey,
+  tickFormatter,
+  padding,
+}: Pick<ChartXAxisProps, 'dataKey' | 'tickFormatter' | 'padding'>): XLabelThinning => {
+  const { theme } = useTheme();
+  const { chartName, chartData } = useCommonChartComponentsContext();
+  const plotWidth = usePlotArea()?.width;
+  const fontLoads = useRenderOnFontLoad(true);
+  const visibleLabelIndexes = React.useMemo(() => {
+    if (!plotWidth || !chartData || !dataKey) return undefined;
+    const font = {
+      size: theme.typography.fonts.size[75],
+      weight: theme.typography.fonts.weight.regular,
+      family: theme.typography.fonts.family.text,
+    };
+    const widths = chartData.map((row, index) => {
+      const value = row[dataKey] as string;
+      return measureTextWidth(
+        tickFormatter ? tickFormatter(value, index) : String(value ?? ''),
+        font,
+      );
+    });
+    const paddingSides = typeof padding === 'object' ? padding : undefined;
+    return new Set(
+      getVisibleXLabelIndexes({
+        widths,
+        plotWidth,
+        minGap: theme.spacing[3],
+        isBand: chartName === 'bar',
+        isEdgeAnchored: chartName === 'line' || chartName === 'area',
+        paddingLeft: paddingSides?.left,
+        paddingRight: paddingSides?.right,
+      }),
+    );
+    // fontLoads: measure again once the web font is in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plotWidth, chartData, dataKey, tickFormatter, padding, chartName, theme, fontLoads]);
+  return { visibleLabelIndexes };
+};
+
+/** The X axis of a `v2` chart that thins its labels. */
+const ChartXAxisWithThinning: React.FC<ChartXAxisProps> = (props) => {
+  const thinning = useXLabelThinning(props);
+  return <ChartXAxisBody {...props} thinning={thinning} />;
+};
+
+const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+  const { chartVersion, chartData } = useCommonChartComponentsContext();
+  // Only `v2` thins its labels. `v1` renders as on master, with no extra hook.
+  const shouldThinLabels =
+    chartVersion === 'v2' &&
+    props.interval === undefined &&
+    props.type !== 'number' &&
+    Boolean(props.dataKey && chartData);
+  return shouldThinLabels ? <ChartXAxisWithThinning {...props} /> : <ChartXAxisBody {...props} />;
 };
 
 const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
@@ -518,9 +552,12 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
     yLabelPlacement = 'left',
     yAxisLine = true,
     valueFormat,
+    chartVersion,
   } = useCommonChartComponentsContext();
-  const isOverlap = yLabelPlacement === 'overlap';
-  const isLabelColumn = !isOverlap;
+  // `v1`: recharts' Y axis, as on master. The placement props apply to `v2` only.
+  const isV2 = chartVersion === 'v2';
+  const isOverlap = isV2 && yLabelPlacement === 'overlap';
+  const isLabelColumn = isV2 && !isOverlap;
   const tickFontSize = theme.typography.fonts.size[75];
   useRenderOnFontLoad(isLabelColumn);
   // `yAxisLine`: a line on both sides of the plot. recharts draws the one on the axis side.
@@ -554,7 +591,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
               tickMargin: theme.spacing[3],
             }
           : {})}
-        {...(yAxisLine ? {} : { axisLine: false })}
+        {...(isV2 && !yAxisLine ? { axisLine: false } : {})}
         // `valueFormat` on the wrapper: compact ticks, unless the axis has its own formatter.
         {...(valueFormat
           ? { tickFormatter: (value: unknown) => formatChartValueCompact(value, valueFormat) }
@@ -600,7 +637,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         }}
         dataKey={props?.dataKey}
       />
-      {yAxisLine && props.axisLine !== false && !props.hide ? (
+      {isV2 && yAxisLine && props.axisLine !== false && !props.hide ? (
         <ChartYAxisFrameLine side={frameSide} />
       ) : null}
     </>
@@ -609,15 +646,17 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
 
 const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   const { theme } = useTheme();
-  const { yGridlines = true, gridlineWidth } = useCommonChartComponentsContext();
+  const { yGridlines = true, gridlineWidth, chartVersion } = useCommonChartComponentsContext();
+  // `v1`: as on master. The gridline props apply to `v2` only.
+  const isV2 = chartVersion === 'v2';
 
   return (
     <RechartsCartesianGrid
       stroke={theme.colors.surface.border.gray.muted}
       vertical={false}
       // `gridlineWidth`: a Blade border width. With none, recharts' 1px, as before.
-      {...(gridlineWidth ? { strokeWidth: theme.border.width[gridlineWidth] } : {})}
-      {...(yGridlines ? {} : { horizontal: false })}
+      {...(isV2 && gridlineWidth ? { strokeWidth: theme.border.width[gridlineWidth] } : {})}
+      {...(isV2 && !yGridlines ? { horizontal: false } : {})}
       {...props}
     />
   );
@@ -794,12 +833,17 @@ const LegendItem = ({
   isClickable: boolean;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName, lineStrokeStyles } = useCommonChartComponentsContext();
+  const {
+    dataColorMapping,
+    chartName,
+    lineStrokeStyles,
+    chartVersion,
+  } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
   // A line chart shows each series as a line in its own stroke style, with the dash of the
   // `border.dash` token. Area, bar and donut keep the square.
-  const isLineSwatch = chartName === 'line';
+  const isLineSwatch = chartVersion === 'v2' && chartName === 'line';
   const lineStrokeStyle = lineStrokeStyles?.[entry.dataKey] ?? 'solid';
   const lineDash =
     lineStrokeStyle === 'solid' ? undefined : theme.border.dash[lineStrokeStyle].join(' ');
@@ -1021,8 +1065,12 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     dataColorMapping,
     setSelectedDataKeys,
     legendPlacement,
+    chartVersion,
   } = useCommonChartComponentsContext();
   const isTop = legendPlacement === 'top' && props.layout !== 'vertical';
+  // The gap between the legend and the chart. `v2`: spacing.4 from the legend items. `v1`:
+  // LEGEND_MARGIN_TOP, as on master.
+  const legendGap = chartVersion === 'v2' ? theme.spacing[4] : LEGEND_MARGIN_TOP;
   const hasUserInteractedRef = React.useRef(false);
   const isControlled = selectedDataKeysProp !== undefined;
   const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
@@ -1088,9 +1136,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
         // On top: the gap sits under the legend, and the legend starts at the left edge.
-        ...(isTop
-          ? { paddingBottom: LEGEND_MARGIN_TOP, left: 0 }
-          : { paddingTop: LEGEND_MARGIN_TOP }),
+        ...(isTop ? { paddingBottom: legendGap, left: 0 } : { paddingTop: legendGap }),
       }}
       align={isTop ? 'left' : 'center'}
       verticalAlign={props.layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom'}

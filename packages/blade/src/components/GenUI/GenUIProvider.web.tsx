@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import type {
   GenUIAction,
   GenUIChartLayout,
+  GenUIChartVersion,
   GenUIComponentActionsRegistry,
   GenUIComponentRegistry,
 } from './types';
@@ -25,15 +26,20 @@ type GenUIConfig = {
    */
   componentActions?: GenUIComponentActionsRegistry;
   /**
-   * How a CHART sizes and draws itself.
-   * - `fixed`: 350px tall at every width (100px for `tiny`), every X label, the raw value in the
-   *   tooltip. The chart as released before this option.
-   * - `responsive`: the chart fits the box it renders in. Height from width, X labels thinned to
-   *   fit, Indian compact ticks, full values in the tooltip, `minimal` axes in a box of 640px or
-   *   less, no legend for one series, a bar list for a pie of more than 4 slices, and one line
-   *   for a finished chart with no rows.
+   * The look of a CHART.
+   * - `v2`: the chart fits the box it renders in, with the `v2` Blade charts. Height from width,
+   *   X labels thinned to fit, Indian compact ticks, full values in the tooltip, `minimal` axes
+   *   in a box of 640px or less, no legend for one series, a bar list for a pie of more than 4
+   *   slices, and one line for a finished chart with no rows.
+   * - `v1`: the chart as released before: 350px tall at every width (100px for `tiny`), every
+   *   X label, the raw value in the tooltip, with the `v1` Blade charts. An escape hatch.
    *
-   * @default 'fixed'
+   * @default 'v2'
+   */
+  chartVersion?: GenUIChartVersion;
+  /**
+   * @deprecated Use `chartVersion`. `responsive` is `v2` and `fixed` is `v1`. `chartVersion`
+   * wins when both are set. Local branch only: it can go before merge.
    */
   chartLayout?: GenUIChartLayout;
 };
@@ -101,7 +107,7 @@ const GenUIProvider = ({ children, config = {} }: GenUIProviderProps) => {
       registry,
       onActionClick: config.onActionClick,
       componentActions: config.componentActions,
-      chartLayout: config.chartLayout,
+      chartVersion: config.chartVersion ?? (config.chartLayout === 'fixed' ? 'v1' : 'v2'),
       validComponentTypes: Object.keys(registry),
     };
   }, [config]);

@@ -47,6 +47,7 @@ type Unset = 'default';
 type OnOff = Unset | 'on' | 'off';
 
 type ChartDisplayControlsArgs = {
+  version: 'v1' | 'v2';
   axisStyle: 'lines' | 'minimal';
   yAxisLine: OnOff;
   yLabelPlacement: Unset | 'left' | 'right' | 'overlap';
@@ -65,6 +66,7 @@ const onOff = (value: OnOff): boolean | undefined =>
   value === 'default' ? undefined : value === 'on';
 
 const toDisplayProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProps => ({
+  version: args.version,
   axisStyle: args.axisStyle,
   yAxisLine: onOff(args.yAxisLine),
   yLabelPlacement: unset(args.yLabelPlacement),
@@ -151,6 +153,7 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
       {/* The donut has a legend and no axes: only legendPlacement applies. */}
       <ChartCard title="Donut" width={width} showEdgeGuides={showEdgeGuides}>
         <ChartDonutWrapper
+          version={display.version}
           legendPlacement={display.legendPlacement}
           valueFormat={display.valueFormat}
         >
@@ -164,8 +167,10 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
 };
 
 /**
- * Every display control of the line, area and bar chart wrappers, as a live control. `default`
- * leaves a prop unset, so `axisStyle` sets it. `lineStyle` sets `strokeStyle` on the second line.
+ * Every display control of the line, area and bar chart wrappers, as a live control. `version`
+ * picks the look: `v1` renders as Blade master and ignores the other controls. `v2` takes them.
+ * `default` leaves a prop unset, so `axisStyle` sets it. `lineStyle` sets `strokeStyle` on the
+ * second line.
  *
  * - The horizontal bar chart (`layout="vertical"`) keeps `lines` and a `left` column for its
  *   category names. `axisStyle` and `yLabelPlacement` do not apply to it. `yAxisLine`,
@@ -175,6 +180,7 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
 export const ChartDisplayControls = ChartDisplayControlsTemplate.bind({});
 ChartDisplayControls.storyName = 'Chart Display Controls';
 ChartDisplayControls.args = {
+  version: 'v2',
   axisStyle: 'lines',
   yAxisLine: 'default',
   yLabelPlacement: 'default',
@@ -191,6 +197,12 @@ export default {
   title: 'Components/Charts/Chart Display Controls',
   component: ChartDisplayControlsTemplate,
   argTypes: {
+    version: {
+      control: 'inline-radio',
+      options: ['v1', 'v2'],
+      description:
+        '`version`. v1 renders as Blade master: the other controls have no effect. v2 is the new look. Default of the prop: v1.',
+    },
     axisStyle: {
       control: 'inline-radio',
       options: ['lines', 'minimal'],

@@ -1438,7 +1438,7 @@ LineChartWithSequentialColors.parameters = {
 };
 
 /**
- * `axisStyle` on the wrapper. `lines` draws an X and a Y axis line. `minimal` draws no axis lines
+ * `axisStyle` on a `version="v2"` wrapper. `lines` draws an X and a Y axis line. `minimal` draws no axis lines
  * and 0.5px gridlines. Both put the Y labels in a `left` column, as wide as the widest label plus
  * spacing.3. `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline,
  * or `outside`, in a column right of the plot. `minimal` suits a narrow box. The same props are
@@ -1473,6 +1473,7 @@ export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
             <Box width="100%" height="220px">
               <ChartLineWrapper
                 data={chartData}
+                version="v2"
                 axisStyle={axisStyle}
                 yLabelPlacement={yLabelPlacement}
               >
@@ -1513,6 +1514,7 @@ export const LineChartWithValueFormat: StoryFn<typeof ChartLine> = () => {
       <Box width="360px" height="240px">
         <ChartLineWrapper
           data={collectedPerMonth}
+          version="v2"
           axisStyle="minimal"
           valueFormat={{ type: 'currency', currency: 'INR' }}
         >

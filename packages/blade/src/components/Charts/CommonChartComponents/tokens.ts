@@ -47,15 +47,14 @@ const REFERENCE_BAND_UPPER_CLASS = 'blade-reference-band-upper';
 // className on the <g> layer that holds the painted band path.
 const REFERENCE_BAND_LAYER_CLASS = 'blade-reference-band-layer';
 
-// `minimal` axis style: the plot runs to the left and right edges of the chart, so the Y ticks
-// start where a title above the chart starts. No bottom margin: the X labels end the chart. The
-// top keeps the recharts 5px.
-const MINIMAL_AXIS_CHART_MARGIN = { top: 5, right: 0, bottom: 0, left: 0 };
+// `v2`: no chart margin. The legend, the Y label column and the X labels end the chart, so the
+// plot height is the same in every `axisStyle`.
+const V2_CHART_MARGIN = { top: 0, right: 0, bottom: 0, left: 0 };
+// `v2`: the X label's top sits spacing.3 under the plot. Its baseline sits one ascent lower. The
+// ascent of Inter is 0.97em.
+const X_LABEL_ASCENT_EM = 0.97;
 // `minimal` axis style: the Y axis width. recharts draws no axis of width 0, so it is 1px.
 const MINIMAL_Y_AXIS_WIDTH = 1;
-// The chart margin of a `lines` chart: recharts' 5px default. The side of the Y label column
-// (`left` by default) is 0, so the widest label meets the edge of the chart.
-const DEFAULT_CHART_MARGIN = { top: 5, right: 5, bottom: 5, left: 5 };
 // recharts sets a Y tick label's baseline 0.355em under its tick: half of its 0.71em cap height.
 const Y_LABEL_HALF_CAP_EM = 0.355;
 
@@ -96,8 +95,8 @@ export {
   REFERENCE_BAND_UPPER_CLASS,
   REFERENCE_BAND_LAYER_CLASS,
   X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
-  MINIMAL_AXIS_CHART_MARGIN,
+  V2_CHART_MARGIN,
+  X_LABEL_ASCENT_EM,
   MINIMAL_Y_AXIS_WIDTH,
-  DEFAULT_CHART_MARGIN,
   Y_LABEL_HALF_CAP_EM,
 };

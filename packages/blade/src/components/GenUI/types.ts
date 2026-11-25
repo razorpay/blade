@@ -82,11 +82,20 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
 type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
 
 /**
- * How a GenUI CHART sizes and draws itself. `fixed` is the chart as released before this option.
+ * The look of a GenUI CHART.
+ * - `v1`: the chart as released before chart versions, with the `v1` Blade charts.
+ * - `v2`: the chart fits its box, with the `v2` Blade charts.
+ */
+type GenUIChartVersion = 'v1' | 'v2';
+
+/**
+ * @deprecated Use `GenUIChartVersion`. `responsive` is `v2` and `fixed` is `v1`. Local branch
+ * only: it can go before merge.
  */
 type GenUIChartLayout = 'fixed' | 'responsive';
 
 export type {
+  GenUIChartVersion,
   GenUIChartLayout,
   // Main types
   GenUIBaseComponent,

@@ -30,7 +30,7 @@ function App() {
 Markdown text with Blade typography
 
 **CHART**\
-Bar, line, area, pie charts. Set `chartLayout: 'responsive'` on the `GenUIProvider` config to make a chart fit its box. Then `axisStyle` is `lines` or `minimal`. With no value, a chart in a box of 640px or less takes `minimal`. With `minimal`, `yLabelPlacement` is `overlap` (the default, labels inside the plot) or `outside` (a label column right of the plot). A pie of more than 4 slices, or in a box under 300px, shows as a list of bars. The default, `fixed`, draws the chart as before
+Bar, line, area, pie charts. By default (`chartVersion: 'v2'` on the `GenUIProvider` config), a chart fits its box and uses the `v2` Blade charts. `axisStyle` is `lines` or `minimal`. With no value, a chart in a box of 640px or less takes `minimal`. With `minimal`, `yLabelPlacement` is `overlap` (the default, labels inside the plot) or `outside` (a label column right of the plot). A pie of more than 4 slices, or in a box under 300px, shows as a list of bars. `chartVersion: 'v1'` draws the chart as before. `chartLayout` is a deprecated alias: `responsive` is `v2`, `fixed` is `v1`
 
 **TABLE**\
 Data table with typed cells

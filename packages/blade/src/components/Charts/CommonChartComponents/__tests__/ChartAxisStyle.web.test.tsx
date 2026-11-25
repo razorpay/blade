@@ -42,7 +42,12 @@ const renderChart = (
   if (kind === 'line') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
+        <ChartLineWrapper
+          data={data}
+          version="v2"
+          axisStyle={axisStyle}
+          yLabelPlacement={yLabelPlacement}
+        >
           {axes}
           <ChartLine dataKey="sales" />
         </ChartLineWrapper>
@@ -52,7 +57,12 @@ const renderChart = (
   if (kind === 'area') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartAreaWrapper data={data} axisStyle={axisStyle} yLabelPlacement={yLabelPlacement}>
+        <ChartAreaWrapper
+          data={data}
+          version="v2"
+          axisStyle={axisStyle}
+          yLabelPlacement={yLabelPlacement}
+        >
           {axes}
           <ChartArea dataKey="sales" name="Sales" />
         </ChartAreaWrapper>
@@ -63,6 +73,7 @@ const renderChart = (
     <Box width="800px" height="400px">
       <ChartBarWrapper
         data={data}
+        version="v2"
         axisStyle={axisStyle}
         yLabelPlacement={yLabelPlacement}
         layout={kind === 'vertical-bar' ? 'vertical' : 'horizontal'}

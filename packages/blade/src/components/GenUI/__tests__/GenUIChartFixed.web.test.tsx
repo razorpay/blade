@@ -1,7 +1,7 @@
 /**
- * The GenUI CHART with no `chartLayout` must draw as the release before it. The snapshots in this
- * file were written by running this same file on Blade master (2001d10), with no change to it.
- * Any change to the default output fails here.
+ * The GenUI CHART with `chartVersion: 'v1'` must draw as the release before chart versions. The
+ * snapshots in this file were written by running this same file on Blade master (2001d10), with
+ * no config. Any change to the v1 output fails here.
  */
 import React from 'react';
 import { GenUIProvider } from '../GenUIProvider';
@@ -59,7 +59,7 @@ const stableHtml = (container: HTMLElement): string =>
     .replace(/:r[0-9a-z]+:/g, ':rID:')
     .replace(/recharts\d+-clip/g, 'rechartsID-clip');
 
-describe('<GenUI /> CHART with no chartLayout draws as before', () => {
+describe('<GenUI /> CHART with chartVersion v1 draws as before', () => {
   it.each(nodes)('%s', (_name, props) => {
     const component = ({
       component: 'CHART',
@@ -72,7 +72,7 @@ describe('<GenUI /> CHART with no chartLayout draws as before', () => {
     }
 
     const { container } = renderWithTheme(
-      <GenUIProvider>
+      <GenUIProvider config={{ chartVersion: 'v1' }}>
         <GenUISchemaRenderer components={[component]} isAnimating={false} />
       </GenUIProvider>,
     );

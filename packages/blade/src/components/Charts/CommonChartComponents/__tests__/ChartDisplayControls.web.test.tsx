@@ -37,6 +37,7 @@ const renderChart = (
   kind: Kind,
   display: ChartWrapperDisplayProps = {},
   { strokeStyle = 'solid' }: { strokeStyle?: 'solid' | 'dashed' | 'dotted' } = {},
+  version: 'v1' | 'v2' = 'v2',
 ): HTMLElement => {
   // An array, not a fragment: the wrappers read their direct children.
   const common = [
@@ -48,7 +49,7 @@ const renderChart = (
   if (kind === 'line') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} {...display}>
+        <ChartLineWrapper data={data} version={version} {...display}>
           {common}
           <ChartLine dataKey="online" name="Online" />
           <ChartLine dataKey="offline" name="Offline" strokeStyle={strokeStyle} />
@@ -59,7 +60,7 @@ const renderChart = (
   if (kind === 'area') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartAreaWrapper data={data} {...display}>
+        <ChartAreaWrapper data={data} version={version} {...display}>
           {common}
           <ChartArea dataKey="online" name="Online" />
           <ChartArea dataKey="offline" name="Offline" />
@@ -69,7 +70,7 @@ const renderChart = (
   }
   return renderWithTheme(
     <Box width="800px" height="400px">
-      <ChartBarWrapper data={data} {...display}>
+      <ChartBarWrapper data={data} version={version} {...display}>
         {common}
         <ChartBar dataKey="online" name="Online" />
         <ChartBar dataKey="offline" name="Offline" />
@@ -118,8 +119,31 @@ const hasRule = (element: Element | null, declaration: string, selector: string)
 };
 
 describe('resolveChartDisplayOptions', () => {
-  it('puts the Y labels in a left column with no props', () => {
-    expect(resolveChartDisplayOptions({})).toEqual({
+  const v2 = (props: ChartWrapperDisplayProps, options?: { isVerticalBar?: boolean }) =>
+    resolveChartDisplayOptions({ version: 'v2', ...props }, options);
+
+  it('ignores every display prop with v1, the default, and keeps the recharts margin', () => {
+    const v1 = resolveChartDisplayOptions({
+      axisStyle: 'minimal',
+      yAxisLine: false,
+      yLabelPlacement: 'overlap',
+      yGridlines: false,
+      gridlineWidth: 'thinner',
+      legendPlacement: 'top',
+    });
+    expect(v1).toEqual({
+      chartVersion: 'v1',
+      axisStyle: 'lines',
+      yAxisLine: true,
+      yLabelPlacement: 'left',
+      yGridlines: true,
+    });
+    expect(getChartMargin(v1)).toBeUndefined();
+  });
+
+  it('puts the Y labels in a left column with v2 and no other props, with no margin', () => {
+    expect(v2({})).toEqual({
+      chartVersion: 'v2',
       axisStyle: 'lines',
       yAxisLine: true,
       yLabelPlacement: 'left',
@@ -127,90 +151,79 @@ describe('resolveChartDisplayOptions', () => {
       gridlineWidth: undefined,
       legendPlacement: undefined,
     });
-    // No fixed gutter: the label column starts at the content edge.
-    expect(getChartMargin(resolveChartDisplayOptions({}))).toEqual({
-      top: 5,
-      right: 5,
-      bottom: 5,
-      left: 0,
-    });
+    expect(getChartMargin(v2({}))).toEqual({ top: 0, right: 0, bottom: 0, left: 0 });
+    expect(getChartMargin(v2({ axisStyle: 'minimal' }))).toEqual(getChartMargin(v2({})));
   });
 
   it('sets the defaults of minimal: no Y axis line, left labels, thinner gridlines', () => {
-    expect(resolveChartDisplayOptions({ axisStyle: 'minimal' })).toMatchObject({
+    expect(v2({ axisStyle: 'minimal' })).toMatchObject({
       yAxisLine: false,
       yLabelPlacement: 'left',
       gridlineWidth: 'thinner',
     });
-    expect(getChartMargin(resolveChartDisplayOptions({ axisStyle: 'minimal' }))).toEqual({
-      top: 5,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    });
   });
 
   it('keeps overlap as an explicit option', () => {
-    expect(
-      resolveChartDisplayOptions({ axisStyle: 'minimal', yLabelPlacement: 'overlap' })
-        .yLabelPlacement,
-    ).toBe('overlap');
-    expect(
-      resolveChartDisplayOptions({ axisStyle: 'lines', yLabelPlacement: 'overlap' })
-        .yLabelPlacement,
-    ).toBe('overlap');
+    expect(v2({ axisStyle: 'minimal', yLabelPlacement: 'overlap' }).yLabelPlacement).toBe(
+      'overlap',
+    );
+    expect(v2({ axisStyle: 'lines', yLabelPlacement: 'overlap' }).yLabelPlacement).toBe('overlap');
   });
 
   it('lets an explicit prop win over axisStyle', () => {
     expect(
-      resolveChartDisplayOptions({
-        axisStyle: 'minimal',
-        yAxisLine: true,
-        yLabelPlacement: 'left',
-        gridlineWidth: 'thin',
-      }),
+      v2({ axisStyle: 'minimal', yAxisLine: true, yLabelPlacement: 'left', gridlineWidth: 'thin' }),
     ).toMatchObject({ yAxisLine: true, yLabelPlacement: 'left', gridlineWidth: 'thin' });
-    expect(
-      resolveChartDisplayOptions({
-        axisStyle: 'lines',
-        yAxisLine: false,
-        gridlineWidth: 'thinner',
-      }),
-    ).toMatchObject({ yAxisLine: false, gridlineWidth: 'thinner' });
+    expect(v2({ axisStyle: 'lines', yAxisLine: false, gridlineWidth: 'thinner' })).toMatchObject({
+      yAxisLine: false,
+      gridlineWidth: 'thinner',
+    });
   });
 
   it('reads outside as right', () => {
-    expect(resolveChartDisplayOptions({ yLabelPlacement: 'outside' }).yLabelPlacement).toBe(
-      'right',
-    );
+    expect(v2({ yLabelPlacement: 'outside' }).yLabelPlacement).toBe('right');
   });
 
   it('keeps lines and a left column on a vertical bar chart', () => {
     expect(
-      resolveChartDisplayOptions(
-        { axisStyle: 'minimal', yLabelPlacement: 'right' },
-        { isVerticalBar: true },
-      ),
+      v2({ axisStyle: 'minimal', yLabelPlacement: 'right' }, { isVerticalBar: true }),
     ).toMatchObject({ axisStyle: 'lines', yLabelPlacement: 'left' });
-    expect(
-      resolveChartDisplayOptions({ yLabelPlacement: 'overlap' }, { isVerticalBar: true })
-        .yLabelPlacement,
-    ).toBe('left');
+    expect(v2({ yLabelPlacement: 'overlap' }, { isVerticalBar: true }).yLabelPlacement).toBe(
+      'left',
+    );
+  });
+});
+
+describe('a display prop on a v1 chart', () => {
+  it('warns in development, and does nothing', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} axisStyle="minimal" legendPlacement="top">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLegend />
+          <ChartLine dataKey="online" name="Online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await ready(container);
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('axisStyle, legendPlacement has no effect with version="v1"'),
+    );
+    expect(surface(container)).toBeNull();
+    expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
+    // recharts' fixed 60px Y axis after its 5px margin, as on master.
+    expect(Number(yAxisLine(container)?.getAttribute('x1'))).toBe(65);
+    warn.mockRestore();
   });
 
-  it('sets the margin on the side of a label column to 0', () => {
-    expect(getChartMargin({ axisStyle: 'lines', yLabelPlacement: 'left' })).toEqual({
-      top: 5,
-      right: 5,
-      bottom: 5,
-      left: 0,
-    });
-    expect(getChartMargin({ axisStyle: 'lines', yLabelPlacement: 'right' })).toEqual({
-      top: 5,
-      right: 0,
-      bottom: 5,
-      left: 5,
-    });
+  it('does not warn with no display prop', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderChart('line', {}, {}, 'v1');
+    await ready(container);
+    expect(warn).not.toHaveBeenCalledWith(expect.stringContaining('has no effect'));
+    warn.mockRestore();
   });
 });
 
@@ -361,7 +374,7 @@ describe('horizontal bar chart (layout vertical)', () => {
   const renderHorizontalBar = (display: ChartWrapperDisplayProps = {}): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartBarWrapper data={categoryData} layout="vertical" {...display}>
+        <ChartBarWrapper data={categoryData} layout="vertical" version="v2" {...display}>
           <ChartXAxis type="number" />
           <ChartYAxis type="category" dataKey="method" />
           <ChartLegend />
@@ -443,7 +456,7 @@ describe('legend controls on a donut chart', () => {
   const renderDonut = (props: { legendPlacement?: 'top' | 'bottom' } = {}): HTMLElement =>
     renderWithTheme(
       <Box width="400px" height="400px">
-        <ChartDonutWrapper {...props}>
+        <ChartDonutWrapper version="v2" {...props}>
           <ChartDonut dataKey="value" nameKey="name" data={donutData} />
           <ChartLegend />
         </ChartDonutWrapper>

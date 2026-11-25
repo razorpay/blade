@@ -2,7 +2,7 @@ import React from 'react';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
 import type { GenUIComponent } from '../GenUIComponents';
-import type { GenUIChartLayout } from '../types';
+import type { GenUIChartVersion } from '../types';
 import { NBSP } from '../genUIChartUtils';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { bladeTheme } from '~tokens/theme';
@@ -77,7 +77,7 @@ const daily = (
 const renderAtWidth = (
   width: number,
   components: GenUIComponent[],
-  chartLayout: GenUIChartLayout = 'responsive',
+  config: { chartVersion?: GenUIChartVersion; chartLayout?: 'fixed' | 'responsive' } = {},
 ): ReturnType<typeof renderWithTheme> => {
   jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
     width,
@@ -91,7 +91,7 @@ const renderAtWidth = (
     toJSON: () => ({}),
   } as unknown) as DOMRect);
   return renderWithTheme(
-    <GenUIProvider config={{ chartLayout }}>
+    <GenUIProvider config={config}>
       <GenUISchemaRenderer components={components} isAnimating={false} />
     </GenUIProvider>,
   );
@@ -119,7 +119,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect((xAxis.tickFormatter as (value: string) => string)(day(0))).toBe(`1${NBSP}Oct`);
     });
 
-    it('keeps every category label, as before', () => {
+    it('gives a category axis no interval, so the v2 X axis shows the labels that fit', () => {
       renderAtWidth(
         360,
         chart({
@@ -133,7 +133,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
       );
       const xAxis = lastProps('ChartXAxis');
 
-      expect(xAxis.interval).toBe(0);
+      expect(xAxis.interval).toBeUndefined();
       expect(xAxis.tickFormatter).toBeUndefined();
     });
 
@@ -162,7 +162,8 @@ describe('<GenUI /> CHART in a narrow box', () => {
       const yAxis = lastProps('ChartYAxis');
       const format = yAxis.tickFormatter as (value: number) => string;
 
-      expect(yAxis.width).toBe('auto');
+      // The v2 chart sets the width: a column as wide as the ticks.
+      expect(yAxis).not.toHaveProperty('width');
       expect([0, 50000, 100000, 150000, 200000].map(format)).toEqual([
         '₹0',
         '₹50K',
@@ -281,9 +282,9 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(lastProps('ChartLineWrapper').axisStyle).toBe('lines');
     });
 
-    it('gives the Y axis an auto width with lines, and none with minimal', () => {
+    it('leaves the Y axis width to the v2 chart, with lines and with minimal', () => {
       renderAtWidth(800, chart({ chartType: 'bar', data: daily(7, ['Collected']) }));
-      expect(lastProps('ChartYAxis').width).toBe('auto');
+      expect(lastProps('ChartYAxis')).not.toHaveProperty('width');
 
       renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected']) }));
       expect(lastProps('ChartYAxis')).not.toHaveProperty('width');
@@ -494,9 +495,38 @@ describe('<GenUI /> CHART in a narrow box', () => {
     });
   });
 
-  describe('chartLayout fixed, the default', () => {
+  describe('chart versions', () => {
+    it('draws the v2 charts with no config', () => {
+      renderAtWidth(360, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
+      expect(lastProps('ChartLineWrapper').version).toBe('v2');
+    });
+
+    it.each([
+      [{ chartVersion: 'v1' as const }, undefined],
+      [{ chartLayout: 'fixed' as const }, undefined],
+      [{ chartLayout: 'responsive' as const }, 'v2'],
+      [{ chartVersion: 'v2' as const, chartLayout: 'fixed' as const }, 'v2'],
+    ])('reads %p as version %p', (config, version) => {
+      renderAtWidth(360, chart({ chartType: 'line', data: daily(7, ['Collected']) }), config);
+      expect(lastProps('ChartLineWrapper').version).toBe(version);
+    });
+
+    it('lets the v2 X axis thin a category axis', () => {
+      renderAtWidth(
+        360,
+        chart({
+          chartType: 'bar',
+          xAxis: 'method',
+          data: ['UPI', 'Card', 'Netbanking'].map((method, i) => ({ method, value: 10 + i })),
+        }),
+      );
+      expect(lastProps('ChartXAxis').interval).toBeUndefined();
+    });
+  });
+
+  describe('chartVersion v1', () => {
     const fixedAt = (width: number, props: Record<string, unknown>): void => {
-      renderAtWidth(width, chart(props), 'fixed');
+      renderAtWidth(width, chart(props), { chartVersion: 'v1' });
     };
 
     it('draws a line chart as before in a 360px box', () => {
@@ -532,7 +562,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
             value: 100 - i * 10,
           })),
         }),
-        'fixed',
+        { chartVersion: 'v1' },
       );
 
       expect(queryByTestId('genui-chart-bar-list')).toBeNull();

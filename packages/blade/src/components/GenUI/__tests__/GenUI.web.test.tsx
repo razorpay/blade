@@ -408,7 +408,7 @@ describe('<GenUI />', () => {
       ];
 
       const { getByTestId, getByText, container } = renderWithTheme(
-        <GenUIProvider config={{ chartLayout: 'responsive' }}>
+        <GenUIProvider>
           <GenUISchemaRenderer components={components} isAnimating={false} />
         </GenUIProvider>,
       );
@@ -418,9 +418,9 @@ describe('<GenUI />', () => {
       expect(container.querySelector('[data-blade-component="skeleton"]')).not.toBeInTheDocument();
     });
 
-    it('keeps the skeleton for a finished chart with no rows by default, as before', () => {
+    it('keeps the skeleton for a finished chart with no rows with chartVersion v1, as before', () => {
       const { queryByTestId, container } = renderWithTheme(
-        <GenUIProvider>
+        <GenUIProvider config={{ chartVersion: 'v1' }}>
           <GenUISchemaRenderer
             components={[
               {
@@ -471,7 +471,7 @@ describe('<GenUI />', () => {
           toJSON: () => ({}),
         } as unknown) as DOMRect);
         return renderWithTheme(
-          <GenUIProvider config={{ chartLayout: 'responsive' }}>
+          <GenUIProvider>
             <GenUISchemaRenderer components={components} />
           </GenUIProvider>,
         );
@@ -498,7 +498,7 @@ describe('<GenUI />', () => {
         expect(boxesOfHeight(container, height).length).toBeGreaterThan(0);
       });
 
-      it('keeps 350px in a 360px box by default, as before', () => {
+      it('keeps 350px in a 360px box with chartVersion v1, as before', () => {
         jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
           width: 360,
           height: 0,
@@ -511,7 +511,7 @@ describe('<GenUI />', () => {
           toJSON: () => ({}),
         } as unknown) as DOMRect);
         const { container } = renderWithTheme(
-          <GenUIProvider>
+          <GenUIProvider config={{ chartVersion: 'v1' }}>
             <GenUISchemaRenderer components={barChart(['Collected'])} />
           </GenUIProvider>,
         );
@@ -528,7 +528,7 @@ describe('<GenUI />', () => {
 
       it('keeps 350px when the box is not measured', () => {
         const { container } = renderWithTheme(
-          <GenUIProvider config={{ chartLayout: 'responsive' }}>
+          <GenUIProvider>
             <GenUISchemaRenderer components={barChart(['Collected'])} />
           </GenUIProvider>,
         );

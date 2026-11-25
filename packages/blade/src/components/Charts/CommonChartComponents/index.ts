@@ -13,6 +13,8 @@ export type {
   ChartLegendPlacement,
   ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
+  ChartVersion,
+  ChartVersionProps,
   ChartValueFormat,
   DataColorMapping,
   SecondaryLabelMap,

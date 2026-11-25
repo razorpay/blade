@@ -1,7 +1,7 @@
 import React from 'react';
 import type {
   GenUIAction,
-  GenUIChartLayout,
+  GenUIChartVersion,
   GenUIComponentActionsRegistry,
   GenUIComponentRegistry,
 } from './types';
@@ -23,8 +23,8 @@ type GenUIContextValue = {
   isAnimating?: boolean;
   /** Animation options for text streaming */
   animateOptions?: AnimateOptions;
-  /** How a CHART sizes and draws itself. See `GenUIConfig.chartLayout`. */
-  chartLayout?: GenUIChartLayout;
+  /** The look of a CHART. See `GenUIConfig.chartVersion`. */
+  chartVersion?: GenUIChartVersion;
 };
 
 const GenUIContext = React.createContext<GenUIContextValue | null>(null);
@@ -69,11 +69,11 @@ const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOp
 };
 
 /**
- * Hook to access the CHART layout (safe version that doesn't throw). `fixed` outside a provider.
+ * Hook to access the CHART version (safe version that doesn't throw). `v2` outside a provider.
  */
-const useGenUIChartLayout = (): { chartLayout: GenUIChartLayout } => {
+const useGenUIChartVersion = (): { chartVersion: GenUIChartVersion } => {
   const context = React.useContext(GenUIContext);
-  return { chartLayout: context?.chartLayout ?? 'fixed' };
+  return { chartVersion: context?.chartVersion ?? 'v2' };
 };
 
 export {
@@ -82,6 +82,6 @@ export {
   useGenUIAction,
   useGenUIComponentActions,
   useGenUIAnimation,
-  useGenUIChartLayout,
+  useGenUIChartVersion,
 };
 export type { GenUIContextValue };

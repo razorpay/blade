@@ -28,6 +28,7 @@ import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import {
   getChartMargin,
   resolveChartDisplayOptions,
+  useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
@@ -249,6 +250,7 @@ const ChartLine = assignWithoutSideEffects(Line, {
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'categorical',
+  version,
   axisStyle,
   yAxisLine,
   yLabelPlacement,
@@ -263,6 +265,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const display = useMemo(
     () =>
       resolveChartDisplayOptions({
+        version,
         axisStyle,
         yAxisLine,
         yLabelPlacement,
@@ -270,7 +273,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         gridlineWidth,
         legendPlacement,
       }),
-    [axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
+    [version, axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement],
+  );
+  useWarnDisplayPropsOnV1(
+    version,
+    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    'ChartLineWrapper',
   );
   const themeColors = useChartsColorTheme({
     colorTheme,
@@ -590,6 +598,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         >
           <ChartSurface
             ref={containerRef}
+            chartVersion={display.chartVersion}
             axisStyle={display.axisStyle}
             yLabelPlacement={display.yLabelPlacement}
           >

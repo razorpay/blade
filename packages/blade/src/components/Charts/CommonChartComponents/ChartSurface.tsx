@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ChartAxisStyle, ChartResolvedYLabelPlacement } from './types';
+import type { ChartAxisStyle, ChartResolvedYLabelPlacement, ChartVersion } from './types';
 
 /** Set on the lowest Y label of a `right` chart when it meets an X label. It then hides. */
 const Y_LABEL_COLLIDES_ATTR = 'data-blade-y-label-collides';
@@ -8,14 +8,13 @@ const Y_LABEL_COLLIDES_ATTR = 'data-blade-y-label-collides';
 const Y_TICK_LABEL = '.recharts-yAxis-tick-labels .recharts-cartesian-axis-tick-value';
 
 const StyledChartSurface = styled.div<{
-  $axisStyle: ChartAxisStyle;
   $yLabelPlacement: ChartResolvedYLabelPlacement;
-}>(({ $axisStyle, $yLabelPlacement }) => ({
+}>(({ $yLabelPlacement }) => ({
   width: '100%',
   height: '100%',
-  // `minimal`: the plot runs to the edges of the chart. A point or an active dot on the edge is
-  // not cut.
-  ...($axisStyle === 'minimal' ? { '.recharts-surface': { overflow: 'visible' } } : {}),
+  // The plot runs to the edges of the chart: no margin. A point, an active dot, the axis lines or
+  // the top Y label on the edge is not cut.
+  '.recharts-surface': { overflow: 'visible' },
   // A label column: tabular digits, so the numbers line up towards the axis.
   ...($yLabelPlacement === 'left' || $yLabelPlacement === 'right'
     ? { [Y_TICK_LABEL]: { fontVariantNumeric: 'tabular-nums' } }
@@ -81,16 +80,21 @@ const useLowestYLabelCollision = (
 };
 
 type ChartSurfaceProps = {
+  chartVersion: ChartVersion;
   axisStyle: ChartAxisStyle;
   yLabelPlacement: ChartResolvedYLabelPlacement;
   children: React.ReactNode;
 };
 
-/** The element around a chart's recharts container. It holds the CSS that the display props need. */
+/**
+ * The element around a chart's recharts container. `v2`: it holds the CSS that the display props
+ * need. `v1`: a plain box, as on master.
+ */
 const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
-  ({ axisStyle, yLabelPlacement, children }, ref) => {
+  ({ chartVersion, axisStyle, yLabelPlacement, children }, ref) => {
     const innerRef = React.useRef<HTMLDivElement>(null);
-    useLowestYLabelCollision(innerRef, yLabelPlacement === 'right');
+    const isV2 = chartVersion === 'v2';
+    useLowestYLabelCollision(innerRef, isV2 && yLabelPlacement === 'right');
     const setRefs = React.useCallback(
       (node: HTMLDivElement | null) => {
         (innerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
@@ -99,10 +103,16 @@ const ChartSurface = React.forwardRef<HTMLDivElement, ChartSurfaceProps>(
       },
       [ref],
     );
+    if (!isV2) {
+      return (
+        <div ref={setRefs} style={{ width: '100%', height: '100%' }}>
+          {children}
+        </div>
+      );
+    }
     return (
       <StyledChartSurface
         ref={setRefs}
-        $axisStyle={axisStyle}
         $yLabelPlacement={yLabelPlacement}
         data-blade-chart-axis-style={axisStyle === 'minimal' ? 'minimal' : undefined}
         data-blade-chart-y-labels={yLabelPlacement}

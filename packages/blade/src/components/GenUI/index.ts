@@ -7,6 +7,7 @@ export type { GenUIComponent, TableComponent } from './GenUIComponents';
 
 export type {
   GenUIChartLayout,
+  GenUIChartVersion,
   GenUIAction,
   GenUIBaseComponent,
   GenUIComponentRegistry,

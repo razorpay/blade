@@ -161,8 +161,29 @@ type ChartGridlineWidth = 'thin' | 'thinner';
 type ChartLegendPlacement = 'top' | 'bottom';
 
 /**
- * Opt-in legend options of every chart wrapper with a legend: line, area, bar and donut. With
- * none set, the legend looks as it did before. Web only: the native charts ignore them.
+ * The look of a chart.
+ * - `v1`: the chart as on Blade master. The display options have no effect.
+ * - `v2`: the new look. The Y labels sit in a tight `left` column. Fixed spacing: `spacing.4`
+ *   from the legend to the plot, `spacing.3` from the plot to the X labels, and no space under
+ *   the X labels unless the X axis has a `label`. The plot height is the same in every
+ *   `axisStyle`. The X labels never wrap and thin out to fit. A line series shows a line swatch.
+ *   `yAxisLine` draws a line on both sides of the plot. The display options apply.
+ */
+type ChartVersion = 'v1' | 'v2';
+
+/** The `version` prop of every chart wrapper: line, area, bar and donut. */
+type ChartVersionProps = {
+  /**
+   * The look of the chart. `v1` renders as Blade master, and the display options have no effect.
+   * `v2` is the new look, and the display options apply. Web only.
+   * @default 'v1'
+   */
+  version?: ChartVersion;
+};
+
+/**
+ * Opt-in legend options of every chart wrapper with a legend: line, area, bar and donut. They
+ * apply with `version="v2"` only. Web only: the native charts ignore them.
  */
 type ChartLegendDisplayProps = {
   /**
@@ -174,9 +195,10 @@ type ChartLegendDisplayProps = {
 };
 
 /**
- * Opt-in display options of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper. With none set,
- * a chart looks as it did before. `axisStyle` sets the defaults of the others, and an explicit prop
- * wins over `axisStyle`. Web only: the native charts ignore them.
+ * Opt-in display options of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper. They apply
+ * with `version="v2"` only. With `v1`, they have no effect and a development warning shows.
+ * `axisStyle` sets the defaults of the others, and an explicit prop wins over `axisStyle`. Web
+ * only: the native charts ignore them. `valueFormat` applies in both versions.
  */
 type ChartWrapperDisplayProps = {
   /**
@@ -231,7 +253,8 @@ type ChartWrapperDisplayProps = {
    * get their own `tickFormatter` or `formatter`.
    */
   valueFormat?: ChartValueFormat;
-} & ChartLegendDisplayProps;
+} & ChartLegendDisplayProps &
+  ChartVersionProps;
 type Align = 'left' | 'right';
 type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey' | 'funnel';
 type DataColorMapping = Record<
@@ -339,6 +362,10 @@ type CommonChartComponentsStateType = {
    */
   rangeMap?: RangeMap;
   /**
+   * The look of the chart. Every part reads it. Undefined is `v1`.
+   */
+  chartVersion?: ChartVersion;
+  /**
    * The axis style of the chart wrapper. ChartXAxis, ChartYAxis and the wrapper read it.
    */
   axisStyle?: ChartAxisStyle;
@@ -432,6 +459,8 @@ export type {
   ChartLineStrokeStyle,
   ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
+  ChartVersion,
+  ChartVersionProps,
   ChartValueFormat,
   DataColorMapping,
   ChartColorToken,

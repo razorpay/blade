@@ -21,6 +21,7 @@ import {
 import {
   getChartMargin,
   resolveChartDisplayOptions,
+  useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
@@ -289,6 +290,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   children,
   colorTheme = 'categorical',
   layout = 'horizontal',
+  version,
   axisStyle,
   yAxisLine,
   yLabelPlacement,
@@ -304,6 +306,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   // `left` column for its category names.
   const display = resolveChartDisplayOptions(
     {
+      version,
       axisStyle,
       yAxisLine,
       yLabelPlacement,
@@ -312,6 +315,11 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       legendPlacement,
     },
     { isVerticalBar: layout === 'vertical' },
+  );
+  useWarnDisplayPropsOnV1(
+    version,
+    { axisStyle, yAxisLine, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement },
+    'ChartBarWrapper',
   );
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
@@ -527,9 +535,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {...restProps}
       >
         <BarChartContext.Provider value={barChartContextValue}>
-          <ChartSurface axisStyle={display.axisStyle} yLabelPlacement={display.yLabelPlacement}>
-            {responsiveContainer}
-          </ChartSurface>
+          {/* v1: no surface, as on master. */}
+          {display.chartVersion === 'v2' ? (
+            <ChartSurface
+              chartVersion={display.chartVersion}
+              axisStyle={display.axisStyle}
+              yLabelPlacement={display.yLabelPlacement}
+            >
+              {responsiveContainer}
+            </ChartSurface>
+          ) : (
+            responsiveContainer
+          )}
         </BarChartContext.Provider>
       </BaseBox>
     </CommonChartComponentsContext.Provider>

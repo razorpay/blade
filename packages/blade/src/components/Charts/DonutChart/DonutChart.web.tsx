@@ -18,6 +18,7 @@ import {
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
 import type { ChartLegendPlacement, DataColorMapping } from '../CommonChartComponents/types';
+import { useWarnDisplayPropsOnV1 } from '../CommonChartComponents/chartDisplayOptions';
 import type {
   ChartDonutWrapperProps,
   ChartDonutCellProps,
@@ -111,10 +112,14 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   content,
   testID,
   valueFormat,
-  legendPlacement,
+  version = 'v1',
+  legendPlacement: legendPlacementProp,
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // `legendPlacement` applies with `version="v2"` only.
+  const legendPlacement = version === 'v2' ? legendPlacementProp : undefined;
+  useWarnDisplayPropsOnV1(version, { legendPlacement: legendPlacementProp }, 'ChartDonutWrapper');
   // State to track which data keys are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
@@ -264,6 +269,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
         setSelectedDataKeys,
         valueFormat,
         legendPlacement,
+        chartVersion: version,
       }}
     >
       <DonutContainerContext.Provider

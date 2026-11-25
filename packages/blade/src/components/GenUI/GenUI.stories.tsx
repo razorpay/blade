@@ -1212,7 +1212,7 @@ const narrowChartCases = [
 const narrowChartWidths = ['360px', '800px'] as const;
 
 /**
- * With `chartLayout: 'responsive'` on the GenUIProvider config, a GenUI CHART sizes itself from
+ * With `chartVersion: 'v2'` on the GenUIProvider config, the default, a GenUI CHART sizes itself from
  * the box it renders in: height from width, date labels thinned to fit, lakh and crore ticks for
  * INR, full values in the tooltip (₹1,23,450.00), no legend for one series, and one line for a
  * finished chart with no rows. In a box of 640px or less its axes are `minimal`, unless the node
@@ -1220,9 +1220,9 @@ const narrowChartWidths = ['360px', '800px'] as const;
  * under 300px, is a list of bars. Each column is a box of a different width.
  */
 const ChartInNarrowBoxesTemplate = ({
-  chartLayout = 'responsive',
+  chartVersion = 'v2',
 }: {
-  chartLayout?: 'fixed' | 'responsive';
+  chartVersion?: 'v1' | 'v2';
 }): JSX.Element => {
   return (
     <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap" alignItems="flex-start">
@@ -1240,7 +1240,7 @@ const ChartInNarrowBoxesTemplate = ({
               <Text size="small" color="surface.text.gray.muted">
                 Box {width}
               </Text>
-              <GenUIProvider config={{ chartLayout }}>
+              <GenUIProvider config={{ chartVersion }}>
                 <GenUISchemaRenderer
                   isAnimating={false}
                   components={([component] as unknown) as GenUIComponent[]}
@@ -1254,12 +1254,12 @@ const ChartInNarrowBoxesTemplate = ({
   );
 };
 
-/** `chartLayout: 'responsive'` on the GenUIProvider config. */
+/** `chartVersion: 'v2'`, the default. */
 export const ChartInNarrowBoxes: StoryFn<typeof ChartInNarrowBoxesTemplate> = () => (
-  <ChartInNarrowBoxesTemplate chartLayout="responsive" />
+  <ChartInNarrowBoxesTemplate chartVersion="v2" />
 );
 
-/** No `chartLayout`: the CHART as released before, for comparison. */
+/** `chartVersion: 'v1'`: the CHART as released before, for comparison. */
 export const ChartInNarrowBoxesFixedDefault: StoryFn<typeof ChartInNarrowBoxesTemplate> = () => (
-  <ChartInNarrowBoxesTemplate chartLayout="fixed" />
+  <ChartInNarrowBoxesTemplate chartVersion="v1" />
 );

@@ -60,7 +60,7 @@ const renderLine = (width: number, count: number): HTMLElement => {
   mockChartWidth = width;
   return renderWithTheme(
     <Box width={`${width}px`} height="300px">
-      <ChartLineWrapper data={dailyData(count)}>
+      <ChartLineWrapper data={dailyData(count)} version="v2">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="day" />
         <ChartYAxis />
@@ -111,7 +111,7 @@ describe('X label thinning', () => {
     mockChartWidth = 300;
     const { container } = renderWithTheme(
       <Box width="300px" height="300px">
-        <ChartBarWrapper data={dailyData(30)}>
+        <ChartBarWrapper data={dailyData(30)} version="v2">
           <ChartXAxis dataKey="day" />
           <ChartYAxis />
           <ChartBar dataKey="amount" name="Amount" />
@@ -131,7 +131,7 @@ describe('X label thinning', () => {
     mockChartWidth = 800;
     const { container } = renderWithTheme(
       <Box width="800px" height="300px">
-        <ChartLineWrapper data={dailyData(10)}>
+        <ChartLineWrapper data={dailyData(10)} version="v2">
           <ChartXAxis dataKey="day" interval={4} />
           <ChartYAxis />
           <ChartLine dataKey="amount" name="Amount" />
