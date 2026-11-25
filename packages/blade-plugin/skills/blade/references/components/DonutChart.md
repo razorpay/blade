@@ -62,6 +62,35 @@ type Content = {
   label?: string;
 };
 
+type ChartActivePointItem = {
+  dataKey: string;
+  name: string;
+  value: number | string | undefined;
+  /** The value as the chart writes it: the tooltip `formatter`, else `valueFormat`, else raw. */
+  formattedValue: string;
+  /** The CSS colour of the series. */
+  color: string;
+};
+
+/** The point a pointer, a tap or the arrow keys make active. */
+type ChartActivePoint = {
+  /** The index of the data row. On a donut, the index of the slice. */
+  index: number;
+  /** The raw label: the X value (Y on a horizontal bar chart), or the slice name. */
+  label: string;
+  formattedLabel: string;
+  items: ChartActivePointItem[];
+};
+
+type ChartActivePointProps = {
+  /**
+   * Called when the active point changes, and with null when the pointer leaves. Not on every
+   * move. Works in `v1` and `v2`, web and native. Use it to show the value in your own UI, for
+   * example a headline above the chart. Leave out `ChartTooltip` to show no tooltip.
+   */
+  onActivePointChange?: (point: ChartActivePoint | null) => void;
+};
+
 /**
  * The look of a chart. `v1` renders as before, and the display options have no effect.
  * `v2` is the new look: a tight Y label column, fixed spacing, X labels that thin out to fit.
@@ -111,7 +140,7 @@ type ChartDonutWrapperProps = {
    */
   content?: Content | React.ReactNode;
   children?: React.ReactNode;
-} & ChartDonutDisplayProps & BoxProps;
+} & ChartDonutDisplayProps & ChartActivePointProps & BoxProps;
 
 
 type ChartDonutCellProps = CellProps & {
