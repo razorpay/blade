@@ -264,19 +264,22 @@ const CustomXAxisTick = ({
     ? tickFormatter(payload.value, payload.index)
     : String(payload.value);
 
-  const crossesPlotRight = (): boolean => {
-    if (plotRight === undefined) return false;
-    const width = measureTextWidth(displayValue, {
-      size: fontSize,
-      weight: theme.typography.fonts.weight.regular,
-      family: theme.typography.fonts.family.text,
-    });
-    return x + width / 2 > plotRight;
-  };
+  // `v2` number axis: a centred label that would cross the plot's right edge ends at its tick,
+  // and one that would cross the chart's left edge starts at its tick.
+  const labelWidth =
+    plotRight === undefined
+      ? 0
+      : measureTextWidth(displayValue, {
+          size: fontSize,
+          weight: theme.typography.fonts.weight.regular,
+          family: theme.typography.fonts.family.text,
+        });
+  const crossesPlotRight = plotRight !== undefined && x + labelWidth / 2 > plotRight;
+  const crossesChartLeft = plotRight !== undefined && x - labelWidth / 2 < 0;
 
   const getTextAnchor = (): 'start' | 'middle' | 'end' => {
-    if (isFirstTick) return 'start';
-    if (isLastTick || crossesPlotRight()) return 'end';
+    if (isFirstTick || crossesChartLeft) return 'start';
+    if (isLastTick || crossesPlotRight) return 'end';
     return 'middle';
   };
   const textAnchor = getTextAnchor();
@@ -542,10 +545,77 @@ const ChartXAxisWithThinning: React.FC<ChartXAxisProps> = (props) => {
 };
 
 /** The number X axis of a `v2` chart. Its last label ends inside the plot. */
+/** recharts' default tick count on a number axis. The `v2` count is never more. */
+const NUMBER_AXIS_MAX_TICKS = 5;
+
+/**
+ * The tick count of a `v2` number axis that fits its plot. Each label keeps at least `spacing.3`
+ * from the next. The widest label is the largest row total, written as the ticks are. The end
+ * labels end at the plot edge, so a slot is one and a half labels wide plus the gap. It reads the
+ * data, not the axis domain, so a new count cannot change its own input.
+ */
+const useNumberAxisTickCount = ({
+  plotWidth,
+  format,
+}: {
+  plotWidth?: number;
+  format: (value: number) => string;
+}): number | undefined => {
+  const { theme } = useTheme();
+  const { chartData } = useCommonChartComponentsContext();
+  const fontLoads = useRenderOnFontLoad(true);
+  return React.useMemo(() => {
+    if (!plotWidth || !chartData || chartData.length === 0) return undefined;
+    const rowTotals = chartData.map((row) =>
+      Object.values(row).reduce<number>(
+        (total, value) => (typeof value === 'number' && value > 0 ? total + value : total),
+        0,
+      ),
+    );
+    const largest = Math.max(...rowTotals, 0);
+    const font = {
+      size: theme.typography.fonts.size[75],
+      weight: theme.typography.fonts.weight.regular,
+      family: theme.typography.fonts.family.text,
+    };
+    // Ticks are round numbers: measure whole values near the largest and half of it.
+    const widest = Math.max(
+      ...[largest, Math.round(largest / 2)].map((value) => measureTextWidth(format(value), font)),
+    );
+    const slot = widest * 1.5 + theme.spacing[3];
+    return Math.max(2, Math.min(NUMBER_AXIS_MAX_TICKS, Math.floor(plotWidth / slot) + 1));
+    // fontLoads: measure again once the web font is in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plotWidth, chartData, format, theme, fontLoads]);
+};
+
+/**
+ * The number X axis of a `v2` chart, as on a horizontal bar chart. Its ticks thin out to fit the
+ * width, and its end labels stay inside the chart.
+ */
 const ChartXAxisNumber: React.FC<ChartXAxisProps> = (props) => {
+  const { valueFormat } = useCommonChartComponentsContext();
   const plotArea = usePlotArea();
   const plotRight = plotArea ? plotArea.x + plotArea.width : undefined;
-  return <ChartXAxisBody {...props} plotRight={plotRight} />;
+  const { tickFormatter } = props;
+  const format = React.useCallback(
+    (value: number): string => {
+      if (tickFormatter) return tickFormatter(String(value), 0);
+      if (valueFormat) return formatChartValueCompact(value, valueFormat);
+      return String(value);
+    },
+    [tickFormatter, valueFormat],
+  );
+  const fittedTickCount = useNumberAxisTickCount({ plotWidth: plotArea?.width, format });
+  // An explicit tick count or tick list wins.
+  const tickCount = props.tickCount ?? (props.ticks === undefined ? fittedTickCount : undefined);
+  return (
+    <ChartXAxisBody
+      {...props}
+      plotRight={plotRight}
+      {...(tickCount !== undefined ? { tickCount } : {})}
+    />
+  );
 };
 
 const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {

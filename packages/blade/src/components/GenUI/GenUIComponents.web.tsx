@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
@@ -36,7 +36,6 @@ import {
 import type { ChartValueFormatter } from './genUIChartUtils';
 import { Box } from '~components/Box';
 import type { BoxRefType } from '~components/Box/BaseBox/types';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
 import {
@@ -920,24 +919,30 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
 /**
  * The width of a chart's own box, from a ResizeObserver. 0 until measured (and in a test DOM
  * without layout), which keeps the chart at its size before this hook: 350px, every label.
+ *
+ * A callback ref: the skeleton, the empty state and the chart each render their own box, so the
+ * observer moves to the box that is there now and lets go of the old one.
  */
-const useChartBoxWidth = (): [React.RefObject<BoxRefType>, number] => {
-  const ref = useRef<BoxRefType>(null);
+const useChartBoxWidth = (): [(node: BoxRefType | null) => void, number] => {
   const [width, setWidth] = useState(0);
-  useIsomorphicLayoutEffect(() => {
-    const element = (ref.current as unknown) as HTMLElement | null;
-    if (!element) return undefined;
+  const observerRef = useRef<ResizeObserver | null>(null);
+  const boxRef = useCallback((node: BoxRefType | null) => {
+    observerRef.current?.disconnect();
+    observerRef.current = null;
+    const element = (node as unknown) as HTMLElement | null;
+    if (!element) return;
     const initial = element.getBoundingClientRect().width;
-    if (initial > 0) setWidth(initial);
-    if (typeof ResizeObserver === 'undefined') return undefined;
+    if (initial > 0) setWidth(Math.round(initial));
+    if (typeof ResizeObserver === 'undefined') return;
     const observer = new ResizeObserver((entries) => {
       const next = entries[0]?.contentRect.width ?? 0;
       if (next > 0) setWidth(Math.round(next));
     });
     observer.observe(element);
-    return () => observer.disconnect();
+    observerRef.current = observer;
   }, []);
-  return [ref, width];
+  useEffect(() => () => observerRef.current?.disconnect(), []);
+  return [boxRef, width];
 };
 
 /** One muted line in place of the plot, for a finished CHART with no rows to draw. */
