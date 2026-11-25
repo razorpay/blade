@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { ChartLineWrapper, ChartLine } from '../LineChart';
+import { ChartReferenceBand } from '../index';
 import {
   ChartXAxis,
   ChartYAxis,
@@ -8,7 +9,6 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-  ChartReferenceBand,
 } from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
