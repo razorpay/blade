@@ -22,6 +22,10 @@ const format = (value: string, pattern: string): string => {
         break; // No more input chars, stop
       }
     } else {
+      // Stop before appending a delimiter when the value ended exactly on a
+      // group boundary; otherwise a trailing delimiter leaks into the output
+      // (e.g. 16 digits into "#### #### #### #### ###" → "6785 ").
+      if (valueIndex >= value.length) break;
       result += patternChar; // add "/" delimiter
     }
   }
@@ -80,28 +84,30 @@ export const useFormattedInput = ({
 
   const maxLength = useMemo(() => pattern?.length, [pattern]);
 
-  // Reset internal state when parent clears value (form resets, external state changes)
-  // Preserves format delimiters for visual guidance. Example: "(###)" → "(   )" when cleared
+  // In controlled mode the parent's `value` is the source of truth, so reconcile
+  // the display against it after EVERY change — not just when `value` changes.
+  // Depending on `internalValue` is what makes consumer sanitisation stick: when
+  // the parent strips a just-typed character (e.g. a letter in a digit-only card
+  // field), the sanitised value is byte-identical to the previous one, so a
+  // `value`-only effect never re-runs and the rejected character lingers on
+  // screen. Re-deriving here snaps the field back to exactly what the consumer
+  // stored (letter stripping, IIN truncation, programmatic prefill/reset —
+  // including DatePicker writing the value from the calendar).
   useEffect(() => {
-    if ((userValue === '' || userValue === undefined) && defaultValue === '') {
-      const emptyFormatted = format('', pattern ?? '');
-      setInternalValue(emptyFormatted);
-    }
-    // DATEPICKER FIX: Sync internal state when external value changes
-    // This addresses the issue where DatePicker programmatically updates the value prop
-    // (e.g., when user selects date from calendar), but the formatted input's internal
-    // state doesn't update, causing the input to not reflect the new value.
-    // Without this, only user typing and empty resets were handled.
-    if (userValue !== undefined && userValue !== '' && pattern) {
-      const rawValue = stripPatternCharacters(userValue);
-      const newFormatted = format(rawValue, pattern);
+    if (!pattern) return;
+    // Uncontrolled (`value` never supplied): keep the optimistic display so
+    // typing works without a parent feeding the value back.
+    if (userValue === undefined) return;
 
-      // Only update if the formatted value actually changed to avoid unnecessary re-renders
-      if (newFormatted !== internalValue) {
-        setInternalValue(newFormatted);
-      }
+    // Controlled: empty string resets to the formatted shell; otherwise reformat
+    // from the raw characters the consumer stored.
+    const expected =
+      userValue === '' ? format('', pattern) : format(stripPatternCharacters(userValue), pattern);
+
+    if (expected !== internalValue) {
+      setInternalValue(expected);
     }
-  }, [userValue, pattern]);
+  }, [userValue, pattern, internalValue]);
 
   // Apply calculated cursor position after value updates
   useEffect(() => {
@@ -156,35 +162,27 @@ export const useFormattedInput = ({
       const formattedValue = format(rawValue, pattern); // format("134", "##/##") → "13/4"
       infoRef.current.endOfSection = false;
 
-      // Handle cursor positioning when typing (not deleting)
+      // Handle cursor positioning when typing (not deleting).
+      // Anchor on user characters rather than raw position: selectionStart counts
+      // positions in the pre-format string, so it ignores delimiters the formatter
+      // inserts before the caret at a group boundary (e.g. "1234" + "5" → "1234 5":
+      // the space pushes "5" to index 5, so a raw caret of 5 would sit *before* it).
       if (!didDelete) {
-        // User types "2" in "1|" → becomes "12|/" → should jump to "12/|"
-        const nextChar = formattedValue[cursorPosition]; // "12/"[2] → "/" (delimiter)
-        const nextIsDelimiter = nextChar ? !isUserCharacter(nextChar) : false; // "/" → true
+        const userCharsBeforeCursor = stripPatternCharacters(
+          newInputValue.substring(0, cursorPosition),
+        ).length;
 
-        const remainingText = formattedValue.substring(cursorPosition); // "12/".substring(2) → "/"
-        const nextUserCharIndex = remainingText.search(/[\dA-z]/); // "/".search() → -1 (no user chars)
-        const hasMoreUserChars = nextUserCharIndex !== -1; // -1 !== -1 → false
-
-        infoRef.current.endOfSection = nextIsDelimiter && !hasMoreUserChars; // true && false → false
-
-        // Move cursor past auto-inserted delimiters for smooth typing
-        if (nextIsDelimiter && hasMoreUserChars) {
-          const prevChar = formattedValue[cursorPosition - 1] ?? '';
-          const prevIsDelimiter = !isUserCharacter(prevChar);
-
-          if (prevIsDelimiter) {
-            infoRef.current.cursorPosition = cursorPosition + nextUserCharIndex + 1;
-          } else {
-            // If we're at a delimiter after typing (not deleting), and there are more chars,
-            // we probably need to move past it unless it's a brand new delimiter
-            const delimiterExistedBefore =
-              currentValue[cursorPosition] === formattedValue[cursorPosition];
-            if (delimiterExistedBefore) {
-              infoRef.current.cursorPosition = cursorPosition + 1;
-            }
+        let seenUserChars = 0;
+        let nextCursor = formattedValue.length;
+        for (let i = 0; i < formattedValue.length; i++) {
+          if (seenUserChars === userCharsBeforeCursor) {
+            nextCursor = i;
+            break;
           }
+          if (isUserCharacter(formattedValue[i])) seenUserChars++;
         }
+        infoRef.current.cursorPosition = nextCursor;
+        infoRef.current.endOfSection = false;
       }
 
       onChange?.({ name, value: formattedValue, rawValue });
