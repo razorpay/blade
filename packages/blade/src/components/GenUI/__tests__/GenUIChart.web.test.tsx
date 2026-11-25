@@ -1,4 +1,6 @@
 import React from 'react';
+import { act, render } from '@testing-library/react';
+import { BladeProvider } from '~components/BladeProvider';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
 import type { GenUIComponent } from '../GenUIComponents';
@@ -619,6 +621,82 @@ describe('<GenUI /> CHART in a narrow box', () => {
       fixedAt(360, { chartType: 'bar', showBorder: true, data: daily(7, ['Collected']) });
 
       expect(lastProps('ChartBarWrapper')).not.toHaveProperty('showBorder');
+    });
+  });
+
+  describe('box width after loading', () => {
+    // A fake ResizeObserver: the test sends a new width to the box each observer watches.
+    type FakeObserver = { callback: ResizeObserverCallback; elements: Set<Element> };
+    const observers: FakeObserver[] = [];
+    const resizeTo = (width: number): void => {
+      observers.forEach((observer) => {
+        observer.elements.forEach((element) => {
+          if (!element.isConnected) return;
+          act(() => {
+            observer.callback(
+              [({ target: element, contentRect: { width } } as unknown) as ResizeObserverEntry],
+              (observer as unknown) as ResizeObserver,
+            );
+          });
+        });
+      });
+    };
+
+    beforeEach(() => {
+      observers.length = 0;
+      window.ResizeObserver = class {
+        private record: FakeObserver;
+        constructor(callback: ResizeObserverCallback) {
+          this.record = { callback, elements: new Set() };
+          observers.push(this.record);
+        }
+        observe(element: Element): void {
+          this.record.elements.add(element);
+        }
+        unobserve(element: Element): void {
+          this.record.elements.delete(element);
+        }
+        disconnect(): void {
+          this.record.elements.clear();
+        }
+      } as typeof ResizeObserver;
+    });
+
+    it('follows the chart box from the skeleton to the chart, and a resize after', () => {
+      jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
+        width: 360,
+        height: 0,
+        top: 0,
+        left: 0,
+        right: 360,
+        bottom: 0,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      } as unknown) as DOMRect);
+      const tree = (components: GenUIComponent[]): JSX.Element => (
+        <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+          <GenUIProvider config={{}}>
+            <GenUISchemaRenderer components={components} isAnimating={false} />
+          </GenUIProvider>
+        </BladeProvider>
+      );
+      // Loading: no valueFormatter yet, so the skeleton renders in its own box.
+      // The same tree each time, so React keeps the GenUI chart and only its inner box changes.
+      const { rerender } = render(
+        tree(
+          chart({ chartType: 'line', valueFormatter: undefined, data: daily(7, ['Collected']) }),
+        ),
+      );
+      expect(wasDrawn('ChartLineWrapper')).toBe(false);
+
+      // Loaded: the chart renders in a new box.
+      rerender(tree(chart({ chartType: 'line', data: daily(7, ['Collected']) })));
+      expect(lastProps('ChartLineWrapper').height).toBe('225px');
+
+      // The observer watches the new box: a resize to 800px gives the 800px height.
+      resizeTo(800);
+      expect(lastProps('ChartLineWrapper').height).toBe('350px');
     });
   });
 });

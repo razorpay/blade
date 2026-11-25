@@ -1,5 +1,6 @@
 ---
 '@razorpay/blade': minor
+'@razorpay/blade-plugin': patch
 ---
 
 feat(GenUI, Charts): chart versions, the v2 chart look, and responsive GenUI charts
