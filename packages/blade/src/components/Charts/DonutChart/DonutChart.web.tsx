@@ -126,8 +126,8 @@ const getItemName = (
 };
 
 /**
- * Renders nothing. Inside the donut, it reports the active slice: its name is the label, and its
- * value is the one item. Rendered only when `onActivePointChange` is set.
+ * Renders nothing. Inside the donut, it reports the active slice: its name is the raw label, and
+ * its value is the one item. Rendered only when `onActivePointChange` is set.
  */
 const DonutActivePointReporter = ({
   children,
@@ -145,17 +145,16 @@ const DonutActivePointReporter = ({
     if (!row || !donut) return null;
     const name = String(getItemName(row, donut.nameKey) ?? index);
     const dataKey = String(donut.dataKey);
-    const color = getIn(
-      theme.colors,
-      getChartColor(dataKey, name, dataColorMapping ?? {}, 'donut'),
-    ) as string;
-    const point = createActivePointBuilder({
+    const colorToken = getChartColor(dataKey, name, dataColorMapping ?? {}, 'donut');
+    const color = getIn(theme.colors, colorToken) as string;
+    // The slice name is the raw label. ChartTooltip `labelFormatter` writes `formattedLabel`.
+    return createActivePointBuilder({
       data,
       children,
       valueFormat,
-      series: [{ dataKey, name, color }],
+      getLabel: () => name,
+      series: [{ dataKey, name, color, colorToken }],
     })(index);
-    return point ? { ...point, label: name, formattedLabel: name } : null;
   };
   useActivePointChange(useActiveIndex(data), buildPoint, onActivePointChange);
   return null;

@@ -224,4 +224,28 @@ describe('<DonutChart /> interactions (native)', () => {
     const { selectedKeysArray } = onSelectedDataKeysChange.mock.calls[0][0];
     expect(selectedKeysArray).toEqual(expect.arrayContaining(['Group A', 'Group B']));
   });
+
+  it('reports the tapped slice with onActivePointChange: raw name as label, labelFormatter text', () => {
+    const onActivePointChange = jest.fn();
+    const { getByTestId, UNSAFE_root } = renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper onActivePointChange={onActivePointChange}>
+          <ChartDonut dataKey="value" nameKey="name" data={chartData} />
+          <ChartTooltip labelFormatter={(label: unknown) => `Slice ${String(label)}`} />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+    flushLayout(getByTestId);
+    const slices = UNSAFE_root.findAll(
+      (node) => typeof node.props.onPress === 'function' && node.props.fill !== undefined,
+    );
+    expect(slices.length).toBeGreaterThan(0);
+    fireEvent(slices[0] as never, 'press');
+    expect(onActivePointChange).toHaveBeenCalled();
+    const point = onActivePointChange.mock.calls[onActivePointChange.mock.calls.length - 1][0];
+    expect(point.label).toBe('Group A');
+    expect(point.formattedLabel).toBe('Slice Group A');
+    expect(point.items[0]).toMatchObject({ name: 'Group A', value: 400 });
+    expect(point.items[0].colorToken).toMatch(/^data\.background\./);
+  });
 });

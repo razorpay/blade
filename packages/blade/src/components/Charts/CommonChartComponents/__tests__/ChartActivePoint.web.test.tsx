@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, waitFor, act } from '@testing-library/react';
+import { fireEvent, waitFor, act, render } from '@testing-library/react';
 import { ChartXAxis, ChartYAxis, ChartTooltip } from '..';
 import { ChartLineWrapper, ChartLine } from '../../LineChart';
 import { ChartAreaWrapper, ChartArea } from '../../AreaChart';
@@ -31,8 +31,18 @@ const INR = { type: 'currency', currency: 'INR' } as const;
 
 describe('createActivePointBuilder', () => {
   const series = [
-    { dataKey: 'upi', name: 'UPI', color: '#00f' },
-    { dataKey: 'cards', name: 'Cards', color: '#0a0' },
+    {
+      dataKey: 'upi',
+      name: 'UPI',
+      color: '#00f',
+      colorToken: 'data.background.categorical.blue.moderate' as const,
+    },
+    {
+      dataKey: 'cards',
+      name: 'Cards',
+      color: '#0a0',
+      colorToken: 'data.background.categorical.green.moderate' as const,
+    },
   ];
 
   it('writes the values with valueFormat and the label raw', () => {
@@ -53,6 +63,7 @@ describe('createActivePointBuilder', () => {
           value: 468900,
           formattedValue: '₹4,68,900.00',
           color: '#00f',
+          colorToken: 'data.background.categorical.blue.moderate',
         },
         {
           dataKey: 'cards',
@@ -60,6 +71,7 @@ describe('createActivePointBuilder', () => {
           value: 236800,
           formattedValue: '₹2,36,800.00',
           color: '#0a0',
+          colorToken: 'data.background.categorical.green.moderate',
         },
       ],
     });
@@ -95,6 +107,46 @@ describe('createActivePointBuilder', () => {
     expect(build(2)?.items[1].formattedValue).toBe('228900');
   });
 
+  it('gives the formatters the row payload, as recharts does', () => {
+    // recharts types the item and the payload loosely. Read them as the rows they hold.
+    const formatter = jest.fn(
+      (_value: unknown, _name: unknown, item: unknown, _index: unknown, _payload: unknown) =>
+        `on ${(item as { payload: { day: string } }).payload.day}`,
+    );
+    const labelFormatter = jest.fn(
+      (_label: unknown, payload: unknown) =>
+        `UPI ${(payload as Array<{ payload: { upi: number } }>)[0].payload.upi}`,
+    );
+    const build = createActivePointBuilder({
+      data,
+      children: [
+        <ChartXAxis key="x" dataKey="day" />,
+        <ChartTooltip key="t" formatter={formatter} labelFormatter={labelFormatter} />,
+      ],
+      series,
+    });
+    const point = build(1);
+    expect(point?.formattedLabel).toBe('UPI 468900');
+    expect(point?.items[0].formattedValue).toBe('on 2 Nov');
+    // The payload of the point holds the item with its row, as the 5th argument.
+    expect(formatter.mock.calls[0][4]).toEqual([
+      expect.objectContaining({ dataKey: 'upi', value: 468900, payload: data[1] }),
+    ]);
+  });
+
+  it('takes a raw label from getLabel, and labelFormatter still writes formattedLabel', () => {
+    const build = createActivePointBuilder({
+      data,
+      children: [
+        <ChartTooltip key="t" labelFormatter={(label: unknown) => `Slice ${String(label)}`} />,
+      ],
+      series: [series[0]],
+      getLabel: (row) => `name-${String(row.day)}`,
+    });
+    expect(build(0)).toMatchObject({ label: 'name-1 Nov', formattedLabel: 'Slice name-1 Nov' });
+    expect(build(0)?.items[0].name).toBe('UPI');
+  });
+
   it('reads the label from the Y axis of a vertical bar chart', () => {
     const build = createActivePointBuilder({
       data,
@@ -110,21 +162,57 @@ describe('useActivePointChange', () => {
   const Probe = ({
     index,
     onChange,
+    value = 'a',
   }: {
     index?: number;
     onChange: (point: ChartActivePoint | null) => void;
+    value?: string;
   }): null => {
     useActivePointChange(
       index,
-      (i) => ({ index: i, label: String(i), formattedLabel: String(i), items: [] }),
+      (i) => ({
+        index: i,
+        label: String(i),
+        formattedLabel: String(i),
+        items: [
+          {
+            dataKey: 'k',
+            name: 'k',
+            value,
+            formattedValue: value,
+            color: '#000',
+            colorToken: 'data.background.categorical.blue.moderate',
+          },
+        ],
+      }),
       onChange,
     );
     return null;
   };
 
+  it('calls again when the point reads differently at the same index', () => {
+    const onChange = jest.fn();
+    const { rerender } = render(<Probe index={1} onChange={onChange} />);
+    rerender(<Probe index={1} onChange={onChange} />);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    // New data or a new valueFormat at the same index: the point reads differently.
+    rerender(<Probe index={1} value="b" onChange={onChange} />);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][0].items[0].formattedValue).toBe('b');
+  });
+
+  it('calls null on unmount when a point was active, and nothing when none was', () => {
+    const active = jest.fn();
+    render(<Probe index={1} onChange={active} />).unmount();
+    expect(active).toHaveBeenLastCalledWith(null);
+    const idle = jest.fn();
+    render(<Probe onChange={idle} />).unmount();
+    expect(idle).not.toHaveBeenCalled();
+  });
+
   it('calls only when the index changes, and null when it goes', () => {
     const onChange = jest.fn();
-    const { rerender } = renderWithTheme(<Probe onChange={onChange} />);
+    const { rerender } = render(<Probe onChange={onChange} />);
     expect(onChange).not.toHaveBeenCalled();
     rerender(<Probe index={1} onChange={onChange} />);
     rerender(<Probe index={1} onChange={onChange} />);
@@ -178,6 +266,7 @@ describe('onActivePointChange on the chart wrappers', () => {
       ]);
       expect(point.items[0].formattedValue).toMatch(/^₹/);
       expect(point.items[0].color).toMatch(/^(hsl|#|rgb)/);
+      expect(point.items[0].colorToken).toMatch(/^data\.background\./);
     },
   );
 

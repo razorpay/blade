@@ -56,6 +56,8 @@ type ChartActivePointItem = {
   formattedValue: string;
   /** The CSS colour of the series. */
   color: string;
+  /** The series colour as a chart colour token, as ChartLine, ChartBar and ChartDonutCell take it. */
+  colorToken: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
 /** The point a pointer, a tap or the arrow keys make active. */
@@ -73,6 +75,10 @@ type ChartActivePointProps = {
    * Called when the active point changes, and with null when the pointer leaves. Not on every
    * move. Works in `v1` and `v2`, web and native. Use it to show the value in your own UI, for
    * example a headline above the chart. Leave out `ChartTooltip` to show no tooltip.
+   *
+   * The text follows the `ChartTooltip` `formatter` and `labelFormatter`, which get the row in
+   * `payload`, as in recharts. A custom `ChartTooltip` `content` is not mirrored. On a donut,
+   * `label` is the raw slice name and `labelFormatter` writes `formattedLabel`.
    */
   onActivePointChange?: (point: ChartActivePoint | null) => void;
 };

@@ -352,6 +352,8 @@ type ChartActivePointItem = {
   formattedValue: string;
   /** The series colour, as a CSS colour. */
   color: string;
+  /** The series colour, as the chart colour token that ChartLine, ChartBar and ChartDonutCell take. */
+  colorToken: ChartColorToken;
 };
 
 /** The point a pointer, a tap or the arrow keys make active. */
@@ -371,6 +373,10 @@ type ChartActivePointProps = {
    * Called when the active point changes: a pointer moves to another point, a tap sets one, or
    * the arrow keys move to one. Called with null when the pointer leaves. Not on every move.
    * Works in `v1` and `v2`. Use it to show the value in your own UI, for example a headline.
+   *
+   * The text follows the ChartTooltip `formatter` and `labelFormatter`, which get the row in
+   * `payload`, as in recharts. A custom ChartTooltip `content` is not mirrored. The chart sends the
+   * point again when the same point reads differently, and null on unmount.
    */
   onActivePointChange?: (point: ChartActivePoint | null) => void;
 };

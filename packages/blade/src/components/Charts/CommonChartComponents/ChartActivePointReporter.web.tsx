@@ -37,11 +37,9 @@ const getActivePointSeries = ({
     .map((child) => {
       const dataKey = String(child.props.dataKey);
       const name = typeof child.props.name === 'string' ? child.props.name : dataKey;
-      const color = getIn(
-        theme.colors,
-        getChartColor(dataKey, name, dataColorMapping, chartName),
-      ) as string;
-      return { dataKey, name, color };
+      const colorToken = getChartColor(dataKey, name, dataColorMapping, chartName);
+      const color = getIn(theme.colors, colorToken) as string;
+      return { dataKey, name, color, colorToken };
     })
     .filter((series) => !selectedDataKeys || selectedDataKeys.includes(series.dataKey));
 

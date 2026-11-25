@@ -20,6 +20,7 @@ import type {
   ChartTooltipProps,
 } from '../CommonChartComponents';
 import type {
+  ChartColorToken,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
@@ -408,6 +409,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
             dataKey: bar.dataKey,
             name: bar.name ?? bar.dataKey,
             color: token ? (getIn(theme.colors, token) as string) : tickColor,
+            colorToken: token as ChartColorToken,
           };
         }),
       })(index),
