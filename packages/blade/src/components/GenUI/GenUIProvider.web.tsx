@@ -28,8 +28,8 @@ type GenUIConfig = {
   /**
    * The look of a CHART.
    * - `v2`: the chart fits the box it renders in, with the `v2` Blade charts. Height from width,
-   *   X labels thinned to fit, Indian compact ticks, full values in the tooltip, `minimal` axes
-   *   in a box of 640px or less, no legend for one series, a bar list for a pie of more than 4
+   *   X labels thinned to fit, Indian compact ticks, full values in the tooltip, no border in a
+   *   box of 640px or less, no legend for one series, a bar list for a pie of more than 4
    *   slices, and one line for a finished chart with no rows.
    * - `v1`: the chart as released before: 350px tall at every width (100px for `tiny`), every
    *   X label, the raw value in the tooltip, with the `v1` Blade charts. An escape hatch.
@@ -39,7 +39,8 @@ type GenUIConfig = {
   chartVersion?: GenUIChartVersion;
   /**
    * @deprecated Use `chartVersion`. `responsive` is `v2` and `fixed` is `v1`. `chartVersion`
-   * wins when both are set. Local branch only: it can go before merge.
+   * wins when both are set. `chartLayout` is not released yet, so the alias can go before the
+   * release.
    */
   chartLayout?: GenUIChartLayout;
 };
