@@ -61,8 +61,12 @@ const Controls = ({
   indicatorVariant,
   navigationButtonVariant,
   showNavigationButtons,
-}: ControlsProp): React.ReactElement => {
+}: ControlsProp): React.ReactElement | null => {
   if (navigationButtonPosition === 'bottom') {
+    if (!showIndicators && !showNavigationButtons) {
+      return null;
+    }
+
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
         {showNavigationButtons ? (
@@ -522,6 +526,7 @@ const _Carousel = (
       startEndMargin,
       shouldAddStartEndSpacing,
       isAutoPlaying,
+      carouselItemAlignment,
     };
   }, [
     carouselId,
@@ -533,6 +538,7 @@ const _Carousel = (
     activeSlide,
     shouldAddStartEndSpacing,
     isAutoPlaying,
+    carouselItemAlignment,
   ]);
 
   return (
@@ -581,7 +587,8 @@ const _Carousel = (
           flexDirection="row"
           height="100%"
         >
-          {shouldShowPrevButton &&
+          {showNavigationButtons &&
+          shouldShowPrevButton &&
           (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
             <BaseBox
               zIndex={2}
@@ -599,7 +606,7 @@ const _Carousel = (
               />
             </BaseBox>
           ) : null}
-          {isNavButtonsOnSide ? (
+          {showNavigationButtons && isNavButtonsOnSide ? (
             <NavigationButton
               type="previous"
               variant={navigationButtonVariant}
@@ -622,7 +629,8 @@ const _Carousel = (
           >
             {children}
           </CarouselBody>
-          {shouldShowNextButton &&
+          {showNavigationButtons &&
+          shouldShowNextButton &&
           (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
             <BaseBox
               zIndex={2}
@@ -640,7 +648,7 @@ const _Carousel = (
               />
             </BaseBox>
           ) : null}
-          {isNavButtonsOnSide ? (
+          {showNavigationButtons && isNavButtonsOnSide ? (
             <NavigationButton
               onClick={goToNextSlide}
               type="next"
