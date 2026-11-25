@@ -288,6 +288,7 @@ const _Carousel = (
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isProgrammaticScrollRef = React.useRef(false);
+  const targetSlideRef = React.useRef<number | null>(null);
   const programmaticScrollTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
   const isMobile = platform === 'onMobile';
   const id = useId();
@@ -368,11 +369,15 @@ const _Carousel = (
     // Without this, browsers like Firefox may fire scroll events before the animation completes,
     // causing the debounced handler to detect the old (pre-scroll) slide and call onChange with
     // a stale index — which breaks controlled Carousel behavior.
+    // We track the target slide so the scroll handler can clear the guard when the scroll
+    // reaches the intended position, rather than relying solely on a fixed timeout.
     isProgrammaticScrollRef.current = true;
+    targetSlideRef.current = slideIndex;
     clearTimeout(programmaticScrollTimerRef.current);
     programmaticScrollTimerRef.current = setTimeout(() => {
       isProgrammaticScrollRef.current = false;
-    }, 600);
+      targetSlideRef.current = null;
+    }, 1000);
 
     containerRef.current.scroll({
       left: left - startEndMargin,
@@ -471,7 +476,24 @@ const _Carousel = (
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
-      setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
+
+      // During a programmatic scroll (e.g. navigation button click or autoplay),
+      // Firefox fires scroll events while the smooth scroll animation is in progress.
+      // The scroll handler must not call onChange with intermediate slide positions.
+      // We track the target slide and only clear the guard when the scroll reaches it.
+      if (isProgrammaticScrollRef.current) {
+        if (goTo === targetSlideRef.current) {
+          // Scroll has reached the target — clear the guard and sync the indicator.
+          // We skip onChange because goToSlideIndex already called it.
+          isProgrammaticScrollRef.current = false;
+          targetSlideRef.current = null;
+          clearTimeout(programmaticScrollTimerRef.current);
+          setActiveIndicator(goTo);
+        }
+        return;
+      }
+
+      setActiveSlide(() => goTo);
       setActiveIndicator(goTo);
     }, 50);
 
