@@ -13,8 +13,7 @@ import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/Bot
 import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { useIsMobile } from '~utils/useIsMobile';
-
-const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
+import { countryNameFormatter } from './countryNameFormatter';
 
 type CountryData = {
   code: CountryCodeType;
@@ -100,4 +99,4 @@ const CountrySelector = ({
   );
 };
 
-export { CountrySelector, countryNameFormatter };
+export { CountrySelector };
