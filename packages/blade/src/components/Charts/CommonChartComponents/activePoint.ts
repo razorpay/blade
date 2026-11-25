@@ -31,6 +31,16 @@ const getChildProps = <T>(children: React.ReactNode, id: string): T | undefined 
 type TooltipFormatters = {
   formatter?: (...args: never[]) => unknown;
   labelFormatter?: (...args: never[]) => unknown;
+  filterNull?: boolean;
+};
+
+/** One entry of the tooltip payload, in the shape ChartTooltip's formatters get from recharts. */
+type TooltipPayloadEntry = {
+  dataKey: string;
+  name: string;
+  value: unknown;
+  color: string;
+  payload: ChartRow;
 };
 
 /**
@@ -38,8 +48,13 @@ type TooltipFormatters = {
  * ChartTooltip `formatter`, else the wrapper `valueFormat`, else its raw text. A label takes the
  * ChartTooltip `labelFormatter`, else the label axis `tickFormatter`, else its raw text.
  *
- * The formatters get the payload recharts gives them: each item holds the data row in `payload`.
- * A custom ChartTooltip `content` is not mirrored: only `formatter` and `labelFormatter` are.
+ * The formatters get the arguments ChartTooltip gives them: `formatter(value, name, entry, i,
+ * payload)` and `labelFormatter(label, payload)`. `payload` lists one entry per series shown, as
+ * `{ dataKey, name, value, color, payload: row }`, and `i` is the entry's place in it.
+ *
+ * A series with no value at the row is left out, as the tooltip does by default. With
+ * `filterNull={false}` on ChartTooltip, it stays, with `formattedValue: ''`. A missing value is
+ * never formatted. A custom ChartTooltip `content` is not mirrored: only the formatters are.
  */
 const createActivePointBuilder = ({
   data,
@@ -68,30 +83,38 @@ const createActivePointBuilder = ({
   );
   const key = labelKey ?? labelAxis?.dataKey;
   const formatter = tooltip?.formatter as
-    | ((value: unknown, name: string, item: unknown, index: number, payload: unknown[]) => unknown)
+    | ((
+        value: unknown,
+        name: string,
+        entry: TooltipPayloadEntry,
+        index: number,
+        payload: TooltipPayloadEntry[],
+      ) => unknown)
     | undefined;
   const labelFormatter = tooltip?.labelFormatter as
-    | ((label: unknown, payload: unknown[]) => unknown)
+    | ((label: unknown, payload: TooltipPayloadEntry[]) => unknown)
     | undefined;
+  // recharts' Tooltip default: a series with no value at the row is left out.
+  const shouldFilterNull = tooltip?.filterNull !== false;
   const tickFormatter = labelAxis?.tickFormatter as
     | ((value: unknown, index: number) => unknown)
     | undefined;
 
+  const isMissing = (value: unknown): boolean => value === null || value === undefined;
+
   const formatValue = (
-    value: unknown,
-    item: ActivePointSeries,
-    row: ChartRow,
-    index: number,
+    entry: TooltipPayloadEntry,
+    entryIndex: number,
+    payload: TooltipPayloadEntry[],
   ): string => {
+    if (isMissing(entry.value)) return '';
     if (formatter) {
-      // As recharts: the item with the row in `payload`, and the payload of the point.
-      const payloadItem = { ...item, value, payload: row };
-      const result = formatter(value, item.name, payloadItem, index, [payloadItem]);
+      const result = formatter(entry.value, entry.name, entry, entryIndex, payload);
       const text = toText(Array.isArray(result) ? result[0] : result);
       if (text !== undefined) return text;
     }
-    if (valueFormat) return formatChartValueFull(value, valueFormat);
-    return toText(value) ?? '';
+    if (valueFormat) return formatChartValueFull(entry.value, valueFormat);
+    return toText(entry.value) ?? '';
   };
 
   return (index) => {
@@ -102,18 +125,26 @@ const createActivePointBuilder = ({
       return key ? row[key] : index;
     };
     const label = getRawLabel();
+    const shown = series.filter((item) => !shouldFilterNull || !isMissing(row[item.dataKey]));
+    const payload: TooltipPayloadEntry[] = shown.map((item) => ({
+      dataKey: item.dataKey,
+      name: item.name,
+      value: row[item.dataKey],
+      color: item.color,
+      payload: row,
+    }));
     const formattedLabel =
-      (labelFormatter ? toText(labelFormatter(label, [{ payload: row }])) : undefined) ??
+      (labelFormatter ? toText(labelFormatter(label, payload)) : undefined) ??
       (tickFormatter ? toText(tickFormatter(label, index)) : undefined) ??
       toText(label) ??
       '';
-    const items: ChartActivePointItem[] = series.map((item) => {
+    const items: ChartActivePointItem[] = shown.map((item, entryIndex) => {
       const value = row[item.dataKey];
       return {
         dataKey: item.dataKey,
         name: item.name,
         value: typeof value === 'number' || typeof value === 'string' ? value : undefined,
-        formattedValue: formatValue(value, item, row, index),
+        formattedValue: formatValue(payload[entryIndex], entryIndex, payload),
         color: item.color,
         colorToken: item.colorToken,
       };

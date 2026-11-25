@@ -139,7 +139,10 @@ type ChartActivePointItem = {
   dataKey: string;
   name: string;
   value: number | string | undefined;
-  /** The value as the chart writes it: the tooltip `formatter`, else `valueFormat`, else raw. */
+  /**
+   * The value as the chart writes it: the tooltip `formatter`, else `valueFormat`, else raw. `''`
+   * for a series with no value, kept with `filterNull={false}`.
+   */
   formattedValue: string;
   /** The CSS colour of the series. */
   color: string;
@@ -163,9 +166,12 @@ type ChartActivePointProps = {
    * move. Works in `v1` and `v2`, web and native. Use it to show the value in your own UI, for
    * example a headline above the chart. Leave out `ChartTooltip` to show no tooltip.
    *
-   * The text follows the `ChartTooltip` `formatter` and `labelFormatter`, which get the row in
-   * `payload`, as in recharts. A custom `ChartTooltip` `content` is not mirrored. On a donut,
-   * `label` is the raw slice name and `labelFormatter` writes `formattedLabel`.
+   * The text follows the `ChartTooltip` `formatter` and `labelFormatter`, with the arguments the
+   * tooltip gives them. A custom `ChartTooltip` `content` is not mirrored. A series with no value
+   * at the point is left out, as in the tooltip; with `filterNull={false}` it stays with
+   * `formattedValue: ''`. On a donut, `label` is the raw slice name and `labelFormatter` writes
+   * `formattedLabel`. On the line, area, bar and donut wrappers only: funnel and sankey do not
+   * take it.
    */
   onActivePointChange?: (point: ChartActivePoint | null) => void;
 };

@@ -128,10 +128,51 @@ describe('createActivePointBuilder', () => {
     const point = build(1);
     expect(point?.formattedLabel).toBe('UPI 468900');
     expect(point?.items[0].formattedValue).toBe('on 2 Nov');
-    // The payload of the point holds the item with its row, as the 5th argument.
-    expect(formatter.mock.calls[0][4]).toEqual([
-      expect.objectContaining({ dataKey: 'upi', value: 468900, payload: data[1] }),
-    ]);
+    // As ChartTooltip gives them: (value, name, entry, entry index, payload of every series).
+    const payload = [
+      { dataKey: 'upi', name: 'UPI', value: 468900, color: '#00f', payload: data[1] },
+      { dataKey: 'cards', name: 'Cards', value: 236800, color: '#0a0', payload: data[1] },
+    ];
+    expect(formatter.mock.calls[0]).toEqual([468900, 'UPI', payload[0], 0, payload]);
+    expect(formatter.mock.calls[1]).toEqual([236800, 'Cards', payload[1], 1, payload]);
+    expect(labelFormatter.mock.calls[0]).toEqual(['2 Nov', payload]);
+  });
+
+  describe('a row with a gap', () => {
+    const gapData = [{ day: '1 Nov', upi: 412300, cards: null }];
+    const formatter = jest.fn((value: unknown) => `₹${String(value)}`);
+
+    it('leaves out a series with no value, as the tooltip does, and never formats it', () => {
+      const build = createActivePointBuilder({
+        data: gapData,
+        children: [<ChartTooltip key="t" formatter={formatter} />],
+        series,
+      });
+      const point = build(0);
+      expect(point?.items.map((item) => item.dataKey)).toEqual(['upi']);
+      expect(point?.items.some((item) => item.formattedValue.includes('null'))).toBe(false);
+      expect(formatter).not.toHaveBeenCalledWith(
+        null,
+        expect.anything(),
+        expect.anything(),
+        expect.anything(),
+        expect.anything(),
+      );
+    });
+
+    it('keeps it with filterNull false, with an empty formattedValue', () => {
+      const build = createActivePointBuilder({
+        data: gapData,
+        children: [<ChartTooltip key="t" filterNull={false} />],
+        series,
+        valueFormat: INR,
+      });
+      expect(build(0)?.items[1]).toMatchObject({
+        dataKey: 'cards',
+        value: undefined,
+        formattedValue: '',
+      });
+    });
   });
 
   it('takes a raw label from getLabel, and labelFormatter still writes formattedLabel', () => {

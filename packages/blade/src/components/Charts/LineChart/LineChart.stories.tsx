@@ -1582,8 +1582,9 @@ const settledPerDay = [
 export const LineChartReadout: StoryFn<typeof ChartLine> = () => {
   const [point, setPoint] = React.useState<ChartActivePoint | null>(null);
   const latest = settledPerDay[settledPerDay.length - 1];
+  // A row with no value has no item: the headline shows a dash.
   const headline = point
-    ? point.items[0].formattedValue
+    ? point.items[0]?.formattedValue ?? '–'
     : new Intl.NumberFormat('en-IN', {
         style: 'currency',
         currency: 'INR',
