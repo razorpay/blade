@@ -359,7 +359,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               left="50%"
               transform={getTranslate(
                 isSideLegend ? 'vertical' : legendLayout,
-                isSideLegend ? (legendPlacement as 'left' | 'right') : legendAlignment,
+                isSideLegend ? legendPlacement : legendAlignment,
                 // A `v2` chart with no ChartLegend takes no room. The last measure stays in state.
                 version === 'v2' && !hasLegend ? 0 : legendWidth,
                 version === 'v2' && !hasLegend ? 0 : legendHeight,

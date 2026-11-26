@@ -720,7 +720,11 @@ const _ChartYAxis: React.FC<ChartYAxisProps> = ({ labelPlacement, ...props }) =>
         rechartsProp: 'orientation',
         isBothSet: props.orientation !== undefined,
       },
-      { bladeProp: 'labelPlacement', rechartsProp: 'mirror', isBothSet: props.mirror !== undefined },
+      {
+        bladeProp: 'labelPlacement',
+        rechartsProp: 'mirror',
+        isBothSet: props.mirror !== undefined,
+      },
     ],
     'ChartYAxis',
   );
@@ -749,86 +753,84 @@ const _ChartYAxis: React.FC<ChartYAxisProps> = ({ labelPlacement, ...props }) =>
   const defaultTickFormatter = getDefaultTickFormatter();
 
   return (
-    <>
-      <RechartsYAxis
-        // `overlap`: almost no width. The ticks are mirrored into the plot, so the gridlines run the
-        // full width of the chart. Not 0: recharts draws no axis of width 0. tickSize and tickMargin
-        // 0: the ticks start at the left edge of the plot, as the X axis.
-        {...(isOverlap
+    <RechartsYAxis
+      // `overlap`: almost no width. The ticks are mirrored into the plot, so the gridlines run the
+      // full width of the chart. Not 0: recharts draws no axis of width 0. tickSize and tickMargin
+      // 0: the ticks start at the left edge of the plot, as the X axis.
+      {...(isOverlap
+        ? {
+            width: OVERLAP_Y_AXIS_WIDTH,
+            mirror: true,
+            tickSize: 0,
+            tickMargin: 0,
+          }
+        : {})}
+      // `left` (the default) and `right`: a column as wide as its widest label plus the tick
+      // margin, with no fixed gutter. The chart margin on that side is 0, so the widest label
+      // meets the edge of the chart. recharts aligns the labels towards the axis. interval 0: each
+      // label on its own tick. recharts' default moves the top label off its gridline. A bar chart
+      // with `layout="vertical"` gets the same column for its category names.
+      {...(isLabelColumn
+        ? {
+            orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
+            width: 'auto' as const,
+            interval: 0,
+            tickSize: 0,
+            tickMargin: theme.spacing[3],
+          }
+        : {})}
+      // `v2`: no axis line. `showBorder` draws the left and the right of the plot.
+      {...(isV2 ? { axisLine: false } : {})}
+      // The default ticks, unless the axis has its own formatter: `valueFormat` on the wrapper
+      // writes them compact. The names of a `v2` horizontal bar chart are cut to a width instead.
+      {...(defaultTickFormatter ? { tickFormatter: defaultTickFormatter } : {})}
+      {...props}
+      {...(hasOwnPlacement
+        ? {
+            orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
+            mirror: yLabelPlacement === 'overlap',
+          }
+        : {})}
+      tick={{
+        fill: theme.colors.surface.text.gray.muted,
+        fontSize: tickFontSize,
+        fontFamily: theme.typography.fonts.family.text,
+        fontWeight: theme.typography.fonts.weight.regular,
+        letterSpacing: theme.typography.letterSpacings[100],
+        ...(isOverlap
           ? {
-              width: OVERLAP_Y_AXIS_WIDTH,
-              mirror: true,
-              tickSize: 0,
-              tickMargin: 0,
+              // Each tick sits just below its gridline, not across it. recharts centres a tick
+              // label on its gridline. Half the cap height moves its top to the gridline, then
+              // spacing.3 below it.
+              dy: theme.spacing[3] + Y_LABEL_HALF_CAP_EM * tickFontSize,
+              // A thin halo in the surface colour, so a line or an area under a tick cannot hide
+              // it: 1px outside the glyphs.
+              stroke: theme.colors.surface.background.gray.intense,
+              strokeWidth: theme.border.width.thicker,
+              strokeLinejoin: 'round',
+              paintOrder: 'stroke',
             }
-          : {})}
-        // `left` (the default) and `right`: a column as wide as its widest label plus the tick
-        // margin, with no fixed gutter. The chart margin on that side is 0, so the widest label
-        // meets the edge of the chart. recharts aligns the labels towards the axis. interval 0: each
-        // label on its own tick. recharts' default moves the top label off its gridline. A bar chart
-        // with `layout="vertical"` gets the same column for its category names.
-        {...(isLabelColumn
-          ? {
-              orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
-              width: 'auto' as const,
-              interval: 0,
-              tickSize: 0,
-              tickMargin: theme.spacing[3],
-            }
-          : {})}
-        // `v2`: no axis line. `showBorder` draws the left and the right of the plot.
-        {...(isV2 ? { axisLine: false } : {})}
-        // The default ticks, unless the axis has its own formatter: `valueFormat` on the wrapper
-        // writes them compact. The names of a `v2` horizontal bar chart are cut to a width instead.
-        {...(defaultTickFormatter ? { tickFormatter: defaultTickFormatter } : {})}
-        {...props}
-        {...(hasOwnPlacement
-          ? {
-              orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
-              mirror: yLabelPlacement === 'overlap',
-            }
-          : {})}
-        tick={{
+          : {}),
+      }}
+      tickLine={false}
+      stroke={theme.colors.surface.border.gray.muted}
+      label={{
+        value: props?.label,
+        position: 'insideLeft',
+        style: {
+          textAnchor: 'middle',
           fill: theme.colors.surface.text.gray.muted,
-          fontSize: tickFontSize,
-          fontFamily: theme.typography.fonts.family.text,
+          fontSize: theme.typography.fonts.size[75],
           fontWeight: theme.typography.fonts.weight.regular,
+          fontFamily: theme.typography.fonts.family.text,
           letterSpacing: theme.typography.letterSpacings[100],
-          ...(isOverlap
-            ? {
-                // Each tick sits just below its gridline, not across it. recharts centres a tick
-                // label on its gridline. Half the cap height moves its top to the gridline, then
-                // spacing.3 below it.
-                dy: theme.spacing[3] + Y_LABEL_HALF_CAP_EM * tickFontSize,
-                // A thin halo in the surface colour, so a line or an area under a tick cannot hide
-                // it: 1px outside the glyphs.
-                stroke: theme.colors.surface.background.gray.intense,
-                strokeWidth: theme.border.width.thicker,
-                strokeLinejoin: 'round',
-                paintOrder: 'stroke',
-              }
-            : {}),
-        }}
-        tickLine={false}
-        stroke={theme.colors.surface.border.gray.muted}
-        label={{
-          value: props?.label,
-          position: 'insideLeft',
-          style: {
-            textAnchor: 'middle',
-            fill: theme.colors.surface.text.gray.muted,
-            fontSize: theme.typography.fonts.size[75],
-            fontWeight: theme.typography.fonts.weight.regular,
-            fontFamily: theme.typography.fonts.family.text,
-            letterSpacing: theme.typography.letterSpacings[100],
-            lineHeight: theme.typography.lineHeights[500],
-          },
-          angle: -90,
-          fill: theme.colors.surface.text.gray.subtle,
-        }}
-        dataKey={props?.dataKey}
-      />
-    </>
+          lineHeight: theme.typography.lineHeights[500],
+        },
+        angle: -90,
+        fill: theme.colors.surface.text.gray.subtle,
+      }}
+      dataKey={props?.dataKey}
+    />
   );
 };
 
@@ -869,11 +871,7 @@ const _ChartCartesianGrid: React.FC<ChartCartesianGridProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const {
-    gridlineWidth,
-    showBorder = false,
-    chartVersion,
-  } = useCommonChartComponentsContext();
+  const { gridlineWidth, showBorder = false, chartVersion } = useCommonChartComponentsContext();
   // `v1`: as on master. The gridline props apply to `v2` only.
   const isV2 = chartVersion === 'v2';
   // The grid's own `lineWidth`, else the one the wrapper read from it.
