@@ -101,4 +101,26 @@ const measureTextWidth = (
   return measureContext.measureText(text).width;
 };
 
-export { calculateTextWidth, measureTextWidth };
+/**
+ * Cuts a name to `maxWidth`, with an ellipsis. The width is measured in `font`.
+ */
+const truncateToWidth = (
+  text: string,
+  maxWidth: number,
+  font: { size: number; weight: number | string; family: string },
+): string => {
+  if (measureTextWidth(text, font) <= maxWidth) return text;
+  const cut = (end: number): string => `${text.slice(0, end).trimEnd()}…`;
+  // The cut text only grows as `end` grows, so a binary search finds the longest cut that fits
+  // in log2(n) measures, not n. With no fit, it keeps one character, as before.
+  let low = 1;
+  let high = text.length;
+  while (low < high) {
+    const mid = Math.ceil((low + high) / 2);
+    if (measureTextWidth(cut(mid), font) <= maxWidth) low = mid;
+    else high = mid - 1;
+  }
+  return cut(low);
+};
+
+export { calculateTextWidth, measureTextWidth, truncateToWidth };

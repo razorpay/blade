@@ -1,8 +1,9 @@
+
 ## Hybrid API (Prop & Config Driven) - (Not Recommended)
 
 This approach combines component props for high-level control with configuration objects for detailed specifications.
 
-### For Line Chart -
+### For Line Chart -  
 
 ```ts
 // Import statement
@@ -14,7 +15,7 @@ const chartData = [
   { month: 'Mar', teamA: 2300, teamB: 2700 },
   { month: 'Apr', teamA: 2300, teamB: 3000 },
   { month: 'Jun', teamA: 2300, teamB: 3300 },
-  { month: 'Jul', teamA: 2300, teamB: 3400, forecast: true },
+  { month: 'Jul', teamA: 2300, teamB: 3400,  forecast: true },
   { month: 'Aug', teamA: 2300, teamB: 3500, forecast: true },
   { month: 'Sep', teamA: 2300, teamB: 3500, forecast: true },
   { month: 'Oct', teamA: 2300, teamB: { data: 3600, foreCastData: true } },
@@ -34,13 +35,16 @@ const lineConfig = [
   },
 ];
 
-const referenceLineDefinitions = [{ y: 2200, label: 'Avg: 2,200' }];
+const referenceLineDefinitions = [
+  { y: 2200, label: 'Avg: 2,200' }
+];
 
 const yAxisConfig = [
   { value: 0, label: '0' },
   { value: 500, label: '500' },
   // more data
 ];
+
 
 //This is just an example of custom tooltip. we might change it later. according to design.
 const CustomToolTip = ({ active, payload, label }) => {
@@ -72,8 +76,9 @@ const CustomToolTip = ({ active, payload, label }) => {
   customToolTip={CustomToolTip}
   connectNulls={true}
   dotType="circle" // TBD with design team
-/>;
+/>
 ```
+
 
 ### TypeScript Interface for Line Chart
 
@@ -141,7 +146,8 @@ interface CustomLineChartProps {
 }
 ```
 
-### For Area Chart -
+### For Area Chart - 
+
 
 ```ts
 // Import statement
@@ -173,7 +179,9 @@ const areaConfig = [
   },
 ];
 
-const referenceLineDefinitions = [{ y: 2200, label: 'Avg: 2,200' }];
+const referenceLineDefinitions = [
+  { y: 2200, label: 'Avg: 2,200' }
+];
 
 const yAxisConfig = [
   { value: 0, label: '0' },
@@ -194,10 +202,10 @@ const yAxisConfig = [
   connectNulls={true}
   isStacked={true}
   tinyAreaChart={false}
-/>;
+/>
 ```
 
-### TypeScript Interface for Area Chart -
+### TypeScript Interface for Area Chart - 
 
 ```ts
 // ============================================================================
@@ -259,7 +267,9 @@ interface CustomAreaChartProps {
 }
 ```
 
-### For Bar Chart -
+### For Bar Chart - 
+
+
 
 ```tsx
 import { BarChart } from '@razorpay/blade/charts';
@@ -295,10 +305,11 @@ const barConfig = [
   showLegend={true}
   showTooltip={true}
   showGrid={true}
-/>;
+/>
 ```
 
-### TypeScript Interface for Area Chart -
+
+### TypeScript Interface for Area Chart - 
 
 ```ts
 interface BarDefinition {
@@ -323,7 +334,8 @@ interface CustomBarChartProps {
 }
 ```
 
-### For Donut Chart -
+### For Donut Chart - 
+
 
 ```ts
 import { PieChart } from '@razorpay/blade/charts';
@@ -351,10 +363,10 @@ const seriesConfig = [
   chartType="donut" // 'pie' | 'donut' (in future if we want to support donut chart)
   centerText="₹1.05L" // Text to display in the center of a donut
   customToolTip={<CustomTooltip />}
-/>;
+/>
 ```
 
-### TypeScript Interface for Donut Chart -
+### TypeScript Interface for Donut Chart - 
 
 ```ts
 interface ChartData {
@@ -381,11 +393,17 @@ interface CustomPieChartProps {
 }
 ```
 
-- **Pros**
-  - All configuration options are available at the component level.
-  - Strong TypeScript autocompletion for all props.
-  - Easy to understand what each prop does.
-  - Custom components (like tooltips) are easily passed as props.
-- **Cons**
-  - Can become verbose with many configuration options.
-  - The props list can get long for complex charts.
+
+
+
+
+  * **Pros**
+      * All configuration options are available at the component level.
+      * Strong TypeScript autocompletion for all props.
+      * Easy to understand what each prop does.
+      * Custom components (like tooltips) are easily passed as props.
+  * **Cons**
+      * Can become verbose with many configuration options.
+      * The props list can get long for complex charts.
+
+

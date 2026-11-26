@@ -54,7 +54,7 @@ import {
   X_LABEL_ASCENT_EM,
   componentId,
 } from './tokens';
-import { calculateTextWidth, measureTextWidth } from './utils';
+import { calculateTextWidth, measureTextWidth, truncateToWidth } from './utils';
 import { getVisibleXLabelIndexes } from './xAxisLabels';
 import { getDonutV2LegendPosition } from '../DonutChart/donutLayout';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
@@ -690,22 +690,6 @@ const ChartPlotBorder = (): JSX.Element | null => {
       />
     </g>
   );
-};
-
-/**
- * Cuts a name to `maxWidth`, with an ellipsis. The width is measured in `font`.
- */
-const truncateToWidth = (
-  text: string,
-  maxWidth: number,
-  font: { size: number; weight: number | string; family: string },
-): string => {
-  if (measureTextWidth(text, font) <= maxWidth) return text;
-  let end = text.length;
-  while (end > 1 && measureTextWidth(`${text.slice(0, end).trimEnd()}…`, font) > maxWidth) {
-    end -= 1;
-  }
-  return `${text.slice(0, end).trimEnd()}…`;
 };
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
