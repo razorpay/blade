@@ -1438,12 +1438,12 @@ LineChartWithSequentialColors.parameters = {
 };
 
 /**
- * `showBorder` on a `version="v2"` wrapper. With it, a line on the left, the right and the bottom
- * of the plot, in the colour and the width of the gridlines. With none, only the gridlines show.
- * The Y labels sit in a `left` column by default, as wide as the widest label plus spacing.3.
- * `yLabelPlacement` moves them: `overlap`, inside the plot just below each gridline, or
- * `right`, in a column right of the plot. The same props are on ChartBarWrapper and
- * ChartAreaWrapper.
+ * `showBorder` on the ChartCartesianGrid of a `version="v2"` chart. With it, a line on the left,
+ * the right and the bottom of the plot, in the colour and the width of the gridlines. With none,
+ * only the gridlines show. The Y labels sit in a `left` column by default, as wide as the widest
+ * label plus spacing.3. `labelPlacement` on ChartYAxis moves them: `overlap`, inside the plot just
+ * below each gridline, or `right`, in a column right of the plot. The bar and area charts take the
+ * same child props.
  */
 export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
   const variants: ReadonlyArray<{
@@ -1468,19 +1468,14 @@ export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
           >
             <Heading size="small">
               {yLabelPlacement
-                ? `showBorder={${showBorder}} yLabelPlacement="${yLabelPlacement}"`
+                ? `showBorder={${showBorder}} labelPlacement="${yLabelPlacement}"`
                 : `showBorder={${showBorder}}`}
             </Heading>
             <Box width="100%" height="220px">
-              <ChartLineWrapper
-                data={chartData}
-                version="v2"
-                showBorder={showBorder}
-                yLabelPlacement={yLabelPlacement}
-              >
-                <ChartCartesianGrid />
+              <ChartLineWrapper data={chartData} version="v2">
+                <ChartCartesianGrid showBorder={showBorder} />
                 <ChartXAxis dataKey="month" />
-                <ChartYAxis />
+                <ChartYAxis labelPlacement={yLabelPlacement} />
                 <ChartTooltip />
                 <ChartLine dataKey="teamA" name="Team A" />
               </ChartLineWrapper>

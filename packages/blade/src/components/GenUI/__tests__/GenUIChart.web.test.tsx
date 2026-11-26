@@ -199,47 +199,66 @@ describe('<GenUI /> CHART in a narrow box', () => {
   });
 
   describe('legend and donut (B6)', () => {
-    // v2 composes no ChartLegend: the wrapper's auto rule adds one for 2 or more series (or
-    // slices) and none for one. The node's showLegend goes to the wrapper.
-    it('leaves the legend to the wrapper: no ChartLegend child, showLegend unset', () => {
+    // The CHART composes a ChartLegend for 2 or more series (or slices) and none for one. The
+    // node's showLegend wins. The wrappers take no legend prop.
+    it('composes no ChartLegend for one series', () => {
       renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected']) }));
       expect(wasDrawn('ChartLegend')).toBe(false);
-      expect(lastProps('ChartBarWrapper').showLegend).toBeUndefined();
-
-      renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected', 'Refunded']) }));
-      expect(wasDrawn('ChartLegend')).toBe(false);
-      expect(lastProps('ChartBarWrapper').showLegend).toBeUndefined();
+      expect(lastProps('ChartBarWrapper')).not.toHaveProperty('showLegend');
     });
 
-    it('passes the node showLegend to the wrapper', () => {
+    it('composes a ChartLegend for two series', () => {
+      renderAtWidth(360, chart({ chartType: 'bar', data: daily(7, ['Collected', 'Refunded']) }));
+      expect(wasDrawn('ChartLegend')).toBe(true);
+      expect(lastProps('ChartBarWrapper')).not.toHaveProperty('showLegend');
+    });
+
+    it('composes a ChartLegend for one series with the node showLegend true', () => {
       renderAtWidth(
         360,
         chart({ chartType: 'line', showLegend: true, data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartLineWrapper').showLegend).toBe(true);
+      expect(wasDrawn('ChartLegend')).toBe(true);
+    });
 
+    it('composes no ChartLegend for two series with the node showLegend false', () => {
       renderAtWidth(
         360,
         chart({ chartType: 'bar', showLegend: false, data: daily(7, ['Collected', 'Refunded']) }),
       );
-      expect(lastProps('ChartBarWrapper').showLegend).toBe(false);
+      expect(wasDrawn('ChartLegend')).toBe(false);
     });
 
-    it('turns the legend off on a tiny chart', () => {
+    it('composes no ChartLegend on a tiny chart', () => {
       renderAtWidth(
         360,
         chart({ chartType: 'line', variant: 'tiny', data: daily(7, ['Collected', 'Refunded']) }),
       );
-      expect(lastProps('ChartLineWrapper').showLegend).toBe(false);
+      expect(wasDrawn('ChartLegend')).toBe(false);
     });
 
-    it('leaves the legend of a pie to the wrapper', () => {
+    it('composes no ChartLegend for a pie of one slice', () => {
       renderAtWidth(
         800,
         chart({ chartType: 'pie', xAxis: 'method', data: [{ method: 'UPI', value: 60 }] }),
       );
       expect(wasDrawn('ChartLegend')).toBe(false);
-      expect(lastProps('ChartDonutWrapper').showLegend).toBeUndefined();
+      expect(lastProps('ChartDonutWrapper')).not.toHaveProperty('showLegend');
+    });
+
+    it('composes a ChartLegend for a pie of two slices', () => {
+      renderAtWidth(
+        800,
+        chart({
+          chartType: 'pie',
+          xAxis: 'method',
+          data: [
+            { method: 'UPI', value: 60 },
+            { method: 'Card', value: 40 },
+          ],
+        }),
+      );
+      expect(wasDrawn('ChartLegend')).toBe(true);
     });
 
     it('takes the small donut radius in a 300px box, and a box of at least 260px', () => {
@@ -305,22 +324,23 @@ describe('<GenUI /> CHART in a narrow box', () => {
       [360, false],
       [640, false],
       [800, true],
-    ])('a %ipx box with no showBorder gives the wrapper %s', (width, showBorder) => {
+    ])('a %ipx box with no showBorder gives the grid %s', (width, showBorder) => {
       renderAtWidth(width, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').showBorder).toBe(showBorder);
+      expect(lastProps('ChartCartesianGrid').showBorder).toBe(showBorder);
+      expect(lastProps('ChartLineWrapper')).not.toHaveProperty('showBorder');
     });
 
     it('keeps a border until the box is measured', () => {
       renderAtWidth(0, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').showBorder).toBe(true);
+      expect(lastProps('ChartCartesianGrid').showBorder).toBe(true);
     });
 
     it('gives a chart with a border a left Y label column', () => {
       renderAtWidth(800, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
 
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
+      expect(lastProps('ChartYAxis').labelPlacement).toBe('left');
     });
 
     it('leaves the Y axis width to the v2 chart, with and without a border', () => {
@@ -336,13 +356,13 @@ describe('<GenUI /> CHART in a narrow box', () => {
         360,
         chart({ chartType: 'bar', showBorder: true, data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').showBorder).toBe(true);
+      expect(lastProps('ChartCartesianGrid').showBorder).toBe(true);
 
       renderAtWidth(
         800,
         chart({ chartType: 'bar', showBorder: false, data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').showBorder).toBe(false);
+      expect(lastProps('ChartCartesianGrid').showBorder).toBe(false);
     });
 
     it('ignores a showBorder that is not a boolean', () => {
@@ -351,19 +371,20 @@ describe('<GenUI /> CHART in a narrow box', () => {
         chart({ chartType: 'line', showBorder: 'yes', data: daily(7, ['Collected']) }),
       );
 
-      expect(lastProps('ChartLineWrapper').showBorder).toBe(true);
+      expect(lastProps('ChartCartesianGrid').showBorder).toBe(true);
     });
 
-    it('gives the wrapper yLabelPlacement left by default, and the node value', () => {
+    it('gives ChartYAxis labelPlacement left by default, and the node value', () => {
       renderAtWidth(360, chart({ chartType: 'line', data: daily(7, ['Collected']) }));
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
+      expect(lastProps('ChartYAxis').labelPlacement).toBe('left');
+      expect(lastProps('ChartLineWrapper')).not.toHaveProperty('yLabelPlacement');
 
       (['left', 'right', 'overlap'] as const).forEach((placement) => {
         renderAtWidth(
           360,
           chart({ chartType: 'bar', yLabelPlacement: placement, data: daily(7, ['Collected']) }),
         );
-        expect(lastProps('ChartBarWrapper').yLabelPlacement).toBe(placement);
+        expect(lastProps('ChartYAxis').labelPlacement).toBe(placement);
       });
 
       // An old `outside` from a model is `right`. An unknown value is `left`.
@@ -371,12 +392,12 @@ describe('<GenUI /> CHART in a narrow box', () => {
         360,
         chart({ chartType: 'bar', yLabelPlacement: 'outside', data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartBarWrapper').yLabelPlacement).toBe('right');
+      expect(lastProps('ChartYAxis').labelPlacement).toBe('right');
       renderAtWidth(
         360,
         chart({ chartType: 'line', yLabelPlacement: 'middle', data: daily(7, ['Collected']) }),
       );
-      expect(lastProps('ChartLineWrapper').yLabelPlacement).toBe('left');
+      expect(lastProps('ChartYAxis').labelPlacement).toBe('left');
     });
 
     it('draws no border on a tiny chart, which has no axes', () => {
@@ -385,7 +406,7 @@ describe('<GenUI /> CHART in a narrow box', () => {
         chart({ chartType: 'line', variant: 'tiny', data: daily(7, ['Collected']) }),
       );
 
-      expect(lastProps('ChartLineWrapper').showBorder).toBe(false);
+      expect(wasDrawn('ChartCartesianGrid')).toBe(false);
     });
   });
 
@@ -402,22 +423,33 @@ describe('<GenUI /> CHART in a narrow box', () => {
       );
     });
 
-    it('writes counts with grouping and percentages with 1 decimal', () => {
+    // `count` and `percent` are the names. `number` and `percentage` are older names for them.
+    it.each([
+      ['count', 'percent'],
+      ['number', 'percentage'],
+    ])('writes %s with grouping and %s with 1 decimal', (countType, percentType) => {
       renderAtWidth(
         360,
-        chart({ chartType: 'bar', valueFormatter: { type: 'number' }, data: daily(7, ['Count']) }),
+        chart({ chartType: 'bar', valueFormatter: { type: countType }, data: daily(7, ['Count']) }),
       );
       expect(tooltipText(123450)).toBe('1,23,450');
+      expect((lastProps('ChartYAxis').tickFormatter as (value: number) => string)(1234)).toBe(
+        '1,234',
+      );
+      expect(lastProps('ChartYAxis').allowDecimals).toBe(false);
 
       renderAtWidth(
         360,
         chart({
           chartType: 'bar',
-          valueFormatter: { type: 'percentage' },
+          valueFormatter: { type: percentType },
           data: daily(7, ['Rate'], () => 12.34),
         }),
       );
       expect(tooltipText(12.34)).toBe('12.3%');
+      expect((lastProps('ChartYAxis').tickFormatter as (value: number) => string)(12.5)).toBe(
+        '12.5%',
+      );
     });
 
     it('writes a date heading as the X labels do, "4 Oct"', () => {
@@ -518,13 +550,13 @@ describe('<GenUI /> CHART in a narrow box', () => {
       expect(container.querySelector('[data-part="ChartDonut"]')).toBeNull();
     });
 
-    it('shows the value only on a percentage pie', () => {
+    it.each(['percent', 'percentage'])('shows the value only on a %s pie', (type) => {
       const { getByTestId } = renderAtWidth(
         800,
         chart({
           chartType: 'pie',
           xAxis: 'method',
-          valueFormatter: { type: 'percentage' },
+          valueFormatter: { type },
           data: methods.map((row, i) => ({ method: row.method, value: [50, 20, 15, 10, 5][i] })),
         }),
       );

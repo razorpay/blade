@@ -15,14 +15,14 @@ import {
 } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import {
-  ChartLegend,
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
 import type { ChartDonutLegendPlacement, DataColorMapping } from '../CommonChartComponents/types';
 import {
-  resolveLegendVisibility,
-  shouldAddLegend,
+  countChildrenOf,
+  readChildDisplayProps,
+  resolveChartDisplayOptions,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type {
@@ -120,27 +120,19 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   testID,
   valueFormat,
   version = 'v1',
-  legendPlacement: legendPlacementProp,
-  showLegend,
-  legendGap: legendGapProp,
   ...restProps
 }) => {
   const { theme } = useTheme();
-  // `legendPlacement` applies with `version="v2"` only.
-  const legendPlacement = version === 'v2' ? legendPlacementProp : undefined;
-  const legendGap = version === 'v2' ? legendGapProp ?? 'spacing.5' : undefined;
+  // `placement` and `gap` sit on the ChartLegend child. They apply with `version="v2"` only.
+  const { legendPlacement, legendGap } = resolveChartDisplayOptions(
+    { version, ...readChildDisplayProps(children) },
+    { isDonut: true },
+  );
   // `left` and `right` put the legend in a column beside the ring.
   const isSideLegend = legendPlacement === 'left' || legendPlacement === 'right';
-  useWarnDisplayPropsOnV1(
-    version,
-    {
-      // The donut adds `left` and `right`. The warning reads only whether a prop is set.
-      legendPlacement: legendPlacementProp as 'top' | 'bottom' | undefined,
-      showLegend,
-      legendGap: legendGapProp,
-    },
-    'ChartDonutWrapper',
-  );
+  // `v2`: a ChartLegend child shows the legend, as in `v1`. With none, the legend takes no room.
+  const hasLegend = countChildrenOf(children, commonChartComponentId.chartLegend) > 0;
+  useWarnDisplayPropsOnV1(version, children, 'ChartDonutWrapper');
   // State to track which data keys are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
@@ -210,24 +202,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     }
     return 'medium';
   }, [children]);
-
-  // The number of slices. With one, the `v2` legend hides in auto.
-  const donutSliceCount = useMemo(() => {
-    const donutChild = React.Children.toArray(children).find(
-      (child) => isValidElement(child) && getComponentId(child) === componentId.chartDonut,
-    );
-    const donutData = isValidElement(donutChild)
-      ? (donutChild.props as { data?: unknown[] }).data
-      : undefined;
-    return Array.isArray(donutData) ? donutData.length : 0;
-  }, [children]);
-
-  const isLegendVisible = resolveLegendVisibility({
-    version,
-    showLegend,
-    seriesCount: donutSliceCount,
-    children,
-  });
 
   const legendLayout = useMemo(() => {
     if (Array.isArray(children)) {
@@ -309,7 +283,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
         valueFormat,
         legendPlacement,
         chartVersion: version,
-        isLegendVisible,
         legendGap,
         donutRadius: pieChartRadius,
       }}
@@ -332,9 +305,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           <RechartsResponsiveContainer width="100%" height="100%">
             <RechartsPieChart>
               {children}
-              {shouldAddLegend({ version, showLegend, children, seriesCount: donutSliceCount }) ? (
-                <ChartLegend key="blade-added-legend" />
-              ) : null}
               {isLabelPresentInContent && (
                 <Label
                   position="center"
@@ -390,9 +360,9 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               transform={getTranslate(
                 isSideLegend ? 'vertical' : legendLayout,
                 isSideLegend ? (legendPlacement as 'left' | 'right') : legendAlignment,
-                // A hidden `v2` legend takes no room. The last measure stays in state.
-                isLegendVisible === false ? 0 : legendWidth,
-                isLegendVisible === false ? 0 : legendHeight,
+                // A `v2` chart with no ChartLegend takes no room. The last measure stays in state.
+                version === 'v2' && !hasLegend ? 0 : legendWidth,
+                version === 'v2' && !hasLegend ? 0 : legendHeight,
                 legendPlacement,
               )}
               zIndex={10}

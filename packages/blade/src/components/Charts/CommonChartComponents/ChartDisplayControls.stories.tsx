@@ -46,15 +46,16 @@ const data = [
 type Unset = 'default';
 type OnOff = Unset | 'on' | 'off';
 
+/** Each control is named for the component and the prop it sets. */
 type ChartDisplayControlsArgs = {
   version: 'v1' | 'v2';
-  showBorder: 'on' | 'off';
-  yLabelPlacement: Unset | 'left' | 'right' | 'overlap';
-  yGridlines: OnOff;
-  gridlineWidth: Unset | 'thin' | 'thinner';
+  gridShowBorder: 'on' | 'off';
+  yAxisLabelPlacement: Unset | 'left' | 'right' | 'overlap';
+  gridHorizontal: OnOff;
+  gridLineWidth: Unset | 'thin' | 'thinner';
   legendPlacement: Unset | 'top' | 'bottom';
   donutLegendPlacement: Unset | 'top' | 'bottom' | 'left' | 'right';
-  showLegend: OnOff;
+  showLegend: 'on' | 'off';
   legendGap:
     | Unset
     | 'spacing.3'
@@ -74,16 +75,19 @@ const unset = <T extends string>(value: T | Unset): T | undefined =>
 const onOff = (value: OnOff): boolean | undefined =>
   value === 'default' ? undefined : value === 'on';
 
-const toDisplayProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProps => ({
+/** The props of the wrapper: `version` and `valueFormat` only. */
+const toWrapperProps = (args: ChartDisplayControlsArgs): ChartWrapperDisplayProps => ({
   version: args.version,
-  showBorder: args.showBorder === 'on',
-  yLabelPlacement: unset(args.yLabelPlacement),
-  yGridlines: onOff(args.yGridlines),
-  gridlineWidth: unset(args.gridlineWidth),
-  legendPlacement: unset(args.legendPlacement),
-  showLegend: onOff(args.showLegend),
-  legendGap: unset(args.legendGap),
   valueFormat: args.valueFormat === 'currency' ? { type: 'currency', currency: 'INR' } : undefined,
+});
+
+/** The props of ChartCartesianGrid: `showBorder`, `lineWidth` and recharts' `horizontal`. */
+const toGridProps = (
+  args: ChartDisplayControlsArgs,
+): React.ComponentProps<typeof ChartCartesianGrid> => ({
+  showBorder: args.gridShowBorder === 'on',
+  lineWidth: unset(args.gridLineWidth),
+  horizontal: onOff(args.gridHorizontal),
 });
 
 const ChartCard = ({
@@ -115,15 +119,22 @@ const ChartCard = ({
 );
 
 const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) => {
-  const display = toDisplayProps(args);
+  const display = toWrapperProps(args);
+  const gridProps = toGridProps(args);
   const { chartWidth: width, showEdgeGuides } = args;
+  const legendGap = unset(args.legendGap);
+  // A ChartLegend child shows the legend. With none, the chart has no legend.
+  const legend = (placement: 'top' | 'bottom' | 'left' | 'right' | undefined): React.ReactNode =>
+    args.showLegend === 'on' ? (
+      <ChartLegend key="legend" placement={placement} gap={legendGap} />
+    ) : null;
   // An array, not a fragment: the wrappers read their direct children.
   const common = [
-    <ChartCartesianGrid key="grid" />,
+    <ChartCartesianGrid key="grid" {...gridProps} />,
     <ChartXAxis key="x" dataKey="month" />,
-    <ChartYAxis key="y" />,
+    <ChartYAxis key="y" labelPlacement={unset(args.yAxisLabelPlacement)} />,
     <ChartTooltip key="tooltip" />,
-    <ChartLegend key="legend" />,
+    legend(unset(args.legendPlacement)),
   ];
   return (
     <Box display="flex" flexWrap="wrap" gap="spacing.9" padding="spacing.5">
@@ -151,27 +162,21 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
       {/* Categories on the Y axis: always lines and a left column. See the story description. */}
       <ChartCard title="Horizontal bar" width={width} showEdgeGuides={showEdgeGuides}>
         <ChartBarWrapper data={categoryData} layout="vertical" {...display}>
-          <ChartCartesianGrid />
+          <ChartCartesianGrid {...gridProps} />
           <ChartXAxis type="number" />
           <ChartYAxis type="category" dataKey="method" />
           <ChartTooltip />
-          <ChartLegend />
+          {legend(unset(args.legendPlacement))}
           <ChartBar dataKey="online" name="Online" stackId="method" />
           <ChartBar dataKey="offline" name="Offline" stackId="method" />
         </ChartBarWrapper>
       </ChartCard>
       {/* The donut has a legend and no axes: only the legend props apply. */}
       <ChartCard title="Donut" width={width} showEdgeGuides={showEdgeGuides}>
-        <ChartDonutWrapper
-          version={display.version}
-          legendPlacement={unset(args.donutLegendPlacement)}
-          showLegend={display.showLegend}
-          legendGap={display.legendGap}
-          valueFormat={display.valueFormat}
-        >
+        <ChartDonutWrapper {...display}>
           <ChartDonut dataKey="value" nameKey="name" data={donutData} />
           <ChartTooltip />
-          <ChartLegend />
+          {legend(unset(args.donutLegendPlacement))}
         </ChartDonutWrapper>
       </ChartCard>
     </Box>
@@ -179,27 +184,30 @@ const ChartDisplayControlsTemplate: StoryFn<ChartDisplayControlsArgs> = (args) =
 };
 
 /**
- * Every display control of the line, area and bar chart wrappers, as a live control. `version`
- * picks the look: `v1` renders as Blade master and ignores the other controls. `v2` takes them.
- * `default` leaves a prop unset, so the v2 default applies. `lineStyle` sets `strokeStyle` on the
- * second line.
+ * Every display control of the line, area, bar and donut charts, as a live control. Each control
+ * names the component and the prop it sets. `version` picks the look: `v1` renders as Blade
+ * master and ignores the other controls. `v2` takes them. `default` leaves a prop unset, so the
+ * v2 default applies. `lineStyle` sets `strokeStyle` on the second line.
  *
+ * - The wrapper takes `version` and `valueFormat`.
+ * - ChartCartesianGrid takes `showBorder`, `lineWidth` and recharts' `horizontal`.
+ * - ChartYAxis takes `labelPlacement`.
+ * - ChartLegend takes `placement` and `gap`. With no ChartLegend, the chart has no legend.
  * - The horizontal bar chart (`layout="vertical"`) keeps a `left` column for its category names.
- *   `yLabelPlacement` does not apply to it. `showBorder`, `yGridlines`, `gridlineWidth` and
- *   `legendPlacement` do.
- * - The donut takes `legendPlacement` only.
+ *   `labelPlacement` does not apply to it.
+ * - The donut takes the legend props only.
  */
 export const ChartDisplayControls = ChartDisplayControlsTemplate.bind({});
 ChartDisplayControls.storyName = 'Chart Display Controls';
 ChartDisplayControls.args = {
   version: 'v2',
-  showBorder: 'off',
-  yLabelPlacement: 'default',
-  yGridlines: 'default',
-  gridlineWidth: 'default',
+  gridShowBorder: 'off',
+  yAxisLabelPlacement: 'default',
+  gridHorizontal: 'default',
+  gridLineWidth: 'default',
   legendPlacement: 'default',
   donutLegendPlacement: 'default',
-  showLegend: 'default',
+  showLegend: 'on',
   legendGap: 'default',
   lineStyle: 'dashed',
   valueFormat: 'none',
@@ -212,50 +220,60 @@ export default {
   component: ChartDisplayControlsTemplate,
   argTypes: {
     version: {
+      name: 'Wrapper version',
       control: 'inline-radio',
       options: ['v1', 'v2'],
       description:
-        '`version`. v1 renders as Blade master: the other controls have no effect. v2 is the new look. Default of the prop: v1.',
+        '`version` on the chart wrapper. v1 renders as Blade master: the other controls have no effect. v2 is the new look. Default of the prop: v1.',
     },
-    showBorder: {
+    gridShowBorder: {
+      name: 'ChartCartesianGrid showBorder',
       control: 'inline-radio',
       options: ['on', 'off'],
       description:
-        '`showBorder`: a line on the left, the right and the bottom of the plot, in the gridline colour and width. Default: off. With overlap, the Y labels show as left.',
+        '`showBorder` on ChartCartesianGrid: a line on the left, the right and the bottom of the plot, in the gridline colour and width. Default: off. With overlap, the Y labels show as left.',
     },
-    yLabelPlacement: {
+    yAxisLabelPlacement: {
+      name: 'ChartYAxis labelPlacement',
       control: 'inline-radio',
       options: ['default', 'left', 'right', 'overlap'],
-      description: '`yLabelPlacement`. Default: left. overlap with showBorder shows as left.',
+      description:
+        '`labelPlacement` on ChartYAxis. Default: left. overlap with showBorder shows as left.',
     },
-    yGridlines: {
+    gridHorizontal: {
+      name: 'ChartCartesianGrid horizontal',
       control: 'inline-radio',
       options: ['default', 'on', 'off'],
-      description: '`yGridlines`. Default: on.',
+      description: "recharts' `horizontal` on ChartCartesianGrid: the gridlines. Default: on.",
     },
-    gridlineWidth: {
+    gridLineWidth: {
+      name: 'ChartCartesianGrid lineWidth',
       control: 'inline-radio',
       options: ['default', 'thin', 'thinner'],
       description:
-        '`gridlineWidth`: thin is border.width.thin (1px), thinner is border.width.thinner (0.5px). Default: thinner.',
+        '`lineWidth` on ChartCartesianGrid: thin is border.width.thin (1px), thinner is border.width.thinner (0.5px). Default: thinner.',
     },
     legendPlacement: {
+      name: 'ChartLegend placement',
       control: 'inline-radio',
       options: ['default', 'top', 'bottom'],
-      description: '`legendPlacement` of the line, area and bar charts. Default: bottom.',
+      description: '`placement` on ChartLegend, in the line, area and bar charts. Default: bottom.',
     },
     donutLegendPlacement: {
+      name: 'ChartLegend placement (donut)',
       control: 'inline-radio',
       options: ['default', 'top', 'bottom', 'left', 'right'],
       description:
-        '`legendPlacement` of the donut. Default: bottom. The ring and the legend are one centred group.',
+        '`placement` on ChartLegend, in the donut. Default: bottom. The ring and the legend are one centred group.',
     },
     showLegend: {
+      name: 'ChartLegend child',
       control: 'inline-radio',
-      options: ['default', 'on', 'off'],
-      description: '`showLegend`. Default: auto, on for 2 or more series or slices.',
+      options: ['on', 'off'],
+      description: 'A ChartLegend child, or none. With none, the chart has no legend.',
     },
     legendGap: {
+      name: 'ChartLegend gap',
       control: 'select',
       options: [
         'default',
@@ -266,7 +284,7 @@ export default {
         'spacing.7',
         'spacing.8',
       ],
-      description: '`legendGap`. Default: spacing.5 (16px).',
+      description: '`gap` on ChartLegend. Default: spacing.5 (16px).',
     },
     lineStyle: {
       control: 'inline-radio',
@@ -275,6 +293,7 @@ export default {
         '`strokeStyle` on the second ChartLine. Line chart only. The legend swatch follows it.',
     },
     valueFormat: {
+      name: 'Wrapper valueFormat',
       control: 'inline-radio',
       options: ['none', 'currency'],
       description: '`valueFormat`: none, or en-IN currency.',

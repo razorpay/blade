@@ -22,6 +22,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import { useWarnWebOnlyChartProps } from '../CommonChartComponents/chartDisplayOptions';
 import { AnimatedDonutSlice } from './AnimatedDonutSlice.native';
 import type {
   ChartDonutWrapperProps,
@@ -194,9 +195,16 @@ const ChartDonutWrapper = ({
   children,
   content,
   testID,
+  version,
+  valueFormat,
   ...restProps
 }: ChartDonutWrapperProps & TestID & DataAnalyticsAttribute): React.ReactElement => {
   const { theme } = useTheme();
+  // `version="v2"`, `valueFormat` and the display props of the children work on web only.
+  useWarnWebOnlyChartProps(
+    { version, hasValueFormat: valueFormat !== undefined, children },
+    'ChartDonutWrapper',
+  );
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const hasUserInteractedRef = useRef(false);

@@ -37,6 +37,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import { useWarnWebOnlyChartProps } from '../CommonChartComponents/chartDisplayOptions';
 import {
   REFERENCE_BAND_DEFAULT_COLOR,
   REFERENCE_BAND_FILL_OPACITY,
@@ -762,9 +763,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   testID,
   data = [],
+  version,
+  valueFormat,
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // `version="v2"`, `valueFormat` and the display props of the children work on web only.
+  useWarnWebOnlyChartProps(
+    { version, hasValueFormat: valueFormat !== undefined, children },
+    'ChartLineWrapper',
+  );
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);

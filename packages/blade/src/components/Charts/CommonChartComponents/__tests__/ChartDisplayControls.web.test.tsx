@@ -8,6 +8,7 @@ import { ChartDonutWrapper, ChartDonut } from '../../DonutChart';
 import { border } from '~tokens/global';
 import { bladeTheme, bladeNeutralTheme, createTheme } from '~tokens/theme';
 import type { ChartWrapperDisplayProps } from '../types';
+import type { ChartChildDisplayProps } from '../chartDisplayOptions';
 import { getChartMargin, resolveChartDisplayOptions } from '../chartDisplayOptions';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
@@ -33,23 +34,53 @@ const data = [
 
 type Kind = 'line' | 'area' | 'bar';
 
+/**
+ * The display options of a test chart. `valueFormat` sits on the wrapper. The others sit on the
+ * children: `showBorder`, `gridlineWidth` (`lineWidth`) and `yGridlines` (`horizontal`) on
+ * ChartCartesianGrid, `yLabelPlacement` (`labelPlacement`) on ChartYAxis, `legendPlacement`
+ * (`placement`) and `legendGap` (`gap`) on ChartLegend.
+ */
+type DisplayInput = Omit<ChartWrapperDisplayProps, 'version'> & ChartChildDisplayProps;
+
+/** The grid props of the display options. */
+const gridProps = ({
+  showBorder,
+  gridlineWidth,
+  yGridlines,
+}: ChartChildDisplayProps): React.ComponentProps<typeof ChartCartesianGrid> => ({
+  showBorder,
+  lineWidth: gridlineWidth,
+  ...(yGridlines === false ? { horizontal: false } : {}),
+});
+
 const renderChart = (
   kind: Kind,
-  display: ChartWrapperDisplayProps = {},
+  {
+    valueFormat,
+    yLabelPlacement,
+    legendPlacement,
+    legendGap,
+    ...gridDisplay
+  }: DisplayInput = {},
   { strokeStyle = 'solid' }: { strokeStyle?: 'solid' | 'dashed' | 'dotted' } = {},
   version: 'v1' | 'v2' = 'v2',
 ): HTMLElement => {
   // An array, not a fragment: the wrappers read their direct children.
   const common = [
-    <ChartCartesianGrid key="grid" />,
+    <ChartCartesianGrid key="grid" {...gridProps(gridDisplay)} />,
     <ChartXAxis key="x" dataKey="month" />,
-    <ChartYAxis key="y" />,
-    <ChartLegend key="legend" />,
+    <ChartYAxis key="y" labelPlacement={yLabelPlacement} />,
+    <ChartLegend
+      key="legend"
+      placement={legendPlacement}
+      gap={legendGap}
+    />,
   ];
+  const display = { version, valueFormat };
   if (kind === 'line') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} version={version} {...display}>
+        <ChartLineWrapper data={data} {...display}>
           {common}
           <ChartLine dataKey="online" name="Online" />
           <ChartLine dataKey="offline" name="Offline" strokeStyle={strokeStyle} />
@@ -60,7 +91,7 @@ const renderChart = (
   if (kind === 'area') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartAreaWrapper data={data} version={version} {...display}>
+        <ChartAreaWrapper data={data} {...display}>
           {common}
           <ChartArea dataKey="online" name="Online" />
           <ChartArea dataKey="offline" name="Offline" />
@@ -70,7 +101,7 @@ const renderChart = (
   }
   return renderWithTheme(
     <Box width="800px" height="400px">
-      <ChartBarWrapper data={data} version={version} {...display}>
+      <ChartBarWrapper data={data} {...display}>
         {common}
         <ChartBar dataKey="online" name="Online" />
         <ChartBar dataKey="offline" name="Offline" />
@@ -123,8 +154,8 @@ const hasRule = (element: Element | null, declaration: string, selector: string)
 
 describe('resolveChartDisplayOptions', () => {
   const v2 = (
-    props: ChartWrapperDisplayProps,
-    options?: { isVerticalBar?: boolean },
+    props: ChartChildDisplayProps,
+    options?: { isVerticalBar?: boolean; isDonut?: boolean },
   ): ReturnType<typeof resolveChartDisplayOptions> =>
     resolveChartDisplayOptions({ version: 'v2', ...props }, options);
 
@@ -178,6 +209,12 @@ describe('resolveChartDisplayOptions', () => {
     expect(v2({ showBorder: true, yLabelPlacement: 'right' }).yLabelPlacement).toBe('right');
   });
 
+  it('takes a left or right legend on a donut only', () => {
+    expect(v2({ legendPlacement: 'left' }).legendPlacement).toBeUndefined();
+    expect(v2({ legendPlacement: 'top' }).legendPlacement).toBe('top');
+    expect(v2({ legendPlacement: 'right' }, { isDonut: true }).legendPlacement).toBe('right');
+  });
+
   it('keeps a left column on a vertical bar chart, and takes its border', () => {
     expect(v2({ yLabelPlacement: 'right' }, { isVerticalBar: true })).toMatchObject({
       yLabelPlacement: 'left',
@@ -196,17 +233,20 @@ describe('a display prop on a v1 chart', () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     const container = renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} showBorder legendPlacement="top">
+        <ChartLineWrapper data={data}>
+          <ChartCartesianGrid showBorder />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
-          <ChartLegend />
+          <ChartLegend placement="top" />
           <ChartLine dataKey="online" name="Online" />
         </ChartLineWrapper>
       </Box>,
     ).container;
     await ready(container);
     expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('showBorder, legendPlacement has no effect with version="v1"'),
+      expect.stringContaining(
+        'ChartCartesianGrid showBorder, ChartLegend placement has no effect with version="v1"',
+      ),
     );
     expect(surface(container)).toBeNull();
     expect(container.querySelector('[data-blade-legend-placement]')).toBeNull();
@@ -406,24 +446,16 @@ describe.each(['line', 'area', 'bar'] as const)('display controls on a %s chart'
   );
 });
 
-describe('showLegend', () => {
+describe('legend', () => {
   const legendItems = (container: HTMLElement): Element[] =>
     Array.from(container.querySelectorAll('.recharts-legend-wrapper button'));
   const renderLine = (
     lines: string[],
-    {
-      showLegend,
-      withLegend = true,
-      version = 'v2',
-    }: {
-      showLegend?: boolean;
-      withLegend?: boolean;
-      version?: 'v1' | 'v2';
-    } = {},
+    { withLegend = true, version = 'v2' }: { withLegend?: boolean; version?: 'v1' | 'v2' } = {},
   ): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} version={version} showLegend={showLegend}>
+        <ChartLineWrapper data={data} version={version}>
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
           {withLegend ? <ChartLegend /> : null}
@@ -437,51 +469,29 @@ describe('showLegend', () => {
     await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
   };
 
-  it('auto: a ChartLegend child shows, even for one series', async () => {
-    const one = renderLine(['online']);
-    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
-    const two = renderLine(['online', 'offline']);
-    await waitFor(() => expect(legendItems(two)).toHaveLength(2));
-  });
+  it.each(['v1', 'v2'] as const)(
+    'shows a ChartLegend child, even for one series, in %s',
+    async (version) => {
+      const one = renderLine(['online'], { version });
+      await waitFor(() => expect(legendItems(one)).toHaveLength(1));
+      const two = renderLine(['online', 'offline'], { version });
+      await waitFor(() => expect(legendItems(two)).toHaveLength(2));
+    },
+  );
 
-  it('auto with no ChartLegend: a legend for two series, none for one', async () => {
+  it('shows no legend with no ChartLegend child, even for two series', async () => {
     const two = renderLine(['online', 'offline'], { withLegend: false });
-    await waitFor(() => expect(legendItems(two)).toHaveLength(2));
-    const one = renderLine(['online'], { withLegend: false });
-    await axesReady(one);
-    expect(legendItems(one)).toHaveLength(0);
-  });
-
-  it('shows the legend of one series with showLegend, and hides two with false', async () => {
-    const one = renderLine(['online'], { showLegend: true });
-    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
-    const two = renderLine(['online', 'offline'], { showLegend: false });
     await axesReady(two);
     expect(legendItems(two)).toHaveLength(0);
   });
 
-  it('adds a legend with showLegend true when the chart has no ChartLegend, even for one', async () => {
-    const added = renderLine(['online'], { showLegend: true, withLegend: false });
-    await waitFor(() => expect(legendItems(added)).toHaveLength(1));
-    const hidden = renderLine(['online', 'offline'], { showLegend: false, withLegend: false });
-    await axesReady(hidden);
-    expect(legendItems(hidden)).toHaveLength(0);
-  });
-
-  it('ignores showLegend with v1, as master', async () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    const one = renderLine(['online'], { showLegend: false, version: 'v1' });
-    await waitFor(() => expect(legendItems(one)).toHaveLength(1));
-    warn.mockRestore();
-  });
-
-  it('takes legendGap', async () => {
+  it('takes gap', async () => {
     const container = renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} version="v2" legendGap="spacing.7">
+        <ChartLineWrapper data={data} version="v2">
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
-          <ChartLegend />
+          <ChartLegend gap="spacing.7" />
           <ChartLine dataKey="online" />
           <ChartLine dataKey="offline" />
         </ChartLineWrapper>
@@ -489,6 +499,121 @@ describe('showLegend', () => {
     ).container;
     await waitFor(() => expect(legendItems(container)).toHaveLength(2));
     expect(legendWrapper(container)?.style.paddingTop).toBe('24px');
+  });
+
+  it('takes placement over verticalAlign, and warns when both are set', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLegend placement="top" verticalAlign="bottom" />
+          <ChartLine dataKey="online" />
+          <ChartLine dataKey="offline" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(legendItems(container)).toHaveLength(2));
+    expect(legendWrapper(container)?.style.top).not.toBe('');
+    expect(legendWrapper(container)?.style.bottom).toBe('');
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('placement and verticalAlign are both set. placement wins'),
+    );
+    warn.mockRestore();
+  });
+
+  it('keeps verticalAlign with no placement', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLegend verticalAlign="top" />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(legendItems(container)).toHaveLength(1));
+    expect(legendWrapper(container)?.style.top).not.toBe('');
+  });
+
+  it('shows a left legend at the bottom on a line chart, and warns', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLegend placement="left" />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(legendItems(container)).toHaveLength(1));
+    expect(legendWrapper(container)?.style.bottom).not.toBe('');
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('placement="left" works on a donut only'),
+    );
+    warn.mockRestore();
+  });
+});
+
+describe('a Blade prop and the recharts prop it sets', () => {
+  it('takes lineWidth over strokeWidth on ChartCartesianGrid, and warns', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartCartesianGrid lineWidth="thin" strokeWidth={3} />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(gridLines(container).length).toBeGreaterThan(0));
+    gridLines(container).forEach((line) => expect(line.getAttribute('stroke-width')).toBe('1'));
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('lineWidth and strokeWidth are both set. lineWidth wins'),
+    );
+    warn.mockRestore();
+  });
+
+  it('keeps strokeWidth on ChartCartesianGrid with no lineWidth', async () => {
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartCartesianGrid strokeWidth={3} />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(gridLines(container).length).toBeGreaterThan(0));
+    gridLines(container).forEach((line) => expect(line.getAttribute('stroke-width')).toBe('3'));
+  });
+
+  it('takes labelPlacement over orientation on ChartYAxis, and warns', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const container = renderWithTheme(
+      <Box width="800px" height="400px">
+        <ChartLineWrapper data={data} version="v2">
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis labelPlacement="right" orientation="left" />
+          <ChartLine dataKey="online" />
+        </ChartLineWrapper>
+      </Box>,
+    ).container;
+    await waitFor(() => expect(yTicks(container).length).toBeGreaterThan(0));
+    expect(surface(container)?.getAttribute('data-blade-chart-y-labels')).toBe('right');
+    yTicks(container).forEach((tick) => expect(tick.getAttribute('text-anchor')).toBe('start'));
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('labelPlacement and orientation are both set. labelPlacement wins'),
+    );
+    warn.mockRestore();
   });
 });
 
@@ -499,8 +624,8 @@ describe('showBorder is drawn once per chart', () => {
   it('draws the border with no ChartYAxis', async () => {
     const container = renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={data} version="v2" showBorder>
-          <ChartCartesianGrid />
+        <ChartLineWrapper data={data} version="v2">
+          <ChartCartesianGrid showBorder />
           <ChartXAxis dataKey="month" />
           <ChartLine dataKey="online" />
         </ChartLineWrapper>
@@ -513,8 +638,8 @@ describe('showBorder is drawn once per chart', () => {
   it('draws the border once with two Y axes', async () => {
     const container = renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartBarWrapper data={data} version="v2" showBorder>
-          <ChartCartesianGrid />
+        <ChartBarWrapper data={data} version="v2">
+          <ChartCartesianGrid showBorder />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
           <ChartYAxis yAxisId="second" orientation="right" />
@@ -540,19 +665,17 @@ describe('horizontal bar chart (layout vertical)', () => {
     { method: 'UPI', amount: 98000 },
     { method: 'Payment links', amount: 18000 },
   ];
-  const renderHorizontalBar = (display: ChartWrapperDisplayProps = {}): HTMLElement =>
+  const renderHorizontalBar = ({
+    valueFormat,
+    yLabelPlacement,
+    ...gridDisplay
+  }: DisplayInput = {}): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartBarWrapper
-          data={categoryData}
-          layout="vertical"
-          version="v2"
-          // One series: auto would hide the legend that `ready` waits for.
-          showLegend
-          {...display}
-        >
+        <ChartBarWrapper data={categoryData} layout="vertical" version="v2" valueFormat={valueFormat}>
+          {gridDisplay.showBorder ? <ChartCartesianGrid {...gridProps(gridDisplay)} /> : null}
           <ChartXAxis type="number" />
-          <ChartYAxis type="category" dataKey="method" />
+          <ChartYAxis type="category" dataKey="method" labelPlacement={yLabelPlacement} />
           <ChartLegend />
           <ChartBar dataKey="amount" name="Online" />
         </ChartBarWrapper>
@@ -672,15 +795,15 @@ describe('legend controls on a donut chart', () => {
   ];
   const renderDonut = (
     props: {
-      legendPlacement?: 'top' | 'bottom' | 'left' | 'right';
-      legendGap?: 'spacing.8';
+      placement?: 'top' | 'bottom' | 'left' | 'right';
+      gap?: 'spacing.8';
     } = {},
   ): HTMLElement =>
     renderWithTheme(
       <Box width="400px" height="400px">
-        <ChartDonutWrapper version="v2" {...props}>
+        <ChartDonutWrapper version="v2">
           <ChartDonut dataKey="value" nameKey="name" data={donutData} />
-          <ChartLegend />
+          <ChartLegend {...props} />
         </ChartDonutWrapper>
       </Box>,
     ).container;
@@ -697,8 +820,8 @@ describe('legend controls on a donut chart', () => {
     expect(window.getComputedStyle(legendText(container)!).fontSize).toBe('0.875rem');
   });
 
-  it('puts the legend on top, centred over the ring, with legendPlacement top', async () => {
-    const container = renderDonut({ legendPlacement: 'top' });
+  it('puts the legend on top, centred over the ring, with placement top', async () => {
+    const container = renderDonut({ placement: 'top' });
     await waitFor(() => expect(legendText(container)).not.toBeNull());
     // The legend box ends at the top of the ring.
     await waitFor(() => expect(legendWrapper(container)?.style.bottom).not.toBe(''));
@@ -710,7 +833,7 @@ describe('legend controls on a donut chart', () => {
     ['right', 'paddingLeft'],
     ['left', 'paddingRight'],
   ] as const)('puts the legend in a column %s of the ring', async (placement, padding) => {
-    const container = renderDonut({ legendPlacement: placement });
+    const container = renderDonut({ placement });
     await waitFor(() => expect(legendText(container)).not.toBeNull());
     await waitFor(() =>
       expect(legendWrapper(container)?.style[placement === 'right' ? 'left' : 'right']).not.toBe(
@@ -722,38 +845,28 @@ describe('legend controls on a donut chart', () => {
     expect(window.getComputedStyle(row).flexDirection).toBe('column');
   });
 
-  it('takes legendGap', async () => {
-    const container = renderDonut({ legendGap: 'spacing.8' });
+  it('takes gap', async () => {
+    const container = renderDonut({ gap: 'spacing.8' });
     await waitFor(() => expect(legendText(container)).not.toBeNull());
     expect(legendWrapper(container)?.style.paddingTop).toBe('32px');
   });
 
-  it('auto: no legend for one slice with no ChartLegend, a legend for two', async () => {
+  it('shows the legend with a ChartLegend child only, even for one slice', async () => {
     const one = [{ name: 'UPI', value: 52000 }];
-    const render = (
-      slices: typeof donutData,
-      { showLegend, withLegend = false }: { showLegend?: boolean; withLegend?: boolean } = {},
-    ): HTMLElement =>
+    const render = (slices: typeof donutData, withLegend: boolean): HTMLElement =>
       renderWithTheme(
         <Box width="400px" height="400px">
-          <ChartDonutWrapper version="v2" showLegend={showLegend}>
+          <ChartDonutWrapper version="v2">
             <ChartDonut dataKey="value" nameKey="name" data={slices} />
             {withLegend ? <ChartLegend /> : null}
           </ChartDonutWrapper>
         </Box>,
       ).container;
-    const auto = render(one);
-    await waitFor(() => expect(auto.querySelector('.recharts-pie')).not.toBeNull());
-    expect(legendText(auto)).toBeNull();
-    // Two slices: the wrapper adds the legend.
-    const two = render(donutData);
-    await waitFor(() => expect(legendText(two)).not.toBeNull());
-    // An explicit ChartLegend shows for one slice; false hides it.
-    const explicit = render(one, { withLegend: true });
+    const none = render(donutData, false);
+    await waitFor(() => expect(none.querySelector('.recharts-pie')).not.toBeNull());
+    expect(legendText(none)).toBeNull();
+    const explicit = render(one, true);
     await waitFor(() => expect(legendText(explicit)).not.toBeNull());
-    const off = render(donutData, { withLegend: true, showLegend: false });
-    await waitFor(() => expect(off.querySelector('.recharts-pie')).not.toBeNull());
-    expect(legendText(off)).toBeNull();
   });
 
   it('spaces the v2 legend items spacing.4 apart, with no side padding', async () => {

@@ -6,8 +6,6 @@ import type {
   Align,
   ChartLegendProps,
   ChartTooltipProps,
-  ChartLegendDisplayProps,
-  ChartDonutLegendPlacement,
   ChartVersionProps,
 } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
@@ -74,14 +72,7 @@ type ChartDonutWrapperProps = {
    */
   valueFormat?: ChartValueFormat;
 } & BoxProps &
-  Omit<ChartLegendDisplayProps, 'legendPlacement'> & {
-    /**
-     * Where the legend sits: above, below, left or right of the ring. The ring and the legend
-     * are one group, centred in the box, with `legendGap` between them. `version="v2"` only.
-     * @default 'bottom'
-     */
-    legendPlacement?: ChartDonutLegendPlacement;
-  } & ChartVersionProps;
+  ChartVersionProps;
 
 type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;

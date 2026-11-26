@@ -16,6 +16,7 @@ import {
   getXLabelStep,
   isDateAxis,
   isWholeNumberChart,
+  normalizeValueFormatType,
 } from '../genUIChartUtils';
 
 const day = (i: number): string => new Date(Date.UTC(2026, 9, 1 + i)).toISOString().slice(0, 10);
@@ -135,11 +136,13 @@ describe('genUIChartUtils', () => {
       expect(new Set(ticks).size).toBe(ticks.length);
     });
 
-    it('asks for whole ticks only on a number chart of whole values', () => {
+    it('asks for whole ticks only on a count chart of whole values', () => {
       const counts = [
         { day: 'Mon', count: 0 },
         { day: 'Tue', count: 3 },
       ];
+      expect(isWholeNumberChart(counts, ['count'], 'count')).toBe(true);
+      // `number` is the older name of `count`.
       expect(isWholeNumberChart(counts, ['count'], 'number')).toBe(true);
       expect(isWholeNumberChart([{ day: 'Mon', count: 1.5 }], ['count'], 'number')).toBe(false);
       expect(isWholeNumberChart(counts, ['count'], 'currency')).toBe(false);
@@ -181,14 +184,30 @@ describe('genUIChartUtils', () => {
       [123450, { type: 'currency', currency: 'INR' }, '₹1,23,450.00'],
       [123450.5, { type: 'currency' }, '₹1,23,450.50'],
       [12000000, { type: 'currency', currency: 'INR' }, '₹1,20,00,000.00'],
+      [123450, { type: 'count' }, '1,23,450'],
+      [1234.567, { type: 'count' }, '1,234.57'],
+      [12.345, { type: 'percent' }, '12.3%'],
+      [12.345, { type: 'percent', suffix: '%' }, '12.3%'],
+      [42, { type: 'count', suffix: ' txns' }, '42 txns'],
+      // The older names: `number` is `count`, `percentage` is `percent`.
       [123450, { type: 'number' }, '1,23,450'],
-      [1234.567, { type: 'number' }, '1,234.57'],
       [12.345, { type: 'percentage' }, '12.3%'],
       [12.345, { type: 'percentage', suffix: '%' }, '12.3%'],
-      [42, { type: 'number', suffix: ' txns' }, '42 txns'],
       [42, { type: 'string' }, '42'],
     ] as const)('writes %p as %s', (value, formatter, text) => {
       expect(formatChartValue(value, formatter)).toBe(text);
+    });
+
+    it.each([
+      ['number', 'count'],
+      ['percentage', 'percent'],
+      ['count', 'count'],
+      ['percent', 'percent'],
+      ['currency', 'currency'],
+      ['string', 'string'],
+      ['ratio', undefined],
+    ])('reads the format type %p as %p', (type, name) => {
+      expect(normalizeValueFormatType(type)).toBe(name);
     });
 
     it('keeps a value that is not a number as it is', () => {

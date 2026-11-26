@@ -29,11 +29,16 @@ import {
   getXLabelStep,
   isDateAxis,
   isWholeNumberChart,
+  normalizeValueFormatType,
   resolveShowBorder,
   resolveYLabelPlacement,
   shouldShowBarList,
 } from './genUIChartUtils';
-import type { ChartValueFormatter } from './genUIChartUtils';
+import type {
+  ChartValueFormatter,
+  GenUIValueFormatType,
+  GenUIValueFormatTypeAlias,
+} from './genUIChartUtils';
 import { Box } from '~components/Box';
 import type { BoxRefType } from '~components/Box/BaseBox/types';
 import { Heading, Text } from '~components/Typography';
@@ -466,8 +471,19 @@ type ChartComponent = GenUIBaseComponent & {
   xAxis?: string;
   data?: Array<Record<string, string | number>>;
   unit?: string;
+  /**
+   * How the values read. `type` takes Blade's `valueFormat` names:
+   * - `currency`: an amount, in `currency` (default INR). ₹1.5L on the ticks, ₹1,23,450.00 in
+   *   the tooltip.
+   * - `count`: a number. 1.5K on the ticks, 1,23,450 in the tooltip.
+   * - `percent`: a value already in percent. 12.5%.
+   * - `string`: the number as it is.
+   *
+   * The older names still work: `number` is `count`, and `percentage` is `percent`.
+   * `suffix` is added after each value.
+   */
   valueFormatter?: {
-    type: 'currency' | 'percentage' | 'number' | 'string';
+    type: GenUIValueFormatType | GenUIValueFormatTypeAlias;
     currency?: string;
     suffix?: string;
   };
@@ -480,7 +496,7 @@ type ChartComponent = GenUIBaseComponent & {
   showBorder?: boolean;
   /**
    * Shows or hides the legend. When it is not set: a legend for 2 or more series (or pie
-   * slices), none for one.
+   * slices), none for one. The CHART adds a Blade `ChartLegend` when the legend shows.
    */
   showLegend?: boolean;
   /**
@@ -1004,7 +1020,7 @@ const ChartBarListRow = ({
 /**
  * A pie as a list of bars: a Total row on top at 100%, then one row a slice, in order. Each bar
  * is the slice's share of the total. Each row shows the full value and the share, as
- * "₹5,20,000.00 · 57.5%". A `percentage` chart shows the value only, as it is a share already.
+ * "₹5,20,000.00 · 57.5%". A `percent` chart shows the value only, as it is a share already.
  */
 const ChartBarList = ({
   rows,
@@ -1018,7 +1034,7 @@ const ChartBarList = ({
   valueFormatter: ChartValueFormatter;
 }) => {
   const list = getBarListRows(rows, nameKey, valueKey);
-  const showShare = valueFormatter.type !== 'percentage';
+  const showShare = normalizeValueFormatType(valueFormatter.type) !== 'percent';
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4" testID="genui-chart-bar-list">
       <ChartBarListRow
@@ -1161,7 +1177,9 @@ const RenderResponsiveChart = memo(
 
       // Use valueFormatter if provided, otherwise fall back to unit
       if (valueFormatter) {
-        const { type, currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        const { currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        // `number` and `percentage` are the older names of `count` and `percent`.
+        const type = normalizeValueFormatType(valueFormatter.type);
 
         const buildPrefixSuffixString = (v: string) => {
           return `${v}${formatterSuffix ?? ''}`;
@@ -1185,7 +1203,7 @@ const RenderResponsiveChart = memo(
               return buildPrefixSuffixString(formatted);
             }
 
-            case 'percentage': {
+            case 'percent': {
               const formatted = formatNumber(numValue / 100, {
                 intlOptions: {
                   style: 'percent',
@@ -1200,7 +1218,7 @@ const RenderResponsiveChart = memo(
               }
             }
 
-            case 'number': {
+            case 'count': {
               const numberFormatted = formatNumber(numValue, {
                 intlOptions: {
                   minimumFractionDigits: 0,
@@ -1261,15 +1279,20 @@ const RenderResponsiveChart = memo(
       <ChartYAxis
         allowDecimals={!isWholeNumberChart(validData, keysToPlot, valueFormatter.type)}
         tickFormatter={tickFormatter}
+        labelPlacement={yLabelPlacement}
       />
     ) : null;
-    // The v2 wrapper adds the legend: auto shows it for 2 or more series (or pie slices) and hides
-    // it for one. The node's showLegend wins. A tiny chart has none.
+    // The border sits on the grid. `overlap` with a border shows as `left`: the chart resolves it.
+    const gridNode = !isTiny ? <ChartCartesianGrid showBorder={showBorder} /> : null;
+    // The legend: the node's showLegend wins. When it is not set, a legend for 2 or more series
+    // (or pie slices), none for one. A tiny chart has none.
+    const seriesCount = chartType === 'pie' ? validData.length : keysToPlot.length;
     const showLegend = isTiny
       ? false
       : typeof showLegendProp === 'boolean'
       ? showLegendProp
-      : undefined;
+      : seriesCount > 1;
+    const legendNode = showLegend ? <ChartLegend /> : null;
     // Tooltips show the full value, ₹1,23,450.00. The ticks stay compact, ₹1.2L. A date heading
     // reads as the X labels do, "4 Oct", not "2026-10-04".
     const tooltipNode = !isTiny ? (
@@ -1311,64 +1334,57 @@ const RenderResponsiveChart = memo(
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                showBorder={showBorder}
-                showLegend={showLegend}
-                yLabelPlacement={yLabelPlacement}
                 data={validData}
                 colorTheme="categorical"
               >
-                {!isTiny ? <ChartCartesianGrid /> : null}
+                {gridNode}
                 {xAxisNode}
                 {yAxisNode}
                 {keysToPlot.map((key) => (
                   <ChartBar key={key} dataKey={key} name={key} />
                 ))}
                 {tooltipNode}
+                {legendNode}
               </ChartBarWrapper>
             ) : chartType === 'line' ? (
               <ChartLineWrapper
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                showBorder={showBorder}
-                showLegend={showLegend}
-                yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
                 colorTheme="categorical"
               >
-                {!isTiny ? <ChartCartesianGrid /> : null}
+                {gridNode}
                 {xAxisNode}
                 {yAxisNode}
                 {keysToPlot.map((key) => (
                   <ChartLine key={key} dataKey={key} name={key} />
                 ))}
                 {tooltipNode}
+                {legendNode}
               </ChartLineWrapper>
             ) : chartType === 'area' ? (
               <ChartAreaWrapper
                 version="v2"
                 width="100%"
                 height={chartHeight}
-                showBorder={showBorder}
-                showLegend={showLegend}
-                yLabelPlacement={yLabelPlacement}
                 minHeight={minHeight}
                 data={validData}
                 colorTheme="categorical"
               >
-                {!isTiny ? <ChartCartesianGrid /> : null}
+                {gridNode}
                 {xAxisNode}
                 {yAxisNode}
                 {keysToPlot.map((key) => (
                   <ChartArea key={key} dataKey={key} name={key} type="monotone" />
                 ))}
                 {tooltipNode}
+                {legendNode}
               </ChartAreaWrapper>
             ) : chartType === 'pie' ? (
               <ChartDonutWrapper
                 version="v2"
-                showLegend={showLegend}
                 width="100%"
                 height={plotHeight as '350px'}
                 minHeight={plotHeight as '350px'}
@@ -1381,6 +1397,7 @@ const RenderResponsiveChart = memo(
                   type="circle"
                 />
                 {tooltipNode}
+                {legendNode}
               </ChartDonutWrapper>
             ) : null}
           </Box>
@@ -1470,7 +1487,9 @@ const RenderFixedChart = memo(
 
       // Use valueFormatter if provided, otherwise fall back to unit
       if (valueFormatter) {
-        const { type, currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        const { currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        // `number` and `percentage` are the older names of `count` and `percent`.
+        const type = normalizeValueFormatType(valueFormatter.type);
 
         const buildPrefixSuffixString = (v: string) => {
           return `${v}${formatterSuffix ?? ''}`;
@@ -1489,7 +1508,7 @@ const RenderFixedChart = memo(
               return buildPrefixSuffixString(formatted);
             }
 
-            case 'percentage': {
+            case 'percent': {
               const formatted = formatNumber(numValue / 100, {
                 intlOptions: {
                   style: 'percent',
@@ -1504,7 +1523,7 @@ const RenderFixedChart = memo(
               }
             }
 
-            case 'number': {
+            case 'count': {
               const numberFormatted = formatNumber(numValue, {
                 intlOptions: {
                   minimumFractionDigits: 0,

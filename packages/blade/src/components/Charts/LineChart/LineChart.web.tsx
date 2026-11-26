@@ -16,7 +16,7 @@ import {
 } from 'recharts';
 import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
-import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
   DataColorMapping,
   SecondaryLabelMap,
@@ -27,11 +27,9 @@ import { componentId as commonComponentIds } from '../CommonChartComponents/toke
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
 import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import {
-  countChildrenOf,
   getChartMargin,
+  readChildDisplayProps,
   resolveChartDisplayOptions,
-  resolveLegendVisibility,
-  shouldAddLegend,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
@@ -255,18 +253,20 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   children,
   colorTheme = 'categorical',
   version,
-  showBorder,
-  yLabelPlacement,
-  yGridlines,
-  gridlineWidth,
-  legendPlacement,
-  showLegend,
-  legendGap,
   valueFormat,
   testID,
   data,
   ...restProps
 }) => {
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend.
+  const {
+    showBorder,
+    yLabelPlacement,
+    yGridlines,
+    gridlineWidth,
+    legendPlacement,
+    legendGap,
+  } = readChildDisplayProps(children);
   const display = useMemo(
     () =>
       resolveChartDisplayOptions({
@@ -280,28 +280,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       }),
     [version, showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement, legendGap],
   );
-  useWarnDisplayPropsOnV1(
-    version,
-    {
-      showBorder,
-      yLabelPlacement,
-      yGridlines,
-      gridlineWidth,
-      legendPlacement,
-      showLegend,
-      legendGap,
-    },
-    'ChartLineWrapper',
-  );
+  useWarnDisplayPropsOnV1(version, children, 'ChartLineWrapper');
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
-  });
-  const isLegendVisible = resolveLegendVisibility({
-    version,
-    showLegend,
-    seriesCount: countChildrenOf(children, componentIds.ChartLine),
-    children,
   });
 
   // State to track which line is currently hovered
@@ -590,7 +572,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       rangeMap,
       lineStrokeStyles,
       ...display,
-      isLegendVisible,
       valueFormat,
     }),
     [
@@ -602,7 +583,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       rangeMap,
       lineStrokeStyles,
       display,
-      isLegendVisible,
       valueFormat,
     ],
   );
@@ -633,14 +613,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
                 {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
-                {shouldAddLegend({
-                  version,
-                  showLegend,
-                  children,
-                  seriesCount: countChildrenOf(children, componentIds.ChartLine),
-                }) ? (
-                  <ChartLegend key="blade-added-legend" />
-                ) : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>

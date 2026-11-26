@@ -157,9 +157,37 @@ const getLastLabelOverhang = ({
   return overhang > 0 ? Math.ceil(overhang + LAST_LABEL_SLACK_PX) : 0;
 };
 
-/** Whole-number Y ticks for a `number` chart whose values are all whole: 0, 1, 2, 3, not 0.75. */
+/**
+ * The value format of a GenUI CHART. The names are Blade's `valueFormat` names: `currency`,
+ * `count` and `percent`. `string` writes the number as it is.
+ */
+type GenUIValueFormatType = 'currency' | 'count' | 'percent' | 'string';
+
+/**
+ * Older names that models and prompts still send. `number` is `count`, `percentage` is `percent`.
+ * The CHART takes them, and renders them as the Blade name.
+ */
+type GenUIValueFormatTypeAlias = 'number' | 'percentage';
+
+type ChartValueFormatter = {
+  type?: GenUIValueFormatType | GenUIValueFormatTypeAlias;
+  currency?: string;
+  suffix?: string;
+};
+
+/** The Blade name of a format type: `number` is `count`, `percentage` is `percent`. */
+const normalizeValueFormatType = (type: unknown): GenUIValueFormatType | undefined => {
+  if (type === 'number') return 'count';
+  if (type === 'percentage') return 'percent';
+  if (type === 'currency' || type === 'count' || type === 'percent' || type === 'string') {
+    return type;
+  }
+  return undefined;
+};
+
+/** Whole-number Y ticks for a `count` chart whose values are all whole: 0, 1, 2, 3, not 0.75. */
 const isWholeNumberChart = (rows: ChartRow[], keys: string[], type?: string): boolean =>
-  type === 'number' &&
+  normalizeValueFormatType(type) === 'count' &&
   rows.every((row) =>
     keys.every((key) => typeof row[key] !== 'number' || Number.isInteger(row[key])),
   );
@@ -196,12 +224,6 @@ const resolveYLabelPlacement = (yLabelPlacement: unknown): ChartYLabelPlacement 
 const shouldShowBarList = (slices: number, width: number): boolean =>
   slices >= BAR_LIST_MIN_SLICES || (width > 0 && width < BAR_LIST_MAX_WIDTH);
 
-type ChartValueFormatter = {
-  type?: 'currency' | 'percentage' | 'number' | 'string';
-  currency?: string;
-  suffix?: string;
-};
-
 /** A share with 1 decimal and a % sign: 57.5%, 100.0%. */
 const formatShare = formatPercentFull;
 
@@ -209,9 +231,10 @@ const formatShare = formatPercentFull;
  * The full value, for the tooltip and the bar list. The axis ticks stay compact.
  * - INR: ₹1,23,450.00. Indian grouping and 2 decimals. Other currencies: 2 decimals, in the
  *   format `formatNumber` gives that currency.
- * - `number`: 1,23,450. Indian grouping. A value with a fraction keeps up to 2 decimals.
- * - `percentage`: 12.5%. 1 decimal.
- * The suffix is added as on the ticks. A `percentage` with the suffix "%" does not get it twice.
+ * - `count` (or `number`): 1,23,450. Indian grouping. A value with a fraction keeps up to 2
+ *   decimals.
+ * - `percent` (or `percentage`): 12.5%. 1 decimal.
+ * The suffix is added as on the ticks. A `percent` with the suffix "%" does not get it twice.
  */
 const formatChartValue = (
   value: number | string,
@@ -219,9 +242,10 @@ const formatChartValue = (
 ): string => {
   const num = typeof value === 'string' ? parseFloat(value) : value;
   if (Number.isNaN(num)) return String(value);
-  const { type, currency, suffix } = valueFormatter;
+  const { currency, suffix } = valueFormatter;
+  const type = normalizeValueFormatType(valueFormatter.type);
   const withSuffix = (text: string): string => `${text}${suffix ?? ''}`;
-  if (type === 'percentage') {
+  if (type === 'percent') {
     const text = formatChartValueFull(num, { type: 'percent' });
     return suffix === '%' ? text : withSuffix(text);
   }
@@ -302,5 +326,13 @@ export {
   getXLabelStep,
   isDateAxis,
   isWholeNumberChart,
+  normalizeValueFormatType,
 };
-export type { BarListRow, ChartRow, ChartStep, ChartValueFormatter };
+export type {
+  BarListRow,
+  ChartRow,
+  ChartStep,
+  ChartValueFormatter,
+  GenUIValueFormatType,
+  GenUIValueFormatTypeAlias,
+};

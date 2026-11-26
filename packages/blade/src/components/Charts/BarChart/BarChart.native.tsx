@@ -18,6 +18,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import { useWarnWebOnlyChartProps } from '../CommonChartComponents/chartDisplayOptions';
 import { BarChartContext } from './BarChartContext';
 import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
@@ -183,9 +184,16 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   layout = 'horizontal',
   data = [],
   testID,
+  version,
+  valueFormat,
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // `version="v2"`, `valueFormat` and the display props of the children work on web only.
+  useWarnWebOnlyChartProps(
+    { version, hasValueFormat: valueFormat !== undefined, children },
+    'ChartBarWrapper',
+  );
   const [size, setSize] = useState<{ width: number; height: number }>({
     width: 0,
     height: 0,

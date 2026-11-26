@@ -12,7 +12,6 @@ export type {
   ChartLegendPlacement,
   ChartDonutLegendPlacement,
   ChartLegendGap,
-  ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartVersion,
   ChartVersionProps,
