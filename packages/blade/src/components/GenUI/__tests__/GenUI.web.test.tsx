@@ -486,15 +486,14 @@ describe('<GenUI />', () => {
         },
       ];
 
-      const { getByText, getAllByText } = renderWithTheme(
+      const { getByText } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
 
       expect(getByText('John Doe')).toBeInTheDocument();
-      // A long value (an email here) also renders a hidden copy that sets its width.
-      expect(getAllByText('jane@example.com')[0]).toBeInTheDocument();
+      expect(getByText('jane@example.com')).toBeInTheDocument();
     });
 
     it('should render table with amount cells', () => {
@@ -1636,15 +1635,14 @@ describe('<GenUI />', () => {
         },
       ];
 
-      const { getByText, getAllByText } = renderWithTheme(
+      const { getByText } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
 
       expect(getByText('Link ID')).toBeInTheDocument();
-      // A long value (an id here) also renders a hidden copy that sets its width.
-      expect(getAllByText('plink_SP2rJtPRhJ5gZu')[0]).toBeInTheDocument();
+      expect(getByText('plink_SP2rJtPRhJ5gZu')).toBeInTheDocument();
       expect(getByText('Status')).toBeInTheDocument();
       expect(getByText('Created')).toBeInTheDocument();
     });
@@ -3564,15 +3562,14 @@ describe('<GenUI />', () => {
           },
         ];
 
-        const { getByText, getAllByText } = renderWithTheme(
+        const { getByText } = renderWithTheme(
           <GenUIProvider>
             <GenUISchemaRenderer components={components} />
           </GenUIProvider>,
         );
 
         expect(getByText('Email')).toBeInTheDocument();
-        // A long value (an email here) also renders a hidden copy that sets its width.
-        expect(getAllByText('test@example.com')[0]).toBeInTheDocument();
+        expect(getByText('test@example.com')).toBeInTheDocument();
       });
     });
 

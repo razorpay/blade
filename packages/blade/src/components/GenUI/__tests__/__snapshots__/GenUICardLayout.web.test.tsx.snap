@@ -542,6 +542,10 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   padding-inline-end: 2px;
 }
 
+.c44.c44.c44.c44.c44::before {
+  content: attr(data-value);
+}
+
 .c9.c9.c9.c9.c9 {
   width: 100%;
   display: -webkit-box;
@@ -1262,9 +1266,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          pay_Rk3vXXXXXXZp2Lw
-                                                        </span>
+                                                          data-value="pay_Rk3vXXXXXXZp2Lw"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -1309,9 +1312,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          customer.name.longhandle@examplecompany.co.in
-                                                        </span>
+                                                          data-value="customer.name.longhandle@examplecompany.co.in"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -1459,9 +1461,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          pay_Rk3vXXXXXXAb12C
-                                                        </span>
+                                                          data-value="pay_Rk3vXXXXXXAb12C"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -1506,9 +1507,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          another.customer@example.com
-                                                        </span>
+                                                          data-value="another.customer@example.com"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -1656,9 +1656,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          pay_Rk3vXXXXXXCd34E
-                                                        </span>
+                                                          data-value="pay_Rk3vXXXXXXCd34E"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -1703,9 +1702,8 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                         <span
                                                           aria-hidden="true"
                                                           class="c44"
-                                                        >
-                                                          third@example.com
-                                                        </span>
+                                                          data-value="third@example.com"
+                                                        />
                                                       </span>
                                                     </p>
                                                   </div>
@@ -2273,6 +2271,10 @@ exports[`GenUI card layout snapshots renders detailsList 1`] = `
   padding-inline-end: 18px;
 }
 
+.c38.c38.c38.c38.c38::before {
+  content: attr(data-value);
+}
+
 .c30.c30.c30.c30.c30 {
   text-align: end;
 }
@@ -2578,9 +2580,8 @@ exports[`GenUI card layout snapshots renders detailsList 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c38"
-                                          >
-                                            cust_Rk3vXXXXXXHj7Ka
-                                          </span>
+                                            data-value="cust_Rk3vXXXXXXHj7Ka"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -2701,9 +2702,8 @@ exports[`GenUI card layout snapshots renders detailsList 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c38"
-                                          >
-                                            customer.name.longhandle@examplecompany.co.in
-                                          </span>
+                                            data-value="customer.name.longhandle@examplecompany.co.in"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -2824,9 +2824,8 @@ exports[`GenUI card layout snapshots renders detailsList 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c38"
-                                          >
-                                            https://www.example.com/store/checkout/thank-you
-                                          </span>
+                                            data-value="https://www.example.com/store/checkout/thank-you"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -3504,6 +3503,10 @@ exports[`GenUI card layout snapshots renders record 1`] = `
   padding-inline-end: 22px;
 }
 
+.c25.c25.c25.c25.c25::before {
+  content: attr(data-value);
+}
+
 .c52.c52.c52.c52.c52 {
   display: block;
   height: 0;
@@ -3512,6 +3515,10 @@ exports[`GenUI card layout snapshots renders record 1`] = `
   white-space: normal;
   word-break: break-all;
   padding-inline-end: 18px;
+}
+
+.c52.c52.c52.c52.c52::before {
+  content: attr(data-value);
 }
 
 .c51.c51.c51.c51.c51 {
@@ -3779,9 +3786,8 @@ exports[`GenUI card layout snapshots renders record 1`] = `
                                     <span
                                       aria-hidden="true"
                                       class="c25"
-                                    >
-                                      pay_Rk3vXXXXXXZp2Lw
-                                    </span>
+                                      data-value="pay_Rk3vXXXXXXZp2Lw"
+                                    />
                                   </span>
                                 </span>
                               </p>
@@ -4146,9 +4152,8 @@ exports[`GenUI card layout snapshots renders record 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c52"
-                                          >
-                                            customer.name.longhandle@okexamplebank
-                                          </span>
+                                            data-value="customer.name.longhandle@okexamplebank"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -4269,9 +4274,8 @@ exports[`GenUI card layout snapshots renders record 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c52"
-                                          >
-                                            order_Rk3vXXXXXXAbC12
-                                          </span>
+                                            data-value="order_Rk3vXXXXXXAbC12"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -4881,6 +4885,10 @@ exports[`GenUI card layout snapshots renders sections 1`] = `
   padding-inline-end: 22px;
 }
 
+.c25.c25.c25.c25.c25::before {
+  content: attr(data-value);
+}
+
 .c52.c52.c52.c52.c52 {
   display: block;
   height: 0;
@@ -4889,6 +4897,10 @@ exports[`GenUI card layout snapshots renders sections 1`] = `
   white-space: normal;
   word-break: break-all;
   padding-inline-end: 18px;
+}
+
+.c52.c52.c52.c52.c52::before {
+  content: attr(data-value);
 }
 
 .c50.c50.c50.c50.c50 {
@@ -5156,9 +5168,8 @@ exports[`GenUI card layout snapshots renders sections 1`] = `
                                     <span
                                       aria-hidden="true"
                                       class="c25"
-                                    >
-                                      rfnd_Rk3vXXXXXXQw9Ty
-                                    </span>
+                                      data-value="rfnd_Rk3vXXXXXXQw9Ty"
+                                    />
                                   </span>
                                 </span>
                               </p>
@@ -5480,9 +5491,8 @@ exports[`GenUI card layout snapshots renders sections 1`] = `
                                           <span
                                             aria-hidden="true"
                                             class="c52"
-                                          >
-                                            pay_Rk3vXXXXXXZp2Lw
-                                          </span>
+                                            data-value="pay_Rk3vXXXXXXZp2Lw"
+                                          />
                                         </span>
                                       </div>
                                     </div>
@@ -6118,6 +6128,10 @@ exports[`GenUI card layout snapshots renders stackedSettlement 1`] = `
   padding-inline-end: 22px;
 }
 
+.c25.c25.c25.c25.c25::before {
+  content: attr(data-value);
+}
+
 .c44.c44.c44.c44.c44 {
   display: block;
   height: 0;
@@ -6126,6 +6140,10 @@ exports[`GenUI card layout snapshots renders stackedSettlement 1`] = `
   white-space: normal;
   word-break: break-all;
   padding-inline-end: 18px;
+}
+
+.c44.c44.c44.c44.c44::before {
+  content: attr(data-value);
 }
 
 .c42.c42.c42.c42.c42 {
@@ -6382,9 +6400,8 @@ exports[`GenUI card layout snapshots renders stackedSettlement 1`] = `
                                     <span
                                       aria-hidden="true"
                                       class="c25"
-                                    >
-                                      setl_Rk3vXXXXXXLm4Np
-                                    </span>
+                                      data-value="setl_Rk3vXXXXXXLm4Np"
+                                    />
                                   </span>
                                 </span>
                               </p>
@@ -6542,9 +6559,8 @@ exports[`GenUI card layout snapshots renders stackedSettlement 1`] = `
                                             <span
                                               aria-hidden="true"
                                               class="c44"
-                                            >
-                                              UTIBR72026111200481516
-                                            </span>
+                                              data-value="UTIBR72026111200481516"
+                                            />
                                           </span>
                                         </div>
                                       </div>

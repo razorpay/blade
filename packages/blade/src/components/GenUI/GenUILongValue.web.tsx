@@ -90,6 +90,10 @@ const Sizer = styled.span<{ $iconRoomPx: number }>`
   white-space: normal;
   word-break: break-all;
   padding-inline-end: ${({ $iconRoomPx }) => $iconRoomPx + SLACK_PX}px;
+  /* The value comes from a data attribute, not a text node, so a text query finds it once. */
+  &::before {
+    content: attr(data-value);
+  }
 `;
 
 type MiddleTruncateProps = {
@@ -165,9 +169,7 @@ const MiddleTruncate = ({
   return (
     <Root data-genui-long-value={kind} $maxWidth={maxWidth}>
       <Fit ref={fitRef}>{content}</Fit>
-      <Sizer aria-hidden $iconRoomPx={iconRoom}>
-        {value}
-      </Sizer>
+      <Sizer aria-hidden data-value={value} $iconRoomPx={iconRoom} />
     </Root>
   );
 };

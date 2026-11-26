@@ -44,10 +44,10 @@ const ICON_GAP = 4;
  */
 const roomFor = (chars: number, copyPx = 12): number => chars * 7 + 1 + copyPx + ICON_GAP;
 
-/** The long value box of `value`. Its last child is the hidden copy that holds the whole value. */
+/** The long value box of `value`. Its last child is the hidden sizer that holds the whole value. */
 const longValueOf = (value: string): HTMLElement =>
   Array.from(document.querySelectorAll<HTMLElement>('[data-genui-long-value]')).find(
-    (box) => box.lastElementChild?.textContent === value,
+    (box) => box.lastElementChild?.getAttribute('data-value') === value,
   )!;
 /** What a long value box shows: its first child, without the hidden copy. */
 const shownText = (value: string): HTMLElement =>
