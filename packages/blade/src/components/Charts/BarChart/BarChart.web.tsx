@@ -45,6 +45,7 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -297,6 +298,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   layout = 'horizontal',
   version,
   valueFormat,
+  onActivePointChange,
   testID,
   data = [],
   ...restProps
@@ -505,6 +507,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
         {barChartModifiedChildrens}
         {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
+        {onActivePointChange ? (
+          <ChartActivePointReporter
+            data={data}
+            children={children}
+            seriesComponentId={componentIds.chartBar}
+            chartName="bar"
+            labelAxisId={
+              layout === 'vertical' ? commonComponentIds.chartYAxis : commonComponentIds.chartXAxis
+            }
+            onActivePointChange={onActivePointChange}
+          />
+        ) : null}
       </RechartsBarChart>
     </RechartsResponsiveContainer>
   );

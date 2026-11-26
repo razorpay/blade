@@ -4,6 +4,11 @@ import { Pressable, View } from 'react-native';
 import type { GestureResponderEvent, LayoutChangeEvent } from 'react-native';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
 import {
+  createActivePointBuilder,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
+import { componentId as commonComponentId } from '../CommonChartComponents/tokens';
+import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,
 } from '../CommonChartComponents';
@@ -186,6 +191,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   testID,
   version,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -392,6 +398,29 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     slots.tooltipFormatter,
     activeIndex,
   ]);
+
+  // `onActivePointChange`: the tapped point, with the tooltip's text.
+  useActivePointChange(
+    activeIndex,
+    (index) =>
+      createActivePointBuilder({
+        data,
+        children,
+        valueFormat,
+        labelAxisId:
+          layout === 'vertical' ? commonComponentId.chartYAxis : commonComponentId.chartXAxis,
+        series: visibleBars.map((bar) => {
+          const token = dataColorMapping[bar.dataKey]?.colorToken ?? bar.color;
+          return {
+            dataKey: bar.dataKey,
+            name: bar.name ?? bar.dataKey,
+            color: token ? (getIn(theme.colors, token) as string) : tickColor,
+            colorToken: token,
+          };
+        }),
+      })(index),
+    onActivePointChange,
+  );
 
   return (
     <CommonChartComponentsContext.Provider

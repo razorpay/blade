@@ -21,6 +21,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import {
+  createActivePointBuilder,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
+import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,
 } from '../CommonChartComponents';
@@ -765,6 +769,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   data = [],
   version,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -1317,6 +1322,24 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     slots.tooltipFilterNull,
     activeIndex,
   ]);
+
+  // `onActivePointChange`: the tapped or scrubbed point, with the tooltip's text.
+  useActivePointChange(
+    activeIndex,
+    (index) =>
+      createActivePointBuilder({
+        data,
+        children,
+        valueFormat,
+        series: visibleLines.map((line) => ({
+          dataKey: line.dataKey,
+          name: line.name ?? line.dataKey,
+          color: resolveColor(line.dataKey, line.color),
+          colorToken: dataColorMapping[line.dataKey]?.colorToken ?? line.color,
+        })),
+      })(index),
+    onActivePointChange,
+  );
 
   // Lines eligible for a legend entry — include hidden ones so they can be
   // toggled back on (web parity).

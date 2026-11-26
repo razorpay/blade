@@ -34,6 +34,7 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
@@ -144,6 +145,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   version,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend.
@@ -444,6 +446,15 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               {modifiedChildren}
               {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+              {onActivePointChange ? (
+                <ChartActivePointReporter
+                  data={data ?? []}
+                  children={children}
+                  seriesComponentId={componentIds.ChartArea}
+                  chartName="area"
+                  onActivePointChange={onActivePointChange}
+                />
+              ) : null}
             </RechartsAreaChart>
           </ResponsiveContainer>
         </ChartSurface>

@@ -12,6 +12,8 @@ import {
 } from '~components/Charts/CommonChartComponents';
 import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
+import { Text } from '~components/Typography/Text';
+import type { ChartActivePoint } from '~components/Charts/CommonChartComponents';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -1552,3 +1554,65 @@ LineChartWithBenchmarkAndSinglePoint.storyName = 'Line Chart with Benchmark Line
 LineChartWithSequentialColors.storyName = 'Line Chart with Sequential Colors';
 LineChartWithAxisStyles.storyName = 'Line Chart with Axis Styles';
 LineChartWithValueFormat.storyName = 'Line Chart with Value Format';
+
+const settledPerDay = [
+  { day: '1 Nov', settled: 538400 },
+  { day: '2 Nov', settled: 590200 },
+  { day: '3 Nov', settled: 612800 },
+  { day: '4 Nov', settled: 655100 },
+  { day: '5 Nov', settled: 742900 },
+  { day: '6 Nov', settled: 810300 },
+  { day: '7 Nov', settled: 701500 },
+  { day: '8 Nov', settled: 788900 },
+  { day: '9 Nov', settled: 905600 },
+  { day: '10 Nov', settled: 872300 },
+];
+
+/**
+ * `onActivePointChange`: the chart reports the point under the pointer, a tap or the arrow keys.
+ * Here a headline above the chart shows it, with no tooltip. At rest, the headline shows the
+ * latest value. The point has the same text as the chart: `valueFormat` here. Leave out
+ * `ChartTooltip`: the active dot still shows on the line.
+ */
+export const LineChartReadout: StoryFn<typeof ChartLine> = () => {
+  const [point, setPoint] = React.useState<ChartActivePoint | null>(null);
+  const latest = settledPerDay[settledPerDay.length - 1];
+  // A row with no value has no item: the headline shows a dash.
+  const headline = point
+    ? point.items[0]?.formattedValue ?? '–'
+    : new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 2,
+      }).format(latest.settled);
+  return (
+    <ChartsWrapper>
+      <Box width="360px" display="flex" flexDirection="column" gap="spacing.3">
+        <Box>
+          <Text size="small" color="surface.text.gray.muted">
+            {point ? point.formattedLabel : `${latest.day} · latest`}
+          </Text>
+          <Heading size="large">{headline}</Heading>
+        </Box>
+        <Box width="100%" height="240px">
+          <ChartLineWrapper
+            data={settledPerDay}
+            version="v2"
+            valueFormat={{ type: 'currency', currency: 'INR' }}
+            onActivePointChange={setPoint}
+          >
+            <ChartCartesianGrid />
+            <ChartXAxis dataKey="day" />
+            <ChartYAxis />
+            <ChartLine dataKey="settled" name="Settled" />
+          </ChartLineWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartReadout.storyName = 'Readout';
+LineChartReadout.parameters = {
+  controls: { disable: true },
+};

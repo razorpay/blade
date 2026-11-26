@@ -25,6 +25,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartActivePointReporter } from '../CommonChartComponents/ChartActivePointReporter.web';
 import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import {
   getChartMargin,
@@ -254,6 +255,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   version,
   valueFormat,
+  onActivePointChange,
   testID,
   data,
   ...restProps
@@ -614,6 +616,15 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 {lineChartModifiedChildrens}
                 {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+                {onActivePointChange ? (
+                  <ChartActivePointReporter
+                    data={data ?? []}
+                    children={children}
+                    seriesComponentId={componentIds.ChartLine}
+                    chartName="line"
+                    onActivePointChange={onActivePointChange}
+                  />
+                ) : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>
           </ChartSurface>

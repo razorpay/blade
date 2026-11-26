@@ -7,6 +7,7 @@ import type {
   ChartLegendProps,
   ChartTooltipProps,
   ChartVersionProps,
+  ChartActivePointProps,
 } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
 import type { ChartValueFormat } from '../utils/chartValueFormat';
@@ -72,7 +73,8 @@ type ChartDonutWrapperProps = {
    */
   valueFormat?: ChartValueFormat;
 } & BoxProps &
-  ChartVersionProps;
+  ChartVersionProps &
+  ChartActivePointProps;
 
 type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;

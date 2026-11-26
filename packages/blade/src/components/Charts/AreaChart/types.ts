@@ -1,6 +1,7 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
 import type {
   ChartWrapperDisplayProps,
+  ChartActivePointProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
@@ -112,7 +113,8 @@ type ChartAreaWrapperProps = {
    */
   data: data[];
 } & BoxProps &
-  ChartWrapperDisplayProps;
+  ChartWrapperDisplayProps &
+  ChartActivePointProps;
 
 type ChartColorGradientProps = {
   index: number;

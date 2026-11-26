@@ -48,6 +48,47 @@ type data = {
   [key: string]: string | number | null;
 };
 
+type ChartActivePointItem = {
+  dataKey: string;
+  name: string;
+  value: number | string | undefined;
+  /**
+   * The value as the chart writes it: the tooltip `formatter`, else `valueFormat`, else raw. `''`
+   * for a series with no value, kept with `filterNull={false}`.
+   */
+  formattedValue: string;
+  /** The CSS colour of the series. */
+  color: string;
+  /** The series colour as a chart colour token, as ChartLine, ChartBar and ChartDonutCell take it. */
+  colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+};
+
+/** The point a pointer, a tap or the arrow keys make active. */
+type ChartActivePoint = {
+  /** The index of the data row. On a donut, the index of the slice. */
+  index: number;
+  /** The raw label: the X value (Y on a horizontal bar chart), or the slice name. */
+  label: string;
+  formattedLabel: string;
+  items: ChartActivePointItem[];
+};
+
+type ChartActivePointProps = {
+  /**
+   * Called when the active point changes, and with null when the pointer leaves. Not on every
+   * move. Works in `v1` and `v2`, web and native. Use it to show the value in your own UI, for
+   * example a headline above the chart. Leave out `ChartTooltip` to show no tooltip.
+   *
+   * The text follows the `ChartTooltip` `formatter` and `labelFormatter`, with the arguments the
+   * tooltip gives them. A custom `ChartTooltip` `content` is not mirrored. A series with no value
+   * at the point is left out, as in the tooltip; with `filterNull={false}` it stays with
+   * `formattedValue: ''`. On a donut, `label` is the raw slice name and `labelFormatter` writes
+   * `formattedLabel`. On the line, area, bar and donut wrappers only: funnel and sankey do not
+   * take it.
+   */
+  onActivePointChange?: (point: ChartActivePoint | null) => void;
+};
+
 /**
  * The look of a chart. `v1` renders as before, and the display options have no effect.
  * `v2` is the new look: a tight Y label column, fixed spacing, X labels that thin out to fit.
@@ -86,7 +127,7 @@ type ChartAreaWrapperProps = {
   children?: React.ReactNode;
   colorTheme?:  'categorical';
   data: data[];
-} & ChartWrapperDisplayProps & BoxProps;
+} & ChartWrapperDisplayProps & ChartActivePointProps & BoxProps;
 
 type ChartReferenceLineProps = {
   /**

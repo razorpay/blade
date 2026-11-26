@@ -22,6 +22,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
+import {
+  createActivePointBuilder,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
 import { monotoneInterpolate } from '../utils/nullBridgeUtils';
 import {
   CommonChartComponentsContext,
@@ -654,6 +658,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   testID,
   version,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }) => {
   const { theme, colorScheme } = useTheme();
@@ -749,6 +754,32 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const visibleAreas = useMemo(
     () => allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey)),
     [allAreas, selectedKeys],
+  );
+
+  // `onActivePointChange`: the tapped or scrubbed point, with the tooltip's text.
+  useActivePointChange(
+    activeIndex,
+    (index) =>
+      createActivePointBuilder({
+        data,
+        children,
+        valueFormat,
+        series: visibleAreas.map((area) => {
+          const mappingEntry = dataColorMapping[area.dataKey];
+          // The same shade as the area's stroke: a custom colour reports its highest shade.
+          const token =
+            mappingEntry?.isCustomColor && mappingEntry.colorToken
+              ? getHighestColorInRange({ colorToken: mappingEntry.colorToken })
+              : mappingEntry?.colorToken;
+          return {
+            dataKey: area.dataKey,
+            name: area.name ?? area.dataKey,
+            color: getIn(theme.colors, token ?? 'surface.text.gray.muted') as string,
+            colorToken: token,
+          };
+        }),
+      })(index),
+    onActivePointChange,
   );
 
   const secondaryLabelMap = useMemo(() => {

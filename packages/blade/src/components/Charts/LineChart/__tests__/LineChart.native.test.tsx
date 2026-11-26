@@ -485,6 +485,37 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(getByTestId('legend-reference-band-refunds')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
+  it('reports the tapped point with onActivePointChange, and null on a re-tap', () => {
+    const onActivePointChange = jest.fn();
+    const { getByTestId } = renderWithTheme(
+      <ChartLineWrapper
+        data={mockData}
+        testID="readout"
+        valueFormat={{ type: 'currency', currency: 'INR' }}
+        onActivePointChange={onActivePointChange}
+      >
+        <ChartXAxis dataKey="name" />
+        <ChartLine dataKey="sales" name="Sales" />
+      </ChartLineWrapper>,
+    );
+    const surface = getByTestId('readout-layout');
+    fireLayout(surface);
+    const at = { nativeEvent: { locationX: 40, locationY: 100 } };
+    fireEvent(surface, 'touchStart', at);
+    fireEvent(surface, 'touchEnd', at);
+    expect(onActivePointChange).toHaveBeenCalledTimes(1);
+    const point = onActivePointChange.mock.calls[0][0];
+    expect(point.label).toBe(mockData[point.index].name);
+    expect(point.items[0]).toMatchObject({
+      dataKey: 'sales',
+      name: 'Sales',
+      value: mockData[point.index].sales,
+    });
+    expect(point.items[0].formattedValue).toMatch(/^₹/);
+    fireEvent(surface, 'touchStart', at);
+    fireEvent(surface, 'touchEnd', at);
+    expect(onActivePointChange).toHaveBeenLastCalledWith(null);
+  });
 });
 
 // Last in the file: each render takes a chart id, and the snapshots above keep theirs.

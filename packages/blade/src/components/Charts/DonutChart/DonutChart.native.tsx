@@ -11,6 +11,10 @@ import {
   isSequentialColor,
   totalChartColors,
 } from '../utils';
+import {
+  createActivePointBuilder,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -197,6 +201,7 @@ const ChartDonutWrapper = ({
   testID,
   version,
   valueFormat,
+  onActivePointChange,
   ...restProps
 }: ChartDonutWrapperProps & TestID & DataAnalyticsAttribute): React.ReactElement => {
   const { theme } = useTheme();
@@ -432,6 +437,25 @@ const ChartDonutWrapper = ({
   const legendAlign = slots.legend?.align ?? 'right';
 
   const activeSlice = activeIndex !== null ? slices[activeIndex] : undefined;
+
+  // `onActivePointChange`: the tapped slice, by its index in the donut data. Its name is the
+  // label, and its value is the one item.
+  useActivePointChange(
+    activeSlice?.originalIndex,
+    (index) => {
+      const name = String(getItemName(donutData[index], nameKey) ?? index);
+      const colorToken = dataColorMapping[sanitizeString(name)]?.colorToken ?? themeColors[index];
+      // The slice name is the raw label. ChartTooltip `labelFormatter` writes `formattedLabel`.
+      return createActivePointBuilder({
+        data: donutData,
+        children,
+        valueFormat,
+        getLabel: () => name,
+        series: [{ dataKey: String(dataKey), name, color: activeSlice?.fill ?? '', colorToken }],
+      })(index);
+    },
+    onActivePointChange,
+  );
   const tooltipInfo = useMemo(() => {
     if (!slots.hasTooltip || !activeSlice) return undefined;
     const rawLabel = activeSlice.name != null ? String(activeSlice.name) : '';

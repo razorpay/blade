@@ -18,7 +18,11 @@ import {
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
-import type { ChartDonutLegendPlacement, DataColorMapping } from '../CommonChartComponents/types';
+import type {
+  ChartActivePoint,
+  ChartDonutLegendPlacement,
+  DataColorMapping,
+} from '../CommonChartComponents/types';
 import {
   countChildrenOf,
   readChildDisplayProps,
@@ -48,6 +52,13 @@ import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { getDonutV2OuterRadius } from './donutLayout';
+import {
+  createActivePointBuilder,
+  getChildProps,
+  useActivePointChange,
+} from '../CommonChartComponents/activePoint';
+import { useActiveIndex } from '../CommonChartComponents/ChartActivePointReporter.web';
+import { getChartColor } from '../CommonChartComponents/CommonChartComponents.web';
 
 // Context to share container dimensions for responsive radius calculation
 type DonutContainerContextType = {
@@ -114,12 +125,52 @@ const getItemName = (
   return item[nameKey];
 };
 
+/**
+ * Renders nothing. Inside the donut, it reports the active slice: its name is the raw label, and
+ * its value is the one item. Rendered only when `onActivePointChange` is set.
+ */
+const DonutActivePointReporter = ({
+  children,
+  onActivePointChange,
+}: {
+  children: React.ReactNode;
+  onActivePointChange: (point: ChartActivePoint | null) => void;
+}): null => {
+  const { theme } = useTheme();
+  const { dataColorMapping, valueFormat } = useCommonChartComponentsContext();
+  const donut = getChildProps<ChartDonutProps>(children, componentId.chartDonut);
+  const data = (donut?.data ?? []) as ReadonlyArray<Record<string, unknown>>;
+  const buildPoint = (index: number): ChartActivePoint | null => {
+    const row = data[index];
+    if (!row || !donut) return null;
+    const name = String(getItemName(row, donut.nameKey) ?? index);
+    const dataKey = String(donut.dataKey);
+    // The token the slice is filled with: its ChartDonutCell colour or its theme colour. Not the
+    // intensity-mapped tooltip token.
+    const colorToken =
+      dataColorMapping?.[sanitizeString(name)]?.colorToken ??
+      getChartColor(dataKey, name, dataColorMapping ?? {}, 'donut');
+    const color = getIn(theme.colors, colorToken) as string;
+    // The slice name is the raw label. ChartTooltip `labelFormatter` writes `formattedLabel`.
+    return createActivePointBuilder({
+      data,
+      children,
+      valueFormat,
+      getLabel: () => name,
+      series: [{ dataKey, name, color, colorToken }],
+    })(index);
+  };
+  useActivePointChange(useActiveIndex(data), buildPoint, onActivePointChange);
+  return null;
+};
+
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   content,
   testID,
   valueFormat,
   version = 'v1',
+  onActivePointChange,
   ...restProps
 }) => {
   const { theme } = useTheme();
@@ -305,6 +356,12 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           <RechartsResponsiveContainer width="100%" height="100%">
             <RechartsPieChart>
               {children}
+              {onActivePointChange ? (
+                <DonutActivePointReporter
+                  children={children}
+                  onActivePointChange={onActivePointChange}
+                />
+              ) : null}
               {isLabelPresentInContent && (
                 <Label
                   position="center"
