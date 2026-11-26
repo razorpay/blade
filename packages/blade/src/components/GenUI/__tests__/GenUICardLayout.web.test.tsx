@@ -55,13 +55,13 @@ const roomFor = (chars: number, copyPx = 12): number => chars * 7 + 1 + copyPx +
 const longValueOf = (value: string): HTMLElement =>
   Array.from(document.querySelectorAll<HTMLElement>('[data-genui-long-value]')).find(
     (box) => box.lastElementChild?.textContent === value,
-  ) as HTMLElement;
+  )!;
 /** What a long value box shows: its first child, without the hidden copy. */
 const shownText = (value: string): HTMLElement =>
   longValueOf(value).firstElementChild as HTMLElement;
 /** The focusable text of a cut long value. Null when the value shows whole. */
-const longValueText = (value: string): HTMLElement =>
-  longValueOf(value).querySelector('span[tabindex="0"]') as HTMLElement;
+const longValueText = (value: string): HTMLElement | null =>
+  longValueOf(value).querySelector<HTMLElement>('span[tabindex="0"]');
 
 /** jsdom has no layout. Every box measures `width`. */
 const setBoxWidth = (width: number): void => {
