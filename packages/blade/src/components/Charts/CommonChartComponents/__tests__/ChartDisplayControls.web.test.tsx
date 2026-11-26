@@ -55,13 +55,7 @@ const gridProps = ({
 
 const renderChart = (
   kind: Kind,
-  {
-    valueFormat,
-    yLabelPlacement,
-    legendPlacement,
-    legendGap,
-    ...gridDisplay
-  }: DisplayInput = {},
+  { valueFormat, yLabelPlacement, legendPlacement, legendGap, ...gridDisplay }: DisplayInput = {},
   { strokeStyle = 'solid' }: { strokeStyle?: 'solid' | 'dashed' | 'dotted' } = {},
   version: 'v1' | 'v2' = 'v2',
 ): HTMLElement => {
@@ -70,11 +64,7 @@ const renderChart = (
     <ChartCartesianGrid key="grid" {...gridProps(gridDisplay)} />,
     <ChartXAxis key="x" dataKey="month" />,
     <ChartYAxis key="y" labelPlacement={yLabelPlacement} />,
-    <ChartLegend
-      key="legend"
-      placement={legendPlacement}
-      gap={legendGap}
-    />,
+    <ChartLegend key="legend" placement={legendPlacement} gap={legendGap} />,
   ];
   const display = { version, valueFormat };
   if (kind === 'line') {
@@ -672,7 +662,12 @@ describe('horizontal bar chart (layout vertical)', () => {
   }: DisplayInput = {}): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartBarWrapper data={categoryData} layout="vertical" version="v2" valueFormat={valueFormat}>
+        <ChartBarWrapper
+          data={categoryData}
+          layout="vertical"
+          version="v2"
+          valueFormat={valueFormat}
+        >
           {gridDisplay.showBorder ? <ChartCartesianGrid {...gridProps(gridDisplay)} /> : null}
           <ChartXAxis type="number" />
           <ChartYAxis type="category" dataKey="method" labelPlacement={yLabelPlacement} />
