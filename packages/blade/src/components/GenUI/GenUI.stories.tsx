@@ -128,7 +128,7 @@ const schema = {
               chartType: 'pie',
               variant: 'full',
               valueFormatter: {
-                type: 'percentage',
+                type: 'percent',
               },
               xAxis: 'segment',
               data: [

@@ -43,6 +43,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import { useWarnWebOnlyChartProps } from '../CommonChartComponents/chartDisplayOptions';
 import { componentIds } from './componentIds';
 import type { ChartAreaProps, ChartAreaWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -655,11 +656,17 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   data = [],
   testID,
+  version,
   valueFormat,
   onActivePointChange,
   ...restProps
 }) => {
   const { theme, colorScheme } = useTheme();
+  // `version="v2"`, `valueFormat` and the display props of the children work on web only.
+  useWarnWebOnlyChartProps(
+    { version, hasValueFormat: valueFormat !== undefined, children },
+    'ChartAreaWrapper',
+  );
   const isDarkMode = colorScheme === 'dark';
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);

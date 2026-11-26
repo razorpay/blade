@@ -15,7 +15,6 @@ export type {
   ChartActivePoint,
   ChartActivePointItem,
   ChartActivePointProps,
-  ChartLegendDisplayProps,
   ChartWrapperDisplayProps,
   ChartVersion,
   ChartVersionProps,

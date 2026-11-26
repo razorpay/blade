@@ -167,15 +167,10 @@ describe('v2 axis polish', () => {
   const render = (showBorder: boolean, label?: string, yLabelPlacement?: 'overlap'): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper
-          data={monthly}
-          version="v2"
-          showBorder={showBorder}
-          yLabelPlacement={yLabelPlacement}
-        >
-          <ChartCartesianGrid />
+        <ChartLineWrapper data={monthly} version="v2">
+          <ChartCartesianGrid showBorder={showBorder} />
           <ChartXAxis dataKey="month" label={label} />
-          <ChartYAxis />
+          <ChartYAxis labelPlacement={yLabelPlacement} />
           <ChartLine dataKey="amount" />
         </ChartLineWrapper>
       </Box>,
@@ -242,8 +237,8 @@ describe('v2 gridlines', () => {
   const render = (gridlineWidth?: 'thin' | 'thinner'): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} version="v2" gridlineWidth={gridlineWidth}>
-          <ChartCartesianGrid />
+        <ChartLineWrapper data={monthly} version="v2">
+          <ChartCartesianGrid lineWidth={gridlineWidth} />
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
           <ChartLine dataKey="amount" />
@@ -269,14 +264,14 @@ describe('v2 gridlines', () => {
   });
 });
 
-describe('yLabelPlacement="right"', () => {
+describe('labelPlacement="right"', () => {
   const render = (): HTMLElement =>
     renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper data={monthly} version="v2" yLabelPlacement="right">
+        <ChartLineWrapper data={monthly} version="v2">
           <ChartCartesianGrid />
           <ChartXAxis dataKey="month" />
-          <ChartYAxis />
+          <ChartYAxis labelPlacement="right" />
           <ChartLine dataKey="amount" />
         </ChartLineWrapper>
       </Box>,

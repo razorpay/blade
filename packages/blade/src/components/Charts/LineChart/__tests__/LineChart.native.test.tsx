@@ -517,3 +517,45 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(onActivePointChange).toHaveBeenLastCalledWith(null);
   });
 });
+
+// Last in the file: each render takes a chart id, and the snapshots above keep theirs.
+describe('<ChartLineWrapper /> web-only props (native)', () => {
+  it('warns in development that the v2 display options work on web only', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const { toJSON } = renderWithTheme(
+      <ChartLineWrapper data={mockData} version="v2" valueFormat={{ type: 'count' }}>
+        <ChartCartesianGrid showBorder lineWidth="thin" />
+        <ChartYAxis labelPlacement="overlap" />
+        <ChartLegend placement="top" gap="spacing.7" />
+        <ChartLine dataKey="sales" />
+      </ChartLineWrapper>,
+    );
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'version="v2", valueFormat, ChartCartesianGrid lineWidth, ChartCartesianGrid showBorder, ChartYAxis labelPlacement, ChartLegend placement, ChartLegend gap works on web only',
+      ),
+    );
+    // The native chart draws as with none of them.
+    const plain = renderWithTheme(
+      <ChartLineWrapper data={mockData}>
+        <ChartCartesianGrid />
+        <ChartYAxis />
+        <ChartLegend />
+        <ChartLine dataKey="sales" />
+      </ChartLineWrapper>,
+    );
+    expect(JSON.stringify(toJSON())).toBe(JSON.stringify(plain.toJSON()));
+    warn.mockRestore();
+  });
+
+  it('does not warn with no web-only prop', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    renderWithTheme(
+      <ChartLineWrapper data={mockData} version="v1">
+        <ChartLine dataKey="sales" />
+      </ChartLineWrapper>,
+    );
+    expect(warn).not.toHaveBeenCalledWith(expect.stringContaining('works on web only'));
+    warn.mockRestore();
+  });
+});

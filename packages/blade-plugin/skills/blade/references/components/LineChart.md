@@ -149,7 +149,9 @@ type ChartActivePointProps = {
 /**
  * The look of a chart. `v1` renders as before, and the display options have no effect.
  * `v2` is the new look: a tight Y label column, fixed spacing, X labels that thin out to fit.
- * The display options apply with `v2` only. Web only: the native charts ignore them.
+ * The display options sit on the children and apply with `v2` only: `lineWidth` and
+ * `showBorder` on `ChartCartesianGrid`, `labelPlacement` on `ChartYAxis`, `placement` and `gap`
+ * on `ChartLegend`. Web only: the native charts ignore them and warn in development.
  */
 type ChartVersion = 'v1' | 'v2';
 
@@ -168,55 +170,15 @@ type ChartValueFormat = {
   currency?: string;
 };
 
-type ChartLegendDisplayProps = {
-  /**
-   * Where the legend sits. On a donut, `left` and `right` put it beside the ring.
-   * @default 'bottom'
-   */
-  legendPlacement?: 'top' | 'bottom';
-  /**
-   * Undefined is auto: a `ChartLegend` child shows, even for one series. With no `ChartLegend`
-   * child, the chart adds a legend for 2 or more series (or donut slices) and none for one.
-   * `true` always shows a legend, and adds a `ChartLegend` when there is none. `false` never does.
-   */
-  showLegend?: boolean;
-  /**
-   * The gap between the legend and the nearest chart element.
-   * @default 'spacing.5'
-   */
-  legendGap?: ChartLegendGap;
-};
-
-/** Display options. They apply with `version="v2"` only, except `valueFormat`. */
+/** The wrapper props that are not part of a child. */
 type ChartWrapperDisplayProps = {
-  /**
-   * A line on the left, the right and the bottom of the plot, in the gridline colour and width.
-   * With no border, the bottom gridline is the baseline.
-   * @default false
-   */
-  showBorder?: boolean;
-  /**
-   * Where the Y labels sit: a column `left` or `right` of the plot, or `overlap` inside the plot.
-   * `overlap` with `showBorder` shows as `left`.
-   * A bar chart with `layout="vertical"` always takes `left`.
-   * @default 'left'
-   */
-  yLabelPlacement?: 'left' | 'right' | 'overlap';
-  /** @default true */
-  yGridlines?: boolean;
-  /**
-   * Gridline and border width: `thin` (1px) or `thinner` (0.5px).
-   * @default 'thinner'
-   */
-  gridlineWidth?: 'thin' | 'thinner';
   /**
    * en-IN value format: compact Y ticks (₹1.5L), compact X ticks on a number X axis, and full
    * tooltip values (₹1,23,450.00), unless the axis or tooltip has its own formatter. Works in
-   * `v1` too.
+   * `v1` too. Web only.
    */
   valueFormat?: ChartValueFormat;
-} & ChartLegendDisplayProps &
-  ChartVersionProps;
+} & ChartVersionProps;
 
 type ChartLineWrapperProps = {
   /**
@@ -342,6 +304,15 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
    * The data key of the y-axis.
    */
   dataKey?: string;
+  /**
+   * Where the Y labels sit: a column `left` or `right` of the plot, or `overlap` inside the plot.
+   * `overlap` with `showBorder` on `ChartCartesianGrid` shows as `left`. A bar chart with
+   * `layout="vertical"` always takes `left`. `version="v2"` only.
+   * When set, it wins over recharts' `orientation` and `mirror`, and a development warning shows
+   * when both are set.
+   * @default 'left'
+   */
+  labelPlacement?: 'left' | 'right' | 'overlap';
 };
 
 type Layout = 'horizontal' | 'vertical';
@@ -351,6 +322,19 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Where the legend sits. `top` is left-aligned above the chart. `left` and `right` work on a
+   * donut only: the legend sits beside the ring. `version="v2"` only.
+   * When set, it wins over recharts' `verticalAlign`, and a development warning shows when both
+   * are set.
+   * @default 'bottom'
+   */
+  placement?: 'top' | 'bottom' | 'left' | 'right';
+  /**
+   * The gap between the legend and the nearest chart element. `version="v2"` only.
+   * @default 'spacing.5'
+   */
+  gap?: ChartLegendGap;
   /**
    * Array of dataKeys that are currently selected.
    * When provided, the component is in controlled mode.
@@ -374,7 +358,22 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
 };
 
 
-type ChartCartesianGridProps = Omit<RechartsCartesianGridProps, 'strokeDasharray' | 'verticalFill' | 'horizontalFill'>;
+type ChartCartesianGridProps = Omit<RechartsCartesianGridProps, 'strokeDasharray' | 'verticalFill' | 'horizontalFill'> & {
+  /**
+   * Gridline and border width: `thin` (1px) or `thinner` (0.5px). `version="v2"` only.
+   * When set, it wins over recharts' `strokeWidth`, and a development warning shows when both
+   * are set.
+   * @default 'thinner'
+   */
+  lineWidth?: 'thin' | 'thinner';
+  /**
+   * A line on the left, the right and the bottom of the plot, in the gridline colour and
+   * `lineWidth`. With no border, the bottom gridline is the baseline. `version="v2"` only.
+   * `horizontal={false}` hides the gridlines, as in recharts.
+   * @default false
+   */
+  showBorder?: boolean;
+};
 
 type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
@@ -505,4 +504,51 @@ function LineChartWithReferenceBand() {
 }
 
 export default LineChartWithReferenceBand;
+```
+
+### Line Chart with the v2 Look
+
+`version="v2"` turns on the new look. The display options sit on the children: the border and the gridline width on `ChartCartesianGrid`, the Y label placement on `ChartYAxis`, the legend placement and gap on `ChartLegend`. `valueFormat` stays on the wrapper. A `ChartLegend` child shows the legend. With none, the chart has no legend.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  ChartLine,
+  ChartLineWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+  ChartLegend,
+} from '@razorpay/blade/components';
+
+function LineChartV2() {
+  const data = [
+    { month: 'Jan', online: 42000, offline: 18000 },
+    { month: 'Feb', online: 51000, offline: 21500 },
+    { month: 'Mar', online: 47500, offline: 26000 },
+    { month: 'Apr', online: 68000, offline: 24000 },
+  ];
+
+  return (
+    <Box width="100%" height="320px">
+      <ChartLineWrapper
+        data={data}
+        version="v2"
+        valueFormat={{ type: 'currency', currency: 'INR' }}
+      >
+        <ChartCartesianGrid showBorder lineWidth="thin" />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis labelPlacement="right" />
+        <ChartTooltip />
+        <ChartLegend placement="top" gap="spacing.6" />
+        <ChartLine dataKey="online" name="Online" />
+        <ChartLine dataKey="offline" name="Offline" strokeStyle="dashed" />
+      </ChartLineWrapper>
+    </Box>
+  );
+}
+
+export default LineChartV2;
 ```

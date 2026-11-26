@@ -17,14 +17,12 @@ import type {
   SecondaryLabelMap,
   ChartXAxisProps,
 } from '../CommonChartComponents';
-import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import {
-  countChildrenOf,
   getChartMargin,
   resolveChartDisplayOptions,
-  resolveLegendVisibility,
-  shouldAddLegend,
+  readChildDisplayProps,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
@@ -146,48 +144,16 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   testID,
   colorTheme = 'categorical',
   version,
-  showBorder,
-  yLabelPlacement,
-  yGridlines,
-  gridlineWidth,
-  legendPlacement,
-  showLegend,
-  legendGap,
   valueFormat,
   onActivePointChange,
   ...restProps
 }) => {
-  const display = resolveChartDisplayOptions({
-    version,
-    showBorder,
-    yLabelPlacement,
-    yGridlines,
-    gridlineWidth,
-    legendPlacement,
-    legendGap,
-  });
-  useWarnDisplayPropsOnV1(
-    version,
-    {
-      showBorder,
-      yLabelPlacement,
-      yGridlines,
-      gridlineWidth,
-      legendPlacement,
-      showLegend,
-      legendGap,
-    },
-    'ChartAreaWrapper',
-  );
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend.
+  const display = resolveChartDisplayOptions({ version, ...readChildDisplayProps(children) });
+  useWarnDisplayPropsOnV1(version, children, 'ChartAreaWrapper');
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
-  });
-  const isLegendVisible = resolveLegendVisibility({
-    version,
-    showLegend,
-    seriesCount: countChildrenOf(children, componentIds.ChartArea),
-    children,
   });
 
   // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
@@ -447,7 +413,6 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         selectedDataKeys,
         setSelectedDataKeys,
         ...display,
-        isLegendVisible,
         valueFormat,
       }}
     >
@@ -480,14 +445,6 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
 
               {modifiedChildren}
               {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
-              {shouldAddLegend({
-                version,
-                showLegend,
-                children,
-                seriesCount: countChildrenOf(children, componentIds.ChartArea),
-              }) ? (
-                <ChartLegend key="blade-added-legend" />
-              ) : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               {onActivePointChange ? (
                 <ChartActivePointReporter

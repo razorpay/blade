@@ -7,7 +7,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
-import { ChartLegend, CommonChartComponentsContext } from '../CommonChartComponents';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
   DataColorMapping,
   SecondaryLabelMap,
@@ -19,11 +19,9 @@ import {
   REFERENCE_BAND_DEFAULT_NAME,
 } from '../CommonChartComponents/tokens';
 import {
-  countChildrenOf,
   getChartMargin,
   resolveChartDisplayOptions,
-  resolveLegendVisibility,
-  shouldAddLegend,
+  readChildDisplayProps,
   useWarnDisplayPropsOnV1,
 } from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
@@ -299,46 +297,20 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   colorTheme = 'categorical',
   layout = 'horizontal',
   version,
-  showBorder,
-  yLabelPlacement,
-  yGridlines,
-  gridlineWidth,
-  legendPlacement,
-  showLegend,
-  legendGap,
   valueFormat,
   onActivePointChange,
   testID,
   data = [],
   ...restProps
 }) => {
-  // A vertical bar chart has its categories on the Y axis, so it keeps a `left` column for its
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend. A
+  // vertical bar chart has its categories on the Y axis, so it keeps a `left` column for its
   // category names.
   const display = resolveChartDisplayOptions(
-    {
-      version,
-      showBorder,
-      yLabelPlacement,
-      yGridlines,
-      gridlineWidth,
-      legendPlacement,
-      legendGap,
-    },
+    { version, ...readChildDisplayProps(children) },
     { isVerticalBar: layout === 'vertical' },
   );
-  useWarnDisplayPropsOnV1(
-    version,
-    {
-      showBorder,
-      yLabelPlacement,
-      yGridlines,
-      gridlineWidth,
-      legendPlacement,
-      showLegend,
-      legendGap,
-    },
-    'ChartBarWrapper',
-  );
+  useWarnDisplayPropsOnV1(version, children, 'ChartBarWrapper');
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   // The hovered bar: its series (fades the others, decides which reference band is revealed) and
@@ -535,14 +507,6 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
         {barChartModifiedChildrens}
         {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
-        {shouldAddLegend({
-          version,
-          showLegend,
-          children,
-          seriesCount: countChildrenOf(children, componentIds.chartBar),
-        }) ? (
-          <ChartLegend key="blade-added-legend" />
-        ) : null}
         {onActivePointChange ? (
           <ChartActivePointReporter
             data={data}
@@ -572,12 +536,6 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         referenceBands: referenceBandLegendInfos,
         rangeMap,
         ...display,
-        isLegendVisible: resolveLegendVisibility({
-          version,
-          showLegend,
-          seriesCount: countChildrenOf(children, componentIds.chartBar),
-          children,
-        }),
         valueFormat,
       }}
     >

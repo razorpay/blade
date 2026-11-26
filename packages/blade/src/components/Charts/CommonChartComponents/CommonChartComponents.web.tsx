@@ -58,12 +58,14 @@ import { calculateTextWidth, measureTextWidth, truncateToWidth } from './utils';
 import { getVisibleXLabelIndexes } from './xAxisLabels';
 import { getDonutV2LegendPosition } from '../DonutChart/donutLayout';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
+import { resolveYLabelPlacement, useWarnOverriddenRechartsProps } from './chartDisplayOptions';
 import getIn from '~utils/lodashButBetter/get';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useControllableState } from '~utils/useControllable';
+import { logger } from '~utils/logger';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)
@@ -692,16 +694,36 @@ const ChartPlotBorder = (): JSX.Element | null => {
   );
 };
 
-const _ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
+const _ChartYAxis: React.FC<ChartYAxisProps> = ({ labelPlacement, ...props }) => {
   const { theme } = useTheme();
   const {
-    yLabelPlacement = 'left',
+    yLabelPlacement: chartYLabelPlacement = 'left',
+    showBorder = false,
     isVerticalBar = false,
     valueFormat,
     chartVersion,
   } = useCommonChartComponentsContext();
   // `v1`: recharts' Y axis, as on master. The placement props apply to `v2` only.
   const isV2 = chartVersion === 'v2';
+  // The axis' own `labelPlacement`, else the one the wrapper read from the first ChartYAxis.
+  const yLabelPlacement =
+    labelPlacement !== undefined
+      ? resolveYLabelPlacement(labelPlacement, { showBorder, isVerticalBar })
+      : chartYLabelPlacement;
+  // `labelPlacement` wins over recharts' `orientation` and `mirror`. Unset, they apply as before.
+  const hasOwnPlacement = isV2 && labelPlacement !== undefined;
+  useWarnOverriddenRechartsProps(
+    hasOwnPlacement,
+    [
+      {
+        bladeProp: 'labelPlacement',
+        rechartsProp: 'orientation',
+        isBothSet: props.orientation !== undefined,
+      },
+      { bladeProp: 'labelPlacement', rechartsProp: 'mirror', isBothSet: props.mirror !== undefined },
+    ],
+    'ChartYAxis',
+  );
   const isOverlap = isV2 && yLabelPlacement === 'overlap';
   const isLabelColumn = isV2 && !isOverlap;
   const tickFontSize = theme.typography.fonts.size[75];
@@ -760,6 +782,12 @@ const _ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         // writes them compact. The names of a `v2` horizontal bar chart are cut to a width instead.
         {...(defaultTickFormatter ? { tickFormatter: defaultTickFormatter } : {})}
         {...props}
+        {...(hasOwnPlacement
+          ? {
+              orientation: yLabelPlacement === 'right' ? ('right' as const) : ('left' as const),
+              mirror: yLabelPlacement === 'overlap',
+            }
+          : {})}
         tick={{
           fill: theme.colors.surface.text.gray.muted,
           fontSize: tickFontSize,
@@ -836,36 +864,65 @@ const renderGridLineAboveBase = (lineProps: GridLineProps): JSX.Element => {
   );
 };
 
-const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
+const _ChartCartesianGrid: React.FC<ChartCartesianGridProps> = ({
+  lineWidth: lineWidthProp,
+  showBorder: _showBorder,
+  horizontal: horizontalProp,
+  ...props
+}) => {
   const { theme } = useTheme();
   const {
-    yGridlines = true,
     gridlineWidth,
     showBorder = false,
     chartVersion,
   } = useCommonChartComponentsContext();
   // `v1`: as on master. The gridline props apply to `v2` only.
   const isV2 = chartVersion === 'v2';
+  // The grid's own `lineWidth`, else the one the wrapper read from it.
+  const lineWidth = lineWidthProp ?? gridlineWidth;
+  useWarnOverriddenRechartsProps(
+    isV2,
+    [
+      {
+        bladeProp: 'lineWidth',
+        rechartsProp: 'strokeWidth',
+        isBothSet: lineWidthProp !== undefined && props.strokeWidth !== undefined,
+      },
+    ],
+    'ChartCartesianGrid',
+  );
 
+  // `horizontal={false}` hides the gridlines. With the border, the gridline at the base of the
+  // plot is left out, unless `horizontal` draws the gridlines its own way.
   const getHorizontal = (): ChartCartesianGridProps['horizontal'] | undefined => {
-    if (!isV2) return undefined;
-    if (!yGridlines) return false;
-    if (showBorder) return renderGridLineAboveBase as ChartCartesianGridProps['horizontal'];
-    return undefined;
+    if (!isV2) return horizontalProp;
+    if (horizontalProp === false) return false;
+    if (showBorder && (horizontalProp === undefined || horizontalProp === true)) {
+      return renderGridLineAboveBase as ChartCartesianGridProps['horizontal'];
+    }
+    return horizontalProp;
   };
   const horizontal = getHorizontal();
+  const strokeWidth = isV2 && lineWidth ? theme.border.width[lineWidth] : undefined;
 
   return (
     <RechartsCartesianGrid
       stroke={theme.colors.surface.border.gray.muted}
       vertical={false}
-      // `gridlineWidth`: a Blade border width. With none, recharts' 1px, as before.
-      {...(isV2 && gridlineWidth ? { strokeWidth: theme.border.width[gridlineWidth] } : {})}
+      // `lineWidth` unset: the default width, unless the grid has its own `strokeWidth`. With no
+      // width at all, recharts' 1px, as before.
+      {...(strokeWidth !== undefined && lineWidthProp === undefined ? { strokeWidth } : {})}
       {...(horizontal !== undefined ? { horizontal } : {})}
       {...props}
+      // `lineWidth` set: it wins over `strokeWidth`.
+      {...(strokeWidth !== undefined && lineWidthProp !== undefined ? { strokeWidth } : {})}
     />
   );
 };
+
+const ChartCartesianGrid = assignWithoutSideEffects(_ChartCartesianGrid, {
+  componentId: componentId.chartCartesianGrid,
+});
 
 const CustomTooltip = ({
   item,
@@ -1287,6 +1344,9 @@ const ChartLegendBody: React.FC<ChartLegendProps & LegendGroupPosition> = ({
   selectedDataKeys: selectedDataKeysProp,
   defaultSelectedDataKeys,
   onSelectedDataKeysChange,
+  // The wrapper reads `placement` and `gap` from the ChartLegend child into the context.
+  placement,
+  gap: _gap,
   top: groupTop,
   bottom: groupBottom,
   left: groupLeft,
@@ -1313,6 +1373,32 @@ const ChartLegendBody: React.FC<ChartLegendProps & LegendGroupPosition> = ({
       : undefined;
   const isTop = legendPlacement === 'top' && props.layout !== 'vertical';
   const isDonut = chartName === 'donut';
+  // `placement` wins over recharts' `verticalAlign`, and a donut `left` or `right` over `align`.
+  const hasOwnPlacement = isV2 && placement !== undefined;
+  useWarnOverriddenRechartsProps(
+    hasOwnPlacement,
+    [
+      {
+        bladeProp: 'placement',
+        rechartsProp: 'verticalAlign',
+        isBothSet: props.verticalAlign !== undefined,
+      },
+      {
+        bladeProp: `placement="${placement}"`,
+        rechartsProp: 'align',
+        isBothSet: sidePlacement !== undefined && props.align !== undefined,
+      },
+    ],
+    'ChartLegend',
+  );
+  React.useEffect(() => {
+    if (!isV2 || isDonut || (placement !== 'left' && placement !== 'right')) return;
+    logger({
+      type: 'warn',
+      moduleName: 'ChartLegend',
+      message: `placement="${placement}" works on a donut only. The legend shows at the bottom.`,
+    });
+  }, [isV2, isDonut, placement]);
   // The gap between the legend and the chart. `v1`: LEGEND_MARGIN_TOP, as on master. `v2`:
   // `legendGap` (spacing.5 by default) from the legend items to the nearest chart element.
   const getLegendGap = (): number => {
@@ -1443,7 +1529,8 @@ const ChartLegendBody: React.FC<ChartLegendProps & LegendGroupPosition> = ({
       {...(layout !== undefined ? { layout } : {})}
       align={sidePlacement ?? props.align ?? getAlign()}
       verticalAlign={
-        props.verticalAlign ?? (layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom')
+        (hasOwnPlacement ? undefined : props.verticalAlign) ??
+        (layout === 'vertical' ? 'middle' : isTop ? 'top' : 'bottom')
       }
     />
   );
@@ -1478,10 +1565,9 @@ const DonutGroupLegend: React.FC<ChartLegendProps> = (props) => {
 };
 
 const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
-  const { chartVersion, chartName, isLegendVisible } = useCommonChartComponentsContext();
-  // `v1` renders as on master. `v2`: `showLegend` (or auto, one series) can hide it.
+  const { chartVersion, chartName } = useCommonChartComponentsContext();
+  // `v1` renders as on master.
   if (chartVersion !== 'v2') return <ChartLegendBody {...props} />;
-  if (isLegendVisible === false) return null;
   if (chartName === 'donut') return <DonutGroupLegend {...props} />;
   return <ChartLegendBody {...props} />;
 };

@@ -27,27 +27,22 @@ jest.mock('recharts', () => {
   };
 });
 
-// An array, not a fragment: the wrappers read their direct children.
-const axes = [
-  <ChartCartesianGrid key="grid" />,
-  <ChartXAxis key="x" dataKey="month" />,
-  <ChartYAxis key="y" />,
-];
-
 const renderChart = (
   kind: 'line' | 'area' | 'bar' | 'vertical-bar',
   showBorder?: boolean,
   yLabelPlacement?: ChartYLabelPlacement,
 ): ReturnType<typeof renderWithTheme> => {
+  // An array, not a fragment: the wrappers read their direct children. The border sits on the
+  // grid, the label placement on the Y axis.
+  const axes = [
+    <ChartCartesianGrid key="grid" showBorder={showBorder} />,
+    <ChartXAxis key="x" dataKey="month" />,
+    <ChartYAxis key="y" labelPlacement={yLabelPlacement} />,
+  ];
   if (kind === 'line') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartLineWrapper
-          data={data}
-          version="v2"
-          showBorder={showBorder}
-          yLabelPlacement={yLabelPlacement}
-        >
+        <ChartLineWrapper data={data} version="v2">
           {axes}
           <ChartLine dataKey="sales" />
         </ChartLineWrapper>
@@ -57,12 +52,7 @@ const renderChart = (
   if (kind === 'area') {
     return renderWithTheme(
       <Box width="800px" height="400px">
-        <ChartAreaWrapper
-          data={data}
-          version="v2"
-          showBorder={showBorder}
-          yLabelPlacement={yLabelPlacement}
-        >
+        <ChartAreaWrapper data={data} version="v2">
           {axes}
           <ChartArea dataKey="sales" name="Sales" />
         </ChartAreaWrapper>
@@ -74,15 +64,18 @@ const renderChart = (
       <ChartBarWrapper
         data={data}
         version="v2"
-        showBorder={showBorder}
-        yLabelPlacement={yLabelPlacement}
         layout={kind === 'vertical-bar' ? 'vertical' : 'horizontal'}
       >
         {kind === 'vertical-bar'
           ? [
-              <ChartCartesianGrid key="grid" />,
+              <ChartCartesianGrid key="grid" showBorder={showBorder} />,
               <ChartXAxis key="x" type="number" />,
-              <ChartYAxis key="y" type="category" dataKey="month" />,
+              <ChartYAxis
+                key="y"
+                type="category"
+                dataKey="month"
+                labelPlacement={yLabelPlacement}
+              />,
             ]
           : axes}
         <ChartBar dataKey="sales" />
@@ -105,7 +98,7 @@ const firstGridLineX = (container: HTMLElement): number =>
       container.querySelector('.recharts-cartesian-grid-horizontal line')?.getAttribute('x1'),
   );
 
-describe('showBorder on the chart wrappers', () => {
+describe('showBorder on ChartCartesianGrid', () => {
   it.each(['line', 'area', 'bar'] as const)(
     'draws no axis line and no border on a %s chart by default',
     async (kind) => {
