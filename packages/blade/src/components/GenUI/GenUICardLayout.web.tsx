@@ -1,5 +1,5 @@
 /**
- * `cardLayout: 'compact'`: where each block in a CARD sits.
+ * Where each block in a CARD sits.
  *
  * The CARD knows its children, so it decides the space around each one and tells the block
  * through GenUICardBlockContext. Blocks that own vertical space (GRID, INFO_GROUP, STACK, ALERT,
@@ -93,7 +93,7 @@ type CardShape = {
   cardEdgePx: number;
 };
 
-/** The space around each child of a compact CARD. */
+/** The space around each child of a CARD. */
 const getCardRowLayouts = (children: unknown[], card: CardShape): CardRowLayout[] => {
   const lastIndex = children.length - 1;
   // How far a flush TABLE reaches into the card padding: to the card's edge, which stays.
@@ -156,11 +156,11 @@ const getStackChildBlocks = (
   });
 
 /**
- * The compact GRID template: `columns` tracks at most, none under 120px. Each track is at least
+ * The GRID template: `columns` tracks at most, none under 120px. Each track is at least
  * the larger of 120px and an equal share of the row, so a row never takes more than `columns`.
  * The 0.1px keeps rounding from dropping a column the row has room for.
  */
-const getCompactGridTemplate = (columns: number, gapPx: number): string => {
+const getGridTemplate = (columns: number, gapPx: number): string => {
   const share = `calc((100% - ${(columns - 1) * gapPx}px) / ${columns} - 0.1px)`;
   return `repeat(auto-fill, minmax(max(${GRID_MIN_COLUMN_PX}px, ${share}), 1fr))`;
 };
@@ -170,7 +170,7 @@ export {
   useGenUICardBlock,
   getCardRowLayouts,
   getStackChildBlocks,
-  getCompactGridTemplate,
+  getGridTemplate,
   outsideCard,
   isTable,
   isChartCard,

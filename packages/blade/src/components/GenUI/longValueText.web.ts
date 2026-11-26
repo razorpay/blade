@@ -1,6 +1,6 @@
 /**
  * Long values on one line, cut in the middle: `pay_Rk3v…Zp2Lw`, `customer.na…@example.com`.
- * Pure helpers for GenUILongValue. Used only with `cardLayout: 'compact'`.
+ * Pure helpers for GenUILongValue.
  * The cut keeps the start and the end, and happens only when the value does not fit its width.
  */
 

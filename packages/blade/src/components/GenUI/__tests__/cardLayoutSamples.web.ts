@@ -1,7 +1,7 @@
 import type { GenUIComponent } from '../GenUIComponents';
 
 /**
- * Card shapes for `cardLayout` tests and stories. All values are made up.
+ * Card shapes for card layout tests and stories. All values are made up.
  * The shapes follow the cards an LLM sends most often: a record, a summary with metric tiles,
  * sections split by dividers, a stacked settlement, a details list, and a card with a table.
  */

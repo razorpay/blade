@@ -1083,9 +1083,8 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
 export const WithComponentActions = WithComponentActionsTemplate.bind({});
 
 /**
- * `cardLayout: 'compact'`, off and on side by side, for the card shapes an LLM sends most often.
+ * How GenUI lays out the card shapes an LLM sends most often, at a narrow and a wide width.
  *
- * With `compact`:
  * - DIVIDER inside a CARD: 12px a side, the header divider included.
  * - Next to a DIVIDER, the divider's 12px is the only space.
  * - The card's 16px padding is the bottom edge.
@@ -1103,20 +1102,20 @@ const cardLayoutCases: { name: string; component: GenUIComponent }[] = [
   { name: 'Card with table', component: cardLayoutSamples.cardWithTable },
 ];
 
-type CardLayoutStoryArgs = { cardWidth: string };
+const cardLayoutWidths = ['360px', '520px'] as const;
 
-const CardLayoutTemplate: StoryFn<CardLayoutStoryArgs> = ({ cardWidth }): JSX.Element => (
+const CardLayoutTemplate: StoryFn = (): JSX.Element => (
   <Box display="flex" flexDirection="column" gap="spacing.8">
     {cardLayoutCases.map(({ name, component }) => (
       <Box key={name} display="flex" flexDirection="column" gap="spacing.3">
         <Text weight="semibold">{name}</Text>
         <Box display="flex" flexWrap="wrap" gap="spacing.7" alignItems="flex-start">
-          {(['default', 'compact'] as const).map((cardLayout) => (
-            <Box key={cardLayout} width={cardWidth as BoxProps['width']}>
+          {cardLayoutWidths.map((width) => (
+            <Box key={width} width={width}>
               <Text size="small" color="surface.text.gray.muted">
-                cardLayout: &apos;{cardLayout}&apos;
+                {width}
               </Text>
-              <GenUIProvider config={{ cardLayout }}>
+              <GenUIProvider>
                 <GenUISchemaRenderer components={[component]} />
               </GenUIProvider>
             </Box>
@@ -1127,10 +1126,5 @@ const CardLayoutTemplate: StoryFn<CardLayoutStoryArgs> = ({ cardWidth }): JSX.El
   </Box>
 );
 
-export const CompactCardLayout = CardLayoutTemplate.bind({});
-CompactCardLayout.args = { cardWidth: '520px' };
-CompactCardLayout.storyName = 'Card Layout: Compact';
-
-export const CompactCardLayoutNarrow = CardLayoutTemplate.bind({});
-CompactCardLayoutNarrow.args = { cardWidth: '360px' };
-CompactCardLayoutNarrow.storyName = 'Card Layout: Compact, 360px';
+export const CardLayout = CardLayoutTemplate.bind({});
+CardLayout.storyName = 'Card Layout';

@@ -4,7 +4,7 @@ import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
 import type { GenUIComponent } from '../GenUIComponents';
-import { getCompactGridTemplate } from '../GenUICardLayout';
+import { getGridTemplate } from '../GenUICardLayout';
 import { getLongValueKind, middleTruncate } from '../longValueText';
 import type { GenUIComponentActionsRegistry } from '../types';
 import { cardLayoutSamples, tile } from './cardLayoutSamples';
@@ -17,28 +17,21 @@ jest.mock('../longValueText.web', () => ({
   getLetterSpacingOf: () => 0,
 }));
 
-const renderCards = (components: GenUIComponent[], config?: Record<string, unknown>) =>
+const renderCards = (
+  components: GenUIComponent[],
+  componentActions?: GenUIComponentActionsRegistry,
+) =>
   renderWithTheme(
-    <GenUIProvider config={config}>
+    <GenUIProvider config={componentActions ? { componentActions } : undefined}>
       <GenUISchemaRenderer components={components} />
     </GenUIProvider>,
   );
 
-describe('GenUI cardLayout', () => {
-  describe('off (default)', () => {
-    // These snapshots were written from master before `cardLayout` existed.
-    // They must not change: GenUI also runs in apps that do not opt in.
-    it.each(Object.keys(cardLayoutSamples))('renders %s as master does', (name) => {
-      const { container } = renderCards([cardLayoutSamples[name]]);
-      expect(container).toMatchSnapshot();
-    });
-
-    it("renders the same with cardLayout 'default' as with no setting", () => {
-      const components = Object.values(cardLayoutSamples);
-      const withoutSetting = renderCards(components).container.innerHTML;
-      const withDefault = renderCards(components, { cardLayout: 'default' }).container.innerHTML;
-      expect(withDefault).toBe(withoutSetting);
-    });
+describe('GenUI card layout snapshots', () => {
+  // The default layout for the card shapes an LLM sends most often.
+  it.each(Object.keys(cardLayoutSamples))('renders %s', (name) => {
+    const { container } = renderCards([cardLayoutSamples[name]]);
+    expect(container).toMatchSnapshot();
   });
 });
 
@@ -55,13 +48,13 @@ const roomFor = (chars: number, copyPx = 12): number => chars * 7 + 1 + copyPx +
 const longValueOf = (value: string): HTMLElement =>
   Array.from(document.querySelectorAll<HTMLElement>('[data-genui-long-value]')).find(
     (box) => box.lastElementChild?.textContent === value,
-  ) as HTMLElement;
+  )!;
 /** What a long value box shows: its first child, without the hidden copy. */
 const shownText = (value: string): HTMLElement =>
   longValueOf(value).firstElementChild as HTMLElement;
 /** The focusable text of a cut long value. Null when the value shows whole. */
-const longValueText = (value: string): HTMLElement =>
-  longValueOf(value).querySelector('span[tabindex="0"]') as HTMLElement;
+const longValueText = (value: string): HTMLElement | null =>
+  longValueOf(value).querySelector<HTMLElement>('span[tabindex="0"]');
 
 /** jsdom has no layout. Every box measures `width`. */
 const setBoxWidth = (width: number): void => {
@@ -77,11 +70,6 @@ const setBoxWidth = (width: number): void => {
     toJSON: () => ({}),
   } as DOMRect);
 };
-
-const renderCompact = (
-  components: GenUIComponent[],
-  componentActions?: GenUIComponentActionsRegistry,
-) => renderCards(components, { cardLayout: 'compact', componentActions });
 
 const style = (element: Element | null | undefined) => window.getComputedStyle(element!);
 
@@ -107,7 +95,7 @@ const dividerBoxes = (container: HTMLElement) =>
 
 const withoutSpaces = (text: string) => text.replace(/\s/g, '');
 
-describe('GenUI cardLayout compact', () => {
+describe('GenUI card layout', () => {
   beforeEach(() => {
     Object.defineProperty(navigator, 'clipboard', {
       value: { writeText: jest.fn(() => Promise.resolve()) },
@@ -121,7 +109,7 @@ describe('GenUI cardLayout compact', () => {
 
   describe('1. DIVIDER inside a CARD', () => {
     it('has 12px a side in a card, and keeps 24px outside a card', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         cardLayoutSamples.sections,
         { component: 'DIVIDER' } as GenUIComponent,
       ]);
@@ -133,7 +121,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('counts the header divider: the first block adds no space under it', () => {
-      const { container } = renderCompact([cardLayoutSamples.summary]);
+      const { container } = renderCards([cardLayoutSamples.summary]);
       expect(style(cardRows(container)[0]).marginTop).toBe('0px');
       expect(style(gridOf(container)).marginTop).toBe('0px');
       expect(style(firstTileOf(container)).paddingTop).toBe('0px');
@@ -142,7 +130,7 @@ describe('GenUI cardLayout compact', () => {
 
   describe('2. no stacked spacing next to a DIVIDER', () => {
     it('tiles to divider and divider to details are the divider 12px only', () => {
-      const { container } = renderCompact([cardLayoutSamples.summary]);
+      const { container } = renderCards([cardLayoutSamples.summary]);
       const [gridRow, dividerRow, detailsRow] = cardRows(container);
 
       // Tiles: no bottom padding. Grid: no bottom margin. Card row gap: none.
@@ -158,7 +146,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('drops the paragraph gap at the end of a TEXT in a card, so a tile label adds nothing', () => {
-      const { container } = renderCompact([cardLayoutSamples.summary]);
+      const { container } = renderCards([cardLayoutSamples.summary]);
       const labelText = firstTileOf(container).lastElementChild as HTMLElement;
       const css = Array.from(document.querySelectorAll('style'))
         .map((tag) => tag.textContent ?? '')
@@ -168,7 +156,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('keeps one 8px row gap between two blocks with no divider', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           component: 'CARD',
           title: 'Two blocks',
@@ -184,14 +172,14 @@ describe('GenUI cardLayout compact', () => {
 
   describe('3. CARD bottom padding', () => {
     it('adds no space under the last block, so the card padding (16px) is the bottom', () => {
-      const { container } = renderCompact([cardLayoutSamples.record]);
+      const { container } = renderCards([cardLayoutSamples.record]);
       expect(
         style(container.querySelector("[data-blade-component='info-group']")).marginBottom,
       ).toBe('0px');
     });
 
     it('passes the bottom edge through a STACK to its last block', () => {
-      const { container } = renderCompact([cardLayoutSamples.stackedSettlement]);
+      const { container } = renderCards([cardLayoutSamples.stackedSettlement]);
       const stack = cardRows(container)[0].querySelector<HTMLElement>(
         "[data-blade-component='box']",
       );
@@ -202,7 +190,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('drops the bottom margin of a last ALERT', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           component: 'CARD',
           title: 'Refund failed',
@@ -223,10 +211,22 @@ describe('GenUI cardLayout compact', () => {
 
   describe('4. INFO_GROUP', () => {
     it('shows label and value on one row, small, values right-aligned', () => {
-      const { container } = renderCompact([cardLayoutSamples.record]);
+      const { container } = renderCards([cardLayoutSamples.record]);
       const value = container.querySelector("[data-blade-component='info-item-value']");
       expect(style(value).justifyContent).toBe('flex-end');
       // InfoGroup size small: 12px value text (0.75rem).
+      expect(style(screen.getByText('UPI')).fontSize).toBe('0.75rem');
+    });
+
+    it('uses the same layout outside a card', () => {
+      const { container } = renderCards([
+        {
+          component: 'INFO_GROUP',
+          items: [{ key: { children: 'Method' }, value: { children: 'UPI' } }],
+        } as GenUIComponent,
+      ]);
+      const value = container.querySelector("[data-blade-component='info-item-value']");
+      expect(style(value).justifyContent).toBe('flex-end');
       expect(style(screen.getByText('UPI')).fontSize).toBe('0.75rem');
     });
   });
@@ -256,9 +256,9 @@ describe('GenUI cardLayout compact', () => {
 
     it('keeps an INFO_GROUP value on one line, cut in the middle, with the whole value on hover', async () => {
       setBoxWidth(roomFor(14));
-      renderCompact([cardLayoutSamples.sections]);
+      renderCards([cardLayoutSamples.sections]);
 
-      const text = longValueText(PAYMENT_ID);
+      const text = longValueText(PAYMENT_ID)!;
       expect(text).toHaveTextContent('pay_Rk3v…Zp2Lw');
       expect(screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` })).toBeInTheDocument();
       fireEvent.mouseEnter(text);
@@ -267,16 +267,16 @@ describe('GenUI cardLayout compact', () => {
 
     it('shows the whole value in a tooltip on keyboard focus', async () => {
       setBoxWidth(roomFor(14));
-      renderCompact([cardLayoutSamples.sections]);
+      renderCards([cardLayoutSamples.sections]);
 
-      const text = longValueText(PAYMENT_ID);
+      const text = longValueText(PAYMENT_ID)!;
       act(() => text.focus());
       await waitFor(() => expect(screen.getByRole('tooltip')).toHaveTextContent(PAYMENT_ID));
     });
 
     it('copies the whole value from the copy button', () => {
       setBoxWidth(roomFor(14));
-      renderCompact([cardLayoutSamples.sections]);
+      renderCards([cardLayoutSamples.sections]);
 
       fireEvent.click(screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` }));
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(PAYMENT_ID);
@@ -284,7 +284,7 @@ describe('GenUI cardLayout compact', () => {
 
     it('shows a value whole when it fits', () => {
       setBoxWidth(400);
-      renderCompact([cardLayoutSamples.sections]);
+      renderCards([cardLayoutSamples.sections]);
       expect(shownText(PAYMENT_ID)).toHaveTextContent(PAYMENT_ID);
       // A value that fits is plain text: no extra focus stop.
       expect(longValueText(PAYMENT_ID)).toBeNull();
@@ -292,7 +292,7 @@ describe('GenUI cardLayout compact', () => {
 
     it('cuts a long value in a TABLE cell, with one copy button', () => {
       setBoxWidth(roomFor(14, 16));
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           component: 'TABLE',
           headers: ['Payment', 'Method'],
@@ -314,7 +314,7 @@ describe('GenUI cardLayout compact', () => {
 
     it('cuts a long value in a CARD title, after a short label, with no copy when the card shows it with copy', () => {
       setBoxWidth(roomFor(14));
-      renderCompact([
+      renderCards([
         {
           component: 'CARD',
           title: 'Payment pay_Rk3vXXXXXXZp2Lw',
@@ -339,31 +339,25 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('keeps an ordinary title and ordinary values as text', () => {
-      renderCompact([cardLayoutSamples.summary]);
+      renderCards([cardLayoutSamples.summary]);
       expect(document.querySelector('[data-genui-long-value]')).toBeNull();
       expect(screen.getByText('Collections this week')).toBeInTheDocument();
-    });
-
-    it('cuts nothing with the setting off', () => {
-      setBoxWidth(roomFor(14));
-      renderCards([cardLayoutSamples.record, cardLayoutSamples.cardWithTable]);
-      expect(document.querySelector('[data-genui-long-value]')).toBeNull();
     });
   });
 
   describe('6. GRID', () => {
     it('never makes a column under 120px, and never more columns than asked', () => {
-      expect(getCompactGridTemplate(3, 4)).toBe(
+      expect(getGridTemplate(3, 4)).toBe(
         'repeat(auto-fill, minmax(max(120px, calc((100% - 8px) / 3 - 0.1px)), 1fr))',
       );
-      const { container } = renderCompact([cardLayoutSamples.summary]);
+      const { container } = renderCards([cardLayoutSamples.summary]);
       expect(withoutSpaces(style(gridOf(container)).gridTemplateColumns)).toBe(
-        withoutSpaces(getCompactGridTemplate(3, 4)),
+        withoutSpaces(getGridTemplate(3, 4)),
       );
     });
 
     it('moves the tile padding into the grid, so wrapped rows keep their space', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           component: 'GRID',
           columns: 2,
@@ -372,7 +366,7 @@ describe('GenUI cardLayout compact', () => {
         } as GenUIComponent,
       ]);
       const grid = gridOf(container);
-      // Outside a card: 8px margin + 8px tile padding, as before.
+      // Outside a card: 8px margin + 8px tile padding, the same space as master.
       expect(style(grid).marginTop).toBe('16px');
       expect(style(grid).rowGap).toBe('20px');
       expect(style(firstTileOf(container)).paddingTop).toBe('0px');
@@ -397,19 +391,13 @@ describe('GenUI cardLayout compact', () => {
     } as GenUIComponent;
 
     it('shows no divider under the header of a chart card', () => {
-      const { container } = renderCompact([chartCard]);
+      const { container } = renderCards([chartCard]);
       const header = container.querySelector("[data-blade-component='card-header']");
       expect(header?.querySelector("[data-blade-component='divider']")).toBeNull();
     });
 
-    it('keeps the header divider with the setting off', () => {
-      const { container } = renderCards([chartCard]);
-      const header = container.querySelector("[data-blade-component='card-header']");
-      expect(header?.querySelector("[data-blade-component='divider']")).not.toBeNull();
-    });
-
     it('keeps the header divider when the card also holds a TABLE', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           ...chartCard,
           children: [
@@ -425,7 +413,7 @@ describe('GenUI cardLayout compact', () => {
 
   describe('7. TABLE inside a CARD', () => {
     it('sits flush to the card sides, drops its own frame, and the card clips it', () => {
-      const { container } = renderCompact([cardLayoutSamples.cardWithTable]);
+      const { container } = renderCards([cardLayoutSamples.cardWithTable]);
       const [tableRow] = cardRows(container);
 
       // Card padding 16px less its 1px edge.
@@ -448,7 +436,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('keeps the bottom inside the card when a TABLE action slot shows under it', () => {
-      const { container } = renderCompact([cardLayoutSamples.cardWithTable], {
+      const { container } = renderCards([cardLayoutSamples.cardWithTable], {
         TABLE: () => <button type="button">Copy as CSV</button>,
       });
       expect(style(cardRows(container)[0]).marginBottom).toBe('0px');
@@ -456,7 +444,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('meets the top edge in a card with no header', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         {
           ...cardLayoutSamples.cardWithTable,
           title: undefined,
@@ -467,7 +455,7 @@ describe('GenUI cardLayout compact', () => {
     });
 
     it('keeps its frame outside a card', () => {
-      const { container } = renderCompact([
+      const { container } = renderCards([
         (cardLayoutSamples.cardWithTable as { children: GenUIComponent[] }).children[0],
       ]);
       const surface = container.querySelector("[data-blade-component='table']")

@@ -1,10 +1,5 @@
 import React from 'react';
-import type {
-  GenUIAction,
-  GenUICardLayout,
-  GenUIComponentActionsRegistry,
-  GenUIComponentRegistry,
-} from './types';
+import type { GenUIAction, GenUIComponentActionsRegistry, GenUIComponentRegistry } from './types';
 import type { AnimateOptions } from './rehypeAnimate';
 
 /**
@@ -23,8 +18,6 @@ type GenUIContextValue = {
   isAnimating?: boolean;
   /** Animation options for text streaming */
   animateOptions?: AnimateOptions;
-  /** How blocks inside a CARD are laid out */
-  cardLayout?: GenUICardLayout;
 };
 
 const GenUIContext = React.createContext<GenUIContextValue | null>(null);
@@ -68,20 +61,5 @@ const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOp
   };
 };
 
-/**
- * Hook to access the card layout (safe version that doesn't throw). `default` outside a provider.
- */
-const useGenUICardLayout = (): GenUICardLayout => {
-  const context = React.useContext(GenUIContext);
-  return context?.cardLayout ?? 'default';
-};
-
-export {
-  GenUIContext,
-  useGenUI,
-  useGenUIAction,
-  useGenUIComponentActions,
-  useGenUIAnimation,
-  useGenUICardLayout,
-};
+export { GenUIContext, useGenUI, useGenUIAction, useGenUIComponentActions, useGenUIAnimation };
 export type { GenUIContextValue };

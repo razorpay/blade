@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /**
  * Long values (ids, emails, VPAs, URLs) on one line, cut in the middle when they do not fit:
- * `pay_Rk3v…Zp2Lw`. Used only with `cardLayout: 'compact'`, in INFO_GROUP values, TABLE text
- * cells and CARD titles and descriptions.
+ * `pay_Rk3v…Zp2Lw`. Used in INFO_GROUP values, TABLE text cells and CARD titles and
+ * descriptions, inside and outside a CARD.
  *
  * - GenUI's Copyable (a Blade IconButton) follows the text and copies the whole value.
  * - A cut value shows whole in a tooltip on hover and on keyboard focus.
