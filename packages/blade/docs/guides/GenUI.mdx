@@ -47,7 +47,7 @@ Vertical / horizontal flex layout
 **GRID**\
 CSS grid layout
 
-**INFO_GROUP**\
+**INFO\_GROUP**\
 Key-value pairs display
 
 **BUTTON**\
@@ -105,17 +105,14 @@ Let's take an example of a custom component that renders a metric card with a ti
 5. **Custom memo** — Prevent unnecessary re-renders during streaming
 
 ```tsx
-type MetricCardProps = CustomComponent<
-  'METRIC_CARD',
-  {
-    title?: string;
-    value?: number;
-    status?: 'positive' | 'negative' | 'notice' | 'neutral' | 'primary' | 'information';
-    meta?: { updatedAt?: string; author?: string };
-    text?: string;
-    history?: Array<{ date?: string; value?: number }>;
-  }
->;
+type MetricCardProps = CustomComponent<'METRIC_CARD', {
+  title?: string;
+  value?: number;
+  status?: 'positive' | 'negative' | 'notice' | 'neutral' | 'primary' | 'information';
+  meta?: { updatedAt?: string; author?: string };
+  text?: string;
+  history?: Array<{ date?: string; value?: number }>;
+}>;
 
 const MetricCard = memo(
   ({ title, value, status, meta, color, history }: MetricCardProps) => {
@@ -132,7 +129,7 @@ const MetricCard = memo(
 
     // Tip 3: Filter incomplete items from arrays
     // Array items stream one-by-one and may have missing fields
-    const validHistory = history?.filter((h) => h.date && h.value !== undefined) ?? [];
+    const validHistory = history?.filter(h => h.date && h.value !== undefined) ?? [];
 
     return (
       <Card>
@@ -154,7 +151,7 @@ const MetricCard = memo(
       prevProps.status === nextProps.status &&
       prevProps.history?.length === nextProps.history?.length
     );
-  },
+  }
 );
 ```
 
@@ -167,16 +164,12 @@ Clicking on any built-in GenUI components like `BUTTON` and `ALERT`'s action but
 Built-in Click Action Schema:
 
 ```tsx
-const ClickActionSchema = z
-  .object({
-    type: z.literal('CLICK'),
-    data: z.object({
-      message: z.string().describe('The message to be sent to the LLM when the button is clicked'),
-    }),
-  })
-  .describe(
-    'A natural language action to be performed when the button is clicked, this will be executed as a further query to LLM',
-  );
+const ClickActionSchema = z.object({
+  type: z.literal('CLICK'),
+  data: z.object({
+    message: z.string().describe('The message to be sent to the LLM when the button is clicked'),
+  }),
+}).describe('A natural language action to be performed when the button is clicked, this will be executed as a further query to LLM')
 ```
 
 ```jsx
@@ -208,11 +201,11 @@ Block-level components (**CARD**, **TABLE**) support consumer-registered action 
 
 The render prop receives:
 
-| Prop            | Type                                          | Description                                                                                                                                 |
-| --------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`          | `GenUIBaseComponent` (the component's schema) | Use this for data-driven actions like CSV export from a TABLE's `headers`/`rows`                                                            |
-| `componentRef`  | `React.RefObject<HTMLDivElement>`             | DOM node of the component's content container (excludes the gradient-ring animation overlays). Use this for capture actions like PNG export |
-| `componentType` | `string`                                      | The resolved component type (e.g. `'CARD'`, `'TABLE'`)                                                                                      |
+| Prop | Type | Description |
+| --- | --- | --- |
+| `data` | `GenUIBaseComponent` (the component's schema) | Use this for data-driven actions like CSV export from a TABLE's `headers`/`rows` |
+| `componentRef` | `React.RefObject<HTMLDivElement>` | DOM node of the component's content container (excludes the gradient-ring animation overlays). Use this for capture actions like PNG export |
+| `componentType` | `string` | The resolved component type (e.g. `'CARD'`, `'TABLE'`) |
 
 ```tsx
 import { GenUIProvider, GenUISchemaRenderer, type TableComponent } from '@razorpay/blade/components';
