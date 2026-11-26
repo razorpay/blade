@@ -31,6 +31,7 @@ import {
 } from './GenUICardLayout';
 import type { CardRowLayout } from './GenUICardLayout';
 import { getLongValueKind } from './longValueText';
+import { Copyable } from './GenUICopyable';
 import {
   InfoGroupLongValue,
   TableCellLongValue,
@@ -1140,32 +1141,6 @@ const RenderChartComponent = memo(
     );
   },
 );
-
-// Primitive copy button — just the icon + tooltip, no text label.
-// Compose this inside any cell that needs copy behaviour.
-const Copyable = ({ value }: { value?: string }) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    void navigator.clipboard.writeText(value ?? '');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
-      <TooltipInteractiveWrapper>
-        <IconButton
-          icon={CopyIcon}
-          size="medium"
-          emphasis="intense"
-          accessibilityLabel={`Copy ${value}`}
-          onClick={handleCopy}
-        />
-      </TooltipInteractiveWrapper>
-    </Tooltip>
-  );
-};
 
 // Text + copy icon
 const CopyableText = ({ value }: { value?: string }) => (

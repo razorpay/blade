@@ -43,10 +43,25 @@ describe('GenUI cardLayout', () => {
 });
 
 const PAYMENT_ID = 'pay_Rk3vXXXXXXZp2Lw';
-/** The copy icon (12px) and the 4px gap take room from the text. */
-const ICON_ROOM = 12 + 4;
-/** A box with room for `chars` characters of text, the icon, and 1px for rounding. */
-const roomFor = (chars: number): number => chars * 7 + 1 + ICON_ROOM;
+/** The 4px gap before the copy button. */
+const ICON_GAP = 4;
+/**
+ * A box with room for `chars` characters of text, the copy button and its gap, and 1px for
+ * rounding. The copy button is 12px next to small text (INFO_GROUP) and 16px elsewhere.
+ */
+const roomFor = (chars: number, copyPx = 12): number => chars * 7 + 1 + copyPx + ICON_GAP;
+
+/** The long value box of `value`. Its last child is the hidden copy that holds the whole value. */
+const longValueOf = (value: string): HTMLElement =>
+  Array.from(document.querySelectorAll<HTMLElement>('[data-genui-long-value]')).find(
+    (box) => box.lastElementChild?.textContent === value,
+  ) as HTMLElement;
+/** What a long value box shows: its first child, without the hidden copy. */
+const shownText = (value: string): HTMLElement =>
+  longValueOf(value).firstElementChild as HTMLElement;
+/** The focusable text of a cut long value. Null when the value shows whole. */
+const longValueText = (value: string): HTMLElement =>
+  longValueOf(value).querySelector('span[tabindex="0"]') as HTMLElement;
 
 /** jsdom has no layout. Every box measures `width`. */
 const setBoxWidth = (width: number): void => {
@@ -243,9 +258,10 @@ describe('GenUI cardLayout compact', () => {
       setBoxWidth(roomFor(14));
       renderCompact([cardLayoutSamples.sections]);
 
-      const button = screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` });
-      expect(button).toHaveTextContent('pay_Rk3v…Zp2Lw');
-      fireEvent.mouseEnter(button);
+      const text = longValueText(PAYMENT_ID);
+      expect(text).toHaveTextContent('pay_Rk3v…Zp2Lw');
+      expect(screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` })).toBeInTheDocument();
+      fireEvent.mouseEnter(text);
       await waitFor(() => expect(screen.getByRole('tooltip')).toHaveTextContent(PAYMENT_ID));
     });
 
@@ -253,12 +269,12 @@ describe('GenUI cardLayout compact', () => {
       setBoxWidth(roomFor(14));
       renderCompact([cardLayoutSamples.sections]);
 
-      const button = screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` });
-      act(() => button.focus());
+      const text = longValueText(PAYMENT_ID);
+      act(() => text.focus());
       await waitFor(() => expect(screen.getByRole('tooltip')).toHaveTextContent(PAYMENT_ID));
     });
 
-    it('copies the whole value on click', () => {
+    it('copies the whole value from the copy button', () => {
       setBoxWidth(roomFor(14));
       renderCompact([cardLayoutSamples.sections]);
 
@@ -269,13 +285,13 @@ describe('GenUI cardLayout compact', () => {
     it('shows a value whole when it fits', () => {
       setBoxWidth(400);
       renderCompact([cardLayoutSamples.sections]);
-      expect(screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` })).toHaveTextContent(
-        PAYMENT_ID,
-      );
+      expect(shownText(PAYMENT_ID)).toHaveTextContent(PAYMENT_ID);
+      // A value that fits is plain text: no extra focus stop.
+      expect(longValueText(PAYMENT_ID)).toBeNull();
     });
 
-    it('cuts a long value in a TABLE cell, with one copy button and no Blade copy icon', () => {
-      setBoxWidth(roomFor(14));
+    it('cuts a long value in a TABLE cell, with one copy button', () => {
+      setBoxWidth(roomFor(14, 16));
       const { container } = renderCompact([
         {
           component: 'TABLE',
@@ -292,9 +308,7 @@ describe('GenUI cardLayout compact', () => {
       const cell = screen.getAllByRole('cell')[0];
       expect(cell.querySelector('[data-genui-long-value]')).not.toBeNull();
       expect(screen.getAllByRole('button', { name: new RegExp(PAYMENT_ID) })).toHaveLength(1);
-      expect(screen.getByRole('button', { name: `Copy ${PAYMENT_ID}` })).toHaveTextContent(
-        'pay_Rk3v…Zp2Lw',
-      );
+      expect(shownText(PAYMENT_ID)).toHaveTextContent('pay_Rk3v…Zp2Lw');
       expect(container).toHaveTextContent('UPI');
     });
 

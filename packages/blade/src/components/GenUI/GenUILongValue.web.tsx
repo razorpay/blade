@@ -4,8 +4,8 @@
  * `pay_Rk3v…Zp2Lw`. Used only with `cardLayout: 'compact'`, in INFO_GROUP values, TABLE text
  * cells and CARD titles and descriptions.
  *
- * - A click copies the whole value. A small copy icon follows the text.
- * - The tooltip shows the whole value on hover and on keyboard focus.
+ * - GenUI's Copyable (a Blade IconButton) follows the text and copies the whole value.
+ * - A cut value shows whole in a tooltip on hover and on keyboard focus.
  * - The text takes its font and colour from its parent, so it matches the Blade text around it.
  *
  * Width: the value takes the width its parent gives it, and is cut only when it does not fit.
@@ -15,7 +15,7 @@
  *
  * Internal to GenUI. A public `truncate="middle"` on `Text` is a separate proposal.
  */
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
   getFontOf,
@@ -25,18 +25,17 @@ import {
   middleTruncate,
 } from './longValueText.web';
 import type { LongValueKind } from './longValueText.web';
+import { Copyable, getCopyableWidth } from './GenUICopyable';
+import type { CopyableSize } from './GenUICopyable';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
-import { CheckIcon, CopyIcon } from '~components/Icons';
-import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Tooltip } from '~components/Tooltip';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-/** The copy icon is Blade's small icon, 12px. */
-const ICON_PX = 12;
-/** spacing.2 (4px) between the text and the icon. */
+/** spacing.2 (4px) between the text and the copy button. */
 const ICON_GAP_STEP = 2;
 /** Room for canvas and layout rounding, so a value that fits is never cut. */
 const SLACK_PX = 2;
-const COPIED_MS = 2000;
 /** The widest a long value gets in a TABLE cell. Past it, the value is cut. */
 const TABLE_LONG_VALUE_MAX_WIDTH_PX = 240;
 
@@ -46,37 +45,24 @@ const Root = styled.span<{ $maxWidth?: number }>`
   max-width: ${({ $maxWidth }) => ($maxWidth ? `${$maxWidth}px` : '100%')};
 `;
 
-/** The measured box. Size containment: what it shows never widens the box. */
+/**
+ * The measured box. Size containment: what it shows never widens the box. No overflow clip: the
+ * text is cut to fit, and the focus rings draw outside the box.
+ */
 const Fit = styled.span`
   display: block;
   contain: inline-size;
-  overflow: hidden;
   white-space: nowrap;
   overflow-wrap: normal;
 `;
 
-/** As wide as its text and icon, so the icon sits right after the text. */
-const CopyButton = styled.button`
+/** As wide as its text and copy button, so the button sits right after the text. */
+const Row = styled.span`
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing[ICON_GAP_STEP]}px;
   max-width: 100%;
   vertical-align: top;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  letter-spacing: inherit;
-  text-align: start;
-  cursor: pointer;
-  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
-
-  &:focus-visible {
-    outline: ${({ theme }) => theme.border.width.thick}px solid
-      ${({ theme }) => theme.colors.surface.border.primary.muted};
-  }
 `;
 
 const Line = styled.span`
@@ -86,21 +72,24 @@ const Line = styled.span`
   white-space: nowrap;
 `;
 
-const IconBox = styled.span`
-  display: inline-flex;
-  flex: none;
+/** A cut value: keyboard focus shows the whole value in the tooltip, with Blade's focus ring. */
+const FocusableLine = styled(Line)`
+  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
+
+  &:focus-visible {
+    ${({ theme }) => getFocusRingStyles({ theme })}
+  }
 `;
 
 /** The hidden copy that sets the preferred width: the value, and the gap and icon with copy. */
-const Sizer = styled.span<{ $isCopyable: boolean }>`
+const Sizer = styled.span<{ $iconRoomPx: number }>`
   display: block;
   height: 0;
   overflow: hidden;
   visibility: hidden;
   white-space: normal;
   word-break: break-all;
-  padding-inline-end: ${({ theme, $isCopyable }) =>
-    ($isCopyable ? ICON_PX + theme.spacing[ICON_GAP_STEP] : 0) + SLACK_PX}px;
+  padding-inline-end: ${({ $iconRoomPx }) => $iconRoomPx + SLACK_PX}px;
 `;
 
 type MiddleTruncateProps = {
@@ -110,6 +99,8 @@ type MiddleTruncateProps = {
   isCopyable?: boolean;
   /** The widest the value gets, in px. Default: the parent's width. */
   maxWidth?: number;
+  /** The copy button's size: `small` next to small text. */
+  copySize?: CopyableSize;
 };
 
 const MiddleTruncate = ({
@@ -117,12 +108,12 @@ const MiddleTruncate = ({
   kind,
   isCopyable = true,
   maxWidth,
+  copySize = 'medium',
 }: MiddleTruncateProps): React.ReactElement => {
   const { theme } = useTheme();
-  const iconRoom = isCopyable ? ICON_PX + theme.spacing[ICON_GAP_STEP] : 0;
+  const iconRoom = isCopyable ? getCopyableWidth(copySize) + theme.spacing[ICON_GAP_STEP] : 0;
   const fitRef = useRef<HTMLSpanElement>(null);
   const [text, setText] = useState(value);
-  const [isCopied, setIsCopied] = useState(false);
 
   useLayoutEffect(() => {
     const fitBox = fitRef.current;
@@ -153,54 +144,28 @@ const MiddleTruncate = ({
     };
   }, [value, kind, iconRoom]);
 
-  useEffect(() => {
-    if (!isCopied) return undefined;
-    const timer = setTimeout(() => setIsCopied(false), COPIED_MS);
-    return () => clearTimeout(timer);
-  }, [isCopied]);
-
-  const handleCopy = (): void => {
-    void navigator.clipboard
-      ?.writeText(value)
-      .then(() => setIsCopied(true))
-      .catch(() => undefined);
-  };
-
   const isCut = text !== value;
-  let tooltip = 'Copy';
-  if (isCopied) tooltip = 'Copied';
-  else if (isCut) tooltip = value;
+  const line = isCut ? (
+    <Tooltip content={value} placement="top">
+      <FocusableLine tabIndex={0}>{text}</FocusableLine>
+    </Tooltip>
+  ) : (
+    <Line>{text}</Line>
+  );
 
-  let content: React.ReactNode = <Line>{text}</Line>;
-  if (isCopyable) {
-    content = (
-      <Tooltip content={tooltip} placement="top">
-        <CopyButton type="button" aria-label={`Copy ${value}`} onClick={handleCopy}>
-          <Line>{text}</Line>
-          <IconBox aria-hidden>
-            {isCopied ? (
-              <CheckIcon size="small" color="surface.icon.gray.muted" />
-            ) : (
-              <CopyIcon size="small" color="surface.icon.gray.muted" />
-            )}
-          </IconBox>
-        </CopyButton>
-      </Tooltip>
-    );
-  } else if (isCut) {
-    content = (
-      <Tooltip content={value} placement="top">
-        <TooltipInteractiveWrapper>
-          <Line>{text}</Line>
-        </TooltipInteractiveWrapper>
-      </Tooltip>
-    );
-  }
+  const content = isCopyable ? (
+    <Row>
+      {line}
+      <Copyable value={value} size={copySize} />
+    </Row>
+  ) : (
+    line
+  );
 
   return (
     <Root data-genui-long-value={kind} $maxWidth={maxWidth}>
       <Fit ref={fitRef}>{content}</Fit>
-      <Sizer aria-hidden $isCopyable={isCopyable}>
+      <Sizer aria-hidden $iconRoomPx={iconRoom}>
         {value}
       </Sizer>
     </Root>
@@ -219,12 +184,12 @@ const EndAligned = styled.div`
 const InfoGroupLongValue = ({ value, kind }: { value: string; kind: LongValueKind }) => (
   <EndAligned>
     <Text as="div" size="small" weight="medium" color="surface.text.gray.subtle">
-      <MiddleTruncate value={value} kind={kind} />
+      <MiddleTruncate value={value} kind={kind} copySize="small" />
     </Text>
   </EndAligned>
 );
 
-/** A TABLE text cell's long value. It copies, so the cell needs no copy button of its own. */
+/** A TABLE text cell's long value, with the same copy button as other copyable cells. */
 const TableCellLongValue = ({ value, kind }: { value: string; kind: LongValueKind }) => (
   <Text size="medium">
     <MiddleTruncate value={value} kind={kind} maxWidth={TABLE_LONG_VALUE_MAX_WIDTH_PX} />
