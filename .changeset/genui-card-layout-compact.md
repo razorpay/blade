@@ -12,5 +12,5 @@ What changes:
 - A CARD with a CHART and no TABLE shows no divider under its header.
 - A TABLE inside a CARD sits flush to the card's sides and the card clips it to its corners.
 - INFO_GROUP, inside and outside a CARD: label and value on one row, small text, values right-aligned. Before, values were medium text and left-aligned.
-- Long ids, emails, VPAs and URLs in INFO_GROUP values, TABLE text cells and CARD titles, inside and outside a CARD: one line, cut in the middle, with the full value in a tooltip and a copy button. Before, they wrapped.
+- Long ids, emails, VPAs and URLs in INFO_GROUP values, TABLE text cells and CARD titles, inside and outside a CARD: one line, cut in the middle, with the full value in a tooltip. INFO_GROUP values, CARD titles and `copyable` TABLE cells also get a copy button. Before, they wrapped.
 - GRID, inside and outside a CARD: columns are never under 120px, so metric tiles wrap in a narrow box. Before, columns shrank to fit.

@@ -312,6 +312,25 @@ describe('GenUI card layout', () => {
       expect(container).toHaveTextContent('UPI');
     });
 
+    it('gives a long value no copy button when its TABLE cell is not copyable', () => {
+      setBoxWidth(roomFor(14));
+      renderCards([
+        {
+          component: 'TABLE',
+          headers: ['Payment', 'Method'],
+          rows: [
+            [
+              { component: 'TEXT', value: PAYMENT_ID },
+              { component: 'TEXT', value: 'UPI' },
+            ],
+          ],
+        } as GenUIComponent,
+      ]);
+
+      expect(longValueOf(PAYMENT_ID)).toBeDefined();
+      expect(screen.queryByRole('button', { name: `Copy ${PAYMENT_ID}` })).toBeNull();
+    });
+
     it('cuts a long value in a CARD title, after a short label, with no copy when the card shows it with copy', () => {
       setBoxWidth(roomFor(14));
       renderCards([

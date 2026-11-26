@@ -181,23 +181,19 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
 }
 
 .c45.c45.c45.c45.c45 {
-  display: inline-block;
-}
-
-.c48.c48.c48.c48.c48 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c49.c49.c49.c49.c49 {
+.c46.c46.c46.c46.c46 {
   text-align: left;
   height: 20px;
   background-color: hsla(150,100%,28%,0.09);
 }
 
-.c51.c51.c51.c51.c51 {
+.c48.c48.c48.c48.c48 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -218,7 +214,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   padding-left: 4px;
 }
 
-.c53.c53.c53.c53.c53 {
+.c50.c50.c50.c50.c50 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -228,7 +224,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   flex-direction: row;
 }
 
-.c54.c54.c54.c54.c54 {
+.c51.c51.c51.c51.c51 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -243,13 +239,13 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   position: relative;
 }
 
-.c58.c58.c58.c58.c58 {
+.c55.c55.c55.c55.c55 {
   text-align: left;
   height: 20px;
   background-color: hsla(200,100%,41%,0.09);
 }
 
-.c61.c61.c61.c61.c61 {
+.c58.c58.c58.c58.c58 {
   text-align: left;
   height: 20px;
   background-color: hsla(4,85%,44%,0.09);
@@ -299,7 +295,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   animation-delay: 0.6s;
 }
 
-.c64.c64.c64.c64.c64 {
+.c61.c61.c61.c61.c61 {
   position: absolute;
   top: 0;
   left: 0;
@@ -316,56 +312,6 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   animation: edOiij-450290765 1.5s ease-out forwards;
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
-}
-
-.c46.c46.c46.c46.c46 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(204,9%,42%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c46.c46.c46.c46.c46:hover:not([disabled]) {
-  color: hsla(200,10%,18%,1);
-  background-color: transparent;
-}
-
-.c46.c46.c46.c46.c46:focus-visible {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-  color: hsla(200,10%,18%,1);
-  background-color: transparent;
-}
-
-.c46.c46.c46.c46.c46:active {
-  color: hsla(200,10%,18%,1);
 }
 
 .c16.c16.c16.c16.c16 {
@@ -437,7 +383,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   padding: 0;
 }
 
-.c52.c52.c52.c52.c52 {
+.c49.c49.c49.c49.c49 {
   color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -462,7 +408,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   margin-left: 4px;
 }
 
-.c55.c55.c55.c55.c55 {
+.c52.c52.c52.c52.c52 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -481,7 +427,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   margin-right: 2px;
 }
 
-.c56.c56.c56.c56.c56 {
+.c53.c53.c53.c53.c53 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -498,7 +444,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   padding: 0;
 }
 
-.c57.c57.c57.c57.c57 {
+.c54.c54.c54.c54.c54 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -516,7 +462,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   opacity: 0.64;
 }
 
-.c60.c60.c60.c60.c60 {
+.c57.c57.c57.c57.c57 {
   color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -541,7 +487,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   margin-left: 4px;
 }
 
-.c63.c63.c63.c63.c63 {
+.c60.c60.c60.c60.c60 {
   color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -580,34 +526,20 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
 }
 
 .c43.c43.c43.c43.c43 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 4px;
-  max-width: 100%;
-  vertical-align: top;
-}
-
-.c44.c44.c44.c44.c44 {
   display: block;
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.c47.c47.c47.c47.c47 {
+.c44.c44.c44.c44.c44 {
   display: block;
   height: 0;
   overflow: hidden;
   visibility: hidden;
   white-space: normal;
   word-break: break-all;
-  padding-inline-end: 22px;
+  padding-inline-end: 2px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -654,7 +586,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   position: relative;
 }
 
-.c50.c50.c50.c50.c50 {
+.c47.c47.c47.c47.c47 {
   background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -669,7 +601,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   width: fit-content;
 }
 
-.c59.c59.c59.c59.c59 {
+.c56.c56.c56.c56.c56 {
   background-color: hsla(200,100%,41%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -684,7 +616,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
   width: fit-content;
 }
 
-.c62.c62.c62.c62.c62 {
+.c59.c59.c59.c59.c59 {
   background-color: hsla(4,85%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -1324,53 +1256,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              pay_Rk3vXXXXXXZp2Lw
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy pay_Rk3vXXXXXXZp2Lw"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            pay_Rk3vXXXXXXZp2Lw
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           pay_Rk3vXXXXXXZp2Lw
                                                         </span>
@@ -1412,53 +1303,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              customer.name.longhandle@examplecompany.co.in
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy customer.name.longhandle@examplecompany.co.in"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            customer.name.longhandle@examplecompany.co.in
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           customer.name.longhandle@examplecompany.co.in
                                                         </span>
@@ -1486,19 +1336,19 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c48"
+                                                      class="c45"
                                                       data-blade-component="badge"
                                                     >
                                                       <div
-                                                        class="c49 c50"
+                                                        class="c46 c47"
                                                         data-blade-component="base-box"
                                                       >
                                                         <div
-                                                          class="c51"
+                                                          class="c48"
                                                           data-blade-component="base-box"
                                                         >
                                                           <p
-                                                            class="c52"
+                                                            class="c49"
                                                             data-blade-component="text"
                                                             letter-spacing="50"
                                                           >
@@ -1529,28 +1379,28 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c53"
+                                                      class="c50"
                                                       data-blade-component="amount"
                                                     >
                                                       <div
-                                                        class="c54"
+                                                        class="c51"
                                                         data-blade-component="base-box"
                                                       >
                                                         <span
-                                                          class="c55"
+                                                          class="c52"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
                                                           ₹
                                                         </span>
                                                         <span
-                                                          class="c56"
+                                                          class="c53"
                                                           data-blade-component="base-text"
                                                         >
                                                           2,499
                                                         </span>
                                                         <span
-                                                          class="c57"
+                                                          class="c54"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
@@ -1603,53 +1453,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              pay_Rk3vXXXXXXAb12C
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy pay_Rk3vXXXXXXAb12C"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            pay_Rk3vXXXXXXAb12C
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           pay_Rk3vXXXXXXAb12C
                                                         </span>
@@ -1691,53 +1500,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              another.customer@example.com
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy another.customer@example.com"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            another.customer@example.com
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           another.customer@example.com
                                                         </span>
@@ -1765,19 +1533,19 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c48"
+                                                      class="c45"
                                                       data-blade-component="badge"
                                                     >
                                                       <div
-                                                        class="c58 c59"
+                                                        class="c55 c56"
                                                         data-blade-component="base-box"
                                                       >
                                                         <div
-                                                          class="c51"
+                                                          class="c48"
                                                           data-blade-component="base-box"
                                                         >
                                                           <p
-                                                            class="c60"
+                                                            class="c57"
                                                             data-blade-component="text"
                                                             letter-spacing="50"
                                                           >
@@ -1808,28 +1576,28 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c53"
+                                                      class="c50"
                                                       data-blade-component="amount"
                                                     >
                                                       <div
-                                                        class="c54"
+                                                        class="c51"
                                                         data-blade-component="base-box"
                                                       >
                                                         <span
-                                                          class="c55"
+                                                          class="c52"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
                                                           ₹
                                                         </span>
                                                         <span
-                                                          class="c56"
+                                                          class="c53"
                                                           data-blade-component="base-text"
                                                         >
                                                           850
                                                         </span>
                                                         <span
-                                                          class="c57"
+                                                          class="c54"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
@@ -1882,53 +1650,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              pay_Rk3vXXXXXXCd34E
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy pay_Rk3vXXXXXXCd34E"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            pay_Rk3vXXXXXXCd34E
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           pay_Rk3vXXXXXXCd34E
                                                         </span>
@@ -1970,53 +1697,12 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                           <span
                                                             class="c43"
                                                           >
-                                                            <span
-                                                              class="c44"
-                                                            >
-                                                              third@example.com
-                                                            </span>
-                                                            <div
-                                                              aria-label="Copy"
-                                                              class="c45"
-                                                              data-blade-component="tooltip-interactive-wrapper"
-                                                              data-testid="tooltip-interactive-wrapper"
-                                                              tabindex="-1"
-                                                            >
-                                                              <button
-                                                                aria-label="Copy third@example.com"
-                                                                class="c46"
-                                                                data-blade-component="icon-button"
-                                                                type="button"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden="true"
-                                                                  class="Svgweb__StyledSvg-vcmjs8-0"
-                                                                  data-blade-component="icon"
-                                                                  fill="none"
-                                                                  height="16px"
-                                                                  viewBox="0 0 24 24"
-                                                                  width="16px"
-                                                                >
-                                                                  <path
-                                                                    d="M3 4C3 3.44772 3.44772 3 4 3H13C13.5523 3 14 3.44772 14 4V5C14 5.55228 14.4477 6 15 6C15.5523 6 16 5.55228 16 5V4C16 2.34315 14.6569 1 13 1H4C2.34315 1 1 2.34315 1 4V13C1 14.6569 2.34315 16 4 16H5C5.55228 16 6 15.5523 6 15C6 14.4477 5.55228 14 5 14H4C3.44772 14 3 13.5523 3 13V4Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                  />
-                                                                  <path
-                                                                    clip-rule="evenodd"
-                                                                    d="M11 8C9.34315 8 8 9.34315 8 11V20C8 21.6569 9.34315 23 11 23H20C21.6569 23 23 21.6569 23 20V11C23 9.34315 21.6569 8 20 8H11ZM10 11C10 10.4477 10.4477 10 11 10H20C20.5523 10 21 10.4477 21 11V20C21 20.5523 20.5523 21 20 21H11C10.4477 21 10 20.5523 10 20V11Z"
-                                                                    data-blade-component="svg-path"
-                                                                    fill="currentColor"
-                                                                    fill-rule="evenodd"
-                                                                  />
-                                                                </svg>
-                                                              </button>
-                                                            </div>
+                                                            third@example.com
                                                           </span>
                                                         </span>
                                                         <span
                                                           aria-hidden="true"
-                                                          class="c47"
+                                                          class="c44"
                                                         >
                                                           third@example.com
                                                         </span>
@@ -2044,19 +1730,19 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c48"
+                                                      class="c45"
                                                       data-blade-component="badge"
                                                     >
                                                       <div
-                                                        class="c61 c62"
+                                                        class="c58 c59"
                                                         data-blade-component="base-box"
                                                       >
                                                         <div
-                                                          class="c51"
+                                                          class="c48"
                                                           data-blade-component="base-box"
                                                         >
                                                           <p
-                                                            class="c63"
+                                                            class="c60"
                                                             data-blade-component="text"
                                                             letter-spacing="50"
                                                           >
@@ -2087,28 +1773,28 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                                     pointer-events="auto"
                                                   >
                                                     <div
-                                                      class="c53"
+                                                      class="c50"
                                                       data-blade-component="amount"
                                                     >
                                                       <div
-                                                        class="c54"
+                                                        class="c51"
                                                         data-blade-component="base-box"
                                                       >
                                                         <span
-                                                          class="c55"
+                                                          class="c52"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
                                                           ₹
                                                         </span>
                                                         <span
-                                                          class="c56"
+                                                          class="c53"
                                                           data-blade-component="base-text"
                                                         >
                                                           120
                                                         </span>
                                                         <span
-                                                          class="c57"
+                                                          class="c54"
                                                           data-blade-component="base-text"
                                                           opacity="0.64"
                                                         >
@@ -2128,7 +1814,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="c64"
+                                  class="c61"
                                 />
                               </div>
                             </div>
@@ -2141,7 +1827,7 @@ exports[`GenUI card layout snapshots renders cardWithTable 1`] = `
               </div>
             </div>
             <div
-              class="c64"
+              class="c61"
             />
           </div>
         </div>

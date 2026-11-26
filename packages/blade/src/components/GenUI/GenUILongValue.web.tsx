@@ -190,9 +190,23 @@ const InfoGroupLongValue = ({ value, kind }: { value: string; kind: LongValueKin
 );
 
 /** A TABLE text cell's long value, with the same copy button as other copyable cells. */
-const TableCellLongValue = ({ value, kind }: { value: string; kind: LongValueKind }) => (
+const TableCellLongValue = ({
+  value,
+  kind,
+  isCopyable,
+}: {
+  value: string;
+  kind: LongValueKind;
+  /** The cell's `copyable`: only a copyable cell gets the copy button. */
+  isCopyable: boolean;
+}) => (
   <Text size="medium">
-    <MiddleTruncate value={value} kind={kind} maxWidth={TABLE_LONG_VALUE_MAX_WIDTH_PX} />
+    <MiddleTruncate
+      value={value}
+      kind={kind}
+      isCopyable={isCopyable}
+      maxWidth={TABLE_LONG_VALUE_MAX_WIDTH_PX}
+    />
   </Text>
 );
 
@@ -250,10 +264,11 @@ type SchemaNode = {
   items?: unknown;
   rows?: unknown;
   value?: unknown;
+  copyable?: boolean;
 };
 
 /**
- * The long values that show with copy inside a card's children: INFO_GROUP values and TABLE
+ * The long values that show with copy inside a card's children: INFO_GROUP values and copyable TABLE
  * text cells, at any depth.
  */
 const getValuesWithCopy = (children: unknown): Set<string> => {
@@ -275,7 +290,7 @@ const getValuesWithCopy = (children: unknown): Set<string> => {
         node.rows.forEach((row: unknown) => {
           if (!Array.isArray(row)) return;
           row.forEach((cell: SchemaNode | undefined) => {
-            if (cell?.component === 'TEXT') add(cell.value);
+            if (cell?.component === 'TEXT' && cell.copyable) add(cell.value);
           });
         });
       }

@@ -1189,10 +1189,16 @@ const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => 
   // Handle component-based cell types
   switch (cell.component) {
     case 'TEXT': {
-      // A long value stays on one line, cut in the middle. It copies.
+      // A long value stays on one line, cut in the middle. It copies only when the cell is copyable.
       const longValueKind = getLongValueKind(cell.value);
       if (longValueKind && cell.value) {
-        return <TableCellLongValue value={cell.value} kind={longValueKind} />;
+        return (
+          <TableCellLongValue
+            value={cell.value}
+            kind={longValueKind}
+            isCopyable={Boolean(cell.copyable)}
+          />
+        );
       }
       if (cell.copyable && cell.value) {
         return <CopyableText value={cell.value} />;
