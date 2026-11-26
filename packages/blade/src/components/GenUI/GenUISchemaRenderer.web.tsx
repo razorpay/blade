@@ -5,7 +5,7 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import type { GenUIComponent } from './GenUIComponents';
 import { useGenUI, useGenUIComponentActions, GenUIContext } from './GenUIContext';
 import type { GenUIBlockLevelComponentType } from './types';
-import { getGenUIComponentTopSpacing } from './GenUISpacing';
+import { genUIBlockRingMarginPx, getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
 import { useResize } from '~utils/useResize';
@@ -111,7 +111,7 @@ const AnimatedBorderContainer = styled.div<{ $showContent?: boolean }>`
   position: relative;
   width: 100%;
   border-radius: 12px;
-  margin: 12px 0;
+  margin: ${genUIBlockRingMarginPx}px 0;
 `;
 
 /**

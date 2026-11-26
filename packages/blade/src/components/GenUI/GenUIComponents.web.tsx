@@ -1509,6 +1509,8 @@ const CompactCardComponent = ({ title, description, footer, children }: CardComp
     hasFooter: Boolean(footer),
     hasTableActionSlot: Boolean(componentActions?.TABLE),
     cardPaddingPx,
+    // compactCardRowGap
+    cardRowGapPx: theme.spacing[3],
     cardEdgePx,
   });
   const valuesWithCopy = useMemo(() => getValuesWithCopy(children), [children]);

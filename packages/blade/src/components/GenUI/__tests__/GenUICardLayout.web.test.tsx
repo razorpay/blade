@@ -422,6 +422,10 @@ describe('GenUI cardLayout compact', () => {
 
       const surface = container.querySelector("[data-blade-component='table']")
         ?.parentElement as HTMLElement;
+      // FlushTableFrame removes the frame from Table's first child. If Table's DOM changes,
+      // this fails instead of the frame coming back in compact cards.
+      // jsdom drops `border: none` to an empty value. Outside a card the same surface is solid.
+      expect(['', 'none']).toContain(style(surface).borderTopStyle);
       expect(style(surface).borderRadius).toBe('0');
       expect(style(surface).boxShadow).toBe('none');
 
@@ -454,6 +458,7 @@ describe('GenUI cardLayout compact', () => {
       ]);
       const surface = container.querySelector("[data-blade-component='table']")
         ?.parentElement as HTMLElement;
+      expect(style(surface).borderTopStyle).toBe('solid');
       expect(style(surface).boxShadow).not.toBe('none');
     });
   });

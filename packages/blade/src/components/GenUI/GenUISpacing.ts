@@ -16,6 +16,9 @@ const genUISpacingContract = {
   compactCardRowGap: 'spacing.3',
 } as const;
 
+/** The vertical margin of the gradient ring around a block-level component, in px. */
+const genUIBlockRingMarginPx = 12;
+
 const cardTableComponentTypes = new Set(['CARD', 'TABLE']);
 const actionComponentTypes = new Set(['BUTTON', 'LINK']);
 
@@ -61,4 +64,4 @@ const getGenUIComponentTopSpacing = (
   return undefined;
 };
 
-export { genUISpacingContract, getGenUIComponentTopSpacing };
+export { genUISpacingContract, genUIBlockRingMarginPx, getGenUIComponentTopSpacing };

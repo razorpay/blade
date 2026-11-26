@@ -5,7 +5,7 @@
  * through GenUICardBlockContext. Blocks that own vertical space (GRID, INFO_GROUP, STACK, ALERT,
  * TABLE) drop it on a trimmed side.
  *
- * - Between two blocks: one row gap, 8px.
+ * - Between two blocks: one row gap, compactCardRowGap (8px).
  * - Next to a DIVIDER: the divider's 12px only. No row gap, margin or padding stacks on it. The
  *   CARD header's divider counts for the first block.
  * - The last block: no space below it, so the card's 16px padding is the bottom edge.
@@ -16,12 +16,9 @@
  *   bottom edge. The card clips it to its rounded corners.
  */
 import React from 'react';
+import { genUIBlockRingMarginPx as BLOCK_RING_MARGIN_PX } from './GenUISpacing';
 import type { GenUIBaseComponent } from './types';
 
-/** The row gap between blocks in a card (compactCardRowGap), in px. */
-const CARD_ROW_GAP_PX = 8;
-/** The vertical margin of the gradient ring around a block-level component, in px. */
-const BLOCK_RING_MARGIN_PX = 12;
 /** The narrowest a GRID column gets, in px: a crore amount on one line. */
 const GRID_MIN_COLUMN_PX = 120;
 
@@ -90,6 +87,8 @@ type CardShape = {
   hasTableActionSlot: boolean;
   /** The card's padding, in px. */
   cardPaddingPx: number;
+  /** The row gap between blocks (compactCardRowGap), in px. */
+  cardRowGapPx: number;
   /** The card's edge, drawn inside its padding, in px. */
   cardEdgePx: number;
 };
@@ -107,7 +106,7 @@ const getCardRowLayouts = (children: unknown[], card: CardShape): CardRowLayout[
     const hasDividerBelow = !isLast && isDivider(children[index + 1]);
     const isTrimmedTop = hasDividerAbove;
     const isTrimmedBottom = hasDividerBelow || isLast;
-    const rowGap = isFirst || isDivider(child) || hasDividerAbove ? 0 : CARD_ROW_GAP_PX;
+    const rowGap = isFirst || isDivider(child) || hasDividerAbove ? 0 : card.cardRowGapPx;
 
     if (!isTable(child)) {
       return {
