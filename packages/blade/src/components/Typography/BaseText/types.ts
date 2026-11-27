@@ -52,6 +52,10 @@ export type BaseTextProps = {
    */
   as?: As;
   textAlign?: 'center' | 'justify' | 'left' | 'right';
+  /**
+   * Web only. Browsers without `text-wrap` support wrap normally.
+   */
+  textWrap?: 'balance' | 'pretty';
   truncateAfterLines?: number;
   className?: string;
   style?: React.CSSProperties;
@@ -79,6 +83,7 @@ export type StyledBaseTextProps = Pick<
   | 'letterSpacing'
   | 'as'
   | 'textAlign'
+  | 'textWrap'
   | 'numberOfLines'
   | 'truncateAfterLines'
   | 'wordBreak'

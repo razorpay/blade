@@ -3,7 +3,9 @@ import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { BaseText } from '~components/Typography/BaseText';
+import { getHeadingProps } from '~components/Typography/Heading/Heading';
+import { getTextProps } from '~components/Typography/Text/Text';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -14,6 +16,20 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
   ref,
 ) => {
   const tokens = emptyStateSizeTokens[size];
+  // Title and description render BaseText with Heading / Text props so they can use the web-only
+  // `textWrap="balance"`: centred copy then doesn't leave a single word on its last line.
+  const titleProps = getHeadingProps({
+    size: tokens.titleSize,
+    weight: 'semibold',
+    color: 'surface.text.gray.subtle',
+  });
+  const descriptionProps = getTextProps({
+    variant: 'body',
+    size: tokens.descriptionSize,
+    weight: 'regular',
+    color: 'surface.text.gray.muted',
+    textAlign: 'center',
+  });
 
   return (
     <BaseBox
@@ -34,26 +50,15 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
       ) : null}
       <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
         {title ? (
-          <Heading
-            textAlign="center"
-            size={tokens.titleSize}
-            weight="semibold"
-            color="surface.text.gray.subtle"
-          >
+          <BaseText {...titleProps} textAlign="center" textWrap="balance">
             {title}
-          </Heading>
+          </BaseText>
         ) : null}
 
         {description ? (
-          <Text
-            textAlign="center"
-            size={tokens.descriptionSize}
-            color="surface.text.gray.muted"
-            weight="regular"
-            variant="body"
-          >
+          <BaseText {...descriptionProps} as="p" textWrap="balance">
             {description}
-          </Text>
+          </BaseText>
         ) : null}
       </BaseBox>
 

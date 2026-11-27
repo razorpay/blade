@@ -63,6 +63,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -82,6 +83,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -317,6 +319,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -336,6 +339,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -509,6 +513,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -528,6 +533,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -686,6 +692,7 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -760,6 +767,7 @@ exports[`<EmptyState /> should render EmptyState with title only 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -839,6 +847,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -858,6 +867,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -955,6 +965,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -974,6 +985,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1071,6 +1083,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -1090,6 +1103,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -1187,6 +1201,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  text-wrap: balance;
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 2rem;
@@ -1206,6 +1221,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
+  text-wrap: balance;
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
