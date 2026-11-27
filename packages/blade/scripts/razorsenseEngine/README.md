@@ -13,6 +13,10 @@ written by hand.
   The build stops if a comp under `src/components/Spark` turns an effect or refraction on, and so does a test
   (`RazorSenseEngine/__tests__/compsDrawable.web.test.ts`), since comps are exported again without a build. To use one again,
   remove its cut from `buildFreshEngine.js` and build.
+- `FreshSwitches.view` (off unless a component asks; Button's AI hovers do): each layer and the accumulation are made only over
+  what the view can read, on the texel grid they have whole. A hover shows a small spot of a card-sized comp, and its layers
+  were the whole comp (an Ask Ray hover took ~74 MB; with it, ~14 MB). The picture is the same to within one 8-bit step
+  (rounding: the worst is 2/255 as composited, checked frame by frame against it off, at 1x, 2x and 3x).
 - The engine ships minified with terser (laid out again by prettier), so it's as small in an app whose bundler minifies with
   esbuild (Vite) as in one using terser (webpack).
 - The build needs `esbuild` and `terser`: both are in `packages/blade`'s devDependencies, so it doesn't rely on another package
