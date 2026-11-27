@@ -17,3 +17,5 @@ export { RazorSenseSuccess } from './RazorSenseSuccess';
 export type { RazorSenseSuccessProps } from './RazorSenseSuccess';
 export { RazorSenseChatBackground } from './RazorSenseChatBackground';
 export type { RazorSenseChatBackgroundProps } from './RazorSenseChatBackground';
+export { Ray } from './Ray';
+export type { RayProps, RayState, RayIdle, RaySize, RayOutcome } from './Ray';

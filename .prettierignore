@@ -27,6 +27,8 @@ yarn-error.log*
 packages/blade-svelte/src/lint/index.json
 # generated: blade-svelte's bundled UnoCSS config (scripts/build-uno-config.mjs)
 packages/blade-svelte/uno/config.js
+# generated: Ray's engine, exported from Ray Studio (ray-spec/studio/blade/export.mjs); it stays byte-identical to the export
+packages/blade/src/components/Spark/Ray/engine/
 
 # vendored: Razorsensation's engine source, in its own style; buildFreshEngine.js patches it by exact text, so a reformat would break the build
 packages/blade/scripts/razorsenseEngine/source/
