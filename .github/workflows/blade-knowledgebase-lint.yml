@@ -14,6 +14,7 @@ jobs:
   validate:
     name: Knowledgebase Lint
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    if: github.event.pull_request.title != 'build: update version'
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
