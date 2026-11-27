@@ -185,9 +185,13 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   /**
    * Controls how the selected date is displayed in the input field.
    *
-   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
-   *   Useful for presets where showing the label is more meaningful than showing actual dates.
-   * - `default`: Shows the actual date values in the input field.
+   * - `compact`: Shows a short, readable value while the picker is closed:
+   *   - If a preset is selected, shows its label (e.g., "Last 7 days").
+   *   - Otherwise shows a humanised date (e.g., "17 Nov 2026", "11-17 Nov 2026" or "28 Oct - 3 Nov 2026").
+   *     This applies to the day picker (`format="DD/MM/YYYY"`) only, and works without presets.
+   *   The input switches back to the editable `DD/MM/YYYY` value while it is focused or open.
+   *   On `FilterChipDatePicker`, the chip always shows this compact value.
+   * - `default`: Shows the actual date values (e.g., "11/11/2026 - 17/11/2026").
    *
    * @default 'default'
    */

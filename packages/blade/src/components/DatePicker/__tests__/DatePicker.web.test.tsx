@@ -172,6 +172,67 @@ describe('<FilterChipDatePicker/> clear button', () => {
   });
 });
 
+describe('<FilterChipDatePicker/> displayFormat', () => {
+  it('should show DD/MM/YYYY dates by default', () => {
+    const { queryByText } = renderWithTheme(
+      <FilterChipDatePicker
+        label="Date range"
+        selectionType="range"
+        defaultValue={[dayjs('2026-11-11').toDate(), dayjs('2026-11-17').toDate()]}
+      />,
+    );
+
+    expect(queryByText('11/11/2026 - 17/11/2026')).toBeTruthy();
+  });
+
+  it('should show a humanised range in compact mode without presets', () => {
+    const { queryByText } = renderWithTheme(
+      <FilterChipDatePicker
+        label="Date range"
+        selectionType="range"
+        displayFormat="compact"
+        defaultValue={[dayjs('2026-11-11').toDate(), dayjs('2026-11-17').toDate()]}
+      />,
+    );
+
+    expect(queryByText('11-17 Nov 2026')).toBeTruthy();
+    expect(queryByText('11/11/2026 - 17/11/2026')).toBeFalsy();
+  });
+
+  it('should show a humanised single date in compact mode', () => {
+    const { queryByText } = renderWithTheme(
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        displayFormat="compact"
+        defaultValue={dayjs('2026-11-17').toDate()}
+      />,
+    );
+
+    expect(queryByText('17 Nov 2026')).toBeTruthy();
+  });
+
+  it('should show the preset label in compact mode when the value matches a preset', () => {
+    const today = dayjs().startOf('day');
+    const { queryByText } = renderWithTheme(
+      <FilterChipDatePicker
+        label="Date range"
+        selectionType="range"
+        displayFormat="compact"
+        presets={[
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'day').toDate(), date],
+          },
+        ]}
+        defaultValue={[today.subtract(7, 'day').toDate(), today.toDate()]}
+      />,
+    );
+
+    expect(queryByText('Past 7 days')).toBeTruthy();
+  });
+});
+
 describe('<FilterChipDatePicker/> open state', () => {
   jest.setTimeout(15000);
 

@@ -206,36 +206,88 @@ type FilterChipSelectInputProps = {
   label: string;
 
   /**
-   * Current value(s) selected
+   * Name of the filter, passed back in `onChange` and `onClearButtonClick`
+   */
+  name?: string;
+
+  /**
+   * Current value(s) selected (controlled mode)
    */
   value?: string | string[];
 
   /**
    * Callback when selection changes
    */
-  onChange?: (value: string | string[]) => void;
+  onChange?: (props: { name: string; values: string[]; selectedGroups?: string[] }) => void;
 
   /**
-   * Callback when clear button is clicked
+   * Callback when the chip's clear (cross) button is clicked.
+   * In controlled mode, reset `value` here; the chip cannot clear itself.
    */
-  onClearButtonClick?: (value: string | string[]) => void;
+  onClearButtonClick?: (props: { name: string; values: string[] }) => void;
+
+  /**
+   * Whether to render the clear (cross) button when the chip has a selected value.
+   * Set to `false` for filters that must always hold a value (e.g. a mandatory default),
+   * so users can change the value but cannot remove the filter.
+   * @default true
+   */
+  showClearButton?: boolean;
 
   /**
    * Whether the filter chip is disabled
    * @default false
    */
   isDisabled?: boolean;
-} & StyledPropsBlade;
+
+  /**
+   * Accessibility label for the chip trigger
+   */
+  accessibilityLabel?: string;
+} & DataAnalyticsAttribute &
+  TestID;
 
 /**
  * Props for the FilterChipGroup component
  */
 type FilterChipGroupProps = {
   /**
-   * Children of the filter chip group (typically FilterChipSelectInput components)
+   * Children of the filter chip group (typically FilterChipSelectInput / FilterChipDatePicker)
    */
   children: React.ReactNode;
-} & StyledPropsBlade;
+
+  /**
+   * Fired when the group's **Clear** action is clicked. Clear empties every chip in the group,
+   * including chips with `showClearButton={false}`.
+   */
+  onClearButtonClick?: () => void;
+
+  /**
+   * Fired when the group's **Reset** action is clicked. Providing this renders the Reset action.
+   * Reset does not empty chips; restore each filter's default value in this callback.
+   */
+  onResetButtonClick?: () => void;
+
+  /**
+   * Whether to show the group-level **Clear** action (not the per-chip cross).
+   * Set to `false` and provide `onResetButtonClick` for a group that should only offer Reset.
+   * @default true
+   */
+  showClearButton?: boolean;
+
+  /**
+   * Label for the Clear action
+   * @default "Clear Filter" (pluralised to "Clear Filters" when more than one filter is selected)
+   */
+  clearButtonText?: string;
+
+  /**
+   * Label for the Reset action
+   * @default "Reset"
+   */
+  resetButtonText?: string;
+} & DataAnalyticsAttribute &
+  TestID;
 
 /**
  * Type for the Icon component
@@ -259,6 +311,8 @@ For fewer options (2–5), prefer visible selection controls: `Radio` (longer la
 - Use predefined triggers: `SelectInput`, `AutoComplete`, `DropdownButton`, `DropdownLink`, or `FilterChipSelectInput`.
 - Use `selectionType="multiple"` when users should select more than one option.
 - Use `DropdownHeader` and `DropdownFooter` for structuring complex selection overlays.
+- For a filter that must always be applied (users can change it but not remove it), pass `showClearButton={false}` to `FilterChipSelectInput` or `FilterChipDatePicker` and give it a default `value`.
+- When a `FilterChipGroup` contains such a filter, use `showClearButton={false}` with `onResetButtonClick` on the group, and restore defaults in the Reset callback. The group's Clear action would otherwise empty the mandatory filter too.
 
 **Don't**
 
@@ -539,4 +593,73 @@ const AutoCompleteDropdownExample = () => {
     </Box>
   );
 };
+```
+
+### Filter Chips with a Filter That Cannot Be Removed
+
+This example shows a filter bar where the date range must always be applied. The date chip hides its clear (cross) button with `showClearButton={false}`, so users can change the range but not remove it. The payment method chip can still be cleared. The group shows only a Reset action, which restores the defaults, because a Clear action would also empty the date range.
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Dropdown,
+  DropdownOverlay,
+  ActionList,
+  ActionListItem,
+  FilterChipGroup,
+  FilterChipSelectInput,
+  FilterChipDatePicker,
+} from '@razorpay/blade/components';
+import dayjs from 'dayjs';
+
+type DateRange = [Date | null, Date | null];
+
+const getDefaultDateRange = (): DateRange => [
+  dayjs().subtract(7, 'days').toDate(),
+  dayjs().toDate(),
+];
+
+const MandatoryFilterExample = () => {
+  const [dateRange, setDateRange] = useState<DateRange>(getDefaultDateRange);
+  const [paymentMethods, setPaymentMethods] = useState<string[]>([]);
+
+  return (
+    <FilterChipGroup
+      showClearButton={false}
+      onResetButtonClick={() => {
+        setDateRange(getDefaultDateRange());
+        setPaymentMethods([]);
+      }}
+    >
+      {/* Always applied: no cross button, only the value can change */}
+      <FilterChipDatePicker
+        label="Date range"
+        selectionType="range"
+        value={dateRange}
+        onChange={(date) => setDateRange(date as DateRange)}
+        showClearButton={false}
+      />
+
+      {/* Optional: can be cleared with its cross button */}
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Payment method"
+          name="paymentMethod"
+          value={paymentMethods}
+          onChange={({ values }) => setPaymentMethods(values)}
+          onClearButtonClick={() => setPaymentMethods([])}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="UPI" value="upi" />
+            <ActionListItem title="Card" value="card" />
+            <ActionListItem title="Netbanking" value="netbanking" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </FilterChipGroup>
+  );
+};
+
+export default MandatoryFilterExample;
 ```
