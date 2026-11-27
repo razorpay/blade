@@ -1,5 +1,26 @@
 # @razorpay/blade-plugin
 
+## 1.34.0
+
+### Minor Changes
+
+- 0dc38d46d: feat(Heading): add `variant="serif"` for the agentic dashboard hero heading
+
+  - `<Heading variant="serif" />` renders in PT Serif at the 2xlarge size and regular weight (Latin subset, ~14.5 KB WOFF2). The variant fixes its own size and weight; passing a different `size` or `weight` throws in dev.
+  - `fonts.css` declares PT Serif plus a size-adjusted Georgia fallback to keep layout shift minimal. Browsers only download the font on pages that render a serif heading.
+  - PT Serif is not added to the theme's font family tokens, so it can't be used outside this heading. Web only for now; on React Native the serif variant is ignored with a dev warning.
+  - Blade agent plugin: the `blade` skill gets a guardrail step. Once an agent finishes its edits, it checks the lines it added for `variant="serif"` and either reverts them or marks the agentic dashboard hero heading with a `blade-allow-serif` comment.
+
+### Patch Changes
+
+- 4eb408183: feat(Drawer): support up to two trailing actions in `DrawerHeader`
+
+  `DrawerHeader`'s `trailing` now accepts an array of up to two icon-only actions (`IconButton`, or `Button` with only an `icon`), shown before the close button. Use it for actions like moving between records (previous / next) without closing the drawer. A single trailing element works as before.
+
+- 0f8c91afc: feat(FunnelChart): add `ChartFunnelWrapper` and `ChartFunnel`
+
+  A new chart that shows how many reach each step of a sequence. It wraps Recharts' `FunnelChart` and `Funnel` with Blade tokens: each step is a trapezoid labelled with its name and share of the first step, and hovering a step shows its count in `ChartTooltip`. Web only.
+
 ## 1.33.3
 
 ### Patch Changes

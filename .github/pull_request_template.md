@@ -4,7 +4,16 @@
 
 ## Changes
 
-<!-- List the specific changes made, consider adding screenshots if relevant -->
+<!-- List the specific changes made -->
+
+## Before / After
+
+<!-- Required. Side-by-side screenshots (or GIFs for motion) of the same stories before and after this change.
+     New component/variant: "N/A (new)" for before. No visual change: write "No visual change: <reason>". -->
+
+| Story | Before | After |
+| --- | --- | --- |
+|  |  |  |
 
 ## Additional Information
 

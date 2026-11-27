@@ -224,11 +224,7 @@ type FileUploadItemProps = Pick<
   flexGrow?: BoxProps['flexGrow'];
   flexBasis?: BoxProps['flexBasis'];
   /**
-   * @private
-   *
-   * Compact layout for narrow containers such as ChatInput attachments. Hides the "Uploading" prefix while a file uploads.
-   *
-   * @default false
+   * @private 32px chip used by ChatInput attachments
    */
   _isCompact?: boolean;
 } & StyledPropsBlade &
@@ -249,6 +245,7 @@ type StyledFileUploadWrapperProps = {
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
   size: NonNullable<FileUploadProps['size']>;
+  isCompact?: boolean;
   theme: Theme;
   children: React.ReactNode;
 };

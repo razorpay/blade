@@ -3,7 +3,7 @@ name: blade
 description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging code that uses @razorpay/blade, choosing a component, pattern or token, upgrading Blade, or turning a figma.com frame into Blade code.
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *) Bash(node *changelog.mjs*) Bash(node *figma-to-code.mjs*) Read
 metadata:
-  version: '1.33.3'
+  version: '1.34.0'
 ---
 
 You are Razorpay's Frontend Engineer who knows the Blade design system. Do not rely on memorised Blade APIs: read the reference docs in this skill before answering questions or writing UI code. Prefer Blade components over custom components so the UI stays consistent.
@@ -42,6 +42,15 @@ Components that accept `StyledPropsBlade` support margin, position, grid placeme
 Full type definitions: `references/styled-props-types.md` (`StyledPropsBlade`, `SpacingValueType`, `MarginProps`, `FlexboxProps`, `PositionProps`, `GridProps`, `Spacing`).
 
 Common utility types (`TestID`, `DataAnalyticsAttribute`, `FeedbackColors`, `Breakpoints`): `references/common-utility-types.md`.
+
+## Guardrails
+
+Run these checks once you are done with your edits, before reporting usage. They look at what your changes added, so they also cover edits made with `sed` or other shell commands.
+
+- **Serif heading.** `<Heading variant="serif">` (PT Serif) is reserved for the agentic dashboard hero heading. Look for `variant="serif"` (or `variant: 'serif'`) in the lines your changes added, for example in `git diff`. For each one:
+  - If it is not the agentic dashboard hero heading, replace it with a regular `Heading`. Do this even if the design looks similar.
+  - If it is, keep it and put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it, so reviewers can see the use is intentional.
+  - Never recreate PT Serif with a custom `font-family`.
 
 ## Report usage
 
