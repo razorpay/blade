@@ -9,19 +9,30 @@ import {
   RazorSense as RazorSenseComponent,
   RazorSenseGradient,
   preloadRazorSenseAssets,
+  RazorSenseLoader,
+  RazorSenseChat,
+  RazorSenseThinking,
+  RazorSenseBottomWave,
+  RazorSenseChatBackground,
+  RazorSenseBackground,
+  RazorSenseSuccess,
 } from '../';
 import { GradientEditor } from './GradientEditor';
+import { makeMicVoice, makeSentenceVoice } from './storyVoice';
+import type { StoryVoice } from './storyVoice';
+import { RazorSenseCardShell } from './RazorSenseCardShell';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
+import { ArrowUpIcon, CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
 import { ChatMessage } from '~components/ChatMessage';
 import { ChatInput } from '~components/ChatInput';
 import { Divider } from '~components/Divider';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
+import { Tabs, TabList, TabItem } from '~components/Tabs';
 import { useTheme } from '~components/BladeProvider';
 
 const Page = (): ReactElement => {
@@ -55,7 +66,65 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   );
 };
 
+/**
+ * the 2.0 stories' ground in dark: flow 10.5's dark page (#131315), the ground the pieces' dark looks are made on. Blade's dark
+ * surface.background.gray.moderate is #131415, a level off it; the canvas's own (gray.intense, #1F2123) is lighter, and the pieces'
+ * near-black ground showed on it as a darker patch. Light keeps the canvas's own
+ */
+const useDarkGround = (): 'surface.background.gray.moderate' | undefined =>
+  useTheme().colorScheme === 'dark' ? 'surface.background.gray.moderate' : undefined;
+
 export const Default = RazorSenseTemplate.bind({});
+
+/**
+ * RazorSense 2.0's loading splash, `RazorSenseLoader`: the Razorpay glyph loops while `isLoading` is true. "Finish loading"
+ * sets it to false: the glyph grows and everything fades to the plain background, then `onComplete` is called. Light or dark:
+ * Color Scheme in the toolbar.
+ *
+ * Not a like-for-like swap for Default above: Default is a full-screen background that keeps playing; Default 2.0 is a
+ * splash that plays while the page loads and then gets out of the way.
+ */
+export const DefaultV2: StoryFn<typeof RazorSenseLoader> = () => {
+  const ground = useDarkGround();
+  const [run, setRun] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const replay = (): void => {
+    setIsLoading(true);
+    setIsComplete(false);
+    setRun((n) => n + 1);
+  };
+  return (
+    <Box margin="-32px" position="relative" height="100vh" backgroundColor={ground}>
+      <RazorSenseLoader key={run} isLoading={isLoading} onComplete={() => setIsComplete(true)} />
+      <Box
+        position="absolute"
+        bottom="spacing.5"
+        left="spacing.5"
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish loading
+        </Button>
+        <Button size="small" variant="tertiary" onClick={replay}>
+          Replay
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isComplete ? 'onComplete fired' : isLoading ? 'Loading' : 'Finishing'}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+DefaultV2.storyName = 'Default 2.0 (Loader)';
+DefaultV2.parameters = { controls: { disable: true } };
 
 /**
  * RazorSense follows Blade's color scheme — there is no dark-mode prop. When the
@@ -88,6 +157,51 @@ export const ColorSchemeAware: StoryFn<typeof RazorSenseComponent> = () => {
 };
 ColorSchemeAware.storyName = 'Color Scheme Aware';
 
+/**
+ * RazorSense 2.0 follows Blade's color scheme too, with no dark-mode prop: in `dark`, each of the five components draws its own
+ * dark comp (and its dark still, when it can't animate). Here `RazorSenseChatBackground` behind a chat input. The 2.0 twin of
+ * Color Scheme Aware above.
+ */
+export const ColorSchemeAwareV2: StoryFn<typeof RazorSenseChatBackground> = () => {
+  const ground = useDarkGround();
+  const { colorScheme, setColorScheme } = useTheme();
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      height="100vh"
+      gap="spacing.4"
+      backgroundColor={ground}
+    >
+      <Box display="flex" alignItems="center" gap="spacing.4">
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          Toggle color scheme
+        </Button>
+        <Text color="surface.text.gray.muted">
+          Current color scheme:{' '}
+          <Text as="span" weight="semibold">
+            {colorScheme}
+          </Text>
+        </Text>
+      </Box>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center">
+        <Box width="100%" maxWidth="840px">
+          <RazorSenseChatBackground>
+            <ChatInput placeholder="Ask anything..." />
+          </RazorSenseChatBackground>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+ColorSchemeAwareV2.storyName = 'Color Scheme Aware 2.0';
+ColorSchemeAwareV2.parameters = { controls: { disable: true } };
+
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
@@ -95,6 +209,185 @@ DefaultPaused.args = {
   animateLightIndependently: true,
   lightStartFrame: 0,
 };
+
+/**
+ * RazorSense 2.0's big piece for a page's background, `RazorSenseBackground`, as the login page has it: soft fluted bands drifting
+ * and breathing, its colours on a slow loop of their own. It fills its box; the piece is placed as designed and the box cuts off
+ * what falls outside it (only that part is drawn). Light and dark are their own tunings: switch them in the bar. The 2.0 twin of
+ * Default Paused above, a full-page piece.
+ */
+export const DefaultPausedV2: StoryFn<{ scale: number }> = ({ scale }) => {
+  const ground = useDarkGround();
+  const { colorScheme, setColorScheme } = useTheme();
+  const [isPaused, setIsPaused] = useState(false);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={ground}
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsPaused((v) => !v)}>
+          {isPaused ? 'Play' : 'Pause'}
+        </Button>
+      </Box>
+      <Box flex="1" position="relative">
+        <RazorSenseBackground isPaused={isPaused} scale={scale} />
+      </Box>
+    </Box>
+  );
+};
+DefaultPausedV2.storyName = 'Default Paused 2.0';
+// (shown smaller than the login page has it: at 1, on Storybook's canvas, it reads too big; Scale takes it back up to 1 and past)
+DefaultPausedV2.args = { scale: 0.8 };
+DefaultPausedV2.argTypes = {
+  scale: {
+    control: { type: 'range', min: 0.75, max: 1.25, step: 0.05 },
+    description:
+      'The piece bigger or smaller, round the middle of its box (1: as the login page has it)',
+  },
+};
+DefaultPausedV2.parameters = { controls: { include: ['scale'] } };
+
+/** the controls the 2.0 stories share: the box the effect fits (the chat input sits centred in it), the effect's scale, and where it sits */
+type EffectControls = { width: number; height: number; scale: number; x: number; y: number };
+const effectArgTypes = (width: { min: number; max: number }) => ({
+  width: {
+    control: { type: 'range', ...width, step: 4 },
+    description: "The chat input's width (px): the effect fits it",
+  },
+  height: {
+    control: { type: 'range', min: 0, max: 320, step: 2 },
+    description:
+      "The box the effect fits (px), the chat input centred in it; 0: the input's own height",
+  },
+  scale: {
+    control: { type: 'range', min: 0.75, max: 1.25, step: 0.05 },
+    description: 'The effect bigger or smaller',
+  },
+  x: {
+    control: { type: 'range', min: -400, max: 400, step: 4 },
+    description: 'Moves it across (px)',
+  },
+  y: { control: { type: 'range', min: -300, max: 300, step: 4 }, description: 'Moves it up (px)' },
+});
+/**
+ * the one-line chat input a chat has under its answers, as flow 10.5's (its pill one line tall; ChatInput is two rows and its
+ * action bar): a TextInput with its send button
+ */
+const OneLineChatInput = () => {
+  const [text, setText] = useState('');
+  return (
+    <TextInput
+      accessibilityLabel="Ask anything"
+      placeholder="Ask anything..."
+      size="large"
+      value={text}
+      onChange={({ value }) => setText(value ?? '')}
+      onSubmit={() => setText('')}
+      trailing={
+        <Button
+          icon={ArrowUpIcon}
+          size="xsmall"
+          accessibilityLabel="Send"
+          isDisabled={!text}
+          onClick={() => setText('')}
+        />
+      }
+    />
+  );
+};
+
+/** the chat input, in the box the controls size and place */
+const ControlledInput = ({
+  height,
+  isUiHidden = false,
+  isOneLine = false,
+}: {
+  height: number;
+  isUiHidden?: boolean;
+  isOneLine?: boolean;
+}) => (
+  <div
+    style={{
+      minHeight: height || undefined,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      opacity: isUiHidden ? 0 : 1,
+      transition: 'opacity 0.2s',
+    }}
+  >
+    {isOneLine ? <OneLineChatInput /> : <ChatInput placeholder="Ask anything..." />}
+  </div>
+);
+
+/**
+ * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: the background of a chat input on its own (a
+ * landing, a home screen), not of `RazorSenseChat` (an assistant chat draws its own: Bottom Surge 2.0). Wrap the chat input and a
+ * soft fluted strip sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
+ * The controls size the box it fits, scale it and move it. Hide UI makes the chat input see-through, so only RazorSense shows
+ * (it still takes typing while hidden). Go offline: it fades away under its colours (`isOffline`); back online, it fades back in,
+ * and turned round mid-way, it goes back from where it is.
+ */
+export const DefaultPausedChatBackgroundV2: StoryFn<EffectControls> = ({
+  width,
+  height,
+  scale,
+  x,
+  y,
+}) => {
+  const ground = useDarkGround();
+  const [isUiHidden, setIsUiHidden] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
+  return (
+    <Box
+      margin="-32px"
+      position="relative"
+      height="100vh"
+      overflow="hidden"
+      backgroundColor={ground}
+    >
+      <Box
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        paddingX="spacing.6"
+      >
+        <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
+          <RazorSenseChatBackground scale={scale} isOffline={isOffline}>
+            <ControlledInput height={height} isUiHidden={isUiHidden} />
+          </RazorSenseChatBackground>
+        </div>
+      </Box>
+      <Box position="absolute" bottom="spacing.5" left="spacing.5" display="flex" gap="spacing.3">
+        <Button size="small" variant="secondary" onClick={() => setIsUiHidden((v) => !v)}>
+          {isUiHidden ? 'Show UI' : 'Hide UI'}
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+DefaultPausedChatBackgroundV2.args = { width: 840, height: 0, scale: 1, x: 0, y: 0 };
+DefaultPausedChatBackgroundV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
+DefaultPausedChatBackgroundV2.parameters = {
+  controls: { include: ['width', 'height', 'scale', 'x', 'y'] },
+};
+DefaultPausedChatBackgroundV2.storyName = 'Default Paused 2.0 (Chat Background)';
 
 export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   return (
@@ -129,6 +422,91 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 
+/**
+ * Zoomed's 2.0 twin: the same loading `ChatMessage` (`isLoading` with its `loadingText`), inside a `RazorSenseChat`. Nothing
+ * else changes on the message: inside the chat its loading text shows as RazorSense 2.0's thinking label and the chat thinks
+ * behind it. "Finish loading" sets `isLoading` to false: the answer shows and the thinking surges down into the
+ * `RazorSenseBottomWave` under the chat input. "Load again" brings it back up.
+ */
+export const ZoomedV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish loading
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={isLoading}
+          onClick={() => setIsLoading(true)}
+        >
+          Load again
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isLoading ? 'isLoading: true' : 'isLoading: false'}
+        </Text>
+      </Box>
+      <Box flex="1" minHeight="0px">
+        <RazorSenseChat>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            maxWidth="800px"
+            marginX="auto"
+            paddingX="spacing.6"
+          >
+            <Box flex="1" paddingY="spacing.9">
+              <ChatMessage
+                senderType="other"
+                leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+                isLoading={isLoading}
+                loadingText={['Thinking...', 'Processing your request...']}
+              >
+                <Text color="surface.text.gray.normal" size="medium">
+                  Your KYC has been verified successfully. All documents are in order and your
+                  identity has been confirmed.
+                </Text>
+              </ChatMessage>
+            </Box>
+            <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+              <RazorSenseBottomWave>
+                <ChatInput placeholder="Ask anything..." />
+              </RazorSenseBottomWave>
+              <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                Ray is AI and can make mistakes. Please check important information.
+              </Text>
+            </Box>
+          </Box>
+        </RazorSenseChat>
+      </Box>
+    </Box>
+  );
+};
+ZoomedV2.storyName = 'Zoomed 2.0';
+ZoomedV2.parameters = { controls: { disable: true } };
+
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
     <Box margin="-32px" position="relative" height="100vh">
@@ -159,6 +537,445 @@ const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 export const BottomWave = BottomWaveTemplate.bind({});
+
+/**
+ * RazorSense 2.0's bottom wave, `RazorSenseBottomWave`: wrap the chat input (here a one-line one, as a chat has under its answers)
+ * and a faint wave settles under it, its path drifting.
+ * Type in it to see the typing surge: it pulses with the typing and dies back down after. "Finish with success" and "Finish with
+ * error" set its `outcome`, as an app does once an answer that ran a task has filled in (the surge has long settled into the wave
+ * by then): its green or red splash plays once and ends at its rest. "Go offline" drops it below the page (`isOffline`). The
+ * buttons only set those props. The controls size the box it settles under, scale it and move it.
+ */
+export const BottomWaveV2: StoryFn<EffectControls> = ({ width, height, scale, x, y }) => {
+  const ground = useDarkGround();
+  const [outcome, setOutcome] = useState<'success' | 'error' | undefined>();
+  const [isOffline, setIsOffline] = useState(false);
+  // (an outcome plays once each time it's set: cleared first, so the same one plays again)
+  const finish = (next: 'success' | 'error') => {
+    setOutcome(undefined);
+    window.setTimeout(() => setOutcome(next), 50);
+  };
+  return (
+    <Box
+      margin="-32px"
+      position="relative"
+      height="100vh"
+      overflow="hidden"
+      backgroundColor={ground}
+    >
+      <Box
+        position="absolute"
+        top="spacing.0"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        gap="spacing.3"
+        alignItems="center"
+        padding="spacing.4"
+        zIndex={1}
+      >
+        <Button size="small" variant="secondary" onClick={() => finish('success')}>
+          Finish with success
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => finish('error')}>
+          Finish with error
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
+      </Box>
+      <Box
+        position="absolute"
+        bottom="spacing.4"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        gap="spacing.3"
+        paddingX="spacing.4"
+      >
+        <div style={{ width: '100%', maxWidth: width, position: 'relative', left: x, top: -y }}>
+          <RazorSenseBottomWave scale={scale} outcome={outcome} isOffline={isOffline}>
+            <ControlledInput height={height} isOneLine />
+          </RazorSenseBottomWave>
+        </div>
+        {/* positioned, so it shows over the wave (on its own the wave draws over what's next to the input; inside a
+        RazorSenseChat it's behind everything) */}
+        <Box position="relative">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            Ray is AI and can make mistakes. Please check important information.
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+BottomWaveV2.args = { width: 760, height: 0, scale: 1, x: 0, y: 0 };
+BottomWaveV2.argTypes = effectArgTypes({ min: 280, max: 1260 });
+BottomWaveV2.parameters = { controls: { include: ['width', 'height', 'scale', 'x', 'y'] } };
+BottomWaveV2.storyName = 'Bottom Wave 2.0';
+
+/**
+ * RazorSense 2.0's bottom surge, `RazorSenseChat`: thinking loops on the `RazorSenseThinking` label while it's shown.
+ * "Finish thinking" swaps it for the answer: the thinking surges down into the `RazorSenseBottomWave` under the chat input and
+ * settles there. "Think again" shows it again: the wave rises back up to the label (the surge, backwards) and thinks on. "Go
+ * offline" drops the wave below the chat (`isOffline`); back online, it rises back. (An answer's success or error plays on the
+ * wave after it has settled: `outcome`, in Bottom Wave 2.0.)
+ */
+export const BottomSurgeV2: StoryFn<typeof RazorSenseChat> = () => {
+  const [isThinking, setIsThinking] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isThinking}
+          onClick={() => setIsThinking(false)}
+        >
+          Finish thinking
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={isThinking}
+          onClick={() => setIsThinking(true)}
+        >
+          Think again
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOffline((v) => !v)}>
+          {isOffline ? 'Back online' : 'Go offline'}
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isOffline ? 'Offline' : isThinking ? 'Thinking' : 'Bottom wave'}
+        </Text>
+      </Box>
+      <Box flex="1" minHeight="0px">
+        <RazorSenseChat isOffline={isOffline}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            maxWidth="800px"
+            marginX="auto"
+            paddingX="spacing.6"
+          >
+            <Box
+              flex="1"
+              display="flex"
+              flexDirection="column"
+              gap="spacing.8"
+              paddingY="spacing.9"
+            >
+              <Box alignSelf="flex-end" maxWidth="70%">
+                <ChatMessage senderType="self">How is my business doing today?</ChatMessage>
+              </Box>
+              {isThinking ? (
+                <RazorSenseThinking>Searching your settlements…</RazorSenseThinking>
+              ) : (
+                <Text color="surface.text.gray.normal" size="large">
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
+                </Text>
+              )}
+            </Box>
+            <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+              <RazorSenseBottomWave>
+                <ChatInput placeholder="Ask anything..." />
+              </RazorSenseBottomWave>
+              <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                Ray is AI and can make mistakes. Please check important information.
+              </Text>
+            </Box>
+          </Box>
+        </RazorSenseChat>
+      </Box>
+    </Box>
+  );
+};
+BottomSurgeV2.storyName = 'Bottom Surge 2.0';
+BottomSurgeV2.parameters = { controls: { disable: true } };
+
+/** a landing's suggested questions, by category (flow 10.5's) */
+const SUGGESTIONS: Record<string, string[]> = {
+  Recommended: [
+    'How is my business doing today?',
+    'Show me a summary of my payments',
+    'What needs my attention today?',
+  ],
+  Transactions: [
+    'Show me today’s transactions',
+    'Why did my recent payments fail?',
+    'Help me find a payment',
+  ],
+  Settlements: [
+    'When will my recent settlements reach my account?',
+    'Show me the deductions from the last settlement',
+    'Am I eligible to get my money today?',
+  ],
+  'Growing my business': [
+    'How can I improve my payment success rate?',
+    'How can I accept international payments?',
+    'Help me grow my business',
+  ],
+  Account: [
+    'Show me my account details',
+    'How do I update my business information?',
+    'Help me manage my team',
+  ],
+};
+
+/**
+ * the tray of suggested questions under a landing's chat input, as flow 10.5's: tucked under the input's bottom edge (the input over
+ * its top), its tabs and their questions. Opaque, so RazorSense behind the input shows round the input but not under the tray. Laid
+ * inside RazorSenseChatBackground over its canvas and under the input (out of the flow, so the background still fits the input)
+ */
+const SuggestionTray = ({ onPick }: { onPick: (question: string) => void }) => {
+  const [category, setCategory] = useState('Settlements');
+  return (
+    <div style={{ position: 'absolute', left: 0, right: 0, top: 'calc(100% - 20px)', zIndex: 0 }}>
+      <Box
+        backgroundColor="surface.background.gray.subtle"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        borderBottomLeftRadius="xlarge"
+        borderBottomRightRadius="xlarge"
+        paddingTop="spacing.8"
+        paddingX="spacing.3"
+        paddingBottom="spacing.3"
+      >
+        <Tabs value={category} onChange={setCategory} variant="borderless" size="small">
+          <TabList>
+            {Object.keys(SUGGESTIONS).map((name) => (
+              <TabItem key={name} value={name}>
+                {name}
+              </TabItem>
+            ))}
+          </TabList>
+        </Tabs>
+        <Box display="flex" flexDirection="column" gap="spacing.2" paddingTop="spacing.3">
+          {SUGGESTIONS[category].map((question) => (
+            <Box key={question} paddingX="spacing.4" paddingY="spacing.2">
+              <Link variant="button" color="neutral" size="small" onClick={() => onPick(question)}>
+                {question}
+              </Link>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </div>
+  );
+};
+
+/**
+ * RazorSense 2.0 listening (`isListening`, with the page's own microphone stream as `voiceStream`): on a landing
+ * (`RazorSenseChatBackground`, the voice dashboard: Default Paused 2.0 (Chat Background) listening) its strip morphs into a row of blobs along its line; under a chat's input
+ * (`RazorSenseChat`'s bottom wave, the voice bottom) a row of blobs grows on the wave's top edge, breathing while it's silent. Each
+ * blob is a pitch band of the voice. On the landing the suggested questions' tray sits under the input, as on flow 10.5's: the voice look
+ * shows round the input, the tray over what's below it. "Listen" starts it with a made-up sentence (or your microphone, with "Use my mic": the story
+ * opens it, as an app's dictation would; RazorSense only reads it). "Stop" morphs it back.
+ */
+export const VoiceV2: StoryFn<typeof RazorSenseChat> = () => {
+  const ground = useDarkGround();
+  const [place, setPlace] = useState<'landing' | 'chat'>('landing');
+  const [isMic, setIsMic] = useState(false);
+  const [voice, setVoice] = useState<StoryVoice | null>(null);
+  const [note, setNote] = useState('');
+  const [question, setQuestion] = useState('');
+  const voiceRef = useRef<StoryVoice | null>(null);
+  voiceRef.current = voice;
+  const stop = () => {
+    voiceRef.current?.stop();
+    setVoice(null);
+  };
+  const listen = async (useMic: boolean) => {
+    voiceRef.current?.stop();
+    const next = useMic ? await makeMicVoice() : makeSentenceVoice();
+    setVoice(next);
+    setNote(
+      next
+        ? ''
+        : useMic
+        ? 'The microphone was blocked: allow it in the address bar, then listen again.'
+        : 'This browser has no Web Audio.',
+    );
+  };
+  // (its voice stopped when the story goes)
+  useEffect(() => () => voiceRef.current?.stop(), []);
+  const isListening = Boolean(voice);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={place === 'chat' ? 'surface.background.gray.moderate' : ground}
+    >
+      <Box
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        paddingX="spacing.5"
+        paddingY="spacing.4"
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+      >
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => (isListening ? stop() : void listen(isMic))}
+        >
+          {isListening ? 'Stop' : 'Listen'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => {
+            setIsMic(!isMic);
+            if (isListening) void listen(!isMic);
+          }}
+        >
+          {isMic ? 'Use a made-up sentence' : 'Use my mic'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setPlace((v) => (v === 'landing' ? 'chat' : 'landing'))}
+        >
+          {place === 'landing' ? 'Show bottom' : 'Show default'}
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {note ||
+            (isListening
+              ? `Listening: ${isMic ? 'your microphone' : 'a made-up sentence'}`
+              : 'Not listening')}
+        </Text>
+      </Box>
+      {place === 'landing' ? (
+        <Box
+          flex="1"
+          minHeight="0px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingX="spacing.6"
+          overflow="hidden"
+        >
+          <div style={{ width: '100%', maxWidth: 840 }}>
+            <RazorSenseChatBackground isListening={isListening} voiceStream={voice?.stream}>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <ChatInput
+                  placeholder="Ask anything..."
+                  value={question}
+                  onChange={({ value }) => setQuestion(value ?? '')}
+                />
+              </div>
+              <SuggestionTray onPick={setQuestion} />
+            </RazorSenseChatBackground>
+          </div>
+        </Box>
+      ) : (
+        <Box flex="1" minHeight="0px">
+          <RazorSenseChat isListening={isListening} voiceStream={voice?.stream}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              height="100%"
+              maxWidth="800px"
+              marginX="auto"
+              paddingX="spacing.6"
+            >
+              <Box
+                flex="1"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.8"
+                paddingY="spacing.9"
+              >
+                <Box alignSelf="flex-end" maxWidth="70%">
+                  <ChatMessage senderType="self">How is my business doing today?</ChatMessage>
+                </Box>
+                <Text color="surface.text.gray.normal" size="large">
+                  Your payments are up 12% on last week: ₹4.2L collected across 1,284 transactions,
+                  with a 98.6% success rate. Settlements are on schedule; the next one, ₹1.1L, lands
+                  tomorrow morning.
+                </Text>
+              </Box>
+              <Box paddingBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+                <RazorSenseBottomWave>
+                  <ChatInput placeholder="Ask anything..." />
+                </RazorSenseBottomWave>
+                <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                  Ray is AI and can make mistakes. Please check important information.
+                </Text>
+              </Box>
+            </Box>
+          </RazorSenseChat>
+        </Box>
+      )}
+    </Box>
+  );
+};
+VoiceV2.storyName = 'Voice 2.0';
+VoiceV2.parameters = { controls: { disable: true } };
+
+type CardControls = { width: number; height: number; ctaLabel: string };
+/**
+ * The shell of the agentic dashboard's cards: what every card shares, whatever it shows. Hover it (or tab to its CTA): it lifts
+ * with a soft shadow under its stroke, RazorSense plays once along its bottom, and a wash runs through its CTA (at rest, the
+ * wash comes round every 3.8 s). Size it with the controls: RazorSense stays on the bottom at its own height, and its sweep,
+ * which starts before the card and ends past it, stretches with the card's width on the same timing. Toggle the color scheme
+ * from the toolbar for dark.
+ */
+export const RazorSenseCard: StoryFn<CardControls> = ({ width, height, ctaLabel }) => {
+  return (
+    <Box
+      minHeight="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      padding="spacing.8"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <RazorSenseCardShell width={width} height={height} ctaLabel={ctaLabel}>
+        <Text size="small" color="surface.text.gray.muted">
+          The card&apos;s content
+        </Text>
+      </RazorSenseCardShell>
+    </Box>
+  );
+};
+RazorSenseCard.args = { width: 265, height: 240, ctaLabel: 'See all payments' };
+RazorSenseCard.argTypes = {
+  width: {
+    control: { type: 'range', min: 200, max: 960, step: 4 },
+    description: "The card's width (px): RazorSense's sweep stretches with it",
+  },
+  height: {
+    control: { type: 'range', min: 140, max: 480, step: 2 },
+    description: "The card's height (px): RazorSense stays on its bottom",
+  },
+  ctaLabel: { control: { type: 'text' }, description: "The CTA's text" },
+};
+RazorSenseCard.parameters = { controls: { include: ['width', 'height', 'ctaLabel'] } };
+RazorSenseCard.storyName = 'RazorSense Card';
 
 const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
@@ -688,6 +1505,68 @@ const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = ()
 };
 
 export const RzpGlassSuccessAnimation = RzpGlassSuccessAnimationTemplate.bind({});
+
+/**
+ * RazorSense 2.0's success moment, `RazorSenseSuccess`, as the RazorSense system made it: a glass orb rises into place with a white
+ * tick on it, then shrinks and fades as Blade's success badge pops in where it was, and the tick turns into the badge's check. Its
+ * `label` (the controls: its text, and on or off) comes in under the badge as it pops in. It plays once when it mounts (Replay mounts
+ * it again); `onComplete` when it has played out. Light and dark are their own tunings: switch them in the bar. The 2.0 twin of Rzp
+ * Glass Success Animation above.
+ */
+export const RzpGlassSuccessAnimationV2: StoryFn<{ label: string; hasLabel: boolean }> = ({
+  label,
+  hasLabel,
+}) => {
+  const { colorScheme, setColorScheme } = useTheme();
+  const [run, setRun] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => {
+            setIsComplete(false);
+            setRun((n) => n + 1);
+          }}
+        >
+          Replay
+        </Button>
+        <Text size="small" color="surface.text.gray.muted">
+          {isComplete ? 'onComplete fired' : 'Playing'}
+        </Text>
+      </Box>
+      <Box flex="1" display="flex" alignItems="center" justifyContent="center" overflow="hidden">
+        <RazorSenseSuccess
+          key={run}
+          label={hasLabel ? label : undefined}
+          onComplete={() => setIsComplete(true)}
+        />
+      </Box>
+    </Box>
+  );
+};
+RzpGlassSuccessAnimationV2.storyName = 'Rzp Glass Success Animation 2.0';
+RzpGlassSuccessAnimationV2.args = { label: 'Payment received', hasLabel: true };
+RzpGlassSuccessAnimationV2.argTypes = {
+  label: { control: 'text', description: 'The text under the badge (`label`)' },
+  hasLabel: { control: 'boolean', description: 'With a label, or the badge alone' },
+};
+RzpGlassSuccessAnimationV2.parameters = { controls: { include: ['label', 'hasLabel'] } };
 
 const motionGStyle = {
   originX: '12px',
@@ -1748,8 +2627,132 @@ TweakpanePlayground.storyName = 'Tweakpane Playground';
 // Login Page Story
 // ---------------------------------------------------------------------------
 
-const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+/** today's login page's form (its right panel), shared by Login Page and Login Page 2.0 */
+const LoginForm = (): ReactElement => {
   const [email, setEmail] = useState('');
+  return (
+    <Box
+      width={{ base: '100%', m: '480px' }}
+      minWidth={{ m: '480px' }}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
+      <Box width="100%" maxWidth="360px">
+        {/* Logo */}
+        <Box marginBottom="spacing.8">
+          <RazorpayIcon size="xlarge" color="interactive.icon.primary.normal" />
+        </Box>
+
+        {/* Heading */}
+        <Heading size="large" marginBottom="spacing.3">
+          Get started with your email or phone number
+        </Heading>
+
+        {/* Email/Phone Input */}
+        <Box marginTop="spacing.8" marginBottom="spacing.6">
+          <TextInput
+            label=""
+            placeholder="Enter email or mobile"
+            value={email}
+            onChange={({ value }) => setEmail(value ?? '')}
+          />
+        </Box>
+
+        {/* Continue Button */}
+        <Button variant="primary" size="large" isFullWidth>
+          Continue
+        </Button>
+
+        {/* Divider */}
+        <Box display="flex" alignItems="center" gap="spacing.4" marginY="spacing.6">
+          <Divider />
+          <Text size="small" color="surface.text.gray.muted">
+            or continue with email
+          </Text>
+          <Divider />
+        </Box>
+
+        {/* Google Sign In */}
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="spacing.4"
+          borderRadius="medium"
+          borderWidth="thin"
+          borderColor="surface.border.gray.muted"
+        >
+          <Box display="flex" alignItems="center" gap="spacing.3">
+            <Box
+              width="24px"
+              height="24px"
+              borderRadius="max"
+              backgroundColor="feedback.background.information.subtle"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text size="small" weight="semibold">
+                N
+              </Text>
+            </Box>
+            <Box>
+              <Text size="medium" weight="medium">
+                Continue as Niharika
+              </Text>
+              <Text size="small" color="surface.text.gray.muted">
+                niha.s@gmail.com
+              </Text>
+            </Box>
+          </Box>
+          <Text size="large" color="feedback.text.information.intense">
+            G
+          </Text>
+        </Box>
+
+        {/* Terms */}
+        <Box marginTop="spacing.8">
+          <Text size="small" color="surface.text.gray.muted" textAlign="center">
+            By continuing you agree to our <Link href="#">privacy policy</Link> and{' '}
+            <Link href="#">terms of use</Link>
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+/** today's login page's pitch, over its left panel */
+const LoginPitch = (): ReactElement => (
+  <Box position="relative" zIndex={1} maxWidth="500px" opacity={0.6}>
+    <Heading size="xlarge" color="surface.text.gray.normal" marginBottom="spacing.4">
+      Join 8 Million businesses that trust Razorpay to supercharge their business
+    </Heading>
+    <Box display="flex" gap="spacing.8" marginTop="spacing.6">
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ 100+ Payment Methods
+        </Text>
+      </Box>
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ Easy Integration
+        </Text>
+      </Box>
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        <Text color="surface.text.gray.normal" size="small">
+          ✦ Powerful Dashboard
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+);
+
+const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   const [assetsPreloaded, setAssetsPreloaded] = useState(false);
 
   useEffect(() => {
@@ -1807,127 +2810,63 @@ const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           />
         </Box>
 
-        {/* Content overlay */}
-        <Box position="relative" zIndex={1} maxWidth="500px" opacity={0.6}>
-          <Heading size="xlarge" color="surface.text.gray.normal" marginBottom="spacing.4">
-            Join 8 Million businesses that trust Razorpay to supercharge their business
-          </Heading>
-          <Box display="flex" gap="spacing.8" marginTop="spacing.6">
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ 100+ Payment Methods
-              </Text>
-            </Box>
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ Easy Integration
-              </Text>
-            </Box>
-            <Box display="flex" alignItems="center" gap="spacing.2">
-              <Text color="surface.text.gray.normal" size="small">
-                ✦ Powerful Dashboard
-              </Text>
-            </Box>
-          </Box>
-        </Box>
+        <LoginPitch />
       </Box>
 
-      {/* Right Panel - Login Form */}
-      <Box
-        width={{ base: '100%', m: '480px' }}
-        minWidth={{ m: '480px' }}
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        padding="spacing.10"
-        backgroundColor="surface.background.gray.intense"
-      >
-        <Box width="100%" maxWidth="360px">
-          {/* Logo */}
-          <Box marginBottom="spacing.8">
-            <RazorpayIcon size="xlarge" color="interactive.icon.primary.normal" />
-          </Box>
-
-          {/* Heading */}
-          <Heading size="large" marginBottom="spacing.3">
-            Get started with your email or phone number
-          </Heading>
-
-          {/* Email/Phone Input */}
-          <Box marginTop="spacing.8" marginBottom="spacing.6">
-            <TextInput
-              label=""
-              placeholder="Enter email or mobile"
-              value={email}
-              onChange={({ value }) => setEmail(value ?? '')}
-            />
-          </Box>
-
-          {/* Continue Button */}
-          <Button variant="primary" size="large" isFullWidth>
-            Continue
-          </Button>
-
-          {/* Divider */}
-          <Box display="flex" alignItems="center" gap="spacing.4" marginY="spacing.6">
-            <Divider />
-            <Text size="small" color="surface.text.gray.muted">
-              or continue with email
-            </Text>
-            <Divider />
-          </Box>
-
-          {/* Google Sign In */}
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            padding="spacing.4"
-            borderRadius="medium"
-            borderWidth="thin"
-            borderColor="surface.border.gray.muted"
-          >
-            <Box display="flex" alignItems="center" gap="spacing.3">
-              <Box
-                width="24px"
-                height="24px"
-                borderRadius="max"
-                backgroundColor="feedback.background.information.subtle"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Text size="small" weight="semibold">
-                  N
-                </Text>
-              </Box>
-              <Box>
-                <Text size="medium" weight="medium">
-                  Continue as Niharika
-                </Text>
-                <Text size="small" color="surface.text.gray.muted">
-                  niha.s@gmail.com
-                </Text>
-              </Box>
-            </Box>
-            <Text size="large" color="feedback.text.information.intense">
-              G
-            </Text>
-          </Box>
-
-          {/* Terms */}
-          <Box marginTop="spacing.8">
-            <Text size="small" color="surface.text.gray.muted" textAlign="center">
-              By continuing you agree to our <Link href="#">privacy policy</Link> and{' '}
-              <Link href="#">terms of use</Link>
-            </Text>
-          </Box>
-        </Box>
-      </Box>
+      <LoginForm />
     </Box>
   );
 };
 
 export const LoginPage = LoginPageTemplate.bind({});
 LoginPage.storyName = 'Login Page';
+
+/**
+ * Today's login page with RazorSense 2.0's big piece behind it (`RazorSenseBackground`), as the login mirror has it: the piece laid
+ * on the whole page (its box), placed and scaled as the login page places it for that size, and the form's panel over it. The
+ * form and the pitch are the Login Page story's own. Light and dark are their own tunings: switch them in the bar.
+ */
+export const LoginPageV2: StoryFn<typeof RazorSenseBackground> = () => {
+  const ground = useDarkGround();
+  const { colorScheme, setColorScheme } = useTheme();
+  return (
+    <Box
+      margin="-32px"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={ground}
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" padding="spacing.4">
+        <Button
+          size="small"
+          variant="secondary"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          {colorScheme === 'dark' ? 'Light' : 'Dark'}
+        </Button>
+      </Box>
+      <Box flex="1" minHeight="0px" position="relative" display="flex" overflow="hidden">
+        {/* the piece on the whole page, as the login mirror lays it: the form's panel goes over it */}
+        <Box position="absolute" top="0px" left="0px" right="0px" bottom="0px">
+          <RazorSenseBackground />
+        </Box>
+        <Box
+          flex="1"
+          position="relative"
+          display={{ base: 'none', m: 'flex' }}
+          flexDirection="column"
+          justifyContent="flex-end"
+          padding="spacing.10"
+        >
+          <LoginPitch />
+        </Box>
+        <Box position="relative" display="flex">
+          <LoginForm />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+LoginPageV2.storyName = 'Login Page 2.0';
+LoginPageV2.parameters = { controls: { disable: true } };

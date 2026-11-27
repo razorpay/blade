@@ -1,0 +1,38 @@
+# RazorSense 2.0's engine
+
+The RazorSense 2.0 components (`RazorSenseLoader`, `RazorSenseChatBackground`, `RazorSenseChat`, `RazorSenseThinking`,
+`RazorSenseBottomWave`) draw with one engine: `src/components/Spark/RazorSenseEngine/freshEngine.ts`. It's built here, not
+written by hand.
+
+- `source/` is the RazorSense system's own engine, as Razorsensation (its studio) runs it: `01-core.js` and `02-gl.js` (the
+  document and the WebGL2 renderer), `player.js` (the player for an exported comp), and `gpu_raster.js` (its GPU speed-ups).
+- `buildFreshEngine.js` patches that source, as text, into a factory (`createFreshEngine`) that mounts one comp on one canvas,
+  with no studio page, saving or globals, and with its shaders compiled off the page's thread. Each patch names the text it
+  expects; if the source moves on and a patch no longer fits, the build stops and says which.
+- It also cuts what no comp uses out of the main shader (`FS_MAIN`): the effects stack, refraction and the studio's debug views.
+  The build stops if a comp under `src/components/Spark` turns an effect or refraction on, and so does a test
+  (`RazorSenseEngine/__tests__/compsDrawable.web.test.ts`), since comps are exported again without a build. To use one again,
+  remove its cut from `buildFreshEngine.js` and build.
+- `FreshSwitches.view` (off unless a component asks; Button's AI hovers do): each layer and the accumulation are made only over
+  what the view can read, on the texel grid they have whole. A hover shows a small spot of a card-sized comp, and its layers
+  were the whole comp (an Ask Ray hover took ~74 MB; with it, ~14 MB). The picture is the same to within one 8-bit step
+  (rounding: the worst is 2/255 as composited, checked frame by frame against it off, at 1x, 2x and 3x).
+- The engine ships minified with terser (laid out again by prettier), so it's as small in an app whose bundler minifies with
+  esbuild (Vite) as in one using terser (webpack).
+- The build needs `esbuild` and `terser`: both are in `packages/blade`'s devDependencies, so it doesn't rely on another package
+  hoisting them.
+
+```sh
+yarn build:razorsense-engine   # writes freshEngine.ts from source/ (and lints it)
+yarn check:razorsense-engine   # fails if the committed freshEngine.ts isn't what source/ builds, or doesn't lint
+```
+
+The engine is the studio's code, so it isn't held to Blade's style rules or type checks inside; the build lints it for the
+mistakes that break code (undefined names, unreachable code, duplicate keys and the like). Its boundary is typed: the
+components only reach it through `createFreshEngine`'s signature and the types in `RazorSenseEngine/types.ts`.
+
+## The comps and the stills
+
+What each component plays (`comps.ts`) and the still frames it falls back to (`stills/`) are design data, not code: they're
+exported from Razorsensation, where RazorSense's motion is designed, and each file says where it came from. To change how
+RazorSense looks, change it there and export again; to change how the engine draws, change `source/` or a patch here and build.

@@ -233,8 +233,14 @@ type RzpGlassProps = RzpGlassConfig & {
   /**
    * Named preset that provides a base configuration.
    * Any explicit props you pass will override the preset values.
-   * - `default`  — baseline, same as not passing a preset
-   * - `zoomed`   — tight closeup with high zoom and edge feathering
+   * - `default`  — baseline, same as not passing a preset. For a full-page or full-box background, use RazorSense 2.0's
+   *   `RazorSenseBackground` instead
+   * - `zoomed`   — tight closeup with high zoom and edge feathering. As a page or box background, use `RazorSenseBackground` instead
+   * - `bottomWave` — a static image of a bottom wave, a decorative strip. For the animated wave under an assistant chat's input
+   *   (it drifts, pulses as you type, and takes the thinking's surge), use `RazorSenseBottomWave` instead
+   * - `rippleWave` — ray pulse video, ripple effect
+   * - `circleSlideUp` — success circle animation. For a success moment, use RazorSense 2.0's `RazorSenseSuccess` instead (the orb
+   *   rising into Blade's success badge and its check)
    */
   preset?: RzpGlassPreset;
   /**
