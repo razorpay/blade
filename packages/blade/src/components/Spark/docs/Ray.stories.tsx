@@ -3,6 +3,8 @@ import { Source } from '@storybook/addon-docs/blocks';
 import React, { useEffect, useRef, useState } from 'react';
 import type { RayProps, RayState, RayIdle, RayOutcome } from '../Ray';
 import { Ray } from '../Ray';
+import type { RayLoaderProps } from '../RayLoader';
+import { RayLoader } from '../RayLoader';
 import type { Cycle } from '../Ray/rayIdles';
 import { idleAt, idleChances, IDLE_CYCLE } from '../Ray/rayIdles';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -12,7 +14,7 @@ import { BladeProvider, useTheme } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 import { Button } from '~components/Button';
 import { ChatInput } from '~components/ChatInput';
-import { Heading, Text } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 
 // (not a live Sandbox: those run the published package, and Ray isn't in it yet)
 const USAGE = `import { Box, ChatInput, Ray } from '@razorpay/blade/components';
@@ -35,6 +37,50 @@ function Chat({ isAnswering, step, isDone }) {
   );
 }`;
 
+const LOADER_USAGE = `import { RayLoader } from '@razorpay/blade/components';
+
+function Page() {
+  const [isReady, setIsReady] = React.useState(false);
+  const [isLoaderDone, setIsLoaderDone] = React.useState(false);
+  // ...setIsReady(true) once the page's data is in
+  return isLoaderDone ? (
+    <PageContent />
+  ) : (
+    <RayLoader isLoading={!isReady} onComplete={() => setIsLoaderDone(true)} />
+  );
+}`;
+
+// RayLoader's props (its types.ts), on Ray's Docs page: its story is one of Ray's
+const LOADER_PROPS: [name: string, type: string, byDefault: string, description: string][] = [
+  [
+    'isLoading',
+    'boolean',
+    'true',
+    'While true he charges, dashes and holds the dash; false: he slides on, turns round, jumps and drops through the floor, then onComplete. Once per mount (a new key shows it again); false before he has started, onComplete at once.',
+  ],
+  ['onComplete', '() => void', '', 'Called once, after he has dropped through the floor.'],
+  [
+    'size',
+    "'small' | 'medium'",
+    "'medium'",
+    "His width, 38 or 48px, as Ray's. His path scales with the box's width.",
+  ],
+  ['width', 'string | number', "'100%'", 'The box his path runs across.'],
+  [
+    'height',
+    'string | number',
+    'four of his widths',
+    'Room for his charge, his jump and the floor he drops through.',
+  ],
+  [
+    'accessibilityLabel',
+    'string',
+    "'Loading'",
+    'He is a progress bar to assistive tech, as Spinner is.',
+  ],
+  ['testID, styled props', '', '', 'As other Blade components.'],
+];
+
 const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="Ray"
@@ -43,6 +89,29 @@ const Page = (): React.ReactElement => (
   >
     <Heading size="large">Usage</Heading>
     <Source code={USAGE} language="tsx" dark />
+    <Heading size="large" marginTop="spacing.8">
+      RayLoader: the Ray loader (secondary)
+    </Heading>
+    <Text marginTop="spacing.4">
+      Ray charges up and dashes across while a page loads; when it&apos;s ready (isLoading turns
+      false) he slides on, turns round, jumps and drops through the floor, then onComplete is
+      called. A component of its own (RayLoader), with a loader&apos;s props (isLoading,
+      onComplete). It plays once per mount. See the Ray Loader (Secondary) story.
+    </Text>
+    <Source code={LOADER_USAGE} language="tsx" dark />
+    <Box display="flex" flexDirection="column" gap="spacing.3" marginTop="spacing.4">
+      {LOADER_PROPS.map(([name, type, byDefault, description]) => (
+        <Box key={name} display="flex" flexDirection="column" gap="spacing.1">
+          <Text>
+            <Code size="medium">{name}</Code> {type}
+            {byDefault ? `, default ${byDefault}` : ''}
+          </Text>
+          <Text size="small" color="surface.text.gray.muted">
+            {description}
+          </Text>
+        </Box>
+      ))}
+    </Box>
   </StoryPageWrapper>
 );
 
@@ -582,3 +651,82 @@ const StatesTemplate: StoryFn<typeof Ray> = () => (
 export const States = StatesTemplate.bind({});
 States.storyName = 'States';
 States.parameters = { controls: { disable: true } };
+
+const LoaderDemo = ({ size }: { size: RayLoaderProps['size'] }): React.ReactElement => {
+  const [run, setRun] = useState(0); // a new loader for each Start (it plays once per mount)
+  const [isShown, setIsShown] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const start = (): void => {
+    setRun((r) => r + 1);
+    setIsShown(true);
+    setIsLoading(true);
+    setIsComplete(false);
+  };
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Box display="flex" gap="spacing.3" alignItems="center" flexWrap="wrap">
+        <Button size="small" variant="secondary" onClick={start}>
+          Start
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isShown || !isLoading}
+          onClick={() => setIsLoading(false)}
+        >
+          Finish
+        </Button>
+        <Button
+          size="small"
+          variant="secondary"
+          isDisabled={!isShown || isComplete}
+          onClick={() => setIsShown(false)}
+        >
+          Stop
+        </Button>
+        <SchemeSwitch />
+        <Text size="small" color="surface.text.gray.muted">
+          {!isShown
+            ? 'Stopped: Start brings him back at his start'
+            : isComplete
+            ? 'onComplete: the page takes its place'
+            : isLoading
+            ? 'Loading…'
+            : 'Loaded: he finishes'}
+        </Text>
+      </Box>
+      <Box backgroundColor="surface.background.gray.intense" borderRadius="medium">
+        {isShown ? (
+          <RayLoader
+            key={run}
+            size={size}
+            isLoading={isLoading}
+            onComplete={() => setIsComplete(true)}
+          />
+        ) : (
+          <Box height={size === 'small' ? '152px' : '192px'} />
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+/**
+ * The Ray loader, `RayLoader` (a component of its own, with a loader's props: `isLoading`, `onComplete`). Start: he charges and dashes, and holds the
+ * dash while loading. Finish (`isLoading={false}`): he slides on, turns round, jumps and drops through the floor, then `onComplete`.
+ * Stop: the loader goes (unmounted mid-way); the next Start brings him back at his start. The light / dark switch is here, not in the
+ * toolbar, so switching doesn't start him over.
+ */
+const RayLoaderTemplate: StoryFn<RayProps> = ({ size }) => (
+  <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+    <Box padding="spacing.8">
+      <LoaderDemo size={size} />
+    </Box>
+  </BladeProvider>
+);
+
+export const RayLoaderSecondary = RayLoaderTemplate.bind({});
+RayLoaderSecondary.storyName = 'Ray Loader (Secondary)';
+RayLoaderSecondary.args = { size: 'medium' };
+RayLoaderSecondary.parameters = { controls: { include: ['size'] } };

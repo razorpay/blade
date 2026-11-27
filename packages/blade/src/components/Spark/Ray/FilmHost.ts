@@ -74,6 +74,9 @@ const resetRendererCheck = (): void => {
   drawsOnCpu = null;
 };
 
+/** A canvas the film places and sizes itself (`data-own`), not the host. */
+const isOwn = (canvas: HTMLCanvasElement): boolean => canvas.dataset.own !== undefined;
+
 const NOT_FOUND = (): Promise<any> =>
   Promise.resolve({
     ok: false,
@@ -326,25 +329,32 @@ class FilmHost {
     );
   }
 
-  /** Its canvases placed over the part of the stage they cover (whole device px). */
+  /**
+   * Its canvases placed over the part of the stage they cover (whole device px). One the film places itself (`data-own`: the Dash
+   * film's canvas around Ray, moved with him, RayLoader's round-6 review) is left where the film puts it.
+   */
   private place(): void {
     const d = this.devicePixelRatio || 1;
     const K = this.part();
-    Object.values(this.canvases).forEach((canvas) =>
+    Object.values(this.canvases).forEach((canvas) => {
+      if (isOwn(canvas)) return;
       Object.assign(canvas.style, {
         left: `${K.x / d}px`,
         top: `${K.y / d}px`,
         width: `${K.w / d}px`,
         height: `${K.h / d}px`,
-      }),
-    );
+      });
+    });
   }
 
-  /** Its canvases the size of its part of the stage, emptied (one of another size, like Searching's lens texture, is its own and kept). */
+  /**
+   * Its canvases the size of its part of the stage, emptied, and the ones it places itself (the film sizes them again as it draws);
+   * one of another size, like Searching's lens texture, is its own and kept.
+   */
   private empty(): void {
     const K = this.part();
     this.made.forEach((canvas) => {
-      if (canvas.width === K.w && canvas.height === K.h) freeCanvas(canvas);
+      if ((canvas.width === K.w && canvas.height === K.h) || isOwn(canvas)) freeCanvas(canvas);
     });
   }
 
