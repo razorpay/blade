@@ -19,22 +19,13 @@ import { RazorSenseThinking } from './RazorSenseThinking';
 import { useChatStage } from './useChatStage';
 import { useStateStill } from './useStateStill';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { loadBottomWaveStill, loadThinkingStill } from './stillLoaders';
 import { useStill } from '../RazorSenseEngine/useStill';
 import { watchLayout } from '../RazorSenseEngine/watchLayout';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-
-/** its stills, for when it can't animate (each its own module per color scheme, loaded only then) */
-const loadThinkingStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
-  colorScheme === 'dark'
-    ? import('./stills/thinkingDark').then((m) => m.thinkingDark)
-    : import('./stills/thinkingLight').then((m) => m.thinkingLight);
-const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
-  colorScheme === 'dark'
-    ? import('./stills/bottomWaveDark').then((m) => m.bottomWaveDark)
-    : import('./stills/bottomWaveLight').then((m) => m.bottomWaveLight);
 
 /**
  * RazorSenseChat

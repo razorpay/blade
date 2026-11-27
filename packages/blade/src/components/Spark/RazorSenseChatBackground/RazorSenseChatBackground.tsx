@@ -56,8 +56,9 @@ const INPUT_MIDDLE: [number, number] = [
  * and breathing; as someone types it pulses into its typing surge and dies back down when they stop. Like RazorSense, it follows
  * Blade's color scheme (BladeProvider).
  *
- * It's for a chat input on its own (a landing, a home screen). In an assistant chat, use RazorSenseBottomWave: the chat's
- * fainter wave, which the thinking surges into.
+ * It's the background of a chat input on its own (a landing, a home screen), not of RazorSenseChat: an assistant chat draws its
+ * own, so there use RazorSenseBottomWave inside RazorSenseChat (the chat's fainter wave, which the thinking surges into). Don't put
+ * it inside a RazorSenseChat: both round one chat input would lay two effects on it.
  *
  * The strip stretches to the input's width and height (the bands keep their size) and its glow spills outside it, on a clear
  * background, so the page shows through. Paused off-screen.

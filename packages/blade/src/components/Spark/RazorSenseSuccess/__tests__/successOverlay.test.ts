@@ -78,4 +78,20 @@ describe('successOverlay (Rzp Glass Success Animation 2.0’s badge and tick)', 
     expect(valueAt(keys, 99)).toBe(keys[keys.length - 1].v);
     expect(valueAt(keys, keys[1].t)).toBeCloseTo(keys[1].v as number, 6);
   });
+
+  it('with no colour read off the token: no blend and no colour of its own, the tick white then the check in the token itself', () => {
+    const piece = successPieceLight;
+    const m = piece.moments;
+    const o = makeOverlay();
+    overlayAt(piece, m.land, null, o);
+    expect(o.tick.color).toEqual([255, 255, 255]);
+    expect(o.tick.isInk).toBe(false);
+    overlayAt(piece, m.handEnd, null, o);
+    expect(o.tick.color).toEqual([255, 255, 255]);
+    expect(o.tick.isInk).toBe(true);
+    // (with the colour read, it's blended as before)
+    overlayAt(piece, m.handEnd, INK, o);
+    expect(o.tick.isInk).toBe(false);
+    expect(o.tick.color).toEqual(INK);
+  });
 });

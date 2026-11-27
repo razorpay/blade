@@ -8,17 +8,12 @@ import { useChatStage } from './useChatStage';
 import { useStateStill } from './useStateStill';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
+import { loadBottomWaveStill } from './stillLoaders';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMergeRefs } from '~utils/useMergeRefs';
-
-/** the bottom wave's still, for when it can't animate (its own module per color scheme, loaded only then) */
-const loadBottomWaveStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
-  colorScheme === 'dark'
-    ? import('./stills/bottomWaveDark').then((m) => m.bottomWaveDark)
-    : import('./stills/bottomWaveLight').then((m) => m.bottomWaveLight);
 
 /**
  * RazorSenseBottomWave

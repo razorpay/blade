@@ -30,7 +30,7 @@ const Q0 = { delayMs: 200, slumpMs: 1250, antic: 4, droopK: 1, sag: 0.13, bodyHz
   sadBreath: 0.9, sadBreathS: 5.4, sighEvery: 9, sigh: 3.2, onlineMs: 560, pop: 0.09,
   wakeBeat: 0, crouchMs: 170, crouch: 0.08, jumpH: 42, airK: 1.35, landSq: 0.1, landMs: 420, landBounce: 0.06, wobble: 75, eyeLag: 0.6,
   failBody: 12, failEyeR: 55, failEyeL: 18, failStep: 140, failBack: 300, failRed: 1, failRedRise: 1.6,
-  sdAntic: 3, sdAnticMs: 280, sdSlumpMs: 950, sdDroop: 0.85, sdSag: 0.1, sdLid: 0.9, sdLook: 0.8, sdCol: 0.25, sdShakeAt: 0, sdSwing: 380, sdSwings: 3, sdShakePx: 30, sdDrumIn: 0.25, sdDecay: 0.72, sdSway: 3.5,
+  sdAntic: 3, sdAnticMs: 280, sdSlumpMs: 950, sdDroop: 0.85, sdSag: 0.1, sdLid: 0.9, sdLook: 0.8, sdCol: 0.25, sdShakeAt: 0, sdSwing: 380, sdSwings: 3, sdShakePx: 30, sdDrumIn: 0.25, sdDecay: 0.72, sdSway: 3.5, sdRed: 1, sdRedIn: 260, sdRedOut: 700,
   sdHold: 700, sdBackMs: 900, sdPop: 0.04, sdSpeed: 1, sdSpBreath: 1, sdSpDown: 1, sdSpShake: 1, sdSpBack: 1,
   mfGrey: 1, twR: 5, twRHz: 1.6, twL: 2, twLHz: 0.5, twMs: 70, twSq: 0.1, twDouble: 0.3,
   mfGapMin: 1.5, mfGapMax: 6, mfBurstMin: 250, mfBurstMax: 1600, mfGlitch: 0.55, mfSpeed: 1, mfSmooth: 0.15, mfVary: 0.35, mfMorphMs: 160, mfSync: 0.5,
@@ -298,7 +298,9 @@ function frameOf(now, dt) {
   const land = offline || sdn ? (sdn ? Q.sdSag : Q.sag) * Math.sin(Math.PI * cl((tau - dly - 0.6 * slm) / (0.65 * slm))) ** 2 : 0;
   // error · sad: the shake no (his gaze from down-left to the right, back, smaller each time, then home to the middle), his top swaying after it
   // (gSd: how far his eyes are off the sad look, Ray px, + right: right, left, right... smaller each time, and home)
-  let gSd = null; if (sdOn(now)) { const ts = now - sdAt - sdShake0(), W = sdT().W, n = Q.sdSwings, G = [0];
+  // (2026-11-24, the user: "make him turn red during the shake, smooth": the old Error's red eases in as the shake starts, holds through it, eases out after)
+  let gSd = null, rSd = 0; if (sdOn(now)) { const ts = now - sdAt - sdShake0(), W = sdT().W, n = Q.sdSwings, G = [0];
+    rSd = Q.sdRed * E.inout(cl(ts / Math.max(1, Q.sdRedIn / Q.sdSpeed))) * (1 - E.inout(cl((ts - (n + 1) * W) / Math.max(1, Q.sdRedOut / Q.sdSpeed))));
     for (let i = 1; i <= n; i++) G.push((i % 2 ? 1 : -1) * Q.sdShakePx * Q.sdDecay ** (i - 1)); G.push(0);
     if (ts <= 0) gSd = 0; else { const i = Math.min(G.length - 2, Math.floor(ts / W)), u = ts >= (G.length - 1) * W ? 1 : (ts - i * W) / W; gSd = G[i] + (G[i + 1] - G[i]) * E.inout(u); }
     if (sdCutAt != null) gSd = sdCutG * (1 - E.inout(cl((now - sdCutAt) / W)));   // (Blade: a leave mid-way, the shake easing home)
@@ -384,8 +386,9 @@ function frameOf(now, dt) {
         return { ...x, blink: mal ? 0 : x.blink, from: 'mfF' + j, to: 'mfT' + j, u: E.inout(mfU(e, now)), free: true, sy: t ? t.sy : 1 }; });
       out.hover = { amt: ha, uv, w: [1, 1] }; } }
   else if (mg > 0.001) { const t0 = out.tint; out.tint = { color: mixHex(t0 ? t0.color : LOOK.color, '#80848f', Q.mfGrey * mg), fade: MODES.light.fade, fadeD: mixHex(t0 ? t0.fadeD : MODES.dark.fade, '#26282d', Q.mfGrey * mg) }; }
+  if (rSd > 0.001) { const t0 = out.tint; out.tint = { color: mixHex(t0 ? t0.color : LOOK.color, RED, rSd), fade: MODES.light.fade, fadeD: mixHex(t0 ? t0.fadeD : MODES.dark.fade, '#3a1517', rSd) }; }   // (over his drained sad colour)
   if (fk > 0.001) out.tint = { color: mixHex(LOOK.color, RED, fk), fade: MODES.light.fade, fadeD: mixHex(MODES.dark.fade, '#3a1517', fk) };   // blue -> red -> blue (dark's deep edge goes a deep red with it)
-  return { f: out, col, d, lid, sad, sl, fk, brk: broken, jy, jsq, gSd, fail: tf >= 0 && tf < TF };
+  return { f: out, col, d, lid, sad, sl, fk, rSd, brk: broken, jy, jsq, gSd, fail: tf >= 0 && tf < TF };
 }
 
 // ---- the stage ----

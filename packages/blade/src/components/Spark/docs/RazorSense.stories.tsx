@@ -332,8 +332,9 @@ const ControlledInput = ({
 );
 
 /**
- * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: wrap the chat input and a soft fluted strip
- * sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
+ * RazorSense 2.0 behind the chat input on a landing, `RazorSenseChatBackground`: the background of a chat input on its own (a
+ * landing, a home screen), not of `RazorSenseChat` (an assistant chat draws its own: Bottom Surge 2.0). Wrap the chat input and a
+ * soft fluted strip sits behind it, drifting and breathing. Type in it to see its typing surge: it pulses with the typing and dies back down after.
  * The controls size the box it fits, scale it and move it. Hide UI makes the chat input see-through, so only RazorSense shows
  * (it still takes typing while hidden). Go offline: it fades away under its colours (`isOffline`); back online, it fades back in,
  * and turned round mid-way, it goes back from where it is.

@@ -19,6 +19,8 @@ written by hand.
   (rounding: the worst is 2/255 as composited, checked frame by frame against it off, at 1x, 2x and 3x).
 - The engine ships minified with terser (laid out again by prettier), so it's as small in an app whose bundler minifies with
   esbuild (Vite) as in one using terser (webpack).
+- The build needs `esbuild` and `terser`: both are in `packages/blade`'s devDependencies, so it doesn't rely on another package
+  hoisting them.
 
 ```sh
 yarn build:razorsense-engine   # writes freshEngine.ts from source/ (and lints it)

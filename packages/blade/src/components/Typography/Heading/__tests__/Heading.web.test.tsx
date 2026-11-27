@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading } from '../';
+import type { HeadingProps } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -104,6 +105,65 @@ describe('<Heading />', () => {
   it('should be accessible', async () => {
     const { container } = renderWithTheme(<Heading>Text content</Heading>);
     await assertAccessible(container);
+  });
+
+  it('should render the serif variant at the 2xlarge size', () => {
+    const displayText = 'Good morning, what would you like to do today?';
+    const { container, getByRole } = renderWithTheme(
+      <Heading variant="serif">{displayText}</Heading>,
+    );
+    const heading = getByRole('heading', { level: 2 });
+    expect(heading).toHaveStyle({
+      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
+      fontWeight: '400',
+      fontSize: '2.5rem',
+      letterSpacing: '-0.52px',
+    });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should accept size="2xlarge" and weight="regular" alongside the serif variant', () => {
+    const { getByRole } = renderWithTheme(
+      <Heading variant="serif" size="2xlarge" weight="regular">
+        Hero
+      </Heading>,
+    );
+    expect(getByRole('heading', { level: 2 })).toHaveStyle({
+      fontFamily: '"PT Serif","PT Serif Fallback Georgia",Georgia,serif',
+    });
+  });
+
+  it('should keep HeadingProps usable in wrappers', () => {
+    type SectionTitleProps = Omit<HeadingProps, 'size'>;
+    const SectionTitle = (props: SectionTitleProps): React.ReactElement => (
+      <Heading size="large" {...props} />
+    );
+    const { getByRole } = renderWithTheme(<SectionTitle>Section</SectionTitle>);
+    expect(getByRole('heading', { level: 4 })).toBeInTheDocument();
+  });
+
+  it('should throw in dev when the serif variant gets another size', () => {
+    expect(() =>
+      renderWithTheme(
+        <Heading variant="serif" size="xlarge">
+          Not serif
+        </Heading>,
+      ),
+    ).toThrow(
+      '[Blade: Heading]: variant="serif" always renders at size="2xlarge". Remove size="xlarge".',
+    );
+  });
+
+  it('should throw in dev when the serif variant gets a non-regular weight', () => {
+    expect(() =>
+      renderWithTheme(
+        <Heading variant="serif" weight="medium">
+          Not serif
+        </Heading>,
+      ),
+    ).toThrow(
+      '[Blade: Heading]: variant="serif" always renders in regular weight, because PT Serif ships in regular weight only. Remove weight="medium".',
+    );
   });
 
   it('should accept testID', () => {

@@ -9,6 +9,7 @@ export type {
   RazorSenseChatProps,
   RazorSenseThinkingProps,
   RazorSenseBottomWaveProps,
+  RazorSenseOutcome,
 } from './RazorSenseChat';
 export { RazorSenseBackground } from './RazorSenseBackground';
 export type { RazorSenseBackgroundProps } from './RazorSenseBackground';
@@ -18,5 +19,3 @@ export { RazorSenseChatBackground } from './RazorSenseChatBackground';
 export type { RazorSenseChatBackgroundProps } from './RazorSenseChatBackground';
 export { Ray } from './Ray';
 export type { RayProps, RayState, RayIdle, RaySize, RayOutcome } from './Ray';
-export { RayLoader } from './RayLoader';
-export type { RayLoaderProps } from './RayLoader';

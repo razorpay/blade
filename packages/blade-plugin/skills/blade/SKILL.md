@@ -3,7 +3,7 @@ name: blade
 description: Razorpay Blade Design System reference for React UI code. Use when writing, reviewing or debugging code that uses @razorpay/blade, choosing a component, pattern or token, upgrading Blade, or turning a figma.com frame into Blade code.
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs *) Bash(node *changelog.mjs*) Bash(node *figma-to-code.mjs*) Read
 metadata:
-  version: '1.33.3'
+  version: '1.34.0'
 ---
 
 You are Razorpay's Frontend Engineer who knows the Blade design system. Do not rely on memorised Blade APIs: read the reference docs in this skill before answering questions or writing UI code. Prefer Blade components over custom components so the UI stays consistent.
@@ -43,6 +43,15 @@ Full type definitions: `references/styled-props-types.md` (`StyledPropsBlade`, `
 
 Common utility types (`TestID`, `DataAnalyticsAttribute`, `FeedbackColors`, `Breakpoints`): `references/common-utility-types.md`.
 
+## Guardrails
+
+Run these checks once you are done with your edits, before reporting usage. They look at what your changes added, so they also cover edits made with `sed` or other shell commands.
+
+- **Serif heading.** `<Heading variant="serif">` (PT Serif) is reserved for the agentic dashboard hero heading. Look for `variant="serif"` (or `variant: 'serif'`) in the lines your changes added, for example in `git diff`. For each one:
+  - If it is not the agentic dashboard hero heading, replace it with a regular `Heading`. Do this even if the design looks similar.
+  - If it is, keep it and put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it, so reviewers can see the use is intentional.
+  - Never recreate PT Serif with a custom `font-family`.
+
 ## Report usage
 
 After completing all code edits, and **just before** writing your final summary to the user, report the diff size of your edits **exactly once** (the same metric as Blade MCP's `publish_lines_of_code_metric` tool). Count lines the way `git diff --numstat` does: a new line is 1 added, a deleted line is 1 removed, a modified line is 1 removed and 1 added. Keep the numbers exactly as your diff reports them.
@@ -59,7 +68,7 @@ node ${CLAUDE_SKILL_DIR}/scripts/publish-metric.mjs '{"files":[{"filePath":"src/
 
 ## Available components
 
-Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, AppBar, AreaChart, AutoComplete, Avatar, Badge, BarChart, BottomBar, BottomNav, BottomSheet, Box, Breadcrumb, Button, ButtonGroup, Card, Carousel, ChatInput, ChatMessage, Checkbox, Chip, Code, Collapsible, ColorInput, Counter, CounterInput, DatePicker, Display, Divider, DonutChart, Drawer, Dropdown, Elevate, EmptyState, Fade, FileUpload, FloatingActionButton, FunnelChart, Heading, IconButton, Icons, Indicator, InfoGroup, InputGroup, LightBox, LineChart, Link, List, ListView, Menu, Modal, Morph, Move, OTPInput, Pagination, PasswordInput, PhoneNumberInput, Popover, Preview, ProgressBar, QuickFilter, Radio, Ray, RayLoader, RazorSense, RazorSenseBackground, RazorSenseBottomWave, RazorSenseChat, RazorSenseChatBackground, RazorSenseGradient, RazorSenseLoader, RazorSenseSuccess, RazorSenseThinking, SankeyChart, Scale, SearchInput, SegmentedControl, SelectInput, SideNav, Skeleton, SkipNav, Slide, SliderInput, Spinner, SpotlightPopoverTour, Stagger, StepGroup, Switch, Table, Tabs, Tag, Text, TextArea, TextInput, TimePicker, Toast, Tooltip, TopNav, TreeView, TrustBadge, VisuallyHidden
+Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, AppBar, AreaChart, AutoComplete, Avatar, Badge, BarChart, BottomBar, BottomNav, BottomSheet, Box, Breadcrumb, Button, ButtonGroup, Card, Carousel, ChatInput, ChatMessage, Checkbox, Chip, Code, Collapsible, ColorInput, Counter, CounterInput, DatePicker, Display, Divider, DonutChart, Drawer, Dropdown, Elevate, EmptyState, Fade, FileUpload, FloatingActionButton, FunnelChart, Heading, IconButton, Icons, Indicator, InfoGroup, InputGroup, LightBox, LineChart, Link, List, ListView, Menu, Modal, Morph, Move, OTPInput, Pagination, PasswordInput, PhoneNumberInput, Popover, Preview, ProgressBar, QuickFilter, Radio, Ray, RazorSense, RazorSenseBackground, RazorSenseBottomWave, RazorSenseChat, RazorSenseChatBackground, RazorSenseGradient, RazorSenseLoader, RazorSenseSuccess, RazorSenseThinking, SankeyChart, Scale, SearchInput, SegmentedControl, SelectInput, SideNav, Skeleton, SkipNav, Slide, SliderInput, Spinner, SpotlightPopoverTour, Stagger, StepGroup, Switch, Table, Tabs, Tag, Text, TextArea, TextInput, TimePicker, Toast, Tooltip, TopNav, TreeView, TrustBadge, VisuallyHidden
 
 ## Available patterns
 

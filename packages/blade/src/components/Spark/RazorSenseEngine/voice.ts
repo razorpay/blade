@@ -20,11 +20,23 @@ class VoiceTap {
   private readonly time: Float32Array;
   private readonly freq: Uint8Array;
   private readonly norm = new Float64Array([0.2, 0.2, 0.2, 0.2]);
-  private readAt = -1;
+  /** the frame last read in (the document timeline's time: the same for every component drawing in one frame) */
+  private readFrame = -1;
   private lastAt = 0;
   public users = 0;
+  private isClosed = false;
+  private readonly stream: MediaStream;
+  /**
+   * the page stopped the stream's tracks but left listening on (the PR review): its audio context closed now, not when listening
+   * ends; it reads as silence from then
+   */
+  private readonly onEnded = (): void => {
+    const tracks = this.stream.getAudioTracks?.() ?? [];
+    if (tracks.length && tracks.every((t) => t.readyState === 'ended')) this.close();
+  };
 
   constructor(stream: MediaStream) {
+    this.stream = stream;
     const Ctx: typeof AudioContext =
       window.AudioContext ??
       ((window as unknown) as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
@@ -41,6 +53,9 @@ class VoiceTap {
     this.analyser.smoothingTimeConstant = 0.2;
     // (not connected on to the speakers: only read)
     this.source.connect(this.analyser);
+    for (const track of stream.getAudioTracks?.() ?? [])
+      track.addEventListener?.('ended', this.onEnded);
+    stream.addEventListener?.('inactive', this.onEnded);
     this.time = new Float32Array(this.analyser.fftSize);
     this.freq = new Uint8Array(this.analyser.frequencyBinCount);
     // (an audio context made after the page was interacted with starts running; one that didn't is asked once)
@@ -49,9 +64,17 @@ class VoiceTap {
 
   /** the level (0-1: -60 dB nothing, -12 dB full) and each band against its own recent peak, at `now` (ms): read once a frame */
   public read(now: number): VoiceTap['level'] {
-    if (now === this.readAt) return this.level;
+    if (this.isClosed) {
+      this.level.lvl = 0;
+      this.level.bands.fill(0);
+      return this.level;
+    }
+    // (once a frame, page-wide: each component passes its own performance.now(), so the frame is the document timeline's time,
+    // shared by everything drawn in it; without one, the time passed)
+    const frame = Number(document.timeline?.currentTime ?? now);
+    if (frame === this.readFrame) return this.level;
     const dt = this.lastAt ? Math.min(0.05, (now - this.lastAt) / 1000) : 0;
-    this.readAt = now;
+    this.readFrame = frame;
     this.lastAt = now;
     const { analyser, time, freq, norm, level } = this;
     analyser.getFloatTimeDomainData(time);
@@ -78,6 +101,11 @@ class VoiceTap {
   }
 
   public close(): void {
+    if (this.isClosed) return;
+    this.isClosed = true;
+    for (const track of this.stream.getAudioTracks?.() ?? [])
+      track.removeEventListener?.('ended', this.onEnded);
+    this.stream.removeEventListener?.('inactive', this.onEnded);
     this.source.disconnect();
     void this.ctx.close().catch(() => undefined);
   }

@@ -109,6 +109,30 @@ const fileUploadItemIconTokens = {
   },
 } as const;
 
+const fileUploadItemCompactTokens = {
+  height: size['32'],
+  nameMaxWidth: size['120'],
+  iconTileSize: size['24'],
+  background: {
+    default: 'surface.background.gray.intense',
+    hover: 'interactive.background.gray.faded',
+  },
+  border: {
+    default: 'surface.border.gray.muted',
+    error: 'interactive.border.negative.faded',
+  },
+  iconTileBackground: {
+    default: 'surface.background.gray.moderate',
+    error: 'feedback.background.negative.subtle',
+  },
+  name: {
+    default: 'surface.text.gray.normal',
+    uploading: 'surface.text.gray.muted',
+  },
+} as const;
+
+const fileUploadItemCompactTriggerAttribute = 'data-file-upload-item-trigger';
+
 // File icon above the drop area text when size="variable"
 const fileUploadDropAreaIconTokens = {
   size: size['56'],
@@ -129,6 +153,8 @@ export {
   fileUploadColorTokens,
   fileUploadItemColorTokens,
   fileUploadItemIconTokens,
+  fileUploadItemCompactTokens,
+  fileUploadItemCompactTriggerAttribute,
   fileUploadDropAreaIconTokens,
   fileUploadHeightTokens,
   fileUploadItemHeightTokens,

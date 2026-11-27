@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { FileUploadItemCompact } from './FileUploadItemCompact';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import {
@@ -42,6 +43,24 @@ const FileUploadItem = memo(
     _isCompact = false,
     ...rest
   }: FileUploadItemProps): React.ReactElement => {
+    if (_isCompact) {
+      return (
+        <FileUploadItemCompact
+          file={file}
+          onRemove={onRemove}
+          onReupload={onReupload}
+          onDismiss={onDismiss}
+          width={width}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
+          flexShrink={flexShrink}
+          flexGrow={flexGrow}
+          flexBasis={flexBasis}
+          {...rest}
+        />
+      );
+    }
+
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
@@ -115,7 +134,7 @@ const FileUploadItem = memo(
             >
               <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
                 <BaseBox flexShrink={1} minWidth="0px">
-                  {isUploading && !_isCompact ? (
+                  {isUploading ? (
                     <Text {...fileNameTextProps} truncateAfterLines={1}>
                       Uploading{' '}
                       <Text {...fileNameTextProps} as="span">

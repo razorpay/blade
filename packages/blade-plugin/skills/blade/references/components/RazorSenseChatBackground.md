@@ -4,7 +4,7 @@ RazorSenseChatBackground
 
 ## Description
 
-RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap the chat input and a soft fluted strip sits behind it, drifting and breathing; as someone types it pulses into its typing surge and dies back down when they stop. It ships next to RazorSense and follows Blade's color scheme.
+RazorSenseChatBackground is RazorSense behind a chat input on its own, on a landing or home screen: the background of the chat input, not of `RazorSenseChat` (an assistant chat draws its own; there, use `RazorSenseBottomWave` inside `RazorSenseChat`). Wrap the chat input and a soft fluted strip sits behind it, drifting and breathing; as someone types it pulses into its typing surge and dies back down when they stop. It ships next to RazorSense and follows Blade's color scheme.
 
 ## Important Constraints
 
@@ -13,7 +13,7 @@ RazorSenseChatBackground is RazorSense behind a chat input on a landing: wrap th
 - It wraps the chat input (`children`): the strip stretches to the input's width and height (the bands keep their size) and its glow spills outside it, behind the input and over the page. The spill doesn't grow the page (no scrollbars).
 - It fits chat inputs from 280 px wide (a phone's) to 1260 px, and from 58 px tall to 320 px (a chat input grows with lines and attachments, and the band grows with it); past those it stretches as for the nearest end, centred on the input.
 - Typing reaches it from the input itself: every edit typed in an input, textarea or editable element inside counts as a keystroke. What's typed is never read.
-- It's for a chat input on its own (a landing, a home screen). In an assistant chat, use `RazorSenseBottomWave` inside `RazorSenseChat` instead.
+- It's for a chat input on its own (a landing, a home screen). It isn't `RazorSenseChat`'s background, and doesn't go inside one: an assistant chat draws its own, so there use `RazorSenseBottomWave` inside `RazorSenseChat` (both round one chat input would lay two effects on it).
 - When it can't animate (no WebGL2, a GPU that only draws on the CPU such as a remote desktop or a VM, its engine failing to load, or frames under 20 a second for 3 seconds even at its lowest step) it shows a still frame of itself instead and calls `onError`. The page keeps its frame rate. Too slow counts for the whole page: once one RazorSense 2.0 animation is too slow, every one on the page shows its still, including ones mounted later, until the page reloads. Each still is its own small module, downloaded only then.
 - With reduced motion on it shows one still frame of its idle strip.
 - `scale` is held between 0.75 and 1.25 (the whole effect, bands included).

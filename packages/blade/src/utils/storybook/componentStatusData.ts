@@ -1866,6 +1866,36 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'RazorSenseBackground',
+    description:
+      "RazorSense 2.0's big piece as a page background: soft fluted bands drifting and breathing, placed as the login page has it.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseSuccess',
+    description:
+      "RazorSense 2.0's success moment: a glass orb rises, then turns into Blade's success badge with its check and an optional label.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'RazorSense',
     description:
       'RazorSense is a Blade Spark surface that renders an animated, shader-driven glass effect for AI and branded moments.',
@@ -1885,21 +1915,6 @@ const componentData: ComponentStatusDataType = [
     name: 'Ray',
     description:
       "Ray is Razorpay's AI mascot: he sits on the chat input, idles, watches what's typed, and plays an answer's states while it's being worked on.",
-    platform: 'web',
-    frameworks: {
-      react: {
-        status: 'in-development',
-        storybookLink: 'Components/Ray',
-      },
-      svelte: {
-        status: 'to-be-decided',
-      },
-    },
-  },
-  {
-    name: 'RayLoader',
-    description:
-      "The Ray loader (secondary): Ray dashes across while the page loads, then slides, turns, jumps and drops through the floor. Its props mirror RazorSenseLoader's.",
     platform: 'web',
     frameworks: {
       react: {

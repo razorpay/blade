@@ -18,6 +18,7 @@ import { useChatStage } from './useChatStage';
 import { mixColors } from './mixColors';
 import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
 import { placeSpill, watchSpill } from '../RazorSenseEngine/spillClip';
+import { loadThinkingStill } from './stillLoaders';
 import { stillStyle, useStill } from '../RazorSenseEngine/useStill';
 import { useTheme } from '~components/BladeProvider';
 import { RollingText } from '~components/RollingText';
@@ -34,12 +35,6 @@ import { logger } from '~utils/logger';
  * through it is that blue lifted toward white by this much (%), near flow 9's.
  */
 const SHINE_LIFT = { light: 78, dark: 72 } as const;
-
-/** thinking's still, for when it can't animate (its own module per color scheme, loaded only then) */
-const loadThinkingStill = (colorScheme: 'light' | 'dark'): Promise<string> =>
-  colorScheme === 'dark'
-    ? import('./stills/thinkingDark').then((m) => m.thinkingDark)
-    : import('./stills/thinkingLight').then((m) => m.thinkingLight);
 
 const shimmer = keyframes`
   0% { background-position: 100% 0; }
