@@ -3097,6 +3097,8 @@
   "shadow-focus-negative": "box-shadow",
   "shadow-focus-neutral": "box-shadow",
   "shadow-highRaised": "box-shadow",
+  "shadow-input-active": "box-shadow",
+  "shadow-input-error": "box-shadow",
   "shadow-lowRaised": "box-shadow",
   "shadow-midRaised": "box-shadow",
   "shadow-none": "box-shadow",
