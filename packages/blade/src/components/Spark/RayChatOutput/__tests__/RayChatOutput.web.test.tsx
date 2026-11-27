@@ -170,6 +170,8 @@ describe('<RayChatOutput />', () => {
       );
       const was = container.querySelector('[data-ray-chat-was]');
       expect(was).toHaveAttribute('aria-hidden', 'true');
+      // hidden from keyboards too: its links can't be tabbed to
+      expect(was).toHaveAttribute('inert');
       expect(was).toHaveTextContent('Your payouts are on time.');
       expect(container.querySelector('p')).toHaveAttribute('data-ray-chat-growing');
 

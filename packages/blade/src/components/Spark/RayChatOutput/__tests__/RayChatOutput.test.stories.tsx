@@ -302,16 +302,26 @@ export const TitleKeepsRupee: StoryFn = () => (
   <Answer>{'Your settlement of ₹48,200 reached your bank.\n\n### Fees of ₹12'}</Answer>
 );
 TitleKeepsRupee.play = async ({ canvasElement }) => {
-  // TASA Orbiter has no ₹: titles fall back to Blade's text font (Inter), which has it. Checked
-  // on the main title; the ### title shares its CSS rule, but Storybook's preview-head forces its
-  // own font stack on h3 even inside .sb-unstyled (its rule excludes `.sb-unstyled h4` there).
+  // TASA Orbiter has no ₹: Blade's text font (Inter) comes right after it in the title stack, so
+  // Inter supplies ₹ (not Arial). Checked on the main title; the ### title shares its CSS rule,
+  // but Storybook's preview-head forces its own font stack on h3 even inside .sb-unstyled (its
+  // rule excludes `.sb-unstyled h4` there).
   const [mainTitle] = blocksOf(canvasElement);
   const families = style(mainTitle)
     .fontFamily.split(',')
     .map((family) => family.trim().replace(/"/g, ''));
-  await expect(families.indexOf('Inter')).toBeGreaterThan(families.indexOf('TASA Orbiter'));
-  await document.fonts.load('20px "Inter"', '₹');
-  await expect(document.fonts.check('20px "Inter"', '₹')).toBe(true);
+  await expect(families.indexOf('Inter')).toBe(families.indexOf('TASA Orbiter') + 1);
+  // the ₹ drawn in the title's own font is Inter's ₹
+  const { fontWeight, fontSize, fontFamily } = style(mainTitle);
+  await document.fonts.load(`${fontWeight} ${fontSize} "Inter"`, '₹');
+  const rupeeWidth = (font: string) => {
+    const context = document.createElement('canvas').getContext('2d')!;
+    context.font = font;
+    return context.measureText('₹').width;
+  };
+  await expect(rupeeWidth(`${fontWeight} ${fontSize} ${fontFamily}`)).toBe(
+    rupeeWidth(`${fontWeight} ${fontSize} "Inter"`),
+  );
 };
 
 const GENUI_REPLY = [

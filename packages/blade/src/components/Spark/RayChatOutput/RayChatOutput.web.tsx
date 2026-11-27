@@ -42,6 +42,12 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
     const { fonts, lineHeights, letterSpacings } = theme.typography;
     const { colors, spacing, border } = theme;
     const tint = colors.interactive.background.gray.faded;
+    // TASA Orbiter has no ₹: Blade's text font (Inter) comes right after it, so Inter supplies ₹
+    // and any other missing glyph, before TASA's own loading fallbacks.
+    const [headingFace, ...headingFallbacks] = fonts.family.heading
+      .split(',')
+      .map((family) => family.trim());
+    const titleFamily = [headingFace, fonts.family.text, ...headingFallbacks].join(', ');
     const grow = `${GROW.durationMs}ms ${GROW.easing}`;
 
     return `
@@ -62,8 +68,7 @@ const StyledRayChatOutput = styled(BaseBox)<{ $isDark: boolean }>`
 
       & h1, & h2, & h3, & h4, & h5, & h6, & [data-ray-chat-lead] {
         margin: 0;
-        /* TASA Orbiter has no ₹ (or other glyphs RAY writes); Blade's text font fills them in. */
-        font-family: ${fonts.family.heading}, ${fonts.family.text};
+        font-family: ${titleFamily};
         font-size: ${makeTypographySize(fonts.size[400])};
         font-weight: ${fonts.weight.medium};
         line-height: ${makeTypographySize(lineHeights[400])};
@@ -246,7 +251,9 @@ const ChatParagraph = ({
   return (
     <p {...props} data-ray-chat-growing={isGrowing ? '' : undefined}>
       {isGrowing ? (
-        <span aria-hidden="true" data-ray-chat-was="">
+        // Hidden from screen readers and keyboards: its links can't be tabbed to.
+        // (`inert` through a spread: React 18's types don't list it yet.)
+        <span aria-hidden="true" {...{ inert: '' }} data-ray-chat-was="">
           {children}
         </span>
       ) : null}

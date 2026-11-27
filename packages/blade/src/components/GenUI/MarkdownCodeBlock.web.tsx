@@ -2,7 +2,7 @@
  * GenUI's Markdown code block: the code on a tint, its language and a copy button. Shared by
  * GenUI's TEXT and RayChatOutput, so both draw code blocks the same way.
  */
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CopyIcon } from '~components/Icons';
@@ -93,11 +93,13 @@ const MarkdownCodeBlockCode = styled.code`
 
 const MarkdownCodeBlockCopyButton = ({ code }: { code: React.ReactNode }): JSX.Element => {
   const [copied, setCopied] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>();
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
 
   const handleCopy = (): void => {
     void navigator.clipboard.writeText(String(code ?? ''));
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    resetTimer.current = setTimeout(() => setCopied(false), 2000);
   };
 
   return (
