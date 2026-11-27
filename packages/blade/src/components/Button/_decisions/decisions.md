@@ -5,6 +5,7 @@
   - [BaseButton API](#basebutton-api)
 - [Button Component](#button-component)
   - [Button API](#button-api)
+- [AI Hovers (`aiHover`)](#ai-hovers-aihover)
 - [Component Breakdown](#component-breakdown)
 - [Open Questions](#open-questions)
 
@@ -52,6 +53,15 @@ This will be the Button component that is exposed to our consumers and will be a
 
 - **Why are we not exposing `contrast` prop for the `Button` Component?**
   The Button component will only have a `variant` prop that would allow you to choose the kind of button you want. `contrast` is only required when we are using it along with `intent` for _internal_ Blade components like an `Alert` that could have a `low` as well as `high` contrast positive-intent button. Our assumption is that our products will not require a standalone low-contrast-positive-button (except a couple edge cases where we would encourage using custom buttons). We're doing this to ensure these different combinations of buttons don't get over-used within our products leading to breakage in the design language. But the fact that we have these capabilities built in the `BaseButton` itself would ensure that _we can_ expose these to our consumers when we see a massive demand for it.
+
+## AI Hovers (`aiHover`)
+
+- **One prop, one value per behaviour.** `aiHover="razorsense"` (the neutral primary button) or `aiHover="ray-<action>"` (a secondary button that widens for Ray), not separate switches: the hovers can never be combined, and a new Ray action is a new value.
+- **Keyboard focus plays it as hovering does.** On `:focus-visible` it starts as the pointer coming onto the button does, and blur ends it as leaving does. A click's focus doesn't count (that hover is the pointer's: it ends as the pointer leaves), and hovered and focused at once is the one hover, on one canvas. Blade's focus ring stays visible on top of it.
+- **The name stays `aiHover`, though focus plays it too.** It names the effect, the design's "AI hover", not the input that starts it. Keyboard focus is how a keyboard user gets that same effect, as an equivalent of hovering, not a second behaviour. A name such as `aiEffect` would say less about what the button does.
+- **Few canvases at once.** A browser keeps only so many WebGL contexts on a page, so a hover's canvas is made only while the pointer is on or near its button, or it's focused from the keyboard (after 60 ms of focus, so holding Tab down a table makes none); at most 3 are held page-wide, the hovered or focused one first. On a device that can't hover (a phone), nothing of it is probed or downloaded until a keyboard focuses a button or link on the page (a tap on a text field is `:focus-visible` too, so it doesn't count), or a mouse or pen moves (a desktop that says it can't hover); the hover itself then waits for its own button's keyboard focus.
+- **Disabled when Ray can't act.** When Ray is unavailable or the merchant is offline, disable the button (`isDisabled`); the AI hover doesn't play on a disabled button, nor on a loading one (`isLoading`). A button disabled or set loading mid-hover ends it at once, and Blade's own disabled or loading look shows. Blade doesn't disable a link Button (`href`), but its `isDisabled` still turns its AI hover off: an app that disables an AI action means it to stop inviting a hover, and the link keeps Blade's link rule otherwise.
+- **It gives way rather than break.** With reduced motion, without a GPU drawing WebGL2, on a page already too slow, on touch, or where its rules don't hold (a ButtonGroup, a full-width button, and for Ray an icon-only button or one that can't widen), the button keeps its own hover and focus ring.
 
 ## Component Breakdown
 

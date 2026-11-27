@@ -1,13 +1,27 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { useRef } from 'react';
 import type { ButtonProps } from '../Button';
 import Button from '../Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { ButtonGroup } from '~components/ButtonGroup';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+/** whether a button has an AI hover layer in it */
+const hasLayer = (button: HTMLElement): boolean =>
+  Boolean(button.querySelector(':scope > span[aria-hidden="true"]'));
+
+/**
+ * A button that gives way keeps its own hover: checked once a button beside it, rendered with it, has its layer in (the layers
+ * load on demand, so a layer that would show is in by then too)
+ */
+const expectGivesWay = async (gated: HTMLElement[], control: HTMLElement): Promise<void> => {
+  await waitFor(() => expect(hasLayer(control)).toBe(true), { timeout: 10000 });
+  gated.forEach((button) => expect(hasLayer(button)).toBe(false));
+};
 
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative', 'neutral'];
@@ -119,6 +133,219 @@ describe('<Button />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('should render the RazorSense hover layer only on the neutral primary button', async () => {
+    // the layer is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    const { container: neutral } = renderWithTheme(
+      <Button color="neutral" aiHover="razorsense">
+        Ask Ray
+      </Button>,
+    );
+    // the layer is loaded once the button turns it on
+    await waitFor(
+      () => expect(neutral.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
+    );
+    // on another colour it's a mistake, loud in development
+    expect(() => renderWithTheme(<Button aiHover="razorsense">Ask Ray</Button>)).toThrow(
+      '[Blade: BaseButton]: aiHover="razorsense" can only be used with variant "primary" and color "neutral"',
+    );
+  }, 20000);
+
+  it('should never load an AI hover on a disabled or loading button (Ray down or the merchant offline: the app disables it)', async () => {
+    await Promise.all([
+      import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer'),
+      import('~components/Spark/ButtonRay/ButtonRayLayer'),
+    ]);
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button color="neutral" aiHover="razorsense" isDisabled testID="razorsense-disabled">
+          Ask Ray
+        </Button>
+        <Button variant="secondary" aiHover="ray-investigate" isDisabled testID="ray-disabled">
+          Investigate
+        </Button>
+        <Button color="neutral" aiHover="razorsense" isLoading testID="razorsense-loading">
+          Ask Ray
+        </Button>
+        <Button variant="secondary" aiHover="ray-investigate" isLoading testID="ray-loading">
+          Investigate
+        </Button>
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    await expectGivesWay(
+      [
+        getByTestId('razorsense-disabled'),
+        getByTestId('ray-disabled'),
+        getByTestId('razorsense-loading'),
+        getByTestId('ray-loading'),
+      ],
+      getByTestId('control'),
+    );
+  }, 20000);
+
+  it('should never load an AI hover on a link Button with isDisabled, though Blade keeps a link enabled', async () => {
+    await Promise.all([
+      import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer'),
+      import('~components/Spark/ButtonRay/ButtonRayLayer'),
+    ]);
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button
+          href="/ask"
+          color="neutral"
+          aiHover="razorsense"
+          isDisabled
+          testID="razorsense-link"
+        >
+          Ask Ray
+        </Button>
+        <Button
+          href="/investigate"
+          variant="secondary"
+          aiHover="ray-investigate"
+          isDisabled
+          testID="ray-link"
+        >
+          Investigate
+        </Button>
+        <Button href="/ask" color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    // (still a link, as Blade keeps it: only its AI hover is off)
+    expect(getByTestId('razorsense-link').tagName).toBe('A');
+    await expectGivesWay(
+      [getByTestId('razorsense-link'), getByTestId('ray-link')],
+      getByTestId('control'),
+    );
+  }, 20000);
+
+  it('should keep the full-width neutral button on its own hover, without RazorSense', async () => {
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button color="neutral" aiHover="razorsense" isFullWidth testID="gated">
+          Ask Ray
+        </Button>
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+  }, 20000);
+
+  it('should throw for a Ray aiHover on a non-secondary variant, and skip it on an icon-only button', async () => {
+    expect(() => renderWithTheme(<Button aiHover="ray-investigate">Investigate</Button>)).toThrow(
+      '[Blade: BaseButton]: aiHover="ray-investigate" can only be used with variant "secondary" and color "primary"',
+    );
+    // (and only on the default secondary: its text wash is made for that ink)
+    expect(() =>
+      renderWithTheme(
+        <Button variant="secondary" color="positive" aiHover="ray-investigate">
+          Investigate
+        </Button>,
+      ),
+    ).toThrow('but received "secondary" and "positive"');
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { getByTestId } = renderWithTheme(
+      <>
+        <Button
+          variant="secondary"
+          aiHover="ray-investigate"
+          icon={CreditCardIcon}
+          accessibilityLabel="Investigate"
+          testID="gated"
+        />
+        <Button variant="secondary" aiHover="ray-investigate" testID="control">
+          Investigate
+        </Button>
+      </>,
+    );
+    await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+  }, 20000);
+
+  it('should keep a Ray button of another color on its own hover in production', async () => {
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const globals = (globalThis as unknown) as { __DEV__: boolean };
+    const dev = globals.__DEV__;
+    // (production: no throw for the wrong color)
+    globals.__DEV__ = false;
+    try {
+      const { getByTestId } = renderWithTheme(
+        <>
+          <Button variant="secondary" color="white" aiHover="ray-investigate" testID="gated">
+            Investigate
+          </Button>
+          <Button variant="secondary" aiHover="ray-investigate" testID="control">
+            Investigate
+          </Button>
+        </>,
+      );
+      await expectGivesWay([getByTestId('gated')], getByTestId('control'));
+    } finally {
+      globals.__DEV__ = dev;
+    }
+  }, 20000);
+
+  it('should throw for an aiHover it does not know', () => {
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error: not a value aiHover takes (a JavaScript app can still pass one)
+        <Button variant="secondary" aiHover="ray">
+          Investigate
+        </Button>,
+      ),
+    ).toThrow(
+      '[Blade: BaseButton]: aiHover must be one of "razorsense", "ray-investigate" but received "ray"',
+    );
+  });
+
+  it('should keep AI hover buttons on their own hover in a ButtonGroup, without throwing', async () => {
+    await import('~components/Spark/ButtonRazorSense/ButtonRazorSenseLayer');
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { getAllByTestId, getByTestId } = renderWithTheme(
+      <>
+        {(['primary', 'secondary'] as const).map((variant) => (
+          <ButtonGroup key={variant} variant={variant}>
+            <Button aiHover="ray-investigate" testID="gated">
+              Investigate
+            </Button>
+            <Button color="neutral" aiHover="razorsense" testID="gated">
+              Ask Ray
+            </Button>
+            <Button>Other</Button>
+          </ButtonGroup>
+        ))}
+        <Button color="neutral" aiHover="razorsense" testID="control">
+          Ask Ray
+        </Button>
+      </>,
+    );
+    await expectGivesWay(getAllByTestId('gated'), getByTestId('control'));
+  }, 20000);
+
+  it('should render Ray on the secondary button at any size', async () => {
+    // Ray's layer (his runtime) is loaded on demand: loaded here first, a cold load can outlast waitFor's default
+    await import('~components/Spark/ButtonRay/ButtonRayLayer');
+    const { container, getByRole } = renderWithTheme(
+      <Button variant="secondary" size="large" aiHover="ray-investigate">
+        Investigate
+      </Button>,
+    );
+    await waitFor(
+      () =>
+        expect(container.querySelector('button > span[aria-hidden="true"]')).toBeInTheDocument(),
+      { timeout: 10000 },
+    );
+    expect(getByRole('button')).toHaveTextContent('Investigate');
+  }, 20000);
 
   it('should call function on click', () => {
     const buttonText = 'Pay Now';

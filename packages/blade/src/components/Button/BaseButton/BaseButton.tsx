@@ -58,8 +58,23 @@ import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
-import { throwBladeError } from '~utils/logger';
+import { logger, throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { ButtonRazorSense } from '~components/Spark/ButtonRazorSense';
+import { ButtonRay, BUTTON_RAY_VARIANTS } from '~components/Spark/ButtonRay';
+import type { ButtonRayVariant } from '~components/Spark/ButtonRay';
+
+/**
+ * Button's AI hovers (web): `razorsense` plays RazorSense on the neutral primary button; `ray-<action>` brings Ray to a secondary
+ * button, doing that action (`ray-investigate`: he searches with his magnifying glass). More Ray actions will come as new values.
+ */
+export type ButtonAiHover = 'razorsense' | `ray-${ButtonRayVariant}`;
+
+// (one list: a new Ray action in BUTTON_RAY_VARIANTS is a new value here and in the type at once)
+const AI_HOVERS: readonly ButtonAiHover[] = [
+  'razorsense',
+  ...BUTTON_RAY_VARIANTS.map((action) => `ray-${action}` as const),
+];
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -108,6 +123,12 @@ type BaseButtonCommonProps = {
    * whose contrast requirements differ from `Button`'s.
    */
   _spinnerColor?: BaseSpinnerProps['color'];
+  /**
+   * An AI hover (web), on hover or keyboard focus. `razorsense`: RazorSense; only for `variant="primary"` with `color="neutral"`, up to 300px
+   * wide, not inside a ButtonGroup or on a full-width button. `ray-<action>`: RazorSense, a text wash, and the button widens for
+   * Ray, who does that action; only for `variant="secondary"`, at any size (it all scales with the button's height).
+   */
+  aiHover?: ButtonAiHover;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -558,6 +579,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     _borderRadius,
     _iconSize,
     _spinnerColor,
+    aiHover,
     ...rest
   },
   ref,
@@ -573,6 +595,83 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
   const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  // an AI hover never plays on a disabled button, a link's included: Blade keeps a link enabled (and its look), but an app that
+  // disables an AI action (Ray down, the merchant offline) means it to stop inviting a hover
+  const isAiHoverEnabled = !disabled && !isDisabled;
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
+  const isAiHoverKnown = aiHover !== undefined && AI_HOVERS.includes(aiHover);
+  const hasRazorSense = aiHover === 'razorsense';
+  // ('ray-investigate': Ray, investigating)
+  const rayVariant =
+    isAiHoverKnown && aiHover.startsWith('ray-')
+      ? (aiHover.slice('ray-'.length) as ButtonRayVariant)
+      : undefined;
+  const hasRay = Boolean(rayVariant);
+  if (__DEV__ && aiHover !== undefined && !isAiHoverKnown) {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `aiHover must be one of ${AI_HOVERS.map((value) => `"${value}"`).join(
+        ', ',
+      )} but received "${aiHover}"`,
+    });
+  }
+  // an AI hover on the wrong button is a mistake, loud as the neutral and tertiary colors are; checked against the Button's own
+  // variant and color, so the same Button is fine dropped into any ButtonGroup (there, it gives way, below)
+  if (hasRazorSense && !isInsideButtonGroup && (variant !== 'primary' || color !== 'neutral')) {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `aiHover="razorsense" can only be used with variant "primary" and color "neutral" but received "${variant}" and "${color}"`,
+    });
+  }
+  // (Ray's text wash is made for the default secondary's ink: on another color it would tint the label wrongly; the PR review)
+  if (hasRay && !isInsideButtonGroup && (variant !== 'secondary' || color !== 'primary')) {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `aiHover="${aiHover}" can only be used with variant "secondary" and color "primary" but received "${variant}" and "${color}"`,
+    });
+  }
+  const isFullWidthButton = buttonGroupProps.isFullWidth ?? isFullWidth;
+  // RazorSense plays over the neutral primary, sized to its content: not inside a ButtonGroup (it has no neutral color) or on a
+  // full-width button, which keep their own hover
+  const isRazorSenseHover =
+    hasRazorSense &&
+    variant === 'primary' &&
+    color === 'neutral' &&
+    !isInsideButtonGroup &&
+    !isFullWidthButton;
+  // Ray needs a labelled button that can widen to the right: not a full-width one, one in a ButtonGroup, or an icon-only one
+  const canWidenForRay =
+    !isInsideButtonGroup && !isFullWidthButton && Boolean(childrenString?.trim());
+  // (on the default secondary only, as RazorSense's checks its own: in production, where a wrong color doesn't throw, the
+  // button keeps its own hover rather than a wash made for another ink)
+  const isRayHover = hasRay && variant === 'secondary' && color === 'primary' && canWidenForRay;
+  const resolvedSize = buttonGroupProps.size ?? size;
+  // its hover is RazorSense only while that's running (reduced motion, no WebGL2, a failed load, a lost GPU: the button's own)
+  const [isRazorSenseLive, setIsRazorSenseLive] = React.useState(false);
+  const isRazorSenseLiveHover = isRazorSenseHover && isRazorSenseLive;
+  // where it sits rather than how it's set (a ButtonGroup, full width, icon-only), the effect gives way and the button keeps its
+  // own hover: said once per change, in development
+  const isRazorSenseGivingWay = hasRazorSense && !isRazorSenseHover;
+  const isRayGivingWay = hasRay && !isRayHover;
+  React.useEffect(() => {
+    if (!__DEV__) return;
+    if (isRazorSenseGivingWay) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: isInsideButtonGroup
+          ? `aiHover="razorsense" isn't supported inside a ButtonGroup (it has no neutral color); the button keeps its own hover.`
+          : 'aiHover="razorsense" is for a button sized to its content, not a full-width one; the button keeps its own hover.',
+      });
+    }
+    if (isRayGivingWay) {
+      logger({
+        type: 'warn',
+        moduleName: 'Button',
+        message: `aiHover="${aiHover}" needs a labelled secondary button that can widen (not in a ButtonGroup, not full width, not icon-only); this one keeps its own hover.`,
+      });
+    }
+  }, [isRazorSenseGivingWay, isRayGivingWay, isInsideButtonGroup, aiHover]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -773,10 +872,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       defaultBackgroundColor={defaultBackgroundColor}
       defaultBoxShadow={defaultBoxShadow}
       focusBoxShadow={focusBoxShadow}
-      focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
+      // with RazorSense the hover is RazorSense over the button as it is: flow 9 keeps the black / white surface under it, hovered,
+      // pressed or keyboard-focused (`:active` takes the focus surface; the press scale is its feedback). Its insets are already
+      // the same in every state.
+      focusBackgroundColor={isRazorSenseLiveHover ? defaultBackgroundColor : focusBackgroundColor}
       hoverBoxShadow={hoverBoxShadow}
-      hoverBackgroundColor={hoverBackgroundColor}
+      hoverBackgroundColor={isRazorSenseLiveHover ? defaultBackgroundColor : hoverBackgroundColor}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
@@ -835,10 +937,21 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
+      {isRazorSenseHover ? (
+        <ButtonRazorSense isEnabled={isAiHoverEnabled} onLiveChange={setIsRazorSenseLive} />
+      ) : null}
+      {isRayHover ? (
+        <ButtonRay
+          isEnabled={isAiHoverEnabled}
+          variant={rayVariant ?? 'investigate'}
+          size={resolvedSize}
+        />
+      ) : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}
         isPressed={isPressed}
+        {...(isRazorSenseHover || isRayHover ? { position: 'relative', zIndex: 1 } : {})}
       >
         {isLoading ? (
           <BaseBox
