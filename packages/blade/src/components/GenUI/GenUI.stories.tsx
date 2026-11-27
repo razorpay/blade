@@ -5,6 +5,7 @@ import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
 import type { GenUIComponent, TableComponent } from './GenUIComponents';
 import type { GenUIActionSlotRenderer, GenUIComponentActionsRegistry } from './types';
+import { cardLayoutSamples } from './__tests__/cardLayoutSamples';
 import { Box } from '~components/Box';
 import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -1080,3 +1081,50 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
 };
 
 export const WithComponentActions = WithComponentActionsTemplate.bind({});
+
+/**
+ * How GenUI lays out the card shapes an LLM sends most often, at a narrow and a wide width.
+ *
+ * - DIVIDER inside a CARD: 12px a side, the header divider included.
+ * - Next to a DIVIDER, the divider's 12px is the only space.
+ * - The card's 16px padding is the bottom edge.
+ * - INFO_GROUP: label and value on one row, small, values right-aligned.
+ * - Long values stay on one line, cut in the middle, with the whole value in a tooltip.
+ * - GRID columns are never under 120px, so tiles wrap in a narrow box.
+ * - A TABLE in a CARD is flush to the card's sides.
+ */
+const cardLayoutCases: { name: string; component: GenUIComponent }[] = [
+  { name: 'Record', component: cardLayoutSamples.record },
+  { name: 'Summary with 3 tiles', component: cardLayoutSamples.summary },
+  { name: 'Sections with dividers', component: cardLayoutSamples.sections },
+  { name: 'Stacked settlement', component: cardLayoutSamples.stackedSettlement },
+  { name: 'Details list', component: cardLayoutSamples.detailsList },
+  { name: 'Card with table', component: cardLayoutSamples.cardWithTable },
+];
+
+const cardLayoutWidths = ['360px', '520px'] as const;
+
+const CardLayoutTemplate: StoryFn = (): JSX.Element => (
+  <Box display="flex" flexDirection="column" gap="spacing.8">
+    {cardLayoutCases.map(({ name, component }) => (
+      <Box key={name} display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">{name}</Text>
+        <Box display="flex" flexWrap="wrap" gap="spacing.7" alignItems="flex-start">
+          {cardLayoutWidths.map((width) => (
+            <Box key={width} width={width}>
+              <Text size="small" color="surface.text.gray.muted">
+                {width}
+              </Text>
+              <GenUIProvider>
+                <GenUISchemaRenderer components={[component]} />
+              </GenUIProvider>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    ))}
+  </Box>
+);
+
+export const CardLayout = CardLayoutTemplate.bind({});
+CardLayout.storyName = 'Card Layout';

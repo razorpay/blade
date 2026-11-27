@@ -249,3 +249,19 @@ import { GenUIProvider, GenUISchemaRenderer, type TableComponent } from '@razorp
 ```
 
 > **Note:** Action slots only render for block-level components (`CARD`, `TABLE`, and custom components registered with `animation.name: 'gradient-ring-entry'`). Registering an action for inline components like `TEXT`, `BADGE`, or `AMOUNT` has no effect — and the `GenUIComponentActionsRegistry` type will reject those keys at compile time.
+
+## Card Layout
+
+GenUI lays out every CARD with one spacing step between blocks and a 16px card edge on every side. There is no setting for it.
+
+- **DIVIDER** inside a CARD has 12px a side. The CARD header's divider has the same. Outside a CARD, a DIVIDER keeps 24px a side.
+- **No stacked spacing next to a DIVIDER.** The divider's 12px is the only space. Blocks next to it (GRID, INFO_GROUP, STACK, ALERT, TABLE) drop their margin or padding on that side, and the card's row gap goes.
+- **CARD bottom:** the last block adds no space, so the card's 16px padding is the bottom edge.
+- **Chart card:** a CARD that holds a CHART and no TABLE shows no divider under its header.
+- **TABLE** as a direct child of a CARD sits flush to the card's sides and drops its own frame. First in a card with no header, it meets the top edge. Last in a card with no footer and no TABLE action slot, it meets the bottom edge. The card clips it to its rounded corners.
+
+These rules apply inside and outside a CARD:
+
+- **INFO_GROUP:** label and value on one row (`itemOrientation="horizontal"`), `size="small"`, `valueAlign="right"`.
+- **Long values** (ids, emails, VPAs, URLs) in INFO_GROUP values, TABLE text cells and CARD titles stay on one line. When a value does not fit, it is cut in the middle (`pay_Rk3v…Zp2Lw`). The full value shows in a tooltip on hover and on focus, and a click copies it. In a TABLE cell, a long value takes at most 240px.
+- **GRID:** no column is narrower than 120px. `columns` is the most columns a row takes, so tiles wrap in a narrow box.
