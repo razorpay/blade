@@ -1,5 +1,10 @@
 import React from 'react';
-import type { GenUIAction, GenUIComponentActionsRegistry, GenUIComponentRegistry } from './types';
+import type {
+  GenUIAction,
+  GenUIChartVersion,
+  GenUIComponentActionsRegistry,
+  GenUIComponentRegistry,
+} from './types';
 import type { AnimateOptions } from './rehypeAnimate';
 
 /**
@@ -18,6 +23,8 @@ type GenUIContextValue = {
   isAnimating?: boolean;
   /** Animation options for text streaming */
   animateOptions?: AnimateOptions;
+  /** The look of a CHART. See `GenUIConfig.chartVersion`. */
+  chartVersion?: GenUIChartVersion;
 };
 
 const GenUIContext = React.createContext<GenUIContextValue | null>(null);
@@ -61,5 +68,20 @@ const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOp
   };
 };
 
-export { GenUIContext, useGenUI, useGenUIAction, useGenUIComponentActions, useGenUIAnimation };
+/**
+ * Hook to access the CHART version (safe version that doesn't throw). `v2` outside a provider.
+ */
+const useGenUIChartVersion = (): { chartVersion: GenUIChartVersion } => {
+  const context = React.useContext(GenUIContext);
+  return { chartVersion: context?.chartVersion ?? 'v2' };
+};
+
+export {
+  GenUIContext,
+  useGenUI,
+  useGenUIAction,
+  useGenUIComponentActions,
+  useGenUIAnimation,
+  useGenUIChartVersion,
+};
 export type { GenUIContextValue };

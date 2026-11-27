@@ -62,13 +62,57 @@ type Content = {
   label?: string;
 };
 
+/**
+ * The look of a chart. `v1` renders as before, and the display options have no effect.
+ * `v2` is the new look. The legend options sit on `ChartLegend` and apply with `v2` only.
+ * Web only: the native charts ignore them and warn in development.
+ */
+type ChartVersion = 'v1' | 'v2';
+
+type ChartVersionProps = {
+  /** @default 'v1' */
+  version?: ChartVersion;
+};
+
+/** A Blade spacing token from `spacing.3` to `spacing.8`. */
+type ChartLegendGap = 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.6' | 'spacing.7' | 'spacing.8';
+
+type ChartValueFormat = {
+  /** `currency`: an amount. `count`: whole numbers. `percent`: a value already in percent. */
+  type: 'currency' | 'count' | 'percent';
+  /** For `currency`. @default 'INR' */
+  currency?: string;
+};
+
+/** The legend options of `ChartLegend` (in addition to the recharts Legend props). */
+type ChartLegendDisplayOptions = {
+  /**
+   * Where the legend sits: above, below, left or right of the ring. The ring and the legend are
+   * one group, centred in the box. `version="v2"` only.
+   * When set, it wins over recharts' `verticalAlign` (and `left` or `right` over `align`), and a
+   * development warning shows when both are set.
+   * @default 'bottom'
+   */
+  placement?: 'top' | 'bottom' | 'left' | 'right';
+  /**
+   * The gap between the ring and the legend. `version="v2"` only.
+   * @default 'spacing.5'
+   */
+  gap?: ChartLegendGap;
+};
+
 type ChartDonutWrapperProps = {
   /**
    * Content to be displayed at center of donut chart
    */
   content?: Content | React.ReactNode;
   children?: React.ReactNode;
-} & BoxProps;
+  /**
+   * en-IN value format of the tooltip values (₹1,23,450.00), unless the tooltip has its own
+   * `formatter`. Works in `v1` too. Web only.
+   */
+  valueFormat?: ChartValueFormat;
+} & ChartVersionProps & BoxProps;
 
 
 type ChartDonutCellProps = CellProps & {
@@ -160,4 +204,39 @@ function DonutChartExample() {
 }
 
 export default DonutChartExample;
+```
+
+### Donut Chart with the v2 Look
+
+`version="v2"` turns on the new look. The legend options sit on `ChartLegend`: `placement` puts the legend above, below, left or right of the ring, and `gap` sets the space between them. A `ChartLegend` child shows the legend. With none, the chart has no legend.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  ChartDonut,
+  ChartDonutWrapper,
+  ChartTooltip,
+  ChartLegend,
+} from '@razorpay/blade/components';
+
+function DonutChartV2() {
+  const data = [
+    { name: 'UPI', value: 52000 },
+    { name: 'Cards', value: 24000 },
+    { name: 'Netbanking', value: 14000 },
+  ];
+
+  return (
+    <Box width="100%" height="320px">
+      <ChartDonutWrapper version="v2" valueFormat={{ type: 'currency', currency: 'INR' }}>
+        <ChartDonut dataKey="value" nameKey="name" data={data} radius="medium" />
+        <ChartTooltip />
+        <ChartLegend placement="right" gap="spacing.6" />
+      </ChartDonutWrapper>
+    </Box>
+  );
+}
+
+export default DonutChartV2;
 ```

@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useMemo } from 'react';
-import type { GenUIAction, GenUIComponentActionsRegistry, GenUIComponentRegistry } from './types';
+import type {
+  GenUIAction,
+  GenUIChartVersion,
+  GenUIComponentActionsRegistry,
+  GenUIComponentRegistry,
+} from './types';
 import { createBuiltInRegistry } from './GenUIComponents';
 import { GenUIContext } from './GenUIContext';
 import type { GenUIContextValue } from './GenUIContext';
@@ -19,6 +24,18 @@ type GenUIConfig = {
    * the component and hands it the component's `data` and a `componentRef`.
    */
   componentActions?: GenUIComponentActionsRegistry;
+  /**
+   * The look of a CHART.
+   * - `v2`: the chart fits the box it renders in, with the `v2` Blade charts. Height from width,
+   *   X labels thinned to fit, Indian compact ticks, full values in the tooltip, no border in a
+   *   box of 640px or less, no legend for one series, a bar list for a pie of more than 4
+   *   slices, and one line for a finished chart with no rows.
+   * - `v1`: the chart as released before: 350px tall at every width (100px for `tiny`), every
+   *   X label, the raw value in the tooltip, with the `v1` Blade charts. An escape hatch.
+   *
+   * @default 'v2'
+   */
+  chartVersion?: GenUIChartVersion;
 };
 
 // ============================================================================
@@ -84,6 +101,7 @@ const GenUIProvider = ({ children, config = {} }: GenUIProviderProps) => {
       registry,
       onActionClick: config.onActionClick,
       componentActions: config.componentActions,
+      chartVersion: config.chartVersion ?? 'v2',
       validComponentTypes: Object.keys(registry),
     };
   }, [config]);

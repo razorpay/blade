@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useLayoutEffect, useId } from 'react';
+import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
@@ -19,6 +19,12 @@ import type {
 } from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+import {
+  getChartMargin,
+  resolveChartDisplayOptions,
+  readChildDisplayProps,
+  useWarnDisplayPropsOnV1,
+} from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -26,6 +32,9 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
+import { useId } from '~utils/useId';
+import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -133,8 +142,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   children,
   testID,
   colorTheme = 'categorical',
+  version,
+  valueFormat,
   ...restProps
 }) => {
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend.
+  const display = resolveChartDisplayOptions({ version, ...readChildDisplayProps(children) });
+  useWarnDisplayPropsOnV1(version, children, 'ChartAreaWrapper');
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
@@ -143,8 +157,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
   // page emit gradients with the same id (e.g. `color-0-uv`) and every area's `fill="url(#...)"`
   // resolves to the first one in the document, so all charts share (and can be washed out by) the
-  // first chart's fill color. Colons from `useId` are stripped so the id stays `url()`-safe.
-  const gradientNamespace = useId().replace(/[^a-zA-Z0-9]/g, '');
+  // first chart's fill color. Blade's `useId`, not `React.useId`: React 17 hosts have no
+  // `React.useId`, and the chart showed an error there. Other characters are stripped so the id
+  // stays `url()`-safe.
+  const gradientNamespace = useId('area').replace(/[^a-zA-Z0-9]/g, '');
 
   // State to track which areas are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
@@ -391,8 +407,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         dataColorMapping,
         secondaryLabelMap,
         dataLength: data?.length,
+        chartData: data,
         selectedDataKeys,
         setSelectedDataKeys,
+        ...display,
+        valueFormat,
       }}
     >
       <BaseBox
@@ -402,9 +421,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         width="100%"
         height="100%"
       >
-        <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+        <ChartSurface
+          ref={containerRef}
+          chartVersion={display.chartVersion}
+          showBorder={display.showBorder}
+          yLabelPlacement={display.yLabelPlacement}
+        >
           <ResponsiveContainer>
-            <RechartsAreaChart data={data}>
+            <RechartsAreaChart data={data} margin={getChartMargin(display)}>
               <defs>
                 {Object.keys(dataColorMapping).map((dataKey, index) => (
                   <ChartColorGradient
@@ -418,10 +442,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               </defs>
 
               {modifiedChildren}
+              {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
               {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
             </RechartsAreaChart>
           </ResponsiveContainer>
-        </div>
+        </ChartSurface>
       </BaseBox>
     </CommonChartComponentsContext.Provider>
   );

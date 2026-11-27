@@ -382,15 +382,159 @@ describe('<GenUI />', () => {
         },
       ];
 
-      const { container } = renderWithTheme(
+      const { queryByTestId, container } = renderWithTheme(
         <GenUIProvider>
-          <GenUISchemaRenderer components={components} />
+          <GenUISchemaRenderer components={components} isAnimating />
         </GenUIProvider>,
       );
 
-      // Should render skeleton when data is empty
-      // Chart component renders skeleton, just verify it renders without error
-      expect(container).toBeTruthy();
+      // While the answer streams, an empty chart is still loading
+      expect(queryByTestId('genui-chart-empty')).not.toBeInTheDocument();
+      expect(container.querySelector('[data-blade-component="skeleton"]')).toBeInTheDocument();
+    });
+
+    it('should show one line, not an endless skeleton, for a finished chart with no rows', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'CHART',
+          chartType: 'bar',
+          title: 'Refunds per day',
+          xAxis: 'date',
+          data: [],
+          valueFormatter: {
+            type: 'currency',
+          },
+        },
+      ];
+
+      const { getByTestId, getByText, container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} isAnimating={false} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Refunds per day')).toBeInTheDocument();
+      expect(getByTestId('genui-chart-empty')).toHaveTextContent('No data to show');
+      expect(container.querySelector('[data-blade-component="skeleton"]')).not.toBeInTheDocument();
+    });
+
+    it('keeps the skeleton for a finished chart with no rows with chartVersion v1, as before', () => {
+      const { queryByTestId, container } = renderWithTheme(
+        <GenUIProvider config={{ chartVersion: 'v1' }}>
+          <GenUISchemaRenderer
+            components={[
+              {
+                component: 'CHART',
+                chartType: 'bar',
+                title: 'Refunds per day',
+                xAxis: 'date',
+                data: [],
+                valueFormatter: { type: 'currency' },
+              },
+            ]}
+            isAnimating={false}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(queryByTestId('genui-chart-empty')).not.toBeInTheDocument();
+      expect(container.querySelector('[data-blade-component="skeleton"]')).toBeInTheDocument();
+    });
+
+    describe('size from the box width', () => {
+      const day = (i: number): string =>
+        new Date(Date.UTC(2026, 9, 1 + i)).toISOString().slice(0, 10);
+      const barChart = (series: string[]): GenUIComponent[] => [
+        {
+          component: 'CHART',
+          chartType: 'bar',
+          title: 'Collected per day',
+          xAxis: 'date',
+          data: Array.from({ length: 7 }, (_, i) => ({
+            date: day(i),
+            ...Object.fromEntries(series.map((key) => [key, 100000 + i * 5000])),
+          })),
+          valueFormatter: { type: 'currency', currency: 'INR' },
+        },
+      ];
+
+      const renderAtWidth = (width: number, components: GenUIComponent[]) => {
+        jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
+          width,
+          height: 0,
+          top: 0,
+          left: 0,
+          right: width,
+          bottom: 0,
+          x: 0,
+          y: 0,
+          toJSON: () => ({}),
+        } as unknown) as DOMRect);
+        return renderWithTheme(
+          <GenUIProvider>
+            <GenUISchemaRenderer components={components} />
+          </GenUIProvider>,
+        );
+      };
+
+      /** Every element of the chart whose computed height is `height`. */
+      const boxesOfHeight = (container: HTMLElement, height: number): HTMLElement[] =>
+        Array.from(container.querySelectorAll<HTMLElement>('*')).filter(
+          (element) => window.getComputedStyle(element).height === `${height}px`,
+        );
+
+      afterEach(() => {
+        jest.restoreAllMocks();
+      });
+
+      it.each([
+        [256, 200],
+        [360, 225],
+        [520, 325],
+        [800, 350],
+      ])('a %ipx box gives a %ipx chart', (width, height) => {
+        const { container } = renderAtWidth(width, barChart(['Collected']));
+
+        expect(boxesOfHeight(container, height).length).toBeGreaterThan(0);
+      });
+
+      it('keeps 350px in a 360px box with chartVersion v1, as before', () => {
+        jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(({
+          width: 360,
+          height: 0,
+          top: 0,
+          left: 0,
+          right: 360,
+          bottom: 0,
+          x: 0,
+          y: 0,
+          toJSON: () => ({}),
+        } as unknown) as DOMRect);
+        const { container } = renderWithTheme(
+          <GenUIProvider config={{ chartVersion: 'v1' }}>
+            <GenUISchemaRenderer components={barChart(['Collected'])} />
+          </GenUIProvider>,
+        );
+
+        expect(boxesOfHeight(container, 350).length).toBeGreaterThan(0);
+        expect(boxesOfHeight(container, 225)).toHaveLength(0);
+      });
+
+      it('keeps nothing at the old 350px in a 360px box', () => {
+        const { container } = renderAtWidth(360, barChart(['Collected']));
+
+        expect(boxesOfHeight(container, 350)).toHaveLength(0);
+      });
+
+      it('keeps 350px when the box is not measured', () => {
+        const { container } = renderWithTheme(
+          <GenUIProvider>
+            <GenUISchemaRenderer components={barChart(['Collected'])} />
+          </GenUIProvider>,
+        );
+
+        expect(boxesOfHeight(container, 350).length).toBeGreaterThan(0);
+      });
     });
 
     it('should show skeleton when valueFormatter is missing', () => {

@@ -30,7 +30,7 @@ function App() {
 Markdown text with Blade typography
 
 **CHART**\
-Bar, line, area, pie charts
+Bar, line, area, pie charts. By default (`chartVersion: 'v2'` on the `GenUIProvider` config), a chart fits its box and uses the `v2` Blade charts. `showBorder` draws a line on the left, the right and the bottom of the plot. With no value, a chart in a box of 640px or less has no border, and a wider chart has one. `yLabelPlacement` is `left` (the default, a label column left of the plot), `right` (a column right of the plot) or `overlap` (labels inside the plot). With a border, `overlap` shows as `left`. A legend shows for 2 or more series or pie slices, unless the node sets `showLegend`. `valueFormatter.type` takes Blade's format names: `currency`, `count` (a number), `percent` (a value already in percent) and `string`. The older names `number` and `percentage` still work: `number` is `count`, `percentage` is `percent`. A pie of more than 4 slices, or in a box under 300px, shows as a list of bars. `chartVersion: 'v1'` draws the chart as before.
 
 **TABLE**\
 Data table with typed cells

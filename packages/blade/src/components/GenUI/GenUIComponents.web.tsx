@@ -3,18 +3,44 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
 import styled, { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
+import { useGenUIAction, useGenUIAnimation, useGenUIChartVersion } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
+import {
+  TINY_CHART_HEIGHT,
+  formatChartValue,
+  formatDateTick,
+  formatINRCompact,
+  formatShare,
+  getBarListRows,
+  getChartHeight,
+  getDateStep,
+  getDonutHeight,
+  getDonutRadius,
+  getLastLabelOverhang,
+  getXLabelStep,
+  isDateAxis,
+  isWholeNumberChart,
+  normalizeValueFormatType,
+  resolveShowBorder,
+  resolveYLabelPlacement,
+  shouldShowBarList,
+} from './genUIChartUtils';
+import type {
+  ChartValueFormatter,
+  GenUIValueFormatType,
+  GenUIValueFormatTypeAlias,
+} from './genUIChartUtils';
 import { Box } from '~components/Box';
+import type { BoxRefType } from '~components/Box/BaseBox/types';
 import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
 import {
@@ -445,11 +471,42 @@ type ChartComponent = GenUIBaseComponent & {
   xAxis?: string;
   data?: Array<Record<string, string | number>>;
   unit?: string;
+  /**
+   * How the values read. `type` takes Blade's `valueFormat` names:
+   * - `currency`: an amount, in `currency` (default INR). ₹1.5L on the ticks, ₹1,23,450.00 in
+   *   the tooltip.
+   * - `count`: a number. 1.5K on the ticks, 1,23,450 in the tooltip.
+   * - `percent`: a value already in percent. 12.5%.
+   * - `string`: the number as it is.
+   *
+   * The older names still work: `number` is `count`, and `percentage` is `percent`.
+   * `suffix` is added after each value.
+   */
   valueFormatter?: {
-    type: 'currency' | 'percentage' | 'number' | 'string';
+    type: GenUIValueFormatType | GenUIValueFormatTypeAlias;
     currency?: string;
     suffix?: string;
   };
+  /**
+   * Shows a border around the plot of a bar, line or area chart: a line on the left, the right
+   * and the bottom. With a border, the Y labels sit in a column left of the plot.
+   *
+   * When it is not set: no border in a box of 640px or less, a border above.
+   */
+  showBorder?: boolean;
+  /**
+   * Shows or hides the legend. When it is not set: a legend for 2 or more series (or pie
+   * slices), none for one. The CHART adds a Blade `ChartLegend` when the legend shows.
+   */
+  showLegend?: boolean;
+  /**
+   * Where the Y labels sit, as on the Blade chart. `left`: a column left of the plot. `right`: a
+   * column right of the plot. `overlap`: inside the plot, just below each gridline. With a
+   * border, `overlap` shows as `left`. An old `outside` from a model is `right`.
+   *
+   * When it is not set: `left`.
+   */
+  yLabelPlacement?: 'left' | 'right' | 'overlap';
 };
 
 // Table cell component types (using component pattern)
@@ -875,7 +932,503 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
   );
 });
 
-const RenderChartComponent = memo(
+/**
+ * The width of a chart's own box, from a ResizeObserver. 0 until measured (and in a test DOM
+ * without layout), which keeps the chart at its size before this hook: 350px, every label.
+ *
+ * A callback ref: the skeleton, the empty state and the chart each render their own box, so the
+ * observer moves to the box that is there now and lets go of the old one.
+ */
+const useChartBoxWidth = (): [(node: BoxRefType | null) => void, number] => {
+  const [width, setWidth] = useState(0);
+  const observerRef = useRef<ResizeObserver | null>(null);
+  const boxRef = useCallback((node: BoxRefType | null) => {
+    observerRef.current?.disconnect();
+    observerRef.current = null;
+    const element = (node as unknown) as HTMLElement | null;
+    if (!element) return;
+    const initial = element.getBoundingClientRect().width;
+    if (initial > 0) setWidth(Math.round(initial));
+    if (typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver((entries) => {
+      const next = entries[0]?.contentRect.width ?? 0;
+      if (next > 0) setWidth(Math.round(next));
+    });
+    observer.observe(element);
+    observerRef.current = observer;
+  }, []);
+  useEffect(() => () => observerRef.current?.disconnect(), []);
+  return [boxRef, width];
+};
+
+/** One muted line in place of the plot, for a finished CHART with no rows to draw. */
+const GENUI_CHART_EMPTY_TEXT = 'No data to show';
+/** The label of the first row of the bar list. */
+const GENUI_CHART_TOTAL_LABEL = 'Total';
+
+/**
+ * The bar of a bar list row, in Blade's first chart colour, categorical blue: the Total bar
+ * strong, each row bar subtle. Box takes no data colour, so this is a styled div.
+ */
+const ChartBarListFill = styled.div<{ $share: number; $isTotal: boolean }>(
+  ({ theme, $share, $isTotal }) => ({
+    width: `${$share}%`,
+    height: '100%',
+    borderRadius: 'inherit',
+    backgroundColor: $isTotal
+      ? theme.colors.data.background.categorical.blue.strong
+      : theme.colors.data.background.categorical.blue.subtle,
+  }),
+);
+
+const ChartBarListRow = ({
+  label,
+  value,
+  share,
+  isTotal = false,
+}: {
+  label: string;
+  value: string;
+  share: number;
+  isTotal?: boolean;
+}) => (
+  <Box display="flex" flexDirection="column" gap="spacing.2">
+    <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
+      <Text
+        size="small"
+        weight={isTotal ? 'semibold' : 'regular'}
+        color={isTotal ? 'surface.text.gray.normal' : 'surface.text.gray.subtle'}
+      >
+        {label}
+      </Text>
+      <Text size="small" weight={isTotal ? 'semibold' : 'medium'} color="surface.text.gray.normal">
+        {value}
+      </Text>
+    </Box>
+    <Box
+      width="100%"
+      height="6px"
+      borderRadius="max"
+      overflow="hidden"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <ChartBarListFill $share={share} $isTotal={isTotal} data-genui-bar-share={share} />
+    </Box>
+  </Box>
+);
+
+/**
+ * A pie as a list of bars: a Total row on top at 100%, then one row a slice, in order. Each bar
+ * is the slice's share of the total. Each row shows the full value and the share, as
+ * "₹5,20,000.00 · 57.5%". A `percent` chart shows the value only, as it is a share already.
+ */
+const ChartBarList = ({
+  rows,
+  nameKey,
+  valueKey,
+  valueFormatter,
+}: {
+  rows: Array<Record<string, string | number>>;
+  nameKey: string;
+  valueKey: string;
+  valueFormatter: ChartValueFormatter;
+}) => {
+  const list = getBarListRows(rows, nameKey, valueKey);
+  const showShare = normalizeValueFormatType(valueFormatter.type) !== 'percent';
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4" testID="genui-chart-bar-list">
+      <ChartBarListRow
+        label={GENUI_CHART_TOTAL_LABEL}
+        value={formatChartValue(list.total, valueFormatter)}
+        share={100}
+        isTotal
+      />
+      {list.rows.map((row, index) => (
+        <ChartBarListRow
+          // Rows keep the order of the data and never move.
+          key={index}
+          label={row.label}
+          value={
+            showShare
+              ? `${formatChartValue(row.value, valueFormatter)} · ${formatShare(row.share)}`
+              : formatChartValue(row.value, valueFormatter)
+          }
+          share={row.share}
+        />
+      ))}
+    </Box>
+  );
+};
+
+/**
+ * The GenUI CHART with `chartVersion: 'v2'`, the default: it fits the box it renders in, with the
+ * `v2` Blade charts.
+ */
+const RenderResponsiveChart = memo(
+  ({
+    chartType,
+    title,
+    xAxis,
+    data,
+    unit = '',
+    variant = 'full',
+    valueFormatter,
+    showBorder: showBorderProp,
+    showLegend: showLegendProp,
+    yLabelPlacement: yLabelPlacementProp,
+  }: ChartComponent) => {
+    const { isAnimating } = useGenUIAnimation();
+    const [boxRef, boxWidth] = useChartBoxWidth();
+    const isTiny = variant === 'tiny';
+    // A tiny chart has no grid and no axes, so no border.
+    const showBorder = isTiny ? false : resolveShowBorder(showBorderProp, boxWidth);
+    // With a border, the Y labels sit in a left column, as before.
+    // `overlap` with a border shows as `left`: the wrapper resolves it.
+    const yLabelPlacement = resolveYLabelPlacement(yLabelPlacementProp);
+    const heightPx = isTiny ? TINY_CHART_HEIGHT : getChartHeight(boxWidth);
+    const chartHeight = `${heightPx}px` as '350px';
+    const minHeight = chartHeight;
+
+    // Rows to plot: the x value is set, and at least one other key is a number.
+    const validData = (Array.isArray(data) ? data : []).filter((item) => {
+      if (!item || Object.keys(item).length === 0) return false;
+      if (!xAxis || !item[xAxis] || item[xAxis] === '') return false;
+      return Object.keys(item).some(
+        (key) => key !== xAxis && typeof item[key] === 'number' && !isNaN(Number(item[key])),
+      );
+    });
+    // Auto-detect all numeric keys except xAxis for plotting
+    const firstItem = validData[0];
+    const keysToPlot = firstItem
+      ? Object.keys(firstItem).filter((key) => key !== xAxis && typeof firstItem[key] === 'number')
+      : [];
+    const hasPlot = validData.length > 0 && keysToPlot.length > 0;
+
+    // The stream is over and the node is whole, but it has nothing to draw: say so once. While
+    // the answer streams, the same node shows the skeleton, as before.
+    const isEmpty = !isAnimating && Boolean(chartType && xAxis && Array.isArray(data)) && !hasPlot;
+    const isLoading = !isEmpty && (!chartType || !xAxis || !valueFormatter?.type || !hasPlot);
+
+    let content: React.ReactNode = null;
+    if (isEmpty) {
+      content = (
+        <Box width="100%" display="flex" flexDirection="column" gap="spacing.3" marginY="spacing.3">
+          {title && !isTiny ? (
+            <Text size="large" weight="regular" color="surface.text.gray.subtle">
+              {title}
+            </Text>
+          ) : null}
+          <Text size="small" color="surface.text.gray.muted" testID="genui-chart-empty">
+            {GENUI_CHART_EMPTY_TEXT}
+          </Text>
+        </Box>
+      );
+    } else if (isLoading) {
+      content = <ChartSkeletonLoader title={title} isTiny={isTiny} chartHeight={chartHeight} />;
+    }
+    if (content || !xAxis || !chartType || !valueFormatter) {
+      // A box of its own, so the width is measured before the chart draws.
+      return (
+        <Box ref={boxRef} width="100%">
+          {content}
+        </Box>
+      );
+    }
+
+    // A pie with more than 4 slices, or in a box under 300px, is a list of bars.
+    if (chartType === 'pie' && !isTiny && shouldShowBarList(validData.length, boxWidth)) {
+      return (
+        <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
+          <Box
+            ref={boxRef}
+            width="100%"
+            display="flex"
+            flexDirection="column"
+            gap="spacing.3"
+            marginY="spacing.3"
+          >
+            {title ? (
+              <Text
+                size="large"
+                weight="regular"
+                color="surface.text.gray.subtle"
+                marginBottom="spacing.3"
+              >
+                {title}
+              </Text>
+            ) : null}
+            <ChartBarList
+              rows={validData}
+              nameKey={xAxis}
+              valueKey={keysToPlot[0]}
+              valueFormatter={valueFormatter}
+            />
+          </Box>
+        </ErrorBoundary>
+      );
+    }
+
+    const tickFormatter = (value: number | string) => {
+      const numValue = typeof value === 'string' ? parseFloat(value) : value;
+
+      if (isNaN(numValue)) {
+        return value.toString();
+      }
+
+      // Use valueFormatter if provided, otherwise fall back to unit
+      if (valueFormatter) {
+        const { currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        // `number` and `percentage` are the older names of `count` and `percent`.
+        const type = normalizeValueFormatType(valueFormatter.type);
+
+        const buildPrefixSuffixString = (v: string) => {
+          return `${v}${formatterSuffix ?? ''}`;
+        };
+
+        try {
+          switch (type) {
+            case 'currency': {
+              const currency = formatterCurrency || 'INR';
+              // INR in lakh and crore (₹1.5L, not ₹150K), with at most 1 decimal and no ".0".
+              const formatted =
+                currency === 'INR'
+                  ? formatINRCompact(numValue)
+                  : formatNumber(numValue, {
+                      currency: currency as 'INR',
+                      intlOptions: {
+                        notation: 'compact',
+                        maximumFractionDigits: 1,
+                      },
+                    });
+              return buildPrefixSuffixString(formatted);
+            }
+
+            case 'percent': {
+              const formatted = formatNumber(numValue / 100, {
+                intlOptions: {
+                  style: 'percent',
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                },
+              });
+              if (formatterSuffix === '%') {
+                return formatted;
+              } else {
+                return buildPrefixSuffixString(formatted);
+              }
+            }
+
+            case 'count': {
+              const numberFormatted = formatNumber(numValue, {
+                intlOptions: {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                },
+              });
+              return buildPrefixSuffixString(numberFormatted);
+            }
+
+            case 'string': {
+              return buildPrefixSuffixString(numValue.toString());
+            }
+
+            default:
+              return numValue.toString();
+          }
+        } catch (error) {
+          console.error('[GenUI Chart]: Error formatting value:', error);
+          return numValue.toString();
+        }
+      }
+
+      // Fallback to legacy unit formatting
+      return `${numValue.toString()}${unit}`;
+    };
+
+    // X labels: a date axis is labelled on a calendar step that fits the width, as "1 Oct", and
+    // thinned once. A category axis gets no interval: the v2 ChartXAxis shows the labels that fit,
+    // on one line each.
+    const xValues = validData.map((row) => String(row[xAxis]));
+    const isDate = isDateAxis(xValues);
+    const dateStep = getDateStep(xValues);
+    const labelStep = isDate ? getXLabelStep(validData.length, boxWidth, dateStep) : 1;
+    const lastLabelIndex = Math.floor((validData.length - 1) / labelStep) * labelStep;
+    const xOverhang =
+      isDate && chartType !== 'pie'
+        ? getLastLabelOverhang({
+            count: validData.length,
+            labelStep,
+            lastLabel: formatDateTick(xValues[lastLabelIndex], dateStep),
+            width: boxWidth,
+            chartType,
+            // `overlap` gives the Y axis no width, so the plot is as wide as the box.
+            yAxisWidth: yLabelPlacement === 'overlap' && !showBorder ? 0 : undefined,
+          })
+        : 0;
+    const xAxisNode = !isTiny ? (
+      <ChartXAxis
+        dataKey={xAxis}
+        interval={isDate ? labelStep - 1 : undefined}
+        tickFormatter={isDate ? (value: string) => formatDateTick(value, dateStep) : undefined}
+        padding={xOverhang > 0 ? { left: 0, right: xOverhang } : undefined}
+      />
+    ) : null;
+    // Y ticks: whole numbers for counts. The v2 chart sets the width of the axis: a column as
+    // wide as its ticks, or no width for `overlap` ticks inside the plot.
+    const yAxisNode = !isTiny ? (
+      <ChartYAxis
+        allowDecimals={!isWholeNumberChart(validData, keysToPlot, valueFormatter.type)}
+        tickFormatter={tickFormatter}
+        labelPlacement={yLabelPlacement}
+      />
+    ) : null;
+    // The border sits on the grid. `overlap` with a border shows as `left`: the chart resolves it.
+    const gridNode = !isTiny ? <ChartCartesianGrid showBorder={showBorder} /> : null;
+    // The legend: the node's showLegend wins. When it is not set, a legend for 2 or more series
+    // (or pie slices), none for one. A tiny chart has none.
+    const seriesCount = chartType === 'pie' ? validData.length : keysToPlot.length;
+    const showLegend = isTiny
+      ? false
+      : typeof showLegendProp === 'boolean'
+      ? showLegendProp
+      : seriesCount > 1;
+    const legendNode = showLegend ? <ChartLegend /> : null;
+    // Tooltips show the full value, ₹1,23,450.00. The ticks stay compact, ₹1.2L. A date heading
+    // reads as the X labels do, "4 Oct", not "2026-10-04".
+    const tooltipNode = !isTiny ? (
+      <ChartTooltip
+        formatter={(value: unknown) => formatChartValue(value as number | string, valueFormatter)}
+        labelFormatter={
+          isDate ? (label: unknown) => formatDateTick(String(label), dateStep) : undefined
+        }
+      />
+    ) : null;
+    const plotHeight =
+      chartType === 'pie' && !isTiny ? `${getDonutHeight(boxWidth)}px` : chartHeight;
+
+    // TODO: Refactor into smaller components
+    return (
+      <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
+        <Box
+          ref={boxRef}
+          width="100%"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.3"
+          marginY="spacing.3"
+          minHeight={chartHeight}
+        >
+          {title && !isTiny ? (
+            <Text
+              size="large"
+              weight="regular"
+              color="surface.text.gray.subtle"
+              marginBottom="spacing.3"
+            >
+              {title}
+            </Text>
+          ) : null}
+          <Box width="100%" height={plotHeight as '350px'} minHeight={plotHeight as '350px'}>
+            {chartType === 'bar' ? (
+              <ChartBarWrapper
+                version="v2"
+                width="100%"
+                height={chartHeight}
+                data={validData}
+                colorTheme="categorical"
+              >
+                {gridNode}
+                {xAxisNode}
+                {yAxisNode}
+                {keysToPlot.map((key) => (
+                  <ChartBar key={key} dataKey={key} name={key} />
+                ))}
+                {tooltipNode}
+                {legendNode}
+              </ChartBarWrapper>
+            ) : chartType === 'line' ? (
+              <ChartLineWrapper
+                version="v2"
+                width="100%"
+                height={chartHeight}
+                minHeight={minHeight}
+                data={validData}
+                colorTheme="categorical"
+              >
+                {gridNode}
+                {xAxisNode}
+                {yAxisNode}
+                {keysToPlot.map((key) => (
+                  <ChartLine key={key} dataKey={key} name={key} />
+                ))}
+                {tooltipNode}
+                {legendNode}
+              </ChartLineWrapper>
+            ) : chartType === 'area' ? (
+              <ChartAreaWrapper
+                version="v2"
+                width="100%"
+                height={chartHeight}
+                minHeight={minHeight}
+                data={validData}
+                colorTheme="categorical"
+              >
+                {gridNode}
+                {xAxisNode}
+                {yAxisNode}
+                {keysToPlot.map((key) => (
+                  <ChartArea key={key} dataKey={key} name={key} type="monotone" />
+                ))}
+                {tooltipNode}
+                {legendNode}
+              </ChartAreaWrapper>
+            ) : chartType === 'pie' ? (
+              <ChartDonutWrapper
+                version="v2"
+                width="100%"
+                height={plotHeight as '350px'}
+                minHeight={plotHeight as '350px'}
+              >
+                <ChartDonut
+                  dataKey={keysToPlot[0]}
+                  nameKey={xAxis}
+                  data={validData}
+                  radius={getDonutRadius(boxWidth)}
+                  type="circle"
+                />
+                {tooltipNode}
+                {legendNode}
+              </ChartDonutWrapper>
+            ) : null}
+          </Box>
+        </Box>
+      </ErrorBoundary>
+    );
+  },
+  // Custom comparison - only re-render if data length or key fields change
+  (prevProps, nextProps) => {
+    return (
+      prevProps.chartType === nextProps.chartType &&
+      prevProps.title === nextProps.title &&
+      prevProps.xAxis === nextProps.xAxis &&
+      prevProps.variant === nextProps.variant &&
+      prevProps.showBorder === nextProps.showBorder &&
+      prevProps.showLegend === nextProps.showLegend &&
+      prevProps.yLabelPlacement === nextProps.yLabelPlacement &&
+      prevProps.data?.length === nextProps.data?.length &&
+      JSON.stringify(prevProps.data?.[prevProps.data.length - 1]) ===
+        JSON.stringify(nextProps.data?.[nextProps.data.length - 1]) &&
+      JSON.stringify(prevProps.valueFormatter) === JSON.stringify(nextProps.valueFormatter)
+    );
+  },
+);
+
+/**
+ * The GenUI CHART with `chartVersion: 'v1'`: as released before chart versions, with the `v1`
+ * Blade charts. Kept as it is for hosts that opt out of `v2`. Do not edit: changes go in
+ * `RenderResponsiveChart`.
+ */
+const RenderFixedChart = memo(
   ({
     chartType,
     title,
@@ -934,7 +1487,9 @@ const RenderChartComponent = memo(
 
       // Use valueFormatter if provided, otherwise fall back to unit
       if (valueFormatter) {
-        const { type, currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        const { currency: formatterCurrency, suffix: formatterSuffix } = valueFormatter;
+        // `number` and `percentage` are the older names of `count` and `percent`.
+        const type = normalizeValueFormatType(valueFormatter.type);
 
         const buildPrefixSuffixString = (v: string) => {
           return `${v}${formatterSuffix ?? ''}`;
@@ -953,7 +1508,7 @@ const RenderChartComponent = memo(
               return buildPrefixSuffixString(formatted);
             }
 
-            case 'percentage': {
+            case 'percent': {
               const formatted = formatNumber(numValue / 100, {
                 intlOptions: {
                   style: 'percent',
@@ -968,7 +1523,7 @@ const RenderChartComponent = memo(
               }
             }
 
-            case 'number': {
+            case 'count': {
               const numberFormatted = formatNumber(numValue, {
                 intlOptions: {
                   minimumFractionDigits: 0,
@@ -1099,6 +1654,19 @@ const RenderChartComponent = memo(
     );
   },
 );
+
+/**
+ * The GenUI CHART. `chartVersion` on the GenUIProvider config picks the renderer. Default `v2`:
+ * the chart fits its box (RenderResponsiveChart). `v1`: the chart as released before.
+ */
+const RenderChartComponent = (props: ChartComponent) => {
+  const { chartVersion } = useGenUIChartVersion();
+  return chartVersion === 'v2' ? (
+    <RenderResponsiveChart {...props} />
+  ) : (
+    <RenderFixedChart {...props} />
+  );
+};
 
 // Primitive copy button — just the icon + tooltip, no text label.
 // Compose this inside any cell that needs copy behaviour.

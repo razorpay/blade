@@ -8,6 +8,16 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
     "medium": 8,
   },
   "border": {
+    "dash": {
+      "dashed": [
+        5,
+        5,
+      ],
+      "dotted": [
+        2,
+        2,
+      ],
+    },
     "radius": {
       "2xlarge": 24,
       "2xsmall": 2,
@@ -2176,6 +2186,16 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     "medium": 8,
   },
   "border": {
+    "dash": {
+      "dashed": [
+        5,
+        5,
+      ],
+      "dotted": [
+        2,
+        2,
+      ],
+    },
     "radius": {
       "2xlarge": 24,
       "2xsmall": 2,

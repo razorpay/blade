@@ -94,6 +94,26 @@ describe('<AreaChart />', () => {
     });
   });
 
+  it('should render on a React 17 host, which has no React.useId', () => {
+    const reactWithId = (React as unknown) as { useId?: unknown };
+    const originalUseId = reactWithId.useId;
+    // React 17 has no useId. The wrapper must not call it.
+    delete reactWithId.useId;
+    try {
+      const { container } = renderWithTheme(
+        <Box width="500px" height="500px">
+          <ChartAreaWrapper data={mockData}>
+            <ChartArea dataKey="sales" name="Sales" />
+          </ChartAreaWrapper>
+        </Box>,
+      );
+      expect(container.querySelector('linearGradient')).toBeInTheDocument();
+      expect(container.querySelector('.recharts-area-area')).toBeInTheDocument();
+    } finally {
+      reactWithId.useId = originalUseId;
+    }
+  });
+
   it('should not render a dashed bridge path by default (hard gap)', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">

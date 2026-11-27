@@ -24,6 +24,14 @@ import type {
   RangeMap,
 } from '../CommonChartComponents/types';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
+import {
+  getChartMargin,
+  readChildDisplayProps,
+  resolveChartDisplayOptions,
+  useWarnDisplayPropsOnV1,
+} from '../CommonChartComponents/chartDisplayOptions';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import {
@@ -44,8 +52,13 @@ import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const getStrokeDasharray = (style?: ChartLineProps['strokeStyle']): string | undefined =>
-  style === 'dashed' ? '5 5' : style === 'dotted' ? '2 2' : undefined;
+// The dash of a `dashed` or `dotted` line: the theme's `border.dash` token, as an SVG
+// stroke-dasharray. The legend swatch of the line reads the same value.
+const getStrokeDasharray = (
+  theme: ReturnType<typeof useTheme>['theme'],
+  style?: ChartLineProps['strokeStyle'],
+): string | undefined =>
+  style === 'dashed' || style === 'dotted' ? theme.border.dash[style].join(' ') : undefined;
 
 // Dash pattern used for the bridge drawn across null points when `connectNulls` is enabled.
 const NULL_BRIDGE_DASHARRAY = '5 5';
@@ -88,7 +101,7 @@ const Line: React.FC<ChartLineProps> = ({
   const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
-  const strokeDasharray = getStrokeDasharray(strokeStyle);
+  const strokeDasharray = getStrokeDasharray(theme, strokeStyle);
 
   // A solid bridge just uses Recharts' native connectNulls on the main line. A dashed bridge keeps
   // the main line gapped (connectNulls off) and is drawn separately by NullBridgeLayer.
@@ -239,10 +252,35 @@ const ChartLine = assignWithoutSideEffects(Line, {
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'categorical',
+  version,
+  valueFormat,
   testID,
   data,
   ...restProps
 }) => {
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend.
+  const {
+    showBorder,
+    yLabelPlacement,
+    yGridlines,
+    gridlineWidth,
+    legendPlacement,
+    legendGap,
+  } = readChildDisplayProps(children);
+  const display = useMemo(
+    () =>
+      resolveChartDisplayOptions({
+        version,
+        showBorder,
+        yLabelPlacement,
+        yGridlines,
+        gridlineWidth,
+        legendPlacement,
+        legendGap,
+      }),
+    [version, showBorder, yLabelPlacement, yGridlines, gridlineWidth, legendPlacement, legendGap],
+  );
+  useWarnDisplayPropsOnV1(version, children, 'ChartLineWrapper');
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
@@ -344,6 +382,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     containerRef,
     dataColorMapping,
   );
+
+  // Map of line dataKey -> its stroke style, so the legend draws each line swatch in its style.
+  const lineStrokeStyles = useMemo(() => {
+    const map: Record<string, NonNullable<ChartLineProps['strokeStyle']>> = {};
+    React.Children.forEach(children, (child) => {
+      if (isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+        const props = child.props as ChartLineProps;
+        if (props.dataKey) map[props.dataKey as string] = props.strokeStyle ?? 'solid';
+      }
+    });
+    return map;
+  }, [children]);
 
   // Map of line dataKey -> its range keys, so the tooltip can show the industry range per series.
   const rangeMap = useMemo<RangeMap>(() => {
@@ -517,16 +567,23 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       setSelectedDataKeys,
       secondaryLabelMap,
       dataLength: data?.length,
+      chartData: data,
       referenceBands: referenceBandLegendInfos,
       rangeMap,
+      lineStrokeStyles,
+      ...display,
+      valueFormat,
     }),
     [
       dataColorMapping,
       selectedDataKeys,
       secondaryLabelMap,
-      data?.length,
+      data,
       referenceBandLegendInfos,
       rangeMap,
+      lineStrokeStyles,
+      display,
+      valueFormat,
     ],
   );
 
@@ -540,16 +597,26 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           height="100%"
           {...restProps}
         >
-          <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+          <ChartSurface
+            ref={containerRef}
+            chartVersion={display.chartVersion}
+            showBorder={display.showBorder}
+            yLabelPlacement={display.yLabelPlacement}
+          >
             <RechartsResponsiveContainer width="100%" height="100%">
-              <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
+              <RechartsLineChart
+                data={data}
+                onMouseLeave={() => setHoveredDataKey(null)}
+                margin={getChartMargin(display)}
+              >
                 {/* Painted first so the shaded bands sit behind the trend lines. */}
                 {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
+                {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>
             </RechartsResponsiveContainer>
-          </div>
+          </ChartSurface>
         </BaseBox>
       </CommonChartComponentsContext.Provider>
     </LineChartContext.Provider>

@@ -81,7 +81,15 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
  */
 type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
 
+/**
+ * The look of a GenUI CHART.
+ * - `v1`: the chart as released before chart versions, with the `v1` Blade charts.
+ * - `v2`: the chart fits its box, with the `v2` Blade charts.
+ */
+type GenUIChartVersion = 'v1' | 'v2';
+
 export type {
+  GenUIChartVersion,
   // Main types
   GenUIBaseComponent,
   // Utility types

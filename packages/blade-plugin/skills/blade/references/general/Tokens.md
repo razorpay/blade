@@ -15,7 +15,7 @@ Blade uses a **two-tier token architecture** to maintain a consistent design lan
 Global tokens are foundational, context-free values. They define the raw design scales:
 
 - **Spacing** — A 12-step numeric scale (0–56px)
-- **Border** — Radius and width values
+- **Border** — Radius, width and dash values. `border.dash.dashed` is [5, 5] and `border.dash.dotted` is [2, 2], as [dash, gap] lengths for an SVG `stroke-dasharray`
 - **Breakpoints** — 6 responsive breakpoints (0–1200px)
 - **Opacity** — 14-step opacity scale (0.0–1.0)
 - **Motion** — Duration, delay, and easing curves
@@ -40,7 +40,7 @@ The `ThemeTokens` object (provided to `BladeProvider`) has this top-level struct
 ```ts
 ThemeTokens = {
   name: string;           // "bladeTheme" or custom
-  border: { radius, width }
+  border: { radius, width, dash }
   breakpoints: { base, xs, s, m, l, xl }
   colors: { onLight: {...}, onDark: {...} }
   motion: { duration, delay, easing }

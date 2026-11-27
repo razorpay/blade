@@ -1437,6 +1437,97 @@ LineChartWithSequentialColors.parameters = {
   controls: { disable: true },
 };
 
+/**
+ * `showBorder` on the ChartCartesianGrid of a `version="v2"` chart. With it, a line on the left,
+ * the right and the bottom of the plot, in the colour and the width of the gridlines. With none,
+ * only the gridlines show. The Y labels sit in a `left` column by default, as wide as the widest
+ * label plus spacing.3. `labelPlacement` on ChartYAxis moves them: `overlap`, inside the plot just
+ * below each gridline, or `right`, in a column right of the plot. The bar and area charts take the
+ * same child props.
+ */
+export const LineChartWithAxisStyles: StoryFn<typeof ChartLine> = () => {
+  const variants: ReadonlyArray<{
+    showBorder: boolean;
+    yLabelPlacement?: 'overlap' | 'right';
+  }> = [
+    { showBorder: true },
+    { showBorder: false },
+    { showBorder: false, yLabelPlacement: 'overlap' },
+    { showBorder: false, yLabelPlacement: 'right' },
+  ];
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexWrap="wrap" gap="spacing.8">
+        {variants.map(({ showBorder, yLabelPlacement }) => (
+          <Box
+            key={`${showBorder}-${yLabelPlacement ?? 'left'}`}
+            width="320px"
+            display="flex"
+            flexDirection="column"
+            gap="spacing.3"
+          >
+            <Heading size="small">
+              {yLabelPlacement
+                ? `showBorder={${showBorder}} labelPlacement="${yLabelPlacement}"`
+                : `showBorder={${showBorder}}`}
+            </Heading>
+            <Box width="100%" height="220px">
+              <ChartLineWrapper data={chartData} version="v2">
+                <ChartCartesianGrid showBorder={showBorder} />
+                <ChartXAxis dataKey="month" />
+                <ChartYAxis labelPlacement={yLabelPlacement} />
+                <ChartTooltip />
+                <ChartLine dataKey="teamA" name="Team A" />
+              </ChartLineWrapper>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithAxisStyles.parameters = {
+  controls: { disable: true },
+};
+
+const collectedPerMonth = [
+  { month: 'Jan', collected: 40000 },
+  { month: 'Feb', collected: 95000 },
+  { month: 'Mar', collected: 123450 },
+  { month: 'Apr', collected: 150000 },
+  { month: 'May', collected: 218000 },
+  { month: 'Jun', collected: 280000 },
+];
+
+/**
+ * `valueFormat` on the wrapper: en-IN values, compact on the Y ticks (₹1.5L) and full in the
+ * tooltip (₹1,23,450.00). Off by default.
+ */
+export const LineChartWithValueFormat: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="360px" height="240px">
+        <ChartLineWrapper
+          data={collectedPerMonth}
+          version="v2"
+          valueFormat={{ type: 'currency', currency: 'INR' }}
+        >
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLine dataKey="collected" name="Collected" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithValueFormat.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
 LineChartIndustrySRKitchenSink.storyName = 'Line Chart with Multiple Reference Bands';
@@ -1459,3 +1550,5 @@ LineChartWithControlledSelection.storyName = 'Legend with Controlled Selection';
 LineChartWithLegendClickCallback.storyName = 'Legend with Selection Change Callback';
 LineChartWithBenchmarkAndSinglePoint.storyName = 'Line Chart with Benchmark Line and Single Point';
 LineChartWithSequentialColors.storyName = 'Line Chart with Sequential Colors';
+LineChartWithAxisStyles.storyName = 'Line Chart with Axis Styles';
+LineChartWithValueFormat.storyName = 'Line Chart with Value Format';

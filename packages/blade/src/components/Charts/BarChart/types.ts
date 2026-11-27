@@ -1,5 +1,6 @@
 import type { BarProps as RechartsBarProps } from 'recharts';
 import type {
+  ChartWrapperDisplayProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
@@ -121,7 +122,8 @@ type ChartBarWrapperProps = {
    * Chart data to be rendered
    */
   data: data[];
-} & BoxProps;
+} & BoxProps &
+  ChartWrapperDisplayProps;
 
 interface BarChartContextType {
   layout?: 'horizontal' | 'vertical';
@@ -149,6 +151,10 @@ interface BarChartContextType {
    * that has already shipped. Plain bar charts keep the category-wide highlight they always had.
    */
   hasReferenceBand?: boolean;
+  /**
+   * True with `version="v2"`. A `v2` bar never takes a negative width.
+   */
+  isV2?: boolean;
 }
 
 export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType };

@@ -12,6 +12,10 @@ const BASE_CONTAINER_SIZE = {
   large: 340, // 162 * 2 + some padding
 };
 
+// `v2`: room kept between the ring and the edge of its box, in px. The outer stroke is 0.75px and
+// half of it sits outside the ring. A hovered slice does not grow.
+const DONUT_V2_EDGE = 1;
+
 const START_AND_END_ANGLES = {
   circle: { startAngle: 450, endAngle: 90 },
   semicircle: { startAngle: 180, endAngle: 0 },
@@ -41,6 +45,7 @@ const LABEL_FONT_STYLES = {
 
 export {
   RADIUS_MAPPING,
+  DONUT_V2_EDGE,
   BASE_CONTAINER_SIZE,
   componentId,
   START_AND_END_ANGLES,

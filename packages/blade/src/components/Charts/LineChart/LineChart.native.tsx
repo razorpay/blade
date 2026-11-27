@@ -37,6 +37,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import { useWarnWebOnlyChartProps } from '../CommonChartComponents/chartDisplayOptions';
 import {
   REFERENCE_BAND_DEFAULT_COLOR,
   REFERENCE_BAND_FILL_OPACITY,
@@ -542,8 +543,15 @@ const buildPath = (points: Point[], type: LineType): string => {
   }
 };
 
-const getStrokeDasharray = (strokeStyle: StrokeStyle): string | undefined =>
-  strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
+// The dash of a `dashed` or `dotted` line: the theme's `border.dash` token, as an SVG
+// stroke-dasharray.
+const getStrokeDasharray = (
+  theme: ReturnType<typeof useTheme>['theme'],
+  strokeStyle: StrokeStyle,
+): string | undefined =>
+  strokeStyle === 'dashed' || strokeStyle === 'dotted'
+    ? theme.border.dash[strokeStyle].join(' ')
+    : undefined;
 
 type LinePoint = { x: number; y: number; value: number | null };
 
@@ -696,7 +704,7 @@ const LineSeries = ({
     line.connectNulls,
     line.connectNullsStyle,
   ]);
-  const dash = getStrokeDasharray(line.strokeStyle);
+  const dash = getStrokeDasharray(theme, line.strokeStyle);
   // Dash pattern for the stretch drawn across null points (only present for dashed bridges).
   const nullBridgeDash = '5 5';
   const clipId = `line-${chartId}-reveal-${index}`;
@@ -755,9 +763,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   testID,
   data = [],
+  version,
+  valueFormat,
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // `version="v2"`, `valueFormat` and the display props of the children work on web only.
+  useWarnWebOnlyChartProps(
+    { version, hasValueFormat: valueFormat !== undefined, children },
+    'ChartLineWrapper',
+  );
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);

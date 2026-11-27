@@ -18,6 +18,12 @@ import {
   componentId as commonComponentIds,
   REFERENCE_BAND_DEFAULT_NAME,
 } from '../CommonChartComponents/tokens';
+import {
+  getChartMargin,
+  resolveChartDisplayOptions,
+  readChildDisplayProps,
+  useWarnDisplayPropsOnV1,
+} from '../CommonChartComponents/chartDisplayOptions';
 import { perLineBandClass } from '../utils/referenceBandUtils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import { useBarReferenceBand } from './useBarReferenceBand';
@@ -38,6 +44,8 @@ import isNumber from '~utils/lodashButBetter/isNumber';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
+import { ChartSurface } from '../CommonChartComponents/ChartSurface';
+import { ChartPlotBorder } from '../CommonChartComponents/CommonChartComponents.web';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -83,6 +91,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
       hoveredDataKey,
       setHoveredBar,
       hasReferenceBand,
+      isV2,
     } = useBarChartContext();
     const defaultColorArray = useChartsColorTheme({
       colorTheme: _colorTheme,
@@ -233,7 +242,9 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
                     fill={fill}
                     x={x + gap / 1.5}
                     y={y}
-                    width={width - gap}
+                    // `v2`: never a negative width. A bar narrower than the gap, as at the start
+                    // of its animation, draws nothing. `v1` keeps master's value.
+                    width={isV2 ? Math.max(0, width - gap) : width - gap}
                     height={height}
                     fillOpacity={fillOpacity}
                   />
@@ -284,10 +295,20 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   children,
   colorTheme = 'categorical',
   layout = 'horizontal',
+  version,
+  valueFormat,
   testID,
   data = [],
   ...restProps
 }) => {
+  // The display options sit on the children: ChartCartesianGrid, ChartYAxis and ChartLegend. A
+  // vertical bar chart has its categories on the Y axis, so it keeps a `left` column for its
+  // category names.
+  const display = resolveChartDisplayOptions(
+    { version, ...readChildDisplayProps(children) },
+    { isVerticalBar: layout === 'vertical' },
+  );
+  useWarnDisplayPropsOnV1(version, children, 'ChartBarWrapper');
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   // The hovered bar: its series (fades the others, decides which reference band is revealed) and
@@ -449,8 +470,43 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       hoveredBarIndex,
       setHoveredBar,
       hasReferenceBand,
+      isV2: display.chartVersion === 'v2',
     }),
-    [layout, activeIndex, colorTheme, totalBars, hoveredDataKey, hoveredBarIndex, hasReferenceBand],
+    [
+      layout,
+      activeIndex,
+      colorTheme,
+      totalBars,
+      hoveredDataKey,
+      hoveredBarIndex,
+      hasReferenceBand,
+      display.chartVersion,
+    ],
+  );
+
+  const responsiveContainer = (
+    <RechartsResponsiveContainer width="100%" height="100%">
+      <RechartsBarChart
+        barSize={BAR_SIZE}
+        barGap={DISTANCE_BETWEEN_BARS}
+        barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
+        onMouseMove={(state) => {
+          setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
+        }}
+        onMouseLeave={() => {
+          setActiveIndex(undefined);
+          setHoveredBar(null);
+        }}
+        layout={layout}
+        data={data}
+        margin={getChartMargin(display)}
+      >
+        {/* Painted first so the shaded band sits behind the bars. */}
+        {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
+        {barChartModifiedChildrens}
+        {display.chartVersion === 'v2' && display.showBorder ? <ChartPlotBorder /> : null}
+      </RechartsBarChart>
+    </RechartsResponsiveContainer>
   );
 
   return (
@@ -460,10 +516,13 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         dataColorMapping,
         secondaryLabelMap,
         dataLength: data?.length,
+        chartData: data,
         selectedDataKeys,
         setSelectedDataKeys,
         referenceBands: referenceBandLegendInfos,
         rangeMap,
+        ...display,
+        valueFormat,
       }}
     >
       <BaseBox
@@ -475,26 +534,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {...restProps}
       >
         <BarChartContext.Provider value={barChartContextValue}>
-          <RechartsResponsiveContainer width="100%" height="100%">
-            <RechartsBarChart
-              barSize={BAR_SIZE}
-              barGap={DISTANCE_BETWEEN_BARS}
-              barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
-              onMouseMove={(state) => {
-                setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
-              }}
-              onMouseLeave={() => {
-                setActiveIndex(undefined);
-                setHoveredBar(null);
-              }}
-              layout={layout}
-              data={data}
+          {/* v1: no surface, as on master. */}
+          {display.chartVersion === 'v2' ? (
+            <ChartSurface
+              chartVersion={display.chartVersion}
+              showBorder={display.showBorder}
+              yLabelPlacement={display.yLabelPlacement}
             >
-              {/* Painted first so the shaded band sits behind the bars. */}
-              {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
-              {barChartModifiedChildrens}
-            </RechartsBarChart>
-          </RechartsResponsiveContainer>
+              {responsiveContainer}
+            </ChartSurface>
+          ) : (
+            responsiveContainer
+          )}
         </BarChartContext.Provider>
       </BaseBox>
     </CommonChartComponentsContext.Provider>

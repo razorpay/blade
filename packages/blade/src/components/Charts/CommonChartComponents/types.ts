@@ -8,6 +8,7 @@ import type {
 } from 'recharts';
 import type { Props as RechartsLabelProps } from 'recharts/types/component/Label';
 import type { ComponentProps } from 'react';
+import type { ChartValueFormat } from '../utils/chartValueFormat';
 import type {
   DataColorCategories,
   DataCategoricalEmphasis,
@@ -126,9 +127,102 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
    * The data key of the y-axis.
    */
   dataKey?: string;
+  /**
+   * Where the Y labels sit. `version="v2"` only. Web only: the native charts ignore it.
+   * - `left`: a column left of the plot. The column is as wide as the widest label plus
+   *   `spacing.3`, with no fixed gutter. The widest label starts at the left edge of the chart.
+   *   Labels align towards the axis, with tabular digits.
+   * - `right`: a column right of the plot, as `left` but mirrored. Each label is centred on its
+   *   gridline. The gridlines end `spacing.3` before the column. The bottom label hides when it
+   *   meets an X label.
+   * - `overlap`: inside the plot, from its left edge, just below each gridline, with a halo in the
+   *   surface colour. The bottom label is not drawn. With `showBorder` on `ChartCartesianGrid`, it
+   *   shows as `left`.
+   *
+   * A bar chart with `layout="vertical"` always takes `left`: its category names sit in a column
+   * as wide as the widest name plus `spacing.3`.
+   *
+   * `labelPlacement` sets recharts' `orientation` and `mirror`. When `labelPlacement` is set, it
+   * wins over `orientation` and `mirror` on the same axis, and a development warning shows. When
+   * it is not set, `orientation` and `mirror` apply as in recharts.
+   * @default 'left'
+   */
+  labelPlacement?: ChartYLabelPlacement;
 };
 
 type Layout = 'horizontal' | 'vertical';
+
+/**
+ * Where the Y labels sit.
+ * - `left`: in a column left of the plot, as wide as the widest label plus a gap.
+ * - `right`: in a column right of the plot, as wide as the widest label plus a gap. Each label is
+ *   centred on its gridline.
+ * - `overlap`: inside the plot, from its left edge, just below their gridline, with a halo.
+ */
+type ChartYLabelPlacement = 'left' | 'right' | 'overlap';
+
+/** The Y label placement after the wrapper resolves it: `overlap` with a border is `left`. */
+type ChartResolvedYLabelPlacement = ChartYLabelPlacement;
+
+/** The stroke style of a ChartLine. The legend draws the line swatch in it. */
+type ChartLineStrokeStyle = 'solid' | 'dashed' | 'dotted';
+
+/** The stroke width of the gridlines. `thin` is `border.width.thin`, `thinner` is `border.width.thinner`. */
+type ChartGridlineWidth = 'thin' | 'thinner';
+
+/** Where the legend sits. */
+type ChartLegendPlacement = 'top' | 'bottom';
+
+/** Where the donut legend sits. `left` and `right` put it beside the ring, in a column. */
+type ChartDonutLegendPlacement = ChartLegendPlacement | 'left' | 'right';
+
+/** The gap between the legend and the chart: a Blade spacing token from `spacing.3` to `spacing.8`. */
+type ChartLegendGap =
+  | 'spacing.3'
+  | 'spacing.4'
+  | 'spacing.5'
+  | 'spacing.6'
+  | 'spacing.7'
+  | 'spacing.8';
+
+/**
+ * The look of a chart.
+ * - `v1`: the chart as on Blade master. The display options have no effect.
+ * - `v2`: the new look. The Y labels sit in a tight `left` column. Fixed spacing: `spacing.5`
+ *   from the legend to the nearest chart element, `spacing.3` from the plot to the X labels, and
+ *   no space under the X labels unless the X axis has a `label`. The plot height is the same with
+ *   and without a border. The X labels never wrap and thin out to fit. A line series shows a
+ *   line swatch. The display options apply: `lineWidth` and `showBorder` on ChartCartesianGrid,
+ *   `labelPlacement` on ChartYAxis, `placement` and `gap` on ChartLegend.
+ */
+type ChartVersion = 'v1' | 'v2';
+
+/** The `version` prop of every chart wrapper: line, area, bar and donut. */
+type ChartVersionProps = {
+  /**
+   * The look of the chart. `v1` renders as Blade master, and the display options of the children
+   * have no effect. `v2` is the new look, and the display options of ChartCartesianGrid,
+   * ChartYAxis and ChartLegend apply. Web only.
+   * @default 'v1'
+   */
+  version?: ChartVersion;
+};
+
+/**
+ * The wrapper props of ChartBarWrapper, ChartLineWrapper and ChartAreaWrapper that are not part of
+ * a child. The display options of `version="v2"` sit on the children: `ChartCartesianGrid`
+ * (`horizontal`, `lineWidth`, `showBorder`), `ChartYAxis` (`labelPlacement`) and `ChartLegend`
+ * (`placement`, `gap`). Web only: the native charts ignore them.
+ */
+type ChartWrapperDisplayProps = {
+  /**
+   * The value format of the chart, in en-IN. ChartYAxis, and ChartXAxis with `type="number"`,
+   * write their ticks compact (₹1.5L, 1.5K, 12.5%) and ChartTooltip writes values in full
+   * (₹1,23,450.00, 1,23,450, 12.5%), unless they get their own `tickFormatter` or `formatter`.
+   * Works in `v1` too. Web only: the native charts ignore it.
+   */
+  valueFormat?: ChartValueFormat;
+} & ChartVersionProps;
 type Align = 'left' | 'right';
 type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey' | 'funnel';
 type DataColorMapping = Record<
@@ -143,6 +237,28 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Where the legend sits. `version="v2"` only. Web only: the native charts ignore it.
+   * - `top`: above the chart, left-aligned. On a donut, centred over the ring.
+   * - `bottom`: below the chart, centred.
+   * - `left` and `right`: donut only. The legend sits beside the ring, in a column. The ring and
+   *   the legend are one group, centred in the box. On a line, area or bar chart, they show as
+   *   `bottom`, and a development warning shows.
+   *
+   * A legend with `layout="vertical"` stays at the side.
+   *
+   * `placement` sets recharts' `verticalAlign`. When `placement` is set, it wins over
+   * `verticalAlign`, and a development warning shows when both are set. When it is not set,
+   * `verticalAlign` applies as in recharts. On a donut, `left` and `right` also win over `align`.
+   * @default 'bottom'
+   */
+  placement?: ChartLegendPlacement | ChartDonutLegendPlacement;
+  /**
+   * The gap between the legend and the nearest chart element. On a donut, the gap between the
+   * ring and the legend. `version="v2"` only. Web only: the native charts ignore it.
+   * @default 'spacing.5'
+   */
+  gap?: ChartLegendGap;
   /**
    * Array of dataKeys that are currently selected.
    * When provided, the component is in controlled mode.
@@ -169,7 +285,31 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
 type ChartCartesianGridProps = Omit<
   RechartsCartesianGridProps,
   'strokeDasharray' | 'verticalFill' | 'horizontalFill'
->;
+> & {
+  /**
+   * The stroke width of the gridlines and of the border (`showBorder`): `thin`
+   * (`border.width.thin`, 1px) or `thinner` (`border.width.thinner`, 0.5px). `version="v2"` only.
+   * Web only: the native charts ignore it.
+   *
+   * `lineWidth` sets recharts' `strokeWidth`. When `lineWidth` is set, it wins over `strokeWidth`,
+   * and a development warning shows when both are set. When it is not set, `strokeWidth` applies,
+   * else `thinner`.
+   * @default 'thinner'
+   */
+  lineWidth?: ChartGridlineWidth;
+  /**
+   * Shows a border around the plot: one line on the left, the right and the bottom. Each line is
+   * drawn once, in the colour and the `lineWidth` of the gridlines: the gridline at the base of
+   * the plot is not drawn. With no border, the bottom gridline is the baseline.
+   *
+   * With `labelPlacement="overlap"` on ChartYAxis, the border puts the Y labels in a `left`
+   * column. `version="v2"` only. Web only: the native charts ignore it.
+   *
+   * `horizontal={false}` hides the horizontal gridlines, as in recharts.
+   * @default false
+   */
+  showBorder?: boolean;
+};
 
 type ChartsCategoricalColorToken = `data.background.categorical.${DataColorCategories}.${keyof DataCategoricalEmphasis}`;
 type ChartSequentialColorToken = `data.background.sequential.${Exclude<
@@ -223,6 +363,10 @@ type CommonChartComponentsStateType = {
    */
   dataLength?: number;
   /**
+   * The data rows of the chart. ChartXAxis measures its labels from them.
+   */
+  chartData?: ReadonlyArray<Record<string, unknown>>;
+  /**
    * Legend info for each reference band present in the chart (one per line with a range, plus any
    * standalone band), so the legend can render a swatch per band.
    */
@@ -231,6 +375,53 @@ type CommonChartComponentsStateType = {
    * Map of line dataKey -> range keys, so the tooltip can show each series' industry range.
    */
   rangeMap?: RangeMap;
+  /**
+   * The look of the chart. Every part reads it. Undefined is `v1`.
+   */
+  chartVersion?: ChartVersion;
+  /**
+   * The resolved border, from `showBorder` on ChartCartesianGrid. The wrapper draws it,
+   * ChartCartesianGrid leaves out its base gridline and ChartYAxis shows `overlap` as `left`.
+   */
+  showBorder?: boolean;
+  /**
+   * True for a bar chart with `layout="vertical"`: its Y axis holds category names.
+   */
+  isVerticalBar?: boolean;
+  /**
+   * The resolved Y label placement, from `labelPlacement` on ChartYAxis. The surface and the
+   * legend read it.
+   */
+  yLabelPlacement?: ChartResolvedYLabelPlacement;
+  /**
+   * False when ChartCartesianGrid has `horizontal={false}`. The legend gap reads it.
+   */
+  yGridlines?: boolean;
+  /**
+   * The resolved gridline width, from `lineWidth` on ChartCartesianGrid. Undefined keeps
+   * recharts' 1px. ChartCartesianGrid and the border read it.
+   */
+  gridlineWidth?: ChartGridlineWidth;
+  /**
+   * The legend placement, from `placement` on ChartLegend. ChartLegend reads it.
+   */
+  legendPlacement?: ChartDonutLegendPlacement;
+  /**
+   * The resolved legend gap token, from `gap` on ChartLegend. ChartLegend reads it.
+   */
+  legendGap?: ChartLegendGap;
+  /**
+   * The `radius` size of the ChartDonut. The `v2` donut legend reads it to sit next to the ring.
+   */
+  donutRadius?: 'small' | 'medium' | 'large';
+  /**
+   * The stroke style of each ChartLine, by dataKey. The legend of a line chart reads it.
+   */
+  lineStrokeStyles?: Record<string, ChartLineStrokeStyle>;
+  /**
+   * The value format of the chart wrapper. ChartYAxis and ChartTooltip read it.
+   */
+  valueFormat?: ChartValueFormat;
 };
 
 // Dispatch type - contains only the updater functions
@@ -285,6 +476,17 @@ export type {
   ChartLabelContentProps,
   Layout,
   Align,
+  ChartYLabelPlacement,
+  ChartResolvedYLabelPlacement,
+  ChartGridlineWidth,
+  ChartLegendPlacement,
+  ChartDonutLegendPlacement,
+  ChartLegendGap,
+  ChartLineStrokeStyle,
+  ChartWrapperDisplayProps,
+  ChartVersion,
+  ChartVersionProps,
+  ChartValueFormat,
   DataColorMapping,
   ChartColorToken,
   SecondaryLabelMap,

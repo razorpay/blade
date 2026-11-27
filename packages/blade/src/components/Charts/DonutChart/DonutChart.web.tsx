@@ -5,6 +5,7 @@ import {
   Cell as RechartsCell,
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
+  usePlotArea,
 } from 'recharts';
 import {
   useChartsColorTheme,
@@ -17,7 +18,13 @@ import {
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
-import type { DataColorMapping } from '../CommonChartComponents/types';
+import type { ChartDonutLegendPlacement, DataColorMapping } from '../CommonChartComponents/types';
+import {
+  countChildrenOf,
+  readChildDisplayProps,
+  resolveChartDisplayOptions,
+  useWarnDisplayPropsOnV1,
+} from '../CommonChartComponents/chartDisplayOptions';
 import type {
   ChartDonutWrapperProps,
   ChartDonutCellProps,
@@ -40,6 +47,7 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { getDonutV2OuterRadius } from './donutLayout';
 
 // Context to share container dimensions for responsive radius calculation
 type DonutContainerContextType = {
@@ -78,11 +86,16 @@ const getTranslate = (
   legendAlignment: 'left' | 'right',
   legendWidth: number,
   legendHeight: number,
+  legendPlacement: ChartDonutLegendPlacement = 'bottom',
 ): string => {
   if (legendLayout === 'vertical') {
     return `translate(calc(-50% + ${
       legendAlignment === 'right' ? -legendWidth / 2 : legendWidth / 2
     }px) ,  calc(-50%))`;
+  }
+  // The centre content moves away from the legend, by half its height.
+  if (legendPlacement === 'top') {
+    return `translate(-50%, calc(-50% + ${legendHeight / 2}px))`;
   }
   return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
 };
@@ -105,9 +118,21 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   children,
   content,
   testID,
+  valueFormat,
+  version = 'v1',
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // `placement` and `gap` sit on the ChartLegend child. They apply with `version="v2"` only.
+  const { legendPlacement, legendGap } = resolveChartDisplayOptions(
+    { version, ...readChildDisplayProps(children) },
+    { isDonut: true },
+  );
+  // `left` and `right` put the legend in a column beside the ring.
+  const isSideLegend = legendPlacement === 'left' || legendPlacement === 'right';
+  // `v2`: a ChartLegend child shows the legend, as in `v1`. With none, the legend takes no room.
+  const hasLegend = countChildrenOf(children, commonChartComponentId.chartLegend) > 0;
+  useWarnDisplayPropsOnV1(version, children, 'ChartDonutWrapper');
   // State to track which data keys are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
@@ -250,7 +275,17 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 
   return (
     <CommonChartComponentsContext.Provider
-      value={{ chartName: 'donut', dataColorMapping, selectedDataKeys, setSelectedDataKeys }}
+      value={{
+        chartName: 'donut',
+        dataColorMapping,
+        selectedDataKeys,
+        setSelectedDataKeys,
+        valueFormat,
+        legendPlacement,
+        chartVersion: version,
+        legendGap,
+        donutRadius: pieChartRadius,
+      }}
     >
       <DonutContainerContext.Provider
         value={{
@@ -322,7 +357,14 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               position="absolute"
               top="50%"
               left="50%"
-              transform={getTranslate(legendLayout, legendAlignment, legendWidth, legendHeight)}
+              transform={getTranslate(
+                isSideLegend ? 'vertical' : legendLayout,
+                isSideLegend ? legendPlacement : legendAlignment,
+                // A `v2` chart with no ChartLegend takes no room. The last measure stays in state.
+                version === 'v2' && !hasLegend ? 0 : legendWidth,
+                version === 'v2' && !hasLegend ? 0 : legendHeight,
+                legendPlacement,
+              )}
               zIndex={10}
               textAlign="center"
             >
@@ -335,7 +377,12 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   );
 };
 
-const _ChartDonut: React.FC<ChartDonutProps> = ({
+/**
+ * The body of ChartDonut. `fittedOuterRadius`: the `v2` outer radius that fits the plot area. The
+ * inner radius keeps the ratio of the `radius` size.
+ */
+const ChartDonutBody: React.FC<ChartDonutProps & { fittedOuterRadius?: number }> = ({
+  fittedOuterRadius,
   cx = '50%',
   cy = '50%',
   radius = 'medium',
@@ -378,18 +425,17 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     return { filteredData, filteredToOriginalIndexMap };
   }, [data, nameKey, selectedDataKeys]);
 
-  // Calculate responsive radius based on container size
+  // Calculate responsive radius based on container size. `v2`: the radius that fits the plot area.
   const containerSize = Math.min(containerWidth, containerHeight);
-  const scaledOuterRadius = getScaledRadius(
-    baseRadiusConfig.outerRadius,
-    containerSize,
-    baseContainerSize,
-  );
-  const scaledInnerRadius = getScaledRadius(
-    baseRadiusConfig.innerRadius,
-    containerSize,
-    baseContainerSize,
-  );
+  const scaledOuterRadius =
+    fittedOuterRadius ??
+    getScaledRadius(baseRadiusConfig.outerRadius, containerSize, baseContainerSize);
+  const scaledInnerRadius =
+    fittedOuterRadius !== undefined
+      ? Math.round(
+          (fittedOuterRadius * baseRadiusConfig.innerRadius) / baseRadiusConfig.outerRadius,
+        )
+      : getScaledRadius(baseRadiusConfig.innerRadius, containerSize, baseContainerSize);
   // Stroke inner radius is slightly smaller than outer for the border effect
   const scaledStrokeInnerRadius = scaledOuterRadius - 0.75;
 
@@ -590,6 +636,27 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       </RechartsPie>
     </>
   );
+};
+
+// usePlotArea gives a new object on each store change. The memo renders the body again only when
+// the radius or a prop changes. Else each render updates the store again, with no end.
+const ChartDonutBodyMemo = React.memo(ChartDonutBody);
+
+/**
+ * `v2`: the ring fits the plot area, the box less the legend. The outer radius is half the shorter
+ * side of the plot, less `DONUT_V2_EDGE`, and at most the `radius` size. The ring sits in the
+ * centre of the plot, so no part is cut at any box size.
+ */
+const ChartDonutFitted: React.FC<ChartDonutProps> = (props) => {
+  const plotArea = usePlotArea();
+  const fittedOuterRadius = plotArea ? getDonutV2OuterRadius(plotArea, props.radius) : undefined;
+  return <ChartDonutBodyMemo {...props} fittedOuterRadius={fittedOuterRadius} />;
+};
+
+const _ChartDonut: React.FC<ChartDonutProps> = (props) => {
+  const { chartVersion } = useCommonChartComponentsContext();
+  // `v1` renders as on master, with no extra hook.
+  return chartVersion === 'v2' ? <ChartDonutFitted {...props} /> : <ChartDonutBody {...props} />;
 };
 
 const ChartDonut = assignWithoutSideEffects(_ChartDonut, {
