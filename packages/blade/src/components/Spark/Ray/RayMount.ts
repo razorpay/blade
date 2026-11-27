@@ -94,6 +94,7 @@ const NUDGE_AFTER_MS = 10000; // text in the box and nobody typing this long: th
 const CLOCK_CHECK_MS = 30000; // idle="time-of-day": how often a Ray that's up checks the clock again
 const STAGE_FRESH_MS = 1000; // with nothing moving the page, where his stage is on screen is measured again at most this often
 const WIDTHS = { small: 38, medium: 48 };
+const MAX_PIXEL_RATIO = 2; // his canvases' pixels per CSS px, at most (the device's and _scale's together)
 // How far past his box the stage keeps (in his widths): what he draws there reaches 0.38 to the right (Calling's headset) and
 // 0.27 below (Coffee's mug over the edge; the hop's 0.6 is under the floor cut), measured over every idle, flip, film, the hop
 // and the dash (2026-11-10). The rest of the stage's 16 x 8 widths is cut off, so a scrolling parent doesn't scroll on into
@@ -898,7 +899,7 @@ class RayMount {
       'in',
       () => {
         const want = this.want();
-        if (want.kind === 'answer') this.startFilm(want.film, 'answer', this.player.last);
+        if (want.kind === 'answer') this.startFilm(want.film, 'answer', this.player.handOver());
         else this.holder = { by: 'player', act: 'rest', since: performance.now() };
       },
       ROW_RISE,
@@ -1569,9 +1570,15 @@ class RayMount {
     return this.caretCache;
   }
 
-  /** his canvases' pixels per CSS px: the device's (at most 2), finer by how much bigger he's shown */
+  /**
+   * his canvases' pixels per CSS px: the device's, finer by how much bigger he's shown (_scale), at most MAX_PIXEL_RATIO whatever the
+   * caller asks (Saurav's review of the hover commit: _scale={3} on a 2x screen drew at 6x, 9 times the canvas memory of 2x)
+   */
   private pixelRatio(): number {
-    return Math.min(2, window.devicePixelRatio || 1) * Math.max(1, this.options.scale ?? 1);
+    return Math.min(
+      MAX_PIXEL_RATIO,
+      (window.devicePixelRatio || 1) * Math.max(1, this.options.scale ?? 1),
+    );
   }
 
   private layout(): void {
