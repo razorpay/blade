@@ -207,10 +207,21 @@ const pageHost = (): unknown => ({
 class RayPlayer {
   readonly canvas: HTMLCanvasElement;
   mode: 'light' | 'dark' = 'light';
-  /** The last frame drawn, everything laid over it. */
+  /** The last frame drawn, everything laid over it (its eye offsets are reused each frame: take it with handOver()). */
   last: Frame | null = null;
   /** His eyes this much lower (world units; − = higher), as the films' looks are moved with them (RayMount's lookY) */
   eyeY = 0;
+  // (his eyes moved by eyeY, written into the same arrays each frame rather than new ones: a Button's Ray hovers with it; Saurav's nit)
+  private readonly eyeOff: [number, number][] = [
+    [0, 0],
+    [0, 0],
+  ];
+
+  /** His last frame as a film takes him from it (it may start frames later): its own copy of the eye offsets reused each frame. */
+  handOver(): Frame | null {
+    const f = this.last;
+    return f?.eyeOff === this.eyeOff ? { ...f, eyeOff: this.eyeOff.map((o) => [o[0], o[1]]) } : f;
+  }
 
   private readonly ctx: CanvasRenderingContext2D;
   private view = { scale: 1, ox: 0, oy: 0 };
@@ -501,11 +512,13 @@ class RayPlayer {
     f = RC.withHover(f, H);
     if (this.flip.COINFLIP.on) f = this.flip.flipDraw(f, now).f;
     if (this.eyeY) {
-      const off: [number, number][] = f.eyeOff ?? [
-        [0, 0],
-        [0, 0],
-      ];
-      f = { ...f, eyeOff: off.map((o) => [o[0], o[1] + this.eyeY]) };
+      const off = f.eyeOff;
+      const [x0, y0, x1, y1] = off ? [off[0][0], off[0][1], off[1][0], off[1][1]] : [0, 0, 0, 0];
+      this.eyeOff[0][0] = x0;
+      this.eyeOff[0][1] = y0 + this.eyeY;
+      this.eyeOff[1][0] = x1;
+      this.eyeOff[1][1] = y1 + this.eyeY;
+      f = { ...f, eyeOff: this.eyeOff };
     }
 
     this.last = f;
