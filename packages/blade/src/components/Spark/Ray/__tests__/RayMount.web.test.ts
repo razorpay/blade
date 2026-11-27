@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RayMount } from '../RayMount';
 import type { RayMountOptions } from '../RayMount';
 
@@ -51,5 +52,56 @@ describe('RayMount', () => {
     expect(actOf({ ...base, isHidden: true, state: 'searching', preload: 'searching' })).toBe(
       'gone',
     );
+  });
+
+  // (Saurav's review of the hover commit, 7f1579e14: _scale and _lookY, the props Button's Ray hover sets, locked in)
+  it("should cap his canvases' pixel ratio at 2, whatever _scale asks", () => {
+    const was = Object.getOwnPropertyDescriptor(window, 'devicePixelRatio');
+    const ratio = (dpr: number, scale?: number): number => {
+      Object.defineProperty(window, 'devicePixelRatio', { value: dpr, configurable: true });
+      const root = document.createElement('div');
+      document.body.append(root);
+      const mount = new RayMount(root, { ...base, scale });
+      const r = (mount as any).pixelRatio();
+      mount.dispose();
+      root.remove();
+      return r;
+    };
+    expect(ratio(1)).toBe(1);
+    expect(ratio(1, 1.5)).toBe(1.5); // (_scale: drawn finer as he's shown bigger)
+    expect(ratio(2)).toBe(2);
+    expect(ratio(2, 3)).toBe(2); // (was 6: 9 times the canvas memory of 2x)
+    expect(ratio(3)).toBe(2);
+    if (was) Object.defineProperty(window, 'devicePixelRatio', was);
+    else Reflect.deleteProperty(window, 'devicePixelRatio');
+  });
+
+  it("should move a film's looks by _lookY, and put them back for a Ray without it that takes the film from the pool", () => {
+    const shared = { look: [3, 4] as [number, number] }; // (a pose two keys share: moved once)
+    const script: { keys: { pose?: { look?: [number, number] } }[]; lookY?: number } = {
+      keys: [{ pose: { look: [1, 2] } }, { pose: shared }, { pose: shared }, {}],
+    };
+    const film = { host: { env: { window: { FILM: { SCRIPT: script } } } } };
+    const shift = (lookY?: number): void => {
+      const root = document.createElement('div');
+      document.body.append(root);
+      const mount = new RayMount(root, { ...base, size: 'medium', lookY });
+      (mount as any).shiftLooks(film);
+      mount.dispose();
+      root.remove();
+    };
+    shift(4); // (a Button's Ray: his eyes 4 px of his box lower)
+    const d = script.lookY!;
+    expect(d).toBeGreaterThan(0);
+    expect(script.keys[0].pose!.look![1]).toBeCloseTo(2 + d);
+    expect(shared.look[1]).toBeCloseTo(4 + d);
+    expect(script.keys[3].pose!.look).toEqual([0, d]);
+    shift(4); // (the same again: nothing moves twice)
+    expect(script.keys[0].pose!.look![1]).toBeCloseTo(2 + d);
+    shift(undefined); // (a Ray with no _lookY adopts it)
+    expect(script.lookY).toBe(0);
+    expect(script.keys[0].pose!.look).toEqual([1, expect.closeTo(2)]);
+    expect(shared.look).toEqual([3, expect.closeTo(4)]);
+    expect(script.keys[3].pose!.look).toEqual([0, expect.closeTo(0)]);
   });
 });
