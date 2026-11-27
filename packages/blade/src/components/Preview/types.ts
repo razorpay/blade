@@ -71,7 +71,7 @@ type PreviewBodyProps = {
    *
    * @default false
    */
-  isFullSize?: boolean;
+  shouldFillFrame?: boolean;
 };
 
 type PreviewFooterProps = {

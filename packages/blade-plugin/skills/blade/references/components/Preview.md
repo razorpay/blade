@@ -77,7 +77,7 @@ type PreviewBodyProps = {
    *
    * @default false
    */
-  isFullSize?: boolean;
+  shouldFillFrame?: boolean;
 };
 
 type PreviewFooterProps = {
@@ -101,8 +101,8 @@ type PreviewFooterProps = {
 - Use `onZoomChange` and `onDragChange` callbacks for tracking user interactions.
 - Use `isDragAndZoomDisabled` for static preview mode without interactions.
 - Use `minZoom` and `maxZoom` to limit zoom. The footer's Zoom Out and Zoom In buttons disable themselves at these limits, so don't disable or remount them yourself.
-- To fit content to the frame, set `isFullSize` on `PreviewBody`, give the child `max-width: 100%` and `max-height: 100%` (with `object-fit: contain` for images), and set `minZoom={1}` so users can't shrink it below the frame.
-- Don't combine `isFullSize` with `<img width="100%" height="100%">`: the image stretches to the frame's shape. Use `max-width`/`max-height` instead.
+- To fit content to the frame, set `shouldFillFrame` on `PreviewBody`, give the child `max-width: 100%` and `max-height: 100%` (with `object-fit: contain` for images), and set `minZoom={1}` so users can't shrink it below the frame.
+- Don't combine `shouldFillFrame` with `<img width="100%" height="100%">`: the image stretches to the frame's shape. Use `max-width`/`max-height` instead.
 - Use inside `LightBox` (custom mode) for gallery items that need zoom/pan.
 
 **Don't**
@@ -196,7 +196,7 @@ function FitToFramePreview() {
     <Box height="500px">
       <Preview minZoom={1} maxZoom={3}>
         <PreviewHeader title="Invoice" />
-        <PreviewBody isFullSize={true}>
+        <PreviewBody shouldFillFrame={true}>
           <img
             src="https://example.com/invoice.png"
             alt="Invoice"

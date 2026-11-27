@@ -29,7 +29,7 @@ describe('<PreviewWindow/>', () => {
     expect(container).toMatchSnapshot();
   });
 
-  describe('PreviewBody isFullSize', () => {
+  describe('PreviewBody shouldFillFrame', () => {
     const getBodyBox = (): HTMLElement => {
       const body = screen.getByText('This is a demo message').parentElement;
       if (!body) throw new Error('PreviewBody box not found');
@@ -52,10 +52,10 @@ describe('<PreviewWindow/>', () => {
       expect(body).not.toHaveStyle({ width: '100%' });
     });
 
-    it('should fill the frame and centre its child when isFullSize is set', () => {
+    it('should fill the frame and centre its child when shouldFillFrame is set', () => {
       renderWithTheme(
         <Preview>
-          <PreviewBody isFullSize={true}>
+          <PreviewBody shouldFillFrame={true}>
             <Text>This is a demo message</Text>
           </PreviewBody>
         </Preview>,

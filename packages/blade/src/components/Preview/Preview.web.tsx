@@ -104,8 +104,8 @@ const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
 });
 
 const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
-  const { children, isFullSize = false } = PreviewBodyProps;
-  if (!isFullSize) {
+  const { children, shouldFillFrame = false } = PreviewBodyProps;
+  if (!shouldFillFrame) {
     return <BaseBox>{children}</BaseBox>;
   }
   // Opt-in because a definite height makes children's percentage heights resolve,

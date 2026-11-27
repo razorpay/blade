@@ -289,7 +289,7 @@ const WithZoomLimitsExampleTemplate: StoryFn<typeof Preview> = () => {
     <Box height="500px" width="100%">
       <Preview minZoom={1} maxZoom={3}>
         <PreviewHeader title="Fit to frame, can't zoom out below 100%" />
-        <PreviewBody isFullSize={true}>
+        <PreviewBody shouldFillFrame={true}>
           <img
             src="https://picsum.photos/seed/blade-preview/1920/1080"
             alt="randomImage"
