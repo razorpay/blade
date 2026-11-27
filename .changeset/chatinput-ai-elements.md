@@ -13,7 +13,8 @@ No prop is renamed, removed or retyped, so no code has to change. New optional p
 - `actionMenu`: a `MenuOverlay` the "+" opens instead of the file picker, or a function that receives `openFilePicker` so a menu item can still open it (web).
 - `commands` and `onCommandSelect`: slash commands (web). Each command has `value`, `title` (the name without the slash; ChatInput adds it) and an optional `description`, like `ActionListItem`.
 - `maxCount`, `maxSize` and `onFileError`: file limits for picked, pasted and dropped files (web). They only guide people; servers must still check files.
-- `dropTarget`: drop files on the input (default), anywhere on the page, or `none` to turn dropping off (web). With `hideFileUpload` and no `actionMenu`, dropping is off too; pasting files works as before.
+- `dropTarget`: drop files on the input (default), anywhere on the page, or `none` to turn dropping off (web). With `showFileUpload={false}` and no `actionMenu`, dropping is off too; pasting files works as before.
+- `showFileUpload`: shows the "+" file picker button (default `true`). It replaces `hideFileUpload`, which still works but is now deprecated: use `showFileUpload={false}`.
 - `showAmbientBorder`: a slow, decorative blue border (one lap every 15 s) that fades out while the box is hovered or focused.
 - `onVoiceInput`: shows a mic just before Send and is called when it is pressed.
 - `helpText`: a short muted line under the box, which also describes the text box for screen readers on web.

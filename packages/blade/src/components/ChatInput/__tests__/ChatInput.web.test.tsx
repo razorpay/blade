@@ -796,12 +796,12 @@ describe('<ChatInput />', () => {
       expect(onFileChange).not.toHaveBeenCalled();
     });
 
-    it('takes no dropped files when hideFileUpload is set, but still takes pasted ones', () => {
+    it('takes no dropped files when showFileUpload is false, but still takes pasted ones', () => {
       const onFileChange = jest.fn();
       renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          hideFileUpload
+          showFileUpload={false}
           onFileChange={onFileChange}
         />,
       );
@@ -815,12 +815,12 @@ describe('<ChatInput />', () => {
       expect(onFileChange).toHaveBeenCalledTimes(1);
     });
 
-    it('lets an explicit dropTarget turn dropping back on with hideFileUpload', () => {
+    it('lets an explicit dropTarget turn dropping back on with showFileUpload false', () => {
       const onFileChange = jest.fn();
       renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          hideFileUpload
+          showFileUpload={false}
           dropTarget="page"
           onFileChange={onFileChange}
         />,
@@ -829,6 +829,15 @@ describe('<ChatInput />', () => {
         dataTransfer: { types: ['Files'], files: [makeFile('drop.png', 1)] },
       });
       expect(onFileChange).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([
+      ['showFileUpload={false}', { showFileUpload: false }, false],
+      ['the deprecated hideFileUpload', { hideFileUpload: true }, false],
+      ['showFileUpload over hideFileUpload', { showFileUpload: true, hideFileUpload: true }, true],
+    ] as const)('shows the "+" button according to %s', (_, props, isShown) => {
+      renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} {...props} />);
+      expect(screen.queryByRole('button', { name: 'Upload file' }) !== null).toBe(isShown);
     });
 
     it('ignores drags without files', () => {

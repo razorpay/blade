@@ -94,6 +94,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     validationState,
     errorText,
     onErrorDismiss,
+    showFileUpload,
     hideFileUpload = false,
     autoFocus = false,
     accessibilityLabel = 'Chat input',
@@ -102,6 +103,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   },
   ref,
 ) => {
+  // `hideFileUpload` is deprecated; `showFileUpload` wins when both are set
+  const isFileUploadShown = showFileUpload ?? !hideFileUpload;
   const { theme } = useTheme();
   const [isFocused, setIsFocused] = React.useState(false);
   // while focused the border is already blue, so the hover glow steps aside
@@ -164,7 +167,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       size,
       // with the "+" hidden and no menu there is no visible way to attach files, so dropping is off
       // too, unless the product asks for a drop target itself
-      canDropFiles: dropTarget !== undefined || !hideFileUpload || Boolean(actionMenu),
+      canDropFiles: dropTarget !== undefined || isFileUploadShown || Boolean(actionMenu),
       isFocused,
     },
     ref,
@@ -324,7 +327,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         </Menu>
       );
     }
-    if (hideFileUpload) return null;
+    if (!isFileUploadShown) return null;
     return (
       <ChatInputButton
         icon={PlusIcon}

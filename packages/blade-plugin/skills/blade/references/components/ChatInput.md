@@ -193,7 +193,7 @@ type ChatInputProps = {
    *
    * Pass a function to get `openFilePicker`, so a menu item can open ChatInput's own file picker:
    * `actionMenu={({ openFilePicker }) => <MenuOverlay><MenuItem title="Upload files" onClick={openFilePicker} /></MenuOverlay>}`.
-   * With `actionMenu`, the "+" shows even when `hideFileUpload` is set, because it opens the menu.
+   * With `actionMenu`, the "+" shows even with `showFileUpload={false}`, because it opens the menu.
    *
    * **Note (React Native):** No effect. The "+" button calls `onFileChange`, as before.
    */
@@ -251,7 +251,7 @@ type ChatInputProps = {
    * - `page`: anywhere on the page, for full-page chat screens
    * - `none`: dropping is off, for example when the page has its own drop zone
    *
-   * When `dropTarget` is not set and `hideFileUpload` is set without an `actionMenu`, dropping is
+   * When `dropTarget` is not set and `showFileUpload` is `false` without an `actionMenu`, dropping is
    * off, since there is then no visible way to attach files. Setting `dropTarget` turns it back on,
    * for example for a full-page chat with its own way to attach. Pasting files works as before.
    * @default 'input'
@@ -398,9 +398,15 @@ type ChatInputProps = {
   onErrorDismiss?: () => void;
 
   /**
-   * Hides the "+" button that opens the file picker. When `actionMenu` is set, the "+" still shows
-   * and opens the menu. Without an `actionMenu`, dropping files is off too unless `dropTarget` is
-   * set; pasting still works.
+   * Shows the "+" button that opens the file picker. When `actionMenu` is set, the "+" shows either
+   * way and opens the menu. Without an `actionMenu`, `showFileUpload={false}` also turns dropping
+   * files off unless `dropTarget` is set; pasting still works.
+   * @default true
+   */
+  showFileUpload?: boolean;
+
+  /**
+   * @deprecated Use `showFileUpload={false}` instead. When both are set, `showFileUpload` wins.
    * @default false
    */
   hideFileUpload?: boolean;

@@ -57,6 +57,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     validationState,
     errorText,
     onErrorDismiss,
+    showFileUpload,
     hideFileUpload = false,
     autoFocus = false,
     accessibilityLabel = 'Chat input',
@@ -76,6 +77,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   },
   ref,
 ) => {
+  // `hideFileUpload` is deprecated; `showFileUpload` wins when both are set
+  const isFileUploadShown = showFileUpload ?? !hideFileUpload;
   const { theme } = useTheme();
   const inputId = useId('chatinput');
 
@@ -232,7 +235,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const compactLayout = getChatInputCompactLayout(theme, { hasVoiceInput: Boolean(onVoiceInput) });
 
   const getLeadingAction = (buttonSize: 'small' | 'xsmall'): React.ReactElement | null =>
-    hideFileUpload ? null : (
+    !isFileUploadShown ? null : (
       <ChatInputButton
         icon={PlusIcon}
         size={buttonSize}
