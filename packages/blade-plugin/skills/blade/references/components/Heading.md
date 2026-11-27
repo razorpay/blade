@@ -34,6 +34,18 @@ type HeadingProps = {
    */
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
+   * Visual variant of the heading.
+   *
+   * - `default`: the heading font at the given `size` and `weight`.
+   * - `serif`: PT Serif at the 2xlarge size, regular weight. **Reserved for the agentic dashboard
+   *   hero heading.** Its size and weight are fixed, so don't pass `size` or `weight` with it
+   *   (other values throw a dev error). Web only for now: on React Native the heading keeps the
+   *   default heading font.
+   *
+   * @default 'default'
+   */
+  variant?: 'default' | 'serif';
+  /**
    * Element timing value to track the render performance of the element
    */
   elementtiming?: string;
@@ -53,9 +65,10 @@ type HeadingProps = {
 **Don't**
 
 - Don't use `Heading` for body content or paragraphs — use `Text` instead.
-- Don't use `Heading` for hero/landing page titles — use `Display` for maximum visual impact.
+- Don't use `Heading` for hero/landing page titles — use `Display` for maximum visual impact. The one exception is the agentic dashboard hero heading, which uses `<Heading variant="serif" />` (`Display` has no serif option yet).
 - Don't override `as` without reason — the auto-mapping ensures proper semantic structure.
 - Don't use `weight="regular"` on headings unless specifically required — semibold (default) provides proper visual hierarchy.
+- Don't use `variant="serif"` unless you are building the agentic dashboard hero heading. It exists only for that surface: do not add it to other pages, cards, modals or marketing headings, even if a design looks similar. PT Serif is not a theme token, so don't recreate it with a hardcoded `font-family` in custom components either. When it genuinely is the agentic dashboard hero heading, put a `{/* blade-allow-serif: agentic dashboard hero */}` comment next to it so reviewers can see the use is intentional.
 
 ## Example
 
@@ -110,4 +123,23 @@ function HeadingExample() {
 }
 
 export default HeadingExample;
+```
+
+### Serif variant (agentic dashboard hero only)
+
+The only allowed use of `variant="serif"`. Leave out `size` and `weight`: the variant fixes them. Keep the `blade-allow-serif` comment next to it so reviewers can see the use is intentional.
+
+```tsx
+import { Heading } from '@razorpay/blade/components';
+
+function AgenticDashboardHero() {
+  return (
+    <>
+      {/* blade-allow-serif: agentic dashboard hero */}
+      <Heading variant="serif">Good morning, what would you like to do today?</Heading>
+    </>
+  );
+}
+
+export default AgenticDashboardHero;
 ```

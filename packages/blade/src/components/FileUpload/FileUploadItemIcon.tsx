@@ -1,17 +1,30 @@
 import type { BladeFile } from './types';
-import { fileUploadItemIconTokens, fileUploadDropAreaIconTokens } from './fileUploadTokens';
+import {
+  fileUploadItemIconTokens,
+  fileUploadItemCompactTokens,
+  fileUploadDropAreaIconTokens,
+} from './fileUploadTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { FileTextIcon, InfoIcon } from '~components/Icons';
 import { makeSize } from '~utils';
 
-type FileUploadItemIconProps = { uploadStatus?: BladeFile['status'] };
+type FileUploadItemIconProps = {
+  uploadStatus?: BladeFile['status'];
+  isCompact?: boolean;
+};
 
 /**
  * Leading tile of an uploaded file row. Shows a generic file icon, or an info icon when the upload failed.
  */
-const FileUploadItemIcon = ({ uploadStatus }: FileUploadItemIconProps): React.ReactElement => {
+const FileUploadItemIcon = ({
+  uploadStatus,
+  isCompact = false,
+}: FileUploadItemIconProps): React.ReactElement => {
   const variant = uploadStatus === 'error' ? 'error' : 'default';
   const Icon = variant === 'error' ? InfoIcon : FileTextIcon;
+  const tileSize = makeSize(
+    isCompact ? fileUploadItemCompactTokens.iconTileSize : fileUploadItemIconTokens.size,
+  );
 
   return (
     <BaseBox
@@ -19,12 +32,16 @@ const FileUploadItemIcon = ({ uploadStatus }: FileUploadItemIconProps): React.Re
       alignItems="center"
       justifyContent="center"
       flexShrink={0}
-      width={makeSize(fileUploadItemIconTokens.size)}
-      height={makeSize(fileUploadItemIconTokens.size)}
-      borderRadius="small"
-      backgroundColor={fileUploadItemIconTokens.background[variant]}
+      width={tileSize}
+      height={tileSize}
+      borderRadius={isCompact ? 'xsmall' : 'small'}
+      backgroundColor={
+        isCompact
+          ? fileUploadItemCompactTokens.iconTileBackground[variant]
+          : fileUploadItemIconTokens.background[variant]
+      }
     >
-      <Icon size="large" color={fileUploadItemIconTokens.icon[variant]} />
+      <Icon size={isCompact ? 'medium' : 'large'} color={fileUploadItemIconTokens.icon[variant]} />
     </BaseBox>
   );
 };

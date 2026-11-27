@@ -1,0 +1,280 @@
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { RazorSenseChatProps } from './types';
+import { flow9Anchors } from './chatDriver';
+import type { ChatAnchors } from './chatDriver';
+import { RazorSenseChatContext } from './chatContext';
+import type { ChatPart, RazorSenseChatContextValue } from './chatContext';
+import {
+  BOTTOM_WAVE_REACH,
+  REST_REACH_UP,
+  REST_STEP,
+  THINKING_REACH,
+  bottomWaveFrame,
+  inputAnchor,
+  rectIn,
+  thinkingFrame,
+  thinkingSlot,
+} from './placement';
+import { RazorSenseThinking } from './RazorSenseThinking';
+import { useChatStage } from './useChatStage';
+import { useStateStill } from './useStateStill';
+import { FRESH_RANGES, holdInRange } from '../RazorSenseEngine/freshRanges';
+import { loadBottomWaveStill, loadThinkingStill } from './stillLoaders';
+import { useStill } from '../RazorSenseEngine/useStill';
+import { watchLayout } from '../RazorSenseEngine/watchLayout';
+import { useTheme } from '~components/BladeProvider';
+import { logger } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+
+/**
+ * RazorSenseChat
+ *
+ * RazorSense through a chat, as flow 9 plays it: thinking loops on the thinking row while the answer is worked out, surges down
+ * to the chat input when it's in, and settles there as the bottom wave, pulsing as the next question is typed. Wrap the chat
+ * panel; inside it, show a RazorSenseThinking where the reply will go while the answer is worked out, and wrap the chat input in
+ * RazorSenseBottomWave. It thinks while the RazorSenseThinking is shown; when that goes (the answer takes its place), the thinking
+ * surges down into the bottom wave, and a RazorSenseThinking shown again for the next question brings it back up. It draws them
+ * both on one canvas over its whole box, behind everything in it, so the surge runs from one to the other. Like RazorSense, it
+ * follows Blade's color scheme (BladeProvider). Paused off-screen.
+ *
+ * @example
+ * ```tsx
+ * <RazorSenseChat>
+ *   {messages}
+ *   {isWaitingForAnswer ? <RazorSenseThinking>Searching your settlements…</RazorSenseThinking> : null}
+ *   <RazorSenseBottomWave>
+ *     <ChatInput value={text} onChange={({ value }) => setText(value ?? '')} />
+ *   </RazorSenseBottomWave>
+ * </RazorSenseChat>
+ * ```
+ */
+const RazorSenseChat = forwardRef<HTMLDivElement, RazorSenseChatProps>(function RazorSenseChat(
+  {
+    children,
+    isPaused = false,
+    scale = 1,
+    width = '100%',
+    height = '100%',
+    onLoad,
+    onError,
+    className,
+    style,
+    testID,
+    isOffline = false,
+    isListening = false,
+    voiceStream,
+    outcome,
+  },
+  forwardedRef,
+) {
+  const mode = useTheme().colorScheme === 'dark' ? 'dark' : 'light';
+  const stageRef = useRef<HTMLDivElement>(null);
+  const thinkingStillRef = useRef<HTMLImageElement>(null);
+  const bottomWaveStillRef = useRef<HTMLImageElement>(null);
+  const partsRef = useRef<Record<ChatPart, HTMLElement | null>>({
+    thinking: null,
+    bottomWave: null,
+  });
+  // thinking while a RazorSenseThinking is shown in it; when that goes (the answer takes its place), the surge
+  const [isThinking, setIsThinking] = useState(false);
+  // where they were last seen: the surge still runs from the thinking row once it's gone (the answer took its place)
+  const lastRef = useRef<ChatAnchors | null>(null);
+  const s = holdInRange(scale, FRESH_RANGES.scale, 'RazorSenseChat', 'scale');
+
+  const getAnchors = (): ChatAnchors => {
+    const stage = stageRef.current;
+    if (!stage) return lastRef.current ?? flow9Anchors(1512 - 12, 982 - 54);
+    const fallback = lastRef.current ?? flow9Anchors(stage.clientWidth, stage.clientHeight);
+    const thinking = rectIn(partsRef.current.thinking, stage);
+    const bottomWave = rectIn(partsRef.current.bottomWave, stage);
+    const anchors: ChatAnchors = {
+      thinking: thinking ? thinkingSlot(thinking) : fallback.thinking,
+      input: bottomWave ? inputAnchor(bottomWave, s) : fallback.input,
+      // (offline, the strip drops below the chat's bottom edge; the voice look's row is as wide as the chat input)
+      bar: bottomWave
+        ? { top: bottomWave.top, width: bottomWave.width, height: bottomWave.height }
+        : fallback.bar,
+      leaveAt: stage.clientHeight,
+    };
+    lastRef.current = anchors;
+    return anchors;
+  };
+  // at rest its canvas covers only the strip: from as far above the chat input's bottom as the strip reaches, typing included, in
+  // steps of REST_STEP (a whole number of device px at every sharpness it draws at, so what's drawn doesn't shift)
+  const restTop = (): number | null => {
+    const root = stageRef.current?.parentElement;
+    const input = root ? rectIn(partsRef.current.bottomWave, root) : null;
+    if (!input) return null;
+    const top = input.top + input.height - REST_REACH_UP * s;
+    return Math.max(0, Math.floor(top / REST_STEP) * REST_STEP);
+  };
+  const { keystroke, isStill } = useChatStage({
+    moduleName: 'RazorSenseChat',
+    isEnabled: true,
+    stageRef,
+    isThinking,
+    getAnchors,
+    restTop,
+    scale: s,
+    isPaused,
+    onLoad,
+    onError,
+    isOffline,
+    isListening,
+    voiceStream,
+    outcome,
+  });
+  const thinkingStill = useStill(isStill, mode, loadThinkingStill);
+  const bottomWaveStill = useStill(isStill, mode, loadBottomWaveStill);
+  // (listening, or an outcome: its own still in the bottom wave's place)
+  const stateStill = useStateStill(
+    isStill,
+    mode,
+    isListening && !isOffline,
+    outcome,
+    !isThinking && !isOffline && !isListening,
+  );
+  // the strip's still fades as its cause says: offline's 1.2 s both ways (going and coming back), thinking's 0.6 s
+  const stripFadeRef = useRef<{ isOffline: boolean; isThinking: boolean; seconds: number }>({
+    isOffline,
+    isThinking,
+    seconds: 0.6,
+  });
+  if (stripFadeRef.current.isOffline !== isOffline) stripFadeRef.current.seconds = 1.2;
+  else if (stripFadeRef.current.isThinking !== isThinking) stripFadeRef.current.seconds = 0.6;
+  stripFadeRef.current.isOffline = isOffline;
+  stripFadeRef.current.isThinking = isThinking;
+
+  // its stills follow the thinking label and the chat input, as the animation does (and cross-fade, for the surge). They're
+  // placed again only when something may have moved them (paused, they're placed once and stay there)
+  const getAnchorsRef = useRef(getAnchors);
+  getAnchorsRef.current = getAnchors;
+  useEffect(() => {
+    const stage = stageRef.current;
+    const root = stage?.parentElement;
+    if (!isStill || !stage || !root) return undefined;
+    const place = (): void => {
+      const anchors = getAnchorsRef.current();
+      const [tx, ty] = thinkingFrame(anchors.thinking, s);
+      const [bx, by] = bottomWaveFrame(anchors.input, s);
+      if (thinkingStillRef.current) {
+        thinkingStillRef.current.style.transform = `translate(${tx}px, ${ty}px)`;
+      }
+      if (bottomWaveStillRef.current) {
+        bottomWaveStillRef.current.style.transform = `translate(${bx}px, ${by}px)`;
+      }
+    };
+    place();
+    if (isPaused) return undefined;
+    return watchLayout({
+      root,
+      getParts: () => [stage, partsRef.current.thinking, partsRef.current.bottomWave],
+      // (its own stills moving don't count)
+      ignore: (node) => node === thinkingStillRef.current || node === bottomWaveStillRef.current,
+      onChange: place,
+    });
+    // (the stills come in a tick later, their modules loaded on demand: placed again as they do, paused too)
+  }, [isStill, s, isPaused, thinkingStill, bottomWaveStill, stateStill]);
+
+  // (stable: a part registers once, not again on every change of the chat's props)
+  // every part registered, in order (two thinking labels can be up at once, a RazorSenseThinking and a loading ChatMessage say):
+  // it thinks while any is, and draws round the one shown last
+  const registeredRef = useRef<Record<ChatPart, HTMLElement[]>>({ thinking: [], bottomWave: [] });
+  const register = useCallback<RazorSenseChatContextValue['register']>((part, element) => {
+    const list = registeredRef.current[part];
+    list.push(element);
+    partsRef.current[part] = element;
+    if (part === 'thinking') setIsThinking(true);
+    return () => {
+      const at = list.lastIndexOf(element);
+      if (at < 0) return;
+      list.splice(at, 1);
+      partsRef.current[part] = list[list.length - 1] ?? null;
+      if (part === 'thinking') setIsThinking(list.length > 0);
+    };
+  }, []);
+  const context = useMemo<RazorSenseChatContextValue>(
+    () => ({ register, keystroke, isPaused, Thinking: RazorSenseThinking }),
+    [register, keystroke, isPaused],
+  );
+
+  // without its parts it lines up with flow 9's own chat: say so, it's rarely what's meant (the parts register first: their
+  // effects run before this one)
+  useEffect(() => {
+    if (__DEV__ && !partsRef.current.bottomWave) {
+      logger({
+        type: 'warn',
+        moduleName: 'RazorSenseChat',
+        message:
+          "There's no RazorSenseBottomWave inside: the wave settles where flow 9's chat input was, not under yours. Wrap your chat input in RazorSenseBottomWave.",
+      });
+    }
+  }, []);
+
+  return (
+    <RazorSenseChatContext.Provider value={context}>
+      <div
+        ref={forwardedRef}
+        className={className}
+        {...metaAttribute({ name: MetaConstants.RazorSenseChat, testID })}
+        style={{
+          position: 'relative',
+          isolation: 'isolate',
+          width: typeof width === 'number' ? `${width}px` : width,
+          height: typeof height === 'number' ? `${height}px` : height,
+          ...style,
+        }}
+      >
+        <div
+          ref={stageRef}
+          {...makeAccessible({ hidden: true })}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+          }}
+        >
+          {thinkingStill ? (
+            <img
+              ref={thinkingStillRef}
+              src={thinkingStill}
+              alt=""
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: `${(THINKING_REACH.left + THINKING_REACH.right) * s}px`,
+                height: `${(THINKING_REACH.up + THINKING_REACH.down) * s}px`,
+                opacity: isThinking ? 1 : 0,
+                transition: 'opacity 0.6s',
+              }}
+            />
+          ) : null}
+          {bottomWaveStill ? (
+            <img
+              ref={bottomWaveStillRef}
+              src={stateStill ?? bottomWaveStill}
+              alt=""
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: `${BOTTOM_WAVE_REACH.side * 2 * s}px`,
+                height: `${(BOTTOM_WAVE_REACH.up + BOTTOM_WAVE_REACH.down) * s}px`,
+                // (offline: it goes, as the strip drops)
+                opacity: isThinking || isOffline ? 0 : 1,
+                transition: `opacity ${stripFadeRef.current.seconds}s`,
+              }}
+            />
+          ) : null}
+        </div>
+        {children}
+      </div>
+    </RazorSenseChatContext.Provider>
+  );
+});
+
+export { RazorSenseChat };

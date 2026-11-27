@@ -1,3 +1,4 @@
+import { POTATO_TIER_PATTERNS } from './gpuPatterns';
 /**
  * PerformanceManager
  *
@@ -48,18 +49,6 @@ export type PerformanceProfile = {
 // ---------------------------------------------------------------------------
 // Known renderer pattern lists
 // ---------------------------------------------------------------------------
-
-/**
- * Patterns that indicate a software / CPU renderer (potato tier).
- * These devices cannot run WebGL at any usable framerate.
- */
-const POTATO_TIER_PATTERNS: RegExp[] = [
-  /swiftshader/,
-  /llvmpipe/,
-  /softpipe/,
-  /microsoft basic render/,
-  /virgl/,
-];
 
 /**
  * Patterns that strongly indicate a low-end GPU.
@@ -263,8 +252,12 @@ class PerformanceManager {
    *
    * @param gl - An existing WebGLRenderingContext (e.g. from RzpGlassMount).
    *             If not provided, a temporary offscreen context is created.
+   * @param known - What the caller has checked already: `hasMajorPerformanceCaveat` given, no probe context is made for it.
    */
-  static detect(gl?: WebGLRenderingContext): PerformanceProfile {
+  static detect(
+    gl?: WebGLRenderingContext,
+    known: { hasMajorPerformanceCaveat?: boolean } = {},
+  ): PerformanceProfile {
     let ownedCanvas = false;
     let ctx = gl ?? null;
 
@@ -279,7 +272,9 @@ class PerformanceManager {
     const mobile = isMobileDevice();
     const memoryGB = getDeviceMemoryGB();
     const cores = getCpuCores();
-    const hasMajorPerformanceCaveat = checkMajorPerformanceCaveat();
+    // (a caller that has asked already, RazorSense 2.0's WebGL2 check, says so: no second probe context)
+    const hasMajorPerformanceCaveat =
+      known.hasMajorPerformanceCaveat ?? checkMajorPerformanceCaveat();
 
     let gpuRenderer: string | null = null;
     let gpuVendor: string | null = null;
@@ -498,4 +493,10 @@ class WebGLPerformanceController {
   }
 }
 
-export { WebGLPerformanceController, RENDER_SETTINGS, LEVEL_RENDER_SETTINGS };
+export {
+  PerformanceManager,
+  WebGLPerformanceController,
+  RENDER_SETTINGS,
+  LEVEL_RENDER_SETTINGS,
+  POTATO_TIER_PATTERNS,
+};
