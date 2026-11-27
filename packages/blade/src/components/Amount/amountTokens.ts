@@ -52,18 +52,19 @@ const normalAmountSizes: Record<
  * Hardcoded pixel values for currency symbols to match exact Figma specifications.
  * These values provide precise visual alignment that standard tokens cannot achieve.
  *
- * Used when `isAffixSubtle={false}` - currency symbols are slightly smaller than main number.
+ * Used when `isAffixSubtle={false}` for heading/display types only —
+ * currency symbols are slightly smaller than the main number per design spec.
+ *
+ * Note: Body type is intentionally excluded. When `isAffixSubtle={false}`,
+ * the body currency symbol uses `normalAmountSizes` (same size as the number).
+ * Previously, body entries here were incorrectly set to subtle-sized values (10–12px),
+ * which caused the currency prefix to remain small even when `isAffixSubtle={false}`.
  */
 const currencyHardcodedSizes: Record<
   'body' | 'heading' | 'display',
   Partial<Record<NonNullable<AmountTypeProps['size']>, { desktop: number; mobile: number }>>
 > = {
-  body: {
-    xsmall: { desktop: 10, mobile: 10 },
-    small: { desktop: 10, mobile: 10 },
-    medium: { desktop: 10, mobile: 10 },
-    large: { desktop: 12, mobile: 12 },
-  },
+  body: {},
   heading: {
     small: { desktop: 17, mobile: 15 },
     medium: { desktop: 19, mobile: 17 },
