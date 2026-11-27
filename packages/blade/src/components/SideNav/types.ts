@@ -101,11 +101,36 @@ type SideNavLinkProps = {
   titleSuffix?: React.ReactElement;
 
   /**
-   * Trailing slot for item. Only visible on hover of the item
+   * Trailing slot for item. Sits at the end of the item, on top of the link.
    *
-   * Used for <Button />
+   * By default it is visible on hover of the item and while the item has keyboard focus.
+   * Use `trailingVisibility` to keep it visible.
+   *
+   * The item keeps room for it, so a long title truncates 12px before the trailing slot
+   * instead of running under it.
+   *
+   * It is not rendered visually or reachable by keyboard while SideNav is collapsed to icons.
+   *
+   * On an item that opens the next level (L2 trigger), the chevron moves next to the title
+   * and trailing takes the end of the item.
+   *
+   * It is not supported on an item that opens a third level (L3 trigger). `trailing` is ignored there.
+   *
+   * Used for <Button />, <IconButton />
    */
   trailing?: React.ReactElement;
+
+  /**
+   * Controls when the trailing slot is visible
+   *
+   * - `on-hover`: visible on hover of the item and while the item has keyboard focus
+   * - `always`: visible without hover, whenever the SideNav is expanded. Like every trailing slot,
+   *   it is hidden while the SideNav is collapsed to icons.
+   *   Use it when trailing shows the state of the item, e.g. a pinned item that can be unpinned
+   *
+   * @default 'on-hover'
+   */
+  trailingVisibility?: 'on-hover' | 'always';
 
   /**
    * href of the link
@@ -281,6 +306,23 @@ type SideNavLevelProps = {
   titleSuffix?: React.ReactElement;
 };
 
+type SideNavVisibilityProps = {
+  /**
+   * State of the SideNav in which the children are visible
+   *
+   * - `expanded`: visible while SideNav shows titles of items. Hidden when it collapses to icons
+   * - `collapsed`: visible only while SideNav is collapsed to icons
+   */
+  visibleWhen: 'expanded' | 'collapsed';
+
+  /**
+   * Content to show or hide with the collapsed state of SideNav.
+   *
+   * Use `SideNavVisibility` in the children of SideNav (`SideNavBody`, `SideNavFooter`). It is not meant for the `banner` slot
+   */
+  children: React.ReactNode;
+} & DataAnalyticsAttribute;
+
 export type {
   SideNavProps,
   SideNavContextType,
@@ -291,4 +333,5 @@ export type {
   SideNavItemProps,
   SideNavBodyProps,
   SideNavLevelProps,
+  SideNavVisibilityProps,
 };

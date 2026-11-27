@@ -232,7 +232,8 @@ const accountsL2Ref = React.useRef(null);
 | rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                 | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
 | onClick     | Click handler on item                                                                                                        | (e: React.MouseEvent) => void |                                                              |
 | icon        | Blade's Icon Component                                                                                                       | IconComponent                 |                                                              |
-| trailing    | Trailing Slot of Item. It is visible on hover only. Can be used for adding Quick Shortcut Button, Trailing Text              | JSX                           |                                                              |
+| trailing    | Trailing Slot of Item. Visible on hover and keyboard focus of the item by default. Can be used for adding Quick Shortcut Button, Trailing Text. The item keeps room for it, so a long title truncates 12px before it. On an item that opens the next level, the chevron moves next to the title and trailing takes the end of the item | JSX                           |                                                              |
+| trailingVisibility | When the trailing slot is visible. `always` shows it without hover while the SideNav is expanded; use it when trailing shows state of the item, e.g. a pinned item | `'on-hover' \| 'always'` | `'on-hover'` |
 | titleSuffix | Slot after the title to add Badge, Counter                                                                                   | JSX                           |                                                              |
 | tooltip     | Object with props that are forwarded to tooltip                                                                              | TooltipProps                  | undefined                                                    |
 | children    | SideNavLink children slot. Items inside children turn into next level item with parent as a trigger                          | JSX                           | undefined                                                    |
@@ -472,6 +473,34 @@ A generic non-link item that gives you leading, trailing slots to render the com
 | tooltip   | Object with props that are forwarded to tooltip                                      | TooltipProps | undefined         |
 
 For Example of SideNavItem, check SideNavFooter example below.
+
+### SideNavVisibility
+
+Shows its children only while the SideNav is expanded, or only while it is collapsed to icons. Use it for your own content inside SideNav (e.g. a custom `+3 More` link) so it follows the same collapse behaviour and transitions as the items Blade renders. Without it, consumers have to hard-code Blade's internal class names.
+
+| **Props**   | **Description**                                           | **Type**                    | **Default Value** |
+| ----------- | --------------------------------------------------------- | --------------------------- | ----------------- |
+| visibleWhen | State of the SideNav in which the children are visible    | `'expanded' \| 'collapsed'` |                   |
+| children    | Content to show or hide with the collapsed state          | JSX                         |                   |
+
+```jsx
+<SideNavVisibility visibleWhen="expanded">
+  <Link variant="button">+3 More</Link>
+</SideNavVisibility>
+<SideNavVisibility visibleWhen="collapsed">
+  <Link variant="button">+3</Link>
+</SideNavVisibility>
+```
+
+#### Why a wrapper instead of rendering on `isExpanded`
+
+A consumer that passes `isExpanded` could render `{isExpanded ? <Link>+3 More</Link> : <Link>+3</Link>}` itself. That only covers one of the ways SideNav collapses to icons:
+
+- **`isExpanded={false}`**: the consumer owns this state.
+- **A next level (L2) is open in a SideNav without `isExpanded`**: L1 collapses to icons on its own. The consumer does not hold this state.
+- **Hover on that collapsed L1**: it expands again while hovered. The consumer cannot observe this at all.
+
+`SideNavVisibility` follows all three, with the same timing as the titles of the items Blade renders (content is swapped once the collapse transition ends). In the mobile SideNav, which is a Drawer that always shows full items, the `expanded` content is the one shown.
 
 ### SideNavFooter
 
