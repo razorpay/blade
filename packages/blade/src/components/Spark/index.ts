@@ -19,3 +19,5 @@ export { RazorSenseChatBackground } from './RazorSenseChatBackground';
 export type { RazorSenseChatBackgroundProps } from './RazorSenseChatBackground';
 export { Ray } from './Ray';
 export type { RayProps, RayState, RayIdle, RaySize, RayOutcome } from './Ray';
+export { RayChatOutput, rayChatOutputGenUI } from './RayChatOutput';
+export type { RayChatOutputProps } from './RayChatOutput';

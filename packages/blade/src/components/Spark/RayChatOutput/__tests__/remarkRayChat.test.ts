@@ -1,0 +1,173 @@
+import { remarkRayChat } from '../remarkRayChat';
+
+/**
+ * remarkRayChat runs on the Markdown tree (mdast). Jest can't load the ESM-only parser, so the
+ * trees are built by hand here; the parsed path is covered in RayChatOutput.test.stories.tsx.
+ */
+type Node = {
+  type: string;
+  value?: string;
+  depth?: number;
+  children?: Node[];
+  data?: { hProperties?: Record<string, unknown> };
+};
+
+const text = (value: string): Node => ({ type: 'text', value });
+const strong = (...children: Node[]): Node => ({ type: 'strong', children });
+const paragraph = (...children: Node[]): Node => ({ type: 'paragraph', children });
+const heading = (depth: number, ...children: Node[]): Node => ({
+  type: 'heading',
+  depth,
+  children,
+});
+const list = (): Node => ({ type: 'list', children: [] });
+const code = (value: string): Node => ({ type: 'code', value });
+const divider = (): Node => ({ type: 'thematicBreak' });
+const lineBreak = (): Node => ({ type: 'break' });
+
+const runWith = (options: Parameters<typeof remarkRayChat>[0], ...children: Node[]): Node[] => {
+  const tree: Node = { type: 'root', children };
+  remarkRayChat(options)(tree);
+  return tree.children ?? [];
+};
+const run = (...children: Node[]): Node[] => runWith(undefined, ...children);
+
+const gaps = (blocks: Node[]): unknown[] =>
+  blocks.map((block) => block.data?.hProperties?.dataRayChatGap);
+const leads = (blocks: Node[]): unknown[] =>
+  blocks.map((block) => block.data?.hProperties?.dataRayChatLead === true);
+const types = (blocks: Node[]): string[] => blocks.map((block) => block.type);
+
+describe('remarkRayChat', () => {
+  it('gives each block its gap: 24 before a section, 12 under a title, 16 otherwise', () => {
+    const blocks = run(
+      paragraph(text('Costs are mostly FX and tax.')),
+      heading(3, text('First')),
+      paragraph(text('For a resident')),
+      list(),
+      code('npm i'),
+      heading(3, text('Second')),
+      list(),
+    );
+    expect(gaps(blocks)).toEqual([undefined, '24', '12', '16', '16', '24', '12']);
+  });
+
+  it('makes the opening paragraph the main title when a title follows it', () => {
+    const blocks = run(paragraph(text('The answer.')), heading(3, text('First')));
+    expect(leads(blocks)).toEqual([true, false]);
+  });
+
+  it('keeps a short reply as body text', () => {
+    expect(leads(run(paragraph(text('No paid orders.'))))).toEqual([false]);
+    const twoParagraphs = run(
+      paragraph(text('No paid orders.')),
+      paragraph(text('Try another date.')),
+    );
+    expect(leads(twoParagraphs)).toEqual([false, false]);
+    expect(gaps(twoParagraphs)).toEqual([undefined, '16']);
+  });
+
+  it('decides when the second block starts, so a title further down does not count', () => {
+    const blocks = run(paragraph(text('One.')), paragraph(text('Two.')), heading(3, text('Later')));
+    expect(leads(blocks)).toEqual([false, false, false]);
+    expect(leads(run(paragraph(text('One.')), divider(), heading(3, text('Later'))))).toEqual([
+      false,
+      false,
+    ]);
+  });
+
+  it('draws the opening paragraph straight away, marked so it can grow into the main title', () => {
+    // mid-stream: the paragraph alone is body text, marked as the opening paragraph
+    const alone = run(paragraph(text('Your payouts are')));
+    expect(types(alone)).toEqual(['paragraph']);
+    expect(alone[0].data?.hProperties?.dataRayChatOpening).toBe(true);
+    expect(leads(alone)).toEqual([false]);
+    // once a title follows, the same paragraph becomes the main title
+    expect(leads(run(paragraph(text('On time.')), heading(3, text('F'))))).toEqual([true, false]);
+    // nothing to mark when the reply opens with something else
+    expect(run(list())[0].data?.hProperties?.dataRayChatOpening).toBeUndefined();
+  });
+
+  it('has no main title, and marks nothing, when told so (a later TEXT in a GenUI reply)', () => {
+    const blocks = runWith({ hasMainTitle: false }, paragraph(text('More')), heading(3, text('F')));
+    expect(leads(blocks)).toEqual([false, false]);
+    expect(blocks[0].data?.hProperties?.dataRayChatOpening).toBeUndefined();
+  });
+
+  it('has no main title when the reply opens with a title', () => {
+    expect(leads(run(heading(3, text('First')), paragraph(text('Body'))))).toEqual([false, false]);
+  });
+
+  it('keeps a bold line on its own as bold body text, as Figma draws it', () => {
+    const blocks = run(
+      paragraph(text('Intro.')),
+      paragraph(strong(text('Important nuance:'))),
+      paragraph(text('You can remit.')),
+    );
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph', 'paragraph']);
+    expect(blocks[1].children).toEqual([strong(text('Important nuance:'))]);
+    expect(gaps(blocks)).toEqual([undefined, '16', '16']);
+  });
+
+  it('keeps bold inside a sentence as bold', () => {
+    const blocks = run(paragraph(text('For a '), strong(text('resident')), text(' buyer')));
+    expect(types(blocks)).toEqual(['paragraph']);
+  });
+
+  it('starts a new paragraph at each line break', () => {
+    const blocks = run(
+      paragraph(
+        text('For a '),
+        strong(text('resident')),
+        text('\nbuy directly.'),
+        lineBreak(),
+        text('Then'),
+      ),
+    );
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph', 'paragraph']);
+    expect(blocks[0].children).toEqual([text('For a '), strong(text('resident'))]);
+    expect(blocks[1].children).toEqual([text('buy directly.')]);
+    // Figma sets lines of one paragraph 11 apart; 12 is Blade's nearest (separate blocks are 16)
+    expect(gaps(blocks)).toEqual([undefined, '12', '12']);
+  });
+
+  it('keeps 16 between paragraphs that were apart to begin with', () => {
+    const blocks = run(paragraph(text('One\nTwo')), paragraph(text('Three')));
+    expect(gaps(blocks)).toEqual([undefined, '12', '16']);
+  });
+
+  it('keeps a bold line split off by a line break as a paragraph', () => {
+    const blocks = run(paragraph(strong(text('Fees')), text('\nTwo kinds.')));
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph']);
+    expect(gaps(blocks)).toEqual([undefined, '12']);
+  });
+
+  it('removes a divider and opens a section after it', () => {
+    const blocks = run(paragraph(text('One')), divider(), paragraph(text('Two')));
+    expect(types(blocks)).toEqual(['paragraph', 'paragraph']);
+    expect(gaps(blocks)).toEqual([undefined, '24']);
+  });
+
+  it('ignores a divider before anything is drawn', () => {
+    const blocks = run(divider(), paragraph(text('One')), paragraph(text('Two')));
+    expect(gaps(blocks)).toEqual([undefined, '16']);
+  });
+
+  it('skips blocks that draw nothing when giving gaps', () => {
+    const blocks = run(
+      { type: 'html', value: '<div>' },
+      paragraph(text('One')),
+      { type: 'definition' },
+      paragraph(text('Two')),
+    );
+    expect(types(blocks)).toEqual(['html', 'paragraph', 'definition', 'paragraph']);
+    expect(gaps(blocks)).toEqual([undefined, undefined, undefined, '16']);
+  });
+
+  it('keeps properties a block already has', () => {
+    const block = paragraph(text('Two'));
+    block.data = { hProperties: { id: 'keep' } };
+    const blocks = run(paragraph(text('One')), block);
+    expect(blocks[1].data?.hProperties).toEqual({ id: 'keep', dataRayChatGap: '16' });
+  });
+});

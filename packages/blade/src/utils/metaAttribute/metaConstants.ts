@@ -102,6 +102,7 @@ export const MetaConstants = {
   RadioGroup: 'radio-group',
   RadioLabel: 'radio-label',
   Ray: 'ray',
+  RayChatOutput: 'ray-chat-output',
   SkipNav: 'skipnav',
   Spinner: 'spinner',
   RazorSenseLoader: 'razorsense-loader',

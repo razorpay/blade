@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RayChatOutput /> renders on the server 1`] = `"<div id="root"><div data-blade-component="ray-chat-output" data-testid="answer" class="BaseBox-bksIuc RayChatOutputweb__StyledRayChatOutput-xlncsr-0  kJYTZS">Your payouts are on time.</div></div>"`;
+
+exports[`<RayChatOutput /> renders on the server 2`] = `
+.c0.c0.c0.c0.c0 {
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  color: hsla(200,10%,18%,1);
+  overflow-wrap: break-word;
+}
+
+.c0.c0.c0.c0.c0 > * {
+  margin: 0;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='12'] {
+  margin-top: 12px;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='16'] {
+  margin-top: 16px;
+}
+
+.c0.c0.c0.c0.c0 > [data-ray-chat-gap='24'] {
+  margin-top: 24px;
+}
+
+.c0.c0.c0.c0.c0 p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.c0.c0.c0.c0.c0 h1,
+.c0.c0.c0.c0.c0 h2,
+.c0.c0.c0.c0.c0 h3,
+.c0.c0.c0.c0.c0 h4,
+.c0.c0.c0.c0.c0 h5,
+.c0.c0.c0.c0.c0 h6,
+.c0.c0.c0.c0.c0 [data-ray-chat-lead] {
+  margin: 0;
+  font-family: "TASA Orbiter","Inter","Inter Fallback Arial",Arial,"TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  color: hsla(0,0%,2%,1);
+  text-wrap: balance;
+}
+
+.c0.c0.c0.c0.c0 strong {
+  font-weight: 600;
+  color: hsla(0,0%,2%,1);
+}
+
+.c0.c0.c0.c0.c0 ul,
+.c0.c0.c0.c0.c0 ol {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.625rem;
+}
+
+.c0.c0.c0.c0.c0 :not(pre) > code {
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: inherit;
+  background: hsla(206,10%,29%,0.06);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.c0.c0.c0.c0.c0 pre {
+  margin: 0;
+}
+
+.c0.c0.c0.c0.c0 pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table-scroll] {
+  overflow-x: auto;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table] {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table] th,
+.c0.c0.c0.c0.c0 [data-ray-chat-table] td {
+  padding: 0 20px 0 0;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table] th {
+  font-weight: 600;
+  color: hsla(0,0%,2%,1);
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table] [data-align='right'] {
+  text-align: right;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-table] th:last-child,
+.c0.c0.c0.c0.c0 [data-ray-chat-table] td:last-child {
+  padding-right: 0;
+}
+
+.c0.c0.c0.c0.c0 blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 blockquote > * + * {
+  margin-top: 16px;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-opening] {
+  position: relative;
+  -webkit-transition: font-size 320ms cubic-bezier(0.22,1,0.36,1),line-height 320ms cubic-bezier(0.22,1,0.36,1),letter-spacing 320ms cubic-bezier(0.22,1,0.36,1),color 320ms cubic-bezier(0.22,1,0.36,1);
+  transition: font-size 320ms cubic-bezier(0.22,1,0.36,1),line-height 320ms cubic-bezier(0.22,1,0.36,1),letter-spacing 320ms cubic-bezier(0.22,1,0.36,1),color 320ms cubic-bezier(0.22,1,0.36,1);
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-was] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  color: hsla(200,10%,18%,1);
+  text-wrap: pretty;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-animation: ray-chat-output-fade-out 320ms cubic-bezier(0.22,1,0.36,1) both;
+  animation: ray-chat-output-fade-out 320ms cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-was] [data-animate-word] {
+  -webkit-animation: none;
+  animation: none;
+}
+
+.c0.c0.c0.c0.c0 [data-ray-chat-growing] > [data-ray-chat-now] {
+  -webkit-animation: ray-chat-output-fade-in 320ms cubic-bezier(0.22,1,0.36,1) both;
+  animation: ray-chat-output-fade-in 320ms cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c0.c0.c0.c0.c0 [data-ray-chat-opening] {
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  .c0.c0.c0.c0.c0 [data-ray-chat-was] {
+    display: none;
+  }
+
+  .c0.c0.c0.c0.c0 [data-ray-chat-growing] > [data-ray-chat-now] {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bksIuc  c0"
+    data-blade-component="ray-chat-output"
+    data-testid="answer"
+  >
+    Your payouts are on time.
+  </div>
+</div>
+`;
