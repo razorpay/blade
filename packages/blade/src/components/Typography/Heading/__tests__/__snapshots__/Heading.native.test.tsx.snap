@@ -357,3 +357,49 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   </Text>
 </View>
 `;
+
+exports[`<Heading /> should render the serif variant in the heading font on React Native, with a warning 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="heading"
+    fontFamily="heading"
+    fontSize={700}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={700}
+    style={
+      [
+        {
+          "color": "hsla(0, 0%, 2%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 32,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+          "lineHeight": 38,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Hero
+  </Text>
+</View>
+`;

@@ -39,6 +39,9 @@ const _Ray = (
     voiceStream,
     outcome,
     testID,
+    _lookY = 0,
+    _scale = 1,
+    _preloadState,
     ...rest
   }: RayProps,
   ref: React.Ref<BladeElementRef>,
@@ -59,6 +62,9 @@ const _Ray = (
     isOffline,
     isListening,
     outcome,
+    lookY: _lookY,
+    scale: _scale,
+    preload: _preloadState,
   } as const;
   const optionsRef = useRef(options);
   optionsRef.current = options;
@@ -142,7 +148,20 @@ const _Ray = (
 
   useEffect(() => {
     mountRef.current?.update(optionsRef.current);
-  }, [state, idle, size, isVisible, shouldReactToPointer, scheme, isOffline, isListening, outcome]);
+  }, [
+    state,
+    idle,
+    size,
+    isVisible,
+    shouldReactToPointer,
+    scheme,
+    isOffline,
+    isListening,
+    outcome,
+    _lookY,
+    _scale,
+    _preloadState,
+  ]);
 
   useEffect(() => {
     mountRef.current?.setInputRef(watchedInputRef ?? null);

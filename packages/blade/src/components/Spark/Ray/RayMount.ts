@@ -231,6 +231,15 @@ type RayMountOptions = {
   isOffline: boolean;
   isListening: boolean;
   outcome?: RayOutcome;
+  /** every look in his films this many px of his box lower (− = higher): set in a film's script as it starts (Ray's _lookY) */
+  lookY?: number;
+  /** how much bigger than his box he's shown (Ray's _scale): his canvases drawn that much finer */
+  scale?: number;
+  /**
+   * a state whose film stays loaded while he's idle (Ray's _preloadState): it starts at once when asked. He's only ever asked for
+   * that one, so the answer's next film isn't loaded ahead of it
+   */
+  preload?: RayState;
 };
 
 // ---- the caret's x on screen: measured text for an input, a mirror of the field for a textarea ----
@@ -353,6 +362,7 @@ class RayMount {
   constructor(root: HTMLElement, options: RayMountOptions) {
     this.root = root;
     this.options = options;
+    this.player.eyeY = this.lookYWorld();
     this.reducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -366,10 +376,12 @@ class RayMount {
     root.append(this.room);
 
     const now = performance.now();
-    // out of sight while hidden; and a Ray that appears in an answer's state (its row's) comes up out of the row first: his entry
+    // out of sight while hidden; and a Ray that appears in an answer's state (its row's) comes up out of the row first: his entry.
+    // Not a Ray with a film kept loaded ahead (a button's, _preloadState): he's already in place, and his state can be asked for
+    // before his code is in (a quick hover, or Tab, on a cold page), so he'd rise out of the button's edge before the glass
     this.holder = {
       by: 'player',
-      act: options.isHidden || options.state !== 'idle' ? 'gone' : 'rest',
+      act: options.isHidden || (options.state !== 'idle' && !options.preload) ? 'gone' : 'rest',
       since: now - IDLE_WAIT_MS,
     };
     this.player.mode = options.colorScheme;
@@ -404,6 +416,8 @@ class RayMount {
       // (no answer or idle film: with reduced motion he plays none)
     } else if (options.state !== 'idle') this.preloadAnswer();
     else {
+      // a state kept loaded ahead (_preloadState) too: as he mounts, not as it's first asked for (a button's first hover)
+      if (options.preload) this.preloadAnswer();
       const first = IDLE_FILMS[firstIdle];
       if (first) this.film(first);
     }
@@ -422,7 +436,9 @@ class RayMount {
   }
 
   update(options: Partial<RayMountOptions>): void {
-    const sizeChanged = options.size !== undefined && options.size !== this.options.size;
+    const sizeChanged =
+      (options.size !== undefined && options.size !== this.options.size) ||
+      (options.scale !== undefined && options.scale !== this.options.scale);
     const outcomeChanged = 'outcome' in options && options.outcome !== this.options.outcome;
     const schemeChanged =
       options.colorScheme !== undefined && options.colorScheme !== this.options.colorScheme;
@@ -445,10 +461,13 @@ class RayMount {
       } else if (!this.outcomePlaying) this.outcome = null;
     }
     this.options = { ...this.options, ...options };
+    this.player.eyeY = this.lookYWorld();
     if (!this.options.isListening) this.unlisten();
     this.loadStateFilms();
     if (this.options.shouldReactToPointer) this.player.prepareFlip();
-    if (this.options.state !== 'idle' && !this.reducedMotion) this.preloadAnswer();
+    // (idle, only a film kept loaded ahead: _preloadState)
+    if ((this.options.state !== 'idle' || this.options.preload) && !this.reducedMotion)
+      this.preloadAnswer();
     this.releaseFilms();
     if (sizeChanged) this.layout();
     if (schemeChanged) {
@@ -1144,9 +1163,10 @@ class RayMount {
   }
 
   private wantedAnswerFilms(): string[] {
-    const { state } = this.options;
-    if (state === 'idle') return [];
-    const next = ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
+    const { state, preload } = this.options;
+    if (state === 'idle') return preload && preload !== 'idle' ? [ANSWER_FILMS[preload]] : [];
+    // (with a preload, he only ever plays that state: no next film)
+    const next = preload ? undefined : ANSWER_ORDER[ANSWER_ORDER.indexOf(state) + 1];
     const wanted = next ? [ANSWER_FILMS[state], ANSWER_FILMS[next]] : [ANSWER_FILMS[state]];
     return wanted.filter((id) => !this.failed.has(id));
   }
@@ -1180,6 +1200,36 @@ class RayMount {
     });
   }
 
+  /** options.lookY (his box px) in his world's units */
+  private lookYWorld(): number {
+    return ((this.options.lookY ?? 0) * RC.BASE[2][0]) / WIDTHS[this.options.size];
+  }
+
+  /**
+   * His looks moved by options.lookY: every pose of the film's script (looks are his Figma px), once (its start simulates
+   * the script again), as flow 9's inv8.js moves his eyes and the glass in its film; his own Ray's eyes move with them
+   * (RayPlayer's eyeY), so a film takes him from rest with his eyes where they were.
+   */
+  private shiftLooks(film: Film): void {
+    type Pose = { look?: [number, number] };
+    type Script = { keys?: { pose?: Pose }[]; lookY?: number };
+    const script = (film.host.env.window as { FILM?: { SCRIPT?: Script } }).FILM?.SCRIPT;
+    if (!script?.keys) return;
+    const want = this.lookYWorld() / RC.FIG;
+    const d = want - (script.lookY ?? 0);
+    if (!d) return;
+    const seen = new Set<Pose>();
+    for (const key of script.keys) {
+      key.pose ??= {};
+      const { pose } = key;
+      if (seen.has(pose)) continue;
+      seen.add(pose);
+      const look = pose.look ?? [0, 0];
+      pose.look = [look[0], look[1] + d];
+    }
+    script.lookY = want;
+  }
+
   /** A film told his light / dark and his size. */
   private dress(film: Film): void {
     film.host.send({ ray: 'mode', mode: this.options.colorScheme });
@@ -1196,6 +1246,7 @@ class RayMount {
     if (h.kind === 'state' && h.state === 'error') this.outcomeStarted();
     this.dress(film);
     if (h.kind === 'idle') film.host.send({ ray: 'pace', v: 1 });
+    this.shiftLooks(film);
     if (h.kind === 'answer') this.afterAnswer = true;
     this.cue(film, h.state);
     film.host.send(this.player.capAsk); // his nightcap, while his idle is the sleep cycle: the films wear it too (as flow 9's do)
@@ -1316,8 +1367,7 @@ class RayMount {
     }
     const dt = this.lastNow ? Math.min(50, Math.max(0, now - this.lastNow)) : 16;
     this.lastNow = now;
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    if (dpr !== this.dpr) this.layout();
+    if (this.pixelRatio() !== this.dpr) this.layout();
 
     if (this.reducedMotion) {
       this.stillFrame(now);
@@ -1519,9 +1569,14 @@ class RayMount {
     return this.caretCache;
   }
 
+  /** his canvases' pixels per CSS px: the device's (at most 2), finer by how much bigger he's shown */
+  private pixelRatio(): number {
+    return Math.min(2, window.devicePixelRatio || 1) * Math.max(1, this.options.scale ?? 1);
+  }
+
   private layout(): void {
     const w = WIDTHS[this.options.size];
-    this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    this.dpr = this.pixelRatio();
     this.geo = geometry(w);
     const g = this.geo;
     this.floorCut = `inset(0 0 ${(g.height - g.floor).toFixed(2)}px 0)`;

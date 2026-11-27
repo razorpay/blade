@@ -125,6 +125,21 @@ type RayProps = {
    * (set while one is playing, it plays next).
    */
   outcome?: RayOutcome;
+  /**
+   * @private Every look in his films this many px of his box lower (− = higher): his eyes, and the glass that rides his open
+   * eye. Button's Ray hover (`aiHover="ray-…"`) lifts them, as flow 9's Investigate with Ray does.
+   */
+  _lookY?: number;
+  /**
+   * @private How much bigger than his box he's shown (a scale transform round him, as in Button's Ray hover): his canvases are
+   * drawn that much finer, so he stays sharp.
+   */
+  _scale?: number;
+  /**
+   * @private A state whose film stays loaded while he's idle, so it starts at once when asked (Button's Ray hover: his search
+   * the moment the button is hovered).
+   */
+  _preloadState?: RayState;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
