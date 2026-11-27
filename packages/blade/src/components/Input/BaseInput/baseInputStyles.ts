@@ -44,8 +44,12 @@ type GetInputStyles = Pick<
   theme: Theme;
   size: NonNullable<BaseInputProps['size']>;
   padding?: BaseInputProps['padding'];
+  paddingX?: BaseInputProps['paddingX'];
   borderRadius?: BaseInputProps['borderRadius'];
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+  focusIndicator?: BaseInputProps['focusIndicator'];
+  hoverIndicator?: BaseInputProps['hoverIndicator'];
+  restBorderColor?: BaseInputProps['restBorderColor'];
   hasLeadingDropdown?: boolean;
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
@@ -82,6 +86,8 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
+  hoverIndicator,
+  restBorderColor,
   size = 'medium',
   borderRadius,
 }: Pick<
@@ -94,6 +100,9 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isTextArea'
   | 'isDropdownTrigger'
   | 'isTableInputCell'
+  | 'focusIndicator'
+  | 'hoverIndicator'
+  | 'restBorderColor'
   | 'size'
   | 'borderRadius'
 >): CSSObject => {
@@ -108,7 +117,12 @@ export const getInputBackgroundAndBorderStyles = ({
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
   let zIndex: number | undefined;
 
-  const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
+  const baseInputState = getBaseInputState({
+    isFocused,
+    // hoverIndicator="none": the input draws its own hover, so keep the rest look
+    isHovered: hoverIndicator === 'none' ? false : isHovered,
+    isDisabled,
+  });
 
   backgroundColor = getIn(theme.colors, backgroundColorTokens[baseInputState]);
   borderColor =
@@ -116,6 +130,9 @@ export const getInputBackgroundAndBorderStyles = ({
       ? theme.colors.transparent
       : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
+  if (restBorderColor && !isTableInputCell && baseInputState === 'default') {
+    borderColor = getIn(theme.colors, restBorderColor);
+  }
 
   if (!isTableInputCell && validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
@@ -263,6 +280,7 @@ export const getBaseInputStyles = ({
   isDropdownTrigger,
   size,
   padding,
+  paddingX,
   valueComponentType,
   hasLeadingDropdown = false,
   color,
@@ -325,6 +343,7 @@ export const getBaseInputStyles = ({
     paddingTop: padding ?? makeSpace(getTopPadding({ theme, size, isInsideCounterInput })),
     paddingBottom: padding ?? makeSpace(getBottomPadding({ theme, size, isInsideCounterInput })),
     paddingLeft:
+      paddingX ??
       padding ??
       makeSpace(
         getLeftPadding({
@@ -340,6 +359,7 @@ export const getBaseInputStyles = ({
         }),
       ),
     paddingRight:
+      paddingX ??
       padding ??
       getRightPadding({
         theme,
