@@ -209,8 +209,11 @@ type DatePickerProps<Type extends DateSelectionType> = {
 
   /**
    * Controls how the selected date is displayed in the input field.
-   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
-   * - `default`: Shows the actual date values in the input field.
+   * - `compact`: While closed, shows the preset label (e.g., "Last 7 days") if a preset is selected,
+   *   otherwise a humanised date (e.g., "17 Nov 2026", "11-17 Nov 2026", "28 Oct - 3 Nov 2026").
+   *   Humanised dates apply to the day picker (`format="DD/MM/YYYY"`) only and work without presets.
+   *   On FilterChipDatePicker, the chip always shows this compact value.
+   * - `default`: Shows the actual date values (e.g., "11/11/2026 - 17/11/2026").
    * @default 'default'
    */
   displayFormat?: 'compact' | 'default';
@@ -683,13 +686,15 @@ export default DateRangeExample;
 
 ### Presets with Compact Display Format
 
-The `displayFormat="compact"` prop changes how the DatePicker input displays selected values when using presets:
+The `displayFormat="compact"` prop changes how the DatePicker input displays selected values:
 
-- **When closed (not focused):** If a preset is selected, the input shows the preset label (e.g., "Last 7 days") instead of the actual date range
-- **When focused or picker is open:** The input switches to show the actual date values in DD-MM-YY format, allowing users to see and edit the dates
-- **Custom date selection:** When the user selects custom dates that don't match any preset, the input always shows the date values regardless of focus state
+- **Preset selected, closed (not focused):** The input shows the preset label (e.g., "Last 7 days") instead of the actual date range
+- **Custom dates or no presets, closed (not focused):** The input shows a humanised date, for example "17 Nov 2026" (single), "11-17 Nov 2026" (same month), "28 Oct - 3 Nov 2026" (same year) or "28 Dec 2025 - 3 Jan 2026" (across years). This only applies to the day picker (`format="DD/MM/YYYY"`), and does not need presets
+- **When focused or picker is open:** The input switches to the editable `DD/MM/YYYY` value, so users can see and type the dates
 
-This is useful when the preset label provides more context than showing raw dates (e.g., "Last quarter" is more meaningful than "01-10-2024 - 31-12-2024").
+This is useful when a readable value gives more context than raw dates (e.g., "Last quarter" or "1 Oct - 31 Dec 2024" instead of "01/10/2024 - 31/12/2024"). `format` does not accept custom patterns, so use `displayFormat="compact"` when you want dates like "11 Nov 2026".
+
+`FilterChipDatePicker` supports the same prop. The chip always shows the compact value, because it has no editable input.
 
 ```tsx
 import React, { useState } from 'react';
@@ -743,7 +748,7 @@ const PresetsCompactDisplayExample = () => {
         />
 
         <Text size="small" marginTop="spacing.3">
-          {/* With displayFormat="compact", input shows preset label (e.g., "Last 7 days") instead of dates */}
+          {/* With displayFormat="compact", input shows the preset label (e.g., "Last 7 days") or a humanised date (e.g., "11-17 Nov 2026") */}
           Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -{' '}
           {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
         </Text>
