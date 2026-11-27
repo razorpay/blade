@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RazorSenseLoader /> should render RazorSenseLoader on server 1`] = `"<div id="root"><div data-blade-component="razorsense-loader" role="progressbar" aria-label="Loading" style="position:relative;overflow:hidden;width:100%;height:100%;background-color:hsla(0, 0%, 100%, 1)"></div></div>"`;

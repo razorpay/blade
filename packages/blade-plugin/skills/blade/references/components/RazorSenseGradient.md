@@ -183,7 +183,12 @@ const CombinedExample = () => {
   if (!assetsPreloaded) return <div>Loading...</div>;
 
   return (
-    <Box position="relative" width="100%" height="100vh" backgroundColor="surface.background.gray.intense">
+    <Box
+      position="relative"
+      width="100%"
+      height="100vh"
+      backgroundColor="surface.background.gray.intense"
+    >
       {/* Background shader */}
       <Box position="absolute" top="0px" left="0px" right="0px" bottom="0px">
         <RazorSense width="100%" height="100%" preset="rippleWave" />

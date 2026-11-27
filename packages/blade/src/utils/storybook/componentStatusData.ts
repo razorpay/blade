@@ -1791,6 +1791,111 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'RazorSenseLoader',
+    description:
+      "RazorSense 2.0's loading splash: the Razorpay glyph loops while the page loads, then finishes its pass, grows and fades.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseChatBackground',
+    description:
+      "RazorSense 2.0's band behind a chat input on its own (a landing), pulsing as you type.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseThinking',
+    description:
+      "RazorSense 2.0's thinking label with its glow; inside a RazorSenseChat, a loading ChatMessage shows it.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseBottomWave',
+    description:
+      "RazorSense 2.0's faint wave under a chat's input, drifting and pulsing as you type.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseChat',
+    description:
+      'Wraps a chat: draws RazorSenseThinking and RazorSenseBottomWave on one canvas, with the surge from one to the other.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseBackground',
+    description:
+      "RazorSense 2.0's big piece as a page background: soft fluted bands drifting and breathing, placed as the login page has it.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSenseSuccess',
+    description:
+      "RazorSense 2.0's success moment: a glass orb rises, then turns into Blade's success badge with its check and an optional label.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'RazorSense',
     description:
       'RazorSense is a Blade Spark surface that renders an animated, shader-driven glass effect for AI and branded moments.',
@@ -1807,14 +1912,28 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'Ray',
+    description:
+      "Ray is Razorpay's AI mascot: he sits on the chat input, idles, watches what's typed, and plays an answer's states while it's being worked on.",
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/Ray',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'RayChatOutput',
     description:
       "RayChatOutput draws RAY's chat text, an AI assistant's Markdown reply, by RAY's chat rules. rayChatOutputGenUI makes GenUI draw its TEXT the same way.",
     platform: 'web',
     frameworks: {
       react: {
-        status: 'released',
-        releasedIn: '12.132.0',
+        status: 'in-development',
         storybookLink: 'Components/RayChatOutput',
       },
       svelte: {
