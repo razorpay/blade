@@ -38,6 +38,18 @@ type PreviewProps = {
    * The step of the zoom.
    */
   zoomScaleStep?: number;
+  /**
+   * The smallest zoom the Preview allows. Zooming out stops here and the Zoom Out button is disabled.
+   *
+   * @default 0.1
+   */
+  minZoom?: number;
+  /**
+   * The largest zoom the Preview allows. Zooming in stops here and the Zoom In button is disabled.
+   *
+   * @default 8
+   */
+  maxZoom?: number;
 };
 
 type PreviewHeaderProps = {
@@ -56,6 +68,16 @@ type PreviewBodyProps = {
    * The children of the PreviewBody component.
    */
   children: React.ReactElement;
+  /**
+   * Makes the body fill the preview frame and centres its child. Use it to fit content to the
+   * frame: give the child `max-width: 100%` and `max-height: 100%` (and `object-fit: contain` for images).
+   *
+   * Children's percentage heights resolve against the frame when this is set, so an
+   * `<img width="100%" height="100%" />` stretches to the frame's shape.
+   *
+   * @default false
+   */
+  shouldFillFrame?: boolean;
 };
 
 type PreviewFooterProps = {
@@ -78,6 +100,9 @@ type PreviewFooterProps = {
 - Compose with `PreviewHeader`, `PreviewBody`, and `PreviewFooter` for structured layout with controls.
 - Use `onZoomChange` and `onDragChange` callbacks for tracking user interactions.
 - Use `isDragAndZoomDisabled` for static preview mode without interactions.
+- Use `minZoom` and `maxZoom` to limit zoom. The footer's Zoom Out and Zoom In buttons disable themselves at these limits, so don't disable or remount them yourself.
+- To fit content to the frame, set `shouldFillFrame` on `PreviewBody`, give the child `max-width: 100%` and `max-height: 100%` (with `object-fit: contain` for images), and set `minZoom={1}` so users can't shrink it below the frame.
+- Don't combine `shouldFillFrame` with `<img width="100%" height="100%">`: the image stretches to the frame's shape. Use `max-width`/`max-height` instead.
 - Use inside `LightBox` (custom mode) for gallery items that need zoom/pan.
 
 **Don't**
@@ -151,6 +176,36 @@ function PDFPreview() {
         }
       />
     </Preview>
+  );
+}
+```
+
+### Fit to Frame with Zoom Limits
+
+```tsx
+import {
+  Box,
+  Preview,
+  PreviewHeader,
+  PreviewBody,
+  PreviewFooter,
+} from '@razorpay/blade/components';
+
+function FitToFramePreview() {
+  return (
+    <Box height="500px">
+      <Preview minZoom={1} maxZoom={3}>
+        <PreviewHeader title="Invoice" />
+        <PreviewBody shouldFillFrame={true}>
+          <img
+            src="https://example.com/invoice.png"
+            alt="Invoice"
+            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+          />
+        </PreviewBody>
+        <PreviewFooter showZoomPercentage={true} />
+      </Preview>
+    </Box>
   );
 }
 ```

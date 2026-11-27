@@ -284,6 +284,27 @@ export const WithInitialZoomExample = WithInitialZoomExampleTemplate.bind({});
 WithInitialZoomExample.storyName = 'With Initial Zoom';
 WithInitialZoomExample.args = {};
 
+const WithZoomLimitsExampleTemplate: StoryFn<typeof Preview> = () => {
+  return (
+    <Box height="500px" width="100%">
+      <Preview minZoom={1} maxZoom={3}>
+        <PreviewHeader title="Fit to frame, can't zoom out below 100%" />
+        <PreviewBody shouldFillFrame={true}>
+          <img
+            src="https://picsum.photos/seed/blade-preview/1920/1080"
+            alt="randomImage"
+            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+          />
+        </PreviewBody>
+        <PreviewFooter showZoomPercentage={true} />
+      </Preview>
+    </Box>
+  );
+};
+export const WithZoomLimitsExample = WithZoomLimitsExampleTemplate.bind({});
+WithZoomLimitsExample.storyName = 'With Zoom Limits';
+WithZoomLimitsExample.args = {};
+
 const PDFRenderer: StoryFn<typeof Preview> = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
